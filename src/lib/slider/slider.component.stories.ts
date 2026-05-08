@@ -44,7 +44,7 @@ export const WithHint: Story = {
 };
 
 export const WithError: Story = {
-  args: { error: 'Please pick a value above 50', value: 20 },
+  args: { errorMsg: 'Please pick a value above 50', value: 20 },
 };
 
 export const Stepped: Story = {
