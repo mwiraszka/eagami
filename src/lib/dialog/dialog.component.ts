@@ -26,6 +26,7 @@ export type DialogSize = 'sm' | 'md' | 'lg' | 'full';
 })
 export class DialogComponent {
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
+  private previouslyFocused: HTMLElement | null = null;
 
   // Inputs
   readonly size = input<DialogSize>('md');
@@ -53,12 +54,15 @@ export class DialogComponent {
 
       if (this.open()) {
         if (!dialogRef.open) {
+          this.previouslyFocused = document.activeElement as HTMLElement | null;
           dialogRef.showModal();
           this.opened.emit();
         }
       } else {
         if (dialogRef.open) {
           dialogRef.close();
+          this.previouslyFocused?.focus?.();
+          this.previouslyFocused = null;
         }
       }
     });
