@@ -634,11 +634,16 @@ async function main() {
 
     // Hide sandbox card headers and dividers so screenshots show only the
     // demo body inside each card's chrome (rounded corners, shadow, padding).
+    // Pin a consistent min-width so cards with fluid content (sliders, etc.)
+    // render at the same scale as cards with intrinsically wide content.
     await page.addStyleTag({
       content: `
         .sandbox-card .ea-card__header,
         .sandbox-card .ea-card__divider {
           display: none !important;
+        }
+        .sandbox-card {
+          min-width: 590px !important;
         }
       `,
     });
