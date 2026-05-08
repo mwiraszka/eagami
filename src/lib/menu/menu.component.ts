@@ -10,6 +10,7 @@ import {
   model,
   output,
   signal,
+  viewChild,
 } from '@angular/core';
 
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
@@ -23,35 +24,62 @@ export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-e
 })
 export class MenuComponent {
   private readonly elRef = inject(ElementRef<HTMLElement>);
+  private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
-  // Inputs
   readonly placement = input<MenuPlacement>('bottom-start');
   readonly disabled = input<boolean>(false);
   readonly ariaLabel = input<string>('Menu', { alias: 'aria-label' });
 
-  // Two-way open binding
   readonly open = model<boolean>(false);
-
-  // Outputs
   readonly opened = output<void>();
   readonly closed = output<void>();
 
-  // Computed
   readonly menuId = signal(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
-  readonly menuClasses = computed(() => ({
+  private triggerEl: HTMLElement | null = null;
+  private readonly triggerRect = signal<DOMRect | null>(null);
+
+  readonly listClasses = computed(() => ({
     [`ea-menu__list--${this.placement()}`]: true,
   }));
 
-  toggle(): void {
-    if (this.disabled()) return;
-    const next = !this.open();
-    this.open.set(next);
-    if (next) {
-      this.opened.emit();
+  readonly listStyle = computed<Record<string, string>>(() => {
+    const rect = this.triggerRect();
+    if (!rect) return {};
+    const placement = this.placement();
+    const gap = 4;
+    const style: Record<string, string> = {};
+
+    if (placement === 'bottom-start' || placement === 'bottom-end') {
+      style['top'] = `${rect.bottom + gap}px`;
     } else {
-      this.closed.emit();
+      style['bottom'] = `${window.innerHeight - rect.top + gap}px`;
     }
+
+    if (placement === 'bottom-start' || placement === 'top-start') {
+      style['left'] = `${rect.left}px`;
+    } else {
+      style['right'] = `${window.innerWidth - rect.right}px`;
+    }
+
+    return style;
+  });
+
+  toggleAt(triggerEl: HTMLElement): void {
+    if (this.disabled()) return;
+    if (this.open()) {
+      this.close();
+    } else {
+      this.openAt(triggerEl);
+    }
+  }
+
+  openAt(triggerEl: HTMLElement): void {
+    if (this.disabled()) return;
+    this.triggerEl = triggerEl;
+    this.triggerRect.set(triggerEl.getBoundingClientRect());
+    this.open.set(true);
+    this.opened.emit();
   }
 
   close(): void {
@@ -60,27 +88,26 @@ export class MenuComponent {
     this.closed.emit();
   }
 
-  handleTriggerKeydown(event: KeyboardEvent): void {
-    if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      if (!this.open()) this.toggle();
-    } else if (event.key === 'Escape' && this.open()) {
-      event.preventDefault();
-      this.close();
-    }
-  }
-
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     if (!this.open()) return;
     const target = event.target as Node;
-    if (!this.elRef.nativeElement.contains(target)) {
-      this.close();
-    }
+    if (this.triggerEl?.contains(target)) return;
+    if (this.listEl()?.nativeElement.contains(target)) return;
+    this.close();
   }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    if (this.open()) this.close();
+    if (!this.open()) return;
+    this.close();
+    this.triggerEl?.focus();
+  }
+
+  @HostListener('window:resize')
+  @HostListener('window:scroll')
+  onViewportChange(): void {
+    if (!this.open() || !this.triggerEl) return;
+    this.triggerRect.set(this.triggerEl.getBoundingClientRect());
   }
 }

@@ -5,6 +5,7 @@ import { MoreHorizontalIconComponent } from '../icons/more-horizontal.component'
 import { PencilIconComponent } from '../icons/pencil.component';
 import { TrashIconComponent } from '../icons/trash.component';
 import { MenuItemComponent } from './menu-item.component';
+import { MenuTriggerDirective } from './menu-trigger.directive';
 import { MenuComponent } from './menu.component';
 
 const meta: Meta<MenuComponent> = {
@@ -32,11 +33,11 @@ export const Default: Story = {
   render: args => ({
     props: args,
     moduleMetadata: {
-      imports: [MenuComponent, MenuItemComponent, ButtonComponent],
+      imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent, ButtonComponent],
     },
     template: `
-      <ea-menu [placement]="placement" [disabled]="disabled">
-        <ea-button slot="trigger" variant="secondary">Actions</ea-button>
+      <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
+      <ea-menu #m [placement]="placement" [disabled]="disabled">
         <ea-menu-item>Edit</ea-menu-item>
         <ea-menu-item>Duplicate</ea-menu-item>
         <ea-menu-item>Archive</ea-menu-item>
@@ -52,6 +53,7 @@ export const WithIcons: Story = {
     moduleMetadata: {
       imports: [
         MenuComponent,
+        MenuTriggerDirective,
         MenuItemComponent,
         ButtonComponent,
         PencilIconComponent,
@@ -59,8 +61,8 @@ export const WithIcons: Story = {
       ],
     },
     template: `
-      <ea-menu [placement]="placement">
-        <ea-button slot="trigger" variant="secondary">Actions</ea-button>
+      <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
+      <ea-menu #m [placement]="placement">
         <ea-menu-item>
           <ea-icon-pencil slot="icon" />
           Edit
@@ -80,16 +82,17 @@ export const IconTrigger: Story = {
     moduleMetadata: {
       imports: [
         MenuComponent,
+        MenuTriggerDirective,
         MenuItemComponent,
         ButtonComponent,
         MoreHorizontalIconComponent,
       ],
     },
     template: `
-      <ea-menu [placement]="placement">
-        <ea-button slot="trigger" variant="ghost" size="sm" aria-label="More options">
-          <ea-icon-more-horizontal />
-        </ea-button>
+      <ea-button [eaMenuTrigger]="m" variant="ghost" size="sm" aria-label="More options">
+        <ea-icon-more-horizontal />
+      </ea-button>
+      <ea-menu #m [placement]="placement">
         <ea-menu-item>View</ea-menu-item>
         <ea-menu-item>Rename</ea-menu-item>
         <ea-menu-item variant="danger">Delete</ea-menu-item>
@@ -102,11 +105,11 @@ export const WithDisabledItem: Story = {
   render: args => ({
     props: args,
     moduleMetadata: {
-      imports: [MenuComponent, MenuItemComponent, ButtonComponent],
+      imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent, ButtonComponent],
     },
     template: `
-      <ea-menu [placement]="placement">
-        <ea-button slot="trigger" variant="secondary">File</ea-button>
+      <ea-button [eaMenuTrigger]="m" variant="secondary">File</ea-button>
+      <ea-menu #m [placement]="placement">
         <ea-menu-item>New</ea-menu-item>
         <ea-menu-item>Open</ea-menu-item>
         <ea-menu-item [disabled]="true">Save (unavailable)</ea-menu-item>
@@ -121,11 +124,11 @@ export const BottomEnd: Story = {
   render: args => ({
     props: args,
     moduleMetadata: {
-      imports: [MenuComponent, MenuItemComponent, ButtonComponent],
+      imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent, ButtonComponent],
     },
     template: `
-      <ea-menu [placement]="placement">
-        <ea-button slot="trigger" variant="secondary">Actions</ea-button>
+      <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
+      <ea-menu #m [placement]="placement">
         <ea-menu-item>Edit</ea-menu-item>
         <ea-menu-item>Share</ea-menu-item>
         <ea-menu-item variant="danger">Delete</ea-menu-item>

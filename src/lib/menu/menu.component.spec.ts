@@ -2,17 +2,19 @@ import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuItemComponent } from './menu-item.component';
+import { MenuTriggerDirective } from './menu-trigger.directive';
 import { MenuComponent, MenuPlacement } from './menu.component';
 
 @Component({
   selector: 'ea-test-host',
-  imports: [MenuComponent, MenuItemComponent],
+  imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent],
   template: `
+    <button [eaMenuTrigger]="menu">Open</button>
     <ea-menu
+      #menu
       [(open)]="isOpen"
       [placement]="placement()"
       [disabled]="disabled()">
-      <button slot="trigger">Open</button>
       <ea-menu-item (itemClicked)="onEdit()">Edit</ea-menu-item>
       <ea-menu-item [disabled]="itemDisabled()">Archive</ea-menu-item>
       <ea-menu-item
@@ -44,16 +46,16 @@ describe('MenuComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
 
-  function getTrigger(): HTMLElement {
-    return fixture.nativeElement.querySelector('.ea-menu__trigger');
+  function getTrigger(): HTMLButtonElement {
+    return fixture.nativeElement.querySelector('button');
   }
 
   function getList(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-menu__list');
+    return document.body.querySelector('.ea-menu__list');
   }
 
   function getItems(): HTMLButtonElement[] {
-    return Array.from(fixture.nativeElement.querySelectorAll('.ea-menu-item'));
+    return Array.from(document.body.querySelectorAll('.ea-menu-item'));
   }
 
   beforeEach(async () => {
@@ -71,6 +73,10 @@ describe('MenuComponent', () => {
   describe('Rendering', () => {
     it('renders the trigger', () => {
       expect(getTrigger()).toBeTruthy();
+    });
+
+    it('exposes aria-haspopup on the trigger', () => {
+      expect(getTrigger().getAttribute('aria-haspopup')).toBe('menu');
     });
 
     it('does not render the menu list when closed', () => {

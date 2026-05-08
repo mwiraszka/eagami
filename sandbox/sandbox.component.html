@@ -946,12 +946,12 @@
         <span eaCardHeader>Menu</span>
         <section class="sandbox-section">
           <h2>basic</h2>
-          <ea-menu>
-            <ea-button
-              slot="trigger"
-              variant="secondary">
-              Actions
-            </ea-button>
+          <ea-button
+            [eaMenuTrigger]="basicMenu"
+            variant="secondary">
+            Actions
+          </ea-button>
+          <ea-menu #basicMenu>
             <ea-menu-item>Edit</ea-menu-item>
             <ea-menu-item>Duplicate</ea-menu-item>
             <ea-menu-item>Archive</ea-menu-item>
@@ -959,12 +959,12 @@
           </ea-menu>
 
           <h2>with icons</h2>
-          <ea-menu>
-            <ea-button
-              slot="trigger"
-              variant="secondary">
-              File
-            </ea-button>
+          <ea-button
+            [eaMenuTrigger]="iconMenu"
+            variant="secondary">
+            File
+          </ea-button>
+          <ea-menu #iconMenu>
             <ea-menu-item>
               <ea-icon-pencil slot="icon" />
               Edit
@@ -976,26 +976,26 @@
           </ea-menu>
 
           <h2>icon trigger</h2>
-          <ea-menu>
-            <ea-button
-              slot="trigger"
-              variant="ghost"
-              size="sm"
-              aria-label="More options">
-              <ea-icon-more-horizontal />
-            </ea-button>
+          <ea-button
+            [eaMenuTrigger]="iconTriggerMenu"
+            variant="ghost"
+            size="sm"
+            aria-label="More options">
+            <ea-icon-more-horizontal />
+          </ea-button>
+          <ea-menu #iconTriggerMenu>
             <ea-menu-item>View</ea-menu-item>
             <ea-menu-item>Rename</ea-menu-item>
             <ea-menu-item variant="danger">Delete</ea-menu-item>
           </ea-menu>
 
           <h2>with disabled item</h2>
-          <ea-menu>
-            <ea-button
-              slot="trigger"
-              variant="secondary">
-              File
-            </ea-button>
+          <ea-button
+            [eaMenuTrigger]="fileMenu"
+            variant="secondary">
+            File
+          </ea-button>
+          <ea-menu #fileMenu>
             <ea-menu-item>New</ea-menu-item>
             <ea-menu-item>Open</ea-menu-item>
             <ea-menu-item [disabled]="true">Save (unavailable)</ea-menu-item>

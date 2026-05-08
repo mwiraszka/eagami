@@ -78,6 +78,7 @@ export * from './lib/icons/x.component';
 export * from './lib/input/input.component';
 export * from './lib/menu/menu.component';
 export * from './lib/menu/menu-item.component';
+export * from './lib/menu/menu-trigger.directive';
 export * from './lib/paginator/paginator.component';
 export * from './lib/progress-bar/progress-bar.component';
 export * from './lib/radio/radio-group.component';
