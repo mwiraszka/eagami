@@ -1,0 +1,19 @@
+<div
+  class="ea-empty-state"
+  [ngClass]="hostClasses()">
+  <div class="ea-empty-state__media">
+    <ng-content select="[slot=media]" />
+  </div>
+
+  @if (title()) {
+    <h2 class="ea-empty-state__title">{{ title() }}</h2>
+  }
+
+  @if (description()) {
+    <p class="ea-empty-state__description">{{ description() }}</p>
+  }
+
+  <div class="ea-empty-state__actions">
+    <ng-content select="[slot=actions]" />
+  </div>
+</div>
