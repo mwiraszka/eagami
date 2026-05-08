@@ -781,6 +781,44 @@
       </ea-card>
     }
 
+    <!-- ─── Empty State ───────────────────────────────────────────────────── -->
+    @if (isVisible('emptyState')) {
+      <ea-card
+        variant="elevated"
+        class="sandbox-card"
+        [headerDivider]="true">
+        <span eaCardHeader>Empty State</span>
+        <section class="sandbox-section">
+          <h2>basic</h2>
+          <ea-empty-state
+            title="No items yet"
+            description="Get started by creating your first item.">
+            <ea-icon-file slot="media" />
+            <ea-button
+              slot="actions"
+              variant="primary">
+              Create item
+            </ea-button>
+          </ea-empty-state>
+
+          <h2>no results</h2>
+          <ea-empty-state
+            title="No results found"
+            description="Try adjusting your search or filter to find what you're looking for.">
+            <ea-icon-search slot="media" />
+            <ea-button
+              slot="actions"
+              variant="secondary">
+              Clear filters
+            </ea-button>
+          </ea-empty-state>
+
+          <h2>title only</h2>
+          <ea-empty-state title="Nothing to see here" />
+        </section>
+      </ea-card>
+    }
+
     <!-- ─── Eagami Wordmark ───────────────────────────────────────────────── -->
     @if (isVisible('eagamiWordmark')) {
       <ea-card
@@ -1119,6 +1157,48 @@
       </ea-card>
     }
 
+    <!-- ─── Segmented ─────────────────────────────────────────────────────── -->
+    @if (isVisible('segmented')) {
+      <ea-card
+        variant="elevated"
+        class="sandbox-card"
+        [headerDivider]="true">
+        <span eaCardHeader>Segmented</span>
+        <section class="sandbox-section">
+          <h2>basic</h2>
+          <ea-segmented
+            [options]="segmentedViewOptions"
+            [(value)]="segmentedValue" />
+
+          <h2>two options</h2>
+          <ea-segmented [options]="segmentedThemeOptions" />
+
+          <h2>sizes</h2>
+          <div class="sandbox-row">
+            <ea-segmented
+              size="sm"
+              [options]="segmentedThemeOptions" />
+            <ea-segmented
+              size="md"
+              [options]="segmentedThemeOptions" />
+            <ea-segmented
+              size="lg"
+              [options]="segmentedThemeOptions" />
+          </div>
+
+          <h2>full width</h2>
+          <ea-segmented
+            [fullWidth]="true"
+            [options]="segmentedViewOptions" />
+
+          <h2>disabled</h2>
+          <ea-segmented
+            [disabled]="true"
+            [options]="segmentedViewOptions" />
+        </section>
+      </ea-card>
+    }
+
     <!-- ─── Skeleton ──────────────────────────────────────────────────────── -->
     @if (isVisible('skeleton')) {
       <ea-card
@@ -1142,6 +1222,62 @@
           <ea-skeleton
             variant="rect"
             height="6rem" />
+        </section>
+      </ea-card>
+    }
+
+    <!-- ─── Slider ────────────────────────────────────────────────────────── -->
+    @if (isVisible('slider')) {
+      <ea-card
+        variant="elevated"
+        class="sandbox-card"
+        [headerDivider]="true">
+        <span eaCardHeader>Slider</span>
+        <section class="sandbox-section">
+          <h2>basic</h2>
+          <ea-slider
+            label="Volume"
+            [showValue]="true"
+            [(value)]="sliderValue" />
+
+          <h2>min/max labels</h2>
+          <ea-slider
+            label="Brightness"
+            [min]="0"
+            [max]="100"
+            [step]="5"
+            [showValue]="true"
+            [showMinMaxLabels]="true" />
+
+          <h2>sizes</h2>
+          <ea-slider
+            label="Small"
+            size="sm"
+            [showValue]="true" />
+          <ea-slider
+            label="Medium"
+            size="md"
+            [showValue]="true" />
+          <ea-slider
+            label="Large"
+            size="lg"
+            [showValue]="true" />
+
+          <h2>states</h2>
+          <ea-slider
+            label="With hint"
+            hint="Drag the handle or use arrow keys to adjust"
+            [showValue]="true" />
+          <ea-slider
+            label="With error"
+            error="Please pick a value above 50"
+            [value]="20"
+            [showValue]="true" />
+          <ea-slider
+            label="Disabled"
+            [disabled]="true"
+            [value]="60"
+            [showValue]="true" />
         </section>
       </ea-card>
     }

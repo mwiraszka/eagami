@@ -23,6 +23,8 @@ import {
   DropdownComponent,
   DropdownOption,
   EagamiWordmarkComponent,
+  EmptyStateComponent,
+  FileIconComponent,
   InputComponent,
   MenuComponent,
   MenuItemComponent,
@@ -33,7 +35,11 @@ import {
   ProgressBarComponent,
   RadioComponent,
   RadioGroupComponent,
+  SearchIconComponent,
+  SegmentedComponent,
+  SegmentedOption,
   SkeletonComponent,
+  SliderComponent,
   SpinnerComponent,
   SwitchComponent,
   TabComponent,
@@ -81,6 +87,8 @@ interface SandboxComponentEntry {
     DrawerComponent,
     DropdownComponent,
     EagamiWordmarkComponent,
+    EmptyStateComponent,
+    FileIconComponent,
     InputComponent,
     MenuComponent,
     MenuItemComponent,
@@ -90,7 +98,10 @@ interface SandboxComponentEntry {
     ProgressBarComponent,
     RadioComponent,
     RadioGroupComponent,
+    SearchIconComponent,
+    SegmentedComponent,
     SkeletonComponent,
+    SliderComponent,
     SpinnerComponent,
     SwitchComponent,
     TabComponent,
@@ -127,12 +138,15 @@ export class SandboxComponent {
     { key: 'drawer', label: 'Drawer' },
     { key: 'dropdown', label: 'Dropdown' },
     { key: 'eagamiWordmark', label: 'Eagami Wordmark' },
+    { key: 'emptyState', label: 'Empty State' },
     { key: 'input', label: 'Input' },
     { key: 'menu', label: 'Menu' },
     { key: 'paginator', label: 'Paginator' },
     { key: 'progressBar', label: 'Progress Bar' },
     { key: 'radio', label: 'Radio' },
+    { key: 'segmented', label: 'Segmented' },
     { key: 'skeleton', label: 'Skeleton' },
+    { key: 'slider', label: 'Slider' },
     { key: 'spinner', label: 'Spinner' },
     { key: 'switch', label: 'Switch' },
     { key: 'tabs', label: 'Tabs' },
@@ -188,6 +202,8 @@ export class SandboxComponent {
   drawerOpenBottom = signal(false);
   autocompleteValue = signal('');
   switchValue = signal(false);
+  sliderValue = signal(40);
+  segmentedValue = signal('list');
   textareaValue = signal('');
   croppedAvatarUrl = signal('');
   tablePage = signal(1);
@@ -221,6 +237,17 @@ export class SandboxComponent {
     { value: 'banana', label: 'Banana' },
     { value: 'cherry', label: 'Cherry' },
     { value: 'date', label: 'Date' },
+  ];
+
+  segmentedViewOptions: SegmentedOption[] = [
+    { value: 'list', label: 'List' },
+    { value: 'grid', label: 'Grid' },
+    { value: 'kanban', label: 'Kanban' },
+  ];
+
+  segmentedThemeOptions: SegmentedOption[] = [
+    { value: 'light', label: 'Light' },
+    { value: 'dark', label: 'Dark' },
   ];
 
   tableColumns: DataTableColumn[] = [
