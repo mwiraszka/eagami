@@ -636,6 +636,8 @@ async function main() {
     // demo body inside each card's chrome (rounded corners, shadow, padding).
     // Pin a consistent min-width so cards with fluid content (sliders, etc.)
     // render at the same scale as cards with intrinsically wide content.
+    // Restore the v0.9.0 h2 sizing/margins used by the documented screenshots
+    // so newly captured images match the established visual baseline.
     await page.addStyleTag({
       content: `
         .sandbox-card .ea-card__header,
@@ -644,6 +646,13 @@ async function main() {
         }
         .sandbox-card {
           min-width: 590px !important;
+        }
+        .sandbox-section h2 {
+          font-size: 14px !important;
+          margin: 24px 0 8px !important;
+        }
+        .sandbox-section h2:first-child {
+          margin-top: 0 !important;
         }
       `,
     });
