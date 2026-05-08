@@ -484,7 +484,7 @@ function findSection(heading) {
   for (const card of cards) {
     const header = card.querySelector('[eaCardHeader]');
     if (header && header.textContent.trim() === heading) {
-      return card.querySelector('.sandbox-section');
+      return card;
     }
   }
   return null;
@@ -631,6 +631,17 @@ async function main() {
     await page.setViewport(VIEWPORT);
     await page.goto(URL, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready);
+
+    // Hide sandbox card headers and dividers so screenshots show only the
+    // demo body inside each card's chrome (rounded corners, shadow, padding).
+    await page.addStyleTag({
+      content: `
+        .sandbox-card .ea-card__header,
+        .sandbox-card .ea-card__divider {
+          display: none !important;
+        }
+      `,
+    });
 
     let captured = 0;
     let skipped = 0;
