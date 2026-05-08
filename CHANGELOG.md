@@ -13,9 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `SegmentedComponent` (`ea-segmented`) — toggle button group for view/mode switching with `sm`/`md`/`lg` sizes, full-width option, per-option disabled state, arrow-key navigation, and `ControlValueAccessor` integration
 - Add `EmptyStateComponent` (`ea-empty-state`) — pattern component for "no results" / "nothing here yet" states with `media` and `actions` content slots, optional title and description, and `sm`/`md`/`lg` sizes
 
+### Changed
+
+- **Breaking:** `MenuComponent` no longer wraps its trigger via the `[slot=trigger]` content slot. Apply the new `[eaMenuTrigger]` directive to your own button instead and reference the menu by template variable. Migration: `<ea-menu><ea-button slot="trigger">…</ea-button>…</ea-menu>` becomes `<ea-button [eaMenuTrigger]="m">…</ea-button><ea-menu #m>…</ea-menu>`. The trigger now receives `aria-haspopup`/`aria-expanded`/`aria-controls` directly on the focusable element rather than on a wrapping `<div>`, fixing the largest a11y gap in the menu API. The popup is positioned with `position: fixed` so it escapes overflow-clipping ancestors
+
 ### Fixed
 
 - Improve accessibility across the library: `DropdownComponent` trigger now exposes `aria-describedby` and `aria-invalid` for hint/error text; `AutocompleteComponent` input declares `aria-haspopup="listbox"` and `aria-autocomplete="list"`; `AccordionItemComponent` trigger and panel are linked via `aria-controls` and `aria-labelledby`; `TabComponent` panels are linked to their tab buttons via `aria-controls`/`aria-labelledby` and become keyboard-focusable; `TooltipDirective` now wires `aria-describedby` on the host, marks the popover with `role="tooltip"`, and dismisses on Escape; `SwitchComponent` accepts an `aria-label` for icon-only usage; `CodeInputComponent` group falls back to a descriptive `aria-label` when no visible label is set
+- Restore focus to the previously focused element when `DialogComponent` and `DrawerComponent` close, so keyboard users return to the trigger that opened the overlay
 - Remove redundant `aria-disabled` from `ButtonComponent` (native `disabled` is authoritative)
 - Drop misleading `aria-modal="false"` from `DatePickerComponent` calendar popover
 
