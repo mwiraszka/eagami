@@ -22,6 +22,9 @@ export class AccordionItemComponent {
   readonly value = input.required<string>();
   readonly label = input.required<string>();
   readonly disabled = input<boolean>(false);
+  readonly id = input<string>(
+    `ea-accordion-item-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
 

@@ -14,7 +14,9 @@
         [class.ea-tabs__trigger--active]="tab.isActive()"
         type="button"
         role="tab"
+        [id]="tab.id() + '-tab'"
         [attr.aria-selected]="tab.isActive()"
+        [attr.aria-controls]="tab.id() + '-panel'"
         [disabled]="tab.disabled()"
         [tabindex]="tab.isActive() ? 0 : -1"
         (click)="selectTab(tab.value())">

@@ -20,9 +20,15 @@ export class TooltipDirective implements OnDestroy {
   readonly tooltipPosition = input<TooltipPosition>('top');
 
   private tooltipEl: HTMLElement | null = null;
+  private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
 
   private readonly showHandler = () => this.show();
   private readonly hideHandler = () => this.hide();
+  private readonly keydownHandler = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && this.tooltipEl) {
+      this.hide();
+    }
+  };
 
   constructor() {
     const native = this.el.nativeElement;
@@ -30,6 +36,7 @@ export class TooltipDirective implements OnDestroy {
     native.addEventListener('mouseleave', this.hideHandler);
     native.addEventListener('focus', this.showHandler);
     native.addEventListener('blur', this.hideHandler);
+    native.addEventListener('keydown', this.keydownHandler);
   }
 
   ngOnDestroy(): void {
@@ -38,6 +45,7 @@ export class TooltipDirective implements OnDestroy {
     native.removeEventListener('mouseleave', this.hideHandler);
     native.removeEventListener('focus', this.showHandler);
     native.removeEventListener('blur', this.hideHandler);
+    native.removeEventListener('keydown', this.keydownHandler);
     this.hide();
   }
 
@@ -47,9 +55,12 @@ export class TooltipDirective implements OnDestroy {
     this.tooltipEl = this.renderer.createElement('div');
     this.renderer.addClass(this.tooltipEl, 'ea-tooltip');
     this.renderer.addClass(this.tooltipEl, `ea-tooltip--${this.tooltipPosition()}`);
+    this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
+    this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
     this.tooltipEl!.textContent = this.eaTooltip();
 
     this.renderer.appendChild(document.body, this.tooltipEl);
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.tooltipId);
     this.positionTooltip();
   }
 
@@ -57,6 +68,7 @@ export class TooltipDirective implements OnDestroy {
     if (this.tooltipEl) {
       this.tooltipEl.remove();
       this.tooltipEl = null;
+      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
     }
   }
 

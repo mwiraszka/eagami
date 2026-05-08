@@ -17,7 +17,10 @@ import { TabsComponent } from './tabs.component';
     @if (isActive()) {
       <div
         class="ea-tab__panel"
-        role="tabpanel">
+        role="tabpanel"
+        [id]="id() + '-panel'"
+        [attr.aria-labelledby]="id() + '-tab'"
+        tabindex="0">
         <ng-content />
       </div>
     }
@@ -30,6 +33,7 @@ export class TabComponent implements OnInit, OnDestroy {
   readonly value = input.required<string>();
   readonly label = input.required<string>();
   readonly disabled = input<boolean>(false);
+  readonly id = input<string>(`ea-tab-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly isActive = computed(() => this.tabs.activeTab() === this.value());
 

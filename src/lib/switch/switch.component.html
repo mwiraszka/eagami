@@ -9,6 +9,7 @@
     [checked]="checked()"
     [disabled]="isDisabled()"
     [attr.aria-checked]="checked()"
+    [attr.aria-label]="!label() ? ariaLabel() : null"
     (change)="handleChange()" />
   <span class="ea-switch__track">
     <span class="ea-switch__thumb"></span>

@@ -18,6 +18,7 @@
     [class.ea-code-input-group--disabled]="isDisabled()"
     role="group"
     [attr.aria-labelledby]="label() ? id() + '-label' : null"
+    [attr.aria-label]="!label() ? 'Verification code, ' + length() + ' digits' : null"
     [attr.aria-describedby]="
       showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
     ">

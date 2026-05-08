@@ -19,6 +19,10 @@
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
       [attr.aria-labelledby]="label() ? id() : null"
+      [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+      [attr.aria-describedby]="
+        showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+      "
       (click)="toggle()"
       (keydown)="handleKeydown($event)">
       <span

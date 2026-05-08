@@ -31,6 +31,7 @@ export class SwitchComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly size = input<SwitchSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-switch-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly checked = model<boolean>(false);
