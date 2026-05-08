@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2026-05-08
+
+### Added
+
+- Add `SliderComponent` (`ea-slider`) — single-value range input with `min`/`max`/`step`, `sm`/`md`/`lg` sizes, optional value display and min/max labels, full keyboard navigation (arrows, PageUp/PageDown, Home/End), pointer drag, error/hint messages, and `ControlValueAccessor` integration
+- Add `SegmentedComponent` (`ea-segmented`) — toggle button group for view/mode switching with `sm`/`md`/`lg` sizes, full-width option, per-option disabled state, arrow-key navigation, and `ControlValueAccessor` integration
+- Add `EmptyStateComponent` (`ea-empty-state`) — pattern component for "no results" / "nothing here yet" states with `media` and `actions` content slots, optional title and description, and `sm`/`md`/`lg` sizes
+
+### Fixed
+
+- Improve accessibility across the library: `DropdownComponent` trigger now exposes `aria-describedby` and `aria-invalid` for hint/error text; `AutocompleteComponent` input declares `aria-haspopup="listbox"` and `aria-autocomplete="list"`; `AccordionItemComponent` trigger and panel are linked via `aria-controls` and `aria-labelledby`; `TabComponent` panels are linked to their tab buttons via `aria-controls`/`aria-labelledby` and become keyboard-focusable; `TooltipDirective` now wires `aria-describedby` on the host, marks the popover with `role="tooltip"`, and dismisses on Escape; `SwitchComponent` accepts an `aria-label` for icon-only usage; `CodeInputComponent` group falls back to a descriptive `aria-label` when no visible label is set
+- Remove redundant `aria-disabled` from `ButtonComponent` (native `disabled` is authoritative)
+- Drop misleading `aria-modal="false"` from `DatePickerComponent` calendar popover
+
 ## [0.11.1] - 2026-04-22
 
 ### Fixed
@@ -241,6 +255,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[0.12.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/mwiraszka/eagami-design-system/compare/v0.10.0...v0.10.1
