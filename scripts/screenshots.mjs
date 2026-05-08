@@ -58,12 +58,15 @@ const SECTIONS = [
   { name: 'drawer', heading: 'Drawer', prepare: showDrawersInline },
   { name: 'dropdown', heading: 'Dropdown', prepare: openDropdownMenus },
   { name: 'eagami-wordmark', heading: 'Eagami Wordmark' },
+  { name: 'empty-state', heading: 'Empty State' },
   { name: 'input', heading: 'Input' },
   { name: 'menu', heading: 'Menu', prepare: openMenusInline },
   { name: 'paginator', heading: 'Paginator' },
   { name: 'progress-bar', heading: 'Progress Bar', prepare: pauseIndeterminateProgress },
   { name: 'radio', heading: 'Radio' },
+  { name: 'segmented', heading: 'Segmented' },
   { name: 'skeleton', heading: 'Skeleton' },
+  { name: 'slider', heading: 'Slider' },
   { name: 'spinner', heading: 'Spinner' },
   { name: 'switch', heading: 'Switch' },
   { name: 'tabs', heading: 'Tabs' },
@@ -477,12 +480,11 @@ async function waitForServer(timeout = 120_000) {
 }
 
 function findSection(heading) {
-  const detailsEls = document.querySelectorAll('.sandbox-details');
-  for (const d of detailsEls) {
-    const summary = d.querySelector('.sandbox-summary');
-    if (summary && summary.textContent.trim() === heading) {
-      d.open = true;
-      return d.querySelector('.sandbox-section');
+  const cards = document.querySelectorAll('.sandbox-card');
+  for (const card of cards) {
+    const header = card.querySelector('[eaCardHeader]');
+    if (header && header.textContent.trim() === heading) {
+      return card.querySelector('.sandbox-section');
     }
   }
   return null;
