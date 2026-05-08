@@ -6,7 +6,6 @@
 
 # Generated files
 documentation.json
-/out-tsc
 /bazel-out
 
 # Node

@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/sandbox",
+    "outDir": "../dist/out-tsc/sandbox",
     "types": []
   },
   "include": ["**/*.ts"]
