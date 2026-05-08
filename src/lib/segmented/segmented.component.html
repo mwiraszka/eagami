@@ -1,0 +1,24 @@
+<div
+  class="ea-segmented"
+  role="radiogroup"
+  [ngClass]="hostClasses()"
+  [attr.aria-label]="ariaLabel() ?? null"
+  [attr.aria-disabled]="isDisabled() || null">
+  @for (option of options(); track option.value; let i = $index) {
+    <button
+      #optionEl
+      type="button"
+      class="ea-segmented__option"
+      role="radio"
+      [class.ea-segmented__option--selected]="isSelected(option)"
+      [class.ea-segmented__option--disabled]="isOptionDisabled(option)"
+      [attr.aria-checked]="isSelected(option)"
+      [attr.aria-disabled]="isOptionDisabled(option) || null"
+      [disabled]="isOptionDisabled(option)"
+      [attr.tabindex]="isSelected(option) || (!value() && i === 0) ? 0 : -1"
+      (click)="select(option)"
+      (keydown)="handleKeydown($event, i)">
+      {{ option.label }}
+    </button>
+  }
+</div>

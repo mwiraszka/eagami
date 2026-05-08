@@ -5,16 +5,22 @@
   <button
     class="ea-accordion-item__trigger"
     type="button"
+    [id]="id() + '-trigger'"
     [attr.aria-expanded]="isExpanded()"
+    [attr.aria-controls]="id() + '-content'"
     [disabled]="disabled()"
     (click)="toggle()">
     <span class="ea-accordion-item__label">{{ label() }}</span>
-    <ea-icon-chevron-down class="ea-accordion-item__chevron" />
+    <ea-icon-chevron-down
+      class="ea-accordion-item__chevron"
+      aria-hidden="true" />
   </button>
   @if (isExpanded()) {
     <div
       class="ea-accordion-item__content"
-      role="region">
+      role="region"
+      [id]="id() + '-content'"
+      [attr.aria-labelledby]="id() + '-trigger'">
       <ng-content />
     </div>
   }

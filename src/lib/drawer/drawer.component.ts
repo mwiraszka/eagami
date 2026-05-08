@@ -27,6 +27,7 @@ export type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
 })
 export class DrawerComponent {
   private readonly drawerEl = viewChild<ElementRef<HTMLDialogElement>>('drawerEl');
+  private previouslyFocused: HTMLElement | null = null;
 
   // Inputs
   readonly position = input<DrawerPosition>('right');
@@ -56,12 +57,15 @@ export class DrawerComponent {
 
       if (this.open()) {
         if (!drawerRef.open) {
+          this.previouslyFocused = document.activeElement as HTMLElement | null;
           drawerRef.showModal();
           this.opened.emit();
         }
       } else {
         if (drawerRef.open) {
           drawerRef.close();
+          this.previouslyFocused?.focus?.();
+          this.previouslyFocused = null;
         }
       }
     });

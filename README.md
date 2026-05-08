@@ -388,6 +388,22 @@ Layout: `stacked` (default, multi-line) | `inline` (single line, uniform font si
 </details>
 
 <details>
+<summary><strong>Empty state</strong> — pattern for "no results" and "nothing here yet" screens</summary>
+
+Optional `title` and `description`, with `[slot=media]` for an icon or illustration and `[slot=actions]` for follow-up buttons. Sizes: `sm` | `md` | `lg`.
+
+```html
+<ea-empty-state title="No items yet" description="Get started by creating your first item.">
+  <ea-icon-file slot="media" />
+  <ea-button slot="actions" variant="primary">Create item</ea-button>
+</ea-empty-state>
+```
+
+<img src="docs/images/empty-state.png" alt="Empty state component" width="560" />
+
+</details>
+
+<details>
 <summary><strong>Input</strong> — text field with ControlValueAccessor and password toggle</summary>
 
 Types: `text` | `email` | `password` | `number` | `search` | `tel` | `url`. Sizes: `sm` | `md` | `lg`.
@@ -406,13 +422,13 @@ Types: `text` | `email` | `password` | `number` | `search` | `tel` | `url`. Size
 </details>
 
 <details>
-<summary><strong>Menu</strong> — popup action menu with trigger slot and menu items</summary>
+<summary><strong>Menu</strong> — popup action menu with menu items</summary>
 
-Placements: `bottom-start` | `bottom-end` | `top-start` | `top-end`. Menu items support icons, disabled state, and a `danger` variant. Closes on outside click or Escape.
+Attach the menu to any focusable element with the `[eaMenuTrigger]` directive. Placements: `bottom-start` | `bottom-end` | `top-start` | `top-end`. Menu items support icons, disabled state, and a `danger` variant. Closes on outside click or Escape and restores focus to the trigger.
 
 ```html
-<ea-menu placement="bottom-end">
-  <ea-button slot="trigger" variant="secondary">Actions</ea-button>
+<ea-button [eaMenuTrigger]="actions" variant="secondary">Actions</ea-button>
+<ea-menu #actions placement="bottom-end">
   <ea-menu-item (itemClicked)="edit()">
     <ea-icon-pencil slot="icon" />
     Edit
@@ -478,6 +494,25 @@ Supports `vertical` and `horizontal` orientation. Sizes: `sm` | `md` | `lg`.
 </details>
 
 <details>
+<summary><strong>Segmented</strong> — toggle button group for picking one of a few options</summary>
+
+Compact alternative to a radio group for view/mode switches (e.g. List/Grid/Kanban, Light/Dark). Implements `radiogroup` semantics and `ControlValueAccessor`. Sizes: `sm` | `md` | `lg`. Supports `fullWidth` and per-option `disabled`.
+
+```html
+<ea-segmented
+  [options]="[
+    { value: 'list', label: 'List' },
+    { value: 'grid', label: 'Grid' },
+    { value: 'kanban', label: 'Kanban' }
+  ]"
+  [(value)]="view" />
+```
+
+<img src="docs/images/segmented.png" alt="Segmented component" width="560" />
+
+</details>
+
+<details>
 <summary><strong>Skeleton</strong> — loading placeholder with animated pulse</summary>
 
 Variants: `text` | `circle` | `rect`. Custom `width` and `height`. Respects `prefers-reduced-motion`.
@@ -489,6 +524,25 @@ Variants: `text` | `circle` | `rect`. Custom `width` and `height`. Respects `pre
 ```
 
 <img src="docs/images/skeleton.png" alt="Skeleton component" width="560" />
+
+</details>
+
+<details>
+<summary><strong>Slider</strong> — single-value range input with keyboard and pointer drag</summary>
+
+Configurable `min`, `max`, `step`. Sizes: `sm` | `md` | `lg`. Optional value display, min/max labels, hint and error messages. Full keyboard navigation (arrows, PageUp/PageDown, Home/End) and `ControlValueAccessor` integration.
+
+```html
+<ea-slider
+  label="Volume"
+  [min]="0"
+  [max]="100"
+  [step]="5"
+  [showValue]="true"
+  [(value)]="volume" />
+```
+
+<img src="docs/images/slider.png" alt="Slider component" width="560" />
 
 </details>
 

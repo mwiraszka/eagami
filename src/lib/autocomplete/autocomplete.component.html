@@ -30,6 +30,8 @@
       [required]="required()"
       [value]="value()"
       [attr.aria-expanded]="isOpen()"
+      [attr.aria-haspopup]="'listbox'"
+      [attr.aria-autocomplete]="'list'"
       [attr.aria-controls]="id() + '-listbox'"
       [attr.aria-activedescendant]="
         focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null

@@ -1,0 +1,73 @@
+<div
+  class="ea-slider-field"
+  [ngClass]="hostClasses()">
+  @if (label()) {
+    <label
+      class="ea-slider-field__label"
+      [for]="id()"
+      [class.ea-slider-field__label--required]="required()">
+      {{ label() }}
+      @if (showValue()) {
+        <span class="ea-slider-field__value">{{ formatValue()(clampedValue()) }}</span>
+      }
+    </label>
+  }
+
+  <div class="ea-slider">
+    <div
+      #trackEl
+      class="ea-slider__track"
+      (pointerdown)="handlePointerDown($event)"
+      (pointermove)="handlePointerMove($event)"
+      (pointerup)="handlePointerUp($event)"
+      (pointercancel)="handlePointerUp($event)">
+      <div
+        class="ea-slider__fill"
+        [style.width.%]="percent()">
+      </div>
+      <div
+        class="ea-slider__thumb"
+        role="slider"
+        tabindex="0"
+        [id]="id()"
+        [attr.aria-label]="ariaLabel() ?? label()"
+        [attr.aria-valuemin]="min()"
+        [attr.aria-valuemax]="max()"
+        [attr.aria-valuenow]="clampedValue()"
+        [attr.aria-valuetext]="formatValue()(clampedValue())"
+        [attr.aria-disabled]="isDisabled() || null"
+        [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        [style.left.%]="percent()"
+        (keydown)="handleKeydown($event)"
+        (blur)="handleBlur()">
+      </div>
+    </div>
+
+    @if (showMinMaxLabels()) {
+      <div class="ea-slider__minmax">
+        <span class="ea-slider__minmax-label">{{ formatValue()(min()) }}</span>
+        <span class="ea-slider__minmax-label">{{ formatValue()(max()) }}</span>
+      </div>
+    }
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-slider-field__message ea-slider-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-slider-field__message ea-slider-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
+</div>

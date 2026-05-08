@@ -58,12 +58,15 @@ const SECTIONS = [
   { name: 'drawer', heading: 'Drawer', prepare: showDrawersInline },
   { name: 'dropdown', heading: 'Dropdown', prepare: openDropdownMenus },
   { name: 'eagami-wordmark', heading: 'Eagami Wordmark' },
+  { name: 'empty-state', heading: 'Empty State' },
   { name: 'input', heading: 'Input' },
   { name: 'menu', heading: 'Menu', prepare: openMenusInline },
   { name: 'paginator', heading: 'Paginator' },
   { name: 'progress-bar', heading: 'Progress Bar', prepare: pauseIndeterminateProgress },
   { name: 'radio', heading: 'Radio' },
+  { name: 'segmented', heading: 'Segmented' },
   { name: 'skeleton', heading: 'Skeleton' },
+  { name: 'slider', heading: 'Slider' },
   { name: 'spinner', heading: 'Spinner' },
   { name: 'switch', heading: 'Switch' },
   { name: 'tabs', heading: 'Tabs' },
@@ -477,12 +480,11 @@ async function waitForServer(timeout = 120_000) {
 }
 
 function findSection(heading) {
-  const detailsEls = document.querySelectorAll('.sandbox-details');
-  for (const d of detailsEls) {
-    const summary = d.querySelector('.sandbox-summary');
-    if (summary && summary.textContent.trim() === heading) {
-      d.open = true;
-      return d.querySelector('.sandbox-section');
+  const cards = document.querySelectorAll('.sandbox-card');
+  for (const card of cards) {
+    const header = card.querySelector('[eaCardHeader]');
+    if (header && header.textContent.trim() === heading) {
+      return card;
     }
   }
   return null;
@@ -629,6 +631,31 @@ async function main() {
     await page.setViewport(VIEWPORT);
     await page.goto(URL, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready);
+
+    // Hide sandbox card headers and dividers so screenshots show only the
+    // demo body inside each card's chrome (rounded corners, shadow, padding).
+    // Pin a consistent min-width so cards with fluid content (sliders, etc.)
+    // render at the same scale as cards with intrinsically wide content.
+    // Restore the v0.9.0 h2 sizing/margins used by the documented screenshots
+    // so newly captured images match the established visual baseline.
+    await page.addStyleTag({
+      content: `
+        .sandbox-card .ea-card__header,
+        .sandbox-card .ea-card__divider {
+          display: none !important;
+        }
+        .sandbox-card {
+          min-width: 590px !important;
+        }
+        .sandbox-section h2 {
+          font-size: 14px !important;
+          margin: 24px 0 8px !important;
+        }
+        .sandbox-section h2:first-child {
+          margin-top: 0 !important;
+        }
+      `,
+    });
 
     let captured = 0;
     let skipped = 0;

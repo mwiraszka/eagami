@@ -107,9 +107,10 @@ describe('DatePickerComponent', () => {
 
   describe('Selection', () => {
     it('selects a day on click', () => {
+      getTrigger().click();
+      fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
-      getTrigger().click();
       fixture.detectChanges();
 
       findDayCell(15).click();
@@ -123,11 +124,12 @@ describe('DatePickerComponent', () => {
     });
 
     it('emits changed on selection', () => {
-      component.viewYear.set(2026);
-      component.viewMonth.set(3);
       const spy = jest.fn();
       component.changed.subscribe(spy);
       getTrigger().click();
+      fixture.detectChanges();
+      component.viewYear.set(2026);
+      component.viewMonth.set(3);
       fixture.detectChanges();
 
       findDayCell(10).click();
@@ -174,10 +176,10 @@ describe('DatePickerComponent', () => {
 
   describe('Navigation', () => {
     it('navigates to the previous month', () => {
-      component.viewYear.set(2026);
-      component.viewMonth.set(3);
       getTrigger().click();
       fixture.detectChanges();
+      component.viewYear.set(2026);
+      component.viewMonth.set(3);
 
       component.goToPrevMonth();
 
@@ -220,9 +222,10 @@ describe('DatePickerComponent', () => {
   describe('Min and max dates', () => {
     it('marks days before minDate as disabled', () => {
       fixture.componentRef.setInput('minDate', new Date(2026, 3, 10));
+      getTrigger().click();
+      fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
-      getTrigger().click();
       fixture.detectChanges();
 
       expect(findDayCell(5).disabled).toBe(true);
@@ -231,9 +234,10 @@ describe('DatePickerComponent', () => {
 
     it('marks days after maxDate as disabled', () => {
       fixture.componentRef.setInput('maxDate', new Date(2026, 3, 10));
+      getTrigger().click();
+      fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
-      getTrigger().click();
       fixture.detectChanges();
 
       expect(findDayCell(5).disabled).toBe(false);
