@@ -71,7 +71,7 @@
     "jest-preset-angular": "16.1.4",
     "ng-packagr": "21.2.3",
     "prettier": "3.8.3",
-    "puppeteer": "24.42.0",
+    "puppeteer": "24.43.0",
     "rxjs": "7.8.2",
     "storybook": "10.3.5",
     "ts-node": "10.9.2",
