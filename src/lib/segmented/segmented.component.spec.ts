@@ -14,9 +14,8 @@ describe('SegmentedComponent', () => {
   let component: SegmentedComponent;
 
   function getOptions(): HTMLButtonElement[] {
-    return Array.from(
-      fixture.nativeElement.querySelectorAll<HTMLButtonElement>('.ea-segmented__option'),
-    );
+    const root = fixture.nativeElement as HTMLElement;
+    return Array.from(root.querySelectorAll<HTMLButtonElement>('.ea-segmented__option'));
   }
 
   beforeEach(async () => {
