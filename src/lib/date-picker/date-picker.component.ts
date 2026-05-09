@@ -4,8 +4,11 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Injector,
+  afterNextRender,
   computed,
   forwardRef,
+  inject,
   input,
   model,
   output,
@@ -67,6 +70,7 @@ interface CalendarDay {
 export class DatePickerComponent implements ControlValueAccessor {
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
+  private readonly injector = inject(Injector);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
@@ -224,7 +228,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.viewMonth.set(current.getMonth());
     this.focusedDate.set(this.startOfDay(current));
     this.isOpen.set(true);
-    queueMicrotask(() => this.focusFocusedDayCell());
+    afterNextRender(() => this.focusFocusedDayCell(), { injector: this.injector });
   }
 
   /** Closes the calendar popover. */

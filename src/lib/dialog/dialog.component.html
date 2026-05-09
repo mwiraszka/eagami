@@ -1,6 +1,7 @@
 <dialog
   #dialogEl
   class="ea-dialog"
+  [id]="id()"
   [attr.aria-label]="ariaLabel() ?? null"
   [attr.aria-labelledby]="!ariaLabel() ? id() + '-header' : null"
   (click)="handleBackdropClick($event)"

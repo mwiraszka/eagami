@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Injector,
+  afterNextRender,
   computed,
   inject,
   input,
@@ -30,7 +32,7 @@ export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-e
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-  private readonly elRef = inject(ElementRef<HTMLElement>);
+  private readonly injector = inject(Injector);
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   readonly placement = input<MenuPlacement>('bottom-start');
@@ -90,7 +92,7 @@ export class MenuComponent {
     this.triggerRect.set(triggerEl.getBoundingClientRect());
     this.open.set(true);
     this.opened.emit();
-    queueMicrotask(() => this.focusFirstItem());
+    afterNextRender(() => this.focusFirstItem(), { injector: this.injector });
   }
 
   /** Closes the menu if it is open. */
