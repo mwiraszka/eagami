@@ -54,7 +54,9 @@
           (keydown)="onCanvasKeydown($event)"></canvas>
 
         @if (!isLoading()) {
-          <div class="ea-avatar-editor__canvas-overlay">
+          <div
+            class="ea-avatar-editor__canvas-overlay"
+            [class.ea-avatar-editor__canvas-overlay--on-light]="!isImageDark()">
             <ea-icon-camera class="ea-avatar-editor__overlay-icon" />
             <span>Change photo</span>
           </div>

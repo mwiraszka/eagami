@@ -10,12 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Support manual theme override via `<html data-theme="light">` or `<html data-theme="dark">` so consumers can ship their own dark/light toggles independent of the OS `prefers-color-scheme` setting
+- New `--color-bg-elevated` semantic token for surfaces that float above the page (Card variant="elevated", Dialog, Drawer). Resolves to the page background in light mode and to a step-lighter shade in dark mode so elevated surfaces remain visibly distinct from the page
 
 ### Fixed
 
-- Deepen `--shadow-*` token alpha values in dark mode so elevated cards and overlays retain a perceptible boundary against dark backgrounds
+- Restore visibility of `Card` variant="elevated", `Dialog`, and `Drawer` in dark mode — they previously shared the same near-black background as the page, with shadows that vanished against it. Switched these surfaces to the new `--color-bg-elevated` token and deepened `--shadow-*` token alpha values for additional depth
 - Switch the single-color brand icons (`GithubIconComponent`, `AppleIconComponent`, `FacebookIconComponent`, `XTwitterIconComponent`) to `currentColor` so they inherit the surrounding text color and remain legible in dark mode; opt back in to the original brand color via the new `[brand]` input
 - Add dark-mode overrides for `--color-{success,warning,error,info}-{subtle,muted}` so `AlertComponent`, `ToastComponent`, and other status surfaces darken enough for primary text to remain readable against them
+- `AvatarEditorComponent` "Change photo" hover overlay now picks white or black ink based on the loaded photo's average luminance instead of the active theme, so the affordance stays readable on both bright and dark images
 
 ## [1.0.0] - 2026-05-09
 
