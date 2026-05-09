@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-05-09
+
+### Added
+
+- Introduce shared `SelectOption` interface (`{ value, label, disabled? }`) used by `AutocompleteComponent`, `DropdownComponent`, and `SegmentedComponent` for their `options` input, replacing the previous per-component option types
+- Add `id` input to `RadioGroupComponent`, applied to the `[role=radiogroup]` host so external `aria-labelledby`/`aria-controls` references can target the group
+
+### Changed
+
+- **Breaking:** Rename the `error` input to `errorMsg` on `InputComponent`, `TextareaComponent`, `CodeInputComponent`, `DatePickerComponent`, `DropdownComponent`, `AutocompleteComponent`, and `SliderComponent`. Migration: `<ea-input error="…" />` becomes `<ea-input errorMsg="…" />`
+- **Breaking:** `CardComponent` now reads its header and footer from standard `[slot=header]` and `[slot=footer]` content slots rather than the `[eaCardHeader]` and `[eaCardFooter]` attribute directives. Migration: `<span eaCardHeader>…</span>` becomes `<span slot="header">…</span>`. This aligns Card with `DialogComponent` and `DrawerComponent`, which already use the slot pattern
+- **Breaking:** Replace `AutocompleteOption`, `DropdownOption`, and `SegmentedOption` types with the single shared `SelectOption` interface. The shape is unchanged; update import sites accordingly
+- **Breaking:** Rename `inputFocused`/`inputBlurred` outputs to `focused`/`blurred` on `InputComponent`, and `textareaFocused`/`textareaBlurred` to `focused`/`blurred` on `TextareaComponent`, matching native DOM event names
+
+### Removed
+
+- **Breaking:** Remove the `status` input (`'default' | 'error' | 'success'`) from `InputComponent`, `TextareaComponent`, and `CodeInputComponent` along with the `success` visual variant. Error state is now driven solely by the `errorMsg` input
+- **Breaking:** Remove the `primary` variant from `TagComponent`. Tags now cover semantic statuses only (`default | success | warning | error | info`); use a styled element or `BadgeComponent` for brand-colored chips
+
 ## [0.12.0] - 2026-05-08
 
 ### Added
