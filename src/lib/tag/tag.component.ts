@@ -10,7 +10,7 @@ import {
 
 import { XIconComponent } from '../icons/x.component';
 
-export type TagVariant = 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
+export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 export type TagSize = 'sm' | 'md' | 'lg';
 
 @Component({

@@ -13,7 +13,7 @@ const meta: Meta<TagComponent> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary', 'success', 'warning', 'error', 'info'],
+      options: ['default', 'success', 'warning', 'error', 'info'],
     },
     size: {
       control: 'select',
@@ -47,7 +47,6 @@ export const AllVariants: Story = {
     template: `
       <div class="story-row story-row--sm">
         <ea-tag variant="default">Default</ea-tag>
-        <ea-tag variant="primary">Primary</ea-tag>
         <ea-tag variant="success">Success</ea-tag>
         <ea-tag variant="warning">Warning</ea-tag>
         <ea-tag variant="error">Error</ea-tag>
@@ -74,7 +73,6 @@ export const RemovableVariants: Story = {
     template: `
       <div class="story-row story-row--sm">
         <ea-tag variant="default" [removable]="true">Default</ea-tag>
-        <ea-tag variant="primary" [removable]="true">Primary</ea-tag>
         <ea-tag variant="success" [removable]="true">Success</ea-tag>
         <ea-tag variant="warning" [removable]="true">Warning</ea-tag>
         <ea-tag variant="error" [removable]="true">Error</ea-tag>

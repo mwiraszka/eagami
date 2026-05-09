@@ -591,11 +591,11 @@ Variants: `underline` | `filled`. Sizes: `sm` | `md` | `lg`.
 <details>
 <summary><strong>Tag</strong> — inline label with optional remove button</summary>
 
-Variants: `default` | `primary` | `success` | `warning` | `error` | `info`. Sizes: `sm` | `md` | `lg`.
+Variants: `default` | `success` | `warning` | `error` | `info`. Sizes: `sm` | `md` | `lg`.
 
 ```html
-<ea-tag variant="primary">TypeScript</ea-tag>
-<ea-tag variant="success" [removable]="true" (removed)="onRemove()">Active</ea-tag>
+<ea-tag variant="success">Active</ea-tag>
+<ea-tag variant="info" [removable]="true" (removed)="onRemove()">TypeScript</ea-tag>
 ```
 
 <img src="docs/images/tag.png" alt="Tag component" width="560" />
