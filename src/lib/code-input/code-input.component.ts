@@ -32,11 +32,13 @@ export class CodeInputComponent implements ControlValueAccessor {
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
+  readonly placeholder = input<string>('');
   readonly length = input<number>(6);
   readonly size = input<CodeInputSize>('md');
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
+  readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly id = input<string>(`ea-code-input-${Math.random().toString(36).slice(2, 9)}`);
 
@@ -86,6 +88,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   }
 
   handleInput(event: Event, index: number): void {
+    if (this.readonly()) return;
     const input = event.target as HTMLInputElement;
     const char = input.value.replace(/[^0-9]/g, '').slice(-1);
     input.value = char;
@@ -111,6 +114,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     const inputs = this.digitEls();
 
     if (event.key === 'Backspace') {
+      if (this.readonly()) return;
       event.preventDefault();
       const current = this.value();
       const chars = current.padEnd(this.length(), ' ').split('');
@@ -136,6 +140,7 @@ export class CodeInputComponent implements ControlValueAccessor {
 
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
+    if (this.readonly()) return;
     const pasted = (event.clipboardData?.getData('text') ?? '').replace(/[^0-9]/g, '');
     if (!pasted) return;
 

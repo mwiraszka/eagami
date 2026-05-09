@@ -63,6 +63,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly placeholder = input<string>('Select date…');
   readonly size = input<DatePickerSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
@@ -195,7 +196,7 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   // Handlers
   toggle(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     if (this.isOpen()) {
       this.close();
     } else {
@@ -204,7 +205,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   open(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     const current = this.value() ?? new Date();
     this.viewYear.set(current.getFullYear());
     this.viewMonth.set(current.getMonth());
@@ -215,6 +216,10 @@ export class DatePickerComponent implements ControlValueAccessor {
   close(): void {
     this.isOpen.set(false);
     this.focusedDate.set(null);
+  }
+
+  focus(): void {
+    this.triggerEl()?.nativeElement.focus();
   }
 
   selectDay(day: CalendarDay): void {
@@ -230,7 +235,7 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     this.value.set(null);
     this.onChange(null);
     this.onTouched();

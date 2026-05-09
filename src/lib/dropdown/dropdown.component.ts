@@ -47,6 +47,7 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly options = input<SelectOption[]>([]);
   readonly size = input<DropdownSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
@@ -131,7 +132,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   // Handlers
   toggle(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
       const idx = this.options().findIndex(o => o.value === this.value());
@@ -140,7 +141,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   select(option: SelectOption): void {
-    if (option.disabled || this.isDisabled()) return;
+    if (option.disabled || this.isDisabled() || this.readonly()) return;
     this.value.set(option.value);
     this.onChange(option.value);
     this.onTouched();
@@ -153,8 +154,12 @@ export class DropdownComponent implements ControlValueAccessor {
     this.focusedIndex.set(-1);
   }
 
+  focus(): void {
+    this.elRef()?.nativeElement.focus();
+  }
+
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
 
     switch (event.key) {
       case 'Enter':
