@@ -8,17 +8,9 @@ Every component is standalone, signal-based, and fully themed via design tokens.
 
 ## Why @eagami/ui?
 
-**Approx. component sizes (gzipped)¹**
+**Bundle size**
 
-| Component | **@eagami/ui** | Angular Material | PrimeNG | ng-bootstrap | ng-zorro |
-|---|---|---|---|---|---|
-| Button | ~2 KB | ~12 KB | ~8 KB | ~10 KB | ~18 KB |
-| Input | ~4 KB | ~25 KB | ~14 KB | ~20 KB | ~35 KB |
-| Checkbox | ~2 KB | ~15 KB | ~9 KB | ~12 KB | ~22 KB |
-| Dropdown / Select | ~4 KB | ~30 KB | ~20 KB | ~25 KB | ~40 KB |
-| Dialog / Modal | ~2 KB | ~20 KB | ~15 KB | ~18 KB | ~30 KB |
-
-> ¹ Approximate — depends on configuration, tree-shaking, and Angular version. @eagami/ui sizes measured from production build.
+The complete library — every component, directive, service, and icon — is **70 KB gzipped** (45 KB Brotli). All exports are tree-shakeable, so consumers ship only the components they actually import; a typical app importing a handful of components ends up in single-digit KB.
 
 | | **@eagami/ui** | Angular Material | PrimeNG | ng-bootstrap | ng-zorro |
 |---|---|---|---|---|---|
@@ -26,8 +18,9 @@ Every component is standalone, signal-based, and fully themed via design tokens.
 | CSS custom property theming | Yes | Partial (MDC) | Yes | No (Sass vars) | No |
 | Signals-first API | Yes | Partial | No | No | No |
 | `OnPush` by default | Yes | Partial | No | No | No |
-| Runtime dependencies | 0 | CDK + animations | PrimeIcons² | Bootstrap CSS | CDK |
-> ² PrimeNG components are tree-shakable but PrimeIcons font (~50 KB) is typically included globally.
+| Runtime dependencies | 0 | CDK + animations | PrimeIcons¹ | Bootstrap CSS | CDK |
+
+> ¹ PrimeNG components are tree-shakable but PrimeIcons font (~50 KB) is typically included globally.
 
 ## Features
 
