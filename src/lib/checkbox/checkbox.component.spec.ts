@@ -137,5 +137,81 @@ describe('CheckboxComponent', () => {
       fixture.detectChanges();
       expect(getNativeInput().required).toBe(true);
     });
+
+    it('sets aria-required on the native input', () => {
+      fixture.componentRef.setInput('required', true);
+      fixture.detectChanges();
+      expect(getNativeInput().getAttribute('aria-required')).toBe('true');
+    });
+  });
+
+  describe('Hint and error messages', () => {
+    it('renders nothing by default', () => {
+      expect(
+        fixture.nativeElement.querySelector('.ea-checkbox-field__message'),
+      ).toBeNull();
+    });
+
+    it('renders the hint when provided', () => {
+      fixture.componentRef.setInput('hint', 'Optional input');
+      fixture.detectChanges();
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-checkbox-field__message--hint',
+      );
+      expect(hint.textContent.trim()).toBe('Optional input');
+    });
+
+    it('renders the error and hides the hint when both are set', () => {
+      fixture.componentRef.setInput('hint', 'Hint text');
+      fixture.componentRef.setInput('errorMsg', 'Required field');
+      fixture.detectChanges();
+      const error = fixture.nativeElement.querySelector(
+        '.ea-checkbox-field__message--error',
+      );
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-checkbox-field__message--hint',
+      );
+      expect(error.textContent.trim()).toBe('Required field');
+      expect(hint).toBeNull();
+    });
+
+    it('marks the input aria-invalid when errorMsg is set', () => {
+      fixture.componentRef.setInput('errorMsg', 'Bad');
+      fixture.detectChanges();
+      expect(getNativeInput().getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('wires aria-describedby to the error id', () => {
+      fixture.componentRef.setInput('errorMsg', 'Bad');
+      fixture.detectChanges();
+      const errorEl = fixture.nativeElement.querySelector(
+        '.ea-checkbox-field__message--error',
+      );
+      expect(getNativeInput().getAttribute('aria-describedby')).toBe(errorEl.id);
+    });
+
+    it('wires aria-describedby to the hint id when no error', () => {
+      fixture.componentRef.setInput('hint', 'Hint text');
+      fixture.detectChanges();
+      const hintEl = fixture.nativeElement.querySelector(
+        '.ea-checkbox-field__message--hint',
+      );
+      expect(getNativeInput().getAttribute('aria-describedby')).toBe(hintEl.id);
+    });
+  });
+
+  describe('Aria label fallback', () => {
+    it('forwards ariaLabel to the input when no visible label', () => {
+      fixture.componentRef.setInput('aria-label', 'Toggle option');
+      fixture.detectChanges();
+      expect(getNativeInput().getAttribute('aria-label')).toBe('Toggle option');
+    });
+
+    it('does not set aria-label when visible label is present', () => {
+      fixture.componentRef.setInput('label', 'Visible');
+      fixture.componentRef.setInput('aria-label', 'Should not be used');
+      fixture.detectChanges();
+      expect(getNativeInput().getAttribute('aria-label')).toBeNull();
+    });
   });
 });

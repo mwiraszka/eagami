@@ -74,6 +74,22 @@ export const Large: Story = {
   args: { size: 'lg' },
 };
 
+export const WithLabel: Story = {
+  args: { label: 'View' },
+};
+
+export const Required: Story = {
+  args: { label: 'Theme', required: true },
+};
+
+export const WithHint: Story = {
+  args: { label: 'View', hint: 'Switch how items are displayed' },
+};
+
+export const WithError: Story = {
+  args: { label: 'Layout', errorMsg: 'Layout selection is required' },
+};
+
 export const AllSizes: Story = {
   render: () => ({
     props: { viewOptions },

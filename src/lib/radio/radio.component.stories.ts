@@ -83,6 +83,59 @@ export const Disabled: Story = {
   }),
 };
 
+export const WithLabel: Story = {
+  render: args => ({
+    props: args,
+    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
+    template: `
+      <ea-radio-group label="Subscription plan" [size]="size" value="pro">
+        <ea-radio value="free" label="Free"></ea-radio>
+        <ea-radio value="pro" label="Pro"></ea-radio>
+        <ea-radio value="enterprise" label="Enterprise"></ea-radio>
+      </ea-radio-group>
+    `,
+  }),
+};
+
+export const Required: Story = {
+  render: args => ({
+    props: args,
+    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
+    template: `
+      <ea-radio-group label="Delivery speed" [required]="true" [size]="size">
+        <ea-radio value="standard" label="Standard"></ea-radio>
+        <ea-radio value="express" label="Express"></ea-radio>
+      </ea-radio-group>
+    `,
+  }),
+};
+
+export const WithHint: Story = {
+  render: args => ({
+    props: args,
+    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
+    template: `
+      <ea-radio-group label="Delivery speed" hint="Choose how fast you want it" [size]="size">
+        <ea-radio value="standard" label="Standard"></ea-radio>
+        <ea-radio value="express" label="Express"></ea-radio>
+      </ea-radio-group>
+    `,
+  }),
+};
+
+export const WithError: Story = {
+  render: args => ({
+    props: args,
+    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
+    template: `
+      <ea-radio-group label="Account type" errorMsg="Please choose an account type" [size]="size">
+        <ea-radio value="personal" label="Personal"></ea-radio>
+        <ea-radio value="business" label="Business"></ea-radio>
+      </ea-radio-group>
+    `,
+  }),
+};
+
 export const AllSizes: Story = {
   render: () => ({
     moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },

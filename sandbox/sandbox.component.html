@@ -432,6 +432,21 @@
               label="Indeterminate"
               [indeterminate]="true" />
           </div>
+
+          <h2>required</h2>
+          <ea-checkbox
+            label="I agree to the terms"
+            [required]="true" />
+
+          <h2>with hint</h2>
+          <ea-checkbox
+            label="Subscribe to updates"
+            hint="We send a monthly digest, no spam" />
+
+          <h2>with error</h2>
+          <ea-checkbox
+            label="Accept terms"
+            errorMsg="You must accept the terms to continue" />
         </section>
       </ea-card>
     }
@@ -1153,6 +1168,46 @@
               value="b"
               label="Option B" />
           </ea-radio-group>
+
+          <h2>with label</h2>
+          <ea-radio-group
+            label="Subscription plan"
+            value="pro">
+            <ea-radio
+              value="free"
+              label="Free" />
+            <ea-radio
+              value="pro"
+              label="Pro" />
+            <ea-radio
+              value="enterprise"
+              label="Enterprise" />
+          </ea-radio-group>
+
+          <h2>required with hint</h2>
+          <ea-radio-group
+            label="Delivery speed"
+            hint="Choose how fast you want it"
+            [required]="true">
+            <ea-radio
+              value="standard"
+              label="Standard" />
+            <ea-radio
+              value="express"
+              label="Express" />
+          </ea-radio-group>
+
+          <h2>with error</h2>
+          <ea-radio-group
+            label="Account type"
+            errorMsg="Please choose an account type">
+            <ea-radio
+              value="personal"
+              label="Personal" />
+            <ea-radio
+              value="business"
+              label="Business" />
+          </ea-radio-group>
         </section>
       </ea-card>
     }
@@ -1194,6 +1249,25 @@
           <h2>disabled</h2>
           <ea-segmented
             [disabled]="true"
+            [options]="segmentedViewOptions" />
+
+          <h2>with label</h2>
+          <ea-segmented
+            label="View"
+            [options]="segmentedViewOptions"
+            [(value)]="segmentedValue" />
+
+          <h2>required with hint</h2>
+          <ea-segmented
+            label="Theme"
+            hint="Affects the entire app"
+            [required]="true"
+            [options]="segmentedThemeOptions" />
+
+          <h2>with error</h2>
+          <ea-segmented
+            label="Layout"
+            errorMsg="Layout selection is required"
             [options]="segmentedViewOptions" />
         </section>
       </ea-card>
@@ -1341,6 +1415,21 @@
               [disabled]="true"
               [checked]="true" />
           </div>
+
+          <h2>required</h2>
+          <ea-switch
+            label="Confirm consent"
+            [required]="true" />
+
+          <h2>with hint</h2>
+          <ea-switch
+            label="Marketing emails"
+            hint="You can unsubscribe at any time" />
+
+          <h2>with error</h2>
+          <ea-switch
+            label="Two-factor auth"
+            errorMsg="Two-factor authentication must be enabled" />
         </section>
       </ea-card>
     }

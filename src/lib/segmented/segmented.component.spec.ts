@@ -122,4 +122,63 @@ describe('SegmentedComponent', () => {
       expect(component.isDisabled()).toBe(true);
     });
   });
+
+  describe('Form-field plumbing', () => {
+    function getGroupEl(): HTMLElement {
+      return fixture.nativeElement.querySelector('[role="radiogroup"]');
+    }
+
+    it('renders no field label by default', () => {
+      expect(
+        fixture.nativeElement.querySelector('.ea-segmented-field__label'),
+      ).toBeNull();
+    });
+
+    it('renders the label and links it via aria-labelledby', () => {
+      fixture.componentRef.setInput('label', 'View');
+      fixture.detectChanges();
+
+      const labelEl = fixture.nativeElement.querySelector('.ea-segmented-field__label');
+
+      expect(labelEl.textContent.trim()).toBe('View');
+      expect(getGroupEl().getAttribute('aria-labelledby')).toBe(labelEl.id);
+    });
+
+    it('renders the hint and wires aria-describedby', () => {
+      fixture.componentRef.setInput('hint', 'Pick a layout');
+      fixture.detectChanges();
+
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-segmented-field__message--hint',
+      );
+
+      expect(hint.textContent.trim()).toBe('Pick a layout');
+      expect(getGroupEl().getAttribute('aria-describedby')).toBe(hint.id);
+    });
+
+    it('renders the error and hides the hint when both are set', () => {
+      fixture.componentRef.setInput('hint', 'Hint');
+      fixture.componentRef.setInput('errorMsg', 'Pick something');
+      fixture.detectChanges();
+
+      const error = fixture.nativeElement.querySelector(
+        '.ea-segmented-field__message--error',
+      );
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-segmented-field__message--hint',
+      );
+
+      expect(error.textContent.trim()).toBe('Pick something');
+      expect(hint).toBeNull();
+      expect(getGroupEl().getAttribute('aria-describedby')).toBe(error.id);
+      expect(getGroupEl().getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('sets aria-required when required is true', () => {
+      fixture.componentRef.setInput('required', true);
+      fixture.detectChanges();
+
+      expect(getGroupEl().getAttribute('aria-required')).toBe('true');
+    });
+  });
 });
