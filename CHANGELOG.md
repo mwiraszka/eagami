@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2026-05-09
 
+> See [MIGRATION.md](MIGRATION.md) for a step-by-step upgrade guide from v0.x.
+
 ### Added
 
 - Introduce shared `SelectOption` interface (`{ value, label, disabled? }`) used by `AutocompleteComponent`, `DropdownComponent`, and `SegmentedComponent` for their `options` input, replacing the previous per-component option types

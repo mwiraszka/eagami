@@ -79,6 +79,8 @@ export class MyComponent {
 
 No modules to register, no providers to configure. Every component works the same way — import it, drop it in your template.
 
+> **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md) for the full list of breaking changes and a find/replace table that covers most upgrades in one pass.
+
 ## Components
 
 <details>
