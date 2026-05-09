@@ -80,12 +80,57 @@ export class MenuComponent {
     this.triggerRect.set(triggerEl.getBoundingClientRect());
     this.open.set(true);
     this.opened.emit();
+    queueMicrotask(() => this.focusFirstItem());
   }
 
   close(): void {
     if (!this.open()) return;
     this.open.set(false);
     this.closed.emit();
+  }
+
+  private getEnabledItems(): HTMLButtonElement[] {
+    const list = this.listEl()?.nativeElement;
+    if (!list) return [];
+    return Array.from(
+      list.querySelectorAll<HTMLButtonElement>('[role="menuitem"]:not([disabled])'),
+    );
+  }
+
+  private focusFirstItem(): void {
+    this.getEnabledItems()[0]?.focus();
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (!this.open()) return;
+    const items = this.getEnabledItems();
+    if (items.length === 0) return;
+
+    const active = document.activeElement as HTMLElement | null;
+    const current = active ? items.indexOf(active as HTMLButtonElement) : -1;
+    let next = -1;
+
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        next = current < items.length - 1 ? current + 1 : 0;
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        next = current > 0 ? current - 1 : items.length - 1;
+        break;
+      case 'Home':
+        event.preventDefault();
+        next = 0;
+        break;
+      case 'End':
+        event.preventDefault();
+        next = items.length - 1;
+        break;
+    }
+
+    if (next >= 0) items[next].focus();
   }
 
   @HostListener('document:click', ['$event'])
