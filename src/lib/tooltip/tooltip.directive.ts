@@ -60,7 +60,7 @@ export class TooltipDirective implements OnDestroy {
     this.tooltipEl!.textContent = this.eaTooltip();
 
     this.renderer.appendChild(document.body, this.tooltipEl);
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.tooltipId);
+    this.appendDescribedBy();
     this.positionTooltip();
   }
 
@@ -68,7 +68,26 @@ export class TooltipDirective implements OnDestroy {
     if (this.tooltipEl) {
       this.tooltipEl.remove();
       this.tooltipEl = null;
-      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
+      this.removeDescribedBy();
+    }
+  }
+
+  private appendDescribedBy(): void {
+    const native = this.el.nativeElement;
+    const existing = (native.getAttribute('aria-describedby') ?? '').trim();
+    const tokens = existing ? existing.split(/\s+/) : [];
+    if (!tokens.includes(this.tooltipId)) tokens.push(this.tooltipId);
+    this.renderer.setAttribute(native, 'aria-describedby', tokens.join(' '));
+  }
+
+  private removeDescribedBy(): void {
+    const native = this.el.nativeElement;
+    const existing = (native.getAttribute('aria-describedby') ?? '').trim();
+    const tokens = existing.split(/\s+/).filter(t => t && t !== this.tooltipId);
+    if (tokens.length) {
+      this.renderer.setAttribute(native, 'aria-describedby', tokens.join(' '));
+    } else {
+      this.renderer.removeAttribute(native, 'aria-describedby');
     }
   }
 
