@@ -50,6 +50,18 @@ export const Large: Story = {
   args: { size: 'lg' },
 };
 
+export const Required: Story = {
+  args: { required: true, label: 'Confirm consent' },
+};
+
+export const WithHint: Story = {
+  args: { hint: 'You can unsubscribe at any time' },
+};
+
+export const WithError: Story = {
+  args: { errorMsg: 'Two-factor authentication must be enabled' },
+};
+
 export const AllSizes: Story = {
   render: () => ({
     template: `

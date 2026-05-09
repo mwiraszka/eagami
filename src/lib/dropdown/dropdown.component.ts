@@ -18,15 +18,17 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
+import { SelectOption } from '../select-option';
 
+/** Visual size of the dropdown trigger. */
 export type DropdownSize = 'sm' | 'md' | 'lg';
 
-export interface DropdownOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
-
+/**
+ * Single-select dropdown with a custom popup list. Supports keyboard
+ * navigation (arrow keys, Enter/Space to select, Escape to close), closes
+ * on outside click or viewport scroll/resize, and integrates with Angular
+ * forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-dropdown',
   imports: [NgClass, ChevronDownIconComponent],
@@ -49,18 +51,20 @@ export class DropdownComponent implements ControlValueAccessor {
   // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('Select…');
-  readonly options = input<DropdownOption[]>([]);
+  readonly options = input<SelectOption[]>([]);
   readonly size = input<DropdownSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-dropdown-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way value binding
   readonly value = model<string>('');
 
   // Outputs
+  /** Fires with the new value when the user selects an option. */
   readonly changed = output<string>();
 
   // Internal state
@@ -75,10 +79,9 @@ export class DropdownComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
-
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly selectedLabel = computed(() => {
     const opt = this.options().find(o => o.value === this.value());
@@ -87,7 +90,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   readonly triggerClasses = computed(() => ({
     [`ea-dropdown__trigger--${this.size()}`]: true,
-    [`ea-dropdown__trigger--${this.resolvedStatus()}`]: true,
+    'ea-dropdown__trigger--error': this.hasError(),
     'ea-dropdown__trigger--open': this.isOpen(),
     'ea-dropdown__trigger--disabled': this.isDisabled(),
   }));
@@ -135,8 +138,9 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   // Handlers
+  /** Toggles the dropdown list between open and closed. */
   toggle(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
       const idx = this.options().findIndex(o => o.value === this.value());
@@ -144,8 +148,9 @@ export class DropdownComponent implements ControlValueAccessor {
     }
   }
 
-  select(option: DropdownOption): void {
-    if (option.disabled || this.isDisabled()) return;
+  /** Programmatically selects the given option, closing the list. */
+  select(option: SelectOption): void {
+    if (option.disabled || this.isDisabled() || this.readonly()) return;
     this.value.set(option.value);
     this.onChange(option.value);
     this.onTouched();
@@ -153,13 +158,19 @@ export class DropdownComponent implements ControlValueAccessor {
     this.close();
   }
 
+  /** Closes the dropdown list without changing the current value. */
   close(): void {
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
   }
 
+  /** Moves keyboard focus to the dropdown trigger. */
+  focus(): void {
+    this.elRef()?.nativeElement.focus();
+  }
+
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
 
     switch (event.key) {
       case 'Enter':

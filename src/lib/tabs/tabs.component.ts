@@ -9,9 +9,17 @@ import {
 
 import { TabComponent } from './tab.component';
 
+/** Visual style of the tab bar. */
 export type TabsVariant = 'underline' | 'filled';
+/** Visual size of the tabs. */
 export type TabsSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Tab bar paired with content panels. Child `ea-tab` components register
+ * themselves automatically and the active panel is shown based on the
+ * `activeTab` two-way binding. Supports keyboard navigation
+ * (arrow keys, Home/End).
+ */
 @Component({
   selector: 'ea-tabs',
   templateUrl: './tabs.component.html',
@@ -26,19 +34,23 @@ export class TabsComponent {
 
   readonly activeTab = model<string>('');
 
-  readonly tabChange = output<string>();
+  /** Fires with the value of the newly active tab. */
+  readonly changed = output<string>();
 
+  /** Registers a child tab so it appears in the tab bar; called automatically by `ea-tab`. */
   registerTab(tab: TabComponent): void {
     this.registeredTabs.update(tabs => [...tabs, tab]);
   }
 
+  /** Removes a previously registered child tab; called automatically by `ea-tab`. */
   unregisterTab(tab: TabComponent): void {
     this.registeredTabs.update(tabs => tabs.filter(t => t !== tab));
   }
 
+  /** Programmatically activates the tab with the given value. */
   selectTab(value: string): void {
     this.activeTab.set(value);
-    this.tabChange.emit(value);
+    this.changed.emit(value);
   }
 
   handleKeydown(event: KeyboardEvent): void {

@@ -4,7 +4,7 @@
   <div
     class="ea-card__header"
     [style.text-align]="headerAlign()">
-    <ng-content select="[eaCardHeader]" />
+    <ng-content select="[slot=header]" />
   </div>
 
   @if (headerDivider()) {
@@ -16,6 +16,6 @@
   </div>
 
   <div class="ea-card__footer">
-    <ng-content select="[eaCardFooter]" />
+    <ng-content select="[slot=footer]" />
   </div>
 </div>

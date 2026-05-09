@@ -51,12 +51,6 @@
   // ---------------------------------------------------------------------------
   // Variants
   // ---------------------------------------------------------------------------
-  &--primary {
-    border-color: var(--color-brand-muted);
-    background-color: var(--color-brand-subtle);
-    color: var(--color-brand-default);
-  }
-
   &--success {
     border-color: var(--color-success-muted);
     background-color: var(--color-success-subtle);

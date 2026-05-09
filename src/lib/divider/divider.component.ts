@@ -7,8 +7,13 @@ import {
   input,
 } from '@angular/core';
 
+/** Orientation of the divider rule. */
 export type DividerOrientation = 'horizontal' | 'vertical';
 
+/**
+ * Thin separator used to visually divide content. Renders horizontally by
+ * default and may include an optional centred label (e.g. "or").
+ */
 @Component({
   selector: 'ea-divider',
   imports: [NgClass],

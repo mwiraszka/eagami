@@ -36,8 +36,8 @@ const meta: Meta<AutocompleteComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
-    optionSelected: { action: 'optionSelected' },
-    valueChanged: { action: 'valueChanged' },
+    selected: { action: 'selected' },
+    changed: { action: 'changed' },
   },
   args: {
     label: 'Country',

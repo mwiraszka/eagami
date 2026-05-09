@@ -15,6 +15,21 @@ const jestConfig: Config = {
   },
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testEnvironment: 'jest-environment-jsdom',
+  collectCoverageFrom: [
+    'src/lib/**/*.{ts,html}',
+    '!src/lib/**/*.stories.ts',
+    '!src/lib/**/*.spec.ts',
+    '!src/lib/icons/**',
+  ],
+  coverageReporters: ['text-summary', 'lcov'],
+  coverageThreshold: {
+    global: {
+      statements: 80,
+      branches: 60,
+      functions: 80,
+      lines: 80,
+    },
+  },
 };
 
 export default jestConfig;

@@ -36,13 +36,14 @@
       [attr.aria-activedescendant]="
         focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
       "
-      [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+      [attr.aria-required]="required() || null"
+      [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
       (input)="handleInput($event)"
-      (focus)="handleFocus()"
-      (blur)="handleBlur()"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
       (keydown)="handleKeydown($event)" />
 
     <span class="ea-autocomplete__suffix">

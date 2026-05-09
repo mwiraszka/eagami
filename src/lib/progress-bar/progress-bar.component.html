@@ -17,6 +17,7 @@
     [attr.aria-valuenow]="indeterminate() ? null : percentageRounded()"
     aria-valuemin="0"
     aria-valuemax="100"
+    [attr.aria-busy]="indeterminate() || null"
     [attr.aria-label]="label() || 'Progress'">
     <div
       class="ea-progress-bar__fill"

@@ -12,8 +12,14 @@ import { CheckIconComponent } from '../icons/check.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
 
+/** Semantic colour scheme of an alert. Drives icon and palette. */
 export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 
+/**
+ * Inline banner for surfacing semantic messages such as success confirmations,
+ * warnings, or errors. Optionally dismissible, with a two-way `visible`
+ * binding and an automatically chosen ARIA role based on severity.
+ */
 @Component({
   selector: 'ea-alert',
   templateUrl: './alert.component.html',
@@ -31,12 +37,19 @@ export class AlertComponent {
   readonly dismissible = input<boolean>(false);
   readonly visible = model<boolean>(true);
 
+  /** Fires when the user dismisses the alert via its close button. */
   readonly dismissed = output<void>();
 
   readonly alertClasses = computed(() => ({
     [`ea-alert--${this.variant()}`]: true,
   }));
 
+  readonly role = computed(() => {
+    const v = this.variant();
+    return v === 'error' || v === 'warning' ? 'alert' : 'status';
+  });
+
+  /** Hides the alert and emits `dismissed`. */
   dismiss(): void {
     this.visible.set(false);
     this.dismissed.emit();

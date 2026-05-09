@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownComponent, DropdownOption } from './dropdown.component';
+import { SelectOption } from '../select-option';
+import { DropdownComponent } from './dropdown.component';
 
 describe('DropdownComponent', () => {
   let fixture: ComponentFixture<DropdownComponent>;
   let component: DropdownComponent;
 
-  const testOptions: DropdownOption[] = [
+  const testOptions: SelectOption[] = [
     { value: 'a', label: 'Alpha' },
     { value: 'b', label: 'Beta' },
     { value: 'c', label: 'Gamma', disabled: true },
@@ -165,7 +166,7 @@ describe('DropdownComponent', () => {
 
   describe('Error and hint', () => {
     it('shows error message when set', () => {
-      fixture.componentRef.setInput('error', 'Required');
+      fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
         '.ea-dropdown-field__message--error',
@@ -184,7 +185,7 @@ describe('DropdownComponent', () => {
 
     it('hides hint when error is set', () => {
       fixture.componentRef.setInput('hint', 'Choose one');
-      fixture.componentRef.setInput('error', 'Required');
+      fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       expect(
         fixture.nativeElement.querySelector('.ea-dropdown-field__message--hint'),

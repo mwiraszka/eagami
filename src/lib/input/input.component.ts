@@ -18,8 +18,9 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
 
+/** Visual size of the input. */
 export type InputSize = 'sm' | 'md' | 'lg';
-export type InputStatus = 'default' | 'error' | 'success';
+/** HTML `type` attribute applied to the underlying `<input>`. */
 export type InputType =
   | 'text'
   | 'email'
@@ -29,6 +30,12 @@ export type InputType =
   | 'tel'
   | 'url';
 
+/**
+ * Single-line text field with label, hint, and error message support.
+ * Includes a built-in show/hide toggle for `password` inputs and integrates
+ * with Angular forms via `ControlValueAccessor`. Prefix and suffix content
+ * can be projected via the `prefix` and `suffix` slots.
+ */
 @Component({
   selector: 'ea-input',
   templateUrl: './input.component.html',
@@ -51,9 +58,8 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   readonly type = input<InputType>('text');
   readonly placeholder = input<string>('');
   readonly size = input<InputSize>('md');
-  readonly status = input<InputStatus>('default');
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
@@ -66,13 +72,15 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   readonly value = model<string>('');
 
   // Internal state
-  readonly focused = signal(false);
+  readonly isFocused = signal(false);
   readonly passwordVisible = signal(false);
   private readonly _formDisabled = signal(false);
 
   // Outputs
-  readonly inputFocused = output<FocusEvent>();
-  readonly inputBlurred = output<FocusEvent>();
+  /** Fires when the input receives focus. */
+  readonly focused = output<FocusEvent>();
+  /** Fires when the input loses focus. */
+  readonly blurred = output<FocusEvent>();
 
   // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
@@ -85,17 +93,14 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
     this.type() === 'password' && this.passwordVisible() ? 'text' : this.type(),
   );
 
-  readonly resolvedStatus = computed<InputStatus>(() =>
-    this.errorMsg() ? 'error' : this.status(),
-  );
-
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly wrapperClasses = computed(() => ({
     [`ea-input-wrapper--${this.size()}`]: true,
-    [`ea-input-wrapper--${this.resolvedStatus()}`]: true,
-    'ea-input-wrapper--focused': this.focused(),
+    'ea-input-wrapper--error': this.hasError(),
+    'ea-input-wrapper--focused': this.isFocused(),
     'ea-input-wrapper--disabled': this.isDisabled(),
     'ea-input-wrapper--readonly': this.readonly(),
   }));
@@ -130,20 +135,22 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   handleFocus(event: FocusEvent): void {
-    this.focused.set(true);
-    this.inputFocused.emit(event);
+    this.isFocused.set(true);
+    this.focused.emit(event);
   }
 
   handleBlur(event: FocusEvent): void {
-    this.focused.set(false);
+    this.isFocused.set(false);
     this.onTouched();
-    this.inputBlurred.emit(event);
+    this.blurred.emit(event);
   }
 
+  /** Toggles the password reveal state for `type="password"` inputs. */
   togglePasswordVisibility(): void {
     this.passwordVisible.update(value => !value);
   }
 
+  /** Moves keyboard focus to the underlying native input element. */
   focus(): void {
     this.inputEl()?.nativeElement.focus();
   }

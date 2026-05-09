@@ -6,7 +6,26 @@
   </div>
 
   @if (title()) {
-    <h2 class="ea-empty-state__title">{{ title() }}</h2>
+    @switch (headingLevel()) {
+      @case ('h2') {
+        <h2 class="ea-empty-state__title">{{ title() }}</h2>
+      }
+      @case ('h3') {
+        <h3 class="ea-empty-state__title">{{ title() }}</h3>
+      }
+      @case ('h4') {
+        <h4 class="ea-empty-state__title">{{ title() }}</h4>
+      }
+      @case ('h5') {
+        <h5 class="ea-empty-state__title">{{ title() }}</h5>
+      }
+      @case ('h6') {
+        <h6 class="ea-empty-state__title">{{ title() }}</h6>
+      }
+      @default {
+        <h2 class="ea-empty-state__title">{{ title() }}</h2>
+      }
+    }
   }
 
   @if (description()) {

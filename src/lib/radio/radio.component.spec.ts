@@ -145,3 +145,73 @@ describe('RadioGroup + Radio', () => {
     });
   });
 });
+
+describe('RadioGroupComponent — form-field plumbing', () => {
+  let fixture: ComponentFixture<RadioGroupComponent>;
+
+  function getGroupEl(): HTMLElement {
+    return fixture.nativeElement.querySelector('[role="radiogroup"]');
+  }
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RadioGroupComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(RadioGroupComponent);
+    fixture.detectChanges();
+  });
+
+  it('renders no field label by default', () => {
+    expect(
+      fixture.nativeElement.querySelector('.ea-radio-group-field__label'),
+    ).toBeNull();
+  });
+
+  it('renders the label and links it via aria-labelledby', () => {
+    fixture.componentRef.setInput('label', 'Plan');
+    fixture.detectChanges();
+
+    const labelEl = fixture.nativeElement.querySelector('.ea-radio-group-field__label');
+
+    expect(labelEl.textContent.trim()).toBe('Plan');
+    expect(getGroupEl().getAttribute('aria-labelledby')).toBe(labelEl.id);
+  });
+
+  it('renders the hint when provided', () => {
+    fixture.componentRef.setInput('hint', 'Pick one');
+    fixture.detectChanges();
+
+    const hint = fixture.nativeElement.querySelector(
+      '.ea-radio-group-field__message--hint',
+    );
+
+    expect(hint.textContent.trim()).toBe('Pick one');
+    expect(getGroupEl().getAttribute('aria-describedby')).toBe(hint.id);
+  });
+
+  it('renders the error and hides the hint when both are set', () => {
+    fixture.componentRef.setInput('hint', 'Hint');
+    fixture.componentRef.setInput('errorMsg', 'Required');
+    fixture.detectChanges();
+
+    const error = fixture.nativeElement.querySelector(
+      '.ea-radio-group-field__message--error',
+    );
+    const hint = fixture.nativeElement.querySelector(
+      '.ea-radio-group-field__message--hint',
+    );
+
+    expect(error.textContent.trim()).toBe('Required');
+    expect(hint).toBeNull();
+    expect(getGroupEl().getAttribute('aria-describedby')).toBe(error.id);
+    expect(getGroupEl().getAttribute('aria-invalid')).toBe('true');
+  });
+
+  it('sets aria-required when required is true', () => {
+    fixture.componentRef.setInput('required', true);
+    fixture.detectChanges();
+
+    expect(getGroupEl().getAttribute('aria-required')).toBe('true');
+  });
+});

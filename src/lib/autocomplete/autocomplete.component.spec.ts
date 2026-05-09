@@ -1,13 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-  AutocompleteComponent,
-  AutocompleteOption,
-  AutocompleteSize,
-} from './autocomplete.component';
+import { SelectOption } from '../select-option';
+import { AutocompleteComponent, AutocompleteSize } from './autocomplete.component';
 
-const FRUITS: AutocompleteOption[] = [
+const FRUITS: SelectOption[] = [
   { value: 'apple', label: 'Apple' },
   { value: 'apricot', label: 'Apricot' },
   { value: 'banana', label: 'Banana' },
@@ -28,27 +25,27 @@ const FRUITS: AutocompleteOption[] = [
       [disabled]="disabled()"
       [required]="required()"
       [hint]="hint()"
-      [error]="error()"
+      [errorMsg]="errorMsg()"
       [minLength]="minLength()"
       [maxResults]="maxResults()"
-      (optionSelected)="onSelected($event)" />
+      (selected)="onSelected($event)" />
   `,
 })
 class TestHostComponent {
   value = signal('');
-  options = signal<AutocompleteOption[]>(FRUITS);
+  options = signal<SelectOption[]>(FRUITS);
   label = signal<string | undefined>(undefined);
   placeholder = signal('');
   size = signal<AutocompleteSize>('md');
   disabled = signal(false);
   required = signal(false);
   hint = signal<string | undefined>(undefined);
-  error = signal<string | undefined>(undefined);
+  errorMsg = signal<string | undefined>(undefined);
   minLength = signal(0);
   maxResults = signal(10);
-  lastSelected: AutocompleteOption | null = null;
+  lastSelected: SelectOption | null = null;
 
-  onSelected(option: AutocompleteOption): void {
+  onSelected(option: SelectOption): void {
     this.lastSelected = option;
   }
 }
@@ -136,7 +133,7 @@ describe('AutocompleteComponent', () => {
     });
 
     it('marks input as aria-invalid when error is set', () => {
-      host.error.set('Required');
+      host.errorMsg.set('Required');
       fixture.detectChanges();
 
       expect(getInput().getAttribute('aria-invalid')).toBe('true');
@@ -332,7 +329,7 @@ describe('AutocompleteComponent', () => {
 
     it('shows the error and hides the hint', () => {
       host.hint.set('Hint text');
-      host.error.set('Required');
+      host.errorMsg.set('Required');
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(

@@ -36,7 +36,7 @@
         variant="elevated"
         class="sandbox-card sandbox-card--accordion"
         [headerDivider]="true">
-        <span eaCardHeader>Accordion</span>
+        <span slot="header">Accordion</span>
         <section class="sandbox-section">
           <h2>single</h2>
           <ea-accordion>
@@ -89,7 +89,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Alert</span>
+        <span slot="header">Alert</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-stack sandbox-stack--md">
@@ -118,7 +118,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Autocomplete</span>
+        <span slot="header">Autocomplete</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-autocomplete
@@ -135,7 +135,7 @@
             placeholder="Framework…" />
           <ea-autocomplete
             label="With error"
-            error="Please select a framework"
+            errorMsg="Please select a framework"
             [options]="autocompleteOptions"
             placeholder="Framework…" />
 
@@ -180,7 +180,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Avatar</span>
+        <span slot="header">Avatar</span>
         <section class="sandbox-section">
           <h2>sizes</h2>
           <div class="sandbox-row">
@@ -224,7 +224,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Avatar Editor</span>
+        <span slot="header">Avatar Editor</span>
         <section class="sandbox-section">
           <h2>circle</h2>
           <div class="sandbox-row sandbox-row--stretch">
@@ -270,7 +270,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Badge</span>
+        <span slot="header">Badge</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-row">
@@ -297,7 +297,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Breadcrumbs</span>
+        <span slot="header">Breadcrumbs</span>
         <section class="sandbox-section">
           <h2>chevron separator</h2>
           <ea-breadcrumbs [items]="breadcrumbItems" />
@@ -319,7 +319,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Button</span>
+        <span slot="header">Button</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-row">
@@ -358,29 +358,29 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Card</span>
+        <span slot="header">Card</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-row sandbox-row--stretch">
             <ea-card variant="elevated">
-              <span eaCardHeader>Elevated</span>
+              <span slot="header">Elevated</span>
               Card with shadow elevation.
             </ea-card>
             <ea-card variant="outlined">
-              <span eaCardHeader>Outlined</span>
+              <span slot="header">Outlined</span>
               Card with border outline.
             </ea-card>
             <ea-card variant="filled">
-              <span eaCardHeader>Filled</span>
+              <span slot="header">Filled</span>
               Card with subtle background.
             </ea-card>
           </div>
 
           <h2>with footer</h2>
           <ea-card variant="outlined">
-            <span eaCardHeader>Card Title</span>
+            <span slot="header">Card Title</span>
             This card has a header, body, and footer with actions.
-            <span eaCardFooter>
+            <span slot="footer">
               <ea-button
                 variant="secondary"
                 size="sm">
@@ -399,7 +399,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Checkbox</span>
+        <span slot="header">Checkbox</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-checkbox
@@ -432,6 +432,21 @@
               label="Indeterminate"
               [indeterminate]="true" />
           </div>
+
+          <h2>required</h2>
+          <ea-checkbox
+            label="I agree to the terms"
+            [required]="true" />
+
+          <h2>with hint</h2>
+          <ea-checkbox
+            label="Subscribe to updates"
+            hint="We send a monthly digest, no spam" />
+
+          <h2>with error</h2>
+          <ea-checkbox
+            label="Accept terms"
+            errorMsg="You must accept the terms to continue" />
         </section>
       </ea-card>
     }
@@ -442,7 +457,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Code Input</span>
+        <span slot="header">Code Input</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-code-input
@@ -453,7 +468,7 @@
           <h2>error</h2>
           <ea-code-input
             label="Verification code"
-            error="Invalid verification code" />
+            errorMsg="Invalid verification code" />
 
           <h2>sizes</h2>
           <ea-code-input
@@ -486,7 +501,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Data Table</span>
+        <span slot="header">Data Table</span>
         <section class="sandbox-section">
           <h2>default</h2>
           <ea-data-table
@@ -524,7 +539,7 @@
               [(page)]="tablePage"
               [(pageSize)]="tablePageSize"
               [pageSizeOptions]="[5, 10, 12]"
-              placement="center"
+              align="center"
               (changed)="onTablePageChange($event)" />
           </ea-data-table>
 
@@ -542,7 +557,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Date Picker</span>
+        <span slot="header">Date Picker</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-date-picker
@@ -558,7 +573,7 @@
               placeholder="Pick a date…" />
             <ea-date-picker
               label="With error"
-              error="This field is required"
+              errorMsg="This field is required"
               placeholder="Pick a date…" />
           </div>
 
@@ -615,7 +630,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Dialog</span>
+        <span slot="header">Dialog</span>
         <section class="sandbox-section">
           <ea-button (clicked)="dialogOpen.set(true)">Open Dialog</ea-button>
 
@@ -644,7 +659,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Divider</span>
+        <span slot="header">Divider</span>
         <section class="sandbox-section">
           <h2>horizontal</h2>
           <ea-divider />
@@ -667,7 +682,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Drawer</span>
+        <span slot="header">Drawer</span>
         <section class="sandbox-section">
           <h2>positions</h2>
           <div class="sandbox-row">
@@ -731,7 +746,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Dropdown</span>
+        <span slot="header">Dropdown</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-dropdown
@@ -749,7 +764,7 @@
               placeholder="Select…" />
             <ea-dropdown
               label="With error"
-              error="This field is required"
+              errorMsg="This field is required"
               [options]="dropdownOptions"
               placeholder="Select…" />
           </div>
@@ -787,7 +802,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Empty State</span>
+        <span slot="header">Empty State</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-empty-state
@@ -825,7 +840,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Eagami Wordmark</span>
+        <span slot="header">Eagami Wordmark</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-stack sandbox-stack--md">
@@ -867,7 +882,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Input</span>
+        <span slot="header">Input</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-input
@@ -882,7 +897,7 @@
             placeholder="Enter text…" />
           <ea-input
             label="With error"
-            error="This field is required"
+            errorMsg="This field is required"
             placeholder="Enter text…" />
 
           <h2>status</h2>
@@ -943,7 +958,7 @@
         variant="elevated"
         class="sandbox-card sandbox-card--menu"
         [headerDivider]="true">
-        <span eaCardHeader>Menu</span>
+        <span slot="header">Menu</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-button
@@ -1011,20 +1026,20 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Paginator</span>
+        <span slot="header">Paginator</span>
         <section class="sandbox-section">
           <h2>default</h2>
           <ea-paginator [totalItems]="100" />
 
-          <h2>placement — left</h2>
+          <h2>align — left</h2>
           <ea-paginator
             [totalItems]="100"
-            placement="left" />
+            align="left" />
 
-          <h2>placement — center</h2>
+          <h2>align — center</h2>
           <ea-paginator
             [totalItems]="100"
-            placement="center" />
+            align="center" />
 
           <h2>many pages</h2>
           <ea-paginator
@@ -1051,7 +1066,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Progress Bar</span>
+        <span slot="header">Progress Bar</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-stack">
@@ -1112,7 +1127,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Radio</span>
+        <span slot="header">Radio</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-radio-group [(value)]="radioValue">
@@ -1153,6 +1168,46 @@
               value="b"
               label="Option B" />
           </ea-radio-group>
+
+          <h2>with label</h2>
+          <ea-radio-group
+            label="Subscription plan"
+            value="pro">
+            <ea-radio
+              value="free"
+              label="Free" />
+            <ea-radio
+              value="pro"
+              label="Pro" />
+            <ea-radio
+              value="enterprise"
+              label="Enterprise" />
+          </ea-radio-group>
+
+          <h2>required with hint</h2>
+          <ea-radio-group
+            label="Delivery speed"
+            hint="Choose how fast you want it"
+            [required]="true">
+            <ea-radio
+              value="standard"
+              label="Standard" />
+            <ea-radio
+              value="express"
+              label="Express" />
+          </ea-radio-group>
+
+          <h2>with error</h2>
+          <ea-radio-group
+            label="Account type"
+            errorMsg="Please choose an account type">
+            <ea-radio
+              value="personal"
+              label="Personal" />
+            <ea-radio
+              value="business"
+              label="Business" />
+          </ea-radio-group>
         </section>
       </ea-card>
     }
@@ -1163,7 +1218,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Segmented</span>
+        <span slot="header">Segmented</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-segmented
@@ -1195,6 +1250,25 @@
           <ea-segmented
             [disabled]="true"
             [options]="segmentedViewOptions" />
+
+          <h2>with label</h2>
+          <ea-segmented
+            label="View"
+            [options]="segmentedViewOptions"
+            [(value)]="segmentedValue" />
+
+          <h2>required with hint</h2>
+          <ea-segmented
+            label="Theme"
+            hint="Affects the entire app"
+            [required]="true"
+            [options]="segmentedThemeOptions" />
+
+          <h2>with error</h2>
+          <ea-segmented
+            label="Layout"
+            errorMsg="Layout selection is required"
+            [options]="segmentedViewOptions" />
         </section>
       </ea-card>
     }
@@ -1205,7 +1279,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Skeleton</span>
+        <span slot="header">Skeleton</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-skeleton-row">
@@ -1232,7 +1306,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Slider</span>
+        <span slot="header">Slider</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-slider
@@ -1275,7 +1349,7 @@
             [showValue]="true" />
           <ea-slider
             label="With error"
-            error="Please pick a value above 50"
+            errorMsg="Please pick a value above 50"
             [value]="20"
             [showValue]="true" />
           <ea-slider
@@ -1293,7 +1367,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Spinner</span>
+        <span slot="header">Spinner</span>
         <section class="sandbox-section">
           <h2>sizes</h2>
           <div class="sandbox-row">
@@ -1311,7 +1385,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Switch</span>
+        <span slot="header">Switch</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-switch
@@ -1341,6 +1415,21 @@
               [disabled]="true"
               [checked]="true" />
           </div>
+
+          <h2>required</h2>
+          <ea-switch
+            label="Confirm consent"
+            [required]="true" />
+
+          <h2>with hint</h2>
+          <ea-switch
+            label="Marketing emails"
+            hint="You can unsubscribe at any time" />
+
+          <h2>with error</h2>
+          <ea-switch
+            label="Two-factor auth"
+            errorMsg="Two-factor authentication must be enabled" />
         </section>
       </ea-card>
     }
@@ -1351,7 +1440,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Tabs</span>
+        <span slot="header">Tabs</span>
         <section class="sandbox-section">
           <h2>underline</h2>
           <ea-tabs activeTab="account">
@@ -1422,12 +1511,11 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Tag</span>
+        <span slot="header">Tag</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-row">
             <ea-tag variant="default">Default</ea-tag>
-            <ea-tag variant="primary">Primary</ea-tag>
             <ea-tag variant="success">Success</ea-tag>
             <ea-tag variant="warning">Warning</ea-tag>
             <ea-tag variant="error">Error</ea-tag>
@@ -1447,11 +1535,6 @@
               variant="default"
               [removable]="true">
               Default
-            </ea-tag>
-            <ea-tag
-              variant="primary"
-              [removable]="true">
-              Primary
             </ea-tag>
             <ea-tag
               variant="success"
@@ -1483,10 +1566,10 @@
               Disabled
             </ea-tag>
             <ea-tag
-              variant="primary"
+              variant="success"
               [removable]="true"
               [disabled]="true">
-              Disabled primary
+              Disabled success
             </ea-tag>
           </div>
         </section>
@@ -1499,7 +1582,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Textarea</span>
+        <span slot="header">Textarea</span>
         <section class="sandbox-section">
           <h2>basic</h2>
           <ea-textarea
@@ -1514,7 +1597,7 @@
             placeholder="Enter text…" />
           <ea-textarea
             label="With error"
-            error="This field is required"
+            errorMsg="This field is required"
             placeholder="Enter text…" />
 
           <h2>sizes</h2>
@@ -1556,7 +1639,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Toast</span>
+        <span slot="header">Toast</span>
         <section class="sandbox-section">
           <h2>variants</h2>
           <div class="sandbox-toast-demo">
@@ -1615,7 +1698,7 @@
         variant="elevated"
         class="sandbox-card"
         [headerDivider]="true">
-        <span eaCardHeader>Tooltip</span>
+        <span slot="header">Tooltip</span>
         <section class="sandbox-section">
           <h2>positions</h2>
           <div class="sandbox-tooltip-grid">

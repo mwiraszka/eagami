@@ -12,13 +12,21 @@ import { ButtonComponent } from '../button/button.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
-export type PaginatorPlacement = 'left' | 'center' | 'right';
+/** Horizontal alignment of paginator controls within their container. */
+export type PaginatorAlign = 'left' | 'center' | 'right';
 
+/** Snapshot of the paginator's page and page size. */
 export interface PaginatorState {
   page: number;
   pageSize: number;
 }
 
+/**
+ * Page navigation control with previous/next buttons, numbered page jumps,
+ * an optional page-size selector, and a range label. Exposes `page` and
+ * `pageSize` as two-way `model()` bindings and emits a single `changed`
+ * event whenever either changes.
+ */
 @Component({
   selector: 'ea-paginator',
   imports: [ButtonComponent, ChevronLeftIconComponent, ChevronRightIconComponent],
@@ -32,12 +40,13 @@ export class PaginatorComponent {
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);
   readonly showPageSizeSelector = input<boolean>(true);
   readonly showRangeLabel = input<boolean>(true);
-  readonly placement = input<PaginatorPlacement>('right');
+  readonly align = input<PaginatorAlign>('right');
   readonly disabled = input<boolean>(false);
 
   readonly page = model<number>(1);
   readonly pageSize = model<number>(10);
 
+  /** Fires when the user changes either the current page or the page size. */
   readonly changed = output<PaginatorState>();
 
   readonly totalPages = computed(() =>
@@ -86,6 +95,7 @@ export class PaginatorComponent {
     return pages;
   });
 
+  /** Navigates to the given page, clamped into the valid range. */
   goToPage(page: number): void {
     if (this.disabled()) return;
     const clamped = Math.max(1, Math.min(page, this.totalPages()));
@@ -94,10 +104,12 @@ export class PaginatorComponent {
     this.changed.emit({ page: clamped, pageSize: this.pageSize() });
   }
 
+  /** Navigates to the previous page if one exists. */
   prevPage(): void {
     if (this.canGoPrev()) this.goToPage(this.page() - 1);
   }
 
+  /** Navigates to the next page if one exists. */
   nextPage(): void {
     if (this.canGoNext()) this.goToPage(this.page() + 1);
   }

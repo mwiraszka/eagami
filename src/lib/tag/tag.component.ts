@@ -10,9 +10,16 @@ import {
 
 import { XIconComponent } from '../icons/x.component';
 
-export type TagVariant = 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
+/** Semantic colour scheme of a tag. */
+export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+/** Visual size of a tag. */
 export type TagSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Inline label commonly used to represent filters, categories, or selected
+ * items. When `removable`, renders a close button that emits `removed`; the
+ * accessible name of that button is configurable via `removeLabel`.
+ */
 @Component({
   selector: 'ea-tag',
   imports: [NgClass, XIconComponent],
@@ -26,7 +33,9 @@ export class TagComponent {
   readonly size = input<TagSize>('md');
   readonly removable = input<boolean>(false);
   readonly disabled = input<boolean>(false);
+  readonly removeLabel = input<string>('Remove');
 
+  /** Fires when the user activates the remove button on a `removable` tag. */
   readonly removed = output<void>();
 
   readonly hostClasses = computed(() => ({

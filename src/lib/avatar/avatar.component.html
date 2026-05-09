@@ -1,7 +1,7 @@
 <div
   class="ea-avatar"
   [ngClass]="hostClasses()"
-  [attr.aria-label]="alt() || null"
+  [attr.aria-label]="alt() || initials() || null"
   role="img">
   @if (showImage()) {
     <img

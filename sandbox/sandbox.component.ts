@@ -3,7 +3,6 @@ import {
   AccordionItemComponent,
   AlertComponent,
   AutocompleteComponent,
-  AutocompleteOption,
   AvatarComponent,
   AvatarEditorComponent,
   AvatarEditorCropEvent,
@@ -21,7 +20,6 @@ import {
   DividerComponent,
   DrawerComponent,
   DropdownComponent,
-  DropdownOption,
   EagamiWordmarkComponent,
   EmptyStateComponent,
   FileIconComponent,
@@ -38,7 +36,7 @@ import {
   RadioGroupComponent,
   SearchIconComponent,
   SegmentedComponent,
-  SegmentedOption,
+  SelectOption,
   SkeletonComponent,
   SliderComponent,
   SpinnerComponent,
@@ -211,7 +209,7 @@ export class SandboxComponent {
   tablePage = signal(1);
   tablePageSize = signal(5);
 
-  autocompleteOptions: AutocompleteOption[] = [
+  autocompleteOptions: SelectOption[] = [
     { value: 'angular', label: 'Angular' },
     { value: 'react', label: 'React' },
     { value: 'vue', label: 'Vue' },
@@ -234,20 +232,20 @@ export class SandboxComponent {
     { label: 'Settings' },
   ];
 
-  dropdownOptions: DropdownOption[] = [
+  dropdownOptions: SelectOption[] = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
     { value: 'cherry', label: 'Cherry' },
     { value: 'date', label: 'Date' },
   ];
 
-  segmentedViewOptions: SegmentedOption[] = [
+  segmentedViewOptions: SelectOption[] = [
     { value: 'list', label: 'List' },
     { value: 'grid', label: 'Grid' },
     { value: 'kanban', label: 'Kanban' },
   ];
 
-  segmentedThemeOptions: SegmentedOption[] = [
+  segmentedThemeOptions: SelectOption[] = [
     { value: 'light', label: 'Light' },
     { value: 'dark', label: 'Dark' },
   ];

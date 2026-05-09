@@ -35,7 +35,19 @@ describe('AlertComponent', () => {
       expect(getAlert()!.classList).toContain('ea-alert--error');
     });
 
-    it('has role="alert"', () => {
+    it('uses role="status" for non-urgent variants by default', () => {
+      expect(getAlert()!.getAttribute('role')).toBe('status');
+    });
+
+    it('uses role="alert" for error variant', () => {
+      fixture.componentRef.setInput('variant', 'error');
+      fixture.detectChanges();
+      expect(getAlert()!.getAttribute('role')).toBe('alert');
+    });
+
+    it('uses role="alert" for warning variant', () => {
+      fixture.componentRef.setInput('variant', 'warning');
+      fixture.detectChanges();
       expect(getAlert()!.getAttribute('role')).toBe('alert');
     });
 

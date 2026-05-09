@@ -13,14 +13,17 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { SelectOption } from '../select-option';
+
+/** Visual size of the segmented control. */
 export type SegmentedSize = 'sm' | 'md' | 'lg';
 
-export interface SegmentedOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
-
+/**
+ * Compact toggle button group for picking one of a small set of options
+ * (e.g. List/Grid/Kanban or Light/Dark). Implements `radiogroup` semantics
+ * and `ControlValueAccessor`, with full keyboard support
+ * (arrow keys, Home/End, Enter/Space).
+ */
 @Component({
   selector: 'ea-segmented',
   templateUrl: './segmented.component.html',
@@ -38,14 +41,19 @@ export interface SegmentedOption {
 export class SegmentedComponent implements ControlValueAccessor {
   readonly buttonEls = viewChildren<ElementRef<HTMLButtonElement>>('optionEl');
 
-  readonly options = input.required<SegmentedOption[]>();
+  readonly options = input.required<SelectOption[]>();
+  readonly label = input<string | undefined>(undefined);
+  readonly hint = input<string | undefined>(undefined);
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly required = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-segmented-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = model<string>('');
+  /** Fires with the new value when the user selects a different option. */
   readonly changed = output<string>();
 
   private readonly _formDisabled = signal(false);
@@ -54,6 +62,9 @@ export class SegmentedComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly enabledOptions = computed(() => this.options().filter(opt => !opt.disabled));
 
@@ -61,6 +72,7 @@ export class SegmentedComponent implements ControlValueAccessor {
     [`ea-segmented--${this.size()}`]: true,
     'ea-segmented--full-width': this.fullWidth(),
     'ea-segmented--disabled': this.isDisabled(),
+    'ea-segmented--error': this.hasError(),
   }));
 
   writeValue(val: string): void {
@@ -79,15 +91,16 @@ export class SegmentedComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  isSelected(option: SegmentedOption): boolean {
+  isSelected(option: SelectOption): boolean {
     return this.value() === option.value;
   }
 
-  isOptionDisabled(option: SegmentedOption): boolean {
+  isOptionDisabled(option: SelectOption): boolean {
     return this.isDisabled() || !!option.disabled;
   }
 
-  select(option: SegmentedOption): void {
+  /** Programmatically selects the given option. */
+  select(option: SelectOption): void {
     if (this.isOptionDisabled(option)) return;
     if (this.value() === option.value) {
       this.onTouched();

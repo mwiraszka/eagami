@@ -8,20 +8,28 @@ import {
 
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
+/** Visual style of the separator rendered between breadcrumb items. */
 export type BreadcrumbsSeparator = 'chevron' | 'slash';
 
+/** Single entry in a breadcrumb trail. */
 export interface BreadcrumbItem {
   label: string;
   href?: string;
   disabled?: boolean;
 }
 
+/** Payload emitted when a breadcrumb is activated. */
 export interface BreadcrumbClickEvent {
   item: BreadcrumbItem;
   index: number;
   event: MouseEvent;
 }
 
+/**
+ * Navigation trail that shows the user's location within a hierarchy. Items
+ * with an `href` render as links, others render as buttons; the final item is
+ * always treated as the current page and is non-interactive.
+ */
 @Component({
   selector: 'ea-breadcrumbs',
   imports: [ChevronRightIconComponent],
@@ -35,7 +43,8 @@ export class BreadcrumbsComponent {
   readonly separator = input<BreadcrumbsSeparator>('chevron');
   readonly ariaLabel = input<string>('Breadcrumb', { alias: 'aria-label' });
 
-  readonly itemClicked = output<BreadcrumbClickEvent>();
+  /** Fires when a non-disabled, non-final breadcrumb is activated. */
+  readonly clicked = output<BreadcrumbClickEvent>();
 
   isLast(index: number): boolean {
     return index === this.items().length - 1;
@@ -46,6 +55,6 @@ export class BreadcrumbsComponent {
       event.preventDefault();
       return;
     }
-    this.itemClicked.emit({ item, index, event });
+    this.clicked.emit({ item, index, event });
   }
 }

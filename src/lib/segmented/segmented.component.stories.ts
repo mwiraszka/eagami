@@ -1,8 +1,9 @@
 import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { SegmentedComponent, SegmentedOption } from './segmented.component';
+import { SelectOption } from '../select-option';
+import { SegmentedComponent } from './segmented.component';
 
-const viewOptions: SegmentedOption[] = [
+const viewOptions: SelectOption[] = [
   { value: 'list', label: 'List' },
   { value: 'grid', label: 'Grid' },
   { value: 'kanban', label: 'Kanban' },
@@ -72,6 +73,22 @@ export const Small: Story = {
 
 export const Large: Story = {
   args: { size: 'lg' },
+};
+
+export const WithLabel: Story = {
+  args: { label: 'View' },
+};
+
+export const Required: Story = {
+  args: { label: 'Theme', required: true },
+};
+
+export const WithHint: Story = {
+  args: { label: 'View', hint: 'Switch how items are displayed' },
+};
+
+export const WithError: Story = {
+  args: { label: 'Layout', errorMsg: 'Layout selection is required' },
 };
 
 export const AllSizes: Story = {

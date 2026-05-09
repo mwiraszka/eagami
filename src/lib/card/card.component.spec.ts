@@ -12,9 +12,9 @@ import { CardComponent } from './card.component';
       [padding]="padding"
       [fullWidth]="fullWidth"
       [headerDivider]="headerDivider">
-      <span eaCardHeader>{{ header }}</span>
+      <span slot="header">{{ header }}</span>
       Body content
-      <span eaCardFooter>{{ footer }}</span>
+      <span slot="footer">{{ footer }}</span>
     </ea-card>
   `,
 })

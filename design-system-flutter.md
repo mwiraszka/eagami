@@ -1242,9 +1242,11 @@ class EagamiCard extends StatelessWidget {
 
 ### 5.6 Dropdown
 
+The same `SelectOption` shape is reused by every single-select control in the system (Dropdown, Autocomplete, Segmented), so define it once and import it.
+
 ```dart
-class DropdownOption<T> {
-  const DropdownOption({required this.value, required this.label, this.disabled = false});
+class SelectOption<T> {
+  const SelectOption({required this.value, required this.label, this.disabled = false});
   final T value;
   final String label;
   final bool disabled;
@@ -1265,7 +1267,7 @@ class EagamiDropdown<T> extends StatefulWidget {
     this.required = false,
   });
 
-  final List<DropdownOption<T>> options;
+  final List<SelectOption<T>> options;
   final T? value;
   final ValueChanged<T?>? onChanged;
   final String? label;

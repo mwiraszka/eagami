@@ -45,7 +45,7 @@ const meta: Meta<DataTableComponent<User>> = {
       control: 'select',
       options: ['compact', 'comfortable', 'spacious'],
     },
-    sortChange: { action: 'sortChange' },
+    sorted: { action: 'sorted' },
   },
   args: {
     columns,

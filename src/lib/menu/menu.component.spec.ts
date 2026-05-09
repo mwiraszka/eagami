@@ -15,11 +15,11 @@ import { MenuComponent, MenuPlacement } from './menu.component';
       [(open)]="isOpen"
       [placement]="placement()"
       [disabled]="disabled()">
-      <ea-menu-item (itemClicked)="onEdit()">Edit</ea-menu-item>
+      <ea-menu-item (clicked)="onEdit()">Edit</ea-menu-item>
       <ea-menu-item [disabled]="itemDisabled()">Archive</ea-menu-item>
       <ea-menu-item
         variant="danger"
-        (itemClicked)="onDelete()">
+        (clicked)="onDelete()">
         Delete
       </ea-menu-item>
     </ea-menu>
@@ -200,7 +200,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
     });
 
-    it('emits itemClicked and closes the menu on click', () => {
+    it('emits clicked and closes the menu on click', () => {
       getItems()[0].click();
       fixture.detectChanges();
 
@@ -208,7 +208,7 @@ describe('MenuComponent', () => {
       expect(host.isOpen()).toBe(false);
     });
 
-    it('does not emit itemClicked when disabled', () => {
+    it('does not emit clicked when disabled', () => {
       host.itemDisabled.set(true);
       fixture.detectChanges();
 
@@ -234,7 +234,7 @@ describe('MenuComponent', () => {
       expect(archiveItem.classList).toContain('ea-menu-item--disabled');
     });
 
-    it('emits itemClicked for danger items', () => {
+    it('emits clicked for danger items', () => {
       getItems()[2].click();
       fixture.detectChanges();
 

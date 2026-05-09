@@ -53,14 +53,7 @@ describe('TagComponent', () => {
   });
 
   describe('Variants', () => {
-    const variants = [
-      'default',
-      'primary',
-      'success',
-      'warning',
-      'error',
-      'info',
-    ] as const;
+    const variants = ['default', 'success', 'warning', 'error', 'info'] as const;
 
     variants.forEach(variant => {
       it(`renders with ${variant} variant`, () => {

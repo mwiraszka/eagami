@@ -7,8 +7,13 @@ import {
   input,
 } from '@angular/core';
 
+/** Visual size of the spinner. */
 export type SpinnerSize = 'sm' | 'md' | 'lg';
 
+/**
+ * SVG loading indicator with an accessible `role="status"`. Uses the `label`
+ * input as the accessible name announced to assistive technology.
+ */
 @Component({
   selector: 'ea-spinner',
   imports: [NgClass],

@@ -17,7 +17,7 @@ const meta: Meta<TabsComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
-    tabChange: { action: 'tabChange' },
+    changed: { action: 'changed' },
   },
   args: {
     variant: 'underline',

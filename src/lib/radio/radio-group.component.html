@@ -1,8 +1,43 @@
-<div
-  class="ea-radio-group"
-  [class.ea-radio-group--horizontal]="orientation() === 'horizontal'"
-  [class.ea-radio-group--vertical]="orientation() === 'vertical'"
-  role="radiogroup"
-  [attr.aria-label]="ariaLabel()">
-  <ng-content />
+<div class="ea-radio-group-field">
+  @if (label()) {
+    <span
+      class="ea-radio-group-field__label"
+      [id]="id() + '-label'"
+      [class.ea-radio-group-field__label--required]="required()">
+      {{ label() }}
+    </span>
+  }
+
+  <div
+    class="ea-radio-group"
+    [class.ea-radio-group--horizontal]="orientation() === 'horizontal'"
+    [class.ea-radio-group--vertical]="orientation() === 'vertical'"
+    role="radiogroup"
+    [id]="id()"
+    [attr.aria-labelledby]="label() ? id() + '-label' : null"
+    [attr.aria-label]="!label() ? (ariaLabel() ?? null) : null"
+    [attr.aria-required]="required() || null"
+    [attr.aria-invalid]="hasError() || null"
+    [attr.aria-describedby]="
+      showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+    ">
+    <ng-content />
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-radio-group-field__message ea-radio-group-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-radio-group-field__message ea-radio-group-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
 </div>

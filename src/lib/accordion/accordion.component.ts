@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 
+/**
+ * Container for expandable content sections. By default only one item can be
+ * open at a time; set `multi` to allow several to stay expanded together.
+ * Provides a built-in chevron animation and supports per-item disabling.
+ */
 @Component({
   selector: 'ea-accordion',
   template: ` <div class="ea-accordion"><ng-content /></div> `,

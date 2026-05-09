@@ -9,10 +9,19 @@ import {
 
 import { DividerComponent } from '../divider/divider.component';
 
+/** Visual style of a card surface. */
 export type CardVariant = 'elevated' | 'outlined' | 'filled';
+/** Padding preset applied to the card's content area. */
 export type CardPadding = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+/** Horizontal alignment of card header content. */
 export type CardHeaderAlign = 'start' | 'center' | 'end';
 
+/**
+ * Surface for grouping related content. Provides optional `header` and
+ * `footer` content slots and supports elevated, outlined, and filled
+ * variants. The card shadow can be customised per instance via the
+ * `--ea-card-shadow` CSS custom property.
+ */
 @Component({
   selector: 'ea-card',
   imports: [NgClass, DividerComponent],

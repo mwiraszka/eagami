@@ -1,7 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
+/** Shape preset of a skeleton placeholder. */
 export type SkeletonVariant = 'text' | 'circle' | 'rect';
 
+/**
+ * Loading placeholder rendered as a pulsing block in one of three shapes.
+ * Honours `prefers-reduced-motion` by suppressing the pulse animation when
+ * the user has expressed that preference.
+ */
 @Component({
   selector: 'ea-skeleton',
   templateUrl: './skeleton.component.html',

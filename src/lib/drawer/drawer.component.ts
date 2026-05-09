@@ -14,9 +14,17 @@ import {
 
 import { XIconComponent } from '../icons/x.component';
 
+/** Edge of the viewport from which the drawer slides in. */
 export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
+/** Size of the drawer panel along its primary axis. */
 export type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
 
+/**
+ * Side panel backed by the native `<dialog>` element for browser-managed
+ * focus trapping. Slides in from a configurable edge, supports backdrop and
+ * Escape dismissal, and exposes `header`, default, and `footer` content
+ * slots. The `open` state is a two-way `model()` binding.
+ */
 @Component({
   selector: 'ea-drawer',
   imports: [NgClass, XIconComponent],
@@ -36,12 +44,15 @@ export class DrawerComponent {
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  readonly id = input<string>(`ea-drawer-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way open binding
   readonly open = model<boolean>(false);
 
   // Outputs
+  /** Fires once the drawer has been shown via `showModal()`. */
   readonly opened = output<void>();
+  /** Fires when the drawer closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
   // Computed

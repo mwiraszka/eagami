@@ -5,6 +5,7 @@
     #fileInputEl
     type="file"
     class="ea-avatar-editor__file-input"
+    aria-label="Upload image"
     [accept]="accept()"
     (change)="onFileSelected($event)" />
 
@@ -42,11 +43,15 @@
         <canvas
           #canvasEl
           class="ea-avatar-editor__canvas"
+          role="img"
+          tabindex="0"
+          aria-label="Image preview, drag or use arrow keys to pan, slider to zoom"
           [style.display]="isLoading() ? 'none' : 'block'"
           [width]="canvasSize()"
           [height]="canvasSize()"
           (mousedown)="onMouseDown($event)"
-          (touchstart)="onTouchStart($event)"></canvas>
+          (touchstart)="onTouchStart($event)"
+          (keydown)="onCanvasKeydown($event)"></canvas>
 
         @if (!isLoading()) {
           <div class="ea-avatar-editor__canvas-overlay">

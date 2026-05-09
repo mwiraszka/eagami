@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Injector,
+  afterNextRender,
   computed,
   inject,
   input,
@@ -13,8 +15,15 @@ import {
   viewChild,
 } from '@angular/core';
 
+/** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
 
+/**
+ * Popup action menu attached to any focusable element via the
+ * `[eaMenuTrigger]` directive. Supports keyboard navigation
+ * (arrow keys, Home/End), closes on outside click or Escape, and restores
+ * focus to the trigger on close.
+ */
 @Component({
   selector: 'ea-menu',
   imports: [NgClass],
@@ -23,18 +32,19 @@ export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-e
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-  private readonly elRef = inject(ElementRef<HTMLElement>);
+  private readonly injector = inject(Injector);
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   readonly placement = input<MenuPlacement>('bottom-start');
   readonly disabled = input<boolean>(false);
   readonly ariaLabel = input<string>('Menu', { alias: 'aria-label' });
+  readonly id = input<string>(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly open = model<boolean>(false);
+  /** Fires when the menu opens. */
   readonly opened = output<void>();
+  /** Fires when the menu closes. */
   readonly closed = output<void>();
-
-  readonly menuId = signal(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
   private triggerEl: HTMLElement | null = null;
   private readonly triggerRect = signal<DOMRect | null>(null);
@@ -65,6 +75,7 @@ export class MenuComponent {
     return style;
   });
 
+  /** Toggles the menu open state, anchoring it to the given trigger element. */
   toggleAt(triggerEl: HTMLElement): void {
     if (this.disabled()) return;
     if (this.open()) {
@@ -74,18 +85,72 @@ export class MenuComponent {
     }
   }
 
+  /** Opens the menu anchored to the given trigger element and focuses the first item. */
   openAt(triggerEl: HTMLElement): void {
     if (this.disabled()) return;
     this.triggerEl = triggerEl;
     this.triggerRect.set(triggerEl.getBoundingClientRect());
     this.open.set(true);
     this.opened.emit();
+    afterNextRender(() => this.focusFirstItem(), { injector: this.injector });
   }
 
-  close(): void {
+  /**
+   * Closes the menu if it is open. Pass `restoreFocus: true` to return focus
+   * to the trigger element (used when closing via Escape or item activation;
+   * not used on outside click, where the user has chosen a new focus target).
+   */
+  close(restoreFocus = false): void {
     if (!this.open()) return;
     this.open.set(false);
     this.closed.emit();
+    if (restoreFocus) this.triggerEl?.focus();
+  }
+
+  private getEnabledItems(): HTMLButtonElement[] {
+    const list = this.listEl()?.nativeElement;
+    if (!list) return [];
+    return Array.from(
+      list.querySelectorAll<HTMLButtonElement>('[role="menuitem"]:not([disabled])'),
+    );
+  }
+
+  private focusFirstItem(): void {
+    this.getEnabledItems()[0]?.focus();
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (!this.open()) return;
+    const list = this.listEl()?.nativeElement;
+    const active = document.activeElement as HTMLElement | null;
+    if (!list || !active || !list.contains(active)) return;
+    const items = this.getEnabledItems();
+    if (items.length === 0) return;
+
+    const current = items.indexOf(active as HTMLButtonElement);
+    let next = -1;
+
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        next = current < items.length - 1 ? current + 1 : 0;
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        next = current > 0 ? current - 1 : items.length - 1;
+        break;
+      case 'Home':
+        event.preventDefault();
+        next = 0;
+        break;
+      case 'End':
+        event.preventDefault();
+        next = items.length - 1;
+        break;
+    }
+
+    if (next >= 0) items[next].focus();
   }
 
   @HostListener('document:click', ['$event'])
@@ -100,8 +165,7 @@ export class MenuComponent {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (!this.open()) return;
-    this.close();
-    this.triggerEl?.focus();
+    this.close(true);
   }
 
   @HostListener('window:resize')

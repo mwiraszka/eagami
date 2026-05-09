@@ -7,8 +7,8 @@
       type="button"
       class="ea-tag__remove"
       [disabled]="disabled() || null"
-      (click)="onRemove($event)"
-      aria-label="Remove">
+      [attr.aria-label]="removeLabel()"
+      (click)="onRemove($event)">
       <ea-icon-x />
     </button>
   }

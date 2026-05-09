@@ -4,8 +4,11 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Injector,
+  afterNextRender,
   computed,
   forwardRef,
+  inject,
   input,
   model,
   output,
@@ -19,9 +22,13 @@ import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
+/** Visual size of the date picker trigger. */
 export type DatePickerSize = 'sm' | 'md' | 'lg';
+/** Locale-aware date format used for the displayed value. */
 export type DatePickerFormat = 'short' | 'medium' | 'long';
+/** First day of the week in the calendar grid (0 = Sunday, 1 = Monday). */
 export type DatePickerWeekStart = 0 | 1;
+/** Value accepted via `writeValue` — a `Date`, ISO/parseable string, or `null`. */
 export type DatePickerValue = Date | string | null;
 
 interface CalendarDay {
@@ -34,6 +41,12 @@ interface CalendarDay {
   isFocused: boolean;
 }
 
+/**
+ * Calendar popover for selecting a single date. Supports `min`/`max` bounds,
+ * configurable week start, locale-aware formatting via `Intl.DateTimeFormat`,
+ * and full keyboard navigation (arrows, PageUp/PageDown, Home/End, Enter,
+ * Escape). Integrates with Angular forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-date-picker',
   imports: [
@@ -57,15 +70,17 @@ interface CalendarDay {
 export class DatePickerComponent implements ControlValueAccessor {
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
+  private readonly injector = inject(Injector);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('Select date…');
   readonly size = input<DatePickerSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly minDate = input<Date | null>(null);
   readonly maxDate = input<Date | null>(null);
   readonly format = input<DatePickerFormat>('medium');
@@ -77,6 +92,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly value = model<Date | null>(null);
 
   // Outputs
+  /** Fires when the selected date changes, including when cleared. */
   readonly changed = output<Date | null>();
 
   // Internal state
@@ -93,14 +109,13 @@ export class DatePickerComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
-
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly triggerClasses = computed(() => ({
     [`ea-date-picker__trigger--${this.size()}`]: true,
-    [`ea-date-picker__trigger--${this.resolvedStatus()}`]: true,
+    'ea-date-picker__trigger--error': this.hasError(),
     'ea-date-picker__trigger--open': this.isOpen(),
     'ea-date-picker__trigger--disabled': this.isDisabled(),
   }));
@@ -194,8 +209,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   // Handlers
+  /** Toggles the calendar popover between open and closed. */
   toggle(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     if (this.isOpen()) {
       this.close();
     } else {
@@ -203,18 +219,34 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
+  /** Opens the calendar popover and moves focus to the focused day cell. */
   open(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     const current = this.value() ?? new Date();
     this.viewYear.set(current.getFullYear());
     this.viewMonth.set(current.getMonth());
     this.focusedDate.set(this.startOfDay(current));
     this.isOpen.set(true);
+    afterNextRender(() => this.focusFocusedDayCell(), { injector: this.injector });
   }
 
+  /** Closes the calendar popover. */
   close(): void {
     this.isOpen.set(false);
     this.focusedDate.set(null);
+  }
+
+  private focusFocusedDayCell(): void {
+    const host = this.hostEl()?.nativeElement;
+    const focusedCell = host?.querySelector<HTMLButtonElement>(
+      '.ea-date-picker__day--focused',
+    );
+    focusedCell?.focus();
+  }
+
+  /** Moves keyboard focus to the trigger button. */
+  focus(): void {
+    this.triggerEl()?.nativeElement.focus();
   }
 
   selectDay(day: CalendarDay): void {
@@ -228,9 +260,10 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.triggerEl()?.nativeElement.focus();
   }
 
+  /** Clears the selected date and emits `changed` with `null`. */
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled()) return;
+    if (this.isDisabled() || this.readonly()) return;
     this.value.set(null);
     this.onChange(null);
     this.onTouched();

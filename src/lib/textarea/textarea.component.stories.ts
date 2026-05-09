@@ -15,22 +15,17 @@ const meta: Meta<TextareaComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
-    status: {
-      control: 'select',
-      options: ['default', 'error', 'success'],
-    },
     resize: {
       control: 'select',
       options: ['none', 'vertical', 'horizontal', 'both'],
     },
-    textareaFocused: { action: 'focused' },
-    textareaBlurred: { action: 'blurred' },
+    focused: { action: 'focused' },
+    blurred: { action: 'blurred' },
   },
   args: {
     label: 'Message',
     placeholder: 'Enter your message…',
     size: 'md',
-    status: 'default',
     rows: 3,
     resize: 'vertical',
     disabled: false,
@@ -53,12 +48,6 @@ export const WithHint: Story = {
 export const WithError: Story = {
   args: {
     errorMsg: 'This field is required.',
-  },
-};
-
-export const Success: Story = {
-  args: {
-    status: 'success',
   },
 };
 

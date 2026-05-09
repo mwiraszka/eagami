@@ -13,8 +13,15 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Single-value range input controlled with pointer drag or full keyboard
+ * navigation (arrows, PageUp/PageDown, Home/End). Supports configurable
+ * `min`, `max`, and `step`, optional value display, and integrates with
+ * Angular forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-slider',
   templateUrl: './slider.component.html',
@@ -34,7 +41,7 @@ export class SliderComponent implements ControlValueAccessor {
 
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly min = input<number>(0);
   readonly max = input<number>(100);
   readonly step = input<number>(1);
@@ -48,6 +55,7 @@ export class SliderComponent implements ControlValueAccessor {
   readonly id = input<string>(`ea-slider-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = model<number>(0);
+  /** Fires with the new (snapped, clamped) numeric value whenever the slider moves. */
   readonly changed = output<number>();
 
   private readonly _formDisabled = signal(false);
@@ -69,13 +77,13 @@ export class SliderComponent implements ControlValueAccessor {
     return ((this.clampedValue() - this.min()) / range) * 100;
   });
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly hostClasses = computed(() => ({
     [`ea-slider--${this.size()}`]: true,
-    [`ea-slider--${this.resolvedStatus()}`]: true,
+    'ea-slider--error': this.hasError(),
     'ea-slider--disabled': this.isDisabled(),
     'ea-slider--dragging': this.dragging(),
   }));

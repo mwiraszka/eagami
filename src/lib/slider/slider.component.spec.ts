@@ -41,7 +41,7 @@ describe('SliderComponent', () => {
     });
 
     it('renders error message and sets aria-invalid', () => {
-      fixture.componentRef.setInput('error', 'Out of range');
+      fixture.componentRef.setInput('errorMsg', 'Out of range');
       fixture.detectChanges();
 
       expect(fixture.nativeElement.textContent).toContain('Out of range');

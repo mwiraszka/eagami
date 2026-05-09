@@ -3,6 +3,7 @@
     <label
       class="ea-dropdown-field__label"
       [for]="id()"
+      [id]="id() + '-label'"
       [class.ea-dropdown-field__label--required]="required()">
       {{ label() }}
     </label>
@@ -18,8 +19,9 @@
       [disabled]="isDisabled()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
-      [attr.aria-labelledby]="label() ? id() : null"
-      [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+      [attr.aria-labelledby]="label() ? id() + '-label' : null"
+      [attr.aria-required]="required() || null"
+      [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "

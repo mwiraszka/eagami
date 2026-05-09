@@ -10,6 +10,11 @@ import {
 
 import { TabsComponent } from './tabs.component';
 
+/**
+ * Single tab within an `ea-tabs` group. Registers itself with the parent on
+ * init, exposes its `value` and `label`, and shows its projected content
+ * when active.
+ */
 @Component({
   selector: 'ea-tab',
   host: { '[style.display]': 'isActive() ? null : "none"' },

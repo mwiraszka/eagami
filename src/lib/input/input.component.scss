@@ -115,14 +115,6 @@
     }
   }
 
-  &--success {
-    border-color: var(--color-success-default);
-
-    &.ea-input-wrapper--focused {
-      box-shadow: var(--shadow-focus-ring-success);
-    }
-  }
-
   &--disabled {
     background-color: var(--color-bg-muted);
     border-color: var(--color-border-default);

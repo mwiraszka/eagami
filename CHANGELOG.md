@@ -5,6 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-05-09
+
+> See [MIGRATION.md](MIGRATION.md) for a step-by-step upgrade guide from v0.x.
+
+### Added
+
+- Introduce shared `SelectOption` interface (`{ value, label, disabled? }`) used by `AutocompleteComponent`, `DropdownComponent`, and `SegmentedComponent` for their `options` input, replacing the previous per-component option types
+- Bring `RadioGroupComponent`, `SwitchComponent`, `CheckboxComponent`, and `SegmentedComponent` to parity with other form controls — they now expose `label` (where missing), `hint`, `errorMsg`, and `required` inputs; group controls also wire `aria-labelledby` to the rendered label and `aria-required`/`aria-invalid` to the host
+- Add `focus()` public method to `AutocompleteComponent`, `DropdownComponent`, and `DatePickerComponent`; add `readonly` input to `DropdownComponent`, `DatePickerComponent`, and `CodeInputComponent`; add `placeholder` input to `CodeInputComponent`
+- Add `focused` and `blurred` outputs (`FocusEvent`) to `AutocompleteComponent`
+- Add `removeLabel` input to `TagComponent` so consumers can override the remove-button accessible name per tag
+- Add `headingLevel` input to `EmptyStateComponent` (`h2`–`h6`, default `h2`) so the title fits the surrounding document outline
+- Add `id` input to `MenuComponent`, `DialogComponent`, `DrawerComponent`, and `RadioGroupComponent` so external `aria-labelledby`/`aria-controls` references can target the host
+- `MenuComponent` now implements WAI-ARIA roving keyboard navigation across menu items: arrow keys, Home/End, focus the first item on open
+- Calendar grid in `DatePickerComponent` receives focus on open so keyboard users land on the focused day immediately
+- `AvatarEditorComponent` canvas is now keyboard-pannable (arrow keys, Shift for larger steps; `+`/`-` to zoom) and exposes a descriptive `aria-label`
+- `Spinner` animation honours `prefers-reduced-motion` by slowing the spin rather than disabling the loading affordance
+
+### Changed
+
+- **Breaking:** Rename the `error` input to `errorMsg` on `InputComponent`, `TextareaComponent`, `CodeInputComponent`, `DatePickerComponent`, `DropdownComponent`, `AutocompleteComponent`, and `SliderComponent`. Migration: `<ea-input error="…" />` becomes `<ea-input errorMsg="…" />`
+- **Breaking:** `CardComponent` now reads its header and footer from standard `[slot=header]` and `[slot=footer]` content slots rather than the `[eaCardHeader]` and `[eaCardFooter]` attribute directives. Migration: `<span eaCardHeader>…</span>` becomes `<span slot="header">…</span>`. This aligns Card with `DialogComponent` and `DrawerComponent`, which already use the slot pattern
+- **Breaking:** Replace `AutocompleteOption`, `DropdownOption`, and `SegmentedOption` types with the single shared `SelectOption` interface. The shape is unchanged; update import sites accordingly
+- **Breaking:** Rename `inputFocused`/`inputBlurred` outputs to `focused`/`blurred` on `InputComponent`, and `textareaFocused`/`textareaBlurred` to `focused`/`blurred` on `TextareaComponent`, matching native DOM event names
+- **Breaking:** Standardize event output names across components — `TabsComponent.tabChange`, `DataTableComponent.sortChange`, `MenuItemComponent.itemClicked`, and `BreadcrumbsComponent.itemClicked` are now `changed`, `sorted`, and `clicked` respectively
+- **Breaking:** Rename `AvatarEditorComponent.cropStateChange` → `cropStateChanged` and `fileError` → `errored` to follow the past-tense convention
+- **Breaking:** Rename `PaginatorComponent.placement` → `align` (and the corresponding `PaginatorPlacement` type → `PaginatorAlign`), since "placement" is reserved for popover positioning elsewhere in the library
+- **Breaking:** Redesign `AutocompleteComponent` API for parity with other form controls — outputs are now `selected` (was `optionSelected`) and `changed` (was `valueChanged`), and the internal focus signal was renamed to `isFocused` to free the `focused` name for the new output
+- **Breaking:** Rename the public type `SortDirection` → `DataTableSortDirection` to avoid leaking a generic name into consumer scope
+- `ProgressBarComponent.label` now defaults to `undefined` rather than the empty string, matching the convention used by all other label inputs
+
+### Fixed
+
+- Increase contrast of the `--color-text-link-hover` token in light mode (now `--color-primary-800`) and add dark-mode overrides for `--color-text-link` and `--color-text-link-hover` so links meet WCAG AA in both schemes and the rest→hover delta is perceptible at a glance
+- Scope `role="alert"` to the `error` and `warning` variants of `AlertComponent` and `ToastComponent`; non-urgent variants now use `role="status"` with a polite live region instead of interrupting screen-reader output for routine messages
+- Add `aria-required` to the focusable element of `DropdownComponent`, `AutocompleteComponent`, `DatePickerComponent`, `SliderComponent`, and `SegmentedComponent` so screen readers announce required custom controls
+- `DialogComponent` and `DrawerComponent` now derive an `aria-labelledby` from the slotted header when no `aria-label` is supplied, giving every overlay a programmatic name
+- `DropdownComponent` no longer self-references its own trigger via `aria-labelledby`; the visible label now carries an id and the trigger references it
+- `DataTableComponent` sortable header cells use the implicit `<th>` role plus `aria-sort` instead of an invalid `role="columnheader button"`
+- `TooltipDirective` appends to (and removes from) `aria-describedby` rather than overwriting it, so it no longer clobbers an input's existing hint/error wiring
+- Unwrap the `DatePickerComponent` clear button from inside the trigger button (which produced invalid HTML) and position it as a sibling
+- `ProgressBarComponent` now exposes `aria-busy` while indeterminate
+- Each digit input in `CodeInputComponent` now reflects `aria-invalid` when the group has an error
+- `AvatarComponent` falls back to the supplied `initials` for its accessible name when `alt` is empty
+- `AvatarEditorComponent` file input now exposes an `aria-label`
+
+### Removed
+
+- **Breaking:** Remove the `status` input (`'default' | 'error' | 'success'`) from `InputComponent`, `TextareaComponent`, and `CodeInputComponent` along with the `success` visual variant. Error state is now driven solely by the `errorMsg` input
+- **Breaking:** Remove the `primary` variant from `TagComponent`. Tags now cover semantic statuses only (`default | success | warning | error | info`); use a styled element or `BadgeComponent` for brand-colored chips
+
 ## [0.12.0] - 2026-05-08
 
 ### Added
@@ -260,6 +311,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.0.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.12.0...v1.0.0
 [0.12.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.10.1...v0.11.0

@@ -56,6 +56,18 @@ export const DisabledChecked: Story = {
   args: { disabled: true, checked: true },
 };
 
+export const Required: Story = {
+  args: { required: true, label: 'I agree to the terms' },
+};
+
+export const WithHint: Story = {
+  args: { hint: 'You can opt out anytime' },
+};
+
+export const WithError: Story = {
+  args: { errorMsg: 'You must accept the terms to continue' },
+};
+
 export const AllSizes: Story = {
   render: () => ({
     template: `

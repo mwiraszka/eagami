@@ -6,8 +6,13 @@ import {
 } from '@angular/core';
 
 import { XIconComponent } from '../icons/x.component';
-import { ToastService } from './toast.service';
+import { Toast, ToastService } from './toast.service';
 
+/**
+ * Outlet that renders the stack of active toasts produced by
+ * {@link ToastService}. Place a single `<ea-toast />` once in the root
+ * template so toasts created from anywhere in the app are surfaced.
+ */
 @Component({
   selector: 'ea-toast',
   imports: [XIconComponent],
@@ -18,4 +23,8 @@ import { ToastService } from './toast.service';
 })
 export class ToastComponent {
   protected readonly toastService = inject(ToastService);
+
+  protected getRole(toast: Toast): 'alert' | 'status' {
+    return toast.variant === 'error' || toast.variant === 'warning' ? 'alert' : 'status';
+  }
 }
