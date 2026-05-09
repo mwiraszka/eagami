@@ -804,6 +804,8 @@ The library is published as ES2022. Internet Explorer and pre-Chromium Edge are 
 
 ## Development
 
+A live Storybook is published from `main` at https://mwiraszka.github.io/eagami-design-system/. To run it locally:
+
 ```bash
 pnpm install       # Install dependencies
 pnpm sandbox       # Run sandbox dev app
