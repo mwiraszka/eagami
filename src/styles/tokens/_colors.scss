@@ -159,6 +159,19 @@
   --color-brand-active: var(--color-primary-200);
   --color-brand-subtle: rgba(98, 142, 173, 0.1);
   --color-brand-muted: rgba(98, 142, 173, 0.2);
+
+  // Status `*-subtle` / `*-muted` — light pastels in light mode become
+  // unreadable behind light text in dark mode. Re-tint as a low-alpha wash of
+  // the saturated `*-500` hue so the surface darkens enough for `*-text-primary`
+  // (white) to read against it.
+  --color-success-subtle: rgba(34, 197, 94, 0.15);
+  --color-success-muted: rgba(34, 197, 94, 0.25);
+  --color-warning-subtle: rgba(245, 158, 11, 0.15);
+  --color-warning-muted: rgba(245, 158, 11, 0.25);
+  --color-error-subtle: rgba(239, 68, 68, 0.15);
+  --color-error-muted: rgba(239, 68, 68, 0.25);
+  --color-info-subtle: rgba(6, 182, 212, 0.15);
+  --color-info-muted: rgba(6, 182, 212, 0.25);
 }
 
 @media (prefers-color-scheme: dark) {

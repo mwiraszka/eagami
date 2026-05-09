@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Deepen `--shadow-*` token alpha values in dark mode so elevated cards and overlays retain a perceptible boundary against dark backgrounds
 - Switch the single-color brand icons (`GithubIconComponent`, `AppleIconComponent`, `FacebookIconComponent`, `XTwitterIconComponent`) to `currentColor` so they inherit the surrounding text color and remain legible in dark mode; opt back in to the original brand color via the new `[brand]` input
+- Add dark-mode overrides for `--color-{success,warning,error,info}-{subtle,muted}` so `AlertComponent`, `ToastComponent`, and other status surfaces darken enough for primary text to remain readable against them
 
 ## [1.0.0] - 2026-05-09
 
