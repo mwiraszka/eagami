@@ -783,6 +783,25 @@ Both files contain the full token set, mandatory design rules, theme setup, usag
 | `@angular/core` | `^21.0.0` |
 | `@angular/forms` | `^21.0.0` |
 
+## Browser support
+
+Components are authored for modern evergreen browsers and follow Angular's default [browserslist](https://github.com/browserslist/browserslist) configuration. Specifically:
+
+- **Chrome / Edge** — last 2 stable versions
+- **Firefox** — last 2 stable versions, plus the current ESR
+- **Safari** — last 2 stable versions
+- **Modern mobile browsers** (iOS Safari, Chrome Android)
+
+The library is published as ES2022. Internet Explorer and pre-Chromium Edge are not supported.
+
+### Runtime requirements
+
+| Tool | Minimum |
+|------|---------|
+| Node.js | 20.x (for build/dev tooling) |
+| Angular | 21.0 |
+| TypeScript | 5.5 |
+
 ## Development
 
 ```bash
