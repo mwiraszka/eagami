@@ -7,6 +7,7 @@
 }
 
 .sandbox-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +17,12 @@
   ea-divider {
     width: 100%;
   }
+}
+
+.sandbox-header-theme {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .sandbox-header-wordmark--short {

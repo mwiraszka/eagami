@@ -1,4 +1,10 @@
 <header class="sandbox-header">
+  <ea-switch
+    class="sandbox-header-theme"
+    size="sm"
+    label="Dark mode"
+    [checked]="darkMode()"
+    (changed)="darkMode.set($event)" />
   <ea-eagami-wordmark
     class="sandbox-header-wordmark sandbox-header-wordmark--full"
     [variant]="3"

@@ -78,7 +78,8 @@
               { "glob": "**/*", "input": "assets", "output": "assets" }
             ],
             "styles": [
-              "src/styles/eagami-ui.scss"
+              "src/styles/eagami-ui.scss",
+              "sandbox/dark-theme.scss"
             ]
           },
           "configurations": {
