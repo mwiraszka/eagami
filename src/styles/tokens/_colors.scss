@@ -134,29 +134,40 @@
 }
 
 // ---------------------------------------------------------------------------
-// Dark mode overrides
+// Dark mode overrides — applied when the OS prefers dark, unless the
+// consumer has explicitly opted out via `<html data-theme="light">`. To
+// force dark regardless of OS, set `<html data-theme="dark">`.
 // ---------------------------------------------------------------------------
+@mixin dark-color-tokens {
+  --color-text-primary: var(--color-neutral-50);
+  --color-text-secondary: var(--color-neutral-400);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-disabled: var(--color-neutral-700);
+  --color-text-inverse: var(--color-neutral-900);
+  --color-text-link: var(--color-primary-300);
+  --color-text-link-hover: var(--color-primary-100);
+
+  --color-bg-base: var(--color-neutral-950);
+  --color-bg-subtle: var(--color-neutral-900);
+  --color-bg-muted: var(--color-neutral-800);
+
+  --color-border-default: var(--color-neutral-700);
+  --color-border-strong: var(--color-neutral-500);
+
+  --color-brand-default: var(--color-primary-400);
+  --color-brand-hover: var(--color-primary-300);
+  --color-brand-active: var(--color-primary-200);
+  --color-brand-subtle: rgba(98, 142, 173, 0.1);
+  --color-brand-muted: rgba(98, 142, 173, 0.2);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-text-primary: var(--color-neutral-50);
-    --color-text-secondary: var(--color-neutral-400);
-    --color-text-tertiary: var(--color-neutral-500);
-    --color-text-disabled: var(--color-neutral-700);
-    --color-text-inverse: var(--color-neutral-900);
-    --color-text-link: var(--color-primary-300);
-    --color-text-link-hover: var(--color-primary-100);
-
-    --color-bg-base: var(--color-neutral-950);
-    --color-bg-subtle: var(--color-neutral-900);
-    --color-bg-muted: var(--color-neutral-800);
-
-    --color-border-default: var(--color-neutral-700);
-    --color-border-strong: var(--color-neutral-500);
-
-    --color-brand-default: var(--color-primary-400);
-    --color-brand-hover: var(--color-primary-300);
-    --color-brand-active: var(--color-primary-200);
-    --color-brand-subtle: rgba(98, 142, 173, 0.1);
-    --color-brand-muted: rgba(98, 142, 173, 0.2);
+  :root:not([data-theme='light']) {
+    @include dark-color-tokens;
   }
+}
+
+:root[data-theme='dark'] {
+  @include dark-color-tokens;
+  color-scheme: dark;
 }
