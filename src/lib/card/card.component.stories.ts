@@ -10,9 +10,9 @@ const meta: Meta<CardComponent> = {
     props: args,
     template: `
       <ea-card ${argsToTemplate(args)} class="story-narrow">
-        <span eaCardHeader>Card Title</span>
+        <span slot="header">Card Title</span>
         This is the card body content. It can contain any text or elements.
-        <span eaCardFooter>Footer</span>
+        <span slot="footer">Footer</span>
       </ea-card>
     `,
   }),
@@ -79,15 +79,15 @@ export const AllVariants: Story = {
     template: `
       <div class="story-card-grid">
         <ea-card variant="elevated">
-          <span eaCardHeader>Elevated</span>
+          <span slot="header">Elevated</span>
           Card with shadow elevation.
         </ea-card>
         <ea-card variant="outlined">
-          <span eaCardHeader>Outlined</span>
+          <span slot="header">Outlined</span>
           Card with border outline.
         </ea-card>
         <ea-card variant="filled">
-          <span eaCardHeader>Filled</span>
+          <span slot="header">Filled</span>
           Card with subtle background.
         </ea-card>
       </div>

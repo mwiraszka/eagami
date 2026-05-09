@@ -215,9 +215,9 @@ Padding: `none` | `sm` | `md` | `lg` | `xl`. Customizable shadow via `--ea-card-
 
 ```html
 <ea-card variant="elevated">
-  <span eaCardHeader>Card Title</span>
+  <span slot="header">Card Title</span>
   Card body content goes here.
-  <span eaCardFooter>
+  <span slot="footer">
     <ea-button variant="secondary" size="sm">Cancel</ea-button>
     <ea-button size="sm">Save</ea-button>
   </span>

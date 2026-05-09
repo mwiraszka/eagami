@@ -482,7 +482,7 @@ async function waitForServer(timeout = 120_000) {
 function findSection(heading) {
   const cards = document.querySelectorAll('.sandbox-card');
   for (const card of cards) {
-    const header = card.querySelector('[eaCardHeader]');
+    const header = card.querySelector('[slot="header"]');
     if (header && header.textContent.trim() === heading) {
       return card;
     }
