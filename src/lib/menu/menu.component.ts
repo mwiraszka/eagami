@@ -95,11 +95,16 @@ export class MenuComponent {
     afterNextRender(() => this.focusFirstItem(), { injector: this.injector });
   }
 
-  /** Closes the menu if it is open. */
-  close(): void {
+  /**
+   * Closes the menu if it is open. Pass `restoreFocus: true` to return focus
+   * to the trigger element (used when closing via Escape or item activation;
+   * not used on outside click, where the user has chosen a new focus target).
+   */
+  close(restoreFocus = false): void {
     if (!this.open()) return;
     this.open.set(false);
     this.closed.emit();
+    if (restoreFocus) this.triggerEl?.focus();
   }
 
   private getEnabledItems(): HTMLButtonElement[] {
@@ -160,8 +165,7 @@ export class MenuComponent {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (!this.open()) return;
-    this.close();
-    this.triggerEl?.focus();
+    this.close(true);
   }
 
   @HostListener('window:resize')

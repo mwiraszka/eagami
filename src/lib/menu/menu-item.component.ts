@@ -34,6 +34,6 @@ export class MenuItemComponent {
       return;
     }
     this.clicked.emit(event);
-    this.menu?.close();
+    this.menu?.close(true);
   }
 }
