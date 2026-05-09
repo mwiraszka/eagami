@@ -41,8 +41,8 @@
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
       (input)="handleInput($event)"
-      (focus)="handleFocus()"
-      (blur)="handleBlur()"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)"
       (keydown)="handleKeydown($event)" />
 
     <span class="ea-autocomplete__suffix">

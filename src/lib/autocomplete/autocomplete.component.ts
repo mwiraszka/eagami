@@ -57,12 +57,14 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly value = model<string>('');
 
   // Outputs
-  readonly optionSelected = output<SelectOption>();
-  readonly valueChanged = output<string>();
+  readonly selected = output<SelectOption>();
+  readonly changed = output<string>();
+  readonly focused = output<FocusEvent>();
+  readonly blurred = output<FocusEvent>();
 
   // Internal state
   readonly isOpen = signal(false);
-  readonly focused = signal(false);
+  readonly isFocused = signal(false);
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
   private justSelected = false;
@@ -104,7 +106,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-autocomplete__wrapper--${this.size()}`]: true,
     'ea-autocomplete__wrapper--error': this.hasError(),
-    'ea-autocomplete__wrapper--focused': this.focused(),
+    'ea-autocomplete__wrapper--focused': this.isFocused(),
     'ea-autocomplete__wrapper--disabled': this.isDisabled(),
   }));
 
@@ -130,13 +132,14 @@ export class AutocompleteComponent implements ControlValueAccessor {
     const next = (event.target as HTMLInputElement).value;
     this.value.set(next);
     this.onChange(next);
-    this.valueChanged.emit(next);
+    this.changed.emit(next);
     this.isOpen.set(true);
     this.focusedIndex.set(-1);
   }
 
-  handleFocus(): void {
-    this.focused.set(true);
+  handleFocus(event: FocusEvent): void {
+    this.isFocused.set(true);
+    this.focused.emit(event);
     if (this.justSelected) {
       this.justSelected = false;
       return;
@@ -146,9 +149,10 @@ export class AutocompleteComponent implements ControlValueAccessor {
     }
   }
 
-  handleBlur(): void {
-    this.focused.set(false);
+  handleBlur(event: FocusEvent): void {
+    this.isFocused.set(false);
     this.onTouched();
+    this.blurred.emit(event);
   }
 
   handleKeydown(event: KeyboardEvent): void {
@@ -189,8 +193,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
     if (option.disabled || this.isDisabled()) return;
     this.value.set(option.label);
     this.onChange(option.label);
-    this.valueChanged.emit(option.label);
-    this.optionSelected.emit(option);
+    this.changed.emit(option.label);
+    this.selected.emit(option);
     this.justSelected = true;
     this.close();
     this.inputEl()?.nativeElement.focus();
@@ -199,6 +203,10 @@ export class AutocompleteComponent implements ControlValueAccessor {
   close(): void {
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
+  }
+
+  focus(): void {
+    this.inputEl()?.nativeElement.focus();
   }
 
   private moveFocus(delta: number): void {

@@ -31,7 +31,7 @@ const FRUITS: SelectOption[] = [
       [errorMsg]="errorMsg()"
       [minLength]="minLength()"
       [maxResults]="maxResults()"
-      (optionSelected)="onSelected($event)" />
+      (selected)="onSelected($event)" />
   `,
 })
 class TestHostComponent {

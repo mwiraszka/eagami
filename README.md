@@ -122,7 +122,7 @@ Arrow key navigation, case-insensitive substring matching, configurable `minLeng
   placeholder="Start typing…"
   [options]="countries"
   [(value)]="selectedCountry"
-  (optionSelected)="onSelect($event)" />
+  (selected)="onSelect($event)" />
 ```
 
 <img src="docs/images/autocomplete.png" alt="Autocomplete component" width="560" />
