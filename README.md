@@ -114,7 +114,7 @@ Variants: `default` | `success` | `warning` | `error` | `info`. Two-way `visible
 <details>
 <summary><strong>Autocomplete</strong> — text input with filtered suggestion dropdown</summary>
 
-Arrow key navigation, case-insensitive substring matching, configurable `minLength` and `maxResults`. Full `ControlValueAccessor` support.
+Arrow key navigation, case-insensitive substring matching, configurable `minLength` and `maxResults`. Supports `hint`/`errorMsg`/`required`, `readonly`, `focused`/`blurred` outputs, and a `focus()` public method. Full `ControlValueAccessor` support.
 
 ```html
 <ea-autocomplete
@@ -231,10 +231,14 @@ Padding: `none` | `sm` | `md` | `lg` | `xl`. Customizable shadow via `--ea-card-
 <details>
 <summary><strong>Checkbox</strong> — with indeterminate state and ControlValueAccessor</summary>
 
-Sizes: `sm` | `md` | `lg`.
+Sizes: `sm` | `md` | `lg`. Supports `hint`, `errorMsg`, `required`, and `aria-label` for icon-only usage.
 
 ```html
-<ea-checkbox label="Accept terms and conditions" [(checked)]="accepted" />
+<ea-checkbox
+  label="Accept terms and conditions"
+  hint="You can opt out anytime"
+  [required]="true"
+  [(checked)]="accepted" />
 ```
 
 <img src="docs/images/checkbox.png" alt="Checkbox component" width="560" />
@@ -244,10 +248,14 @@ Sizes: `sm` | `md` | `lg`.
 <details>
 <summary><strong>Code input</strong> — verification code entry with auto-advance and paste support</summary>
 
-Configurable `length` (default 6). Full `ControlValueAccessor` support.
+Configurable `length` (default 6). Supports `placeholder`, `readonly`, `hint`/`errorMsg`, and a `focus()` public method. Full `ControlValueAccessor` support.
 
 ```html
-<ea-code-input [(value)]="code" [length]="6" (completed)="verify()" />
+<ea-code-input
+  [(value)]="code"
+  [length]="6"
+  placeholder="•"
+  (completed)="verify()" />
 ```
 
 <img src="docs/images/code-input.png" alt="Code input component" width="560" />
@@ -276,7 +284,7 @@ Striped, bordered, and hoverable rows. Custom cell templates via `ng-template`. 
 <details>
 <summary><strong>Date picker</strong> — calendar popover with keyboard navigation and min/max bounds</summary>
 
-Sizes: `sm` | `md` | `lg`. Formats: `short` | `medium` | `long` (locale-aware via `Intl.DateTimeFormat`). Configurable week start (Sunday or Monday). Full keyboard navigation (arrows, PageUp/PageDown, Home/End, Enter, Escape) and `ControlValueAccessor` integration.
+Sizes: `sm` | `md` | `lg`. Formats: `short` | `medium` | `long` (locale-aware via `Intl.DateTimeFormat`). Configurable week start (Sunday or Monday). Supports `readonly`, exposes a `focus()` method. Full keyboard navigation (arrows, PageUp/PageDown, Home/End, Enter, Escape) and `ControlValueAccessor` integration. Calendar grid receives focus on open.
 
 ```html
 <ea-date-picker
@@ -353,7 +361,7 @@ Positions: `left` | `right` | `top` | `bottom`. Sizes: `sm` | `md` | `lg` | `ful
 <details>
 <summary><strong>Dropdown</strong> — select with ControlValueAccessor and keyboard navigation</summary>
 
-Arrow keys, Enter/Space to select, Escape to close. Sizes: `sm` | `md` | `lg`.
+Arrow keys, Enter/Space to select, Escape to close. Sizes: `sm` | `md` | `lg`. Supports `readonly`, exposes a `focus()` method.
 
 ```html
 <ea-dropdown
@@ -390,10 +398,10 @@ Layout: `stacked` (default, multi-line) | `inline` (single line, uniform font si
 <details>
 <summary><strong>Empty state</strong> — pattern for "no results" and "nothing here yet" screens</summary>
 
-Optional `title` and `description`, with `[slot=media]` for an icon or illustration and `[slot=actions]` for follow-up buttons. Sizes: `sm` | `md` | `lg`.
+Optional `title` and `description`, with `[slot=media]` for an icon or illustration and `[slot=actions]` for follow-up buttons. Sizes: `sm` | `md` | `lg`. `headingLevel` (`h2`–`h6`, default `h2`) lets the title fit the surrounding document outline.
 
 ```html
-<ea-empty-state title="No items yet" description="Get started by creating your first item.">
+<ea-empty-state title="No items yet" description="Get started by creating your first item." headingLevel="h3">
   <ea-icon-file slot="media" />
   <ea-button slot="actions" variant="primary">Create item</ea-button>
 </ea-empty-state>
@@ -479,10 +487,10 @@ Variants: `default` | `success` | `warning` | `error` | `info`. Sizes: `sm` | `m
 <details>
 <summary><strong>Radio Group</strong> — composite pattern with ControlValueAccessor</summary>
 
-Supports `vertical` and `horizontal` orientation. Sizes: `sm` | `md` | `lg`.
+Supports `vertical` and `horizontal` orientation. Sizes: `sm` | `md` | `lg`. Optional `label`, `hint`, `errorMsg`, `required`.
 
 ```html
-<ea-radio-group [(value)]="plan">
+<ea-radio-group label="Subscription plan" [(value)]="plan">
   <ea-radio value="free" label="Free" />
   <ea-radio value="pro" label="Pro" />
   <ea-radio value="enterprise" label="Enterprise" />
@@ -496,7 +504,7 @@ Supports `vertical` and `horizontal` orientation. Sizes: `sm` | `md` | `lg`.
 <details>
 <summary><strong>Segmented</strong> — toggle button group for picking one of a few options</summary>
 
-Compact alternative to a radio group for view/mode switches (e.g. List/Grid/Kanban, Light/Dark). Implements `radiogroup` semantics and `ControlValueAccessor`. Sizes: `sm` | `md` | `lg`. Supports `fullWidth` and per-option `disabled`.
+Compact alternative to a radio group for view/mode switches (e.g. List/Grid/Kanban, Light/Dark). Implements `radiogroup` semantics and `ControlValueAccessor`. Sizes: `sm` | `md` | `lg`. Supports `fullWidth`, per-option `disabled`, and optional `label`, `hint`, `errorMsg`, `required`.
 
 ```html
 <ea-segmented
@@ -562,10 +570,11 @@ Sizes: `sm` | `md` | `lg`.
 <details>
 <summary><strong>Switch</strong> — toggle with ControlValueAccessor</summary>
 
-Sizes: `sm` | `md` | `lg`.
+Sizes: `sm` | `md` | `lg`. Supports `hint`, `errorMsg`, `required`, and `aria-label` for icon-only usage.
 
 ```html
 <ea-switch label="Enable notifications" [(checked)]="notificationsOn" />
+<ea-switch label="Marketing emails" hint="You can unsubscribe at any time" />
 ```
 
 <img src="docs/images/switch.png" alt="Switch component" width="560" />
@@ -591,11 +600,17 @@ Variants: `underline` | `filled`. Sizes: `sm` | `md` | `lg`.
 <details>
 <summary><strong>Tag</strong> — inline label with optional remove button</summary>
 
-Variants: `default` | `success` | `warning` | `error` | `info`. Sizes: `sm` | `md` | `lg`.
+Variants: `default` | `success` | `warning` | `error` | `info`. Sizes: `sm` | `md` | `lg`. Customise the remove button's accessible name via `removeLabel`.
 
 ```html
 <ea-tag variant="success">Active</ea-tag>
-<ea-tag variant="info" [removable]="true" (removed)="onRemove()">TypeScript</ea-tag>
+<ea-tag
+  variant="info"
+  [removable]="true"
+  removeLabel="Remove TypeScript filter"
+  (removed)="onRemove()">
+  TypeScript
+</ea-tag>
 ```
 
 <img src="docs/images/tag.png" alt="Tag component" width="560" />
