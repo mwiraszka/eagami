@@ -110,9 +110,8 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
-
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly triggerClasses = computed(() => ({
     [`ea-date-picker__trigger--${this.size()}`]: true,

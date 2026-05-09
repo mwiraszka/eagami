@@ -117,11 +117,13 @@ export class MenuComponent {
   @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent): void {
     if (!this.open()) return;
+    const list = this.listEl()?.nativeElement;
+    const active = document.activeElement as HTMLElement | null;
+    if (!list || !active || !list.contains(active)) return;
     const items = this.getEnabledItems();
     if (items.length === 0) return;
 
-    const active = document.activeElement as HTMLElement | null;
-    const current = active ? items.indexOf(active as HTMLButtonElement) : -1;
+    const current = items.indexOf(active as HTMLButtonElement);
     let next = -1;
 
     switch (event.key) {
