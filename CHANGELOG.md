@@ -279,6 +279,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.0.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.12.0...v1.0.0
 [0.12.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.10.1...v0.11.0
