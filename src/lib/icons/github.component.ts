@@ -1,13 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'ea-icon-github',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
+  host: {
+    style: 'display: inline-flex; width: 1em; height: 1em;',
+    '[style.color]': "brand() ? '#181717' : null",
+  },
   template: `
     <svg
       viewBox="0 0 24 24"
-      fill="#181717"
+      fill="currentColor"
       aria-hidden="true"
       width="100%"
       height="100%">
@@ -16,4 +19,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class GithubIconComponent {}
+export class GithubIconComponent {
+  readonly brand = input<boolean>(false);
+}
