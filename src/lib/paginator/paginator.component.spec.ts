@@ -54,9 +54,9 @@ describe('PaginatorComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Placement ────────────────────────────────────────────────────────────
+  // ── Alignment ────────────────────────────────────────────────────────────
 
-  describe('Placement', () => {
+  describe('Alignment', () => {
     it('defaults to right (no modifier class)', () => {
       const host = fixture.nativeElement.querySelector('.ea-paginator');
 
@@ -64,8 +64,8 @@ describe('PaginatorComponent', () => {
       expect(host.classList).not.toContain('ea-paginator--center');
     });
 
-    it('applies left placement class', () => {
-      fixture.componentRef.setInput('placement', 'left');
+    it('applies left align class', () => {
+      fixture.componentRef.setInput('align', 'left');
       fixture.detectChanges();
 
       const host = fixture.nativeElement.querySelector('.ea-paginator');
@@ -73,8 +73,8 @@ describe('PaginatorComponent', () => {
       expect(host.classList).toContain('ea-paginator--left');
     });
 
-    it('applies center placement class', () => {
-      fixture.componentRef.setInput('placement', 'center');
+    it('applies center align class', () => {
+      fixture.componentRef.setInput('align', 'center');
       fixture.detectChanges();
 
       const host = fixture.nativeElement.querySelector('.ea-paginator');

@@ -22,8 +22,8 @@ const meta: Meta<AvatarEditorComponent> = {
     cropped: { action: 'cropped' },
     removed: { action: 'removed' },
     fileSelected: { action: 'fileSelected' },
-    fileError: { action: 'fileError' },
-    cropStateChange: { action: 'cropStateChange' },
+    errored: { action: 'errored' },
+    cropStateChanged: { action: 'cropStateChanged' },
   },
   args: {
     shape: 'circle',

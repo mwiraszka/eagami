@@ -12,7 +12,7 @@ import { ButtonComponent } from '../button/button.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
-export type PaginatorPlacement = 'left' | 'center' | 'right';
+export type PaginatorAlign = 'left' | 'center' | 'right';
 
 export interface PaginatorState {
   page: number;
@@ -32,7 +32,7 @@ export class PaginatorComponent {
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);
   readonly showPageSizeSelector = input<boolean>(true);
   readonly showRangeLabel = input<boolean>(true);
-  readonly placement = input<PaginatorPlacement>('right');
+  readonly align = input<PaginatorAlign>('right');
   readonly disabled = input<boolean>(false);
 
   readonly page = model<number>(1);

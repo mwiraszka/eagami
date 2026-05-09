@@ -26,7 +26,7 @@ export class TabsComponent {
 
   readonly activeTab = model<string>('');
 
-  readonly tabChange = output<string>();
+  readonly changed = output<string>();
 
   registerTab(tab: TabComponent): void {
     this.registeredTabs.update(tabs => [...tabs, tab]);
@@ -38,7 +38,7 @@ export class TabsComponent {
 
   selectTab(value: string): void {
     this.activeTab.set(value);
-    this.tabChange.emit(value);
+    this.changed.emit(value);
   }
 
   handleKeydown(event: KeyboardEvent): void {

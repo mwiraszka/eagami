@@ -35,7 +35,7 @@ export class BreadcrumbsComponent {
   readonly separator = input<BreadcrumbsSeparator>('chevron');
   readonly ariaLabel = input<string>('Breadcrumb', { alias: 'aria-label' });
 
-  readonly itemClicked = output<BreadcrumbClickEvent>();
+  readonly clicked = output<BreadcrumbClickEvent>();
 
   isLast(index: number): boolean {
     return index === this.items().length - 1;
@@ -46,6 +46,6 @@ export class BreadcrumbsComponent {
       event.preventDefault();
       return;
     }
-    this.itemClicked.emit({ item, index, event });
+    this.clicked.emit({ item, index, event });
   }
 }

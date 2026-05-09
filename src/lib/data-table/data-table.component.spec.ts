@@ -257,9 +257,9 @@ describe('DataTableComponent', () => {
       expect(ages).toEqual(['25', '30', '35']);
     });
 
-    it('emits sortChange on header click', () => {
+    it('emits sorted on header click', () => {
       const spy = jest.fn();
-      component.sortChange.subscribe(spy);
+      component.sorted.subscribe(spy);
 
       getHeaderCells()[1].click();
 

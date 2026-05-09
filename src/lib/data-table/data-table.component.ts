@@ -62,7 +62,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
-  readonly sortChange = output<DataTableSortState>();
+  readonly sorted = output<DataTableSortState>();
 
   readonly noDataTemplate = contentChild<TemplateRef<unknown>>('noData');
 
@@ -123,7 +123,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
     const next: DataTableSortState = { column: direction ? col.key : '', direction };
     this.sort.set(next);
-    this.sortChange.emit(next);
+    this.sorted.emit(next);
   }
 
   trackByFn(_index: number, item: T): unknown {

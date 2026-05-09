@@ -524,7 +524,7 @@
               [(page)]="tablePage"
               [(pageSize)]="tablePageSize"
               [pageSizeOptions]="[5, 10, 12]"
-              placement="center"
+              align="center"
               (changed)="onTablePageChange($event)" />
           </ea-data-table>
 
@@ -1016,15 +1016,15 @@
           <h2>default</h2>
           <ea-paginator [totalItems]="100" />
 
-          <h2>placement — left</h2>
+          <h2>align — left</h2>
           <ea-paginator
             [totalItems]="100"
-            placement="left" />
+            align="left" />
 
-          <h2>placement — center</h2>
+          <h2>align — center</h2>
           <ea-paginator
             [totalItems]="100"
-            placement="center" />
+            align="center" />
 
           <h2>many pages</h2>
           <ea-paginator

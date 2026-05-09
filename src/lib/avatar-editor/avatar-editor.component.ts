@@ -77,8 +77,8 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly cropped = output<AvatarEditorCropEvent>();
   readonly fileSelected = output<File>();
   readonly removed = output<void>();
-  readonly fileError = output<string>();
-  readonly cropStateChange = output<AvatarEditorCropState>();
+  readonly errored = output<string>();
+  readonly cropStateChanged = output<AvatarEditorCropState>();
 
   readonly hasImage = signal(false);
   readonly isDragOver = signal(false);
@@ -403,12 +403,12 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private loadFile(file: File): void {
     if (!file.type.startsWith('image/')) {
-      this.fileError.emit('File must be an image');
+      this.errored.emit('File must be an image');
       return;
     }
     if (file.size > this.maxFileSize()) {
       const maxMb = Math.round(this.maxFileSize() / (1024 * 1024));
-      this.fileError.emit(`File exceeds ${maxMb} MB limit`);
+      this.errored.emit(`File exceeds ${maxMb} MB limit`);
       return;
     }
 
@@ -520,7 +520,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private emitCropStateChange(): void {
     if (this._suppressCropStateEmit) return;
-    this.cropStateChange.emit({
+    this.cropStateChanged.emit({
       zoom: this.zoom(),
       offsetX: this.offsetX,
       offsetY: this.offsetY,

@@ -119,9 +119,9 @@ describe('BreadcrumbsComponent', () => {
   // ── Click handling ─────────────────────────────────────────────────────────
 
   describe('Click handling', () => {
-    it('emits itemClicked with the item and index', () => {
+    it('emits clicked with the item and index', () => {
       const spy = jest.fn<void, [BreadcrumbClickEvent]>();
-      component.itemClicked.subscribe(spy);
+      component.clicked.subscribe(spy);
 
       getLinks()[0].click();
 
@@ -132,7 +132,7 @@ describe('BreadcrumbsComponent', () => {
 
     it('does not emit on last item click', () => {
       const spy = jest.fn();
-      component.itemClicked.subscribe(spy);
+      component.clicked.subscribe(spy);
 
       getCurrent()?.click();
 
@@ -148,7 +148,7 @@ describe('BreadcrumbsComponent', () => {
       fixture.detectChanges();
 
       const spy = jest.fn();
-      component.itemClicked.subscribe(spy);
+      component.clicked.subscribe(spy);
 
       const disabled = fixture.nativeElement.querySelector(
         '.ea-breadcrumbs__link--disabled',

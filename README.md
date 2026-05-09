@@ -186,7 +186,7 @@ Separators: `chevron` | `slash`. Items can be links (`href`), buttons (no `href`
     { label: 'Products', href: '/products' },
     { label: 'MacBook Pro' }
   ]"
-  (itemClicked)="navigate($event)" />
+  (clicked)="navigate($event)" />
 ```
 
 <img src="docs/images/breadcrumbs.png" alt="Breadcrumbs component" width="560" />
@@ -429,11 +429,11 @@ Attach the menu to any focusable element with the `[eaMenuTrigger]` directive. P
 ```html
 <ea-button [eaMenuTrigger]="actions" variant="secondary">Actions</ea-button>
 <ea-menu #actions placement="bottom-end">
-  <ea-menu-item (itemClicked)="edit()">
+  <ea-menu-item (clicked)="edit()">
     <ea-icon-pencil slot="icon" />
     Edit
   </ea-menu-item>
-  <ea-menu-item variant="danger" (itemClicked)="delete()">
+  <ea-menu-item variant="danger" (clicked)="delete()">
     <ea-icon-trash slot="icon" />
     Delete
   </ea-menu-item>
@@ -447,14 +447,14 @@ Attach the menu to any focusable element with the `[eaMenuTrigger]` directive. P
 <details>
 <summary><strong>Paginator</strong> — page navigation with configurable page sizes</summary>
 
-Placement: `left` | `center` | `right`. Emits `pageChange` events with current page, page size, and total.
+Alignment: `left` | `center` | `right`. Emits `changed` events with current page and page size.
 
 ```html
 <ea-paginator
-  [total]="100"
+  [totalItems]="100"
   [pageSize]="10"
-  placement="center"
-  (pageChange)="onPageChange($event)" />
+  align="center"
+  (changed)="onPageChange($event)" />
 ```
 
 <img src="docs/images/paginator.png" alt="Paginator component" width="560" />

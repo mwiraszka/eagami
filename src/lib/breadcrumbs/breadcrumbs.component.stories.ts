@@ -22,7 +22,7 @@ const meta: Meta<BreadcrumbsComponent> = {
       control: 'select',
       options: ['chevron', 'slash'],
     },
-    itemClicked: { action: 'itemClicked' },
+    clicked: { action: 'clicked' },
   },
   args: {
     items: sampleItems,

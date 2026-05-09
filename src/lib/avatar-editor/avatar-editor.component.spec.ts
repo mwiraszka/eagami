@@ -375,12 +375,12 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── cropStateChange emission ──────────────────────────────────────────────
+  // ── cropStateChanged emission ──────────────────────────────────────────────
 
-  describe('cropStateChange emission', () => {
+  describe('cropStateChanged emission', () => {
     it('does not emit during a programmatic load (afterNextRender not yet settled)', () => {
       const spy = jest.fn();
-      component.cropStateChange.subscribe(spy);
+      component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
       fixture.detectChanges(); // effect fires → _suppressCropStateEmit = true
@@ -395,7 +395,7 @@ describe('AvatarEditorComponent', () => {
       loadImage(); // two detectChanges — afterNextRender fires, suppress cleared
 
       const spy = jest.fn();
-      component.cropStateChange.subscribe(spy);
+      component.cropStateChanged.subscribe(spy);
 
       component.setZoom(1.5);
 
@@ -404,7 +404,7 @@ describe('AvatarEditorComponent', () => {
 
     it('clears emission suppression on load error', () => {
       const spy = jest.fn();
-      component.cropStateChange.subscribe(spy);
+      component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
       fixture.detectChanges(); // _suppressCropStateEmit = true
@@ -415,23 +415,23 @@ describe('AvatarEditorComponent', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('does not emit cropStateChange during revertImage', () => {
+    it('does not emit cropStateChanged during revertImage', () => {
       loadImage();
       component.setZoom(1.5);
 
       const spy = jest.fn();
-      component.cropStateChange.subscribe(spy);
+      component.cropStateChanged.subscribe(spy);
 
       component.revertImage();
 
       expect(spy).not.toHaveBeenCalled();
     });
 
-    it('emits cropStateChange with the correct shape', () => {
+    it('emits cropStateChanged with the correct shape', () => {
       loadImage();
 
       const spy = jest.fn();
-      component.cropStateChange.subscribe(spy);
+      component.cropStateChanged.subscribe(spy);
       component.setZoom(2);
 
       expect(spy).toHaveBeenCalledWith<[AvatarEditorCropState]>({
@@ -825,18 +825,18 @@ describe('AvatarEditorComponent', () => {
   // ── File selection ────────────────────────────────────────────────────────
 
   describe('File selection', () => {
-    it('emits fileError for a non-image file type', () => {
+    it('emits errored for a non-image file type', () => {
       const spy = jest.fn();
-      component.fileError.subscribe(spy);
+      component.errored.subscribe(spy);
 
       selectFile(makeFile('application/pdf'));
 
       expect(spy).toHaveBeenCalledWith('File must be an image');
     });
 
-    it('emits fileError when the file exceeds maxFileSize', () => {
+    it('emits errored when the file exceeds maxFileSize', () => {
       const spy = jest.fn();
-      component.fileError.subscribe(spy);
+      component.errored.subscribe(spy);
       fixture.componentRef.setInput('maxFileSize', 1);
 
       selectFile(makeFile('image/jpeg', 10));
@@ -920,9 +920,9 @@ describe('AvatarEditorComponent', () => {
       expect(component.isDragOver()).toBe(false);
     });
 
-    it('emits fileError on drop of a non-image file', () => {
+    it('emits errored on drop of a non-image file', () => {
       const spy = jest.fn();
-      component.fileError.subscribe(spy);
+      component.errored.subscribe(spy);
       const event = new Event('drop');
       Object.defineProperty(event, 'dataTransfer', {
         value: { files: [makeFile('application/pdf')] },

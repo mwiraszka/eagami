@@ -18,7 +18,7 @@ export class MenuItemComponent {
   readonly variant = input<MenuItemVariant>('default');
 
   // Outputs
-  readonly itemClicked = output<MouseEvent>();
+  readonly clicked = output<MouseEvent>();
 
   handleClick(event: MouseEvent): void {
     if (this.disabled()) {
@@ -26,7 +26,7 @@ export class MenuItemComponent {
       event.stopPropagation();
       return;
     }
-    this.itemClicked.emit(event);
+    this.clicked.emit(event);
     this.menu?.close();
   }
 }
