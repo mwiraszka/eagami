@@ -29,12 +29,11 @@ export class MenuComponent {
   readonly placement = input<MenuPlacement>('bottom-start');
   readonly disabled = input<boolean>(false);
   readonly ariaLabel = input<string>('Menu', { alias: 'aria-label' });
+  readonly id = input<string>(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly open = model<boolean>(false);
   readonly opened = output<void>();
   readonly closed = output<void>();
-
-  readonly menuId = signal(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
   private triggerEl: HTMLElement | null = null;
   private readonly triggerRect = signal<DOMRect | null>(null);

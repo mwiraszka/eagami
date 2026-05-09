@@ -7,7 +7,7 @@ import { MenuComponent } from './menu.component';
   host: {
     '[attr.aria-haspopup]': '"menu"',
     '[attr.aria-expanded]': 'menu()?.open() ?? false',
-    '[attr.aria-controls]': 'menu()?.menuId() ?? null',
+    '[attr.aria-controls]': 'menu()?.id() ?? null',
     '(click)': 'handleClick()',
     '(keydown)': 'handleKeydown($event)',
   },

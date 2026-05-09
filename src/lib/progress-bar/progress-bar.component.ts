@@ -23,7 +23,7 @@ export class ProgressBarComponent {
   readonly max = input<number>(100);
   readonly variant = input<ProgressBarVariant>('default');
   readonly size = input<ProgressBarSize>('md');
-  readonly label = input<string>('');
+  readonly label = input<string | undefined>(undefined);
   readonly showValue = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
 

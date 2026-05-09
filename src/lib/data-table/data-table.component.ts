@@ -17,7 +17,7 @@ import { ChevronsUpDownIconComponent } from '../icons/chevrons-up-down.component
 
 export type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
 
-export type SortDirection = 'asc' | 'desc' | null;
+export type DataTableSortDirection = 'asc' | 'desc' | null;
 
 export interface DataTableColumn<T = Record<string, unknown>> {
   key: string;
@@ -32,7 +32,7 @@ export interface DataTableColumn<T = Record<string, unknown>> {
 
 export interface DataTableSortState {
   column: string;
-  direction: SortDirection;
+  direction: DataTableSortDirection;
 }
 
 @Component({
@@ -108,7 +108,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     if (!col.sortable) return;
 
     const current = this.sort();
-    let direction: SortDirection;
+    let direction: DataTableSortDirection;
 
     if (current.column === col.key) {
       direction =
