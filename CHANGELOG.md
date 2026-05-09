@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-05-09
+
+### Fixed
+
+- Deepen `--shadow-*` token alpha values in dark mode so elevated cards and overlays retain a perceptible boundary against dark backgrounds
+- Switch the single-color brand icons (`GithubIconComponent`, `AppleIconComponent`, `FacebookIconComponent`, `XTwitterIconComponent`) to `currentColor` so they inherit the surrounding text color and remain legible in dark mode; opt back in to the original brand color via the new `[brand]` input
+
 ## [1.0.0] - 2026-05-09
 
 > See [MIGRATION.md](MIGRATION.md) for a step-by-step upgrade guide from v0.x.
@@ -311,6 +318,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.0.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.12.0...v1.0.0
 [0.12.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.0...v0.11.1
