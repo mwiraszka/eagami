@@ -83,7 +83,7 @@ export class TooltipDirective implements OnDestroy {
   private removeDescribedBy(): void {
     const native = this.el.nativeElement;
     const existing = (native.getAttribute('aria-describedby') ?? '').trim();
-    const tokens = existing.split(/\s+/).filter(t => t && t !== this.tooltipId);
+    const tokens = existing.split(/\s+/).filter((t: string) => t && t !== this.tooltipId);
     if (tokens.length) {
       this.renderer.setAttribute(native, 'aria-describedby', tokens.join(' '));
     } else {
