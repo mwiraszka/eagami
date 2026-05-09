@@ -7,22 +7,24 @@
 }
 
 .sandbox-header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  position: sticky;
+  z-index: var(--z-index-sticky);
+  top: 0;
+  margin: -24px -24px 24px;
+  padding: 0 24px;
+  background-color: var(--color-bg-base);
 
   ea-divider {
     width: 100%;
   }
 }
 
-.sandbox-header-theme {
-  position: absolute;
-  top: 0;
-  right: 0;
+.sandbox-header-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
 }
 
 .sandbox-header-wordmark--short {
@@ -40,8 +42,6 @@
 }
 
 .sandbox-header-label {
-  margin-top: 32px;
-  margin-bottom: -8px;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.05em;
