@@ -1,13 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'ea-icon-apple',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
+  host: {
+    style: 'display: inline-flex; width: 1em; height: 1em;',
+    '[style.color]': "brand() ? '#000000' : null",
+  },
   template: `
     <svg
       viewBox="0 0 24 24"
-      fill="#000000"
+      fill="currentColor"
       aria-hidden="true"
       width="100%"
       height="100%">
@@ -16,4 +19,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class AppleIconComponent {}
+export class AppleIconComponent {
+  readonly brand = input<boolean>(false);
+}

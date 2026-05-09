@@ -1,21 +1,39 @@
 :host {
   display: block;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 24px;
   font-family: var(--font-family-sans, system-ui, sans-serif);
+
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .sandbox-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  position: sticky;
+  z-index: var(--z-index-sticky);
+  top: 0;
+  background-color: var(--color-bg-base);
 
   ea-divider {
     width: 100%;
   }
+
+  @media (min-width: 960px) {
+    position: static;
+    flex-shrink: 0;
+  }
+}
+
+.sandbox-header-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 24px;
 }
 
 .sandbox-header-wordmark--short {
@@ -33,8 +51,6 @@
 }
 
 .sandbox-header-label {
-  margin-top: 32px;
-  margin-bottom: -8px;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -48,10 +64,18 @@
   flex-direction: column;
   align-items: stretch;
   gap: 24px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
 
   @media (min-width: 960px) {
+    flex: 1;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
   }
 }
 
@@ -70,10 +94,8 @@
   }
 
   @media (min-width: 960px) {
-    position: sticky;
-    top: 24px;
     width: 200px;
-    max-height: calc(100vh - 48px);
+    align-self: stretch;
     overflow-y: auto;
   }
 }
@@ -84,21 +106,23 @@
 
 .sandbox-mosaic {
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
   gap: 16px;
   min-width: 0;
+
+  @media (min-width: 960px) {
+    flex: 1;
+    align-self: stretch;
+    overflow-y: auto;
+  }
 }
 
 .sandbox-card {
   width: fit-content;
   min-width: 300px;
   max-width: 100%;
-  --ea-card-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04),
-    0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .sandbox-card--accordion {

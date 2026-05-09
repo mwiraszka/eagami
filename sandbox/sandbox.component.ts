@@ -55,6 +55,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -118,6 +119,17 @@ interface SandboxComponentEntry {
 })
 export class SandboxComponent {
   private readonly toastService = inject(ToastService);
+
+  readonly darkMode = signal(false);
+
+  constructor() {
+    effect(() => {
+      document.documentElement.setAttribute(
+        'data-theme',
+        this.darkMode() ? 'dark' : 'light',
+      );
+    });
+  }
 
   readonly componentList: SandboxComponentEntry[] = [
     { key: 'accordion', label: 'Accordion' },

@@ -99,6 +99,8 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly isLoading = computed(() => this.isFetching() || this.loading());
   readonly zoom = signal(1);
   readonly canRevert = computed(() => !this.isAtOriginal() && this.originalCaptured);
+  /** True when the visible crop is darker than mid-grey; drives the `--on-light` class on the overlay so the "Change photo" affordance stays readable. */
+  readonly isImageDark = signal(true);
 
   private image: HTMLImageElement | null = null;
   private offsetX = 0;
@@ -562,6 +564,8 @@ export class AvatarEditorComponent implements OnDestroy {
     const { drawX, drawY, drawW, drawH } = this.getDrawParams();
     ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
 
+    this.updateImageDarkness(ctx, size);
+
     // Draw overlay mask
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
     ctx.fillRect(0, 0, size, size);
@@ -578,6 +582,52 @@ export class AvatarEditorComponent implements OnDestroy {
     ctx.globalCompositeOperation = 'destination-over';
     ctx.drawImage(this.image, drawX, drawY, drawW, drawH);
     ctx.globalCompositeOperation = 'source-over';
+  }
+
+  /**
+   * Samples the visible crop region and stores whether it's darker than
+   * mid-grey, so the hover overlay can flip its label and icon between
+   * white (on dark photos) and black (on light photos).
+   *
+   * Restricts sampling to the inscribed circle for circle crops to ignore
+   * the soon-to-be-masked corners. Uses Rec. 601 perceptual luminance
+   * weights; transparent pixels and CORS-tainted canvases default to a
+   * "dark" assumption (white ink).
+   */
+  private updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void {
+    let data: Uint8ClampedArray;
+    try {
+      data = ctx.getImageData(0, 0, size, size).data;
+    } catch {
+      this.isImageDark.set(true);
+      return;
+    }
+
+    const isCircle = this.shape() === 'circle';
+    const cx = size / 2;
+    const cy = size / 2;
+    const radiusSq = cx * cx;
+
+    let sum = 0;
+    let count = 0;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        if (isCircle) {
+          const dx = x - cx;
+          const dy = y - cy;
+          if (dx * dx + dy * dy > radiusSq) continue;
+        }
+        const i = (y * size + x) * 4;
+        if (data[i + 3] === 0) continue;
+        sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+        count++;
+      }
+    }
+
+    // Threshold biased above mid-grey (128) so images on the border between
+    // light and dark still get the cleaner white ink; only clearly-bright
+    // photos flip to black.
+    if (count > 0) this.isImageDark.set(sum / count < 170);
   }
 
   private emitCropStateChange(): void {

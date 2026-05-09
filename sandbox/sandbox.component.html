@@ -1,12 +1,20 @@
 <header class="sandbox-header">
-  <ea-eagami-wordmark
-    class="sandbox-header-wordmark sandbox-header-wordmark--full"
-    [variant]="3"
-    [size]="96" />
-  <ea-eagami-wordmark
-    class="sandbox-header-wordmark sandbox-header-wordmark--short"
-    [size]="96" />
-  <span class="sandbox-header-label">UI Component Sandbox</span>
+  <div class="sandbox-header-row">
+    <ea-eagami-wordmark
+      class="sandbox-header-wordmark sandbox-header-wordmark--full"
+      [variant]="3"
+      [size]="40" />
+    <ea-eagami-wordmark
+      class="sandbox-header-wordmark sandbox-header-wordmark--short"
+      [size]="40" />
+    <span class="sandbox-header-label">UI Component Sandbox</span>
+    <ea-switch
+      class="sandbox-header-theme"
+      size="sm"
+      label="Dark mode"
+      [checked]="darkMode()"
+      (changed)="darkMode.set($event)" />
+  </div>
   <ea-divider />
 </header>
 

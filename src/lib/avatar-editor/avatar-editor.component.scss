@@ -100,7 +100,9 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Hover overlay (change photo)
+  // Hover overlay (change photo) — defaults to white "ink" for dark photos and
+  // flips to near-black via the `--on-light` modifier for light photos. The
+  // component samples canvas pixel luminance after each draw to set this.
   // ---------------------------------------------------------------------------
   &__canvas-overlay {
     position: absolute;
@@ -112,11 +114,16 @@
     gap: var(--space-1);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    background-color: var(--color-bg-overlay);
-    color: var(--color-text-inverse);
+    color: var(--color-neutral-0);
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--duration-fast) var(--easing-default);
+    transition:
+      opacity var(--duration-fast) var(--easing-default),
+      color var(--duration-fast) var(--easing-default);
+  }
+
+  &__canvas-overlay--on-light {
+    color: var(--color-neutral-950);
   }
 
   &__overlay-icon {
