@@ -1,21 +1,28 @@
 :host {
   display: block;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 24px;
   font-family: var(--font-family-sans, system-ui, sans-serif);
+
+  @media (min-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .sandbox-header {
   position: sticky;
   z-index: var(--z-index-sticky);
   top: 0;
-  margin: -24px -24px 24px;
-  padding: 0 24px;
   background-color: var(--color-bg-base);
 
   ea-divider {
     width: 100%;
+  }
+
+  @media (min-width: 960px) {
+    position: static;
+    flex-shrink: 0;
   }
 }
 
@@ -24,7 +31,9 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 16px;
-  padding: 12px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 24px;
 }
 
 .sandbox-header-wordmark--short {
@@ -55,10 +64,18 @@
   flex-direction: column;
   align-items: stretch;
   gap: 24px;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
 
   @media (min-width: 960px) {
+    flex: 1;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
   }
 }
 
@@ -77,10 +94,8 @@
   }
 
   @media (min-width: 960px) {
-    position: sticky;
-    top: 24px;
     width: 200px;
-    max-height: calc(100vh - 48px);
+    align-self: stretch;
     overflow-y: auto;
   }
 }
@@ -91,12 +106,17 @@
 
 .sandbox-mosaic {
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
   gap: 16px;
   min-width: 0;
+
+  @media (min-width: 960px) {
+    flex: 1;
+    align-self: stretch;
+    overflow-y: auto;
+  }
 }
 
 .sandbox-card {
