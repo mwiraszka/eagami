@@ -1115,15 +1115,17 @@ interface CardProps {
 
 ### 5.6 Dropdown
 
+The same `SelectOption` shape is reused by every single-select control in the system (Dropdown, Autocomplete, Segmented), so define it once and import it.
+
 ```ts
-interface DropdownOption<T extends string> {
+interface SelectOption<T extends string> {
   value: T;
   label: string;
   disabled?: boolean;
 }
 
 interface DropdownProps<T extends string> {
-  options: DropdownOption<T>[];
+  options: SelectOption<T>[];
   value: T | '';
   onChange: (value: T) => void;
   label?: string;
