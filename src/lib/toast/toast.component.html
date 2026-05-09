@@ -6,7 +6,8 @@
     @for (toast of toastService.toasts(); track toast.id) {
       <div
         class="ea-toast ea-toast--{{ toast.variant }}"
-        role="status">
+        [attr.role]="getRole(toast)"
+        [attr.aria-live]="getRole(toast) === 'alert' ? 'assertive' : 'polite'">
         <span class="ea-toast__message">{{ toast.message }}</span>
         <button
           class="ea-toast__close"

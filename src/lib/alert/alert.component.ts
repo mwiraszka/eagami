@@ -37,6 +37,11 @@ export class AlertComponent {
     [`ea-alert--${this.variant()}`]: true,
   }));
 
+  readonly role = computed(() => {
+    const v = this.variant();
+    return v === 'error' || v === 'warning' ? 'alert' : 'status';
+  });
+
   dismiss(): void {
     this.visible.set(false);
     this.dismissed.emit();

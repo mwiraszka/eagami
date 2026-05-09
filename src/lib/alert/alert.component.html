@@ -6,7 +6,7 @@
     [class.ea-alert--warning]="variant() === 'warning'"
     [class.ea-alert--error]="variant() === 'error'"
     [class.ea-alert--info]="variant() === 'info'"
-    role="alert">
+    [attr.role]="role()">
     <span class="ea-alert__icon">
       @switch (variant()) {
         @case ('success') {
