@@ -27,8 +27,7 @@
             (click)="onHeaderClick(col)"
             (keydown.enter)="onHeaderClick(col)"
             (keydown.space)="$event.preventDefault(); onHeaderClick(col)"
-            [attr.tabindex]="col.sortable ? 0 : null"
-            [attr.role]="col.sortable ? 'columnheader button' : 'columnheader'">
+            [attr.tabindex]="col.sortable ? 0 : null">
             @if (col.headerTemplate) {
               <ng-container
                 [ngTemplateOutlet]="col.headerTemplate"

@@ -34,6 +34,7 @@ export class DialogComponent {
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  readonly id = input<string>(`ea-dialog-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way open binding
   readonly open = model<boolean>(false);

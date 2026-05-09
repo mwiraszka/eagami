@@ -1,7 +1,8 @@
 <dialog
   #drawerEl
   class="ea-drawer"
-  [attr.aria-label]="ariaLabel()"
+  [attr.aria-label]="ariaLabel() ?? null"
+  [attr.aria-labelledby]="!ariaLabel() ? id() + '-header' : null"
   (click)="handleBackdropClick($event)"
   (cancel)="handleCancel($event)">
   <div
@@ -17,7 +18,9 @@
       </button>
     }
 
-    <div class="ea-drawer__header">
+    <div
+      class="ea-drawer__header"
+      [id]="id() + '-header'">
       <ng-content select="[slot=header]" />
     </div>
 
