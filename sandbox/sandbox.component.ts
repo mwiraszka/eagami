@@ -124,12 +124,10 @@ export class SandboxComponent {
 
   constructor() {
     effect(() => {
-      const root = document.documentElement;
-      if (this.darkMode()) {
-        root.setAttribute('data-theme', 'dark');
-      } else {
-        root.removeAttribute('data-theme');
-      }
+      document.documentElement.setAttribute(
+        'data-theme',
+        this.darkMode() ? 'dark' : 'light',
+      );
     });
   }
 
