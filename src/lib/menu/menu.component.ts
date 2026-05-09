@@ -13,8 +13,15 @@ import {
   viewChild,
 } from '@angular/core';
 
+/** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
 
+/**
+ * Popup action menu attached to any focusable element via the
+ * `[eaMenuTrigger]` directive. Supports keyboard navigation
+ * (arrow keys, Home/End), closes on outside click or Escape, and restores
+ * focus to the trigger on close.
+ */
 @Component({
   selector: 'ea-menu',
   imports: [NgClass],
@@ -32,7 +39,9 @@ export class MenuComponent {
   readonly id = input<string>(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly open = model<boolean>(false);
+  /** Fires when the menu opens. */
   readonly opened = output<void>();
+  /** Fires when the menu closes. */
   readonly closed = output<void>();
 
   private triggerEl: HTMLElement | null = null;
@@ -64,6 +73,7 @@ export class MenuComponent {
     return style;
   });
 
+  /** Toggles the menu open state, anchoring it to the given trigger element. */
   toggleAt(triggerEl: HTMLElement): void {
     if (this.disabled()) return;
     if (this.open()) {
@@ -73,6 +83,7 @@ export class MenuComponent {
     }
   }
 
+  /** Opens the menu anchored to the given trigger element and focuses the first item. */
   openAt(triggerEl: HTMLElement): void {
     if (this.disabled()) return;
     this.triggerEl = triggerEl;
@@ -82,6 +93,7 @@ export class MenuComponent {
     queueMicrotask(() => this.focusFirstItem());
   }
 
+  /** Closes the menu if it is open. */
   close(): void {
     if (!this.open()) return;
     this.open.set(false);

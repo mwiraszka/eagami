@@ -26,19 +26,27 @@ import { UploadIconComponent } from '../icons/upload.component';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 
+/** Crop mask shape applied to the exported image. */
 export type AvatarEditorShape = 'circle' | 'square';
 
+/** Result of a successful crop, providing both a `Blob` and a data URL. */
 export interface AvatarEditorCropEvent {
   blob: Blob;
   dataUrl: string;
 }
 
+/** Persisted pan/zoom state, suitable for restoring an in-progress edit. */
 export interface AvatarEditorCropState {
   zoom: number;
   offsetX: number;
   offsetY: number;
 }
 
+/**
+ * Canvas-based image editor for cropping avatars. Supports drag-and-drop
+ * upload, mouse/touch panning, zoom via slider or scroll wheel, and exports
+ * the cropped image as either a `Blob` or a data URL.
+ */
 @Component({
   selector: 'ea-avatar-editor',
   imports: [
@@ -74,10 +82,15 @@ export class AvatarEditorComponent implements OnDestroy {
 
   readonly cropState = input<AvatarEditorCropState | null | undefined>();
 
+  /** Fires when the user finalises a crop via {@link exportCrop}; payload contains both `Blob` and data URL. */
   readonly cropped = output<AvatarEditorCropEvent>();
+  /** Fires when a file is chosen from disk or dropped onto the editor. */
   readonly fileSelected = output<File>();
+  /** Fires when the current image is cleared via the remove control. */
   readonly removed = output<void>();
+  /** Fires with a human-readable message when validation fails (wrong type, oversized file, etc.). */
   readonly errored = output<string>();
+  /** Fires whenever the user pans or zooms the image; useful for persisting in-progress crops. */
   readonly cropStateChanged = output<AvatarEditorCropState>();
 
   readonly hasImage = signal(false);
@@ -165,6 +178,7 @@ export class AvatarEditorComponent implements OnDestroy {
     input.value = '';
   }
 
+  /** Opens the native file picker dialog. */
   openFilePicker(): void {
     this.fileInputEl()?.nativeElement.click();
   }
@@ -298,6 +312,7 @@ export class AvatarEditorComponent implements OnDestroy {
     }
   }
 
+  /** Sets the zoom level, clamped to the configured `minZoom`/`maxZoom` range. */
   setZoom(value: number): void {
     this.isAtOriginal.set(false);
     const clamped = Math.min(this.maxZoom(), Math.max(this.minZoom(), value));
@@ -312,6 +327,7 @@ export class AvatarEditorComponent implements OnDestroy {
     this.setZoom(value);
   }
 
+  /** Clears the loaded image and resets pan/zoom to defaults. */
   removeImage(): void {
     this.image = null;
     this.hasImage.set(false);
@@ -324,6 +340,7 @@ export class AvatarEditorComponent implements OnDestroy {
     this.removed.emit();
   }
 
+  /** Marks the current image and crop state as the baseline for {@link revertImage}. */
   captureOriginal(): void {
     this.originalCaptured = true;
     this.originalImage = this.image;
@@ -333,6 +350,7 @@ export class AvatarEditorComponent implements OnDestroy {
     this.isAtOriginal.set(true);
   }
 
+  /** Restores the image and crop state captured by the most recent {@link captureOriginal}. */
   revertImage(): void {
     if (!this.originalCaptured) return;
 
@@ -364,6 +382,7 @@ export class AvatarEditorComponent implements OnDestroy {
     }
   }
 
+  /** Renders the current crop to an offscreen canvas, emits `cropped`, and resolves with the resulting `Blob`. */
   exportCrop(): Promise<Blob> {
     return new Promise((resolve, reject) => {
       if (!this.image) {

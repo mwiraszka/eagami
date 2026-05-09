@@ -7,9 +7,15 @@ import {
   input,
 } from '@angular/core';
 
+/** Semantic colour scheme of a badge. */
 export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+/** Visual size of a badge. */
 export type BadgeSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Compact pill-shaped indicator used to communicate status, counts, or labels
+ * inline with surrounding content.
+ */
 @Component({
   selector: 'ea-badge',
   imports: [NgClass],

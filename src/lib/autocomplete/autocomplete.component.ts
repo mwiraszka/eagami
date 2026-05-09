@@ -16,8 +16,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { SelectOption } from '../select-option';
 
+/** Visual size of the autocomplete input. */
 export type AutocompleteSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Text input paired with a filtered suggestion list. Filters options by
+ * case-insensitive substring match, supports arrow-key navigation, and
+ * implements `ControlValueAccessor` for use with reactive and template-driven
+ * forms.
+ */
 @Component({
   selector: 'ea-autocomplete',
   imports: [NgClass],
@@ -57,9 +64,13 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly value = model<string>('');
 
   // Outputs
+  /** Fires when the user picks an option from the suggestion list. */
   readonly selected = output<SelectOption>();
+  /** Fires whenever the input text changes, including on free-text edits. */
   readonly changed = output<string>();
+  /** Fires when the input receives focus. */
   readonly focused = output<FocusEvent>();
+  /** Fires when the input loses focus. */
   readonly blurred = output<FocusEvent>();
 
   // Internal state
@@ -189,6 +200,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
     }
   }
 
+  /** Programmatically selects the given option, updating the value and closing the list. */
   selectOption(option: SelectOption): void {
     if (option.disabled || this.isDisabled()) return;
     this.value.set(option.label);
@@ -200,11 +212,13 @@ export class AutocompleteComponent implements ControlValueAccessor {
     this.inputEl()?.nativeElement.focus();
   }
 
+  /** Closes the suggestion list without changing the current value. */
   close(): void {
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
   }
 
+  /** Moves keyboard focus to the underlying text input. */
   focus(): void {
     this.inputEl()?.nativeElement.focus();
   }

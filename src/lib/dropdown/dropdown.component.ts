@@ -20,8 +20,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SelectOption } from '../select-option';
 
+/** Visual size of the dropdown trigger. */
 export type DropdownSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Single-select dropdown with a custom popup list. Supports keyboard
+ * navigation (arrow keys, Enter/Space to select, Escape to close), closes
+ * on outside click or viewport scroll/resize, and integrates with Angular
+ * forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-dropdown',
   imports: [NgClass, ChevronDownIconComponent],
@@ -57,6 +64,7 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly value = model<string>('');
 
   // Outputs
+  /** Fires with the new value when the user selects an option. */
   readonly changed = output<string>();
 
   // Internal state
@@ -131,6 +139,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   // Handlers
+  /** Toggles the dropdown list between open and closed. */
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;
     this.isOpen.set(!this.isOpen());
@@ -140,6 +149,7 @@ export class DropdownComponent implements ControlValueAccessor {
     }
   }
 
+  /** Programmatically selects the given option, closing the list. */
   select(option: SelectOption): void {
     if (option.disabled || this.isDisabled() || this.readonly()) return;
     this.value.set(option.value);
@@ -149,11 +159,13 @@ export class DropdownComponent implements ControlValueAccessor {
     this.close();
   }
 
+  /** Closes the dropdown list without changing the current value. */
   close(): void {
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
   }
 
+  /** Moves keyboard focus to the dropdown trigger. */
   focus(): void {
     this.elRef()?.nativeElement.focus();
   }

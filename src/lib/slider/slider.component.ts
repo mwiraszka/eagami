@@ -13,8 +13,15 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Single-value range input controlled with pointer drag or full keyboard
+ * navigation (arrows, PageUp/PageDown, Home/End). Supports configurable
+ * `min`, `max`, and `step`, optional value display, and integrates with
+ * Angular forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-slider',
   templateUrl: './slider.component.html',
@@ -48,6 +55,7 @@ export class SliderComponent implements ControlValueAccessor {
   readonly id = input<string>(`ea-slider-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = model<number>(0);
+  /** Fires with the new (snapped, clamped) numeric value whenever the slider moves. */
   readonly changed = output<number>();
 
   private readonly _formDisabled = signal(false);

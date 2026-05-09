@@ -11,8 +11,14 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/** Visual size of a checkbox. */
 export type CheckboxSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Boolean form control with support for an indeterminate visual state. Pairs
+ * a visually hidden native input with a custom checkmark and integrates with
+ * Angular forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-checkbox',
   imports: [NgClass],
@@ -43,6 +49,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   readonly checked = model<boolean>(false);
 
   // Outputs
+  /** Fires with the new checked state whenever the user toggles the checkbox. */
   readonly changed = output<boolean>();
 
   // Internal state

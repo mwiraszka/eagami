@@ -2,6 +2,11 @@ import { Directive, ElementRef, inject, input } from '@angular/core';
 
 import { MenuComponent } from './menu.component';
 
+/**
+ * Wires a focusable host element (typically a button) to an `ea-menu`,
+ * handling click and keyboard activation (ArrowDown/Enter/Space to open,
+ * Escape to close) and applying the appropriate ARIA attributes.
+ */
 @Directive({
   selector: '[eaMenuTrigger]',
   host: {

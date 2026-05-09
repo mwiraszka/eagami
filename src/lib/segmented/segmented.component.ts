@@ -15,8 +15,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { SelectOption } from '../select-option';
 
+/** Visual size of the segmented control. */
 export type SegmentedSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Compact toggle button group for picking one of a small set of options
+ * (e.g. List/Grid/Kanban or Light/Dark). Implements `radiogroup` semantics
+ * and `ControlValueAccessor`, with full keyboard support
+ * (arrow keys, Home/End, Enter/Space).
+ */
 @Component({
   selector: 'ea-segmented',
   templateUrl: './segmented.component.html',
@@ -46,6 +53,7 @@ export class SegmentedComponent implements ControlValueAccessor {
   readonly id = input<string>(`ea-segmented-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = model<string>('');
+  /** Fires with the new value when the user selects a different option. */
   readonly changed = output<string>();
 
   private readonly _formDisabled = signal(false);
@@ -91,6 +99,7 @@ export class SegmentedComponent implements ControlValueAccessor {
     return this.isDisabled() || !!option.disabled;
   }
 
+  /** Programmatically selects the given option. */
   select(option: SelectOption): void {
     if (this.isOptionDisabled(option)) return;
     if (this.value() === option.value) {

@@ -15,9 +15,16 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
+/** Visual size of the textarea. */
 export type TextareaSize = 'sm' | 'md' | 'lg';
+/** Axis along which the user is allowed to resize the textarea. */
 export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
 
+/**
+ * Multiline text field that mirrors the `ea-input` API. Supports configurable
+ * `rows`, `resize` direction, and `maxlength`, and integrates with Angular
+ * forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-textarea',
   imports: [NgClass, AlertCircleIconComponent],
@@ -53,7 +60,9 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly isFocused = signal(false);
   private readonly _formDisabled = signal(false);
 
+  /** Fires when the textarea receives focus. */
   readonly focused = output<FocusEvent>();
+  /** Fires when the textarea loses focus. */
   readonly blurred = output<FocusEvent>();
 
   private onChange: (value: string) => void = () => {};
@@ -105,6 +114,7 @@ export class TextareaComponent implements ControlValueAccessor {
     this.blurred.emit(event);
   }
 
+  /** Moves keyboard focus to the underlying native textarea element. */
   focus(): void {
     this.textareaEl()?.nativeElement.focus();
   }

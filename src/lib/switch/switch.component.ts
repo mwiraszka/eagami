@@ -11,8 +11,14 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/** Visual size of the switch. */
 export type SwitchSize = 'sm' | 'md' | 'lg';
 
+/**
+ * On/off toggle styled as a sliding switch. Backed by a visually hidden
+ * native checkbox and integrates with Angular forms via
+ * `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-switch',
   imports: [NgClass],
@@ -38,6 +44,7 @@ export class SwitchComponent implements ControlValueAccessor {
   readonly id = input<string>(`ea-switch-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly checked = model<boolean>(false);
+  /** Fires with the new checked state whenever the user toggles the switch. */
   readonly changed = output<boolean>();
 
   private readonly _formDisabled = signal(false);

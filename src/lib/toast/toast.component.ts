@@ -8,6 +8,11 @@ import {
 import { XIconComponent } from '../icons/x.component';
 import { Toast, ToastService } from './toast.service';
 
+/**
+ * Outlet that renders the stack of active toasts produced by
+ * {@link ToastService}. Place a single `<ea-toast />` once in the root
+ * template so toasts created from anywhere in the app are surfaced.
+ */
 @Component({
   selector: 'ea-toast',
   imports: [XIconComponent],

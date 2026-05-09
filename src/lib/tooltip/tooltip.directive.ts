@@ -7,8 +7,14 @@ import {
   input,
 } from '@angular/core';
 
+/** Placement of the tooltip relative to its host element. */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
+/**
+ * Attaches a positioned tooltip to its host element. Shows on hover and
+ * focus, hides on leave/blur or Escape, and wires up `aria-describedby` so
+ * the tooltip text is announced to assistive technology.
+ */
 @Directive({
   selector: '[eaTooltip]',
 })

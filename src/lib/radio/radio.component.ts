@@ -9,6 +9,11 @@ import {
 
 import { RadioGroupComponent } from './radio-group.component';
 
+/**
+ * Single radio option used inside an `ea-radio-group`. Inherits its size and
+ * disabled state from the parent group and selecting it updates the group's
+ * value.
+ */
 @Component({
   selector: 'ea-radio',
   templateUrl: './radio.component.html',

@@ -19,9 +19,13 @@ import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
+/** Visual size of the date picker trigger. */
 export type DatePickerSize = 'sm' | 'md' | 'lg';
+/** Locale-aware date format used for the displayed value. */
 export type DatePickerFormat = 'short' | 'medium' | 'long';
+/** First day of the week in the calendar grid (0 = Sunday, 1 = Monday). */
 export type DatePickerWeekStart = 0 | 1;
+/** Value accepted via `writeValue` — a `Date`, ISO/parseable string, or `null`. */
 export type DatePickerValue = Date | string | null;
 
 interface CalendarDay {
@@ -34,6 +38,12 @@ interface CalendarDay {
   isFocused: boolean;
 }
 
+/**
+ * Calendar popover for selecting a single date. Supports `min`/`max` bounds,
+ * configurable week start, locale-aware formatting via `Intl.DateTimeFormat`,
+ * and full keyboard navigation (arrows, PageUp/PageDown, Home/End, Enter,
+ * Escape). Integrates with Angular forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-date-picker',
   imports: [
@@ -78,6 +88,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly value = model<Date | null>(null);
 
   // Outputs
+  /** Fires when the selected date changes, including when cleared. */
   readonly changed = output<Date | null>();
 
   // Internal state
@@ -195,6 +206,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   // Handlers
+  /** Toggles the calendar popover between open and closed. */
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;
     if (this.isOpen()) {
@@ -204,6 +216,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
+  /** Opens the calendar popover and moves focus to the focused day cell. */
   open(): void {
     if (this.isDisabled() || this.readonly()) return;
     const current = this.value() ?? new Date();
@@ -214,6 +227,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     queueMicrotask(() => this.focusFocusedDayCell());
   }
 
+  /** Closes the calendar popover. */
   close(): void {
     this.isOpen.set(false);
     this.focusedDate.set(null);
@@ -227,6 +241,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     focusedCell?.focus();
   }
 
+  /** Moves keyboard focus to the trigger button. */
   focus(): void {
     this.triggerEl()?.nativeElement.focus();
   }
@@ -242,6 +257,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.triggerEl()?.nativeElement.focus();
   }
 
+  /** Clears the selected date and emits `changed` with `null`. */
   clear(event: Event): void {
     event.stopPropagation();
     if (this.isDisabled() || this.readonly()) return;

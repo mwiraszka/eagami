@@ -12,8 +12,14 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/** Visual size of each digit cell. */
 export type CodeInputSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Verification code entry made up of one input per digit. Auto-advances on
+ * input, supports paste of the full code at once, and integrates with Angular
+ * forms via `ControlValueAccessor`.
+ */
 @Component({
   selector: 'ea-code-input',
   templateUrl: './code-input.component.html',
@@ -50,6 +56,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   private readonly _formDisabled = signal(false);
 
   // Outputs
+  /** Fires with the full code once every digit has been entered. */
   readonly completed = output<string>();
 
   // ControlValueAccessor callbacks
@@ -167,6 +174,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
+  /** Moves keyboard focus to the next empty digit (or the last one when full). */
   focus(): void {
     const val = this.value();
     const index = Math.min(val.length, this.length() - 1);

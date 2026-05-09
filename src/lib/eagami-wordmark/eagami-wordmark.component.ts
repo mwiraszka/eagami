@@ -2,9 +2,16 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 
 import { EagamiIconComponent } from '../icons/eagami.component';
 
+/** Variant of the wordmark — 1: "eagami", 2: "handcrafted by eagami", 3: "eagami design system", 4: with tagline. */
 export type EagamiWordmarkVariant = 1 | 2 | 3 | 4;
+/** Layout of the wordmark — `stacked` for multi-line, `inline` for a single line with em-dash separators. */
 export type EagamiWordmarkLayout = 'stacked' | 'inline';
 
+/**
+ * Branded eagami wordmark logo. Scales continuously from a single `size`
+ * pixel value and supports four content variants paired with stacked or
+ * inline layouts.
+ */
 @Component({
   selector: 'ea-eagami-wordmark',
   imports: [EagamiIconComponent],

@@ -14,8 +14,15 @@ import {
 
 import { XIconComponent } from '../icons/x.component';
 
+/** Width preset of the dialog panel. */
 export type DialogSize = 'sm' | 'md' | 'lg' | 'full';
 
+/**
+ * Modal dialog backed by the native `<dialog>` element. Uses `showModal()`
+ * for browser-managed focus trapping, supports backdrop and Escape dismissal,
+ * and exposes `header`, default, and `footer` content slots. The `open` state
+ * is a two-way `model()` binding.
+ */
 @Component({
   selector: 'ea-dialog',
   imports: [NgClass, XIconComponent],
@@ -40,7 +47,9 @@ export class DialogComponent {
   readonly open = model<boolean>(false);
 
   // Outputs
+  /** Fires once the dialog has been shown via `showModal()`. */
   readonly opened = output<void>();
+  /** Fires when the dialog closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
   // Computed

@@ -7,10 +7,18 @@ import {
   output,
 } from '@angular/core';
 
+/** Visual style of a button — drives colour and emphasis. */
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+/** Visual size of a button. */
 export type ButtonSize = 'sm' | 'md' | 'lg';
+/** HTML `type` attribute applied to the underlying `<button>` element. */
 export type ButtonType = 'button' | 'submit' | 'reset';
 
+/**
+ * Standard action button supporting primary, secondary, ghost, and danger
+ * variants. Includes a loading state that swaps the label for a spinner while
+ * preserving the rendered width.
+ */
 @Component({
   selector: 'ea-button',
   templateUrl: './button.component.html',
@@ -33,6 +41,7 @@ export class ButtonComponent {
   readonly ariaCurrent = input<string | undefined>(undefined, { alias: 'aria-current' });
 
   // Output
+  /** Fires when the button is activated; suppressed while disabled or loading. */
   readonly clicked = output<MouseEvent>();
 
   // Derived

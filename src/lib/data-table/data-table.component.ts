@@ -15,10 +15,13 @@ import { ArrowDownIconComponent } from '../icons/arrow-down.component';
 import { ArrowUpIconComponent } from '../icons/arrow-up.component';
 import { ChevronsUpDownIconComponent } from '../icons/chevrons-up-down.component';
 
+/** Vertical density preset for table rows and header cells. */
 export type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
 
+/** Sort direction; `null` means no sort is applied. */
 export type DataTableSortDirection = 'asc' | 'desc' | null;
 
+/** Column definition for the data table, including optional cell/header templates. */
 export interface DataTableColumn<T = Record<string, unknown>> {
   key: string;
   label: string;
@@ -30,11 +33,18 @@ export interface DataTableColumn<T = Record<string, unknown>> {
   headerTemplate?: TemplateRef<{ $implicit: DataTableColumn<T> }>;
 }
 
+/** Current sort state — which column is sorted and in which direction. */
 export interface DataTableSortState {
   column: string;
   direction: DataTableSortDirection;
 }
 
+/**
+ * Table for tabular data with sortable columns, sticky headers, and density
+ * presets. Supports striping, borders, hoverable rows, and custom cell or
+ * header templates via `ng-template`. Sort state is exposed as a two-way
+ * `model()` binding.
+ */
 @Component({
   selector: 'ea-data-table',
   imports: [
@@ -62,6 +72,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
+  /** Fires whenever the sort column or direction changes via header click. */
   readonly sorted = output<DataTableSortState>();
 
   readonly noDataTemplate = contentChild<TemplateRef<unknown>>('noData');

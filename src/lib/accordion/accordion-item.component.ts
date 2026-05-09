@@ -9,6 +9,11 @@ import {
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { AccordionComponent } from './accordion.component';
 
+/**
+ * Single expandable section within an `ea-accordion`. Each item exposes a
+ * header button with the supplied `label` and reveals its projected content
+ * when expanded. Must be rendered inside an `ea-accordion`.
+ */
 @Component({
   selector: 'ea-accordion-item',
   imports: [ChevronDownIconComponent],

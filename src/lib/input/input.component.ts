@@ -18,7 +18,9 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
 
+/** Visual size of the input. */
 export type InputSize = 'sm' | 'md' | 'lg';
+/** HTML `type` attribute applied to the underlying `<input>`. */
 export type InputType =
   | 'text'
   | 'email'
@@ -28,6 +30,12 @@ export type InputType =
   | 'tel'
   | 'url';
 
+/**
+ * Single-line text field with label, hint, and error message support.
+ * Includes a built-in show/hide toggle for `password` inputs and integrates
+ * with Angular forms via `ControlValueAccessor`. Prefix and suffix content
+ * can be projected via the `prefix` and `suffix` slots.
+ */
 @Component({
   selector: 'ea-input',
   templateUrl: './input.component.html',
@@ -69,7 +77,9 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   private readonly _formDisabled = signal(false);
 
   // Outputs
+  /** Fires when the input receives focus. */
   readonly focused = output<FocusEvent>();
+  /** Fires when the input loses focus. */
   readonly blurred = output<FocusEvent>();
 
   // ControlValueAccessor callbacks
@@ -135,10 +145,12 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
     this.blurred.emit(event);
   }
 
+  /** Toggles the password reveal state for `type="password"` inputs. */
   togglePasswordVisibility(): void {
     this.passwordVisible.update(value => !value);
   }
 
+  /** Moves keyboard focus to the underlying native input element. */
   focus(): void {
     this.inputEl()?.nativeElement.focus();
   }

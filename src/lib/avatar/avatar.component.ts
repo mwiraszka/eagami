@@ -9,9 +9,16 @@ import {
 
 import { UserIconComponent } from '../icons/user.component';
 
+/** Diameter (or side length) preset for an avatar. */
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+/** Outline of the avatar — round or rounded-square. */
 export type AvatarShape = 'circle' | 'square';
 
+/**
+ * Compact image used to represent a user or entity. Falls back to initials
+ * when no `src` is provided, then to a generic user icon when neither image
+ * nor initials are available.
+ */
 @Component({
   selector: 'ea-avatar',
   imports: [NgClass, UserIconComponent],

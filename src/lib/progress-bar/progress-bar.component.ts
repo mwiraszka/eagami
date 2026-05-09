@@ -7,9 +7,16 @@ import {
   input,
 } from '@angular/core';
 
+/** Semantic colour scheme of the progress bar. */
 export type ProgressBarVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+/** Visual height of the progress bar. */
 export type ProgressBarSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Linear progress indicator supporting both determinate (driven by `value`
+ * and `max`) and indeterminate modes. Optionally renders an inline label
+ * and/or the current percentage.
+ */
 @Component({
   selector: 'ea-progress-bar',
   imports: [NgClass],
