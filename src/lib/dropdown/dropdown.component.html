@@ -20,6 +20,7 @@
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
       [attr.aria-labelledby]="label() ? id() + '-label' : null"
+      [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
