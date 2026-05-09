@@ -3,6 +3,7 @@
   [class.ea-radio-group--horizontal]="orientation() === 'horizontal'"
   [class.ea-radio-group--vertical]="orientation() === 'vertical'"
   role="radiogroup"
+  [id]="id()"
   [attr.aria-label]="ariaLabel()">
   <ng-content />
 </div>

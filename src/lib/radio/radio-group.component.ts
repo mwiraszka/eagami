@@ -28,6 +28,7 @@ export type RadioOrientation = 'vertical' | 'horizontal';
 })
 export class RadioGroupComponent implements ControlValueAccessor {
   // Inputs
+  readonly id = input<string>(`ea-radio-group-${Math.random().toString(36).slice(2, 9)}`);
   readonly name = input<string>(`ea-radio-${Math.random().toString(36).slice(2, 9)}`);
   readonly size = input<RadioSize>('md');
   readonly orientation = input<RadioOrientation>('vertical');
