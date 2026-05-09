@@ -35,8 +35,12 @@ export class SegmentedComponent implements ControlValueAccessor {
   readonly buttonEls = viewChildren<ElementRef<HTMLButtonElement>>('optionEl');
 
   readonly options = input.required<SelectOption[]>();
+  readonly label = input<string | undefined>(undefined);
+  readonly hint = input<string | undefined>(undefined);
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly required = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-segmented-${Math.random().toString(36).slice(2, 9)}`);
@@ -50,6 +54,9 @@ export class SegmentedComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly enabledOptions = computed(() => this.options().filter(opt => !opt.disabled));
 
@@ -57,6 +64,7 @@ export class SegmentedComponent implements ControlValueAccessor {
     [`ea-segmented--${this.size()}`]: true,
     'ea-segmented--full-width': this.fullWidth(),
     'ea-segmented--disabled': this.isDisabled(),
+    'ea-segmented--error': this.hasError(),
   }));
 
   writeValue(val: string): void {

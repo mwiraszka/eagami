@@ -2,6 +2,26 @@
 // SWITCH COMPONENT
 // =============================================================================
 
+.ea-switch-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__message {
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+
+    &--error {
+      color: var(--color-error-default);
+    }
+  }
+}
+
 .ea-switch {
   display: inline-flex;
   align-items: center;
@@ -129,5 +149,16 @@
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-normal);
     color: var(--color-text-primary);
+
+    &--required::after {
+      content: ' *';
+      color: var(--color-error-default);
+    }
+  }
+
+  &--error {
+    .ea-switch__track {
+      border-color: var(--color-error-default);
+    }
   }
 }

@@ -29,8 +29,11 @@ export type SwitchSize = 'sm' | 'md' | 'lg';
 })
 export class SwitchComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
+  readonly hint = input<string | undefined>(undefined);
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<SwitchSize>('md');
   readonly disabled = input<boolean>(false);
+  readonly required = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-switch-${Math.random().toString(36).slice(2, 9)}`);
 
@@ -43,11 +46,15 @@ export class SwitchComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly hostClasses = computed(() => ({
     [`ea-switch--${this.size()}`]: true,
     'ea-switch--checked': this.checked(),
     'ea-switch--disabled': this.isDisabled(),
+    'ea-switch--error': this.hasError(),
   }));
 
   writeValue(val: boolean): void {

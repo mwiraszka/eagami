@@ -30,10 +30,13 @@ export type CheckboxSize = 'sm' | 'md' | 'lg';
 export class CheckboxComponent implements ControlValueAccessor {
   // Inputs
   readonly label = input<string | undefined>(undefined);
+  readonly hint = input<string | undefined>(undefined);
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-checkbox-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way checked binding
@@ -47,12 +50,16 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly hostClasses = computed(() => ({
     [`ea-checkbox--${this.size()}`]: true,
     'ea-checkbox--disabled': this.isDisabled(),
     'ea-checkbox--checked': this.checked(),
     'ea-checkbox--indeterminate': this.indeterminate(),
+    'ea-checkbox--error': this.hasError(),
   }));
 
   // ControlValueAccessor callbacks

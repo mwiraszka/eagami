@@ -33,6 +33,10 @@ export class RadioGroupComponent implements ControlValueAccessor {
   readonly size = input<RadioSize>('md');
   readonly orientation = input<RadioOrientation>('vertical');
   readonly disabled = input<boolean>(false);
+  readonly required = input<boolean>(false);
+  readonly label = input<string | undefined>(undefined);
+  readonly hint = input<string | undefined>(undefined);
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
 
   // Two-way value binding
@@ -46,6 +50,9 @@ export class RadioGroupComponent implements ControlValueAccessor {
 
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
