@@ -211,11 +211,20 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.viewMonth.set(current.getMonth());
     this.focusedDate.set(this.startOfDay(current));
     this.isOpen.set(true);
+    queueMicrotask(() => this.focusFocusedDayCell());
   }
 
   close(): void {
     this.isOpen.set(false);
     this.focusedDate.set(null);
+  }
+
+  private focusFocusedDayCell(): void {
+    const host = this.hostEl()?.nativeElement;
+    const focusedCell = host?.querySelector<HTMLButtonElement>(
+      '.ea-date-picker__day--focused',
+    );
+    focusedCell?.focus();
   }
 
   focus(): void {

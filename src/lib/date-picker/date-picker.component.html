@@ -11,40 +11,42 @@
   }
 
   <div class="ea-date-picker">
-    <button
-      #triggerEl
-      type="button"
-      class="ea-date-picker__trigger"
-      [ngClass]="triggerClasses()"
-      [id]="id()"
-      [disabled]="isDisabled()"
-      [attr.aria-expanded]="isOpen()"
-      [attr.aria-haspopup]="'dialog'"
-      [attr.aria-invalid]="hasError() || null"
-      [attr.aria-describedby]="
-        showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
-      "
-      (click)="toggle()"
-      (keydown)="handleTriggerKeydown($event)">
-      <ea-icon-calendar
-        class="ea-date-picker__trigger-icon"
-        aria-hidden="true" />
-      <span
-        class="ea-date-picker__trigger-value"
-        [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
-        {{ displayValue() || placeholder() }}
-      </span>
-      @if (value() && !isDisabled()) {
+    <div class="ea-date-picker__trigger-wrapper">
+      <button
+        #triggerEl
+        type="button"
+        class="ea-date-picker__trigger"
+        [ngClass]="triggerClasses()"
+        [id]="id()"
+        [disabled]="isDisabled()"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'dialog'"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        (click)="toggle()"
+        (keydown)="handleTriggerKeydown($event)">
+        <ea-icon-calendar
+          class="ea-date-picker__trigger-icon"
+          aria-hidden="true" />
+        <span
+          class="ea-date-picker__trigger-value"
+          [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
+          {{ displayValue() || placeholder() }}
+        </span>
+      </button>
+      @if (value() && !isDisabled() && !readonly()) {
         <button
           type="button"
           class="ea-date-picker__clear"
           aria-label="Clear date"
-          tabindex="-1"
           (click)="clear($event)">
           <span aria-hidden="true">×</span>
         </button>
       }
-    </button>
+    </div>
 
     @if (isOpen()) {
       <div
