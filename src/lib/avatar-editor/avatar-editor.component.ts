@@ -255,6 +255,49 @@ export class AvatarEditorComponent implements OnDestroy {
     this.setZoom(this.zoom() + delta);
   }
 
+  onCanvasKeydown(event: KeyboardEvent): void {
+    if (!this.hasImage() || this.isLoading()) return;
+    const step = event.shiftKey ? 20 : 5;
+    let handled = false;
+
+    switch (event.key) {
+      case 'ArrowLeft':
+        this.offsetX += step;
+        handled = true;
+        break;
+      case 'ArrowRight':
+        this.offsetX -= step;
+        handled = true;
+        break;
+      case 'ArrowUp':
+        this.offsetY += step;
+        handled = true;
+        break;
+      case 'ArrowDown':
+        this.offsetY -= step;
+        handled = true;
+        break;
+      case '+':
+      case '=':
+        this.setZoom(this.zoom() + 0.1);
+        event.preventDefault();
+        return;
+      case '-':
+      case '_':
+        this.setZoom(this.zoom() - 0.1);
+        event.preventDefault();
+        return;
+    }
+
+    if (handled) {
+      event.preventDefault();
+      this.isAtOriginal.set(false);
+      this.clampOffset();
+      this.draw();
+      this.emitCropStateChange();
+    }
+  }
+
   setZoom(value: number): void {
     this.isAtOriginal.set(false);
     const clamped = Math.min(this.maxZoom(), Math.max(this.minZoom(), value));

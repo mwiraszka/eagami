@@ -37,6 +37,7 @@
         [value]="digits()[i]"
         [placeholder]="placeholder()"
         [attr.aria-label]="'Digit ' + (i + 1) + ' of ' + length()"
+        [attr.aria-invalid]="hasError() || null"
         (input)="handleInput($event, i)"
         (keydown)="handleKeydown($event, i)"
         (paste)="handlePaste($event)"

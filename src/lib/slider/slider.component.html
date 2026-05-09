@@ -2,15 +2,15 @@
   class="ea-slider-field"
   [ngClass]="hostClasses()">
   @if (label()) {
-    <label
+    <span
       class="ea-slider-field__label"
-      [for]="id()"
+      [id]="id() + '-label'"
       [class.ea-slider-field__label--required]="required()">
       {{ label() }}
       @if (showValue()) {
         <span class="ea-slider-field__value">{{ formatValue()(clampedValue()) }}</span>
       }
-    </label>
+    </span>
   }
 
   <div class="ea-slider">
@@ -30,7 +30,8 @@
         role="slider"
         tabindex="0"
         [id]="id()"
-        [attr.aria-label]="ariaLabel() ?? label()"
+        [attr.aria-labelledby]="label() ? id() + '-label' : null"
+        [attr.aria-label]="!label() ? (ariaLabel() ?? null) : null"
         [attr.aria-valuemin]="min()"
         [attr.aria-valuemax]="max()"
         [attr.aria-valuenow]="clampedValue()"

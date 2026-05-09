@@ -26,6 +26,7 @@ export class TagComponent {
   readonly size = input<TagSize>('md');
   readonly removable = input<boolean>(false);
   readonly disabled = input<boolean>(false);
+  readonly removeLabel = input<string>('Remove');
 
   readonly removed = output<void>();
 
