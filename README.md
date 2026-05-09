@@ -18,7 +18,7 @@ Every component is standalone, signal-based, and fully themed via design tokens.
 - **Accessible** — ARIA attributes, keyboard navigation, focus management, and screen reader support throughout
 - **Form-ready** — `ControlValueAccessor` on every form control (input, textarea, checkbox, switch, radio, dropdown, autocomplete, date picker, slider, code input, segmented)
 - **Tree-shakeable** — only the components you import end up in your bundle
-- **Tiny** — the entire library is **70 KB gzipped**; a typical app ships single-digit KB
+- **Tiny** — the entire library is **70 KB gzipped**, and only the components you import end up in your bundle
 
 ## Installation
 
