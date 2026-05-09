@@ -15,10 +15,6 @@ const meta: Meta<CodeInputComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
-    status: {
-      control: 'select',
-      options: ['default', 'error', 'success'],
-    },
     length: {
       control: { type: 'number', min: 4, max: 8, step: 1 },
     },
@@ -28,7 +24,6 @@ const meta: Meta<CodeInputComponent> = {
     label: 'Verification code',
     length: 6,
     size: 'md',
-    status: 'default',
     disabled: false,
     required: false,
   },
@@ -48,12 +43,6 @@ export const WithHint: Story = {
 export const WithError: Story = {
   args: {
     errorMsg: 'Invalid verification code',
-  },
-};
-
-export const Success: Story = {
-  args: {
-    status: 'success',
   },
 };
 

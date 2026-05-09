@@ -295,7 +295,7 @@ describe('DatePickerComponent', () => {
 
   describe('Error and hint', () => {
     it('shows error message when set', () => {
-      fixture.componentRef.setInput('error', 'Invalid date');
+      fixture.componentRef.setInput('errorMsg', 'Invalid date');
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
@@ -316,7 +316,7 @@ describe('DatePickerComponent', () => {
 
     it('hides hint when error is set', () => {
       fixture.componentRef.setInput('hint', 'Pick a future date');
-      fixture.componentRef.setInput('error', 'Invalid date');
+      fixture.componentRef.setInput('errorMsg', 'Invalid date');
       fixture.detectChanges();
 
       expect(

@@ -34,7 +34,7 @@ export class SliderComponent implements ControlValueAccessor {
 
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly min = input<number>(0);
   readonly max = input<number>(100);
   readonly step = input<number>(1);
@@ -69,13 +69,13 @@ export class SliderComponent implements ControlValueAccessor {
     return ((this.clampedValue() - this.min()) / range) * 100;
   });
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly hostClasses = computed(() => ({
     [`ea-slider--${this.size()}`]: true,
-    [`ea-slider--${this.resolvedStatus()}`]: true,
+    'ea-slider--error': this.hasError(),
     'ea-slider--disabled': this.isDisabled(),
     'ea-slider--dragging': this.dragging(),
   }));

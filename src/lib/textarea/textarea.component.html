@@ -23,7 +23,7 @@
       [value]="value()"
       [style.resize]="resize()"
       [attr.maxlength]="maxlength() ?? null"
-      [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+      [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "

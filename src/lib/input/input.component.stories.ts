@@ -15,10 +15,6 @@ const meta: Meta<InputComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
-    status: {
-      control: 'select',
-      options: ['default', 'error', 'success'],
-    },
     type: {
       control: 'select',
       options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
@@ -26,14 +22,13 @@ const meta: Meta<InputComponent> = {
     autocomplete: { control: 'text' },
     autofocus: { control: 'boolean' },
     showPasswordToggle: { control: 'boolean' },
-    inputFocused: { action: 'focused' },
-    inputBlurred: { action: 'blurred' },
+    focused: { action: 'focused' },
+    blurred: { action: 'blurred' },
   },
   args: {
     label: 'Label',
     placeholder: 'Enter text…',
     size: 'md',
-    status: 'default',
     type: 'text',
     disabled: false,
     readonly: false,
@@ -57,12 +52,6 @@ export const WithHint: Story = {
 export const WithError: Story = {
   args: {
     errorMsg: 'This field is required.',
-  },
-};
-
-export const Success: Story = {
-  args: {
-    status: 'success',
   },
 };
 

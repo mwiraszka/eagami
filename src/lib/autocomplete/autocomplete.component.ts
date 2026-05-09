@@ -14,13 +14,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export type AutocompleteSize = 'sm' | 'md' | 'lg';
+import { SelectOption } from '../select-option';
 
-export interface AutocompleteOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
+export type AutocompleteSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'ea-autocomplete',
@@ -43,13 +39,13 @@ export class AutocompleteComponent implements ControlValueAccessor {
   // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
-  readonly options = input<AutocompleteOption[]>([]);
+  readonly options = input<SelectOption[]>([]);
   readonly size = input<AutocompleteSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly minLength = input<number>(0);
   readonly maxResults = input<number>(10);
   readonly emptyMessage = input<string>('No results');
@@ -61,7 +57,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly value = model<string>('');
 
   // Outputs
-  readonly optionSelected = output<AutocompleteOption>();
+  readonly optionSelected = output<SelectOption>();
   readonly valueChanged = output<string>();
 
   // Internal state
@@ -78,12 +74,12 @@ export class AutocompleteComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
+  readonly hasError = computed(() => !!this.errorMsg());
 
   readonly showError = computed(() => !!this.errorMsg());
   readonly showHint = computed(() => !!this.hint() && !this.showError());
 
-  readonly filteredOptions = computed<AutocompleteOption[]>(() => {
+  readonly filteredOptions = computed<SelectOption[]>(() => {
     const query = this.value().trim().toLowerCase();
     const allOptions = this.options();
     const max = this.maxResults();
@@ -107,7 +103,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   readonly wrapperClasses = computed(() => ({
     [`ea-autocomplete__wrapper--${this.size()}`]: true,
-    [`ea-autocomplete__wrapper--${this.resolvedStatus()}`]: true,
+    'ea-autocomplete__wrapper--error': this.hasError(),
     'ea-autocomplete__wrapper--focused': this.focused(),
     'ea-autocomplete__wrapper--disabled': this.isDisabled(),
   }));
@@ -189,7 +185,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
     }
   }
 
-  selectOption(option: AutocompleteOption): void {
+  selectOption(option: SelectOption): void {
     if (option.disabled || this.isDisabled()) return;
     this.value.set(option.label);
     this.onChange(option.label);

@@ -13,7 +13,6 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type CodeInputSize = 'sm' | 'md' | 'lg';
-export type CodeInputStatus = 'default' | 'error' | 'success';
 
 @Component({
   selector: 'ea-code-input',
@@ -35,9 +34,8 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly length = input<number>(6);
   readonly size = input<CodeInputSize>('md');
-  readonly status = input<CodeInputStatus>('default');
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly id = input<string>(`ea-code-input-${Math.random().toString(36).slice(2, 9)}`);
@@ -59,12 +57,9 @@ export class CodeInputComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed<CodeInputStatus>(() =>
-    this.errorMsg() ? 'error' : this.status(),
-  );
-
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly digits = computed(() => {
     const val = this.value();

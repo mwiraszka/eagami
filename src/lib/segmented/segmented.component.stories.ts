@@ -1,8 +1,8 @@
 import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { SegmentedComponent, SegmentedOption } from './segmented.component';
+import { SegmentedComponent, SelectOption } from './segmented.component';
 
-const viewOptions: SegmentedOption[] = [
+const viewOptions: SelectOption[] = [
   { value: 'list', label: 'List' },
   { value: 'grid', label: 'Grid' },
   { value: 'kanban', label: 'Kanban' },

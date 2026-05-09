@@ -81,14 +81,6 @@
     }
   }
 
-  &--success .ea-code-input {
-    border-color: var(--color-success-default);
-
-    &--focused {
-      box-shadow: var(--shadow-focus-ring-success);
-    }
-  }
-
   &--disabled {
     opacity: 0.6;
 

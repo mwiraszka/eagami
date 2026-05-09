@@ -260,7 +260,7 @@ describe('CodeInputComponent', () => {
 
   describe('Status / error / hint', () => {
     it('shows the error message when errorMsg is set', () => {
-      fixture.componentRef.setInput('error', 'Invalid code');
+      fixture.componentRef.setInput('errorMsg', 'Invalid code');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
         '.ea-code-input-field__message--error',
@@ -269,7 +269,7 @@ describe('CodeInputComponent', () => {
     });
 
     it('applies error status class on group', () => {
-      fixture.componentRef.setInput('error', 'Invalid code');
+      fixture.componentRef.setInput('errorMsg', 'Invalid code');
       fixture.detectChanges();
       expect(getGroup().classList).toContain('ea-code-input-group--error');
     });
@@ -285,17 +285,11 @@ describe('CodeInputComponent', () => {
 
     it('hides hint when error is also set', () => {
       fixture.componentRef.setInput('hint', 'Check your email');
-      fixture.componentRef.setInput('error', 'Invalid code');
+      fixture.componentRef.setInput('errorMsg', 'Invalid code');
       fixture.detectChanges();
       expect(
         fixture.nativeElement.querySelector('.ea-code-input-field__message--hint'),
       ).toBeNull();
-    });
-
-    it('applies success status class on group', () => {
-      fixture.componentRef.setInput('status', 'success');
-      fixture.detectChanges();
-      expect(getGroup().classList).toContain('ea-code-input-group--success');
     });
   });
 

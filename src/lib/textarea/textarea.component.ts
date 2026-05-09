@@ -16,7 +16,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
 export type TextareaSize = 'sm' | 'md' | 'lg';
-export type TextareaStatus = 'default' | 'error' | 'success';
 export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
 
 @Component({
@@ -39,9 +38,8 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly size = input<TextareaSize>('md');
-  readonly status = input<TextareaStatus>('default');
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
@@ -52,26 +50,24 @@ export class TextareaComponent implements ControlValueAccessor {
 
   readonly value = model<string>('');
 
-  readonly focused = signal(false);
+  readonly isFocused = signal(false);
   private readonly _formDisabled = signal(false);
 
-  readonly textareaFocused = output<FocusEvent>();
-  readonly textareaBlurred = output<FocusEvent>();
+  readonly focused = output<FocusEvent>();
+  readonly blurred = output<FocusEvent>();
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-  readonly resolvedStatus = computed<TextareaStatus>(() =>
-    this.errorMsg() ? 'error' : this.status(),
-  );
-  readonly showError = computed(() => !!this.errorMsg());
-  readonly showHint = computed(() => !!this.hint() && !this.showError());
+  readonly hasError = computed(() => !!this.errorMsg());
+  readonly showError = this.hasError;
+  readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly wrapperClasses = computed(() => ({
     [`ea-textarea-wrapper--${this.size()}`]: true,
-    [`ea-textarea-wrapper--${this.resolvedStatus()}`]: true,
-    'ea-textarea-wrapper--focused': this.focused(),
+    'ea-textarea-wrapper--error': this.hasError(),
+    'ea-textarea-wrapper--focused': this.isFocused(),
     'ea-textarea-wrapper--disabled': this.isDisabled(),
     'ea-textarea-wrapper--readonly': this.readonly(),
   }));
@@ -99,14 +95,14 @@ export class TextareaComponent implements ControlValueAccessor {
   }
 
   handleFocus(event: FocusEvent): void {
-    this.focused.set(true);
-    this.textareaFocused.emit(event);
+    this.isFocused.set(true);
+    this.focused.emit(event);
   }
 
   handleBlur(event: FocusEvent): void {
-    this.focused.set(false);
+    this.isFocused.set(false);
     this.onTouched();
-    this.textareaBlurred.emit(event);
+    this.blurred.emit(event);
   }
 
   focus(): void {

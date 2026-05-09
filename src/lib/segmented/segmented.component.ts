@@ -13,13 +13,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export type SegmentedSize = 'sm' | 'md' | 'lg';
+import { SelectOption } from '../select-option';
 
-export interface SegmentedOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
+export type SegmentedSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'ea-segmented',
@@ -38,7 +34,7 @@ export interface SegmentedOption {
 export class SegmentedComponent implements ControlValueAccessor {
   readonly buttonEls = viewChildren<ElementRef<HTMLButtonElement>>('optionEl');
 
-  readonly options = input.required<SegmentedOption[]>();
+  readonly options = input.required<SelectOption[]>();
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
@@ -79,15 +75,15 @@ export class SegmentedComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  isSelected(option: SegmentedOption): boolean {
+  isSelected(option: SelectOption): boolean {
     return this.value() === option.value;
   }
 
-  isOptionDisabled(option: SegmentedOption): boolean {
+  isOptionDisabled(option: SelectOption): boolean {
     return this.isDisabled() || !!option.disabled;
   }
 
-  select(option: SegmentedOption): void {
+  select(option: SelectOption): void {
     if (this.isOptionDisabled(option)) return;
     if (this.value() === option.value) {
       this.onTouched();

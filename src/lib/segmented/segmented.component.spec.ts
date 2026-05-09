@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SegmentedComponent, SegmentedOption } from './segmented.component';
+import { SegmentedComponent, SelectOption } from './segmented.component';
 
-const options: SegmentedOption[] = [
+const options: SelectOption[] = [
   { value: 'a', label: 'Apple' },
   { value: 'b', label: 'Banana' },
   { value: 'c', label: 'Cherry', disabled: true },

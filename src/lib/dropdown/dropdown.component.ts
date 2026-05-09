@@ -18,14 +18,9 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
+import { SelectOption } from '../select-option';
 
 export type DropdownSize = 'sm' | 'md' | 'lg';
-
-export interface DropdownOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
 
 @Component({
   selector: 'ea-dropdown',
@@ -49,12 +44,12 @@ export class DropdownComponent implements ControlValueAccessor {
   // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('Select…');
-  readonly options = input<DropdownOption[]>([]);
+  readonly options = input<SelectOption[]>([]);
   readonly size = input<DropdownSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-dropdown-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way value binding
@@ -75,7 +70,7 @@ export class DropdownComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
+  readonly hasError = computed(() => !!this.errorMsg());
 
   readonly showError = computed(() => !!this.errorMsg());
   readonly showHint = computed(() => !!this.hint() && !this.showError());
@@ -87,7 +82,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   readonly triggerClasses = computed(() => ({
     [`ea-dropdown__trigger--${this.size()}`]: true,
-    [`ea-dropdown__trigger--${this.resolvedStatus()}`]: true,
+    'ea-dropdown__trigger--error': this.hasError(),
     'ea-dropdown__trigger--open': this.isOpen(),
     'ea-dropdown__trigger--disabled': this.isDisabled(),
   }));
@@ -144,7 +139,7 @@ export class DropdownComponent implements ControlValueAccessor {
     }
   }
 
-  select(option: DropdownOption): void {
+  select(option: SelectOption): void {
     if (option.disabled || this.isDisabled()) return;
     this.value.set(option.value);
     this.onChange(option.value);

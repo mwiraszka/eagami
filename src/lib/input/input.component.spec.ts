@@ -176,16 +176,16 @@ describe('InputComponent', () => {
       expect(getWrapper().classList).not.toContain('ea-input-wrapper--focused');
     });
 
-    it('emits inputFocused on focus', () => {
+    it('emits focused on focus', () => {
       const spy = jest.fn();
-      component.inputFocused.subscribe(spy);
+      component.focused.subscribe(spy);
       getNativeInput().dispatchEvent(new FocusEvent('focus'));
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('emits inputBlurred on blur', () => {
+    it('emits blurred on blur', () => {
       const spy = jest.fn();
-      component.inputBlurred.subscribe(spy);
+      component.blurred.subscribe(spy);
       getNativeInput().dispatchEvent(new FocusEvent('blur'));
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -193,20 +193,20 @@ describe('InputComponent', () => {
 
   describe('Status / error / hint', () => {
     it('shows the error message when errorMsg is set', () => {
-      fixture.componentRef.setInput('error', 'Required');
+      fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector('.ea-input-field__message--error');
       expect(msg?.textContent).toContain('Required');
     });
 
     it('sets wrapper to error status when errorMsg is set', () => {
-      fixture.componentRef.setInput('error', 'Bad input');
+      fixture.componentRef.setInput('errorMsg', 'Bad input');
       fixture.detectChanges();
       expect(getWrapper().classList).toContain('ea-input-wrapper--error');
     });
 
-    it('sets aria-invalid on the input when status is error', () => {
-      fixture.componentRef.setInput('error', 'Bad input');
+    it('sets aria-invalid on the input when errorMsg is set', () => {
+      fixture.componentRef.setInput('errorMsg', 'Bad input');
       fixture.detectChanges();
       expect(getNativeInput().getAttribute('aria-invalid')).toBe('true');
     });
@@ -224,7 +224,7 @@ describe('InputComponent', () => {
 
     it('hides hint when error is also set', () => {
       fixture.componentRef.setInput('hint', 'Helpful text');
-      fixture.componentRef.setInput('error', 'Required');
+      fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       expect(
         fixture.nativeElement.querySelector('.ea-input-field__message--hint'),
@@ -232,7 +232,7 @@ describe('InputComponent', () => {
     });
 
     it('sets aria-describedby to the error id when error is shown', () => {
-      fixture.componentRef.setInput('error', 'Oops');
+      fixture.componentRef.setInput('errorMsg', 'Oops');
       fixture.detectChanges();
       const inputEl = getNativeInput();
       const errorEl = fixture.nativeElement.querySelector('[role="alert"]');
@@ -247,12 +247,6 @@ describe('InputComponent', () => {
         '.ea-input-field__message--hint',
       );
       expect(inputEl.getAttribute('aria-describedby')).toBe(hintEl.id);
-    });
-
-    it('applies success status class on wrapper', () => {
-      fixture.componentRef.setInput('status', 'success');
-      fixture.detectChanges();
-      expect(getWrapper().classList).toContain('ea-input-wrapper--success');
     });
   });
 

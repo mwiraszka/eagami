@@ -65,7 +65,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
-  readonly errorMsg = input<string | undefined>(undefined, { alias: 'error' });
+  readonly errorMsg = input<string | undefined>(undefined);
   readonly minDate = input<Date | null>(null);
   readonly maxDate = input<Date | null>(null);
   readonly format = input<DatePickerFormat>('medium');
@@ -93,14 +93,14 @@ export class DatePickerComponent implements ControlValueAccessor {
   // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly resolvedStatus = computed(() => (this.errorMsg() ? 'error' : 'default'));
+  readonly hasError = computed(() => !!this.errorMsg());
 
   readonly showError = computed(() => !!this.errorMsg());
   readonly showHint = computed(() => !!this.hint() && !this.showError());
 
   readonly triggerClasses = computed(() => ({
     [`ea-date-picker__trigger--${this.size()}`]: true,
-    [`ea-date-picker__trigger--${this.resolvedStatus()}`]: true,
+    'ea-date-picker__trigger--error': this.hasError(),
     'ea-date-picker__trigger--open': this.isOpen(),
     'ea-date-picker__trigger--disabled': this.isDisabled(),
   }));

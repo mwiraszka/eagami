@@ -20,7 +20,7 @@
       [disabled]="isDisabled()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'dialog'"
-      [attr.aria-invalid]="resolvedStatus() === 'error' || null"
+      [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
