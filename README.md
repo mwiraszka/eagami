@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/images/eagami-header.png" alt="eagami design system — elegant web design" width="800" />
+</p>
+
+<p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
   <a href="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml"><img src="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://github.com/mwiraszka/eagami-design-system/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
@@ -99,7 +103,7 @@ See [`src/styles/tokens/`](src/styles/tokens/) for the full token reference.
 
 ## Framework integration
 
-@eagami/ui is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided — each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
+`@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided — each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
 
 - **[design-system-flutter.md](design-system-flutter.md)** — Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
 - **[design-system-react.md](design-system-react.md)** — CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
