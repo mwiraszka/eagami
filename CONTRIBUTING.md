@@ -52,8 +52,6 @@ The project treats three in-repo surfaces as equally important. A change is not 
 
 Tests live next to the component as `<name>.component.spec.ts`.
 
-The canonical visual reference for consumers is [eagami.com/ui](https://eagami.com/ui), which is maintained in a separate repo. README per-component screenshots and `<details>` blocks were removed in v1.0.2.
-
 ## Pull requests
 
 - Title: just the version (e.g. `v1.0.1`)
