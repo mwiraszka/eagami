@@ -1,5 +1,3 @@
-# eagami design system
-
 <p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
   <a href="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml"><img src="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
