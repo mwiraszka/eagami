@@ -8,28 +8,28 @@
   // ---------------------------------------------------------------------------
 
   // Primary
-  --color-primary-50: #eef4f8;
-  --color-primary-100: #d5e5f0;
-  --color-primary-200: #accfe2;
-  --color-primary-300: #7db1ce;
-  --color-primary-400: #628ead;
-  --color-primary-500: #3c6c90;
-  --color-primary-600: #2f567a;
-  --color-primary-700: #285175;
-  --color-primary-800: #11365c;
-  --color-primary-900: #0d2533;
+  --color-primary-50: #ecf3f9;
+  --color-primary-100: #d1e3f0;
+  --color-primary-200: #abcbe3;
+  --color-primary-300: #7dafd4;
+  --color-primary-400: #4b91c3;
+  --color-primary-500: #3674a1;
+  --color-primary-600: #2a5b7e;
+  --color-primary-700: #204560;
+  --color-primary-800: #162f41;
+  --color-primary-900: #0d1c26;
 
   // Secondary
-  --color-secondary-50: #f3f1f7;
-  --color-secondary-100: #e3deed;
-  --color-secondary-200: #c7bedb;
-  --color-secondary-300: #a796c3;
-  --color-secondary-400: #7d6a9c;
-  --color-secondary-500: #594b6e;
-  --color-secondary-600: #493d5c;
-  --color-secondary-700: #40374f;
-  --color-secondary-800: #2f2439;
-  --color-secondary-900: #1e1528;
+  --color-secondary-50: #f2eff5;
+  --color-secondary-100: #dfd9e8;
+  --color-secondary-200: #c4b9d5;
+  --color-secondary-300: #a493be;
+  --color-secondary-400: #8169a5;
+  --color-secondary-500: #665086;
+  --color-secondary-600: #503f69;
+  --color-secondary-700: #3d3050;
+  --color-secondary-800: #292136;
+  --color-secondary-900: #181320;
 
   // Neutral (Gray)
   --color-neutral-0: #ffffff;
@@ -163,8 +163,8 @@
   --color-brand-default: var(--color-primary-400);
   --color-brand-hover: var(--color-primary-300);
   --color-brand-active: var(--color-primary-200);
-  --color-brand-subtle: rgba(98, 142, 173, 0.1);
-  --color-brand-muted: rgba(98, 142, 173, 0.2);
+  --color-brand-subtle: rgba(75, 145, 195, 0.1);
+  --color-brand-muted: rgba(75, 145, 195, 0.2);
 
   // Status `*-subtle` / `*-muted` — light pastels in light mode become
   // unreadable behind light text in dark mode. Re-tint as a low-alpha wash of

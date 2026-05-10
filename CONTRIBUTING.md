@@ -44,12 +44,11 @@ Hot reload works in both the sandbox and Storybook — edit a component and the 
 
 ## What to update when you change a component
 
-The project treats four surfaces as equally important. A change is not done until all four reflect it:
+The project treats three in-repo surfaces as equally important. A change is not done until all three reflect it:
 
 1. **Library** — the component code in `src/lib/<name>/`
 2. **Storybook** — `<name>.component.stories.ts` (add stories for any new variant or input)
 3. **Sandbox** — `sandbox/sandbox.component.{html,ts}` (visible playground)
-4. **README** — the relevant `<details>` block in the Components section, plus a regenerated screenshot via `pnpm screenshots --force <name>`
 
 Tests live next to the component as `<name>.component.spec.ts`.
 

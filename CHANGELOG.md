@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-05-10
+
+### Fixed
+
+- Fix hue/saturation drift in primary and secondary color palettes — all primary shades now share H=205° / S=50%, all secondary shades share H=264° / S=25%, varying only lightness, so each ramp reads as a single hue at different lightnesses rather than several different colors. Dark-mode `--color-brand-subtle` and `--color-brand-muted` retinted to the new primary-400 so they no longer drift from the rest of the palette
+- Restore visible elevation on `--shadow-*` tokens in dark mode by flipping the drop-shadow color from black to white at low alpha (0.04 → 0.12). Black drop shadows are nearly invisible against a near-black page; against a dark page, white-at-low-alpha blends to a muted dark gray that mirrors the role black-at-low-alpha plays in light mode, preserving the same "floating above the page" depth cue. xl and 2xl use slightly tighter offset/blur than light mode so the lighter fade doesn't sprawl into a halo. Every surface using a shadow token now reads as elevated without any per-component change — `Card` variant="elevated", `Dialog`, `Drawer`, `Dropdown`, `Autocomplete`, `Menu`, `Toast`, `DatePicker` calendar, `Tabs` underline indicator, `Segmented` selected pill, `Slider` thumb, and `Switch` thumb
+
 ## [1.0.1] - 2026-05-10
 
 ### Added
@@ -325,6 +332,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.0.2]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.12.0...v1.0.0
 [0.12.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.11.1...v0.12.0
