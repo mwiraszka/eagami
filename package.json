@@ -32,8 +32,7 @@
     "lint": "eslint 'src/**'",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
-    "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public",
-    "screenshots": "node scripts/screenshots.mjs"
+    "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0",
@@ -71,7 +70,6 @@
     "jest-preset-angular": "16.1.4",
     "ng-packagr": "21.2.3",
     "prettier": "3.8.3",
-    "puppeteer": "24.42.0",
     "rxjs": "7.8.2",
     "storybook": "10.3.5",
     "ts-node": "10.9.2",

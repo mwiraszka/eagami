@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="docs/images/eagami-header.png" alt="eagami design system — elegant web design" width="800" />
-</p>
+# eagami design system
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
