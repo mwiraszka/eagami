@@ -34,18 +34,30 @@
   --z-index-tooltip: 700;
 }
 
-// Dark mode — black shadows lose contrast against dark backgrounds, so deepen
-// alpha values so elevated surfaces still have a perceptible boundary. The
-// `:not([data-theme='light'])` clause lets consumers force light mode via
-// `<html data-theme="light">` even when the OS prefers dark, and the
+// Dark mode — black drop shadows alone are nearly invisible against a near-black
+// page, so layer an inset top highlight (white, ramping 0.04 → 0.14 alpha as
+// elevation increases) on top of the existing dark drop shadows. The drop
+// shadows still give a silhouette when the surface sits on a slightly-lighter
+// container; the inset highlight provides the "lit from above" lift everywhere
+// else. The `:not([data-theme='light'])` clause lets consumers force light mode
+// via `<html data-theme="light">` even when the OS prefers dark, and the
 // matching `[data-theme='dark']` block forces dark mode regardless of OS.
 @mixin dark-elevation-tokens {
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.6), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+  --shadow-sm:
+    0 1px 3px 0 rgba(0, 0, 0, 0.6), 0 1px 2px -1px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --shadow-2xl:
+    0 25px 50px -12px rgba(0, 0, 0, 0.85), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
 }
 
 @media (prefers-color-scheme: dark) {
