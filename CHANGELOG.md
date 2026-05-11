@@ -18,7 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Retune the dark-mode background hierarchy so elevated surfaces (`CardComponent` variant="elevated", `DialogComponent`, `DrawerComponent`) are visibly raised above the page. `--color-bg-elevated` now resolves to `neutral-800` (was `neutral-900`) and `--color-bg-muted` to `neutral-700` (was `neutral-800`) so hover states inside elevated surfaces still read as a further step up. Light mode is unchanged
 - Add a hairline border to `CardComponent` variant="elevated". Shadows alone can't reliably define elevation in dark mode, and the top edge isn't visible from a downward-cast shadow in light mode either — the border now carries the edge while the shadow + bg-elevated step convey depth
 - Vertically center the `RadioComponent` label against the radio circle (was top-aligned)
-- Drop the `apple` icon to reduce trademark exposure. Apple's logo is more strictly protected than other brand marks; consumers needing it (e.g., "Sign in with Apple") should source the asset directly from Apple per their brand guidelines
+
+### Deprecated
+
+- `AppleIconComponent` is now deprecated and will be removed in v2.0.0. The icon depicts Apple Inc.'s logo, which is more strictly protected than other brand marks; consumers needing it (e.g., "Sign in with Apple") should source the asset directly from Apple per their brand guidelines. The export remains for backward compatibility — a `@deprecated` JSDoc warning surfaces in IDEs
 
 ### Fixed
 

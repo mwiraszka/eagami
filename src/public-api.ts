@@ -25,6 +25,7 @@ export * from './lib/eagami-wordmark/eagami-wordmark.component';
 export * from './lib/empty-state/empty-state.component';
 export * from './lib/icons/alert-circle.component';
 export * from './lib/icons/alert-triangle.component';
+export * from './lib/icons/apple.component';
 export * from './lib/icons/archive.component';
 export * from './lib/icons/arrow-down.component';
 export * from './lib/icons/arrow-left.component';
