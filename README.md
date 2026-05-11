@@ -148,6 +148,20 @@ pnpm build         # Build the library
 pnpm lint          # Lint
 ```
 
+## Icons
+
+The icon set is derived from [Feather Icons](https://feathericons.com/) (© Cole Bemis, MIT). Stroke style, dimensions, and most paths match Feather one-for-one. Browse the full set at [eagami.com/ui/icons](https://eagami.com/ui/icons).
+
+### Brand icons
+
+The following icons depict third-party trademarks and are provided **only for nominative use** — i.e. identifying the brand they represent in a UI (a "Sign in with Google" button, a "Share to Facebook" link, etc.). They are not licensed for general decorative use. Consumers are responsible for following each brand's guidelines and should consult them before shipping:
+
+- **Facebook** — [Brand resources](https://about.meta.com/brand/resources/facebookapp/logo/)
+- **GitHub** — [Logos and usage](https://github.com/logos)
+- **Google** — [Sign-in branding guidelines](https://developers.google.com/identity/branding-guidelines)
+- **Microsoft** — [Trademark and brand guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)
+- **X (Twitter)** — [Brand toolkit](https://about.x.com/en/who-we-are/brand-toolkit)
+
 ## License
 
 MIT
