@@ -539,7 +539,11 @@ export class SandboxComponent {
   }
 
   async copyIconSelector(selector: string): Promise<void> {
-    await navigator.clipboard.writeText(selector);
-    this.toastService.success(`Copied ${selector}`);
+    try {
+      await navigator.clipboard.writeText(selector);
+      this.toastService.success(`Copied ${selector}`);
+    } catch {
+      this.toastService.error(`Failed to copy ${selector}`);
+    }
   }
 }
