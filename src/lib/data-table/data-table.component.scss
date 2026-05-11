@@ -142,9 +142,14 @@
     height: inherit;
   }
 
+  // Sticky tables use table-layout: fixed (required to keep header/body column
+  // widths in sync), which forces equal-width columns on narrow viewports and
+  // collapses header text. min-width forces the table past the container so the
+  // outer overflow-x: auto kicks in and the table scrolls horizontally.
   &--sticky &__table {
     display: flex;
     flex-direction: column;
+    min-width: 32rem;
     max-height: inherit;
     height: inherit;
   }
