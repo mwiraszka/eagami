@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-12
+
+### Added
+
+- Expand the icon set from 52 to 100 icons. New: archive, at-sign, bar-chart, bookmark, briefcase, clipboard, cloud, credit-card, dollar-sign, flag, folder, gift, globe, hash, help-circle, home, inbox, list, lock, log-in, map-pin, maximize, mic, minimize, monitor, moon, package, paperclip, pause, phone, play, printer, refresh-cw, save, send, share, shield, shopping-cart, smartphone, sun, thumbs-down, thumbs-up, trending-up, unlock, users, video, volume-2, wifi, zap
+- Honor `prefers-reduced-motion` on `ToastComponent` — the slide-in animation degrades to an opacity-only fade so the toast still appears smoothly without translateX motion that can trip vestibular sensitivity
+- Document icon attribution and brand-icon usage in the README. The icon set is derived from Feather Icons (Cole Bemis, MIT). Brand icons (Facebook, GitHub, Google, Microsoft, X/Twitter) include links to each platform's brand guidelines, since their use is governed by trademark rather than the library's MIT license
+
+### Changed
+
+- Retune the dark-mode background hierarchy so elevated surfaces (`CardComponent` variant="elevated", `DialogComponent`, `DrawerComponent`) are visibly raised above the page. `--color-bg-elevated` now resolves to `neutral-800` (was `neutral-900`) and `--color-bg-muted` to `neutral-700` (was `neutral-800`) so hover states inside elevated surfaces still read as a further step up. Light mode is unchanged
+- Add a hairline border to `CardComponent` variant="elevated". Shadows alone can't reliably define elevation in dark mode, and the top edge isn't visible from a downward-cast shadow in light mode either — the border now carries the edge while the shadow + bg-elevated step convey depth
+- Vertically center the `RadioComponent` label against the radio circle (was top-aligned)
+- Drop the `apple` icon to reduce trademark exposure. Apple's logo is more strictly protected than other brand marks; consumers needing it (e.g., "Sign in with Apple") should source the asset directly from Apple per their brand guidelines
+
+### Fixed
+
+- Make `ToastComponent` colored variants (success, warning, error, info) opaque in dark mode. The `--color-*-subtle` tokens are re-tinted as low-alpha rgba in dark mode (correct for inline banners) which caused floating toasts to bleed through arbitrary page content. Toasts now stack the tint over a solid `--color-bg-elevated` base and flip text to the lighter `*-200` shade so it reads against the darker tinted background
+- Prevent `DataTableComponent` sticky-header text from overflowing into adjacent columns on narrow viewports — the sticky table now has a 32rem minimum width so the outer `overflow-x: auto` engages and the table scrolls horizontally rather than collapsing the columns
+
 ## [1.0.2] - 2026-05-10
 
 ### Fixed
@@ -332,6 +352,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.1.0]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/mwiraszka/eagami-design-system/compare/v0.12.0...v1.0.0
