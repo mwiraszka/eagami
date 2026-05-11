@@ -1,13 +1,6 @@
 :host {
   display: block;
   font-family: var(--font-family-sans, system-ui, sans-serif);
-
-  @media (min-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-  }
 }
 
 .sandbox-header {
@@ -18,11 +11,6 @@
 
   ea-divider {
     width: 100%;
-  }
-
-  @media (min-width: 960px) {
-    position: static;
-    flex-shrink: 0;
   }
 }
 
@@ -40,6 +28,33 @@
   display: none;
 }
 
+// Narrow viewports — drop the label onto its own row beneath the logo so it
+// stays on a single line. Without this it wraps awkwardly in the 1fr column
+// between the wordmark and the theme switch.
+@media (max-width: 767px) {
+  .sandbox-header-row {
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'logo . switch'
+      'label label label';
+    row-gap: 4px;
+  }
+
+  .sandbox-header-wordmark {
+    grid-area: logo;
+  }
+
+  .sandbox-header-label {
+    grid-area: label;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .sandbox-header-theme {
+    grid-area: switch;
+  }
+}
+
 @media (max-width: 599px) {
   .sandbox-header-wordmark--full {
     display: none;
@@ -55,6 +70,7 @@
   font-weight: 300;
   letter-spacing: 0.05em;
   text-align: center;
+  white-space: nowrap;
   color: var(--color-text-secondary);
   text-transform: uppercase;
 }
@@ -70,12 +86,11 @@
   padding: 24px;
 
   @media (min-width: 960px) {
-    flex: 1;
     flex-direction: row;
-    align-items: stretch;
+    // Sidebar is sticky and mosaic flows naturally — children are content-height,
+    // not stretched, so they don't tie their height to each other.
+    align-items: flex-start;
     width: 100%;
-    min-height: 0;
-    overflow: hidden;
   }
 }
 
@@ -93,20 +108,67 @@
     margin: 4px 0;
   }
 
+  // Sticky sidebar: page scrolls naturally, but the sidebar sticks to the top
+  // of the viewport (below the sticky header) so the mode radios and component
+  // checkboxes stay reachable. max-height prevents it from spilling past the
+  // viewport when its content is taller than the visible area.
   @media (min-width: 960px) {
-    width: 200px;
-    align-self: stretch;
+    position: sticky;
+    top: 88px;
+    width: 220px;
+    max-height: calc(100vh - 112px);
     overflow-y: auto;
   }
 }
 
 .sandbox-sidebar__select-all {
+  margin-top: 8px;
   font-weight: 600;
+}
+
+.sandbox-sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sandbox-sidebar__heading-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  // Match the h2 subheading style used inside component cards (VARIANTS, SINGLE,
+  // etc.). Scoped to heading-row so other radios in the sandbox aren't affected.
+  .ea-radio__label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+}
+
+.sandbox-sidebar__heading-radio {
+  flex: 1;
+}
+
+// Indent the components section's checkboxes so their squares line up with the
+// heading-row's label text (radio circle 16px + gap 8px = 24px).
+.sandbox-sidebar__section > *:not(.sandbox-sidebar__heading-row) {
+  margin-left: 24px;
+}
+
+// The 24px indent above pushes the divider 24px past the right edge since it has
+// `width: 100%` from the sidebar rule. Shrink it back so its right edge aligns
+// with the rest of the sidebar content.
+.sandbox-sidebar__section > ea-divider {
+  width: calc(100% - 24px);
 }
 
 .sandbox-mosaic {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-start;
   align-items: flex-start;
   justify-content: center;
   gap: 16px;
@@ -114,8 +176,6 @@
 
   @media (min-width: 960px) {
     flex: 1;
-    align-self: stretch;
-    overflow-y: auto;
   }
 }
 
@@ -190,6 +250,65 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+
+.sandbox-icon-gallery {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.sandbox-icon-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 107px;
+  padding: 12px 8px;
+  font: inherit;
+  font-size: 24px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: var(--transition-colors);
+
+  &:hover {
+    background-color: var(--color-bg-subtle);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus-ring);
+  }
+
+  &__name {
+    overflow: hidden;
+    width: 100%;
+    font-size: 11px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+  }
+}
+
+// Below 500px the size=64 wordmark overflows the card and the inline variant-4
+// wordmark wraps awkwardly — hide the former and shrink the latter via --_size.
+// !important needed because the wordmark binds --_size as an inline style.
+@media (max-width: 499px) {
+  .sandbox-wordmark--xl {
+    display: none;
+  }
+
+  .sandbox-wordmark--inline-shrink {
+    --_size: 22 !important;
+  }
 }
 
 .sandbox-card--menu ::ng-deep .ea-card {
