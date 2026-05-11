@@ -51,23 +51,40 @@
     color: var(--color-neutral-0);
   }
 
+  // Status variants stack the *-subtle tint over an elevated base via background-image
+  // so the toast reads as opaque against arbitrary page content. In dark mode the
+  // *-subtle tokens are rgba/translucent (intended for inline banners over the page
+  // bg), so the solid bg-elevated layer underneath prevents bleed-through.
   &--success {
-    background-color: var(--color-success-subtle);
+    background-color: var(--color-bg-elevated);
+    background-image: linear-gradient(
+      var(--color-success-subtle),
+      var(--color-success-subtle)
+    );
     color: var(--color-success-700);
   }
 
   &--warning {
-    background-color: var(--color-warning-subtle);
+    background-color: var(--color-bg-elevated);
+    background-image: linear-gradient(
+      var(--color-warning-subtle),
+      var(--color-warning-subtle)
+    );
     color: var(--color-warning-700);
   }
 
   &--error {
-    background-color: var(--color-error-subtle);
+    background-color: var(--color-bg-elevated);
+    background-image: linear-gradient(
+      var(--color-error-subtle),
+      var(--color-error-subtle)
+    );
     color: var(--color-error-700);
   }
 
   &--info {
-    background-color: var(--color-info-subtle);
+    background-color: var(--color-bg-elevated);
+    background-image: linear-gradient(var(--color-info-subtle), var(--color-info-subtle));
     color: var(--color-info-700);
   }
 
@@ -116,4 +133,50 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ea-toast {
+    animation-name: ea-toast-fade-in;
+  }
+}
+
+@keyframes ea-toast-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Dark mode — *-700 text on the dark base + translucent tint is unreadable, so
+// flip to the *-200 light shades for status variants.
+@mixin dark-toast-variants {
+  .ea-toast--success {
+    color: var(--color-success-200);
+  }
+
+  .ea-toast--warning {
+    color: var(--color-warning-200);
+  }
+
+  .ea-toast--error {
+    color: var(--color-error-200);
+  }
+
+  .ea-toast--info {
+    color: var(--color-info-200);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-toast-variants;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-toast-variants;
 }
