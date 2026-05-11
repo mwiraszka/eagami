@@ -19,8 +19,12 @@ ea-card {
   // ---------------------------------------------------------------------------
   // Variants
   // ---------------------------------------------------------------------------
+  // Elevated combines a hairline border with shadow + lighter bg. Shadows alone
+  // can't define the top edge (offset-y is positive) and read poorly in dark mode,
+  // so the border carries the edge while the shadow + bg-elevated step convey depth.
   &--elevated {
     background-color: var(--color-bg-elevated);
+    border: var(--border-width-thin) solid var(--color-border-default);
     box-shadow: var(--ea-card-shadow, var(--shadow-md));
   }
 

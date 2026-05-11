@@ -148,14 +148,15 @@
   --color-text-link: var(--color-primary-300);
   --color-text-link-hover: var(--color-primary-100);
 
+  // Dark-mode background hierarchy steps from darkest (page) to lightest (hover),
+  // since elevation in dark mode is conveyed by surface lightness rather than shadow:
+  //   bg-base (950) → bg-subtle (900) → bg-elevated (800) → bg-muted (700)
+  // bg-muted sits *above* bg-elevated so hover states inside elevated surfaces
+  // (dropdowns on a card, menu items in a drawer) still read as a step up.
   --color-bg-base: var(--color-neutral-950);
   --color-bg-subtle: var(--color-neutral-900);
-  --color-bg-muted: var(--color-neutral-800);
-  // Elevated surfaces (Card variant="elevated", Dialog, Drawer) need a
-  // background that's visibly lighter than the page bg, since black shadows
-  // disappear against a near-black page. Neutral-900 sits one step above
-  // bg-base and gives shadows something to fall against.
-  --color-bg-elevated: var(--color-neutral-900);
+  --color-bg-elevated: var(--color-neutral-800);
+  --color-bg-muted: var(--color-neutral-700);
 
   --color-border-default: var(--color-neutral-700);
   --color-border-strong: var(--color-neutral-500);

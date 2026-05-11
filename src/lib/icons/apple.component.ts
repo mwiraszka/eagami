@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+/**
+ * @deprecated Will be removed in v2.0.0. The icon depicts Apple Inc.'s logo,
+ * which is more strictly protected than other brand marks. Source the asset
+ * directly from Apple per their brand guidelines for use cases like "Sign in
+ * with Apple".
+ */
 @Component({
   selector: 'ea-icon-apple',
   changeDetection: ChangeDetectionStrategy.OnPush,
