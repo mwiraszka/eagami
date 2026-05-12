@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-05-12
+
+### Changed
+
+- Tone down `--shadow-xl` and `--shadow-2xl` in dark mode — the white-at-alpha drop shadows behind `DialogComponent` and `DrawerComponent` were reading as bright halos. Alpha values are roughly halved so the elevation cue stays readable without the overstated glow
+
+### Fixed
+
+- Move horizontal scrolling in `DataTableComponent` into an inner wrapper so a slotted `<ea-paginator>` stays outside the scrolled coordinate space. On narrow viewports where the table overflowed, the paginator was being pulled into the scroll context, leaving its `border-top` divider short of the host's right edge
+- Centre `AlertComponent`'s icon with the first line of its content. Previously the icon sat at the top of its 1.25rem box, a few pixels above the first line's visual middle; the icon span now sizes to the line-height and centres the icon inside it
+- Suppress hover-triggered tooltips on touch devices, and re-attach pointer listeners reactively when hover capability changes. `TooltipDirective` now subscribes to the `(hover: hover)` media query, so tooltips disable on touch hardware (no more "sticky hover" where a tap latches the tooltip open) and re-enable without a refresh when a Bluetooth pointer connects or DevTools mobile emulation is toggled off. Focus/blur listeners stay attached regardless so keyboard users always get tooltips
+
 ## [1.1.0] - 2026-05-12
 
 ### Added
@@ -355,6 +367,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.1.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.0...v1.0.1
