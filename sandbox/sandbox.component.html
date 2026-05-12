@@ -1740,33 +1740,43 @@
           [headerDivider]="true">
           <span slot="header">Tooltip</span>
           <section class="sandbox-section">
+            @if (!canHover()) {
+              <ea-alert variant="info">
+                Tooltips are suppressed on touch devices to avoid sticky-hover behaviour.
+                View this section on a device with a mouse to see the demos in action.
+              </ea-alert>
+            }
             <h2>positions</h2>
             <div class="sandbox-tooltip-grid">
               <div class="sandbox-tooltip-cell">
                 <ea-button
                   eaTooltip="Top tooltip"
-                  tooltipPosition="top">
+                  tooltipPosition="top"
+                  [disabled]="!canHover()">
                   Top
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
                   eaTooltip="Bottom tooltip"
-                  tooltipPosition="bottom">
+                  tooltipPosition="bottom"
+                  [disabled]="!canHover()">
                   Bottom
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
                   eaTooltip="Left tooltip"
-                  tooltipPosition="left">
+                  tooltipPosition="left"
+                  [disabled]="!canHover()">
                   Left
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
                   eaTooltip="Right tooltip"
-                  tooltipPosition="right">
+                  tooltipPosition="right"
+                  [disabled]="!canHover()">
                   Right
                 </ea-button>
               </div>

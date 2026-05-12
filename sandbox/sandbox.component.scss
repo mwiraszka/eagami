@@ -185,6 +185,14 @@
   max-width: 100%;
 }
 
+// Dark-mode override: the library's `--color-bg-elevated` resolves to
+// `neutral-800` — the same shade as the tooltip background — so a tooltip
+// floating over a sandbox card visually merges with it. Bump the sandbox
+// card's elevated surface up one step so tooltips stay legible against it.
+:root[data-theme='dark'] .sandbox-card {
+  --color-bg-elevated: var(--color-neutral-700);
+}
+
 .sandbox-card--accordion {
   width: 300px;
 }
@@ -337,15 +345,19 @@ h2 {
   height: 240px;
 }
 
+// Shrink-wrap the 2×2 grid and centre it so the four position-demo buttons
+// stay close together at any viewport width. Cells keep enough padding for the
+// hovered tooltip to render without clipping the parent card.
 .sandbox-tooltip-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  justify-content: center;
+  grid-template-columns: repeat(2, max-content);
+  gap: 8px;
 }
 
 .sandbox-tooltip-cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  padding: 32px 24px;
 }
