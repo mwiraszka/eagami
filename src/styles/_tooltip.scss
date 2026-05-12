@@ -2,6 +2,10 @@
 // TOOLTIP GLOBAL STYLES
 // =============================================================================
 
+// Belt-and-braces guard against "sticky hover" on touch devices, which fire
+// `mouseenter` on tap but never the matching `mouseleave`. The directive also
+// gates pointer listeners on `(hover: hover)`, but if a tooltip ever slips
+// through (e.g. from a custom integration), keep it invisible on touch.
 .ea-tooltip {
   z-index: var(--z-index-tooltip);
   position: absolute;
@@ -16,6 +20,10 @@
   color: var(--color-neutral-0);
   pointer-events: none;
   animation: ea-tooltip-fade-in var(--duration-fast) var(--ease-out);
+
+  @media (hover: none) {
+    display: none;
+  }
 }
 
 @keyframes ea-tooltip-fade-in {
