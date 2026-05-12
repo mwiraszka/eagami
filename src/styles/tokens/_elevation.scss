@@ -35,14 +35,15 @@
 }
 
 // Dark mode — black drop shadows are nearly invisible against a near-black
-// page, so flip the shadow color to white at low alpha. The soft fade is what
+// page, so flip the shadow colour to white at low alpha. The soft fade is what
 // reads as a cast shadow; against a dark page, white-at-low-alpha blends to a
 // muted dark gray that mirrors the role black-at-low-alpha plays in light mode.
-// xl and 2xl have tighter offset/blur than light mode so the lighter fade
-// doesn't sprawl into a halo. The `:not([data-theme='light'])` clause lets
-// consumers force light mode via `<html data-theme="light">` even when the OS
-// prefers dark, and the matching `[data-theme='dark']` block forces dark mode
-// regardless of OS.
+// The larger tokens (xl, 2xl) use both tighter offset/blur and lower alpha than
+// their light-mode counterparts — at light-mode geometry a white fade reads as
+// a halo around the surface rather than a shadow beneath it. The
+// `:not([data-theme='light'])` clause lets consumers force light mode via
+// `<html data-theme="light">` even when the OS prefers dark, and the matching
+// `[data-theme='dark']` block forces dark mode regardless of OS.
 @mixin dark-elevation-tokens {
   --shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.04);
   --shadow-sm:
@@ -52,8 +53,8 @@
   --shadow-lg:
     0 8px 12px -2px rgba(255, 255, 255, 0.08), 0 3px 5px -3px rgba(255, 255, 255, 0.05);
   --shadow-xl:
-    0 12px 18px -4px rgba(255, 255, 255, 0.1), 0 5px 8px -4px rgba(255, 255, 255, 0.06);
-  --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.12);
+    0 12px 18px -4px rgba(255, 255, 255, 0.05), 0 5px 8px -4px rgba(255, 255, 255, 0.03);
+  --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.06);
 }
 
 @media (prefers-color-scheme: dark) {
