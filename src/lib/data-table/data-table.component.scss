@@ -3,11 +3,21 @@
 // =============================================================================
 
 .ea-data-table {
-  overflow-x: auto;
+  overflow: hidden;
   width: 100%;
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-base);
+
+  // ---------------------------------------------------------------------------
+  // Scroll wrapper — owns horizontal scroll so the table can be wider than the
+  // host without dragging the slotted paginator into the scrolled coordinate
+  // space (which previously left the paginator's `border-top` divider short
+  // of the host's right edge on narrow viewports).
+  // ---------------------------------------------------------------------------
+  &__scroll {
+    overflow-x: auto;
+  }
 
   // ---------------------------------------------------------------------------
   // Table
@@ -142,10 +152,18 @@
     height: inherit;
   }
 
+  // Sticky tables pass the host's vertical bounds through the scroll wrapper
+  // so the inner table can size against them.
+  &--sticky &__scroll {
+    max-height: inherit;
+    height: inherit;
+  }
+
   // Sticky tables use table-layout: fixed (required to keep header/body column
   // widths in sync), which forces equal-width columns on narrow viewports and
-  // collapses header text. min-width forces the table past the container so the
-  // outer overflow-x: auto kicks in and the table scrolls horizontally.
+  // collapses header text. min-width forces the table past the container so
+  // the scroll wrapper's overflow-x: auto kicks in and the table scrolls
+  // horizontally.
   &--sticky &__table {
     display: flex;
     flex-direction: column;

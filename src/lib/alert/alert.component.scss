@@ -69,12 +69,16 @@
   // ---------------------------------------------------------------------------
   // Elements
   // ---------------------------------------------------------------------------
+  // Match the first line's box height and center the icon graphic inside, so
+  // the icon visually aligns with the first line of text regardless of how
+  // many lines wrap below.
   &__icon {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     width: 1.25rem;
-    height: 1.25rem;
-    padding-top: 1px;
+    height: calc(1em * var(--line-height-normal));
   }
 
   &__content {

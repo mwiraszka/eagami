@@ -28,6 +28,16 @@ export class TooltipDirective implements OnDestroy {
   private tooltipEl: HTMLElement | null = null;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
 
+  // Touch devices fire `mouseenter` on tap but never fire `mouseleave` until
+  // the user taps elsewhere, leaving hover-driven tooltips latched open. Track
+  // hover capability reactively via the MediaQueryList so pointer listeners
+  // are attached/detached when the device gains or loses hover (DevTools mobile
+  // mode toggling, Bluetooth peripherals connecting, etc.) without a refresh.
+  private readonly hoverMql =
+    typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+      ? window.matchMedia('(hover: hover)')
+      : null;
+
   private readonly showHandler = () => this.show();
   private readonly hideHandler = () => this.hide();
   private readonly keydownHandler = (event: KeyboardEvent) => {
@@ -35,14 +45,18 @@ export class TooltipDirective implements OnDestroy {
       this.hide();
     }
   };
+  private readonly hoverChangeHandler = (event: MediaQueryListEvent) =>
+    this.syncPointerListeners(event.matches);
 
   constructor() {
     const native = this.el.nativeElement;
-    native.addEventListener('mouseenter', this.showHandler);
-    native.addEventListener('mouseleave', this.hideHandler);
+    // Focus/blur/keydown always wire up — keyboard users benefit on any device.
     native.addEventListener('focus', this.showHandler);
     native.addEventListener('blur', this.hideHandler);
     native.addEventListener('keydown', this.keydownHandler);
+
+    this.syncPointerListeners(this.hoverMql?.matches ?? true);
+    this.hoverMql?.addEventListener('change', this.hoverChangeHandler);
   }
 
   ngOnDestroy(): void {
@@ -52,7 +66,22 @@ export class TooltipDirective implements OnDestroy {
     native.removeEventListener('focus', this.showHandler);
     native.removeEventListener('blur', this.hideHandler);
     native.removeEventListener('keydown', this.keydownHandler);
+    this.hoverMql?.removeEventListener('change', this.hoverChangeHandler);
     this.hide();
+  }
+
+  private syncPointerListeners(canHover: boolean): void {
+    const native = this.el.nativeElement;
+    // Remove first to keep this idempotent — addEventListener with the same
+    // handler is a no-op anyway, but pairing keeps the bookkeeping obvious.
+    native.removeEventListener('mouseenter', this.showHandler);
+    native.removeEventListener('mouseleave', this.hideHandler);
+    if (canHover) {
+      native.addEventListener('mouseenter', this.showHandler);
+      native.addEventListener('mouseleave', this.hideHandler);
+    } else {
+      this.hide();
+    }
   }
 
   private show(): void {

@@ -239,7 +239,19 @@ export class SandboxComponent {
 
   readonly darkMode = signal(false);
 
+  // Drives the tooltip demo's disabled state. Must update reactively — DevTools
+  // mobile-mode emulation toggles `(hover: hover)` after page load, and real
+  // devices can gain/lose hover capability via Bluetooth peripherals. A static
+  // read at construction misses both, so subscribe to the MediaQueryList.
+  private readonly hoverMql =
+    typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+      ? window.matchMedia('(hover: hover)')
+      : null;
+  readonly canHover = signal(this.hoverMql?.matches ?? true);
+
   constructor() {
+    this.hoverMql?.addEventListener('change', e => this.canHover.set(e.matches));
+
     effect(() => {
       document.documentElement.setAttribute(
         'data-theme',
