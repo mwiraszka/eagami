@@ -48,7 +48,10 @@ import {
   DownloadIconComponent,
   DrawerComponent,
   DropdownComponent,
+  EAGAMI_LOCALES,
+  EagamiI18nService,
   EagamiIconComponent,
+  EagamiLocale,
   EagamiWordmarkComponent,
   EmptyStateComponent,
   ExternalLinkIconComponent,
@@ -236,8 +239,26 @@ function buildIcon(name: string, component: Type<unknown>): IconEntry {
 })
 export class SandboxComponent {
   private readonly toastService = inject(ToastService);
+  protected readonly i18n = inject(EagamiI18nService);
 
   readonly darkMode = signal(false);
+
+  // Locale switcher — drives every component's built-in strings at once.
+  // English keeps the 🇬🇧 flag by picker convention; the locale tag itself
+  // stays region-neutral `en`.
+  readonly localeOptions: SelectOption[] = [
+    { value: 'en', label: '🇬🇧 English' },
+    { value: 'fr-FR', label: '🇫🇷 Français' },
+    { value: 'el', label: '🇬🇷 Ελληνικά' },
+    { value: 'pl', label: '🇵🇱 Polski' },
+    { value: 'es-ES', label: '🇪🇸 Español' },
+  ];
+
+  setLocale(locale: string): void {
+    if ((EAGAMI_LOCALES as readonly string[]).includes(locale)) {
+      this.i18n.setLocale(locale as EagamiLocale);
+    }
+  }
 
   // Drives the tooltip demo's disabled state. Must update reactively — DevTools
   // mobile-mode emulation toggles `(hover: hover)` after page load, and real

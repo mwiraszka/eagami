@@ -8,6 +8,12 @@
       class="sandbox-header-wordmark sandbox-header-wordmark--short"
       [size]="40" />
     <span class="sandbox-header-label">UI Sandbox</span>
+    <ea-dropdown
+      class="sandbox-header-locale"
+      size="sm"
+      [options]="localeOptions"
+      [value]="i18n.locale()"
+      (changed)="setLocale($event)" />
     <ea-switch
       class="sandbox-header-theme"
       size="sm"

@@ -16,12 +16,16 @@
 
 .sandbox-header-row {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 16px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 12px 24px;
+}
+
+.sandbox-header-locale {
+  min-width: 132px;
 }
 
 .sandbox-header-wordmark--short {
@@ -35,8 +39,8 @@
   .sandbox-header-row {
     grid-template-rows: auto auto;
     grid-template-areas:
-      'logo . switch'
-      'label label label';
+      'logo . locale switch'
+      'label label label label';
     row-gap: 4px;
   }
 
@@ -48,6 +52,10 @@
     grid-area: label;
     justify-self: start;
     text-align: left;
+  }
+
+  .sandbox-header-locale {
+    grid-area: locale;
   }
 
   .sandbox-header-theme {
