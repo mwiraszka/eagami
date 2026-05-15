@@ -1,0 +1,81 @@
+import { EagamiMessages } from '../i18n.types';
+
+/** French (France) messages. */
+export const frFR: EagamiMessages = {
+  alert: {
+    dismiss: 'Fermer',
+  },
+  autocomplete: {
+    empty: 'Aucun résultat',
+  },
+  avatarEditor: {
+    upload: 'Téléverser une image',
+    dropzone: 'Déposez une image ou cliquez pour téléverser',
+    canvas:
+      "Aperçu de l'image, faites glisser ou utilisez les flèches pour déplacer, le curseur pour zoomer",
+    change: 'Changer la photo',
+    revert: "Revenir à l'original",
+    zoomOut: 'Dézoomer',
+    zoom: 'Zoom',
+    zoomIn: 'Zoomer',
+    remove: "Supprimer l'image",
+  },
+  breadcrumbs: {
+    label: "Fil d'Ariane",
+  },
+  codeInput: {
+    groupLabel: length => `Code de vérification, ${length} chiffres`,
+    digitLabel: (index, length) => `Chiffre ${index} sur ${length}`,
+  },
+  dataTable: {
+    noData: 'Aucune donnée disponible',
+  },
+  datePicker: {
+    placeholder: 'Sélectionner une date…',
+    clear: 'Effacer la date',
+    previousYear: 'Année précédente',
+    previousMonth: 'Mois précédent',
+    nextMonth: 'Mois suivant',
+    nextYear: 'Année suivante',
+    today: "Aujourd'hui",
+  },
+  dialog: {
+    close: 'Fermer la boîte de dialogue',
+  },
+  drawer: {
+    close: 'Fermer le panneau',
+  },
+  dropdown: {
+    placeholder: 'Sélectionner…',
+  },
+  input: {
+    showPassword: 'Afficher le mot de passe',
+    hidePassword: 'Masquer le mot de passe',
+  },
+  menu: {
+    label: 'Menu',
+  },
+  paginator: {
+    label: 'Pagination',
+    rowsPerPage: 'Lignes par page :',
+    range: (start, end, total) => `${start}–${end} sur ${total}`,
+    previousPage: 'Page précédente',
+    nextPage: 'Page suivante',
+  },
+  progressBar: {
+    label: 'Progression',
+  },
+  spinner: {
+    label: 'Chargement',
+  },
+  tag: {
+    remove: 'Supprimer',
+  },
+  toast: {
+    dismiss: 'Fermer',
+  },
+  wordmark: {
+    overline: 'conçu avec soin par',
+    tagline: 'design web élégant',
+  },
+};
