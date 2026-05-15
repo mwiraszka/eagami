@@ -4,6 +4,7 @@ import {
   ElementRef,
   computed,
   forwardRef,
+  inject,
   input,
   model,
   output,
@@ -11,6 +12,8 @@ import {
   viewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+import { EagamiI18nService } from '../i18n/i18n.service';
 
 /** Visual size of each digit cell. */
 export type CodeInputSize = 'sm' | 'md' | 'lg';
@@ -35,6 +38,7 @@ export type CodeInputSize = 'sm' | 'md' | 'lg';
 })
 export class CodeInputComponent implements ControlValueAccessor {
   readonly digitEls = viewChildren<ElementRef<HTMLInputElement>>('digitEl');
+  protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);

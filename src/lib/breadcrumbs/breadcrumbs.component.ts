@@ -2,10 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  computed,
+  inject,
   input,
   output,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
 /** Visual style of the separator rendered between breadcrumb items. */
@@ -39,12 +42,21 @@ export interface BreadcrumbClickEvent {
   encapsulation: ViewEncapsulation.None,
 })
 export class BreadcrumbsComponent {
+  private readonly i18n = inject(EagamiI18nService);
+
   readonly items = input<BreadcrumbItem[]>([]);
   readonly separator = input<BreadcrumbsSeparator>('chevron');
-  readonly ariaLabel = input<string>('Breadcrumb', { alias: 'aria-label' });
+  readonly ariaLabel = input<string | undefined>(undefined, {
+    alias: 'aria-label',
+  });
 
   /** Fires when a non-disabled, non-final breadcrumb is activated. */
   readonly clicked = output<BreadcrumbClickEvent>();
+
+  /** Accessible label for the breadcrumb nav, falling back to the active locale. */
+  readonly resolvedAriaLabel = computed(
+    () => this.ariaLabel() ?? this.i18n.messages().breadcrumbs.label,
+  );
 
   isLast(index: number): boolean {
     return index === this.items().length - 1;

@@ -34,14 +34,14 @@
         <span
           class="ea-date-picker__trigger-value"
           [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
-          {{ displayValue() || placeholder() }}
+          {{ displayValue() || resolvedPlaceholder() }}
         </span>
       </button>
       @if (value() && !isDisabled() && !readonly()) {
         <button
           type="button"
           class="ea-date-picker__clear"
-          aria-label="Clear date"
+          [attr.aria-label]="i18n.messages().datePicker.clear"
           (click)="clear($event)">
           <span aria-hidden="true">×</span>
         </button>
@@ -58,7 +58,7 @@
           <button
             type="button"
             class="ea-date-picker__nav-btn"
-            aria-label="Previous year"
+            [attr.aria-label]="i18n.messages().datePicker.previousYear"
             (click)="goToPrevYear()">
             <ea-icon-chevron-left aria-hidden="true" />
             <ea-icon-chevron-left aria-hidden="true" />
@@ -66,7 +66,7 @@
           <button
             type="button"
             class="ea-date-picker__nav-btn"
-            aria-label="Previous month"
+            [attr.aria-label]="i18n.messages().datePicker.previousMonth"
             (click)="goToPrevMonth()">
             <ea-icon-chevron-left aria-hidden="true" />
           </button>
@@ -79,14 +79,14 @@
           <button
             type="button"
             class="ea-date-picker__nav-btn"
-            aria-label="Next month"
+            [attr.aria-label]="i18n.messages().datePicker.nextMonth"
             (click)="goToNextMonth()">
             <ea-icon-chevron-right aria-hidden="true" />
           </button>
           <button
             type="button"
             class="ea-date-picker__nav-btn"
-            aria-label="Next year"
+            [attr.aria-label]="i18n.messages().datePicker.nextYear"
             (click)="goToNextYear()">
             <ea-icon-chevron-right aria-hidden="true" />
             <ea-icon-chevron-right aria-hidden="true" />
@@ -138,7 +138,7 @@
             type="button"
             class="ea-date-picker__today-btn"
             (click)="goToToday()">
-            Today
+            {{ i18n.messages().datePicker.today }}
           </button>
         </div>
       </div>

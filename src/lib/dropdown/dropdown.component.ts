@@ -17,6 +17,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SelectOption } from '../select-option';
 
@@ -47,10 +48,11 @@ export class DropdownComponent implements ControlValueAccessor {
   private readonly elRef = viewChild<ElementRef<HTMLElement>>('triggerEl');
   private readonly menuEl = viewChild<ElementRef<HTMLElement>>('menuEl');
   private readonly destroyRef = inject(DestroyRef);
+  private readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
-  readonly placeholder = input<string>('Select…');
+  readonly placeholder = input<string | undefined>(undefined);
   readonly options = input<SelectOption[]>([]);
   readonly size = input<DropdownSize>('md');
   readonly disabled = input<boolean>(false);
@@ -87,6 +89,11 @@ export class DropdownComponent implements ControlValueAccessor {
     const opt = this.options().find(o => o.value === this.value());
     return opt?.label ?? '';
   });
+
+  /** Placeholder text, falling back to the active locale's translation. */
+  readonly resolvedPlaceholder = computed(
+    () => this.placeholder() ?? this.i18n.messages().dropdown.placeholder,
+  );
 
   readonly triggerClasses = computed(() => ({
     [`ea-dropdown__trigger--${this.size()}`]: true,

@@ -7,7 +7,9 @@
     [class.ea-alert--error]="variant() === 'error'"
     [class.ea-alert--info]="variant() === 'info'"
     [attr.role]="role()">
-    <span class="ea-alert__icon">
+    <span
+      class="ea-alert__icon"
+      aria-hidden="true">
       @switch (variant()) {
         @case ('success') {
           <ea-icon-check />
@@ -33,7 +35,7 @@
       <button
         class="ea-alert__close"
         type="button"
-        aria-label="Dismiss"
+        [attr.aria-label]="i18n.messages().alert.dismiss"
         (click)="dismiss()">
         <ea-icon-x />
       </button>

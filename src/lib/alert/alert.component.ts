@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
   model,
   output,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CheckIconComponent } from '../icons/check.component';
 import { InfoIconComponent } from '../icons/info.component';
@@ -33,6 +35,8 @@ export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
   ],
 })
 export class AlertComponent {
+  protected readonly i18n = inject(EagamiI18nService);
+
   readonly variant = input<AlertVariant>('default');
   readonly dismissible = input<boolean>(false);
   readonly visible = model<boolean>(true);

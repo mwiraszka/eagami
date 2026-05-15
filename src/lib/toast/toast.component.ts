@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 import { Toast, ToastService } from './toast.service';
 
@@ -23,6 +24,7 @@ import { Toast, ToastService } from './toast.service';
 })
 export class ToastComponent {
   protected readonly toastService = inject(ToastService);
+  protected readonly i18n = inject(EagamiI18nService);
 
   protected getRole(toast: Toast): 'alert' | 'status' {
     return toast.variant === 'error' || toast.variant === 'warning' ? 'alert' : 'status';

@@ -13,7 +13,7 @@
       <button
         type="button"
         class="ea-drawer__close"
-        aria-label="Close drawer"
+        [attr.aria-label]="i18n.messages().drawer.close"
         (click)="handleClose()">
         <ea-icon-x />
       </button>

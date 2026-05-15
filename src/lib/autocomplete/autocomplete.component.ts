@@ -6,6 +6,7 @@ import {
   HostListener,
   computed,
   forwardRef,
+  inject,
   input,
   model,
   output,
@@ -14,6 +15,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { SelectOption } from '../select-option';
 
 /** Visual size of the autocomplete input. */
@@ -42,6 +44,7 @@ export type AutocompleteSize = 'sm' | 'md' | 'lg';
 export class AutocompleteComponent implements ControlValueAccessor {
   private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
+  private readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
@@ -55,7 +58,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   readonly minLength = input<number>(0);
   readonly maxResults = input<number>(10);
-  readonly emptyMessage = input<string>('No results');
+  readonly emptyMessage = input<string | undefined>(undefined);
   readonly id = input<string>(
     `ea-autocomplete-${Math.random().toString(36).slice(2, 9)}`,
   );
@@ -111,6 +114,11 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   readonly showEmpty = computed(
     () => this.showList() && this.filteredOptions().length === 0,
+  );
+
+  /** Empty-list message, falling back to the active locale's translation. */
+  readonly resolvedEmptyMessage = computed(
+    () => this.emptyMessage() ?? this.i18n.messages().autocomplete.empty,
   );
 
   readonly wrapperClasses = computed(() => ({

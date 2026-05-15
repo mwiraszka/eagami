@@ -12,7 +12,7 @@
         <button
           class="ea-toast__close"
           type="button"
-          aria-label="Dismiss"
+          [attr.aria-label]="i18n.messages().toast.dismiss"
           (click)="toastService.dismiss(toast.id)">
           <ea-icon-x />
         </button>

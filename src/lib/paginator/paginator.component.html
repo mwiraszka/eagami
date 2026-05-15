@@ -4,13 +4,13 @@
   [class.ea-paginator--center]="align() === 'center'"
   [class.ea-paginator--disabled]="disabled()"
   role="navigation"
-  aria-label="Pagination">
+  [attr.aria-label]="i18n.messages().paginator.label">
   @if (showPageSizeSelector()) {
     <div class="ea-paginator__page-size">
       <label
         class="ea-paginator__label"
         for="ea-paginator-size">
-        Rows per page:
+        {{ i18n.messages().paginator.rowsPerPage }}
       </label>
       <select
         class="ea-paginator__select"
@@ -30,7 +30,7 @@
 
   @if (showRangeLabel()) {
     <span class="ea-paginator__range">
-      {{ rangeStart() }}–{{ rangeEnd() }} of {{ totalItems() }}
+      {{ i18n.messages().paginator.range(rangeStart(), rangeEnd(), totalItems()) }}
     </span>
   }
 
@@ -39,7 +39,7 @@
       variant="ghost"
       size="sm"
       [disabled]="disabled() || !canGoPrev()"
-      aria-label="Previous page"
+      [aria-label]="i18n.messages().paginator.previousPage"
       (clicked)="prevPage()">
       <ea-icon-chevron-left />
     </ea-button>
@@ -65,7 +65,7 @@
       variant="ghost"
       size="sm"
       [disabled]="disabled() || !canGoNext()"
-      aria-label="Next page"
+      [aria-label]="i18n.messages().paginator.nextPage"
       (clicked)="nextPage()">
       <ea-icon-chevron-right />
     </ea-button>

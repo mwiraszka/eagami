@@ -11,7 +11,9 @@
 
   <span class="ea-eagami-wordmark__text">
     @if (showOverline()) {
-      <span class="ea-eagami-wordmark__overline">handcrafted by</span>
+      <span class="ea-eagami-wordmark__overline">
+        {{ i18n.messages().wordmark.overline }}
+      </span>
     }
     <span class="ea-eagami-wordmark__brand">{{ brandText() }}</span>
     @if (showTagline()) {
@@ -22,7 +24,9 @@
           —
         </span>
       }
-      <span class="ea-eagami-wordmark__tagline">elegant web design</span>
+      <span class="ea-eagami-wordmark__tagline">
+        {{ i18n.messages().wordmark.tagline }}
+      </span>
     }
   </span>
 </a>

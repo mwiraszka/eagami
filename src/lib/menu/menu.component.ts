@@ -15,6 +15,8 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
+
 /** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
 
@@ -33,12 +35,20 @@ export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-e
 })
 export class MenuComponent {
   private readonly injector = inject(Injector);
+  private readonly i18n = inject(EagamiI18nService);
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   readonly placement = input<MenuPlacement>('bottom-start');
   readonly disabled = input<boolean>(false);
-  readonly ariaLabel = input<string>('Menu', { alias: 'aria-label' });
+  readonly ariaLabel = input<string | undefined>(undefined, {
+    alias: 'aria-label',
+  });
   readonly id = input<string>(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
+
+  /** Accessible label for the menu, falling back to the active locale. */
+  readonly resolvedAriaLabel = computed(
+    () => this.ariaLabel() ?? this.i18n.messages().menu.label,
+  );
 
   readonly open = model<boolean>(false);
   /** Fires when the menu opens. */
