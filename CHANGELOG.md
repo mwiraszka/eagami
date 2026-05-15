@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-05-15
+
+### Added
+
+- Add internationalization support across every component. Built-in strings (ARIA labels, placeholders, empty states) now ship in English, French (France), Greek, Polish, and Spanish (Spain). Set the locale once with `provideEagamiUi({ locale })`, switch it at runtime through `EagamiI18nService`, and override individual strings via component inputs or `provideEagamiUi({ messages })`. `DatePickerComponent` also follows the active locale when formatting dates
+
+### Fixed
+
+- Make the `InputComponent` password visibility toggle reachable by keyboard. It previously carried `tabindex="-1"`, so keyboard users could not reveal the password
+- Wire `DropdownComponent`'s listbox to its trigger for screen readers. The trigger now exposes `aria-controls` and `aria-activedescendant`, so the highlighted option is announced as the user arrows through the list
+- Correct `DataTableComponent`'s table semantics by replacing the inconsistent ARIA `grid`/`row`/`gridcell` roles with native table semantics and `scope="col"` headers, so assistive tech announces rows and columns reliably
+- Hide `AlertComponent`'s decorative status icon from assistive technology
+
 ## [1.1.1] - 2026-05-12
 
 ### Changed
@@ -367,6 +380,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[1.2.0]: https://github.com/mwiraszka/eagami-design-system/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/mwiraszka/eagami-design-system/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/mwiraszka/eagami-design-system/compare/v1.0.1...v1.0.2
