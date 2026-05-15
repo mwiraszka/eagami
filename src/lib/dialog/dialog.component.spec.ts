@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { DialogComponent } from './dialog.component';
 
 // Mock HTMLDialogElement methods for jsdom
@@ -189,6 +190,21 @@ describe('DialogComponent', () => {
     it('projects footer content', () => {
       const footer = fixture.nativeElement.querySelector('.ea-dialog__footer');
       expect(footer.textContent).toContain('Footer');
+    });
+  });
+
+  describe('Localization', () => {
+    it('labels the close button in English by default', () => {
+      expect(getCloseButton()!.getAttribute('aria-label')).toBe('Close dialog');
+    });
+
+    it('relabels the close button when the locale changes', () => {
+      TestBed.inject(EagamiI18nService).setLocale('fr-FR');
+      fixture.detectChanges();
+
+      expect(getCloseButton()!.getAttribute('aria-label')).toBe(
+        'Fermer la boîte de dialogue',
+      );
     });
   });
 });
