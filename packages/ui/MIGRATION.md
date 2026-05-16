@@ -131,4 +131,4 @@ These don't break v0.x consumers but are worth knowing about as upgrade incentiv
 
 ## Need a hand?
 
-If you hit something this guide doesn't cover, please [open an issue](https://github.com/mwiraszka/eagami-design-system/issues) describing what you tried and what surprised you — it's the fastest way to get this guide better.
+If you hit something this guide doesn't cover, please [open an issue](https://github.com/mwiraszka/eagami/issues) describing what you tried and what surprised you — it's the fastest way to get this guide better.
