@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { UI_COMPONENTS } from '@app/data/ui-components';
+
 export const routes: Routes = [
   {
     path: '',
@@ -47,6 +49,11 @@ export const routes: Routes = [
           import('./pages/ui/ui-i18n/ui-i18n-page.component').then(
             c => c.UiI18nPageComponent,
           ),
+      },
+      {
+        path: 'components',
+        pathMatch: 'full',
+        redirectTo: () => `components/${UI_COMPONENTS[0].slug}`,
       },
       {
         path: 'components/:slug',

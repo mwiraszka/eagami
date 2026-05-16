@@ -17,6 +17,29 @@
     </p>
   </header>
 
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Theming</h2>
+    <p>
+      Every token is a CSS custom property on
+      <code>:root</code>
+      . Override at the root to retheme the entire library:
+    </p>
+    <pre
+      class="ui-tokens__code"><code>:root &lbrace;
+  --color-primary-600: #2563eb;
+  --font-family-sans: 'Inter', sans-serif;
+  --radius-md: 0.5rem;
+&rbrace;</code></pre>
+    <p>
+      Or scope overrides to individual components where useful:
+    </p>
+    <pre
+      class="ui-tokens__code"><code>.my-card &lbrace;
+  --ea-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --ea-button-font-weight: 600;
+&rbrace;</code></pre>
+  </section>
+
   <!-- ─── Colors ──────────────────────────────────────────────────────── -->
   <section class="tokens-section">
     <h2 class="tokens-section__title">Colors</h2>
