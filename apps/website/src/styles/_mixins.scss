@@ -107,3 +107,70 @@ $breakpoints: (
     animation: none;
   }
 }
+
+/// Standard prose link: link-coloured by default, colour shift + underline on
+/// hover, focus ring on keyboard focus.
+///
+/// Multi-attribute anchors that prettier wraps across multiple lines have
+/// internal whitespace (newlines + indent) that the browser renders as a real
+/// space before and after the link text. Applying `text-decoration: underline`
+/// to the anchor underlines that whitespace too, which reads as stray
+/// underline dashes on hover. To avoid this, wrap the link text in a
+/// `<span>` for any anchor that lives in a prose context and might wrap:
+///
+///   <a class="..." href="..." target="_blank" rel="...">
+///     <span>Eagami UI</span>
+///   </a>
+///
+/// The `:has` rule below shifts the underline from the anchor to the span
+/// only when a span child exists, so single-line inline anchors (no span,
+/// no whitespace) still get a clean underline on the link text directly.
+@mixin prose-link {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:has(> span):hover {
+    text-decoration: none;
+  }
+
+  &:hover > span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/// Variant for `<a><code>token</code></a>` patterns (typically a lede that
+/// links to the npm package name): no underline, just shift the code's text
+/// colour on hover, since the code element's background already carries the
+/// visual weight.
+@mixin prose-code-link {
+  text-decoration: none;
+
+  code {
+    color: var(--color-text-link);
+    transition: color 0.15s ease;
+  }
+
+  &:hover code {
+    color: var(--color-text-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}

@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 .ui-index {
   display: flex;
   flex-direction: column;
@@ -35,22 +37,8 @@
   }
 }
 
-.ui-index__lede-link {
-  border-radius: 4px;
-
-  code {
-    color: var(--color-text-link);
-    transition: color 0.15s ease;
-  }
-
-  &:hover code {
-    color: var(--color-text-link-hover);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
+.ui-index__lede a {
+  @include mixins.prose-code-link;
 }
 
 .ui-index__section {
@@ -74,19 +62,7 @@
   color: var(--color-text-secondary);
 
   a {
-    color: var(--color-text-link);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-
-    &:hover {
-      color: var(--color-text-link-hover);
-    }
-
-    &:focus-visible {
-      border-radius: 2px;
-      outline: 2px solid var(--color-border-focus);
-      outline-offset: 2px;
-    }
+    @include mixins.prose-link;
   }
 }
 

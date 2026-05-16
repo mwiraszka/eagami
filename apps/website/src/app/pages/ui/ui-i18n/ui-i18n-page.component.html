@@ -15,6 +15,11 @@
       role="list">
       @for (locale of locales; track locale) {
         <li class="ui-i18n__locale">
+          <span
+            class="ui-i18n__locale-flag"
+            aria-hidden="true">
+            {{ localeFlags[locale] }}
+          </span>
           <code>{{ locale }}</code>
           <span>{{ localeLabels[locale] }}</span>
         </li>
@@ -75,11 +80,8 @@ export const appConfig: ApplicationConfig = &lbrace;
   <section class="ui-i18n__section">
     <h2>Runtime switching</h2>
     <p>
-      Inject
-      <code>EagamiI18nService</code>
-      and call
-      <code>setLocale()</code>
-      . The active locale is a signal, so every component re-renders with the new strings
+      Inject <code>EagamiI18nService</code> and call <code>setLocale()</code>. The
+      active locale is a signal, so every component re-renders with the new strings
       without a refresh.
     </p>
     <pre
@@ -122,13 +124,9 @@ export class LanguageSwitcher &lbrace;
     <h2>French spacing helper</h2>
     <p>
       French typography expects a narrow non-breaking space before
-      <code>? ! : ; »</code>
-      and after
-      <code>«</code>
-      . The exported
-      <code>frenchSpacing()</code>
-      helper converts regular spaces in your own French strings (the library handles its
-      bundled French messages internally).
+      <code>? ! : ; »</code> and after <code>«</code>. The exported
+      <code>frenchSpacing()</code> helper converts regular spaces in your own French
+      strings (the library handles its bundled French messages internally).
     </p>
     <pre
       class="ui-i18n__code"><code>import &lbrace; frenchSpacing &rbrace; from '&#64;eagami/ui';

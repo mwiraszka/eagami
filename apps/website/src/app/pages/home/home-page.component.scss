@@ -659,13 +659,7 @@
   color: var(--color-text-secondary);
 
   a {
-    color: var(--color-text-link);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-
-    &:hover {
-      color: var(--color-text-link-hover);
-    }
+    @include mixins.prose-link;
   }
 }
 

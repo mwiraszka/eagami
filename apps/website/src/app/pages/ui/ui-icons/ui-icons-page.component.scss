@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 .ui-icons {
   display: flex;
   flex-direction: column;
@@ -26,13 +28,7 @@
   color: var(--color-text-secondary);
 
   a {
-    color: var(--color-text-link);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--color-text-link-hover);
-      text-decoration: underline;
-    }
+    @include mixins.prose-link;
   }
 
   code {
@@ -151,12 +147,6 @@
   color: var(--color-text-secondary);
 
   a {
-    color: var(--color-text-link);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--color-text-link-hover);
-      text-decoration: underline;
-    }
+    @include mixins.prose-link;
   }
 }

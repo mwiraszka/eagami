@@ -29,6 +29,14 @@ const LOCALE_LABELS: Record<EagamiLocale, string> = {
   'es-ES': 'Español',
 };
 
+const LOCALE_FLAGS: Record<EagamiLocale, string> = {
+  en: '🇬🇧',
+  'fr-FR': '🇫🇷',
+  el: '🇬🇷',
+  pl: '🇵🇱',
+  'es-ES': '🇪🇸',
+};
+
 @Component({
   selector: 'web-ui-i18n-page',
   templateUrl: './ui-i18n-page.component.html',
@@ -48,6 +56,7 @@ export class UiI18nPageComponent implements OnInit {
 
   protected readonly locales = EAGAMI_LOCALES;
   protected readonly localeLabels = LOCALE_LABELS;
+  protected readonly localeFlags = LOCALE_FLAGS;
 
   protected readonly localeOptions: SelectOption[] = EAGAMI_LOCALES.map(locale => ({
     value: locale,
