@@ -1,0 +1,47 @@
+name: UI — Publish
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'ui-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @eagami/ui lint
+
+      - run: pnpm --filter @eagami/ui test:coverage
+
+      - run: pnpm --filter @eagami/ui publish:lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create tag and GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          # Branch is ui-vX.Y.Z; strip prefix to get semver, then look up changelog entry
+          SEMVER="${BRANCH#ui-v}"
+          NOTES=$(awk "/^## \[${SEMVER}\]/{found=1; next} /^## \[/{if(found) exit} found{print}" packages/ui/CHANGELOG.md)
+
+          git tag "$BRANCH"
+          git push origin "$BRANCH"
+          gh release create "$BRANCH" --title "$BRANCH" --notes "$NOTES"
