@@ -4,8 +4,8 @@ Monorepo for [eagami](https://eagami.com), housing the eagami UI Angular compone
 
 | Path | Package | What it is |
 |---|---|---|
-| [`packages/ui/`](packages/ui/) | [`@eagami/ui`](https://www.npmjs.com/package/@eagami/ui) | eagami UI — the Angular component library, published to npm |
-| [`apps/website/`](apps/website/) | `eagami-website` | eagami.com — marketing site and live documentation for eagami UI, deployed to Vercel |
+| [`packages/ui/`](packages/ui/) | [`@eagami/ui`](https://www.npmjs.com/package/@eagami/ui) | eagami UI, the Angular component library, published to npm |
+| [`apps/website/`](apps/website/) | `eagami-website` | eagami.com, the marketing site and live documentation for eagami UI, deployed to Vercel |
 
 ## Getting started
 
@@ -23,8 +23,8 @@ pnpm --filter @eagami/ui watch
 
 Convenience aliases at the monorepo root:
 
-- `pnpm ui <script>` → `pnpm --filter @eagami/ui <script>`
-- `pnpm website <script>` → `pnpm --filter eagami-website <script>`
+- `pnpm ui <script>` runs `pnpm --filter @eagami/ui <script>`
+- `pnpm website <script>` runs `pnpm --filter eagami-website <script>`
 
 ## Layout
 
