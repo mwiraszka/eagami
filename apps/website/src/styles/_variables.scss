@@ -1,0 +1,57 @@
+/* Site-specific design tokens layered on top of @eagami/ui's tokens.
+   All colors must reference variables defined here — no hex literals in component SCSS. */
+
+:root {
+  /* Layout */
+  --web-width-content: 1140px;
+  --web-height-header: 64px;
+  /* Effective height of the persistent app footer (24px vertical padding + 32px
+     content). Kept as a constant so .home-section--contact can stretch to
+     exactly `100dvh - header - footer` — without this, scrolling to #contact
+     either leaves part of the previous section visible at the top, or wastes
+     vertical space between the form and the footer. */
+  --web-height-footer: 80px;
+
+  /* Override @eagami/ui's font-family tokens to insert metric-matched
+     fallback faces (defined in _fonts.scss). The fallback occupies the
+     same vertical geometry as the real face, so no layout shift when
+     the self-hosted woff2 loads in. */
+  --font-family-sans:
+    'DM Sans', 'DM Sans Fallback', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-brand:
+    'Syne', 'Syne Fallback', 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
+
+  /* Translucent header background — mixes the active bg-base token with transparent
+     so it stays in sync with light/dark theme overrides. Pairs with backdrop-filter. */
+  --web-color-headerBg: color-mix(in srgb, var(--color-bg-base) 78%, transparent);
+
+  /* Fluttering gradient backdrop — muted blends of the eagami brand palette */
+  --web-color-flutterStop1: var(--color-primary-100);
+  --web-color-flutterStop2: var(--color-secondary-100);
+  --web-color-flutterStop3: var(--color-primary-50);
+  --web-color-flutterStop4: var(--color-secondary-50);
+
+  /* Hero wordmark sheen — the moving highlight band that sweeps across the
+     "eagami" wordmark. Sits between the standard 500 and 400 stops so it reads
+     as a noticeable but not stark shimmer over the primary-700 base text. */
+  --web-color-wordmarkSheen: color-mix(
+    in oklch,
+    var(--color-primary-500),
+    var(--color-primary-400) 50%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --web-color-flutterStop1: var(--color-primary-900);
+    --web-color-flutterStop2: var(--color-secondary-900);
+    --web-color-flutterStop3: var(--color-neutral-950);
+    --web-color-flutterStop4: var(--color-secondary-800);
+
+    --web-color-wordmarkSheen: color-mix(
+      in oklch,
+      var(--color-primary-50),
+      var(--color-neutral-50) 50%
+    );
+  }
+}

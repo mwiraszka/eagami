@@ -1,0 +1,95 @@
+@use 'mixins' as mixins;
+
+:host {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  display: block;
+}
+
+.web-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--web-height-header);
+  @include mixins.safe-area-padding(0, 32px);
+  background-color: var(--web-color-headerBg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.web-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity 1.5s ease;
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.web-header__brand-icon {
+  font-size: 31px;
+}
+
+.web-header__brand-text {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.web-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.web-header__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  &--active {
+    color: var(--color-text-primary);
+  }
+
+  &--icon {
+    width: 36px;
+    padding: 0;
+
+    ea-icon-github {
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<article class="ui-icons">
+  <header class="ui-icons__header">
+    <h1 class="ui-icons__title">Icons</h1>
+    <p class="ui-icons__lede">
+      The icon set bundled with
+      <a
+        class="ui-icons__lede-link"
+        href="https://www.npmjs.com/package/@eagami/ui"
+        target="_blank"
+        rel="noopener noreferrer">
+        <code>&#64;eagami/ui</code>
+      </a>
+      is composed of standalone Angular components that inherit their color and scale with
+      <code>font-size</code>
+      , so consumers can render at any size. The set is derived from
+      <a
+        href="https://feathericons.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Feather Icons
+      </a>
+      by
+      <a
+        href="https://github.com/colebemis"
+        target="_blank"
+        rel="noopener noreferrer">
+        Cole Bemis
+      </a>
+      (MIT License). Click an icon to copy its selector.
+    </p>
+  </header>
+
+  <ul
+    class="icons-grid"
+    role="list">
+    @for (icon of icons; track icon.slug) {
+      <li class="icons-grid__item">
+        <button
+          type="button"
+          class="icons-grid__card"
+          [attr.aria-label]="'Copy selector ea-icon-' + icon.slug"
+          [eaTooltip]="'ea-icon-' + icon.slug"
+          tooltipPosition="bottom"
+          (click)="copySelector(icon.slug)">
+          <span class="icons-grid__glyph">
+            <ng-container *ngComponentOutlet="icon.component" />
+          </span>
+          <span class="icons-grid__name">{{ toTitleCase(icon.slug) }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+</article>

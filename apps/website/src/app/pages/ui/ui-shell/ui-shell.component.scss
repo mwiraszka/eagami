@@ -1,0 +1,128 @@
+@use 'mixins' as mixins;
+
+:host {
+  display: block;
+  flex: 1;
+}
+
+.ui-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  width: 100%;
+  max-width: 1280px;
+  min-height: calc(100dvh - var(--web-height-header));
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 240px;
+    width: 1px;
+    background-color: var(--color-border-default);
+  }
+
+  @include mixins.respond-to('lt-md') {
+    grid-template-columns: 1fr;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.ui-shell__sidebar {
+  position: sticky;
+  top: var(--web-height-header);
+  align-self: start;
+  overflow-y: auto;
+  max-height: calc(100dvh - var(--web-height-header));
+  padding: 24px 16px 24px 32px;
+  scrollbar-gutter: stable;
+
+  @include mixins.respond-to('lt-md') {
+    position: static;
+    max-height: none;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--color-border-default);
+  }
+}
+
+.ui-shell__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-shell__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ui-shell__list--nested {
+  margin: 4px 0 4px 24px;
+}
+
+.ui-shell__link {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  &--active {
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-default);
+    font-weight: 500;
+  }
+}
+
+.ui-shell__link--toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ui-shell__caret {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  transition: transform 0.15s ease;
+
+  &--open {
+    transform: rotate(90deg);
+  }
+}
+
+.ui-shell__main {
+  grid-column: 2;
+  min-width: 0;
+  padding: 32px 48px;
+
+  @include mixins.respond-to('lt-md') {
+    grid-column: 1;
+    padding: 24px 32px;
+  }
+}

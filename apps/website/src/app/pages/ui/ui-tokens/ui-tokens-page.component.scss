@@ -1,0 +1,515 @@
+@use 'mixins' as mixins;
+
+.ui-tokens {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 880px;
+}
+
+.ui-tokens__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ui-tokens__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--font-family-brand);
+  letter-spacing: -1px;
+  color: var(--color-text-primary);
+}
+
+.ui-tokens__lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  a {
+    color: var(--color-text-link);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-text-link-hover);
+      text-decoration: underline;
+    }
+  }
+
+  code {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--color-bg-muted);
+    font-size: 0.85em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: var(--color-text-primary);
+  }
+}
+
+.ui-tokens__lede-link {
+  border-radius: 4px;
+
+  code {
+    color: var(--color-text-link);
+    transition: color 0.15s ease;
+  }
+
+  &:hover code {
+    color: var(--color-text-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.tokens-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.tokens-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tokens-section__title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.tokens-subsection__title {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.tokens-subsection__sublabel {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  color: var(--color-text-tertiary);
+}
+
+/* ─── Color swatches ──────────────────────────────────────────────────── */
+.swatch-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+
+.swatch {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  height: 88px;
+  margin: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+}
+
+.swatch__color {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.swatch__caption {
+  z-index: 1;
+  position: absolute;
+  inset: auto 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--color-neutral-900);
+}
+
+.swatch__shade {
+  font-size: 12px;
+  font-weight: 600;
+  color: inherit;
+}
+
+.swatch__name {
+  overflow: hidden;
+  font-size: 11px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: inherit;
+  opacity: 0.8;
+}
+
+@each $shade in (500, 600, 700, 800, 900, 950) {
+  .swatch__color.swatch--#{$shade} ~ .swatch__caption {
+    color: var(--color-neutral-50);
+  }
+}
+
+@each $shade in (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) {
+  .swatch--primary.swatch--#{$shade} {
+    background-color: var(--color-primary-#{$shade});
+  }
+  .swatch--secondary.swatch--#{$shade} {
+    background-color: var(--color-secondary-#{$shade});
+  }
+}
+
+@each $shade in (0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950) {
+  .swatch--neutral.swatch--#{$shade} {
+    background-color: var(--color-neutral-#{$shade});
+  }
+}
+
+@each $family in (success, warning, error, info) {
+  @each $shade in (50, 100, 200, 500, 600, 700) {
+    .swatch--#{$family}.swatch--#{$shade} {
+      background-color: var(--color-#{$family}-#{$shade});
+    }
+  }
+}
+
+/* ─── Generic token list ──────────────────────────────────────────────── */
+.token-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.token-list__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: var(--color-bg-subtle);
+
+  code {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: var(--color-text-primary);
+  }
+}
+
+.token-list__value {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+/* ─── Semantic color swatches ─────────────────────────────────────────── */
+.semantic-swatch {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-default);
+}
+
+@each $key
+  in (
+    text-primary,
+    text-secondary,
+    text-tertiary,
+    text-disabled,
+    text-inverse,
+    text-link,
+    text-link-hover,
+    bg-base,
+    bg-subtle,
+    bg-muted,
+    border-default,
+    border-strong,
+    border-focus,
+    brand-default,
+    brand-hover,
+    brand-active,
+    brand-subtle,
+    brand-muted
+  )
+{
+  .semantic-swatch--#{$key} {
+    background-color: var(--color-#{$key});
+  }
+}
+
+/* ─── Typography ──────────────────────────────────────────────────────── */
+.font-sample {
+  flex: 1;
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.font-sample--sans {
+  font-family: var(--font-family-sans);
+}
+
+.font-sample--brand {
+  font-family: var(--font-family-brand);
+  font-weight: 600;
+}
+
+.font-sample--mono {
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+}
+
+.size-sample {
+  flex-shrink: 0;
+  width: 80px;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+@each $size in ('2xs', xs, sm, md, lg, xl, '2xl', '3xl', '4xl', '5xl') {
+  .size-sample--#{$size} {
+    font-size: var(--font-size-#{$size});
+  }
+}
+
+.weight-sample {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 16px;
+  color: var(--color-text-primary);
+}
+
+@each $weight in (regular, medium, semibold, bold, extrabold) {
+  .weight-sample--#{$weight} {
+    font-weight: var(--font-weight-#{$weight});
+  }
+}
+
+/* ─── Spacing bars ────────────────────────────────────────────────────── */
+.spacing-bar {
+  flex-shrink: 0;
+  height: 16px;
+  border-radius: 4px;
+  background-color: var(--color-brand-muted);
+}
+
+@each $step
+  in (
+    0,
+    '0-5',
+    1,
+    '1-5',
+    2,
+    '2-5',
+    3,
+    '3-5',
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    16,
+    20,
+    24,
+    32
+  )
+{
+  .spacing-bar--#{$step} {
+    width: var(--space-#{$step});
+    min-width: 1px;
+  }
+}
+
+/* ─── Elevation ───────────────────────────────────────────────────────── */
+.elevation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 32px;
+  padding: 16px;
+}
+
+.elevation-card {
+  position: relative;
+  display: block;
+  height: 80px;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.elevation-card__surface {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--color-bg-base);
+}
+
+.elevation-card__caption {
+  z-index: 1;
+  position: absolute;
+  inset: auto 12px 8px 12px;
+}
+
+.elevation-card__caption code {
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: var(--color-text-primary);
+}
+
+@each $size in (xs, sm, md, lg, xl, '2xl') {
+  .elevation-card--#{$size} {
+    box-shadow: var(--shadow-#{$size});
+  }
+}
+
+/* ─── Shape ───────────────────────────────────────────────────────────── */
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.shape-card {
+  position: relative;
+  display: block;
+  height: 72px;
+  margin: 0;
+}
+
+.shape-card__surface {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-brand-default);
+}
+
+.shape-card__caption {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shape-card__caption code {
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: var(--color-neutral-50);
+}
+
+@each $r in (none, xs, sm, md, lg, xl, '2xl', '3xl', full) {
+  .shape-card--#{$r} {
+    border-radius: var(--radius-#{$r});
+  }
+}
+
+/* ─── Elevation: dark-mode surface lift ──────────────────────────────── */
+:host-context([data-theme='dark']) .elevation-card__surface {
+  background-color: var(--color-bg-muted);
+}
+
+/* ─── Motion: simulate button + per-row demo bars ────────────────────── */
+.motion-simulate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.motion-list__item {
+  display: grid;
+  grid-template-columns: 160px 220px minmax(160px, 240px);
+  align-items: center;
+  gap: 16px;
+
+  @include mixins.respond-to('lt-lg') {
+    grid-template-columns: auto 1fr;
+    row-gap: 8px;
+  }
+}
+
+.motion-demo {
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  max-width: 240px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--color-bg-muted);
+
+  @include mixins.respond-to('lt-lg') {
+    justify-self: start;
+    grid-column: 1 / -1;
+  }
+}
+
+.motion-demo__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--color-brand-default);
+  transform: translateX(-100%);
+}
+
+.tokens-section--simulating .motion-demo--duration .motion-demo__bar {
+  animation: motion-demo-slide var(--demo-duration) ease-out forwards;
+}
+
+.tokens-section--simulating .motion-demo--easing .motion-demo__bar {
+  animation: motion-demo-slide 1s var(--demo-easing) forwards;
+}
+
+@keyframes motion-demo-slide {
+  from {
+    left: 0;
+    transform: translateX(0);
+  }
+  to {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}

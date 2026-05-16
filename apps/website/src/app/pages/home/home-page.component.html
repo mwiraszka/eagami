@@ -1,0 +1,381 @@
+<div class="home">
+  <!-- ─── Hero ────────────────────────────────────────────────────── -->
+  <section
+    class="home-hero"
+    aria-labelledby="home-hero-wordmark">
+    <div class="home-hero__inner">
+      <div
+        class="home-hero__visual"
+        aria-hidden="true">
+        <ea-icon-eagami class="home-hero__icon" />
+      </div>
+      <div class="home-hero__type">
+        <h1
+          id="home-hero-wordmark"
+          class="home-hero__wordmark"
+          data-text="eagami">
+          eagami
+        </h1>
+        <p class="home-hero__tagline">elegant web design.</p>
+        <div class="home-hero__actions">
+          <a
+            class="home-hero__cta"
+            href="#contact">
+            Get in touch
+          </a>
+          <a
+            class="home-hero__link"
+            href="#work">
+            See recent projects &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Decorative scroll hint: the next section is the next focusable region
+         anyway, so hide this entirely from assistive tech to avoid noise. -->
+    <a
+      class="home-hero__scroll"
+      href="#services"
+      aria-hidden="true"
+      tabindex="-1">
+      <ea-icon-chevron-down class="home-hero__scroll-chevron" />
+    </a>
+  </section>
+
+  <!-- ─── Services ────────────────────────────────────────────────── -->
+  <section
+    id="services"
+    class="home-section home-section--services">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Services</h2>
+        <p class="home-section__lede">
+          From a single landing page to a full web app, plus everything that comes after
+          launch.
+        </p>
+      </header>
+
+      <div class="service-group">
+        <ul
+          class="service-list service-list--core"
+          role="list">
+          @for (service of coreServices; track service.title) {
+            <li class="service-item service-item--core">
+              <h3 class="service-item__title">{{ service.title }}</h3>
+              <p class="service-item__description">{{ service.description }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="service-group">
+        <p class="service-group__heading">Features</p>
+        <ul
+          class="service-list service-list--addons"
+          role="list">
+          @for (service of addOnServices; track service.title) {
+            <li class="service-item">
+              <h3 class="service-item__title">{{ service.title }}</h3>
+              <p class="service-item__description">{{ service.description }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Toolkit (library mention) ───────────────────────────────── -->
+  <section
+    id="toolkit"
+    class="home-section home-section--toolkit">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Toolkit</h2>
+        <p class="home-section__lede">
+          Every project is built on
+          <a
+            class="home-section__lede-link"
+            href="https://www.npmjs.com/package/@eagami/ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><code>&#64;eagami/ui</code></a
+          >, an open-source Angular component library and design system. Components,
+          icons, design tokens, and themes live in a single package, so each new build
+          starts with the boilerplate already in place.
+        </p>
+      </header>
+
+      <div class="toolkit-showcase">
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Buttons</span>
+          <div class="toolkit-showcase__items">
+            <ea-button
+              variant="primary"
+              size="sm"
+              (clicked)="onShowcaseButton('Primary')">
+              Primary
+            </ea-button>
+            <ea-button
+              variant="secondary"
+              size="sm"
+              (clicked)="onShowcaseButton('Secondary')">
+              Secondary
+            </ea-button>
+            <ea-button
+              variant="ghost"
+              size="sm"
+              (clicked)="onShowcaseButton('Ghost')">
+              Ghost
+            </ea-button>
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Progress bars</span>
+          <div class="toolkit-showcase__items toolkit-showcase__items--progress">
+            <ea-progress-bar [indeterminate]="true" />
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Sliders</span>
+          <div class="toolkit-showcase__items toolkit-showcase__items--slider">
+            <ea-slider [(value)]="showcaseSliderValue" />
+            <ea-badge>{{ showcaseSliderValue() }}</ea-badge>
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Loading skeletons</span>
+          <div class="toolkit-showcase__items toolkit-showcase__items--skeleton">
+            <ea-skeleton variant="circle" />
+            <div class="toolkit-showcase__skeleton-lines">
+              <ea-skeleton width="60%" />
+              <ea-skeleton
+                width="40%"
+                height="0.75rem" />
+            </div>
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Tags</span>
+          <div class="toolkit-showcase__items">
+            <ea-tag variant="success">Live</ea-tag>
+            <ea-tag variant="warning">Beta</ea-tag>
+            <ea-tag variant="error">Hot</ea-tag>
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Spinners</span>
+          <div class="toolkit-showcase__items">
+            <ea-spinner size="md" />
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Switches</span>
+          <div class="toolkit-showcase__items">
+            <ea-switch
+              [checked]="showcaseSwitchOn()"
+              (checkedChange)="onShowcaseSwitch($event)" />
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Radio buttons</span>
+          <div class="toolkit-showcase__items">
+            <ea-radio-group
+              orientation="horizontal"
+              [value]="showcaseRadioValue()"
+              (valueChange)="onShowcaseRadio($event)">
+              <ea-radio
+                value="sm"
+                label="Small" />
+              <ea-radio
+                value="md"
+                label="Medium" />
+              <ea-radio
+                value="lg"
+                label="Large" />
+            </ea-radio-group>
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row">
+          <span class="toolkit-showcase__label">Checkboxes</span>
+          <div class="toolkit-showcase__items toolkit-showcase__items--checkboxes">
+            <div class="toolkit-showcase__checkbox-group">
+              <ea-checkbox
+                [checked]="checkboxOne()"
+                (checkedChange)="onShowcaseCheckbox(1, $event)" />
+              <ea-checkbox
+                [checked]="checkboxTwo()"
+                (checkedChange)="onShowcaseCheckbox(2, $event)" />
+              <ea-checkbox
+                [checked]="checkboxThree()"
+                [disabled]="true" />
+            </div>
+            <ea-checkbox
+              [checked]="checkboxMasterChecked()"
+              [indeterminate]="checkboxMasterIndeterminate()"
+              (checkedChange)="toggleCheckboxMaster()" />
+          </div>
+        </div>
+
+        <div class="toolkit-showcase__row toolkit-showcase__row--cta">
+          <a
+            class="home-hero__link"
+            routerLink="/ui/components/accordion">
+            See all components &rarr;
+          </a>
+        </div>
+      </div>
+
+      <ul
+        class="toolkit-summary"
+        role="list">
+        <li class="toolkit-summary__item">Accessible and signals-first by default</li>
+        <li class="toolkit-summary__item">
+          Fully customizable colors, typography, spacing, and animations
+        </li>
+        <li class="toolkit-summary__item">
+          Cohesive icon set for actions, status, navigation, and branding
+        </li>
+      </ul>
+
+      <a
+        class="home-hero__cta-secondary"
+        routerLink="/ui">
+        Explore the toolkit &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Recent projects ─────────────────────────────────────────── -->
+  <section
+    id="work"
+    class="home-section home-section--work">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Recent projects</h2>
+        <p class="home-section__lede">A few sites in active development.</p>
+      </header>
+      <div class="work-carousel">
+        <button
+          type="button"
+          class="work-carousel__nav work-carousel__nav--prev"
+          aria-label="Previous projects"
+          (click)="scrollWork(-1)">
+          &lsaquo;
+        </button>
+        <div
+          class="work-carousel__viewport"
+          role="region"
+          aria-label="Recent projects"
+          tabindex="0"
+          (keydown.arrowLeft)="scrollWork(-1); $event.preventDefault()"
+          (keydown.arrowRight)="scrollWork(1); $event.preventDefault()">
+          <div
+            class="work-carousel__track"
+            [class.work-carousel__track--next]="slideDirection() === 1"
+            [class.work-carousel__track--prev]="slideDirection() === -1"
+            [class.work-carousel__track--instant]="suppressTransition()">
+            @for (project of orderedProjects(); track $index) {
+              <a
+                class="project-card"
+                [href]="project.url"
+                target="_blank"
+                rel="noopener noreferrer">
+                <img
+                  class="project-card__logo"
+                  [src]="project.logo"
+                  alt=""
+                  width="64"
+                  height="64" />
+                <h3 class="project-card__title">{{ project.title }}</h3>
+                <p class="project-card__description">{{ project.description }}</p>
+                <span class="project-card__url">{{ project.display }}</span>
+              </a>
+            }
+          </div>
+        </div>
+        <p
+          class="work-carousel__status"
+          aria-live="polite">
+          {{ carouselStatus() }}
+        </p>
+        <button
+          type="button"
+          class="work-carousel__nav work-carousel__nav--next"
+          aria-label="Next projects"
+          (click)="scrollWork(1)">
+          &rsaquo;
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─────────────────────────────────────────────────── -->
+  <section
+    id="contact"
+    class="home-section home-section--contact">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Got a project in mind?</h2>
+        <p class="home-section__lede">Let's hear about it!</p>
+      </header>
+
+      @if (contactStatus() === 'sent') {
+        <div
+          class="contact-success"
+          role="status">
+          <p>Thanks for the message. You'll hear back soon.</p>
+        </div>
+      } @else {
+        <form
+          class="contact-form"
+          [formGroup]="contactForm"
+          (ngSubmit)="submitContact()">
+          <ea-input
+            label="Name"
+            formControlName="name"
+            placeholder="Your name"
+            [required]="true" />
+          <ea-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            [required]="true"
+            [errorMsg]="contactEmailError()"
+            (blurred)="onContactFieldBlur()" />
+          <ea-textarea
+            label="Message"
+            formControlName="message"
+            [placeholder]="contactMessagePlaceholder()"
+            [required]="true" />
+
+          @if (contactError(); as err) {
+            <p
+              class="contact-error"
+              role="alert">
+              {{ err }}
+            </p>
+          }
+
+          <ea-button
+            type="submit"
+            variant="primary"
+            size="lg"
+            [loading]="contactStatus() === 'sending'"
+            [disabled]="!isContactFormValid()">
+            Send message
+          </ea-button>
+        </form>
+      }
+    </div>
+  </section>
+</div>

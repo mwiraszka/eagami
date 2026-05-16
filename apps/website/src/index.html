@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eagami</title>
+    <base href="/" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="eagami" />
+    <meta
+      name="application-name"
+      content="eagami" />
+    <meta
+      name="author"
+      content="eagami" />
+    <meta
+      name="description"
+      content="Elegant web design" />
+    <meta
+      name="keywords"
+      content="eagami, web design, angular, component library, design system, ui, accessible" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)" />
+    <meta
+      name="theme-color"
+      content="#030712"
+      media="(prefers-color-scheme: dark)" />
+    <meta
+      name="msapplication-TileColor"
+      content="#2a5b7e" />
+    <!-- SEO meta tags -->
+    <meta
+      name="robots"
+      content="index, follow" />
+    <link
+      rel="canonical"
+      href="https://eagami.com/" />
+    <meta
+      property="og:title"
+      content="eagami — Elegant web design" />
+    <meta
+      property="og:description"
+      content="Elegant web design" />
+    <meta
+      property="og:type"
+      content="website" />
+    <meta
+      property="og:url"
+      content="https://eagami.com/" />
+    <meta
+      property="og:site_name"
+      content="eagami" />
+    <meta
+      property="og:image"
+      content="https://eagami.com/assets/og-card.png" />
+    <meta
+      property="og:image:width"
+      content="1200" />
+    <meta
+      property="og:image:height"
+      content="630" />
+    <meta
+      property="og:image:alt"
+      content="eagami — elegant web design" />
+    <meta
+      name="twitter:card"
+      content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="eagami — Elegant web design" />
+    <meta
+      name="twitter:description"
+      content="Elegant web design" />
+    <meta
+      name="twitter:image"
+      content="https://eagami.com/assets/og-card.png" />
+    <meta
+      name="twitter:image:alt"
+      content="eagami — elegant web design" />
+    <!-- icons -->
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/logo.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/icons/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/icons/apple-touch-icon.png" />
+    <link
+      rel="manifest"
+      href="manifest.webmanifest" />
+    <!-- Self-hosted fonts: preload the latin subsets of DM Sans (regular +
+         italic) and Syne so they're requested in the critical waterfall. The
+         italic file is preloaded because the home-hero tagline uses it on
+         first paint — without the preload it swaps in late and flickers.
+         @font-face declarations live in styles/_fonts.scss. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/dm-sans-latin.woff2"
+      crossorigin />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/dm-sans-italic-latin.woff2"
+      crossorigin />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/syne-latin.woff2"
+      crossorigin />
+    <!-- Inline subset of Syne 600 containing only the 5 letters of "eagami"
+         (~1.3KB base64'd) so the home-hero wordmark renders in Syne on first
+         paint with zero network. The sheen sweep continues to work because
+         the wordmark stays live text, not SVG. Other Syne usages (page titles)
+         load via the regular self-hosted face. -->
+    <style>
+      @font-face {
+        font-family: 'Syne Wordmark';
+        font-style: normal;
+        font-weight: 600;
+        font-display: block;
+        src: url(data:font/woff2;base64,d09GMgABAAAAAAUoAA8AAAAACUgAAATMAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhwbgSIcgUoGYD9TVEFUKgBcEQgKhVCEXAsYAAE2AiQDLAQgBYQeByAbtQfIBB74/9M69yFNqeEbp04KKNV2UiJlVC08ULr4HOlr529BBwt9AXwna6qf4kvxQEbXqs/987WsgB0gKd2qylYBzy2Vy6yam1ATSm8Rz2KgO2X8XY8AIpAUiQ8JFDFkIESE+udh7CQXqb6xzUaUY2LVhQMoHcUvRtWifdmFMeZco4KEMdRLGMbt/faWk4mMjBXU/+5LyDGZkGUJGUNyIMRUJAow3BExxuWg1W0EZ3Bwhen/Pqg1gw0atXXdNo1Sa82gRq6txqaRbuu2amyH7lZCRmYkr9ibuE8W16oO95SDYp/KpTKp3W5t5/x+gLglyPypJFQibL4MwNGwB2A5rUg3SP2oIHmlftFlDXeIUawi88zkC7j4QxfaDfknHZ0dDTyFhlM++/93qEt+VPygwWmSEr9KXoLamYpnhQl+7yaka2bnVoV651CKIIyLgobAxwQWCDUKzRh1q5cNaExgZ5Z5nKcymb+qf6lf0M/qZ/TT+qkpx61agdB1oimGVxFJSoysvCnnNgJxS/HnzT8XKPXnz/Ovi9hoY2pI6qYYRVGUxERFmfAGAmJfMBi+7vdzq8/n610PBsW+QCDM6+NWv38oXArbd+6SmAq/4POFdXSwRZz1+8NHBr0+LfJSYKr63P27ergvUJj08Nt3j/bmgNj3RliY94VHzol9bwYLGp57iVvvCp/rk8ysv/qs2PfMK2Hel57i1qdfHiNM9IjuIfeHzq773/Yjhcn73gnz+nybtp8PvhuMrEgPRUoRjP/sjWH1npra1baOutWVmuaukYY9ay1pyYO57TbzxqHijnST1VyQ1tpuKu7qG7Fa0q3WtM8ueH6eo6AwlY8vLy5XdixmWnsOVVpXujpb1vZX9Q5cXVlyozL6YEtmbfvO/NKOrNt31vfVPltTdFUlG9saPZbqsbq6yglPQXOiPeFLRn4c39S5K2b8vz21lSMuS29ysuV4/hHTbSk/JphCusKf9V58KjV6KemOiqFNufXlWdEu08dFJlPJx6Y93xWnmYo+5snnFg8thr7j+dlD6U/un91U/OT+2V39b0ZzcvWmJkuZe1fFlSpzh8lSXajWb6tdtW5+NLMpuXpzk6XMs6viSpW5w2SuLkyu21G70rqZiUMA77/gOOzAYCAUDLtRAQNhH+n7G45MclhMisOYQbkHpBduGn/ePpLy8v7xF0pj0eW/GWX5y07pD5vviAwvftJQ36uP/K+rO+UHJuG/L1EB787Bqk0f+e8Tdedz+264eI5J6RQ7pSV2Si528i9lfO6Wm5VoKvkcQzuLg9gYDwvnTmKxo07jVr5Z6s3vll8JFWPP8ElqFWzgOatEFA9YZcwcXlfaFRUzDsLAdFuiKGSTLHAsghiMxjftK3ux42SeWtw4mKYPO/PMMseq27mKhxVKyRFOrTDFMvN4WKVKts7i3+wgGzfLzJJDJ420sZfrcGEna1qiF5cZOt240MglmypmYSzOlNFBp6404DknIbpHZ1nDwQTLfZxrtXW48XAdYH4/sOAtMxZK0LAxxyCyXupiGTcL2JnqF6lh7Qxgd5tX0DCdB3zncBXC5UmymcKNkxwm6aUF3KyxTBbOfOs0dnKYSQEQlLwrezy9ynV4sDPDBFPYk/af3KYvYMUCAAAA)
+          format('woff2');
+      }
+    </style>
+    <!-- Apply persisted theme before Angular bootstraps to avoid flash of wrong theme -->
+    <script>
+      (function () {
+        var theme = 'light';
+        try {
+          if (localStorage.getItem('web-theme') === 'dark') theme = 'dark';
+        } catch (e) {}
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <!-- Critical theme colors inlined so the page background and text render in the
+         correct theme on first paint, before the main stylesheet loads. Hex values
+         must stay in sync with --color-bg-base / --color-text-primary in _theme.scss.
+         `color-scheme` is essential here: without it the browser paints its default
+         white canvas while the document loads, so a reload in dark mode flashes
+         white before the dark background applies. -->
+    <style>
+      html {
+        color-scheme: light;
+        background-color: #ffffff;
+        color: #111827;
+      }
+      html[data-theme='dark'] {
+        color-scheme: dark;
+        background-color: #111827;
+        color: #f9fafb;
+      }
+    </style>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script
+      async
+      src="https://plausible.io/js/pa-jdh348SO1yH7U7x82j4F5.js"></script>
+    <script>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script>
+  </head>
+  <body>
+    <web-root></web-root>
+  </body>
+</html>

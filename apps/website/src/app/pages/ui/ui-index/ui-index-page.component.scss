@@ -1,0 +1,113 @@
+.ui-index {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 720px;
+}
+
+.ui-index__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ui-index__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--font-family-brand);
+  letter-spacing: -1px;
+  color: var(--color-text-primary);
+}
+
+.ui-index__lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  code {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-primary);
+  }
+}
+
+.ui-index__lede-link {
+  border-radius: 4px;
+
+  code {
+    color: var(--color-text-link);
+    transition: color 0.15s ease;
+  }
+
+  &:hover code {
+    color: var(--color-text-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.ui-index__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.ui-index__heading {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.ui-index__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  a {
+    color: var(--color-text-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--color-text-link-hover);
+    }
+
+    &:focus-visible {
+      border-radius: 2px;
+      outline: 2px solid var(--color-border-focus);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.ui-index__points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  li {
+    padding-left: 16px;
+    border-left: 2px solid var(--color-border-default);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+}
