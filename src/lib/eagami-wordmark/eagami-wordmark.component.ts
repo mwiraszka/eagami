@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { EagamiIconComponent } from '../icons/eagami.component';
 
 /** Variant of the wordmark — 1: "eagami", 2: "handcrafted by eagami", 3: "eagami design system", 4: with tagline. */
@@ -23,6 +30,8 @@ export type EagamiWordmarkLayout = 'stacked' | 'inline';
   },
 })
 export class EagamiWordmarkComponent {
+  protected readonly i18n = inject(EagamiI18nService);
+
   readonly variant = input<EagamiWordmarkVariant>(1);
   readonly layout = input<EagamiWordmarkLayout>('stacked');
   readonly size = input<number>(32);
@@ -37,16 +46,19 @@ export class EagamiWordmarkComponent {
     return 'eagami design system';
   });
 
+  // The brand name itself stays untranslated; only the descriptive overline
+  // and tagline localize.
   protected readonly ariaLabel = computed(() => {
+    const messages = this.i18n.messages().wordmark;
     switch (this.variant()) {
       case 1:
         return 'eagami';
       case 2:
-        return 'handcrafted by eagami';
+        return `${messages.overline} eagami`;
       case 3:
         return 'eagami design system';
       case 4:
-        return 'eagami design system \u2014 elegant web design';
+        return `eagami design system \u2014 ${messages.tagline}`;
     }
   });
 }

@@ -6,12 +6,14 @@ import {
   ViewEncapsulation,
   computed,
   effect,
+  inject,
   input,
   model,
   output,
   viewChild,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 
 /** Edge of the viewport from which the drawer slides in. */
@@ -36,6 +38,7 @@ export type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
 export class DrawerComponent {
   private readonly drawerEl = viewChild<ElementRef<HTMLDialogElement>>('drawerEl');
   private previouslyFocused: HTMLElement | null = null;
+  protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly position = input<DrawerPosition>('right');

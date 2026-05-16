@@ -3,12 +3,14 @@ import {
   Component,
   ViewEncapsulation,
   computed,
+  inject,
   input,
   model,
   output,
 } from '@angular/core';
 
 import { ButtonComponent } from '../button/button.component';
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 
@@ -36,6 +38,8 @@ export interface PaginatorState {
   encapsulation: ViewEncapsulation.None,
 })
 export class PaginatorComponent {
+  protected readonly i18n = inject(EagamiI18nService);
+
   readonly totalItems = input.required<number>();
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);
   readonly showPageSizeSelector = input<boolean>(true);

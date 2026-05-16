@@ -7,11 +7,17 @@
     <ea-eagami-wordmark
       class="sandbox-header-wordmark sandbox-header-wordmark--short"
       [size]="40" />
-    <span class="sandbox-header-label">UI Sandbox</span>
+    <span class="sandbox-header-label">{{ s().header.uiSandbox }}</span>
+    <ea-dropdown
+      class="sandbox-header-locale"
+      size="sm"
+      [options]="localeOptions"
+      [value]="i18n.locale()"
+      (changed)="setLocale($event)" />
     <ea-switch
       class="sandbox-header-theme"
       size="sm"
-      label="Dark mode"
+      [label]="s().header.darkMode"
       [checked]="darkMode()"
       (changed)="darkMode.set($event)" />
   </div>
@@ -26,11 +32,11 @@
           class="sandbox-sidebar__heading-radio"
           size="sm"
           name="sandbox-mode"
-          aria-label="Sandbox mode"
+          [aria-label]="s().sidebar.sandboxMode"
           [(value)]="mode">
           <ea-radio
             value="icons"
-            label="Icons" />
+            [label]="s().sidebar.icons" />
         </ea-radio-group>
       </div>
     </div>
@@ -41,17 +47,17 @@
           class="sandbox-sidebar__heading-radio"
           size="sm"
           name="sandbox-mode"
-          aria-label="Sandbox mode"
+          [aria-label]="s().sidebar.sandboxMode"
           [(value)]="mode">
           <ea-radio
             value="components"
-            label="Components" />
+            [label]="s().sidebar.components" />
         </ea-radio-group>
       </div>
       <ea-checkbox
         class="sandbox-sidebar__select-all"
         size="sm"
-        label="Select all"
+        [label]="s().sidebar.selectAll"
         [checked]="allVisible()"
         [indeterminate]="someVisible()"
         (changed)="toggleAll()" />
@@ -76,45 +82,42 @@
           [headerDivider]="true">
           <span slot="header">Accordion</span>
           <section class="sandbox-section">
-            <h2>single</h2>
+            <h2>{{ s().section.single }}</h2>
             <ea-accordion>
               <ea-accordion-item
                 value="what"
-                label="What is @eagami/ui?">
-                A lightweight, accessible Angular component library built on CSS custom
-                properties.
+                [label]="s().accordion.whatQ">
+                {{ s().accordion.whatA }}
               </ea-accordion-item>
               <ea-accordion-item
                 value="install"
-                label="How do I install it?">
-                Run pnpm add &#64;eagami/ui, then add the global stylesheet to your
-                angular.json.
+                [label]="s().accordion.installQ">
+                {{ s().accordion.installA }}
               </ea-accordion-item>
               <ea-accordion-item
                 value="theme"
-                label="Can I customize the theme?">
-                Yes — override any CSS custom property on :root or scope overrides to
-                individual components.
+                [label]="s().accordion.themeQ">
+                {{ s().accordion.themeA }}
               </ea-accordion-item>
             </ea-accordion>
 
-            <h2>multi</h2>
+            <h2>{{ s().section.multi }}</h2>
             <ea-accordion [multi]="true">
               <ea-accordion-item
                 value="one"
-                label="Section One">
-                Multiple sections can be open at once in multi mode.
+                [label]="s().accordion.sectionOne">
+                {{ s().accordion.sectionOneBody }}
               </ea-accordion-item>
               <ea-accordion-item
                 value="two"
-                label="Section Two">
-                Content for section two.
+                [label]="s().accordion.sectionTwo">
+                {{ s().accordion.sectionTwoBody }}
               </ea-accordion-item>
               <ea-accordion-item
                 value="disabled"
-                label="Disabled Section"
+                [label]="s().accordion.disabledSection"
                 [disabled]="true">
-                This content is not reachable.
+                {{ s().accordion.disabledSectionBody }}
               </ea-accordion-item>
             </ea-accordion>
           </section>
@@ -129,22 +132,20 @@
           [headerDivider]="true">
           <span slot="header">Alert</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-stack sandbox-stack--md">
-              <ea-alert variant="default">This is a default alert</ea-alert>
-              <ea-alert variant="success">Your changes have been saved</ea-alert>
-              <ea-alert variant="warning">Your trial expires in 3 days</ea-alert>
-              <ea-alert variant="error"
-                >Something went wrong &mdash; please try again</ea-alert
-              >
-              <ea-alert variant="info">A new version is available</ea-alert>
+              <ea-alert variant="default">{{ s().alert.defaultMsg }}</ea-alert>
+              <ea-alert variant="success">{{ s().alert.successMsg }}</ea-alert>
+              <ea-alert variant="warning">{{ s().alert.warningMsg }}</ea-alert>
+              <ea-alert variant="error">{{ s().alert.errorMsg }}</ea-alert>
+              <ea-alert variant="info">{{ s().alert.infoMsg }}</ea-alert>
             </div>
 
-            <h2>dismissible</h2>
+            <h2>{{ s().section.removable }}</h2>
             <ea-alert
               variant="info"
               [dismissible]="true">
-              This alert can be dismissed
+              {{ s().alert.dismissibleMsg }}
             </ea-alert>
           </section>
         </ea-card>
@@ -158,56 +159,56 @@
           [headerDivider]="true">
           <span slot="header">Autocomplete</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-autocomplete
-              label="Framework"
-              placeholder="Start typing…"
-              [options]="autocompleteOptions"
+              [label]="s().autocomplete.frameworkLabel"
+              [placeholder]="s().autocomplete.startTyping"
+              [options]="autocompleteOptions()"
               [(value)]="autocompleteValue" />
 
-            <h2>hint &amp; error</h2>
+            <h2>{{ s().section.hintAndError }}</h2>
             <ea-autocomplete
-              label="With hint"
-              hint="Start typing to see matches"
-              [options]="autocompleteOptions"
-              placeholder="Framework…" />
+              [label]="s().autocomplete.withHintLabel"
+              [hint]="s().autocomplete.hint"
+              [options]="autocompleteOptions()"
+              [placeholder]="s().autocomplete.frameworkPlaceholder" />
             <ea-autocomplete
-              label="With error"
-              errorMsg="Please select a framework"
-              [options]="autocompleteOptions"
-              placeholder="Framework…" />
+              [label]="s().autocomplete.withErrorLabel"
+              [errorMsg]="s().autocomplete.errorMsg"
+              [options]="autocompleteOptions()"
+              [placeholder]="s().autocomplete.frameworkPlaceholder" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-autocomplete
               size="sm"
-              label="Small"
-              [options]="autocompleteOptions"
+              [label]="s().common.small"
+              [options]="autocompleteOptions()"
               placeholder="sm" />
             <ea-autocomplete
               size="md"
-              label="Medium"
-              [options]="autocompleteOptions"
+              [label]="s().common.medium"
+              [options]="autocompleteOptions()"
               placeholder="md" />
             <ea-autocomplete
               size="lg"
-              label="Large"
-              [options]="autocompleteOptions"
+              [label]="s().common.large"
+              [options]="autocompleteOptions()"
               placeholder="lg" />
 
-            <h2>min length &amp; max results</h2>
+            <h2>{{ s().section.minLengthAndMaxResults }}</h2>
             <ea-autocomplete
-              label="Min 2 chars, max 3 results"
+              [label]="s().autocomplete.minMaxLabel"
               [minLength]="2"
               [maxResults]="3"
-              [options]="autocompleteOptions"
-              placeholder="Type at least 2 characters…" />
+              [options]="autocompleteOptions()"
+              [placeholder]="s().autocomplete.minMaxPlaceholder" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-autocomplete
-              label="Disabled"
+              [label]="s().autocomplete.disabledLabel"
               [disabled]="true"
-              [options]="autocompleteOptions"
-              placeholder="Disabled" />
+              [options]="autocompleteOptions()"
+              [placeholder]="s().autocomplete.disabledLabel" />
           </section>
         </ea-card>
       }
@@ -220,7 +221,7 @@
           [headerDivider]="true">
           <span slot="header">Avatar</span>
           <section class="sandbox-section">
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
               <ea-avatar
                 size="xs"
@@ -239,7 +240,7 @@
                 initials="XL"></ea-avatar>
             </div>
 
-            <h2>shapes &amp; fallbacks</h2>
+            <h2>{{ s().section.shapesAndFallbacks }}</h2>
             <div class="sandbox-row">
               <ea-avatar
                 initials="EA"
@@ -250,7 +251,7 @@
               <ea-avatar shape="circle"></ea-avatar>
               <ea-avatar
                 src="assets/sample-avatar.jpg"
-                alt="User photo"></ea-avatar>
+                [alt]="s().avatar.userPhotoAlt"></ea-avatar>
             </div>
           </section>
         </ea-card>
@@ -264,7 +265,7 @@
           [headerDivider]="true">
           <span slot="header">Avatar Editor</span>
           <section class="sandbox-section">
-            <h2>circle</h2>
+            <h2>{{ s().section.circle }}</h2>
             <div class="sandbox-row sandbox-row--stretch">
               <ea-avatar-editor
                 shape="circle"
@@ -272,7 +273,7 @@
                 (cropped)="onAvatarCropped($event)" />
               @if (croppedAvatarUrl()) {
                 <div class="sandbox-avatar-result">
-                  <span class="sandbox-preview">Result:</span>
+                  <span class="sandbox-preview">{{ s().common.result }}</span>
                   <ea-avatar
                     [src]="croppedAvatarUrl()"
                     size="xl" />
@@ -280,19 +281,19 @@
               }
             </div>
 
-            <h2>square</h2>
+            <h2>{{ s().section.square }}</h2>
             <ea-avatar-editor
               shape="square"
               [canvasSize]="180" />
 
-            <h2>circle with existing image + crop state</h2>
+            <h2>{{ s().section.circleWithImage }}</h2>
             <ea-avatar-editor
               shape="circle"
               [canvasSize]="180"
               currentSrc="assets/sample-avatar.jpg"
               [cropState]="{ zoom: 1.4, offsetX: -30, offsetY: -20 }" />
 
-            <h2>square with existing image + crop state</h2>
+            <h2>{{ s().section.squareWithImage }}</h2>
             <ea-avatar-editor
               shape="square"
               [canvasSize]="180"
@@ -310,20 +311,20 @@
           [headerDivider]="true">
           <span slot="header">Badge</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-row">
-              <ea-badge variant="default">Default</ea-badge>
-              <ea-badge variant="success">Active</ea-badge>
-              <ea-badge variant="warning">Pending</ea-badge>
-              <ea-badge variant="error">Failed</ea-badge>
-              <ea-badge variant="info">New</ea-badge>
+              <ea-badge variant="default">{{ s().common.default }}</ea-badge>
+              <ea-badge variant="success">{{ s().badge.active }}</ea-badge>
+              <ea-badge variant="warning">{{ s().badge.pending }}</ea-badge>
+              <ea-badge variant="error">{{ s().badge.failed }}</ea-badge>
+              <ea-badge variant="info">{{ s().badge.newItem }}</ea-badge>
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
-              <ea-badge size="sm">Small</ea-badge>
-              <ea-badge size="md">Medium</ea-badge>
-              <ea-badge size="lg">Large</ea-badge>
+              <ea-badge size="sm">{{ s().common.small }}</ea-badge>
+              <ea-badge size="md">{{ s().common.medium }}</ea-badge>
+              <ea-badge size="lg">{{ s().common.large }}</ea-badge>
             </div>
           </section>
         </ea-card>
@@ -337,16 +338,16 @@
           [headerDivider]="true">
           <span slot="header">Breadcrumbs</span>
           <section class="sandbox-section">
-            <h2>chevron separator</h2>
-            <ea-breadcrumbs [items]="breadcrumbItems" />
+            <h2>{{ s().section.chevronSeparator }}</h2>
+            <ea-breadcrumbs [items]="breadcrumbItems()" />
 
-            <h2>slash separator</h2>
+            <h2>{{ s().section.slashSeparator }}</h2>
             <ea-breadcrumbs
-              [items]="breadcrumbItems"
+              [items]="breadcrumbItems()"
               separator="slash" />
 
-            <h2>two levels</h2>
-            <ea-breadcrumbs [items]="breadcrumbItemsShort" />
+            <h2>{{ s().section.twoLevels }}</h2>
+            <ea-breadcrumbs [items]="breadcrumbItemsShort()" />
           </section>
         </ea-card>
       }
@@ -359,32 +360,32 @@
           [headerDivider]="true">
           <span slot="header">Button</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-row">
-              <ea-button>Primary</ea-button>
-              <ea-button variant="secondary">Secondary</ea-button>
-              <ea-button variant="ghost">Ghost</ea-button>
-              <ea-button variant="danger">Danger</ea-button>
+              <ea-button>{{ s().button.primary }}</ea-button>
+              <ea-button variant="secondary">{{ s().button.secondary }}</ea-button>
+              <ea-button variant="ghost">{{ s().button.ghost }}</ea-button>
+              <ea-button variant="danger">{{ s().button.danger }}</ea-button>
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
-              <ea-button size="sm">Small</ea-button>
-              <ea-button size="md">Medium</ea-button>
-              <ea-button size="lg">Large</ea-button>
+              <ea-button size="sm">{{ s().common.small }}</ea-button>
+              <ea-button size="md">{{ s().common.medium }}</ea-button>
+              <ea-button size="lg">{{ s().common.large }}</ea-button>
             </div>
 
-            <h2>states</h2>
+            <h2>{{ s().section.states }}</h2>
             <div class="sandbox-row">
               <ea-button
                 [loading]="isLoading()"
                 (clicked)="triggerLoading()">
-                Toggle loading
+                {{ s().button.toggleLoading }}
               </ea-button>
-              <ea-button [disabled]="true">Disabled</ea-button>
+              <ea-button [disabled]="true">{{ s().button.disabled }}</ea-button>
             </div>
             <div class="sandbox-row">
-              <ea-button [fullWidth]="true">Full width</ea-button>
+              <ea-button [fullWidth]="true">{{ s().button.fullWidth }}</ea-button>
             </div>
           </section>
         </ea-card>
@@ -398,33 +399,33 @@
           [headerDivider]="true">
           <span slot="header">Card</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-row sandbox-row--stretch">
               <ea-card variant="elevated">
-                <span slot="header">Elevated</span>
-                Card with shadow elevation.
+                <span slot="header">{{ s().card.elevatedTitle }}</span>
+                {{ s().card.elevatedBody }}
               </ea-card>
               <ea-card variant="outlined">
-                <span slot="header">Outlined</span>
-                Card with border outline.
+                <span slot="header">{{ s().card.outlinedTitle }}</span>
+                {{ s().card.outlinedBody }}
               </ea-card>
               <ea-card variant="filled">
-                <span slot="header">Filled</span>
-                Card with subtle background.
+                <span slot="header">{{ s().card.filledTitle }}</span>
+                {{ s().card.filledBody }}
               </ea-card>
             </div>
 
-            <h2>with footer</h2>
+            <h2>{{ s().section.withFooter }}</h2>
             <ea-card variant="outlined">
-              <span slot="header">Card Title</span>
-              This card has a header, body, and footer with actions.
+              <span slot="header">{{ s().card.footerTitle }}</span>
+              {{ s().card.footerBody }}
               <span slot="footer">
                 <ea-button
                   variant="secondary"
                   size="sm">
-                  Cancel
+                  {{ s().common.cancel }}
                 </ea-button>
-                <ea-button size="sm">Save</ea-button>
+                <ea-button size="sm">{{ s().common.save }}</ea-button>
               </span>
             </ea-card>
           </section>
@@ -439,52 +440,52 @@
           [headerDivider]="true">
           <span slot="header">Checkbox</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-checkbox
-              label="Accept terms and conditions"
+              [label]="s().checkbox.acceptTerms"
               [(checked)]="checkboxValue" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
               <ea-checkbox
                 size="sm"
-                label="Small" />
+                [label]="s().common.small" />
               <ea-checkbox
                 size="md"
-                label="Medium" />
+                [label]="s().common.medium" />
               <ea-checkbox
                 size="lg"
-                label="Large" />
+                [label]="s().common.large" />
             </div>
 
-            <h2>states</h2>
+            <h2>{{ s().section.states }}</h2>
             <div class="sandbox-row">
               <ea-checkbox
-                label="Disabled"
+                [label]="s().checkbox.disabledLabel"
                 [disabled]="true" />
               <ea-checkbox
-                label="Disabled checked"
+                [label]="s().checkbox.disabledChecked"
                 [disabled]="true"
                 [checked]="true" />
               <ea-checkbox
-                label="Indeterminate"
+                [label]="s().checkbox.indeterminate"
                 [indeterminate]="true" />
             </div>
 
-            <h2>required</h2>
+            <h2>{{ s().section.required }}</h2>
             <ea-checkbox
-              label="I agree to the terms"
+              [label]="s().checkbox.iAgree"
               [required]="true" />
 
-            <h2>with hint</h2>
+            <h2>{{ s().section.withHint }}</h2>
             <ea-checkbox
-              label="Subscribe to updates"
-              hint="We send a monthly digest, no spam" />
+              [label]="s().checkbox.subscribe"
+              [hint]="s().checkbox.subscribeHint" />
 
-            <h2>with error</h2>
+            <h2>{{ s().section.withError }}</h2>
             <ea-checkbox
-              label="Accept terms"
-              errorMsg="You must accept the terms to continue" />
+              [label]="s().checkbox.errorLabel"
+              [errorMsg]="s().checkbox.errorMsg" />
           </section>
         </ea-card>
       }
@@ -497,37 +498,37 @@
           [headerDivider]="true">
           <span slot="header">Code Input</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-code-input
-              label="Verification code"
-              hint="Check your email for the 6-digit code"
+              [label]="s().codeInput.label"
+              [hint]="s().codeInput.hint"
               [(value)]="codeInputValue" />
 
-            <h2>error</h2>
+            <h2>{{ s().section.error }}</h2>
             <ea-code-input
-              label="Verification code"
-              errorMsg="Invalid verification code" />
+              [label]="s().codeInput.label"
+              [errorMsg]="s().codeInput.errorMsg" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-code-input
               size="sm"
-              label="Small" />
+              [label]="s().common.small" />
             <ea-code-input
               size="md"
-              label="Medium" />
+              [label]="s().common.medium" />
             <ea-code-input
               size="lg"
-              label="Large" />
+              [label]="s().common.large" />
 
-            <h2>4-digit PIN</h2>
+            <h2>{{ s().section.fourDigitPin }}</h2>
             <ea-code-input
-              label="PIN"
+              [label]="s().codeInput.pinLabel"
               [length]="4"
-              hint="Enter your 4-digit PIN" />
+              [hint]="s().codeInput.pinHint" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-code-input
-              label="Verification code"
+              [label]="s().codeInput.label"
               [disabled]="true" />
           </section>
         </ea-card>
@@ -541,35 +542,35 @@
           [headerDivider]="true">
           <span slot="header">Data Table</span>
           <section class="sandbox-section">
-            <h2>default</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-data-table
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="tableData" />
 
-            <h2>striped &amp; bordered</h2>
+            <h2>{{ s().section.stripedAndBordered }}</h2>
             <ea-data-table
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="tableData"
               [striped]="true"
               [bordered]="true" />
 
-            <h2>compact density</h2>
+            <h2>{{ s().section.compactDensity }}</h2>
             <ea-data-table
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="tableData"
               density="compact"
               [striped]="true" />
 
-            <h2>sticky header</h2>
+            <h2>{{ s().section.stickyHeader }}</h2>
             <ea-data-table
               class="sandbox-sticky-table"
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="tableData"
               [stickyHeader]="true" />
 
-            <h2>with paginator</h2>
+            <h2>{{ s().section.withPaginator }}</h2>
             <ea-data-table
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="pagedTableData"
               [striped]="true">
               <ea-paginator
@@ -581,9 +582,9 @@
                 (changed)="onTablePageChange($event)" />
             </ea-data-table>
 
-            <h2>empty state</h2>
+            <h2>{{ s().section.emptyState }}</h2>
             <ea-data-table
-              [columns]="tableColumns"
+              [columns]="tableColumns()"
               [data]="[]" />
           </section>
         </ea-card>
@@ -597,67 +598,67 @@
           [headerDivider]="true">
           <span slot="header">Date Picker</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-date-picker
-              label="Appointment"
-              placeholder="Pick a date…"
+              [label]="s().datePicker.appointmentLabel"
+              [placeholder]="s().datePicker.placeholder"
               [(value)]="datePickerValue" />
 
-            <h2>hint &amp; error</h2>
+            <h2>{{ s().section.hintAndError }}</h2>
             <div class="sandbox-stack">
               <ea-date-picker
-                label="With hint"
-                hint="Select any future date"
-                placeholder="Pick a date…" />
+                [label]="s().autocomplete.withHintLabel"
+                [hint]="s().datePicker.hint"
+                [placeholder]="s().datePicker.placeholder" />
               <ea-date-picker
-                label="With error"
-                errorMsg="This field is required"
-                placeholder="Pick a date…" />
+                [label]="s().autocomplete.withErrorLabel"
+                [errorMsg]="s().datePicker.errorMsg"
+                [placeholder]="s().datePicker.placeholder" />
             </div>
 
-            <h2>format variants</h2>
+            <h2>{{ s().section.formatVariants }}</h2>
             <div class="sandbox-stack">
               <ea-date-picker
-                label="Short"
+                [label]="s().datePicker.short"
                 format="short"
                 [value]="datePickerValue()" />
               <ea-date-picker
-                label="Medium"
+                [label]="s().common.medium"
                 format="medium"
                 [value]="datePickerValue()" />
               <ea-date-picker
-                label="Long"
+                [label]="s().datePicker.longLabel"
                 format="long"
                 [value]="datePickerValue()" />
             </div>
 
-            <h2>min &amp; max</h2>
+            <h2>{{ s().section.minAndMax }}</h2>
             <ea-date-picker
-              label="Within next 3 weeks"
+              [label]="s().datePicker.minMaxLabel"
               [minDate]="datePickerMin"
               [maxDate]="datePickerMax"
-              hint="±1 week / +3 weeks from today"
-              placeholder="Pick a date…" />
+              [hint]="s().datePicker.minMaxHint"
+              [placeholder]="s().datePicker.placeholder" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-date-picker
               size="sm"
-              label="Small"
+              [label]="s().common.small"
               placeholder="sm" />
             <ea-date-picker
               size="md"
-              label="Medium"
+              [label]="s().common.medium"
               placeholder="md" />
             <ea-date-picker
               size="lg"
-              label="Large"
+              [label]="s().common.large"
               placeholder="lg" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-date-picker
-              label="Disabled"
+              [label]="s().button.disabled"
               [disabled]="true"
-              placeholder="Pick a date…" />
+              [placeholder]="s().datePicker.placeholder" />
           </section>
         </ea-card>
       }
@@ -670,21 +671,22 @@
           [headerDivider]="true">
           <span slot="header">Dialog</span>
           <section class="sandbox-section">
-            <ea-button (clicked)="dialogOpen.set(true)">Open Dialog</ea-button>
+            <ea-button (clicked)="dialogOpen.set(true)">
+              {{ s().dialog.open }}
+            </ea-button>
 
             <ea-dialog [(open)]="dialogOpen">
-              <span slot="header">Dialog Title</span>
-              <p>
-                This is the dialog body. It supports any content including forms, text,
-                and other components.
-              </p>
+              <span slot="header">{{ s().dialog.title }}</span>
+              <p>{{ s().dialog.body }}</p>
               <span slot="footer">
                 <ea-button
                   variant="secondary"
                   (clicked)="dialogOpen.set(false)">
-                  Cancel
+                  {{ s().common.cancel }}
                 </ea-button>
-                <ea-button (clicked)="dialogOpen.set(false)">Confirm</ea-button>
+                <ea-button (clicked)="dialogOpen.set(false)">
+                  {{ s().dialog.confirm }}
+                </ea-button>
               </span>
             </ea-dialog>
           </section>
@@ -699,16 +701,16 @@
           [headerDivider]="true">
           <span slot="header">Divider</span>
           <section class="sandbox-section">
-            <h2>horizontal</h2>
+            <h2>{{ s().section.horizontal }}</h2>
             <ea-divider />
             <ea-divider label="or" />
             <ea-divider label="Section" />
 
-            <h2>vertical</h2>
+            <h2>{{ s().section.vertical }}</h2>
             <div class="sandbox-row sandbox-divider-row">
-              <span>Left</span>
+              <span>{{ s().drawer.left }}</span>
               <ea-divider orientation="vertical" />
-              <span>Right</span>
+              <span>{{ s().drawer.right }}</span>
             </div>
           </section>
         </ea-card>
@@ -722,56 +724,72 @@
           [headerDivider]="true">
           <span slot="header">Drawer</span>
           <section class="sandbox-section">
-            <h2>positions</h2>
+            <h2>{{ s().section.positions }}</h2>
             <div class="sandbox-row">
-              <ea-button (clicked)="drawerOpenRight.set(true)">Right</ea-button>
-              <ea-button (clicked)="drawerOpenLeft.set(true)">Left</ea-button>
-              <ea-button (clicked)="drawerOpenTop.set(true)">Top</ea-button>
-              <ea-button (clicked)="drawerOpenBottom.set(true)">Bottom</ea-button>
+              <ea-button (clicked)="drawerOpenRight.set(true)">
+                {{ s().drawer.right }}
+              </ea-button>
+              <ea-button (clicked)="drawerOpenLeft.set(true)">
+                {{ s().drawer.left }}
+              </ea-button>
+              <ea-button (clicked)="drawerOpenTop.set(true)">
+                {{ s().drawer.top }}
+              </ea-button>
+              <ea-button (clicked)="drawerOpenBottom.set(true)">
+                {{ s().drawer.bottom }}
+              </ea-button>
             </div>
 
             <ea-drawer
               position="right"
               [(open)]="drawerOpenRight">
-              <span slot="header">Right Drawer</span>
-              <p>Slides in from the right edge — useful for details panels.</p>
+              <span slot="header">{{ s().drawer.rightTitle }}</span>
+              <p>{{ s().drawer.rightBody }}</p>
               <span slot="footer">
                 <ea-button
                   variant="secondary"
                   (clicked)="drawerOpenRight.set(false)">
-                  Cancel
+                  {{ s().common.cancel }}
                 </ea-button>
-                <ea-button (clicked)="drawerOpenRight.set(false)"> Save </ea-button>
+                <ea-button (clicked)="drawerOpenRight.set(false)">
+                  {{ s().common.save }}
+                </ea-button>
               </span>
             </ea-drawer>
 
             <ea-drawer
               position="left"
               [(open)]="drawerOpenLeft">
-              <span slot="header">Left Drawer</span>
-              <p>Slides in from the left — useful for navigation menus.</p>
+              <span slot="header">{{ s().drawer.leftTitle }}</span>
+              <p>{{ s().drawer.leftBody }}</p>
               <span slot="footer">
-                <ea-button (clicked)="drawerOpenLeft.set(false)"> Close </ea-button>
+                <ea-button (clicked)="drawerOpenLeft.set(false)">
+                  {{ s().common.close }}
+                </ea-button>
               </span>
             </ea-drawer>
 
             <ea-drawer
               position="top"
               [(open)]="drawerOpenTop">
-              <span slot="header">Top Drawer</span>
-              <p>Slides down from the top — useful for notifications.</p>
+              <span slot="header">{{ s().drawer.topTitle }}</span>
+              <p>{{ s().drawer.topBody }}</p>
               <span slot="footer">
-                <ea-button (clicked)="drawerOpenTop.set(false)"> Close </ea-button>
+                <ea-button (clicked)="drawerOpenTop.set(false)">
+                  {{ s().common.close }}
+                </ea-button>
               </span>
             </ea-drawer>
 
             <ea-drawer
               position="bottom"
               [(open)]="drawerOpenBottom">
-              <span slot="header">Bottom Drawer</span>
-              <p>Slides up from the bottom — common on mobile for action sheets.</p>
+              <span slot="header">{{ s().drawer.bottomTitle }}</span>
+              <p>{{ s().drawer.bottomBody }}</p>
               <span slot="footer">
-                <ea-button (clicked)="drawerOpenBottom.set(false)"> Close </ea-button>
+                <ea-button (clicked)="drawerOpenBottom.set(false)">
+                  {{ s().common.close }}
+                </ea-button>
               </span>
             </ea-drawer>
           </section>
@@ -786,50 +804,47 @@
           [headerDivider]="true">
           <span slot="header">Dropdown</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-dropdown
-              label="Fruit"
-              placeholder="Select a fruit…"
-              [options]="dropdownOptions"
+              [label]="s().dropdown.fruitLabel"
+              [placeholder]="s().dropdown.placeholder"
+              [options]="dropdownOptions()"
               [(value)]="dropdownValue" />
 
-            <h2>hint &amp; error</h2>
+            <h2>{{ s().section.hintAndError }}</h2>
             <div class="sandbox-stack">
               <ea-dropdown
-                label="With hint"
-                hint="Choose your favourite"
-                [options]="dropdownOptions"
-                placeholder="Select…" />
+                [label]="s().autocomplete.withHintLabel"
+                [hint]="s().dropdown.hint"
+                [options]="dropdownOptions()" />
               <ea-dropdown
-                label="With error"
-                errorMsg="This field is required"
-                [options]="dropdownOptions"
-                placeholder="Select…" />
+                [label]="s().autocomplete.withErrorLabel"
+                [errorMsg]="s().dropdown.errorMsg"
+                [options]="dropdownOptions()" />
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-dropdown
               size="sm"
-              label="Small"
-              [options]="dropdownOptions"
+              [label]="s().common.small"
+              [options]="dropdownOptions()"
               placeholder="sm" />
             <ea-dropdown
               size="md"
-              label="Medium"
-              [options]="dropdownOptions"
+              [label]="s().common.medium"
+              [options]="dropdownOptions()"
               placeholder="md" />
             <ea-dropdown
               size="lg"
-              label="Large"
-              [options]="dropdownOptions"
+              [label]="s().common.large"
+              [options]="dropdownOptions()"
               placeholder="lg" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-dropdown
-              label="Disabled"
+              [label]="s().button.disabled"
               [disabled]="true"
-              [options]="dropdownOptions"
-              placeholder="Select…" />
+              [options]="dropdownOptions()" />
           </section>
         </ea-card>
       }
@@ -842,32 +857,32 @@
           [headerDivider]="true">
           <span slot="header">Empty State</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-empty-state
-              title="No items yet"
-              description="Get started by creating your first item.">
+              [title]="s().emptyState.noItemsTitle"
+              [description]="s().emptyState.noItemsDesc">
               <ea-icon-file slot="media" />
               <ea-button
                 slot="actions"
                 variant="primary">
-                Create item
+                {{ s().emptyState.createItem }}
               </ea-button>
             </ea-empty-state>
 
-            <h2>no results</h2>
+            <h2>{{ s().section.noResults }}</h2>
             <ea-empty-state
-              title="No results found"
-              description="Try adjusting your search or filter to find what you're looking for.">
+              [title]="s().emptyState.noResultsTitle"
+              [description]="s().emptyState.noResultsDesc">
               <ea-icon-search slot="media" />
               <ea-button
                 slot="actions"
                 variant="secondary">
-                Clear filters
+                {{ s().emptyState.clearFilters }}
               </ea-button>
             </ea-empty-state>
 
-            <h2>title only</h2>
-            <ea-empty-state title="Nothing to see here" />
+            <h2>{{ s().section.titleOnly }}</h2>
+            <ea-empty-state [title]="s().emptyState.nothingHere" />
           </section>
         </ea-card>
       }
@@ -880,7 +895,7 @@
           [headerDivider]="true">
           <span slot="header">Eagami Wordmark</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-stack sandbox-stack--md">
               <ea-eagami-wordmark [variant]="1" />
               <ea-eagami-wordmark [variant]="2" />
@@ -888,7 +903,7 @@
               <ea-eagami-wordmark [variant]="4" />
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-stack sandbox-stack--md">
               <ea-eagami-wordmark
                 [variant]="3"
@@ -902,7 +917,7 @@
                 [size]="64" />
             </div>
 
-            <h2>inline layout</h2>
+            <h2>{{ s().section.inlineLayout }}</h2>
             <div class="sandbox-stack sandbox-stack--md">
               <ea-eagami-wordmark
                 [variant]="2"
@@ -924,67 +939,67 @@
           [headerDivider]="true">
           <span slot="header">Input</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-input
-              label="Default"
-              placeholder="Enter text…"
+              [label]="s().input.defaultLabel"
+              [placeholder]="s().input.placeholder"
               [(value)]="inputValue" />
 
-            <h2>hint &amp; error</h2>
+            <h2>{{ s().section.hintAndError }}</h2>
             <ea-input
-              label="With hint"
-              hint="Helpful guidance goes here"
-              placeholder="Enter text…" />
+              [label]="s().autocomplete.withHintLabel"
+              [hint]="s().checkbox.subscribeHint"
+              [placeholder]="s().input.placeholder" />
             <ea-input
-              label="With error"
-              errorMsg="This field is required"
-              placeholder="Enter text…" />
+              [label]="s().autocomplete.withErrorLabel"
+              [errorMsg]="s().datePicker.errorMsg"
+              [placeholder]="s().input.placeholder" />
 
-            <h2>status</h2>
+            <h2>{{ s().section.status }}</h2>
             <ea-input
-              label="Success"
+              [label]="s().input.successLabel"
               status="success"
-              placeholder="Looks good" />
+              [placeholder]="s().input.successPlaceholder" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-input
               size="sm"
-              label="Small"
+              [label]="s().common.small"
               placeholder="sm" />
             <ea-input
               size="md"
-              label="Medium"
+              [label]="s().common.medium"
               placeholder="md" />
             <ea-input
               size="lg"
-              label="Large"
+              [label]="s().common.large"
               placeholder="lg" />
 
-            <h2>disabled &amp; readonly</h2>
+            <h2>{{ s().section.disabledAndReadonly }}</h2>
             <ea-input
-              label="Disabled"
+              [label]="s().button.disabled"
               [disabled]="true"
-              placeholder="Disabled" />
+              [placeholder]="s().button.disabled" />
             <ea-input
-              label="Readonly"
+              [label]="s().input.readonlyLabel"
               [readonly]="true"
-              value="Read-only value" />
+              [value]="s().input.readonlyValue" />
 
-            <h2>password</h2>
+            <h2>{{ s().section.password }}</h2>
             <ea-input
-              label="Password"
+              [label]="s().input.passwordLabel"
               type="password"
               autocomplete="current-password"
-              placeholder="Enter your password…" />
+              [placeholder]="s().input.passwordPlaceholder" />
             <ea-input
-              label="Password (toggle hidden)"
+              [label]="s().input.passwordToggleHidden"
               type="password"
               [showPasswordToggle]="false"
-              placeholder="No visibility toggle" />
+              [placeholder]="s().input.passwordNoToggle" />
 
-            <h2>autocomplete</h2>
+            <h2>{{ s().section.autocomplete }}</h2>
             <ea-input
-              label="Email"
+              [label]="s().input.emailLabel"
               type="email"
               autocomplete="email"
               placeholder="you@example.com" />
@@ -1000,61 +1015,67 @@
           [headerDivider]="true">
           <span slot="header">Menu</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-button
               [eaMenuTrigger]="basicMenu"
               variant="secondary">
-              Actions
+              {{ s().menu.actions }}
             </ea-button>
             <ea-menu #basicMenu>
-              <ea-menu-item>Edit</ea-menu-item>
-              <ea-menu-item>Duplicate</ea-menu-item>
-              <ea-menu-item>Archive</ea-menu-item>
-              <ea-menu-item variant="danger">Delete</ea-menu-item>
+              <ea-menu-item>{{ s().menu.edit }}</ea-menu-item>
+              <ea-menu-item>{{ s().menu.duplicate }}</ea-menu-item>
+              <ea-menu-item>{{ s().menu.archive }}</ea-menu-item>
+              <ea-menu-item variant="danger">
+                {{ s().menu.deleteAction }}
+              </ea-menu-item>
             </ea-menu>
 
-            <h2>with icons</h2>
+            <h2>{{ s().section.withIcons }}</h2>
             <ea-button
               [eaMenuTrigger]="iconMenu"
               variant="secondary">
-              File
+              {{ s().menu.file }}
             </ea-button>
             <ea-menu #iconMenu>
               <ea-menu-item>
                 <ea-icon-pencil slot="icon" />
-                Edit
+                {{ s().menu.edit }}
               </ea-menu-item>
               <ea-menu-item variant="danger">
                 <ea-icon-trash slot="icon" />
-                Delete
+                {{ s().menu.deleteAction }}
               </ea-menu-item>
             </ea-menu>
 
-            <h2>icon trigger</h2>
+            <h2>{{ s().section.iconTrigger }}</h2>
             <ea-button
               [eaMenuTrigger]="iconTriggerMenu"
               variant="ghost"
               size="sm"
-              aria-label="More options">
+              [aria-label]="s().menu.moreOptions">
               <ea-icon-more-horizontal />
             </ea-button>
             <ea-menu #iconTriggerMenu>
-              <ea-menu-item>View</ea-menu-item>
-              <ea-menu-item>Rename</ea-menu-item>
-              <ea-menu-item variant="danger">Delete</ea-menu-item>
+              <ea-menu-item>{{ s().menu.view }}</ea-menu-item>
+              <ea-menu-item>{{ s().menu.rename }}</ea-menu-item>
+              <ea-menu-item variant="danger">
+                {{ s().menu.deleteAction }}
+              </ea-menu-item>
             </ea-menu>
 
-            <h2>with disabled item</h2>
+            <h2>{{ s().section.withDisabledItem }}</h2>
             <ea-button
               [eaMenuTrigger]="fileMenu"
               variant="secondary">
-              File
+              {{ s().menu.file }}
             </ea-button>
             <ea-menu #fileMenu>
-              <ea-menu-item>New</ea-menu-item>
-              <ea-menu-item>Open</ea-menu-item>
-              <ea-menu-item [disabled]="true">Save (unavailable)</ea-menu-item>
-              <ea-menu-item>Save As</ea-menu-item>
+              <ea-menu-item>{{ s().menu.newItem }}</ea-menu-item>
+              <ea-menu-item>{{ s().menu.open }}</ea-menu-item>
+              <ea-menu-item [disabled]="true">
+                {{ s().menu.saveUnavailable }}
+              </ea-menu-item>
+              <ea-menu-item>{{ s().menu.saveAs }}</ea-menu-item>
             </ea-menu>
           </section>
         </ea-card>
@@ -1068,31 +1089,31 @@
           [headerDivider]="true">
           <span slot="header">Paginator</span>
           <section class="sandbox-section">
-            <h2>default</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-paginator [totalItems]="100" />
 
-            <h2>align — left</h2>
+            <h2>{{ s().section.alignLeft }}</h2>
             <ea-paginator
               [totalItems]="100"
               align="left" />
 
-            <h2>align — center</h2>
+            <h2>{{ s().section.alignCenter }}</h2>
             <ea-paginator
               [totalItems]="100"
               align="center" />
 
-            <h2>many pages</h2>
+            <h2>{{ s().section.manyPages }}</h2>
             <ea-paginator
               [totalItems]="500"
               [page]="25" />
 
-            <h2>minimal</h2>
+            <h2>{{ s().section.minimal }}</h2>
             <ea-paginator
               [totalItems]="100"
               [showPageSizeSelector]="false"
               [showRangeLabel]="false" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-paginator
               [totalItems]="100"
               [disabled]="true" />
@@ -1108,55 +1129,55 @@
           [headerDivider]="true">
           <span slot="header">Progress Bar</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-stack">
               <ea-progress-bar
                 variant="default"
                 [value]="60"
-                label="Default"
+                [label]="s().common.default"
                 [showValue]="true" />
               <ea-progress-bar
                 variant="success"
                 [value]="100"
-                label="Success"
+                [label]="s().common.success"
                 [showValue]="true" />
               <ea-progress-bar
                 variant="warning"
                 [value]="45"
-                label="Warning"
+                [label]="s().common.warning"
                 [showValue]="true" />
               <ea-progress-bar
                 variant="error"
                 [value]="20"
-                label="Error"
+                [label]="s().tag.error"
                 [showValue]="true" />
               <ea-progress-bar
                 variant="info"
                 [value]="80"
-                label="Info"
+                [label]="s().common.info"
                 [showValue]="true" />
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-stack">
               <ea-progress-bar
                 size="sm"
                 [value]="60"
-                label="Small" />
+                [label]="s().common.small" />
               <ea-progress-bar
                 size="md"
                 [value]="60"
-                label="Medium" />
+                [label]="s().common.medium" />
               <ea-progress-bar
                 size="lg"
                 [value]="60"
-                label="Large" />
+                [label]="s().common.large" />
             </div>
 
-            <h2>indeterminate</h2>
+            <h2>{{ s().section.indeterminate }}</h2>
             <ea-progress-bar
               [indeterminate]="true"
-              label="Processing…" />
+              [label]="s().progressBar.processing" />
           </section>
         </ea-card>
       }
@@ -1169,84 +1190,80 @@
           [headerDivider]="true">
           <span slot="header">Radio</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-radio-group [(value)]="radioValue">
-              <ea-radio
-                value="apple"
-                label="Apple" />
-              <ea-radio
-                value="banana"
-                label="Banana" />
-              <ea-radio
-                value="cherry"
-                label="Cherry" />
+              @for (opt of radioFruitOptions(); track opt.value) {
+                <ea-radio
+                  [value]="opt.value"
+                  [label]="opt.label" />
+              }
             </ea-radio-group>
 
-            <h2>horizontal</h2>
+            <h2>{{ s().section.horizontal }}</h2>
             <ea-radio-group
               orientation="horizontal"
               value="sm">
               <ea-radio
                 value="sm"
-                label="Small" />
+                [label]="s().common.small" />
               <ea-radio
                 value="md"
-                label="Medium" />
+                [label]="s().common.medium" />
               <ea-radio
                 value="lg"
-                label="Large" />
+                [label]="s().common.large" />
             </ea-radio-group>
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-radio-group
               [disabled]="true"
               value="a">
               <ea-radio
                 value="a"
-                label="Option A" />
+                [label]="s().radio.optionA" />
               <ea-radio
                 value="b"
-                label="Option B" />
+                [label]="s().radio.optionB" />
             </ea-radio-group>
 
-            <h2>with label</h2>
+            <h2>{{ s().section.withLabel }}</h2>
             <ea-radio-group
-              label="Subscription plan"
+              [label]="s().radio.planLabel"
               value="pro">
               <ea-radio
                 value="free"
-                label="Free" />
+                [label]="s().radio.free" />
               <ea-radio
                 value="pro"
-                label="Pro" />
+                [label]="s().radio.pro" />
               <ea-radio
                 value="enterprise"
-                label="Enterprise" />
+                [label]="s().radio.enterprise" />
             </ea-radio-group>
 
-            <h2>required with hint</h2>
+            <h2>{{ s().section.requiredWithHint }}</h2>
             <ea-radio-group
-              label="Delivery speed"
-              hint="Choose how fast you want it"
+              [label]="s().radio.deliveryLabel"
+              [hint]="s().radio.deliveryHint"
               [required]="true">
               <ea-radio
                 value="standard"
-                label="Standard" />
+                [label]="s().radio.standard" />
               <ea-radio
                 value="express"
-                label="Express" />
+                [label]="s().radio.express" />
             </ea-radio-group>
 
-            <h2>with error</h2>
+            <h2>{{ s().section.withError }}</h2>
             <ea-radio-group
-              label="Account type"
-              errorMsg="Please choose an account type">
+              [label]="s().radio.accountTypeLabel"
+              [errorMsg]="s().radio.accountTypeError">
               <ea-radio
                 value="personal"
-                label="Personal" />
+                [label]="s().radio.personal" />
               <ea-radio
                 value="business"
-                label="Business" />
+                [label]="s().radio.business" />
             </ea-radio-group>
           </section>
         </ea-card>
@@ -1260,55 +1277,55 @@
           [headerDivider]="true">
           <span slot="header">Segmented</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-segmented
-              [options]="segmentedViewOptions"
+              [options]="segmentedViewOptions()"
               [(value)]="segmentedValue" />
 
-            <h2>two options</h2>
-            <ea-segmented [options]="segmentedThemeOptions" />
+            <h2>{{ s().section.twoOptions }}</h2>
+            <ea-segmented [options]="segmentedThemeOptions()" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
               <ea-segmented
                 size="sm"
-                [options]="segmentedThemeOptions" />
+                [options]="segmentedThemeOptions()" />
               <ea-segmented
                 size="md"
-                [options]="segmentedThemeOptions" />
+                [options]="segmentedThemeOptions()" />
               <ea-segmented
                 size="lg"
-                [options]="segmentedThemeOptions" />
+                [options]="segmentedThemeOptions()" />
             </div>
 
-            <h2>full width</h2>
+            <h2>{{ s().section.fullWidth }}</h2>
             <ea-segmented
               [fullWidth]="true"
-              [options]="segmentedViewOptions" />
+              [options]="segmentedViewOptions()" />
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <ea-segmented
               [disabled]="true"
-              [options]="segmentedViewOptions" />
+              [options]="segmentedViewOptions()" />
 
-            <h2>with label</h2>
+            <h2>{{ s().section.withLabel }}</h2>
             <ea-segmented
-              label="View"
-              [options]="segmentedViewOptions"
+              [label]="s().segmented.viewLabel"
+              [options]="segmentedViewOptions()"
               [(value)]="segmentedValue" />
 
-            <h2>required with hint</h2>
+            <h2>{{ s().section.requiredWithHint }}</h2>
             <ea-segmented
-              label="Theme"
-              hint="Affects the entire app"
+              [label]="s().segmented.themeLabel"
+              [hint]="s().segmented.themeHint"
               [required]="true"
-              [options]="segmentedThemeOptions" />
+              [options]="segmentedThemeOptions()" />
 
-            <h2>with error</h2>
+            <h2>{{ s().section.withError }}</h2>
             <ea-segmented
-              label="Layout"
-              errorMsg="Layout selection is required"
-              [options]="segmentedViewOptions" />
+              [label]="s().segmented.layoutLabel"
+              [errorMsg]="s().segmented.layoutError"
+              [options]="segmentedViewOptions()" />
           </section>
         </ea-card>
       }
@@ -1321,7 +1338,7 @@
           [headerDivider]="true">
           <span slot="header">Skeleton</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-skeleton-row">
               <ea-skeleton variant="circle" />
               <div class="sandbox-skeleton-lines">
@@ -1332,7 +1349,7 @@
               </div>
             </div>
 
-            <h2>rect</h2>
+            <h2>{{ s().section.rect }}</h2>
             <ea-skeleton
               variant="rect"
               height="6rem" />
@@ -1348,15 +1365,15 @@
           [headerDivider]="true">
           <span slot="header">Slider</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-slider
-              label="Volume"
+              [label]="s().slider.volume"
               [showValue]="true"
               [(value)]="sliderValue" />
 
-            <h2>min/max labels</h2>
+            <h2>{{ s().section.minMaxLabels }}</h2>
             <ea-slider
-              label="Brightness"
+              [label]="s().slider.brightness"
               [min]="0"
               [max]="100"
               [step]="5"
@@ -1364,36 +1381,36 @@
               [showValue]="true"
               [showMinMaxLabels]="true" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-slider
-              label="Small"
+              [label]="s().common.small"
               size="sm"
               [value]="30"
               [showValue]="true" />
             <ea-slider
-              label="Medium"
+              [label]="s().common.medium"
               size="md"
               [value]="50"
               [showValue]="true" />
             <ea-slider
-              label="Large"
+              [label]="s().common.large"
               size="lg"
               [value]="70"
               [showValue]="true" />
 
-            <h2>states</h2>
+            <h2>{{ s().section.states }}</h2>
             <ea-slider
-              label="With hint"
-              hint="Drag the handle or use arrow keys to adjust"
+              [label]="s().autocomplete.withHintLabel"
+              [hint]="s().slider.withHintMsg"
               [value]="35"
               [showValue]="true" />
             <ea-slider
-              label="With error"
-              errorMsg="Please pick a value above 50"
+              [label]="s().autocomplete.withErrorLabel"
+              [errorMsg]="s().slider.withErrorMsg"
               [value]="20"
               [showValue]="true" />
             <ea-slider
-              label="Disabled"
+              [label]="s().button.disabled"
               [disabled]="true"
               [value]="60"
               [showValue]="true" />
@@ -1409,7 +1426,7 @@
           [headerDivider]="true">
           <span slot="header">Spinner</span>
           <section class="sandbox-section">
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
               <ea-spinner size="sm"></ea-spinner>
               <ea-spinner size="md"></ea-spinner>
@@ -1427,49 +1444,49 @@
           [headerDivider]="true">
           <span slot="header">Switch</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-switch
-              label="Enable notifications"
+              [label]="s().switch.notifications"
               [(checked)]="switchValue" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
               <ea-switch
                 size="sm"
-                label="Small" />
+                [label]="s().common.small" />
               <ea-switch
                 size="md"
-                label="Medium" />
+                [label]="s().common.medium" />
               <ea-switch
                 size="lg"
-                label="Large" />
+                [label]="s().common.large" />
             </div>
 
-            <h2>states</h2>
+            <h2>{{ s().section.states }}</h2>
             <div class="sandbox-row">
               <ea-switch
-                label="Disabled"
+                [label]="s().button.disabled"
                 [disabled]="true" />
               <ea-switch
-                label="Disabled on"
+                [label]="s().switch.disabledOn"
                 [disabled]="true"
                 [checked]="true" />
             </div>
 
-            <h2>required</h2>
+            <h2>{{ s().section.required }}</h2>
             <ea-switch
-              label="Confirm consent"
+              [label]="s().switch.consent"
               [required]="true" />
 
-            <h2>with hint</h2>
+            <h2>{{ s().section.withHint }}</h2>
             <ea-switch
-              label="Marketing emails"
-              hint="You can unsubscribe at any time" />
+              [label]="s().switch.marketing"
+              [hint]="s().switch.marketingHint" />
 
-            <h2>with error</h2>
+            <h2>{{ s().section.withError }}</h2>
             <ea-switch
-              label="Two-factor auth"
-              errorMsg="Two-factor authentication must be enabled" />
+              [label]="s().switch.twoFactor"
+              [errorMsg]="s().switch.twoFactorError" />
           </section>
         </ea-card>
       }
@@ -1482,63 +1499,63 @@
           [headerDivider]="true">
           <span slot="header">Tabs</span>
           <section class="sandbox-section">
-            <h2>underline</h2>
+            <h2>{{ s().section.underline }}</h2>
             <ea-tabs activeTab="account">
               <ea-tab
                 value="account"
-                label="Account">
-                Account settings content
+                [label]="s().tabs.account">
+                {{ s().tabs.accountBody }}
               </ea-tab>
               <ea-tab
                 value="security"
-                label="Security">
-                Security settings content
+                [label]="s().tabs.security">
+                {{ s().tabs.securityBody }}
               </ea-tab>
               <ea-tab
                 value="notifications"
-                label="Notifications">
-                Notification preferences
+                [label]="s().tabs.notifications">
+                {{ s().tabs.notificationsBody }}
               </ea-tab>
             </ea-tabs>
 
-            <h2>filled</h2>
+            <h2>{{ s().section.filled }}</h2>
             <ea-tabs
               variant="filled"
               activeTab="overview">
               <ea-tab
                 value="overview"
-                label="Overview">
-                Overview content
+                [label]="s().tabs.overview">
+                {{ s().tabs.overviewBody }}
               </ea-tab>
               <ea-tab
                 value="analytics"
-                label="Analytics">
-                Analytics content
+                [label]="s().tabs.analytics">
+                {{ s().tabs.analyticsBody }}
               </ea-tab>
               <ea-tab
                 value="reports"
-                label="Reports">
-                Reports content
+                [label]="s().tabs.reports">
+                {{ s().tabs.reportsBody }}
               </ea-tab>
             </ea-tabs>
 
-            <h2>with disabled tab</h2>
+            <h2>{{ s().section.withDisabledTab }}</h2>
             <ea-tabs activeTab="general">
               <ea-tab
                 value="general"
-                label="General">
-                General settings
+                [label]="s().tabs.general">
+                {{ s().tabs.generalBody }}
               </ea-tab>
               <ea-tab
                 value="billing"
-                label="Billing">
-                Billing details
+                [label]="s().tabs.billing">
+                {{ s().tabs.billingBody }}
               </ea-tab>
               <ea-tab
                 value="admin"
-                label="Admin"
+                [label]="s().tabs.admin"
                 [disabled]="true">
-                Admin panel
+                {{ s().tabs.adminBody }}
               </ea-tab>
             </ea-tabs>
           </section>
@@ -1553,63 +1570,63 @@
           [headerDivider]="true">
           <span slot="header">Tag</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-row">
-              <ea-tag variant="default">Default</ea-tag>
-              <ea-tag variant="success">Success</ea-tag>
-              <ea-tag variant="warning">Warning</ea-tag>
-              <ea-tag variant="error">Error</ea-tag>
-              <ea-tag variant="info">Info</ea-tag>
+              <ea-tag variant="default">{{ s().tag.default }}</ea-tag>
+              <ea-tag variant="success">{{ s().tag.success }}</ea-tag>
+              <ea-tag variant="warning">{{ s().tag.warning }}</ea-tag>
+              <ea-tag variant="error">{{ s().tag.error }}</ea-tag>
+              <ea-tag variant="info">{{ s().tag.info }}</ea-tag>
             </div>
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <div class="sandbox-row">
-              <ea-tag size="sm">Small</ea-tag>
-              <ea-tag size="md">Medium</ea-tag>
-              <ea-tag size="lg">Large</ea-tag>
+              <ea-tag size="sm">{{ s().common.small }}</ea-tag>
+              <ea-tag size="md">{{ s().common.medium }}</ea-tag>
+              <ea-tag size="lg">{{ s().common.large }}</ea-tag>
             </div>
 
-            <h2>removable</h2>
+            <h2>{{ s().section.removable }}</h2>
             <div class="sandbox-row">
               <ea-tag
                 variant="default"
                 [removable]="true">
-                Default
+                {{ s().tag.default }}
               </ea-tag>
               <ea-tag
                 variant="success"
                 [removable]="true">
-                Success
+                {{ s().tag.success }}
               </ea-tag>
               <ea-tag
                 variant="warning"
                 [removable]="true">
-                Warning
+                {{ s().tag.warning }}
               </ea-tag>
               <ea-tag
                 variant="error"
                 [removable]="true">
-                Error
+                {{ s().tag.error }}
               </ea-tag>
               <ea-tag
                 variant="info"
                 [removable]="true">
-                Info
+                {{ s().tag.info }}
               </ea-tag>
             </div>
 
-            <h2>disabled</h2>
+            <h2>{{ s().section.disabled }}</h2>
             <div class="sandbox-row">
               <ea-tag
                 [removable]="true"
                 [disabled]="true">
-                Disabled
+                {{ s().tag.disabled }}
               </ea-tag>
               <ea-tag
                 variant="success"
                 [removable]="true"
                 [disabled]="true">
-                Disabled success
+                {{ s().tag.disabledSuccess }}
               </ea-tag>
             </div>
           </section>
@@ -1624,51 +1641,51 @@
           [headerDivider]="true">
           <span slot="header">Textarea</span>
           <section class="sandbox-section">
-            <h2>basic</h2>
+            <h2>{{ s().section.basic }}</h2>
             <ea-textarea
-              label="Message"
-              placeholder="Enter your message…"
+              [label]="s().textarea.messageLabel"
+              [placeholder]="s().textarea.messagePlaceholder"
               [(value)]="textareaValue" />
 
-            <h2>hint &amp; error</h2>
+            <h2>{{ s().section.hintAndError }}</h2>
             <ea-textarea
-              label="With hint"
-              hint="Maximum 500 characters"
-              placeholder="Enter text…" />
+              [label]="s().autocomplete.withHintLabel"
+              [hint]="s().textarea.hint"
+              [placeholder]="s().input.placeholder" />
             <ea-textarea
-              label="With error"
-              errorMsg="This field is required"
-              placeholder="Enter text…" />
+              [label]="s().autocomplete.withErrorLabel"
+              [errorMsg]="s().textarea.errorMsg"
+              [placeholder]="s().input.placeholder" />
 
-            <h2>sizes</h2>
+            <h2>{{ s().section.sizes }}</h2>
             <ea-textarea
               size="sm"
-              label="Small"
+              [label]="s().common.small"
               placeholder="sm" />
             <ea-textarea
               size="md"
-              label="Medium"
+              [label]="s().common.medium"
               placeholder="md" />
             <ea-textarea
               size="lg"
-              label="Large"
+              [label]="s().common.large"
               placeholder="lg" />
 
-            <h2>no resize</h2>
+            <h2>{{ s().section.noResize }}</h2>
             <ea-textarea
-              label="Fixed size"
+              [label]="s().textarea.fixedSizeLabel"
               resize="none"
-              placeholder="Cannot be resized" />
+              [placeholder]="s().textarea.fixedSizePlaceholder" />
 
-            <h2>disabled &amp; readonly</h2>
+            <h2>{{ s().section.disabledAndReadonly }}</h2>
             <ea-textarea
-              label="Disabled"
+              [label]="s().button.disabled"
               [disabled]="true"
-              placeholder="Disabled" />
+              [placeholder]="s().button.disabled" />
             <ea-textarea
-              label="Readonly"
+              [label]="s().textarea.readonlyLabel"
               [readonly]="true"
-              value="Read-only content" />
+              [value]="s().textarea.readonlyValue" />
           </section>
         </ea-card>
       }
@@ -1681,51 +1698,51 @@
           [headerDivider]="true">
           <span slot="header">Toast</span>
           <section class="sandbox-section">
-            <h2>variants</h2>
+            <h2>{{ s().section.variants }}</h2>
             <div class="sandbox-toast-demo">
               <div class="ea-toast ea-toast--default">
-                <span class="ea-toast__message">This is a default toast</span>
+                <span class="ea-toast__message">{{ s().toast.defaultMsg }}</span>
               </div>
               <div class="ea-toast ea-toast--success">
-                <span class="ea-toast__message">This is a success toast</span>
+                <span class="ea-toast__message">{{ s().toast.successMsg }}</span>
               </div>
               <div class="ea-toast ea-toast--warning">
-                <span class="ea-toast__message">This is a warning toast</span>
+                <span class="ea-toast__message">{{ s().toast.warningMsg }}</span>
               </div>
               <div class="ea-toast ea-toast--error">
-                <span class="ea-toast__message">This is an error toast</span>
+                <span class="ea-toast__message">{{ s().toast.errorMsg }}</span>
               </div>
               <div class="ea-toast ea-toast--info">
-                <span class="ea-toast__message">This is an info toast</span>
+                <span class="ea-toast__message">{{ s().toast.infoMsg }}</span>
               </div>
             </div>
 
-            <h2>trigger</h2>
+            <h2>{{ s().section.trigger }}</h2>
             <div class="sandbox-row">
               <ea-button
                 variant="secondary"
                 (clicked)="showToast('default')">
-                Default
+                {{ s().common.default }}
               </ea-button>
               <ea-button
                 variant="secondary"
                 (clicked)="showToast('success')">
-                Success
+                {{ s().common.success }}
               </ea-button>
               <ea-button
                 variant="secondary"
                 (clicked)="showToast('warning')">
-                Warning
+                {{ s().common.warning }}
               </ea-button>
               <ea-button
                 variant="secondary"
                 (clicked)="showToast('error')">
-                Error
+                {{ s().tag.error }}
               </ea-button>
               <ea-button
                 variant="secondary"
                 (clicked)="showToast('info')">
-                Info
+                {{ s().common.info }}
               </ea-button>
             </div>
           </section>
@@ -1742,42 +1759,41 @@
           <section class="sandbox-section">
             @if (!canHover()) {
               <ea-alert variant="info">
-                Tooltips are suppressed on touch devices to avoid sticky-hover behaviour.
-                View this section on a device with a mouse to see the demos in action.
+                {{ s().tooltip.touchAlert }}
               </ea-alert>
             }
-            <h2>positions</h2>
+            <h2>{{ s().section.positions }}</h2>
             <div class="sandbox-tooltip-grid">
               <div class="sandbox-tooltip-cell">
                 <ea-button
-                  eaTooltip="Top tooltip"
+                  [eaTooltip]="s().tooltip.topMsg"
                   tooltipPosition="top"
                   [disabled]="!canHover()">
-                  Top
+                  {{ s().tooltip.top }}
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
-                  eaTooltip="Bottom tooltip"
+                  [eaTooltip]="s().tooltip.bottomMsg"
                   tooltipPosition="bottom"
                   [disabled]="!canHover()">
-                  Bottom
+                  {{ s().tooltip.bottom }}
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
-                  eaTooltip="Left tooltip"
+                  [eaTooltip]="s().tooltip.leftMsg"
                   tooltipPosition="left"
                   [disabled]="!canHover()">
-                  Left
+                  {{ s().tooltip.left }}
                 </ea-button>
               </div>
               <div class="sandbox-tooltip-cell">
                 <ea-button
-                  eaTooltip="Right tooltip"
+                  [eaTooltip]="s().tooltip.rightMsg"
                   tooltipPosition="right"
                   [disabled]="!canHover()">
-                  Right
+                  {{ s().tooltip.right }}
                 </ea-button>
               </div>
             </div>

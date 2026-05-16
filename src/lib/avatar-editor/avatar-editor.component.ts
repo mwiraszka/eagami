@@ -17,6 +17,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { CameraIconComponent } from '../icons/camera.component';
 import { MinusIconComponent } from '../icons/minus.component';
 import { PlusIconComponent } from '../icons/plus.component';
@@ -68,6 +69,7 @@ export interface AvatarEditorCropState {
 export class AvatarEditorComponent implements OnDestroy {
   readonly canvasEl = viewChild<ElementRef<HTMLCanvasElement>>('canvasEl');
   readonly fileInputEl = viewChild<ElementRef<HTMLInputElement>>('fileInputEl');
+  protected readonly i18n = inject(EagamiI18nService);
 
   readonly shape = input<AvatarEditorShape>('circle');
   readonly canvasSize = input<number>(200);

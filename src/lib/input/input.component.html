@@ -45,10 +45,13 @@
       <button
         type="button"
         class="ea-input-wrapper__password-toggle"
-        [attr.aria-label]="passwordVisible() ? 'Hide password' : 'Show password'"
+        [attr.aria-label]="
+          passwordVisible()
+            ? i18n.messages().input.hidePassword
+            : i18n.messages().input.showPassword
+        "
         [attr.aria-pressed]="passwordVisible()"
-        (click)="togglePasswordVisibility()"
-        tabindex="-1">
+        (click)="togglePasswordVisibility()">
         @if (passwordVisible()) {
           <ea-icon-eye-off />
         } @else {

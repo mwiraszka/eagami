@@ -8,23 +8,24 @@
   <a href="https://github.com/mwiraszka/eagami-design-system/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
 </p>
 
-A lightweight, accessible Angular component library built on CSS custom properties, with portable design system integration guides for Flutter and React ([see more](#framework-integration)). Ready to use out of the box — install, import, and start building.
+A lightweight, accessible Angular component library built on CSS custom properties, with portable design system integration guides for Flutter and React ([see more](#framework-integration)). Ready to use out of the box: install, import, and start building.
 
-Every component is standalone, signal-based, and fully themed via design tokens. No wrapping modules, no complex setup, no runtime style conflicts. Designed to be AI-friendly with clear APIs, consistent patterns, and comprehensive documentation that makes it easy for both developers and AI assistants to work with.
+Every component is standalone, signal-based, and fully themed via design tokens (no wrapping modules, complex setup, or runtime style conflicts). Designed with clear APIs, consistent patterns, and comprehensive documentation to make it easy for both developers and AI assistants to integrate in any project.
 
 **Component reference and live examples:** [eagami.com/ui](https://eagami.com/ui)
 
 ## Features
 
-- **Zero configuration** — works immediately after install with sensible defaults
-- **Standalone components** — no `NgModule` boilerplate, just import and use
-- **Signal-based** — built on Angular's modern reactivity primitives (`input()`, `model()`, `output()`, `effect()`)
-- **Full theming via CSS custom properties** — override any design token on `:root` or scope overrides to individual components
-- **Dark mode built in** — automatic via `prefers-color-scheme`, no extra setup
-- **Accessible** — ARIA attributes, keyboard navigation, focus management, and screen reader support throughout
-- **Form-ready** — `ControlValueAccessor` on every form control (input, textarea, checkbox, switch, radio, dropdown, autocomplete, date picker, slider, code input, segmented)
-- **Tree-shakeable** — only the components you import end up in your bundle
-- **Tiny** — the entire library is **70 KB gzipped**, and only the components you import end up in your bundle
+- **Zero configuration**: works immediately after install with sensible defaults
+- **Standalone components**: no `NgModule` boilerplate, just import and use
+- **Signal-based**: built on Angular's modern reactivity primitives (`input()`, `model()`, `output()`, `effect()`)
+- **Full theming via CSS custom properties**: override any design token on `:root` or scope overrides to individual components
+- **Dark mode built in**: automatic via `prefers-color-scheme`, no extra setup
+- **Accessible**: ARIA attributes, keyboard navigation, focus management, and screen reader support throughout
+- **Localized**: built-in component strings ship in English, French, Greek, Polish, and Spanish, switchable at runtime
+- **Form-ready**: `ControlValueAccessor` on every form control (input, textarea, checkbox, switch, radio, dropdown, autocomplete, date picker, slider, code input, segmented)
+- **Tree-shakeable**: only the components you import end up in your bundle
+- **Tiny**: the entire library is **70 KB gzipped**, and only the components you import end up in your bundle
 
 ## Installation
 
@@ -62,21 +63,21 @@ export class MyComponent {
 }
 ```
 
-No modules to register, no providers to configure. Every component works the same way — import it, drop it in your template.
+No modules to register, no providers to configure. Every component works the same way: import it, drop it in your template.
 
 > **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md) for the full list of breaking changes and a find/replace table that covers most upgrades in one pass.
 
 ## What's included
 
-- **Form controls** — Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented
-- **Overlays** — Dialog, Drawer, Tooltip, Menu, Toast
-- **Navigation** — Tabs, Breadcrumbs, Paginator, Accordion
-- **Display** — Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark
-- **Data** — Data table
-- **Specialised** — Avatar editor
-- **Icons** — 52 stroke-based SVG icon components (`<ea-icon-*>`)
+- **Form controls**: Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented
+- **Overlays**: Dialog, Drawer, Tooltip, Menu, Toast
+- **Navigation**: Tabs, Breadcrumbs, Paginator, Accordion
+- **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark
+- **Data**: Data table
+- **Specialised**: Avatar editor
+- **Icons**: 52 stroke-based SVG icon components (`<ea-icon-*>`)
 
-Full per-component documentation — props, events, examples, and accessibility notes — lives at **[eagami.com/ui](https://eagami.com/ui)**.
+Full per-component documentation (props, events, examples, and accessibility notes) lives at **[eagami.com/ui](https://eagami.com/ui)**.
 
 ## Theming
 
@@ -101,12 +102,57 @@ Component-level overrides are available where useful:
 
 See [`src/styles/tokens/`](src/styles/tokens/) for the full token reference.
 
+## Internationalization
+
+Every component's built-in strings (ARIA labels, placeholders, empty states) ship in **English** (default), **French (France)**, **Greek**, **Polish**, and **Spanish (Spain)**. No setup is needed for English.
+
+Set the locale once at bootstrap with `provideEagamiUi`:
+
+```typescript
+import { provideEagamiUi } from '@eagami/ui';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideEagamiUi({ locale: 'fr-FR' })],
+});
+```
+
+Switch it at runtime by injecting `EagamiI18nService`, and every component updates reactively:
+
+```typescript
+import { EagamiI18nService } from '@eagami/ui';
+
+export class LanguagePicker {
+  private readonly i18n = inject(EagamiI18nService);
+  setFrench() { this.i18n.setLocale('fr-FR'); }
+}
+```
+
+Individual strings can still be overridden per instance via component inputs (e.g. `placeholder`, `removeLabel`), or globally through `provideEagamiUi({ messages })`. `DatePickerComponent` also follows the active locale when formatting dates.
+
+### French typography for user-supplied text
+
+Standard French typography puts a narrow non-breaking space (U+202F, *espace fine insécable*) before `?` `!` `:` `;` and around `«` `»`. Without it the punctuation can wrap onto its own line. The library's built-in French messages already follow this rule, but **user-typed content and other consumer-supplied strings are not auto-transformed** — the components render whatever string they receive.
+
+What this means in practice:
+
+- **macOS / iOS** with a French keyboard already inserts the correct space automatically. Most other operating systems (Windows, Android, most Linux input methods) just send a regular ASCII space, so typed text can wrap awkwardly.
+- For consumer-supplied strings you want to render correctly, the library exposes an opt-in helper:
+
+```typescript
+import { frenchSpacing } from '@eagami/ui';
+
+const corrected = frenchSpacing(userInput);
+// 'Lignes par page :' -> 'Lignes par page :'
+```
+
+Apply it to prose only (not URLs, CSS, or JSON — `:` and `?` carry non-prose meaning there). It's idempotent and a no-op on text without space-before-punctuation. Also remember to set `<html lang="fr-FR">` so the browser applies locale-aware CSS uppercase rules; the same lang attribute lets screen readers pick the right voice.
+
 ## Framework integration
 
-`@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided — each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
+`@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided, each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
 
-- **[design-system-flutter.md](design-system-flutter.md)** — Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
-- **[design-system-react.md](design-system-react.md)** — CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
+- **[design-system-flutter.md](design-system-flutter.md)**: Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
+- **[design-system-react.md](design-system-react.md)**: CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
 
 Both files contain the full token set, mandatory design rules, theme setup, usage patterns, component API conventions, and accessibility requirements. Copy the relevant file into the target project and follow it when building UI.
 
@@ -122,9 +168,9 @@ Both files contain the full token set, mandatory design rules, theme setup, usag
 
 Components are authored for modern evergreen browsers and follow Angular's default [browserslist](https://github.com/browserslist/browserslist) configuration. Specifically:
 
-- **Chrome / Edge** — last 2 stable versions
-- **Firefox** — last 2 stable versions, plus the current ESR
-- **Safari** — last 2 stable versions
+- **Chrome / Edge**: last 2 stable versions
+- **Firefox**: last 2 stable versions, plus the current ESR
+- **Safari**: last 2 stable versions
 - **Modern mobile browsers** (iOS Safari, Chrome Android)
 
 The library is published as ES2022. Internet Explorer and pre-Chromium Edge are not supported.
@@ -154,13 +200,13 @@ The icon set is derived from [Feather Icons](https://feathericons.com/) (© Cole
 
 ### Brand icons
 
-The following icons depict third-party trademarks and are provided **only for nominative use** — i.e. identifying the brand they represent in a UI (a "Sign in with Google" button, a "Share to Facebook" link, etc.). They are not licensed for general decorative use. Consumers are responsible for following each brand's guidelines and should consult them before shipping:
+The following icons depict third-party trademarks and are provided **only for nominative use**, i.e. identifying the brand they represent in a UI (a "Sign in with Google" button, a "Share to Facebook" link, etc.). They are not licensed for general decorative use. Consumers are responsible for following each brand's guidelines and should consult them before shipping:
 
-- **Facebook** — [Brand resources](https://about.meta.com/brand/resources/facebookapp/logo/)
-- **GitHub** — [Logos and usage](https://github.com/logos)
-- **Google** — [Sign-in branding guidelines](https://developers.google.com/identity/branding-guidelines)
-- **Microsoft** — [Trademark and brand guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)
-- **X (Twitter)** — [Brand toolkit](https://about.x.com/en/who-we-are/brand-toolkit)
+- **Facebook**: [Brand resources](https://about.meta.com/brand/resources/facebookapp/logo/)
+- **GitHub**: [Logos and usage](https://github.com/logos)
+- **Google**: [Sign-in branding guidelines](https://developers.google.com/identity/branding-guidelines)
+- **Microsoft**: [Trademark and brand guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)
+- **X (Twitter)**: [Brand toolkit](https://about.x.com/en/who-we-are/brand-toolkit)
 
 ## License
 

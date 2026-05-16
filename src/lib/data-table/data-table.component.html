@@ -1,13 +1,13 @@
 <div
   class="ea-data-table"
-  [ngClass]="hostClasses()"
-  role="grid">
+  [ngClass]="hostClasses()">
   <div class="ea-data-table__scroll">
     <table class="ea-data-table__table">
       <thead class="ea-data-table__head">
         <tr class="ea-data-table__row ea-data-table__row--header">
           @for (col of columns(); track col.key) {
             <th
+              scope="col"
               class="ea-data-table__cell ea-data-table__cell--header"
               [class.ea-data-table__cell--sortable]="col.sortable"
               [class.ea-data-table__cell--sorted]="
@@ -60,21 +60,18 @@
               @if (noDataTemplate()) {
                 <ng-container [ngTemplateOutlet]="noDataTemplate()!" />
               } @else {
-                {{ noDataText() }}
+                {{ resolvedNoDataText() }}
               }
             </td>
           </tr>
         } @else {
           @for (row of sortedData(); track trackByFn($index, row)) {
-            <tr
-              class="ea-data-table__row"
-              role="row">
+            <tr class="ea-data-table__row">
               @for (col of columns(); track col.key) {
                 <td
                   class="ea-data-table__cell"
                   [class.ea-data-table__cell--align-center]="col.align === 'center'"
-                  [class.ea-data-table__cell--align-right]="col.align === 'right'"
-                  role="gridcell">
+                  [class.ea-data-table__cell--align-right]="col.align === 'right'">
                   @if (col.cellTemplate) {
                     <ng-container
                       [ngTemplateOutlet]="col.cellTemplate"

@@ -6,12 +6,14 @@ import {
   ViewEncapsulation,
   computed,
   effect,
+  inject,
   input,
   model,
   output,
   viewChild,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 
 /** Width preset of the dialog panel. */
@@ -34,6 +36,7 @@ export type DialogSize = 'sm' | 'md' | 'lg' | 'full';
 export class DialogComponent {
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
   private previouslyFocused: HTMLElement | null = null;
+  protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly size = input<DialogSize>('md');

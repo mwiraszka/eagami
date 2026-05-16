@@ -13,7 +13,7 @@
       <button
         type="button"
         class="ea-dialog__close"
-        aria-label="Close dialog"
+        [attr.aria-label]="i18n.messages().dialog.close"
         (click)="handleClose()">
         <ea-icon-x />
       </button>

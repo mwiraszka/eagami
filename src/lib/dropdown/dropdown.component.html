@@ -19,6 +19,10 @@
       [disabled]="isDisabled()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
+      [attr.aria-controls]="isOpen() ? id() + '-listbox' : null"
+      [attr.aria-activedescendant]="
+        isOpen() && focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
+      "
       [attr.aria-labelledby]="label() ? id() + '-label' : null"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
@@ -30,7 +34,7 @@
       <span
         class="ea-dropdown__value"
         [class.ea-dropdown__value--placeholder]="!selectedLabel()">
-        {{ selectedLabel() || placeholder() }}
+        {{ selectedLabel() || resolvedPlaceholder() }}
       </span>
       <ea-icon-chevron-down
         class="ea-dropdown__chevron"
@@ -42,9 +46,7 @@
         #menuEl
         class="ea-dropdown__menu"
         role="listbox"
-        [attr.aria-activedescendant]="
-          focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
-        ">
+        [id]="id() + '-listbox'">
         @for (option of options(); track option.value; let i = $index) {
           <li
             class="ea-dropdown__option"

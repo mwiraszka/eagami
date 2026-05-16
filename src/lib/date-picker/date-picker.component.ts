@@ -17,6 +17,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
@@ -71,10 +72,12 @@ export class DatePickerComponent implements ControlValueAccessor {
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
   private readonly injector = inject(Injector);
+  protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);
-  readonly placeholder = input<string>('Select date…');
+  /** Placeholder shown when no date is selected. Defaults to the active locale's text. */
+  readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<DatePickerSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -113,6 +116,14 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
+  /** Locale used for date formatting — explicit `locale` input, else the global locale. */
+  readonly effectiveLocale = computed(() => this.locale() ?? this.i18n.locale());
+
+  /** Placeholder text — explicit `placeholder` input, else the active locale's default. */
+  readonly resolvedPlaceholder = computed(
+    () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
+  );
+
   readonly triggerClasses = computed(() => ({
     [`ea-date-picker__trigger--${this.size()}`]: true,
     'ea-date-picker__trigger--error': this.hasError(),
@@ -123,12 +134,14 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly displayValue = computed(() => {
     const val = this.value();
     if (!val) return '';
-    return new Intl.DateTimeFormat(this.locale(), this.formatOptions()).format(val);
+    return new Intl.DateTimeFormat(this.effectiveLocale(), this.formatOptions()).format(
+      val,
+    );
   });
 
   readonly monthYearLabel = computed(() => {
     const date = new Date(this.viewYear(), this.viewMonth(), 1);
-    return new Intl.DateTimeFormat(this.locale(), {
+    return new Intl.DateTimeFormat(this.effectiveLocale(), {
       month: 'long',
       year: 'numeric',
     }).format(date);
@@ -136,7 +149,9 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   readonly weekdayLabels = computed(() => {
     const start = this.weekStartsOn();
-    const formatter = new Intl.DateTimeFormat(this.locale(), { weekday: 'short' });
+    const formatter = new Intl.DateTimeFormat(this.effectiveLocale(), {
+      weekday: 'short',
+    });
     const labels: string[] = [];
     // Use a known Sunday (2024-01-07) as anchor so we can offset for locale
     const base = new Date(2024, 0, 7);

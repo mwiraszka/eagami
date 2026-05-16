@@ -48,7 +48,10 @@ import {
   DownloadIconComponent,
   DrawerComponent,
   DropdownComponent,
+  EAGAMI_LOCALES,
+  EagamiI18nService,
   EagamiIconComponent,
+  EagamiLocale,
   EagamiWordmarkComponent,
   EmptyStateComponent,
   ExternalLinkIconComponent,
@@ -157,6 +160,13 @@ import {
   signal,
 } from '@angular/core';
 
+import { DEMO_STRINGS, DemoStrings } from './demo-strings';
+
+// localStorage keys for persisted user preferences. Namespaced so they don't
+// collide with anything the host page might store.
+const DARK_MODE_KEY = 'eagami-sandbox:dark-mode';
+const LOCALE_KEY = 'eagami-sandbox:locale';
+
 interface SandboxComponentEntry {
   key: string;
   label: string;
@@ -236,8 +246,31 @@ function buildIcon(name: string, component: Type<unknown>): IconEntry {
 })
 export class SandboxComponent {
   private readonly toastService = inject(ToastService);
+  protected readonly i18n = inject(EagamiI18nService);
+
+  // Sandbox demo strings for the active locale. Falls back to English.
+  protected readonly s = computed<DemoStrings>(
+    () => DEMO_STRINGS[this.i18n.locale()] ?? DEMO_STRINGS.en,
+  );
 
   readonly darkMode = signal(false);
+
+  // Locale switcher — drives every component's built-in strings at once.
+  // English keeps the 🇬🇧 flag by picker convention; the locale tag itself
+  // stays region-neutral `en`.
+  readonly localeOptions: SelectOption[] = [
+    { value: 'en', label: '🇬🇧 English' },
+    { value: 'fr-FR', label: '🇫🇷 Français' },
+    { value: 'el', label: '🇬🇷 Ελληνικά' },
+    { value: 'pl', label: '🇵🇱 Polski' },
+    { value: 'es-ES', label: '🇪🇸 Español' },
+  ];
+
+  setLocale(locale: string): void {
+    if ((EAGAMI_LOCALES as readonly string[]).includes(locale)) {
+      this.i18n.setLocale(locale as EagamiLocale);
+    }
+  }
 
   // Drives the tooltip demo's disabled state. Must update reactively — DevTools
   // mobile-mode emulation toggles `(hover: hover)` after page load, and real
@@ -250,14 +283,61 @@ export class SandboxComponent {
   readonly canHover = signal(this.hoverMql?.matches ?? true);
 
   constructor() {
+    // Restore persisted preferences before any reactive state reads them so
+    // the first paint already reflects the user's last choice.
+    this.restoreLocale();
+    this.restoreDarkMode();
+
     this.hoverMql?.addEventListener('change', e => this.canHover.set(e.matches));
 
+    // Keep <html data-theme> in sync with the toggle and persist the choice.
     effect(() => {
-      document.documentElement.setAttribute(
-        'data-theme',
-        this.darkMode() ? 'dark' : 'light',
-      );
+      const dark = this.darkMode();
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      this.savePreference(DARK_MODE_KEY, String(dark));
     });
+
+    // Keep <html lang> in sync with the active locale and persist it.
+    // The lang attribute matters beyond accessibility: CSS `text-transform:
+    // uppercase` applies locale-aware case mapping, which (for `el`) correctly
+    // drops the tonos accent. Without lang="el" the browser keeps the accent,
+    // producing typographically wrong Greek headings.
+    effect(() => {
+      const locale = this.i18n.locale();
+      document.documentElement.setAttribute('lang', locale);
+      this.savePreference(LOCALE_KEY, locale);
+    });
+  }
+
+  private restoreLocale(): void {
+    const saved = this.readPreference(LOCALE_KEY);
+    if (saved && (EAGAMI_LOCALES as readonly string[]).includes(saved)) {
+      this.i18n.setLocale(saved as EagamiLocale);
+    }
+  }
+
+  private restoreDarkMode(): void {
+    const saved = this.readPreference(DARK_MODE_KEY);
+    if (saved !== null) {
+      this.darkMode.set(saved === 'true');
+    }
+  }
+
+  private readPreference(key: string): string | null {
+    try {
+      return typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private savePreference(key: string, value: string): void {
+    try {
+      if (typeof localStorage !== 'undefined') localStorage.setItem(key, value);
+    } catch {
+      // localStorage may be unavailable (private mode, disabled cookies) —
+      // persistence is a nice-to-have, not a hard requirement.
+    }
   }
 
   readonly componentList: SandboxComponentEntry[] = [
@@ -455,60 +535,47 @@ export class SandboxComponent {
     buildIcon('zap', ZapIconComponent),
   ];
 
-  autocompleteOptions: SelectOption[] = [
-    { value: 'angular', label: 'Angular' },
-    { value: 'react', label: 'React' },
-    { value: 'vue', label: 'Vue' },
-    { value: 'svelte', label: 'Svelte' },
-    { value: 'solid', label: 'Solid' },
-    { value: 'qwik', label: 'Qwik' },
-    { value: 'preact', label: 'Preact' },
-    { value: 'lit', label: 'Lit' },
-  ];
+  // All option/item arrays follow the active locale so demos render in the
+  // currently selected language.
+  readonly autocompleteOptions = computed<SelectOption[]>(
+    () => this.s().autocomplete.options,
+  );
 
-  breadcrumbItems: BreadcrumbItem[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Products', href: '/products' },
-    { label: 'Laptops', href: '/products/laptops' },
-    { label: 'MacBook Pro' },
-  ];
+  readonly breadcrumbItems = computed<BreadcrumbItem[]>(() => this.s().breadcrumbs.items);
 
-  breadcrumbItemsShort: BreadcrumbItem[] = [
-    { label: 'Dashboard', href: '/' },
-    { label: 'Settings' },
-  ];
+  readonly breadcrumbItemsShort = computed<BreadcrumbItem[]>(
+    () => this.s().breadcrumbs.itemsShort,
+  );
 
-  dropdownOptions: SelectOption[] = [
-    { value: 'apple', label: 'Apple' },
-    { value: 'banana', label: 'Banana' },
-    { value: 'cherry', label: 'Cherry' },
-    { value: 'date', label: 'Date' },
-  ];
+  readonly dropdownOptions = computed<SelectOption[]>(() => this.s().dropdown.options);
 
-  segmentedViewOptions: SelectOption[] = [
-    { value: 'list', label: 'List' },
-    { value: 'grid', label: 'Grid' },
-    { value: 'kanban', label: 'Kanban' },
-  ];
+  readonly radioFruitOptions = computed(() => this.s().radio.fruitOptions);
 
-  segmentedThemeOptions: SelectOption[] = [
-    { value: 'light', label: 'Light' },
-    { value: 'dark', label: 'Dark' },
-  ];
+  readonly segmentedViewOptions = computed<SelectOption[]>(
+    () => this.s().segmented.viewOptions,
+  );
 
-  tableColumns: DataTableColumn[] = [
-    { key: 'id', label: 'ID', sortable: true, width: '60px', align: 'center' },
-    { key: 'firstName', label: 'First Name', sortable: true },
-    { key: 'lastName', label: 'Last Name', sortable: true },
-    { key: 'admin', label: 'Admin', sortable: true, align: 'center' },
-    {
-      key: 'posts',
-      label: 'Posts',
-      sortable: true,
-      align: 'right',
-      format: v => (v as number).toLocaleString('en-US'),
-    },
-  ];
+  readonly segmentedThemeOptions = computed<SelectOption[]>(
+    () => this.s().segmented.themeOptions,
+  );
+
+  readonly tableColumns = computed<DataTableColumn[]>(() => {
+    const t = this.s().dataTable;
+    const locale = this.i18n.locale();
+    return [
+      { key: 'id', label: t.columnId, sortable: true, width: '60px', align: 'center' },
+      { key: 'firstName', label: t.columnFirstName, sortable: true },
+      { key: 'lastName', label: t.columnLastName, sortable: true },
+      { key: 'admin', label: t.columnAdmin, sortable: true, align: 'center' },
+      {
+        key: 'posts',
+        label: t.columnPosts,
+        sortable: true,
+        align: 'right',
+        format: v => new Intl.NumberFormat(locale).format(v as number),
+      },
+    ];
+  });
 
   tableData = [
     { id: 1, firstName: 'Alice', lastName: 'Johnson', admin: '', posts: 847 },
@@ -536,8 +603,17 @@ export class SandboxComponent {
   }
 
   showToast(variant: 'default' | 'success' | 'warning' | 'error' | 'info'): void {
-    const article = variant === 'error' || variant === 'info' ? 'an' : 'a';
-    this.toastService.show(`This is ${article} ${variant} toast`, { variant });
+    const messages = this.s().toast;
+    const message = (
+      {
+        default: messages.defaultMsg,
+        success: messages.successMsg,
+        warning: messages.warningMsg,
+        error: messages.errorMsg,
+        info: messages.infoMsg,
+      } as const
+    )[variant];
+    this.toastService.show(message, { variant });
   }
 
   triggerLoading(): void {
@@ -547,15 +623,15 @@ export class SandboxComponent {
 
   onAvatarCropped(event: AvatarEditorCropEvent): void {
     this.croppedAvatarUrl.set(event.dataUrl);
-    this.toastService.success('Avatar updated');
+    this.toastService.success(this.s().toast.avatarUpdated);
   }
 
   async copyIconSelector(selector: string): Promise<void> {
     try {
       await navigator.clipboard.writeText(selector);
-      this.toastService.success(`Copied ${selector}`);
+      this.toastService.success(this.s().toast.copied(selector));
     } catch {
-      this.toastService.error(`Failed to copy ${selector}`);
+      this.toastService.error(this.s().toast.copyFailed(selector));
     }
   }
 }

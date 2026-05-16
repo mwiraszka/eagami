@@ -6,11 +6,13 @@ import {
   ViewEncapsulation,
   computed,
   contentChild,
+  inject,
   input,
   model,
   output,
 } from '@angular/core';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArrowDownIconComponent } from '../icons/arrow-down.component';
 import { ArrowUpIconComponent } from '../icons/arrow-up.component';
 import { ChevronsUpDownIconComponent } from '../icons/chevrons-up-down.component';
@@ -60,6 +62,8 @@ export interface DataTableSortState {
   encapsulation: ViewEncapsulation.None,
 })
 export class DataTableComponent<T = Record<string, unknown>> {
+  private readonly i18n = inject(EagamiI18nService);
+
   readonly columns = input.required<DataTableColumn<T>[]>();
   readonly data = input.required<T[]>();
   readonly trackBy = input<keyof T | undefined>(undefined);
@@ -68,7 +72,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly striped = input<boolean>(false);
   readonly hoverable = input<boolean>(true);
   readonly bordered = input<boolean>(false);
-  readonly noDataText = input<string>('No data available');
+  readonly noDataText = input<string | undefined>(undefined);
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
@@ -76,6 +80,11 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly sorted = output<DataTableSortState>();
 
   readonly noDataTemplate = contentChild<TemplateRef<unknown>>('noData');
+
+  /** Empty-state text, falling back to the active locale's translation. */
+  readonly resolvedNoDataText = computed(
+    () => this.noDataText() ?? this.i18n.messages().dataTable.noData,
+  );
 
   readonly hostClasses = computed(() => ({
     [`ea-data-table--${this.density()}`]: true,

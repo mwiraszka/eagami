@@ -6,6 +6,7 @@ import {
   ElementRef,
   computed,
   forwardRef,
+  inject,
   input,
   model,
   output,
@@ -14,6 +15,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
@@ -52,6 +54,7 @@ export type InputType =
 })
 export class InputComponent implements ControlValueAccessor, AfterViewInit {
   readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
+  protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
   readonly label = input<string | undefined>(undefined);

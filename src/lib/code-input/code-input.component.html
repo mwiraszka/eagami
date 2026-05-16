@@ -17,7 +17,7 @@
     [class.ea-code-input-group--disabled]="isDisabled()"
     role="group"
     [attr.aria-labelledby]="label() ? id() + '-label' : null"
-    [attr.aria-label]="!label() ? 'Verification code, ' + length() + ' digits' : null"
+    [attr.aria-label]="!label() ? i18n.messages().codeInput.groupLabel(length()) : null"
     [attr.aria-describedby]="
       showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
     ">
@@ -36,7 +36,7 @@
         [required]="required()"
         [value]="digits()[i]"
         [placeholder]="placeholder()"
-        [attr.aria-label]="'Digit ' + (i + 1) + ' of ' + length()"
+        [attr.aria-label]="i18n.messages().codeInput.digitLabel(i + 1, length())"
         [attr.aria-invalid]="hasError() || null"
         (input)="handleInput($event, i)"
         (keydown)="handleKeydown($event, i)"

@@ -2,6 +2,9 @@
 // EAGAMI UI — Public API
 // =============================================================================
 
+// Internationalization
+export * from './lib/i18n';
+
 // Components
 export * from './lib/accordion/accordion.component';
 export * from './lib/accordion/accordion-item.component';

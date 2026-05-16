@@ -6,7 +6,7 @@
     [id]="id()"
     [ngClass]="listClasses()"
     [style]="listStyle()"
-    [attr.aria-label]="ariaLabel()">
+    [attr.aria-label]="resolvedAriaLabel()">
     <ng-content />
   </div>
 }
