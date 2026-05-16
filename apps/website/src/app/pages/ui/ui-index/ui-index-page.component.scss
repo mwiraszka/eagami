@@ -37,16 +37,18 @@
   }
 }
 
-.ui-index__lede a {
+.ui-index__lede a:has(> code) {
   @include mixins.prose-code-link;
+}
+
+.ui-index__lede a:not(:has(> code)) {
+  @include mixins.prose-link;
 }
 
 .ui-index__section {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-top: 32px;
-  border-top: 1px solid var(--color-border-default);
 }
 
 .ui-index__heading {
@@ -80,6 +82,10 @@
   li {
     padding-left: 16px;
     border-left: 2px solid var(--color-border-default);
+  }
+
+  a {
+    @include mixins.prose-link;
   }
 
   strong {

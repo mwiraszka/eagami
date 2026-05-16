@@ -2,24 +2,22 @@
   <header class="ui-setup__header">
     <h1 class="ui-setup__title">Setup</h1>
     <p class="ui-setup__lede">
-      Install the package, wire up the global stylesheet and fonts, then import your first
-      component.
+      Install the package and wire up the global stylesheet and fonts.
     </p>
   </header>
 
   <section class="ui-setup__section">
-    <h2>Installation</h2>
     <pre class="ui-setup__code"><code>npm install &#64;eagami/ui
 # or
 pnpm add &#64;eagami/ui
 # or
 yarn add &#64;eagami/ui</code></pre>
 
-    <p>Add the global stylesheet to your <code>angular.json</code>:</p>
+    <p>Add the global stylesheet in <code>angular.json</code>:</p>
     <pre
       class="ui-setup__code"><code>"styles": ["node_modules/&#64;eagami/ui/src/styles/eagami-ui.scss"]</code></pre>
 
-    <p>Load the fonts in your <code>index.html</code>:</p>
+    <p>Load the fonts in <code>index.html</code>:</p>
     <pre
       class="ui-setup__code"><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
 &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
@@ -27,7 +25,7 @@ yarn add &#64;eagami/ui</code></pre>
   </section>
 
   <section class="ui-setup__section">
-    <h2>Quick start</h2>
+    <h2>Your first component</h2>
     <pre
       class="ui-setup__code"><code>import &lbrace; ButtonComponent &rbrace; from '&#64;eagami/ui';
 

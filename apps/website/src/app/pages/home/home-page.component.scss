@@ -683,7 +683,11 @@
 
 .service-list--addons {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px 24px;
+  gap: 48px;
+
+  @include mixins.respond-to('lt-md') {
+    gap: 36px;
+  }
 }
 
 .service-item {

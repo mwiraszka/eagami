@@ -105,7 +105,7 @@ export class HomePageComponent implements OnInit {
     },
     {
       title: 'Brewski Bets',
-      description: 'A friendly beer-betting platform.',
+      description: 'A tracker for casual bets between friends, settled in beer.',
       url: 'https://brewskibets.com',
       display: 'brewskibets.com',
       logo: 'assets/projects/brewskibets.svg',

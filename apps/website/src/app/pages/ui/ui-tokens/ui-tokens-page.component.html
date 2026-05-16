@@ -12,10 +12,7 @@
 
   <section class="tokens-section">
     <h2 class="tokens-section__title">Theming</h2>
-    <p>
-      Every token is a CSS custom property on <code>:root</code>. Override at the root
-      to retheme the entire library:
-    </p>
+    <p>Override any token on <code>:root</code> to retheme the entire library:</p>
     <pre
       class="ui-tokens__code"><code>:root &lbrace;
   --color-primary-600: #2563eb;
@@ -240,7 +237,7 @@
         class="motion-simulate"
         aria-controls="tokens-motion-region"
         [attr.aria-pressed]="isSimulating()"
-        [disabled]="motionReduced()"
+        [disabled]="motionReduced() || isSimulating()"
         (click)="simulateMotion()">
         Simulate
       </button>
