@@ -38,6 +38,12 @@ const preview: Preview = {
   decorators: [
     (storyFn, context) => {
       const locale = context.globals['locale'] as EagamiLocale;
+      // Setting <html lang> lets the browser apply locale-aware case mapping
+      // to text-transform: uppercase. In `el` that correctly drops the tonos
+      // accent on uppercased Greek headings.
+      if (typeof document !== 'undefined') {
+        document.documentElement.lang = locale;
+      }
       return applicationConfig({
         providers: [provideEagamiUi({ locale })],
       })(storyFn, context);
