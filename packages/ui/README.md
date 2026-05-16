@@ -1,11 +1,13 @@
+<h1 align="center">eagami UI</h1>
+
 <p align="center">
-  <img src="docs/images/eagami-header.png" alt="eagami design system — elegant web design" width="800" />
+  <img src="docs/images/eagami-header.png" alt="eagami UI — elegant web design" width="800" />
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
-  <a href="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml"><img src="https://github.com/mwiraszka/eagami-design-system/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
-  <a href="https://github.com/mwiraszka/eagami-design-system/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
+  <a href="https://github.com/mwiraszka/eagami/actions/workflows/ui-ci.yml"><img src="https://github.com/mwiraszka/eagami/actions/workflows/ui-ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
 </p>
 
 A lightweight, accessible Angular component library built on CSS custom properties, with portable design system integration guides for Flutter and React ([see more](#framework-integration)). Ready to use out of the box: install, import, and start building.
@@ -151,8 +153,8 @@ Apply it to prose only (not URLs, CSS, or JSON — `:` and `?` carry non-prose m
 
 `@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided, each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
 
-- **[design-system-flutter.md](design-system-flutter.md)**: Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
-- **[design-system-react.md](design-system-react.md)**: CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
+- **[design-system-flutter.md](https://github.com/mwiraszka/eagami/blob/main/design-system-flutter.md)**: Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
+- **[design-system-react.md](https://github.com/mwiraszka/eagami/blob/main/design-system-react.md)**: CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
 
 Both files contain the full token set, mandatory design rules, theme setup, usage patterns, component API conventions, and accessibility requirements. Copy the relevant file into the target project and follow it when building UI.
 

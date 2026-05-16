@@ -1,17 +1,30 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
+dist
+tmp
 
 # Generated files
 documentation.json
-/bazel-out
+bazel-out
 
 # Node
-/node_modules
+node_modules
 npm-debug.log
 yarn-error.log
+
+# Angular
+.angular
+
+# Vercel
+.vercel
+
+# Testing
+coverage
+
+# Storybook
+storybook-static
+*storybook.log
 
 # IDEs and editors
 .idea/
@@ -33,18 +46,12 @@ yarn-error.log
 # Claude Code
 .claude/settings.local.json
 
-# Miscellaneous
-/.angular/cache
+# Sass / preprocessor caches
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+
+# Logs
 testem.log
-/typings
 
 # System files
 .DS_Store
 Thumbs.db
-
-*storybook.log
-storybook-static

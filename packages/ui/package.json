@@ -1,0 +1,84 @@
+{
+  "name": "@eagami/ui",
+  "version": "1.2.0",
+  "description": "Lightweight, accessible Angular UI component library built on CSS custom properties",
+  "author": "Michal Wiraszka <michal@eagami.com>",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ui",
+    "component-library",
+    "design-system",
+    "accessible"
+  ],
+  "homepage": "https://github.com/mwiraszka/eagami/tree/main/packages/ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwiraszka/eagami.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/mwiraszka/eagami/issues"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "ng": "ng",
+    "sandbox": "ng serve sandbox -o",
+    "build": "ng build eagami-ui && node scripts/clean-dist-package.mjs",
+    "watch": "ng build eagami-ui --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "format": "prettier --write \"src/**\" \"sandbox/**\"",
+    "lint": "eslint 'src/**'",
+    "storybook": "ng run eagami-ui:storybook",
+    "build-storybook": "ng run eagami-ui:build-storybook",
+    "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "0.2102.10",
+    "@angular-devkit/build-angular": "21.2.10",
+    "@angular-devkit/core": "21.2.10",
+    "@angular/build": "21.2.10",
+    "@angular/cli": "21.2.10",
+    "@angular/common": "21.2.12",
+    "@angular/compiler": "21.2.12",
+    "@angular/compiler-cli": "21.2.12",
+    "@angular/core": "21.2.12",
+    "@angular/forms": "21.2.12",
+    "@angular/platform-browser": "21.2.12",
+    "@angular/platform-browser-dynamic": "21.2.12",
+    "@angular/router": "21.2.12",
+    "@compodoc/compodoc": "1.2.1",
+    "@eslint/js": "10.0.1",
+    "@storybook/addon-docs": "10.3.5",
+    "@storybook/angular": "10.3.5",
+    "@trivago/prettier-plugin-sort-imports": "6.0.2",
+    "@types/jest": "30.0.0",
+    "@types/node": "25.6.0",
+    "eslint": "10.2.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.5",
+    "eslint-plugin-storybook": "10.3.5",
+    "globals": "17.5.0",
+    "jest": "30.3.0",
+    "jest-environment-jsdom": "30.3.0",
+    "jest-preset-angular": "16.1.4",
+    "ng-packagr": "21.2.3",
+    "prettier": "3.8.3",
+    "rxjs": "7.8.2",
+    "storybook": "10.3.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.59.0",
+    "zone.js": "0.16.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

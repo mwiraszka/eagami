@@ -15,6 +15,7 @@ const jestConfig: Config = {
   },
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testEnvironment: 'jest-environment-jsdom',
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   collectCoverageFrom: [
     'src/lib/**/*.{ts,html}',
     '!src/lib/**/*.stories.ts',
