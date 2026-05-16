@@ -91,4 +91,4 @@ For accessibility, keyboard navigation, ARIA, and form-field plumbing convention
 - **Bugs**: include a minimal reproduction (Stackblitz is great)
 - **API suggestions**: describe the use case first; the project is conservative about adding inputs
 
-Open issues at https://github.com/mwiraszka/eagami/issues.
+Open an issue at https://github.com/mwiraszka/eagami/issues.

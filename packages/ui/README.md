@@ -1,7 +1,7 @@
-<h1 align="center">eagami UI</h1>
+<h1 align="center">Eagami UI</h1>
 
 <p align="center">
-  <img src="assets/logo.svg" alt="eagami UI logo" width="150" height="150" />
+  <img src="assets/logo.png" alt="Eagami UI logo" width="150" height="150" />
 </p>
 
 <p align="center">

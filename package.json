@@ -1,7 +1,7 @@
 {
   "name": "eagami",
   "version": "0.0.0",
-  "description": "Monorepo for eagami UI (the @eagami/ui component library) and eagami.com (the marketing and docs site)",
+  "description": "Monorepo for Eagami UI (the @eagami/ui component library) and eagami.com (the marketing and docs site)",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "UNLICENSED",
   "homepage": "https://github.com/mwiraszka/eagami#readme",
