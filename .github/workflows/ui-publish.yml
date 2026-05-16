@@ -38,10 +38,12 @@ jobs:
         run: |
           BRANCH="${{ github.event.pull_request.head.ref }}"
 
-          # Branch is ui-vX.Y.Z; strip prefix to get semver, then look up changelog entry
-          SEMVER="${BRANCH#ui-v}"
+          # Branch may be standalone (ui-vX.Y.Z) or combined (ui-vA.B.C-website-vX.Y.Z).
+          # Strip any -website-v* suffix to isolate the library tag.
+          UI_TAG="${BRANCH%%-website-v*}"
+          SEMVER="${UI_TAG#ui-v}"
           NOTES=$(awk "/^## \[${SEMVER}\]/{found=1; next} /^## \[/{if(found) exit} found{print}" packages/ui/CHANGELOG.md)
 
-          git tag "$BRANCH"
-          git push origin "$BRANCH"
-          gh release create "$BRANCH" --title "$BRANCH" --notes "$NOTES"
+          git tag "$UI_TAG"
+          git push origin "$UI_TAG"
+          gh release create "$UI_TAG" --title "$UI_TAG" --notes "$NOTES"

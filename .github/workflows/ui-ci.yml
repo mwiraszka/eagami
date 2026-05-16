@@ -33,10 +33,20 @@ jobs:
       - name: Check version matches branch
         if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'ui-v')
         run: |
-          BRANCH_VERSION="${GITHUB_HEAD_REF#ui-v}"
+          BRANCH="${GITHUB_HEAD_REF}"
+
+          # Option B: library releases must pair with a website patch bump, so a
+          # ui-v* branch must always carry a -website-v* suffix (see CLAUDE.md).
+          if [[ "$BRANCH" != *-website-v* ]]; then
+            echo "::error::Library releases must pair with a website patch bump. Use branch name ui-vA.B.C-website-vX.Y.Z"
+            exit 1
+          fi
+
+          UI_PART="${BRANCH%%-website-v*}"
+          BRANCH_VERSION="${UI_PART#ui-v}"
           PKG_VERSION=$(node -p "require('./packages/ui/package.json').version")
           if [ "$BRANCH_VERSION" != "$PKG_VERSION" ]; then
-            echo "::error::Version mismatch: branch is ui-v$BRANCH_VERSION but packages/ui/package.json is $PKG_VERSION"
+            echo "::error::Version mismatch: branch is ${UI_PART} but packages/ui/package.json is $PKG_VERSION"
             exit 1
           fi
 
