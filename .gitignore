@@ -45,6 +45,7 @@ storybook-static
 
 # Claude Code
 .claude/settings.local.json
+CLAUDE.md
 
 # Sass / preprocessor caches
 .sass-cache/
