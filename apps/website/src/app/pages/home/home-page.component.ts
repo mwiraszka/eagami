@@ -1,18 +1,26 @@
 import {
+  BarChartIconComponent,
   ButtonComponent,
   ChevronDownIconComponent,
+  CreditCardIconComponent,
   EagamiIconComponent,
+  GlobeIconComponent,
   InputComponent,
+  MailIconComponent,
+  MoonIconComponent,
   TextareaComponent,
   ToastService,
+  UsersIconComponent,
 } from '@eagami/ui';
 
+import { NgComponentOutlet } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   OnInit,
+  Type,
   afterNextRender,
   computed,
   inject,
@@ -43,6 +51,7 @@ interface Project {
 interface Service {
   title: string;
   description: string;
+  icon?: Type<unknown>;
 }
 
 type ContactStatus = 'idle' | 'sending' | 'sent' | 'error';
@@ -63,6 +72,7 @@ function strictEmailValidator(control: AbstractControl): ValidationErrors | null
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   imports: [
+    NgComponentOutlet,
     RouterLink,
     ReactiveFormsModule,
     EagamiIconComponent,
@@ -150,29 +160,35 @@ export class HomePageComponent implements OnInit {
       title: 'User management',
       description:
         'User authentication, registration, and password recovery, plus an admin dashboard with metrics and per-user controls.',
+      icon: UsersIconComponent,
     },
     {
       title: 'Payment processing',
       description:
         'Online payments (Stripe by default, other providers on request), with customizable payment forms and recurring billing.',
+      icon: CreditCardIconComponent,
     },
     {
       title: 'Multilingual support',
       description:
         "Language support for multiple locales, with optional auto-detection from the visitor's browser.",
+      icon: GlobeIconComponent,
     },
     {
       title: 'Theming',
       description: 'Dark/light mode toggle and fully customizable color themes.',
+      icon: MoonIconComponent,
     },
     {
       title: 'Analytics & insights',
       description:
         'Website traffic metrics (sources, devices, locations), plus custom event tracking.',
+      icon: BarChartIconComponent,
     },
     {
       title: 'Email & notifications',
       description: 'Automated emails for account activity, receipts, and announcements.',
+      icon: MailIconComponent,
     },
   ];
 
@@ -246,7 +262,7 @@ export class HomePageComponent implements OnInit {
      (not the router) so syncing the fragment neither adds history entries nor
      re-triggers the router's anchor scrolling. */
   private setupScrollSpy(): void {
-    const sectionIds = ['services', 'work', 'contact'];
+    const sectionIds = ['services', 'projects', 'contact'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

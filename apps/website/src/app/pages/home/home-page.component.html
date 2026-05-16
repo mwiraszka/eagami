@@ -25,7 +25,7 @@
           </a>
           <a
             class="home-hero__link"
-            href="#work">
+            href="#projects">
             See recent projects &rarr;
           </a>
         </div>
@@ -75,7 +75,16 @@
           role="list">
           @for (service of addOnServices; track service.title) {
             <li class="service-item">
-              <h3 class="service-item__title">{{ service.title }}</h3>
+              <h3 class="service-item__title">
+                @if (service.icon) {
+                  <span
+                    class="service-item__icon"
+                    aria-hidden="true">
+                    <ng-container *ngComponentOutlet="service.icon" />
+                  </span>
+                }
+                {{ service.title }}
+              </h3>
               <p class="service-item__description">{{ service.description }}</p>
             </li>
           }
@@ -83,21 +92,16 @@
       </div>
 
       <p class="service-group__note">
-        Larger projects can be built on
-        <a
-          class="service-group__note-link"
-          routerLink="/ui">
-          Eagami UI
-        </a>
-        , a custom component library, for a consistent and modern visual language across the site.
+        Larger projects can be built on <a routerLink="/ui">Eagami UI</a>, a custom
+        component library, for a consistent and modern visual language across the site.
       </p>
     </div>
   </section>
 
   <!-- ─── Recent projects ─────────────────────────────────────────── -->
   <section
-    id="work"
-    class="home-section home-section--work">
+    id="projects"
+    class="home-section home-section--projects">
     <div class="home-section__inner">
       <header class="home-section__header">
         <h2 class="home-section__title">Recent projects</h2>
