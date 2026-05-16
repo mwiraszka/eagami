@@ -1,19 +1,19 @@
 ---
-title: Eagami Design System — React Integration
+title: 'Eagami UI: React Integration'
 version: 0.11.0
-source: '@eagami/ui@0.11.0 — https://github.com/mwiraszka/eagami-design-system'
+source: '@eagami/ui@0.11.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-04-21
 audience: human developers and AI coding agents
 purpose: >
-  Single-file specification for applying the Eagami design system to a React/TypeScript
+  Single-file specification for applying the Eagami UI design tokens to a React/TypeScript
   codebase without depending on the upstream Angular library. Copy this file into the
   consuming project's docs/ directory. When building or modifying UI in that project,
   follow every rule below and use only the tokens listed here.
 ---
 
-# Eagami Design System — React Integration
+# Eagami UI: React Integration
 
-This document is the complete, self-contained specification for applying the Eagami design system to a React project. It contains:
+This document is the complete, self-contained specification for applying the Eagami UI design tokens to a React project. It contains:
 
 1. Mandatory design rules
 2. Full token set (values)
@@ -433,7 +433,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 
 ```css
 /* ---------------------------------------------------------------------------
- * Eagami Design System — CSS Tokens
+ * Eagami UI: CSS Tokens
  * Sync source: @eagami/ui@0.11.0 (src/styles/tokens/*.scss)
  * Do not edit by hand — regenerate from the upstream SCSS.
  * ------------------------------------------------------------------------- */
@@ -764,7 +764,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 
 ```ts
 /**
- * Eagami Design System — TypeScript tokens
+ * Eagami UI: TypeScript tokens
  * Sync source: @eagami/ui@0.11.0
  */
 
@@ -1162,7 +1162,7 @@ interface DialogProps {
 
 ### 5.8 Other components
 
-Follow the same conventions for other mirrored Eagami components (Alert, Accordion, Autocomplete, Avatar, Badge, Breadcrumbs, CodeInput, DataTable, DatePicker, Divider, Drawer, Icon, IconButton, Menu, Paginator, ProgressBar, Skeleton, Spinner, Switch, Tabs, Tag, Textarea, Toast, Tooltip, Wordmark). Upstream docs: https://github.com/mwiraszka/eagami-design-system
+Follow the same conventions for other mirrored Eagami components (Alert, Accordion, Autocomplete, Avatar, Badge, Breadcrumbs, CodeInput, DataTable, DatePicker, Divider, Drawer, Icon, IconButton, Menu, Paginator, ProgressBar, Skeleton, Spinner, Switch, Tabs, Tag, Textarea, Toast, Tooltip, Wordmark). Upstream docs: https://github.com/mwiraszka/eagami
 
 ---
 

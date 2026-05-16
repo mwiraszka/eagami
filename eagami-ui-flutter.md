@@ -1,19 +1,19 @@
 ---
-title: Eagami Design System — Flutter Integration
+title: 'Eagami UI: Flutter Integration'
 version: 0.11.0
-source: '@eagami/ui@0.11.0 — https://github.com/mwiraszka/eagami-design-system'
+source: '@eagami/ui@0.11.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-04-21
 audience: human developers and AI coding agents
 purpose: >
-  Single-file specification for applying the Eagami design system to a Flutter/Dart
+  Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
   codebase without depending on the upstream Angular library. Copy this file into the
   consuming project's docs/ directory. When building or modifying UI in that project,
   follow every rule below and use only the tokens listed here.
 ---
 
-# Eagami Design System — Flutter Integration
+# Eagami UI: Flutter Integration
 
-This document is the complete, self-contained specification for applying the Eagami design system to a Flutter project. It contains:
+This document is the complete, self-contained specification for applying the Eagami UI design tokens to a Flutter project. It contains:
 
 1. Mandatory design rules
 2. Full token set (values)
@@ -466,7 +466,7 @@ Create `lib/theme/eagami_theme.dart`:
 import 'package:flutter/material.dart';
 
 // =============================================================================
-// EagamiTheme — design system theme extension
+// EagamiTheme: design-token theme extension
 // Sync source: @eagami/ui@0.11.0 (src/styles/tokens/*.scss)
 // =============================================================================
 
@@ -1301,7 +1301,7 @@ Future<T?> showEagamiDialog<T>({
 
 ### 5.8 Other components
 
-Follow the same conventions for other mirrored Eagami components (Alert, Accordion, Autocomplete, Avatar, Badge, Breadcrumbs, CodeInput, DataTable, DatePicker, Divider, Drawer, Icon, IconButton, Menu, Paginator, ProgressBar, Skeleton, Spinner, Switch, Tabs, Tag, Textarea, Toast, Tooltip, Wordmark). Upstream docs: https://github.com/mwiraszka/eagami-design-system
+Follow the same conventions for other mirrored Eagami components (Alert, Accordion, Autocomplete, Avatar, Badge, Breadcrumbs, CodeInput, DataTable, DatePicker, Divider, Drawer, Icon, IconButton, Menu, Paginator, ProgressBar, Skeleton, Spinner, Switch, Tabs, Tag, Textarea, Toast, Tooltip, Wordmark). Upstream docs: https://github.com/mwiraszka/eagami
 
 ---
 

@@ -1,33 +1,17 @@
 <h1 align="center">eagami UI</h1>
 
 <p align="center">
-  <img src="docs/images/eagami-header.png" alt="eagami UI — elegant web design" width="800" />
+  <img src="assets/logo.svg" alt="eagami UI logo" width="150" height="150" />
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
-  <a href="https://github.com/mwiraszka/eagami/actions/workflows/ui-ci.yml"><img src="https://github.com/mwiraszka/eagami/actions/workflows/ui-ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
 </p>
 
-A lightweight, accessible Angular component library built on CSS custom properties, with portable design system integration guides for Flutter and React ([see more](#framework-integration)). Ready to use out of the box: install, import, and start building.
+A lightweight, accessible Angular component library built on CSS custom properties. Standalone, signal-based, fully themable, and localized in five languages out of the box.
 
-Every component is standalone, signal-based, and fully themed via design tokens (no wrapping modules, complex setup, or runtime style conflicts). Designed with clear APIs, consistent patterns, and comprehensive documentation to make it easy for both developers and AI assistants to integrate in any project.
-
-**Component reference and live examples:** [eagami.com/ui](https://eagami.com/ui)
-
-## Features
-
-- **Zero configuration**: works immediately after install with sensible defaults
-- **Standalone components**: no `NgModule` boilerplate, just import and use
-- **Signal-based**: built on Angular's modern reactivity primitives (`input()`, `model()`, `output()`, `effect()`)
-- **Full theming via CSS custom properties**: override any design token on `:root` or scope overrides to individual components
-- **Dark mode built in**: automatic via `prefers-color-scheme`, no extra setup
-- **Accessible**: ARIA attributes, keyboard navigation, focus management, and screen reader support throughout
-- **Localized**: built-in component strings ship in English, French, Greek, Polish, and Spanish, switchable at runtime
-- **Form-ready**: `ControlValueAccessor` on every form control (input, textarea, checkbox, switch, radio, dropdown, autocomplete, date picker, slider, code input, segmented)
-- **Tree-shakeable**: only the components you import end up in your bundle
-- **Tiny**: the entire library is **70 KB gzipped**, and only the components you import end up in your bundle
+**Live documentation:** [eagami.com/ui](https://eagami.com/ui)
 
 ## Installation
 
@@ -35,181 +19,60 @@ Every component is standalone, signal-based, and fully themed via design tokens 
 npm install @eagami/ui
 # or
 pnpm add @eagami/ui
+# or
+yarn add @eagami/ui
 ```
 
-Add the global stylesheet to your `angular.json` (or import it in your root SCSS):
+Add the global stylesheet to your `angular.json`:
 
 ```json
 "styles": ["node_modules/@eagami/ui/src/styles/eagami-ui.scss"]
 ```
 
-Load the fonts in your `index.html`:
+See the [Setup](https://eagami.com/ui/setup) page for fonts and your first component import.
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@400;500;600;700&display=swap" />
-```
+## Features
 
-## Quick start
-
-```typescript
-import { ButtonComponent } from '@eagami/ui';
-
-@Component({
-  imports: [ButtonComponent],
-  template: `<ea-button variant="primary" (clicked)="save()">Save</ea-button>`,
-})
-export class MyComponent {
-  save() { /* ... */ }
-}
-```
-
-No modules to register, no providers to configure. Every component works the same way: import it, drop it in your template.
-
-> **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md) for the full list of breaking changes and a find/replace table that covers most upgrades in one pass.
+- Standalone components; no `NgModule` boilerplate
+- Signal-based APIs (`input()`, `model()`, `output()`)
+- Tree-shakeable; ~70 KB gzipped for the whole library
+- Themed via CSS custom properties on `:root`
+- Dark mode automatic via `prefers-color-scheme`
+- Accessible: ARIA, keyboard, focus management, reduced motion
+- Localized in English, French, Greek, Polish, Spanish
+- `ControlValueAccessor` on every form control
 
 ## What's included
 
-- **Form controls**: Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented
+- **Form controls**: Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented, Avatar editor
 - **Overlays**: Dialog, Drawer, Tooltip, Menu, Toast
 - **Navigation**: Tabs, Breadcrumbs, Paginator, Accordion
-- **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark
-- **Data**: Data table
-- **Specialised**: Avatar editor
-- **Icons**: 52 stroke-based SVG icon components (`<ea-icon-*>`)
+- **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark, Data table
+- **Icons**: 100 stroke-based SVG icon components (`<ea-icon-*>`)
 
-Full per-component documentation (props, events, examples, and accessibility notes) lives at **[eagami.com/ui](https://eagami.com/ui)**.
+Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/components).
 
 ## Theming
 
-All visual properties are controlled through CSS custom properties defined on `:root`. Override any token to customise the entire library:
-
-```css
-:root {
-  --color-primary-600: #2563eb;
-  --font-family-sans: 'Inter', sans-serif;
-  --radius-md: 0.5rem;
-}
-```
-
-Component-level overrides are available where useful:
-
-```css
-.my-card {
-  --ea-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --ea-button-font-weight: 600;
-}
-```
-
-See [`src/styles/tokens/`](src/styles/tokens/) for the full token reference.
+Every visual property is a CSS custom property on `:root`, so overriding any token retunes the whole library. See [design tokens](https://eagami.com/ui/design-tokens) for the full reference and theming examples.
 
 ## Internationalization
 
-Every component's built-in strings (ARIA labels, placeholders, empty states) ship in **English** (default), **French (France)**, **Greek**, **Polish**, and **Spanish (Spain)**. No setup is needed for English.
-
-Set the locale once at bootstrap with `provideEagamiUi`:
-
-```typescript
-import { provideEagamiUi } from '@eagami/ui';
-
-bootstrapApplication(AppComponent, {
-  providers: [provideEagamiUi({ locale: 'fr-FR' })],
-});
-```
-
-Switch it at runtime by injecting `EagamiI18nService`, and every component updates reactively:
-
-```typescript
-import { EagamiI18nService } from '@eagami/ui';
-
-export class LanguagePicker {
-  private readonly i18n = inject(EagamiI18nService);
-  setFrench() { this.i18n.setLocale('fr-FR'); }
-}
-```
-
-Individual strings can still be overridden per instance via component inputs (e.g. `placeholder`, `removeLabel`), or globally through `provideEagamiUi({ messages })`. `DatePickerComponent` also follows the active locale when formatting dates.
-
-### French typography for user-supplied text
-
-Standard French typography puts a narrow non-breaking space (U+202F, *espace fine insécable*) before `?` `!` `:` `;` and around `«` `»`. Without it the punctuation can wrap onto its own line. The library's built-in French messages already follow this rule, but **user-typed content and other consumer-supplied strings are not auto-transformed** — the components render whatever string they receive.
-
-What this means in practice:
-
-- **macOS / iOS** with a French keyboard already inserts the correct space automatically. Most other operating systems (Windows, Android, most Linux input methods) just send a regular ASCII space, so typed text can wrap awkwardly.
-- For consumer-supplied strings you want to render correctly, the library exposes an opt-in helper:
-
-```typescript
-import { frenchSpacing } from '@eagami/ui';
-
-const corrected = frenchSpacing(userInput);
-// 'Lignes par page :' -> 'Lignes par page :'
-```
-
-Apply it to prose only (not URLs, CSS, or JSON — `:` and `?` carry non-prose meaning there). It's idempotent and a no-op on text without space-before-punctuation. Also remember to set `<html lang="fr-FR">` so the browser applies locale-aware CSS uppercase rules; the same lang attribute lets screen readers pick the right voice.
+Built-in strings ship in English, French (France), Greek, Polish, and Spanish (Spain), with runtime switching via `EagamiI18nService`. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
 
 ## Framework integration
 
-`@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided, each copy-and-paste ready and written to be readable by both human developers and AI coding agents:
+`@eagami/ui` is Angular-only, but its design tokens are framework-agnostic. Copy-and-paste guides for non-Angular targets:
 
-- **[design-system-flutter.md](https://github.com/mwiraszka/eagami/blob/main/design-system-flutter.md)**: Dart `ThemeExtension`, `MaterialApp` wiring, reduced-motion handling, and widget API conventions for Flutter projects
-- **[design-system-react.md](https://github.com/mwiraszka/eagami/blob/main/design-system-react.md)**: CSS custom properties, TypeScript constants, and component prop conventions for React projects (plain CSS, CSS Modules, styled-components, emotion, or Tailwind)
+- **[eagami-ui-flutter.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-flutter.md)** for Flutter projects
+- **[eagami-ui-react.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-react.md)** for React projects
 
-Both files contain the full token set, mandatory design rules, theme setup, usage patterns, component API conventions, and accessibility requirements. Copy the relevant file into the target project and follow it when building UI.
+## Compatibility
 
-## Peer dependencies
+| | |
+|---|---|
+| Angular | `^21.0.0` (peer dep) |
+| Node | `>= 20` for build/dev tooling |
+| Browsers | Last 2 stable versions of Chrome, Edge, Firefox (plus current ESR), Safari |
 
-| Package | Version |
-|---------|---------|
-| `@angular/common` | `^21.0.0` |
-| `@angular/core` | `^21.0.0` |
-| `@angular/forms` | `^21.0.0` |
-
-## Browser support
-
-Components are authored for modern evergreen browsers and follow Angular's default [browserslist](https://github.com/browserslist/browserslist) configuration. Specifically:
-
-- **Chrome / Edge**: last 2 stable versions
-- **Firefox**: last 2 stable versions, plus the current ESR
-- **Safari**: last 2 stable versions
-- **Modern mobile browsers** (iOS Safari, Chrome Android)
-
-The library is published as ES2022. Internet Explorer and pre-Chromium Edge are not supported.
-
-### Runtime requirements
-
-| Tool | Minimum |
-|------|---------|
-| Node.js | 20.x (for build/dev tooling) |
-| Angular | 21.0 |
-| TypeScript | 5.5 |
-
-## Development
-
-```bash
-pnpm install       # Install dependencies
-pnpm sandbox       # Run sandbox dev app on http://localhost:4200
-pnpm storybook     # Run Storybook on http://localhost:6006
-pnpm test          # Run tests
-pnpm build         # Build the library
-pnpm lint          # Lint
-```
-
-## Icons
-
-The icon set is derived from [Feather Icons](https://feathericons.com/) (© Cole Bemis, MIT). Stroke style, dimensions, and most paths match Feather one-for-one. Browse the full set at [eagami.com/ui/icons](https://eagami.com/ui/icons).
-
-### Brand icons
-
-The following icons depict third-party trademarks and are provided **only for nominative use**, i.e. identifying the brand they represent in a UI (a "Sign in with Google" button, a "Share to Facebook" link, etc.). They are not licensed for general decorative use. Consumers are responsible for following each brand's guidelines and should consult them before shipping:
-
-- **Facebook**: [Brand resources](https://about.meta.com/brand/resources/facebookapp/logo/)
-- **GitHub**: [Logos and usage](https://github.com/logos)
-- **Google**: [Sign-in branding guidelines](https://developers.google.com/identity/branding-guidelines)
-- **Microsoft**: [Trademark and brand guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)
-- **X (Twitter)**: [Brand toolkit](https://about.x.com/en/who-we-are/brand-toolkit)
-
-## License
-
-MIT
+> **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md).
