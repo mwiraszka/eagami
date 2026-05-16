@@ -370,13 +370,9 @@
   background-color: var(--color-bg-base);
 }
 
-.home-section--toolkit,
-.home-section--contact {
-  background-color: var(--color-bg-subtle);
-}
-
 .home-section--contact {
   min-height: calc(100dvh - var(--web-height-header) - var(--web-height-footer));
+  background-color: var(--color-bg-subtle);
   --color-brand-hover: var(--color-primary-800);
 }
 
@@ -649,6 +645,23 @@
   color: var(--color-text-tertiary);
 }
 
+.service-group__note {
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.service-group__note-link {
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
+}
+
 .service-list {
   display: grid;
   gap: 24px;
@@ -737,141 +750,6 @@
   }
 }
 
-/* ─── Toolkit ────────────────────────────────────────────────────────── */
-.toolkit-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  @include mixins.respond-to('lt-md') {
-    gap: 12px;
-  }
-}
-
-.toolkit-showcase__row {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  align-items: center;
-  gap: 16px;
-
-  @include mixins.respond-to('lt-md') {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-}
-
-.toolkit-showcase__label {
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-}
-
-.toolkit-showcase__items {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
-
-.toolkit-showcase__items--progress {
-  flex-wrap: nowrap;
-
-  > ea-progress-bar {
-    flex: 1;
-    min-width: 0;
-  }
-}
-
-.toolkit-showcase__items--slider {
-  flex-wrap: nowrap;
-
-  > ea-slider {
-    flex: 1;
-    min-width: 0;
-  }
-
-  > ea-badge {
-    flex-shrink: 0;
-    min-width: 32px;
-    text-align: center;
-  }
-}
-
-.toolkit-showcase__items--skeleton {
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 16px;
-}
-
-.toolkit-showcase__skeleton-lines {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.toolkit-showcase__items--checkboxes {
-  gap: 32px;
-}
-
-.toolkit-showcase__checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.toolkit-showcase__row--cta > a {
-  grid-column: 2;
-
-  @include mixins.respond-to('lt-md') {
-    grid-column: 1;
-  }
-}
-
-.toolkit-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.toolkit-summary__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-
-  &::before {
-    content: '';
-    flex-shrink: 0;
-    width: 14px;
-    height: 2px;
-    margin-top: 0.65em;
-    border-radius: 999px;
-    background: linear-gradient(
-      to right,
-      var(--color-primary-500),
-      var(--color-secondary-500)
-    );
-  }
-
-  code {
-    padding: 1px 5px;
-    border-radius: 4px;
-    background-color: var(--color-bg-muted);
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: var(--color-text-primary);
-  }
-}
 
 /* ─── Contact form ───────────────────────────────────────────────────── */
 .contact-form {

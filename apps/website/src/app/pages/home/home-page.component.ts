@@ -1,18 +1,8 @@
 import {
-  BadgeComponent,
   ButtonComponent,
-  CheckboxComponent,
   ChevronDownIconComponent,
   EagamiIconComponent,
   InputComponent,
-  ProgressBarComponent,
-  RadioComponent,
-  RadioGroupComponent,
-  SkeletonComponent,
-  SliderComponent,
-  SpinnerComponent,
-  SwitchComponent,
-  TagComponent,
   TextareaComponent,
   ToastService,
 } from '@eagami/ui';
@@ -76,19 +66,9 @@ function strictEmailValidator(control: AbstractControl): ValidationErrors | null
     RouterLink,
     ReactiveFormsModule,
     EagamiIconComponent,
-    BadgeComponent,
     ButtonComponent,
-    CheckboxComponent,
     ChevronDownIconComponent,
     InputComponent,
-    ProgressBarComponent,
-    RadioComponent,
-    RadioGroupComponent,
-    SkeletonComponent,
-    SliderComponent,
-    SpinnerComponent,
-    SwitchComponent,
-    TagComponent,
     TextareaComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -128,27 +108,6 @@ export class HomePageComponent implements OnInit {
       logo: 'assets/projects/chordbomb.svg',
     },
   ];
-
-  protected readonly showcaseSliderValue = signal(60);
-  protected readonly showcaseSwitchOn = signal(true);
-  protected readonly showcaseRadioValue = signal('md');
-
-  protected readonly checkboxOne = signal(false);
-  protected readonly checkboxTwo = signal(false);
-  protected readonly checkboxThree = signal(true);
-  protected readonly checkboxMasterChecked = computed(
-    () => this.checkboxOne() && this.checkboxTwo() && this.checkboxThree(),
-  );
-  protected readonly checkboxMasterIndeterminate = computed(() => {
-    const someChecked = this.checkboxOne() || this.checkboxTwo() || this.checkboxThree();
-    return someChecked && !this.checkboxMasterChecked();
-  });
-
-  private readonly radioLabels: Record<string, string> = {
-    sm: 'Small',
-    md: 'Medium',
-    lg: 'Large',
-  };
 
   private readonly carouselOffset = signal(0);
   protected readonly slideDirection = signal<-1 | 0 | 1>(0);
@@ -287,7 +246,7 @@ export class HomePageComponent implements OnInit {
      (not the router) so syncing the fragment neither adds history entries nor
      re-triggers the router's anchor scrolling. */
   private setupScrollSpy(): void {
-    const sectionIds = ['services', 'toolkit', 'work', 'contact'];
+    const sectionIds = ['services', 'work', 'contact'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -381,42 +340,6 @@ export class HomePageComponent implements OnInit {
   public ngOnInit(): void {
     this.metaAndTitleService.updateTitle('Eagami');
     this.metaAndTitleService.updateDescription('Elegant web design');
-  }
-
-  protected toggleCheckboxMaster(): void {
-    const next = !this.checkboxMasterChecked();
-    this.checkboxOne.set(next);
-    this.checkboxTwo.set(next);
-    this.checkboxThree.set(next);
-    this.toastService.show(next ? 'All checkboxes checked' : 'All checkboxes unchecked', {
-      variant: 'info',
-    });
-  }
-
-  protected onShowcaseButton(label: string): void {
-    this.toastService.show(`${label} button pressed`, { variant: 'info' });
-  }
-
-  protected onShowcaseSwitch(checked: boolean): void {
-    this.showcaseSwitchOn.set(checked);
-    this.toastService.show(`Switch turned ${checked ? 'on' : 'off'}`, {
-      variant: 'info',
-    });
-  }
-
-  protected onShowcaseRadio(value: string): void {
-    this.showcaseRadioValue.set(value);
-    this.toastService.show(`${this.radioLabels[value] ?? value} selected`, {
-      variant: 'info',
-    });
-  }
-
-  protected onShowcaseCheckbox(label: 1 | 2, checked: boolean): void {
-    if (label === 1) this.checkboxOne.set(checked);
-    else this.checkboxTwo.set(checked);
-    this.toastService.show(`Checkbox ${label} ${checked ? 'checked' : 'unchecked'}`, {
-      variant: 'info',
-    });
   }
 
   protected scrollWork(direction: 1 | -1): void {
