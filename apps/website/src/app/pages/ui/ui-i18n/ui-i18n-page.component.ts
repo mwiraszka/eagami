@@ -19,6 +19,7 @@ import {
   signal,
 } from '@angular/core';
 
+import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 const LOCALE_LABELS: Record<EagamiLocale, string> = {
@@ -43,6 +44,7 @@ const LOCALE_FLAGS: Record<EagamiLocale, string> = {
   styleUrl: './ui-i18n-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CodeSnippetComponent,
     DataTableComponent,
     DatePickerComponent,
     DropdownComponent,
@@ -77,6 +79,35 @@ export class UiI18nPageComponent implements OnInit {
   ];
 
   protected readonly demoTableData: Record<string, unknown>[] = [];
+
+  protected readonly quickSetupSnippet = `import { provideEagamiUi } from '@eagami/ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideEagamiUi({ locale: 'fr-FR' })],
+};`;
+
+  protected readonly runtimeSwitchSnippet = `import { EagamiI18nService } from '@eagami/ui';
+
+export class LanguageSwitcher {
+  private readonly i18n = inject(EagamiI18nService);
+
+  switchToFrench() {
+    this.i18n.setLocale('fr-FR');
+  }
+}`;
+
+  protected readonly perStringOverridesSnippet = `provideEagamiUi({
+  locale: 'en',
+  messages: {
+    paginator: { rowsPerPage: 'Items per page' },
+    dataTable: { noData: 'Nothing here yet' },
+  },
+})`;
+
+  protected readonly frenchSpacingSnippet = `import { frenchSpacing } from '@eagami/ui';
+
+frenchSpacing('Lignes par page :');     // 'Lignes par page&#8239;:'
+frenchSpacing('Il a dit « bonjour ».'); // 'Il a dit&#8239;«&#8239;bonjour&#8239;».'`;
 
   public ngOnInit(): void {
     this.metaAndTitleService.updateTitle('Eagami | UI');

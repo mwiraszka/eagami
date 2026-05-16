@@ -8,6 +8,7 @@ import {
   signal,
 } from '@angular/core';
 
+import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 interface FontFamilyToken {
@@ -27,9 +28,21 @@ interface NamedToken {
   templateUrl: './ui-tokens-page.component.html',
   styleUrl: './ui-tokens-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CodeSnippetComponent],
 })
 export class UiTokensPageComponent implements OnInit {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
+
+  protected readonly rootThemeSnippet = `:root {
+  --color-primary-600: #2563eb;
+  --font-family-sans: 'Inter', sans-serif;
+  --radius-md: 0.5rem;
+}`;
+
+  protected readonly scopedThemeSnippet = `.my-card {
+  --ea-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --ea-button-font-weight: 600;
+}`;
 
   protected readonly primaryPalette = [
     '50',

@@ -151,7 +151,7 @@ export class HomePageComponent implements OnInit {
     {
       title: 'Ongoing maintenance',
       description:
-        'Monthly support for hosting, security updates, third-party packages, content revisions, and analytics, optionally extending to APIs and databases.',
+        'Monthly support for hosting, security updates, third-party package upgrades, content revisions, and analytics.',
     },
   ];
 

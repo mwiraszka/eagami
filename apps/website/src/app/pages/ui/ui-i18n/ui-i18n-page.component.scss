@@ -54,24 +54,6 @@
   }
 }
 
-.ui-i18n__code {
-  padding: 16px;
-  overflow-x: auto;
-  border-radius: 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background-color: var(--color-bg-muted);
-  color: var(--color-text-primary);
-
-  code {
-    padding: 0;
-    font-size: inherit;
-    background: none;
-    color: inherit;
-  }
-}
-
 .ui-i18n__locale-list {
   display: flex;
   flex-wrap: wrap;

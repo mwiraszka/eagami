@@ -38,17 +38,16 @@
   }
 }
 
-/* Library tooltip background is hard-coded to `--color-neutral-800`, which
-   is the same value `--color-bg-elevated` resolves to in dark mode — so
-   tooltips visually blend into elevated card surfaces. Bump it one shade
-   lighter in dark mode so it lifts off the card. Covers both system
-   preference and the explicit theme toggle. */
+/* Library tooltip is `--color-neutral-800`, which in dark mode ends up the
+   same shade as elevated-card and code-snippet surfaces and visually blends
+   in. Drop it to the darkest neutral so it stays distinct from every dark
+   surface. Covers both system preference and the explicit theme toggle. */
 @media (prefers-color-scheme: dark) {
   .ea-tooltip {
-    background-color: var(--color-neutral-700);
+    background-color: var(--color-neutral-950);
   }
 }
 
 :root[data-theme='dark'] .ea-tooltip {
-  background-color: var(--color-neutral-700);
+  background-color: var(--color-neutral-950);
 }

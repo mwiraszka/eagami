@@ -39,12 +39,7 @@
       to your app config. Without arguments it defaults to English, so calling it is
       optional unless you want a different starting locale.
     </p>
-    <pre
-      class="ui-i18n__code"><code>import &lbrace; provideEagamiUi &rbrace; from '&#64;eagami/ui';
-
-export const appConfig: ApplicationConfig = &lbrace;
-  providers: [provideEagamiUi(&lbrace; locale: 'fr-FR' &rbrace;)],
-&rbrace;;</code></pre>
+    <web-code-snippet [code]="quickSetupSnippet" />
   </section>
 
   <section class="ui-i18n__section">
@@ -80,20 +75,11 @@ export const appConfig: ApplicationConfig = &lbrace;
   <section class="ui-i18n__section">
     <h2>Runtime switching</h2>
     <p>
-      Inject <code>EagamiI18nService</code> and call <code>setLocale()</code>. The
-      active locale is a signal, so every component re-renders with the new strings
-      without a refresh.
+      Inject <code>EagamiI18nService</code> and call <code>setLocale()</code>. The active
+      locale is a signal, so every component re-renders with the new strings without a
+      refresh.
     </p>
-    <pre
-      class="ui-i18n__code"><code>import &lbrace; EagamiI18nService &rbrace; from '&#64;eagami/ui';
-
-export class LanguageSwitcher &lbrace;
-  private readonly i18n = inject(EagamiI18nService);
-
-  switchToFrench() &lbrace;
-    this.i18n.setLocale('fr-FR');
-  &rbrace;
-&rbrace;</code></pre>
+    <web-code-snippet [code]="runtimeSwitchSnippet" />
   </section>
 
   <section class="ui-i18n__section">
@@ -104,17 +90,11 @@ export class LanguageSwitcher &lbrace;
       object alongside the locale to swap individual strings. Anything you omit falls back
       to the locale's defaults.
     </p>
-    <pre class="ui-i18n__code"><code>provideEagamiUi(&lbrace;
-  locale: 'en',
-  messages: &lbrace;
-    paginator: &lbrace; rowsPerPage: 'Items per page' &rbrace;,
-    dataTable: &lbrace; noData: 'Nothing here yet' &rbrace;,
-  &rbrace;,
-&rbrace;)</code></pre>
+    <web-code-snippet [code]="perStringOverridesSnippet" />
     <p>
       Most components also expose individual message inputs (e.g.
-      <code>placeholder</code> on <code>&lt;ea-dropdown&gt;</code>) for one-off
-      overrides at the call site.
+      <code>placeholder</code> on <code>&lt;ea-dropdown&gt;</code>) for one-off overrides
+      at the call site.
     </p>
   </section>
 
@@ -126,10 +106,6 @@ export class LanguageSwitcher &lbrace;
       <code>frenchSpacing()</code> helper converts regular spaces in your own French
       strings (the library handles its bundled French messages internally).
     </p>
-    <pre
-      class="ui-i18n__code"><code>import &lbrace; frenchSpacing &rbrace; from '&#64;eagami/ui';
-
-frenchSpacing('Lignes par page :');     // 'Lignes par page&amp;#8239;:'
-frenchSpacing('Il a dit « bonjour ».'); // 'Il a dit&amp;#8239;«&amp;#8239;bonjour&amp;#8239;».'</code></pre>
+    <web-code-snippet [code]="frenchSpacingSnippet" />
   </section>
 </article>

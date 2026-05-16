@@ -1,35 +1,42 @@
 <article class="ui-setup">
   <section class="ui-setup__section">
     <h1 class="ui-setup__title">Setup</h1>
-    <p>Install the package:</p>
-    <pre class="ui-setup__code"><code>npm install &#64;eagami/ui
-# or
-pnpm add &#64;eagami/ui
-# or
-yarn add &#64;eagami/ui</code></pre>
 
-    <p>Add the global stylesheet in <code>angular.json</code>:</p>
-    <pre
-      class="ui-setup__code"><code>"styles": ["node_modules/&#64;eagami/ui/src/styles/eagami-ui.scss"]</code></pre>
+    <ol
+      class="ui-setup__steps"
+      role="list">
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">1.</span>
+          Install the package:
+        </p>
+        <web-code-snippet code="npm install @eagami/ui" />
+        <p class="ui-setup__or">or</p>
+        <web-code-snippet code="pnpm add @eagami/ui" />
+        <p class="ui-setup__or">or</p>
+        <web-code-snippet code="yarn add @eagami/ui" />
+      </li>
 
-    <p>Load the fonts in <code>index.html</code>:</p>
-    <pre
-      class="ui-setup__code"><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
-&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
-&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght&#64;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;family=Syne:wght&#64;400;500;600;700&amp;display=swap" /&gt;</code></pre>
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">2.</span>
+          Add the global stylesheet in <code>angular.json</code>:
+        </p>
+        <web-code-snippet [code]="stylesheetSnippet" />
+      </li>
+
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">3.</span>
+          Load the fonts in <code>index.html</code>:
+        </p>
+        <web-code-snippet [code]="fontsSnippet" />
+      </li>
+    </ol>
   </section>
 
   <section class="ui-setup__section">
     <h2>Your first component</h2>
-    <pre
-      class="ui-setup__code"><code>import &lbrace; ButtonComponent &rbrace; from '&#64;eagami/ui';
-
-&#64;Component(&lbrace;
-  imports: [ButtonComponent],
-  template: `&lt;ea-button variant="primary" (clicked)="save()"&gt;Save&lt;/ea-button&gt;`,
-&rbrace;)
-export class MyComponent &lbrace;
-  save() &lbrace; /* ... */ &rbrace;
-&rbrace;</code></pre>
+    <web-code-snippet [code]="quickStartSnippet" />
   </section>
 </article>
