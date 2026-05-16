@@ -2,6 +2,21 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [1.2.0] - 2026-05-16
+
+### Added
+
+- Add a copy-to-clipboard button to every code snippet across the `/ui` documentation pages, with a tooltip and a success toast on click.
+
+### Changed
+
+- Refresh the `/ui` documentation pages with tighter copy, clearer structure, and a numbered three-step Setup flow.
+
+### Fixed
+
+- Improve dark-mode tooltip contrast so tooltips no longer blend into the surface beneath them.
+- Show a clear disabled state on the design-tokens *Simulate* button while a simulation is running.
+
 ## [1.1.0] - 2026-05-16
 
 ### Added
@@ -309,6 +324,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[1.2.0]: https://github.com/mwiraszka/eagami/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/mwiraszka/eagami/compare/v1.0.9...v1.1.0
 [1.0.9]: https://github.com/mwiraszka/eagami/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/mwiraszka/eagami/compare/v1.0.7...v1.0.8
