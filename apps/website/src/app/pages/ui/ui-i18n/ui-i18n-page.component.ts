@@ -1,5 +1,6 @@
 import {
-  AlertComponent,
+  DataTableColumn,
+  DataTableComponent,
   DatePickerComponent,
   DropdownComponent,
   EAGAMI_LOCALES,
@@ -34,7 +35,7 @@ const LOCALE_LABELS: Record<EagamiLocale, string> = {
   styleUrl: './ui-i18n-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertComponent,
+    DataTableComponent,
     DatePickerComponent,
     DropdownComponent,
     PaginatorComponent,
@@ -61,8 +62,15 @@ export class UiI18nPageComponent implements OnInit {
     { value: 'cherry', label: 'Cherry' },
   ];
 
+  protected readonly demoTableColumns: DataTableColumn[] = [
+    { key: 'name', label: 'Name' },
+    { key: 'role', label: 'Role' },
+  ];
+
+  protected readonly demoTableData: Record<string, unknown>[] = [];
+
   public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami | UI — Internationalization');
+    this.metaAndTitleService.updateTitle('Eagami | UI');
     this.metaAndTitleService.updateDescription(
       'Switch every @eagami/ui component into English, French, Greek, Polish, or Spanish with a single provider, or override individual strings to match your app.',
     );

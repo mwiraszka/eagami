@@ -57,17 +57,15 @@ export const appConfig: ApplicationConfig = &lbrace;
         (changed)="onLocaleChange($event)" />
 
       <div class="ui-i18n__demo-grid">
-        <ea-alert
-          variant="info"
-          [dismissible]="true">
-          Hover the close button to see the localized dismiss label.
-        </ea-alert>
-
         <ea-date-picker label="Appointment" />
 
         <ea-dropdown
           label="Fruit"
           [options]="demoDropdownOptions" />
+
+        <ea-data-table
+          [columns]="demoTableColumns"
+          [data]="demoTableData" />
 
         <ea-paginator [totalItems]="100" />
       </div>
