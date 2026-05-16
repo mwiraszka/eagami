@@ -57,7 +57,7 @@ export const frFR: EagamiMessages = {
   },
   paginator: {
     label: 'Pagination',
-    rowsPerPage: 'Lignes par page :',
+    rowsPerPage: 'Lignes par page :',
     range: (start, end, total) => `${start}–${end} sur ${total}`,
     previousPage: 'Page précédente',
     nextPage: 'Page suivante',
