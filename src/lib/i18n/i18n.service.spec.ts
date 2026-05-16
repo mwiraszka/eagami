@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
+import { EAGAMI_LOCALES, EagamiLocale } from './i18n.types';
 
 describe('EagamiI18nService', () => {
   function createService(
@@ -75,4 +76,23 @@ describe('EagamiI18nService', () => {
       }
     }
   });
+
+  it.each(EAGAMI_LOCALES)(
+    'resolves every parameterized message in %s without throwing',
+    (locale: EagamiLocale) => {
+      const service = createService({ locale });
+      const messages = service.messages();
+
+      const range = messages.paginator.range(1, 10, 100);
+      const groupLabel = messages.codeInput.groupLabel(6);
+      const digitLabel = messages.codeInput.digitLabel(2, 6);
+
+      expect(typeof range).toBe('string');
+      expect(range.length).toBeGreaterThan(0);
+      expect(typeof groupLabel).toBe('string');
+      expect(groupLabel.length).toBeGreaterThan(0);
+      expect(typeof digitLabel).toBe('string');
+      expect(digitLabel.length).toBeGreaterThan(0);
+    },
+  );
 });
