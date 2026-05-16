@@ -45,24 +45,6 @@
   }
 }
 
-.ui-icons__lede-link {
-  border-radius: 4px;
-
-  code {
-    color: var(--color-text-link);
-    transition: color 0.15s ease;
-  }
-
-  &:hover code {
-    color: var(--color-text-link-hover);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
-}
-
 .icons-grid {
   display: grid;
   /* `auto-fill` with a generous minimum cell width so the longest label
