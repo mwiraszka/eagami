@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm build:prod",
+  "buildCommand": "pnpm --filter @eagami/ui build && pnpm build:prod",
   "outputDirectory": "dist/browser",
   "framework": null,
   "cleanUrls": true,
