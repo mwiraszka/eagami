@@ -1,0 +1,824 @@
+@use 'mixins' as mixins;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Hero + contact share the same dark-mode brand-token overrides so the
+   "Get in touch" hero CTA and "Send message" form button read as clearly
+   brand-coloured against the dark hero backdrop. */
+:host-context([data-theme='dark']) :is(.home-hero, .home-section--contact) {
+  --color-brand-default: var(--color-primary-800);
+  --color-brand-hover: color-mix(
+    in oklch,
+    var(--color-primary-800),
+    var(--color-primary-700) 40%
+  );
+  --color-brand-active: var(--color-primary-600);
+  --color-text-inverse: var(--color-neutral-50);
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────────── */
+.home-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100dvh - var(--web-height-header));
+  @include mixins.safe-area-padding(32px, 16px);
+  background-color: var(--color-bg-subtle);
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--color-secondary-200) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--color-primary-200) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, var(--color-secondary-100) 0%, transparent 60%);
+  background-size:
+    140% 140%,
+    140% 140%,
+    140% 140%;
+  background-repeat: no-repeat;
+  background-position:
+    80% 80%,
+    20% 30%,
+    50% 100%;
+  color: var(--color-text-primary);
+  --color-brand-hover: var(--color-primary-800);
+  animation: home-bg-flutter 30s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  /* Short viewports (typically phones rotated to landscape): keep the hero
+     filling the space below the header (`100dvh - header`), but tighten the
+     padding so the compressed content has room. */
+  @media (max-height: 500px) {
+    @include mixins.safe-area-padding(16px, 16px);
+  }
+}
+
+:host-context([data-theme='dark']) .home-hero {
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--color-secondary-500) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--color-primary-500) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, var(--color-secondary-600) 0%, transparent 60%);
+}
+
+:host-context([data-theme='dark']) .home-hero__wordmark {
+  color: var(--color-primary-200);
+}
+
+:host-context([data-theme='dark']) .home-hero__link {
+  /* neutral-50 against the dark hero's densest gradient stops keeps the link
+     ≥ 4.5:1 across all phases of the flutter animation. */
+  color: var(--color-neutral-50);
+
+  &:hover {
+    color: var(--color-neutral-0);
+  }
+}
+
+.home-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+
+  @include mixins.respond-to('lt-md') {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Short viewports override the lt-md column stack with a tight side-by-side
+     layout — landscape phones have horizontal room to spare and almost no
+     vertical room. */
+  @media (max-height: 500px) {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.home-hero__visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-hero__icon {
+  font-size: clamp(160px, 32vw, 320px);
+  color: var(--color-text-primary);
+
+  /* Between the md and lg breakpoints the 32vw track would scale the heron
+     down from its 320px ceiling; pin it at full size across that band. */
+  @include mixins.respond-to('gt-md') {
+    @include mixins.respond-to('lt-lg') {
+      font-size: 320px;
+    }
+  }
+
+  /* Short viewports: scale the icon off `vh` instead of `vw` so it never
+     outgrows the available height when rotated to landscape. The bird sits
+     in its own column with nothing else competing for vertical space, so let
+     it fill most of the hero — capped at the same 320 px ceiling as desktop. */
+  @media (max-height: 500px) {
+    font-size: clamp(180px, 70vh, 320px);
+  }
+}
+
+.home-hero__type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  /* Pull the type block left so it tucks under the heron — the beak overlaps
+     the start of the wordmark. */
+  margin-left: -32px;
+  text-align: center;
+
+  /* Stacked column layout: the heron sits above the type block, so there's no
+     horizontal overlap to tuck under — keep the block centered. */
+  @include mixins.respond-to('lt-md') {
+    margin-left: 0;
+  }
+
+  /* Landscape phones revert to the side-by-side layout, so restore the tuck. */
+  @media (max-height: 500px) {
+    margin-left: -32px;
+  }
+}
+
+.home-hero__wordmark {
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(48px, 12vw, 96px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+  /* 'Syne Wordmark' is the 5-glyph subset (e/a/g/m/i) inlined into index.html
+     as a data URI so the wordmark renders in Syne on first paint without any
+     network request. Falls back to the regular brand stack for any other char. */
+  font-family: 'Syne Wordmark', var(--font-family-brand);
+  color: var(--color-primary-700);
+  word-break: break-word;
+}
+
+/* Decorative sheen overlay: a duplicate of the wordmark sitting on top,
+   filled with a transparent gradient whose highlight band sweeps diagonally
+   from the bottom-left of the letters toward the top-right, peaking near
+   the dot of the "i". The underlying text never changes — only the band
+   moves — so glyphs stay solid the whole time. */
+.home-hero__wordmark::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Extend past the parent's 1em line-box so the gradient's painted area
+     covers the descender of the "g"; without this the sheen gets clipped a
+     few pixels above the bottom of the glyph. */
+  height: 1.25em;
+  font: inherit;
+  letter-spacing: inherit;
+  background-image: linear-gradient(
+    45deg,
+    transparent 30%,
+    var(--web-color-wordmarkSheen) 50%,
+    transparent 70%
+  );
+  background-size: 300% 300%;
+  background-position: 150% -50%;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  pointer-events: none;
+  animation: home-hero-wordmark-sheen 8s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+.home-hero__tagline {
+  font-size: 20px;
+  font-style: italic;
+  color: var(--color-text-primary);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 17px;
+  }
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+
+  @include mixins.respond-to('lt-md') {
+    margin-top: 48px;
+  }
+
+  /* Landscape phones revert to the side-by-side layout, so the buttons no
+     longer need the larger vertical breathing room used for the stacked
+     mobile column. */
+  @media (max-height: 500px) {
+    margin-top: 32px;
+  }
+}
+
+.home-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 8px;
+  background-color: var(--color-brand-default);
+  color: var(--color-text-inverse);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-brand-hover);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.home-hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.home-hero__link {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* Scroll-down affordance: a low-contrast chevron parked near the bottom of
+   the hero that pulses gently to hint there's more content below. Anchors
+   to #services so a click also smoothly scrolls past the hero. */
+.home-hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--color-text-tertiary);
+  transform: translateX(-50%);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  /* Landscape phones have almost no vertical room — drop the indicator so
+     it doesn't crowd the wordmark. */
+  @media (max-height: 500px) {
+    display: none;
+  }
+}
+
+.home-hero__scroll-chevron {
+  font-size: 28px;
+  /* Stretch horizontally so the V reads as a wide, hint-y chevron rather
+     than a tight UI-style arrow. */
+  transform: scaleX(4);
+  /* Breathe between fully invisible and the resting "faded" opacity. */
+  animation: home-hero-scroll-pulse 2.8s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 0.55;
+  }
+}
+
+/* ─── Generic section frame ──────────────────────────────────────────── */
+.home-section {
+  scroll-margin-top: var(--web-height-header);
+  @include mixins.safe-area-padding(96px, 32px);
+
+  @include mixins.respond-to('lt-md') {
+    @include mixins.safe-area-padding(48px, 16px);
+  }
+}
+
+.home-section--services,
+.home-section--projects {
+  background-color: var(--color-bg-base);
+}
+
+/* Subtle separator between consecutive home-sections so they don't read as
+   one continuous block. (Hero uses .home-hero, not .home-section, so the
+   first .home-section after the hero is correctly left without a top border.) */
+.home-section + .home-section {
+  border-top: 1px solid var(--color-border-default);
+}
+
+.home-section--contact {
+  min-height: calc(100dvh - var(--web-height-header) - var(--web-height-footer));
+  background-color: var(--color-bg-subtle);
+  --color-brand-hover: var(--color-primary-800);
+}
+
+.home-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+
+  @include mixins.respond-to('lt-md') {
+    gap: 32px;
+  }
+}
+
+.home-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.home-section__title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-family: var(--font-family-brand);
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 22px;
+    letter-spacing: -0.25px;
+  }
+}
+
+.home-section__lede {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  code {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--color-bg-muted);
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: var(--color-text-primary);
+  }
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.home-section__lede-link {
+  border-radius: 4px;
+
+  code {
+    color: var(--color-text-link);
+    transition: color 0.15s ease;
+  }
+
+  &:hover code {
+    color: var(--color-text-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Work carousel ──────────────────────────────────────────────────── */
+.work-carousel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+
+  @include mixins.respond-to('lt-md') {
+    gap: 8px;
+  }
+}
+
+.work-carousel__viewport {
+  overflow: hidden;
+  padding: 8px 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+}
+
+.work-carousel__status {
+  @include mixins.sr-only;
+}
+
+.work-carousel__track {
+  --gap: 24px;
+  --card-w: calc((100% - 48px) / 3);
+  --step: calc(var(--card-w) + var(--gap));
+
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+  transform: translateX(calc(-1 * var(--step)));
+  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  > .project-card {
+    flex: 0 0 var(--card-w);
+  }
+
+  &--next {
+    transform: translateX(calc(-2 * var(--step)));
+  }
+
+  &--prev {
+    transform: translateX(0);
+  }
+
+  &--instant {
+    transition: none;
+  }
+
+  @include mixins.respond-to('lt-lg') {
+    --gap: 16px;
+    --card-w: calc((100% - 16px) / 2);
+  }
+
+  @include mixins.respond-to('lt-md') {
+    --card-w: 100%;
+  }
+}
+
+.work-carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1;
+  border: 1px solid var(--color-border-default);
+  border-radius: 50%;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    border-color: var(--color-border-strong);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  @include mixins.respond-to('lt-md') {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+  }
+
+  /* Inset focus ring instead of outline+offset so it doesn't get clipped by
+     the carousel viewport's `overflow: hidden`. */
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-border-focus);
+  }
+
+  @include mixins.respond-to('lt-md') {
+    gap: 8px;
+    padding: 16px;
+  }
+}
+
+.project-card__logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  object-fit: contain;
+
+  @include mixins.respond-to('lt-md') {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 4px;
+  }
+}
+
+.project-card__title {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 18px;
+  }
+}
+
+.project-card__description {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 14px;
+  }
+}
+
+.project-card__url {
+  font-size: 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: var(--color-text-link);
+}
+
+/* ─── Services ───────────────────────────────────────────────────────── */
+.service-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-group__heading {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.service-group__note {
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  a {
+    @include mixins.prose-link;
+  }
+}
+
+.service-list {
+  display: grid;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  @include mixins.respond-to('lt-md') {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.service-list--core {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.service-list--addons {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+
+  @include mixins.respond-to('lt-md') {
+    gap: 36px;
+  }
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-item--core {
+  padding: 32px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  background-color: var(--color-bg-subtle);
+
+  @include mixins.respond-to('lt-md') {
+    padding: 16px;
+  }
+}
+
+.service-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--color-secondary-500);
+}
+
+.service-item__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 16px;
+  }
+}
+
+.service-item--core .service-item__title {
+  font-size: 22px;
+
+  @include mixins.respond-to('lt-md') {
+    font-size: 18px;
+  }
+}
+
+.service-item__description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Contact form ───────────────────────────────────────────────────── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 560px;
+
+  ::ng-deep .ea-textarea {
+    min-height: 46px;
+    max-height: 300px;
+  }
+}
+
+.contact-success {
+  max-width: 560px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: var(--color-success-subtle);
+  color: var(--color-text-primary);
+  font-size: 16px;
+}
+
+.contact-error {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: var(--color-error-subtle);
+  color: var(--color-error-default);
+  font-size: 14px;
+}
+
+@keyframes home-bg-flutter {
+  0%,
+  100% {
+    background-position:
+      80% 80%,
+      20% 30%,
+      50% 100%;
+  }
+  33% {
+    background-position:
+      30% 60%,
+      70% 40%,
+      80% 30%;
+  }
+  66% {
+    background-position:
+      60% 20%,
+      30% 80%,
+      20% 60%;
+  }
+}
+
+/* Continuous fade for the scroll-down chevron: opacity cycles between 0 and
+   the resting "faded" value so the indicator gently breathes. */
+@keyframes home-hero-scroll-pulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* Diagonal sweep: band enters off the bottom-left, travels straight across
+   the letters and exits off the top-right over the first half of the cycle,
+   then parks off-screen for the remaining ~4s. */
+@keyframes home-hero-wordmark-sheen {
+  0% {
+    background-position: 150% -50%;
+  }
+  50% {
+    background-position: -50% 150%;
+  }
+  100% {
+    background-position: -50% 150%;
+  }
+}

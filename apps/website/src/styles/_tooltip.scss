@@ -1,0 +1,53 @@
+/* CSS-only hover/focus tooltip on any element with [data-tooltip].
+   No JS dependency — works regardless of Angular hydration state. */
+
+[data-tooltip] {
+  position: relative;
+
+  /* Gate the entire tooltip behind a real hover-capable pointer. Touch-only
+     devices implement "sticky hover" (a tap latches `:hover` until the user
+     taps elsewhere), and Chromium can leave routerLink targets in a
+     `:focus-visible` state after navigation — so suppressing only one of
+     those selectors still leaks the tooltip on mobile. By gating the pseudo
+     itself, neither path can ever surface it on a touch device. */
+  @media (hover: hover) {
+    &::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      z-index: 1000;
+      top: calc(100% + 8px);
+      left: 50%;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: nowrap;
+      border-radius: 6px;
+      background-color: var(--color-neutral-800);
+      color: var(--color-neutral-0);
+      pointer-events: none;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 1;
+    }
+  }
+}
+
+/* Library tooltip is `--color-neutral-800`, which in dark mode ends up the
+   same shade as elevated-card and code-snippet surfaces and visually blends
+   in. Drop it to the darkest neutral so it stays distinct from every dark
+   surface. Covers both system preference and the explicit theme toggle. */
+@media (prefers-color-scheme: dark) {
+  .ea-tooltip {
+    background-color: var(--color-neutral-950);
+  }
+}
+
+:root[data-theme='dark'] .ea-tooltip {
+  background-color: var(--color-neutral-950);
+}

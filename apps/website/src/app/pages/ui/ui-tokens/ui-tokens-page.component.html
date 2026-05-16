@@ -1,0 +1,268 @@
+<article class="ui-tokens">
+  <header class="ui-tokens__header">
+    <h1 class="ui-tokens__title">Design tokens</h1>
+    <p class="ui-tokens__lede">
+      The CSS custom properties that drive every component in the library: colors,
+      typography, spacing, elevation, shape, and motion. Reference these tokens in your
+      own styles via <code>var(--token-name)</code> to keep visual consistency across the
+      app.
+    </p>
+  </header>
+
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Theming</h2>
+    <p>Override any token on <code>:root</code> to retheme the entire library:</p>
+    <web-code-snippet [code]="rootThemeSnippet" />
+    <p>Or scope overrides to individual components where useful:</p>
+    <web-code-snippet [code]="scopedThemeSnippet" />
+  </section>
+
+  <!-- ─── Colors ──────────────────────────────────────────────────────── -->
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Colors</h2>
+
+    <h3 class="tokens-subsection__title">Primary</h3>
+    <div class="swatch-row">
+      @for (shade of primaryPalette; track shade) {
+        <figure class="swatch">
+          <span class="swatch__color swatch--primary swatch--{{ shade }}"></span>
+          <figcaption class="swatch__caption">
+            <span class="swatch__shade">{{ shade }}</span>
+            <code class="swatch__name">--color-primary-{{ shade }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+
+    <h3 class="tokens-subsection__title">Secondary</h3>
+    <div class="swatch-row">
+      @for (shade of secondaryPalette; track shade) {
+        <figure class="swatch">
+          <span class="swatch__color swatch--secondary swatch--{{ shade }}"></span>
+          <figcaption class="swatch__caption">
+            <span class="swatch__shade">{{ shade }}</span>
+            <code class="swatch__name">--color-secondary-{{ shade }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+
+    <h3 class="tokens-subsection__title">Neutral</h3>
+    <div class="swatch-row">
+      @for (shade of neutralPalette; track shade) {
+        <figure class="swatch">
+          <span class="swatch__color swatch--neutral swatch--{{ shade }}"></span>
+          <figcaption class="swatch__caption">
+            <span class="swatch__shade">{{ shade }}</span>
+            <code class="swatch__name">--color-neutral-{{ shade }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+
+    <h3 class="tokens-subsection__title">Status</h3>
+    @for (family of statusFamilies; track family) {
+      <h4 class="tokens-subsection__sublabel">{{ family }}</h4>
+      <div class="swatch-row">
+        @for (shade of statusShades; track shade) {
+          <figure class="swatch">
+            <span class="swatch__color swatch--{{ family }} swatch--{{ shade }}"></span>
+            <figcaption class="swatch__caption">
+              <span class="swatch__shade">{{ shade }}</span>
+              <code class="swatch__name">--color-{{ family }}-{{ shade }}</code>
+            </figcaption>
+          </figure>
+        }
+      </div>
+    }
+
+    <h3 class="tokens-subsection__title">Semantic</h3>
+    <ul
+      class="token-list"
+      role="list">
+      @for (key of semanticTextTokens; track key) {
+        <li class="token-list__item">
+          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+          <code>--color-{{ key }}</code>
+        </li>
+      }
+    </ul>
+    <ul
+      class="token-list"
+      role="list">
+      @for (key of semanticBgTokens; track key) {
+        <li class="token-list__item">
+          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+          <code>--color-{{ key }}</code>
+        </li>
+      }
+    </ul>
+    <ul
+      class="token-list"
+      role="list">
+      @for (key of semanticBorderTokens; track key) {
+        <li class="token-list__item">
+          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+          <code>--color-{{ key }}</code>
+        </li>
+      }
+    </ul>
+    <ul
+      class="token-list"
+      role="list">
+      @for (key of semanticBrandTokens; track key) {
+        <li class="token-list__item">
+          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+          <code>--color-{{ key }}</code>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- ─── Typography ──────────────────────────────────────────────────── -->
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Typography</h2>
+
+    <h3 class="tokens-subsection__title">Families</h3>
+    <ul
+      class="token-list"
+      role="list">
+      @for (family of fontFamilies; track family.token) {
+        <li class="token-list__item">
+          <span
+            class="font-sample font-sample--{{
+              family.label.toLowerCase().split(' ')[0]
+            }}">
+            {{ family.sample }}
+          </span>
+          <code>{{ family.token }}</code>
+        </li>
+      }
+    </ul>
+
+    <h3 class="tokens-subsection__title">Sizes</h3>
+    <ul
+      class="token-list"
+      role="list">
+      @for (size of fontSizes; track size) {
+        <li class="token-list__item">
+          <span class="size-sample size-sample--{{ size }}">Aa</span>
+          <code>--font-size-{{ size }}</code>
+        </li>
+      }
+    </ul>
+
+    <h3 class="tokens-subsection__title">Weights</h3>
+    <ul
+      class="token-list"
+      role="list">
+      @for (weight of fontWeights; track weight.token) {
+        <li class="token-list__item">
+          <span class="weight-sample weight-sample--{{ weight.label.toLowerCase() }}">
+            {{ weight.label }}
+          </span>
+          <code>{{ weight.token }}</code>
+          <span class="token-list__value">{{ weight.value }}</span>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- ─── Spacing ─────────────────────────────────────────────────────── -->
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Spacing</h2>
+    <ul
+      class="token-list"
+      role="list">
+      @for (step of spacingScale; track step) {
+        <li class="token-list__item">
+          <span class="spacing-bar spacing-bar--{{ step }}"></span>
+          <code>--space-{{ step }}</code>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- ─── Elevation ───────────────────────────────────────────────────── -->
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Elevation</h2>
+    <div class="elevation-grid">
+      @for (size of shadowSizes; track size) {
+        <figure class="elevation-card">
+          <span class="elevation-card__surface elevation-card--{{ size }}"></span>
+          <figcaption class="elevation-card__caption">
+            <code>--shadow-{{ size }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </section>
+
+  <!-- ─── Shape ───────────────────────────────────────────────────────── -->
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">Shape</h2>
+    <div class="shape-grid">
+      @for (radius of radii; track radius) {
+        <figure class="shape-card">
+          <span class="shape-card__surface shape-card--{{ radius }}"></span>
+          <figcaption class="shape-card__caption">
+            <code>--radius-{{ radius }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </section>
+
+  <!-- ─── Motion ──────────────────────────────────────────────────────── -->
+  <section
+    id="tokens-motion-region"
+    class="tokens-section"
+    [class.tokens-section--simulating]="isSimulating()">
+    <header class="tokens-section__header">
+      <h2 class="tokens-section__title">Motion</h2>
+      <button
+        type="button"
+        class="motion-simulate"
+        aria-controls="tokens-motion-region"
+        [attr.aria-pressed]="isSimulating()"
+        [disabled]="motionReduced() || isSimulating()"
+        (click)="simulateMotion()">
+        Simulate
+      </button>
+    </header>
+
+    <h3 class="tokens-subsection__title">Durations</h3>
+    <ul
+      class="token-list motion-list"
+      role="list">
+      @for (duration of durations; track duration.token) {
+        <li class="token-list__item motion-list__item">
+          <code>{{ duration.token }}</code>
+          <span class="token-list__value">{{ duration.value }}</span>
+          <div
+            class="motion-demo motion-demo--duration"
+            [style.--demo-duration]="duration.value">
+            <span class="motion-demo__bar"></span>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <h3 class="tokens-subsection__title">Easings</h3>
+    <ul
+      class="token-list motion-list"
+      role="list">
+      @for (easing of easings; track easing.token) {
+        <li class="token-list__item motion-list__item">
+          <code>{{ easing.token }}</code>
+          <span class="token-list__value">{{ easing.value }}</span>
+          <div
+            class="motion-demo motion-demo--easing"
+            [style.--demo-easing]="easing.value">
+            <span class="motion-demo__bar"></span>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+</article>

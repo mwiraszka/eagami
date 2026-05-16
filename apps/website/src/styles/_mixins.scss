@@ -1,0 +1,176 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+/* Viewport breakpoint map */
+$breakpoints: (
+  'lt-xs': (
+    max-width: 430px,
+  ),
+  'gt-xs': (
+    min-width: 430px,
+  ),
+  'lt-sm': (
+    max-width: 500px,
+  ),
+  'gt-sm': (
+    min-width: 500px,
+  ),
+  'lt-md': (
+    max-width: 800px,
+  ),
+  'gt-md': (
+    min-width: 800px,
+  ),
+  'lt-lg': (
+    max-width: 1000px,
+  ),
+  'gt-lg': (
+    min-width: 1000px,
+  ),
+  'lt-xl': (
+    max-width: 1500px,
+  ),
+  'gt-xl': (
+    min-width: 1500px,
+  ),
+);
+
+/// Resolve a breakpoint map value into an @media query string.
+/// @access private
+@function _resolve-media-query($raw-query) {
+  @if meta.type-of($raw-query) == 'string' {
+    @return meta.unquote($raw-query);
+  }
+  @return meta.inspect($raw-query);
+}
+
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map.get($breakpoints, $breakpoint);
+
+  @if not $raw-query {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media #{_resolve-media-query($raw-query)} {
+    @content;
+  }
+}
+
+/// Padding shorthand whose horizontal sides expand to respect iOS safe-area
+/// insets (notch / curved edge) under `viewport-fit=cover`. Falls back to the
+/// requested horizontal floor on devices/browsers without a safe-area.
+/// @access public
+/// @param {Length} $vertical
+/// @param {Length} $horizontal
+@mixin safe-area-padding($vertical, $horizontal) {
+  padding: $vertical $horizontal;
+  padding-right: max(#{$horizontal}, env(safe-area-inset-right));
+  padding-left: max(#{$horizontal}, env(safe-area-inset-left));
+}
+
+/// Visually hide an element while keeping it discoverable by assistive
+/// technologies. Use for live-region status text or labels that are only
+/// meaningful to screen readers.
+/// @access public
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/// Slow, animated diagonal gradient using muted brand-palette stops.
+/// Pairs with the global `web-gradient-flutter` keyframes (see main.scss).
+/// Honors `prefers-reduced-motion`.
+@mixin fluttering-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--web-color-flutterStop1),
+    var(--web-color-flutterStop2),
+    var(--web-color-flutterStop3),
+    var(--web-color-flutterStop4)
+  );
+  background-size: 400% 400%;
+  animation: web-gradient-flutter 24s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/// Standard prose link: link-coloured by default, colour shift + underline on
+/// hover, focus ring on keyboard focus.
+///
+/// Multi-attribute anchors that prettier wraps across multiple lines have
+/// internal whitespace (newlines + indent) that the browser renders as a real
+/// space before and after the link text. Applying `text-decoration: underline`
+/// to the anchor underlines that whitespace too, which reads as stray
+/// underline dashes on hover. To avoid this, wrap the link text in a
+/// `<span>` for any anchor that lives in a prose context and might wrap:
+///
+///   <a class="..." href="..." target="_blank" rel="...">
+///     <span>Eagami UI</span>
+///   </a>
+///
+/// The `:has` rule below shifts the underline from the anchor to the span
+/// only when a span child exists, so single-line inline anchors (no span,
+/// no whitespace) still get a clean underline on the link text directly.
+@mixin prose-link {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:has(> span):hover {
+    text-decoration: none;
+  }
+
+  &:hover > span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/// Variant for `<a><code>token</code></a>` patterns (typically a lede that
+/// links to the npm package name): no underline, just shift the code's text
+/// colour on hover, since the code element's background already carries the
+/// visual weight.
+@mixin prose-code-link {
+  text-decoration: none;
+
+  code {
+    color: var(--color-text-link);
+    transition: color 0.15s ease;
+  }
+
+  &:hover code {
+    color: var(--color-text-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}

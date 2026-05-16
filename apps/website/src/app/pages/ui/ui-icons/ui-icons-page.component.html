@@ -1,0 +1,99 @@
+<article class="ui-icons">
+  <header class="ui-icons__header">
+    <h1 class="ui-icons__title">Icons</h1>
+    <p class="ui-icons__lede">
+      Standalone Angular components that inherit their color and scale with
+      <code>font-size</code>, so they render at any size. Derived from
+      <a
+        href="https://feathericons.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        <span>Feather Icons</span>
+      </a>
+      by
+      <a
+        href="https://github.com/colebemis"
+        target="_blank"
+        rel="noopener noreferrer">
+        <span>Cole Bemis</span>
+      </a>
+      and used under the MIT License. Click an icon to copy its selector.
+    </p>
+  </header>
+
+  <ul
+    class="icons-grid"
+    role="list">
+    @for (icon of icons; track icon.slug) {
+      <li class="icons-grid__item">
+        <button
+          type="button"
+          class="icons-grid__card"
+          [attr.aria-label]="'Copy selector ea-icon-' + icon.slug"
+          [eaTooltip]="'ea-icon-' + icon.slug"
+          tooltipPosition="bottom"
+          (click)="copySelector(icon.slug)">
+          <span class="icons-grid__glyph">
+            <ng-container *ngComponentOutlet="icon.component" />
+          </span>
+          <span class="icons-grid__name">{{ toTitleCase(icon.slug) }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+
+  <section class="ui-icons__brand-section">
+    <h2 class="ui-icons__brand-title">Brand icons</h2>
+    <p class="ui-icons__brand-body">
+      The Facebook, GitHub, Google, Microsoft, and X (Twitter) icons depict third-party
+      trademarks and are provided <strong>only for nominative use</strong>, i.e.
+      identifying the brand they represent in a UI (a "Sign in with Google" button, a
+      "Share to Facebook" link, etc.). They are not licensed for general decorative use.
+      Consumers are responsible for following each brand's guidelines:
+    </p>
+    <ul
+      class="ui-icons__brand-list"
+      role="list">
+      <li>
+        <strong>Facebook:</strong>&nbsp;<a
+          href="https://about.meta.com/brand/resources/facebookapp/logo/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
+        </a>
+      </li>
+      <li>
+        <strong>GitHub:</strong>&nbsp;<a
+          href="https://github.com/logos"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Logos and usage</span>
+        </a>
+      </li>
+      <li>
+        <strong>Google:</strong>&nbsp;<a
+          href="https://developers.google.com/identity/branding-guidelines"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Sign-in branding guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Microsoft:</strong>&nbsp;<a
+          href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Trademark and brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>X (Twitter):</strong>&nbsp;<a
+          href="https://about.x.com/en/who-we-are/brand-toolkit"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand toolkit</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</article>

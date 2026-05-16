@@ -1,0 +1,49 @@
+name: UI — Publish
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'ui-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @eagami/ui lint
+
+      - run: pnpm --filter @eagami/ui test:coverage
+
+      - run: pnpm --filter @eagami/ui publish:lib
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create tag and GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          # Branch may be standalone (ui-vX.Y.Z) or combined (ui-vA.B.C-website-vX.Y.Z).
+          # Strip any -website-v* suffix to isolate the library tag.
+          UI_TAG="${BRANCH%%-website-v*}"
+          SEMVER="${UI_TAG#ui-v}"
+          NOTES=$(awk "/^## \[${SEMVER}\]/{found=1; next} /^## \[/{if(found) exit} found{print}" packages/ui/CHANGELOG.md)
+
+          git tag "$UI_TAG"
+          git push origin "$UI_TAG"
+          gh release create "$UI_TAG" --title "$UI_TAG" --notes "$NOTES"

@@ -1,0 +1,226 @@
+<div class="home">
+  <!-- ─── Hero ────────────────────────────────────────────────────── -->
+  <section
+    class="home-hero"
+    aria-labelledby="home-hero-wordmark">
+    <div class="home-hero__inner">
+      <div
+        class="home-hero__visual"
+        aria-hidden="true">
+        <ea-icon-eagami class="home-hero__icon" />
+      </div>
+      <div class="home-hero__type">
+        <h1
+          id="home-hero-wordmark"
+          class="home-hero__wordmark"
+          data-text="eagami">
+          eagami
+        </h1>
+        <p class="home-hero__tagline">elegant web design.</p>
+        <div class="home-hero__actions">
+          <a
+            class="home-hero__cta"
+            href="#contact">
+            Get in touch
+          </a>
+          <a
+            class="home-hero__link"
+            href="#projects">
+            See recent projects &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Decorative scroll hint: the next section is the next focusable region
+         anyway, so hide this entirely from assistive tech to avoid noise. -->
+    <a
+      class="home-hero__scroll"
+      href="#services"
+      aria-hidden="true"
+      tabindex="-1">
+      <ea-icon-chevron-down class="home-hero__scroll-chevron" />
+    </a>
+  </section>
+
+  <!-- ─── Services ────────────────────────────────────────────────── -->
+  <section
+    id="services"
+    class="home-section home-section--services">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Services</h2>
+        <p class="home-section__lede">
+          From a single landing page to a full web app, plus everything that comes after
+          launch.
+        </p>
+      </header>
+
+      <div class="service-group">
+        <ul
+          class="service-list service-list--core"
+          role="list">
+          @for (service of coreServices; track service.title) {
+            <li class="service-item service-item--core">
+              <h3 class="service-item__title">{{ service.title }}</h3>
+              <p class="service-item__description">{{ service.description }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="service-group">
+        <p class="service-group__heading">Features</p>
+        <ul
+          class="service-list service-list--addons"
+          role="list">
+          @for (service of addOnServices; track service.title) {
+            <li class="service-item">
+              <h3 class="service-item__title">
+                @if (service.icon) {
+                  <span
+                    class="service-item__icon"
+                    aria-hidden="true">
+                    <ng-container *ngComponentOutlet="service.icon" />
+                  </span>
+                }
+                {{ service.title }}
+              </h3>
+              <p class="service-item__description">{{ service.description }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <p class="service-group__note">
+        Larger projects can be built on <a routerLink="/ui">Eagami UI</a>, a custom
+        component library, for a consistent and modern visual language across the site.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── Recent projects ─────────────────────────────────────────── -->
+  <section
+    id="projects"
+    class="home-section home-section--projects">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Recent projects</h2>
+        <p class="home-section__lede">A few sites in active development.</p>
+      </header>
+      <div class="work-carousel">
+        <button
+          type="button"
+          class="work-carousel__nav work-carousel__nav--prev"
+          aria-label="Previous projects"
+          (click)="scrollWork(-1)">
+          &lsaquo;
+        </button>
+        <div
+          class="work-carousel__viewport"
+          role="region"
+          aria-label="Recent projects"
+          tabindex="0"
+          (keydown.arrowLeft)="scrollWork(-1); $event.preventDefault()"
+          (keydown.arrowRight)="scrollWork(1); $event.preventDefault()">
+          <div
+            class="work-carousel__track"
+            [class.work-carousel__track--next]="slideDirection() === 1"
+            [class.work-carousel__track--prev]="slideDirection() === -1"
+            [class.work-carousel__track--instant]="suppressTransition()">
+            @for (project of orderedProjects(); track $index) {
+              <a
+                class="project-card"
+                [href]="project.url"
+                target="_blank"
+                rel="noopener noreferrer">
+                <img
+                  class="project-card__logo"
+                  [src]="project.logo"
+                  alt=""
+                  width="64"
+                  height="64" />
+                <h3 class="project-card__title">{{ project.title }}</h3>
+                <p class="project-card__description">{{ project.description }}</p>
+                <span class="project-card__url">{{ project.display }}</span>
+              </a>
+            }
+          </div>
+        </div>
+        <p
+          class="work-carousel__status"
+          aria-live="polite">
+          {{ carouselStatus() }}
+        </p>
+        <button
+          type="button"
+          class="work-carousel__nav work-carousel__nav--next"
+          aria-label="Next projects"
+          (click)="scrollWork(1)">
+          &rsaquo;
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─────────────────────────────────────────────────── -->
+  <section
+    id="contact"
+    class="home-section home-section--contact">
+    <div class="home-section__inner">
+      <header class="home-section__header">
+        <h2 class="home-section__title">Got a project in mind?</h2>
+        <p class="home-section__lede">Let's hear about it!</p>
+      </header>
+
+      @if (contactStatus() === 'sent') {
+        <div
+          class="contact-success"
+          role="status">
+          <p>Thanks for the message. You'll hear back soon.</p>
+        </div>
+      } @else {
+        <form
+          class="contact-form"
+          [formGroup]="contactForm"
+          (ngSubmit)="submitContact()">
+          <ea-input
+            label="Name"
+            formControlName="name"
+            placeholder="Your name"
+            [required]="true" />
+          <ea-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            [required]="true"
+            [errorMsg]="contactEmailError()"
+            (blurred)="onContactFieldBlur()" />
+          <ea-textarea
+            label="Message"
+            formControlName="message"
+            [placeholder]="contactMessagePlaceholder()"
+            [required]="true" />
+
+          @if (contactError(); as err) {
+            <p
+              class="contact-error"
+              role="alert">
+              {{ err }}
+            </p>
+          }
+
+          <ea-button
+            type="submit"
+            variant="primary"
+            size="lg"
+            [loading]="contactStatus() === 'sending'"
+            [disabled]="!isContactFormValid()">
+            Send message
+          </ea-button>
+        </form>
+      }
+    </div>
+  </section>
+</div>

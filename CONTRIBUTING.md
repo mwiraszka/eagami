@@ -1,81 +1,87 @@
 # Contributing
 
-Thanks for your interest in @eagami/ui! This guide covers what you need to know to land a change.
+Conventions for the eagami monorepo.
+
+## Layout
+
+- `packages/ui/` — `@eagami/ui`, the Angular component library (plus sandbox app and Storybook)
+- `apps/website/` — [eagami.com](https://eagami.com), the marketing site and live docs
+
+The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig to `packages/ui/dist/eagami-ui`. The library must be built (`pnpm build` or `pnpm ui watch`) before the website will serve.
 
 ## Getting set up
 
 ```bash
-git clone https://github.com/mwiraszka/eagami-design-system.git
-cd eagami-design-system
+git clone https://github.com/mwiraszka/eagami.git
+cd eagami
 pnpm install
 ```
 
-You'll need:
+Requires Node.js 20+ and pnpm 10+ (the repo's `packageManager` field handles the pnpm version automatically).
 
-- **Node.js 20+** and **pnpm 10+** (the repo declares `packageManager` so `pnpm` will pick the right version automatically)
-- **Angular CLI knowledge** — the project is an Angular workspace with two apps: the `eagami-ui` library (in `src/`) and a `sandbox` app (in `sandbox/`) used for visual checks
+## Commands
 
-## Running it locally
+All run from the monorepo root.
 
 ```bash
-pnpm sandbox       # dev server for the sandbox app on http://localhost:4200
-pnpm storybook     # Storybook on http://localhost:6006
-pnpm test          # Jest unit + integration tests
-pnpm test:watch    # Same, in watch mode
-pnpm lint          # ESLint
-pnpm format        # Prettier (also auto-runs on save in many editors)
-pnpm build         # Build the publishable library to dist/eagami-ui
+pnpm start              # website dev server (http://localhost:4200)
+pnpm sandbox            # library sandbox app
+pnpm storybook          # Storybook
+pnpm test               # library tests
+pnpm lint               # lint every package
+pnpm format             # prettier every package
+pnpm build              # build the library to packages/ui/dist/eagami-ui
+
+pnpm ui <script>        # run any script in @eagami/ui
+pnpm website <script>   # run any script in the website
 ```
 
-Hot reload works in both the sandbox and Storybook — edit a component and the running surface updates.
+## Branching and releases
 
-## Branching
+Every branch that lands on `main` is a release. Two valid prefixes:
 
-- **Branch from `main`** with a name that matches the next version (e.g. `v1.0.1`, `v1.1.0`)
-- Don't commit directly to `main` — all changes ship through a PR
-- The `version` in `package.json` should match the branch name before you push (CI will reject mismatches)
+- **`website-vX.Y.Z`** for website-only changes. Bump `apps/website/package.json` to `X.Y.Z`, update `apps/website/CHANGELOG.md`. Merge → Vercel prod deploy + `website-vX.Y.Z` GitHub tag/release.
+- **`ui-vA.B.C-website-vX.Y.Z`** for any library change. Library releases must always pair with a website version bump so the live site picks up the new library code with its own tag and changelog. Bump both `package.json` files and update both CHANGELOGs in the same PR. Merge → npm publish + `ui-vA.B.C` + `website-vX.Y.Z` tags/releases + Vercel deploy.
 
-## Commit style
+Plain `vX.Y.Z` and standalone `ui-vX.Y.Z` are not allowed; CI rejects them.
 
-- Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `style:`, `test:`
+The website bump in a combined PR is usually a patch, with a one-line `### Changed` entry like `- Pick up @eagami/ui v1.3.0`. If substantial website changes ship in the same PR, the pickup folds into the larger website bump.
+
+Dependabot PRs aren't merged directly. When cutting a release branch, locally pull in the pending dependabot bumps you want, then bump versions and CHANGELOGs as one PR. Dependabot auto-closes its PRs when the underlying bumps land on `main`.
+
+## Commits
+
+- Conventional: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `style:`, `test:`
+- Bare prefix, no scopes (never `feat(ui):`)
 - Lowercase after the prefix, single line
-- Use `!` after the prefix for breaking changes: `refactor!: rename Foo to Bar`
-- Group related changes into one commit; split unrelated work into separate commits
-
-## What to update when you change a component
-
-The project treats three in-repo surfaces as equally important. A change is not done until all three reflect it:
-
-1. **Library** — the component code in `src/lib/<name>/`
-2. **Storybook** — `<name>.component.stories.ts` (add stories for any new variant or input)
-3. **Sandbox** — `sandbox/sandbox.component.{html,ts}` (visible playground)
-
-Tests live next to the component as `<name>.component.spec.ts`.
+- One commit per concern; split unrelated work
 
 ## Pull requests
 
-- Title: just the version (e.g. `v1.0.1`)
-- Body: leave empty — the CHANGELOG entry is the source of truth
-- Update `CHANGELOG.md` in the same PR, describing user-facing changes only (no tooling chatter)
+- Title is the branch name (e.g. `website-v1.3.0`, `ui-v1.3.0-website-v1.2.5`)
+- Body left empty; the CHANGELOG entry is the source of truth
 - CI must be green before merge
 
-When the PR is merged, an automated workflow tags the release, publishes to npm, and creates a GitHub release using the latest CHANGELOG entry.
+## Changing a library component
+
+Three surfaces stay in sync:
+
+1. The component at `packages/ui/src/lib/<name>/`
+2. Stories at `<name>.component.stories.ts` (cover new variants and inputs)
+3. The sandbox at `packages/ui/sandbox/sandbox.component.{html,ts}`
+
+Tests live alongside as `<name>.component.spec.ts`. For accessibility, ARIA, and form-field plumbing patterns, follow [InputComponent](packages/ui/src/lib/input/input.component.ts) and [DropdownComponent](packages/ui/src/lib/dropdown/dropdown.component.ts).
 
 ## Code conventions
 
-- **Standalone components** with `ChangeDetectionStrategy.OnPush`
-- **Signals** (`input()`, `model()`, `output()`, `signal()`, `computed()`) — avoid RxJS unless something genuinely needs streams
-- **Selector prefix** `ea-` for components, `ea` (camelCased) for directives
-- **No inline styles** — everything goes in `.scss`
-- **No hard-coded colour literals in component SCSS** — use CSS custom properties from `src/styles/tokens/_colors.scss`
-- **No `any` casts in tests** — type your mocks; `@ts-expect-error` is OK only for accessing private/protected members
-- **Spacing values** — only use `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` for paddings/gaps/margins
-
-For accessibility, keyboard navigation, ARIA, and form-field plumbing conventions, follow the patterns established in [InputComponent](src/lib/input/input.component.ts) and [DropdownComponent](src/lib/dropdown/dropdown.component.ts).
+- Standalone components with `ChangeDetectionStrategy.OnPush`
+- Signals (`input()`, `model()`, `output()`, `signal()`, `computed()`); reach for RxJS only when something genuinely needs streams
+- Selector prefix: `ea-` for library, `web-` for website
+- No inline styles; everything in `.scss`
+- No hard-coded color literals in component SCSS; use the tokens in `packages/ui/src/styles/tokens/_colors.scss` or `apps/website/src/styles/_variables.scss`
+- No `any` casts in tests; type your mocks (`@ts-expect-error` is fine for accessing private/protected members)
+- Spacing values: `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` only
 
 ## Reporting issues
 
-- **Bugs** — please include a minimal reproduction (Stackblitz is great)
-- **API suggestions** — describe the use case first; we're conservative about adding inputs
-
-Open issues at https://github.com/mwiraszka/eagami-design-system/issues.
+Open one at https://github.com/mwiraszka/eagami/issues. Include a minimal reproduction for bugs; describe the use case for API suggestions.

@@ -1,0 +1,42 @@
+<article class="ui-setup">
+  <section class="ui-setup__section">
+    <h1 class="ui-setup__title">Setup</h1>
+
+    <ol
+      class="ui-setup__steps"
+      role="list">
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">1.</span>
+          Install the package:
+        </p>
+        <web-code-snippet code="npm install @eagami/ui" />
+        <p class="ui-setup__or">or</p>
+        <web-code-snippet code="pnpm add @eagami/ui" />
+        <p class="ui-setup__or">or</p>
+        <web-code-snippet code="yarn add @eagami/ui" />
+      </li>
+
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">2.</span>
+          Add the global stylesheet in <code>angular.json</code>:
+        </p>
+        <web-code-snippet [code]="stylesheetSnippet" />
+      </li>
+
+      <li class="ui-setup__step">
+        <p class="ui-setup__step-label">
+          <span class="ui-setup__step-num">3.</span>
+          Load the fonts in <code>index.html</code>:
+        </p>
+        <web-code-snippet [code]="fontsSnippet" />
+      </li>
+    </ol>
+  </section>
+
+  <section class="ui-setup__section">
+    <h2>Your first component</h2>
+    <web-code-snippet [code]="quickStartSnippet" />
+  </section>
+</article>

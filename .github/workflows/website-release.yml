@@ -1,0 +1,35 @@
+name: Website — Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true && (startsWith(github.event.pull_request.head.ref, 'website-v') || contains(github.event.pull_request.head.ref, '-website-v'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create tag and GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+
+          # Branch may be standalone (website-vX.Y.Z) or combined (ui-vA.B.C-website-vX.Y.Z).
+          # Isolate the website tag from the combined form.
+          if [[ "$BRANCH" == *-website-v* ]]; then
+            WEB_TAG="website-v${BRANCH#*-website-v}"
+          else
+            WEB_TAG="$BRANCH"
+          fi
+          SEMVER="${WEB_TAG#website-v}"
+          NOTES=$(awk "/^## \[${SEMVER}\]/{found=1; next} /^## \[/{if(found) exit} found{print}" apps/website/CHANGELOG.md)
+
+          git tag "$WEB_TAG"
+          git push origin "$WEB_TAG"
+          gh release create "$WEB_TAG" --title "$WEB_TAG" --notes "$NOTES"

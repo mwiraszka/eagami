@@ -1,0 +1,43 @@
+export interface UiComponent {
+  slug: string;
+  name: string;
+  selector: string;
+  kind?: 'component' | 'directive';
+}
+
+export const UI_COMPONENTS: readonly UiComponent[] = [
+  { slug: 'accordion', name: 'Accordion', selector: 'ea-accordion' },
+  { slug: 'alert', name: 'Alert', selector: 'ea-alert' },
+  { slug: 'autocomplete', name: 'Autocomplete', selector: 'ea-autocomplete' },
+  { slug: 'avatar', name: 'Avatar', selector: 'ea-avatar' },
+  { slug: 'avatar-editor', name: 'Avatar Editor', selector: 'ea-avatar-editor' },
+  { slug: 'badge', name: 'Badge', selector: 'ea-badge' },
+  { slug: 'breadcrumbs', name: 'Breadcrumbs', selector: 'ea-breadcrumbs' },
+  { slug: 'button', name: 'Button', selector: 'ea-button' },
+  { slug: 'card', name: 'Card', selector: 'ea-card' },
+  { slug: 'checkbox', name: 'Checkbox', selector: 'ea-checkbox' },
+  { slug: 'code-input', name: 'Code Input', selector: 'ea-code-input' },
+  { slug: 'data-table', name: 'Data Table', selector: 'ea-data-table' },
+  { slug: 'date-picker', name: 'Date Picker', selector: 'ea-date-picker' },
+  { slug: 'dialog', name: 'Dialog', selector: 'ea-dialog' },
+  { slug: 'divider', name: 'Divider', selector: 'ea-divider' },
+  { slug: 'drawer', name: 'Drawer', selector: 'ea-drawer' },
+  { slug: 'dropdown', name: 'Dropdown', selector: 'ea-dropdown' },
+  { slug: 'eagami-wordmark', name: 'Eagami Wordmark', selector: 'ea-eagami-wordmark' },
+  { slug: 'empty-state', name: 'Empty State', selector: 'ea-empty-state' },
+  { slug: 'input', name: 'Input', selector: 'ea-input' },
+  { slug: 'menu', name: 'Menu', selector: 'ea-menu' },
+  { slug: 'paginator', name: 'Paginator', selector: 'ea-paginator' },
+  { slug: 'progress-bar', name: 'Progress Bar', selector: 'ea-progress-bar' },
+  { slug: 'radio', name: 'Radio', selector: 'ea-radio' },
+  { slug: 'segmented', name: 'Segmented', selector: 'ea-segmented' },
+  { slug: 'skeleton', name: 'Skeleton', selector: 'ea-skeleton' },
+  { slug: 'slider', name: 'Slider', selector: 'ea-slider' },
+  { slug: 'spinner', name: 'Spinner', selector: 'ea-spinner' },
+  { slug: 'switch', name: 'Switch', selector: 'ea-switch' },
+  { slug: 'tabs', name: 'Tabs', selector: 'ea-tabs' },
+  { slug: 'tag', name: 'Tag', selector: 'ea-tag' },
+  { slug: 'textarea', name: 'Textarea', selector: 'ea-textarea' },
+  { slug: 'toast', name: 'Toast', selector: 'ea-toast' },
+  { slug: 'tooltip', name: 'Tooltip', selector: 'eaTooltip', kind: 'directive' },
+];

@@ -1,0 +1,92 @@
+<div class="ui-shell">
+  <aside
+    class="ui-shell__sidebar"
+    aria-label="Documentation sidebar"
+    tabindex="0">
+    <nav
+      class="ui-shell__nav"
+      aria-label="Documentation">
+      <ul
+        class="ui-shell__list"
+        role="list">
+        <li>
+          <a
+            class="ui-shell__link"
+            routerLink="/ui"
+            routerLinkActive="ui-shell__link--active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            Overview
+          </a>
+        </li>
+        <li>
+          <a
+            class="ui-shell__link"
+            routerLink="/ui/setup"
+            routerLinkActive="ui-shell__link--active">
+            Setup
+          </a>
+        </li>
+        <li>
+          <a
+            class="ui-shell__link"
+            routerLink="/ui/design-tokens"
+            routerLinkActive="ui-shell__link--active">
+            Design tokens
+          </a>
+        </li>
+        <li>
+          <a
+            class="ui-shell__link"
+            routerLink="/ui/icons"
+            routerLinkActive="ui-shell__link--active">
+            Icons
+          </a>
+        </li>
+        <li>
+          <a
+            class="ui-shell__link"
+            routerLink="/ui/i18n"
+            routerLinkActive="ui-shell__link--active">
+            Internationalization
+          </a>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="ui-shell__link ui-shell__link--toggle"
+            [class.ui-shell__link--active]="isComponentRoute()"
+            [attr.aria-expanded]="componentsExpanded()"
+            aria-controls="ui-shell-components"
+            (click)="toggleComponents()">
+            <span>Components</span>
+            <ea-icon-chevron-right
+              class="ui-shell__caret"
+              [class.ui-shell__caret--open]="componentsExpanded()"
+              aria-hidden="true" />
+          </button>
+          @if (componentsExpanded()) {
+            <ul
+              id="ui-shell-components"
+              class="ui-shell__list ui-shell__list--nested"
+              role="list">
+              @for (component of components; track component.slug) {
+                <li>
+                  <a
+                    class="ui-shell__link"
+                    [routerLink]="['/ui/components', component.slug]"
+                    routerLinkActive="ui-shell__link--active">
+                    {{ component.name }}
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="ui-shell__main">
+    <router-outlet />
+  </main>
+</div>
