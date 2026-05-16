@@ -20,6 +20,6 @@ For active library work, run `pnpm ui watch` in a second terminal so source edit
 
 ## Deployment
 
-Deployed to Vercel. Production deploys fire automatically when a `website-v*` branch merges to `main` (see [`.github/workflows/website-production.yaml`](../../.github/workflows/website-production.yaml)). Vercel-specific config lives in [`vercel.json`](vercel.json); Vercel's "Root Directory" must be set to `apps/website` in the project dashboard.
+Deployed to Vercel. Production deploys fire automatically when changes to `apps/website/**` land on `main` (see [`.github/workflows/website-production.yaml`](../../.github/workflows/website-production.yaml)). Vercel-specific config lives in [`vercel.json`](vercel.json); Vercel's "Root Directory" must be set to `apps/website` in the project dashboard.
 
 See [`CONTRIBUTING.md`](../../CONTRIBUTING.md) for branch naming, commit, and PR conventions.
