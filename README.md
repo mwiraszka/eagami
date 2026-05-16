@@ -129,6 +129,24 @@ export class LanguagePicker {
 
 Individual strings can still be overridden per instance via component inputs (e.g. `placeholder`, `removeLabel`), or globally through `provideEagamiUi({ messages })`. `DatePickerComponent` also follows the active locale when formatting dates.
 
+### French typography for user-supplied text
+
+Standard French typography puts a narrow non-breaking space (U+202F, *espace fine insécable*) before `?` `!` `:` `;` and around `«` `»`. Without it the punctuation can wrap onto its own line. The library's built-in French messages already follow this rule, but **user-typed content and other consumer-supplied strings are not auto-transformed** — the components render whatever string they receive.
+
+What this means in practice:
+
+- **macOS / iOS** with a French keyboard already inserts the correct space automatically. Most other operating systems (Windows, Android, most Linux input methods) just send a regular ASCII space, so typed text can wrap awkwardly.
+- For consumer-supplied strings you want to render correctly, the library exposes an opt-in helper:
+
+```typescript
+import { frenchSpacing } from '@eagami/ui';
+
+const corrected = frenchSpacing(userInput);
+// 'Lignes par page :' -> 'Lignes par page :'
+```
+
+Apply it to prose only (not URLs, CSS, or JSON — `:` and `?` carry non-prose meaning there). It's idempotent and a no-op on text without space-before-punctuation. Also remember to set `<html lang="fr-FR">` so the browser applies locale-aware CSS uppercase rules; the same lang attribute lets screen readers pick the right voice.
+
 ## Framework integration
 
 `@eagami/ui` is an Angular library, but its design tokens, rules, and component API conventions are framework-agnostic. For projects that can't consume the Angular package directly yet still want to adhere to the same design system, two self-contained integration guides are provided, each copy-and-paste ready and written to be readable by both human developers and AI coding agents:

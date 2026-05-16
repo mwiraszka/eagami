@@ -5,11 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.0] - 2026-05-15
+## [1.2.0] - 2026-05-16
 
 ### Added
 
 - Add internationalization support across every component. Built-in strings (ARIA labels, placeholders, empty states) now ship in English, French (France), Greek, Polish, and Spanish (Spain). Set the locale once with `provideEagamiUi({ locale })`, switch it at runtime through `EagamiI18nService`, and override individual strings via component inputs or `provideEagamiUi({ messages })`. `DatePickerComponent` also follows the active locale when formatting dates
+- Export `frenchSpacing()`, an opt-in helper that converts regular spaces to U+202F (narrow non-breaking space) before French high punctuation (`?` `!` `:` `;` `»`) and after `«`. Lets consumers format user-supplied French text correctly without the library transforming arbitrary input
 
 ### Fixed
 
@@ -17,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Wire `DropdownComponent`'s listbox to its trigger for screen readers. The trigger now exposes `aria-controls` and `aria-activedescendant`, so the highlighted option is announced as the user arrows through the list
 - Correct `DataTableComponent`'s table semantics by replacing the inconsistent ARIA `grid`/`row`/`gridcell` roles with native table semantics and `scope="col"` headers, so assistive tech announces rows and columns reliably
 - Hide `AlertComponent`'s decorative status icon from assistive technology
+- Use U+202F before high punctuation in the bundled French messages so labels like `Lignes par page :` can no longer wrap onto their own line
 
 ## [1.1.1] - 2026-05-12
 
