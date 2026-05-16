@@ -5,12 +5,6 @@
   max-width: 720px;
 }
 
-.ui-setup__header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .ui-setup__title {
   font-size: 32px;
   font-weight: 600;
@@ -18,12 +12,6 @@
   font-family: var(--font-family-brand);
   letter-spacing: -1px;
   color: var(--color-text-primary);
-}
-
-.ui-setup__lede {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
 }
 
 .ui-setup__section {
