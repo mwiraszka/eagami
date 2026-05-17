@@ -47,6 +47,26 @@ export class TooltipDirective implements OnDestroy {
   };
   private readonly hoverChangeHandler = (event: MediaQueryListEvent) =>
     this.syncPointerListeners(event.matches);
+  /* Re-runs the clamp so the tooltip stays inside the viewport when the page
+     reflows under it (window resize, ancestor scroll, async content pushing
+     the trigger around). Coalesced with rAF to keep scroll handling cheap. */
+  private rafId: number | null = null;
+  private readonly repositionHandler = () => {
+    if (!this.tooltipEl || this.rafId !== null) return;
+    this.rafId = requestAnimationFrame(() => {
+      this.rafId = null;
+      if (this.tooltipEl) this.positionTooltip();
+    });
+  };
+  /* Capture-phase scroll listener catches scrolls on any ancestor, not just
+     window. Without `capture: true`, only window-level scrolls fire here. */
+  private readonly scrollListenerOptions: AddEventListenerOptions = {
+    passive: true,
+    capture: true,
+  };
+  /* Watches the trigger for size or position changes that don't fire any
+     event (CSS transitions, image loads, sibling layout shifts). */
+  private resizeObserver: ResizeObserver | null = null;
 
   constructor() {
     const native = this.el.nativeElement;
@@ -97,14 +117,45 @@ export class TooltipDirective implements OnDestroy {
     this.renderer.appendChild(document.body, this.tooltipEl);
     this.appendDescribedBy();
     this.positionTooltip();
+    this.attachRepositionListeners();
   }
 
   private hide(): void {
+    this.detachRepositionListeners();
+    if (this.rafId !== null) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
     if (this.tooltipEl) {
       this.tooltipEl.remove();
       this.tooltipEl = null;
       this.removeDescribedBy();
     }
+  }
+
+  private attachRepositionListeners(): void {
+    window.addEventListener('resize', this.repositionHandler);
+    /* `capture: true` so we catch scrolls on any ancestor (modal body, sidebar,
+       overflow:auto wrappers), not just the window. */
+    window.addEventListener('scroll', this.repositionHandler, this.scrollListenerOptions);
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(this.repositionHandler);
+      this.resizeObserver.observe(this.el.nativeElement);
+      /* Body observer catches layout shifts that don't move the trigger
+         (sibling content loads pushing the viewport's bottom around). */
+      this.resizeObserver.observe(document.body);
+    }
+  }
+
+  private detachRepositionListeners(): void {
+    window.removeEventListener('resize', this.repositionHandler);
+    window.removeEventListener(
+      'scroll',
+      this.repositionHandler,
+      this.scrollListenerOptions,
+    );
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
   }
 
   private appendDescribedBy(): void {
