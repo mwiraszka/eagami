@@ -134,6 +134,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private attachRepositionListeners(): void {
+    /* Guard against server-side rendering: ngOnDestroy can fire during SSR
+       teardown and reach here even though the tooltip never actually shows. */
+    if (typeof window === 'undefined') return;
     window.addEventListener('resize', this.repositionHandler);
     /* `capture: true` so we catch scrolls on any ancestor (modal body, sidebar,
        overflow:auto wrappers), not just the window. */
@@ -148,6 +151,7 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private detachRepositionListeners(): void {
+    if (typeof window === 'undefined') return;
     window.removeEventListener('resize', this.repositionHandler);
     window.removeEventListener(
       'scroll',
