@@ -17,7 +17,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Fixed
 
-- Eliminate the theme-icon and locale-text flash on reload. The inline `<head>` bootstrap script now resolves theme and locale (auto-detecting from `prefers-color-scheme` and `navigator.languages` when nothing is stored), then sets `data-theme` and `<html lang>` before any paint. The theme-toggle button renders both icons every time and CSS picks the right one via `:host-context([data-theme])`, so no JS state has to settle before the right icon appears. For locales other than the prerendered English, the body is held with `visibility: hidden` until `WebI18nService` swaps the strings in, so visitors never see an English flash before their language loads.
+- Eliminate the theme and locale flash on reload. The inline `<head>` bootstrap script now resolves theme and locale (auto-detecting from `prefers-color-scheme` and `navigator.languages` when nothing is stored), then sets `data-theme` and `<html lang>` before any paint. For locales other than the prerendered English, the body is held with `visibility: hidden` until `AppComponent`'s `ApplicationRef.isStable` callback fires — waiting on full app stability rather than just the first render lets Angular's hydration reconciliation finish swapping the English strings out for the active locale's strings before the gate lifts.
 
 ### Added
 
