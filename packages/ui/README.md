@@ -46,9 +46,12 @@ See the [Setup](https://eagami.com/ui/setup) page for fonts and your first compo
 - **Overlays**: Dialog, Drawer, Tooltip, Menu, Toast
 - **Navigation**: Tabs, Breadcrumbs, Paginator, Accordion
 - **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark, Data table
-- **Icons**: 268 SVG icon components (`<ea-icon-*>`), including a coloured brand-icon set for nominative use
 
 Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/components).
+
+## Icons
+
+Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. Derived from [Feather Icons](https://feathericons.com/) by [Cole Bemis](https://github.com/colebemis) and used under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE). A small coloured brand-icon set is bundled for nominative use only. See [icons](https://eagami.com/ui/icons) for the full set and per-brand guideline links.
 
 ## Theming
 
