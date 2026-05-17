@@ -1,4 +1,4 @@
-import { EagamiIconComponent, GithubIconComponent } from '@eagami/ui';
+import { EagamiIconComponent, GithubIconComponent, TooltipDirective } from '@eagami/ui';
 import { filter, map } from 'rxjs/operators';
 
 import {
@@ -27,6 +27,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
     GithubIconComponent,
     ThemeToggleComponent,
     LocaleSwitcherComponent,
+    TooltipDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

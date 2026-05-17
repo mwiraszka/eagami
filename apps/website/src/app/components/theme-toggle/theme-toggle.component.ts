@@ -1,3 +1,5 @@
+import { TooltipDirective } from '@eagami/ui';
+
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -7,6 +9,7 @@ import { ThemeService } from '@app/services/theme.service';
   selector: 'web-theme-toggle',
   templateUrl: './theme-toggle.component.html',
   styleUrl: './theme-toggle.component.scss',
+  imports: [TooltipDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeToggleComponent {

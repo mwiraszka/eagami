@@ -4,7 +4,8 @@
   class="web-locale-switcher__trigger"
   [eaMenuTrigger]="localeMenu"
   [attr.aria-label]="buttonLabel()"
-  [attr.data-tooltip]="messages().common.localeMenuTooltip">
+  [eaTooltip]="messages().common.localeMenuTooltip"
+  tooltipPosition="bottom">
   <ea-icon-globe
     class="web-locale-switcher__icon"
     aria-hidden="true" />

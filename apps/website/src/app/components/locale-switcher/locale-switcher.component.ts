@@ -3,6 +3,7 @@ import {
   MenuComponent,
   MenuItemComponent,
   MenuTriggerDirective,
+  TooltipDirective,
 } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
@@ -19,7 +20,13 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-locale-switcher',
   templateUrl: './locale-switcher.component.html',
   styleUrl: './locale-switcher.component.scss',
-  imports: [GlobeIconComponent, MenuComponent, MenuItemComponent, MenuTriggerDirective],
+  imports: [
+    GlobeIconComponent,
+    MenuComponent,
+    MenuItemComponent,
+    MenuTriggerDirective,
+    TooltipDirective,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocaleSwitcherComponent {

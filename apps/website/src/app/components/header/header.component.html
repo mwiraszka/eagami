@@ -16,7 +16,8 @@
       class="web-header__link"
       routerLink="/ui"
       routerLinkActive="web-header__link--active"
-      [attr.data-tooltip]="messages().common.navUiTooltip">
+      [eaTooltip]="messages().common.navUiTooltip"
+      tooltipPosition="bottom">
       {{ messages().common.navUi }}
     </a>
     <a
@@ -25,7 +26,8 @@
       target="_blank"
       rel="noopener noreferrer"
       [attr.aria-label]="messages().common.githubAriaLabel"
-      [attr.data-tooltip]="messages().common.githubTooltip">
+      [eaTooltip]="messages().common.githubTooltip"
+      tooltipPosition="bottom">
       <ea-icon-github />
     </a>
     <web-locale-switcher />
