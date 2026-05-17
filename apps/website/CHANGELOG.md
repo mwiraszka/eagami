@@ -2,6 +2,18 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [1.3.0] - 2026-05-17
+
+### Added
+
+- Translate the entire site into five locales (English, French, Greek, Polish, Spanish). Every page (Home, UI Overview, UI Setup, UI Design tokens, UI Icons, UI Internationalization, UI Components, 404) plus the header, footer, theme toggle, and 404 page now reads in the active language, and the active locale also drives every embedded `@eagami/ui` component (date picker, paginator, etc.) through `EagamiI18nService`.
+- Add a globe icon and locale dropdown to the app header. Switching language updates the UI immediately and persists across reloads (same pattern as the dark-mode toggle), and the `<html lang>` attribute updates so assistive tech and search engines pick up the right language.
+
+### Changed
+
+- Pick up @eagami/ui v1.3.0, which expands the icon set from 100 to 268 icons. The Icons documentation page now lists every Feather icon plus a coloured brand-icon set, with links to each brand's official guidelines.
+- Run the dev server on port 4444 by default (set in `angular.json`), avoiding collisions with other Angular dev servers on the default 4200.
+
 ## [1.2.0] - 2026-05-16
 
 ### Added
@@ -325,6 +337,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[1.3.0]: https://github.com/mwiraszka/eagami/compare/website-v1.2.0...website-v1.3.0
 [1.2.0]: https://github.com/mwiraszka/eagami/releases/tag/website-v1.2.0
 [1.1.0]: https://github.com/mwiraszka/eagami-website-archive/compare/v1.0.9...v1.1.0
 [1.0.9]: https://github.com/mwiraszka/eagami-website-archive/compare/v1.0.8...v1.0.9
