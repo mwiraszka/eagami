@@ -21,6 +21,11 @@ All notable changes to eagami.com are documented in this file.
 - Inset the focus ring on the `/ui` sidebar so it no longer gets clipped on the right and bottom edges by neighbouring grid cells and the sticky scroll context.
 - Polish: change the UI overview "Zacznij" link from "Instalacja" (nominative) to "Instalacji" (genitive) so "Przejdź do Instalacji" reads naturally, and route every locale's `getStartedAfter` through the same whitespace-suppressed template so the comma in the Polish phrase no longer renders with a leading space.
 
+### Changed
+
+- Remove the GitHub link from the app header. It was duplicated in the footer; the footer is the canonical home for repository / npm links. Footer npm and GitHub links now carry tooltips ("View @eagami/ui on npm", "View source on GitHub", localised).
+- Refresh the "Ongoing maintenance" service description: "Monthly upkeep covering hosting, security patches, dependency upgrades, content edits, and analytics reviews." Sharper verbs throughout ("patches" for unambiguous security fixes, "dependency upgrades" for "third-party package upgrades", "edits" for "revisions", "analytics reviews" to clarify the work is reviewing analytics, not setting them up). Translated to all five locales.
+
 ### Added
 
 - Auto-detect the user's preferred theme and locale on first visit. Theme falls back to the OS preference (`prefers-color-scheme: dark` → dark mode), and locale picks the first match in `navigator.languages` (exact, then language-only — `fr-CA` resolves to `fr-FR`, `es-MX` to `es-ES`, etc.). Explicit choices through the toggle and locale switcher still win and persist as before.
