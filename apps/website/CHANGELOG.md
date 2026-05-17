@@ -13,6 +13,11 @@ All notable changes to eagami.com are documented in this file.
 
 - Pick up @eagami/ui v1.3.0, which expands the icon set from 100 to 268 icons. The Icons documentation page now lists every Feather icon plus a coloured brand-icon set, with links to each brand's official guidelines.
 - Run the dev server on port 4444 by default (set in `angular.json`), avoiding collisions with other Angular dev servers on the default 4200.
+- Replace the CSS-only `[data-tooltip]` pattern used on header links and toggles with the library's `[eaTooltip]` directive so every tooltip benefits from the directive's viewport clamping and re-positions cleanly when the page reflows under it.
+
+### Fixed
+
+- Eliminate the theme-icon and locale-text flash on reload. The theme and locale services now read their persisted values during signal initialization (not in the constructor body), so the first render already reflects the stored preferences instead of briefly painting the defaults. The inline `<head>` bootstrap script also writes `<html lang>` alongside `data-theme` so screen readers and the parser see the right language immediately.
 
 ## [1.2.0] - 2026-05-16
 

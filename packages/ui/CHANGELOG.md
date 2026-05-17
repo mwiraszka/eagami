@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Retire the EagamiWordmark "eagami design system" variant. Variant `3` now renders the brand mark with its tagline (previously the role of variant `4`). Variant `4` is kept as a backwards-compatible alias for `3` and will be removed in v2.0.0
-- Clamp tooltips to the viewport so triggers near the screen edge no longer get their tooltip text clipped by the chrome. The bubble shifts inward by up to its overflow distance while the trigger stays in place
+- Double the inline `EagamiWordmarkComponent` text-stack gap (`calc(--_size * 0.1px)` → `0.2px`) so the brand, separator, and tagline read as distinct words instead of crowding the em-dash
+- Reposition `[eaTooltip]` while it is shown. Window resize, ancestor scroll, and ResizeObserver-detected layout shifts (the trigger or the page body resizing) all re-run the viewport clamp via rAF so the tooltip stays inside the viewport even when the page reflows under it
 
 ### Deprecated
 
