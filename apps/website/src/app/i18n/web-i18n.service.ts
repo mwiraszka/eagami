@@ -54,12 +54,32 @@ export class WebI18nService {
 
   private readStoredLocale(): WebLocale {
     if (!this.isBrowser) return 'en';
+    /* Order of precedence (must match the inline <head> script in index.html):
+       1. Explicit choice in localStorage
+       2. navigator.languages — exact match, then language-only match
+          (e.g. 'fr' or 'fr-CA' → 'fr-FR', 'es-MX' → 'es-ES')
+       3. English default */
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return isWebLocale(stored) ? stored : 'en';
+      if (isWebLocale(stored)) return stored;
     } catch {
-      return 'en';
+      // localStorage may be unavailable; fall through to browser preferences.
     }
+    const preferred = (
+      navigator.languages?.length
+        ? navigator.languages
+        : navigator.language
+          ? [navigator.language]
+          : []
+    ) as readonly string[];
+    for (const tag of preferred) {
+      const exact = WEB_LOCALES.find(l => l.toLowerCase() === tag.toLowerCase());
+      if (exact) return exact;
+      const primary = tag.split('-')[0].toLowerCase();
+      const byLanguage = WEB_LOCALES.find(l => l.toLowerCase().split('-')[0] === primary);
+      if (byLanguage) return byLanguage;
+    }
+    return 'en';
   }
 
   private applyLocale(): void {
@@ -70,5 +90,10 @@ export class WebI18nService {
 
     localStorage.setItem(STORAGE_KEY, locale);
     this.doc.documentElement.setAttribute('lang', locale);
+    /* The inline <head> script set this class when the resolved locale wasn't
+       English, hiding the prerendered English body until we swap the strings.
+       Now that messages are bound to the active locale and Angular has
+       re-rendered into the right language, reveal the page. */
+    this.doc.documentElement.classList.remove('web-locale-pending');
   }
 }

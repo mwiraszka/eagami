@@ -145,24 +145,69 @@
           format('woff2');
       }
     </style>
-    <!-- Apply persisted theme and locale before Angular bootstraps to avoid a
-         flash of the wrong theme or language. Theme drives `data-theme`, which
-         the inline CSS below picks up to paint the page in the right background
-         on first frame; locale drives `<html lang>`, which screen readers and
-         the parser key off of immediately. The keys must stay in sync with
-         STORAGE_KEY in theme.service.ts and web-i18n.service.ts. -->
+    <!-- Resolve and apply the user's theme + locale before Angular bootstraps so
+         the very first paint already shows them. Order: explicit choice from
+         localStorage > browser/system preference > english + light defaults.
+         Mirrors the logic in theme.service.ts / web-i18n.service.ts; keep
+         them in sync. The visibility gate below masks the brief gap between
+         this script firing and Angular hydrating in the prerendered English
+         text with the resolved locale's strings — only kicks in when the
+         resolved locale is non-English (the prerender locale), so English
+         users never see a paint gap. -->
     <script>
       (function () {
         var locales = ['en', 'fr-FR', 'el', 'pl', 'es-ES'];
-        var theme = 'light';
-        var locale = 'en';
-        try {
-          if (localStorage.getItem('web-theme') === 'dark') theme = 'dark';
-          var stored = localStorage.getItem('web-locale');
-          if (stored && locales.indexOf(stored) !== -1) locale = stored;
-        } catch (e) {}
+
+        function resolveTheme() {
+          try {
+            var stored = localStorage.getItem('web-theme');
+            if (stored === 'dark' || stored === 'light') return stored;
+          } catch (e) {}
+          try {
+            if (
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches
+            ) {
+              return 'dark';
+            }
+          } catch (e) {}
+          return 'light';
+        }
+
+        function resolveLocale() {
+          try {
+            var stored = localStorage.getItem('web-locale');
+            if (stored && locales.indexOf(stored) !== -1) return stored;
+          } catch (e) {}
+          var preferred =
+            (navigator.languages && navigator.languages.length
+              ? navigator.languages
+              : navigator.language
+                ? [navigator.language]
+                : []) || [];
+          for (var i = 0; i < preferred.length; i++) {
+            var tag = String(preferred[i] || '');
+            // Exact match first (e.g. 'fr-FR' → 'fr-FR').
+            for (var j = 0; j < locales.length; j++) {
+              if (locales[j].toLowerCase() === tag.toLowerCase()) return locales[j];
+            }
+            // Then language-only match (e.g. 'fr' → 'fr-FR', 'es' → 'es-ES').
+            var primary = tag.split('-')[0].toLowerCase();
+            for (var k = 0; k < locales.length; k++) {
+              if (locales[k].toLowerCase().split('-')[0] === primary) return locales[k];
+            }
+          }
+          return 'en';
+        }
+
+        var theme = resolveTheme();
+        var locale = resolveLocale();
+
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.setAttribute('lang', locale);
+        if (locale !== 'en') {
+          document.documentElement.classList.add('web-locale-pending');
+        }
       })();
     </script>
     <!-- Critical theme colors inlined so the page background and text render in the
@@ -181,6 +226,16 @@
         color-scheme: dark;
         background-color: #111827;
         color: #f9fafb;
+      }
+
+      /* The 41 static routes are prerendered in English. When the resolved
+         locale differs, mask the body until the i18n service has swapped the
+         text in (it clears the class right after `applyLocale()`) so visitors
+         don't see English flash on their way to their language. The theme
+         background above stays painted through this gate so the page never
+         looks broken; only the locale-dependent content is held back. */
+      html.web-locale-pending body {
+        visibility: hidden;
       }
     </style>
     <!-- Privacy-friendly analytics by Plausible -->

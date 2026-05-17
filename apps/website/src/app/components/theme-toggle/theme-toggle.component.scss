@@ -29,3 +29,16 @@
     height: 20px;
   }
 }
+
+/* Pick the right icon entirely in CSS so the swap reacts the instant the
+   inline `<head>` script flips `data-theme` on `<html>`. JS-conditional
+   rendering would briefly show the wrong icon during hydration. Uses
+   `:host-context()` because `<html>` (the element carrying `data-theme`) is
+   outside view encapsulation and `:root` selectors get scoped out. */
+.web-theme-toggle__icon {
+  display: none;
+}
+:host-context(:not([data-theme='dark'])) .web-theme-toggle__icon--moon,
+:host-context([data-theme='dark']) .web-theme-toggle__icon--sun {
+  display: block;
+}
