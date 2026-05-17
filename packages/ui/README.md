@@ -9,9 +9,18 @@
   <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
 </p>
 
-A lightweight, accessible Angular component library built on CSS custom properties. Standalone, signal-based, fully themable, and localized in five languages out of the box.
+`@eagami/ui` is a lightweight, accessible Angular component library. Sensible defaults out of the box, with a fully customizable design to fit any brand.
 
 **Live documentation:** [eagami.com/ui](https://eagami.com/ui)
+
+## Design principles
+
+- **Accessible.** Keyboard navigation, focus management, screen-reader support, and reduced-motion handling are built into every component.
+- **Lightweight.** Each component imports independently and the bundle only ships what you use.
+- **Themeable.** Fully customizable with [design tokens](https://eagami.com/ui/design-tokens) while maintaining a unified look across every page. Light and dark variants ship together and default to the user's system preference.
+- **Localized.** Built-in component text ships in English, French, Greek, Polish, and Spanish.
+- **Modern.** Regularly updated with the latest Angular features and modern web standards.
+- **Unlocked.** Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.
 
 ## Installation
 
@@ -31,24 +40,13 @@ Add the global stylesheet to your `angular.json`:
 
 See the [Setup](https://eagami.com/ui/setup) page for fonts and your first component import.
 
-## Features
-
-- Standalone components; no `NgModule` boilerplate
-- Signal-based APIs (`input()`, `model()`, `output()`)
-- Tree-shakeable; ~70 KB gzipped for the whole library
-- Themed via CSS custom properties on `:root`
-- Dark mode automatic via `prefers-color-scheme`
-- Accessible: ARIA, keyboard, focus management, reduced motion
-- Localized in English, French, Greek, Polish, Spanish
-- `ControlValueAccessor` on every form control
-
 ## What's included
 
 - **Form controls**: Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented, Avatar editor
 - **Overlays**: Dialog, Drawer, Tooltip, Menu, Toast
 - **Navigation**: Tabs, Breadcrumbs, Paginator, Accordion
 - **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark, Data table
-- **Icons**: 100 stroke-based SVG icon components (`<ea-icon-*>`)
+- **Icons**: 268 SVG icon components (`<ea-icon-*>`), including a coloured brand-icon set for nominative use
 
 Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/components).
 
