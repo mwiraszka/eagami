@@ -17,7 +17,11 @@ All notable changes to eagami.com are documented in this file.
 
 ### Fixed
 
-- Eliminate the theme-icon and locale-text flash on reload. The theme and locale services now read their persisted values during signal initialization (not in the constructor body), so the first render already reflects the stored preferences instead of briefly painting the defaults. The inline `<head>` bootstrap script also writes `<html lang>` alongside `data-theme` so screen readers and the parser see the right language immediately.
+- Eliminate the theme-icon and locale-text flash on reload. The inline `<head>` bootstrap script now resolves theme and locale (auto-detecting from `prefers-color-scheme` and `navigator.languages` when nothing is stored), then sets `data-theme` and `<html lang>` before any paint. The theme-toggle button renders both icons every time and CSS picks the right one via `:host-context([data-theme])`, so no JS state has to settle before the right icon appears. For locales other than the prerendered English, the body is held with `visibility: hidden` until `WebI18nService` swaps the strings in, so visitors never see an English flash before their language loads.
+
+### Added
+
+- Auto-detect the user's preferred theme and locale on first visit. Theme falls back to the OS preference (`prefers-color-scheme: dark` → dark mode), and locale picks the first match in `navigator.languages` (exact, then language-only — `fr-CA` resolves to `fr-FR`, `es-MX` to `es-ES`, etc.). Explicit choices through the toggle and locale switcher still win and persist as before.
 
 ## [1.2.0] - 2026-05-16
 
