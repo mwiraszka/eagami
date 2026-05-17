@@ -132,6 +132,9 @@ export class TooltipDirective implements OnDestroy {
     const hostRect = this.el.nativeElement.getBoundingClientRect();
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
     const gap = 8;
+    /* Keep at least this much breathing room between the tooltip and the
+       viewport edge so the rounded corner and shadow don't kiss the chrome. */
+    const edgePadding = 8;
 
     let top: number;
     let left: number;
@@ -154,6 +157,22 @@ export class TooltipDirective implements OnDestroy {
         left = hostRect.right + gap;
         break;
     }
+
+    /* Clamp to the viewport so tooltips on near-edge triggers shift inward
+       rather than getting clipped by the chrome. The position arrow (the small
+       caret) stays centered on the host because the clamp only moves the
+       bubble; we don't try to flip placement here, just nudge along the
+       cross-axis. */
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+    left = Math.max(
+      edgePadding,
+      Math.min(left, viewportWidth - tooltipRect.width - edgePadding),
+    );
+    top = Math.max(
+      edgePadding,
+      Math.min(top, viewportHeight - tooltipRect.height - edgePadding),
+    );
 
     this.renderer.setStyle(this.tooltipEl, 'top', `${top + window.scrollY}px`);
     this.renderer.setStyle(this.tooltipEl, 'left', `${left + window.scrollX}px`);
