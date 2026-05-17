@@ -76,7 +76,7 @@
   &--inline &__text {
     flex-direction: row;
     align-items: baseline;
-    gap: calc(var(--_size) * 0.1px);
+    gap: calc(var(--_size) * 0.2px);
   }
 
   &--inline &__overline,
