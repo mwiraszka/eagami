@@ -13,16 +13,15 @@ export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  public readonly mode = signal<ThemeMode>('light');
+  /* Read localStorage during signal init (not in the constructor) so the very
+     first render already sees the persisted theme. Reading after construction
+     would briefly show the default light-mode icon on the theme-toggle button
+     before the constructor flipped it to dark. The matching inline script in
+     `index.html` covers the page background; this covers the JS-derived UI. */
+  public readonly mode = signal<ThemeMode>(this.readStoredMode());
 
   constructor() {
-    if (!this.isBrowser) return;
-
-    const stored = localStorage.getItem(STORAGE_KEY);
-    const initial: ThemeMode = stored === 'dark' ? 'dark' : 'light';
-
-    this.mode.set(initial);
-    this.applyTheme();
+    if (this.isBrowser) this.applyTheme();
   }
 
   public cycle(): void {
@@ -32,6 +31,15 @@ export class ThemeService {
   public set(mode: ThemeMode): void {
     this.mode.set(mode);
     this.applyTheme();
+  }
+
+  private readStoredMode(): ThemeMode {
+    if (!this.isBrowser) return 'light';
+    try {
+      return localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
   }
 
   private applyTheme(): void {

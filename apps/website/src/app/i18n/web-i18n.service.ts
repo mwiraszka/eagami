@@ -26,7 +26,13 @@ export class WebI18nService {
   private readonly eagamiI18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  private readonly _locale = signal<WebLocale>('en');
+  /* Read localStorage during signal init (not in the constructor) so the first
+     render already speaks the persisted locale. Reading after construction
+     would briefly render the prerendered English content before re-rendering
+     in the active locale. The matching inline script in `index.html` mirrors
+     this for the `<html lang>` attribute so screen readers and the parser
+     pick up the right language before hydration. */
+  private readonly _locale = signal<WebLocale>(this.readStoredLocale());
 
   /** The currently active locale. Reactive. */
   public readonly locale: Signal<WebLocale> = this._locale.asReadonly();
@@ -37,19 +43,23 @@ export class WebI18nService {
   );
 
   constructor() {
-    if (!this.isBrowser) return;
-
-    const stored = localStorage.getItem(STORAGE_KEY);
-    const initial: WebLocale = isWebLocale(stored) ? stored : 'en';
-
-    this._locale.set(initial);
-    this.applyLocale();
+    if (this.isBrowser) this.applyLocale();
   }
 
   public setLocale(locale: WebLocale): void {
     if (!isWebLocale(locale)) return;
     this._locale.set(locale);
     this.applyLocale();
+  }
+
+  private readStoredLocale(): WebLocale {
+    if (!this.isBrowser) return 'en';
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return isWebLocale(stored) ? stored : 'en';
+    } catch {
+      return 'en';
+    }
   }
 
   private applyLocale(): void {

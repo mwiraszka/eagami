@@ -145,14 +145,24 @@
           format('woff2');
       }
     </style>
-    <!-- Apply persisted theme before Angular bootstraps to avoid flash of wrong theme -->
+    <!-- Apply persisted theme and locale before Angular bootstraps to avoid a
+         flash of the wrong theme or language. Theme drives `data-theme`, which
+         the inline CSS below picks up to paint the page in the right background
+         on first frame; locale drives `<html lang>`, which screen readers and
+         the parser key off of immediately. The keys must stay in sync with
+         STORAGE_KEY in theme.service.ts and web-i18n.service.ts. -->
     <script>
       (function () {
+        var locales = ['en', 'fr-FR', 'el', 'pl', 'es-ES'];
         var theme = 'light';
+        var locale = 'en';
         try {
           if (localStorage.getItem('web-theme') === 'dark') theme = 'dark';
+          var stored = localStorage.getItem('web-locale');
+          if (stored && locales.indexOf(stored) !== -1) locale = stored;
         } catch (e) {}
         document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('lang', locale);
       })();
     </script>
     <!-- Critical theme colors inlined so the page background and text render in the
