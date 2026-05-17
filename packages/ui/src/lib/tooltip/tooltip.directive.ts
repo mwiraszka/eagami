@@ -40,6 +40,23 @@ export class TooltipDirective implements OnDestroy {
 
   private readonly showHandler = () => this.show();
   private readonly hideHandler = () => this.hide();
+  /* `:focus-visible` is supported in every browser we target (Chrome, Firefox,
+     Safari, Edge — all stable for years). Feature-detect so non-browser test
+     environments (jsdom) fall back to the previous always-on-focus behaviour
+     rather than silently never showing. */
+  private readonly supportsFocusVisible =
+    typeof CSS !== 'undefined' && CSS.supports?.('selector(:focus-visible)') === true;
+  /* Show on focus only when the focus is keyboard-driven. Clicking the
+     trigger (e.g. a button that opens a menu) returns focus to the trigger
+     after the menu closes; without this filter, the tooltip would latch
+     open even though the user has moved their cursor away. `:focus-visible`
+     is the browser's signal for "keyboard activation", which is exactly
+     when a tooltip on focus is welcome. */
+  private readonly focusHandler = () => {
+    if (!this.supportsFocusVisible || this.el.nativeElement.matches(':focus-visible')) {
+      this.show();
+    }
+  };
   private readonly keydownHandler = (event: KeyboardEvent) => {
     if (event.key === 'Escape' && this.tooltipEl) {
       this.hide();
@@ -71,7 +88,7 @@ export class TooltipDirective implements OnDestroy {
   constructor() {
     const native = this.el.nativeElement;
     // Focus/blur/keydown always wire up — keyboard users benefit on any device.
-    native.addEventListener('focus', this.showHandler);
+    native.addEventListener('focus', this.focusHandler);
     native.addEventListener('blur', this.hideHandler);
     native.addEventListener('keydown', this.keydownHandler);
 
@@ -83,7 +100,7 @@ export class TooltipDirective implements OnDestroy {
     const native = this.el.nativeElement;
     native.removeEventListener('mouseenter', this.showHandler);
     native.removeEventListener('mouseleave', this.hideHandler);
-    native.removeEventListener('focus', this.showHandler);
+    native.removeEventListener('focus', this.focusHandler);
     native.removeEventListener('blur', this.hideHandler);
     native.removeEventListener('keydown', this.keydownHandler);
     this.hoverMql?.removeEventListener('change', this.hoverChangeHandler);
