@@ -13,7 +13,7 @@ From the monorepo root:
 ```bash
 pnpm install
 pnpm ui build      # build the library once so the website can resolve @eagami/ui
-pnpm start         # serve the website on http://localhost:4200
+pnpm start         # serve the website on http://localhost:4444
 ```
 
 For active library work, run `pnpm ui watch` in a second terminal so source edits flow into the running website without a manual rebuild.
