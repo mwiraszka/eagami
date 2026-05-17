@@ -2,13 +2,14 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   PLATFORM_ID,
+  effect,
   inject,
   signal,
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 interface FontFamilyToken {
@@ -30,8 +31,11 @@ interface NamedToken {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CodeSnippetComponent],
 })
-export class UiTokensPageComponent implements OnInit {
+export class UiTokensPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
+  private readonly i18n = inject(WebI18nService);
+
+  protected readonly messages = this.i18n.messages;
 
   protected readonly rootThemeSnippet = `:root {
   --color-primary-600: #2563eb;
@@ -217,13 +221,12 @@ export class UiTokensPageComponent implements OnInit {
         window.matchMedia('(prefers-reduced-motion: reduce)').matches,
       );
     }
-  }
 
-  public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami | UI');
-    this.metaAndTitleService.updateDescription(
-      'Color, typography, spacing, elevation, shape, and motion tokens that drive @eagami/ui.',
-    );
+    effect(() => {
+      const m = this.messages().ui.tokens;
+      this.metaAndTitleService.updateTitle(m.metaTitle);
+      this.metaAndTitleService.updateDescription(m.metaDescription);
+    });
   }
 
   protected simulateMotion(): void {

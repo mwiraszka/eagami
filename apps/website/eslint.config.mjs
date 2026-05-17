@@ -11,6 +11,9 @@ export default [
   {
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+      // French typography uses U+202F (narrow no-break space) before high
+      // punctuation. Allow it in our own strings and template literals.
+      'no-irregular-whitespace': ['error', { skipStrings: true, skipTemplates: true }],
     },
   },
 ];

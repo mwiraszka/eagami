@@ -54,7 +54,6 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   computed,
   effect,
   inject,
@@ -64,6 +63,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { UI_COMPONENTS } from '@app/data/ui-components';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 @Component({
@@ -119,10 +119,13 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UiComponentPageComponent implements OnInit {
+export class UiComponentPageComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly metaAndTitleService = inject(MetaAndTitleService);
   private readonly toastService = inject(ToastService);
+  private readonly i18n = inject(WebI18nService);
+
+  protected readonly messages = this.i18n.messages;
 
   /* Drives the tooltip demo's disabled state. Reactive — DevTools mobile mode
      emulation toggles `(hover: hover)` after page load, and real devices can
@@ -174,6 +177,7 @@ export class UiComponentPageComponent implements OnInit {
   protected readonly tablePageSize = signal(5);
 
   // Demo data
+  // Framework names are proper nouns and stay untranslated.
   protected readonly autocompleteOptions: SelectOption[] = [
     { value: 'angular', label: 'Angular' },
     { value: 'react', label: 'React' },
@@ -185,49 +189,58 @@ export class UiComponentPageComponent implements OnInit {
     { value: 'lit', label: 'Lit' },
   ];
 
-  protected readonly breadcrumbItems: BreadcrumbItem[] = [
-    { label: 'Home', href: '/' },
-    { label: 'Products', href: '/products' },
-    { label: 'Laptops', href: '/products/laptops' },
-    { label: 'MacBook Pro' },
-  ];
+  protected readonly breadcrumbItems = computed<BreadcrumbItem[]>(() => {
+    const shared = this.messages().ui.component.sharedOptions;
+    return [
+      { label: shared.breadcrumbHome, href: '/' },
+      { label: shared.breadcrumbProducts, href: '/products' },
+      { label: shared.breadcrumbLaptops, href: '/products/laptops' },
+      { label: shared.breadcrumbMacBookPro },
+    ];
+  });
 
-  protected readonly breadcrumbItemsShort: BreadcrumbItem[] = [
-    { label: 'Dashboard', href: '/' },
-    { label: 'Settings' },
-  ];
+  protected readonly breadcrumbItemsShort = computed<BreadcrumbItem[]>(() => {
+    const shared = this.messages().ui.component.sharedOptions;
+    return [
+      { label: shared.breadcrumbDashboard, href: '/' },
+      { label: shared.breadcrumbSettings },
+    ];
+  });
 
-  protected readonly dropdownOptions: SelectOption[] = [
-    { value: 'apple', label: 'Apple' },
-    { value: 'banana', label: 'Banana' },
-    { value: 'cherry', label: 'Cherry' },
-    { value: 'date', label: 'Date' },
-  ];
+  protected readonly dropdownOptions = computed<SelectOption[]>(() =>
+    this.messages().ui.component.sharedOptions.fruitOptions.map(o => ({ ...o })),
+  );
 
-  protected readonly segmentedViewOptions: SelectOption[] = [
-    { value: 'list', label: 'List' },
-    { value: 'grid', label: 'Grid' },
-    { value: 'kanban', label: 'Kanban' },
-  ];
+  protected readonly segmentedViewOptions = computed<SelectOption[]>(() =>
+    this.messages().ui.component.sharedOptions.viewOptions.map(o => ({ ...o })),
+  );
 
-  protected readonly segmentedThemeOptions: SelectOption[] = [
-    { value: 'light', label: 'Light' },
-    { value: 'dark', label: 'Dark' },
-  ];
+  protected readonly segmentedThemeOptions = computed<SelectOption[]>(() =>
+    this.messages().ui.component.sharedOptions.themeOptions.map(o => ({ ...o })),
+  );
 
-  protected readonly tableColumns: DataTableColumn[] = [
-    { key: 'id', label: 'ID', sortable: true, width: '60px', align: 'center' },
-    { key: 'firstName', label: 'First Name', sortable: true },
-    { key: 'lastName', label: 'Last Name', sortable: true },
-    { key: 'admin', label: 'Admin', sortable: true, align: 'center' },
-    {
-      key: 'posts',
-      label: 'Posts',
-      sortable: true,
-      align: 'right',
-      format: v => (v as number).toLocaleString('en-US'),
-    },
-  ];
+  protected readonly tableColumns = computed<DataTableColumn[]>(() => {
+    const cols = this.messages().ui.component.demos.dataTable;
+    return [
+      {
+        key: 'id',
+        label: cols.tableColumnId,
+        sortable: true,
+        width: '60px',
+        align: 'center',
+      },
+      { key: 'firstName', label: cols.tableColumnFirstName, sortable: true },
+      { key: 'lastName', label: cols.tableColumnLastName, sortable: true },
+      { key: 'admin', label: cols.tableColumnAdmin, sortable: true, align: 'center' },
+      {
+        key: 'posts',
+        label: cols.tableColumnPosts,
+        sortable: true,
+        align: 'right',
+        format: v => (v as number).toLocaleString('en-US'),
+      },
+    ];
+  });
 
   protected readonly tableData = [
     { id: 1, firstName: 'Alice', lastName: 'Johnson', admin: '', posts: 847 },
@@ -255,18 +268,14 @@ export class UiComponentPageComponent implements OnInit {
     effect(() => {
       const c = this.component();
       if (c) {
-        this.metaAndTitleService.updateTitle('Eagami | UI');
-        const selectorDisplay =
-          c.kind === 'directive' ? `[${c.selector}]` : `<${c.selector} />`;
+        this.metaAndTitleService.updateTitle(
+          `${this.messages().ui.metaTitle} | ${c.name}`,
+        );
         this.metaAndTitleService.updateDescription(
-          `${c.name} ${c.kind ?? 'component'} reference for @eagami/ui — selector ${selectorDisplay}.`,
+          this.messages().ui.component.metaDescription(c.name),
         );
       }
     });
-  }
-
-  public ngOnInit(): void {
-    // Initial title set covered by effect; keep ngOnInit for OnInit interface.
   }
 
   protected onTablePageChange(event: PaginatorState): void {
@@ -277,8 +286,9 @@ export class UiComponentPageComponent implements OnInit {
   protected showToast(
     variant: 'default' | 'success' | 'warning' | 'error' | 'info',
   ): void {
-    const article = variant === 'error' || variant === 'info' ? 'an' : 'a';
-    this.toastService.show(`This is ${article} ${variant} toast`, { variant });
+    this.toastService.show(this.messages().ui.component.demos.toast.message(variant), {
+      variant,
+    });
   }
 
   protected triggerLoading(): void {
@@ -288,6 +298,8 @@ export class UiComponentPageComponent implements OnInit {
 
   protected onAvatarCropped(event: AvatarEditorCropEvent): void {
     this.croppedAvatarUrl.set(event.dataUrl);
-    this.toastService.success('Avatar updated');
+    this.toastService.success(
+      this.messages().ui.component.demos.avatarEditorActions.avatarUpdatedToast,
+    );
   }
 }

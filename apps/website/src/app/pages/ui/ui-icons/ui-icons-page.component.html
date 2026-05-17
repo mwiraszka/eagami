@@ -1,23 +1,9 @@
 <article class="ui-icons">
   <header class="ui-icons__header">
-    <h1 class="ui-icons__title">Icons</h1>
+    <h1 class="ui-icons__title">{{ messages().ui.icons.title }}</h1>
     <p class="ui-icons__lede">
-      Standalone Angular components that inherit their color and scale with
-      <code>font-size</code>, so they render at any size. Derived from
-      <a
-        href="https://feathericons.com/"
-        target="_blank"
-        rel="noopener noreferrer">
-        <span>Feather Icons</span>
-      </a>
-      by
-      <a
-        href="https://github.com/colebemis"
-        target="_blank"
-        rel="noopener noreferrer">
-        <span>Cole Bemis</span>
-      </a>
-      and used under the MIT License. Click an icon to copy its selector.
+      {{ messages().ui.icons.ledeBefore }}
+      <code>font-size</code>{{ messages().ui.icons.ledeAfter }}
     </p>
   </header>
 
@@ -29,7 +15,7 @@
         <button
           type="button"
           class="icons-grid__card"
-          [attr.aria-label]="'Copy selector ea-icon-' + icon.slug"
+          [attr.aria-label]="'ea-icon-' + icon.slug"
           [eaTooltip]="'ea-icon-' + icon.slug"
           tooltipPosition="bottom"
           (click)="copySelector(icon.slug)">
@@ -43,20 +29,54 @@
   </ul>
 
   <section class="ui-icons__brand-section">
-    <h2 class="ui-icons__brand-title">Brand icons</h2>
-    <p class="ui-icons__brand-body">
-      The Facebook, GitHub, Google, Microsoft, and X (Twitter) icons depict third-party
-      trademarks and are provided <strong>only for nominative use</strong>, i.e.
-      identifying the brand they represent in a UI (a "Sign in with Google" button, a
-      "Share to Facebook" link, etc.). They are not licensed for general decorative use.
-      Consumers are responsible for following each brand's guidelines:
-    </p>
+    <h2 class="ui-icons__brand-title">{{ messages().ui.icons.brandTitle }}</h2>
+    <p class="ui-icons__brand-body">{{ messages().ui.icons.brandIntro }}</p>
     <ul
       class="ui-icons__brand-list"
       role="list">
       <li>
+        <strong>Cloudflare:</strong>&nbsp;<a
+          href="https://www.cloudflare.com/logo/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Logo and brand assets</span>
+        </a>
+      </li>
+      <li>
+        <strong>Discord:</strong>&nbsp;<a
+          href="https://discord.com/branding"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Docker:</strong>&nbsp;<a
+          href="https://www.docker.com/company/newsroom/media-resources/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Media resources</span>
+        </a>
+      </li>
+      <li>
+        <strong>Dropbox:</strong>&nbsp;<a
+          href="https://brand.dropbox.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand guidelines</span>
+        </a>
+      </li>
+      <li>
         <strong>Facebook:</strong>&nbsp;<a
           href="https://about.meta.com/brand/resources/facebookapp/logo/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
+        </a>
+      </li>
+      <li>
+        <strong>Figma:</strong>&nbsp;<a
+          href="https://www.figma.com/files/brand/"
           target="_blank"
           rel="noopener noreferrer">
           <span>Brand resources</span>
@@ -71,11 +91,43 @@
         </a>
       </li>
       <li>
+        <strong>GitLab:</strong>&nbsp;<a
+          href="https://about.gitlab.com/press/press-kit/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Press kit</span>
+        </a>
+      </li>
+      <li>
         <strong>Google:</strong>&nbsp;<a
           href="https://developers.google.com/identity/branding-guidelines"
           target="_blank"
           rel="noopener noreferrer">
           <span>Sign-in branding guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Kubernetes:</strong>&nbsp;<a
+          href="https://www.cncf.io/brand-guidelines/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>CNCF brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>LinkedIn:</strong>&nbsp;<a
+          href="https://brand.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Mastercard:</strong>&nbsp;<a
+          href="https://brand.mastercard.com/brandcenter.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand center</span>
         </a>
       </li>
       <li>
@@ -87,11 +139,107 @@
         </a>
       </li>
       <li>
+        <strong>MongoDB:</strong>&nbsp;<a
+          href="https://www.mongodb.com/brand-resources"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
+        </a>
+      </li>
+      <li>
+        <strong>Netlify:</strong>&nbsp;<a
+          href="https://www.netlify.com/branding/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Branding guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Notion:</strong>&nbsp;<a
+          href="https://www.notion.so/brand"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
+        </a>
+      </li>
+      <li>
+        <strong>npm:</strong>&nbsp;<a
+          href="https://www.npmjs.com/policies/logos-and-usage"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Logos and usage policy</span>
+        </a>
+      </li>
+      <li>
+        <strong>PayPal:</strong>&nbsp;<a
+          href="https://www.paypal.com/us/webapps/mpp/logo-center"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Logo center</span>
+        </a>
+      </li>
+      <li>
+        <strong>Reddit:</strong>&nbsp;<a
+          href="https://www.redditinc.com/brand"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Slack:</strong>&nbsp;<a
+          href="https://slack.com/media-kit"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Media kit</span>
+        </a>
+      </li>
+      <li>
+        <strong>Spotify:</strong>&nbsp;<a
+          href="https://developer.spotify.com/documentation/design"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Design guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Stripe:</strong>&nbsp;<a
+          href="https://stripe.com/newsroom/brand-assets"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand assets</span>
+        </a>
+      </li>
+      <li>
+        <strong>Twitch:</strong>&nbsp;<a
+          href="https://brand.twitch.tv/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand guidelines</span>
+        </a>
+      </li>
+      <li>
+        <strong>Vercel:</strong>&nbsp;<a
+          href="https://vercel.com/design/brands"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
+        </a>
+      </li>
+      <li>
         <strong>X (Twitter):</strong>&nbsp;<a
           href="https://about.x.com/en/who-we-are/brand-toolkit"
           target="_blank"
           rel="noopener noreferrer">
           <span>Brand toolkit</span>
+        </a>
+      </li>
+      <li>
+        <strong>YouTube:</strong>&nbsp;<a
+          href="https://www.youtube.com/howyoutubeworks/resources/brand-resources/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span>Brand resources</span>
         </a>
       </li>
     </ul>

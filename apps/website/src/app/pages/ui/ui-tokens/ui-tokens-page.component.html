@@ -1,27 +1,25 @@
 <article class="ui-tokens">
   <header class="ui-tokens__header">
-    <h1 class="ui-tokens__title">Design tokens</h1>
-    <p class="ui-tokens__lede">
-      The CSS custom properties that drive every component in the library: colors,
-      typography, spacing, elevation, shape, and motion. Reference these tokens in your
-      own styles via <code>var(--token-name)</code> to keep visual consistency across the
-      app.
+    <h1 class="ui-tokens__title">{{ messages().ui.tokens.title }}</h1>
+    <p
+      class="ui-tokens__lede"
+      [innerHTML]="messages().ui.tokens.lede">
     </p>
   </header>
 
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Theming</h2>
-    <p>Override any token on <code>:root</code> to retheme the entire library:</p>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.theming }}</h2>
+    <p [innerHTML]="messages().ui.tokens.themingRootBefore"></p>
     <web-code-snippet [code]="rootThemeSnippet" />
-    <p>Or scope overrides to individual components where useful:</p>
+    <p>{{ messages().ui.tokens.themingScopedBefore }}</p>
     <web-code-snippet [code]="scopedThemeSnippet" />
   </section>
 
   <!-- ─── Colors ──────────────────────────────────────────────────────── -->
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Colors</h2>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.colors }}</h2>
 
-    <h3 class="tokens-subsection__title">Primary</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsPrimary }}</h3>
     <div class="swatch-row">
       @for (shade of primaryPalette; track shade) {
         <figure class="swatch">
@@ -34,7 +32,7 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">Secondary</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSecondary }}</h3>
     <div class="swatch-row">
       @for (shade of secondaryPalette; track shade) {
         <figure class="swatch">
@@ -47,7 +45,7 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">Neutral</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsNeutral }}</h3>
     <div class="swatch-row">
       @for (shade of neutralPalette; track shade) {
         <figure class="swatch">
@@ -60,7 +58,7 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">Status</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsStatus }}</h3>
     @for (family of statusFamilies; track family) {
       <h4 class="tokens-subsection__sublabel">{{ family }}</h4>
       <div class="swatch-row">
@@ -76,7 +74,7 @@
       </div>
     }
 
-    <h3 class="tokens-subsection__title">Semantic</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSemantic }}</h3>
     <ul
       class="token-list"
       role="list">
@@ -121,9 +119,11 @@
 
   <!-- ─── Typography ──────────────────────────────────────────────────── -->
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Typography</h2>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.typography }}</h2>
 
-    <h3 class="tokens-subsection__title">Families</h3>
+    <h3 class="tokens-subsection__title">{{
+      messages().ui.tokens.typographyFamilies
+    }}</h3>
     <ul
       class="token-list"
       role="list">
@@ -140,7 +140,7 @@
       }
     </ul>
 
-    <h3 class="tokens-subsection__title">Sizes</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.typographySizes }}</h3>
     <ul
       class="token-list"
       role="list">
@@ -152,7 +152,7 @@
       }
     </ul>
 
-    <h3 class="tokens-subsection__title">Weights</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.typographyWeights }}</h3>
     <ul
       class="token-list"
       role="list">
@@ -170,7 +170,7 @@
 
   <!-- ─── Spacing ─────────────────────────────────────────────────────── -->
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Spacing</h2>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.spacing }}</h2>
     <ul
       class="token-list"
       role="list">
@@ -185,7 +185,7 @@
 
   <!-- ─── Elevation ───────────────────────────────────────────────────── -->
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Elevation</h2>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.elevation }}</h2>
     <div class="elevation-grid">
       @for (size of shadowSizes; track size) {
         <figure class="elevation-card">
@@ -200,7 +200,7 @@
 
   <!-- ─── Shape ───────────────────────────────────────────────────────── -->
   <section class="tokens-section">
-    <h2 class="tokens-section__title">Shape</h2>
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.shape }}</h2>
     <div class="shape-grid">
       @for (radius of radii; track radius) {
         <figure class="shape-card">
@@ -219,7 +219,7 @@
     class="tokens-section"
     [class.tokens-section--simulating]="isSimulating()">
     <header class="tokens-section__header">
-      <h2 class="tokens-section__title">Motion</h2>
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.motion }}</h2>
       <button
         type="button"
         class="motion-simulate"
@@ -227,11 +227,11 @@
         [attr.aria-pressed]="isSimulating()"
         [disabled]="motionReduced() || isSimulating()"
         (click)="simulateMotion()">
-        Simulate
+        {{ messages().ui.tokens.motionSimulate }}
       </button>
     </header>
 
-    <h3 class="tokens-subsection__title">Durations</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.motionDurations }}</h3>
     <ul
       class="token-list motion-list"
       role="list">
@@ -248,7 +248,7 @@
       }
     </ul>
 
-    <h3 class="tokens-subsection__title">Easings</h3>
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.motionEasings }}</h3>
     <ul
       class="token-list motion-list"
       role="list">

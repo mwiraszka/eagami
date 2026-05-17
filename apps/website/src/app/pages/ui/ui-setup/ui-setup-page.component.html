@@ -1,6 +1,6 @@
 <article class="ui-setup">
   <section class="ui-setup__section">
-    <h1 class="ui-setup__title">Setup</h1>
+    <h1 class="ui-setup__title">{{ messages().ui.setup.title }}</h1>
 
     <ol
       class="ui-setup__steps"
@@ -8,19 +8,20 @@
       <li class="ui-setup__step">
         <p class="ui-setup__step-label">
           <span class="ui-setup__step-num">1.</span>
-          Install the package:
+          {{ messages().ui.setup.installLabel }}
         </p>
         <web-code-snippet code="npm install @eagami/ui" />
-        <p class="ui-setup__or">or</p>
+        <p class="ui-setup__or">{{ messages().ui.setup.or }}</p>
         <web-code-snippet code="pnpm add @eagami/ui" />
-        <p class="ui-setup__or">or</p>
+        <p class="ui-setup__or">{{ messages().ui.setup.or }}</p>
         <web-code-snippet code="yarn add @eagami/ui" />
       </li>
 
       <li class="ui-setup__step">
         <p class="ui-setup__step-label">
           <span class="ui-setup__step-num">2.</span>
-          Add the global stylesheet in <code>angular.json</code>:
+          {{ messages().ui.setup.stylesheetLabel.before }}
+          <code>angular.json</code>{{ messages().ui.setup.stylesheetLabel.after }}
         </p>
         <web-code-snippet [code]="stylesheetSnippet" />
       </li>
@@ -28,7 +29,8 @@
       <li class="ui-setup__step">
         <p class="ui-setup__step-label">
           <span class="ui-setup__step-num">3.</span>
-          Load the fonts in <code>index.html</code>:
+          {{ messages().ui.setup.fontsLabel.before }}
+          <code>index.html</code>{{ messages().ui.setup.fontsLabel.after }}
         </p>
         <web-code-snippet [code]="fontsSnippet" />
       </li>
@@ -36,7 +38,7 @@
   </section>
 
   <section class="ui-setup__section">
-    <h2>Your first component</h2>
+    <h2>{{ messages().ui.setup.firstComponentHeading }}</h2>
     <web-code-snippet [code]="quickStartSnippet" />
   </section>
 </article>

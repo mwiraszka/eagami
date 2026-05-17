@@ -1,14 +1,12 @@
 <section class="not-found">
   <div class="not-found__inner">
-    <p class="not-found__eyebrow">404</p>
-    <h1 class="not-found__title">Page not found</h1>
-    <p class="not-found__lede">
-      The page you were looking for doesn't exist or has moved.
-    </p>
+    <p class="not-found__eyebrow">{{ messages().notFound.eyebrow }}</p>
+    <h1 class="not-found__title">{{ messages().notFound.title }}</h1>
+    <p class="not-found__lede">{{ messages().notFound.lede }}</p>
     <a
       class="not-found__cta"
       routerLink="/">
-      Back to home
+      {{ messages().notFound.cta }}
     </a>
   </div>
 </section>

@@ -1,0 +1,32 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'ea-icon-type',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
+  template: `
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      width="100%"
+      height="100%">
+      <polyline points="4 7 4 4 20 4 20 7" />
+      <line
+        x1="9"
+        y1="20"
+        x2="15"
+        y2="20" />
+      <line
+        x1="12"
+        y1="4"
+        x2="12"
+        y2="20" />
+    </svg>
+  `,
+})
+export class TypeIconComponent {}

@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-05-17
+
+### Added
+
+- Expand the icon set from 100 to 268 icons. Round out the Feather Icons coverage with 148 additions (activity, airplay, alert-octagon, align-{center,justify,left,right}, anchor, aperture, arrow-down-{left,right}, arrow-up-{left,right}, award, battery, battery-charging, bell-off, bluetooth, bold, book, book-open, box, chrome, code, codepen, codesandbox, coffee, columns, command, compass, corner-{down,up}-{left,right}, cpu, crop, crosshair, database, delete, disc, divide, download-cloud, droplet, edit, edit-2, edit-3, fast-forward, feather, file-minus, file-plus, file-text, film, frown, git-branch, git-commit, git-merge, git-pull-request, gitlab, grid, hard-drive, headphones, italic, key, layers, layout, life-buoy, link-2, map, maximize-2, meh, message-circle, message-square, mic-off, minimize-2, minus-circle, minus-square, more-vertical, mouse-pointer, move, music, navigation, navigation-2, octagon, pause-circle, percent, pie-chart, play-circle, plus-circle, plus-square, pocket, power, radio, repeat, rewind, rotate-cw, rss, scissors, server, share-2, shield-off, shopping-bag, shuffle, sidebar, skip-back, skip-forward, slack, slash, sliders, smile, speaker, square, stop-circle, sunrise, sunset, tablet, tag, target, terminal, thermometer, toggle-left, toggle-right, tool, trash-2, trending-down, triangle, truck, tv, type, umbrella, underline, upload-cloud, user-check, user-minus, user-plus, user-x, video-off, voicemail, volume, volume-1, volume-x, watch, wifi-off, wind, x-octagon, x-square, zap-off, zoom-in, zoom-out)
+- Add a coloured brand-icon set for nominative use: LinkedIn, Discord, YouTube, Reddit, Twitch, Spotify, Notion, Figma, Dropbox, npm, Stripe, PayPal, Mastercard, Vercel, Netlify, Cloudflare, Docker, Kubernetes, MongoDB. Each ships with a reminder that brand icons depict third-party trademarks and may only be used to identify the brand they represent
+
+### Changed
+
+- Retire the EagamiWordmark "eagami design system" variant. Variant `3` now renders the brand mark with its tagline (previously the role of variant `4`). Variant `4` is kept as a backwards-compatible alias for `3` and will be removed in v2.0.0
+- Double the inline `EagamiWordmarkComponent` text-stack gap (`calc(--_size * 0.1px)` → `0.2px`) so the brand, separator, and tagline read as distinct words instead of crowding the em-dash
+- Reposition `[eaTooltip]` while it is shown. Window resize, ancestor scroll, and ResizeObserver-detected layout shifts (the trigger or the page body resizing) all re-run the viewport clamp via rAF so the tooltip stays inside the viewport even when the page reflows under it. Guarded for SSR (window-free environments)
+- Only show `[eaTooltip]` on keyboard focus, not click-focus. Clicking a tooltip-trigger that opens a menu would previously latch the tooltip open after the menu closed, because focus returned to the trigger. The directive now feature-detects `:focus-visible` and only opens on focus when the browser flags it as keyboard-driven; falls back to the previous always-on-focus behaviour in test environments without `:focus-visible` support
+
+### Deprecated
+
+- `EagamiWordmarkComponent` variant `4` is deprecated and aliases to `3`. The component's `variant` input now accepts `1 | 2 | 3 | 4`; new code should pass `3`
+
 ## [1.2.1] - 2026-05-16
 
 ### Changed
@@ -409,6 +427,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0
 [1.2.1]: https://github.com/mwiraszka/eagami/compare/v1.2.0...ui-v1.2.1
 [0.4.1]: https://github.com/mwiraszka/eagami/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/mwiraszka/eagami/compare/v0.3.0...v0.4.0

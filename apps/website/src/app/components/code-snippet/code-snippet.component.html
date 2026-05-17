@@ -3,8 +3,8 @@
   <button
     type="button"
     class="code-snippet__copy"
-    aria-label="Copy to clipboard"
-    eaTooltip="Copy to clipboard"
+    [attr.aria-label]="messages().common.codeSnippet.copyLabel"
+    [eaTooltip]="messages().common.codeSnippet.copyLabel"
     tooltipPosition="left"
     (click)="copy()">
     <ea-icon-copy />

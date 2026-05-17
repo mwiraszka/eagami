@@ -24,7 +24,7 @@ Requires Node.js 20+ and pnpm 10+ (the repo's `packageManager` field handles the
 All run from the monorepo root.
 
 ```bash
-pnpm start              # website dev server (http://localhost:4200)
+pnpm start              # website dev server (http://localhost:4444)
 pnpm sandbox            # library sandbox app
 pnpm storybook          # Storybook
 pnpm test               # library tests

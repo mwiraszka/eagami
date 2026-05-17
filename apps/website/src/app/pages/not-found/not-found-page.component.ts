@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 @Component({
@@ -10,13 +11,17 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundPageComponent implements OnInit {
+export class NotFoundPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
+  private readonly i18n = inject(WebI18nService);
 
-  public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami | Page not found');
-    this.metaAndTitleService.updateDescription(
-      'The page you were looking for does not exist.',
-    );
+  protected readonly messages = this.i18n.messages;
+
+  constructor() {
+    effect(() => {
+      const m = this.messages().notFound;
+      this.metaAndTitleService.updateTitle(m.metaTitle);
+      this.metaAndTitleService.updateDescription(m.metaDescription);
+    });
   }
 }

@@ -1,11 +1,11 @@
 <div class="ui-shell">
   <aside
     class="ui-shell__sidebar"
-    aria-label="Documentation sidebar"
+    [attr.aria-label]="messages().ui.shell.sidebarLabel"
     tabindex="0">
     <nav
       class="ui-shell__nav"
-      aria-label="Documentation">
+      [attr.aria-label]="messages().ui.shell.navLabel">
       <ul
         class="ui-shell__list"
         role="list">
@@ -15,7 +15,7 @@
             routerLink="/ui"
             routerLinkActive="ui-shell__link--active"
             [routerLinkActiveOptions]="{ exact: true }">
-            Overview
+            {{ messages().ui.shell.overview }}
           </a>
         </li>
         <li>
@@ -23,7 +23,7 @@
             class="ui-shell__link"
             routerLink="/ui/setup"
             routerLinkActive="ui-shell__link--active">
-            Setup
+            {{ messages().ui.shell.setup }}
           </a>
         </li>
         <li>
@@ -31,7 +31,7 @@
             class="ui-shell__link"
             routerLink="/ui/design-tokens"
             routerLinkActive="ui-shell__link--active">
-            Design tokens
+            {{ messages().ui.shell.designTokens }}
           </a>
         </li>
         <li>
@@ -39,7 +39,7 @@
             class="ui-shell__link"
             routerLink="/ui/icons"
             routerLinkActive="ui-shell__link--active">
-            Icons
+            {{ messages().ui.shell.icons }}
           </a>
         </li>
         <li>
@@ -47,7 +47,7 @@
             class="ui-shell__link"
             routerLink="/ui/i18n"
             routerLinkActive="ui-shell__link--active">
-            Internationalization
+            {{ messages().ui.shell.i18n }}
           </a>
         </li>
         <li>
@@ -58,7 +58,7 @@
             [attr.aria-expanded]="componentsExpanded()"
             aria-controls="ui-shell-components"
             (click)="toggleComponents()">
-            <span>Components</span>
+            <span>{{ messages().ui.shell.components }}</span>
             <ea-icon-chevron-right
               class="ui-shell__caret"
               [class.ui-shell__caret--open]="componentsExpanded()"

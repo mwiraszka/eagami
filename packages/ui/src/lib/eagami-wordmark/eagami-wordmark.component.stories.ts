@@ -13,7 +13,7 @@ const meta: Meta<EagamiWordmarkComponent> = {
   argTypes: {
     variant: {
       control: 'inline-radio',
-      options: [1, 2, 3, 4],
+      options: [1, 2, 3],
     },
     layout: {
       control: 'inline-radio',
@@ -39,20 +39,16 @@ export const HandcraftedBy: Story = {
   args: { variant: 2 },
 };
 
-export const DesignSystem: Story = {
+export const Full: Story = {
   args: { variant: 3 },
 };
 
-export const Full: Story = {
-  args: { variant: 4 },
-};
-
 export const Small: Story = {
-  args: { variant: 3, size: 32 },
+  args: { variant: 2, size: 32 },
 };
 
 export const Large: Story = {
-  args: { variant: 4, size: 96 },
+  args: { variant: 3, size: 96 },
 };
 
 export const InlineHandcraftedBy: Story = {
@@ -60,5 +56,5 @@ export const InlineHandcraftedBy: Story = {
 };
 
 export const InlineFull: Story = {
-  args: { variant: 4, layout: 'inline' },
+  args: { variant: 3, layout: 'inline' },
 };

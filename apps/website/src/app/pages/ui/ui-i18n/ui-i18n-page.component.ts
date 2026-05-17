@@ -14,12 +14,13 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
+  effect,
   inject,
   signal,
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 const LOCALE_LABELS: Record<EagamiLocale, string> = {
@@ -52,10 +53,12 @@ const LOCALE_FLAGS: Record<EagamiLocale, string> = {
     SegmentedComponent,
   ],
 })
-export class UiI18nPageComponent implements OnInit {
+export class UiI18nPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
   private readonly i18n = inject(EagamiI18nService);
+  private readonly webI18n = inject(WebI18nService);
 
+  protected readonly messages = this.webI18n.messages;
   protected readonly locales = EAGAMI_LOCALES;
   protected readonly localeLabels = LOCALE_LABELS;
   protected readonly localeFlags = LOCALE_FLAGS;
@@ -109,11 +112,12 @@ export class LanguageSwitcher {
 frenchSpacing('Lignes par page :');     // 'Lignes par page&#8239;:'
 frenchSpacing('Il a dit « bonjour ».'); // 'Il a dit&#8239;«&#8239;bonjour&#8239;».'`;
 
-  public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami | UI');
-    this.metaAndTitleService.updateDescription(
-      'Switch every @eagami/ui component into English, French, Greek, Polish, or Spanish with a single provider, or override individual strings to match your app.',
-    );
+  constructor() {
+    effect(() => {
+      const m = this.messages().ui.i18n;
+      this.metaAndTitleService.updateTitle(m.metaTitle);
+      this.metaAndTitleService.updateDescription(m.metaDescription);
+    });
   }
 
   protected onLocaleChange(value: string): void {

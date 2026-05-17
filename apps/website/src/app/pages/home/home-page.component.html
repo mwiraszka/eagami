@@ -16,17 +16,17 @@
           data-text="eagami">
           eagami
         </h1>
-        <p class="home-hero__tagline">elegant web design.</p>
+        <p class="home-hero__tagline">{{ messages().home.hero.tagline }}</p>
         <div class="home-hero__actions">
           <a
             class="home-hero__cta"
             href="#contact">
-            Get in touch
+            {{ messages().home.hero.ctaPrimary }}
           </a>
           <a
             class="home-hero__link"
             href="#projects">
-            See recent projects &rarr;
+            {{ messages().home.hero.ctaSecondary }}
           </a>
         </div>
       </div>
@@ -48,18 +48,15 @@
     class="home-section home-section--services">
     <div class="home-section__inner">
       <header class="home-section__header">
-        <h2 class="home-section__title">Services</h2>
-        <p class="home-section__lede">
-          From a single landing page to a full web app, plus everything that comes after
-          launch.
-        </p>
+        <h2 class="home-section__title">{{ messages().home.services.title }}</h2>
+        <p class="home-section__lede">{{ messages().home.services.lede }}</p>
       </header>
 
       <div class="service-group">
         <ul
           class="service-list service-list--core"
           role="list">
-          @for (service of coreServices; track service.title) {
+          @for (service of coreServices(); track service.title) {
             <li class="service-item service-item--core">
               <h3 class="service-item__title">{{ service.title }}</h3>
               <p class="service-item__description">{{ service.description }}</p>
@@ -69,11 +66,13 @@
       </div>
 
       <div class="service-group">
-        <p class="service-group__heading">Features</p>
+        <p class="service-group__heading">{{
+          messages().home.services.featuresHeading
+        }}</p>
         <ul
           class="service-list service-list--addons"
           role="list">
-          @for (service of addOnServices; track service.title) {
+          @for (service of addOnServices(); track service.title) {
             <li class="service-item">
               <h3 class="service-item__title">
                 @if (service.icon) {
@@ -92,8 +91,9 @@
       </div>
 
       <p class="service-group__note">
-        Larger projects can be built on <a routerLink="/ui">Eagami UI</a>, a custom
-        component library, for a consistent and modern visual language across the site.
+        {{ messages().home.services.uiNote.before }}
+        <a routerLink="/ui">{{ messages().home.services.uiNote.link }}</a
+        >{{ messages().home.services.uiNote.after }}
       </p>
     </div>
   </section>
@@ -104,21 +104,21 @@
     class="home-section home-section--projects">
     <div class="home-section__inner">
       <header class="home-section__header">
-        <h2 class="home-section__title">Recent projects</h2>
-        <p class="home-section__lede">A few sites in active development.</p>
+        <h2 class="home-section__title">{{ messages().home.projects.title }}</h2>
+        <p class="home-section__lede">{{ messages().home.projects.lede }}</p>
       </header>
       <div class="work-carousel">
         <button
           type="button"
           class="work-carousel__nav work-carousel__nav--prev"
-          aria-label="Previous projects"
+          [attr.aria-label]="messages().home.projects.previousAriaLabel"
           (click)="scrollWork(-1)">
           &lsaquo;
         </button>
         <div
           class="work-carousel__viewport"
           role="region"
-          aria-label="Recent projects"
+          [attr.aria-label]="messages().home.projects.regionAriaLabel"
           tabindex="0"
           (keydown.arrowLeft)="scrollWork(-1); $event.preventDefault()"
           (keydown.arrowRight)="scrollWork(1); $event.preventDefault()">
@@ -154,7 +154,7 @@
         <button
           type="button"
           class="work-carousel__nav work-carousel__nav--next"
-          aria-label="Next projects"
+          [attr.aria-label]="messages().home.projects.nextAriaLabel"
           (click)="scrollWork(1)">
           &rsaquo;
         </button>
@@ -168,15 +168,15 @@
     class="home-section home-section--contact">
     <div class="home-section__inner">
       <header class="home-section__header">
-        <h2 class="home-section__title">Got a project in mind?</h2>
-        <p class="home-section__lede">Let's hear about it!</p>
+        <h2 class="home-section__title">{{ messages().home.contact.title }}</h2>
+        <p class="home-section__lede">{{ messages().home.contact.lede }}</p>
       </header>
 
       @if (contactStatus() === 'sent') {
         <div
           class="contact-success"
           role="status">
-          <p>Thanks for the message. You'll hear back soon.</p>
+          <p>{{ messages().home.contact.success }}</p>
         </div>
       } @else {
         <form
@@ -184,21 +184,21 @@
           [formGroup]="contactForm"
           (ngSubmit)="submitContact()">
           <ea-input
-            label="Name"
+            [label]="messages().home.contact.nameLabel"
             formControlName="name"
-            placeholder="Your name"
+            [placeholder]="messages().home.contact.namePlaceholder"
             [required]="true" />
           <ea-input
-            label="Email"
+            [label]="messages().home.contact.emailLabel"
             type="email"
             formControlName="email"
-            placeholder="you@example.com"
+            [placeholder]="messages().home.contact.emailPlaceholder"
             autocomplete="email"
             [required]="true"
             [errorMsg]="contactEmailError()"
             (blurred)="onContactFieldBlur()" />
           <ea-textarea
-            label="Message"
+            [label]="messages().home.contact.messageLabel"
             formControlName="message"
             [placeholder]="contactMessagePlaceholder()"
             [required]="true" />
@@ -217,7 +217,7 @@
             size="lg"
             [loading]="contactStatus() === 'sending'"
             [disabled]="!isContactFormValid()">
-            Send message
+            {{ messages().home.contact.submit }}
           </ea-button>
         </form>
       }
