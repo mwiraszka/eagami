@@ -215,7 +215,7 @@ export const esES: WebMessages = {
       getStartedHeading: 'Empezar',
       getStartedBefore: 'Ve a',
       getStartedLink: 'Instalación',
-      getStartedAfter: 'para instalar el paquete y conectar la hoja de estilos global.',
+      getStartedAfter: ' para instalar el paquete y conectar la hoja de estilos global.',
     },
     setup: {
       metaTitle: 'Eagami | UI | Instalación',

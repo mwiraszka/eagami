@@ -211,7 +211,11 @@ export const en: WebMessages = {
       getStartedHeading: 'Get started',
       getStartedBefore: 'Head to',
       getStartedLink: 'Setup',
-      getStartedAfter: 'to install the package and wire up the global stylesheet.',
+      /* Leading space because the template suppresses whitespace between the
+         link and this string so Polish can butt its trailing comma directly
+         against "Instalacji". Locales that continue with a word (en/fr/el/es)
+         provide the separator themselves. */
+      getStartedAfter: ' to install the package and wire up the global stylesheet.',
     },
     setup: {
       metaTitle: 'Eagami | UI | Setup',

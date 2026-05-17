@@ -217,7 +217,7 @@ export const el: WebMessages = {
       getStartedBefore: 'Πηγαίνετε στην',
       getStartedLink: 'Εγκατάσταση',
       getStartedAfter:
-        'για να εγκαταστήσετε το πακέτο και να συνδέσετε το καθολικό φύλλο στυλ.',
+        ' για να εγκαταστήσετε το πακέτο και να συνδέσετε το καθολικό φύλλο στυλ.',
     },
     setup: {
       metaTitle: 'Eagami | UI | Εγκατάσταση',

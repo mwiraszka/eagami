@@ -220,7 +220,7 @@ export const frFR: WebMessages = {
       getStartedBefore: 'Rendez-vous sur',
       getStartedLink: 'Installation',
       getStartedAfter:
-        'pour installer le paquet et brancher la feuille de style globale.',
+        ' pour installer le paquet et brancher la feuille de style globale.',
     },
     setup: {
       metaTitle: 'Eagami | UI | Installation',

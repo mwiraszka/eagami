@@ -215,7 +215,12 @@ export const pl: WebMessages = {
       ],
       getStartedHeading: 'Zacznij',
       getStartedBefore: 'Przejdź do',
-      getStartedLink: 'Instalacja',
+      /* "Instalacja" is the nominative form (used as-is on the page title and
+         the sidebar). Inside "Przejdź do …", the preposition "do" requires
+         the genitive case, so this link reads "Instalacji". Polish inflects
+         nouns by case; per i18n best practice we keep a separate key per
+         grammatical context rather than try to derive cases at runtime. */
+      getStartedLink: 'Instalacji',
       getStartedAfter: ', aby zainstalować pakiet i podpiąć globalny arkusz stylów.',
     },
     setup: {
