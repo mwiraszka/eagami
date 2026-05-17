@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { ThemeService } from '@app/services/theme.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { ThemeService } from '@app/services/theme.service';
 })
 export class ThemeToggleComponent {
   private readonly themeService = inject(ThemeService);
+  private readonly i18n = inject(WebI18nService);
 
   public readonly mode = this.themeService.mode;
+  public readonly messages = this.i18n.messages;
 
-  public readonly label = computed(
-    () => `Switch to ${this.mode() === 'light' ? 'dark' : 'light'} mode`,
+  public readonly label = computed(() =>
+    this.messages().common.themeToggleLabel(this.mode() === 'light' ? 'dark' : 'light'),
   );
 
   public cycle(): void {

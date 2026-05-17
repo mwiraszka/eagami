@@ -1,0 +1,35 @@
+<button
+  #trigger
+  type="button"
+  class="web-locale-switcher__trigger"
+  [eaMenuTrigger]="localeMenu"
+  [attr.aria-label]="buttonLabel()"
+  [attr.data-tooltip]="messages().common.localeMenuTooltip">
+  <ea-icon-globe
+    class="web-locale-switcher__icon"
+    aria-hidden="true" />
+</button>
+<ea-menu
+  #localeMenu
+  placement="bottom-end"
+  [attr.aria-label]="messages().common.localeMenuLabel">
+  @for (locale of locales; track locale) {
+    <ea-menu-item (clicked)="onSelect(locale)">
+      <span class="web-locale-switcher__item">
+        <span
+          class="web-locale-switcher__flag"
+          aria-hidden="true">
+          {{ flags[locale] }}
+        </span>
+        <span class="web-locale-switcher__name">{{ labels[locale] }}</span>
+        @if (locale === active()) {
+          <span
+            class="web-locale-switcher__check"
+            aria-hidden="true">
+            ✓
+          </span>
+        }
+      </span>
+    </ea-menu-item>
+  }
+</ea-menu>

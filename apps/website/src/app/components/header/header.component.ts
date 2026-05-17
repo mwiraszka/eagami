@@ -12,7 +12,9 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
+import { LocaleSwitcherComponent } from '@app/components/locale-switcher/locale-switcher.component';
 import { ThemeToggleComponent } from '@app/components/theme-toggle/theme-toggle.component';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 @Component({
   selector: 'web-header',
@@ -24,11 +26,15 @@ import { ThemeToggleComponent } from '@app/components/theme-toggle/theme-toggle.
     EagamiIconComponent,
     GithubIconComponent,
     ThemeToggleComponent,
+    LocaleSwitcherComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   private readonly router = inject(Router);
+  private readonly i18n = inject(WebI18nService);
+
+  protected readonly messages = this.i18n.messages;
 
   private readonly currentUrl = toSignal(
     this.router.events.pipe(

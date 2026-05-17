@@ -5,7 +5,7 @@
     [attr.aria-hidden]="!brandVisible() ? 'true' : null"
     [attr.tabindex]="brandVisible() ? null : -1"
     routerLink="/"
-    aria-label="eagami home">
+    [attr.aria-label]="messages().common.brandHome">
     <ea-icon-eagami class="web-header__brand-icon" />
     <span class="web-header__brand-text">eagami</span>
   </a>
@@ -16,18 +16,19 @@
       class="web-header__link"
       routerLink="/ui"
       routerLinkActive="web-header__link--active"
-      data-tooltip="Component library docs">
-      UI
+      [attr.data-tooltip]="messages().common.navUiTooltip">
+      {{ messages().common.navUi }}
     </a>
     <a
       class="web-header__link web-header__link--icon"
       href="https://github.com/mwiraszka/eagami"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="eagami on GitHub"
-      data-tooltip="View source on GitHub">
+      [attr.aria-label]="messages().common.githubAriaLabel"
+      [attr.data-tooltip]="messages().common.githubTooltip">
       <ea-icon-github />
     </a>
+    <web-locale-switcher />
     <web-theme-toggle />
   </nav>
 </header>

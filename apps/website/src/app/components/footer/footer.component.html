@@ -1,21 +1,23 @@
 <footer class="web-footer">
-  <p class="web-footer__copyright">© {{ currentYear }} eagami</p>
+  <p class="web-footer__copyright">{{
+    messages().common.footer.copyright(currentYear)
+  }}</p>
   <nav
     class="web-footer__links"
-    aria-label="Footer">
+    [attr.aria-label]="messages().common.footer.navLabel">
     <a
       class="web-footer__link"
       href="https://www.npmjs.com/package/@eagami/ui"
       target="_blank"
       rel="noopener noreferrer">
-      npm
+      {{ messages().common.footer.npmLink }}
     </a>
     <a
       class="web-footer__link web-footer__link--icon"
       href="https://github.com/mwiraszka/eagami"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="eagami on GitHub">
+      [attr.aria-label]="messages().common.footer.githubAriaLabel">
       <ea-icon-github />
     </a>
   </nav>

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 @Component({
@@ -10,8 +11,11 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CodeSnippetComponent],
 })
-export class UiSetupPageComponent implements OnInit {
+export class UiSetupPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
+  private readonly i18n = inject(WebI18nService);
+
+  protected readonly messages = this.i18n.messages;
 
   protected readonly stylesheetSnippet =
     '"styles": ["node_modules/@eagami/ui/src/styles/eagami-ui.scss"]';
@@ -31,10 +35,11 @@ export class MyComponent {
   save() { /* ... */ }
 }`;
 
-  public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami | UI');
-    this.metaAndTitleService.updateDescription(
-      'Install @eagami/ui, wire up the global stylesheet and fonts, and import your first component.',
-    );
+  constructor() {
+    effect(() => {
+      const m = this.messages().ui.setup;
+      this.metaAndTitleService.updateTitle(m.metaTitle);
+      this.metaAndTitleService.updateDescription(m.metaDescription);
+    });
   }
 }

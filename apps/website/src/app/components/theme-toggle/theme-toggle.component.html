@@ -1,7 +1,7 @@
 <button
   type="button"
   class="web-theme-toggle"
-  data-tooltip="Toggle theme"
+  [attr.data-tooltip]="messages().common.themeToggleTooltip"
   [attr.aria-label]="label()"
   [attr.aria-pressed]="mode() === 'dark'"
   (click)="cycle()">

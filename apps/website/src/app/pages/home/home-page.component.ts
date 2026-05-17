@@ -19,10 +19,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  OnInit,
   Type,
   afterNextRender,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -37,7 +37,17 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
+
+const ICON_BY_SLUG: Record<string, Type<unknown>> = {
+  users: UsersIconComponent,
+  'credit-card': CreditCardIconComponent,
+  globe: GlobeIconComponent,
+  moon: MoonIconComponent,
+  'bar-chart': BarChartIconComponent,
+  mail: MailIconComponent,
+};
 
 interface Project {
   title: string;
@@ -48,7 +58,7 @@ interface Project {
   placeholder?: boolean;
 }
 
-interface Service {
+interface ServiceView {
   title: string;
   description: string;
   icon?: Type<unknown>;
@@ -83,41 +93,17 @@ function strictEmailValidator(control: AbstractControl): ValidationErrors | null
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
   private readonly http = inject(HttpClient);
   private readonly toastService = inject(ToastService);
+  private readonly i18n = inject(WebI18nService);
 
-  protected readonly projects: Project[] = [
-    {
-      title: 'London Chess',
-      description: 'A hub for the London Chess Club and chess events in London, ON.',
-      url: 'https://londonchess.ca',
-      display: 'londonchess.ca',
-      logo: 'assets/projects/londonchess.svg',
-    },
-    {
-      title: 'CIRC Aesthetics',
-      description: 'Cosmetic Interventional Radiology Clinic based in London, ON.',
-      url: 'https://circaesthetics.ca',
-      display: 'circaesthetics.ca',
-      logo: 'assets/projects/circaesthetics.svg',
-    },
-    {
-      title: 'Brewski Bets',
-      description: 'A tracker for casual bets between friends, settled in beer.',
-      url: 'https://brewskibets.com',
-      display: 'brewskibets.com',
-      logo: 'assets/projects/brewskibets.svg',
-    },
-    {
-      title: 'Chordbomb',
-      description: 'Coming soon...',
-      url: 'https://chordbomb.com',
-      display: 'chordbomb.com',
-      logo: 'assets/projects/chordbomb.svg',
-    },
-  ];
+  protected readonly messages = this.i18n.messages;
+
+  protected readonly projects = computed<Project[]>(() =>
+    this.messages().home.projects.cards.map(c => ({ ...c })),
+  );
 
   private readonly carouselOffset = signal(0);
   protected readonly slideDirection = signal<-1 | 0 | 1>(0);
@@ -126,10 +112,11 @@ export class HomePageComponent implements OnInit {
 
   protected readonly orderedProjects = computed<Project[]>(() => {
     const offset = this.carouselOffset();
-    const len = this.projects.length;
+    const projects = this.projects();
+    const len = projects.length;
     return Array.from({ length: 5 }, (_, i) => {
       const idx = (((offset - 1 + i) % len) + len) % len;
-      return this.projects[idx];
+      return projects[idx];
     });
   });
 
@@ -139,58 +126,23 @@ export class HomePageComponent implements OnInit {
   protected readonly carouselStatus = computed(() => {
     const centered = this.orderedProjects()[2];
     if (!centered) return '';
-    return `Showing ${centered.title}`;
+    return this.messages().home.projects.showing(centered.title);
   });
 
-  protected readonly coreServices: Service[] = [
-    {
-      title: 'Custom websites',
-      description:
-        'A complete site built from the ground up: domain setup, hosting, branding, design, and launch. Unlimited revisions until launch day.',
-    },
-    {
-      title: 'Ongoing maintenance',
-      description:
-        'Monthly support for hosting, security updates, third-party package upgrades, content revisions, and analytics.',
-    },
-  ];
+  protected readonly coreServices = computed<ServiceView[]>(() =>
+    this.messages().home.services.core.map(s => ({
+      title: s.title,
+      description: s.description,
+    })),
+  );
 
-  protected readonly addOnServices: Service[] = [
-    {
-      title: 'User management',
-      description:
-        'User authentication, registration, and password recovery, plus an admin dashboard with metrics and per-user controls.',
-      icon: UsersIconComponent,
-    },
-    {
-      title: 'Payment processing',
-      description:
-        'Online payments (Stripe by default, other providers on request), with customizable payment forms and recurring billing.',
-      icon: CreditCardIconComponent,
-    },
-    {
-      title: 'Multilingual support',
-      description:
-        "Language support for multiple locales, with optional auto-detection from the visitor's browser.",
-      icon: GlobeIconComponent,
-    },
-    {
-      title: 'Theming',
-      description: 'Dark/light mode toggle and fully customizable color themes.',
-      icon: MoonIconComponent,
-    },
-    {
-      title: 'Analytics & insights',
-      description:
-        'Website traffic metrics (sources, devices, locations), plus custom event tracking.',
-      icon: BarChartIconComponent,
-    },
-    {
-      title: 'Email & notifications',
-      description: 'Automated emails for account activity, receipts, and announcements.',
-      icon: MailIconComponent,
-    },
-  ];
+  protected readonly addOnServices = computed<ServiceView[]>(() =>
+    this.messages().home.services.addOns.map(s => ({
+      title: s.title,
+      description: s.description,
+      icon: ICON_BY_SLUG[s.iconSlug],
+    })),
+  );
 
   protected readonly contactForm = new FormGroup({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -226,17 +178,12 @@ export class HomePageComponent implements OnInit {
     this.contactFormVersion();
     const email = this.contactForm.controls.email;
     return email.touched && email.errors?.['email']
-      ? 'Please enter a valid email address'
+      ? this.messages().home.contact.emailInvalid
       : undefined;
   });
 
   /* Three example messages cycled through the textarea placeholder with a
      typewriter effect to prime first-time senders on what to write. */
-  private readonly contactPlaceholderHints = [
-    "Hi! I'm working on a side project and could use a hand with the frontend...",
-    'Looking for someone to build a website for our small business...',
-    'Quick question about the component library before I dig in...',
-  ];
   protected readonly contactMessagePlaceholder = signal('');
 
   private readonly destroyRef = inject(DestroyRef);
@@ -244,6 +191,12 @@ export class HomePageComponent implements OnInit {
   constructor() {
     this.contactForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(() => {
       this.contactFormVersion.update(v => v + 1);
+    });
+
+    effect(() => {
+      const m = this.messages().home;
+      this.metaAndTitleService.updateTitle(m.metaTitle);
+      this.metaAndTitleService.updateDescription(m.metaDescription);
     });
 
     afterNextRender(() => {
@@ -303,7 +256,7 @@ export class HomePageComponent implements OnInit {
     const HOLD_AFTER_TYPE_MS = 2500;
     const CURSOR = '|';
 
-    /* Under `prefers-reduced-motion: reduce` skip the typewriter — rotate
+    /* Under `prefers-reduced-motion: reduce` skip the typewriter, rotate
        between the full hints on a slow interval and never reveal the cursor.
        The hint is decorative; SR users have the `<ea-textarea>` label. */
     const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -312,11 +265,15 @@ export class HomePageComponent implements OnInit {
     let charIdx = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
 
+    const hints = (): ReadonlyArray<string> =>
+      this.messages().home.contact.placeholderHints;
+
     if (motionReduced) {
       const ROTATE_MS = 6000;
       const rotate = (): void => {
-        this.contactMessagePlaceholder.set(this.contactPlaceholderHints[msgIdx]);
-        msgIdx = (msgIdx + 1) % this.contactPlaceholderHints.length;
+        const h = hints();
+        this.contactMessagePlaceholder.set(h[msgIdx % h.length]);
+        msgIdx = (msgIdx + 1) % h.length;
         timer = setTimeout(rotate, ROTATE_MS);
       };
 
@@ -329,13 +286,14 @@ export class HomePageComponent implements OnInit {
     }
 
     const typeNext = (): void => {
-      const current = this.contactPlaceholderHints[msgIdx];
+      const h = hints();
+      const current = h[msgIdx % h.length];
       charIdx++;
       this.contactMessagePlaceholder.set(current.slice(0, charIdx) + CURSOR);
 
       if (charIdx >= current.length) {
         timer = setTimeout(() => {
-          msgIdx = (msgIdx + 1) % this.contactPlaceholderHints.length;
+          msgIdx = (msgIdx + 1) % hints().length;
           charIdx = 0;
           this.contactMessagePlaceholder.set(CURSOR);
           timer = setTimeout(typeNext, TYPE_MS);
@@ -353,11 +311,6 @@ export class HomePageComponent implements OnInit {
     typeNext();
   }
 
-  public ngOnInit(): void {
-    this.metaAndTitleService.updateTitle('Eagami');
-    this.metaAndTitleService.updateDescription('Elegant web design');
-  }
-
   protected scrollWork(direction: 1 | -1): void {
     if (this.slideDirection() !== 0) return;
 
@@ -367,7 +320,7 @@ export class HomePageComponent implements OnInit {
       this.suppressTransition.set(true);
 
       requestAnimationFrame(() => {
-        const len = this.projects.length;
+        const len = this.projects().length;
         this.slideDirection.set(0);
         this.carouselOffset.update(v => (v + direction + len) % len);
 
@@ -392,12 +345,11 @@ export class HomePageComponent implements OnInit {
       next: () => {
         this.contactStatus.set('sent');
         this.contactForm.reset();
-        this.toastService.success('Message sent');
+        this.toastService.success(this.messages().home.contact.sentToast);
       },
       error: () => {
         this.contactStatus.set('error');
-        const message =
-          'Sorry, something went wrong. Please email michal@eagami.com directly.';
+        const message = this.messages().home.contact.errorMessage;
         this.contactError.set(message);
         this.toastService.error(message);
       },

@@ -1,0 +1,61 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+.web-locale-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.web-locale-switcher__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.web-locale-switcher__item {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.web-locale-switcher__flag {
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.web-locale-switcher__name {
+  flex: 1;
+}
+
+.web-locale-switcher__check {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-text-brand);
+}

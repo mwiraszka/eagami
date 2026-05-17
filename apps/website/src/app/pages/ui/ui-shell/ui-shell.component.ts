@@ -12,6 +12,7 @@ import {
 } from '@angular/router';
 
 import { UI_COMPONENTS } from '@app/data/ui-components';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 @Component({
   selector: 'web-ui-shell',
@@ -22,7 +23,9 @@ import { UI_COMPONENTS } from '@app/data/ui-components';
 })
 export class UiShellComponent {
   private readonly router = inject(Router);
+  private readonly i18n = inject(WebI18nService);
 
+  protected readonly messages = this.i18n.messages;
   protected readonly components = UI_COMPONENTS;
   protected readonly componentsExpanded = signal(false);
 
