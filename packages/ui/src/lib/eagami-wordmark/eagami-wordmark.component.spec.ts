@@ -75,20 +75,20 @@ describe('EagamiWordmarkComponent', () => {
       expect(getTagline()).toBeNull();
     });
 
-    it('renders brand only for variant 3', () => {
+    it('renders brand and tagline for variant 3', () => {
       fixture.componentRef.setInput('variant', 3);
       fixture.detectChanges();
 
-      expect(getBrand()?.textContent?.trim()).toBe('eagami design system');
+      expect(getBrand()?.textContent?.trim()).toBe('eagami');
+      expect(getTagline()?.textContent?.trim()).toBe('elegant web design');
       expect(getOverline()).toBeNull();
-      expect(getTagline()).toBeNull();
     });
 
-    it('renders brand and tagline for variant 4', () => {
+    it('treats the deprecated variant 4 as an alias for variant 3', () => {
       fixture.componentRef.setInput('variant', 4);
       fixture.detectChanges();
 
-      expect(getBrand()?.textContent?.trim()).toBe('eagami design system');
+      expect(getBrand()?.textContent?.trim()).toBe('eagami');
       expect(getTagline()?.textContent?.trim()).toBe('elegant web design');
       expect(getOverline()).toBeNull();
     });
@@ -104,20 +104,11 @@ describe('EagamiWordmarkComponent', () => {
       expect(getAnchor().getAttribute('aria-label')).toBe('handcrafted by eagami');
     });
 
-    it('sets aria-label to "eagami design system" for variant 3', () => {
+    it('sets aria-label to the full text for variant 3', () => {
       fixture.componentRef.setInput('variant', 3);
       fixture.detectChanges();
 
-      expect(getAnchor().getAttribute('aria-label')).toBe('eagami design system');
-    });
-
-    it('sets aria-label to the full text for variant 4', () => {
-      fixture.componentRef.setInput('variant', 4);
-      fixture.detectChanges();
-
-      expect(getAnchor().getAttribute('aria-label')).toBe(
-        'eagami design system \u2014 elegant web design',
-      );
+      expect(getAnchor().getAttribute('aria-label')).toBe('eagami — elegant web design');
     });
   });
 
@@ -159,12 +150,12 @@ describe('EagamiWordmarkComponent', () => {
       expect(getBrand()?.textContent?.trim()).toBe('eagami');
     });
 
-    it('renders brand and tagline inline for variant 4', () => {
-      fixture.componentRef.setInput('variant', 4);
+    it('renders brand and tagline inline for variant 3', () => {
+      fixture.componentRef.setInput('variant', 3);
       fixture.componentRef.setInput('layout', 'inline');
       fixture.detectChanges();
 
-      expect(getBrand()?.textContent?.trim()).toBe('eagami design system');
+      expect(getBrand()?.textContent?.trim()).toBe('eagami');
       expect(getTagline()?.textContent?.trim()).toBe('elegant web design');
     });
   });
