@@ -10,8 +10,6 @@ export interface WebMessages {
     brandHome: string;
     navUi: string;
     navUiTooltip: string;
-    githubAriaLabel: string;
-    githubTooltip: string;
     themeToggleTooltip: string;
     themeToggleLabel: (next: 'light' | 'dark') => string;
     localeMenuLabel: string;
@@ -20,7 +18,9 @@ export interface WebMessages {
     footer: {
       copyright: (year: number) => string;
       npmLink: string;
+      npmTooltip: string;
       githubAriaLabel: string;
+      githubTooltip: string;
       navLabel: string;
     };
     codeSnippet: {

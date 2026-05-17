@@ -9,7 +9,9 @@
       class="web-footer__link"
       href="https://www.npmjs.com/package/@eagami/ui"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+      [eaTooltip]="messages().common.footer.npmTooltip"
+      tooltipPosition="top">
       {{ messages().common.footer.npmLink }}
     </a>
     <a
@@ -17,7 +19,9 @@
       href="https://github.com/mwiraszka/eagami"
       target="_blank"
       rel="noopener noreferrer"
-      [attr.aria-label]="messages().common.footer.githubAriaLabel">
+      [attr.aria-label]="messages().common.footer.githubAriaLabel"
+      [eaTooltip]="messages().common.footer.githubTooltip"
+      tooltipPosition="top">
       <ea-icon-github />
     </a>
   </nav>

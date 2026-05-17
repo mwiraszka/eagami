@@ -1,4 +1,4 @@
-import { GithubIconComponent } from '@eagami/ui';
+import { GithubIconComponent, TooltipDirective } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
@@ -8,7 +8,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-footer',
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
-  imports: [GithubIconComponent],
+  imports: [GithubIconComponent, TooltipDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
