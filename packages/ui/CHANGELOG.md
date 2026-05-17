@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expand the icon set from 100 to 268 icons. Round out the Feather Icons coverage with 148 additions (activity, airplay, alert-octagon, align-{center,justify,left,right}, anchor, aperture, arrow-down-{left,right}, arrow-up-{left,right}, award, battery, battery-charging, bell-off, bluetooth, bold, book, book-open, box, chrome, code, codepen, codesandbox, coffee, columns, command, compass, corner-{down,up}-{left,right}, cpu, crop, crosshair, database, delete, disc, divide, download-cloud, droplet, edit, edit-2, edit-3, fast-forward, feather, file-minus, file-plus, file-text, film, frown, git-branch, git-commit, git-merge, git-pull-request, gitlab, grid, hard-drive, headphones, italic, key, layers, layout, life-buoy, link-2, map, maximize-2, meh, message-circle, message-square, mic-off, minimize-2, minus-circle, minus-square, more-vertical, mouse-pointer, move, music, navigation, navigation-2, octagon, pause-circle, percent, pie-chart, play-circle, plus-circle, plus-square, pocket, power, radio, repeat, rewind, rotate-cw, rss, scissors, server, share-2, shield-off, shopping-bag, shuffle, sidebar, skip-back, skip-forward, slack, slash, sliders, smile, speaker, square, stop-circle, sunrise, sunset, tablet, tag, target, terminal, thermometer, toggle-left, toggle-right, tool, trash-2, trending-down, triangle, truck, tv, type, umbrella, underline, upload-cloud, user-check, user-minus, user-plus, user-x, video-off, voicemail, volume, volume-1, volume-x, watch, wifi-off, wind, x-octagon, x-square, zap-off, zoom-in, zoom-out)
 - Add a coloured brand-icon set for nominative use: LinkedIn, Discord, YouTube, Reddit, Twitch, Spotify, Notion, Figma, Dropbox, npm, Stripe, PayPal, Mastercard, Vercel, Netlify, Cloudflare, Docker, Kubernetes, MongoDB. Each ships with a reminder that brand icons depict third-party trademarks and may only be used to identify the brand they represent
 
+### Changed
+
+- Retire the EagamiWordmark "eagami design system" variant. Variant `3` now renders the brand mark with its tagline (previously the role of variant `4`). Variant `4` is kept as a backwards-compatible alias for `3` and will be removed in v2.0.0
+- Clamp tooltips to the viewport so triggers near the screen edge no longer get their tooltip text clipped by the chrome. The bubble shifts inward by up to its overflow distance while the trigger stays in place
+
+### Deprecated
+
+- `EagamiWordmarkComponent` variant `4` is deprecated and aliases to `3`. The component's `variant` input now accepts `1 | 2 | 3 | 4`; new code should pass `3`
+
 ## [1.2.1] - 2026-05-16
 
 ### Changed
