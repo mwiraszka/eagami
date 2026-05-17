@@ -90,10 +90,12 @@ export class WebI18nService {
 
     localStorage.setItem(STORAGE_KEY, locale);
     this.doc.documentElement.setAttribute('lang', locale);
-    /* The inline <head> script set this class when the resolved locale wasn't
-       English, hiding the prerendered English body until we swap the strings.
-       Now that messages are bound to the active locale and Angular has
-       re-rendered into the right language, reveal the page. */
-    this.doc.documentElement.classList.remove('web-locale-pending');
+    /* The `web-locale-pending` class set by the inline <head> script is NOT
+       removed here. Doing so in the service constructor would fire before
+       Angular has re-rendered components with the active locale's strings,
+       so the English prerendered DOM would briefly show through the moment
+       it became visible. AppComponent clears the class from an
+       `afterNextRender` callback instead, after the first render commits
+       in the active locale. */
   }
 }
