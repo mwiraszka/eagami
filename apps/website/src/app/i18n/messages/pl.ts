@@ -6,8 +6,6 @@ export const pl: WebMessages = {
     brandHome: 'Strona główna eagami',
     navUi: 'UI',
     navUiTooltip: 'Dokumentacja biblioteki komponentów',
-    githubAriaLabel: 'eagami na GitHubie',
-    githubTooltip: 'Zobacz kod źródłowy na GitHubie',
     themeToggleTooltip: 'Przełącz motyw',
     themeToggleLabel: next =>
       `Przełącz na motyw ${next === 'light' ? 'jasny' : 'ciemny'}`,
@@ -17,7 +15,9 @@ export const pl: WebMessages = {
     footer: {
       copyright: year => `© ${year} eagami`,
       npmLink: 'npm',
+      npmTooltip: 'Zobacz @eagami/ui w npm',
       githubAriaLabel: 'eagami na GitHubie',
+      githubTooltip: 'Zobacz kod źródłowy na GitHubie',
       navLabel: 'Stopka',
     },
     codeSnippet: {
@@ -54,7 +54,7 @@ export const pl: WebMessages = {
         {
           title: 'Bieżące utrzymanie',
           description:
-            'Miesięczne wsparcie w zakresie hostingu, aktualizacji bezpieczeństwa, aktualizacji pakietów zewnętrznych, zmian treści i analityki.',
+            'Comiesięczna opieka obejmująca hosting, łatki bezpieczeństwa, aktualizacje zależności, edycje treści i przeglądy analityki.',
         },
       ],
       addOns: [

@@ -10,8 +10,6 @@ export const frFR: WebMessages = {
     brandHome: 'Accueil eagami',
     navUi: 'UI',
     navUiTooltip: 'Documentation de la bibliothèque',
-    githubAriaLabel: 'eagami sur GitHub',
-    githubTooltip: 'Voir le code source sur GitHub',
     themeToggleTooltip: 'Changer de thème',
     themeToggleLabel: next => `Passer en mode ${next === 'light' ? 'clair' : 'sombre'}`,
     localeMenuLabel: 'Langue',
@@ -20,7 +18,9 @@ export const frFR: WebMessages = {
     footer: {
       copyright: year => `© ${year} eagami`,
       npmLink: 'npm',
+      npmTooltip: 'Voir @eagami/ui sur npm',
       githubAriaLabel: 'eagami sur GitHub',
+      githubTooltip: 'Voir le code source sur GitHub',
       navLabel: 'Pied de page',
     },
     codeSnippet: {
@@ -57,7 +57,7 @@ export const frFR: WebMessages = {
         {
           title: 'Maintenance continue',
           description:
-            'Assistance mensuelle pour l’hébergement, les mises à jour de sécurité, les paquets tiers, les révisions de contenu et les analyses.',
+            'Entretien mensuel couvrant l’hébergement, les correctifs de sécurité, les mises à jour des dépendances, les retouches de contenu et l’examen des analyses.',
         },
       ],
       addOns: [

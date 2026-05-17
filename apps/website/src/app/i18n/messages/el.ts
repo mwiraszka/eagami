@@ -6,8 +6,6 @@ export const el: WebMessages = {
     brandHome: 'Αρχική eagami',
     navUi: 'UI',
     navUiTooltip: 'Τεκμηρίωση της βιβλιοθήκης',
-    githubAriaLabel: 'eagami στο GitHub',
-    githubTooltip: 'Δείτε τον πηγαίο κώδικα στο GitHub',
     themeToggleTooltip: 'Εναλλαγή θέματος',
     themeToggleLabel: next =>
       `Εναλλαγή σε ${next === 'light' ? 'φωτεινό' : 'σκοτεινό'} θέμα`,
@@ -17,7 +15,9 @@ export const el: WebMessages = {
     footer: {
       copyright: year => `© ${year} eagami`,
       npmLink: 'npm',
+      npmTooltip: 'Δείτε το @eagami/ui στο npm',
       githubAriaLabel: 'eagami στο GitHub',
+      githubTooltip: 'Δείτε τον πηγαίο κώδικα στο GitHub',
       navLabel: 'Υποσέλιδο',
     },
     codeSnippet: {
@@ -54,7 +54,7 @@ export const el: WebMessages = {
         {
           title: 'Συνεχής συντήρηση',
           description:
-            'Μηνιαία υποστήριξη για φιλοξενία, ενημερώσεις ασφαλείας, αναβαθμίσεις πακέτων τρίτων, αναθεωρήσεις περιεχομένου και αναλυτικά στοιχεία.',
+            'Μηνιαία συντήρηση που καλύπτει τη φιλοξενία, τις διορθώσεις ασφαλείας, τις αναβαθμίσεις εξαρτήσεων, τις τροποποιήσεις περιεχομένου και την επισκόπηση των αναλυτικών στοιχείων.',
         },
       ],
       addOns: [
