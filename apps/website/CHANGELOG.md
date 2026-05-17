@@ -18,6 +18,8 @@ All notable changes to eagami.com are documented in this file.
 ### Fixed
 
 - Eliminate the theme and locale flash on reload. The inline `<head>` bootstrap script now resolves theme and locale (auto-detecting from `prefers-color-scheme` and `navigator.languages` when nothing is stored), then sets `data-theme` and `<html lang>` before any paint. For locales other than the prerendered English, the body is held with `visibility: hidden` until `AppComponent`'s `ApplicationRef.isStable` callback fires — waiting on full app stability rather than just the first render lets Angular's hydration reconciliation finish swapping the English strings out for the active locale's strings before the gate lifts.
+- Inset the focus ring on the `/ui` sidebar so it no longer gets clipped on the right and bottom edges by neighbouring grid cells and the sticky scroll context.
+- Polish: change the UI overview "Zacznij" link from "Instalacja" (nominative) to "Instalacji" (genitive) so "Przejdź do Instalacji" reads naturally, and route every locale's `getStartedAfter` through the same whitespace-suppressed template so the comma in the Polish phrase no longer renders with a leading space.
 
 ### Added
 
