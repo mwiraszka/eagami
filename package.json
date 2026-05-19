@@ -18,7 +18,7 @@
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
-    "start": "pnpm --filter eagami-website start",
+    "start": "concurrently --kill-others --names ui,web --prefix-colors auto \"pnpm --filter @eagami/ui watch\" \"pnpm --filter eagami-website start\"",
     "sandbox": "pnpm --filter @eagami/ui sandbox",
     "storybook": "pnpm --filter @eagami/ui storybook",
     "ui": "pnpm --filter @eagami/ui",
@@ -78,5 +78,8 @@
         "CVE-2026-4926"
       ]
     }
+  },
+  "devDependencies": {
+    "concurrently": "9.2.1"
   }
 }
