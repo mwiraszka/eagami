@@ -24,7 +24,7 @@ export type CardHeaderAlign = 'start' | 'center' | 'end';
  */
 @Component({
   selector: 'ea-card',
-  imports: [NgClass, DividerComponent],
+  imports: [DividerComponent, NgClass],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

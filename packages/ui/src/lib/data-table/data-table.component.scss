@@ -12,8 +12,8 @@
   // ---------------------------------------------------------------------------
   // Scroll wrapper — owns horizontal scroll so the table can be wider than the
   // host without dragging the slotted paginator into the scrolled coordinate
-  // space (which previously left the paginator's `border-top` divider short
-  // of the host's right edge on narrow viewports).
+  // space, which would shorten the paginator's `border-top` divider so it
+  // stops short of the host's right edge on narrow viewports.
   // ---------------------------------------------------------------------------
   &__scroll {
     overflow-x: auto;

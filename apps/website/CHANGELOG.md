@@ -2,6 +2,22 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [1.4.0] - 2026-05-20
+
+### Added
+
+- Pick up @eagami/ui v1.4.0, which adds 11 new icons (`bottle`, `candle`, `circle`, `heptagon`, `hexagon`, `lamp`, `pentagon`, `rectangle-horizontal`, `rectangle-vertical`, `soccer-ball`, `trophy`) and closes coverage of the upstream Feather Icons set: 39 previously-missing Feather icons (arrows, chevrons, weather, phone variants, etc.) plus second-variant Feather-outline versions (`<brand>-2`) of every brand mark that ships as a filled brand-coloured icon. Categorization on the page is now invariant: every icon is exactly one of `feather` or `eagami`, with `brand` as an orthogonal tag. Total visible on `/ui/icons`: 326 (the deprecated `pencil` alias is hidden).
+- Add a sticky search-and-filter card to `/ui/icons`. Typing matches against a multilingual tag list per icon (English plus French, Spanish, Greek, and Polish equivalents), so a French user can find `cœur` for `heart`, a Polish user can find `wiadomość` for the message icons, and so on. Diacritics are normalized on both sides of the match, the input is capped at 64 characters, and an empty-result state shows a localized "no icons match your search" message. The card sits as a rounded, drop-shadowed panel below the app header so it reads as its own UI rather than a header extension. Stickiness is scoped to the icon-grid section so the card releases before the brand-icons reference section.
+- Add three category checkboxes (Feather, Eagami UI, Brand), built with `<ea-checkbox>` from the library, to the filter card. Each carries its running count in dimmer secondary text, and hovering the row tints both the label and the count for clear interactive affordance. Combined with the text filter, they let a reader narrow to e.g. "all Eagami UI shapes" in one click. Categories live on each icon as a typed `categories: IconCategory[]` field so an icon can belong to more than one group (e.g. the `eagami` brand mark counts as both `eagami` and `brand`).
+- Show a running total below the input (`279 icons` when unfiltered, `42 of 279 icons` when narrowed), localized in all five locales and announced via `aria-live="polite"` so screen readers pick up the new total as the user types.
+- Tag audio-control icons (play, pause, skip-forward, headphones, volume, etc.) with `music` / `audio` so a user can collect the whole group with one query. Other family tags (`shape` on all basic shapes) round out the multilingual coverage.
+
+### Changed
+
+- Reword the `/ui/icons` lede to acknowledge that not every icon is Feather-derived (the household, brand and Eagami UI originals are not), and restore inline links on Feather Icons, Cole Bemis, and the MIT License. Switching the lede to a single localized HTML string also fixes the awkward whitespace around `<code>font-size</code>`.
+- Override the icon display name for slugs whose canonical casing doesn't match the default `slug → Title Case` (e.g. `github → GitHub`, `youtube → YouTube`, `linkedin → LinkedIn`, `npm → npm`, `rss → RSS`, `cpu → CPU`, `tv → TV`, `mongodb → MongoDB`, `codepen → CodePen`, `codesandbox → CodeSandbox`, `paypal → PayPal`, `x-twitter → X (Twitter)`).
+- Sort the `/ui/icons` grid in slug order so a base icon (`github`) always precedes its `-2` brand variant (`github-2`).
+
 ## [1.3.0] - 2026-05-17
 
 ### Added
@@ -353,6 +369,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[1.4.0]: https://github.com/mwiraszka/eagami/compare/website-v1.3.0...website-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/website-v1.2.0...website-v1.3.0
 [1.2.0]: https://github.com/mwiraszka/eagami/releases/tag/website-v1.2.0
 [1.1.0]: https://github.com/mwiraszka/eagami-website-archive/compare/v1.0.9...v1.1.0

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-maximize-2',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -30,4 +31,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class Maximize2IconComponent {}
+export class Maximize2IconComponent extends IconComponentBase {
+  static readonly slug = 'maximize-2';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'maximize-2',
+    'maximize',
+    '2',
+    'expand',
+    'fullscreen',
+    'enlarge',
+    'agrandir',
+    'maximizar',
+    'μεγιστοποίηση',
+    'maksymalizuj',
+  ];
+}

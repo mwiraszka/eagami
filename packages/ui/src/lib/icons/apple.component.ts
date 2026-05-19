@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconComponentBase } from './icon-category';
+
 /**
  * @deprecated Will be removed in v2.0.0. The icon depicts Apple Inc.'s logo,
  * which is more strictly protected than other brand marks. Source the asset
@@ -9,10 +11,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 @Component({
   selector: 'ea-icon-apple',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#000000' : null",
-  },
+  host: { '[style.color]': "brand() ? '#000000' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,6 +24,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class AppleIconComponent {
+export class AppleIconComponent extends IconComponentBase {
   readonly brand = input<boolean>(false);
 }

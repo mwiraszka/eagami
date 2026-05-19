@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-disc',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -26,4 +27,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class DiscIconComponent {}
+export class DiscIconComponent extends IconComponentBase {
+  static readonly slug = 'disc';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'disc',
+    'cd',
+    'dvd',
+    'record',
+    'music',
+    'album',
+    'disque',
+    'disco',
+    'δίσκος',
+    'μουσική',
+    'płyta',
+    'dysk',
+  ];
+}

@@ -188,8 +188,12 @@
   font-family: var(--font-family-sans);
   line-height: var(--line-height-normal);
 
+  // `opacity: 1` overrides the Firefox / WebKit default of ~0.54 on placeholder
+  // text to keep the tertiary token from washing out further and (in dark
+  // mode) collapsing the contrast between typed and placeholder text.
   &::placeholder {
     color: var(--color-text-tertiary);
+    opacity: 1;
   }
 
   // Override browser autofill background color

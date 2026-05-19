@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-archive',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -29,4 +30,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ArchiveIconComponent {}
+export class ArchiveIconComponent extends IconComponentBase {
+  static readonly slug = 'archive';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'archive',
+    'storage',
+    'box',
+    'save',
+    'backup',
+    'archiver',
+    'archivar',
+    'almacenar',
+    'αρχείο',
+    'αρχειοθέτηση',
+    'archiwum',
+    'archiwizuj',
+  ];
+}

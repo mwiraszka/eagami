@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-clipboard',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -27,4 +28,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ClipboardIconComponent {}
+export class ClipboardIconComponent extends IconComponentBase {
+  static readonly slug = 'clipboard';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'clipboard',
+    'copy',
+    'paste',
+    'notes',
+    'list',
+    'presse-papiers',
+    'portapapeles',
+    'πρόχειρο',
+    'schowek',
+    'notatki',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-trash-2',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -31,4 +32,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class Trash2IconComponent {}
+export class Trash2IconComponent extends IconComponentBase {
+  static readonly slug = 'trash-2';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'trash-2',
+    'trash',
+    '2',
+    'delete',
+    'remove',
+    'bin',
+    'garbage',
+    'poubelle',
+    'basura',
+    'eliminar',
+    'κάδος',
+    'διαγραφή',
+    'kosz',
+    'usuń',
+  ];
+}

@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-gitlab',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#FC6D26' : null",
-  },
+  host: { '[style.color]': "brand() ? '#FC6D26' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -23,6 +22,17 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class GitlabIconComponent {
+export class GitlabIconComponent extends IconComponentBase {
+  static readonly slug = 'gitlab';
+  static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'gitlab',
+    'git',
+    'repository',
+    'repo',
+    'source code',
+    'version control',
+  ];
   readonly brand = input<boolean>(false);
 }

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-file-minus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class FileMinusIconComponent {}
+export class FileMinusIconComponent extends IconComponentBase {
+  static readonly slug = 'file-minus';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'file-minus',
+    'file',
+    'minus',
+    'remove',
+    'delete',
+    'document',
+    'fichier',
+    'archivo',
+    'eliminar',
+    'αρχείο',
+    'αφαίρεση',
+    'plik',
+    'usuń',
+  ];
+}

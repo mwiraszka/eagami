@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-download-cloud',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class DownloadCloudIconComponent {}
+export class DownloadCloudIconComponent extends IconComponentBase {
+  static readonly slug = 'download-cloud';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'download-cloud',
+    'download',
+    'cloud',
+    'save',
+    'sync',
+    'télécharger',
+    'nuage',
+    'descargar',
+    'nube',
+    'λήψη',
+    'σύννεφο',
+    'pobierz',
+    'chmura',
+  ];
+}

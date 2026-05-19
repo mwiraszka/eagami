@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-cloud',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class CloudIconComponent {}
+export class CloudIconComponent extends IconComponentBase {
+  static readonly slug = 'cloud';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'cloud',
+    'weather',
+    'sky',
+    'storage',
+    'nuage',
+    'météo',
+    'nube',
+    'tiempo',
+    'σύννεφο',
+    'καιρός',
+    'chmura',
+    'pogoda',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-trending-up',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class TrendingUpIconComponent {}
+export class TrendingUpIconComponent extends IconComponentBase {
+  static readonly slug = 'trending-up';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'trending-up',
+    'trending',
+    'up',
+    'increase',
+    'graph',
+    'arrow',
+    'statistics',
+    'tendance',
+    'hausse',
+    'tendencia',
+    'subida',
+    'τάση',
+    'πάνω',
+    'trend',
+    'wzrost',
+  ];
+}

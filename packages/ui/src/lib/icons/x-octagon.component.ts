@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-x-octagon',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -30,4 +31,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class XOctagonIconComponent {}
+export class XOctagonIconComponent extends IconComponentBase {
+  static readonly slug = 'x-octagon';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'x-octagon',
+    'x',
+    'octagon',
+    'close',
+    'stop',
+    'cancel',
+    'error',
+    'fermer',
+    'detener',
+    'κλείσιμο',
+    'στοπ',
+    'zatrzymaj',
+    'błąd',
+  ];
+}

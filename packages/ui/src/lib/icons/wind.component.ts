@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-wind',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class WindIconComponent {}
+export class WindIconComponent extends IconComponentBase {
+  static readonly slug = 'wind';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'wind',
+    'air',
+    'weather',
+    'breeze',
+    'storm',
+    'vent',
+    'viento',
+    'aire',
+    'άνεμος',
+    'αέρας',
+    'wiatr',
+    'powietrze',
+  ];
+}

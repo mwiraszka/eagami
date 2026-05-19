@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-power',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -24,4 +25,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class PowerIconComponent {}
+export class PowerIconComponent extends IconComponentBase {
+  static readonly slug = 'power';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'power',
+    'on',
+    'off',
+    'shutdown',
+    'energy',
+    'switch',
+    'alimentation',
+    'encender',
+    'apagar',
+    'τροφοδοσία',
+    'ενέργεια',
+    'zasilanie',
+    'włącz',
+  ];
+}

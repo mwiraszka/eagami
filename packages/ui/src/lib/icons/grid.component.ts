@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-grid',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -38,4 +39,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class GridIconComponent {}
+export class GridIconComponent extends IconComponentBase {
+  static readonly slug = 'grid';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'grid',
+    'layout',
+    'tiles',
+    'gallery',
+    'cells',
+    'grille',
+    'cuadrícula',
+    'πλέγμα',
+    'siatka',
+    'układ',
+  ];
+}

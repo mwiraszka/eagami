@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-rotate-cw',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class RotateCwIconComponent {}
+export class RotateCwIconComponent extends IconComponentBase {
+  static readonly slug = 'rotate-cw';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'rotate-cw',
+    'rotate',
+    'cw',
+    'clockwise',
+    'redo',
+    'turn',
+    'tourner',
+    'girar',
+    'περιστροφή',
+    'obróć',
+    'ponów',
+  ];
+}

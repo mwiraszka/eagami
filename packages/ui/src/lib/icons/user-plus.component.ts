@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-user-plus',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -33,4 +34,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class UserPlusIconComponent {}
+export class UserPlusIconComponent extends IconComponentBase {
+  static readonly slug = 'user-plus';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'user-plus',
+    'user',
+    'plus',
+    'add',
+    'new',
+    'invite',
+    'follow',
+    'utilisateur',
+    'usuario',
+    'añadir',
+    'χρήστης',
+    'προσθήκη',
+    'użytkownik',
+    'dodaj',
+  ];
+}

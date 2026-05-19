@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-shield',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ShieldIconComponent {}
+export class ShieldIconComponent extends IconComponentBase {
+  static readonly slug = 'shield';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'shield',
+    'security',
+    'protect',
+    'safe',
+    'guard',
+    'bouclier',
+    'protection',
+    'escudo',
+    'seguridad',
+    'ασπίδα',
+    'προστασία',
+    'tarcza',
+    'ochrona',
+  ];
+}

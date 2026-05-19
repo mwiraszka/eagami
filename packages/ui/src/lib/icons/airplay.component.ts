@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-airplay',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -21,4 +22,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class AirplayIconComponent {}
+export class AirplayIconComponent extends IconComponentBase {
+  static readonly slug = 'airplay';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'airplay',
+    'cast',
+    'stream',
+    'mirror',
+    'screen',
+    'diffusion',
+    'transmisión',
+    'μετάδοση',
+    'transmisja',
+  ];
+}

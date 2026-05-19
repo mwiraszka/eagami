@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-minus-square',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -30,4 +31,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MinusSquareIconComponent {}
+export class MinusSquareIconComponent extends IconComponentBase {
+  static readonly slug = 'minus-square';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'minus-square',
+    'minus',
+    'square',
+    'remove',
+    'subtract',
+    'delete',
+    'moins',
+    'menos',
+    'eliminar',
+    'μείον',
+    'αφαίρεση',
+    'minus',
+    'usuń',
+  ];
+}

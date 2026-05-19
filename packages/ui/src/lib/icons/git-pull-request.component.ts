@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-git-pull-request',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -32,4 +33,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class GitPullRequestIconComponent {}
+export class GitPullRequestIconComponent extends IconComponentBase {
+  static readonly slug = 'git-pull-request';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'git-pull-request',
+    'git',
+    'pull',
+    'request',
+    'pr',
+    'version',
+    'control',
+    'review',
+    'demande',
+    'solicitud',
+    'αίτημα',
+    'prośba',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-loader',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -58,4 +59,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class LoaderIconComponent {}
+export class LoaderIconComponent extends IconComponentBase {
+  static readonly slug = 'loader';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'loader',
+    'loading',
+    'spinner',
+    'wait',
+    'progress',
+    'chargement',
+    'cargando',
+    'cargador',
+    'φόρτωση',
+    'αναμονή',
+    'ładowanie',
+    'wczytywanie',
+  ];
+}

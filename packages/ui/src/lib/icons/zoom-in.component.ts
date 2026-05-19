@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-zoom-in',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -37,4 +38,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ZoomInIconComponent {}
+export class ZoomInIconComponent extends IconComponentBase {
+  static readonly slug = 'zoom-in';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'zoom-in',
+    'zoom',
+    'in',
+    'magnify',
+    'enlarge',
+    'closer',
+    'agrandir',
+    'acercar',
+    'ampliar',
+    'μεγέθυνση',
+    'εστίαση',
+    'powiększ',
+    'przybliż',
+  ];
+}

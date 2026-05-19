@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-volume',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class VolumeIconComponent {}
+export class VolumeIconComponent extends IconComponentBase {
+  static readonly slug = 'volume';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'volume',
+    'sound',
+    'audio',
+    'speaker',
+    'mute',
+    'son',
+    'sonido',
+    'altavoz',
+    'ένταση',
+    'ήχος',
+    'głośność',
+    'dźwięk',
+    'music',
+  ];
+}

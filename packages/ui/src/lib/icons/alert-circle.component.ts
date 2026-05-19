@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-alert-circle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 16 16"
@@ -16,4 +17,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class AlertCircleIconComponent {}
+export class AlertCircleIconComponent extends IconComponentBase {
+  static readonly slug = 'alert-circle';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'alert-circle',
+    'alert',
+    'circle',
+    'warning',
+    'caution',
+    'notification',
+    'alerte',
+    'avertissement',
+    'alerta',
+    'aviso',
+    'ειδοποίηση',
+    'προσοχή',
+    'alarm',
+    'ostrzeżenie',
+  ];
+}

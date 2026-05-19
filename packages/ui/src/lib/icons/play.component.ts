@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-play',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class PlayIconComponent {}
+export class PlayIconComponent extends IconComponentBase {
+  static readonly slug = 'play';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'play',
+    'start',
+    'media',
+    'player',
+    'video',
+    'lecture',
+    'reproducir',
+    'iniciar',
+    'αναπαραγωγή',
+    'παίξε',
+    'odtwórz',
+    'graj',
+    'music',
+    'audio',
+  ];
+}

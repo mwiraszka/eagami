@@ -1038,7 +1038,7 @@
             </ea-button>
             <ea-menu #iconMenu>
               <ea-menu-item>
-                <ea-icon-pencil slot="icon" />
+                <ea-icon-edit-2 slot="icon" />
                 {{ s().menu.edit }}
               </ea-menu-item>
               <ea-menu-item variant="danger">
@@ -1804,15 +1804,15 @@
 
     @if (mode() === 'icons') {
       <div class="sandbox-icon-gallery">
-        @for (icon of icons; track icon.name) {
+        @for (icon of icons; track icon.slug) {
           <button
             type="button"
             class="sandbox-icon-tile"
-            [eaTooltip]="icon.selector"
+            [eaTooltip]="iconSelector(icon)"
             tooltipPosition="bottom"
-            (click)="copyIconSelector(icon.selector)">
-            <ng-container [ngComponentOutlet]="icon.component" />
-            <span class="sandbox-icon-tile__name">{{ icon.label }}</span>
+            (click)="copyIconSelector(iconSelector(icon))">
+            <ng-container [ngComponentOutlet]="icon" />
+            <span class="sandbox-icon-tile__name">{{ iconLabel(icon) }}</span>
           </button>
         }
       </div>

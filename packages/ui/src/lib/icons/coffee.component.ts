@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-coffee',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -35,4 +36,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class CoffeeIconComponent {}
+export class CoffeeIconComponent extends IconComponentBase {
+  static readonly slug = 'coffee';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'coffee',
+    'drink',
+    'cup',
+    'cafe',
+    'mug',
+    'café',
+    'taza',
+    'καφές',
+    'κούπα',
+    'kawa',
+    'kubek',
+  ];
+}

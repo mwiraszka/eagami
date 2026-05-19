@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-mic-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -35,4 +36,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MicOffIconComponent {}
+export class MicOffIconComponent extends IconComponentBase {
+  static readonly slug = 'mic-off';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'mic-off',
+    'mic',
+    'off',
+    'mute',
+    'microphone',
+    'silent',
+    'muet',
+    'silencio',
+    'mudo',
+    'σίγαση',
+    'wyciszony',
+    'mikrofon',
+    'music',
+    'audio',
+  ];
+}

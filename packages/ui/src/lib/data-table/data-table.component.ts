@@ -50,11 +50,11 @@ export interface DataTableSortState {
 @Component({
   selector: 'ea-data-table',
   imports: [
+    ArrowDownIconComponent,
+    ArrowUpIconComponent,
+    ChevronsUpDownIconComponent,
     NgClass,
     NgTemplateOutlet,
-    ArrowUpIconComponent,
-    ArrowDownIconComponent,
-    ChevronsUpDownIconComponent,
   ],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',

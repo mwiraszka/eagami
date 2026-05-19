@@ -1,24 +1,44 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
+/**
+ * YouTube icon (Feather outline).
+ *
+ * @remarks
+ * Prior to v1.4 this slug rendered Eagami's brand-filled YouTube mark. v1.4
+ * aligns the canonical slug with Feather Icons, so `YoutubeIconComponent` now
+ * renders Feather's outline. The brand-filled mark that previously shipped
+ * here has moved to `<ea-icon-youtube-2>` / `Youtube2IconComponent`.
+ */
 @Component({
   selector: 'ea-icon-youtube',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#FF0000' : null",
-  },
   template: `
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
       aria-hidden="true"
       width="100%"
       height="100%">
       <path
-        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814ZM9.546 15.568V8.432L15.818 12l-6.272 3.568Z" />
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
     </svg>
   `,
 })
-export class YoutubeIconComponent {
-  readonly brand = input<boolean>(false);
+export class YoutubeIconComponent extends IconComponentBase {
+  static readonly slug = 'youtube';
+  static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'youtube',
+    'video',
+    'streaming',
+    'social',
+  ];
 }

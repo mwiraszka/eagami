@@ -18,7 +18,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-ui-shell',
   templateUrl: './ui-shell.component.html',
   styleUrl: './ui-shell.component.scss',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, ChevronRightIconComponent],
+  imports: [ChevronRightIconComponent, RouterLink, RouterLinkActive, RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiShellComponent {

@@ -55,6 +55,9 @@
         class="ea-checkbox__label"
         [class.ea-checkbox__label--required]="required()">
         {{ label() }}
+        @if (count() !== undefined && count() !== null) {
+          <span class="ea-checkbox__count">{{ count() }}</span>
+        }
       </span>
     }
   </label>

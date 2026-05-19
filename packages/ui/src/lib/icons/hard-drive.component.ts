@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-hard-drive',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -35,4 +36,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class HardDriveIconComponent {}
+export class HardDriveIconComponent extends IconComponentBase {
+  static readonly slug = 'hard-drive';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'hard-drive',
+    'hard',
+    'drive',
+    'storage',
+    'disk',
+    'memory',
+    'disque dur',
+    'almacenamiento',
+    'disco duro',
+    'σκληρός δίσκος',
+    'αποθήκευση',
+    'dysk twardy',
+    'pamięć',
+  ];
+}

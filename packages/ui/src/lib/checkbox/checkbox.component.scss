@@ -142,6 +142,11 @@
     }
   }
 
+  &__count {
+    margin-left: 0.25em;
+    color: var(--color-text-tertiary);
+  }
+
   &--error {
     .ea-checkbox__box {
       border-color: var(--color-error-default);

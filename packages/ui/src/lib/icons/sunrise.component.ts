@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-sunrise',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -50,4 +51,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class SunriseIconComponent {}
+export class SunriseIconComponent extends IconComponentBase {
+  static readonly slug = 'sunrise';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'sunrise',
+    'sun',
+    'morning',
+    'dawn',
+    'weather',
+    'lever du soleil',
+    'amanecer',
+    'aurora',
+    'ανατολή',
+    'πρωί',
+    'wschód',
+    'poranek',
+  ];
+}

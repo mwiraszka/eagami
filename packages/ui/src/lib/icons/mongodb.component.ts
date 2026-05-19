@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-mongodb',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#47A248' : null",
-  },
+  host: { '[style.color]': "brand() ? '#47A248' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class MongodbIconComponent {
+export class MongodbIconComponent extends IconComponentBase {
+  static readonly slug = 'mongodb';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = ['mongodb', 'database', 'nosql', 'mongo'];
   readonly brand = input<boolean>(false);
 }

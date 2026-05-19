@@ -43,7 +43,7 @@ export type InputType =
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, EyeIconComponent, EyeOffIconComponent, AlertCircleIconComponent],
+  imports: [AlertCircleIconComponent, EyeIconComponent, EyeOffIconComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

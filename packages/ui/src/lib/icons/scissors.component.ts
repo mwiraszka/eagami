@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-scissors',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -41,4 +42,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ScissorsIconComponent {}
+export class ScissorsIconComponent extends IconComponentBase {
+  static readonly slug = 'scissors';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'scissors',
+    'cut',
+    'snip',
+    'clip',
+    'shears',
+    'ciseaux',
+    'couper',
+    'tijeras',
+    'cortar',
+    'ψαλίδι',
+    'κοπή',
+    'nożyczki',
+    'tnij',
+  ];
+}

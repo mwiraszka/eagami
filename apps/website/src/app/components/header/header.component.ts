@@ -21,11 +21,11 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   imports: [
+    EagamiIconComponent,
+    LocaleSwitcherComponent,
     RouterLink,
     RouterLinkActive,
-    EagamiIconComponent,
     ThemeToggleComponent,
-    LocaleSwitcherComponent,
     TooltipDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

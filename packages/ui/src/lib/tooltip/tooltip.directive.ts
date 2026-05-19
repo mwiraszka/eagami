@@ -202,6 +202,26 @@ export class TooltipDirective implements OnDestroy {
     if (!this.tooltipEl) return;
 
     const hostRect = this.el.nativeElement.getBoundingClientRect();
+
+    /* Hide if the trigger itself has scrolled behind a sticky/fixed ancestor
+       (typical app-header pattern) to keep the tooltip from tracking the
+       trigger's coordinates into the header chrome. `elementFromPoint`
+       ignores the tooltip (it sets `pointer-events: none`), so the hit-test
+       reflects what the user actually sees at the trigger's centre. Also
+       covers fully off-screen triggers without a separate viewport check.
+       Feature-detected so jsdom (no `elementFromPoint`) and SSR skip the
+       check rather than erroring. */
+    const canHitTest = typeof document?.elementFromPoint === 'function';
+    if (canHitTest) {
+      const cx = hostRect.left + hostRect.width / 2;
+      const cy = hostRect.top + hostRect.height / 2;
+      const topmost = document.elementFromPoint(cx, cy);
+      if (!topmost || !this.el.nativeElement.contains(topmost)) {
+        this.hide();
+        return;
+      }
+    }
+
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
     const gap = 8;
     /* Keep at least this much breathing room between the tooltip and the
@@ -245,6 +265,30 @@ export class TooltipDirective implements OnDestroy {
       edgePadding,
       Math.min(top, viewportHeight - tooltipRect.height - edgePadding),
     );
+
+    /* Hide if the calculated bubble would render on top of a sticky/fixed
+       overlay (typically the app header). Catches the case where the trigger
+       is visible just below the header but a `position: top` tooltip would
+       protrude into the header chrome — the previous trigger-only hit-test
+       can't see this because the trigger itself is still on top. Walks the
+       ancestor chain of whatever the user would see at the bubble's centre,
+       looking for the first positioned (sticky / fixed) ancestor. */
+    if (canHitTest) {
+      const tcx = left + tooltipRect.width / 2;
+      const tcy = top + tooltipRect.height / 2;
+      const underBubble = document.elementFromPoint(tcx, tcy);
+      if (underBubble && !this.el.nativeElement.contains(underBubble)) {
+        let cursor: Element | null = underBubble;
+        while (cursor && cursor !== document.body) {
+          const pos = getComputedStyle(cursor).position;
+          if (pos === 'fixed' || pos === 'sticky') {
+            this.hide();
+            return;
+          }
+          cursor = cursor.parentElement;
+        }
+      }
+    }
 
     this.renderer.setStyle(this.tooltipEl, 'top', `${top + window.scrollY}px`);
     this.renderer.setStyle(this.tooltipEl, 'left', `${left + window.scrollX}px`);

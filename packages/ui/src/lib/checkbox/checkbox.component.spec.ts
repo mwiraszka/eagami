@@ -49,6 +49,32 @@ describe('CheckboxComponent', () => {
       const labelSpan = fixture.nativeElement.querySelector('.ea-checkbox__label');
       expect(labelSpan.textContent.trim()).toBe('Accept terms');
     });
+
+    it('renders no count by default', () => {
+      fixture.componentRef.setInput('label', 'Inbox');
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.ea-checkbox__count')).toBeNull();
+    });
+
+    it('renders the count inside the label span when provided', () => {
+      fixture.componentRef.setInput('label', 'Inbox');
+      fixture.componentRef.setInput('count', '(42)');
+      fixture.detectChanges();
+      const labelSpan = fixture.nativeElement.querySelector('.ea-checkbox__label');
+      const countSpan = labelSpan.querySelector('.ea-checkbox__count');
+
+      expect(countSpan).not.toBeNull();
+      expect(countSpan.textContent.trim()).toBe('(42)');
+    });
+
+    it('renders a numeric count', () => {
+      fixture.componentRef.setInput('label', 'Inbox');
+      fixture.componentRef.setInput('count', 0);
+      fixture.detectChanges();
+      const countSpan = fixture.nativeElement.querySelector('.ea-checkbox__count');
+
+      expect(countSpan.textContent.trim()).toBe('0');
+    });
   });
 
   describe('Checked state', () => {

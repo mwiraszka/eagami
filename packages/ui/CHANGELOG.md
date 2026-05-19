@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-05-20
+
+### Added
+
+- Add 11 new icons drawn in the Feather style (24px viewBox, 2px stroke, round caps and joins) so they sit naturally alongside the existing set: `bottle`, `candle`, `circle`, `heptagon`, `hexagon`, `lamp`, `pentagon`, `rectangle-horizontal`, `rectangle-vertical`, `soccer-ball`, `trophy`
+- Complete coverage of the upstream Feather Icons set (287 / 287, each at its canonical Feather slug). Adds the 39 Feather icons that were not yet bundled (`arrow-{down,left,right,up}-circle`, `bar-chart-2`, `camera-off`, `cast`, `check-square`, `chevrons-{down,left,right,up}`, `cloud-{drizzle,lightning,off,rain,snow}`, `corner-{left,right}-{down,up}`, `divide-{circle,square}`, `dribbble`, `folder-{minus,plus}`, `framer`, `instagram`, `pen-tool`, `phone-{call,forwarded,incoming,missed,off,outgoing}`, `refresh-ccw`, `table`, `trello`, `twitter`). For the 10 brand marks that have both an Eagami brand-filled design and a Feather outline, the canonical slug now holds Feather's outline; the brand-filled variant moves to `<slug>-2` (e.g. `facebook-2`, `github-2`, `linkedin-2`). Three brand marks where the Eagami and Feather designs were already identical (`codepen`, `codesandbox`, `gitlab`) are deduplicated to a single component at the Feather slug
+- Expose per-icon metadata as static fields on each component class (`static readonly slug`, `category`, `isBrand`, `tags`). Lets consumers build catalogues, search indices, or doc tables by reading `GithubIconComponent.tags` directly without pulling in any other icon as a transitive dependency. The new `IconCategory`, `IconMeta`, and `IconComponentType` exports describe the shape of these static fields
+- Export an `ICONS` array (`ReadonlyArray<IconComponentType>`, sorted by slug so the base icon always precedes its `-2` variant) listing every non-deprecated icon component so apps that want to render the full catalogue (search pages, gallery views) can iterate one list rather than maintaining their own. Pair it with the new `iconDisplayName(iconOrSlug)` helper to resolve the human-readable label with the correct casing for acronyms and brand marks (`GitHub`, `npm`, `CodePen`, `X (Twitter)`, etc.). Importing `ICONS` pulls in every icon, so apps that only render a handful should keep importing the components they use directly
+
+### Deprecated
+
+- `<ea-icon-pencil>` / `PencilIconComponent` is deprecated and will be removed in v2.0.0. The icon depicts the same mark as Feather's canonical `edit-2` (with a marginally different cap curvature) and is being retired as redundant; switch to `<ea-icon-edit-2>` / `Edit2IconComponent`. The deprecated component still exports for backwards compatibility but is no longer listed on the `/ui/icons` reference page
+
+### Changed
+
+- Add an optional `count` input to `<ea-checkbox>` that renders inline within the same `<span>` as the label, dimmed to `--color-text-tertiary`. Inline placement shares the label's exact baseline and font metrics, so patterns like `Inbox 42` or `Brand (30)` stay aligned without a sibling element fighting flex / inline-flow centring at the consumer's call site
+- Hide `[eaTooltip]` when its trigger has scrolled behind a sticky / fixed ancestor (typical app-header pattern), or when the calculated bubble would itself paint on top of one. Uses `elementFromPoint` plus an ancestor walk for `position: fixed | sticky`, so the directive picks up an app's chrome without needing to be told about it. Feature-detected for jsdom / SSR
+- Scale the Netlify brand icon to the full `24×24` viewBox so it visually matches the other brand marks rather than rendering as a small motif inside whitespace
+- Add `opacity: 1` to `<ea-input>`'s `::placeholder` rule to keep the tertiary token from being washed out further by the Firefox / WebKit ~0.54 default placeholder opacity
+
 ## [1.3.0] - 2026-05-17
 
 ### Added
@@ -427,6 +447,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0
 [1.2.1]: https://github.com/mwiraszka/eagami/compare/v1.2.0...ui-v1.2.1
 [0.4.1]: https://github.com/mwiraszka/eagami/compare/v0.4.0...v0.4.1

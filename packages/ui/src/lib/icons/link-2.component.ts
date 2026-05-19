@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-link-2',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class Link2IconComponent {}
+export class Link2IconComponent extends IconComponentBase {
+  static readonly slug = 'link-2';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'link-2',
+    'link',
+    '2',
+    'chain',
+    'url',
+    'connect',
+    'hyperlink',
+    'lien',
+    'enlace',
+    'σύνδεσμος',
+    'link',
+    'połączenie',
+  ];
+}

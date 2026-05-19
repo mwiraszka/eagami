@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-search',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -23,4 +24,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class SearchIconComponent {}
+export class SearchIconComponent extends IconComponentBase {
+  static readonly slug = 'search';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'search',
+    'find',
+    'magnify',
+    'lookup',
+    'query',
+    'recherche',
+    'chercher',
+    'buscar',
+    'búsqueda',
+    'αναζήτηση',
+    'βρες',
+    'szukaj',
+    'wyszukaj',
+  ];
+}
