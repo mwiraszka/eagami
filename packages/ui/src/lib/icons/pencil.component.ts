@@ -3,9 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IconCategory, IconComponentBase } from './icon-category';
 
 /**
- * @deprecated Will be removed in v2.0.0. `pencil` is an alias for the
- * upstream Feather `edit-2` icon (identical path data); use `<ea-icon-edit-2>`
- * / `Edit2IconComponent` instead so the canonical Feather slug is preserved.
+ * @deprecated Will be removed in v2.0.0. The `pencil` icon depicts the same
+ * mark as Feather's canonical `edit-2` (with a marginally different cap
+ * curvature) and is being retired as redundant. Switch to `<ea-icon-edit-2>`
+ * / `Edit2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-pencil',

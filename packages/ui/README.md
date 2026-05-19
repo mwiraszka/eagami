@@ -51,7 +51,24 @@ Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/comp
 
 ## Icons
 
-Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. Most are derived from [Feather Icons](https://feathericons.com/) by [Cole Bemis](https://github.com/colebemis) under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE); the rest are original eagami additions, plus a small coloured brand-icon set bundled for nominative use only. See [icons](https://eagami.com/ui/icons) for the full set and per-brand guideline links.
+Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. The library ships the full [Feather Icons](https://feathericons.com/) set (287 icons at their canonical slugs) by [Cole Bemis](https://github.com/colebemis), used under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE), plus a set of original Eagami UI additions (basic shapes, household objects, the Eagami brand mark) and a small coloured brand-icon set for nominative use.
+
+Each icon component exposes `static readonly` metadata so consumers can build catalogues, search indices, or doc tables without importing every icon:
+
+```ts
+import { GithubIconComponent } from '@eagami/ui';
+
+GithubIconComponent.slug;     // 'github'
+GithubIconComponent.category; // 'feather'
+GithubIconComponent.isBrand;  // true
+GithubIconComponent.tags;     // ['github', 'git', 'repository', ...]
+```
+
+The shape of this metadata is described by the exported `IconCategory`, `IconMeta`, and `IconComponentType` types. Every icon component extends the abstract `IconComponentBase` directive, which contributes the shared `display: inline-flex; width: 1em; height: 1em` host bindings.
+
+For catalogue-style use cases, import the `ICONS` array (a slug-sorted, `ReadonlyArray<IconComponentType>` of every non-deprecated icon) and the `iconDisplayName(iconOrSlug)` helper that resolves the human-readable label with the correct casing for acronyms and brand marks (`GitHub`, `npm`, `CodePen`, `X (Twitter)`, etc.). Importing `ICONS` pulls every icon into the bundle, so apps that only render a handful should keep importing the components they use directly.
+
+See [icons](https://eagami.com/ui/icons) for the full set, per-brand guideline links, and a searchable filter.
 
 ## Theming
 
