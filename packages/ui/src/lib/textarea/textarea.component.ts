@@ -27,7 +27,7 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  */
 @Component({
   selector: 'ea-textarea',
-  imports: [NgClass, AlertCircleIconComponent],
+  imports: [AlertCircleIconComponent, NgClass],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

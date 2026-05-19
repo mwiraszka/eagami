@@ -21,7 +21,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ToastComponent],
+  imports: [FooterComponent, HeaderComponent, RouterOutlet, ToastComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {

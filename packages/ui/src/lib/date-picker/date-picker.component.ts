@@ -51,11 +51,11 @@ interface CalendarDay {
 @Component({
   selector: 'ea-date-picker',
   imports: [
-    NgClass,
     AlertCircleIconComponent,
     CalendarIconComponent,
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
+    NgClass,
   ],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',

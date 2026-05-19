@@ -51,15 +51,15 @@ export interface AvatarEditorCropState {
 @Component({
   selector: 'ea-avatar-editor',
   imports: [
-    NgClass,
     CameraIconComponent,
     MinusIconComponent,
+    NgClass,
     PlusIconComponent,
     RotateCcwIconComponent,
     SkeletonComponent,
+    TooltipDirective,
     TrashIconComponent,
     UploadIconComponent,
-    TooltipDirective,
   ],
   templateUrl: './avatar-editor.component.html',
   styleUrl: './avatar-editor.component.scss',

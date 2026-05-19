@@ -32,7 +32,7 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-dropdown',
-  imports: [NgClass, ChevronDownIconComponent],
+  imports: [ChevronDownIconComponent, NgClass],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
