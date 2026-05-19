@@ -36,6 +36,14 @@ export type CheckboxSize = 'sm' | 'md' | 'lg';
 export class CheckboxComponent implements ControlValueAccessor {
   // Inputs
   readonly label = input<string | undefined>(undefined);
+  /**
+   * Optional supplementary value shown immediately after the label, dimmed
+   * to the tertiary text token. Renders inside the same `<span>` as the
+   * label so it shares the label's exact baseline and font metrics — keeps
+   * "Inbox 42" / "Brand (30)" patterns aligned without a sibling element
+   * fighting flex / inline-flow centring at the consumer's call site.
+   */
+  readonly count = input<string | number | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
