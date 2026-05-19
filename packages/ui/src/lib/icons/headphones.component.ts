@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-headphones',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -21,4 +22,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class HeadphonesIconComponent {}
+export class HeadphonesIconComponent extends IconComponentBase {
+  static readonly slug = 'headphones';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'headphones',
+    'audio',
+    'music',
+    'listen',
+    'sound',
+    'casque',
+    'écouteurs',
+    'auriculares',
+    'ακουστικά',
+    'μουσική',
+    'słuchawki',
+    'audio',
+  ];
+}

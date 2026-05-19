@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-toggle-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -29,4 +30,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ToggleLeftIconComponent {}
+export class ToggleLeftIconComponent extends IconComponentBase {
+  static readonly slug = 'toggle-left';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'toggle-left',
+    'toggle',
+    'left',
+    'switch',
+    'off',
+    'interrupteur',
+    'gauche',
+    'interruptor',
+    'izquierda',
+    'διακόπτης',
+    'αριστερά',
+    'przełącznik',
+    'lewo',
+  ];
+}

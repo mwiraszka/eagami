@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-netlify',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="4 4 16 16"
@@ -16,4 +17,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class NetlifyIconComponent {}
+export class NetlifyIconComponent extends IconComponentBase {
+  static readonly slug = 'netlify';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'netlify',
+    'hosting',
+    'deploy',
+    'jamstack',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-edit',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class EditIconComponent {}
+export class EditIconComponent extends IconComponentBase {
+  static readonly slug = 'edit';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'edit',
+    'pencil',
+    'modify',
+    'change',
+    'write',
+    'éditer',
+    'modifier',
+    'editar',
+    'modificar',
+    'επεξεργασία',
+    'τροποποίηση',
+    'edytuj',
+    'zmień',
+  ];
+}

@@ -1,24 +1,37 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
+/**
+ * Facebook icon (Feather outline).
+ *
+ * @remarks
+ * Prior to v1.4 this slug rendered Eagami's brand-filled Facebook mark. v1.4
+ * aligns the canonical slug with Feather Icons, so `FacebookIconComponent` now
+ * renders Feather's outline. The brand-filled mark that previously shipped
+ * here has moved to `<ea-icon-facebook-2>` / `Facebook2IconComponent`.
+ */
 @Component({
   selector: 'ea-icon-facebook',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#1877F2' : null",
-  },
   template: `
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path
-        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073" />
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     </svg>
   `,
 })
-export class FacebookIconComponent {
-  readonly brand = input<boolean>(false);
+export class FacebookIconComponent extends IconComponentBase {
+  static readonly slug = 'facebook';
+  static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = ['facebook', 'social', 'meta', 'network'];
 }

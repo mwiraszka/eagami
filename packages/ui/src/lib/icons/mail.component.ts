@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-mail',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -21,4 +22,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MailIconComponent {}
+export class MailIconComponent extends IconComponentBase {
+  static readonly slug = 'mail';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'mail',
+    'email',
+    'message',
+    'envelope',
+    'letter',
+    'courrier',
+    'enveloppe',
+    'correo',
+    'mensaje',
+    'αλληλογραφία',
+    'φάκελος',
+    'poczta',
+    'wiadomość',
+  ];
+}

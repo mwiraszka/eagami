@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-book-open',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class BookOpenIconComponent {}
+export class BookOpenIconComponent extends IconComponentBase {
+  static readonly slug = 'book-open';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'book-open',
+    'book',
+    'open',
+    'read',
+    'literature',
+    'study',
+    'livre',
+    'ouvert',
+    'libro',
+    'abierto',
+    'βιβλίο',
+    'ανοιχτό',
+    'książka',
+    'otwarta',
+  ];
+}

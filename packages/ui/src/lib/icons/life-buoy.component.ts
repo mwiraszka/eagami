@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-life-buoy',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -51,4 +52,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class LifeBuoyIconComponent {}
+export class LifeBuoyIconComponent extends IconComponentBase {
+  static readonly slug = 'life-buoy';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'life-buoy',
+    'life',
+    'buoy',
+    'help',
+    'support',
+    'rescue',
+    'bouée',
+    'sauvetage',
+    'salvavidas',
+    'ayuda',
+    'σωσίβιο',
+    'βοήθεια',
+    'koło ratunkowe',
+    'pomoc',
+  ];
+}

@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-kubernetes',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#326CE5' : null",
-  },
+  host: { '[style.color]': "brand() ? '#326CE5' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,16 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class KubernetesIconComponent {
+export class KubernetesIconComponent extends IconComponentBase {
+  static readonly slug = 'kubernetes';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'kubernetes',
+    'k8s',
+    'container',
+    'devops',
+    'orchestration',
+  ];
   readonly brand = input<boolean>(false);
 }

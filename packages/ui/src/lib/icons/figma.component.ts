@@ -1,31 +1,41 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
+/**
+ * Figma icon (Feather outline).
+ *
+ * @remarks
+ * Prior to v1.4 this slug rendered Eagami's brand-filled Figma mark. v1.4
+ * aligns the canonical slug with Feather Icons, so `FigmaIconComponent` now
+ * renders Feather's outline. The brand-filled mark that previously shipped
+ * here has moved to `<ea-icon-figma-2>` / `Figma2IconComponent`.
+ */
 @Component({
   selector: 'ea-icon-figma',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path
-        d="M8 24c2.21 0 4-1.79 4-4v-4H8c-2.21 0-4 1.79-4 4s1.79 4 4 4Z"
-        fill="#0ACF83" />
-      <path
-        d="M4 12c0-2.21 1.79-4 4-4h4v8H8c-2.21 0-4-1.79-4-4Z"
-        fill="#A259FF" />
-      <path
-        d="M4 4c0-2.21 1.79-4 4-4h4v8H8C5.79 8 4 6.21 4 4Z"
-        fill="#F24E1E" />
-      <path
-        d="M12 0h4c2.21 0 4 1.79 4 4s-1.79 4-4 4h-4V0Z"
-        fill="#FF7262" />
-      <path
-        d="M20 12c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4Z"
-        fill="#1ABCFE" />
+      <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+      <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+      <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+      <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" />
     </svg>
   `,
 })
-export class FigmaIconComponent {}
+export class FigmaIconComponent extends IconComponentBase {
+  static readonly slug = 'figma';
+  static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = ['figma', 'design', 'ui', 'tool'];
+}

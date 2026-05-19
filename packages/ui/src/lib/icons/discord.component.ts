@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-discord',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#5865F2' : null",
-  },
+  host: { '[style.color]': "brand() ? '#5865F2' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,16 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class DiscordIconComponent {
+export class DiscordIconComponent extends IconComponentBase {
+  static readonly slug = 'discord';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'discord',
+    'chat',
+    'messaging',
+    'gaming',
+    'community',
+  ];
   readonly brand = input<boolean>(false);
 }

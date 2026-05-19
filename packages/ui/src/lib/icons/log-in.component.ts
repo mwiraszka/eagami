@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-log-in',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class LogInIconComponent {}
+export class LogInIconComponent extends IconComponentBase {
+  static readonly slug = 'log-in';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'log-in',
+    'log',
+    'in',
+    'login',
+    'sign in',
+    'enter',
+    'access',
+    'connexion',
+    'iniciar sesión',
+    'entrar',
+    'σύνδεση',
+    'είσοδος',
+    'logowanie',
+    'zaloguj',
+  ];
+}

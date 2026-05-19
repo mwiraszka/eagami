@@ -1,24 +1,42 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
+/**
+ * Twitch icon (Feather outline).
+ *
+ * @remarks
+ * Prior to v1.4 this slug rendered Eagami's brand-filled Twitch mark. v1.4
+ * aligns the canonical slug with Feather Icons, so `TwitchIconComponent` now
+ * renders Feather's outline. The brand-filled mark that previously shipped
+ * here has moved to `<ea-icon-twitch-2>` / `Twitch2IconComponent`.
+ */
 @Component({
   selector: 'ea-icon-twitch',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#9146FF' : null",
-  },
   template: `
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path
-        d="M11.571 4.714h1.715v5.143H11.57Zm4.715 0H18v5.143h-1.714ZM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0Zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
+      <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
     </svg>
   `,
 })
-export class TwitchIconComponent {
-  readonly brand = input<boolean>(false);
+export class TwitchIconComponent extends IconComponentBase {
+  static readonly slug = 'twitch';
+  static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'twitch',
+    'streaming',
+    'gaming',
+    'video',
+  ];
 }

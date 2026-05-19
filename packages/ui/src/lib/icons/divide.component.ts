@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-divide',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -31,4 +32,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class DivideIconComponent {}
+export class DivideIconComponent extends IconComponentBase {
+  static readonly slug = 'divide';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'divide',
+    'division',
+    'math',
+    'split',
+    'diviser',
+    'mathématiques',
+    'dividir',
+    'matemáticas',
+    'διαίρεση',
+    'μαθηματικά',
+    'dzielenie',
+    'matematyka',
+  ];
+}

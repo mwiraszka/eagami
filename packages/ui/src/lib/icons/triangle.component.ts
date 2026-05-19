@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-triangle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class TriangleIconComponent {}
+export class TriangleIconComponent extends IconComponentBase {
+  static readonly slug = 'triangle';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'triangle',
+    'shape',
+    'arrow',
+    'play',
+    'three',
+    'triangle',
+    'triángulo',
+    'τρίγωνο',
+    'σχήμα',
+    'trójkąt',
+    'kształt',
+  ];
+}

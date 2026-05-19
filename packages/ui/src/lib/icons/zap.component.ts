@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-zap',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ZapIconComponent {}
+export class ZapIconComponent extends IconComponentBase {
+  static readonly slug = 'zap';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'zap',
+    'lightning',
+    'bolt',
+    'flash',
+    'electric',
+    'power',
+    'éclair',
+    'foudre',
+    'rayo',
+    'relámpago',
+    'αστραπή',
+    'κεραυνός',
+    'błyskawica',
+    'piorun',
+  ];
+}

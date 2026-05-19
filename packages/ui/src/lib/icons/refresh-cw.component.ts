@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-refresh-cw',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -21,4 +22,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class RefreshCwIconComponent {}
+export class RefreshCwIconComponent extends IconComponentBase {
+  static readonly slug = 'refresh-cw';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'refresh-cw',
+    'refresh',
+    'cw',
+    'reload',
+    'sync',
+    'update',
+    'rotate',
+    'actualiser',
+    'actualizar',
+    'recargar',
+    'ανανέωση',
+    'odśwież',
+    'załaduj',
+  ];
+}

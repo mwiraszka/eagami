@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-zoom-out',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -32,4 +33,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ZoomOutIconComponent {}
+export class ZoomOutIconComponent extends IconComponentBase {
+  static readonly slug = 'zoom-out';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'zoom-out',
+    'zoom',
+    'out',
+    'shrink',
+    'reduce',
+    'farther',
+    'réduire',
+    'alejar',
+    'reducir',
+    'σμίκρυνση',
+    'απομάκρυνση',
+    'pomniejsz',
+    'oddal',
+  ];
+}

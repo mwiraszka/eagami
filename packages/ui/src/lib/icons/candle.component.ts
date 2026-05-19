@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-candle',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class CandleIconComponent {}
+export class CandleIconComponent extends IconComponentBase {
+  static readonly slug = 'candle';
+  static readonly category: IconCategory = 'eagami';
+  static readonly tags: ReadonlyArray<string> = [
+    'candle',
+    'light',
+    'flame',
+    'wax',
+    'bougie',
+    'flamme',
+    'vela',
+    'llama',
+    'κερί',
+    'φλόγα',
+    'świeca',
+    'płomień',
+  ];
+}

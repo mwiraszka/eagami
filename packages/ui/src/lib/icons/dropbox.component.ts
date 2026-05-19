@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-dropbox',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#0061FF' : null",
-  },
+  host: { '[style.color]': "brand() ? '#0061FF' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,16 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class DropboxIconComponent {
+export class DropboxIconComponent extends IconComponentBase {
+  static readonly slug = 'dropbox';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'dropbox',
+    'storage',
+    'cloud',
+    'files',
+    'sync',
+  ];
   readonly brand = input<boolean>(false);
 }

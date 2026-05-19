@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-tv',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -26,4 +27,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class TvIconComponent {}
+export class TvIconComponent extends IconComponentBase {
+  static readonly slug = 'tv';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'tv',
+    'television',
+    'screen',
+    'display',
+    'monitor',
+    'télévision',
+    'televisión',
+    'τηλεόραση',
+    'οθόνη',
+    'telewizor',
+    'telewizja',
+  ];
+}

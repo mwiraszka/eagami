@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-corner-down-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class CornerDownLeftIconComponent {}
+export class CornerDownLeftIconComponent extends IconComponentBase {
+  static readonly slug = 'corner-down-left';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'corner-down-left',
+    'corner',
+    'down',
+    'left',
+    'arrow',
+    'return',
+    'enter',
+    'coin',
+    'bas',
+    'gauche',
+    'esquina',
+    'abajo',
+    'izquierda',
+    'γωνία',
+    'κάτω',
+    'αριστερά',
+    'róg',
+    'dół',
+    'lewo',
+  ];
+}

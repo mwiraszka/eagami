@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-arrow-down-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -24,4 +25,26 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ArrowDownLeftIconComponent {}
+export class ArrowDownLeftIconComponent extends IconComponentBase {
+  static readonly slug = 'arrow-down-left';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'arrow-down-left',
+    'arrow',
+    'down',
+    'left',
+    'southwest',
+    'flèche',
+    'bas',
+    'gauche',
+    'flecha',
+    'abajo',
+    'izquierda',
+    'βέλος',
+    'κάτω',
+    'αριστερά',
+    'strzałka',
+    'dół',
+    'lewo',
+  ];
+}

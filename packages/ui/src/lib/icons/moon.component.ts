@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-moon',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MoonIconComponent {}
+export class MoonIconComponent extends IconComponentBase {
+  static readonly slug = 'moon';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'moon',
+    'night',
+    'dark',
+    'theme',
+    'sleep',
+    'lune',
+    'nuit',
+    'luna',
+    'noche',
+    'φεγγάρι',
+    'νύχτα',
+    'księżyc',
+    'noc',
+  ];
+}

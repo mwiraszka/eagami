@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-docker',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#2496ED' : null",
-  },
+  host: { '[style.color]': "brand() ? '#2496ED' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,16 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class DockerIconComponent {
+export class DockerIconComponent extends IconComponentBase {
+  static readonly slug = 'docker';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'docker',
+    'container',
+    'devops',
+    'image',
+    'virtualization',
+  ];
   readonly brand = input<boolean>(false);
 }

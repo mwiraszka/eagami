@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-layout',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -35,4 +36,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class LayoutIconComponent {}
+export class LayoutIconComponent extends IconComponentBase {
+  static readonly slug = 'layout';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'layout',
+    'grid',
+    'design',
+    'structure',
+    'template',
+    'mise en page',
+    'diseño',
+    'plantilla',
+    'διάταξη',
+    'σχέδιο',
+    'układ',
+    'szablon',
+  ];
+}

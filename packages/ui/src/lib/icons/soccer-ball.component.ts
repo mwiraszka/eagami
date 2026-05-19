@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-soccer-ball',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -46,4 +47,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class SoccerBallIconComponent {}
+export class SoccerBallIconComponent extends IconComponentBase {
+  static readonly slug = 'soccer-ball';
+  static readonly category: IconCategory = 'eagami';
+  static readonly tags: ReadonlyArray<string> = [
+    'soccer-ball',
+    'soccer',
+    'ball',
+    'football',
+    'sport',
+    'futbol',
+    'fútbol',
+    'pelota',
+    'ποδόσφαιρο',
+    'μπάλα',
+    'piłka',
+    'nożna',
+  ];
+}

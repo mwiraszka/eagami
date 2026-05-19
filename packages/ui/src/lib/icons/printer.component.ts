@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-printer',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -26,4 +27,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class PrinterIconComponent {}
+export class PrinterIconComponent extends IconComponentBase {
+  static readonly slug = 'printer';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'printer',
+    'print',
+    'document',
+    'paper',
+    'office',
+    'imprimante',
+    'imprimir',
+    'impresora',
+    'εκτυπωτής',
+    'εκτύπωση',
+    'drukarka',
+    'drukuj',
+  ];
+}

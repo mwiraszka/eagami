@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-share-2',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -40,4 +41,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class Share2IconComponent {}
+export class Share2IconComponent extends IconComponentBase {
+  static readonly slug = 'share-2';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'share-2',
+    'share',
+    '2',
+    'send',
+    'network',
+    'social',
+    'partager',
+    'compartir',
+    'κοινοποίηση',
+    'udostępnij',
+  ];
+}

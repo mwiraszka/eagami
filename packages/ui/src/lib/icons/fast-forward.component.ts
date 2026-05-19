@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-fast-forward',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class FastForwardIconComponent {}
+export class FastForwardIconComponent extends IconComponentBase {
+  static readonly slug = 'fast-forward';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'fast-forward',
+    'fast',
+    'forward',
+    'play',
+    'skip',
+    'speed',
+    'avance rapide',
+    'rápido',
+    'γρήγορη μετάβαση',
+    'μπροστά',
+    'przewiń',
+    'do przodu',
+    'music',
+    'audio',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-cpu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -70,4 +71,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class CpuIconComponent {}
+export class CpuIconComponent extends IconComponentBase {
+  static readonly slug = 'cpu';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'cpu',
+    'processor',
+    'chip',
+    'computer',
+    'hardware',
+    'processeur',
+    'puce',
+    'procesador',
+    'chip',
+    'επεξεργαστής',
+    'τσιπ',
+    'procesor',
+    'układ',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-bookmark',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class BookmarkIconComponent {}
+export class BookmarkIconComponent extends IconComponentBase {
+  static readonly slug = 'bookmark';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'bookmark',
+    'save',
+    'favorite',
+    'mark',
+    'tag',
+    'marque-page',
+    'favori',
+    'marcador',
+    'favorito',
+    'σελιδοδείκτης',
+    'αγαπημένο',
+    'zakładka',
+    'ulubione',
+  ];
+}

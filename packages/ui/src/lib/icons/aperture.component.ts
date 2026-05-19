@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-aperture',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -52,4 +53,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ApertureIconComponent {}
+export class ApertureIconComponent extends IconComponentBase {
+  static readonly slug = 'aperture';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'aperture',
+    'camera',
+    'lens',
+    'photo',
+    'photography',
+    'ouverture',
+    'objectif',
+    'apertura',
+    'lente',
+    'διάφραγμα',
+    'φακός',
+    'przysłona',
+    'obiektyw',
+  ];
+}

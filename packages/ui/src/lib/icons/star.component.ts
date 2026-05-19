@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-star',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class StarIconComponent {}
+export class StarIconComponent extends IconComponentBase {
+  static readonly slug = 'star';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'star',
+    'favorite',
+    'rating',
+    'bookmark',
+    'like',
+    'étoile',
+    'favori',
+    'estrella',
+    'favorito',
+    'αστέρι',
+    'αγαπημένο',
+    'gwiazda',
+    'ulubione',
+    'shape',
+  ];
+}

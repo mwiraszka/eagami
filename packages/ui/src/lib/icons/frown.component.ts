@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-frown',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -33,4 +34,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class FrownIconComponent {}
+export class FrownIconComponent extends IconComponentBase {
+  static readonly slug = 'frown';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'frown',
+    'sad',
+    'unhappy',
+    'emoji',
+    'face',
+    'triste',
+    'mécontent',
+    'enfadado',
+    'cara',
+    'λυπημένος',
+    'πρόσωπο',
+    'smutny',
+    'twarz',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-chevron-left',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class ChevronLeftIconComponent {}
+export class ChevronLeftIconComponent extends IconComponentBase {
+  static readonly slug = 'chevron-left';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'chevron-left',
+    'chevron',
+    'left',
+    'arrow',
+    'back',
+    'previous',
+    'gauche',
+    'izquierda',
+    'αριστερά',
+    'lewo',
+  ];
+}

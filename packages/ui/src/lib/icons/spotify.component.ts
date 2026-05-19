@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-spotify',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#1DB954' : null",
-  },
+  host: { '[style.color]': "brand() ? '#1DB954' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,15 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class SpotifyIconComponent {
+export class SpotifyIconComponent extends IconComponentBase {
+  static readonly slug = 'spotify';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'spotify',
+    'music',
+    'streaming',
+    'audio',
+  ];
   readonly brand = input<boolean>(false);
 }

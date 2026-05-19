@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-smile',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -33,4 +34,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class SmileIconComponent {}
+export class SmileIconComponent extends IconComponentBase {
+  static readonly slug = 'smile';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'smile',
+    'happy',
+    'face',
+    'emoji',
+    'positive',
+    'sourire',
+    'visage',
+    'sonrisa',
+    'feliz',
+    'cara',
+    'χαμόγελο',
+    'χαρούμενος',
+    'uśmiech',
+    'twarz',
+  ];
+}

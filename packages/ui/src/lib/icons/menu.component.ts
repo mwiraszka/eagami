@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -33,4 +34,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MenuIconComponent {}
+export class MenuIconComponent extends IconComponentBase {
+  static readonly slug = 'menu';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'menu',
+    'hamburger',
+    'list',
+    'navigation',
+    'bars',
+    'menú',
+    'lista',
+    'μενού',
+    'navigacja',
+    'lista',
+  ];
+}

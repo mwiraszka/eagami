@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-heptagon',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -20,4 +21,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class HeptagonIconComponent {}
+export class HeptagonIconComponent extends IconComponentBase {
+  static readonly slug = 'heptagon';
+  static readonly category: IconCategory = 'eagami';
+  static readonly tags: ReadonlyArray<string> = [
+    'heptagon',
+    'seven-sided',
+    'polygon',
+    'shape',
+    'heptagone',
+    'heptágono',
+    'επτάγωνο',
+    'siedmiokąt',
+  ];
+}

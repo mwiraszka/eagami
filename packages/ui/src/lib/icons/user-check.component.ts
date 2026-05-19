@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-user-check',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -24,4 +25,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class UserCheckIconComponent {}
+export class UserCheckIconComponent extends IconComponentBase {
+  static readonly slug = 'user-check';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'user-check',
+    'user',
+    'check',
+    'verified',
+    'approved',
+    'confirm',
+    'utilisateur',
+    'usuario',
+    'verificado',
+    'χρήστης',
+    'επιβεβαίωση',
+    'użytkownik',
+    'zatwierdź',
+  ];
+}

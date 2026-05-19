@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-type',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -29,4 +30,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class TypeIconComponent {}
+export class TypeIconComponent extends IconComponentBase {
+  static readonly slug = 'type';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'type',
+    'text',
+    'font',
+    'typography',
+    'letter',
+    'texte',
+    'police',
+    'fuente',
+    'texto',
+    'γραμματοσειρά',
+    'κείμενο',
+    'czcionka',
+    'tekst',
+  ];
+}

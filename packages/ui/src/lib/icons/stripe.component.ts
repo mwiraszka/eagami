@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-stripe',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    style: 'display: inline-flex; width: 1em; height: 1em;',
-    '[style.color]': "brand() ? '#635BFF' : null",
-  },
+  host: { '[style.color]': "brand() ? '#635BFF' : null" },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,6 +18,15 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     </svg>
   `,
 })
-export class StripeIconComponent {
+export class StripeIconComponent extends IconComponentBase {
+  static readonly slug = 'stripe';
+  static readonly category: IconCategory = 'eagami';
+  static readonly isBrand = true;
+  static readonly tags: ReadonlyArray<string> = [
+    'stripe',
+    'payment',
+    'checkout',
+    'money',
+  ];
   readonly brand = input<boolean>(false);
 }

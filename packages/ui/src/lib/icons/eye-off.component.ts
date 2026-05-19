@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-eye-off',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class EyeOffIconComponent {}
+export class EyeOffIconComponent extends IconComponentBase {
+  static readonly slug = 'eye-off';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'eye-off',
+    'eye',
+    'off',
+    'hide',
+    'hidden',
+    'invisible',
+    'caché',
+    'masquer',
+    'oculto',
+    'esconder',
+    'κρυφό',
+    'απόκρυψη',
+    'ukryj',
+    'niewidoczne',
+  ];
+}

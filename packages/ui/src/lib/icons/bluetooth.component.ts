@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-bluetooth',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -19,4 +20,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class BluetoothIconComponent {}
+export class BluetoothIconComponent extends IconComponentBase {
+  static readonly slug = 'bluetooth';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'bluetooth',
+    'wireless',
+    'connection',
+    'connect',
+    'sans-fil',
+    'inalámbrico',
+    'ασύρματο',
+    'σύνδεση',
+    'bezprzewodowy',
+  ];
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-monitor',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -35,4 +36,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class MonitorIconComponent {}
+export class MonitorIconComponent extends IconComponentBase {
+  static readonly slug = 'monitor';
+  static readonly category: IconCategory = 'feather';
+  static readonly tags: ReadonlyArray<string> = [
+    'monitor',
+    'screen',
+    'display',
+    'computer',
+    'desktop',
+    'écran',
+    'pantalla',
+    'οθόνη',
+    'monitor',
+    'ekran',
+  ];
+}

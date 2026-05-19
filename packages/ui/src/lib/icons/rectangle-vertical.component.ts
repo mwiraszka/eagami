@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { IconCategory, IconComponentBase } from './icon-category';
+
 @Component({
   selector: 'ea-icon-rectangle-vertical',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
       viewBox="0 0 24 24"
@@ -25,4 +26,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </svg>
   `,
 })
-export class RectangleVerticalIconComponent {}
+export class RectangleVerticalIconComponent extends IconComponentBase {
+  static readonly slug = 'rectangle-vertical';
+  static readonly category: IconCategory = 'eagami';
+  static readonly tags: ReadonlyArray<string> = [
+    'rectangle-vertical',
+    'rectangle',
+    'vertical',
+    'portrait',
+    'shape',
+    'portrait',
+    'vertical',
+    'κατακόρυφο',
+    'ορθογώνιο',
+    'prostokąt',
+    'pionowy',
+  ];
+}
