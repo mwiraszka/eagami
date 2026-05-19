@@ -1,5 +1,7 @@
 import {
   CheckboxComponent,
+  IconCategory,
+  IconComponentType,
   SearchIconComponent,
   ToastService,
   TooltipDirective,
@@ -21,7 +23,14 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
-import { ICONS, IconCategory, IconEntry } from './icons.data';
+import { ICONS } from './icons.data';
+
+/**
+ * UI tab for the category-filter checkboxes. `feather` and `eagami` map to
+ * each icon's `static readonly category`; `brand` is the orthogonal
+ * `static readonly isBrand` flag.
+ */
+type CategoryTab = IconCategory | 'brand';
 
 @Component({
   selector: 'web-ui-icons-page',
@@ -45,25 +54,26 @@ export class UiIconsPageComponent {
 
   protected readonly messages = this.i18n.messages;
   protected readonly query = signal('');
-  protected readonly enabledCategories = signal<ReadonlySet<IconCategory>>(
+  protected readonly enabledCategories = signal<ReadonlySet<CategoryTab>>(
     new Set(['feather', 'eagami', 'brand']),
   );
 
-  protected readonly categories: ReadonlyArray<IconCategory> = [
+  protected readonly categories: ReadonlyArray<CategoryTab> = [
     'feather',
     'eagami',
     'brand',
   ];
 
-  protected readonly categoryCounts = computed<Record<IconCategory, number>>(() => {
-    const counts: Record<IconCategory, number> = { feather: 0, eagami: 0, brand: 0 };
+  protected readonly categoryCounts = computed(() => {
+    const counts = { feather: 0, eagami: 0, brand: 0 };
     for (const icon of ICONS) {
-      for (const cat of icon.categories) counts[cat]++;
+      counts[icon.category]++;
+      if (icon.isBrand) counts.brand++;
     }
     return counts;
   });
 
-  protected categoryLabel(category: IconCategory): string {
+  protected categoryLabel(category: CategoryTab): string {
     const m = this.messages().ui.icons;
     switch (category) {
       case 'feather':
@@ -72,14 +82,18 @@ export class UiIconsPageComponent {
         return m.categoryEagami;
       case 'brand':
         return m.categoryBrand;
+      default: {
+        const exhaustiveCheck: never = category;
+        return exhaustiveCheck;
+      }
     }
   }
 
-  protected isCategoryEnabled(category: IconCategory): boolean {
+  protected isCategoryEnabled(category: CategoryTab): boolean {
     return this.enabledCategories().has(category);
   }
 
-  protected toggleCategory(category: IconCategory): void {
+  protected toggleCategory(category: CategoryTab): void {
     const next = new Set(this.enabledCategories());
     if (next.has(category)) next.delete(category);
     else next.add(category);
@@ -93,11 +107,13 @@ export class UiIconsPageComponent {
 
   protected readonly normalizedQuery = computed(() => normalize(this.query()));
 
-  protected readonly filteredIcons = computed<ReadonlyArray<IconEntry>>(() => {
+  protected readonly filteredIcons = computed<ReadonlyArray<IconComponentType>>(() => {
     const q = this.normalizedQuery();
     const cats = this.enabledCategories();
     return ICONS.filter(icon => {
-      if (!icon.categories.some(c => cats.has(c))) return false;
+      const matchesCategory =
+        cats.has(icon.category) || (!!icon.isBrand && cats.has('brand'));
+      if (!matchesCategory) return false;
       if (!q) return true;
       return icon.tags.some(tag => normalize(tag).includes(q));
     });
@@ -164,8 +180,10 @@ const DISPLAY_NAME_OVERRIDES: Record<string, string> = {
   codesandbox: 'CodeSandbox',
   cpu: 'CPU',
   github: 'GitHub',
+  'github-2': 'GitHub 2',
   gitlab: 'GitLab',
   linkedin: 'LinkedIn',
+  'linkedin-2': 'LinkedIn 2',
   mongodb: 'MongoDB',
   npm: 'npm',
   paypal: 'PayPal',
@@ -173,4 +191,5 @@ const DISPLAY_NAME_OVERRIDES: Record<string, string> = {
   tv: 'TV',
   'x-twitter': 'X (Twitter)',
   youtube: 'YouTube',
+  'youtube-2': 'YouTube 2',
 };

@@ -74,7 +74,7 @@
               tooltipPosition="bottom"
               (click)="copySelector(icon.slug)">
               <span class="icons-grid__glyph">
-                <ng-container *ngComponentOutlet="icon.component" />
+                <ng-container *ngComponentOutlet="icon" />
               </span>
               <span class="icons-grid__name">{{ displayName(icon.slug) }}</span>
             </button>

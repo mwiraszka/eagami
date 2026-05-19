@@ -53,20 +53,31 @@
   gap: 16px;
 }
 
-/* Sticky filter renders as a centered card that floats below the app header
-   so it reads as its own UI element rather than a continuation of the header.
-   Offset by `--web-height-header` + a small gap to park clear of the header
-   chrome. The card has a soft drop-shadow so it visibly lifts off the icon
-   grid as the grid scrolls beneath it. */
+/* Sticky filter card spans the full width of the icon grid and floats below
+   the app header so it reads as its own UI element rather than a continuation
+   of the header. The card has a soft drop-shadow so it visibly lifts off the
+   icon grid as the grid scrolls beneath it. Children flex-wrap: the search
+   field grows to fill available space (min 200px) and the category checkboxes
+   sit inline whenever there's room; once the row gets too narrow, the search
+   field wraps to its own line at full width with the checkboxes (still
+   left-aligned) on the line below. The count always sits on its own line
+   below both via `flex-basis: 100%`. */
 .ui-icons__filter {
   z-index: 1;
+  container-type: inline-size;
   position: sticky;
   top: calc(var(--web-height-header) + 8px);
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  max-width: 560px;
-  padding: 4px 4px 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 8px 12px;
+  /* Collapse the line-height on the filter row so the inline-level
+     `<ea-checkbox>` hosts stop inheriting the page's default ~24px line-box.
+     With `line-height: 1` the hosts size to their 16px content, and the
+     surrounding `align-items: center` lines the checkboxes up with the
+     clear-search `×` button inside the search input. */
+  line-height: 1;
   border: 1px solid var(--color-border-default);
   border-radius: 12px;
   background-color: var(--color-bg-base);
@@ -86,11 +97,26 @@
 .ui-icons__categories {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
   gap: 4px 16px;
-  padding: 0 12px;
+  min-height: 40px;
+
+  /* When the filter card is wide enough to keep the search field and the
+     category checkboxes on the same row, a thin vertical rule splits them so
+     the eye can tell them apart. The container query disables the rule
+     automatically once the row wraps. The 580px threshold is set above the
+     measured wrap point (search 200px floor + checkboxes ~340px + gap = ~560px)
+     so the rule never lingers after the checkboxes have already wrapped. */
+  @container (min-width: 580px) {
+    border-left: 1px solid var(--color-border-default);
+    padding-left: 20px;
+  }
 }
 
 .ui-icons__category {
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
 
   ::ng-deep .ea-checkbox__label,
@@ -111,7 +137,7 @@
 }
 
 .ui-icons__count {
-  padding: 0 12px;
+  flex-basis: 100%;
   font-size: 13px;
   color: var(--color-text-tertiary);
 }
@@ -119,8 +145,14 @@
 .ui-icons__filter-field {
   position: relative;
   display: flex;
+  flex: 1 1 200px;
   align-items: center;
-  width: 100%;
+  align-self: center;
+  min-width: 200px;
+  /* Pin to the same height as the search input plus its border so
+     `align-items: center` on the surrounding row gives the checkboxes the
+     same vertical midline as the clear-search `×` button inside the input. */
+  min-height: 40px;
 }
 
 .ui-icons__filter-icon {
@@ -212,7 +244,7 @@
   /* `auto-fill` with a generous minimum cell width so the longest label
      (currently "Rectangle Horizontal") sits on a single line — fewer cells
      per row at narrower viewports is preferred over wrapping or truncation. */
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
   padding: 0;
   margin: 0;
