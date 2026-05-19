@@ -6,6 +6,7 @@ import {
   ToastService,
   TooltipDirective,
   XIconComponent,
+  iconDisplayName,
 } from '@eagami/ui';
 
 import { NgComponentOutlet } from '@angular/common';
@@ -134,9 +135,7 @@ export class UiIconsPageComponent {
     });
   }
 
-  protected displayName(slug: string): string {
-    return DISPLAY_NAME_OVERRIDES[slug] ?? toTitleCase(slug);
-  }
+  protected readonly displayName = iconDisplayName;
 
   protected clearQuery(): void {
     this.query.set('');
@@ -162,34 +161,3 @@ export class UiIconsPageComponent {
 function normalize(value: string): string {
   return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
 }
-
-function toTitleCase(slug: string): string {
-  return slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
-/**
- * Display-name overrides for icons whose canonical brand or acronym casing
- * doesn't match the default `slug → Title Case` derivation (e.g. `npm` should
- * stay lowercase, `github` is `GitHub`, `rss` is `RSS`).
- */
-const DISPLAY_NAME_OVERRIDES: Record<string, string> = {
-  codepen: 'CodePen',
-  codesandbox: 'CodeSandbox',
-  cpu: 'CPU',
-  github: 'GitHub',
-  'github-2': 'GitHub 2',
-  gitlab: 'GitLab',
-  linkedin: 'LinkedIn',
-  'linkedin-2': 'LinkedIn 2',
-  mongodb: 'MongoDB',
-  npm: 'npm',
-  paypal: 'PayPal',
-  rss: 'RSS',
-  tv: 'TV',
-  'x-twitter': 'X (Twitter)',
-  youtube: 'YouTube',
-  'youtube-2': 'YouTube 2',
-};

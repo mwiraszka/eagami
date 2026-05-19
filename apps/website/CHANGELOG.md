@@ -16,6 +16,7 @@ All notable changes to eagami.com are documented in this file.
 
 - Reword the `/ui/icons` lede to acknowledge that not every icon is Feather-derived (the household, brand and Eagami UI originals are not), and restore inline links on Feather Icons, Cole Bemis, and the MIT License. Switching the lede to a single localized HTML string also fixes the awkward whitespace around `<code>font-size</code>`.
 - Override the icon display name for slugs whose canonical casing doesn't match the default `slug → Title Case` (e.g. `github → GitHub`, `youtube → YouTube`, `linkedin → LinkedIn`, `npm → npm`, `rss → RSS`, `cpu → CPU`, `tv → TV`, `mongodb → MongoDB`, `codepen → CodePen`, `codesandbox → CodeSandbox`, `paypal → PayPal`, `x-twitter → X (Twitter)`).
+- Sort the `/ui/icons` grid in slug order so a base icon (`github`) always precedes its `-2` brand variant (`github-2`).
 
 ## [1.3.0] - 2026-05-17
 
