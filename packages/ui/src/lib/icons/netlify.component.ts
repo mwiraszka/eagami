@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   host: { style: 'display: inline-flex; width: 1em; height: 1em;' },
   template: `
     <svg
-      viewBox="0 0 24 24"
+      viewBox="4 4 16 16"
       aria-hidden="true"
       width="100%"
       height="100%">
