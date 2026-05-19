@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-05-19
+
+### Added
+
+- Add 11 new icons drawn in the Feather style (24px viewBox, 2px stroke, round caps and joins) so they sit naturally alongside the existing set: `bottle`, `candle`, `circle`, `heptagon`, `hexagon`, `lamp`, `pentagon`, `rectangle-horizontal`, `rectangle-vertical`, `soccer-ball`, `trophy`
+
+### Changed
+
+- Add an optional `count` input to `<ea-checkbox>` that renders inline within the same `<span>` as the label, dimmed to `--color-text-tertiary`. Inline placement shares the label's exact baseline and font metrics, so patterns like `Inbox 42` or `Brand (30)` stay aligned without a sibling element fighting flex / inline-flow centring at the consumer's call site
+- Hide `[eaTooltip]` when its trigger has scrolled behind a sticky / fixed ancestor (typical app-header pattern), or when the calculated bubble would itself paint on top of one. Uses `elementFromPoint` plus an ancestor walk for `position: fixed | sticky`, so the directive picks up an app's chrome without needing to be told about it. Feature-detected for jsdom / SSR
+- Scale the Netlify brand icon to the full `24×24` viewBox so it visually matches the other brand marks rather than rendering as a small motif inside whitespace
+- Add `opacity: 1` to `<ea-input>`'s `::placeholder` rule to keep the tertiary token from being washed out further by the Firefox / WebKit ~0.54 default placeholder opacity
+
 ## [1.3.0] - 2026-05-17
 
 ### Added
@@ -427,6 +440,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0
 [1.2.1]: https://github.com/mwiraszka/eagami/compare/v1.2.0...ui-v1.2.1
 [0.4.1]: https://github.com/mwiraszka/eagami/compare/v0.4.0...v0.4.1
