@@ -51,7 +51,7 @@ Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/comp
 
 ## Icons
 
-Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. Derived from [Feather Icons](https://feathericons.com/) by [Cole Bemis](https://github.com/colebemis) and used under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE). A small coloured brand-icon set is bundled for nominative use only. See [icons](https://eagami.com/ui/icons) for the full set and per-brand guideline links.
+Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. Most are derived from [Feather Icons](https://feathericons.com/) by [Cole Bemis](https://github.com/colebemis) under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE); the rest are original eagami additions, plus a small coloured brand-icon set bundled for nominative use only. See [icons](https://eagami.com/ui/icons) for the full set and per-brand guideline links.
 
 ## Theming
 

@@ -1793,7 +1793,7 @@ interface SkeletonProps {
 
 ### 5.33 Icon
 
-The library ships 100 single-color icons (Feather-derived, MIT). In React, expose them as named components in an `eagami-icons` module, each accepting:
+The library ships a single-color icon set (mostly Feather-derived under the MIT licence, plus original eagami additions and a small coloured brand-icon set for nominative use). In React, expose them as named components in an `eagami-icons` module, each accepting:
 
 ```ts
 interface IconProps extends React.SVGAttributes<SVGSVGElement> {

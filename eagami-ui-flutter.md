@@ -2402,7 +2402,7 @@ The brand name itself stays untranslated. Only the overline ("handcrafted by") a
 
 ### 5.33 Icons
 
-The upstream library ships 100 SVG icon components covering core utility, semantic, navigation, and brand-mark categories. Each is exported as its own component (e.g. `<ea-icon-bell />`). For Flutter:
+The upstream library ships an SVG icon set covering core utility, semantic, navigation, household, sports, and brand-mark categories. Each is exported as its own component (e.g. `<ea-icon-bell />`). For Flutter:
 
 - Treat each icon as an `IconData`-equivalent constant (use Flutter's `Icon` widget with a custom font, or render each SVG via `flutter_svg`).
 - Default sizing is `1em × 1em` so the icon scales to the inherited font size when placed inside buttons without an explicit size.
