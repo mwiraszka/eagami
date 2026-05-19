@@ -162,8 +162,16 @@ export interface WebMessages {
       metaTitle: string;
       metaDescription: string;
       title: string;
-      ledeBefore: string;
-      ledeAfter: string;
+      lede: string;
+      filterLabel: string;
+      filterPlaceholder: string;
+      filterClearLabel: string;
+      categoryFeather: string;
+      categoryEagami: string;
+      categoryBrand: string;
+      countAll: (count: number) => string;
+      countFiltered: (shown: number, total: number) => string;
+      noResults: string;
       copiedToast: (selector: string) => string;
       copyFailedToast: (selector: string) => string;
       brandTitle: string;

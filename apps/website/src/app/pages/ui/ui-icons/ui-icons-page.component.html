@@ -1,32 +1,90 @@
 <article class="ui-icons">
   <header class="ui-icons__header">
     <h1 class="ui-icons__title">{{ messages().ui.icons.title }}</h1>
-    <p class="ui-icons__lede">
-      {{ messages().ui.icons.ledeBefore }}
-      <code>font-size</code>{{ messages().ui.icons.ledeAfter }}
+    <p
+      class="ui-icons__lede"
+      [innerHTML]="ledeHtml()">
     </p>
   </header>
 
-  <ul
-    class="icons-grid"
-    role="list">
-    @for (icon of icons; track icon.slug) {
-      <li class="icons-grid__item">
-        <button
-          type="button"
-          class="icons-grid__card"
-          [attr.aria-label]="'ea-icon-' + icon.slug"
-          [eaTooltip]="'ea-icon-' + icon.slug"
-          tooltipPosition="bottom"
-          (click)="copySelector(icon.slug)">
-          <span class="icons-grid__glyph">
-            <ng-container *ngComponentOutlet="icon.component" />
-          </span>
-          <span class="icons-grid__name">{{ toTitleCase(icon.slug) }}</span>
-        </button>
-      </li>
+  <div class="ui-icons__browser">
+    <div class="ui-icons__filter">
+      <label
+        class="ui-icons__filter-field"
+        [class.ui-icons__filter-field--has-value]="query()">
+        <span class="ui-icons__filter-icon">
+          <ea-icon-search />
+        </span>
+        <span class="ui-icons__filter-sr-label">
+          {{ messages().ui.icons.filterLabel }}
+        </span>
+        <input
+          type="search"
+          class="ui-icons__filter-input"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="64"
+          [placeholder]="messages().ui.icons.filterPlaceholder"
+          [ngModel]="query()"
+          (ngModelChange)="query.set($event)" />
+        @if (query()) {
+          <button
+            type="button"
+            class="ui-icons__filter-clear"
+            [attr.aria-label]="messages().ui.icons.filterClearLabel"
+            [eaTooltip]="messages().ui.icons.filterClearLabel"
+            tooltipPosition="bottom"
+            (click)="clearQuery()">
+            <ea-icon-x />
+          </button>
+        }
+      </label>
+      <div
+        class="ui-icons__categories"
+        role="group"
+        [attr.aria-label]="messages().ui.icons.filterLabel">
+        @for (cat of categories; track cat) {
+          <ea-checkbox
+            class="ui-icons__category"
+            size="sm"
+            [label]="categoryLabel(cat)"
+            [count]="'(' + categoryCounts()[cat] + ')'"
+            [checked]="isCategoryEnabled(cat)"
+            (changed)="toggleCategory(cat)" />
+        }
+      </div>
+      <p
+        class="ui-icons__count"
+        aria-live="polite">
+        {{ countLabel() }}
+      </p>
+    </div>
+
+    @if (filteredIcons().length > 0) {
+      <ul
+        class="icons-grid"
+        role="list">
+        @for (icon of filteredIcons(); track icon.slug) {
+          <li class="icons-grid__item">
+            <button
+              type="button"
+              class="icons-grid__card"
+              [attr.aria-label]="'ea-icon-' + icon.slug"
+              [eaTooltip]="'ea-icon-' + icon.slug"
+              tooltipPosition="bottom"
+              (click)="copySelector(icon.slug)">
+              <span class="icons-grid__glyph">
+                <ng-container *ngComponentOutlet="icon.component" />
+              </span>
+              <span class="icons-grid__name">{{ displayName(icon.slug) }}</span>
+            </button>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="ui-icons__no-results">{{ messages().ui.icons.noResults }}</p>
     }
-  </ul>
+  </div>
 
   <section class="ui-icons__brand-section">
     <h2 class="ui-icons__brand-title">{{ messages().ui.icons.brandTitle }}</h2>

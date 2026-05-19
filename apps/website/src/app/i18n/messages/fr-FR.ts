@@ -274,10 +274,16 @@ export const frFR: WebMessages = {
       metaTitle: 'Eagami | UI | Icônes',
       metaDescription: 'Jeu d’icônes intégré à @eagami/ui.',
       title: 'Icônes',
-      ledeBefore:
-        'Composants Angular autonomes qui héritent de leur couleur et s’adaptent à',
-      ledeAfter:
-        ', pour un rendu à toute taille. Dérivées de Feather Icons par Cole Bemis et utilisées sous licence MIT. Cliquez sur une icône pour copier son sélecteur.',
+      lede: 'Composants Angular autonomes qui héritent de leur couleur et s’adaptent à <code>font-size</code>, pour un rendu à toute taille. La plupart sont dérivées de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sous la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licence MIT</span></a> ; les autres sont des icônes originales d’Eagami UI. Cliquez sur une icône pour copier son sélecteur.',
+      filterLabel: 'Filtrer les icônes',
+      filterPlaceholder: 'Rechercher des icônes',
+      filterClearLabel: 'Effacer la recherche',
+      categoryFeather: 'Feather',
+      categoryEagami: 'Eagami UI',
+      categoryBrand: 'Marque',
+      countAll: count => `${count} icônes`,
+      countFiltered: (shown, total) => `${shown} icônes sur ${total}`,
+      noResults: 'Aucune icône ne correspond à votre recherche',
       copiedToast: selector => `« ${selector} » copié dans le presse-papiers`,
       copyFailedToast: selector =>
         `Impossible de copier « ${selector} » dans le presse-papiers`,

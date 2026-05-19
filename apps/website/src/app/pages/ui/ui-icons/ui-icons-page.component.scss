@@ -27,11 +27,14 @@
   line-height: 1.6;
   color: var(--color-text-secondary);
 
-  a {
+  /* The lede is rendered with [innerHTML], so its child `<a>` and `<code>`
+     elements never receive Angular's `_ngcontent` attribute. Pierce view
+     encapsulation with `::ng-deep` so the prose-link and code styles apply. */
+  ::ng-deep a {
     @include mixins.prose-link;
   }
 
-  code {
+  ::ng-deep code {
     padding: 2px 6px;
     border-radius: 4px;
     background-color: var(--color-bg-muted);
@@ -41,12 +44,175 @@
   }
 }
 
+/* Wrapper that scopes the sticky behaviour to the icon-grid section. Once
+   the user scrolls past the grid, the wrapper ends and the filter card stops
+   tracking, so the brand-section below renders unobstructed. */
+.ui-icons__browser {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Sticky filter renders as a centered card that floats below the app header
+   so it reads as its own UI element rather than a continuation of the header.
+   Offset by `--web-height-header` + a small gap to park clear of the header
+   chrome. The card has a soft drop-shadow so it visibly lifts off the icon
+   grid as the grid scrolls beneath it. */
+.ui-icons__filter {
+  z-index: 1;
+  position: sticky;
+  top: calc(var(--web-height-header) + 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 560px;
+  padding: 4px 4px 8px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  background-color: var(--color-bg-base);
+  box-shadow: var(--shadow-md);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus-within {
+    border-color: var(--color-border-focus);
+    box-shadow:
+      var(--shadow-md),
+      0 0 0 3px color-mix(in oklch, var(--color-border-focus), transparent 70%);
+  }
+}
+
+.ui-icons__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 0 12px;
+}
+
+.ui-icons__category {
+  cursor: pointer;
+
+  ::ng-deep .ea-checkbox__label,
+  ::ng-deep .ea-checkbox__count {
+    transition: color 0.15s ease;
+  }
+
+  &:hover ::ng-deep .ea-checkbox__label {
+    color: var(--color-brand-default);
+  }
+
+  &:hover ::ng-deep .ea-checkbox__count {
+    /* Brand colour at lower opacity preserves the primary / secondary
+       hierarchy while still signalling that the count is part of the
+       same hoverable target. */
+    color: color-mix(in oklch, var(--color-brand-default), transparent 40%);
+  }
+}
+
+.ui-icons__count {
+  padding: 0 12px;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+.ui-icons__filter-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ui-icons__filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.ui-icons__filter-sr-label {
+  @include mixins.sr-only;
+}
+
+.ui-icons__filter-input {
+  flex: 1;
+  width: 100%;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 15px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  /* Hide the WebKit/Edge clear button — the custom one matches our icon set. */
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    appearance: none;
+  }
+
+  /* Placeholder uses the tertiary text token so typed text (primary) reads as
+     clearly stronger in both themes. `opacity: 1` overrides the Firefox /
+     WebKit default of ~0.54 to keep the placeholder from washing out
+     further and (in dark mode) collapsing the contrast with typed text. */
+  &::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 1;
+  }
+}
+
+.ui-icons__filter-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: color-mix(
+      in oklch,
+      var(--color-bg-subtle),
+      var(--color-text-primary) 10%
+    );
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+.ui-icons__no-results {
+  padding: 48px 16px;
+  font-size: 15px;
+  text-align: center;
+  word-break: break-word;
+  color: var(--color-text-secondary);
+}
+
 .icons-grid {
   display: grid;
   /* `auto-fill` with a generous minimum cell width so the longest label
-     (e.g. "Chevrons Up Down") never truncates — fewer cells per row at
-     narrower viewports is preferred over an ellipsis. */
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+     (currently "Rectangle Horizontal") sits on a single line — fewer cells
+     per row at narrower viewports is preferred over wrapping or truncation. */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 12px;
   padding: 0;
   margin: 0;

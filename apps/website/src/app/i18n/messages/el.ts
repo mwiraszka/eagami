@@ -271,10 +271,16 @@ export const el: WebMessages = {
       metaTitle: 'Eagami | UI | Εικονίδια',
       metaDescription: 'Σύνολο εικονιδίων που συνοδεύει το @eagami/ui.',
       title: 'Εικονίδια',
-      ledeBefore:
-        'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο',
-      ledeAfter:
-        ', ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Προέρχονται από τα Feather Icons του Cole Bemis και χρησιμοποιούνται υπό την άδεια MIT. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
+      lede: 'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο <code>font-size</code>, ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Τα περισσότερα προέρχονται από τα <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> του <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> υπό την <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>άδεια MIT</span></a>· τα υπόλοιπα είναι πρωτότυπα εικονίδια του Eagami UI. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
+      filterLabel: 'Φιλτράρισμα εικονιδίων',
+      filterPlaceholder: 'Αναζήτηση εικονιδίων',
+      filterClearLabel: 'Καθαρισμός αναζήτησης',
+      categoryFeather: 'Feather',
+      categoryEagami: 'Eagami UI',
+      categoryBrand: 'Μάρκα',
+      countAll: count => `${count} εικονίδια`,
+      countFiltered: (shown, total) => `${shown} από ${total} εικονίδια`,
+      noResults: 'Κανένα εικονίδιο δεν ταιριάζει με την αναζήτησή σας',
       copiedToast: selector => `Αντιγράφηκε «${selector}» στο πρόχειρο`,
       copyFailedToast: selector =>
         `Δεν ήταν δυνατή η αντιγραφή του «${selector}» στο πρόχειρο`,
