@@ -113,18 +113,23 @@ export class DropdownComponent implements ControlValueAccessor {
       menu.style.minWidth = `${rect.width}px`;
     });
 
-    const closeOnViewportChange = (): void => {
-      if (this.isOpen()) this.close();
-    };
-    window.addEventListener('scroll', closeOnViewportChange, {
-      capture: true,
-      passive: true,
-    });
-    window.addEventListener('resize', closeOnViewportChange);
-    this.destroyRef.onDestroy(() => {
-      window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
-      window.removeEventListener('resize', closeOnViewportChange);
-    });
+    // Guard `window` for SSR: the website prerenders 42 routes, and the
+    // dropdown can appear inside any of them. Without this, prerendering
+    // throws `ReferenceError: window is not defined`.
+    if (typeof window !== 'undefined') {
+      const closeOnViewportChange = (): void => {
+        if (this.isOpen()) this.close();
+      };
+      window.addEventListener('scroll', closeOnViewportChange, {
+        capture: true,
+        passive: true,
+      });
+      window.addEventListener('resize', closeOnViewportChange);
+      this.destroyRef.onDestroy(() => {
+        window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
+        window.removeEventListener('resize', closeOnViewportChange);
+      });
+    }
   }
 
   // ControlValueAccessor
