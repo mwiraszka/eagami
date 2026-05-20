@@ -42,7 +42,7 @@ export const esES: WebMessages = {
         before: 'Los proyectos más grandes pueden construirse sobre',
         link: 'Eagami UI',
         after:
-          ', una biblioteca de componentes a medida, para un lenguaje visual coherente y moderno en todo el sitio.',
+          ', una biblioteca de componentes y un sistema de diseño a medida, para un lenguaje visual coherente y moderno en todo el sitio.',
       },
       core: [
         {

@@ -43,7 +43,7 @@ export const pl: WebMessages = {
         before: 'Większe projekty można zbudować w oparciu o',
         link: 'Eagami UI',
         after:
-          ', autorską bibliotekę komponentów, dla spójnego i nowoczesnego języka wizualnego w całym serwisie.',
+          ', autorską bibliotekę komponentów i system projektowy, dla spójnego i nowoczesnego języka wizualnego w całym serwisie.',
       },
       core: [
         {
