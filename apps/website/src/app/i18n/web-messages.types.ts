@@ -359,6 +359,18 @@ export interface WebMessages {
           pinLabel: string;
           pinHint: string;
         };
+        colorPicker: {
+          brandLabel: string;
+          withHintLabel: string;
+          hintBrandColor: string;
+          withErrorLabel: string;
+          errorRequired: string;
+          hexLabel: string;
+          rgbLabel: string;
+          hslLabel: string;
+          noAlphaHeading: string;
+          opaqueOnlyLabel: string;
+        };
         dataTable: {
           tableColumnId: string;
           tableColumnFirstName: string;

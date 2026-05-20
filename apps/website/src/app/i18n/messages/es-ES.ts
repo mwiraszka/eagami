@@ -480,6 +480,18 @@ export const esES: WebMessages = {
           pinLabel: 'PIN',
           pinHint: 'Introduce tu PIN de 4 dígitos',
         },
+        colorPicker: {
+          brandLabel: 'Color de marca',
+          withHintLabel: 'Con sugerencia',
+          hintBrandColor: 'Se usa como color principal de la marca',
+          withErrorLabel: 'Con error',
+          errorRequired: 'Este campo es obligatorio',
+          hexLabel: 'Formato HEX',
+          rgbLabel: 'Formato RGB',
+          hslLabel: 'Formato HSL',
+          noAlphaHeading: 'Solo opaco',
+          opaqueOnlyLabel: 'Color sólido',
+        },
         dataTable: {
           tableColumnId: 'ID',
           tableColumnFirstName: 'Nombre',
