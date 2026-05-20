@@ -1,0 +1,511 @@
+// =============================================================================
+// COLOR PICKER COMPONENT
+// =============================================================================
+
+.ea-color-picker-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__label {
+    font-size: var(--text-label-md-size);
+    font-weight: var(--text-label-md-weight);
+    line-height: var(--text-label-md-lh);
+    color: var(--color-text-primary);
+
+    &--required::after {
+      content: ' *';
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+
+    &--error {
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
+}
+
+.ea-color-picker {
+  position: relative;
+
+  // ---------------------------------------------------------------------------
+  // Trigger
+  // ---------------------------------------------------------------------------
+  &__trigger-wrapper {
+    position: relative;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    background-color: var(--color-bg-base);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: var(--transition-colors), var(--transition-shadow);
+    text-align: left;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--sm {
+      padding: var(--space-1-5) var(--space-2);
+      font-size: var(--font-size-sm);
+      min-height: 2rem;
+    }
+
+    &--md {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-sm);
+      min-height: 2.5rem;
+    }
+
+    &--lg {
+      padding: var(--space-2-5) var(--space-4);
+      font-size: var(--font-size-md);
+      min-height: 3rem;
+    }
+
+    &--open {
+      border-color: var(--color-border-focus);
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--error {
+      border-color: var(--color-error-default);
+
+      &.ea-color-picker__trigger--open {
+        box-shadow: var(--shadow-focus-ring-error);
+      }
+    }
+
+    &--disabled {
+      background-color: var(--color-bg-muted);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__trigger-value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-family-mono);
+    font-size: 0.85em;
+
+    &--placeholder {
+      color: var(--color-text-tertiary);
+      font-family: var(--font-family-sans);
+      font-size: 1em;
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: var(--space-2);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-colors);
+    transform: translateY(-50%);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Swatch (checkerboard background so translucent fills are obvious)
+  // ---------------------------------------------------------------------------
+  &__swatch {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-base);
+    background-image:
+      linear-gradient(45deg, var(--color-neutral-200) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--color-neutral-200) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--color-neutral-200) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--color-neutral-200) 75%);
+    background-size: 8px 8px;
+    background-position:
+      0 0,
+      0 4px,
+      4px -4px,
+      -4px 0;
+
+    &--lg {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius-md);
+    }
+  }
+
+  &__swatch-fill {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Popover. Positioned via `fixed` + JS-supplied `top`/`left` so it escapes
+  // any ancestor with `overflow: hidden` (same pattern as `<ea-dropdown>`).
+  // ---------------------------------------------------------------------------
+  &__popover {
+    position: fixed;
+    z-index: var(--z-index-popover);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    width: 17.5rem;
+    background-color: var(--color-bg-base);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Saturation / value gradient area
+  // ---------------------------------------------------------------------------
+  &__sv-area {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 10rem;
+    border-radius: var(--radius-sm);
+    cursor: crosshair;
+    touch-action: none;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+  }
+
+  &__sv-area-sat {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--color-picker-sv-white), transparent);
+  }
+
+  &__sv-area-val {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-picker-sv-black), transparent);
+  }
+
+  &__sv-pointer {
+    position: absolute;
+    z-index: 1;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 2px solid var(--color-neutral-0);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 0 1px var(--color-picker-thumb-halo);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Sliders (hue + alpha) with swatch
+  // ---------------------------------------------------------------------------
+  &__slider-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  &__strip-stack {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--space-2);
+  }
+
+  &__strip {
+    position: relative;
+    width: 100%;
+    height: 0.75rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    touch-action: none;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--hue {
+      background: linear-gradient(
+        to right,
+        var(--color-picker-hue-red) 0%,
+        var(--color-picker-hue-yellow) 17%,
+        var(--color-picker-hue-green) 33%,
+        var(--color-picker-hue-cyan) 50%,
+        var(--color-picker-hue-blue) 67%,
+        var(--color-picker-hue-magenta) 83%,
+        var(--color-picker-hue-red) 100%
+      );
+    }
+
+    &--alpha {
+      background-color: var(--color-bg-base);
+      background-image:
+        linear-gradient(
+          to right,
+          transparent 0%,
+          var(--ea-color-picker-alpha-base, currentcolor) 100%
+        ),
+        linear-gradient(45deg, var(--color-neutral-200) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--color-neutral-200) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--color-neutral-200) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--color-neutral-200) 75%);
+      background-size:
+        100% 100%,
+        8px 8px,
+        8px 8px,
+        8px 8px,
+        8px 8px;
+      background-position:
+        0 0,
+        0 0,
+        0 4px,
+        4px -4px,
+        -4px 0;
+    }
+  }
+
+  &__strip-thumb {
+    position: absolute;
+    top: 50%;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 2px solid var(--color-neutral-0);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 0 1px var(--color-picker-thumb-halo);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Inputs row — either a single full-width hex input or RGB(A) channel
+  // inputs, with a small toggle button on the right that cycles between them.
+  // The hex input gets full width in hex mode, fixing the prior issue where
+  // a 6-digit hex was clipped behind the side-by-side RGB columns.
+  // ---------------------------------------------------------------------------
+  &__inputs {
+    display: flex;
+    align-items: end;
+    gap: var(--space-1);
+  }
+
+  &__input-group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+    text-align: center;
+
+    &--hex {
+      flex: 1;
+    }
+  }
+
+  &__format-toggle {
+    flex-shrink: 0;
+    min-width: 3.25rem;
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-base);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+  }
+
+  &__input-label {
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-tertiary);
+  }
+
+  &__input {
+    width: 100%;
+    min-width: 0;
+    padding: var(--space-1) var(--space-1-5);
+    background-color: var(--color-bg-base);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    text-align: center;
+    color: var(--color-text-primary);
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    // Hide native number spinners — keep the layout tight.
+    &--num {
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Eyedropper + presets
+  // ---------------------------------------------------------------------------
+  &__tools {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1-5);
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-base);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    ea-icon-droplet {
+      width: 0.875em;
+      height: 0.875em;
+    }
+  }
+
+  &__presets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1-5);
+    padding-top: var(--space-2);
+    border-top: var(--border-width-thin) solid var(--color-border-default);
+  }
+
+  &__presets-label {
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-tertiary);
+  }
+
+  &__presets-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: var(--space-1);
+  }
+
+  &__preset {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease-out);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &[aria-selected='true'] {
+      box-shadow: 0 0 0 2px var(--color-brand-default);
+    }
+  }
+}
