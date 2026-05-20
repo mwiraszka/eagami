@@ -42,7 +42,7 @@ export const en: WebMessages = {
         before: 'Larger projects can be built on',
         link: 'Eagami UI',
         after:
-          ', a custom component library, for a consistent and modern visual language across the site.',
+          ', a custom component library and design system, for a consistent and modern visual language across the site.',
       },
       core: [
         {

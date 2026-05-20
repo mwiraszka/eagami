@@ -46,7 +46,7 @@ export const frFR: WebMessages = {
         before: 'Les projets de grande envergure peuvent s’appuyer sur',
         link: 'Eagami UI',
         after:
-          ', une bibliothèque de composants sur mesure, pour un langage visuel cohérent et moderne sur tout le site.',
+          ', une bibliothèque de composants et un système de design sur mesure, pour un langage visuel cohérent et moderne sur tout le site.',
       },
       core: [
         {

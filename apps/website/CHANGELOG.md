@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [1.4.1] - 2026-05-20
+
+### Changed
+
+- Reword the home page Services note to describe Eagami UI as "a custom component library and design system" (translated across all five locales).
+
 ## [1.4.0] - 2026-05-20
 
 ### Added
@@ -369,6 +375,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[1.4.1]: https://github.com/mwiraszka/eagami/compare/website-v1.4.0...website-v1.4.1
 [1.4.0]: https://github.com/mwiraszka/eagami/compare/website-v1.3.0...website-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/website-v1.2.0...website-v1.3.0
 [1.2.0]: https://github.com/mwiraszka/eagami/releases/tag/website-v1.2.0
