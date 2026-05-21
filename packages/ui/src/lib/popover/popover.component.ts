@@ -88,7 +88,7 @@ export class PopoverComponent {
   );
 
   /** Gap in px between the anchor and the popover. */
-  readonly offset = input<number>(4);
+  readonly offset = input<number>(2);
 
   /** Flip to the opposite side when the requested side overflows the viewport. */
   readonly flip = input<boolean>(true);
@@ -148,6 +148,24 @@ export class PopoverComponent {
     // callback in a way that leaves the surface stuck at `visibility: hidden`).
     // Naturally SSR-safe: the surface never renders on the server, so the
     // effect always early-returns during prerender.
+    // Teleport the surface to `document.body` as soon as it exists so
+    // `position: fixed` is always relative to the actual viewport (escaping
+    // any transformed/contained ancestor that would otherwise create a new
+    // containing block). Doing the move on init — not on open — also means
+    // the first `getBoundingClientRect` call inside `reposition()` reads a
+    // surface that's already in its final DOM home, so the browser's layout
+    // is settled and dimensions are accurate. Skipped in SSR (no `document`).
+    effect(() => {
+      const surface = this.surfaceEl()?.nativeElement;
+      if (
+        surface &&
+        typeof document !== 'undefined' &&
+        surface.parentNode !== document.body
+      ) {
+        document.body.appendChild(surface);
+      }
+    });
+
     effect(() => {
       const surface = this.surfaceEl()?.nativeElement;
       const anchor = this.resolveAnchor();
@@ -155,16 +173,6 @@ export class PopoverComponent {
       if (!surface || !anchor || !isOpen) {
         this.position.set(null);
         return;
-      }
-      // Teleport the surface to `document.body` once it renders so `position:
-      // fixed` is always relative to the actual viewport. Any ancestor with
-      // `transform`, `contain`, `filter`, `perspective`, or `will-change` on
-      // the path from the popover to `<html>` would otherwise create a new
-      // containing block and trap the fixed positioning inside it — which is
-      // exactly how the popover ended up invisible in Storybook's docs canvas.
-      // Skipped in SSR (no `document`).
-      if (typeof document !== 'undefined' && surface.parentNode !== document.body) {
-        document.body.appendChild(surface);
       }
       // Re-read inputs so signal subscriptions stay current after a re-open.
       this.placement();
@@ -198,6 +206,19 @@ export class PopoverComponent {
         window.removeEventListener('resize', onViewportChange);
       });
     }
+
+    // Explicitly remove the portaled surface on destroy. Angular's view
+    // destruction normally removes nodes the renderer created, but moving the
+    // surface via raw `appendChild` (out of its original anchor slot) is
+    // enough to break that tracking in some host environments — Storybook's
+    // SPA navigation between docs pages, for one, leaves the surface stranded
+    // in `document.body` after the parent component is gone. Removing it here
+    // guarantees cleanup regardless of how Angular's view destruction handles
+    // the relocated node.
+    this.destroyRef.onDestroy(() => {
+      const surface = this.surfaceEl()?.nativeElement;
+      surface?.parentNode?.removeChild(surface);
+    });
   }
 
   private resolveAnchor(): HTMLElement | null {

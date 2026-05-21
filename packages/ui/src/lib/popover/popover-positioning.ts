@@ -181,12 +181,28 @@ export function computePopoverPosition(
   }
 
   if (clamp) {
-    const maxLeft = viewport.width - popoverRect.width - margin;
-    const maxTop = viewport.height - popoverRect.height - margin;
-    pos = {
-      top: Math.max(margin, Math.min(pos.top, Math.max(margin, maxTop))),
-      left: Math.max(margin, Math.min(pos.left, Math.max(margin, maxLeft))),
-    };
+    // Only clamp the cross-axis (perpendicular to the placement). For
+    // bottom-side placements we clamp `left` so the popover doesn't slip off
+    // the left/right of the viewport, but we leave `top` alone — clamping it
+    // when the popover is taller than the available space below the anchor
+    // would yank it up over the anchor itself (the common Storybook-docs-
+    // iframe failure mode where viewports are short). Better to let it
+    // overflow and scroll than to overlap its own trigger.
+    const s = side(placement);
+    const isVertical = s === 'top' || s === 'bottom';
+    if (isVertical) {
+      const maxLeft = viewport.width - popoverRect.width - margin;
+      pos = {
+        top: pos.top,
+        left: Math.max(margin, Math.min(pos.left, Math.max(margin, maxLeft))),
+      };
+    } else {
+      const maxTop = viewport.height - popoverRect.height - margin;
+      pos = {
+        top: Math.max(margin, Math.min(pos.top, Math.max(margin, maxTop))),
+        left: pos.left,
+      };
+    }
   }
 
   return {
