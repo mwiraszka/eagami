@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2026-05-21
 
+### Added
+
+- Introduce `<ea-popover>`, a low-level floating-element primitive that handles anchored positioning (`position: fixed` against an external anchor element), flip-on-overflow, viewport clamping, outside-click and Escape dismissal, and SSR-safe scroll / resize handling. Supports 8 placements (`top`, `top-start`, `top-end`, `bottom`, `bottom-start`, `bottom-end`, `left`, `right`), three scroll behaviors (`reposition`, `close`, `ignore`), and an optional `matchAnchorWidth` mode for dropdown-style equal-width popovers. The pure `computePopoverPosition()` helper is also exported so downstream apps can drive their own positioning. The existing menu, dropdown, color-picker, date-picker, and tooltip components are migrated onto this primitive in the same release so they share the same SSR guards and edge-case handling.
+
 ### Changed
 
 - **Breaking:** Remove `<ea-icon-apple>` / `AppleIconComponent`. The icon depicted Apple Inc.'s logo, which is more strictly protected than other brand marks; consumers needing it (e.g. "Sign in with Apple") should source the asset directly from Apple per their brand guidelines. The component was deprecated in v1.3.0.

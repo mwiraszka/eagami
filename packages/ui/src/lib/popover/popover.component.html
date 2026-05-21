@@ -1,0 +1,12 @@
+@if (open()) {
+  <div
+    #surfaceEl
+    class="ea-popover__surface"
+    [class]="'ea-popover__surface--' + effectivePlacement()"
+    [id]="surfaceId()"
+    [attr.role]="role()"
+    [attr.aria-label]="ariaLabel()"
+    [style]="surfaceStyle()">
+    <ng-content />
+  </div>
+}
