@@ -1,6 +1,4 @@
-<div
-  #hostEl
-  class="ea-date-picker-field">
+<div class="ea-date-picker-field">
   @if (label()) {
     <label
       class="ea-date-picker-field__label"
@@ -48,10 +46,16 @@
       }
     </div>
 
-    @if (isOpen()) {
+    <ea-popover
+      [anchor]="triggerEl"
+      [open]="isOpen()"
+      placement="bottom-start"
+      role="dialog"
+      [closeOnEscape]="false"
+      scrollBehavior="close"
+      (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-date-picker__popover"
-        role="dialog"
         [attr.aria-labelledby]="id() + '-label'"
         (keydown)="handleGridKeydown($event)">
         <div class="ea-date-picker__header">
@@ -142,7 +146,7 @@
           </button>
         </div>
       </div>
-    }
+    </ea-popover>
   </div>
 
   @if (showError()) {
