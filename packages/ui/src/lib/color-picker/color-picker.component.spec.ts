@@ -11,10 +11,12 @@ describe('ColorPickerComponent', () => {
   }
 
   function getPopover(): HTMLElement | null {
-    // `<ea-popover>` teleports its surface (and the picker's projected
-    // popover content) to `document.body`. Query the global DOM rather than
-    // the fixture's tree.
-    return document.body.querySelector('.ea-color-picker__popover');
+    // The popover renders its surface unconditionally (hidden via
+    // `display: none` when closed) and teleports it to `document.body`.
+    // Treat a hidden surface as "no popover".
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface.querySelector<HTMLElement>('.ea-color-picker__popover');
   }
 
   function open(): void {

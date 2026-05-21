@@ -49,9 +49,15 @@ describe('PopoverComponent', () => {
   let host: PopoverHostComponent;
 
   function getSurface(): HTMLElement | null {
-    // `<ea-popover>` teleports its surface to `document.body`, so query the
-    // global DOM rather than the fixture's tree.
-    return document.querySelector('.ea-popover__surface');
+    // The popover renders its surface unconditionally (so the `<ng-content/>`
+    // slot is always available to receive projected content) and toggles
+    // visibility via `display: none`. Treat a hidden surface as "not open"
+    // here so existing assertions keep their plain `null` semantics.
+    // `<ea-popover>` also teleports the surface to `document.body` once open,
+    // so query the global DOM rather than the fixture's tree.
+    const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface;
   }
 
   function getAnchor(): HTMLButtonElement {

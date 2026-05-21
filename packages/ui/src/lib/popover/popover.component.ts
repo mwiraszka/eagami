@@ -120,7 +120,11 @@ export class PopoverComponent {
 
   /** Inline style applied to the surface element. */
   readonly surfaceStyle = computed<Record<string, string>>(() => {
+    if (!this.open()) return { display: 'none' };
     const p = this.position();
+    // Before the first reposition, hide the surface — at this point it's
+    // sitting at the top-left of the viewport with no coordinates applied
+    // yet, and we don't want a flash on open.
     if (!p) return { visibility: 'hidden' };
     const style: Record<string, string> = {
       top: `${p.top}px`,

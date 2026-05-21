@@ -51,11 +51,19 @@ describe('MenuComponent', () => {
   }
 
   function getList(): HTMLElement | null {
-    return document.body.querySelector('.ea-menu__list');
+    // The menu's projected list lives inside the popover surface, which is
+    // rendered unconditionally and hidden via `display: none` when closed.
+    // Treat a hidden surface as "no list" so the existing assertions stay
+    // intact.
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface.querySelector<HTMLElement>('.ea-menu__list');
   }
 
   function getItems(): HTMLButtonElement[] {
-    return Array.from(document.body.querySelectorAll('.ea-menu-item'));
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return [];
+    return Array.from(surface.querySelectorAll('.ea-menu-item'));
   }
 
   beforeEach(async () => {
