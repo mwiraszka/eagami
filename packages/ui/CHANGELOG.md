@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add `<ea-color-picker>`, a full-featured color picker with a swatch trigger that opens a popover containing a saturation/value gradient area, hue slider, optional alpha slider, hex / RGB inputs (one row at a time, toggled via a small format button), a configurable preset palette, and an eyedropper button (in browsers that expose the EyeDropper API). Pointer, touch, and full keyboard control are supported on every region (arrows step, Shift+arrows step coarse, Home/End jump to bounds). The popover positions itself via `position: fixed` so it escapes any ancestor with `overflow: hidden`. Integrates with Angular forms via `ControlValueAccessor`, accepts any CSS color string in `writeValue` (3/6/8-digit hex, `rgb()`/`rgba()`, `hsl()`/`hsla()`, named colors), and emits in the configurable `format` (`hex` | `rgb` | `hsl`). Comes with i18n coverage in all five locales.
 
+### Changed
+
+- Standardize field-level error and hint message rendering across every form-like component. Error messages now always lead with an alert-circle icon (previously `<ea-input>`, `<ea-textarea>`, `<ea-date-picker>`, and `<ea-color-picker>` had it, while `<ea-slider>`, `<ea-checkbox>`, `<ea-switch>`, `<ea-dropdown>`, `<ea-autocomplete>`, `<ea-radio-group>`, `<ea-code-input>`, and `<ea-segmented>` did not). Helper-text size bumps from 12px to 13px via `--text-helper-size` for better legibility on dense forms without crowding the label hierarchy.
+- Replace `<ea-input>`'s `setTimeout(0)`-based autofocus with `afterNextRender()` so focus runs against a guaranteed-DOM-attached element rather than relying on the macrotask queue, and so the timing is naturally SSR-safe.
+
 ### Fixed
 
 - Guard `window.addEventListener` calls in `<ea-dropdown>` with a `typeof window !== 'undefined'` check so prerendered (SSR) pages that render a dropdown no longer throw `ReferenceError: window is not defined`.
