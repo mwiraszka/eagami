@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-05-21
+
+### Changed
+
+- **Breaking:** Remove `<ea-icon-apple>` / `AppleIconComponent`. The icon depicted Apple Inc.'s logo, which is more strictly protected than other brand marks; consumers needing it (e.g. "Sign in with Apple") should source the asset directly from Apple per their brand guidelines. The component was deprecated in v1.3.0.
+- **Breaking:** Remove `<ea-icon-pencil>` / `PencilIconComponent`. The icon depicted the same mark as Feather's canonical `edit-2` and was deprecated in v1.4.0 as redundant; switch to `<ea-icon-edit-2>` / `Edit2IconComponent`.
+
 ## [1.5.0] - 2026-05-20
 
 ### Added
@@ -462,6 +469,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0
 [1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0

@@ -336,9 +336,6 @@ import { ZoomOutIconComponent } from './zoom-out.component';
  * the full set. For single-icon usage import the component directly (e.g.
  * `import { HomeIconComponent } from '@eagami/ui'`) and the bundler will
  * tree-shake `ICONS` away.
- *
- * Deprecated aliases (e.g. `PencilIconComponent`) are intentionally excluded
- * so they don't surface in generated catalogues.
  */
 export const ICONS: ReadonlyArray<IconComponentType> = (
   [
