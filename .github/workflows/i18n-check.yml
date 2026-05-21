@@ -1,0 +1,42 @@
+name: i18n — Key Drift Check
+
+# Fires whenever a PR (or push to main) touches a message file in either
+# package, so a new key added to en.ts but forgotten in fr-FR / pl / etc.
+# gets flagged before merge instead of degrading the non-default locales
+# silently.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/ui/src/lib/i18n/messages/**'
+      - 'apps/website/src/app/i18n/messages/**'
+      - 'packages/ui/scripts/check-i18n-drift.mjs'
+      - '.github/workflows/i18n-check.yml'
+  pull_request:
+    paths:
+      - 'packages/ui/src/lib/i18n/messages/**'
+      - 'apps/website/src/app/i18n/messages/**'
+      - 'packages/ui/scripts/check-i18n-drift.mjs'
+      - '.github/workflows/i18n-check.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # The script accepts multiple directories; we point it at both
+      # locale sets so one job covers the whole repo.
+      - name: Check i18n drift
+        run: |
+          pnpm --filter @eagami/ui exec node scripts/check-i18n-drift.mjs \
+            src/lib/i18n/messages \
+            ../../apps/website/src/app/i18n/messages

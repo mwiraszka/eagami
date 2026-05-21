@@ -31,6 +31,7 @@
     "test:coverage": "jest --coverage",
     "format": "prettier --write \"src/**\" \"sandbox/**\"",
     "lint": "eslint 'src/**'",
+    "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
     "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
