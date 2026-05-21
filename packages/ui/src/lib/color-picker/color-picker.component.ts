@@ -2,13 +2,10 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   ElementRef,
-  HostListener,
   Injector,
   afterNextRender,
   computed,
-  effect,
   forwardRef,
   inject,
   input,
@@ -22,6 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { DropletIconComponent } from '../icons/droplet.component';
+import { PopoverComponent } from '../popover/popover.component';
 
 /** Visual size of the color picker trigger. */
 export type ColorPickerSize = 'sm' | 'md' | 'lg';
@@ -84,7 +82,7 @@ const DEFAULT_PRESETS: readonly string[] = [
  */
 @Component({
   selector: 'ea-color-picker',
-  imports: [AlertCircleIconComponent, DropletIconComponent, NgClass],
+  imports: [AlertCircleIconComponent, DropletIconComponent, NgClass, PopoverComponent],
   templateUrl: './color-picker.component.html',
   styleUrl: './color-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -97,14 +95,11 @@ const DEFAULT_PRESETS: readonly string[] = [
   ],
 })
 export class ColorPickerComponent implements ControlValueAccessor {
-  private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
-  private readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
-  private readonly popoverEl = viewChild<ElementRef<HTMLDivElement>>('popoverEl');
+  protected readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
   private readonly svAreaEl = viewChild<ElementRef<HTMLDivElement>>('svAreaEl');
   private readonly hueTrackEl = viewChild<ElementRef<HTMLDivElement>>('hueTrackEl');
   private readonly alphaTrackEl = viewChild<ElementRef<HTMLDivElement>>('alphaTrackEl');
   private readonly injector = inject(Injector);
-  private readonly destroyRef = inject(DestroyRef);
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
@@ -145,10 +140,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
    * can type a partial value (`#1`, `#12`, `#123…`) without each keystroke being
    * expanded back into a 6-digit canonical form. */
   readonly hexInputValue = signal('');
-  /** Pixel position of the popover when open. Calculated from the trigger's
-   * bounding rect so the popover can use `position: fixed` and escape any
-   * ancestor with `overflow: hidden`. */
-  readonly popoverPosition = signal<{ top: number; left: number } | null>(null);
   private readonly _formDisabled = signal(false);
 
   private onChange: (value: string | null) => void = () => {};
@@ -198,53 +189,19 @@ export class ColorPickerComponent implements ControlValueAccessor {
     'ea-color-picker__trigger--disabled': this.isDisabled(),
   }));
 
-  /** True when the browser supports the EyeDropper API. */
-  readonly hasEyeDropper = computed(() => {
+  /**
+   * True when the browser supports the EyeDropper API. Not a `computed` —
+   * `window.EyeDropper` isn't a signal, so a memoized computed would cache the
+   * first read (typically `false`, since the popover content's bindings now
+   * evaluate at parent-view creation time via content projection, before any
+   * polyfill / test setup runs). A plain method re-checks on every call.
+   */
+  hasEyeDropper(): boolean {
     if (typeof window === 'undefined') return false;
     return (
       typeof (window as unknown as { EyeDropper?: EyeDropperCtor }).EyeDropper ===
       'function'
     );
-  });
-
-  constructor() {
-    // When the popover opens, anchor it to the trigger using `position: fixed`
-    // coordinates so it escapes any ancestor with `overflow: hidden` (a common
-    // gotcha in scrollable content panels — same pattern as `<ea-dropdown>`).
-    // After the popover renders we measure it and, if it would overflow the
-    // viewport bottom, flip it above the trigger (or clamp against the top
-    // edge when neither direction fits — better than getting trapped below
-    // the fold with no way to scroll, which the page-scroll wouldn't reach
-    // because the popover itself is fixed).
-    effect(() => {
-      const trigger = this.triggerEl()?.nativeElement;
-      if (!trigger || !this.isOpen()) {
-        this.popoverPosition.set(null);
-        return;
-      }
-      const rect = trigger.getBoundingClientRect();
-      this.popoverPosition.set({ top: rect.bottom + 4, left: rect.left });
-      // Re-measure once the popover has actually rendered so we know its height.
-      afterNextRender(() => this.clampPopoverToViewport(), { injector: this.injector });
-    });
-
-    // Close the popover on scroll / resize rather than try to track the trigger
-    // — same pattern as `<ea-dropdown>`. SSR-guarded because the website
-    // prerenders pages that render this component.
-    if (typeof window !== 'undefined') {
-      const closeOnViewportChange = (): void => {
-        if (this.isOpen()) this.close();
-      };
-      window.addEventListener('scroll', closeOnViewportChange, {
-        capture: true,
-        passive: true,
-      });
-      window.addEventListener('resize', closeOnViewportChange);
-      this.destroyRef.onDestroy(() => {
-        window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
-        window.removeEventListener('resize', closeOnViewportChange);
-      });
-    }
   }
 
   // ─── ControlValueAccessor ─────────────────────────────────────────────
@@ -588,47 +545,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
     }
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (!this.isOpen()) return;
-    const host = this.hostEl()?.nativeElement;
-    if (host && !host.contains(event.target as Node)) this.close();
-  }
-
-  /**
-   * Repositions the popover when it would extend past the viewport edges.
-   * Prefers flipping above the trigger when there's more room there, then
-   * clamps so the popover always has a small margin from the viewport edges.
-   */
-  private clampPopoverToViewport(): void {
-    const popover = this.popoverEl()?.nativeElement;
-    const trigger = this.triggerEl()?.nativeElement;
-    const current = this.popoverPosition();
-    if (!popover || !trigger || !current) return;
-
-    const margin = 8;
-    const triggerRect = trigger.getBoundingClientRect();
-    const popoverRect = popover.getBoundingClientRect();
-    const viewportH = window.innerHeight;
-    const viewportW = window.innerWidth;
-
-    let top = current.top;
-    const overflowsBottom = top + popoverRect.height > viewportH - margin;
-    const roomAbove = triggerRect.top - margin;
-    if (overflowsBottom && roomAbove >= popoverRect.height + 4) {
-      top = triggerRect.top - popoverRect.height - 4;
-    } else if (overflowsBottom) {
-      top = Math.max(margin, viewportH - popoverRect.height - margin);
-    }
-
-    const left = Math.max(
-      margin,
-      Math.min(current.left, viewportW - popoverRect.width - margin),
-    );
-
-    if (top !== current.top || left !== current.left) {
-      this.popoverPosition.set({ top, left });
-    }
+  /** Called by `<ea-popover>` when the user clicks outside the picker. */
+  onPopoverCloseRequested(): void {
+    this.close();
   }
 
   // ─── Internal: applying state and committing ──────────────────────────

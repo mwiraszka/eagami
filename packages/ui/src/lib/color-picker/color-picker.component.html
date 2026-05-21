@@ -1,6 +1,4 @@
-<div
-  #hostEl
-  class="ea-color-picker-field">
+<div class="ea-color-picker-field">
   @if (label()) {
     <label
       class="ea-color-picker-field__label"
@@ -53,14 +51,17 @@
       }
     </div>
 
-    @if (isOpen()) {
+    <ea-popover
+      [anchor]="triggerEl"
+      [open]="isOpen()"
+      placement="bottom-start"
+      role="dialog"
+      [ariaLabel]="label() || i18n.messages().colorPicker.placeholder"
+      [closeOnEscape]="false"
+      scrollBehavior="close"
+      (closeRequested)="onPopoverCloseRequested()">
       <div
-        #popoverEl
         class="ea-color-picker__popover"
-        role="dialog"
-        [attr.aria-label]="label() || i18n.messages().colorPicker.placeholder"
-        [style.top.px]="popoverPosition()?.top"
-        [style.left.px]="popoverPosition()?.left"
         (keydown)="onPopoverKeydown($event)">
         <div
           #svAreaEl
@@ -249,7 +250,7 @@
           </div>
         }
       </div>
-    }
+    </ea-popover>
   </div>
 
   @if (showError()) {
