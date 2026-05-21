@@ -18,6 +18,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SelectOption } from '../select-option';
 
@@ -32,7 +33,7 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-dropdown',
-  imports: [ChevronDownIconComponent, NgClass],
+  imports: [AlertCircleIconComponent, ChevronDownIconComponent, NgClass],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

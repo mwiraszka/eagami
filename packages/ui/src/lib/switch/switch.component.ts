@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+
 /** Visual size of the switch. */
 export type SwitchSize = 'sm' | 'md' | 'lg';
 
@@ -21,7 +23,7 @@ export type SwitchSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-switch',
-  imports: [NgClass],
+  imports: [AlertCircleIconComponent, NgClass],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
