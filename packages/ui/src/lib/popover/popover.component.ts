@@ -4,8 +4,6 @@ import {
   DestroyRef,
   ElementRef,
   HostListener,
-  Injector,
-  afterNextRender,
   computed,
   effect,
   inject,
@@ -65,7 +63,6 @@ export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopoverComponent {
-  private readonly injector = inject(Injector);
   private readonly destroyRef = inject(DestroyRef);
 
   private readonly surfaceEl = viewChild<ElementRef<HTMLElement>>('surfaceEl');
@@ -136,19 +133,32 @@ export class PopoverComponent {
   });
 
   constructor() {
-    // Re-measure and reposition whenever the anchor, placement, or open state
-    // changes. `afterNextRender` makes the popover's own `getBoundingClientRect`
-    // measurable (it only has dimensions once Angular has actually rendered
-    // the element), and is naturally SSR-safe — the callback never fires
-    // during prerender.
+    // Re-measure and reposition whenever the anchor, placement, surface, or
+    // open state changes. Reading `surfaceEl()` here makes it a tracked signal
+    // dependency, so the effect re-runs once Angular has rendered the `@if`
+    // block and the viewChild signal has updated — at that point both the
+    // anchor and the surface have a `getBoundingClientRect`, and the position
+    // can be computed. This is more reliable than `afterNextRender` because it
+    // doesn't depend on a single render cycle landing in the expected order
+    // (some host environments — Storybook docs mode, for example — defer that
+    // callback in a way that leaves the surface stuck at `visibility: hidden`).
+    // Naturally SSR-safe: the surface never renders on the server, so the
+    // effect always early-returns during prerender.
     effect(() => {
+      const surface = this.surfaceEl()?.nativeElement;
       const anchor = this.resolveAnchor();
       const isOpen = this.open();
-      if (!anchor || !isOpen) {
+      if (!surface || !anchor || !isOpen) {
         this.position.set(null);
         return;
       }
-      afterNextRender(() => this.reposition(), { injector: this.injector });
+      // Re-read inputs so signal subscriptions stay current after a re-open.
+      this.placement();
+      this.offset();
+      this.flip();
+      this.clamp();
+      this.matchAnchorWidth();
+      this.reposition();
     });
 
     // Listen for scroll / resize while open. The `scrollBehavior` input picks

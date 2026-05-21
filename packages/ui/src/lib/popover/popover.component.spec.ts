@@ -20,6 +20,7 @@ import { PopoverComponent } from './popover.component';
       [anchor]="trigger"
       [open]="open()"
       [placement]="placement()"
+      [flip]="flip()"
       [closeOnOutsideClick]="closeOnOutsideClick()"
       [closeOnEscape]="closeOnEscape()"
       (closeRequested)="onClose()">
@@ -31,6 +32,7 @@ import { PopoverComponent } from './popover.component';
 class PopoverHostComponent {
   readonly open = signal<boolean>(false);
   readonly placement = signal<PopoverPlacement>('bottom-start');
+  readonly flip = signal<boolean>(true);
   readonly closeOnOutsideClick = signal<boolean>(true);
   readonly closeOnEscape = signal<boolean>(true);
   readonly closeCount = signal<number>(0);
@@ -86,6 +88,10 @@ describe('PopoverComponent', () => {
     });
 
     it('applies a placement-specific class', () => {
+      // Disable flip so the test asserts on the requested placement without
+      // jsdom's 0×0 layout pushing the popover above the viewport and
+      // triggering a flip to `bottom-end`.
+      host.flip.set(false);
       host.open.set(true);
       host.placement.set('top-end');
       fixture.detectChanges();
