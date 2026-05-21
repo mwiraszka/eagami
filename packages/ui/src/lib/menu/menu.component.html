@@ -1,12 +1,16 @@
-@if (open()) {
+<ea-popover
+  [anchor]="triggerEl()"
+  [open]="open()"
+  [placement]="placement()"
+  role="menu"
+  [surfaceId]="id()"
+  [ariaLabel]="resolvedAriaLabel()"
+  [closeOnEscape]="false"
+  scrollBehavior="reposition"
+  (closeRequested)="onPopoverCloseRequested()">
   <div
     #listEl
-    class="ea-menu__list"
-    role="menu"
-    [id]="id()"
-    [ngClass]="listClasses()"
-    [style]="listStyle()"
-    [attr.aria-label]="resolvedAriaLabel()">
+    class="ea-menu__list">
     <ng-content />
   </div>
-}
+</ea-popover>

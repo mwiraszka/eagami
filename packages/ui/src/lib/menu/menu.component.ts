@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,6 +15,7 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { PopoverComponent } from '../popover/popover.component';
 
 /** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
@@ -24,11 +24,12 @@ export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-e
  * Popup action menu attached to any focusable element via the
  * `[eaMenuTrigger]` directive. Supports keyboard navigation
  * (arrow keys, Home/End), closes on outside click or Escape, and restores
- * focus to the trigger on close.
+ * focus to the trigger on close. Positioning, dismissal, and SSR-safe scroll
+ * handling are provided by `<ea-popover>`.
  */
 @Component({
   selector: 'ea-menu',
-  imports: [NgClass],
+  imports: [PopoverComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,34 +57,8 @@ export class MenuComponent {
   /** Fires when the menu closes. */
   readonly closed = output<void>();
 
-  private triggerEl: HTMLElement | null = null;
-  private readonly triggerRect = signal<DOMRect | null>(null);
-
-  readonly listClasses = computed(() => ({
-    [`ea-menu__list--${this.placement()}`]: true,
-  }));
-
-  readonly listStyle = computed<Record<string, string>>(() => {
-    const rect = this.triggerRect();
-    if (!rect) return {};
-    const placement = this.placement();
-    const gap = 4;
-    const style: Record<string, string> = {};
-
-    if (placement === 'bottom-start' || placement === 'bottom-end') {
-      style['top'] = `${rect.bottom + gap}px`;
-    } else {
-      style['bottom'] = `${window.innerHeight - rect.top + gap}px`;
-    }
-
-    if (placement === 'bottom-start' || placement === 'top-start') {
-      style['left'] = `${rect.left}px`;
-    } else {
-      style['right'] = `${window.innerWidth - rect.right}px`;
-    }
-
-    return style;
-  });
+  /** Trigger element currently anchoring the menu. Signal-typed so `<ea-popover>` reacts when it changes. */
+  protected readonly triggerEl = signal<HTMLElement | undefined>(undefined);
 
   /** Toggles the menu open state, anchoring it to the given trigger element. */
   toggleAt(triggerEl: HTMLElement): void {
@@ -98,8 +73,7 @@ export class MenuComponent {
   /** Opens the menu anchored to the given trigger element and focuses the first item. */
   openAt(triggerEl: HTMLElement): void {
     if (this.disabled()) return;
-    this.triggerEl = triggerEl;
-    this.triggerRect.set(triggerEl.getBoundingClientRect());
+    this.triggerEl.set(triggerEl);
     this.open.set(true);
     this.opened.emit();
     afterNextRender(() => this.focusFirstItem(), { injector: this.injector });
@@ -114,7 +88,12 @@ export class MenuComponent {
     if (!this.open()) return;
     this.open.set(false);
     this.closed.emit();
-    if (restoreFocus) this.triggerEl?.focus({ preventScroll: true });
+    if (restoreFocus) this.triggerEl()?.focus({ preventScroll: true });
+  }
+
+  /** Called by `<ea-popover>` when the user clicks outside the menu. */
+  onPopoverCloseRequested(): void {
+    this.close();
   }
 
   private getEnabledItems(): HTMLButtonElement[] {
@@ -173,25 +152,9 @@ export class MenuComponent {
     if (next >= 0) items[next].focus({ preventScroll: true });
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (!this.open()) return;
-    const target = event.target as Node;
-    if (this.triggerEl?.contains(target)) return;
-    if (this.listEl()?.nativeElement.contains(target)) return;
-    this.close();
-  }
-
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (!this.open()) return;
     this.close(true);
-  }
-
-  @HostListener('window:resize')
-  @HostListener('window:scroll')
-  onViewportChange(): void {
-    if (!this.open() || !this.triggerEl) return;
-    this.triggerRect.set(this.triggerEl.getBoundingClientRect());
   }
 }

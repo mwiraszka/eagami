@@ -68,6 +68,14 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    // `<ea-popover>` teleports its surface to `document.body`. Destroy the
+    // fixture so Angular tears down the embedded view, then sweep any surface
+    // that survived destruction so the next test starts clean.
+    fixture.destroy();
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
+  });
+
   // ── Rendering ──────────────────────────────────────────────────────────────
 
   describe('Rendering', () => {
@@ -97,19 +105,23 @@ describe('MenuComponent', () => {
       expect(getItems().length).toBe(3);
     });
 
-    it('applies the default placement class', () => {
+    it('forwards the default placement to the popover surface', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
 
-      expect(getList()!.classList).toContain('ea-menu__list--bottom-start');
+      const surface = document.body.querySelector('.ea-popover__surface');
+
+      expect(surface?.classList).toContain('ea-popover__surface--bottom-start');
     });
 
-    it('applies placement classes', () => {
+    it('forwards the placement input to the popover surface', () => {
       host.isOpen.set(true);
-      host.placement.set('top-end');
+      host.placement.set('bottom-end');
       fixture.detectChanges();
 
-      expect(getList()!.classList).toContain('ea-menu__list--top-end');
+      const surface = document.body.querySelector('.ea-popover__surface');
+
+      expect(surface?.classList).toContain('ea-popover__surface--bottom-end');
     });
   });
 
