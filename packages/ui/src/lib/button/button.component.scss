@@ -2,6 +2,17 @@
 // BUTTON COMPONENT
 // =============================================================================
 
+// Match the host's display to the inner `<button>` so the host's bounding
+// box collapses to the visible button. Without this, the host defaults to
+// `display: inline`, whose bounding box is constrained by the line box's
+// ascent/descent rather than the inline-flex child's box — anything that
+// anchors against `<ea-button>` (e.g. `[eaMenuTrigger]`) otherwise reads a
+// `bottom` value that sits a few pixels above the visible button bottom,
+// causing the anchored popover to render on top of the button.
+:host {
+  display: inline-flex;
+}
+
 .ea-button {
   // Layout
   display: inline-flex;
