@@ -114,7 +114,7 @@ export class MenuComponent {
     if (!this.open()) return;
     this.open.set(false);
     this.closed.emit();
-    if (restoreFocus) this.triggerEl?.focus();
+    if (restoreFocus) this.triggerEl?.focus({ preventScroll: true });
   }
 
   private getEnabledItems(): HTMLButtonElement[] {
@@ -125,8 +125,18 @@ export class MenuComponent {
     );
   }
 
+  /**
+   * `preventScroll: true` is critical here. The menu list is `position: fixed`
+   * but its DOM ancestor is whatever element hosts the menu (often a sticky
+   * header). When `.focus()` is called without `preventScroll`, Chromium uses
+   * the focused element's DOM-tree position (inside the sticky ancestor) rather
+   * than its rendered fixed position to decide whether to scroll — which on a
+   * scrolled page nudges the document up by a few pixels per open, until the
+   * trigger reaches the top edge. The same guard applies to keyboard navigation
+   * and restoring focus on close.
+   */
   private focusFirstItem(): void {
-    this.getEnabledItems()[0]?.focus();
+    this.getEnabledItems()[0]?.focus({ preventScroll: true });
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -160,7 +170,7 @@ export class MenuComponent {
         break;
     }
 
-    if (next >= 0) items[next].focus();
+    if (next >= 0) items[next].focus({ preventScroll: true });
   }
 
   @HostListener('document:click', ['$event'])

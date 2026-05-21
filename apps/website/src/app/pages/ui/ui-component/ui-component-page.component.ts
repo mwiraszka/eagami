@@ -13,6 +13,7 @@ import {
   CardComponent,
   CheckboxComponent,
   CodeInputComponent,
+  ColorPickerComponent,
   DataTableColumn,
   DataTableComponent,
   DatePickerComponent,
@@ -83,6 +84,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     CardComponent,
     CheckboxComponent,
     CodeInputComponent,
+    ColorPickerComponent,
     DataTableComponent,
     DatePickerComponent,
     DialogComponent,
@@ -151,6 +153,7 @@ export class UiComponentPageComponent {
   // Demo state
   protected readonly isLoading = signal(false);
   protected readonly codeInputValue = signal('');
+  protected readonly colorPickerValue = signal<string | null>('#3674a1');
   protected readonly inputValue = signal('');
   protected readonly checkboxValue = signal(false);
   protected readonly radioValue = signal('');

@@ -47,6 +47,16 @@ export interface EagamiMessages {
     groupLabel: (length: number) => string;
     digitLabel: (index: number, length: number) => string;
   };
+  colorPicker: {
+    placeholder: string;
+    clear: string;
+    hue: string;
+    saturationAndValue: string;
+    alpha: string;
+    eyedropper: string;
+    presets: string;
+    toggleFormat: string;
+  };
   dataTable: {
     noData: string;
   };

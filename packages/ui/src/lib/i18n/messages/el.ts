@@ -27,6 +27,16 @@ export const el: EagamiMessages = {
     groupLabel: length => `Κωδικός επαλήθευσης, ${length} ψηφία`,
     digitLabel: (index, length) => `Ψηφίο ${index} από ${length}`,
   },
+  colorPicker: {
+    placeholder: 'Επιλέξτε χρώμα…',
+    clear: 'Εκκαθάριση χρώματος',
+    hue: 'Απόχρωση',
+    saturationAndValue: 'Κορεσμός και τιμή',
+    alpha: 'Άλφα',
+    eyedropper: 'Επιλογή από οθόνη',
+    presets: 'Προεπιλογές',
+    toggleFormat: 'Αλλαγή μορφής εισαγωγής',
+  },
   dataTable: {
     noData: 'Δεν υπάρχουν διαθέσιμα δεδομένα',
   },

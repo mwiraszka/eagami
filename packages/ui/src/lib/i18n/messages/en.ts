@@ -26,6 +26,16 @@ export const en: EagamiMessages = {
     groupLabel: length => `Verification code, ${length} digits`,
     digitLabel: (index, length) => `Digit ${index} of ${length}`,
   },
+  colorPicker: {
+    placeholder: 'Pick a color…',
+    clear: 'Clear color',
+    hue: 'Hue',
+    saturationAndValue: 'Saturation and value',
+    alpha: 'Alpha',
+    eyedropper: 'Pick from screen',
+    presets: 'Presets',
+    toggleFormat: 'Switch input format',
+  },
   dataTable: {
     noData: 'No data available',
   },

@@ -1,0 +1,272 @@
+<div
+  #hostEl
+  class="ea-color-picker-field">
+  @if (label()) {
+    <label
+      class="ea-color-picker-field__label"
+      [for]="id()"
+      [class.ea-color-picker-field__label--required]="required()">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="ea-color-picker">
+    <div class="ea-color-picker__trigger-wrapper">
+      <button
+        #triggerEl
+        type="button"
+        class="ea-color-picker__trigger"
+        [ngClass]="triggerClasses()"
+        [id]="id()"
+        [disabled]="isDisabled()"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'dialog'"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        (click)="toggle()"
+        (keydown)="onTriggerKeydown($event)">
+        <span
+          class="ea-color-picker__swatch"
+          aria-hidden="true">
+          <span
+            class="ea-color-picker__swatch-fill"
+            [style.background-color]="value() ? displayColor() : null">
+          </span>
+        </span>
+        <span
+          class="ea-color-picker__trigger-value"
+          [class.ea-color-picker__trigger-value--placeholder]="!displayValue()">
+          {{ displayValue() || resolvedPlaceholder() }}
+        </span>
+      </button>
+      @if (value() && !isDisabled() && !readonly()) {
+        <button
+          type="button"
+          class="ea-color-picker__clear"
+          [attr.aria-label]="i18n.messages().colorPicker.clear"
+          (click)="clear($event)">
+          <span aria-hidden="true">×</span>
+        </button>
+      }
+    </div>
+
+    @if (isOpen()) {
+      <div
+        #popoverEl
+        class="ea-color-picker__popover"
+        role="dialog"
+        [attr.aria-label]="label() || i18n.messages().colorPicker.placeholder"
+        [style.top.px]="popoverPosition()?.top"
+        [style.left.px]="popoverPosition()?.left"
+        (keydown)="onPopoverKeydown($event)">
+        <div
+          #svAreaEl
+          class="ea-color-picker__sv-area"
+          role="application"
+          tabindex="0"
+          [attr.aria-label]="i18n.messages().colorPicker.saturationAndValue"
+          [style.background-color]="hueColor()"
+          (pointerdown)="onSvPointerDown($event)"
+          (pointermove)="onSvPointerMove($event)"
+          (pointerup)="onSvPointerUp($event)"
+          (pointercancel)="onSvPointerUp($event)"
+          (keydown)="onSvKeydown($event)">
+          <div class="ea-color-picker__sv-area-sat"></div>
+          <div class="ea-color-picker__sv-area-val"></div>
+          <div
+            class="ea-color-picker__sv-pointer"
+            [style.background-color]="opaqueColor()"
+            [style.left]="svPointerLeft()"
+            [style.top]="svPointerTop()">
+          </div>
+        </div>
+
+        <div class="ea-color-picker__sliders">
+          <div class="ea-color-picker__slider-row">
+            <span
+              class="ea-color-picker__swatch ea-color-picker__swatch--lg"
+              aria-hidden="true">
+              <span
+                class="ea-color-picker__swatch-fill"
+                [style.background-color]="displayColor()">
+              </span>
+            </span>
+            <div class="ea-color-picker__strip-stack">
+              <div
+                #hueTrackEl
+                class="ea-color-picker__strip ea-color-picker__strip--hue"
+                role="slider"
+                tabindex="0"
+                [attr.aria-label]="i18n.messages().colorPicker.hue"
+                [attr.aria-valuemin]="0"
+                [attr.aria-valuemax]="360"
+                [attr.aria-valuenow]="hueRounded()"
+                (pointerdown)="onHuePointerDown($event)"
+                (pointermove)="onHuePointerMove($event)"
+                (pointerup)="onHuePointerUp($event)"
+                (pointercancel)="onHuePointerUp($event)"
+                (keydown)="onHueKeydown($event)">
+                <div
+                  class="ea-color-picker__strip-thumb"
+                  [style.left]="huePointerLeft()">
+                </div>
+              </div>
+              @if (showAlpha()) {
+                <div
+                  #alphaTrackEl
+                  class="ea-color-picker__strip ea-color-picker__strip--alpha"
+                  role="slider"
+                  tabindex="0"
+                  [attr.aria-label]="i18n.messages().colorPicker.alpha"
+                  [attr.aria-valuemin]="0"
+                  [attr.aria-valuemax]="100"
+                  [attr.aria-valuenow]="alphaPointerLeft()"
+                  [style.--ea-color-picker-alpha-base]="opaqueColor()"
+                  (pointerdown)="onAlphaPointerDown($event)"
+                  (pointermove)="onAlphaPointerMove($event)"
+                  (pointerup)="onAlphaPointerUp($event)"
+                  (pointercancel)="onAlphaPointerUp($event)"
+                  (keydown)="onAlphaKeydown($event)">
+                  <div
+                    class="ea-color-picker__strip-thumb"
+                    [style.left]="alphaPointerLeft()">
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="ea-color-picker__inputs"
+          [class.ea-color-picker__inputs--hex]="inputMode() === 'hex'">
+          @if (inputMode() === 'hex') {
+            <label class="ea-color-picker__input-group ea-color-picker__input-group--hex">
+              <span class="ea-color-picker__input-label">HEX</span>
+              <input
+                class="ea-color-picker__input"
+                type="text"
+                spellcheck="false"
+                autocomplete="off"
+                maxlength="9"
+                [value]="hexInputValue()"
+                (input)="onHexInput($event)"
+                (blur)="onHexBlur()" />
+            </label>
+          } @else {
+            <label class="ea-color-picker__input-group">
+              <span class="ea-color-picker__input-label">R</span>
+              <input
+                class="ea-color-picker__input ea-color-picker__input--num"
+                type="text"
+                inputmode="numeric"
+                pattern="\d*"
+                maxlength="3"
+                [value]="rgb().r"
+                (input)="onRgbInput('r', $event)" />
+            </label>
+            <label class="ea-color-picker__input-group">
+              <span class="ea-color-picker__input-label">G</span>
+              <input
+                class="ea-color-picker__input ea-color-picker__input--num"
+                type="text"
+                inputmode="numeric"
+                pattern="\d*"
+                maxlength="3"
+                [value]="rgb().g"
+                (input)="onRgbInput('g', $event)" />
+            </label>
+            <label class="ea-color-picker__input-group">
+              <span class="ea-color-picker__input-label">B</span>
+              <input
+                class="ea-color-picker__input ea-color-picker__input--num"
+                type="text"
+                inputmode="numeric"
+                pattern="\d*"
+                maxlength="3"
+                [value]="rgb().b"
+                (input)="onRgbInput('b', $event)" />
+            </label>
+            @if (showAlpha()) {
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">A</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="alphaPercentRounded()"
+                  (input)="onAlphaInput($event)" />
+              </label>
+            }
+          }
+          <button
+            type="button"
+            class="ea-color-picker__format-toggle"
+            [attr.aria-label]="i18n.messages().colorPicker.toggleFormat"
+            (click)="cycleInputMode()">
+            {{ inputMode() === 'hex' ? 'HEX' : 'RGB' }}
+          </button>
+        </div>
+
+        @if (hasEyeDropper()) {
+          <div class="ea-color-picker__tools">
+            <button
+              type="button"
+              class="ea-color-picker__tool-btn"
+              [attr.aria-label]="i18n.messages().colorPicker.eyedropper"
+              (click)="pickFromScreen()">
+              <ea-icon-droplet aria-hidden="true" />
+              <span>{{ i18n.messages().colorPicker.eyedropper }}</span>
+            </button>
+          </div>
+        }
+
+        @if (presets().length > 0) {
+          <div class="ea-color-picker__presets">
+            <span class="ea-color-picker__presets-label">
+              {{ i18n.messages().colorPicker.presets }}
+            </span>
+            <div
+              class="ea-color-picker__presets-grid"
+              role="listbox">
+              @for (preset of presets(); track preset) {
+                <button
+                  type="button"
+                  class="ea-color-picker__preset"
+                  role="option"
+                  [attr.aria-label]="preset"
+                  [attr.aria-selected]="value() === preset"
+                  [style.background-color]="preset"
+                  (click)="selectPreset(preset)">
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-color-picker-field__message ea-color-picker-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      <ea-icon-alert-circle class="ea-color-picker-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-color-picker-field__message ea-color-picker-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
+</div>

@@ -107,8 +107,29 @@
   --text-label-sm-weight: var(--font-weight-medium);
   --text-label-sm-lh: var(--line-height-tight);
 
-  // Helper / caption
-  --text-helper-size: var(--font-size-xs);
+  // Helper / caption — used for field-level hint and error messages. Sits
+  // between `--font-size-xs` (12px) and `--font-size-sm` (14px) at 13px so
+  // it stays visually subordinate to the field's label without dropping into
+  // the "barely readable" zone that 12px hits on dense forms.
+  //
+  // STANDARD — every form-like component (anything exposing `errorMsg` and/or
+  // `hint`) must render its messages identically. Mirror `<ea-input>` exactly:
+  //   1. `<p class="ea-{name}-field__message ea-{name}-field__message--error">`
+  //      (or `--hint`) with `role="alert"` on the error variant and an `id`
+  //      matching the field's `aria-describedby`.
+  //   2. The first child of the error `<p>` is always
+  //      `<ea-icon-alert-circle class="ea-{name}-field__message-icon" />`.
+  //      Hints render text-only (no icon).
+  //   3. `__message` uses `display: flex; align-items: center; gap: var(--space-1)`
+  //      plus the three `--text-helper-*` tokens above. Never hard-code a
+  //      font-size on `__message`.
+  //   4. `__message-icon` uses `flex-shrink: 0; width: 0.875em; height: 0.875em`
+  //      so the icon scales with the text.
+  //   5. Error color is `var(--color-error-default)`. Hint color is component-
+  //      specific (`--color-text-secondary` or `inherit`) but stays consistent
+  //      within a component.
+  //   6. `AlertCircleIconComponent` must be in the component's `imports: [...]`.
+  --text-helper-size: 0.8125rem; //  13px
   --text-helper-weight: var(--font-weight-regular);
   --text-helper-lh: var(--line-height-normal);
 

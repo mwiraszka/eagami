@@ -18,6 +18,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SelectOption } from '../select-option';
 
@@ -32,7 +33,7 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-dropdown',
-  imports: [ChevronDownIconComponent, NgClass],
+  imports: [AlertCircleIconComponent, ChevronDownIconComponent, NgClass],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -113,18 +114,23 @@ export class DropdownComponent implements ControlValueAccessor {
       menu.style.minWidth = `${rect.width}px`;
     });
 
-    const closeOnViewportChange = (): void => {
-      if (this.isOpen()) this.close();
-    };
-    window.addEventListener('scroll', closeOnViewportChange, {
-      capture: true,
-      passive: true,
-    });
-    window.addEventListener('resize', closeOnViewportChange);
-    this.destroyRef.onDestroy(() => {
-      window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
-      window.removeEventListener('resize', closeOnViewportChange);
-    });
+    // Guard `window` for SSR: the website prerenders 42 routes, and the
+    // dropdown can appear inside any of them. Without this, prerendering
+    // throws `ReferenceError: window is not defined`.
+    if (typeof window !== 'undefined') {
+      const closeOnViewportChange = (): void => {
+        if (this.isOpen()) this.close();
+      };
+      window.addEventListener('scroll', closeOnViewportChange, {
+        capture: true,
+        passive: true,
+      });
+      window.addEventListener('resize', closeOnViewportChange);
+      this.destroyRef.onDestroy(() => {
+        window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
+        window.removeEventListener('resize', closeOnViewportChange);
+      });
+    }
   }
 
   // ControlValueAccessor

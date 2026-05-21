@@ -484,6 +484,18 @@ export const el: WebMessages = {
           pinLabel: 'PIN',
           pinHint: 'Εισαγάγετε το PIN 4 ψηφίων σας',
         },
+        colorPicker: {
+          brandLabel: 'Χρώμα μάρκας',
+          withHintLabel: 'Με υπόδειξη',
+          hintBrandColor: 'Χρησιμοποιείται ως κύριο χρώμα της μάρκας',
+          withErrorLabel: 'Με σφάλμα',
+          errorRequired: 'Αυτό το πεδίο είναι υποχρεωτικό',
+          hexLabel: 'Μορφή HEX',
+          rgbLabel: 'Μορφή RGB',
+          hslLabel: 'Μορφή HSL',
+          noAlphaHeading: 'Μόνο αδιαφανές',
+          opaqueOnlyLabel: 'Συμπαγές χρώμα',
+        },
         dataTable: {
           tableColumnId: 'ID',
           tableColumnFirstName: 'Όνομα',

@@ -1,9 +1,10 @@
 import { NgClass } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Injector,
+  afterNextRender,
   computed,
   forwardRef,
   inject,
@@ -52,8 +53,9 @@ export type InputType =
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor, AfterViewInit {
+export class InputComponent implements ControlValueAccessor {
   readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
+  private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
   // Inputs
@@ -108,10 +110,17 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
     'ea-input-wrapper--readonly': this.readonly(),
   }));
 
-  ngAfterViewInit(): void {
-    if (this.autofocus()) {
-      setTimeout(() => this.inputEl()?.nativeElement.focus());
-    }
+  constructor() {
+    // `afterNextRender` runs once the input has actually been inserted into
+    // the DOM (and avoids SSR), replacing the older `ngAfterViewInit` +
+    // bare-`setTimeout(0)` dance that relied on the macrotask queue to bridge
+    // the gap between view-init and the element being focusable.
+    afterNextRender(
+      () => {
+        if (this.autofocus()) this.inputEl()?.nativeElement.focus();
+      },
+      { injector: this.injector },
+    );
   }
 
   writeValue(val: string): void {

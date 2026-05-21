@@ -132,6 +132,19 @@
   --color-info-default: var(--color-info-600);
   --color-info-subtle: var(--color-info-50);
   --color-info-muted: var(--color-info-100);
+
+  // Color-picker mechanics — pure RGB primaries that build the hue wheel and
+  // the saturation/value gradient. These are intrinsic to the picker UI, not
+  // themeable, but live here so component SCSS stays literal-free.
+  --color-picker-hue-red: #ff0000;
+  --color-picker-hue-yellow: #ffff00;
+  --color-picker-hue-green: #00ff00;
+  --color-picker-hue-cyan: #00ffff;
+  --color-picker-hue-blue: #0000ff;
+  --color-picker-hue-magenta: #ff00ff;
+  --color-picker-sv-white: #ffffff;
+  --color-picker-sv-black: #000000;
+  --color-picker-thumb-halo: rgba(0, 0, 0, 0.25);
 }
 
 // ---------------------------------------------------------------------------

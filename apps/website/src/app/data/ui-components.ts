@@ -17,6 +17,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'card', name: 'Card', selector: 'ea-card' },
   { slug: 'checkbox', name: 'Checkbox', selector: 'ea-checkbox' },
   { slug: 'code-input', name: 'Code Input', selector: 'ea-code-input' },
+  { slug: 'color-picker', name: 'Color Picker', selector: 'ea-color-picker' },
   { slug: 'data-table', name: 'Data Table', selector: 'ea-data-table' },
   { slug: 'date-picker', name: 'Date Picker', selector: 'ea-date-picker' },
   { slug: 'dialog', name: 'Dialog', selector: 'ea-dialog' },

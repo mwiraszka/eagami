@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [1.5.0] - 2026-05-20
+
+### Added
+
+- Pick up @eagami/ui v1.5.0, which introduces `<ea-color-picker>`. The new component ships with its own page on the `/ui/components` route, demoing the basic picker, hint/error states, output format variants (`hex`/`rgb`/`hsl`), opaque-only mode, and all three sizes.
+
 ## [1.4.1] - 2026-05-20
 
 ### Changed
@@ -375,6 +381,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[1.5.0]: https://github.com/mwiraszka/eagami/compare/website-v1.4.1...website-v1.5.0
 [1.4.1]: https://github.com/mwiraszka/eagami/compare/website-v1.4.0...website-v1.4.1
 [1.4.0]: https://github.com/mwiraszka/eagami/compare/website-v1.3.0...website-v1.4.0
 [1.3.0]: https://github.com/mwiraszka/eagami/compare/website-v1.2.0...website-v1.3.0
