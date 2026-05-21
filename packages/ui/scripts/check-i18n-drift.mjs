@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /*
  * Verifies that every locale file in a messages directory exposes the exact
  * same set of key paths as `en.ts`. Catches the case where a new key is added
@@ -17,11 +16,9 @@
  * workflows can invoke it through `pnpm --filter @eagami/ui exec`.
  */
 import { readFileSync, readdirSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join, resolve } from 'node:path';
+import process from 'node:process';
 import ts from 'typescript';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function extractKeyPaths(source) {
   const sf = ts.createSourceFile('x.ts', source, ts.ScriptTarget.Latest, true);
@@ -75,9 +72,7 @@ function diff(a, b) {
 
 function checkDirectory(dir) {
   const absDir = resolve(dir);
-  const files = readdirSync(absDir).filter(
-    f => f.endsWith('.ts') && f !== 'index.ts',
-  );
+  const files = readdirSync(absDir).filter(f => f.endsWith('.ts') && f !== 'index.ts');
   if (!files.includes('en.ts')) {
     console.error(`::error::No en.ts found in ${absDir}`);
     return 1;
@@ -88,13 +83,12 @@ function checkDirectory(dir) {
 
   for (const file of files) {
     if (file === 'en.ts') continue;
-    const locale = file.replace('.ts', '');
     const keys = extractKeyPaths(readFileSync(join(absDir, file), 'utf8'));
     const missing = diff(en, keys);
     const extra = diff(keys, en);
 
     if (missing.length || extra.length) {
-      const rel = dir + '/' + file;
+      const rel = `${dir}/${file}`;
       console.error(`\n${rel}:`);
       if (missing.length) console.error(`  missing keys: ${missing.join(', ')}`);
       if (extra.length) console.error(`  extra keys:   ${extra.join(', ')}`);
@@ -119,9 +113,6 @@ if (totalFailures > 0) {
   process.exit(1);
 }
 
-console.log(`i18n locales in sync across ${dirs.length} director${dirs.length === 1 ? 'y' : 'ies'}.`);
-process.argv[1] && process.exit(0);
-
-// Silence the eslint hint about __dirname being unused — it's part of the
-// standard ESM-module pattern for path resolution.
-void __dirname;
+console.log(
+  `i18n locales in sync across ${dirs.length} director${dirs.length === 1 ? 'y' : 'ies'}.`,
+);
