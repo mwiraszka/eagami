@@ -193,4 +193,10 @@
       color: var(--color-error-default);
     }
   }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
 }

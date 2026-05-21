@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { SelectOption } from '../select-option';
 
 /** Visual size of the segmented control. */
@@ -29,7 +30,7 @@ export type SegmentedSize = 'sm' | 'md' | 'lg';
   templateUrl: './segmented.component.html',
   styleUrl: './segmented.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass],
+  imports: [AlertCircleIconComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

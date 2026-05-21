@@ -13,6 +13,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+
 /** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
 
@@ -27,7 +29,7 @@ export type SliderSize = 'sm' | 'md' | 'lg';
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass],
+  imports: [AlertCircleIconComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

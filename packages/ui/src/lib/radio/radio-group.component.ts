@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+
 /** Visual size shared by all radios in the group. */
 export type RadioSize = 'sm' | 'md' | 'lg';
 /** Layout direction for radios within the group. */
@@ -22,6 +24,7 @@ export type RadioOrientation = 'vertical' | 'horizontal';
  */
 @Component({
   selector: 'ea-radio-group',
+  imports: [AlertCircleIconComponent],
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
