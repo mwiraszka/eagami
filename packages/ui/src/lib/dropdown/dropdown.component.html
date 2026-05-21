@@ -41,14 +41,19 @@
         [class.ea-dropdown__chevron--open]="isOpen()" />
     </button>
 
-    @if (isOpen()) {
-      <ul
-        #menuEl
-        class="ea-dropdown__menu"
-        role="listbox"
-        [id]="id() + '-listbox'">
+    <ea-popover
+      [anchor]="triggerEl"
+      [open]="isOpen()"
+      placement="bottom-start"
+      role="listbox"
+      [surfaceId]="id() + '-listbox'"
+      [matchAnchorWidth]="true"
+      [closeOnEscape]="false"
+      scrollBehavior="close"
+      (closeRequested)="onPopoverCloseRequested()">
+      <div class="ea-dropdown__menu">
         @for (option of options(); track option.value; let i = $index) {
-          <li
+          <div
             class="ea-dropdown__option"
             [class.ea-dropdown__option--selected]="option.value === value()"
             [class.ea-dropdown__option--focused]="i === focusedIndex()"
@@ -60,10 +65,10 @@
             (click)="select(option)"
             (mouseenter)="focusedIndex.set(i)">
             {{ option.label }}
-          </li>
+          </div>
         }
-      </ul>
-    }
+      </div>
+    </ea-popover>
   </div>
 
   @if (showError()) {

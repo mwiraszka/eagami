@@ -2,11 +2,8 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   ElementRef,
-  HostListener,
   computed,
-  effect,
   forwardRef,
   inject,
   input,
@@ -20,6 +17,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
+import { PopoverComponent } from '../popover/popover.component';
 import { SelectOption } from '../select-option';
 
 /** Visual size of the dropdown trigger. */
@@ -29,11 +27,17 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
  * Single-select dropdown with a custom popup list. Supports keyboard
  * navigation (arrow keys, Enter/Space to select, Escape to close), closes
  * on outside click or viewport scroll/resize, and integrates with Angular
- * forms via `ControlValueAccessor`.
+ * forms via `ControlValueAccessor`. Positioning, dismissal, and SSR-safe
+ * scroll handling are provided by `<ea-popover>`.
  */
 @Component({
   selector: 'ea-dropdown',
-  imports: [AlertCircleIconComponent, ChevronDownIconComponent, NgClass],
+  imports: [
+    AlertCircleIconComponent,
+    ChevronDownIconComponent,
+    NgClass,
+    PopoverComponent,
+  ],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,8 +51,6 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
 })
 export class DropdownComponent implements ControlValueAccessor {
   private readonly elRef = viewChild<ElementRef<HTMLElement>>('triggerEl');
-  private readonly menuEl = viewChild<ElementRef<HTMLElement>>('menuEl');
-  private readonly destroyRef = inject(DestroyRef);
   private readonly i18n = inject(EagamiI18nService);
 
   // Inputs
@@ -103,36 +105,6 @@ export class DropdownComponent implements ControlValueAccessor {
     'ea-dropdown__trigger--disabled': this.isDisabled(),
   }));
 
-  constructor() {
-    effect(() => {
-      const menu = this.menuEl()?.nativeElement;
-      const trigger = this.elRef()?.nativeElement;
-      if (!menu || !trigger || !this.isOpen()) return;
-      const rect = trigger.getBoundingClientRect();
-      menu.style.top = `${rect.bottom + 4}px`;
-      menu.style.left = `${rect.left}px`;
-      menu.style.minWidth = `${rect.width}px`;
-    });
-
-    // Guard `window` for SSR: the website prerenders 42 routes, and the
-    // dropdown can appear inside any of them. Without this, prerendering
-    // throws `ReferenceError: window is not defined`.
-    if (typeof window !== 'undefined') {
-      const closeOnViewportChange = (): void => {
-        if (this.isOpen()) this.close();
-      };
-      window.addEventListener('scroll', closeOnViewportChange, {
-        capture: true,
-        passive: true,
-      });
-      window.addEventListener('resize', closeOnViewportChange);
-      this.destroyRef.onDestroy(() => {
-        window.removeEventListener('scroll', closeOnViewportChange, { capture: true });
-        window.removeEventListener('resize', closeOnViewportChange);
-      });
-    }
-  }
-
   // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
@@ -180,6 +152,12 @@ export class DropdownComponent implements ControlValueAccessor {
   /** Moves keyboard focus to the dropdown trigger. */
   focus(): void {
     this.elRef()?.nativeElement.focus();
+  }
+
+  /** Called by `<ea-popover>` when the user clicks outside the dropdown. */
+  onPopoverCloseRequested(): void {
+    this.close();
+    this.onTouched();
   }
 
   handleKeydown(event: KeyboardEvent): void {
@@ -231,17 +209,6 @@ export class DropdownComponent implements ControlValueAccessor {
     }
     if (idx >= 0 && idx < opts.length) {
       this.focusedIndex.set(idx);
-    }
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (!this.isOpen()) return;
-    const el = event.target as Node;
-    const host = this.elRef()?.nativeElement.closest('ea-dropdown');
-    if (host && !host.contains(el)) {
-      this.close();
-      this.onTouched();
     }
   }
 }

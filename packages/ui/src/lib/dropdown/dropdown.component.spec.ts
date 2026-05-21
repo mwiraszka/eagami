@@ -18,11 +18,13 @@ describe('DropdownComponent', () => {
   }
 
   function getMenu(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-dropdown__menu');
+    // The menu is projected into `<ea-popover>`, which teleports its surface
+    // to `document.body`. Query the global DOM rather than the fixture's tree.
+    return document.querySelector('.ea-dropdown__menu');
   }
 
   function getOptions(): HTMLElement[] {
-    return Array.from(fixture.nativeElement.querySelectorAll('.ea-dropdown__option'));
+    return Array.from(document.querySelectorAll('.ea-dropdown__option'));
   }
 
   beforeEach(async () => {
@@ -34,6 +36,14 @@ describe('DropdownComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('options', testOptions);
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    // `<ea-popover>` teleports its surface to `document.body`. Destroy the
+    // fixture so Angular tears down the embedded view, then sweep any surface
+    // a half-destroyed test left behind so subsequent tests don't see it.
+    fixture.destroy();
+    document.querySelectorAll('.ea-dropdown__menu').forEach(node => node.remove());
   });
 
   describe('Rendering', () => {
