@@ -107,8 +107,11 @@
   --text-label-sm-weight: var(--font-weight-medium);
   --text-label-sm-lh: var(--line-height-tight);
 
-  // Helper / caption
-  --text-helper-size: var(--font-size-xs);
+  // Helper / caption — used for field-level hint and error messages. Sits
+  // between `--font-size-xs` (12px) and `--font-size-sm` (14px) at 13px so
+  // it stays visually subordinate to the field's label without dropping into
+  // the "barely readable" zone that 12px hits on dense forms.
+  --text-helper-size: 0.8125rem; //  13px
   --text-helper-weight: var(--font-weight-regular);
   --text-helper-lh: var(--line-height-normal);
 
