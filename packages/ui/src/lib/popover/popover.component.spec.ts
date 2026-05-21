@@ -49,7 +49,9 @@ describe('PopoverComponent', () => {
   let host: PopoverHostComponent;
 
   function getSurface(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-popover__surface');
+    // `<ea-popover>` teleports its surface to `document.body`, so query the
+    // global DOM rather than the fixture's tree.
+    return document.querySelector('.ea-popover__surface');
   }
 
   function getAnchor(): HTMLButtonElement {
@@ -64,6 +66,16 @@ describe('PopoverComponent', () => {
     fixture = TestBed.createComponent(PopoverHostComponent);
     host = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    // The popover teleports its surface to `document.body`. Destroy the
+    // fixture so Angular tears the embedded view down, which also removes the
+    // teleported surface from the body.
+    fixture.destroy();
+    // Belt and braces: scrub any surface that survived destruction (e.g. a
+    // test that asserted on the open state and never closed the popover).
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
 
   describe('Rendering', () => {

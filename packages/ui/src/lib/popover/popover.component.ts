@@ -152,6 +152,16 @@ export class PopoverComponent {
         this.position.set(null);
         return;
       }
+      // Teleport the surface to `document.body` once it renders so `position:
+      // fixed` is always relative to the actual viewport. Any ancestor with
+      // `transform`, `contain`, `filter`, `perspective`, or `will-change` on
+      // the path from the popover to `<html>` would otherwise create a new
+      // containing block and trap the fixed positioning inside it — which is
+      // exactly how the popover ended up invisible in Storybook's docs canvas.
+      // Skipped in SSR (no `document`).
+      if (typeof document !== 'undefined' && surface.parentNode !== document.body) {
+        document.body.appendChild(surface);
+      }
       // Re-read inputs so signal subscriptions stay current after a re-open.
       this.placement();
       this.offset();
