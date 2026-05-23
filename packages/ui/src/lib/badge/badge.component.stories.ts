@@ -19,10 +19,15 @@ const meta: Meta<BadgeComponent> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    shape: {
+      control: 'select',
+      options: ['pill', 'pin'],
+    },
   },
   args: {
     variant: 'default',
     size: 'md',
+    shape: 'pill',
   },
 };
 
@@ -84,6 +89,29 @@ export const AllSizes: Story = {
         <ea-badge size="sm">Small</ea-badge>
         <ea-badge size="md">Medium</ea-badge>
         <ea-badge size="lg">Large</ea-badge>
+      </div>
+    `,
+  }),
+};
+
+export const Pin: Story = {
+  args: { variant: 'error', size: 'md', shape: 'pin' },
+  render: args => ({
+    props: args,
+    template: `<ea-badge ${argsToTemplate(args)}>3</ea-badge>`,
+  }),
+};
+
+export const PinSizes: Story = {
+  render: () => ({
+    template: `
+      <div class="story-row">
+        <ea-badge variant="error" size="sm" shape="pin">1</ea-badge>
+        <ea-badge variant="error" size="md" shape="pin">2</ea-badge>
+        <ea-badge variant="error" size="lg" shape="pin">3</ea-badge>
+        <ea-badge variant="error" size="sm" shape="pin">12</ea-badge>
+        <ea-badge variant="error" size="md" shape="pin">42</ea-badge>
+        <ea-badge variant="error" size="lg" shape="pin">99</ea-badge>
       </div>
     `,
   }),

@@ -8,7 +8,8 @@ import { BadgeComponent } from './badge.component';
   template: `
     <ea-badge
       [variant]="variant"
-      [size]="size">
+      [size]="size"
+      [shape]="shape">
       Hello
     </ea-badge>
   `,
@@ -16,6 +17,7 @@ import { BadgeComponent } from './badge.component';
 class HostComponent {
   variant: 'default' | 'success' | 'warning' | 'error' | 'info' = 'default';
   size: 'sm' | 'md' | 'lg' = 'md';
+  shape: 'pill' | 'pin' = 'pill';
 }
 
 describe('BadgeComponent', () => {
@@ -40,9 +42,10 @@ describe('BadgeComponent', () => {
     expect(getBadge().textContent?.trim()).toBe('Hello');
   });
 
-  it('applies the default variant and size classes', () => {
+  it('applies the default variant, size, and shape classes', () => {
     expect(getBadge().classList).toContain('ea-badge--default');
     expect(getBadge().classList).toContain('ea-badge--md');
+    expect(getBadge().classList).toContain('ea-badge--pill');
   });
 
   it('applies the success variant class', () => {
@@ -76,5 +79,12 @@ describe('BadgeComponent', () => {
     fixture.detectChanges();
 
     expect(getBadge().classList).toContain(`ea-badge--${size}`);
+  });
+
+  it.each(['pill', 'pin'] as const)('supports the %s shape', shape => {
+    host.shape = shape;
+    fixture.detectChanges();
+
+    expect(getBadge().classList).toContain(`ea-badge--${shape}`);
   });
 });

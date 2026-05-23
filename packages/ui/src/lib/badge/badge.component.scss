@@ -10,51 +10,92 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-none);
   white-space: nowrap;
+  border-style: solid;
+  border-width: var(--ea-badge-border-width, 0);
+  border-color: var(--ea-badge-border-color, transparent);
   border-radius: var(--radius-full);
 
   // ---------------------------------------------------------------------------
-  // Sizes
+  // Sizes (apply to the default `pill` shape; `pin` overrides them below)
   // ---------------------------------------------------------------------------
   &--sm {
     padding: var(--space-0-5) var(--space-2);
-    font-size: var(--font-size-xs);
+    font-size: var(--ea-badge-font-size, var(--font-size-xs));
   }
 
   &--md {
     padding: var(--space-1) var(--space-2-5);
-    font-size: var(--font-size-xs);
+    font-size: var(--ea-badge-font-size, var(--font-size-xs));
   }
 
   &--lg {
     padding: var(--space-1) var(--space-3);
-    font-size: var(--font-size-sm);
+    font-size: var(--ea-badge-font-size, var(--font-size-sm));
   }
 
   // ---------------------------------------------------------------------------
-  // Variants
+  // Variants — colours route through CSS custom properties so consumers can
+  // override `--ea-badge-background-color` / `--ea-badge-color` (and
+  // `--ea-badge-border-color` / `--ea-badge-border-width` for an outer border)
+  // without piercing view encapsulation.
   // ---------------------------------------------------------------------------
   &--default {
-    background-color: var(--color-bg-muted);
-    color: var(--color-text-secondary);
+    background-color: var(--ea-badge-background-color, var(--color-bg-muted));
+    color: var(--ea-badge-color, var(--color-text-secondary));
   }
 
   &--success {
-    background-color: var(--color-success-subtle);
-    color: var(--color-success-700);
+    background-color: var(--ea-badge-background-color, var(--color-success-subtle));
+    color: var(--ea-badge-color, var(--color-success-700));
   }
 
   &--warning {
-    background-color: var(--color-warning-subtle);
-    color: var(--color-warning-700);
+    background-color: var(--ea-badge-background-color, var(--color-warning-subtle));
+    color: var(--ea-badge-color, var(--color-warning-700));
   }
 
   &--error {
-    background-color: var(--color-error-subtle);
-    color: var(--color-error-700);
+    background-color: var(--ea-badge-background-color, var(--color-error-subtle));
+    color: var(--ea-badge-color, var(--color-error-700));
   }
 
   &--info {
-    background-color: var(--color-info-subtle);
-    color: var(--color-info-700);
+    background-color: var(--ea-badge-background-color, var(--color-info-subtle));
+    color: var(--ea-badge-color, var(--color-info-700));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Shapes
+  // ---------------------------------------------------------------------------
+  // `pill` is the implicit default — no extra rules required.
+  //
+  // `pin` produces a circular notification dot for single-character content and
+  // expands into a pill for multi-character content. Geometry is deterministic:
+  // tabular numerals keep digit widths uniform, and `min-width = height` with a
+  // small horizontal padding guarantees that any single digit fits inside the
+  // square without forcing the box wider.
+  &--pin {
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 var(--space-1);
+    font-variant-numeric: tabular-nums;
+
+    &.ea-badge--sm {
+      min-width: var(--ea-badge-size, 16px);
+      height: var(--ea-badge-size, 16px);
+      font-size: var(--ea-badge-font-size, 9px);
+    }
+
+    &.ea-badge--md {
+      min-width: var(--ea-badge-size, 18px);
+      height: var(--ea-badge-size, 18px);
+      font-size: var(--ea-badge-font-size, 10px);
+    }
+
+    &.ea-badge--lg {
+      min-width: var(--ea-badge-size, 22px);
+      height: var(--ea-badge-size, 22px);
+      font-size: var(--ea-badge-font-size, 12px);
+    }
   }
 }
