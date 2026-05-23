@@ -1,3 +1,4 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
 import type { StorybookConfig } from '@storybook/angular';
 import { createRequire } from 'module';
 import { dirname } from 'path';
