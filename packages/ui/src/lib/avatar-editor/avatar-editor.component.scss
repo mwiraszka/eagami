@@ -77,6 +77,17 @@
     text-align: center;
   }
 
+  &--compact &__dropzone {
+    gap: var(--space-1);
+    padding: var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+
+  &--compact &__upload-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   // ---------------------------------------------------------------------------
   // Canvas wrapper (holds canvas and overlay)
   // ---------------------------------------------------------------------------

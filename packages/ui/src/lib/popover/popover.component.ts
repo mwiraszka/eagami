@@ -88,7 +88,7 @@ export class PopoverComponent {
   );
 
   /** Gap in px between the anchor and the popover. */
-  readonly offset = input<number>(2);
+  readonly offset = input<number>(0);
 
   /** Flip to the opposite side when the requested side overflows the viewport. */
   readonly flip = input<boolean>(true);
