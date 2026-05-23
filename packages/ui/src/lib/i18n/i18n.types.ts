@@ -78,6 +78,26 @@ export interface EagamiMessages {
   dropdown: {
     placeholder: string;
   };
+  fileUploader: {
+    prompt: string;
+    promptSingle: string;
+    browse: string;
+    removeFile: (name: string) => string;
+    fileListLabel: string;
+    constraintsAccept: (accept: string) => string;
+    constraintsMaxSize: (size: string) => string;
+    constraintsMaxFiles: (count: number) => string;
+    rejectionType: (name: string) => string;
+    rejectionSize: (name: string, max: string) => string;
+    rejectionCount: (max: number) => string;
+    bytesUnit: {
+      b: string;
+      kb: string;
+      mb: string;
+      gb: string;
+      tb: string;
+    };
+  };
   input: {
     showPassword: string;
     hidePassword: string;

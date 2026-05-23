@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-05-23
+
+### Added
+
+- Add `<ea-file-uploader>`, a multi-file uploader with a drag-and-drop zone and a per-file list. Supports `accept` / `maxSize` / `maxFiles` validation (rejections emitted via a `rejected` event), a `multiple=false` single-file mode, per-file progress bars driven by a consumer-supplied `Map<File, number>`, three sizes (sm / md / lg), the standard hint / error message pattern, and Angular forms integration via `ControlValueAccessor`. The dropzone icon is exposed as a content slot via the `icon` attribute, so consumers can swap the default cloud icon for any other icon while inheriting the dropzone's size-aware sizing.
+
 ## [2.0.0] - 2026-05-23
 
 ### Added
@@ -495,6 +501,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0
 [1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0

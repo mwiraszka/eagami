@@ -1,0 +1,290 @@
+// =============================================================================
+// FILE UPLOADER COMPONENT
+// =============================================================================
+
+:host {
+  display: block;
+}
+
+.ea-file-uploader-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-label-size);
+    font-weight: var(--text-label-weight);
+    line-height: var(--text-label-lh);
+    color: var(--color-text-secondary);
+
+    &--required::after {
+      content: '*';
+      color: var(--color-error-default);
+    }
+  }
+
+  &__file-input {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  &__dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-6);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-tertiary);
+    text-align: center;
+    border: 2px dashed var(--color-border-default);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-subtle);
+    cursor: pointer;
+    transition: var(--transition-colors);
+    appearance: none;
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-border-focus);
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-secondary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__upload-icon {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+
+    > * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__prompt {
+    font-weight: var(--font-weight-medium);
+  }
+
+  &__constraints {
+    font-size: var(--text-helper-size);
+    line-height: var(--text-helper-lh);
+    color: var(--color-text-tertiary);
+  }
+
+  // Drag-over highlight ---------------------------------------------------------
+
+  &--drag-over &__dropzone {
+    border-color: var(--color-primary-500);
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-600);
+  }
+
+  // Error state -----------------------------------------------------------------
+
+  &--error &__dropzone {
+    border-color: var(--color-error-default);
+  }
+
+  // File list -------------------------------------------------------------------
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-base);
+  }
+
+  &__type-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-secondary);
+
+    > * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-0-5);
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__name {
+    overflow: hidden;
+    font-size: var(--font-size-sm);
+    text-overflow: ellipsis;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  &__size {
+    font-size: var(--text-helper-size);
+    line-height: var(--text-helper-lh);
+    color: var(--color-text-tertiary);
+  }
+
+  &__progress {
+    overflow: hidden;
+    width: 100%;
+    height: 4px;
+    margin-top: var(--space-1);
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-muted);
+  }
+
+  &__progress-bar {
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--color-primary-500);
+    transition: width 0.2s ease-out;
+  }
+
+  &__remove {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--color-text-tertiary);
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover:not(:disabled) {
+      color: var(--color-error-default);
+      background-color: var(--color-bg-muted);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    ea-icon-x {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // Sizes -----------------------------------------------------------------------
+
+  &--sm &__dropzone {
+    gap: var(--space-1);
+    padding: var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+  &--sm &__upload-icon {
+    width: 24px;
+    height: 24px;
+  }
+  &--sm &__item {
+    padding: var(--space-1) var(--space-2);
+  }
+  &--sm &__type-icon {
+    width: 16px;
+    height: 16px;
+  }
+  &--sm &__remove {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--lg &__dropzone {
+    gap: var(--space-3);
+    padding: var(--space-8);
+    font-size: var(--font-size-md);
+  }
+  &--lg &__upload-icon {
+    width: 40px;
+    height: 40px;
+  }
+  &--lg &__item {
+    padding: var(--space-3) var(--space-4);
+  }
+  &--lg &__type-icon {
+    width: 24px;
+    height: 24px;
+  }
+  &--lg &__remove {
+    width: 32px;
+    height: 32px;
+  }
+
+  // Standard hint / error message block ----------------------------------------
+
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--error {
+      color: var(--color-error-default);
+    }
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
+}

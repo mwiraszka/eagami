@@ -58,6 +58,20 @@ export const frFR: EagamiMessages = {
   dropdown: {
     placeholder: 'Sélectionner…',
   },
+  fileUploader: {
+    prompt: 'Cliquez ou glissez des fichiers ici pour les téléverser',
+    promptSingle: 'Cliquez ou glissez un fichier ici pour le téléverser',
+    browse: 'Parcourir les fichiers',
+    removeFile: name => `Supprimer ${name}`,
+    fileListLabel: 'Fichiers sélectionnés',
+    constraintsAccept: accept => `Acceptés : ${accept}`,
+    constraintsMaxSize: size => `Max ${size} par fichier`,
+    constraintsMaxFiles: count => `Jusqu’à ${count} fichiers`,
+    rejectionType: name => `${name} a un type de fichier non pris en charge`,
+    rejectionSize: (name, max) => `${name} dépasse la limite de ${max}`,
+    rejectionCount: max => `Seuls ${max} fichiers peuvent être sélectionnés`,
+    bytesUnit: { b: 'o', kb: 'Ko', mb: 'Mo', gb: 'Go', tb: 'To' },
+  },
   input: {
     showPassword: 'Afficher le mot de passe',
     hidePassword: 'Masquer le mot de passe',

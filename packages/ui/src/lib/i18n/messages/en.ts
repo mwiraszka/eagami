@@ -57,6 +57,20 @@ export const en: EagamiMessages = {
   dropdown: {
     placeholder: 'Select…',
   },
+  fileUploader: {
+    prompt: 'Click or drag files here to upload',
+    promptSingle: 'Click or drag a file here to upload',
+    browse: 'Browse files',
+    removeFile: name => `Remove ${name}`,
+    fileListLabel: 'Selected files',
+    constraintsAccept: accept => `Accepted: ${accept}`,
+    constraintsMaxSize: size => `Max ${size} per file`,
+    constraintsMaxFiles: count => `Up to ${count} files`,
+    rejectionType: name => `${name} has an unsupported file type`,
+    rejectionSize: (name, max) => `${name} exceeds the ${max} limit`,
+    rejectionCount: max => `Only ${max} files can be selected`,
+    bytesUnit: { b: 'B', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB' },
+  },
   input: {
     showPassword: 'Show password',
     hidePassword: 'Hide password',
