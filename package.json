@@ -19,7 +19,6 @@
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
     "start": "pnpm --filter eagami-website start",
-    "sandbox": "pnpm --filter @eagami/ui sandbox",
     "storybook": "pnpm --filter @eagami/ui storybook",
     "ui": "pnpm --filter @eagami/ui",
     "website": "pnpm --filter eagami-website"

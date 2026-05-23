@@ -4,10 +4,10 @@ Conventions for the eagami monorepo.
 
 ## Layout
 
-- `packages/ui/` — `@eagami/ui`, the Angular component library (plus sandbox app and Storybook)
+- `packages/ui/` — `@eagami/ui`, the Angular component library and Storybook
 - `apps/website/` — [eagami.com](https://eagami.com), the marketing site and live docs
 
-The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig to `packages/ui/dist/eagami-ui`. The library must be built (`pnpm build` or `pnpm ui watch`) before the website will serve.
+The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig directly to the library's source at `packages/ui/src/public-api`. The website's build compiles the library source as part of its own bundle, with Storybook being the canonical workbench for component-in-isolation work.
 
 ## Getting set up
 
@@ -25,7 +25,6 @@ All run from the monorepo root.
 
 ```bash
 pnpm start              # website dev server (http://localhost:4444)
-pnpm sandbox            # library sandbox app
 pnpm storybook          # Storybook
 pnpm test               # library tests
 pnpm lint               # lint every package
@@ -68,7 +67,7 @@ Three surfaces stay in sync:
 
 1. The component at `packages/ui/src/lib/<name>/`
 2. Stories at `<name>.component.stories.ts` (cover new variants and inputs)
-3. The sandbox at `packages/ui/sandbox/sandbox.component.{html,ts}`
+3. The website's components page at `apps/website/src/app/pages/ui/ui-component/ui-component-page.component.html` (the `@case ('<slug>')` block — add a demo per variant, with i18n strings in all five locales)
 
 Tests live alongside as `<name>.component.spec.ts`. For accessibility, ARIA, and form-field plumbing patterns, follow [InputComponent](packages/ui/src/lib/input/input.component.ts) and [DropdownComponent](packages/ui/src/lib/dropdown/dropdown.component.ts).
 
