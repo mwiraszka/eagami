@@ -28,6 +28,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'empty-state', name: 'Empty State', selector: 'ea-empty-state' },
   { slug: 'input', name: 'Input', selector: 'ea-input' },
   { slug: 'menu', name: 'Menu', selector: 'ea-menu' },
+  { slug: 'multi-select', name: 'Multi-Select', selector: 'ea-multi-select' },
   { slug: 'paginator', name: 'Paginator', selector: 'ea-paginator' },
   { slug: 'popover', name: 'Popover', selector: 'ea-popover' },
   { slug: 'progress-bar', name: 'Progress Bar', selector: 'ea-progress-bar' },

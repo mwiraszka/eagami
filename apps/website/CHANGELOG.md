@@ -2,11 +2,11 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [2.0.0] - 2026-05-21
+## [2.0.0] - 2026-05-23
 
 ### Added
 
-- Document the new `<ea-popover>` primitive on the `/ui/components/popover` route. The page demos the basic open / close pattern and the four cardinal placements (`top`, `bottom`, `left`, `right`), with strings translated across all five locales.
+- Document the new components on the `/ui/components` page (`popover`, `multi-select`).
 - Demo the new `<ea-badge>` `shape` input on the `/ui/components/badge` page. A "shapes" row compares `pill` and `pin` at the default variant and `md` size with both single- and double-digit content, illustrating that pin stays a perfect circle for single characters and only widens into a pill once content forces it. A new `shapes` section heading is translated across all five locales.
 
 ### Changed

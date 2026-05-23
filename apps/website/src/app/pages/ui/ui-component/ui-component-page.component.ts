@@ -30,6 +30,7 @@ import {
   MenuItemComponent,
   MenuTriggerDirective,
   MoreHorizontalIconComponent,
+  MultiSelectComponent,
   PaginatorComponent,
   PaginatorState,
   PopoverComponent,
@@ -102,6 +103,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     MenuItemComponent,
     MenuTriggerDirective,
     MoreHorizontalIconComponent,
+    MultiSelectComponent,
     PaginatorComponent,
     PopoverComponent,
     ProgressBarComponent,
@@ -161,6 +163,7 @@ export class UiComponentPageComponent {
   protected readonly checkboxValue = signal(false);
   protected readonly radioValue = signal('');
   protected readonly dropdownValue = signal('');
+  protected readonly multiSelectValue = signal<readonly string[]>([]);
   protected readonly datePickerValue = signal<Date | null>(null);
   protected readonly datePickerMin = new Date(
     new Date().setDate(new Date().getDate() - 7),
