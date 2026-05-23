@@ -2,6 +2,23 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.0.0] - 2026-05-23
+
+### Added
+
+- Document the new components on the `/ui/components` page (`popover`, `multi-select`, `range-slider`, `time-picker`, `stepper`).
+- Expand variation coverage on existing component demos to mirror Storybook (canvas sizes for `avatar-editor`, many-levels and disabled-item for `breadcrumbs`, output formats and no-alpha for `color-picker`, Sunday-start for `date-picker`, two-actions and sizes for `empty-state`, custom-label for `spinner`, with-maxlength for `textarea`, custom size and not-animated for `skeleton`, stepped for `slider`, and more). All new section headings are translated across the five locales.
+- Demo the new `<ea-badge>` `shape` input on the `/ui/components/badge` page. A "shapes" row compares `pill` and `pin` at the default variant and `md` size with both single- and double-digit content, illustrating that pin stays a perfect circle for single characters and only widens into a pill once content forces it. A new `shapes` section heading is translated across all five locales.
+
+### Changed
+
+- Pick up @eagami/ui v2.0.0, which removes the deprecated `<ea-icon-apple>` and `<ea-icon-pencil>` icons. The "edit" menu demo on the components page now uses `<ea-icon-edit-2>` directly.
+- Replace the bespoke inline-code styling repeated across the home page, `/ui` index, setup, i18n, components, tokens, and icons pages with a single `code-chip` mixin (sourcing the new `--text-code-*` tokens from @eagami/ui v2.0.0). Visual output is consistent across pages and themable through one set of CSS variables; per-page `<code>` rules collapse from ~7 lines each to a one-line `@include`.
+
+### Fixed
+
+- Drop the explicit `placement="bottom-end"` override on the header locale-switcher menu so it uses the library default (`bottom-start`) with viewport-aware cross-axis clamping.
+
 ## [1.5.0] - 2026-05-20
 
 ### Added
@@ -381,6 +398,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.0.0]: https://github.com/mwiraszka/eagami/compare/website-v1.5.0...website-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/website-v1.4.1...website-v1.5.0
 [1.4.1]: https://github.com/mwiraszka/eagami/compare/website-v1.4.0...website-v1.4.1
 [1.4.0]: https://github.com/mwiraszka/eagami/compare/website-v1.3.0...website-v1.4.0

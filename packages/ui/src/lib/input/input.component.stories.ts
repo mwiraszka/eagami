@@ -64,30 +64,15 @@ export const Large: Story = {
 };
 
 export const Password: Story = {
-  args: {
-    label: 'Password',
-    type: 'password',
-    placeholder: 'Enter your password…',
-    errorMsg: 'Password must be at least 8 characters.',
-  },
+  args: { type: 'password' },
 };
 
 export const PasswordNoToggle: Story = {
-  args: {
-    label: 'Password',
-    type: 'password',
-    placeholder: 'Enter your password…',
-    showPasswordToggle: false,
-  },
+  args: { type: 'password', showPasswordToggle: false },
 };
 
 export const WithAutocomplete: Story = {
-  args: {
-    label: 'Email',
-    type: 'email',
-    placeholder: 'you@example.com',
-    autocomplete: 'email',
-  },
+  args: { autocomplete: 'email' },
 };
 
 export const Disabled: Story = {
@@ -101,12 +86,7 @@ export const ReadOnly: Story = {
 };
 
 export const Required: Story = {
-  args: {
-    required: true,
-    label: 'Email address',
-    type: 'email',
-    placeholder: 'you@example.com',
-  },
+  args: { required: true },
 };
 
 export const AllSizes: Story = {

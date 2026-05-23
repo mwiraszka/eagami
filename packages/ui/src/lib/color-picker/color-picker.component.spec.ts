@@ -11,7 +11,12 @@ describe('ColorPickerComponent', () => {
   }
 
   function getPopover(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-color-picker__popover');
+    // The popover renders its surface unconditionally (hidden via
+    // `display: none` when closed) and teleports it to `document.body`.
+    // Treat a hidden surface as "no popover".
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface.querySelector<HTMLElement>('.ea-color-picker__popover');
   }
 
   function open(): void {
@@ -27,6 +32,11 @@ describe('ColorPickerComponent', () => {
     fixture = TestBed.createComponent(ColorPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
 
   describe('Rendering', () => {
@@ -89,10 +99,10 @@ describe('ColorPickerComponent', () => {
     it('renders the hex input by default when open', () => {
       open();
 
-      const inputs = fixture.nativeElement.querySelectorAll('.ea-color-picker__input');
+      const inputs = document.body.querySelectorAll('.ea-color-picker__input');
       expect(inputs.length).toBe(1); // hex only
       expect(
-        fixture.nativeElement.querySelector('.ea-color-picker__input-group--hex'),
+        document.body.querySelector('.ea-color-picker__input-group--hex'),
       ).toBeTruthy();
     });
 
@@ -101,7 +111,7 @@ describe('ColorPickerComponent', () => {
       component.cycleInputMode();
       fixture.detectChanges();
 
-      const inputs = fixture.nativeElement.querySelectorAll('.ea-color-picker__input');
+      const inputs = document.body.querySelectorAll('.ea-color-picker__input');
       expect(inputs.length).toBe(4); // R + G + B + A
     });
 
@@ -111,13 +121,13 @@ describe('ColorPickerComponent', () => {
       component.cycleInputMode();
       fixture.detectChanges();
 
-      const inputs = fixture.nativeElement.querySelectorAll('.ea-color-picker__input');
+      const inputs = document.body.querySelectorAll('.ea-color-picker__input');
       expect(inputs.length).toBe(3); // R + G + B
     });
 
     it('toggles between hex and RGB via the format button', () => {
       open();
-      const toggle = fixture.nativeElement.querySelector(
+      const toggle = document.body.querySelector(
         '.ea-color-picker__format-toggle',
       ) as HTMLButtonElement;
 
@@ -180,7 +190,7 @@ describe('ColorPickerComponent', () => {
       component.changed.subscribe(spy);
       open();
 
-      const presets = fixture.nativeElement.querySelectorAll('.ea-color-picker__preset');
+      const presets = document.body.querySelectorAll('.ea-color-picker__preset');
       (presets[0] as HTMLButtonElement).click();
 
       expect(spy).toHaveBeenCalledTimes(1);
@@ -192,7 +202,7 @@ describe('ColorPickerComponent', () => {
       component.registerOnChange(onChange);
       open();
 
-      const presets = fixture.nativeElement.querySelectorAll('.ea-color-picker__preset');
+      const presets = document.body.querySelectorAll('.ea-color-picker__preset');
       (presets[0] as HTMLButtonElement).click();
 
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -207,7 +217,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
       open();
 
-      const presets = fixture.nativeElement.querySelectorAll('.ea-color-picker__preset');
+      const presets = document.body.querySelectorAll('.ea-color-picker__preset');
       (presets[0] as HTMLButtonElement).click();
 
       expect(onChange.mock.calls[0][0]).toMatch(/^rgb\(\d+, \d+, \d+\)$/);
@@ -265,7 +275,7 @@ describe('ColorPickerComponent', () => {
   describe('Hex / RGB inputs', () => {
     it('updates state when a valid hex is typed', () => {
       open();
-      const hexInput = fixture.nativeElement.querySelector(
+      const hexInput = document.body.querySelector(
         '.ea-color-picker__input-group--hex .ea-color-picker__input',
       ) as HTMLInputElement;
 
@@ -282,9 +292,7 @@ describe('ColorPickerComponent', () => {
       component.cycleInputMode();
       fixture.detectChanges();
 
-      const inputs = fixture.nativeElement.querySelectorAll(
-        '.ea-color-picker__input--num',
-      );
+      const inputs = document.body.querySelectorAll('.ea-color-picker__input--num');
       const rInput = inputs[0] as HTMLInputElement;
 
       rInput.value = '128';
@@ -296,7 +304,7 @@ describe('ColorPickerComponent', () => {
 
     it('does not canonicalize a partial hex while the user is typing', () => {
       open();
-      const hexInput = fixture.nativeElement.querySelector(
+      const hexInput = document.body.querySelector(
         '.ea-color-picker__input-group--hex .ea-color-picker__input',
       ) as HTMLInputElement;
 
@@ -312,7 +320,7 @@ describe('ColorPickerComponent', () => {
 
     it('canonicalizes the hex input on blur', () => {
       open();
-      const hexInput = fixture.nativeElement.querySelector(
+      const hexInput = document.body.querySelector(
         '.ea-color-picker__input-group--hex .ea-color-picker__input',
       ) as HTMLInputElement;
 
@@ -359,7 +367,7 @@ describe('ColorPickerComponent', () => {
 
   describe('SV area interaction', () => {
     function getSvArea(): HTMLDivElement {
-      return fixture.nativeElement.querySelector('.ea-color-picker__sv-area');
+      return document.body.querySelector('.ea-color-picker__sv-area')!;
     }
 
     function svKey(key: string, shift = false): void {
@@ -444,7 +452,6 @@ describe('ColorPickerComponent', () => {
       // logic stays out of this — just assert the keyboard path no-ops.
       component.writeValue('#ff8800');
       const before = component.rgb();
-      // @ts-expect-error — testing the disabled guard directly.
       component.onSvKeydown(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
       expect(component.rgb()).toEqual(before);
     });
@@ -492,7 +499,7 @@ describe('ColorPickerComponent', () => {
 
   describe('Hue strip interaction', () => {
     function getHueTrack(): HTMLDivElement {
-      return fixture.nativeElement.querySelector('.ea-color-picker__strip--hue');
+      return document.body.querySelector('.ea-color-picker__strip--hue')!;
     }
 
     function hueKey(key: string, shift = false): void {
@@ -552,7 +559,7 @@ describe('ColorPickerComponent', () => {
 
   describe('Alpha strip interaction', () => {
     function getAlphaTrack(): HTMLDivElement {
-      return fixture.nativeElement.querySelector('.ea-color-picker__strip--alpha');
+      return document.body.querySelector('.ea-color-picker__strip--alpha')!;
     }
 
     function alphaKey(key: string, shift = false): void {
@@ -620,9 +627,7 @@ describe('ColorPickerComponent', () => {
       component.cycleInputMode();
       fixture.detectChanges();
 
-      const inputs = fixture.nativeElement.querySelectorAll(
-        '.ea-color-picker__input--num',
-      );
+      const inputs = document.body.querySelectorAll('.ea-color-picker__input--num');
       const alphaInput = inputs[3] as HTMLInputElement;
       alphaInput.value = '50';
       alphaInput.dispatchEvent(new Event('input'));

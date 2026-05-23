@@ -6,6 +6,9 @@ const meta: Meta<DatePickerComponent> = {
   title: 'Components/Date picker',
   component: DatePickerComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '30rem' } },
+  },
   render: args => ({
     props: args,
     template: `<ea-date-picker ${argsToTemplate(args)} class="story-narrow"></ea-date-picker>`,
@@ -75,16 +78,15 @@ export const WithMinMax: Story = {
   args: {
     minDate: new Date(new Date().setDate(new Date().getDate() - 7)),
     maxDate: new Date(new Date().setDate(new Date().getDate() + 14)),
-    hint: 'Restricted to ±1 week / +2 weeks from today.',
   },
 };
 
 export const ShortFormat: Story = {
-  args: { format: 'short', value: new Date() },
+  args: { format: 'short' },
 };
 
 export const LongFormat: Story = {
-  args: { format: 'long', value: new Date() },
+  args: { format: 'long' },
 };
 
 export const SundayStart: Story = {

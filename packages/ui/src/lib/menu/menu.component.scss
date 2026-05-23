@@ -6,9 +6,8 @@
   display: contents;
 }
 
+// Positioned by the host `<ea-popover>`; this class only owns visual chrome.
 .ea-menu__list {
-  position: fixed;
-  z-index: var(--z-index-dropdown);
   min-width: 10rem;
   max-height: 20rem;
   padding: var(--space-1) 0;

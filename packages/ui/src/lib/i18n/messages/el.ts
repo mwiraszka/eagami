@@ -65,6 +65,15 @@ export const el: EagamiMessages = {
   menu: {
     label: 'Μενού',
   },
+  multiSelect: {
+    placeholder: 'Επιλέξτε…',
+    searchPlaceholder: 'Αναζήτηση…',
+    searchEmpty: 'Δεν βρέθηκαν αποτελέσματα',
+    selectAll: 'Επιλογή όλων',
+    clearAll: 'Εκκαθάριση επιλογής',
+    removeOption: label => `Αφαίρεση ${label}`,
+    selectedCount: count => `${count} επιλεγμέν${count === 1 ? 'ο' : 'α'}`,
+  },
   paginator: {
     label: 'Σελιδοποίηση',
     rowsPerPage: 'Γραμμές ανά σελίδα:',
@@ -78,8 +87,26 @@ export const el: EagamiMessages = {
   spinner: {
     label: 'Φόρτωση',
   },
+  stepper: {
+    optional: 'προαιρετικό',
+  },
   tag: {
     remove: 'Αφαίρεση',
+  },
+  timePicker: {
+    placeholder: 'Επιλογή ώρας…',
+    clear: 'Καθαρισμός ώρας',
+    hoursLabel: 'Ώρες',
+    minutesLabel: 'Λεπτά',
+    secondsLabel: 'Δευτερόλεπτα',
+    incrementHours: 'Αύξηση ωρών',
+    decrementHours: 'Μείωση ωρών',
+    incrementMinutes: 'Αύξηση λεπτών',
+    decrementMinutes: 'Μείωση λεπτών',
+    incrementSeconds: 'Αύξηση δευτερολέπτων',
+    decrementSeconds: 'Μείωση δευτερολέπτων',
+    amLabel: 'πμ',
+    pmLabel: 'μμ',
   },
   toast: {
     dismiss: 'Απόρριψη',

@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  HostListener,
   Injector,
   afterNextRender,
   computed,
@@ -22,6 +21,7 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
+import { PopoverComponent } from '../popover/popover.component';
 
 /** Visual size of the date picker trigger. */
 export type DatePickerSize = 'sm' | 'md' | 'lg';
@@ -56,6 +56,7 @@ interface CalendarDay {
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
     NgClass,
+    PopoverComponent,
   ],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
@@ -69,8 +70,7 @@ interface CalendarDay {
   ],
 })
 export class DatePickerComponent implements ControlValueAccessor {
-  private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
-  private readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
+  protected readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
@@ -252,8 +252,11 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   private focusFocusedDayCell(): void {
-    const host = this.hostEl()?.nativeElement;
-    const focusedCell = host?.querySelector<HTMLButtonElement>(
+    // The calendar lives inside the popover surface, which `<ea-popover>`
+    // teleports to `document.body`. Query the document directly so the lookup
+    // works regardless of where the surface is mounted.
+    if (typeof document === 'undefined') return;
+    const focusedCell = document.querySelector<HTMLButtonElement>(
       '.ea-date-picker__day--focused',
     );
     focusedCell?.focus();
@@ -403,14 +406,10 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (!this.isOpen()) return;
-    const host = this.hostEl()?.nativeElement;
-    if (host && !host.contains(event.target as Node)) {
-      this.close();
-      this.onTouched();
-    }
+  /** Called by `<ea-popover>` when the user clicks outside the picker. */
+  onPopoverCloseRequested(): void {
+    this.close();
+    this.onTouched();
   }
 
   // Internal helpers

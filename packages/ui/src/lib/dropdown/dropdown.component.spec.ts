@@ -18,11 +18,18 @@ describe('DropdownComponent', () => {
   }
 
   function getMenu(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-dropdown__menu');
+    // The menu is projected into `<ea-popover>`, which renders its surface
+    // unconditionally (hidden via `display: none` when closed) and teleports
+    // it to `document.body`. Treat a hidden surface as "no menu".
+    const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface.querySelector<HTMLElement>('.ea-dropdown__menu');
   }
 
   function getOptions(): HTMLElement[] {
-    return Array.from(fixture.nativeElement.querySelectorAll('.ea-dropdown__option'));
+    const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return [];
+    return Array.from(surface.querySelectorAll('.ea-dropdown__option'));
   }
 
   beforeEach(async () => {
@@ -34,6 +41,14 @@ describe('DropdownComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('options', testOptions);
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    // `<ea-popover>` teleports its surface to `document.body`. Destroy the
+    // fixture so Angular tears down the embedded view, then sweep any surface
+    // a half-destroyed test left behind so subsequent tests don't see it.
+    fixture.destroy();
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
 
   describe('Rendering', () => {

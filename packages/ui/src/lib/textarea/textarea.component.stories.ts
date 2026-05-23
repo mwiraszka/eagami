@@ -71,17 +71,11 @@ export const ReadOnly: Story = {
 };
 
 export const NoResize: Story = {
-  args: {
-    resize: 'none',
-    label: 'Fixed size',
-  },
+  args: { resize: 'none' },
 };
 
 export const WithMaxlength: Story = {
-  args: {
-    maxlength: 100,
-    hint: 'Limited to 100 characters.',
-  },
+  args: { maxlength: 100 },
 };
 
 export const AllSizes: Story = {

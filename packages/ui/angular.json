@@ -31,14 +31,9 @@
           "builder": "@storybook/angular:start-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "sandbox:build",
+            "browserTarget": "eagami-ui-storybook:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "."
-            ],
+            "compodocArgs": ["-e", "json", "-d", "."],
             "port": 6006
           }
         },
@@ -46,68 +41,30 @@
           "builder": "@storybook/angular:build-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "sandbox:build",
+            "browserTarget": "eagami-ui-storybook:build",
             "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              "."
-            ],
+            "compodocArgs": ["-e", "json", "-d", "."],
             "outputDir": "dist/storybook/eagami-ui"
           }
         }
       }
     },
-    "sandbox": {
+    "eagami-ui-storybook": {
       "projectType": "application",
-      "root": "sandbox",
-      "sourceRoot": "sandbox",
-      "prefix": "app",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "ea",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/sandbox",
-            "index": "sandbox/index.html",
-            "browser": "sandbox/main.ts",
-            "tsConfig": "sandbox/tsconfig.app.json",
+            "browser": ".storybook/storybook-host.ts",
+            "tsConfig": ".storybook/tsconfig.json",
+            "styles": ["src/styles/eagami-ui.scss"],
             "assets": [
-              { "glob": "favicon.ico", "input": ".", "output": "/" },
-              { "glob": "manifest.webmanifest", "input": ".", "output": "/" },
               { "glob": "**/*", "input": "assets", "output": "assets" }
-            ],
-            "styles": [
-              "src/styles/eagami-ui.scss"
             ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "sourceMap": false,
-              "namedChunks": false
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "options": {
-            "port": 4201
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "sandbox:build:production"
-            },
-            "development": {
-              "buildTarget": "sandbox:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
+          }
         }
       }
     }

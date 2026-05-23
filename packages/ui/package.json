@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Lightweight, accessible Angular UI component library built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
@@ -23,13 +23,12 @@
   "sideEffects": false,
   "scripts": {
     "ng": "ng",
-    "sandbox": "ng serve sandbox -o",
     "build": "ng build eagami-ui && node scripts/clean-dist-package.mjs",
     "watch": "ng build eagami-ui --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "format": "prettier --write \"src/**\" \"sandbox/**\"",
+    "format": "prettier --write \"src/**\"",
     "lint": "eslint 'src/**'",
     "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
     "storybook": "ng run eagami-ui:storybook",
@@ -40,6 +39,9 @@
     "@angular/common": "^21.0.0",
     "@angular/core": "^21.0.0",
     "@angular/forms": "^21.0.0"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.2102.11",

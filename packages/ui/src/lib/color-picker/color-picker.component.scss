@@ -197,21 +197,19 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Popover. Positioned via `fixed` + JS-supplied `top`/`left` so it escapes
-  // any ancestor with `overflow: hidden` (same pattern as `<ea-dropdown>`).
+  // Popover content. Positioned by the host `<ea-popover>`; this class only
+  // owns visual chrome.
   // ---------------------------------------------------------------------------
   &__popover {
-    position: fixed;
-    z-index: var(--z-index-popover);
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    padding: var(--space-3);
     width: 17.5rem;
-    background-color: var(--color-bg-base);
+    padding: var(--space-3);
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
+    background-color: var(--color-bg-base);
   }
 
   // ---------------------------------------------------------------------------

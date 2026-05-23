@@ -1,0 +1,104 @@
+<div
+  class="ea-range-slider-field"
+  [ngClass]="hostClasses()">
+  @if (label()) {
+    <span
+      class="ea-range-slider-field__label"
+      [id]="id() + '-label'"
+      [class.ea-range-slider-field__label--required]="required()">
+      {{ label() }}
+      @if (showValue()) {
+        <span class="ea-range-slider-field__value">
+          {{ formatValue()(clampedValue()[0]) }} – {{ formatValue()(clampedValue()[1]) }}
+        </span>
+      }
+    </span>
+  }
+
+  <div class="ea-range-slider">
+    <div
+      #trackEl
+      class="ea-range-slider__track"
+      (pointerdown)="handleTrackPointerDown($event)"
+      (pointermove)="handleTrackPointerMove($event)"
+      (pointerup)="handleTrackPointerUp($event)"
+      (pointercancel)="handleTrackPointerUp($event)">
+      <div
+        class="ea-range-slider__fill"
+        [style.left.%]="lowPercent()"
+        [style.right.%]="100 - highPercent()">
+      </div>
+      <div
+        class="ea-range-slider__thumb ea-range-slider__thumb--low"
+        role="slider"
+        tabindex="0"
+        [id]="id() + '-low'"
+        [attr.aria-labelledby]="label() ? id() + '-label' : null"
+        [attr.aria-label]="!label() ? (ariaLabelLow() ?? null) : null"
+        [attr.aria-valuemin]="min()"
+        [attr.aria-valuemax]="clampedValue()[1]"
+        [attr.aria-valuenow]="clampedValue()[0]"
+        [attr.aria-valuetext]="formatValue()(clampedValue()[0])"
+        [attr.aria-disabled]="isDisabled() || null"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        [style.left.%]="lowPercent()"
+        (keydown)="handleKeydown($event, 'low')"
+        (blur)="handleBlur()">
+      </div>
+      <div
+        class="ea-range-slider__thumb ea-range-slider__thumb--high"
+        role="slider"
+        tabindex="0"
+        [id]="id() + '-high'"
+        [attr.aria-labelledby]="label() ? id() + '-label' : null"
+        [attr.aria-label]="!label() ? (ariaLabelHigh() ?? null) : null"
+        [attr.aria-valuemin]="clampedValue()[0]"
+        [attr.aria-valuemax]="max()"
+        [attr.aria-valuenow]="clampedValue()[1]"
+        [attr.aria-valuetext]="formatValue()(clampedValue()[1])"
+        [attr.aria-disabled]="isDisabled() || null"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        [style.left.%]="highPercent()"
+        (keydown)="handleKeydown($event, 'high')"
+        (blur)="handleBlur()">
+      </div>
+    </div>
+
+    @if (showMinMaxLabels()) {
+      <div class="ea-range-slider__minmax">
+        <span class="ea-range-slider__minmax-label">
+          {{ formatValue()(min()) }}
+        </span>
+        <span class="ea-range-slider__minmax-label">
+          {{ formatValue()(max()) }}
+        </span>
+      </div>
+    }
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-range-slider-field__message ea-range-slider-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      <ea-icon-alert-circle class="ea-range-slider-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-range-slider-field__message ea-range-slider-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
+</div>

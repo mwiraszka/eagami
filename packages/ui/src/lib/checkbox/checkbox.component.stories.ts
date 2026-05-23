@@ -57,7 +57,7 @@ export const DisabledChecked: Story = {
 };
 
 export const Required: Story = {
-  args: { required: true, label: 'I agree to the terms' },
+  args: { required: true },
 };
 
 export const WithHint: Story = {

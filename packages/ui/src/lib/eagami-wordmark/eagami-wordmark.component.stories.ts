@@ -44,11 +44,11 @@ export const Full: Story = {
 };
 
 export const Small: Story = {
-  args: { variant: 2, size: 32 },
+  args: { size: 32 },
 };
 
 export const Large: Story = {
-  args: { variant: 3, size: 96 },
+  args: { size: 96 },
 };
 
 export const InlineHandcraftedBy: Story = {

@@ -85,6 +85,15 @@ export interface EagamiMessages {
   menu: {
     label: string;
   };
+  multiSelect: {
+    placeholder: string;
+    searchPlaceholder: string;
+    searchEmpty: string;
+    selectAll: string;
+    clearAll: string;
+    removeOption: (label: string) => string;
+    selectedCount: (count: number) => string;
+  };
   paginator: {
     label: string;
     rowsPerPage: string;
@@ -98,8 +107,26 @@ export interface EagamiMessages {
   spinner: {
     label: string;
   };
+  stepper: {
+    optional: string;
+  };
   tag: {
     remove: string;
+  };
+  timePicker: {
+    placeholder: string;
+    clear: string;
+    hoursLabel: string;
+    minutesLabel: string;
+    secondsLabel: string;
+    incrementHours: string;
+    decrementHours: string;
+    incrementMinutes: string;
+    decrementMinutes: string;
+    incrementSeconds: string;
+    decrementSeconds: string;
+    amLabel: string;
+    pmLabel: string;
   };
   toast: {
     dismiss: string;

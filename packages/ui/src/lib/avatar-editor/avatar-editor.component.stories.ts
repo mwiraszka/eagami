@@ -47,16 +47,16 @@ export const LargeCanvas: Story = {
 };
 
 export const WithExistingImage: Story = {
-  args: { currentSrc: 'assets/sample-avatar.jpg' },
+  args: { currentSrc: 'assets/sample-avatar.png' },
 };
 
 export const SquareWithExistingImage: Story = {
-  args: { shape: 'square', currentSrc: 'assets/sample-avatar.jpg' },
+  args: { shape: 'square', currentSrc: 'assets/sample-avatar.png' },
 };
 
 export const WithCropState: Story = {
   args: {
-    currentSrc: 'assets/sample-avatar.jpg',
+    currentSrc: 'assets/sample-avatar.png',
     cropState: { zoom: 1.4, offsetX: -30, offsetY: -20 },
   },
 };
@@ -64,7 +64,7 @@ export const WithCropState: Story = {
 export const SquareWithCropState: Story = {
   args: {
     shape: 'square',
-    currentSrc: 'assets/sample-avatar.jpg',
+    currentSrc: 'assets/sample-avatar.png',
     cropState: { zoom: 1.4, offsetX: -30, offsetY: -20 },
   },
 };
@@ -75,11 +75,11 @@ export const BothShapes: Story = {
       <div class="story-shapes-row">
         <div class="story-shape-item">
           <span class="story-shape-label">Circle</span>
-          <ea-avatar-editor shape="circle" [canvasSize]="180" currentSrc="assets/sample-avatar.jpg"></ea-avatar-editor>
+          <ea-avatar-editor shape="circle" [canvasSize]="180" currentSrc="assets/sample-avatar.png"></ea-avatar-editor>
         </div>
         <div class="story-shape-item">
           <span class="story-shape-label">Square</span>
-          <ea-avatar-editor shape="square" [canvasSize]="180" currentSrc="assets/sample-avatar.jpg"></ea-avatar-editor>
+          <ea-avatar-editor shape="square" [canvasSize]="180" currentSrc="assets/sample-avatar.png"></ea-avatar-editor>
         </div>
       </div>
     `,

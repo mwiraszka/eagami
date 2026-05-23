@@ -1,0 +1,244 @@
+<div class="ea-time-picker-field">
+  @if (label()) {
+    <label
+      class="ea-time-picker-field__label"
+      [for]="id()"
+      [class.ea-time-picker-field__label--required]="required()">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="ea-time-picker">
+    <div class="ea-time-picker__trigger-wrapper">
+      <button
+        #triggerEl
+        type="button"
+        class="ea-time-picker__trigger"
+        [ngClass]="triggerClasses()"
+        [id]="id()"
+        [disabled]="isDisabled()"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'dialog'"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        (click)="toggle()"
+        (keydown)="handleTriggerKeydown($event)">
+        <ea-icon-clock
+          class="ea-time-picker__trigger-icon"
+          aria-hidden="true" />
+        <span class="ea-time-picker__trigger-value">
+          {{ displayValue() || resolvedPlaceholder() }}
+        </span>
+      </button>
+      @if (hasValue() && !isDisabled() && !readonly()) {
+        <button
+          type="button"
+          class="ea-time-picker__clear"
+          [attr.aria-label]="i18n.messages().timePicker.clear"
+          (click)="clear($event)">
+          <span aria-hidden="true">×</span>
+        </button>
+      }
+    </div>
+
+    <ea-popover
+      [anchor]="triggerEl"
+      [open]="isOpen()"
+      placement="bottom-start"
+      role="dialog"
+      [closeOnEscape]="false"
+      scrollBehavior="close"
+      (closeRequested)="onPopoverCloseRequested()">
+      <div class="ea-time-picker__popover">
+        <!-- Hours column -->
+        <div class="ea-time-picker__column">
+          <button
+            type="button"
+            class="ea-time-picker__step"
+            [attr.aria-label]="i18n.messages().timePicker.incrementHours"
+            (mousedown)="startHold('hours', 1, $event)"
+            (touchstart)="startHold('hours', 1, $event)"
+            (mouseup)="stopHold()"
+            (mouseleave)="stopHold()"
+            (touchend)="stopHold()"
+            (touchcancel)="stopHold()">
+            <ea-icon-chevron-up aria-hidden="true" />
+          </button>
+          <input
+            #hoursEl
+            type="text"
+            class="ea-time-picker__value"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="2"
+            role="spinbutton"
+            [attr.aria-label]="i18n.messages().timePicker.hoursLabel"
+            [attr.aria-valuemin]="format() === '24h' ? 0 : 1"
+            [attr.aria-valuemax]="format() === '24h' ? 23 : 12"
+            [attr.aria-valuenow]="displayHours()"
+            [value]="hoursText()"
+            (focus)="onSpinnerFocus($event)"
+            (input)="onSpinnerInput('hours', $event)"
+            (keydown)="handlePopoverKeydown($event, 'hours')"
+            (blur)="onSpinnerBlur()" />
+          <button
+            type="button"
+            class="ea-time-picker__step"
+            [attr.aria-label]="i18n.messages().timePicker.decrementHours"
+            (mousedown)="startHold('hours', -1, $event)"
+            (touchstart)="startHold('hours', -1, $event)"
+            (mouseup)="stopHold()"
+            (mouseleave)="stopHold()"
+            (touchend)="stopHold()"
+            (touchcancel)="stopHold()">
+            <ea-icon-chevron-down aria-hidden="true" />
+          </button>
+        </div>
+
+        <span
+          class="ea-time-picker__separator"
+          aria-hidden="true">
+          :
+        </span>
+
+        <!-- Minutes column -->
+        <div class="ea-time-picker__column">
+          <button
+            type="button"
+            class="ea-time-picker__step"
+            [attr.aria-label]="i18n.messages().timePicker.incrementMinutes"
+            (mousedown)="startHold('minutes', 1, $event)"
+            (touchstart)="startHold('minutes', 1, $event)"
+            (mouseup)="stopHold()"
+            (mouseleave)="stopHold()"
+            (touchend)="stopHold()"
+            (touchcancel)="stopHold()">
+            <ea-icon-chevron-up aria-hidden="true" />
+          </button>
+          <input
+            #minutesEl
+            type="text"
+            class="ea-time-picker__value"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="2"
+            role="spinbutton"
+            [attr.aria-label]="i18n.messages().timePicker.minutesLabel"
+            [attr.aria-valuemin]="0"
+            [attr.aria-valuemax]="59"
+            [attr.aria-valuenow]="parsed().minutes"
+            [value]="minutesText()"
+            (focus)="onSpinnerFocus($event)"
+            (input)="onSpinnerInput('minutes', $event)"
+            (keydown)="handlePopoverKeydown($event, 'minutes')"
+            (blur)="onSpinnerBlur()" />
+          <button
+            type="button"
+            class="ea-time-picker__step"
+            [attr.aria-label]="i18n.messages().timePicker.decrementMinutes"
+            (mousedown)="startHold('minutes', -1, $event)"
+            (touchstart)="startHold('minutes', -1, $event)"
+            (mouseup)="stopHold()"
+            (mouseleave)="stopHold()"
+            (touchend)="stopHold()"
+            (touchcancel)="stopHold()">
+            <ea-icon-chevron-down aria-hidden="true" />
+          </button>
+        </div>
+
+        <!-- Seconds column (optional) -->
+        @if (includeSeconds()) {
+          <span
+            class="ea-time-picker__separator"
+            aria-hidden="true">
+            :
+          </span>
+          <div class="ea-time-picker__column">
+            <button
+              type="button"
+              class="ea-time-picker__step"
+              [attr.aria-label]="i18n.messages().timePicker.incrementSeconds"
+              (mousedown)="startHold('seconds', 1, $event)"
+              (touchstart)="startHold('seconds', 1, $event)"
+              (mouseup)="stopHold()"
+              (mouseleave)="stopHold()"
+              (touchend)="stopHold()"
+              (touchcancel)="stopHold()">
+              <ea-icon-chevron-up aria-hidden="true" />
+            </button>
+            <input
+              #secondsEl
+              type="text"
+              class="ea-time-picker__value"
+              inputmode="numeric"
+              autocomplete="off"
+              maxlength="2"
+              role="spinbutton"
+              [attr.aria-label]="i18n.messages().timePicker.secondsLabel"
+              [attr.aria-valuemin]="0"
+              [attr.aria-valuemax]="59"
+              [attr.aria-valuenow]="parsed().seconds"
+              [value]="secondsText()"
+              (focus)="onSpinnerFocus($event)"
+              (input)="onSpinnerInput('seconds', $event)"
+              (keydown)="handlePopoverKeydown($event, 'seconds')"
+              (blur)="onSpinnerBlur()" />
+            <button
+              type="button"
+              class="ea-time-picker__step"
+              [attr.aria-label]="i18n.messages().timePicker.decrementSeconds"
+              (mousedown)="startHold('seconds', -1, $event)"
+              (touchstart)="startHold('seconds', -1, $event)"
+              (mouseup)="stopHold()"
+              (mouseleave)="stopHold()"
+              (touchend)="stopHold()"
+              (touchcancel)="stopHold()">
+              <ea-icon-chevron-down aria-hidden="true" />
+            </button>
+          </div>
+        }
+
+        <!-- AM/PM toggle (12h only) -->
+        @if (format() === '12h') {
+          <div class="ea-time-picker__period">
+            <button
+              type="button"
+              class="ea-time-picker__period-option"
+              [class.ea-time-picker__period-option--active]="period() === 'AM'"
+              (click)="period() === 'PM' && togglePeriod()">
+              {{ i18n.messages().timePicker.amLabel }}
+            </button>
+            <button
+              type="button"
+              class="ea-time-picker__period-option"
+              [class.ea-time-picker__period-option--active]="period() === 'PM'"
+              (click)="period() === 'AM' && togglePeriod()">
+              {{ i18n.messages().timePicker.pmLabel }}
+            </button>
+          </div>
+        }
+      </div>
+    </ea-popover>
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-time-picker-field__message ea-time-picker-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      <ea-icon-alert-circle class="ea-time-picker-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-time-picker-field__message ea-time-picker-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
+</div>

@@ -230,6 +230,7 @@ export interface WebMessages {
         multi: string;
         circle: string;
         square: string;
+        shapes: string;
         shapesAndFallbacks: string;
         chevronSeparator: string;
         slashSeparator: string;
@@ -265,6 +266,29 @@ export interface WebMessages {
         noResults: string;
         titleOnly: string;
         iconTrigger: string;
+        placements: string;
+        canvasSizes: string;
+        cappedChipCount: string;
+        customLabel: string;
+        customSize: string;
+        linearFlow: string;
+        manyLevels: string;
+        notAnimated: string;
+        outputFormats: string;
+        quarterHourSteps: string;
+        stepped: string;
+        sundayStart: string;
+        twelveHourFormat: string;
+        twoActions: string;
+        withCompletedSteps: string;
+        withInitialValue: string;
+        withMaxlength: string;
+        withMinMaxLabels: string;
+        withOptionalStep: string;
+        withSeconds: string;
+        withoutAlpha: string;
+        withoutSearch: string;
+        withoutSelectAll: string;
       };
       common: {
         small: string;
@@ -464,6 +488,26 @@ export interface WebMessages {
           open: string;
           saveUnavailable: string;
           saveAs: string;
+        };
+        popover: {
+          openLabel: string;
+          basicContent: string;
+          placementTopLabel: string;
+          placementTopStartLabel: string;
+          placementTopEndLabel: string;
+          placementBottomLabel: string;
+          placementBottomStartLabel: string;
+          placementBottomEndLabel: string;
+          placementLeftLabel: string;
+          placementRightLabel: string;
+          placementTopContent: string;
+          placementTopStartContent: string;
+          placementTopEndContent: string;
+          placementBottomContent: string;
+          placementBottomStartContent: string;
+          placementBottomEndContent: string;
+          placementLeftContent: string;
+          placementRightContent: string;
         };
         progressBar: {
           processing: string;

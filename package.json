@@ -18,8 +18,7 @@
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
-    "start": "concurrently --kill-others --names ui,web --prefix-colors auto \"pnpm --filter @eagami/ui watch\" \"pnpm --filter eagami-website start\"",
-    "sandbox": "pnpm --filter @eagami/ui sandbox",
+    "start": "pnpm --filter eagami-website start",
     "storybook": "pnpm --filter @eagami/ui storybook",
     "ui": "pnpm --filter @eagami/ui",
     "website": "pnpm --filter eagami-website"
@@ -79,7 +78,5 @@
       ]
     }
   },
-  "devDependencies": {
-    "concurrently": "9.2.1"
-  }
+  "devDependencies": {}
 }

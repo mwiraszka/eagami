@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 .ui-setup {
   display: flex;
   flex-direction: column;
@@ -32,12 +34,7 @@
   }
 
   code {
-    padding: 2px 6px;
-    border-radius: 4px;
-    background-color: var(--color-bg-muted);
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: var(--color-text-primary);
+    @include mixins.code-chip;
   }
 }
 

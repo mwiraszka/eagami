@@ -11,11 +11,18 @@ describe('DatePickerComponent', () => {
   }
 
   function getPopover(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-date-picker__popover');
+    // The popover renders its surface unconditionally (hidden via
+    // `display: none` when closed) and teleports it to `document.body`.
+    // Treat a hidden surface as "no popover".
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return null;
+    return surface.querySelector<HTMLElement>('.ea-date-picker__popover');
   }
 
   function getDayCells(): HTMLButtonElement[] {
-    return Array.from(fixture.nativeElement.querySelectorAll('.ea-date-picker__day'));
+    const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+    if (!surface || surface.style.display === 'none') return [];
+    return Array.from(surface.querySelectorAll('.ea-date-picker__day'));
   }
 
   function findDayCell(dayNumber: number, currentMonth = true): HTMLButtonElement {
@@ -36,6 +43,11 @@ describe('DatePickerComponent', () => {
     fixture = TestBed.createComponent(DatePickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
+    document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
 
   describe('Rendering', () => {
@@ -100,7 +112,7 @@ describe('DatePickerComponent', () => {
       getTrigger().click();
       fixture.detectChanges();
 
-      const weekdays = fixture.nativeElement.querySelectorAll('.ea-date-picker__weekday');
+      const weekdays = document.body.querySelectorAll('.ea-date-picker__weekday');
       expect(weekdays).toHaveLength(7);
     });
   });

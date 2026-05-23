@@ -1,0 +1,160 @@
+<div class="ea-multi-select-field">
+  @if (label()) {
+    <label
+      class="ea-multi-select-field__label"
+      [for]="id()"
+      [class.ea-multi-select-field__label--required]="required()">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="ea-multi-select">
+    <div class="ea-multi-select__trigger-wrapper">
+      <div
+        #triggerEl
+        class="ea-multi-select__trigger"
+        [ngClass]="triggerClasses()"
+        [id]="id()"
+        role="combobox"
+        [attr.tabindex]="isDisabled() ? -1 : 0"
+        [attr.aria-expanded]="isOpen()"
+        [attr.aria-haspopup]="'listbox'"
+        [attr.aria-disabled]="isDisabled() || null"
+        [attr.aria-required]="required() || null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        (click)="toggle()"
+        (keydown)="handleTriggerKeydown($event)">
+        <span class="ea-multi-select__trigger-content">
+          @if (!hasValue()) {
+            <span class="ea-multi-select__trigger-placeholder">
+              {{ resolvedPlaceholder() }}
+            </span>
+          } @else {
+            @for (opt of visibleChips(); track opt.value) {
+              <ea-tag
+                size="sm"
+                variant="default"
+                [removable]="!isDisabled() && !readonly()"
+                [removeLabel]="i18n.messages().multiSelect.removeOption(opt.label)"
+                (removed)="removeChip(opt)">
+                {{ opt.label }}
+              </ea-tag>
+            }
+            @if (hiddenChipCount() > 0) {
+              <span class="ea-multi-select__more">+{{ hiddenChipCount() }}</span>
+            }
+          }
+        </span>
+        <ea-icon-chevron-down
+          class="ea-multi-select__trigger-icon"
+          aria-hidden="true" />
+      </div>
+      @if (hasValue() && !isDisabled() && !readonly()) {
+        <button
+          type="button"
+          class="ea-multi-select__clear"
+          [attr.aria-label]="i18n.messages().multiSelect.clearAll"
+          (click)="clear($event)">
+          <ea-icon-x
+            class="ea-multi-select__clear-icon"
+            aria-hidden="true" />
+        </button>
+      }
+    </div>
+
+    <ea-popover
+      [anchor]="triggerEl"
+      [open]="isOpen()"
+      placement="bottom-start"
+      role="listbox"
+      [matchAnchorWidth]="true"
+      [closeOnEscape]="false"
+      scrollBehavior="reposition"
+      (closeRequested)="onPopoverCloseRequested()">
+      <div class="ea-multi-select__popover">
+        @if (searchable()) {
+          <div class="ea-multi-select__search">
+            <ea-icon-search
+              class="ea-multi-select__search-icon"
+              aria-hidden="true" />
+            <input
+              #searchEl
+              type="text"
+              class="ea-multi-select__search-input"
+              autocomplete="off"
+              [placeholder]="resolvedSearchPlaceholder()"
+              [value]="searchTerm()"
+              (input)="onSearchInput($event)"
+              (keydown)="handlePopoverKeydown($event)" />
+          </div>
+        }
+
+        @if (selectAll() && filteredOptions().length > 0) {
+          <div
+            class="ea-multi-select__option ea-multi-select__option--select-all"
+            (click)="toggleSelectAll()">
+            <ea-checkbox
+              size="sm"
+              [checked]="selectAllState() === 'all'"
+              [indeterminate]="selectAllState() === 'some'"
+              [ariaLabel]="i18n.messages().multiSelect.selectAll" />
+            <span class="ea-multi-select__option-label">
+              {{ i18n.messages().multiSelect.selectAll }}
+            </span>
+          </div>
+        }
+
+        <ul
+          class="ea-multi-select__list"
+          role="presentation">
+          @for (opt of filteredOptions(); track opt.value; let i = $index) {
+            <li
+              class="ea-multi-select__option"
+              [class.ea-multi-select__option--focused]="focusedIndex() === i"
+              [class.ea-multi-select__option--disabled]="opt.disabled"
+              role="option"
+              tabindex="-1"
+              [attr.aria-selected]="selectedSet().has(opt.value)"
+              [attr.aria-disabled]="opt.disabled || null"
+              (click)="toggleOption(opt)"
+              (keydown)="handlePopoverKeydown($event)">
+              <ea-checkbox
+                size="sm"
+                [checked]="selectedSet().has(opt.value)"
+                [disabled]="!!opt.disabled"
+                [ariaLabel]="opt.label" />
+              <span class="ea-multi-select__option-label">
+                {{ opt.label }}
+              </span>
+            </li>
+          } @empty {
+            <li class="ea-multi-select__empty">
+              {{ i18n.messages().multiSelect.searchEmpty }}
+            </li>
+          }
+        </ul>
+      </div>
+    </ea-popover>
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-multi-select-field__message ea-multi-select-field__message--error"
+      [id]="id() + '-error'"
+      role="alert">
+      <ea-icon-alert-circle class="ea-multi-select-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  }
+
+  @if (showHint()) {
+    <p
+      class="ea-multi-select-field__message ea-multi-select-field__message--hint"
+      [id]="id() + '-hint'">
+      {{ hint() }}
+    </p>
+  }
+</div>

@@ -6,6 +6,9 @@ const meta: Meta<ColorPickerComponent> = {
   title: 'Components/Color picker',
   component: ColorPickerComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '36rem' } },
+  },
   render: args => ({
     props: args,
     template: `<ea-color-picker ${argsToTemplate(args)} class="story-narrow"></ea-color-picker>`,
@@ -64,19 +67,19 @@ export const Large: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, value: '#665086' },
+  args: { disabled: true },
 };
 
 export const NoAlpha: Story = {
-  args: { showAlpha: false, value: '#16a34a' },
+  args: { showAlpha: false },
 };
 
 export const RgbFormat: Story = {
-  args: { format: 'rgb', value: 'rgb(54, 116, 161)' },
+  args: { format: 'rgb' },
 };
 
 export const HslFormat: Story = {
-  args: { format: 'hsl', value: 'hsl(206, 50%, 42%)' },
+  args: { format: 'hsl' },
 };
 
 export const TranslucentValue: Story = {

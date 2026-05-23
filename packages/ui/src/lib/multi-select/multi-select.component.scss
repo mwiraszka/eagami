@@ -1,0 +1,301 @@
+// =============================================================================
+// MULTI-SELECT COMPONENT
+// =============================================================================
+
+.ea-multi-select-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__label {
+    font-size: var(--text-label-md-size);
+    font-weight: var(--text-label-md-weight);
+    line-height: var(--text-label-md-lh);
+    color: var(--color-text-primary);
+
+    &--required::after {
+      content: ' *';
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+
+    &--error {
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
+}
+
+.ea-multi-select {
+  position: relative;
+
+  // ---------------------------------------------------------------------------
+  // Trigger (combobox div containing the chips and chevron)
+  // ---------------------------------------------------------------------------
+  &__trigger-wrapper {
+    position: relative;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    background-color: var(--color-bg-base);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: var(--transition-colors), var(--transition-shadow);
+    text-align: left;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    // Sizes
+    &--sm {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--font-size-sm);
+      min-height: 2rem;
+    }
+
+    &--md {
+      padding: var(--space-1-5) var(--space-3);
+      font-size: var(--font-size-sm);
+      min-height: 2.5rem;
+    }
+
+    &--lg {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--font-size-md);
+      min-height: 3rem;
+    }
+
+    // States
+    &--open {
+      border-color: var(--color-border-focus);
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--error {
+      border-color: var(--color-error-default);
+
+      &.ea-multi-select__trigger--open {
+        box-shadow: var(--shadow-focus-ring-error);
+      }
+    }
+
+    &--disabled {
+      background-color: var(--color-bg-muted);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__trigger-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__trigger-placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  &__trigger-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    color: var(--color-text-secondary);
+    transition: var(--transition-transform);
+  }
+
+  &__trigger--open &__trigger-icon {
+    transform: rotate(180deg);
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--space-1-5);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-muted);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+  }
+
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: var(--space-7);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+    transform: translateY(-50%);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__clear-icon {
+    width: 0.875em;
+    height: 0.875em;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Popover (positioned by `<ea-popover>`)
+  // ---------------------------------------------------------------------------
+  &__popover {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 20rem;
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-bg-base);
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-width-thin) solid var(--color-border-default);
+  }
+
+  &__search-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    color: var(--color-text-tertiary);
+  }
+
+  &__search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+
+    &::placeholder {
+      color: var(--color-text-tertiary);
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__list {
+    overflow-y: auto;
+    flex: 1;
+    margin: 0;
+    padding: var(--space-1) 0;
+    list-style: none;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1-5) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family-sans);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &--focused {
+      background-color: var(--color-bg-muted);
+    }
+
+    &--disabled {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+
+    &--select-all {
+      border-bottom: var(--border-width-thin) solid var(--color-border-default);
+      font-weight: var(--font-weight-medium);
+    }
+
+    &:hover:not(&--disabled) {
+      background-color: var(--color-bg-muted);
+    }
+
+    // Stop the inner checkbox from intercepting clicks — we handle the toggle
+    // at the option-row level so clicking the label also toggles. Force the
+    // host into inline-flex so the field's column layout doesn't introduce
+    // vertical slack that knocks the box out of alignment with the label.
+    ea-checkbox {
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+  }
+
+  &__option-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__empty {
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    color: var(--color-text-tertiary);
+    list-style: none;
+  }
+}

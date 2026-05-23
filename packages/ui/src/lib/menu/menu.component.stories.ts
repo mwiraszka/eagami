@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
+import { Edit2IconComponent } from '../icons/edit-2.component';
 import { MoreHorizontalIconComponent } from '../icons/more-horizontal.component';
-import { PencilIconComponent } from '../icons/pencil.component';
 import { TrashIconComponent } from '../icons/trash.component';
 import { MenuItemComponent } from './menu-item.component';
 import { MenuTriggerDirective } from './menu-trigger.directive';
@@ -12,6 +12,9 @@ const meta: Meta<MenuComponent> = {
   title: 'Components/Menu',
   component: MenuComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '20rem' } },
+  },
   argTypes: {
     placement: {
       control: 'select',
@@ -56,7 +59,7 @@ export const WithIcons: Story = {
         MenuTriggerDirective,
         MenuItemComponent,
         ButtonComponent,
-        PencilIconComponent,
+        Edit2IconComponent,
         TrashIconComponent,
       ],
     },
@@ -64,7 +67,7 @@ export const WithIcons: Story = {
       <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
       <ea-menu #m [placement]="placement">
         <ea-menu-item>
-          <ea-icon-pencil slot="icon" />
+          <ea-icon-edit-2 slot="icon" />
           Edit
         </ea-menu-item>
         <ea-menu-item variant="danger">

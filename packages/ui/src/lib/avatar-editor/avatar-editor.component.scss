@@ -77,6 +77,30 @@
     text-align: center;
   }
 
+  &--compact &__dropzone {
+    gap: var(--space-1-5);
+    padding: var(--space-3);
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  &--compact &__upload-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--ultra-compact &__dropzone {
+    gap: var(--space-1);
+    padding: var(--space-2);
+    font-size: 0.625rem;
+    line-height: 1.2;
+  }
+
+  &--ultra-compact &__upload-icon {
+    width: 16px;
+    height: 16px;
+  }
+
   // ---------------------------------------------------------------------------
   // Canvas wrapper (holds canvas and overlay)
   // ---------------------------------------------------------------------------

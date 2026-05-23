@@ -7,6 +7,8 @@ import {
   input,
 } from '@angular/core';
 
+import { computePopoverPosition } from '../popover/popover-positioning';
+
 /** Placement of the tooltip relative to its host element. */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
@@ -223,48 +225,22 @@ export class TooltipDirective implements OnDestroy {
     }
 
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
-    const gap = 8;
-    /* Keep at least this much breathing room between the tooltip and the
-       viewport edge so the rounded corner and shadow don't kiss the chrome. */
-    const edgePadding = 8;
-
-    let top: number;
-    let left: number;
-
-    switch (this.tooltipPosition()) {
-      case 'top':
-        top = hostRect.top - tooltipRect.height - gap;
-        left = hostRect.left + (hostRect.width - tooltipRect.width) / 2;
-        break;
-      case 'bottom':
-        top = hostRect.bottom + gap;
-        left = hostRect.left + (hostRect.width - tooltipRect.width) / 2;
-        break;
-      case 'left':
-        top = hostRect.top + (hostRect.height - tooltipRect.height) / 2;
-        left = hostRect.left - tooltipRect.width - gap;
-        break;
-      case 'right':
-        top = hostRect.top + (hostRect.height - tooltipRect.height) / 2;
-        left = hostRect.right + gap;
-        break;
-    }
-
-    /* Clamp to the viewport so tooltips on near-edge triggers shift inward
-       rather than getting clipped by the chrome. The position arrow (the small
-       caret) stays centered on the host because the clamp only moves the
-       bubble; we don't try to flip placement here, just nudge along the
-       cross-axis. */
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = document.documentElement.clientHeight;
-    left = Math.max(
-      edgePadding,
-      Math.min(left, viewportWidth - tooltipRect.width - edgePadding),
+    /* Defer placement math to the shared popover positioning helper. `flip:
+       false` preserves the tooltip's long-standing "stay on the requested
+       side, just nudge inward at the edges" behavior — the caret is centered
+       on the host and would point at empty space if we flipped. `margin: 8`
+       keeps the same breathing room between the bubble and the viewport edge
+       as before. */
+    const placed = computePopoverPosition(
+      hostRect,
+      { width: tooltipRect.width, height: tooltipRect.height },
+      {
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      },
+      { placement: this.tooltipPosition(), offset: 8, flip: false, margin: 8 },
     );
-    top = Math.max(
-      edgePadding,
-      Math.min(top, viewportHeight - tooltipRect.height - edgePadding),
-    );
+    const { top, left } = placed;
 
     /* Hide if the calculated bubble would render on top of a sticky/fixed
        overlay (typically the app header). Catches the case where the trigger

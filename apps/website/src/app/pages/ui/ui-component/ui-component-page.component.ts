@@ -22,6 +22,7 @@ import {
   DrawerComponent,
   DropdownComponent,
   EagamiWordmarkComponent,
+  Edit2IconComponent,
   EmptyStateComponent,
   FileIconComponent,
   InputComponent,
@@ -29,23 +30,30 @@ import {
   MenuItemComponent,
   MenuTriggerDirective,
   MoreHorizontalIconComponent,
+  MultiSelectComponent,
   PaginatorComponent,
   PaginatorState,
-  PencilIconComponent,
+  PopoverComponent,
+  PopoverPlacement,
   ProgressBarComponent,
   RadioComponent,
   RadioGroupComponent,
+  RangeSliderComponent,
+  RangeSliderValue,
   SearchIconComponent,
   SegmentedComponent,
   SelectOption,
   SkeletonComponent,
   SliderComponent,
   SpinnerComponent,
+  StepComponent,
+  StepperComponent,
   SwitchComponent,
   TabComponent,
   TabsComponent,
   TagComponent,
   TextareaComponent,
+  TimePickerComponent,
   ToastComponent,
   ToastService,
   TooltipDirective,
@@ -92,6 +100,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     DrawerComponent,
     DropdownComponent,
     EagamiWordmarkComponent,
+    Edit2IconComponent,
     EmptyStateComponent,
     FileIconComponent,
     InputComponent,
@@ -99,22 +108,27 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     MenuItemComponent,
     MenuTriggerDirective,
     MoreHorizontalIconComponent,
+    MultiSelectComponent,
     PaginatorComponent,
-    PencilIconComponent,
+    PopoverComponent,
     ProgressBarComponent,
     RadioComponent,
     RadioGroupComponent,
+    RangeSliderComponent,
     RouterLink,
     SearchIconComponent,
     SegmentedComponent,
     SkeletonComponent,
     SliderComponent,
     SpinnerComponent,
+    StepComponent,
+    StepperComponent,
     SwitchComponent,
     TabComponent,
     TabsComponent,
     TagComponent,
     TextareaComponent,
+    TimePickerComponent,
     ToastComponent,
     TooltipDirective,
     TrashIconComponent,
@@ -158,6 +172,7 @@ export class UiComponentPageComponent {
   protected readonly checkboxValue = signal(false);
   protected readonly radioValue = signal('');
   protected readonly dropdownValue = signal('');
+  protected readonly multiSelectValue = signal<readonly string[]>([]);
   protected readonly datePickerValue = signal<Date | null>(null);
   protected readonly datePickerMin = new Date(
     new Date().setDate(new Date().getDate() - 7),
@@ -173,11 +188,15 @@ export class UiComponentPageComponent {
   protected readonly autocompleteValue = signal('');
   protected readonly switchValue = signal(false);
   protected readonly sliderValue = signal(40);
+  protected readonly rangeSliderValue = signal<RangeSliderValue>([20, 80]);
+  protected readonly timePickerValue = signal<string | null>(null);
   protected readonly segmentedValue = signal('list');
   protected readonly textareaValue = signal('');
   protected readonly croppedAvatarUrl = signal('');
   protected readonly tablePage = signal(1);
   protected readonly tablePageSize = signal(5);
+  protected readonly popoverBasicOpen = signal(false);
+  protected readonly popoverPlacementOpen = signal<PopoverPlacement | null>(null);
 
   // Demo data
   // Framework names are proper nouns and stay untranslated.

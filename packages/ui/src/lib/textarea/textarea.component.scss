@@ -58,6 +58,7 @@
 
   &--sm {
     .ea-textarea {
+      min-height: calc(1.5em + var(--space-2) * 2);
       padding: var(--space-2);
       font-size: var(--font-size-sm);
     }
@@ -65,6 +66,7 @@
 
   &--md {
     .ea-textarea {
+      min-height: calc(1.5em + var(--space-3) * 2);
       padding: var(--space-3);
       font-size: var(--font-size-md);
     }
@@ -72,6 +74,7 @@
 
   &--lg {
     .ea-textarea {
+      min-height: calc(1.5em + var(--space-4) * 2);
       padding: var(--space-4);
       font-size: var(--font-size-lg);
     }

@@ -35,7 +35,7 @@ export const Vertical: Story = {
   render: args => ({
     props: args,
     template: `
-      <div style="display: flex; align-items: center; gap: 16px; height: 100px;">
+      <div class="story-row">
         <span>Left</span>
         <ea-divider ${argsToTemplate(args)} />
         <span>Right</span>

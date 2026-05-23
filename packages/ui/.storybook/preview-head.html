@@ -1,0 +1,132 @@
+<!--
+  Story-layout utilities injected directly into the story iframe's <head>.
+  Stories cannot rely on `.storybook/storybook.scss` because @storybook/angular
+  doesn't pipe the host project's `styles:` array through into the iframe, and
+  webpack rules for files inside `.storybook/` aren't honoured either.
+-->
+<style>
+  /* Give every story a small inset so focus rings (which extend ~4px outside
+     the element box) aren't clipped by the iframe's edge. Storybook's docs
+     view injects an inline `style="padding: 0"` on the body that we need to
+     override with `!important`. */
+  body {
+    padding: 1rem !important;
+  }
+
+  .story-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .story-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Size modifiers retained as aliases of the base class so existing
+     `story-row--xl` / `story-stack--lg` markup still applies the default
+     layout. The gap is uniform at `.5rem` across every multi-example demo
+     to keep the visual rhythm consistent. */
+  .story-row--xl,
+  .story-stack--sm,
+  .story-stack--md,
+  .story-stack--lg,
+  .story-stack--xl {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .story-stack--sm,
+  .story-stack--md,
+  .story-stack--lg,
+  .story-stack--xl {
+    flex-direction: column;
+  }
+  .story-row--xl {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* `max-width` plus a small padding so focus rings (`box-shadow: 0 0 0 3px`)
+     have room to render without being clipped by an ancestor's overflow or
+     by the iframe edge. Don't set `display` here; doing so clobbers a paired
+     `.story-stack` (`display: flex`) on the same element, killing the flex
+     gap. Custom-element targets that default to `display: inline` (e.g.
+     `<ea-autocomplete>`) need a `display: block` host rule of their own to
+     make these properties effective. */
+  .story-narrow {
+    max-width: 360px;
+    padding: 0.5rem;
+  }
+  .story-medium {
+    max-width: 480px;
+    padding: 0.5rem;
+  }
+  ea-autocomplete.story-narrow,
+  ea-dropdown.story-narrow,
+  ea-multi-select.story-narrow,
+  ea-date-picker.story-narrow,
+  ea-time-picker.story-narrow,
+  ea-color-picker.story-narrow,
+  ea-input.story-narrow,
+  ea-textarea.story-narrow {
+    display: block;
+  }
+
+  .story-label {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .story-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .story-card-grid > * { max-width: 240px; }
+
+  .story-skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .story-skeleton-lines {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .story-skeleton-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 320px;
+    padding: 1rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+  }
+
+  .story-shapes-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .story-shape-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .story-shape-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .story-sticky-table {
+    display: block;
+    height: 200px;
+  }
+</style>

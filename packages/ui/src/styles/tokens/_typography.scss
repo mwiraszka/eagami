@@ -9,7 +9,7 @@
   --font-family-sans: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-family-brand: 'Syne', 'DM Sans', system-ui, sans-serif;
   --font-family-serif: 'Georgia', 'Times New Roman', serif;
-  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   // ---------------------------------------------------------------------------
   // Font sizes (rem, base 16px)
@@ -133,8 +133,31 @@
   --text-helper-weight: var(--font-weight-regular);
   --text-helper-lh: var(--line-height-normal);
 
-  // Code
-  --text-code-size: var(--font-size-sm);
+  // Code — inline code styled to read as a chip embedded in body text. Size
+  // is relative (em) so it tracks the surrounding text size rather than
+  // forcing an absolute value. Apply with `font-size: var(--text-code-size);
+  // font-weight: var(--text-code-weight); font-family: var(--text-code-family);
+  // color: var(--text-code-color); background-color: var(--text-code-bg);
+  // padding: var(--text-code-padding); border-radius: var(--text-code-radius);`
+  // on `code` (or `<ea-text variant="code">` when that ships).
+  --text-code-size: 0.875em;
   --text-code-weight: var(--font-weight-regular);
   --text-code-family: var(--font-family-mono);
+  --text-code-color: var(--color-text-primary);
+  --text-code-bg: var(--color-bg-muted);
+  --text-code-padding: var(--space-0-5) var(--space-1-5); //  2px 6px
+  --text-code-radius: var(--radius-sm);
+
+  // Kbd — keyboard-key glyph, slightly smaller than inline code and with a
+  // raised appearance (border + 1px bottom shadow) to suggest a physical key.
+  // Same shape language as `code` so the two read as a family.
+  --text-kbd-size: 0.8125em;
+  --text-kbd-weight: var(--font-weight-medium);
+  --text-kbd-family: var(--font-family-mono);
+  --text-kbd-color: var(--color-text-primary);
+  --text-kbd-bg: var(--color-bg-base);
+  --text-kbd-border: var(--border-width-thin) solid var(--color-border-default);
+  --text-kbd-padding: var(--space-0-5) var(--space-1-5); //  2px 6px
+  --text-kbd-radius: var(--radius-sm);
+  --text-kbd-shadow: 0 1px 0 var(--color-border-default);
 }

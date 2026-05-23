@@ -34,9 +34,6 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "./sandbox/tsconfig.app.json"
     }
   ]
 }

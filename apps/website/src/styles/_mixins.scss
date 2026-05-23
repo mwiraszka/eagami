@@ -152,6 +152,33 @@ $breakpoints: (
   }
 }
 
+/// Inline code chip — applies the `--text-code-*` tokens from `@eagami/ui`.
+/// Use anywhere body text contains an inline `<code>` that should read as a
+/// rounded monospace pill. Per-call overrides (e.g. `white-space: nowrap`)
+/// follow the `@include` in the same block.
+@mixin code-chip {
+  padding: var(--text-code-padding);
+  font-size: var(--text-code-size);
+  font-weight: var(--text-code-weight);
+  font-family: var(--text-code-family);
+  border-radius: var(--text-code-radius);
+  background-color: var(--text-code-bg);
+  color: var(--text-code-color);
+}
+
+/// Keyboard glyph — applies the `--text-kbd-*` tokens from `@eagami/ui`.
+@mixin kbd-key {
+  padding: var(--text-kbd-padding);
+  font-size: var(--text-kbd-size);
+  font-weight: var(--text-kbd-weight);
+  font-family: var(--text-kbd-family);
+  border: var(--text-kbd-border);
+  border-radius: var(--text-kbd-radius);
+  box-shadow: var(--text-kbd-shadow);
+  background-color: var(--text-kbd-bg);
+  color: var(--text-kbd-color);
+}
+
 /// Variant for `<a><code>token</code></a>` patterns (typically a lede that
 /// links to the npm package name): no underline, just shift the code's text
 /// colour on hover, since the code element's background already carries the

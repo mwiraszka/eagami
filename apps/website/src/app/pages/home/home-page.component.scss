@@ -423,12 +423,7 @@
   color: var(--color-text-secondary);
 
   code {
-    padding: 2px 6px;
-    border-radius: 4px;
-    background-color: var(--color-bg-muted);
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: var(--color-text-primary);
+    @include mixins.code-chip;
   }
 
   @include mixins.respond-to('lt-md') {
@@ -633,7 +628,7 @@
 
 .project-card__url {
   font-size: 13px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-family-mono);
   color: var(--color-text-link);
 }
 
@@ -751,7 +746,6 @@
   max-width: 560px;
 
   ::ng-deep .ea-textarea {
-    min-height: 46px;
     max-height: 300px;
   }
 }

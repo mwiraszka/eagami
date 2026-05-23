@@ -27,9 +27,14 @@ const meta: Meta<AutocompleteComponent> = {
   title: 'Components/Autocomplete',
   component: AutocompleteComponent,
   tags: ['autodocs'],
+  parameters: {
+    // Sized to trigger + 15rem max-height suggestion list, leaving a small
+    // amount of empty space split top/bottom by the docs canvas padding.
+    docs: { story: { height: '22rem' } },
+  },
   render: args => ({
     props: args,
-    template: `<ea-autocomplete ${argsToTemplate(args)}></ea-autocomplete>`,
+    template: `<ea-autocomplete ${argsToTemplate(args)} class="story-narrow"></ea-autocomplete>`,
   }),
   argTypes: {
     size: {
@@ -48,7 +53,6 @@ const meta: Meta<AutocompleteComponent> = {
     required: false,
     minLength: 0,
     maxResults: 10,
-    emptyMessage: 'No results',
   },
 };
 
@@ -66,11 +70,11 @@ export const WithError: Story = {
 };
 
 export const Required: Story = {
-  args: { required: true, label: 'Country (required)' },
+  args: { required: true },
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, value: 'United States' },
+  args: { disabled: true },
 };
 
 export const MinLength: Story = {

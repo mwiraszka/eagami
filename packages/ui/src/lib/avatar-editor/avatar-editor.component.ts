@@ -124,6 +124,8 @@ export class AvatarEditorComponent implements OnDestroy {
     [`ea-avatar-editor--${this.shape()}`]: true,
     'ea-avatar-editor--has-image': this.hasImage(),
     'ea-avatar-editor--drag-over': this.isDragOver(),
+    'ea-avatar-editor--compact': this.canvasSize() <= 150,
+    'ea-avatar-editor--ultra-compact': this.canvasSize() <= 100,
   }));
 
   private readonly injector = inject(Injector);
@@ -146,6 +148,11 @@ export class AvatarEditorComponent implements OnDestroy {
       this.originalImage = null;
       this.originalCropState = null;
       this.loadFromUrl(src, untracked(() => this.cropState()) ?? null, true);
+    });
+
+    effect(() => {
+      this.canvasSize();
+      if (this.image) this.draw();
     });
   }
 

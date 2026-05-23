@@ -65,6 +65,15 @@ export const pl: EagamiMessages = {
   menu: {
     label: 'Menu',
   },
+  multiSelect: {
+    placeholder: 'Wybierz…',
+    searchPlaceholder: 'Szukaj…',
+    searchEmpty: 'Brak wyników',
+    selectAll: 'Zaznacz wszystko',
+    clearAll: 'Wyczyść wybór',
+    removeOption: label => `Usuń ${label}`,
+    selectedCount: count => `Wybrano: ${count}`,
+  },
   paginator: {
     label: 'Paginacja',
     rowsPerPage: 'Wierszy na stronę:',
@@ -78,8 +87,26 @@ export const pl: EagamiMessages = {
   spinner: {
     label: 'Ładowanie',
   },
+  stepper: {
+    optional: 'opcjonalny',
+  },
   tag: {
     remove: 'Usuń',
+  },
+  timePicker: {
+    placeholder: 'Wybierz godzinę…',
+    clear: 'Wyczyść godzinę',
+    hoursLabel: 'Godziny',
+    minutesLabel: 'Minuty',
+    secondsLabel: 'Sekundy',
+    incrementHours: 'Zwiększ godziny',
+    decrementHours: 'Zmniejsz godziny',
+    incrementMinutes: 'Zwiększ minuty',
+    decrementMinutes: 'Zmniejsz minuty',
+    incrementSeconds: 'Zwiększ sekundy',
+    decrementSeconds: 'Zmniejsz sekundy',
+    amLabel: 'AM',
+    pmLabel: 'PM',
   },
   toast: {
     dismiss: 'Zamknij',
