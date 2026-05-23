@@ -34,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Share positioning math between `[eaTooltip]` and `<ea-popover>` via the new `computePopoverPosition()` helper. The tooltip directive keeps its public API and its tooltip-specific behaviors (sticky/fixed-ancestor hit-testing, hover-vs-touch detection, `:focus-visible` filter, `aria-describedby` management, ResizeObserver, rAF-coalesced reposition); the bespoke placement switch and viewport-clamp math are replaced by the shared helper so future positioning fixes land once and apply to both.
 - Route `<ea-badge>` variant colours through CSS custom properties so consumers can recolour the badge without piercing view encapsulation. `--ea-badge-background-color` and `--ea-badge-color` override the variant-default surface and text colours; the new `--ea-badge-border-color` / `--ea-badge-border-width` pair adds a configurable outer border (0-width and transparent by default, so existing usage is visually unchanged). Any of these can be set on the badge itself or on an ancestor and will inherit through view encapsulation.
 
+### Fixed
+
+- Observe the `<ea-popover>` surface with a `ResizeObserver` so the first reposition after open re-runs once the browser has actually laid out the projected content. Previously the surface's initial `getBoundingClientRect` could read its pre-layout width (a hold-over from the `display: none` → visible transition) and the viewport-clamp would silently skip, leaving menus / dropdowns / pickers clipped at the right edge until the next resize or scroll forced a fresh measurement.
+
 ## [1.5.0] - 2026-05-20
 
 ### Added

@@ -183,6 +183,28 @@ export class PopoverComponent {
       this.reposition();
     });
 
+    // Watch the surface's own size and reposition whenever it changes. The
+    // first `reposition()` after open fires synchronously inside the open
+    // effect, while the surface is still transitioning out of `display: none`
+    // — in some browsers the layout pass hasn't completed, so the
+    // `getBoundingClientRect` width can read as the surface's natural width
+    // even when that overflows the viewport, so the clamp can't kick in. The
+    // ResizeObserver fires once the surface has been laid out with its real
+    // dimensions, giving us a second, accurate measurement to clamp against.
+    // Also catches projected-content size changes while the popover is open
+    // (e.g. virtualised lists adding rows).
+    if (typeof ResizeObserver !== 'undefined') {
+      const surfaceResizeObserver = new ResizeObserver(() => {
+        if (this.open()) this.reposition();
+      });
+      effect(() => {
+        const surface = this.surfaceEl()?.nativeElement;
+        surfaceResizeObserver.disconnect();
+        if (surface) surfaceResizeObserver.observe(surface);
+      });
+      this.destroyRef.onDestroy(() => surfaceResizeObserver.disconnect());
+    }
+
     // Listen for scroll / resize while open. The `scrollBehavior` input picks
     // the response. SSR guard is required because the website prerenders pages
     // that mount popovers.
