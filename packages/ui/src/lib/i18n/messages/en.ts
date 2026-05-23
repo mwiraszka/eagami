@@ -80,6 +80,21 @@ export const en: EagamiMessages = {
   tag: {
     remove: 'Remove',
   },
+  timePicker: {
+    placeholder: 'Select time…',
+    clear: 'Clear time',
+    hoursLabel: 'Hours',
+    minutesLabel: 'Minutes',
+    secondsLabel: 'Seconds',
+    incrementHours: 'Increment hours',
+    decrementHours: 'Decrement hours',
+    incrementMinutes: 'Increment minutes',
+    decrementMinutes: 'Decrement minutes',
+    incrementSeconds: 'Increment seconds',
+    decrementSeconds: 'Decrement seconds',
+    amLabel: 'AM',
+    pmLabel: 'PM',
+  },
   toast: {
     dismiss: 'Dismiss',
   },

@@ -101,6 +101,21 @@ export interface EagamiMessages {
   tag: {
     remove: string;
   };
+  timePicker: {
+    placeholder: string;
+    clear: string;
+    hoursLabel: string;
+    minutesLabel: string;
+    secondsLabel: string;
+    incrementHours: string;
+    decrementHours: string;
+    incrementMinutes: string;
+    decrementMinutes: string;
+    incrementSeconds: string;
+    decrementSeconds: string;
+    amLabel: string;
+    pmLabel: string;
+  };
   toast: {
     dismiss: string;
   };

@@ -1,0 +1,315 @@
+// =============================================================================
+// TIME PICKER COMPONENT
+// =============================================================================
+
+.ea-time-picker-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__label {
+    font-size: var(--text-label-md-size);
+    font-weight: var(--text-label-md-weight);
+    line-height: var(--text-label-md-lh);
+    color: var(--color-text-primary);
+
+    &--required::after {
+      content: ' *';
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+
+    &--error {
+      color: var(--color-error-default);
+    }
+  }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
+}
+
+.ea-time-picker {
+  position: relative;
+
+  // ---------------------------------------------------------------------------
+  // Trigger
+  // ---------------------------------------------------------------------------
+  &__trigger-wrapper {
+    position: relative;
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    background-color: var(--color-bg-base);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-sans);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: var(--transition-colors), var(--transition-shadow);
+    text-align: left;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    // Sizes
+    &--sm {
+      padding: var(--space-1-5) var(--space-2);
+      font-size: var(--font-size-sm);
+      min-height: 2rem;
+    }
+
+    &--md {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-sm);
+      min-height: 2.5rem;
+    }
+
+    &--lg {
+      padding: var(--space-2-5) var(--space-4);
+      font-size: var(--font-size-md);
+      min-height: 3rem;
+    }
+
+    // States
+    &--open {
+      border-color: var(--color-border-focus);
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--error {
+      border-color: var(--color-error-default);
+
+      &.ea-time-picker__trigger--open {
+        box-shadow: var(--shadow-focus-ring-error);
+      }
+    }
+
+    &--disabled {
+      background-color: var(--color-bg-muted);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &--placeholder .ea-time-picker__trigger-value {
+      color: var(--color-text-tertiary);
+    }
+  }
+
+  &__trigger-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    color: var(--color-text-secondary);
+  }
+
+  &__trigger-value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: var(--space-2);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-colors);
+    transform: translateY(-50%);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Popover surface. Positioned by the host `<ea-popover>`; this class only
+  // owns the visual chrome and the column layout.
+  // ---------------------------------------------------------------------------
+  &__popover {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-bg-base);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Stepper column (hours / minutes / seconds)
+  // ---------------------------------------------------------------------------
+  &__column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-1);
+  }
+
+  &__step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 1.75rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    ea-icon-chevron-up,
+    ea-icon-chevron-down {
+      width: 0.875em;
+      height: 0.875em;
+    }
+  }
+
+  &__value {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: var(--border-width-thin) solid transparent;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-muted);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+    appearance: none;
+    cursor: text;
+
+    &::selection {
+      background-color: var(--color-brand-default);
+      color: var(--color-text-inverse);
+    }
+
+    &:hover {
+      border-color: var(--color-border-default);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: var(--shadow-focus-ring);
+      background-color: var(--color-bg-base);
+    }
+  }
+
+  &__separator {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    user-select: none;
+  }
+
+  // ---------------------------------------------------------------------------
+  // AM/PM toggle
+  // ---------------------------------------------------------------------------
+  &__period {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-left: var(--space-1);
+  }
+
+  &__period-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width-thin) solid var(--color-border-default);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-base);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &--active {
+      background-color: var(--color-brand-default);
+      border-color: var(--color-brand-default);
+      color: var(--color-text-inverse);
+
+      &:hover {
+        background-color: var(--color-brand-hover);
+        border-color: var(--color-brand-hover);
+        color: var(--color-text-inverse);
+      }
+    }
+  }
+}

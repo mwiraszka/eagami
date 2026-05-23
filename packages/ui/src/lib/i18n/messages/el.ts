@@ -81,6 +81,21 @@ export const el: EagamiMessages = {
   tag: {
     remove: 'Αφαίρεση',
   },
+  timePicker: {
+    placeholder: 'Επιλογή ώρας…',
+    clear: 'Καθαρισμός ώρας',
+    hoursLabel: 'Ώρες',
+    minutesLabel: 'Λεπτά',
+    secondsLabel: 'Δευτερόλεπτα',
+    incrementHours: 'Αύξηση ωρών',
+    decrementHours: 'Μείωση ωρών',
+    incrementMinutes: 'Αύξηση λεπτών',
+    decrementMinutes: 'Μείωση λεπτών',
+    incrementSeconds: 'Αύξηση δευτερολέπτων',
+    decrementSeconds: 'Μείωση δευτερολέπτων',
+    amLabel: 'πμ',
+    pmLabel: 'μμ',
+  },
   toast: {
     dismiss: 'Απόρριψη',
   },
