@@ -38,17 +38,22 @@ import {
   ProgressBarComponent,
   RadioComponent,
   RadioGroupComponent,
+  RangeSliderComponent,
+  RangeSliderValue,
   SearchIconComponent,
   SegmentedComponent,
   SelectOption,
   SkeletonComponent,
   SliderComponent,
   SpinnerComponent,
+  StepComponent,
+  StepperComponent,
   SwitchComponent,
   TabComponent,
   TabsComponent,
   TagComponent,
   TextareaComponent,
+  TimePickerComponent,
   ToastComponent,
   ToastService,
   TooltipDirective,
@@ -109,17 +114,21 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     ProgressBarComponent,
     RadioComponent,
     RadioGroupComponent,
+    RangeSliderComponent,
     RouterLink,
     SearchIconComponent,
     SegmentedComponent,
     SkeletonComponent,
     SliderComponent,
     SpinnerComponent,
+    StepComponent,
+    StepperComponent,
     SwitchComponent,
     TabComponent,
     TabsComponent,
     TagComponent,
     TextareaComponent,
+    TimePickerComponent,
     ToastComponent,
     TooltipDirective,
     TrashIconComponent,
@@ -179,6 +188,8 @@ export class UiComponentPageComponent {
   protected readonly autocompleteValue = signal('');
   protected readonly switchValue = signal(false);
   protected readonly sliderValue = signal(40);
+  protected readonly rangeSliderValue = signal<RangeSliderValue>([20, 80]);
+  protected readonly timePickerValue = signal<string | null>(null);
   protected readonly segmentedValue = signal('list');
   protected readonly textareaValue = signal('');
   protected readonly croppedAvatarUrl = signal('');

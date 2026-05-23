@@ -6,7 +6,8 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Document the new components on the `/ui/components` page (`popover`, `multi-select`).
+- Document the new components on the `/ui/components` page (`popover`, `multi-select`, `range-slider`, `time-picker`, `stepper`).
+- Expand variation coverage on existing component demos to mirror Storybook (canvas sizes for `avatar-editor`, many-levels and disabled-item for `breadcrumbs`, output formats and no-alpha for `color-picker`, Sunday-start for `date-picker`, two-actions and sizes for `empty-state`, custom-label for `spinner`, with-maxlength for `textarea`, custom size and not-animated for `skeleton`, stepped for `slider`, and more). All new section headings are translated across the five locales.
 - Demo the new `<ea-badge>` `shape` input on the `/ui/components/badge` page. A "shapes" row compares `pill` and `pin` at the default variant and `md` size with both single- and double-digit content, illustrating that pin stays a perfect circle for single characters and only widens into a pill once content forces it. A new `shapes` section heading is translated across all five locales.
 
 ### Changed

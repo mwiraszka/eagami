@@ -267,6 +267,28 @@ export interface WebMessages {
         titleOnly: string;
         iconTrigger: string;
         placements: string;
+        canvasSizes: string;
+        cappedChipCount: string;
+        customLabel: string;
+        customSize: string;
+        linearFlow: string;
+        manyLevels: string;
+        notAnimated: string;
+        outputFormats: string;
+        quarterHourSteps: string;
+        stepped: string;
+        sundayStart: string;
+        twelveHourFormat: string;
+        twoActions: string;
+        withCompletedSteps: string;
+        withInitialValue: string;
+        withMaxlength: string;
+        withMinMaxLabels: string;
+        withOptionalStep: string;
+        withSeconds: string;
+        withoutAlpha: string;
+        withoutSearch: string;
+        withoutSelectAll: string;
       };
       common: {
         small: string;

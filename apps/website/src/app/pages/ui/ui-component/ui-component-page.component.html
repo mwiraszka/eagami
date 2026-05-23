@@ -204,6 +204,13 @@
             <ea-avatar-editor
               shape="square"
               [canvasSize]="180" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.canvasSizes }}</h2>
+            <div class="demo-row demo-row--stretch">
+              <ea-avatar-editor [canvasSize]="100" />
+              <ea-avatar-editor [canvasSize]="150" />
+              <ea-avatar-editor [canvasSize]="200" />
+            </div>
           }
 
           <!-- ─── Badge ─────────────────────────────────────────── -->
@@ -255,6 +262,24 @@
 
             <h2>{{ messages().ui.component.sectionHeadings.twoLevels }}</h2>
             <ea-breadcrumbs [items]="breadcrumbItemsShort()" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.manyLevels }}</h2>
+            <ea-breadcrumbs
+              [items]="[
+                { label: 'Home', href: '/' },
+                { label: 'Docs', href: '/docs' },
+                { label: 'Components', href: '/docs/components' },
+                { label: 'Form', href: '/docs/components/form' },
+                { label: 'Input' },
+              ]" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
+            <ea-breadcrumbs
+              [items]="[
+                { label: 'Home', href: '/' },
+                { label: 'Archive', href: '/archive', disabled: true },
+                { label: 'Old post' },
+              ]" />
           }
 
           <!-- ─── Button ────────────────────────────────────────── -->
@@ -530,6 +555,21 @@
               [label]="messages().ui.component.common.large"
               [value]="colorPickerValue()" />
 
+            <h2>{{ messages().ui.component.sectionHeadings.outputFormats }}</h2>
+            <div class="demo-stack">
+              <ea-color-picker
+                label="RGB"
+                format="rgb" />
+              <ea-color-picker
+                label="HSL"
+                format="hsl" />
+            </div>
+
+            <h2>{{ messages().ui.component.sectionHeadings.withoutAlpha }}</h2>
+            <ea-color-picker
+              label="Opaque only"
+              [showAlpha]="false" />
+
             <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
             <ea-color-picker
               [label]="messages().ui.component.common.disabled"
@@ -586,6 +626,11 @@
               [placeholder]="
                 messages().ui.component.demos.datePicker.pickDatePlaceholder
               " />
+
+            <h2>{{ messages().ui.component.sectionHeadings.sundayStart }}</h2>
+            <ea-date-picker
+              label="Week starts Sunday"
+              [weekStartsOn]="0" />
 
             <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
             <ea-date-picker
@@ -844,6 +889,37 @@
             <h2>{{ messages().ui.component.sectionHeadings.titleOnly }}</h2>
             <ea-empty-state
               [title]="messages().ui.component.demos.emptyState.nothingHereTitle" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.twoActions }}</h2>
+            <ea-empty-state
+              title="No projects yet"
+              description="Create a project or import from another workspace.">
+              <ea-icon-file slot="media" />
+              <ea-button
+                slot="actions"
+                variant="primary">
+                Create project
+              </ea-button>
+              <ea-button
+                slot="actions"
+                variant="secondary">
+                Import
+              </ea-button>
+            </ea-empty-state>
+
+            <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+            <ea-empty-state
+              size="sm"
+              title="Small"
+              description="Compact variant.">
+              <ea-icon-file slot="media" />
+            </ea-empty-state>
+            <ea-empty-state
+              size="lg"
+              title="Large"
+              description="Spacious variant.">
+              <ea-icon-file slot="media" />
+            </ea-empty-state>
           }
 
           <!-- ─── Input ─────────────────────────────────────────── -->
@@ -1012,6 +1088,31 @@
                   messages().ui.component.demos.dropdown.selectPlaceholder
                 " />
             </div>
+
+            <h2>{{ messages().ui.component.sectionHeadings.withInitialValue }}</h2>
+            <ea-multi-select
+              [label]="messages().ui.component.demos.dropdown.fruitLabel"
+              [options]="dropdownOptions()"
+              [value]="['apple', 'cherry', 'mango']" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withoutSearch }}</h2>
+            <ea-multi-select
+              label="Fruits (no search)"
+              [searchable]="false"
+              [options]="dropdownOptions()" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withoutSelectAll }}</h2>
+            <ea-multi-select
+              label="Fruits (no bulk toggle)"
+              [selectAll]="false"
+              [options]="dropdownOptions()" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.cappedChipCount }}</h2>
+            <ea-multi-select
+              label="Tight trigger"
+              [maxVisibleChips]="2"
+              [options]="dropdownOptions()"
+              [value]="['apple', 'banana', 'cherry', 'date']" />
 
             <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
             <ea-multi-select
@@ -1467,6 +1568,76 @@
             <ea-skeleton
               variant="rect"
               height="6rem" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.customSize }}</h2>
+            <ea-skeleton
+              variant="rect"
+              width="200px"
+              height="120px" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.notAnimated }}</h2>
+            <ea-skeleton
+              variant="rect"
+              height="3rem"
+              [animated]="false" />
+          }
+
+          <!-- ─── Range Slider ──────────────────────────────────── -->
+          @case ('range-slider') {
+            <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+            <ea-range-slider
+              label="Price range"
+              [showValue]="true"
+              [(value)]="rangeSliderValue" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withMinMaxLabels }}</h2>
+            <ea-range-slider
+              label="Price range"
+              [showValue]="true"
+              [showMinMaxLabels]="true"
+              [value]="[20, 80]" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.stepped }}</h2>
+            <ea-range-slider
+              label="Stops"
+              [min]="0"
+              [max]="10"
+              [step]="1"
+              [showValue]="true"
+              [showMinMaxLabels]="true"
+              [value]="[3, 7]" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+            <div class="demo-stack">
+              <ea-range-slider
+                label="With hint"
+                hint="Drag either thumb or use arrow keys"
+                [value]="[20, 80]" />
+              <ea-range-slider
+                label="With error"
+                errorMsg="Range must span at least 30"
+                [value]="[20, 80]" />
+            </div>
+
+            <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+            <ea-range-slider
+              size="sm"
+              [label]="messages().ui.component.common.small"
+              [value]="[20, 80]" />
+            <ea-range-slider
+              size="md"
+              [label]="messages().ui.component.common.medium"
+              [value]="[20, 80]" />
+            <ea-range-slider
+              size="lg"
+              [label]="messages().ui.component.common.large"
+              [value]="[20, 80]" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+            <ea-range-slider
+              [label]="messages().ui.component.common.disabled"
+              [disabled]="true"
+              [value]="[20, 80]" />
           }
 
           <!-- ─── Slider ────────────────────────────────────────── -->
@@ -1484,6 +1655,16 @@
               [max]="100"
               [step]="5"
               [value]="65"
+              [showValue]="true"
+              [showMinMaxLabels]="true" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.stepped }}</h2>
+            <ea-slider
+              label="Rating"
+              [min]="0"
+              [max]="10"
+              [step]="1"
+              [value]="5"
               [showValue]="true"
               [showMinMaxLabels]="true" />
 
@@ -1530,6 +1711,77 @@
               <ea-spinner size="md" />
               <ea-spinner size="lg" />
             </div>
+
+            <h2>{{ messages().ui.component.sectionHeadings.customLabel }}</h2>
+            <ea-spinner ariaLabel="Saving changes" />
+          }
+
+          <!-- ─── Stepper ───────────────────────────────────────── -->
+          @case ('stepper') {
+            <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+            <ea-stepper>
+              <ea-step label="Account">Step 1 — account details.</ea-step>
+              <ea-step label="Profile">Step 2 — profile info.</ea-step>
+              <ea-step label="Review">Step 3 — review and submit.</ea-step>
+            </ea-stepper>
+
+            <h2>{{ messages().ui.component.sectionHeadings.withCompletedSteps }}</h2>
+            <ea-stepper [activeStep]="2">
+              <ea-step
+                label="Account"
+                [completed]="true">
+                Account details (done).
+              </ea-step>
+              <ea-step
+                label="Profile"
+                [completed]="true">
+                Profile info (done).
+              </ea-step>
+              <ea-step label="Review">Review and submit.</ea-step>
+            </ea-stepper>
+
+            <h2>{{ messages().ui.component.sectionHeadings.withOptionalStep }}</h2>
+            <ea-stepper>
+              <ea-step label="Account">Account details.</ea-step>
+              <ea-step
+                label="Notifications"
+                [optional]="true">
+                Notification preferences.
+              </ea-step>
+              <ea-step label="Review">Review and submit.</ea-step>
+            </ea-stepper>
+
+            <h2>{{ messages().ui.component.sectionHeadings.linearFlow }}</h2>
+            <ea-stepper [linear]="true">
+              <ea-step
+                label="Account"
+                [completed]="true">
+                Account details (completed).
+              </ea-step>
+              <ea-step label="Profile"> Fill this in before continuing. </ea-step>
+              <ea-step label="Review">Review and submit.</ea-step>
+            </ea-stepper>
+
+            <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+            <ea-stepper size="sm">
+              <ea-step label="Small one">Body</ea-step>
+              <ea-step label="Small two">Body</ea-step>
+            </ea-stepper>
+            <ea-stepper size="md">
+              <ea-step label="Medium one">Body</ea-step>
+              <ea-step label="Medium two">Body</ea-step>
+            </ea-stepper>
+            <ea-stepper size="lg">
+              <ea-step label="Large one">Body</ea-step>
+              <ea-step label="Large two">Body</ea-step>
+            </ea-stepper>
+
+            <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+            <ea-stepper [disabled]="true">
+              <ea-step label="One">Body</ea-step>
+              <ea-step label="Two">Body</ea-step>
+              <ea-step label="Three">Body</ea-step>
+            </ea-stepper>
           }
 
           <!-- ─── Switch ────────────────────────────────────────── -->
@@ -1755,6 +2007,13 @@
                 messages().ui.component.demos.textarea.fixedSizePlaceholder
               " />
 
+            <h2>{{ messages().ui.component.sectionHeadings.withMaxlength }}</h2>
+            <ea-textarea
+              label="Bio"
+              [maxlength]="100"
+              hint="Limited to 100 characters."
+              placeholder="Tell us about yourself…" />
+
             <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
             <ea-textarea
               [label]="messages().ui.component.common.disabled"
@@ -1764,6 +2023,64 @@
               [label]="messages().ui.component.demos.textarea.readonlyLabel"
               [readonly]="true"
               [value]="messages().ui.component.demos.textarea.readonlyValue" />
+          }
+
+          <!-- ─── Time Picker ───────────────────────────────────── -->
+          @case ('time-picker') {
+            <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+            <ea-time-picker
+              label="Time"
+              [(value)]="timePickerValue" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withInitialValue }}</h2>
+            <ea-time-picker
+              label="Start time"
+              value="09:30" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.twelveHourFormat }}</h2>
+            <ea-time-picker
+              label="Time (12h)"
+              format="12h"
+              value="14:30" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withSeconds }}</h2>
+            <ea-time-picker
+              label="Precise time"
+              [includeSeconds]="true"
+              value="14:30:45" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.quarterHourSteps }}</h2>
+            <ea-time-picker
+              label="Meeting slot"
+              [minuteStep]="15"
+              value="09:00" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+            <div class="demo-stack">
+              <ea-time-picker
+                label="With hint"
+                hint="Hours and minutes, 24-hour clock" />
+              <ea-time-picker
+                label="With error"
+                errorMsg="This field is required" />
+            </div>
+
+            <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+            <ea-time-picker
+              size="sm"
+              [label]="messages().ui.component.common.small" />
+            <ea-time-picker
+              size="md"
+              [label]="messages().ui.component.common.medium" />
+            <ea-time-picker
+              size="lg"
+              [label]="messages().ui.component.common.large" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+            <ea-time-picker
+              [label]="messages().ui.component.common.disabled"
+              [disabled]="true"
+              value="14:30" />
           }
 
           <!-- ─── Toast ─────────────────────────────────────────── -->
