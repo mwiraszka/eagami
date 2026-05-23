@@ -65,6 +65,15 @@ export const frFR: EagamiMessages = {
   menu: {
     label: 'Menu',
   },
+  multiSelect: {
+    placeholder: 'Sélectionner…',
+    searchPlaceholder: 'Rechercher…',
+    searchEmpty: 'Aucun résultat',
+    selectAll: 'Tout sélectionner',
+    clearAll: 'Effacer la sélection',
+    removeOption: label => `Supprimer ${label}`,
+    selectedCount: count => `${count} sélectionné${count > 1 ? 's' : ''}`,
+  },
   paginator: {
     label: 'Pagination',
     rowsPerPage: 'Lignes par page :',

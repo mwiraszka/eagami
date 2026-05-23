@@ -65,6 +65,15 @@ export const el: EagamiMessages = {
   menu: {
     label: 'Μενού',
   },
+  multiSelect: {
+    placeholder: 'Επιλέξτε…',
+    searchPlaceholder: 'Αναζήτηση…',
+    searchEmpty: 'Δεν βρέθηκαν αποτελέσματα',
+    selectAll: 'Επιλογή όλων',
+    clearAll: 'Εκκαθάριση επιλογής',
+    removeOption: label => `Αφαίρεση ${label}`,
+    selectedCount: count => `${count} επιλεγμέν${count === 1 ? 'ο' : 'α'}`,
+  },
   paginator: {
     label: 'Σελιδοποίηση',
     rowsPerPage: 'Γραμμές ανά σελίδα:',

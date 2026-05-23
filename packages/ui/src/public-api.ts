@@ -359,6 +359,7 @@ export * from './lib/input/input.component';
 export * from './lib/menu/menu.component';
 export * from './lib/menu/menu-item.component';
 export * from './lib/menu/menu-trigger.directive';
+export * from './lib/multi-select/multi-select.component';
 export * from './lib/paginator/paginator.component';
 export * from './lib/popover/popover-positioning';
 export * from './lib/popover/popover.component';

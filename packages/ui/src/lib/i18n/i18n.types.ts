@@ -85,6 +85,15 @@ export interface EagamiMessages {
   menu: {
     label: string;
   };
+  multiSelect: {
+    placeholder: string;
+    searchPlaceholder: string;
+    searchEmpty: string;
+    selectAll: string;
+    clearAll: string;
+    removeOption: (label: string) => string;
+    selectedCount: (count: number) => string;
+  };
   paginator: {
     label: string;
     rowsPerPage: string;
