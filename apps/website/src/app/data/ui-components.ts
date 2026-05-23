@@ -26,6 +26,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'dropdown', name: 'Dropdown', selector: 'ea-dropdown' },
   { slug: 'eagami-wordmark', name: 'Eagami Wordmark', selector: 'ea-eagami-wordmark' },
   { slug: 'empty-state', name: 'Empty State', selector: 'ea-empty-state' },
+  { slug: 'file-uploader', name: 'File Uploader', selector: 'ea-file-uploader' },
   { slug: 'input', name: 'Input', selector: 'ea-input' },
   { slug: 'menu', name: 'Menu', selector: 'ea-menu' },
   { slug: 'multi-select', name: 'Multi-Select', selector: 'ea-multi-select' },

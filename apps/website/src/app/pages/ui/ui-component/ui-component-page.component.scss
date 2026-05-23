@@ -51,6 +51,13 @@
   h2:first-child {
     margin-top: 8px;
   }
+
+  // Cap form-like components at a width that reads as a discrete widget,
+  // rather than letting them stretch the full 880px demo section. Applied via
+  // `class="demo-form-narrow"` on the consumer element so it stays opt-in.
+  .demo-form-narrow {
+    max-width: 480px;
+  }
 }
 
 .demo-row {

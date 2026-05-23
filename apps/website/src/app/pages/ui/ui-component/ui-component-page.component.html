@@ -922,6 +922,70 @@
             </ea-empty-state>
           }
 
+          <!-- ─── File uploader ─────────────────────────────────── -->
+          @case ('file-uploader') {
+            <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
+              [(value)]="fileUploaderValue" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.withConstraints }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.imagesLabel"
+              [hint]="messages().ui.component.demos.fileUploader.imagesHint"
+              accept="image/png,image/jpeg"
+              [maxSize]="2 * 1024 * 1024"
+              [maxFiles]="4" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.singleFile }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.resumeLabel"
+              [multiple]="false"
+              accept=".pdf"
+              [maxSize]="5 * 1024 * 1024" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              size="sm"
+              [label]="messages().ui.component.common.small" />
+            <ea-file-uploader
+              class="demo-form-narrow"
+              size="md"
+              [label]="messages().ui.component.common.medium" />
+            <ea-file-uploader
+              class="demo-form-narrow"
+              size="lg"
+              [label]="messages().ui.component.common.large" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.withHintLabel"
+              [hint]="messages().ui.component.demos.fileUploader.withHintHint" />
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.withErrorLabel"
+              [errorMsg]="messages().ui.component.demos.fileUploader.withErrorText"
+              [required]="true" />
+
+            <h2>{{ messages().ui.component.sectionHeadings.customIcon }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.demos.fileUploader.customIconLabel">
+              <ea-icon-paperclip icon />
+            </ea-file-uploader>
+
+            <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+            <ea-file-uploader
+              class="demo-form-narrow"
+              [label]="messages().ui.component.common.disabled"
+              [disabled]="true" />
+          }
+
           <!-- ─── Input ─────────────────────────────────────────── -->
           @case ('input') {
             <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>

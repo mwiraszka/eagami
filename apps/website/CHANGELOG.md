@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.1.0] - 2026-05-23
+
+### Added
+
+- Document the new `<ea-file-uploader>` component on the `/ui/components/file-uploader` page, with demos covering the default multi-file dropzone, accept / maxSize / maxFiles constraints, single-file mode, three sizes, hint / error states, a custom-icon variant (swapping the default cloud icon for a paperclip via the new `icon` content slot), and the disabled state. All new section headings and demo strings are translated across the five locales.
+
 ## [2.0.0] - 2026-05-23
 
 ### Added
@@ -398,6 +404,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.1.0]: https://github.com/mwiraszka/eagami/compare/website-v2.0.0...website-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/website-v1.5.0...website-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/website-v1.4.1...website-v1.5.0
 [1.4.1]: https://github.com/mwiraszka/eagami/compare/website-v1.4.0...website-v1.4.1

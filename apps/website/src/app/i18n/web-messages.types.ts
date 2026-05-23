@@ -269,6 +269,7 @@ export interface WebMessages {
         placements: string;
         canvasSizes: string;
         cappedChipCount: string;
+        customIcon: string;
         customLabel: string;
         customSize: string;
         linearFlow: string;
@@ -276,11 +277,13 @@ export interface WebMessages {
         notAnimated: string;
         outputFormats: string;
         quarterHourSteps: string;
+        singleFile: string;
         stepped: string;
         sundayStart: string;
         twelveHourFormat: string;
         twoActions: string;
         withCompletedSteps: string;
+        withConstraints: string;
         withInitialValue: string;
         withMaxlength: string;
         withMinMaxLabels: string;
@@ -457,6 +460,17 @@ export interface WebMessages {
           noResultsDescription: string;
           clearFilters: string;
           nothingHereTitle: string;
+        };
+        fileUploader: {
+          attachmentsLabel: string;
+          imagesLabel: string;
+          imagesHint: string;
+          resumeLabel: string;
+          customIconLabel: string;
+          withHintLabel: string;
+          withHintHint: string;
+          withErrorLabel: string;
+          withErrorText: string;
         };
         input: {
           defaultLabel: string;

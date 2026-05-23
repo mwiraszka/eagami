@@ -25,6 +25,7 @@ import {
   Edit2IconComponent,
   EmptyStateComponent,
   FileIconComponent,
+  FileUploaderComponent,
   InputComponent,
   MenuComponent,
   MenuItemComponent,
@@ -33,6 +34,7 @@ import {
   MultiSelectComponent,
   PaginatorComponent,
   PaginatorState,
+  PaperclipIconComponent,
   PopoverComponent,
   PopoverPlacement,
   ProgressBarComponent,
@@ -103,6 +105,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     Edit2IconComponent,
     EmptyStateComponent,
     FileIconComponent,
+    FileUploaderComponent,
     InputComponent,
     MenuComponent,
     MenuItemComponent,
@@ -110,6 +113,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     MoreHorizontalIconComponent,
     MultiSelectComponent,
     PaginatorComponent,
+    PaperclipIconComponent,
     PopoverComponent,
     ProgressBarComponent,
     RadioComponent,
@@ -173,6 +177,7 @@ export class UiComponentPageComponent {
   protected readonly radioValue = signal('');
   protected readonly dropdownValue = signal('');
   protected readonly multiSelectValue = signal<readonly string[]>([]);
+  protected readonly fileUploaderValue = signal<readonly File[]>([]);
   protected readonly datePickerValue = signal<Date | null>(null);
   protected readonly datePickerMin = new Date(
     new Date().setDate(new Date().getDate() - 7),
