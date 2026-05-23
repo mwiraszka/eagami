@@ -11,6 +11,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Pick up @eagami/ui v2.0.0, which removes the deprecated `<ea-icon-apple>` and `<ea-icon-pencil>` icons. The "edit" menu demo on the components page now uses `<ea-icon-edit-2>` directly.
+- Replace the bespoke inline-code styling repeated across the home page, `/ui` index, setup, i18n, components, tokens, and icons pages with a single `code-chip` mixin (sourcing the new `--text-code-*` tokens from @eagami/ui v2.0.0). Visual output is consistent across pages and themable through one set of CSS variables; per-page `<code>` rules collapse from ~7 lines each to a one-line `@include`.
 
 ## [1.5.0] - 2026-05-20
 

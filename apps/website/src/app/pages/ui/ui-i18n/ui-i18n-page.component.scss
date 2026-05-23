@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 .ui-i18n {
   display: flex;
   flex-direction: column;
@@ -44,13 +46,8 @@
   }
 
   code {
-    padding: 2px 6px;
-    border-radius: 4px;
+    @include mixins.code-chip;
     white-space: nowrap;
-    background-color: var(--color-bg-muted);
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: var(--color-text-primary);
   }
 }
 
@@ -78,12 +75,8 @@
   }
 
   code {
-    padding: 2px 6px;
-    border-radius: 4px;
-    background-color: var(--color-bg-muted);
+    @include mixins.code-chip;
     font-size: 12px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: var(--color-text-primary);
   }
 
   span {
