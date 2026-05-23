@@ -387,6 +387,7 @@ export const pl: WebMessages = {
         noResults: 'brak wyników',
         titleOnly: 'tylko tytuł',
         iconTrigger: 'wyzwalacz ikoną',
+        placements: 'umiejscowienia',
       },
       common: {
         small: 'Mały',
@@ -593,6 +594,28 @@ export const pl: WebMessages = {
           open: 'Otwórz',
           saveUnavailable: 'Zapisz (niedostępne)',
           saveAs: 'Zapisz jako',
+        },
+        popover: {
+          openLabel: 'Otwórz popover',
+          basicContent:
+            'Pływająca powierzchnia zakotwiczona w swoim wyzwalaczu. Użyj jej jako elementu bazowego dla menu, list rozwijanych i niestandardowych nakładek.',
+          placementTopLabel: 'top',
+          placementTopStartLabel: 'top-start',
+          placementTopEndLabel: 'top-end',
+          placementBottomLabel: 'bottom',
+          placementBottomStartLabel: 'bottom-start',
+          placementBottomEndLabel: 'bottom-end',
+          placementLeftLabel: 'left',
+          placementRightLabel: 'right',
+          placementTopContent: 'Wyśrodkowana nad wyzwalaczem',
+          placementTopStartContent: 'Nad wyzwalaczem, wyrównana do jego lewej krawędzi',
+          placementTopEndContent: 'Nad wyzwalaczem, wyrównana do jego prawej krawędzi',
+          placementBottomContent: 'Wyśrodkowana pod wyzwalaczem',
+          placementBottomStartContent:
+            'Pod wyzwalaczem, wyrównana do jego lewej krawędzi',
+          placementBottomEndContent: 'Pod wyzwalaczem, wyrównana do jego prawej krawędzi',
+          placementLeftContent: 'Wyśrodkowana na lewo od wyzwalacza',
+          placementRightContent: 'Wyśrodkowana na prawo od wyzwalacza',
         },
         progressBar: {
           processing: 'Przetwarzanie…',

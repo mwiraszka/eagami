@@ -29,6 +29,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'input', name: 'Input', selector: 'ea-input' },
   { slug: 'menu', name: 'Menu', selector: 'ea-menu' },
   { slug: 'paginator', name: 'Paginator', selector: 'ea-paginator' },
+  { slug: 'popover', name: 'Popover', selector: 'ea-popover' },
   { slug: 'progress-bar', name: 'Progress Bar', selector: 'ea-progress-bar' },
   { slug: 'radio', name: 'Radio', selector: 'ea-radio' },
   { slug: 'segmented', name: 'Segmented', selector: 'ea-segmented' },

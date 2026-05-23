@@ -265,6 +265,7 @@ export interface WebMessages {
         noResults: string;
         titleOnly: string;
         iconTrigger: string;
+        placements: string;
       };
       common: {
         small: string;
@@ -464,6 +465,26 @@ export interface WebMessages {
           open: string;
           saveUnavailable: string;
           saveAs: string;
+        };
+        popover: {
+          openLabel: string;
+          basicContent: string;
+          placementTopLabel: string;
+          placementTopStartLabel: string;
+          placementTopEndLabel: string;
+          placementBottomLabel: string;
+          placementBottomStartLabel: string;
+          placementBottomEndLabel: string;
+          placementLeftLabel: string;
+          placementRightLabel: string;
+          placementTopContent: string;
+          placementTopStartContent: string;
+          placementTopEndContent: string;
+          placementBottomContent: string;
+          placementBottomStartContent: string;
+          placementBottomEndContent: string;
+          placementLeftContent: string;
+          placementRightContent: string;
         };
         progressBar: {
           processing: string;

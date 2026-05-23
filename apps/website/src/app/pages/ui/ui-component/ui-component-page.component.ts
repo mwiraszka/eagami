@@ -32,6 +32,8 @@ import {
   MoreHorizontalIconComponent,
   PaginatorComponent,
   PaginatorState,
+  PopoverComponent,
+  PopoverPlacement,
   ProgressBarComponent,
   RadioComponent,
   RadioGroupComponent,
@@ -101,6 +103,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     MenuTriggerDirective,
     MoreHorizontalIconComponent,
     PaginatorComponent,
+    PopoverComponent,
     ProgressBarComponent,
     RadioComponent,
     RadioGroupComponent,
@@ -178,6 +181,8 @@ export class UiComponentPageComponent {
   protected readonly croppedAvatarUrl = signal('');
   protected readonly tablePage = signal(1);
   protected readonly tablePageSize = signal(5);
+  protected readonly popoverBasicOpen = signal(false);
+  protected readonly popoverPlacementOpen = signal<PopoverPlacement | null>(null);
 
   // Demo data
   // Framework names are proper nouns and stay untranslated.

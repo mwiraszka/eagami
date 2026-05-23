@@ -1010,6 +1010,197 @@
               [disabled]="true" />
           }
 
+          <!-- ─── Popover ──────────────────────────────────── -->
+          @case ('popover') {
+            <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+            <button
+              #popoverBasicTrigger
+              type="button"
+              class="demo-popover-trigger"
+              (click)="popoverBasicOpen.set(!popoverBasicOpen())">
+              {{ messages().ui.component.demos.popover.openLabel }}
+            </button>
+            <ea-popover
+              [anchor]="popoverBasicTrigger"
+              [open]="popoverBasicOpen()"
+              (closeRequested)="popoverBasicOpen.set(false)">
+              <div class="demo-popover-content">
+                {{ messages().ui.component.demos.popover.basicContent }}
+              </div>
+            </ea-popover>
+
+            <h2>{{ messages().ui.component.sectionHeadings.placements }}</h2>
+            <div class="demo-popover-placements">
+              <button
+                #popoverTopTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'top' ? null : 'top'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementTopLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverTopTrigger"
+                [open]="popoverPlacementOpen() === 'top'"
+                placement="top"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementTopContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverTopStartTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'top-start' ? null : 'top-start'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementTopStartLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverTopStartTrigger"
+                [open]="popoverPlacementOpen() === 'top-start'"
+                placement="top-start"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementTopStartContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverTopEndTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'top-end' ? null : 'top-end'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementTopEndLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverTopEndTrigger"
+                [open]="popoverPlacementOpen() === 'top-end'"
+                placement="top-end"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementTopEndContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverBottomTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'bottom' ? null : 'bottom'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementBottomLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverBottomTrigger"
+                [open]="popoverPlacementOpen() === 'bottom'"
+                placement="bottom"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementBottomContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverBottomStartTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'bottom-start' ? null : 'bottom-start'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementBottomStartLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverBottomStartTrigger"
+                [open]="popoverPlacementOpen() === 'bottom-start'"
+                placement="bottom-start"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementBottomStartContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverBottomEndTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'bottom-end' ? null : 'bottom-end'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementBottomEndLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverBottomEndTrigger"
+                [open]="popoverPlacementOpen() === 'bottom-end'"
+                placement="bottom-end"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementBottomEndContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverLeftTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'left' ? null : 'left'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementLeftLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverLeftTrigger"
+                [open]="popoverPlacementOpen() === 'left'"
+                placement="left"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementLeftContent }}
+                </div>
+              </ea-popover>
+
+              <button
+                #popoverRightTrigger
+                type="button"
+                class="demo-popover-trigger"
+                (click)="
+                  popoverPlacementOpen.set(
+                    popoverPlacementOpen() === 'right' ? null : 'right'
+                  )
+                ">
+                {{ messages().ui.component.demos.popover.placementRightLabel }}
+              </button>
+              <ea-popover
+                [anchor]="popoverRightTrigger"
+                [open]="popoverPlacementOpen() === 'right'"
+                placement="right"
+                (closeRequested)="popoverPlacementOpen.set(null)">
+                <div class="demo-popover-content">
+                  {{ messages().ui.component.demos.popover.placementRightContent }}
+                </div>
+              </ea-popover>
+            </div>
+          }
+
           <!-- ─── Progress Bar ──────────────────────────────────── -->
           @case ('progress-bar') {
             <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>

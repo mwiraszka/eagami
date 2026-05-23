@@ -387,6 +387,7 @@ export const frFR: WebMessages = {
         noResults: 'aucun résultat',
         titleOnly: 'titre seul',
         iconTrigger: 'déclencheur icône',
+        placements: 'positions',
       },
       common: {
         small: 'Petit',
@@ -595,6 +596,28 @@ export const frFR: WebMessages = {
           open: 'Ouvrir',
           saveUnavailable: 'Enregistrer (indisponible)',
           saveAs: 'Enregistrer sous',
+        },
+        popover: {
+          openLabel: 'Ouvrir la popover',
+          basicContent:
+            'Une surface flottante ancrée à son déclencheur. À utiliser comme brique de base pour les menus, listes déroulantes et incrustations personnalisées.',
+          placementTopLabel: 'top',
+          placementTopStartLabel: 'top-start',
+          placementTopEndLabel: 'top-end',
+          placementBottomLabel: 'bottom',
+          placementBottomStartLabel: 'bottom-start',
+          placementBottomEndLabel: 'bottom-end',
+          placementLeftLabel: 'left',
+          placementRightLabel: 'right',
+          placementTopContent: 'Centrée au-dessus du déclencheur',
+          placementTopStartContent:
+            'Au-dessus du déclencheur, alignée sur son bord gauche',
+          placementTopEndContent: 'Au-dessus du déclencheur, alignée sur son bord droit',
+          placementBottomContent: 'Centrée sous le déclencheur',
+          placementBottomStartContent: 'Sous le déclencheur, alignée sur son bord gauche',
+          placementBottomEndContent: 'Sous le déclencheur, alignée sur son bord droit',
+          placementLeftContent: 'Centrée à gauche du déclencheur',
+          placementRightContent: 'Centrée à droite du déclencheur',
         },
         progressBar: {
           processing: 'Traitement en cours…',

@@ -384,6 +384,7 @@ export const el: WebMessages = {
         noResults: 'χωρίς αποτελέσματα',
         titleOnly: 'μόνο τίτλος',
         iconTrigger: 'ενεργοποιητής εικονιδίου',
+        placements: 'τοποθετήσεις',
       },
       common: {
         small: 'Μικρό',
@@ -590,6 +591,31 @@ export const el: WebMessages = {
           open: 'Άνοιγμα',
           saveUnavailable: 'Αποθήκευση (μη διαθέσιμη)',
           saveAs: 'Αποθήκευση ως',
+        },
+        popover: {
+          openLabel: 'Άνοιγμα popover',
+          basicContent:
+            'Μια αιωρούμενη επιφάνεια αγκιστρωμένη στο στοιχείο ενεργοποίησής της. Χρησιμοποίησέ την ως δομικό στοιχείο για μενού, αναπτυσσόμενες λίστες και προσαρμοσμένα επιστρώματα.',
+          placementTopLabel: 'top',
+          placementTopStartLabel: 'top-start',
+          placementTopEndLabel: 'top-end',
+          placementBottomLabel: 'bottom',
+          placementBottomStartLabel: 'bottom-start',
+          placementBottomEndLabel: 'bottom-end',
+          placementLeftLabel: 'left',
+          placementRightLabel: 'right',
+          placementTopContent: 'Κεντραρισμένη πάνω από το στοιχείο ενεργοποίησης',
+          placementTopStartContent:
+            'Πάνω από το στοιχείο ενεργοποίησης, ευθυγραμμισμένη με την αριστερή του ακμή',
+          placementTopEndContent:
+            'Πάνω από το στοιχείο ενεργοποίησης, ευθυγραμμισμένη με τη δεξιά του ακμή',
+          placementBottomContent: 'Κεντραρισμένη κάτω από το στοιχείο ενεργοποίησης',
+          placementBottomStartContent:
+            'Κάτω από το στοιχείο ενεργοποίησης, ευθυγραμμισμένη με την αριστερή του ακμή',
+          placementBottomEndContent:
+            'Κάτω από το στοιχείο ενεργοποίησης, ευθυγραμμισμένη με τη δεξιά του ακμή',
+          placementLeftContent: 'Κεντραρισμένη αριστερά από το στοιχείο ενεργοποίησης',
+          placementRightContent: 'Κεντραρισμένη δεξιά από το στοιχείο ενεργοποίησης',
         },
         progressBar: {
           processing: 'Επεξεργασία…',

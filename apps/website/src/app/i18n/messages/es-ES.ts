@@ -381,6 +381,7 @@ export const esES: WebMessages = {
         noResults: 'sin resultados',
         titleOnly: 'solo título',
         iconTrigger: 'disparador de icono',
+        placements: 'posiciones',
       },
       common: {
         small: 'Pequeño',
@@ -586,6 +587,28 @@ export const esES: WebMessages = {
           open: 'Abrir',
           saveUnavailable: 'Guardar (no disponible)',
           saveAs: 'Guardar como',
+        },
+        popover: {
+          openLabel: 'Abrir popover',
+          basicContent:
+            'Una superficie flotante anclada a su disparador. Úsala como pieza base para menús, desplegables y superposiciones personalizadas.',
+          placementTopLabel: 'top',
+          placementTopStartLabel: 'top-start',
+          placementTopEndLabel: 'top-end',
+          placementBottomLabel: 'bottom',
+          placementBottomStartLabel: 'bottom-start',
+          placementBottomEndLabel: 'bottom-end',
+          placementLeftLabel: 'left',
+          placementRightLabel: 'right',
+          placementTopContent: 'Centrada sobre el disparador',
+          placementTopStartContent: 'Sobre el disparador, alineada a su borde izquierdo',
+          placementTopEndContent: 'Sobre el disparador, alineada a su borde derecho',
+          placementBottomContent: 'Centrada bajo el disparador',
+          placementBottomStartContent:
+            'Bajo el disparador, alineada a su borde izquierdo',
+          placementBottomEndContent: 'Bajo el disparador, alineada a su borde derecho',
+          placementLeftContent: 'Centrada a la izquierda del disparador',
+          placementRightContent: 'Centrada a la derecha del disparador',
         },
         progressBar: {
           processing: 'Procesando…',

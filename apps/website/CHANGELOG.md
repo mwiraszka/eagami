@@ -4,6 +4,10 @@ All notable changes to eagami.com are documented in this file.
 
 ## [2.0.0] - 2026-05-21
 
+### Added
+
+- Document the new `<ea-popover>` primitive on the `/ui/components/popover` route. The page demos the basic open / close pattern and the four cardinal placements (`top`, `bottom`, `left`, `right`), with strings translated across all five locales.
+
 ### Changed
 
 - Pick up @eagami/ui v2.0.0, which removes the deprecated `<ea-icon-apple>` and `<ea-icon-pencil>` icons. The "edit" menu demo on the components page now uses `<ea-icon-edit-2>` directly.
