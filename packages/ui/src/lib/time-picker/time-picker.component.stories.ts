@@ -6,6 +6,9 @@ const meta: Meta<TimePickerComponent> = {
   title: 'Components/Time picker',
   component: TimePickerComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '22rem' } },
+  },
   render: args => ({
     props: args,
     template: `<ea-time-picker ${argsToTemplate(args)} class="story-narrow"></ea-time-picker>`,
@@ -66,35 +69,23 @@ export const Large: Story = {
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, value: '14:30' },
+  args: { disabled: true },
 };
 
 export const WithInitialValue: Story = {
-  args: {
-    value: '09:30',
-  },
+  args: { value: '09:30' },
 };
 
 export const TwelveHourFormat: Story = {
-  args: {
-    format: '12h',
-    value: '14:30',
-  },
+  args: { format: '12h' },
 };
 
 export const WithSeconds: Story = {
-  args: {
-    includeSeconds: true,
-    value: '14:30:45',
-  },
+  args: { includeSeconds: true },
 };
 
 export const QuarterHourSteps: Story = {
-  args: {
-    minuteStep: 15,
-    value: '09:00',
-    hint: 'Minutes step by 15.',
-  },
+  args: { minuteStep: 15 },
 };
 
 export const AllSizes: Story = {

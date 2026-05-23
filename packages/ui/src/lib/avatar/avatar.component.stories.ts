@@ -37,7 +37,7 @@ export const WithInitials: Story = {
 
 export const WithImage: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=3',
+    src: 'assets/sample-avatar.png',
     alt: 'User avatar',
   },
 };

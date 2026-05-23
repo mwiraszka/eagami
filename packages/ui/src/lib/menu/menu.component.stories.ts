@@ -12,6 +12,9 @@ const meta: Meta<MenuComponent> = {
   title: 'Components/Menu',
   component: MenuComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '20rem' } },
+  },
   argTypes: {
     placement: {
       control: 'select',

@@ -44,15 +44,15 @@ export const WithHint: Story = {
 };
 
 export const WithError: Story = {
-  args: { errorMsg: 'Please pick a value above 50', value: 20 },
+  args: { errorMsg: 'Please pick a value above 50' },
 };
 
 export const Stepped: Story = {
-  args: { min: 0, max: 10, step: 1, value: 5, showMinMaxLabels: true },
+  args: { min: 0, max: 10, step: 1 },
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, value: 60 },
+  args: { disabled: true },
 };
 
 export const Small: Story = {

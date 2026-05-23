@@ -14,6 +14,9 @@ const meta: Meta<DropdownComponent> = {
   title: 'Components/Dropdown',
   component: DropdownComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '22rem' } },
+  },
   render: args => ({
     props: args,
     template: `<ea-dropdown ${argsToTemplate(args)} class="story-narrow"></ea-dropdown>`,

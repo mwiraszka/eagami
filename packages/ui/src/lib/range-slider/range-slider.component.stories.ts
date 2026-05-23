@@ -44,24 +44,15 @@ export const WithHint: Story = {
 };
 
 export const WithError: Story = {
-  args: {
-    errorMsg: 'Range must span at least 30',
-    value: [40, 50],
-  },
+  args: { errorMsg: 'Range must span at least 30' },
 };
 
 export const Stepped: Story = {
-  args: {
-    min: 0,
-    max: 10,
-    step: 1,
-    value: [3, 7],
-    showMinMaxLabels: true,
-  },
+  args: { min: 0, max: 10, step: 1 },
 };
 
 export const Disabled: Story = {
-  args: { disabled: true, value: [25, 75] },
+  args: { disabled: true },
 };
 
 export const Small: Story = {

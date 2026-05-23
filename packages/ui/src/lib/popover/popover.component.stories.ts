@@ -11,9 +11,7 @@ import {
 
 // Wrapper component for the stories — owns the click-to-toggle state, exposes
 // the same inputs as `<ea-popover>`, and brings its own styles via `styleUrl`
-// so the trigger/content render with reasonable defaults. (Stories can't rely
-// on `.storybook/storybook.scss` because that file isn't actually compiled
-// into Storybook's CSS output; component-scoped SCSS is.)
+// so the trigger/content render with reasonable defaults.
 @Component({
   selector: 'ea-popover-story-host',
   imports: [PopoverComponent],
@@ -49,7 +47,7 @@ class PopoverStoryHost {
   isOpen = signal(false);
   placement: PopoverPlacement = 'bottom-start';
   role: PopoverRole = 'dialog';
-  offset = 2;
+  offset = 0;
   flip = true;
   clamp = true;
   matchAnchorWidth = false;
@@ -89,7 +87,7 @@ const meta: Meta<PopoverStoryHost> = {
   args: {
     placement: 'bottom-start',
     role: 'dialog',
-    offset: 2,
+    offset: 0,
     flip: true,
     clamp: true,
     matchAnchorWidth: false,

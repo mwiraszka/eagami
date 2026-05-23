@@ -38,7 +38,7 @@ export const Rect: Story = {
 };
 
 export const CustomSize: Story = {
-  args: { variant: 'rect', width: '200px', height: '120px' },
+  args: { width: '200px', height: '120px' },
 };
 
 export const NotAnimated: Story = {

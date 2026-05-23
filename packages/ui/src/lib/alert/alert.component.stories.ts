@@ -61,7 +61,7 @@ export const Info: Story = {
 };
 
 export const Dismissible: Story = {
-  args: { variant: 'info', dismissible: true },
+  args: { dismissible: true },
   render: args => ({
     props: args,
     template: `<ea-alert ${argsToTemplate(args)}>This alert can be dismissed</ea-alert>`,

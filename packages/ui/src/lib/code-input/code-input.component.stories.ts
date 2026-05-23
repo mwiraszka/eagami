@@ -55,11 +55,7 @@ export const Large: Story = {
 };
 
 export const FourDigit: Story = {
-  args: {
-    label: 'PIN',
-    length: 4,
-    hint: 'Enter your 4-digit PIN',
-  },
+  args: { length: 4 },
 };
 
 export const Disabled: Story = {

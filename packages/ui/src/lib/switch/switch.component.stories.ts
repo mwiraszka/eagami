@@ -51,7 +51,7 @@ export const Large: Story = {
 };
 
 export const Required: Story = {
-  args: { required: true, label: 'Confirm consent' },
+  args: { required: true },
 };
 
 export const WithHint: Story = {

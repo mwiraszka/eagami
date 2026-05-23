@@ -95,23 +95,19 @@ export const AllSizes: Story = {
 };
 
 export const Pin: Story = {
-  args: { variant: 'error', size: 'md', shape: 'pin' },
+  args: { shape: 'pin' },
   render: args => ({
     props: args,
     template: `<ea-badge ${argsToTemplate(args)}>3</ea-badge>`,
   }),
 };
 
-export const PinSizes: Story = {
+export const PinDigits: Story = {
   render: () => ({
     template: `
       <div class="story-row">
-        <ea-badge variant="error" size="sm" shape="pin">1</ea-badge>
-        <ea-badge variant="error" size="md" shape="pin">2</ea-badge>
-        <ea-badge variant="error" size="lg" shape="pin">3</ea-badge>
-        <ea-badge variant="error" size="sm" shape="pin">12</ea-badge>
-        <ea-badge variant="error" size="md" shape="pin">42</ea-badge>
-        <ea-badge variant="error" size="lg" shape="pin">99</ea-badge>
+        <ea-badge shape="pin">1</ea-badge>
+        <ea-badge shape="pin">12</ea-badge>
       </div>
     `,
   }),
