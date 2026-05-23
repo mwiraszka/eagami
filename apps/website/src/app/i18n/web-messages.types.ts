@@ -230,6 +230,7 @@ export interface WebMessages {
         multi: string;
         circle: string;
         square: string;
+        shapes: string;
         shapesAndFallbacks: string;
         chevronSeparator: string;
         slashSeparator: string;

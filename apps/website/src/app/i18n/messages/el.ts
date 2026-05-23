@@ -349,6 +349,7 @@ export const el: WebMessages = {
         multi: 'πολλαπλό',
         circle: 'κύκλος',
         square: 'τετράγωνο',
+        shapes: 'σχήματα',
         shapesAndFallbacks: 'σχήματα και εναλλακτικά',
         chevronSeparator: 'διαχωριστικό βέλος',
         slashSeparator: 'διαχωριστικό κάθετος',

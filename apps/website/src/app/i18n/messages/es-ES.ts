@@ -346,6 +346,7 @@ export const esES: WebMessages = {
         multi: 'múltiple',
         circle: 'círculo',
         square: 'cuadrado',
+        shapes: 'formas',
         shapesAndFallbacks: 'formas y respaldos',
         chevronSeparator: 'separador chevrón',
         slashSeparator: 'separador barra',

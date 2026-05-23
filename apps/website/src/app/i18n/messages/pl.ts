@@ -352,6 +352,7 @@ export const pl: WebMessages = {
         multi: 'wielokrotny',
         circle: 'koło',
         square: 'kwadrat',
+        shapes: 'kształty',
         shapesAndFallbacks: 'kształty i zapasowe',
         chevronSeparator: 'separator chevron',
         slashSeparator: 'separator ukośnik',

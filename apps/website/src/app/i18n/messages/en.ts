@@ -344,6 +344,7 @@ export const en: WebMessages = {
         multi: 'multi',
         circle: 'circle',
         square: 'square',
+        shapes: 'shapes',
         shapesAndFallbacks: 'shapes & fallbacks',
         chevronSeparator: 'chevron separator',
         slashSeparator: 'slash separator',
