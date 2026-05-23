@@ -86,6 +86,9 @@ export const en: EagamiMessages = {
   spinner: {
     label: 'Loading',
   },
+  stepper: {
+    optional: 'optional',
+  },
   tag: {
     remove: 'Remove',
   },

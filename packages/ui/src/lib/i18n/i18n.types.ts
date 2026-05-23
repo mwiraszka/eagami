@@ -107,6 +107,9 @@ export interface EagamiMessages {
   spinner: {
     label: string;
   };
+  stepper: {
+    optional: string;
+  };
   tag: {
     remove: string;
   };

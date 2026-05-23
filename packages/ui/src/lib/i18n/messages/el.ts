@@ -87,6 +87,9 @@ export const el: EagamiMessages = {
   spinner: {
     label: 'Φόρτωση',
   },
+  stepper: {
+    optional: 'προαιρετικό',
+  },
   tag: {
     remove: 'Αφαίρεση',
   },

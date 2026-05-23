@@ -87,6 +87,9 @@ export const frFR: EagamiMessages = {
   spinner: {
     label: 'Chargement',
   },
+  stepper: {
+    optional: 'facultatif',
+  },
   tag: {
     remove: 'Supprimer',
   },

@@ -372,6 +372,8 @@ export * from './lib/select-option';
 export * from './lib/skeleton/skeleton.component';
 export * from './lib/slider/slider.component';
 export * from './lib/spinner/spinner.component';
+export * from './lib/stepper/step.component';
+export * from './lib/stepper/stepper.component';
 export * from './lib/switch/switch.component';
 export * from './lib/tabs/tabs.component';
 export * from './lib/tabs/tab.component';
