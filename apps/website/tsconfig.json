@@ -22,10 +22,11 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "outDir": "./dist/out-tsc",
+    "rootDir": "../..",
     "paths": {
       "@app/*": ["app/*"],
       "@env": ["environments/environment"],
-      "@eagami/ui": ["../../../packages/ui/dist/eagami-ui"]
+      "@eagami/ui": ["../../../packages/ui/src/public-api"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
