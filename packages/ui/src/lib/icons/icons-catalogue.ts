@@ -155,6 +155,7 @@ import { KubernetesIconComponent } from './kubernetes.component';
 import { LampIconComponent } from './lamp.component';
 import { LayersIconComponent } from './layers.component';
 import { LayoutIconComponent } from './layout.component';
+import { LeftHalfStarIconComponent } from './left-half-star.component';
 import { LifeBuoyIconComponent } from './life-buoy.component';
 import { Link2IconComponent } from './link-2.component';
 import { LinkIconComponent } from './link.component';
@@ -229,6 +230,7 @@ import { RefreshCcwIconComponent } from './refresh-ccw.component';
 import { RefreshCwIconComponent } from './refresh-cw.component';
 import { RepeatIconComponent } from './repeat.component';
 import { RewindIconComponent } from './rewind.component';
+import { RightHalfStarIconComponent } from './right-half-star.component';
 import { RotateCcwIconComponent } from './rotate-ccw.component';
 import { RotateCwIconComponent } from './rotate-cw.component';
 import { RssIconComponent } from './rss.component';
@@ -495,6 +497,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     LampIconComponent,
     LayersIconComponent,
     LayoutIconComponent,
+    LeftHalfStarIconComponent,
     LifeBuoyIconComponent,
     Link2IconComponent,
     LinkIconComponent,
@@ -569,6 +572,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     RefreshCwIconComponent,
     RepeatIconComponent,
     RewindIconComponent,
+    RightHalfStarIconComponent,
     RotateCcwIconComponent,
     RotateCwIconComponent,
     RssIconComponent,
