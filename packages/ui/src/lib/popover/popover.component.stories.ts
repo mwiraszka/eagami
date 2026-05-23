@@ -1,12 +1,68 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
-import { ButtonComponent } from '../button/button.component';
-import { PopoverComponent } from './popover.component';
+import { Component, signal } from '@angular/core';
 
-const meta: Meta<PopoverComponent> = {
+import { PopoverPlacement } from './popover-positioning';
+import {
+  PopoverComponent,
+  PopoverRole,
+  PopoverScrollBehavior,
+} from './popover.component';
+
+// Wrapper component for the stories — owns the click-to-toggle state, exposes
+// the same inputs as `<ea-popover>`, and brings its own styles via `styleUrl`
+// so the trigger/content render with reasonable defaults. (Stories can't rely
+// on `.storybook/storybook.scss` because that file isn't actually compiled
+// into Storybook's CSS output; component-scoped SCSS is.)
+@Component({
+  selector: 'ea-popover-story-host',
+  imports: [PopoverComponent],
+  template: `
+    <div class="story-popover-fixture">
+      <button
+        #trigger
+        type="button"
+        class="story-popover-trigger"
+        (click)="isOpen.set(!isOpen())">
+        Anchor
+      </button>
+      <ea-popover
+        [anchor]="trigger"
+        [open]="isOpen()"
+        [placement]="placement"
+        [role]="role"
+        [offset]="offset"
+        [flip]="flip"
+        [clamp]="clamp"
+        [matchAnchorWidth]="matchAnchorWidth"
+        [closeOnOutsideClick]="closeOnOutsideClick"
+        [closeOnEscape]="closeOnEscape"
+        [scrollBehavior]="scrollBehavior"
+        (closeRequested)="isOpen.set(false)">
+        <div class="story-popover-content">Popover content</div>
+      </ea-popover>
+    </div>
+  `,
+  styleUrl: './popover.component.stories.scss',
+})
+class PopoverStoryHost {
+  isOpen = signal(false);
+  placement: PopoverPlacement = 'bottom-start';
+  role: PopoverRole = 'dialog';
+  offset = 2;
+  flip = true;
+  clamp = true;
+  matchAnchorWidth = false;
+  closeOnOutsideClick = true;
+  closeOnEscape = true;
+  scrollBehavior: PopoverScrollBehavior = 'reposition';
+}
+
+const meta: Meta<PopoverStoryHost> = {
   title: 'Components/Popover',
-  component: PopoverComponent,
+  component: PopoverStoryHost,
   tags: ['autodocs'],
+  decorators: [moduleMetadata({ imports: [PopoverStoryHost] })],
   argTypes: {
     placement: {
       control: 'select',
@@ -29,12 +85,11 @@ const meta: Meta<PopoverComponent> = {
       control: 'select',
       options: ['reposition', 'close', 'ignore'],
     },
-    closeRequested: { action: 'closeRequested' },
   },
   args: {
     placement: 'bottom-start',
     role: 'dialog',
-    offset: 4,
+    offset: 2,
     flip: true,
     clamp: true,
     matchAnchorWidth: false,
@@ -45,51 +100,14 @@ const meta: Meta<PopoverComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<PopoverComponent>;
+type Story = StoryObj<PopoverStoryHost>;
 
-export const Default: Story = {
-  render: args => ({
-    props: { ...args, open: true },
-    moduleMetadata: { imports: [PopoverComponent, ButtonComponent] },
-    template: `
-      <div style="padding: 4rem; display: flex; justify-content: center;">
-        <ea-button #trigger variant="secondary">Anchor</ea-button>
-        <ea-popover
-          [anchor]="trigger"
-          [open]="open"
-          [placement]="placement"
-          [role]="role"
-          [offset]="offset"
-          [flip]="flip"
-          [clamp]="clamp"
-          [matchAnchorWidth]="matchAnchorWidth"
-          [closeOnOutsideClick]="closeOnOutsideClick"
-          [closeOnEscape]="closeOnEscape"
-          [scrollBehavior]="scrollBehavior"
-          (closeRequested)="closeRequested($event)">
-          <div style="
-            padding: var(--space-3);
-            min-width: 12rem;
-            border: var(--border-width-thin) solid var(--color-border-default);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            background-color: var(--color-bg-base);
-            color: var(--color-text-primary);
-          ">
-            Popover content
-          </div>
-        </ea-popover>
-      </div>
-    `,
-  }),
-};
+export const Default: Story = {};
 
 export const MatchAnchorWidth: Story = {
   args: { matchAnchorWidth: true },
-  render: Default.render,
 };
 
 export const TopPlacement: Story = {
   args: { placement: 'top' },
-  render: Default.render,
 };
