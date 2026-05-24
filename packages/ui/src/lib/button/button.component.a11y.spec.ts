@@ -1,0 +1,65 @@
+import { axe } from 'jest-axe';
+
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+
+import { ButtonComponent, ButtonSize, ButtonVariant } from './button.component';
+
+@Component({
+  imports: [ButtonComponent],
+  template: `
+    <ea-button
+      [variant]="variant"
+      [size]="size"
+      [disabled]="disabled"
+      [loading]="loading">
+      {{ text }}
+    </ea-button>
+  `,
+})
+class HostComponent {
+  text = 'Save changes';
+  variant: ButtonVariant = 'primary';
+  size: ButtonSize = 'md';
+  disabled = false;
+  loading = false;
+}
+
+describe('ButtonComponent a11y', () => {
+  async function render(setup?: (host: HostComponent) => void) {
+    await TestBed.configureTestingModule({
+      imports: [HostComponent],
+    }).compileComponents();
+    const fixture = TestBed.createComponent(HostComponent);
+    setup?.(fixture.componentInstance);
+    fixture.detectChanges();
+    return fixture.nativeElement as HTMLElement;
+  }
+
+  it.each(['primary', 'secondary', 'ghost', 'danger'] as const)(
+    'has no detectable violations for the %s variant',
+    async variant => {
+      const el = await render(host => (host.variant = variant));
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    },
+  );
+
+  it('has no detectable violations when disabled', async () => {
+    const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when loading', async () => {
+    const el = await render(host => (host.loading = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+});
