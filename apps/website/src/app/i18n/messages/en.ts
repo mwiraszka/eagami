@@ -267,7 +267,7 @@ export const en: WebMessages = {
       metaTitle: 'Eagami | UI | Icons',
       metaDescription: 'Icon set bundled with @eagami/ui.',
       title: 'Icons',
-      lede: 'Standalone Angular components that inherit their color and scale with <code>font-size</code>, so they render at any size. Most are derived from <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> by <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> under the <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT License</span></a>; the remainder are original Eagami UI icons. Click an icon to copy its selector.',
+      lede: 'Standalone Angular components that inherit their color and scale with <code>font-size</code>, so they render at any size. Feather-derived icons also expose a <code>[strokeWidth]</code> input (default 2) for thinner or bolder strokes. Most are derived from <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> by <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> under the <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT License</span></a>; the remainder are original Eagami UI icons. Click an icon to copy its selector.',
       filterLabel: 'Filter icons',
       filterPlaceholder: 'Search icons',
       filterClearLabel: 'Clear search',

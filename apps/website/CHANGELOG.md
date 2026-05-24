@@ -9,6 +9,10 @@ All notable changes to eagami.com are documented in this file.
 - Document the new `<ea-file-uploader>` component on the `/ui/components/file-uploader` page, with demos covering the default multi-file dropzone, accept / maxSize / maxFiles constraints, single-file mode, three sizes, hint / error states, a custom-icon variant (swapping the default cloud icon for a paperclip via the new `icon` content slot), and the disabled state. All new section headings and demo strings are translated across the five locales.
 - Document the new `<ea-rating>` component on the `/ui/components/rating` page, with demos covering the default 5-star rating, half-step granularity, three sizes, read-only mode, hint / error states, a 10-star scale, a custom-icon variant (hearts via the `icon` / `icon-fill` slots), and the disabled state. All new section headings and demo strings are translated across the five locales.
 
+### Changed
+
+- Mention the new icon `[strokeWidth]` input on the `/ui/icons` page lede (translated across all five locales).
+
 ## [2.0.0] - 2026-05-23
 
 ### Added

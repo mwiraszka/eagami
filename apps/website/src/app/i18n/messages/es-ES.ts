@@ -269,7 +269,7 @@ export const esES: WebMessages = {
       metaTitle: 'Eagami | UI | Iconos',
       metaDescription: 'Conjunto de iconos incluido con @eagami/ui.',
       title: 'Iconos',
-      lede: 'Componentes Angular autónomos que heredan su color y se escalan con <code>font-size</code>, por lo que se renderizan a cualquier tamaño. La mayoría se derivan de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> bajo la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licencia MIT</span></a>; el resto son iconos originales de Eagami UI. Haz clic en un icono para copiar su selector.',
+      lede: 'Componentes Angular autónomos que heredan su color y se escalan con <code>font-size</code>, por lo que se renderizan a cualquier tamaño. Los iconos derivados de Feather también exponen una entrada <code>[strokeWidth]</code> (predeterminado 2) para trazos más finos o más gruesos. La mayoría se derivan de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> bajo la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licencia MIT</span></a>; el resto son iconos originales de Eagami UI. Haz clic en un icono para copiar su selector.',
       filterLabel: 'Filtrar iconos',
       filterPlaceholder: 'Buscar iconos',
       filterClearLabel: 'Borrar búsqueda',
