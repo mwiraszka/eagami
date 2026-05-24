@@ -1,0 +1,82 @@
+<div
+  class="ea-rating-field"
+  [ngClass]="hostClasses()">
+  @if (label(); as l) {
+    <label
+      class="ea-rating-field__label"
+      [class.ea-rating-field__label--required]="required()"
+      [for]="id()">
+      {{ l }}
+    </label>
+  }
+
+  <div
+    #starsEl
+    class="ea-rating-field__stars"
+    role="slider"
+    tabindex="0"
+    [id]="id()"
+    [attr.aria-label]="resolvedAriaLabel()"
+    [attr.aria-valuemin]="0"
+    [attr.aria-valuemax]="max()"
+    [attr.aria-valuenow]="value()"
+    [attr.aria-valuetext]="starAriaLabel(value())"
+    [attr.aria-readonly]="readonly() ? true : null"
+    [attr.aria-disabled]="isDisabled() ? true : null"
+    [attr.aria-describedby]="describedBy()"
+    (keydown)="onKeydown($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (pointerleave)="onPointerLeave()">
+    @for (pos of positions(); track pos) {
+      <button
+        type="button"
+        class="ea-rating-field__star"
+        [class.ea-rating-field__star--full]="stateFor(pos) === 'full'"
+        [class.ea-rating-field__star--half]="stateFor(pos) === 'half'"
+        [class.ea-rating-field__star--empty]="stateFor(pos) === 'empty'"
+        [attr.aria-label]="starAriaLabel(pos)"
+        [disabled]="!isInteractive()"
+        tabindex="-1"
+        (pointermove)="onPointerMove($event, pos)"
+        (click)="onClick($event, pos)">
+        <!--
+          Background layer is always rendered as the dim full-star outline so
+          empty positions show a visible silhouette and half positions reveal
+          the unfilled side behind the foreground.
+        -->
+        <span
+          class="ea-rating-field__star-icon ea-rating-field__star-icon--background"
+          aria-hidden="true">
+          <ng-container *ngComponentOutlet="iconClass()" />
+        </span>
+        @if (stateFor(pos) !== 'empty') {
+          <span
+            class="ea-rating-field__star-icon ea-rating-field__star-icon--foreground"
+            aria-hidden="true">
+            <ng-container
+              *ngComponentOutlet="
+                stateFor(pos) === 'half' ? halfIconClass() : iconClass()
+              " />
+          </span>
+        }
+      </button>
+    }
+  </div>
+
+  @if (showError()) {
+    <p
+      class="ea-rating-field__message ea-rating-field__message--error"
+      role="alert"
+      [id]="errorId()">
+      <ea-icon-alert-circle class="ea-rating-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  } @else if (showHint()) {
+    <p
+      class="ea-rating-field__message ea-rating-field__message--hint"
+      [id]="hintId()">
+      {{ hint() }}
+    </p>
+  }
+</div>

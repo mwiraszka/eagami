@@ -97,6 +97,11 @@ export const en: EagamiMessages = {
   progressBar: {
     label: 'Progress',
   },
+  rating: {
+    label: 'Rating',
+    valueLabel: (value, max) => `${value} of ${max}`,
+    clear: 'Clear rating',
+  },
   spinner: {
     label: 'Loading',
   },

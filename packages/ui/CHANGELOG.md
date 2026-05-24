@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add `<ea-file-uploader>`, a multi-file uploader with a drag-and-drop zone and a per-file list. Supports `accept` / `maxSize` / `maxFiles` validation (rejections emitted via a `rejected` event), a `multiple=false` single-file mode, per-file progress bars driven by a consumer-supplied `Map<File, number>`, three sizes (sm / md / lg), the standard hint / error message pattern, and Angular forms integration via `ControlValueAccessor`. The dropzone icon is exposed as a content slot via the `icon` attribute, so consumers can swap the default cloud icon for any other icon while inheriting the dropzone's size-aware sizing.
+- Add `<ea-rating>`, a star-based rating input with whole-step (default) or half-step (`allowHalf`) granularity, hover preview, keyboard navigation (Arrow keys, Home/End, digit keys, Delete/Backspace to clear), a read-only display mode, three sizes (sm / md / lg), and Angular forms integration via `ControlValueAccessor`. Surfaces as `role="slider"` with `aria-valuemin` / `aria-valuemax` / `aria-valuenow`. The default star can be swapped via the `icon` / `icon-fill` content slots (e.g. `<ea-icon-heart icon />`) and the fill clip handles half-step rendering automatically.
 
 ## [2.0.0] - 2026-05-23
 

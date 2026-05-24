@@ -98,6 +98,11 @@ export const el: EagamiMessages = {
   progressBar: {
     label: 'Πρόοδος',
   },
+  rating: {
+    label: 'Αξιολόγηση',
+    valueLabel: (value, max) => `${value} από ${max}`,
+    clear: 'Εκκαθάριση αξιολόγησης',
+  },
   spinner: {
     label: 'Φόρτωση',
   },

@@ -368,6 +368,7 @@ export * from './lib/progress-bar/progress-bar.component';
 export * from './lib/radio/radio-group.component';
 export * from './lib/radio/radio.component';
 export * from './lib/range-slider/range-slider.component';
+export * from './lib/rating/rating.component';
 export * from './lib/segmented/segmented.component';
 export * from './lib/select-option';
 export * from './lib/skeleton/skeleton.component';

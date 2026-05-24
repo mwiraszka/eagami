@@ -124,6 +124,11 @@ export interface EagamiMessages {
   progressBar: {
     label: string;
   };
+  rating: {
+    label: string;
+    valueLabel: (value: number, max: number) => string;
+    clear: string;
+  };
   spinner: {
     label: string;
   };

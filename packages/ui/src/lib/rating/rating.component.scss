@@ -1,0 +1,134 @@
+// =============================================================================
+// RATING COMPONENT
+// =============================================================================
+
+:host {
+  display: inline-block;
+}
+
+.ea-rating-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-label-size);
+    font-weight: var(--text-label-weight);
+    line-height: var(--text-label-lh);
+    color: var(--color-text-secondary);
+
+    &--required::after {
+      content: '*';
+      color: var(--color-error-default);
+    }
+  }
+
+  &__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    border-radius: var(--radius-md);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+  }
+
+  // `font-size` drives the star size: `IconComponentBase` host-binds each icon
+  // at `width/height: 1em`, so setting font-size here sizes both the button box
+  // and the icon inside. The button itself is sized to exactly 1em x 1em so
+  // there's no extra padding around the SVG. Gap scales with the font-size too
+  // (0.25em), so spacing tracks the icon size proportionally.
+  &__star {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  // Two stacked layers per star:
+  //   - background: always-rendered dim full-star outline (visible behind
+  //     half / empty states)
+  //   - foreground: filled full-star or filled half-star on top, shown when
+  //     `stateFor(pos)` is `full` or `half`
+  //
+  // Both layers are 1em x 1em (matching the icon's host-bound size) and pin
+  // to the button's top-left, so they overlap pixel-perfectly.
+  &__star-icon {
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &--background {
+      color: var(--color-text-tertiary);
+      opacity: 0.3;
+    }
+    &--foreground {
+      color: var(--color-warning-default);
+    }
+  }
+
+  &--readonly &__star,
+  &--disabled &__star {
+    cursor: default;
+  }
+
+  &--disabled {
+    opacity: 0.6;
+  }
+
+  // Sizes -----------------------------------------------------------------------
+
+  &--sm &__star {
+    font-size: 1.125rem;
+  }
+
+  &--lg &__star {
+    font-size: 2.25rem;
+  }
+
+  &--error &__stars:focus-visible {
+    box-shadow: var(--shadow-focus-ring-error);
+  }
+
+  // Hint / error message block (standard library pattern) ----------------------
+
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-helper-size);
+    font-weight: var(--text-helper-weight);
+    line-height: var(--text-helper-lh);
+
+    &--error {
+      color: var(--color-error-default);
+    }
+    &--hint {
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__message-icon {
+    flex-shrink: 0;
+    width: 0.875em;
+    height: 0.875em;
+  }
+}
