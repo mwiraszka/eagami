@@ -269,18 +269,24 @@ export interface WebMessages {
         placements: string;
         canvasSizes: string;
         cappedChipCount: string;
+        customIcon: string;
         customLabel: string;
+        halfSteps: string;
         customSize: string;
         linearFlow: string;
         manyLevels: string;
         notAnimated: string;
         outputFormats: string;
+        numberOfStars: string;
         quarterHourSteps: string;
+        readonly: string;
+        singleFile: string;
         stepped: string;
         sundayStart: string;
         twelveHourFormat: string;
         twoActions: string;
         withCompletedSteps: string;
+        withConstraints: string;
         withInitialValue: string;
         withMaxlength: string;
         withMinMaxLabels: string;
@@ -458,6 +464,17 @@ export interface WebMessages {
           clearFilters: string;
           nothingHereTitle: string;
         };
+        fileUploader: {
+          attachmentsLabel: string;
+          imagesLabel: string;
+          imagesHint: string;
+          resumeLabel: string;
+          customIconLabel: string;
+          withHintLabel: string;
+          withHintHint: string;
+          withErrorLabel: string;
+          withErrorText: string;
+        };
         input: {
           defaultLabel: string;
           enterTextPlaceholder: string;
@@ -530,6 +547,18 @@ export interface WebMessages {
           accountTypeError: string;
           personalLabel: string;
           businessLabel: string;
+        };
+        rating: {
+          experienceLabel: string;
+          halfStepsLabel: string;
+          halfStepsHint: string;
+          readonlyLabel: string;
+          withHintLabel: string;
+          withHintHint: string;
+          withErrorLabel: string;
+          withErrorText: string;
+          numberOfStarsLabel: string;
+          customIconLabel: string;
         };
         segmented: {
           viewLabel: string;

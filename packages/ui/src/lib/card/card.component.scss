@@ -2,14 +2,24 @@
 // CARD COMPONENT
 // =============================================================================
 
+// `min-width: 0` mirrors the existing `min-height: 0` baseline: as a flex /
+// grid child, the card's intrinsic content width (long copy, wide tables,
+// pre-formatted blocks) would otherwise blow past the parent track. Setting
+// `min-width: 0` on both the host and the inner div lets the parent layout
+// take precedence, so consumers don't need to write the same override in every
+// app. `max-width: 100%` reinforces the intent for non-flex parents.
 ea-card {
   display: block;
+  min-width: 0;
+  max-width: 100%;
   min-height: 0;
 }
 
 .ea-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
   min-height: 0;
   border-radius: var(--radius-lg);
   font-family: var(--font-family-sans);

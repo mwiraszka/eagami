@@ -2,6 +2,18 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.1.0] - 2026-05-24
+
+### Added
+
+- Document the new `<ea-file-uploader>` component on the `/ui/components/file-uploader` page, with demos covering the default multi-file dropzone, accept / maxSize / maxFiles constraints, single-file mode, three sizes, hint / error states, a custom-icon variant (swapping the default cloud icon for a paperclip via the new `icon` content slot), and the disabled state. All new section headings and demo strings are translated across the five locales.
+- Document the new `<ea-rating>` component on the `/ui/components/rating` page, with demos covering the default 5-star rating, half-step granularity, three sizes, read-only mode, hint / error states, a 10-star scale, a custom-icon variant (hearts via the `icon` / `icon-fill` slots), and the disabled state. All new section headings and demo strings are translated across the five locales.
+
+### Changed
+
+- Mention the new icon `[strokeWidth]` input on the `/ui/icons` page lede (translated across all five locales).
+- Remove the vertical divider between the search input and the category checkboxes on the `/ui/icons` filter card.
+
 ## [2.0.0] - 2026-05-23
 
 ### Added
@@ -398,6 +410,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.1.0]: https://github.com/mwiraszka/eagami/compare/website-v2.0.0...website-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/website-v1.5.0...website-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/website-v1.4.1...website-v1.5.0
 [1.4.1]: https://github.com/mwiraszka/eagami/compare/website-v1.4.0...website-v1.4.1

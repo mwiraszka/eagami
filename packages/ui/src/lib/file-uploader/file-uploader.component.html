@@ -1,0 +1,136 @@
+<div
+  class="ea-file-uploader-field"
+  [ngClass]="hostClasses()">
+  @if (label(); as l) {
+    <label
+      class="ea-file-uploader-field__label"
+      [class.ea-file-uploader-field__label--required]="required()"
+      [for]="id()">
+      {{ l }}
+    </label>
+  }
+
+  <input
+    #fileInputEl
+    type="file"
+    class="ea-file-uploader-field__file-input"
+    [id]="id()"
+    [multiple]="multiple()"
+    [attr.accept]="accept() ?? null"
+    [attr.required]="required() ? true : null"
+    [disabled]="isDisabled()"
+    (change)="onFileSelected($event)" />
+
+  <button
+    #dropzoneEl
+    type="button"
+    class="ea-file-uploader-field__dropzone"
+    [attr.aria-describedby]="describedBy()"
+    [attr.aria-label]="label() ?? promptText()"
+    [disabled]="isDisabled()"
+    (click)="openFilePicker()"
+    (keydown)="onDropzoneKeydown($event)"
+    (focus)="onDropzoneFocus()"
+    (blur)="onDropzoneBlur()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)">
+    <span
+      class="ea-file-uploader-field__upload-icon"
+      aria-hidden="true">
+      <ng-content select="[icon]">
+        <ea-icon-upload-cloud />
+      </ng-content>
+    </span>
+    <span class="ea-file-uploader-field__prompt">{{ promptText() }}</span>
+    @if (constraintsText(); as c) {
+      <span
+        class="ea-file-uploader-field__constraints"
+        [id]="constraintsId()">
+        {{ c }}
+      </span>
+    }
+  </button>
+
+  @if (showFileList() && value().length) {
+    <ul
+      class="ea-file-uploader-field__list"
+      [attr.aria-label]="i18n.messages().fileUploader.fileListLabel">
+      @for (file of value(); track trackFile($index, file)) {
+        <li class="ea-file-uploader-field__item">
+          <span
+            class="ea-file-uploader-field__type-icon"
+            aria-hidden="true">
+            @switch (iconKey(file)) {
+              @case ('image') {
+                <ea-icon-image />
+              }
+              @case ('film') {
+                <ea-icon-film />
+              }
+              @case ('music') {
+                <ea-icon-music />
+              }
+              @case ('archive') {
+                <ea-icon-archive />
+              }
+              @case ('text') {
+                <ea-icon-file-text />
+              }
+              @default {
+                <ea-icon-file />
+              }
+            }
+          </span>
+          <div class="ea-file-uploader-field__meta">
+            <span
+              class="ea-file-uploader-field__name"
+              [title]="file.name">
+              {{ file.name }}
+            </span>
+            <span class="ea-file-uploader-field__size">
+              {{ formatBytes(file.size) }}
+            </span>
+            @if (progressFor(file); as p) {
+              <div
+                class="ea-file-uploader-field__progress"
+                role="progressbar"
+                [attr.aria-valuenow]="p"
+                aria-valuemin="0"
+                aria-valuemax="100">
+                <div
+                  class="ea-file-uploader-field__progress-bar"
+                  [style.width.%]="p">
+                </div>
+              </div>
+            }
+          </div>
+          <button
+            type="button"
+            class="ea-file-uploader-field__remove"
+            [attr.aria-label]="i18n.messages().fileUploader.removeFile(file.name)"
+            [disabled]="isDisabled()"
+            (click)="removeFile(file)">
+            <ea-icon-x />
+          </button>
+        </li>
+      }
+    </ul>
+  }
+
+  @if (showError()) {
+    <p
+      class="ea-file-uploader-field__message ea-file-uploader-field__message--error"
+      role="alert"
+      [id]="errorId()">
+      <ea-icon-alert-circle class="ea-file-uploader-field__message-icon" />
+      {{ errorMsg() }}
+    </p>
+  } @else if (showHint()) {
+    <p
+      class="ea-file-uploader-field__message ea-file-uploader-field__message--hint"
+      [id]="hintId()">
+      {{ hint() }}
+    </p>
+  }
+</div>

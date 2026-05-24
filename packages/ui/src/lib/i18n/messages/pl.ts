@@ -58,6 +58,20 @@ export const pl: EagamiMessages = {
   dropdown: {
     placeholder: 'Wybierz…',
   },
+  fileUploader: {
+    prompt: 'Kliknij lub przeciągnij pliki tutaj, aby je przesłać',
+    promptSingle: 'Kliknij lub przeciągnij plik tutaj, aby go przesłać',
+    browse: 'Przeglądaj pliki',
+    removeFile: name => `Usuń ${name}`,
+    fileListLabel: 'Wybrane pliki',
+    constraintsAccept: accept => `Akceptowane: ${accept}`,
+    constraintsMaxSize: size => `Maks. ${size} na plik`,
+    constraintsMaxFiles: count => `Do ${count} plików`,
+    rejectionType: name => `${name} ma nieobsługiwany typ pliku`,
+    rejectionSize: (name, max) => `${name} przekracza limit ${max}`,
+    rejectionCount: max => `Można wybrać tylko ${max} plików`,
+    bytesUnit: { b: 'B', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB' },
+  },
   input: {
     showPassword: 'Pokaż hasło',
     hidePassword: 'Ukryj hasło',
@@ -83,6 +97,11 @@ export const pl: EagamiMessages = {
   },
   progressBar: {
     label: 'Postęp',
+  },
+  rating: {
+    label: 'Ocena',
+    valueLabel: (value, max) => `${value} z ${max}`,
+    clear: 'Wyczyść ocenę',
   },
   spinner: {
     label: 'Ładowanie',

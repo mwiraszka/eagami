@@ -58,6 +58,20 @@ export const el: EagamiMessages = {
   dropdown: {
     placeholder: 'Επιλέξτε…',
   },
+  fileUploader: {
+    prompt: 'Κάντε κλικ ή σύρετε αρχεία εδώ για μεταφόρτωση',
+    promptSingle: 'Κάντε κλικ ή σύρετε ένα αρχείο εδώ για μεταφόρτωση',
+    browse: 'Περιήγηση αρχείων',
+    removeFile: name => `Αφαίρεση ${name}`,
+    fileListLabel: 'Επιλεγμένα αρχεία',
+    constraintsAccept: accept => `Αποδεκτά: ${accept}`,
+    constraintsMaxSize: size => `Μέγ. ${size} ανά αρχείο`,
+    constraintsMaxFiles: count => `Έως ${count} αρχεία`,
+    rejectionType: name => `Το ${name} έχει μη υποστηριζόμενο τύπο αρχείου`,
+    rejectionSize: (name, max) => `Το ${name} υπερβαίνει το όριο των ${max}`,
+    rejectionCount: max => `Μπορούν να επιλεγούν μόνο ${max} αρχεία`,
+    bytesUnit: { b: 'B', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB' },
+  },
   input: {
     showPassword: 'Εμφάνιση κωδικού πρόσβασης',
     hidePassword: 'Απόκρυψη κωδικού πρόσβασης',
@@ -83,6 +97,11 @@ export const el: EagamiMessages = {
   },
   progressBar: {
     label: 'Πρόοδος',
+  },
+  rating: {
+    label: 'Αξιολόγηση',
+    valueLabel: (value, max) => `${value} από ${max}`,
+    clear: 'Εκκαθάριση αξιολόγησης',
   },
   spinner: {
     label: 'Φόρτωση',

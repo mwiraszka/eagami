@@ -11,7 +11,7 @@ import { IconCategory, IconComponentBase } from './icon-category';
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
+      [attr.stroke-width]="strokeWidth()"
       stroke-linecap="round"
       stroke-linejoin="round"
       aria-hidden="true"

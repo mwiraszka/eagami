@@ -25,6 +25,8 @@ import {
   Edit2IconComponent,
   EmptyStateComponent,
   FileIconComponent,
+  FileUploaderComponent,
+  HeartIconComponent,
   InputComponent,
   MenuComponent,
   MenuItemComponent,
@@ -33,6 +35,7 @@ import {
   MultiSelectComponent,
   PaginatorComponent,
   PaginatorState,
+  PaperclipIconComponent,
   PopoverComponent,
   PopoverPlacement,
   ProgressBarComponent,
@@ -40,6 +43,7 @@ import {
   RadioGroupComponent,
   RangeSliderComponent,
   RangeSliderValue,
+  RatingComponent,
   SearchIconComponent,
   SegmentedComponent,
   SelectOption,
@@ -103,6 +107,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     Edit2IconComponent,
     EmptyStateComponent,
     FileIconComponent,
+    FileUploaderComponent,
     InputComponent,
     MenuComponent,
     MenuItemComponent,
@@ -110,11 +115,13 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     MoreHorizontalIconComponent,
     MultiSelectComponent,
     PaginatorComponent,
+    PaperclipIconComponent,
     PopoverComponent,
     ProgressBarComponent,
     RadioComponent,
     RadioGroupComponent,
     RangeSliderComponent,
+    RatingComponent,
     RouterLink,
     SearchIconComponent,
     SegmentedComponent,
@@ -173,6 +180,7 @@ export class UiComponentPageComponent {
   protected readonly radioValue = signal('');
   protected readonly dropdownValue = signal('');
   protected readonly multiSelectValue = signal<readonly string[]>([]);
+  protected readonly fileUploaderValue = signal<readonly File[]>([]);
   protected readonly datePickerValue = signal<Date | null>(null);
   protected readonly datePickerMin = new Date(
     new Date().setDate(new Date().getDate() - 7),
@@ -189,6 +197,9 @@ export class UiComponentPageComponent {
   protected readonly switchValue = signal(false);
   protected readonly sliderValue = signal(40);
   protected readonly rangeSliderValue = signal<RangeSliderValue>([20, 80]);
+  protected readonly ratingValue = signal(3);
+  /** Exposed for the rating's `[iconClass]` custom-icon demo binding. */
+  protected readonly HeartIconComponent = HeartIconComponent;
   protected readonly timePickerValue = signal<string | null>(null);
   protected readonly segmentedValue = signal('list');
   protected readonly textareaValue = signal('');
