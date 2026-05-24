@@ -28,13 +28,7 @@ class HostComponent {
   errorMsg: string | undefined = undefined;
 }
 
-// TODO(a11y): the rating renders interactive star elements inside a parent
-// `<div role="slider" tabindex="0">`. axe flags this as `nested-interactive`
-// because focusable descendants exist inside an interactive container.
-// Restore once the rating either suppresses focusability on the inner stars
-// (e.g. `tabindex` removed and `aria-hidden="true"`) or restructures the
-// slider role so the stars are presentational only.
-describe.skip('RatingComponent a11y', () => {
+describe('RatingComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],

@@ -29,15 +29,19 @@
     (blur)="onBlur()"
     (pointerleave)="onPointerLeave()">
     @for (pos of positions(); track pos) {
-      <button
-        type="button"
+      <!--
+        Stars are presentational click targets. The parent
+        `<div role="slider">` is the canonical interactive element (keyboard
+        and AT navigation flows through it); using `<button>` here would
+        nest two interactive controls and trip axe's `nested-interactive`.
+      -->
+      <span
+        role="presentation"
         class="ea-rating-field__star"
         [class.ea-rating-field__star--full]="stateFor(pos) === 'full'"
         [class.ea-rating-field__star--half]="stateFor(pos) === 'half'"
         [class.ea-rating-field__star--empty]="stateFor(pos) === 'empty'"
-        [attr.aria-label]="starAriaLabel(pos)"
-        [disabled]="!isInteractive()"
-        tabindex="-1"
+        [class.ea-rating-field__star--inert]="!isInteractive()"
         (pointermove)="onPointerMove($event, pos)"
         (click)="onClick($event, pos)">
         <!--
@@ -61,7 +65,7 @@
               " />
           </span>
         }
-      </button>
+      </span>
     }
   </div>
 

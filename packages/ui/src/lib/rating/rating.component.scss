@@ -52,12 +52,12 @@
     height: 1em;
     padding: 0;
     font-size: 1.5rem;
-    border: none;
     background: transparent;
     cursor: pointer;
     transition: var(--transition-colors);
 
-    &:disabled {
+    &--inert {
+      pointer-events: none;
       cursor: default;
     }
   }

@@ -7,7 +7,7 @@ describe('RatingComponent', () => {
   let fixture: ComponentFixture<RatingComponent>;
   let component: RatingComponent;
 
-  function getStars(): HTMLButtonElement[] {
+  function getStars(): HTMLElement[] {
     return Array.from(fixture.nativeElement.querySelectorAll('.ea-rating-field__star'));
   }
 

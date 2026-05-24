@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Route `<ea-button>` variant colours through CSS custom properties so consumers can recolour any single button without overriding `--color-brand-*` or `--color-text-inverse` globally. `--ea-button-background-color`, `--ea-button-color`, and `--ea-button-border-color` (and matching `*-hover` / `*-active` per-state tokens) override the variant defaults; each per-state token falls back to its base counterpart before the variant default so setting a single base colour produces a flat-coloured button across all states.
 - Expose `--ea-empty-state-title-font-weight`, `--ea-empty-state-description-color`, and `--ea-empty-state-media-color` on `<ea-empty-state>` so consumers can fine-tune the title weight, description text colour, and media-area icon colour without piercing view encapsulation.
 
+### Fixed
+
+- Replace the focusable `<button>` star elements in `<ea-rating>` with presentational spans, so the `role="slider"` container no longer nests interactive descendants. Mouse click and keyboard navigation behaviour is unchanged.
+
 ## [2.1.0] - 2026-05-24
 
 ### Added
