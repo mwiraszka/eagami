@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-05-24
+
+### Added
+
+- Add `[hasError]` boolean input to `<ea-slider>` so consumers rendering the error message themselves (above the slider, in a surrounding form layout) can still trigger the built-in error recolour of the fill and thumb. The flag is OR'd with the implicit error state derived from `errorMsg`, so existing usage is unchanged.
+
+### Changed
+
+- Route `<ea-button>` variant colours through CSS custom properties so consumers can recolour any single button without overriding `--color-brand-*` or `--color-text-inverse` globally. `--ea-button-background-color`, `--ea-button-color`, and `--ea-button-border-color` (and matching `*-hover` / `*-active` per-state tokens) override the variant defaults; each per-state token falls back to its base counterpart before the variant default so setting a single base colour produces a flat-coloured button across all states.
+- Expose `--ea-empty-state-title-font-weight`, `--ea-empty-state-description-color`, and `--ea-empty-state-media-color` on `<ea-empty-state>` so consumers can fine-tune the title weight, description text colour, and media-area icon colour without piercing view encapsulation.
+
 ## [2.1.0] - 2026-05-24
 
 ### Added
@@ -507,6 +518,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[2.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.1.0...ui-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0
