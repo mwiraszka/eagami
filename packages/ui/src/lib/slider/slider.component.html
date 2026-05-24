@@ -38,7 +38,7 @@
         [attr.aria-valuetext]="formatValue()(clampedValue())"
         [attr.aria-disabled]="isDisabled() || null"
         [attr.aria-required]="required() || null"
-        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-invalid]="errored() || null"
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
