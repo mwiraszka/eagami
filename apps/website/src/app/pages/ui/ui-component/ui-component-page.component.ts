@@ -108,7 +108,6 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     EmptyStateComponent,
     FileIconComponent,
     FileUploaderComponent,
-    HeartIconComponent,
     InputComponent,
     MenuComponent,
     MenuItemComponent,
