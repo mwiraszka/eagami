@@ -1,0 +1,56 @@
+<web-ui-component-demo-layout slug="time-picker">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-time-picker
+    label="Time"
+    [(value)]="timePickerValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withInitialValue }}</h2>
+  <ea-time-picker
+    label="Start time"
+    value="09:30" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.twelveHourFormat }}</h2>
+  <ea-time-picker
+    label="Time (12h)"
+    format="12h"
+    value="14:30" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withSeconds }}</h2>
+  <ea-time-picker
+    label="Precise time"
+    [includeSeconds]="true"
+    value="14:30:45" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.quarterHourSteps }}</h2>
+  <ea-time-picker
+    label="Meeting slot"
+    [minuteStep]="15"
+    value="09:00" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <div class="demo-stack">
+    <ea-time-picker
+      label="With hint"
+      hint="Hours and minutes, 24-hour clock" />
+    <ea-time-picker
+      label="With error"
+      errorMsg="This field is required" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-time-picker
+    size="sm"
+    [label]="messages().ui.component.common.small" />
+  <ea-time-picker
+    size="md"
+    [label]="messages().ui.component.common.medium" />
+  <ea-time-picker
+    size="lg"
+    [label]="messages().ui.component.common.large" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <ea-time-picker
+    [label]="messages().ui.component.common.disabled"
+    [disabled]="true"
+    value="14:30" />
+</web-ui-component-demo-layout>

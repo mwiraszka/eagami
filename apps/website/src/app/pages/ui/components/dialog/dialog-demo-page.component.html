@@ -1,0 +1,21 @@
+<web-ui-component-demo-layout slug="dialog">
+  <ea-button (clicked)="dialogOpen.set(true)">
+    {{ messages().ui.component.demos.dialog.openButton }}
+  </ea-button>
+  <ea-dialog [(open)]="dialogOpen">
+    <span slot="header">
+      {{ messages().ui.component.demos.dialog.title }}
+    </span>
+    <p>{{ messages().ui.component.demos.dialog.body }}</p>
+    <span slot="footer">
+      <ea-button
+        variant="secondary"
+        (clicked)="dialogOpen.set(false)">
+        {{ messages().ui.component.common.cancel }}
+      </ea-button>
+      <ea-button (clicked)="dialogOpen.set(false)">
+        {{ messages().ui.component.common.confirm }}
+      </ea-button>
+    </span>
+  </ea-dialog>
+</web-ui-component-demo-layout>

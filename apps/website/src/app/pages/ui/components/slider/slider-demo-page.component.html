@@ -1,0 +1,61 @@
+<web-ui-component-demo-layout slug="slider">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-slider
+    [label]="messages().ui.component.demos.slider.volumeLabel"
+    [showValue]="true"
+    [(value)]="sliderValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.minMaxLabels }}</h2>
+  <ea-slider
+    [label]="messages().ui.component.demos.slider.brightnessLabel"
+    [min]="0"
+    [max]="100"
+    [step]="5"
+    [value]="65"
+    [showValue]="true"
+    [showMinMaxLabels]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.stepped }}</h2>
+  <ea-slider
+    label="Rating"
+    [min]="0"
+    [max]="10"
+    [step]="1"
+    [value]="5"
+    [showValue]="true"
+    [showMinMaxLabels]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-slider
+    [label]="messages().ui.component.common.small"
+    size="sm"
+    [value]="30"
+    [showValue]="true" />
+  <ea-slider
+    [label]="messages().ui.component.common.medium"
+    size="md"
+    [value]="50"
+    [showValue]="true" />
+  <ea-slider
+    [label]="messages().ui.component.common.large"
+    size="lg"
+    [value]="70"
+    [showValue]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
+  <ea-slider
+    [label]="messages().ui.component.demos.slider.withHintLabel"
+    [hint]="messages().ui.component.demos.slider.sliderHint"
+    [value]="35"
+    [showValue]="true" />
+  <ea-slider
+    [label]="messages().ui.component.demos.slider.withErrorLabel"
+    [errorMsg]="messages().ui.component.demos.slider.sliderError"
+    [value]="20"
+    [showValue]="true" />
+  <ea-slider
+    [label]="messages().ui.component.common.disabled"
+    [disabled]="true"
+    [value]="60"
+    [showValue]="true" />
+</web-ui-component-demo-layout>

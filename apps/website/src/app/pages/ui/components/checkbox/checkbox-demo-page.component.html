@@ -1,0 +1,48 @@
+<web-ui-component-demo-layout slug="checkbox">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-checkbox
+    [label]="messages().ui.component.demos.checkbox.acceptTermsAndConditions"
+    [(checked)]="checkboxValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-row">
+    <ea-checkbox
+      size="sm"
+      [label]="messages().ui.component.common.small" />
+    <ea-checkbox
+      size="md"
+      [label]="messages().ui.component.common.medium" />
+    <ea-checkbox
+      size="lg"
+      [label]="messages().ui.component.common.large" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
+  <div class="demo-row">
+    <ea-checkbox
+      [label]="messages().ui.component.common.disabled"
+      [disabled]="true" />
+    <ea-checkbox
+      [label]="messages().ui.component.demos.checkbox.disabledChecked"
+      [disabled]="true"
+      [checked]="true" />
+    <ea-checkbox
+      [label]="messages().ui.component.demos.checkbox.indeterminate"
+      [indeterminate]="true" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.required }}</h2>
+  <ea-checkbox
+    [label]="messages().ui.component.demos.checkbox.iAgreeToTerms"
+    [required]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
+  <ea-checkbox
+    [label]="messages().ui.component.demos.checkbox.subscribeToUpdates"
+    [hint]="messages().ui.component.demos.checkbox.subscribeHint" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
+  <ea-checkbox
+    [label]="messages().ui.component.demos.checkbox.acceptTermsLabel"
+    [errorMsg]="messages().ui.component.demos.checkbox.acceptTermsError" />
+</web-ui-component-demo-layout>

@@ -1,0 +1,34 @@
+<web-ui-component-demo-layout slug="code-input">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-code-input
+    [label]="messages().ui.component.demos.codeInput.verificationCodeLabel"
+    [hint]="messages().ui.component.demos.codeInput.verificationCodeHint"
+    [(value)]="codeInputValue" />
+
+  <h2>{{ messages().ui.component.common.errorLabel }}</h2>
+  <ea-code-input
+    [label]="messages().ui.component.demos.codeInput.verificationCodeLabel"
+    [errorMsg]="messages().ui.component.demos.codeInput.verificationCodeError" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-code-input
+    size="sm"
+    [label]="messages().ui.component.common.small" />
+  <ea-code-input
+    size="md"
+    [label]="messages().ui.component.common.medium" />
+  <ea-code-input
+    size="lg"
+    [label]="messages().ui.component.common.large" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.fourDigitPin }}</h2>
+  <ea-code-input
+    [label]="messages().ui.component.demos.codeInput.pinLabel"
+    [length]="4"
+    [hint]="messages().ui.component.demos.codeInput.pinHint" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <ea-code-input
+    [label]="messages().ui.component.demos.codeInput.verificationCodeLabel"
+    [disabled]="true" />
+</web-ui-component-demo-layout>

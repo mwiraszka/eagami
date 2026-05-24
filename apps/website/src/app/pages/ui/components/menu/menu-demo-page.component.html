@@ -1,0 +1,74 @@
+<web-ui-component-demo-layout slug="menu">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-button
+    [eaMenuTrigger]="basicMenu"
+    variant="secondary">
+    {{ messages().ui.component.demos.menu.actions }}
+  </ea-button>
+  <ea-menu #basicMenu>
+    <ea-menu-item>{{ messages().ui.component.demos.menu.edit }}</ea-menu-item>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.duplicate }}
+    </ea-menu-item>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.archive }}
+    </ea-menu-item>
+    <ea-menu-item variant="danger">
+      {{ messages().ui.component.demos.menu.delete }}
+    </ea-menu-item>
+  </ea-menu>
+
+  <h2>{{ messages().ui.component.sectionHeadings.withIcons }}</h2>
+  <ea-button
+    [eaMenuTrigger]="iconMenu"
+    variant="secondary">
+    {{ messages().ui.component.demos.menu.file }}
+  </ea-button>
+  <ea-menu #iconMenu>
+    <ea-menu-item>
+      <ea-icon-edit-2 slot="icon" />
+      {{ messages().ui.component.demos.menu.edit }}
+    </ea-menu-item>
+    <ea-menu-item variant="danger">
+      <ea-icon-trash slot="icon" />
+      {{ messages().ui.component.demos.menu.delete }}
+    </ea-menu-item>
+  </ea-menu>
+
+  <h2>{{ messages().ui.component.sectionHeadings.iconTrigger }}</h2>
+  <ea-button
+    [eaMenuTrigger]="iconTriggerMenu"
+    variant="ghost"
+    size="sm"
+    [aria-label]="messages().ui.component.demos.menu.moreOptionsLabel">
+    <ea-icon-more-horizontal />
+  </ea-button>
+  <ea-menu #iconTriggerMenu>
+    <ea-menu-item>{{ messages().ui.component.demos.menu.view }}</ea-menu-item>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.rename }}
+    </ea-menu-item>
+    <ea-menu-item variant="danger">
+      {{ messages().ui.component.demos.menu.delete }}
+    </ea-menu-item>
+  </ea-menu>
+
+  <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
+  <ea-button
+    [eaMenuTrigger]="fileMenu"
+    variant="secondary">
+    {{ messages().ui.component.demos.menu.file }}
+  </ea-button>
+  <ea-menu #fileMenu>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.newItem }}
+    </ea-menu-item>
+    <ea-menu-item>{{ messages().ui.component.demos.menu.open }}</ea-menu-item>
+    <ea-menu-item [disabled]="true">
+      {{ messages().ui.component.demos.menu.saveUnavailable }}
+    </ea-menu-item>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.saveAs }}
+    </ea-menu-item>
+  </ea-menu>
+</web-ui-component-demo-layout>

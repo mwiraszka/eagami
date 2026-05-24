@@ -1,0 +1,40 @@
+<web-ui-component-demo-layout slug="accordion">
+  <h2>{{ messages().ui.component.sectionHeadings.single }}</h2>
+  <ea-accordion>
+    <ea-accordion-item
+      value="what"
+      [label]="messages().ui.component.demos.accordion.whatLabel">
+      {{ messages().ui.component.demos.accordion.whatBody }}
+    </ea-accordion-item>
+    <ea-accordion-item
+      value="install"
+      [label]="messages().ui.component.demos.accordion.installLabel">
+      {{ messages().ui.component.demos.accordion.installBody }}
+    </ea-accordion-item>
+    <ea-accordion-item
+      value="theme"
+      [label]="messages().ui.component.demos.accordion.themeLabel">
+      {{ messages().ui.component.demos.accordion.themeBody }}
+    </ea-accordion-item>
+  </ea-accordion>
+
+  <h2>{{ messages().ui.component.sectionHeadings.multi }}</h2>
+  <ea-accordion [multi]="true">
+    <ea-accordion-item
+      value="one"
+      [label]="messages().ui.component.demos.accordion.sectionOneLabel">
+      {{ messages().ui.component.demos.accordion.sectionOneBody }}
+    </ea-accordion-item>
+    <ea-accordion-item
+      value="two"
+      [label]="messages().ui.component.demos.accordion.sectionTwoLabel">
+      {{ messages().ui.component.demos.accordion.sectionTwoBody }}
+    </ea-accordion-item>
+    <ea-accordion-item
+      value="disabled"
+      [label]="messages().ui.component.demos.accordion.disabledSectionLabel"
+      [disabled]="true">
+      {{ messages().ui.component.demos.accordion.disabledSectionBody }}
+    </ea-accordion-item>
+  </ea-accordion>
+</web-ui-component-demo-layout>

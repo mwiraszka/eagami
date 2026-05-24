@@ -1,0 +1,30 @@
+<web-ui-component-demo-layout slug="toast">
+  <h2>{{ messages().ui.component.sectionHeadings.trigger }}</h2>
+  <div class="demo-row">
+    <ea-button
+      variant="secondary"
+      (clicked)="showToast('default')">
+      {{ messages().ui.component.common.defaultLabel }}
+    </ea-button>
+    <ea-button
+      variant="secondary"
+      (clicked)="showToast('success')">
+      {{ messages().ui.component.common.successLabel }}
+    </ea-button>
+    <ea-button
+      variant="secondary"
+      (clicked)="showToast('warning')">
+      {{ messages().ui.component.common.warningLabel }}
+    </ea-button>
+    <ea-button
+      variant="secondary"
+      (clicked)="showToast('error')">
+      {{ messages().ui.component.common.errorLabel }}
+    </ea-button>
+    <ea-button
+      variant="secondary"
+      (clicked)="showToast('info')">
+      {{ messages().ui.component.common.infoLabel }}
+    </ea-button>
+  </div>
+</web-ui-component-demo-layout>

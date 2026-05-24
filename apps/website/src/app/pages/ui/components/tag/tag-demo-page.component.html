@@ -1,0 +1,71 @@
+<web-ui-component-demo-layout slug="tag">
+  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
+  <div class="demo-row">
+    <ea-tag variant="default">
+      {{ messages().ui.component.common.defaultLabel }}
+    </ea-tag>
+    <ea-tag variant="success">
+      {{ messages().ui.component.common.successLabel }}
+    </ea-tag>
+    <ea-tag variant="warning">
+      {{ messages().ui.component.common.warningLabel }}
+    </ea-tag>
+    <ea-tag variant="error">
+      {{ messages().ui.component.common.errorLabel }}
+    </ea-tag>
+    <ea-tag variant="info">
+      {{ messages().ui.component.common.infoLabel }}
+    </ea-tag>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-row">
+    <ea-tag size="sm">{{ messages().ui.component.common.small }}</ea-tag>
+    <ea-tag size="md">{{ messages().ui.component.common.medium }}</ea-tag>
+    <ea-tag size="lg">{{ messages().ui.component.common.large }}</ea-tag>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.removable }}</h2>
+  <div class="demo-row">
+    <ea-tag
+      variant="default"
+      [removable]="true">
+      {{ messages().ui.component.common.defaultLabel }}
+    </ea-tag>
+    <ea-tag
+      variant="success"
+      [removable]="true">
+      {{ messages().ui.component.common.successLabel }}
+    </ea-tag>
+    <ea-tag
+      variant="warning"
+      [removable]="true">
+      {{ messages().ui.component.common.warningLabel }}
+    </ea-tag>
+    <ea-tag
+      variant="error"
+      [removable]="true">
+      {{ messages().ui.component.common.errorLabel }}
+    </ea-tag>
+    <ea-tag
+      variant="info"
+      [removable]="true">
+      {{ messages().ui.component.common.infoLabel }}
+    </ea-tag>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <div class="demo-row">
+    <ea-tag
+      [removable]="true"
+      [disabled]="true">
+      {{ messages().ui.component.common.disabled }}
+    </ea-tag>
+    <ea-tag
+      variant="success"
+      [removable]="true"
+      [disabled]="true">
+      {{ messages().ui.component.demos.tag.disabledSuccess }}
+    </ea-tag>
+  </div>
+</web-ui-component-demo-layout>

@@ -1,0 +1,17 @@
+/* Sized columns and centered as a unit so the 2×2 button cluster stays
+   anchored in the middle of the card on any viewport. `max-content` lets
+   each column shrink to its button width — without it, narrow viewports
+   would stretch the columns and push the buttons toward the card edges. */
+.demo-tooltip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  gap: 8px;
+}
+
+.demo-tooltip-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}

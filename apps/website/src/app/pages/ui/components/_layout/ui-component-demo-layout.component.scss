@@ -1,0 +1,39 @@
+@use 'mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+.ui-component {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 880px;
+}
+
+.ui-component__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ui-component__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.ui-component__selector {
+  font-size: 14px;
+
+  code {
+    @include mixins.code-chip;
+    color: var(--color-text-secondary);
+  }
+}
+
+.ui-component__demo {
+  width: 100%;
+}
