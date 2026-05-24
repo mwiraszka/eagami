@@ -411,6 +411,7 @@ export const el: WebMessages = {
         withMinMaxLabels: 'με ετικέτες ελάχ./μέγ.',
         withOptionalStep: 'με προαιρετικό βήμα',
         withSeconds: 'με δευτερόλεπτα',
+        withSelection: 'με επιλογή',
         withoutAlpha: 'χωρίς άλφα',
         withoutSearch: 'χωρίς αναζήτηση',
         withoutSelectAll: 'χωρίς «επιλογή όλων»',

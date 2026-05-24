@@ -156,6 +156,10 @@ export interface EagamiMessages {
   toast: {
     dismiss: string;
   };
+  tree: {
+    expand: string;
+    collapse: string;
+  };
   wordmark: {
     overline: string;
     tagline: string;

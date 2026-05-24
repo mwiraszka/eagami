@@ -1,0 +1,106 @@
+:host {
+  display: block;
+}
+
+.ea-tree-node {
+  display: block;
+  // Roving tabindex: each treeitem has tabindex=0 only when focused. Suppress
+  // the default outline so the row's `:focus-visible` ring is consistent.
+  outline: none;
+  list-style: none;
+}
+
+.ea-tree-node__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  // Indentation is driven by `--ea-tree-node-level` (set inline per row).
+  // The `--ea-tree-indent` token controls the indent step and can be
+  // overridden per `<ea-tree>` host.
+  padding: var(--ea-tree-row-padding-block, var(--space-1))
+    var(--ea-tree-row-padding-inline, var(--space-2));
+  padding-inline-start: calc(
+    var(--ea-tree-row-padding-inline, var(--space-2)) + var(--ea-tree-node-level) *
+      var(--ea-tree-indent, var(--space-4))
+  );
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition-colors);
+}
+
+// The whole treeitem is focusable (roving tabindex), so the focus ring lives
+// on the row container — visually anchored to the visible content rather than
+// the `<li>` element which extends to wrap descendants.
+.ea-tree-node:focus-visible {
+  & > .ea-tree-node__row {
+    box-shadow: var(--shadow-focus-ring);
+  }
+}
+
+.ea-tree-node__row:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.ea-tree-node--selected > .ea-tree-node__row {
+  background-color: var(--color-bg-selected, var(--color-brand-subtle));
+  color: var(--color-text-on-selected, var(--color-text-primary));
+}
+
+.ea-tree-node--disabled > .ea-tree-node__row {
+  opacity: 0.6;
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.ea-tree-node__chevron,
+.ea-tree-node__chevron-spacer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.ea-tree-node__chevron {
+  cursor: pointer;
+  transition: transform var(--motion-duration-fast) var(--motion-easing-standard);
+
+  &--open {
+    transform: rotate(90deg);
+  }
+}
+
+.ea-tree-node__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.ea-tree-node__label {
+  font-size: inherit;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 0;
+  flex: 1;
+}
+
+.ea-tree-node__children {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

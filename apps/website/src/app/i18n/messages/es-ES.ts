@@ -408,6 +408,7 @@ export const esES: WebMessages = {
         withMinMaxLabels: 'con etiquetas mín/máx',
         withOptionalStep: 'con paso opcional',
         withSeconds: 'con segundos',
+        withSelection: 'con selección',
         withoutAlpha: 'sin alfa',
         withoutSearch: 'sin búsqueda',
         withoutSelectAll: 'sin seleccionar todo',

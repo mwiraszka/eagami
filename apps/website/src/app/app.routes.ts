@@ -349,6 +349,13 @@ export const routes: Routes = [
             c => c.TooltipDemoPageComponent,
           ),
       },
+      {
+        path: 'components/tree',
+        loadComponent: () =>
+          import('./pages/ui/components/tree/tree-demo-page.component').then(
+            c => c.TreeDemoPageComponent,
+          ),
+      },
     ],
   },
   {

@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.ea-tree__list {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--ea-tree-background-color, transparent);
+  color: var(--color-text-primary);
+  list-style: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+// Per-size font scales. Indent step and row padding scale with the font size
+// so the tree reads as a single visual unit at any size.
+.ea-tree--sm {
+  --ea-tree-indent: var(--space-3);
+  --ea-tree-row-padding-block: var(--space-1);
+  --ea-tree-row-padding-inline: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.ea-tree--md {
+  --ea-tree-indent: var(--space-4);
+  --ea-tree-row-padding-block: var(--space-2);
+  --ea-tree-row-padding-inline: var(--space-2);
+  font-size: var(--font-size-md);
+}
+
+.ea-tree--lg {
+  --ea-tree-indent: var(--space-4);
+  --ea-tree-row-padding-block: var(--space-2);
+  --ea-tree-row-padding-inline: var(--space-3);
+  font-size: var(--font-size-lg);
+}
+
+.ea-tree--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

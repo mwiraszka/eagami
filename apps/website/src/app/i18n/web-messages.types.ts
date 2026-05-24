@@ -292,6 +292,7 @@ export interface WebMessages {
         withMinMaxLabels: string;
         withOptionalStep: string;
         withSeconds: string;
+        withSelection: string;
         withoutAlpha: string;
         withoutSearch: string;
         withoutSelectAll: string;

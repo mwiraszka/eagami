@@ -4,9 +4,14 @@ All notable changes to eagami.com are documented in this file.
 
 ## [2.2.0] - 2026-05-24
 
+### Added
+
+- Document the new `<ea-tree>` component on the `/ui/components/tree` page, with demos covering the default collapsed file tree, a selection-driven auto-expand, three sizes, an org-chart variant with a disabled node, and the disabled state. New `with selection` section heading translated across the five locales.
+
 ### Changed
 
 - Pick up @eagami/ui v2.2.0.
+- Restructure the components page so each `<ea-*>` lives on its own per-component route (`/ui/components/<slug>`) under a shared layout, instead of a single switch over the slug. URL surface is unchanged.
 
 ## [2.1.0] - 2026-05-24
 

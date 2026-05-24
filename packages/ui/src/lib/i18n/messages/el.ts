@@ -130,6 +130,10 @@ export const el: EagamiMessages = {
   toast: {
     dismiss: 'Απόρριψη',
   },
+  tree: {
+    expand: 'Ανάπτυξη',
+    collapse: 'Σύμπτυξη',
+  },
   wordmark: {
     overline: 'φτιαγμένο με μεράκι από',
     tagline: 'κομψός σχεδιασμός ιστού',

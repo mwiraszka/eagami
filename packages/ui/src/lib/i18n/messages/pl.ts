@@ -130,6 +130,10 @@ export const pl: EagamiMessages = {
   toast: {
     dismiss: 'Zamknij',
   },
+  tree: {
+    expand: 'Rozwiń',
+    collapse: 'Zwiń',
+  },
   wordmark: {
     overline: 'ręcznie wykonane przez',
     tagline: 'elegancki projekt stron',
