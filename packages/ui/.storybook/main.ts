@@ -20,7 +20,7 @@ function resolveLoader(name: string): string {
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-docs'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
   framework: '@storybook/angular',
   webpackFinal: async config => {
     const storybookDir = dirname(fileURLToPath(import.meta.url));
