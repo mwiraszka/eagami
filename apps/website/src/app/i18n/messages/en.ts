@@ -761,6 +761,16 @@ export const en: WebMessages = {
           rightLabel: 'Right',
           rightTooltip: 'Right tooltip',
         },
+        transferList: {
+          availableLabel: 'Available',
+          assignedLabel: 'Assigned',
+          roleAdmin: 'Admin',
+          roleEditor: 'Editor',
+          roleViewer: 'Viewer',
+          roleGuest: 'Guest',
+          roleBilling: 'Billing',
+          roleOwner: 'Owner',
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar updated',
         },

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add `<ea-transfer-list>`, a two-pane shuttle control for moving items between a source set and a target set. Each pane is a `role="listbox"` with `aria-multiselectable="true"`; rows highlight on click and four direction buttons (move-selected and move-all in each direction) reconcile the panes against a `selectedIds` model. Disabled items per row stay anchored to their current pane and are skipped by the move-all buttons. Three sizes (sm / md / lg) and a whole-component `disabled` flag.
 - Add `<ea-tree>`, a hierarchical single-selection treeview with full keyboard navigation (Arrow keys, Home / End, Enter / Space), the standard ARIA `tree` pattern (roving `tabindex`, `aria-level` / `aria-posinset` / `aria-setsize` / `aria-expanded` / `aria-selected`), three sizes (sm / md / lg), optional per-node leading icons, a disabled flag per node and at the tree level, and `selectedId` / `expandedIds` model signals for two-way binding. Setting `[selectedId]` for a deeply-nested node auto-expands the ancestor chain so the selection becomes visible.
 - Add `[hasError]` boolean input to `<ea-slider>` so consumers rendering the error message themselves (above the slider, in a surrounding form layout) can still trigger the built-in error recolour of the fill and thumb. The flag is OR'd with the implicit error state derived from `errorMsg`, so existing usage is unchanged.
 

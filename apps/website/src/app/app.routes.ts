@@ -350,6 +350,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/transfer-list',
+        loadComponent: () =>
+          import('./pages/ui/components/transfer-list/transfer-list-demo-page.component').then(
+            c => c.TransferListDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/tree',
         loadComponent: () =>
           import('./pages/ui/components/tree/tree-demo-page.component').then(

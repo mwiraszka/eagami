@@ -779,6 +779,16 @@ export const el: WebMessages = {
           rightLabel: 'Δεξιά',
           rightTooltip: 'Υπόδειξη δεξιά',
         },
+        transferList: {
+          availableLabel: 'Διαθέσιμοι',
+          assignedLabel: 'Ανατεθειμένοι',
+          roleAdmin: 'Διαχειριστής',
+          roleEditor: 'Συντάκτης',
+          roleViewer: 'Αναγνώστης',
+          roleGuest: 'Επισκέπτης',
+          roleBilling: 'Χρεώσεις',
+          roleOwner: 'Ιδιοκτήτης',
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Το avatar ενημερώθηκε',
         },

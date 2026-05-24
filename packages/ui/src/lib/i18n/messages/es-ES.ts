@@ -130,6 +130,16 @@ export const esES: EagamiMessages = {
   toast: {
     dismiss: 'Descartar',
   },
+  transferList: {
+    sourceLabel: 'Disponibles',
+    targetLabel: 'Seleccionados',
+    controlsLabel: 'Controles de transferencia',
+    moveSelectedToTarget: 'Mover seleccionados al destino',
+    moveAllToTarget: 'Mover todos al destino',
+    moveSelectedToSource: 'Mover seleccionados al origen',
+    moveAllToSource: 'Mover todos al origen',
+    empty: 'Sin elementos',
+  },
   tree: {
     expand: 'Expandir',
     collapse: 'Contraer',

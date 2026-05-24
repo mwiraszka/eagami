@@ -781,6 +781,16 @@ export const frFR: WebMessages = {
           rightLabel: 'Droite',
           rightTooltip: 'Infobulle à droite',
         },
+        transferList: {
+          availableLabel: 'Disponibles',
+          assignedLabel: 'Attribués',
+          roleAdmin: 'Administrateur',
+          roleEditor: 'Éditeur',
+          roleViewer: 'Lecteur',
+          roleGuest: 'Invité',
+          roleBilling: 'Facturation',
+          roleOwner: 'Propriétaire',
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar mis à jour',
         },

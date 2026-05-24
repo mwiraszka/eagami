@@ -772,6 +772,16 @@ export const esES: WebMessages = {
           rightLabel: 'Derecha',
           rightTooltip: 'Descripción derecha',
         },
+        transferList: {
+          availableLabel: 'Disponibles',
+          assignedLabel: 'Asignados',
+          roleAdmin: 'Administrador',
+          roleEditor: 'Editor',
+          roleViewer: 'Lector',
+          roleGuest: 'Invitado',
+          roleBilling: 'Facturación',
+          roleOwner: 'Propietario',
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar actualizado',
         },

@@ -156,6 +156,16 @@ export interface EagamiMessages {
   toast: {
     dismiss: string;
   };
+  transferList: {
+    sourceLabel: string;
+    targetLabel: string;
+    controlsLabel: string;
+    moveSelectedToTarget: string;
+    moveAllToTarget: string;
+    moveSelectedToSource: string;
+    moveAllToSource: string;
+    empty: string;
+  };
   tree: {
     expand: string;
     collapse: string;

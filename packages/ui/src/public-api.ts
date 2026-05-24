@@ -385,5 +385,7 @@ export * from './lib/time-picker/time-picker.component';
 export * from './lib/toast/toast.component';
 export * from './lib/toast/toast.service';
 export * from './lib/tooltip/tooltip.directive';
+export * from './lib/transfer-list/transfer-list.component';
+export * from './lib/transfer-list/transfer-list.types';
 export * from './lib/tree/tree.component';
 export * from './lib/tree/tree.types';

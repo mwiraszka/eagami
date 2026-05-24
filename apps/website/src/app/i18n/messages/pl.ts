@@ -779,6 +779,16 @@ export const pl: WebMessages = {
           rightLabel: 'Prawo',
           rightTooltip: 'Podpowiedź po prawej',
         },
+        transferList: {
+          availableLabel: 'Dostępne',
+          assignedLabel: 'Przypisane',
+          roleAdmin: 'Administrator',
+          roleEditor: 'Edytor',
+          roleViewer: 'Czytelnik',
+          roleGuest: 'Gość',
+          roleBilling: 'Rozliczenia',
+          roleOwner: 'Właściciel',
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Awatar zaktualizowany',
         },

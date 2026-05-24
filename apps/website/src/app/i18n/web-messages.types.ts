@@ -638,6 +638,16 @@ export interface WebMessages {
           rightLabel: string;
           rightTooltip: string;
         };
+        transferList: {
+          availableLabel: string;
+          assignedLabel: string;
+          roleAdmin: string;
+          roleEditor: string;
+          roleViewer: string;
+          roleGuest: string;
+          roleBilling: string;
+          roleOwner: string;
+        };
         avatarEditorActions: {
           avatarUpdatedToast: string;
         };
