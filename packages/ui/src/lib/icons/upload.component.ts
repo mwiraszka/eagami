@@ -10,7 +10,7 @@ import { IconCategory, IconComponentBase } from './icon-category';
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="1.5"
+      [attr.stroke-width]="strokeWidth()"
       stroke-linecap="round"
       stroke-linejoin="round"
       aria-hidden="true"
@@ -29,6 +29,7 @@ import { IconCategory, IconComponentBase } from './icon-category';
 export class UploadIconComponent extends IconComponentBase {
   static readonly slug = 'upload';
   static readonly category: IconCategory = 'feather';
+  static override readonly defaultStrokeWidth = 1.5;
   static readonly tags: ReadonlyArray<string> = [
     'upload',
     'send',

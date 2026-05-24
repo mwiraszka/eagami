@@ -43,12 +43,13 @@
         <!--
           Background layer is always rendered as the dim full-star outline so
           empty positions show a visible silhouette and half positions reveal
-          the unfilled side behind the foreground.
+          the unfilled side behind the foreground. Thinner stroke keeps the
+          outline visually quiet against the filled foreground.
         -->
         <span
           class="ea-rating-field__star-icon ea-rating-field__star-icon--background"
           aria-hidden="true">
-          <ng-container *ngComponentOutlet="iconClass()" />
+          <ng-container *ngComponentOutlet="iconClass(); inputs: { strokeWidth: 1.5 }" />
         </span>
         @if (stateFor(pos) !== 'empty') {
           <span

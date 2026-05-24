@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CameraIconComponent } from './camera.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Github2IconComponent } from './github-2.component';
 import { GithubIconComponent } from './github.component';
 import { HomeIconComponent } from './home.component';
 import { IconCategory, IconComponentBase, IconComponentType } from './icon-category';
+import { StarIconComponent } from './star.component';
 
 describe('Icon metadata API', () => {
   describe('IconComponentBase', () => {
@@ -20,6 +22,25 @@ describe('Icon metadata API', () => {
       expect(host.style.display).toBe('inline-flex');
       expect(host.style.width).toBe('1em');
       expect(host.style.height).toBe('1em');
+    });
+
+    it('renders the SVG with the input strokeWidth on its stroke-width attribute', () => {
+      const fixture = TestBed.createComponent(StarIconComponent);
+      fixture.detectChanges();
+      const svg = fixture.nativeElement.querySelector('svg') as SVGSVGElement;
+      // Default for Feather icons is 2.
+      expect(svg.getAttribute('stroke-width')).toBe('2');
+
+      fixture.componentRef.setInput('strokeWidth', 1.5);
+      fixture.detectChanges();
+      expect(svg.getAttribute('stroke-width')).toBe('1.5');
+    });
+
+    it('honours per-icon `defaultStrokeWidth` overrides (camera = 1.5)', () => {
+      const fixture = TestBed.createComponent(CameraIconComponent);
+      fixture.detectChanges();
+      const svg = fixture.nativeElement.querySelector('svg') as SVGSVGElement;
+      expect(svg.getAttribute('stroke-width')).toBe('1.5');
     });
 
     it('is extended by every shipped icon component', () => {
