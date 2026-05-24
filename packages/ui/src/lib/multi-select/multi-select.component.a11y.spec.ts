@@ -32,12 +32,7 @@ class HostComponent {
   disabled = false;
 }
 
-// TODO(a11y): the multi-select trigger `<div role="combobox">` lacks an
-// accessible name (the visible label isn't wired via `aria-labelledby`), and
-// the closed popover element exposes `role="listbox"` without a name. Restore
-// once the component wires label → combobox via `aria-labelledby` and the
-// popover omits its role when closed.
-describe.skip('MultiSelectComponent a11y', () => {
+describe('MultiSelectComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],

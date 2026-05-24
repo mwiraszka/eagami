@@ -3,6 +3,7 @@
     <label
       class="ea-multi-select-field__label"
       [for]="id()"
+      [id]="id() + '-label'"
       [class.ea-multi-select-field__label--required]="required()">
       {{ label() }}
     </label>
@@ -17,6 +18,7 @@
         [id]="id()"
         role="combobox"
         [attr.tabindex]="isDisabled() ? -1 : 0"
+        [attr.aria-labelledby]="label() ? id() + '-label' : null"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'listbox'"
         [attr.aria-disabled]="isDisabled() || null"
