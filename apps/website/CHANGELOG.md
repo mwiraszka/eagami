@@ -2,7 +2,7 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [2.1.0] - 2026-05-23
+## [2.1.0] - 2026-05-24
 
 ### Added
 
@@ -12,6 +12,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Mention the new icon `[strokeWidth]` input on the `/ui/icons` page lede (translated across all five locales).
+- Remove the vertical divider between the search input and the category checkboxes on the `/ui/icons` filter card.
 
 ## [2.0.0] - 2026-05-23
 

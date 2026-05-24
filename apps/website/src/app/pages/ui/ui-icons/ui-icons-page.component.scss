@@ -96,17 +96,6 @@
   align-self: center;
   gap: 4px 16px;
   min-height: 40px;
-
-  /* When the filter card is wide enough to keep the search field and the
-     category checkboxes on the same row, a thin vertical rule splits them so
-     the eye can tell them apart. The container query disables the rule
-     automatically once the row wraps. The 580px threshold is set above the
-     measured wrap point (search 200px floor + checkboxes ~340px + gap = ~560px)
-     so the rule never lingers after the checkboxes have already wrapped. */
-  @container (min-width: 580px) {
-    border-left: 1px solid var(--color-border-default);
-    padding-left: 20px;
-  }
 }
 
 .ui-icons__category {

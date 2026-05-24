@@ -5,13 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.0] - 2026-05-23
+## [2.1.0] - 2026-05-24
 
 ### Added
 
 - Add `<ea-file-uploader>`, a multi-file uploader with a drag-and-drop zone and a per-file list. Supports `accept` / `maxSize` / `maxFiles` validation (rejections emitted via a `rejected` event), a `multiple=false` single-file mode, per-file progress bars driven by a consumer-supplied `Map<File, number>`, three sizes (sm / md / lg), the standard hint / error message pattern, and Angular forms integration via `ControlValueAccessor`. The dropzone icon is exposed as a content slot via the `icon` attribute, so consumers can swap the default cloud icon for any other icon while inheriting the dropzone's size-aware sizing.
 - Add `<ea-rating>`, a star-based rating input with whole-step (default) or half-step (`allowHalf`) granularity, hover preview, keyboard navigation (Arrow keys, Home/End, digit keys, Delete/Backspace to clear), a read-only display mode, three sizes (sm / md / lg), and Angular forms integration via `ControlValueAccessor`. Surfaces as `role="slider"` with `aria-valuemin` / `aria-valuemax` / `aria-valuenow`. The default star can be swapped via the `icon` / `icon-fill` content slots (e.g. `<ea-icon-heart icon />`) and the fill clip handles half-step rendering automatically.
 - Add a `strokeWidth` input on every Feather-derived icon, exposing the SVG's `stroke-width` so consumers can thin or thicken any icon at the call site (e.g. `<ea-icon-star [strokeWidth]="1.5" />`). The default stays at 2 to preserve existing visuals; per-icon design choices (currently camera and upload at 1.5) are pinned via a `static override readonly defaultStrokeWidth` field on `IconComponentBase`. The rating component leans on this to render its dim background outline at 1.5 for visual quiet against the filled foreground.
+
+### Fixed
+
+- Set `min-width: 0` (and `max-width: 100%`) on `<ea-card>`'s host and inner element to match the existing `min-height: 0` baseline, so cards in flex / grid layouts no longer blow past their parent track when their content has an intrinsic width (long copy, wide tables, pre-formatted blocks). Removes a `::ng-deep` workaround consumers were applying in every layout that nested a card under a constrained flex / grid parent.
 
 ## [2.0.0] - 2026-05-23
 
