@@ -140,6 +140,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/command-palette',
+        loadComponent: () =>
+          import('./pages/ui/components/command-palette/command-palette-demo-page.component').then(
+            c => c.CommandPaletteDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/data-table',
         loadComponent: () =>
           import('./pages/ui/components/data-table/data-table-demo-page.component').then(

@@ -26,6 +26,12 @@ export const en: EagamiMessages = {
     groupLabel: length => `Verification code, ${length} digits`,
     digitLabel: (index, length) => `Digit ${index} of ${length}`,
   },
+  commandPalette: {
+    dialogLabel: 'Command palette',
+    searchPlaceholder: 'Type a command or search…',
+    empty: 'No results found',
+    clear: 'Clear search',
+  },
   colorPicker: {
     placeholder: 'Pick a color…',
     clear: 'Clear color',

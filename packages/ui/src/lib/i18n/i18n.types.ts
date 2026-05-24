@@ -47,6 +47,12 @@ export interface EagamiMessages {
     groupLabel: (length: number) => string;
     digitLabel: (index: number, length: number) => string;
   };
+  commandPalette: {
+    dialogLabel: string;
+    searchPlaceholder: string;
+    empty: string;
+    clear: string;
+  };
   colorPicker: {
     placeholder: string;
     clear: string;

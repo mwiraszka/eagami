@@ -27,6 +27,12 @@ export const el: EagamiMessages = {
     groupLabel: length => `Κωδικός επαλήθευσης, ${length} ψηφία`,
     digitLabel: (index, length) => `Ψηφίο ${index} από ${length}`,
   },
+  commandPalette: {
+    dialogLabel: 'Παλέτα εντολών',
+    searchPlaceholder: 'Πληκτρολογήστε εντολή ή αναζητήστε…',
+    empty: 'Δεν βρέθηκαν αποτελέσματα',
+    clear: 'Εκκαθάριση αναζήτησης',
+  },
   colorPicker: {
     placeholder: 'Επιλέξτε χρώμα…',
     clear: 'Εκκαθάριση χρώματος',

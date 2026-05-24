@@ -27,6 +27,12 @@ export const esES: EagamiMessages = {
     groupLabel: length => `Código de verificación, ${length} dígitos`,
     digitLabel: (index, length) => `Dígito ${index} de ${length}`,
   },
+  commandPalette: {
+    dialogLabel: 'Paleta de comandos',
+    searchPlaceholder: 'Escribe un comando o busca…',
+    empty: 'Sin resultados',
+    clear: 'Borrar búsqueda',
+  },
   colorPicker: {
     placeholder: 'Elegir un color…',
     clear: 'Borrar color',

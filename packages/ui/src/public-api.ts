@@ -17,6 +17,8 @@ export * from './lib/breadcrumbs/breadcrumbs.component';
 export * from './lib/button/button.component';
 export * from './lib/card/card.component';
 export * from './lib/checkbox/checkbox.component';
+export * from './lib/command-palette/command-palette.component';
+export * from './lib/command-palette/command-palette.types';
 export * from './lib/color-picker/color-picker.component';
 export * from './lib/data-table/data-table.component';
 export * from './lib/code-input/code-input.component';
