@@ -187,6 +187,62 @@ describe('RatingComponent', () => {
     });
   });
 
+  describe('Hover preview', () => {
+    // jsdom doesn't ship a PointerEvent constructor, so we hand-roll one with the
+    // clientX the component reads via the shared positioning helper.
+    function pointerMove(clientX: number): Event {
+      const evt = new Event('pointermove', { bubbles: true });
+      Object.defineProperty(evt, 'clientX', { value: clientX });
+      return evt;
+    }
+
+    it('sets hoverValue on pointermove and emits hoverChanged', () => {
+      stubStarBounds();
+      const events: (number | null)[] = [];
+      component.hoverChanged.subscribe(v => events.push(v));
+      getStars()[3].dispatchEvent(pointerMove(18));
+      expect(events).toEqual([4]);
+    });
+
+    it('clears hoverValue on pointerleave and emits null', () => {
+      stubStarBounds();
+      const events: (number | null)[] = [];
+      component.hoverChanged.subscribe(v => events.push(v));
+      getStars()[3].dispatchEvent(pointerMove(18));
+      getGroup().dispatchEvent(new Event('pointerleave', { bubbles: true }));
+      expect(events).toEqual([4, null]);
+    });
+
+    it('does not emit hover events when readonly', () => {
+      stubStarBounds();
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+      const events: (number | null)[] = [];
+      component.hoverChanged.subscribe(v => events.push(v));
+      getStars()[3].dispatchEvent(pointerMove(18));
+      expect(events).toEqual([]);
+    });
+  });
+
+  describe('Focus / blur', () => {
+    it('flags the group as focused on focus and calls onTouched on blur', () => {
+      let touched = 0;
+      component.registerOnTouched(() => touched++);
+      getGroup().dispatchEvent(new FocusEvent('focus'));
+      getGroup().dispatchEvent(new FocusEvent('blur'));
+      expect(touched).toBe(1);
+    });
+  });
+
+  describe('Home / End keys', () => {
+    it('jumps to 1 step with Home and max with End', () => {
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
+      expect(component.value()).toBe(5);
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'Home' }));
+      expect(component.value()).toBe(1);
+    });
+  });
+
   describe('Form integration (CVA)', () => {
     it('writes the form-control value via writeValue and notifies on changes', () => {
       stubStarBounds();

@@ -187,5 +187,86 @@ describe('RangeSliderComponent', () => {
 
       expect(component.isDisabled()).toBe(true);
     });
+
+    it('registerOnChange fires when a thumb moves via keyboard', () => {
+      const changes: [number, number][] = [];
+      component.registerOnChange(v => changes.push([...v] as [number, number]));
+      component.writeValue([20, 80]);
+      fixture.detectChanges();
+
+      const lowThumb = fixture.nativeElement.querySelector(
+        '.ea-range-slider__thumb--low',
+      ) as HTMLElement;
+      lowThumb.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+
+      expect(changes).toEqual([[21, 80]]);
+    });
+
+    it('registerOnTouched fires on thumb blur', () => {
+      let touched = 0;
+      component.registerOnTouched(() => touched++);
+      fixture.detectChanges();
+
+      const highThumb = fixture.nativeElement.querySelector(
+        '.ea-range-slider__thumb--high',
+      ) as HTMLElement;
+      highThumb.dispatchEvent(new Event('blur'));
+
+      expect(touched).toBe(1);
+    });
+  });
+
+  describe('Keyboard navigation', () => {
+    function getLow(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-range-slider__thumb--low');
+    }
+    function getHigh(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-range-slider__thumb--high');
+    }
+    function keyOn(thumb: HTMLElement, key: string): void {
+      thumb.dispatchEvent(new KeyboardEvent('keydown', { key }));
+    }
+
+    beforeEach(() => {
+      component.writeValue([20, 80]);
+      fixture.detectChanges();
+    });
+
+    it('arrow keys step each thumb by `step`', () => {
+      keyOn(getLow(), 'ArrowRight');
+      expect(component.value()).toEqual([21, 80]);
+      keyOn(getHigh(), 'ArrowLeft');
+      expect(component.value()).toEqual([21, 79]);
+      keyOn(getHigh(), 'ArrowUp');
+      expect(component.value()).toEqual([21, 80]);
+      keyOn(getLow(), 'ArrowDown');
+      expect(component.value()).toEqual([20, 80]);
+    });
+
+    it('PageUp / PageDown jump by a larger step', () => {
+      keyOn(getLow(), 'PageUp');
+      expect(component.value()[0]).toBe(30);
+      keyOn(getHigh(), 'PageDown');
+      expect(component.value()[1]).toBe(70);
+    });
+
+    it('Home and End snap a thumb to the bounds', () => {
+      keyOn(getLow(), 'Home');
+      expect(component.value()[0]).toBe(0);
+      keyOn(getHigh(), 'End');
+      expect(component.value()[1]).toBe(100);
+    });
+
+    it('ignores keys with no mapping', () => {
+      keyOn(getLow(), 'a');
+      expect(component.value()).toEqual([20, 80]);
+    });
+
+    it('ignores keyboard input when disabled', () => {
+      component.setDisabledState(true);
+      fixture.detectChanges();
+      keyOn(getLow(), 'ArrowRight');
+      expect(component.value()).toEqual([20, 80]);
+    });
   });
 });

@@ -158,5 +158,76 @@ describe('SliderComponent', () => {
 
       expect(component.isDisabled()).toBe(true);
     });
+
+    it('registerOnChange is called when value commits via keyboard', () => {
+      const changes: number[] = [];
+      component.registerOnChange(v => changes.push(v));
+      component.writeValue(50);
+      fixture.detectChanges();
+
+      getThumb().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+
+      expect(changes).toEqual([51]);
+    });
+
+    it('registerOnTouched is called on blur', () => {
+      let touched = 0;
+      component.registerOnTouched(() => touched++);
+
+      getThumb().dispatchEvent(new Event('blur'));
+
+      expect(touched).toBe(1);
+    });
+  });
+
+  describe('Keyboard', () => {
+    function keyDown(key: string): void {
+      getThumb().dispatchEvent(new KeyboardEvent('keydown', { key }));
+    }
+
+    beforeEach(() => {
+      component.writeValue(50);
+      fixture.detectChanges();
+    });
+
+    it('increments value with ArrowRight / ArrowUp', () => {
+      keyDown('ArrowRight');
+      expect(component.value()).toBe(51);
+      keyDown('ArrowUp');
+      expect(component.value()).toBe(52);
+    });
+
+    it('decrements value with ArrowLeft / ArrowDown', () => {
+      keyDown('ArrowLeft');
+      expect(component.value()).toBe(49);
+      keyDown('ArrowDown');
+      expect(component.value()).toBe(48);
+    });
+
+    it('jumps by 10% with PageUp / PageDown', () => {
+      keyDown('PageUp');
+      expect(component.value()).toBe(60);
+      keyDown('PageDown');
+      expect(component.value()).toBe(50);
+    });
+
+    it('jumps to min / max with Home / End', () => {
+      keyDown('Home');
+      expect(component.value()).toBe(0);
+      keyDown('End');
+      expect(component.value()).toBe(100);
+    });
+
+    it('ignores other keys', () => {
+      keyDown('a');
+      expect(component.value()).toBe(50);
+    });
+
+    it('ignores keyboard when disabled', () => {
+      component.setDisabledState(true);
+      fixture.detectChanges();
+      keyDown('ArrowRight');
+      expect(component.value()).toBe(50);
+    });
   });
 });

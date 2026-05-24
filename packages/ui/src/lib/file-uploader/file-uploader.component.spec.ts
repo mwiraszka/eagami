@@ -209,6 +209,85 @@ describe('FileUploaderComponent', () => {
     });
   });
 
+  describe('Drag and drop', () => {
+    // jsdom doesn't ship a DragEvent constructor; hand-roll one with the
+    // `dataTransfer.files` shape the component reads.
+    function dragEvent(type: string, ...files: File[]): Event {
+      const evt = new Event(type, { bubbles: true });
+      if (files.length) {
+        Object.defineProperty(evt, 'dataTransfer', {
+          value: { files: fileList(...files) },
+        });
+      }
+      return evt;
+    }
+
+    function hostClasses(): DOMTokenList {
+      return fixture.nativeElement.querySelector('.ea-file-uploader-field').classList;
+    }
+
+    it('flags drag-over on dragover and clears it on dragleave', () => {
+      getDropzone().dispatchEvent(dragEvent('dragover'));
+      fixture.detectChanges();
+      expect(hostClasses().contains('ea-file-uploader-field--drag-over')).toBe(true);
+      getDropzone().dispatchEvent(dragEvent('dragleave'));
+      fixture.detectChanges();
+      expect(hostClasses().contains('ea-file-uploader-field--drag-over')).toBe(false);
+    });
+
+    it('accepts dropped files into the value model', () => {
+      const file = makeFile('a.txt', 10);
+      getDropzone().dispatchEvent(dragEvent('drop', file));
+      expect(component.value()).toEqual([file]);
+    });
+
+    it('ignores drops while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+      getDropzone().dispatchEvent(dragEvent('drop', makeFile('a.txt', 10)));
+      expect(component.value()).toEqual([]);
+    });
+  });
+
+  describe('Focus / blur', () => {
+    it('flags focused on dropzone focus and calls onTouched on blur', () => {
+      let touched = 0;
+      component.registerOnTouched(() => touched++);
+      getDropzone().dispatchEvent(new FocusEvent('focus'));
+      getDropzone().dispatchEvent(new FocusEvent('blur'));
+      expect(touched).toBe(1);
+    });
+  });
+
+  describe('formatBytes via constraints text', () => {
+    function constraintsText(): string {
+      return fixture.nativeElement.querySelector('.ea-file-uploader-field__constraints')
+        .textContent;
+    }
+
+    it('formats KB / MB / GB / TB tiers', () => {
+      fixture.componentRef.setInput('maxSize', 500);
+      fixture.detectChanges();
+      expect(constraintsText()).toContain('500 B');
+
+      fixture.componentRef.setInput('maxSize', 2 * 1024);
+      fixture.detectChanges();
+      expect(constraintsText()).toContain('2 KB');
+
+      fixture.componentRef.setInput('maxSize', 5 * 1024 * 1024);
+      fixture.detectChanges();
+      expect(constraintsText()).toContain('5 MB');
+
+      fixture.componentRef.setInput('maxSize', 3 * 1024 * 1024 * 1024);
+      fixture.detectChanges();
+      expect(constraintsText()).toContain('3 GB');
+
+      fixture.componentRef.setInput('maxSize', 2 * 1024 * 1024 * 1024 * 1024);
+      fixture.detectChanges();
+      expect(constraintsText()).toContain('2 TB');
+    });
+  });
+
   describe('A11y', () => {
     it('opens the picker on Enter and Space, ignoring other keys', () => {
       const inputEl = getFileInput();
