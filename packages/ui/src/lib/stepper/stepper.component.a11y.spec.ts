@@ -35,15 +35,7 @@ class HostComponent {
   step2Completed = false;
 }
 
-// TODO(a11y): the stepper template wraps each `role="tab"` button in an
-// `<li>` inside an `<ol role="tablist">`. axe flags this two ways:
-// `aria-required-children` (tablist children must be tabs, not list items)
-// and `listitem` (the implicit list role is overridden by role="tablist", so
-// the `<li>` has no list parent). Restore once the stepper drops the
-// `<ol>/<li>` semantic structure in favour of a flat `<div role="tablist">
-// <button role="tab">` shape, or moves the `<li>` to a wrapper with
-// `role="presentation"`.
-describe.skip('StepperComponent a11y', () => {
+describe('StepperComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],

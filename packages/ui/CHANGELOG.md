@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Strip leaking `role` and `aria-label` attributes from the `<ea-popover>` host element, so assistive tech (and axe) only see the conditional ARIA on the inner surface. Resolves missing-accessible-name violations on every popover-driven component when closed (`<ea-dropdown>`, `<ea-multi-select>`, `<ea-date-picker>`, `<ea-time-picker>`, and `<ea-color-picker>`).
 - Wire `<ea-multi-select>`'s `<label>` to its `<div role="combobox">` trigger via `aria-labelledby`. The previous `<label for>` linkage was inert because the trigger is a `<div>`, not a form-control element, so screen readers announced the trigger as nameless.
+- Restructure `<ea-stepper>`'s tablist from an `<ol><li role="tablist">` containing `<button role="tab">` to a flat `<div role="tablist">` of tab buttons. The previous structure was rejected by axe and screen readers because ARIA tablist children must be tabs directly, not wrapped in list items, and the `role="tablist"` overrode the list's implicit role leaving the `<li>` elements orphaned. Visible rendering, keyboard navigation, and selection behaviour are unchanged.
 - Replace the focusable `<button>` star elements in `<ea-rating>` with presentational spans, so the `role="slider"` container no longer nests interactive descendants. Mouse click and keyboard navigation behaviour is unchanged.
 
 ## [2.1.0] - 2026-05-24
