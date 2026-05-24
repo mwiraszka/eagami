@@ -26,6 +26,7 @@ import {
   EmptyStateComponent,
   FileIconComponent,
   FileUploaderComponent,
+  HeartIconComponent,
   InputComponent,
   MenuComponent,
   MenuItemComponent,
@@ -42,6 +43,7 @@ import {
   RadioGroupComponent,
   RangeSliderComponent,
   RangeSliderValue,
+  RatingComponent,
   SearchIconComponent,
   SegmentedComponent,
   SelectOption,
@@ -106,6 +108,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     EmptyStateComponent,
     FileIconComponent,
     FileUploaderComponent,
+    HeartIconComponent,
     InputComponent,
     MenuComponent,
     MenuItemComponent,
@@ -119,6 +122,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     RadioComponent,
     RadioGroupComponent,
     RangeSliderComponent,
+    RatingComponent,
     RouterLink,
     SearchIconComponent,
     SegmentedComponent,
@@ -194,6 +198,9 @@ export class UiComponentPageComponent {
   protected readonly switchValue = signal(false);
   protected readonly sliderValue = signal(40);
   protected readonly rangeSliderValue = signal<RangeSliderValue>([20, 80]);
+  protected readonly ratingValue = signal(3);
+  /** Exposed for the rating's `[iconClass]` custom-icon demo binding. */
+  protected readonly HeartIconComponent = HeartIconComponent;
   protected readonly timePickerValue = signal<string | null>(null);
   protected readonly segmentedValue = signal('list');
   protected readonly textareaValue = signal('');

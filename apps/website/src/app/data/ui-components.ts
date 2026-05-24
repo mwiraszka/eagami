@@ -35,6 +35,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'progress-bar', name: 'Progress Bar', selector: 'ea-progress-bar' },
   { slug: 'radio', name: 'Radio', selector: 'ea-radio' },
   { slug: 'range-slider', name: 'Range Slider', selector: 'ea-range-slider' },
+  { slug: 'rating', name: 'Rating', selector: 'ea-rating' },
   { slug: 'segmented', name: 'Segmented', selector: 'ea-segmented' },
   { slug: 'skeleton', name: 'Skeleton', selector: 'ea-skeleton' },
   { slug: 'slider', name: 'Slider', selector: 'ea-slider' },
