@@ -771,6 +771,12 @@ export const en: WebMessages = {
           roleBilling: 'Billing',
           roleOwner: 'Owner',
         },
+        virtualList: {
+          row: 'Row',
+          detail: n => `Generated record #${n}`,
+          scrollPosition: (first, total) =>
+            `Showing row ${first.toLocaleString('en-US')} of ${total.toLocaleString('en-US')}`,
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar updated',
         },

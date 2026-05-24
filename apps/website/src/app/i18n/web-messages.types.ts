@@ -648,6 +648,11 @@ export interface WebMessages {
           roleBilling: string;
           roleOwner: string;
         };
+        virtualList: {
+          row: string;
+          detail: (n: number) => string;
+          scrollPosition: (first: number, total: number) => string;
+        };
         avatarEditorActions: {
           avatarUpdatedToast: string;
         };

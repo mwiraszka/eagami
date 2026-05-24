@@ -6,6 +6,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
+- Document the new `<ea-virtual-list>` component on the `/ui/components/virtual-list` page, with a default 10,000-row scroll demo (showing a live "row X of Y" position indicator wired to `scrollIndexChange`) and a compact-density variant. Demo strings translated across the five locales.
 - Document the new `<ea-transfer-list>` component on the `/ui/components/transfer-list` page, with demos covering the default state, an initial-selection variant, a disabled-item variant (a sticky pre-assigned owner), three sizes, and the disabled state. Demo strings (role names and pane labels) translated across the five locales.
 - Document the new `<ea-tree>` component on the `/ui/components/tree` page, with demos covering the default collapsed file tree, a selection-driven auto-expand, three sizes, an org-chart variant with a disabled node, and the disabled state. New `with selection` section heading translated across the five locales.
 

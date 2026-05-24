@@ -363,6 +363,13 @@ export const routes: Routes = [
             c => c.TreeDemoPageComponent,
           ),
       },
+      {
+        path: 'components/virtual-list',
+        loadComponent: () =>
+          import('./pages/ui/components/virtual-list/virtual-list-demo-page.component').then(
+            c => c.VirtualListDemoPageComponent,
+          ),
+      },
     ],
   },
   {

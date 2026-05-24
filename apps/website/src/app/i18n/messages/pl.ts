@@ -789,6 +789,12 @@ export const pl: WebMessages = {
           roleBilling: 'Rozliczenia',
           roleOwner: 'Właściciel',
         },
+        virtualList: {
+          row: 'Wiersz',
+          detail: n => `Wygenerowany rekord nr ${n}`,
+          scrollPosition: (first, total) =>
+            `Wiersz ${first.toLocaleString('pl-PL')} z ${total.toLocaleString('pl-PL')}`,
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Awatar zaktualizowany',
         },

@@ -50,4 +50,5 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'tooltip', name: 'Tooltip', selector: 'eaTooltip', kind: 'directive' },
   { slug: 'transfer-list', name: 'Transfer List', selector: 'ea-transfer-list' },
   { slug: 'tree', name: 'Tree', selector: 'ea-tree' },
+  { slug: 'virtual-list', name: 'Virtual List', selector: 'ea-virtual-list' },
 ];

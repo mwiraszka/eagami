@@ -791,6 +791,12 @@ export const frFR: WebMessages = {
           roleBilling: 'Facturation',
           roleOwner: 'Propriétaire',
         },
+        virtualList: {
+          row: 'Ligne',
+          detail: n => `Enregistrement généré n°${n}`,
+          scrollPosition: (first, total) =>
+            `Affichage de la ligne ${first.toLocaleString('fr-FR')} sur ${total.toLocaleString('fr-FR')}`,
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar mis à jour',
         },

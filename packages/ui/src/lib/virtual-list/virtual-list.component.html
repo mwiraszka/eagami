@@ -1,0 +1,21 @@
+<div
+  #viewport
+  class="ea-virtual-list__viewport"
+  [style]="viewportStyle()"
+  (scroll)="onScroll($event)">
+  <div
+    class="ea-virtual-list__spacer"
+    [style]="spacerStyle()">
+    @for (entry of visibleItems(); track entry.index) {
+      <div
+        class="ea-virtual-list__item"
+        [style]="itemStyle(entry.index)">
+        <ng-container
+          *ngTemplateOutlet="
+            itemTemplate();
+            context: { $implicit: entry.item, index: entry.index }
+          " />
+      </div>
+    }
+  </div>
+</div>

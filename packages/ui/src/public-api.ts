@@ -389,3 +389,4 @@ export * from './lib/transfer-list/transfer-list.component';
 export * from './lib/transfer-list/transfer-list.types';
 export * from './lib/tree/tree.component';
 export * from './lib/tree/tree.types';
+export * from './lib/virtual-list/virtual-list.component';

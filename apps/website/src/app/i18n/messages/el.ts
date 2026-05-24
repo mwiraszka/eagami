@@ -789,6 +789,12 @@ export const el: WebMessages = {
           roleBilling: 'Χρεώσεις',
           roleOwner: 'Ιδιοκτήτης',
         },
+        virtualList: {
+          row: 'Γραμμή',
+          detail: n => `Δημιουργημένη εγγραφή #${n}`,
+          scrollPosition: (first, total) =>
+            `Εμφάνιση γραμμής ${first.toLocaleString('el')} από ${total.toLocaleString('el')}`,
+        },
         avatarEditorActions: {
           avatarUpdatedToast: 'Το avatar ενημερώθηκε',
         },
