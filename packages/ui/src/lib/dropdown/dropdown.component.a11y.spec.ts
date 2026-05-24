@@ -31,12 +31,7 @@ class HostComponent {
   disabled = false;
 }
 
-// TODO(a11y): the dropdown mounts an empty `<ea-popover role="listbox">` to
-// the DOM even when closed, which trips `aria-input-field-name` because the
-// empty element has no accessible name. Restore once the popover omits its
-// role attribute when closed, or once these tests scope the axe scan to the
-// trigger element only.
-describe.skip('DropdownComponent a11y', () => {
+describe('DropdownComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],

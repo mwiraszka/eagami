@@ -22,12 +22,7 @@ class HostComponent {
   disabled = false;
 }
 
-// TODO(a11y): the date picker mounts an empty `<ea-popover role="dialog">` to
-// the DOM even when closed, which trips `aria-dialog-name` because the empty
-// element has no `aria-label`/`aria-labelledby`. Restore once the popover
-// omits its role attribute when closed, or once these tests scope the axe
-// scan to the trigger element only.
-describe.skip('DatePickerComponent a11y', () => {
+describe('DatePickerComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],

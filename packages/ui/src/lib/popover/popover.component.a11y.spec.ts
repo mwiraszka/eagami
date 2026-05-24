@@ -15,7 +15,8 @@ import { PopoverComponent } from './popover.component';
     </button>
     <ea-popover
       [anchor]="trigger"
-      [open]="open()">
+      [open]="open()"
+      aria-label="Test popover">
       <div>Popover body</div>
     </ea-popover>
   `,
@@ -48,11 +49,7 @@ describe('PopoverComponent a11y', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it.skip('has no detectable violations when open', async () => {
-    // TODO(a11y): the open popover surface gets `role="dialog"` but has no
-    // public input for setting `aria-label`/`aria-labelledby`. Restore this
-    // test once the popover exposes an `ariaLabel`/`labelledBy` input (or
-    // similar) so consumers can name the dialog.
+  it('has no detectable violations when open', async () => {
     const { fixture } = await render(host => host.open.set(true));
     const results = await axe(document.body, {
       rules: { region: { enabled: false } },
