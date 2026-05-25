@@ -48,9 +48,7 @@ export const Default: Story = {
     props: { ...args, isOpen: false },
     moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
-      <ea-button
-        style="--ea-button-color: var(--color-neutral-0); --ea-button-color-hover: var(--color-neutral-0); --ea-button-color-active: var(--color-neutral-0)"
-        (clicked)="isOpen = true">Open command palette</ea-button>
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
       <ea-command-palette
         [items]="items"
         [placeholder]="placeholder"
@@ -65,9 +63,7 @@ export const WithCustomPlaceholder: Story = {
     props: { ...args, isOpen: false },
     moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
-      <ea-button
-        style="--ea-button-color: var(--color-neutral-0); --ea-button-color-hover: var(--color-neutral-0); --ea-button-color-active: var(--color-neutral-0)"
-        (clicked)="isOpen = true">Open command palette</ea-button>
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
       <ea-command-palette
         [items]="items"
         [placeholder]="placeholder"
@@ -84,9 +80,7 @@ export const FlatList: Story = {
     props: { ...args, isOpen: false },
     moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
-      <ea-button
-        style="--ea-button-color: var(--color-neutral-0); --ea-button-color-hover: var(--color-neutral-0); --ea-button-color-active: var(--color-neutral-0)"
-        (clicked)="isOpen = true">Open command palette</ea-button>
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
       <ea-command-palette [items]="items" [(open)]="isOpen" />
     `,
   }),

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Default the primary `<ea-button>` text colour to `--color-neutral-0` (always white) instead of `--color-text-inverse` (which flipped to dark in dark mode). Text now stays white on the brand background in both themes; consumers can still override per-instance via `--ea-button-color`.
 - Expose `--ea-empty-state-title-color` on `<ea-empty-state>` so consumers can recolour the title without bleeding `--color-text-primary` to its siblings.
 
 ## [2.2.0] - 2026-05-25

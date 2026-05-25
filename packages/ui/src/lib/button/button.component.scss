@@ -80,7 +80,7 @@
   &--primary {
     background-color: var(--ea-button-background-color, var(--color-brand-default));
     border-color: var(--ea-button-border-color, var(--color-brand-default));
-    color: var(--ea-button-color, var(--color-text-inverse));
+    color: var(--ea-button-color, var(--color-neutral-0));
 
     &:hover:not(.ea-button--disabled) {
       background-color: var(
@@ -91,10 +91,7 @@
         --ea-button-border-color-hover,
         var(--ea-button-border-color, var(--color-brand-hover))
       );
-      color: var(
-        --ea-button-color-hover,
-        var(--ea-button-color, var(--color-text-inverse))
-      );
+      color: var(--ea-button-color-hover, var(--ea-button-color, var(--color-neutral-0)));
     }
 
     &:active:not(.ea-button--disabled) {
@@ -108,7 +105,7 @@
       );
       color: var(
         --ea-button-color-active,
-        var(--ea-button-color, var(--color-text-inverse))
+        var(--ea-button-color, var(--color-neutral-0))
       );
     }
   }
@@ -191,7 +188,7 @@
   &--danger {
     background-color: var(--ea-button-background-color, var(--color-error-default));
     border-color: var(--ea-button-border-color, var(--color-error-default));
-    color: var(--ea-button-color, var(--color-text-inverse));
+    color: var(--ea-button-color, var(--color-neutral-0));
 
     &:hover:not(.ea-button--disabled) {
       background-color: var(
@@ -202,10 +199,7 @@
         --ea-button-border-color-hover,
         var(--ea-button-border-color, var(--color-error-700))
       );
-      color: var(
-        --ea-button-color-hover,
-        var(--ea-button-color, var(--color-text-inverse))
-      );
+      color: var(--ea-button-color-hover, var(--ea-button-color, var(--color-neutral-0)));
     }
 
     &:active:not(.ea-button--disabled) {
@@ -219,7 +213,7 @@
       );
       color: var(
         --ea-button-color-active,
-        var(--ea-button-color, var(--color-text-inverse))
+        var(--ea-button-color, var(--color-neutral-0))
       );
       filter: brightness(0.9);
     }
