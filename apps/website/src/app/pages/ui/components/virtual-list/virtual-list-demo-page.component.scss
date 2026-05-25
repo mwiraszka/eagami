@@ -1,0 +1,13 @@
+.virtual-list-demo__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  border-bottom: var(--border-width-thin) solid var(--color-border-default);
+
+  &--compact {
+    font-size: var(--font-size-xs);
+  }
+}

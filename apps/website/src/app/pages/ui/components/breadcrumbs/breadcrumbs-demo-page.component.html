@@ -1,0 +1,30 @@
+<web-ui-component-demo-layout slug="breadcrumbs">
+  <h2>{{ messages().ui.component.sectionHeadings.chevronSeparator }}</h2>
+  <ea-breadcrumbs [items]="breadcrumbItems()" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.slashSeparator }}</h2>
+  <ea-breadcrumbs
+    [items]="breadcrumbItems()"
+    separator="slash" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.twoLevels }}</h2>
+  <ea-breadcrumbs [items]="breadcrumbItemsShort()" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.manyLevels }}</h2>
+  <ea-breadcrumbs
+    [items]="[
+      { label: 'Home', href: '/' },
+      { label: 'Docs', href: '/docs' },
+      { label: 'Components', href: '/docs/components' },
+      { label: 'Form', href: '/docs/components/form' },
+      { label: 'Input' },
+    ]" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
+  <ea-breadcrumbs
+    [items]="[
+      { label: 'Home', href: '/' },
+      { label: 'Archive', href: '/archive', disabled: true },
+      { label: 'Old post' },
+    ]" />
+</web-ui-component-demo-layout>

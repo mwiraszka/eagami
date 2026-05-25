@@ -1,0 +1,41 @@
+<web-ui-component-demo-layout slug="card">
+  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
+  <div class="demo-row demo-row--stretch">
+    <ea-card variant="elevated">
+      <span slot="header">
+        {{ messages().ui.component.demos.card.elevatedHeader }}
+      </span>
+      {{ messages().ui.component.demos.card.elevatedBody }}
+    </ea-card>
+    <ea-card variant="outlined">
+      <span slot="header">
+        {{ messages().ui.component.demos.card.outlinedHeader }}
+      </span>
+      {{ messages().ui.component.demos.card.outlinedBody }}
+    </ea-card>
+    <ea-card variant="filled">
+      <span slot="header">
+        {{ messages().ui.component.demos.card.filledHeader }}
+      </span>
+      {{ messages().ui.component.demos.card.filledBody }}
+    </ea-card>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.withFooter }}</h2>
+  <ea-card variant="outlined">
+    <span slot="header">
+      {{ messages().ui.component.demos.card.cardTitleHeader }}
+    </span>
+    {{ messages().ui.component.demos.card.cardWithFooterBody }}
+    <span slot="footer">
+      <ea-button
+        variant="secondary"
+        size="sm">
+        {{ messages().ui.component.common.cancel }}
+      </ea-button>
+      <ea-button size="sm">
+        {{ messages().ui.component.common.save }}
+      </ea-button>
+    </span>
+  </ea-card>
+</web-ui-component-demo-layout>

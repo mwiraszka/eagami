@@ -1,0 +1,22 @@
+@if (component(); as c) {
+  <article class="ui-component">
+    <header class="ui-component__header">
+      <h1 class="ui-component__title">{{ c.name }}</h1>
+      <p class="ui-component__selector">
+        @if (c.kind === 'directive') {
+          <code>[{{ c.selector }}]</code>
+        } @else {
+          <code>&lt;{{ c.selector }} /&gt;</code>
+        }
+      </p>
+    </header>
+
+    <ea-card
+      class="ui-component__demo"
+      variant="elevated">
+      <section class="demo-section">
+        <ng-content />
+      </section>
+    </ea-card>
+  </article>
+}

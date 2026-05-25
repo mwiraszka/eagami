@@ -1,0 +1,73 @@
+<web-ui-component-demo-layout slug="color-picker">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-color-picker
+    [label]="messages().ui.component.demos.colorPicker.brandLabel"
+    [(value)]="colorPickerValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <div class="demo-stack">
+    <ea-color-picker
+      [label]="messages().ui.component.demos.colorPicker.withHintLabel"
+      [hint]="messages().ui.component.demos.colorPicker.hintBrandColor" />
+    <ea-color-picker
+      [label]="messages().ui.component.demos.colorPicker.withErrorLabel"
+      [errorMsg]="messages().ui.component.demos.colorPicker.errorRequired" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.formatVariants }}</h2>
+  <div class="demo-stack">
+    <ea-color-picker
+      [label]="messages().ui.component.demos.colorPicker.hexLabel"
+      format="hex"
+      [value]="colorPickerValue()" />
+    <ea-color-picker
+      [label]="messages().ui.component.demos.colorPicker.rgbLabel"
+      format="rgb"
+      [value]="colorPickerValue()" />
+    <ea-color-picker
+      [label]="messages().ui.component.demos.colorPicker.hslLabel"
+      format="hsl"
+      [value]="colorPickerValue()" />
+  </div>
+
+  <h2>{{ messages().ui.component.demos.colorPicker.noAlphaHeading }}</h2>
+  <ea-color-picker
+    [label]="messages().ui.component.demos.colorPicker.opaqueOnlyLabel"
+    [showAlpha]="false"
+    [value]="colorPickerValue()" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-color-picker
+    size="sm"
+    [label]="messages().ui.component.common.small"
+    [value]="colorPickerValue()" />
+  <ea-color-picker
+    size="md"
+    [label]="messages().ui.component.common.medium"
+    [value]="colorPickerValue()" />
+  <ea-color-picker
+    size="lg"
+    [label]="messages().ui.component.common.large"
+    [value]="colorPickerValue()" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.outputFormats }}</h2>
+  <div class="demo-stack">
+    <ea-color-picker
+      label="RGB"
+      format="rgb" />
+    <ea-color-picker
+      label="HSL"
+      format="hsl" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.withoutAlpha }}</h2>
+  <ea-color-picker
+    label="Opaque only"
+    [showAlpha]="false" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <ea-color-picker
+    [label]="messages().ui.component.common.disabled"
+    [disabled]="true"
+    [value]="colorPickerValue()" />
+</web-ui-component-demo-layout>

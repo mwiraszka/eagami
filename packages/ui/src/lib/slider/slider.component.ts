@@ -44,6 +44,10 @@ export class SliderComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Force the error-state styling without binding `errorMsg`. Lets consumers
+   *  render the error text themselves (e.g. above the slider in a form layout)
+   *  while still getting the built-in recolour of the fill and thumb. */
+  readonly hasError = input<boolean>(false);
   readonly min = input<number>(0);
   readonly max = input<number>(100);
   readonly step = input<number>(1);
@@ -79,13 +83,16 @@ export class SliderComponent implements ControlValueAccessor {
     return ((this.clampedValue() - this.min()) / range) * 100;
   });
 
-  readonly hasError = computed(() => !!this.errorMsg());
-  readonly showError = this.hasError;
-  readonly showHint = computed(() => !!this.hint() && !this.hasError());
+  readonly errored = computed(() => this.hasError() || !!this.errorMsg());
+  readonly showError = computed(() => !!this.errorMsg());
+  /* Hint stays visible when the consumer is rendering the error elsewhere
+     (`hasError=true` without `errorMsg`); only the slider's own inline message
+     replaces it. */
+  readonly showHint = computed(() => !!this.hint() && !this.showError());
 
   readonly hostClasses = computed(() => ({
     [`ea-slider--${this.size()}`]: true,
-    'ea-slider--error': this.hasError(),
+    'ea-slider--error': this.errored(),
     'ea-slider--disabled': this.isDisabled(),
     'ea-slider--dragging': this.dragging(),
   }));

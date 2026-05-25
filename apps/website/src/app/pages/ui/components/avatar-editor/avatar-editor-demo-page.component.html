@@ -1,0 +1,31 @@
+<web-ui-component-demo-layout slug="avatar-editor">
+  <h2>{{ messages().ui.component.sectionHeadings.circle }}</h2>
+  <div class="demo-row demo-row--stretch">
+    <ea-avatar-editor
+      shape="circle"
+      [canvasSize]="180"
+      (cropped)="onAvatarCropped($event)" />
+    @if (croppedAvatarUrl()) {
+      <div class="demo-avatar-result">
+        <span class="demo-preview">
+          {{ messages().ui.component.demos.avatarEditor.result }}
+        </span>
+        <ea-avatar
+          [src]="croppedAvatarUrl()"
+          size="xl" />
+      </div>
+    }
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.square }}</h2>
+  <ea-avatar-editor
+    shape="square"
+    [canvasSize]="180" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.canvasSizes }}</h2>
+  <div class="demo-row demo-row--stretch">
+    <ea-avatar-editor [canvasSize]="100" />
+    <ea-avatar-editor [canvasSize]="150" />
+    <ea-avatar-editor [canvasSize]="200" />
+  </div>
+</web-ui-component-demo-layout>

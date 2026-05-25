@@ -27,6 +27,12 @@ export const pl: EagamiMessages = {
     groupLabel: length => `Kod weryfikacyjny, ${length} cyfr`,
     digitLabel: (index, length) => `Cyfra ${index} z ${length}`,
   },
+  commandPalette: {
+    dialogLabel: 'Paleta poleceń',
+    searchPlaceholder: 'Wpisz polecenie lub szukaj…',
+    empty: 'Brak wyników',
+    clear: 'Wyczyść wyszukiwanie',
+  },
   colorPicker: {
     placeholder: 'Wybierz kolor…',
     clear: 'Wyczyść kolor',
@@ -129,6 +135,20 @@ export const pl: EagamiMessages = {
   },
   toast: {
     dismiss: 'Zamknij',
+  },
+  transferList: {
+    sourceLabel: 'Dostępne',
+    targetLabel: 'Wybrane',
+    controlsLabel: 'Sterowanie przenoszeniem',
+    moveSelectedToTarget: 'Przenieś zaznaczone do celu',
+    moveAllToTarget: 'Przenieś wszystko do celu',
+    moveSelectedToSource: 'Przenieś zaznaczone do źródła',
+    moveAllToSource: 'Przenieś wszystko do źródła',
+    empty: 'Brak elementów',
+  },
+  tree: {
+    expand: 'Rozwiń',
+    collapse: 'Zwiń',
   },
   wordmark: {
     overline: 'ręcznie wykonane przez',

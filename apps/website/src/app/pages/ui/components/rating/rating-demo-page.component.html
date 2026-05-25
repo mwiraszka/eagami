@@ -1,0 +1,62 @@
+<web-ui-component-demo-layout slug="rating">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.experienceLabel"
+    [(value)]="ratingValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.halfSteps }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.halfStepsLabel"
+    [hint]="messages().ui.component.demos.rating.halfStepsHint"
+    [allowHalf]="true"
+    [value]="3.5" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-rating
+    size="sm"
+    [label]="messages().ui.component.common.small"
+    [value]="3" />
+  <ea-rating
+    size="md"
+    [label]="messages().ui.component.common.medium"
+    [value]="3" />
+  <ea-rating
+    size="lg"
+    [label]="messages().ui.component.common.large"
+    [value]="3" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.readonly }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.readonlyLabel"
+    [value]="4"
+    [readonly]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.withHintLabel"
+    [hint]="messages().ui.component.demos.rating.withHintHint"
+    [value]="0" />
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.withErrorLabel"
+    [errorMsg]="messages().ui.component.demos.rating.withErrorText"
+    [value]="0"
+    [required]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.numberOfStars }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.numberOfStarsLabel"
+    [max]="10"
+    [value]="7" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.customIcon }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.demos.rating.customIconLabel"
+    [value]="4"
+    [iconClass]="HeartIconComponent" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <ea-rating
+    [label]="messages().ui.component.common.disabled"
+    [value]="3"
+    [disabled]="true" />
+</web-ui-component-demo-layout>

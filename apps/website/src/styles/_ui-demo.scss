@@ -1,0 +1,59 @@
+// Shared classes used inside `<web-ui-component-demo-layout>` projected content.
+// Each demo page projects markup into the layout; component-scoped styles can't
+// reach across content projection, so these live in a global partial.
+
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h2 {
+    // Generous vertical break between demo sections so each `<h2>`-led group
+    // reads as a distinct chunk on the page. The first heading sits flush
+    // with the top of the card; subsequent ones get the full 32px gap above.
+    margin: 32px 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  // Cap form-like components at a width that reads as a discrete widget,
+  // rather than letting them stretch the full 880px demo section. Applied via
+  // `class="demo-form-narrow"` on the consumer element so it stays opt-in.
+  .demo-form-narrow {
+    max-width: 480px;
+  }
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+
+  &--stretch {
+    align-items: stretch;
+  }
+}
+
+.demo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.demo-stack--md {
+  gap: 12px;
+}
+
+.demo-preview {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}

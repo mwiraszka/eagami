@@ -1,0 +1,61 @@
+<web-ui-component-demo-layout slug="tabs">
+  <h2>{{ messages().ui.component.sectionHeadings.underline }}</h2>
+  <ea-tabs activeTab="account">
+    <ea-tab
+      value="account"
+      [label]="messages().ui.component.demos.tabs.account">
+      {{ messages().ui.component.demos.tabs.accountContent }}
+    </ea-tab>
+    <ea-tab
+      value="security"
+      [label]="messages().ui.component.demos.tabs.security">
+      {{ messages().ui.component.demos.tabs.securityContent }}
+    </ea-tab>
+    <ea-tab
+      value="notifications"
+      [label]="messages().ui.component.demos.tabs.notifications">
+      {{ messages().ui.component.demos.tabs.notificationsContent }}
+    </ea-tab>
+  </ea-tabs>
+
+  <h2>{{ messages().ui.component.sectionHeadings.filled }}</h2>
+  <ea-tabs
+    variant="filled"
+    activeTab="overview">
+    <ea-tab
+      value="overview"
+      [label]="messages().ui.component.demos.tabs.overview">
+      {{ messages().ui.component.demos.tabs.overviewContent }}
+    </ea-tab>
+    <ea-tab
+      value="analytics"
+      [label]="messages().ui.component.demos.tabs.analytics">
+      {{ messages().ui.component.demos.tabs.analyticsContent }}
+    </ea-tab>
+    <ea-tab
+      value="reports"
+      [label]="messages().ui.component.demos.tabs.reports">
+      {{ messages().ui.component.demos.tabs.reportsContent }}
+    </ea-tab>
+  </ea-tabs>
+
+  <h2>{{ messages().ui.component.sectionHeadings.withDisabledTab }}</h2>
+  <ea-tabs activeTab="general">
+    <ea-tab
+      value="general"
+      [label]="messages().ui.component.demos.tabs.general">
+      {{ messages().ui.component.demos.tabs.generalContent }}
+    </ea-tab>
+    <ea-tab
+      value="billing"
+      [label]="messages().ui.component.demos.tabs.billing">
+      {{ messages().ui.component.demos.tabs.billingContent }}
+    </ea-tab>
+    <ea-tab
+      value="admin"
+      [label]="messages().ui.component.demos.tabs.admin"
+      [disabled]="true">
+      {{ messages().ui.component.demos.tabs.adminContent }}
+    </ea-tab>
+  </ea-tabs>
+</web-ui-component-demo-layout>

@@ -67,71 +67,160 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Variants
+  // Variants — colours route through CSS custom properties so consumers can
+  // theme any single button via `--ea-button-background-color`, `--ea-button-color`,
+  // and `--ea-button-border-color` (and matching `*-hover` / `*-active`)
+  // without pierce-overriding `--color-brand-*` globally. Each per-state token
+  // falls back to its base counterpart first, then to the variant's default
+  // token, so a consumer that sets only the base colour gets a consistent
+  // flat-coloured button across all states.
   // ---------------------------------------------------------------------------
 
   // Primary
   &--primary {
-    background-color: var(--color-brand-default);
-    border-color: var(--color-brand-default);
-    color: var(--color-text-inverse);
+    background-color: var(--ea-button-background-color, var(--color-brand-default));
+    border-color: var(--ea-button-border-color, var(--color-brand-default));
+    color: var(--ea-button-color, var(--color-text-inverse));
 
     &:hover:not(.ea-button--disabled) {
-      background-color: var(--color-brand-hover);
-      border-color: var(--color-brand-hover);
+      background-color: var(
+        --ea-button-background-color-hover,
+        var(--ea-button-background-color, var(--color-brand-hover))
+      );
+      border-color: var(
+        --ea-button-border-color-hover,
+        var(--ea-button-border-color, var(--color-brand-hover))
+      );
+      color: var(
+        --ea-button-color-hover,
+        var(--ea-button-color, var(--color-text-inverse))
+      );
     }
 
     &:active:not(.ea-button--disabled) {
-      background-color: var(--color-brand-active);
-      border-color: var(--color-brand-active);
+      background-color: var(
+        --ea-button-background-color-active,
+        var(--ea-button-background-color, var(--color-brand-active))
+      );
+      border-color: var(
+        --ea-button-border-color-active,
+        var(--ea-button-border-color, var(--color-brand-active))
+      );
+      color: var(
+        --ea-button-color-active,
+        var(--ea-button-color, var(--color-text-inverse))
+      );
     }
   }
 
   // Secondary (outlined)
   &--secondary {
-    background-color: transparent;
-    border-color: var(--color-border-strong);
-    color: var(--color-text-primary);
+    background-color: var(--ea-button-background-color, transparent);
+    border-color: var(--ea-button-border-color, var(--color-border-strong));
+    color: var(--ea-button-color, var(--color-text-primary));
 
     &:hover:not(.ea-button--disabled) {
-      background-color: var(--color-bg-muted);
-      border-color: var(--color-neutral-500);
+      background-color: var(
+        --ea-button-background-color-hover,
+        var(--ea-button-background-color, var(--color-bg-muted))
+      );
+      border-color: var(
+        --ea-button-border-color-hover,
+        var(--ea-button-border-color, var(--color-neutral-500))
+      );
+      color: var(
+        --ea-button-color-hover,
+        var(--ea-button-color, var(--color-text-primary))
+      );
     }
 
     &:active:not(.ea-button--disabled) {
-      background-color: var(--color-neutral-200);
+      background-color: var(
+        --ea-button-background-color-active,
+        var(--ea-button-background-color, var(--color-neutral-200))
+      );
+      border-color: var(
+        --ea-button-border-color-active,
+        var(--ea-button-border-color, var(--color-neutral-500))
+      );
+      color: var(
+        --ea-button-color-active,
+        var(--ea-button-color, var(--color-text-primary))
+      );
     }
   }
 
   // Ghost (no border, no background)
   &--ghost {
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--color-text-primary);
+    background-color: var(--ea-button-background-color, transparent);
+    border-color: var(--ea-button-border-color, transparent);
+    color: var(--ea-button-color, var(--color-text-primary));
 
     &:hover:not(.ea-button--disabled) {
-      background-color: var(--color-bg-muted);
+      background-color: var(
+        --ea-button-background-color-hover,
+        var(--ea-button-background-color, var(--color-bg-muted))
+      );
+      border-color: var(
+        --ea-button-border-color-hover,
+        var(--ea-button-border-color, transparent)
+      );
+      color: var(
+        --ea-button-color-hover,
+        var(--ea-button-color, var(--color-text-primary))
+      );
     }
 
     &:active:not(.ea-button--disabled) {
-      background-color: var(--color-neutral-200);
+      background-color: var(
+        --ea-button-background-color-active,
+        var(--ea-button-background-color, var(--color-neutral-200))
+      );
+      border-color: var(
+        --ea-button-border-color-active,
+        var(--ea-button-border-color, transparent)
+      );
+      color: var(
+        --ea-button-color-active,
+        var(--ea-button-color, var(--color-text-primary))
+      );
     }
   }
 
   // Danger
   &--danger {
-    background-color: var(--color-error-default);
-    border-color: var(--color-error-default);
-    color: var(--color-text-inverse);
+    background-color: var(--ea-button-background-color, var(--color-error-default));
+    border-color: var(--ea-button-border-color, var(--color-error-default));
+    color: var(--ea-button-color, var(--color-text-inverse));
 
     &:hover:not(.ea-button--disabled) {
-      background-color: var(--color-error-700);
-      border-color: var(--color-error-700);
+      background-color: var(
+        --ea-button-background-color-hover,
+        var(--ea-button-background-color, var(--color-error-700))
+      );
+      border-color: var(
+        --ea-button-border-color-hover,
+        var(--ea-button-border-color, var(--color-error-700))
+      );
+      color: var(
+        --ea-button-color-hover,
+        var(--ea-button-color, var(--color-text-inverse))
+      );
     }
 
     &:active:not(.ea-button--disabled) {
-      background-color: var(--color-error-700);
-      border-color: var(--color-error-700);
+      background-color: var(
+        --ea-button-background-color-active,
+        var(--ea-button-background-color, var(--color-error-700))
+      );
+      border-color: var(
+        --ea-button-border-color-active,
+        var(--ea-button-border-color, var(--color-error-700))
+      );
+      color: var(
+        --ea-button-color-active,
+        var(--ea-button-color, var(--color-text-inverse))
+      );
       filter: brightness(0.9);
     }
   }

@@ -1,0 +1,54 @@
+<web-ui-component-demo-layout slug="textarea">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-textarea
+    [label]="messages().ui.component.demos.textarea.messageLabel"
+    [placeholder]="messages().ui.component.demos.textarea.messagePlaceholder"
+    [(value)]="textareaValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <ea-textarea
+    [label]="messages().ui.component.demos.textarea.withHintLabel"
+    [hint]="messages().ui.component.demos.textarea.hintMaxCharacters"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+  <ea-textarea
+    [label]="messages().ui.component.demos.textarea.withErrorLabel"
+    [errorMsg]="messages().ui.component.demos.textarea.errorRequired"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-textarea
+    size="sm"
+    [label]="messages().ui.component.common.small"
+    placeholder="sm" />
+  <ea-textarea
+    size="md"
+    [label]="messages().ui.component.common.medium"
+    placeholder="md" />
+  <ea-textarea
+    size="lg"
+    [label]="messages().ui.component.common.large"
+    placeholder="lg" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.noResize }}</h2>
+  <ea-textarea
+    [label]="messages().ui.component.demos.textarea.fixedSizeLabel"
+    resize="none"
+    [placeholder]="messages().ui.component.demos.textarea.fixedSizePlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withMaxlength }}</h2>
+  <ea-textarea
+    label="Bio"
+    [maxlength]="100"
+    hint="Limited to 100 characters."
+    placeholder="Tell us about yourself…" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
+  <ea-textarea
+    [label]="messages().ui.component.common.disabled"
+    [disabled]="true"
+    [placeholder]="messages().ui.component.common.disabled" />
+  <ea-textarea
+    [label]="messages().ui.component.demos.textarea.readonlyLabel"
+    [readonly]="true"
+    [value]="messages().ui.component.demos.textarea.readonlyValue" />
+</web-ui-component-demo-layout>

@@ -1,0 +1,39 @@
+<web-ui-component-demo-layout slug="button">
+  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
+  <div class="demo-row">
+    <ea-button>{{ messages().ui.component.demos.button.primary }}</ea-button>
+    <ea-button variant="secondary">
+      {{ messages().ui.component.demos.button.secondary }}
+    </ea-button>
+    <ea-button variant="ghost">
+      {{ messages().ui.component.demos.button.ghost }}
+    </ea-button>
+    <ea-button variant="danger">
+      {{ messages().ui.component.demos.button.danger }}
+    </ea-button>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-row">
+    <ea-button size="sm">{{ messages().ui.component.common.small }}</ea-button>
+    <ea-button size="md">{{ messages().ui.component.common.medium }}</ea-button>
+    <ea-button size="lg">{{ messages().ui.component.common.large }}</ea-button>
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
+  <div class="demo-row">
+    <ea-button
+      [loading]="isLoading()"
+      (clicked)="triggerLoading()">
+      {{ messages().ui.component.demos.button.toggleLoading }}
+    </ea-button>
+    <ea-button [disabled]="true">
+      {{ messages().ui.component.common.disabled }}
+    </ea-button>
+  </div>
+  <div class="demo-row">
+    <ea-button [fullWidth]="true">
+      {{ messages().ui.component.demos.button.fullWidth }}
+    </ea-button>
+  </div>
+</web-ui-component-demo-layout>

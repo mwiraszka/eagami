@@ -1,0 +1,44 @@
+<web-ui-component-demo-layout slug="tree">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-tree
+    aria-label="File tree"
+    [nodes]="fileTree"
+    [expandedIds]="['src']" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withSelection }}</h2>
+  <ea-tree
+    aria-label="File tree with selection"
+    [nodes]="fileTree"
+    [expandedIds]="['src', 'app']"
+    [selectedId]="'app.component.ts'" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-tree
+    aria-label="Small tree"
+    size="sm"
+    [nodes]="fileTree"
+    [expandedIds]="['src']" />
+  <ea-tree
+    aria-label="Medium tree"
+    size="md"
+    [nodes]="fileTree"
+    [expandedIds]="['src']" />
+  <ea-tree
+    aria-label="Large tree"
+    size="lg"
+    [nodes]="fileTree"
+    [expandedIds]="['src']" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
+  <ea-tree
+    aria-label="Org chart"
+    [nodes]="orgChart"
+    [expandedIds]="['ceo', 'cto', 'cfo']" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
+  <ea-tree
+    aria-label="Disabled tree"
+    [nodes]="fileTree"
+    [expandedIds]="['src']"
+    [disabled]="true" />
+</web-ui-component-demo-layout>

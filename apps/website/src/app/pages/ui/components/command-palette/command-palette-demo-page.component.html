@@ -1,0 +1,16 @@
+<web-ui-component-demo-layout slug="command-palette">
+  <h2>{{ messages().ui.component.sectionHeadings.trigger }}</h2>
+  <p class="demo-preview">
+    {{ messages().ui.component.demos.commandPalette.hint }}
+  </p>
+  <ea-button
+    variant="secondary"
+    (clicked)="open.set(true)">
+    {{ messages().ui.component.demos.commandPalette.openButton }}
+  </ea-button>
+
+  <ea-command-palette
+    [items]="commands()"
+    [(open)]="open"
+    (execute)="onExecute($event)" />
+</web-ui-component-demo-layout>

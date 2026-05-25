@@ -27,6 +27,12 @@ export const el: EagamiMessages = {
     groupLabel: length => `Κωδικός επαλήθευσης, ${length} ψηφία`,
     digitLabel: (index, length) => `Ψηφίο ${index} από ${length}`,
   },
+  commandPalette: {
+    dialogLabel: 'Παλέτα εντολών',
+    searchPlaceholder: 'Πληκτρολογήστε εντολή ή αναζητήστε…',
+    empty: 'Δεν βρέθηκαν αποτελέσματα',
+    clear: 'Εκκαθάριση αναζήτησης',
+  },
   colorPicker: {
     placeholder: 'Επιλέξτε χρώμα…',
     clear: 'Εκκαθάριση χρώματος',
@@ -129,6 +135,20 @@ export const el: EagamiMessages = {
   },
   toast: {
     dismiss: 'Απόρριψη',
+  },
+  transferList: {
+    sourceLabel: 'Διαθέσιμα',
+    targetLabel: 'Επιλεγμένα',
+    controlsLabel: 'Έλεγχοι μεταφοράς',
+    moveSelectedToTarget: 'Μεταφορά επιλογής στον στόχο',
+    moveAllToTarget: 'Μεταφορά όλων στον στόχο',
+    moveSelectedToSource: 'Μεταφορά επιλογής στην πηγή',
+    moveAllToSource: 'Μεταφορά όλων στην πηγή',
+    empty: 'Καμία εγγραφή',
+  },
+  tree: {
+    expand: 'Ανάπτυξη',
+    collapse: 'Σύμπτυξη',
   },
   wordmark: {
     overline: 'φτιαγμένο με μεράκι από',

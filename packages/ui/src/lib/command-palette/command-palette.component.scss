@@ -1,0 +1,200 @@
+.ea-command-palette {
+  position: fixed;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, calc(100vw - var(--space-8)));
+  max-height: 70vh;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: var(--color-text-primary);
+
+  &::backdrop {
+    background-color: var(--color-bg-overlay);
+  }
+}
+
+.ea-command-palette__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+  overflow: hidden;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  background-color: var(--color-bg-base);
+}
+
+.ea-command-palette__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width-thin) solid var(--color-border-default);
+}
+
+.ea-command-palette__search-icon {
+  display: inline-flex;
+  align-items: center;
+  width: 1.125em;
+  height: 1.125em;
+  color: var(--color-text-secondary);
+}
+
+.ea-command-palette__input {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-md);
+  border: none;
+  background: transparent;
+  color: inherit;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+}
+
+.ea-command-palette__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+  }
+}
+
+.ea-command-palette__list {
+  flex: 1;
+  padding: var(--space-1);
+  margin: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.ea-command-palette__group {
+  position: relative;
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  user-select: none;
+
+  // Divider drawn as a pseudo-element so it can span the same horizontal
+  // range as the item rows' hover background — i.e. the list's inner edges
+  // — rather than being constrained by the group `<li>`'s padding.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--border-width-thin);
+    background-color: var(--color-border-default);
+  }
+
+  // The first group sits flush with the search bar — no leading divider.
+  &:first-child {
+    margin-top: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.ea-command-palette__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-colors);
+  user-select: none;
+
+  // Pointer-hover paint — the visible "this row would be selected" state when
+  // the cursor is over an item. Active-row highlight (`--active`) is reserved
+  // for keyboard nav, so a single class doesn't have to mean two things.
+  &:hover:not(.ea-command-palette__item--disabled) {
+    background-color: var(--color-bg-muted);
+  }
+
+  &--active {
+    background-color: var(--color-bg-muted);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.ea-command-palette__item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.ea-command-palette__item-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ea-command-palette__item-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ea-command-palette__item-description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ea-command-palette__item-shortcut {
+  flex-shrink: 0;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  // Match the panel's own background so the chip stays legible against the
+  // hover/active item background (which is `--color-bg-muted` — using the
+  // same token for the kbd chip would make it disappear into the row).
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-secondary);
+}
+
+.ea-command-palette__empty {
+  padding: var(--space-6) var(--space-4);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--color-text-tertiary);
+}

@@ -1,12 +1,12 @@
 <div
   class="ea-stepper"
   [ngClass]="hostClasses()">
-  <ol
+  <div
     class="ea-stepper__list"
     role="tablist"
     (keydown)="handleKeydown($event)">
     @for (step of registeredSteps(); let i = $index; track step) {
-      <li class="ea-stepper__item">
+      <div class="ea-stepper__item">
         <button
           type="button"
           role="tab"
@@ -45,8 +45,8 @@
             aria-hidden="true">
           </span>
         }
-      </li>
+      </div>
     }
-  </ol>
+  </div>
   <ng-content />
 </div>

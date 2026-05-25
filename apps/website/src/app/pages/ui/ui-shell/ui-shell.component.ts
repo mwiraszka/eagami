@@ -1,4 +1,4 @@
-import { ChevronRightIconComponent } from '@eagami/ui';
+import { ChevronRightIconComponent, ToastComponent } from '@eagami/ui';
 import { filter, map, startWith } from 'rxjs';
 
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
@@ -18,7 +18,13 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-ui-shell',
   templateUrl: './ui-shell.component.html',
   styleUrl: './ui-shell.component.scss',
-  imports: [ChevronRightIconComponent, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [
+    ChevronRightIconComponent,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    ToastComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiShellComponent {

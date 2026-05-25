@@ -47,6 +47,10 @@ export const WithError: Story = {
   args: { errorMsg: 'Please pick a value above 50' },
 };
 
+export const WithExternalError: Story = {
+  args: { hasError: true, hint: 'Error message lives outside the slider' },
+};
+
 export const Stepped: Story = {
   args: { min: 0, max: 10, step: 1 },
 };

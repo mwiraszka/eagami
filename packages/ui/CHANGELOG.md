@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-05-24
+
+### Added
+
+- Add `<ea-command-palette>`, a search-driven modal action launcher (Cmd/Ctrl + K-style). Wraps the native `<dialog>` element for focus trap and Esc dismissal. Items can be ungrouped or bucketed by a `group` field; the filter matches `label`, `description`, and hidden `keywords`. Keyboard navigation (Arrow keys, Home / End, Enter) drives a roving `aria-activedescendant` on the search input — the canonical ARIA combobox-with-listbox pattern. Optional per-item `shortcut`, `description`, leading `icon`, and `disabled` flag. `[(open)]` is a two-way model and `(execute)` fires once with the chosen item before the palette auto-closes.
+- Add `<ea-virtual-list>`, a low-level windowed-rendering primitive for long lists. Only the rows currently in the viewport (plus a configurable overscan) are mounted; an absolutely-positioned spacer reserves the full scroll extent so the scrollbar reflects the real item count. Fixed-height items only in v1. Consumers project the per-row template via `<ng-template #item let-row let-i="index">` and stay role-agnostic — the primitive provides scroll mechanics; the consumer wraps the projected item with whatever ARIA the use case calls for (`role="option"`, `role="row"`, etc.). Exposes a `scrollIndexChange` output and a `scrollToIndex(n)` imperative method.
+- Add `<ea-transfer-list>`, a two-pane shuttle control for moving items between a source set and a target set. Each pane is a `role="listbox"` with `aria-multiselectable="true"`; rows highlight on click and four direction buttons (move-selected and move-all in each direction) reconcile the panes against a `selectedIds` model. Disabled items per row stay anchored to their current pane and are skipped by the move-all buttons. Three sizes (sm / md / lg) and a whole-component `disabled` flag.
+- Add `<ea-tree>`, a hierarchical single-selection treeview with full keyboard navigation (Arrow keys, Home / End, Enter / Space), the standard ARIA `tree` pattern (roving `tabindex`, `aria-level` / `aria-posinset` / `aria-setsize` / `aria-expanded` / `aria-selected`), three sizes (sm / md / lg), optional per-node leading icons, a disabled flag per node and at the tree level, and `selectedId` / `expandedIds` model signals for two-way binding. Setting `[selectedId]` for a deeply-nested node auto-expands the ancestor chain so the selection becomes visible.
+- Add `[hasError]` boolean input to `<ea-slider>` so consumers rendering the error message themselves (above the slider, in a surrounding form layout) can still trigger the built-in error recolour of the fill and thumb. The flag is OR'd with the implicit error state derived from `errorMsg`, so existing usage is unchanged.
+
+### Changed
+
+- Route `<ea-button>` variant colours through CSS custom properties so consumers can recolour any single button without overriding `--color-brand-*` or `--color-text-inverse` globally. `--ea-button-background-color`, `--ea-button-color`, and `--ea-button-border-color` (and matching `*-hover` / `*-active` per-state tokens) override the variant defaults; each per-state token falls back to its base counterpart before the variant default so setting a single base colour produces a flat-coloured button across all states.
+- Expose `--ea-empty-state-title-font-weight`, `--ea-empty-state-description-color`, and `--ea-empty-state-media-color` on `<ea-empty-state>` so consumers can fine-tune the title weight, description text colour, and media-area icon colour without piercing view encapsulation.
+
+### Fixed
+
+- Strip leaking `role` and `aria-label` attributes from the `<ea-popover>` host element, so assistive tech (and axe) only see the conditional ARIA on the inner surface. Resolves missing-accessible-name violations on every popover-driven component when closed (`<ea-dropdown>`, `<ea-multi-select>`, `<ea-date-picker>`, `<ea-time-picker>`, and `<ea-color-picker>`).
+- Wire `<ea-multi-select>`'s `<label>` to its `<div role="combobox">` trigger via `aria-labelledby`. The previous `<label for>` linkage was inert because the trigger is a `<div>`, not a form-control element, so screen readers announced the trigger as nameless.
+- Restructure `<ea-stepper>`'s tablist from an `<ol><li role="tablist">` containing `<button role="tab">` to a flat `<div role="tablist">` of tab buttons. The previous structure was rejected by axe and screen readers because ARIA tablist children must be tabs directly, not wrapped in list items, and the `role="tablist"` overrode the list's implicit role leaving the `<li>` elements orphaned. Visible rendering, keyboard navigation, and selection behaviour are unchanged.
+- Replace the focusable `<button>` star elements in `<ea-rating>` with presentational spans, so the `role="slider"` container no longer nests interactive descendants. Mouse click and keyboard navigation behaviour is unchanged.
+
 ## [2.1.0] - 2026-05-24
 
 ### Added
@@ -507,6 +529,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
+[2.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.1.0...ui-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0

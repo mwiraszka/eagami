@@ -1,0 +1,60 @@
+<web-ui-component-demo-layout slug="input">
+  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
+  <ea-input
+    [label]="messages().ui.component.demos.input.defaultLabel"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
+    [(value)]="inputValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <ea-input
+    [label]="messages().ui.component.demos.input.withHintLabel"
+    [hint]="messages().ui.component.demos.input.hintGuidance"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+  <ea-input
+    [label]="messages().ui.component.demos.input.withErrorLabel"
+    [errorMsg]="messages().ui.component.demos.input.errorRequired"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <ea-input
+    size="sm"
+    [label]="messages().ui.component.common.small"
+    placeholder="sm" />
+  <ea-input
+    size="md"
+    [label]="messages().ui.component.common.medium"
+    placeholder="md" />
+  <ea-input
+    size="lg"
+    [label]="messages().ui.component.common.large"
+    placeholder="lg" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
+  <ea-input
+    [label]="messages().ui.component.common.disabled"
+    [disabled]="true"
+    [placeholder]="messages().ui.component.common.disabled" />
+  <ea-input
+    [label]="messages().ui.component.demos.input.readonlyLabel"
+    [readonly]="true"
+    [value]="messages().ui.component.demos.input.readonlyValue" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.password }}</h2>
+  <ea-input
+    [label]="messages().ui.component.demos.input.passwordLabel"
+    type="password"
+    autocomplete="current-password"
+    [placeholder]="messages().ui.component.demos.input.passwordPlaceholder" />
+  <ea-input
+    [label]="messages().ui.component.demos.input.passwordNoToggleLabel"
+    type="password"
+    [showPasswordToggle]="false"
+    [placeholder]="messages().ui.component.demos.input.passwordNoTogglePlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.autocompleteSection }}</h2>
+  <ea-input
+    [label]="messages().ui.component.demos.input.emailLabel"
+    type="email"
+    autocomplete="email"
+    [placeholder]="messages().ui.component.demos.input.emailPlaceholder" />
+</web-ui-component-demo-layout>

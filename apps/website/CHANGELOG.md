@@ -2,6 +2,20 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.2.0] - 2026-05-24
+
+### Added
+
+- Document the new `<ea-command-palette>` component on the `/ui/components/command-palette` page. A page-scoped `Ctrl/Cmd + K` listener opens the palette, and selecting any command fires a confirmation toast. Demo strings (command labels, descriptions, group headings, the trigger button, and the executed-toast message) translated across the five locales.
+- Document the new `<ea-virtual-list>` component on the `/ui/components/virtual-list` page, with a default 10,000-row scroll demo (showing a live "row X of Y" position indicator wired to `scrollIndexChange`) and a compact-density variant. Demo strings translated across the five locales.
+- Document the new `<ea-transfer-list>` component on the `/ui/components/transfer-list` page, with demos covering the default state, an initial-selection variant, a disabled-item variant (a sticky pre-assigned owner), three sizes, and the disabled state. Demo strings (role names and pane labels) translated across the five locales.
+- Document the new `<ea-tree>` component on the `/ui/components/tree` page, with demos covering the default collapsed file tree, a selection-driven auto-expand, three sizes, an org-chart variant with a disabled node, and the disabled state. New `with selection` section heading translated across the five locales.
+
+### Changed
+
+- Pick up @eagami/ui v2.2.0.
+- Restructure the components page so each `<ea-*>` lives on its own per-component route (`/ui/components/<slug>`) under a shared layout, instead of a single switch over the slug. URL surface is unchanged.
+
 ## [2.1.0] - 2026-05-24
 
 ### Added
@@ -410,6 +424,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.2.0]: https://github.com/mwiraszka/eagami/compare/website-v2.1.0...website-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/website-v2.0.0...website-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/website-v1.5.0...website-v2.0.0
 [1.5.0]: https://github.com/mwiraszka/eagami/compare/website-v1.4.1...website-v1.5.0

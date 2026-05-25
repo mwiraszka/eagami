@@ -1,0 +1,46 @@
+<web-ui-component-demo-layout slug="data-table">
+  <h2>{{ messages().ui.component.sectionHeadings.defaultHeading }}</h2>
+  <ea-data-table
+    [columns]="tableColumns()"
+    [data]="tableData" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.stripedAndBordered }}</h2>
+  <ea-data-table
+    [columns]="tableColumns()"
+    [data]="tableData"
+    [striped]="true"
+    [bordered]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.compactDensity }}</h2>
+  <ea-data-table
+    [columns]="tableColumns()"
+    [data]="tableData"
+    density="compact"
+    [striped]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.stickyHeader }}</h2>
+  <ea-data-table
+    class="demo-sticky-table"
+    [columns]="tableColumns()"
+    [data]="tableData"
+    [stickyHeader]="true" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withPaginator }}</h2>
+  <ea-data-table
+    [columns]="tableColumns()"
+    [data]="pagedTableData"
+    [striped]="true">
+    <ea-paginator
+      [totalItems]="tableData.length"
+      [(page)]="tablePage"
+      [(pageSize)]="tablePageSize"
+      [pageSizeOptions]="[5, 10, 12]"
+      align="center"
+      (changed)="onTablePageChange($event)" />
+  </ea-data-table>
+
+  <h2>{{ messages().ui.component.sectionHeadings.emptyState }}</h2>
+  <ea-data-table
+    [columns]="tableColumns()"
+    [data]="[]" />
+</web-ui-component-demo-layout>

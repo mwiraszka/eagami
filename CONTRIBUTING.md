@@ -61,15 +61,46 @@ Dependabot PRs aren't merged directly. When cutting a release branch, locally pu
 - Body left empty; the CHANGELOG entry is the source of truth
 - CI must be green before merge
 
-## Changing a library component
+## Adding a new component
+
+Use this checklist when creating a brand-new component. Skip nothing — partial coverage breaks the assumption that every component has stories, a website demo, and a11y tests.
+
+**Library (`packages/ui/`)**
+
+- [ ] Create `packages/ui/src/lib/<slug>/<slug>.component.{ts,html,scss}` (kebab-case slug, `ea-<slug>` selector)
+- [ ] Standalone component with `ChangeDetectionStrategy.OnPush`
+- [ ] Inputs/outputs as signals (`input()`, `model()`, `output()`); reach for RxJS only when streams are genuinely needed
+- [ ] If form-like (exposes `errorMsg` / `hint`): follow the field-message pattern in [InputComponent](packages/ui/src/lib/input/input.component.ts) (icon + `role="alert"`, `var(--text-helper-*)` typography, `var(--color-error-default)` colour)
+- [ ] No hard-coded color literals in `.scss`; tokens only (`packages/ui/src/styles/tokens/_colors.scss`)
+- [ ] Add `<slug>.component.stories.ts` — cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
+- [ ] Add `<slug>.component.spec.ts` — interaction tests, ARIA assertions, edge cases. No `any` casts
+- [ ] Add `<slug>.component.a11y.spec.ts` — `jest-axe` snapshot for each meaningful rendered state (default, error, disabled, expanded)
+- [ ] Export from `packages/ui/src/public-api.ts` in alphabetical order
+- [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook` — all must pass
+
+**Website (`apps/website/`)**
+
+- [ ] Add an entry to `apps/website/src/app/data/ui-components.ts` (alphabetical by slug)
+- [ ] Add the route in `apps/website/src/app/app.routes.ts` under `ui/components/<slug>` with `loadComponent` pointing at the per-component page
+- [ ] Create `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.{ts,html,scss}` (selector `web-<slug>-demo-page`) demonstrating every variant
+- [ ] All demo strings go through i18n in all five locales (en, fr, de, es, pl)
+- [ ] Run `pnpm website build` and visit `http://localhost:4444/ui/components/<slug>` to verify the demo renders in light and dark mode
+
+**Release**
+
+- [ ] Bump `packages/ui/package.json` and `apps/website/package.json` to the matching `ui-vA.B.C-website-vX.Y.Z` versions
+- [ ] Add a single consolidated `### Added` entry per CHANGELOG (library and website), naming the component once; do not break out individual inputs or variants
+- [ ] Update the footer comparison links in both CHANGELOGs
+
+## Changing a component
 
 Three surfaces stay in sync:
 
 1. The component at `packages/ui/src/lib/<name>/`
 2. Stories at `<name>.component.stories.ts` (cover new variants and inputs)
-3. The website's components page at `apps/website/src/app/pages/ui/ui-component/ui-component-page.component.html` (the `@case ('<slug>')` block — add a demo per variant, with i18n strings in all five locales)
+3. The website's per-component demo at `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.html` (add a demo per variant, with i18n strings in all five locales)
 
-Tests live alongside as `<name>.component.spec.ts`. For accessibility, ARIA, and form-field plumbing patterns, follow [InputComponent](packages/ui/src/lib/input/input.component.ts) and [DropdownComponent](packages/ui/src/lib/dropdown/dropdown.component.ts).
+Tests live alongside as `<name>.component.spec.ts` and `<name>.component.a11y.spec.ts`. For accessibility, ARIA, and form-field plumbing patterns, follow [InputComponent](packages/ui/src/lib/input/input.component.ts) and [DropdownComponent](packages/ui/src/lib/dropdown/dropdown.component.ts).
 
 ## Code conventions
 

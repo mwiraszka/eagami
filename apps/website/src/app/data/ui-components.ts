@@ -18,6 +18,11 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'checkbox', name: 'Checkbox', selector: 'ea-checkbox' },
   { slug: 'code-input', name: 'Code Input', selector: 'ea-code-input' },
   { slug: 'color-picker', name: 'Color Picker', selector: 'ea-color-picker' },
+  {
+    slug: 'command-palette',
+    name: 'Command Palette',
+    selector: 'ea-command-palette',
+  },
   { slug: 'data-table', name: 'Data Table', selector: 'ea-data-table' },
   { slug: 'date-picker', name: 'Date Picker', selector: 'ea-date-picker' },
   { slug: 'dialog', name: 'Dialog', selector: 'ea-dialog' },
@@ -48,4 +53,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'time-picker', name: 'Time Picker', selector: 'ea-time-picker' },
   { slug: 'toast', name: 'Toast', selector: 'ea-toast' },
   { slug: 'tooltip', name: 'Tooltip', selector: 'eaTooltip', kind: 'directive' },
+  { slug: 'transfer-list', name: 'Transfer List', selector: 'ea-transfer-list' },
+  { slug: 'tree', name: 'Tree', selector: 'ea-tree' },
+  { slug: 'virtual-list', name: 'Virtual List', selector: 'ea-virtual-list' },
 ];

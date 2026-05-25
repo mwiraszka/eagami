@@ -292,6 +292,7 @@ export interface WebMessages {
         withMinMaxLabels: string;
         withOptionalStep: string;
         withSeconds: string;
+        withSelection: string;
         withoutAlpha: string;
         withoutSearch: string;
         withoutSelectAll: string;
@@ -636,6 +637,39 @@ export interface WebMessages {
           leftTooltip: string;
           rightLabel: string;
           rightTooltip: string;
+        };
+        transferList: {
+          availableLabel: string;
+          assignedLabel: string;
+          roleAdmin: string;
+          roleEditor: string;
+          roleViewer: string;
+          roleGuest: string;
+          roleBilling: string;
+          roleOwner: string;
+        };
+        virtualList: {
+          row: string;
+          detail: (n: number) => string;
+          scrollPosition: (first: number, total: number) => string;
+        };
+        commandPalette: {
+          hint: string;
+          openButton: string;
+          fileGroup: string;
+          editGroup: string;
+          newFile: string;
+          openFile: string;
+          save: string;
+          find: string;
+          findKeyword: string;
+          replace: string;
+          undo: string;
+          toggleTheme: string;
+          toggleThemeDescription: string;
+          lockWorkspace: string;
+          lockWorkspaceDescription: string;
+          executedToast: (label: string) => string;
         };
         avatarEditorActions: {
           avatarUpdatedToast: string;

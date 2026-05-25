@@ -61,6 +61,17 @@ export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // Strip ARIA attributes from the host element. Angular's template parser
+  // mirrors any static `role="..."` / `aria-label="..."` on `<ea-popover>` to
+  // both the matching input AND the host's DOM attributes; without these
+  // clears, axe sees an empty `<ea-popover role="dialog">` (even when closed,
+  // since the host is always in the document) and flags it for missing names
+  // / nested roles. The role and label belong on the inner `__surface` div,
+  // which already applies them conditionally on `open()`.
+  host: {
+    '[attr.role]': 'null',
+    '[attr.aria-label]': 'null',
+  },
 })
 export class PopoverComponent {
   private readonly destroyRef = inject(DestroyRef);

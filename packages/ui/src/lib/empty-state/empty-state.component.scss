@@ -75,7 +75,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-tertiary);
+    color: var(--ea-empty-state-media-color, var(--color-text-tertiary));
 
     &:empty {
       display: none;
@@ -84,7 +84,7 @@
 
   &__title {
     margin: 0;
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--ea-empty-state-title-font-weight, var(--font-weight-semibold));
     line-height: var(--line-height-tight);
     color: var(--color-text-primary);
   }
@@ -92,7 +92,7 @@
   &__description {
     margin: 0;
     line-height: var(--line-height-normal);
-    color: var(--color-text-secondary);
+    color: var(--ea-empty-state-description-color, var(--color-text-secondary));
   }
 
   &__actions {

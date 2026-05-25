@@ -1,0 +1,68 @@
+<li
+  class="ea-tree-node"
+  role="treeitem"
+  [attr.id]="'ea-tree-item-' + node().id"
+  [attr.data-treeitem-id]="node().id"
+  [attr.aria-level]="level() + 1"
+  [attr.aria-posinset]="posInSet()"
+  [attr.aria-setsize]="setSize()"
+  [attr.aria-selected]="isSelected()"
+  [attr.aria-expanded]="hasChildren() ? isExpanded() : null"
+  [attr.aria-disabled]="isDisabled() || null"
+  [attr.tabindex]="isFocused() ? 0 : -1"
+  [class.ea-tree-node--selected]="isSelected()"
+  [class.ea-tree-node--disabled]="isDisabled()"
+  [class.ea-tree-node--leaf]="!hasChildren()"
+  [style]="indentStyle()">
+  <div
+    class="ea-tree-node__row"
+    (click)="onRowClick()">
+    @if (hasChildren()) {
+      <span
+        class="ea-tree-node__chevron"
+        [class.ea-tree-node__chevron--open]="isExpanded()"
+        [attr.aria-label]="isExpanded() ? collapseLabel() : expandLabel()"
+        role="button"
+        (click)="onChevronClick($event)">
+        <ea-icon-chevron-right />
+      </span>
+    } @else {
+      <span
+        class="ea-tree-node__chevron-spacer"
+        aria-hidden="true">
+      </span>
+    }
+
+    @if (node().icon; as iconClass) {
+      <span
+        class="ea-tree-node__icon"
+        aria-hidden="true">
+        <ng-container *ngComponentOutlet="iconClass" />
+      </span>
+    }
+
+    <span class="ea-tree-node__label">{{ node().label }}</span>
+  </div>
+
+  @if (hasChildren() && isExpanded()) {
+    <ul
+      class="ea-tree-node__children"
+      role="group">
+      @for (child of node().children; track child.id; let i = $index) {
+        <ea-tree-node
+          [node]="child"
+          [level]="level() + 1"
+          [posInSet]="i + 1"
+          [setSize]="node().children!.length"
+          [selectedId]="selectedId()"
+          [focusedId]="focusedId()"
+          [expandedIds]="expandedIds()"
+          [disabled]="disabled()"
+          [expandLabel]="expandLabel()"
+          [collapseLabel]="collapseLabel()"
+          (toggle)="toggle.emit($event)"
+          (select)="select.emit($event)" />
+      }
+    </ul>
+  }
+</li>

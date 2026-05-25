@@ -1,0 +1,31 @@
+<web-ui-component-demo-layout slug="eagami-wordmark">
+  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
+  <div class="demo-stack demo-stack--md">
+    <ea-eagami-wordmark [variant]="1" />
+    <ea-eagami-wordmark [variant]="2" />
+    <ea-eagami-wordmark [variant]="3" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-stack demo-stack--md">
+    <ea-eagami-wordmark
+      [variant]="3"
+      [size]="16" />
+    <ea-eagami-wordmark
+      [variant]="3"
+      [size]="32" />
+    <ea-eagami-wordmark
+      [variant]="3"
+      [size]="64" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.inlineLayout }}</h2>
+  <div class="demo-stack demo-stack--md">
+    <ea-eagami-wordmark
+      [variant]="2"
+      layout="inline" />
+    <ea-eagami-wordmark
+      [variant]="3"
+      layout="inline" />
+  </div>
+</web-ui-component-demo-layout>

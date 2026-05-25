@@ -47,6 +47,12 @@ export interface EagamiMessages {
     groupLabel: (length: number) => string;
     digitLabel: (index: number, length: number) => string;
   };
+  commandPalette: {
+    dialogLabel: string;
+    searchPlaceholder: string;
+    empty: string;
+    clear: string;
+  };
   colorPicker: {
     placeholder: string;
     clear: string;
@@ -155,6 +161,20 @@ export interface EagamiMessages {
   };
   toast: {
     dismiss: string;
+  };
+  transferList: {
+    sourceLabel: string;
+    targetLabel: string;
+    controlsLabel: string;
+    moveSelectedToTarget: string;
+    moveAllToTarget: string;
+    moveSelectedToSource: string;
+    moveAllToSource: string;
+    empty: string;
+  };
+  tree: {
+    expand: string;
+    collapse: string;
   };
   wordmark: {
     overline: string;
