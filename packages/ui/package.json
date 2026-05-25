@@ -33,6 +33,7 @@
     "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
+    "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN",
     "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
   },
   "peerDependencies": {
@@ -65,6 +66,7 @@
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/jest": "30.0.0",
     "@types/jest-axe": "3.5.9",
+    "chromatic": "17.0.0",
     "@types/node": "25.8.0",
     "eslint": "10.4.0",
     "eslint-config-prettier": "10.1.8",
