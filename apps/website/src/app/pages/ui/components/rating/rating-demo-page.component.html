@@ -14,15 +14,12 @@
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
   <ea-rating
     size="sm"
-    [label]="messages().ui.component.common.small"
     [value]="3" />
   <ea-rating
     size="md"
-    [label]="messages().ui.component.common.medium"
     [value]="3" />
   <ea-rating
     size="lg"
-    [label]="messages().ui.component.common.large"
     [value]="3" />
 
   <h2>{{ messages().ui.component.sectionHeadings.readonly }}</h2>
@@ -31,13 +28,15 @@
     [value]="4"
     [readonly]="true" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-rating
-    [label]="messages().ui.component.demos.rating.withHintLabel"
+    [label]="messages().ui.component.demos.rating.experienceLabel"
     [hint]="messages().ui.component.demos.rating.withHintHint"
     [value]="0" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-rating
-    [label]="messages().ui.component.demos.rating.withErrorLabel"
+    [label]="messages().ui.component.demos.rating.experienceLabel"
     [errorMsg]="messages().ui.component.demos.rating.withErrorText"
     [value]="0"
     [required]="true" />
@@ -56,7 +55,7 @@
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-rating
-    [label]="messages().ui.component.common.disabled"
+    [label]="messages().ui.component.demos.rating.experienceLabel"
     [value]="3"
     [disabled]="true" />
 </web-ui-component-demo-layout>

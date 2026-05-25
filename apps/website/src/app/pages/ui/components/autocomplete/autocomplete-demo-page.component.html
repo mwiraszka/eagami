@@ -1,19 +1,18 @@
 <web-ui-component-demo-layout slug="autocomplete">
   <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
   <ea-autocomplete
-    [label]="messages().ui.component.demos.autocomplete.frameworkLabel"
     [placeholder]="messages().ui.component.demos.autocomplete.startTyping"
     [options]="autocompleteOptions"
     [(value)]="autocompleteValue" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-autocomplete
-    [label]="messages().ui.component.demos.autocomplete.withHintLabel"
     [hint]="messages().ui.component.demos.autocomplete.hintText"
     [options]="autocompleteOptions"
     [placeholder]="messages().ui.component.demos.autocomplete.frameworkPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-autocomplete
-    [label]="messages().ui.component.demos.autocomplete.withErrorLabel"
     [errorMsg]="messages().ui.component.demos.autocomplete.errorText"
     [options]="autocompleteOptions"
     [placeholder]="messages().ui.component.demos.autocomplete.frameworkPlaceholder" />
@@ -21,19 +20,16 @@
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
   <ea-autocomplete
     size="sm"
-    [label]="messages().ui.component.common.small"
-    [options]="autocompleteOptions"
-    placeholder="sm" />
+    placeholder="sm"
+    [options]="autocompleteOptions" />
   <ea-autocomplete
     size="md"
-    [label]="messages().ui.component.common.medium"
-    [options]="autocompleteOptions"
-    placeholder="md" />
+    placeholder="md"
+    [options]="autocompleteOptions" />
   <ea-autocomplete
     size="lg"
-    [label]="messages().ui.component.common.large"
-    [options]="autocompleteOptions"
-    placeholder="lg" />
+    placeholder="lg"
+    [options]="autocompleteOptions" />
 
   <h2>{{ messages().ui.component.sectionHeadings.minLengthMaxResults }}</h2>
   <ea-autocomplete
@@ -45,8 +41,7 @@
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-autocomplete
-    [label]="messages().ui.component.common.disabled"
     [disabled]="true"
     [options]="autocompleteOptions"
-    [placeholder]="messages().ui.component.common.disabled" />
+    [placeholder]="messages().ui.component.demos.autocomplete.startTyping" />
 </web-ui-component-demo-layout>

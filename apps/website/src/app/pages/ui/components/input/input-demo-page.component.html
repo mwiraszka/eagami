@@ -5,35 +5,34 @@
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
     [(value)]="inputValue" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-input
-    [label]="messages().ui.component.demos.input.withHintLabel"
+    [label]="messages().ui.component.demos.input.defaultLabel"
     [hint]="messages().ui.component.demos.input.hintGuidance"
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-input
-    [label]="messages().ui.component.demos.input.withErrorLabel"
+    [label]="messages().ui.component.demos.input.defaultLabel"
     [errorMsg]="messages().ui.component.demos.input.errorRequired"
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
   <ea-input
     size="sm"
-    [label]="messages().ui.component.common.small"
     placeholder="sm" />
   <ea-input
     size="md"
-    [label]="messages().ui.component.common.medium"
     placeholder="md" />
   <ea-input
     size="lg"
-    [label]="messages().ui.component.common.large"
     placeholder="lg" />
 
   <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
   <ea-input
-    [label]="messages().ui.component.common.disabled"
-    [disabled]="true"
-    [placeholder]="messages().ui.component.common.disabled" />
+    [label]="messages().ui.component.demos.input.defaultLabel"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
+    [disabled]="true" />
   <ea-input
     [label]="messages().ui.component.demos.input.readonlyLabel"
     [readonly]="true"

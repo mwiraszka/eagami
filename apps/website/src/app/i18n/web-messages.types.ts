@@ -339,9 +339,7 @@ export interface WebMessages {
         autocomplete: {
           frameworkLabel: string;
           startTyping: string;
-          withHintLabel: string;
           hintText: string;
-          withErrorLabel: string;
           errorText: string;
           frameworkPlaceholder: string;
           minMaxLabel: string;
@@ -392,9 +390,7 @@ export interface WebMessages {
         };
         colorPicker: {
           brandLabel: string;
-          withHintLabel: string;
           hintBrandColor: string;
-          withErrorLabel: string;
           errorRequired: string;
           hexLabel: string;
           rgbLabel: string;
@@ -412,9 +408,7 @@ export interface WebMessages {
         datePicker: {
           appointmentLabel: string;
           pickDatePlaceholder: string;
-          withHintLabel: string;
           hintAnyFutureDate: string;
-          withErrorLabel: string;
           errorRequired: string;
           shortLabel: string;
           mediumLabel: string;
@@ -450,9 +444,7 @@ export interface WebMessages {
         dropdown: {
           fruitLabel: string;
           fruitPlaceholder: string;
-          withHintLabel: string;
           hintFavourite: string;
-          withErrorLabel: string;
           errorRequired: string;
           selectPlaceholder: string;
         };
@@ -471,17 +463,13 @@ export interface WebMessages {
           imagesHint: string;
           resumeLabel: string;
           customIconLabel: string;
-          withHintLabel: string;
           withHintHint: string;
-          withErrorLabel: string;
           withErrorText: string;
         };
         input: {
           defaultLabel: string;
           enterTextPlaceholder: string;
-          withHintLabel: string;
           hintGuidance: string;
-          withErrorLabel: string;
           errorRequired: string;
           readonlyLabel: string;
           readonlyValue: string;
@@ -554,9 +542,7 @@ export interface WebMessages {
           halfStepsLabel: string;
           halfStepsHint: string;
           readonlyLabel: string;
-          withHintLabel: string;
           withHintHint: string;
-          withErrorLabel: string;
           withErrorText: string;
           numberOfStarsLabel: string;
           customIconLabel: string;
@@ -616,9 +602,7 @@ export interface WebMessages {
         textarea: {
           messageLabel: string;
           messagePlaceholder: string;
-          withHintLabel: string;
           hintMaxCharacters: string;
-          withErrorLabel: string;
           errorRequired: string;
           fixedSizeLabel: string;
           fixedSizePlaceholder: string;

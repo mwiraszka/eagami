@@ -22,35 +22,32 @@
     [showMinMaxLabels]="true"
     [value]="[3, 7]" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
-  <div class="demo-stack">
-    <ea-range-slider
-      label="With hint"
-      hint="Drag either thumb or use arrow keys"
-      [value]="[20, 80]" />
-    <ea-range-slider
-      label="With error"
-      errorMsg="Range must span at least 30"
-      [value]="[20, 80]" />
-  </div>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
+  <ea-range-slider
+    label="Price range"
+    hint="Drag either thumb or use arrow keys"
+    [value]="[20, 80]" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
+  <ea-range-slider
+    label="Price range"
+    errorMsg="Range must span at least 30"
+    [value]="[20, 80]" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
   <ea-range-slider
     size="sm"
-    [label]="messages().ui.component.common.small"
     [value]="[20, 80]" />
   <ea-range-slider
     size="md"
-    [label]="messages().ui.component.common.medium"
     [value]="[20, 80]" />
   <ea-range-slider
     size="lg"
-    [label]="messages().ui.component.common.large"
     [value]="[20, 80]" />
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-range-slider
-    [label]="messages().ui.component.common.disabled"
+    label="Price range"
     [disabled]="true"
     [value]="[20, 80]" />
 </web-ui-component-demo-layout>
