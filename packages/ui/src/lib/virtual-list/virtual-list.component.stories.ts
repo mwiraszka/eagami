@@ -14,7 +14,7 @@ const LONG_LIST: Row[] = Array.from({ length: 10_000 }, (_, i) => ({
   detail: `Detail row ${i + 1}`,
 }));
 
-const meta: Meta<VirtualListComponent<Row>> = {
+const meta: Meta<VirtualListComponent> = {
   title: 'Components/Virtual list',
   component: VirtualListComponent,
   tags: ['autodocs'],
@@ -32,7 +32,7 @@ const meta: Meta<VirtualListComponent<Row>> = {
 };
 
 export default meta;
-type Story = StoryObj<VirtualListComponent<Row>>;
+type Story = StoryObj<VirtualListComponent>;
 
 export const Default: Story = {
   render: args => ({

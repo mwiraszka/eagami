@@ -21,6 +21,12 @@ import { SpinnerComponent } from '../spinner/spinner.component';
  */
 const meta: Meta = {
   title: 'Foundations/Internationalization',
+  // `component` is unused by the stories themselves (each variant builds its
+  // own template), but Storybook's docs runtime calls `extractArgTypes` for
+  // every loaded story and crashes with "Invalid component undefined" if the
+  // meta has none. Pointing at any imported component is enough to satisfy
+  // the extractor without affecting what renders.
+  component: SpinnerComponent,
   decorators: [
     moduleMetadata({
       imports: [
