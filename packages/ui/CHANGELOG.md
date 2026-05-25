@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.3.0] - 2026-05-25
 
+### Changed
+
+- Expose `--ea-empty-state-title-color` on `<ea-empty-state>` so consumers can recolour the title without bleeding `--color-text-primary` to its siblings.
+
 ## [2.2.0] - 2026-05-25
 
 ### Added
