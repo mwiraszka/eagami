@@ -5,6 +5,9 @@
 // Internationalization
 export * from './lib/i18n';
 
+// Palette
+export * from './lib/palette';
+
 // Components
 export * from './lib/accordion/accordion.component';
 export * from './lib/accordion/accordion-item.component';
