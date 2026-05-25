@@ -38,20 +38,43 @@ const preview: Preview = {
         ],
       },
     },
+    theme: {
+      description: 'Color scheme',
+      defaultValue: 'auto',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        dynamicTitle: true,
+        items: [
+          { value: 'auto', title: 'Auto (OS preference)', right: '🖥️' },
+          { value: 'light', title: 'Light', right: '☀️' },
+          { value: 'dark', title: 'Dark', right: '🌙' },
+        ],
+      },
+    },
   },
   decorators: [
     (storyFn, context) => {
       const locale = context.globals['locale'] as EagamiLocale;
+      const theme = context.globals['theme'] as 'auto' | 'light' | 'dark';
       // Storybook does not re-bootstrap the Angular app on global changes, so
       // changing `provideEagamiUi({ locale })` alone doesn't update an already-
       // constructed `EagamiI18nService`. Push the locale through the override
       // signal too — the service watches that and applies new values live.
       _eagamiI18nLocaleOverride.set(locale);
-      // Setting <html lang> lets the browser apply locale-aware case mapping
-      // to text-transform: uppercase. In `el` that correctly drops the tonos
-      // accent on uppercased Greek headings.
       if (typeof document !== 'undefined') {
+        // Setting <html lang> lets the browser apply locale-aware case mapping
+        // to text-transform: uppercase. In `el` that correctly drops the tonos
+        // accent on uppercased Greek headings.
         document.documentElement.lang = locale;
+        // The library's design tokens read `[data-theme="light"]` /
+        // `[data-theme="dark"]` on `<html>`; the default `auto` removes the
+        // attribute and falls back to `prefers-color-scheme`.
+        if (theme === 'auto') {
+          delete document.documentElement.dataset['theme'];
+        } else {
+          document.documentElement.dataset['theme'] = theme;
+        }
       }
       return applicationConfig({
         providers: [provideEagamiUi({ locale })],
