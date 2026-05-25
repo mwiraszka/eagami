@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/angular';
 
+import { ButtonComponent } from '../button/button.component';
 import { CommandPaletteComponent } from './command-palette.component';
 import { CommandPaletteItem } from './command-palette.types';
 
@@ -27,15 +28,13 @@ const COMMANDS: CommandPaletteItem[] = [
 ];
 
 const meta: Meta<CommandPaletteComponent> = {
-  title: 'Components/CommandPalette',
+  title: 'Components/Command palette',
   component: CommandPaletteComponent,
   tags: ['autodocs'],
   argTypes: {
-    open: { control: 'boolean' },
     placeholder: { control: 'text' },
   },
   args: {
-    open: true,
     items: COMMANDS,
     placeholder: '',
   },
@@ -46,12 +45,14 @@ type Story = StoryObj<CommandPaletteComponent>;
 
 export const Default: Story = {
   render: args => ({
-    props: args,
+    props: { ...args, isOpen: false },
+    moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
       <ea-command-palette
         [items]="items"
-        [open]="open"
-        [placeholder]="placeholder" />
+        [placeholder]="placeholder"
+        [(open)]="isOpen" />
     `,
   }),
 };
@@ -59,12 +60,14 @@ export const Default: Story = {
 export const WithCustomPlaceholder: Story = {
   args: { placeholder: 'Jump to anywhere…' },
   render: args => ({
-    props: args,
+    props: { ...args, isOpen: false },
+    moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
       <ea-command-palette
         [items]="items"
-        [open]="open"
-        [placeholder]="placeholder" />
+        [placeholder]="placeholder"
+        [(open)]="isOpen" />
     `,
   }),
 };
@@ -74,9 +77,11 @@ export const FlatList: Story = {
     items: COMMANDS.map(({ group: _group, ...rest }) => rest),
   },
   render: args => ({
-    props: args,
+    props: { ...args, isOpen: false },
+    moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
-      <ea-command-palette [items]="items" [open]="open" />
+      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
+      <ea-command-palette [items]="items" [(open)]="isOpen" />
     `,
   }),
 };

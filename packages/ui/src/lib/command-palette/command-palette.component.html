@@ -43,7 +43,8 @@
       <ul
         class="ea-command-palette__list"
         role="listbox"
-        [id]="listboxId">
+        [id]="listboxId"
+        (mouseleave)="onListMouseLeave()">
         @for (group of groupedItems(); track group.group) {
           @if (group.group) {
             <li
@@ -58,7 +59,7 @@
               role="option"
               [id]="itemDomId(entry.item)"
               [attr.aria-selected]="isActive(entry.flatIndex)"
-              [class.ea-command-palette__item--active]="isActive(entry.flatIndex)"
+              [class.ea-command-palette__item--active]="showActiveHighlight(entry.flatIndex)"
               [class.ea-command-palette__item--disabled]="entry.item.disabled"
               (click)="onItemClick(entry.item)"
               (mouseenter)="onItemMouseEnter(entry.flatIndex)">

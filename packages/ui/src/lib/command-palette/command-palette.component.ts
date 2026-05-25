@@ -84,7 +84,11 @@ export class CommandPaletteComponent {
       const haystack = [item.label, item.description ?? '', ...(item.keywords ?? [])]
         .join(' ')
         .toLowerCase();
-      return haystack.includes(q);
+      // Match when the query is a prefix of any word in the haystack.
+      // Substring-anywhere matching would surface confusing results (typing
+      // "c" matching "Repla*c*e" via a mid-word character); word-boundary
+      // matching keeps results predictable.
+      return haystack.split(/[\s\-_]+/).some(word => word.startsWith(q));
     });
 
     const buckets = new Map<string, CommandPaletteItem[]>();
@@ -121,6 +125,19 @@ export class CommandPaletteComponent {
 
   private readonly _activeIndex = signal<number>(0);
 
+  /**
+   * Tracks what the user last did so the visual highlight only renders when
+   * it actually reflects what a click/Enter would select right now:
+   *  - `keyboard` — keyboard nav (or just-opened / just-typed): show the
+   *    active item's background so keyboard users see what Enter will pick.
+   *  - `mouse` — pointer is moving inside the list: rely on `:hover` for the
+   *    visual; skip the active-row background to avoid two highlights.
+   *  - `none` — pointer is outside the list and no keyboard nav has happened
+   *    since: nothing is highlighted, because nothing on screen is a
+   *    next-click target.
+   */
+  private readonly interaction = signal<'keyboard' | 'mouse' | 'none'>('keyboard');
+
   protected readonly activeIndex = computed(() => {
     const max = this.filteredItems().length - 1;
     if (max < 0) return -1;
@@ -146,6 +163,7 @@ export class CommandPaletteComponent {
         if (!dialog.open) dialog.showModal?.();
         this.query.set('');
         this._activeIndex.set(0);
+        this.interaction.set('keyboard');
         queueMicrotask(() => this.searchEl()?.nativeElement.focus());
       } else if (dialog.open) {
         dialog.close();
@@ -161,14 +179,28 @@ export class CommandPaletteComponent {
     return this.activeIndex() === flatIndex;
   }
 
+  /**
+   * Whether the active row should render its highlighted background right
+   * now. False when the pointer is hovering the list (`:hover` handles the
+   * visual) or when the pointer is out of the list entirely (nothing is a
+   * next-click target).
+   */
+  protected showActiveHighlight(flatIndex: number): boolean {
+    return this.interaction() === 'keyboard' && this.isActive(flatIndex);
+  }
+
   protected onQueryInput(event: Event): void {
     this.query.set((event.target as HTMLInputElement).value);
     this._activeIndex.set(0);
+    // Typing implies keyboard intent — surface the first match so the user
+    // knows what Enter would pick without having to mouse over.
+    this.interaction.set('keyboard');
   }
 
   protected clearQuery(): void {
     this.query.set('');
     this._activeIndex.set(0);
+    this.interaction.set('keyboard');
     this.searchEl()?.nativeElement.focus();
   }
 
@@ -180,24 +212,28 @@ export class CommandPaletteComponent {
       case 'ArrowDown': {
         event.preventDefault();
         this._activeIndex.set(this.activeIndex() < max ? this.activeIndex() + 1 : 0);
+        this.interaction.set('keyboard');
         this.scrollActiveIntoView();
         break;
       }
       case 'ArrowUp': {
         event.preventDefault();
         this._activeIndex.set(this.activeIndex() > 0 ? this.activeIndex() - 1 : max);
+        this.interaction.set('keyboard');
         this.scrollActiveIntoView();
         break;
       }
       case 'Home': {
         event.preventDefault();
         this._activeIndex.set(0);
+        this.interaction.set('keyboard');
         this.scrollActiveIntoView();
         break;
       }
       case 'End': {
         event.preventDefault();
         this._activeIndex.set(max);
+        this.interaction.set('keyboard');
         this.scrollActiveIntoView();
         break;
       }
@@ -217,6 +253,14 @@ export class CommandPaletteComponent {
 
   protected onItemMouseEnter(flatIndex: number): void {
     this._activeIndex.set(flatIndex);
+    this.interaction.set('mouse');
+  }
+
+  protected onListMouseLeave(): void {
+    /* Once the pointer leaves the list, no item is a candidate for the next
+       click — so drop the keyboard-highlight too. A subsequent keyboard nav
+       will restore it. */
+    this.interaction.set('none');
   }
 
   protected onBackdropClick(event: MouseEvent): void {

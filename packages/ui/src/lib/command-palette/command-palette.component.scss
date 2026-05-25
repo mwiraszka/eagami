@@ -84,13 +84,37 @@
 }
 
 .ea-command-palette__group {
+  position: relative;
+  margin-top: var(--space-3);
   padding: var(--space-2) var(--space-3) var(--space-1);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   user-select: none;
+
+  // Divider drawn as a pseudo-element so it can span the same horizontal
+  // range as the item rows' hover background — i.e. the list's inner edges
+  // — rather than being constrained by the group `<li>`'s padding.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--border-width-thin);
+    background-color: var(--color-border-default);
+  }
+
+  // The first group sits flush with the search bar — no leading divider.
+  &:first-child {
+    margin-top: 0;
+
+    &::before {
+      display: none;
+    }
+  }
 }
 
 .ea-command-palette__item {
@@ -102,6 +126,13 @@
   cursor: pointer;
   transition: var(--transition-colors);
   user-select: none;
+
+  // Pointer-hover paint — the visible "this row would be selected" state when
+  // the cursor is over an item. Active-row highlight (`--active`) is reserved
+  // for keyboard nav, so a single class doesn't have to mean two things.
+  &:hover:not(.ea-command-palette__item--disabled) {
+    background-color: var(--color-bg-muted);
+  }
 
   &--active {
     background-color: var(--color-bg-muted);
@@ -151,9 +182,12 @@
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-xs);
   font-family: var(--font-family-mono);
+  // Match the panel's own background so the chip stays legible against the
+  // hover/active item background (which is `--color-bg-muted` — using the
+  // same token for the kbd chip would make it disappear into the row).
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background-color: var(--color-bg-muted);
+  background-color: var(--color-bg-base);
   color: var(--color-text-secondary);
 }
 

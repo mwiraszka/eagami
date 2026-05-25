@@ -106,6 +106,25 @@ describe('CommandPaletteComponent', () => {
     expect(labels).toEqual(['Find']);
   });
 
+  it('matches by word prefix, not mid-word substring', () => {
+    // "c" appears mid-word in "Repla*c*e" and in "Sear*c*h" (Find's keyword),
+    // and inside the description "Swit*c*h between light and dar*c*…". Word-
+    // prefix matching excludes those — only items starting a word with "c"
+    // would appear (none, in this fixture).
+    typeQuery('c');
+
+    expect(getItems()).toHaveLength(0);
+  });
+
+  it('matches when the query is a prefix of any word', () => {
+    typeQuery('rep');
+
+    const labels = getItems().map(el =>
+      el.querySelector('.ea-command-palette__item-label')?.textContent?.trim(),
+    );
+    expect(labels).toEqual(['Replace']);
+  });
+
   it('shows the empty state when nothing matches', () => {
     typeQuery('nonexistent-thing');
 
@@ -156,6 +175,31 @@ describe('CommandPaletteComponent', () => {
     fixture.detectChanges();
 
     expect(host.open()).toBe(false);
+  });
+
+  it('clears the active-item highlight when the pointer leaves the list', () => {
+    expect(getActiveItem()).toBeTruthy();
+
+    const list = fixture.nativeElement.querySelector(
+      '.ea-command-palette__list',
+    ) as HTMLElement;
+    list.dispatchEvent(new MouseEvent('mouseleave', { bubbles: false }));
+    fixture.detectChanges();
+
+    expect(getActiveItem()).toBeUndefined();
+  });
+
+  it('restores the highlight when the user resumes keyboard nav', () => {
+    const list = fixture.nativeElement.querySelector(
+      '.ea-command-palette__list',
+    ) as HTMLElement;
+    list.dispatchEvent(new MouseEvent('mouseleave', { bubbles: false }));
+    fixture.detectChanges();
+    expect(getActiveItem()).toBeUndefined();
+
+    press('ArrowDown');
+
+    expect(getActiveItem()).toBeTruthy();
   });
 
   it('renders the shortcut hint when provided', () => {
