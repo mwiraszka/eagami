@@ -69,7 +69,7 @@
     "eslint": "10.4.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.5",
-    "eslint-plugin-storybook": "10.4.0",
+    "eslint-plugin-storybook": "10.4.1",
     "globals": "17.6.0",
     "jest": "30.4.2",
     "jest-axe": "10.0.0",
@@ -81,7 +81,7 @@
     "storybook": "10.4.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.59.3",
+    "typescript-eslint": "8.60.0",
     "zone.js": "0.16.2"
   },
   "engines": {
