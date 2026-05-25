@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add a `palette` option to `provideEagamiUi`. Consumers pass a `primary` (and optional `secondary`) base hex; the library derives a perceptually-uniform 10-shade scale via OKLCH, maps the shades to semantic brand roles, and asserts WCAG 2.1 AA contrast on every brand-role pairing before applying. A failing palette throws at bootstrap so a bad brand colour is caught before the app loads. Per-shade `overrides` and role remapping are supported for brand books that pin specific hexes.
 - Add `--color-brand-text` token (defaults to `--color-primary-700` in light mode, `--color-primary-300` in dark mode). Use it for the brand colour as a foreground on a non-brand surface (selected dropdown row, today marker, sorted column, spinner, active paginator page). Keeps `--color-brand-default` free to optimize as a surface (button bg, badge bg) without dragging text-on-surface contrast along with it.
 - Expose `--ea-switch-track-border-color` on `<ea-switch>` so consumers can recolour the track outline without overriding `--color-border-*` globally.
 
