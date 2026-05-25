@@ -24,7 +24,14 @@
 }
 
 .ea-transfer-list__list {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  // A tiny gap between items so consecutive highlighted rows read as
+  // distinct selections rather than merging into one block. Smaller than
+  // the spacing scale's smallest token by design — just enough to break
+  // the visual continuity without adding noticeable air to the list.
+  gap: 2px;
   min-height: 160px;
   padding: var(--space-1);
   margin: 0;
@@ -68,7 +75,9 @@
 
 .ea-transfer-list__empty {
   padding: var(--space-3);
-  font-size: var(--font-size-sm);
+  // Inherit the container's size-scaled font-size so the placeholder grows
+  // and shrinks alongside the rest of the pane.
+  font-size: inherit;
   text-align: center;
   color: var(--color-text-tertiary);
   user-select: none;

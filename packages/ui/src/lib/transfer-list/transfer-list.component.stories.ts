@@ -13,7 +13,7 @@ const ROLES: TransferListItem[] = [
 ];
 
 const meta: Meta<TransferListComponent> = {
-  title: 'Components/TransferList',
+  title: 'Components/Transfer list',
   component: TransferListComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -24,8 +24,6 @@ const meta: Meta<TransferListComponent> = {
     size: 'md',
     disabled: false,
     items: ROLES,
-    sourceLabel: 'Available',
-    targetLabel: 'Selected',
   },
 };
 
@@ -39,8 +37,6 @@ export const Default: Story = {
       <ea-transfer-list
         class="story-medium"
         [items]="items"
-        [sourceLabel]="sourceLabel"
-        [targetLabel]="targetLabel"
         [size]="size"
         [disabled]="disabled" />
     `,
@@ -54,8 +50,6 @@ export const WithInitialSelection: Story = {
       <ea-transfer-list
         class="story-medium"
         [items]="items"
-        [sourceLabel]="sourceLabel"
-        [targetLabel]="targetLabel"
         [selectedIds]="selectedIds"
         [size]="size"
         [disabled]="disabled" />
@@ -64,15 +58,14 @@ export const WithInitialSelection: Story = {
 };
 
 export const WithoutLabels: Story = {
-  args: { sourceLabel: '', targetLabel: '' },
   render: args => ({
     props: args,
     template: `
       <ea-transfer-list
         class="story-medium"
         [items]="items"
-        [sourceLabel]="sourceLabel"
-        [targetLabel]="targetLabel"
+        sourceLabel=""
+        targetLabel=""
         [size]="size"
         [disabled]="disabled" />
     `,
@@ -86,15 +79,15 @@ export const Sizes: Story = {
       <div class="story-stack">
         <div>
           <p class="story-label">Small</p>
-          <ea-transfer-list [items]="items" sourceLabel="Available" targetLabel="Selected" size="sm" />
+          <ea-transfer-list [items]="items" size="sm" />
         </div>
         <div>
           <p class="story-label">Medium</p>
-          <ea-transfer-list [items]="items" sourceLabel="Available" targetLabel="Selected" size="md" />
+          <ea-transfer-list [items]="items" size="md" />
         </div>
         <div>
           <p class="story-label">Large</p>
-          <ea-transfer-list [items]="items" sourceLabel="Available" targetLabel="Selected" size="lg" />
+          <ea-transfer-list [items]="items" size="lg" />
         </div>
       </div>
     `,
@@ -109,8 +102,6 @@ export const Disabled: Story = {
       <ea-transfer-list
         class="story-medium"
         [items]="items"
-        [sourceLabel]="sourceLabel"
-        [targetLabel]="targetLabel"
         [selectedIds]="selectedIds"
         [size]="size"
         [disabled]="disabled" />

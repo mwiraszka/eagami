@@ -48,11 +48,19 @@ export class TransferListComponent {
   /** Ids currently on the target (right) side. */
   readonly selectedIds = model<readonly string[]>([]);
 
-  /** Heading rendered above the source (left) pane. Omit to hide the heading row. */
-  readonly sourceLabel = input<string>('');
+  /**
+   * Heading rendered above the source (left) pane. Defaults to the localized
+   * `transferList.sourceLabel` from i18n; pass an explicit empty string to
+   * hide the heading row entirely.
+   */
+  readonly sourceLabel = input<string | undefined>(undefined);
 
-  /** Heading rendered above the target (right) pane. Omit to hide the heading row. */
-  readonly targetLabel = input<string>('');
+  /**
+   * Heading rendered above the target (right) pane. Defaults to the localized
+   * `transferList.targetLabel` from i18n; pass an explicit empty string to
+   * hide the heading row entirely.
+   */
+  readonly targetLabel = input<string | undefined>(undefined);
 
   readonly size = input<TransferListSize>('md');
 
@@ -65,6 +73,13 @@ export class TransferListComponent {
   // transfer so the user starts fresh on the next move.
   private readonly leftHighlighted = signal<ReadonlySet<string>>(new Set<string>());
   private readonly rightHighlighted = signal<ReadonlySet<string>>(new Set<string>());
+
+  // Per-pane "anchor" id — the last item the user clicked without Shift.
+  // Shift-click on another item selects the range from anchor to target,
+  // matching the standard list-selection convention (Windows Explorer,
+  // macOS Finder, every file picker).
+  private readonly leftAnchor = signal<string | null>(null);
+  private readonly rightAnchor = signal<string | null>(null);
 
   protected readonly sourceItems = computed(() => {
     const selected = new Set(this.selectedIds());
@@ -108,6 +123,14 @@ export class TransferListComponent {
     return this.targetItems().some(i => !i.disabled);
   });
 
+  protected readonly resolvedSourceLabel = computed(
+    () => this.sourceLabel() ?? this.messages().transferList.sourceLabel,
+  );
+
+  protected readonly resolvedTargetLabel = computed(
+    () => this.targetLabel() ?? this.messages().transferList.targetLabel,
+  );
+
   protected readonly hostClasses = computed(() => [
     'ea-transfer-list',
     `ea-transfer-list--${this.size()}`,
@@ -119,16 +142,17 @@ export class TransferListComponent {
     return set.has(id);
   }
 
-  protected onItemClick(pane: 'source' | 'target', item: TransferListItem): void {
+  protected onItemClick(
+    pane: 'source' | 'target',
+    item: TransferListItem,
+    event: MouseEvent,
+  ): void {
     if (this.disabled() || item.disabled) return;
-    const signal = pane === 'source' ? this.leftHighlighted : this.rightHighlighted;
-    const next = new Set(signal());
-    if (next.has(item.id)) {
-      next.delete(item.id);
+    if (event.shiftKey) {
+      this.selectRangeTo(pane, item);
     } else {
-      next.add(item.id);
+      this.toggleHighlight(pane, item);
     }
-    signal.set(next);
   }
 
   protected onItemKeydown(
@@ -138,8 +162,51 @@ export class TransferListComponent {
   ): void {
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault();
-      this.onItemClick(pane, item);
+      if (event.shiftKey) {
+        this.selectRangeTo(pane, item);
+      } else {
+        this.toggleHighlight(pane, item);
+      }
     }
+  }
+
+  private toggleHighlight(pane: 'source' | 'target', item: TransferListItem): void {
+    const highlight = pane === 'source' ? this.leftHighlighted : this.rightHighlighted;
+    const anchor = pane === 'source' ? this.leftAnchor : this.rightAnchor;
+    const next = new Set(highlight());
+    if (next.has(item.id)) {
+      next.delete(item.id);
+    } else {
+      next.add(item.id);
+    }
+    highlight.set(next);
+    anchor.set(item.id);
+  }
+
+  private selectRangeTo(pane: 'source' | 'target', item: TransferListItem): void {
+    const highlight = pane === 'source' ? this.leftHighlighted : this.rightHighlighted;
+    const anchor = pane === 'source' ? this.leftAnchor : this.rightAnchor;
+    const items = pane === 'source' ? this.sourceItems() : this.targetItems();
+    const anchorId = anchor();
+    /* If there is no anchor yet (or the anchor row has been moved to the
+       other pane), fall back to a single-row toggle so Shift-click never
+       feels broken. */
+    const anchorIdx = anchorId === null ? -1 : items.findIndex(i => i.id === anchorId);
+    const currentIdx = items.findIndex(i => i.id === item.id);
+    if (anchorIdx < 0 || currentIdx < 0) {
+      this.toggleHighlight(pane, item);
+      return;
+    }
+    const [start, end] =
+      anchorIdx <= currentIdx ? [anchorIdx, currentIdx] : [currentIdx, anchorIdx];
+    const next = new Set(highlight());
+    for (let i = start; i <= end; i++) {
+      const row = items[i];
+      if (!row.disabled) next.add(row.id);
+    }
+    highlight.set(next);
+    // Anchor stays put on shift-click so successive shift-clicks always
+    // extend from the original anchor (matching native list behaviour).
   }
 
   protected moveSelectedRight(): void {

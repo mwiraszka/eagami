@@ -45,11 +45,17 @@ describe('TransferListComponent', () => {
     );
   }
 
-  function clickItem(pane: 'source' | 'target', label: string): void {
+  function clickItem(
+    pane: 'source' | 'target',
+    label: string,
+    options: { shiftKey?: boolean } = {},
+  ): void {
     const items = getListItems(pane);
     const item = items.find(el => el.textContent?.trim() === label);
     if (!item) throw new Error(`No item ${label} in ${pane}`);
-    item.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    item.dispatchEvent(
+      new MouseEvent('click', { bubbles: true, shiftKey: options.shiftKey ?? false }),
+    );
     fixture.detectChanges();
   }
 
@@ -161,6 +167,28 @@ describe('TransferListComponent', () => {
     expect(getButton('Move all to target').disabled).toBe(true);
     expect(getButton('Move selected to source').disabled).toBe(true);
     expect(getButton('Move all to source').disabled).toBe(true);
+  });
+
+  it('shift-click selects the range between anchor and target', () => {
+    clickItem('source', 'Alpha');
+    clickItem('source', 'Epsilon', { shiftKey: true });
+
+    const highlighted = getListItems('source')
+      .filter(el => el.classList.contains('ea-transfer-list__item--highlighted'))
+      .map(el => el.textContent?.trim());
+    // 'Delta' is disabled and is skipped by the range builder, even though
+    // it sits inside the anchor → target range.
+    expect(highlighted).toEqual(['Alpha', 'Beta', 'Gamma', 'Epsilon']);
+  });
+
+  it('shift-click works in reverse (target above anchor)', () => {
+    clickItem('source', 'Gamma');
+    clickItem('source', 'Alpha', { shiftKey: true });
+
+    const highlighted = getListItems('source')
+      .filter(el => el.classList.contains('ea-transfer-list__item--highlighted'))
+      .map(el => el.textContent?.trim());
+    expect(highlighted).toEqual(['Alpha', 'Beta', 'Gamma']);
   });
 
   it('toggles highlight via Space key', () => {

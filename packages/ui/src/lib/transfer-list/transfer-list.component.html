@@ -1,13 +1,13 @@
 <div [class]="hostClasses()">
   <div class="ea-transfer-list__pane">
-    @if (sourceLabel()) {
-      <h3 class="ea-transfer-list__pane-label">{{ sourceLabel() }}</h3>
+    @if (resolvedSourceLabel()) {
+      <h3 class="ea-transfer-list__pane-label">{{ resolvedSourceLabel() }}</h3>
     }
     <ul
       class="ea-transfer-list__list"
       role="listbox"
       aria-multiselectable="true"
-      [attr.aria-label]="sourceLabel() || messages().transferList.sourceLabel"
+      [attr.aria-label]="resolvedSourceLabel() || messages().transferList.sourceLabel"
       [attr.aria-disabled]="disabled() || null">
       @for (item of sourceItems(); track item.id) {
         <li
@@ -18,7 +18,7 @@
           [class.ea-transfer-list__item--highlighted]="isHighlighted('source', item.id)"
           [class.ea-transfer-list__item--disabled]="item.disabled || disabled()"
           [attr.tabindex]="item.disabled || disabled() ? -1 : 0"
-          (click)="onItemClick('source', item)"
+          (click)="onItemClick('source', item, $event)"
           (keydown)="onItemKeydown($event, 'source', item)">
           {{ item.label }}
         </li>
@@ -71,14 +71,14 @@
   </div>
 
   <div class="ea-transfer-list__pane">
-    @if (targetLabel()) {
-      <h3 class="ea-transfer-list__pane-label">{{ targetLabel() }}</h3>
+    @if (resolvedTargetLabel()) {
+      <h3 class="ea-transfer-list__pane-label">{{ resolvedTargetLabel() }}</h3>
     }
     <ul
       class="ea-transfer-list__list"
       role="listbox"
       aria-multiselectable="true"
-      [attr.aria-label]="targetLabel() || messages().transferList.targetLabel"
+      [attr.aria-label]="resolvedTargetLabel() || messages().transferList.targetLabel"
       [attr.aria-disabled]="disabled() || null">
       @for (item of targetItems(); track item.id) {
         <li
@@ -89,7 +89,7 @@
           [class.ea-transfer-list__item--highlighted]="isHighlighted('target', item.id)"
           [class.ea-transfer-list__item--disabled]="item.disabled || disabled()"
           [attr.tabindex]="item.disabled || disabled() ? -1 : 0"
-          (click)="onItemClick('target', item)"
+          (click)="onItemClick('target', item, $event)"
           (keydown)="onItemKeydown($event, 'target', item)">
           {{ item.label }}
         </li>
