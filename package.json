@@ -77,6 +77,5 @@
         "CVE-2026-4926"
       ]
     }
-  },
-  "devDependencies": {}
+  }
 }
