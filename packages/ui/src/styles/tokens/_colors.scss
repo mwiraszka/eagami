@@ -102,10 +102,21 @@
   --color-border-strong: var(--color-neutral-400);
   --color-border-focus: var(--color-primary-500);
 
-  // Brand semantic
+  // Brand semantic.
+  //
+  // Two roles split intentionally:
+  //  - `--color-brand-default` (and `-hover` / `-active`) is the brand colour
+  //    used as a **surface** — solid background under white text (primary
+  //    button, badge bg). Needs ≥ 4.5:1 vs white text.
+  //  - `--color-brand-text` is the brand colour used as a **foreground** on a
+  //    non-brand surface (selected dropdown row, today marker, sorted column
+  //    header, link, spinner). Needs ≥ 4.5:1 vs `--color-bg-base`. In dark
+  //    mode the foreground role flips to a lighter shade so contrast against
+  //    the dark surface still holds.
   --color-brand-default: var(--color-primary-600);
   --color-brand-hover: var(--color-primary-700);
   --color-brand-active: var(--color-primary-800);
+  --color-brand-text: var(--color-primary-700);
   --color-brand-subtle: var(--color-primary-50);
   --color-brand-muted: var(--color-primary-100);
 
@@ -177,6 +188,7 @@
   --color-brand-default: var(--color-primary-400);
   --color-brand-hover: var(--color-primary-300);
   --color-brand-active: var(--color-primary-200);
+  --color-brand-text: var(--color-primary-300);
   --color-brand-subtle: rgba(75, 145, 195, 0.1);
   --color-brand-muted: rgba(75, 145, 195, 0.2);
 

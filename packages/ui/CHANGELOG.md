@@ -9,10 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add `--color-brand-text` token (defaults to `--color-primary-700` in light mode, `--color-primary-300` in dark mode). Use it for the brand colour as a foreground on a non-brand surface (selected dropdown row, today marker, sorted column, spinner, active paginator page). Keeps `--color-brand-default` free to optimize as a surface (button bg, badge bg) without dragging text-on-surface contrast along with it.
 - Expose `--ea-switch-track-border-color` on `<ea-switch>` so consumers can recolour the track outline without overriding `--color-border-*` globally.
 
 ### Changed
 
+- Route `<ea-dropdown>` selected-option, `<ea-date-picker>` today indicator and today button, `<ea-data-table>` sorted-column header, `<ea-spinner>`, and `<ea-paginator>` active page colours through the new `--color-brand-text` token. Visually unchanged at defaults; consumers can now tune surface and foreground brand roles independently.
 - Soften the default `<ea-switch>` track border from `--color-border-strong` to `--color-border-default` for a less heavy off-state ring.
 - Default the primary `<ea-button>` text colour to `--color-neutral-0` (always white) instead of `--color-text-inverse` (which flipped to dark in dark mode). Text now stays white on the brand background in both themes; consumers can still override per-instance via `--ea-button-color`.
 - Expose `--ea-empty-state-title-color` on `<ea-empty-state>` so consumers can recolour the title without bleeding `--color-text-primary` to its siblings.

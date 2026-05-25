@@ -295,7 +295,7 @@
 
     &--today {
       font-weight: var(--font-weight-semibold);
-      color: var(--color-brand-default);
+      color: var(--color-brand-text);
     }
 
     &--focused:not(.ea-date-picker__day--selected) {
@@ -340,7 +340,7 @@
     font-family: var(--font-family-sans);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-brand-default);
+    color: var(--color-brand-text);
     cursor: pointer;
     transition: var(--transition-colors);
 

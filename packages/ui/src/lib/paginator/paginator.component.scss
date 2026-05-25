@@ -93,9 +93,9 @@
   // ---------------------------------------------------------------------------
   &__page-btn--active .ea-button {
     font-weight: var(--font-weight-medium);
-    border-color: var(--color-brand-default);
+    border-color: var(--color-brand-text);
     background-color: var(--color-brand-subtle);
-    color: var(--color-brand-default);
+    color: var(--color-brand-text);
 
     &:hover:not(.ea-button--disabled) {
       background-color: var(--color-brand-muted);
