@@ -9,12 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a `palette` option to `provideEagamiUi`. Consumers pass a `primary` (and optional `secondary`) base hex; the library derives a perceptually-uniform 10-shade scale via OKLCH, maps the shades to semantic brand roles, and asserts WCAG 2.1 AA contrast on every brand-role pairing before applying. A failing palette throws at bootstrap so a bad brand colour is caught before the app loads. Per-shade `overrides` and role remapping are supported for brand books that pin specific hexes.
+- Add a `palette` option to `provideEagamiUi`. Consumers pass a `primary` (and optional `secondary`) base hex; the library derives a perceptually-uniform 10-shade scale via OKLCH, maps the shades to semantic brand roles in both light and dark mode, and asserts WCAG 2.1 AA contrast on every pairing before applying. A failing palette throws at bootstrap so a bad brand colour is caught before the app loads. Per-shade `overrides` and role remapping are supported for brand books that pin specific hexes.
+- Add `--color-bg-canvas` token for the page background, distinct from `--color-bg-base` which becomes the surface token for components that sit on the page (inputs, cards, accordion items, popover panels). In dark mode the canvas stays at `neutral-950` while `bg-base` lifts to `neutral-800`, so component surfaces no longer disappear into the page.
 - Add `--color-brand-text` token (defaults to `--color-primary-700` in light mode, `--color-primary-300` in dark mode). Use it for the brand colour as a foreground on a non-brand surface (selected dropdown row, today marker, sorted column, spinner, active paginator page). Keeps `--color-brand-default` free to optimize as a surface (button bg, badge bg) without dragging text-on-surface contrast along with it.
 - Expose `--ea-switch-track-border-color` on `<ea-switch>` so consumers can recolour the track outline without overriding `--color-border-*` globally.
 
 ### Changed
 
+- Tighten the dark-mode brand-default flip from `primary-400` to `primary-500`. The smaller shift keeps the primary CTA feeling like the same brand colour across themes while still clearing WCAG 1.4.11 (3:1 brand vs canvas) and carrying a white label above 4.5:1.
 - Route `<ea-dropdown>` selected-option, `<ea-date-picker>` today indicator and today button, `<ea-data-table>` sorted-column header, `<ea-spinner>`, and `<ea-paginator>` active page colours through the new `--color-brand-text` token. Visually unchanged at defaults; consumers can now tune surface and foreground brand roles independently.
 - Soften the default `<ea-switch>` track border from `--color-border-strong` to `--color-border-default` for a less heavy off-state ring.
 - Default the primary `<ea-button>` text colour to `--color-neutral-0` (always white) instead of `--color-text-inverse` (which flipped to dark in dark mode). Text now stays white on the brand background in both themes; consumers can still override per-instance via `--ea-button-color`.
