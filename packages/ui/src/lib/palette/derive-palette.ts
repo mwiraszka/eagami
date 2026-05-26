@@ -3,6 +3,7 @@ import {
   DEFAULT_PALETTE_ROLES,
   DerivedPalette,
   EagamiPaletteConfig,
+  ModePalette,
   PaletteConfig,
   PaletteRoles,
   PaletteShade,
@@ -70,43 +71,50 @@ function derivePaletteScale(config: PaletteConfig): Record<PaletteShade, string>
   return out;
 }
 
-function paletteToCustomProperties(
+function emitFamily(
   family: 'primary' | 'secondary',
   scale: Record<PaletteShade, string>,
   roles: PaletteRoles,
-): DerivedPalette {
+  light: DerivedPalette,
+  dark: DerivedPalette,
+): void {
   const prefix = `--color-${family}`;
   const brandPrefix = family === 'primary' ? '--color-brand' : '--color-brand-secondary';
 
-  const out: DerivedPalette = {};
-
   for (const shade of ALL_SHADES) {
-    out[`${prefix}-${shade}`] = scale[shade];
+    light[`${prefix}-${shade}`] = scale[shade];
+    dark[`${prefix}-${shade}`] = scale[shade];
   }
 
-  out[`${brandPrefix}-default`] = scale[roles.surfaceLight];
-  out[`${brandPrefix}-hover`] = scale[roles.surfaceHoverLight];
-  out[`${brandPrefix}-active`] = scale[roles.surfaceActiveLight];
+  light[`${brandPrefix}-default`] = scale[roles.surfaceLight];
+  light[`${brandPrefix}-hover`] = scale[roles.surfaceHoverLight];
+  light[`${brandPrefix}-active`] = scale[roles.surfaceActiveLight];
+  dark[`${brandPrefix}-default`] = scale[roles.surfaceDark];
+  dark[`${brandPrefix}-hover`] = scale[roles.surfaceHoverDark];
+  dark[`${brandPrefix}-active`] = scale[roles.surfaceActiveDark];
+
   if (family === 'primary') {
-    out[`--color-brand-text`] = scale[roles.textLight];
-    out[`--color-brand-subtle`] = scale[roles.subtleLight];
-    out[`--color-brand-muted`] = scale[roles.mutedLight];
+    light['--color-brand-text'] = scale[roles.textLight];
+    dark['--color-brand-text'] = scale[roles.textDark];
+    light['--color-brand-subtle'] = scale[roles.subtleLight];
+    light['--color-brand-muted'] = scale[roles.mutedLight];
   }
-
-  return out;
 }
 
-export function derivePalette(config: EagamiPaletteConfig): DerivedPalette {
-  const out: DerivedPalette = {};
+export function derivePalette(config: EagamiPaletteConfig): ModePalette {
+  const light: DerivedPalette = {};
+  const dark: DerivedPalette = {};
+
   if (config.primary) {
     const scale = derivePaletteScale(config.primary);
     const roles: PaletteRoles = { ...DEFAULT_PALETTE_ROLES, ...config.primary.roles };
-    Object.assign(out, paletteToCustomProperties('primary', scale, roles));
+    emitFamily('primary', scale, roles, light, dark);
   }
   if (config.secondary) {
     const scale = derivePaletteScale(config.secondary);
     const roles: PaletteRoles = { ...DEFAULT_PALETTE_ROLES, ...config.secondary.roles };
-    Object.assign(out, paletteToCustomProperties('secondary', scale, roles));
+    emitFamily('secondary', scale, roles, light, dark);
   }
-  return out;
+
+  return { light, dark };
 }

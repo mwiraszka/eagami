@@ -2,43 +2,58 @@ import { derivePalette } from './derive-palette';
 import { formatViolations, validatePalette } from './validate-palette';
 
 describe('validatePalette', () => {
-  it('returns no violations for the library default brand base', () => {
-    // `#3674a1` is the library's hand-tuned `--color-primary-500`; the
-    // derived `-700` (brand-text) and `-600` (brand-default) must clear
-    // the WCAG bars against white.
+  it('returns no violations for the library default brand base in both modes', () => {
     const palette = derivePalette({ primary: { base: '#3674a1' } });
 
     expect(validatePalette(palette)).toEqual([]);
   });
 
-  it('flags a too-light overridden brand-text (text-on-white fails 4.5:1)', () => {
-    // Consumer pins shade-700 to a too-light hex via `overrides`; the
-    // brand-text role then fails the 4.5:1 body-text bar against white.
+  it('flags a too-light overridden brand-text against the light canvas', () => {
+    // Pin shade-700 (textLight) to a too-light hex; brand-text in light mode
+    // then fails 4.5:1 against white.
     const palette = derivePalette({
       primary: { base: '#3674a1', overrides: { '700': '#a0c4e0' } },
     });
 
     const violations = validatePalette(palette);
-    const textViolation = violations.find(v => v.token === '--color-brand-text');
+    const textViolation = violations.find(
+      v => v.token === '--color-brand-text' && v.mode === 'light',
+    );
 
     expect(textViolation).toBeDefined();
     expect(textViolation!.ratio).toBeLessThan(4.5);
   });
 
-  it('flags a role remap that picks a too-light shade for the surface', () => {
-    // Consumer maps brand-default to shade-200, which is too light to
-    // carry white text at the 4.5:1 bar.
+  it('flags a too-dark overridden brand-text against the dark canvas', () => {
+    // Pin shade-300 (textDark) to a too-dark hex; brand-text in dark mode
+    // then fails 4.5:1 against near-black.
     const palette = derivePalette({
-      primary: { base: '#3674a1', roles: { surfaceLight: '200' } },
+      primary: { base: '#3674a1', overrides: { '300': '#1a1a1a' } },
     });
 
     const violations = validatePalette(palette);
-    const surfaceViolation = violations.find(v => v.token === '--color-brand-default');
+    const textViolation = violations.find(
+      v => v.token === '--color-brand-text' && v.mode === 'dark',
+    );
+
+    expect(textViolation).toBeDefined();
+    expect(textViolation!.ratio).toBeLessThan(4.5);
+  });
+
+  it('flags a role remap that picks a too-light surface shade', () => {
+    const palette = derivePalette({
+      primary: { base: '#3674a1', roles: { surfaceLight: '200', surfaceDark: '200' } },
+    });
+
+    const violations = validatePalette(palette);
+    const surfaceViolation = violations.find(
+      v => v.token === '--color-brand-default' && v.role === 'text',
+    );
 
     expect(surfaceViolation).toBeDefined();
   });
 
-  it('formats violations with token, value, ratio, and required bar', () => {
+  it('formats violations with mode, token, value, ratio, and required bar', () => {
     const palette = derivePalette({
       primary: { base: '#3674a1', overrides: { '700': '#a0c4e0' } },
     });
@@ -46,6 +61,7 @@ describe('validatePalette', () => {
 
     const msg = formatViolations(violations);
 
+    expect(msg).toContain('[light]');
     expect(msg).toContain('--color-brand-text');
     expect(msg).toContain('4.5:1');
     expect(msg).toContain('WCAG AA');

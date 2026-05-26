@@ -42,12 +42,16 @@ export interface PaletteRoles {
 }
 
 export const DEFAULT_PALETTE_ROLES: PaletteRoles = {
+  // Brand surface roles flip ONE shade lighter in dark mode (600 -> 500) so
+  // the button clears WCAG 1.4.11 against the near-black canvas while still
+  // carrying its white label above 4.5:1. A larger flip (600 -> 400) would
+  // lose the white label; no flip would lose the canvas contrast.
   surfaceLight: '600',
-  surfaceDark: '400',
+  surfaceDark: '500',
   surfaceHoverLight: '700',
-  surfaceHoverDark: '300',
+  surfaceHoverDark: '600',
   surfaceActiveLight: '800',
-  surfaceActiveDark: '200',
+  surfaceActiveDark: '700',
   textLight: '700',
   textDark: '300',
   subtleLight: '50',
@@ -75,5 +79,15 @@ export interface EagamiPaletteConfig {
   secondary?: PaletteConfig;
 }
 
-/** Flat CSS-custom-property name to value map produced by `derivePalette`. */
+/** Flat CSS-custom-property name to value map for a single mode. */
 export type DerivedPalette = Record<string, string>;
+
+/**
+ * Output of `derivePalette`. Carries a separate map per mode so tokens that
+ * have to track the canvas (brand-text, brand-subtle, brand-muted) can hold
+ * different values in light and dark, while surface roles stay shared.
+ */
+export interface ModePalette {
+  light: DerivedPalette;
+  dark: DerivedPalette;
+}
