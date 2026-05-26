@@ -57,12 +57,12 @@ export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProvide
     { provide: EAGAMI_I18N_CONFIG, useValue: i18nConfig },
     provideEnvironmentInitializer(() => {
       if (!config.palette) return;
-      const derived = derivePalette(config.palette);
-      const violations = validatePalette(derived);
+      const palette = derivePalette(config.palette);
+      const violations = validatePalette(palette);
       if (violations.length > 0) {
         throw new Error(formatViolations(violations));
       }
-      applyPalette(derived);
+      applyPalette(palette);
     }),
   ]);
 }
