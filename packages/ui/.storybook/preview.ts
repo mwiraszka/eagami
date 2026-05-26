@@ -29,6 +29,17 @@ const preview: Preview = {
       // lose nothing by skipping the auto-extract.
       extractArgTypes: () => null,
     },
+    chromatic: {
+      // Capture every story twice (light + dark) by driving the `theme`
+      // toolbar global, which the decorator below maps onto `<html data-
+      // theme="…">`. Pause Storybook's animations so screenshots aren't
+      // racy with transitions.
+      modes: {
+        light: { globals: { theme: 'light' } },
+        dark: { globals: { theme: 'dark' } },
+      },
+      pauseAnimationAtEnd: true,
+    },
   },
   globalTypes: {
     locale: {
