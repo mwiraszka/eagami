@@ -40,6 +40,10 @@
   &--stretch {
     align-items: stretch;
   }
+
+  &--wide {
+    gap: 24px;
+  }
 }
 
 .demo-stack {
@@ -56,4 +60,16 @@
   margin: 4px 0 0;
   font-size: 14px;
   color: var(--color-text-secondary);
+}
+
+// Small label above a demo component (e.g. above a wordmark variant). Mirrors
+// the field-label typography used by form components so labelling reads
+// consistently across the docs.
+.demo-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-label-md-size);
+  font-weight: var(--text-label-md-weight);
+  line-height: var(--text-label-md-lh);
+  color: var(--color-text-primary);
 }
