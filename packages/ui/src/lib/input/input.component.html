@@ -27,6 +27,7 @@
       [required]="required()"
       [value]="value()"
       [attr.autocomplete]="autocomplete() ?? null"
+      [attr.list]="list() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
@@ -39,6 +40,17 @@
     <span class="ea-input-wrapper__suffix">
       <ng-content select="[slot=suffix]" />
     </span>
+
+    <!-- Built-in clear button -->
+    @if (showClear()) {
+      <button
+        type="button"
+        class="ea-input-wrapper__clear"
+        [attr.aria-label]="i18n.messages().input.clear"
+        (mousedown)="clear($event)">
+        <ea-icon-x class="ea-input-wrapper__clear-icon" />
+      </button>
+    }
 
     <!-- Built-in password visibility toggle -->
     @if (type() === 'password' && showPasswordToggle()) {

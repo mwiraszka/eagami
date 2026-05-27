@@ -78,6 +78,16 @@ export const WithMaxlength: Story = {
   args: { maxlength: 100 },
 };
 
+export const WithMaxHeight: Story = {
+  args: {
+    label: 'Notes',
+    hint: 'Caps at 200px; the field scrolls vertically beyond that.',
+    maxHeight: 200,
+    value:
+      'Type a long enough message that the textarea would normally grow past 200px. Once it hits the cap, the textarea stops growing and the field scrolls vertically instead.',
+  },
+};
+
 export const AllSizes: Story = {
   render: () => ({
     template: `

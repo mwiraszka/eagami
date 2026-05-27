@@ -22,6 +22,7 @@
       [rows]="rows()"
       [value]="value()"
       [style.resize]="resize()"
+      [style.max-height.px]="maxHeight() ?? null"
       [attr.maxlength]="maxlength() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="

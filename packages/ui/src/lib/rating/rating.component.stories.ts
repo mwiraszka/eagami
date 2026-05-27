@@ -16,12 +16,14 @@ const meta: Meta<RatingComponent> = {
   }),
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
+    min: { control: { type: 'number', min: 0, max: 5 } },
     max: { control: { type: 'number', min: 1, max: 10 } },
     hoverChanged: { action: 'hoverChanged' },
   },
   args: {
     label: 'Rate your experience',
     value: 3,
+    min: 0,
     max: 5,
     size: 'md',
     allowHalf: false,
@@ -85,6 +87,15 @@ export const NumberOfStars: Story = {
     label: 'Rate it',
     max: 10,
     value: 7,
+  },
+};
+
+export const MinimumOne: Story = {
+  args: {
+    label: 'Minimum 1 star',
+    hint: 'Floor is 1: ArrowDown bottoms out at 1, and clicking the current star is a no-op (no clear).',
+    min: 1,
+    value: 3,
   },
 };
 

@@ -22,6 +22,7 @@ const meta: Meta<InputComponent> = {
     autocomplete: { control: 'text' },
     autofocus: { control: 'boolean' },
     showPasswordToggle: { control: 'boolean' },
+    clearable: { control: 'boolean' },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
   },
@@ -35,6 +36,7 @@ const meta: Meta<InputComponent> = {
     required: false,
     autofocus: false,
     showPasswordToggle: true,
+    clearable: false,
   },
 };
 
@@ -69,6 +71,10 @@ export const Password: Story = {
 
 export const PasswordNoToggle: Story = {
   args: { type: 'password', showPasswordToggle: false },
+};
+
+export const Clearable: Story = {
+  args: { clearable: true, value: 'Sample text' },
 };
 
 export const WithAutocomplete: Story = {

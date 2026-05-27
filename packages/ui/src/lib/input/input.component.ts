@@ -20,6 +20,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
+import { XIconComponent } from '../icons/x.component';
 
 /** Visual size of the input. */
 export type InputSize = 'sm' | 'md' | 'lg';
@@ -44,7 +45,13 @@ export type InputType =
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, EyeIconComponent, EyeOffIconComponent, NgClass],
+  imports: [
+    AlertCircleIconComponent,
+    EyeIconComponent,
+    EyeOffIconComponent,
+    NgClass,
+    XIconComponent,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -69,8 +76,10 @@ export class InputComponent implements ControlValueAccessor {
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly autocomplete = input<string | undefined>(undefined);
+  readonly list = input<string | undefined>(undefined);
   readonly autofocus = input<boolean>(false);
   readonly showPasswordToggle = input<boolean>(true);
+  readonly clearable = input<boolean>(false);
   readonly id = input<string>(`ea-input-${Math.random().toString(36).slice(2, 9)}`);
 
   // Two-way value binding
@@ -101,6 +110,10 @@ export class InputComponent implements ControlValueAccessor {
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
+
+  readonly showClear = computed(
+    () => this.clearable() && !!this.value() && !this.isDisabled() && !this.readonly(),
+  );
 
   readonly wrapperClasses = computed(() => ({
     [`ea-input-wrapper--${this.size()}`]: true,
@@ -160,6 +173,14 @@ export class InputComponent implements ControlValueAccessor {
   /** Toggles the password reveal state for `type="password"` inputs. */
   togglePasswordVisibility(): void {
     this.passwordVisible.update(value => !value);
+  }
+
+  /** Clear the current value and restore focus to the input. */
+  clear(event: MouseEvent): void {
+    event.preventDefault();
+    this.value.set('');
+    this.onChange('');
+    this.inputEl()?.nativeElement.focus();
   }
 
   /** Moves keyboard focus to the underlying native input element. */
