@@ -28,7 +28,7 @@ const COMMANDS: CommandPaletteItem[] = [
 ];
 
 const meta: Meta<CommandPaletteComponent> = {
-  title: 'Components/Command palette',
+  title: 'Components/Command Palette',
   component: CommandPaletteComponent,
   tags: ['autodocs'],
   argTypes: {

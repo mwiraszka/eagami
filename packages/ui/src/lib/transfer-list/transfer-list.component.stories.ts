@@ -13,7 +13,7 @@ const ROLES: TransferListItem[] = [
 ];
 
 const meta: Meta<TransferListComponent> = {
-  title: 'Components/Transfer list',
+  title: 'Components/Transfer List',
   component: TransferListComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -3,7 +3,7 @@ import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 import { AvatarEditorComponent } from './avatar-editor.component';
 
 const meta: Meta<AvatarEditorComponent> = {
-  title: 'Components/Avatar editor',
+  title: 'Components/Avatar Editor',
   component: AvatarEditorComponent,
   tags: ['autodocs'],
   render: args => ({

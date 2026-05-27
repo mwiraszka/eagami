@@ -7,7 +7,7 @@ import { SearchIconComponent } from '../icons/search.component';
 import { EmptyStateComponent } from './empty-state.component';
 
 const meta: Meta<EmptyStateComponent> = {
-  title: 'Components/Empty state',
+  title: 'Components/Empty State',
   component: EmptyStateComponent,
   tags: ['autodocs'],
   decorators: [
