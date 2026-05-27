@@ -85,7 +85,7 @@
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
   --color-text-tertiary: var(--color-neutral-400);
-  --color-text-disabled: var(--color-neutral-300);
+  --color-text-disabled: var(--color-neutral-400);
   --color-text-inverse: var(--color-neutral-0);
   --color-text-link: var(--color-primary-600);
   --color-text-link-hover: var(--color-primary-800);
@@ -97,11 +97,16 @@
   --color-bg-canvas: var(--color-neutral-0);
   --color-bg-base: var(--color-neutral-0);
   --color-bg-subtle: var(--color-neutral-50);
+  --color-bg-stripe: var(--color-neutral-50);
   --color-bg-muted: var(--color-neutral-100);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
-  // Border
+  // Border. `subtle` is for low-contrast dividers (table rows, cell grids)
+  // where a full `default` border would feel heavy. `default` is the everyday
+  // form-component outline; `strong` is for prominent outlines (secondary
+  // buttons, etc.); `focus` is the keyboard-focus ring.
+  --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
   --color-border-focus: var(--color-primary-500);
@@ -169,9 +174,9 @@
 // ---------------------------------------------------------------------------
 @mixin dark-color-tokens {
   --color-text-primary: var(--color-neutral-50);
-  --color-text-secondary: var(--color-neutral-400);
+  --color-text-secondary: var(--color-neutral-300);
   --color-text-tertiary: var(--color-neutral-500);
-  --color-text-disabled: var(--color-neutral-700);
+  --color-text-disabled: var(--color-neutral-500);
   --color-text-inverse: var(--color-neutral-900);
   --color-text-link: var(--color-primary-300);
   --color-text-link-hover: var(--color-primary-100);
@@ -184,11 +189,22 @@
   --color-bg-canvas: var(--color-neutral-950);
   --color-bg-base: var(--color-neutral-800);
   --color-bg-subtle: var(--color-neutral-700);
+  --color-bg-stripe: var(--color-neutral-900);
   --color-bg-elevated: var(--color-neutral-700);
   --color-bg-muted: var(--color-neutral-600);
 
-  --color-border-default: var(--color-neutral-700);
-  --color-border-strong: var(--color-neutral-500);
+  // Borders sit clear of every bg-* shade so they stay visible on any surface.
+  // `subtle` mixes between neutral-700 and -800 so it's distinct from the
+  // card surface (neutral-700) while staying close to cell bgs (-800/-900).
+  // `default` is the form-component outline; anything darker collides with
+  // bg-subtle / bg-elevated (both neutral-700) and disappears.
+  --color-border-subtle: color-mix(
+    in srgb,
+    var(--color-neutral-700),
+    var(--color-neutral-800)
+  );
+  --color-border-default: var(--color-neutral-400);
+  --color-border-strong: var(--color-neutral-300);
 
   // Brand surface roles step one shade lighter than light mode so the button
   // clears WCAG 1.4.11 (3:1) against the near-black canvas while still

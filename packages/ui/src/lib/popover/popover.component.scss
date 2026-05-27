@@ -9,4 +9,12 @@
 .ea-popover__surface {
   z-index: var(--z-index-dropdown);
   position: fixed;
+  // Default to hidden so the surface never paints at its pre-positioning
+  // (0,0) coordinates between `display: none` and the JS-computed
+  // `top`/`left`. Flipped via `--positioned` after reposition runs.
+  visibility: hidden;
+
+  &--positioned {
+    visibility: visible;
+  }
 }

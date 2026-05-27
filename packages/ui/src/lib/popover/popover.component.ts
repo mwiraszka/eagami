@@ -129,14 +129,23 @@ export class PopoverComponent {
     () => this.position()?.placement ?? this.placement(),
   );
 
+  /** True once the first `reposition()` has resolved a placement. Drives the
+   * `--positioned` class that flips visibility on. */
+  readonly isPositioned = computed(() => this.open() && this.position() !== null);
+
+  /** Class list for the surface. Computed in TS so the placement key (with
+   * its interpolated suffix) and the positioned modifier compose cleanly. */
+  readonly surfaceClass = computed(
+    () =>
+      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}` +
+      (this.isPositioned() ? ' ea-popover__surface--positioned' : ''),
+  );
+
   /** Inline style applied to the surface element. */
   readonly surfaceStyle = computed<Record<string, string>>(() => {
     if (!this.open()) return { display: 'none' };
     const p = this.position();
-    // Before the first reposition, hide the surface — at this point it's
-    // sitting at the top-left of the viewport with no coordinates applied
-    // yet, and we don't want a flash on open.
-    if (!p) return { visibility: 'hidden' };
+    if (!p) return {};
     const style: Record<string, string> = {
       top: `${p.top}px`,
       left: `${p.left}px`,
