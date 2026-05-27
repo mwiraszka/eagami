@@ -78,13 +78,13 @@
 
     &--md {
       padding: var(--space-2) var(--space-3);
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-md);
       min-height: 2.5rem;
     }
 
     &--lg {
       padding: var(--space-2-5) var(--space-4);
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-lg);
       min-height: 3rem;
     }
 
@@ -151,6 +151,18 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     background-color: var(--color-bg-base);
+
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+
+    &--md {
+      font-size: var(--font-size-md);
+    }
+
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -158,7 +170,7 @@
   // ---------------------------------------------------------------------------
   &__option {
     padding: var(--space-2) var(--space-3);
-    font-size: var(--font-size-sm);
+    font-size: inherit;
     white-space: nowrap;
     font-family: var(--font-family-sans);
     color: var(--color-text-primary);

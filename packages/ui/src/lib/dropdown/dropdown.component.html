@@ -51,7 +51,9 @@
       [closeOnEscape]="false"
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">
-      <div class="ea-dropdown__menu">
+      <div
+        class="ea-dropdown__menu"
+        [ngClass]="menuClasses()">
         @for (option of options(); track option.value; let i = $index) {
           <div
             class="ea-dropdown__option"
