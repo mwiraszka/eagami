@@ -213,6 +213,7 @@ export interface WebMessages {
         states: string;
         disabled: string;
         dismissible: string;
+        clearable: string;
         hintAndError: string;
         withHint: string;
         withError: string;
@@ -239,6 +240,7 @@ export interface WebMessages {
         defaultHeading: string;
         stripedAndBordered: string;
         compactDensity: string;
+        tinyList: string;
         stickyHeader: string;
         emptyState: string;
         formatVariants: string;
@@ -270,6 +272,7 @@ export interface WebMessages {
         canvasSizes: string;
         cappedChipCount: string;
         customIcon: string;
+        customIconAndColor: string;
         customLabel: string;
         halfSteps: string;
         customSize: string;
@@ -278,6 +281,7 @@ export interface WebMessages {
         notAnimated: string;
         outputFormats: string;
         numberOfStars: string;
+        minimumOne: string;
         quarterHourSteps: string;
         readonly: string;
         singleFile: string;
@@ -289,6 +293,7 @@ export interface WebMessages {
         withConstraints: string;
         withInitialValue: string;
         withMaxlength: string;
+        withMaxHeight: string;
         withMinMaxLabels: string;
         withOptionalStep: string;
         withSeconds: string;
@@ -337,11 +342,10 @@ export interface WebMessages {
           tooltipSuppressed: string;
         };
         autocomplete: {
-          frameworkLabel: string;
           startTyping: string;
           hintText: string;
           errorText: string;
-          frameworkPlaceholder: string;
+          breedPlaceholder: string;
           minMaxLabel: string;
           minMaxPlaceholder: string;
         };

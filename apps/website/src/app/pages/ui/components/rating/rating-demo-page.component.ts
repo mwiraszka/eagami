@@ -9,6 +9,7 @@ import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-lay
 @Component({
   selector: 'web-rating-demo-page',
   templateUrl: './rating-demo-page.component.html',
+  styleUrl: './rating-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RatingComponent, UiComponentDemoLayoutComponent],
 })

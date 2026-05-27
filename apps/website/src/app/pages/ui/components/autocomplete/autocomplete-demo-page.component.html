@@ -3,33 +3,44 @@
   <ea-autocomplete
     [placeholder]="messages().ui.component.demos.autocomplete.startTyping"
     [options]="autocompleteOptions"
+    [maxResults]="autocompleteOptions.length"
     [(value)]="autocompleteValue" />
 
   <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-autocomplete
     [hint]="messages().ui.component.demos.autocomplete.hintText"
     [options]="autocompleteOptions"
-    [placeholder]="messages().ui.component.demos.autocomplete.frameworkPlaceholder" />
+    [maxResults]="autocompleteOptions.length"
+    [placeholder]="messages().ui.component.demos.autocomplete.breedPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-autocomplete
     [errorMsg]="messages().ui.component.demos.autocomplete.errorText"
     [options]="autocompleteOptions"
-    [placeholder]="messages().ui.component.demos.autocomplete.frameworkPlaceholder" />
+    [maxResults]="autocompleteOptions.length"
+    [placeholder]="messages().ui.component.demos.autocomplete.breedPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-autocomplete
-    size="sm"
-    placeholder="sm"
-    [options]="autocompleteOptions" />
-  <ea-autocomplete
-    size="md"
-    placeholder="md"
-    [options]="autocompleteOptions" />
-  <ea-autocomplete
-    size="lg"
-    placeholder="lg"
-    [options]="autocompleteOptions" />
+  <div class="demo-stack demo-stack--md">
+    <ea-autocomplete
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [options]="autocompleteOptions"
+      [maxResults]="autocompleteOptions.length"
+      [placeholder]="messages().ui.component.demos.autocomplete.breedPlaceholder" />
+    <ea-autocomplete
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [options]="autocompleteOptions"
+      [maxResults]="autocompleteOptions.length"
+      [placeholder]="messages().ui.component.demos.autocomplete.breedPlaceholder" />
+    <ea-autocomplete
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [options]="autocompleteOptions"
+      [maxResults]="autocompleteOptions.length"
+      [placeholder]="messages().ui.component.demos.autocomplete.breedPlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.minLengthMaxResults }}</h2>
   <ea-autocomplete

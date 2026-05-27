@@ -18,15 +18,20 @@
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-textarea
-    size="sm"
-    placeholder="sm" />
-  <ea-textarea
-    size="md"
-    placeholder="md" />
-  <ea-textarea
-    size="lg"
-    placeholder="lg" />
+  <div class="demo-stack demo-stack--md">
+    <ea-textarea
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-textarea
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-textarea
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.noResize }}</h2>
   <ea-textarea
@@ -40,6 +45,13 @@
     [maxlength]="100"
     hint="Limited to 100 characters."
     placeholder="Tell us about yourself…" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withMaxHeight }}</h2>
+  <ea-textarea
+    label="Notes"
+    hint="Caps at 200px; the field scrolls vertically beyond that."
+    placeholder="Keep typing past the cap to see the scroll behaviour…"
+    [maxHeight]="200" />
 
   <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
   <ea-textarea

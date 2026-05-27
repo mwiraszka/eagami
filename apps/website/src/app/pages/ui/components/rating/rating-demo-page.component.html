@@ -47,8 +47,15 @@
     [max]="10"
     [value]="7" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.customIcon }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.minimumOne }}</h2>
   <ea-rating
+    [label]="messages().ui.component.demos.rating.experienceLabel"
+    [min]="1"
+    [value]="3" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.customIconAndColor }}</h2>
+  <ea-rating
+    class="demo-rating-hearts"
     [label]="messages().ui.component.demos.rating.customIconLabel"
     [value]="4"
     [iconClass]="HeartIconComponent" />

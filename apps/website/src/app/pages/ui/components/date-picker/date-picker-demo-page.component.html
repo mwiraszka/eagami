@@ -47,15 +47,20 @@
     [weekStartsOn]="0" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-date-picker
-    size="sm"
-    placeholder="sm" />
-  <ea-date-picker
-    size="md"
-    placeholder="md" />
-  <ea-date-picker
-    size="lg"
-    placeholder="lg" />
+  <div class="demo-stack demo-stack--md">
+    <ea-date-picker
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+    <ea-date-picker
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+    <ea-date-picker
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-date-picker

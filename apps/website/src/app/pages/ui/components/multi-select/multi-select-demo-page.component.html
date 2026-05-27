@@ -46,18 +46,23 @@
     [value]="['apple', 'banana', 'cherry', 'date']" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-multi-select
-    size="sm"
-    placeholder="sm"
-    [options]="dropdownOptions()" />
-  <ea-multi-select
-    size="md"
-    placeholder="md"
-    [options]="dropdownOptions()" />
-  <ea-multi-select
-    size="lg"
-    placeholder="lg"
-    [options]="dropdownOptions()" />
+  <div class="demo-stack demo-stack--md">
+    <ea-multi-select
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-multi-select
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-multi-select
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-multi-select

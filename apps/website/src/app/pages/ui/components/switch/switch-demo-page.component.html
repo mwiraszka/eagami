@@ -5,14 +5,20 @@
     [(checked)]="switchValue" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-row">
-    <ea-switch size="sm" />
-    <ea-switch size="md" />
-    <ea-switch size="lg" />
+  <div class="demo-stack demo-stack--md">
+    <ea-switch
+      size="sm"
+      [label]="messages().ui.component.common.small" />
+    <ea-switch
+      size="md"
+      [label]="messages().ui.component.common.medium" />
+    <ea-switch
+      size="lg"
+      [label]="messages().ui.component.common.large" />
   </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
-  <div class="demo-row">
+  <div class="demo-row demo-row--wide">
     <ea-switch
       [label]="messages().ui.component.demos.switch.enableNotificationsLabel"
       [disabled]="true" />

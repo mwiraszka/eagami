@@ -1,0 +1,6 @@
+// Demo-only theming for the rating component. Sets `--ea-rating-color` to a
+// pinkish red so the heart-icon demo reads as a "love" rating rather than the
+// default amber.
+.demo-rating-hearts {
+  --ea-rating-color: #ec4899;
+}

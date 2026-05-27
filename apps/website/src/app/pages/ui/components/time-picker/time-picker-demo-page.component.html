@@ -38,15 +38,17 @@
     errorMsg="This field is required" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-time-picker
-    size="sm"
-    placeholder="sm" />
-  <ea-time-picker
-    size="md"
-    placeholder="md" />
-  <ea-time-picker
-    size="lg"
-    placeholder="lg" />
+  <div class="demo-stack demo-stack--md">
+    <ea-time-picker
+      size="sm"
+      [label]="messages().ui.component.common.small" />
+    <ea-time-picker
+      size="md"
+      [label]="messages().ui.component.common.medium" />
+    <ea-time-picker
+      size="lg"
+      [label]="messages().ui.component.common.large" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-time-picker

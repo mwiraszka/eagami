@@ -6,7 +6,8 @@
     <ea-icon-file slot="media" />
     <ea-button
       slot="actions"
-      variant="primary">
+      variant="primary"
+      (clicked)="onAction(messages().ui.component.demos.emptyState.createItem)">
       {{ messages().ui.component.demos.emptyState.createItem }}
     </ea-button>
   </ea-empty-state>
@@ -18,7 +19,8 @@
     <ea-icon-search slot="media" />
     <ea-button
       slot="actions"
-      variant="secondary">
+      variant="secondary"
+      (clicked)="onAction(messages().ui.component.demos.emptyState.clearFilters)">
       {{ messages().ui.component.demos.emptyState.clearFilters }}
     </ea-button>
   </ea-empty-state>
@@ -33,12 +35,14 @@
     <ea-icon-file slot="media" />
     <ea-button
       slot="actions"
-      variant="primary">
+      variant="primary"
+      (clicked)="onAction('Create project')">
       Create project
     </ea-button>
     <ea-button
       slot="actions"
-      variant="secondary">
+      variant="secondary"
+      (clicked)="onAction('Import')">
       Import
     </ea-button>
   </ea-empty-state>

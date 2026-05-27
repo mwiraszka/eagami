@@ -21,18 +21,23 @@
     [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-dropdown
-    size="sm"
-    placeholder="sm"
-    [options]="dropdownOptions()" />
-  <ea-dropdown
-    size="md"
-    placeholder="md"
-    [options]="dropdownOptions()" />
-  <ea-dropdown
-    size="lg"
-    placeholder="lg"
-    [options]="dropdownOptions()" />
+  <div class="demo-stack demo-stack--md">
+    <ea-dropdown
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-dropdown
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-dropdown
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-dropdown

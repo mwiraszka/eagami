@@ -18,15 +18,26 @@
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-stack demo-stack--md">
+    <ea-input
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-input
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-input
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+  </div>
+
+  <h2>{{ messages().ui.component.sectionHeadings.clearable }}</h2>
   <ea-input
-    size="sm"
-    placeholder="sm" />
-  <ea-input
-    size="md"
-    placeholder="md" />
-  <ea-input
-    size="lg"
-    placeholder="lg" />
+    [label]="messages().ui.component.demos.input.defaultLabel"
+    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
+    [clearable]="true" />
 
   <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
   <ea-input
@@ -55,5 +66,13 @@
     [label]="messages().ui.component.demos.input.emailLabel"
     type="email"
     autocomplete="email"
+    list="demo-email-suggestions"
     [placeholder]="messages().ui.component.demos.input.emailPlaceholder" />
+  <datalist id="demo-email-suggestions">
+    <option value="ada.lovelace@example.com"></option>
+    <option value="alan.turing@example.com"></option>
+    <option value="grace.hopper@example.com"></option>
+    <option value="hedy.lamarr@example.com"></option>
+    <option value="katherine.johnson@example.com"></option>
+  </datalist>
 </web-ui-component-demo-layout>
