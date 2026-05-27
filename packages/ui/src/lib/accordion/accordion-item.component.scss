@@ -31,7 +31,7 @@
     transition: var(--transition-colors);
 
     &:hover:not(:disabled) {
-      background-color: var(--color-bg-subtle);
+      background-color: var(--color-bg-muted);
     }
 
     &:focus-visible {

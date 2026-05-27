@@ -15,7 +15,7 @@ const LONG_LIST: Row[] = Array.from({ length: 10_000 }, (_, i) => ({
 }));
 
 const meta: Meta<VirtualListComponent> = {
-  title: 'Components/Virtual list',
+  title: 'Components/Virtual List',
   component: VirtualListComponent,
   tags: ['autodocs'],
   argTypes: {

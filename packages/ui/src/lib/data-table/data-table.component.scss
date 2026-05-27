@@ -5,7 +5,7 @@
 .ea-data-table {
   overflow: hidden;
   width: 100%;
-  border: var(--border-width-thin) solid var(--color-border-default);
+  border: var(--border-width-thin) solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-base);
 
@@ -36,7 +36,7 @@
   // Header
   // ---------------------------------------------------------------------------
   &__head {
-    background-color: var(--color-bg-subtle);
+    background-color: var(--color-bg-stripe);
   }
 
   &__cell--header {
@@ -49,7 +49,7 @@
     text-align: left;
     white-space: nowrap;
     color: var(--color-text-secondary);
-    border-bottom: var(--border-width-thin) solid var(--color-border-default);
+    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
     user-select: none;
   }
 
@@ -99,7 +99,7 @@
   // Body rows
   // ---------------------------------------------------------------------------
   &__row {
-    border-bottom: var(--border-width-thin) solid var(--color-border-default);
+    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
     transition: var(--transition-colors);
 
     &:last-child {
@@ -200,7 +200,7 @@
   // Striped rows
   // ---------------------------------------------------------------------------
   &--striped &__body &__row:nth-child(even) {
-    background-color: var(--color-bg-subtle);
+    background-color: var(--color-bg-stripe);
   }
 
   // ---------------------------------------------------------------------------
@@ -214,7 +214,7 @@
   // Bordered
   // ---------------------------------------------------------------------------
   &--bordered &__cell {
-    border-right: var(--border-width-thin) solid var(--color-border-default);
+    border-right: var(--border-width-thin) solid var(--color-border-subtle);
 
     &:last-child {
       border-right: none;

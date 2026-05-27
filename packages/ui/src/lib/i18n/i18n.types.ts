@@ -107,6 +107,7 @@ export interface EagamiMessages {
   input: {
     showPassword: string;
     hidePassword: string;
+    clear: string;
   };
   menu: {
     label: string;

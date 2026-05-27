@@ -81,6 +81,7 @@ export const el: EagamiMessages = {
   input: {
     showPassword: 'Εμφάνιση κωδικού πρόσβασης',
     hidePassword: 'Απόκρυψη κωδικού πρόσβασης',
+    clear: 'Καθαρισμός',
   },
   menu: {
     label: 'Μενού',
