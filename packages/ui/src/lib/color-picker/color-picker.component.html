@@ -9,7 +9,9 @@
   }
 
   <div class="ea-color-picker">
-    <div class="ea-color-picker__trigger-wrapper">
+    <div
+      class="ea-color-picker__trigger-wrapper"
+      [ngClass]="wrapperClasses()">
       <button
         #triggerEl
         type="button"
@@ -46,7 +48,9 @@
           class="ea-color-picker__clear"
           [attr.aria-label]="i18n.messages().colorPicker.clear"
           (click)="clear($event)">
-          <span aria-hidden="true">×</span>
+          <ea-icon-x
+            class="ea-color-picker__clear-icon"
+            aria-hidden="true" />
         </button>
       }
     </div>

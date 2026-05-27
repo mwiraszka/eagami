@@ -9,7 +9,9 @@
   }
 
   <div class="ea-date-picker">
-    <div class="ea-date-picker__trigger-wrapper">
+    <div
+      class="ea-date-picker__trigger-wrapper"
+      [ngClass]="wrapperClasses()">
       <button
         #triggerEl
         type="button"
@@ -41,7 +43,9 @@
           class="ea-date-picker__clear"
           [attr.aria-label]="i18n.messages().datePicker.clear"
           (click)="clear($event)">
-          <span aria-hidden="true">×</span>
+          <ea-icon-x
+            class="ea-date-picker__clear-icon"
+            aria-hidden="true" />
         </button>
       }
     </div>

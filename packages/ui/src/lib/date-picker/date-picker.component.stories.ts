@@ -3,7 +3,7 @@ import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 import { DatePickerComponent } from './date-picker.component';
 
 const meta: Meta<DatePickerComponent> = {
-  title: 'Components/Date picker',
+  title: 'Components/Date Picker',
   component: DatePickerComponent,
   tags: ['autodocs'],
   parameters: {

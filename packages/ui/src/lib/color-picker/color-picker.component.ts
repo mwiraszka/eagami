@@ -19,6 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { DropletIconComponent } from '../icons/droplet.component';
+import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 
 /** Visual size of the color picker trigger. */
@@ -82,7 +83,13 @@ const DEFAULT_PRESETS: readonly string[] = [
  */
 @Component({
   selector: 'ea-color-picker',
-  imports: [AlertCircleIconComponent, DropletIconComponent, NgClass, PopoverComponent],
+  imports: [
+    AlertCircleIconComponent,
+    DropletIconComponent,
+    NgClass,
+    PopoverComponent,
+    XIconComponent,
+  ],
   templateUrl: './color-picker.component.html',
   styleUrl: './color-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -187,6 +194,10 @@ export class ColorPickerComponent implements ControlValueAccessor {
     'ea-color-picker__trigger--error': this.hasError(),
     'ea-color-picker__trigger--open': this.isOpen(),
     'ea-color-picker__trigger--disabled': this.isDisabled(),
+  }));
+
+  readonly wrapperClasses = computed(() => ({
+    [`ea-color-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
   /**

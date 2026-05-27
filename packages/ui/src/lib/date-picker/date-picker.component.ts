@@ -21,6 +21,7 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
+import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 
 /** Visual size of the date picker trigger. */
@@ -57,6 +58,7 @@ interface CalendarDay {
     ChevronRightIconComponent,
     NgClass,
     PopoverComponent,
+    XIconComponent,
   ],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
@@ -129,6 +131,10 @@ export class DatePickerComponent implements ControlValueAccessor {
     'ea-date-picker__trigger--error': this.hasError(),
     'ea-date-picker__trigger--open': this.isOpen(),
     'ea-date-picker__trigger--disabled': this.isDisabled(),
+  }));
+
+  readonly wrapperClasses = computed(() => ({
+    [`ea-date-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
   readonly displayValue = computed(() => {
