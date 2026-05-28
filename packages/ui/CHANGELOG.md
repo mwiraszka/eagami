@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2026-05-28
+
+### Added
+
+- Add `--shadow-bevel` / `--shadow-bevel-strong` and `--shadow-well` / `--shadow-well-strong` tokens. Each pairs an inset highlight with an inset shadow to give a surface a raised (bevel) or recessed (well) 3D look, composable with `--shadow-*` for an ambient drop. Dark-mode variants drop the highlight alpha and raise the shadow alpha so the relief still reads on a lifted dark surface without glowing.
+- Add `--text-section-heading-*` composite (20px / semibold / snug / brand family) for page-level subsection titles. First composite that pins a font-family token; everything else still inherits the body sans family.
+
+### Changed
+
+- Round out and alphabetize the README component list (Button, Color Picker, Command Palette, File Uploader, Multi-Select, Popover, Range Slider, Rating, Stepper, Time Picker, Transfer List, Tree, Virtual List were previously missing). Stepper now sits under Navigation; Accordion and Tree under Display.
+
+### Fixed
+
+- `<ea-segmented>` now wraps its options onto multiple rows instead of overflowing when they exceed the available width.
+
 ## [2.3.0] - 2026-05-28
 
 ### Added
@@ -525,6 +540,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.3.0...ui-v2.4.0
 [2.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.2.0...ui-v2.3.0
 [2.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.1.0...ui-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0

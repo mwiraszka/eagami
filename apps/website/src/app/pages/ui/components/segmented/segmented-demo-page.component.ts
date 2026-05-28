@@ -30,4 +30,8 @@ export class SegmentedDemoPageComponent {
   protected readonly segmentedThemeOptions = computed<SelectOption[]>(() =>
     this.messages().ui.component.sharedOptions.themeOptions.map(o => ({ ...o })),
   );
+
+  protected readonly segmentedMonthOptions = computed<SelectOption[]>(() =>
+    this.messages().ui.component.sharedOptions.monthOptions.map(o => ({ ...o })),
+  );
 }

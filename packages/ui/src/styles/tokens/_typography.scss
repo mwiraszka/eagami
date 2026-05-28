@@ -81,6 +81,17 @@
   --text-h4-weight: var(--font-weight-semibold);
   --text-h4-lh: var(--line-height-snug);
 
+  // Section heading — page-level subsection title (e.g. an `<h2>` under an
+  // `<h1>` page title on a docs or marketing page). Same size/weight/lh as
+  // `--text-h4-*` but routes through the brand family so the heading reads
+  // as part of the brand wordmark rather than the body type. The only
+  // composite that pins a font-family; consumers who want to recolour or
+  // resize without re-specifying the family can still override per-piece.
+  --text-section-heading-size: var(--font-size-xl);
+  --text-section-heading-weight: var(--font-weight-semibold);
+  --text-section-heading-lh: var(--line-height-snug);
+  --text-section-heading-family: var(--font-family-brand);
+
   // Body
   --text-body-lg-size: var(--font-size-lg);
   --text-body-lg-weight: var(--font-weight-regular);
@@ -107,10 +118,16 @@
   --text-label-sm-weight: var(--font-weight-medium);
   --text-label-sm-lh: var(--line-height-tight);
 
-  // Helper / caption — used for field-level hint and error messages. Sits
-  // between `--font-size-xs` (12px) and `--font-size-sm` (14px) at 13px so
-  // it stays visually subordinate to the field's label without dropping into
-  // the "barely readable" zone that 12px hits on dense forms.
+  // Helper / caption — small subordinate text that sits visually below the
+  // primary content of a component. Sits between `--font-size-xs` (12px) and
+  // `--font-size-sm` (14px) at 13px so it stays subordinate without dropping
+  // into the "barely readable" zone that 12px hits.
+  //
+  // Primary role: field-level hint and error messages on form-like components
+  // (see STANDARD below). Secondary role: short subordinate metadata text
+  // inside a component, e.g. `<ea-file-uploader>`'s constraints disclosure
+  // ("PNG or JPG up to 5MB") and per-file size label ("245 KB"). For any
+  // role bigger than these, reach for a body-* composite instead.
   //
   // STANDARD — every form-like component (anything exposing `errorMsg` and/or
   // `hint`) must render its messages identically. Mirror `<ea-input>` exactly:

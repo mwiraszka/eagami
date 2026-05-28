@@ -266,11 +266,19 @@ export const pl: WebMessages = {
         'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje dany rol semantyczny:',
       paletteContrast:
         'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem WCAG 2.1 AA przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
+      elevationDrop: 'Cienie',
+      elevationRelief: 'Wypukłość i wgłębienie',
+      elevationReliefBefore:
+        '<code>--shadow-bevel</code> łączy wewnętrzne podświetlenie (góra) z wewnętrznym cieniem (dół), dzięki czemu powierzchnia wygląda na uniesioną. <code>--shadow-well</code> odwraca oświetlenie i daje efekt wgłębienia. Połącz z <code>--shadow-*</code>, aby dodać cień otoczenia: <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
       colorsPrimary: 'Główny',
       colorsSecondary: 'Drugorzędny',
       colorsNeutral: 'Neutralny',
       colorsStatus: 'Status',
       colorsSemantic: 'Semantyczny',
+      typographyComposites: 'Style złożone',
+      typographyCompositesBefore:
+        'Tokeny złożone łączą rozmiar, grubość, interlinię (a czasem rodzinę) dla konkretnej roli. <code>--text-section-heading-*</code> to pierwszy złożony token, który ustawia rodzinę kroju — używaj go w tytułach <code>&lt;h2&gt;</code> sekcji na stronach dokumentacji i marketingu.',
+      typographySectionHeadingSample: 'Tytuł sekcji w głosie marki',
       typographyFamilies: 'Rodziny',
       typographySizes: 'Rozmiary',
       typographyWeights: 'Grubości',
@@ -431,6 +439,7 @@ export const pl: WebMessages = {
         withoutAlpha: 'bez kanału alfa',
         withoutSearch: 'bez wyszukiwania',
         withoutSelectAll: 'bez „zaznacz wszystko”',
+        wrapping: 'zawijanie',
       },
       common: {
         small: 'Mały',
@@ -828,6 +837,20 @@ export const pl: WebMessages = {
         themeOptions: [
           { value: 'light', label: 'Jasny' },
           { value: 'dark', label: 'Ciemny' },
+        ],
+        monthOptions: [
+          { value: 'jan', label: 'Styczeń' },
+          { value: 'feb', label: 'Luty' },
+          { value: 'mar', label: 'Marzec' },
+          { value: 'apr', label: 'Kwiecień' },
+          { value: 'may', label: 'Maj' },
+          { value: 'jun', label: 'Czerwiec' },
+          { value: 'jul', label: 'Lipiec' },
+          { value: 'aug', label: 'Sierpień' },
+          { value: 'sep', label: 'Wrzesień' },
+          { value: 'oct', label: 'Październik' },
+          { value: 'nov', label: 'Listopad' },
+          { value: 'dec', label: 'Grudzień' },
         ],
         breadcrumbHome: 'Strona główna',
         breadcrumbProducts: 'Produkty',

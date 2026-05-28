@@ -103,3 +103,33 @@ export const AllSizes: Story = {
     `,
   }),
 };
+
+// When the options exceed the available width the control wraps onto multiple
+// rows rather than overflowing. The `.story-narrow` frame (max-width 360px)
+// forces the wrap so the behaviour is visible in the canvas regardless of
+// viewport width.
+export const Wrapping: Story = {
+  render: () => ({
+    props: {
+      monthOptions: [
+        { value: 'jan', label: 'January' },
+        { value: 'feb', label: 'February' },
+        { value: 'mar', label: 'March' },
+        { value: 'apr', label: 'April' },
+        { value: 'may', label: 'May' },
+        { value: 'jun', label: 'June' },
+        { value: 'jul', label: 'July' },
+        { value: 'aug', label: 'August' },
+        { value: 'sep', label: 'September' },
+        { value: 'oct', label: 'October' },
+        { value: 'nov', label: 'November' },
+        { value: 'dec', label: 'December' },
+      ],
+    },
+    template: `
+      <div class="story-narrow">
+        <ea-segmented [options]="monthOptions" value="jan" />
+      </div>
+    `,
+  }),
+};

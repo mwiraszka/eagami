@@ -74,9 +74,22 @@
   color: var(--color-text-primary);
 }
 
+.tokens-subsection__lede {
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+
+  code {
+    font-size: 14px;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-primary);
+  }
+}
+
 .tokens-subsection__title {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -131,7 +144,7 @@
 }
 
 .swatch__shade {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: inherit;
 }
@@ -195,7 +208,7 @@
 
   code {
     flex-shrink: 0;
-    font-size: 13px;
+    font-size: 14px;
     font-family: var(--font-family-mono);
     color: var(--color-text-primary);
   }
@@ -203,7 +216,7 @@
 
 .token-list__value {
   margin-left: auto;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-text-tertiary);
 }
 
@@ -279,6 +292,15 @@
   .size-sample--#{$size} {
     font-size: var(--font-size-#{$size});
   }
+}
+
+.section-heading-sample {
+  flex: 1;
+  font-size: var(--text-section-heading-size);
+  font-weight: var(--text-section-heading-weight);
+  line-height: var(--text-section-heading-lh);
+  font-family: var(--text-section-heading-family);
+  color: var(--color-text-primary);
 }
 
 .weight-sample {
@@ -364,7 +386,7 @@
 }
 
 .elevation-card__caption code {
-  font-size: 13px;
+  font-size: 14px;
   font-family: var(--font-family-mono);
   color: var(--color-text-primary);
 }
@@ -372,6 +394,16 @@
 @each $size in (xs, sm, md, lg, xl, '2xl') {
   .elevation-card--#{$size} {
     box-shadow: var(--shadow-#{$size});
+  }
+}
+
+@each $relief in (bevel, bevel-strong, well, well-strong) {
+  // Inset shadows need contrast against the surface to read, so override the
+  // default white surface with a mid-gray that lets the highlight and shadow
+  // stops show through.
+  .elevation-card--#{$relief}.elevation-card__surface {
+    background-color: var(--color-neutral-200);
+    box-shadow: var(--shadow-#{$relief});
   }
 }
 
@@ -429,7 +461,7 @@
   justify-content: center;
   height: 32px;
   padding: 0 16px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;

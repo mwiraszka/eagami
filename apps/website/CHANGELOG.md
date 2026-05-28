@@ -2,6 +2,24 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.4.0] - 2026-05-28
+
+### Added
+
+- Document the new `--shadow-bevel` / `--shadow-well` token pair and the `--text-section-heading-*` composite on `/ui/design-tokens`.
+- Add a wrapping section to the `<ea-segmented>` demo showing a twelve-option control reflow onto multiple rows.
+
+### Changed
+
+- Pick up @eagami/ui v2.4.0.
+- Route the design-principle ring's 3D shadows through `--shadow-bevel` / `--shadow-well` and the `<h2>` section headings through `--text-section-heading-*`, replacing hand-rolled rgba and 22px values.
+- Cap the `/ui` sidebar at 50dvh on mobile and split it into two independently-scrolling regions (primary nav + components list) so neither dominates the viewport when components is expanded.
+- Bump every 13px text block to 14px and every 15px text block to 16px to align with the type scale; the iOS-Safari zoom-on-focus issue is incidentally avoided on the icons search field now that it sits at 16px.
+
+### Fixed
+
+- Replace the brief "Redirecting…" interstitial at `/ui/components` with a Vercel-level 308 redirect, so direct visits land on the first component without flashing the meta-refresh placeholder.
+
 ## [2.3.0] - 2026-05-28
 
 ### Added
@@ -436,6 +454,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.4.0]: https://github.com/mwiraszka/eagami/compare/website-v2.3.0...website-v2.4.0
 [2.3.0]: https://github.com/mwiraszka/eagami/compare/website-v2.2.0...website-v2.3.0
 [2.2.0]: https://github.com/mwiraszka/eagami/compare/website-v2.1.0...website-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/website-v2.0.0...website-v2.1.0

@@ -15,6 +15,23 @@
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 
+  // Bevel — paired inset highlight (top) + inset shadow (bottom) for surfaces
+  // that should read as raised/3D (chips, ring rims, keyboard keys, mechanical
+  // toggles). Compose with `--shadow-*` for an ambient drop:
+  //   `box-shadow: var(--shadow-bevel), var(--shadow-sm);`
+  --shadow-bevel:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85), inset 0 -1px 1.5px rgba(0, 0, 0, 0.25);
+  --shadow-bevel-strong:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.9), inset 0 -2px 3px rgba(0, 0, 0, 0.3);
+
+  // Well — paired inset shadow (top) + inset highlight (bottom) for surfaces
+  // that should read as recessed/sunken (cavity in a ring, depressed switch,
+  // inset panel). Inverse lighting of `--shadow-bevel`.
+  --shadow-well:
+    inset 0 1px 1.5px rgba(0, 0, 0, 0.3), inset 0 -1px 0.5px rgba(255, 255, 255, 0.5);
+  --shadow-well-strong:
+    inset 0 2px 3px rgba(0, 0, 0, 0.4), inset 0 -1.5px 1px rgba(255, 255, 255, 0.55);
+
   // Focus ring — used for keyboard accessibility across all interactive elements
   --shadow-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.45);
   --shadow-focus-ring-error: 0 0 0 3px var(--color-error-200);
@@ -55,6 +72,18 @@
   --shadow-xl:
     0 12px 18px -4px rgba(255, 255, 255, 0.05), 0 5px 8px -4px rgba(255, 255, 255, 0.03);
   --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.06);
+
+  // Bevel / well: against a dark surface a bright white highlight reads as a
+  // halo. Drop the highlight alpha and crank the shadow alpha so the relief
+  // still reads as 3D on the lifted bg-base (neutral-800) without glowing.
+  --shadow-bevel:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18), inset 0 -1px 1.5px rgba(0, 0, 0, 0.6);
+  --shadow-bevel-strong:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -2px 3px rgba(0, 0, 0, 0.7);
+  --shadow-well:
+    inset 0 1px 1.5px rgba(0, 0, 0, 0.55), inset 0 -1px 0.5px rgba(255, 255, 255, 0.08);
+  --shadow-well-strong:
+    inset 0 2px 3px rgba(0, 0, 0, 0.7), inset 0 -1.5px 1px rgba(255, 255, 255, 0.12);
 }
 
 @media (prefers-color-scheme: dark) {

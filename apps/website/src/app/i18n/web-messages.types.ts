@@ -150,6 +150,9 @@ export interface WebMessages {
       paletteIntro: string;
       paletteOverrides: string;
       paletteContrast: string;
+      elevationDrop: string;
+      elevationRelief: string;
+      elevationReliefBefore: string;
       colorsPrimary: string;
       colorsSecondary: string;
       colorsNeutral: string;
@@ -158,6 +161,9 @@ export interface WebMessages {
       typographyFamilies: string;
       typographySizes: string;
       typographyWeights: string;
+      typographyComposites: string;
+      typographyCompositesBefore: string;
+      typographySectionHeadingSample: string;
       motionSimulate: string;
       motionDurations: string;
       motionEasings: string;
@@ -306,6 +312,7 @@ export interface WebMessages {
         withoutAlpha: string;
         withoutSearch: string;
         withoutSelectAll: string;
+        wrapping: string;
       };
       common: {
         small: string;
@@ -672,6 +679,7 @@ export interface WebMessages {
         fruitOptions: ReadonlyArray<{ value: string; label: string }>;
         viewOptions: ReadonlyArray<{ value: string; label: string }>;
         themeOptions: ReadonlyArray<{ value: string; label: string }>;
+        monthOptions: ReadonlyArray<{ value: string; label: string }>;
         breadcrumbHome: string;
         breadcrumbProducts: string;
         breadcrumbLaptops: string;

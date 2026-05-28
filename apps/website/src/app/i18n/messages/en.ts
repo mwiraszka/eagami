@@ -258,6 +258,10 @@ export const en: WebMessages = {
         'Pin specific shades or remap which derived shade backs each semantic role:',
       paletteContrast:
         'Every brand-role pairing (text on surface, surface on canvas) is checked against WCAG 2.1 AA at bootstrap. A failing combination throws before the app loads, so a contrast bug in the brand colour is caught at boot rather than in production.',
+      elevationDrop: 'Drop shadows',
+      elevationRelief: 'Bevel and well',
+      elevationReliefBefore:
+        '<code>--shadow-bevel</code> pairs an inset highlight (top) with an inset shadow (bottom) for surfaces that should read as raised. <code>--shadow-well</code> inverts the lighting for a recessed look. Combine with <code>--shadow-*</code> for an ambient drop: <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
       colorsPrimary: 'Primary',
       colorsSecondary: 'Secondary',
       colorsNeutral: 'Neutral',
@@ -266,6 +270,10 @@ export const en: WebMessages = {
       typographyFamilies: 'Families',
       typographySizes: 'Sizes',
       typographyWeights: 'Weights',
+      typographyComposites: 'Composite styles',
+      typographyCompositesBefore:
+        'Composite tokens bundle a size, weight, line-height (and sometimes family) for a specific role. <code>--text-section-heading-*</code> is the first composite that pins a font-family — use it for the <code>&lt;h2&gt;</code> subsection title on docs and marketing pages.',
+      typographySectionHeadingSample: 'Brand voice section heading',
       motionSimulate: 'Simulate',
       motionDurations: 'Durations',
       motionEasings: 'Easings',
@@ -423,6 +431,7 @@ export const en: WebMessages = {
         withoutAlpha: 'without alpha',
         withoutSearch: 'without search',
         withoutSelectAll: 'without select-all',
+        wrapping: 'wrapping',
       },
       common: {
         small: 'Small',
@@ -810,6 +819,20 @@ export const en: WebMessages = {
         themeOptions: [
           { value: 'light', label: 'Light' },
           { value: 'dark', label: 'Dark' },
+        ],
+        monthOptions: [
+          { value: 'jan', label: 'January' },
+          { value: 'feb', label: 'February' },
+          { value: 'mar', label: 'March' },
+          { value: 'apr', label: 'April' },
+          { value: 'may', label: 'May' },
+          { value: 'jun', label: 'June' },
+          { value: 'jul', label: 'July' },
+          { value: 'aug', label: 'August' },
+          { value: 'sep', label: 'September' },
+          { value: 'oct', label: 'October' },
+          { value: 'nov', label: 'November' },
+          { value: 'dec', label: 'December' },
         ],
         breadcrumbHome: 'Home',
         breadcrumbProducts: 'Products',
