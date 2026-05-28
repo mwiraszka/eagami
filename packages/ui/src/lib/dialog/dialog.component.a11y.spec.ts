@@ -5,8 +5,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
 
-// jsdom doesn't implement HTMLDialogElement's `showModal` / `close`; stub them
-// so the dialog actually opens (otherwise axe can't see the content).
+// jsdom lacks HTMLDialogElement showModal/close; stub them so the dialog opens and axe can see it
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = jest.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');

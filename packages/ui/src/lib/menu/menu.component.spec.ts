@@ -51,10 +51,8 @@ describe('MenuComponent', () => {
   }
 
   function getList(): HTMLElement | null {
-    // The menu's projected list lives inside the popover surface, which is
-    // rendered unconditionally and hidden via `display: none` when closed.
-    // Treat a hidden surface as "no list" so the existing assertions stay
-    // intact.
+    // List lives in the popover surface, which renders unconditionally and hides via
+    // `display: none`; treat a hidden one as "no list".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
     if (!surface || surface.style.display === 'none') return null;
     return surface.querySelector<HTMLElement>('.ea-menu__list');
@@ -77,14 +75,10 @@ describe('MenuComponent', () => {
   });
 
   afterEach(() => {
-    // `<ea-popover>` teleports its surface to `document.body`. Destroy the
-    // fixture so Angular tears down the embedded view, then sweep any surface
-    // that survived destruction so the next test starts clean.
+    // Destroy tears down the teleported surface; sweep any that survived so the next test starts clean
     fixture.destroy();
     document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
-
-  // ── Rendering ──────────────────────────────────────────────────────────────
 
   describe('Rendering', () => {
     it('renders the trigger', () => {
@@ -132,8 +126,6 @@ describe('MenuComponent', () => {
       expect(surface?.classList).toContain('ea-popover__surface--bottom-end');
     });
   });
-
-  // ── Opening and closing ───────────────────────────────────────────────────
 
   describe('Opening and closing', () => {
     it('opens when trigger is clicked', () => {
@@ -211,8 +203,6 @@ describe('MenuComponent', () => {
       expect(host.isOpen()).toBe(true);
     });
   });
-
-  // ── Menu items ────────────────────────────────────────────────────────────
 
   describe('Menu items', () => {
     beforeEach(() => {

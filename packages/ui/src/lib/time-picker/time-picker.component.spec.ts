@@ -28,8 +28,7 @@ describe('TimePickerComponent', () => {
     return Array.from(surface.querySelectorAll('.ea-time-picker__step'));
   }
 
-  /** Simulates a click on a chevron button. Buttons now respond to
-   * `(mousedown)` (to start the long-press repeat) rather than `(click)`. */
+  /** Chevron buttons fire on `(mousedown)`, not `(click)`, to start the long-press repeat */
   function pressStep(btn: HTMLButtonElement): void {
     btn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
     btn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
@@ -449,7 +448,7 @@ describe('TimePickerComponent', () => {
     });
 
     it('commits and advances when a single digit already saturates the unit', () => {
-      // Typing "7" in minutes: any second digit would push past 59, so commit + advance.
+      // "7" in minutes: any second digit exceeds 59, so commit and advance
       component.writeValue('09:00');
       getTrigger().click();
       fixture.detectChanges();

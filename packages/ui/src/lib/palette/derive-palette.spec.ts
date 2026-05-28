@@ -46,15 +46,13 @@ describe('derivePalette', () => {
   it('flips brand-text between modes so each clears its canvas', () => {
     const { light, dark } = derivePalette({ primary: { base: '#3674a1' } });
 
-    // brand-text defaults: textLight=700 (dark navy for white canvas),
-    // textDark=300 (light blue for near-black canvas).
+    // brand-text defaults: textLight=700 for the white canvas, textDark=300 for near-black
     expect(light['--color-brand-text']).toBe(light['--color-primary-700']);
     expect(dark['--color-brand-text']).toBe(dark['--color-primary-300']);
   });
 
   it('flips brand-default one shade lighter in dark mode (600 -> 500)', () => {
-    // Defaults: surfaceLight='600', surfaceDark='500'. The small flip clears
-    // WCAG 1.4.11 (3:1 brand-vs-canvas) without losing the white label.
+    // The 600/500 flip clears WCAG 1.4.11 (3:1 brand-vs-canvas) without losing the white label
     const { light, dark } = derivePalette({ primary: { base: '#3674a1' } });
 
     expect(light['--color-brand-default']).toBe(light['--color-primary-600']);
@@ -74,7 +72,7 @@ describe('derivePalette', () => {
 
     expect(light).toHaveProperty('--color-secondary-500');
     expect(light).toHaveProperty('--color-brand-secondary-default');
-    // Secondary does not own the brand-text token; that stays primary-bound.
+    // brand-text stays primary-bound, never owned by secondary
     expect(light).not.toHaveProperty('--color-brand-text');
   });
 });

@@ -11,9 +11,8 @@ describe('DatePickerComponent', () => {
   }
 
   function getPopover(): HTMLElement | null {
-    // The popover renders its surface unconditionally (hidden via
-    // `display: none` when closed) and teleports it to `document.body`.
-    // Treat a hidden surface as "no popover".
+    // Surface renders unconditionally in `document.body`, hidden via `display: none`;
+    // treat a hidden one as "no popover".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
     if (!surface || surface.style.display === 'none') return null;
     return surface.querySelector<HTMLElement>('.ea-date-picker__popover');

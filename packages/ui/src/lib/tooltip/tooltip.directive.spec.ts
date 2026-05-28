@@ -202,9 +202,8 @@ describe('TooltipDirective', () => {
     it('hides the tooltip when the trigger is covered by another element', () => {
       jest.useFakeTimers();
 
-      // jsdom doesn't implement `elementFromPoint`; stub it so the directive's
-      // hit-test sees document.body as the topmost element (i.e. the trigger
-      // is occluded by some other element above it).
+      // jsdom has no `elementFromPoint`; stub it to return document.body so the hit-test
+      // sees the trigger as occluded.
       const originalElementFromPoint = (
         document as Document & {
           elementFromPoint?: (x: number, y: number) => Element | null;
@@ -220,8 +219,7 @@ describe('TooltipDirective', () => {
         }
       ).elementFromPoint = () => document.body;
 
-      // Trigger a reposition (resize) and flush the rAF callback that
-      // schedules positionTooltip → hide.
+      // Resize triggers a reposition; flush the rAF callback that schedules positionTooltip then hide
       window.dispatchEvent(new Event('resize'));
       jest.runOnlyPendingTimers();
       fixture.detectChanges();

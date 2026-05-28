@@ -2,11 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AvatarEditorComponent, AvatarEditorCropState } from './avatar-editor.component';
 
-// ─── Image mock ───────────────────────────────────────────────────────────────
-//
-// Captures every Image instance created by the component so tests can manually
-// fire onload / onerror without triggering real network requests.
-
+// Captures every Image instance so tests can fire onload/onerror without real network requests
 class MockImage {
   onload: (() => void) | null = null;
   onerror: (() => void) | null = null;
@@ -39,12 +35,8 @@ function triggerError(): void {
   lastImage()?.onerror?.();
 }
 
-// ─── FileReader mock ──────────────────────────────────────────────────────────
-//
-// Two call paths:
-//   loadFile  → sets onload then calls readAsDataURL(File)   → test triggers manually
-//   exportCrop → sets onloadend then calls readAsDataURL(Blob) → mock auto-fires via microtask
-
+// Two call paths: loadFile sets onload then readAsDataURL(File) (test triggers manually);
+// exportCrop sets onloadend then readAsDataURL(Blob) (mock auto-fires via microtask).
 interface MockFileReaderEvent {
   target: { result: string };
 }
@@ -74,8 +66,6 @@ function createMockFileReader(): MockFileReaderInstance {
   return instance;
 }
 
-// ─── Canvas mock ─────────────────────────────────────────────────────────────
-
 const mockCtx = {
   clearRect: jest.fn(),
   fillRect: jest.fn(),
@@ -86,8 +76,6 @@ const mockCtx = {
   closePath: jest.fn(),
   clip: jest.fn(),
 } as unknown as CanvasRenderingContext2D;
-
-// ─── Global setup ─────────────────────────────────────────────────────────────
 
 beforeAll(() => {
   Object.defineProperty(globalThis, 'Image', { value: MockImage, writable: true });
@@ -112,13 +100,9 @@ afterEach(() => {
   lastMockFileReader = null;
 });
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
 function makeFile(type = 'image/jpeg', byteCount = 100): File {
   return new File([new Uint8Array(byteCount)], 'photo.jpg', { type });
 }
-
-// ─── Spec ─────────────────────────────────────────────────────────────────────
 
 describe('AvatarEditorComponent', () => {
   let fixture: ComponentFixture<AvatarEditorComponent>;
@@ -166,9 +150,8 @@ describe('AvatarEditorComponent', () => {
 
   /**
    * Loads an image via currentSrc through the full two-cycle lifecycle:
-   *   1st detectChanges → effect fires → loadFromUrl called → _suppressCropStateEmit = true
-   *   triggerLoad       → onload fires → state updated → afterNextRender registered
-   *   2nd detectChanges → afterNextRender fires → _suppressCropStateEmit = false
+   * 1st detectChanges fires the effect (sets _suppressCropStateEmit), triggerLoad runs onload
+   * and registers afterNextRender, 2nd detectChanges runs it and clears the suppress flag.
    */
   function loadImage(url = 'https://example.com/photo.jpg'): void {
     fixture.componentRef.setInput('currentSrc', url);
@@ -192,8 +175,6 @@ describe('AvatarEditorComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // ── Rendering ────────────────────────────────────────────────────────────────
 
   describe('Rendering', () => {
     it('renders a dropzone before any image is loaded', () => {
@@ -254,8 +235,6 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── currentSrc loading ────────────────────────────────────────────────────
-
   describe('currentSrc loading', () => {
     it('loads image from the provided URL', () => {
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
@@ -305,8 +284,6 @@ describe('AvatarEditorComponent', () => {
       expect(lastImage().src).toBe('https://example.com/b.jpg');
     });
   });
-
-  // ── cropState restoration ─────────────────────────────────────────────────
 
   describe('cropState restoration', () => {
     it('restores zoom from cropState on load', () => {
@@ -375,16 +352,14 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── cropStateChanged emission ──────────────────────────────────────────────
-
   describe('cropStateChanged emission', () => {
     it('does not emit during a programmatic load (afterNextRender not yet settled)', () => {
       const spy = jest.fn();
       component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
-      fixture.detectChanges(); // effect fires → _suppressCropStateEmit = true
-      triggerLoad(); // onload fires → afterNextRender registered but not yet run
+      fixture.detectChanges(); // sets _suppressCropStateEmit
+      triggerLoad(); // registers afterNextRender but doesn't run it yet
 
       component.setZoom(1.5); // attempts emission while still suppressed
 
@@ -392,7 +367,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits after load has fully settled', () => {
-      loadImage(); // two detectChanges — afterNextRender fires, suppress cleared
+      loadImage(); // runs afterNextRender so the suppress flag clears
 
       const spy = jest.fn();
       component.cropStateChanged.subscribe(spy);
@@ -407,8 +382,8 @@ describe('AvatarEditorComponent', () => {
       component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
-      fixture.detectChanges(); // _suppressCropStateEmit = true
-      triggerError(); // onerror fires → _suppressCropStateEmit = false
+      fixture.detectChanges(); // sets _suppressCropStateEmit
+      triggerError(); // onerror clears the suppress flag
 
       component.setZoom(1.5);
 
@@ -441,8 +416,6 @@ describe('AvatarEditorComponent', () => {
       });
     });
   });
-
-  // ── removeImage ───────────────────────────────────────────────────────────
 
   describe('removeImage', () => {
     beforeEach(() => {
@@ -477,8 +450,6 @@ describe('AvatarEditorComponent', () => {
       expect(component.canRevert()).toBe(true);
     });
   });
-
-  // ── revertImage ───────────────────────────────────────────────────────────
 
   describe('revertImage', () => {
     it('restores the original image without a network request', () => {
@@ -616,8 +587,6 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── captureOriginal ────────────────────────────────────────────────────
-
   describe('captureOriginal', () => {
     it('snapshots current state so revert returns to it', () => {
       loadImage();
@@ -677,8 +646,6 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── isLoading ─────────────────────────────────────────────────────────────
-
   describe('isLoading', () => {
     it('is false initially', () => {
       expect(component.isLoading()).toBe(false);
@@ -735,8 +702,6 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── loading input ─────────────────────────────────────────────────────────
-
   describe('loading input', () => {
     it('shows skeleton instead of dropzone when loading is true and no currentSrc', () => {
       fixture.componentRef.setInput('loading', true);
@@ -767,8 +732,6 @@ describe('AvatarEditorComponent', () => {
       expect(removeBtn().disabled).toBe(true);
     });
   });
-
-  // ── Zoom ──────────────────────────────────────────────────────────────────
 
   describe('Zoom', () => {
     beforeEach(() => {
@@ -821,8 +784,6 @@ describe('AvatarEditorComponent', () => {
       expect(component.zoom()).toBeCloseTo(1.8, 5);
     });
   });
-
-  // ── File selection ────────────────────────────────────────────────────────
 
   describe('File selection', () => {
     it('emits errored for a non-image file type', () => {
@@ -886,8 +847,6 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
-  // ── Drag and drop ─────────────────────────────────────────────────────────
-
   describe('Drag and drop', () => {
     it('sets isDragOver to true on dragover', () => {
       getDropzone()!.dispatchEvent(new Event('dragover'));
@@ -945,8 +904,6 @@ describe('AvatarEditorComponent', () => {
       expect(spy).toHaveBeenCalledWith(file);
     });
   });
-
-  // ── Controls ──────────────────────────────────────────────────────────────
 
   describe('Controls', () => {
     it('revert button is disabled before any image loads', () => {
@@ -1042,8 +999,6 @@ describe('AvatarEditorComponent', () => {
       expect(removeBtn().disabled).toBe(false);
     });
   });
-
-  // ── exportCrop ────────────────────────────────────────────────────────────
 
   describe('exportCrop', () => {
     it('rejects when no image is loaded', async () => {

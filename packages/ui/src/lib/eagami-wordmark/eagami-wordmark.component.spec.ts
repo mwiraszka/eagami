@@ -36,8 +36,6 @@ describe('EagamiWordmarkComponent', () => {
     return fixture.nativeElement.querySelector('.ea-eagami-wordmark__tagline');
   }
 
-  // ── Rendering ────────────────────────────────────────────────────────────────
-
   describe('Rendering', () => {
     it('creates the component', () => {
       expect(component).toBeTruthy();
@@ -56,8 +54,6 @@ describe('EagamiWordmarkComponent', () => {
       expect(getLogo()).toBeTruthy();
     });
   });
-
-  // ── Variant ──────────────────────────────────────────────────────────────────
 
   describe('Variant', () => {
     it('renders "eagami" by default (variant 1)', () => {
@@ -112,8 +108,6 @@ describe('EagamiWordmarkComponent', () => {
     });
   });
 
-  // ── Size ─────────────────────────────────────────────────────────────────────
-
   describe('Size', () => {
     it('sets --_size to 32 by default', () => {
       expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('32');
@@ -126,8 +120,6 @@ describe('EagamiWordmarkComponent', () => {
       expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
     });
   });
-
-  // ── Layout ──────────────────────────────────────────────────────────────────
 
   describe('Layout', () => {
     it('does not apply the inline modifier by default', () => {

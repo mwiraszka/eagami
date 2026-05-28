@@ -60,7 +60,7 @@ describe('EagamiI18nService', () => {
     });
 
     expect(service.messages().alert.dismiss).toBe('Κλείσιμο');
-    // Untouched keys still come from the active locale.
+    // untouched keys still come from the active locale
     expect(service.messages().spinner.label).toBe('Φόρτωση');
   });
 

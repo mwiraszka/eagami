@@ -61,7 +61,7 @@ describe('CommandPaletteComponent', () => {
   }
 
   beforeEach(async () => {
-    // jsdom does not implement HTMLDialogElement.showModal/close.
+    // jsdom does not implement HTMLDialogElement.showModal/close
     HTMLDialogElement.prototype.showModal = function () {
       this.setAttribute('open', '');
     };
@@ -84,7 +84,7 @@ describe('CommandPaletteComponent', () => {
     const labels = getItems().map(el =>
       el.querySelector('.ea-command-palette__item-label')?.textContent?.trim(),
     );
-    // 'save' is disabled and is filtered out by `filteredItems`.
+    // 'save' is disabled, so `filteredItems` omits it
     expect(labels).toEqual(['Toggle theme', 'New file', 'Open file', 'Find', 'Replace']);
   });
 
@@ -107,10 +107,7 @@ describe('CommandPaletteComponent', () => {
   });
 
   it('matches by word prefix, not mid-word substring', () => {
-    // "c" appears mid-word in "Repla*c*e" and in "Sear*c*h" (Find's keyword),
-    // and inside the description "Swit*c*h between light and dar*c*…". Word-
-    // prefix matching excludes those — only items starting a word with "c"
-    // would appear (none, in this fixture).
+    // "c" only appears mid-word in this fixture, and word-prefix matching ignores mid-word hits
     typeQuery('c');
 
     expect(getItems()).toHaveLength(0);

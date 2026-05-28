@@ -54,8 +54,6 @@ describe('PaginatorComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Alignment ────────────────────────────────────────────────────────────
-
   describe('Alignment', () => {
     it('defaults to right (no modifier class)', () => {
       const host = fixture.nativeElement.querySelector('.ea-paginator');
@@ -82,8 +80,6 @@ describe('PaginatorComponent', () => {
       expect(host.classList).toContain('ea-paginator--center');
     });
   });
-
-  // ── Rendering ────────────────────────────────────────────────────────────
 
   describe('Rendering', () => {
     it('renders prev and next buttons', () => {
@@ -130,8 +126,6 @@ describe('PaginatorComponent', () => {
       expect(getRangeLabel()).toBe('0–0 of 0');
     });
   });
-
-  // ── Navigation ───────────────────────────────────────────────────────────
 
   describe('Navigation', () => {
     it('disables prev button on first page', () => {
@@ -187,8 +181,6 @@ describe('PaginatorComponent', () => {
     });
   });
 
-  // ── Page size ────────────────────────────────────────────────────────────
-
   describe('Page size', () => {
     it('renders page size options', () => {
       const options = getSelect()!.querySelectorAll('option');
@@ -242,8 +234,6 @@ describe('PaginatorComponent', () => {
     });
   });
 
-  // ── Events ───────────────────────────────────────────────────────────────
-
   describe('Events', () => {
     it('emits changed on next click', () => {
       const spy = jest.fn();
@@ -295,8 +285,6 @@ describe('PaginatorComponent', () => {
     });
   });
 
-  // ── Ellipsis ─────────────────────────────────────────────────────────────
-
   describe('Ellipsis', () => {
     it('shows ellipsis for many pages', () => {
       fixture.componentRef.setInput('totalItems', 200);
@@ -328,8 +316,6 @@ describe('PaginatorComponent', () => {
     });
   });
 
-  // ── Disabled state ───────────────────────────────────────────────────────
-
   describe('Disabled state', () => {
     it('disables all controls when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
@@ -358,8 +344,6 @@ describe('PaginatorComponent', () => {
       expect(host.classList).toContain('ea-paginator--disabled');
     });
   });
-
-  // ── Edge cases ───────────────────────────────────────────────────────────
 
   describe('Edge cases', () => {
     it('clamps goToPage to valid range', () => {

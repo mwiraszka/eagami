@@ -22,7 +22,7 @@ describe('RatingComponent', () => {
     return 'empty';
   }
 
-  /** Stub `getBoundingClientRect` on every star so pointer-position math is deterministic. */
+  /** Stub `getBoundingClientRect` on every star so pointer-position math is deterministic */
   function stubStarBounds(): void {
     getStars().forEach(btn => {
       btn.getBoundingClientRect = () =>
@@ -92,7 +92,7 @@ describe('RatingComponent', () => {
       fixture.componentRef.setInput('allowHalf', true);
       component.writeValue(2.5);
       fixture.detectChanges();
-      // Positions 0-1: full -> star, position 2: half -> left-half-star, 3-4: empty -> star
+      // At value 2.5: positions 0-1 are full stars, 2 is a left-half-star, 3-4 are empty
       const halfPositionIcon = getStars()[2].querySelector('ea-icon-left-half-star');
       const fullPositionIcon = getStars()[0].querySelector('ea-icon-star');
       expect(halfPositionIcon).toBeTruthy();
@@ -188,8 +188,7 @@ describe('RatingComponent', () => {
   });
 
   describe('Hover preview', () => {
-    // jsdom doesn't ship a PointerEvent constructor, so we hand-roll one with the
-    // clientX the component reads via the shared positioning helper.
+    // jsdom has no PointerEvent constructor; hand-roll one with the clientX the component reads
     function pointerMove(clientX: number): Event {
       const evt = new Event('pointermove', { bubbles: true });
       Object.defineProperty(evt, 'clientX', { value: clientX });

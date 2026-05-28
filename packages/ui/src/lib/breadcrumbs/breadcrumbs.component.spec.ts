@@ -45,8 +45,6 @@ describe('BreadcrumbsComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Rendering ──────────────────────────────────────────────────────────────
-
   describe('Rendering', () => {
     it('renders a nav with the correct aria-label', () => {
       const nav = fixture.nativeElement.querySelector('nav.ea-breadcrumbs');
@@ -94,8 +92,6 @@ describe('BreadcrumbsComponent', () => {
     });
   });
 
-  // ── Separators ─────────────────────────────────────────────────────────────
-
   describe('Separator', () => {
     it('uses chevron icon by default', () => {
       const icons = fixture.nativeElement.querySelectorAll('ea-icon-chevron-right');
@@ -115,8 +111,6 @@ describe('BreadcrumbsComponent', () => {
       expect(slashes[0].textContent.trim()).toBe('/');
     });
   });
-
-  // ── Click handling ─────────────────────────────────────────────────────────
 
   describe('Click handling', () => {
     it('emits clicked with the item and index', () => {
@@ -158,8 +152,6 @@ describe('BreadcrumbsComponent', () => {
       expect(spy).not.toHaveBeenCalled();
     });
   });
-
-  // ── Edge cases ─────────────────────────────────────────────────────────────
 
   describe('Edge cases', () => {
     it('handles an empty item list', () => {

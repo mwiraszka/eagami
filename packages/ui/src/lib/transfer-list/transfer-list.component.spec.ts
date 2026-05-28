@@ -119,7 +119,7 @@ describe('TransferListComponent', () => {
     getButton('Move all to target').click();
     fixture.detectChanges();
 
-    // 'd' is disabled and stays put.
+    // 'd' is disabled and stays put
     expect(host.selectedIds()).toEqual(['a', 'b', 'c', 'e']);
     expect(getListItems('source').map(el => el.textContent?.trim())).toEqual(['Delta']);
   });
@@ -155,7 +155,7 @@ describe('TransferListComponent', () => {
     getButton('Move all to source').click();
     fixture.detectChanges();
 
-    // Only the non-disabled `a` should move; disabled `d` remains in target.
+    // only the non-disabled `a` moves; disabled `d` stays in target
     expect(host.selectedIds()).toEqual(['d']);
   });
 
@@ -176,8 +176,7 @@ describe('TransferListComponent', () => {
     const highlighted = getListItems('source')
       .filter(el => el.classList.contains('ea-transfer-list__item--highlighted'))
       .map(el => el.textContent?.trim());
-    // 'Delta' is disabled and is skipped by the range builder, even though
-    // it sits inside the anchor → target range.
+    // disabled 'Delta' is skipped by the range builder even though it sits inside the range
     expect(highlighted).toEqual(['Alpha', 'Beta', 'Gamma', 'Epsilon']);
   });
 

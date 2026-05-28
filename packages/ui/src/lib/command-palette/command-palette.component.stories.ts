@@ -88,8 +88,8 @@ export const FlatList: Story = {
   }),
 };
 
-// Wires Cmd/Ctrl+K to open the palette globally — matches the website demo so
-// keyboard shortcut behaviour can be inspected in Storybook too.
+// Wires Cmd/Ctrl+K to open the palette globally, mirroring the website demo so the
+// keyboard shortcut can be inspected in Storybook.
 @Component({
   selector: 'ea-command-palette-shortcut-host',
   imports: [CommandPaletteComponent, ButtonComponent],

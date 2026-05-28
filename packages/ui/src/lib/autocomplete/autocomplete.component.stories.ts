@@ -28,8 +28,7 @@ const meta: Meta<AutocompleteComponent> = {
   component: AutocompleteComponent,
   tags: ['autodocs'],
   parameters: {
-    // Sized to trigger + 15rem max-height suggestion list, leaving a small
-    // amount of empty space split top/bottom by the docs canvas padding.
+    // Sized to fit the trigger plus the 15rem max-height suggestion list
     docs: { story: { height: '22rem' } },
   },
   render: args => ({

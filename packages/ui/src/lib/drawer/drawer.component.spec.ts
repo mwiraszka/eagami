@@ -68,8 +68,6 @@ describe('DrawerComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Rendering ──────────────────────────────────────────────────────────────
-
   describe('Rendering', () => {
     it('renders a dialog element', () => {
       expect(getDrawer()).toBeTruthy();
@@ -108,8 +106,6 @@ describe('DrawerComponent', () => {
     });
   });
 
-  // ── Opening and closing ───────────────────────────────────────────────────
-
   describe('Opening and closing', () => {
     it('opens when open is set to true', () => {
       host.isOpen.set(true);
@@ -128,8 +124,6 @@ describe('DrawerComponent', () => {
       expect(HTMLDialogElement.prototype.close).toHaveBeenCalled();
     });
   });
-
-  // ── Close button ──────────────────────────────────────────────────────────
 
   describe('Close button', () => {
     it('renders a close button by default', () => {
@@ -153,8 +147,6 @@ describe('DrawerComponent', () => {
       expect(host.isOpen()).toBe(false);
     });
   });
-
-  // ── Backdrop ──────────────────────────────────────────────────────────────
 
   describe('Backdrop click', () => {
     it('closes on backdrop click when closeOnBackdrop is true', () => {
@@ -198,8 +190,6 @@ describe('DrawerComponent', () => {
     });
   });
 
-  // ── Escape key ────────────────────────────────────────────────────────────
-
   describe('Escape key', () => {
     it('closes on cancel event when closeOnEscape is true', () => {
       host.isOpen.set(true);
@@ -224,8 +214,6 @@ describe('DrawerComponent', () => {
       expect(host.isOpen()).toBe(true);
     });
   });
-
-  // ── Content projection ───────────────────────────────────────────────────
 
   describe('Content projection', () => {
     it('projects header content', () => {

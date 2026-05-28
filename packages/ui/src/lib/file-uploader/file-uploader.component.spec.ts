@@ -13,8 +13,7 @@ function makeFile(
 }
 
 function fileList(...files: File[]): FileList {
-  // jsdom has no DataTransfer; fake a FileList with the array-like + item method
-  // shape the component code actually reads (Array.from + indexing).
+  // jsdom has no DataTransfer; fake the array-like + item() FileList shape the component reads
   const list = {
     length: files.length,
     item: (i: number) => files[i] ?? null,
@@ -210,8 +209,7 @@ describe('FileUploaderComponent', () => {
   });
 
   describe('Drag and drop', () => {
-    // jsdom doesn't ship a DragEvent constructor; hand-roll one with the
-    // `dataTransfer.files` shape the component reads.
+    // jsdom has no DragEvent constructor; hand-roll one with the `dataTransfer.files` shape
     function dragEvent(type: string, ...files: File[]): Event {
       const evt = new Event(type, { bubbles: true });
       if (files.length) {

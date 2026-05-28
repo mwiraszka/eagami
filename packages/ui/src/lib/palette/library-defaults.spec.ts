@@ -3,13 +3,8 @@ import { join } from 'path';
 
 import { WCAG_AA, contrastRatio } from './contrast';
 
-/**
- * Guards the library's own hand-tuned brand tokens against WCAG AA failures.
- * Parses the live SCSS file rather than mirroring the values into the test
- * fixture so any future tweak to `_colors.scss` runs through these bars
- * before merge.
- */
-
+// Guards the library's brand tokens against WCAG AA failures. Parses the live SCSS
+// rather than mirroring values so any tweak to `_colors.scss` runs through these bars.
 const COLORS_SCSS = readFileSync(
   join(__dirname, '../../styles/tokens/_colors.scss'),
   'utf8',
@@ -46,7 +41,7 @@ function parseScope(start: RegExp, end: RegExp): ScopeTokens {
   const body = after.slice(0, sliceTo);
 
   const tokens: ScopeTokens = {};
-  // Strip line comments so they don't contaminate the value match.
+  // Strip line comments so they don't contaminate the value match
   const stripped = body.replace(/\/\/[^\n]*/g, '');
   for (const match of stripped.matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/gi)) {
     tokens[match[1]] = match[2].trim();
