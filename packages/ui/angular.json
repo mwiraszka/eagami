@@ -44,7 +44,8 @@
             "browserTarget": "eagami-ui-storybook:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
-            "outputDir": "dist/storybook/eagami-ui"
+            "outputDir": "dist/storybook/eagami-ui",
+            "statsJson": true
           }
         }
       }
