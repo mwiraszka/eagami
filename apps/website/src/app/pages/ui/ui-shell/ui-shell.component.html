@@ -7,7 +7,7 @@
       class="ui-shell__nav"
       [attr.aria-label]="messages().ui.shell.navLabel">
       <ul
-        class="ui-shell__list"
+        class="ui-shell__list ui-shell__list--primary"
         role="list">
         <li>
           <a
@@ -64,25 +64,26 @@
               [class.ui-shell__caret--open]="componentsExpanded()"
               aria-hidden="true" />
           </button>
-          @if (componentsExpanded()) {
-            <ul
-              id="ui-shell-components"
-              class="ui-shell__list ui-shell__list--nested"
-              role="list">
-              @for (component of components; track component.slug) {
-                <li>
-                  <a
-                    class="ui-shell__link"
-                    [routerLink]="['/ui/components', component.slug]"
-                    routerLinkActive="ui-shell__link--active">
-                    {{ component.name }}
-                  </a>
-                </li>
-              }
-            </ul>
-          }
         </li>
       </ul>
+
+      @if (componentsExpanded()) {
+        <ul
+          id="ui-shell-components"
+          class="ui-shell__list ui-shell__list--components"
+          role="list">
+          @for (component of components; track component.slug) {
+            <li>
+              <a
+                class="ui-shell__link"
+                [routerLink]="['/ui/components', component.slug]"
+                routerLinkActive="ui-shell__link--active">
+                {{ component.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      }
     </nav>
   </aside>
 

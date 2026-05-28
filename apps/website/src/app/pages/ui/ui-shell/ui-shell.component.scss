@@ -54,9 +54,16 @@
     border-radius: 4px;
   }
 
+  /* On mobile, the sidebar sits at the top of the layout and is capped at
+     50dvh so it can't dominate the viewport. The primary nav and the
+     expanded components list each become independent scroll regions inside
+     the cap. The aside itself stops scrolling so children handle it. */
   @include mixins.respond-to('lt-md') {
     position: static;
-    max-height: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 50dvh;
     padding: 16px 32px;
     border-bottom: 1px solid var(--color-border-default);
   }
@@ -65,6 +72,11 @@
 .ui-shell__nav {
   display: flex;
   flex-direction: column;
+
+  @include mixins.respond-to('lt-md') {
+    flex: 1;
+    min-height: 0;
+  }
 }
 
 .ui-shell__list {
@@ -76,8 +88,26 @@
   list-style: none;
 }
 
-.ui-shell__list--nested {
+.ui-shell__list--components {
   margin: 4px 0 4px 24px;
+
+  @include mixins.respond-to('lt-md') {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    margin: 8px 0 0 0;
+    scrollbar-gutter: stable;
+  }
+}
+
+.ui-shell__list--primary {
+  @include mixins.respond-to('lt-md') {
+    flex-shrink: 0;
+    overflow-y: auto;
+    min-height: 0;
+    max-height: 50%;
+    scrollbar-gutter: stable;
+  }
 }
 
 .ui-shell__link {
