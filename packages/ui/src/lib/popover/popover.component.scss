@@ -9,9 +9,13 @@
 .ea-popover__surface {
   z-index: var(--z-index-dropdown);
   position: fixed;
-  // Default to hidden so the surface never paints at its pre-positioning
-  // (0,0) coordinates between `display: none` and the JS-computed
-  // `top`/`left`. Flipped via `--positioned` after reposition runs.
+  // Default hidden so the surface can never paint at its pre-positioned
+  // `top: 0; left: 0` between the moment `display: none` is removed and the
+  // moment the first `reposition()` lands inline `top` / `left`. The
+  // `--positioned` modifier only flips on after a measurement-stable
+  // reposition (the second pass, after the surface has been laid out at its
+  // real dimensions), so the user never sees the "wrong place, then right
+  // place" jump that produced the earlier flicker.
   visibility: hidden;
 
   &--positioned {

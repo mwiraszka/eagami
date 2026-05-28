@@ -129,9 +129,15 @@ export class PopoverComponent {
     () => this.position()?.placement ?? this.placement(),
   );
 
-  /** True once the first `reposition()` has resolved a placement. Drives the
-   * `--positioned` class that flips visibility on. */
-  readonly isPositioned = computed(() => this.open() && this.position() !== null);
+  /** Latches true once the post-rAF reposition has run, so the surface is
+   * only revealed after its dimensions are guaranteed stable. Reset on close. */
+  private readonly stable = signal(false);
+
+  /** True once the first `reposition()` has resolved a placement on a
+   * laid-out surface. Drives the `--positioned` class. */
+  readonly isPositioned = computed(
+    () => this.open() && this.position() !== null && this.stable(),
+  );
 
   /** Class list for the surface. Computed in TS so the placement key (with
    * its interpolated suffix) and the positioned modifier compose cleanly. */
@@ -192,6 +198,7 @@ export class PopoverComponent {
       const isOpen = this.open();
       if (!surface || !anchor || !isOpen) {
         this.position.set(null);
+        this.stable.set(false);
         return;
       }
       // Re-read inputs so signal subscriptions stay current after a re-open.
@@ -200,7 +207,26 @@ export class PopoverComponent {
       this.flip();
       this.clamp();
       this.matchAnchorWidth();
+      // First reposition runs synchronously off the open effect — fast, but
+      // the surface is still transitioning out of `display: none` and the
+      // first `getBoundingClientRect` can report the surface's natural width
+      // even when that overflows the viewport. We deliberately keep the
+      // surface hidden (`visibility: hidden` from CSS) until the next rAF
+      // when the browser has finished laying it out at its real dimensions;
+      // the second reposition then uses accurate measurements and the
+      // `stable` latch flips, revealing the surface at the final position
+      // with no visible jump. SSR / non-browser hosts fall back to flipping
+      // `stable` synchronously.
       this.reposition();
+      if (typeof requestAnimationFrame !== 'undefined') {
+        requestAnimationFrame(() => {
+          if (!this.open()) return;
+          this.reposition();
+          this.stable.set(true);
+        });
+      } else {
+        this.stable.set(true);
+      }
     });
 
     // Watch the surface's own size and reposition whenever it changes. The
