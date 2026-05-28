@@ -44,8 +44,15 @@
 }
 
 .ea-segmented {
+  // `inline-flex` keeps the control shrink-to-fit for short option sets, but
+  // an inline-flex box sizes to its content (max-content) and would overflow
+  // rather than wrap. `max-width: 100%` bounds it to the containing block so
+  // `flex-wrap` actually engages once the options exceed the available width.
   display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: var(--space-0-5);
+  max-width: 100%;
   padding: var(--space-0-5);
   background-color: var(--color-bg-muted);
   border: var(--border-width-thin) solid var(--color-border-default);
