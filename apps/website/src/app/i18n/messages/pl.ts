@@ -439,6 +439,7 @@ export const pl: WebMessages = {
         withoutAlpha: 'bez kanału alfa',
         withoutSearch: 'bez wyszukiwania',
         withoutSelectAll: 'bez „zaznacz wszystko”',
+        wrapping: 'zawijanie',
       },
       common: {
         small: 'Mały',
@@ -836,6 +837,20 @@ export const pl: WebMessages = {
         themeOptions: [
           { value: 'light', label: 'Jasny' },
           { value: 'dark', label: 'Ciemny' },
+        ],
+        monthOptions: [
+          { value: 'jan', label: 'Styczeń' },
+          { value: 'feb', label: 'Luty' },
+          { value: 'mar', label: 'Marzec' },
+          { value: 'apr', label: 'Kwiecień' },
+          { value: 'may', label: 'Maj' },
+          { value: 'jun', label: 'Czerwiec' },
+          { value: 'jul', label: 'Lipiec' },
+          { value: 'aug', label: 'Sierpień' },
+          { value: 'sep', label: 'Wrzesień' },
+          { value: 'oct', label: 'Październik' },
+          { value: 'nov', label: 'Listopad' },
+          { value: 'dec', label: 'Grudzień' },
         ],
         breadcrumbHome: 'Strona główna',
         breadcrumbProducts: 'Produkty',

@@ -312,6 +312,7 @@ export interface WebMessages {
         withoutAlpha: string;
         withoutSearch: string;
         withoutSelectAll: string;
+        wrapping: string;
       };
       common: {
         small: string;
@@ -678,6 +679,7 @@ export interface WebMessages {
         fruitOptions: ReadonlyArray<{ value: string; label: string }>;
         viewOptions: ReadonlyArray<{ value: string; label: string }>;
         themeOptions: ReadonlyArray<{ value: string; label: string }>;
+        monthOptions: ReadonlyArray<{ value: string; label: string }>;
         breadcrumbHome: string;
         breadcrumbProducts: string;
         breadcrumbLaptops: string;

@@ -433,6 +433,7 @@ export const esES: WebMessages = {
         withoutAlpha: 'sin alfa',
         withoutSearch: 'sin búsqueda',
         withoutSelectAll: 'sin seleccionar todo',
+        wrapping: 'ajuste de línea',
       },
       common: {
         small: 'Pequeño',
@@ -829,6 +830,20 @@ export const esES: WebMessages = {
         themeOptions: [
           { value: 'light', label: 'Claro' },
           { value: 'dark', label: 'Oscuro' },
+        ],
+        monthOptions: [
+          { value: 'jan', label: 'Enero' },
+          { value: 'feb', label: 'Febrero' },
+          { value: 'mar', label: 'Marzo' },
+          { value: 'apr', label: 'Abril' },
+          { value: 'may', label: 'Mayo' },
+          { value: 'jun', label: 'Junio' },
+          { value: 'jul', label: 'Julio' },
+          { value: 'aug', label: 'Agosto' },
+          { value: 'sep', label: 'Septiembre' },
+          { value: 'oct', label: 'Octubre' },
+          { value: 'nov', label: 'Noviembre' },
+          { value: 'dec', label: 'Diciembre' },
         ],
         breadcrumbHome: 'Inicio',
         breadcrumbProducts: 'Productos',

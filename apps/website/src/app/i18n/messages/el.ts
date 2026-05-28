@@ -436,6 +436,7 @@ export const el: WebMessages = {
         withoutAlpha: 'χωρίς άλφα',
         withoutSearch: 'χωρίς αναζήτηση',
         withoutSelectAll: 'χωρίς «επιλογή όλων»',
+        wrapping: 'αναδίπλωση',
       },
       common: {
         small: 'Μικρό',
@@ -836,6 +837,20 @@ export const el: WebMessages = {
         themeOptions: [
           { value: 'light', label: 'Φωτεινό' },
           { value: 'dark', label: 'Σκοτεινό' },
+        ],
+        monthOptions: [
+          { value: 'jan', label: 'Ιανουάριος' },
+          { value: 'feb', label: 'Φεβρουάριος' },
+          { value: 'mar', label: 'Μάρτιος' },
+          { value: 'apr', label: 'Απρίλιος' },
+          { value: 'may', label: 'Μάιος' },
+          { value: 'jun', label: 'Ιούνιος' },
+          { value: 'jul', label: 'Ιούλιος' },
+          { value: 'aug', label: 'Αύγουστος' },
+          { value: 'sep', label: 'Σεπτέμβριος' },
+          { value: 'oct', label: 'Οκτώβριος' },
+          { value: 'nov', label: 'Νοέμβριος' },
+          { value: 'dec', label: 'Δεκέμβριος' },
         ],
         breadcrumbHome: 'Αρχική',
         breadcrumbProducts: 'Προϊόντα',

@@ -25,6 +25,11 @@
     [fullWidth]="true"
     [options]="segmentedViewOptions()" />
 
+  <h2>{{ messages().ui.component.sectionHeadings.wrapping }}</h2>
+  <ea-segmented
+    [options]="segmentedMonthOptions()"
+    value="jan" />
+
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-segmented
     [disabled]="true"
