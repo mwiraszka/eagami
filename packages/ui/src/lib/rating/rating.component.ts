@@ -5,6 +5,7 @@ import {
   ElementRef,
   Type,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
@@ -56,6 +57,19 @@ export type RatingSize = 'sm' | 'md' | 'lg';
   ],
 })
 export class RatingComponent implements ControlValueAccessor {
+  constructor() {
+    // Keep the value signal inside the [min, max] range even when set via
+    // direct template binding (`[value]="0"` would otherwise bypass
+    // `writeValue`'s clamp).
+    effect(() => {
+      const current = this.value();
+      const clamped = this.clamp(current);
+      if (clamped !== current) {
+        this.value.set(clamped);
+      }
+    });
+  }
+
   private readonly starsEl = viewChild<ElementRef<HTMLElement>>('starsEl');
   protected readonly i18n = inject(EagamiI18nService);
 
@@ -169,7 +183,9 @@ export class RatingComponent implements ControlValueAccessor {
 
   protected onPointerMove(event: PointerEvent, pos: number): void {
     if (!this.isInteractive()) return;
-    this.hoverValue.set(this.computePointerValue(event, pos));
+    // Clamp the hover preview to `min` so the user never sees a star preview
+    // below the floor — matches what an Enter/click would actually commit.
+    this.hoverValue.set(Math.max(this.min(), this.computePointerValue(event, pos)));
     this.hoverChanged.emit(this.hoverValue());
   }
 
