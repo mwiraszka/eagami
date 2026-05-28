@@ -189,27 +189,27 @@ export const pl: WebMessages = {
       principlesHeading: 'Zasady projektowania',
       principles: [
         {
-          title: 'Dostępne.',
+          title: 'Dostępne',
           body: 'Nawigacja klawiaturą, zarządzanie focusem, wsparcie czytników ekranu i obsługa zredukowanego ruchu są wbudowane w każdy komponent.',
         },
         {
-          title: 'Lekkie.',
+          title: 'Lekkie',
           body: 'Każdy komponent importuje się niezależnie, a bundle zawiera tylko to, czego używasz.',
         },
         {
-          title: 'Z motywami.',
+          title: 'Z motywami',
           body: 'W pełni konfigurowalne za pomocą tokenów designu, przy zachowaniu spójnego wyglądu na każdej stronie. Warianty jasny i ciemny dostarczane są razem i domyślnie podążają za preferencją systemu użytkownika.',
         },
         {
-          title: 'Zlokalizowane.',
+          title: 'Zlokalizowane',
           body: 'Wbudowane teksty komponentów dostępne są w językach: angielskim, francuskim, greckim, polskim i hiszpańskim.',
         },
         {
-          title: 'Nowoczesne.',
+          title: 'Nowoczesne',
           body: 'Regularnie aktualizowane o najnowsze funkcje Angulara i nowoczesne standardy webowe.',
         },
         {
-          title: 'Bez zamknięcia.',
+          title: 'Bez zamknięcia',
           body: 'Każdy komponent to czysty Angular i CSS bez żadnego uzależnienia od dostawcy, więc źródło można czytać, kopiować lub modyfikować jak każdy inny kod w projekcie.',
         },
       ],

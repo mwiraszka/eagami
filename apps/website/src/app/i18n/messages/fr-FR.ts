@@ -192,27 +192,27 @@ export const frFR: WebMessages = {
       principlesHeading: 'Principes de conception',
       principles: [
         {
-          title: 'Accessible.',
+          title: 'Accessible',
           body: 'Navigation au clavier, gestion du focus, prise en charge des lecteurs d’écran et respect des mouvements réduits sont intégrés à chaque composant.',
         },
         {
-          title: 'Léger.',
+          title: 'Léger',
           body: 'Chaque composant s’importe indépendamment et le bundle ne livre que ce que vous utilisez.',
         },
         {
-          title: 'Thémable.',
+          title: 'Thémable',
           body: 'Entièrement personnalisable via les tokens de design, tout en conservant une apparence cohérente sur chaque page. Les variantes claire et sombre sont livrées ensemble et suivent par défaut la préférence système de l’utilisateur.',
         },
         {
-          title: 'Localisé.',
+          title: 'Localisé',
           body: 'Les textes intégrés des composants sont disponibles en anglais, français, grec, polonais et espagnol.',
         },
         {
-          title: 'Moderne.',
+          title: 'Moderne',
           body: 'Mise à jour régulière avec les dernières fonctionnalités d’Angular et les standards web modernes.',
         },
         {
-          title: 'Sans verrouillage.',
+          title: 'Sans verrouillage',
           body: 'Chaque composant est du simple Angular et CSS, sans dépendance propriétaire : la source peut être lue, copiée ou modifiée comme tout autre code de votre projet.',
         },
       ],

@@ -184,27 +184,27 @@ export const en: WebMessages = {
       principlesHeading: 'Design principles',
       principles: [
         {
-          title: 'Accessible.',
+          title: 'Accessible',
           body: 'Keyboard navigation, focus management, screen-reader support, and reduced-motion handling are built into every component.',
         },
         {
-          title: 'Lightweight.',
+          title: 'Lightweight',
           body: 'Each component imports independently and the bundle only ships what you use.',
         },
         {
-          title: 'Themeable.',
+          title: 'Themeable',
           body: "Fully customizable with design tokens while maintaining a unified look across every page. Light and dark variants ship together and default to the user's system preference.",
         },
         {
-          title: 'Localized.',
+          title: 'Localized',
           body: 'Built-in component text ships in English, French, Greek, Polish, and Spanish.',
         },
         {
-          title: 'Modern.',
+          title: 'Modern',
           body: 'Regularly updated with the latest Angular features and modern web standards.',
         },
         {
-          title: 'Unlocked.',
+          title: 'Unlocked',
           body: 'Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.',
         },
       ],
