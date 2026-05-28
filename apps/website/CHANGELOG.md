@@ -12,6 +12,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Pick up @eagami/ui v2.3.0.
+- Refresh the design principles on `/ui` as a responsive card grid (three columns wide, two below 1200px, one below 700px), each card pairing a 3D gray ring + green checkmark with the principle title and body. Trailing periods on the six principle titles removed.
 
 ## [2.2.0] - 2026-05-25
 

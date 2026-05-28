@@ -15,12 +15,19 @@
   <section class="ui-index__section">
     <h2 class="ui-index__heading">{{ messages().ui.index.principlesHeading }}</h2>
     <ul
-      class="ui-index__points"
+      class="principle-grid"
       role="list">
       @for (point of messages().ui.index.principles; track point.title) {
-        <li>
-          <strong>{{ point.title }}</strong>
-          {{ point.body }}
+        <li class="principle-card">
+          <header class="principle-card__header">
+            <span
+              class="principle-card__ring"
+              aria-hidden="true">
+              <ea-icon-check class="principle-card__check" />
+            </span>
+            <h3 class="principle-card__title">{{ point.title }}</h3>
+          </header>
+          <p class="principle-card__body">{{ point.body }}</p>
         </li>
       }
     </ul>
