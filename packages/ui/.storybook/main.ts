@@ -20,7 +20,14 @@ function resolveLoader(name: string): string {
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
+  // `@chromatic-com/storybook` is required for Chromatic's `modes` to apply
+  // the `theme` global during capture — without it the light/dark modes are
+  // created but both render at the default global (light).
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
+    '@chromatic-com/storybook',
+  ],
   framework: '@storybook/angular',
   webpackFinal: async config => {
     const storybookDir = dirname(fileURLToPath(import.meta.url));
