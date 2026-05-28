@@ -4,6 +4,9 @@
 dist
 tmp
 
+# Storybook stats build (byproduct of `statsJson` for Chromatic TurboSnap)
+noop-out
+
 # Generated files
 documentation.json
 bazel-out
