@@ -10,6 +10,13 @@
       "runtime": "@vercel/node@5.8.0"
     }
   },
+  "redirects": [
+    {
+      "source": "/ui/components",
+      "destination": "/ui/components/accordion",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
