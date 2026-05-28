@@ -27,9 +27,8 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 import { ICONS } from './icons.data';
 
 /**
- * UI tab for the category-filter checkboxes. `feather` and `eagami` map to
- * each icon's `static readonly category`; `brand` is the orthogonal
- * `static readonly isBrand` flag.
+ * `feather` and `eagami` map to each icon's `category`; `brand` is the orthogonal
+ * `isBrand` flag.
  */
 type CategoryTab = IconCategory | 'brand';
 
@@ -154,9 +153,8 @@ export class UiIconsPageComponent {
 }
 
 /**
- * Lowercase + strip diacritics so a French user typing `cafe` matches `café`
- * and a Spanish user typing `arbol` matches `árbol`. Greek and Polish marks
- * decompose the same way under NFD.
+ * Lowercase and NFD-strip diacritics so `cafe` matches `café`, `arbol` matches
+ * `árbol`; Greek and Polish marks decompose the same way.
  */
 function normalize(value: string): string {
   return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();

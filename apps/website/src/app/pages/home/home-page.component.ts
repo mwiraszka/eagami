@@ -66,10 +66,9 @@ interface ServiceView {
 
 type ContactStatus = 'idle' | 'sending' | 'sent' | 'error';
 
-/* Stricter than `Validators.email`, which follows the HTML5 spec and lets
-   "a@b" through (intranet-style addresses with no TLD). For a public contact
-   form, require `local@host.tld`. Returns the same `email` error key so the
-   downstream check stays the same. */
+/* Stricter than `Validators.email`, which per the HTML5 spec lets TLD-less
+   "a@b" through; a public contact form wants `local@host.tld`. Reuses the
+   `email` error key so downstream checks are unchanged. */
 const STRICT_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function strictEmailValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
@@ -120,9 +119,8 @@ export class HomePageComponent {
     });
   });
 
-  /* Sr-only announcement: names the project currently centered in the viewport
-     so keyboard / screen-reader users get feedback when they press the prev /
-     next buttons or the arrow keys. */
+  /* Sr-only announcement naming the centered project, so screen-reader users
+     get feedback when they navigate the carousel. */
   protected readonly carouselStatus = computed(() => {
     const centered = this.orderedProjects()[2];
     if (!centered) return '';
@@ -159,10 +157,8 @@ export class HomePageComponent {
   protected readonly contactStatus = signal<ContactStatus>('idle');
   protected readonly contactError = signal<string | null>(null);
 
-  /* Bumped on every form value change and on email blur so signal-derived
-     computed values below pick up the change. `touched` on form controls
-     doesn't emit through `valueChanges`, hence the manual nudge from the
-     `(blurred)` handler on the email field. */
+  /* Nudged on value change and email blur so the computeds below recompute;
+     `touched` doesn't emit through `valueChanges`, hence the manual blur nudge. */
   private readonly contactFormVersion = signal(0);
 
   protected readonly isContactFormValid = computed(() => {
@@ -170,10 +166,8 @@ export class HomePageComponent {
     return this.contactForm.valid;
   });
 
-  /* The email validator is the only field-level error worth surfacing — empty
-     fields are conveyed by the disabled submit button. This computed shows
-     the email format error only after the user has blurred the field so it
-     doesn't flash while they're still typing. */
+  /* Only the email-format error is surfaced (empty fields are conveyed by the
+     disabled submit), and only after blur so it doesn't flash while typing. */
   protected readonly contactEmailError = computed<string | undefined>(() => {
     this.contactFormVersion();
     const email = this.contactForm.controls.email;
@@ -182,8 +176,7 @@ export class HomePageComponent {
       : undefined;
   });
 
-  /* Three example messages cycled through the textarea placeholder with a
-     typewriter effect to prime first-time senders on what to write. */
+  /* Example messages cycled through the placeholder to prime senders on what to write */
   protected readonly contactMessagePlaceholder = signal('');
 
   private readonly destroyRef = inject(DestroyRef);
@@ -209,11 +202,9 @@ export class HomePageComponent {
     this.contactFormVersion.update(v => v + 1);
   }
 
-  /* Keeps the URL fragment in sync with the section currently in view, so a
-     page refresh restores the reader's place instead of jumping back to
-     whatever in-page anchor they originally clicked. Uses `history.replaceState`
-     (not the router) so syncing the fragment neither adds history entries nor
-     re-triggers the router's anchor scrolling. */
+  /* Syncs the URL fragment to the in-view section so a refresh restores the
+     reader's place. Uses `history.replaceState`, not the router, so it adds no
+     history entries and doesn't re-trigger anchor scrolling. */
   private setupScrollSpy(): void {
     const sectionIds = ['services', 'projects', 'contact'];
     const sections = sectionIds
@@ -225,7 +216,7 @@ export class HomePageComponent {
     const inView = new Set<string>();
 
     const syncFragment = (): void => {
-      // Topmost in-view section in document order; empty while in the hero.
+      // Topmost in-view section in document order; empty while in the hero
       const activeId = sectionIds.find(id => inView.has(id)) ?? '';
       if (location.hash.slice(1) === activeId) return;
 
@@ -233,9 +224,8 @@ export class HomePageComponent {
       history.replaceState(history.state, '', url);
     };
 
-    /* Activation band: a thin strip just below the fixed header (64px). A
-       section counts as "in view" while it overlaps the strip between the
-       header and ~30% down the viewport. */
+    /* A section is "in view" while it overlaps the band between the 64px header
+       and ~30% down the viewport (see rootMargin below). */
     const observer = new IntersectionObserver(
       entries => {
         for (const entry of entries) {
@@ -256,9 +246,8 @@ export class HomePageComponent {
     const HOLD_AFTER_TYPE_MS = 2500;
     const CURSOR = '|';
 
-    /* Under `prefers-reduced-motion: reduce` skip the typewriter, rotate
-       between the full hints on a slow interval and never reveal the cursor.
-       The hint is decorative; SR users have the `<ea-textarea>` label. */
+    /* Under `prefers-reduced-motion: reduce` skip the typewriter: rotate full
+       hints slowly with no cursor. The hint is decorative; SR users have the label. */
     const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let msgIdx = 0;

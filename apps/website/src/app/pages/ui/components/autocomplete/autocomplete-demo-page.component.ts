@@ -17,9 +17,7 @@ export class AutocompleteDemoPageComponent {
 
   protected readonly autocompleteValue = signal('');
 
-  // Dog breeds: many share a leading word (German, English, Irish, American,
-  // Welsh, Tibetan, ...), so the `[minLength]=2 [maxResults]=3` demo actually
-  // sees more matches than it shows and exercises the truncation.
+  // Many breeds share a leading word, so the maxResults=3 demo overflows and exercises truncation
   protected readonly autocompleteOptions: SelectOption[] = [
     { value: 'american-bulldog', label: 'American Bulldog' },
     { value: 'american-cocker-spaniel', label: 'American Cocker Spaniel' },

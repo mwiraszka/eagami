@@ -1,11 +1,9 @@
-/* Self-hosted DM Sans + Syne (variable). Latin subsets are preloaded in
-   index.html; latin-ext loads on demand via unicode-range.
+/* Self-hosted DM Sans + Syne (variable); latin-ext loads on demand via unicode-range.
 
-   The *Fallback families below are metric-matched to Arial so the fallback
-   text occupies the same vertical box geometry as the web font — eliminates
-   layout shift when the real fonts swap in. Tuned for DM Sans / Syne; if you
-   change to a different web font you'll need to regenerate these overrides
-   (see Capsize, fontaine, or fallback-font-generator). */
+   The *Fallback families are metric-matched to Arial so fallback text occupies the
+   same box geometry as the web font, eliminating layout shift on swap-in. Tuned for
+   DM Sans / Syne; changing the web font means regenerating these overrides (Capsize,
+   fontaine, or fallback-font-generator). */
 
 @font-face {
   font-family: 'DM Sans';

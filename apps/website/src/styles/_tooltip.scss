@@ -1,8 +1,6 @@
-/* Library tooltip (`@eagami/ui`'s `[eaTooltip]` directive renders an
-   `.ea-tooltip`) lands on `--color-neutral-800`, which in dark mode reads
-   as the same shade as elevated-card and code-snippet surfaces. Drop it to
-   the darkest neutral so it stays distinct from every dark surface. Covers
-   both system preference and the explicit theme toggle. */
+/* The library's `.ea-tooltip` defaults to neutral-800, which in dark mode matches
+   card and code-snippet surfaces; drop it to the darkest neutral so it stays
+   distinct. Both selectors cover system preference and the explicit toggle. */
 @media (prefers-color-scheme: dark) {
   .ea-tooltip {
     background-color: var(--color-neutral-950);

@@ -54,16 +54,16 @@ export class WebI18nService {
 
   private readStoredLocale(): WebLocale {
     if (!this.isBrowser) return 'en';
-    /* Order of precedence (must match the inline <head> script in index.html):
+    /* Precedence must match the inline <head> script in index.html:
        1. Explicit choice in localStorage
-       2. navigator.languages — exact match, then language-only match
-          (e.g. 'fr' or 'fr-CA' → 'fr-FR', 'es-MX' → 'es-ES')
+       2. navigator.languages: exact match, then language-only match
+          (e.g. 'fr' or 'fr-CA' to 'fr-FR', 'es-MX' to 'es-ES')
        3. English default */
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (isWebLocale(stored)) return stored;
     } catch {
-      // localStorage may be unavailable; fall through to browser preferences.
+      // localStorage may be unavailable; fall through to browser preferences
     }
     const preferred = (
       navigator.languages?.length

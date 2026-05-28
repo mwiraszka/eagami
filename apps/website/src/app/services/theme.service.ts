@@ -35,7 +35,7 @@ export class ThemeService {
 
   private readStoredMode(): ThemeMode {
     if (!this.isBrowser) return 'light';
-    /* Order of precedence (must match the inline <head> script in index.html):
+    /* Precedence must match the inline <head> script in index.html:
        1. Explicit choice in localStorage
        2. System preference via prefers-color-scheme
        3. Light default */
@@ -43,12 +43,12 @@ export class ThemeService {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === 'dark' || stored === 'light') return stored;
     } catch {
-      // localStorage may be unavailable in sandboxed contexts; fall through.
+      // localStorage may be unavailable in sandboxed contexts; fall through
     }
     try {
       if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
     } catch {
-      // matchMedia missing in very old browsers; fall through.
+      // matchMedia missing in very old browsers; fall through
     }
     return 'light';
   }

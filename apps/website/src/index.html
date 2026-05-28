@@ -33,7 +33,6 @@
     <meta
       name="msapplication-TileColor"
       content="#2a5b7e" />
-    <!-- SEO meta tags -->
     <meta
       name="robots"
       content="index, follow" />
@@ -82,7 +81,6 @@
     <meta
       name="twitter:image:alt"
       content="eagami — elegant web design" />
-    <!-- icons -->
     <link
       rel="shortcut icon"
       href="/favicon.ico" />
@@ -107,11 +105,10 @@
     <link
       rel="manifest"
       href="manifest.webmanifest" />
-    <!-- Self-hosted fonts: preload the latin subsets of DM Sans (regular +
-         italic) and Syne so they're requested in the critical waterfall. The
-         italic file is preloaded because the home-hero tagline uses it on
-         first paint — without the preload it swaps in late and flickers.
-         @font-face declarations live in styles/_fonts.scss. -->
+    <!-- Preload the latin subsets so the fonts enter the critical waterfall.
+         The italic is preloaded because the hero tagline uses it on first paint;
+         without it the italic swaps in late and flickers. @font-face is in
+         styles/_fonts.scss. -->
     <link
       rel="preload"
       as="font"
@@ -130,11 +127,9 @@
       type="font/woff2"
       href="assets/fonts/syne-latin.woff2"
       crossorigin />
-    <!-- Inline subset of Syne 600 containing only the 5 letters of "eagami"
-         (~1.3KB base64'd) so the home-hero wordmark renders in Syne on first
-         paint with zero network. The sheen sweep continues to work because
-         the wordmark stays live text, not SVG. Other Syne usages (page titles)
-         load via the regular self-hosted face. -->
+    <!-- Inline Syne 600 subset (e/a/g/m/i only) so the hero wordmark renders in
+         Syne on first paint with no network request. It stays live text (not SVG)
+         so the sheen sweep still works; other Syne usages load the full face. -->
     <style>
       @font-face {
         font-family: 'Syne Wordmark';
@@ -145,15 +140,12 @@
           format('woff2');
       }
     </style>
-    <!-- Resolve and apply the user's theme + locale before Angular bootstraps so
-         the very first paint already shows them. Order: explicit choice from
-         localStorage > browser/system preference > english + light defaults.
-         Mirrors the logic in theme.service.ts / web-i18n.service.ts; keep
-         them in sync. The visibility gate below masks the brief gap between
-         this script firing and Angular hydrating in the prerendered English
-         text with the resolved locale's strings — only kicks in when the
-         resolved locale is non-English (the prerender locale), so English
-         users never see a paint gap. -->
+    <!-- Resolve and apply theme + locale before Angular bootstraps so the first
+         paint already shows them. Precedence: localStorage, then browser/system
+         preference, then English + light defaults. Mirrors theme.service.ts and
+         web-i18n.service.ts; keep them in sync. The visibility gate below masks
+         the gap until hydration swaps the prerendered English for the resolved
+         locale, and only engages for non-English locales. -->
     <script>
       (function () {
         var locales = ['en', 'fr-FR', 'el', 'pl', 'es-ES'];
@@ -187,11 +179,11 @@
                 : []) || [];
           for (var i = 0; i < preferred.length; i++) {
             var tag = String(preferred[i] || '');
-            // Exact match first (e.g. 'fr-FR' → 'fr-FR').
+            // Exact match first (e.g. 'fr-FR')
             for (var j = 0; j < locales.length; j++) {
               if (locales[j].toLowerCase() === tag.toLowerCase()) return locales[j];
             }
-            // Then language-only match (e.g. 'fr' → 'fr-FR', 'es' → 'es-ES').
+            // Then language-only match (e.g. 'fr' to 'fr-FR')
             var primary = tag.split('-')[0].toLowerCase();
             for (var k = 0; k < locales.length; k++) {
               if (locales[k].toLowerCase().split('-')[0] === primary) return locales[k];
@@ -210,12 +202,11 @@
         }
       })();
     </script>
-    <!-- Critical theme colors inlined so the page background and text render in the
-         correct theme on first paint, before the main stylesheet loads. Hex values
-         must stay in sync with --color-bg-base / --color-text-primary in _theme.scss.
-         `color-scheme` is essential here: without it the browser paints its default
-         white canvas while the document loads, so a reload in dark mode flashes
-         white before the dark background applies. -->
+    <!-- Critical theme colors inlined so background and text paint in the correct
+         theme before the main stylesheet loads. Hex values must stay in sync with
+         --color-bg-base / --color-text-primary in _theme.scss. `color-scheme` is
+         essential: without it a dark-mode reload flashes the browser's white canvas
+         before the dark background applies. -->
     <style>
       html {
         color-scheme: light;
@@ -228,17 +219,14 @@
         color: #f9fafb;
       }
 
-      /* The 41 static routes are prerendered in English. When the resolved
-         locale differs, mask the body until the i18n service has swapped the
-         text in (it clears the class right after `applyLocale()`) so visitors
-         don't see English flash on their way to their language. The theme
-         background above stays painted through this gate so the page never
-         looks broken; only the locale-dependent content is held back. */
+      /* Routes are prerendered in English; when the resolved locale differs, mask
+         the body until the i18n service clears this class after `applyLocale()`,
+         so visitors don't see an English flash. The theme background above stays
+         painted through the gate, so only locale-dependent content is held back. */
       html.web-locale-pending body {
         visibility: hidden;
       }
     </style>
-    <!-- Privacy-friendly analytics by Plausible -->
     <script
       async
       src="https://plausible.io/js/pa-jdh348SO1yH7U7x82j4F5.js"></script>

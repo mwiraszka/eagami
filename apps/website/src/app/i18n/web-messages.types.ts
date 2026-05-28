@@ -1,8 +1,7 @@
 /**
- * Every user-facing string on eagami.com, grouped by page or shared section.
- * Parameterized strings are functions so each locale controls its own word
- * order. The website-wide `WebI18nService` resolves the active locale's
- * dictionary; templates read it via `i18n.messages().<group>.<key>`.
+ * Every user-facing string, grouped by page or shared section. Parameterized
+ * strings are functions so each locale controls its own word order. Resolved by
+ * `WebI18nService`; templates read `i18n.messages().<group>.<key>`.
  */
 export interface WebMessages {
   common: {

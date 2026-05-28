@@ -54,11 +54,8 @@ export class UiShellComponent {
     const willExpand = !this.componentsExpanded();
     this.componentsExpanded.update(value => !value);
 
-    /* When the user explicitly expands the Components section from a
-       non-component route, treat it like a page link and jump them to the
-       first component in the list. If they're already on a component route,
-       leave them on it — collapsing/re-expanding shouldn't shuttle them
-       away from what they were reading. */
+    /* Expanding Components from a non-component route jumps to the first component;
+       stay put if already on a component route so toggling doesn't navigate away. */
     if (willExpand && !this.isComponentRoute() && this.components.length > 0) {
       this.router.navigate(['/ui/components', this.components[0].slug]);
     }

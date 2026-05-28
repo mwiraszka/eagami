@@ -1,12 +1,7 @@
-/* Typography defaults are inherited from @eagami/ui's global stylesheet (DM Sans + Syne).
-   Site-specific typographic overrides go here. */
-
-/* Inline <code> tokens like `var(--token-name)`, `provideEagamiUi()`, `:root`.
-   Lives in the global stylesheet (not component SCSS) so that <code> elements
-   inserted via `[innerHTML]` from translated message strings still pick up the
-   style — Angular's view encapsulation attribute selectors don't apply to
-   nodes the runtime injects through innerHTML. The `pre code` exclusion keeps
-   <pre><code> blocks (web-code-snippet) untouched. */
+/* Inline <code> token styling. Lives global, not in component SCSS, so <code>
+   injected via `[innerHTML]` from translated strings still picks it up; Angular's
+   encapsulation selectors don't reach innerHTML nodes. The `pre code` exclusion
+   leaves <pre><code> blocks untouched. */
 :where(p, li, h1, h2, h3, h4) > code:not(pre code) {
   padding: var(--text-code-padding);
   white-space: nowrap;

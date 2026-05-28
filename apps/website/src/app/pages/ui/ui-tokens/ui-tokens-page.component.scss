@@ -109,7 +109,6 @@
   color: var(--color-text-tertiary);
 }
 
-/* ─── Color swatches ──────────────────────────────────────────────────── */
 .swatch-row {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -188,7 +187,6 @@
   }
 }
 
-/* ─── Generic token list ──────────────────────────────────────────────── */
 .token-list {
   display: flex;
   flex-direction: column;
@@ -220,7 +218,6 @@
   color: var(--color-text-tertiary);
 }
 
-/* ─── Semantic color swatches ─────────────────────────────────────────── */
 .semantic-swatch {
   flex-shrink: 0;
   width: 24px;
@@ -260,7 +257,6 @@
   }
 }
 
-/* ─── Typography ──────────────────────────────────────────────────────── */
 .font-sample {
   flex: 1;
   font-size: 18px;
@@ -316,7 +312,6 @@
   }
 }
 
-/* ─── Spacing bars ────────────────────────────────────────────────────── */
 .spacing-bar {
   flex-shrink: 0;
   height: 16px;
@@ -356,7 +351,6 @@
   }
 }
 
-/* ─── Elevation ───────────────────────────────────────────────────────── */
 .elevation-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -398,16 +392,13 @@
 }
 
 @each $relief in (bevel, bevel-strong, well, well-strong) {
-  // Inset shadows need contrast against the surface to read, so override the
-  // default white surface with a mid-gray that lets the highlight and shadow
-  // stops show through.
+  // A mid-gray surface gives the inset highlight and shadow stops contrast to read against
   .elevation-card--#{$relief}.elevation-card__surface {
     background-color: var(--color-neutral-200);
     box-shadow: var(--shadow-#{$relief});
   }
 }
 
-/* ─── Shape ───────────────────────────────────────────────────────────── */
 .shape-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -449,12 +440,10 @@
   }
 }
 
-/* ─── Elevation: dark-mode surface lift ──────────────────────────────── */
 :host-context([data-theme='dark']) .elevation-card__surface {
   background-color: var(--color-bg-muted);
 }
 
-/* ─── Motion: simulate button + per-row demo bars ────────────────────── */
 .motion-simulate {
   display: inline-flex;
   align-items: center;

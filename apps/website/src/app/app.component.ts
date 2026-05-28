@@ -34,17 +34,14 @@ export class AppComponent {
   protected readonly messages = this.i18n.messages;
 
   constructor() {
-    /* The inline <head> script adds `web-locale-pending` on `<html>` whenever
-       the resolved locale is anything other than English, which hides `body`
-       via CSS until we reveal it here.
+    /* The inline <head> script hides `body` via `web-locale-pending` for any
+       non-English locale until we reveal it here.
 
-       Wait on `ApplicationRef.isStable` (first `true` emission) rather than
-       `afterNextRender`: the first render only "claims" the prerendered DOM,
-       but Angular's hydration mismatch reconciliation (which actually swaps
-       the English strings out for the active locale's strings) runs in a
-       follow-up microtask. Lifting the gate too early uncovers the still-
-       English DOM for a frame. `isStable` fires once all pending tasks have
-       settled, which is after the locale strings are in the DOM. */
+       Gate on `ApplicationRef.isStable`, not `afterNextRender`: the first render
+       only claims the prerendered DOM, while hydration mismatch reconciliation
+       (which swaps English strings for the active locale) runs in a follow-up
+       microtask. Revealing earlier flashes the still-English DOM for a frame;
+       `isStable` fires once that reconciliation has settled. */
     if (!this.isBrowser) return;
     this.appRef.isStable
       .pipe(

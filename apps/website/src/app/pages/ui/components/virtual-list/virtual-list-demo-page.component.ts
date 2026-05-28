@@ -22,8 +22,7 @@ interface DemoRow {
 export class VirtualListDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
-  // Build the demo data once on construction. 10k rows is well past the point
-  // where naive rendering would stutter, but still cheap to allocate up-front.
+  // 10k rows is well past where naive rendering stutters, but cheap to allocate up-front
   protected readonly rows: DemoRow[] = Array.from({ length: 10_000 }, (_, i) => ({
     id: i,
     label: `${this.messages().ui.component.demos.virtualList.row} ${i + 1}`,
