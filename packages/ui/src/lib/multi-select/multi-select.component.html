@@ -10,7 +10,9 @@
   }
 
   <div class="ea-multi-select">
-    <div class="ea-multi-select__trigger-wrapper">
+    <div
+      class="ea-multi-select__trigger-wrapper"
+      [ngClass]="wrapperClasses()">
       <div
         #triggerEl
         class="ea-multi-select__trigger"
@@ -37,7 +39,7 @@
           } @else {
             @for (opt of visibleChips(); track opt.value) {
               <ea-tag
-                size="sm"
+                [size]="size()"
                 variant="default"
                 [removable]="!isDisabled() && !readonly()"
                 [removeLabel]="i18n.messages().multiSelect.removeOption(opt.label)"
@@ -76,7 +78,9 @@
       [closeOnEscape]="false"
       scrollBehavior="reposition"
       (closeRequested)="onPopoverCloseRequested()">
-      <div class="ea-multi-select__popover">
+      <div
+        class="ea-multi-select__popover"
+        [ngClass]="menuClasses()">
         @if (searchable()) {
           <div class="ea-multi-select__search">
             <ea-icon-search

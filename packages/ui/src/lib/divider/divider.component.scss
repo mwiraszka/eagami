@@ -15,7 +15,7 @@
     align-items: center;
     width: 100%;
     height: 1px;
-    background-color: var(--color-border-default);
+    background-color: var(--color-border-subtle);
   }
 
   &--vertical {
@@ -23,7 +23,7 @@
     width: 1px;
     height: 1.5em;
     min-height: 1rem;
-    background-color: var(--color-border-default);
+    background-color: var(--color-border-subtle);
   }
 
   // ---------------------------------------------------------------------------
@@ -39,7 +39,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background-color: var(--color-border-default);
+      background-color: var(--color-border-subtle);
     }
   }
 

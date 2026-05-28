@@ -86,7 +86,7 @@
     margin: 0;
     font-weight: var(--ea-empty-state-title-font-weight, var(--font-weight-semibold));
     line-height: var(--line-height-tight);
-    color: var(--color-text-primary);
+    color: var(--ea-empty-state-title-color, var(--color-text-primary));
   }
 
   &__description {

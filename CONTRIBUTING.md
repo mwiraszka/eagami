@@ -109,6 +109,7 @@ Tests live alongside as `<name>.component.spec.ts` and `<name>.component.a11y.sp
 - Selector prefix: `ea-` for library, `web-` for website
 - No inline styles; everything in `.scss`
 - No hard-coded color literals in component SCSS; use the tokens in `packages/ui/src/styles/tokens/_colors.scss` or `apps/website/src/styles/_variables.scss`
+- Brand colours are derivable from a single hex via the OKLCH pipeline in `packages/ui/src/lib/palette/`. The default `--color-primary-*` and `--color-secondary-*` scales in `_colors.scss` are the un-themed fallback; consumers can replace either ramp at runtime by passing a `palette` to `provideEagamiUi`. When touching colour tokens, keep the two paths in sync — any new `--color-brand-*` role added in `_colors.scss` should be mapped in `palette.types.ts` (`PaletteRoles`) and `apply-palette.ts`, and the contrast assertions in `validate-palette.ts` should be extended to cover it
 - No `any` casts in tests; type your mocks (`@ts-expect-error` is fine for accessing private/protected members)
 - Spacing values: `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` only
 

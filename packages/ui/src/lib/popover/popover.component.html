@@ -8,8 +8,7 @@
 -->
 <div
   #surfaceEl
-  class="ea-popover__surface"
-  [class]="'ea-popover__surface--' + effectivePlacement()"
+  [class]="surfaceClass()"
   [id]="surfaceId()"
   [attr.role]="open() ? role() : null"
   [attr.aria-label]="open() ? ariaLabel() : null"

@@ -3,7 +3,7 @@ import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 import { RangeSliderComponent } from './range-slider.component';
 
 const meta: Meta<RangeSliderComponent> = {
-  title: 'Components/Range slider',
+  title: 'Components/Range Slider',
   component: RangeSliderComponent,
   tags: ['autodocs'],
   render: args => ({

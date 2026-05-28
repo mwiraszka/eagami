@@ -48,6 +48,27 @@ export class UiTokensPageComponent {
   --ea-button-font-weight: 600;
 }`;
 
+  protected readonly paletteBaseSnippet = `bootstrapApplication(AppComponent, {
+  providers: [
+    provideEagamiUi({
+      palette: {
+        primary: { base: '#2563eb' },
+        secondary: { base: '#f97316' },
+      },
+    }),
+  ],
+});`;
+
+  protected readonly paletteOverridesSnippet = `provideEagamiUi({
+  palette: {
+    primary: {
+      base: '#2563eb',
+      overrides: { '500': '#3b82f6' },
+      roles: { surfaceLight: '700' },
+    },
+  },
+});`;
+
   protected readonly primaryPalette = [
     '50',
     '100',
@@ -103,9 +124,16 @@ export class UiTokensPageComponent {
     'text-link-hover',
   ];
 
-  protected readonly semanticBgTokens = ['bg-base', 'bg-subtle', 'bg-muted'];
+  protected readonly semanticBgTokens = [
+    'bg-canvas',
+    'bg-base',
+    'bg-subtle',
+    'bg-stripe',
+    'bg-muted',
+  ];
 
   protected readonly semanticBorderTokens = [
+    'border-subtle',
     'border-default',
     'border-strong',
     'border-focus',
@@ -115,6 +143,7 @@ export class UiTokensPageComponent {
     'brand-default',
     'brand-hover',
     'brand-active',
+    'brand-text',
     'brand-subtle',
     'brand-muted',
   ];

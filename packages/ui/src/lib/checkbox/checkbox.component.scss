@@ -2,6 +2,12 @@
 // CHECKBOX COMPONENT
 // =============================================================================
 
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 1;
+}
+
 .ea-checkbox-field {
   display: inline-flex;
   flex-direction: column;
@@ -52,7 +58,6 @@
 
     .ea-checkbox__label {
       font-size: var(--font-size-sm);
-      line-height: 1rem;
     }
   }
 
@@ -64,8 +69,7 @@
     }
 
     .ea-checkbox__label {
-      font-size: var(--font-size-sm);
-      line-height: 1.25rem;
+      font-size: var(--font-size-md);
     }
   }
 
@@ -77,8 +81,7 @@
     }
 
     .ea-checkbox__label {
-      font-size: var(--font-size-md);
-      line-height: 1.5rem;
+      font-size: var(--font-size-lg);
     }
   }
 

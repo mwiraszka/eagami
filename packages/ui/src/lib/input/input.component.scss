@@ -71,9 +71,9 @@
   &--sm {
     padding: 0 var(--space-2);
     min-height: 2rem; // 32px
+    font-size: var(--font-size-sm);
 
     .ea-input {
-      font-size: var(--font-size-sm);
       padding: var(--space-1-5) 0;
     }
   }
@@ -81,9 +81,9 @@
   &--md {
     padding: 0 var(--space-3);
     min-height: 2.5rem; // 40px
+    font-size: var(--font-size-md); // 16px — prevents iOS Safari auto-zoom on focus
 
     .ea-input {
-      font-size: var(--font-size-md); // 16px — prevents iOS Safari auto-zoom on focus
       padding: var(--space-2) 0;
     }
   }
@@ -91,9 +91,9 @@
   &--lg {
     padding: 0 var(--space-4);
     min-height: 3rem; // 48px
+    font-size: var(--font-size-lg);
 
     .ea-input {
-      font-size: var(--font-size-lg);
       padding: var(--space-2-5) 0;
     }
   }
@@ -142,6 +142,41 @@
     &:empty {
       display: none;
     }
+  }
+
+  // Built-in clear button. Same drawer-style ratio used by the other field
+  // components (`<ea-date-picker>`, `<ea-multi-select>`, etc.): 2em × 2em box
+  // around a 1em icon, scaling with the wrapper's size-driven font-size.
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--color-text-secondary);
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+      color: var(--color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus-ring);
+    }
+  }
+
+  &__clear-icon {
+    width: 1em;
+    height: 1em;
   }
 
   // Built-in password visibility toggle
@@ -206,6 +241,24 @@
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  // Suppress every native browser affordance Chrome / Safari paints onto an
+  // `<input>` (datalist picker arrow, credentials / contacts autofill icon,
+  // strong-password offer, caps-lock indicator). The library renders its own
+  // affordances inside the wrapper; the native ones float on top of them and
+  // break the themed look. `!important` is required because these pseudo
+  // elements ship with user-agent `!important` rules.
+  &::-webkit-calendar-picker-indicator,
+  &::-webkit-credentials-auto-fill-button,
+  &::-webkit-contacts-auto-fill-button,
+  &::-webkit-strong-password-auto-fill-button,
+  &::-webkit-caps-lock-indicator {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+    width: 0;
+    height: 0;
   }
 
   // Remove number input spinners

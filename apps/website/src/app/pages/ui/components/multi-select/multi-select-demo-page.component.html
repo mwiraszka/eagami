@@ -6,19 +6,19 @@
     [options]="dropdownOptions()"
     [(value)]="multiSelectValue" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
-  <div class="demo-stack">
-    <ea-multi-select
-      [label]="messages().ui.component.demos.dropdown.withHintLabel"
-      [hint]="messages().ui.component.demos.dropdown.hintFavourite"
-      [options]="dropdownOptions()"
-      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-    <ea-multi-select
-      [label]="messages().ui.component.demos.dropdown.withErrorLabel"
-      [errorMsg]="messages().ui.component.demos.dropdown.errorRequired"
-      [options]="dropdownOptions()"
-      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-  </div>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
+  <ea-multi-select
+    [label]="messages().ui.component.demos.dropdown.fruitLabel"
+    [hint]="messages().ui.component.demos.dropdown.hintFavourite"
+    [options]="dropdownOptions()"
+    [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
+  <ea-multi-select
+    [label]="messages().ui.component.demos.dropdown.fruitLabel"
+    [errorMsg]="messages().ui.component.demos.dropdown.errorRequired"
+    [options]="dropdownOptions()"
+    [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.withInitialValue }}</h2>
   <ea-multi-select
@@ -46,25 +46,27 @@
     [value]="['apple', 'banana', 'cherry', 'date']" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-multi-select
-    size="sm"
-    [label]="messages().ui.component.common.small"
-    [options]="dropdownOptions()"
-    placeholder="sm" />
-  <ea-multi-select
-    size="md"
-    [label]="messages().ui.component.common.medium"
-    [options]="dropdownOptions()"
-    placeholder="md" />
-  <ea-multi-select
-    size="lg"
-    [label]="messages().ui.component.common.large"
-    [options]="dropdownOptions()"
-    placeholder="lg" />
+  <div class="demo-stack">
+    <ea-multi-select
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-multi-select
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+    <ea-multi-select
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [options]="dropdownOptions()"
+      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-multi-select
-    [label]="messages().ui.component.common.disabled"
+    [label]="messages().ui.component.demos.dropdown.fruitLabel"
     [disabled]="true"
     [options]="dropdownOptions()"
     [value]="['apple', 'cherry']" />

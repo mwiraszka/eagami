@@ -5,13 +5,13 @@
 .demo-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 
   h2 {
     // Generous vertical break between demo sections so each `<h2>`-led group
     // reads as a distinct chunk on the page. The first heading sits flush
     // with the top of the card; subsequent ones get the full 32px gap above.
-    margin: 32px 0 8px;
+    margin: 32px 0 0;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -40,20 +40,43 @@
   &--stretch {
     align-items: stretch;
   }
+
+  &--wide {
+    gap: 24px;
+  }
 }
 
+// 16px is the floor for the gap between vertically-stacked demo components
+// across the docs. `--lg` and `--xl` bump above that when a particular demo
+// needs more breathing room. There is intentionally no smaller modifier.
 .demo-stack {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.demo-stack--md {
-  gap: 12px;
+.demo-stack--lg {
+  gap: 24px;
+}
+
+.demo-stack--xl {
+  gap: 36px;
 }
 
 .demo-preview {
   margin: 4px 0 0;
   font-size: 14px;
   color: var(--color-text-secondary);
+}
+
+// Small label above a demo component (e.g. above a wordmark variant). Mirrors
+// the field-label typography used by form components so labelling reads
+// consistently across the docs.
+.demo-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-label-md-size);
+  font-weight: var(--text-label-md-weight);
+  line-height: var(--text-label-md-lh);
+  color: var(--color-text-primary);
 }

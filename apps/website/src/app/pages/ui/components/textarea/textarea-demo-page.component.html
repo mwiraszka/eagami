@@ -5,35 +5,49 @@
     [placeholder]="messages().ui.component.demos.textarea.messagePlaceholder"
     [(value)]="textareaValue" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-textarea
-    [label]="messages().ui.component.demos.textarea.withHintLabel"
+    [label]="messages().ui.component.demos.textarea.messageLabel"
     [hint]="messages().ui.component.demos.textarea.hintMaxCharacters"
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-textarea
-    [label]="messages().ui.component.demos.textarea.withErrorLabel"
+    [label]="messages().ui.component.demos.textarea.messageLabel"
     [errorMsg]="messages().ui.component.demos.textarea.errorRequired"
     [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-textarea
-    size="sm"
-    [label]="messages().ui.component.common.small"
-    placeholder="sm" />
-  <ea-textarea
-    size="md"
-    [label]="messages().ui.component.common.medium"
-    placeholder="md" />
-  <ea-textarea
-    size="lg"
-    [label]="messages().ui.component.common.large"
-    placeholder="lg" />
+  <div class="demo-stack">
+    <ea-textarea
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-textarea
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+    <ea-textarea
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
+  </div>
 
-  <h2>{{ messages().ui.component.sectionHeadings.noResize }}</h2>
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.fixedSizeLabel"
-    resize="none"
-    [placeholder]="messages().ui.component.demos.textarea.fixedSizePlaceholder" />
+  <h2>{{ messages().ui.component.sectionHeadings.resizing }}</h2>
+  <div class="demo-stack">
+    <div>
+      <span class="demo-label">Fixed size</span>
+      <ea-textarea
+        resize="none"
+        [placeholder]="messages().ui.component.demos.textarea.fixedSizePlaceholder" />
+    </div>
+    <div>
+      <span class="demo-label">Max height</span>
+      <ea-textarea
+        placeholder="Drag the bottom-right handle up to 200px"
+        [maxHeight]="200" />
+    </div>
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.withMaxlength }}</h2>
   <ea-textarea
@@ -44,9 +58,9 @@
 
   <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
   <ea-textarea
-    [label]="messages().ui.component.common.disabled"
-    [disabled]="true"
-    [placeholder]="messages().ui.component.common.disabled" />
+    [label]="messages().ui.component.demos.textarea.messageLabel"
+    [placeholder]="messages().ui.component.demos.textarea.messagePlaceholder"
+    [disabled]="true" />
   <ea-textarea
     [label]="messages().ui.component.demos.textarea.readonlyLabel"
     [readonly]="true"

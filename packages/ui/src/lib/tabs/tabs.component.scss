@@ -25,8 +25,8 @@
         margin-bottom: calc(-1 * var(--border-width-thin));
 
         &--active {
-          border-bottom-color: var(--color-primary-600);
-          color: var(--color-primary-600);
+          border-bottom-color: var(--color-brand-text);
+          color: var(--color-brand-text);
         }
 
         &:hover:not(:disabled):not(.ea-tabs__trigger--active) {

@@ -51,7 +51,7 @@
       min-height: 2.5rem;
 
       .ea-autocomplete__input {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-md);
       }
     }
 
@@ -60,7 +60,7 @@
       min-height: 3rem;
 
       .ea-autocomplete__input {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-lg);
       }
     }
 
@@ -140,6 +140,18 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     background-color: var(--color-bg-base);
+
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+
+    &--md {
+      font-size: var(--font-size-md);
+    }
+
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -147,7 +159,7 @@
   // ---------------------------------------------------------------------------
   &__option {
     padding: var(--space-2) var(--space-3);
-    font-size: var(--font-size-sm);
+    font-size: inherit;
     font-family: var(--font-family-sans);
     color: var(--color-text-primary);
     cursor: pointer;
@@ -168,7 +180,7 @@
   // ---------------------------------------------------------------------------
   &__empty {
     padding: var(--space-2) var(--space-3);
-    font-size: var(--font-size-sm);
+    font-size: inherit;
     font-style: italic;
     color: var(--color-text-tertiary);
   }

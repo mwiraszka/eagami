@@ -2,6 +2,16 @@
 // TAG COMPONENT
 // =============================================================================
 
+// Pin the host to inline-flex with line-height: 1 so the custom element
+// doesn't pick up the body's default line-height and add baseline-strut
+// space above / below the chip — without this, an `<ea-tag>` placed next to
+// a sibling like the multi-select `+N` chip appears vertically off-centre.
+ea-tag {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 1;
+}
+
 .ea-tag {
   display: inline-flex;
   align-items: center;

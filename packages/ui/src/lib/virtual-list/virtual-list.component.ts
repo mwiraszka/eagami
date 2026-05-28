@@ -16,7 +16,7 @@ import {
  * Context object passed to each `<ng-template #item>` projection inside an
  * `<ea-virtual-list>`. Mirrors `let-item="$implicit"` + `let-index="index"`.
  */
-export interface VirtualListItemContext<T> {
+export interface VirtualListItemContext<T = unknown> {
   $implicit: T;
   index: number;
 }
@@ -54,8 +54,8 @@ export interface VirtualListItemContext<T> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet],
 })
-export class VirtualListComponent<T = unknown> {
-  readonly items = input.required<readonly T[]>();
+export class VirtualListComponent {
+  readonly items = input.required<readonly unknown[]>();
 
   /** Pixel height of each item. Must be > 0. */
   readonly itemHeight = input.required<number>();
@@ -75,7 +75,7 @@ export class VirtualListComponent<T = unknown> {
 
   /** Template applied to each rendered item — projected via `<ng-template #item>`. */
   protected readonly itemTemplate =
-    contentChild.required<TemplateRef<VirtualListItemContext<T>>>('item');
+    contentChild.required<TemplateRef<VirtualListItemContext>>('item');
 
   protected readonly viewportEl = viewChild<ElementRef<HTMLElement>>('viewport');
 
@@ -110,7 +110,7 @@ export class VirtualListComponent<T = unknown> {
   protected readonly visibleItems = computed(() => {
     const { start, end } = this.visibleRange();
     const items = this.items();
-    const out: Array<{ index: number; item: T }> = [];
+    const out: Array<{ index: number; item: unknown }> = [];
     for (let i = start; i < end; i++) {
       out.push({ index: i, item: items[i] });
     }

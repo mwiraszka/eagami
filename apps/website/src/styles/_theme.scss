@@ -1,34 +1,12 @@
-/* Explicit theme overrides — applied when the user picks a non-auto theme via
-   the theme toggle (which sets data-theme on <html>). These mirror the dark-mode
-   token block from @eagami/ui's _colors.scss but trigger on data-theme rather than
-   the prefers-color-scheme media query, so they win even when the OS preference
-   disagrees. */
+/* Website-specific colour tokens. The marketing site is a showcase of the
+   library, so the actual design tokens (brand, text, bg, border, ...) come
+   from @eagami/ui untouched. The only theme-scoped values that live here are
+   the gradient stops + wordmark sheen used in the hero visuals, which are
+   not part of the library API. Selectors mirror the library's dark-mode
+   pattern (media query + explicit data-theme) so the gradients follow the
+   library's theme toggle. */
 
-:root[data-theme='light'] {
-  --color-text-primary: var(--color-neutral-900);
-  --color-text-secondary: var(--color-neutral-600);
-  /* neutral-500 (#6b7280) hits 4.69:1 over white; the upstream neutral-400
-     default (#9ca3af) only manages 2.4:1 and fails WCAG AA on body text. */
-  --color-text-tertiary: var(--color-neutral-500);
-  --color-text-disabled: var(--color-neutral-300);
-  --color-text-inverse: var(--color-neutral-0);
-
-  --color-bg-base: var(--color-neutral-0);
-  --color-bg-subtle: var(--color-neutral-100);
-  --color-bg-muted: var(--color-neutral-200);
-
-  --color-border-default: var(--color-neutral-200);
-  --color-border-strong: var(--color-neutral-400);
-
-  --color-brand-default: var(--color-primary-700);
-  --color-brand-hover: var(--color-primary-800);
-  --color-brand-active: var(--color-primary-800);
-  --color-brand-subtle: var(--color-primary-50);
-  --color-brand-muted: var(--color-primary-100);
-
-  --color-text-link: var(--color-primary-500);
-  --color-text-link-hover: var(--color-primary-700);
-
+:root {
   --web-color-flutterStop1: var(--color-primary-100);
   --web-color-flutterStop2: var(--color-secondary-100);
   --web-color-flutterStop3: var(--color-primary-50);
@@ -41,27 +19,22 @@
   );
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --web-color-flutterStop1: var(--color-primary-900);
+    --web-color-flutterStop2: var(--color-secondary-900);
+    --web-color-flutterStop3: var(--color-neutral-950);
+    --web-color-flutterStop4: var(--color-secondary-800);
+
+    --web-color-wordmarkSheen: color-mix(
+      in oklch,
+      var(--color-primary-50),
+      var(--color-neutral-50) 50%
+    );
+  }
+}
+
 :root[data-theme='dark'] {
-  --color-text-primary: var(--color-neutral-50);
-  --color-text-secondary: var(--color-neutral-300);
-  --color-text-tertiary: var(--color-neutral-400);
-  --color-text-disabled: var(--color-neutral-600);
-  --color-text-inverse: var(--color-neutral-900);
-
-  --color-bg-base: var(--color-neutral-900);
-  --color-bg-subtle: var(--color-neutral-800);
-  --color-bg-muted: var(--color-neutral-700);
-
-  --color-border-default: var(--color-neutral-700);
-  --color-border-strong: var(--color-neutral-500);
-
-  --color-brand-default: var(--color-primary-400);
-  --color-brand-hover: var(--color-primary-300);
-  --color-brand-active: var(--color-primary-200);
-
-  --color-text-link: var(--color-primary-300);
-  --color-text-link-hover: var(--color-primary-100);
-
   --web-color-flutterStop1: var(--color-primary-900);
   --web-color-flutterStop2: var(--color-secondary-900);
   --web-color-flutterStop3: var(--color-neutral-950);

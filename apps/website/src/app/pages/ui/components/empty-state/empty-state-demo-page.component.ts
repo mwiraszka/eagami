@@ -3,6 +3,7 @@ import {
   EmptyStateComponent,
   FileIconComponent,
   SearchIconComponent,
+  ToastService,
 } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
@@ -24,5 +25,12 @@ import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-lay
   ],
 })
 export class EmptyStateDemoPageComponent {
+  private readonly toast = inject(ToastService);
   protected readonly messages = inject(WebI18nService).messages;
+
+  protected onAction(label: string): void {
+    this.toast.success(
+      this.messages().ui.component.demos.commandPalette.executedToast(label),
+    );
+  }
 }

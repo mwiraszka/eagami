@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 1.3.0
-source: '@eagami/ui@1.3.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-05-17
+version: 2.3.0
+source: '@eagami/ui@2.3.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-05-28
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -200,23 +200,27 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | Semantic token            | Light                           | Dark                            |
 | ------------------------- | ------------------------------- | ------------------------------- |
 | `textPrimary`             | `neutral900`                    | `neutral50`                     |
-| `textSecondary`           | `neutral600`                    | `neutral400`                    |
+| `textSecondary`           | `neutral600`                    | `neutral300`                    |
 | `textTertiary`            | `neutral400`                    | `neutral500`                    |
-| `textDisabled`            | `neutral300`                    | `neutral700`                    |
+| `textDisabled`            | `neutral400`                    | `neutral500`                    |
 | `textInverse`             | `neutral0`                      | `neutral900`                    |
 | `textLink`                | `primary600`                    | `primary300`                    |
 | `textLinkHover`           | `primary800`                    | `primary100`                    |
-| `surfaceBase`             | `neutral0`                      | `neutral950`                    |
-| `surfaceSubtle`           | `neutral50`                     | `neutral900`                    |
-| `surfaceElevated`         | `neutral0`                      | `neutral800`                    |
-| `surfaceMuted`            | `neutral100`                    | `neutral700`                    |
+| `surfaceCanvas`           | `neutral0`                      | `neutral950`                    |
+| `surfaceBase`             | `neutral0`                      | `neutral800`                    |
+| `surfaceSubtle`           | `neutral50`                     | `neutral700`                    |
+| `surfaceStripe`           | `neutral50`                     | `neutral900`                    |
+| `surfaceElevated`         | `neutral0`                      | `neutral700`                    |
+| `surfaceMuted`            | `neutral100`                    | `neutral600`                    |
 | `surfaceOverlay`          | `Color(0x80000000)`             | `Color(0x80000000)`             |
-| `borderDefault`           | `neutral200`                    | `neutral700`                    |
-| `borderStrong`            | `neutral400`                    | `neutral500`                    |
+| `borderSubtle`            | `neutral200`                    | `Color.lerp(neutral700, neutral800, 0.5)` |
+| `borderDefault`           | `neutral200`                    | `neutral400`                    |
+| `borderStrong`            | `neutral400`                    | `neutral300`                    |
 | `borderFocus`             | `primary500`                    | `primary500`                    |
-| `brandDefault`            | `primary600`                    | `primary400`                    |
-| `brandHover`              | `primary700`                    | `primary300`                    |
-| `brandActive`             | `primary800`                    | `primary200`                    |
+| `brandDefault`            | `primary600`                    | `primary500`                    |
+| `brandHover`              | `primary700`                    | `primary600`                    |
+| `brandActive`             | `primary800`                    | `primary700`                    |
+| `brandText`               | `primary700`                    | `primary300`                    |
 | `brandSubtle`             | `primary50`                     | `Color(0x1A4B91C3)`             |
 | `brandMuted`              | `primary100`                    | `Color(0x334B91C3)`             |
 | `brandSecondaryDefault`   | `secondary500`                  | `secondary500`                  |
@@ -237,7 +241,9 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `infoSubtle`              | `info50`                        | `Color(0x2606B6D4)`             |
 | `infoMuted`               | `info100`                       | `Color(0x4006B6D4)`             |
 
-In dark mode the background hierarchy ramps from darkest (page) to lightest (hover) as `surfaceBase` (950) → `surfaceSubtle` (900) → `surfaceElevated` (800) → `surfaceMuted` (700). `surfaceMuted` sits **above** `surfaceElevated` so a hover state inside an elevated surface (a dropdown on a card, a menu item in a drawer) still reads as a further step up. Light mode keeps the legacy order where `surfaceBase` and `surfaceElevated` are both `neutral0`.
+In dark mode the surface model splits the page (`surfaceCanvas`, deepest) from the surfaces that sit on it (`surfaceBase`, `surfaceSubtle`, `surfaceElevated`, `surfaceMuted`). Canvas stays at `neutral950` while every component surface lifts to `neutral800` or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `surfaceStripe` (`neutral900`) is the alternating-row tone for tables; it sits **below** `surfaceBase` to keep odd rows darker than the surrounding card. `surfaceMuted` (`neutral600`) is the topmost hover-state tone so it stays readable inside elevated surfaces.
+
+`brandText` is the brand colour used as a **foreground** on a non-brand surface (selected dropdown row, today marker, sorted column header, spinner, active paginator page). It needs a 4.5:1 contrast against `surfaceBase`, so light mode uses `primary700` and dark mode uses `primary300`. `brandDefault` stays free to be optimized as a surface (button background, badge background) without dragging the text-on-surface contrast along with it.
 
 ### 2.3 Spacing, base scale
 
@@ -497,7 +503,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Sync source: @eagami/ui@1.3.0 (packages/ui/src/styles/tokens/*.scss)
+// Sync source: @eagami/ui@2.3.0 (packages/ui/src/styles/tokens/*.scss)
 // =============================================================================
 
 @immutable
@@ -582,17 +588,21 @@ class EagamiColors {
     required this.textInverse,
     required this.textLink,
     required this.textLinkHover,
+    required this.surfaceCanvas,
     required this.surfaceBase,
     required this.surfaceSubtle,
+    required this.surfaceStripe,
     required this.surfaceElevated,
     required this.surfaceMuted,
     required this.surfaceOverlay,
+    required this.borderSubtle,
     required this.borderDefault,
     required this.borderStrong,
     required this.borderFocus,
     required this.brandDefault,
     required this.brandHover,
     required this.brandActive,
+    required this.brandText,
     required this.brandSubtle,
     required this.brandMuted,
     required this.brandSecondaryDefault,
@@ -621,17 +631,21 @@ class EagamiColors {
   final Color textInverse;
   final Color textLink;
   final Color textLinkHover;
+  final Color surfaceCanvas;
   final Color surfaceBase;
   final Color surfaceSubtle;
+  final Color surfaceStripe;
   final Color surfaceElevated;
   final Color surfaceMuted;
   final Color surfaceOverlay;
+  final Color borderSubtle;
   final Color borderDefault;
   final Color borderStrong;
   final Color borderFocus;
   final Color brandDefault;
   final Color brandHover;
   final Color brandActive;
+  final Color brandText;
   final Color brandSubtle;
   final Color brandMuted;
   final Color brandSecondaryDefault;
@@ -656,21 +670,25 @@ class EagamiColors {
     textPrimary: Color(0xFF111827),
     textSecondary: Color(0xFF4B5563),
     textTertiary: Color(0xFF9CA3AF),
-    textDisabled: Color(0xFFD1D5DB),
+    textDisabled: Color(0xFF9CA3AF),
     textInverse: Color(0xFFFFFFFF),
     textLink: Color(0xFF2A5B7E),
     textLinkHover: Color(0xFF162F41),
+    surfaceCanvas: Color(0xFFFFFFFF),
     surfaceBase: Color(0xFFFFFFFF),
     surfaceSubtle: Color(0xFFF9FAFB),
+    surfaceStripe: Color(0xFFF9FAFB),
     surfaceElevated: Color(0xFFFFFFFF),
     surfaceMuted: Color(0xFFF3F4F6),
     surfaceOverlay: Color(0x80000000),
+    borderSubtle: Color(0xFFE5E7EB),
     borderDefault: Color(0xFFE5E7EB),
     borderStrong: Color(0xFF9CA3AF),
     borderFocus: Color(0xFF3674A1),
     brandDefault: Color(0xFF2A5B7E),
     brandHover: Color(0xFF204560),
     brandActive: Color(0xFF162F41),
+    brandText: Color(0xFF204560),
     brandSubtle: Color(0xFFECF3F9),
     brandMuted: Color(0xFFD1E3F0),
     brandSecondaryDefault: Color(0xFF665086),
@@ -694,23 +712,27 @@ class EagamiColors {
 
   static const dark = EagamiColors(
     textPrimary: Color(0xFFF9FAFB),
-    textSecondary: Color(0xFF9CA3AF),
+    textSecondary: Color(0xFFD1D5DB),
     textTertiary: Color(0xFF6B7280),
-    textDisabled: Color(0xFF374151),
+    textDisabled: Color(0xFF6B7280),
     textInverse: Color(0xFF111827),
     textLink: Color(0xFF7DAFD4),
     textLinkHover: Color(0xFFD1E3F0),
-    surfaceBase: Color(0xFF030712),
-    surfaceSubtle: Color(0xFF111827),
-    surfaceElevated: Color(0xFF1F2937),
-    surfaceMuted: Color(0xFF374151),
+    surfaceCanvas: Color(0xFF030712),
+    surfaceBase: Color(0xFF1F2937),
+    surfaceSubtle: Color(0xFF374151),
+    surfaceStripe: Color(0xFF111827),
+    surfaceElevated: Color(0xFF374151),
+    surfaceMuted: Color(0xFF4B5563),
     surfaceOverlay: Color(0x80000000),
-    borderDefault: Color(0xFF374151),
-    borderStrong: Color(0xFF6B7280),
+    borderSubtle: Color(0xFF2B3544),
+    borderDefault: Color(0xFF9CA3AF),
+    borderStrong: Color(0xFFD1D5DB),
     borderFocus: Color(0xFF3674A1),
-    brandDefault: Color(0xFF4B91C3),
-    brandHover: Color(0xFF7DAFD4),
-    brandActive: Color(0xFFABCBE3),
+    brandDefault: Color(0xFF3674A1),
+    brandHover: Color(0xFF2A5B7E),
+    brandActive: Color(0xFF204560),
+    brandText: Color(0xFF7DAFD4),
     brandSubtle: Color(0x1A4B91C3),
     brandMuted: Color(0x334B91C3),
     brandSecondaryDefault: Color(0xFF665086),
@@ -1033,11 +1055,11 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       theme: ThemeData.light().copyWith(
         extensions: const [EagamiTheme.light],
-        scaffoldBackgroundColor: EagamiTheme.light.colors.surfaceBase,
+        scaffoldBackgroundColor: EagamiTheme.light.colors.surfaceCanvas,
       ),
       darkTheme: ThemeData.dark().copyWith(
         extensions: const [EagamiTheme.dark],
-        scaffoldBackgroundColor: EagamiTheme.dark.colors.surfaceBase,
+        scaffoldBackgroundColor: EagamiTheme.dark.colors.surfaceCanvas,
       ),
       themeMode: ThemeMode.system,
       home: const HomePage(),
@@ -1045,6 +1067,34 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+### 3.5 Brand palette derivation
+
+The upstream Angular library accepts a single brand hex via `provideEagamiUi({ palette: { primary: { base: '#…' } } })` and derives a full ten-shade scale in [OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab) space, holding hue and chroma steady while stepping lightness. Every brand-role pairing (text-on-surface, surface-on-canvas) is asserted against WCAG 2.1 AA at bootstrap; a contrast violation throws before the app loads.
+
+The Flutter integration uses compile-time `EagamiColors` constants, so the same workflow is offline: pick a base hex, derive the ten shades, paste the resulting `Color(0xFF…)` values into the `EagamiColors.light` and `EagamiColors.dark` constants for the four primary roles (`brandDefault`, `brandHover`, `brandActive`, `brandText`). A small Dart helper (mirroring `packages/ui/src/lib/palette/derive-palette.ts` in the upstream repo) can do the OKLCH derivation in a `tool/` script:
+
+```dart
+import 'package:flutter/material.dart';
+
+// Target OKLCH lightness for each shade, matching the upstream scale.
+const _targetL = <int, double>{
+  50: 0.96,  100: 0.90, 200: 0.82, 300: 0.72, 400: 0.62,
+  500: 0.52, 600: 0.42, 700: 0.34, 800: 0.26, 900: 0.18,
+};
+
+/// Derive a 10-shade scale by stepping OKLCH lightness around an anchor hex.
+/// Use a package like `flutter_oklch` or `colorhash` for the actual conversion,
+/// or shell out to a CSS-color-4 OKLCH library.
+Map<int, Color> derivePrimaryScale(Color base) {
+  // Convert base -> OKLCH, then for each shade rebuild with target L,
+  // base C, base H, and re-encode as a Color(0xFF…) value.
+  // (Implementation depends on the OKLCH package you choose.)
+  throw UnimplementedError('Wire up to your OKLCH package of choice.');
+}
+```
+
+Run the helper in a one-off script when picking a new brand colour and copy the result into `EagamiColors`. For brand books that pin specific hexes, override individual shades after derivation. After regenerating, verify with the Flutter inspector that text-on-surface and surface-on-canvas pairs still meet AA — the Angular library does this assertion at bootstrap; with compile-time constants you assert manually.
 
 ---
 

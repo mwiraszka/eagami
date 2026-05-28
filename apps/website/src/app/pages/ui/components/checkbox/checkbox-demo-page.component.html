@@ -5,7 +5,7 @@
     [(checked)]="checkboxValue" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-row">
+  <div class="demo-row demo-row--wide">
     <ea-checkbox
       size="sm"
       [label]="messages().ui.component.common.small" />
@@ -18,9 +18,9 @@
   </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
-  <div class="demo-row">
+  <div class="demo-row demo-row--wide">
     <ea-checkbox
-      [label]="messages().ui.component.common.disabled"
+      [label]="messages().ui.component.demos.checkbox.acceptTermsAndConditions"
       [disabled]="true" />
     <ea-checkbox
       [label]="messages().ui.component.demos.checkbox.disabledChecked"

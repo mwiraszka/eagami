@@ -67,16 +67,6 @@
   color: var(--color-primary-200);
 }
 
-:host-context([data-theme='dark']) .home-hero__link {
-  /* neutral-50 against the dark hero's densest gradient stops keeps the link
-     ≥ 4.5:1 across all phases of the flutter animation. */
-  color: var(--color-neutral-50);
-
-  &:hover {
-    color: var(--color-neutral-0);
-  }
-}
-
 .home-hero__inner {
   display: flex;
   align-items: center;

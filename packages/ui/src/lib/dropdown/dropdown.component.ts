@@ -105,6 +105,10 @@ export class DropdownComponent implements ControlValueAccessor {
     'ea-dropdown__trigger--disabled': this.isDisabled(),
   }));
 
+  readonly menuClasses = computed(() => ({
+    [`ea-dropdown__menu--${this.size()}`]: true,
+  }));
+
   // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');

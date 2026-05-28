@@ -129,6 +129,10 @@ export class AutocompleteComponent implements ControlValueAccessor {
     'ea-autocomplete__wrapper--disabled': this.isDisabled(),
   }));
 
+  readonly listboxClasses = computed(() => ({
+    [`ea-autocomplete__listbox--${this.size()}`]: true,
+  }));
+
   // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');

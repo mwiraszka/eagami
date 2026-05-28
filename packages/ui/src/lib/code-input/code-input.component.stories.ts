@@ -3,7 +3,7 @@ import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
 import { CodeInputComponent } from './code-input.component';
 
 const meta: Meta<CodeInputComponent> = {
-  title: 'Components/Code input',
+  title: 'Components/Code Input',
   component: CodeInputComponent,
   tags: ['autodocs'],
   render: args => ({

@@ -39,6 +39,61 @@
     </ea-tab>
   </ea-tabs>
 
+  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
+  <div class="demo-stack demo-stack--xl">
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.small }}</span>
+      <ea-tabs
+        size="sm"
+        activeTab="account">
+        <ea-tab
+          value="account"
+          [label]="messages().ui.component.demos.tabs.account">
+          {{ messages().ui.component.demos.tabs.accountContent }}
+        </ea-tab>
+        <ea-tab
+          value="security"
+          [label]="messages().ui.component.demos.tabs.security">
+          {{ messages().ui.component.demos.tabs.securityContent }}
+        </ea-tab>
+      </ea-tabs>
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.medium }}</span>
+      <ea-tabs
+        size="md"
+        activeTab="account">
+        <ea-tab
+          value="account"
+          [label]="messages().ui.component.demos.tabs.account">
+          {{ messages().ui.component.demos.tabs.accountContent }}
+        </ea-tab>
+        <ea-tab
+          value="security"
+          [label]="messages().ui.component.demos.tabs.security">
+          {{ messages().ui.component.demos.tabs.securityContent }}
+        </ea-tab>
+      </ea-tabs>
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.large }}</span>
+      <ea-tabs
+        size="lg"
+        activeTab="account">
+        <ea-tab
+          value="account"
+          [label]="messages().ui.component.demos.tabs.account">
+          {{ messages().ui.component.demos.tabs.accountContent }}
+        </ea-tab>
+        <ea-tab
+          value="security"
+          [label]="messages().ui.component.demos.tabs.security">
+          {{ messages().ui.component.demos.tabs.securityContent }}
+        </ea-tab>
+      </ea-tabs>
+    </div>
+  </div>
+
   <h2>{{ messages().ui.component.sectionHeadings.withDisabledTab }}</h2>
   <ea-tabs activeTab="general">
     <ea-tab

@@ -27,30 +27,32 @@
     [minuteStep]="15"
     value="09:00" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
-  <div class="demo-stack">
-    <ea-time-picker
-      label="With hint"
-      hint="Hours and minutes, 24-hour clock" />
-    <ea-time-picker
-      label="With error"
-      errorMsg="This field is required" />
-  </div>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
+  <ea-time-picker
+    label="Time"
+    hint="Hours and minutes, 24-hour clock" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
+  <ea-time-picker
+    label="Time"
+    errorMsg="This field is required" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-time-picker
-    size="sm"
-    [label]="messages().ui.component.common.small" />
-  <ea-time-picker
-    size="md"
-    [label]="messages().ui.component.common.medium" />
-  <ea-time-picker
-    size="lg"
-    [label]="messages().ui.component.common.large" />
+  <div class="demo-stack">
+    <ea-time-picker
+      size="sm"
+      [label]="messages().ui.component.common.small" />
+    <ea-time-picker
+      size="md"
+      [label]="messages().ui.component.common.medium" />
+    <ea-time-picker
+      size="lg"
+      [label]="messages().ui.component.common.large" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-time-picker
-    [label]="messages().ui.component.common.disabled"
+    label="Time"
     [disabled]="true"
     value="14:30" />
 </web-ui-component-demo-layout>

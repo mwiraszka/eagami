@@ -5,7 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.2.0] - 2026-05-24
+## [2.3.0] - 2026-05-28
+
+### Added
+
+- Add a `palette` option to `provideEagamiUi`. Consumers pass a `primary` (and optional `secondary`) base hex; the library derives a perceptually-uniform 10-shade scale via OKLCH, maps the shades to semantic brand roles in both light and dark mode, and asserts WCAG 2.1 AA contrast on every pairing before applying. A failing palette throws at bootstrap so a bad brand colour is caught before the app loads. Per-shade `overrides` and role remapping are supported for brand books that pin specific hexes.
+- Add `--color-bg-canvas` token for the page background, distinct from `--color-bg-base` which becomes the surface token for components that sit on the page (inputs, cards, accordion items, popover panels). In dark mode the canvas stays at `neutral-950` while `bg-base` lifts to `neutral-800`, so component surfaces no longer disappear into the page.
+- Add `--color-brand-text` token (defaults to `--color-primary-700` in light mode, `--color-primary-300` in dark mode). Use it for the brand colour as a foreground on a non-brand surface (selected dropdown row, today marker, sorted column, spinner, active paginator page). Keeps `--color-brand-default` free to optimize as a surface (button bg, badge bg) without dragging text-on-surface contrast along with it.
+- Expose `--ea-switch-track-border-color` on `<ea-switch>` so consumers can recolour the track outline without overriding `--color-border-*` globally.
+
+### Changed
+
+- Tighten the dark-mode brand-default flip from `primary-400` to `primary-500`. The smaller shift keeps the primary CTA feeling like the same brand colour across themes while still clearing WCAG 1.4.11 (3:1 brand vs canvas) and carrying a white label above 4.5:1.
+- Route `<ea-dropdown>` selected-option, `<ea-date-picker>` today indicator and today button, `<ea-data-table>` sorted-column header, `<ea-spinner>`, and `<ea-paginator>` active page colours through the new `--color-brand-text` token. Visually unchanged at defaults; consumers can now tune surface and foreground brand roles independently.
+- Soften the default `<ea-switch>` track border from `--color-border-strong` to `--color-border-default` for a less heavy off-state ring.
+- Default the primary `<ea-button>` text colour to `--color-neutral-0` (always white) instead of `--color-text-inverse` (which flipped to dark in dark mode). Text now stays white on the brand background in both themes; consumers can still override per-instance via `--ea-button-color`.
+- Expose `--ea-empty-state-title-color` on `<ea-empty-state>` so consumers can recolour the title without bleeding `--color-text-primary` to its siblings.
+
+## [2.2.0] - 2026-05-25
 
 ### Added
 
@@ -508,6 +525,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.2.0...ui-v2.3.0
+[2.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.1.0...ui-v2.2.0
+[2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0
+[2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
+[1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0
+[1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0
+[1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0
+[1.2.1]: https://github.com/mwiraszka/eagami/compare/v1.2.0...ui-v1.2.1
 [1.2.0]: https://github.com/mwiraszka/eagami/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/mwiraszka/eagami/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/mwiraszka/eagami/compare/v1.0.2...v1.1.0
@@ -529,13 +554,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://github.com/mwiraszka/eagami/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mwiraszka/eagami/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mwiraszka/eagami/compare/v0.4.1...v0.5.0
-[2.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.1.0...ui-v2.2.0
-[2.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.0.0...ui-v2.1.0
-[2.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.5.0...ui-v2.0.0
-[1.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.4.0...ui-v1.5.0
-[1.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.3.0...ui-v1.4.0
-[1.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v1.2.1...ui-v1.3.0
-[1.2.1]: https://github.com/mwiraszka/eagami/compare/v1.2.0...ui-v1.2.1
 [0.4.1]: https://github.com/mwiraszka/eagami/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/mwiraszka/eagami/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/mwiraszka/eagami/compare/v0.2.0...v0.3.0

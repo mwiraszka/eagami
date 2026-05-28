@@ -81,6 +81,7 @@ export const esES: EagamiMessages = {
   input: {
     showPassword: 'Mostrar contraseña',
     hidePassword: 'Ocultar contraseña',
+    clear: 'Borrar',
   },
   menu: {
     label: 'Menú',

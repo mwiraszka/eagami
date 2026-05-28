@@ -137,6 +137,7 @@ export interface WebMessages {
       lede: string;
       sections: {
         theming: string;
+        palette: string;
         colors: string;
         typography: string;
         spacing: string;
@@ -146,6 +147,9 @@ export interface WebMessages {
       };
       themingRootBefore: string;
       themingScopedBefore: string;
+      paletteIntro: string;
+      paletteOverrides: string;
+      paletteContrast: string;
       colorsPrimary: string;
       colorsSecondary: string;
       colorsNeutral: string;
@@ -213,6 +217,7 @@ export interface WebMessages {
         states: string;
         disabled: string;
         dismissible: string;
+        clearable: string;
         hintAndError: string;
         withHint: string;
         withError: string;
@@ -239,6 +244,7 @@ export interface WebMessages {
         defaultHeading: string;
         stripedAndBordered: string;
         compactDensity: string;
+        tinyList: string;
         stickyHeader: string;
         emptyState: string;
         formatVariants: string;
@@ -251,6 +257,7 @@ export interface WebMessages {
         minimal: string;
         indeterminate: string;
         noResize: string;
+        resizing: string;
         disabledAndReadonly: string;
         password: string;
         autocompleteSection: string;
@@ -270,6 +277,7 @@ export interface WebMessages {
         canvasSizes: string;
         cappedChipCount: string;
         customIcon: string;
+        customIconAndColor: string;
         customLabel: string;
         halfSteps: string;
         customSize: string;
@@ -278,6 +286,7 @@ export interface WebMessages {
         notAnimated: string;
         outputFormats: string;
         numberOfStars: string;
+        minimumOne: string;
         quarterHourSteps: string;
         readonly: string;
         singleFile: string;
@@ -289,6 +298,7 @@ export interface WebMessages {
         withConstraints: string;
         withInitialValue: string;
         withMaxlength: string;
+        withMaxHeight: string;
         withMinMaxLabels: string;
         withOptionalStep: string;
         withSeconds: string;
@@ -337,13 +347,10 @@ export interface WebMessages {
           tooltipSuppressed: string;
         };
         autocomplete: {
-          frameworkLabel: string;
           startTyping: string;
-          withHintLabel: string;
           hintText: string;
-          withErrorLabel: string;
           errorText: string;
-          frameworkPlaceholder: string;
+          breedPlaceholder: string;
           minMaxLabel: string;
           minMaxPlaceholder: string;
         };
@@ -392,9 +399,7 @@ export interface WebMessages {
         };
         colorPicker: {
           brandLabel: string;
-          withHintLabel: string;
           hintBrandColor: string;
-          withErrorLabel: string;
           errorRequired: string;
           hexLabel: string;
           rgbLabel: string;
@@ -412,9 +417,7 @@ export interface WebMessages {
         datePicker: {
           appointmentLabel: string;
           pickDatePlaceholder: string;
-          withHintLabel: string;
           hintAnyFutureDate: string;
-          withErrorLabel: string;
           errorRequired: string;
           shortLabel: string;
           mediumLabel: string;
@@ -450,9 +453,7 @@ export interface WebMessages {
         dropdown: {
           fruitLabel: string;
           fruitPlaceholder: string;
-          withHintLabel: string;
           hintFavourite: string;
-          withErrorLabel: string;
           errorRequired: string;
           selectPlaceholder: string;
         };
@@ -471,17 +472,13 @@ export interface WebMessages {
           imagesHint: string;
           resumeLabel: string;
           customIconLabel: string;
-          withHintLabel: string;
           withHintHint: string;
-          withErrorLabel: string;
           withErrorText: string;
         };
         input: {
           defaultLabel: string;
           enterTextPlaceholder: string;
-          withHintLabel: string;
           hintGuidance: string;
-          withErrorLabel: string;
           errorRequired: string;
           readonlyLabel: string;
           readonlyValue: string;
@@ -554,9 +551,7 @@ export interface WebMessages {
           halfStepsLabel: string;
           halfStepsHint: string;
           readonlyLabel: string;
-          withHintLabel: string;
           withHintHint: string;
-          withErrorLabel: string;
           withErrorText: string;
           numberOfStarsLabel: string;
           customIconLabel: string;
@@ -616,9 +611,7 @@ export interface WebMessages {
         textarea: {
           messageLabel: string;
           messagePlaceholder: string;
-          withHintLabel: string;
           hintMaxCharacters: string;
-          withErrorLabel: string;
           errorRequired: string;
           fixedSizeLabel: string;
           fixedSizePlaceholder: string;

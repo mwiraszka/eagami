@@ -1,26 +1,44 @@
 <web-ui-component-demo-layout slug="eagami-wordmark">
   <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-stack demo-stack--md">
-    <ea-eagami-wordmark [variant]="1" />
-    <ea-eagami-wordmark [variant]="2" />
-    <ea-eagami-wordmark [variant]="3" />
+  <div class="demo-stack demo-stack--lg">
+    <div>
+      <span class="demo-label">Variant 1</span>
+      <ea-eagami-wordmark [variant]="1" />
+    </div>
+    <div>
+      <span class="demo-label">Variant 2</span>
+      <ea-eagami-wordmark [variant]="2" />
+    </div>
+    <div>
+      <span class="demo-label">Variant 3</span>
+      <ea-eagami-wordmark [variant]="3" />
+    </div>
   </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack demo-stack--md">
-    <ea-eagami-wordmark
-      [variant]="3"
-      [size]="16" />
-    <ea-eagami-wordmark
-      [variant]="3"
-      [size]="32" />
-    <ea-eagami-wordmark
-      [variant]="3"
-      [size]="64" />
+  <div class="demo-stack demo-stack--lg">
+    <div>
+      <span class="demo-label">16px</span>
+      <ea-eagami-wordmark
+        [variant]="3"
+        [size]="16" />
+    </div>
+    <div>
+      <span class="demo-label">32px</span>
+      <ea-eagami-wordmark
+        [variant]="3"
+        [size]="32" />
+    </div>
+    <div>
+      <span class="demo-label">64px</span>
+      <ea-eagami-wordmark
+        [variant]="3"
+        [size]="64" />
+    </div>
   </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.inlineLayout }}</h2>
-  <div class="demo-stack demo-stack--md">
+  <div class="demo-stack demo-stack--lg">
     <ea-eagami-wordmark
       [variant]="2"
       layout="inline" />

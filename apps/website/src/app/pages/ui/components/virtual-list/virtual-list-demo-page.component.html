@@ -15,8 +15,29 @@
     (scrollIndexChange)="onScrollIndex($event)">
     <ng-template
       #item
-      let-row>
-      <div class="virtual-list-demo__row">
+      let-row
+      let-i="index">
+      <div
+        class="virtual-list-demo__row"
+        [class.virtual-list-demo__row--striped]="i % 2 === 1">
+        <strong>{{ row.label }}</strong>
+        <span>{{ row.detail }}</span>
+      </div>
+    </ng-template>
+  </ea-virtual-list>
+
+  <h2>{{ messages().ui.component.sectionHeadings.tinyList }}</h2>
+  <ea-virtual-list
+    [items]="rows.slice(0, 4)"
+    [itemHeight]="44"
+    [viewportHeight]="200">
+    <ng-template
+      #item
+      let-row
+      let-i="index">
+      <div
+        class="virtual-list-demo__row"
+        [class.virtual-list-demo__row--striped]="i % 2 === 1">
         <strong>{{ row.label }}</strong>
         <span>{{ row.detail }}</span>
       </div>
@@ -30,8 +51,11 @@
     [viewportHeight]="240">
     <ng-template
       #item
-      let-row>
-      <div class="virtual-list-demo__row virtual-list-demo__row--compact">
+      let-row
+      let-i="index">
+      <div
+        class="virtual-list-demo__row virtual-list-demo__row--compact"
+        [class.virtual-list-demo__row--striped]="i % 2 === 1">
         {{ row.label }}
       </div>
     </ng-template>

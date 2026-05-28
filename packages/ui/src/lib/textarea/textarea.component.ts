@@ -53,6 +53,9 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly rows = input<number>(3);
   readonly resize = input<TextareaResize>('vertical');
   readonly maxlength = input<number | undefined>(undefined);
+  /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
+   * field scrolls vertically instead of growing. */
+  readonly maxHeight = input<number | undefined>(undefined);
   readonly id = input<string>(`ea-textarea-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = model<string>('');

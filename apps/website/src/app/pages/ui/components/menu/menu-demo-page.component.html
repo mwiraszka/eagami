@@ -53,6 +53,24 @@
     </ea-menu-item>
   </ea-menu>
 
+  <h2>{{ messages().ui.component.sectionHeadings.placements }}</h2>
+  <ea-button
+    [eaMenuTrigger]="placementMenu"
+    variant="secondary">
+    {{ messages().ui.component.demos.popover.placementBottomEndLabel }}
+  </ea-button>
+  <ea-menu
+    #placementMenu
+    placement="bottom-end">
+    <ea-menu-item>{{ messages().ui.component.demos.menu.edit }}</ea-menu-item>
+    <ea-menu-item>
+      {{ messages().ui.component.demos.menu.duplicate }}
+    </ea-menu-item>
+    <ea-menu-item variant="danger">
+      {{ messages().ui.component.demos.menu.delete }}
+    </ea-menu-item>
+  </ea-menu>
+
   <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
   <ea-button
     [eaMenuTrigger]="fileMenu"

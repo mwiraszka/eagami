@@ -1,3 +1,5 @@
+import { CheckIconComponent } from '@eagami/ui';
+
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -8,7 +10,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   selector: 'web-ui-index-page',
   templateUrl: './ui-index-page.component.html',
   styleUrl: './ui-index-page.component.scss',
-  imports: [RouterLink],
+  imports: [RouterLink, CheckIconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiIndexPageComponent {

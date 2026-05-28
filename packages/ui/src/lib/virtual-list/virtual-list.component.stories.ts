@@ -1,4 +1,6 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+
+import { Component, signal } from '@angular/core';
 
 import { VirtualListComponent } from './virtual-list.component';
 
@@ -14,8 +16,8 @@ const LONG_LIST: Row[] = Array.from({ length: 10_000 }, (_, i) => ({
   detail: `Detail row ${i + 1}`,
 }));
 
-const meta: Meta<VirtualListComponent<Row>> = {
-  title: 'Components/Virtual list',
+const meta: Meta<VirtualListComponent> = {
+  title: 'Components/Virtual List',
   component: VirtualListComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -32,7 +34,7 @@ const meta: Meta<VirtualListComponent<Row>> = {
 };
 
 export default meta;
-type Story = StoryObj<VirtualListComponent<Row>>;
+type Story = StoryObj<VirtualListComponent>;
 
 export const Default: Story = {
   render: args => ({
@@ -120,5 +122,45 @@ export const TinyList: Story = {
         </ng-template>
       </ea-virtual-list>
     `,
+  }),
+};
+
+// Live scroll-position readout demo — mirrors the website's "row X of Y"
+// indicator that pairs the `(scrollIndexChange)` output with the list.
+@Component({
+  selector: 'ea-virtual-list-scroll-host',
+  imports: [VirtualListComponent],
+  template: `
+    <p
+      style="font-size: 0.875rem; margin: 0 0 0.5rem; color: var(--color-text-secondary);">
+      Showing row {{ visibleIndex() + 1 }} of {{ items.length }}
+    </p>
+    <ea-virtual-list
+      class="story-medium"
+      [items]="items"
+      [itemHeight]="40"
+      [viewportHeight]="320"
+      (scrollIndexChange)="visibleIndex.set($event)">
+      <ng-template
+        #item
+        let-row>
+        <div
+          style="display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 12px; border-bottom: 1px solid var(--color-border-subtle); font-size: 0.875rem;">
+          <strong>{{ row.label }}</strong>
+          <span>{{ row.detail }}</span>
+        </div>
+      </ng-template>
+    </ea-virtual-list>
+  `,
+})
+class VirtualListScrollHost {
+  readonly items = LONG_LIST;
+  readonly visibleIndex = signal(0);
+}
+
+export const WithScrollIndicator: StoryObj<VirtualListScrollHost> = {
+  render: () => ({
+    template: `<ea-virtual-list-scroll-host></ea-virtual-list-scroll-host>`,
+    moduleMetadata: { imports: [VirtualListScrollHost] },
   }),
 };

@@ -1,11 +1,20 @@
 <web-ui-component-demo-layout slug="spinner">
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-row">
-    <ea-spinner size="sm" />
-    <ea-spinner size="md" />
-    <ea-spinner size="lg" />
+  <div class="demo-stack">
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.small }}</span>
+      <ea-spinner size="sm" />
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.medium }}</span>
+      <ea-spinner size="md" />
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.large }}</span>
+      <ea-spinner size="lg" />
+    </div>
   </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.customLabel }}</h2>
-  <ea-spinner ariaLabel="Saving changes" />
+  <ea-spinner label="Saving changes…" />
 </web-ui-component-demo-layout>

@@ -54,6 +54,7 @@
   @if (showList()) {
     <ul
       class="ea-autocomplete__listbox"
+      [ngClass]="listboxClasses()"
       role="listbox"
       [id]="id() + '-listbox'">
       @for (option of filteredOptions(); track option.value; let i = $index) {

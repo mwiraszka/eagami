@@ -44,23 +44,37 @@
   </ea-stepper>
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-stepper size="sm">
-    <ea-step label="Small one">Body</ea-step>
-    <ea-step label="Small two">Body</ea-step>
-  </ea-stepper>
-  <ea-stepper size="md">
-    <ea-step label="Medium one">Body</ea-step>
-    <ea-step label="Medium two">Body</ea-step>
-  </ea-stepper>
-  <ea-stepper size="lg">
-    <ea-step label="Large one">Body</ea-step>
-    <ea-step label="Large two">Body</ea-step>
-  </ea-stepper>
+  <div class="demo-stack">
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.small }}</span>
+      <ea-stepper size="sm">
+        <ea-step label="Account">Enter your email and password.</ea-step>
+        <ea-step label="Profile">Tell us a bit about yourself.</ea-step>
+        <ea-step label="Review">Confirm and create your account.</ea-step>
+      </ea-stepper>
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.medium }}</span>
+      <ea-stepper size="md">
+        <ea-step label="Account">Enter your email and password.</ea-step>
+        <ea-step label="Profile">Tell us a bit about yourself.</ea-step>
+        <ea-step label="Review">Confirm and create your account.</ea-step>
+      </ea-stepper>
+    </div>
+    <div>
+      <span class="demo-label">{{ messages().ui.component.common.large }}</span>
+      <ea-stepper size="lg">
+        <ea-step label="Account">Enter your email and password.</ea-step>
+        <ea-step label="Profile">Tell us a bit about yourself.</ea-step>
+        <ea-step label="Review">Confirm and create your account.</ea-step>
+      </ea-stepper>
+    </div>
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-stepper [disabled]="true">
-    <ea-step label="One">Body</ea-step>
-    <ea-step label="Two">Body</ea-step>
-    <ea-step label="Three">Body</ea-step>
+    <ea-step label="Account">Enter your email and password.</ea-step>
+    <ea-step label="Profile">Tell us a bit about yourself.</ea-step>
+    <ea-step label="Review">Confirm and create your account.</ea-step>
   </ea-stepper>
 </web-ui-component-demo-layout>

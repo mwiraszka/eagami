@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 1.3.0
-source: '@eagami/ui@1.3.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-05-17
+version: 2.3.0
+source: '@eagami/ui@2.3.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-05-28
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -193,23 +193,27 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | Semantic token                       | Light ref               | Dark ref                       |
 | ------------------------------------ | ----------------------- | ------------------------------ |
 | `--color-text-primary`               | `--color-neutral-900`   | `--color-neutral-50`           |
-| `--color-text-secondary`             | `--color-neutral-600`   | `--color-neutral-400`          |
+| `--color-text-secondary`             | `--color-neutral-600`   | `--color-neutral-300`          |
 | `--color-text-tertiary`              | `--color-neutral-400`   | `--color-neutral-500`          |
-| `--color-text-disabled`              | `--color-neutral-300`   | `--color-neutral-700`          |
+| `--color-text-disabled`              | `--color-neutral-400`   | `--color-neutral-500`          |
 | `--color-text-inverse`               | `--color-neutral-0`     | `--color-neutral-900`          |
 | `--color-text-link`                  | `--color-primary-600`   | `--color-primary-300`          |
 | `--color-text-link-hover`            | `--color-primary-800`   | `--color-primary-100`          |
-| `--color-bg-base`                    | `--color-neutral-0`     | `--color-neutral-950`          |
-| `--color-bg-subtle`                  | `--color-neutral-50`    | `--color-neutral-900`          |
-| `--color-bg-elevated`                | `--color-neutral-0`     | `--color-neutral-800`          |
-| `--color-bg-muted`                   | `--color-neutral-100`   | `--color-neutral-700`          |
+| `--color-bg-canvas`                  | `--color-neutral-0`     | `--color-neutral-950`          |
+| `--color-bg-base`                    | `--color-neutral-0`     | `--color-neutral-800`          |
+| `--color-bg-subtle`                  | `--color-neutral-50`    | `--color-neutral-700`          |
+| `--color-bg-stripe`                  | `--color-neutral-50`    | `--color-neutral-900`          |
+| `--color-bg-elevated`                | `--color-neutral-0`     | `--color-neutral-700`          |
+| `--color-bg-muted`                   | `--color-neutral-100`   | `--color-neutral-600`          |
 | `--color-bg-overlay`                 | `rgba(0,0,0,0.5)`       | `rgba(0,0,0,0.5)`              |
-| `--color-border-default`             | `--color-neutral-200`   | `--color-neutral-700`          |
-| `--color-border-strong`              | `--color-neutral-400`   | `--color-neutral-500`          |
+| `--color-border-subtle`              | `--color-neutral-200`   | `color-mix(in srgb, --color-neutral-700, --color-neutral-800)` |
+| `--color-border-default`             | `--color-neutral-200`   | `--color-neutral-400`          |
+| `--color-border-strong`              | `--color-neutral-400`   | `--color-neutral-300`          |
 | `--color-border-focus`               | `--color-primary-500`   | `--color-primary-500`          |
-| `--color-brand-default`              | `--color-primary-600`   | `--color-primary-400`          |
-| `--color-brand-hover`                | `--color-primary-700`   | `--color-primary-300`          |
-| `--color-brand-active`               | `--color-primary-800`   | `--color-primary-200`          |
+| `--color-brand-default`              | `--color-primary-600`   | `--color-primary-500`          |
+| `--color-brand-hover`                | `--color-primary-700`   | `--color-primary-600`          |
+| `--color-brand-active`               | `--color-primary-800`   | `--color-primary-700`          |
+| `--color-brand-text`                 | `--color-primary-700`   | `--color-primary-300`          |
 | `--color-brand-subtle`               | `--color-primary-50`    | `rgba(75, 145, 195, 0.1)`      |
 | `--color-brand-muted`                | `--color-primary-100`   | `rgba(75, 145, 195, 0.2)`      |
 | `--color-brand-secondary-default`    | `--color-secondary-500` | `--color-secondary-500`        |
@@ -230,7 +234,9 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-info-subtle`                | `--color-info-50`       | `rgba(6, 182, 212, 0.15)`      |
 | `--color-info-muted`                 | `--color-info-100`      | `rgba(6, 182, 212, 0.25)`      |
 
-In dark mode the background hierarchy steps from darkest page to lightest hover surface: `bg-base` (950) -> `bg-subtle` (900) -> `bg-elevated` (800) -> `bg-muted` (700). Elevation is conveyed through surface lightness rather than drop shadows, so `bg-muted` sits *above* `bg-elevated` to keep hover states inside elevated surfaces readable.
+In dark mode the surface model splits the page (`bg-canvas`, deepest) from the surfaces that sit on it (`bg-base`, `bg-subtle`, `bg-elevated`, `bg-muted`). Canvas stays at neutral-950 while every component surface lifts to neutral-800 or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `bg-stripe` (neutral-900) is the alternating-row tone for tables; it sits *below* `bg-base` to keep odd rows darker than the surrounding card. `bg-muted` (neutral-600) is the topmost hover-state tone so it stays readable inside elevated surfaces.
+
+`--color-brand-text` is the brand colour used as a **foreground** on a non-brand surface (selected dropdown row, today marker, sorted column header, spinner, active paginator page). It needs a 4.5:1 contrast against `--color-bg-base`, so light mode uses `primary-700` and dark mode uses `primary-300`. `--color-brand-default` stays free to be optimized as a surface (button background, badge background) without dragging the text-on-surface contrast along with it.
 
 ### 2.3 Spacing, base scale
 
@@ -459,7 +465,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS Tokens
- * Sync source: @eagami/ui@1.3.0 (packages/ui/src/styles/tokens/*.scss)
+ * Sync source: @eagami/ui@2.3.0 (packages/ui/src/styles/tokens/*.scss)
  * Do not edit by hand; regenerate from the upstream SCSS.
  * ------------------------------------------------------------------------- */
 
@@ -532,19 +538,22 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
   --color-text-tertiary: var(--color-neutral-400);
-  --color-text-disabled: var(--color-neutral-300);
+  --color-text-disabled: var(--color-neutral-400);
   --color-text-inverse: var(--color-neutral-0);
   --color-text-link: var(--color-primary-600);
   --color-text-link-hover: var(--color-primary-800);
 
   /* Semantic: background */
+  --color-bg-canvas: var(--color-neutral-0);
   --color-bg-base: var(--color-neutral-0);
   --color-bg-subtle: var(--color-neutral-50);
+  --color-bg-stripe: var(--color-neutral-50);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-muted: var(--color-neutral-100);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
   /* Semantic: border */
+  --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
   --color-border-focus: var(--color-primary-500);
@@ -553,6 +562,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-brand-default: var(--color-primary-600);
   --color-brand-hover: var(--color-primary-700);
   --color-brand-active: var(--color-primary-800);
+  --color-brand-text: var(--color-primary-700);
   --color-brand-subtle: var(--color-primary-50);
   --color-brand-muted: var(--color-primary-100);
   --color-brand-secondary-default: var(--color-secondary-500);
@@ -761,24 +771,28 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --color-text-primary: var(--color-neutral-50);
-    --color-text-secondary: var(--color-neutral-400);
+    --color-text-secondary: var(--color-neutral-300);
     --color-text-tertiary: var(--color-neutral-500);
-    --color-text-disabled: var(--color-neutral-700);
+    --color-text-disabled: var(--color-neutral-500);
     --color-text-inverse: var(--color-neutral-900);
     --color-text-link: var(--color-primary-300);
     --color-text-link-hover: var(--color-primary-100);
 
-    --color-bg-base: var(--color-neutral-950);
-    --color-bg-subtle: var(--color-neutral-900);
-    --color-bg-elevated: var(--color-neutral-800);
-    --color-bg-muted: var(--color-neutral-700);
+    --color-bg-canvas: var(--color-neutral-950);
+    --color-bg-base: var(--color-neutral-800);
+    --color-bg-subtle: var(--color-neutral-700);
+    --color-bg-stripe: var(--color-neutral-900);
+    --color-bg-elevated: var(--color-neutral-700);
+    --color-bg-muted: var(--color-neutral-600);
 
-    --color-border-default: var(--color-neutral-700);
-    --color-border-strong: var(--color-neutral-500);
+    --color-border-subtle: color-mix(in srgb, var(--color-neutral-700), var(--color-neutral-800));
+    --color-border-default: var(--color-neutral-400);
+    --color-border-strong: var(--color-neutral-300);
 
-    --color-brand-default: var(--color-primary-400);
-    --color-brand-hover: var(--color-primary-300);
-    --color-brand-active: var(--color-primary-200);
+    --color-brand-default: var(--color-primary-500);
+    --color-brand-hover: var(--color-primary-600);
+    --color-brand-active: var(--color-primary-700);
+    --color-brand-text: var(--color-primary-300);
     --color-brand-subtle: rgba(75, 145, 195, 0.1);
     --color-brand-muted: rgba(75, 145, 195, 0.2);
 
@@ -803,24 +817,28 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 :root[data-theme='dark'] {
   color-scheme: dark;
   --color-text-primary: var(--color-neutral-50);
-  --color-text-secondary: var(--color-neutral-400);
+  --color-text-secondary: var(--color-neutral-300);
   --color-text-tertiary: var(--color-neutral-500);
-  --color-text-disabled: var(--color-neutral-700);
+  --color-text-disabled: var(--color-neutral-500);
   --color-text-inverse: var(--color-neutral-900);
   --color-text-link: var(--color-primary-300);
   --color-text-link-hover: var(--color-primary-100);
 
-  --color-bg-base: var(--color-neutral-950);
-  --color-bg-subtle: var(--color-neutral-900);
-  --color-bg-elevated: var(--color-neutral-800);
-  --color-bg-muted: var(--color-neutral-700);
+  --color-bg-canvas: var(--color-neutral-950);
+  --color-bg-base: var(--color-neutral-800);
+  --color-bg-subtle: var(--color-neutral-700);
+  --color-bg-stripe: var(--color-neutral-900);
+  --color-bg-elevated: var(--color-neutral-700);
+  --color-bg-muted: var(--color-neutral-600);
 
-  --color-border-default: var(--color-neutral-700);
-  --color-border-strong: var(--color-neutral-500);
+  --color-border-subtle: color-mix(in srgb, var(--color-neutral-700), var(--color-neutral-800));
+  --color-border-default: var(--color-neutral-400);
+  --color-border-strong: var(--color-neutral-300);
 
-  --color-brand-default: var(--color-primary-400);
-  --color-brand-hover: var(--color-primary-300);
-  --color-brand-active: var(--color-primary-200);
+  --color-brand-default: var(--color-primary-500);
+  --color-brand-hover: var(--color-primary-600);
+  --color-brand-active: var(--color-primary-700);
+  --color-brand-text: var(--color-primary-300);
   --color-brand-subtle: rgba(75, 145, 195, 0.1);
   --color-brand-muted: rgba(75, 145, 195, 0.2);
 
@@ -860,7 +878,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Sync source: @eagami/ui@1.3.0
+ * Sync source: @eagami/ui@2.3.0
  */
 
 export const palette = {
@@ -949,6 +967,36 @@ export function setTheme(theme: Theme): void {
 ```
 
 `data-theme="light"` forces light mode even when the OS prefers dark. `data-theme="dark"` forces dark regardless of OS. Removing the attribute defers to `prefers-color-scheme`.
+
+### 3.5 Brand palette derivation
+
+The upstream Angular library accepts a single brand hex via `provideEagamiUi({ palette: { primary: { base: '#…' } } })` and derives a full ten-shade scale in [OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab) space, holding hue and chroma steady while stepping lightness. Every brand-role pairing (text-on-surface, surface-on-canvas) is asserted against WCAG 2.1 AA at bootstrap; a contrast violation throws before the app loads.
+
+The React integration uses static CSS tokens, so the same workflow is offline: pick a base hex, derive the ten shades, paste them into the `--color-primary-*` block of `eagami-tokens.css`. A small TypeScript helper (mirroring `packages/ui/src/lib/palette/derive-palette.ts` in the upstream repo) can do the OKLCH derivation at build time:
+
+```ts
+import { converter, formatHex } from 'culori';
+
+const toOklch = converter('oklch');
+const toHex = formatHex;
+
+const TARGET_L: Record<string, number> = {
+  '50': 0.96,  '100': 0.90, '200': 0.82, '300': 0.72, '400': 0.62,
+  '500': 0.52, '600': 0.42, '700': 0.34, '800': 0.26, '900': 0.18,
+};
+
+export function derivePrimaryScale(baseHex: string): Record<string, string> {
+  const anchor = toOklch(baseHex);
+  if (!anchor) throw new Error(`Invalid hex: ${baseHex}`);
+  const out: Record<string, string> = {};
+  for (const [shade, L] of Object.entries(TARGET_L)) {
+    out[shade] = toHex({ mode: 'oklch', l: L, c: anchor.c, h: anchor.h ?? 0 });
+  }
+  return out;
+}
+```
+
+Run the helper in a one-off script when picking a new brand colour and copy the result into `eagami-tokens.css`. For brand books that pin specific hexes, override individual shades after derivation. After regenerating, verify in dev tools that text-on-surface and surface-on-canvas pairs still meet AA — the Angular library does this assertion at bootstrap; with static tokens you assert manually.
 
 ---
 

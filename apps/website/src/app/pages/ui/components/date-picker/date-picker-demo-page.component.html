@@ -5,17 +5,17 @@
     [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder"
     [(value)]="datePickerValue" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
-  <div class="demo-stack">
-    <ea-date-picker
-      [label]="messages().ui.component.demos.datePicker.withHintLabel"
-      [hint]="messages().ui.component.demos.datePicker.hintAnyFutureDate"
-      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
-    <ea-date-picker
-      [label]="messages().ui.component.demos.datePicker.withErrorLabel"
-      [errorMsg]="messages().ui.component.demos.datePicker.errorRequired"
-      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
-  </div>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
+  <ea-date-picker
+    [label]="messages().ui.component.demos.datePicker.appointmentLabel"
+    [hint]="messages().ui.component.demos.datePicker.hintAnyFutureDate"
+    [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
+  <ea-date-picker
+    [label]="messages().ui.component.demos.datePicker.appointmentLabel"
+    [errorMsg]="messages().ui.component.demos.datePicker.errorRequired"
+    [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
 
   <h2>{{ messages().ui.component.sectionHeadings.formatVariants }}</h2>
   <div class="demo-stack">
@@ -47,22 +47,24 @@
     [weekStartsOn]="0" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-date-picker
-    size="sm"
-    [label]="messages().ui.component.common.small"
-    placeholder="sm" />
-  <ea-date-picker
-    size="md"
-    [label]="messages().ui.component.common.medium"
-    placeholder="md" />
-  <ea-date-picker
-    size="lg"
-    [label]="messages().ui.component.common.large"
-    placeholder="lg" />
+  <div class="demo-stack">
+    <ea-date-picker
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+    <ea-date-picker
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+    <ea-date-picker
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-date-picker
-    [label]="messages().ui.component.common.disabled"
+    [label]="messages().ui.component.demos.datePicker.appointmentLabel"
     [disabled]="true"
     [placeholder]="messages().ui.component.demos.datePicker.pickDatePlaceholder" />
 </web-ui-component-demo-layout>

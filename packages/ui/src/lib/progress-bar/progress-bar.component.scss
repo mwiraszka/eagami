@@ -18,16 +18,16 @@
   }
 
   &__label {
-    font-size: var(--text-label-sm-size);
-    font-weight: var(--text-label-sm-weight);
-    line-height: var(--text-label-sm-lh);
+    font-size: var(--text-label-md-size);
+    font-weight: var(--text-label-md-weight);
+    line-height: var(--text-label-md-lh);
     color: var(--color-text-primary);
   }
 
   &__value {
-    font-size: var(--text-label-sm-size);
-    font-weight: var(--text-label-sm-weight);
-    line-height: var(--text-label-sm-lh);
+    font-size: var(--text-label-md-size);
+    font-weight: var(--text-label-md-weight);
+    line-height: var(--text-label-md-lh);
     color: var(--color-text-secondary);
   }
 

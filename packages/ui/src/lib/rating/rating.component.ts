@@ -5,6 +5,7 @@ import {
   ElementRef,
   Type,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
@@ -56,6 +57,19 @@ export type RatingSize = 'sm' | 'md' | 'lg';
   ],
 })
 export class RatingComponent implements ControlValueAccessor {
+  constructor() {
+    // Keep the value signal inside the [min, max] range even when set via
+    // direct template binding (`[value]="0"` would otherwise bypass
+    // `writeValue`'s clamp).
+    effect(() => {
+      const current = this.value();
+      const clamped = this.clamp(current);
+      if (clamped !== current) {
+        this.value.set(clamped);
+      }
+    });
+  }
+
   private readonly starsEl = viewChild<ElementRef<HTMLElement>>('starsEl');
   protected readonly i18n = inject(EagamiI18nService);
 
@@ -63,6 +77,7 @@ export class RatingComponent implements ControlValueAccessor {
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   readonly size = input<RatingSize>('md');
+  readonly min = input<number>(0);
   readonly max = input<number>(5);
   readonly allowHalf = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -168,7 +183,9 @@ export class RatingComponent implements ControlValueAccessor {
 
   protected onPointerMove(event: PointerEvent, pos: number): void {
     if (!this.isInteractive()) return;
-    this.hoverValue.set(this.computePointerValue(event, pos));
+    // Clamp the hover preview to `min` so the user never sees a star preview
+    // below the floor — matches what an Enter/click would actually commit.
+    this.hoverValue.set(Math.max(this.min(), this.computePointerValue(event, pos)));
     this.hoverChanged.emit(this.hoverValue());
   }
 
@@ -181,7 +198,10 @@ export class RatingComponent implements ControlValueAccessor {
   protected onClick(event: MouseEvent, pos: number): void {
     if (!this.isInteractive()) return;
     const next = this.computePointerValue(event, pos);
-    if (this.clearable() && next === this.value()) {
+    // Click-same-to-clear only applies when `min === 0`; with a non-zero
+    // floor the clear-to-zero action is meaningless, so a re-click is a no-op
+    // (just like ArrowDown can't lower past `min`).
+    if (this.clearable() && this.min() === 0 && next === this.value()) {
       this.commit(0);
     } else {
       this.commit(next);
@@ -202,31 +222,32 @@ export class RatingComponent implements ControlValueAccessor {
   protected onKeydown(event: KeyboardEvent): void {
     if (!this.isInteractive()) return;
     const step = this.step();
+    const min = this.min();
     const max = this.max();
     let next: number | null = null;
 
     switch (event.key) {
       case 'ArrowLeft':
       case 'ArrowDown':
-        next = Math.max(0, this.value() - step);
+        next = Math.max(min, this.value() - step);
         break;
       case 'ArrowRight':
       case 'ArrowUp':
         next = Math.min(max, this.value() + step);
         break;
       case 'Home':
-        next = step;
+        next = Math.max(min, step);
         break;
       case 'End':
         next = max;
         break;
       case 'Delete':
       case 'Backspace':
-        next = 0;
+        next = min;
         break;
       default:
         if (/^[0-9]$/.test(event.key)) {
-          next = Math.min(max, Math.max(0, parseInt(event.key, 10)));
+          next = Math.min(max, Math.max(min, parseInt(event.key, 10)));
         }
     }
 
@@ -246,10 +267,11 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   private clamp(value: number): number {
+    const min = this.min();
     const max = this.max();
     const step = this.step();
     const snapped = Math.round(value / step) * step;
-    return Math.min(max, Math.max(0, snapped));
+    return Math.min(max, Math.max(min, snapped));
   }
 
   private computePointerValue(event: { clientX: number }, pos: number): number {

@@ -25,25 +25,24 @@
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
   <ea-file-uploader
     class="demo-form-narrow"
-    size="sm"
-    [label]="messages().ui.component.common.small" />
+    size="sm" />
   <ea-file-uploader
     class="demo-form-narrow"
-    size="md"
-    [label]="messages().ui.component.common.medium" />
+    size="md" />
   <ea-file-uploader
     class="demo-form-narrow"
-    size="lg"
-    [label]="messages().ui.component.common.large" />
+    size="lg" />
 
-  <h2>{{ messages().ui.component.sectionHeadings.hintAndError }}</h2>
+  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
   <ea-file-uploader
     class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.withHintLabel"
+    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
     [hint]="messages().ui.component.demos.fileUploader.withHintHint" />
+
+  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
   <ea-file-uploader
     class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.withErrorLabel"
+    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
     [errorMsg]="messages().ui.component.demos.fileUploader.withErrorText"
     [required]="true" />
 
@@ -57,6 +56,6 @@
   <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
   <ea-file-uploader
     class="demo-form-narrow"
-    [label]="messages().ui.component.common.disabled"
+    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
     [disabled]="true" />
 </web-ui-component-demo-layout>

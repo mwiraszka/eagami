@@ -2,7 +2,19 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [2.2.0] - 2026-05-24
+## [2.3.0] - 2026-05-28
+
+### Added
+
+- Document the `provideEagamiUi({ palette })` brand-palette derivation pipeline on the `/ui/design-tokens` page, including the OKLCH workflow, per-shade overrides, role remapping, and the WCAG 2.1 AA bootstrap assertion.
+- Surface the new `--color-bg-canvas`, `--color-bg-stripe`, `--color-border-subtle`, and `--color-brand-text` semantic swatches in the design tokens reference.
+
+### Changed
+
+- Pick up @eagami/ui v2.3.0.
+- Refresh the design principles on `/ui` as a responsive card grid (three columns wide, two below 1200px, one below 700px), each card pairing a 3D gray ring + green checkmark with the principle title and body. Trailing periods on the six principle titles removed.
+
+## [2.2.0] - 2026-05-25
 
 ### Added
 
@@ -424,6 +436,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.3.0]: https://github.com/mwiraszka/eagami/compare/website-v2.2.0...website-v2.3.0
 [2.2.0]: https://github.com/mwiraszka/eagami/compare/website-v2.1.0...website-v2.2.0
 [2.1.0]: https://github.com/mwiraszka/eagami/compare/website-v2.0.0...website-v2.1.0
 [2.0.0]: https://github.com/mwiraszka/eagami/compare/website-v1.5.0...website-v2.0.0

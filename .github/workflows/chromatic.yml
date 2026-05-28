@@ -1,0 +1,47 @@
+name: Chromatic
+
+on:
+  pull_request:
+    paths:
+      - 'packages/ui/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/chromatic.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'packages/ui/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/chromatic.yml'
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Chromatic needs full history to diff against the base commit
+          # and to enable TurboSnap's dependency-graph analysis.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @eagami/ui build-storybook
+
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/ui
+          storybookBuildDir: dist/storybook/eagami-ui
+          # TurboSnap — only re-snapshot stories whose dependencies actually
+          # changed in this PR, saving quota on large library refactors.
+          onlyChanged: true
+          # Don't block this job waiting for human review in Chromatic; the
+          # status check on the PR signals review state separately.
+          exitOnceUploaded: true

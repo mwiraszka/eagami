@@ -12,7 +12,7 @@
   font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  border-top: var(--border-width-thin) solid var(--color-border-default);
+  border-top: var(--border-width-thin) solid var(--color-border-subtle);
 
   // ---------------------------------------------------------------------------
   // Placement
@@ -93,9 +93,9 @@
   // ---------------------------------------------------------------------------
   &__page-btn--active .ea-button {
     font-weight: var(--font-weight-medium);
-    border-color: var(--color-brand-default);
+    border-color: var(--color-brand-text);
     background-color: var(--color-brand-subtle);
-    color: var(--color-brand-default);
+    color: var(--color-brand-text);
 
     &:hover:not(.ea-button--disabled) {
       background-color: var(--color-brand-muted);

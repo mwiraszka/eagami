@@ -22,6 +22,7 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
+import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 
 /** Visual size of the time picker trigger. */
@@ -65,6 +66,7 @@ interface ParsedTime {
     ClockIconComponent,
     NgClass,
     PopoverComponent,
+    XIconComponent,
   ],
   providers: [
     {
@@ -198,6 +200,10 @@ export class TimePickerComponent implements ControlValueAccessor {
     'ea-time-picker__trigger--open': this.isOpen(),
     'ea-time-picker__trigger--disabled': this.isDisabled(),
     'ea-time-picker__trigger--placeholder': !this.hasValue(),
+  }));
+
+  readonly wrapperClasses = computed(() => ({
+    [`ea-time-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
   // ─── ControlValueAccessor ─────────────────────────────────────────────
@@ -367,6 +373,10 @@ export class TimePickerComponent implements ControlValueAccessor {
     } else if (event.key === 'Enter') {
       event.preventDefault();
       this.flushBuffer();
+      // Commit the currently displayed time even if it wasn't edited, so a
+      // user who opens the picker on a null value and hits Enter gets the
+      // default `00:00` (the fallback returned by `parsed()`).
+      this.commit(this.parsed());
       this.close();
       this.triggerEl()?.nativeElement.focus();
     } else if (event.key === 'Escape') {

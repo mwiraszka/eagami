@@ -5,6 +5,7 @@ import type { Preview } from '@storybook/angular';
 import docJson from '../documentation.json';
 import { _eagamiI18nLocaleOverride } from '../src/lib/i18n/_storybook-locale-override';
 import { EagamiLocale, provideEagamiUi } from '../src/public-api';
+
 // Story-layout utilities (`.story-row`, `.story-stack`, etc.) live in
 // `.storybook/preview-head.html` as inline CSS injected into every story
 // iframe. Earlier attempts to load them via SCSS import or the host project's
@@ -19,6 +20,25 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    docs: {
+      // Disable @storybook/angular's compodoc-driven argType extraction.
+      // Storybook 10.4 + the chromatic runtime crashed with "Invalid
+      // component undefined" inside the extractor for every story; stories
+      // that need controls declare their own `argTypes` explicitly so we
+      // lose nothing by skipping the auto-extract.
+      extractArgTypes: () => null,
+    },
+    chromatic: {
+      // Capture every story twice (light + dark) by driving the `theme`
+      // toolbar global, which the decorator below maps onto `<html data-
+      // theme="…">`. Pause Storybook's animations so screenshots aren't
+      // racy with transitions.
+      modes: {
+        light: { globals: { theme: 'light' } },
+        dark: { globals: { theme: 'dark' } },
+      },
+      pauseAnimationAtEnd: true,
     },
   },
   globalTypes: {

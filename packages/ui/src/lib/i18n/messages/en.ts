@@ -80,6 +80,7 @@ export const en: EagamiMessages = {
   input: {
     showPassword: 'Show password',
     hidePassword: 'Hide password',
+    clear: 'Clear',
   },
   menu: {
     label: 'Menu',

@@ -129,14 +129,29 @@ export class PopoverComponent {
     () => this.position()?.placement ?? this.placement(),
   );
 
+  /** Latches true once the post-rAF reposition has run, so the surface is
+   * only revealed after its dimensions are guaranteed stable. Reset on close. */
+  private readonly stable = signal(false);
+
+  /** True once the first `reposition()` has resolved a placement on a
+   * laid-out surface. Drives the `--positioned` class. */
+  readonly isPositioned = computed(
+    () => this.open() && this.position() !== null && this.stable(),
+  );
+
+  /** Class list for the surface. Computed in TS so the placement key (with
+   * its interpolated suffix) and the positioned modifier compose cleanly. */
+  readonly surfaceClass = computed(
+    () =>
+      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}` +
+      (this.isPositioned() ? ' ea-popover__surface--positioned' : ''),
+  );
+
   /** Inline style applied to the surface element. */
   readonly surfaceStyle = computed<Record<string, string>>(() => {
     if (!this.open()) return { display: 'none' };
     const p = this.position();
-    // Before the first reposition, hide the surface — at this point it's
-    // sitting at the top-left of the viewport with no coordinates applied
-    // yet, and we don't want a flash on open.
-    if (!p) return { visibility: 'hidden' };
+    if (!p) return {};
     const style: Record<string, string> = {
       top: `${p.top}px`,
       left: `${p.left}px`,
@@ -183,6 +198,7 @@ export class PopoverComponent {
       const isOpen = this.open();
       if (!surface || !anchor || !isOpen) {
         this.position.set(null);
+        this.stable.set(false);
         return;
       }
       // Re-read inputs so signal subscriptions stay current after a re-open.
@@ -191,7 +207,26 @@ export class PopoverComponent {
       this.flip();
       this.clamp();
       this.matchAnchorWidth();
+      // First reposition runs synchronously off the open effect — fast, but
+      // the surface is still transitioning out of `display: none` and the
+      // first `getBoundingClientRect` can report the surface's natural width
+      // even when that overflows the viewport. We deliberately keep the
+      // surface hidden (`visibility: hidden` from CSS) until the next rAF
+      // when the browser has finished laying it out at its real dimensions;
+      // the second reposition then uses accurate measurements and the
+      // `stable` latch flips, revealing the surface at the final position
+      // with no visible jump. SSR / non-browser hosts fall back to flipping
+      // `stable` synchronously.
       this.reposition();
+      if (typeof requestAnimationFrame !== 'undefined') {
+        requestAnimationFrame(() => {
+          if (!this.open()) return;
+          this.reposition();
+          this.stable.set(true);
+        });
+      } else {
+        this.stable.set(true);
+      }
     });
 
     // Watch the surface's own size and reposition whenever it changes. The

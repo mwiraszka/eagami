@@ -168,6 +168,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
     'ea-multi-select__trigger--placeholder': !this.hasValue(),
   }));
 
+  readonly menuClasses = computed(() => ({
+    [`ea-multi-select__popover--${this.size()}`]: true,
+  }));
+
+  readonly wrapperClasses = computed(() => ({
+    [`ea-multi-select__trigger-wrapper--${this.size()}`]: true,
+  }));
+
   // ─── ControlValueAccessor ─────────────────────────────────────────────
   writeValue(val: readonly string[] | null | undefined): void {
     this.value.set(val ?? []);

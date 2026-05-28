@@ -18,7 +18,7 @@ const SAMPLE_FILES: File[] = [
 ];
 
 const meta: Meta<FileUploaderComponent> = {
-  title: 'Components/File uploader',
+  title: 'Components/File Uploader',
   component: FileUploaderComponent,
   tags: ['autodocs'],
   parameters: {
