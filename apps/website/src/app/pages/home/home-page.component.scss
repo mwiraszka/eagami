@@ -282,7 +282,7 @@
   display: inline-flex;
   align-items: center;
   height: 48px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   color: var(--color-text-secondary);
@@ -607,7 +607,7 @@
 
 .project-card__description {
   flex: 1;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-text-secondary);
 
@@ -617,7 +617,7 @@
 }
 
 .project-card__url {
-  font-size: 13px;
+  font-size: 14px;
   font-family: var(--font-family-mono);
   color: var(--color-text-link);
 }
