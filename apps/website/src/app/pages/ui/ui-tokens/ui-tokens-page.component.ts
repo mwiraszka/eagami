@@ -214,6 +214,8 @@ export class UiTokensPageComponent {
 
   protected readonly shadowSizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
+  protected readonly reliefVariants = ['bevel', 'bevel-strong', 'well', 'well-strong'];
+
   protected readonly radii = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full'];
 
   protected readonly durations: NamedToken[] = [

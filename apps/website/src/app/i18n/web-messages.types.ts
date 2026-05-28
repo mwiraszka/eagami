@@ -150,6 +150,9 @@ export interface WebMessages {
       paletteIntro: string;
       paletteOverrides: string;
       paletteContrast: string;
+      elevationDrop: string;
+      elevationRelief: string;
+      elevationReliefBefore: string;
       colorsPrimary: string;
       colorsSecondary: string;
       colorsNeutral: string;
@@ -158,6 +161,9 @@ export interface WebMessages {
       typographyFamilies: string;
       typographySizes: string;
       typographyWeights: string;
+      typographyComposites: string;
+      typographyCompositesBefore: string;
+      typographySectionHeadingSample: string;
       motionSimulate: string;
       motionDurations: string;
       motionEasings: string;

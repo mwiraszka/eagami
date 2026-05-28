@@ -260,6 +260,10 @@ export const esES: WebMessages = {
         'Fija tonos concretos o reasigna qué tono derivado respalda cada rol semántico:',
       paletteContrast:
         'Cada combinación de rol de marca (texto sobre superficie, superficie sobre lienzo) se valida contra WCAG 2.1 AA al arrancar. Una combinación no conforme lanza un error antes de cargar la aplicación, así que un fallo de contraste en el color de marca se detecta al boot, no en producción.',
+      elevationDrop: 'Sombras proyectadas',
+      elevationRelief: 'Relieve y hueco',
+      elevationReliefBefore:
+        '<code>--shadow-bevel</code> combina un reflejo interior (arriba) con una sombra interior (abajo) para superficies que deben verse elevadas. <code>--shadow-well</code> invierte la iluminación para un aspecto hundido. Combina con <code>--shadow-*</code> para añadir sombra ambiental: <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
       colorsPrimary: 'Primario',
       colorsSecondary: 'Secundario',
       colorsNeutral: 'Neutro',
@@ -268,6 +272,10 @@ export const esES: WebMessages = {
       typographyFamilies: 'Familias',
       typographySizes: 'Tamaños',
       typographyWeights: 'Pesos',
+      typographyComposites: 'Estilos compuestos',
+      typographyCompositesBefore:
+        'Los tokens compuestos agrupan tamaño, peso, altura de línea (y a veces familia) para un rol específico. <code>--text-section-heading-*</code> es el primer compuesto que fija una familia tipográfica; úsalo para los títulos <code>&lt;h2&gt;</code> de subsección en páginas de docs y marketing.',
+      typographySectionHeadingSample: 'Título de sección con voz de marca',
       motionSimulate: 'Simular',
       motionDurations: 'Duraciones',
       motionEasings: 'Curvas',

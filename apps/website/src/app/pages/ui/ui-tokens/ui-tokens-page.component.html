@@ -175,6 +175,24 @@
         </li>
       }
     </ul>
+
+    <h3 class="tokens-subsection__title">{{
+      messages().ui.tokens.typographyComposites
+    }}</h3>
+    <p
+      class="tokens-subsection__lede"
+      [innerHTML]="messages().ui.tokens.typographyCompositesBefore">
+    </p>
+    <ul
+      class="token-list"
+      role="list">
+      <li class="token-list__item">
+        <span class="section-heading-sample">{{
+          messages().ui.tokens.typographySectionHeadingSample
+        }}</span>
+        <code>--text-section-heading-*</code>
+      </li>
+    </ul>
   </section>
 
   <!-- ─── Spacing ─────────────────────────────────────────────────────── -->
@@ -195,12 +213,30 @@
   <!-- ─── Elevation ───────────────────────────────────────────────────── -->
   <section class="tokens-section">
     <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.elevation }}</h2>
+
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.elevationDrop }}</h3>
     <div class="elevation-grid">
       @for (size of shadowSizes; track size) {
         <figure class="elevation-card">
           <span class="elevation-card__surface elevation-card--{{ size }}"></span>
           <figcaption class="elevation-card__caption">
             <code>--shadow-{{ size }}</code>
+          </figcaption>
+        </figure>
+      }
+    </div>
+
+    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.elevationRelief }}</h3>
+    <p
+      class="tokens-subsection__lede"
+      [innerHTML]="messages().ui.tokens.elevationReliefBefore">
+    </p>
+    <div class="elevation-grid">
+      @for (variant of reliefVariants; track variant) {
+        <figure class="elevation-card">
+          <span class="elevation-card__surface elevation-card--{{ variant }}"></span>
+          <figcaption class="elevation-card__caption">
+            <code>--shadow-{{ variant }}</code>
           </figcaption>
         </figure>
       }

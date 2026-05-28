@@ -265,6 +265,10 @@ export const frFR: WebMessages = {
         'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
       paletteContrast:
         'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.1 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
+      elevationDrop: 'Ombres portées',
+      elevationRelief: 'Relief et creux',
+      elevationReliefBefore:
+        '<code>--shadow-bevel</code> associe un reflet intérieur (haut) à une ombre intérieure (bas) pour les surfaces qui doivent paraître surélevées. <code>--shadow-well</code> inverse l’éclairage pour un effet en creux. Combinez avec <code>--shadow-*</code> pour ajouter une ombre portée : <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
       colorsPrimary: 'Primaire',
       colorsSecondary: 'Secondaire',
       colorsNeutral: 'Neutre',
@@ -273,6 +277,10 @@ export const frFR: WebMessages = {
       typographyFamilies: 'Familles',
       typographySizes: 'Tailles',
       typographyWeights: 'Graisses',
+      typographyComposites: 'Styles composites',
+      typographyCompositesBefore:
+        'Les tokens composites regroupent une taille, une graisse, une hauteur de ligne (et parfois une famille) pour un rôle précis. <code>--text-section-heading-*</code> est le premier composite qui fixe une famille — utilisez-le pour les titres <code>&lt;h2&gt;</code> de sous-section sur les pages de docs et marketing.',
+      typographySectionHeadingSample: 'Titre de section voix de marque',
       motionSimulate: 'Simuler',
       motionDurations: 'Durées',
       motionEasings: 'Courbes',
