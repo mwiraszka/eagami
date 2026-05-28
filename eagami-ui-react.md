@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 2.3.0
-source: '@eagami/ui@2.3.0 (https://github.com/mwiraszka/eagami)'
+version: 2.4.0
+source: '@eagami/ui@2.4.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-05-28
 audience: human developers and AI coding agents
 purpose: >
@@ -333,6 +333,7 @@ Each role exposes three custom properties: `size`, `weight`, `lh`.
 | `h2`          | 3xl         | semibold| snug    |
 | `h3`          | 2xl         | semibold| snug    |
 | `h4`          | xl          | semibold| snug    |
+| `section-heading` | xl      | semibold| snug    (+ brand family) |
 | `body-lg`     | lg          | regular | relaxed |
 | `body-md`     | md          | regular | normal  |
 | `body-sm`     | sm          | regular | normal  |
@@ -406,6 +407,22 @@ Usage example:
 | `--shadow-xl` | `0 12px 18px -4px rgba(255,255,255,0.05), 0 5px 8px -4px rgba(255,255,255,0.03)`                         |
 | `--shadow-2xl`| `0 16px 28px -8px rgba(255,255,255,0.06)`                                                                |
 
+**Bevel and well (relief):** paired inset shadows for surfaces that should read as raised or recessed. Compose with `--shadow-*` for an ambient drop, e.g. `box-shadow: var(--shadow-bevel), var(--shadow-sm);`. Dark-mode variants drop the highlight alpha and raise the shadow alpha so the relief still reads against the lifted `bg-base`.
+
+| Token                    | Light value                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| `--shadow-bevel`         | `inset 0 1px 1px rgba(255,255,255,0.85), inset 0 -1px 1.5px rgba(0,0,0,0.25)`              |
+| `--shadow-bevel-strong`  | `inset 0 1.5px 2px rgba(255,255,255,0.9), inset 0 -2px 3px rgba(0,0,0,0.3)`                |
+| `--shadow-well`          | `inset 0 1px 1.5px rgba(0,0,0,0.3), inset 0 -1px 0.5px rgba(255,255,255,0.5)`              |
+| `--shadow-well-strong`   | `inset 0 2px 3px rgba(0,0,0,0.4), inset 0 -1.5px 1px rgba(255,255,255,0.55)`               |
+
+| Token                    | Dark value                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------ |
+| `--shadow-bevel`         | `inset 0 1px 1px rgba(255,255,255,0.18), inset 0 -1px 1.5px rgba(0,0,0,0.6)`               |
+| `--shadow-bevel-strong`  | `inset 0 1.5px 2px rgba(255,255,255,0.22), inset 0 -2px 3px rgba(0,0,0,0.7)`               |
+| `--shadow-well`          | `inset 0 1px 1.5px rgba(0,0,0,0.55), inset 0 -1px 0.5px rgba(255,255,255,0.08)`            |
+| `--shadow-well-strong`   | `inset 0 2px 3px rgba(0,0,0,0.7), inset 0 -1.5px 1px rgba(255,255,255,0.12)`               |
+
 **Z-index:**
 
 | Token               | Value |
@@ -465,7 +482,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS Tokens
- * Sync source: @eagami/ui@2.3.0 (packages/ui/src/styles/tokens/*.scss)
+ * Sync source: @eagami/ui@2.4.0 (packages/ui/src/styles/tokens/*.scss)
  * Do not edit by hand; regenerate from the upstream SCSS.
  * ------------------------------------------------------------------------- */
 
@@ -668,6 +685,10 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --text-h4-size: var(--font-size-xl);
   --text-h4-weight: var(--font-weight-semibold);
   --text-h4-lh: var(--line-height-snug);
+  --text-section-heading-size: var(--font-size-xl);
+  --text-section-heading-weight: var(--font-weight-semibold);
+  --text-section-heading-lh: var(--line-height-snug);
+  --text-section-heading-family: var(--font-family-brand);
   --text-body-lg-size: var(--font-size-lg);
   --text-body-lg-weight: var(--font-weight-regular);
   --text-body-lg-lh: var(--line-height-relaxed);
@@ -719,6 +740,20 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+  /* Elevation: relief (bevel + well) */
+  --shadow-bevel:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1.5px rgba(0, 0, 0, 0.25);
+  --shadow-bevel-strong:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.3);
+  --shadow-well:
+    inset 0 1px 1.5px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 0.5px rgba(255, 255, 255, 0.5);
+  --shadow-well-strong:
+    inset 0 2px 3px rgba(0, 0, 0, 0.4),
+    inset 0 -1.5px 1px rgba(255, 255, 255, 0.55);
   --shadow-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.45);
   --shadow-focus-ring-error: 0 0 0 3px var(--color-error-200);
   --shadow-focus-ring-success: 0 0 0 3px var(--color-success-200);
@@ -811,6 +846,19 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
     --shadow-lg: 0 8px 12px -2px rgba(255, 255, 255, 0.08), 0 3px 5px -3px rgba(255, 255, 255, 0.05);
     --shadow-xl: 0 12px 18px -4px rgba(255, 255, 255, 0.05), 0 5px 8px -4px rgba(255, 255, 255, 0.03);
     --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.06);
+
+    --shadow-bevel:
+      inset 0 1px 1px rgba(255, 255, 255, 0.18),
+      inset 0 -1px 1.5px rgba(0, 0, 0, 0.6);
+    --shadow-bevel-strong:
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.22),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.7);
+    --shadow-well:
+      inset 0 1px 1.5px rgba(0, 0, 0, 0.55),
+      inset 0 -1px 0.5px rgba(255, 255, 255, 0.08);
+    --shadow-well-strong:
+      inset 0 2px 3px rgba(0, 0, 0, 0.7),
+      inset 0 -1.5px 1px rgba(255, 255, 255, 0.12);
   }
 }
 
@@ -857,6 +905,19 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --shadow-lg: 0 8px 12px -2px rgba(255, 255, 255, 0.08), 0 3px 5px -3px rgba(255, 255, 255, 0.05);
   --shadow-xl: 0 12px 18px -4px rgba(255, 255, 255, 0.05), 0 5px 8px -4px rgba(255, 255, 255, 0.03);
   --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.06);
+
+  --shadow-bevel:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1.5px rgba(0, 0, 0, 0.6);
+  --shadow-bevel-strong:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.22),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.7);
+  --shadow-well:
+    inset 0 1px 1.5px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0.5px rgba(255, 255, 255, 0.08);
+  --shadow-well-strong:
+    inset 0 2px 3px rgba(0, 0, 0, 0.7),
+    inset 0 -1.5px 1px rgba(255, 255, 255, 0.12);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -878,7 +939,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Sync source: @eagami/ui@2.3.0
+ * Sync source: @eagami/ui@2.4.0
  */
 
 export const palette = {

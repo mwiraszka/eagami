@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 2.3.0
-source: '@eagami/ui@2.3.0 (https://github.com/mwiraszka/eagami)'
+version: 2.4.0
+source: '@eagami/ui@2.4.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-05-28
 audience: human developers and AI coding agents
 purpose: >
@@ -364,6 +364,7 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 | `h2`         | 30   | semibold   | 1.375       | sans          |
 | `h3`         | 24   | semibold   | 1.375       | sans          |
 | `h4`         | 20   | semibold   | 1.375       | sans          |
+| `sectionHeading` | 20 | semibold | 1.375       | brand (Syne)  |
 | `bodyLg`     | 18   | regular    | 1.625       | sans          |
 | `bodyMd`     | 16   | regular    | 1.5         | sans          |
 | `bodySm`     | 14   | regular    | 1.5         | sans          |
@@ -412,6 +413,15 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 | `xl`        | `(0,20) blur 25 spread -5` at 10% + `(0,8) blur 10 spread -6` at 10% black                        | `(0,12) blur 18 spread -4` at 5% + `(0,5) blur 8 spread -4` at 3% white                        |
 | `2xl`       | `(0,25) blur 50 spread -12` at 25% black                                                         | `(0,16) blur 28 spread -8` at 6% white                                                         |
 | `inner`     | `inset (0,2) blur 4 spread 0` at 5% black                                                        | (same as light)                                                                                |
+
+**Bevel and well (relief)** — paired inset shadows that make a surface read as raised (`bevel`) or recessed (`well`). Flutter does not support inset `BoxShadow` natively; render with `CustomPainter`, stacked translucent `Container` overlays, or by painting a `BoxDecoration` whose `gradient` produces the highlight + shadow stops. Dark mode shifts the highlight to a lower alpha and the shadow to a higher alpha so the relief still reads on the lifted `surfaceBase` (`neutral800`).
+
+| Token            | Light                                                                                                        | Dark                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `bevel`          | inset `(0,1) blur 1` at 85% white + inset `(0,-1) blur 1.5` at 25% black                                     | inset `(0,1) blur 1` at 18% white + inset `(0,-1) blur 1.5` at 60% black                                      |
+| `bevelStrong`    | inset `(0,1.5) blur 2` at 90% white + inset `(0,-2) blur 3` at 30% black                                     | inset `(0,1.5) blur 2` at 22% white + inset `(0,-2) blur 3` at 70% black                                      |
+| `well`           | inset `(0,1) blur 1.5` at 30% black + inset `(0,-1) blur 0.5` at 50% white                                   | inset `(0,1) blur 1.5` at 55% black + inset `(0,-1) blur 0.5` at 8% white                                     |
+| `wellStrong`     | inset `(0,2) blur 3` at 40% black + inset `(0,-1.5) blur 1` at 55% white                                     | inset `(0,2) blur 3` at 70% black + inset `(0,-1.5) blur 1` at 12% white                                      |
 
 **Focus rings** (no dark-mode override):
 
@@ -503,7 +513,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Sync source: @eagami/ui@2.3.0 (packages/ui/src/styles/tokens/*.scss)
+// Sync source: @eagami/ui@2.4.0 (packages/ui/src/styles/tokens/*.scss)
 // =============================================================================
 
 @immutable
@@ -767,6 +777,7 @@ class EagamiTypography {
     required this.h2,
     required this.h3,
     required this.h4,
+    required this.sectionHeading,
     required this.bodyLg,
     required this.bodyMd,
     required this.bodySm,
@@ -782,6 +793,7 @@ class EagamiTypography {
   final TextStyle h2;
   final TextStyle h3;
   final TextStyle h4;
+  final TextStyle sectionHeading;
   final TextStyle bodyLg;
   final TextStyle bodyMd;
   final TextStyle bodySm;
@@ -792,6 +804,7 @@ class EagamiTypography {
   final TextStyle code;
 
   static const _sans = 'DM Sans';
+  static const _brand = 'Syne';
   static const _mono = 'JetBrains Mono';
 
   static const base = EagamiTypography(
@@ -800,6 +813,7 @@ class EagamiTypography {
     h2:      TextStyle(fontFamily: _sans, fontSize: 30, fontWeight: FontWeight.w600, height: 1.375),
     h3:      TextStyle(fontFamily: _sans, fontSize: 24, fontWeight: FontWeight.w600, height: 1.375),
     h4:      TextStyle(fontFamily: _sans, fontSize: 20, fontWeight: FontWeight.w600, height: 1.375),
+    sectionHeading: TextStyle(fontFamily: _brand, fontSize: 20, fontWeight: FontWeight.w600, height: 1.375),
     bodyLg:  TextStyle(fontFamily: _sans, fontSize: 18, fontWeight: FontWeight.w400, height: 1.625),
     bodyMd:  TextStyle(fontFamily: _sans, fontSize: 16, fontWeight: FontWeight.w400, height: 1.5),
     bodySm:  TextStyle(fontFamily: _sans, fontSize: 14, fontWeight: FontWeight.w400, height: 1.5),
