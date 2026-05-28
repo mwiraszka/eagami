@@ -253,6 +253,7 @@ export interface WebMessages {
         minimal: string;
         indeterminate: string;
         noResize: string;
+        resizing: string;
         disabledAndReadonly: string;
         password: string;
         autocompleteSection: string;

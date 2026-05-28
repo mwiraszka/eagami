@@ -375,6 +375,7 @@ export const pl: WebMessages = {
         minimal: 'minimalny',
         indeterminate: 'nieokreślony',
         noResize: 'bez zmiany rozmiaru',
+        resizing: 'zmiana rozmiaru',
         disabledAndReadonly: 'wyłączony i tylko do odczytu',
         password: 'hasło',
         autocompleteSection: 'autouzupełnianie',

@@ -372,6 +372,7 @@ export const el: WebMessages = {
         minimal: 'ελάχιστο',
         indeterminate: 'αόριστο',
         noResize: 'χωρίς αλλαγή μεγέθους',
+        resizing: 'αλλαγή μεγέθους',
         disabledAndReadonly: 'απενεργοποιημένο και μόνο για ανάγνωση',
         password: 'κωδικός',
         autocompleteSection: 'αυτόματη συμπλήρωση',
