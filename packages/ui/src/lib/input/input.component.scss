@@ -243,6 +243,24 @@
     cursor: not-allowed;
   }
 
+  // Suppress every native browser affordance Chrome / Safari paints onto an
+  // `<input>` (datalist picker arrow, credentials / contacts autofill icon,
+  // strong-password offer, caps-lock indicator). The library renders its own
+  // affordances inside the wrapper; the native ones float on top of them and
+  // break the themed look. `!important` is required because these pseudo
+  // elements ship with user-agent `!important` rules.
+  &::-webkit-calendar-picker-indicator,
+  &::-webkit-credentials-auto-fill-button,
+  &::-webkit-contacts-auto-fill-button,
+  &::-webkit-strong-password-auto-fill-button,
+  &::-webkit-caps-lock-indicator {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+  }
+
   // Remove number input spinners
   &[type='number']::-webkit-inner-spin-button,
   &[type='number']::-webkit-outer-spin-button {
