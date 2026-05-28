@@ -575,7 +575,6 @@ export class AvatarEditorComponent implements OnDestroy {
 
     this.updateImageDarkness(ctx, size);
 
-    // Draw overlay mask
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
     ctx.fillRect(0, 0, size, size);
 

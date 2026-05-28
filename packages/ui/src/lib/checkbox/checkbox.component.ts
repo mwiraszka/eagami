@@ -36,12 +36,11 @@ export type CheckboxSize = 'sm' | 'md' | 'lg';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   /**
    * Optional supplementary value shown immediately after the label, dimmed
    * to the tertiary text token. Renders inside the same `<span>` as the
-   * label so it shares the label's exact baseline and font metrics — keeps
+   * label so it shares the label's exact baseline and font metrics, keeping
    * "Inbox 42" / "Brand (30)" patterns aligned without a sibling element
    * fighting flex / inline-flow centring at the consumer's call site.
    */
@@ -55,17 +54,13 @@ export class CheckboxComponent implements ControlValueAccessor {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-checkbox-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way checked binding
   readonly checked = model<boolean>(false);
 
-  // Outputs
   /** Fires with the new checked state whenever the user toggles the checkbox. */
   readonly changed = output<boolean>();
 
-  // Internal state
   private readonly _formDisabled = signal(false);
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
@@ -79,11 +74,9 @@ export class CheckboxComponent implements ControlValueAccessor {
     'ea-checkbox--error': this.hasError(),
   }));
 
-  // ControlValueAccessor callbacks
   private onChange: (value: boolean) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // ControlValueAccessor
   writeValue(val: boolean): void {
     this.checked.set(!!val);
   }
@@ -100,7 +93,6 @@ export class CheckboxComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   handleChange(): void {
     if (this.isDisabled()) return;
     const newValue = !this.checked();

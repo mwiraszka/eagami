@@ -1,11 +1,6 @@
-// =============================================================================
-// POPOVER STORIES — local styles for the story-host wrapper
-// (loaded via the wrapper's `styleUrl`; can't rely on .storybook/storybook.scss
-// because that file isn't actually compiled into Storybook's CSS output —
-// the webpack hand-off for shared Storybook SCSS is broken, but the Angular
-// component compiler reliably bundles component-scoped SCSS, so the story
-// styles live here instead).
-// =============================================================================
+// Story-host styles live here (loaded via `styleUrl`) rather than in
+// .storybook/storybook.scss, whose webpack hand-off doesn't compile into
+// Storybook's CSS output; component-scoped SCSS bundles reliably.
 
 .story-popover-fixture {
   display: flex;

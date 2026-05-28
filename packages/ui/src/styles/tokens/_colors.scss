@@ -1,13 +1,4 @@
-// =============================================================================
-// COLOR TOKENS
-// =============================================================================
-
 :root {
-  // ---------------------------------------------------------------------------
-  // Primitive palette
-  // ---------------------------------------------------------------------------
-
-  // Primary
   --color-primary-50: #ecf3f9;
   --color-primary-100: #d1e3f0;
   --color-primary-200: #abcbe3;
@@ -19,7 +10,6 @@
   --color-primary-800: #162f41;
   --color-primary-900: #0d1c26;
 
-  // Secondary
   --color-secondary-50: #f2eff5;
   --color-secondary-100: #dfd9e8;
   --color-secondary-200: #c4b9d5;
@@ -31,7 +21,6 @@
   --color-secondary-800: #292136;
   --color-secondary-900: #181320;
 
-  // Neutral (Gray)
   --color-neutral-0: #ffffff;
   --color-neutral-50: #f9fafb;
   --color-neutral-100: #f3f4f6;
@@ -45,7 +34,6 @@
   --color-neutral-900: #111827;
   --color-neutral-950: #030712;
 
-  // Success (Green)
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
   --color-success-200: #bbf7d0;
@@ -53,7 +41,6 @@
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
 
-  // Warning (Amber)
   --color-warning-50: #fffbeb;
   --color-warning-100: #fef3c7;
   --color-warning-200: #fde68a;
@@ -61,7 +48,6 @@
   --color-warning-600: #d97706;
   --color-warning-700: #b45309;
 
-  // Error (Red)
   --color-error-50: #fef2f2;
   --color-error-100: #fee2e2;
   --color-error-200: #fecaca;
@@ -69,7 +55,6 @@
   --color-error-600: #dc2626;
   --color-error-700: #b91c1c;
 
-  // Info (Cyan)
   --color-info-50: #ecfeff;
   --color-info-100: #cffafe;
   --color-info-200: #a5f3fc;
@@ -77,11 +62,6 @@
   --color-info-600: #0891b2;
   --color-info-700: #0e7490;
 
-  // ---------------------------------------------------------------------------
-  // Semantic tokens — light mode
-  // ---------------------------------------------------------------------------
-
-  // Text
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
   --color-text-tertiary: var(--color-neutral-400);
@@ -90,10 +70,9 @@
   --color-text-link: var(--color-primary-600);
   --color-text-link-hover: var(--color-primary-800);
 
-  // Two-tier surface model: `bg-canvas` is the page itself; `bg-base` is the
-  // surface of components on the page (inputs, cards, accordion items,
-  // popover panels). In dark mode bg-base lifts above bg-canvas so component
-  // surfaces don't disappear into the page.
+  // Two-tier surfaces: bg-canvas is the page, bg-base is component surfaces on
+  // it (inputs, cards, accordion, popovers). In dark mode bg-base lifts above
+  // bg-canvas so surfaces don't vanish into the page.
   --color-bg-canvas: var(--color-neutral-0);
   --color-bg-base: var(--color-neutral-0);
   --color-bg-subtle: var(--color-neutral-50);
@@ -102,26 +81,15 @@
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
-  // Border. `subtle` is for low-contrast dividers (table rows, cell grids)
-  // where a full `default` border would feel heavy. `default` is the everyday
-  // form-component outline; `strong` is for prominent outlines (secondary
-  // buttons, etc.); `focus` is the keyboard-focus ring.
   --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
   --color-border-focus: var(--color-primary-500);
 
-  // Brand semantic.
-  //
-  // Two roles split intentionally:
-  //  - `--color-brand-default` (and `-hover` / `-active`) is the brand colour
-  //    used as a **surface** — solid background under white text (primary
-  //    button, badge bg). Needs ≥ 4.5:1 vs white text.
-  //  - `--color-brand-text` is the brand colour used as a **foreground** on a
-  //    non-brand surface (selected dropdown row, today marker, sorted column
-  //    header, link, spinner). Needs ≥ 4.5:1 vs `--color-bg-base`. In dark
-  //    mode the foreground role flips to a lighter shade so contrast against
-  //    the dark surface still holds.
+  // brand-default/-hover/-active are the brand colour as a surface (solid bg
+  // under white text); needs 4.5:1 vs white. brand-text is the brand colour as
+  // a foreground on a non-brand surface; needs 4.5:1 vs bg-base and flips
+  // lighter in dark mode.
   --color-brand-default: var(--color-primary-600);
   --color-brand-hover: var(--color-primary-700);
   --color-brand-active: var(--color-primary-800);
@@ -129,14 +97,12 @@
   --color-brand-subtle: var(--color-primary-50);
   --color-brand-muted: var(--color-primary-100);
 
-  // Secondary brand semantic
   --color-brand-secondary-default: var(--color-secondary-500);
   --color-brand-secondary-hover: var(--color-secondary-600);
   --color-brand-secondary-active: var(--color-secondary-700);
   --color-brand-secondary-subtle: var(--color-secondary-50);
   --color-brand-secondary-muted: var(--color-secondary-100);
 
-  // Feedback semantic
   --color-success-default: var(--color-success-600);
   --color-success-subtle: var(--color-success-50);
   --color-success-muted: var(--color-success-100);
@@ -153,9 +119,9 @@
   --color-info-subtle: var(--color-info-50);
   --color-info-muted: var(--color-info-100);
 
-  // Color-picker mechanics — pure RGB primaries that build the hue wheel and
-  // the saturation/value gradient. These are intrinsic to the picker UI, not
-  // themeable, but live here so component SCSS stays literal-free.
+  // Pure RGB primaries for the picker's hue wheel and saturation/value
+  // gradient. Intrinsic to the picker, not themeable; kept here so component
+  // SCSS stays literal-free.
   --color-picker-hue-red: #ff0000;
   --color-picker-hue-yellow: #ffff00;
   --color-picker-hue-green: #00ff00;
@@ -167,11 +133,8 @@
   --color-picker-thumb-halo: rgba(0, 0, 0, 0.25);
 }
 
-// ---------------------------------------------------------------------------
-// Dark mode overrides — applied when the OS prefers dark, unless the
-// consumer has explicitly opted out via `<html data-theme="light">`. To
-// force dark regardless of OS, set `<html data-theme="dark">`.
-// ---------------------------------------------------------------------------
+// Dark mode: applied when the OS prefers dark, unless forced light via
+// `<html data-theme="light">`. `<html data-theme="dark">` forces dark.
 @mixin dark-color-tokens {
   --color-text-primary: var(--color-neutral-50);
   --color-text-secondary: var(--color-neutral-300);
@@ -181,11 +144,8 @@
   --color-text-link: var(--color-primary-300);
   --color-text-link-hover: var(--color-primary-100);
 
-  // Dark-mode surface hierarchy. Canvas is the page itself (deepest).
-  // bg-base lifts above it so component surfaces (inputs, cards, accordion
-  // items, popover panels) read above the page instead of disappearing into
-  // it. Subtle / elevated / muted continue the lift for striped rows, floating
-  // surfaces, and hover states.
+  // Canvas is the deepest page tone; bg-base and up lift component surfaces,
+  // striped rows, floating surfaces, and hover states above it.
   --color-bg-canvas: var(--color-neutral-950);
   --color-bg-base: var(--color-neutral-800);
   --color-bg-subtle: var(--color-neutral-700);
@@ -193,11 +153,9 @@
   --color-bg-elevated: var(--color-neutral-700);
   --color-bg-muted: var(--color-neutral-600);
 
-  // Borders sit clear of every bg-* shade so they stay visible on any surface.
-  // `subtle` mixes between neutral-700 and -800 so it's distinct from the
-  // card surface (neutral-700) while staying close to cell bgs (-800/-900).
-  // `default` is the form-component outline; anything darker collides with
-  // bg-subtle / bg-elevated (both neutral-700) and disappears.
+  // Borders stay clear of every bg-* shade so they stay visible. subtle mixes
+  // neutral-700/-800 to sit between card and cell backgrounds; default can't go
+  // darker without colliding with bg-subtle/-elevated (both neutral-700).
   --color-border-subtle: color-mix(
     in srgb,
     var(--color-neutral-700),
@@ -206,9 +164,9 @@
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
 
-  // Brand surface roles step one shade lighter than light mode so the button
-  // clears WCAG 1.4.11 (3:1) against the near-black canvas while still
-  // carrying its white label above 4.5:1.
+  // Surface roles step one shade lighter than light mode so the button clears
+  // WCAG 1.4.11 (3:1) on the near-black canvas while keeping a white label
+  // above 4.5:1.
   --color-brand-default: var(--color-primary-500);
   --color-brand-hover: var(--color-primary-600);
   --color-brand-active: var(--color-primary-700);
@@ -216,10 +174,9 @@
   --color-brand-subtle: rgba(75, 145, 195, 0.1);
   --color-brand-muted: rgba(75, 145, 195, 0.2);
 
-  // Status `*-subtle` / `*-muted` — light pastels in light mode become
-  // unreadable behind light text in dark mode. Re-tint as a low-alpha wash of
-  // the saturated `*-500` hue so the surface darkens enough for `*-text-primary`
-  // (white) to read against it.
+  // Light pastels become unreadable behind light text in dark mode. Re-tint as
+  // a low-alpha wash of the saturated *-500 hue so the surface darkens enough
+  // for white text.
   --color-success-subtle: rgba(34, 197, 94, 0.15);
   --color-success-muted: rgba(34, 197, 94, 0.25);
   --color-warning-subtle: rgba(245, 158, 11, 0.15);

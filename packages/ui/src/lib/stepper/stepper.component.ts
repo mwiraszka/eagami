@@ -39,24 +39,20 @@ export class StepperComponent {
 
   readonly registeredSteps = signal<StepComponent[]>([]);
 
-  // ─── Inputs ───────────────────────────────────────────────────────────
   readonly activeStep = model<number>(0);
   readonly linear = input<boolean>(false);
   readonly size = input<StepperSize>('md');
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(`ea-stepper-${Math.random().toString(36).slice(2, 9)}`);
 
-  // ─── Outputs ──────────────────────────────────────────────────────────
   /** Fires with the new active step index when the user navigates. */
   readonly changed = output<number>();
 
-  // ─── Computed ─────────────────────────────────────────────────────────
   readonly hostClasses = computed(() => ({
     [`ea-stepper--${this.size()}`]: true,
     'ea-stepper--disabled': this.disabled(),
   }));
 
-  // ─── Registration ─────────────────────────────────────────────────────
   registerStep(step: StepComponent): void {
     this.registeredSteps.update(steps => [...steps, step]);
   }
@@ -70,7 +66,6 @@ export class StepperComponent {
     return this.registeredSteps().indexOf(step);
   }
 
-  // ─── Navigation ───────────────────────────────────────────────────────
   /**
    * True when the user can navigate directly to the step at `index`. In
    * non-linear mode this is true for any non-disabled step; in linear mode,
@@ -132,7 +127,6 @@ export class StepperComponent {
     }
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────
   private nextReachable(from: number, direction: 1 | -1): number {
     const steps = this.registeredSteps();
     for (let i = from + direction; i >= 0 && i < steps.length; i += direction) {

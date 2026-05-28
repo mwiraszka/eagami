@@ -1,7 +1,3 @@
-// =============================================================================
-// BADGE COMPONENT
-// =============================================================================
-
 .ea-badge {
   display: inline-flex;
   align-items: center;
@@ -15,9 +11,7 @@
   border-color: var(--ea-badge-border-color, transparent);
   border-radius: var(--radius-full);
 
-  // ---------------------------------------------------------------------------
-  // Sizes (apply to the default `pill` shape; `pin` overrides them below)
-  // ---------------------------------------------------------------------------
+  // Apply to the default `pill` shape; `pin` overrides them below
   &--sm {
     padding: var(--space-0-5) var(--space-2);
     font-size: var(--ea-badge-font-size, var(--font-size-xs));
@@ -33,12 +27,9 @@
     font-size: var(--ea-badge-font-size, var(--font-size-sm));
   }
 
-  // ---------------------------------------------------------------------------
-  // Variants — colours route through CSS custom properties so consumers can
-  // override `--ea-badge-background-color` / `--ea-badge-color` (and
-  // `--ea-badge-border-color` / `--ea-badge-border-width` for an outer border)
-  // without piercing view encapsulation.
-  // ---------------------------------------------------------------------------
+  // Variant colours route through custom properties so consumers can override
+  // `--ea-badge-background-color` / `-color` (and `-border-color` / `-border-width`
+  // for an outer border) without piercing view encapsulation.
   &--default {
     background-color: var(--ea-badge-background-color, var(--color-bg-muted));
     color: var(--ea-badge-color, var(--color-text-secondary));
@@ -64,16 +55,10 @@
     color: var(--ea-badge-color, var(--color-info-700));
   }
 
-  // ---------------------------------------------------------------------------
-  // Shapes
-  // ---------------------------------------------------------------------------
-  // `pill` is the implicit default — no extra rules required.
-  //
-  // `pin` produces a circular notification dot for single-character content and
-  // expands into a pill for multi-character content. Geometry is deterministic:
-  // tabular numerals keep digit widths uniform, and `min-width = height` with a
-  // small horizontal padding guarantees that any single digit fits inside the
-  // square without forcing the box wider.
+  // `pin` is a circular dot for single-character content that expands into a pill
+  // for longer content. Tabular numerals keep digit widths uniform, and
+  // `min-width = height` plus small horizontal padding fits any single digit in
+  // the square without forcing the box wider.
   &--pin {
     justify-content: center;
     box-sizing: border-box;

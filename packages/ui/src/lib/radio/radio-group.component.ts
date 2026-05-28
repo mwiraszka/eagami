@@ -37,7 +37,6 @@ export type RadioOrientation = 'vertical' | 'horizontal';
   ],
 })
 export class RadioGroupComponent implements ControlValueAccessor {
-  // Inputs
   readonly id = input<string>(`ea-radio-group-${Math.random().toString(36).slice(2, 9)}`);
   readonly name = input<string>(`ea-radio-${Math.random().toString(36).slice(2, 9)}`);
   readonly size = input<RadioSize>('md');
@@ -49,27 +48,21 @@ export class RadioGroupComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Output
   /** Fires with the new value when an option is selected. */
   readonly changed = output<string>();
 
-  // Internal state
   private readonly _formDisabled = signal(false);
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }

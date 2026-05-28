@@ -57,7 +57,6 @@
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">
       <div class="ea-time-picker__popover">
-        <!-- Hours column -->
         <div class="ea-time-picker__column">
           <button
             type="button"
@@ -108,7 +107,6 @@
           :
         </span>
 
-        <!-- Minutes column -->
         <div class="ea-time-picker__column">
           <button
             type="button"
@@ -153,7 +151,6 @@
           </button>
         </div>
 
-        <!-- Seconds column (optional) -->
         @if (includeSeconds()) {
           <span
             class="ea-time-picker__separator"
@@ -205,7 +202,6 @@
           </div>
         }
 
-        <!-- AM/PM toggle (12h only) -->
         @if (format() === '12h') {
           <div class="ea-time-picker__period">
             <button

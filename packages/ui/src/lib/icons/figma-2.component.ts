@@ -6,10 +6,8 @@ import { IconCategory, IconComponentBase } from './icon-category';
  * Figma brand mark (Eagami brand-filled).
  *
  * @remarks
- * Up to v1.3 this design shipped as `FigmaIconComponent` at slug
- * `ea-icon-figma`. v1.4 reassigns the canonical slug to Feather's outline
- * and moves the brand-filled mark here. Set the `brand` input to render in
- * the official brand colour.
+ * The Feather outline lives at `<ea-icon-figma>` / `FigmaIconComponent`.
+ * Set the `brand` input to render in the official brand colour.
  */
 @Component({
   selector: 'ea-icon-figma-2',

@@ -1,7 +1,3 @@
-// =============================================================================
-// RATING COMPONENT
-// =============================================================================
-
 :host {
   display: inline-block;
 }
@@ -38,11 +34,8 @@
     }
   }
 
-  // `font-size` drives the star size: `IconComponentBase` host-binds each icon
-  // at `width/height: 1em`, so setting font-size here sizes both the button box
-  // and the icon inside. The button itself is sized to exactly 1em x 1em so
-  // there's no extra padding around the SVG. Gap scales with the font-size too
-  // (0.25em), so spacing tracks the icon size proportionally.
+  // Icons are host-bound to `1em` square, so font-size drives the star size; the
+  // button is also 1em square so there's no padding around the SVG
   &__star {
     display: inline-flex;
     position: relative;
@@ -62,14 +55,8 @@
     }
   }
 
-  // Two stacked layers per star:
-  //   - background: always-rendered dim full-star outline (visible behind
-  //     half / empty states)
-  //   - foreground: filled full-star or filled half-star on top, shown when
-  //     `stateFor(pos)` is `full` or `half`
-  //
-  // Both layers are 1em x 1em (matching the icon's host-bound size) and pin
-  // to the button's top-left, so they overlap pixel-perfectly.
+  // Two stacked 1em-square layers pinned to the button's top-left so they overlap:
+  // a dim full-star background behind, and a full or half filled star in front.
   &__star-icon {
     display: inline-flex;
     position: absolute;
@@ -94,8 +81,6 @@
     opacity: 0.6;
   }
 
-  // Sizes -----------------------------------------------------------------------
-
   &--sm &__star {
     font-size: 1.125rem;
   }
@@ -107,8 +92,6 @@
   &--error &__stars:focus-visible {
     box-shadow: var(--shadow-focus-ring-error);
   }
-
-  // Hint / error message block (standard library pattern) ----------------------
 
   &__message {
     display: flex;

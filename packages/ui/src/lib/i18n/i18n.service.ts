@@ -35,9 +35,8 @@ export class EagamiI18nService {
   readonly locale: Signal<EagamiLocale> = this._locale.asReadonly();
 
   constructor() {
-    // Pick up tooling-driven locale changes (Storybook globals dropdown). The
-    // override signal is `null` in production — this effect is a no-op for
-    // real applications.
+    // Pick up tooling-driven locale changes (Storybook globals dropdown); the
+    // override signal is null in production, so this effect is a no-op there.
     effect(() => {
       const override = _eagamiI18nLocaleOverride();
       if (override !== null && EAGAMI_MESSAGES[override]) {

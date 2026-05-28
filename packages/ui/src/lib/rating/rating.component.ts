@@ -142,8 +142,6 @@ export class RatingComponent implements ControlValueAccessor {
     () => this.label() ?? this.i18n.messages().rating.label,
   );
 
-  // ----- View helpers ---------------------------------------------------------
-
   /** Resolves the render state for star `pos` against the current display value. */
   protected stateFor(pos: number): RatingStarState {
     const v = this.displayValue();
@@ -161,8 +159,6 @@ export class RatingComponent implements ControlValueAccessor {
     return this.i18n.messages().rating.valueLabel(pos, this.max());
   }
 
-  // ----- CVA ------------------------------------------------------------------
-
   writeValue(value: number | null | undefined): void {
     this.value.set(this.clamp(value ?? 0));
   }
@@ -179,12 +175,10 @@ export class RatingComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // ----- Pointer handlers -----------------------------------------------------
-
   protected onPointerMove(event: PointerEvent, pos: number): void {
     if (!this.isInteractive()) return;
     // Clamp the hover preview to `min` so the user never sees a star preview
-    // below the floor — matches what an Enter/click would actually commit.
+    // below the floor, matching what an Enter/click would actually commit.
     this.hoverValue.set(Math.max(this.min(), this.computePointerValue(event, pos)));
     this.hoverChanged.emit(this.hoverValue());
   }
@@ -216,8 +210,6 @@ export class RatingComponent implements ControlValueAccessor {
     this.isFocused.set(false);
     this.onTouched();
   }
-
-  // ----- Keyboard -------------------------------------------------------------
 
   protected onKeydown(event: KeyboardEvent): void {
     if (!this.isInteractive()) return;
@@ -256,8 +248,6 @@ export class RatingComponent implements ControlValueAccessor {
       this.commit(next);
     }
   }
-
-  // ----- Internals ------------------------------------------------------------
 
   private commit(next: number): void {
     const clamped = this.clamp(next);

@@ -6,10 +6,8 @@ import { IconCategory, IconComponentBase } from './icon-category';
  * GitHub brand mark (Eagami brand-filled).
  *
  * @remarks
- * Up to v1.3 this design shipped as `GithubIconComponent` at slug
- * `ea-icon-github`. v1.4 reassigns the canonical slug to Feather's outline
- * and moves the brand-filled mark here. Set the `brand` input to render in
- * the official brand colour.
+ * The Feather outline lives at `<ea-icon-github>` / `GithubIconComponent`.
+ * Set the `brand` input to render in the official brand colour.
  */
 @Component({
   selector: 'ea-icon-github-2',

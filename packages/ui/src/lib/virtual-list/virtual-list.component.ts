@@ -27,8 +27,8 @@ export interface VirtualListItemContext<T = unknown> {
  * so that lists of tens of thousands of rows scroll smoothly.
  *
  * Fixed-height items only. Variable-height virtualization would need either
- * a measurement pass per row or a height estimator; both add complexity that
- * we don't ship in v1.
+ * a measurement pass per row or a height estimator, neither of which the
+ * component implements.
  *
  * Usage:
  * ```html
@@ -42,7 +42,7 @@ export interface VirtualListItemContext<T = unknown> {
  * </ea-virtual-list>
  * ```
  *
- * The component intentionally stays role-agnostic — the consumer wraps the
+ * The component intentionally stays role-agnostic: the consumer wraps the
  * projected item with whatever ARIA the use case calls for (`role="listitem"`,
  * `role="option"`, `role="row"`, etc.) and applies `aria-setsize` /
  * `aria-posinset` using the projected `index` if needed.
@@ -73,7 +73,7 @@ export class VirtualListComponent {
   /** Index of the first row currently visible at the top of the viewport. */
   readonly scrollIndexChange = output<number>();
 
-  /** Template applied to each rendered item — projected via `<ng-template #item>`. */
+  /** Template applied to each rendered item, projected via `<ng-template #item>`. */
   protected readonly itemTemplate =
     contentChild.required<TemplateRef<VirtualListItemContext>>('item');
 

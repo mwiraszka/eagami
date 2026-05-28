@@ -35,7 +35,7 @@ export interface DataTableColumn<T = Record<string, unknown>> {
   headerTemplate?: TemplateRef<{ $implicit: DataTableColumn<T> }>;
 }
 
-/** Current sort state — which column is sorted and in which direction. */
+/** Current sort state: which column is sorted and in which direction. */
 export interface DataTableSortState {
   column: string;
   direction: DataTableSortDirection;

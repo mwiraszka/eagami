@@ -109,7 +109,7 @@ export class MenuComponent {
    * but its DOM ancestor is whatever element hosts the menu (often a sticky
    * header). When `.focus()` is called without `preventScroll`, Chromium uses
    * the focused element's DOM-tree position (inside the sticky ancestor) rather
-   * than its rendered fixed position to decide whether to scroll — which on a
+   * than its rendered fixed position to decide whether to scroll, which on a
    * scrolled page nudges the document up by a few pixels per open, until the
    * trigger reaches the top edge. The same guard applies to keyboard navigation
    * and restoring focus on close.

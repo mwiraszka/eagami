@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, input, output } from '@angu
 
 import { MenuComponent } from './menu.component';
 
-/** Visual style of a menu item — `danger` for destructive actions. */
+/** Visual style of a menu item; `danger` for destructive actions. */
 export type MenuItemVariant = 'default' | 'danger';
 
 /**
@@ -19,11 +19,9 @@ export type MenuItemVariant = 'default' | 'danger';
 export class MenuItemComponent {
   private readonly menu = inject(MenuComponent, { optional: true });
 
-  // Inputs
   readonly disabled = input<boolean>(false);
   readonly variant = input<MenuItemVariant>('default');
 
-  // Outputs
   /** Fires when the item is activated; the parent menu closes immediately afterwards. */
   readonly clicked = output<MouseEvent>();
 

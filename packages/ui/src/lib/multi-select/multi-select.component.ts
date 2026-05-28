@@ -66,7 +66,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
   private readonly injector = inject(Injector);
 
-  // ─── Inputs ───────────────────────────────────────────────────────────
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly searchPlaceholder = input<string | undefined>(undefined);
@@ -92,7 +91,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   /** Fires with the new value whenever the selection changes. */
   readonly changed = output<readonly string[]>();
 
-  // ─── State ────────────────────────────────────────────────────────────
   readonly isOpen = signal(false);
   readonly searchTerm = signal('');
   /** Index into `filteredOptions()` for keyboard navigation. `-1` when none focused. */
@@ -101,7 +99,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onChange: (value: readonly string[]) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // ─── Computed ─────────────────────────────────────────────────────────
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
@@ -176,7 +173,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
     [`ea-multi-select__trigger-wrapper--${this.size()}`]: true,
   }));
 
-  // ─── ControlValueAccessor ─────────────────────────────────────────────
   writeValue(val: readonly string[] | null | undefined): void {
     this.value.set(val ?? []);
   }
@@ -193,7 +189,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // ─── Handlers ─────────────────────────────────────────────────────────
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;
     const opening = !this.isOpen();
@@ -324,7 +319,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────
   private focusSearchWhenReady(): void {
     afterNextRender(() => this.searchEl()?.nativeElement.focus(), {
       injector: this.injector,

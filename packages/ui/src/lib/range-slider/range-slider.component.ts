@@ -18,7 +18,7 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 /** Visual size of the range slider track and thumbs. */
 export type RangeSliderSize = 'sm' | 'md' | 'lg';
 
-/** Tuple model emitted by the range slider — `[low, high]`, with `low <= high`. */
+/** Tuple model emitted by the range slider: `[low, high]`, with `low <= high`. */
 export type RangeSliderValue = readonly [number, number];
 
 /** Identifies which of the two thumbs an event affects. */
@@ -89,7 +89,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  /** Clamped, ordered `[low, high]` tuple — `low <= high`, both within `[min, max]`. */
+  /** Clamped, ordered `[low, high]` tuple: `low <= high`, both within `[min, max]`. */
   readonly clampedValue = computed<RangeSliderValue>(() => {
     const [a, b] = this.value();
     const min = this.min();
@@ -113,7 +113,6 @@ export class RangeSliderComponent implements ControlValueAccessor {
     'ea-range-slider--dragging': this.dragging() !== null,
   }));
 
-  // ─── ControlValueAccessor ───────────────────────────────────────────────
   writeValue(val: RangeSliderValue | null | undefined): void {
     if (Array.isArray(val) && val.length === 2) {
       const [a, b] = val;
@@ -137,7 +136,6 @@ export class RangeSliderComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // ─── Keyboard ───────────────────────────────────────────────────────────
   handleKeydown(event: KeyboardEvent, thumb: Thumb): void {
     if (this.isDisabled()) return;
 
@@ -180,7 +178,6 @@ export class RangeSliderComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  // ─── Pointer ────────────────────────────────────────────────────────────
   handleTrackPointerDown(event: PointerEvent): void {
     if (this.isDisabled()) return;
     const track = this.trackEl()?.nativeElement;
@@ -212,7 +209,6 @@ export class RangeSliderComponent implements ControlValueAccessor {
     this.onTouched();
   }
 
-  // ─── Internals ──────────────────────────────────────────────────────────
   private toPercent(value: number): number {
     const range = this.max() - this.min();
     if (range <= 0) return 0;

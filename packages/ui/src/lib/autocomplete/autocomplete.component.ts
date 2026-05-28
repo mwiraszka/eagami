@@ -47,7 +47,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly options = input<SelectOption[]>([]);
@@ -64,10 +63,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
     `ea-autocomplete-${Math.random().toString(36).slice(2, 9)}`,
   );
 
-  // Two-way value binding (current text value in the input)
   readonly value = model<string>('');
 
-  // Outputs
   /** Fires when the user picks an option from the suggestion list. */
   readonly selected = output<SelectOption>();
   /** Fires whenever the input text changes, including on free-text edits. */
@@ -77,18 +74,15 @@ export class AutocompleteComponent implements ControlValueAccessor {
   /** Fires when the input loses focus. */
   readonly blurred = output<FocusEvent>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly isFocused = signal(false);
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
   private justSelected = false;
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
@@ -133,7 +127,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
     [`ea-autocomplete__listbox--${this.size()}`]: true,
   }));
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }
@@ -150,7 +143,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   handleInput(event: Event): void {
     const next = (event.target as HTMLInputElement).value;
     this.value.set(next);

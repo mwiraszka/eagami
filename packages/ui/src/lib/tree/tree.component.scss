@@ -16,8 +16,7 @@
   }
 }
 
-// Per-size font scales. Indent step and row padding scale with the font size
-// so the tree reads as a single visual unit at any size.
+// Indent step and row padding scale with font size so the tree reads as one unit
 .ea-tree--sm {
   --ea-tree-indent: var(--space-3);
   --ea-tree-row-padding-block: var(--space-1);

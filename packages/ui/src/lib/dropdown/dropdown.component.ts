@@ -53,7 +53,6 @@ export class DropdownComponent implements ControlValueAccessor {
   private readonly elRef = viewChild<ElementRef<HTMLElement>>('triggerEl');
   private readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly options = input<SelectOption[]>([]);
@@ -65,23 +64,18 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-dropdown-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Outputs
   /** Fires with the new value when the user selects an option. */
   readonly changed = output<string>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
@@ -109,7 +103,6 @@ export class DropdownComponent implements ControlValueAccessor {
     [`ea-dropdown__menu--${this.size()}`]: true,
   }));
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }
@@ -126,7 +119,6 @@ export class DropdownComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   /** Toggles the dropdown list between open and closed. */
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;

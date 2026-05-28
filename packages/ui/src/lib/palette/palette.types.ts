@@ -42,9 +42,9 @@ export interface PaletteRoles {
 }
 
 export const DEFAULT_PALETTE_ROLES: PaletteRoles = {
-  // Brand surface roles flip ONE shade lighter in dark mode (600 -> 500) so
+  // Brand surface roles flip ONE shade lighter in dark mode (600 to 500) so
   // the button clears WCAG 1.4.11 against the near-black canvas while still
-  // carrying its white label above 4.5:1. A larger flip (600 -> 400) would
+  // carrying its white label above 4.5:1. A larger flip (600 to 400) would
   // lose the white label; no flip would lose the canvas contrast.
   surfaceLight: '600',
   surfaceDark: '500',

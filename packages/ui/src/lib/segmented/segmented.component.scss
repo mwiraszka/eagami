@@ -1,7 +1,3 @@
-// =============================================================================
-// SEGMENTED COMPONENT
-// =============================================================================
-
 .ea-segmented-field {
   display: inline-flex;
   flex-direction: column;
@@ -44,10 +40,8 @@
 }
 
 .ea-segmented {
-  // `inline-flex` keeps the control shrink-to-fit for short option sets, but
-  // an inline-flex box sizes to its content (max-content) and would overflow
-  // rather than wrap. `max-width: 100%` bounds it to the containing block so
-  // `flex-wrap` actually engages once the options exceed the available width.
+  // `inline-flex` keeps the control shrink-to-fit, but sizes to max-content and
+  // would overflow rather than wrap; `max-width: 100%` lets `flex-wrap` engage
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -77,9 +71,6 @@
     border-color: var(--color-error-default);
   }
 
-  // ---------------------------------------------------------------------------
-  // Sizes
-  // ---------------------------------------------------------------------------
   &--sm {
     .ea-segmented__option {
       min-height: 1.75rem;
@@ -104,9 +95,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Option button
-  // ---------------------------------------------------------------------------
   &__option {
     display: inline-flex;
     align-items: center;

@@ -30,7 +30,7 @@ export type DatePickerSize = 'sm' | 'md' | 'lg';
 export type DatePickerFormat = 'short' | 'medium' | 'long';
 /** First day of the week in the calendar grid (0 = Sunday, 1 = Monday). */
 export type DatePickerWeekStart = 0 | 1;
-/** Value accepted via `writeValue` — a `Date`, ISO/parseable string, or `null`. */
+/** Value accepted via `writeValue`: a `Date`, ISO/parseable string, or `null`. */
 export type DatePickerValue = Date | string | null;
 
 interface CalendarDay {
@@ -76,7 +76,6 @@ export class DatePickerComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   /** Placeholder shown when no date is selected. Defaults to the active locale's text. */
   readonly placeholder = input<string | undefined>(undefined);
@@ -93,35 +92,30 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly locale = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-date-picker-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding (Date at local midnight, or null)
   readonly value = model<Date | null>(null);
 
-  // Outputs
   /** Fires when the selected date changes, including when cleared. */
   readonly changed = output<Date | null>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly viewYear = signal(new Date().getFullYear());
   readonly viewMonth = signal(new Date().getMonth());
   readonly focusedDate = signal<Date | null>(null);
   private readonly _formDisabled = signal(false);
 
-  // ControlValueAccessor callbacks
   private onChange: (value: Date | null) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
-  /** Locale used for date formatting — explicit `locale` input, else the global locale. */
+  /** Locale used for date formatting: explicit `locale` input, else the global locale. */
   readonly effectiveLocale = computed(() => this.locale() ?? this.i18n.locale());
 
-  /** Placeholder text — explicit `placeholder` input, else the active locale's default. */
+  /** Placeholder text: explicit `placeholder` input, else the active locale's default. */
   readonly resolvedPlaceholder = computed(
     () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
   );
@@ -207,7 +201,6 @@ export class DatePickerComponent implements ControlValueAccessor {
     return rows;
   });
 
-  // ControlValueAccessor
   writeValue(val: DatePickerValue): void {
     const date = this.toDate(val);
     this.value.set(date);
@@ -229,7 +222,6 @@ export class DatePickerComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   /** Toggles the calendar popover between open and closed. */
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;

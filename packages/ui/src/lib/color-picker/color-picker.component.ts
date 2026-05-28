@@ -28,7 +28,7 @@ export type ColorPickerSize = 'sm' | 'md' | 'lg';
 export type ColorPickerFormat = 'hex' | 'rgb' | 'hsl';
 /** Which group of inputs the popover currently shows (hex string or RGB channels). */
 export type ColorPickerInputMode = 'hex' | 'rgb';
-/** Value accepted via `writeValue` — any CSS color string or `null`. */
+/** Value accepted via `writeValue`: any CSS color string or `null`. */
 export type ColorPickerValue = string | null;
 
 interface Rgb {
@@ -43,7 +43,7 @@ interface Hsv {
   v: number;
 }
 
-// Minimal EyeDropper API typing — not yet in lib.dom.
+// Minimal EyeDropper API typing; not in lib.dom.
 interface EyeDropperResult {
   sRGBHex: string;
 }
@@ -144,7 +144,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
    * emitted value. */
   readonly inputMode = signal<ColorPickerInputMode>('hex');
   /** What the hex input shows. Kept separate from the canonical hex so the user
-   * can type a partial value (`#1`, `#12`, `#123…`) without each keystroke being
+   * can type a partial value (`#1`, `#12`, `#123`...) without each keystroke being
    * expanded back into a 6-digit canonical form. */
   readonly hexInputValue = signal('');
   private readonly _formDisabled = signal(false);
@@ -165,7 +165,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
     return `rgba(${r}, ${g}, ${b}, ${this.alpha()})`;
   });
 
-  /** Opaque version of the current color — used as the hue/SV reference. */
+  /** Opaque version of the current color, used as the hue/SV reference. */
   readonly opaqueColor = computed(() => {
     const { r, g, b } = this.rgb();
     return `rgb(${r}, ${g}, ${b})`;
@@ -201,9 +201,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }));
 
   /**
-   * True when the browser supports the EyeDropper API. Not a `computed` —
+   * True when the browser supports the EyeDropper API. Not a `computed`:
    * `window.EyeDropper` isn't a signal, so a memoized computed would cache the
-   * first read (typically `false`, since the popover content's bindings now
+   * first read (typically `false`, since the popover content's bindings
    * evaluate at parent-view creation time via content projection, before any
    * polyfill / test setup runs). A plain method re-checks on every call.
    */
@@ -215,7 +215,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     );
   }
 
-  // ─── ControlValueAccessor ─────────────────────────────────────────────
   writeValue(val: ColorPickerValue): void {
     if (!val) {
       this.value.set(null);
@@ -243,7 +242,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // ─── Open / close ─────────────────────────────────────────────────────
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;
     if (this.isOpen()) this.close();
@@ -253,7 +251,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
   open(): void {
     if (this.isDisabled() || this.readonly()) return;
     this.isOpen.set(true);
-    // `preventScroll: true` — see the matching note in `ea-menu` for why:
+    // `preventScroll: true`: see the matching note in `ea-menu` for why:
     // focusing inside a `position: fixed` popover nested under a sticky/scrolled
     // ancestor otherwise nudges the document scroll position toward the trigger.
     afterNextRender(() => this.svAreaEl()?.nativeElement.focus({ preventScroll: true }), {
@@ -286,7 +284,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.changed.emit(null);
   }
 
-  // ─── Position helpers exposed to the template ─────────────────────────
   readonly svPointerLeft = computed(() => `${this.sat() * 100}%`);
   readonly svPointerTop = computed(() => `${(1 - this.val()) * 100}%`);
   readonly huePointerLeft = computed(() => `${(this.hue() / 360) * 100}%`);
@@ -294,7 +291,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly hueRounded = computed(() => Math.round(this.hue()));
   readonly alphaPercentRounded = computed(() => Math.round(this.alpha() * 100));
 
-  // ─── SV area interaction ──────────────────────────────────────────────
   onSvPointerDown(event: PointerEvent): void {
     if (this.isDisabled() || this.readonly()) return;
     const target = event.target as HTMLElement;
@@ -354,7 +350,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.applyHsv(this.hue(), x, 1 - y);
   }
 
-  // ─── Hue strip interaction ────────────────────────────────────────────
   onHuePointerDown(event: PointerEvent): void {
     if (this.isDisabled() || this.readonly()) return;
     (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
@@ -407,7 +402,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.applyHsv(ratio * 360, this.sat(), this.val());
   }
 
-  // ─── Alpha strip interaction ──────────────────────────────────────────
   onAlphaPointerDown(event: PointerEvent): void {
     if (this.isDisabled() || this.readonly()) return;
     (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
@@ -462,10 +456,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.commit();
   }
 
-  // ─── Hex / RGB text inputs ────────────────────────────────────────────
   /**
    * Mirrors the user's literal text into `hexInputValue` and (if the text
-   * parses) applies the new color silently — without rewriting the input.
+   * parses) applies the new color silently, without rewriting the input.
    * Without `refreshHex: false`, typing `#123` would parse, commit, and then
    * snap the input back to `#112233` mid-keystroke, fighting the user's caret.
    * Canonicalization happens only on blur via {@link onHexBlur}.
@@ -487,9 +480,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   onRgbInput(channel: 'r' | 'g' | 'b', event: Event): void {
     const input = event.target as HTMLInputElement;
-    // Truncate to 3 digits — matches `maxlength` on the input. type="text"
-    // doesn't enforce maxlength on programmatic value sets so we re-clamp
-    // here defensively.
+    // Truncate to 3 digits, matching `maxlength`. type="text" doesn't enforce
+    // maxlength on programmatic value sets, so re-clamp here defensively.
     if (input.value.length > 3) input.value = input.value.slice(0, 3);
     const raw = parseInt(input.value, 10);
     if (Number.isNaN(raw)) return;
@@ -513,7 +505,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.commit();
   }
 
-  // ─── Eyedropper ───────────────────────────────────────────────────────
   async pickFromScreen(): Promise<void> {
     if (this.isDisabled() || this.readonly() || !this.hasEyeDropper()) return;
     const Ctor = (window as unknown as { EyeDropper: EyeDropperCtor }).EyeDropper;
@@ -523,11 +514,10 @@ export class ColorPickerComponent implements ControlValueAccessor {
       const parsed = parseColor(result.sRGBHex);
       if (parsed) this.applyRgba(parsed.r, parsed.g, parsed.b, this.alpha(), true);
     } catch {
-      // User cancelled — no-op.
+      // User cancelled the eyedropper; intentional no-op
     }
   }
 
-  // ─── Preset swatches ──────────────────────────────────────────────────
   selectPreset(hex: string): void {
     if (this.isDisabled() || this.readonly()) return;
     const parsed = parseColor(hex);
@@ -535,7 +525,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, true);
   }
 
-  // ─── Trigger keyboard ─────────────────────────────────────────────────
   onTriggerKeydown(event: KeyboardEvent): void {
     if (this.isDisabled()) return;
     switch (event.key) {
@@ -561,7 +550,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.close();
   }
 
-  // ─── Internal: applying state and committing ──────────────────────────
   private applyHsv(h: number, s: number, v: number): void {
     this.hue.set(h);
     this.sat.set(s);
@@ -600,8 +588,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.hexInputValue.set(this.hexDisplay());
   }
 }
-
-// ─── Pure color helpers (module-private) ──────────────────────────────────
 
 function clamp01(n: number): number {
   return Math.min(1, Math.max(0, n));

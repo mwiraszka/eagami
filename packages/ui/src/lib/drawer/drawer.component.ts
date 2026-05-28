@@ -40,7 +40,6 @@ export class DrawerComponent {
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly position = input<DrawerPosition>('right');
   readonly size = input<DrawerSize>('md');
   readonly closeOnBackdrop = input<boolean>(true);
@@ -49,16 +48,13 @@ export class DrawerComponent {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-drawer-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way open binding
   readonly open = model<boolean>(false);
 
-  // Outputs
   /** Fires once the drawer has been shown via `showModal()`. */
   readonly opened = output<void>();
   /** Fires when the drawer closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
-  // Computed
   readonly panelClasses = computed(() => ({
     [`ea-drawer__panel--${this.position()}`]: true,
     [`ea-drawer__panel--${this.size()}`]: true,

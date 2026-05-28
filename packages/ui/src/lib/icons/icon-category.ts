@@ -43,8 +43,8 @@ export type IconComponentType = Type<unknown> & IconMeta;
  * Feather-derived icons read the `strokeWidth` input via `[attr.stroke-width]`
  * in their SVG template, so consumers can thin or thicken any icon at the
  * call site (e.g. `<ea-icon-star [strokeWidth]="1.5" />`). Subclasses can
- * change the default by setting `static override readonly defaultStrokeWidth`
- * — used by icons whose dense paths read better at a different default
+ * change the default by setting `static override readonly defaultStrokeWidth`,
+ * used by icons whose dense paths read better at a different default
  * (e.g. camera, upload at 1.5).
  */
 @Directive()

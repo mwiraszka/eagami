@@ -65,7 +65,6 @@ export class InputComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly type = input<InputType>('text');
   readonly placeholder = input<string>('');
@@ -82,25 +81,20 @@ export class InputComponent implements ControlValueAccessor {
   readonly clearable = input<boolean>(false);
   readonly id = input<string>(`ea-input-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Internal state
   readonly isFocused = signal(false);
   readonly passwordVisible = signal(false);
   private readonly _formDisabled = signal(false);
 
-  // Outputs
   /** Fires when the input receives focus. */
   readonly focused = output<FocusEvent>();
   /** Fires when the input loses focus. */
   readonly blurred = output<FocusEvent>();
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly effectiveType = computed<InputType>(() =>
@@ -125,9 +119,7 @@ export class InputComponent implements ControlValueAccessor {
 
   constructor() {
     // `afterNextRender` runs once the input has actually been inserted into
-    // the DOM (and avoids SSR), replacing the older `ngAfterViewInit` +
-    // bare-`setTimeout(0)` dance that relied on the macrotask queue to bridge
-    // the gap between view-init and the element being focusable.
+    // the DOM and avoids SSR, so the element is guaranteed focusable.
     afterNextRender(
       () => {
         if (this.autofocus()) this.inputEl()?.nativeElement.focus();
@@ -152,7 +144,6 @@ export class InputComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   handleInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.value.set(value);

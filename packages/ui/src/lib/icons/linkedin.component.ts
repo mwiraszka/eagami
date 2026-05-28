@@ -6,10 +6,8 @@ import { IconCategory, IconComponentBase } from './icon-category';
  * LinkedIn icon (Feather outline).
  *
  * @remarks
- * Prior to v1.4 this slug rendered Eagami's brand-filled LinkedIn mark. v1.4
- * aligns the canonical slug with Feather Icons, so `LinkedinIconComponent` now
- * renders Feather's outline. The brand-filled mark that previously shipped
- * here has moved to `<ea-icon-linkedin-2>` / `Linkedin2IconComponent`.
+ * The brand-filled LinkedIn mark lives at `<ea-icon-linkedin-2>` /
+ * `Linkedin2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-linkedin',

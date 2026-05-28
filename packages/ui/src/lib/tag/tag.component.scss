@@ -1,11 +1,6 @@
-// =============================================================================
-// TAG COMPONENT
-// =============================================================================
-
-// Pin the host to inline-flex with line-height: 1 so the custom element
-// doesn't pick up the body's default line-height and add baseline-strut
-// space above / below the chip — without this, an `<ea-tag>` placed next to
-// a sibling like the multi-select `+N` chip appears vertically off-centre.
+// `line-height: 1` stops the host picking up the body line-height and adding
+// baseline-strut space above/below the chip, which would knock an `<ea-tag>`
+// vertically off-centre next to a sibling like the multi-select `+N` chip.
 ea-tag {
   display: inline-flex;
   vertical-align: middle;
@@ -25,9 +20,6 @@ ea-tag {
   background-color: var(--color-bg-subtle);
   color: var(--color-text-secondary);
 
-  // ---------------------------------------------------------------------------
-  // Sizes
-  // ---------------------------------------------------------------------------
   &--sm {
     padding: var(--space-0-5) var(--space-1-5);
     font-size: var(--font-size-xs);
@@ -58,9 +50,6 @@ ea-tag {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Variants
-  // ---------------------------------------------------------------------------
   &--success {
     border-color: var(--color-success-muted);
     background-color: var(--color-success-subtle);
@@ -85,17 +74,11 @@ ea-tag {
     color: var(--color-info-700);
   }
 
-  // ---------------------------------------------------------------------------
-  // States
-  // ---------------------------------------------------------------------------
   &--disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
 
-  // ---------------------------------------------------------------------------
-  // Remove button
-  // ---------------------------------------------------------------------------
   &__remove {
     opacity: 0.7;
     display: flex;

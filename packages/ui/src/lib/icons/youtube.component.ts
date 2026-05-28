@@ -6,10 +6,8 @@ import { IconCategory, IconComponentBase } from './icon-category';
  * YouTube icon (Feather outline).
  *
  * @remarks
- * Prior to v1.4 this slug rendered Eagami's brand-filled YouTube mark. v1.4
- * aligns the canonical slug with Feather Icons, so `YoutubeIconComponent` now
- * renders Feather's outline. The brand-filled mark that previously shipped
- * here has moved to `<ea-icon-youtube-2>` / `Youtube2IconComponent`.
+ * The brand-filled YouTube mark lives at `<ea-icon-youtube-2>` /
+ * `Youtube2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-youtube',

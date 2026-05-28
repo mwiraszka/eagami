@@ -42,7 +42,6 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly digitEls = viewChildren<ElementRef<HTMLInputElement>>('digitEl');
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);
@@ -54,22 +53,17 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly id = input<string>(`ea-code-input-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Internal state
   readonly focusedIndex = signal<number>(-1);
   private readonly _formDisabled = signal(false);
 
-  // Outputs
   /** Fires with the full code once every digit has been entered. */
   readonly completed = output<string>();
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());

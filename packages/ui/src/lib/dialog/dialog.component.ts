@@ -38,7 +38,6 @@ export class DialogComponent {
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly size = input<DialogSize>('md');
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
@@ -46,16 +45,13 @@ export class DialogComponent {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(`ea-dialog-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way open binding
   readonly open = model<boolean>(false);
 
-  // Outputs
   /** Fires once the dialog has been shown via `showModal()`. */
   readonly opened = output<void>();
   /** Fires when the dialog closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
-  // Computed
   readonly panelClasses = computed(() => ({
     [`ea-dialog__panel--${this.size()}`]: true,
   }));

@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&display=swap');
 
-// =============================================================================
-// EAGAMI WORDMARK COMPONENT
-// =============================================================================
-
 :host {
   display: inline-block;
   line-height: var(--line-height-none);
@@ -26,18 +22,12 @@
     box-shadow: var(--shadow-focus-ring);
   }
 
-  // ---------------------------------------------------------------------------
-  // Logo — size is driven by `font-size` so `ea-icon-eagami`'s inline
-  // `1em × 1em` dimensions resolve to the value of `--_size`
-  // ---------------------------------------------------------------------------
+  // font-size drives the size so `ea-icon-eagami`'s `1em` dimensions resolve to `--_size`
   &__logo {
     flex-shrink: 0;
     font-size: calc(var(--_size) * 1px);
   }
 
-  // ---------------------------------------------------------------------------
-  // Text stack
-  // ---------------------------------------------------------------------------
   &__text {
     display: inline-flex;
     flex-direction: column;
@@ -70,9 +60,6 @@
     font-family: var(--font-family-brand);
   }
 
-  // ---------------------------------------------------------------------------
-  // Inline layout — single line, uniform font size
-  // ---------------------------------------------------------------------------
   &--inline &__text {
     flex-direction: row;
     align-items: baseline;

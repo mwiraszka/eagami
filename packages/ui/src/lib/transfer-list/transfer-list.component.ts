@@ -21,7 +21,7 @@ export type TransferListSize = 'sm' | 'md' | 'lg';
  * `<ea-transfer-list>` is a two-pane shuttle control for moving items between
  * a "source" set and a "target" set. The full pool of items lives in
  * `[items]`; the `selectedIds` model tracks which subset is currently on the
- * target side. Highlighted-for-transfer state is internal to the component —
+ * target side. Highlighted-for-transfer state is internal to the component:
  * a user clicks one or more rows to highlight them, then clicks one of the
  * four direction buttons to move them.
  *
@@ -68,13 +68,13 @@ export class TransferListComponent {
 
   protected readonly messages = this.i18n.messages;
 
-  // Highlight state — which rows in each pane are currently "selected for
+  // Highlight state: which rows in each pane are currently "selected for
   // transfer" (visually checked, but not yet moved). Cleared after every
   // transfer so the user starts fresh on the next move.
   private readonly leftHighlighted = signal<ReadonlySet<string>>(new Set<string>());
   private readonly rightHighlighted = signal<ReadonlySet<string>>(new Set<string>());
 
-  // Per-pane "anchor" id — the last item the user clicked without Shift.
+  // Per-pane "anchor" id: the last item the user clicked without Shift.
   // Shift-click on another item selects the range from anchor to target,
   // matching the standard list-selection convention (Windows Explorer,
   // macOS Finder, every file picker).

@@ -32,7 +32,7 @@ export type PopoverRole = 'menu' | 'listbox' | 'dialog' | 'tooltip' | 'grid';
  * - `close`: request close. Suitable for dropdown lists and the colour-picker
  *   popover, where re-tracking a tall popover during a scroll feels intrusive.
  * - `ignore`: do nothing. The popover stays at its initial coordinates and
- *   may visually detach from a scrolling anchor — useful when the anchor is
+ *   may visually detach from a scrolling anchor; useful when the anchor is
  *   guaranteed not to move (e.g. inside a non-scrolling region).
  */
 export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
@@ -166,18 +166,18 @@ export class PopoverComponent {
     // Re-measure and reposition whenever the anchor, placement, surface, or
     // open state changes. Reading `surfaceEl()` here makes it a tracked signal
     // dependency, so the effect re-runs once Angular has rendered the `@if`
-    // block and the viewChild signal has updated — at that point both the
+    // block and the viewChild signal has updated; at that point both the
     // anchor and the surface have a `getBoundingClientRect`, and the position
     // can be computed. This is more reliable than `afterNextRender` because it
     // doesn't depend on a single render cycle landing in the expected order
-    // (some host environments — Storybook docs mode, for example — defer that
+    // (some host environments, Storybook docs mode for example, defer that
     // callback in a way that leaves the surface stuck at `visibility: hidden`).
     // Naturally SSR-safe: the surface never renders on the server, so the
     // effect always early-returns during prerender.
     // Teleport the surface to `document.body` as soon as it exists so
     // `position: fixed` is always relative to the actual viewport (escaping
     // any transformed/contained ancestor that would otherwise create a new
-    // containing block). Doing the move on init — not on open — also means
+    // containing block). Doing the move on init, not on open, also means
     // the first `getBoundingClientRect` call inside `reposition()` reads a
     // surface that's already in its final DOM home, so the browser's layout
     // is settled and dimensions are accurate. Skipped in SSR (no `document`).
@@ -207,7 +207,7 @@ export class PopoverComponent {
       this.flip();
       this.clamp();
       this.matchAnchorWidth();
-      // First reposition runs synchronously off the open effect — fast, but
+      // First reposition runs synchronously off the open effect (fast), but
       // the surface is still transitioning out of `display: none` and the
       // first `getBoundingClientRect` can report the surface's natural width
       // even when that overflows the viewport. We deliberately keep the
@@ -231,8 +231,8 @@ export class PopoverComponent {
 
     // Watch the surface's own size and reposition whenever it changes. The
     // first `reposition()` after open fires synchronously inside the open
-    // effect, while the surface is still transitioning out of `display: none`
-    // — in some browsers the layout pass hasn't completed, so the
+    // effect, while the surface is still transitioning out of `display: none`;
+    // in some browsers the layout pass hasn't completed, so the
     // `getBoundingClientRect` width can read as the surface's natural width
     // even when that overflows the viewport, so the clamp can't kick in. The
     // ResizeObserver fires once the surface has been laid out with its real
@@ -278,7 +278,7 @@ export class PopoverComponent {
     // Explicitly remove the portaled surface on destroy. Angular's view
     // destruction normally removes nodes the renderer created, but moving the
     // surface via raw `appendChild` (out of its original anchor slot) is
-    // enough to break that tracking in some host environments — Storybook's
+    // enough to break that tracking in some host environments: Storybook's
     // SPA navigation between docs pages, for one, leaves the surface stranded
     // in `document.body` after the parent component is gone. Removing it here
     // guarantees cleanup regardless of how Angular's view destruction handles

@@ -85,7 +85,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   private readonly destroyRef = inject(DestroyRef);
   private readonly injector = inject(Injector);
 
-  // ─── Inputs ───────────────────────────────────────────────────────────
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');
@@ -106,7 +105,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   /** Fires with the new value whenever the user changes the time. */
   readonly changed = output<string | null>();
 
-  // ─── State ────────────────────────────────────────────────────────────
   readonly isOpen = signal(false);
   /** Typed-digit buffer for the currently focused column, or `null` when idle. */
   readonly editBuffer = signal<{ unit: Unit; digits: string } | null>(null);
@@ -119,7 +117,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   private holdIntervalTimer: ReturnType<typeof setInterval> | null = null;
   private holdStartedAt = 0;
 
-  // ─── Computed ─────────────────────────────────────────────────────────
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
@@ -138,7 +135,7 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly displayHours = computed(() => {
     const h = this.parsed().hours;
     if (this.format() === '24h') return h;
-    // 12h: 0 → 12 (midnight as 12 AM), 13–23 → 1–11
+    // 12h: 0 maps to 12 (midnight as 12 AM), 13–23 map to 1–11
     return h % 12 === 0 ? 12 : h % 12;
   });
 
@@ -206,7 +203,6 @@ export class TimePickerComponent implements ControlValueAccessor {
     [`ea-time-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
-  // ─── ControlValueAccessor ─────────────────────────────────────────────
   writeValue(val: string | null | undefined): void {
     this.value.set(val ?? null);
   }
@@ -227,7 +223,6 @@ export class TimePickerComponent implements ControlValueAccessor {
     this.destroyRef.onDestroy(() => this.stopHold());
   }
 
-  // ─── Handlers ─────────────────────────────────────────────────────────
   toggle(): void {
     if (this.isDisabled() || this.readonly()) return;
     const opening = !this.isOpen();
@@ -411,15 +406,13 @@ export class TimePickerComponent implements ControlValueAccessor {
     this.editBuffer.set({ unit, digits });
 
     if (digits.length === 2) {
-      // Two digits committed — advance.
       this.commitDigits(unit, digits);
       this.advanceFocus(unit);
       return;
     }
     if (digits.length === 1 && this.cannotExtend(unit, digits)) {
-      // A single digit already saturates the unit (e.g. `9` in minutes once
-      // a second `0`–`5` would be required to stay ≤ 59 — but 9 + 0 = 90 > 59).
-      // Commit and advance.
+      // A single digit already saturates the unit (e.g. `9` in minutes: a
+      // second `0`–`5` would be needed to stay ≤ 59, but 9 + 0 = 90 > 59).
       this.commitDigits(unit, digits);
       this.advanceFocus(unit);
     }
@@ -429,8 +422,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   onSpinnerBlur(): void {
     this.flushBuffer();
   }
-
-  // ─── Typing internals ─────────────────────────────────────────────────
 
   /** True when no digit `0`–`9` can validly extend the current buffer. */
   private cannotExtend(unit: Unit, digits: string): boolean {
@@ -473,7 +464,7 @@ export class TimePickerComponent implements ControlValueAccessor {
   /**
    * Map a typed hours value back to 24h. In 24h mode the typed value is the
    * hour. In 12h mode the typed value is interpreted in the current period
-   * (AM → 12 maps to 0, others stay; PM → 12 stays, others add 12).
+   * (AM: 12 maps to 0, others stay; PM: 12 stays, others add 12).
    */
   private hoursFromTyped(typed: number): number {
     if (this.format() === '24h') return typed;
@@ -510,7 +501,6 @@ export class TimePickerComponent implements ControlValueAccessor {
     return 'hours';
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────
   private commit(time: ParsedTime): void {
     const str = formatTime(time, this.includeSeconds());
     if (str === this.value()) return;
@@ -520,8 +510,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   }
 }
 
-// ─── Constants ──────────────────────────────────────────────────────────
-
 /** Delay before a held chevron button starts repeating, in ms. */
 const HOLD_INITIAL_DELAY = 400;
 /** Repeat interval while a chevron button is held, in ms. */
@@ -530,8 +518,6 @@ const HOLD_INTERVAL_MS = 90;
 const HOLD_ACCELERATE_AFTER_MS = 1500;
 /** Repeat interval once the long-press has accelerated, in ms. */
 const HOLD_FAST_INTERVAL_MS = 35;
-
-// ─── Pure helpers ───────────────────────────────────────────────────────
 
 /** Pad a 0–59 unit to two digits. */
 function pad2(n: number): string {

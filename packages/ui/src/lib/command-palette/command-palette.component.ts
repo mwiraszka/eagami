@@ -29,7 +29,7 @@ interface GroupedItems {
  * containing a search input and a filtered list of commands. Designed for
  * `Cmd/Ctrl + K`-style global menus.
  *
- * The component does NOT bind global shortcuts — the consumer wires up
+ * The component does NOT bind global shortcuts; the consumer wires up
  * whatever trigger they want and toggles `[(open)]`. Each selected command
  * is emitted via `(execute)`; the palette closes automatically afterwards.
  *
@@ -128,11 +128,11 @@ export class CommandPaletteComponent {
   /**
    * Tracks what the user last did so the visual highlight only renders when
    * it actually reflects what a click/Enter would select right now:
-   *  - `keyboard` — keyboard nav (or just-opened / just-typed): show the
+   *  - `keyboard`: keyboard nav (or just-opened / just-typed): show the
    *    active item's background so keyboard users see what Enter will pick.
-   *  - `mouse` — pointer is moving inside the list: rely on `:hover` for the
+   *  - `mouse`: pointer is moving inside the list: rely on `:hover` for the
    *    visual; skip the active-row background to avoid two highlights.
-   *  - `none` — pointer is outside the list and no keyboard nav has happened
+   *  - `none`: pointer is outside the list and no keyboard nav has happened
    *    since: nothing is highlighted, because nothing on screen is a
    *    next-click target.
    */
@@ -192,7 +192,7 @@ export class CommandPaletteComponent {
   protected onQueryInput(event: Event): void {
     this.query.set((event.target as HTMLInputElement).value);
     this._activeIndex.set(0);
-    // Typing implies keyboard intent — surface the first match so the user
+    // Typing implies keyboard intent; surface the first match so the user
     // knows what Enter would pick without having to mouse over.
     this.interaction.set('keyboard');
   }
@@ -258,7 +258,7 @@ export class CommandPaletteComponent {
 
   protected onListMouseLeave(): void {
     /* Once the pointer leaves the list, no item is a candidate for the next
-       click — so drop the keyboard-highlight too. A subsequent keyboard nav
+       click, so drop the keyboard-highlight too. A subsequent keyboard nav
        will restore it. */
     this.interaction.set('none');
   }

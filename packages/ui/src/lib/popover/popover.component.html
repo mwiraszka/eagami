@@ -2,7 +2,7 @@
   The surface is rendered unconditionally so the `<ng-content/>` slot always
   exists. If we gated it on `@if (open())`, Angular would re-project the
   consumer's content at the popover host's position whenever the surface was
-  absent — leaking menu items / picker controls into the document flow (made
+  absent, leaking menu items / picker controls into the document flow (made
   worse by `display: contents` on the host). Hiding via `display: none` keeps
   the projected DOM owned by the surface and out of the flow when closed.
 -->

@@ -1,20 +1,12 @@
-// =============================================================================
-// TABS COMPONENT
-// =============================================================================
-
 .ea-tabs {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 
-  // ---------------------------------------------------------------------------
-  // Tab list (row of triggers)
-  // ---------------------------------------------------------------------------
   &__list {
     display: flex;
     gap: var(--space-1);
 
-    // Underline variant
     &--underline {
       border-bottom: var(--border-width-thin) solid var(--color-border-default);
       gap: 0;
@@ -35,7 +27,6 @@
       }
     }
 
-    // Filled variant
     &--filled {
       background-color: var(--color-bg-muted);
       border-radius: var(--radius-lg);
@@ -52,7 +43,6 @@
       }
     }
 
-    // Sizes
     &--sm .ea-tabs__trigger {
       padding: var(--space-1-5) var(--space-3);
       font-size: var(--font-size-xs);
@@ -69,9 +59,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Individual trigger button
-  // ---------------------------------------------------------------------------
   &__trigger {
     display: flex;
     align-items: center;

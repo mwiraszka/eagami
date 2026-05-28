@@ -40,7 +40,7 @@ export interface FileUploaderRejection {
 /**
  * Multi-file uploader with a drag-and-drop zone and a per-file list. Pure UI:
  * the component manages selection, validation, and removal but does not perform
- * any network I/O — consumers are responsible for uploading the resulting
+ * any network I/O; consumers are responsible for uploading the resulting
  * `File[]` and (optionally) feeding progress back via the `progress` map.
  *
  * The dropzone icon (default `<ea-icon-upload-cloud>`) is exposed as a content
@@ -170,8 +170,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
       : this.i18n.messages().fileUploader.promptSingle,
   );
 
-  // ----- CVA ------------------------------------------------------------------
-
   writeValue(value: readonly File[] | null | undefined): void {
     this.value.set(value ?? []);
   }
@@ -187,8 +185,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this._formDisabled.set(isDisabled);
   }
-
-  // ----- Handlers -------------------------------------------------------------
 
   protected openFilePicker(): void {
     if (this.isDisabled()) return;
@@ -250,8 +246,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
     this.dropzoneEl()?.nativeElement.focus();
   }
 
-  // ----- Validation -----------------------------------------------------------
-
   private acceptFiles(incoming: readonly File[]): void {
     const accepted: File[] = [];
     const rejections: FileUploaderRejection[] = [];
@@ -289,8 +283,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
     if (rejections.length) this.rejected.emit(rejections);
   }
 
-  // ----- View helpers ---------------------------------------------------------
-
   protected formatBytes(bytes: number): string {
     const units = this.i18n.messages().fileUploader.bytesUnit;
     if (bytes < 1024) return `${bytes} ${units.b}`;
@@ -319,8 +311,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
     return `${file.name}|${file.size}|${file.lastModified}`;
   }
 }
-
-// ----- Helpers (pure, module-scope) -------------------------------------------
 
 const ARCHIVE_MIMES = new Set([
   'application/zip',

@@ -22,7 +22,7 @@ export type TreeSize = 'sm' | 'md' | 'lg';
 /**
  * `<ea-tree>` renders a hierarchical, single-selection treeview with full
  * keyboard navigation (Arrow keys, Home, End, Enter / Space). Selection and
- * expansion state are model signals — pass `[selectedId]` / `[expandedIds]`
+ * expansion state are model signals: pass `[selectedId]` / `[expandedIds]`
  * to control them, or bind `[(selectedId)]` / `[(expandedIds)]` for two-way
  * sync.
  *
@@ -174,10 +174,8 @@ export class TreeComponent {
         const hasChildren = (node.children?.length ?? 0) > 0;
         if (!hasChildren) return;
         if (!this.expandedSet().has(currentId)) {
-          // Closed branch → open it.
           this.onNodeToggle(currentId);
         } else if (node.children && node.children.length > 0) {
-          // Already open → move to first non-disabled child.
           const firstChild = node.children.find(c => !c.disabled);
           if (firstChild) this.focusNode(firstChild.id);
         }
@@ -190,10 +188,8 @@ export class TreeComponent {
         if (!node) return;
         const hasChildren = (node.children?.length ?? 0) > 0;
         if (hasChildren && this.expandedSet().has(currentId)) {
-          // Open branch → close it.
           this.onNodeToggle(currentId);
         } else {
-          // Leaf or closed branch → focus parent (if any).
           const parentId = this.findParentId(currentId);
           if (parentId) this.focusNode(parentId);
         }
@@ -258,7 +254,7 @@ export class TreeComponent {
     return !!node?.disabled;
   }
 
-  // Silence unused-warning on the viewChild ref — kept for future programmatic
+  // Silences the unused-warning on the viewChild ref, retained for programmatic
   // focus behaviour (e.g. focusing the tree from a parent component).
   protected readonly _listEl = this.listEl;
 }
