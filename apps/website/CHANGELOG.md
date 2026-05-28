@@ -12,6 +12,12 @@ All notable changes to eagami.com are documented in this file.
 
 - Pick up @eagami/ui v2.4.0.
 - Route the design-principle ring's 3D shadows through `--shadow-bevel` / `--shadow-well` and the `<h2>` section headings through `--text-section-heading-*`, replacing hand-rolled rgba and 22px values.
+- Cap the `/ui` sidebar at 50dvh on mobile and split it into two independently-scrolling regions (primary nav + components list) so neither dominates the viewport when components is expanded.
+- Bump every 13px text block to 14px and every 15px text block to 16px to align with the type scale; the iOS-Safari zoom-on-focus issue is incidentally avoided on the icons search field now that it sits at 16px.
+
+### Fixed
+
+- Replace the brief "Redirecting…" interstitial at `/ui/components` with a Vercel-level 308 redirect, so direct visits land on the first component without flashing the meta-refresh placeholder.
 
 ## [2.3.0] - 2026-05-28
 

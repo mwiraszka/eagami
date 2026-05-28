@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `--shadow-bevel` / `--shadow-bevel-strong` and `--shadow-well` / `--shadow-well-strong` tokens. Each pairs an inset highlight with an inset shadow to give a surface a raised (bevel) or recessed (well) 3D look, composable with `--shadow-*` for an ambient drop. Dark-mode variants drop the highlight alpha and raise the shadow alpha so the relief still reads on a lifted dark surface without glowing.
 - Add `--text-section-heading-*` composite (20px / semibold / snug / brand family) for page-level subsection titles. First composite that pins a font-family token; everything else still inherits the body sans family.
 
+### Changed
+
+- Round out and alphabetize the README component list (Button, Color Picker, Command Palette, File Uploader, Multi-Select, Popover, Range Slider, Rating, Stepper, Time Picker, Transfer List, Tree, Virtual List were previously missing). Stepper now sits under Navigation; Accordion and Tree under Display.
+
 ## [2.3.0] - 2026-05-28
 
 ### Added
