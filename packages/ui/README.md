@@ -74,6 +74,23 @@ See [icons](https://eagami.com/ui/icons) for the full set, per-brand guideline l
 
 Every visual property is a CSS custom property on `:root`, so overriding any token retunes the whole library. See [design tokens](https://eagami.com/ui/design-tokens) for the full reference and theming examples.
 
+For the brand colour specifically, pass a single hex to `provideEagamiUi` and the library derives a full ten-shade scale (50 through 900) in [OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab) space:
+
+```ts
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideEagamiUi({
+      palette: {
+        primary: { base: '#2563eb' },
+        secondary: { base: '#f97316' },
+      },
+    }),
+  ],
+});
+```
+
+Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast violation throws before the app loads. Pin specific shades with `overrides` or remap which derived shade backs each role with `roles`. See [design tokens](https://eagami.com/ui/design-tokens) for the full API.
+
 ## Internationalization
 
 Built-in strings ship in English, French (France), Greek, Polish, and Spanish (Spain), with runtime switching via `EagamiI18nService`. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
