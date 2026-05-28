@@ -28,6 +28,15 @@ const preview: Preview = {
       // that need controls declare their own `argTypes` explicitly so we
       // lose nothing by skipping the auto-extract.
       extractArgTypes: () => null,
+      // Default extractor throws on stories with an unresolved component
+      extractComponentDescription: (component?: { name?: string }) => {
+        const name = component?.name;
+        if (!name) return null;
+        const entry = (
+          docJson as { components?: { name: string; rawdescription?: string }[] }
+        ).components?.find(c => c.name === name);
+        return entry?.rawdescription ?? null;
+      },
     },
     chromatic: {
       // Capture every story twice (light + dark) by driving the `theme`
