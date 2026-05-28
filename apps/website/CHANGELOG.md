@@ -7,6 +7,7 @@ All notable changes to eagami.com are documented in this file.
 ### Added
 
 - Document the new `--shadow-bevel` / `--shadow-well` token pair and the `--text-section-heading-*` composite on `/ui/design-tokens`.
+- Add a wrapping section to the `<ea-segmented>` demo showing a twelve-option control reflow onto multiple rows.
 
 ### Changed
 

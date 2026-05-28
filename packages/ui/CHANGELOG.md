@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Round out and alphabetize the README component list (Button, Color Picker, Command Palette, File Uploader, Multi-Select, Popover, Range Slider, Rating, Stepper, Time Picker, Transfer List, Tree, Virtual List were previously missing). Stepper now sits under Navigation; Accordion and Tree under Display.
 
+### Fixed
+
+- `<ea-segmented>` now wraps its options onto multiple rows instead of overflowing when they exceed the available width.
+
 ## [2.3.0] - 2026-05-28
 
 ### Added
