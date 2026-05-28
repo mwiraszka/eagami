@@ -12,15 +12,20 @@
     [value]="3.5" />
 
   <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-rating
-    size="sm"
-    [value]="3" />
-  <ea-rating
-    size="md"
-    [value]="3" />
-  <ea-rating
-    size="lg"
-    [value]="3" />
+  <div class="demo-stack">
+    <ea-rating
+      size="sm"
+      [label]="messages().ui.component.common.small"
+      [value]="3" />
+    <ea-rating
+      size="md"
+      [label]="messages().ui.component.common.medium"
+      [value]="3" />
+    <ea-rating
+      size="lg"
+      [label]="messages().ui.component.common.large"
+      [value]="3" />
+  </div>
 
   <h2>{{ messages().ui.component.sectionHeadings.readonly }}</h2>
   <ea-rating
