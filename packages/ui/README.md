@@ -42,10 +42,11 @@ See the [Setup](https://eagami.com/ui/setup) page for fonts and your first compo
 
 ## What's included
 
-- **Form controls**: Input, Textarea, Checkbox, Switch, Radio, Dropdown, Autocomplete, Date picker, Slider, Code input, Segmented, Avatar editor
-- **Overlays**: Dialog, Drawer, Tooltip, Menu, Toast
-- **Navigation**: Tabs, Breadcrumbs, Paginator, Accordion
-- **Display**: Card, Badge, Tag, Alert, Avatar, Skeleton, Spinner, Progress bar, Empty state, Divider, Eagami wordmark, Data table
+- **Actions**: Button, Command Palette
+- **Form controls**: Autocomplete, Avatar Editor, Checkbox, Code Input, Color Picker, Date Picker, Dropdown, File Uploader, Input, Multi-Select, Radio, Range Slider, Rating, Segmented, Slider, Switch, Textarea, Time Picker, Transfer List
+- **Overlays**: Dialog, Drawer, Menu, Popover, Toast, Tooltip
+- **Navigation**: Breadcrumbs, Paginator, Stepper, Tabs
+- **Display**: Accordion, Alert, Avatar, Badge, Card, Data Table, Divider, Eagami Wordmark, Empty State, Progress Bar, Skeleton, Spinner, Tag, Tree, Virtual List
 
 Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/components).
 
