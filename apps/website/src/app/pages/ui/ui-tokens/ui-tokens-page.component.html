@@ -15,6 +15,15 @@
     <web-code-snippet [code]="scopedThemeSnippet" />
   </section>
 
+  <section class="tokens-section">
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.palette }}</h2>
+    <p [innerHTML]="messages().ui.tokens.paletteIntro"></p>
+    <web-code-snippet [code]="paletteBaseSnippet" />
+    <p [innerHTML]="messages().ui.tokens.paletteOverrides"></p>
+    <web-code-snippet [code]="paletteOverridesSnippet" />
+    <p [innerHTML]="messages().ui.tokens.paletteContrast"></p>
+  </section>
+
   <!-- ─── Colors ──────────────────────────────────────────────────────── -->
   <section class="tokens-section">
     <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.colors }}</h2>

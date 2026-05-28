@@ -247,6 +247,7 @@ export const frFR: WebMessages = {
       lede: 'Les propriétés CSS personnalisées qui pilotent chaque composant de la bibliothèque : couleurs, typographie, espacement, élévation, forme et mouvement. Référencez ces tokens dans vos propres styles via <code>var(--token-name)</code> pour conserver une cohérence visuelle sur toute l’application.',
       sections: {
         theming: 'Thèmes',
+        palette: 'Palette de marque',
         colors: 'Couleurs',
         typography: 'Typographie',
         spacing: 'Espacement',
@@ -258,6 +259,12 @@ export const frFR: WebMessages = {
         'Remplacez n’importe quel token sur <code>:root</code> pour rethémer toute la bibliothèque :',
       themingScopedBefore:
         'Ou limitez les remplacements à des composants individuels là où c’est utile :',
+      paletteIntro:
+        'Passez un seul hex de marque à <code>provideEagamiUi</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
+      paletteOverrides:
+        'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
+      paletteContrast:
+        'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.1 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
       colorsPrimary: 'Primaire',
       colorsSecondary: 'Secondaire',
       colorsNeutral: 'Neutre',

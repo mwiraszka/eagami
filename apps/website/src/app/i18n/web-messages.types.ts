@@ -137,6 +137,7 @@ export interface WebMessages {
       lede: string;
       sections: {
         theming: string;
+        palette: string;
         colors: string;
         typography: string;
         spacing: string;
@@ -146,6 +147,9 @@ export interface WebMessages {
       };
       themingRootBefore: string;
       themingScopedBefore: string;
+      paletteIntro: string;
+      paletteOverrides: string;
+      paletteContrast: string;
       colorsPrimary: string;
       colorsSecondary: string;
       colorsNeutral: string;

@@ -242,6 +242,7 @@ export const esES: WebMessages = {
       lede: 'Las propiedades CSS personalizadas que impulsan cada componente de la biblioteca: colores, tipografía, espaciado, elevación, forma y movimiento. Referencia estos tokens en tus propios estilos mediante <code>var(--token-name)</code> para mantener la coherencia visual en toda la aplicación.',
       sections: {
         theming: 'Temas',
+        palette: 'Paleta de marca',
         colors: 'Colores',
         typography: 'Tipografía',
         spacing: 'Espaciado',
@@ -253,6 +254,12 @@ export const esES: WebMessages = {
         'Sobrescribe cualquier token en <code>:root</code> para retematizar toda la biblioteca:',
       themingScopedBefore:
         'O limita las sobrescrituras a componentes individuales donde sea útil:',
+      paletteIntro:
+        'Pasa un único hex de marca a <code>provideEagamiUi</code> y la biblioteca deriva una escala completa de diez tonos (50 a 900) en el espacio <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, manteniendo tono y croma estables mientras se gradúa la luminancia. Los tonos derivados alimentan cada token <code>--color-brand-*</code> tanto en modo claro como oscuro:',
+      paletteOverrides:
+        'Fija tonos concretos o reasigna qué tono derivado respalda cada rol semántico:',
+      paletteContrast:
+        'Cada combinación de rol de marca (texto sobre superficie, superficie sobre lienzo) se valida contra WCAG 2.1 AA al arrancar. Una combinación no conforme lanza un error antes de cargar la aplicación, así que un fallo de contraste en el color de marca se detecta al boot, no en producción.',
       colorsPrimary: 'Primario',
       colorsSecondary: 'Secundario',
       colorsNeutral: 'Neutro',

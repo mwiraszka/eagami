@@ -4,6 +4,11 @@ All notable changes to eagami.com are documented in this file.
 
 ## [2.3.0] - 2026-05-28
 
+### Added
+
+- Document the `provideEagamiUi({ palette })` brand-palette derivation pipeline on the `/ui/design-tokens` page, including the OKLCH workflow, per-shade overrides, role remapping, and the WCAG 2.1 AA bootstrap assertion.
+- Surface the new `--color-bg-canvas`, `--color-bg-stripe`, `--color-border-subtle`, and `--color-brand-text` semantic swatches in the design tokens reference.
+
 ### Changed
 
 - Pick up @eagami/ui v2.3.0.

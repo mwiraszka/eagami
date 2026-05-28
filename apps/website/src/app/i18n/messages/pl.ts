@@ -248,6 +248,7 @@ export const pl: WebMessages = {
       lede: 'Niestandardowe właściwości CSS, które napędzają każdy komponent biblioteki: kolory, typografia, odstępy, elewacja, kształt i ruch. Odwołuj się do tych tokenów we własnych stylach przez <code>var(--token-name)</code>, aby zachować spójność wizualną w całej aplikacji.',
       sections: {
         theming: 'Motywy',
+        palette: 'Paleta marki',
         colors: 'Kolory',
         typography: 'Typografia',
         spacing: 'Odstępy',
@@ -259,6 +260,12 @@ export const pl: WebMessages = {
         'Nadpisz dowolny token na <code>:root</code>, aby zmienić motyw całej biblioteki:',
       themingScopedBefore:
         'Lub zawęź nadpisania do pojedynczych komponentów tam, gdzie to przydatne:',
+      paletteIntro:
+        'Przekaż jeden hex marki do <code>provideEagamiUi</code>, a biblioteka wyprowadzi pełną skalę dziesięciu odcieni (50 do 900) w przestrzeni <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, utrzymując stały odcień i nasycenie przy zmianie jasności. Wyprowadzone odcienie zasilają każdy token <code>--color-brand-*</code> w trybie jasnym i ciemnym:',
+      paletteOverrides:
+        'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje dany rol semantyczny:',
+      paletteContrast:
+        'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem WCAG 2.1 AA przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
       colorsPrimary: 'Główny',
       colorsSecondary: 'Drugorzędny',
       colorsNeutral: 'Neutralny',

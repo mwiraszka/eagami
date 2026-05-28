@@ -241,6 +241,7 @@ export const en: WebMessages = {
       lede: 'The CSS custom properties that drive every component in the library: colors, typography, spacing, elevation, shape, and motion. Reference these tokens in your own styles via <code>var(--token-name)</code> to keep visual consistency across the app.',
       sections: {
         theming: 'Theming',
+        palette: 'Brand palette',
         colors: 'Colors',
         typography: 'Typography',
         spacing: 'Spacing',
@@ -251,6 +252,12 @@ export const en: WebMessages = {
       themingRootBefore:
         'Override any token on <code>:root</code> to retheme the entire library:',
       themingScopedBefore: 'Or scope overrides to individual components where useful:',
+      paletteIntro:
+        'Pass a single brand hex to <code>provideEagamiUi</code> and the library derives a full ten-shade scale (50 through 900) in <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> space, holding hue and chroma steady while stepping lightness. The derived shades feed every <code>--color-brand-*</code> token in both light and dark mode:',
+      paletteOverrides:
+        'Pin specific shades or remap which derived shade backs each semantic role:',
+      paletteContrast:
+        'Every brand-role pairing (text on surface, surface on canvas) is checked against WCAG 2.1 AA at bootstrap. A failing combination throws before the app loads, so a contrast bug in the brand colour is caught at boot rather than in production.',
       colorsPrimary: 'Primary',
       colorsSecondary: 'Secondary',
       colorsNeutral: 'Neutral',
