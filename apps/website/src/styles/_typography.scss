@@ -4,7 +4,7 @@
    leaves <pre><code> blocks untouched. */
 :where(p, li, h1, h2, h3, h4) > code:not(pre code) {
   padding: var(--text-code-padding);
-  white-space: nowrap;
+  overflow-wrap: break-word;
   font-size: var(--text-code-size);
   font-weight: var(--text-code-weight);
   font-family: var(--text-code-family);
