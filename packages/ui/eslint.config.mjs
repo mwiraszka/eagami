@@ -36,6 +36,7 @@ export default [
         'error',
         { fixStyle: 'inline-type-imports' },
       ],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
     },
   },

@@ -29,6 +29,7 @@ export default [
         'error',
         { fixStyle: 'inline-type-imports' },
       ],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
       // French typography uses U+202F (narrow no-break space) before high
       // punctuation. Allow it in our own strings and template literals.
