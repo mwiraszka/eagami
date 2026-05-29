@@ -8,6 +8,10 @@
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 
+  // Composable top-edge highlight appended to every dark-mode shadow so elevated
+  // surfaces catch light along their top edge; a no-op in light mode.
+  --shadow-edge-highlight: 0 0 #0000;
+
   // Bevel: paired inset highlight (top) + shadow (bottom) for a raised look;
   // compose with --shadow-* for an ambient drop.
   --shadow-bevel:
@@ -36,20 +40,27 @@
   --z-index-tooltip: 700;
 }
 
-// Dark mode: black drop shadows vanish on a near-black page, so flip to white
-// at low alpha (reads as a muted dark cast). xl/2xl also tighten offset/blur so
-// the lighter fade doesn't bloom into a halo.
+// Dark mode: a drop shadow is the absence of light, so it stays black (deeper
+// than light mode); a white "shadow" reads as a glow and looks wrong. Elevation
+// is carried instead by the lifted surface tone plus a hairline top highlight
+// that catches light, appended to every level via --shadow-edge-highlight.
 @mixin dark-elevation-tokens {
-  --shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.04);
+  --shadow-edge-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4), var(--shadow-edge-highlight);
   --shadow-sm:
-    0 1px 3px 0 rgba(255, 255, 255, 0.05), 0 1px 2px -1px rgba(255, 255, 255, 0.04);
+    0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4),
+    var(--shadow-edge-highlight);
   --shadow-md:
-    0 4px 6px -1px rgba(255, 255, 255, 0.06), 0 2px 4px -2px rgba(255, 255, 255, 0.04);
+    0 4px 8px -2px rgba(0, 0, 0, 0.55), 0 2px 4px -2px rgba(0, 0, 0, 0.4),
+    var(--shadow-edge-highlight);
   --shadow-lg:
-    0 8px 12px -2px rgba(255, 255, 255, 0.08), 0 3px 5px -3px rgba(255, 255, 255, 0.05);
+    0 12px 20px -4px rgba(0, 0, 0, 0.6), 0 4px 8px -4px rgba(0, 0, 0, 0.45),
+    var(--shadow-edge-highlight);
   --shadow-xl:
-    0 12px 18px -4px rgba(255, 255, 255, 0.05), 0 5px 8px -4px rgba(255, 255, 255, 0.03);
-  --shadow-2xl: 0 16px 28px -8px rgba(255, 255, 255, 0.06);
+    0 20px 28px -6px rgba(0, 0, 0, 0.65), 0 8px 12px -6px rgba(0, 0, 0, 0.5),
+    var(--shadow-edge-highlight);
+  --shadow-2xl: 0 28px 50px -12px rgba(0, 0, 0, 0.75), var(--shadow-edge-highlight);
 
   // On a dark surface a bright highlight reads as a halo, so drop the highlight
   // alpha and raise the shadow alpha to keep the relief without glowing.
