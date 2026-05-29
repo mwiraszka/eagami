@@ -80,11 +80,11 @@ describe('FileUploaderComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-file-uploader-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg).toBeTruthy();
       expect(msg.getAttribute('role')).toBe('alert');
-      expect(msg.querySelector('.ea-file-uploader-field__message-icon')).toBeTruthy();
+      expect(msg.querySelector('.ea-field-messages__icon')).toBeTruthy();
     });
 
     it('renders a constraints line when accept / maxSize / maxFiles are set', () => {

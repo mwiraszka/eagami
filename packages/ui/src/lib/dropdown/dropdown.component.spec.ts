@@ -78,7 +78,7 @@ describe('DropdownComponent', () => {
     it('renders a label when provided', () => {
       fixture.componentRef.setInput('label', 'Country');
       fixture.detectChanges();
-      const label = fixture.nativeElement.querySelector('.ea-dropdown-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Country');
     });
   });
@@ -185,7 +185,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-dropdown-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Required');
     });
@@ -194,7 +194,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('hint', 'Choose one');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-dropdown-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Choose one');
     });
@@ -204,7 +204,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.ea-dropdown-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

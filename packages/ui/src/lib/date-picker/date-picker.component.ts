@@ -16,8 +16,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
@@ -52,10 +53,11 @@ interface CalendarDay {
 @Component({
   selector: 'ea-date-picker',
   imports: [
-    AlertCircleIconComponent,
     CalendarIconComponent,
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
     XIconComponent,

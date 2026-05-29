@@ -16,8 +16,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { LeftHalfStarIconComponent } from '../icons/left-half-star.component';
 import { StarIconComponent } from '../icons/star.component';
 
@@ -47,7 +48,7 @@ export type RatingSize = 'sm' | 'md' | 'lg';
   templateUrl: './rating.component.html',
   styleUrl: './rating.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, NgClass, NgComponentOutlet],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, NgComponentOutlet],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

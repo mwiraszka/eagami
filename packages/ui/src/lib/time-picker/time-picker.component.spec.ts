@@ -76,7 +76,7 @@ describe('TimePickerComponent', () => {
       fixture.componentRef.setInput('label', 'Start time');
       fixture.detectChanges();
 
-      const label = fixture.nativeElement.querySelector('.ea-time-picker-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Start time');
     });
 
@@ -578,7 +578,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-time-picker-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Invalid time');
     });
@@ -588,7 +588,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-time-picker-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Between 9 and 5');
     });
@@ -599,7 +599,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-time-picker-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

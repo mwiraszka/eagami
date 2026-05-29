@@ -68,9 +68,11 @@ describe('RatingComponent', () => {
     it('renders the alert message with the alert-circle icon when errorMsg is set', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
-      const msg = fixture.nativeElement.querySelector('.ea-rating-field__message--error');
+      const msg = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--error',
+      );
       expect(msg.getAttribute('role')).toBe('alert');
-      expect(msg.querySelector('.ea-rating-field__message-icon')).toBeTruthy();
+      expect(msg.querySelector('.ea-field-messages__icon')).toBeTruthy();
     });
   });
 

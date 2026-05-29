@@ -129,16 +129,14 @@ describe('SegmentedComponent', () => {
     }
 
     it('renders no field label by default', () => {
-      expect(
-        fixture.nativeElement.querySelector('.ea-segmented-field__label'),
-      ).toBeNull();
+      expect(fixture.nativeElement.querySelector('.ea-field-label')).toBeNull();
     });
 
     it('renders the label and links it via aria-labelledby', () => {
       fixture.componentRef.setInput('label', 'View');
       fixture.detectChanges();
 
-      const labelEl = fixture.nativeElement.querySelector('.ea-segmented-field__label');
+      const labelEl = fixture.nativeElement.querySelector('.ea-field-label');
 
       expect(labelEl.textContent.trim()).toBe('View');
       expect(getGroupEl().getAttribute('aria-labelledby')).toBe(labelEl.id);
@@ -149,7 +147,7 @@ describe('SegmentedComponent', () => {
       fixture.detectChanges();
 
       const hint = fixture.nativeElement.querySelector(
-        '.ea-segmented-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
 
       expect(hint.textContent.trim()).toBe('Pick a layout');
@@ -162,10 +160,10 @@ describe('SegmentedComponent', () => {
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(
-        '.ea-segmented-field__message--error',
+        '.ea-field-messages__message--error',
       );
       const hint = fixture.nativeElement.querySelector(
-        '.ea-segmented-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
 
       expect(error.textContent.trim()).toBe('Pick something');

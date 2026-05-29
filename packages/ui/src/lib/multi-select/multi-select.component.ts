@@ -17,8 +17,9 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
@@ -43,9 +44,10 @@ export type MultiSelectSize = 'sm' | 'md' | 'lg';
   styleUrl: './multi-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     CheckboxComponent,
     ChevronDownIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
     SearchIconComponent,

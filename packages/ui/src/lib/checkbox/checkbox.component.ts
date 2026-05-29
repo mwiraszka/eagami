@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size of a checkbox. */
 export type CheckboxSize = 'sm' | 'md' | 'lg';
@@ -23,7 +23,7 @@ export type CheckboxSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-checkbox',
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldMessagesComponent, NgClass],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

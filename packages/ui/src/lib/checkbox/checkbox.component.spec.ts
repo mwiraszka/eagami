@@ -174,7 +174,7 @@ describe('CheckboxComponent', () => {
   describe('Hint and error messages', () => {
     it('renders nothing by default', () => {
       expect(
-        fixture.nativeElement.querySelector('.ea-checkbox-field__message'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message'),
       ).toBeNull();
     });
 
@@ -182,7 +182,7 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('hint', 'Optional input');
       fixture.detectChanges();
       const hint = fixture.nativeElement.querySelector(
-        '.ea-checkbox-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(hint.textContent.trim()).toBe('Optional input');
     });
@@ -192,10 +192,10 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required field');
       fixture.detectChanges();
       const error = fixture.nativeElement.querySelector(
-        '.ea-checkbox-field__message--error',
+        '.ea-field-messages__message--error',
       );
       const hint = fixture.nativeElement.querySelector(
-        '.ea-checkbox-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(error.textContent.trim()).toBe('Required field');
       expect(hint).toBeNull();
@@ -211,7 +211,7 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Bad');
       fixture.detectChanges();
       const errorEl = fixture.nativeElement.querySelector(
-        '.ea-checkbox-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(getNativeInput().getAttribute('aria-describedby')).toBe(errorEl.id);
     });
@@ -220,7 +220,7 @@ describe('CheckboxComponent', () => {
       fixture.componentRef.setInput('hint', 'Hint text');
       fixture.detectChanges();
       const hintEl = fixture.nativeElement.querySelector(
-        '.ea-checkbox-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(getNativeInput().getAttribute('aria-describedby')).toBe(hintEl.id);
     });

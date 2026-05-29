@@ -118,7 +118,7 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('required', true);
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.ea-input-field__label--required'),
+        fixture.nativeElement.querySelector('.ea-field-label--required'),
       ).toBeTruthy();
     });
   });
@@ -195,7 +195,9 @@ describe('InputComponent', () => {
     it('shows the error message when errorMsg is set', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
-      const msg = fixture.nativeElement.querySelector('.ea-input-field__message--error');
+      const msg = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--error',
+      );
       expect(msg?.textContent).toContain('Required');
     });
 
@@ -218,7 +220,9 @@ describe('InputComponent', () => {
     it('shows the hint message when hint is set and no error', () => {
       fixture.componentRef.setInput('hint', 'Helpful text');
       fixture.detectChanges();
-      const msg = fixture.nativeElement.querySelector('.ea-input-field__message--hint');
+      const msg = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
       expect(msg?.textContent).toContain('Helpful text');
     });
 
@@ -227,7 +231,7 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.ea-input-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
 
@@ -244,7 +248,7 @@ describe('InputComponent', () => {
       fixture.detectChanges();
       const inputEl = getNativeInput();
       const hintEl = fixture.nativeElement.querySelector(
-        '.ea-input-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(inputEl.getAttribute('aria-describedby')).toBe(hintEl.id);
     });

@@ -17,8 +17,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
@@ -60,10 +61,11 @@ interface ParsedTime {
   styleUrl: './time-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     ChevronDownIconComponent,
     ChevronUpIconComponent,
     ClockIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
     XIconComponent,

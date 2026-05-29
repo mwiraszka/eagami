@@ -13,7 +13,8 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import type { SelectOption } from '../select-option';
 
 /** Visual size of the segmented control. */
@@ -30,7 +31,7 @@ export type SegmentedSize = 'sm' | 'md' | 'lg';
   templateUrl: './segmented.component.html',
   styleUrl: './segmented.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -14,8 +14,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
@@ -33,8 +34,9 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
 @Component({
   selector: 'ea-dropdown',
   imports: [
-    AlertCircleIconComponent,
     ChevronDownIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
   ],

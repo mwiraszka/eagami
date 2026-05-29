@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size of the switch. */
 export type SwitchSize = 'sm' | 'md' | 'lg';
@@ -23,7 +23,7 @@ export type SwitchSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-switch',
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldMessagesComponent, NgClass],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

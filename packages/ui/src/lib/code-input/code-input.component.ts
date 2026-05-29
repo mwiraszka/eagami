@@ -13,8 +13,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
 /** Visual size of each digit cell. */
 export type CodeInputSize = 'sm' | 'md' | 'lg';
@@ -26,7 +27,7 @@ export type CodeInputSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-code-input',
-  imports: [AlertCircleIconComponent],
+  imports: [FieldLabelComponent, FieldMessagesComponent],
   templateUrl: './code-input.component.html',
   styleUrl: './code-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

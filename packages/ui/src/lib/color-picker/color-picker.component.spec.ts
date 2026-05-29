@@ -53,7 +53,7 @@ describe('ColorPickerComponent', () => {
       fixture.componentRef.setInput('label', 'Brand');
       fixture.detectChanges();
 
-      const label = fixture.nativeElement.querySelector('.ea-color-picker-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Brand');
     });
 
@@ -340,7 +340,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-color-picker-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Required');
     });
@@ -350,7 +350,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-color-picker-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Brand color');
     });
@@ -361,7 +361,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-color-picker-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

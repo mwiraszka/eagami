@@ -16,8 +16,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
 import { XIconComponent } from '../icons/x.component';
@@ -46,9 +47,10 @@ export type InputType =
   styleUrl: './input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     EyeIconComponent,
     EyeOffIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     XIconComponent,
   ],

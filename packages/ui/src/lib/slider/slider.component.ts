@@ -13,7 +13,8 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
@@ -29,7 +30,7 @@ export type SliderSize = 'sm' | 'md' | 'lg';
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

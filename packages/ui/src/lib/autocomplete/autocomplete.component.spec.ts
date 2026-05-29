@@ -67,7 +67,7 @@ describe('AutocompleteComponent', () => {
   }
 
   function getLabel(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-autocomplete__label');
+    return fixture.nativeElement.querySelector('.ea-field-label');
   }
 
   function type(value: string): void {
@@ -309,7 +309,9 @@ describe('AutocompleteComponent', () => {
       host.hint.set('Start typing to search');
       fixture.detectChanges();
 
-      const hint = fixture.nativeElement.querySelector('.ea-autocomplete__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(hint.textContent).toContain('Start typing to search');
     });
@@ -320,9 +322,11 @@ describe('AutocompleteComponent', () => {
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(
-        '.ea-autocomplete__message--error',
+        '.ea-field-messages__message--error',
       );
-      const hint = fixture.nativeElement.querySelector('.ea-autocomplete__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(error.textContent).toContain('Required');
       expect(hint).toBeNull();

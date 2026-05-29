@@ -14,8 +14,9 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ArchiveIconComponent } from '../icons/archive.component';
 import { FileTextIconComponent } from '../icons/file-text.component';
 import { FileIconComponent } from '../icons/file.component';
@@ -60,8 +61,9 @@ export interface FileUploaderRejection {
   styleUrl: './file-uploader.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     ArchiveIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     FileIconComponent,
     FileTextIconComponent,
     FilmIconComponent,

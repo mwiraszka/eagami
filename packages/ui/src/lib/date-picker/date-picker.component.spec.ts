@@ -66,7 +66,7 @@ describe('DatePickerComponent', () => {
       fixture.componentRef.setInput('label', 'Birth date');
       fixture.detectChanges();
 
-      const label = fixture.nativeElement.querySelector('.ea-date-picker-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Birth date');
     });
 
@@ -314,7 +314,7 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-date-picker-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Invalid date');
     });
@@ -324,7 +324,7 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-date-picker-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Pick a future date');
     });
@@ -335,7 +335,7 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-date-picker-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

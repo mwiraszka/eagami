@@ -110,7 +110,7 @@ describe('RadioGroupComponent', () => {
     host.label.set('Preferred answer');
     fixture.detectChanges();
 
-    const label = fixture.nativeElement.querySelector('.ea-radio-group-field__label');
+    const label = fixture.nativeElement.querySelector('.ea-field-label');
     expect(label.textContent.trim()).toBe('Preferred answer');
     expect(getGroup().getAttribute('aria-labelledby')).toBe(label.id);
   });
@@ -119,9 +119,7 @@ describe('RadioGroupComponent', () => {
     host.errorMsg.set('Required');
     fixture.detectChanges();
 
-    const msg = fixture.nativeElement.querySelector(
-      '.ea-radio-group-field__message--error',
-    );
+    const msg = fixture.nativeElement.querySelector('.ea-field-messages__message--error');
     expect(msg.textContent).toContain('Required');
     expect(getGroup().getAttribute('aria-invalid')).toBe('true');
   });
@@ -130,9 +128,7 @@ describe('RadioGroupComponent', () => {
     host.hint.set('Pick one');
     fixture.detectChanges();
 
-    const msg = fixture.nativeElement.querySelector(
-      '.ea-radio-group-field__message--hint',
-    );
+    const msg = fixture.nativeElement.querySelector('.ea-field-messages__message--hint');
     expect(msg.textContent).toContain('Pick one');
   });
 
@@ -142,7 +138,7 @@ describe('RadioGroupComponent', () => {
     fixture.detectChanges();
 
     expect(
-      fixture.nativeElement.querySelector('.ea-radio-group-field__message--hint'),
+      fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
     ).toBeNull();
   });
 
