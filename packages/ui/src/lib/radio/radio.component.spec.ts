@@ -163,9 +163,7 @@ describe('RadioGroupComponent — form-field plumbing', () => {
   });
 
   it('renders no field label by default', () => {
-    expect(
-      fixture.nativeElement.querySelector('.ea-field-label'),
-    ).toBeNull();
+    expect(fixture.nativeElement.querySelector('.ea-field-label')).toBeNull();
   });
 
   it('renders the label and links it via aria-labelledby', () => {
@@ -182,9 +180,7 @@ describe('RadioGroupComponent — form-field plumbing', () => {
     fixture.componentRef.setInput('hint', 'Pick one');
     fixture.detectChanges();
 
-    const hint = fixture.nativeElement.querySelector(
-      '.ea-field-messages__message--hint',
-    );
+    const hint = fixture.nativeElement.querySelector('.ea-field-messages__message--hint');
 
     expect(hint.textContent.trim()).toBe('Pick one');
     expect(getGroupEl().getAttribute('aria-describedby')).toBe(hint.id);
@@ -198,9 +194,7 @@ describe('RadioGroupComponent — form-field plumbing', () => {
     const error = fixture.nativeElement.querySelector(
       '.ea-field-messages__message--error',
     );
-    const hint = fixture.nativeElement.querySelector(
-      '.ea-field-messages__message--hint',
-    );
+    const hint = fixture.nativeElement.querySelector('.ea-field-messages__message--hint');
 
     expect(error.textContent.trim()).toBe('Required');
     expect(hint).toBeNull();
