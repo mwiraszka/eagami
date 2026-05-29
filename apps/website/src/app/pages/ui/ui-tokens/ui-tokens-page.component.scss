@@ -444,6 +444,16 @@
   background-color: var(--color-bg-muted);
 }
 
+// A correct dark-mode drop shadow is black, so on the near-black canvas it has
+// nothing to fall on and the levels look identical. Stage the swatches on a
+// lifted surface, the way elevated components sit over content, so the shadows
+// read. Light mode is fine on the white canvas, so this is dark-mode only.
+:host-context([data-theme='dark']) .elevation-grid--drop {
+  padding: 32px;
+  border-radius: 12px;
+  background-color: var(--color-bg-base);
+}
+
 .motion-simulate {
   display: inline-flex;
   align-items: center;
