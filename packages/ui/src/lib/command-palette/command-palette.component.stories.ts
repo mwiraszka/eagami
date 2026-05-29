@@ -1,10 +1,10 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { Component, HostListener, signal } from '@angular/core';
 
 import { ButtonComponent } from '../button/button.component';
 import { CommandPaletteComponent } from './command-palette.component';
-import { CommandPaletteItem } from './command-palette.types';
+import type { CommandPaletteItem } from './command-palette.types';
 
 const COMMANDS: CommandPaletteItem[] = [
   { id: 'new', label: 'New file', shortcut: 'Ctrl+N', group: 'File' },

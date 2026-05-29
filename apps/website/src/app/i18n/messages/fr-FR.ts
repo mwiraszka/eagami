@@ -1,4 +1,4 @@
-import { WebMessages } from '../web-messages.types';
+import type { WebMessages } from '../web-messages.types';
 
 /* Narrow no-break space (U+202F) inserted by hand before high French
    punctuation (? ! : ; ») and after («) so the typography looks right

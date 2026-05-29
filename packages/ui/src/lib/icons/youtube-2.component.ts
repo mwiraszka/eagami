@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { IconCategory, IconComponentBase } from './icon-category';
+import { type IconCategory, IconComponentBase } from './icon-category';
 
 /**
  * YouTube brand mark (Eagami brand-filled).

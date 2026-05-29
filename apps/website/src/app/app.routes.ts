@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import type { Routes } from '@angular/router';
 
 import { UI_COMPONENTS } from '@app/data/ui-components';
 

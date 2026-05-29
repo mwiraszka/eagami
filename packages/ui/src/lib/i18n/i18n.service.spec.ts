@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
-import { EAGAMI_LOCALES, EagamiLocale } from './i18n.types';
+import { EAGAMI_LOCALES, type EagamiLocale } from './i18n.types';
 
 describe('EagamiI18nService', () => {
   function createService(

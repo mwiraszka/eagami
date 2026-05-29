@@ -1,7 +1,7 @@
 import {
   Directive,
   ElementRef,
-  OnDestroy,
+  type OnDestroy,
   Renderer2,
   inject,
   input,
@@ -70,10 +70,14 @@ export class TooltipDirective implements OnDestroy {
      the trigger around). Coalesced with rAF to keep scroll handling cheap. */
   private rafId: number | null = null;
   private readonly repositionHandler = () => {
-    if (!this.tooltipEl || this.rafId !== null) return;
+    if (!this.tooltipEl || this.rafId !== null) {
+      return;
+    }
     this.rafId = requestAnimationFrame(() => {
       this.rafId = null;
-      if (this.tooltipEl) this.positionTooltip();
+      if (this.tooltipEl) {
+        this.positionTooltip();
+      }
     });
   };
   /* Capture-phase scroll listener catches scrolls on any ancestor, not just
@@ -123,7 +127,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private show(): void {
-    if (this.tooltipEl || !this.eaTooltip()) return;
+    if (this.tooltipEl || !this.eaTooltip()) {
+      return;
+    }
 
     this.tooltipEl = this.renderer.createElement('div');
     this.renderer.addClass(this.tooltipEl, 'ea-tooltip');
@@ -154,7 +160,9 @@ export class TooltipDirective implements OnDestroy {
   private attachRepositionListeners(): void {
     /* Guard against server-side rendering: ngOnDestroy can fire during SSR
        teardown and reach here even though the tooltip never actually shows. */
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.addEventListener('resize', this.repositionHandler);
     /* `capture: true` so we catch scrolls on any ancestor (modal body, sidebar,
        overflow:auto wrappers), not just the window. */
@@ -169,7 +177,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private detachRepositionListeners(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.removeEventListener('resize', this.repositionHandler);
     window.removeEventListener(
       'scroll',
@@ -184,7 +194,9 @@ export class TooltipDirective implements OnDestroy {
     const native = this.el.nativeElement;
     const existing = (native.getAttribute('aria-describedby') ?? '').trim();
     const tokens = existing ? existing.split(/\s+/) : [];
-    if (!tokens.includes(this.tooltipId)) tokens.push(this.tooltipId);
+    if (!tokens.includes(this.tooltipId)) {
+      tokens.push(this.tooltipId);
+    }
     this.renderer.setAttribute(native, 'aria-describedby', tokens.join(' '));
   }
 
@@ -200,7 +212,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private positionTooltip(): void {
-    if (!this.tooltipEl) return;
+    if (!this.tooltipEl) {
+      return;
+    }
 
     const hostRect = this.el.nativeElement.getBoundingClientRect();
 

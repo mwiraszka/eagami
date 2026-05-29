@@ -42,7 +42,9 @@ export class AppComponent {
        (which swaps English strings for the active locale) runs in a follow-up
        microtask. Revealing earlier flashes the still-English DOM for a frame;
        `isStable` fires once that reconciliation has settled. */
-    if (!this.isBrowser) return;
+    if (!this.isBrowser) {
+      return;
+    }
     this.appRef.isStable
       .pipe(
         filter(stable => stable),

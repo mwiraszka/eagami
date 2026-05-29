@@ -1,6 +1,6 @@
-import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { SegmentedComponent } from './segmented.component';
 
 const viewOptions: SelectOption[] = [

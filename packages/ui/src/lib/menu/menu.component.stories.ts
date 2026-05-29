@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { Edit2IconComponent } from '../icons/edit-2.component';

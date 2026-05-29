@@ -1,7 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { FileUploaderComponent, FileUploaderRejection } from './file-uploader.component';
+import {
+  FileUploaderComponent,
+  type FileUploaderRejection,
+} from './file-uploader.component';
 
 function makeFile(
   name: string,
@@ -18,8 +21,10 @@ function fileList(...files: File[]): FileList {
     length: files.length,
     item: (i: number) => files[i] ?? null,
     ...files.reduce<Record<number, File>>((acc, f, i) => ({ ...acc, [i]: f }), {}),
-    [Symbol.iterator]: function* () {
-      for (const f of files) yield f;
+    *[Symbol.iterator]() {
+      for (const f of files) {
+        yield f;
+      }
     },
   };
   return list as unknown as FileList;

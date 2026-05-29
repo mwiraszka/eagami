@@ -4,7 +4,7 @@ import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { CommandPaletteComponent } from './command-palette.component';
-import { CommandPaletteItem } from './command-palette.types';
+import type { CommandPaletteItem } from './command-palette.types';
 
 const COMMANDS: CommandPaletteItem[] = [
   { id: 'a', label: 'New file', shortcut: 'Ctrl+N', group: 'File' },

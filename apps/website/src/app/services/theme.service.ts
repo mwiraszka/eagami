@@ -21,7 +21,9 @@ export class ThemeService {
   public readonly mode = signal<ThemeMode>(this.readStoredMode());
 
   constructor() {
-    if (this.isBrowser) this.applyTheme();
+    if (this.isBrowser) {
+      this.applyTheme();
+    }
   }
 
   public cycle(): void {
@@ -34,19 +36,25 @@ export class ThemeService {
   }
 
   private readStoredMode(): ThemeMode {
-    if (!this.isBrowser) return 'light';
+    if (!this.isBrowser) {
+      return 'light';
+    }
     /* Precedence must match the inline <head> script in index.html:
        1. Explicit choice in localStorage
        2. System preference via prefers-color-scheme
        3. Light default */
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'dark' || stored === 'light') return stored;
+      if (stored === 'dark' || stored === 'light') {
+        return stored;
+      }
     } catch {
       // localStorage may be unavailable in sandboxed contexts; fall through
     }
     try {
-      if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
+      if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
     } catch {
       // matchMedia missing in very old browsers; fall through
     }
@@ -54,7 +62,9 @@ export class ThemeService {
   }
 
   private applyTheme(): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser) {
+      return;
+    }
 
     const m = this.mode();
     localStorage.setItem(STORAGE_KEY, m);

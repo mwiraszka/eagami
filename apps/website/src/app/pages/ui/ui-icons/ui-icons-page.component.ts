@@ -1,7 +1,7 @@
 import {
   CheckboxComponent,
-  IconCategory,
-  IconComponentType,
+  type IconCategory,
+  type IconComponentType,
   SearchIconComponent,
   ToastService,
   TooltipDirective,
@@ -19,7 +19,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
@@ -68,7 +68,9 @@ export class UiIconsPageComponent {
     const counts = { feather: 0, eagami: 0, brand: 0 };
     for (const icon of ICONS) {
       counts[icon.category]++;
-      if (icon.isBrand) counts.brand++;
+      if (icon.isBrand) {
+        counts.brand++;
+      }
     }
     return counts;
   });
@@ -95,8 +97,11 @@ export class UiIconsPageComponent {
 
   protected toggleCategory(category: CategoryTab): void {
     const next = new Set(this.enabledCategories());
-    if (next.has(category)) next.delete(category);
-    else next.add(category);
+    if (next.has(category)) {
+      next.delete(category);
+    } else {
+      next.add(category);
+    }
     this.enabledCategories.set(next);
   }
 
@@ -113,8 +118,12 @@ export class UiIconsPageComponent {
     return ICONS.filter(icon => {
       const matchesCategory =
         cats.has(icon.category) || (!!icon.isBrand && cats.has('brand'));
-      if (!matchesCategory) return false;
-      if (!q) return true;
+      if (!matchesCategory) {
+        return false;
+      }
+      if (!q) {
+        return true;
+      }
       return icon.tags.some(tag => normalize(tag).includes(q));
     });
   });

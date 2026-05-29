@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TooltipDirective, TooltipPosition } from './tooltip.directive';
+import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
 
 @Component({
   selector: 'ea-test-host',

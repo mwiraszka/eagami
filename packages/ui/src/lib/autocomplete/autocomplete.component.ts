@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   HostListener,
   computed,
   forwardRef,
@@ -13,11 +13,11 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 
 /** Visual size of the autocomplete input. */
 export type AutocompleteSize = 'sm' | 'md' | 'lg';
@@ -94,7 +94,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
     const allOptions = this.options();
     const max = this.maxResults();
 
-    if (query.length < this.minLength()) return [];
+    if (query.length < this.minLength()) {
+      return [];
+    }
 
     const matched = query
       ? allOptions.filter(o => o.label.toLowerCase().includes(query))
@@ -171,7 +173,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
 
     switch (event.key) {
       case 'ArrowDown':
@@ -184,7 +188,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
         break;
       case 'ArrowUp':
         event.preventDefault();
-        if (this.isOpen()) this.moveFocus(-1);
+        if (this.isOpen()) {
+          this.moveFocus(-1);
+        }
         break;
       case 'Enter': {
         const opts = this.filteredOptions();
@@ -206,7 +212,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   /** Programmatically selects the given option, updating the value and closing the list. */
   selectOption(option: SelectOption): void {
-    if (option.disabled || this.isDisabled()) return;
+    if (option.disabled || this.isDisabled()) {
+      return;
+    }
     this.value.set(option.label);
     this.onChange(option.label);
     this.changed.emit(option.label);
@@ -229,18 +237,24 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   private moveFocus(delta: number): void {
     const opts = this.filteredOptions();
-    if (opts.length === 0) return;
+    if (opts.length === 0) {
+      return;
+    }
     let idx = this.focusedIndex() + delta;
     while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
       idx += delta;
     }
-    if (idx < 0 || idx >= opts.length) return;
+    if (idx < 0 || idx >= opts.length) {
+      return;
+    }
     this.focusedIndex.set(idx);
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (!this.isOpen()) return;
+    if (!this.isOpen()) {
+      return;
+    }
     const host = this.hostEl()?.nativeElement;
     if (host && !host.contains(event.target as Node)) {
       this.close();

@@ -1,7 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DrawerComponent, DrawerPosition, DrawerSize } from './drawer.component';
+import {
+  DrawerComponent,
+  type DrawerPosition,
+  type DrawerSize,
+} from './drawer.component';
 
 // Mock HTMLDialogElement methods for jsdom
 beforeAll(() => {

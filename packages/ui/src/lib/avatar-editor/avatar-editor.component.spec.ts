@@ -1,6 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvatarEditorComponent, AvatarEditorCropState } from './avatar-editor.component';
+import {
+  AvatarEditorComponent,
+  type AvatarEditorCropState,
+} from './avatar-editor.component';
 
 // Captures every Image instance so tests can fire onload/onerror without real network requests
 class MockImage {

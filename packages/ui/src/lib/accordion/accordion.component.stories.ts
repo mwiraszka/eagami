@@ -1,4 +1,4 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent } from './accordion.component';

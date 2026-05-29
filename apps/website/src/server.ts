@@ -35,6 +35,7 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
       throw error;
     }
 
+    // eslint-disable-next-line no-console -- intentional server startup log
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }

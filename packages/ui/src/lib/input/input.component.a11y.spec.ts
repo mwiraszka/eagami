@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { InputComponent, InputType } from './input.component';
+import { InputComponent, type InputType } from './input.component';
 
 @Component({
   imports: [InputComponent],

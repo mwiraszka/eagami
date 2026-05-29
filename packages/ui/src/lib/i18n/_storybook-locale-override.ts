@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 
-import { EagamiLocale } from './i18n.types';
+import type { EagamiLocale } from './i18n.types';
 
 /**
  * Module-level signal that lets external tooling (notably the Storybook

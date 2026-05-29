@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   ViewEncapsulation,
   computed,
   effect,
@@ -63,7 +63,9 @@ export class DrawerComponent {
   constructor() {
     effect(() => {
       const drawerRef = this.drawerEl()?.nativeElement;
-      if (!drawerRef) return;
+      if (!drawerRef) {
+        return;
+      }
 
       if (this.open()) {
         if (!drawerRef.open) {
@@ -87,7 +89,9 @@ export class DrawerComponent {
   }
 
   handleBackdropClick(event: MouseEvent): void {
-    if (!this.closeOnBackdrop()) return;
+    if (!this.closeOnBackdrop()) {
+      return;
+    }
     const drawerRef = this.drawerEl()?.nativeElement;
     if (event.target === drawerRef) {
       this.handleClose();

@@ -1,14 +1,14 @@
 import {
-  DataTableColumn,
+  type DataTableColumn,
   DataTableComponent,
   DatePickerComponent,
   DropdownComponent,
   EAGAMI_LOCALES,
   EagamiI18nService,
-  EagamiLocale,
+  type EagamiLocale,
   PaginatorComponent,
   SegmentedComponent,
-  SelectOption,
+  type SelectOption,
 } from '@eagami/ui';
 
 import {

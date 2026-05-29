@@ -8,7 +8,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
@@ -81,7 +81,9 @@ export class RadioGroupComponent implements ControlValueAccessor {
 
   /** Programmatically selects the option with the given value. */
   select(val: string): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.value.set(val);
     this.onChange(val);
     this.onTouched();

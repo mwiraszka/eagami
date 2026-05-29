@@ -5,8 +5,8 @@ import { TestBed } from '@angular/core/testing';
 
 import {
   EagamiWordmarkComponent,
-  EagamiWordmarkLayout,
-  EagamiWordmarkVariant,
+  type EagamiWordmarkLayout,
+  type EagamiWordmarkVariant,
 } from './eagami-wordmark.component';
 
 @Component({

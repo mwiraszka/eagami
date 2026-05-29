@@ -1,11 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CameraIconComponent } from './camera.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Github2IconComponent } from './github-2.component';
 import { GithubIconComponent } from './github.component';
 import { HomeIconComponent } from './home.component';
-import { IconCategory, IconComponentBase, IconComponentType } from './icon-category';
+import {
+  type IconCategory,
+  IconComponentBase,
+  type IconComponentType,
+} from './icon-category';
 import { StarIconComponent } from './star.component';
 
 describe('Icon metadata API', () => {

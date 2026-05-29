@@ -9,7 +9,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
@@ -83,7 +83,9 @@ export class SwitchComponent implements ControlValueAccessor {
   }
 
   handleChange(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     const newValue = !this.checked();
     this.checked.set(newValue);
     this.onChange(newValue);

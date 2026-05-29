@@ -2,8 +2,8 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  TemplateRef,
+  type ElementRef,
+  type TemplateRef,
   computed,
   contentChild,
   input,
@@ -96,7 +96,9 @@ export class VirtualListComponent {
   protected readonly visibleRange = computed(() => {
     const height = this.itemHeight();
     const total = this.items().length;
-    if (height <= 0 || total === 0) return { start: 0, end: 0 };
+    if (height <= 0 || total === 0) {
+      return { start: 0, end: 0 };
+    }
 
     const buffer = Math.max(0, this.overscan());
     const firstVisible = Math.floor(this.scrollTop() / height);
@@ -140,7 +142,9 @@ export class VirtualListComponent {
    */
   scrollToIndex(index: number): void {
     const el = this.viewportEl()?.nativeElement;
-    if (!el) return;
+    if (!el) {
+      return;
+    }
     const clamped = Math.max(0, Math.min(this.items().length - 1, index));
     el.scrollTop = clamped * this.itemHeight();
   }

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatePickerComponent } from './date-picker.component';
 
@@ -14,13 +14,17 @@ describe('DatePickerComponent', () => {
     // Surface renders unconditionally in `document.body`, hidden via `display: none`;
     // treat a hidden one as "no popover".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-date-picker__popover');
   }
 
   function getDayCells(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return [];
+    if (!surface || surface.style.display === 'none') {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-date-picker__day'));
   }
 

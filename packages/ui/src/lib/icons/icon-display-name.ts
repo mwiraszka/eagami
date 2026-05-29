@@ -1,4 +1,4 @@
-import { IconComponentType } from './icon-category';
+import type { IconComponentType } from './icon-category';
 
 /**
  * Casing overrides for icons whose canonical brand or acronym name doesn't

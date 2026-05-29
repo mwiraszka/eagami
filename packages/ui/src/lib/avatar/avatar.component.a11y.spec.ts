@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { AvatarComponent, AvatarShape, AvatarSize } from './avatar.component';
+import { AvatarComponent, type AvatarShape, type AvatarSize } from './avatar.component';
 
 @Component({
   imports: [AvatarComponent],

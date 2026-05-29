@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { TransferListComponent } from './transfer-list.component';
-import { TransferListItem } from './transfer-list.types';
+import type { TransferListItem } from './transfer-list.types';
 
 const ROLES: TransferListItem[] = [
   { id: 'admin', label: 'Admin' },

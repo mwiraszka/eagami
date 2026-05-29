@@ -1,4 +1,4 @@
-import { EagamiMessages } from '../i18n.types';
+import type { EagamiMessages } from '../i18n.types';
 
 /** Polish messages. */
 export const pl: EagamiMessages = {

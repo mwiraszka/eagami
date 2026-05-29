@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { RatingComponent } from './rating.component';
@@ -17,8 +17,12 @@ describe('RatingComponent', () => {
 
   function stateOf(index: number): 'empty' | 'half' | 'full' {
     const cls = getStars()[index].classList;
-    if (cls.contains('ea-rating-field__star--full')) return 'full';
-    if (cls.contains('ea-rating-field__star--half')) return 'half';
+    if (cls.contains('ea-rating-field__star--full')) {
+      return 'full';
+    }
+    if (cls.contains('ea-rating-field__star--half')) {
+      return 'half';
+    }
     return 'empty';
   }
 

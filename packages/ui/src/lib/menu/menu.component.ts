@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   HostListener,
   Injector,
   afterNextRender,
@@ -62,7 +62,9 @@ export class MenuComponent {
 
   /** Toggles the menu open state, anchoring it to the given trigger element. */
   toggleAt(triggerEl: HTMLElement): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     if (this.open()) {
       this.close();
     } else {
@@ -72,7 +74,9 @@ export class MenuComponent {
 
   /** Opens the menu anchored to the given trigger element and focuses the first item. */
   openAt(triggerEl: HTMLElement): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     this.triggerEl.set(triggerEl);
     this.open.set(true);
     this.opened.emit();
@@ -85,10 +89,14 @@ export class MenuComponent {
    * not used on outside click, where the user has chosen a new focus target).
    */
   close(restoreFocus = false): void {
-    if (!this.open()) return;
+    if (!this.open()) {
+      return;
+    }
     this.open.set(false);
     this.closed.emit();
-    if (restoreFocus) this.triggerEl()?.focus({ preventScroll: true });
+    if (restoreFocus) {
+      this.triggerEl()?.focus({ preventScroll: true });
+    }
   }
 
   /** Called by `<ea-popover>` when the user clicks outside the menu. */
@@ -98,7 +106,9 @@ export class MenuComponent {
 
   private getEnabledItems(): HTMLButtonElement[] {
     const list = this.listEl()?.nativeElement;
-    if (!list) return [];
+    if (!list) {
+      return [];
+    }
     return Array.from(
       list.querySelectorAll<HTMLButtonElement>('[role="menuitem"]:not([disabled])'),
     );
@@ -120,12 +130,18 @@ export class MenuComponent {
 
   @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent): void {
-    if (!this.open()) return;
+    if (!this.open()) {
+      return;
+    }
     const list = this.listEl()?.nativeElement;
     const active = document.activeElement as HTMLElement | null;
-    if (!list || !active || !list.contains(active)) return;
+    if (!list || !active || !list.contains(active)) {
+      return;
+    }
     const items = this.getEnabledItems();
-    if (items.length === 0) return;
+    if (items.length === 0) {
+      return;
+    }
 
     const current = items.indexOf(active as HTMLButtonElement);
     let next = -1;
@@ -149,12 +165,16 @@ export class MenuComponent {
         break;
     }
 
-    if (next >= 0) items[next].focus({ preventScroll: true });
+    if (next >= 0) {
+      items[next].focus({ preventScroll: true });
+    }
   }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    if (!this.open()) return;
+    if (!this.open()) {
+      return;
+    }
     this.close(true);
   }
 }

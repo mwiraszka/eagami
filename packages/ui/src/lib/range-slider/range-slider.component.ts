@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   input,
@@ -11,7 +11,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
@@ -137,7 +137,9 @@ export class RangeSliderComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent, thumb: Thumb): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
 
     const [lo, hi] = this.clampedValue();
     const current = thumb === 'low' ? lo : hi;
@@ -179,9 +181,13 @@ export class RangeSliderComponent implements ControlValueAccessor {
   }
 
   handleTrackPointerDown(event: PointerEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     const track = this.trackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
 
     // Pick whichever thumb is closer to the pointer's track-relative ratio,
     // breaking ties toward the low thumb. Then begin dragging that thumb.
@@ -196,14 +202,20 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   handleTrackPointerMove(event: PointerEvent): void {
     const active = this.dragging();
-    if (!active || this.isDisabled()) return;
+    if (!active || this.isDisabled()) {
+      return;
+    }
     const track = this.trackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     this.commitThumb(active, this.pointerToValue(event, track));
   }
 
   handleTrackPointerUp(event: PointerEvent): void {
-    if (!this.dragging()) return;
+    if (!this.dragging()) {
+      return;
+    }
     (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
     this.dragging.set(null);
     this.onTouched();
@@ -211,7 +223,9 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   private toPercent(value: number): number {
     const range = this.max() - this.min();
-    if (range <= 0) return 0;
+    if (range <= 0) {
+      return 0;
+    }
     return ((value - this.min()) / range) * 100;
   }
 
@@ -240,7 +254,9 @@ export class RangeSliderComponent implements ControlValueAccessor {
       nextHi = Math.max(rounded, lo);
     }
 
-    if (nextLo === lo && nextHi === hi) return;
+    if (nextLo === lo && nextHi === hi) {
+      return;
+    }
     const next: RangeSliderValue = [nextLo, nextHi];
     this.value.set(next);
     this.onChange(next);

@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Type, input } from '@angular/core';
+import { Directive, HostBinding, type Type, input } from '@angular/core';
 
 /**
  * Primary classification for an icon component. Every icon ships with a single

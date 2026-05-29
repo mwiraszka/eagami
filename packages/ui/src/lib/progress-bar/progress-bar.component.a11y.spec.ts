@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { ProgressBarComponent, ProgressBarVariant } from './progress-bar.component';
+import { ProgressBarComponent, type ProgressBarVariant } from './progress-bar.component';
 
 @Component({
   imports: [ProgressBarComponent],

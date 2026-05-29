@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TreeComponent } from './tree.component';
-import { TreeNode } from './tree.types';
+import type { TreeNode } from './tree.types';
 
 const SAMPLE_TREE: TreeNode[] = [
   {
@@ -63,7 +63,9 @@ describe('TreeComponent', () => {
   function clickRow(id: string): void {
     const item = getItemById(id);
     const row = item?.querySelector<HTMLElement>(':scope > .ea-tree-node__row');
-    if (!row) throw new Error(`No row for ${id}`);
+    if (!row) {
+      throw new Error(`No row for ${id}`);
+    }
     row.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     fixture.detectChanges();
   }
@@ -71,7 +73,9 @@ describe('TreeComponent', () => {
   function clickChevron(id: string): void {
     const row = getItemById(id);
     const chevron = row?.querySelector<HTMLElement>('.ea-tree-node__chevron');
-    if (!chevron) throw new Error(`No chevron on ${id}`);
+    if (!chevron) {
+      throw new Error(`No chevron on ${id}`);
+    }
     chevron.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     fixture.detectChanges();
   }

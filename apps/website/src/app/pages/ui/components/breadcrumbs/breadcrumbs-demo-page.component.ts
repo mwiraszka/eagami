@@ -1,4 +1,4 @@
-import { BreadcrumbItem, BreadcrumbsComponent } from '@eagami/ui';
+import { type BreadcrumbItem, BreadcrumbsComponent } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 

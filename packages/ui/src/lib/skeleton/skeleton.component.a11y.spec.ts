@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { SkeletonComponent, SkeletonVariant } from './skeleton.component';
+import { SkeletonComponent, type SkeletonVariant } from './skeleton.component';
 
 @Component({
   imports: [SkeletonComponent],

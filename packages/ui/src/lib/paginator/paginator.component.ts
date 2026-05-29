@@ -75,7 +75,9 @@ export class PaginatorComponent {
     const pages: (number | 'ellipsis')[] = [];
 
     if (total <= 7) {
-      for (let i = 1; i <= total; i++) pages.push(i);
+      for (let i = 1; i <= total; i++) {
+        pages.push(i);
+      }
       return pages;
     }
 
@@ -101,25 +103,35 @@ export class PaginatorComponent {
 
   /** Navigates to the given page, clamped into the valid range. */
   goToPage(page: number): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     const clamped = Math.max(1, Math.min(page, this.totalPages()));
-    if (clamped === this.page()) return;
+    if (clamped === this.page()) {
+      return;
+    }
     this.page.set(clamped);
     this.changed.emit({ page: clamped, pageSize: this.pageSize() });
   }
 
   /** Navigates to the previous page if one exists. */
   prevPage(): void {
-    if (this.canGoPrev()) this.goToPage(this.page() - 1);
+    if (this.canGoPrev()) {
+      this.goToPage(this.page() - 1);
+    }
   }
 
   /** Navigates to the next page if one exists. */
   nextPage(): void {
-    if (this.canGoNext()) this.goToPage(this.page() + 1);
+    if (this.canGoNext()) {
+      this.goToPage(this.page() + 1);
+    }
   }
 
   onPageSizeChange(event: Event): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     const newSize = Number((event.target as HTMLSelectElement).value);
     this.pageSize.set(newSize);
     this.page.set(1);

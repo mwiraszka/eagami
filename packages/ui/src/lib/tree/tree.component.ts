@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Signal,
+  type Signal,
   computed,
   effect,
   inject,
@@ -15,7 +15,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { TreeNodeComponent } from './tree-node.component';
-import { TreeNode, visibleNodeIds, walkTree } from './tree.types';
+import { type TreeNode, visibleNodeIds, walkTree } from './tree.types';
 
 export type TreeSize = 'sm' | 'md' | 'lg';
 
@@ -79,7 +79,9 @@ export class TreeComponent {
       // If the previously-focused node has been hidden (a parent collapsed),
       // fall back to the first visible node so Tab still lands somewhere.
       const visible = visibleNodeIds(this.nodes(), this.expandedSet());
-      if (visible.includes(explicit)) return explicit;
+      if (visible.includes(explicit)) {
+        return explicit;
+      }
     }
     const visible = visibleNodeIds(this.nodes(), this.expandedSet());
     return visible[0] ?? null;
@@ -99,9 +101,13 @@ export class TreeComponent {
        Only runs on `selectedId` changes (not on every nodes update). */
     effect(() => {
       const id = this.selectedId();
-      if (!id) return;
+      if (!id) {
+        return;
+      }
       const ancestors = this.findAncestorIds(id);
-      if (ancestors.length === 0) return;
+      if (ancestors.length === 0) {
+        return;
+      }
       const current = new Set(this.expandedIds());
       let changed = false;
       for (const ancestorId of ancestors) {
@@ -110,19 +116,25 @@ export class TreeComponent {
           changed = true;
         }
       }
-      if (changed) this.expandedIds.set(Array.from(current));
+      if (changed) {
+        this.expandedIds.set(Array.from(current));
+      }
     });
   }
 
   protected onNodeSelect(node: TreeNode): void {
-    if (this.disabled() || node.disabled) return;
+    if (this.disabled() || node.disabled) {
+      return;
+    }
     this.selectedId.set(node.id);
     this._focusedId.set(node.id);
     this.nodeClick.emit(node);
   }
 
   protected onNodeToggle(id: string): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     const current = new Set(this.expandedIds());
     if (current.has(id)) {
       current.delete(id);
@@ -133,12 +145,16 @@ export class TreeComponent {
   }
 
   protected onKeydown(event: KeyboardEvent): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
 
     const visible = visibleNodeIds(this.nodes(), this.expandedSet()).filter(
       id => !this.isNodeDisabled(id),
     );
-    if (visible.length === 0) return;
+    if (visible.length === 0) {
+      return;
+    }
 
     const currentId = this.focusedId();
     const currentIdx = currentId ? visible.indexOf(currentId) : -1;
@@ -168,39 +184,57 @@ export class TreeComponent {
       }
       case 'ArrowRight': {
         event.preventDefault();
-        if (!currentId) return;
+        if (!currentId) {
+          return;
+        }
         const node = this.findNode(currentId);
-        if (!node) return;
+        if (!node) {
+          return;
+        }
         const hasChildren = (node.children?.length ?? 0) > 0;
-        if (!hasChildren) return;
+        if (!hasChildren) {
+          return;
+        }
         if (!this.expandedSet().has(currentId)) {
           this.onNodeToggle(currentId);
         } else if (node.children && node.children.length > 0) {
           const firstChild = node.children.find(c => !c.disabled);
-          if (firstChild) this.focusNode(firstChild.id);
+          if (firstChild) {
+            this.focusNode(firstChild.id);
+          }
         }
         break;
       }
       case 'ArrowLeft': {
         event.preventDefault();
-        if (!currentId) return;
+        if (!currentId) {
+          return;
+        }
         const node = this.findNode(currentId);
-        if (!node) return;
+        if (!node) {
+          return;
+        }
         const hasChildren = (node.children?.length ?? 0) > 0;
         if (hasChildren && this.expandedSet().has(currentId)) {
           this.onNodeToggle(currentId);
         } else {
           const parentId = this.findParentId(currentId);
-          if (parentId) this.focusNode(parentId);
+          if (parentId) {
+            this.focusNode(parentId);
+          }
         }
         break;
       }
       case 'Enter':
       case ' ': {
         event.preventDefault();
-        if (!currentId) return;
+        if (!currentId) {
+          return;
+        }
         const node = this.findNode(currentId);
-        if (node) this.onNodeSelect(node);
+        if (node) {
+          this.onNodeSelect(node);
+        }
         break;
       }
     }
@@ -212,7 +246,9 @@ export class TreeComponent {
        is the next focus owner). */
     const target = event.target as HTMLElement | null;
     const itemId = target?.dataset['treeitemId'];
-    if (itemId) this._focusedId.set(itemId);
+    if (itemId) {
+      this._focusedId.set(itemId);
+    }
   }
 
   private focusNode(id: string): void {
@@ -227,7 +263,9 @@ export class TreeComponent {
 
   private findNode(id: string): TreeNode | null {
     for (const { node } of walkTree(this.nodes())) {
-      if (node.id === id) return node;
+      if (node.id === id) {
+        return node;
+      }
     }
     return null;
   }
@@ -243,13 +281,17 @@ export class TreeComponent {
 
   private findAncestorIds(id: string): string[] {
     for (const { node, ancestors } of walkTree(this.nodes())) {
-      if (node.id === id) return ancestors.map(a => a.id);
+      if (node.id === id) {
+        return ancestors.map(a => a.id);
+      }
     }
     return [];
   }
 
   private isNodeDisabled(id: string): boolean {
-    if (this.disabled()) return true;
+    if (this.disabled()) {
+      return true;
+    }
     const node = this.findNode(id);
     return !!node?.disabled;
   }

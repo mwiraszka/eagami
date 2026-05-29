@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransferListComponent } from './transfer-list.component';
-import { TransferListItem } from './transfer-list.types';
+import type { TransferListItem } from './transfer-list.types';
 
 const ITEMS: TransferListItem[] = [
   { id: 'a', label: 'Alpha' },
@@ -52,7 +52,9 @@ describe('TransferListComponent', () => {
   ): void {
     const items = getListItems(pane);
     const item = items.find(el => el.textContent?.trim() === label);
-    if (!item) throw new Error(`No item ${label} in ${pane}`);
+    if (!item) {
+      throw new Error(`No item ${label} in ${pane}`);
+    }
     item.dispatchEvent(
       new MouseEvent('click', { bubbles: true, shiftKey: options.shiftKey ?? false }),
     );

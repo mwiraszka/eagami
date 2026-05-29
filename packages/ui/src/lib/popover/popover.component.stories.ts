@@ -1,12 +1,12 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { Component, signal } from '@angular/core';
 
-import { PopoverPlacement } from './popover-positioning';
+import type { PopoverPlacement } from './popover-positioning';
 import {
   PopoverComponent,
-  PopoverRole,
-  PopoverScrollBehavior,
+  type PopoverRole,
+  type PopoverScrollBehavior,
 } from './popover.component';
 
 // Story wrapper: owns the click-to-toggle state, mirrors `<ea-popover>` inputs, and

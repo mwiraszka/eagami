@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimePickerComponent } from './time-picker.component';
 
@@ -12,19 +12,25 @@ describe('TimePickerComponent', () => {
 
   function getPopover(): HTMLElement | null {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-time-picker__popover');
   }
 
   function getValueDisplays(): HTMLElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__value'));
   }
 
   function getStepButtons(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__step'));
   }
 
@@ -36,7 +42,9 @@ describe('TimePickerComponent', () => {
 
   function getPeriodOptions(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__period-option'));
   }
 

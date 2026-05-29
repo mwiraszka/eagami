@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { DropdownComponent } from './dropdown.component';
 
 describe('DropdownComponent', () => {
@@ -21,13 +21,17 @@ describe('DropdownComponent', () => {
     // `<ea-popover>` renders its surface unconditionally in `document.body`,
     // hidden via `display: none`; treat a hidden one as "no menu".
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-dropdown__menu');
   }
 
   function getOptions(): HTMLElement[] {
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return [];
+    if (!surface || surface.style.display === 'none') {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-dropdown__option'));
   }
 

@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   ViewEncapsulation,
   computed,
   effect,
@@ -59,7 +59,9 @@ export class DialogComponent {
   constructor() {
     effect(() => {
       const dialogRef = this.dialogEl()?.nativeElement;
-      if (!dialogRef) return;
+      if (!dialogRef) {
+        return;
+      }
 
       if (this.open()) {
         if (!dialogRef.open) {
@@ -83,7 +85,9 @@ export class DialogComponent {
   }
 
   handleBackdropClick(event: MouseEvent): void {
-    if (!this.closeOnBackdrop()) return;
+    if (!this.closeOnBackdrop()) {
+      return;
+    }
     const dialogRef = this.dialogEl()?.nativeElement;
     if (event.target === dialogRef) {
       this.handleClose();

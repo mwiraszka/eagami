@@ -1,4 +1,4 @@
-import { AutocompleteComponent, SelectOption } from '@eagami/ui';
+import { AutocompleteComponent, type SelectOption } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 

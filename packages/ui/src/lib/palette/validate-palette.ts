@@ -1,5 +1,5 @@
 import { WCAG_AA, contrastRatio } from './contrast';
-import { ModePalette } from './palette.types';
+import type { ModePalette } from './palette.types';
 
 export interface ContrastViolation {
   /** CSS custom-property name that fails the contrast bar. */
@@ -64,7 +64,9 @@ export function validatePalette(
     role: ContrastViolation['role'],
   ) => {
     const value = palette[mode][token];
-    if (!value) return;
+    if (!value) {
+      return;
+    }
     const ratio = contrastRatio(value, surface);
     if (ratio < required) {
       violations.push({ token, value, surface, ratio, required, role, mode });

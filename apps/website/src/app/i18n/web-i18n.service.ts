@@ -1,11 +1,18 @@
 import { EagamiI18nService } from '@eagami/ui';
 
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Injectable, PLATFORM_ID, Signal, computed, inject, signal } from '@angular/core';
+import {
+  Injectable,
+  PLATFORM_ID,
+  type Signal,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
-import { WEB_LOCALES, WebLocale } from './locale.types';
+import { WEB_LOCALES, type WebLocale } from './locale.types';
 import { WEB_MESSAGES } from './messages';
-import { WebMessages } from './web-messages.types';
+import type { WebMessages } from './web-messages.types';
 
 const STORAGE_KEY = 'web-locale';
 
@@ -43,17 +50,23 @@ export class WebI18nService {
   );
 
   constructor() {
-    if (this.isBrowser) this.applyLocale();
+    if (this.isBrowser) {
+      this.applyLocale();
+    }
   }
 
   public setLocale(locale: WebLocale): void {
-    if (!isWebLocale(locale)) return;
+    if (!isWebLocale(locale)) {
+      return;
+    }
     this._locale.set(locale);
     this.applyLocale();
   }
 
   private readStoredLocale(): WebLocale {
-    if (!this.isBrowser) return 'en';
+    if (!this.isBrowser) {
+      return 'en';
+    }
     /* Precedence must match the inline <head> script in index.html:
        1. Explicit choice in localStorage
        2. navigator.languages: exact match, then language-only match
@@ -61,7 +74,9 @@ export class WebI18nService {
        3. English default */
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (isWebLocale(stored)) return stored;
+      if (isWebLocale(stored)) {
+        return stored;
+      }
     } catch {
       // localStorage may be unavailable; fall through to browser preferences
     }
@@ -74,10 +89,14 @@ export class WebI18nService {
     ) as readonly string[];
     for (const tag of preferred) {
       const exact = WEB_LOCALES.find(l => l.toLowerCase() === tag.toLowerCase());
-      if (exact) return exact;
+      if (exact) {
+        return exact;
+      }
       const primary = tag.split('-')[0].toLowerCase();
       const byLanguage = WEB_LOCALES.find(l => l.toLowerCase().split('-')[0] === primary);
-      if (byLanguage) return byLanguage;
+      if (byLanguage) {
+        return byLanguage;
+      }
     }
     return 'en';
   }
@@ -86,7 +105,9 @@ export class WebI18nService {
     const locale = this._locale();
     this.eagamiI18n.setLocale(locale);
 
-    if (!this.isBrowser) return;
+    if (!this.isBrowser) {
+      return;
+    }
 
     localStorage.setItem(STORAGE_KEY, locale);
     this.doc.documentElement.setAttribute('lang', locale);

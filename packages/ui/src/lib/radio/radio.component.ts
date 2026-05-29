@@ -41,7 +41,9 @@ export class RadioComponent {
   }));
 
   handleChange(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.group.select(this.value());
   }
 }

@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   Injector,
   afterNextRender,
   computed,
@@ -14,7 +14,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
@@ -181,7 +181,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
   );
 
   readonly displayValue = computed(() => {
-    if (this.value() === null) return '';
+    if (this.value() === null) {
+      return '';
+    }
     return formatColor(this.rgb(), this.alpha(), this.format(), this.showAlpha());
   });
 
@@ -208,7 +210,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
    * polyfill / test setup runs). A plain method re-checks on every call.
    */
   hasEyeDropper(): boolean {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined') {
+      return false;
+    }
     return (
       typeof (window as unknown as { EyeDropper?: EyeDropperCtor }).EyeDropper ===
       'function'
@@ -226,7 +230,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
       return;
     }
     const parsed = parseColor(val);
-    if (!parsed) return;
+    if (!parsed) {
+      return;
+    }
     this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, false);
   }
 
@@ -243,13 +249,20 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
-    if (this.isOpen()) this.close();
-    else this.open();
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
+    if (this.isOpen()) {
+      this.close();
+    } else {
+      this.open();
+    }
   }
 
   open(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.isOpen.set(true);
     // `preventScroll: true`: see the matching note in `ea-menu` for why:
     // focusing inside a `position: fixed` popover nested under a sticky/scrolled
@@ -260,7 +273,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   close(): void {
-    if (!this.isOpen()) return;
+    if (!this.isOpen()) {
+      return;
+    }
     this.isOpen.set(false);
     this.dragging.set(null);
     this.onTouched();
@@ -272,7 +287,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.value.set(null);
     this.hue.set(0);
     this.sat.set(0);
@@ -292,7 +309,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly alphaPercentRounded = computed(() => Math.round(this.alpha() * 100));
 
   onSvPointerDown(event: PointerEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const target = event.target as HTMLElement;
     target.setPointerCapture?.(event.pointerId);
     this.dragging.set('sv');
@@ -300,18 +319,24 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   onSvPointerMove(event: PointerEvent): void {
-    if (this.dragging() !== 'sv') return;
+    if (this.dragging() !== 'sv') {
+      return;
+    }
     this.updateSvFromPointer(event);
   }
 
   onSvPointerUp(event: PointerEvent): void {
-    if (this.dragging() !== 'sv') return;
+    if (this.dragging() !== 'sv') {
+      return;
+    }
     (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
     this.dragging.set(null);
   }
 
   onSvKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const step = event.shiftKey ? 0.1 : 0.01;
     let s = this.sat();
     let v = this.val();
@@ -343,7 +368,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   private updateSvFromPointer(event: PointerEvent): void {
     const area = this.svAreaEl()?.nativeElement;
-    if (!area) return;
+    if (!area) {
+      return;
+    }
     const rect = area.getBoundingClientRect();
     const x = clamp01((event.clientX - rect.left) / rect.width);
     const y = clamp01((event.clientY - rect.top) / rect.height);
@@ -351,25 +378,33 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   onHuePointerDown(event: PointerEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
     this.dragging.set('hue');
     this.updateHueFromPointer(event);
   }
 
   onHuePointerMove(event: PointerEvent): void {
-    if (this.dragging() !== 'hue') return;
+    if (this.dragging() !== 'hue') {
+      return;
+    }
     this.updateHueFromPointer(event);
   }
 
   onHuePointerUp(event: PointerEvent): void {
-    if (this.dragging() !== 'hue') return;
+    if (this.dragging() !== 'hue') {
+      return;
+    }
     (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
     this.dragging.set(null);
   }
 
   onHueKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const step = event.shiftKey ? 10 : 1;
     let h = this.hue();
     switch (event.key) {
@@ -396,32 +431,42 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   private updateHueFromPointer(event: PointerEvent): void {
     const track = this.hueTrackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     const rect = track.getBoundingClientRect();
     const ratio = clamp01((event.clientX - rect.left) / rect.width);
     this.applyHsv(ratio * 360, this.sat(), this.val());
   }
 
   onAlphaPointerDown(event: PointerEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
     this.dragging.set('alpha');
     this.updateAlphaFromPointer(event);
   }
 
   onAlphaPointerMove(event: PointerEvent): void {
-    if (this.dragging() !== 'alpha') return;
+    if (this.dragging() !== 'alpha') {
+      return;
+    }
     this.updateAlphaFromPointer(event);
   }
 
   onAlphaPointerUp(event: PointerEvent): void {
-    if (this.dragging() !== 'alpha') return;
+    if (this.dragging() !== 'alpha') {
+      return;
+    }
     (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
     this.dragging.set(null);
   }
 
   onAlphaKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const step = event.shiftKey ? 0.1 : 0.01;
     let a = this.alpha();
     switch (event.key) {
@@ -449,7 +494,9 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   private updateAlphaFromPointer(event: PointerEvent): void {
     const track = this.alphaTrackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     const rect = track.getBoundingClientRect();
     const ratio = clamp01((event.clientX - rect.left) / rect.width);
     this.alpha.set(ratio);
@@ -482,9 +529,13 @@ export class ColorPickerComponent implements ControlValueAccessor {
     const input = event.target as HTMLInputElement;
     // Truncate to 3 digits, matching `maxlength`. type="text" doesn't enforce
     // maxlength on programmatic value sets, so re-clamp here defensively.
-    if (input.value.length > 3) input.value = input.value.slice(0, 3);
+    if (input.value.length > 3) {
+      input.value = input.value.slice(0, 3);
+    }
     const raw = parseInt(input.value, 10);
-    if (Number.isNaN(raw)) return;
+    if (Number.isNaN(raw)) {
+      return;
+    }
     const v = Math.max(0, Math.min(255, raw));
     const next = { ...this.rgb(), [channel]: v };
     this.applyRgba(next.r, next.g, next.b, this.alpha(), true);
@@ -497,36 +548,50 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   onAlphaInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input.value.length > 3) input.value = input.value.slice(0, 3);
+    if (input.value.length > 3) {
+      input.value = input.value.slice(0, 3);
+    }
     const raw = parseInt(input.value, 10);
-    if (Number.isNaN(raw)) return;
+    if (Number.isNaN(raw)) {
+      return;
+    }
     const next = Math.max(0, Math.min(100, raw)) / 100;
     this.alpha.set(next);
     this.commit();
   }
 
   async pickFromScreen(): Promise<void> {
-    if (this.isDisabled() || this.readonly() || !this.hasEyeDropper()) return;
+    if (this.isDisabled() || this.readonly() || !this.hasEyeDropper()) {
+      return;
+    }
     const Ctor = (window as unknown as { EyeDropper: EyeDropperCtor }).EyeDropper;
     const dropper = new Ctor();
     try {
       const result = await dropper.open();
       const parsed = parseColor(result.sRGBHex);
-      if (parsed) this.applyRgba(parsed.r, parsed.g, parsed.b, this.alpha(), true);
+      if (parsed) {
+        this.applyRgba(parsed.r, parsed.g, parsed.b, this.alpha(), true);
+      }
     } catch {
       // User cancelled the eyedropper; intentional no-op
     }
   }
 
   selectPreset(hex: string): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const parsed = parseColor(hex);
-    if (!parsed) return;
+    if (!parsed) {
+      return;
+    }
     this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, true);
   }
 
   onTriggerKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     switch (event.key) {
       case 'Enter':
       case ' ':
@@ -571,14 +636,21 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.sat.set(hsv.s);
     this.val.set(hsv.v);
     this.alpha.set(a);
-    if (commit) this.commit(refreshHex);
-    else if (refreshHex) this.refreshHexInput();
+    if (commit) {
+      this.commit(refreshHex);
+    } else if (refreshHex) {
+      this.refreshHexInput();
+    }
   }
 
   private commit(refreshHex = true): void {
     const out = formatColor(this.rgb(), this.alpha(), this.format(), this.showAlpha());
-    if (refreshHex) this.refreshHexInput();
-    if (out === this.value()) return;
+    if (refreshHex) {
+      this.refreshHexInput();
+    }
+    if (out === this.value()) {
+      return;
+    }
     this.value.set(out);
     this.onChange(out);
     this.changed.emit(out);
@@ -607,11 +679,21 @@ function hsvToRgb(h: number, s: number, v: number): Rgb {
 }
 
 function sectorToRgb(hh: number, c: number, x: number): [number, number, number] {
-  if (hh < 1) return [c, x, 0];
-  if (hh < 2) return [x, c, 0];
-  if (hh < 3) return [0, c, x];
-  if (hh < 4) return [0, x, c];
-  if (hh < 5) return [x, 0, c];
+  if (hh < 1) {
+    return [c, x, 0];
+  }
+  if (hh < 2) {
+    return [x, c, 0];
+  }
+  if (hh < 3) {
+    return [0, c, x];
+  }
+  if (hh < 4) {
+    return [0, x, c];
+  }
+  if (hh < 5) {
+    return [x, 0, c];
+  }
   return [c, 0, x];
 }
 
@@ -624,11 +706,17 @@ function rgbToHsv(r: number, g: number, b: number): Hsv {
   const d = max - min;
   let h = 0;
   if (d !== 0) {
-    if (max === rn) h = ((gn - bn) / d) % 6;
-    else if (max === gn) h = (bn - rn) / d + 2;
-    else h = (rn - gn) / d + 4;
+    if (max === rn) {
+      h = ((gn - bn) / d) % 6;
+    } else if (max === gn) {
+      h = (bn - rn) / d + 2;
+    } else {
+      h = (rn - gn) / d + 4;
+    }
     h *= 60;
-    if (h < 0) h += 360;
+    if (h < 0) {
+      h += 360;
+    }
   }
   const s = max === 0 ? 0 : d / max;
   return { h, s, v: max };
@@ -646,11 +734,17 @@ function rgbToHsl({ r, g, b }: Rgb): { h: number; s: number; l: number } {
   let s = 0;
   if (d !== 0) {
     s = d / (1 - Math.abs(2 * l - 1));
-    if (max === rn) h = ((gn - bn) / d) % 6;
-    else if (max === gn) h = (bn - rn) / d + 2;
-    else h = (rn - gn) / d + 4;
+    if (max === rn) {
+      h = ((gn - bn) / d) % 6;
+    } else if (max === gn) {
+      h = (bn - rn) / d + 2;
+    } else {
+      h = (rn - gn) / d + 4;
+    }
     h *= 60;
-    if (h < 0) h += 360;
+    if (h < 0) {
+      h += 360;
+    }
   }
   return { h, s, l };
 }
@@ -658,7 +752,9 @@ function rgbToHsl({ r, g, b }: Rgb): { h: number; s: number; l: number } {
 function rgbaToHex({ r, g, b }: Rgb, a: number, includeAlpha: boolean): string {
   const toHex = (n: number) => n.toString(16).padStart(2, '0');
   const base = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-  if (!includeAlpha || a >= 1) return base;
+  if (!includeAlpha || a >= 1) {
+    return base;
+  }
   return `${base}${toHex(Math.round(a * 255))}`;
 }
 
@@ -690,19 +786,29 @@ function formatColor(
 
 function parseColor(input: string): (Rgb & { a: number }) | null {
   const value = input.trim();
-  if (!value) return null;
+  if (!value) {
+    return null;
+  }
   const hex = parseHex(value);
-  if (hex) return hex;
+  if (hex) {
+    return hex;
+  }
   const rgb = parseRgbFunc(value);
-  if (rgb) return rgb;
+  if (rgb) {
+    return rgb;
+  }
   const hsl = parseHslFunc(value);
-  if (hsl) return hsl;
+  if (hsl) {
+    return hsl;
+  }
   return parseViaCanvas(value);
 }
 
 function parseHex(value: string): (Rgb & { a: number }) | null {
   const m = /^#?([0-9a-f]{3,8})$/i.exec(value);
-  if (!m) return null;
+  if (!m) {
+    return null;
+  }
   let h = m[1];
   if (h.length === 3 || h.length === 4) {
     h = h
@@ -710,7 +816,9 @@ function parseHex(value: string): (Rgb & { a: number }) | null {
       .map(c => c + c)
       .join('');
   }
-  if (h.length !== 6 && h.length !== 8) return null;
+  if (h.length !== 6 && h.length !== 8) {
+    return null;
+  }
   const r = parseInt(h.slice(0, 2), 16);
   const g = parseInt(h.slice(2, 4), 16);
   const b = parseInt(h.slice(4, 6), 16);
@@ -720,38 +828,54 @@ function parseHex(value: string): (Rgb & { a: number }) | null {
 
 function parseRgbFunc(value: string): (Rgb & { a: number }) | null {
   const m = /^rgba?\(([^)]+)\)$/i.exec(value);
-  if (!m) return null;
+  if (!m) {
+    return null;
+  }
   const parts = m[1].split(/[,\s/]+/).filter(Boolean);
-  if (parts.length < 3) return null;
+  if (parts.length < 3) {
+    return null;
+  }
   const r = clampByte(parseFloat(parts[0]));
   const g = clampByte(parseFloat(parts[1]));
   const b = clampByte(parseFloat(parts[2]));
   const a = parts[3] !== undefined ? clampAlpha(parts[3]) : 1;
-  if ([r, g, b].some(Number.isNaN)) return null;
+  if ([r, g, b].some(Number.isNaN)) {
+    return null;
+  }
   return { r, g, b, a };
 }
 
 function parseHslFunc(value: string): (Rgb & { a: number }) | null {
   const m = /^hsla?\(([^)]+)\)$/i.exec(value);
-  if (!m) return null;
+  if (!m) {
+    return null;
+  }
   const parts = m[1].split(/[,\s/]+/).filter(Boolean);
-  if (parts.length < 3) return null;
+  if (parts.length < 3) {
+    return null;
+  }
   const h = parseFloat(parts[0]);
   const s = parseFloat(parts[1]) / 100;
   const l = parseFloat(parts[2]) / 100;
   const a = parts[3] !== undefined ? clampAlpha(parts[3]) : 1;
-  if ([h, s, l].some(Number.isNaN)) return null;
+  if ([h, s, l].some(Number.isNaN)) {
+    return null;
+  }
   const rgb = hslToRgb(h, s, l);
   return { ...rgb, a };
 }
 
 function parseViaCanvas(value: string): (Rgb & { a: number }) | null {
-  if (typeof document === 'undefined') return null;
+  if (typeof document === 'undefined') {
+    return null;
+  }
   const canvas = document.createElement('canvas');
   canvas.width = 1;
   canvas.height = 1;
   const ctx = canvas.getContext('2d');
-  if (!ctx) return null;
+  if (!ctx) {
+    return null;
+  }
   ctx.fillStyle = '#000';
   const before = ctx.fillStyle;
   ctx.fillStyle = value;
@@ -785,6 +909,8 @@ function clampByte(n: number): number {
 }
 
 function clampAlpha(value: string): number {
-  if (value.endsWith('%')) return clamp01(parseFloat(value) / 100);
+  if (value.endsWith('%')) {
+    return clamp01(parseFloat(value) / 100);
+  }
   return clamp01(parseFloat(value));
 }

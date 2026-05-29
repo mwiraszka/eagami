@@ -2,8 +2,8 @@ import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  Type,
+  type ElementRef,
+  type Type,
   computed,
   effect,
   forwardRef,
@@ -14,7 +14,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
@@ -133,8 +133,12 @@ export class RatingComponent implements ControlValueAccessor {
   protected readonly hintId = computed(() => `${this.id()}-hint`);
   protected readonly describedBy = computed(() => {
     const ids: string[] = [];
-    if (this.showError()) ids.push(this.errorId());
-    if (this.showHint()) ids.push(this.hintId());
+    if (this.showError()) {
+      ids.push(this.errorId());
+    }
+    if (this.showHint()) {
+      ids.push(this.hintId());
+    }
     return ids.length ? ids.join(' ') : null;
   });
 
@@ -145,8 +149,12 @@ export class RatingComponent implements ControlValueAccessor {
   /** Resolves the render state for star `pos` against the current display value. */
   protected stateFor(pos: number): RatingStarState {
     const v = this.displayValue();
-    if (v >= pos) return 'full';
-    if (this.allowHalf() && v > pos - 1 && v < pos) return 'half';
+    if (v >= pos) {
+      return 'full';
+    }
+    if (this.allowHalf() && v > pos - 1 && v < pos) {
+      return 'half';
+    }
     return 'empty';
   }
 
@@ -176,7 +184,9 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   protected onPointerMove(event: PointerEvent, pos: number): void {
-    if (!this.isInteractive()) return;
+    if (!this.isInteractive()) {
+      return;
+    }
     // Clamp the hover preview to `min` so the user never sees a star preview
     // below the floor, matching what an Enter/click would actually commit.
     this.hoverValue.set(Math.max(this.min(), this.computePointerValue(event, pos)));
@@ -184,13 +194,17 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   protected onPointerLeave(): void {
-    if (this.hoverValue() === null) return;
+    if (this.hoverValue() === null) {
+      return;
+    }
     this.hoverValue.set(null);
     this.hoverChanged.emit(null);
   }
 
   protected onClick(event: MouseEvent, pos: number): void {
-    if (!this.isInteractive()) return;
+    if (!this.isInteractive()) {
+      return;
+    }
     const next = this.computePointerValue(event, pos);
     // Click-same-to-clear only applies when `min === 0`; with a non-zero
     // floor the clear-to-zero action is meaningless, so a re-click is a no-op
@@ -212,7 +226,9 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   protected onKeydown(event: KeyboardEvent): void {
-    if (!this.isInteractive()) return;
+    if (!this.isInteractive()) {
+      return;
+    }
     const step = this.step();
     const min = this.min();
     const max = this.max();
@@ -251,7 +267,9 @@ export class RatingComponent implements ControlValueAccessor {
 
   private commit(next: number): void {
     const clamped = this.clamp(next);
-    if (clamped === this.value()) return;
+    if (clamped === this.value()) {
+      return;
+    }
     this.value.set(clamped);
     this.onChange(clamped);
   }
@@ -265,10 +283,14 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   private computePointerValue(event: { clientX: number }, pos: number): number {
-    if (!this.allowHalf()) return pos;
+    if (!this.allowHalf()) {
+      return pos;
+    }
     const target = (event as PointerEvent).target as HTMLElement | null;
     const rect = target?.getBoundingClientRect();
-    if (!rect || rect.width === 0) return pos;
+    if (!rect || rect.width === 0) {
+      return pos;
+    }
     const ratio = (event.clientX - rect.left) / rect.width;
     return ratio < 0.5 ? pos - 0.5 : pos;
   }

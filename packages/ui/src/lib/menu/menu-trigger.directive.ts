@@ -1,6 +1,6 @@
 import { Directive, ElementRef, inject, input } from '@angular/core';
 
-import { MenuComponent } from './menu.component';
+import type { MenuComponent } from './menu.component';
 
 /**
  * Wires a focusable host element (typically a button) to an `ea-menu`,
@@ -24,17 +24,23 @@ export class MenuTriggerDirective {
 
   handleClick(): void {
     const m = this.menu();
-    if (m.disabled()) return;
+    if (m.disabled()) {
+      return;
+    }
     m.toggleAt(this.el.nativeElement);
   }
 
   handleKeydown(event: KeyboardEvent): void {
     const m = this.menu();
-    if (m.disabled()) return;
+    if (m.disabled()) {
+      return;
+    }
 
     if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      if (!m.open()) m.openAt(this.el.nativeElement);
+      if (!m.open()) {
+        m.openAt(this.el.nativeElement);
+      }
     } else if (event.key === 'Escape' && m.open()) {
       event.preventDefault();
       m.close();

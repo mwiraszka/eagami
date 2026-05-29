@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import type { Type } from '@angular/core';
 
 /**
  * A single executable command in an `<ea-command-palette>`.

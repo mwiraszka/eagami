@@ -1,4 +1,4 @@
-import { TreeComponent, TreeNode } from '@eagami/ui';
+import { TreeComponent, type TreeNode } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 

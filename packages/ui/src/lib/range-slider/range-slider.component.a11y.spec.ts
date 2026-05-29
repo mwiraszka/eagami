@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { RangeSliderComponent, RangeSliderValue } from './range-slider.component';
+import { RangeSliderComponent, type RangeSliderValue } from './range-slider.component';
 
 @Component({
   imports: [RangeSliderComponent],

@@ -17,7 +17,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
-import { CommandPaletteItem } from './command-palette.types';
+import type { CommandPaletteItem } from './command-palette.types';
 
 interface GroupedItems {
   group: string;
@@ -79,8 +79,12 @@ export class CommandPaletteComponent {
   protected readonly groupedItems = computed<GroupedItems[]>(() => {
     const q = this.query().trim().toLowerCase();
     const candidates = this.items().filter(item => {
-      if (item.disabled) return false;
-      if (!q) return true;
+      if (item.disabled) {
+        return false;
+      }
+      if (!q) {
+        return true;
+      }
       const haystack = [item.label, item.description ?? '', ...(item.keywords ?? [])]
         .join(' ')
         .toLowerCase();
@@ -94,7 +98,9 @@ export class CommandPaletteComponent {
     const buckets = new Map<string, CommandPaletteItem[]>();
     for (const item of candidates) {
       const key = item.group ?? '';
-      if (!buckets.has(key)) buckets.set(key, []);
+      if (!buckets.has(key)) {
+        buckets.set(key, []);
+      }
       buckets.get(key)!.push(item);
     }
 
@@ -108,9 +114,13 @@ export class CommandPaletteComponent {
     };
 
     const ungrouped = buckets.get('');
-    if (ungrouped && ungrouped.length > 0) pushGroup('', ungrouped);
+    if (ungrouped && ungrouped.length > 0) {
+      pushGroup('', ungrouped);
+    }
     for (const [group, items] of buckets) {
-      if (group !== '') pushGroup(group, items);
+      if (group !== '') {
+        pushGroup(group, items);
+      }
     }
     return groups;
   });
@@ -140,13 +150,17 @@ export class CommandPaletteComponent {
 
   protected readonly activeIndex = computed(() => {
     const max = this.filteredItems().length - 1;
-    if (max < 0) return -1;
+    if (max < 0) {
+      return -1;
+    }
     return Math.min(this._activeIndex(), max);
   });
 
   protected readonly activeId = computed(() => {
     const idx = this.activeIndex();
-    if (idx < 0) return null;
+    if (idx < 0) {
+      return null;
+    }
     return `ea-command-palette-item-${this.filteredItems()[idx].id}`;
   });
 
@@ -157,10 +171,14 @@ export class CommandPaletteComponent {
     effect(() => {
       const isOpen = this.open();
       const dialog = this.dialogEl()?.nativeElement;
-      if (!dialog) return;
+      if (!dialog) {
+        return;
+      }
 
       if (isOpen) {
-        if (!dialog.open) dialog.showModal?.();
+        if (!dialog.open) {
+          dialog.showModal?.();
+        }
         this.query.set('');
         this._activeIndex.set(0);
         this.interaction.set('keyboard');
@@ -206,7 +224,9 @@ export class CommandPaletteComponent {
 
   protected onSearchKeydown(event: KeyboardEvent): void {
     const max = this.filteredItems().length - 1;
-    if (max < 0) return;
+    if (max < 0) {
+      return;
+    }
 
     switch (event.key) {
       case 'ArrowDown': {
@@ -240,14 +260,18 @@ export class CommandPaletteComponent {
       case 'Enter': {
         event.preventDefault();
         const item = this.filteredItems()[this.activeIndex()];
-        if (item) this.executeItem(item);
+        if (item) {
+          this.executeItem(item);
+        }
         break;
       }
     }
   }
 
   protected onItemClick(item: CommandPaletteItem): void {
-    if (item.disabled) return;
+    if (item.disabled) {
+      return;
+    }
     this.executeItem(item);
   }
 
@@ -276,11 +300,15 @@ export class CommandPaletteComponent {
     /* The dialog's native `close` event fires when the user hits Esc or the
        backdrop dispatches `close`. Mirror that back into the `open` model
        so consumers stay in sync. */
-    if (this.open()) this.open.set(false);
+    if (this.open()) {
+      this.open.set(false);
+    }
   }
 
   private executeItem(item: CommandPaletteItem): void {
-    if (item.disabled) return;
+    if (item.disabled) {
+      return;
+    }
     this.execute.emit(item);
     this.open.set(false);
   }
@@ -288,7 +316,9 @@ export class CommandPaletteComponent {
   private scrollActiveIntoView(): void {
     queueMicrotask(() => {
       const id = this.activeId();
-      if (!id) return;
+      if (!id) {
+        return;
+      }
       const el = this.hostEl.nativeElement.querySelector<HTMLElement>(`#${id}`);
       el?.scrollIntoView({ block: 'nearest' });
     });

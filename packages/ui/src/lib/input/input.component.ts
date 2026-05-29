@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   Injector,
   afterNextRender,
   computed,
@@ -14,7 +14,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
@@ -122,7 +122,9 @@ export class InputComponent implements ControlValueAccessor {
     // the DOM and avoids SSR, so the element is guaranteed focusable.
     afterNextRender(
       () => {
-        if (this.autofocus()) this.inputEl()?.nativeElement.focus();
+        if (this.autofocus()) {
+          this.inputEl()?.nativeElement.focus();
+        }
       },
       { injector: this.injector },
     );

@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   inject,
@@ -12,13 +12,13 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 
 /** Visual size of the dropdown trigger. */
 export type DropdownSize = 'sm' | 'md' | 'lg';
@@ -121,7 +121,9 @@ export class DropdownComponent implements ControlValueAccessor {
 
   /** Toggles the dropdown list between open and closed. */
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
       const idx = this.options().findIndex(o => o.value === this.value());
@@ -131,7 +133,9 @@ export class DropdownComponent implements ControlValueAccessor {
 
   /** Programmatically selects the given option, closing the list. */
   select(option: SelectOption): void {
-    if (option.disabled || this.isDisabled() || this.readonly()) return;
+    if (option.disabled || this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.value.set(option.value);
     this.onChange(option.value);
     this.onTouched();
@@ -157,7 +161,9 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
 
     switch (event.key) {
       case 'Enter':

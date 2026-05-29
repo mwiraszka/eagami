@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
-  DataTableColumn,
+  type DataTableColumn,
   DataTableComponent,
-  DataTableSortState,
+  type DataTableSortState,
 } from './data-table.component';
 
 interface TestRow {

@@ -1,8 +1,8 @@
-import { Injectable, Signal, computed, effect, inject, signal } from '@angular/core';
+import { Injectable, type Signal, computed, effect, inject, signal } from '@angular/core';
 
 import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
 import { EAGAMI_I18N_CONFIG } from './i18n.provider';
-import { EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
+import type { EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
 import { EAGAMI_MESSAGES, en } from './messages';
 
 /** Shallow-merges per-component override groups over a complete base dictionary. */

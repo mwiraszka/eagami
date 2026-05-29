@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
-import { AutocompleteComponent, AutocompleteSize } from './autocomplete.component';
+import type { SelectOption } from '../select-option';
+import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
 
 const FRUITS: SelectOption[] = [
   { value: 'apple', label: 'Apple' },

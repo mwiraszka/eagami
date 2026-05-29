@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuItemComponent } from './menu-item.component';
 import { MenuTriggerDirective } from './menu-trigger.directive';
-import { MenuComponent, MenuPlacement } from './menu.component';
+import { MenuComponent, type MenuPlacement } from './menu.component';
 
 @Component({
   selector: 'ea-test-host',
@@ -54,13 +54,17 @@ describe('MenuComponent', () => {
     // List lives in the popover surface, which renders unconditionally and hides via
     // `display: none`; treat a hidden one as "no list".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-menu__list');
   }
 
   function getItems(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return [];
+    if (!surface || surface.style.display === 'none') {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-menu-item'));
   }
 

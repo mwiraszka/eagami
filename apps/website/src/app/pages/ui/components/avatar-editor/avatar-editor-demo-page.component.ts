@@ -1,7 +1,7 @@
 import {
   AvatarComponent,
   AvatarEditorComponent,
-  AvatarEditorCropEvent,
+  type AvatarEditorCropEvent,
   ToastService,
 } from '@eagami/ui';
 

@@ -144,7 +144,7 @@ import { HelpCircleIconComponent } from './help-circle.component';
 import { HeptagonIconComponent } from './heptagon.component';
 import { HexagonIconComponent } from './hexagon.component';
 import { HomeIconComponent } from './home.component';
-import { IconComponentType } from './icon-category';
+import type { IconComponentType } from './icon-category';
 import { ImageIconComponent } from './image.component';
 import { InboxIconComponent } from './inbox.component';
 import { InfoIconComponent } from './info.component';

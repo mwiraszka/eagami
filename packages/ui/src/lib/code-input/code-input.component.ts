@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   inject,
@@ -11,7 +11,7 @@ import {
   signal,
   viewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { AlertCircleIconComponent } from '../icons/alert-circle.component';
@@ -95,7 +95,9 @@ export class CodeInputComponent implements ControlValueAccessor {
   }
 
   handleInput(event: Event, index: number): void {
-    if (this.readonly()) return;
+    if (this.readonly()) {
+      return;
+    }
     const input = event.target as HTMLInputElement;
     const char = input.value.replace(/[^0-9]/g, '').slice(-1);
     input.value = char;
@@ -121,7 +123,9 @@ export class CodeInputComponent implements ControlValueAccessor {
     const inputs = this.digitEls();
 
     if (event.key === 'Backspace') {
-      if (this.readonly()) return;
+      if (this.readonly()) {
+        return;
+      }
       event.preventDefault();
       const current = this.value();
       const chars = current.padEnd(this.length(), ' ').split('');
@@ -147,9 +151,13 @@ export class CodeInputComponent implements ControlValueAccessor {
 
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
-    if (this.readonly()) return;
+    if (this.readonly()) {
+      return;
+    }
     const pasted = (event.clipboardData?.getData('text') ?? '').replace(/[^0-9]/g, '');
-    if (!pasted) return;
+    if (!pasted) {
+      return;
+    }
 
     const clipped = pasted.slice(0, this.length());
     this.value.set(clipped);

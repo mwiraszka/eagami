@@ -19,7 +19,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  Type,
+  type Type,
   afterNextRender,
   computed,
   effect,
@@ -28,11 +28,11 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
-  AbstractControl,
+  type AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
+  type ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -72,7 +72,9 @@ type ContactStatus = 'idle' | 'sending' | 'sent' | 'error';
 const STRICT_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function strictEmailValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
-  if (!value) return null;
+  if (!value) {
+    return null;
+  }
   return STRICT_EMAIL_PATTERN.test(value) ? null : { email: true };
 }
 
@@ -123,7 +125,9 @@ export class HomePageComponent {
      get feedback when they navigate the carousel. */
   protected readonly carouselStatus = computed(() => {
     const centered = this.orderedProjects()[2];
-    if (!centered) return '';
+    if (!centered) {
+      return '';
+    }
     return this.messages().home.projects.showing(centered.title);
   });
 
@@ -211,14 +215,18 @@ export class HomePageComponent {
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (sections.length === 0) return;
+    if (sections.length === 0) {
+      return;
+    }
 
     const inView = new Set<string>();
 
     const syncFragment = (): void => {
       // Topmost in-view section in document order; empty while in the hero
       const activeId = sectionIds.find(id => inView.has(id)) ?? '';
-      if (location.hash.slice(1) === activeId) return;
+      if (location.hash.slice(1) === activeId) {
+        return;
+      }
 
       const url = activeId ? `#${activeId}` : location.pathname + location.search;
       history.replaceState(history.state, '', url);
@@ -229,8 +237,11 @@ export class HomePageComponent {
     const observer = new IntersectionObserver(
       entries => {
         for (const entry of entries) {
-          if (entry.isIntersecting) inView.add(entry.target.id);
-          else inView.delete(entry.target.id);
+          if (entry.isIntersecting) {
+            inView.add(entry.target.id);
+          } else {
+            inView.delete(entry.target.id);
+          }
         }
         syncFragment();
       },
@@ -267,7 +278,9 @@ export class HomePageComponent {
       };
 
       this.destroyRef.onDestroy(() => {
-        if (timer !== undefined) clearTimeout(timer);
+        if (timer !== undefined) {
+          clearTimeout(timer);
+        }
       });
 
       rotate();
@@ -294,14 +307,18 @@ export class HomePageComponent {
     };
 
     this.destroyRef.onDestroy(() => {
-      if (timer !== undefined) clearTimeout(timer);
+      if (timer !== undefined) {
+        clearTimeout(timer);
+      }
     });
 
     typeNext();
   }
 
   protected scrollWork(direction: 1 | -1): void {
-    if (this.slideDirection() !== 0) return;
+    if (this.slideDirection() !== 0) {
+      return;
+    }
 
     this.slideDirection.set(direction);
 

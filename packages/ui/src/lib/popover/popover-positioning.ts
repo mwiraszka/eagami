@@ -71,21 +71,41 @@ function isCardinal(
 
 /** The dominant side of a placement (`top-start` and `top` both give `top`, etc.). */
 function side(placement: PopoverPlacement): 'top' | 'bottom' | 'left' | 'right' {
-  if (placement.startsWith('top')) return 'top';
-  if (placement.startsWith('bottom')) return 'bottom';
-  if (placement === 'left') return 'left';
+  if (placement.startsWith('top')) {
+    return 'top';
+  }
+  if (placement.startsWith('bottom')) {
+    return 'bottom';
+  }
+  if (placement === 'left') {
+    return 'left';
+  }
   return 'right';
 }
 
 /** Maps `top` to `bottom`, `bottom-start` to `top-start`, etc. for flip logic. */
 function flipPlacement(placement: PopoverPlacement): PopoverPlacement {
-  if (placement === 'top') return 'bottom';
-  if (placement === 'bottom') return 'top';
-  if (placement === 'left') return 'right';
-  if (placement === 'right') return 'left';
-  if (placement === 'top-start') return 'bottom-start';
-  if (placement === 'top-end') return 'bottom-end';
-  if (placement === 'bottom-start') return 'top-start';
+  if (placement === 'top') {
+    return 'bottom';
+  }
+  if (placement === 'bottom') {
+    return 'top';
+  }
+  if (placement === 'left') {
+    return 'right';
+  }
+  if (placement === 'right') {
+    return 'left';
+  }
+  if (placement === 'top-start') {
+    return 'bottom-start';
+  }
+  if (placement === 'top-end') {
+    return 'bottom-end';
+  }
+  if (placement === 'bottom-start') {
+    return 'top-start';
+  }
   return 'top-end';
 }
 

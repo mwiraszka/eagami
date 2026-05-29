@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 
 import {
-  PopoverPlacement,
-  PopoverPositionResult,
+  type PopoverPlacement,
+  type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
 
@@ -143,15 +143,20 @@ export class PopoverComponent {
    * its interpolated suffix) and the positioned modifier compose cleanly. */
   readonly surfaceClass = computed(
     () =>
-      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}` +
-      (this.isPositioned() ? ' ea-popover__surface--positioned' : ''),
+      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}${
+        this.isPositioned() ? ' ea-popover__surface--positioned' : ''
+      }`,
   );
 
   /** Inline style applied to the surface element. */
   readonly surfaceStyle = computed<Record<string, string>>(() => {
-    if (!this.open()) return { display: 'none' };
+    if (!this.open()) {
+      return { display: 'none' };
+    }
     const p = this.position();
-    if (!p) return {};
+    if (!p) {
+      return {};
+    }
     const style: Record<string, string> = {
       top: `${p.top}px`,
       left: `${p.left}px`,
@@ -220,7 +225,9 @@ export class PopoverComponent {
       this.reposition();
       if (typeof requestAnimationFrame !== 'undefined') {
         requestAnimationFrame(() => {
-          if (!this.open()) return;
+          if (!this.open()) {
+            return;
+          }
           this.reposition();
           this.stable.set(true);
         });
@@ -241,12 +248,16 @@ export class PopoverComponent {
     // (e.g. virtualised lists adding rows).
     if (typeof ResizeObserver !== 'undefined') {
       const surfaceResizeObserver = new ResizeObserver(() => {
-        if (this.open()) this.reposition();
+        if (this.open()) {
+          this.reposition();
+        }
       });
       effect(() => {
         const surface = this.surfaceEl()?.nativeElement;
         surfaceResizeObserver.disconnect();
-        if (surface) surfaceResizeObserver.observe(surface);
+        if (surface) {
+          surfaceResizeObserver.observe(surface);
+        }
       });
       this.destroyRef.onDestroy(() => surfaceResizeObserver.disconnect());
     }
@@ -256,7 +267,9 @@ export class PopoverComponent {
     // that mount popovers.
     if (typeof window !== 'undefined') {
       const onViewportChange = (): void => {
-        if (!this.open()) return;
+        if (!this.open()) {
+          return;
+        }
         const behavior = this.scrollBehavior();
         if (behavior === 'close') {
           this.closeRequested.emit();
@@ -291,15 +304,21 @@ export class PopoverComponent {
 
   private resolveAnchor(): HTMLElement | null {
     const a = this.anchor();
-    if (!a) return null;
+    if (!a) {
+      return null;
+    }
     return a instanceof ElementRef ? a.nativeElement : a;
   }
 
   private reposition(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     const anchor = this.resolveAnchor();
     const surface = this.surfaceEl()?.nativeElement;
-    if (!anchor || !surface) return;
+    if (!anchor || !surface) {
+      return;
+    }
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
     this.position.set(
@@ -320,18 +339,28 @@ export class PopoverComponent {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    if (!this.open() || !this.closeOnOutsideClick()) return;
+    if (!this.open() || !this.closeOnOutsideClick()) {
+      return;
+    }
     const target = event.target as Node | null;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const anchor = this.resolveAnchor();
-    if (anchor?.contains(target)) return;
-    if (this.surfaceEl()?.nativeElement.contains(target)) return;
+    if (anchor?.contains(target)) {
+      return;
+    }
+    if (this.surfaceEl()?.nativeElement.contains(target)) {
+      return;
+    }
     this.closeRequested.emit();
   }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    if (!this.open() || !this.closeOnEscape()) return;
+    if (!this.open() || !this.closeOnEscape()) {
+      return;
+    }
     this.closeRequested.emit();
   }
 }

@@ -1,4 +1,4 @@
-import { PopoverComponent, PopoverPlacement } from '@eagami/ui';
+import { PopoverComponent, type PopoverPlacement } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 

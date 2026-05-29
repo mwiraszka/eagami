@@ -1,4 +1,9 @@
-import { Meta, StoryObj, argsToTemplate, moduleMetadata } from '@storybook/angular';
+import {
+  type Meta,
+  type StoryObj,
+  argsToTemplate,
+  moduleMetadata,
+} from '@storybook/angular';
 
 import { PaperclipIconComponent } from '../icons/paperclip.component';
 import { FileUploaderComponent } from './file-uploader.component';

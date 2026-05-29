@@ -1,4 +1,4 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { AlertComponent } from '../alert/alert.component';
 import { ButtonComponent } from '../button/button.component';

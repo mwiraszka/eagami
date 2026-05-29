@@ -13,7 +13,7 @@ import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { ChevronsLeftIconComponent } from '../icons/chevrons-left.component';
 import { ChevronsRightIconComponent } from '../icons/chevrons-right.component';
-import { TransferListItem } from './transfer-list.types';
+import type { TransferListItem } from './transfer-list.types';
 
 export type TransferListSize = 'sm' | 'md' | 'lg';
 
@@ -92,7 +92,9 @@ export class TransferListComponent {
   });
 
   protected readonly canMoveRight = computed(() => {
-    if (this.disabled()) return false;
+    if (this.disabled()) {
+      return false;
+    }
     const highlighted = this.leftHighlighted();
     const allowed = new Set(
       this.sourceItems()
@@ -103,12 +105,16 @@ export class TransferListComponent {
   });
 
   protected readonly canMoveAllRight = computed(() => {
-    if (this.disabled()) return false;
+    if (this.disabled()) {
+      return false;
+    }
     return this.sourceItems().some(i => !i.disabled);
   });
 
   protected readonly canMoveLeft = computed(() => {
-    if (this.disabled()) return false;
+    if (this.disabled()) {
+      return false;
+    }
     const highlighted = this.rightHighlighted();
     const allowed = new Set(
       this.targetItems()
@@ -119,7 +125,9 @@ export class TransferListComponent {
   });
 
   protected readonly canMoveAllLeft = computed(() => {
-    if (this.disabled()) return false;
+    if (this.disabled()) {
+      return false;
+    }
     return this.targetItems().some(i => !i.disabled);
   });
 
@@ -147,7 +155,9 @@ export class TransferListComponent {
     item: TransferListItem,
     event: MouseEvent,
   ): void {
-    if (this.disabled() || item.disabled) return;
+    if (this.disabled() || item.disabled) {
+      return;
+    }
     if (event.shiftKey) {
       this.selectRangeTo(pane, item);
     } else {
@@ -202,7 +212,9 @@ export class TransferListComponent {
     const next = new Set(highlight());
     for (let i = start; i <= end; i++) {
       const row = items[i];
-      if (!row.disabled) next.add(row.id);
+      if (!row.disabled) {
+        next.add(row.id);
+      }
     }
     highlight.set(next);
     // Anchor stays put on shift-click so successive shift-clicks always
@@ -210,7 +222,9 @@ export class TransferListComponent {
   }
 
   protected moveSelectedRight(): void {
-    if (!this.canMoveRight()) return;
+    if (!this.canMoveRight()) {
+      return;
+    }
     const highlighted = this.leftHighlighted();
     const sourceIds = new Set(
       this.sourceItems()
@@ -223,7 +237,9 @@ export class TransferListComponent {
   }
 
   protected moveAllRight(): void {
-    if (!this.canMoveAllRight()) return;
+    if (!this.canMoveAllRight()) {
+      return;
+    }
     const moveable = this.sourceItems()
       .filter(i => !i.disabled)
       .map(i => i.id);
@@ -232,7 +248,9 @@ export class TransferListComponent {
   }
 
   protected moveSelectedLeft(): void {
-    if (!this.canMoveLeft()) return;
+    if (!this.canMoveLeft()) {
+      return;
+    }
     const highlighted = this.rightHighlighted();
     const targetIds = new Set(
       this.targetItems()
@@ -245,7 +263,9 @@ export class TransferListComponent {
   }
 
   protected moveAllLeft(): void {
-    if (!this.canMoveAllLeft()) return;
+    if (!this.canMoveAllLeft()) {
+      return;
+    }
     const stickyIds = new Set(
       this.targetItems()
         .filter(i => i.disabled)

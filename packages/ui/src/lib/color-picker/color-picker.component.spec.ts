@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColorPickerComponent } from './color-picker.component';
 
@@ -14,7 +14,9 @@ describe('ColorPickerComponent', () => {
     // Surface renders unconditionally in `document.body`, hidden via `display: none`;
     // treat a hidden one as "no popover".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-color-picker__popover');
   }
 
@@ -510,7 +512,9 @@ describe('ColorPickerComponent', () => {
     });
 
     it('advances hue on ArrowRight and rolls past 360', () => {
-      for (let i = 0; i < 36; i++) hueKey('ArrowRight', true);
+      for (let i = 0; i < 36; i++) {
+        hueKey('ArrowRight', true);
+      }
       expect(component.hueRounded()).toBeLessThanOrEqual(360);
     });
 
@@ -746,8 +750,11 @@ describe('ColorPickerComponent', () => {
       try {
         expect(component.hasEyeDropper()).toBe(true);
       } finally {
-        if (original === undefined) delete win.EyeDropper;
-        else win.EyeDropper = original;
+        if (original === undefined) {
+          delete win.EyeDropper;
+        } else {
+          win.EyeDropper = original;
+        }
       }
     });
 

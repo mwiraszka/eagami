@@ -1,4 +1,4 @@
-import { MultiSelectComponent, SelectOption } from '@eagami/ui';
+import { MultiSelectComponent, type SelectOption } from '@eagami/ui';
 
 import {
   ChangeDetectionStrategy,

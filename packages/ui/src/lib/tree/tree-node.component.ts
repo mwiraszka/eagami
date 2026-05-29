@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
-import { TreeNode } from './tree.types';
+import type { TreeNode } from './tree.types';
 
 /**
  * Internal recursive renderer for a single tree node and its descendants.
@@ -79,7 +79,9 @@ export class TreeNodeComponent {
   }));
 
   protected onRowClick(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.select.emit(this.node());
   }
 
@@ -87,7 +89,9 @@ export class TreeNodeComponent {
     /* Chevron clicks toggle expansion without also triggering selection.
        Without stopPropagation the click would bubble to the row handler. */
     event.stopPropagation();
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.toggle.emit(this.node().id);
   }
 }

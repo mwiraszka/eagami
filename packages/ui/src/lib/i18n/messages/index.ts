@@ -1,4 +1,4 @@
-import { EagamiLocale, EagamiMessages } from '../i18n.types';
+import type { EagamiLocale, EagamiMessages } from '../i18n.types';
 import { el } from './el';
 import { en } from './en';
 import { esES } from './es-ES';

@@ -1,4 +1,4 @@
-import { TransferListComponent, TransferListItem } from '@eagami/ui';
+import { TransferListComponent, type TransferListItem } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 

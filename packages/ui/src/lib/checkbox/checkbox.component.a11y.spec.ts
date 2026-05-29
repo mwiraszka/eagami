@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { CheckboxComponent, CheckboxSize } from './checkbox.component';
+import { CheckboxComponent, type CheckboxSize } from './checkbox.component';
 
 @Component({
   imports: [CheckboxComponent],

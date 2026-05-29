@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
-  PopoverPlacement,
-  PopoverPositionResult,
+  type PopoverPlacement,
+  type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
 import { PopoverComponent } from './popover.component';
@@ -53,7 +53,9 @@ describe('PopoverComponent', () => {
     // `display: none`, and teleports to `document.body`; query the global DOM and treat
     // a hidden surface as "not open".
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface;
   }
 

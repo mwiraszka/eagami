@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommandPaletteComponent } from './command-palette.component';
-import { CommandPaletteItem } from './command-palette.types';
+import type { CommandPaletteItem } from './command-palette.types';
 
 const COMMANDS: CommandPaletteItem[] = [
   { id: 'new', label: 'New file', shortcut: 'Ctrl+N', group: 'File' },

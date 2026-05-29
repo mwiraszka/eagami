@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaginatorComponent, PaginatorState } from './paginator.component';
+import { PaginatorComponent, type PaginatorState } from './paginator.component';
 
 describe('PaginatorComponent', () => {
   let fixture: ComponentFixture<PaginatorComponent>;

@@ -260,7 +260,9 @@ export class UiTokensPageComponent {
   }
 
   protected simulateMotion(): void {
-    if (this.motionReduced()) return;
+    if (this.motionReduced()) {
+      return;
+    }
     this.isSimulating.set(false);
     requestAnimationFrame(() => {
       this.isSimulating.set(true);

@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   Injector,
   afterNextRender,
   computed,
@@ -14,7 +14,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
@@ -23,7 +23,7 @@ import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { TagComponent } from '../tag/tag.component';
 
 /** Visual size of the multi-select trigger. */
@@ -111,7 +111,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly filteredOptions = computed<readonly SelectOption[]>(() => {
     const term = this.searchTerm().trim().toLowerCase();
     const opts = this.options();
-    if (!term) return opts;
+    if (!term) {
+      return opts;
+    }
     return opts.filter(o => o.label.toLowerCase().includes(term));
   });
 
@@ -140,12 +142,22 @@ export class MultiSelectComponent implements ControlValueAccessor {
   /** Tri-state of the Select-all checkbox over the **currently filtered** list. */
   readonly selectAllState = computed<'none' | 'some' | 'all'>(() => {
     const filtered = this.filteredOptions().filter(o => !o.disabled);
-    if (filtered.length === 0) return 'none';
+    if (filtered.length === 0) {
+      return 'none';
+    }
     const set = this.selectedSet();
     let count = 0;
-    for (const o of filtered) if (set.has(o.value)) count++;
-    if (count === 0) return 'none';
-    if (count === filtered.length) return 'all';
+    for (const o of filtered) {
+      if (set.has(o.value)) {
+        count++;
+      }
+    }
+    if (count === 0) {
+      return 'none';
+    }
+    if (count === filtered.length) {
+      return 'all';
+    }
     return 'some';
   });
 
@@ -190,11 +202,16 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const opening = !this.isOpen();
     this.isOpen.set(opening);
-    if (opening) this.focusSearchWhenReady();
-    else this.resetEditState();
+    if (opening) {
+      this.focusSearchWhenReady();
+    } else {
+      this.resetEditState();
+    }
   }
 
   close(): void {
@@ -210,10 +227,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   /** Toggle one option's membership in the selection. */
   toggleOption(opt: SelectOption): void {
-    if (this.isDisabled() || this.readonly() || opt.disabled) return;
+    if (this.isDisabled() || this.readonly() || opt.disabled) {
+      return;
+    }
     const set = new Set(this.value());
-    if (set.has(opt.value)) set.delete(opt.value);
-    else set.add(opt.value);
+    if (set.has(opt.value)) {
+      set.delete(opt.value);
+    } else {
+      set.add(opt.value);
+    }
     this.commit(this.orderedValues(set));
   }
 
@@ -223,14 +245,18 @@ export class MultiSelectComponent implements ControlValueAccessor {
    * is needed here.
    */
   removeChip(opt: SelectOption): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.commit(this.value().filter(v => v !== opt.value));
   }
 
   /** Clear every selection via the trigger × button. */
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.commit([]);
   }
 
@@ -240,15 +266,21 @@ export class MultiSelectComponent implements ControlValueAccessor {
    * value from the selection. Disabled options are skipped either way.
    */
   toggleSelectAll(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const filteredValues = this.filteredOptions()
       .filter(o => !o.disabled)
       .map(o => o.value);
     const set = new Set(this.value());
     if (this.selectAllState() === 'all') {
-      for (const v of filteredValues) set.delete(v);
+      for (const v of filteredValues) {
+        set.delete(v);
+      }
     } else {
-      for (const v of filteredValues) set.add(v);
+      for (const v of filteredValues) {
+        set.add(v);
+      }
     }
     this.commit(this.orderedValues(set));
   }
@@ -260,7 +292,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   handleTriggerKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
       event.preventDefault();
       if (!this.isOpen()) {
@@ -284,7 +318,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
    * so users can type spaces in their query.
    */
   handlePopoverKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const opts = this.filteredOptions();
     const onSearchInput = event.target === this.searchEl()?.nativeElement;
 
@@ -305,13 +341,17 @@ export class MultiSelectComponent implements ControlValueAccessor {
     } else if (event.key === 'Enter') {
       event.preventDefault();
       const idx = this.focusedIndex();
-      if (idx >= 0 && idx < opts.length) this.toggleOption(opts[idx]);
+      if (idx >= 0 && idx < opts.length) {
+        this.toggleOption(opts[idx]);
+      }
     } else if (event.key === ' ' && !onSearchInput) {
       // Toggle on Space only when an option row has focus; the search input
       // needs Space for typing.
       event.preventDefault();
       const idx = this.focusedIndex();
-      if (idx >= 0 && idx < opts.length) this.toggleOption(opts[idx]);
+      if (idx >= 0 && idx < opts.length) {
+        this.toggleOption(opts[idx]);
+      }
     } else if (event.key === 'Escape') {
       event.preventDefault();
       this.close();
