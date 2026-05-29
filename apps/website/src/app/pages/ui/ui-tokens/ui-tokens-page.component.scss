@@ -39,7 +39,7 @@
 
   code {
     @include mixins.code-chip;
-    white-space: nowrap;
+    overflow-wrap: break-word;
   }
 }
 
@@ -56,15 +56,8 @@
 
   p code {
     @include mixins.code-chip;
-    white-space: nowrap;
+    overflow-wrap: break-word;
   }
-}
-
-.tokens-section__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
 }
 
 .tokens-section__title {
@@ -88,8 +81,8 @@
 }
 
 .tokens-subsection__title {
-  margin-top: 16px;
-  font-size: 14px;
+  margin-top: 24px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -101,12 +94,18 @@
 }
 
 .tokens-subsection__sublabel {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 500;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: capitalize;
   color: var(--color-text-tertiary);
+}
+
+// The first sublabel sits directly beneath its subsection title, so pull it
+// tight (the 16px section gap minus this) to read as a child, not a sibling block.
+.tokens-subsection__title + .tokens-subsection__sublabel {
+  margin-top: -8px;
 }
 
 .swatch-row {
@@ -205,9 +204,10 @@
   background-color: var(--color-bg-subtle);
 
   code {
-    flex-shrink: 0;
+    min-width: 0;
     font-size: 14px;
     font-family: var(--font-family-mono);
+    overflow-wrap: break-word;
     color: var(--color-text-primary);
   }
 }
@@ -215,7 +215,20 @@
 .token-list__value {
   margin-left: auto;
   font-size: 14px;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
+}
+
+// Compact variant: drop the card chrome and dead space so each token reads as a
+// tight row of visual + name, sitting directly on the page on mobile and desktop.
+.token-list--compact {
+  gap: 8px;
+
+  .token-list__item {
+    gap: 12px;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
 }
 
 .semantic-swatch {
@@ -444,6 +457,16 @@
   background-color: var(--color-bg-muted);
 }
 
+// A correct dark-mode drop shadow is black, so on the near-black canvas it has
+// nothing to fall on and the levels look identical. Stage the swatches on a
+// lifted surface, the way elevated components sit over content, so the shadows
+// read. Light mode is fine on the white canvas, so this is dark-mode only.
+:host-context([data-theme='dark']) .elevation-grid--drop {
+  padding: 32px;
+  border-radius: 12px;
+  background-color: var(--color-bg-base);
+}
+
 .motion-simulate {
   display: inline-flex;
   align-items: center;
@@ -479,59 +502,236 @@
   }
 }
 
-.motion-list__item {
-  display: grid;
-  grid-template-columns: 160px 220px minmax(160px, 240px);
-  align-items: center;
-  gap: 16px;
+.motion-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  @include mixins.respond-to('lt-lg') {
-    grid-template-columns: auto 1fr;
-    row-gap: 8px;
+// 32px between the two subsections (16px section gap + 16px) while keeping the
+// heading-to-first-subsection gap at the section default.
+.motion-subsection + .motion-subsection {
+  margin-top: 16px;
+}
+
+.motion-subsection__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.motion-duration-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.motion-duration {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--color-bg-subtle);
+}
+
+.motion-duration__meta,
+.motion-easing__meta {
+  display: flex;
+  gap: 12px;
+
+  code {
+    font-size: 14px;
+    font-family: var(--font-family-mono);
+    color: var(--color-text-primary);
+  }
+
+  .token-list__value {
+    margin-left: 0;
   }
 }
 
-.motion-demo {
+.motion-duration__meta {
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+// Stack the token name and value on their own full-width lines; the value
+// (cubic-bezier(...)) is too long to sit beside the name on a narrow card.
+.motion-easing__meta {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.motion-lane {
   position: relative;
-  overflow: hidden;
-  min-width: 160px;
-  max-width: 240px;
+  width: 100%;
   height: 8px;
   border-radius: 4px;
   background-color: var(--color-bg-muted);
+}
 
-  @include mixins.respond-to('lt-lg') {
-    justify-self: start;
-    grid-column: 1 / -1;
+.motion-lane__dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-brand-default);
+  transform: translate(-50%, -50%);
+}
+
+.motion-easing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.motion-easing {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--color-bg-subtle);
+}
+
+.motion-easing__plot {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  margin-top: auto;
+  aspect-ratio: 1;
+}
+
+// On mobile, switch to a tight two-column grid with shorter plots so all five
+// easing cards stay on screen at once during a simulation.
+@include mixins.respond-to('lt-sm') {
+  .motion-easing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .motion-easing {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .motion-easing__plot {
+    aspect-ratio: 4 / 3;
+  }
+
+  .motion-easing__meta code {
+    font-size: 11px;
+  }
+
+  .motion-easing__meta .token-list__value {
+    font-size: 9px;
   }
 }
 
-.motion-demo__bar {
+// Landscape phones are height-constrained, not width-constrained, so lay all
+// five easings out in a single row and cap the plot height so they fit at once.
+@media (max-height: 500px) and (orientation: landscape) {
+  .motion-easing-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .motion-easing {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .motion-easing__plot {
+    max-height: 110px;
+  }
+
+  .motion-easing__meta code,
+  .motion-easing__meta .token-list__value {
+    font-size: 11px;
+  }
+}
+
+.motion-easing__svg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  border-radius: 4px;
+}
+
+.motion-easing__diagonal {
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.motion-easing__curve {
+  stroke: var(--color-brand-default);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+// Rests at the curve's origin (progress 0); the simulate animation travels to
+// the end and, once the run completes, the thumb resets back here. The dot
+// tracks the plotted curve because `left` advances linearly while `bottom`
+// advances with the easing (and `bottom: 85%` matches CURVE_UNIT in the component).
+.motion-easing__dot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
   background-color: var(--color-brand-default);
-  transform: translateX(-100%);
+  transform: translate(-50%, 50%);
 }
 
-.tokens-section--simulating .motion-demo--duration .motion-demo__bar {
-  animation: motion-demo-slide var(--demo-duration) ease-out forwards;
+// `left` advances linearly (time) while `bottom` advances with the easing, so
+// the dot rides the curve: at each moment its position is (time, eased output).
+.motion-subsection--simulating .motion-lane__dot {
+  animation: motion-lane-travel var(--demo-duration) linear forwards;
 }
 
-.tokens-section--simulating .motion-demo--easing .motion-demo__bar {
-  animation: motion-demo-slide 1s var(--demo-easing) forwards;
+.motion-subsection--simulating .motion-easing__dot {
+  animation:
+    motion-easing-x 2s linear forwards,
+    motion-easing-y 2s var(--demo-easing) forwards;
 }
 
-@keyframes motion-demo-slide {
+@keyframes motion-lane-travel {
   from {
     left: 0;
-    transform: translateX(0);
   }
   to {
     left: 100%;
-    transform: translateX(-100%);
+  }
+}
+
+@keyframes motion-easing-x {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes motion-easing-y {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 85%;
   }
 }

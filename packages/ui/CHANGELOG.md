@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.1] - 2026-05-29
+
+### Changed
+
+- Rework dark-mode elevation so drop shadows render dark with a subtle top-edge highlight instead of an inverted white glow, fixing the washed-out look on cards, toasts, and other raised surfaces.
+- Lift floating panels (menus, dropdowns, date/time/colour pickers, multi-select, autocomplete, command palette) onto the elevated surface tone in dark mode so they sit clearly above the page.
+
 ## [2.5.0] - 2026-05-29
 
 ### Added
@@ -550,6 +557,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.5.1]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.0...ui-v2.5.1
 [2.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.4.0...ui-v2.5.0
 [2.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.3.0...ui-v2.4.0
 [2.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.2.0...ui-v2.3.0
