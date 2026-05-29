@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { DropdownComponent } from './dropdown.component';
 
 describe('DropdownComponent', () => {
@@ -18,17 +18,20 @@ describe('DropdownComponent', () => {
   }
 
   function getMenu(): HTMLElement | null {
-    // The menu is projected into `<ea-popover>`, which renders its surface
-    // unconditionally (hidden via `display: none` when closed) and teleports
-    // it to `document.body`. Treat a hidden surface as "no menu".
+    // `<ea-popover>` renders its surface unconditionally in `document.body`,
+    // hidden via `display: none`; treat a hidden one as "no menu".
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-dropdown__menu');
   }
 
   function getOptions(): HTMLElement[] {
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return [];
+    if (!surface || surface.style.display === 'none') {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-dropdown__option'));
   }
 
@@ -44,9 +47,7 @@ describe('DropdownComponent', () => {
   });
 
   afterEach(() => {
-    // `<ea-popover>` teleports its surface to `document.body`. Destroy the
-    // fixture so Angular tears down the embedded view, then sweep any surface
-    // a half-destroyed test left behind so subsequent tests don't see it.
+    // Destroy tears down the teleported surface; sweep any that a half-destroyed test left behind
     fixture.destroy();
     document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
@@ -77,7 +78,7 @@ describe('DropdownComponent', () => {
     it('renders a label when provided', () => {
       fixture.componentRef.setInput('label', 'Country');
       fixture.detectChanges();
-      const label = fixture.nativeElement.querySelector('.ea-dropdown-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Country');
     });
   });
@@ -184,7 +185,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-dropdown-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Required');
     });
@@ -193,7 +194,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('hint', 'Choose one');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-dropdown-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Choose one');
     });
@@ -203,7 +204,7 @@ describe('DropdownComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.ea-dropdown-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

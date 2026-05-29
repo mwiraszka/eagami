@@ -21,10 +21,8 @@ import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-lay
 export class TooltipDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
-  /* Drives the tooltip demo's disabled state. Reactive — DevTools mobile mode
-     emulation toggles `(hover: hover)` after page load, and real devices can
-     gain/lose hover capability via Bluetooth peripherals. A static read at
-     construction misses both, so subscribe to the MediaQueryList. */
+  /* Subscribe rather than read once: hover capability changes at runtime (DevTools
+     mobile emulation, Bluetooth peripherals), which a construction-time read misses. */
   private readonly hoverMql =
     typeof window !== 'undefined' && typeof window.matchMedia === 'function'
       ? window.matchMedia('(hover: hover)')

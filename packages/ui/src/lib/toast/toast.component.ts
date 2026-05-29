@@ -7,7 +7,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
-import { Toast, ToastService } from './toast.service';
+import { type Toast, ToastService } from './toast.service';
 
 /**
  * Outlet that renders the stack of active toasts produced by

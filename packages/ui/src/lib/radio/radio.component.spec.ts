@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RadioGroupComponent } from './radio-group.component';
 import { RadioComponent } from './radio.component';
@@ -163,16 +163,14 @@ describe('RadioGroupComponent — form-field plumbing', () => {
   });
 
   it('renders no field label by default', () => {
-    expect(
-      fixture.nativeElement.querySelector('.ea-radio-group-field__label'),
-    ).toBeNull();
+    expect(fixture.nativeElement.querySelector('.ea-field-label')).toBeNull();
   });
 
   it('renders the label and links it via aria-labelledby', () => {
     fixture.componentRef.setInput('label', 'Plan');
     fixture.detectChanges();
 
-    const labelEl = fixture.nativeElement.querySelector('.ea-radio-group-field__label');
+    const labelEl = fixture.nativeElement.querySelector('.ea-field-label');
 
     expect(labelEl.textContent.trim()).toBe('Plan');
     expect(getGroupEl().getAttribute('aria-labelledby')).toBe(labelEl.id);
@@ -182,9 +180,7 @@ describe('RadioGroupComponent — form-field plumbing', () => {
     fixture.componentRef.setInput('hint', 'Pick one');
     fixture.detectChanges();
 
-    const hint = fixture.nativeElement.querySelector(
-      '.ea-radio-group-field__message--hint',
-    );
+    const hint = fixture.nativeElement.querySelector('.ea-field-messages__message--hint');
 
     expect(hint.textContent.trim()).toBe('Pick one');
     expect(getGroupEl().getAttribute('aria-describedby')).toBe(hint.id);
@@ -196,11 +192,9 @@ describe('RadioGroupComponent — form-field plumbing', () => {
     fixture.detectChanges();
 
     const error = fixture.nativeElement.querySelector(
-      '.ea-radio-group-field__message--error',
+      '.ea-field-messages__message--error',
     );
-    const hint = fixture.nativeElement.querySelector(
-      '.ea-radio-group-field__message--hint',
-    );
+    const hint = fixture.nativeElement.querySelector('.ea-field-messages__message--hint');
 
     expect(error.textContent.trim()).toBe('Required');
     expect(hint).toBeNull();

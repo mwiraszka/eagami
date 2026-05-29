@@ -3,13 +3,8 @@ import { join } from 'path';
 
 import { WCAG_AA, contrastRatio } from './contrast';
 
-/**
- * Guards the library's own hand-tuned brand tokens against WCAG AA failures.
- * Parses the live SCSS file rather than mirroring the values into the test
- * fixture so any future tweak to `_colors.scss` runs through these bars
- * before merge.
- */
-
+// Guards the library's brand tokens against WCAG AA failures. Parses the live SCSS
+// rather than mirroring values so any tweak to `_colors.scss` runs through these bars.
 const COLORS_SCSS = readFileSync(
   join(__dirname, '../../styles/tokens/_colors.scss'),
   'utf8',
@@ -24,7 +19,9 @@ function resolve(tokens: ScopeTokens, raw: string): string {
   let depth = 0;
   while (value.startsWith('var(') && depth < 10) {
     const match = value.match(/^var\((--[a-z0-9-]+)\)$/i);
-    if (!match) break;
+    if (!match) {
+      break;
+    }
     const next = tokens[match[1]];
     if (next === undefined) {
       throw new Error(`Unresolved CSS var ${match[1]}`);
@@ -38,7 +35,9 @@ function resolve(tokens: ScopeTokens, raw: string): string {
 /** Pull `--name: value;` declarations between two markers. */
 function parseScope(start: RegExp, end: RegExp): ScopeTokens {
   const startMatch = COLORS_SCSS.match(start);
-  if (!startMatch) throw new Error(`Scope start not found: ${start}`);
+  if (!startMatch) {
+    throw new Error(`Scope start not found: ${start}`);
+  }
   const sliceFrom = COLORS_SCSS.indexOf(startMatch[0]) + startMatch[0].length;
   const after = COLORS_SCSS.slice(sliceFrom);
   const endMatch = after.match(end);
@@ -46,7 +45,7 @@ function parseScope(start: RegExp, end: RegExp): ScopeTokens {
   const body = after.slice(0, sliceTo);
 
   const tokens: ScopeTokens = {};
-  // Strip line comments so they don't contaminate the value match.
+  // Strip line comments so they don't contaminate the value match
   const stripped = body.replace(/\/\/[^\n]*/g, '');
   for (const match of stripped.matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/gi)) {
     tokens[match[1]] = match[2].trim();

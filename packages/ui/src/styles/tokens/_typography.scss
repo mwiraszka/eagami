@@ -1,42 +1,26 @@
-// =============================================================================
-// TYPOGRAPHY TOKENS
-// =============================================================================
-
 :root {
-  // ---------------------------------------------------------------------------
-  // Font families
-  // ---------------------------------------------------------------------------
   --font-family-sans: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-family-brand: 'Syne', 'DM Sans', system-ui, sans-serif;
   --font-family-serif: 'Georgia', 'Times New Roman', serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  // ---------------------------------------------------------------------------
-  // Font sizes (rem, base 16px)
-  // ---------------------------------------------------------------------------
-  --font-size-2xs: 0.625rem; //  10px
-  --font-size-xs: 0.75rem; //  12px
-  --font-size-sm: 0.875rem; //  14px
-  --font-size-md: 1rem; //  16px  (base)
-  --font-size-lg: 1.125rem; //  18px
-  --font-size-xl: 1.25rem; //  20px
-  --font-size-2xl: 1.5rem; //  24px
-  --font-size-3xl: 1.875rem; //  30px
-  --font-size-4xl: 2.25rem; //  36px
-  --font-size-5xl: 3rem; //  48px
+  --font-size-2xs: 0.625rem; // 10px
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-sm: 0.875rem; // 14px
+  --font-size-md: 1rem; // 16px
+  --font-size-lg: 1.125rem; // 18px
+  --font-size-xl: 1.25rem; // 20px
+  --font-size-2xl: 1.5rem; // 24px
+  --font-size-3xl: 1.875rem; // 30px
+  --font-size-4xl: 2.25rem; // 36px
+  --font-size-5xl: 3rem; // 48px
 
-  // ---------------------------------------------------------------------------
-  // Font weights
-  // ---------------------------------------------------------------------------
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
-  // ---------------------------------------------------------------------------
-  // Line heights
-  // ---------------------------------------------------------------------------
   --line-height-none: 1;
   --line-height-tight: 1.25;
   --line-height-snug: 1.375;
@@ -44,9 +28,6 @@
   --line-height-relaxed: 1.625;
   --line-height-loose: 2;
 
-  // ---------------------------------------------------------------------------
-  // Letter spacing
-  // ---------------------------------------------------------------------------
   --letter-spacing-tighter: -0.05em;
   --letter-spacing-tight: -0.025em;
   --letter-spacing-normal: 0em;
@@ -54,17 +35,10 @@
   --letter-spacing-wider: 0.05em;
   --letter-spacing-widest: 0.1em;
 
-  // ---------------------------------------------------------------------------
-  // Semantic text styles (composite tokens)
-  // These map to specific UI roles for consistent usage.
-  // ---------------------------------------------------------------------------
-
-  // Display
   --text-display-size: var(--font-size-5xl);
   --text-display-weight: var(--font-weight-bold);
   --text-display-lh: var(--line-height-tight);
 
-  // Headings
   --text-h1-size: var(--font-size-4xl);
   --text-h1-weight: var(--font-weight-bold);
   --text-h1-lh: var(--line-height-tight);
@@ -81,18 +55,14 @@
   --text-h4-weight: var(--font-weight-semibold);
   --text-h4-lh: var(--line-height-snug);
 
-  // Section heading — page-level subsection title (e.g. an `<h2>` under an
-  // `<h1>` page title on a docs or marketing page). Same size/weight/lh as
-  // `--text-h4-*` but routes through the brand family so the heading reads
-  // as part of the brand wordmark rather than the body type. The only
-  // composite that pins a font-family; consumers who want to recolour or
-  // resize without re-specifying the family can still override per-piece.
+  // Page-level subsection title (an `<h2>` under the page `<h1>`). Mirrors
+  // `--text-h4-*` metrics but pins the brand family so it reads as wordmark,
+  // not body. Only composite that pins a font-family.
   --text-section-heading-size: var(--font-size-xl);
   --text-section-heading-weight: var(--font-weight-semibold);
   --text-section-heading-lh: var(--line-height-snug);
   --text-section-heading-family: var(--font-family-brand);
 
-  // Body
   --text-body-lg-size: var(--font-size-lg);
   --text-body-lg-weight: var(--font-weight-regular);
   --text-body-lg-lh: var(--line-height-relaxed);
@@ -105,7 +75,6 @@
   --text-body-sm-weight: var(--font-weight-regular);
   --text-body-sm-lh: var(--line-height-normal);
 
-  // Labels (form labels, badges, tags)
   --text-label-lg-size: var(--font-size-md);
   --text-label-lg-weight: var(--font-weight-medium);
   --text-label-lg-lh: var(--line-height-tight);
@@ -118,19 +87,14 @@
   --text-label-sm-weight: var(--font-weight-medium);
   --text-label-sm-lh: var(--line-height-tight);
 
-  // Helper / caption — small subordinate text that sits visually below the
-  // primary content of a component. Sits between `--font-size-xs` (12px) and
-  // `--font-size-sm` (14px) at 13px so it stays subordinate without dropping
-  // into the "barely readable" zone that 12px hits.
+  // Helper / caption: subordinate text below a component's primary content.
+  // 13px (between --font-size-xs 12px and -sm 14px) so it stays subordinate
+  // without hitting the barely-readable 12px floor. Used for field hint and
+  // error messages (see standard below) and short metadata such as a
+  // file-uploader's constraints or per-file size labels.
   //
-  // Primary role: field-level hint and error messages on form-like components
-  // (see STANDARD below). Secondary role: short subordinate metadata text
-  // inside a component, e.g. `<ea-file-uploader>`'s constraints disclosure
-  // ("PNG or JPG up to 5MB") and per-file size label ("245 KB"). For any
-  // role bigger than these, reach for a body-* composite instead.
-  //
-  // STANDARD — every form-like component (anything exposing `errorMsg` and/or
-  // `hint`) must render its messages identically. Mirror `<ea-input>` exactly:
+  // Standard: every form-like component (anything exposing `errorMsg` and/or
+  // `hint`) must render its messages identically. Mirror `<ea-input>`:
   //   1. `<p class="ea-{name}-field__message ea-{name}-field__message--error">`
   //      (or `--hint`) with `role="alert"` on the error variant and an `id`
   //      matching the field's `aria-describedby`.
@@ -146,35 +110,27 @@
   //      specific (`--color-text-secondary` or `inherit`) but stays consistent
   //      within a component.
   //   6. `AlertCircleIconComponent` must be in the component's `imports: [...]`.
-  --text-helper-size: 0.8125rem; //  13px
+  --text-helper-size: 0.8125rem; // 13px
   --text-helper-weight: var(--font-weight-regular);
   --text-helper-lh: var(--line-height-normal);
 
-  // Code — inline code styled to read as a chip embedded in body text. Size
-  // is relative (em) so it tracks the surrounding text size rather than
-  // forcing an absolute value. Apply with `font-size: var(--text-code-size);
-  // font-weight: var(--text-code-weight); font-family: var(--text-code-family);
-  // color: var(--text-code-color); background-color: var(--text-code-bg);
-  // padding: var(--text-code-padding); border-radius: var(--text-code-radius);`
-  // on `code` (or `<ea-text variant="code">` when that ships).
+  // Inline code chip; em-sized so it tracks the surrounding text
   --text-code-size: 0.875em;
   --text-code-weight: var(--font-weight-regular);
   --text-code-family: var(--font-family-mono);
   --text-code-color: var(--color-text-primary);
   --text-code-bg: var(--color-bg-muted);
-  --text-code-padding: var(--space-0-5) var(--space-1-5); //  2px 6px
+  --text-code-padding: var(--space-0-5) var(--space-1-5); // 2px 6px
   --text-code-radius: var(--radius-sm);
 
-  // Kbd — keyboard-key glyph, slightly smaller than inline code and with a
-  // raised appearance (border + 1px bottom shadow) to suggest a physical key.
-  // Same shape language as `code` so the two read as a family.
+  // Keyboard-key glyph; raised border + bottom shadow suggest a physical key
   --text-kbd-size: 0.8125em;
   --text-kbd-weight: var(--font-weight-medium);
   --text-kbd-family: var(--font-family-mono);
   --text-kbd-color: var(--color-text-primary);
   --text-kbd-bg: var(--color-bg-base);
   --text-kbd-border: var(--border-width-thin) solid var(--color-border-default);
-  --text-kbd-padding: var(--space-0-5) var(--space-1-5); //  2px 6px
+  --text-kbd-padding: var(--space-0-5) var(--space-1-5); // 2px 6px
   --text-kbd-radius: var(--radius-sm);
   --text-kbd-shadow: 0 1px 0 var(--color-border-default);
 }

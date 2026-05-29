@@ -2,9 +2,9 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   Injector,
-  OnDestroy,
+  type OnDestroy,
   ViewEncapsulation,
   afterNextRender,
   computed,
@@ -152,7 +152,9 @@ export class AvatarEditorComponent implements OnDestroy {
 
     effect(() => {
       this.canvasSize();
-      if (this.image) this.draw();
+      if (this.image) {
+        this.draw();
+      }
     });
   }
 
@@ -179,13 +181,17 @@ export class AvatarEditorComponent implements OnDestroy {
     this.isDragOver.set(false);
 
     const file = event.dataTransfer?.files[0];
-    if (file) this.loadFile(file);
+    if (file) {
+      this.loadFile(file);
+    }
   }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
-    if (file) this.loadFile(file);
+    if (file) {
+      this.loadFile(file);
+    }
     input.value = '';
   }
 
@@ -195,7 +201,9 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   onMouseDown(event: MouseEvent): void {
-    if (!this.hasImage()) return;
+    if (!this.hasImage()) {
+      return;
+    }
     event.preventDefault();
     this.isDragging = true;
     this.hasDragged = false;
@@ -209,7 +217,9 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   onTouchStart(event: TouchEvent): void {
-    if (!this.hasImage() || event.touches.length !== 1) return;
+    if (!this.hasImage() || event.touches.length !== 1) {
+      return;
+    }
     const touch = event.touches[0];
     this.isDragging = true;
     this.hasDragged = false;
@@ -228,7 +238,9 @@ export class AvatarEditorComponent implements OnDestroy {
   private readonly onTouchEndBound = () => this.onTouchEnd();
 
   private onMouseMove(event: MouseEvent): void {
-    if (!this.isDragging) return;
+    if (!this.isDragging) {
+      return;
+    }
     const dx = event.clientX - this.dragStartX;
     const dy = event.clientY - this.dragStartY;
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
@@ -243,14 +255,18 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private onMouseUp(): void {
-    if (!this.hasDragged) this.openFilePicker();
+    if (!this.hasDragged) {
+      this.openFilePicker();
+    }
     this.isDragging = false;
     document.removeEventListener('mousemove', this.onMouseMoveBound);
     document.removeEventListener('mouseup', this.onMouseUpBound);
   }
 
   private onTouchMove(event: TouchEvent): void {
-    if (!this.isDragging || event.touches.length !== 1) return;
+    if (!this.isDragging || event.touches.length !== 1) {
+      return;
+    }
     event.preventDefault();
     const touch = event.touches[0];
     const dx = touch.clientX - this.dragStartX;
@@ -267,21 +283,27 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private onTouchEnd(): void {
-    if (!this.hasDragged) this.openFilePicker();
+    if (!this.hasDragged) {
+      this.openFilePicker();
+    }
     this.isDragging = false;
     document.removeEventListener('touchmove', this.onTouchMoveBound);
     document.removeEventListener('touchend', this.onTouchEndBound);
   }
 
   private onWheel(event: WheelEvent): void {
-    if (!this.hasImage()) return;
+    if (!this.hasImage()) {
+      return;
+    }
     event.preventDefault();
     const delta = event.deltaY > 0 ? -0.1 : 0.1;
     this.setZoom(this.zoom() + delta);
   }
 
   onCanvasKeydown(event: KeyboardEvent): void {
-    if (!this.hasImage() || this.isLoading()) return;
+    if (!this.hasImage() || this.isLoading()) {
+      return;
+    }
     const step = event.shiftKey ? 20 : 5;
     let handled = false;
 
@@ -363,7 +385,9 @@ export class AvatarEditorComponent implements OnDestroy {
 
   /** Restores the image and crop state captured by the most recent {@link captureOriginal}. */
   revertImage(): void {
-    if (!this.originalCaptured) return;
+    if (!this.originalCaptured) {
+      return;
+    }
 
     if (this.originalImage) {
       this.image = this.originalImage;
@@ -518,7 +542,9 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private centerImage(): void {
-    if (!this.image) return;
+    if (!this.image) {
+      return;
+    }
     const size = this.canvasSize();
     const scale = this.getScale();
     const drawW = this.image.width * scale;
@@ -528,7 +554,9 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private getScale(): number {
-    if (!this.image) return 1;
+    if (!this.image) {
+      return 1;
+    }
     const size = this.canvasSize();
     const baseScale = Math.max(size / this.image.width, size / this.image.height);
     return baseScale * this.zoom();
@@ -540,7 +568,9 @@ export class AvatarEditorComponent implements OnDestroy {
     drawW: number;
     drawH: number;
   } {
-    if (!this.image) return { drawX: 0, drawY: 0, drawW: 0, drawH: 0 };
+    if (!this.image) {
+      return { drawX: 0, drawY: 0, drawW: 0, drawH: 0 };
+    }
     const scale = this.getScale();
     return {
       drawX: this.offsetX,
@@ -551,7 +581,9 @@ export class AvatarEditorComponent implements OnDestroy {
   }
 
   private clampOffset(): void {
-    if (!this.image) return;
+    if (!this.image) {
+      return;
+    }
     const size = this.canvasSize();
     const { drawW, drawH } = this.getDrawParams();
 
@@ -561,7 +593,9 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private draw(): void {
     const canvas = this.canvasEl()?.nativeElement;
-    if (!canvas || !this.image) return;
+    if (!canvas || !this.image) {
+      return;
+    }
 
     const ctx = canvas.getContext('2d')!;
     const size = this.canvasSize();
@@ -575,7 +609,6 @@ export class AvatarEditorComponent implements OnDestroy {
 
     this.updateImageDarkness(ctx, size);
 
-    // Draw overlay mask
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
     ctx.fillRect(0, 0, size, size);
 
@@ -624,10 +657,14 @@ export class AvatarEditorComponent implements OnDestroy {
         if (isCircle) {
           const dx = x - cx;
           const dy = y - cy;
-          if (dx * dx + dy * dy > radiusSq) continue;
+          if (dx * dx + dy * dy > radiusSq) {
+            continue;
+          }
         }
         const i = (y * size + x) * 4;
-        if (data[i + 3] === 0) continue;
+        if (data[i + 3] === 0) {
+          continue;
+        }
         sum += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
         count++;
       }
@@ -636,11 +673,15 @@ export class AvatarEditorComponent implements OnDestroy {
     // Threshold biased above mid-grey (128) so images on the border between
     // light and dark still get the cleaner white ink; only clearly-bright
     // photos flip to black.
-    if (count > 0) this.isImageDark.set(sum / count < 170);
+    if (count > 0) {
+      this.isImageDark.set(sum / count < 170);
+    }
   }
 
   private emitCropStateChange(): void {
-    if (this._suppressCropStateEmit) return;
+    if (this._suppressCropStateEmit) {
+      return;
+    }
     this.cropStateChanged.emit({
       zoom: this.zoom(),
       offsetX: this.offsetX,
@@ -650,7 +691,9 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private clearCanvas(): void {
     const canvas = this.canvasEl()?.nativeElement;
-    if (!canvas) return;
+    if (!canvas) {
+      return;
+    }
     const ctx = canvas.getContext('2d')!;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }

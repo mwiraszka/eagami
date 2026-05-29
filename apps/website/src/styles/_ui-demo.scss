@@ -1,6 +1,5 @@
-// Shared classes used inside `<web-ui-component-demo-layout>` projected content.
-// Each demo page projects markup into the layout; component-scoped styles can't
-// reach across content projection, so these live in a global partial.
+// Classes for content projected into `<web-ui-component-demo-layout>`. They live
+// in a global partial because component-scoped styles can't reach across projection.
 
 .demo-section {
   display: flex;
@@ -8,9 +7,7 @@
   gap: 16px;
 
   h2 {
-    // Generous vertical break between demo sections so each `<h2>`-led group
-    // reads as a distinct chunk on the page. The first heading sits flush
-    // with the top of the card; subsequent ones get the full 32px gap above.
+    // Top gap separates each `<h2>`-led group; the first heading is reset flush below
     margin: 32px 0 0;
     font-size: 12px;
     font-weight: 600;
@@ -23,9 +20,7 @@
     margin-top: 0;
   }
 
-  // Cap form-like components at a width that reads as a discrete widget,
-  // rather than letting them stretch the full 880px demo section. Applied via
-  // `class="demo-form-narrow"` on the consumer element so it stays opt-in.
+  // Opt-in cap so form-like components read as a discrete widget, not a full-width stretch
   .demo-form-narrow {
     max-width: 480px;
   }
@@ -46,9 +41,8 @@
   }
 }
 
-// 16px is the floor for the gap between vertically-stacked demo components
-// across the docs. `--lg` and `--xl` bump above that when a particular demo
-// needs more breathing room. There is intentionally no smaller modifier.
+// 16px is the gap floor for stacked demo components; --lg/--xl bump above it.
+// There is intentionally no smaller modifier.
 .demo-stack {
   display: flex;
   flex-direction: column;
@@ -69,9 +63,7 @@
   color: var(--color-text-secondary);
 }
 
-// Small label above a demo component (e.g. above a wordmark variant). Mirrors
-// the field-label typography used by form components so labelling reads
-// consistently across the docs.
+// Label above a demo component; mirrors form field-label typography for consistency
 .demo-label {
   display: block;
   margin-bottom: 6px;

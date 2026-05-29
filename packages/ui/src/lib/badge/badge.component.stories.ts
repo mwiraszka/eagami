@@ -1,4 +1,4 @@
-import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { BadgeComponent } from './badge.component';
 

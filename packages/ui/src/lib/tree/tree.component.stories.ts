@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { TreeComponent } from './tree.component';
-import { TreeNode } from './tree.types';
+import type { TreeNode } from './tree.types';
 
 const FILE_TREE: TreeNode[] = [
   {

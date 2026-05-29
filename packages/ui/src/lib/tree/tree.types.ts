@@ -1,9 +1,9 @@
-import { Type } from '@angular/core';
+import type { Type } from '@angular/core';
 
 /**
  * A single node in an `<ea-tree>` hierarchy.
  *
- * `id` must be unique across the entire tree (not just within siblings) — it
+ * `id` must be unique across the entire tree (not just within siblings); it
  * drives selection state, expansion state, and keyboard focus.
  */
 export interface TreeNode<T = unknown> {

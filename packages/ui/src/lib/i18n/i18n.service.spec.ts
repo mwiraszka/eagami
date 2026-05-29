@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
-import { EAGAMI_LOCALES, EagamiLocale } from './i18n.types';
+import { EAGAMI_LOCALES, type EagamiLocale } from './i18n.types';
 
 describe('EagamiI18nService', () => {
   function createService(
@@ -60,7 +60,7 @@ describe('EagamiI18nService', () => {
     });
 
     expect(service.messages().alert.dismiss).toBe('Κλείσιμο');
-    // Untouched keys still come from the active locale.
+    // untouched keys still come from the active locale
     expect(service.messages().spinner.label).toBe('Φόρτωση');
   });
 

@@ -9,8 +9,7 @@ describe('validatePalette', () => {
   });
 
   it('flags a too-light overridden brand-text against the light canvas', () => {
-    // Pin shade-700 (textLight) to a too-light hex; brand-text in light mode
-    // then fails 4.5:1 against white.
+    // Too-light shade-700 (textLight) makes brand-text fail 4.5:1 against white
     const palette = derivePalette({
       primary: { base: '#3674a1', overrides: { '700': '#a0c4e0' } },
     });
@@ -25,8 +24,7 @@ describe('validatePalette', () => {
   });
 
   it('flags a too-dark overridden brand-text against the dark canvas', () => {
-    // Pin shade-300 (textDark) to a too-dark hex; brand-text in dark mode
-    // then fails 4.5:1 against near-black.
+    // Too-dark shade-300 (textDark) makes brand-text fail 4.5:1 against near-black
     const palette = derivePalette({
       primary: { base: '#3674a1', overrides: { '300': '#1a1a1a' } },
     });

@@ -1,0 +1,16 @@
+@if (forId(); as control) {
+  <label
+    class="ea-field-label"
+    [for]="control"
+    [attr.id]="labelId() ?? null"
+    [class.ea-field-label--required]="required()">
+    {{ text() }}
+  </label>
+} @else {
+  <span
+    class="ea-field-label"
+    [attr.id]="labelId() ?? null"
+    [class.ea-field-label--required]="required()">
+    {{ text() }}
+  </span>
+}

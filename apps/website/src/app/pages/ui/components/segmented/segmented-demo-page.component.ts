@@ -1,4 +1,4 @@
-import { SegmentedComponent, SelectOption } from '@eagami/ui';
+import { SegmentedComponent, type SelectOption } from '@eagami/ui';
 
 import {
   ChangeDetectionStrategy,

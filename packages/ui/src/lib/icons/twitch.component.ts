@@ -1,15 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IconCategory, IconComponentBase } from './icon-category';
+import { type IconCategory, IconComponentBase } from './icon-category';
 
 /**
  * Twitch icon (Feather outline).
  *
  * @remarks
- * Prior to v1.4 this slug rendered Eagami's brand-filled Twitch mark. v1.4
- * aligns the canonical slug with Feather Icons, so `TwitchIconComponent` now
- * renders Feather's outline. The brand-filled mark that previously shipped
- * here has moved to `<ea-icon-twitch-2>` / `Twitch2IconComponent`.
+ * The brand-filled Twitch mark lives at `<ea-icon-twitch-2>` /
+ * `Twitch2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-twitch',

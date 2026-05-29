@@ -1,0 +1,26 @@
+:host {
+  display: contents;
+}
+
+.ea-field-messages__message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-helper-size);
+  font-weight: var(--text-helper-weight);
+  line-height: var(--text-helper-lh);
+}
+
+.ea-field-messages__message--hint {
+  color: var(--color-text-secondary);
+}
+
+.ea-field-messages__message--error {
+  color: var(--color-error-default);
+}
+
+.ea-field-messages__icon {
+  flex-shrink: 0;
+  width: 0.875em;
+  height: 0.875em;
+}

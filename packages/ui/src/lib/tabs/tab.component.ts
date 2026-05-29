@@ -1,8 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnDestroy,
-  OnInit,
+  type OnDestroy,
+  type OnInit,
   computed,
   inject,
   input,

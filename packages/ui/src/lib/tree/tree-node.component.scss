@@ -4,8 +4,7 @@
 
 .ea-tree-node {
   display: block;
-  // Roving tabindex: each treeitem has tabindex=0 only when focused. Suppress
-  // the default outline so the row's `:focus-visible` ring is consistent.
+  // Roving tabindex puts the outline here, but the ring lives on `__row` instead
   outline: none;
   list-style: none;
 }
@@ -15,9 +14,8 @@
   align-items: center;
   gap: var(--space-2);
 
-  // Indentation is driven by `--ea-tree-node-level` (set inline per row).
-  // The `--ea-tree-indent` token controls the indent step and can be
-  // overridden per `<ea-tree>` host.
+  // `--ea-tree-node-level` (inline per row) drives indentation; `--ea-tree-indent`
+  // sets the step and is overridable per `<ea-tree>` host
   padding: var(--ea-tree-row-padding-block, var(--space-1))
     var(--ea-tree-row-padding-inline, var(--space-2));
   padding-inline-start: calc(
@@ -32,9 +30,8 @@
   transition: var(--transition-colors);
 }
 
-// The whole treeitem is focusable (roving tabindex), so the focus ring lives
-// on the row container — visually anchored to the visible content rather than
-// the `<li>` element which extends to wrap descendants.
+// The `<li>` treeitem is focusable but extends to wrap descendants, so anchor the
+// focus ring on the row container instead, against the visible content
 .ea-tree-node:focus-visible {
   & > .ea-tree-node__row {
     box-shadow: var(--shadow-focus-ring);

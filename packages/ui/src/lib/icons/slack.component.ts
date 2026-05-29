@@ -1,15 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IconCategory, IconComponentBase } from './icon-category';
+import { type IconCategory, IconComponentBase } from './icon-category';
 
 /**
  * Slack icon (Feather outline).
  *
  * @remarks
- * Prior to v1.4 this slug rendered Eagami's brand-filled Slack mark. v1.4
- * aligns the canonical slug with Feather Icons, so `SlackIconComponent` now
- * renders Feather's outline. The brand-filled mark that previously shipped
- * here has moved to `<ea-icon-slack-2>` / `Slack2IconComponent`.
+ * The brand-filled Slack mark lives at `<ea-icon-slack-2>` /
+ * `Slack2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-slack',

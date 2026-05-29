@@ -7,7 +7,7 @@ import {
   output,
 } from '@angular/core';
 
-/** Visual style of a button — drives colour and emphasis. */
+/** Visual style of a button; drives colour and emphasis. */
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 /** Visual size of a button. */
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -30,7 +30,6 @@ export type ButtonType = 'button' | 'submit' | 'reset';
   },
 })
 export class ButtonComponent {
-  // Inputs
   readonly variant = input<ButtonVariant>('primary');
   readonly size = input<ButtonSize>('md');
   readonly type = input<ButtonType>('button');
@@ -40,11 +39,9 @@ export class ButtonComponent {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly ariaCurrent = input<string | undefined>(undefined, { alias: 'aria-current' });
 
-  // Output
   /** Fires when the button is activated; suppressed while disabled or loading. */
   readonly clicked = output<MouseEvent>();
 
-  // Derived
   readonly isDisabled = computed(() => this.disabled() || this.loading());
 
   readonly hostClasses = computed(() => ({

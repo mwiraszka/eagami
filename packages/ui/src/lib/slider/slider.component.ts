@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   input,
@@ -11,9 +11,10 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
@@ -29,7 +30,7 @@ export type SliderSize = 'sm' | 'md' | 'lg';
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -79,7 +80,9 @@ export class SliderComponent implements ControlValueAccessor {
 
   readonly percent = computed(() => {
     const range = this.max() - this.min();
-    if (range <= 0) return 0;
+    if (range <= 0) {
+      return 0;
+    }
     return ((this.clampedValue() - this.min()) / range) * 100;
   });
 
@@ -114,7 +117,9 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
 
     const step = this.step();
     const bigStep = Math.max(step * 10, (this.max() - this.min()) / 10);
@@ -150,9 +155,13 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   handlePointerDown(event: PointerEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     const track = this.trackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
 
     (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
     this.dragging.set(true);
@@ -160,14 +169,20 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   handlePointerMove(event: PointerEvent): void {
-    if (!this.dragging() || this.isDisabled()) return;
+    if (!this.dragging() || this.isDisabled()) {
+      return;
+    }
     const track = this.trackEl()?.nativeElement;
-    if (!track) return;
+    if (!track) {
+      return;
+    }
     this.updateFromPointer(event, track);
   }
 
   handlePointerUp(event: PointerEvent): void {
-    if (!this.dragging()) return;
+    if (!this.dragging()) {
+      return;
+    }
     (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
     this.dragging.set(false);
     this.onTouched();
@@ -192,7 +207,9 @@ export class SliderComponent implements ControlValueAccessor {
     const snapped = Math.round((raw - min) / step) * step + min;
     const clamped = Math.min(max, Math.max(min, snapped));
     const rounded = Number(clamped.toFixed(10));
-    if (rounded === this.value()) return;
+    if (rounded === this.value()) {
+      return;
+    }
     this.value.set(rounded);
     this.onChange(rounded);
     this.changed.emit(rounded);

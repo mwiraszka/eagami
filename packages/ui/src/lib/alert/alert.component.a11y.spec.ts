@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { AlertComponent, AlertVariant } from './alert.component';
+import { AlertComponent, type AlertVariant } from './alert.component';
 
 @Component({
   imports: [AlertComponent],

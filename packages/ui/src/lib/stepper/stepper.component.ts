@@ -12,7 +12,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { CheckIconComponent } from '../icons/check.component';
-import { StepComponent } from './step.component';
+import type { StepComponent } from './step.component';
 
 /** Visual size of the stepper. */
 export type StepperSize = 'sm' | 'md' | 'lg';
@@ -39,24 +39,20 @@ export class StepperComponent {
 
   readonly registeredSteps = signal<StepComponent[]>([]);
 
-  // ─── Inputs ───────────────────────────────────────────────────────────
   readonly activeStep = model<number>(0);
   readonly linear = input<boolean>(false);
   readonly size = input<StepperSize>('md');
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(`ea-stepper-${Math.random().toString(36).slice(2, 9)}`);
 
-  // ─── Outputs ──────────────────────────────────────────────────────────
   /** Fires with the new active step index when the user navigates. */
   readonly changed = output<number>();
 
-  // ─── Computed ─────────────────────────────────────────────────────────
   readonly hostClasses = computed(() => ({
     [`ea-stepper--${this.size()}`]: true,
     'ea-stepper--disabled': this.disabled(),
   }));
 
-  // ─── Registration ─────────────────────────────────────────────────────
   registerStep(step: StepComponent): void {
     this.registeredSteps.update(steps => [...steps, step]);
   }
@@ -70,38 +66,57 @@ export class StepperComponent {
     return this.registeredSteps().indexOf(step);
   }
 
-  // ─── Navigation ───────────────────────────────────────────────────────
   /**
    * True when the user can navigate directly to the step at `index`. In
    * non-linear mode this is true for any non-disabled step; in linear mode,
    * every non-optional earlier step must also be marked `completed`.
    */
   canNavigateTo(index: number): boolean {
-    if (this.disabled()) return false;
+    if (this.disabled()) {
+      return false;
+    }
     const steps = this.registeredSteps();
-    if (index < 0 || index >= steps.length) return false;
-    if (steps[index].disabled()) return false;
-    if (!this.linear()) return true;
-    if (index <= this.activeStep()) return true;
+    if (index < 0 || index >= steps.length) {
+      return false;
+    }
+    if (steps[index].disabled()) {
+      return false;
+    }
+    if (!this.linear()) {
+      return true;
+    }
+    if (index <= this.activeStep()) {
+      return true;
+    }
     for (let i = 0; i < index; i++) {
       const step = steps[i];
-      if (!step.completed() && !step.optional()) return false;
+      if (!step.completed() && !step.optional()) {
+        return false;
+      }
     }
     return true;
   }
 
   /** Activate the step at `index` if reachable. */
   selectStep(index: number): void {
-    if (!this.canNavigateTo(index)) return;
-    if (index === this.activeStep()) return;
+    if (!this.canNavigateTo(index)) {
+      return;
+    }
+    if (index === this.activeStep()) {
+      return;
+    }
     this.activeStep.set(index);
     this.changed.emit(index);
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     const steps = this.registeredSteps();
-    if (steps.length === 0) return;
+    if (steps.length === 0) {
+      return;
+    }
 
     let nextIndex = -1;
     if (event.key === 'ArrowRight') {
@@ -132,11 +147,12 @@ export class StepperComponent {
     }
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────
   private nextReachable(from: number, direction: 1 | -1): number {
     const steps = this.registeredSteps();
     for (let i = from + direction; i >= 0 && i < steps.length; i += direction) {
-      if (this.canNavigateTo(i)) return i;
+      if (this.canNavigateTo(i)) {
+        return i;
+      }
     }
     return -1;
   }
@@ -144,7 +160,9 @@ export class StepperComponent {
   private firstReachable(): number {
     const steps = this.registeredSteps();
     for (let i = 0; i < steps.length; i++) {
-      if (this.canNavigateTo(i)) return i;
+      if (this.canNavigateTo(i)) {
+        return i;
+      }
     }
     return -1;
   }
@@ -152,7 +170,9 @@ export class StepperComponent {
   private lastReachable(): number {
     const steps = this.registeredSteps();
     for (let i = steps.length - 1; i >= 0; i--) {
-      if (this.canNavigateTo(i)) return i;
+      if (this.canNavigateTo(i)) {
+        return i;
+      }
     }
     return -1;
   }

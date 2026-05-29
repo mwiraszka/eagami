@@ -1,7 +1,2 @@
-/**
- * The `/ui/icons` reference page renders every non-deprecated icon shipped
- * by `@eagami/ui`. The catalogue itself lives in the library so consumers
- * (this page, Storybook, downstream apps) share a single source of truth
- * without each maintaining its own list.
- */
+// Catalogue lives in the library so this page, Storybook, and downstream apps share one source
 export { ICONS } from '@eagami/ui';

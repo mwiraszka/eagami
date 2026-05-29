@@ -1,15 +1,6 @@
-// =============================================================================
-// EAGAMI UI — French spacing helper
-// =============================================================================
-
-// Pattern: ASCII space (0x20) followed by a closing "high" punctuation mark.
-// French typography wants an "espace fine insécable" (narrow non-breaking
-// space, U+202F) in this position, not a regular breakable space. The match
-// deliberately excludes U+202F and U+00A0 so the function is idempotent.
+// Excludes U+202F and U+00A0 so the substitution is idempotent.
 const SPACE_BEFORE_HIGH_PUNCT = / ([!?:;»])/g;
 
-// Pattern: opening guillemet followed by an ASCII space — symmetric rule for
-// the inside of French quotation marks.
 const SPACE_AFTER_OPEN_GUILLEMET = /(«) /g;
 
 /**
@@ -22,7 +13,7 @@ const SPACE_AFTER_OPEN_GUILLEMET = /(«) /g;
  * Opt-in: the library does not auto-apply this to anything. Components render
  * whatever string they receive. Apply this to consumer-supplied content (user
  * input, content from your CMS, etc.) that you want to format correctly for a
- * French audience. The function is idempotent — already-converted text passes
+ * French audience. The function is idempotent: already-converted text passes
  * through unchanged.
  *
  * Do not apply it to URLs, CSS, JSON, code snippets, or other technical
@@ -30,13 +21,13 @@ const SPACE_AFTER_OPEN_GUILLEMET = /(«) /g;
  *
  * @example
  * frenchSpacing('Lignes par page :');
- * // → 'Lignes par page\u202F:'
+ * // returns 'Lignes par page\u202F:'
  *
  * frenchSpacing("Qu'est-ce que c'est ?");
- * // → "Qu'est-ce que c'est\u202F?"
+ * // returns "Qu'est-ce que c'est\u202F?"
  *
  * frenchSpacing('Il a dit « bonjour ».');
- * // → 'Il a dit «\u202Fbonjour\u202F».'
+ * // returns 'Il a dit «\u202Fbonjour\u202F».'
  */
 export function frenchSpacing(text: string): string {
   return text

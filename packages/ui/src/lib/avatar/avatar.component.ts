@@ -11,7 +11,7 @@ import { UserIconComponent } from '../icons/user.component';
 
 /** Diameter (or side length) preset for an avatar. */
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-/** Outline of the avatar — round or rounded-square. */
+/** Outline of the avatar: round or rounded-square. */
 export type AvatarShape = 'circle' | 'square';
 
 /**

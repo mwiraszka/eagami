@@ -1,15 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IconCategory, IconComponentBase } from './icon-category';
+import { type IconCategory, IconComponentBase } from './icon-category';
 
 /**
  * Facebook icon (Feather outline).
  *
  * @remarks
- * Prior to v1.4 this slug rendered Eagami's brand-filled Facebook mark. v1.4
- * aligns the canonical slug with Feather Icons, so `FacebookIconComponent` now
- * renders Feather's outline. The brand-filled mark that previously shipped
- * here has moved to `<ea-icon-facebook-2>` / `Facebook2IconComponent`.
+ * The brand-filled Facebook mark lives at `<ea-icon-facebook-2>` /
+ * `Facebook2IconComponent`.
  */
 @Component({
   selector: 'ea-icon-facebook',

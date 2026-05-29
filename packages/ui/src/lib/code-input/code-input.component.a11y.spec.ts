@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { CodeInputComponent, CodeInputSize } from './code-input.component';
+import { CodeInputComponent, type CodeInputSize } from './code-input.component';
 
 @Component({
   imports: [CodeInputComponent],

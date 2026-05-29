@@ -2,8 +2,8 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  TemplateRef,
+  type ElementRef,
+  type TemplateRef,
   computed,
   contentChild,
   input,
@@ -27,8 +27,8 @@ export interface VirtualListItemContext<T = unknown> {
  * so that lists of tens of thousands of rows scroll smoothly.
  *
  * Fixed-height items only. Variable-height virtualization would need either
- * a measurement pass per row or a height estimator; both add complexity that
- * we don't ship in v1.
+ * a measurement pass per row or a height estimator, neither of which the
+ * component implements.
  *
  * Usage:
  * ```html
@@ -42,7 +42,7 @@ export interface VirtualListItemContext<T = unknown> {
  * </ea-virtual-list>
  * ```
  *
- * The component intentionally stays role-agnostic — the consumer wraps the
+ * The component intentionally stays role-agnostic: the consumer wraps the
  * projected item with whatever ARIA the use case calls for (`role="listitem"`,
  * `role="option"`, `role="row"`, etc.) and applies `aria-setsize` /
  * `aria-posinset` using the projected `index` if needed.
@@ -73,7 +73,7 @@ export class VirtualListComponent {
   /** Index of the first row currently visible at the top of the viewport. */
   readonly scrollIndexChange = output<number>();
 
-  /** Template applied to each rendered item — projected via `<ng-template #item>`. */
+  /** Template applied to each rendered item, projected via `<ng-template #item>`. */
   protected readonly itemTemplate =
     contentChild.required<TemplateRef<VirtualListItemContext>>('item');
 
@@ -96,7 +96,9 @@ export class VirtualListComponent {
   protected readonly visibleRange = computed(() => {
     const height = this.itemHeight();
     const total = this.items().length;
-    if (height <= 0 || total === 0) return { start: 0, end: 0 };
+    if (height <= 0 || total === 0) {
+      return { start: 0, end: 0 };
+    }
 
     const buffer = Math.max(0, this.overscan());
     const firstVisible = Math.floor(this.scrollTop() / height);
@@ -140,7 +142,9 @@ export class VirtualListComponent {
    */
   scrollToIndex(index: number): void {
     const el = this.viewportEl()?.nativeElement;
-    if (!el) return;
+    if (!el) {
+      return;
+    }
     const clamped = Math.max(0, Math.min(this.items().length - 1, index));
     el.scrollTop = clamped * this.itemHeight();
   }

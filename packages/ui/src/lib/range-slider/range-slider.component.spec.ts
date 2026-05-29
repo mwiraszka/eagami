@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RangeSliderComponent, RangeSliderValue } from './range-slider.component';
+import { RangeSliderComponent, type RangeSliderValue } from './range-slider.component';
 
 describe('RangeSliderComponent', () => {
   let fixture: ComponentFixture<RangeSliderComponent>;

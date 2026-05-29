@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   inject,
@@ -11,10 +11,11 @@ import {
   signal,
   viewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 
 /** Visual size of each digit cell. */
 export type CodeInputSize = 'sm' | 'md' | 'lg';
@@ -26,7 +27,7 @@ export type CodeInputSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-code-input',
-  imports: [AlertCircleIconComponent],
+  imports: [FieldLabelComponent, FieldMessagesComponent],
   templateUrl: './code-input.component.html',
   styleUrl: './code-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +43,6 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly digitEls = viewChildren<ElementRef<HTMLInputElement>>('digitEl');
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);
@@ -54,22 +54,17 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly id = input<string>(`ea-code-input-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Internal state
   readonly focusedIndex = signal<number>(-1);
   private readonly _formDisabled = signal(false);
 
-  // Outputs
   /** Fires with the full code once every digit has been entered. */
   readonly completed = output<string>();
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
@@ -101,7 +96,9 @@ export class CodeInputComponent implements ControlValueAccessor {
   }
 
   handleInput(event: Event, index: number): void {
-    if (this.readonly()) return;
+    if (this.readonly()) {
+      return;
+    }
     const input = event.target as HTMLInputElement;
     const char = input.value.replace(/[^0-9]/g, '').slice(-1);
     input.value = char;
@@ -127,7 +124,9 @@ export class CodeInputComponent implements ControlValueAccessor {
     const inputs = this.digitEls();
 
     if (event.key === 'Backspace') {
-      if (this.readonly()) return;
+      if (this.readonly()) {
+        return;
+      }
       event.preventDefault();
       const current = this.value();
       const chars = current.padEnd(this.length(), ' ').split('');
@@ -153,9 +152,13 @@ export class CodeInputComponent implements ControlValueAccessor {
 
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
-    if (this.readonly()) return;
+    if (this.readonly()) {
+      return;
+    }
     const pasted = (event.clipboardData?.getData('text') ?? '').replace(/[^0-9]/g, '');
-    if (!pasted) return;
+    if (!pasted) {
+      return;
+    }
 
     const clipped = pasted.slice(0, this.length());
     this.value.set(clipped);

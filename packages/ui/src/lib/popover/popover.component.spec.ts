@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
-  PopoverPlacement,
-  PopoverPositionResult,
+  type PopoverPlacement,
+  type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
 import { PopoverComponent } from './popover.component';
@@ -49,14 +49,13 @@ describe('PopoverComponent', () => {
   let host: PopoverHostComponent;
 
   function getSurface(): HTMLElement | null {
-    // The popover renders its surface unconditionally (so the `<ng-content/>`
-    // slot is always available to receive projected content) and toggles
-    // visibility via `display: none`. Treat a hidden surface as "not open"
-    // here so existing assertions keep their plain `null` semantics.
-    // `<ea-popover>` also teleports the surface to `document.body` once open,
-    // so query the global DOM rather than the fixture's tree.
+    // Surface renders unconditionally (keeps `<ng-content/>` available), toggles via
+    // `display: none`, and teleports to `document.body`; query the global DOM and treat
+    // a hidden surface as "not open".
     const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface;
   }
 
@@ -75,12 +74,9 @@ describe('PopoverComponent', () => {
   });
 
   afterEach(() => {
-    // The popover teleports its surface to `document.body`. Destroy the
-    // fixture so Angular tears the embedded view down, which also removes the
-    // teleported surface from the body.
+    // Destroy tears down the teleported surface
     fixture.destroy();
-    // Belt and braces: scrub any surface that survived destruction (e.g. a
-    // test that asserted on the open state and never closed the popover).
+    // Scrub any surface that survived destruction (e.g. a test left the popover open)
     document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
 
@@ -106,9 +102,7 @@ describe('PopoverComponent', () => {
     });
 
     it('applies a placement-specific class', () => {
-      // Disable flip so the test asserts on the requested placement without
-      // jsdom's 0×0 layout pushing the popover above the viewport and
-      // triggering a flip to `bottom-end`.
+      // Disable flip; jsdom's 0x0 layout would otherwise flip the placement to `bottom-end`
       host.flip.set(false);
       host.open.set(true);
       host.placement.set('top-end');

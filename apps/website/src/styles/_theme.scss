@@ -1,10 +1,7 @@
-/* Website-specific colour tokens. The marketing site is a showcase of the
-   library, so the actual design tokens (brand, text, bg, border, ...) come
-   from @eagami/ui untouched. The only theme-scoped values that live here are
-   the gradient stops + wordmark sheen used in the hero visuals, which are
-   not part of the library API. Selectors mirror the library's dark-mode
-   pattern (media query + explicit data-theme) so the gradients follow the
-   library's theme toggle. */
+/* Website-specific colour tokens. The site showcases the library, so the design
+   tokens come from @eagami/ui untouched; only the hero gradient stops and wordmark
+   sheen (not part of the library API) live here. Selectors mirror the library's
+   dark-mode pattern (media query + data-theme) so the gradients follow its toggle. */
 
 :root {
   --web-color-flutterStop1: var(--color-primary-100);

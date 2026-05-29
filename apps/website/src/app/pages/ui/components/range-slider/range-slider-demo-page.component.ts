@@ -1,4 +1,4 @@
-import { RangeSliderComponent, RangeSliderValue } from '@eagami/ui';
+import { RangeSliderComponent, type RangeSliderValue } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 

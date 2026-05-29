@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CodeInputComponent } from './code-input.component';
@@ -42,13 +42,13 @@ describe('CodeInputComponent', () => {
     });
 
     it('renders no label by default', () => {
-      expect(fixture.nativeElement.querySelector('label')).toBeNull();
+      expect(fixture.nativeElement.querySelector('.ea-field-label')).toBeNull();
     });
 
     it('renders a label when provided', () => {
       fixture.componentRef.setInput('label', 'Verification code');
       fixture.detectChanges();
-      const label = fixture.nativeElement.querySelector('label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent?.trim()).toBe('Verification code');
     });
 
@@ -263,7 +263,7 @@ describe('CodeInputComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Invalid code');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-code-input-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg?.textContent).toContain('Invalid code');
     });
@@ -278,7 +278,7 @@ describe('CodeInputComponent', () => {
       fixture.componentRef.setInput('hint', 'Check your email');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-code-input-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg?.textContent).toContain('Check your email');
     });
@@ -288,7 +288,7 @@ describe('CodeInputComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Invalid code');
       fixture.detectChanges();
       expect(
-        fixture.nativeElement.querySelector('.ea-code-input-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

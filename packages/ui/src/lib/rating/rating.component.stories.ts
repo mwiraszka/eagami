@@ -1,4 +1,4 @@
-import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { HeartIconComponent } from '../icons/heart.component';
 import { RatingComponent } from './rating.component';
@@ -49,9 +49,7 @@ export const AllowHalf: Story = {
 };
 
 export const Sizes: Story = {
-  // `props: args` + `argsToTemplate` would bind every <ea-rating> to the same
-  // top-level `size` arg, so all three rows would render at the default `md`.
-  // Use literal attribute strings instead so each instance gets its own size.
+  // Literal size attributes per instance; a shared `size` arg would force all three rows to one value
   render: () => ({
     template: `
       <div class="story-stack">
@@ -108,10 +106,7 @@ export const Disabled: Story = {
 };
 
 export const CustomIcon: Story = {
-  // Demonstrates the `iconClass` input: pass any standalone component class
-  // (here `HeartIconComponent`) and every star renders an instance of it. For
-  // half-step rendering with a custom icon, pair this with `halfIconClass` —
-  // omitted here because this story doesn't enable `allowHalf`.
+  // `halfIconClass` is omitted because this story doesn't enable `allowHalf`
   render: () => ({
     template: `<ea-rating label="Pick a heart" [value]="4" [iconClass]="HeartIconComponent"></ea-rating>`,
     props: { HeartIconComponent },

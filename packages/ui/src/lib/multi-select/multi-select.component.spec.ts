@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { MultiSelectComponent } from './multi-select.component';
 
 const FRUITS: SelectOption[] = [
@@ -20,13 +20,17 @@ describe('MultiSelectComponent', () => {
 
   function getPopover(): HTMLElement | null {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-multi-select__popover');
   }
 
   function getOptionRows(): HTMLElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(
       surface.querySelectorAll(
         '.ea-multi-select__option:not(.ea-multi-select__option--select-all)',
@@ -387,7 +391,7 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-multi-select-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Required');
     });
@@ -397,7 +401,7 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-multi-select-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Pick a few');
     });
@@ -408,7 +412,7 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-multi-select-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

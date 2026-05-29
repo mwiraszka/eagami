@@ -1,8 +1,8 @@
-import { Injectable, Signal, computed, effect, inject, signal } from '@angular/core';
+import { Injectable, type Signal, computed, effect, inject, signal } from '@angular/core';
 
 import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
 import { EAGAMI_I18N_CONFIG } from './i18n.provider';
-import { EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
+import type { EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
 import { EAGAMI_MESSAGES, en } from './messages';
 
 /** Shallow-merges per-component override groups over a complete base dictionary. */
@@ -35,9 +35,8 @@ export class EagamiI18nService {
   readonly locale: Signal<EagamiLocale> = this._locale.asReadonly();
 
   constructor() {
-    // Pick up tooling-driven locale changes (Storybook globals dropdown). The
-    // override signal is `null` in production — this effect is a no-op for
-    // real applications.
+    // Pick up tooling-driven locale changes (Storybook globals dropdown); the
+    // override signal is null in production, so this effect is a no-op there.
     effect(() => {
       const override = _eagamiI18nLocaleOverride();
       if (override !== null && EAGAMI_MESSAGES[override]) {

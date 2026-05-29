@@ -1,0 +1,15 @@
+@if (error()) {
+  <p
+    class="ea-field-messages__message ea-field-messages__message--error"
+    [id]="id() + '-error'"
+    role="alert">
+    <ea-icon-alert-circle class="ea-field-messages__icon" />
+    {{ error() }}
+  </p>
+} @else if (hint()) {
+  <p
+    class="ea-field-messages__message ea-field-messages__message--hint"
+    [id]="id() + '-hint'">
+    {{ hint() }}
+  </p>
+}

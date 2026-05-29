@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { TabComponent } from './tab.component';
+import type { TabComponent } from './tab.component';
 
 /** Visual style of the tab bar. */
 export type TabsVariant = 'underline' | 'filled';

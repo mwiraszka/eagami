@@ -3,7 +3,7 @@ import { provideEagamiUi } from '@eagami/ui';
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
-  ApplicationConfig,
+  type ApplicationConfig,
   inject,
   provideEnvironmentInitializer,
   provideZoneChangeDetection,

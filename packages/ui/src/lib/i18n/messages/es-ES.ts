@@ -1,4 +1,4 @@
-import { EagamiMessages } from '../i18n.types';
+import type { EagamiMessages } from '../i18n.types';
 
 /** Spanish (Spain) messages. */
 export const esES: EagamiMessages = {

@@ -1,5 +1,5 @@
-import { WebLocale } from '../locale.types';
-import { WebMessages } from '../web-messages.types';
+import type { WebLocale } from '../locale.types';
+import type { WebMessages } from '../web-messages.types';
 import { el } from './el';
 import { en } from './en';
 import { esES } from './es-ES';

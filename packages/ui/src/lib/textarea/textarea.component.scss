@@ -1,52 +1,9 @@
-// =============================================================================
-// TEXTAREA COMPONENT
-// =============================================================================
-
 .ea-textarea-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
   color: var(--color-text-secondary);
-
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: inherit;
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
-
-// =============================================================================
-// TEXTAREA WRAPPER
-// =============================================================================
 
 .ea-textarea-wrapper {
   display: flex;
@@ -108,10 +65,6 @@
     background-color: var(--color-bg-subtle);
   }
 }
-
-// =============================================================================
-// NATIVE TEXTAREA ELEMENT
-// =============================================================================
 
 .ea-textarea {
   flex: 1;

@@ -1,4 +1,4 @@
-import { RenderMode, ServerRoute } from '@angular/ssr';
+import { RenderMode, type ServerRoute } from '@angular/ssr';
 
 import { UI_COMPONENTS } from './data/ui-components';
 

@@ -1,5 +1,5 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
   InjectionToken,
   makeEnvironmentProviders,
   provideEnvironmentInitializer,
@@ -7,9 +7,9 @@ import {
 
 import { applyPalette } from '../palette/apply-palette';
 import { derivePalette } from '../palette/derive-palette';
-import { EagamiPaletteConfig } from '../palette/palette.types';
+import type { EagamiPaletteConfig } from '../palette/palette.types';
 import { formatViolations, validatePalette } from '../palette/validate-palette';
-import { EagamiI18nConfig } from './i18n.types';
+import type { EagamiI18nConfig } from './i18n.types';
 
 /**
  * Full provider configuration for `provideEagamiUi`. Extends the i18n config
@@ -56,7 +56,9 @@ export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProvide
   return makeEnvironmentProviders([
     { provide: EAGAMI_I18N_CONFIG, useValue: i18nConfig },
     provideEnvironmentInitializer(() => {
-      if (!config.palette) return;
+      if (!config.palette) {
+        return;
+      }
       const palette = derivePalette(config.palette);
       const violations = validatePalette(palette);
       if (violations.length > 0) {

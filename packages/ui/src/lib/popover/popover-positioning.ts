@@ -69,23 +69,43 @@ function isCardinal(
   );
 }
 
-/** The dominant side of a placement (`top-start` → `top`, `bottom` → `bottom`, etc.). */
+/** The dominant side of a placement (`top-start` and `top` both give `top`, etc.). */
 function side(placement: PopoverPlacement): 'top' | 'bottom' | 'left' | 'right' {
-  if (placement.startsWith('top')) return 'top';
-  if (placement.startsWith('bottom')) return 'bottom';
-  if (placement === 'left') return 'left';
+  if (placement.startsWith('top')) {
+    return 'top';
+  }
+  if (placement.startsWith('bottom')) {
+    return 'bottom';
+  }
+  if (placement === 'left') {
+    return 'left';
+  }
   return 'right';
 }
 
-/** Maps `top → bottom`, `bottom-start → top-start`, etc. for flip logic. */
+/** Maps `top` to `bottom`, `bottom-start` to `top-start`, etc. for flip logic. */
 function flipPlacement(placement: PopoverPlacement): PopoverPlacement {
-  if (placement === 'top') return 'bottom';
-  if (placement === 'bottom') return 'top';
-  if (placement === 'left') return 'right';
-  if (placement === 'right') return 'left';
-  if (placement === 'top-start') return 'bottom-start';
-  if (placement === 'top-end') return 'bottom-end';
-  if (placement === 'bottom-start') return 'top-start';
+  if (placement === 'top') {
+    return 'bottom';
+  }
+  if (placement === 'bottom') {
+    return 'top';
+  }
+  if (placement === 'left') {
+    return 'right';
+  }
+  if (placement === 'right') {
+    return 'left';
+  }
+  if (placement === 'top-start') {
+    return 'bottom-start';
+  }
+  if (placement === 'top-end') {
+    return 'bottom-end';
+  }
+  if (placement === 'bottom-start') {
+    return 'top-start';
+  }
   return 'top-end';
 }
 
@@ -127,7 +147,7 @@ function placeRaw(
 
 /**
  * Computes the viewport-space top/left for a popover anchored to `anchorRect`,
- * applying optional flip-on-overflow and edge-clamp logic. Pure function — no
+ * applying optional flip-on-overflow and edge-clamp logic. Pure function, no
  * DOM access. Both `<ea-popover>` and `[eaTooltip]` consume this.
  *
  * @param anchorRect  The anchor element's `getBoundingClientRect()`.
@@ -183,7 +203,7 @@ export function computePopoverPosition(
   if (clamp) {
     // Only clamp the cross-axis (perpendicular to the placement). For
     // bottom-side placements we clamp `left` so the popover doesn't slip off
-    // the left/right of the viewport, but we leave `top` alone — clamping it
+    // the left/right of the viewport, but we leave `top` alone; clamping it
     // when the popover is taller than the available space below the anchor
     // would yank it up over the anchor itself (the common Storybook-docs-
     // iframe failure mode where viewports are short). Better to let it

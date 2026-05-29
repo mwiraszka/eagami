@@ -1,5 +1,4 @@
 <div class="home">
-  <!-- ─── Hero ────────────────────────────────────────────────────── -->
   <section
     class="home-hero"
     aria-labelledby="home-hero-wordmark">
@@ -31,8 +30,7 @@
         </div>
       </div>
     </div>
-    <!-- Decorative scroll hint: the next section is the next focusable region
-         anyway, so hide this entirely from assistive tech to avoid noise. -->
+    <!-- aria-hidden: the next section is already the next focusable region, so this would just add noise -->
     <a
       class="home-hero__scroll"
       href="#services"
@@ -42,7 +40,6 @@
     </a>
   </section>
 
-  <!-- ─── Services ────────────────────────────────────────────────── -->
   <section
     id="services"
     class="home-section home-section--services">
@@ -98,7 +95,6 @@
     </div>
   </section>
 
-  <!-- ─── Recent projects ─────────────────────────────────────────── -->
   <section
     id="projects"
     class="home-section home-section--projects">
@@ -162,7 +158,6 @@
     </div>
   </section>
 
-  <!-- ─── Contact ─────────────────────────────────────────────────── -->
   <section
     id="contact"
     class="home-section home-section--contact">

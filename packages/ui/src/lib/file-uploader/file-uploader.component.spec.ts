@@ -1,7 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { FileUploaderComponent, FileUploaderRejection } from './file-uploader.component';
+import {
+  FileUploaderComponent,
+  type FileUploaderRejection,
+} from './file-uploader.component';
 
 function makeFile(
   name: string,
@@ -13,14 +16,15 @@ function makeFile(
 }
 
 function fileList(...files: File[]): FileList {
-  // jsdom has no DataTransfer; fake a FileList with the array-like + item method
-  // shape the component code actually reads (Array.from + indexing).
+  // jsdom has no DataTransfer; fake the array-like + item() FileList shape the component reads
   const list = {
     length: files.length,
     item: (i: number) => files[i] ?? null,
     ...files.reduce<Record<number, File>>((acc, f, i) => ({ ...acc, [i]: f }), {}),
-    [Symbol.iterator]: function* () {
-      for (const f of files) yield f;
+    *[Symbol.iterator]() {
+      for (const f of files) {
+        yield f;
+      }
     },
   };
   return list as unknown as FileList;
@@ -76,11 +80,11 @@ describe('FileUploaderComponent', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
       fixture.detectChanges();
       const msg = fixture.nativeElement.querySelector(
-        '.ea-file-uploader-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg).toBeTruthy();
       expect(msg.getAttribute('role')).toBe('alert');
-      expect(msg.querySelector('.ea-file-uploader-field__message-icon')).toBeTruthy();
+      expect(msg.querySelector('.ea-field-messages__icon')).toBeTruthy();
     });
 
     it('renders a constraints line when accept / maxSize / maxFiles are set', () => {
@@ -210,8 +214,7 @@ describe('FileUploaderComponent', () => {
   });
 
   describe('Drag and drop', () => {
-    // jsdom doesn't ship a DragEvent constructor; hand-roll one with the
-    // `dataTransfer.files` shape the component reads.
+    // jsdom has no DragEvent constructor; hand-roll one with the `dataTransfer.files` shape
     function dragEvent(type: string, ...files: File[]): Event {
       const evt = new Event(type, { bubbles: true });
       if (files.length) {

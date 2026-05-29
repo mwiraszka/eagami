@@ -1,7 +1,7 @@
 import {
   Directive,
   ElementRef,
-  OnDestroy,
+  type OnDestroy,
   Renderer2,
   inject,
   input,
@@ -42,10 +42,9 @@ export class TooltipDirective implements OnDestroy {
 
   private readonly showHandler = () => this.show();
   private readonly hideHandler = () => this.hide();
-  /* `:focus-visible` is supported in every browser we target (Chrome, Firefox,
-     Safari, Edge — all stable for years). Feature-detect so non-browser test
-     environments (jsdom) fall back to the previous always-on-focus behaviour
-     rather than silently never showing. */
+  /* `:focus-visible` is supported in every targeted browser (Chrome, Firefox,
+     Safari, Edge). Feature-detect so non-browser test environments (jsdom)
+     fall back to always-on-focus behaviour rather than never showing. */
   private readonly supportsFocusVisible =
     typeof CSS !== 'undefined' && CSS.supports?.('selector(:focus-visible)') === true;
   /* Show on focus only when the focus is keyboard-driven. Clicking the
@@ -71,10 +70,14 @@ export class TooltipDirective implements OnDestroy {
      the trigger around). Coalesced with rAF to keep scroll handling cheap. */
   private rafId: number | null = null;
   private readonly repositionHandler = () => {
-    if (!this.tooltipEl || this.rafId !== null) return;
+    if (!this.tooltipEl || this.rafId !== null) {
+      return;
+    }
     this.rafId = requestAnimationFrame(() => {
       this.rafId = null;
-      if (this.tooltipEl) this.positionTooltip();
+      if (this.tooltipEl) {
+        this.positionTooltip();
+      }
     });
   };
   /* Capture-phase scroll listener catches scrolls on any ancestor, not just
@@ -89,7 +92,7 @@ export class TooltipDirective implements OnDestroy {
 
   constructor() {
     const native = this.el.nativeElement;
-    // Focus/blur/keydown always wire up — keyboard users benefit on any device.
+    // Focus/blur/keydown always wire up; keyboard users benefit on any device.
     native.addEventListener('focus', this.focusHandler);
     native.addEventListener('blur', this.hideHandler);
     native.addEventListener('keydown', this.keydownHandler);
@@ -111,7 +114,7 @@ export class TooltipDirective implements OnDestroy {
 
   private syncPointerListeners(canHover: boolean): void {
     const native = this.el.nativeElement;
-    // Remove first to keep this idempotent — addEventListener with the same
+    // Remove first to keep this idempotent; addEventListener with the same
     // handler is a no-op anyway, but pairing keeps the bookkeeping obvious.
     native.removeEventListener('mouseenter', this.showHandler);
     native.removeEventListener('mouseleave', this.hideHandler);
@@ -124,7 +127,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private show(): void {
-    if (this.tooltipEl || !this.eaTooltip()) return;
+    if (this.tooltipEl || !this.eaTooltip()) {
+      return;
+    }
 
     this.tooltipEl = this.renderer.createElement('div');
     this.renderer.addClass(this.tooltipEl, 'ea-tooltip');
@@ -155,7 +160,9 @@ export class TooltipDirective implements OnDestroy {
   private attachRepositionListeners(): void {
     /* Guard against server-side rendering: ngOnDestroy can fire during SSR
        teardown and reach here even though the tooltip never actually shows. */
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.addEventListener('resize', this.repositionHandler);
     /* `capture: true` so we catch scrolls on any ancestor (modal body, sidebar,
        overflow:auto wrappers), not just the window. */
@@ -170,7 +177,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private detachRepositionListeners(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.removeEventListener('resize', this.repositionHandler);
     window.removeEventListener(
       'scroll',
@@ -185,7 +194,9 @@ export class TooltipDirective implements OnDestroy {
     const native = this.el.nativeElement;
     const existing = (native.getAttribute('aria-describedby') ?? '').trim();
     const tokens = existing ? existing.split(/\s+/) : [];
-    if (!tokens.includes(this.tooltipId)) tokens.push(this.tooltipId);
+    if (!tokens.includes(this.tooltipId)) {
+      tokens.push(this.tooltipId);
+    }
     this.renderer.setAttribute(native, 'aria-describedby', tokens.join(' '));
   }
 
@@ -201,7 +212,9 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private positionTooltip(): void {
-    if (!this.tooltipEl) return;
+    if (!this.tooltipEl) {
+      return;
+    }
 
     const hostRect = this.el.nativeElement.getBoundingClientRect();
 
@@ -226,11 +239,10 @@ export class TooltipDirective implements OnDestroy {
 
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
     /* Defer placement math to the shared popover positioning helper. `flip:
-       false` preserves the tooltip's long-standing "stay on the requested
-       side, just nudge inward at the edges" behavior — the caret is centered
-       on the host and would point at empty space if we flipped. `margin: 8`
-       keeps the same breathing room between the bubble and the viewport edge
-       as before. */
+       false` keeps the tooltip on the requested side, only nudging inward at
+       the edges: the caret is centered on the host and would point at empty
+       space if we flipped. `margin: 8` keeps breathing room between the bubble
+       and the viewport edge. */
     const placed = computePopoverPosition(
       hostRect,
       { width: tooltipRect.width, height: tooltipRect.height },
@@ -245,10 +257,10 @@ export class TooltipDirective implements OnDestroy {
     /* Hide if the calculated bubble would render on top of a sticky/fixed
        overlay (typically the app header). Catches the case where the trigger
        is visible just below the header but a `position: top` tooltip would
-       protrude into the header chrome — the previous trigger-only hit-test
-       can't see this because the trigger itself is still on top. Walks the
-       ancestor chain of whatever the user would see at the bubble's centre,
-       looking for the first positioned (sticky / fixed) ancestor. */
+       protrude into the header chrome; a trigger-only hit-test can't see this
+       because the trigger itself is still on top. Walks the ancestor chain of
+       whatever the user would see at the bubble's centre, looking for the
+       first positioned (sticky / fixed) ancestor. */
     if (canHitTest) {
       const tcx = left + tooltipRect.width / 2;
       const tcy = top + tooltipRect.height / 2;

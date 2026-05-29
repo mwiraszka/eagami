@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   input,
@@ -11,10 +11,11 @@ import {
   signal,
   viewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
-import { SelectOption } from '../select-option';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
+import type { SelectOption } from '../select-option';
 
 /** Visual size of the segmented control. */
 export type SegmentedSize = 'sm' | 'md' | 'lg';
@@ -30,7 +31,7 @@ export type SegmentedSize = 'sm' | 'md' | 'lg';
   templateUrl: './segmented.component.html',
   styleUrl: './segmented.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -102,7 +103,9 @@ export class SegmentedComponent implements ControlValueAccessor {
 
   /** Programmatically selects the given option. */
   select(option: SelectOption): void {
-    if (this.isOptionDisabled(option)) return;
+    if (this.isOptionDisabled(option)) {
+      return;
+    }
     if (this.value() === option.value) {
       this.onTouched();
       return;
@@ -114,10 +117,14 @@ export class SegmentedComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent, index: number): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
 
     const enabled = this.enabledOptions();
-    if (enabled.length === 0) return;
+    if (enabled.length === 0) {
+      return;
+    }
 
     let targetValue: string | null = null;
 
@@ -145,7 +152,9 @@ export class SegmentedComponent implements ControlValueAccessor {
       case ' ':
       case 'Enter': {
         const opt = this.options()[index];
-        if (opt) this.select(opt);
+        if (opt) {
+          this.select(opt);
+        }
         event.preventDefault();
         return;
       }

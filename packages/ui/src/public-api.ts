@@ -1,14 +1,5 @@
-// =============================================================================
-// EAGAMI UI — Public API
-// =============================================================================
-
-// Internationalization
 export * from './lib/i18n';
-
-// Palette
 export * from './lib/palette';
-
-// Components
 export * from './lib/accordion/accordion.component';
 export * from './lib/accordion/accordion-item.component';
 export * from './lib/alert/alert.component';
@@ -32,6 +23,8 @@ export * from './lib/drawer/drawer.component';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/eagami-wordmark/eagami-wordmark.component';
 export * from './lib/empty-state/empty-state.component';
+export * from './lib/field/field-label.component';
+export * from './lib/field/field-messages.component';
 export * from './lib/file-uploader/file-uploader.component';
 export * from './lib/input/input.component';
 export * from './lib/menu/menu.component';
@@ -67,8 +60,6 @@ export * from './lib/transfer-list/transfer-list.types';
 export * from './lib/tree/tree.component';
 export * from './lib/tree/tree.types';
 export * from './lib/virtual-list/virtual-list.component';
-
-// Icons
 export * from './lib/icons/icon-category';
 export * from './lib/icons/icon-display-name';
 export * from './lib/icons/icons-catalogue';

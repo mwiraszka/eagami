@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { MultiSelectComponent } from './multi-select.component';
 
 const OPTIONS: readonly SelectOption[] = [

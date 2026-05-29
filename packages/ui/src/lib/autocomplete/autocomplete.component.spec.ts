@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
-import { AutocompleteComponent, AutocompleteSize } from './autocomplete.component';
+import type { SelectOption } from '../select-option';
+import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
 
 const FRUITS: SelectOption[] = [
   { value: 'apple', label: 'Apple' },
@@ -67,7 +67,7 @@ describe('AutocompleteComponent', () => {
   }
 
   function getLabel(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-autocomplete__label');
+    return fixture.nativeElement.querySelector('.ea-field-label');
   }
 
   function type(value: string): void {
@@ -98,8 +98,6 @@ describe('AutocompleteComponent', () => {
     host = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // ── Rendering ──────────────────────────────────────────────────────────────
 
   describe('Rendering', () => {
     it('renders an input element', () => {
@@ -139,8 +137,6 @@ describe('AutocompleteComponent', () => {
       expect(getInput().getAttribute('aria-invalid')).toBe('true');
     });
   });
-
-  // ── Filtering ─────────────────────────────────────────────────────────────
 
   describe('Filtering', () => {
     it('opens the listbox on focus', () => {
@@ -211,8 +207,6 @@ describe('AutocompleteComponent', () => {
     });
   });
 
-  // ── Selection ─────────────────────────────────────────────────────────────
-
   describe('Selection', () => {
     it('selects an option on mousedown', () => {
       focus();
@@ -248,8 +242,6 @@ describe('AutocompleteComponent', () => {
     });
   });
 
-  // ── Keyboard navigation ───────────────────────────────────────────────────
-
   describe('Keyboard navigation', () => {
     it('opens on ArrowDown if closed', () => {
       getInput().dispatchEvent(new FocusEvent('focus'));
@@ -273,8 +265,7 @@ describe('AutocompleteComponent', () => {
       type('b');
       press('ArrowDown');
 
-      // First match is "Banana", next would be "Blueberry" (disabled), then the loop
-      // clamps to last valid option.
+      // "Banana" matches first; next is disabled "Blueberry", so focus clamps to the last valid option
       press('ArrowDown');
 
       const focused = getOptions().find(o =>
@@ -304,8 +295,6 @@ describe('AutocompleteComponent', () => {
     });
   });
 
-  // ── Disabled ──────────────────────────────────────────────────────────────
-
   describe('Disabled', () => {
     it('disables the input', () => {
       host.disabled.set(true);
@@ -315,14 +304,14 @@ describe('AutocompleteComponent', () => {
     });
   });
 
-  // ── Messages ──────────────────────────────────────────────────────────────
-
   describe('Messages', () => {
     it('shows the hint when provided', () => {
       host.hint.set('Start typing to search');
       fixture.detectChanges();
 
-      const hint = fixture.nativeElement.querySelector('.ea-autocomplete__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(hint.textContent).toContain('Start typing to search');
     });
@@ -333,9 +322,11 @@ describe('AutocompleteComponent', () => {
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(
-        '.ea-autocomplete__message--error',
+        '.ea-field-messages__message--error',
       );
-      const hint = fixture.nativeElement.querySelector('.ea-autocomplete__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(error.textContent).toContain('Required');
       expect(hint).toBeNull();

@@ -1,6 +1,6 @@
-import { Meta, StoryObj, argsToTemplate } from '@storybook/angular';
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { SegmentedComponent } from './segmented.component';
 
 const viewOptions: SelectOption[] = [
@@ -104,10 +104,8 @@ export const AllSizes: Story = {
   }),
 };
 
-// When the options exceed the available width the control wraps onto multiple
-// rows rather than overflowing. The `.story-narrow` frame (max-width 360px)
-// forces the wrap so the behaviour is visible in the canvas regardless of
-// viewport width.
+// The control wraps onto multiple rows rather than overflowing; the `.story-narrow`
+// frame forces the wrap so it's visible regardless of viewport width.
 export const Wrapping: Story = {
   render: () => ({
     props: {

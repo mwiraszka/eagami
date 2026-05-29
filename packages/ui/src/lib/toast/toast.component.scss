@@ -1,7 +1,3 @@
-// =============================================================================
-// TOAST CONTAINER
-// =============================================================================
-
 .ea-toast-container {
   position: fixed;
   bottom: var(--space-6);
@@ -19,10 +15,6 @@
     max-width: 24rem;
   }
 }
-
-// =============================================================================
-// TOAST COMPONENT
-// =============================================================================
 
 .ea-toast {
   display: flex;
@@ -43,18 +35,13 @@
     width: auto;
   }
 
-  // ---------------------------------------------------------------------------
-  // Variants
-  // ---------------------------------------------------------------------------
   &--default {
     background-color: var(--color-neutral-800);
     color: var(--color-neutral-0);
   }
 
-  // Status variants stack the *-subtle tint over an elevated base via background-image
-  // so the toast reads as opaque against arbitrary page content. In dark mode the
-  // *-subtle tokens are rgba/translucent (intended for inline banners over the page
-  // bg), so the solid bg-elevated layer underneath prevents bleed-through.
+  // Stack the *-subtle tint over a solid elevated base so the toast stays opaque;
+  // in dark mode the *-subtle tokens are translucent and would otherwise bleed through
   &--success {
     background-color: var(--color-bg-elevated);
     background-image: linear-gradient(
@@ -88,9 +75,6 @@
     color: var(--color-info-700);
   }
 
-  // ---------------------------------------------------------------------------
-  // Elements
-  // ---------------------------------------------------------------------------
   &__message {
     flex: 1;
     min-width: 0;
@@ -151,8 +135,8 @@
   }
 }
 
-// Dark mode — *-700 text on the dark base + translucent tint is unreadable, so
-// flip to the *-200 light shades for status variants.
+// In dark mode the default *-700 status text is unreadable on the dark base, so
+// flip to the lighter *-200 shades
 @mixin dark-toast-variants {
   .ea-toast--success {
     color: var(--color-success-200);

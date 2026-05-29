@@ -1,6 +1,5 @@
-// Popover demo: native `<button>` styled like an `<ea-button variant="secondary">`
-// (we use a plain element so the `#templateRef` resolves to the underlying
-// `HTMLButtonElement` for `<ea-popover [anchor]="...">`).
+// Plain `<button>` styled as a secondary ea-button, so `#templateRef` resolves
+// to the underlying `HTMLButtonElement` for `<ea-popover [anchor]>`
 .demo-popover-trigger {
   align-self: flex-start;
   padding: var(--space-2) var(--space-3);

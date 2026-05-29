@@ -27,9 +27,8 @@
   line-height: 1.6;
   color: var(--color-text-secondary);
 
-  /* The lede is rendered with [innerHTML], so its child `<a>` and `<code>`
-     elements never receive Angular's `_ngcontent` attribute. Pierce view
-     encapsulation with `::ng-deep` so the prose-link and code styles apply. */
+  /* The lede is rendered with [innerHTML], so its child elements lack Angular's
+     `_ngcontent` attribute; `::ng-deep` is needed to reach them. */
   ::ng-deep a {
     @include mixins.prose-link;
   }
@@ -39,24 +38,16 @@
   }
 }
 
-/* Wrapper that scopes the sticky behaviour to the icon-grid section. Once
-   the user scrolls past the grid, the wrapper ends and the filter card stops
-   tracking, so the brand-section below renders unobstructed. */
+/* Scopes the filter card's sticky tracking to the icon grid, so it stops at the
+   wrapper's end and leaves the brand section below unobstructed. */
 .ui-icons__browser {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Sticky filter card spans the full width of the icon grid and floats below
-   the app header so it reads as its own UI element rather than a continuation
-   of the header. The card has a soft drop-shadow so it visibly lifts off the
-   icon grid as the grid scrolls beneath it. Children flex-wrap: the search
-   field grows to fill available space (min 200px) and the category checkboxes
-   sit inline whenever there's room; once the row gets too narrow, the search
-   field wraps to its own line at full width with the checkboxes (still
-   left-aligned) on the line below. The count always sits on its own line
-   below both via `flex-basis: 100%`. */
+/* Sticks below the app header, with a drop-shadow so it lifts off the grid
+   scrolling beneath it. Children flex-wrap as the row narrows. */
 .ui-icons__filter {
   z-index: 1;
   container-type: inline-size;
@@ -67,11 +58,8 @@
   align-items: center;
   gap: 8px 20px;
   padding: 8px 12px;
-  /* Collapse the line-height on the filter row so the inline-level
-     `<ea-checkbox>` hosts stop inheriting the page's default ~24px line-box.
-     With `line-height: 1` the hosts size to their 16px content, and the
-     surrounding `align-items: center` lines the checkboxes up with the
-     clear-search `×` button inside the search input. */
+  /* Stops the inline `<ea-checkbox>` hosts inheriting the page's ~24px line-box
+     so they size to their 16px content and align with the clear-search button. */
   line-height: 1;
   border: 1px solid var(--color-border-default);
   border-radius: 12px;
@@ -113,9 +101,8 @@
   }
 
   &:hover ::ng-deep .ea-checkbox__count {
-    /* Brand colour at lower opacity preserves the primary / secondary
-       hierarchy while still signalling that the count is part of the
-       same hoverable target. */
+    /* Brand colour at lower opacity keeps the count subordinate while still
+       signalling it as part of the hoverable target. */
     color: color-mix(in oklch, var(--color-brand-default), transparent 40%);
   }
 }
@@ -133,9 +120,8 @@
   align-items: center;
   align-self: center;
   min-width: 200px;
-  /* Pin to the same height as the search input plus its border so
-     `align-items: center` on the surrounding row gives the checkboxes the
-     same vertical midline as the clear-search `×` button inside the input. */
+  /* Match the search input's height so the row's `align-items: center` puts the
+     checkboxes on the same midline as the input's clear button. */
   min-height: 40px;
 }
 
@@ -168,16 +154,14 @@
     outline: none;
   }
 
-  /* Hide the WebKit/Edge clear button — the custom one matches our icon set. */
+  /* Hide the WebKit/Edge clear button in favour of our own icon-set one */
   &::-webkit-search-cancel-button,
   &::-webkit-search-decoration {
     appearance: none;
   }
 
-  /* Placeholder uses the tertiary text token so typed text (primary) reads as
-     clearly stronger in both themes. `opacity: 1` overrides the Firefox /
-     WebKit default of ~0.54 to keep the placeholder from washing out
-     further and (in dark mode) collapsing the contrast with typed text. */
+  /* `opacity: 1` overrides the Firefox/WebKit default of ~0.54, which would
+     otherwise wash the placeholder out and collapse dark-mode contrast. */
   &::placeholder {
     color: var(--color-text-tertiary);
     opacity: 1;
@@ -225,9 +209,8 @@
 
 .icons-grid {
   display: grid;
-  /* `auto-fill` with a generous minimum cell width so the longest label
-     (currently "Rectangle Horizontal") sits on a single line — fewer cells
-     per row at narrower viewports is preferred over wrapping or truncation. */
+  /* Minimum cell width wide enough that the longest label stays on one line;
+     fewer cells per row is preferred over wrapping or truncating. */
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
   padding: 0;
@@ -239,11 +222,9 @@
   display: flex;
 }
 
-/* The card is a real `<button>` so click-to-copy is keyboard accessible and
-   announced correctly. It sits one shade off the page bg in both themes
-   (`bg-subtle` over `bg-base`), so the tooltip surface still lifts off it
-   on hover — in dark mode that resolves to page (neutral-950), card
-   (neutral-900), and tooltip (neutral-700). */
+/* A real `<button>` so click-to-copy is keyboard accessible and announced. It
+   sits one shade off the page bg (`bg-subtle` over `bg-base`) so the tooltip
+   surface still lifts off it on hover. */
 .icons-grid__card {
   display: flex;
   flex-direction: column;

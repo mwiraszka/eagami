@@ -1,10 +1,10 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { Component, HostListener, signal } from '@angular/core';
 
 import { ButtonComponent } from '../button/button.component';
 import { CommandPaletteComponent } from './command-palette.component';
-import { CommandPaletteItem } from './command-palette.types';
+import type { CommandPaletteItem } from './command-palette.types';
 
 const COMMANDS: CommandPaletteItem[] = [
   { id: 'new', label: 'New file', shortcut: 'Ctrl+N', group: 'File' },
@@ -88,8 +88,8 @@ export const FlatList: Story = {
   }),
 };
 
-// Wires Cmd/Ctrl+K to open the palette globally — matches the website demo so
-// keyboard shortcut behaviour can be inspected in Storybook too.
+// Wires Cmd/Ctrl+K to open the palette globally, mirroring the website demo so the
+// keyboard shortcut can be inspected in Storybook.
 @Component({
   selector: 'ea-command-palette-shortcut-host',
   imports: [CommandPaletteComponent, ButtonComponent],

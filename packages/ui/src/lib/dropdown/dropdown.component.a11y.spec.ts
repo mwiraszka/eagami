@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 import { DropdownComponent } from './dropdown.component';
 
 const TEST_OPTIONS: SelectOption[] = [

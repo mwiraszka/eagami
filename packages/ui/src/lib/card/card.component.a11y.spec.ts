@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { CardComponent, CardVariant } from './card.component';
+import { CardComponent, type CardVariant } from './card.component';
 
 @Component({
   imports: [CardComponent],

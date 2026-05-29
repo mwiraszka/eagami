@@ -1,8 +1,8 @@
 import {
-  DataTableColumn,
+  type DataTableColumn,
   DataTableComponent,
   PaginatorComponent,
-  PaginatorState,
+  type PaginatorState,
 } from '@eagami/ui';
 
 import {

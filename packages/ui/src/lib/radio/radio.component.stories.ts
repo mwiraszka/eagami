@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { RadioGroupComponent } from './radio-group.component';
 import { RadioComponent } from './radio.component';

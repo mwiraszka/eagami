@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VirtualListComponent } from './virtual-list.component';
 
@@ -69,8 +69,7 @@ describe('VirtualListComponent', () => {
   it('mounts only the visible window plus overscan', () => {
     const rendered = getRenderedRowIndexes();
 
-    // viewport=200, itemHeight=40 → 5 visible rows. Plus overscan=2 below.
-    // Top edge: firstVisible=0, so start=0 (clamped). End=5+2=7.
+    // viewport 200 / itemHeight 40 is 5 visible rows; at the top, start=0 and end=5+overscan 2
     expect(rendered).toEqual([0, 1, 2, 3, 4, 5, 6]);
   });
 
@@ -86,8 +85,7 @@ describe('VirtualListComponent', () => {
     scrollTo(400); // 10 rows down
 
     const rendered = getRenderedRowIndexes();
-    // firstVisible = 400/40 = 10, lastVisible = (400+200)/40 = 15.
-    // With overscan=2: start=8, end=17.
+    // firstVisible 10, lastVisible 15; with overscan 2, start=8 and end=17
     expect(rendered).toEqual([8, 9, 10, 11, 12, 13, 14, 15, 16]);
   });
 
@@ -95,7 +93,7 @@ describe('VirtualListComponent', () => {
     scrollTo(40_000 - 200); // last 200px of scroll
 
     const rendered = getRenderedRowIndexes();
-    // firstVisible = 995, lastVisible = 1000. End=min(1000, 1000+2)=1000.
+    // firstVisible 995, lastVisible 1000; end clamps to the 1000-row bound
     expect(rendered[rendered.length - 1]).toBe(999);
     expect(rendered).toContain(995);
   });

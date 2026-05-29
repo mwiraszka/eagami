@@ -8,7 +8,7 @@
   border: var(--border-width-thin) solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   background-color: var(--color-bg-base);
-  // Promote to its own layer to avoid full-page repaints during fast scrolls.
+  // Isolate to its own layer to avoid full-page repaints during fast scrolls
   contain: strict;
 }
 
@@ -19,8 +19,7 @@
 }
 
 .ea-virtual-list__item {
-  // Items are absolutely positioned within `__spacer` so only the visible
-  // window mounts — the spacer's `height` reserves space for the full list
-  // so the scrollbar shows the right extent.
+  // Items are absolutely positioned within `__spacer` so only the visible window
+  // mounts; the spacer's `height` reserves space so the scrollbar extent is right
   box-sizing: border-box;
 }

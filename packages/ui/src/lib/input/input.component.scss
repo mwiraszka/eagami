@@ -1,58 +1,9 @@
-// =============================================================================
-// INPUT COMPONENT
-// =============================================================================
-
 .ea-input-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
   color: var(--color-text-secondary);
-
-  // ---------------------------------------------------------------------------
-  // Label
-  // ---------------------------------------------------------------------------
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // Helper / error messages
-  // ---------------------------------------------------------------------------
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: inherit;
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
-
-// =============================================================================
-// INPUT WRAPPER (border + layout shell)
-// =============================================================================
 
 .ea-input-wrapper {
   display: flex;
@@ -65,9 +16,6 @@
   transition: var(--transition-colors), var(--transition-shadow);
   overflow: hidden;
 
-  // ---------------------------------------------------------------------------
-  // Sizes
-  // ---------------------------------------------------------------------------
   &--sm {
     padding: 0 var(--space-2);
     min-height: 2rem; // 32px
@@ -81,7 +29,7 @@
   &--md {
     padding: 0 var(--space-3);
     min-height: 2.5rem; // 40px
-    font-size: var(--font-size-md); // 16px — prevents iOS Safari auto-zoom on focus
+    font-size: var(--font-size-md); // 16px prevents iOS Safari auto-zoom on focus
 
     .ea-input {
       padding: var(--space-2) 0;
@@ -97,10 +45,6 @@
       padding: var(--space-2-5) 0;
     }
   }
-
-  // ---------------------------------------------------------------------------
-  // States
-  // ---------------------------------------------------------------------------
 
   &--focused {
     border-color: var(--color-border-focus);
@@ -130,7 +74,6 @@
     background-color: var(--color-bg-subtle);
   }
 
-  // Prefix / suffix slots
   &__prefix,
   &__suffix {
     display: flex;
@@ -138,15 +81,12 @@
     flex-shrink: 0;
     color: inherit;
 
-    // Hide slot wrappers when empty
     &:empty {
       display: none;
     }
   }
 
-  // Built-in clear button. Same drawer-style ratio used by the other field
-  // components (`<ea-date-picker>`, `<ea-multi-select>`, etc.): 2em × 2em box
-  // around a 1em icon, scaling with the wrapper's size-driven font-size.
+  // 2em box around a 1em icon, matching the other field components' clear buttons
   &__clear {
     display: flex;
     align-items: center;
@@ -179,7 +119,6 @@
     height: 1em;
   }
 
-  // Built-in password visibility toggle
   &__password-toggle {
     display: flex;
     align-items: center;
@@ -208,10 +147,6 @@
   }
 }
 
-// =============================================================================
-// NATIVE INPUT ELEMENT
-// =============================================================================
-
 .ea-input {
   flex: 1;
   width: 100%;
@@ -223,15 +158,13 @@
   font-family: var(--font-family-sans);
   line-height: var(--line-height-normal);
 
-  // `opacity: 1` overrides the Firefox / WebKit default of ~0.54 on placeholder
-  // text to keep the tertiary token from washing out further and (in dark
-  // mode) collapsing the contrast between typed and placeholder text.
+  // `opacity: 1` overrides the Firefox/WebKit default of ~0.54 on placeholders,
+  // which would wash out the tertiary token and collapse contrast in dark mode
   &::placeholder {
     color: var(--color-text-tertiary);
     opacity: 1;
   }
 
-  // Override browser autofill background color
   &:-webkit-autofill,
   &:autofill {
     -webkit-text-fill-color: var(--color-text-primary);
@@ -243,12 +176,9 @@
     cursor: not-allowed;
   }
 
-  // Suppress every native browser affordance Chrome / Safari paints onto an
-  // `<input>` (datalist picker arrow, credentials / contacts autofill icon,
-  // strong-password offer, caps-lock indicator). The library renders its own
-  // affordances inside the wrapper; the native ones float on top of them and
-  // break the themed look. `!important` is required because these pseudo
-  // elements ship with user-agent `!important` rules.
+  // Hide native Chrome/Safari affordances (picker arrow, autofill icons,
+  // password offer, caps-lock indicator) that float over the wrapper's own
+  // affordances. `!important` is required to beat their user-agent rules.
   &::-webkit-calendar-picker-indicator,
   &::-webkit-credentials-auto-fill-button,
   &::-webkit-contacts-auto-fill-button,
@@ -261,7 +191,6 @@
     height: 0;
   }
 
-  // Remove number input spinners
   &[type='number']::-webkit-inner-spin-button,
   &[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -273,7 +202,6 @@
     appearance: textfield;
   }
 
-  // Remove search input clear button
   &[type='search']::-webkit-search-decoration,
   &[type='search']::-webkit-search-cancel-button {
     -webkit-appearance: none;

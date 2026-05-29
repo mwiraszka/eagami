@@ -1,4 +1,4 @@
-import { WebMessages } from '../web-messages.types';
+import type { WebMessages } from '../web-messages.types';
 
 export const pl: WebMessages = {
   common: {

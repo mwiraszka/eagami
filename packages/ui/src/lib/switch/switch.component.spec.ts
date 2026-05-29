@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwitchComponent } from './switch.component';
 
@@ -140,14 +140,18 @@ describe('SwitchComponent', () => {
 
   describe('Hint and error messages', () => {
     it('renders no field message by default', () => {
-      expect(fixture.nativeElement.querySelector('.ea-switch-field__message')).toBeNull();
+      expect(
+        fixture.nativeElement.querySelector('.ea-field-messages__message'),
+      ).toBeNull();
     });
 
     it('renders the hint when provided', () => {
       fixture.componentRef.setInput('hint', 'You can unsubscribe later');
       fixture.detectChanges();
 
-      const hint = fixture.nativeElement.querySelector('.ea-switch-field__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(hint.textContent.trim()).toBe('You can unsubscribe later');
       expect(getInput().getAttribute('aria-describedby')).toBe(hint.id);
@@ -159,9 +163,11 @@ describe('SwitchComponent', () => {
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(
-        '.ea-switch-field__message--error',
+        '.ea-field-messages__message--error',
       );
-      const hint = fixture.nativeElement.querySelector('.ea-switch-field__message--hint');
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
 
       expect(error.textContent.trim()).toBe('Required');
       expect(hint).toBeNull();

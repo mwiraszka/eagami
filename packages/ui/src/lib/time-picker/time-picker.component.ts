@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  ElementRef,
+  type ElementRef,
   Injector,
   afterNextRender,
   computed,
@@ -15,10 +15,11 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
@@ -60,10 +61,11 @@ interface ParsedTime {
   styleUrl: './time-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     ChevronDownIconComponent,
     ChevronUpIconComponent,
     ClockIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
     XIconComponent,
@@ -85,7 +87,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   private readonly destroyRef = inject(DestroyRef);
   private readonly injector = inject(Injector);
 
-  // ─── Inputs ───────────────────────────────────────────────────────────
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');
@@ -106,7 +107,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   /** Fires with the new value whenever the user changes the time. */
   readonly changed = output<string | null>();
 
-  // ─── State ────────────────────────────────────────────────────────────
   readonly isOpen = signal(false);
   /** Typed-digit buffer for the currently focused column, or `null` when idle. */
   readonly editBuffer = signal<{ unit: Unit; digits: string } | null>(null);
@@ -119,7 +119,6 @@ export class TimePickerComponent implements ControlValueAccessor {
   private holdIntervalTimer: ReturnType<typeof setInterval> | null = null;
   private holdStartedAt = 0;
 
-  // ─── Computed ─────────────────────────────────────────────────────────
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
@@ -137,8 +136,10 @@ export class TimePickerComponent implements ControlValueAccessor {
   /** Hours digit displayed in the popover stepper. Honors the `format` input. */
   readonly displayHours = computed(() => {
     const h = this.parsed().hours;
-    if (this.format() === '24h') return h;
-    // 12h: 0 → 12 (midnight as 12 AM), 13–23 → 1–11
+    if (this.format() === '24h') {
+      return h;
+    }
+    // 12h: 0 maps to 12 (midnight as 12 AM), 13–23 map to 1–11
     return h % 12 === 0 ? 12 : h % 12;
   });
 
@@ -150,32 +151,42 @@ export class TimePickerComponent implements ControlValueAccessor {
    */
   hoursText = computed(() => {
     const buf = this.editBuffer();
-    if (buf && buf.unit === 'hours') return buf.digits;
+    if (buf && buf.unit === 'hours') {
+      return buf.digits;
+    }
     const h = this.displayHours();
     return this.format() === '24h' ? pad2(h) : String(h);
   });
 
   minutesText = computed(() => {
     const buf = this.editBuffer();
-    if (buf && buf.unit === 'minutes') return buf.digits;
+    if (buf && buf.unit === 'minutes') {
+      return buf.digits;
+    }
     return pad2(this.parsed().minutes);
   });
 
   secondsText = computed(() => {
     const buf = this.editBuffer();
-    if (buf && buf.unit === 'seconds') return buf.digits;
+    if (buf && buf.unit === 'seconds') {
+      return buf.digits;
+    }
     return pad2(this.parsed().seconds);
   });
 
   /** `'AM' | 'PM'` for 12h mode; `null` in 24h. */
   readonly period = computed<'AM' | 'PM' | null>(() => {
-    if (this.format() === '24h') return null;
+    if (this.format() === '24h') {
+      return null;
+    }
     return this.parsed().hours < 12 ? 'AM' : 'PM';
   });
 
   /** Localized text shown on the trigger. Falls back to placeholder when no value. */
   readonly displayValue = computed(() => {
-    if (!this.hasValue()) return null;
+    if (!this.hasValue()) {
+      return null;
+    }
     const { hours, minutes, seconds } = this.parsed();
     const m = pad2(minutes);
     const s = this.includeSeconds() ? `:${pad2(seconds)}` : '';
@@ -206,7 +217,6 @@ export class TimePickerComponent implements ControlValueAccessor {
     [`ea-time-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
-  // ─── ControlValueAccessor ─────────────────────────────────────────────
   writeValue(val: string | null | undefined): void {
     this.value.set(val ?? null);
   }
@@ -227,12 +237,15 @@ export class TimePickerComponent implements ControlValueAccessor {
     this.destroyRef.onDestroy(() => this.stopHold());
   }
 
-  // ─── Handlers ─────────────────────────────────────────────────────────
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const opening = !this.isOpen();
     this.isOpen.set(opening);
-    if (opening) this.focusHoursWhenReady();
+    if (opening) {
+      this.focusHoursWhenReady();
+    }
   }
 
   /**
@@ -263,7 +276,9 @@ export class TimePickerComponent implements ControlValueAccessor {
 
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.value.set(null);
     this.onChange(null);
     this.onTouched();
@@ -271,7 +286,9 @@ export class TimePickerComponent implements ControlValueAccessor {
   }
 
   handleTriggerKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
       event.preventDefault();
       if (!this.isOpen()) {
@@ -287,7 +304,9 @@ export class TimePickerComponent implements ControlValueAccessor {
 
   /** Stepper button or keyboard arrow nudges one column up or down. */
   step(unit: Unit, direction: 1 | -1): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const { hours, minutes, seconds } = this.parsed();
     const next = nextTime(
       { hours, minutes, seconds },
@@ -306,7 +325,9 @@ export class TimePickerComponent implements ControlValueAccessor {
    * of continuous holding. Pointer up / leave / cancel stops the repeat.
    */
   startHold(unit: Unit, direction: 1 | -1, event: Event): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     event.preventDefault();
     this.stopHold();
     this.step(unit, direction);
@@ -340,14 +361,18 @@ export class TimePickerComponent implements ControlValueAccessor {
 
   /** Switches the AM/PM period in 12h mode by toggling the 12-hour offset. */
   togglePeriod(): void {
-    if (this.isDisabled() || this.readonly() || this.format() === '24h') return;
+    if (this.isDisabled() || this.readonly() || this.format() === '24h') {
+      return;
+    }
     const { hours, minutes, seconds } = this.parsed();
     const flipped = (hours + 12) % 24;
     this.commit({ hours: flipped, minutes, seconds });
   }
 
   handlePopoverKeydown(event: KeyboardEvent, unit: Unit): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
 
     // Digits, Backspace, and Delete pass through to the native `<input>`.
     // The `(input)` handler picks them up via `onSpinnerInput`.
@@ -364,12 +389,16 @@ export class TimePickerComponent implements ControlValueAccessor {
       this.flushBuffer();
       // Coarse step: 5× the configured step (or 10 for hours).
       const coarse = unit === 'hours' ? 10 : 5;
-      for (let i = 0; i < coarse; i++) this.step(unit, 1);
+      for (let i = 0; i < coarse; i++) {
+        this.step(unit, 1);
+      }
     } else if (event.key === 'PageDown') {
       event.preventDefault();
       this.flushBuffer();
       const coarse = unit === 'hours' ? 10 : 5;
-      for (let i = 0; i < coarse; i++) this.step(unit, -1);
+      for (let i = 0; i < coarse; i++) {
+        this.step(unit, -1);
+      }
     } else if (event.key === 'Enter') {
       event.preventDefault();
       this.flushBuffer();
@@ -402,24 +431,26 @@ export class TimePickerComponent implements ControlValueAccessor {
    * overflow.
    */
   onSpinnerInput(unit: Unit, event: Event): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const el = event.currentTarget as HTMLInputElement;
     const raw = el.value;
     const digits = raw.replace(/\D/g, '').slice(0, 2);
-    if (digits !== raw) el.value = digits;
+    if (digits !== raw) {
+      el.value = digits;
+    }
 
     this.editBuffer.set({ unit, digits });
 
     if (digits.length === 2) {
-      // Two digits committed — advance.
       this.commitDigits(unit, digits);
       this.advanceFocus(unit);
       return;
     }
     if (digits.length === 1 && this.cannotExtend(unit, digits)) {
-      // A single digit already saturates the unit (e.g. `9` in minutes once
-      // a second `0`–`5` would be required to stay ≤ 59 — but 9 + 0 = 90 > 59).
-      // Commit and advance.
+      // A single digit already saturates the unit (e.g. `9` in minutes: a
+      // second `0`–`5` would be needed to stay ≤ 59, but 9 + 0 = 90 > 59).
       this.commitDigits(unit, digits);
       this.advanceFocus(unit);
     }
@@ -430,11 +461,9 @@ export class TimePickerComponent implements ControlValueAccessor {
     this.flushBuffer();
   }
 
-  // ─── Typing internals ─────────────────────────────────────────────────
-
   /** True when no digit `0`–`9` can validly extend the current buffer. */
   private cannotExtend(unit: Unit, digits: string): boolean {
-    const candidate = parseInt(digits + '0', 10);
+    const candidate = parseInt(`${digits}0`, 10);
     return candidate > this.maxFor(unit);
   }
 
@@ -473,22 +502,30 @@ export class TimePickerComponent implements ControlValueAccessor {
   /**
    * Map a typed hours value back to 24h. In 24h mode the typed value is the
    * hour. In 12h mode the typed value is interpreted in the current period
-   * (AM → 12 maps to 0, others stay; PM → 12 stays, others add 12).
+   * (AM: 12 maps to 0, others stay; PM: 12 stays, others add 12).
    */
   private hoursFromTyped(typed: number): number {
-    if (this.format() === '24h') return typed;
+    if (this.format() === '24h') {
+      return typed;
+    }
     const isPm = this.period() === 'PM';
-    if (typed === 12) return isPm ? 12 : 0;
+    if (typed === 12) {
+      return isPm ? 12 : 0;
+    }
     return isPm ? typed + 12 : typed;
   }
 
   private minFor(unit: Unit): number {
-    if (unit !== 'hours') return 0;
+    if (unit !== 'hours') {
+      return 0;
+    }
     return this.format() === '24h' ? 0 : 1;
   }
 
   private maxFor(unit: Unit): number {
-    if (unit === 'hours') return this.format() === '24h' ? 23 : 12;
+    if (unit === 'hours') {
+      return this.format() === '24h' ? 23 : 12;
+    }
     return 59;
   }
 
@@ -505,22 +542,25 @@ export class TimePickerComponent implements ControlValueAccessor {
   }
 
   private nextUnit(unit: Unit): Unit {
-    if (unit === 'hours') return 'minutes';
-    if (unit === 'minutes') return this.includeSeconds() ? 'seconds' : 'hours';
+    if (unit === 'hours') {
+      return 'minutes';
+    }
+    if (unit === 'minutes') {
+      return this.includeSeconds() ? 'seconds' : 'hours';
+    }
     return 'hours';
   }
 
-  // ─── Internals ────────────────────────────────────────────────────────
   private commit(time: ParsedTime): void {
     const str = formatTime(time, this.includeSeconds());
-    if (str === this.value()) return;
+    if (str === this.value()) {
+      return;
+    }
     this.value.set(str);
     this.onChange(str);
     this.changed.emit(str);
   }
 }
-
-// ─── Constants ──────────────────────────────────────────────────────────
 
 /** Delay before a held chevron button starts repeating, in ms. */
 const HOLD_INITIAL_DELAY = 400;
@@ -531,8 +571,6 @@ const HOLD_ACCELERATE_AFTER_MS = 1500;
 /** Repeat interval once the long-press has accelerated, in ms. */
 const HOLD_FAST_INTERVAL_MS = 35;
 
-// ─── Pure helpers ───────────────────────────────────────────────────────
-
 /** Pad a 0–59 unit to two digits. */
 function pad2(n: number): string {
   return n < 10 ? `0${n}` : `${n}`;
@@ -540,13 +578,19 @@ function pad2(n: number): string {
 
 /** Parse `"HH:MM"` / `"HH:MM:SS"`; returns `null` for any malformed input. */
 function parseTime(input: string | null | undefined): ParsedTime | null {
-  if (!input) return null;
+  if (!input) {
+    return null;
+  }
   const match = /^(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?$/.exec(input.trim());
-  if (!match) return null;
+  if (!match) {
+    return null;
+  }
   const hours = clamp(parseInt(match[1], 10), 0, 23);
   const minutes = clamp(parseInt(match[2], 10), 0, 59);
   const seconds = match[3] !== undefined ? clamp(parseInt(match[3], 10), 0, 59) : 0;
-  if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) return null;
+  if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+    return null;
+  }
   return { hours, minutes, seconds };
 }
 

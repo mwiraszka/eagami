@@ -43,21 +43,17 @@
   padding: 24px 16px 24px 32px;
   scrollbar-gutter: stable;
 
-  /* The aside is `tabindex="0"` so keyboard users can focus the scrollable
-     region and arrow-scroll it. Inset the focus ring so it never gets clipped
-     by neighbouring grid cells or the sticky scroll context; with the default
-     outside-offset, the right and bottom edges of the outline disappear under
-     the adjacent main column. */
+  /* The aside is `tabindex="0"` so keyboards can focus and arrow-scroll it.
+     Inset the focus ring; the default outside-offset is clipped by the
+     adjacent main column. */
   &:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: -2px;
     border-radius: 4px;
   }
 
-  /* On mobile, the sidebar sits at the top of the layout and is capped at
-     50dvh so it can't dominate the viewport. The primary nav and the
-     expanded components list each become independent scroll regions inside
-     the cap. The aside itself stops scrolling so children handle it. */
+  /* On mobile the sidebar is capped at 50dvh so it can't dominate the viewport;
+     the aside stops scrolling and its nav/components children scroll instead. */
   @include mixins.respond-to('lt-md') {
     position: static;
     overflow: hidden;

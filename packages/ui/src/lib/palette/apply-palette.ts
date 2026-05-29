@@ -1,4 +1,4 @@
-import { ModePalette } from './palette.types';
+import type { ModePalette } from './palette.types';
 
 const STYLE_TAG_ID = 'eagami-palette';
 
@@ -14,7 +14,9 @@ const STYLE_TAG_ID = 'eagami-palette';
  * No-ops outside a DOM context (SSR).
  */
 export function applyPalette(palette: ModePalette): void {
-  if (typeof document === 'undefined') return;
+  if (typeof document === 'undefined') {
+    return;
+  }
 
   const css = renderPaletteCss(palette);
   let tag = document.getElementById(STYLE_TAG_ID) as HTMLStyleElement | null;

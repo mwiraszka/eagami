@@ -1,54 +1,12 @@
-// =============================================================================
-// COLOR PICKER COMPONENT
-// =============================================================================
-
 .ea-color-picker-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
-
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: var(--color-text-secondary);
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
 
 .ea-color-picker {
   position: relative;
 
-  // ---------------------------------------------------------------------------
-  // Trigger
-  // ---------------------------------------------------------------------------
   &__trigger-wrapper {
     position: relative;
 
@@ -175,9 +133,7 @@
     height: 1em;
   }
 
-  // ---------------------------------------------------------------------------
-  // Swatch (checkerboard background so translucent fills are obvious)
-  // ---------------------------------------------------------------------------
+  // Checkerboard background so translucent fills are obvious
   &__swatch {
     position: relative;
     overflow: hidden;
@@ -212,10 +168,7 @@
     display: block;
   }
 
-  // ---------------------------------------------------------------------------
-  // Popover content. Positioned by the host `<ea-popover>`; this class only
-  // owns visual chrome.
-  // ---------------------------------------------------------------------------
+  // Positioned by the host `<ea-popover>`; this class only owns visual chrome
   &__popover {
     display: flex;
     flex-direction: column;
@@ -228,9 +181,6 @@
     background-color: var(--color-bg-base);
   }
 
-  // ---------------------------------------------------------------------------
-  // Saturation / value gradient area
-  // ---------------------------------------------------------------------------
   &__sv-area {
     position: relative;
     overflow: hidden;
@@ -270,9 +220,6 @@
     transform: translate(-50%, -50%);
   }
 
-  // ---------------------------------------------------------------------------
-  // Sliders (hue + alpha) with swatch
-  // ---------------------------------------------------------------------------
   &__slider-row {
     display: flex;
     align-items: center;
@@ -351,12 +298,9 @@
     transform: translate(-50%, -50%);
   }
 
-  // ---------------------------------------------------------------------------
-  // Inputs row — either a single full-width hex input or RGB(A) channel
-  // inputs, with a small toggle button on the right that cycles between them.
-  // The hex input gets full width in hex mode, fixing the prior issue where
-  // a 6-digit hex was clipped behind the side-by-side RGB columns.
-  // ---------------------------------------------------------------------------
+  // Either a full-width hex input or RGB(A) channel inputs, toggled by a button on
+  // the right. The hex input takes full width in hex mode so a 6-digit hex isn't
+  // clipped behind the side-by-side RGB columns.
   &__inputs {
     display: flex;
     align-items: end;
@@ -428,7 +372,6 @@
       box-shadow: var(--shadow-focus-ring);
     }
 
-    // Hide native number spinners — keep the layout tight.
     &--num {
       appearance: textfield;
 
@@ -440,9 +383,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Eyedropper + presets
-  // ---------------------------------------------------------------------------
   &__tools {
     display: flex;
     justify-content: flex-start;

@@ -34,9 +34,8 @@
     outline: none;
   }
 
-  /* Skip-link sends focus here. Use `:focus-visible` so the ring shows for
-     keyboard activations but not when the page is mouse-clicked. Inset so
-     the ring is never clipped on viewports with horizontal scrollbars. */
+  /* Skip-link target. `:focus-visible` shows the ring for keyboard activation
+     only; inset so it is never clipped on viewports with horizontal scrollbars. */
   &:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: -2px;

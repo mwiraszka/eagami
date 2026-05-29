@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { ButtonComponent, ButtonSize, ButtonVariant } from './button.component';
+import { ButtonComponent, type ButtonSize, type ButtonVariant } from './button.component';
 
 @Component({
   imports: [ButtonComponent],

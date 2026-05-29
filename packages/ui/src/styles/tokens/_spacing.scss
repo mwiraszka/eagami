@@ -1,8 +1,3 @@
-// =============================================================================
-// SPACING TOKENS
-// 4px base unit scale
-// =============================================================================
-
 :root {
   --space-0: 0;
   --space-px: 1px;
@@ -28,11 +23,8 @@
   --space-24: 6rem; // 96px
   --space-32: 8rem; // 128px
 
-  // ---------------------------------------------------------------------------
-  // Negative variants — mirror the positive scale 1:1 with an `n-` infix.
-  // Useful for negative margins (container bleeds, overlap tricks, gutter
-  // collapsing) so consumers don't have to write `calc(var(--space-2) * -1)`.
-  // ---------------------------------------------------------------------------
+  // Negative variants mirror the scale (n- infix) so consumers skip
+  // `calc(var(--space-2) * -1)` for negative margins.
   --space-n-px: -1px;
   --space-n-0-5: -0.125rem; //  -2px
   --space-n-1: -0.25rem; //  -4px
@@ -56,18 +48,13 @@
   --space-n-24: -6rem; // -96px
   --space-n-32: -8rem; // -128px
 
-  // ---------------------------------------------------------------------------
-  // Layout / component-specific semantic spacing
-  // ---------------------------------------------------------------------------
-
-  // Component padding (inset)
   --inset-xs: var(--space-1) var(--space-2); //  4px  8px
   --inset-sm: var(--space-1-5) var(--space-3); //  6px 12px
   --inset-md: var(--space-2) var(--space-4); //  8px 16px
   --inset-lg: var(--space-3) var(--space-6); // 12px 24px
   --inset-xl: var(--space-4) var(--space-8); // 16px 32px
 
-  // Stack (vertical gap between siblings)
+  // vertical gap
   --stack-2xs: var(--space-1); //  4px
   --stack-xs: var(--space-2); //  8px
   --stack-sm: var(--space-3); // 12px
@@ -76,7 +63,7 @@
   --stack-xl: var(--space-8); // 32px
   --stack-2xl: var(--space-12); // 48px
 
-  // Inline (horizontal gap between siblings)
+  // horizontal gap
   --inline-2xs: var(--space-1); //  4px
   --inline-xs: var(--space-2); //  8px
   --inline-sm: var(--space-3); // 12px

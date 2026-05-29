@@ -1,13 +1,11 @@
 <div
   class="ea-file-uploader-field"
   [ngClass]="hostClasses()">
-  @if (label(); as l) {
-    <label
-      class="ea-file-uploader-field__label"
-      [class.ea-file-uploader-field__label--required]="required()"
-      [for]="id()">
-      {{ l }}
-    </label>
+  @if (label(); as labelText) {
+    <ea-field-label
+      [text]="labelText"
+      [forId]="id()"
+      [required]="required()" />
   }
 
   <input
@@ -118,19 +116,8 @@
     </ul>
   }
 
-  @if (showError()) {
-    <p
-      class="ea-file-uploader-field__message ea-file-uploader-field__message--error"
-      role="alert"
-      [id]="errorId()">
-      <ea-icon-alert-circle class="ea-file-uploader-field__message-icon" />
-      {{ errorMsg() }}
-    </p>
-  } @else if (showHint()) {
-    <p
-      class="ea-file-uploader-field__message ea-file-uploader-field__message--hint"
-      [id]="hintId()">
-      {{ hint() }}
-    </p>
-  }
+  <ea-field-messages
+    [id]="id()"
+    [error]="showError() ? errorMsg() : null"
+    [hint]="showHint() ? hint() : null" />
 </div>

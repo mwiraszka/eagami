@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StepComponent } from './step.component';
 import { StepperComponent } from './stepper.component';
@@ -166,7 +166,7 @@ describe('StepperComponent', () => {
       host.step2Optional = true;
       fixture.detectChanges();
 
-      // step 1 completed; step 2 optional → step 2 (index 2 = "Three") is reachable
+      // step 1 completed and step 2 optional, so step 2 (index 2, "Three") is reachable
       const buttons = getButtons();
       expect(buttons[2].disabled).toBe(false);
     });

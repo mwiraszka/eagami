@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { DataTableColumn, DataTableComponent } from './data-table.component';
+import { type DataTableColumn, DataTableComponent } from './data-table.component';
 
 interface TestRow {
   id: number;

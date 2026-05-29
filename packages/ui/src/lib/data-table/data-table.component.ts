@@ -2,7 +2,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  TemplateRef,
+  type TemplateRef,
   ViewEncapsulation,
   computed,
   contentChild,
@@ -35,7 +35,7 @@ export interface DataTableColumn<T = Record<string, unknown>> {
   headerTemplate?: TemplateRef<{ $implicit: DataTableColumn<T> }>;
 }
 
-/** Current sort state — which column is sorted and in which direction. */
+/** Current sort state: which column is sorted and in which direction. */
 export interface DataTableSortState {
   column: string;
   direction: DataTableSortDirection;
@@ -97,15 +97,23 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly sortedData = computed(() => {
     const items = this.data();
     const { column, direction } = this.sort();
-    if (!column || !direction) return items;
+    if (!column || !direction) {
+      return items;
+    }
 
     return [...items].sort((a, b) => {
       const valA = (a as Record<string, unknown>)[column];
       const valB = (b as Record<string, unknown>)[column];
 
-      if (valA == null && valB == null) return 0;
-      if (valA == null) return direction === 'asc' ? -1 : 1;
-      if (valB == null) return direction === 'asc' ? 1 : -1;
+      if (valA == null && valB == null) {
+        return 0;
+      }
+      if (valA == null) {
+        return direction === 'asc' ? -1 : 1;
+      }
+      if (valB == null) {
+        return direction === 'asc' ? 1 : -1;
+      }
 
       let comparison: number;
       if (typeof valA === 'number' && typeof valB === 'number') {
@@ -125,7 +133,9 @@ export class DataTableComponent<T = Record<string, unknown>> {
   }
 
   onHeaderClick(col: DataTableColumn<T>): void {
-    if (!col.sortable) return;
+    if (!col.sortable) {
+      return;
+    }
 
     const current = this.sort();
     let direction: DataTableSortDirection;

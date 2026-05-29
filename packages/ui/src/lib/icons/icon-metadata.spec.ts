@@ -1,18 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CameraIconComponent } from './camera.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Github2IconComponent } from './github-2.component';
 import { GithubIconComponent } from './github.component';
 import { HomeIconComponent } from './home.component';
-import { IconCategory, IconComponentBase, IconComponentType } from './icon-category';
+import {
+  type IconCategory,
+  IconComponentBase,
+  type IconComponentType,
+} from './icon-category';
 import { StarIconComponent } from './star.component';
 
 describe('Icon metadata API', () => {
   describe('IconComponentBase', () => {
     it('applies the inline-flex 1em host style to every icon', () => {
-      // Pick a representative icon; the assertion holds for every component
-      // that extends IconComponentBase, which after v1.4 means all of them.
+      // Representative icon; the assertion holds for every component extending IconComponentBase
       const fixture: ComponentFixture<HomeIconComponent> =
         TestBed.createComponent(HomeIconComponent);
       fixture.detectChanges();
@@ -28,7 +31,7 @@ describe('Icon metadata API', () => {
       const fixture = TestBed.createComponent(StarIconComponent);
       fixture.detectChanges();
       const svg = fixture.nativeElement.querySelector('svg') as SVGSVGElement;
-      // Default for Feather icons is 2.
+      // Feather icons default to 2
       expect(svg.getAttribute('stroke-width')).toBe('2');
 
       fixture.componentRef.setInput('strokeWidth', 1.5);
@@ -52,18 +55,15 @@ describe('Icon metadata API', () => {
       ];
 
       for (const cls of samples) {
-        // `prototype instanceof IconComponentBase` checks the prototype chain
-        // without instantiating the component, which keeps the test fast
-        // across the 300+ icons that share this base.
+        // Prototype-chain check avoids instantiating each of the 300+ icons
         expect(cls.prototype instanceof IconComponentBase).toBe(true);
       }
     });
   });
 
   describe('Static metadata', () => {
-    // Bind references through `IconComponentType` so the optional `isBrand`
-    // field surfaces at the type level. Non-brand icons leave the static field
-    // off the class entirely; the interface keeps the access type-safe.
+    // Typing as `IconComponentType` surfaces the optional `isBrand` field; non-brand
+    // icons omit the static field, and the interface keeps the access type-safe.
     const home: IconComponentType = HomeIconComponent;
     const github: IconComponentType = GithubIconComponent;
     const github2: IconComponentType = Github2IconComponent;

@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { SpinnerComponent, SpinnerSize } from './spinner.component';
+import { SpinnerComponent, type SpinnerSize } from './spinner.component';
 
 @Component({
   imports: [SpinnerComponent],

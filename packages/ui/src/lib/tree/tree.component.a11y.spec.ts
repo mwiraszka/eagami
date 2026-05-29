@@ -4,7 +4,7 @@ import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { TreeComponent } from './tree.component';
-import { TreeNode } from './tree.types';
+import type { TreeNode } from './tree.types';
 
 const SAMPLE_TREE: TreeNode[] = [
   {

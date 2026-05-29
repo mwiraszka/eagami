@@ -41,7 +41,9 @@ export class ProgressBarComponent {
 
   readonly percentage = computed(() => {
     const max = this.max();
-    if (max <= 0) return 0;
+    if (max <= 0) {
+      return 0;
+    }
     return Math.min(100, Math.max(0, (this.value() / max) * 100));
   });
 

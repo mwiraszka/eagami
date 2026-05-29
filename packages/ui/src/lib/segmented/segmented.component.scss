@@ -1,53 +1,12 @@
-// =============================================================================
-// SEGMENTED COMPONENT
-// =============================================================================
-
 .ea-segmented-field {
   display: inline-flex;
   flex-direction: column;
   gap: var(--space-1-5);
-
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: var(--color-text-secondary);
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
 
 .ea-segmented {
-  // `inline-flex` keeps the control shrink-to-fit for short option sets, but
-  // an inline-flex box sizes to its content (max-content) and would overflow
-  // rather than wrap. `max-width: 100%` bounds it to the containing block so
-  // `flex-wrap` actually engages once the options exceed the available width.
+  // `inline-flex` keeps the control shrink-to-fit, but sizes to max-content and
+  // would overflow rather than wrap; `max-width: 100%` lets `flex-wrap` engage
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -77,9 +36,6 @@
     border-color: var(--color-error-default);
   }
 
-  // ---------------------------------------------------------------------------
-  // Sizes
-  // ---------------------------------------------------------------------------
   &--sm {
     .ea-segmented__option {
       min-height: 1.75rem;
@@ -104,9 +60,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Option button
-  // ---------------------------------------------------------------------------
   &__option {
     display: inline-flex;
     align-items: center;

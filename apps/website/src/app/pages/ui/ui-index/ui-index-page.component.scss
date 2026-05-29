@@ -104,11 +104,9 @@
   gap: 16px;
 }
 
-// Hollow 3D ring: outer disc carries the gray bevel gradient; ::after punches
-// out the card-background hole that makes the disc read as a tube. The check
-// is intentionally larger than the ring so its tips extend past the outer
-// edge; flex-centering with overflow-visible lets the check sit on top and
-// the drop-shadows sell the "threading through" effect.
+// Hollow 3D ring: ::after punches a card-background hole so the disc reads as a
+// tube; the oversized check overflows the ring and its drop-shadows sell the
+// "threading through" effect.
 .principle-card__ring {
   position: relative;
   display: flex;
@@ -161,10 +159,9 @@
   color: var(--color-text-secondary);
 }
 
-// Dark-mode ring: only the gradient stops need to flip — shadow geometry is
-// already swapped by the library's `--shadow-bevel` / `--shadow-well` tokens.
-// Stops shift a few shades lighter so the ring still reads as machined metal
-// against the lifted card surface (neutral-800) instead of fading into it.
+// Dark-mode ring: only the gradient stops flip (shadow geometry is already
+// swapped by the library's --shadow-bevel / --shadow-well tokens). Stops shift
+// lighter so the ring stays machined-metal against the lifted card surface.
 @mixin dark-principle-ring {
   .principle-card__ring {
     background: radial-gradient(

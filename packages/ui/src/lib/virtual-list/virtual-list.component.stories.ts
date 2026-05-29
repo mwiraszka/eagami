@@ -1,4 +1,4 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { Component, signal } from '@angular/core';
 
@@ -125,8 +125,7 @@ export const TinyList: Story = {
   }),
 };
 
-// Live scroll-position readout demo — mirrors the website's "row X of Y"
-// indicator that pairs the `(scrollIndexChange)` output with the list.
+// Mirrors the website's "row X of Y" readout, pairing `(scrollIndexChange)` with the list
 @Component({
   selector: 'ea-virtual-list-scroll-host',
   imports: [VirtualListComponent],

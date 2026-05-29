@@ -1,15 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { IconCategory, IconComponentBase } from './icon-category';
+import { type IconCategory, IconComponentBase } from './icon-category';
 
 /**
  * YouTube brand mark (Eagami brand-filled).
  *
  * @remarks
- * Up to v1.3 this design shipped as `YoutubeIconComponent` at slug
- * `ea-icon-youtube`. v1.4 reassigns the canonical slug to Feather's outline
- * and moves the brand-filled mark here. Set the `brand` input to render in
- * the official brand colour.
+ * The Feather outline lives at `<ea-icon-youtube>` / `YoutubeIconComponent`.
+ * Set the `brand` input to render in the official brand colour.
  */
 @Component({
   selector: 'ea-icon-youtube-2',

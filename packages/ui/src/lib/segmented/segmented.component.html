@@ -1,11 +1,9 @@
 <div class="ea-segmented-field">
-  @if (label()) {
-    <span
-      class="ea-segmented-field__label"
-      [id]="id() + '-label'"
-      [class.ea-segmented-field__label--required]="required()">
-      {{ label() }}
-    </span>
+  @if (label(); as labelText) {
+    <ea-field-label
+      [text]="labelText"
+      [labelId]="id() + '-label'"
+      [required]="required()" />
   }
 
   <div
@@ -39,21 +37,8 @@
     }
   </div>
 
-  @if (showError()) {
-    <p
-      class="ea-segmented-field__message ea-segmented-field__message--error"
-      [id]="id() + '-error'"
-      role="alert">
-      <ea-icon-alert-circle class="ea-segmented-field__message-icon" />
-      {{ errorMsg() }}
-    </p>
-  }
-
-  @if (showHint()) {
-    <p
-      class="ea-segmented-field__message ea-segmented-field__message--hint"
-      [id]="id() + '-hint'">
-      {{ hint() }}
-    </p>
-  }
+  <ea-field-messages
+    [id]="id()"
+    [error]="showError() ? errorMsg() : null"
+    [hint]="showHint() ? hint() : null" />
 </div>

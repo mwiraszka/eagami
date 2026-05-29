@@ -14,8 +14,8 @@ import {
 } from '@angular/core';
 
 import {
-  PopoverPlacement,
-  PopoverPositionResult,
+  type PopoverPlacement,
+  type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
 
@@ -32,7 +32,7 @@ export type PopoverRole = 'menu' | 'listbox' | 'dialog' | 'tooltip' | 'grid';
  * - `close`: request close. Suitable for dropdown lists and the colour-picker
  *   popover, where re-tracking a tall popover during a scroll feels intrusive.
  * - `ignore`: do nothing. The popover stays at its initial coordinates and
- *   may visually detach from a scrolling anchor — useful when the anchor is
+ *   may visually detach from a scrolling anchor; useful when the anchor is
  *   guaranteed not to move (e.g. inside a non-scrolling region).
  */
 export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
@@ -143,15 +143,20 @@ export class PopoverComponent {
    * its interpolated suffix) and the positioned modifier compose cleanly. */
   readonly surfaceClass = computed(
     () =>
-      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}` +
-      (this.isPositioned() ? ' ea-popover__surface--positioned' : ''),
+      `ea-popover__surface ea-popover__surface--${this.effectivePlacement()}${
+        this.isPositioned() ? ' ea-popover__surface--positioned' : ''
+      }`,
   );
 
   /** Inline style applied to the surface element. */
   readonly surfaceStyle = computed<Record<string, string>>(() => {
-    if (!this.open()) return { display: 'none' };
+    if (!this.open()) {
+      return { display: 'none' };
+    }
     const p = this.position();
-    if (!p) return {};
+    if (!p) {
+      return {};
+    }
     const style: Record<string, string> = {
       top: `${p.top}px`,
       left: `${p.left}px`,
@@ -166,18 +171,18 @@ export class PopoverComponent {
     // Re-measure and reposition whenever the anchor, placement, surface, or
     // open state changes. Reading `surfaceEl()` here makes it a tracked signal
     // dependency, so the effect re-runs once Angular has rendered the `@if`
-    // block and the viewChild signal has updated — at that point both the
+    // block and the viewChild signal has updated; at that point both the
     // anchor and the surface have a `getBoundingClientRect`, and the position
     // can be computed. This is more reliable than `afterNextRender` because it
     // doesn't depend on a single render cycle landing in the expected order
-    // (some host environments — Storybook docs mode, for example — defer that
+    // (some host environments, Storybook docs mode for example, defer that
     // callback in a way that leaves the surface stuck at `visibility: hidden`).
     // Naturally SSR-safe: the surface never renders on the server, so the
     // effect always early-returns during prerender.
     // Teleport the surface to `document.body` as soon as it exists so
     // `position: fixed` is always relative to the actual viewport (escaping
     // any transformed/contained ancestor that would otherwise create a new
-    // containing block). Doing the move on init — not on open — also means
+    // containing block). Doing the move on init, not on open, also means
     // the first `getBoundingClientRect` call inside `reposition()` reads a
     // surface that's already in its final DOM home, so the browser's layout
     // is settled and dimensions are accurate. Skipped in SSR (no `document`).
@@ -207,7 +212,7 @@ export class PopoverComponent {
       this.flip();
       this.clamp();
       this.matchAnchorWidth();
-      // First reposition runs synchronously off the open effect — fast, but
+      // First reposition runs synchronously off the open effect (fast), but
       // the surface is still transitioning out of `display: none` and the
       // first `getBoundingClientRect` can report the surface's natural width
       // even when that overflows the viewport. We deliberately keep the
@@ -220,7 +225,9 @@ export class PopoverComponent {
       this.reposition();
       if (typeof requestAnimationFrame !== 'undefined') {
         requestAnimationFrame(() => {
-          if (!this.open()) return;
+          if (!this.open()) {
+            return;
+          }
           this.reposition();
           this.stable.set(true);
         });
@@ -231,8 +238,8 @@ export class PopoverComponent {
 
     // Watch the surface's own size and reposition whenever it changes. The
     // first `reposition()` after open fires synchronously inside the open
-    // effect, while the surface is still transitioning out of `display: none`
-    // — in some browsers the layout pass hasn't completed, so the
+    // effect, while the surface is still transitioning out of `display: none`;
+    // in some browsers the layout pass hasn't completed, so the
     // `getBoundingClientRect` width can read as the surface's natural width
     // even when that overflows the viewport, so the clamp can't kick in. The
     // ResizeObserver fires once the surface has been laid out with its real
@@ -241,12 +248,16 @@ export class PopoverComponent {
     // (e.g. virtualised lists adding rows).
     if (typeof ResizeObserver !== 'undefined') {
       const surfaceResizeObserver = new ResizeObserver(() => {
-        if (this.open()) this.reposition();
+        if (this.open()) {
+          this.reposition();
+        }
       });
       effect(() => {
         const surface = this.surfaceEl()?.nativeElement;
         surfaceResizeObserver.disconnect();
-        if (surface) surfaceResizeObserver.observe(surface);
+        if (surface) {
+          surfaceResizeObserver.observe(surface);
+        }
       });
       this.destroyRef.onDestroy(() => surfaceResizeObserver.disconnect());
     }
@@ -256,7 +267,9 @@ export class PopoverComponent {
     // that mount popovers.
     if (typeof window !== 'undefined') {
       const onViewportChange = (): void => {
-        if (!this.open()) return;
+        if (!this.open()) {
+          return;
+        }
         const behavior = this.scrollBehavior();
         if (behavior === 'close') {
           this.closeRequested.emit();
@@ -278,7 +291,7 @@ export class PopoverComponent {
     // Explicitly remove the portaled surface on destroy. Angular's view
     // destruction normally removes nodes the renderer created, but moving the
     // surface via raw `appendChild` (out of its original anchor slot) is
-    // enough to break that tracking in some host environments — Storybook's
+    // enough to break that tracking in some host environments: Storybook's
     // SPA navigation between docs pages, for one, leaves the surface stranded
     // in `document.body` after the parent component is gone. Removing it here
     // guarantees cleanup regardless of how Angular's view destruction handles
@@ -291,15 +304,21 @@ export class PopoverComponent {
 
   private resolveAnchor(): HTMLElement | null {
     const a = this.anchor();
-    if (!a) return null;
+    if (!a) {
+      return null;
+    }
     return a instanceof ElementRef ? a.nativeElement : a;
   }
 
   private reposition(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      return;
+    }
     const anchor = this.resolveAnchor();
     const surface = this.surfaceEl()?.nativeElement;
-    if (!anchor || !surface) return;
+    if (!anchor || !surface) {
+      return;
+    }
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
     this.position.set(
@@ -320,18 +339,28 @@ export class PopoverComponent {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    if (!this.open() || !this.closeOnOutsideClick()) return;
+    if (!this.open() || !this.closeOnOutsideClick()) {
+      return;
+    }
     const target = event.target as Node | null;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const anchor = this.resolveAnchor();
-    if (anchor?.contains(target)) return;
-    if (this.surfaceEl()?.nativeElement.contains(target)) return;
+    if (anchor?.contains(target)) {
+      return;
+    }
+    if (this.surfaceEl()?.nativeElement.contains(target)) {
+      return;
+    }
     this.closeRequested.emit();
   }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    if (!this.open() || !this.closeOnEscape()) return;
+    if (!this.open() || !this.closeOnEscape()) {
+      return;
+    }
     this.closeRequested.emit();
   }
 }

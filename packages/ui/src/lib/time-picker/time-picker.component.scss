@@ -1,54 +1,12 @@
-// =============================================================================
-// TIME PICKER COMPONENT
-// =============================================================================
-
 .ea-time-picker-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
-
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: var(--color-text-secondary);
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
 
 .ea-time-picker {
   position: relative;
 
-  // ---------------------------------------------------------------------------
-  // Trigger
-  // ---------------------------------------------------------------------------
   &__trigger-wrapper {
     position: relative;
 
@@ -84,7 +42,6 @@
       box-shadow: var(--shadow-focus-ring);
     }
 
-    // Sizes
     &--sm {
       padding: var(--space-1-5) var(--space-2);
       font-size: var(--font-size-sm);
@@ -103,7 +60,6 @@
       min-height: 3rem;
     }
 
-    // States
     &--open {
       border-color: var(--color-border-focus);
       box-shadow: var(--shadow-focus-ring);
@@ -181,10 +137,8 @@
     height: 1em;
   }
 
-  // ---------------------------------------------------------------------------
-  // Popover surface. Positioned by the host `<ea-popover>`; this class only
-  // owns the visual chrome and the column layout.
-  // ---------------------------------------------------------------------------
+  // Positioned by the host `<ea-popover>`; this class owns visual chrome and the
+  // column layout
   &__popover {
     display: flex;
     align-items: center;
@@ -196,9 +150,6 @@
     background-color: var(--color-bg-base);
   }
 
-  // ---------------------------------------------------------------------------
-  // Stepper column (hours / minutes / seconds)
-  // ---------------------------------------------------------------------------
   &__column {
     display: flex;
     flex-direction: column;
@@ -279,9 +230,6 @@
     user-select: none;
   }
 
-  // ---------------------------------------------------------------------------
-  // AM/PM toggle
-  // ---------------------------------------------------------------------------
   &__period {
     display: flex;
     flex-direction: column;

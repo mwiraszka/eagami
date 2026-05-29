@@ -1,6 +1,6 @@
 {
   "name": "eagami-website",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Frontend for eagami.com — docs and marketing site for eagami products and services",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "UNLICENSED",
@@ -53,6 +53,7 @@
     "@vercel/node": "5.8.4",
     "eslint": "10.4.0",
     "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-prettier": "5.5.5",
     "globals": "17.6.0",
     "prettier": "3.8.3",

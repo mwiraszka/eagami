@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColorPickerComponent } from './color-picker.component';
 
@@ -11,11 +11,12 @@ describe('ColorPickerComponent', () => {
   }
 
   function getPopover(): HTMLElement | null {
-    // The popover renders its surface unconditionally (hidden via
-    // `display: none` when closed) and teleports it to `document.body`.
-    // Treat a hidden surface as "no popover".
+    // Surface renders unconditionally in `document.body`, hidden via `display: none`;
+    // treat a hidden one as "no popover".
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-color-picker__popover');
   }
 
@@ -52,7 +53,7 @@ describe('ColorPickerComponent', () => {
       fixture.componentRef.setInput('label', 'Brand');
       fixture.detectChanges();
 
-      const label = fixture.nativeElement.querySelector('.ea-color-picker-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Brand');
     });
 
@@ -157,7 +158,7 @@ describe('ColorPickerComponent', () => {
       component.writeValue('#ff880080');
 
       expect(component.rgb()).toEqual({ r: 255, g: 136, b: 0 });
-      // @ts-expect-error — alpha is private; reach into it for assertion only.
+      // @ts-expect-error alpha is private; reach into it for assertion only
       expect(component.alpha()).toBeCloseTo(128 / 255, 2);
     });
 
@@ -171,7 +172,7 @@ describe('ColorPickerComponent', () => {
       component.writeValue('rgba(10, 20, 30, 0.4)');
 
       expect(component.rgb()).toEqual({ r: 10, g: 20, b: 30 });
-      // @ts-expect-error — alpha is private; reach into it for assertion only.
+      // @ts-expect-error alpha is private; reach into it for assertion only
       expect(component.alpha()).toBeCloseTo(0.4, 2);
     });
 
@@ -312,9 +313,9 @@ describe('ColorPickerComponent', () => {
       hexInput.dispatchEvent(new Event('input'));
       fixture.detectChanges();
 
-      // State applies (3-digit shorthand expands to RGB).
+      // 3-digit shorthand expands to RGB internally
       expect(component.rgb()).toEqual({ r: 17, g: 34, b: 51 });
-      // But the input itself keeps the user's literal text.
+      // but the input keeps the user's literal text
       expect(component.hexInputValue()).toBe('#123');
     });
 
@@ -339,7 +340,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-color-picker-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Required');
     });
@@ -349,7 +350,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-color-picker-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Brand color');
     });
@@ -360,7 +361,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-color-picker-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });
@@ -413,7 +414,7 @@ describe('ColorPickerComponent', () => {
       component.writeValue('#ff8800');
 
       svKey('Home');
-      // Saturation 0 → achromatic gray.
+      // saturation 0 is achromatic gray
       const grayish = component.rgb();
       expect(grayish.r).toBe(grayish.g);
       expect(grayish.g).toBe(grayish.b);
@@ -424,7 +425,7 @@ describe('ColorPickerComponent', () => {
     });
 
     it('takes a coarser step with Shift+Arrow', () => {
-      // Starting from a saturated mid-orange so step deltas show clearly in RGB.
+      // saturated mid-orange so step deltas show clearly in RGB
       component.writeValue('#ff8800');
       svKey('ArrowLeft');
       const fineStep = component.rgb();
@@ -433,8 +434,7 @@ describe('ColorPickerComponent', () => {
       svKey('ArrowLeft', true);
       const coarseStep = component.rgb();
 
-      // ArrowLeft decreases saturation → green channel climbs toward the gray
-      // axis. Shift's coarser step should push it further.
+      // ArrowLeft lowers saturation so green climbs toward gray; the coarser Shift step climbs further
       expect(coarseStep.g).toBeGreaterThan(fineStep.g);
     });
 
@@ -448,8 +448,7 @@ describe('ColorPickerComponent', () => {
     it('ignores keyboard input when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
-      // setInput('disabled', true) also disables the trigger so we close+reopen
-      // logic stays out of this — just assert the keyboard path no-ops.
+      // disabling also disables the trigger, so assert the keyboard path no-ops directly
       component.writeValue('#ff8800');
       const before = component.rgb();
       component.onSvKeydown(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
@@ -460,9 +459,7 @@ describe('ColorPickerComponent', () => {
       const area = getSvArea();
       area.getBoundingClientRect = () =>
         ({ left: 0, top: 0, width: 200, height: 200 }) as DOMRect;
-      // jsdom doesn't expose `PointerEvent`, so feed the handler a minimal
-      // mock object — the production code only touches `clientX/Y`, `target`,
-      // and the optional `setPointerCapture`.
+      // jsdom has no `PointerEvent`; the handler only reads `clientX/Y`, `target`, `setPointerCapture`
       const fakeEvent = {
         clientX: 100,
         clientY: 100,
@@ -473,10 +470,10 @@ describe('ColorPickerComponent', () => {
       component.onSvPointerDown(fakeEvent);
       fixture.detectChanges();
 
-      // Middle of the area → sat 0.5, val 0.5.
-      // @ts-expect-error — reach into private signals for assertion only.
+      // middle of the area is sat 0.5, val 0.5
+      // @ts-expect-error reach into private signals for assertion only
       expect(component.sat()).toBeCloseTo(0.5, 1);
-      // @ts-expect-error — reach into private signals for assertion only.
+      // @ts-expect-error reach into private signals for assertion only
       expect(component.val()).toBeCloseTo(0.5, 1);
     });
 
@@ -515,19 +512,20 @@ describe('ColorPickerComponent', () => {
     });
 
     it('advances hue on ArrowRight and rolls past 360', () => {
-      // From red (hue 0) jumping coarse should wrap around the wheel cleanly.
-      for (let i = 0; i < 36; i++) hueKey('ArrowRight', true);
+      for (let i = 0; i < 36; i++) {
+        hueKey('ArrowRight', true);
+      }
       expect(component.hueRounded()).toBeLessThanOrEqual(360);
     });
 
     it('decreases hue on ArrowDown and wraps past 0', () => {
       hueKey('ArrowDown', true);
-      // Wrapping past 0 should land near 350.
+      // wrapping past 0 lands near 350
       expect(component.hueRounded()).toBeGreaterThan(300);
     });
 
     it('jumps to 0 on Home', () => {
-      // Move first so Home has somewhere to come back from.
+      // move first so Home has somewhere to come back from
       hueKey('End');
       hueKey('Home');
       expect(component.hueRounded()).toBe(0);
@@ -552,7 +550,7 @@ describe('ColorPickerComponent', () => {
       } as unknown as PointerEvent);
       fixture.detectChanges();
 
-      // Halfway across → hue 180.
+      // halfway across is hue 180
       expect(component.hueRounded()).toBeCloseTo(180, 0);
     });
   });
@@ -656,7 +654,7 @@ describe('ColorPickerComponent', () => {
       fixture.detectChanges();
 
       component.writeValue('rgba(10, 20, 30, 0.5)');
-      // Trigger a commit so onChange fires.
+      // commit so onChange fires
       component.selectPreset('rgba(10, 20, 30, 0.5)');
 
       const last = onChange.mock.calls[onChange.mock.calls.length - 1][0];
@@ -667,7 +665,6 @@ describe('ColorPickerComponent', () => {
   describe('writeValue parsing edge cases', () => {
     it('parses an hsl() string', () => {
       component.writeValue('hsl(120, 100%, 50%)');
-      // Pure green.
       expect(component.rgb()).toEqual({ r: 0, g: 255, b: 0 });
     });
 
@@ -753,8 +750,11 @@ describe('ColorPickerComponent', () => {
       try {
         expect(component.hasEyeDropper()).toBe(true);
       } finally {
-        if (original === undefined) delete win.EyeDropper;
-        else win.EyeDropper = original;
+        if (original === undefined) {
+          delete win.EyeDropper;
+        } else {
+          win.EyeDropper = original;
+        }
       }
     });
 

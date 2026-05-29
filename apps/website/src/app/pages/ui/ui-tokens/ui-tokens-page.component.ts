@@ -240,9 +240,8 @@ export class UiTokensPageComponent {
 
   protected readonly isSimulating = signal(false);
 
-  /* Resolved on first browser tick. The motion demos are decorative — under
-     `prefers-reduced-motion: reduce` we disable the Simulate button entirely
-     rather than animate against the user's setting. */
+  /* Under `prefers-reduced-motion: reduce` the Simulate button is disabled
+     entirely rather than animated against the user's setting. */
   private readonly platformId = inject(PLATFORM_ID);
   protected readonly motionReduced = signal(false);
 
@@ -261,7 +260,9 @@ export class UiTokensPageComponent {
   }
 
   protected simulateMotion(): void {
-    if (this.motionReduced()) return;
+    if (this.motionReduced()) {
+      return;
+    }
     this.isSimulating.set(false);
     requestAnimationFrame(() => {
       this.isSimulating.set(true);

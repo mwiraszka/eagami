@@ -1,34 +1,7 @@
-// =============================================================================
-// SWITCH COMPONENT
-// =============================================================================
-
 .ea-switch-field {
   display: inline-flex;
   flex-direction: column;
   gap: var(--space-1-5);
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: var(--color-text-secondary);
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
 
 .ea-switch {
@@ -39,9 +12,6 @@
   user-select: none;
   font-family: var(--font-family-sans);
 
-  // ---------------------------------------------------------------------------
-  // Sizes
-  // ---------------------------------------------------------------------------
   &--sm {
     .ea-switch__track {
       width: 1.75rem;
@@ -90,9 +60,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // States
-  // ---------------------------------------------------------------------------
   &--checked {
     .ea-switch__track {
       background-color: var(--color-brand-default);
@@ -115,9 +82,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Inner elements
-  // ---------------------------------------------------------------------------
   &__input {
     position: absolute;
     width: 1px;

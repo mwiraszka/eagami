@@ -8,9 +8,10 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size shared by all radios in the group. */
 export type RadioSize = 'sm' | 'md' | 'lg';
@@ -24,7 +25,7 @@ export type RadioOrientation = 'vertical' | 'horizontal';
  */
 @Component({
   selector: 'ea-radio-group',
-  imports: [AlertCircleIconComponent],
+  imports: [FieldLabelComponent, FieldMessagesComponent],
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +38,6 @@ export type RadioOrientation = 'vertical' | 'horizontal';
   ],
 })
 export class RadioGroupComponent implements ControlValueAccessor {
-  // Inputs
   readonly id = input<string>(`ea-radio-group-${Math.random().toString(36).slice(2, 9)}`);
   readonly name = input<string>(`ea-radio-${Math.random().toString(36).slice(2, 9)}`);
   readonly size = input<RadioSize>('md');
@@ -49,27 +49,21 @@ export class RadioGroupComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Output
   /** Fires with the new value when an option is selected. */
   readonly changed = output<string>();
 
-  // Internal state
   private readonly _formDisabled = signal(false);
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }
@@ -88,7 +82,9 @@ export class RadioGroupComponent implements ControlValueAccessor {
 
   /** Programmatically selects the option with the given value. */
   select(val: string): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.value.set(val);
     this.onChange(val);
     this.onTouched();

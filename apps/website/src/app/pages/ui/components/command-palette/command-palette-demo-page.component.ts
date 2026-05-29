@@ -1,7 +1,7 @@
 import {
   ButtonComponent,
   CommandPaletteComponent,
-  CommandPaletteItem,
+  type CommandPaletteItem,
   ToastService,
 } from '@eagami/ui';
 

@@ -1,17 +1,16 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { Component, signal } from '@angular/core';
 
-import { PopoverPlacement } from './popover-positioning';
+import type { PopoverPlacement } from './popover-positioning';
 import {
   PopoverComponent,
-  PopoverRole,
-  PopoverScrollBehavior,
+  type PopoverRole,
+  type PopoverScrollBehavior,
 } from './popover.component';
 
-// Wrapper component for the stories — owns the click-to-toggle state, exposes
-// the same inputs as `<ea-popover>`, and brings its own styles via `styleUrl`
-// so the trigger/content render with reasonable defaults.
+// Story wrapper: owns the click-to-toggle state, mirrors `<ea-popover>` inputs, and
+// brings its own styles so the trigger and content render with sensible defaults.
 @Component({
   selector: 'ea-popover-story-host',
   imports: [PopoverComponent],
@@ -110,8 +109,7 @@ export const TopPlacement: Story = {
   args: { placement: 'top' },
 };
 
-// 8-placement grid demo. Each cell has its own anchor + popover so all eight
-// placements can be inspected together (mirrors the website's placement grid).
+// Each cell has its own anchor and popover so all eight placements can be inspected together
 @Component({
   selector: 'ea-popover-placements-host',
   imports: [PopoverComponent],

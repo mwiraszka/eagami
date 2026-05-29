@@ -34,7 +34,9 @@ export class AccordionItemComponent {
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
 
   toggle(): void {
-    if (this.disabled()) return;
+    if (this.disabled()) {
+      return;
+    }
     this.accordion.toggle(this.value());
   }
 }

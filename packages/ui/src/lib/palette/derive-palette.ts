@@ -1,12 +1,12 @@
 import { hexToOklch, oklchToHex } from './oklch';
 import {
   DEFAULT_PALETTE_ROLES,
-  DerivedPalette,
-  EagamiPaletteConfig,
-  ModePalette,
-  PaletteConfig,
-  PaletteRoles,
-  PaletteShade,
+  type DerivedPalette,
+  type EagamiPaletteConfig,
+  type ModePalette,
+  type PaletteConfig,
+  type PaletteRoles,
+  type PaletteShade,
 } from './palette.types';
 
 /**

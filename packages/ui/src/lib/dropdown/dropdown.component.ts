@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   inject,
@@ -12,13 +12,14 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 
 /** Visual size of the dropdown trigger. */
 export type DropdownSize = 'sm' | 'md' | 'lg';
@@ -33,8 +34,9 @@ export type DropdownSize = 'sm' | 'md' | 'lg';
 @Component({
   selector: 'ea-dropdown',
   imports: [
-    AlertCircleIconComponent,
     ChevronDownIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
   ],
@@ -53,7 +55,6 @@ export class DropdownComponent implements ControlValueAccessor {
   private readonly elRef = viewChild<ElementRef<HTMLElement>>('triggerEl');
   private readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly options = input<SelectOption[]>([]);
@@ -65,23 +66,18 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-dropdown-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding
   readonly value = model<string>('');
 
-  // Outputs
   /** Fires with the new value when the user selects an option. */
   readonly changed = output<string>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
@@ -109,7 +105,6 @@ export class DropdownComponent implements ControlValueAccessor {
     [`ea-dropdown__menu--${this.size()}`]: true,
   }));
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }
@@ -126,10 +121,11 @@ export class DropdownComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   /** Toggles the dropdown list between open and closed. */
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
       const idx = this.options().findIndex(o => o.value === this.value());
@@ -139,7 +135,9 @@ export class DropdownComponent implements ControlValueAccessor {
 
   /** Programmatically selects the given option, closing the list. */
   select(option: SelectOption): void {
-    if (option.disabled || this.isDisabled() || this.readonly()) return;
+    if (option.disabled || this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.value.set(option.value);
     this.onChange(option.value);
     this.onTouched();
@@ -165,7 +163,9 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
 
     switch (event.key) {
       case 'Enter':

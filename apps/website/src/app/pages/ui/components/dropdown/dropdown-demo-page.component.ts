@@ -1,4 +1,4 @@
-import { DropdownComponent, SelectOption } from '@eagami/ui';
+import { DropdownComponent, type SelectOption } from '@eagami/ui';
 
 import {
   ChangeDetectionStrategy,

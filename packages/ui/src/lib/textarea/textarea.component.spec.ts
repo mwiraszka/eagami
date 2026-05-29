@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TextareaComponent } from './textarea.component';
 
@@ -15,7 +15,7 @@ describe('TextareaComponent', () => {
   }
 
   function getLabel(): HTMLLabelElement | null {
-    return fixture.nativeElement.querySelector('.ea-textarea-field__label');
+    return fixture.nativeElement.querySelector('.ea-field-label');
   }
 
   beforeEach(async () => {
@@ -166,7 +166,7 @@ describe('TextareaComponent', () => {
   describe('Hint and error messages', () => {
     it('renders no message by default', () => {
       expect(
-        fixture.nativeElement.querySelector('.ea-textarea-field__message'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message'),
       ).toBeNull();
     });
 
@@ -175,7 +175,7 @@ describe('TextareaComponent', () => {
       fixture.detectChanges();
 
       const hint = fixture.nativeElement.querySelector(
-        '.ea-textarea-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
 
       expect(hint.textContent.trim()).toBe('Up to 500 characters');
@@ -188,10 +188,10 @@ describe('TextareaComponent', () => {
       fixture.detectChanges();
 
       const error = fixture.nativeElement.querySelector(
-        '.ea-textarea-field__message--error',
+        '.ea-field-messages__message--error',
       );
       const hint = fixture.nativeElement.querySelector(
-        '.ea-textarea-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
 
       expect(error.textContent).toContain('Required');

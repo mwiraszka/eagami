@@ -1,4 +1,4 @@
-import { TreeComponent, TreeNode } from '@eagami/ui';
+import { TreeComponent, type TreeNode } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
@@ -15,8 +15,7 @@ import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-lay
 export class TreeDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
-  // File-system trees use universal proper-noun paths and stay untranslated,
-  // matching how framework names work in the autocomplete demo.
+  // File paths are universal proper nouns, so this stays untranslated
   protected readonly fileTree: TreeNode[] = [
     {
       id: 'src',
@@ -47,9 +46,7 @@ export class TreeDemoPageComponent {
     { id: 'tsconfig.json', label: 'tsconfig.json' },
   ];
 
-  // Organisation chart with one disabled node (the position is unfilled).
-  // Role names stay in English as a generic example shape — consumers wire up
-  // their own localised data.
+  // Role names stay in English as a generic example; consumers supply localised data
   protected readonly orgChart: TreeNode[] = [
     {
       id: 'ceo',

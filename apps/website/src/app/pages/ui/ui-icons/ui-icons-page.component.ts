@@ -1,7 +1,7 @@
 import {
   CheckboxComponent,
-  IconCategory,
-  IconComponentType,
+  type IconCategory,
+  type IconComponentType,
   SearchIconComponent,
   ToastService,
   TooltipDirective,
@@ -19,7 +19,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
@@ -27,9 +27,8 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 import { ICONS } from './icons.data';
 
 /**
- * UI tab for the category-filter checkboxes. `feather` and `eagami` map to
- * each icon's `static readonly category`; `brand` is the orthogonal
- * `static readonly isBrand` flag.
+ * `feather` and `eagami` map to each icon's `category`; `brand` is the orthogonal
+ * `isBrand` flag.
  */
 type CategoryTab = IconCategory | 'brand';
 
@@ -69,7 +68,9 @@ export class UiIconsPageComponent {
     const counts = { feather: 0, eagami: 0, brand: 0 };
     for (const icon of ICONS) {
       counts[icon.category]++;
-      if (icon.isBrand) counts.brand++;
+      if (icon.isBrand) {
+        counts.brand++;
+      }
     }
     return counts;
   });
@@ -96,8 +97,11 @@ export class UiIconsPageComponent {
 
   protected toggleCategory(category: CategoryTab): void {
     const next = new Set(this.enabledCategories());
-    if (next.has(category)) next.delete(category);
-    else next.add(category);
+    if (next.has(category)) {
+      next.delete(category);
+    } else {
+      next.add(category);
+    }
     this.enabledCategories.set(next);
   }
 
@@ -114,8 +118,12 @@ export class UiIconsPageComponent {
     return ICONS.filter(icon => {
       const matchesCategory =
         cats.has(icon.category) || (!!icon.isBrand && cats.has('brand'));
-      if (!matchesCategory) return false;
-      if (!q) return true;
+      if (!matchesCategory) {
+        return false;
+      }
+      if (!q) {
+        return true;
+      }
       return icon.tags.some(tag => normalize(tag).includes(q));
     });
   });
@@ -154,9 +162,8 @@ export class UiIconsPageComponent {
 }
 
 /**
- * Lowercase + strip diacritics so a French user typing `cafe` matches `café`
- * and a Spanish user typing `arbol` matches `árbol`. Greek and Polish marks
- * decompose the same way under NFD.
+ * Lowercase and NFD-strip diacritics so `cafe` matches `café`, `arbol` matches
+ * `árbol`; Greek and Polish marks decompose the same way.
  */
 function normalize(value: string): string {
   return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();

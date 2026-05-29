@@ -11,7 +11,7 @@ export interface Toast {
   duration: number;
 }
 
-/** Optional configuration for a toast — defaults to `default` variant and 4s duration. */
+/** Optional configuration for a toast; defaults to `default` variant and 4s duration. */
 export interface ToastOptions {
   variant?: ToastVariant;
   duration?: number;

@@ -24,13 +24,11 @@ import { RadioGroupComponent } from './radio-group.component';
 export class RadioComponent {
   private readonly group = inject(RadioGroupComponent);
 
-  // Inputs
   readonly value = input.required<string>();
   readonly label = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(`ea-radio-opt-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Computed
   readonly isChecked = computed(() => this.group.value() === this.value());
   readonly isDisabled = computed(() => this.disabled() || this.group.isDisabled());
   readonly name = computed(() => this.group.name());
@@ -43,7 +41,9 @@ export class RadioComponent {
   }));
 
   handleChange(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.group.select(this.value());
   }
 }

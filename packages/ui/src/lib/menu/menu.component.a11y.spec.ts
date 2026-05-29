@@ -49,10 +49,8 @@ describe('MenuComponent a11y', () => {
 
   it('has no detectable violations when the menu is open', async () => {
     const { fixture } = await render(host => host.isOpen.set(true));
-    // The popover surface is teleported to `document.body`, so axe must scan
-    // the whole document to see the open menu list. The `region` rule is a
-    // page-level landmark check (every region of the page must be inside a
-    // `<main>`/`<nav>`/etc.) that doesn't apply to isolated component tests.
+    // Surface is teleported to `document.body`, so axe scans the whole document. The
+    // `region` rule is a page-level landmark check that doesn't apply to isolated components.
     const results = await axe(document.body, {
       rules: { region: { enabled: false } },
     });

@@ -1,54 +1,12 @@
-// =============================================================================
-// DROPDOWN COMPONENT
-// =============================================================================
-
 .ea-dropdown-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
-
-  &__label {
-    font-size: var(--text-label-md-size);
-    font-weight: var(--text-label-md-weight);
-    line-height: var(--text-label-md-lh);
-    color: var(--color-text-primary);
-
-    &--required::after {
-      content: ' *';
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-helper-size);
-    font-weight: var(--text-helper-weight);
-    line-height: var(--text-helper-lh);
-
-    &--hint {
-      color: var(--color-text-secondary);
-    }
-
-    &--error {
-      color: var(--color-error-default);
-    }
-  }
-
-  &__message-icon {
-    flex-shrink: 0;
-    width: 0.875em;
-    height: 0.875em;
-  }
 }
 
 .ea-dropdown {
   position: relative;
 
-  // ---------------------------------------------------------------------------
-  // Trigger button
-  // ---------------------------------------------------------------------------
   &__trigger {
     display: flex;
     align-items: center;
@@ -69,7 +27,6 @@
       box-shadow: var(--shadow-focus-ring);
     }
 
-    // Sizes
     &--sm {
       padding: var(--space-1-5) var(--space-2);
       font-size: var(--font-size-sm);
@@ -88,7 +45,6 @@
       min-height: 3rem;
     }
 
-    // States
     &--open {
       border-color: var(--color-border-focus);
       box-shadow: var(--shadow-focus-ring);
@@ -109,9 +65,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Value / placeholder
-  // ---------------------------------------------------------------------------
   &__value {
     flex: 1;
     min-width: 0;
@@ -124,9 +77,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Chevron
-  // ---------------------------------------------------------------------------
   &__chevron {
     width: 1em;
     height: 1em;
@@ -139,10 +89,7 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Dropdown menu — positioned by the host `<ea-popover>`, so this class only
-  // owns visual chrome (background, border, max-height, scrolling).
-  // ---------------------------------------------------------------------------
+  // Positioned by the host `<ea-popover>`; this class only owns visual chrome
   &__menu {
     max-height: 15rem;
     padding: var(--space-1) 0;
@@ -165,9 +112,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Options
-  // ---------------------------------------------------------------------------
   &__option {
     padding: var(--space-2) var(--space-3);
     font-size: inherit;

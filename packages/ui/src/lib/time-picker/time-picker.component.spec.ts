@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimePickerComponent } from './time-picker.component';
 
@@ -12,24 +12,29 @@ describe('TimePickerComponent', () => {
 
   function getPopover(): HTMLElement | null {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface || surface.style.display === 'none') return null;
+    if (!surface || surface.style.display === 'none') {
+      return null;
+    }
     return surface.querySelector<HTMLElement>('.ea-time-picker__popover');
   }
 
   function getValueDisplays(): HTMLElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__value'));
   }
 
   function getStepButtons(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__step'));
   }
 
-  /** Simulates a click on a chevron button. Buttons now respond to
-   * `(mousedown)` (to start the long-press repeat) rather than `(click)`. */
+  /** Chevron buttons fire on `(mousedown)`, not `(click)`, to start the long-press repeat */
   function pressStep(btn: HTMLButtonElement): void {
     btn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
     btn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
@@ -37,7 +42,9 @@ describe('TimePickerComponent', () => {
 
   function getPeriodOptions(): HTMLButtonElement[] {
     const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-    if (!surface) return [];
+    if (!surface) {
+      return [];
+    }
     return Array.from(surface.querySelectorAll('.ea-time-picker__period-option'));
   }
 
@@ -69,7 +76,7 @@ describe('TimePickerComponent', () => {
       fixture.componentRef.setInput('label', 'Start time');
       fixture.detectChanges();
 
-      const label = fixture.nativeElement.querySelector('.ea-time-picker-field__label');
+      const label = fixture.nativeElement.querySelector('.ea-field-label');
       expect(label.textContent.trim()).toBe('Start time');
     });
 
@@ -449,7 +456,7 @@ describe('TimePickerComponent', () => {
     });
 
     it('commits and advances when a single digit already saturates the unit', () => {
-      // Typing "7" in minutes: any second digit would push past 59, so commit + advance.
+      // "7" in minutes: any second digit exceeds 59, so commit and advance
       component.writeValue('09:00');
       getTrigger().click();
       fixture.detectChanges();
@@ -571,7 +578,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-time-picker-field__message--error',
+        '.ea-field-messages__message--error',
       );
       expect(msg.textContent).toContain('Invalid time');
     });
@@ -581,7 +588,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       const msg = fixture.nativeElement.querySelector(
-        '.ea-time-picker-field__message--hint',
+        '.ea-field-messages__message--hint',
       );
       expect(msg.textContent).toContain('Between 9 and 5');
     });
@@ -592,7 +599,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(
-        fixture.nativeElement.querySelector('.ea-time-picker-field__message--hint'),
+        fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
   });

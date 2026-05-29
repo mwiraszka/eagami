@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   input,
@@ -11,9 +11,10 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 
 /** Visual size of the textarea. */
 export type TextareaSize = 'sm' | 'md' | 'lg';
@@ -27,7 +28,7 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  */
 @Component({
   selector: 'ea-textarea',
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

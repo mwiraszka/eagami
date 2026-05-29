@@ -35,12 +35,11 @@
 
   <section class="ui-index__section">
     <h2 class="ui-index__heading">{{ messages().ui.index.getStartedHeading }}</h2>
-    <!-- `</a` and `>{{ … }}` are split across lines to suppress the inter-tag
-         whitespace that prettier would otherwise insert. Polish needs the link
-         to butt right up to its trailing comma ("…Instalacji, aby…") rather
-         than render as "…Instalacji , aby…"; the non-Polish locales each
-         carry their own leading space inside `getStartedAfter`. Same trick
-         as in home-page.component.html. -->
+    <!-- `</a` and `>{{ }}` are split across lines to suppress the inter-tag
+         whitespace prettier would insert: Polish needs the link to butt against
+         its trailing comma ("Instalacji, aby"), not "Instalacji , aby". Non-Polish
+         locales carry their own leading space in `getStartedAfter`. Same trick as
+         in home-page.component.html. -->
     <p class="ui-index__body">
       {{ messages().ui.index.getStartedBefore }}
       <a routerLink="/ui/setup">{{ messages().ui.index.getStartedLink }}</a

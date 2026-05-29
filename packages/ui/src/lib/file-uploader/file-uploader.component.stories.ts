@@ -1,4 +1,9 @@
-import { Meta, StoryObj, argsToTemplate, moduleMetadata } from '@storybook/angular';
+import {
+  type Meta,
+  type StoryObj,
+  argsToTemplate,
+  moduleMetadata,
+} from '@storybook/angular';
 
 import { PaperclipIconComponent } from '../icons/paperclip.component';
 import { FileUploaderComponent } from './file-uploader.component';
@@ -96,10 +101,7 @@ export const WithProgress: Story = {
 };
 
 export const Sizes: Story = {
-  // `props: args` + `argsToTemplate` would bind every <ea-file-uploader> to the
-  // same top-level `size` arg, so the three rows would all render at the
-  // default `md`. Use literal attribute strings instead so each instance gets
-  // its own size.
+  // Literal size attributes per instance; a shared `size` arg would force all three rows to one value
   render: () => ({
     template: `
       <div class="story-stack">
@@ -121,9 +123,7 @@ export const Disabled: Story = {
 
 export const CustomIcon: Story = {
   decorators: [moduleMetadata({ imports: [PaperclipIconComponent] })],
-  // Demonstrates the `icon` content slot: any element with `icon` attribute
-  // replaces the default cloud icon. The dropzone's size-aware wrapper handles
-  // sizing automatically, so the consumer's element doesn't need styling.
+  // The `icon`-attribute slot replaces the default cloud icon; the wrapper handles sizing, so no styling needed
   render: () => ({
     template: `
       <ea-file-uploader label="Attach files" class="story-medium">

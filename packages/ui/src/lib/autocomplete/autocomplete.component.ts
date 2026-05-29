@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   HostListener,
   computed,
   forwardRef,
@@ -13,11 +13,12 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
-import { SelectOption } from '../select-option';
+import type { SelectOption } from '../select-option';
 
 /** Visual size of the autocomplete input. */
 export type AutocompleteSize = 'sm' | 'md' | 'lg';
@@ -30,7 +31,7 @@ export type AutocompleteSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ea-autocomplete',
-  imports: [AlertCircleIconComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,7 +48,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
   private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly options = input<SelectOption[]>([]);
@@ -64,10 +64,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
     `ea-autocomplete-${Math.random().toString(36).slice(2, 9)}`,
   );
 
-  // Two-way value binding (current text value in the input)
   readonly value = model<string>('');
 
-  // Outputs
   /** Fires when the user picks an option from the suggestion list. */
   readonly selected = output<SelectOption>();
   /** Fires whenever the input text changes, including on free-text edits. */
@@ -77,18 +75,15 @@ export class AutocompleteComponent implements ControlValueAccessor {
   /** Fires when the input loses focus. */
   readonly blurred = output<FocusEvent>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly isFocused = signal(false);
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
   private justSelected = false;
 
-  // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
@@ -100,7 +95,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
     const allOptions = this.options();
     const max = this.maxResults();
 
-    if (query.length < this.minLength()) return [];
+    if (query.length < this.minLength()) {
+      return [];
+    }
 
     const matched = query
       ? allOptions.filter(o => o.label.toLowerCase().includes(query))
@@ -133,7 +130,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
     [`ea-autocomplete__listbox--${this.size()}`]: true,
   }));
 
-  // ControlValueAccessor
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }
@@ -150,7 +146,6 @@ export class AutocompleteComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   handleInput(event: Event): void {
     const next = (event.target as HTMLInputElement).value;
     this.value.set(next);
@@ -179,7 +174,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
 
     switch (event.key) {
       case 'ArrowDown':
@@ -192,7 +189,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
         break;
       case 'ArrowUp':
         event.preventDefault();
-        if (this.isOpen()) this.moveFocus(-1);
+        if (this.isOpen()) {
+          this.moveFocus(-1);
+        }
         break;
       case 'Enter': {
         const opts = this.filteredOptions();
@@ -214,7 +213,9 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   /** Programmatically selects the given option, updating the value and closing the list. */
   selectOption(option: SelectOption): void {
-    if (option.disabled || this.isDisabled()) return;
+    if (option.disabled || this.isDisabled()) {
+      return;
+    }
     this.value.set(option.label);
     this.onChange(option.label);
     this.changed.emit(option.label);
@@ -237,18 +238,24 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   private moveFocus(delta: number): void {
     const opts = this.filteredOptions();
-    if (opts.length === 0) return;
+    if (opts.length === 0) {
+      return;
+    }
     let idx = this.focusedIndex() + delta;
     while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
       idx += delta;
     }
-    if (idx < 0 || idx >= opts.length) return;
+    if (idx < 0 || idx >= opts.length) {
+      return;
+    }
     this.focusedIndex.set(idx);
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (!this.isOpen()) return;
+    if (!this.isOpen()) {
+      return;
+    }
     const host = this.hostEl()?.nativeElement;
     if (host && !host.contains(event.target as Node)) {
       this.close();

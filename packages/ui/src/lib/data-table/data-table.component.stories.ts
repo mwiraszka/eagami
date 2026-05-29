@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
 
 import { PaginatorComponent } from '../paginator/paginator.component';
-import { DataTableColumn, DataTableComponent } from './data-table.component';
+import { type DataTableColumn, DataTableComponent } from './data-table.component';
 
 interface User {
   id: number;

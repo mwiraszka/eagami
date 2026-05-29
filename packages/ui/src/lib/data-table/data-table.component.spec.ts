@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
-  DataTableColumn,
+  type DataTableColumn,
   DataTableComponent,
-  DataTableSortState,
+  type DataTableSortState,
 } from './data-table.component';
 
 interface TestRow {
@@ -66,8 +66,6 @@ describe('DataTableComponent', () => {
     fixture.detectChanges();
   });
 
-  // ── Rendering ────────────────────────────────────────────────────────────
-
   describe('Rendering', () => {
     it('renders a table with header cells matching columns', () => {
       expect(getHeaderCells()).toHaveLength(3);
@@ -122,8 +120,6 @@ describe('DataTableComponent', () => {
     });
   });
 
-  // ── Density ──────────────────────────────────────────────────────────────
-
   describe('Density', () => {
     it('applies comfortable class by default', () => {
       expect(getHost().classList).toContain('ea-data-table--comfortable');
@@ -143,8 +139,6 @@ describe('DataTableComponent', () => {
       expect(getHost().classList).toContain('ea-data-table--spacious');
     });
   });
-
-  // ── Visual options ───────────────────────────────────────────────────────
 
   describe('Visual options', () => {
     it('applies striped class when enabled', () => {
@@ -183,8 +177,6 @@ describe('DataTableComponent', () => {
       expect(getHost().classList).toContain('ea-data-table--sticky');
     });
   });
-
-  // ── Sorting ──────────────────────────────────────────────────────────────
 
   describe('Sorting', () => {
     it('marks sortable columns with sortable class', () => {
@@ -300,8 +292,6 @@ describe('DataTableComponent', () => {
     });
   });
 
-  // ── Keyboard ─────────────────────────────────────────────────────────────
-
   describe('Keyboard', () => {
     it('toggles sort on Enter key for sortable header', () => {
       const header = getHeaderCells()[1];
@@ -326,8 +316,6 @@ describe('DataTableComponent', () => {
       expect(getHeaderCells()[0].getAttribute('tabindex')).toBeNull();
     });
   });
-
-  // ── Data handling ────────────────────────────────────────────────────────
 
   describe('Data handling', () => {
     it('handles null values in sort without error', () => {

@@ -1,7 +1,3 @@
-// =============================================================================
-// AVATAR EDITOR COMPONENT
-// =============================================================================
-
 .ea-avatar-editor {
   display: inline-flex;
   flex-direction: column;
@@ -9,9 +5,6 @@
   gap: var(--space-3);
   font-family: var(--font-family-sans);
 
-  // ---------------------------------------------------------------------------
-  // Hidden file input
-  // ---------------------------------------------------------------------------
   &__file-input {
     position: absolute;
     overflow: hidden;
@@ -25,9 +18,6 @@
     clip-path: inset(50%);
   }
 
-  // ---------------------------------------------------------------------------
-  // Dropzone (no image loaded)
-  // ---------------------------------------------------------------------------
   &__dropzone {
     display: flex;
     flex-direction: column;
@@ -101,9 +91,6 @@
     height: 16px;
   }
 
-  // ---------------------------------------------------------------------------
-  // Canvas wrapper (holds canvas and overlay)
-  // ---------------------------------------------------------------------------
   &__canvas-wrapper {
     position: relative;
     overflow: hidden;
@@ -123,11 +110,8 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Hover overlay (change photo) — defaults to white "ink" for dark photos and
-  // flips to near-black via the `--on-light` modifier for light photos. The
-  // component samples canvas pixel luminance after each draw to set this.
-  // ---------------------------------------------------------------------------
+  // White ink by default, flipped to near-black via `--on-light` for light photos;
+  // the component samples canvas luminance after each draw to choose
   &__canvas-overlay {
     position: absolute;
     inset: 0;
@@ -159,9 +143,6 @@
     opacity: 1;
   }
 
-  // ---------------------------------------------------------------------------
-  // Controls (zoom + action icon buttons in a single row)
-  // ---------------------------------------------------------------------------
   &__controls {
     display: flex;
     align-items: center;

@@ -1,7 +1,3 @@
-// =============================================================================
-// DATA TABLE COMPONENT
-// =============================================================================
-
 .ea-data-table {
   overflow: hidden;
   width: 100%;
@@ -9,19 +5,13 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-base);
 
-  // ---------------------------------------------------------------------------
-  // Scroll wrapper — owns horizontal scroll so the table can be wider than the
-  // host without dragging the slotted paginator into the scrolled coordinate
-  // space, which would shorten the paginator's `border-top` divider so it
-  // stops short of the host's right edge on narrow viewports.
-  // ---------------------------------------------------------------------------
+  // Owns horizontal scroll so the table can be wider than the host without dragging
+  // the slotted paginator into the scrolled coordinate space, which would shorten
+  // the paginator's `border-top` divider short of the host's right edge.
   &__scroll {
     overflow-x: auto;
   }
 
-  // ---------------------------------------------------------------------------
-  // Table
-  // ---------------------------------------------------------------------------
   &__table {
     width: 100%;
     border-spacing: 0;
@@ -32,9 +22,6 @@
     table-layout: auto;
   }
 
-  // ---------------------------------------------------------------------------
-  // Header
-  // ---------------------------------------------------------------------------
   &__head {
     background-color: var(--color-bg-stripe);
   }
@@ -77,9 +64,6 @@
     vertical-align: middle;
   }
 
-  // ---------------------------------------------------------------------------
-  // Sort icon
-  // ---------------------------------------------------------------------------
   &__sort-icon {
     display: inline-flex;
     vertical-align: middle;
@@ -95,9 +79,6 @@
     opacity: 1;
   }
 
-  // ---------------------------------------------------------------------------
-  // Body rows
-  // ---------------------------------------------------------------------------
   &__row {
     border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
     transition: var(--transition-colors);
@@ -107,9 +88,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Body cells
-  // ---------------------------------------------------------------------------
   &__cell {
     text-align: left;
     vertical-align: middle;
@@ -129,9 +107,6 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Density variants
-  // ---------------------------------------------------------------------------
   &--compact &__cell {
     padding: var(--space-1-5) var(--space-3);
   }
@@ -144,26 +119,21 @@
     padding: var(--space-4) var(--space-6);
   }
 
-  // ---------------------------------------------------------------------------
-  // Sticky header
-  // ---------------------------------------------------------------------------
   &--sticky {
     max-height: inherit;
     height: inherit;
   }
 
-  // Sticky tables pass the host's vertical bounds through the scroll wrapper
-  // so the inner table can size against them.
+  // Pass the host's vertical bounds through the scroll wrapper so the inner table
+  // can size against them
   &--sticky &__scroll {
     max-height: inherit;
     height: inherit;
   }
 
-  // Sticky tables use table-layout: fixed (required to keep header/body column
-  // widths in sync), which forces equal-width columns on narrow viewports and
-  // collapses header text. min-width forces the table past the container so
-  // the scroll wrapper's overflow-x: auto kicks in and the table scrolls
-  // horizontally.
+  // Sticky tables need table-layout: fixed to keep header/body columns in sync,
+  // which collapses columns on narrow viewports. min-width forces the table past
+  // the container so the scroll wrapper's overflow-x kicks in.
   &--sticky &__table {
     display: flex;
     flex-direction: column;
@@ -196,23 +166,14 @@
     table-layout: fixed;
   }
 
-  // ---------------------------------------------------------------------------
-  // Striped rows
-  // ---------------------------------------------------------------------------
   &--striped &__body &__row:nth-child(even) {
     background-color: var(--color-bg-stripe);
   }
 
-  // ---------------------------------------------------------------------------
-  // Hoverable rows
-  // ---------------------------------------------------------------------------
   &--hoverable &__body &__row:not(&__row--empty):hover {
     background-color: var(--color-bg-muted);
   }
 
-  // ---------------------------------------------------------------------------
-  // Bordered
-  // ---------------------------------------------------------------------------
   &--bordered &__cell {
     border-right: var(--border-width-thin) solid var(--color-border-subtle);
 

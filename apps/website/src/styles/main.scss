@@ -9,8 +9,7 @@
 @forward 'tooltip';
 @forward 'ui-demo';
 
-/* Override @eagami/ui brand icons that hard-code fill colors so they
-   inherit text color from their container (needed for dark mode visibility). */
+/* Force hard-coded brand-icon fills to inherit currentColor for dark-mode visibility */
 ea-icon-github svg path {
   fill: currentColor;
 }

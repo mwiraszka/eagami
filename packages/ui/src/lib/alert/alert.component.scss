@@ -1,7 +1,3 @@
-// =============================================================================
-// ALERT COMPONENT
-// =============================================================================
-
 .ea-alert {
   display: flex;
   align-items: flex-start;
@@ -13,9 +9,6 @@
   border: var(--border-width-thin) solid;
   border-radius: var(--radius-lg);
 
-  // ---------------------------------------------------------------------------
-  // Variants
-  // ---------------------------------------------------------------------------
   &--default {
     background-color: var(--color-bg-subtle);
     border-color: var(--color-border-default);
@@ -66,12 +59,8 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Elements
-  // ---------------------------------------------------------------------------
-  // Match the first line's box height and center the icon graphic inside, so
-  // the icon visually aligns with the first line of text regardless of how
-  // many lines wrap below.
+  // Match the first line's box height and center the icon inside, so it aligns
+  // with the first line of text regardless of how many lines wrap below
   &__icon {
     display: inline-flex;
     align-items: center;

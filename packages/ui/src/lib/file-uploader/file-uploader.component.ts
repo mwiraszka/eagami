@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   computed,
   forwardRef,
   inject,
@@ -12,10 +12,11 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { ArchiveIconComponent } from '../icons/archive.component';
 import { FileTextIconComponent } from '../icons/file-text.component';
 import { FileIconComponent } from '../icons/file.component';
@@ -40,7 +41,7 @@ export interface FileUploaderRejection {
 /**
  * Multi-file uploader with a drag-and-drop zone and a per-file list. Pure UI:
  * the component manages selection, validation, and removal but does not perform
- * any network I/O — consumers are responsible for uploading the resulting
+ * any network I/O; consumers are responsible for uploading the resulting
  * `File[]` and (optionally) feeding progress back via the `progress` map.
  *
  * The dropzone icon (default `<ea-icon-upload-cloud>`) is exposed as a content
@@ -60,8 +61,9 @@ export interface FileUploaderRejection {
   styleUrl: './file-uploader.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertCircleIconComponent,
     ArchiveIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     FileIconComponent,
     FileTextIconComponent,
     FilmIconComponent,
@@ -143,9 +145,15 @@ export class FileUploaderComponent implements ControlValueAccessor {
 
   protected readonly describedBy = computed(() => {
     const ids: string[] = [];
-    if (this.showError()) ids.push(this.errorId());
-    if (this.showHint()) ids.push(this.hintId());
-    if (this.constraintsText()) ids.push(this.constraintsId());
+    if (this.showError()) {
+      ids.push(this.errorId());
+    }
+    if (this.showHint()) {
+      ids.push(this.hintId());
+    }
+    if (this.constraintsText()) {
+      ids.push(this.constraintsId());
+    }
     return ids.length ? ids.join(' ') : null;
   });
 
@@ -156,11 +164,15 @@ export class FileUploaderComponent implements ControlValueAccessor {
     const accept = this.accept();
     const maxSize = this.maxSize();
     const maxFiles = this.maxFiles();
-    if (accept) parts.push(messages.constraintsAccept(accept));
-    if (maxSize !== undefined)
+    if (accept) {
+      parts.push(messages.constraintsAccept(accept));
+    }
+    if (maxSize !== undefined) {
       parts.push(messages.constraintsMaxSize(this.formatBytes(maxSize)));
-    if (maxFiles !== undefined && this.multiple())
+    }
+    if (maxFiles !== undefined && this.multiple()) {
       parts.push(messages.constraintsMaxFiles(maxFiles));
+    }
     return parts.join(' • ');
   });
 
@@ -169,8 +181,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
       ? this.i18n.messages().fileUploader.prompt
       : this.i18n.messages().fileUploader.promptSingle,
   );
-
-  // ----- CVA ------------------------------------------------------------------
 
   writeValue(value: readonly File[] | null | undefined): void {
     this.value.set(value ?? []);
@@ -188,10 +198,10 @@ export class FileUploaderComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // ----- Handlers -------------------------------------------------------------
-
   protected openFilePicker(): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     this.fileInputEl()?.nativeElement.click();
   }
 
@@ -214,13 +224,17 @@ export class FileUploaderComponent implements ControlValueAccessor {
   protected onFileSelected(event: Event): void {
     const inputEl = event.target as HTMLInputElement;
     const files = inputEl.files ? Array.from(inputEl.files) : [];
-    if (files.length) this.acceptFiles(files);
+    if (files.length) {
+      this.acceptFiles(files);
+    }
     // Reset so re-picking the same file re-triggers the input.
     inputEl.value = '';
   }
 
   protected onDragOver(event: DragEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(true);
@@ -236,21 +250,25 @@ export class FileUploaderComponent implements ControlValueAccessor {
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(false);
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     const files = event.dataTransfer?.files ? Array.from(event.dataTransfer.files) : [];
-    if (files.length) this.acceptFiles(files);
+    if (files.length) {
+      this.acceptFiles(files);
+    }
   }
 
   protected removeFile(file: File): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     const next = this.value().filter(f => f !== file);
     this.value.set(next);
     this.onChange(next);
     this.fileRemoved.emit(file);
     this.dropzoneEl()?.nativeElement.focus();
   }
-
-  // ----- Validation -----------------------------------------------------------
 
   private acceptFiles(incoming: readonly File[]): void {
     const accepted: File[] = [];
@@ -278,7 +296,9 @@ export class FileUploaderComponent implements ControlValueAccessor {
         continue;
       }
       accepted.push(file);
-      if (!multiple) break;
+      if (!multiple) {
+        break;
+      }
     }
 
     if (accepted.length) {
@@ -286,20 +306,28 @@ export class FileUploaderComponent implements ControlValueAccessor {
       this.value.set(next);
       this.onChange(next);
     }
-    if (rejections.length) this.rejected.emit(rejections);
+    if (rejections.length) {
+      this.rejected.emit(rejections);
+    }
   }
-
-  // ----- View helpers ---------------------------------------------------------
 
   protected formatBytes(bytes: number): string {
     const units = this.i18n.messages().fileUploader.bytesUnit;
-    if (bytes < 1024) return `${bytes} ${units.b}`;
+    if (bytes < 1024) {
+      return `${bytes} ${units.b}`;
+    }
     const kb = bytes / 1024;
-    if (kb < 1024) return `${roundTo(kb, 1)} ${units.kb}`;
+    if (kb < 1024) {
+      return `${roundTo(kb, 1)} ${units.kb}`;
+    }
     const mb = kb / 1024;
-    if (mb < 1024) return `${roundTo(mb, 1)} ${units.mb}`;
+    if (mb < 1024) {
+      return `${roundTo(mb, 1)} ${units.mb}`;
+    }
     const gb = mb / 1024;
-    if (gb < 1024) return `${roundTo(gb, 2)} ${units.gb}`;
+    if (gb < 1024) {
+      return `${roundTo(gb, 2)} ${units.gb}`;
+    }
     const tb = gb / 1024;
     return `${roundTo(tb, 2)} ${units.tb}`;
   }
@@ -320,8 +348,6 @@ export class FileUploaderComponent implements ControlValueAccessor {
   }
 }
 
-// ----- Helpers (pure, module-scope) -------------------------------------------
-
 const ARCHIVE_MIMES = new Set([
   'application/zip',
   'application/x-zip-compressed',
@@ -339,13 +365,25 @@ function iconForFile(
   file: File,
 ): 'image' | 'film' | 'music' | 'archive' | 'text' | 'file' {
   const type = file.type;
-  if (type.startsWith('image/')) return 'image';
-  if (type.startsWith('video/')) return 'film';
-  if (type.startsWith('audio/')) return 'music';
-  if (ARCHIVE_MIMES.has(type)) return 'archive';
-  if (type === 'application/pdf' || type.startsWith('text/')) return 'text';
+  if (type.startsWith('image/')) {
+    return 'image';
+  }
+  if (type.startsWith('video/')) {
+    return 'film';
+  }
+  if (type.startsWith('audio/')) {
+    return 'music';
+  }
+  if (ARCHIVE_MIMES.has(type)) {
+    return 'archive';
+  }
+  if (type === 'application/pdf' || type.startsWith('text/')) {
+    return 'text';
+  }
   const ext = file.name.split('.').pop()?.toLowerCase();
-  if (ext && ARCHIVE_EXTS.has(ext)) return 'archive';
+  if (ext && ARCHIVE_EXTS.has(ext)) {
+    return 'archive';
+  }
   return 'file';
 }
 
@@ -359,14 +397,20 @@ function matchesAccept(file: File, accept: string): boolean {
     .split(',')
     .map(t => t.trim().toLowerCase())
     .filter(Boolean);
-  if (tokens.length === 0) return true;
+  if (tokens.length === 0) {
+    return true;
+  }
 
   const type = file.type.toLowerCase();
   const name = file.name.toLowerCase();
 
   return tokens.some(token => {
-    if (token.startsWith('.')) return name.endsWith(token);
-    if (token.endsWith('/*')) return type.startsWith(token.slice(0, -1));
+    if (token.startsWith('.')) {
+      return name.endsWith(token);
+    }
+    if (token.endsWith('/*')) {
+      return type.startsWith(token.slice(0, -1));
+    }
     return type === token;
   });
 }

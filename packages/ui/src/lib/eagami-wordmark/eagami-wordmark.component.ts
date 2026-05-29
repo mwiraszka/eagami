@@ -33,10 +33,8 @@ export class EagamiWordmarkComponent {
   protected readonly i18n = inject(EagamiI18nService);
 
   /**
-   * The wordmark variant to render. `4` is accepted as a backwards-compatible
-   * alias for `3` after the original "eagami design system" variant (the old
-   * `3`) was retired in v1.3.0; it renders identically to `3` and will be
-   * removed in v2.0.0.
+   * The wordmark variant to render. `4` is accepted as a deprecated,
+   * backwards-compatible alias for `3` and renders identically.
    */
   readonly variant = input<EagamiWordmarkVariant | 4>(1);
   readonly layout = input<EagamiWordmarkLayout>('stacked');

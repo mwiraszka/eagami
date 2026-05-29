@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { TagComponent, TagSize, TagVariant } from './tag.component';
+import { TagComponent, type TagSize, type TagVariant } from './tag.component';
 
 @Component({
   imports: [TagComponent],

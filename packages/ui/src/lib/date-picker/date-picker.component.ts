@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   Injector,
   afterNextRender,
   computed,
@@ -14,10 +14,11 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { FieldLabelComponent } from '../field/field-label.component';
+import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
@@ -30,7 +31,7 @@ export type DatePickerSize = 'sm' | 'md' | 'lg';
 export type DatePickerFormat = 'short' | 'medium' | 'long';
 /** First day of the week in the calendar grid (0 = Sunday, 1 = Monday). */
 export type DatePickerWeekStart = 0 | 1;
-/** Value accepted via `writeValue` — a `Date`, ISO/parseable string, or `null`. */
+/** Value accepted via `writeValue`: a `Date`, ISO/parseable string, or `null`. */
 export type DatePickerValue = Date | string | null;
 
 interface CalendarDay {
@@ -52,10 +53,11 @@ interface CalendarDay {
 @Component({
   selector: 'ea-date-picker',
   imports: [
-    AlertCircleIconComponent,
     CalendarIconComponent,
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
+    FieldLabelComponent,
+    FieldMessagesComponent,
     NgClass,
     PopoverComponent,
     XIconComponent,
@@ -76,7 +78,6 @@ export class DatePickerComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
-  // Inputs
   readonly label = input<string | undefined>(undefined);
   /** Placeholder shown when no date is selected. Defaults to the active locale's text. */
   readonly placeholder = input<string | undefined>(undefined);
@@ -93,35 +94,30 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly locale = input<string | undefined>(undefined);
   readonly id = input<string>(`ea-date-picker-${Math.random().toString(36).slice(2, 9)}`);
 
-  // Two-way value binding (Date at local midnight, or null)
   readonly value = model<Date | null>(null);
 
-  // Outputs
   /** Fires when the selected date changes, including when cleared. */
   readonly changed = output<Date | null>();
 
-  // Internal state
   readonly isOpen = signal(false);
   readonly viewYear = signal(new Date().getFullYear());
   readonly viewMonth = signal(new Date().getMonth());
   readonly focusedDate = signal<Date | null>(null);
   private readonly _formDisabled = signal(false);
 
-  // ControlValueAccessor callbacks
   private onChange: (value: Date | null) => void = () => {};
   private onTouched: () => void = () => {};
 
-  // Computed
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
-  /** Locale used for date formatting — explicit `locale` input, else the global locale. */
+  /** Locale used for date formatting: explicit `locale` input, else the global locale. */
   readonly effectiveLocale = computed(() => this.locale() ?? this.i18n.locale());
 
-  /** Placeholder text — explicit `placeholder` input, else the active locale's default. */
+  /** Placeholder text: explicit `placeholder` input, else the active locale's default. */
   readonly resolvedPlaceholder = computed(
     () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
   );
@@ -139,7 +135,9 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   readonly displayValue = computed(() => {
     const val = this.value();
-    if (!val) return '';
+    if (!val) {
+      return '';
+    }
     return new Intl.DateTimeFormat(this.effectiveLocale(), this.formatOptions()).format(
       val,
     );
@@ -207,7 +205,6 @@ export class DatePickerComponent implements ControlValueAccessor {
     return rows;
   });
 
-  // ControlValueAccessor
   writeValue(val: DatePickerValue): void {
     const date = this.toDate(val);
     this.value.set(date);
@@ -229,10 +226,11 @@ export class DatePickerComponent implements ControlValueAccessor {
     this._formDisabled.set(isDisabled);
   }
 
-  // Handlers
   /** Toggles the calendar popover between open and closed. */
   toggle(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     if (this.isOpen()) {
       this.close();
     } else {
@@ -242,7 +240,9 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   /** Opens the calendar popover and moves focus to the focused day cell. */
   open(): void {
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     const current = this.value() ?? new Date();
     this.viewYear.set(current.getFullYear());
     this.viewMonth.set(current.getMonth());
@@ -261,7 +261,9 @@ export class DatePickerComponent implements ControlValueAccessor {
     // The calendar lives inside the popover surface, which `<ea-popover>`
     // teleports to `document.body`. Query the document directly so the lookup
     // works regardless of where the surface is mounted.
-    if (typeof document === 'undefined') return;
+    if (typeof document === 'undefined') {
+      return;
+    }
     const focusedCell = document.querySelector<HTMLButtonElement>(
       '.ea-date-picker__day--focused',
     );
@@ -274,7 +276,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   selectDay(day: CalendarDay): void {
-    if (day.isDisabled) return;
+    if (day.isDisabled) {
+      return;
+    }
     const date = this.startOfDay(day.date);
     this.value.set(date);
     this.onChange(date);
@@ -287,7 +291,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   /** Clears the selected date and emits `changed` with `null`. */
   clear(event: Event): void {
     event.stopPropagation();
-    if (this.isDisabled() || this.readonly()) return;
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
     this.value.set(null);
     this.onChange(null);
     this.onTouched();
@@ -330,7 +336,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   handleTriggerKeydown(event: KeyboardEvent): void {
-    if (this.isDisabled()) return;
+    if (this.isDisabled()) {
+      return;
+    }
     switch (event.key) {
       case 'Enter':
       case ' ':
@@ -342,7 +350,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   handleGridKeydown(event: KeyboardEvent): void {
-    if (!this.isOpen()) return;
+    if (!this.isOpen()) {
+      return;
+    }
     const focused = this.focusedDate() ?? this.startOfDay(new Date());
     let next: Date | null;
 
@@ -367,7 +377,9 @@ export class DatePickerComponent implements ControlValueAccessor {
         break;
       case 'Home':
         next = this.addDays(focused, -focused.getDay() + this.weekStartsOn());
-        if (next > focused) next = this.addDays(next, -7);
+        if (next > focused) {
+          next = this.addDays(next, -7);
+        }
         break;
       case 'End': {
         const weekStart = this.weekStartsOn();
@@ -379,11 +391,17 @@ export class DatePickerComponent implements ControlValueAccessor {
       case ' ': {
         event.preventDefault();
         const current = this.focusedDate();
-        if (!current) return;
+        if (!current) {
+          return;
+        }
         const min = this.minDate();
         const max = this.maxDate();
-        if (min && current < this.startOfDay(min)) return;
-        if (max && current > this.startOfDay(max)) return;
+        if (min && current < this.startOfDay(min)) {
+          return;
+        }
+        if (max && current > this.startOfDay(max)) {
+          return;
+        }
         this.selectDay({
           date: current,
           day: current.getDate(),
@@ -432,8 +450,12 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   private toDate(val: DatePickerValue): Date | null {
-    if (!val) return null;
-    if (val instanceof Date) return isNaN(val.getTime()) ? null : this.startOfDay(val);
+    if (!val) {
+      return null;
+    }
+    if (val instanceof Date) {
+      return isNaN(val.getTime()) ? null : this.startOfDay(val);
+    }
     const parsed = new Date(val);
     return isNaN(parsed.getTime()) ? null : this.startOfDay(parsed);
   }
