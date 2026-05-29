@@ -629,9 +629,12 @@
     aspect-ratio: 4 / 3;
   }
 
-  .motion-easing__meta code,
+  .motion-easing__meta code {
+    font-size: 11px;
+  }
+
   .motion-easing__meta .token-list__value {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 
