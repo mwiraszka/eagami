@@ -84,7 +84,7 @@
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSemantic }}</h3>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (key of semanticTextTokens; track key) {
         <li class="token-list__item">
@@ -94,7 +94,7 @@
       }
     </ul>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (key of semanticBgTokens; track key) {
         <li class="token-list__item">
@@ -104,7 +104,7 @@
       }
     </ul>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (key of semanticBorderTokens; track key) {
         <li class="token-list__item">
@@ -114,7 +114,7 @@
       }
     </ul>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (key of semanticBrandTokens; track key) {
         <li class="token-list__item">
@@ -149,7 +149,7 @@
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.typographySizes }}</h3>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (size of fontSizes; track size) {
         <li class="token-list__item">
@@ -196,7 +196,7 @@
   <section class="tokens-section">
     <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.spacing }}</h2>
     <ul
-      class="token-list"
+      class="token-list token-list--compact"
       role="list">
       @for (step of spacingScale; track step) {
         <li class="token-list__item">
@@ -255,53 +255,95 @@
 
   <section
     id="tokens-motion-region"
-    class="tokens-section"
-    [class.tokens-section--simulating]="isSimulating()">
-    <header class="tokens-section__header">
-      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.motion }}</h2>
-      <button
-        type="button"
-        class="motion-simulate"
-        aria-controls="tokens-motion-region"
-        [attr.aria-pressed]="isSimulating()"
-        [disabled]="motionReduced() || isSimulating()"
-        (click)="simulateMotion()">
-        {{ messages().ui.tokens.motionSimulate }}
-      </button>
-    </header>
+    class="tokens-section">
+    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.motion }}</h2>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.motionDurations }}</h3>
-    <ul
-      class="token-list motion-list"
-      role="list">
-      @for (duration of durations; track duration.token) {
-        <li class="token-list__item motion-list__item">
-          <code>{{ duration.token }}</code>
-          <span class="token-list__value">{{ duration.value }}</span>
-          <div
-            class="motion-demo motion-demo--duration"
-            [style.--demo-duration]="duration.value">
-            <span class="motion-demo__bar"></span>
-          </div>
-        </li>
-      }
-    </ul>
+    <div
+      id="tokens-motion-durations"
+      class="motion-subsection"
+      [class.motion-subsection--simulating]="isSimulatingDurations()">
+      <div class="motion-subsection__header">
+        <h3 class="tokens-subsection__title">{{
+          messages().ui.tokens.motionDurations
+        }}</h3>
+        <button
+          type="button"
+          class="motion-simulate"
+          aria-controls="tokens-motion-durations"
+          [attr.aria-pressed]="isSimulatingDurations()"
+          [disabled]="motionReduced() || isSimulatingDurations()"
+          (click)="simulateDurations()">
+          {{ messages().ui.tokens.motionSimulate }}
+        </button>
+      </div>
+      <ul
+        class="motion-duration-list"
+        role="list">
+        @for (duration of durations; track duration.token) {
+          <li class="motion-duration">
+            <div class="motion-duration__meta">
+              <code>{{ duration.token }}</code>
+              <span class="token-list__value">{{ duration.value }}</span>
+            </div>
+            <div
+              class="motion-lane"
+              [style.--demo-duration]="duration.value">
+              <span class="motion-lane__dot"></span>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.motionEasings }}</h3>
-    <ul
-      class="token-list motion-list"
-      role="list">
-      @for (easing of easings; track easing.token) {
-        <li class="token-list__item motion-list__item">
-          <code>{{ easing.token }}</code>
-          <span class="token-list__value">{{ easing.value }}</span>
-          <div
-            class="motion-demo motion-demo--easing"
+    <div
+      id="tokens-motion-easings"
+      class="motion-subsection"
+      [class.motion-subsection--simulating]="isSimulatingEasings()">
+      <div class="motion-subsection__header">
+        <h3 class="tokens-subsection__title">{{ messages().ui.tokens.motionEasings }}</h3>
+        <button
+          type="button"
+          class="motion-simulate"
+          aria-controls="tokens-motion-easings"
+          [attr.aria-pressed]="isSimulatingEasings()"
+          [disabled]="motionReduced() || isSimulatingEasings()"
+          (click)="simulateEasings()">
+          {{ messages().ui.tokens.motionSimulate }}
+        </button>
+      </div>
+      <ul
+        class="motion-easing-grid"
+        role="list">
+        @for (easing of easings; track easing.token) {
+          <li
+            class="motion-easing"
             [style.--demo-easing]="easing.value">
-            <span class="motion-demo__bar"></span>
-          </div>
-        </li>
-      }
-    </ul>
+            <div class="motion-easing__meta">
+              <code>{{ easing.token }}</code>
+              <span class="token-list__value">{{ easing.value }}</span>
+            </div>
+            <div class="motion-easing__plot">
+              <svg
+                class="motion-easing__svg"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true">
+                <line
+                  class="motion-easing__diagonal"
+                  x1="0"
+                  y1="100"
+                  x2="100"
+                  [attr.y2]="curveTopY" />
+                <path
+                  class="motion-easing__curve"
+                  fill="none"
+                  [attr.d]="curvePath(easing.points)" />
+              </svg>
+              <span class="motion-easing__dot"></span>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
   </section>
 </article>

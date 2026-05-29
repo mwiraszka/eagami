@@ -7,7 +7,10 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Pick up @eagami/ui v2.5.1.
-- Stage the dark-mode drop-shadow swatches on a lifted surface on `/ui/design-tokens` so the elevation levels stay distinguishable.
+- Rework the Motion section of `/ui/design-tokens` into animated duration lanes and cubic-bezier easing curve plots, responsive down to mobile.
+- Compact the Spacing, Sizes, and semantic-colour lists on `/ui/design-tokens` into tight rows instead of full-width cards.
+- Stage the dark-mode drop-shadow swatches on a lifted surface so the elevation levels stay distinguishable.
+- Improve token reference readability: higher-contrast values, larger sub-labels, and wrapping for long inline code.
 
 ## [2.5.0] - 2026-05-29
 

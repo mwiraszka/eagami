@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   PLATFORM_ID,
+  type WritableSignal,
   effect,
   inject,
   signal,
@@ -23,6 +24,18 @@ interface NamedToken {
   label: string;
   value: string;
 }
+
+interface EasingToken extends NamedToken {
+  points: [number, number, number, number];
+}
+
+// Percent of the plot height that maps to an easing output of 1, leaving a
+// little headroom above for the spring curve, whose path peaks near 1.1 (the
+// 1.56 control point pulls the curve up but it never reaches that value).
+const CURVE_UNIT = 85;
+
+const EASING_DURATION_MS = 2000; // matches the 2s easing animation in the SCSS
+const SIMULATION_RESET_BUFFER_MS = 80; // lets the longest run land before the reset
 
 @Component({
   selector: 'web-ui-tokens-page',
@@ -226,19 +239,48 @@ export class UiTokensPageComponent {
     { token: '--duration-slower', label: 'Slower', value: '500ms' },
   ];
 
-  protected readonly easings: NamedToken[] = [
-    { token: '--ease-linear', label: 'Linear', value: 'linear' },
-    { token: '--ease-in', label: 'In', value: 'cubic-bezier(0.4, 0, 1, 1)' },
-    { token: '--ease-out', label: 'Out', value: 'cubic-bezier(0, 0, 0.2, 1)' },
-    { token: '--ease-in-out', label: 'InOut', value: 'cubic-bezier(0.4, 0, 0.2, 1)' },
+  protected readonly easings: EasingToken[] = [
+    {
+      token: '--ease-linear',
+      label: 'Linear',
+      value: 'linear',
+      points: [0.333, 0.333, 0.667, 0.667],
+    },
+    {
+      token: '--ease-in',
+      label: 'In',
+      value: 'cubic-bezier(0.4, 0, 1, 1)',
+      points: [0.4, 0, 1, 1],
+    },
+    {
+      token: '--ease-out',
+      label: 'Out',
+      value: 'cubic-bezier(0, 0, 0.2, 1)',
+      points: [0, 0, 0.2, 1],
+    },
+    {
+      token: '--ease-in-out',
+      label: 'InOut',
+      value: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      points: [0.4, 0, 0.2, 1],
+    },
     {
       token: '--ease-spring',
       label: 'Spring',
       value: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      points: [0.34, 1.56, 0.64, 1],
     },
   ];
 
-  protected readonly isSimulating = signal(false);
+  // y for an output of 1; the curve's top reference and the dot's resting line.
+  protected readonly curveTopY = 100 - CURVE_UNIT;
+
+  protected readonly isSimulatingDurations = signal(false);
+  protected readonly isSimulatingEasings = signal(false);
+
+  private readonly maxDurationMs = Math.max(
+    ...this.durations.map(duration => Number.parseFloat(duration.value)),
+  );
 
   /* Under `prefers-reduced-motion: reduce` the Simulate button is disabled
      entirely rather than animated against the user's setting. */
@@ -259,14 +301,34 @@ export class UiTokensPageComponent {
     });
   }
 
-  protected simulateMotion(): void {
+  // Maps cubic-bezier control points to an SVG path in the 0-100 plot box, with
+  // output 0 at the bottom and output 1 at CURVE_UNIT% up so overshoot stays in frame.
+  protected curvePath(points: EasingToken['points']): string {
+    const [x1, y1, x2, y2] = points;
+    const round = (n: number): number => Math.round(n * 100) / 100;
+    const sx = (x: number): number => round(x * 100);
+    const sy = (y: number): number => round(100 - y * CURVE_UNIT);
+    return `M 0 100 C ${sx(x1)} ${sy(y1)}, ${sx(x2)} ${sy(y2)}, 100 ${sy(1)}`;
+  }
+
+  protected simulateDurations(): void {
+    this.runSimulation(this.isSimulatingDurations, this.maxDurationMs);
+  }
+
+  protected simulateEasings(): void {
+    this.runSimulation(this.isSimulatingEasings, EASING_DURATION_MS);
+  }
+
+  // Restart a group's animations, then reset every thumb to the start and
+  // re-enable the button together once the longest run in the group has landed.
+  private runSimulation(flag: WritableSignal<boolean>, runMs: number): void {
     if (this.motionReduced()) {
       return;
     }
-    this.isSimulating.set(false);
+    flag.set(false);
     requestAnimationFrame(() => {
-      this.isSimulating.set(true);
-      setTimeout(() => this.isSimulating.set(false), 1400);
+      flag.set(true);
+      setTimeout(() => flag.set(false), runMs + SIMULATION_RESET_BUFFER_MS);
     });
   }
 }
