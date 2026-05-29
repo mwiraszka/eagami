@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.5.0] - 2026-05-29
 
+### Added
+
+- Add `<ea-field-label>` and `<ea-field-messages>`, the shared label and hint/error building blocks now used internally by every form control. Both are exported for consumers composing custom form fields.
+
 ### Changed
 
 - Tighten source comments across the library to a stricter house style.

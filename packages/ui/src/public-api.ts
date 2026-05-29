@@ -23,6 +23,8 @@ export * from './lib/drawer/drawer.component';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/eagami-wordmark/eagami-wordmark.component';
 export * from './lib/empty-state/empty-state.component';
+export * from './lib/field/field-label.component';
+export * from './lib/field/field-messages.component';
 export * from './lib/file-uploader/file-uploader.component';
 export * from './lib/input/input.component';
 export * from './lib/menu/menu.component';
