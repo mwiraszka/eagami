@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.5.2] - 2026-05-31
+
+### Changed
+
+- Pick up @eagami/ui v2.5.2.
+
 ## [2.5.1] - 2026-05-29
 
 ### Changed
@@ -471,6 +477,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.5.2]: https://github.com/mwiraszka/eagami/compare/website-v2.5.1...website-v2.5.2
 [2.5.1]: https://github.com/mwiraszka/eagami/compare/website-v2.5.0...website-v2.5.1
 [2.5.0]: https://github.com/mwiraszka/eagami/compare/website-v2.4.0...website-v2.5.0
 [2.4.0]: https://github.com/mwiraszka/eagami/compare/website-v2.3.0...website-v2.4.0

@@ -48,7 +48,7 @@
       var(--color-success-subtle),
       var(--color-success-subtle)
     );
-    color: var(--color-success-700);
+    color: var(--color-success-text);
   }
 
   &--warning {
@@ -57,7 +57,7 @@
       var(--color-warning-subtle),
       var(--color-warning-subtle)
     );
-    color: var(--color-warning-700);
+    color: var(--color-warning-text);
   }
 
   &--error {
@@ -66,13 +66,13 @@
       var(--color-error-subtle),
       var(--color-error-subtle)
     );
-    color: var(--color-error-700);
+    color: var(--color-error-text);
   }
 
   &--info {
     background-color: var(--color-bg-elevated);
     background-image: linear-gradient(var(--color-info-subtle), var(--color-info-subtle));
-    color: var(--color-info-700);
+    color: var(--color-info-text);
   }
 
   &__message {

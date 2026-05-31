@@ -37,22 +37,22 @@
 
   &--success {
     background-color: var(--ea-badge-background-color, var(--color-success-subtle));
-    color: var(--ea-badge-color, var(--color-success-700));
+    color: var(--ea-badge-color, var(--color-success-text));
   }
 
   &--warning {
     background-color: var(--ea-badge-background-color, var(--color-warning-subtle));
-    color: var(--ea-badge-color, var(--color-warning-700));
+    color: var(--ea-badge-color, var(--color-warning-text));
   }
 
   &--error {
     background-color: var(--ea-badge-background-color, var(--color-error-subtle));
-    color: var(--ea-badge-color, var(--color-error-700));
+    color: var(--ea-badge-color, var(--color-error-text));
   }
 
   &--info {
     background-color: var(--ea-badge-background-color, var(--color-info-subtle));
-    color: var(--ea-badge-color, var(--color-info-700));
+    color: var(--ea-badge-color, var(--color-info-text));
   }
 
   // `pin` is a circular dot for single-character content that expands into a pill
