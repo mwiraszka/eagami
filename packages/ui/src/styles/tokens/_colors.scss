@@ -158,7 +158,9 @@
   --color-bg-subtle: var(--color-neutral-700);
   --color-bg-stripe: var(--color-neutral-900);
   --color-bg-elevated: var(--color-neutral-700);
-  --color-bg-muted: var(--color-neutral-600);
+  // One step above bg-base so hover fills (ghost/secondary button, table row)
+  // and muted surfaces lift subtly; neutral-600 read too strong on dark.
+  --color-bg-muted: var(--color-neutral-700);
 
   // Borders stay clear of every bg-* shade so they stay visible. subtle mixes
   // neutral-700/-800 to sit between card and cell backgrounds; default can't go
