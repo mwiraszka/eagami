@@ -53,25 +53,25 @@ ea-tag {
   &--success {
     border-color: var(--color-success-muted);
     background-color: var(--color-success-subtle);
-    color: var(--color-success-700);
+    color: var(--color-success-text);
   }
 
   &--warning {
     border-color: var(--color-warning-muted);
     background-color: var(--color-warning-subtle);
-    color: var(--color-warning-700);
+    color: var(--color-warning-text);
   }
 
   &--error {
     border-color: var(--color-error-muted);
     background-color: var(--color-error-subtle);
-    color: var(--color-error-700);
+    color: var(--color-error-text);
   }
 
   &--info {
     border-color: var(--color-info-muted);
     background-color: var(--color-info-subtle);
-    color: var(--color-info-700);
+    color: var(--color-info-text);
   }
 
   &--disabled {

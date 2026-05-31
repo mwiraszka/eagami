@@ -103,21 +103,28 @@
   --color-brand-secondary-subtle: var(--color-secondary-50);
   --color-brand-secondary-muted: var(--color-secondary-100);
 
+  // *-text is the status hue as a foreground on its own *-subtle/-muted wash
+  // (badge, tag, toast). It needs 4.5:1 vs that wash and flips lighter in dark
+  // mode, mirroring --color-brand-text.
   --color-success-default: var(--color-success-600);
   --color-success-subtle: var(--color-success-50);
   --color-success-muted: var(--color-success-100);
+  --color-success-text: var(--color-success-700);
 
   --color-warning-default: var(--color-warning-600);
   --color-warning-subtle: var(--color-warning-50);
   --color-warning-muted: var(--color-warning-100);
+  --color-warning-text: var(--color-warning-700);
 
   --color-error-default: var(--color-error-600);
   --color-error-subtle: var(--color-error-50);
   --color-error-muted: var(--color-error-100);
+  --color-error-text: var(--color-error-700);
 
   --color-info-default: var(--color-info-600);
   --color-info-subtle: var(--color-info-50);
   --color-info-muted: var(--color-info-100);
+  --color-info-text: var(--color-info-700);
 
   // Pure RGB primaries for the picker's hue wheel and saturation/value
   // gradient. Intrinsic to the picker, not themeable; kept here so component
@@ -185,6 +192,13 @@
   --color-error-muted: rgba(239, 68, 68, 0.25);
   --color-info-subtle: rgba(6, 182, 212, 0.15);
   --color-info-muted: rgba(6, 182, 212, 0.25);
+
+  // The *-700 shades are unreadable on the dark translucent washes above; flip
+  // to the light *-200 pastels so status text keeps 4.5:1.
+  --color-success-text: var(--color-success-200);
+  --color-warning-text: var(--color-warning-200);
+  --color-error-text: var(--color-error-200);
+  --color-info-text: var(--color-info-200);
 }
 
 @media (prefers-color-scheme: dark) {
