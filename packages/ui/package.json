@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "2.5.3",
+  "version": "2.6.0",
   "description": "Lightweight, accessible Angular UI component library built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
+    "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",
     "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN",
     "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
   },

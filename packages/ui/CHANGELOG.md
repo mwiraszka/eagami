@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] - 2026-06-05
+
+### Added
+
+- Add `--color-state-hover` and `--color-state-active` tokens: translucent hover and active fills that lift off whatever sits beneath them, so they never blend with the surface.
+
+### Changed
+
+- Route component hover and active states through the new translucent layers so they stay visible on any dark surface instead of matching the muted shade beneath.
+- Add a top gap above accordion item content.
+- Generate auto element ids deterministically so server and client renders stay in sync.
+
+### Fixed
+
+- Keep ghost and secondary button labels readable when pressed in dark mode; the active fill no longer washes out near white.
+
 ## [2.5.3] - 2026-06-04
 
 ### Changed
@@ -577,6 +593,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.3...ui-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.2...ui-v2.5.3
 [2.5.2]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.1...ui-v2.5.2
 [2.5.1]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.0...ui-v2.5.1
