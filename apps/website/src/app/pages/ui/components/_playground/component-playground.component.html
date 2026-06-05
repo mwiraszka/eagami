@@ -51,6 +51,14 @@
                     (changed)="emit(knob.name, $event)" />
                 }
               }
+              @case ('icon') {
+                <ea-dropdown
+                  [label]="knobLabel(knob.name)"
+                  [options]="optionsFor(knob.name)"
+                  [value]="stringValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (changed)="emit(knob.name, $event)" />
+              }
               @case ('color') {
                 <ea-color-picker
                   [label]="knobLabel(knob.name)"
@@ -61,6 +69,14 @@
               @case ('number') {
                 <ea-input
                   type="number"
+                  autocomplete="off"
+                  [label]="knobLabel(knob.name)"
+                  [value]="stringValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (valueChange)="emit(knob.name, $event)" />
+              }
+              @case ('content') {
+                <ea-input
                   autocomplete="off"
                   [label]="knobLabel(knob.name)"
                   [value]="stringValue(knob.name)"

@@ -846,6 +846,8 @@ export const esES: WebMessages = {
           alert: {
             variant: 'Variante',
             dismissible: 'Descartable',
+            size: 'Tamaño',
+            icon: 'Icono (sustituir)',
           },
           avatar: {
             size: 'Tamaño',
@@ -1035,6 +1037,7 @@ export const esES: WebMessages = {
             focus: 'Lleva el foco del teclado al campo nativo subyacente.',
             togglePasswordVisibility:
               'Alterna la visibilidad de la contraseña para los campos type="password".',
+            icon: 'Componente de icono inicial renderizado antes del texto.',
           },
           alert: {
             dismissible:
@@ -1046,6 +1049,8 @@ export const esES: WebMessages = {
             dismissed:
               'Se emite cuando el usuario descarta la alerta mediante su botón de cierre.',
             dismiss: 'Oculta la alerta y emite el evento dismissed.',
+            size: 'Escala conjuntamente el texto, el icono y el espaciado.',
+            icon: 'Sustituye el icono de estado predeterminado de la variante por cualquier componente de icono.',
           },
           avatar: {
             src: 'URL de la imagen que mostrar; recurre a las iniciales y, después, a un icono de usuario genérico.',

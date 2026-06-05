@@ -1,7 +1,7 @@
-import { AlertComponent, type AlertVariant } from '@eagami/ui';
+import { AlertComponent, type AlertSize, type AlertVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -10,6 +10,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface AlertKnobState {
@@ -17,7 +18,9 @@ interface AlertKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   variant: AlertVariant;
+  size: AlertSize;
   dismissible: boolean;
+  icon: string;
 }
 
 const SLUG = 'alert';
@@ -30,9 +33,15 @@ const SLUG = 'alert';
 })
 export class AlertDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.alert, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.alert, UI_API[SLUG]),
+    iconKnob(['info', 'check', 'alert-circle', 'bell', 'star', 'heart']),
+  ];
   protected readonly state = signal<AlertKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.alert) as AlertKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

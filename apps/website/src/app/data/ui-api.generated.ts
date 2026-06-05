@@ -85,6 +85,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'size',
+        type: 'AlertSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'variant',
         type: 'AlertVariant',
         default: "'default'",
@@ -1831,6 +1845,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'hint',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,

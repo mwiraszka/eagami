@@ -835,6 +835,8 @@ export const en: WebMessages = {
           alert: {
             variant: 'Variant',
             dismissible: 'Dismissible',
+            size: 'Size',
+            icon: 'Icon (Override)',
           },
           avatar: {
             size: 'Size',
@@ -1022,6 +1024,7 @@ export const en: WebMessages = {
             focus: 'Moves keyboard focus to the underlying native field.',
             togglePasswordVisibility:
               'Toggles the password reveal state for type="password" inputs.',
+            icon: 'Leading icon component rendered before the text.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1029,6 +1032,8 @@ export const en: WebMessages = {
             visible: 'Whether the alert is shown, two-way bindable via [(visible)].',
             dismissed: 'Fires when the user dismisses the alert via its close button.',
             dismiss: 'Hides the alert and emits the dismissed event.',
+            size: 'Scales the text, icon, and gap together.',
+            icon: "Overrides the variant's default status icon with any icon component.",
           },
           avatar: {
             src: 'Image URL to display; falls back to initials, then a generic user icon.',

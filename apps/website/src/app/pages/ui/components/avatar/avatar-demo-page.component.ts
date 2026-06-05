@@ -24,6 +24,7 @@ interface AvatarKnobState {
 }
 
 const SLUG = 'avatar';
+const DEMO_SRC = 'https://i.pravatar.cc/150?img=12';
 
 @Component({
   selector: 'web-avatar-demo-page',
@@ -38,9 +39,7 @@ const SLUG = 'avatar';
 export class AvatarDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.avatar, UI_API[SLUG]);
-  protected readonly state = signal<AvatarKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.avatar) as AvatarKnobState,
-  );
+  protected readonly state = signal<AvatarKnobState>(this.initialState());
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the
@@ -49,8 +48,13 @@ export class AvatarDemoPageComponent {
   }
 
   protected reset(): void {
-    this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.avatar) as AvatarKnobState,
-    );
+    this.state.set(this.initialState());
+  }
+
+  private initialState(): AvatarKnobState {
+    return {
+      ...initialKnobState(this.knobs, PLAYGROUND_KNOBS.avatar),
+      src: DEMO_SRC,
+    } as AvatarKnobState;
   }
 }

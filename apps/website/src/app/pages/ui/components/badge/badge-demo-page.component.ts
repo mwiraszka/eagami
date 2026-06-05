@@ -16,11 +16,13 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { textKnob } from '../_playground/text-knob';
 
 interface BadgeKnobState {
   // Index signature lets this typed state satisfy the playground's generic
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
+  text: string;
   variant: BadgeVariant;
   size: BadgeSize;
   shape: BadgeShape;
@@ -36,7 +38,10 @@ const SLUG = 'badge';
 })
 export class BadgeDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.badge, UI_API[SLUG]);
+  protected readonly knobs = [
+    textKnob('Badge'),
+    ...buildKnobs(PLAYGROUND_KNOBS.badge, UI_API[SLUG]),
+  ];
   protected readonly state = signal<BadgeKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.badge) as BadgeKnobState,
   );

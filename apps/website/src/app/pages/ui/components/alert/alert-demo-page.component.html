@@ -10,7 +10,9 @@
     (resetClicked)="reset()">
     <ea-alert
       [variant]="state().variant"
-      [dismissible]="state().dismissible">
+      [size]="state().size"
+      [dismissible]="state().dismissible"
+      [icon]="iconComponent()">
       This is an alert message.
     </ea-alert>
   </web-component-playground>

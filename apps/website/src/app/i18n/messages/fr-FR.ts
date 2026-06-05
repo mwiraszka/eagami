@@ -855,6 +855,8 @@ export const frFR: WebMessages = {
           alert: {
             variant: 'Variante',
             dismissible: 'Fermable',
+            size: 'Taille',
+            icon: 'Icône (remplacer)',
           },
           avatar: {
             size: 'Taille',
@@ -1044,6 +1046,7 @@ export const frFR: WebMessages = {
             focus: 'Place le focus clavier sur le champ natif sous-jacent.',
             togglePasswordVisibility:
               'Bascule l’affichage du mot de passe pour les champs type="password".',
+            icon: 'Composant d’icône de tête affiché avant le texte.',
           },
           alert: {
             dismissible:
@@ -1055,6 +1058,8 @@ export const frFR: WebMessages = {
             dismissed:
               'Émis lorsque l’utilisateur ferme l’alerte via son bouton de fermeture.',
             dismiss: 'Masque l’alerte et émet l’événement dismissed.',
+            size: 'Met à l’échelle le texte, l’icône et l’espacement ensemble.',
+            icon: 'Remplace l’icône de statut par défaut de la variante par n’importe quel composant d’icône.',
           },
           avatar: {
             src: 'URL de l’image à afficher ; bascule sur les initiales, puis sur une icône d’utilisateur générique.',

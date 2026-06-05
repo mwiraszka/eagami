@@ -853,6 +853,8 @@ export const pl: WebMessages = {
           alert: {
             variant: 'Wariant',
             dismissible: 'Z możliwością zamknięcia',
+            size: 'Rozmiar',
+            icon: 'Ikona (zastąp)',
           },
           avatar: {
             size: 'Rozmiar',
@@ -1040,6 +1042,7 @@ export const pl: WebMessages = {
             focus: 'Przenosi fokus klawiatury na natywne pole bazowe.',
             togglePasswordVisibility:
               'Przełącza widoczność hasła dla pól type="password".',
+            icon: 'Komponent ikony wiodącej renderowany przed tekstem.',
           },
           alert: {
             dismissible:
@@ -1049,6 +1052,8 @@ export const pl: WebMessages = {
               'Określa, czy alert jest widoczny, dwukierunkowo wiązalne przez [(visible)].',
             dismissed: 'Emitowane, gdy użytkownik zamknie alert przyciskiem zamknięcia.',
             dismiss: 'Ukrywa alert i emituje zdarzenie dismissed.',
+            size: 'Skaluje razem tekst, ikonę i odstęp.',
+            icon: 'Zastępuje domyślną ikonę statusu wariantu dowolnym komponentem ikony.',
           },
           avatar: {
             src: 'Adres URL obrazu do wyświetlenia; w razie braku używa inicjałów, a następnie ogólnej ikony użytkownika.',
