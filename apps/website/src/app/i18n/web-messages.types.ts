@@ -674,6 +674,23 @@ export interface WebMessages {
           avatarUpdatedToast: string;
         };
       };
+      playground: {
+        controls: string;
+        reset: string;
+        code: string;
+        apiReference: string;
+        inputs: string;
+        outputs: string;
+        methods: string;
+        colName: string;
+        colType: string;
+        colDefault: string;
+        colDescription: string;
+        requiredBadge: string;
+        twoWayBadge: string;
+        knobLabels: { readonly [slug: string]: { readonly [prop: string]: string } };
+        descriptions: { readonly [slug: string]: { readonly [member: string]: string } };
+      };
       sharedOptions: {
         fruitOptions: ReadonlyArray<{ value: string; label: string }>;
         viewOptions: ReadonlyArray<{ value: string; label: string }>;
