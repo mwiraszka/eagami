@@ -46,7 +46,7 @@
 
     &:hover {
       color: var(--color-text-primary);
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
     }
 
     &:focus-visible {
@@ -171,7 +171,7 @@
   }
 
   &--hoverable &__body &__row:not(&__row--empty):hover {
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-state-hover);
   }
 
   &--bordered &__cell {

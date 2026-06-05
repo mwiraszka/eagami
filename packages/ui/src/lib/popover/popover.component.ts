@@ -13,6 +13,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { uniqueId } from '../unique-id';
 import {
   type PopoverPlacement,
   type PopoverPositionResult,
@@ -94,9 +95,7 @@ export class PopoverComponent {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
 
   /** DOM id for the surface so trigger elements can reference it via aria-controls. */
-  readonly surfaceId = input<string>(
-    `ea-popover-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly surfaceId = input<string>(uniqueId('ea-popover'));
 
   /** Gap in px between the anchor and the popover. */
   readonly offset = input<number>(0);

@@ -42,7 +42,7 @@
 
     &:hover:not(:disabled) {
       border-color: var(--color-border-focus);
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-secondary);
     }
 
@@ -170,7 +170,7 @@
     transition: var(--transition-colors);
 
     &:hover:not(:disabled) {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
 

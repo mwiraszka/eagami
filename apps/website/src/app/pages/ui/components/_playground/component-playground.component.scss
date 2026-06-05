@@ -1,0 +1,69 @@
+:host {
+  display: block;
+}
+
+.playground {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.playground__card {
+  width: 100%;
+}
+
+.playground__preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 120px;
+}
+
+.playground__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+
+  & + & {
+    margin-top: 32px;
+  }
+}
+
+.playground__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.playground__heading {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.playground__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.playground__control {
+  min-width: 0;
+}
+
+.playground__code {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  // Children stretch to the section width (no align-items: flex-start) so a wide
+  // snippet stays bounded and scrolls inside __code instead of growing the card.
+  min-width: 0;
+}

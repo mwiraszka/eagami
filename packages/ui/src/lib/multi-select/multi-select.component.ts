@@ -26,6 +26,7 @@ import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
 import { TagComponent } from '../tag/tag.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the multi-select trigger. */
 export type MultiSelectSize = 'sm' | 'md' | 'lg';
@@ -84,9 +85,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly selectAll = input<boolean>(true);
   /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap. */
   readonly maxVisibleChips = input<number>(3);
-  readonly id = input<string>(
-    `ea-multi-select-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly id = input<string>(uniqueId('ea-multi-select'));
 
   /** Selected option values, in the original options order. */
   readonly value = model<readonly string[]>([]);

@@ -26,7 +26,8 @@
     "paths": {
       "@app/*": ["app/*"],
       "@env": ["environments/environment"],
-      "@eagami/ui": ["../../../packages/ui/src/public-api"]
+      "@eagami/ui": ["../../../packages/ui/src/public-api"],
+      "@eagami/ui-knobs": ["../../../packages/ui/src/playground-knobs"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

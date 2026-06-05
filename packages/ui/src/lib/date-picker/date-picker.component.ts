@@ -24,6 +24,7 @@ import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the date picker trigger. */
 export type DatePickerSize = 'sm' | 'md' | 'lg';
@@ -92,7 +93,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly format = input<DatePickerFormat>('medium');
   readonly weekStartsOn = input<DatePickerWeekStart>(1);
   readonly locale = input<string | undefined>(undefined);
-  readonly id = input<string>(`ea-date-picker-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-date-picker'));
 
   readonly value = model<Date | null>(null);
 

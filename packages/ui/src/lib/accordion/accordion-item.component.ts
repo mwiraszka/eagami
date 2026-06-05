@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
+import { uniqueId } from '../unique-id';
 import { AccordionComponent } from './accordion.component';
 
 /**
@@ -27,9 +28,7 @@ export class AccordionItemComponent {
   readonly value = input.required<string>();
   readonly label = input.required<string>();
   readonly disabled = input<boolean>(false);
-  readonly id = input<string>(
-    `ea-accordion-item-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly id = input<string>(uniqueId('ea-accordion-item'));
 
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
 

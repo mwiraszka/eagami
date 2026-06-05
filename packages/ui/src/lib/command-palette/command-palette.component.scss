@@ -71,7 +71,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-state-hover);
   }
 }
 
@@ -129,11 +129,11 @@
   // Pointer-hover paint, kept distinct from the `--active` highlight so keyboard
   // nav and mouse hover don't collapse into one state
   &:hover:not(.ea-command-palette__item--disabled) {
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-state-hover);
   }
 
   &--active {
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-state-active);
   }
 
   &--disabled {

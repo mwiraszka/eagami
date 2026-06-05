@@ -27,6 +27,8 @@ export class UiComponentDemoLayoutComponent {
   protected readonly messages = this.i18n.messages;
 
   readonly slug = input.required<string>();
+  /** Skip the built-in demo card so the page can provide its own surfaces. */
+  readonly bare = input<boolean>(false);
 
   protected readonly component = computed(() =>
     UI_COMPONENTS.find(c => c.slug === this.slug()),

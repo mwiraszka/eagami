@@ -76,7 +76,7 @@
 
     &:hover:not(.ea-segmented__option--selected):not(.ea-segmented__option--disabled) {
       color: var(--color-text-primary);
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-active);
     }
 
     &:focus-visible {

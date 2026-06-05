@@ -16,6 +16,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { PopoverComponent } from '../popover/popover.component';
+import { uniqueId } from '../unique-id';
 
 /** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
@@ -44,7 +45,7 @@ export class MenuComponent {
   readonly ariaLabel = input<string | undefined>(undefined, {
     alias: 'aria-label',
   });
-  readonly id = input<string>(`ea-menu-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-menu'));
 
   /** Accessible label for the menu, falling back to the active locale. */
   readonly resolvedAriaLabel = computed(

@@ -25,6 +25,7 @@ import { ImageIconComponent } from '../icons/image.component';
 import { MusicIconComponent } from '../icons/music.component';
 import { UploadCloudIconComponent } from '../icons/upload-cloud.component';
 import { XIconComponent } from '../icons/x.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the file uploader. */
 export type FileUploaderSize = 'sm' | 'md' | 'lg';
@@ -107,9 +108,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
    * runs. When unset, no progress bar is rendered.
    */
   readonly progress = input<ReadonlyMap<File, number> | undefined>(undefined);
-  readonly id = input<string>(
-    `ea-file-uploader-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly id = input<string>(uniqueId('ea-file-uploader'));
 
   /** Two-way binding to the current `File[]`. Also written by Angular forms. */
   readonly value = model<readonly File[]>([]);

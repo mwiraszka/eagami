@@ -12,6 +12,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size shared by all radios in the group. */
 export type RadioSize = 'sm' | 'md' | 'lg';
@@ -38,8 +39,8 @@ export type RadioOrientation = 'vertical' | 'horizontal';
   ],
 })
 export class RadioGroupComponent implements ControlValueAccessor {
-  readonly id = input<string>(`ea-radio-group-${Math.random().toString(36).slice(2, 9)}`);
-  readonly name = input<string>(`ea-radio-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-radio-group'));
+  readonly name = input<string>(uniqueId('ea-radio'));
   readonly size = input<RadioSize>('md');
   readonly orientation = input<RadioOrientation>('vertical');
   readonly disabled = input<boolean>(false);

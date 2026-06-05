@@ -15,6 +15,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { uniqueId } from '../unique-id';
 
 /** Edge of the viewport from which the drawer slides in. */
 export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
@@ -46,7 +47,7 @@ export class DrawerComponent {
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
-  readonly id = input<string>(`ea-drawer-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-drawer'));
 
   readonly open = model<boolean>(false);
 

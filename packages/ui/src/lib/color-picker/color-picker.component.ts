@@ -22,6 +22,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { DropletIconComponent } from '../icons/droplet.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the color picker trigger. */
 export type ColorPickerSize = 'sm' | 'md' | 'lg';
@@ -125,9 +126,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly format = input<ColorPickerFormat>('hex');
   /** Preset swatches shown at the bottom of the popover. Pass an empty array to hide. */
   readonly presets = input<readonly string[]>(DEFAULT_PRESETS);
-  readonly id = input<string>(
-    `ea-color-picker-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly id = input<string>(uniqueId('ea-color-picker'));
 
   readonly value = model<string | null>(null);
 

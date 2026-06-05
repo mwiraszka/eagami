@@ -7,6 +7,7 @@ import {
   input,
 } from '@angular/core';
 
+import { uniqueId } from '../unique-id';
 import { RadioGroupComponent } from './radio-group.component';
 
 /**
@@ -27,7 +28,7 @@ export class RadioComponent {
   readonly value = input.required<string>();
   readonly label = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
-  readonly id = input<string>(`ea-radio-opt-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-radio-opt'));
 
   readonly isChecked = computed(() => this.group.value() === this.value());
   readonly isDisabled = computed(() => this.disabled() || this.group.isDisabled());

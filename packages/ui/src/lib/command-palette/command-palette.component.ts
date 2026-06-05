@@ -17,6 +17,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
+import { uniqueId } from '../unique-id';
 import type { CommandPaletteItem } from './command-palette.types';
 
 interface GroupedItems {
@@ -66,9 +67,7 @@ export class CommandPaletteComponent {
 
   protected readonly query = signal<string>('');
 
-  protected readonly listboxId = `ea-command-palette-listbox-${Math.random()
-    .toString(36)
-    .slice(2, 9)}`;
+  protected readonly listboxId = uniqueId('ea-command-palette-listbox');
 
   /**
    * Items bucketed by `group`, then flattened back into display order

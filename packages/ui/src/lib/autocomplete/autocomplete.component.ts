@@ -19,6 +19,7 @@ import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import type { SelectOption } from '../select-option';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the autocomplete input. */
 export type AutocompleteSize = 'sm' | 'md' | 'lg';
@@ -60,9 +61,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly minLength = input<number>(0);
   readonly maxResults = input<number>(10);
   readonly emptyMessage = input<string | undefined>(undefined);
-  readonly id = input<string>(
-    `ea-autocomplete-${Math.random().toString(36).slice(2, 9)}`,
-  );
+  readonly id = input<string>(uniqueId('ea-autocomplete'));
 
   readonly value = model<string>('');
 

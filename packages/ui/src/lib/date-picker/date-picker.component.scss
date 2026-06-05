@@ -126,7 +126,7 @@
     }
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
   }
@@ -173,7 +173,7 @@
     transition: var(--transition-colors);
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
 
@@ -244,7 +244,7 @@
     transition: var(--transition-colors);
 
     &:hover:not(:disabled) {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
     }
 
     &:focus-visible {
@@ -262,7 +262,7 @@
     }
 
     &--focused:not(.ea-date-picker__day--selected) {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-active);
     }
 
     &--selected {

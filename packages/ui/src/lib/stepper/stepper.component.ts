@@ -12,6 +12,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { CheckIconComponent } from '../icons/check.component';
+import { uniqueId } from '../unique-id';
 import type { StepComponent } from './step.component';
 
 /** Visual size of the stepper. */
@@ -43,7 +44,7 @@ export class StepperComponent {
   readonly linear = input<boolean>(false);
   readonly size = input<StepperSize>('md');
   readonly disabled = input<boolean>(false);
-  readonly id = input<string>(`ea-stepper-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-stepper'));
 
   /** Fires with the new active step index when the user navigates. */
   readonly changed = output<number>();

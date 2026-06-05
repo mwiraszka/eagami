@@ -22,6 +22,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
 import { XIconComponent } from '../icons/x.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the input. */
 export type InputSize = 'sm' | 'md' | 'lg';
@@ -67,22 +68,38 @@ export class InputComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
   protected readonly i18n = inject(EagamiI18nService);
 
+  /** Text label rendered above the field. */
   readonly label = input<string | undefined>(undefined);
+  /** Native input type; `password` adds a built-in show/hide toggle. */
   readonly type = input<InputType>('text');
+  /** Placeholder shown while the field is empty. */
   readonly placeholder = input<string>('');
+  /** Visual size of the field. */
   readonly size = input<InputSize>('md');
+  /** Helper text shown below the field; hidden while an error is showing. */
   readonly hint = input<string | undefined>(undefined);
+  /** Error message shown below the field; replaces the hint and flags the field invalid. */
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Disables the field. */
   readonly disabled = input<boolean>(false);
+  /** Renders the field read-only. */
   readonly readonly = input<boolean>(false);
+  /** Marks the field as required. */
   readonly required = input<boolean>(false);
+  /** Value for the native `autocomplete` attribute. */
   readonly autocomplete = input<string | undefined>(undefined);
+  /** `id` of a `<datalist>` to associate for native suggestions. */
   readonly list = input<string | undefined>(undefined);
+  /** Focuses the field once, after it first renders. */
   readonly autofocus = input<boolean>(false);
+  /** Shows the reveal toggle for `password` inputs. */
   readonly showPasswordToggle = input<boolean>(true);
+  /** Shows a clear button while the field has a value. */
   readonly clearable = input<boolean>(false);
-  readonly id = input<string>(`ea-input-${Math.random().toString(36).slice(2, 9)}`);
+  /** `id` applied to the native input and label `for`; auto-generated when omitted. */
+  readonly id = input<string>(uniqueId('ea-input'));
 
+  /** Current field value; two-way bindable via `[(value)]`. */
   readonly value = model<string>('');
 
   readonly isFocused = signal(false);

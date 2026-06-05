@@ -1,0 +1,76 @@
+@let t = messages().ui.component.playground;
+
+@if (api(); as componentApi) {
+  <ea-accordion [multi]="true">
+    @if (componentApi.inputs.length) {
+      <ea-accordion-item
+        value="inputs"
+        [label]="t.inputs">
+        <ea-data-table
+          class="api-reference__table"
+          density="compact"
+          [columns]="inputColumns()"
+          [data]="componentApi.inputs"
+          [stickyHeader]="true"
+          [hoverable]="false" />
+      </ea-accordion-item>
+    }
+
+    @if (componentApi.outputs.length) {
+      <ea-accordion-item
+        value="outputs"
+        [label]="t.outputs">
+        <ea-data-table
+          class="api-reference__table"
+          density="compact"
+          [columns]="outputColumns()"
+          [data]="componentApi.outputs"
+          [stickyHeader]="true"
+          [hoverable]="false" />
+      </ea-accordion-item>
+    }
+
+    @if (componentApi.methods.length) {
+      <ea-accordion-item
+        value="methods"
+        [label]="t.methods">
+        <ea-data-table
+          class="api-reference__table"
+          density="compact"
+          [columns]="methodColumns()"
+          [data]="componentApi.methods"
+          [stickyHeader]="true"
+          [hoverable]="false" />
+      </ea-accordion-item>
+    }
+  </ea-accordion>
+}
+
+<ng-template
+  #nameCell
+  let-row
+  let-value="value">
+  <div class="api-reference__name">
+    <code class="api-reference__code">{{ value }}</code>
+    @if (row['required']) {
+      <span class="api-reference__badge">{{ t.requiredBadge }}</span>
+    }
+    @if (row['twoWay']) {
+      <span class="api-reference__badge">{{ t.twoWayBadge }}</span>
+    }
+  </div>
+</ng-template>
+
+<ng-template
+  #codeCell
+  let-value="value">
+  @if (value) {
+    <code class="api-reference__code">{{ value }}</code>
+  }
+</ng-template>
+
+<ng-template
+  #descCell
+  let-row>
+  {{ describe(row['name']) }}
+</ng-template>

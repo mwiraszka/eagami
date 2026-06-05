@@ -127,7 +127,7 @@
     }
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
   }
@@ -173,7 +173,7 @@
     transition: var(--transition-colors);
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
 
@@ -255,7 +255,7 @@
     transition: var(--transition-colors);
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
 

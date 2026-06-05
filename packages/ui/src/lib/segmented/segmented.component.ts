@@ -16,6 +16,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import type { SelectOption } from '../select-option';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the segmented control. */
 export type SegmentedSize = 'sm' | 'md' | 'lg';
@@ -52,7 +53,7 @@ export class SegmentedComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
-  readonly id = input<string>(`ea-segmented-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-segmented'));
 
   readonly value = model<string>('');
   /** Fires with the new value when the user selects a different option. */

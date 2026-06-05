@@ -20,6 +20,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the dropdown trigger. */
 export type DropdownSize = 'sm' | 'md' | 'lg';
@@ -64,7 +65,7 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
-  readonly id = input<string>(`ea-dropdown-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-dropdown'));
 
   readonly value = model<string>('');
 
