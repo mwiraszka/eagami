@@ -11,12 +11,16 @@
       </p>
     </header>
 
-    <ea-card
-      class="ui-component__demo"
-      variant="elevated">
-      <section class="demo-section">
-        <ng-content />
-      </section>
-    </ea-card>
+    @if (bare()) {
+      <ng-content select="[playgroundHost]" />
+    } @else {
+      <ea-card
+        class="ui-component__demo"
+        variant="elevated">
+        <section class="demo-section">
+          <ng-content />
+        </section>
+      </ea-card>
+    }
   </article>
 }

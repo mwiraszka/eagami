@@ -1,3 +1,12 @@
+// min-width:0 lets the snippet shrink inside a flex/grid parent so a wide line
+// scrolls inside __code (overflow-x) instead of stretching the whole layout.
+// The copy button is positioned to this non-scrolling box, so it stays pinned
+// to the top-right no matter how far the code is scrolled.
+:host {
+  display: block;
+  min-width: 0;
+}
+
 .code-snippet {
   position: relative;
 }
@@ -6,9 +15,11 @@
   padding: 16px;
   padding-right: 56px;
   overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
   border-radius: 8px;
   font-size: 14px;
   line-height: 1.5;
+  white-space: pre;
   font-family: var(--font-family-mono);
   background-color: var(--color-bg-muted);
   color: var(--color-text-primary);

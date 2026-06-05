@@ -1,0 +1,99 @@
+@let chrome = messages().ui.component.playground;
+
+<div class="playground">
+  <ea-card
+    class="playground__card"
+    variant="outlined">
+    <div class="playground__preview">
+      <ng-content />
+    </div>
+  </ea-card>
+
+  <ea-card
+    class="playground__card"
+    variant="outlined">
+    <section class="playground__section">
+      <div class="playground__section-header">
+        <h2 class="playground__heading">{{ chrome.controls }}</h2>
+        <ea-button
+          variant="ghost"
+          size="sm"
+          (clicked)="resetClicked.emit()">
+          {{ chrome.reset }}
+        </ea-button>
+      </div>
+
+      <div class="playground__grid">
+        @for (knob of knobs(); track knob.name) {
+          <div class="playground__control">
+            @switch (knob.control) {
+              @case ('boolean') {
+                <ea-switch
+                  [label]="knobLabel(knob.name)"
+                  [checked]="boolValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (changed)="emit(knob.name, $event)" />
+              }
+              @case ('select') {
+                @if (knob.options.length <= 4) {
+                  <ea-segmented
+                    [label]="knobLabel(knob.name)"
+                    [options]="optionsFor(knob.name)"
+                    [value]="stringValue(knob.name)"
+                    [disabled]="!isEnabled(knob)"
+                    (changed)="emit(knob.name, $event)" />
+                } @else {
+                  <ea-dropdown
+                    [label]="knobLabel(knob.name)"
+                    [options]="optionsFor(knob.name)"
+                    [value]="stringValue(knob.name)"
+                    [disabled]="!isEnabled(knob)"
+                    (changed)="emit(knob.name, $event)" />
+                }
+              }
+              @case ('color') {
+                <ea-color-picker
+                  [label]="knobLabel(knob.name)"
+                  [value]="stringValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (changed)="emit(knob.name, $event ?? '')" />
+              }
+              @case ('number') {
+                <ea-input
+                  type="number"
+                  autocomplete="off"
+                  [label]="knobLabel(knob.name)"
+                  [value]="stringValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (valueChange)="emit(knob.name, $event)" />
+              }
+              @default {
+                <ea-input
+                  autocomplete="off"
+                  [label]="knobLabel(knob.name)"
+                  [value]="stringValue(knob.name)"
+                  [disabled]="!isEnabled(knob)"
+                  (valueChange)="emit(knob.name, $event)" />
+              }
+            }
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="playground__section">
+      <h2 class="playground__heading">{{ chrome.code }}</h2>
+      <div class="playground__code">
+        <web-code-snippet [code]="snippet().markup" />
+        @if (snippet().css) {
+          <web-code-snippet [code]="snippet().css" />
+        }
+      </div>
+    </section>
+
+    <section class="playground__section">
+      <h2 class="playground__heading">{{ chrome.apiReference }}</h2>
+      <web-api-reference [slug]="slug()" />
+    </section>
+  </ea-card>
+</div>

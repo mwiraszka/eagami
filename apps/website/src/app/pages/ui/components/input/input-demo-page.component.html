@@ -1,78 +1,25 @@
-<web-ui-component-demo-layout slug="input">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.defaultLabel"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
-    [(value)]="inputValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.defaultLabel"
-    [hint]="messages().ui.component.demos.input.hintGuidance"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.defaultLabel"
-    [errorMsg]="messages().ui.component.demos.input.errorRequired"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-input
-      size="sm"
-      [label]="messages().ui.component.common.small"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-    <ea-input
-      size="md"
-      [label]="messages().ui.component.common.medium"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-    <ea-input
-      size="lg"
-      [label]="messages().ui.component.common.large"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.clearable }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.defaultLabel"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
-    [clearable]="true" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.defaultLabel"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder"
-    [disabled]="true" />
-  <ea-input
-    [label]="messages().ui.component.demos.input.readonlyLabel"
-    [readonly]="true"
-    [value]="messages().ui.component.demos.input.readonlyValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.password }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.passwordLabel"
-    type="password"
-    autocomplete="current-password"
-    [placeholder]="messages().ui.component.demos.input.passwordPlaceholder" />
-  <ea-input
-    [label]="messages().ui.component.demos.input.passwordNoToggleLabel"
-    type="password"
-    [showPasswordToggle]="false"
-    [placeholder]="messages().ui.component.demos.input.passwordNoTogglePlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.autocompleteSection }}</h2>
-  <ea-input
-    [label]="messages().ui.component.demos.input.emailLabel"
-    type="email"
-    autocomplete="email"
-    list="demo-email-suggestions"
-    [placeholder]="messages().ui.component.demos.input.emailPlaceholder" />
-  <datalist id="demo-email-suggestions">
-    <option value="ada.lovelace@example.com"></option>
-    <option value="alan.turing@example.com"></option>
-    <option value="grace.hopper@example.com"></option>
-    <option value="hedy.lamarr@example.com"></option>
-    <option value="katherine.johnson@example.com"></option>
-  </datalist>
+      class="input-demo__field"
+      [label]="state().label"
+      [placeholder]="state().placeholder"
+      [size]="state().size"
+      [type]="state().type"
+      [disabled]="state().disabled"
+      [readonly]="state().readonly"
+      [required]="state().required"
+      [autofocus]="state().autofocus"
+      [showPasswordToggle]="state().showPasswordToggle"
+      [clearable]="state().clearable"
+      [autocomplete]="state().autocomplete" />
+  </web-component-playground>
 </web-ui-component-demo-layout>
