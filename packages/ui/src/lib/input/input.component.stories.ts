@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { InputComponent } from './input.component';
+import { INPUT_KNOBS } from './input.component.knobs';
 
 const meta: Meta<InputComponent> = {
   title: 'Components/Input',
@@ -10,34 +11,8 @@ const meta: Meta<InputComponent> = {
     props: args,
     template: `<ea-input ${argsToTemplate(args)} class="story-narrow"></ea-input>`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
-    },
-    autocomplete: { control: 'text' },
-    autofocus: { control: 'boolean' },
-    showPasswordToggle: { control: 'boolean' },
-    clearable: { control: 'boolean' },
-    focused: { action: 'focused' },
-    blurred: { action: 'blurred' },
-  },
-  args: {
-    label: 'Label',
-    placeholder: 'Enter text…',
-    size: 'md',
-    type: 'text',
-    disabled: false,
-    readonly: false,
-    required: false,
-    autofocus: false,
-    showPasswordToggle: true,
-    clearable: false,
-  },
+  argTypes: INPUT_KNOBS.argTypes,
+  args: INPUT_KNOBS.args,
 };
 
 export default meta;

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "include": [
+    "src/lib/**/*.component.ts",
+    "src/lib/**/*.directive.ts",
+    "src/lib/**/*.service.ts"
+  ],
+  "exclude": [
+    "src/lib/icons/**",
+    "**/*.spec.ts",
+    "**/*.stories.ts",
+    "**/*.knobs.ts"
+  ]
+}
