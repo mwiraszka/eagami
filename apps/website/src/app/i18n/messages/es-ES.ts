@@ -843,6 +843,170 @@ export const esES: WebMessages = {
             clearable: 'Con botón de borrado',
             autocomplete: 'Autocompletar',
           },
+          alert: {
+            variant: 'Variante',
+            dismissible: 'Descartable',
+          },
+          avatar: {
+            size: 'Tamaño',
+            shape: 'Forma',
+            src: 'Origen de la imagen',
+            initials: 'Iniciales',
+            alt: 'Texto alternativo',
+          },
+          badge: {
+            variant: 'Variante',
+            size: 'Tamaño',
+            shape: 'Forma',
+          },
+          button: {
+            variant: 'Variante',
+            size: 'Tamaño',
+            type: 'Tipo',
+            disabled: 'Deshabilitado',
+            loading: 'Cargando',
+            fullWidth: 'Ancho completo',
+          },
+          card: {
+            variant: 'Variante',
+            padding: 'Relleno',
+            headerAlign: 'Alineación del encabezado',
+            fullWidth: 'Ancho completo',
+            headerDivider: 'Separador del encabezado',
+          },
+          checkbox: {
+            label: 'Etiqueta',
+            count: 'Recuento',
+            size: 'Tamaño',
+            disabled: 'Deshabilitado',
+            required: 'Obligatorio',
+            indeterminate: 'Indeterminado',
+          },
+          'code-input': {
+            size: 'Tamaño',
+            length: 'Longitud',
+            label: 'Etiqueta',
+            placeholder: 'Marcador de posición',
+            disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
+            required: 'Obligatorio',
+          },
+          'color-picker': {
+            label: 'Etiqueta',
+            placeholder: 'Marcador de posición',
+            size: 'Tamaño',
+            format: 'Formato',
+            showAlpha: 'Mostrar alfa',
+            disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
+            required: 'Obligatorio',
+          },
+          divider: {
+            orientation: 'Orientación',
+            label: 'Etiqueta',
+          },
+          'eagami-wordmark': {
+            variant: 'Variante',
+            layout: 'Disposición',
+            size: 'Tamaño',
+          },
+          'empty-state': {
+            size: 'Tamaño',
+            headingLevel: 'Nivel de encabezado',
+            title: 'Título',
+            description: 'Descripción',
+          },
+          paginator: {
+            align: 'Alineación',
+            showPageSizeSelector: 'Mostrar selector de tamaño de página',
+            showRangeLabel: 'Mostrar etiqueta de rango',
+            disabled: 'Deshabilitado',
+            totalItems: 'Total de elementos',
+          },
+          'progress-bar': {
+            variant: 'Variante',
+            size: 'Tamaño',
+            value: 'Valor',
+            max: 'Máximo',
+            showValue: 'Mostrar valor',
+            indeterminate: 'Indeterminado',
+            label: 'Etiqueta',
+          },
+          radio: {
+            label: 'Etiqueta',
+            disabled: 'Deshabilitado',
+          },
+          'range-slider': {
+            label: 'Etiqueta',
+            hint: 'Ayuda',
+            errorMsg: 'Mensaje de error',
+            min: 'Mínimo',
+            max: 'Máximo',
+            step: 'Paso',
+            size: 'Tamaño',
+            showValue: 'Mostrar valor',
+            showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
+            disabled: 'Deshabilitado',
+            required: 'Obligatorio',
+          },
+          rating: {
+            label: 'Etiqueta',
+            size: 'Tamaño',
+            min: 'Mínimo',
+            max: 'Máximo',
+            allowHalf: 'Permitir medios pasos',
+            readonly: 'Solo lectura',
+            disabled: 'Deshabilitado',
+            required: 'Obligatorio',
+            clearable: 'Con botón de borrado',
+          },
+          skeleton: {
+            variant: 'Variante',
+            animated: 'Animado',
+            width: 'Ancho',
+            height: 'Alto',
+          },
+          slider: {
+            size: 'Tamaño',
+            min: 'Mín.',
+            max: 'Máx.',
+            step: 'Paso',
+            showValue: 'Mostrar valor',
+            showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
+            disabled: 'Deshabilitado',
+            required: 'Obligatorio',
+            hasError: 'Estado de error',
+            label: 'Etiqueta',
+          },
+          spinner: {
+            size: 'Tamaño',
+            label: 'Etiqueta',
+          },
+          switch: {
+            label: 'Etiqueta',
+            size: 'Tamaño',
+            disabled: 'Deshabilitado',
+            required: 'Obligatorio',
+          },
+          tag: {
+            variant: 'Variante',
+            size: 'Tamaño',
+            removable: 'Eliminable',
+            disabled: 'Deshabilitado',
+            removeLabel: 'Etiqueta de eliminación',
+          },
+          textarea: {
+            label: 'Etiqueta',
+            placeholder: 'Marcador de posición',
+            size: 'Tamaño',
+            resize: 'Redimensionar',
+            rows: 'Filas',
+            maxlength: 'Longitud máxima',
+            maxHeight: 'Altura máxima',
+            disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
+            required: 'Obligatorio',
+          },
         },
         descriptions: {
           input: {
@@ -871,6 +1035,321 @@ export const esES: WebMessages = {
             focus: 'Lleva el foco del teclado al campo nativo subyacente.',
             togglePasswordVisibility:
               'Alterna la visibilidad de la contraseña para los campos type="password".',
+          },
+          alert: {
+            dismissible:
+              'Muestra un botón de cierre que permite al usuario descartar la alerta.',
+            variant:
+              'Esquema de color semántico que determina el icono y la paleta de la alerta.',
+            visible:
+              'Indica si la alerta se muestra, vinculable en dos sentidos mediante [(visible)].',
+            dismissed:
+              'Se emite cuando el usuario descarta la alerta mediante su botón de cierre.',
+            dismiss: 'Oculta la alerta y emite el evento dismissed.',
+          },
+          avatar: {
+            src: 'URL de la imagen que mostrar; recurre a las iniciales y, después, a un icono de usuario genérico.',
+            alt: 'Texto alternativo para la imagen del avatar.',
+            initials: 'Iniciales mostradas cuando no se proporciona un origen de imagen.',
+            size: 'Preajuste de diámetro del avatar.',
+            shape: 'Contorno del avatar: redondo o cuadrado con esquinas redondeadas.',
+          },
+          badge: {
+            variant: 'Esquema de color semántico de la insignia.',
+            size: 'Tamaño visual de la insignia.',
+            shape:
+              'Forma exterior de la insignia (pill se ajusta al contenido, pin se muestra como un círculo para caracteres individuales).',
+          },
+          button: {
+            variant: 'Estilo visual del botón, que determina su color y énfasis.',
+            size: 'Tamaño visual del botón.',
+            type: 'Atributo type nativo aplicado al elemento de botón subyacente.',
+            disabled: 'Deshabilita el botón y suprime los eventos de clic.',
+            loading:
+              'Sustituye la etiqueta por un indicador de carga conservando el ancho renderizado.',
+            fullWidth: 'Estira el botón para ocupar el ancho de su contenedor.',
+            ariaLabel:
+              'Etiqueta accesible para el botón cuando su contenido no es lo bastante descriptivo.',
+            ariaCurrent:
+              'Valor del atributo nativo aria-current, que marca el botón como el elemento actual de un conjunto.',
+            clicked:
+              'Se emite cuando se activa el botón, suprimido mientras está deshabilitado o cargando.',
+          },
+          card: {
+            variant: 'Estilo visual de la superficie de la tarjeta.',
+            padding: 'Preajuste de relleno aplicado al área de contenido de la tarjeta.',
+            headerAlign: 'Alineación horizontal del contenido del encabezado.',
+            fullWidth: 'Estira la tarjeta para ocupar el ancho disponible.',
+            headerDivider: 'Muestra un separador entre el encabezado y el cuerpo.',
+          },
+          checkbox: {
+            ariaLabel:
+              'Nombre accesible para la casilla cuando no se renderiza ninguna etiqueta visible.',
+            checked:
+              'Estado actual de marcado, vinculable en dos sentidos mediante [(checked)].',
+            count: 'Valor complementario mostrado atenuado justo después de la etiqueta.',
+            disabled: 'Deshabilita la casilla.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al campo nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            indeterminate: 'Muestra la casilla en un estado visualmente indeterminado.',
+            label: 'Etiqueta de texto mostrada junto a la casilla.',
+            required: 'Marca la casilla como obligatoria.',
+            size: 'Tamaño visual de la casilla.',
+            changed:
+              'Se emite con el nuevo estado de marcado cada vez que el usuario alterna la casilla.',
+          },
+          'code-input': {
+            disabled: 'Deshabilita todas las celdas de dígitos.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado a las celdas de dígitos y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            length: 'Número de celdas de dígitos que componen el código.',
+            placeholder: 'Marcador de posición mostrado en cada celda de dígito vacía.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            size: 'Tamaño visual de cada celda de dígito.',
+            value:
+              'Valor actual del código, vinculable en dos sentidos mediante [(value)].',
+            completed:
+              'Se emite con el código completo una vez que se han introducido todos los dígitos.',
+            focus:
+              'Lleva el foco del teclado al siguiente dígito vacío (o al último cuando está completo).',
+          },
+          'color-picker': {
+            disabled: 'Deshabilita el campo.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            format: 'Formato de salida del valor de color emitido (hex, rgb o hsl).',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            placeholder:
+              'Marcador de posición mostrado en el activador mientras no hay ningún color seleccionado.',
+            presets:
+              'Muestras predefinidas mostradas en la parte inferior del popover; pasa un array vacío para ocultarlas.',
+            readonly:
+              'Muestra el campo como de solo lectura, impidiendo que el popover se abra.',
+            required: 'Marca el campo como obligatorio.',
+            showAlpha:
+              'Muestra el control deslizante de alfa e incluye el alfa en el valor emitido.',
+            size: 'Tamaño visual del activador del selector.',
+            value:
+              'Cadena de color actual, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con la nueva cadena de color cada vez que cambia la selección.',
+            cycleInputMode:
+              'Alterna la fila de entrada del popover entre la cadena hex y los canales RGB.',
+            hasEyeDropper: 'Devuelve si el navegador admite la API EyeDropper.',
+            onHexInput:
+              'Aplica el texto hex introducido al color actual a medida que el usuario lo edita.',
+            onPopoverCloseRequested:
+              'Cierra el popover cuando el usuario hace clic fuera del selector.',
+          },
+          divider: {
+            label:
+              'Etiqueta centrada opcional renderizada dentro de la línea del separador.',
+            orientation: 'Orientación en la que se traza la línea del separador.',
+          },
+          'eagami-wordmark': {
+            variant:
+              'Variante de contenido: 1 es el logotipo de texto sin más, 2 añade el texto superior, 3 añade el eslogan (4 es un alias obsoleto de 3).',
+            layout:
+              'Dispone el logotipo de texto apilado en varias líneas o en línea en una sola.',
+            size: 'Valor en píxeles desde el que se escala todo el logotipo de texto.',
+          },
+          'empty-state': {
+            title: 'Texto del encabezado mostrado encima de la descripción.',
+            description: 'Texto de apoyo mostrado bajo el título.',
+            size: 'Tamaño visual del bloque de estado vacío.',
+            headingLevel:
+              'Nivel de encabezado usado para el título de modo que encaje en el esquema del documento circundante.',
+          },
+          paginator: {
+            align:
+              'Alineación horizontal de los controles del paginador dentro de su contenedor.',
+            disabled: 'Deshabilita todos los controles del paginador.',
+            page: 'Número de página actual, vinculable en dos sentidos mediante [(page)].',
+            pageSize:
+              'Número de elementos mostrados por página, vinculable en dos sentidos mediante [(pageSize)].',
+            pageSizeOptions:
+              'Tamaños de página seleccionables ofrecidos en el selector de tamaño de página.',
+            showPageSizeSelector: 'Muestra el control de selección de tamaño de página.',
+            showRangeLabel:
+              'Muestra la etiqueta que describe el rango de elementos visible.',
+            totalItems:
+              'Número total de elementos usado para calcular el número de páginas.',
+            changed:
+              'Se emite cuando el usuario cambia la página actual o el tamaño de página.',
+            goToPage: 'Navega a la página indicada, acotada dentro del rango válido.',
+            nextPage: 'Navega a la página siguiente si existe.',
+            prevPage: 'Navega a la página anterior si existe.',
+          },
+          'progress-bar': {
+            variant: 'Variante de color de la barra.',
+            size: 'Grosor visual de la barra.',
+            value: 'Valor de progreso actual.',
+            max: 'Valor con el que la barra está llena.',
+            showValue: 'Muestra el porcentaje actual junto a la barra.',
+            indeterminate:
+              'Reproduce una animación en bucle para progreso de duración desconocida.',
+            label: 'Etiqueta de texto mostrada encima de la barra.',
+          },
+          radio: {
+            disabled: 'Deshabilita esta opción.',
+            id: 'id aplicado al campo de radio nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada junto al radio.',
+            value: 'Valor que esta opción aporta a su grupo padre cuando se selecciona.',
+          },
+          'range-slider': {
+            ariaLabelHigh:
+              'Etiqueta accesible para el control alto (final), que recurre a la etiqueta del campo si se omite.',
+            ariaLabelLow:
+              'Etiqueta accesible para el control bajo (inicial), que recurre a la etiqueta del campo si se omite.',
+            disabled: 'Deshabilita el control deslizante.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
+            formatValue: 'Formateador aplicado a cada valor antes de mostrarse.',
+            hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
+            id: 'id aplicado al control deslizante, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del control deslizante.',
+            max: 'Valor más alto que puede alcanzar cualquiera de los controles.',
+            min: 'Valor más bajo que puede alcanzar cualquiera de los controles.',
+            required: 'Marca el campo como obligatorio.',
+            showMinMaxLabels:
+              'Muestra los límites mín. y máx. en los extremos de la pista.',
+            showValue:
+              'Muestra los valores bajo y alto actuales junto al control deslizante.',
+            size: 'Tamaño visual de la pista y los controles.',
+            step: 'Incremento al que se ajusta cada control al moverse.',
+            value:
+              'Tupla de rango [bajo, alto] actual, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con la nueva tupla [bajo, alto] cada vez que se mueve cualquiera de los controles.',
+            commitThumb:
+              'Ajusta un control al paso más cercano, lo acota a los límites y lo restringe por el control opuesto.',
+          },
+          rating: {
+            allowHalf:
+              'Permite granularidad de media estrella, dejando que el valor avance en incrementos de 0,5.',
+            clearable:
+              'Hacer clic en el valor actual borra la valoración volviéndola a 0.',
+            disabled: 'Deshabilita la valoración.',
+            errorMsg:
+              'Mensaje de error mostrado bajo la valoración, que sustituye la ayuda y la marca como no válida.',
+            halfIconClass:
+              'Clase de componente independiente renderizada para las posiciones de media estrella cuando allowHalf es true.',
+            hint: 'Texto de ayuda mostrado bajo la valoración, oculto cuando hay un error.',
+            iconClass:
+              'Clase de componente independiente renderizada para las posiciones vacías y llenas.',
+            id: 'id aplicado a la valoración y a su etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima de la valoración.',
+            max: 'Valor de valoración más alto y número de estrellas renderizadas.',
+            min: 'Valor de valoración más bajo que el usuario puede seleccionar.',
+            readonly:
+              'Muestra la valoración como solo visualización, ignorando los clics y la entrada de teclado.',
+            required: 'Marca la valoración como obligatoria.',
+            size: 'Tamaño visual de la valoración.',
+            value:
+              'Valor de valoración actual, vinculable en dos sentidos mediante [(value)].',
+            hoverChanged:
+              'Se emite con el valor previsualizado al pasar el cursor, y null cuando el cursor sale.',
+            iconForState:
+              'Devuelve la clase de componente que instanciar para un estado de estrella dado.',
+            stateFor:
+              'Resuelve el estado de renderizado (vacío, medio o lleno) para una posición de estrella.',
+          },
+          skeleton: {
+            animated:
+              'Reproduce la animación de brillo pulsante, suprimida automáticamente cuando el usuario prefiere menos movimiento.',
+            height:
+              'Altura CSS explícita aplicada al marcador de posición, que toma por defecto el tamaño intrínseco de la forma si se omite.',
+            variant:
+              'Preajuste de forma del marcador de posición: línea de texto, círculo o rectángulo.',
+            width:
+              'Ancho CSS explícito aplicado al marcador de posición, que toma por defecto el tamaño intrínseco de la forma si se omite.',
+          },
+          slider: {
+            ariaLabel:
+              'Etiqueta accesible aplicada cuando no se renderiza ninguna etiqueta visible.',
+            disabled: 'Deshabilita el control deslizante.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
+            formatValue:
+              'Formateador que convierte el valor numérico en el texto mostrado.',
+            hasError:
+              'Fuerza el estilo de estado de error sin vincular un mensaje de error.',
+            hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
+            id: 'id aplicado al control deslizante y a su etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del control deslizante.',
+            max: 'Valor más alto que puede alcanzar el control deslizante.',
+            min: 'Valor más bajo que puede alcanzar el control deslizante.',
+            required: 'Marca el control deslizante como obligatorio.',
+            showMinMaxLabels: 'Muestra los límites mín. y máx. bajo la pista.',
+            showValue: 'Muestra el valor actual junto a la etiqueta.',
+            size: 'Tamaño visual de la pista y el control del deslizante.',
+            step: 'Incremento al que se ajusta el valor a medida que se mueve el control deslizante.',
+            value:
+              'Valor actual del control deslizante, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con el nuevo valor ajustado cada vez que se mueve el control deslizante.',
+          },
+          spinner: {
+            label:
+              'Etiqueta accesible anunciada a la tecnología de asistencia, que recurre a la traducción del idioma activo si no se establece.',
+            size: 'Tamaño visual del indicador de carga.',
+          },
+          switch: {
+            ariaLabel:
+              'Etiqueta accesible para el interruptor cuando no se renderiza ninguna etiqueta visible.',
+            checked:
+              'Estado actual de encendido/apagado, vinculable en dos sentidos mediante [(checked)].',
+            disabled: 'Deshabilita el interruptor y bloquea su alternancia.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el interruptor, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el interruptor, oculto cuando hay un error.',
+            id: 'id aplicado a la casilla subyacente y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada junto al interruptor.',
+            required: 'Marca el interruptor como obligatorio.',
+            size: 'Tamaño visual del interruptor.',
+            changed:
+              'Se emite con el nuevo estado de marcado cada vez que el usuario alterna el interruptor.',
+          },
+          tag: {
+            variant: 'Esquema de color semántico de la etiqueta.',
+            size: 'Tamaño visual de la etiqueta.',
+            removable:
+              'Renderiza un botón de eliminación que emite removed cuando se activa.',
+            disabled: 'Deshabilita la etiqueta y su botón de eliminación.',
+            removeLabel:
+              'Etiqueta accesible para el botón de eliminación, que recurre al idioma activo.',
+            removed:
+              'Se emite cuando el usuario activa el botón de eliminación en una etiqueta eliminable.',
+          },
+          textarea: {
+            disabled: 'Deshabilita el campo.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al textarea nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            maxHeight:
+              'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
+            maxlength: 'Número máximo de caracteres que acepta el campo.',
+            placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            resize: 'Eje a lo largo del cual el usuario puede redimensionar el campo.',
+            rows: 'Número inicial de filas de texto visibles.',
+            size: 'Tamaño visual del campo.',
+            value:
+              'Valor actual del campo, vinculable en dos sentidos mediante [(value)].',
+            blurred: 'Se emite cuando el campo pierde el foco.',
+            focused: 'Se emite cuando el campo recibe el foco.',
+            focus: 'Lleva el foco del teclado al textarea nativo subyacente.',
           },
         },
       },

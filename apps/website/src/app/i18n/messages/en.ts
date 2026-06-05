@@ -832,6 +832,170 @@ export const en: WebMessages = {
             clearable: 'Clearable',
             autocomplete: 'Autocomplete',
           },
+          alert: {
+            variant: 'Variant',
+            dismissible: 'Dismissible',
+          },
+          avatar: {
+            size: 'Size',
+            shape: 'Shape',
+            src: 'Image source',
+            initials: 'Initials',
+            alt: 'Alt text',
+          },
+          badge: {
+            variant: 'Variant',
+            size: 'Size',
+            shape: 'Shape',
+          },
+          button: {
+            variant: 'Variant',
+            size: 'Size',
+            type: 'Type',
+            disabled: 'Disabled',
+            loading: 'Loading',
+            fullWidth: 'Full width',
+          },
+          card: {
+            variant: 'Variant',
+            padding: 'Padding',
+            headerAlign: 'Header alignment',
+            fullWidth: 'Full width',
+            headerDivider: 'Header divider',
+          },
+          checkbox: {
+            label: 'Label',
+            count: 'Count',
+            size: 'Size',
+            disabled: 'Disabled',
+            required: 'Required',
+            indeterminate: 'Indeterminate',
+          },
+          'code-input': {
+            size: 'Size',
+            length: 'Length',
+            label: 'Label',
+            placeholder: 'Placeholder',
+            disabled: 'Disabled',
+            readonly: 'Read-only',
+            required: 'Required',
+          },
+          'color-picker': {
+            label: 'Label',
+            placeholder: 'Placeholder',
+            size: 'Size',
+            format: 'Format',
+            showAlpha: 'Show alpha',
+            disabled: 'Disabled',
+            readonly: 'Read-only',
+            required: 'Required',
+          },
+          divider: {
+            orientation: 'Orientation',
+            label: 'Label',
+          },
+          'eagami-wordmark': {
+            variant: 'Variant',
+            layout: 'Layout',
+            size: 'Size',
+          },
+          'empty-state': {
+            size: 'Size',
+            headingLevel: 'Heading level',
+            title: 'Title',
+            description: 'Description',
+          },
+          paginator: {
+            align: 'Align',
+            showPageSizeSelector: 'Show page size selector',
+            showRangeLabel: 'Show range label',
+            disabled: 'Disabled',
+            totalItems: 'Total items',
+          },
+          'progress-bar': {
+            variant: 'Variant',
+            size: 'Size',
+            value: 'Value',
+            max: 'Max',
+            showValue: 'Show value',
+            indeterminate: 'Indeterminate',
+            label: 'Label',
+          },
+          radio: {
+            label: 'Label',
+            disabled: 'Disabled',
+          },
+          'range-slider': {
+            label: 'Label',
+            hint: 'Hint',
+            errorMsg: 'Error message',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Step',
+            size: 'Size',
+            showValue: 'Show value',
+            showMinMaxLabels: 'Show min/max labels',
+            disabled: 'Disabled',
+            required: 'Required',
+          },
+          rating: {
+            label: 'Label',
+            size: 'Size',
+            min: 'Minimum',
+            max: 'Maximum',
+            allowHalf: 'Allow half steps',
+            readonly: 'Read-only',
+            disabled: 'Disabled',
+            required: 'Required',
+            clearable: 'Clearable',
+          },
+          skeleton: {
+            variant: 'Variant',
+            animated: 'Animated',
+            width: 'Width',
+            height: 'Height',
+          },
+          slider: {
+            size: 'Size',
+            min: 'Min',
+            max: 'Max',
+            step: 'Step',
+            showValue: 'Show value',
+            showMinMaxLabels: 'Show min/max labels',
+            disabled: 'Disabled',
+            required: 'Required',
+            hasError: 'Error state',
+            label: 'Label',
+          },
+          spinner: {
+            size: 'Size',
+            label: 'Label',
+          },
+          switch: {
+            label: 'Label',
+            size: 'Size',
+            disabled: 'Disabled',
+            required: 'Required',
+          },
+          tag: {
+            variant: 'Variant',
+            size: 'Size',
+            removable: 'Removable',
+            disabled: 'Disabled',
+            removeLabel: 'Remove label',
+          },
+          textarea: {
+            label: 'Label',
+            placeholder: 'Placeholder',
+            size: 'Size',
+            resize: 'Resize',
+            rows: 'Rows',
+            maxlength: 'Max length',
+            maxHeight: 'Max height',
+            disabled: 'Disabled',
+            readonly: 'Read-only',
+            required: 'Required',
+          },
         },
         descriptions: {
           input: {
@@ -858,6 +1022,290 @@ export const en: WebMessages = {
             focus: 'Moves keyboard focus to the underlying native field.',
             togglePasswordVisibility:
               'Toggles the password reveal state for type="password" inputs.',
+          },
+          alert: {
+            dismissible: 'Shows a close button that lets the user dismiss the alert.',
+            variant: "Semantic color scheme that drives the alert's icon and palette.",
+            visible: 'Whether the alert is shown, two-way bindable via [(visible)].',
+            dismissed: 'Fires when the user dismisses the alert via its close button.',
+            dismiss: 'Hides the alert and emits the dismissed event.',
+          },
+          avatar: {
+            src: 'Image URL to display; falls back to initials, then a generic user icon.',
+            alt: 'Alternative text for the avatar image.',
+            initials: 'Initials shown when no image source is provided.',
+            size: 'Diameter preset for the avatar.',
+            shape: 'Outline of the avatar: round or rounded-square.',
+          },
+          badge: {
+            variant: 'Semantic colour scheme of the badge.',
+            size: 'Visual size of the badge.',
+            shape:
+              'Outer shape of the badge (pill hugs the content, pin renders as a circle for single characters).',
+          },
+          button: {
+            variant: 'Visual style of the button, driving its colour and emphasis.',
+            size: 'Visual size of the button.',
+            type: 'Native type attribute applied to the underlying button element.',
+            disabled: 'Disables the button and suppresses click events.',
+            loading: 'Swaps the label for a spinner while preserving the rendered width.',
+            fullWidth: 'Stretches the button to fill the width of its container.',
+            ariaLabel:
+              'Accessible label for the button when its content is not descriptive enough.',
+            ariaCurrent:
+              'Value for the native aria-current attribute, marking the button as the current item in a set.',
+            clicked:
+              'Fires when the button is activated, suppressed while disabled or loading.',
+          },
+          card: {
+            variant: 'Visual style of the card surface.',
+            padding: "Padding preset applied to the card's content area.",
+            headerAlign: 'Horizontal alignment of the header content.',
+            fullWidth: 'Stretches the card to fill the available width.',
+            headerDivider: 'Shows a divider between the header and the body.',
+          },
+          checkbox: {
+            ariaLabel:
+              'Accessible name for the checkbox when no visible label is rendered.',
+            checked: 'Current checked state, two-way bindable via [(checked)].',
+            count: 'Supplementary value shown dimmed right after the label.',
+            disabled: 'Disables the checkbox.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the native input and label for, auto-generated when omitted.',
+            indeterminate: 'Renders the checkbox in a visually indeterminate state.',
+            label: 'Text label rendered beside the checkbox.',
+            required: 'Marks the checkbox as required.',
+            size: 'Visual size of the checkbox.',
+            changed:
+              'Fires with the new checked state whenever the user toggles the checkbox.',
+          },
+          'code-input': {
+            disabled: 'Disables every digit cell.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the digit cells and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            length: 'Number of digit cells the code is made up of.',
+            placeholder: 'Placeholder shown in each empty digit cell.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            size: 'Visual size of each digit cell.',
+            value: 'Current code value, two-way bindable via [(value)].',
+            completed: 'Fires with the full code once every digit has been entered.',
+            focus:
+              'Moves keyboard focus to the next empty digit (or the last one when full).',
+          },
+          'color-picker': {
+            disabled: 'Disables the field.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            format: 'Output format of the emitted color value (hex, rgb, or hsl).',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            placeholder: 'Placeholder shown on the trigger while no color is selected.',
+            presets:
+              'Preset swatches shown at the bottom of the popover; pass an empty array to hide them.',
+            readonly: 'Renders the field read-only, keeping the popover from opening.',
+            required: 'Marks the field as required.',
+            showAlpha: 'Shows the alpha slider and includes alpha in the emitted value.',
+            size: 'Visual size of the picker trigger.',
+            value: 'Current color string, two-way bindable via [(value)].',
+            changed: 'Fires with the new color string whenever the selection changes.',
+            cycleInputMode:
+              'Cycles the popover input row between hex string and RGB channels.',
+            hasEyeDropper: 'Returns whether the browser supports the EyeDropper API.',
+            onHexInput:
+              'Applies the typed hex text to the current color as the user edits it.',
+            onPopoverCloseRequested:
+              'Closes the popover when the user clicks outside the picker.',
+          },
+          divider: {
+            label: 'Optional centred label rendered within the divider rule.',
+            orientation: 'Orientation the divider rule runs in.',
+          },
+          'eagami-wordmark': {
+            variant:
+              'Content variant: 1 is the bare wordmark, 2 adds the overline, 3 adds the tagline (4 is a deprecated alias for 3).',
+            layout:
+              'Arranges the wordmark stacked across lines or inline on a single line.',
+            size: 'Pixel value the entire wordmark scales from.',
+          },
+          'empty-state': {
+            title: 'Heading text shown above the description.',
+            description: 'Supporting text shown below the title.',
+            size: 'Visual size of the empty-state block.',
+            headingLevel:
+              'Heading level used for the title so it fits the surrounding document outline.',
+          },
+          paginator: {
+            align:
+              'Horizontal alignment of the paginator controls within their container.',
+            disabled: 'Disables all paginator controls.',
+            page: 'Current page number, two-way bindable via [(page)].',
+            pageSize:
+              'Number of items shown per page, two-way bindable via [(pageSize)].',
+            pageSizeOptions: 'Selectable page sizes offered in the page-size selector.',
+            showPageSizeSelector: 'Shows the page-size selector control.',
+            showRangeLabel: 'Shows the label describing the visible item range.',
+            totalItems: 'Total number of items used to compute the page count.',
+            changed:
+              'Fires when the user changes either the current page or the page size.',
+            goToPage: 'Navigates to the given page, clamped into the valid range.',
+            nextPage: 'Navigates to the next page if one exists.',
+            prevPage: 'Navigates to the previous page if one exists.',
+          },
+          'progress-bar': {
+            variant: 'Color variant of the bar.',
+            size: 'Visual thickness of the bar.',
+            value: 'Current progress value.',
+            max: 'Value the bar is full at.',
+            showValue: 'Shows the current percentage alongside the bar.',
+            indeterminate:
+              'Renders a looping animation for progress of unknown duration.',
+            label: 'Text label rendered above the bar.',
+          },
+          radio: {
+            disabled: 'Disables this option.',
+            id: 'id applied to the native radio input and label for, auto-generated when omitted.',
+            label: 'Text label rendered beside the radio.',
+            value: 'Value this option contributes to its parent group when selected.',
+          },
+          'range-slider': {
+            ariaLabelHigh:
+              'Accessible label for the high (end) thumb, falling back to the field label when omitted.',
+            ariaLabelLow:
+              'Accessible label for the low (start) thumb, falling back to the field label when omitted.',
+            disabled: 'Disables the slider.',
+            errorMsg:
+              'Error message shown below the slider, replacing the hint and flagging the field invalid.',
+            formatValue: 'Formatter applied to each value before it is displayed.',
+            hint: 'Helper text shown below the slider, hidden while an error is showing.',
+            id: 'id applied to the slider, auto-generated when omitted.',
+            label: 'Text label rendered above the slider.',
+            max: 'Highest value either thumb can reach.',
+            min: 'Lowest value either thumb can reach.',
+            required: 'Marks the field as required.',
+            showMinMaxLabels: 'Shows the min and max bounds at the ends of the track.',
+            showValue: 'Shows the current low and high values alongside the slider.',
+            size: 'Visual size of the track and thumbs.',
+            step: 'Increment each thumb snaps to when moved.',
+            value: 'Current [low, high] range tuple, two-way bindable via [(value)].',
+            changed: 'Fires with the new [low, high] tuple whenever either thumb moves.',
+            commitThumb:
+              'Snaps a thumb to the nearest step, clamps it to the bounds, and constrains it by the opposite thumb.',
+          },
+          rating: {
+            allowHalf:
+              'Allows half-star granularity, letting the value move in 0.5 increments.',
+            clearable: 'Clicking the current value clears the rating back to 0.',
+            disabled: 'Disables the rating.',
+            errorMsg:
+              'Error message shown below the rating, replacing the hint and flagging it invalid.',
+            halfIconClass:
+              'Standalone component class rendered for half positions when allowHalf is true.',
+            hint: 'Helper text shown below the rating, hidden while an error is showing.',
+            iconClass:
+              'Standalone component class rendered for empty and full positions.',
+            id: 'id applied to the rating and its label, auto-generated when omitted.',
+            label: 'Text label rendered above the rating.',
+            max: 'Highest rating value and the number of stars rendered.',
+            min: 'Lowest rating value the user can select.',
+            readonly:
+              'Renders the rating as display-only, ignoring clicks and keyboard input.',
+            required: 'Marks the rating as required.',
+            size: 'Visual size of the rating.',
+            value: 'Current rating value, two-way bindable via [(value)].',
+            hoverChanged:
+              'Fires with the previewed value while hovering, and null when the cursor leaves.',
+            iconForState:
+              'Returns the component class to instantiate for a given star state.',
+            stateFor:
+              'Resolves the render state (empty, half, or full) for a star position.',
+          },
+          skeleton: {
+            animated:
+              'Plays the pulsing shimmer animation, automatically suppressed when the user prefers reduced motion.',
+            height:
+              "Explicit CSS height applied to the placeholder, defaulting to the shape's intrinsic size when omitted.",
+            variant: 'Shape preset of the placeholder: text line, circle, or rectangle.',
+            width:
+              "Explicit CSS width applied to the placeholder, defaulting to the shape's intrinsic size when omitted.",
+          },
+          slider: {
+            ariaLabel: 'Accessible label applied when no visible label is rendered.',
+            disabled: 'Disables the slider.',
+            errorMsg:
+              'Error message shown below the slider, replacing the hint and flagging the field invalid.',
+            formatValue:
+              'Formatter that turns the numeric value into the displayed text.',
+            hasError: 'Forces the error-state styling without binding an error message.',
+            hint: 'Helper text shown below the slider, hidden while an error is showing.',
+            id: 'id applied to the slider and its label, auto-generated when omitted.',
+            label: 'Text label rendered above the slider.',
+            max: 'Highest value the slider can reach.',
+            min: 'Lowest value the slider can reach.',
+            required: 'Marks the slider as required.',
+            showMinMaxLabels: 'Shows the min and max bounds beneath the track.',
+            showValue: 'Shows the current value alongside the label.',
+            size: 'Visual size of the slider track and thumb.',
+            step: 'Increment the value snaps to as the slider moves.',
+            value: 'Current slider value, two-way bindable via [(value)].',
+            changed: 'Fires with the new snapped value whenever the slider moves.',
+          },
+          spinner: {
+            label:
+              "Accessible label announced to assistive technology, falling back to the active locale's translation when unset.",
+            size: 'Visual size of the spinner.',
+          },
+          switch: {
+            ariaLabel:
+              'Accessible label for the switch when no visible label is rendered.',
+            checked: 'Current on/off state, two-way bindable via [(checked)].',
+            disabled: 'Disables the switch and blocks toggling.',
+            errorMsg:
+              'Error message shown below the switch, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the switch, hidden while an error is showing.',
+            id: 'id applied to the underlying checkbox and label for, auto-generated when omitted.',
+            label: 'Text label rendered beside the switch.',
+            required: 'Marks the switch as required.',
+            size: 'Visual size of the switch.',
+            changed:
+              'Fires with the new checked state whenever the user toggles the switch.',
+          },
+          tag: {
+            variant: 'Semantic colour scheme of the tag.',
+            size: 'Visual size of the tag.',
+            removable: 'Renders a remove button that emits removed when activated.',
+            disabled: 'Disables the tag and its remove button.',
+            removeLabel:
+              'Accessible label for the remove button, falling back to the active locale.',
+            removed:
+              'Fires when the user activates the remove button on a removable tag.',
+          },
+          textarea: {
+            disabled: 'Disables the field.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the native textarea and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            maxHeight:
+              "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
+            maxlength: 'Maximum number of characters the field accepts.',
+            placeholder: 'Placeholder shown while the field is empty.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            resize: 'Axis along which the user may resize the field.',
+            rows: 'Initial number of visible text rows.',
+            size: 'Visual size of the field.',
+            value: 'Current field value, two-way bindable via [(value)].',
+            blurred: 'Fires when the field loses focus.',
+            focused: 'Fires when the field receives focus.',
+            focus: 'Moves keyboard focus to the underlying native textarea.',
           },
         },
       },

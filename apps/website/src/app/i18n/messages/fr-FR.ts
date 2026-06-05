@@ -852,6 +852,170 @@ export const frFR: WebMessages = {
             clearable: 'Effaçable',
             autocomplete: 'Autocomplétion',
           },
+          alert: {
+            variant: 'Variante',
+            dismissible: 'Fermable',
+          },
+          avatar: {
+            size: 'Taille',
+            shape: 'Forme',
+            src: 'Source de l’image',
+            initials: 'Initiales',
+            alt: 'Texte alternatif',
+          },
+          badge: {
+            variant: 'Variante',
+            size: 'Taille',
+            shape: 'Forme',
+          },
+          button: {
+            variant: 'Variante',
+            size: 'Taille',
+            type: 'Type',
+            disabled: 'Désactivé',
+            loading: 'Chargement',
+            fullWidth: 'Pleine largeur',
+          },
+          card: {
+            variant: 'Variante',
+            padding: 'Espacement',
+            headerAlign: 'Alignement de l’en-tête',
+            fullWidth: 'Pleine largeur',
+            headerDivider: 'Séparateur d’en-tête',
+          },
+          checkbox: {
+            label: 'Libellé',
+            count: 'Compteur',
+            size: 'Taille',
+            disabled: 'Désactivé',
+            required: 'Requis',
+            indeterminate: 'Indéterminé',
+          },
+          'code-input': {
+            size: 'Taille',
+            length: 'Longueur',
+            label: 'Libellé',
+            placeholder: 'Texte indicatif',
+            disabled: 'Désactivé',
+            readonly: 'Lecture seule',
+            required: 'Requis',
+          },
+          'color-picker': {
+            label: 'Libellé',
+            placeholder: 'Texte indicatif',
+            size: 'Taille',
+            format: 'Format',
+            showAlpha: 'Afficher l’alpha',
+            disabled: 'Désactivé',
+            readonly: 'Lecture seule',
+            required: 'Requis',
+          },
+          divider: {
+            orientation: 'Orientation',
+            label: 'Libellé',
+          },
+          'eagami-wordmark': {
+            variant: 'Variante',
+            layout: 'Disposition',
+            size: 'Taille',
+          },
+          'empty-state': {
+            size: 'Taille',
+            headingLevel: 'Niveau de titre',
+            title: 'Titre',
+            description: 'Description',
+          },
+          paginator: {
+            align: 'Alignement',
+            showPageSizeSelector: 'Afficher le sélecteur de taille de page',
+            showRangeLabel: 'Afficher l’étiquette de plage',
+            disabled: 'Désactivé',
+            totalItems: 'Nombre total d’éléments',
+          },
+          'progress-bar': {
+            variant: 'Variante',
+            size: 'Taille',
+            value: 'Valeur',
+            max: 'Maximum',
+            showValue: 'Afficher la valeur',
+            indeterminate: 'Indéterminé',
+            label: 'Libellé',
+          },
+          radio: {
+            label: 'Libellé',
+            disabled: 'Désactivé',
+          },
+          'range-slider': {
+            label: 'Libellé',
+            hint: 'Indication',
+            errorMsg: 'Message d’erreur',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Pas',
+            size: 'Taille',
+            showValue: 'Afficher la valeur',
+            showMinMaxLabels: 'Afficher les libellés min/max',
+            disabled: 'Désactivé',
+            required: 'Requis',
+          },
+          rating: {
+            label: 'Libellé',
+            size: 'Taille',
+            min: 'Minimum',
+            max: 'Maximum',
+            allowHalf: 'Autoriser les demi-pas',
+            readonly: 'Lecture seule',
+            disabled: 'Désactivé',
+            required: 'Requis',
+            clearable: 'Effaçable',
+          },
+          skeleton: {
+            variant: 'Variante',
+            animated: 'Animé',
+            width: 'Largeur',
+            height: 'Hauteur',
+          },
+          slider: {
+            size: 'Taille',
+            min: 'Min',
+            max: 'Max',
+            step: 'Pas',
+            showValue: 'Afficher la valeur',
+            showMinMaxLabels: 'Afficher les libellés min/max',
+            disabled: 'Désactivé',
+            required: 'Requis',
+            hasError: 'État d’erreur',
+            label: 'Libellé',
+          },
+          spinner: {
+            size: 'Taille',
+            label: 'Libellé',
+          },
+          switch: {
+            label: 'Libellé',
+            size: 'Taille',
+            disabled: 'Désactivé',
+            required: 'Requis',
+          },
+          tag: {
+            variant: 'Variante',
+            size: 'Taille',
+            removable: 'Supprimable',
+            disabled: 'Désactivé',
+            removeLabel: 'Libellé de suppression',
+          },
+          textarea: {
+            label: 'Libellé',
+            placeholder: 'Texte indicatif',
+            size: 'Taille',
+            resize: 'Redimensionnement',
+            rows: 'Lignes',
+            maxlength: 'Longueur maximale',
+            maxHeight: 'Hauteur maximale',
+            disabled: 'Désactivé',
+            readonly: 'Lecture seule',
+            required: 'Requis',
+          },
         },
         descriptions: {
           input: {
@@ -880,6 +1044,307 @@ export const frFR: WebMessages = {
             focus: 'Place le focus clavier sur le champ natif sous-jacent.',
             togglePasswordVisibility:
               'Bascule l’affichage du mot de passe pour les champs type="password".',
+          },
+          alert: {
+            dismissible:
+              'Affiche un bouton de fermeture permettant à l’utilisateur de fermer l’alerte.',
+            variant:
+              'Schéma de couleurs sémantique qui détermine l’icône et la palette de l’alerte.',
+            visible:
+              'Indique si l’alerte est affichée, liable en deux sens via [(visible)].',
+            dismissed:
+              'Émis lorsque l’utilisateur ferme l’alerte via son bouton de fermeture.',
+            dismiss: 'Masque l’alerte et émet l’événement dismissed.',
+          },
+          avatar: {
+            src: 'URL de l’image à afficher ; bascule sur les initiales, puis sur une icône d’utilisateur générique.',
+            alt: 'Texte alternatif de l’image de l’avatar.',
+            initials: 'Initiales affichées lorsqu’aucune source d’image n’est fournie.',
+            size: 'Préréglage de diamètre de l’avatar.',
+            shape: 'Contour de l’avatar : rond ou carré arrondi.',
+          },
+          badge: {
+            variant: 'Schéma de couleurs sémantique du badge.',
+            size: 'Taille visuelle du badge.',
+            shape:
+              'Forme extérieure du badge (pill épouse le contenu, pin s’affiche en cercle pour les caractères uniques).',
+          },
+          button: {
+            variant: 'Style visuel du bouton, déterminant sa couleur et son emphase.',
+            size: 'Taille visuelle du bouton.',
+            type: 'Attribut type natif appliqué à l’élément bouton sous-jacent.',
+            disabled: 'Désactive le bouton et supprime les événements de clic.',
+            loading:
+              'Remplace le libellé par un indicateur de chargement tout en conservant la largeur rendue.',
+            fullWidth: 'Étire le bouton pour remplir la largeur de son conteneur.',
+            ariaLabel:
+              'Libellé accessible du bouton lorsque son contenu n’est pas suffisamment descriptif.',
+            ariaCurrent:
+              'Valeur de l’attribut natif aria-current, marquant le bouton comme l’élément actuel d’un ensemble.',
+            clicked:
+              'Émis lorsque le bouton est activé, supprimé lorsqu’il est désactivé ou en chargement.',
+          },
+          card: {
+            variant: 'Style visuel de la surface de la carte.',
+            padding: 'Préréglage d’espacement appliqué à la zone de contenu de la carte.',
+            headerAlign: 'Alignement horizontal du contenu de l’en-tête.',
+            fullWidth: 'Étire la carte pour remplir la largeur disponible.',
+            headerDivider: 'Affiche un séparateur entre l’en-tête et le corps.',
+          },
+          checkbox: {
+            ariaLabel:
+              'Nom accessible de la case à cocher lorsqu’aucun libellé visible n’est rendu.',
+            checked: 'État coché actuel, liable en deux sens via [(checked)].',
+            count: 'Valeur complémentaire affichée en grisé juste après le libellé.',
+            disabled: 'Désactive la case à cocher.',
+            errorMsg:
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
+            id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
+            indeterminate:
+              'Affiche la case à cocher dans un état visuellement indéterminé.',
+            label: 'Libellé textuel rendu à côté de la case à cocher.',
+            required: 'Marque la case à cocher comme requise.',
+            size: 'Taille visuelle de la case à cocher.',
+            changed:
+              'Émis avec le nouvel état coché chaque fois que l’utilisateur bascule la case à cocher.',
+          },
+          'code-input': {
+            disabled: 'Désactive toutes les cases de chiffres.',
+            errorMsg:
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
+            id: 'id appliqué aux cases de chiffres et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus du champ.',
+            length: 'Nombre de cases de chiffres composant le code.',
+            placeholder: 'Texte indicatif affiché dans chaque case de chiffre vide.',
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            size: 'Taille visuelle de chaque case de chiffre.',
+            value: 'Valeur actuelle du code, liable en deux sens via [(value)].',
+            completed: 'Émis avec le code complet une fois chaque chiffre saisi.',
+            focus:
+              'Place le focus clavier sur le prochain chiffre vide (ou le dernier lorsque tout est rempli).',
+          },
+          'color-picker': {
+            disabled: 'Désactive le champ.',
+            errorMsg:
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            format: 'Format de sortie de la valeur de couleur émise (hex, rgb ou hsl).',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
+            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus du champ.',
+            placeholder:
+              'Texte indicatif affiché sur le déclencheur lorsqu’aucune couleur n’est sélectionnée.',
+            presets:
+              'Échantillons prédéfinis affichés au bas de la popover ; passez un tableau vide pour les masquer.',
+            readonly:
+              'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
+            required: 'Marque le champ comme requis.',
+            showAlpha: 'Affiche le curseur alpha et inclut l’alpha dans la valeur émise.',
+            size: 'Taille visuelle du déclencheur du sélecteur.',
+            value: 'Chaîne de couleur actuelle, liable en deux sens via [(value)].',
+            changed:
+              'Émis avec la nouvelle chaîne de couleur chaque fois que la sélection change.',
+            cycleInputMode:
+              'Fait alterner la ligne de saisie de la popover entre chaîne hex et canaux RGB.',
+            hasEyeDropper: 'Indique si le navigateur prend en charge l’API EyeDropper.',
+            onHexInput:
+              'Applique le texte hex saisi à la couleur actuelle au fur et à mesure de l’édition.',
+            onPopoverCloseRequested:
+              'Ferme la popover lorsque l’utilisateur clique en dehors du sélecteur.',
+          },
+          divider: {
+            label: 'Libellé centré facultatif rendu au sein du trait de séparation.',
+            orientation: 'Orientation dans laquelle s’étend le trait de séparation.',
+          },
+          'eagami-wordmark': {
+            variant:
+              'Variante de contenu : 1 est le logotype seul, 2 ajoute la surligne, 3 ajoute la signature (4 est un alias obsolète pour 3).',
+            layout:
+              'Dispose le logotype empilé sur plusieurs lignes ou en ligne sur une seule ligne.',
+            size: 'Valeur en pixels à partir de laquelle l’ensemble du logotype est mis à l’échelle.',
+          },
+          'empty-state': {
+            title: 'Texte du titre affiché au-dessus de la description.',
+            description: 'Texte d’accompagnement affiché sous le titre.',
+            size: 'Taille visuelle du bloc d’état vide.',
+            headingLevel:
+              'Niveau de titre utilisé pour le titre afin qu’il s’intègre au plan du document environnant.',
+          },
+          paginator: {
+            align:
+              'Alignement horizontal des contrôles du paginateur au sein de leur conteneur.',
+            disabled: 'Désactive tous les contrôles du paginateur.',
+            page: 'Numéro de page actuel, liable en deux sens via [(page)].',
+            pageSize:
+              'Nombre d’éléments affichés par page, liable en deux sens via [(pageSize)].',
+            pageSizeOptions:
+              'Tailles de page sélectionnables proposées dans le sélecteur de taille de page.',
+            showPageSizeSelector: 'Affiche le contrôle de sélection de taille de page.',
+            showRangeLabel: 'Affiche le libellé décrivant la plage d’éléments visibles.',
+            totalItems:
+              'Nombre total d’éléments utilisé pour calculer le nombre de pages.',
+            changed:
+              'Émis lorsque l’utilisateur change la page actuelle ou la taille de page.',
+            goToPage: 'Navigue vers la page indiquée, ramenée dans la plage valide.',
+            nextPage: 'Navigue vers la page suivante s’il en existe une.',
+            prevPage: 'Navigue vers la page précédente s’il en existe une.',
+          },
+          'progress-bar': {
+            variant: 'Variante de couleur de la barre.',
+            size: 'Épaisseur visuelle de la barre.',
+            value: 'Valeur de progression actuelle.',
+            max: 'Valeur à laquelle la barre est pleine.',
+            showValue: 'Affiche le pourcentage actuel à côté de la barre.',
+            indeterminate:
+              'Joue une animation en boucle pour une progression de durée inconnue.',
+            label: 'Libellé textuel rendu au-dessus de la barre.',
+          },
+          radio: {
+            disabled: 'Désactive cette option.',
+            id: 'id appliqué au champ radio natif et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu à côté du bouton radio.',
+            value:
+              'Valeur que cette option apporte à son groupe parent lorsqu’elle est sélectionnée.',
+          },
+          'range-slider': {
+            ariaLabelHigh:
+              'Libellé accessible du curseur haut (fin), revenant au libellé du champ si omis.',
+            ariaLabelLow:
+              'Libellé accessible du curseur bas (début), revenant au libellé du champ si omis.',
+            disabled: 'Désactive le curseur.',
+            errorMsg:
+              'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
+            formatValue: 'Formateur appliqué à chaque valeur avant son affichage.',
+            hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
+            id: 'id appliqué au curseur, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus du curseur.',
+            max: 'Valeur la plus élevée que l’un ou l’autre curseur peut atteindre.',
+            min: 'Valeur la plus basse que l’un ou l’autre curseur peut atteindre.',
+            required: 'Marque le champ comme requis.',
+            showMinMaxLabels: 'Affiche les bornes min et max aux extrémités de la piste.',
+            showValue: 'Affiche les valeurs basse et haute actuelles à côté du curseur.',
+            size: 'Taille visuelle de la piste et des curseurs.',
+            step: 'Incrément auquel chaque curseur s’aligne lors de son déplacement.',
+            value:
+              'Tuple de plage [low, high] actuel, liable en deux sens via [(value)].',
+            changed:
+              'Émis avec le nouveau tuple [low, high] chaque fois que l’un des curseurs se déplace.',
+            commitThumb:
+              'Aligne un curseur sur le pas le plus proche, le borne aux limites et le contraint par le curseur opposé.',
+          },
+          rating: {
+            allowHalf:
+              'Autorise une granularité d’une demi-étoile, permettant à la valeur d’évoluer par pas de 0,5.',
+            clearable: 'Cliquer sur la valeur actuelle réinitialise la note à 0.',
+            disabled: 'Désactive la note.',
+            errorMsg:
+              'Message d’erreur affiché sous la note, remplaçant l’indication et la marquant comme invalide.',
+            halfIconClass:
+              'Classe de composant autonome rendue pour les positions de demi-étoile lorsque allowHalf est true.',
+            hint: 'Texte d’aide affiché sous la note, masqué en cas d’erreur.',
+            iconClass:
+              'Classe de composant autonome rendue pour les positions vides et pleines.',
+            id: 'id appliqué à la note et à son libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus de la note.',
+            max: 'Valeur de note la plus élevée et nombre d’étoiles rendues.',
+            min: 'Valeur de note la plus basse que l’utilisateur peut sélectionner.',
+            readonly:
+              'Affiche la note en lecture seule, ignorant les clics et la saisie clavier.',
+            required: 'Marque la note comme requise.',
+            size: 'Taille visuelle de la note.',
+            value: 'Valeur de note actuelle, liable en deux sens via [(value)].',
+            hoverChanged:
+              'Émis avec la valeur prévisualisée lors du survol, et null lorsque le curseur quitte la zone.',
+            iconForState:
+              'Renvoie la classe de composant à instancier pour un état d’étoile donné.',
+            stateFor:
+              'Détermine l’état de rendu (vide, demi ou plein) pour la position d’une étoile.',
+          },
+          skeleton: {
+            animated:
+              'Joue l’animation de scintillement pulsé, automatiquement supprimée lorsque l’utilisateur préfère les mouvements réduits.',
+            height:
+              'Hauteur CSS explicite appliquée au placeholder, revenant à la taille intrinsèque de la forme si omise.',
+            variant:
+              'Préréglage de forme du placeholder : ligne de texte, cercle ou rectangle.',
+            width:
+              'Largeur CSS explicite appliquée au placeholder, revenant à la taille intrinsèque de la forme si omise.',
+          },
+          slider: {
+            ariaLabel:
+              'Libellé accessible appliqué lorsqu’aucun libellé visible n’est rendu.',
+            disabled: 'Désactive le curseur.',
+            errorMsg:
+              'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
+            formatValue: 'Formateur qui transforme la valeur numérique en texte affiché.',
+            hasError: 'Force le style d’état d’erreur sans associer de message d’erreur.',
+            hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
+            id: 'id appliqué au curseur et à son libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus du curseur.',
+            max: 'Valeur la plus élevée que le curseur peut atteindre.',
+            min: 'Valeur la plus basse que le curseur peut atteindre.',
+            required: 'Marque le curseur comme requis.',
+            showMinMaxLabels: 'Affiche les bornes min et max sous la piste.',
+            showValue: 'Affiche la valeur actuelle à côté du libellé.',
+            size: 'Taille visuelle de la piste et du curseur.',
+            step: 'Incrément auquel la valeur s’aligne lors du déplacement du curseur.',
+            value: 'Valeur actuelle du curseur, liable en deux sens via [(value)].',
+            changed:
+              'Émis avec la nouvelle valeur alignée chaque fois que le curseur se déplace.',
+          },
+          spinner: {
+            label:
+              'Libellé accessible annoncé aux technologies d’assistance, revenant à la traduction de la locale active si non défini.',
+            size: 'Taille visuelle de l’indicateur de chargement.',
+          },
+          switch: {
+            ariaLabel:
+              'Libellé accessible de l’interrupteur lorsqu’aucun libellé visible n’est rendu.',
+            checked: 'État actuel marche/arrêt, liable en deux sens via [(checked)].',
+            disabled: 'Désactive l’interrupteur et bloque la bascule.',
+            errorMsg:
+              'Message d’erreur affiché sous l’interrupteur, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous l’interrupteur, masqué en cas d’erreur.',
+            id: 'id appliqué à la case à cocher sous-jacente et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu à côté de l’interrupteur.',
+            required: 'Marque l’interrupteur comme requis.',
+            size: 'Taille visuelle de l’interrupteur.',
+            changed:
+              'Émis avec le nouvel état coché chaque fois que l’utilisateur bascule l’interrupteur.',
+          },
+          tag: {
+            variant: 'Schéma de couleurs sémantique de l’étiquette.',
+            size: 'Taille visuelle de l’étiquette.',
+            removable:
+              'Affiche un bouton de suppression qui émet removed lorsqu’il est activé.',
+            disabled: 'Désactive l’étiquette et son bouton de suppression.',
+            removeLabel:
+              'Libellé accessible du bouton de suppression, revenant à la locale active.',
+            removed:
+              'Émis lorsque l’utilisateur active le bouton de suppression d’une étiquette supprimable.',
+          },
+          textarea: {
+            disabled: 'Désactive le champ.',
+            errorMsg:
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
+            id: 'id appliqué au textarea natif et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé textuel rendu au-dessus du champ.',
+            maxHeight:
+              'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
+            maxlength: 'Nombre maximal de caractères que le champ accepte.',
+            placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            resize: 'Axe selon lequel l’utilisateur peut redimensionner le champ.',
+            rows: 'Nombre initial de lignes de texte visibles.',
+            size: 'Taille visuelle du champ.',
+            value: 'Valeur actuelle du champ, liable en deux sens via [(value)].',
+            blurred: 'Émis lorsque le champ perd le focus.',
+            focused: 'Émis lorsque le champ reçoit le focus.',
+            focus: 'Place le focus clavier sur le textarea natif sous-jacent.',
           },
         },
       },
