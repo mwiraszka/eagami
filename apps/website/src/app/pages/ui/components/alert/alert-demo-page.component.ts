@@ -25,7 +25,6 @@ const SLUG = 'alert';
 @Component({
   selector: 'web-alert-demo-page',
   templateUrl: './alert-demo-page.component.html',
-  styleUrl: './alert-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AlertComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })

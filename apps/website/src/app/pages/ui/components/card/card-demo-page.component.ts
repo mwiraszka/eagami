@@ -33,7 +33,6 @@ const SLUG = 'card';
 @Component({
   selector: 'web-card-demo-page',
   templateUrl: './card-demo-page.component.html',
-  styleUrl: './card-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CardComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })

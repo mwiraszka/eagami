@@ -31,7 +31,6 @@ const SLUG = 'empty-state';
 @Component({
   selector: 'web-empty-state-demo-page',
   templateUrl: './empty-state-demo-page.component.html',
-  styleUrl: './empty-state-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     EmptyStateComponent,

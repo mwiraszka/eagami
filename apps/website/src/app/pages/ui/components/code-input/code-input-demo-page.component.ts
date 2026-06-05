@@ -30,7 +30,6 @@ const SLUG = 'code-input';
 @Component({
   selector: 'web-code-input-demo-page',
   templateUrl: './code-input-demo-page.component.html',
-  styleUrl: './code-input-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CodeInputComponent,

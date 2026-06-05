@@ -33,7 +33,6 @@ const SLUG = 'textarea';
 @Component({
   selector: 'web-textarea-demo-page',
   templateUrl: './textarea-demo-page.component.html',
-  styleUrl: './textarea-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TextareaComponent,

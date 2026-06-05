@@ -32,7 +32,6 @@ const SLUG = 'rating';
 @Component({
   selector: 'web-rating-demo-page',
   templateUrl: './rating-demo-page.component.html',
-  styleUrl: './rating-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RatingComponent,

@@ -34,7 +34,6 @@ const SLUG = 'button';
 @Component({
   selector: 'web-button-demo-page',
   templateUrl: './button-demo-page.component.html',
-  styleUrl: './button-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ButtonComponent,

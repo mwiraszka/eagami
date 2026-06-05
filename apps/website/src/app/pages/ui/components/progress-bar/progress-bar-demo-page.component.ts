@@ -34,7 +34,6 @@ const SLUG = 'progress-bar';
 @Component({
   selector: 'web-progress-bar-demo-page',
   templateUrl: './progress-bar-demo-page.component.html',
-  styleUrl: './progress-bar-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ProgressBarComponent,

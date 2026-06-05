@@ -33,7 +33,6 @@ const SLUG = 'slider';
 @Component({
   selector: 'web-slider-demo-page',
   templateUrl: './slider-demo-page.component.html',
-  styleUrl: './slider-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     SliderComponent,

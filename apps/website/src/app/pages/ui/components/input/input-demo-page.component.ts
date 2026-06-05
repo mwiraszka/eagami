@@ -34,7 +34,6 @@ const SLUG = 'input';
 @Component({
   selector: 'web-input-demo-page',
   templateUrl: './input-demo-page.component.html',
-  styleUrl: './input-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [InputComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })

@@ -28,7 +28,6 @@ const SLUG = 'tag';
 @Component({
   selector: 'web-tag-demo-page',
   templateUrl: './tag-demo-page.component.html',
-  styleUrl: './tag-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TagComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })

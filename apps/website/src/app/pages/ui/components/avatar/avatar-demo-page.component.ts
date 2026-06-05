@@ -28,7 +28,6 @@ const SLUG = 'avatar';
 @Component({
   selector: 'web-avatar-demo-page',
   templateUrl: './avatar-demo-page.component.html',
-  styleUrl: './avatar-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AvatarComponent,

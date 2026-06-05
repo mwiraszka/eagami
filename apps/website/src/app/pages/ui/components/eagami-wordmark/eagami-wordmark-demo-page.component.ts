@@ -30,7 +30,6 @@ const SLUG = 'eagami-wordmark';
 @Component({
   selector: 'web-eagami-wordmark-demo-page',
   templateUrl: './eagami-wordmark-demo-page.component.html',
-  styleUrl: './eagami-wordmark-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     EagamiWordmarkComponent,

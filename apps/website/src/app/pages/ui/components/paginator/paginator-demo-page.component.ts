@@ -28,7 +28,6 @@ const SLUG = 'paginator';
 @Component({
   selector: 'web-paginator-demo-page',
   templateUrl: './paginator-demo-page.component.html',
-  styleUrl: './paginator-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     PaginatorComponent,

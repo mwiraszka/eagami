@@ -25,7 +25,6 @@ const SLUG = 'spinner';
 @Component({
   selector: 'web-spinner-demo-page',
   templateUrl: './spinner-demo-page.component.html',
-  styleUrl: './spinner-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     SpinnerComponent,

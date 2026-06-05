@@ -35,7 +35,6 @@ const SLUG = 'color-picker';
 @Component({
   selector: 'web-color-picker-demo-page',
   templateUrl: './color-picker-demo-page.component.html',
-  styleUrl: './color-picker-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ColorPickerComponent,

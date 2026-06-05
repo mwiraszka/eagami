@@ -27,7 +27,6 @@ const SLUG = 'switch';
 @Component({
   selector: 'web-switch-demo-page',
   templateUrl: './switch-demo-page.component.html',
-  styleUrl: './switch-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     SwitchComponent,

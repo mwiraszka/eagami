@@ -31,7 +31,6 @@ const SLUG = 'badge';
 @Component({
   selector: 'web-badge-demo-page',
   templateUrl: './badge-demo-page.component.html',
-  styleUrl: './badge-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BadgeComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })

@@ -27,7 +27,6 @@ const SLUG = 'skeleton';
 @Component({
   selector: 'web-skeleton-demo-page',
   templateUrl: './skeleton-demo-page.component.html',
-  styleUrl: './skeleton-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     SkeletonComponent,

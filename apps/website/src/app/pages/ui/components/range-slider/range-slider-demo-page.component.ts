@@ -34,7 +34,6 @@ const SLUG = 'range-slider';
 @Component({
   selector: 'web-range-slider-demo-page',
   templateUrl: './range-slider-demo-page.component.html',
-  styleUrl: './range-slider-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RangeSliderComponent,

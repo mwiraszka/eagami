@@ -29,7 +29,6 @@ const SLUG = 'checkbox';
 @Component({
   selector: 'web-checkbox-demo-page',
   templateUrl: './checkbox-demo-page.component.html',
-  styleUrl: './checkbox-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CheckboxComponent,

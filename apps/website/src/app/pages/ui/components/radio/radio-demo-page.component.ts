@@ -25,7 +25,6 @@ const SLUG = 'radio';
 @Component({
   selector: 'web-radio-demo-page',
   templateUrl: './radio-demo-page.component.html',
-  styleUrl: './radio-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RadioComponent,

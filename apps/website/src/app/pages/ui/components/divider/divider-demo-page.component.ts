@@ -25,7 +25,6 @@ const SLUG = 'divider';
 @Component({
   selector: 'web-divider-demo-page',
   templateUrl: './divider-demo-page.component.html',
-  styleUrl: './divider-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     DividerComponent,
