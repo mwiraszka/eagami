@@ -86,6 +86,14 @@
     }
   }
 
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: var(--icon-inline-size);
+    color: var(--color-text-secondary);
+  }
+
   // 2em box around a 1em icon, matching the other field components' clear buttons
   &__clear {
     display: flex;

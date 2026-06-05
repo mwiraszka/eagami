@@ -1,9 +1,10 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
   Injector,
+  type Type,
   afterNextRender,
   computed,
   forwardRef,
@@ -53,6 +54,7 @@ export type InputType =
     FieldLabelComponent,
     FieldMessagesComponent,
     NgClass,
+    NgComponentOutlet,
     XIconComponent,
   ],
   providers: [
@@ -74,6 +76,8 @@ export class InputComponent implements ControlValueAccessor {
   readonly type = input<InputType>('text');
   /** Placeholder shown while the field is empty. */
   readonly placeholder = input<string>('');
+  /** Leading icon component rendered before the text, e.g. a search or filter glyph. */
+  readonly icon = input<Type<unknown> | undefined>(undefined);
   /** Visual size of the field. */
   readonly size = input<InputSize>('md');
   /** Helper text shown below the field; hidden while an error is showing. */

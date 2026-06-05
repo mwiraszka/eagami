@@ -9,6 +9,14 @@
   <div
     class="ea-input-wrapper"
     [ngClass]="wrapperClasses()">
+    @if (!value() && icon(); as leadingIcon) {
+      <span
+        class="ea-input-wrapper__icon"
+        aria-hidden="true">
+        <ng-container *ngComponentOutlet="leadingIcon" />
+      </span>
+    }
+
     <span class="ea-input-wrapper__prefix">
       <ng-content select="[slot=prefix]" />
     </span>

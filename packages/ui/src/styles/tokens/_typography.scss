@@ -35,6 +35,10 @@
   --letter-spacing-wider: 0.05em;
   --letter-spacing-widest: 0.1em;
 
+  // Leading/status icon sized relative to the text beside it; em keeps it in
+  // proportion as the surrounding font-size changes
+  --icon-inline-size: 1.5em;
+
   --text-display-size: var(--font-size-5xl);
   --text-display-weight: var(--font-weight-bold);
   --text-display-lh: var(--line-height-tight);

@@ -11,11 +11,16 @@ export const ALERT_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['default', 'success', 'warning', 'error', 'info'],
     },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
     dismissible: { control: 'boolean' },
     dismissed: { action: 'dismissed' },
   },
   args: {
     variant: 'default',
+    size: 'md',
     dismissible: false,
   },
 };

@@ -14,7 +14,7 @@
   // Apply to the default `pill` shape; `pin` overrides them below
   &--sm {
     padding: var(--space-0-5) var(--space-2);
-    font-size: var(--ea-badge-font-size, var(--font-size-xs));
+    font-size: var(--ea-badge-font-size, var(--font-size-2xs));
   }
 
   &--md {

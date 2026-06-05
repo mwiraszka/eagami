@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.7.0] - 2026-06-05
 
+### Added
+
+- Add an `icon` input to `<ea-alert>` and `<ea-input>` for a leading icon, plus a `size` input on `<ea-alert>`.
+
 ### Changed
 
-- Enlarge the alert status icon and vertically center it alongside the message.
+- Enlarge the alert status icon to 1.5x the text, tighten its gap, and vertically center it with the message.
+
+### Fixed
+
+- Scale avatar initials to the avatar size so they stay proportionate at small sizes.
+- Shrink small badge text so it reads distinctly from the medium size.
 
 ## [2.6.0] - 2026-06-05
 
