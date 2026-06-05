@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { RangeSliderComponent } from './range-slider.component';
+import { RANGE_SLIDER_KNOBS } from './range-slider.component.knobs';
 
 const meta: Meta<RangeSliderComponent> = {
   title: 'Components/Range Slider',
@@ -10,30 +11,16 @@ const meta: Meta<RangeSliderComponent> = {
     props: args,
     template: `<ea-range-slider ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    label: 'Price range',
-    min: 0,
-    max: 100,
-    step: 1,
-    size: 'md',
-    value: [20, 80],
-    showValue: true,
-    showMinMaxLabels: false,
-    disabled: false,
-  },
+  argTypes: RANGE_SLIDER_KNOBS.argTypes,
+  args: RANGE_SLIDER_KNOBS.args,
 };
 
 export default meta;
 type Story = StoryObj<RangeSliderComponent>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { value: [20, 80] },
+};
 
 export const WithMinMaxLabels: Story = {
   args: { showMinMaxLabels: true },

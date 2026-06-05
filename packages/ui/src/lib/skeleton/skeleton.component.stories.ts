@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { SkeletonComponent } from './skeleton.component';
+import { SKELETON_KNOBS } from './skeleton.component.knobs';
 
 const meta: Meta<SkeletonComponent> = {
   title: 'Components/Skeleton',
@@ -10,31 +11,23 @@ const meta: Meta<SkeletonComponent> = {
     props: args,
     template: `<ea-skeleton ${argsToTemplate(args)}></ea-skeleton>`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['text', 'circle', 'rect'],
-    },
-    width: { control: 'text' },
-    height: { control: 'text' },
-  },
-  args: {
-    variant: 'text',
-    animated: true,
-  },
+  argTypes: SKELETON_KNOBS.argTypes,
+  args: SKELETON_KNOBS.args,
 };
 
 export default meta;
 type Story = StoryObj<SkeletonComponent>;
 
-export const Text: Story = {};
+export const Text: Story = {
+  args: { variant: 'text', width: '', height: '' },
+};
 
 export const Circle: Story = {
-  args: { variant: 'circle' },
+  args: { variant: 'circle', width: '', height: '' },
 };
 
 export const Rect: Story = {
-  args: { variant: 'rect' },
+  args: { variant: 'rect', width: '', height: '' },
 };
 
 export const CustomSize: Story = {
@@ -42,7 +35,7 @@ export const CustomSize: Story = {
 };
 
 export const NotAnimated: Story = {
-  args: { animated: false },
+  args: { animated: false, width: '', height: '' },
 };
 
 export const CardPlaceholder: Story = {

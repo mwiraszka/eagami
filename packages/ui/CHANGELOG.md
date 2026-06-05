@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2026-06-05
+
+### Added
+
+- Add shared playground knob specs that drive the interactive component pages in the docs.
+
 ## [2.6.0] - 2026-06-05
 
 ### Added
@@ -593,6 +599,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.6.0...ui-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.3...ui-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.2...ui-v2.5.3
 [2.5.2]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.1...ui-v2.5.2

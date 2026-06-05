@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { CheckboxComponent } from './checkbox.component';
+import { CHECKBOX_KNOBS } from './checkbox.component.knobs';
 
 const meta: Meta<CheckboxComponent> = {
   title: 'Components/Checkbox',
@@ -10,21 +11,8 @@ const meta: Meta<CheckboxComponent> = {
     props: args,
     template: `<ea-checkbox ${argsToTemplate(args)}></ea-checkbox>`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    label: 'Accept terms and conditions',
-    size: 'md',
-    checked: false,
-    disabled: false,
-    indeterminate: false,
-    required: false,
-  },
+  argTypes: CHECKBOX_KNOBS.argTypes,
+  args: CHECKBOX_KNOBS.args,
 };
 
 export default meta;

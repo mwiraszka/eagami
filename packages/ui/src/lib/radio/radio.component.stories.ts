@@ -2,27 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { RadioGroupComponent } from './radio-group.component';
 import { RadioComponent } from './radio.component';
+import { RADIO_KNOBS } from './radio.component.knobs';
 
 const meta: Meta<RadioGroupComponent> = {
   title: 'Components/Radio',
   component: RadioGroupComponent,
   tags: ['autodocs'],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    orientation: {
-      control: 'select',
-      options: ['vertical', 'horizontal'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    size: 'md',
-    orientation: 'vertical',
-    disabled: false,
-  },
+  argTypes: RADIO_KNOBS.argTypes,
+  args: RADIO_KNOBS.args,
 };
 
 export default meta;

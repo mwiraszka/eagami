@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { TagComponent } from './tag.component';
+import { TAG_KNOBS } from './tag.component.knobs';
 
 const meta: Meta<TagComponent> = {
   title: 'Components/Tag',
@@ -10,23 +11,8 @@ const meta: Meta<TagComponent> = {
     props: args,
     template: `<ea-tag ${argsToTemplate(args)}>TypeScript</ea-tag>`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'error', 'info'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    removed: { action: 'removed' },
-  },
-  args: {
-    variant: 'default',
-    size: 'md',
-    removable: false,
-    disabled: false,
-  },
+  argTypes: TAG_KNOBS.argTypes,
+  args: TAG_KNOBS.args,
 };
 
 export default meta;

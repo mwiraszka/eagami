@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { SwitchComponent } from './switch.component';
+import { SWITCH_KNOBS } from './switch.component.knobs';
 
 const meta: Meta<SwitchComponent> = {
   title: 'Components/Switch',
@@ -10,19 +11,8 @@ const meta: Meta<SwitchComponent> = {
     props: args,
     template: `<ea-switch ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    label: 'Toggle me',
-    size: 'md',
-    checked: false,
-    disabled: false,
-  },
+  argTypes: SWITCH_KNOBS.argTypes,
+  args: SWITCH_KNOBS.args,
 };
 
 export default meta;

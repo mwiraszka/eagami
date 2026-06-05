@@ -4,6 +4,7 @@ import { ButtonComponent } from '../button/button.component';
 import { FileIconComponent } from '../icons/file.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { EmptyStateComponent } from './empty-state.component';
+import { EMPTY_STATE_KNOBS } from './empty-state.component.knobs';
 
 const meta: Meta<EmptyStateComponent> = {
   title: 'Components/Empty State',
@@ -14,17 +15,8 @@ const meta: Meta<EmptyStateComponent> = {
       imports: [ButtonComponent, FileIconComponent, SearchIconComponent],
     }),
   ],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-  },
-  args: {
-    title: 'No items yet',
-    description: 'Get started by creating your first item.',
-    size: 'md',
-  },
+  argTypes: EMPTY_STATE_KNOBS.argTypes,
+  args: EMPTY_STATE_KNOBS.args,
 };
 
 export default meta;

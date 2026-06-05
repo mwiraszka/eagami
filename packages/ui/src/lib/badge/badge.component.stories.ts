@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { BadgeComponent } from './badge.component';
+import { BADGE_KNOBS } from './badge.component.knobs';
 
 const meta: Meta<BadgeComponent> = {
   title: 'Components/Badge',
@@ -10,25 +11,8 @@ const meta: Meta<BadgeComponent> = {
     props: args,
     template: `<ea-badge ${argsToTemplate(args)}>Badge</ea-badge>`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'error', 'info'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    shape: {
-      control: 'select',
-      options: ['pill', 'pin'],
-    },
-  },
-  args: {
-    variant: 'default',
-    size: 'md',
-    shape: 'pill',
-  },
+  argTypes: BADGE_KNOBS.argTypes,
+  args: BADGE_KNOBS.args,
 };
 
 export default meta;

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { ProgressBarComponent } from './progress-bar.component';
+import { PROGRESS_BAR_KNOBS } from './progress-bar.component.knobs';
 
 const meta: Meta<ProgressBarComponent> = {
   title: 'Components/Progress Bar',
@@ -10,27 +11,8 @@ const meta: Meta<ProgressBarComponent> = {
     props: args,
     template: `<ea-progress-bar ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'error', 'info'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    value: { control: { type: 'range', min: 0, max: 100, step: 1 } },
-    max: { control: { type: 'number', min: 1 } },
-  },
-  args: {
-    value: 60,
-    max: 100,
-    variant: 'default',
-    size: 'md',
-    label: '',
-    showValue: false,
-    indeterminate: false,
-  },
+  argTypes: PROGRESS_BAR_KNOBS.argTypes,
+  args: PROGRESS_BAR_KNOBS.args,
 };
 
 export default meta;

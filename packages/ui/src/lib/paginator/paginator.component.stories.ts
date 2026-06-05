@@ -1,23 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { PaginatorComponent } from './paginator.component';
+import { PAGINATOR_KNOBS } from './paginator.component.knobs';
 
 const meta: Meta<PaginatorComponent> = {
   title: 'Components/Paginator',
   component: PaginatorComponent,
   tags: ['autodocs'],
-  argTypes: {
-    changed: { action: 'changed' },
-  },
-  args: {
-    totalItems: 100,
-    page: 1,
-    pageSize: 10,
-    pageSizeOptions: [10, 25, 50, 100],
-    showPageSizeSelector: true,
-    showRangeLabel: true,
-    disabled: false,
-  },
+  argTypes: PAGINATOR_KNOBS.argTypes,
+  args: PAGINATOR_KNOBS.args,
 };
 
 export default meta;
