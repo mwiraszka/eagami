@@ -71,8 +71,10 @@ export class ApiReferenceComponent {
     ];
   });
 
-  protected describe(name: unknown, fallback: unknown): string {
-    const overrides = this.messages().ui.component.playground.descriptions[this.slug()];
-    return overrides?.[String(name)] ?? String(fallback ?? '');
+  protected describe(name: unknown): string {
+    return (
+      this.messages().ui.component.playground.descriptions[this.slug()]?.[String(name)] ??
+      ''
+    );
   }
 }

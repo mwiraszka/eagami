@@ -71,7 +71,6 @@
 
 <ng-template
   #descCell
-  let-row
-  let-value="value">
-  {{ describe(row['name'], value) }}
+  let-row>
+  {{ describe(row['name']) }}
 </ng-template>

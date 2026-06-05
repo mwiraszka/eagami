@@ -9,14 +9,12 @@ export interface ApiProp {
   default: string;
   required: boolean;
   twoWay: boolean;
-  description: string;
 }
 
 export interface ApiMethod {
   [key: string]: unknown;
   name: string;
   signature: string;
-  description: string;
 }
 
 export interface ComponentApi {
@@ -36,7 +34,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -51,7 +48,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -59,7 +55,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -67,7 +62,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -75,7 +69,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -90,7 +83,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -98,7 +90,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'default'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'visible',
@@ -106,7 +97,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -116,14 +106,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the user dismisses the alert via its close button.',
       },
     ],
     methods: [
       {
         name: 'dismiss',
         signature: 'dismiss(): void',
-        description: 'Hides the alert and emits dismissed.',
       },
     ],
   },
@@ -136,7 +124,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'emptyMessage',
@@ -144,7 +131,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -152,7 +138,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -160,7 +145,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -168,7 +152,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -176,7 +159,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxResults',
@@ -184,7 +166,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '10',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'minLength',
@@ -192,7 +173,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'options',
@@ -200,7 +180,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -208,7 +187,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -216,7 +194,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -224,7 +201,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -232,7 +208,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -240,7 +215,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -250,7 +224,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the input loses focus.',
       },
       {
         name: 'changed',
@@ -258,8 +231,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires whenever the input text changes, including on free-text edits.',
       },
       {
         name: 'focused',
@@ -267,7 +238,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the input receives focus.',
       },
       {
         name: 'selected',
@@ -275,25 +245,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the user picks an option from the suggestion list.',
       },
     ],
     methods: [
       {
         name: 'close',
         signature: 'close(): void',
-        description: 'Closes the suggestion list without changing the current value.',
       },
       {
         name: 'focus',
         signature: 'focus(): void',
-        description: 'Moves keyboard focus to the underlying text input.',
       },
       {
         name: 'selectOption',
         signature: 'selectOption(option: SelectOption): void',
-        description:
-          'Programmatically selects the given option, updating the value and closing the list.',
       },
     ],
   },
@@ -306,7 +271,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'initials',
@@ -314,7 +278,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'shape',
@@ -322,7 +285,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'circle'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -330,7 +292,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'src',
@@ -338,7 +299,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -353,7 +313,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'image/*'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'canvasSize',
@@ -361,7 +320,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '200',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'cropState',
@@ -369,7 +327,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'currentSrc',
@@ -377,7 +334,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'exportQuality',
@@ -385,7 +341,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0.92',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'exportType',
@@ -393,7 +348,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'image/png'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'loading',
@@ -401,7 +355,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxFileSize',
@@ -409,7 +362,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '5 * 1024 * 1024',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxZoom',
@@ -417,7 +369,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '3',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'minZoom',
@@ -425,7 +376,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'shape',
@@ -433,7 +383,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'circle'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -443,8 +392,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the user finalises a crop via {@link exportCrop}; payload contains both Blob and data URL.',
       },
       {
         name: 'cropStateChanged',
@@ -452,8 +399,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires whenever the user pans or zooms the image; useful for persisting in-progress crops.',
       },
       {
         name: 'errored',
@@ -461,8 +406,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires with a human-readable message when validation fails (wrong type, oversized file, etc.).',
       },
       {
         name: 'fileSelected',
@@ -470,7 +413,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when a file is chosen from disk or dropped onto the editor.',
       },
       {
         name: 'removed',
@@ -478,50 +420,37 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the current image is cleared via the remove control.',
       },
     ],
     methods: [
       {
         name: 'captureOriginal',
         signature: 'captureOriginal(): void',
-        description:
-          'Marks the current image and crop state as the baseline for {@link revertImage}.',
       },
       {
         name: 'exportCrop',
         signature: 'exportCrop(): Promise<Blob>',
-        description:
-          'Renders the current crop to an offscreen canvas, emits cropped, and resolves with the resulting Blob.',
       },
       {
         name: 'openFilePicker',
         signature: 'openFilePicker(): void',
-        description: 'Opens the native file picker dialog.',
       },
       {
         name: 'removeImage',
         signature: 'removeImage(): void',
-        description: 'Clears the loaded image and resets pan/zoom to defaults.',
       },
       {
         name: 'revertImage',
         signature: 'revertImage(): void',
-        description:
-          'Restores the image and crop state captured by the most recent {@link captureOriginal}.',
       },
       {
         name: 'setZoom',
         signature: 'setZoom(value: number): void',
-        description:
-          'Sets the zoom level, clamped to the configured minZoom/maxZoom range.',
       },
       {
         name: 'updateImageDarkness',
         signature:
           'updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void',
-        description:
-          'Samples the visible crop region and stores whether it\'s darker than mid-grey, so the hover overlay can flip its label and icon between white (on dark photos) and black (on light photos). Restricts sampling to the inscribed circle for circle crops to ignore the soon-to-be-masked corners. Uses Rec. 601 perceptual luminance weights; transparent pixels and CORS-tainted canvases default to a "dark" assumption (white ink).',
       },
     ],
   },
@@ -534,7 +463,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'pill'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -542,7 +470,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -550,7 +477,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'default'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -565,7 +491,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, {    alias: 'aria-label',  }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'items',
@@ -573,7 +498,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'separator',
@@ -581,7 +505,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'chevron'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -591,7 +514,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when a non-disabled, non-final breadcrumb is activated.',
       },
     ],
     methods: [],
@@ -605,7 +527,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-current' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'ariaLabel',
@@ -613,7 +534,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -621,7 +541,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'fullWidth',
@@ -629,7 +548,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'loading',
@@ -637,7 +555,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -645,7 +562,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'type',
@@ -653,7 +569,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'button'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -661,7 +576,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'primary'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -671,8 +585,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the button is activated; suppressed while disabled or loading.',
       },
     ],
     methods: [],
@@ -686,7 +598,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'headerAlign',
@@ -694,7 +605,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'center'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'headerDivider',
@@ -702,7 +612,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'padding',
@@ -710,7 +619,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -718,7 +626,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'elevated'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -733,7 +640,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'checked',
@@ -741,7 +647,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'count',
@@ -749,8 +654,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Optional supplementary value shown immediately after the label, dimmed to the tertiary text token. Renders inside the same <span> as the label so it shares the label\'s exact baseline and font metrics, keeping "Inbox 42" / "Brand (30)" patterns aligned without a sibling element fighting flex / inline-flow centring at the consumer\'s call site.',
       },
       {
         name: 'disabled',
@@ -758,7 +661,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -766,7 +668,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -774,7 +675,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -782,7 +682,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'indeterminate',
@@ -790,7 +689,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -798,7 +696,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -806,7 +703,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -814,7 +710,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -824,8 +719,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires with the new checked state whenever the user toggles the checkbox.',
       },
     ],
     methods: [],
@@ -839,7 +732,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -847,7 +739,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -855,7 +746,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -863,7 +753,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -871,7 +760,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'length',
@@ -879,7 +767,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '6',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -887,7 +774,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -895,7 +781,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -903,7 +788,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -911,7 +795,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -919,7 +802,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -929,15 +811,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the full code once every digit has been entered.',
       },
     ],
     methods: [
       {
         name: 'focus',
         signature: 'focus(): void',
-        description:
-          'Moves keyboard focus to the next empty digit (or the last one when full).',
       },
     ],
   },
@@ -950,7 +829,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -958,7 +836,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'format',
@@ -966,7 +843,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'hex'",
         required: false,
         twoWay: false,
-        description: 'Output format for emitted values.',
       },
       {
         name: 'hint',
@@ -974,7 +850,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -982,7 +857,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -990,7 +864,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -998,7 +871,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'presets',
@@ -1006,8 +878,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'DEFAULT_PRESETS',
         required: false,
         twoWay: false,
-        description:
-          'Preset swatches shown at the bottom of the popover. Pass an empty array to hide.',
       },
       {
         name: 'readonly',
@@ -1015,7 +885,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -1023,7 +892,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showAlpha',
@@ -1031,8 +899,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description:
-          'Whether to show the alpha slider. When false the emitted value always has alpha = 1.',
       },
       {
         name: 'size',
@@ -1040,7 +906,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -1048,7 +913,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -1058,31 +922,24 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new color string whenever the selection changes.',
       },
     ],
     methods: [
       {
         name: 'cycleInputMode',
         signature: 'cycleInputMode(): void',
-        description: 'Cycles the input row between hex string and RGB channels.',
       },
       {
         name: 'hasEyeDropper',
         signature: 'hasEyeDropper(): boolean',
-        description:
-          "True when the browser supports the EyeDropper API. Not a computed: window.EyeDropper isn't a signal, so a memoized computed would cache the first read (typically false, since the popover content's bindings evaluate at parent-view creation time via content projection, before any polyfill / test setup runs). A plain method re-checks on every call.",
       },
       {
         name: 'onHexInput',
         signature: 'onHexInput(event: Event): void',
-        description:
-          "Mirrors the user's literal text into hexInputValue and (if the text parses) applies the new color silently, without rewriting the input. Without refreshHex: false, typing #123 would parse, commit, and then snap the input back to #112233 mid-keystroke, fighting the user's caret. Canonicalization happens only on blur via {@link onHexBlur}.",
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside the picker.',
       },
     ],
   },
@@ -1095,7 +952,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'items',
@@ -1103,7 +959,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'open',
@@ -1111,7 +966,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -1119,7 +973,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -1129,15 +982,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     methods: [
       {
         name: 'showActiveHighlight',
         signature: 'showActiveHighlight(flatIndex: number): boolean',
-        description:
-          'Whether the active row should render its highlighted background right now. False when the pointer is hovering the list (:hover handles the visual) or when the pointer is out of the list entirely (nothing is a next-click target).',
       },
     ],
   },
@@ -1150,7 +1000,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'columns',
@@ -1158,7 +1007,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'data',
@@ -1166,7 +1014,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'density',
@@ -1174,7 +1021,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'comfortable'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hoverable',
@@ -1182,7 +1028,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'noDataText',
@@ -1190,7 +1035,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'sort',
@@ -1198,7 +1042,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "{ column: '', direction: null }",
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'stickyHeader',
@@ -1206,7 +1049,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'striped',
@@ -1214,7 +1056,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'trackBy',
@@ -1222,7 +1063,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -1232,8 +1072,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires whenever the sort column or direction changes via header click.',
       },
     ],
     methods: [],
@@ -1247,7 +1085,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -1255,7 +1092,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'format',
@@ -1263,7 +1099,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'medium'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -1271,7 +1106,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1279,7 +1113,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -1287,7 +1120,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'locale',
@@ -1295,7 +1127,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxDate',
@@ -1303,7 +1134,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'minDate',
@@ -1311,7 +1141,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -1319,8 +1148,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          "Placeholder shown when no date is selected. Defaults to the active locale's text.",
       },
       {
         name: 'readonly',
@@ -1328,7 +1155,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -1336,7 +1162,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1344,7 +1169,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -1352,7 +1176,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'weekStartsOn',
@@ -1360,7 +1183,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -1370,40 +1192,32 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the selected date changes, including when cleared.',
       },
     ],
     methods: [
       {
         name: 'clear',
         signature: 'clear(event: Event): void',
-        description: 'Clears the selected date and emits changed with null.',
       },
       {
         name: 'close',
         signature: 'close(): void',
-        description: 'Closes the calendar popover.',
       },
       {
         name: 'focus',
         signature: 'focus(): void',
-        description: 'Moves keyboard focus to the trigger button.',
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside the picker.',
       },
       {
         name: 'open',
         signature: 'open(): void',
-        description:
-          'Opens the calendar popover and moves focus to the focused day cell.',
       },
       {
         name: 'toggle',
         signature: 'toggle(): void',
-        description: 'Toggles the calendar popover between open and closed.',
       },
     ],
   },
@@ -1416,7 +1230,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'closeOnBackdrop',
@@ -1424,7 +1237,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'closeOnEscape',
@@ -1432,7 +1244,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1440,7 +1251,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'open',
@@ -1448,7 +1258,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'showClose',
@@ -1456,7 +1265,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1464,7 +1272,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -1474,8 +1281,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the dialog closes (via close button, backdrop, or Escape).',
       },
       {
         name: 'opened',
@@ -1483,7 +1288,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires once the dialog has been shown via showModal().',
       },
     ],
     methods: [],
@@ -1497,7 +1301,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'orientation',
@@ -1505,7 +1308,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'horizontal'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1520,7 +1322,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'closeOnBackdrop',
@@ -1528,7 +1329,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'closeOnEscape',
@@ -1536,7 +1336,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1544,7 +1343,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'open',
@@ -1552,7 +1350,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'position',
@@ -1560,7 +1357,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'right'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showClose',
@@ -1568,7 +1364,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1576,7 +1371,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -1586,8 +1380,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the drawer closes (via close button, backdrop, or Escape).',
       },
       {
         name: 'opened',
@@ -1595,7 +1387,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires once the drawer has been shown via showModal().',
       },
     ],
     methods: [],
@@ -1609,7 +1400,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -1617,7 +1407,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -1625,7 +1414,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1633,7 +1421,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -1641,7 +1428,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'options',
@@ -1649,7 +1435,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -1657,7 +1442,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -1665,7 +1449,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -1673,7 +1456,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1681,7 +1463,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -1689,7 +1470,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -1699,34 +1479,28 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new value when the user selects an option.',
       },
     ],
     methods: [
       {
         name: 'close',
         signature: 'close(): void',
-        description: 'Closes the dropdown list without changing the current value.',
       },
       {
         name: 'focus',
         signature: 'focus(): void',
-        description: 'Moves keyboard focus to the dropdown trigger.',
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside the dropdown.',
       },
       {
         name: 'select',
         signature: 'select(option: SelectOption): void',
-        description: 'Programmatically selects the given option, closing the list.',
       },
       {
         name: 'toggle',
         signature: 'toggle(): void',
-        description: 'Toggles the dropdown list between open and closed.',
       },
     ],
   },
@@ -1739,7 +1513,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "{ alias: 'eaMenuTrigger' }",
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1754,7 +1527,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'tooltipPosition',
@@ -1762,7 +1534,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'top'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1777,7 +1548,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'stacked'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1785,7 +1555,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '32',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -1793,8 +1562,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description:
-          'The wordmark variant to render. 4 is accepted as a deprecated, backwards-compatible alias for 3 and renders identically.',
       },
     ],
     outputs: [],
@@ -1809,7 +1576,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'headingLevel',
@@ -1817,7 +1583,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'h2'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -1825,7 +1590,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'title',
@@ -1833,7 +1597,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1848,7 +1611,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'labelId',
@@ -1856,7 +1618,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -1864,7 +1625,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'text',
@@ -1872,7 +1632,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1887,7 +1646,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -1895,7 +1653,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1903,7 +1660,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -1918,8 +1674,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          "Comma-separated MIME types and / or file extensions, e.g. 'image/*,.pdf'.",
       },
       {
         name: 'disabled',
@@ -1927,7 +1681,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -1935,7 +1688,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -1943,7 +1695,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -1951,7 +1702,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -1959,7 +1709,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxFiles',
@@ -1967,7 +1716,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: 'Max total number of files. Extra files are rejected.',
       },
       {
         name: 'maxSize',
@@ -1975,7 +1723,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: 'Max size per file in bytes. Files larger than this are rejected.',
       },
       {
         name: 'multiple',
@@ -1983,7 +1730,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'progress',
@@ -1991,8 +1737,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Optional per-file progress (0-100). Keyed by File object identity, so consumers must keep the same File references between change-detection runs. When unset, no progress bar is rendered.',
       },
       {
         name: 'required',
@@ -2000,7 +1744,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showFileList',
@@ -2008,7 +1751,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Toggle the file list under the dropzone.',
       },
       {
         name: 'size',
@@ -2016,7 +1758,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -2024,8 +1765,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: true,
-        description:
-          'Two-way binding to the current File[]. Also written by Angular forms.',
       },
     ],
     outputs: [
@@ -2035,7 +1774,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: "Fires whenever a file is removed via its row's X button.",
       },
       {
         name: 'rejected',
@@ -2043,14 +1781,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when one or more selected files fail validation.',
       },
     ],
     methods: [
       {
         name: 'trackFile',
         signature: 'trackFile(_index: number, file: File): string',
-        description: 'Stable track key for the @for over value().',
       },
     ],
   },
@@ -2063,7 +1799,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: 'Value for the native autocomplete attribute.',
       },
       {
         name: 'autofocus',
@@ -2071,7 +1806,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Focuses the field once, after it first renders.',
       },
       {
         name: 'clearable',
@@ -2079,7 +1813,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Shows a clear button while the field has a value.',
       },
       {
         name: 'disabled',
@@ -2087,7 +1820,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Disables the field.',
       },
       {
         name: 'errorMsg',
@@ -2095,8 +1827,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Error message shown below the field; replaces the hint and flags the field invalid.',
       },
       {
         name: 'hint',
@@ -2104,8 +1834,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Helper text shown below the field; hidden while an error is showing.',
       },
       {
         name: 'id',
@@ -2113,8 +1841,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description:
-          'id applied to the native input and label for; auto-generated when omitted.',
       },
       {
         name: 'label',
@@ -2122,7 +1848,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: 'Text label rendered above the field.',
       },
       {
         name: 'list',
@@ -2130,7 +1855,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: 'id of a <datalist> to associate for native suggestions.',
       },
       {
         name: 'placeholder',
@@ -2138,7 +1862,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: 'Placeholder shown while the field is empty.',
       },
       {
         name: 'readonly',
@@ -2146,7 +1869,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Renders the field read-only.',
       },
       {
         name: 'required',
@@ -2154,7 +1876,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Marks the field as required.',
       },
       {
         name: 'showPasswordToggle',
@@ -2162,7 +1883,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Shows the reveal toggle for password inputs.',
       },
       {
         name: 'size',
@@ -2170,7 +1890,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: 'Visual size of the field.',
       },
       {
         name: 'type',
@@ -2178,7 +1897,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'text'",
         required: false,
         twoWay: false,
-        description: 'Native input type; password adds a built-in show/hide toggle.',
       },
       {
         name: 'value',
@@ -2186,7 +1904,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: 'Current field value; two-way bindable via [(value)].',
       },
     ],
     outputs: [
@@ -2196,7 +1913,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the input loses focus.',
       },
       {
         name: 'focused',
@@ -2204,24 +1920,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the input receives focus.',
       },
     ],
     methods: [
       {
         name: 'clear',
         signature: 'clear(event: MouseEvent): void',
-        description: 'Clear the current value and restore focus to the input.',
       },
       {
         name: 'focus',
         signature: 'focus(): void',
-        description: 'Moves keyboard focus to the underlying native input element.',
       },
       {
         name: 'togglePasswordVisibility',
         signature: 'togglePasswordVisibility(): void',
-        description: 'Toggles the password reveal state for type="password" inputs.',
       },
     ],
   },
@@ -2234,7 +1946,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, {    alias: 'aria-label',  }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -2242,7 +1953,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -2250,7 +1960,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'open',
@@ -2258,7 +1967,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'placement',
@@ -2266,7 +1974,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'bottom-start'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -2276,7 +1983,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the menu closes.',
       },
       {
         name: 'opened',
@@ -2284,38 +1990,28 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the menu opens.',
       },
     ],
     methods: [
       {
         name: 'close',
         signature: 'close(restoreFocus: unknown): void',
-        description:
-          'Closes the menu if it is open. Pass restoreFocus: true to return focus to the trigger element (used when closing via Escape or item activation; not used on outside click, where the user has chosen a new focus target).',
       },
       {
         name: 'focusFirstItem',
         signature: 'focusFirstItem(): void',
-        description:
-          "preventScroll: true is critical here. The menu list is position: fixed but its DOM ancestor is whatever element hosts the menu (often a sticky header). When .focus() is called without preventScroll, Chromium uses the focused element's DOM-tree position (inside the sticky ancestor) rather than its rendered fixed position to decide whether to scroll, which on a scrolled page nudges the document up by a few pixels per open, until the trigger reaches the top edge. The same guard applies to keyboard navigation and restoring focus on close.",
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside the menu.',
       },
       {
         name: 'openAt',
         signature: 'openAt(triggerEl: HTMLElement): void',
-        description:
-          'Opens the menu anchored to the given trigger element and focuses the first item.',
       },
       {
         name: 'toggleAt',
         signature: 'toggleAt(triggerEl: HTMLElement): void',
-        description:
-          'Toggles the menu open state, anchoring it to the given trigger element.',
       },
     ],
   },
@@ -2328,7 +2024,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -2336,7 +2031,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'default'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -2346,8 +2040,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the item is activated; the parent menu closes immediately afterwards.',
       },
     ],
     methods: [],
@@ -2361,7 +2053,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -2369,7 +2060,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -2377,7 +2067,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -2385,7 +2074,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -2393,7 +2081,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxVisibleChips',
@@ -2401,8 +2088,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '3',
         required: false,
         twoWay: false,
-        description:
-          'Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. 0 removes the cap.',
       },
       {
         name: 'options',
@@ -2410,7 +2095,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -2418,7 +2102,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -2426,7 +2109,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -2434,7 +2116,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'searchable',
@@ -2442,7 +2123,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Toggle the search input at the top of the popover.',
       },
       {
         name: 'searchPlaceholder',
@@ -2450,7 +2130,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'selectAll',
@@ -2458,7 +2137,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Toggle the "Select all" row at the top of the option list.',
       },
       {
         name: 'size',
@@ -2466,7 +2144,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -2474,7 +2151,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: true,
-        description: 'Selected option values, in the original options order.',
       },
     ],
     outputs: [
@@ -2484,47 +2160,36 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new value whenever the selection changes.',
       },
     ],
     methods: [
       {
         name: 'clear',
         signature: 'clear(event: Event): void',
-        description: 'Clear every selection via the trigger × button.',
       },
       {
         name: 'handlePopoverKeydown',
         signature: 'handlePopoverKeydown(event: KeyboardEvent): void',
-        description:
-          'Keyboard navigation inside the popover. Bound to both the search input and each option row; Space passes through to the search input naturally so users can type spaces in their query.',
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside or scrolls.',
       },
       {
         name: 'orderedValues',
         signature: 'orderedValues(set: Set<string>): string[]',
-        description: 'Reorder a value-set against the input options array.',
       },
       {
         name: 'removeChip',
         signature: 'removeChip(opt: SelectOption): void',
-        description:
-          "Remove a single chip from the trigger. <ea-tag> already stops the click from bubbling to the trigger's (click), so no event handling is needed here.",
       },
       {
         name: 'toggleOption',
         signature: 'toggleOption(opt: SelectOption): void',
-        description: "Toggle one option's membership in the selection.",
       },
       {
         name: 'toggleSelectAll',
         signature: 'toggleSelectAll(): void',
-        description:
-          'Toggle the Select-all checkbox. If any filtered option is unselected, the action selects all filtered. Otherwise, the action removes every filtered value from the selection. Disabled options are skipped either way.',
       },
     ],
   },
@@ -2537,7 +2202,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'right'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -2545,7 +2209,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'page',
@@ -2553,7 +2216,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'pageSize',
@@ -2561,7 +2223,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '10',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'pageSizeOptions',
@@ -2569,7 +2230,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[10, 25, 50, 100]',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showPageSizeSelector',
@@ -2577,7 +2237,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showRangeLabel',
@@ -2585,7 +2244,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'totalItems',
@@ -2593,7 +2251,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -2603,25 +2260,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the user changes either the current page or the page size.',
       },
     ],
     methods: [
       {
         name: 'goToPage',
         signature: 'goToPage(page: number): void',
-        description: 'Navigates to the given page, clamped into the valid range.',
       },
       {
         name: 'nextPage',
         signature: 'nextPage(): void',
-        description: 'Navigates to the next page if one exists.',
       },
       {
         name: 'prevPage',
         signature: 'prevPage(): void',
-        description: 'Navigates to the previous page if one exists.',
       },
     ],
   },
@@ -2634,7 +2286,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: 'Anchor element the popover positions itself against.',
       },
       {
         name: 'ariaLabel',
@@ -2642,8 +2293,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description:
-          'Accessible label. Falls back to nothing; consumers should provide one when no visible heading is in the popover.',
       },
       {
         name: 'clamp',
@@ -2651,8 +2300,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description:
-          'Clamp the popover inside the viewport when it would otherwise overflow.',
       },
       {
         name: 'closeOnEscape',
@@ -2660,7 +2307,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Close on Escape.',
       },
       {
         name: 'closeOnOutsideClick',
@@ -2668,7 +2314,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Close on click outside the popover and the anchor.',
       },
       {
         name: 'flip',
@@ -2676,8 +2321,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description:
-          'Flip to the opposite side when the requested side overflows the viewport.',
       },
       {
         name: 'matchAnchorWidth',
@@ -2685,8 +2328,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description:
-          "Set the popover's min-width to match the anchor's width (dropdown pattern).",
       },
       {
         name: 'offset',
@@ -2694,7 +2335,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: 'Gap in px between the anchor and the popover.',
       },
       {
         name: 'open',
@@ -2702,7 +2342,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Whether the popover is currently open.',
       },
       {
         name: 'placement',
@@ -2710,7 +2349,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'bottom-start'",
         required: false,
         twoWay: false,
-        description: 'Where the popover attaches relative to the anchor.',
       },
       {
         name: 'role',
@@ -2718,7 +2356,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'dialog'",
         required: false,
         twoWay: false,
-        description: 'ARIA role applied to the popover surface.',
       },
       {
         name: 'scrollBehavior',
@@ -2726,7 +2363,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'reposition'",
         required: false,
         twoWay: false,
-        description: 'What to do on scroll / resize while open.',
       },
       {
         name: 'surfaceId',
@@ -2734,8 +2370,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description:
-          'DOM id for the surface so trigger elements can reference it via aria-controls.',
       },
     ],
     outputs: [
@@ -2745,7 +2379,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Requested close. The parent should mirror this into [open].',
       },
     ],
     methods: [],
@@ -2759,7 +2392,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -2767,7 +2399,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'max',
@@ -2775,7 +2406,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '100',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showValue',
@@ -2783,7 +2413,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -2791,7 +2420,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -2799,7 +2427,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -2807,7 +2434,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'default'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -2822,7 +2448,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -2830,7 +2455,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -2838,7 +2462,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -2846,7 +2469,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -2861,7 +2483,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -2869,7 +2490,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -2877,7 +2497,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -2885,7 +2504,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -2893,7 +2511,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -2901,7 +2518,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'name',
@@ -2909,7 +2525,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'orientation',
@@ -2917,7 +2532,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'vertical'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -2925,7 +2539,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -2933,7 +2546,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -2941,7 +2553,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -2951,14 +2562,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new value when an option is selected.',
       },
     ],
     methods: [
       {
         name: 'select',
         signature: 'select(val: string): void',
-        description: 'Programmatically selects the option with the given value.',
       },
     ],
   },
@@ -2971,8 +2580,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, {    alias: 'aria-label-high',  }",
         required: false,
         twoWay: false,
-        description:
-          'Accessible label for the high (end) thumb. Falls back to the field label when omitted.',
       },
       {
         name: 'ariaLabelLow',
@@ -2980,8 +2587,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, {    alias: 'aria-label-low',  }",
         required: false,
         twoWay: false,
-        description:
-          'Accessible label for the low (start) thumb. Falls back to the field label when omitted.',
       },
       {
         name: 'disabled',
@@ -2989,7 +2594,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -2997,7 +2601,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'formatValue',
@@ -3005,7 +2608,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -3013,7 +2615,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3021,7 +2622,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3029,7 +2629,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'max',
@@ -3037,7 +2636,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '100',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'min',
@@ -3045,7 +2643,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -3053,7 +2650,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showMinMaxLabels',
@@ -3061,7 +2657,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showValue',
@@ -3069,7 +2664,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3077,7 +2671,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'step',
@@ -3085,7 +2678,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -3093,7 +2685,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[0, 100]',
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -3103,15 +2694,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new [low, high] tuple whenever either thumb moves.',
       },
     ],
     methods: [
       {
         name: 'commitThumb',
         signature: 'commitThumb(thumb: Thumb, raw: number): void',
-        description:
-          'Snap to step, clamp to [min, max], then constrain by the opposite thumb.',
       },
     ],
   },
@@ -3124,7 +2712,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'clearable',
@@ -3132,7 +2719,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: 'Clicking the current value clears the rating back to 0.',
       },
       {
         name: 'disabled',
@@ -3140,7 +2726,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -3148,7 +2733,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'halfIconClass',
@@ -3156,8 +2740,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'LeftHalfStarIconComponent',
         required: false,
         twoWay: false,
-        description:
-          'Standalone component class rendered for half positions (when allowHalf is true).',
       },
       {
         name: 'hint',
@@ -3165,7 +2747,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'iconClass',
@@ -3173,7 +2754,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'StarIconComponent',
         required: false,
         twoWay: false,
-        description: 'Standalone component class rendered for empty / full positions.',
       },
       {
         name: 'id',
@@ -3181,7 +2761,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3189,7 +2768,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'max',
@@ -3197,7 +2775,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '5',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'min',
@@ -3205,7 +2782,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -3213,7 +2789,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -3221,7 +2796,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3229,7 +2803,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -3237,8 +2810,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: true,
-        description:
-          'Current rating value, 0..max in 1 (or 0.5 when allowHalf) increments.',
       },
     ],
     outputs: [
@@ -3248,21 +2819,16 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the user pre-selects a value via hover; null when the cursor leaves.',
       },
     ],
     methods: [
       {
         name: 'iconForState',
         signature: 'iconForState(state: RatingStarState): Type<unknown>',
-        description: 'Component class to instantiate for star pos.',
       },
       {
         name: 'stateFor',
         signature: 'stateFor(pos: number): RatingStarState',
-        description:
-          'Resolves the render state for star pos against the current display value.',
       },
     ],
   },
@@ -3275,7 +2841,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -3283,7 +2848,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -3291,7 +2855,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'fullWidth',
@@ -3299,7 +2862,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -3307,7 +2869,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3315,7 +2876,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3323,7 +2883,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'options',
@@ -3331,7 +2890,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -3339,7 +2897,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3347,7 +2904,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -3355,7 +2911,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -3365,14 +2920,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new value when the user selects a different option.',
       },
     ],
     methods: [
       {
         name: 'select',
         signature: 'select(option: SelectOption): void',
-        description: 'Programmatically selects the given option.',
       },
     ],
   },
@@ -3385,7 +2938,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'true',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'height',
@@ -3393,7 +2945,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -3401,7 +2952,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'text'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'width',
@@ -3409,7 +2959,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -3424,7 +2973,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -3432,7 +2980,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -3440,7 +2987,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'formatValue',
@@ -3448,7 +2994,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hasError',
@@ -3456,8 +3001,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description:
-          'Force the error-state styling without binding errorMsg. Lets consumers render the error text themselves (e.g. above the slider in a form layout) while still getting the built-in recolour of the fill and thumb.',
       },
       {
         name: 'hint',
@@ -3465,7 +3008,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3473,7 +3015,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3481,7 +3022,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'max',
@@ -3489,7 +3029,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '100',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'min',
@@ -3497,7 +3036,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -3505,7 +3043,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showMinMaxLabels',
@@ -3513,7 +3050,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'showValue',
@@ -3521,7 +3057,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3529,7 +3064,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'step',
@@ -3537,7 +3071,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -3545,7 +3078,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -3555,8 +3087,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires with the new (snapped, clamped) numeric value whenever the slider moves.',
       },
     ],
     methods: [],
@@ -3570,7 +3100,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3578,7 +3107,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -3593,7 +3121,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'disabled',
@@ -3601,7 +3128,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3609,7 +3135,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3617,7 +3142,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'optional',
@@ -3625,7 +3149,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -3640,7 +3163,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '0',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'disabled',
@@ -3648,7 +3170,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3656,7 +3177,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'linear',
@@ -3664,7 +3184,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3672,7 +3191,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -3682,25 +3200,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new active step index when the user navigates.',
       },
     ],
     methods: [
       {
         name: 'canNavigateTo',
         signature: 'canNavigateTo(index: number): boolean',
-        description:
-          'True when the user can navigate directly to the step at index. In non-linear mode this is true for any non-disabled step; in linear mode, every non-optional earlier step must also be marked completed.',
       },
       {
         name: 'indexOf',
         signature: 'indexOf(step: StepComponent): number',
-        description: "Returns the index of a given step, or -1 if it isn't registered.",
       },
       {
         name: 'selectStep',
         signature: 'selectStep(index: number): void',
-        description: 'Activate the step at index if reachable.',
       },
     ],
   },
@@ -3713,7 +3226,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'checked',
@@ -3721,7 +3233,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'disabled',
@@ -3729,7 +3240,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -3737,7 +3247,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -3745,7 +3254,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3753,7 +3261,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3761,7 +3268,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -3769,7 +3275,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3777,7 +3282,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -3787,8 +3291,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires with the new checked state whenever the user toggles the switch.',
       },
     ],
     methods: [],
@@ -3802,7 +3304,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3810,7 +3311,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3818,7 +3318,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -3826,7 +3325,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [],
@@ -3841,7 +3339,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
       {
         name: 'size',
@@ -3849,7 +3346,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -3857,7 +3353,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'underline'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -3867,26 +3362,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the value of the newly active tab.',
       },
     ],
     methods: [
       {
         name: 'registerTab',
         signature: 'registerTab(tab: TabComponent): void',
-        description:
-          'Registers a child tab so it appears in the tab bar; called automatically by ea-tab.',
       },
       {
         name: 'selectTab',
         signature: 'selectTab(value: string): void',
-        description: 'Programmatically activates the tab with the given value.',
       },
       {
         name: 'unregisterTab',
         signature: 'unregisterTab(tab: TabComponent): void',
-        description:
-          'Removes a previously registered child tab; called automatically by ea-tab.',
       },
     ],
   },
@@ -3899,7 +3388,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'removable',
@@ -3907,7 +3395,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'removeLabel',
@@ -3915,7 +3402,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -3923,7 +3409,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'variant',
@@ -3931,7 +3416,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'default'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -3941,8 +3425,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Fires when the user activates the remove button on a removable tag.',
       },
     ],
     methods: [],
@@ -3956,7 +3438,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -3964,7 +3445,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'hint',
@@ -3972,7 +3452,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -3980,7 +3459,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -3988,7 +3466,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'maxHeight',
@@ -3996,8 +3473,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          "Optional pixel ceiling for the textarea's height. Beyond it, the inner field scrolls vertically instead of growing.",
       },
       {
         name: 'maxlength',
@@ -4005,7 +3480,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -4013,7 +3487,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -4021,7 +3494,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -4029,7 +3501,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'resize',
@@ -4037,7 +3508,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'vertical'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'rows',
@@ -4045,7 +3515,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '3',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -4053,7 +3522,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -4061,7 +3529,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "''",
         required: false,
         twoWay: true,
-        description: '',
       },
     ],
     outputs: [
@@ -4071,7 +3538,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the textarea loses focus.',
       },
       {
         name: 'focused',
@@ -4079,14 +3545,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires when the textarea receives focus.',
       },
     ],
     methods: [
       {
         name: 'focus',
         signature: 'focus(): void',
-        description: 'Moves keyboard focus to the underlying native textarea element.',
       },
     ],
   },
@@ -4099,7 +3563,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'errorMsg',
@@ -4107,7 +3570,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'format',
@@ -4115,7 +3577,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'24h'",
         required: false,
         twoWay: false,
-        description: 'Display format for the trigger label. Wire value is always 24h.',
       },
       {
         name: 'hint',
@@ -4123,7 +3584,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'id',
@@ -4131,7 +3591,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '(auto-generated)',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'includeSeconds',
@@ -4139,7 +3598,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'label',
@@ -4147,7 +3605,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'minuteStep',
@@ -4155,7 +3612,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'placeholder',
@@ -4163,7 +3619,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'readonly',
@@ -4171,7 +3626,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'required',
@@ -4179,7 +3633,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'secondStep',
@@ -4187,7 +3640,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '1',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'size',
@@ -4195,7 +3647,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'value',
@@ -4203,7 +3654,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: true,
-        description: '"HH:MM" or "HH:MM:SS" in 24-hour notation, or null when unset.',
       },
     ],
     outputs: [
@@ -4213,86 +3663,64 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: 'Fires with the new value whenever the user changes the time.',
       },
     ],
     methods: [
       {
         name: 'advanceFocus',
         signature: 'advanceFocus(unit: Unit): void',
-        description:
-          'Move focus to the next unit column, looping back to hours at the end.',
       },
       {
         name: 'cannotExtend',
         signature: 'cannotExtend(unit: Unit, digits: string): boolean',
-        description: 'True when no digit 0–9 can validly extend the current buffer.',
       },
       {
         name: 'commitDigits',
         signature: 'commitDigits(unit: Unit, digits: string): void',
-        description: 'Writes the buffered digits into the value and clears the buffer.',
       },
       {
         name: 'flushBuffer',
         signature: 'flushBuffer(): void',
-        description: 'Commits any pending buffer. Called on blur, on arrow keys, on Tab.',
       },
       {
         name: 'focusHoursWhenReady',
         signature: 'focusHoursWhenReady(): void',
-        description:
-          'Push focus into the hours input once the popover surface has been rendered. afterNextRender guarantees the DOM has been updated (and the surface is no longer display: none) before we call .focus().',
       },
       {
         name: 'hoursFromTyped',
         signature: 'hoursFromTyped(typed: number): number',
-        description:
-          'Map a typed hours value back to 24h. In 24h mode the typed value is the hour. In 12h mode the typed value is interpreted in the current period (AM: 12 maps to 0, others stay; PM: 12 stays, others add 12).',
       },
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
-        description: 'Called by <ea-popover> when the user clicks outside or scrolls.',
       },
       {
         name: 'onSpinnerBlur',
         signature: 'onSpinnerBlur(): void',
-        description: "Commits the current buffer if any. Wired to each input's (blur).",
       },
       {
         name: 'onSpinnerFocus',
         signature: 'onSpinnerFocus(event: FocusEvent): void',
-        description:
-          'Select-all on focus so the first keystroke replaces the current value.',
       },
       {
         name: 'onSpinnerInput',
         signature: 'onSpinnerInput(unit: Unit, event: Event): void',
-        description:
-          'Native (input) event: the typed value is already in el.value. Strip non-digits, update the buffer (which drives the displayed text), and commit + auto-advance once the column is full or a third digit would overflow.',
       },
       {
         name: 'startHold',
         signature: 'startHold(unit: Unit, direction: "1" | unknown, event: Event): void',
-        description:
-          'Begin a long-press repeat on a chevron button. Fires once immediately, then after a HOLD_INITIAL_DELAY pause repeats at HOLD_INTERVAL_MS, accelerating to HOLD_FAST_INTERVAL_MS after HOLD_ACCELERATE_AFTER_MS of continuous holding. Pointer up / leave / cancel stops the repeat.',
       },
       {
         name: 'step',
         signature: 'step(unit: Unit, direction: "1" | unknown): void',
-        description: 'Stepper button or keyboard arrow nudges one column up or down.',
       },
       {
         name: 'stopHold',
         signature: 'stopHold(): void',
-        description: 'End any in-flight long-press repeat. Idempotent.',
       },
       {
         name: 'togglePeriod',
         signature: 'togglePeriod(): void',
-        description:
-          'Switches the AM/PM period in 12h mode by toggling the 12-hour offset.',
       },
     ],
   },
@@ -4311,7 +3739,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'items',
@@ -4319,7 +3746,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'selectedIds',
@@ -4327,7 +3753,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: true,
-        description: 'Ids currently on the target (right) side.',
       },
       {
         name: 'size',
@@ -4335,7 +3760,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'sourceLabel',
@@ -4343,8 +3767,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Heading rendered above the source (left) pane. Defaults to the localized transferList.sourceLabel from i18n; pass an explicit empty string to hide the heading row entirely.',
       },
       {
         name: 'targetLabel',
@@ -4352,8 +3774,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'undefined',
         required: false,
         twoWay: false,
-        description:
-          'Heading rendered above the target (right) pane. Defaults to the localized transferList.targetLabel from i18n; pass an explicit empty string to hide the heading row entirely.',
       },
     ],
     outputs: [],
@@ -4368,7 +3788,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "undefined, { alias: 'aria-label' }",
         required: false,
         twoWay: false,
-        description: 'Optional aria-label for the tree itself.',
       },
       {
         name: 'disabled',
@@ -4376,7 +3795,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'expandedIds',
@@ -4384,7 +3802,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: true,
-        description: 'Ids of currently-expanded branch nodes.',
       },
       {
         name: 'nodes',
@@ -4392,7 +3809,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'selectedId',
@@ -4400,7 +3816,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: true,
-        description: 'Currently-selected node id. null means nothing is selected.',
       },
       {
         name: 'size',
@@ -4408,7 +3823,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'md'",
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     outputs: [
@@ -4418,7 +3832,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     methods: [],
@@ -4432,7 +3845,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'Collapse'",
         required: false,
         twoWay: false,
-        description: 'Localized aria-label for the collapse chevron.',
       },
       {
         name: 'disabled',
@@ -4440,7 +3852,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'false',
         required: false,
         twoWay: false,
-        description: 'Whole-tree disabled state.',
       },
       {
         name: 'expandedIds',
@@ -4448,7 +3859,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: 'Set of currently-expanded node ids.',
       },
       {
         name: 'expandLabel',
@@ -4456,7 +3866,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: "'Expand'",
         required: false,
         twoWay: false,
-        description: 'Localized aria-label for the expand chevron.',
       },
       {
         name: 'focusedId',
@@ -4464,7 +3873,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: false,
-        description: 'Currently-focused node id (drives roving tabindex).',
       },
       {
         name: 'level',
@@ -4472,8 +3880,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description:
-          'Depth from the tree root (0-indexed). Drives indentation and aria-level.',
       },
       {
         name: 'node',
@@ -4481,7 +3887,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'posInSet',
@@ -4489,8 +3894,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description:
-          "1-indexed position among the parent's children (for aria-posinset).",
       },
       {
         name: 'selectedId',
@@ -4498,7 +3901,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: 'null',
         required: false,
         twoWay: false,
-        description: 'Currently-selected node id (single-select).',
       },
       {
         name: 'setSize',
@@ -4506,7 +3908,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: 'Total number of siblings (for aria-setsize).',
       },
     ],
     outputs: [
@@ -4516,7 +3917,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: '',
       },
       {
         name: 'toggle',
@@ -4524,7 +3924,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description: '',
       },
     ],
     methods: [],
@@ -4538,7 +3937,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: 'Pixel height of each item. Must be > 0.',
       },
       {
         name: 'items',
@@ -4546,7 +3944,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: '',
       },
       {
         name: 'overscan',
@@ -4554,8 +3951,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '3',
         required: false,
         twoWay: false,
-        description:
-          'Extra rows rendered above and below the visible window. A small buffer (3-5) hides the edge of the window during fast scrolls; larger values trade memory for smoothness.',
       },
       {
         name: 'viewportHeight',
@@ -4563,7 +3958,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: true,
         twoWay: false,
-        description: 'Pixel height of the scrolling viewport. Must be > 0.',
       },
     ],
     outputs: [
@@ -4573,16 +3967,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '',
         required: false,
         twoWay: false,
-        description:
-          'Index of the first row currently visible at the top of the viewport.',
       },
     ],
     methods: [
       {
         name: 'scrollToIndex',
         signature: 'scrollToIndex(index: number): void',
-        description:
-          'Programmatically scroll the viewport so that the row at index is the top-most visible row. Out-of-range values are clamped to the list bounds.',
       },
     ],
   },

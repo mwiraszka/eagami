@@ -833,7 +833,33 @@ export const en: WebMessages = {
             autocomplete: 'Autocomplete',
           },
         },
-        descriptions: {},
+        descriptions: {
+          input: {
+            label: 'Text label rendered above the field.',
+            type: 'Native input type (password adds a built-in show/hide toggle).',
+            placeholder: 'Placeholder shown while the field is empty.',
+            size: 'Visual size of the field.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            disabled: 'Disables the field.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            autocomplete: 'Value for the native autocomplete attribute.',
+            list: 'id of a <datalist> to associate for native suggestions.',
+            autofocus: 'Focuses the field once, after it first renders.',
+            showPasswordToggle: 'Shows the reveal toggle for password inputs.',
+            clearable: 'Shows a clear button while the field has a value.',
+            id: 'id applied to the native input and label for, auto-generated when omitted.',
+            value: 'Current field value, two-way bindable via [(value)].',
+            blurred: 'Fires when the field loses focus.',
+            focused: 'Fires when the field receives focus.',
+            clear: 'Clears the current value and restores focus to the field.',
+            focus: 'Moves keyboard focus to the underlying native field.',
+            togglePasswordVisibility:
+              'Toggles the password reveal state for type="password" inputs.',
+          },
+        },
       },
       sharedOptions: {
         fruitOptions: [

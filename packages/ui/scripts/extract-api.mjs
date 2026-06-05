@@ -42,7 +42,6 @@ function toInput(prop, twoWay) {
     default: cleanDefault(prop.defaultValue),
     required: !!prop.required,
     twoWay,
-    description: stripHtml(prop.description),
   };
 }
 
@@ -53,7 +52,6 @@ function toMethod(method) {
   return {
     name: method.name,
     signature: `${method.name}(${args}): ${method.returnType || 'void'}`,
-    description: stripHtml(method.description),
   };
 }
 
@@ -110,14 +108,12 @@ const types = `export interface ApiProp {
   default: string;
   required: boolean;
   twoWay: boolean;
-  description: string;
 }
 
 export interface ApiMethod {
   [key: string]: unknown;
   name: string;
   signature: string;
-  description: string;
 }
 
 export interface ComponentApi {
