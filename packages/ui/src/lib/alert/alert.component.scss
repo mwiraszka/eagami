@@ -1,6 +1,6 @@
 .ea-alert {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   font-size: var(--font-size-sm);
@@ -59,15 +59,13 @@
     }
   }
 
-  // Match the first line's box height and center the icon inside, so it aligns
-  // with the first line of text regardless of how many lines wrap below
+  // Status icons are 1em glyphs, so scale them via font-size rather than width/height
   &__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 1.25rem;
-    height: calc(1em * var(--line-height-normal));
+    font-size: 1.5em;
   }
 
   &__content {

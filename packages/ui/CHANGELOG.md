@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.7.0] - 2026-06-05
 
-### Added
+### Changed
 
-- Add shared playground knob specs that drive the interactive component pages in the docs.
+- Enlarge the alert status icon and vertically center it alongside the message.
 
 ## [2.6.0] - 2026-06-05
 
