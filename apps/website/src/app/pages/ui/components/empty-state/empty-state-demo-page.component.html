@@ -1,63 +1,17 @@
-<web-ui-component-demo-layout slug="empty-state">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-empty-state
-    [title]="messages().ui.component.demos.emptyState.noItemsTitle"
-    [description]="messages().ui.component.demos.emptyState.noItemsDescription">
-    <ea-icon-file slot="media" />
-    <ea-button
-      slot="actions"
-      variant="primary"
-      (clicked)="onAction(messages().ui.component.demos.emptyState.createItem)">
-      {{ messages().ui.component.demos.emptyState.createItem }}
-    </ea-button>
-  </ea-empty-state>
-
-  <h2>{{ messages().ui.component.sectionHeadings.noResults }}</h2>
-  <ea-empty-state
-    [title]="messages().ui.component.demos.emptyState.noResultsTitle"
-    [description]="messages().ui.component.demos.emptyState.noResultsDescription">
-    <ea-icon-search slot="media" />
-    <ea-button
-      slot="actions"
-      variant="secondary"
-      (clicked)="onAction(messages().ui.component.demos.emptyState.clearFilters)">
-      {{ messages().ui.component.demos.emptyState.clearFilters }}
-    </ea-button>
-  </ea-empty-state>
-
-  <h2>{{ messages().ui.component.sectionHeadings.titleOnly }}</h2>
-  <ea-empty-state [title]="messages().ui.component.demos.emptyState.nothingHereTitle" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.twoActions }}</h2>
-  <ea-empty-state
-    title="No projects yet"
-    description="Create a project or import from another workspace.">
-    <ea-icon-file slot="media" />
-    <ea-button
-      slot="actions"
-      variant="primary"
-      (clicked)="onAction('Create project')">
-      Create project
-    </ea-button>
-    <ea-button
-      slot="actions"
-      variant="secondary"
-      (clicked)="onAction('Import')">
-      Import
-    </ea-button>
-  </ea-empty-state>
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-empty-state
-    size="sm"
-    title="Small"
-    description="Compact variant.">
-    <ea-icon-file slot="media" />
-  </ea-empty-state>
-  <ea-empty-state
-    size="lg"
-    title="Large"
-    description="Spacious variant.">
-    <ea-icon-file slot="media" />
-  </ea-empty-state>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-empty-state
+      [title]="state().title"
+      [description]="state().description"
+      [size]="state().size"
+      [headingLevel]="state().headingLevel" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

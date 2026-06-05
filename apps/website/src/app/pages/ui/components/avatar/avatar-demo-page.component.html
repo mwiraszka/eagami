@@ -1,31 +1,18 @@
-<web-ui-component-demo-layout slug="avatar">
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-row">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-avatar
-      size="xs"
-      initials="XS" />
-    <ea-avatar
-      size="sm"
-      initials="SM" />
-    <ea-avatar
-      size="md"
-      initials="MD" />
-    <ea-avatar
-      size="lg"
-      initials="LG" />
-    <ea-avatar
-      size="xl"
-      initials="XL" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.shapesAndFallbacks }}</h2>
-  <div class="demo-row">
-    <ea-avatar
-      initials="EA"
-      shape="circle" />
-    <ea-avatar
-      initials="SQ"
-      shape="square" />
-    <ea-avatar shape="circle" />
-  </div>
+      [src]="state().src"
+      [initials]="state().initials"
+      [alt]="state().alt"
+      [size]="state().size"
+      [shape]="state().shape" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

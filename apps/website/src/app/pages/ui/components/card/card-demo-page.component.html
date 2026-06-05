@@ -1,41 +1,22 @@
-<web-ui-component-demo-layout slug="card">
-  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-row demo-row--stretch">
-    <ea-card variant="elevated">
-      <span slot="header">
-        {{ messages().ui.component.demos.card.elevatedHeader }}
-      </span>
-      {{ messages().ui.component.demos.card.elevatedBody }}
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-card
+      [variant]="state().variant"
+      [padding]="state().padding"
+      [headerAlign]="state().headerAlign"
+      [fullWidth]="state().fullWidth"
+      [headerDivider]="state().headerDivider">
+      <span slot="header">Card Title</span>
+      This is the card body content. It can contain any text or elements.
+      <span slot="footer">Footer</span>
     </ea-card>
-    <ea-card variant="outlined">
-      <span slot="header">
-        {{ messages().ui.component.demos.card.outlinedHeader }}
-      </span>
-      {{ messages().ui.component.demos.card.outlinedBody }}
-    </ea-card>
-    <ea-card variant="filled">
-      <span slot="header">
-        {{ messages().ui.component.demos.card.filledHeader }}
-      </span>
-      {{ messages().ui.component.demos.card.filledBody }}
-    </ea-card>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.withFooter }}</h2>
-  <ea-card variant="outlined">
-    <span slot="header">
-      {{ messages().ui.component.demos.card.cardTitleHeader }}
-    </span>
-    {{ messages().ui.component.demos.card.cardWithFooterBody }}
-    <span slot="footer">
-      <ea-button
-        variant="secondary"
-        size="sm">
-        {{ messages().ui.component.common.cancel }}
-      </ea-button>
-      <ea-button size="sm">
-        {{ messages().ui.component.common.save }}
-      </ea-button>
-    </span>
-  </ea-card>
+  </web-component-playground>
 </web-ui-component-demo-layout>

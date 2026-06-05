@@ -1,51 +1,21 @@
-<web-ui-component-demo-layout slug="progress-bar">
-  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-progress-bar
-      variant="default"
-      [value]="60"
-      [label]="messages().ui.component.common.defaultLabel"
-      [showValue]="true" />
-    <ea-progress-bar
-      variant="success"
-      [value]="100"
-      [label]="messages().ui.component.common.successLabel"
-      [showValue]="true" />
-    <ea-progress-bar
-      variant="warning"
-      [value]="45"
-      [label]="messages().ui.component.common.warningLabel"
-      [showValue]="true" />
-    <ea-progress-bar
-      variant="error"
-      [value]="20"
-      [label]="messages().ui.component.common.errorLabel"
-      [showValue]="true" />
-    <ea-progress-bar
-      variant="info"
-      [value]="80"
-      [label]="messages().ui.component.common.infoLabel"
-      [showValue]="true" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
-    <ea-progress-bar
-      size="sm"
-      [value]="60"
-      [label]="messages().ui.component.common.small" />
-    <ea-progress-bar
-      size="md"
-      [value]="60"
-      [label]="messages().ui.component.common.medium" />
-    <ea-progress-bar
-      size="lg"
-      [value]="60"
-      [label]="messages().ui.component.common.large" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.indeterminate }}</h2>
-  <ea-progress-bar
-    [indeterminate]="true"
-    [label]="messages().ui.component.demos.progressBar.processing" />
+      class="progress-bar-demo__field"
+      [label]="state().label"
+      [value]="state().value"
+      [max]="state().max"
+      [variant]="state().variant"
+      [size]="state().size"
+      [showValue]="state().showValue"
+      [indeterminate]="state().indeterminate" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

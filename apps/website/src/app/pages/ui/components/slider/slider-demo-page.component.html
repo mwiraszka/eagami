@@ -1,63 +1,24 @@
-<web-ui-component-demo-layout slug="slider">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-slider
-    [label]="messages().ui.component.demos.slider.volumeLabel"
-    [showValue]="true"
-    [(value)]="sliderValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.minMaxLabels }}</h2>
-  <ea-slider
-    [label]="messages().ui.component.demos.slider.brightnessLabel"
-    [min]="0"
-    [max]="100"
-    [step]="5"
-    [value]="65"
-    [showValue]="true"
-    [showMinMaxLabels]="true" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.stepped }}</h2>
-  <ea-slider
-    label="Rating"
-    [min]="0"
-    [max]="10"
-    [step]="1"
-    [value]="5"
-    [showValue]="true"
-    [showMinMaxLabels]="true" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-slider
-      size="sm"
-      [label]="messages().ui.component.common.small"
-      [value]="30"
-      [showValue]="true" />
-    <ea-slider
-      size="md"
-      [label]="messages().ui.component.common.medium"
-      [value]="50"
-      [showValue]="true" />
-    <ea-slider
-      size="lg"
-      [label]="messages().ui.component.common.large"
-      [value]="70"
-      [showValue]="true" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
-  <ea-slider
-    [label]="messages().ui.component.demos.slider.withHintLabel"
-    [hint]="messages().ui.component.demos.slider.sliderHint"
-    [value]="35"
-    [showValue]="true" />
-  <ea-slider
-    [label]="messages().ui.component.demos.slider.withErrorLabel"
-    [errorMsg]="messages().ui.component.demos.slider.sliderError"
-    [value]="20"
-    [showValue]="true" />
-  <ea-slider
-    [label]="messages().ui.component.demos.slider.volumeLabel"
-    [disabled]="true"
-    [value]="60"
-    [showValue]="true" />
+      class="slider-demo__field"
+      [label]="state().label"
+      [size]="state().size"
+      [min]="state().min"
+      [max]="state().max"
+      [step]="state().step"
+      [showValue]="state().showValue"
+      [showMinMaxLabels]="state().showMinMaxLabels"
+      [disabled]="state().disabled"
+      [required]="state().required"
+      [hasError]="state().hasError" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

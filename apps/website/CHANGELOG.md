@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.7.0] - 2026-06-05
+
+### Added
+
+- Rebuild the simple component pages as interactive playgrounds, matching the Input page: a live instance driven by controls, a generated code snippet for the current configuration, and a localized API reference of each component's inputs, outputs, and methods.
+
+### Changed
+
+- Pick up @eagami/ui v2.7.0.
+
 ## [2.6.0] - 2026-06-05
 
 ### Added
@@ -497,6 +507,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.7.0]: https://github.com/mwiraszka/eagami/compare/website-v2.6.0...website-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/website-v2.5.3...website-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/website-v2.5.2...website-v2.5.3
 [2.5.2]: https://github.com/mwiraszka/eagami/compare/website-v2.5.1...website-v2.5.2

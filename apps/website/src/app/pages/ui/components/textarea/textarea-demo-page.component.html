@@ -1,68 +1,24 @@
-<web-ui-component-demo-layout slug="textarea">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.messageLabel"
-    [placeholder]="messages().ui.component.demos.textarea.messagePlaceholder"
-    [(value)]="textareaValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.messageLabel"
-    [hint]="messages().ui.component.demos.textarea.hintMaxCharacters"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.messageLabel"
-    [errorMsg]="messages().ui.component.demos.textarea.errorRequired"
-    [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-textarea
-      size="sm"
-      [label]="messages().ui.component.common.small"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-    <ea-textarea
-      size="md"
-      [label]="messages().ui.component.common.medium"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-    <ea-textarea
-      size="lg"
-      [label]="messages().ui.component.common.large"
-      [placeholder]="messages().ui.component.demos.input.enterTextPlaceholder" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.resizing }}</h2>
-  <div class="demo-stack">
-    <div>
-      <span class="demo-label">Fixed size</span>
-      <ea-textarea
-        resize="none"
-        [placeholder]="messages().ui.component.demos.textarea.fixedSizePlaceholder" />
-    </div>
-    <div>
-      <span class="demo-label">Max height</span>
-      <ea-textarea
-        placeholder="Drag the bottom-right handle up to 200px"
-        [maxHeight]="200" />
-    </div>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.withMaxlength }}</h2>
-  <ea-textarea
-    label="Bio"
-    [maxlength]="100"
-    hint="Limited to 100 characters."
-    placeholder="Tell us about yourself…" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabledAndReadonly }}</h2>
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.messageLabel"
-    [placeholder]="messages().ui.component.demos.textarea.messagePlaceholder"
-    [disabled]="true" />
-  <ea-textarea
-    [label]="messages().ui.component.demos.textarea.readonlyLabel"
-    [readonly]="true"
-    [value]="messages().ui.component.demos.textarea.readonlyValue" />
+      class="textarea-demo__field"
+      [label]="state().label"
+      [placeholder]="state().placeholder"
+      [size]="state().size"
+      [resize]="state().resize"
+      [rows]="state().rows"
+      [maxlength]="state().maxlength"
+      [maxHeight]="state().maxHeight"
+      [disabled]="state().disabled"
+      [readonly]="state().readonly"
+      [required]="state().required" />
+  </web-component-playground>
 </web-ui-component-demo-layout>
