@@ -143,7 +143,7 @@
     }
 
     &:hover {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
       color: var(--color-text-primary);
     }
   }
@@ -233,7 +233,7 @@
     transition: var(--transition-colors);
 
     &--focused {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
     }
 
     &--disabled {
@@ -247,7 +247,7 @@
     }
 
     &:hover:not(&--disabled) {
-      background-color: var(--color-bg-muted);
+      background-color: var(--color-state-hover);
     }
 
     // The toggle is handled on the option row so the label is clickable too;

@@ -98,7 +98,7 @@
     &:hover:not(.ea-button--disabled) {
       background-color: var(
         --ea-button-background-color-hover,
-        var(--ea-button-background-color, var(--color-bg-muted))
+        var(--ea-button-background-color, var(--color-state-hover))
       );
       border-color: var(
         --ea-button-border-color-hover,
@@ -113,7 +113,7 @@
     &:active:not(.ea-button--disabled) {
       background-color: var(
         --ea-button-background-color-active,
-        var(--ea-button-background-color, var(--color-neutral-200))
+        var(--ea-button-background-color, var(--color-state-active))
       );
       border-color: var(
         --ea-button-border-color-active,
@@ -134,7 +134,7 @@
     &:hover:not(.ea-button--disabled) {
       background-color: var(
         --ea-button-background-color-hover,
-        var(--ea-button-background-color, var(--color-bg-muted))
+        var(--ea-button-background-color, var(--color-state-hover))
       );
       border-color: var(
         --ea-button-border-color-hover,
@@ -149,7 +149,7 @@
     &:active:not(.ea-button--disabled) {
       background-color: var(
         --ea-button-background-color-active,
-        var(--ea-button-background-color, var(--color-neutral-200))
+        var(--ea-button-background-color, var(--color-state-active))
       );
       border-color: var(
         --ea-button-border-color-active,
