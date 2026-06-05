@@ -12,6 +12,7 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the switch. */
 export type SwitchSize = 'sm' | 'md' | 'lg';
@@ -43,7 +44,7 @@ export class SwitchComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
-  readonly id = input<string>(`ea-switch-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-switch'));
 
   readonly checked = model<boolean>(false);
   /** Fires with the new checked state whenever the user toggles the switch. */

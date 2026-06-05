@@ -15,6 +15,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { uniqueId } from '../unique-id';
 
 /** Width preset of the dialog panel. */
 export type DialogSize = 'sm' | 'md' | 'lg' | 'full';
@@ -43,7 +44,7 @@ export class DialogComponent {
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
-  readonly id = input<string>(`ea-dialog-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-dialog'));
 
   readonly open = model<boolean>(false);
 

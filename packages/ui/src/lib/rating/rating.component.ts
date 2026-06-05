@@ -21,6 +21,7 @@ import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { LeftHalfStarIconComponent } from '../icons/left-half-star.component';
 import { StarIconComponent } from '../icons/star.component';
+import { uniqueId } from '../unique-id';
 
 /** Per-position render state, computed from the current display value. */
 export type RatingStarState = 'empty' | 'half' | 'full';
@@ -90,7 +91,7 @@ export class RatingComponent implements ControlValueAccessor {
   readonly iconClass = input<Type<unknown>>(StarIconComponent);
   /** Standalone component class rendered for half positions (when `allowHalf` is true). */
   readonly halfIconClass = input<Type<unknown>>(LeftHalfStarIconComponent);
-  readonly id = input<string>(`ea-rating-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-rating'));
 
   /** Current rating value, 0..max in 1 (or 0.5 when `allowHalf`) increments. */
   readonly value = model<number>(0);

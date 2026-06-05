@@ -25,6 +25,7 @@ import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the time picker trigger. */
 export type TimePickerSize = 'sm' | 'md' | 'lg';
@@ -100,7 +101,7 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly includeSeconds = input<boolean>(false);
   readonly minuteStep = input<number>(1);
   readonly secondStep = input<number>(1);
-  readonly id = input<string>(`ea-time-picker-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-time-picker'));
 
   /** `"HH:MM"` or `"HH:MM:SS"` in 24-hour notation, or `null` when unset. */
   readonly value = model<string | null>(null);

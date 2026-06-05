@@ -15,6 +15,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the textarea. */
 export type TextareaSize = 'sm' | 'md' | 'lg';
@@ -57,7 +58,7 @@ export class TextareaComponent implements ControlValueAccessor {
   /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
    * field scrolls vertically instead of growing. */
   readonly maxHeight = input<number | undefined>(undefined);
-  readonly id = input<string>(`ea-textarea-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-textarea'));
 
   readonly value = model<string>('');
 

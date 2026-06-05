@@ -8,6 +8,7 @@ import {
   input,
 } from '@angular/core';
 
+import { uniqueId } from '../unique-id';
 import { StepperComponent } from './stepper.component';
 
 /**
@@ -39,7 +40,7 @@ export class StepComponent implements OnInit, OnDestroy {
   readonly completed = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly optional = input<boolean>(false);
-  readonly id = input<string>(`ea-step-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-step'));
 
   readonly isActive = computed(
     () => this.stepper.indexOf(this) === this.stepper.activeStep(),

@@ -16,6 +16,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of each digit cell. */
 export type CodeInputSize = 'sm' | 'md' | 'lg';
@@ -52,7 +53,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
-  readonly id = input<string>(`ea-code-input-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-code-input'));
 
   readonly value = model<string>('');
 

@@ -15,6 +15,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { uniqueId } from '../unique-id';
 
 /** Visual size of the slider track and thumb. */
 export type SliderSize = 'sm' | 'md' | 'lg';
@@ -59,7 +60,7 @@ export class SliderComponent implements ControlValueAccessor {
   readonly showMinMaxLabels = input<boolean>(false);
   readonly formatValue = input<(value: number) => string>(value => `${value}`);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
-  readonly id = input<string>(`ea-slider-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(uniqueId('ea-slider'));
 
   readonly value = model<number>(0);
   /** Fires with the new (snapped, clamped) numeric value whenever the slider moves. */
