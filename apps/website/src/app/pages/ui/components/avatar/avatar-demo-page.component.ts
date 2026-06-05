@@ -24,7 +24,7 @@ interface AvatarKnobState {
 }
 
 const SLUG = 'avatar';
-const DEMO_SRC = 'https://i.pravatar.cc/150?img=12';
+const DEMO_SRC = 'https://i.pravatar.cc/150?img=15';
 
 @Component({
   selector: 'web-avatar-demo-page',

@@ -13,10 +13,13 @@
 }
 
 .playground__preview {
+  // Scroll when a preview is wider than the card; `safe center` keeps the start
+  // reachable instead of clipping it the way plain centering would on overflow
+  overflow-x: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   gap: 16px;
   min-height: 120px;
 }

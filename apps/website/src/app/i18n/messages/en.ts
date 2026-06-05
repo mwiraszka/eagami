@@ -836,7 +836,7 @@ export const en: WebMessages = {
             variant: 'Variant',
             dismissible: 'Dismissible',
             size: 'Size',
-            icon: 'Icon (Override)',
+            icon: 'Icon (override)',
           },
           avatar: {
             size: 'Size',
