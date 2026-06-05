@@ -8,7 +8,7 @@
   // needs this single value and the text stays in proportion to the circle
   width: var(--ea-avatar-size, 2.5rem);
   height: var(--ea-avatar-size, 2.5rem);
-  background-color: var(--color-bg-muted);
+  background-color: var(--color-bg-emphasis);
   color: var(--color-text-secondary);
   font-family: var(--font-family-sans);
   font-weight: var(--font-weight-medium);
@@ -55,7 +55,7 @@
   }
 
   &__fallback {
-    width: 60%;
-    height: 60%;
+    // The user icon is an em-sized glyph, so scale it from the circle diameter
+    font-size: calc(var(--ea-avatar-size, 2.5rem) * 0.6);
   }
 }

@@ -265,8 +265,18 @@ export class PopoverComponent {
     // the response. SSR guard is required because the website prerenders pages
     // that mount popovers.
     if (typeof window !== 'undefined') {
-      const onViewportChange = (): void => {
+      const onViewportChange = (event?: Event): void => {
         if (!this.open()) {
+          return;
+        }
+        // Scrolling within the popover's own surface (e.g. a long dropdown list)
+        // must not dismiss or re-track it; only outside/viewport scroll should.
+        const target = event?.target as Node | null;
+        if (
+          event?.type === 'scroll' &&
+          target &&
+          this.surfaceEl()?.nativeElement.contains(target)
+        ) {
           return;
         }
         const behavior = this.scrollBehavior();

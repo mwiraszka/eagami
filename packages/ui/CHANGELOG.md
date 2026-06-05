@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.7.0] - 2026-06-05
+## [2.7.0] - 2026-06-06
 
 ### Added
 
@@ -17,7 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Scale avatar initials to the avatar size so they stay proportionate at small sizes.
+- Stop popovers and dropdowns from closing when scrolling inside their own scrollable list.
+- Show a hover background on the alert dismiss button.
+- Darken the avatar placeholder background so it stays visible on light surfaces.
+- Scale avatar initials and the fallback user icon to the avatar size so they stay proportionate at small sizes.
 - Shrink small badge text so it reads distinctly from the medium size.
 
 ## [2.6.0] - 2026-06-05

@@ -78,6 +78,9 @@
   --color-bg-subtle: var(--color-neutral-50);
   --color-bg-stripe: var(--color-neutral-50);
   --color-bg-muted: var(--color-neutral-100);
+  // Stronger neutral fill for placeholder surfaces (e.g. avatar) that must read
+  // clearly against the page; muted is too faint on a white base
+  --color-bg-emphasis: var(--color-neutral-300);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
@@ -170,6 +173,7 @@
   // tracks, skeletons). Hover/active fills route through the translucent
   // --color-state-* tokens instead, so they never collide with this shade.
   --color-bg-muted: var(--color-neutral-700);
+  --color-bg-emphasis: var(--color-neutral-600);
 
   // White wash so an interactive lift reads on any dark surface, including the
   // neutral-700 tier where bg-muted/-subtle/-elevated all coincide. This is the
