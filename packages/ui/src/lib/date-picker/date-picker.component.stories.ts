@@ -68,16 +68,18 @@ export const Disabled: Story = {
   args: { disabled: true },
 };
 
+// Pin demo dates to a fixed day so Chromatic snapshots stay stable instead of
+// drifting with the calendar each time a PR rebuilds Storybook.
 export const WithInitialValue: Story = {
   args: {
-    value: new Date(),
+    value: new Date(2000, 0, 1),
   },
 };
 
 export const WithMinMax: Story = {
   args: {
-    minDate: new Date(new Date().setDate(new Date().getDate() - 7)),
-    maxDate: new Date(new Date().setDate(new Date().getDate() + 14)),
+    minDate: new Date(1999, 11, 25),
+    maxDate: new Date(2000, 0, 15),
   },
 };
 
