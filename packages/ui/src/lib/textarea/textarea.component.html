@@ -8,7 +8,10 @@
 
   <div
     class="ea-textarea-wrapper"
-    [ngClass]="wrapperClasses()">
+    [ngClass]="wrapperClasses()"
+    [style.resize]="resize()"
+    [style.min-height]="minHeightStyle()"
+    [style.max-height.px]="maxHeight() ?? null">
     <textarea
       #textareaEl
       class="ea-textarea"
@@ -19,9 +22,6 @@
       [required]="required()"
       [rows]="rows()"
       [value]="value()"
-      [style.min-height]="minHeight()"
-      [style.resize]="resize()"
-      [style.max-height.px]="maxHeight() ?? null"
       [attr.maxlength]="maxlength() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
