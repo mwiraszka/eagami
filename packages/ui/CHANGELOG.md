@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add an `icon` input to `<ea-alert>` and `<ea-input>` for a leading icon, plus a `size` input on `<ea-alert>`.
 - Add `showPercentage` to `<ea-progress-bar>`, replacing `showValue`.
-- Add `xs` and `xl` sizes to `<ea-spinner>`.
+- Add `xs` and `xl` sizes to `<ea-spinner>` and `<ea-radio-group>`.
+- Add a `minHeight` input to `<ea-textarea>`.
 
 ### Changed
 
@@ -27,7 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Darken the avatar placeholder background so it stays visible on light surfaces.
 - Scale avatar initials and the fallback user icon to the avatar size so they stay proportionate at small sizes.
 - Shrink small badge text so it reads distinctly from the medium size.
-- Make `<ea-textarea>` `rows` set the visible height.
+- Stop the `<ea-textarea>` focus ring being clipped at its bottom edge, and let it resize horizontally and in both directions.
+- Show the dividing line for a vertical `<ea-divider>` with a label, and lift the divider line's contrast in dark mode.
+- Show the `<ea-slider>` and `<ea-range-slider>` value when `showValue` is enabled but no label is set.
 
 ## [2.6.0] - 2026-06-05
 
