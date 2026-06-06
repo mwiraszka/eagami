@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-color-picker-field {
   display: flex;
   flex-direction: column;
@@ -26,38 +28,36 @@
   &__trigger {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.5em;
     width: 100%;
-    background-color: var(--color-bg-base);
+    min-height: 2.5em;
+    padding: 0.5em 0.75em;
+    text-align: left;
+    font-family: var(--font-family-sans);
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
-    font-family: var(--font-family-sans);
+    background-color: var(--color-bg-base);
     color: var(--color-text-primary);
     cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
-    text-align: left;
 
     &:focus-visible {
       outline: none;
       box-shadow: var(--shadow-focus-ring);
     }
 
+    // Size sets only the font-size; padding, gap, min-height, and the swatch are
+    // em-based, so the trigger scales entirely from this one knob.
     &--sm {
-      padding: var(--space-1-5) var(--space-2);
       font-size: var(--font-size-sm);
-      min-height: 2rem;
     }
 
     &--md {
-      padding: var(--space-2) var(--space-3);
       font-size: var(--font-size-md);
-      min-height: 2.5rem;
     }
 
     &--lg {
-      padding: var(--space-2-5) var(--space-4);
       font-size: var(--font-size-lg);
-      min-height: 3rem;
     }
 
     &--open {
@@ -97,35 +97,12 @@
   }
 
   &__clear {
+    @include ea.icon-button;
+    z-index: 1;
     position: absolute;
     top: 50%;
     right: var(--space-2);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 2em;
-    height: 2em;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: none;
-    color: var(--color-text-secondary);
-    line-height: 1;
-    cursor: pointer;
-    transition: var(--transition-colors);
     transform: translateY(-50%);
-
-    &:hover {
-      background-color: var(--color-state-hover);
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
   }
 
   &__clear-icon {
@@ -138,8 +115,8 @@
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 1.125em;
+    height: 1.125em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-base);

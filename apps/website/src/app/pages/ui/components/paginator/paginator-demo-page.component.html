@@ -1,30 +1,18 @@
-<web-ui-component-demo-layout slug="paginator">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-paginator [totalItems]="100" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.alignLeft }}</h2>
-  <ea-paginator
-    [totalItems]="100"
-    align="left" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.alignCenter }}</h2>
-  <ea-paginator
-    [totalItems]="100"
-    align="center" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.manyPages }}</h2>
-  <ea-paginator
-    [totalItems]="500"
-    [page]="25" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.minimal }}</h2>
-  <ea-paginator
-    [totalItems]="100"
-    [showPageSizeSelector]="false"
-    [showRangeLabel]="false" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-paginator
-    [totalItems]="100"
-    [disabled]="true" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-paginator
+      [totalItems]="state().totalItems"
+      [align]="state().align"
+      [showPageSizeSelector]="state().showPageSizeSelector"
+      [showRangeLabel]="state().showRangeLabel"
+      [disabled]="state().disabled" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

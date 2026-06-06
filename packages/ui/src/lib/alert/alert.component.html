@@ -1,30 +1,30 @@
 @if (visible()) {
   <div
     class="ea-alert"
-    [class.ea-alert--default]="variant() === 'default'"
-    [class.ea-alert--success]="variant() === 'success'"
-    [class.ea-alert--warning]="variant() === 'warning'"
-    [class.ea-alert--error]="variant() === 'error'"
-    [class.ea-alert--info]="variant() === 'info'"
+    [ngClass]="alertClasses()"
     [attr.role]="role()">
     <span
       class="ea-alert__icon"
       aria-hidden="true">
-      @switch (variant()) {
-        @case ('success') {
-          <ea-icon-check />
-        }
-        @case ('warning') {
-          <ea-icon-alert-circle />
-        }
-        @case ('error') {
-          <ea-icon-alert-circle />
-        }
-        @case ('info') {
-          <ea-icon-info />
-        }
-        @default {
-          <ea-icon-info />
+      @if (icon(); as customIcon) {
+        <ng-container *ngComponentOutlet="customIcon" />
+      } @else {
+        @switch (variant()) {
+          @case ('success') {
+            <ea-icon-check />
+          }
+          @case ('warning') {
+            <ea-icon-alert-circle />
+          }
+          @case ('error') {
+            <ea-icon-alert-circle />
+          }
+          @case ('info') {
+            <ea-icon-info />
+          }
+          @default {
+            <ea-icon-info />
+          }
         }
       }
     </span>

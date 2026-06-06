@@ -1,45 +1,17 @@
-<web-ui-component-demo-layout slug="switch">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-switch
-    [label]="messages().ui.component.demos.switch.enableNotificationsLabel"
-    [(checked)]="switchValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-switch
-      size="sm"
-      [label]="messages().ui.component.common.small" />
-    <ea-switch
-      size="md"
-      [label]="messages().ui.component.common.medium" />
-    <ea-switch
-      size="lg"
-      [label]="messages().ui.component.common.large" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.states }}</h2>
-  <div class="demo-row demo-row--wide">
-    <ea-switch
-      [label]="messages().ui.component.demos.switch.enableNotificationsLabel"
-      [disabled]="true" />
-    <ea-switch
-      [label]="messages().ui.component.demos.switch.disabledOnLabel"
-      [disabled]="true"
-      [checked]="true" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.required }}</h2>
-  <ea-switch
-    [label]="messages().ui.component.demos.switch.confirmConsentLabel"
-    [required]="true" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-switch
-    [label]="messages().ui.component.demos.switch.marketingEmailsLabel"
-    [hint]="messages().ui.component.demos.switch.marketingEmailsHint" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-switch
-    [label]="messages().ui.component.demos.switch.twoFactorAuthLabel"
-    [errorMsg]="messages().ui.component.demos.switch.twoFactorAuthError" />
+      [label]="state().label"
+      [size]="state().size"
+      [disabled]="state().disabled"
+      [required]="state().required" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

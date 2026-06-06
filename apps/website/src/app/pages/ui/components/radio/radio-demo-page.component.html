@@ -1,81 +1,20 @@
-<web-ui-component-demo-layout slug="radio">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-radio-group [(value)]="radioValue">
-    <ea-radio
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-radio-group
       value="apple"
-      [label]="messages().ui.component.demos.radio.appleLabel" />
-    <ea-radio
-      value="banana"
-      [label]="messages().ui.component.demos.radio.bananaLabel" />
-    <ea-radio
-      value="cherry"
-      [label]="messages().ui.component.demos.radio.cherryLabel" />
-  </ea-radio-group>
-
-  <h2>{{ messages().ui.component.sectionHeadings.horizontal }}</h2>
-  <ea-radio-group
-    orientation="horizontal"
-    value="sm">
-    <ea-radio
-      value="sm"
-      [label]="messages().ui.component.common.small" />
-    <ea-radio
-      value="md"
-      [label]="messages().ui.component.common.medium" />
-    <ea-radio
-      value="lg"
-      [label]="messages().ui.component.common.large" />
-  </ea-radio-group>
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-radio-group
-    [disabled]="true"
-    value="a">
-    <ea-radio
-      value="a"
-      [label]="messages().ui.component.demos.radio.optionALabel" />
-    <ea-radio
-      value="b"
-      [label]="messages().ui.component.demos.radio.optionBLabel" />
-  </ea-radio-group>
-
-  <h2>{{ messages().ui.component.sectionHeadings.withLabel }}</h2>
-  <ea-radio-group
-    [label]="messages().ui.component.demos.radio.subscriptionPlanLabel"
-    value="pro">
-    <ea-radio
-      value="free"
-      [label]="messages().ui.component.demos.radio.freeLabel" />
-    <ea-radio
-      value="pro"
-      [label]="messages().ui.component.demos.radio.proLabel" />
-    <ea-radio
-      value="enterprise"
-      [label]="messages().ui.component.demos.radio.enterpriseLabel" />
-  </ea-radio-group>
-
-  <h2>{{ messages().ui.component.sectionHeadings.requiredWithHint }}</h2>
-  <ea-radio-group
-    [label]="messages().ui.component.demos.radio.deliverySpeedLabel"
-    [hint]="messages().ui.component.demos.radio.deliverySpeedHint"
-    [required]="true">
-    <ea-radio
-      value="standard"
-      [label]="messages().ui.component.demos.radio.standardLabel" />
-    <ea-radio
-      value="express"
-      [label]="messages().ui.component.demos.radio.expressLabel" />
-  </ea-radio-group>
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-radio-group
-    [label]="messages().ui.component.demos.radio.accountTypeLabel"
-    [errorMsg]="messages().ui.component.demos.radio.accountTypeError">
-    <ea-radio
-      value="personal"
-      [label]="messages().ui.component.demos.radio.personalLabel" />
-    <ea-radio
-      value="business"
-      [label]="messages().ui.component.demos.radio.businessLabel" />
-  </ea-radio-group>
+      [size]="state().size">
+      <ea-radio
+        value="apple"
+        [label]="state().label"
+        [disabled]="state().disabled" />
+    </ea-radio-group>
+  </web-component-playground>
 </web-ui-component-demo-layout>

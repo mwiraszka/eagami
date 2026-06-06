@@ -40,8 +40,8 @@
 
   &__chevron {
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: 1em;
+    height: 1em;
     color: var(--color-text-secondary);
     transition: transform var(--duration-normal) var(--ease-out);
   }

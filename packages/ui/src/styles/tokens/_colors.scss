@@ -78,6 +78,9 @@
   --color-bg-subtle: var(--color-neutral-50);
   --color-bg-stripe: var(--color-neutral-50);
   --color-bg-muted: var(--color-neutral-100);
+  // Stronger neutral fill for placeholder surfaces (e.g. avatar) that must read
+  // clearly against the page; muted is too faint on a white base
+  --color-bg-emphasis: var(--color-neutral-300);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
@@ -92,6 +95,7 @@
   --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
+  --color-divider: var(--color-border-subtle);
   --color-border-focus: var(--color-primary-500);
 
   // brand-default/-hover/-active are the brand colour as a surface (solid bg
@@ -170,6 +174,7 @@
   // tracks, skeletons). Hover/active fills route through the translucent
   // --color-state-* tokens instead, so they never collide with this shade.
   --color-bg-muted: var(--color-neutral-700);
+  --color-bg-emphasis: var(--color-neutral-600);
 
   // White wash so an interactive lift reads on any dark surface, including the
   // neutral-700 tier where bg-muted/-subtle/-elevated all coincide. This is the
@@ -187,6 +192,9 @@
   );
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
+  // Dividers read as barely-there against dark surfaces at border-subtle, so
+  // they step one neutral lighter for a visible-but-quiet rule.
+  --color-divider: var(--color-neutral-600);
 
   // Surface roles step one shade lighter than light mode so the button clears
   // WCAG 1.4.11 (3:1) on the near-black canvas while keeping a white label

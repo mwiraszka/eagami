@@ -1,7 +1,7 @@
 import { InputComponent, type InputSize, type InputType } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -10,6 +10,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface InputKnobState {
@@ -27,6 +28,7 @@ interface InputKnobState {
   showPasswordToggle: boolean;
   clearable: boolean;
   autocomplete: string;
+  icon: string;
 }
 
 const SLUG = 'input';
@@ -34,15 +36,20 @@ const SLUG = 'input';
 @Component({
   selector: 'web-input-demo-page',
   templateUrl: './input-demo-page.component.html',
-  styleUrl: './input-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [InputComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })
 export class InputDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.input, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.input, UI_API[SLUG]),
+    iconKnob(['search', 'filter', 'mail', 'user', 'lock', 'calendar']),
+  ];
   protected readonly state = signal<InputKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.input) as InputKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

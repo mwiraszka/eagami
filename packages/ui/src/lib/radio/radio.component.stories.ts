@@ -2,27 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { RadioGroupComponent } from './radio-group.component';
 import { RadioComponent } from './radio.component';
+import { RADIO_KNOBS } from './radio.component.knobs';
 
 const meta: Meta<RadioGroupComponent> = {
   title: 'Components/Radio',
   component: RadioGroupComponent,
   tags: ['autodocs'],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    orientation: {
-      control: 'select',
-      options: ['vertical', 'horizontal'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    size: 'md',
-    orientation: 'vertical',
-    disabled: false,
-  },
+  argTypes: RADIO_KNOBS.argTypes,
+  args: RADIO_KNOBS.args,
 };
 
 export default meta;
@@ -141,6 +128,10 @@ export const AllSizes: Story = {
     moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
     template: `
       <div class="story-row story-row--xl">
+        <ea-radio-group size="xs" value="a">
+          <ea-radio value="a" label="XS A"></ea-radio>
+          <ea-radio value="b" label="XS B"></ea-radio>
+        </ea-radio-group>
         <ea-radio-group size="sm" value="a">
           <ea-radio value="a" label="Small A"></ea-radio>
           <ea-radio value="b" label="Small B"></ea-radio>
@@ -152,6 +143,10 @@ export const AllSizes: Story = {
         <ea-radio-group size="lg" value="a">
           <ea-radio value="a" label="Large A"></ea-radio>
           <ea-radio value="b" label="Large B"></ea-radio>
+        </ea-radio-group>
+        <ea-radio-group size="xl" value="a">
+          <ea-radio value="a" label="XL A"></ea-radio>
+          <ea-radio value="b" label="XL B"></ea-radio>
         </ea-radio-group>
       </div>
     `,

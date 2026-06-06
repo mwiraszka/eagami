@@ -850,6 +850,174 @@ export const pl: WebMessages = {
             clearable: 'Z czyszczeniem',
             autocomplete: 'Autouzupełnianie',
           },
+          alert: {
+            variant: 'Wariant',
+            dismissible: 'Z możliwością zamknięcia',
+            size: 'Rozmiar',
+            icon: 'Ikona (zastąp)',
+          },
+          avatar: {
+            size: 'Rozmiar',
+            shape: 'Kształt',
+            src: 'Źródło obrazu',
+            initials: 'Inicjały',
+            alt: 'Tekst alternatywny',
+          },
+          badge: {
+            variant: 'Wariant',
+            size: 'Rozmiar',
+            shape: 'Kształt',
+          },
+          button: {
+            variant: 'Wariant',
+            size: 'Rozmiar',
+            type: 'Typ',
+            disabled: 'Wyłączone',
+            loading: 'Ładowanie',
+            fullWidth: 'Pełna szerokość',
+          },
+          card: {
+            variant: 'Wariant',
+            padding: 'Wypełnienie',
+            headerAlign: 'Wyrównanie nagłówka',
+            fullWidth: 'Pełna szerokość',
+            headerDivider: 'Linia oddzielająca nagłówek',
+          },
+          checkbox: {
+            label: 'Etykieta',
+            count: 'Liczba',
+            size: 'Rozmiar',
+            disabled: 'Wyłączone',
+            required: 'Wymagane',
+            indeterminate: 'Stan nieokreślony',
+          },
+          'code-input': {
+            size: 'Rozmiar',
+            length: 'Długość',
+            label: 'Etykieta',
+            placeholder: 'Tekst zastępczy',
+            disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
+            required: 'Wymagane',
+          },
+          'color-picker': {
+            label: 'Etykieta',
+            placeholder: 'Tekst zastępczy',
+            size: 'Rozmiar',
+            format: 'Format',
+            showAlpha: 'Pokaż kanał alfa',
+            disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
+            required: 'Wymagane',
+          },
+          divider: {
+            orientation: 'Orientacja',
+            label: 'Etykieta',
+          },
+          'eagami-wordmark': {
+            variant: 'Wariant',
+            layout: 'Układ',
+            size: 'Rozmiar',
+          },
+          'empty-state': {
+            size: 'Rozmiar',
+            headingLevel: 'Poziom nagłówka',
+            title: 'Tytuł',
+            description: 'Opis',
+          },
+          paginator: {
+            align: 'Wyrównanie',
+            showPageSizeSelector: 'Pokaż wybór rozmiaru strony',
+            showRangeLabel: 'Pokaż etykietę zakresu',
+            disabled: 'Wyłączone',
+            totalItems: 'Łączna liczba elementów',
+          },
+          'progress-bar': {
+            variant: 'Wariant',
+            size: 'Rozmiar',
+            value: 'Wartość',
+            max: 'Maksimum',
+            showPercentage: 'Pokaż procent',
+            indeterminate: 'Stan nieokreślony',
+            label: 'Etykieta',
+          },
+          radio: {
+            label: 'Etykieta',
+            disabled: 'Wyłączone',
+          },
+          'range-slider': {
+            label: 'Etykieta',
+            hint: 'Podpowiedź',
+            errorMsg: 'Komunikat o błędzie',
+            min: 'Minimum',
+            max: 'Maksimum',
+            step: 'Krok',
+            size: 'Rozmiar',
+            showValue: 'Pokaż wartość',
+            showMinMaxLabels: 'Pokaż etykiety min/maks',
+            disabled: 'Wyłączone',
+            required: 'Wymagane',
+          },
+          rating: {
+            label: 'Etykieta',
+            size: 'Rozmiar',
+            min: 'Minimum',
+            max: 'Maksimum',
+            allowHalf: 'Zezwól na połówki',
+            readonly: 'Tylko do odczytu',
+            disabled: 'Wyłączone',
+            required: 'Wymagane',
+            clearable: 'Z czyszczeniem',
+            iconClass: 'Ikona',
+          },
+          skeleton: {
+            variant: 'Wariant',
+            animated: 'Animowane',
+            width: 'Szerokość',
+            height: 'Wysokość',
+          },
+          slider: {
+            size: 'Rozmiar',
+            min: 'Minimum',
+            max: 'Maksimum',
+            step: 'Krok',
+            showValue: 'Pokaż wartość',
+            showMinMaxLabels: 'Pokaż etykiety min/maks',
+            disabled: 'Wyłączone',
+            required: 'Wymagane',
+            hasError: 'Stan błędu',
+            label: 'Etykieta',
+          },
+          spinner: {
+            size: 'Rozmiar',
+            label: 'Etykieta',
+          },
+          switch: {
+            label: 'Etykieta',
+            size: 'Rozmiar',
+            disabled: 'Wyłączone',
+            required: 'Wymagane',
+          },
+          tag: {
+            variant: 'Wariant',
+            size: 'Rozmiar',
+            removable: 'Z możliwością usunięcia',
+            disabled: 'Wyłączone',
+            removeLabel: 'Etykieta usuwania',
+          },
+          textarea: {
+            label: 'Etykieta',
+            placeholder: 'Tekst zastępczy',
+            size: 'Rozmiar',
+            resize: 'Zmiana rozmiaru',
+            rows: 'Wiersze',
+            maxlength: 'Maksymalna długość (chars)',
+            minHeight: 'Minimalna wysokość (px)',
+            maxHeight: 'Maksymalna wysokość (px)',
+            disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
+            required: 'Wymagane',
+          },
         },
         descriptions: {
           input: {
@@ -876,6 +1044,309 @@ export const pl: WebMessages = {
             focus: 'Przenosi fokus klawiatury na natywne pole bazowe.',
             togglePasswordVisibility:
               'Przełącza widoczność hasła dla pól type="password".',
+            icon: 'Komponent ikony wiodącej renderowany przed tekstem.',
+          },
+          alert: {
+            dismissible:
+              'Wyświetla przycisk zamknięcia, który pozwala użytkownikowi zamknąć alert.',
+            variant: 'Semantyczny schemat kolorów sterujący ikoną i paletą alertu.',
+            visible:
+              'Określa, czy alert jest widoczny, dwukierunkowo wiązalne przez [(visible)].',
+            dismissed: 'Emitowane, gdy użytkownik zamknie alert przyciskiem zamknięcia.',
+            dismiss: 'Ukrywa alert i emituje zdarzenie dismissed.',
+            size: 'Skaluje razem tekst, ikonę i odstęp.',
+            icon: 'Zastępuje domyślną ikonę statusu wariantu dowolnym komponentem ikony.',
+          },
+          avatar: {
+            src: 'Adres URL obrazu do wyświetlenia; w razie braku używa inicjałów, a następnie ogólnej ikony użytkownika.',
+            alt: 'Tekst alternatywny dla obrazu awatara.',
+            initials: 'Inicjały wyświetlane, gdy nie podano źródła obrazu.',
+            size: 'Predefiniowana średnica awatara.',
+            shape: 'Kontur awatara: okrągły lub zaokrąglony kwadrat.',
+          },
+          badge: {
+            variant: 'Semantyczny schemat kolorów odznaki.',
+            size: 'Wizualny rozmiar odznaki.',
+            shape:
+              'Zewnętrzny kształt odznaki (pill dopasowuje się do treści, pin renderuje się jako koło dla pojedynczych znaków).',
+          },
+          button: {
+            variant: 'Wizualny styl przycisku, sterujący jego kolorem i wyróżnieniem.',
+            size: 'Wizualny rozmiar przycisku.',
+            type: 'Natywny atrybut type stosowany do bazowego elementu button.',
+            disabled: 'Wyłącza przycisk i blokuje zdarzenia kliknięcia.',
+            loading: 'Zamienia etykietę na spinner, zachowując renderowaną szerokość.',
+            fullWidth: 'Rozciąga przycisk, aby wypełnił szerokość swojego kontenera.',
+            ariaLabel:
+              'Dostępna etykieta przycisku, gdy jego treść nie jest wystarczająco opisowa.',
+            ariaCurrent:
+              'Wartość natywnego atrybutu aria-current, oznaczająca przycisk jako bieżący element w zestawie.',
+            clicked:
+              'Emitowane po aktywacji przycisku, blokowane gdy wyłączony lub ładuje się.',
+          },
+          card: {
+            variant: 'Wizualny styl powierzchni karty.',
+            padding: 'Predefiniowane wypełnienie obszaru treści karty.',
+            headerAlign: 'Poziome wyrównanie treści nagłówka.',
+            fullWidth: 'Rozciąga kartę, aby wypełniła dostępną szerokość.',
+            headerDivider: 'Wyświetla linię oddzielającą nagłówek od treści.',
+          },
+          checkbox: {
+            ariaLabel:
+              'Dostępna nazwa pola wyboru, gdy nie jest renderowana widoczna etykieta.',
+            checked:
+              'Bieżący stan zaznaczenia, dwukierunkowo wiązalny przez [(checked)].',
+            count: 'Dodatkowa wartość wyświetlana przyciemniona zaraz po etykiecie.',
+            disabled: 'Wyłącza pole wyboru.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do natywnego pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            indeterminate: 'Renderuje pole wyboru w wizualnie nieokreślonym stanie.',
+            label: 'Etykieta tekstowa renderowana obok pola wyboru.',
+            required: 'Oznacza pole wyboru jako wymagane.',
+            size: 'Wizualny rozmiar pola wyboru.',
+            changed:
+              'Emitowane z nowym stanem zaznaczenia, gdy użytkownik przełączy pole wyboru.',
+          },
+          'code-input': {
+            disabled: 'Wyłącza wszystkie komórki cyfr.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do komórek cyfr i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            length: 'Liczba komórek cyfr, z których składa się kod.',
+            placeholder: 'Tekst zastępczy wyświetlany w każdej pustej komórce cyfry.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            size: 'Wizualny rozmiar każdej komórki cyfry.',
+            value: 'Bieżąca wartość kodu, dwukierunkowo wiązalna przez [(value)].',
+            completed: 'Emitowane z pełnym kodem, gdy wprowadzono każdą cyfrę.',
+            focus:
+              'Przenosi fokus klawiatury na następną pustą cyfrę (lub ostatnią, gdy pole jest pełne).',
+          },
+          'color-picker': {
+            disabled: 'Wyłącza pole.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            format: 'Format wyjściowy emitowanej wartości koloru (hex, rgb lub hsl).',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            placeholder:
+              'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano koloru.',
+            presets:
+              'Predefiniowane próbki kolorów wyświetlane na dole popovera; przekaż pustą tablicę, aby je ukryć.',
+            readonly:
+              'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie popovera.',
+            required: 'Oznacza pole jako wymagane.',
+            showAlpha: 'Wyświetla suwak alfa i uwzględnia alfę w emitowanej wartości.',
+            size: 'Wizualny rozmiar elementu wyzwalającego selektor.',
+            value: 'Bieżący ciąg koloru, dwukierunkowo wiązalny przez [(value)].',
+            changed: 'Emitowane z nowym ciągiem koloru, gdy zmieni się wybór.',
+            cycleInputMode:
+              'Przełącza wiersz wprowadzania popovera między ciągiem hex a kanałami RGB.',
+            hasEyeDropper:
+              'Zwraca informację, czy przeglądarka obsługuje API EyeDropper.',
+            onHexInput:
+              'Stosuje wpisany tekst hex do bieżącego koloru w trakcie edycji przez użytkownika.',
+            onPopoverCloseRequested:
+              'Zamyka popover, gdy użytkownik kliknie poza selektorem.',
+          },
+          divider: {
+            label: 'Opcjonalna wyśrodkowana etykieta renderowana w linii separatora.',
+            orientation: 'Orientacja, w której biegnie linia separatora.',
+          },
+          'eagami-wordmark': {
+            variant:
+              'Wariant treści: 1 to sam znak słowny, 2 dodaje nadkreślenie, 3 dodaje hasło (4 to przestarzały alias dla 3).',
+            layout: 'Układa znak słowny w stos wielowierszowy lub w jednej linii.',
+            size: 'Wartość w pikselach, od której skaluje się cały znak słowny.',
+          },
+          'empty-state': {
+            title: 'Tekst nagłówka wyświetlany nad opisem.',
+            description: 'Tekst pomocniczy wyświetlany pod tytułem.',
+            size: 'Wizualny rozmiar bloku stanu pustego.',
+            headingLevel:
+              'Poziom nagłówka użyty dla tytułu, aby pasował do otaczającej struktury dokumentu.',
+          },
+          paginator: {
+            align:
+              'Poziome wyrównanie elementów sterujących paginatora w ich kontenerze.',
+            disabled: 'Wyłącza wszystkie elementy sterujące paginatora.',
+            page: 'Bieżący numer strony, dwukierunkowo wiązalny przez [(page)].',
+            pageSize:
+              'Liczba elementów wyświetlanych na stronie, dwukierunkowo wiązalna przez [(pageSize)].',
+            pageSizeOptions:
+              'Wybieralne rozmiary stron dostępne w selektorze rozmiaru strony.',
+            showPageSizeSelector: 'Wyświetla element sterujący wyboru rozmiaru strony.',
+            showRangeLabel: 'Wyświetla etykietę opisującą zakres widocznych elementów.',
+            totalItems: 'Łączna liczba elementów używana do obliczenia liczby stron.',
+            changed:
+              'Emitowane, gdy użytkownik zmieni bieżącą stronę lub rozmiar strony.',
+            goToPage:
+              'Przechodzi do podanej strony, ograniczonej do prawidłowego zakresu.',
+            nextPage: 'Przechodzi do następnej strony, jeśli istnieje.',
+            prevPage: 'Przechodzi do poprzedniej strony, jeśli istnieje.',
+          },
+          'progress-bar': {
+            variant: 'Wariant kolorystyczny paska.',
+            size: 'Wizualna grubość paska.',
+            value: 'Bieżąca wartość postępu.',
+            max: 'Wartość, przy której pasek jest pełny.',
+            showPercentage: 'Wyświetla bieżący procent obok paska.',
+            showValue:
+              'Przestarzały alias dla showPercentage; zostanie usunięty w v3.0.0.',
+            indeterminate:
+              'Odtwarza zapętloną animację dla postępu o nieznanym czasie trwania.',
+            label: 'Etykieta tekstowa renderowana nad paskiem.',
+          },
+          radio: {
+            disabled: 'Wyłącza tę opcję.',
+            id: 'id stosowane do natywnego pola radio i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana obok pola radio.',
+            value:
+              'Wartość, którą ta opcja wnosi do swojej grupy nadrzędnej po zaznaczeniu.',
+          },
+          'range-slider': {
+            ariaLabelHigh:
+              'Dostępna etykieta dla wysokiego (końcowego) uchwytu, w razie braku używa etykiety pola.',
+            ariaLabelLow:
+              'Dostępna etykieta dla niskiego (początkowego) uchwytu, w razie braku używa etykiety pola.',
+            disabled: 'Wyłącza suwak.',
+            errorMsg:
+              'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            formatValue: 'Formater stosowany do każdej wartości przed jej wyświetleniem.',
+            hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do suwaka, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad suwakiem.',
+            max: 'Najwyższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
+            min: 'Najniższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
+            required: 'Oznacza pole jako wymagane.',
+            showMinMaxLabels: 'Wyświetla granice min i maks na końcach ścieżki.',
+            showValue: 'Wyświetla bieżące wartości niską i wysoką obok suwaka.',
+            size: 'Wizualny rozmiar ścieżki i uchwytów.',
+            step: 'Przyrost, do którego każdy uchwyt przyciąga się podczas przesuwania.',
+            value:
+              'Bieżąca krotka zakresu [low, high], dwukierunkowo wiązalna przez [(value)].',
+            changed:
+              'Emitowane z nową krotką [low, high], gdy przesunie się którykolwiek uchwyt.',
+            commitThumb:
+              'Przyciąga uchwyt do najbliższego kroku, ogranicza go do granic i wiąże przeciwnym uchwytem.',
+          },
+          rating: {
+            allowHalf:
+              'Zezwala na dokładność do połowy gwiazdki, umożliwiając zmianę wartości o 0,5.',
+            clearable: 'Kliknięcie bieżącej wartości czyści ocenę z powrotem do 0.',
+            disabled: 'Wyłącza ocenę.',
+            errorMsg:
+              'Komunikat o błędzie pod oceną, zastępujący podpowiedź i oznaczający ją jako nieprawidłową.',
+            halfIconClass:
+              'Klasa komponentu standalone renderowana dla pozycji połówkowych, gdy allowHalf jest włączone.',
+            hint: 'Tekst pomocniczy pod oceną, ukryty gdy występuje błąd.',
+            iconClass:
+              'Klasa komponentu standalone renderowana dla pozycji pustych i pełnych.',
+            id: 'id stosowane do oceny i jej etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad oceną.',
+            max: 'Najwyższa wartość oceny i liczba renderowanych gwiazdek.',
+            min: 'Najniższa wartość oceny, jaką użytkownik może wybrać.',
+            readonly:
+              'Renderuje ocenę tylko do wyświetlania, ignorując kliknięcia i wprowadzanie z klawiatury.',
+            required: 'Oznacza ocenę jako wymaganą.',
+            size: 'Wizualny rozmiar oceny.',
+            value: 'Bieżąca wartość oceny, dwukierunkowo wiązalna przez [(value)].',
+            hoverChanged:
+              'Emitowane z podglądaną wartością podczas najechania, oraz null, gdy kursor opuści element.',
+            iconForState:
+              'Zwraca klasę komponentu do utworzenia dla danego stanu gwiazdki.',
+            stateFor:
+              'Ustala stan renderowania (pusty, połówkowy lub pełny) dla pozycji gwiazdki.',
+          },
+          skeleton: {
+            animated:
+              'Odtwarza pulsujący efekt poświaty, automatycznie wyłączany, gdy użytkownik preferuje ograniczony ruch.',
+            height:
+              'Jawna wysokość CSS stosowana do elementu zastępczego, domyślnie przyjmująca naturalny rozmiar kształtu, gdy pominięta.',
+            variant:
+              'Predefiniowany kształt elementu zastępczego: linia tekstu, koło lub prostokąt.',
+            width:
+              'Jawna szerokość CSS stosowana do elementu zastępczego, domyślnie przyjmująca naturalny rozmiar kształtu, gdy pominięta.',
+          },
+          slider: {
+            ariaLabel:
+              'Dostępna etykieta stosowana, gdy nie jest renderowana widoczna etykieta.',
+            disabled: 'Wyłącza suwak.',
+            errorMsg:
+              'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            formatValue: 'Formater zamieniający wartość liczbową na wyświetlany tekst.',
+            hasError: 'Wymusza stylizację stanu błędu bez wiązania komunikatu o błędzie.',
+            hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do suwaka i jego etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad suwakiem.',
+            max: 'Najwyższa wartość, jaką może osiągnąć suwak.',
+            min: 'Najniższa wartość, jaką może osiągnąć suwak.',
+            required: 'Oznacza suwak jako wymagany.',
+            showMinMaxLabels: 'Wyświetla granice min i maks pod ścieżką.',
+            showValue: 'Wyświetla bieżącą wartość obok etykiety.',
+            size: 'Wizualny rozmiar ścieżki i uchwytu suwaka.',
+            step: 'Przyrost, do którego wartość przyciąga się podczas przesuwania suwaka.',
+            value: 'Bieżąca wartość suwaka, dwukierunkowo wiązalna przez [(value)].',
+            changed: 'Emitowane z nową przyciągniętą wartością, gdy suwak się przesunie.',
+          },
+          spinner: {
+            label:
+              'Dostępna etykieta odczytywana przez technologie wspomagające, w razie braku używa tłumaczenia z aktywnej lokalizacji.',
+            size: 'Wizualny rozmiar spinnera.',
+          },
+          switch: {
+            ariaLabel:
+              'Dostępna etykieta przełącznika, gdy nie jest renderowana widoczna etykieta.',
+            checked:
+              'Bieżący stan włączony/wyłączony, dwukierunkowo wiązalny przez [(checked)].',
+            disabled: 'Wyłącza przełącznik i blokuje przełączanie.',
+            errorMsg:
+              'Komunikat o błędzie pod przełącznikiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod przełącznikiem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do bazowego pola wyboru i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana obok przełącznika.',
+            required: 'Oznacza przełącznik jako wymagany.',
+            size: 'Wizualny rozmiar przełącznika.',
+            changed:
+              'Emitowane z nowym stanem zaznaczenia, gdy użytkownik przełączy przełącznik.',
+          },
+          tag: {
+            variant: 'Semantyczny schemat kolorów tagu.',
+            size: 'Wizualny rozmiar tagu.',
+            removable: 'Renderuje przycisk usuwania emitujący removed po aktywacji.',
+            disabled: 'Wyłącza tag i jego przycisk usuwania.',
+            removeLabel:
+              'Dostępna etykieta przycisku usuwania, w razie braku używa aktywnej lokalizacji.',
+            removed:
+              'Emitowane, gdy użytkownik aktywuje przycisk usuwania na tagu z możliwością usunięcia.',
+          },
+          textarea: {
+            disabled: 'Wyłącza pole.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do natywnego pola textarea i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            maxHeight:
+              'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
+            minHeight:
+              'Minimalna wysokość w px; nigdy mniejsza niż wysokość wynikająca z liczby wierszy.',
+            maxlength: 'Maksymalna liczba znaków akceptowana przez pole.',
+            placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            resize: 'Oś, wzdłuż której użytkownik może zmieniać rozmiar pola.',
+            rows: 'Początkowa liczba widocznych wierszy tekstu.',
+            size: 'Wizualny rozmiar pola.',
+            value: 'Bieżąca wartość pola, dwukierunkowo wiązalna przez [(value)].',
+            blurred: 'Emitowane, gdy pole traci fokus.',
+            focused: 'Emitowane, gdy pole otrzymuje fokus.',
+            focus: 'Przenosi fokus klawiatury na bazowe natywne pole textarea.',
           },
         },
       },

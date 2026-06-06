@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { CardComponent } from './card.component';
+import { CARD_KNOBS } from './card.component.knobs';
 
 const meta: Meta<CardComponent> = {
   title: 'Components/Card',
@@ -16,26 +17,8 @@ const meta: Meta<CardComponent> = {
       </ea-card>
     `,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['elevated', 'outlined', 'filled'],
-    },
-    padding: {
-      control: 'select',
-      options: ['none', 'sm', 'md', 'lg'],
-    },
-    headerAlign: {
-      control: 'select',
-      options: ['start', 'center', 'end'],
-    },
-  },
-  args: {
-    variant: 'elevated',
-    padding: 'md',
-    fullWidth: false,
-    headerAlign: 'center',
-  },
+  argTypes: CARD_KNOBS.argTypes,
+  args: CARD_KNOBS.args,
 };
 
 export default meta;

@@ -1,13 +1,16 @@
-<web-ui-component-demo-layout slug="divider">
-  <h2>{{ messages().ui.component.sectionHeadings.horizontal }}</h2>
-  <ea-divider />
-  <ea-divider [label]="messages().ui.component.demos.divider.orLabel" />
-  <ea-divider [label]="messages().ui.component.demos.divider.sectionLabel" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.vertical }}</h2>
-  <div class="demo-row demo-divider-row">
-    <span>{{ messages().ui.component.demos.divider.leftLabel }}</span>
-    <ea-divider orientation="vertical" />
-    <span>{{ messages().ui.component.demos.divider.rightLabel }}</span>
-  </div>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-divider
+      class="playground-field"
+      [label]="state().label"
+      [orientation]="state().orientation" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

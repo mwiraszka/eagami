@@ -12,52 +12,18 @@
   user-select: none;
   font-family: var(--font-family-sans);
 
+  // One per-size track height drives the track, thumb, and label so a new size
+  // only needs this single value and every part stays in proportion
   &--sm {
-    .ea-switch__track {
-      width: 1.75rem;
-      height: 1rem;
-    }
-
-    .ea-switch__thumb {
-      width: 0.75rem;
-      height: 0.75rem;
-    }
-
-    .ea-switch__label {
-      font-size: var(--font-size-sm);
-    }
+    --ea-switch-size: 1rem;
   }
 
   &--md {
-    .ea-switch__track {
-      width: 2.25rem;
-      height: 1.25rem;
-    }
-
-    .ea-switch__thumb {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    .ea-switch__label {
-      font-size: var(--font-size-md);
-    }
+    --ea-switch-size: 1.25rem;
   }
 
   &--lg {
-    .ea-switch__track {
-      width: 2.75rem;
-      height: 1.5rem;
-    }
-
-    .ea-switch__thumb {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-
-    .ea-switch__label {
-      font-size: var(--font-size-lg);
-    }
+    --ea-switch-size: 1.5rem;
   }
 
   &--checked {
@@ -103,6 +69,8 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    width: calc(var(--ea-switch-size, 1.25rem) * 1.8);
+    height: var(--ea-switch-size, 1.25rem);
     padding: 0.125rem;
     background-color: var(--color-bg-muted);
     border: var(--border-width-thin) solid
@@ -113,6 +81,8 @@
 
   &__thumb {
     display: block;
+    width: calc(var(--ea-switch-size, 1.25rem) * 0.8);
+    height: calc(var(--ea-switch-size, 1.25rem) * 0.8);
     background-color: var(--color-neutral-0);
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
@@ -120,6 +90,7 @@
   }
 
   &__label {
+    font-size: calc(var(--ea-switch-size, 1.25rem) * 0.8);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-normal);
     color: var(--color-text-primary);

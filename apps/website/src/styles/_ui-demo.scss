@@ -1,6 +1,18 @@
 // Classes for content projected into `<web-ui-component-demo-layout>`. They live
 // in a global partial because component-scoped styles can't reach across projection.
 
+// Routed UI docs pages render as blocks so they fill the main column; saves every
+// page repeating a `:host { display: block }` of its own.
+.ui-shell__main > * {
+  display: block;
+}
+
+// Width cap for form-like components previewed in a component playground.
+.playground-field {
+  width: 100%;
+  max-width: 360px;
+}
+
 .demo-section {
   display: flex;
   flex-direction: column;

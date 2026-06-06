@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { SearchIconComponent } from '../icons/search.component';
 import { InputComponent } from './input.component';
 import { INPUT_KNOBS } from './input.component.knobs';
 
@@ -46,6 +47,14 @@ export const Password: Story = {
 
 export const PasswordNoToggle: Story = {
   args: { type: 'password', showPasswordToggle: false },
+};
+
+export const WithIcon: Story = {
+  args: { icon: SearchIconComponent, placeholder: 'Search' },
+  render: args => ({
+    props: args,
+    template: `<ea-input [icon]="icon" placeholder="Search" class="story-narrow"></ea-input>`,
+  }),
 };
 
 export const Clearable: Story = {

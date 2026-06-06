@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-input-field {
   display: flex;
   flex-direction: column;
@@ -8,7 +10,9 @@
 .ea-input-wrapper {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.5em;
+  min-height: 2.5em;
+  padding: 0 0.75em;
   background-color: var(--color-bg-base);
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
@@ -16,34 +20,19 @@
   transition: var(--transition-colors), var(--transition-shadow);
   overflow: hidden;
 
+  // Size sets only the font-size; padding, gap, min-height, and embedded buttons
+  // are em-based, so the field scales entirely from this one knob.
   &--sm {
-    padding: 0 var(--space-2);
-    min-height: 2rem; // 32px
     font-size: var(--font-size-sm);
-
-    .ea-input {
-      padding: var(--space-1-5) 0;
-    }
   }
 
   &--md {
-    padding: 0 var(--space-3);
-    min-height: 2.5rem; // 40px
-    font-size: var(--font-size-md); // 16px prevents iOS Safari auto-zoom on focus
-
-    .ea-input {
-      padding: var(--space-2) 0;
-    }
+    // 16px prevents iOS Safari auto-zoom on focus
+    font-size: var(--font-size-md);
   }
 
   &--lg {
-    padding: 0 var(--space-4);
-    min-height: 3rem; // 48px
     font-size: var(--font-size-lg);
-
-    .ea-input {
-      padding: var(--space-2-5) 0;
-    }
   }
 
   &--focused {
@@ -86,32 +75,16 @@
     }
   }
 
-  // 2em box around a 1em icon, matching the other field components' clear buttons
-  &__clear {
-    display: flex;
+  &__icon {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     flex-shrink: 0;
-    width: 2em;
-    height: 2em;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: none;
+    font-size: var(--icon-inline-size);
     color: var(--color-text-secondary);
-    line-height: 1;
-    cursor: pointer;
-    transition: var(--transition-colors);
+  }
 
-    &:hover {
-      background-color: var(--color-state-hover);
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
+  &__clear {
+    @include ea.icon-button;
   }
 
   &__clear-icon {
@@ -120,28 +93,13 @@
   }
 
   &__password-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    padding: 0;
-    width: 1.25rem;
-    height: 1.25rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--ea-input-toggle-color, inherit);
-    border-radius: var(--radius-sm);
-    transition: var(--transition-colors);
-
-    &:hover {
-      color: var(--color-text-primary);
-    }
+    @include ea.icon-button;
+    color: var(--ea-input-toggle-color, var(--color-text-secondary));
 
     ea-icon-eye,
     ea-icon-eye-off {
-      width: 1rem;
-      height: 1rem;
+      width: 1em;
+      height: 1em;
       pointer-events: none;
     }
   }
@@ -151,6 +109,7 @@
   flex: 1;
   width: 100%;
   min-width: 0; // prevent flex overflow
+  padding: 0.5em 0;
   background: transparent;
   border: none;
   outline: none;

@@ -1,27 +1,21 @@
-<web-ui-component-demo-layout slug="alert">
-  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-stack">
-    <ea-alert variant="default">
-      {{ messages().ui.component.demos.alert.defaultText }}
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-alert
+      [variant]="state().variant"
+      [size]="state().size"
+      [dismissible]="state().dismissible"
+      [icon]="iconComponent()"
+      [visible]="alertVisible()"
+      (dismissed)="onAlertDismissed()">
+      This is an alert message.
     </ea-alert>
-    <ea-alert variant="success">
-      {{ messages().ui.component.demos.alert.successText }}
-    </ea-alert>
-    <ea-alert variant="warning">
-      {{ messages().ui.component.demos.alert.warningText }}
-    </ea-alert>
-    <ea-alert variant="error">
-      {{ messages().ui.component.demos.alert.errorText }}
-    </ea-alert>
-    <ea-alert variant="info">
-      {{ messages().ui.component.demos.alert.infoText }}
-    </ea-alert>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.dismissible }}</h2>
-  <ea-alert
-    variant="info"
-    [dismissible]="true">
-    {{ messages().ui.component.demos.alert.dismissibleText }}
-  </ea-alert>
+  </web-component-playground>
 </web-ui-component-demo-layout>

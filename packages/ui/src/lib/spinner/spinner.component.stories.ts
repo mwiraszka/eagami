@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { SpinnerComponent } from './spinner.component';
+import { SPINNER_KNOBS } from './spinner.component.knobs';
 
 const meta: Meta<SpinnerComponent> = {
   title: 'Components/Spinner',
@@ -10,16 +11,8 @@ const meta: Meta<SpinnerComponent> = {
     props: args,
     template: `<ea-spinner ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-  },
-  args: {
-    size: 'md',
-    label: 'Loading',
-  },
+  argTypes: SPINNER_KNOBS.argTypes,
+  args: SPINNER_KNOBS.args,
 };
 
 export default meta;
@@ -43,9 +36,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-row">
+        <ea-spinner size="xs" />
         <ea-spinner size="sm" />
         <ea-spinner size="md" />
         <ea-spinner size="lg" />
+        <ea-spinner size="xl" />
       </div>
     `,
   }),

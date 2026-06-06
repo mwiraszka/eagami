@@ -52,12 +52,19 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
+  /**
+   * @deprecated Use `maxHeight` and the `resize` handle to control height; this
+   * sets the initial height only. Will be removed in v3.0.0.
+   */
   readonly rows = input<number>(3);
   readonly resize = input<TextareaResize>('vertical');
   readonly maxlength = input<number | undefined>(undefined);
   /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
    * field scrolls vertically instead of growing. */
   readonly maxHeight = input<number | undefined>(undefined);
+  /** Optional pixel floor for the textarea's height. Clamped so it never drops
+   * below the height implied by `rows`. */
+  readonly minHeight = input<number | undefined>(undefined);
   readonly id = input<string>(uniqueId('ea-textarea'));
 
   readonly value = model<string>('');
@@ -85,6 +92,16 @@ export class TextareaComponent implements ControlValueAccessor {
     'ea-textarea-wrapper--disabled': this.isDisabled(),
     'ea-textarea-wrapper--readonly': this.readonly(),
   }));
+
+  // Drive the visible height from `rows` directly (as a flex item the native
+  // `rows` attribute gets collapsed): an em-based min-height of `rows` lines plus
+  // padding keeps it proportional to the size. A consumer `minHeight` (px) raises
+  // the floor but can never shrink it below that calculated value.
+  readonly minHeightStyle = computed(() => {
+    const rowsHeight = `calc(${this.rows()} * var(--line-height-normal) * 1em + 0.75em * 2)`;
+    const px = this.minHeight();
+    return px && px > 0 ? `max(${rowsHeight}, ${px}px)` : rowsHeight;
+  });
 
   writeValue(val: string): void {
     this.value.set(val ?? '');

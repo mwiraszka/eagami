@@ -2,7 +2,14 @@ import type { ComponentKnobs, KnobArgValue, KnobCondition } from '@eagami/ui-kno
 
 import type { ApiProp, ComponentApi } from '@app/data/ui-api.generated';
 
-export type KnobControl = 'select' | 'boolean' | 'text' | 'number' | 'color';
+export type KnobControl =
+  | 'select'
+  | 'boolean'
+  | 'text'
+  | 'number'
+  | 'color'
+  | 'icon'
+  | 'content';
 export type KnobValue = string | number | boolean;
 export type KnobState = Record<string, KnobValue>;
 

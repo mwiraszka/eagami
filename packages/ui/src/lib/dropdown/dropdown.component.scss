@@ -11,38 +11,36 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-2);
+    gap: 0.5em;
     width: 100%;
-    background-color: var(--color-bg-base);
+    min-height: 2.5em;
+    padding: 0.5em 0.75em;
+    text-align: left;
+    font-family: var(--font-family-sans);
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
-    font-family: var(--font-family-sans);
+    background-color: var(--color-bg-base);
     color: var(--color-text-primary);
     cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
-    text-align: left;
 
     &:focus-visible {
       outline: none;
       box-shadow: var(--shadow-focus-ring);
     }
 
+    // Size sets only the font-size; padding, gap, and min-height are em-based on
+    // the base rule, so the trigger scales entirely from this one knob.
     &--sm {
-      padding: var(--space-1-5) var(--space-2);
       font-size: var(--font-size-sm);
-      min-height: 2rem;
     }
 
     &--md {
-      padding: var(--space-2) var(--space-3);
       font-size: var(--font-size-md);
-      min-height: 2.5rem;
     }
 
     &--lg {
-      padding: var(--space-2-5) var(--space-4);
       font-size: var(--font-size-lg);
-      min-height: 3rem;
     }
 
     &--open {
@@ -78,9 +76,9 @@
   }
 
   &__chevron {
+    flex-shrink: 0;
     width: 1em;
     height: 1em;
-    flex-shrink: 0;
     color: var(--color-text-secondary);
     transition: var(--transition-transform);
 

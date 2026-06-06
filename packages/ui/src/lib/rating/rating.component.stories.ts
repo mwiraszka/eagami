@@ -2,6 +2,7 @@ import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { HeartIconComponent } from '../icons/heart.component';
 import { RatingComponent } from './rating.component';
+import { RATING_KNOBS } from './rating.component.knobs';
 
 const meta: Meta<RatingComponent> = {
   title: 'Components/Rating',
@@ -14,30 +15,16 @@ const meta: Meta<RatingComponent> = {
     props: args,
     template: `<ea-rating ${argsToTemplate(args)}></ea-rating>`,
   }),
-  argTypes: {
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
-    min: { control: { type: 'number', min: 0, max: 5 } },
-    max: { control: { type: 'number', min: 1, max: 10 } },
-    hoverChanged: { action: 'hoverChanged' },
-  },
-  args: {
-    label: 'Rate your experience',
-    value: 3,
-    min: 0,
-    max: 5,
-    size: 'md',
-    allowHalf: false,
-    readonly: false,
-    disabled: false,
-    required: false,
-    clearable: true,
-  },
+  argTypes: RATING_KNOBS.argTypes,
+  args: RATING_KNOBS.args,
 };
 
 export default meta;
 type Story = StoryObj<RatingComponent>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { value: 3 },
+};
 
 export const AllowHalf: Story = {
   args: {

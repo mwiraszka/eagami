@@ -7,34 +7,26 @@
 
 .ea-textarea-wrapper {
   display: flex;
+  min-width: 12em;
   background-color: var(--color-bg-base);
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
   transition: var(--transition-colors), var(--transition-shadow);
   overflow: hidden;
 
+  // Size sets the font-size on the wrapper (the textarea inherits it); the inner
+  // field's padding and the wrapper's min-height/min-width are em-based, so the
+  // whole control scales from this one knob.
   &--sm {
-    .ea-textarea {
-      min-height: calc(1.5em + var(--space-2) * 2);
-      padding: var(--space-2);
-      font-size: var(--font-size-sm);
-    }
+    font-size: var(--font-size-sm);
   }
 
   &--md {
-    .ea-textarea {
-      min-height: calc(1.5em + var(--space-3) * 2);
-      padding: var(--space-3);
-      font-size: var(--font-size-md);
-    }
+    font-size: var(--font-size-md);
   }
 
   &--lg {
-    .ea-textarea {
-      min-height: calc(1.5em + var(--space-4) * 2);
-      padding: var(--space-4);
-      font-size: var(--font-size-lg);
-    }
+    font-size: var(--font-size-lg);
   }
 
   &--focused {
@@ -70,10 +62,12 @@
   flex: 1;
   width: 100%;
   min-width: 0;
-  min-height: 0;
+  padding: 0.75em;
   background: transparent;
   border: none;
   outline: none;
+  // The wrapper owns the resize handle now; the field just fills it
+  resize: none;
   color: var(--color-text-primary);
   font-family: var(--font-family-sans);
   line-height: var(--line-height-normal);

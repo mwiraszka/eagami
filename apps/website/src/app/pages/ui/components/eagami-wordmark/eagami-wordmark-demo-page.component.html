@@ -1,49 +1,16 @@
-<web-ui-component-demo-layout slug="eagami-wordmark">
-  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-stack demo-stack--lg">
-    <div>
-      <span class="demo-label">Variant 1</span>
-      <ea-eagami-wordmark [variant]="1" />
-    </div>
-    <div>
-      <span class="demo-label">Variant 2</span>
-      <ea-eagami-wordmark [variant]="2" />
-    </div>
-    <div>
-      <span class="demo-label">Variant 3</span>
-      <ea-eagami-wordmark [variant]="3" />
-    </div>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack demo-stack--lg">
-    <div>
-      <span class="demo-label">16px</span>
-      <ea-eagami-wordmark
-        [variant]="3"
-        [size]="16" />
-    </div>
-    <div>
-      <span class="demo-label">32px</span>
-      <ea-eagami-wordmark
-        [variant]="3"
-        [size]="32" />
-    </div>
-    <div>
-      <span class="demo-label">64px</span>
-      <ea-eagami-wordmark
-        [variant]="3"
-        [size]="64" />
-    </div>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.inlineLayout }}</h2>
-  <div class="demo-stack demo-stack--lg">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-eagami-wordmark
-      [variant]="2"
-      layout="inline" />
-    <ea-eagami-wordmark
-      [variant]="3"
-      layout="inline" />
-  </div>
+      [variant]="state().variant"
+      [layout]="state().layout"
+      [size]="state().size" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

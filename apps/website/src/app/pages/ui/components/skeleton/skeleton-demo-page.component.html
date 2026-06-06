@@ -1,29 +1,18 @@
-<web-ui-component-demo-layout slug="skeleton">
-  <h2>{{ messages().ui.component.sectionHeadings.variants }}</h2>
-  <div class="demo-skeleton-row">
-    <ea-skeleton variant="circle" />
-    <div class="demo-skeleton-lines">
-      <ea-skeleton width="60%" />
-      <ea-skeleton
-        width="40%"
-        height="0.75rem" />
-    </div>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.rect }}</h2>
-  <ea-skeleton
-    variant="rect"
-    height="6rem" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.customSize }}</h2>
-  <ea-skeleton
-    variant="rect"
-    width="200px"
-    height="120px" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.notAnimated }}</h2>
-  <ea-skeleton
-    variant="rect"
-    height="3rem"
-    [animated]="false" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-skeleton
+      class="playground-field"
+      [variant]="state().variant"
+      [width]="state().width"
+      [height]="state().height"
+      [animated]="state().animated" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

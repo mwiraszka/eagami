@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2026-06-06
+
+### Added
+
+- Add an `icon` input to `<ea-alert>` and `<ea-input>` for a leading icon, plus a `size` input on `<ea-alert>`.
+- Add `showPercentage` to `<ea-progress-bar>`, replacing `showValue`.
+- Add `xs` and `xl` sizes to `<ea-spinner>` and `<ea-radio-group>`.
+- Add a `minHeight` input to `<ea-textarea>`.
+
+### Changed
+
+- Enlarge the alert status icon to 1.5x the text, tighten its gap, and vertically center it with the message.
+- Scale every component's text, icons, padding, and controls proportionally with its `size`, and standardize all clear/close/dismiss/toggle buttons to one consistent affordance.
+- Size `<ea-spinner>` so its circle is always 1.5x the label text.
+- Deprecate `<ea-progress-bar>` `showValue` (use `showPercentage`) and `<ea-textarea>` `rows` (use `maxHeight` and the resize handle); both removed in v3.0.0.
+
+### Fixed
+
+- Stop popovers and dropdowns from closing when scrolling inside their own scrollable list.
+- Show a hover background on the alert dismiss button.
+- Darken the avatar placeholder background so it stays visible on light surfaces.
+- Scale avatar initials and the fallback user icon to the avatar size so they stay proportionate at small sizes.
+- Shrink small badge text so it reads distinctly from the medium size.
+- Stop the `<ea-textarea>` focus ring being clipped at its bottom edge, and let it resize horizontally and in both directions.
+- Show the dividing line for a vertical `<ea-divider>` with a label, and lift the divider line's contrast in dark mode.
+- Show the `<ea-slider>` and `<ea-range-slider>` value when `showValue` is enabled but no label is set.
+
 ## [2.6.0] - 2026-06-05
 
 ### Added
@@ -593,6 +620,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.6.0...ui-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.3...ui-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.2...ui-v2.5.3
 [2.5.2]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.1...ui-v2.5.2

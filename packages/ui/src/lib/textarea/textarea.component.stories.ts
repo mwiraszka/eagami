@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { TextareaComponent } from './textarea.component';
+import { TEXTAREA_KNOBS } from './textarea.component.knobs';
 
 const meta: Meta<TextareaComponent> = {
   title: 'Components/Textarea',
@@ -10,28 +11,8 @@ const meta: Meta<TextareaComponent> = {
     props: args,
     template: `<ea-textarea ${argsToTemplate(args)} class="story-narrow"></ea-textarea>`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    resize: {
-      control: 'select',
-      options: ['none', 'vertical', 'horizontal', 'both'],
-    },
-    focused: { action: 'focused' },
-    blurred: { action: 'blurred' },
-  },
-  args: {
-    label: 'Message',
-    placeholder: 'Enter your message…',
-    size: 'md',
-    rows: 3,
-    resize: 'vertical',
-    disabled: false,
-    readonly: false,
-    required: false,
-  },
+  argTypes: TEXTAREA_KNOBS.argTypes,
+  args: TEXTAREA_KNOBS.args,
 };
 
 export default meta;

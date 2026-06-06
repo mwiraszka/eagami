@@ -85,6 +85,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'size',
+        type: 'AlertSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'variant',
         type: 'AlertVariant',
         default: "'default'",
@@ -1836,6 +1850,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'id',
         type: 'string',
         default: '(auto-generated)',
@@ -2404,6 +2425,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'max',
         type: 'number',
         default: '100',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'showPercentage',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -3476,6 +3504,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxlength',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'minHeight',
         type: 'number | undefined',
         default: 'undefined',
         required: false,

@@ -11,7 +11,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 
 /** Visual size of the spinner. */
-export type SpinnerSize = 'sm' | 'md' | 'lg';
+export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 /**
  * SVG loading indicator with an accessible `role="status"`. The `label` input

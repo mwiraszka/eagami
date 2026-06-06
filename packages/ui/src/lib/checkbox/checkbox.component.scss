@@ -13,46 +13,24 @@
 .ea-checkbox {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.5em;
   cursor: pointer;
   user-select: none;
   font-family: var(--font-family-sans);
   color: var(--color-text-primary);
 
+  // Size sets only the font-size; the box dimensions and gap are em-based on the
+  // base rule, so the checkbox scales entirely from this one knob.
   &--sm {
-    .ea-checkbox__box {
-      width: 1rem;
-      height: 1rem;
-      border-radius: var(--radius-sm);
-    }
-
-    .ea-checkbox__label {
-      font-size: var(--font-size-sm);
-    }
+    font-size: var(--font-size-sm);
   }
 
   &--md {
-    .ea-checkbox__box {
-      width: 1.25rem;
-      height: 1.25rem;
-      border-radius: var(--radius-sm);
-    }
-
-    .ea-checkbox__label {
-      font-size: var(--font-size-md);
-    }
+    font-size: var(--font-size-md);
   }
 
   &--lg {
-    .ea-checkbox__box {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: var(--radius-sm);
-    }
-
-    .ea-checkbox__label {
-      font-size: var(--font-size-lg);
-    }
+    font-size: var(--font-size-lg);
   }
 
   &--disabled {
@@ -98,8 +76,11 @@
     justify-content: center;
     flex-shrink: 0;
     box-sizing: border-box;
-    background-color: var(--color-bg-base);
+    width: 1.25em;
+    height: 1.25em;
     border: var(--border-width-thin) solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-base);
     transition: var(--transition-colors), var(--transition-shadow);
 
     svg {

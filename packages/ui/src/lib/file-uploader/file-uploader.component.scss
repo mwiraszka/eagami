@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: block;
 }
@@ -6,6 +8,22 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
+
+  // Size sets only the font-size; dropzone padding, the icon, the list rows, and
+  // the embedded buttons are all em-based, so everything scales from this one
+  // knob. The label and messages set their own absolute font-size, so they stay
+  // fixed across sizes.
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
 
   &__file-input {
     position: absolute;
@@ -25,11 +43,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--space-2);
+    gap: 0.5em;
     width: 100%;
-    padding: var(--space-6);
+    padding: 1.5em;
     font-family: inherit;
-    font-size: var(--font-size-sm);
+    font-size: 0.875em;
     line-height: var(--line-height-normal);
     color: var(--color-text-tertiary);
     text-align: center;
@@ -60,7 +78,7 @@
   &__upload-icon {
     display: inline-flex;
     // Icons are `1em` square, so font-size drives the rendered icon size
-    font-size: 40px;
+    font-size: 2.5em;
     opacity: 0.7;
   }
 
@@ -87,7 +105,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0.25em;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -96,8 +114,8 @@
   &__item {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-2) var(--space-3);
+    gap: 0.75em;
+    padding: 0.5em 0.75em;
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
     background-color: var(--color-bg-base);
@@ -106,8 +124,8 @@
   &__type-icon {
     display: inline-flex;
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
     color: var(--color-text-secondary);
 
     > * {
@@ -119,14 +137,14 @@
   &__meta {
     display: flex;
     flex-direction: column;
-    gap: var(--space-0-5);
+    gap: 0.125em;
     flex: 1 1 auto;
     min-width: 0;
   }
 
   &__name {
     overflow: hidden;
-    font-size: var(--font-size-sm);
+    font-size: 0.875em;
     text-overflow: ellipsis;
     color: var(--color-text-primary);
     white-space: nowrap;
@@ -155,78 +173,11 @@
   }
 
   &__remove {
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    color: var(--color-text-tertiary);
-    border: none;
-    border-radius: var(--radius-md);
-    background: transparent;
-    cursor: pointer;
-    transition: var(--transition-colors);
-
-    &:hover:not(:disabled) {
-      background-color: var(--color-state-hover);
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+    @include ea.icon-button;
 
     ea-icon-x {
-      width: 16px;
-      height: 16px;
+      width: 1em;
+      height: 1em;
     }
-  }
-
-  &--sm &__dropzone {
-    gap: var(--space-1);
-    padding: var(--space-3);
-    font-size: var(--font-size-xs);
-  }
-  &--sm &__upload-icon {
-    font-size: 28px;
-  }
-  &--sm &__item {
-    padding: var(--space-1) var(--space-2);
-  }
-  &--sm &__type-icon {
-    width: 16px;
-    height: 16px;
-  }
-  &--sm &__remove {
-    width: 24px;
-    height: 24px;
-  }
-
-  &--lg &__dropzone {
-    gap: var(--space-3);
-    padding: var(--space-8);
-    font-size: var(--font-size-md);
-  }
-  &--lg &__upload-icon {
-    font-size: 48px;
-  }
-  &--lg &__item {
-    padding: var(--space-3) var(--space-4);
-  }
-  &--lg &__type-icon {
-    width: 24px;
-    height: 24px;
-  }
-  &--lg &__remove {
-    width: 32px;
-    height: 32px;
   }
 }

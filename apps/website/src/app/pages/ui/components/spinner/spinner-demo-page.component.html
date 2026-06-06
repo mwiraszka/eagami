@@ -1,20 +1,15 @@
-<web-ui-component-demo-layout slug="spinner">
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
-    <div>
-      <span class="demo-label">{{ messages().ui.component.common.small }}</span>
-      <ea-spinner size="sm" />
-    </div>
-    <div>
-      <span class="demo-label">{{ messages().ui.component.common.medium }}</span>
-      <ea-spinner size="md" />
-    </div>
-    <div>
-      <span class="demo-label">{{ messages().ui.component.common.large }}</span>
-      <ea-spinner size="lg" />
-    </div>
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.customLabel }}</h2>
-  <ea-spinner label="Saving changes…" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-spinner
+      [label]="state().label"
+      [size]="state().size" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

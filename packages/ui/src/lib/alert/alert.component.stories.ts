@@ -1,6 +1,8 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { BellIconComponent } from '../icons/bell.component';
 import { AlertComponent } from './alert.component';
+import { ALERT_KNOBS } from './alert.component.knobs';
 
 const meta: Meta<AlertComponent> = {
   title: 'Components/Alert',
@@ -10,17 +12,8 @@ const meta: Meta<AlertComponent> = {
     props: args,
     template: `<ea-alert ${argsToTemplate(args)}>This is an alert message.</ea-alert>`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'error', 'info'],
-    },
-    dismissed: { action: 'dismissed' },
-  },
-  args: {
-    variant: 'default',
-    dismissible: false,
-  },
+  argTypes: ALERT_KNOBS.argTypes,
+  args: ALERT_KNOBS.args,
 };
 
 export default meta;
@@ -65,6 +58,26 @@ export const Dismissible: Story = {
   render: args => ({
     props: args,
     template: `<ea-alert ${argsToTemplate(args)}>This alert can be dismissed</ea-alert>`,
+  }),
+};
+
+export const WithCustomIcon: Story = {
+  args: { variant: 'info', icon: BellIconComponent },
+  render: args => ({
+    props: args,
+    template: `<ea-alert ${argsToTemplate(args)}>A new version is available</ea-alert>`,
+  }),
+};
+
+export const Sizes: Story = {
+  render: () => ({
+    template: `
+      <div class="story-stack story-stack--md story-medium">
+        <ea-alert size="sm" variant="info">Small alert message</ea-alert>
+        <ea-alert size="md" variant="info">Medium alert message</ea-alert>
+        <ea-alert size="lg" variant="info">Large alert message</ea-alert>
+      </div>
+    `,
   }),
 };
 

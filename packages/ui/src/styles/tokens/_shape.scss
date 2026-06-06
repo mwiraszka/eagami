@@ -13,4 +13,10 @@
   --border-width-thin: 1px;
   --border-width-medium: 2px;
   --border-width-thick: 4px;
+
+  // Hit-target box for icon buttons (clear / close / dismiss / toggle). em-based
+  // so it scales with the host component's size; since all sized components share
+  // a font-size per tier, this is also consistent across components at a tier
+  // (md = 1.75 * 16px = 28px).
+  --ea-icon-button-size: 1.75em;
 }

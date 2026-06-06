@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { DividerComponent } from './divider.component';
+import { DIVIDER_KNOBS } from './divider.component.knobs';
 
 const meta: Meta<DividerComponent> = {
   title: 'Components/Divider',
@@ -10,15 +11,8 @@ const meta: Meta<DividerComponent> = {
     props: args,
     template: `<ea-divider ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    orientation: {
-      control: 'select',
-      options: ['horizontal', 'vertical'],
-    },
-  },
-  args: {
-    orientation: 'horizontal',
-  },
+  argTypes: DIVIDER_KNOBS.argTypes,
+  args: DIVIDER_KNOBS.args,
 };
 
 export default meta;
@@ -31,7 +25,21 @@ export const WithLabel: Story = {
 };
 
 export const Vertical: Story = {
-  args: { orientation: 'vertical' },
+  args: { orientation: 'vertical', label: undefined },
+  render: args => ({
+    props: args,
+    template: `
+      <div class="story-row">
+        <span>Left</span>
+        <ea-divider ${argsToTemplate(args)} />
+        <span>Right</span>
+      </div>
+    `,
+  }),
+};
+
+export const VerticalWithLabel: Story = {
+  args: { orientation: 'vertical', label: 'OR' },
   render: args => ({
     props: args,
     template: `

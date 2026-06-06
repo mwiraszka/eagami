@@ -4,39 +4,33 @@
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
-  background-color: var(--color-bg-muted);
+  // One per-size diameter drives width, height, and initials so a new size only
+  // needs this single value and the text stays in proportion to the circle
+  width: var(--ea-avatar-size, 2.5rem);
+  height: var(--ea-avatar-size, 2.5rem);
+  background-color: var(--color-bg-emphasis);
   color: var(--color-text-secondary);
   font-family: var(--font-family-sans);
   font-weight: var(--font-weight-medium);
 
   &--xs {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: var(--font-size-xs);
+    --ea-avatar-size: 1.5rem;
   }
 
   &--sm {
-    width: 2rem;
-    height: 2rem;
-    font-size: var(--font-size-sm);
+    --ea-avatar-size: 2rem;
   }
 
   &--md {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: var(--font-size-md);
+    --ea-avatar-size: 2.5rem;
   }
 
   &--lg {
-    width: 3rem;
-    height: 3rem;
-    font-size: var(--font-size-lg);
+    --ea-avatar-size: 3rem;
   }
 
   &--xl {
-    width: 4rem;
-    height: 4rem;
-    font-size: var(--font-size-xl);
+    --ea-avatar-size: 4rem;
   }
 
   &--circle {
@@ -54,13 +48,14 @@
   }
 
   &__initials {
+    font-size: calc(var(--ea-avatar-size, 2.5rem) * 0.4);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
     line-height: var(--line-height-none);
   }
 
   &__fallback {
-    width: 60%;
-    height: 60%;
+    // The user icon is an em-sized glyph, so scale it from the circle diameter
+    font-size: calc(var(--ea-avatar-size, 2.5rem) * 0.6);
   }
 }

@@ -1,29 +1,28 @@
 .ea-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 0.25em;
+  padding: 0.25em 0.625em;
+  white-space: nowrap;
   font-family: var(--font-family-sans);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-none);
-  white-space: nowrap;
   border-style: solid;
   border-width: var(--ea-badge-border-width, 0);
   border-color: var(--ea-badge-border-color, transparent);
   border-radius: var(--radius-full);
 
-  // Apply to the default `pill` shape; `pin` overrides them below
+  // Size sets only the font-size; padding, gap, and the pin dimensions are all
+  // em-based, so everything scales from this one knob.
   &--sm {
-    padding: var(--space-0-5) var(--space-2);
-    font-size: var(--ea-badge-font-size, var(--font-size-xs));
+    font-size: var(--ea-badge-font-size, var(--font-size-2xs));
   }
 
   &--md {
-    padding: var(--space-1) var(--space-2-5);
     font-size: var(--ea-badge-font-size, var(--font-size-xs));
   }
 
   &--lg {
-    padding: var(--space-1) var(--space-3);
     font-size: var(--ea-badge-font-size, var(--font-size-sm));
   }
 
@@ -58,28 +57,25 @@
   // `pin` is a circular dot for single-character content that expands into a pill
   // for longer content. Tabular numerals keep digit widths uniform, and
   // `min-width = height` plus small horizontal padding fits any single digit in
-  // the square without forcing the box wider.
+  // the square without forcing the box wider. The square scales from the
+  // per-size font-size, so `min-width`/`height` are em-based here.
   &--pin {
     justify-content: center;
     box-sizing: border-box;
+    min-width: var(--ea-badge-size, 1.8em);
+    height: var(--ea-badge-size, 1.8em);
     padding: 0 var(--space-1);
     font-variant-numeric: tabular-nums;
 
     &.ea-badge--sm {
-      min-width: var(--ea-badge-size, 16px);
-      height: var(--ea-badge-size, 16px);
       font-size: var(--ea-badge-font-size, 9px);
     }
 
     &.ea-badge--md {
-      min-width: var(--ea-badge-size, 18px);
-      height: var(--ea-badge-size, 18px);
       font-size: var(--ea-badge-font-size, 10px);
     }
 
     &.ea-badge--lg {
-      min-width: var(--ea-badge-size, 22px);
-      height: var(--ea-badge-size, 22px);
       font-size: var(--ea-badge-font-size, 12px);
     }
   }

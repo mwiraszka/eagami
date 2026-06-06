@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 // `line-height: 1` stops the host picking up the body line-height and adding
 // baseline-strut space above/below the chip, which would knock an `<ea-tag>`
 // vertically off-centre next to a sibling like the multi-select `+N` chip.
@@ -10,7 +12,8 @@ ea-tag {
 .ea-tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 0.25em;
+  padding: 0.25em 0.5em;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-none);
   white-space: nowrap;
@@ -20,34 +23,18 @@ ea-tag {
   background-color: var(--color-bg-subtle);
   color: var(--color-text-secondary);
 
+  // Size sets only the font-size; padding, gap, and the remove button are
+  // em-based, so the chip scales entirely from this one knob.
   &--sm {
-    padding: var(--space-0-5) var(--space-1-5);
-    font-size: var(--font-size-xs);
-
-    .ea-tag__remove ea-icon-x {
-      width: 0.625rem;
-      height: 0.625rem;
-    }
+    font-size: var(--font-size-sm);
   }
 
   &--md {
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--font-size-xs);
-
-    .ea-tag__remove ea-icon-x {
-      width: 0.75rem;
-      height: 0.75rem;
-    }
+    font-size: var(--font-size-md);
   }
 
   &--lg {
-    padding: var(--space-1) var(--space-2-5);
-    font-size: var(--font-size-sm);
-
-    .ea-tag__remove ea-icon-x {
-      width: 0.875rem;
-      height: 0.875rem;
-    }
+    font-size: var(--font-size-lg);
   }
 
   &--success {
@@ -80,33 +67,16 @@ ea-tag {
   }
 
   &__remove {
-    opacity: 0.7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-xs);
-    background: none;
+    @include ea.icon-button;
     color: inherit;
-    cursor: pointer;
-    transition: var(--transition-colors);
 
     &:hover {
-      opacity: 1;
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
+      color: inherit;
     }
 
     ea-icon-x {
+      width: 1em;
+      height: 1em;
       pointer-events: none;
     }
   }

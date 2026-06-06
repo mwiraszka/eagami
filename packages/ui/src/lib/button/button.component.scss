@@ -11,10 +11,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--inline-xs);
+  gap: 0.5em;
   position: relative;
   white-space: nowrap;
   user-select: none;
+  padding: 0.5em 1em;
+  min-height: 2.5em;
 
   font-family: var(--font-family-sans);
   font-weight: var(--ea-button-font-weight, var(--font-weight-medium));
@@ -34,22 +36,18 @@
     box-shadow: var(--shadow-focus-ring);
   }
 
+  // Size sets only the font-size; padding, min-height, gap, and the spinner are
+  // all em-based on the base rule, so everything scales from this one knob.
   &--sm {
-    padding: var(--space-1-5) var(--space-3);
     font-size: var(--ea-button-font-size, var(--font-size-sm));
-    min-height: 2rem; // 32px
   }
 
   &--md {
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--ea-button-font-size, var(--font-size-sm));
-    min-height: 2.5rem; // 40px
+    font-size: var(--ea-button-font-size, var(--font-size-md));
   }
 
   &--lg {
-    padding: var(--space-2-5) var(--space-6);
-    font-size: var(--ea-button-font-size, var(--font-size-md));
-    min-height: 3rem; // 48px
+    font-size: var(--ea-button-font-size, var(--font-size-lg));
   }
 
   // Variant colours route through custom properties so a single button can be
@@ -215,7 +213,7 @@
   &__content {
     display: inline-flex;
     align-items: center;
-    gap: var(--inline-xs);
+    gap: 0.5em;
 
     &--hidden {
       visibility: hidden;

@@ -1,58 +1,25 @@
-<web-ui-component-demo-layout slug="range-slider">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-range-slider
-    label="Price range"
-    [showValue]="true"
-    [(value)]="rangeSliderValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withMinMaxLabels }}</h2>
-  <ea-range-slider
-    label="Price range"
-    [showValue]="true"
-    [showMinMaxLabels]="true"
-    [value]="[20, 80]" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.stepped }}</h2>
-  <ea-range-slider
-    label="Stops"
-    [min]="0"
-    [max]="10"
-    [step]="1"
-    [showValue]="true"
-    [showMinMaxLabels]="true"
-    [value]="[3, 7]" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-range-slider
-    label="Price range"
-    hint="Drag either thumb or use arrow keys"
-    [value]="[20, 80]" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-range-slider
-    label="Price range"
-    errorMsg="Range must span at least 30"
-    [value]="[20, 80]" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-range-slider
-      size="sm"
-      [label]="messages().ui.component.common.small"
-      [value]="[20, 80]" />
-    <ea-range-slider
-      size="md"
-      [label]="messages().ui.component.common.medium"
-      [value]="[20, 80]" />
-    <ea-range-slider
-      size="lg"
-      [label]="messages().ui.component.common.large"
-      [value]="[20, 80]" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-range-slider
-    label="Price range"
-    [disabled]="true"
-    [value]="[20, 80]" />
+      class="playground-field"
+      [label]="state().label"
+      [hint]="state().hint"
+      [errorMsg]="state().errorMsg"
+      [min]="state().min"
+      [max]="state().max"
+      [step]="state().step"
+      [size]="state().size"
+      [showValue]="state().showValue"
+      [showMinMaxLabels]="state().showMinMaxLabels"
+      [disabled]="state().disabled"
+      [required]="state().required" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { ButtonComponent } from './button.component';
+import { BUTTON_KNOBS } from './button.component.knobs';
 
 const meta: Meta<ButtonComponent> = {
   title: 'Components/Button',
@@ -10,29 +11,8 @@ const meta: Meta<ButtonComponent> = {
     props: args,
     template: `<ea-button ${argsToTemplate(args)}>Button</ea-button>`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'danger'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    type: {
-      control: 'select',
-      options: ['button', 'submit', 'reset'],
-    },
-    clicked: { action: 'clicked' },
-  },
-  args: {
-    variant: 'primary',
-    size: 'md',
-    type: 'button',
-    disabled: false,
-    loading: false,
-    fullWidth: false,
-  },
+  argTypes: BUTTON_KNOBS.argTypes,
+  args: BUTTON_KNOBS.args,
 };
 
 export default meta;

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { ColorPickerComponent } from './color-picker.component';
+import { COLOR_PICKER_KNOBS } from './color-picker.component.knobs';
 
 const meta: Meta<ColorPickerComponent> = {
   title: 'Components/Color Picker',
@@ -13,26 +14,8 @@ const meta: Meta<ColorPickerComponent> = {
     props: args,
     template: `<ea-color-picker ${argsToTemplate(args)} class="story-narrow"></ea-color-picker>`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    format: {
-      control: 'select',
-      options: ['hex', 'rgb', 'hsl'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    label: 'Color',
-    placeholder: 'Pick a color…',
-    size: 'md',
-    format: 'hex',
-    showAlpha: true,
-    disabled: false,
-    required: false,
-  },
+  argTypes: COLOR_PICKER_KNOBS.argTypes,
+  args: COLOR_PICKER_KNOBS.args,
 };
 
 export default meta;

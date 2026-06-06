@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { CodeInputComponent } from './code-input.component';
+import { CODE_INPUT_KNOBS } from './code-input.component.knobs';
 
 const meta: Meta<CodeInputComponent> = {
   title: 'Components/Code Input',
@@ -10,23 +11,8 @@ const meta: Meta<CodeInputComponent> = {
     props: args,
     template: `<ea-code-input ${argsToTemplate(args)}></ea-code-input>`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    length: {
-      control: { type: 'number', min: 4, max: 8, step: 1 },
-    },
-    completed: { action: 'completed' },
-  },
-  args: {
-    label: 'Verification code',
-    length: 6,
-    size: 'md',
-    disabled: false,
-    required: false,
-  },
+  argTypes: CODE_INPUT_KNOBS.argTypes,
+  args: CODE_INPUT_KNOBS.args,
 };
 
 export default meta;

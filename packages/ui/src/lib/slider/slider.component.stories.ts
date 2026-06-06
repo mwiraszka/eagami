@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { SliderComponent } from './slider.component';
+import { SLIDER_KNOBS } from './slider.component.knobs';
 
 const meta: Meta<SliderComponent> = {
   title: 'Components/Slider',
@@ -10,30 +11,16 @@ const meta: Meta<SliderComponent> = {
     props: args,
     template: `<ea-slider ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    changed: { action: 'changed' },
-  },
-  args: {
-    label: 'Volume',
-    min: 0,
-    max: 100,
-    step: 1,
-    size: 'md',
-    value: 40,
-    showValue: true,
-    showMinMaxLabels: false,
-    disabled: false,
-  },
+  argTypes: SLIDER_KNOBS.argTypes,
+  args: SLIDER_KNOBS.args,
 };
 
 export default meta;
 type Story = StoryObj<SliderComponent>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { value: 40 },
+};
 
 export const WithMinMaxLabels: Story = {
   args: { showMinMaxLabels: true },

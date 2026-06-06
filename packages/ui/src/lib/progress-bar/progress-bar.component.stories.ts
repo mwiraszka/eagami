@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { ProgressBarComponent } from './progress-bar.component';
+import { PROGRESS_BAR_KNOBS } from './progress-bar.component.knobs';
 
 const meta: Meta<ProgressBarComponent> = {
   title: 'Components/Progress Bar',
@@ -10,27 +11,8 @@ const meta: Meta<ProgressBarComponent> = {
     props: args,
     template: `<ea-progress-bar ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'error', 'info'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    value: { control: { type: 'range', min: 0, max: 100, step: 1 } },
-    max: { control: { type: 'number', min: 1 } },
-  },
-  args: {
-    value: 60,
-    max: 100,
-    variant: 'default',
-    size: 'md',
-    label: '',
-    showValue: false,
-    indeterminate: false,
-  },
+  argTypes: PROGRESS_BAR_KNOBS.argTypes,
+  args: PROGRESS_BAR_KNOBS.args,
 };
 
 export default meta;
@@ -39,7 +21,7 @@ type Story = StoryObj<ProgressBarComponent>;
 export const Default: Story = {};
 
 export const WithLabel: Story = {
-  args: { label: 'Uploading files', showValue: true, value: 72 },
+  args: { label: 'Uploading files', showPercentage: true, value: 72 },
 };
 
 export const Indeterminate: Story = {
@@ -50,11 +32,11 @@ export const AllVariants: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-medium">
-        <ea-progress-bar variant="default" [value]="60" label="Default" [showValue]="true" />
-        <ea-progress-bar variant="success" [value]="100" label="Success" [showValue]="true" />
-        <ea-progress-bar variant="warning" [value]="45" label="Warning" [showValue]="true" />
-        <ea-progress-bar variant="error" [value]="20" label="Error" [showValue]="true" />
-        <ea-progress-bar variant="info" [value]="80" label="Info" [showValue]="true" />
+        <ea-progress-bar variant="default" [value]="60" label="Default" [showPercentage]="true" />
+        <ea-progress-bar variant="success" [value]="100" label="Success" [showPercentage]="true" />
+        <ea-progress-bar variant="warning" [value]="45" label="Warning" [showPercentage]="true" />
+        <ea-progress-bar variant="error" [value]="20" label="Error" [showPercentage]="true" />
+        <ea-progress-bar variant="info" [value]="80" label="Info" [showPercentage]="true" />
       </div>
     `,
   }),

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { AvatarComponent } from './avatar.component';
+import { AVATAR_KNOBS } from './avatar.component.knobs';
 
 const meta: Meta<AvatarComponent> = {
   title: 'Components/Avatar',
@@ -10,20 +11,8 @@ const meta: Meta<AvatarComponent> = {
     props: args,
     template: `<ea-avatar ${argsToTemplate(args)} />`,
   }),
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    shape: {
-      control: 'select',
-      options: ['circle', 'square'],
-    },
-  },
-  args: {
-    size: 'md',
-    shape: 'circle',
-  },
+  argTypes: AVATAR_KNOBS.argTypes,
+  args: AVATAR_KNOBS.args,
 };
 
 export default meta;
