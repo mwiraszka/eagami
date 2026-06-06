@@ -1,7 +1,7 @@
-import { RatingComponent, type RatingSize } from '@eagami/ui';
+import { RatingComponent, type RatingSize, StarIconComponent } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -10,6 +10,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface RatingKnobState {
@@ -25,6 +26,7 @@ interface RatingKnobState {
   disabled: boolean;
   required: boolean;
   clearable: boolean;
+  iconClass: string;
 }
 
 const SLUG = 'rating';
@@ -41,9 +43,30 @@ const SLUG = 'rating';
 })
 export class RatingDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.rating, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.rating, UI_API[SLUG]),
+    iconKnob(
+      [
+        'star',
+        'heart',
+        'bell',
+        'bookmark',
+        'award',
+        'flag',
+        'smile',
+        'zap',
+        'sun',
+        'moon',
+        'gift',
+      ],
+      { name: 'iconClass', default: 'star', includeNone: false },
+    ),
+  ];
   protected readonly state = signal<RatingKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.rating) as RatingKnobState,
+  );
+  protected readonly iconComponent = computed(
+    () => iconComponentForSlug(this.state().iconClass) ?? StarIconComponent,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
