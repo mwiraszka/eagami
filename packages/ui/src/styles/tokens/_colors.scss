@@ -95,6 +95,7 @@
   --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
+  --color-divider: var(--color-border-subtle);
   --color-border-focus: var(--color-primary-500);
 
   // brand-default/-hover/-active are the brand colour as a surface (solid bg
@@ -191,6 +192,9 @@
   );
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
+  // Dividers read as barely-there against dark surfaces at border-subtle, so
+  // they step one neutral lighter for a visible-but-quiet rule.
+  --color-divider: var(--color-neutral-600);
 
   // Surface roles step one shade lighter than light mode so the button clears
   // WCAG 1.4.11 (3:1) on the near-black canvas while keeping a white label

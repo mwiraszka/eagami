@@ -25,7 +25,21 @@ export const WithLabel: Story = {
 };
 
 export const Vertical: Story = {
-  args: { orientation: 'vertical' },
+  args: { orientation: 'vertical', label: undefined },
+  render: args => ({
+    props: args,
+    template: `
+      <div class="story-row">
+        <span>Left</span>
+        <ea-divider ${argsToTemplate(args)} />
+        <span>Right</span>
+      </div>
+    `,
+  }),
+};
+
+export const VerticalWithLabel: Story = {
+  args: { orientation: 'vertical', label: 'OR' },
   render: args => ({
     props: args,
     template: `
