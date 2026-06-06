@@ -36,26 +36,22 @@
     border-color: var(--color-error-default);
   }
 
+  // Size sets only the font-size; min-height, padding, and gap are em-based on the
+  // base __option rule, so the control scales entirely from this one knob.
   &--sm {
     .ea-segmented__option {
-      min-height: 1.75rem;
-      padding: var(--space-1) var(--space-2-5);
       font-size: var(--font-size-sm);
     }
   }
 
   &--md {
     .ea-segmented__option {
-      min-height: 2.25rem;
-      padding: var(--space-1-5) var(--space-3);
       font-size: var(--font-size-md);
     }
   }
 
   &--lg {
     .ea-segmented__option {
-      min-height: 2.75rem;
-      padding: var(--space-2) var(--space-4);
       font-size: var(--font-size-lg);
     }
   }
@@ -64,7 +60,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-1-5);
+    gap: 0.375em;
+    min-height: 2.25em;
+    padding: 0.375em 0.75em;
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-tight);
     background: transparent;

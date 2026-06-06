@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-command-palette {
   position: fixed;
   top: 15vh;
@@ -58,21 +60,7 @@
 }
 
 .ea-command-palette__clear {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
-  padding: 0;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--color-state-hover);
-  }
+  @include ea.icon-button;
 }
 
 .ea-command-palette__list {

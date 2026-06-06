@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-drawer {
   position: fixed;
   top: 0;
@@ -108,36 +110,16 @@
   }
 
   &__close {
+    z-index: 1;
     position: absolute;
     top: var(--space-3);
     right: var(--space-3);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    transition: var(--transition-colors);
 
-    &:hover {
-      background-color: var(--color-state-hover);
-      color: var(--color-text-primary);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
+    @include ea.icon-button;
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: 1em;
+      height: 1em;
     }
   }
 

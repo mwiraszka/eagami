@@ -43,19 +43,18 @@
       }
     }
 
+    // Size sets only the font-size; the trigger's padding is em-based on the base
+    // rule, so the whole tab scales from this one knob.
     &--sm .ea-tabs__trigger {
-      padding: var(--space-1-5) var(--space-3);
-      font-size: var(--font-size-xs);
-    }
-
-    &--md .ea-tabs__trigger {
-      padding: var(--space-2) var(--space-4);
       font-size: var(--font-size-sm);
     }
 
-    &--lg .ea-tabs__trigger {
-      padding: var(--space-2-5) var(--space-5);
+    &--md .ea-tabs__trigger {
       font-size: var(--font-size-md);
+    }
+
+    &--lg .ea-tabs__trigger {
+      font-size: var(--font-size-lg);
     }
   }
 
@@ -63,7 +62,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    padding: 0.5em 1em;
     font-weight: var(--font-weight-medium);
     font-family: var(--font-family-sans);
     line-height: var(--line-height-normal);

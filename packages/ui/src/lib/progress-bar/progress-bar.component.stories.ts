@@ -21,7 +21,7 @@ type Story = StoryObj<ProgressBarComponent>;
 export const Default: Story = {};
 
 export const WithLabel: Story = {
-  args: { label: 'Uploading files', showValue: true, value: 72 },
+  args: { label: 'Uploading files', showPercentage: true, value: 72 },
 };
 
 export const Indeterminate: Story = {
@@ -32,11 +32,11 @@ export const AllVariants: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-medium">
-        <ea-progress-bar variant="default" [value]="60" label="Default" [showValue]="true" />
-        <ea-progress-bar variant="success" [value]="100" label="Success" [showValue]="true" />
-        <ea-progress-bar variant="warning" [value]="45" label="Warning" [showValue]="true" />
-        <ea-progress-bar variant="error" [value]="20" label="Error" [showValue]="true" />
-        <ea-progress-bar variant="info" [value]="80" label="Info" [showValue]="true" />
+        <ea-progress-bar variant="default" [value]="60" label="Default" [showPercentage]="true" />
+        <ea-progress-bar variant="success" [value]="100" label="Success" [showPercentage]="true" />
+        <ea-progress-bar variant="warning" [value]="45" label="Warning" [showPercentage]="true" />
+        <ea-progress-bar variant="error" [value]="20" label="Error" [showPercentage]="true" />
+        <ea-progress-bar variant="info" [value]="80" label="Info" [showPercentage]="true" />
       </div>
     `,
   }),

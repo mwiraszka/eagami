@@ -36,8 +36,16 @@ export class ProgressBarComponent {
   readonly variant = input<ProgressBarVariant>('default');
   readonly size = input<ProgressBarSize>('md');
   readonly label = input<string | undefined>(undefined);
+  /** Shows the rounded percentage alongside the label. */
+  readonly showPercentage = input<boolean>(false);
+  /**
+   * @deprecated Use `showPercentage` instead. Will be removed in v3.0.0.
+   */
   readonly showValue = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
+
+  /** Whether to render the percentage (honours the deprecated `showValue` alias). */
+  readonly showsPercentage = computed(() => this.showPercentage() || this.showValue());
 
   readonly percentage = computed(() => {
     const max = this.max();

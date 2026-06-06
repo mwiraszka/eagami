@@ -10,10 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add an `icon` input to `<ea-alert>` and `<ea-input>` for a leading icon, plus a `size` input on `<ea-alert>`.
+- Add `showPercentage` to `<ea-progress-bar>`, replacing `showValue`.
 
 ### Changed
 
 - Enlarge the alert status icon to 1.5x the text, tighten its gap, and vertically center it with the message.
+- Scale every component's text, icons, padding, and controls proportionally with its `size`, and standardize all clear/close/dismiss/toggle buttons to one consistent affordance.
+- Deprecate `<ea-progress-bar>` `showValue`; use `showPercentage` instead (removed in v3.0.0).
 
 ### Fixed
 
@@ -22,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Darken the avatar placeholder background so it stays visible on light surfaces.
 - Scale avatar initials and the fallback user icon to the avatar size so they stay proportionate at small sizes.
 - Shrink small badge text so it reads distinctly from the medium size.
+- Make `<ea-textarea>` `rows` set the visible height.
 
 ## [2.6.0] - 2026-06-05
 

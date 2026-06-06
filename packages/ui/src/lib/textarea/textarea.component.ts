@@ -86,6 +86,14 @@ export class TextareaComponent implements ControlValueAccessor {
     'ea-textarea-wrapper--readonly': this.readonly(),
   }));
 
+  // Drive the visible height from `rows` directly: as a flex item the native
+  // `rows` attribute gets collapsed, so an explicit em-based min-height (rows of
+  // line-height plus the vertical padding) is what actually makes `rows` take
+  // effect and keeps it proportional to the size.
+  readonly minHeight = computed(
+    () => `calc(${this.rows()} * var(--line-height-normal) * 1em + 0.75em * 2)`,
+  );
+
   writeValue(val: string): void {
     this.value.set(val ?? '');
   }

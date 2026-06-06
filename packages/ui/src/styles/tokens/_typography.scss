@@ -1,6 +1,12 @@
 :root {
-  --font-family-sans: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-family-brand: 'Syne', 'DM Sans', system-ui, sans-serif;
+  // The `* Fallback` faces are Arial tuned with metric overrides to match the
+  // web fonts, so they must sit right after each web font in the stack: that way
+  // text laid out before the font loads has the same metrics and `font-display:
+  // swap` causes no layout shift when the real font arrives.
+  --font-family-sans:
+    'DM Sans', 'DM Sans Fallback', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-brand:
+    'Syne', 'Syne Fallback', 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
   --font-family-serif: 'Georgia', 'Times New Roman', serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 

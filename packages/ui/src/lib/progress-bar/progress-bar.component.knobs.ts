@@ -17,7 +17,7 @@ export const PROGRESS_BAR_KNOBS: ComponentKnobs = {
     },
     value: { control: 'number', if: { arg: 'indeterminate', eq: false } },
     max: { control: 'number', if: { arg: 'indeterminate', eq: false } },
-    showValue: { control: 'boolean', if: { arg: 'indeterminate', eq: false } },
+    showPercentage: { control: 'boolean', if: { arg: 'indeterminate', eq: false } },
     indeterminate: { control: 'boolean' },
   },
   args: {
@@ -26,7 +26,7 @@ export const PROGRESS_BAR_KNOBS: ComponentKnobs = {
     max: 100,
     variant: 'default',
     size: 'md',
-    showValue: true,
+    showPercentage: true,
     indeterminate: false,
   },
 };

@@ -1,0 +1,45 @@
+// Shared SCSS mixins for the library. Consume from a component stylesheet with:
+//   @use '../../styles/mixins' as ea;
+//   .ea-foo__close { @include ea.icon-button; }
+
+// Standard icon button: clear, close/dismiss, password-toggle, nav, etc. The box
+// is `--ea-icon-button-size` (em) so it scales with the host component's size and
+// is consistent across components at a given size tier. The glyph is enlarged so
+// it reads clearly inside the box regardless of how much padding the icon's own
+// viewBox carries (the feather `x`, for instance, only fills its middle half).
+@mixin icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--ea-icon-button-size, 1.75em);
+  height: var(--ea-icon-button-size, 1.75em);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition-colors);
+
+  // Glyph sized via font-size (not width) so it overrides the icon's inline 1em
+  // host size and still scales with the box.
+  > * {
+    font-size: 1.25em;
+  }
+
+  &:hover {
+    background-color: var(--color-state-hover);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus-ring);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

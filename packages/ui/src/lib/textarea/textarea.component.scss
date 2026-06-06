@@ -13,26 +13,22 @@
   transition: var(--transition-colors), var(--transition-shadow);
   overflow: hidden;
 
+  // Size sets only the font-size; padding and min-height are em-based on the
+  // inner field, so the textarea scales entirely from this one knob.
   &--sm {
     .ea-textarea {
-      min-height: calc(1.5em + var(--space-2) * 2);
-      padding: var(--space-2);
       font-size: var(--font-size-sm);
     }
   }
 
   &--md {
     .ea-textarea {
-      min-height: calc(1.5em + var(--space-3) * 2);
-      padding: var(--space-3);
       font-size: var(--font-size-md);
     }
   }
 
   &--lg {
     .ea-textarea {
-      min-height: calc(1.5em + var(--space-4) * 2);
-      padding: var(--space-4);
       font-size: var(--font-size-lg);
     }
   }
@@ -70,7 +66,7 @@
   flex: 1;
   width: 100%;
   min-width: 0;
-  min-height: 0;
+  padding: 0.75em;
   background: transparent;
   border: none;
   outline: none;

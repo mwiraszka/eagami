@@ -1,12 +1,12 @@
 <div
   class="ea-progress-bar"
   [ngClass]="hostClasses()">
-  @if (label() || showValue()) {
+  @if (label() || showsPercentage()) {
     <div class="ea-progress-bar__header">
       @if (label()) {
         <span class="ea-progress-bar__label">{{ label() }}</span>
       }
-      @if (showValue() && !indeterminate()) {
+      @if (showsPercentage() && !indeterminate()) {
         <span class="ea-progress-bar__value">{{ percentageRounded() }}%</span>
       }
     </div>
