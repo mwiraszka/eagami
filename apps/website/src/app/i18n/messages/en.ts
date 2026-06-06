@@ -950,6 +950,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             required: 'Required',
             clearable: 'Clearable',
+            iconClass: 'Icon',
           },
           skeleton: {
             variant: 'Variant',
@@ -992,8 +993,9 @@ export const en: WebMessages = {
             size: 'Size',
             resize: 'Resize',
             rows: 'Rows',
-            maxlength: 'Max length',
-            maxHeight: 'Max height (50 - 400)',
+            maxlength: 'Max length (chars)',
+            minHeight: 'Min height (px)',
+            maxHeight: 'Max height (px)',
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
@@ -1301,6 +1303,8 @@ export const en: WebMessages = {
             label: 'Text label rendered above the field.',
             maxHeight:
               "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
+            minHeight:
+              'Minimum height in px; never less than the height implied by the rows.',
             maxlength: 'Maximum number of characters the field accepts.',
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',

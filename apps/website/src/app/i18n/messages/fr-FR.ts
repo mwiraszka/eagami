@@ -970,6 +970,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             required: 'Requis',
             clearable: 'Effaçable',
+            iconClass: 'Icône',
           },
           skeleton: {
             variant: 'Variante',
@@ -1012,8 +1013,9 @@ export const frFR: WebMessages = {
             size: 'Taille',
             resize: 'Redimensionnement',
             rows: 'Lignes',
-            maxlength: 'Longueur maximale',
-            maxHeight: 'Hauteur maximale (50 - 400)',
+            maxlength: 'Longueur maximale (chars)',
+            minHeight: 'Hauteur minimale (px)',
+            maxHeight: 'Hauteur maximale (px)',
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
@@ -1340,6 +1342,8 @@ export const frFR: WebMessages = {
             label: 'Libellé textuel rendu au-dessus du champ.',
             maxHeight:
               'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
+            minHeight:
+              'Hauteur minimale en px ; jamais inférieure à la hauteur impliquée par les lignes.',
             maxlength: 'Nombre maximal de caractères que le champ accepte.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',

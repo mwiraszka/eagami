@@ -968,6 +968,7 @@ export const el: WebMessages = {
             disabled: 'Απενεργοποιημένο',
             required: 'Υποχρεωτικό',
             clearable: 'Με εκκαθάριση',
+            iconClass: 'Εικονίδιο',
           },
           skeleton: {
             variant: 'Παραλλαγή',
@@ -1010,8 +1011,9 @@ export const el: WebMessages = {
             size: 'Μέγεθος',
             resize: 'Αλλαγή μεγέθους',
             rows: 'Γραμμές',
-            maxlength: 'Μέγιστο μήκος',
-            maxHeight: 'Μέγιστο ύψος (50 - 400)',
+            maxlength: 'Μέγιστο μήκος (chars)',
+            minHeight: 'Ελάχιστο ύψος (px)',
+            maxHeight: 'Μέγιστο ύψος (px)',
             disabled: 'Απενεργοποιημένο',
             readonly: 'Μόνο για ανάγνωση',
             required: 'Υποχρεωτικό',
@@ -1350,6 +1352,8 @@ export const el: WebMessages = {
             label: 'Ετικέτα που εμφανίζεται πάνω από το πεδίο.',
             maxHeight:
               'Όριο ύψους σε pixel για το πεδίο. Πέρα από αυτό, το textarea κυλά κατακόρυφα αντί να μεγαλώνει.',
+            minHeight:
+              'Ελάχιστο ύψος σε px· ποτέ μικρότερο από το ύψος που υπονοούν οι γραμμές.',
             maxlength: 'Μέγιστος αριθμός χαρακτήρων που δέχεται το πεδίο.',
             placeholder: 'Κείμενο υποδείγματος που εμφανίζεται όταν το πεδίο είναι κενό.',
             readonly: 'Εμφανίζει το πεδίο μόνο για ανάγνωση.',

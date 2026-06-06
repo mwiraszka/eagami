@@ -961,6 +961,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
             clearable: 'Con botón de borrado',
+            iconClass: 'Icono',
           },
           skeleton: {
             variant: 'Variante',
@@ -1003,8 +1004,9 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             resize: 'Redimensionar',
             rows: 'Filas',
-            maxlength: 'Longitud máxima',
-            maxHeight: 'Altura máxima (50 - 400)',
+            maxlength: 'Longitud máxima (chars)',
+            minHeight: 'Altura mínima (px)',
+            maxHeight: 'Altura máxima (px)',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
@@ -1344,6 +1346,8 @@ export const esES: WebMessages = {
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxHeight:
               'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
+            minHeight:
+              'Altura mínima en px; nunca menor que la altura que implican las filas.',
             maxlength: 'Número máximo de caracteres que acepta el campo.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',

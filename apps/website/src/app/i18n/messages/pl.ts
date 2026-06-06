@@ -968,6 +968,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             required: 'Wymagane',
             clearable: 'Z czyszczeniem',
+            iconClass: 'Ikona',
           },
           skeleton: {
             variant: 'Wariant',
@@ -1010,8 +1011,9 @@ export const pl: WebMessages = {
             size: 'Rozmiar',
             resize: 'Zmiana rozmiaru',
             rows: 'Wiersze',
-            maxlength: 'Maksymalna długość',
-            maxHeight: 'Maksymalna wysokość (50 - 400)',
+            maxlength: 'Maksymalna długość (chars)',
+            minHeight: 'Minimalna wysokość (px)',
+            maxHeight: 'Maksymalna wysokość (px)',
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
@@ -1332,6 +1334,8 @@ export const pl: WebMessages = {
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxHeight:
               'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
+            minHeight:
+              'Minimalna wysokość w px; nigdy mniejsza niż wysokość wynikająca z liczby wierszy.',
             maxlength: 'Maksymalna liczba znaków akceptowana przez pole.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
