@@ -8,7 +8,9 @@
     [state]="state()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <ea-radio-group value="apple">
+    <ea-radio-group
+      value="apple"
+      [size]="state().size">
       <ea-radio
         value="apple"
         [label]="state().label"

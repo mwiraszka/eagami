@@ -15,7 +15,7 @@ import { FieldMessagesComponent } from '../field/field-messages.component';
 import { uniqueId } from '../unique-id';
 
 /** Visual size shared by all radios in the group. */
-export type RadioSize = 'sm' | 'md' | 'lg';
+export type RadioSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 /** Layout direction for radios within the group. */
 export type RadioOrientation = 'vertical' | 'horizontal';
 

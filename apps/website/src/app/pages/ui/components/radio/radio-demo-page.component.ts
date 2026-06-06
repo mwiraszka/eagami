@@ -1,4 +1,4 @@
-import { RadioComponent, RadioGroupComponent } from '@eagami/ui';
+import { RadioComponent, RadioGroupComponent, type RadioSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
@@ -17,6 +17,7 @@ interface RadioKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  size: RadioSize;
   disabled: boolean;
 }
 

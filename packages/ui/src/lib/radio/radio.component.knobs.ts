@@ -7,10 +7,15 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const RADIO_KNOBS: ComponentKnobs = {
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     disabled: { control: 'boolean' },
   },
   args: {
     label: 'Apple',
+    size: 'md',
     disabled: false,
   },
 };
