@@ -52,6 +52,10 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
+  /**
+   * @deprecated Use `maxHeight` and the `resize` handle to control height; this
+   * sets the initial height only. Will be removed in v3.0.0.
+   */
   readonly rows = input<number>(3);
   readonly resize = input<TextareaResize>('vertical');
   readonly maxlength = input<number | undefined>(undefined);

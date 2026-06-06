@@ -11,12 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add an `icon` input to `<ea-alert>` and `<ea-input>` for a leading icon, plus a `size` input on `<ea-alert>`.
 - Add `showPercentage` to `<ea-progress-bar>`, replacing `showValue`.
+- Add `xs` and `xl` sizes to `<ea-spinner>`.
 
 ### Changed
 
 - Enlarge the alert status icon to 1.5x the text, tighten its gap, and vertically center it with the message.
 - Scale every component's text, icons, padding, and controls proportionally with its `size`, and standardize all clear/close/dismiss/toggle buttons to one consistent affordance.
-- Deprecate `<ea-progress-bar>` `showValue`; use `showPercentage` instead (removed in v3.0.0).
+- Size `<ea-spinner>` so its circle is always 1.5x the label text.
+- Deprecate `<ea-progress-bar>` `showValue` (use `showPercentage`) and `<ea-textarea>` `rows` (use `maxHeight` and the resize handle); both removed in v3.0.0.
 
 ### Fixed
 

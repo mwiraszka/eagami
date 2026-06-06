@@ -1,38 +1,34 @@
 .ea-spinner {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.5em;
   color: var(--color-brand-text);
 
-  &--sm {
-    --ea-spinner-size: 1rem;
+  // Size sets only the font-size (the label text); the circle is 1.5em of it and
+  // the gap is em, so the spinner is always 1.5x the text and scales as one unit.
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
 
-    .ea-spinner__label {
-      font-size: var(--font-size-sm);
-    }
+  &--sm {
+    font-size: var(--font-size-sm);
   }
 
   &--md {
-    --ea-spinner-size: 1.5rem;
-
-    .ea-spinner__label {
-      font-size: var(--font-size-sm);
-    }
+    font-size: var(--font-size-md);
   }
 
   &--lg {
-    --ea-spinner-size: 2rem;
+    font-size: var(--font-size-lg);
+  }
 
-    .ea-spinner__label {
-      font-size: var(--font-size-md);
-    }
+  &--xl {
+    font-size: var(--font-size-xl);
   }
 
   &__circle {
-    // One per-size diameter drives both width and height so a new size only
-    // needs the single custom property
-    width: var(--ea-spinner-size, 1.5rem);
-    height: var(--ea-spinner-size, 1.5rem);
+    width: var(--icon-inline-size);
+    height: var(--icon-inline-size);
     animation: ea-spin 0.75s linear infinite;
 
     @media (prefers-reduced-motion: reduce) {

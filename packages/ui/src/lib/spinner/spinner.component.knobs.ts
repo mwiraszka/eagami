@@ -9,7 +9,7 @@ export const SPINNER_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
   },
   args: {
