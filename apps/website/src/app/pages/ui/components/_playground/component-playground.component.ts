@@ -119,4 +119,12 @@ export class ComponentPlaygroundComponent {
   protected emit(name: string, value: KnobValue): void {
     this.knobChange.emit({ name, value });
   }
+
+  // The number input emits raw strings; bindings to numeric component inputs
+  // would otherwise concatenate instead of add. An empty field stays "unset".
+  protected emitNumber(name: string, value: string): void {
+    const trimmed = value.trim();
+    const parsed = Number(trimmed);
+    this.emit(name, trimmed === '' || Number.isNaN(parsed) ? '' : parsed);
+  }
 }

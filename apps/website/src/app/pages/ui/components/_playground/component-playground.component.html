@@ -73,7 +73,7 @@
                   [label]="knobLabel(knob.name)"
                   [value]="stringValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
-                  (valueChange)="emit(knob.name, $event)" />
+                  (valueChange)="emitNumber(knob.name, $event)" />
               }
               @case ('content') {
                 <ea-input
