@@ -13,6 +13,7 @@
   }
 
   &__value {
+    margin-left: auto;
     font-variant-numeric: tabular-nums;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);

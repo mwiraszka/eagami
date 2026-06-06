@@ -53,6 +53,18 @@ describe('RangeSliderComponent', () => {
       expect(labels.length).toBe(2);
     });
 
+    it('shows the value with showValue even when no label is set', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('value', [20, 80] as RangeSliderValue);
+      fixture.detectChanges();
+
+      const value = fixture.nativeElement.querySelector('.ea-range-slider-field__value');
+
+      expect(value).toBeTruthy();
+      expect(value.textContent).toContain('20');
+      expect(value.textContent).toContain('80');
+    });
+
     it('renders error message and sets aria-invalid on both thumbs', () => {
       fixture.componentRef.setInput('errorMsg', 'Out of range');
       fixture.detectChanges();

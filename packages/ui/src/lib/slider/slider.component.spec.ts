@@ -40,6 +40,17 @@ describe('SliderComponent', () => {
       expect(labels.length).toBe(2);
     });
 
+    it('shows the value with showValue even when no label is set', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('value', 42);
+      fixture.detectChanges();
+
+      const value = fixture.nativeElement.querySelector('.ea-slider-field__value');
+
+      expect(value).toBeTruthy();
+      expect(value.textContent).toContain('42');
+    });
+
     it('renders error message and sets aria-invalid', () => {
       fixture.componentRef.setInput('errorMsg', 'Out of range');
       fixture.detectChanges();

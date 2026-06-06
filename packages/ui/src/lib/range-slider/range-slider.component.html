@@ -1,12 +1,14 @@
 <div
   class="ea-range-slider-field"
   [ngClass]="hostClasses()">
-  @if (label(); as labelText) {
+  @if (label() || showValue()) {
     <div class="ea-range-slider-field__header">
-      <ea-field-label
-        [text]="labelText"
-        [labelId]="id() + '-label'"
-        [required]="required()" />
+      @if (label(); as labelText) {
+        <ea-field-label
+          [text]="labelText"
+          [labelId]="id() + '-label'"
+          [required]="required()" />
+      }
       @if (showValue()) {
         <span class="ea-range-slider-field__value">
           {{ formatValue()(clampedValue()[0]) }} – {{ formatValue()(clampedValue()[1]) }}
