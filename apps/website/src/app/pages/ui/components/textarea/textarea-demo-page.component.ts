@@ -20,7 +20,6 @@ interface TextareaKnobState {
   placeholder: string;
   size: TextareaSize;
   resize: TextareaResize;
-  rows: number;
   maxlength: number;
   maxHeight: number;
   disabled: boolean;

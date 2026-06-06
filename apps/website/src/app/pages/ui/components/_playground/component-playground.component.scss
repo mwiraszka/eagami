@@ -23,6 +23,9 @@
   align-items: safe center;
   justify-content: safe center;
   gap: 16px;
+  // Breathing room so a focused control's outer ring/shadow isn't clipped by the
+  // scroll container at the edges
+  padding: 8px;
   min-height: 120px;
 }
 

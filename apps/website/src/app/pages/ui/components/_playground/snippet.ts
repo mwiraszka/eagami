@@ -43,6 +43,11 @@ export function generateSnippet(
       content = value == null ? '' : String(value);
       continue;
     }
+    // An empty optional value (e.g. a cleared number knob) is "unset" and should
+    // not appear in the snippet.
+    if (value === '' || value == null) {
+      continue;
+    }
     if (value === knob.default) {
       continue;
     }

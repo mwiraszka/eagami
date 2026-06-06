@@ -11,11 +11,13 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { textKnob } from '../_playground/text-knob';
 
 interface TagKnobState {
   // Index signature lets this typed state satisfy the playground's generic
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
+  text: string;
   variant: TagVariant;
   size: TagSize;
   removable: boolean;
@@ -33,7 +35,10 @@ const SLUG = 'tag';
 })
 export class TagDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.tag, UI_API[SLUG]);
+  protected readonly knobs = [
+    textKnob('eagami'),
+    ...buildKnobs(PLAYGROUND_KNOBS.tag, UI_API[SLUG]),
+  ];
   protected readonly state = signal<TagKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.tag) as TagKnobState,
   );
