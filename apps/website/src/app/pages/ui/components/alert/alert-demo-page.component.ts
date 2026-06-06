@@ -43,6 +43,7 @@ export class AlertDemoPageComponent {
   protected readonly iconComponent = computed(() =>
     iconComponentForSlug(this.state().icon),
   );
+  protected readonly alertVisible = signal(true);
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the
@@ -50,9 +51,16 @@ export class AlertDemoPageComponent {
     this.state.update(current => ({ ...current, [name]: value }) as AlertKnobState);
   }
 
+  protected onAlertDismissed(): void {
+    this.alertVisible.set(false);
+    // Restore the alert so the playground stays usable after a dismissal.
+    setTimeout(() => this.alertVisible.set(true), 2000);
+  }
+
   protected reset(): void {
     this.state.set(
       initialKnobState(this.knobs, PLAYGROUND_KNOBS.alert) as AlertKnobState,
     );
+    this.alertVisible.set(true);
   }
 }

@@ -18,7 +18,9 @@
   overflow-x: auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  // `safe center` on both axes: a tall preview (e.g. a resized textarea) grows the
+  // card and stays fully reachable instead of having its top clipped by centering
+  align-items: safe center;
   justify-content: safe center;
   gap: 16px;
   min-height: 120px;

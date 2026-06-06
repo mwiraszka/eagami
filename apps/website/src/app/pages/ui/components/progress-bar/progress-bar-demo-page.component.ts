@@ -25,7 +25,7 @@ interface ProgressBarKnobState {
   max: number;
   variant: ProgressBarVariant;
   size: ProgressBarSize;
-  showValue: boolean;
+  showPercentage: boolean;
   indeterminate: boolean;
 }
 

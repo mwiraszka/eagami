@@ -937,7 +937,7 @@ export const pl: WebMessages = {
             size: 'Rozmiar',
             value: 'Wartość',
             max: 'Maksimum',
-            showValue: 'Pokaż wartość',
+            showPercentage: 'Pokaż procent',
             indeterminate: 'Stan nieokreślony',
             label: 'Etykieta',
           },
@@ -1011,7 +1011,7 @@ export const pl: WebMessages = {
             resize: 'Zmiana rozmiaru',
             rows: 'Wiersze',
             maxlength: 'Maksymalna długość',
-            maxHeight: 'Maksymalna wysokość',
+            maxHeight: 'Maksymalna wysokość (50 - 400)',
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
@@ -1193,7 +1193,9 @@ export const pl: WebMessages = {
             size: 'Wizualna grubość paska.',
             value: 'Bieżąca wartość postępu.',
             max: 'Wartość, przy której pasek jest pełny.',
-            showValue: 'Wyświetla bieżący procent obok paska.',
+            showPercentage: 'Wyświetla bieżący procent obok paska.',
+            showValue:
+              'Przestarzały alias dla showPercentage; zostanie usunięty w v3.0.0.',
             indeterminate:
               'Odtwarza zapętloną animację dla postępu o nieznanym czasie trwania.',
             label: 'Etykieta tekstowa renderowana nad paskiem.',

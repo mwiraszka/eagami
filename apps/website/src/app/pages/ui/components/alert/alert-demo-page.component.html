@@ -12,7 +12,9 @@
       [variant]="state().variant"
       [size]="state().size"
       [dismissible]="state().dismissible"
-      [icon]="iconComponent()">
+      [icon]="iconComponent()"
+      [visible]="alertVisible()"
+      (dismissed)="onAlertDismissed()">
       This is an alert message.
     </ea-alert>
   </web-component-playground>
