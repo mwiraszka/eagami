@@ -11,7 +11,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
-    length: { control: 'number' },
+    length: { control: 'number', min: 1, max: 12, maxLength: 2 },
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },

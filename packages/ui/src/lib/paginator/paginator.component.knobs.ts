@@ -14,7 +14,7 @@ export const PAGINATOR_KNOBS: ComponentKnobs = {
     showPageSizeSelector: { control: 'boolean' },
     showRangeLabel: { control: 'boolean' },
     disabled: { control: 'boolean' },
-    totalItems: { control: 'number' },
+    totalItems: { control: 'number', min: 0, max: 1000000, maxLength: 7 },
     changed: { action: 'changed' },
   },
   args: {
