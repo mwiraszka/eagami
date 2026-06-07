@@ -97,8 +97,11 @@ export class PopoverComponent {
   /** DOM id for the surface so trigger elements can reference it via aria-controls. */
   readonly surfaceId = input<string>(uniqueId('ea-popover'));
 
-  /** Gap in px between the anchor and the popover. */
-  readonly offset = input<number>(0);
+  /**
+   * Gap in px between the anchor and the popover. Defaults to 2 so an open panel
+   * clears the anchor's active focus ring instead of sitting flush over it.
+   */
+  readonly offset = input<number>(2);
 
   /** Flip to the opposite side when the requested side overflows the viewport. */
   readonly flip = input<boolean>(true);
