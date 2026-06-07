@@ -1,5 +1,6 @@
 export * from './lib/i18n';
 export * from './lib/palette';
+export * from './lib/sizes';
 export * from './lib/accordion/accordion.component';
 export * from './lib/accordion/accordion-item.component';
 export * from './lib/alert/alert.component';

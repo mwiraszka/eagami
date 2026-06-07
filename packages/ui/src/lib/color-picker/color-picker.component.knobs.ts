@@ -9,7 +9,7 @@ export const COLOR_PICKER_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     format: {
       control: 'select',

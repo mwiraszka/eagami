@@ -13,17 +13,26 @@
   border-radius: var(--radius-full);
 
   // Size sets only the font-size; padding, gap, and the pin dimensions are all
-  // em-based, so everything scales from this one knob.
-  &--sm {
+  // em-based, so everything scales from this one knob. The scale runs one step
+  // below the standard type scale so badges stay compact next to body text.
+  &--xs {
     font-size: var(--ea-badge-font-size, var(--font-size-2xs));
   }
 
-  &--md {
+  &--sm {
     font-size: var(--ea-badge-font-size, var(--font-size-xs));
   }
 
-  &--lg {
+  &--md {
     font-size: var(--ea-badge-font-size, var(--font-size-sm));
+  }
+
+  &--lg {
+    font-size: var(--ea-badge-font-size, var(--font-size-md));
+  }
+
+  &--xl {
+    font-size: var(--ea-badge-font-size, var(--font-size-lg));
   }
 
   // Variant colours route through custom properties so consumers can override

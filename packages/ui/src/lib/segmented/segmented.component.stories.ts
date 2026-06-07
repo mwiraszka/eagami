@@ -20,7 +20,7 @@ const meta: Meta<SegmentedComponent> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     changed: { action: 'changed' },
   },
@@ -96,9 +96,11 @@ export const AllSizes: Story = {
     props: { viewOptions },
     template: `
       <div class="story-stack">
+        <ea-segmented size="xs" [options]="viewOptions" value="list" />
         <ea-segmented size="sm" [options]="viewOptions" value="list" />
         <ea-segmented size="md" [options]="viewOptions" value="list" />
         <ea-segmented size="lg" [options]="viewOptions" value="list" />
+        <ea-segmented size="xl" [options]="viewOptions" value="list" />
       </div>
     `,
   }),

@@ -9,11 +9,12 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { type EaSize } from '../sizes';
 
 /** Semantic colour scheme of the progress bar. */
 export type ProgressBarVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Visual height of the progress bar. */
-export type ProgressBarSize = 'sm' | 'md' | 'lg';
+export type ProgressBarSize = EaSize;
 
 /**
  * Linear progress indicator supporting both determinate (driven by `value`

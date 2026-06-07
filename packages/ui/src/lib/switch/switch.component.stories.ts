@@ -56,9 +56,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack">
+        <ea-switch size="xs" label="Extra small" />
         <ea-switch size="sm" label="Small" />
         <ea-switch size="md" label="Medium" />
         <ea-switch size="lg" label="Large" />
+        <ea-switch size="xl" label="Extra large" />
       </div>
     `,
   }),

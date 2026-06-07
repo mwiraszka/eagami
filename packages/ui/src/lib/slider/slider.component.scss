@@ -28,6 +28,10 @@
 
   // One per-size thumb diameter drives both the track height and the thumb so a
   // new size only needs this single value and the two stay in proportion
+  .ea-slider--xs & {
+    --ea-slider-size: 0.625rem;
+  }
+
   .ea-slider--sm & {
     --ea-slider-size: 0.875rem;
   }
@@ -38,6 +42,10 @@
 
   .ea-slider--lg & {
     --ea-slider-size: 1.375rem;
+  }
+
+  .ea-slider--xl & {
+    --ea-slider-size: 1.625rem;
   }
 
   &__track {

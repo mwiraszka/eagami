@@ -12,10 +12,11 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the switch. */
-export type SwitchSize = 'sm' | 'md' | 'lg';
+export type SwitchSize = EaSize;
 
 /**
  * On/off toggle styled as a sliding switch. Backed by a visually hidden

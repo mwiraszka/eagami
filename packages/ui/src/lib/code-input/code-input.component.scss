@@ -11,6 +11,10 @@
 
   // Size sets only the font-size; the cell width and height are em-based on the
   // base rule, so each digit cell scales entirely from this one knob.
+  &--xs .ea-code-input {
+    font-size: var(--font-size-xs);
+  }
+
   &--sm .ea-code-input {
     font-size: var(--font-size-sm);
   }
@@ -21,6 +25,10 @@
 
   &--lg .ea-code-input {
     font-size: var(--font-size-lg);
+  }
+
+  &--xl .ea-code-input {
+    font-size: var(--font-size-xl);
   }
 
   &--error .ea-code-input {

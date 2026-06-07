@@ -23,10 +23,11 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
 import { XIconComponent } from '../icons/x.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the input. */
-export type InputSize = 'sm' | 'md' | 'lg';
+export type InputSize = EaSize;
 /** HTML `type` attribute applied to the underlying `<input>`. */
 export type InputType =
   | 'text'

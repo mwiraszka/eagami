@@ -21,6 +21,10 @@
 
   // Size sets only the font-size; the box dimensions and gap are em-based on the
   // base rule, so the checkbox scales entirely from this one knob.
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
   &--sm {
     font-size: var(--font-size-sm);
   }
@@ -31,6 +35,10 @@
 
   &--lg {
     font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
   }
 
   &--disabled {

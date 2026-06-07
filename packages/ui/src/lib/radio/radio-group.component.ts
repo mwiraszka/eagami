@@ -12,10 +12,11 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size shared by all radios in the group. */
-export type RadioSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type RadioSize = EaSize;
 /** Layout direction for radios within the group. */
 export type RadioOrientation = 'vertical' | 'horizontal';
 

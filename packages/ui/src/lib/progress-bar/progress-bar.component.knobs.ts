@@ -13,7 +13,7 @@ export const PROGRESS_BAR_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     value: { control: 'number', if: { arg: 'indeterminate', eq: false } },
     max: { control: 'number', if: { arg: 'indeterminate', eq: false } },

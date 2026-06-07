@@ -1,8 +1,10 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
+import { type EaSize } from '../sizes';
+
 /** Visual size of the empty-state block. */
-export type EmptyStateSize = 'sm' | 'md' | 'lg';
+export type EmptyStateSize = EaSize;
 /** Heading level used for the title so it fits the surrounding document outline. */
 export type EmptyStateHeadingLevel = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

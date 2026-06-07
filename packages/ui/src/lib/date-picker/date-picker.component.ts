@@ -24,10 +24,11 @@ import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the date picker trigger. */
-export type DatePickerSize = 'sm' | 'md' | 'lg';
+export type DatePickerSize = EaSize;
 /** Locale-aware date format used for the displayed value. */
 export type DatePickerFormat = 'short' | 'medium' | 'long';
 /** First day of the week in the calendar grid (0 = Sunday, 1 = Monday). */

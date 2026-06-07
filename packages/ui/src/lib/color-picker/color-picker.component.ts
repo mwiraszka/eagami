@@ -22,10 +22,11 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { DropletIconComponent } from '../icons/droplet.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the color picker trigger. */
-export type ColorPickerSize = 'sm' | 'md' | 'lg';
+export type ColorPickerSize = EaSize;
 /** Format used to emit the selected value via `value` / `changed`. */
 export type ColorPickerFormat = 'hex' | 'rgb' | 'hsl';
 /** Which group of inputs the popover currently shows (hex string or RGB channels). */

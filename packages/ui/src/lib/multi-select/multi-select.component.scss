@@ -12,6 +12,10 @@
   &__trigger-wrapper {
     position: relative;
 
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+
     &--sm {
       font-size: var(--font-size-sm);
     }
@@ -22,6 +26,10 @@
 
     &--lg {
       font-size: var(--font-size-lg);
+    }
+
+    &--xl {
+      font-size: var(--font-size-xl);
     }
   }
 
@@ -48,6 +56,10 @@
 
     // Size sets only the font-size; padding, gap, min-height, and embedded icons
     // are em-based, so the trigger scales entirely from this one knob.
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+
     &--sm {
       font-size: var(--font-size-sm);
     }
@@ -58,6 +70,10 @@
 
     &--lg {
       font-size: var(--font-size-lg);
+    }
+
+    &--xl {
+      font-size: var(--font-size-xl);
     }
 
     &--open {
@@ -141,6 +157,10 @@
     box-shadow: var(--shadow-lg);
     background-color: var(--color-bg-elevated);
 
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+
     &--sm {
       font-size: var(--font-size-sm);
     }
@@ -151,6 +171,10 @@
 
     &--lg {
       font-size: var(--font-size-lg);
+    }
+
+    &--xl {
+      font-size: var(--font-size-xl);
     }
   }
 

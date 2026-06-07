@@ -17,6 +17,13 @@
 }
 
 // Indent step and row padding scale with font size so the tree reads as one unit
+.ea-tree--xs {
+  --ea-tree-indent: var(--space-3);
+  --ea-tree-row-padding-block: var(--space-1);
+  --ea-tree-row-padding-inline: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
 .ea-tree--sm {
   --ea-tree-indent: var(--space-3);
   --ea-tree-row-padding-block: var(--space-1);
@@ -36,6 +43,13 @@
   --ea-tree-row-padding-block: var(--space-2);
   --ea-tree-row-padding-inline: var(--space-3);
   font-size: var(--font-size-lg);
+}
+
+.ea-tree--xl {
+  --ea-tree-indent: var(--space-4);
+  --ea-tree-row-padding-block: var(--space-2);
+  --ea-tree-row-padding-inline: var(--space-3);
+  font-size: var(--font-size-xl);
 }
 
 .ea-tree--disabled {

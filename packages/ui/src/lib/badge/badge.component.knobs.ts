@@ -13,7 +13,7 @@ export const BADGE_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     shape: {
       control: 'select',

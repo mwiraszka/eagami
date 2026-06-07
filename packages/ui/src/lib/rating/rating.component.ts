@@ -21,13 +21,14 @@ import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { LeftHalfStarIconComponent } from '../icons/left-half-star.component';
 import { StarIconComponent } from '../icons/star.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Per-position render state, computed from the current display value. */
 export type RatingStarState = 'empty' | 'half' | 'full';
 
 /** Visual size of the rating. */
-export type RatingSize = 'sm' | 'md' | 'lg';
+export type RatingSize = EaSize;
 
 /**
  * Star-based rating input. Supports whole-star or half-star granularity (via

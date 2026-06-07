@@ -7,12 +7,13 @@ import {
   signal,
 } from '@angular/core';
 
+import { type EaSize } from '../sizes';
 import type { TabComponent } from './tab.component';
 
 /** Visual style of the tab bar. */
 export type TabsVariant = 'underline' | 'filled';
 /** Visual size of the tabs. */
-export type TabsSize = 'sm' | 'md' | 'lg';
+export type TabsSize = EaSize;
 
 /**
  * Tab bar paired with content panels. Child `ea-tab` components register

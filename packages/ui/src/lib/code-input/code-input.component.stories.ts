@@ -62,9 +62,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-stack--lg">
+        <ea-code-input size="xs" label="Extra small"></ea-code-input>
         <ea-code-input size="sm" label="Small"></ea-code-input>
         <ea-code-input size="md" label="Medium"></ea-code-input>
         <ea-code-input size="lg" label="Large"></ea-code-input>
+        <ea-code-input size="xl" label="Extra large"></ea-code-input>
       </div>
     `,
   }),

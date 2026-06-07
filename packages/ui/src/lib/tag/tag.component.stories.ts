@@ -46,9 +46,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-row story-row--sm">
+        <ea-tag size="xs">Extra small</ea-tag>
         <ea-tag size="sm">Small</ea-tag>
         <ea-tag size="md">Medium</ea-tag>
         <ea-tag size="lg">Large</ea-tag>
+        <ea-tag size="xl">Extra large</ea-tag>
       </div>
     `,
   }),

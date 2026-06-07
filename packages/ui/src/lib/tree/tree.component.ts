@@ -14,10 +14,11 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { type EaSize } from '../sizes';
 import { TreeNodeComponent } from './tree-node.component';
 import { type TreeNode, visibleNodeIds, walkTree } from './tree.types';
 
-export type TreeSize = 'sm' | 'md' | 'lg';
+export type TreeSize = EaSize;
 
 /**
  * `<ea-tree>` renders a hierarchical, single-selection treeview with full

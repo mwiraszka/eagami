@@ -117,6 +117,18 @@
   }
 }
 
+.ea-transfer-list--xs {
+  font-size: var(--font-size-xs);
+
+  .ea-transfer-list__list {
+    min-height: 120px;
+  }
+
+  .ea-transfer-list__item {
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
 .ea-transfer-list--sm {
   font-size: var(--font-size-sm);
 
@@ -135,6 +147,23 @@
 
 .ea-transfer-list--lg {
   font-size: var(--font-size-lg);
+
+  .ea-transfer-list__list {
+    min-height: 200px;
+  }
+
+  .ea-transfer-list__item {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .ea-transfer-list__button {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+.ea-transfer-list--xl {
+  font-size: var(--font-size-xl);
 
   .ea-transfer-list__list {
     min-height: 200px;

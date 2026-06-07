@@ -14,6 +14,10 @@
 
   // One per-size track height drives the track, thumb, and label so a new size
   // only needs this single value and every part stays in proportion
+  &--xs {
+    --ea-switch-size: 0.75rem;
+  }
+
   &--sm {
     --ea-switch-size: 1rem;
   }
@@ -24,6 +28,10 @@
 
   &--lg {
     --ea-switch-size: 1.5rem;
+  }
+
+  &--xl {
+    --ea-switch-size: 1.75rem;
   }
 
   &--checked {
