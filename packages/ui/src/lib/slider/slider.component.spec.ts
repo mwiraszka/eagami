@@ -83,6 +83,44 @@ describe('SliderComponent', () => {
     });
   });
 
+  describe('Value formatting', () => {
+    function getValueText(): string {
+      return (
+        fixture.nativeElement.querySelector('.ea-slider-field__value')?.textContent ?? ''
+      );
+    }
+
+    it('groups thousands with commas by default', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', 12345);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('12,345');
+    });
+
+    it('shows plain numbers when groupThousands is false', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', 12345);
+      fixture.componentRef.setInput('groupThousands', false);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('12345');
+      expect(getValueText()).not.toContain('12,345');
+    });
+
+    it('lets a custom formatValue bypass grouping', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', 12345);
+      fixture.componentRef.setInput('formatValue', (v: number) => `$${v}`);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('$12345');
+    });
+  });
+
   describe('Keyboard navigation', () => {
     function dispatchKey(key: string): void {
       const event = new KeyboardEvent('keydown', { key, bubbles: true });

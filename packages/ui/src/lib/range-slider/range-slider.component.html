@@ -11,7 +11,7 @@
       }
       @if (showValue()) {
         <span class="ea-range-slider-field__value">
-          {{ formatValue()(clampedValue()[0]) }} – {{ formatValue()(clampedValue()[1]) }}
+          {{ formatDisplay(clampedValue()[0]) }} – {{ formatDisplay(clampedValue()[1]) }}
         </span>
       }
     </div>
@@ -40,7 +40,7 @@
         [attr.aria-valuemin]="min()"
         [attr.aria-valuemax]="clampedValue()[1]"
         [attr.aria-valuenow]="clampedValue()[0]"
-        [attr.aria-valuetext]="formatValue()(clampedValue()[0])"
+        [attr.aria-valuetext]="formatDisplay(clampedValue()[0])"
         [attr.aria-disabled]="isDisabled() || null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
@@ -61,7 +61,7 @@
         [attr.aria-valuemin]="clampedValue()[0]"
         [attr.aria-valuemax]="max()"
         [attr.aria-valuenow]="clampedValue()[1]"
-        [attr.aria-valuetext]="formatValue()(clampedValue()[1])"
+        [attr.aria-valuetext]="formatDisplay(clampedValue()[1])"
         [attr.aria-disabled]="isDisabled() || null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
@@ -77,10 +77,10 @@
     @if (showMinMaxLabels()) {
       <div class="ea-range-slider__minmax">
         <span class="ea-range-slider__minmax-label">
-          {{ formatValue()(min()) }}
+          {{ formatDisplay(min()) }}
         </span>
         <span class="ea-range-slider__minmax-label">
-          {{ formatValue()(max()) }}
+          {{ formatDisplay(max()) }}
         </span>
       </div>
     }

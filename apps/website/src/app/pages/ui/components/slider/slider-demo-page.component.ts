@@ -23,6 +23,7 @@ interface SliderKnobState {
   step: number;
   showValue: boolean;
   showMinMaxLabels: boolean;
+  groupThousands: boolean;
   disabled: boolean;
   required: boolean;
   hasError: boolean;

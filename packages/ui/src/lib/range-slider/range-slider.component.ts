@@ -27,6 +27,10 @@ export type RangeSliderValue = readonly [number, number];
 /** Identifies which of the two thumbs an event affects. */
 type Thumb = 'low' | 'high';
 
+// Default value formatter, identity-checked so a custom `formatValue` bypasses
+// the `groupThousands` grouping.
+const FORMAT_PLAIN = (value: number): string => `${value}`;
+
 /**
  * Two-thumb extension of `<ea-slider>`. Drives a `[low, high]` numeric range
  * with pointer drag (the closer thumb to the pointer responds) and full
@@ -67,7 +71,9 @@ export class RangeSliderComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
-  readonly formatValue = input<(value: number) => string>(value => `${value}`);
+  readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
+  /** Group thousands with commas in displayed values (ignored when a custom `formatValue` is set). */
+  readonly groupThousands = input<boolean>(true);
   /** Accessible label for the low (start) thumb. Falls back to the field label when omitted. */
   readonly ariaLabelLow = input<string | undefined>(undefined, {
     alias: 'aria-label-low',
@@ -102,6 +108,17 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   readonly lowPercent = computed(() => this.toPercent(this.clampedValue()[0]));
   readonly highPercent = computed(() => this.toPercent(this.clampedValue()[1]));
+
+  /** Formats a value for display, grouping thousands with commas unless a custom `formatValue` is set. */
+  protected formatDisplay(value: number): string {
+    const formatter = this.formatValue();
+    if (formatter !== FORMAT_PLAIN) {
+      return formatter(value);
+    }
+    return this.groupThousands()
+      ? value.toLocaleString('en-US', { maximumFractionDigits: 20 })
+      : `${value}`;
+  }
 
   readonly hasError = computed(() => !!this.errorMsg());
   readonly showError = this.hasError;

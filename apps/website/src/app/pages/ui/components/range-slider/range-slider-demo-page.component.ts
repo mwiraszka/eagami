@@ -25,6 +25,7 @@ interface RangeSliderKnobState {
   size: RangeSliderSize;
   showValue: boolean;
   showMinMaxLabels: boolean;
+  groupThousands: boolean;
   disabled: boolean;
   required: boolean;
 }
