@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 
 import { UserIconComponent } from '../icons/user.component';
+import { type EaSize } from '../sizes';
 
 /** Diameter (or side length) preset for an avatar. */
-export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type AvatarSize = EaSize;
 /** Outline of the avatar: round or rounded-square. */
 export type AvatarShape = 'circle' | 'square';
 

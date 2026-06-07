@@ -24,7 +24,7 @@ const meta: Meta<DropdownComponent> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     changed: { action: 'changed' },
   },
@@ -81,9 +81,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-narrow">
+        <ea-dropdown size="xs" label="Extra small" [options]="options" placeholder="Select…"></ea-dropdown>
         <ea-dropdown size="sm" label="Small" [options]="options" placeholder="Select…"></ea-dropdown>
         <ea-dropdown size="md" label="Medium" [options]="options" placeholder="Select…"></ea-dropdown>
         <ea-dropdown size="lg" label="Large" [options]="options" placeholder="Select…"></ea-dropdown>
+        <ea-dropdown size="xl" label="Extra large" [options]="options" placeholder="Select…"></ea-dropdown>
       </div>
     `,
     props: { options: fruitOptions },

@@ -1160,7 +1160,7 @@ export const pl: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Wariant treści: 1 to sam znak słowny, 2 dodaje nadkreślenie, 3 dodaje hasło (4 to przestarzały alias dla 3).',
+              'Wariant treści: 1 to sam znak słowny, 2 dodaje nadkreślenie, 3 dodaje hasło.',
             layout: 'Układa znak słowny w stos wielowierszowy lub w jednej linii.',
             size: 'Wartość w pikselach, od której skaluje się cały znak słowny.',
           },

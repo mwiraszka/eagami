@@ -9,9 +9,10 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { type EaSize } from '../sizes';
 
 /** Visual size of the spinner. */
-export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type SpinnerSize = EaSize;
 
 /**
  * SVG loading indicator with an accessible `role="status"`. The `label` input

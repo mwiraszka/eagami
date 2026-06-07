@@ -15,10 +15,11 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the textarea. */
-export type TextareaSize = 'sm' | 'md' | 'lg';
+export type TextareaSize = EaSize;
 /** Axis along which the user is allowed to resize the textarea. */
 export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
 

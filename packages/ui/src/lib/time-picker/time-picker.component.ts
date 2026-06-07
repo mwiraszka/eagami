@@ -25,10 +25,11 @@ import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { ClockIconComponent } from '../icons/clock.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the time picker trigger. */
-export type TimePickerSize = 'sm' | 'md' | 'lg';
+export type TimePickerSize = EaSize;
 
 /** Display format for the trigger label. The wire value is always 24h. */
 export type TimePickerFormat = '12h' | '24h';

@@ -73,9 +73,11 @@ export const Sizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-stack--md story-medium">
+        <ea-alert size="xs" variant="info">Extra small alert message</ea-alert>
         <ea-alert size="sm" variant="info">Small alert message</ea-alert>
         <ea-alert size="md" variant="info">Medium alert message</ea-alert>
         <ea-alert size="lg" variant="info">Large alert message</ea-alert>
+        <ea-alert size="xl" variant="info">Extra large alert message</ea-alert>
       </div>
     `,
   }),

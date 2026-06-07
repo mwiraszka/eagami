@@ -13,6 +13,24 @@
   max-width: 360px;
 }
 
+// Skeleton paints its sized block on an inner element. A block host (not flex)
+// lets auto inline margins center that block when it fits but still overflow into
+// the horizontal scroll when wider; a flex child would shrink and never scroll.
+.skeleton-preview {
+  overflow: auto;
+  display: block;
+  width: 100%;
+  max-height: 500px;
+}
+
+// Center the projected skeleton, and cap its rendered size so an extreme demo
+// value can't paint an absurdly large block.
+.skeleton-preview > * {
+  max-width: 2000px;
+  max-height: 2000px;
+  margin-inline: auto;
+}
+
 .demo-section {
   display: flex;
   flex-direction: column;

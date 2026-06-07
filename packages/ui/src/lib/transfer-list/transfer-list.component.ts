@@ -13,9 +13,10 @@ import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { ChevronsLeftIconComponent } from '../icons/chevrons-left.component';
 import { ChevronsRightIconComponent } from '../icons/chevrons-right.component';
+import { type EaSize } from '../sizes';
 import type { TransferListItem } from './transfer-list.types';
 
-export type TransferListSize = 'sm' | 'md' | 'lg';
+export type TransferListSize = EaSize;
 
 /**
  * `<ea-transfer-list>` is a two-pane shuttle control for moving items between

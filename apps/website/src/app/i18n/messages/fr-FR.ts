@@ -1167,7 +1167,7 @@ export const frFR: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de contenu : 1 est le logotype seul, 2 ajoute la surligne, 3 ajoute la signature (4 est un alias obsolète pour 3).',
+              'Variante de contenu : 1 est le logotype seul, 2 ajoute la surligne, 3 ajoute la signature.',
             layout:
               'Dispose le logotype empilé sur plusieurs lignes ou en ligne sur une seule ligne.',
             size: 'Valeur en pixels à partir de laquelle l’ensemble du logotype est mis à l’échelle.',

@@ -2,6 +2,9 @@
   class="ea-empty-state"
   [ngClass]="hostClasses()">
   <div class="ea-empty-state__media">
+    @if (icon(); as iconComponent) {
+      <ng-container *ngComponentOutlet="iconComponent" />
+    }
     <ng-content select="[slot=media]" />
   </div>
 

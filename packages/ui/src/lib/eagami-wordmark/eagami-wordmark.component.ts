@@ -32,24 +32,14 @@ export type EagamiWordmarkLayout = 'stacked' | 'inline';
 export class EagamiWordmarkComponent {
   protected readonly i18n = inject(EagamiI18nService);
 
-  /**
-   * The wordmark variant to render. `4` is accepted as a deprecated,
-   * backwards-compatible alias for `3` and renders identically.
-   */
-  readonly variant = input<EagamiWordmarkVariant | 4>(1);
+  /** The wordmark variant to render. */
+  readonly variant = input<EagamiWordmarkVariant>(1);
   readonly layout = input<EagamiWordmarkLayout>('stacked');
   readonly size = input<number>(32);
 
-  /* Collapse the deprecated `4` alias to `3` once so every downstream computed
-     can switch on `EagamiWordmarkVariant` without re-handling the alias. */
-  private readonly resolvedVariant = computed<EagamiWordmarkVariant>(() => {
-    const v = this.variant();
-    return v === 4 ? 3 : v;
-  });
+  protected readonly showOverline = computed(() => this.variant() === 2);
 
-  protected readonly showOverline = computed(() => this.resolvedVariant() === 2);
-
-  protected readonly showTagline = computed(() => this.resolvedVariant() === 3);
+  protected readonly showTagline = computed(() => this.variant() === 3);
 
   protected readonly brandText = computed(() => 'eagami');
 
@@ -57,7 +47,7 @@ export class EagamiWordmarkComponent {
   // and tagline localize.
   protected readonly ariaLabel = computed(() => {
     const messages = this.i18n.messages().wordmark;
-    switch (this.resolvedVariant()) {
+    switch (this.variant()) {
       case 1:
         return 'eagami';
       case 2:

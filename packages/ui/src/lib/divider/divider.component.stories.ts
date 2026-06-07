@@ -20,6 +20,10 @@ type Story = StoryObj<DividerComponent>;
 
 export const Horizontal: Story = {};
 
+export const Thick: Story = {
+  args: { thick: true },
+};
+
 export const WithLabel: Story = {
   args: { label: 'OR' },
 };

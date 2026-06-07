@@ -1163,7 +1163,7 @@ export const esES: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de contenido: 1 es el logotipo de texto sin más, 2 añade el texto superior, 3 añade el eslogan (4 es un alias obsoleto de 3).',
+              'Variante de contenido: 1 es el logotipo de texto sin más, 2 añade el texto superior, 3 añade el eslogan.',
             layout:
               'Dispone el logotipo de texto apilado en varias líneas o en línea en una sola.',
             size: 'Valor en píxeles desde el que se escala todo el logotipo de texto.',

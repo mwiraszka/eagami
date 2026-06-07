@@ -17,7 +17,7 @@ const meta: Meta<TransferListComponent> = {
   component: TransferListComponent,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: { type: 'inline-radio' }, options: ['sm', 'md', 'lg'] },
+    size: { control: { type: 'inline-radio' }, options: ['xs', 'sm', 'md', 'lg', 'xl'] },
     disabled: { control: 'boolean' },
   },
   args: {
@@ -78,6 +78,10 @@ export const Sizes: Story = {
     template: `
       <div class="story-stack">
         <div>
+          <p class="story-label">Extra small</p>
+          <ea-transfer-list [items]="items" size="xs" />
+        </div>
+        <div>
           <p class="story-label">Small</p>
           <ea-transfer-list [items]="items" size="sm" />
         </div>
@@ -88,6 +92,10 @@ export const Sizes: Story = {
         <div>
           <p class="story-label">Large</p>
           <ea-transfer-list [items]="items" size="lg" />
+        </div>
+        <div>
+          <p class="story-label">Extra large</p>
+          <ea-transfer-list [items]="items" size="xl" />
         </div>
       </div>
     `,

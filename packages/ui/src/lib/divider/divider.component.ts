@@ -25,9 +25,12 @@ export type DividerOrientation = 'horizontal' | 'vertical';
 export class DividerComponent {
   readonly orientation = input<DividerOrientation>('horizontal');
   readonly label = input<string | undefined>(undefined);
+  /** Renders a heavier rule. */
+  readonly thick = input<boolean>(false);
 
   readonly hostClasses = computed(() => ({
     [`ea-divider--${this.orientation()}`]: true,
     'ea-divider--with-label': !!this.label(),
+    'ea-divider--thick': this.thick(),
   }));
 }

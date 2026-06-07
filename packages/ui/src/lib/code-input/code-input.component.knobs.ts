@@ -9,7 +9,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     length: { control: 'number' },
     disabled: { control: 'boolean' },

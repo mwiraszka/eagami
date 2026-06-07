@@ -40,9 +40,11 @@ export const Sizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack">
+        <ea-rating size="xs" label="Extra small" [value]="3"></ea-rating>
         <ea-rating size="sm" label="Small" [value]="3"></ea-rating>
         <ea-rating size="md" label="Medium" [value]="3"></ea-rating>
         <ea-rating size="lg" label="Large" [value]="3"></ea-rating>
+        <ea-rating size="xl" label="Extra large" [value]="3"></ea-rating>
       </div>
     `,
     props: { value: 3 },

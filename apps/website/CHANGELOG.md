@@ -2,6 +2,20 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.8.0] - 2026-06-07
+
+### Added
+
+- Surface the new `<ea-button>` icon, `<ea-divider>` thickness, and `<ea-empty-state>` icon and bordered controls in their component playgrounds.
+
+### Changed
+
+- Pick up @eagami/ui v2.8.0, including the full `xs`-`xl` size range across components.
+
+### Fixed
+
+- Center the skeleton preview in the component playground, cap its height, and scroll when its set width or height exceeds the preview.
+
 ## [2.7.0] - 2026-06-06
 
 ### Added
@@ -507,6 +521,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.8.0]: https://github.com/mwiraszka/eagami/compare/website-v2.7.0...website-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/website-v2.6.0...website-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/website-v2.5.3...website-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/website-v2.5.2...website-v2.5.3

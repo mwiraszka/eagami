@@ -16,7 +16,7 @@ const meta: Meta<TimePickerComponent> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     format: {
       control: 'select',
@@ -92,9 +92,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-narrow">
+        <ea-time-picker size="xs" label="Extra small" placeholder="Select…"></ea-time-picker>
         <ea-time-picker size="sm" label="Small" placeholder="Select…"></ea-time-picker>
         <ea-time-picker size="md" label="Medium" placeholder="Select…"></ea-time-picker>
         <ea-time-picker size="lg" label="Large" placeholder="Select…"></ea-time-picker>
+        <ea-time-picker size="xl" label="Extra large" placeholder="Select…"></ea-time-picker>
       </div>
     `,
   }),

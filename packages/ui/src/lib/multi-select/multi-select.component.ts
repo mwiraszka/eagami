@@ -25,11 +25,12 @@ import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
+import { type EaSize } from '../sizes';
 import { TagComponent } from '../tag/tag.component';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the multi-select trigger. */
-export type MultiSelectSize = 'sm' | 'md' | 'lg';
+export type MultiSelectSize = EaSize;
 
 /**
  * Multi-select dropdown. Renders selections as removable `<ea-tag>` chips

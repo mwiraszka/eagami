@@ -38,6 +38,12 @@
 
   // Size sets only the font-size; min-height, padding, and gap are em-based on the
   // base __option rule, so the control scales entirely from this one knob.
+  &--xs {
+    .ea-segmented__option {
+      font-size: var(--font-size-xs);
+    }
+  }
+
   &--sm {
     .ea-segmented__option {
       font-size: var(--font-size-sm);
@@ -53,6 +59,12 @@
   &--lg {
     .ea-segmented__option {
       font-size: var(--font-size-lg);
+    }
+  }
+
+  &--xl {
+    .ea-segmented__option {
+      font-size: var(--font-size-xl);
     }
   }
 

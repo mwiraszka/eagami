@@ -5,7 +5,7 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -14,6 +14,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface EmptyStateKnobState {
@@ -24,6 +25,8 @@ interface EmptyStateKnobState {
   description: string;
   size: EmptyStateSize;
   headingLevel: EmptyStateHeadingLevel;
+  bordered: boolean;
+  icon: string;
 }
 
 const SLUG = 'empty-state';
@@ -40,9 +43,15 @@ const SLUG = 'empty-state';
 })
 export class EmptyStateDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['empty-state'], UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS['empty-state'], UI_API[SLUG]),
+    iconKnob(['search', 'file', 'bell', 'mail', 'calendar', 'star', 'home', 'user']),
+  ];
   protected readonly state = signal<EmptyStateKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS['empty-state']) as EmptyStateKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

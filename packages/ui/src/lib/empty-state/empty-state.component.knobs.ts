@@ -9,12 +9,13 @@ export const EMPTY_STATE_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     headingLevel: {
       control: 'select',
       options: ['h2', 'h3', 'h4', 'h5', 'h6'],
     },
+    bordered: { control: 'boolean' },
   },
   args: {
     title: 'No items yet',

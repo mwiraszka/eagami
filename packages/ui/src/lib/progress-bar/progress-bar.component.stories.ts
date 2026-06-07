@@ -46,9 +46,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-medium">
+        <ea-progress-bar size="xs" [value]="60" label="Extra small" />
         <ea-progress-bar size="sm" [value]="60" label="Small" />
         <ea-progress-bar size="md" [value]="60" label="Medium" />
         <ea-progress-bar size="lg" [value]="60" label="Large" />
+        <ea-progress-bar size="xl" [value]="60" label="Extra large" />
       </div>
     `,
   }),

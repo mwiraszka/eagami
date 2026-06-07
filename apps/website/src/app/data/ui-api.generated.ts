@@ -564,6 +564,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'loading',
         type: 'boolean',
         default: 'false',
@@ -1287,6 +1294,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         required: false,
         twoWay: false,
       },
+      {
+        name: 'width',
+        type: 'DialogWidth | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
     ],
     outputs: [
       {
@@ -1320,6 +1334,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'orientation',
         type: 'DividerOrientation',
         default: "'horizontal'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'thick',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -1383,6 +1404,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'size',
         type: 'DrawerSize',
         default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'width',
+        type: 'DrawerWidth | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -1572,7 +1600,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'variant',
-        type: 'EagamiWordmarkVariant | 4',
+        type: 'EagamiWordmarkVariant',
         default: '1',
         required: false,
         twoWay: false,
@@ -1585,6 +1613,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-empty-state',
     inputs: [
       {
+        name: 'bordered',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'description',
         type: 'string | undefined',
         default: 'undefined',
@@ -1595,6 +1630,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'headingLevel',
         type: 'EmptyStateHeadingLevel',
         default: "'h2'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2353,7 +2395,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'offset',
         type: 'number',
-        default: '0',
+        default: '2',
         required: false,
         twoWay: false,
       },

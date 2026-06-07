@@ -16,10 +16,11 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import type { SelectOption } from '../select-option';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the segmented control. */
-export type SegmentedSize = 'sm' | 'md' | 'lg';
+export type SegmentedSize = EaSize;
 
 /**
  * Compact toggle button group for picking one of a small set of options

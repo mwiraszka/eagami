@@ -13,7 +13,7 @@ export const TAG_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     removable: { control: 'boolean' },
     disabled: { control: 'boolean' },

@@ -9,7 +9,7 @@ export const SWITCH_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },

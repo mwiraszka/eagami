@@ -34,7 +34,7 @@ const meta: Meta<FileUploaderComponent> = {
     template: `<ea-file-uploader ${argsToTemplate(args)} class="story-medium"></ea-file-uploader>`,
   }),
   argTypes: {
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
+    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
     rejected: { action: 'rejected' },
     fileRemoved: { action: 'fileRemoved' },
   },
@@ -105,9 +105,11 @@ export const Sizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack">
+        <ea-file-uploader size="xs" label="Extra small"></ea-file-uploader>
         <ea-file-uploader size="sm" label="Small"></ea-file-uploader>
         <ea-file-uploader size="md" label="Medium"></ea-file-uploader>
         <ea-file-uploader size="lg" label="Large"></ea-file-uploader>
+        <ea-file-uploader size="xl" label="Extra large"></ea-file-uploader>
       </div>
     `,
   }),

@@ -69,7 +69,7 @@ const meta: Meta<TreeComponent> = {
   component: TreeComponent,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: { type: 'inline-radio' }, options: ['sm', 'md', 'lg'] },
+    size: { control: { type: 'inline-radio' }, options: ['xs', 'sm', 'md', 'lg', 'xl'] },
     disabled: { control: 'boolean' },
   },
   args: {
@@ -150,6 +150,10 @@ export const Sizes: Story = {
     template: `
       <div class="story-stack">
         <div>
+          <p class="story-label">Extra small</p>
+          <ea-tree aria-label="Extra small tree" [nodes]="nodes" [expandedIds]="['src']" size="xs" />
+        </div>
+        <div>
           <p class="story-label">Small</p>
           <ea-tree aria-label="Small tree" [nodes]="nodes" [expandedIds]="['src']" size="sm" />
         </div>
@@ -160,6 +164,10 @@ export const Sizes: Story = {
         <div>
           <p class="story-label">Large</p>
           <ea-tree aria-label="Large tree" [nodes]="nodes" [expandedIds]="['src']" size="lg" />
+        </div>
+        <div>
+          <p class="story-label">Extra large</p>
+          <ea-tree aria-label="Extra large tree" [nodes]="nodes" [expandedIds]="['src']" size="xl" />
         </div>
       </div>
     `,

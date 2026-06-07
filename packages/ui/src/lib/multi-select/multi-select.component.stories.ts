@@ -31,7 +31,7 @@ const meta: Meta<MultiSelectComponent> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     changed: { action: 'changed' },
   },

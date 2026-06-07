@@ -11,11 +11,12 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { type EaSize } from '../sizes';
 
 /** Semantic colour scheme of a tag. */
 export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Visual size of a tag. */
-export type TagSize = 'sm' | 'md' | 'lg';
+export type TagSize = EaSize;
 
 /**
  * Inline label commonly used to represent filters, categories, or selected

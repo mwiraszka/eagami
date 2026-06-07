@@ -70,9 +70,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-row">
+        <ea-badge size="xs">Extra small</ea-badge>
         <ea-badge size="sm">Small</ea-badge>
         <ea-badge size="md">Medium</ea-badge>
         <ea-badge size="lg">Large</ea-badge>
+        <ea-badge size="xl">Extra large</ea-badge>
       </div>
     `,
   }),

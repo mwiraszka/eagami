@@ -15,10 +15,11 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the slider track and thumb. */
-export type SliderSize = 'sm' | 'md' | 'lg';
+export type SliderSize = EaSize;
 
 /**
  * Single-value range input controlled with pointer drag or full keyboard

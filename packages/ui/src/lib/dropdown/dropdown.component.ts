@@ -20,10 +20,11 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the dropdown trigger. */
-export type DropdownSize = 'sm' | 'md' | 'lg';
+export type DropdownSize = EaSize;
 
 /**
  * Single-select dropdown with a custom popup list. Supports keyboard

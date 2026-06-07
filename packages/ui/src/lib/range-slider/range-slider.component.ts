@@ -15,10 +15,11 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the range slider track and thumbs. */
-export type RangeSliderSize = 'sm' | 'md' | 'lg';
+export type RangeSliderSize = EaSize;
 
 /** Tuple model emitted by the range slider: `[low, high]`, with `low <= high`. */
 export type RangeSliderValue = readonly [number, number];

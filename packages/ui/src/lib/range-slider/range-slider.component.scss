@@ -31,6 +31,10 @@
 
   // One per-size thumb diameter drives both the track height and the thumb so a
   // new size only needs this single value and the two stay in proportion
+  .ea-range-slider--xs & {
+    --ea-range-slider-size: 0.625rem;
+  }
+
   .ea-range-slider--sm & {
     --ea-range-slider-size: 0.875rem;
   }
@@ -41,6 +45,10 @@
 
   .ea-range-slider--lg & {
     --ea-range-slider-size: 1.375rem;
+  }
+
+  .ea-range-slider--xl & {
+    --ea-range-slider-size: 1.625rem;
   }
 
   &__track {

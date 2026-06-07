@@ -60,9 +60,11 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div class="story-stack story-stack--md">
+        <ea-checkbox size="xs" label="Extra small checkbox"></ea-checkbox>
         <ea-checkbox size="sm" label="Small checkbox"></ea-checkbox>
         <ea-checkbox size="md" label="Medium checkbox"></ea-checkbox>
         <ea-checkbox size="lg" label="Large checkbox"></ea-checkbox>
+        <ea-checkbox size="xl" label="Extra large checkbox"></ea-checkbox>
       </div>
     `,
   }),

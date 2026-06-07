@@ -5,6 +5,7 @@ import {
   DrawerComponent,
   type DrawerPosition,
   type DrawerSize,
+  type DrawerWidth,
 } from './drawer.component';
 
 // Mock HTMLDialogElement methods for jsdom
@@ -24,6 +25,7 @@ beforeAll(() => {
     <ea-drawer
       [(open)]="isOpen"
       [position]="position()"
+      [width]="width()"
       [size]="size()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
@@ -37,6 +39,7 @@ beforeAll(() => {
 class TestHostComponent {
   isOpen = signal(false);
   position = signal<DrawerPosition>('right');
+  width = signal<DrawerWidth | undefined>(undefined);
   size = signal<DrawerSize>('md');
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
@@ -107,6 +110,20 @@ describe('DrawerComponent', () => {
       host.size.set('lg');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-drawer__panel--lg');
+    });
+
+    it('applies width classes', () => {
+      host.width.set('xl');
+      fixture.detectChanges();
+      expect(getPanel().classList).toContain('ea-drawer__panel--xl');
+    });
+
+    it('prefers width over the deprecated size alias', () => {
+      host.size.set('sm');
+      host.width.set('lg');
+      fixture.detectChanges();
+      expect(getPanel().classList).toContain('ea-drawer__panel--lg');
+      expect(getPanel().classList).not.toContain('ea-drawer__panel--sm');
     });
   });
 

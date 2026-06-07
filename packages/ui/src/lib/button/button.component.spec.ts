@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+import { CheckIconComponent } from '../icons/check.component';
 import { ButtonComponent } from './button.component';
 
 describe('ButtonComponent', () => {
@@ -56,6 +57,18 @@ describe('ButtonComponent', () => {
       fixture.componentRef.setInput('aria-label', 'Close dialog');
       fixture.detectChanges();
       expect(getButton().getAttribute('aria-label')).toBe('Close dialog');
+    });
+
+    it('does not render a leading icon by default', () => {
+      expect(fixture.nativeElement.querySelector('.ea-button__icon')).toBeNull();
+    });
+
+    it('renders the leading icon when an icon component is provided', () => {
+      fixture.componentRef.setInput('icon', CheckIconComponent);
+      fixture.detectChanges();
+      const icon = fixture.nativeElement.querySelector('.ea-button__icon');
+      expect(icon).toBeTruthy();
+      expect(icon.querySelector('ea-icon-check')).toBeTruthy();
     });
   });
 

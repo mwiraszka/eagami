@@ -12,11 +12,12 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { CheckIconComponent } from '../icons/check.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 import type { StepComponent } from './step.component';
 
 /** Visual size of the stepper. */
-export type StepperSize = 'sm' | 'md' | 'lg';
+export type StepperSize = EaSize;
 
 /**
  * Multi-step navigation paired with content panels. Child `<ea-step>`

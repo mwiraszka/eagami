@@ -45,6 +45,10 @@
 
     // Size sets only the font-size; the trigger's padding is em-based on the base
     // rule, so the whole tab scales from this one knob.
+    &--xs .ea-tabs__trigger {
+      font-size: var(--font-size-xs);
+    }
+
     &--sm .ea-tabs__trigger {
       font-size: var(--font-size-sm);
     }
@@ -55,6 +59,10 @@
 
     &--lg .ea-tabs__trigger {
       font-size: var(--font-size-lg);
+    }
+
+    &--xl .ea-tabs__trigger {
+      font-size: var(--font-size-xl);
     }
   }
 

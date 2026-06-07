@@ -12,10 +12,11 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of a checkbox. */
-export type CheckboxSize = 'sm' | 'md' | 'lg';
+export type CheckboxSize = EaSize;
 
 /**
  * Boolean form control with support for an indeterminate visual state. Pairs

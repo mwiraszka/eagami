@@ -25,10 +25,11 @@ import { ImageIconComponent } from '../icons/image.component';
 import { MusicIconComponent } from '../icons/music.component';
 import { UploadCloudIconComponent } from '../icons/upload-cloud.component';
 import { XIconComponent } from '../icons/x.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the file uploader. */
-export type FileUploaderSize = 'sm' | 'md' | 'lg';
+export type FileUploaderSize = EaSize;
 
 /** Reason a file was rejected during selection. */
 export type FileUploaderRejectionReason = 'type' | 'size' | 'count';

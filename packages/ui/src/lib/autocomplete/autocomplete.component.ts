@@ -19,10 +19,11 @@ import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import type { SelectOption } from '../select-option';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the autocomplete input. */
-export type AutocompleteSize = 'sm' | 'md' | 'lg';
+export type AutocompleteSize = EaSize;
 
 /**
  * Text input paired with a filtered suggestion list. Filters options by

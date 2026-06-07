@@ -15,12 +15,13 @@ import { AlertCircleIconComponent } from '../icons/alert-circle.component';
 import { CheckIconComponent } from '../icons/check.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
+import { type EaSize } from '../sizes';
 
 /** Semantic colour scheme of an alert. Drives icon and palette. */
 export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 
 /** Scales the alert's text, icon, and gap together. */
-export type AlertSize = 'sm' | 'md' | 'lg';
+export type AlertSize = EaSize;
 
 /**
  * Inline banner for surfacing semantic messages such as success confirmations,

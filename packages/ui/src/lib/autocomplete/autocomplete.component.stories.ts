@@ -38,7 +38,7 @@ const meta: Meta<AutocompleteComponent> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     selected: { action: 'selected' },
     changed: { action: 'changed' },

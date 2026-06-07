@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.0] - 2026-06-07
+
+### Added
+
+- Add an optional `icon` input to `<ea-button>` for a leading icon that scales to 1.5x the label text.
+- Add a `thick` input to `<ea-divider>` for a heavier rule.
+- Add `icon` and `bordered` inputs to `<ea-empty-state>`.
+- Extend the size range to the full `xs` through `xl` scale across all sized components, including `<ea-drawer>` and `<ea-dialog>` panel widths, and export shared `EaSize` and `EaWidth` types.
+
+### Changed
+
+- **Breaking:** Remove the deprecated `4` variant from `<ea-eagami-wordmark>`; use `3` instead.
+- Standardize the `size` scale so `sm`, `md`, and `lg` map to the same text sizes across every component.
+- Rename the `<ea-drawer>` and `<ea-dialog>` `size` input to `width`; `size` is deprecated and will be removed in v3.0.0.
+- Normalize `<ea-rating>` to the standard size scale while keeping its stars at 1.5x the label text.
+- Rescale `<ea-badge>` to the new range while keeping it a step smaller than body components.
+
+### Fixed
+
+- Offset menus and other popover panels from their anchor so an open panel no longer covers the input's active focus ring.
+
 ## [2.7.0] - 2026-06-06
 
 ### Added
@@ -620,6 +641,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.7.0...ui-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.6.0...ui-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.3...ui-v2.6.0
 [2.5.3]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.2...ui-v2.5.3
