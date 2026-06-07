@@ -14,7 +14,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Fixed
 
-- Center the skeleton preview in the component playground regardless of its set width.
+- Center the skeleton preview in the component playground, cap its height, and scroll when its set width or height exceeds the preview.
 
 ## [2.7.0] - 2026-06-06
 
