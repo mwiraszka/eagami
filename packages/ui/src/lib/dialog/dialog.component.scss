@@ -23,6 +23,10 @@
     max-height: 85vh;
     overflow: hidden;
 
+    &--xs {
+      width: 20rem; // 320px
+    }
+
     &--sm {
       width: 24rem; // 384px
     }
@@ -33,6 +37,10 @@
 
     &--lg {
       width: 42rem; // 672px
+    }
+
+    &--xl {
+      width: 52rem; // 832px
     }
 
     &--full {

@@ -8,15 +8,15 @@ const meta: Meta<DialogComponent> = {
   component: DialogComponent,
   tags: ['autodocs'],
   argTypes: {
-    size: {
+    width: {
       control: 'select',
-      options: ['sm', 'md', 'lg', 'full'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
     },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
   },
   args: {
-    size: 'md',
+    width: 'md',
     closeOnBackdrop: true,
     closeOnEscape: true,
     showClose: true,
@@ -34,7 +34,7 @@ export const Default: Story = {
       <ea-button (clicked)="isOpen = true">Open Dialog</ea-button>
       <ea-dialog
         [(open)]="isOpen"
-        [size]="size"
+        [width]="width"
         [closeOnBackdrop]="closeOnBackdrop"
         [closeOnEscape]="closeOnEscape"
         [showClose]="showClose">
@@ -51,11 +51,11 @@ export const Default: Story = {
 
 export const Small: Story = {
   render: args => ({
-    props: { ...args, isOpen: false, size: 'sm' },
+    props: { ...args, isOpen: false, width: 'sm' },
     moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
     template: `
       <ea-button (clicked)="isOpen = true">Open Small Dialog</ea-button>
-      <ea-dialog [(open)]="isOpen" size="sm">
+      <ea-dialog [(open)]="isOpen" width="sm">
         <span slot="header">Small Dialog</span>
         <p>A compact dialog for simple confirmations.</p>
         <div slot="footer">
@@ -69,11 +69,11 @@ export const Small: Story = {
 
 export const Large: Story = {
   render: args => ({
-    props: { ...args, isOpen: false, size: 'lg' },
+    props: { ...args, isOpen: false, width: 'lg' },
     moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
     template: `
       <ea-button (clicked)="isOpen = true">Open Large Dialog</ea-button>
-      <ea-dialog [(open)]="isOpen" size="lg">
+      <ea-dialog [(open)]="isOpen" width="lg">
         <span slot="header">Large Dialog</span>
         <p>A larger dialog for more detailed content, forms, or data tables.</p>
         <div slot="footer">

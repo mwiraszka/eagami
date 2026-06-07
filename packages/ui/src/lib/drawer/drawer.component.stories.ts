@@ -12,16 +12,16 @@ const meta: Meta<DrawerComponent> = {
       control: 'select',
       options: ['left', 'right', 'top', 'bottom'],
     },
-    size: {
+    width: {
       control: 'select',
-      options: ['sm', 'md', 'lg', 'full'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
     },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
   },
   args: {
     position: 'right',
-    size: 'md',
+    width: 'md',
     closeOnBackdrop: true,
     closeOnEscape: true,
     showClose: true,
@@ -40,7 +40,7 @@ export const Default: Story = {
       <ea-drawer
         [(open)]="isOpen"
         [position]="position"
-        [size]="size"
+        [width]="width"
         [closeOnBackdrop]="closeOnBackdrop"
         [closeOnEscape]="closeOnEscape"
         [showClose]="showClose">
@@ -122,7 +122,7 @@ export const Small: Story = {
     moduleMetadata: { imports: [DrawerComponent, ButtonComponent] },
     template: `
       <ea-button (clicked)="isOpen = true">Open Small Drawer</ea-button>
-      <ea-drawer [(open)]="isOpen" size="sm">
+      <ea-drawer [(open)]="isOpen" width="sm">
         <span slot="header">Small Drawer</span>
         <p>A compact drawer for quick filters or settings.</p>
         <div slot="footer">
@@ -141,7 +141,7 @@ export const Large: Story = {
     moduleMetadata: { imports: [DrawerComponent, ButtonComponent] },
     template: `
       <ea-button (clicked)="isOpen = true">Open Large Drawer</ea-button>
-      <ea-drawer [(open)]="isOpen" size="lg">
+      <ea-drawer [(open)]="isOpen" width="lg">
         <span slot="header">Large Drawer</span>
         <p>A roomier drawer for forms, details, or richer content.</p>
         <div slot="footer">

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { DialogComponent } from './dialog.component';
+import { DialogComponent, type DialogWidth } from './dialog.component';
 
 // Mock HTMLDialogElement methods for jsdom
 beforeAll(() => {
@@ -20,6 +20,7 @@ beforeAll(() => {
   template: `
     <ea-dialog
       [(open)]="isOpen"
+      [width]="width()"
       [size]="size()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
@@ -32,6 +33,7 @@ beforeAll(() => {
 })
 class TestHostComponent {
   isOpen = signal(false);
+  width = signal<DialogWidth | undefined>(undefined);
   size = signal<'sm' | 'md' | 'lg' | 'full'>('md');
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
@@ -81,6 +83,20 @@ describe('DialogComponent', () => {
       host.size.set('lg');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-dialog__panel--lg');
+    });
+
+    it('applies width classes', () => {
+      host.width.set('xl');
+      fixture.detectChanges();
+      expect(getPanel().classList).toContain('ea-dialog__panel--xl');
+    });
+
+    it('prefers width over the deprecated size alias', () => {
+      host.size.set('sm');
+      host.width.set('lg');
+      fixture.detectChanges();
+      expect(getPanel().classList).toContain('ea-dialog__panel--lg');
+      expect(getPanel().classList).not.toContain('ea-dialog__panel--sm');
     });
   });
 
