@@ -2,6 +2,15 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.9.0] - 2026-06-07
+
+### Changed
+
+- Pick up @eagami/ui v2.9.0, tightening every playground number control (narrower fields, no scroll-wheel value changes, no `e`).
+- Add sensible bounds to the playground number controls (e.g. sliders capped at ±1,000, wordmark size floored at 10px).
+- Pick the wordmark variant from named values and label its size control in px.
+- Surface the new slider and range-slider thousands-separator toggle in their playgrounds.
+
 ## [2.8.0] - 2026-06-07
 
 ### Added
@@ -521,6 +530,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.9.0]: https://github.com/mwiraszka/eagami/compare/website-v2.8.0...website-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/website-v2.7.0...website-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/website-v2.6.0...website-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/website-v2.5.3...website-v2.6.0

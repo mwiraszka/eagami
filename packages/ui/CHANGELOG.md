@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.0] - 2026-06-07
+
+### Added
+
+- Add bounded number support to `<ea-input>`: `min`/`max` (clamped on blur), `step`, and `maxLength`/`minLength`. Number fields auto-narrow to their widest value, ignore the scroll-wheel, and block the `e` key.
+- Add a `groupThousands` input (default on) to `<ea-slider>` and `<ea-range-slider>` that formats displayed values with thousands separators.
+
+### Changed
+
+- Switch `<ea-eagami-wordmark>` `variant` to string values (`default`, `byline`, `tagline`); the numeric `1`/`2`/`3` are deprecated and will be removed in v3.0.0.
+- Default `<ea-eagami-wordmark>` `size` to 100px and floor it at 10px.
+
+### Fixed
+
+- Keep the `<ea-eagami-wordmark>` logo proportional when its size is cleared, and match the byline and tagline letter-spacing to the brand text.
+
 ## [2.8.0] - 2026-06-07
 
 ### Added
@@ -641,6 +657,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.8.0...ui-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.7.0...ui-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.6.0...ui-v2.7.0
 [2.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.5.3...ui-v2.6.0
