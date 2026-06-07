@@ -80,15 +80,6 @@ describe('EagamiWordmarkComponent', () => {
       expect(getOverline()).toBeNull();
     });
 
-    it('treats the deprecated variant 4 as an alias for variant 3', () => {
-      fixture.componentRef.setInput('variant', 4);
-      fixture.detectChanges();
-
-      expect(getBrand()?.textContent?.trim()).toBe('eagami');
-      expect(getTagline()?.textContent?.trim()).toBe('elegant web design');
-      expect(getOverline()).toBeNull();
-    });
-
     it('sets aria-label to "eagami" for variant 1', () => {
       expect(getAnchor().getAttribute('aria-label')).toBe('eagami');
     });

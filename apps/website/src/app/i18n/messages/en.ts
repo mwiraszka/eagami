@@ -1136,7 +1136,7 @@ export const en: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Content variant: 1 is the bare wordmark, 2 adds the overline, 3 adds the tagline (4 is a deprecated alias for 3).',
+              'Content variant: 1 is the bare wordmark, 2 adds the overline, 3 adds the tagline.',
             layout:
               'Arranges the wordmark stacked across lines or inline on a single line.',
             size: 'Pixel value the entire wordmark scales from.',
