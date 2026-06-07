@@ -11,10 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add an optional `icon` input to `<ea-button>` for a leading icon that scales to 1.5x the label text.
 - Add a `thick` input to `<ea-divider>` for a heavier rule.
+- Add `icon` and `bordered` inputs to `<ea-empty-state>`.
 - Extend the size range to the full `xs` through `xl` scale across all sized components, including `<ea-drawer>` and `<ea-dialog>` panel widths, and export shared `EaSize` and `EaWidth` types.
 
 ### Changed
 
+- **Breaking:** Remove the deprecated `4` variant from `<ea-eagami-wordmark>`; use `3` instead.
 - Standardize the `size` scale so `sm`, `md`, and `lg` map to the same text sizes across every component.
 - Rename the `<ea-drawer>` and `<ea-dialog>` `size` input to `width`; `size` is deprecated and will be removed in v3.0.0.
 - Normalize `<ea-rating>` to the standard size scale while keeping its stars at 1.5x the label text.

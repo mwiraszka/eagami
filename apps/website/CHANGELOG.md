@@ -6,7 +6,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Surface the new `<ea-button>` icon and `<ea-divider>` thickness controls in their component playgrounds.
+- Surface the new `<ea-button>` icon, `<ea-divider>` thickness, and `<ea-empty-state>` icon and bordered controls in their component playgrounds.
 
 ### Changed
 
