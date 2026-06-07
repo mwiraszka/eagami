@@ -9,9 +9,11 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-empty-state
+      [icon]="iconComponent()"
       [title]="state().title"
       [description]="state().description"
       [size]="state().size"
-      [headingLevel]="state().headingLevel" />
+      [headingLevel]="state().headingLevel"
+      [bordered]="state().bordered" />
   </web-component-playground>
 </web-ui-component-demo-layout>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, type Type } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SearchIconComponent } from '../icons/search.component';
 import { EmptyStateComponent } from './empty-state.component';
 
 @Component({
@@ -9,7 +10,9 @@ import { EmptyStateComponent } from './empty-state.component';
     <ea-empty-state
       [title]="title"
       [description]="description"
-      [size]="size">
+      [size]="size"
+      [icon]="icon"
+      [bordered]="bordered">
       @if (showMedia) {
         <span slot="media">icon</span>
       }
@@ -23,6 +26,8 @@ class HostComponent {
   title?: string;
   description?: string;
   size: 'sm' | 'md' | 'lg' = 'md';
+  icon?: Type<unknown>;
+  bordered = false;
   showMedia = false;
   showAction = false;
 }
@@ -83,5 +88,23 @@ describe('EmptyStateComponent', () => {
     const actions = fixture.nativeElement.querySelector('.ea-empty-state__actions');
 
     expect(actions.querySelector('button')).toBeTruthy();
+  });
+
+  it('renders the icon in the media area when provided', () => {
+    host.icon = SearchIconComponent;
+    fixture.detectChanges();
+
+    const media = fixture.nativeElement.querySelector('.ea-empty-state__media');
+
+    expect(media.querySelector('ea-icon-search')).toBeTruthy();
+  });
+
+  it('applies the bordered modifier when set', () => {
+    expect(fixture.nativeElement.querySelector('.ea-empty-state--bordered')).toBeNull();
+
+    host.bordered = true;
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.ea-empty-state--bordered')).toBeTruthy();
   });
 });

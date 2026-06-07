@@ -67,6 +67,39 @@ export const WithoutMedia: Story = {
   }),
 };
 
+export const WithIcon: Story = {
+  render: () => ({
+    props: { icon: SearchIconComponent },
+    template: `
+      <ea-empty-state
+        [icon]="icon"
+        title="No results found"
+        description="Try adjusting your search or filter.">
+        <ea-button slot="actions" variant="secondary">
+          Clear filters
+        </ea-button>
+      </ea-empty-state>
+    `,
+  }),
+};
+
+export const Bordered: Story = {
+  render: () => ({
+    props: { icon: FileIconComponent },
+    template: `
+      <ea-empty-state
+        [icon]="icon"
+        [bordered]="true"
+        title="No files yet"
+        description="Drag and drop files here, or upload from your device.">
+        <ea-button slot="actions" variant="primary">
+          Upload files
+        </ea-button>
+      </ea-empty-state>
+    `,
+  }),
+};
+
 export const TwoActions: Story = {
   render: () => ({
     template: `

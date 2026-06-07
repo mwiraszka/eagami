@@ -31,6 +31,12 @@
     font-size: var(--font-size-xl);
   }
 
+  // Optional dashed frame for a dropzone / "nothing here yet" card look.
+  &--bordered {
+    border: var(--border-width-medium) dashed var(--color-border-default);
+    border-radius: var(--radius-xl);
+  }
+
   &__media {
     display: flex;
     align-items: center;
