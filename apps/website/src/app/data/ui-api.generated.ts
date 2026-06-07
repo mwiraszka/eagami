@@ -1594,14 +1594,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'size',
         type: 'number',
-        default: '32',
+        default: '100',
         required: false,
         twoWay: false,
       },
       {
         name: 'variant',
-        type: 'EagamiWordmarkVariant',
-        default: '1',
+        type: 'EagamiWordmarkVariant | EagamiWordmarkVariantLegacy',
+        default: "'default',",
         required: false,
         twoWay: false,
       },
@@ -1920,6 +1920,34 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'max',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'maxLength',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'min',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'minLength',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'placeholder',
         type: 'string',
         default: "''",
@@ -1955,6 +1983,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'step',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'type',
         type: 'InputType',
         default: "'text'",
@@ -1986,6 +2021,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     methods: [
+      {
+        name: 'clampToBounds',
+        signature: 'clampToBounds(): void',
+      },
       {
         name: 'clear',
         signature: 'clear(event: MouseEvent): void',
@@ -2675,7 +2714,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'formatValue',
         type: '(value: number) => string',
-        default: '(auto-generated)',
+        default: 'FORMAT_PLAIN',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'groupThousands',
+        type: 'boolean',
+        default: 'true',
         required: false,
         twoWay: false,
       },
@@ -2770,6 +2816,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'commitThumb',
         signature: 'commitThumb(thumb: Thumb, raw: number): void',
+      },
+      {
+        name: 'formatDisplay',
+        signature: 'formatDisplay(value: number): string',
       },
     ],
   },
@@ -3061,7 +3111,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'formatValue',
         type: '(value: number) => string',
-        default: '(auto-generated)',
+        default: 'FORMAT_PLAIN',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'groupThousands',
+        type: 'boolean',
+        default: 'true',
         required: false,
         twoWay: false,
       },
@@ -3159,7 +3216,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
-    methods: [],
+    methods: [
+      {
+        name: 'formatDisplay',
+        signature: 'formatDisplay(value: number): string',
+      },
+    ],
   },
   spinner: {
     selector: 'ea-spinner',
