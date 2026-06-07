@@ -18,6 +18,7 @@ interface DividerKnobState {
   [key: string]: KnobValue;
   label: string;
   orientation: DividerOrientation;
+  thick: boolean;
 }
 
 const SLUG = 'divider';

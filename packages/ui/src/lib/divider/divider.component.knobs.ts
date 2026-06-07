@@ -11,6 +11,7 @@ export const DIVIDER_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['horizontal', 'vertical'],
     },
+    thick: { control: 'boolean' },
   },
   args: {
     label: 'OR',

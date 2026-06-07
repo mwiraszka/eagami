@@ -53,4 +53,15 @@ describe('DividerComponent', () => {
     expect(labelEl.textContent.trim()).toBe('or');
     expect(getDivider().classList).toContain('ea-divider--with-label');
   });
+
+  it('is not thick by default', () => {
+    expect(getDivider().classList).not.toContain('ea-divider--thick');
+  });
+
+  it('applies the thick modifier when set', () => {
+    fixture.componentRef.setInput('thick', true);
+    fixture.detectChanges();
+
+    expect(getDivider().classList).toContain('ea-divider--thick');
+  });
 });
