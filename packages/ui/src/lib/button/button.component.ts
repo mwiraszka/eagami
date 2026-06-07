@@ -1,16 +1,19 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  type Type,
   computed,
   input,
   output,
 } from '@angular/core';
 
+import { type EaSize } from '../sizes';
+
 /** Visual style of a button; drives colour and emphasis. */
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 /** Visual size of a button. */
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = EaSize;
 /** HTML `type` attribute applied to the underlying `<button>` element. */
 export type ButtonType = 'button' | 'submit' | 'reset';
 
@@ -23,7 +26,7 @@ export type ButtonType = 'button' | 'submit' | 'reset';
   selector: 'ea-button',
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  imports: [NgClass],
+  imports: [NgClass, NgComponentOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.ea-button--full-width]': 'fullWidth()',
@@ -36,6 +39,8 @@ export class ButtonComponent {
   readonly disabled = input<boolean>(false);
   readonly loading = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
+  /** Optional icon component rendered to the left of the label. */
+  readonly icon = input<Type<unknown> | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly ariaCurrent = input<string | undefined>(undefined, { alias: 'aria-current' });
 

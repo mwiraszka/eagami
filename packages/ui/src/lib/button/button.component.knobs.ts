@@ -13,7 +13,7 @@ export const BUTTON_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     type: {
       control: 'select',

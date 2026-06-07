@@ -6,7 +6,7 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -15,6 +15,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface ButtonKnobState {
@@ -27,6 +28,7 @@ interface ButtonKnobState {
   disabled: boolean;
   loading: boolean;
   fullWidth: boolean;
+  icon: string;
 }
 
 const SLUG = 'button';
@@ -43,9 +45,26 @@ const SLUG = 'button';
 })
 export class ButtonDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.button, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.button, UI_API[SLUG]),
+    iconKnob([
+      'check',
+      'search',
+      'filter',
+      'mail',
+      'user',
+      'lock',
+      'calendar',
+      'bell',
+      'home',
+      'star',
+    ]),
+  ];
   protected readonly state = signal<ButtonKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.button) as ButtonKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

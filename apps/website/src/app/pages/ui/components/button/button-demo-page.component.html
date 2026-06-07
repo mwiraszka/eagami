@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-button
+      [icon]="iconComponent()"
       [variant]="state().variant"
       [size]="state().size"
       [type]="state().type"
