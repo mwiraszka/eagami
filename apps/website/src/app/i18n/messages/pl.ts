@@ -917,7 +917,7 @@ export const pl: WebMessages = {
           'eagami-wordmark': {
             variant: 'Wariant',
             layout: 'Układ',
-            size: 'Rozmiar',
+            size: 'Rozmiar (px)',
           },
           'empty-state': {
             size: 'Rozmiar',
@@ -1160,7 +1160,7 @@ export const pl: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Wariant treści: 1 to sam znak słowny, 2 dodaje nadkreślenie, 3 dodaje hasło.',
+              'Wariant treści: default to sam znak słowny, byline dodaje wiersz autorski, tagline dodaje hasło.',
             layout: 'Układa znak słowny w stos wielowierszowy lub w jednej linii.',
             size: 'Wartość w pikselach, od której skaluje się cały znak słowny.',
           },

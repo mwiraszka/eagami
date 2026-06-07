@@ -21,11 +21,11 @@ type Story = StoryObj<EagamiWordmarkComponent>;
 export const Default: Story = {};
 
 export const HandcraftedBy: Story = {
-  args: { variant: 2 },
+  args: { variant: 'byline' },
 };
 
 export const Full: Story = {
-  args: { variant: 3 },
+  args: { variant: 'tagline' },
 };
 
 export const Small: Story = {
@@ -33,13 +33,13 @@ export const Small: Story = {
 };
 
 export const Large: Story = {
-  args: { size: 96 },
+  args: { size: 160 },
 };
 
 export const InlineHandcraftedBy: Story = {
-  args: { variant: 2, layout: 'inline' },
+  args: { variant: 'byline', layout: 'inline' },
 };
 
 export const InlineFull: Story = {
-  args: { variant: 3, layout: 'inline' },
+  args: { variant: 'tagline', layout: 'inline' },
 };

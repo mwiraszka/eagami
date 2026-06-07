@@ -7,16 +7,19 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const EAGAMI_WORDMARK_KNOBS: ComponentKnobs = {
   argTypes: {
-    variant: { control: 'number' },
+    variant: {
+      control: 'select',
+      options: ['default', 'byline', 'tagline'],
+    },
     layout: {
       control: 'select',
       options: ['stacked', 'inline'],
     },
-    size: { control: 'number' },
+    size: { control: 'number', min: 10, max: 512, maxLength: 3 },
   },
   args: {
-    variant: 1,
+    variant: 'default',
     layout: 'stacked',
-    size: 32,
+    size: 100,
   },
 };

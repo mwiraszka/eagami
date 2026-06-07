@@ -919,7 +919,7 @@ export const frFR: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variante',
             layout: 'Disposition',
-            size: 'Taille',
+            size: 'Taille (px)',
           },
           'empty-state': {
             size: 'Taille',
@@ -1167,7 +1167,7 @@ export const frFR: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de contenu : 1 est le logotype seul, 2 ajoute la surligne, 3 ajoute la signature.',
+              'Variante de contenu : default est le logotype seul, byline ajoute la mention de fabrication, tagline ajoute la signature.',
             layout:
               'Dispose le logotype empilé sur plusieurs lignes ou en ligne sur une seule ligne.',
             size: 'Valeur en pixels à partir de laquelle l’ensemble du logotype est mis à l’échelle.',
