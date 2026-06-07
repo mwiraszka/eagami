@@ -13,6 +13,15 @@
   max-width: 360px;
 }
 
+// Skeleton paints its sized block on an inner element, so a plain full-width host
+// would leave it flush-left. Center it within the preview; an over-wide skeleton
+// still overflows into the playground's horizontal scroll.
+.skeleton-preview {
+  display: flex;
+  justify-content: safe center;
+  width: 100%;
+}
+
 .demo-section {
   display: flex;
   flex-direction: column;
