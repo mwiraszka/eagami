@@ -8,7 +8,8 @@
 
   <div
     class="ea-input-wrapper"
-    [ngClass]="wrapperClasses()">
+    [ngClass]="wrapperClasses()"
+    [style.max-width]="numberWidth()">
     @if (!value() && icon(); as leadingIcon) {
       <span
         class="ea-input-wrapper__icon"
@@ -33,11 +34,18 @@
       [value]="value()"
       [attr.autocomplete]="autocomplete() ?? null"
       [attr.list]="list() ?? null"
+      [attr.min]="type() === 'number' ? (min() ?? null) : null"
+      [attr.max]="type() === 'number' ? (max() ?? null) : null"
+      [attr.step]="type() === 'number' ? (step() ?? null) : null"
+      [attr.maxlength]="maxLength() ?? null"
+      [attr.minlength]="minLength() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
       (input)="handleInput($event)"
+      (keydown)="handleKeydown($event)"
+      (wheel)="handleWheel($event)"
       (focus)="handleFocus($event)"
       (blur)="handleBlur($event)" />
 

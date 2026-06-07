@@ -21,6 +21,11 @@ export interface PlaygroundKnob {
   default: KnobValue;
   /** For `color` controls: the CSS custom property the value writes. */
   cssVar?: string;
+  /** For `number` controls: bounds, step, and character cap forwarded to the field. */
+  min?: number;
+  max?: number;
+  step?: number;
+  maxLength?: number;
   /** When set, the control is disabled unless the referenced knob matches. */
   condition?: KnobCondition;
 }
@@ -109,6 +114,10 @@ export function buildKnobs(
       options: argType?.options ?? [],
       default: parseApiDefault(apiProp?.default, control),
       cssVar: argType?.cssVar,
+      min: argType?.min,
+      max: argType?.max,
+      step: argType?.step,
+      maxLength: argType?.maxLength,
       condition: argType?.if,
     });
   }

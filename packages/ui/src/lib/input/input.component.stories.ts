@@ -92,3 +92,17 @@ export const AllSizes: Story = {
     `,
   }),
 };
+
+export const Number: Story = {
+  // Bounded number fields auto-narrow to the widest value they can hold, block
+  // the scroll-wheel and `e`, and clamp to [min, max] on blur.
+  render: () => ({
+    template: `
+      <div class="story-stack story-narrow">
+        <ea-input type="number" label="Variant" [min]="1" [max]="3" [maxLength]="1" [value]="'1'"></ea-input>
+        <ea-input type="number" label="Quantity" [min]="0" [max]="999" [maxLength]="3" [value]="'12'"></ea-input>
+        <ea-input type="number" label="Amount" [min]="-1000000" [max]="1000000" [maxLength]="8" [value]="'1000'"></ea-input>
+      </div>
+    `,
+  }),
+};
