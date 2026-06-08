@@ -818,6 +818,7 @@ export const en: WebMessages = {
         colDescription: 'Description',
         requiredBadge: 'required',
         twoWayBadge: 'two-way',
+        rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
           input: {
             label: 'Label',
@@ -1027,6 +1028,18 @@ export const en: WebMessages = {
             togglePasswordVisibility:
               'Toggles the password reveal state for type="password" inputs.',
             icon: 'Leading icon component rendered before the text.',
+            max: 'Maximum value for type="number"; the value is clamped to it on blur.',
+            maxLength:
+              'Maximum number of characters; enforced for type="number" where native maxlength is ignored.',
+            min: 'Minimum value for type="number"; the value is clamped to it on blur.',
+            minLength:
+              'Minimum number of characters, passed as the native minlength attribute.',
+            step: 'Step increment for type="number" inputs.',
+            clampToBounds:
+              'Clamps a number value into the configured min/max range once editing finishes.',
+          },
+          accordion: {
+            multi: 'Allows several items to stay expanded at once instead of just one.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1063,6 +1076,7 @@ export const en: WebMessages = {
               'Value for the native aria-current attribute, marking the button as the current item in a set.',
             clicked:
               'Fires when the button is activated, suppressed while disabled or loading.',
+            icon: 'Optional icon component rendered to the left of the label.',
           },
           card: {
             variant: 'Visual style of the card surface.',
@@ -1133,6 +1147,7 @@ export const en: WebMessages = {
           divider: {
             label: 'Optional centred label rendered within the divider rule.',
             orientation: 'Orientation the divider rule runs in.',
+            thick: 'Renders a heavier rule.',
           },
           'eagami-wordmark': {
             variant:
@@ -1147,6 +1162,8 @@ export const en: WebMessages = {
             size: 'Visual size of the empty-state block.',
             headingLevel:
               'Heading level used for the title so it fits the surrounding document outline.',
+            bordered: 'Renders a dashed frame around the block.',
+            icon: 'Optional icon component rendered in the media area above the title.',
           },
           paginator: {
             align:
@@ -1205,6 +1222,10 @@ export const en: WebMessages = {
             changed: 'Fires with the new [low, high] tuple whenever either thumb moves.',
             commitThumb:
               'Snaps a thumb to the nearest step, clamps it to the bounds, and constrains it by the opposite thumb.',
+            groupThousands:
+              'Groups displayed values with thousands separators, ignored when a custom formatValue is provided.',
+            formatDisplay:
+              'Formats a value for display, applying thousand grouping unless a custom formatValue function is set.',
           },
           rating: {
             allowHalf:
@@ -1263,6 +1284,10 @@ export const en: WebMessages = {
             step: 'Increment the value snaps to as the slider moves.',
             value: 'Current slider value, two-way bindable via [(value)].',
             changed: 'Fires with the new snapped value whenever the slider moves.',
+            groupThousands:
+              'Groups displayed values with thousands separators, ignored when a custom formatValue is provided.',
+            formatDisplay:
+              'Formats a value for display, applying thousand grouping unless a custom formatValue function is set.',
           },
           spinner: {
             label:
@@ -1316,6 +1341,498 @@ export const en: WebMessages = {
             blurred: 'Fires when the field loses focus.',
             focused: 'Fires when the field receives focus.',
             focus: 'Moves keyboard focus to the underlying native textarea.',
+          },
+          'avatar-editor': {
+            accept:
+              'Accepted MIME types for the file picker, forwarded to the native input.',
+            canvasSize: 'Pixel width and height of the square crop canvas.',
+            cropState: 'Initial pan/zoom state to restore when a source image is loaded.',
+            currentSrc: 'URL of the image to load into the editor on initialisation.',
+            exportQuality:
+              'JPEG/WebP quality used when exporting the cropped image, between 0 and 1.',
+            exportType:
+              'MIME type of the exported image blob (e.g. image/png or image/jpeg).',
+            loading: 'Shows a skeleton overlay while an external resource is loading.',
+            maxFileSize:
+              'Maximum allowed file size in bytes; files above this limit emit errored.',
+            maxZoom: 'Maximum zoom multiplier the user can reach.',
+            minZoom: 'Minimum zoom multiplier the user can reach.',
+            shape: 'Crop mask shape applied to the canvas and exported image.',
+            cropped:
+              'Fires when the user exports a crop, providing both a Blob and a data URL.',
+            cropStateChanged:
+              'Fires whenever the user pans or zooms the image, useful for persisting the edit state.',
+            errored: 'Fires with a human-readable message when file validation fails.',
+            fileSelected:
+              'Fires when a file is chosen from disk or dropped onto the editor.',
+            removed: 'Fires when the current image is cleared via the remove control.',
+            captureOriginal:
+              'Marks the current image and crop state as the baseline for revertImage.',
+            exportCrop:
+              'Renders the current crop to an offscreen canvas, emits cropped, and resolves with the Blob.',
+            openFilePicker: 'Opens the native file picker dialog.',
+            removeImage: 'Clears the loaded image and resets pan and zoom to defaults.',
+            revertImage:
+              'Restores the image and crop state captured by the most recent captureOriginal call.',
+            setZoom:
+              'Sets the zoom level, clamped to the configured minZoom and maxZoom range.',
+            updateImageDarkness:
+              'Samples the visible crop region to determine whether the image is darker than mid-grey.',
+          },
+          eaMenuTrigger: {
+            menu: 'The ea-menu instance this trigger controls.',
+          },
+          eaTooltip: {
+            eaTooltip: 'Text content of the tooltip shown on hover and keyboard focus.',
+            tooltipPosition: 'Placement of the tooltip relative to its host element.',
+          },
+          'time-picker': {
+            disabled: 'Disables the picker.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            format:
+              'Display format of the trigger label; the wire value is always 24-hour.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            includeSeconds: 'Shows a seconds column alongside hours and minutes.',
+            label: 'Text label rendered above the field.',
+            minuteStep: 'Increment the minutes column snaps to when stepped or dragged.',
+            placeholder: 'Placeholder shown on the trigger while no time is selected.',
+            readonly: 'Renders the field read-only, keeping the popover from opening.',
+            required: 'Marks the field as required.',
+            secondStep: 'Increment the seconds column snaps to when stepped or dragged.',
+            size: 'Visual size of the picker trigger.',
+            value:
+              'Current time string in HH:MM or HH:MM:SS (24-hour), two-way bindable via [(value)], or null when unset.',
+            changed:
+              'Fires with the new time string whenever the user changes the selected time.',
+            advanceFocus:
+              'Moves focus to the next unit column after a digit entry is complete.',
+            cannotExtend:
+              'Returns true when no additional digit can validly extend the current buffer for the given unit.',
+            commitDigits:
+              "Parses the buffered digit string, clamps it to the unit's valid range, and writes it to the value.",
+            flushBuffer: 'Commits any pending typed-digit buffer and clears it.',
+            focusHoursWhenReady:
+              'Focuses the hours input once the popover surface has been rendered to the DOM.',
+            hoursFromTyped:
+              'Converts a typed hours value to its 24-hour equivalent, accounting for the current AM/PM period.',
+            onPopoverCloseRequested:
+              'Closes the popover when the user clicks outside the picker.',
+            onSpinnerBlur:
+              'Commits any pending digit buffer when a spinner column loses focus.',
+            onSpinnerFocus:
+              'Selects all text in a spinner column when it receives focus so the first keystroke replaces it.',
+            onSpinnerInput:
+              'Handles digit input in a spinner column, updates the buffer, and auto-advances focus when the column is full.',
+            startHold:
+              'Begins a long-press repeat on a chevron button, stepping the given unit and accelerating after a delay.',
+            step: 'Steps the given unit column up or down by one configured increment.',
+            stopHold: 'Cancels any in-flight long-press repeat timers.',
+            togglePeriod:
+              'Switches the AM/PM period in 12-hour mode by toggling the 12-hour offset.',
+          },
+          autocomplete: {
+            disabled: 'Disables the field.',
+            emptyMessage:
+              "Message shown in the list when no options match the current input, falling back to the active locale's translation when omitted.",
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the native input and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            maxResults: 'Maximum number of options shown in the suggestion list at once.',
+            minLength:
+              'Minimum number of characters required before the suggestion list appears.',
+            options: 'Full list of options available for filtering and selection.',
+            placeholder: 'Placeholder shown while the field is empty.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            size: 'Visual size of the field.',
+            value: 'Current field value, two-way bindable via [(value)].',
+            blurred: 'Fires when the input loses focus.',
+            changed:
+              'Fires whenever the input text changes, including on free-text edits.',
+            focused: 'Fires when the input receives focus.',
+            selected: 'Fires when the user picks an option from the suggestion list.',
+            close: 'Closes the suggestion list without changing the current value.',
+            focus: 'Moves keyboard focus to the underlying text input.',
+            selectOption:
+              'Programmatically selects the given option, updating the value and closing the list.',
+          },
+          'command-palette': {
+            emptyMessage:
+              "Message shown when the search query matches no items, falling back to the active locale's translation when omitted.",
+            items: 'Full list of command items available for search and execution.',
+            open: 'Whether the palette dialog is open, two-way bindable via [(open)].',
+            placeholder: 'Placeholder shown inside the search input while it is empty.',
+            execute: 'Fires when the user selects a command, emitting the chosen item.',
+            showActiveHighlight:
+              'Returns whether the active row should render its highlighted background for the given flat index.',
+          },
+          tabs: {
+            activeTab:
+              'Value of the currently active tab, two-way bindable via [(activeTab)].',
+            size: 'Visual size of the tabs.',
+            variant: 'Visual style of the tab bar: underline or filled.',
+            changed:
+              'Fires with the value of the newly active tab whenever the active tab changes.',
+            registerTab:
+              'Registers a child tab so it appears in the tab bar; called automatically by ea-tab.',
+            selectTab: 'Programmatically activates the tab with the given value.',
+            unregisterTab:
+              'Removes a previously registered child tab; called automatically by ea-tab.',
+          },
+          tab: {
+            disabled: 'Disables this tab, preventing the user from selecting it.',
+            id: 'id applied to the tab button and its panel, auto-generated when omitted.',
+            label: 'Text label shown on the tab button.',
+            value:
+              'Unique value that identifies this tab within its parent ea-tabs group.',
+          },
+          'date-picker': {
+            disabled: 'Disables the date picker.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            format: 'Display format of the selected date (short, medium, or long).',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            locale:
+              'BCP 47 locale tag used for date formatting, falling back to the global locale when omitted.',
+            maxDate:
+              'Latest date the user can select; dates after this are disabled in the calendar.',
+            minDate:
+              'Earliest date the user can select; dates before this are disabled in the calendar.',
+            placeholder: 'Placeholder shown on the trigger while no date is selected.',
+            readonly: 'Renders the field read-only, keeping the calendar from opening.',
+            required: 'Marks the field as required.',
+            size: 'Visual size of the date picker trigger.',
+            value: 'Current selected date, two-way bindable via [(value)].',
+            weekStartsOn:
+              'First day of the week in the calendar grid (0 for Sunday, 1 for Monday).',
+            changed: 'Fires when the selected date changes, including when cleared.',
+            clear: 'Clears the selected date and emits changed with null.',
+            close: 'Closes the calendar popover.',
+            focus: 'Moves keyboard focus to the trigger button.',
+            onPopoverCloseRequested:
+              'Closes the popover when the user clicks outside the date picker.',
+            open: 'Opens the calendar popover and moves focus to the focused day cell.',
+            toggle: 'Toggles the calendar popover between open and closed.',
+          },
+          menu: {
+            ariaLabel:
+              'Accessible label for the menu list, falling back to the active locale when omitted.',
+            disabled: 'Disables the menu, preventing it from opening.',
+            id: 'id applied to the menu list element, auto-generated when omitted.',
+            open: 'Whether the menu is open, two-way bindable via [(open)].',
+            placement: 'Placement of the menu list relative to its trigger element.',
+            closed: 'Fires when the menu closes.',
+            opened: 'Fires when the menu opens.',
+            close:
+              'Closes the menu and optionally restores focus to the trigger element.',
+            focusFirstItem: 'Moves keyboard focus to the first enabled item in the menu.',
+            onPopoverCloseRequested: 'Closes the menu when the user clicks outside it.',
+            openAt:
+              'Opens the menu anchored to the given trigger element and focuses the first item.',
+            toggleAt:
+              'Toggles the menu open state, anchoring it to the given trigger element.',
+          },
+          'menu-item': {
+            disabled: 'Disables the item and suppresses click events.',
+            variant: 'Visual style of the item; use danger for destructive actions.',
+            clicked:
+              'Fires when the item is activated; the parent menu closes immediately afterwards.',
+          },
+          'multi-select': {
+            disabled: 'Disables the multi-select.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            maxVisibleChips:
+              'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
+            options: 'List of selectable options rendered in the dropdown list.',
+            placeholder: 'Placeholder shown on the trigger while no option is selected.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            searchable: 'Shows the search input at the top of the popover.',
+            searchPlaceholder:
+              'Placeholder shown inside the search input when the search term is empty.',
+            selectAll:
+              'Shows the tri-state select-all row at the top of the option list.',
+            size: 'Visual size of the multi-select trigger.',
+            value: 'Selected option values, two-way bindable via [(value)].',
+            changed: 'Fires with the new value whenever the selection changes.',
+            clear: 'Clears every selection and stops the event from propagating.',
+            handlePopoverKeydown:
+              'Handles keyboard navigation inside the open popover, routing arrow keys, Enter, Space, and Escape.',
+            onPopoverCloseRequested:
+              'Called by the popover when the user clicks outside or scrolls; closes the panel and marks the field touched.',
+            orderedValues:
+              'Returns the given value set reordered to match the input options array.',
+            removeChip: 'Removes the given option from the current selection.',
+            toggleOption:
+              "Toggles the given option's membership in the current selection.",
+            toggleSelectAll:
+              'Selects all filtered options if any are unselected, or deselects all filtered options if all are selected.',
+          },
+          dropdown: {
+            disabled: 'Disables the dropdown.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            options: 'List of selectable options rendered in the dropdown list.',
+            placeholder: 'Placeholder shown on the trigger while no option is selected.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            size: 'Visual size of the dropdown trigger.',
+            value: 'Current selected value, two-way bindable via [(value)].',
+            changed: 'Fires with the new value when the user selects an option.',
+            close: 'Closes the dropdown list without changing the current value.',
+            focus: 'Moves keyboard focus to the dropdown trigger.',
+            onPopoverCloseRequested:
+              'Called by the popover when the user clicks outside the dropdown; closes the panel and marks the field touched.',
+            select: 'Programmatically selects the given option and closes the list.',
+            toggle: 'Toggles the dropdown list between open and closed.',
+          },
+          'file-uploader': {
+            accept:
+              "Comma-separated MIME types and file extensions the dropzone accepts, e.g. 'image/*,.pdf'.",
+            disabled: 'Disables the uploader.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the dropzone and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the field.',
+            maxFiles:
+              'Maximum total number of files; files beyond the limit are rejected.',
+            maxSize: 'Maximum size per file in bytes; larger files are rejected.',
+            multiple: 'Allows selecting more than one file at a time.',
+            progress:
+              'Per-file upload progress map (0-100) keyed by File identity; omit to hide progress bars.',
+            required: 'Marks the field as required.',
+            showFileList: 'Shows the list of selected files below the dropzone.',
+            size: 'Visual size of the uploader.',
+            value: 'Current file list, two-way bindable via [(value)].',
+            fileRemoved: "Fires when a file is removed via its row's remove button.",
+            rejected:
+              'Fires when one or more files fail validation, with the reason for each rejection.',
+            trackFile:
+              'Returns a stable track key for a file, used internally by the file list.',
+          },
+          popover: {
+            anchor: 'Host element or ElementRef the popover positions itself against.',
+            ariaLabel:
+              'Accessible label for the popover surface; provide one when the popover contains no visible heading.',
+            clamp:
+              'Clamps the popover inside the viewport when it would otherwise overflow.',
+            closeOnEscape: 'Closes the popover when Escape is pressed.',
+            closeOnOutsideClick:
+              'Closes the popover when the user clicks outside both the popover and its anchor.',
+            flip: 'Flips to the opposite side when the requested placement overflows the viewport.',
+            matchAnchorWidth: "Sets the popover's min-width to match the anchor's width.",
+            offset: 'Gap in px between the anchor and the popover surface.',
+            open: 'Whether the popover is currently open.',
+            placement: 'Preferred position of the popover relative to its anchor.',
+            role: 'ARIA role applied to the popover surface.',
+            scrollBehavior:
+              'How the popover responds to scroll and resize events while open: reposition, close, or ignore.',
+            surfaceId:
+              'DOM id for the popover surface, used by trigger elements via aria-controls.',
+            closeRequested:
+              'Fires when the popover requests to be closed; the parent should mirror this into [open].',
+          },
+          'accordion-item': {
+            disabled: 'Disables this item, preventing it from being toggled.',
+            id: "id applied to the item's header button and panel, auto-generated when omitted.",
+            label: "Text shown in the item's header button.",
+            value: 'Unique key that identifies this item within its parent accordion.',
+          },
+          breadcrumbs: {
+            ariaLabel:
+              "Accessible label for the breadcrumb nav, falling back to the active locale's translation when omitted.",
+            items:
+              'Array of breadcrumb entries; items with an href render as links, others as buttons, and the last is non-interactive.',
+            separator: 'Visual style of the separator rendered between breadcrumb items.',
+            clicked: 'Fires when a non-disabled, non-final breadcrumb is activated.',
+          },
+          drawer: {
+            ariaLabel:
+              'Accessible label for the drawer panel when its heading is not descriptive enough.',
+            closeOnBackdrop: 'Closes the drawer when the user clicks the backdrop.',
+            closeOnEscape: 'Closes the drawer when the user presses the Escape key.',
+            id: 'id applied to the dialog element, auto-generated when omitted.',
+            open: 'Whether the drawer is open, two-way bindable via [(open)].',
+            position: 'Edge of the viewport from which the drawer slides in.',
+            showClose: 'Shows the close button in the drawer header.',
+            size: 'Deprecated width preset for the drawer panel; use width instead.',
+            width: 'Width of the drawer panel along its primary axis.',
+            closed:
+              'Fires when the drawer closes, whether via the close button, backdrop, or Escape.',
+            opened: 'Fires once the drawer has been shown via showModal().',
+          },
+          'data-table': {
+            bordered: 'Renders a border around every cell.',
+            columns:
+              "Column definitions describing each field's key, label, and optional sorting or template.",
+            data: 'Array of row objects to display in the table.',
+            density:
+              'Vertical density preset controlling the row and header cell padding.',
+            hoverable: 'Highlights the row under the pointer on hover.',
+            noDataText:
+              "Text shown in the empty state, falling back to the active locale's translation.",
+            sort: 'Current sort state (column key and direction), two-way bindable via [(sort)].',
+            stickyHeader:
+              'Fixes the header row to the top of the table when the content scrolls.',
+            striped: 'Applies alternating background shading to odd and even rows.',
+            trackBy:
+              "Row property key used by Angular's change detection to identify rows efficiently.",
+            sorted:
+              'Fires whenever the sort column or direction changes via a header click.',
+          },
+          'radio-group': {
+            ariaLabel:
+              'Accessible label for the group when no visible label is rendered.',
+            disabled: 'Disables all radio options in the group.',
+            errorMsg:
+              'Error message shown below the group, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the group, hidden while an error is showing.',
+            id: 'id applied to the group element and its label for, auto-generated when omitted.',
+            label: 'Text label rendered above the group.',
+            name: 'Shared name attribute applied to all radio inputs in the group, auto-generated when omitted.',
+            orientation: 'Layout direction of the radio options within the group.',
+            required: 'Marks the group as required.',
+            size: 'Visual size applied to all radio options in the group.',
+            value: 'Currently selected value, two-way bindable via [(value)].',
+            changed: 'Fires with the new value when the user selects an option.',
+            select: 'Programmatically selects the option with the given value.',
+          },
+          segmented: {
+            ariaLabel:
+              'Accessible label for the control when no visible label is rendered.',
+            disabled: 'Disables the segmented control.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            fullWidth: 'Stretches the control to fill the width of its container.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            id: 'id applied to the control and label for, auto-generated when omitted.',
+            label: 'Text label rendered above the control.',
+            options: 'Array of options rendered as toggle buttons within the control.',
+            required: 'Marks the field as required.',
+            size: 'Visual size of the segmented control.',
+            value: 'Currently selected option value, two-way bindable via [(value)].',
+            changed: 'Fires with the new value when the user selects a different option.',
+            select: 'Programmatically selects the given option.',
+          },
+          'tree-node': {
+            collapseLabel: 'Accessible label for the collapse chevron button.',
+            disabled: 'Disables interaction with the node and its descendants.',
+            expandedIds: 'Set of node ids that are currently expanded.',
+            expandLabel: 'Accessible label for the expand chevron button.',
+            focusedId: 'Id of the node that currently holds the roving tabindex focus.',
+            level:
+              'Depth from the tree root (0-indexed), used for indentation and aria-level.',
+            node: 'Data object describing this node, including its id, label, children, and disabled state.',
+            posInSet:
+              "1-indexed position among the parent node's children, used for aria-posinset.",
+            selectedId:
+              'Id of the currently selected node, or null when nothing is selected.',
+            setSize:
+              "Total number of siblings in the parent node's children list, used for aria-setsize.",
+            select: 'Fires when the user clicks or activates the node row.',
+            toggle:
+              'Fires with the node id when the user clicks the expand or collapse chevron.',
+          },
+          tree: {
+            ariaLabel: 'Accessible label for the tree widget.',
+            disabled: 'Disables all nodes in the tree.',
+            expandedIds:
+              'Ids of currently expanded branch nodes, two-way bindable via [(expandedIds)].',
+            nodes: 'Array of tree node data objects that defines the hierarchy.',
+            selectedId:
+              'Id of the currently selected node, two-way bindable via [(selectedId)].',
+            size: 'Visual size of the tree, scaling text and spacing proportionally.',
+            nodeClick: 'Fires with the node data when the user selects a node.',
+          },
+          step: {
+            completed: 'Marks the step as completed, updating its visual indicator.',
+            disabled: 'Prevents the step from being activated.',
+            id: 'id applied to the step panel and its tab, auto-generated when omitted.',
+            label: 'Text label shown in the step indicator.',
+            optional: 'Marks the step as optional, shown as a hint below the step label.',
+          },
+          stepper: {
+            activeStep:
+              'Zero-based index of the currently active step, two-way bindable via [(activeStep)].',
+            disabled: 'Disables the entire stepper and all step navigation.',
+            id: 'id applied to the stepper host element, auto-generated when omitted.',
+            linear:
+              'Requires each non-optional step to be marked completed before the user can advance.',
+            size: 'Visual size of the stepper, scaling the step indicators and labels together.',
+            changed:
+              'Fires with the new active step index when the user navigates to a different step.',
+            canNavigateTo:
+              'Returns whether the step at the given index is reachable from the current state.',
+            indexOf:
+              'Returns the index of the given step, or -1 if it is not registered.',
+            selectStep: 'Activate the step at the given index if it is reachable.',
+          },
+          'transfer-list': {
+            disabled: 'Disables the entire transfer list and all move controls.',
+            items: 'Full pool of items available across both panes, identified by id.',
+            selectedIds:
+              'Ids of the items currently on the target (right) side, two-way bindable via [(selectedIds)].',
+            size: 'Visual size of the transfer list.',
+            sourceLabel:
+              "Heading rendered above the source (left) pane, falling back to the active locale's default.",
+            targetLabel:
+              "Heading rendered above the target (right) pane, falling back to the active locale's default.",
+          },
+          'virtual-list': {
+            itemHeight:
+              'Pixel height of each row; all rows must share the same fixed height.',
+            items:
+              'Full array of data items to render; only the visible slice is mounted at any time.',
+            overscan:
+              'Number of extra rows rendered above and below the visible window to reduce blank edges during fast scrolling.',
+            viewportHeight: 'Pixel height of the scrolling viewport.',
+            scrollIndexChange:
+              'Fires with the index of the first row visible at the top of the viewport whenever the user scrolls.',
+            scrollToIndex:
+              'Scroll the viewport so that the row at the given index appears at the top, clamped to the list bounds.',
+          },
+          'field-label': {
+            forId:
+              'id of the associated control; renders a <label for> when set, otherwise a <span>.',
+            labelId:
+              'id applied to the rendered label element so controls can reference it via aria-labelledby.',
+            required: 'Shows a required indicator on the label.',
+            text: 'Label text rendered inside the label element.',
+          },
+          'field-messages': {
+            error:
+              'Error message to display; when set, the hint is hidden and the message is announced as an alert.',
+            hint: 'Helper text shown below the field when no error is present.',
+            id: 'Base id used to derive the aria ids for the error and hint elements.',
+          },
+          dialog: {
+            ariaLabel:
+              'Accessible label for the dialog when its header slot does not contain a visible title.',
+            closeOnBackdrop:
+              'Closes the dialog when the user clicks the backdrop area outside the panel.',
+            closeOnEscape: 'Closes the dialog when the user presses Escape.',
+            id: 'id applied to the native dialog element, auto-generated when omitted.',
+            open: 'Whether the dialog is shown, two-way bindable via [(open)].',
+            showClose: 'Shows the close button in the dialog header.',
+            size: 'Deprecated alias for width; use width instead.',
+            width: 'Width preset for the dialog panel.',
+            closed:
+              'Fires when the dialog closes, regardless of whether it was closed by the user or programmatically.',
+            opened: 'Fires once the dialog has been shown via showModal().',
           },
         },
       },

@@ -838,6 +838,7 @@ export const frFR: WebMessages = {
         colDescription: 'Description',
         requiredBadge: 'requis',
         twoWayBadge: 'bidirectionnel',
+        rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
           input: {
             label: 'Libellé',
@@ -1049,6 +1050,19 @@ export const frFR: WebMessages = {
             togglePasswordVisibility:
               'Bascule l’affichage du mot de passe pour les champs type="password".',
             icon: 'Composant d’icône de tête affiché avant le texte.',
+            max: 'Valeur maximale pour type="number" ; la valeur y est bornée à la perte de focus.',
+            maxLength:
+              'Nombre maximal de caractères ; appliqué pour type="number" où le maxlength natif est ignoré.',
+            min: 'Valeur minimale pour type="number" ; la valeur y est bornée à la perte de focus.',
+            minLength:
+              "Nombre minimal de caractères, transmis en tant qu'attribut natif minlength.",
+            step: 'Incrément de pas pour les champs type="number".',
+            clampToBounds:
+              "Borne une valeur numérique dans la plage min/max configurée une fois l'édition terminée.",
+          },
+          accordion: {
+            multi:
+              'Permet de garder plusieurs éléments ouverts à la fois au lieu d’un seul.',
           },
           alert: {
             dismissible:
@@ -1090,6 +1104,7 @@ export const frFR: WebMessages = {
               'Valeur de l’attribut natif aria-current, marquant le bouton comme l’élément actuel d’un ensemble.',
             clicked:
               'Émis lorsque le bouton est activé, supprimé lorsqu’il est désactivé ou en chargement.',
+            icon: "Composant d'icône optionnel rendu à gauche du libellé.",
           },
           card: {
             variant: 'Style visuel de la surface de la carte.',
@@ -1164,6 +1179,7 @@ export const frFR: WebMessages = {
           divider: {
             label: 'Libellé centré facultatif rendu au sein du trait de séparation.',
             orientation: 'Orientation dans laquelle s’étend le trait de séparation.',
+            thick: 'Affiche un trait plus épais.',
           },
           'eagami-wordmark': {
             variant:
@@ -1178,6 +1194,8 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle du bloc d’état vide.',
             headingLevel:
               'Niveau de titre utilisé pour le titre afin qu’il s’intègre au plan du document environnant.',
+            bordered: 'Affiche un cadre en pointillés autour du bloc.',
+            icon: "Composant d'icône optionnel rendu dans la zone média au-dessus du titre.",
           },
           paginator: {
             align:
@@ -1241,6 +1259,10 @@ export const frFR: WebMessages = {
               'Émis avec le nouveau tuple [low, high] chaque fois que l’un des curseurs se déplace.',
             commitThumb:
               'Aligne un curseur sur le pas le plus proche, le borne aux limites et le contraint par le curseur opposé.',
+            groupThousands:
+              "Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu'un formatValue personnalisé est fourni.",
+            formatDisplay:
+              "Formate une valeur pour l'affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.",
           },
           rating: {
             allowHalf:
@@ -1301,6 +1323,10 @@ export const frFR: WebMessages = {
             value: 'Valeur actuelle du curseur, liable en deux sens via [(value)].',
             changed:
               'Émis avec la nouvelle valeur alignée chaque fois que le curseur se déplace.',
+            groupThousands:
+              "Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu'un formatValue personnalisé est fourni.",
+            formatDisplay:
+              "Formate une valeur pour l'affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.",
           },
           spinner: {
             label:
@@ -1355,6 +1381,554 @@ export const frFR: WebMessages = {
             blurred: 'Émis lorsque le champ perd le focus.',
             focused: 'Émis lorsque le champ reçoit le focus.',
             focus: 'Place le focus clavier sur le textarea natif sous-jacent.',
+          },
+          'avatar-editor': {
+            accept:
+              "Types MIME acceptés par le sélecteur de fichiers, transmis à l'entrée native.",
+            canvasSize: 'Largeur et hauteur en pixels du canevas de recadrage carré.',
+            cropState:
+              "État de panoramique/zoom initial à restaurer lors du chargement d'une image source.",
+            currentSrc: "URL de l'image à charger dans l'éditeur à l'initialisation.",
+            exportQuality:
+              "Qualité JPEG/WebP utilisée lors de l'exportation de l'image recadrée, entre 0 et 1.",
+            exportType:
+              "Type MIME du blob d'image exporté (par ex. image/png ou image/jpeg).",
+            loading:
+              "Affiche un squelette de chargement pendant qu'une ressource externe se charge.",
+            maxFileSize:
+              'Taille maximale autorisée en octets ; les fichiers dépassant cette limite émettent errored.',
+            maxZoom: "Facteur de zoom maximal que l'utilisateur peut atteindre.",
+            minZoom: "Facteur de zoom minimal que l'utilisateur peut atteindre.",
+            shape:
+              "Forme du masque de recadrage appliquée au canevas et à l'image exportée.",
+            cropped:
+              "Émis lorsque l'utilisateur exporte un recadrage, fournissant à la fois un Blob et une URL de données.",
+            cropStateChanged:
+              "Émis à chaque fois que l'utilisateur déplace ou zoome l'image, utile pour conserver l'état d'édition.",
+            errored:
+              'Émis avec un message lisible lorsque la validation du fichier échoue.',
+            fileSelected:
+              "Émis lorsqu'un fichier est choisi depuis le disque ou déposé sur l'éditeur.",
+            removed:
+              "Émis lorsque l'image actuelle est supprimée via le contrôle de suppression.",
+            captureOriginal:
+              "Marque l'image actuelle et l'état de recadrage comme référence pour revertImage.",
+            exportCrop:
+              'Rend le recadrage actuel sur un canevas hors écran, émet cropped et résout avec le Blob.',
+            openFilePicker: 'Ouvre la boîte de dialogue native de sélection de fichiers.',
+            removeImage:
+              "Efface l'image chargée et réinitialise le panoramique et le zoom aux valeurs par défaut.",
+            revertImage:
+              "Restaure l'image et l'état de recadrage capturés par le dernier appel à captureOriginal.",
+            setZoom:
+              'Définit le niveau de zoom, limité à la plage minZoom/maxZoom configurée.',
+            updateImageDarkness:
+              "Échantillonne la région de recadrage visible pour déterminer si l'image est plus sombre que le gris moyen.",
+          },
+          eaMenuTrigger: {
+            menu: "L'instance ea-menu que ce déclencheur contrôle.",
+          },
+          eaTooltip: {
+            eaTooltip:
+              "Contenu textuel de l'infobulle affichée au survol et au focus clavier.",
+            tooltipPosition: "Position de l'infobulle par rapport à son élément hôte.",
+          },
+          'time-picker': {
+            disabled: 'Désactive le sélecteur.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            format:
+              "Format d'affichage du libellé déclencheur ; la valeur transmise est toujours en 24 h.",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            includeSeconds:
+              'Affiche une colonne des secondes en plus des heures et des minutes.',
+            label: 'Libellé affiché au-dessus du champ.',
+            minuteStep:
+              "Incrément auquel la colonne des minutes s'aligne lors d'un déplacement.",
+            placeholder:
+              "Texte indicatif affiché sur le déclencheur lorsqu'aucune heure n'est sélectionnée.",
+            readonly:
+              "Affiche le champ en lecture seule, empêchant l'ouverture de la popover.",
+            required: 'Marque le champ comme requis.',
+            secondStep:
+              "Incrément auquel la colonne des secondes s'aligne lors d'un déplacement.",
+            size: 'Taille visuelle du déclencheur du sélecteur.',
+            value:
+              'Heure actuelle au format HH:MM ou HH:MM:SS (24 h), liable en deux sens via [(value)], ou null si non définie.',
+            changed:
+              "Émis avec la nouvelle heure chaque fois que l'utilisateur modifie l'heure sélectionnée.",
+            advanceFocus:
+              "Déplace le focus vers la colonne d'unité suivante une fois la saisie d'un chiffre terminée.",
+            cannotExtend:
+              "Renvoie true lorsqu'aucun chiffre supplémentaire ne peut étendre valablement le tampon courant pour l'unité donnée.",
+            commitDigits:
+              "Analyse la chaîne de chiffres en tampon, la borne à la plage valide de l'unité et l'écrit dans la valeur.",
+            flushBuffer: "Valide tout tampon de chiffres en attente et l'efface.",
+            focusHoursWhenReady:
+              'Place le focus sur le champ des heures une fois la surface de la popover rendue dans le DOM.',
+            hoursFromTyped:
+              "Convertit une valeur d'heures saisie en son équivalent 24 h en tenant compte de la période AM/PM actuelle.",
+            onPopoverCloseRequested:
+              "Ferme la popover lorsque l'utilisateur clique en dehors du sélecteur.",
+            onSpinnerBlur:
+              "Valide tout tampon de chiffres en attente lorsqu'une colonne de défilement perd le focus.",
+            onSpinnerFocus:
+              "Sélectionne tout le texte d'une colonne de défilement lors de la prise de focus afin que la première frappe le remplace.",
+            onSpinnerInput:
+              'Gère la saisie de chiffres dans une colonne de défilement, met à jour le tampon et avance automatiquement le focus lorsque la colonne est pleine.',
+            startHold:
+              "Démarre une répétition par maintien sur un bouton chevron, incrémentant l'unité donnée et accélérant après un délai.",
+            step: "Incrémente ou décrémente la colonne d'unité donnée d'un incrément configuré.",
+            stopHold: 'Annule les minuteries de répétition par maintien en cours.',
+            togglePeriod:
+              'Bascule la période AM/PM en mode 12 h en inversant le décalage de 12 heures.',
+          },
+          autocomplete: {
+            disabled: 'Désactive le champ.',
+            emptyMessage:
+              "Message affiché dans la liste lorsqu'aucune option ne correspond à la saisie, avec repli sur la traduction de la locale active si omis.",
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du champ.',
+            maxResults:
+              "Nombre maximum d'options affichées à la fois dans la liste de suggestions.",
+            minLength:
+              "Nombre minimal de caractères requis avant l'affichage de la liste de suggestions.",
+            options:
+              'Liste complète des options disponibles pour le filtrage et la sélection.',
+            placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            size: 'Taille visuelle du champ.',
+            value: 'Valeur actuelle du champ, liable en deux sens via [(value)].',
+            blurred: 'Émis lorsque le champ perd le focus.',
+            changed:
+              'Émis à chaque modification du texte saisi, y compris lors des éditions libres.',
+            focused: 'Émis lorsque le champ reçoit le focus.',
+            selected:
+              "Émis lorsque l'utilisateur sélectionne une option dans la liste de suggestions.",
+            close: 'Ferme la liste de suggestions sans modifier la valeur actuelle.',
+            focus: 'Place le focus clavier sur le champ texte sous-jacent.',
+            selectOption:
+              "Sélectionne par programme l'option donnée, met à jour la valeur et ferme la liste.",
+          },
+          'command-palette': {
+            emptyMessage:
+              'Message affiché lorsque la recherche ne correspond à aucun élément, avec repli sur la traduction de la locale active si omis.',
+            items:
+              "Liste complète des commandes disponibles pour la recherche et l'exécution.",
+            open: 'Indique si la boîte de dialogue est ouverte, liable en deux sens via [(open)].',
+            placeholder:
+              "Texte indicatif affiché dans le champ de recherche lorsqu'il est vide.",
+            execute:
+              "Émis lorsque l'utilisateur sélectionne une commande, transmettant l'élément choisi.",
+            showActiveHighlight:
+              "Indique si la ligne active doit afficher son arrière-plan mis en évidence pour l'index plat donné.",
+          },
+          tabs: {
+            activeTab:
+              "Valeur de l'onglet actuellement actif, liable en deux sens via [(activeTab)].",
+            size: 'Taille visuelle des onglets.',
+            variant: "Style visuel de la barre d'onglets : souligné ou rempli.",
+            changed:
+              "Émis avec la valeur du nouvel onglet actif à chaque changement d'onglet actif.",
+            registerTab:
+              "Enregistre un onglet enfant pour qu'il apparaisse dans la barre ; appelé automatiquement par ea-tab.",
+            selectTab: "Active par programme l'onglet correspondant à la valeur donnée.",
+            unregisterTab:
+              'Supprime un onglet enfant précédemment enregistré ; appelé automatiquement par ea-tab.',
+          },
+          tab: {
+            disabled: "Désactive cet onglet, empêchant l'utilisateur de le sélectionner.",
+            id: "id appliqué au bouton de l'onglet et à son panneau, généré automatiquement si omis.",
+            label: "Libellé affiché sur le bouton de l'onglet.",
+            value:
+              'Valeur unique identifiant cet onglet au sein de son groupe ea-tabs parent.',
+          },
+          'date-picker': {
+            disabled: 'Désactive le sélecteur de date.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            format: "Format d'affichage de la date sélectionnée (short, medium ou long).",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du champ.',
+            locale:
+              'Balise de locale BCP 47 pour le formatage des dates, revenant à la locale globale si omise.',
+            maxDate:
+              'Date la plus tardive sélectionnable ; les dates suivantes sont désactivées dans le calendrier.',
+            minDate:
+              'Date la plus ancienne sélectionnable ; les dates antérieures sont désactivées dans le calendrier.',
+            placeholder:
+              "Texte indicatif affiché sur le déclencheur lorsqu'aucune date n'est sélectionnée.",
+            readonly:
+              "Affiche le champ en lecture seule, empêchant l'ouverture du calendrier.",
+            required: 'Marque le champ comme requis.',
+            size: 'Taille visuelle du déclencheur du sélecteur de date.',
+            value: 'Date sélectionnée actuelle, liable en deux sens via [(value)].',
+            weekStartsOn:
+              'Premier jour de la semaine dans la grille du calendrier (0 pour dimanche, 1 pour lundi).',
+            changed:
+              "Émis lorsque la date sélectionnée change, y compris lors d'un effacement.",
+            clear: 'Efface la date sélectionnée et émet changed avec null.',
+            close: 'Ferme la popover du calendrier.',
+            focus: 'Place le focus clavier sur le bouton déclencheur.',
+            onPopoverCloseRequested:
+              "Ferme la popover lorsque l'utilisateur clique en dehors du sélecteur de date.",
+            open: 'Ouvre la popover du calendrier et place le focus sur la cellule du jour ciblé.',
+            toggle: 'Bascule la popover du calendrier entre ouvert et fermé.',
+          },
+          menu: {
+            ariaLabel:
+              'Libellé accessible de la liste du menu, revenant à la locale active si omis.',
+            disabled: "Désactive le menu et l'empêche de s'ouvrir.",
+            id: "id appliqué à l'élément de liste du menu, généré automatiquement si omis.",
+            open: 'Indique si le menu est ouvert, liable en deux sens via [(open)].',
+            placement:
+              'Position de la liste du menu par rapport à son élément déclencheur.',
+            closed: 'Émis lorsque le menu se ferme.',
+            opened: "Émis lorsque le menu s'ouvre.",
+            close:
+              "Ferme le menu et rétablit optionnellement le focus sur l'élément déclencheur.",
+            focusFirstItem:
+              'Place le focus clavier sur le premier élément activé du menu.',
+            onPopoverCloseRequested:
+              "Ferme le menu lorsque l'utilisateur clique en dehors.",
+            openAt:
+              "Ouvre le menu ancré à l'élément déclencheur donné et place le focus sur le premier élément.",
+            toggleAt:
+              "Bascule l'état du menu, en l'ancrant à l'élément déclencheur donné.",
+          },
+          'menu-item': {
+            disabled: "Désactive l'élément et supprime les événements de clic.",
+            variant:
+              "Style visuel de l'élément ; utiliser danger pour les actions destructives.",
+            clicked:
+              "Émis lorsque l'élément est activé ; le menu parent se ferme immédiatement après.",
+          },
+          'multi-select': {
+            disabled: 'Désactive le multi-select.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du champ.',
+            maxVisibleChips:
+              'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
+            options:
+              'Liste des options sélectionnables affichées dans la liste déroulante.',
+            placeholder:
+              "Texte indicatif affiché sur le déclencheur lorsqu'aucune option n'est sélectionnée.",
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            searchable: 'Affiche le champ de recherche en haut de la popover.',
+            searchPlaceholder:
+              'Texte indicatif affiché dans le champ de recherche lorsque la saisie est vide.',
+            selectAll:
+              "Affiche la ligne de sélection totale à trois états en haut de la liste d'options.",
+            size: 'Taille visuelle du déclencheur du multi-select.',
+            value:
+              'Valeurs des options sélectionnées, liables en deux sens via [(value)].',
+            changed: 'Émis avec la nouvelle valeur chaque fois que la sélection change.',
+            clear:
+              "Efface toutes les sélections et arrête la propagation de l'événement.",
+            handlePopoverKeydown:
+              'Gère la navigation clavier dans la popover ouverte, en traitant les touches fléchées, Entrée, Espace et Échap.',
+            onPopoverCloseRequested:
+              "Appelé par la popover lorsque l'utilisateur clique en dehors ou fait défiler ; ferme le panneau et marque le champ comme touché.",
+            orderedValues:
+              "Renvoie l'ensemble de valeurs donné réordonné pour correspondre au tableau d'options d'entrée.",
+            removeChip: "Supprime l'option donnée de la sélection actuelle.",
+            toggleOption:
+              "Bascule l'appartenance de l'option donnée à la sélection actuelle.",
+            toggleSelectAll:
+              'Sélectionne toutes les options filtrées si certaines sont désélectionnées, ou désélectionne toutes les options filtrées si toutes sont sélectionnées.',
+          },
+          dropdown: {
+            disabled: 'Désactive le menu déroulant.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du champ.',
+            options:
+              'Liste des options sélectionnables affichées dans la liste déroulante.',
+            placeholder:
+              "Texte indicatif affiché sur le déclencheur lorsqu'aucune option n'est sélectionnée.",
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            size: 'Taille visuelle du déclencheur du menu déroulant.',
+            value: 'Valeur sélectionnée actuelle, liable en deux sens via [(value)].',
+            changed:
+              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une option.",
+            close: 'Ferme la liste déroulante sans modifier la valeur actuelle.',
+            focus: 'Place le focus clavier sur le déclencheur du menu déroulant.',
+            onPopoverCloseRequested:
+              "Appelé par la popover lorsque l'utilisateur clique en dehors du menu déroulant ; ferme le panneau et marque le champ comme touché.",
+            select: "Sélectionne l'option donnée par programmation et ferme la liste.",
+            toggle: 'Bascule la liste déroulante entre ouverte et fermée.',
+          },
+          'file-uploader': {
+            accept:
+              "Types MIME et extensions de fichier acceptés par la zone de dépôt, séparés par des virgules, ex. 'image/*,.pdf'.",
+            disabled: 'Désactive le téléverseur.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué à la zone de dépôt et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du champ.',
+            maxFiles:
+              'Nombre total maximal de fichiers ; les fichiers excédentaires sont rejetés.',
+            maxSize:
+              'Taille maximale par fichier en octets ; les fichiers plus volumineux sont rejetés.',
+            multiple: 'Permet de sélectionner plusieurs fichiers à la fois.',
+            progress:
+              'Carte de progression du téléversement par fichier (0-100) indexée par identité de File ; omettez-la pour masquer les barres de progression.',
+            required: 'Marque le champ comme requis.',
+            showFileList:
+              'Affiche la liste des fichiers sélectionnés sous la zone de dépôt.',
+            size: 'Taille visuelle du téléverseur.',
+            value: 'Liste de fichiers actuelle, liable en deux sens via [(value)].',
+            fileRemoved:
+              "Émis lorsqu'un fichier est supprimé via le bouton de suppression de sa ligne.",
+            rejected:
+              "Émis lorsqu'un ou plusieurs fichiers échouent à la validation, avec la raison de chaque rejet.",
+            trackFile:
+              'Retourne une clé de suivi stable pour un fichier, utilisée en interne par la liste de fichiers.',
+          },
+          popover: {
+            anchor:
+              'Élément hôte ou ElementRef par rapport auquel le popover se positionne.',
+            ariaLabel:
+              'Libellé accessible de la surface du popover ; à fournir lorsque le popover ne contient pas de titre visible.',
+            clamp:
+              "Maintient le popover dans la fenêtre d'affichage lorsqu'il déborderait sinon.",
+            closeOnEscape: 'Ferme le popover lorsque la touche Échap est pressée.',
+            closeOnOutsideClick:
+              "Ferme le popover lorsque l'utilisateur clique en dehors du popover et de son ancre.",
+            flip: "Bascule vers le côté opposé lorsque le placement demandé déborde de la fenêtre d'affichage.",
+            matchAnchorWidth:
+              "Définit la largeur minimale du popover pour correspondre à celle de l'ancre.",
+            offset: "Écart en px entre l'ancre et la surface du popover.",
+            open: 'Indique si le popover est actuellement ouvert.',
+            placement: 'Position préférée du popover par rapport à son ancre.',
+            role: 'Rôle ARIA appliqué à la surface du popover.',
+            scrollBehavior:
+              "Comportement du popover lors des événements de défilement et de redimensionnement lorsqu'il est ouvert : reposition, close ou ignore.",
+            surfaceId:
+              'id DOM de la surface du popover, utilisé par les éléments déclencheurs via aria-controls.',
+            closeRequested:
+              'Émis lorsque le popover demande à être fermé ; le parent doit répercuter cela dans [open].',
+          },
+          'accordion-item': {
+            disabled: 'Désactive cet élément et empêche son ouverture/fermeture.',
+            id: "id appliqué au bouton d'en-tête et au panneau de l'élément, généré automatiquement si omis.",
+            label: "Texte affiché dans le bouton d'en-tête de l'élément.",
+            value: 'Clé unique qui identifie cet élément dans son accordéon parent.',
+          },
+          breadcrumbs: {
+            ariaLabel:
+              "Libellé accessible de la navigation de fil d'Ariane, basculant sur la traduction de la locale active si omis.",
+            items:
+              "Tableau d'entrées de fil d'Ariane ; les éléments avec href s'affichent comme liens, les autres comme boutons, et le dernier est non interactif.",
+            separator:
+              "Style visuel du séparateur affiché entre les éléments du fil d'Ariane.",
+            clicked:
+              "Émis lorsqu'un élément du fil d'Ariane non désactivé et non final est activé.",
+          },
+          drawer: {
+            ariaLabel:
+              "Libellé accessible du panneau du tiroir lorsque son titre n'est pas suffisamment descriptif.",
+            closeOnBackdrop:
+              "Ferme le tiroir lorsque l'utilisateur clique sur l'arrière-plan.",
+            closeOnEscape:
+              "Ferme le tiroir lorsque l'utilisateur appuie sur la touche Échap.",
+            id: "id appliqué à l'élément dialog, généré automatiquement si omis.",
+            open: 'Indique si le tiroir est ouvert, liable en deux sens via [(open)].',
+            position: "Bord de la fenêtre depuis lequel le tiroir s'ouvre en glissant.",
+            showClose: "Affiche le bouton de fermeture dans l'en-tête du tiroir.",
+            size: 'Préréglage de largeur obsolète du panneau du tiroir ; utiliser width à la place.',
+            width: 'Largeur du panneau du tiroir sur son axe principal.',
+            closed:
+              "Émis lorsque le tiroir se ferme, que ce soit via le bouton, l'arrière-plan ou Échap.",
+            opened: 'Émis une fois le tiroir affiché via showModal().',
+          },
+          'data-table': {
+            bordered: 'Affiche une bordure autour de chaque cellule.',
+            columns:
+              'Définitions de colonnes décrivant la clé, le libellé et, éventuellement, le tri ou le modèle de chaque champ.',
+            data: "Tableau d'objets de lignes à afficher dans le tableau.",
+            density:
+              "Préréglage de densité verticale contrôlant le rembourrage des lignes et des cellules d'en-tête.",
+            hoverable: 'Met en évidence la ligne sous le pointeur au survol.',
+            noDataText:
+              "Texte affiché dans l'état vide, avec repli sur la traduction de la locale active.",
+            sort: 'État de tri actuel (clé de colonne et direction), liable en deux sens via [(sort)].',
+            stickyHeader:
+              "Fixe la ligne d'en-tête en haut du tableau lorsque le contenu défile.",
+            striped:
+              "Applique un ombrage d'arrière-plan alterné aux lignes paires et impaires.",
+            trackBy:
+              "Clé de propriété de ligne utilisée par la détection de changement d'Angular pour identifier les lignes efficacement.",
+            sorted:
+              "Émis chaque fois que la colonne ou la direction de tri change via un clic sur l'en-tête.",
+          },
+          'radio-group': {
+            ariaLabel:
+              "Libellé accessible du groupe lorsqu'aucun libellé visible n'est rendu.",
+            disabled: 'Désactive toutes les options radio du groupe.',
+            errorMsg:
+              "Message d'erreur affiché sous le groupe, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le groupe, masqué en cas d'erreur.",
+            id: "id appliqué à l'élément du groupe et au for de son libellé, généré automatiquement si omis.",
+            label: 'Libellé textuel rendu au-dessus du groupe.',
+            name: 'Attribut name partagé appliqué à tous les boutons radio du groupe, généré automatiquement si omis.',
+            orientation: 'Direction de disposition des options radio au sein du groupe.',
+            required: 'Marque le groupe comme requis.',
+            size: 'Taille visuelle appliquée à toutes les options radio du groupe.',
+            value: 'Valeur actuellement sélectionnée, liable en deux sens via [(value)].',
+            changed:
+              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une option.",
+            select: "Sélectionne par programmation l'option avec la valeur donnée.",
+          },
+          segmented: {
+            ariaLabel:
+              "Libellé accessible du contrôle lorsqu'aucun libellé visible n'est affiché.",
+            disabled: 'Désactive le contrôle segmenté.',
+            errorMsg:
+              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+            fullWidth: 'Étire le contrôle pour remplir la largeur de son conteneur.',
+            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            id: 'id appliqué au contrôle et au for du libellé, généré automatiquement si omis.',
+            label: 'Libellé affiché au-dessus du contrôle.',
+            options:
+              "Tableau d'options affichées sous forme de boutons bascule dans le contrôle.",
+            required: 'Marque le champ comme requis.',
+            size: 'Taille visuelle du contrôle segmenté.',
+            value:
+              "Valeur de l'option actuellement sélectionnée, liable en deux sens via [(value)].",
+            changed:
+              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une autre option.",
+            select: "Sélectionne l'option donnée par programmation.",
+          },
+          'tree-node': {
+            collapseLabel: 'Libellé accessible du bouton chevron de réduction.',
+            disabled: "Désactive l'interaction avec le nœud et ses descendants.",
+            expandedIds: "Ensemble d'identifiants de nœuds actuellement développés.",
+            expandLabel: 'Libellé accessible du bouton chevron de développement.',
+            focusedId:
+              'Identifiant du nœud qui détient actuellement le focus de tabindex mobile.',
+            level:
+              "Profondeur depuis la racine de l'arbre (base 0), utilisée pour l'indentation et aria-level.",
+            node: 'Objet de données décrivant ce nœud, incluant son id, son libellé, ses enfants et son état désactivé.',
+            posInSet:
+              'Position (base 1) parmi les enfants du nœud parent, utilisée pour aria-posinset.',
+            selectedId:
+              "Identifiant du nœud actuellement sélectionné, ou null si aucun n'est sélectionné.",
+            setSize:
+              'Nombre total de frères dans la liste des enfants du nœud parent, utilisé pour aria-setsize.',
+            select: "Émis lorsque l'utilisateur clique ou active la ligne du nœud.",
+            toggle:
+              "Émis avec l'identifiant du nœud lorsque l'utilisateur clique sur le chevron d'expansion ou de réduction.",
+          },
+          tree: {
+            ariaLabel: 'Libellé accessible du composant arbre.',
+            disabled: "Désactive tous les nœuds de l'arbre.",
+            expandedIds:
+              'Identifiants des nœuds branche actuellement développés, liables en deux sens via [(expandedIds)].',
+            nodes: "Tableau d'objets de données de nœuds définissant la hiérarchie.",
+            selectedId:
+              'Identifiant du nœud actuellement sélectionné, liable en deux sens via [(selectedId)].',
+            size: "Taille visuelle de l'arbre, mettant à l'échelle le texte et l'espacement proportionnellement.",
+            nodeClick:
+              "Émis avec les données du nœud lorsque l'utilisateur sélectionne un nœud.",
+          },
+          step: {
+            completed:
+              "Marque l'étape comme terminée, mettant à jour son indicateur visuel.",
+            disabled: "Empêche l'activation de l'étape.",
+            id: "id appliqué au panneau de l'étape et à son onglet, généré automatiquement si omis.",
+            label: "Libellé affiché dans l'indicateur d'étape.",
+            optional:
+              "Marque l'étape comme facultative, affichée en indication sous le libellé.",
+          },
+          stepper: {
+            activeStep:
+              "Indice de l'étape active (base zéro), liable en deux sens via [(activeStep)].",
+            disabled:
+              "Désactive l'intégralité du stepper et toute navigation entre étapes.",
+            id: "id appliqué à l'élément hôte du stepper, généré automatiquement si omis.",
+            linear:
+              "Exige que chaque étape non optionnelle soit marquée comme terminée avant que l'utilisateur puisse avancer.",
+            size: "Taille visuelle du stepper, mettant à l'échelle les indicateurs et les libellés ensemble.",
+            changed:
+              "Émis avec le nouvel indice d'étape active lorsque l'utilisateur navigue vers une autre étape.",
+            canNavigateTo:
+              "Retourne si l'étape à l'indice donné est accessible depuis l'état actuel.",
+            indexOf:
+              "Retourne l'indice de l'étape donnée, ou -1 si elle n'est pas enregistrée.",
+            selectStep: "Active l'étape à l'indice donné si elle est accessible.",
+          },
+          'transfer-list': {
+            disabled:
+              "Désactive l'intégralité de la liste de transfert et tous les contrôles de déplacement.",
+            items:
+              'Ensemble complet des éléments disponibles dans les deux volets, identifiés par id.',
+            selectedIds:
+              'Ids des éléments actuellement dans le volet cible (droite), liables en deux sens via [(selectedIds)].',
+            size: 'Taille visuelle de la liste de transfert.',
+            sourceLabel:
+              'En-tête affiché au-dessus du volet source (gauche), revenant à la valeur locale active par défaut.',
+            targetLabel:
+              'En-tête affiché au-dessus du volet cible (droite), revenant à la valeur locale active par défaut.',
+          },
+          'virtual-list': {
+            itemHeight:
+              'Hauteur en pixels de chaque ligne ; toutes les lignes doivent partager la même hauteur fixe.',
+            items:
+              'Tableau complet des données à afficher ; seule la tranche visible est montée à tout moment.',
+            overscan:
+              'Nombre de lignes supplémentaires rendues au-dessus et en dessous de la fenêtre visible pour réduire les bords vides lors du défilement rapide.',
+            viewportHeight: 'Hauteur en pixels de la fenêtre de défilement.',
+            scrollIndexChange:
+              "Émis avec l'indice de la première ligne visible en haut de la fenêtre chaque fois que l'utilisateur fait défiler.",
+            scrollToIndex:
+              "Faire défiler la fenêtre pour que la ligne à l'indice donné apparaisse en haut, limité aux bornes de la liste.",
+          },
+          'field-label': {
+            forId:
+              'id du contrôle associé ; rend un <label for> si défini, sinon un <span>.',
+            labelId:
+              "id appliqué à l'élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.",
+            required: 'Affiche un indicateur de champ requis sur le libellé.',
+            text: "Texte du libellé affiché dans l'élément de libellé.",
+          },
+          'field-messages': {
+            error:
+              "Message d'erreur à afficher ; lorsqu'il est défini, l'indication est masquée et le message est annoncé comme une alerte.",
+            hint: "Texte d'aide affiché sous le champ en l'absence d'erreur.",
+            id: "id de base utilisé pour dériver les ids ARIA des éléments d'erreur et d'indication.",
+          },
+          dialog: {
+            ariaLabel:
+              "Libellé accessible de la boîte de dialogue lorsque son emplacement d'en-tête ne contient pas de titre visible.",
+            closeOnBackdrop:
+              "Ferme la boîte de dialogue lorsque l'utilisateur clique sur la zone d'arrière-plan en dehors du panneau.",
+            closeOnEscape:
+              "Ferme la boîte de dialogue lorsque l'utilisateur appuie sur Échap.",
+            id: "id appliqué à l'élément dialog natif, généré automatiquement si omis.",
+            open: 'Indique si la boîte de dialogue est affichée, liable en deux sens via [(open)].',
+            showClose:
+              "Affiche le bouton de fermeture dans l'en-tête de la boîte de dialogue.",
+            size: 'Alias obsolète de width ; utilisez width à la place.',
+            width: 'Préréglage de largeur du panneau de la boîte de dialogue.',
+            closed:
+              "Émis lorsque la boîte de dialogue se ferme, que ce soit par l'utilisateur ou de façon programmatique.",
+            opened:
+              'Émis une fois que la boîte de dialogue est affichée via showModal().',
           },
         },
       },

@@ -829,6 +829,7 @@ export const esES: WebMessages = {
         colDescription: 'Descripción',
         requiredBadge: 'obligatorio',
         twoWayBadge: 'bidireccional',
+        rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
           input: {
             label: 'Etiqueta',
@@ -1040,6 +1041,19 @@ export const esES: WebMessages = {
             togglePasswordVisibility:
               'Alterna la visibilidad de la contraseña para los campos type="password".',
             icon: 'Componente de icono inicial renderizado antes del texto.',
+            max: 'Valor máximo para type="number"; el valor se acota a él al perder el foco.',
+            maxLength:
+              'Número máximo de caracteres; aplicado para type="number" donde el maxlength nativo se ignora.',
+            min: 'Valor mínimo para type="number"; el valor se acota a él al perder el foco.',
+            minLength:
+              'Número mínimo de caracteres, pasado como atributo nativo minlength.',
+            step: 'Incremento de paso para los campos type="number".',
+            clampToBounds:
+              'Acota un valor numérico dentro del rango mín./máx. configurado una vez que finaliza la edición.',
+          },
+          accordion: {
+            multi:
+              'Permite mantener varios elementos abiertos a la vez en lugar de solo uno.',
           },
           alert: {
             dismissible:
@@ -1081,6 +1095,7 @@ export const esES: WebMessages = {
               'Valor del atributo nativo aria-current, que marca el botón como el elemento actual de un conjunto.',
             clicked:
               'Se emite cuando se activa el botón, suprimido mientras está deshabilitado o cargando.',
+            icon: 'Componente de icono opcional renderizado a la izquierda de la etiqueta.',
           },
           card: {
             variant: 'Estilo visual de la superficie de la tarjeta.',
@@ -1160,6 +1175,7 @@ export const esES: WebMessages = {
             label:
               'Etiqueta centrada opcional renderizada dentro de la línea del separador.',
             orientation: 'Orientación en la que se traza la línea del separador.',
+            thick: 'Muestra una regla más gruesa.',
           },
           'eagami-wordmark': {
             variant:
@@ -1174,6 +1190,8 @@ export const esES: WebMessages = {
             size: 'Tamaño visual del bloque de estado vacío.',
             headingLevel:
               'Nivel de encabezado usado para el título de modo que encaje en el esquema del documento circundante.',
+            bordered: 'Muestra un marco de línea discontinua alrededor del bloque.',
+            icon: 'Componente de icono opcional renderizado en el área de medios encima del título.',
           },
           paginator: {
             align:
@@ -1239,6 +1257,10 @@ export const esES: WebMessages = {
               'Se emite con la nueva tupla [bajo, alto] cada vez que se mueve cualquiera de los controles.',
             commitThumb:
               'Ajusta un control al paso más cercano, lo acota a los límites y lo restringe por el control opuesto.',
+            groupThousands:
+              'Agrupa los valores mostrados con separadores de miles, ignorado cuando se proporciona un formatValue personalizado.',
+            formatDisplay:
+              'Formatea un valor para su visualización, aplicando la agrupación de miles a menos que se establezca una función formatValue personalizada.',
           },
           rating: {
             allowHalf:
@@ -1304,6 +1326,10 @@ export const esES: WebMessages = {
               'Valor actual del control deslizante, vinculable en dos sentidos mediante [(value)].',
             changed:
               'Se emite con el nuevo valor ajustado cada vez que se mueve el control deslizante.',
+            groupThousands:
+              'Agrupa los valores mostrados con separadores de miles, ignorado cuando se proporciona un formatValue personalizado.',
+            formatDisplay:
+              'Formatea un valor para su visualización, aplicando la agrupación de miles a menos que se establezca una función formatValue personalizada.',
           },
           spinner: {
             label:
@@ -1360,6 +1386,552 @@ export const esES: WebMessages = {
             blurred: 'Se emite cuando el campo pierde el foco.',
             focused: 'Se emite cuando el campo recibe el foco.',
             focus: 'Lleva el foco del teclado al textarea nativo subyacente.',
+          },
+          'avatar-editor': {
+            accept:
+              'Tipos MIME aceptados por el selector de archivos, transmitidos al campo nativo.',
+            canvasSize: 'Ancho y alto en píxeles del lienzo de recorte cuadrado.',
+            cropState:
+              'Estado inicial de desplazamiento/zoom que se restaura al cargar una imagen fuente.',
+            currentSrc: 'URL de la imagen que se carga en el editor al inicializarse.',
+            exportQuality:
+              'Calidad JPEG/WebP al exportar la imagen recortada, entre 0 y 1.',
+            exportType:
+              'Tipo MIME del blob de imagen exportado (p. ej. image/png o image/jpeg).',
+            loading:
+              'Muestra un esqueleto de carga mientras se carga un recurso externo.',
+            maxFileSize:
+              'Tamaño máximo de archivo en bytes; los archivos que superan el límite emiten errored.',
+            maxZoom: 'Multiplicador de zoom máximo que puede alcanzar el usuario.',
+            minZoom: 'Multiplicador de zoom mínimo que puede alcanzar el usuario.',
+            shape:
+              'Forma de la máscara de recorte aplicada al lienzo y a la imagen exportada.',
+            cropped:
+              'Se emite cuando el usuario exporta un recorte, proporcionando un Blob y una URL de datos.',
+            cropStateChanged:
+              'Se emite cada vez que el usuario desplaza o amplía la imagen, útil para persistir el estado de edición.',
+            errored:
+              'Se emite con un mensaje legible cuando falla la validación del archivo.',
+            fileSelected:
+              'Se emite cuando se elige un archivo del disco o se suelta en el editor.',
+            removed:
+              'Se emite cuando la imagen actual se elimina mediante el control de eliminación.',
+            captureOriginal:
+              'Establece la imagen actual y el estado de recorte como referencia para revertImage.',
+            exportCrop:
+              'Renderiza el recorte actual en un lienzo fuera de pantalla, emite cropped y resuelve con el Blob.',
+            openFilePicker: 'Abre el cuadro de diálogo nativo de selección de archivos.',
+            removeImage:
+              'Elimina la imagen cargada y restablece el desplazamiento y el zoom a los valores predeterminados.',
+            revertImage:
+              'Restaura la imagen y el estado de recorte capturados por la llamada más reciente a captureOriginal.',
+            setZoom:
+              'Establece el nivel de zoom, limitado al rango configurado entre minZoom y maxZoom.',
+            updateImageDarkness:
+              'Muestrea la región de recorte visible para determinar si la imagen es más oscura que el gris medio.',
+          },
+          eaMenuTrigger: {
+            menu: 'La instancia ea-menu que controla este disparador.',
+          },
+          eaTooltip: {
+            eaTooltip:
+              'Contenido de texto de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado.',
+            tooltipPosition:
+              'Posición de la descripción emergente respecto a su elemento anfitrión.',
+          },
+          'time-picker': {
+            disabled: 'Deshabilita el selector.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            format:
+              'Formato de visualización de la etiqueta del activador; el valor transmitido es siempre en formato de 24 horas.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            includeSeconds:
+              'Muestra una columna de segundos junto a las horas y los minutos.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            minuteStep:
+              'Incremento al que se ajusta la columna de minutos al avanzar o arrastrar.',
+            placeholder:
+              'Marcador de posición mostrado en el activador mientras no hay ninguna hora seleccionada.',
+            readonly:
+              'Muestra el campo como de solo lectura, impidiendo que el popover se abra.',
+            required: 'Marca el campo como obligatorio.',
+            secondStep:
+              'Incremento al que se ajusta la columna de segundos al avanzar o arrastrar.',
+            size: 'Tamaño visual del activador del selector.',
+            value:
+              'Cadena de hora actual en HH:MM o HH:MM:SS (24 horas), vinculable en dos sentidos mediante [(value)], o null cuando no está establecida.',
+            changed:
+              'Se emite con la nueva cadena de hora cada vez que el usuario cambia la hora seleccionada.',
+            advanceFocus:
+              'Lleva el foco a la siguiente columna de unidad cuando la entrada de un dígito está completa.',
+            cannotExtend:
+              'Devuelve true cuando ningún dígito adicional puede extender válidamente el búfer actual para la unidad dada.',
+            commitDigits:
+              'Analiza la cadena de dígitos del búfer, la acota al rango válido de la unidad y la escribe en el valor.',
+            flushBuffer: 'Confirma cualquier búfer de dígitos pendiente y lo vacía.',
+            focusHoursWhenReady:
+              'Enfoca el campo de horas una vez que la superficie del popover se ha renderizado en el DOM.',
+            hoursFromTyped:
+              'Convierte un valor de horas introducido a su equivalente de 24 horas, teniendo en cuenta el periodo AM/PM actual.',
+            onPopoverCloseRequested:
+              'Cierra el popover cuando el usuario hace clic fuera del selector.',
+            onSpinnerBlur:
+              'Confirma cualquier búfer de dígitos pendiente cuando una columna del spinner pierde el foco.',
+            onSpinnerFocus:
+              'Selecciona todo el texto de una columna del spinner cuando recibe el foco, de modo que la primera pulsación de tecla lo reemplace.',
+            onSpinnerInput:
+              'Gestiona la entrada de dígitos en una columna del spinner, actualiza el búfer y avanza automáticamente el foco cuando la columna está llena.',
+            startHold:
+              'Inicia una repetición por pulsación larga en un botón de flecha, avanzando la unidad dada y acelerando tras un retardo.',
+            step: 'Avanza o retrocede la columna de unidad dada en un incremento configurado.',
+            stopHold:
+              'Cancela cualquier temporizador de repetición por pulsación larga en curso.',
+            togglePeriod:
+              'Cambia el periodo AM/PM en el modo de 12 horas invirtiendo el desplazamiento de 12 horas.',
+          },
+          autocomplete: {
+            disabled: 'Deshabilita el campo.',
+            emptyMessage:
+              'Mensaje mostrado en la lista cuando ninguna opción coincide con la entrada actual, con reserva en la traducción de la configuración regional activa si se omite.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al campo nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta mostrada encima del campo.',
+            maxResults:
+              'Número máximo de opciones mostradas a la vez en la lista de sugerencias.',
+            minLength:
+              'Número mínimo de caracteres necesarios para que aparezca la lista de sugerencias.',
+            options: 'Lista completa de opciones disponibles para filtrar y seleccionar.',
+            placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            size: 'Tamaño visual del campo.',
+            value:
+              'Valor actual del campo, vinculable en dos sentidos mediante [(value)].',
+            blurred: 'Se emite cuando el campo pierde el foco.',
+            changed:
+              'Se emite cada vez que cambia el texto de entrada, incluidas las ediciones de texto libre.',
+            focused: 'Se emite cuando el campo recibe el foco.',
+            selected:
+              'Se emite cuando el usuario elige una opción de la lista de sugerencias.',
+            close: 'Cierra la lista de sugerencias sin cambiar el valor actual.',
+            focus: 'Lleva el foco del teclado al campo de texto subyacente.',
+            selectOption:
+              'Selecciona mediante programación la opción dada, actualiza el valor y cierra la lista.',
+          },
+          'command-palette': {
+            emptyMessage:
+              'Mensaje mostrado cuando la consulta de búsqueda no coincide con ningún elemento, con reserva en la traducción de la configuración regional activa si se omite.',
+            items:
+              'Lista completa de elementos de comando disponibles para buscar y ejecutar.',
+            open: 'Indica si el cuadro de diálogo de la paleta está abierto, vinculable en dos sentidos mediante [(open)].',
+            placeholder:
+              'Texto de marcador mostrado dentro del campo de búsqueda mientras está vacío.',
+            execute:
+              'Se emite cuando el usuario selecciona un comando, emitiendo el elemento elegido.',
+            showActiveHighlight:
+              'Devuelve si la fila activa debe mostrar su fondo resaltado para el índice plano dado.',
+          },
+          tabs: {
+            activeTab:
+              'Valor de la pestaña actualmente activa, vinculable en dos sentidos mediante [(activeTab)].',
+            size: 'Tamaño visual de las pestañas.',
+            variant: 'Estilo visual de la barra de pestañas: subrayado o relleno.',
+            changed:
+              'Se emite con el valor de la pestaña recién activada cada vez que cambia la pestaña activa.',
+            registerTab:
+              'Registra una pestaña hija para que aparezca en la barra de pestañas; llamado automáticamente por ea-tab.',
+            selectTab: 'Activa mediante programación la pestaña con el valor dado.',
+            unregisterTab:
+              'Elimina una pestaña hija previamente registrada; llamado automáticamente por ea-tab.',
+          },
+          tab: {
+            disabled: 'Deshabilita esta pestaña, impidiendo al usuario seleccionarla.',
+            id: 'id aplicado al botón de pestaña y su panel, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada en el botón de pestaña.',
+            value:
+              'Valor único que identifica esta pestaña dentro de su grupo ea-tabs padre.',
+          },
+          'date-picker': {
+            disabled: 'Deshabilita el selector de fecha.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            format:
+              'Formato de visualización de la fecha seleccionada (short, medium o long).',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta mostrada encima del campo.',
+            locale:
+              'Etiqueta de configuración regional BCP 47 para el formato de fecha, usando la configuración global si se omite.',
+            maxDate:
+              'Fecha más tardía que el usuario puede seleccionar; las fechas posteriores quedan deshabilitadas en el calendario.',
+            minDate:
+              'Fecha más temprana que el usuario puede seleccionar; las fechas anteriores quedan deshabilitadas en el calendario.',
+            placeholder:
+              'Texto de marcador mostrado en el activador cuando no hay ninguna fecha seleccionada.',
+            readonly:
+              'Muestra el campo como de solo lectura, impidiendo que se abra el calendario.',
+            required: 'Marca el campo como obligatorio.',
+            size: 'Tamaño visual del activador del selector de fecha.',
+            value:
+              'Fecha seleccionada actual, vinculable en dos sentidos mediante [(value)].',
+            weekStartsOn:
+              'Primer día de la semana en la cuadrícula del calendario (0 para domingo, 1 para lunes).',
+            changed: 'Se emite cuando cambia la fecha seleccionada, incluso al borrarla.',
+            clear: 'Borra la fecha seleccionada y emite changed con null.',
+            close: 'Cierra el popover del calendario.',
+            focus: 'Lleva el foco del teclado al botón activador.',
+            onPopoverCloseRequested:
+              'Cierra el popover cuando el usuario hace clic fuera del selector de fecha.',
+            open: 'Abre el popover del calendario y lleva el foco a la celda del día enfocado.',
+            toggle: 'Alterna el popover del calendario entre abierto y cerrado.',
+          },
+          menu: {
+            ariaLabel:
+              'Etiqueta accesible para la lista del menú, usando la configuración regional activa si se omite.',
+            disabled: 'Deshabilita el menú, impidiendo que se abra.',
+            id: 'id aplicado al elemento de lista del menú, generado automáticamente si se omite.',
+            open: 'Indica si el menú está abierto, vinculable en dos sentidos mediante [(open)].',
+            placement: 'Posición de la lista del menú respecto a su elemento activador.',
+            closed: 'Se emite cuando el menú se cierra.',
+            opened: 'Se emite cuando el menú se abre.',
+            close:
+              'Cierra el menú y opcionalmente devuelve el foco al elemento activador.',
+            focusFirstItem:
+              'Lleva el foco del teclado al primer elemento habilitado del menú.',
+            onPopoverCloseRequested:
+              'Cierra el menú cuando el usuario hace clic fuera de él.',
+            openAt:
+              'Abre el menú anclado al elemento activador dado y enfoca el primer elemento.',
+            toggleAt:
+              'Alterna el estado de apertura del menú, anclándolo al elemento activador dado.',
+          },
+          'menu-item': {
+            disabled: 'Deshabilita el elemento y suprime los eventos de clic.',
+            variant: 'Estilo visual del elemento; use danger para acciones destructivas.',
+            clicked:
+              'Se emite cuando se activa el elemento; el menú padre se cierra inmediatamente después.',
+          },
+          'multi-select': {
+            disabled: 'Deshabilita el multi-select.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            maxVisibleChips:
+              'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
+            options:
+              'Lista de opciones seleccionables mostradas en la lista desplegable.',
+            placeholder:
+              'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            searchable: 'Muestra el campo de búsqueda en la parte superior del popover.',
+            searchPlaceholder:
+              'Marcador de posición mostrado dentro del campo de búsqueda cuando el término de búsqueda está vacío.',
+            selectAll:
+              'Muestra la fila de seleccionar todo con tres estados en la parte superior de la lista de opciones.',
+            size: 'Tamaño visual del activador del multi-select.',
+            value:
+              'Valores de las opciones seleccionadas, vinculables en dos sentidos mediante [(value)].',
+            changed: 'Se emite con el nuevo valor cada vez que cambia la selección.',
+            clear: 'Borra todas las selecciones y detiene la propagación del evento.',
+            handlePopoverKeydown:
+              'Gestiona la navegación con teclado dentro del popover abierto, enrutando las teclas de flecha, Enter, Espacio y Escape.',
+            onPopoverCloseRequested:
+              'Lo llama el popover cuando el usuario hace clic fuera o desplaza la página; cierra el panel y marca el campo como tocado.',
+            orderedValues:
+              'Devuelve el conjunto de valores dado reordenado para coincidir con el array de opciones de entrada.',
+            removeChip: 'Elimina la opción dada de la selección actual.',
+            toggleOption:
+              'Alterna la pertenencia de la opción dada a la selección actual.',
+            toggleSelectAll:
+              'Selecciona todas las opciones filtradas si alguna está deseleccionada, o deselecciona todas si están todas seleccionadas.',
+          },
+          dropdown: {
+            disabled: 'Deshabilita el desplegable.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del campo.',
+            options:
+              'Lista de opciones seleccionables mostradas en la lista desplegable.',
+            placeholder:
+              'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            size: 'Tamaño visual del activador del desplegable.',
+            value:
+              'Valor seleccionado actual, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con el nuevo valor cuando el usuario selecciona una opción.',
+            close: 'Cierra la lista desplegable sin cambiar el valor actual.',
+            focus: 'Lleva el foco del teclado al activador del desplegable.',
+            onPopoverCloseRequested:
+              'Lo llama el popover cuando el usuario hace clic fuera del desplegable; cierra el panel y marca el campo como tocado.',
+            select: 'Selecciona por código la opción dada y cierra la lista.',
+            toggle: 'Alterna la lista desplegable entre abierta y cerrada.',
+          },
+          'file-uploader': {
+            accept:
+              "Tipos MIME y extensiones de archivo aceptados por la zona de arrastre, separados por comas, p. ej. 'image/*,.pdf'.",
+            disabled: 'Deshabilita el cargador.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado a la zona de arrastre y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta mostrada encima del campo.',
+            maxFiles:
+              'Número total máximo de archivos; los archivos que superan el límite se rechazan.',
+            maxSize:
+              'Tamaño máximo por archivo en bytes; los archivos más grandes se rechazan.',
+            multiple: 'Permite seleccionar más de un archivo a la vez.',
+            progress:
+              'Mapa de progreso de carga por archivo (0-100) indexado por identidad de File; omítalo para ocultar las barras de progreso.',
+            required: 'Marca el campo como obligatorio.',
+            showFileList:
+              'Muestra la lista de archivos seleccionados bajo la zona de arrastre.',
+            size: 'Tamaño visual del cargador.',
+            value:
+              'Lista de archivos actual, vinculable en dos sentidos mediante [(value)].',
+            fileRemoved:
+              'Se emite cuando se elimina un archivo mediante el botón de su fila.',
+            rejected:
+              'Se emite cuando uno o más archivos no superan la validación, con el motivo de cada rechazo.',
+            trackFile:
+              'Devuelve una clave de seguimiento estable para un archivo, usada internamente por la lista de archivos.',
+          },
+          popover: {
+            anchor:
+              'Elemento anclaje o ElementRef respecto al cual se posiciona el popover.',
+            ariaLabel:
+              'Etiqueta accesible para la superficie del popover; proporciónela cuando el popover no contenga un encabezado visible.',
+            clamp:
+              'Mantiene el popover dentro del viewport cuando de otro modo se desbordaría.',
+            closeOnEscape: 'Cierra el popover al pulsar Escape.',
+            closeOnOutsideClick:
+              'Cierra el popover cuando el usuario hace clic fuera del popover y su ancla.',
+            flip: 'Cambia al lado opuesto cuando el posicionamiento solicitado se desborda del viewport.',
+            matchAnchorWidth:
+              'Establece el min-width del popover para que coincida con el ancho del ancla.',
+            offset: 'Espacio en px entre el ancla y la superficie del popover.',
+            open: 'Indica si el popover está actualmente abierto.',
+            placement: 'Posición preferida del popover respecto a su ancla.',
+            role: 'Rol ARIA aplicado a la superficie del popover.',
+            scrollBehavior:
+              'Comportamiento del popover ante eventos de desplazamiento y redimensión mientras está abierto: reposition, close o ignore.',
+            surfaceId:
+              'id DOM de la superficie del popover, usado por los elementos desencadenadores mediante aria-controls.',
+            closeRequested:
+              'Se emite cuando el popover solicita cerrarse; el padre debe reflejarlo en [open].',
+          },
+          'accordion-item': {
+            disabled: 'Deshabilita este elemento, impidiendo que se pueda alternar.',
+            id: 'id aplicado al botón de encabezado y al panel del elemento, generado automáticamente si se omite.',
+            label: 'Texto mostrado en el botón de encabezado del elemento.',
+            value:
+              'Clave única que identifica este elemento dentro de su acordeón padre.',
+          },
+          breadcrumbs: {
+            ariaLabel:
+              'Etiqueta accesible para la navegación de migas de pan, con reserva en la traducción de la configuración regional activa si se omite.',
+            items:
+              'Array de entradas de migas de pan; los elementos con href se muestran como enlaces, los demás como botones, y el último no es interactivo.',
+            separator:
+              'Estilo visual del separador mostrado entre los elementos de las migas de pan.',
+            clicked:
+              'Se emite cuando se activa una miga de pan que no está deshabilitada ni es la última.',
+          },
+          drawer: {
+            ariaLabel:
+              'Etiqueta accesible para el panel del cajón cuando su encabezado no es lo bastante descriptivo.',
+            closeOnBackdrop: 'Cierra el cajón cuando el usuario hace clic en el fondo.',
+            closeOnEscape: 'Cierra el cajón cuando el usuario pulsa la tecla Escape.',
+            id: 'id aplicado al elemento dialog, generado automáticamente si se omite.',
+            open: 'Indica si el cajón está abierto, vinculable en dos sentidos mediante [(open)].',
+            position: 'Borde del viewport desde el que se desliza el cajón.',
+            showClose: 'Muestra el botón de cierre en el encabezado del cajón.',
+            size: 'Preajuste de ancho obsoleto del panel del cajón; usa width en su lugar.',
+            width: 'Ancho del panel del cajón a lo largo de su eje principal.',
+            closed:
+              'Se emite cuando el cajón se cierra, ya sea mediante el botón, el fondo o Escape.',
+            opened: 'Se emite una vez que el cajón se ha mostrado mediante showModal().',
+          },
+          'data-table': {
+            bordered: 'Muestra un borde alrededor de cada celda.',
+            columns:
+              'Definiciones de columnas que describen la clave, la etiqueta y, opcionalmente, el orden o la plantilla de cada campo.',
+            data: 'Array de objetos de fila que mostrar en la tabla.',
+            density:
+              'Preajuste de densidad vertical que controla el relleno de las filas y las celdas de encabezado.',
+            hoverable: 'Resalta la fila bajo el puntero al pasar el cursor.',
+            noDataText:
+              'Texto mostrado en el estado vacío, con repercusión en la traducción de la configuración regional activa.',
+            sort: 'Estado de orden actual (clave de columna y dirección), vinculable en dos sentidos mediante [(sort)].',
+            stickyHeader:
+              'Fija la fila de encabezado en la parte superior de la tabla cuando el contenido se desplaza.',
+            striped:
+              'Aplica un sombreado de fondo alternado a las filas pares e impares.',
+            trackBy:
+              'Clave de propiedad de fila usada por la detección de cambios de Angular para identificar filas de forma eficiente.',
+            sorted:
+              'Se emite cada vez que la columna o la dirección de orden cambia mediante un clic en el encabezado.',
+          },
+          'radio-group': {
+            ariaLabel:
+              'Etiqueta accesible para el grupo cuando no se renderiza ninguna etiqueta visible.',
+            disabled: 'Deshabilita todas las opciones de radio del grupo.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el grupo, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el grupo, oculto cuando hay un error.',
+            id: 'id aplicado al elemento del grupo y al for de su etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del grupo.',
+            name: 'Atributo name compartido aplicado a todas las entradas de radio del grupo, generado automáticamente si se omite.',
+            orientation:
+              'Dirección de disposición de las opciones de radio dentro del grupo.',
+            required: 'Marca el grupo como obligatorio.',
+            size: 'Tamaño visual aplicado a todas las opciones de radio del grupo.',
+            value:
+              'Valor actualmente seleccionado, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con el nuevo valor cuando el usuario selecciona una opción.',
+            select: 'Selecciona mediante programación la opción con el valor indicado.',
+          },
+          segmented: {
+            ariaLabel:
+              'Etiqueta accesible para el control cuando no se muestra ninguna etiqueta visible.',
+            disabled: 'Deshabilita el control segmentado.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            fullWidth: 'Estira el control para ocupar el ancho de su contenedor.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            id: 'id aplicado al control y al for de la etiqueta, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada encima del control.',
+            options:
+              'Array de opciones renderizadas como botones de alternancia en el control.',
+            required: 'Marca el campo como obligatorio.',
+            size: 'Tamaño visual del control segmentado.',
+            value:
+              'Valor de la opción seleccionada actualmente, vinculable en dos sentidos mediante [(value)].',
+            changed:
+              'Se emite con el nuevo valor cuando el usuario selecciona una opción diferente.',
+            select: 'Selecciona la opción indicada mediante programación.',
+          },
+          'tree-node': {
+            collapseLabel: 'Etiqueta accesible para el botón de contraer.',
+            disabled: 'Deshabilita la interacción con el nodo y sus descendientes.',
+            expandedIds: 'Conjunto de ids de nodos actualmente expandidos.',
+            expandLabel: 'Etiqueta accesible para el botón de expandir.',
+            focusedId:
+              'Id del nodo que actualmente tiene el foco del tabindex itinerante.',
+            level:
+              'Profundidad desde la raíz del árbol (base 0), usada para la sangría y aria-level.',
+            node: 'Objeto de datos que describe este nodo, incluidos su id, etiqueta, hijos y estado deshabilitado.',
+            posInSet:
+              'Posición (base 1) entre los hijos del nodo padre, usada para aria-posinset.',
+            selectedId:
+              'Id del nodo actualmente seleccionado, o null si no hay ninguno seleccionado.',
+            setSize:
+              'Número total de nodos hermanos en la lista de hijos del nodo padre, usado para aria-setsize.',
+            select: 'Se emite cuando el usuario hace clic o activa la fila del nodo.',
+            toggle:
+              'Se emite con el id del nodo cuando el usuario hace clic en el chevron de expandir o contraer.',
+          },
+          tree: {
+            ariaLabel: 'Etiqueta accesible para el widget de árbol.',
+            disabled: 'Deshabilita todos los nodos del árbol.',
+            expandedIds:
+              'Ids de los nodos rama actualmente expandidos, vinculables en dos sentidos mediante [(expandedIds)].',
+            nodes: 'Array de objetos de datos de nodos de árbol que define la jerarquía.',
+            selectedId:
+              'Id del nodo actualmente seleccionado, vinculable en dos sentidos mediante [(selectedId)].',
+            size: 'Tamaño visual del árbol, que escala el texto y el espaciado proporcionalmente.',
+            nodeClick:
+              'Se emite con los datos del nodo cuando el usuario selecciona un nodo.',
+          },
+          step: {
+            completed: 'Marca el paso como completado, actualizando su indicador visual.',
+            disabled: 'Impide que el paso sea activado.',
+            id: 'id aplicado al panel del paso y a su pestaña, generado automáticamente si se omite.',
+            label: 'Etiqueta de texto mostrada en el indicador del paso.',
+            optional:
+              'Marca el paso como opcional, mostrado como ayuda bajo la etiqueta del paso.',
+          },
+          stepper: {
+            activeStep:
+              'Índice de base cero del paso activo, vinculable en dos sentidos mediante [(activeStep)].',
+            disabled: 'Deshabilita el stepper completo y toda la navegación entre pasos.',
+            id: 'id aplicado al elemento contenedor del stepper, generado automáticamente si se omite.',
+            linear:
+              'Requiere que cada paso no opcional esté marcado como completado antes de poder avanzar.',
+            size: 'Tamaño visual del stepper, escalando los indicadores y las etiquetas de pasos juntos.',
+            changed:
+              'Se emite con el nuevo índice del paso activo cuando el usuario navega a un paso diferente.',
+            canNavigateTo:
+              'Devuelve si el paso en el índice dado es accesible desde el estado actual.',
+            indexOf: 'Devuelve el índice del paso dado, o -1 si no está registrado.',
+            selectStep: 'Activa el paso en el índice dado si es accesible.',
+          },
+          'transfer-list': {
+            disabled:
+              'Deshabilita toda la lista de transferencia y todos los controles de movimiento.',
+            items:
+              'Conjunto completo de elementos disponibles en ambos paneles, identificados por id.',
+            selectedIds:
+              'Ids de los elementos que están actualmente en el panel de destino (derecho), vinculables en dos sentidos mediante [(selectedIds)].',
+            size: 'Tamaño visual de la lista de transferencia.',
+            sourceLabel:
+              'Encabezado mostrado sobre el panel de origen (izquierdo), con retroceso al valor predeterminado de la configuración regional activa.',
+            targetLabel:
+              'Encabezado mostrado sobre el panel de destino (derecho), con retroceso al valor predeterminado de la configuración regional activa.',
+          },
+          'virtual-list': {
+            itemHeight:
+              'Altura en píxeles de cada fila; todas las filas deben compartir la misma altura fija.',
+            items:
+              'Array completo de elementos de datos a renderizar; solo la porción visible está montada en cada momento.',
+            overscan:
+              'Número de filas adicionales renderizadas por encima y por debajo de la ventana visible para reducir los bordes en blanco durante el desplazamiento rápido.',
+            viewportHeight: 'Altura en píxeles del área de desplazamiento visible.',
+            scrollIndexChange:
+              'Se emite con el índice de la primera fila visible en la parte superior del área de desplazamiento cada vez que el usuario hace scroll.',
+            scrollToIndex:
+              'Desplaza el área visible para que la fila en el índice dado aparezca en la parte superior, limitado a los extremos de la lista.',
+          },
+          'field-label': {
+            forId:
+              'id del control asociado; renderiza un <label for> cuando está definido, de lo contrario un <span>.',
+            labelId:
+              'id aplicado al elemento de etiqueta renderizado para que los controles puedan referenciarlo mediante aria-labelledby.',
+            required: 'Muestra un indicador de campo obligatorio en la etiqueta.',
+            text: 'Texto de la etiqueta renderizado dentro del elemento de etiqueta.',
+          },
+          'field-messages': {
+            error:
+              'Mensaje de error a mostrar; cuando está definido, la ayuda se oculta y el mensaje se anuncia como una alerta.',
+            hint: 'Texto de ayuda mostrado bajo el campo cuando no hay ningún error.',
+            id: 'id base usado para derivar los ids ARIA de los elementos de error y ayuda.',
+          },
+          dialog: {
+            ariaLabel:
+              'Etiqueta accesible para el diálogo cuando su ranura de cabecera no contiene un título visible.',
+            closeOnBackdrop:
+              'Cierra el diálogo cuando el usuario hace clic en el área de fondo fuera del panel.',
+            closeOnEscape: 'Cierra el diálogo cuando el usuario pulsa Escape.',
+            id: 'id aplicado al elemento dialog nativo, generado automáticamente si se omite.',
+            open: 'Indica si el diálogo se muestra, vinculable en dos sentidos mediante [(open)].',
+            showClose: 'Muestra el botón de cierre en la cabecera del diálogo.',
+            size: 'Alias obsoleto de width; usa width en su lugar.',
+            width: 'Preajuste de ancho para el panel del diálogo.',
+            closed:
+              'Se emite cuando el diálogo se cierra, independientemente de si lo cerró el usuario o mediante código.',
+            opened:
+              'Se emite una vez que el diálogo se ha mostrado mediante showModal().',
           },
         },
       },

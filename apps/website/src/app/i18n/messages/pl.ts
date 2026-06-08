@@ -836,6 +836,7 @@ export const pl: WebMessages = {
         colDescription: 'Opis',
         requiredBadge: 'wymagane',
         twoWayBadge: 'dwukierunkowe',
+        rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
           input: {
             label: 'Etykieta',
@@ -1045,6 +1046,18 @@ export const pl: WebMessages = {
             togglePasswordVisibility:
               'Przełącza widoczność hasła dla pól type="password".',
             icon: 'Komponent ikony wiodącej renderowany przed tekstem.',
+            max: 'Maksymalna wartość dla type="number"; wartość jest do niej ograniczana przy utracie fokusu.',
+            maxLength:
+              'Maksymalna liczba znaków; wymuszana dla type="number", gdzie natywny maxlength jest ignorowany.',
+            min: 'Minimalna wartość dla type="number"; wartość jest do niej ograniczana przy utracie fokusu.',
+            minLength:
+              'Minimalna liczba znaków, przekazywana jako natywny atrybut minlength.',
+            step: 'Przyrost kroku dla pól type="number".',
+            clampToBounds:
+              'Ogranicza wartość liczbową do skonfigurowanego zakresu min/max po zakończeniu edycji.',
+          },
+          accordion: {
+            multi: 'Pozwala rozwinąć kilka elementów jednocześnie zamiast tylko jednego.',
           },
           alert: {
             dismissible:
@@ -1083,6 +1096,7 @@ export const pl: WebMessages = {
               'Wartość natywnego atrybutu aria-current, oznaczająca przycisk jako bieżący element w zestawie.',
             clicked:
               'Emitowane po aktywacji przycisku, blokowane gdy wyłączony lub ładuje się.',
+            icon: 'Opcjonalny komponent ikony renderowany po lewej stronie etykiety.',
           },
           card: {
             variant: 'Wizualny styl powierzchni karty.',
@@ -1157,6 +1171,7 @@ export const pl: WebMessages = {
           divider: {
             label: 'Opcjonalna wyśrodkowana etykieta renderowana w linii separatora.',
             orientation: 'Orientacja, w której biegnie linia separatora.',
+            thick: 'Renderuje grubszą linię podziału.',
           },
           'eagami-wordmark': {
             variant:
@@ -1170,6 +1185,8 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar bloku stanu pustego.',
             headingLevel:
               'Poziom nagłówka użyty dla tytułu, aby pasował do otaczającej struktury dokumentu.',
+            bordered: 'Renderuje przerywane obramowanie wokół bloku.',
+            icon: 'Opcjonalny komponent ikony renderowany w obszarze mediów nad tytułem.',
           },
           paginator: {
             align:
@@ -1234,6 +1251,10 @@ export const pl: WebMessages = {
               'Emitowane z nową krotką [low, high], gdy przesunie się którykolwiek uchwyt.',
             commitThumb:
               'Przyciąga uchwyt do najbliższego kroku, ogranicza go do granic i wiąże przeciwnym uchwytem.',
+            groupThousands:
+              'Grupuje wyświetlane wartości separatorami tysięcy, ignorowane gdy podano niestandardowy formatValue.',
+            formatDisplay:
+              'Formatuje wartość do wyświetlenia, stosując grupowanie tysięcy, chyba że ustawiono niestandardową funkcję formatValue.',
           },
           rating: {
             allowHalf:
@@ -1293,6 +1314,10 @@ export const pl: WebMessages = {
             step: 'Przyrost, do którego wartość przyciąga się podczas przesuwania suwaka.',
             value: 'Bieżąca wartość suwaka, dwukierunkowo wiązalna przez [(value)].',
             changed: 'Emitowane z nową przyciągniętą wartością, gdy suwak się przesunie.',
+            groupThousands:
+              'Grupuje wyświetlane wartości separatorami tysięcy, ignorowane gdy podano niestandardowy formatValue.',
+            formatDisplay:
+              'Formatuje wartość do wyświetlenia, stosując grupowanie tysięcy, chyba że ustawiono niestandardową funkcję formatValue.',
           },
           spinner: {
             label:
@@ -1347,6 +1372,531 @@ export const pl: WebMessages = {
             blurred: 'Emitowane, gdy pole traci fokus.',
             focused: 'Emitowane, gdy pole otrzymuje fokus.',
             focus: 'Przenosi fokus klawiatury na bazowe natywne pole textarea.',
+          },
+          'avatar-editor': {
+            accept:
+              'Akceptowane typy MIME w selektorze plików, przekazywane do natywnego pola.',
+            canvasSize:
+              'Szerokość i wysokość w pikselach kwadratowego obszaru kadrowania.',
+            cropState:
+              'Początkowy stan przesunięcia/zoomu do przywrócenia przy wczytywaniu obrazu źródłowego.',
+            currentSrc: 'URL obrazu wczytywanego do edytora przy inicjalizacji.',
+            exportQuality:
+              'Jakość JPEG/WebP przy eksporcie przyciętego obrazu, w przedziale 0-1.',
+            exportType:
+              'Typ MIME eksportowanego bloba obrazu (np. image/png lub image/jpeg).',
+            loading:
+              'Wyświetla szkielet ładowania, gdy zewnętrzny zasób jest wczytywany.',
+            maxFileSize:
+              'Maksymalny dozwolony rozmiar pliku w bajtach; pliki przekraczające limit emitują errored.',
+            maxZoom: 'Maksymalny mnożnik zoomu dostępny dla użytkownika.',
+            minZoom: 'Minimalny mnożnik zoomu dostępny dla użytkownika.',
+            shape:
+              'Kształt maski kadrowania stosowany do obszaru roboczego i eksportowanego obrazu.',
+            cropped:
+              'Emitowane gdy użytkownik eksportuje kadr, dostarczając Blob i adres URL danych.',
+            cropStateChanged:
+              'Emitowane przy każdym przesunięciu lub przybliżeniu obrazu przez użytkownika, przydatne do zachowania stanu edycji.',
+            errored:
+              'Emitowane z czytelnym komunikatem gdy walidacja pliku się nie powiedzie.',
+            fileSelected:
+              'Emitowane gdy plik zostanie wybrany z dysku lub upuszczony na edytor.',
+            removed:
+              'Emitowane gdy bieżący obraz zostanie usunięty za pomocą kontrolki usuwania.',
+            captureOriginal:
+              'Oznacza bieżący obraz i stan kadrowania jako punkt odniesienia dla revertImage.',
+            exportCrop:
+              'Renderuje bieżący kadr na pozaekranowym obszarze roboczym, emituje cropped i zwraca Blob.',
+            openFilePicker: 'Otwiera natywne okno dialogowe wyboru pliku.',
+            removeImage:
+              'Usuwa wczytany obraz i resetuje przesunięcie oraz zoom do wartości domyślnych.',
+            revertImage:
+              'Przywraca obraz i stan kadrowania uchwycone przez ostatnie wywołanie captureOriginal.',
+            setZoom:
+              'Ustawia poziom zoomu, ograniczony do skonfigurowanego zakresu minZoom/maxZoom.',
+            updateImageDarkness:
+              'Próbkuje widoczny obszar kadrowania, aby określić czy obraz jest ciemniejszy niż średnia szarość.',
+          },
+          eaMenuTrigger: {
+            menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
+          },
+          eaTooltip: {
+            eaTooltip:
+              'Treść tekstowa podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury.',
+            tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',
+          },
+          'time-picker': {
+            disabled: 'Wyłącza selektor.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            format:
+              'Format wyświetlania etykiety wyzwalacza; wartość przewodowa jest zawsze w formacie 24-godzinnym.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do wyzwalacza i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            includeSeconds: 'Wyświetla kolumnę sekund obok godzin i minut.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            minuteStep:
+              'Przyrost, do którego kolumna minut przyciąga się podczas kroku lub przeciągania.',
+            placeholder:
+              'Tekst zastępczy wyświetlany na wyzwalaczu, gdy nie wybrano godziny.',
+            readonly:
+              'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie popovera.',
+            required: 'Oznacza pole jako wymagane.',
+            secondStep:
+              'Przyrost, do którego kolumna sekund przyciąga się podczas kroku lub przeciągania.',
+            size: 'Wizualny rozmiar wyzwalacza selektora.',
+            value:
+              'Bieżący ciąg czasu w formacie HH:MM lub HH:MM:SS (24-godzinnym), dwukierunkowo wiązalny przez [(value)], lub null gdy nieustawiony.',
+            changed:
+              'Emitowane z nowym ciągiem czasu, gdy użytkownik zmieni wybraną godzinę.',
+            advanceFocus:
+              'Przenosi fokus do następnej kolumny jednostki po zakończeniu wpisu cyfry.',
+            cannotExtend:
+              'Zwraca true, gdy żadna dodatkowa cyfra nie może prawidłowo rozszerzyć bieżącego bufora dla danej jednostki.',
+            commitDigits:
+              'Analizuje buforowany ciąg cyfr, ogranicza go do prawidłowego zakresu jednostki i zapisuje do wartości.',
+            flushBuffer:
+              'Zatwierdza wszelkie oczekujące buforowane cyfry i czyści bufor.',
+            focusHoursWhenReady:
+              'Ustawia fokus na polu godzin po wyrenderowaniu powierzchni popovera w DOM.',
+            hoursFromTyped:
+              'Konwertuje wpisaną wartość godzin na odpowiednik 24-godzinny, uwzględniając bieżący okres AM/PM.',
+            onPopoverCloseRequested:
+              'Zamyka popover, gdy użytkownik kliknie poza selektorem.',
+            onSpinnerBlur:
+              'Zatwierdza wszelkie oczekujące buforowane cyfry, gdy kolumna spinnera traci fokus.',
+            onSpinnerFocus:
+              'Zaznacza cały tekst w kolumnie spinnera po otrzymaniu fokusu, aby pierwszy naciśnięty klawisz go zastąpił.',
+            onSpinnerInput:
+              'Obsługuje wprowadzanie cyfr w kolumnie spinnera, aktualizuje bufor i automatycznie przesuwa fokus, gdy kolumna jest pełna.',
+            startHold:
+              'Rozpoczyna powtarzanie przez długie naciśnięcie przycisku strzałki, krokując daną jednostkę i przyspieszając po opóźnieniu.',
+            step: 'Przesuwa daną kolumnę jednostki w górę lub dół o jeden skonfigurowany przyrost.',
+            stopHold:
+              'Anuluje wszelkie aktywne timery powtarzania przez długie naciśnięcie.',
+            togglePeriod:
+              'Przełącza okres AM/PM w trybie 12-godzinnym przez zmianę przesunięcia o 12 godzin.',
+          },
+          autocomplete: {
+            disabled: 'Wyłącza pole.',
+            emptyMessage:
+              'Komunikat wyświetlany na liście, gdy żadna opcja nie pasuje do wpisanego tekstu, z powrotem do tłumaczenia aktywnej lokalizacji gdy pominięty.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do natywnego pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta wyświetlana nad polem.',
+            maxResults:
+              'Maksymalna liczba opcji wyświetlanych jednocześnie na liście sugestii.',
+            minLength:
+              'Minimalna liczba znaków wymagana przed pojawieniem się listy sugestii.',
+            options: 'Pełna lista opcji dostępnych do filtrowania i wyboru.',
+            placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            size: 'Wizualny rozmiar pola.',
+            value: 'Bieżąca wartość pola, dwukierunkowo wiązalna przez [(value)].',
+            blurred: 'Emitowane, gdy pole traci fokus.',
+            changed:
+              'Emitowane przy każdej zmianie tekstu w polu, w tym przy swobodnym wpisywaniu.',
+            focused: 'Emitowane, gdy pole otrzymuje fokus.',
+            selected: 'Emitowane, gdy użytkownik wybiera opcję z listy sugestii.',
+            close: 'Zamyka listę sugestii bez zmiany bieżącej wartości.',
+            focus: 'Przenosi fokus klawiatury na bazowe pole tekstowe.',
+            selectOption:
+              'Programowo zaznacza podaną opcję, aktualizuje wartość i zamyka listę.',
+          },
+          'command-palette': {
+            emptyMessage:
+              'Komunikat wyświetlany gdy zapytanie nie pasuje do żadnego elementu, z powrotem do tłumaczenia aktywnej lokalizacji gdy pominięty.',
+            items:
+              'Pełna lista elementów poleceń dostępnych do wyszukiwania i wykonania.',
+            open: 'Określa, czy okno dialogowe palety jest otwarte, dwukierunkowo wiązalne przez [(open)].',
+            placeholder:
+              'Tekst zastępczy wyświetlany w polu wyszukiwania gdy jest puste.',
+            execute:
+              'Emitowane, gdy użytkownik wybiera polecenie, przekazując wybrany element.',
+            showActiveHighlight:
+              'Zwraca, czy aktywny wiersz powinien renderować podświetlone tło dla podanego indeksu płaskiego.',
+          },
+          tabs: {
+            activeTab:
+              'Wartość aktualnie aktywnej karty, dwukierunkowo wiązalna przez [(activeTab)].',
+            size: 'Wizualny rozmiar kart.',
+            variant: 'Wizualny styl paska kart: podkreślony lub wypełniony.',
+            changed:
+              'Emitowane z wartością nowo aktywnej karty przy każdej zmianie aktywnej karty.',
+            registerTab:
+              'Rejestruje kartę potomną, aby pojawiła się na pasku kart; wywoływane automatycznie przez ea-tab.',
+            selectTab: 'Programowo aktywuje kartę o podanej wartości.',
+            unregisterTab:
+              'Usuwa wcześniej zarejestrowaną kartę potomną; wywoływane automatycznie przez ea-tab.',
+          },
+          tab: {
+            disabled: 'Wyłącza tę kartę, uniemożliwiając użytkownikowi jej wybranie.',
+            id: 'id stosowane do przycisku karty i jej panelu, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa wyświetlana na przycisku karty.',
+            value:
+              'Unikalna wartość identyfikująca tę kartę w obrębie nadrzędnej grupy ea-tabs.',
+          },
+          'date-picker': {
+            disabled: 'Wyłącza selektor daty.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            format: 'Format wyświetlania wybranej daty (short, medium lub long).',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do przycisku wyzwalacza i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta wyświetlana nad polem.',
+            locale:
+              'Znacznik locale BCP 47 używany do formatowania dat, domyślnie globalna locale gdy pominięty.',
+            maxDate:
+              'Najpóźniejsza data do wyboru; późniejsze daty są wyłączone w kalendarzu.',
+            minDate:
+              'Najwcześniejsza data do wyboru; wcześniejsze daty są wyłączone w kalendarzu.',
+            placeholder:
+              'Tekst zastępczy na wyzwalaczu, gdy żadna data nie jest wybrana.',
+            readonly:
+              'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie kalendarza.',
+            required: 'Oznacza pole jako wymagane.',
+            size: 'Wizualny rozmiar wyzwalacza selektora daty.',
+            value: 'Bieżąca wybrana data, dwukierunkowo wiązalna przez [(value)].',
+            weekStartsOn:
+              'Pierwszy dzień tygodnia w siatce kalendarza (0 dla niedzieli, 1 dla poniedziałku).',
+            changed: 'Emitowane, gdy wybrana data zmienia się, w tym po wyczyszczeniu.',
+            clear: 'Czyści wybraną datę i emituje changed z wartością null.',
+            close: 'Zamyka popover kalendarza.',
+            focus: 'Przenosi fokus klawiatury na przycisk wyzwalacza.',
+            onPopoverCloseRequested:
+              'Zamyka popover, gdy użytkownik kliknie poza selektorem daty.',
+            open: 'Otwiera popover kalendarza i przenosi fokus na aktywną komórkę dnia.',
+            toggle: 'Przełącza popover kalendarza między otwarciem a zamknięciem.',
+          },
+          menu: {
+            ariaLabel:
+              'Dostępna etykieta listy menu, domyślnie aktywna locale gdy pominięta.',
+            disabled: 'Wyłącza menu, uniemożliwiając jego otwarcie.',
+            id: 'id stosowane do elementu listy menu, generowane automatycznie gdy pominięte.',
+            open: 'Określa, czy menu jest otwarte, dwukierunkowo wiązalne przez [(open)].',
+            placement: 'Umiejscowienie listy menu względem elementu wyzwalacza.',
+            closed: 'Emitowane, gdy menu się zamknie.',
+            opened: 'Emitowane, gdy menu się otworzy.',
+            close: 'Zamyka menu i opcjonalnie przywraca fokus do elementu wyzwalacza.',
+            focusFirstItem:
+              'Przenosi fokus klawiatury na pierwszy dostępny element menu.',
+            onPopoverCloseRequested: 'Zamyka menu, gdy użytkownik kliknie poza nim.',
+            openAt:
+              'Otwiera menu zakotwiczone do podanego elementu wyzwalacza i ustawia fokus na pierwszym elemencie.',
+            toggleAt:
+              'Przełącza stan otwarcia menu, zakotwiczając je do podanego elementu wyzwalacza.',
+          },
+          'menu-item': {
+            disabled: 'Wyłącza element i blokuje zdarzenia kliknięcia.',
+            variant: 'Wizualny styl elementu; użyj danger dla destrukcyjnych akcji.',
+            clicked:
+              'Emitowane po aktywacji elementu; menu nadrzędne zamyka się natychmiast po tym.',
+          },
+          'multi-select': {
+            disabled: 'Wyłącza multi-select.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            maxVisibleChips:
+              'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
+            options: 'Lista opcji do wyboru renderowanych na liście rozwijanej.',
+            placeholder:
+              'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            searchable: 'Wyświetla pole wyszukiwania na górze popovera.',
+            searchPlaceholder:
+              'Tekst zastępczy wyświetlany w polu wyszukiwania, gdy wyszukiwany termin jest pusty.',
+            selectAll:
+              'Wyświetla wiersz zaznacz wszystko o trzech stanach na górze listy opcji.',
+            size: 'Wizualny rozmiar elementu wyzwalającego multi-select.',
+            value: 'Wartości wybranych opcji, dwukierunkowo wiązalne przez [(value)].',
+            changed: 'Emitowane z nową wartością za każdym razem, gdy zmieni się wybór.',
+            clear: 'Czyści wszystkie wybory i zatrzymuje propagację zdarzenia.',
+            handlePopoverKeydown:
+              'Obsługuje nawigację klawiaturową wewnątrz otwartego popovera, przekierowując klawisze strzałek, Enter, Spację i Escape.',
+            onPopoverCloseRequested:
+              'Wywoływane przez popover, gdy użytkownik kliknie poza nim lub przewinie stronę; zamyka panel i oznacza pole jako dotknięte.',
+            orderedValues:
+              'Zwraca podany zestaw wartości posortowany zgodnie z kolejnością tablicy opcji wejściowych.',
+            removeChip: 'Usuwa podaną opcję z bieżącego wyboru.',
+            toggleOption: 'Przełącza przynależność podanej opcji do bieżącego wyboru.',
+            toggleSelectAll:
+              'Zaznacza wszystkie przefiltrowane opcje, jeśli którakolwiek jest odznaczona, albo odznacza wszystkie, jeśli są zaznaczone.',
+          },
+          dropdown: {
+            disabled: 'Wyłącza listę rozwijaną.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad polem.',
+            options: 'Lista opcji do wyboru renderowanych na liście rozwijanej.',
+            placeholder:
+              'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            size: 'Wizualny rozmiar elementu wyzwalającego listę rozwijaną.',
+            value: 'Bieżąca wybrana wartość, dwukierunkowo wiązalna przez [(value)].',
+            changed: 'Emitowane z nową wartością, gdy użytkownik wybierze opcję.',
+            close: 'Zamyka listę rozwijaną bez zmiany bieżącej wartości.',
+            focus: 'Przenosi fokus klawiatury na element wyzwalający listę rozwijaną.',
+            onPopoverCloseRequested:
+              'Wywoływane przez popover, gdy użytkownik kliknie poza listą rozwijaną; zamyka panel i oznacza pole jako dotknięte.',
+            select: 'Programowo wybiera podaną opcję i zamyka listę.',
+            toggle: 'Przełącza listę rozwijaną między stanem otwartym a zamkniętym.',
+          },
+          'file-uploader': {
+            accept:
+              "Oddzielone przecinkami typy MIME i rozszerzenia plików akceptowane przez strefę upuszczania, np. 'image/*,.pdf'.",
+            disabled: 'Wyłącza uploader.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do strefy upuszczania i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta wyświetlana nad polem.',
+            maxFiles: 'Maksymalna łączna liczba plików; nadmiarowe pliki są odrzucane.',
+            maxSize: 'Maksymalny rozmiar pliku w bajtach; większe pliki są odrzucane.',
+            multiple: 'Pozwala wybrać więcej niż jeden plik naraz.',
+            progress:
+              'Mapa postępu przesyłania per plik (0-100) indeksowana tożsamością File; pomiń, aby ukryć paski postępu.',
+            required: 'Oznacza pole jako wymagane.',
+            showFileList: 'Wyświetla listę wybranych plików pod strefą upuszczania.',
+            size: 'Wizualny rozmiar uploadera.',
+            value: 'Bieżąca lista plików, dwukierunkowo wiązalna przez [(value)].',
+            fileRemoved:
+              'Emitowane, gdy plik zostanie usunięty przyciskiem usuwania jego wiersza.',
+            rejected:
+              'Emitowane, gdy jeden lub więcej plików nie przejdzie walidacji, wraz z powodem każdego odrzucenia.',
+            trackFile:
+              'Zwraca stabilny klucz śledzenia pliku, używany wewnętrznie przez listę plików.',
+          },
+          popover: {
+            anchor:
+              'Element hosta lub ElementRef, względem którego popover się pozycjonuje.',
+            ariaLabel:
+              'Dostępna etykieta powierzchni popovera; podaj ją, gdy popover nie zawiera widocznego nagłówka.',
+            clamp:
+              'Ogranicza popover do obszaru widoku, gdy w przeciwnym razie by go przekraczał.',
+            closeOnEscape: 'Zamyka popover po naciśnięciu klawisza Escape.',
+            closeOnOutsideClick:
+              'Zamyka popover po kliknięciu przez użytkownika poza popoverem i jego kotwicą.',
+            flip: 'Przełącza na przeciwną stronę, gdy żądane umieszczenie przekracza obszar widoku.',
+            matchAnchorWidth:
+              'Ustawia min-width popovera tak, aby odpowiadało szerokości kotwicy.',
+            offset: 'Odstęp w px między kotwicą a powierzchnią popovera.',
+            open: 'Określa, czy popover jest aktualnie otwarty.',
+            placement: 'Preferowana pozycja popovera względem jego kotwicy.',
+            role: 'Rola ARIA stosowana do powierzchni popovera.',
+            scrollBehavior:
+              'Zachowanie popovera podczas zdarzeń przewijania i zmiany rozmiaru gdy jest otwarty: reposition, close lub ignore.',
+            surfaceId:
+              'Id DOM powierzchni popovera, używany przez elementy wyzwalające przez aria-controls.',
+            closeRequested:
+              'Emitowane, gdy popover żąda zamknięcia; rodzic powinien odzwierciedlić to w [open].',
+          },
+          'accordion-item': {
+            disabled: 'Wyłącza ten element, uniemożliwiając jego przełączanie.',
+            id: 'id stosowane do przycisku nagłówka i panelu elementu, generowane automatycznie gdy pominięte.',
+            label: 'Tekst wyświetlany w przycisku nagłówka elementu.',
+            value: 'Unikalny klucz identyfikujący ten element w nadrzędnym akordeonie.',
+          },
+          breadcrumbs: {
+            ariaLabel:
+              'Dostępna etykieta nawigacji okruszkowej, domyślnie używająca tłumaczenia aktywnej lokalizacji gdy pominięta.',
+            items:
+              'Tablica wpisów okruszkowych; elementy z href renderowane są jako linki, pozostałe jako przyciski, a ostatni jest nieinteraktywny.',
+            separator:
+              'Wizualny styl separatora renderowanego między elementami okruszkowymi.',
+            clicked:
+              'Emitowane, gdy aktywowany zostanie element okruszkowy niebędący wyłączonym ani ostatnim.',
+          },
+          drawer: {
+            ariaLabel:
+              'Dostępna etykieta panelu szuflady, gdy jego nagłówek nie jest wystarczająco opisowy.',
+            closeOnBackdrop: 'Zamyka szufladę, gdy użytkownik kliknie tło.',
+            closeOnEscape: 'Zamyka szufladę, gdy użytkownik naciśnie klawisz Escape.',
+            id: 'id stosowane do elementu dialog, generowane automatycznie gdy pominięte.',
+            open: 'Określa, czy szuflada jest otwarta, dwukierunkowo wiązalne przez [(open)].',
+            position: 'Krawędź widocznego obszaru, od której wysuwa się szuflada.',
+            showClose: 'Wyświetla przycisk zamknięcia w nagłówku szuflady.',
+            size: 'Przestarzały predefiniowany rozmiar panelu szuflady; zamiast tego użyj width.',
+            width: 'Szerokość panelu szuflady wzdłuż jej głównej osi.',
+            closed:
+              'Emitowane, gdy szuflada zamyka się, niezależnie od sposobu (przycisk, tło lub Escape).',
+            opened: 'Emitowane raz po wyświetleniu szuflady przez showModal().',
+          },
+          'data-table': {
+            bordered: 'Renderuje obramowanie wokół każdej komórki.',
+            columns:
+              'Definicje kolumn opisujące klucz, etykietę i opcjonalnie sortowanie lub szablon każdego pola.',
+            data: 'Tablica obiektów wierszy do wyświetlenia w tabeli.',
+            density:
+              'Predefiniowana pionowa gęstość sterująca wypełnieniem wierszy i komórek nagłówka.',
+            hoverable: 'Podświetla wiersz pod wskaźnikiem po najechaniu kursorem.',
+            noDataText:
+              'Tekst wyświetlany w stanie pustym, z powrotem do tłumaczenia aktywnej lokalizacji.',
+            sort: 'Bieżący stan sortowania (klucz kolumny i kierunek), dwukierunkowo wiązalny przez [(sort)].',
+            stickyHeader:
+              'Przytwierdza wiersz nagłówka do góry tabeli podczas przewijania zawartości.',
+            striped:
+              'Stosuje naprzemienne cieniowanie tła do nieparzystych i parzystych wierszy.',
+            trackBy:
+              'Klucz właściwości wiersza używany przez wykrywanie zmian Angular do efektywnej identyfikacji wierszy.',
+            sorted:
+              'Emitowane za każdym razem, gdy kolumna lub kierunek sortowania zmienia się przez kliknięcie nagłówka.',
+          },
+          'radio-group': {
+            ariaLabel:
+              'Dostępna etykieta grupy, gdy nie jest renderowana widoczna etykieta.',
+            disabled: 'Wyłącza wszystkie opcje radia w grupie.',
+            errorMsg:
+              'Komunikat o błędzie pod grupą, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod grupą, ukryty gdy występuje błąd.',
+            id: 'id stosowane do elementu grupy i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta tekstowa renderowana nad grupą.',
+            name: 'Wspólny atrybut name stosowany do wszystkich pól radio w grupie, generowany automatycznie gdy pominięty.',
+            orientation: 'Kierunek układu opcji radio w grupie.',
+            required: 'Oznacza grupę jako wymaganą.',
+            size: 'Wizualny rozmiar stosowany do wszystkich opcji radia w grupie.',
+            value: 'Aktualnie wybrana wartość, dwukierunkowo wiązalna przez [(value)].',
+            changed: 'Emitowane z nową wartością, gdy użytkownik wybiera opcję.',
+            select: 'Programowo wybiera opcję o podanej wartości.',
+          },
+          segmented: {
+            ariaLabel:
+              'Dostępna etykieta kontrolki, gdy nie jest renderowana widoczna etykieta.',
+            disabled: 'Wyłącza kontrolkę segmentową.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            fullWidth: 'Rozciąga kontrolkę, aby wypełniła szerokość swojego kontenera.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            id: 'id stosowane do kontrolki i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta wyświetlana nad kontrolką.',
+            options:
+              'Tablica opcji renderowanych jako przyciski przełączające w kontrolce.',
+            required: 'Oznacza pole jako wymagane.',
+            size: 'Wizualny rozmiar kontrolki segmentowej.',
+            value:
+              'Wartość aktualnie wybranej opcji, dwukierunkowo wiązalna przez [(value)].',
+            changed: 'Emitowane z nową wartością, gdy użytkownik wybiera inną opcję.',
+            select: 'Programowo zaznacza podaną opcję.',
+          },
+          'tree-node': {
+            collapseLabel: 'Dostępna etykieta przycisku zwijania.',
+            disabled: 'Wyłącza interakcję z węzłem i jego potomkami.',
+            expandedIds: 'Zbiór identyfikatorów węzłów aktualnie rozwiniętych.',
+            expandLabel: 'Dostępna etykieta przycisku rozwijania.',
+            focusedId:
+              'Identyfikator węzła aktualnie posiadającego fokus ruchomego tabindex.',
+            level:
+              'Głębokość od korzenia drzewa (indeksowana od 0), używana do wcięcia i aria-level.',
+            node: 'Obiekt danych opisujący ten węzeł, zawierający jego id, etykietę, potomków i stan wyłączenia.',
+            posInSet:
+              'Pozycja (indeksowana od 1) wśród potomków węzła nadrzędnego, używana dla aria-posinset.',
+            selectedId:
+              'Identyfikator aktualnie wybranego węzła lub null gdy nic nie jest wybrane.',
+            setSize:
+              'Całkowita liczba węzłów na tym samym poziomie w liście potomków węzła nadrzędnego, używana dla aria-setsize.',
+            select: 'Emitowane, gdy użytkownik klika lub aktywuje wiersz węzła.',
+            toggle:
+              'Emitowane z identyfikatorem węzła, gdy użytkownik klika strzałkę rozwijania lub zwijania.',
+          },
+          tree: {
+            ariaLabel: 'Dostępna etykieta widżetu drzewa.',
+            disabled: 'Wyłącza wszystkie węzły drzewa.',
+            expandedIds:
+              'Identyfikatory aktualnie rozwiniętych węzłów gałęzi, dwukierunkowo wiązalne przez [(expandedIds)].',
+            nodes: 'Tablica obiektów danych węzłów drzewa definiująca hierarchię.',
+            selectedId:
+              'Identyfikator aktualnie wybranego węzła, dwukierunkowo wiązalny przez [(selectedId)].',
+            size: 'Wizualny rozmiar drzewa, skalujący tekst i odstępy proporcjonalnie.',
+            nodeClick: 'Emitowane z danymi węzła, gdy użytkownik wybiera węzeł.',
+          },
+          step: {
+            completed:
+              'Oznacza krok jako ukończony, aktualizując jego wskaźnik wizualny.',
+            disabled: 'Uniemożliwia aktywację kroku.',
+            id: 'id stosowane do panelu kroku i jego zakładki, generowane automatycznie gdy pominięte.',
+            label: 'Etykieta wyświetlana we wskaźniku kroku.',
+            optional:
+              'Oznacza krok jako opcjonalny, wyświetlane jako podpowiedź pod etykietą kroku.',
+          },
+          stepper: {
+            activeStep:
+              'Indeks aktywnego kroku (od zera), dwukierunkowo wiązalny przez [(activeStep)].',
+            disabled: 'Wyłącza cały stepper i nawigację między krokami.',
+            id: 'id stosowane do elementu hosta steppera, generowane automatycznie gdy pominięte.',
+            linear:
+              'Wymaga oznaczenia każdego nieobowiązkowego kroku jako ukończonego przed przejściem dalej.',
+            size: 'Wizualny rozmiar steppera, skalujący wskaźniki kroków i etykiety razem.',
+            changed:
+              'Emitowane z nowym indeksem aktywnego kroku, gdy użytkownik przechodzi do innego kroku.',
+            canNavigateTo:
+              'Zwraca, czy krok o podanym indeksie jest osiągalny z bieżącego stanu.',
+            indexOf:
+              'Zwraca indeks podanego kroku lub -1, jeśli nie jest zarejestrowany.',
+            selectStep: 'Aktywuje krok o podanym indeksie, jeśli jest osiągalny.',
+          },
+          'transfer-list': {
+            disabled: 'Wyłącza całą listę transferu i wszystkie kontrolki przesuwania.',
+            items:
+              'Pełna pula elementów dostępnych w obu panelach, identyfikowanych przez id.',
+            selectedIds:
+              'Identyfikatory elementów aktualnie po stronie docelowej (prawej), dwukierunkowo wiązalne przez [(selectedIds)].',
+            size: 'Wizualny rozmiar listy transferu.',
+            sourceLabel:
+              'Nagłówek renderowany nad panelem źródłowym (lewym), z powrotem do domyślnej wartości aktywnej lokalizacji.',
+            targetLabel:
+              'Nagłówek renderowany nad panelem docelowym (prawym), z powrotem do domyślnej wartości aktywnej lokalizacji.',
+          },
+          'virtual-list': {
+            itemHeight:
+              'Wysokość w pikselach każdego wiersza; wszystkie wiersze muszą mieć tę samą stałą wysokość.',
+            items:
+              'Pełna tablica elementów danych do renderowania; w danym momencie montowana jest tylko widoczna część.',
+            overscan:
+              'Liczba dodatkowych wierszy renderowanych powyżej i poniżej widocznego okna, aby zmniejszyć puste krawędzie podczas szybkiego przewijania.',
+            viewportHeight: 'Wysokość w pikselach widocznego obszaru przewijania.',
+            scrollIndexChange:
+              'Emitowane z indeksem pierwszego widocznego wiersza u góry widoku podczas przewijania przez użytkownika.',
+            scrollToIndex:
+              'Przewija widoczny obszar tak, aby wiersz o podanym indeksie pojawił się u góry, ograniczony do granic listy.',
+          },
+          'field-label': {
+            forId:
+              'id powiązanego elementu sterującego; renderuje <label for> gdy ustawione, w przeciwnym razie <span>.',
+            labelId:
+              'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',
+            required: 'Wyświetla wskaźnik wymaganego pola na etykiecie.',
+            text: 'Tekst etykiety renderowany wewnątrz elementu etykiety.',
+          },
+          'field-messages': {
+            error:
+              'Komunikat o błędzie do wyświetlenia; gdy ustawiony, podpowiedź jest ukryta, a komunikat ogłaszany jest jako alert.',
+            hint: 'Tekst pomocniczy wyświetlany pod polem, gdy nie ma błędu.',
+            id: 'Bazowe id używane do wyprowadzania identyfikatorów ARIA dla elementów błędu i podpowiedzi.',
+          },
+          dialog: {
+            ariaLabel:
+              'Dostępna etykieta okna dialogowego, gdy jego slot nagłówka nie zawiera widocznego tytułu.',
+            closeOnBackdrop:
+              'Zamyka okno dialogowe po kliknięciu przez użytkownika obszaru tła poza panelem.',
+            closeOnEscape:
+              'Zamyka okno dialogowe po naciśnięciu przez użytkownika klawisza Escape.',
+            id: 'id stosowane do natywnego elementu dialog, generowane automatycznie gdy pominięte.',
+            open: 'Określa, czy okno dialogowe jest wyświetlane, dwukierunkowo wiązalne przez [(open)].',
+            showClose: 'Wyświetla przycisk zamknięcia w nagłówku okna dialogowego.',
+            size: 'Przestarzały alias dla width; użyj zamiast tego width.',
+            width: 'Wstępnie ustawiona szerokość panelu okna dialogowego.',
+            closed:
+              'Emitowane po zamknięciu okna dialogowego, niezależnie od tego, czy zamknął je użytkownik, czy nastąpiło to programowo.',
+            opened: 'Emitowane po wyświetleniu okna dialogowego przez showModal().',
           },
         },
       },
