@@ -3,9 +3,11 @@
     class="ea-tabs__list"
     [class.ea-tabs__list--underline]="variant() === 'underline'"
     [class.ea-tabs__list--filled]="variant() === 'filled'"
+    [class.ea-tabs__list--xs]="size() === 'xs'"
     [class.ea-tabs__list--sm]="size() === 'sm'"
     [class.ea-tabs__list--md]="size() === 'md'"
     [class.ea-tabs__list--lg]="size() === 'lg'"
+    [class.ea-tabs__list--xl]="size() === 'xl'"
     role="tablist"
     (keydown)="handleKeydown($event)">
     @for (tab of registeredTabs(); track tab.value()) {

@@ -8,9 +8,11 @@
 
   <div
     class="ea-code-input-group"
+    [class.ea-code-input-group--xs]="size() === 'xs'"
     [class.ea-code-input-group--sm]="size() === 'sm'"
     [class.ea-code-input-group--md]="size() === 'md'"
     [class.ea-code-input-group--lg]="size() === 'lg'"
+    [class.ea-code-input-group--xl]="size() === 'xl'"
     [class.ea-code-input-group--error]="hasError()"
     [class.ea-code-input-group--disabled]="isDisabled()"
     role="group"
