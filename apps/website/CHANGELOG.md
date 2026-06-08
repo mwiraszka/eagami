@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.10.0] - 2026-06-08
+
+### Changed
+
+- Rebuild the accordion, autocomplete, and avatar-editor pages as interactive playgrounds, with inline add, remove, and edit controls for the accordion items and autocomplete options.
+- Shorten the autocomplete demo's option list and give the avatar-editor canvas size sensible bounds.
+- Update playground number fields only when you click away or press Enter, and show each field's allowed range, so the preview no longer flickers through invalid values while typing.
+- Add API reference descriptions for every component's inputs, outputs, and methods, translated across all locales.
+- Pick up @eagami/ui v2.10.0.
+
 ## [2.9.0] - 2026-06-08
 
 ### Changed
@@ -531,6 +541,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.10.0]: https://github.com/mwiraszka/eagami/compare/website-v2.9.0...website-v2.10.0
 [2.9.0]: https://github.com/mwiraszka/eagami/compare/website-v2.8.0...website-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/website-v2.7.0...website-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/website-v2.6.0...website-v2.7.0

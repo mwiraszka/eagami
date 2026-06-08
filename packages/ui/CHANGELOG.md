@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.0] - 2026-06-08
+
+### Changed
+
+- Layer popover-based overlays (dropdowns, menus, selects, date and time pickers) above modals, drawers, and sticky headers so they are never covered, while staying below toasts and tooltips.
+
+### Fixed
+
+- Render the `<ea-autocomplete>` suggestion list in an overlay so it is no longer clipped by scrollable or overflow-hidden ancestors.
+- Render `<ea-accordion>` as a block-level element so its width follows its container instead of stretching when a long panel opens.
+
 ## [2.9.0] - 2026-06-08
 
 ### Added
@@ -659,6 +670,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.9.0...ui-v2.10.0
 [2.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.8.0...ui-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.7.0...ui-v2.8.0
 [2.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.6.0...ui-v2.7.0
