@@ -502,6 +502,7 @@ export const esES: WebMessages = {
           danger: 'Peligro',
           toggleLoading: 'Alternar carga',
           fullWidth: 'Ancho completo',
+          clickedToast: '¡Botón pulsado!',
         },
         card: {
           elevatedHeader: 'Elevada',
@@ -1052,8 +1053,7 @@ export const esES: WebMessages = {
               'Acota un valor numérico dentro del rango mín./máx. configurado una vez que finaliza la edición.',
           },
           accordion: {
-            multi:
-              'Permite mantener varios elementos abiertos a la vez en lugar de solo uno.',
+            multi: 'Permite mantener varios elementos abiertos a la vez.',
           },
           alert: {
             dismissible:

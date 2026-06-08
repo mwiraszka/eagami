@@ -508,6 +508,7 @@ export const pl: WebMessages = {
           danger: 'Niebezpieczny',
           toggleLoading: 'Przełącz ładowanie',
           fullWidth: 'Pełna szerokość',
+          clickedToast: 'Kliknięto przycisk!',
         },
         card: {
           elevatedHeader: 'Wyniesiona',
@@ -1057,7 +1058,7 @@ export const pl: WebMessages = {
               'Ogranicza wartość liczbową do skonfigurowanego zakresu min/max po zakończeniu edycji.',
           },
           accordion: {
-            multi: 'Pozwala rozwinąć kilka elementów jednocześnie zamiast tylko jednego.',
+            multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',
           },
           alert: {
             dismissible:

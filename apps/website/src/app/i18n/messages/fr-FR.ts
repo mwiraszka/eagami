@@ -508,6 +508,7 @@ export const frFR: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Basculer le chargement',
           fullWidth: 'Pleine largeur',
+          clickedToast: 'Bouton cliqué !',
         },
         card: {
           elevatedHeader: 'Surélevé',
@@ -1061,8 +1062,7 @@ export const frFR: WebMessages = {
               "Borne une valeur numérique dans la plage min/max configurée une fois l'édition terminée.",
           },
           accordion: {
-            multi:
-              'Permet de garder plusieurs éléments ouverts à la fois au lieu d’un seul.',
+            multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
           },
           alert: {
             dismissible:

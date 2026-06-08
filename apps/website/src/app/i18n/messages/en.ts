@@ -499,6 +499,7 @@ export const en: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Toggle loading',
           fullWidth: 'Full width',
+          clickedToast: 'Button clicked!',
         },
         card: {
           elevatedHeader: 'Elevated',
@@ -1039,7 +1040,7 @@ export const en: WebMessages = {
               'Clamps a number value into the configured min/max range once editing finishes.',
           },
           accordion: {
-            multi: 'Allows several items to stay expanded at once instead of just one.',
+            multi: 'Allows multiple items to stay expanded at once.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1803,7 +1804,7 @@ export const en: WebMessages = {
             scrollIndexChange:
               'Fires with the index of the first row visible at the top of the viewport whenever the user scrolls.',
             scrollToIndex:
-              'Scroll the viewport so that the row at the given index appears at the top, clamped to the list bounds.',
+              'Scrolls the viewport so the row at the given index appears at the top, clamped to the list bounds.',
           },
           'field-label': {
             forId:
