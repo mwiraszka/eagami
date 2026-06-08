@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.9.0] - 2026-06-07
+## [2.9.0] - 2026-06-08
 
 ### Added
 
@@ -15,11 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Switch `<ea-eagami-wordmark>` `variant` to string values (`default`, `byline`, `tagline`); the numeric `1`/`2`/`3` are deprecated and will be removed in v3.0.0.
-- Default `<ea-eagami-wordmark>` `size` to 100px and floor it at 10px.
+- Default `<ea-eagami-wordmark>` `size` to 48px and floor it at 10px.
+- Add an `all` option to `<ea-color-picker>` `format` (now the default) that cycles hex/rgb/hsl from the popover toggle (with HSL inputs); a specific format locks the picker to it.
 
 ### Fixed
 
 - Keep the `<ea-eagami-wordmark>` logo proportional when its size is cleared, and match the byline and tagline letter-spacing to the brand text.
+- Apply the `xs` and `xl` sizes to `<ea-code-input>` and `<ea-tabs>`, which previously only bound `sm`/`md`/`lg`.
 
 ## [2.8.0] - 2026-06-07
 

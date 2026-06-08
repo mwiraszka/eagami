@@ -2,7 +2,7 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [2.9.0] - 2026-06-07
+## [2.9.0] - 2026-06-08
 
 ### Changed
 
@@ -10,6 +10,7 @@ All notable changes to eagami.com are documented in this file.
 - Add sensible bounds to the playground number controls (e.g. sliders capped at ±1,000, wordmark size floored at 10px).
 - Pick the wordmark variant from named values and label its size control in px.
 - Surface the new slider and range-slider thousands-separator toggle in their playgrounds.
+- Default the color-picker playground to the new `all` format.
 
 ## [2.8.0] - 2026-06-07
 
