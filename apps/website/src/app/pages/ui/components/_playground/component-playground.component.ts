@@ -66,6 +66,10 @@ export class ComponentPlaygroundComponent {
   readonly slug = input.required<string>();
   readonly knobs = input.required<PlaygroundKnob[]>();
   readonly state = input.required<KnobState>();
+  /** Markup for component-shaped configuration the snippet should reflect as children, e.g. accordion items. */
+  readonly childMarkup = input<string>('');
+  /** Extra tag attributes the snippet should reflect, e.g. a built `[options]` binding. */
+  readonly extraAttributes = input<readonly string[]>([]);
 
   readonly knobChange = output<KnobChange>();
   readonly resetClicked = output<void>();
@@ -78,6 +82,7 @@ export class ComponentPlaygroundComponent {
       this.meta()?.kind === 'directive',
       this.knobs(),
       this.state(),
+      { childMarkup: this.childMarkup(), extraAttributes: this.extraAttributes() },
     ),
   );
 
@@ -126,5 +131,32 @@ export class ComponentPlaygroundComponent {
     const trimmed = value.trim();
     const parsed = Number(trimmed);
     this.emit(name, trimmed === '' || Number.isNaN(parsed) ? '' : parsed);
+  }
+
+  // Number knobs commit on blur, not per keystroke, so the preview never renders
+  // an out-of-bounds intermediate value; the field clamps to min/max on blur.
+  protected commitNumber(name: string, event: FocusEvent): void {
+    this.emitNumber(name, (event.target as HTMLInputElement).value);
+  }
+
+  // Enter blurs the field, routing through the same clamp-then-commit path.
+  protected commitOnEnter(event: Event): void {
+    (event.target as HTMLInputElement).blur();
+  }
+
+  protected rangeHint(knob: PlaygroundKnob): string {
+    const { min, max } = knob;
+    const labels = this.messages().ui.component.playground.rangeHint;
+    const format = (value: number): string => value.toLocaleString('en-US');
+    if (min != null && max != null) {
+      return `${format(min)} ${labels.between} ${format(max)}`;
+    }
+    if (min != null) {
+      return `${labels.min} ${format(min)}`;
+    }
+    if (max != null) {
+      return `${labels.max} ${format(max)}`;
+    }
+    return '';
   }
 }
