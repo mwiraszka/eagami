@@ -78,9 +78,9 @@
   --color-bg-subtle: var(--color-neutral-50);
   --color-bg-stripe: var(--color-neutral-50);
   --color-bg-muted: var(--color-neutral-100);
-  // Stronger neutral fill for placeholder surfaces (e.g. avatar) that must read
-  // clearly against the page; muted is too faint on a white base
-  --color-bg-emphasis: var(--color-neutral-300);
+  // Soft neutral fill for placeholder surfaces (e.g. avatar initials) when no
+  // image is set; light enough to sit gently on a white page
+  --color-bg-emphasis: var(--color-neutral-100);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
