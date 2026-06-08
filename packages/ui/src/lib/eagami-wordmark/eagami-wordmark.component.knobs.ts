@@ -20,6 +20,6 @@ export const EAGAMI_WORDMARK_KNOBS: ComponentKnobs = {
   args: {
     variant: 'default',
     layout: 'stacked',
-    size: 100,
+    size: 48,
   },
 };

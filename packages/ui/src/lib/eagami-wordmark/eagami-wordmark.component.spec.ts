@@ -110,8 +110,8 @@ describe('EagamiWordmarkComponent', () => {
   });
 
   describe('Size', () => {
-    it('sets --_size to 100 by default', () => {
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('100');
+    it('sets --_size to 48 by default', () => {
+      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
     });
 
     it('sets --_size to the provided value', () => {
@@ -128,11 +128,11 @@ describe('EagamiWordmarkComponent', () => {
       expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('10');
     });
 
-    it('falls back to 100 when size is cleared or invalid', () => {
+    it('falls back to 48 when size is cleared or invalid', () => {
       fixture.componentRef.setInput('size', NaN);
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('100');
+      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
     });
   });
 

@@ -42,7 +42,7 @@ export class EagamiWordmarkComponent {
     'default',
   );
   readonly layout = input<EagamiWordmarkLayout>('stacked');
-  readonly size = input<number>(100);
+  readonly size = input<number>(48);
 
   /** Collapses the deprecated numeric variants to the string form. */
   private readonly resolvedVariant = computed<EagamiWordmarkVariant>(() => {
@@ -64,7 +64,7 @@ export class EagamiWordmarkComponent {
     const raw = this.size();
     const value = typeof raw === 'number' ? raw : Number(raw);
     if (!Number.isFinite(value) || value <= 0) {
-      return 100;
+      return 48;
     }
     return Math.max(10, value);
   });
