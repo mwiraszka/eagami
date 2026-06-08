@@ -27,10 +27,10 @@ import { uniqueId } from '../unique-id';
 
 /** Visual size of the color picker trigger. */
 export type ColorPickerSize = EaSize;
-/** Format used to emit the selected value via `value` / `changed`. */
-export type ColorPickerFormat = 'hex' | 'rgb' | 'hsl';
-/** Which group of inputs the popover currently shows (hex string or RGB channels). */
-export type ColorPickerInputMode = 'hex' | 'rgb';
+/** Output format. `all` (default) lets the user cycle hex/rgb/hsl from the popover; a specific value locks the picker to it. */
+export type ColorPickerFormat = 'hex' | 'rgb' | 'hsl' | 'all';
+/** A concrete format the popover can show inputs for and emit. */
+export type ColorPickerInputMode = 'hex' | 'rgb' | 'hsl';
 /** Value accepted via `writeValue`: any CSS color string or `null`. */
 export type ColorPickerValue = string | null;
 
@@ -123,8 +123,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Whether to show the alpha slider. When `false` the emitted value always has alpha = 1. */
   readonly showAlpha = input<boolean>(true);
-  /** Output format for emitted values. */
-  readonly format = input<ColorPickerFormat>('hex');
+  /** Output format. `all` lets the user cycle hex/rgb/hsl in the popover; a specific value locks it. */
+  readonly format = input<ColorPickerFormat>('all');
   /** Preset swatches shown at the bottom of the popover. Pass an empty array to hide. */
   readonly presets = input<readonly string[]>(DEFAULT_PRESETS);
   readonly id = input<string>(uniqueId('ea-color-picker'));
@@ -141,10 +141,15 @@ export class ColorPickerComponent implements ControlValueAccessor {
   private readonly alpha = signal(1);
   /** Tracks the active drag target so pointermove can route correctly. */
   private readonly dragging = signal<'sv' | 'hue' | 'alpha' | null>(null);
-  /** Which input row is visible (hex string or RGB channels). Toggles via the
-   * format button. Independent of the `format` input, which only controls the
-   * emitted value. */
+  /** The user's chosen format when `format` is `all`; the popover toggle cycles it. */
   readonly inputMode = signal<ColorPickerInputMode>('hex');
+  /** Resolved format driving both the visible inputs and the emitted value. */
+  readonly activeFormat = computed<ColorPickerInputMode>(() => {
+    const f = this.format();
+    return f === 'all' ? this.inputMode() : f;
+  });
+  /** Whether the in-popover format toggle is shown (only when `format` is `all`). */
+  readonly canToggleFormat = computed(() => this.format() === 'all');
   /** What the hex input shows. Kept separate from the canonical hex so the user
    * can type a partial value (`#1`, `#12`, `#123`...) without each keystroke being
    * expanded back into a 6-digit canonical form. */
@@ -182,11 +187,20 @@ export class ColorPickerComponent implements ControlValueAccessor {
     rgbaToHex(this.rgb(), this.alpha(), this.showAlpha()),
   );
 
+  /** Rounded HSL channels (h in degrees, s/l as percentages) for the HSL inputs. */
+  readonly hslDisplay = computed(() => {
+    const { h, s, l } = rgbToHsl(this.rgb());
+    return { h: Math.round(h), s: Math.round(s * 100), l: Math.round(l * 100) };
+  });
+
+  /** Uppercase label for the format toggle, e.g. `HEX`. */
+  readonly formatLabel = computed(() => this.activeFormat().toUpperCase());
+
   readonly displayValue = computed(() => {
     if (this.value() === null) {
       return '';
     }
-    return formatColor(this.rgb(), this.alpha(), this.format(), this.showAlpha());
+    return formatColor(this.rgb(), this.alpha(), this.activeFormat(), this.showAlpha());
   });
 
   readonly resolvedPlaceholder = computed(
@@ -543,9 +557,24 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.applyRgba(next.r, next.g, next.b, this.alpha(), true);
   }
 
-  /** Cycles the input row between hex string and RGB channels. */
+  onHslInput(channel: 'h' | 's' | 'l', event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > 3) {
+      input.value = input.value.slice(0, 3);
+    }
+    const raw = parseInt(input.value, 10);
+    if (Number.isNaN(raw)) {
+      return;
+    }
+    const max = channel === 'h' ? 360 : 100;
+    const next = { ...this.hslDisplay(), [channel]: Math.max(0, Math.min(max, raw)) };
+    const rgb = hslToRgb(next.h, next.s / 100, next.l / 100);
+    this.applyRgba(rgb.r, rgb.g, rgb.b, this.alpha(), true);
+  }
+
+  /** Cycles the format through hex, rgb, and hsl (only used when `format` is `all`). */
   cycleInputMode(): void {
-    this.inputMode.update(m => (m === 'hex' ? 'rgb' : 'hex'));
+    this.inputMode.update(m => (m === 'hex' ? 'rgb' : m === 'rgb' ? 'hsl' : 'hex'));
   }
 
   onAlphaInput(event: Event): void {
@@ -646,7 +675,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   private commit(refreshHex = true): void {
-    const out = formatColor(this.rgb(), this.alpha(), this.format(), this.showAlpha());
+    const out = formatColor(
+      this.rgb(),
+      this.alpha(),
+      this.activeFormat(),
+      this.showAlpha(),
+    );
     if (refreshHex) {
       this.refreshHexInput();
     }
@@ -763,7 +797,7 @@ function rgbaToHex({ r, g, b }: Rgb, a: number, includeAlpha: boolean): string {
 function formatColor(
   rgb: Rgb,
   alpha: number,
-  format: ColorPickerFormat,
+  format: ColorPickerInputMode,
   includeAlpha: boolean,
 ): string {
   switch (format) {

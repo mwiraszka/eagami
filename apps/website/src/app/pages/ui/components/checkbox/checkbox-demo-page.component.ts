@@ -17,7 +17,7 @@ interface CheckboxKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
-  count: string;
+  count: string | number;
   size: CheckboxSize;
   disabled: boolean;
   required: boolean;

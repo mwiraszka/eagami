@@ -26,6 +26,10 @@ export const WithMinMaxLabels: Story = {
   args: { showMinMaxLabels: true },
 };
 
+export const GroupedThousands: Story = {
+  args: { min: 0, max: 1000000, value: 250000, showMinMaxLabels: true },
+};
+
 export const WithHint: Story = {
   args: { hint: 'Drag the handle or use arrow keys to adjust' },
 };

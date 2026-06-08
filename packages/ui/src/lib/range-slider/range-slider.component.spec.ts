@@ -100,6 +100,46 @@ describe('RangeSliderComponent', () => {
     });
   });
 
+  describe('Value formatting', () => {
+    function getValueText(): string {
+      return (
+        fixture.nativeElement.querySelector('.ea-range-slider-field__value')
+          ?.textContent ?? ''
+      );
+    }
+
+    it('groups thousands with commas by default', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', [1000, 12345] as RangeSliderValue);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('1,000');
+      expect(getValueText()).toContain('12,345');
+    });
+
+    it('shows plain numbers when groupThousands is false', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', [1000, 12345] as RangeSliderValue);
+      fixture.componentRef.setInput('groupThousands', false);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('12345');
+      expect(getValueText()).not.toContain('12,345');
+    });
+
+    it('lets a custom formatValue bypass grouping', () => {
+      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('max', 1000000);
+      fixture.componentRef.setInput('value', [1000, 12345] as RangeSliderValue);
+      fixture.componentRef.setInput('formatValue', (v: number) => `$${v}`);
+      fixture.detectChanges();
+
+      expect(getValueText()).toContain('$12345');
+    });
+  });
+
   describe('Value invariants', () => {
     it('swaps low and high when given an inverted tuple', () => {
       component.writeValue([70, 30]);

@@ -10,7 +10,7 @@
           [required]="required()" />
       }
       @if (showValue()) {
-        <span class="ea-slider-field__value">{{ formatValue()(clampedValue()) }}</span>
+        <span class="ea-slider-field__value">{{ formatDisplay(clampedValue()) }}</span>
       }
     </div>
   }
@@ -37,7 +37,7 @@
         [attr.aria-valuemin]="min()"
         [attr.aria-valuemax]="max()"
         [attr.aria-valuenow]="clampedValue()"
-        [attr.aria-valuetext]="formatValue()(clampedValue())"
+        [attr.aria-valuetext]="formatDisplay(clampedValue())"
         [attr.aria-disabled]="isDisabled() || null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="errored() || null"
@@ -52,8 +52,8 @@
 
     @if (showMinMaxLabels()) {
       <div class="ea-slider__minmax">
-        <span class="ea-slider__minmax-label">{{ formatValue()(min()) }}</span>
-        <span class="ea-slider__minmax-label">{{ formatValue()(max()) }}</span>
+        <span class="ea-slider__minmax-label">{{ formatDisplay(min()) }}</span>
+        <span class="ea-slider__minmax-label">{{ formatDisplay(max()) }}</span>
       </div>
     }
   </div>

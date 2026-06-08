@@ -161,6 +161,104 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Number type', () => {
+    function configureNumber(bounds: {
+      min?: number;
+      max?: number;
+      maxLength?: number;
+    }): void {
+      fixture.componentRef.setInput('type', 'number');
+      for (const [key, value] of Object.entries(bounds)) {
+        fixture.componentRef.setInput(key, value);
+      }
+      fixture.detectChanges();
+    }
+
+    it('sets min, max, and step attributes for number inputs', () => {
+      configureNumber({ min: 1, max: 3 });
+      fixture.componentRef.setInput('step', 1);
+      fixture.detectChanges();
+
+      const input = getNativeInput();
+
+      expect(input.getAttribute('min')).toBe('1');
+      expect(input.getAttribute('max')).toBe('3');
+      expect(input.getAttribute('step')).toBe('1');
+    });
+
+    it('does not set min/max for non-number inputs', () => {
+      fixture.componentRef.setInput('min', 1);
+      fixture.detectChanges();
+
+      expect(getNativeInput().getAttribute('min')).toBeNull();
+    });
+
+    it('blocks the exponent key', () => {
+      configureNumber({});
+      const event = new KeyboardEvent('keydown', { key: 'e', cancelable: true });
+
+      getNativeInput().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('prevents the scroll-wheel from changing a focused number input', () => {
+      configureNumber({});
+      getNativeInput().dispatchEvent(new FocusEvent('focus'));
+      fixture.detectChanges();
+      const event = new WheelEvent('wheel', { cancelable: true });
+
+      getNativeInput().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('clamps the value to max on blur', () => {
+      configureNumber({ min: 1, max: 3 });
+      const input = getNativeInput();
+      input.value = '9';
+      input.dispatchEvent(new Event('input'));
+
+      input.dispatchEvent(new FocusEvent('blur'));
+
+      expect(component.value()).toBe('3');
+    });
+
+    it('clamps the value to min on blur', () => {
+      configureNumber({ min: 2, max: 8 });
+      const input = getNativeInput();
+      input.value = '0';
+      input.dispatchEvent(new Event('input'));
+
+      input.dispatchEvent(new FocusEvent('blur'));
+
+      expect(component.value()).toBe('2');
+    });
+
+    it('enforces maxLength while typing on number inputs', () => {
+      configureNumber({ maxLength: 1 });
+      const input = getNativeInput();
+      input.value = '12';
+
+      input.dispatchEvent(new Event('input'));
+
+      expect(component.value()).toBe('1');
+    });
+
+    it('derives a capped width from its bounds', () => {
+      configureNumber({ min: -1000000, max: 1000000 });
+
+      expect(component.numberWidth()).toBe('calc(8ch + 2em)');
+    });
+
+    it('does not cap width for non-number inputs', () => {
+      fixture.componentRef.setInput('maxLength', 5);
+      fixture.detectChanges();
+
+      expect(component.numberWidth()).toBeNull();
+    });
+  });
+
   describe('Focus state', () => {
     it('adds focused class on focus', () => {
       getNativeInput().dispatchEvent(new FocusEvent('focus'));

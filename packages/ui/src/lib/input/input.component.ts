@@ -95,6 +95,16 @@ export class InputComponent implements ControlValueAccessor {
   readonly autocomplete = input<string | undefined>(undefined);
   /** `id` of a `<datalist>` to associate for native suggestions. */
   readonly list = input<string | undefined>(undefined);
+  /** Minimum value for `type="number"`; the value is clamped to it on blur. */
+  readonly min = input<number | undefined>(undefined);
+  /** Maximum value for `type="number"`; the value is clamped to it on blur. */
+  readonly max = input<number | undefined>(undefined);
+  /** Step increment for `type="number"`. */
+  readonly step = input<number | undefined>(undefined);
+  /** Maximum number of characters; enforced for `type="number"`, where native `maxlength` is ignored. */
+  readonly maxLength = input<number | undefined>(undefined);
+  /** Minimum number of characters (native `minlength`). */
+  readonly minLength = input<number | undefined>(undefined);
   /** Focuses the field once, after it first renders. */
   readonly autofocus = input<boolean>(false);
   /** Shows the reveal toggle for `password` inputs. */
@@ -141,6 +151,25 @@ export class InputComponent implements ControlValueAccessor {
     'ea-input-wrapper--readonly': this.readonly(),
   }));
 
+  /** Characters a bounded number field can hold, from `maxLength` or its bounds' digits. */
+  private readonly numberCharCapacity = computed<number | null>(() => {
+    if (this.type() !== 'number') {
+      return null;
+    }
+    const maxLen = this.maxLength();
+    if (maxLen != null) {
+      return maxLen;
+    }
+    const bounds = [this.min(), this.max()].filter((v): v is number => v != null);
+    return bounds.length ? Math.max(...bounds.map(v => String(v).length)) : null;
+  });
+
+  /** Caps a bounded number field to the widest value it can hold. */
+  readonly numberWidth = computed<string | null>(() => {
+    const capacity = this.numberCharCapacity();
+    return capacity == null ? null : `calc(${capacity}ch + 2em)`;
+  });
+
   constructor() {
     // `afterNextRender` runs once the input has actually been inserted into
     // the DOM and avoids SSR, so the element is guaranteed focusable.
@@ -171,9 +200,32 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   handleInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
+    const el = event.target as HTMLInputElement;
+    let value = el.value;
+    const maxLen = this.maxLength();
+    // Native maxlength is ignored on number inputs, so enforce it here.
+    if (this.type() === 'number' && maxLen != null && value.length > maxLen) {
+      value = value.slice(0, maxLen);
+      el.value = value;
+    }
     this.value.set(value);
     this.onChange(value);
+  }
+
+  handleKeydown(event: KeyboardEvent): void {
+    // Scientific notation has no place in these fields and breaks the width and
+    // length bounds, so block the exponent key on number inputs.
+    if (this.type() === 'number' && (event.key === 'e' || event.key === 'E')) {
+      event.preventDefault();
+    }
+  }
+
+  handleWheel(event: WheelEvent): void {
+    // A focused number input changes value on scroll by default, easy to trigger
+    // by accident while scrolling the page.
+    if (this.type() === 'number' && this.isFocused()) {
+      event.preventDefault();
+    }
   }
 
   handleFocus(event: FocusEvent): void {
@@ -182,9 +234,39 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   handleBlur(event: FocusEvent): void {
+    if (this.type() === 'number') {
+      this.clampToBounds();
+    }
     this.isFocused.set(false);
     this.onTouched();
     this.blurred.emit(event);
+  }
+
+  /** Clamps a number value into `[min, max]` once editing finishes. */
+  private clampToBounds(): void {
+    const el = this.inputEl()?.nativeElement;
+    if (!el || el.value === '') {
+      return;
+    }
+    const num = Number(el.value);
+    if (Number.isNaN(num)) {
+      return;
+    }
+    const min = this.min();
+    const max = this.max();
+    let clamped = num;
+    if (min != null && clamped < min) {
+      clamped = min;
+    }
+    if (max != null && clamped > max) {
+      clamped = max;
+    }
+    if (clamped !== num) {
+      const next = String(clamped);
+      el.value = next;
+      this.value.set(next);
+      this.onChange(next);
+    }
   }
 
   /** Toggles the password reveal state for `type="password"` inputs. */

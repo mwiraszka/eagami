@@ -72,6 +72,10 @@
                   autocomplete="off"
                   [label]="knobLabel(knob.name)"
                   [value]="stringValue(knob.name)"
+                  [min]="knob.min"
+                  [max]="knob.max"
+                  [step]="knob.step"
+                  [maxLength]="knob.maxLength"
                   [disabled]="!isEnabled(knob)"
                   (valueChange)="emitNumber(knob.name, $event)" />
               }

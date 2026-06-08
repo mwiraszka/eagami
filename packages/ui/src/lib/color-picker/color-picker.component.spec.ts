@@ -139,6 +139,26 @@ describe('ColorPickerComponent', () => {
 
       expect(toggle.textContent?.trim()).toBe('RGB');
     });
+
+    it('cycles to HSL and renders H, S, L inputs', () => {
+      open();
+      component.cycleInputMode();
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      const labels = Array.from(
+        document.body.querySelectorAll('.ea-color-picker__input-label'),
+      ).map(el => el.textContent?.trim());
+      expect(labels).toEqual(expect.arrayContaining(['H', 'S', 'L']));
+    });
+
+    it('hides the format toggle when a specific format is set', () => {
+      fixture.componentRef.setInput('format', 'rgb');
+      open();
+      fixture.detectChanges();
+
+      expect(document.body.querySelector('.ea-color-picker__format-toggle')).toBeNull();
+    });
   });
 
   describe('writeValue (parsing)', () => {
@@ -682,10 +702,12 @@ describe('ColorPickerComponent', () => {
   });
 
   describe('Misc handlers', () => {
-    it('cycleInputMode toggles between hex and rgb', () => {
+    it('cycleInputMode cycles through hex, rgb, and hsl', () => {
       expect(component.inputMode()).toBe('hex');
       component.cycleInputMode();
       expect(component.inputMode()).toBe('rgb');
+      component.cycleInputMode();
+      expect(component.inputMode()).toBe('hsl');
       component.cycleInputMode();
       expect(component.inputMode()).toBe('hex');
     });

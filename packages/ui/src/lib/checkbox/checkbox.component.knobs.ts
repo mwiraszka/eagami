@@ -11,6 +11,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
+    count: { control: 'number', min: 0, max: 999, maxLength: 3 },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     indeterminate: { control: 'boolean' },

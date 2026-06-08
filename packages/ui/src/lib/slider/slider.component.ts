@@ -21,6 +21,10 @@ import { uniqueId } from '../unique-id';
 /** Visual size of the slider track and thumb. */
 export type SliderSize = EaSize;
 
+// Default value formatter, identity-checked so a custom `formatValue` bypasses
+// the `groupThousands` grouping.
+const FORMAT_PLAIN = (value: number): string => `${value}`;
+
 /**
  * Single-value range input controlled with pointer drag or full keyboard
  * navigation (arrows, PageUp/PageDown, Home/End). Supports configurable
@@ -59,7 +63,9 @@ export class SliderComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
-  readonly formatValue = input<(value: number) => string>(value => `${value}`);
+  readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
+  /** Group thousands with commas in displayed values (ignored when a custom `formatValue` is set). */
+  readonly groupThousands = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(uniqueId('ea-slider'));
 
@@ -87,6 +93,17 @@ export class SliderComponent implements ControlValueAccessor {
     }
     return ((this.clampedValue() - this.min()) / range) * 100;
   });
+
+  /** Formats a value for display, grouping thousands with commas unless a custom `formatValue` is set. */
+  protected formatDisplay(value: number): string {
+    const formatter = this.formatValue();
+    if (formatter !== FORMAT_PLAIN) {
+      return formatter(value);
+    }
+    return this.groupThousands()
+      ? value.toLocaleString('en-US', { maximumFractionDigits: 20 })
+      : `${value}`;
+  }
 
   readonly errored = computed(() => this.hasError() || !!this.errorMsg());
   readonly showError = computed(() => !!this.errorMsg());

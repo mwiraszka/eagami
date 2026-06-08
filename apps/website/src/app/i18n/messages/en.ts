@@ -899,7 +899,7 @@ export const en: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variant',
             layout: 'Layout',
-            size: 'Size',
+            size: 'Size (px)',
           },
           'empty-state': {
             size: 'Size',
@@ -1136,7 +1136,7 @@ export const en: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Content variant: 1 is the bare wordmark, 2 adds the overline, 3 adds the tagline.',
+              'Content variant: default is the bare wordmark, byline adds the handcrafted-by line, tagline adds the tagline.',
             layout:
               'Arranges the wordmark stacked across lines or inline on a single line.',
             size: 'Pixel value the entire wordmark scales from.',

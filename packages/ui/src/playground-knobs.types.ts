@@ -25,6 +25,14 @@ export interface KnobArgType {
   action?: string;
   /** CSS custom property a `color` control writes, e.g. `--ea-button-background-color`. */
   cssVar?: string;
+  /** Lower bound for a `number` control; the value is clamped to it. */
+  min?: number;
+  /** Upper bound for a `number` control; the value is clamped to it. */
+  max?: number;
+  /** Step increment for a `number` control. */
+  step?: number;
+  /** Maximum character count for a `number` control, which also sizes its width. */
+  maxLength?: number;
   /** Conditionally gate this knob on another knob's value. */
   if?: KnobCondition;
 }

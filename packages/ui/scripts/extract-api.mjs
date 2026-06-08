@@ -28,7 +28,9 @@ function slugFromSelector(selector) {
 // Inputs that default to a generated value (random id, timestamp) expose the
 // raw expression as their default; surface a readable placeholder instead.
 function cleanDefault(raw) {
-  const value = (raw ?? '').trim();
+  // Multi-line `input(\n  'value',\n)` declarations surface the arg with its
+  // trailing comma; strip it so defaults compare cleanly in the playground.
+  const value = (raw ?? '').trim().replace(/,\s*$/, '');
   if (/uniqueId|Math\.random|crypto\.|Date\.now|\$\{/.test(value)) {
     return '(auto-generated)';
   }
