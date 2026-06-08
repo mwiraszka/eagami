@@ -3,7 +3,9 @@
 }
 
 .ea-popover__surface {
-  z-index: var(--z-index-dropdown);
+  // Sit above sticky headers, overlays, and modals so a menu opened from inside any
+  // of them is never clipped or covered; stays below the toast and tooltip layers.
+  z-index: var(--z-index-popover);
   position: fixed;
   // Hidden until `--positioned` flips on after a measurement-stable reposition, so
   // the surface never paints at its pre-positioned `top: 0; left: 0` first (the

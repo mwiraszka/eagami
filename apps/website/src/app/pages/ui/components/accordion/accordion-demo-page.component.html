@@ -1,40 +1,65 @@
-<web-ui-component-demo-layout slug="accordion">
-  <h2>{{ messages().ui.component.sectionHeadings.single }}</h2>
-  <ea-accordion>
-    <ea-accordion-item
-      value="what"
-      [label]="messages().ui.component.demos.accordion.whatLabel">
-      {{ messages().ui.component.demos.accordion.whatBody }}
-    </ea-accordion-item>
-    <ea-accordion-item
-      value="install"
-      [label]="messages().ui.component.demos.accordion.installLabel">
-      {{ messages().ui.component.demos.accordion.installBody }}
-    </ea-accordion-item>
-    <ea-accordion-item
-      value="theme"
-      [label]="messages().ui.component.demos.accordion.themeLabel">
-      {{ messages().ui.component.demos.accordion.themeBody }}
-    </ea-accordion-item>
-  </ea-accordion>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [childMarkup]="childMarkup()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-accordion
+      class="playground-accordion"
+      [multi]="state().multi">
+      @for (item of items(); track item.id) {
+        <ea-accordion-item
+          [value]="'item-' + item.id"
+          [label]="item.heading"
+          [disabled]="item.disabled">
+          {{ item.content }}
+        </ea-accordion-item>
+      }
+    </ea-accordion>
 
-  <h2>{{ messages().ui.component.sectionHeadings.multi }}</h2>
-  <ea-accordion [multi]="true">
-    <ea-accordion-item
-      value="one"
-      [label]="messages().ui.component.demos.accordion.sectionOneLabel">
-      {{ messages().ui.component.demos.accordion.sectionOneBody }}
-    </ea-accordion-item>
-    <ea-accordion-item
-      value="two"
-      [label]="messages().ui.component.demos.accordion.sectionTwoLabel">
-      {{ messages().ui.component.demos.accordion.sectionTwoBody }}
-    </ea-accordion-item>
-    <ea-accordion-item
-      value="disabled"
-      [label]="messages().ui.component.demos.accordion.disabledSectionLabel"
-      [disabled]="true">
-      {{ messages().ui.component.demos.accordion.disabledSectionBody }}
-    </ea-accordion-item>
-  </ea-accordion>
+    <div
+      customControls
+      class="demo-items-editor">
+      @for (item of items(); track item.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Heading"
+            [value]="item.heading"
+            (valueChange)="updateItem(item.id, { heading: $event })" />
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Content"
+            [value]="item.content"
+            (valueChange)="updateItem(item.id, { content: $event })" />
+          <ea-checkbox
+            label="Disabled"
+            [checked]="item.disabled"
+            (changed)="updateItem(item.id, { disabled: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            eaTooltip="Delete item"
+            aria-label="Delete item"
+            (clicked)="removeItem(item.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        eaTooltip="Add item"
+        aria-label="Add item"
+        (clicked)="addItem()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
+  </web-component-playground>
 </web-ui-component-demo-layout>

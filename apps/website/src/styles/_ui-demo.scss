@@ -13,6 +13,43 @@
   max-width: 360px;
 }
 
+// Definite width so an accordion preview keeps a stable size as panels open and
+// their content (often wider than the headings) would otherwise stretch the box.
+.playground-accordion {
+  width: 100%;
+  max-width: 32rem;
+}
+
+// Editable item list projected into a playground's custom controls (accordion
+// items, autocomplete options): one row per item with add/delete affordances.
+.demo-items-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-item-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-item-row__grow {
+  flex: 1;
+  min-width: 8rem;
+}
+
+.demo-item-row__delete-icon {
+  color: var(--color-error-default);
+}
+
+// Hug the content so the button (and its tooltip anchor) stays at its own size
+// instead of stretching to the column's full width and mis-centering the tooltip.
+.demo-items-editor__add {
+  align-self: flex-start;
+}
+
 // Skeleton paints its sized block on an inner element. A block host (not flex)
 // lets auto inline margins center that block when it fits but still overflow into
 // the horizontal scroll when wider; a flex child would shrink and never scroll.

@@ -1,4 +1,7 @@
+import { ACCORDION_KNOBS } from './lib/accordion/accordion.component.knobs';
 import { ALERT_KNOBS } from './lib/alert/alert.component.knobs';
+import { AUTOCOMPLETE_KNOBS } from './lib/autocomplete/autocomplete.component.knobs';
+import { AVATAR_EDITOR_KNOBS } from './lib/avatar-editor/avatar-editor.component.knobs';
 import { AVATAR_KNOBS } from './lib/avatar/avatar.component.knobs';
 import { BADGE_KNOBS } from './lib/badge/badge.component.knobs';
 import { BUTTON_KNOBS } from './lib/button/button.component.knobs';
@@ -36,8 +39,11 @@ export type {
  * not part of the published `@eagami/ui` surface.
  */
 export const PLAYGROUND_KNOBS = {
+  accordion: ACCORDION_KNOBS,
   alert: ALERT_KNOBS,
+  autocomplete: AUTOCOMPLETE_KNOBS,
   avatar: AVATAR_KNOBS,
+  'avatar-editor': AVATAR_EDITOR_KNOBS,
   badge: BADGE_KNOBS,
   button: BUTTON_KNOBS,
   card: CARD_KNOBS,

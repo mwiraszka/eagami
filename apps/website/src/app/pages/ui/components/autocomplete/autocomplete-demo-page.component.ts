@@ -1,75 +1,141 @@
-import { AutocompleteComponent, type SelectOption } from '@eagami/ui';
+import {
+  AutocompleteComponent,
+  type AutocompleteSize,
+  ButtonComponent,
+  InputComponent,
+  PlusIconComponent,
+  type SelectOption,
+  TooltipDirective,
+  TrashIconComponent,
+} from '@eagami/ui';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
-import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { UI_API } from '@app/data/ui-api.generated';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
+import {
+  ComponentPlaygroundComponent,
+  type KnobChange,
+} from '../_playground/component-playground.component';
+import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+
+interface OptionModel {
+  id: number;
+  label: string;
+}
+
+interface AutocompleteKnobState {
+  // Index signature lets this typed state satisfy the playground's generic
+  // KnobState input; the explicit fields below still drive checked bindings.
+  [key: string]: KnobValue;
+  label: string;
+  placeholder: string;
+  size: AutocompleteSize;
+  minLength: number;
+  maxResults: number;
+  disabled: boolean;
+  readonly: boolean;
+  required: boolean;
+}
+
+const SLUG = 'autocomplete';
+
+const DEFAULT_OPTIONS: readonly string[] = [
+  'Golden Retriever',
+  'German Shepherd',
+  'Beagle',
+  'Poodle',
+  'Boxer',
+  'Dachshund',
+];
+
+function slugify(label: string): string {
+  return label
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 @Component({
   selector: 'web-autocomplete-demo-page',
   templateUrl: './autocomplete-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AutocompleteComponent, UiComponentDemoLayoutComponent],
+  imports: [
+    AutocompleteComponent,
+    ButtonComponent,
+    InputComponent,
+    PlusIconComponent,
+    TooltipDirective,
+    TrashIconComponent,
+    UiComponentDemoLayoutComponent,
+    ComponentPlaygroundComponent,
+  ],
 })
 export class AutocompleteDemoPageComponent {
-  protected readonly messages = inject(WebI18nService).messages;
+  protected readonly slug = SLUG;
+  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.autocomplete, UI_API[SLUG]);
+  protected readonly state = signal<AutocompleteKnobState>(
+    initialKnobState(this.knobs, PLAYGROUND_KNOBS.autocomplete) as AutocompleteKnobState,
+  );
 
-  protected readonly autocompleteValue = signal('');
+  private nextId = 1;
+  protected readonly optionItems = signal<OptionModel[]>(this.seedOptions());
 
-  // Many breeds share a leading word, so the maxResults=3 demo overflows and exercises truncation
-  protected readonly autocompleteOptions: SelectOption[] = [
-    { value: 'american-bulldog', label: 'American Bulldog' },
-    { value: 'american-cocker-spaniel', label: 'American Cocker Spaniel' },
-    { value: 'american-eskimo-dog', label: 'American Eskimo Dog' },
-    { value: 'american-foxhound', label: 'American Foxhound' },
-    { value: 'american-pit-bull-terrier', label: 'American Pit Bull Terrier' },
-    { value: 'american-staffordshire-terrier', label: 'American Staffordshire Terrier' },
-    { value: 'american-water-spaniel', label: 'American Water Spaniel' },
-    { value: 'australian-cattle-dog', label: 'Australian Cattle Dog' },
-    { value: 'australian-shepherd', label: 'Australian Shepherd' },
-    { value: 'australian-terrier', label: 'Australian Terrier' },
-    { value: 'belgian-malinois', label: 'Belgian Malinois' },
-    { value: 'belgian-sheepdog', label: 'Belgian Sheepdog' },
-    { value: 'belgian-tervuren', label: 'Belgian Tervuren' },
-    { value: 'bernese-mountain-dog', label: 'Bernese Mountain Dog' },
-    { value: 'boston-terrier', label: 'Boston Terrier' },
-    { value: 'cairn-terrier', label: 'Cairn Terrier' },
-    { value: 'chinese-crested', label: 'Chinese Crested' },
-    { value: 'chinese-shar-pei', label: 'Chinese Shar-Pei' },
-    { value: 'english-bulldog', label: 'English Bulldog' },
-    { value: 'english-cocker-spaniel', label: 'English Cocker Spaniel' },
-    { value: 'english-setter', label: 'English Setter' },
-    { value: 'english-springer-spaniel', label: 'English Springer Spaniel' },
-    { value: 'english-toy-spaniel', label: 'English Toy Spaniel' },
-    { value: 'french-bulldog', label: 'French Bulldog' },
-    { value: 'french-spaniel', label: 'French Spaniel' },
-    { value: 'german-pinscher', label: 'German Pinscher' },
-    { value: 'german-shepherd', label: 'German Shepherd' },
-    { value: 'german-shorthaired-pointer', label: 'German Shorthaired Pointer' },
-    { value: 'german-wirehaired-pointer', label: 'German Wirehaired Pointer' },
-    { value: 'golden-retriever', label: 'Golden Retriever' },
-    { value: 'great-dane', label: 'Great Dane' },
-    { value: 'great-pyrenees', label: 'Great Pyrenees' },
-    { value: 'irish-setter', label: 'Irish Setter' },
-    { value: 'irish-terrier', label: 'Irish Terrier' },
-    { value: 'irish-water-spaniel', label: 'Irish Water Spaniel' },
-    { value: 'irish-wolfhound', label: 'Irish Wolfhound' },
-    { value: 'italian-greyhound', label: 'Italian Greyhound' },
-    { value: 'japanese-chin', label: 'Japanese Chin' },
-    { value: 'japanese-spitz', label: 'Japanese Spitz' },
-    { value: 'norwegian-buhund', label: 'Norwegian Buhund' },
-    { value: 'norwegian-elkhound', label: 'Norwegian Elkhound' },
-    { value: 'norwegian-lundehund', label: 'Norwegian Lundehund' },
-    { value: 'portuguese-water-dog', label: 'Portuguese Water Dog' },
-    { value: 'scottish-deerhound', label: 'Scottish Deerhound' },
-    { value: 'scottish-terrier', label: 'Scottish Terrier' },
-    { value: 'tibetan-mastiff', label: 'Tibetan Mastiff' },
-    { value: 'tibetan-spaniel', label: 'Tibetan Spaniel' },
-    { value: 'tibetan-terrier', label: 'Tibetan Terrier' },
-    { value: 'welsh-corgi', label: 'Welsh Corgi' },
-    { value: 'welsh-springer-spaniel', label: 'Welsh Springer Spaniel' },
-    { value: 'welsh-terrier', label: 'Welsh Terrier' },
-    { value: 'yorkshire-terrier', label: 'Yorkshire Terrier' },
-  ];
+  protected readonly options = computed<SelectOption[]>(() =>
+    this.optionItems()
+      .filter(item => item.label.trim() !== '')
+      .map(item => ({
+        value: slugify(item.label) || `option-${item.id}`,
+        label: item.label,
+      })),
+  );
+
+  /** Snippet `[options]` binding for the playground's generated code, mirroring the live list. */
+  protected readonly extraAttributes = computed(() => {
+    const literal = this.options()
+      .map(option => `{ value: '${option.value}', label: '${option.label}' }`)
+      .join(', ');
+    return [`[options]="[${literal}]"`];
+  });
+
+  protected onKnob({ name, value }: KnobChange): void {
+    this.state.update(
+      current => ({ ...current, [name]: value }) as AutocompleteKnobState,
+    );
+  }
+
+  protected reset(): void {
+    this.state.set(
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.autocomplete,
+      ) as AutocompleteKnobState,
+    );
+    this.nextId = 1;
+    this.optionItems.set(this.seedOptions());
+  }
+
+  protected addOption(): void {
+    this.optionItems.update(items => [
+      ...items,
+      { id: this.nextId++, label: 'New breed' },
+    ]);
+  }
+
+  protected removeOption(id: number): void {
+    this.optionItems.update(items => items.filter(item => item.id !== id));
+  }
+
+  protected updateOption(id: number, label: string): void {
+    this.optionItems.update(items =>
+      items.map(item => (item.id === id ? { ...item, label } : item)),
+    );
+  }
+
+  private seedOptions(): OptionModel[] {
+    return DEFAULT_OPTIONS.map(label => ({ id: this.nextId++, label }));
+  }
 }

@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
-  HostListener,
   computed,
   forwardRef,
   inject,
@@ -18,6 +17,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -33,7 +33,7 @@ export type AutocompleteSize = EaSize;
  */
 @Component({
   selector: 'ea-autocomplete',
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, PopoverComponent],
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,7 +47,6 @@ export type AutocompleteSize = EaSize;
 })
 export class AutocompleteComponent implements ControlValueAccessor {
   private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
-  private readonly hostEl = viewChild<ElementRef<HTMLElement>>('hostEl');
   private readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
@@ -249,16 +248,5 @@ export class AutocompleteComponent implements ControlValueAccessor {
       return;
     }
     this.focusedIndex.set(idx);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (!this.isOpen()) {
-      return;
-    }
-    const host = this.hostEl()?.nativeElement;
-    if (host && !host.contains(event.target as Node)) {
-      this.close();
-    }
   }
 }

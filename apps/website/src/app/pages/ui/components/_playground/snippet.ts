@@ -25,11 +25,23 @@ function iconComponentName(slug: string): string {
  * component as currently configured. Only knobs whose value differs from the
  * component default are emitted, so the snippet stays minimal and copy-ready.
  */
+/**
+ * Extra markup a host page can fold into the snippet for components whose
+ * configuration isn't a flat knob: `childMarkup` is projected as the element's
+ * children (e.g. `<ea-accordion-item>`s), `extraAttributes` are merged onto the
+ * tag (e.g. a built `[options]` binding).
+ */
+export interface SnippetExtras {
+  childMarkup?: string;
+  extraAttributes?: readonly string[];
+}
+
 export function generateSnippet(
   selector: string,
   isDirective: boolean,
   knobs: PlaygroundKnob[],
   state: KnobState,
+  extras: SnippetExtras = {},
 ): GeneratedSnippet {
   const attributes: string[] = [];
   const cssLines: string[] = [];
@@ -62,17 +74,29 @@ export function generateSnippet(
     attributes.push(attribute(knob.name, value));
   }
 
+  if (extras.extraAttributes?.length) {
+    attributes.push(...extras.extraAttributes);
+  }
+  const childMarkup = extras.childMarkup ?? '';
+
+  const openTag = (attrs: string[]): string =>
+    attrs.length === 0
+      ? selector
+      : attrs.length === 1
+        ? `${selector} ${attrs[0]}`
+        : `${selector}\n  ${attrs.join('\n  ')}`;
+
   let markup: string;
   if (isDirective) {
     markup = `<div ${[selector, ...attributes].join(' ')}></div>`;
+  } else if (childMarkup) {
+    const indented = childMarkup
+      .split('\n')
+      .map(line => (line ? `  ${line}` : line))
+      .join('\n');
+    markup = `<${openTag(attributes)}>\n${indented}\n</${selector}>`;
   } else if (content) {
-    const open =
-      attributes.length === 0
-        ? selector
-        : attributes.length === 1
-          ? `${selector} ${attributes[0]}`
-          : `${selector}\n  ${attributes.join('\n  ')}`;
-    markup = `<${open}>${content}</${selector}>`;
+    markup = `<${openTag(attributes)}>${content}</${selector}>`;
   } else if (attributes.length === 0) {
     markup = `<${selector} />`;
   } else if (attributes.length === 1) {

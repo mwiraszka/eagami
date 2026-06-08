@@ -1,6 +1,4 @@
-<div
-  #hostEl
-  class="ea-autocomplete">
+<div class="ea-autocomplete">
   @if (label(); as labelText) {
     <ea-field-label
       [text]="labelText"
@@ -9,6 +7,7 @@
   }
 
   <div
+    #anchorEl
     class="ea-autocomplete__wrapper"
     [ngClass]="wrapperClasses()">
     <span class="ea-autocomplete__prefix">
@@ -49,14 +48,21 @@
     </span>
   </div>
 
-  @if (showList()) {
-    <ul
+  <ea-popover
+    [anchor]="anchorEl"
+    [open]="showList()"
+    placement="bottom-start"
+    role="listbox"
+    [surfaceId]="id() + '-listbox'"
+    [matchAnchorWidth]="true"
+    [closeOnEscape]="false"
+    scrollBehavior="close"
+    (closeRequested)="close()">
+    <div
       class="ea-autocomplete__listbox"
-      [ngClass]="listboxClasses()"
-      role="listbox"
-      [id]="id() + '-listbox'">
+      [ngClass]="listboxClasses()">
       @for (option of filteredOptions(); track option.value; let i = $index) {
-        <li
+        <div
           class="ea-autocomplete__option"
           role="option"
           [id]="id() + '-option-' + i"
@@ -67,17 +73,17 @@
           (mousedown)="selectOption(option)"
           (mouseenter)="focusedIndex.set(i)">
           {{ option.label }}
-        </li>
+        </div>
       }
       @if (showEmpty()) {
-        <li
+        <div
           class="ea-autocomplete__empty"
           role="presentation">
           {{ resolvedEmptyMessage() }}
-        </li>
+        </div>
       }
-    </ul>
-  }
+    </div>
+  </ea-popover>
 
   <ea-field-messages
     [id]="id()"

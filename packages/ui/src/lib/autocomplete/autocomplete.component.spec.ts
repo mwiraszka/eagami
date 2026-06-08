@@ -58,12 +58,21 @@ describe('AutocompleteComponent', () => {
     return fixture.nativeElement.querySelector('.ea-autocomplete__input');
   }
 
+  // The listbox is projected through <ea-popover>, which teleports its surface to
+  // document.body and keeps it in the DOM (aria-hidden) while closed. So query the
+  // document and treat the list as shown only when the popover surface is open.
   function getListbox(): HTMLElement | null {
-    return fixture.nativeElement.querySelector('.ea-autocomplete__listbox');
+    const surface = document.querySelector<HTMLElement>(
+      '.ea-popover__surface:not([aria-hidden])',
+    );
+    return surface?.querySelector<HTMLElement>('.ea-autocomplete__listbox') ?? null;
   }
 
   function getOptions(): HTMLElement[] {
-    return Array.from(fixture.nativeElement.querySelectorAll('.ea-autocomplete__option'));
+    const listbox = getListbox();
+    return listbox
+      ? Array.from(listbox.querySelectorAll<HTMLElement>('.ea-autocomplete__option'))
+      : [];
   }
 
   function getLabel(): HTMLElement | null {
@@ -174,7 +183,7 @@ describe('AutocompleteComponent', () => {
       focus();
       type('zzz');
 
-      const empty = fixture.nativeElement.querySelector('.ea-autocomplete__empty');
+      const empty = getListbox()?.querySelector('.ea-autocomplete__empty');
 
       expect(empty).toBeTruthy();
       expect(getOptions().length).toBe(0);

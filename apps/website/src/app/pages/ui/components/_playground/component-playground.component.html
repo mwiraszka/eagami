@@ -72,12 +72,14 @@
                   autocomplete="off"
                   [label]="knobLabel(knob.name)"
                   [value]="stringValue(knob.name)"
+                  [hint]="rangeHint(knob)"
                   [min]="knob.min"
                   [max]="knob.max"
                   [step]="knob.step"
                   [maxLength]="knob.maxLength"
                   [disabled]="!isEnabled(knob)"
-                  (valueChange)="emitNumber(knob.name, $event)" />
+                  (blurred)="commitNumber(knob.name, $event)"
+                  (keydown.enter)="commitOnEnter($event)" />
               }
               @case ('content') {
                 <ea-input
@@ -99,6 +101,8 @@
           </div>
         }
       </div>
+
+      <ng-content select="[customControls]" />
     </section>
 
     <section class="playground__section">
