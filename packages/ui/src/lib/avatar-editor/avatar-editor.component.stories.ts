@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { AvatarEditorComponent } from './avatar-editor.component';
+import { AVATAR_EDITOR_KNOBS } from './avatar-editor.component.knobs';
 
 const meta: Meta<AvatarEditorComponent> = {
   title: 'Components/Avatar Editor',
@@ -10,27 +11,8 @@ const meta: Meta<AvatarEditorComponent> = {
     props: args,
     template: `<ea-avatar-editor ${argsToTemplate(args)}></ea-avatar-editor>`,
   }),
-  argTypes: {
-    shape: {
-      control: 'select',
-      options: ['circle', 'square'],
-    },
-    canvasSize: { control: { type: 'range', min: 100, max: 400, step: 50 } },
-    maxFileSize: { control: 'number' },
-    minZoom: { control: 'number' },
-    maxZoom: { control: 'number' },
-    cropped: { action: 'cropped' },
-    removed: { action: 'removed' },
-    fileSelected: { action: 'fileSelected' },
-    errored: { action: 'errored' },
-    cropStateChanged: { action: 'cropStateChanged' },
-  },
-  args: {
-    shape: 'circle',
-    canvasSize: 200,
-    minZoom: 1,
-    maxZoom: 3,
-  },
+  argTypes: AVATAR_EDITOR_KNOBS.argTypes,
+  args: AVATAR_EDITOR_KNOBS.args,
 };
 
 export default meta;

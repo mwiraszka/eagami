@@ -2,18 +2,15 @@ import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent } from './accordion.component';
+import { ACCORDION_KNOBS } from './accordion.component.knobs';
 
 const meta: Meta<AccordionComponent> = {
   title: 'Components/Accordion',
   component: AccordionComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [AccordionItemComponent] })],
-  argTypes: {
-    multi: { control: 'boolean' },
-  },
-  args: {
-    multi: false,
-  },
+  argTypes: ACCORDION_KNOBS.argTypes,
+  args: ACCORDION_KNOBS.args,
 };
 
 export default meta;

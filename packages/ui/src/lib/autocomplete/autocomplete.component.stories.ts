@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { AutocompleteComponent } from './autocomplete.component';
+import { AUTOCOMPLETE_KNOBS } from './autocomplete.component.knobs';
 
 const countries = [
   { value: 'us', label: 'United States' },
@@ -36,22 +37,14 @@ const meta: Meta<AutocompleteComponent> = {
     template: `<ea-autocomplete ${argsToTemplate(args)} class="story-narrow"></ea-autocomplete>`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
+    ...AUTOCOMPLETE_KNOBS.argTypes,
     selected: { action: 'selected' },
     changed: { action: 'changed' },
   },
   args: {
+    ...AUTOCOMPLETE_KNOBS.args,
     label: 'Country',
-    placeholder: 'Start typing…',
     options: countries,
-    size: 'md',
-    disabled: false,
-    required: false,
-    minLength: 0,
-    maxResults: 10,
   },
 };
 
