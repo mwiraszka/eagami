@@ -861,7 +861,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'format',
         type: 'ColorPickerFormat',
-        default: "'hex'",
+        default: "'all'",
         required: false,
         twoWay: false,
       },
@@ -1594,14 +1594,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'size',
         type: 'number',
-        default: '100',
+        default: '48',
         required: false,
         twoWay: false,
       },
       {
         name: 'variant',
         type: 'EagamiWordmarkVariant | EagamiWordmarkVariantLegacy',
-        default: "'default',",
+        default: "'default'",
         required: false,
         twoWay: false,
       },
