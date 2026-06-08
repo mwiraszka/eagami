@@ -15,8 +15,9 @@
       [type]="state().type"
       [disabled]="state().disabled"
       [loading]="state().loading"
-      [fullWidth]="state().fullWidth">
-      Button
+      [fullWidth]="state().fullWidth"
+      (clicked)="onButtonClick()">
+      {{ state().label }}
     </ea-button>
   </web-component-playground>
 </web-ui-component-demo-layout>

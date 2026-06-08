@@ -375,6 +375,7 @@ export interface WebMessages {
           danger: string;
           toggleLoading: string;
           fullWidth: string;
+          clickedToast: string;
         };
         card: {
           elevatedHeader: string;
