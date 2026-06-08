@@ -145,75 +145,129 @@
 
         <div
           class="ea-color-picker__inputs"
-          [class.ea-color-picker__inputs--hex]="inputMode() === 'hex'">
-          @if (inputMode() === 'hex') {
-            <label class="ea-color-picker__input-group ea-color-picker__input-group--hex">
-              <span class="ea-color-picker__input-label">HEX</span>
-              <input
-                class="ea-color-picker__input"
-                type="text"
-                spellcheck="false"
-                autocomplete="off"
-                maxlength="9"
-                [value]="hexInputValue()"
-                (input)="onHexInput($event)"
-                (blur)="onHexBlur()" />
-            </label>
-          } @else {
-            <label class="ea-color-picker__input-group">
-              <span class="ea-color-picker__input-label">R</span>
-              <input
-                class="ea-color-picker__input ea-color-picker__input--num"
-                type="text"
-                inputmode="numeric"
-                pattern="\d*"
-                maxlength="3"
-                [value]="rgb().r"
-                (input)="onRgbInput('r', $event)" />
-            </label>
-            <label class="ea-color-picker__input-group">
-              <span class="ea-color-picker__input-label">G</span>
-              <input
-                class="ea-color-picker__input ea-color-picker__input--num"
-                type="text"
-                inputmode="numeric"
-                pattern="\d*"
-                maxlength="3"
-                [value]="rgb().g"
-                (input)="onRgbInput('g', $event)" />
-            </label>
-            <label class="ea-color-picker__input-group">
-              <span class="ea-color-picker__input-label">B</span>
-              <input
-                class="ea-color-picker__input ea-color-picker__input--num"
-                type="text"
-                inputmode="numeric"
-                pattern="\d*"
-                maxlength="3"
-                [value]="rgb().b"
-                (input)="onRgbInput('b', $event)" />
-            </label>
-            @if (showAlpha()) {
+          [class.ea-color-picker__inputs--hex]="activeFormat() === 'hex'">
+          @switch (activeFormat()) {
+            @case ('hex') {
+              <label
+                class="ea-color-picker__input-group ea-color-picker__input-group--hex">
+                <span class="ea-color-picker__input-label">HEX</span>
+                <input
+                  class="ea-color-picker__input"
+                  type="text"
+                  spellcheck="false"
+                  autocomplete="off"
+                  maxlength="9"
+                  [value]="hexInputValue()"
+                  (input)="onHexInput($event)"
+                  (blur)="onHexBlur()" />
+              </label>
+            }
+            @case ('rgb') {
               <label class="ea-color-picker__input-group">
-                <span class="ea-color-picker__input-label">A</span>
+                <span class="ea-color-picker__input-label">R</span>
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
-                  [value]="alphaPercentRounded()"
-                  (input)="onAlphaInput($event)" />
+                  [value]="rgb().r"
+                  (input)="onRgbInput('r', $event)" />
               </label>
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">G</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="rgb().g"
+                  (input)="onRgbInput('g', $event)" />
+              </label>
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">B</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="rgb().b"
+                  (input)="onRgbInput('b', $event)" />
+              </label>
+              @if (showAlpha()) {
+                <label class="ea-color-picker__input-group">
+                  <span class="ea-color-picker__input-label">A</span>
+                  <input
+                    class="ea-color-picker__input ea-color-picker__input--num"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="\d*"
+                    maxlength="3"
+                    [value]="alphaPercentRounded()"
+                    (input)="onAlphaInput($event)" />
+                </label>
+              }
+            }
+            @case ('hsl') {
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">H</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="hslDisplay().h"
+                  (input)="onHslInput('h', $event)" />
+              </label>
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">S</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="hslDisplay().s"
+                  (input)="onHslInput('s', $event)" />
+              </label>
+              <label class="ea-color-picker__input-group">
+                <span class="ea-color-picker__input-label">L</span>
+                <input
+                  class="ea-color-picker__input ea-color-picker__input--num"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="\d*"
+                  maxlength="3"
+                  [value]="hslDisplay().l"
+                  (input)="onHslInput('l', $event)" />
+              </label>
+              @if (showAlpha()) {
+                <label class="ea-color-picker__input-group">
+                  <span class="ea-color-picker__input-label">A</span>
+                  <input
+                    class="ea-color-picker__input ea-color-picker__input--num"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="\d*"
+                    maxlength="3"
+                    [value]="alphaPercentRounded()"
+                    (input)="onAlphaInput($event)" />
+                </label>
+              }
             }
           }
-          <button
-            type="button"
-            class="ea-color-picker__format-toggle"
-            [attr.aria-label]="i18n.messages().colorPicker.toggleFormat"
-            (click)="cycleInputMode()">
-            {{ inputMode() === 'hex' ? 'HEX' : 'RGB' }}
-          </button>
+          @if (canToggleFormat()) {
+            <button
+              type="button"
+              class="ea-color-picker__format-toggle"
+              [attr.aria-label]="i18n.messages().colorPicker.toggleFormat"
+              (click)="cycleInputMode()">
+              {{ formatLabel() }}
+            </button>
+          }
         </div>
 
         @if (hasEyeDropper()) {

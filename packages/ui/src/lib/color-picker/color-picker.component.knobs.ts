@@ -13,7 +13,7 @@ export const COLOR_PICKER_KNOBS: ComponentKnobs = {
     },
     format: {
       control: 'select',
-      options: ['hex', 'rgb', 'hsl'],
+      options: ['all', 'hex', 'rgb', 'hsl'],
     },
     showAlpha: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -25,7 +25,7 @@ export const COLOR_PICKER_KNOBS: ComponentKnobs = {
     label: 'Color',
     placeholder: 'Pick a color…',
     size: 'md',
-    format: 'hex',
+    format: 'all',
     showAlpha: true,
     disabled: false,
     readonly: false,
