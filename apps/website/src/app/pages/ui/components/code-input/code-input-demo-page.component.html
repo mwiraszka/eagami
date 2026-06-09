@@ -8,14 +8,15 @@
     [state]="state()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <ea-code-input
-      class="playground-field"
-      [label]="state().label"
-      [placeholder]="state().placeholder"
-      [length]="state().length"
-      [size]="state().size"
-      [disabled]="state().disabled"
-      [readonly]="state().readonly"
-      [required]="state().required" />
+    <div class="demo-code-input">
+      <ea-code-input
+        [label]="state().label"
+        [placeholder]="state().placeholder"
+        [length]="state().length"
+        [size]="state().size"
+        [disabled]="state().disabled"
+        [readonly]="state().readonly"
+        [required]="state().required" />
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>
