@@ -1130,7 +1130,7 @@ export const esES: WebMessages = {
             id: 'id aplicado a las celdas de dígitos y al for de la etiqueta, generado automáticamente si se omite.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             length: 'Número de celdas de dígitos que componen el código.',
-            placeholder: 'Marcador de posición mostrado en cada celda de dígito vacía.',
+            placeholder: 'Texto de marcador de posición repartido un carácter por celda.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
             size: 'Tamaño visual de cada celda de dígito.',
@@ -1140,6 +1140,8 @@ export const esES: WebMessages = {
               'Se emite con el código completo una vez que se han introducido todos los dígitos.',
             focus:
               'Lleva el foco del teclado al siguiente dígito vacío (o al último cuando está completo).',
+            allowAllChars:
+              'Permite cualquier carácter que no sea un espacio; de lo contrario, solo se aceptan dígitos.',
           },
           'color-picker': {
             disabled: 'Deshabilita el campo.',

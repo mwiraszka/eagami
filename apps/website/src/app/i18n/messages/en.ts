@@ -1111,7 +1111,7 @@ export const en: WebMessages = {
             id: 'id applied to the digit cells and label for, auto-generated when omitted.',
             label: 'Text label rendered above the field.',
             length: 'Number of digit cells the code is made up of.',
-            placeholder: 'Placeholder shown in each empty digit cell.',
+            placeholder: 'Placeholder text spread one character per cell.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
             size: 'Visual size of each digit cell.',
@@ -1119,6 +1119,8 @@ export const en: WebMessages = {
             completed: 'Fires with the full code once every digit has been entered.',
             focus:
               'Moves keyboard focus to the next empty digit (or the last one when full).',
+            allowAllChars:
+              'Allow any non-whitespace character; when off only digits are accepted.',
           },
           'color-picker': {
             disabled: 'Disables the field.',
