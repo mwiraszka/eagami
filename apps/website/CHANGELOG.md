@@ -2,6 +2,13 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.12.0] - 2026-06-10
+
+### Changed
+
+- Rebuild the remaining component pages (dropdown, multi-select, segmented, file uploader, time picker, drawer, popover, menu, tabs, stepper, breadcrumbs, transfer list, tree, virtual list, tooltip, and toast) as interactive playgrounds, so every component now has a consistent playground demo.
+- Pick up @eagami/ui v2.12.0.
+
 ## [2.11.0] - 2026-06-09
 
 ### Changed
@@ -550,6 +557,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.12.0]: https://github.com/mwiraszka/eagami/compare/website-v2.11.0...website-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/website-v2.10.0...website-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/website-v2.9.0...website-v2.10.0
 [2.9.0]: https://github.com/mwiraszka/eagami/compare/website-v2.8.0...website-v2.9.0
