@@ -8,6 +8,12 @@ ea-card {
   min-height: 0;
 }
 
+// A full-width card must stretch the host, not just the inner element, so it fills
+// shrink-wrapping flex and inline parents instead of only normal block flow.
+ea-card:has(> .ea-card--full-width) {
+  width: 100%;
+}
+
 .ea-card {
   display: flex;
   flex-direction: column;
@@ -37,71 +43,71 @@ ea-card {
   }
 
   &--padding-none {
-    .ea-card__header {
+    > .ea-card__header {
       padding: var(--ea-card-header-padding, 0);
     }
 
-    .ea-card__body {
+    > .ea-card__body {
       padding: var(--ea-card-body-padding, 0);
     }
 
-    .ea-card__footer {
+    > .ea-card__footer {
       padding: var(--ea-card-footer-padding, 0);
     }
   }
 
   &--padding-sm {
-    .ea-card__header {
+    > .ea-card__header {
       padding: var(--ea-card-header-padding, var(--space-3) var(--space-3) 0);
     }
 
-    .ea-card__body {
+    > .ea-card__body {
       padding: var(--ea-card-body-padding, var(--space-3));
     }
 
-    .ea-card__footer {
+    > .ea-card__footer {
       padding: var(--ea-card-footer-padding, 0 var(--space-3) var(--space-3));
     }
   }
 
   &--padding-md {
-    .ea-card__header {
+    > .ea-card__header {
       padding: var(--ea-card-header-padding, var(--space-4) var(--space-4) 0);
     }
 
-    .ea-card__body {
+    > .ea-card__body {
       padding: var(--ea-card-body-padding, var(--space-4));
     }
 
-    .ea-card__footer {
+    > .ea-card__footer {
       padding: var(--ea-card-footer-padding, 0 var(--space-4) var(--space-4));
     }
   }
 
   &--padding-lg {
-    .ea-card__header {
+    > .ea-card__header {
       padding: var(--ea-card-header-padding, var(--space-6) var(--space-6) 0);
     }
 
-    .ea-card__body {
+    > .ea-card__body {
       padding: var(--ea-card-body-padding, var(--space-6));
     }
 
-    .ea-card__footer {
+    > .ea-card__footer {
       padding: var(--ea-card-footer-padding, 0 var(--space-6) var(--space-6));
     }
   }
 
   &--padding-xl {
-    .ea-card__header {
+    > .ea-card__header {
       padding: var(--ea-card-header-padding, var(--space-8) var(--space-8) 0);
     }
 
-    .ea-card__body {
+    > .ea-card__body {
       padding: var(--ea-card-body-padding, var(--space-8));
     }
 
-    .ea-card__footer {
+    > .ea-card__footer {
       padding: var(--ea-card-footer-padding, 0 var(--space-8) var(--space-8));
     }
   }
