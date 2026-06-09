@@ -18,7 +18,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
     changed: { action: 'changed' },
   },
   args: {
-    label: 'Accept terms and conditions',
+    label: 'Buy milk',
     count: '',
     size: 'md',
     disabled: false,
