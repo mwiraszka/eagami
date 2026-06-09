@@ -1420,10 +1420,10 @@ export const pl: WebMessages = {
             updateImageDarkness:
               'Próbkuje widoczny obszar kadrowania, aby określić czy obraz jest ciemniejszy niż średnia szarość.',
           },
-          eaMenuTrigger: {
+          'menu-trigger': {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
           },
-          eaTooltip: {
+          tooltip: {
             eaTooltip:
               'Treść tekstowa podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury.',
             tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',

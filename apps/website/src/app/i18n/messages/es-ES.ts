@@ -1432,10 +1432,10 @@ export const esES: WebMessages = {
             updateImageDarkness:
               'Muestrea la región de recorte visible para determinar si la imagen es más oscura que el gris medio.',
           },
-          eaMenuTrigger: {
+          'menu-trigger': {
             menu: 'La instancia ea-menu que controla este disparador.',
           },
-          eaTooltip: {
+          tooltip: {
             eaTooltip:
               'Contenido de texto de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado.',
             tooltipPosition:

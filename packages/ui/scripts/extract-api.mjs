@@ -22,7 +22,16 @@ function stripHtml(html) {
 }
 
 function slugFromSelector(selector) {
-  return (selector ?? '').replace(/[[\]]/g, '').replace(/^ea-/, '');
+  const cleaned = (selector ?? '').replace(/[[\]]/g, '').replace(/^ea-/, '');
+  // Camel-case attribute directives (eaTooltip, eaMenuTrigger) share the kebab
+  // slug style of the element selectors: eaTooltip -> tooltip.
+  if (/^ea[A-Z]/.test(cleaned)) {
+    return cleaned
+      .replace(/^ea/, '')
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
+  return cleaned;
 }
 
 // Inputs that default to a generated value (random id, timestamp) expose the

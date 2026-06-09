@@ -1382,10 +1382,10 @@ export const en: WebMessages = {
             updateImageDarkness:
               'Samples the visible crop region to determine whether the image is darker than mid-grey.',
           },
-          eaMenuTrigger: {
+          'menu-trigger': {
             menu: 'The ea-menu instance this trigger controls.',
           },
-          eaTooltip: {
+          tooltip: {
             eaTooltip: 'Text content of the tooltip shown on hover and keyboard focus.',
             tooltipPosition: 'Placement of the tooltip relative to its host element.',
           },

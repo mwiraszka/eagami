@@ -1427,10 +1427,10 @@ export const frFR: WebMessages = {
             updateImageDarkness:
               "Échantillonne la région de recadrage visible pour déterminer si l'image est plus sombre que le gris moyen.",
           },
-          eaMenuTrigger: {
+          'menu-trigger': {
             menu: "L'instance ea-menu que ce déclencheur contrôle.",
           },
-          eaTooltip: {
+          tooltip: {
             eaTooltip:
               "Contenu textuel de l'infobulle affichée au survol et au focus clavier.",
             tooltipPosition: "Position de l'infobulle par rapport à son élément hôte.",

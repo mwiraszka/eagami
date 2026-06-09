@@ -1553,41 +1553,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
   },
-  eaMenuTrigger: {
-    selector: '[eaMenuTrigger]',
-    inputs: [
-      {
-        name: 'menu',
-        type: 'MenuComponent',
-        default: "{ alias: 'eaMenuTrigger' }",
-        required: true,
-        twoWay: false,
-      },
-    ],
-    outputs: [],
-    methods: [],
-  },
-  eaTooltip: {
-    selector: '[eaTooltip]',
-    inputs: [
-      {
-        name: 'eaTooltip',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
-      {
-        name: 'tooltipPosition',
-        type: 'TooltipPosition',
-        default: "'top'",
-        required: false,
-        twoWay: false,
-      },
-    ],
-    outputs: [],
-    methods: [],
-  },
   'eagami-wordmark': {
     selector: 'ea-eagami-wordmark',
     inputs: [
@@ -2151,6 +2116,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
+    methods: [],
+  },
+  'menu-trigger': {
+    selector: '[eaMenuTrigger]',
+    inputs: [
+      {
+        name: 'menu',
+        type: 'MenuComponent',
+        default: "{ alias: 'eaMenuTrigger' }",
+        required: true,
+        twoWay: false,
+      },
+    ],
+    outputs: [],
     methods: [],
   },
   'multi-select': {
@@ -3873,6 +3852,27 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   toast: {
     selector: 'ea-toast',
     inputs: [],
+    outputs: [],
+    methods: [],
+  },
+  tooltip: {
+    selector: '[eaTooltip]',
+    inputs: [
+      {
+        name: 'eaTooltip',
+        type: 'string',
+        default: '',
+        required: true,
+        twoWay: false,
+      },
+      {
+        name: 'tooltipPosition',
+        type: 'TooltipPosition',
+        default: "'top'",
+        required: false,
+        twoWay: false,
+      },
+    ],
     outputs: [],
     methods: [],
   },
