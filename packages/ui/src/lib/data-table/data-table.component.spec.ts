@@ -90,6 +90,12 @@ describe('DataTableComponent', () => {
       expect(getHeaderCells()[0].style.width).toBe('60px');
     });
 
+    it('applies the column width to body cells too so sticky columns stay aligned', () => {
+      const firstBodyRowCells = getCellsInRow(getBodyRows()[0]);
+
+      expect(firstBodyRowCells[0].style.width).toBe('60px');
+    });
+
     it('applies right-align class for right-aligned column', () => {
       expect(getHeaderCells()[2].classList).toContain('ea-data-table__cell--align-right');
     });
