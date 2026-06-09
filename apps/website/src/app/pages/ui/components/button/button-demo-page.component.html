@@ -17,7 +17,9 @@
       [loading]="state().loading"
       [fullWidth]="state().fullWidth"
       (clicked)="onButtonClick()">
-      {{ state().label }}
+      @if (state().label) {
+        {{ state().label }}
+      }
     </ea-button>
   </web-component-playground>
 </web-ui-component-demo-layout>

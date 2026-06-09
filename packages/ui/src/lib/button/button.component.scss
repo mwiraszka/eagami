@@ -240,6 +240,12 @@
   &__label {
     display: inline-flex;
     align-items: center;
+
+    // Drop the label out of the flex row when there's no text, so an icon-only
+    // button has no trailing gap where the empty label would otherwise sit.
+    &:empty {
+      display: none;
+    }
   }
 
   &__spinner {
