@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Lighten the avatar's initials placeholder background in light mode.
 - Spread `<ea-code-input>`'s placeholder one character per cell instead of repeating it across every cell.
+- Lighten `<ea-data-table>` striped rows to a mid-tone between the header and unstriped rows instead of matching the header shade.
 
 ### Fixed
 
@@ -22,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop the trailing gap on an icon-only `<ea-button>` so the icon is no longer offset when there is no label.
 - Scope `<ea-card>` padding to the card's own content so a nested card no longer inherits an outer card's padding.
 - Make a full-width `<ea-card>` stretch the host so it fills flex and inline parents, not only normal block flow.
+- Apply `<ea-data-table>` column widths to body cells so the columns stay aligned with the header when `stickyHeader` is enabled.
 
 ## [2.10.0] - 2026-06-08
 
