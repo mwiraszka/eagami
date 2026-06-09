@@ -167,7 +167,7 @@
   }
 
   &--striped &__body &__row:nth-child(even) {
-    background-color: var(--color-bg-stripe);
+    background-color: var(--color-bg-stripe-subtle);
   }
 
   &--hoverable &__body &__row:not(&__row--empty):hover {
