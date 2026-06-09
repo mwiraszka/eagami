@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { type DataTableColumn, DataTableComponent } from './data-table.component';
+import { DATA_TABLE_KNOBS } from './data-table.component.knobs';
 
 interface User {
   id: number;
@@ -40,21 +41,11 @@ const meta: Meta<DataTableComponent<User>> = {
   title: 'Components/Data Table',
   component: DataTableComponent,
   tags: ['autodocs'],
-  argTypes: {
-    density: {
-      control: 'select',
-      options: ['compact', 'comfortable', 'spacious'],
-    },
-    sorted: { action: 'sorted' },
-  },
+  argTypes: DATA_TABLE_KNOBS.argTypes,
   args: {
+    ...DATA_TABLE_KNOBS.args,
     columns,
     data: sampleData,
-    density: 'comfortable',
-    stickyHeader: false,
-    striped: false,
-    hoverable: true,
-    bordered: false,
     noDataText: 'No data available',
   },
 };

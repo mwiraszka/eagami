@@ -9,6 +9,10 @@ import { CARD_KNOBS } from './lib/card/card.component.knobs';
 import { CHECKBOX_KNOBS } from './lib/checkbox/checkbox.component.knobs';
 import { CODE_INPUT_KNOBS } from './lib/code-input/code-input.component.knobs';
 import { COLOR_PICKER_KNOBS } from './lib/color-picker/color-picker.component.knobs';
+import { COMMAND_PALETTE_KNOBS } from './lib/command-palette/command-palette.component.knobs';
+import { DATA_TABLE_KNOBS } from './lib/data-table/data-table.component.knobs';
+import { DATE_PICKER_KNOBS } from './lib/date-picker/date-picker.component.knobs';
+import { DIALOG_KNOBS } from './lib/dialog/dialog.component.knobs';
 import { DIVIDER_KNOBS } from './lib/divider/divider.component.knobs';
 import { EAGAMI_WORDMARK_KNOBS } from './lib/eagami-wordmark/eagami-wordmark.component.knobs';
 import { EMPTY_STATE_KNOBS } from './lib/empty-state/empty-state.component.knobs';
@@ -50,6 +54,10 @@ export const PLAYGROUND_KNOBS = {
   checkbox: CHECKBOX_KNOBS,
   'code-input': CODE_INPUT_KNOBS,
   'color-picker': COLOR_PICKER_KNOBS,
+  'command-palette': COMMAND_PALETTE_KNOBS,
+  'data-table': DATA_TABLE_KNOBS,
+  'date-picker': DATE_PICKER_KNOBS,
+  dialog: DIALOG_KNOBS,
   divider: DIVIDER_KNOBS,
   'eagami-wordmark': EAGAMI_WORDMARK_KNOBS,
   'empty-state': EMPTY_STATE_KNOBS,

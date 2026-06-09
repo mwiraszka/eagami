@@ -1,21 +1,36 @@
-<web-ui-component-demo-layout slug="dialog">
-  <ea-button (clicked)="dialogOpen.set(true)">
-    {{ messages().ui.component.demos.dialog.openButton }}
-  </ea-button>
-  <ea-dialog [(open)]="dialogOpen">
-    <span slot="header">
-      {{ messages().ui.component.demos.dialog.title }}
-    </span>
-    <p>{{ messages().ui.component.demos.dialog.body }}</p>
-    <span slot="footer">
-      <ea-button
-        variant="secondary"
-        (clicked)="dialogOpen.set(false)">
-        {{ messages().ui.component.common.cancel }}
-      </ea-button>
-      <ea-button (clicked)="dialogOpen.set(false)">
-        {{ messages().ui.component.common.confirm }}
-      </ea-button>
-    </span>
-  </ea-dialog>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    [childMarkup]="childMarkup"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-button (clicked)="open.set(true)">
+      {{ messages().ui.component.demos.dialog.openButton }}
+    </ea-button>
+    <ea-dialog
+      [(open)]="open"
+      [width]="state().width"
+      [closeOnBackdrop]="state().closeOnBackdrop"
+      [closeOnEscape]="state().closeOnEscape"
+      [showClose]="state().showClose">
+      <span slot="header">{{ messages().ui.component.demos.dialog.title }}</span>
+      <p>{{ messages().ui.component.demos.dialog.body }}</p>
+      <span slot="footer">
+        <ea-button
+          variant="secondary"
+          (clicked)="open.set(false)">
+          {{ messages().ui.component.common.cancel }}
+        </ea-button>
+        <ea-button (clicked)="open.set(false)">
+          {{ messages().ui.component.common.confirm }}
+        </ea-button>
+      </span>
+    </ea-dialog>
+  </web-component-playground>
 </web-ui-component-demo-layout>
