@@ -2,25 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { DialogComponent } from './dialog.component';
+import { DIALOG_KNOBS } from './dialog.component.knobs';
 
 const meta: Meta<DialogComponent> = {
   title: 'Components/Dialog',
   component: DialogComponent,
   tags: ['autodocs'],
-  argTypes: {
-    width: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
-    },
-    opened: { action: 'opened' },
-    closed: { action: 'closed' },
-  },
-  args: {
-    width: 'md',
-    closeOnBackdrop: true,
-    closeOnEscape: true,
-    showClose: true,
-  },
+  argTypes: DIALOG_KNOBS.argTypes,
+  args: DIALOG_KNOBS.args,
 };
 
 export default meta;

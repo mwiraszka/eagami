@@ -499,6 +499,7 @@ export const en: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Toggle loading',
           fullWidth: 'Full width',
+          clickedToast: 'Button clicked!',
         },
         card: {
           elevatedHeader: 'Elevated',
@@ -1039,7 +1040,7 @@ export const en: WebMessages = {
               'Clamps a number value into the configured min/max range once editing finishes.',
           },
           accordion: {
-            multi: 'Allows several items to stay expanded at once instead of just one.',
+            multi: 'Allows multiple items to stay expanded at once.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1110,7 +1111,7 @@ export const en: WebMessages = {
             id: 'id applied to the digit cells and label for, auto-generated when omitted.',
             label: 'Text label rendered above the field.',
             length: 'Number of digit cells the code is made up of.',
-            placeholder: 'Placeholder shown in each empty digit cell.',
+            placeholder: 'Placeholder text spread one character per cell.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
             size: 'Visual size of each digit cell.',
@@ -1118,6 +1119,8 @@ export const en: WebMessages = {
             completed: 'Fires with the full code once every digit has been entered.',
             focus:
               'Moves keyboard focus to the next empty digit (or the last one when full).',
+            allowAllChars:
+              'Allow any non-whitespace character; when off only digits are accepted.',
           },
           'color-picker': {
             disabled: 'Disables the field.',
@@ -1803,7 +1806,7 @@ export const en: WebMessages = {
             scrollIndexChange:
               'Fires with the index of the first row visible at the top of the viewport whenever the user scrolls.',
             scrollToIndex:
-              'Scroll the viewport so that the row at the given index appears at the top, clamped to the list bounds.',
+              'Scrolls the viewport so the row at the given index appears at the top, clamped to the list bounds.',
           },
           'field-label': {
             forId:

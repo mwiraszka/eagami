@@ -4,6 +4,7 @@ import { Component, HostListener, signal } from '@angular/core';
 
 import { ButtonComponent } from '../button/button.component';
 import { CommandPaletteComponent } from './command-palette.component';
+import { COMMAND_PALETTE_KNOBS } from './command-palette.component.knobs';
 import type { CommandPaletteItem } from './command-palette.types';
 
 const COMMANDS: CommandPaletteItem[] = [
@@ -34,11 +35,12 @@ const meta: Meta<CommandPaletteComponent> = {
   component: CommandPaletteComponent,
   tags: ['autodocs'],
   argTypes: {
+    ...COMMAND_PALETTE_KNOBS.argTypes,
     placeholder: { control: 'text' },
   },
   args: {
+    ...COMMAND_PALETTE_KNOBS.args,
     items: COMMANDS,
-    placeholder: '',
   },
 };
 

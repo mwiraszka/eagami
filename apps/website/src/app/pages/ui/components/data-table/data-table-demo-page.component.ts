@@ -1,9 +1,9 @@
 import {
   type DataTableColumn,
   DataTableComponent,
-  PaginatorComponent,
-  type PaginatorState,
+  type DataTableDensity,
 } from '@eagami/ui';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -13,22 +13,51 @@ import {
   signal,
 } from '@angular/core';
 
+import { UI_API } from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
+import {
+  ComponentPlaygroundComponent,
+  type KnobChange,
+} from '../_playground/component-playground.component';
+import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+
+interface DataTableKnobState {
+  // Index signature lets this typed state satisfy the playground's generic
+  // KnobState input; the explicit fields below still drive checked bindings.
+  [key: string]: KnobValue;
+  density: DataTableDensity;
+  striped: boolean;
+  bordered: boolean;
+  hoverable: boolean;
+  stickyHeader: boolean;
+}
+
+const SLUG = 'data-table';
 
 @Component({
   selector: 'web-data-table-demo-page',
   templateUrl: './data-table-demo-page.component.html',
   styleUrl: './data-table-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DataTableComponent, PaginatorComponent, UiComponentDemoLayoutComponent],
+  imports: [
+    DataTableComponent,
+    UiComponentDemoLayoutComponent,
+    ComponentPlaygroundComponent,
+  ],
 })
 export class DataTableDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
-  protected readonly tablePage = signal(1);
-  protected readonly tablePageSize = signal(5);
+  protected readonly slug = SLUG;
+  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['data-table'], UI_API[SLUG]);
+  protected readonly state = signal<DataTableKnobState>(
+    initialKnobState(this.knobs, PLAYGROUND_KNOBS['data-table']) as DataTableKnobState,
+  );
+
+  /** The required `columns`/`data` are sample bindings the snippet should reflect. */
+  protected readonly extraAttributes = ['[columns]="columns"', '[data]="data"'];
 
   protected readonly tableColumns = computed<DataTableColumn[]>(() => {
     const cols = this.messages().ui.component.demos.dataTable;
@@ -62,19 +91,15 @@ export class DataTableDemoPageComponent {
     { id: 6, firstName: 'Frank', lastName: 'Østergaard', admin: '✓', posts: 245 },
     { id: 7, firstName: 'Chloé', lastName: 'Lefèvre', admin: '', posts: 1034 },
     { id: 8, firstName: 'Søren', lastName: 'Berg', admin: '', posts: 4 },
-    { id: 9, firstName: 'Ivy', lastName: 'Chen', admin: '', posts: 392 },
-    { id: 10, firstName: 'André', lastName: 'Turner', admin: '✓', posts: 1150 },
-    { id: 11, firstName: 'Karen', lastName: 'Hernández', admin: '', posts: 76 },
-    { id: 12, firstName: 'Léo', lastName: 'Martinez', admin: '', posts: 619 },
   ];
 
-  protected get pagedTableData() {
-    const start = (this.tablePage() - 1) * this.tablePageSize();
-    return this.tableData.slice(start, start + this.tablePageSize());
+  protected onKnob({ name, value }: KnobChange): void {
+    this.state.update(current => ({ ...current, [name]: value }) as DataTableKnobState);
   }
 
-  protected onTablePageChange(event: PaginatorState): void {
-    this.tablePage.set(event.page);
-    this.tablePageSize.set(event.pageSize);
+  protected reset(): void {
+    this.state.set(
+      initialKnobState(this.knobs, PLAYGROUND_KNOBS['data-table']) as DataTableKnobState,
+    );
   }
 }

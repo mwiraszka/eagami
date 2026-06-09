@@ -1,14 +1,22 @@
-<web-ui-component-demo-layout slug="command-palette">
-  <h2>{{ messages().ui.component.sectionHeadings.trigger }}</h2>
-  <p class="demo-preview">
-    {{ messages().ui.component.demos.commandPalette.hint }}
-  </p>
-  <ea-button (clicked)="open.set(true)">
-    {{ messages().ui.component.demos.commandPalette.openButton }}
-  </ea-button>
-
-  <ea-command-palette
-    [items]="commands()"
-    [(open)]="open"
-    (execute)="onExecute($event)" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-button (clicked)="open.set(true)">
+      {{ messages().ui.component.demos.commandPalette.openButton }}
+    </ea-button>
+    <ea-command-palette
+      [items]="commands()"
+      [(open)]="open"
+      [placeholder]="state().placeholder"
+      [emptyMessage]="state().emptyMessage"
+      (execute)="onExecute($event)" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

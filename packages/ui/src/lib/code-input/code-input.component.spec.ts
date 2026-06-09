@@ -303,4 +303,62 @@ describe('CodeInputComponent', () => {
       expect(focusSpy).toHaveBeenCalled();
     });
   });
+
+  describe('Allow all characters', () => {
+    it('accepts any non-whitespace character when allowAllChars is true', () => {
+      fixture.componentRef.setInput('allowAllChars', true);
+      fixture.detectChanges();
+
+      const inputs = getDigitInputs();
+      typeDigit(inputs[0], 'a');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('still strips whitespace when allowAllChars is true', () => {
+      fixture.componentRef.setInput('allowAllChars', true);
+      fixture.detectChanges();
+
+      const inputs = getDigitInputs();
+      inputs[0].value = ' ';
+      inputs[0].dispatchEvent(new Event('input'));
+
+      expect(component.value()).toBe('');
+    });
+
+    it('keeps letters from pasted text when allowAllChars is true', () => {
+      fixture.componentRef.setInput('allowAllChars', true);
+      fixture.detectChanges();
+
+      const clipboardData = { getData: () => 'ab cd' };
+      const event = new Event('paste', { bubbles: true, cancelable: true });
+      (event as unknown as Record<string, unknown>)['clipboardData'] = clipboardData;
+      getDigitInputs()[0].dispatchEvent(event);
+
+      expect(component.value()).toBe('abcd');
+    });
+
+    it('sets inputmode to text when allowAllChars is true', () => {
+      fixture.componentRef.setInput('allowAllChars', true);
+      fixture.detectChanges();
+
+      getDigitInputs().forEach(input => {
+        expect(input.getAttribute('inputmode')).toBe('text');
+      });
+    });
+  });
+
+  describe('Placeholder', () => {
+    it('spreads the placeholder one character per cell', () => {
+      fixture.componentRef.setInput('placeholder', 'abc');
+      fixture.detectChanges();
+
+      const inputs = getDigitInputs();
+
+      expect(inputs[0].getAttribute('placeholder')).toBe('a');
+      expect(inputs[1].getAttribute('placeholder')).toBe('b');
+      expect(inputs[2].getAttribute('placeholder')).toBe('c');
+      expect(inputs[3].getAttribute('placeholder')).toBe('');
+    });
+  });
 });

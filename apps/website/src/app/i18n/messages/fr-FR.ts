@@ -508,6 +508,7 @@ export const frFR: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Basculer le chargement',
           fullWidth: 'Pleine largeur',
+          clickedToast: 'Bouton cliqué !',
         },
         card: {
           elevatedHeader: 'Surélevé',
@@ -1061,8 +1062,7 @@ export const frFR: WebMessages = {
               "Borne une valeur numérique dans la plage min/max configurée une fois l'édition terminée.",
           },
           accordion: {
-            multi:
-              'Permet de garder plusieurs éléments ouverts à la fois au lieu d’un seul.',
+            multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
           },
           alert: {
             dismissible:
@@ -1139,7 +1139,7 @@ export const frFR: WebMessages = {
             id: 'id appliqué aux cases de chiffres et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé textuel rendu au-dessus du champ.',
             length: 'Nombre de cases de chiffres composant le code.',
-            placeholder: 'Texte indicatif affiché dans chaque case de chiffre vide.',
+            placeholder: 'Texte indicatif réparti un caractère par cellule.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
             size: 'Taille visuelle de chaque case de chiffre.',
@@ -1147,6 +1147,8 @@ export const frFR: WebMessages = {
             completed: 'Émis avec le code complet une fois chaque chiffre saisi.',
             focus:
               'Place le focus clavier sur le prochain chiffre vide (ou le dernier lorsque tout est rempli).',
+            allowAllChars:
+              'Autorise tout caractère non blanc ; sinon, seuls les chiffres sont acceptés.',
           },
           'color-picker': {
             disabled: 'Désactive le champ.',

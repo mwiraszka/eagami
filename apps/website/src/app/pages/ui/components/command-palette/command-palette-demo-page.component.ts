@@ -4,6 +4,7 @@ import {
   type CommandPaletteItem,
   ToastService,
 } from '@eagami/ui';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -14,21 +15,55 @@ import {
   signal,
 } from '@angular/core';
 
+import { UI_API } from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
+import {
+  ComponentPlaygroundComponent,
+  type KnobChange,
+} from '../_playground/component-playground.component';
+import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+
+interface CommandPaletteKnobState {
+  // Index signature lets this typed state satisfy the playground's generic
+  // KnobState input; the explicit fields below still drive checked bindings.
+  [key: string]: KnobValue;
+  placeholder: string;
+  emptyMessage: string;
+}
+
+const SLUG = 'command-palette';
 
 @Component({
   selector: 'web-command-palette-demo-page',
   templateUrl: './command-palette-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, CommandPaletteComponent, UiComponentDemoLayoutComponent],
+  imports: [
+    ButtonComponent,
+    CommandPaletteComponent,
+    UiComponentDemoLayoutComponent,
+    ComponentPlaygroundComponent,
+  ],
 })
 export class CommandPaletteDemoPageComponent {
   private readonly toast = inject(ToastService);
   protected readonly messages = inject(WebI18nService).messages;
 
+  protected readonly slug = SLUG;
   protected readonly open = signal<boolean>(false);
+  protected readonly extraAttributes = ['[items]="commands"', '[(open)]="open"'];
+
+  protected readonly knobs = buildKnobs(
+    PLAYGROUND_KNOBS['command-palette'],
+    UI_API[SLUG],
+  );
+  protected readonly state = signal<CommandPaletteKnobState>(
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['command-palette'],
+    ) as CommandPaletteKnobState,
+  );
 
   protected readonly commands = computed<CommandPaletteItem[]>(() => {
     const m = this.messages().ui.component.demos.commandPalette;
@@ -71,6 +106,21 @@ export class CommandPaletteDemoPageComponent {
   protected onExecute(item: CommandPaletteItem): void {
     this.toast.success(
       this.messages().ui.component.demos.commandPalette.executedToast(item.label),
+    );
+  }
+
+  protected onKnob({ name, value }: KnobChange): void {
+    this.state.update(
+      current => ({ ...current, [name]: value }) as CommandPaletteKnobState,
+    );
+  }
+
+  protected reset(): void {
+    this.state.set(
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS['command-palette'],
+      ) as CommandPaletteKnobState,
     );
   }
 }

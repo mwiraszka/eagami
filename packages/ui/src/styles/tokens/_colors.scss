@@ -77,10 +77,18 @@
   --color-bg-base: var(--color-neutral-0);
   --color-bg-subtle: var(--color-neutral-50);
   --color-bg-stripe: var(--color-neutral-50);
+  // Zebra-stripe fill for table rows: a mid-tone between the base row and the
+  // header tint so striped rows read as lighter than the header, not identical to
+  // it. Dark mode overrides the ratio to stay equally subtle.
+  --color-bg-stripe-subtle: color-mix(
+    in srgb,
+    var(--color-bg-base) 30%,
+    var(--color-bg-stripe)
+  );
   --color-bg-muted: var(--color-neutral-100);
-  // Stronger neutral fill for placeholder surfaces (e.g. avatar) that must read
-  // clearly against the page; muted is too faint on a white base
-  --color-bg-emphasis: var(--color-neutral-300);
+  // Soft neutral fill for placeholder surfaces (e.g. avatar initials) when no
+  // image is set; light enough to sit gently on a white page
+  --color-bg-emphasis: var(--color-neutral-100);
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
@@ -169,6 +177,13 @@
   --color-bg-base: var(--color-neutral-800);
   --color-bg-subtle: var(--color-neutral-700);
   --color-bg-stripe: var(--color-neutral-900);
+  // The dark base-to-stripe gap reads stronger than the light one, so weight the
+  // stripe mix toward the base row to keep zebra striping subtle.
+  --color-bg-stripe-subtle: color-mix(
+    in srgb,
+    var(--color-bg-base) 62.5%,
+    var(--color-bg-stripe)
+  );
   --color-bg-elevated: var(--color-neutral-700);
   // Opaque muted surface for static fills (disabled fields, slider/progress
   // tracks, skeletons). Hover/active fills route through the translucent

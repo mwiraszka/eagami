@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { DatePickerComponent } from './date-picker.component';
+import { DATE_PICKER_KNOBS } from './date-picker.component.knobs';
 
 const meta: Meta<DatePickerComponent> = {
   title: 'Components/Date Picker',
@@ -14,28 +15,15 @@ const meta: Meta<DatePickerComponent> = {
     template: `<ea-date-picker ${argsToTemplate(args)} class="story-narrow"></ea-date-picker>`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    format: {
-      control: 'select',
-      options: ['short', 'medium', 'long'],
-    },
+    ...DATE_PICKER_KNOBS.argTypes,
     weekStartsOn: {
       control: 'select',
       options: [0, 1],
     },
-    changed: { action: 'changed' },
   },
   args: {
-    label: 'Date',
-    placeholder: 'Select date…',
-    size: 'md',
-    format: 'medium',
+    ...DATE_PICKER_KNOBS.args,
     weekStartsOn: 1,
-    disabled: false,
-    required: false,
   },
 };
 

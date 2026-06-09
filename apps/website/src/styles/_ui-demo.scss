@@ -13,6 +13,17 @@
   max-width: 360px;
 }
 
+// Code input has a variable number of fixed-width cells, so cap nothing: center it
+// while it fits and scroll horizontally once the cells outgrow the card.
+.demo-code-input {
+  overflow-x: auto;
+  display: flex;
+  justify-content: safe center;
+  width: 100%;
+  // Room for each cell's focus ring so the scroll container doesn't clip it.
+  padding: var(--space-1);
+}
+
 // Definite width so an accordion preview keeps a stable size as panels open and
 // their content (often wider than the headings) would otherwise stretch the box.
 .playground-accordion {

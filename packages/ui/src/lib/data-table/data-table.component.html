@@ -71,7 +71,8 @@
                 <td
                   class="ea-data-table__cell"
                   [class.ea-data-table__cell--align-center]="col.align === 'center'"
-                  [class.ea-data-table__cell--align-right]="col.align === 'right'">
+                  [class.ea-data-table__cell--align-right]="col.align === 'right'"
+                  [style.width]="col.width ?? null">
                   @if (col.cellTemplate) {
                     <ng-container
                       [ngTemplateOutlet]="col.cellTemplate"

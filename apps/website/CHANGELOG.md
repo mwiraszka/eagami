@@ -2,6 +2,15 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [2.11.0] - 2026-06-09
+
+### Changed
+
+- Add a label control to the button playground and show a success toast when the button is clicked.
+- Keep the code-input demo centered, scroll it horizontally when its cells outgrow the card, reserve room so a focused cell's ring is not clipped, and cap the placeholder to the code length.
+- Rebuild the command palette, data table, date picker, and dialog pages as interactive playgrounds.
+- Pick up @eagami/ui v2.11.0.
+
 ## [2.10.0] - 2026-06-08
 
 ### Changed
@@ -541,6 +550,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[2.11.0]: https://github.com/mwiraszka/eagami/compare/website-v2.10.0...website-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/website-v2.9.0...website-v2.10.0
 [2.9.0]: https://github.com/mwiraszka/eagami/compare/website-v2.8.0...website-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/website-v2.7.0...website-v2.8.0

@@ -46,6 +46,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
+  /** Placeholder text spread one character per cell (cell i shows character i). */
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);
   readonly size = input<CodeInputSize>('md');
@@ -54,6 +55,8 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
   readonly required = input<boolean>(false);
+  /** Allow any non-whitespace character; when false (default) only digits are accepted. */
+  readonly allowAllChars = input<boolean>(false);
   readonly id = input<string>(uniqueId('ea-code-input'));
 
   readonly value = model<string>('');
@@ -79,6 +82,11 @@ export class CodeInputComponent implements ControlValueAccessor {
     return Array.from({ length: len }, (_, i) => val[i] ?? '');
   });
 
+  readonly placeholders = computed(() => {
+    const ph = this.placeholder();
+    return Array.from({ length: this.length() }, (_, i) => ph[i] ?? '');
+  });
+
   readonly indices = computed(() => Array.from({ length: this.length() }, (_, i) => i));
 
   writeValue(val: string): void {
@@ -102,7 +110,7 @@ export class CodeInputComponent implements ControlValueAccessor {
       return;
     }
     const input = event.target as HTMLInputElement;
-    const char = input.value.replace(/[^0-9]/g, '').slice(-1);
+    const char = this.sanitize(input.value).slice(-1);
     input.value = char;
 
     const current = this.value();
@@ -157,7 +165,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     if (this.readonly()) {
       return;
     }
-    const pasted = (event.clipboardData?.getData('text') ?? '').replace(/[^0-9]/g, '');
+    const pasted = this.sanitize(event.clipboardData?.getData('text') ?? '');
     if (!pasted) {
       return;
     }
@@ -190,6 +198,11 @@ export class CodeInputComponent implements ControlValueAccessor {
     const val = this.value();
     const index = Math.min(val.length, this.length() - 1);
     this.focusDigit(index);
+  }
+
+  // Removes disallowed characters: whitespace in free mode, non-digits otherwise.
+  private sanitize(text: string): string {
+    return this.allowAllChars() ? text.replace(/\s/g, '') : text.replace(/[^0-9]/g, '');
   }
 
   private focusDigit(index: number): void {

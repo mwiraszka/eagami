@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.0] - 2026-06-09
+
+### Added
+
+- Add an `allowAllChars` input to `<ea-code-input>` for accepting any non-whitespace character, not just digits.
+
+### Changed
+
+- Lighten the avatar's initials placeholder background in light mode.
+- Spread `<ea-code-input>`'s placeholder one character per cell instead of repeating it across every cell.
+- Lighten `<ea-data-table>` striped rows to a mid-tone between the header and unstriped rows instead of matching the header shade.
+
+### Fixed
+
+- Stop the dropdown, autocomplete, and multi-select menus from revealing the content behind them when their list is scrolled past its end.
+- Drop the trailing gap on an icon-only `<ea-button>` so the icon is no longer offset when there is no label.
+- Scope `<ea-card>` padding to the card's own content so a nested card no longer inherits an outer card's padding.
+- Make a full-width `<ea-card>` stretch the host so it fills flex and inline parents, not only normal block flow.
+- Apply `<ea-data-table>` column widths to body cells so the columns stay aligned with the header when `stickyHeader` is enabled.
+
 ## [2.10.0] - 2026-06-08
 
 ### Changed
@@ -670,6 +690,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[2.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.10.0...ui-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.9.0...ui-v2.10.0
 [2.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.8.0...ui-v2.9.0
 [2.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.7.0...ui-v2.8.0

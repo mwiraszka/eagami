@@ -91,6 +91,7 @@
 
   &__listbox {
     overflow-y: auto;
+    overscroll-behavior: none;
     max-height: 15rem;
     padding: var(--space-1) 0;
     list-style: none;

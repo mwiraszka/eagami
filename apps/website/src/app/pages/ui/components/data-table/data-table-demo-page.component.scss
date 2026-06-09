@@ -1,3 +1,9 @@
+// Keep the table full-width in the playground so toggling the sticky header
+// (which forces a min-width) doesn't change the table's width.
+.demo-data-table {
+  width: 100%;
+}
+
 .demo-sticky-table {
   display: block;
   height: 240px;

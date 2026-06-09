@@ -508,6 +508,7 @@ export const pl: WebMessages = {
           danger: 'Niebezpieczny',
           toggleLoading: 'Przełącz ładowanie',
           fullWidth: 'Pełna szerokość',
+          clickedToast: 'Kliknięto przycisk!',
         },
         card: {
           elevatedHeader: 'Wyniesiona',
@@ -1057,7 +1058,7 @@ export const pl: WebMessages = {
               'Ogranicza wartość liczbową do skonfigurowanego zakresu min/max po zakończeniu edycji.',
           },
           accordion: {
-            multi: 'Pozwala rozwinąć kilka elementów jednocześnie zamiast tylko jednego.',
+            multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',
           },
           alert: {
             dismissible:
@@ -1131,7 +1132,7 @@ export const pl: WebMessages = {
             id: 'id stosowane do komórek cyfr i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             length: 'Liczba komórek cyfr, z których składa się kod.',
-            placeholder: 'Tekst zastępczy wyświetlany w każdej pustej komórce cyfry.',
+            placeholder: 'Tekst zastępczy rozłożony po jednym znaku na komórkę.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
             size: 'Wizualny rozmiar każdej komórki cyfry.',
@@ -1139,6 +1140,8 @@ export const pl: WebMessages = {
             completed: 'Emitowane z pełnym kodem, gdy wprowadzono każdą cyfrę.',
             focus:
               'Przenosi fokus klawiatury na następną pustą cyfrę (lub ostatnią, gdy pole jest pełne).',
+            allowAllChars:
+              'Zezwala na dowolny znak niebędący białym; w przeciwnym razie akceptowane są tylko cyfry.',
           },
           'color-picker': {
             disabled: 'Wyłącza pole.',
