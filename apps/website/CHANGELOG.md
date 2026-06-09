@@ -7,6 +7,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Add a label control to the button playground and show a success toast when the button is clicked.
+- Keep the code-input demo centered and scroll it horizontally when its cells outgrow the card.
 - Pick up @eagami/ui v2.11.0.
 
 ## [2.10.0] - 2026-06-08

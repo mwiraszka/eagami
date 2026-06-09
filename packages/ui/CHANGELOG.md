@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Stop the dropdown, autocomplete, and multi-select menus from revealing the content behind them when their list is scrolled past its end.
+- Drop the trailing gap on an icon-only `<ea-button>` so the icon is no longer offset when there is no label.
+- Scope `<ea-card>` padding to the card's own content so a nested card no longer inherits an outer card's padding.
+- Make a full-width `<ea-card>` stretch the host so it fills flex and inline parents, not only normal block flow.
 
 ## [2.10.0] - 2026-06-08
 
