@@ -8,6 +8,7 @@ import {
   type PopoverRole,
   type PopoverScrollBehavior,
 } from './popover.component';
+import { POPOVER_KNOBS } from './popover.component.knobs';
 
 // Story wrapper: owns the click-to-toggle state, mirrors `<ea-popover>` inputs, and
 // brings its own styles so the trigger and content render with sensible defaults.
@@ -60,40 +61,8 @@ const meta: Meta<PopoverStoryHost> = {
   component: PopoverStoryHost,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [PopoverStoryHost] })],
-  argTypes: {
-    placement: {
-      control: 'select',
-      options: [
-        'top',
-        'top-start',
-        'top-end',
-        'bottom',
-        'bottom-start',
-        'bottom-end',
-        'left',
-        'right',
-      ],
-    },
-    role: {
-      control: 'select',
-      options: ['menu', 'listbox', 'dialog', 'tooltip', 'grid'],
-    },
-    scrollBehavior: {
-      control: 'select',
-      options: ['reposition', 'close', 'ignore'],
-    },
-  },
-  args: {
-    placement: 'bottom-start',
-    role: 'dialog',
-    offset: 0,
-    flip: true,
-    clamp: true,
-    matchAnchorWidth: false,
-    closeOnOutsideClick: true,
-    closeOnEscape: true,
-    scrollBehavior: 'reposition',
-  },
+  argTypes: { ...POPOVER_KNOBS.argTypes },
+  args: { ...POPOVER_KNOBS.args },
 };
 
 export default meta;

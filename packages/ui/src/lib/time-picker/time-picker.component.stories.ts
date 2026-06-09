@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { TimePickerComponent } from './time-picker.component';
+import { TIME_PICKER_KNOBS } from './time-picker.component.knobs';
 
 const meta: Meta<TimePickerComponent> = {
   title: 'Components/Time Picker',
@@ -14,32 +15,17 @@ const meta: Meta<TimePickerComponent> = {
     template: `<ea-time-picker ${argsToTemplate(args)} class="story-narrow"></ea-time-picker>`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    format: {
-      control: 'select',
-      options: ['12h', '24h'],
-    },
+    ...TIME_PICKER_KNOBS.argTypes,
     minuteStep: {
       control: { type: 'number', min: 1, max: 30, step: 1 },
     },
     secondStep: {
       control: { type: 'number', min: 1, max: 30, step: 1 },
     },
-    changed: { action: 'changed' },
   },
   args: {
-    label: 'Time',
-    placeholder: 'Select time…',
-    size: 'md',
-    format: '24h',
-    includeSeconds: false,
-    minuteStep: 1,
+    ...TIME_PICKER_KNOBS.args,
     secondStep: 1,
-    disabled: false,
-    required: false,
   },
 };
 

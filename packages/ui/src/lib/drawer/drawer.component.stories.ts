@@ -2,30 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { DrawerComponent } from './drawer.component';
+import { DRAWER_KNOBS } from './drawer.component.knobs';
 
 const meta: Meta<DrawerComponent> = {
   title: 'Components/Drawer',
   component: DrawerComponent,
   tags: ['autodocs'],
-  argTypes: {
-    position: {
-      control: 'select',
-      options: ['left', 'right', 'top', 'bottom'],
-    },
-    width: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
-    },
-    opened: { action: 'opened' },
-    closed: { action: 'closed' },
-  },
-  args: {
-    position: 'right',
-    width: 'md',
-    closeOnBackdrop: true,
-    closeOnEscape: true,
-    showClose: true,
-  },
+  argTypes: { ...DRAWER_KNOBS.argTypes },
+  args: { ...DRAWER_KNOBS.args },
 };
 
 export default meta;

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { TreeComponent } from './tree.component';
+import { TREE_KNOBS } from './tree.component.knobs';
 import type { TreeNode } from './tree.types';
 
 const FILE_TREE: TreeNode[] = [
@@ -68,13 +69,9 @@ const meta: Meta<TreeComponent> = {
   title: 'Components/Tree',
   component: TreeComponent,
   tags: ['autodocs'],
-  argTypes: {
-    size: { control: { type: 'inline-radio' }, options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-    disabled: { control: 'boolean' },
-  },
+  argTypes: TREE_KNOBS.argTypes,
   args: {
-    size: 'md',
-    disabled: false,
+    ...TREE_KNOBS.args,
     nodes: FILE_TREE,
   },
 };

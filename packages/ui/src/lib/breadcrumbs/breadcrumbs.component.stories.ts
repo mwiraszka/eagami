@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { BreadcrumbsComponent } from './breadcrumbs.component';
+import { BREADCRUMBS_KNOBS } from './breadcrumbs.component.knobs';
 
 const sampleItems = [
   { label: 'Home', href: '/' },
@@ -17,16 +18,10 @@ const meta: Meta<BreadcrumbsComponent> = {
     props: args,
     template: `<ea-breadcrumbs ${argsToTemplate(args)}></ea-breadcrumbs>`,
   }),
-  argTypes: {
-    separator: {
-      control: 'select',
-      options: ['chevron', 'slash'],
-    },
-    clicked: { action: 'clicked' },
-  },
+  argTypes: BREADCRUMBS_KNOBS.argTypes,
   args: {
+    ...BREADCRUMBS_KNOBS.args,
     items: sampleItems,
-    separator: 'chevron',
   },
 };
 

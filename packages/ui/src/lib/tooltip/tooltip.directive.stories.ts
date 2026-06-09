@@ -2,17 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { TooltipDirective } from './tooltip.directive';
+import { TOOLTIP_KNOBS } from './tooltip.directive.knobs';
 
 const meta: Meta<TooltipDirective> = {
   title: 'Components/Tooltip',
   component: TooltipDirective,
   tags: ['autodocs'],
-  argTypes: {
-    tooltipPosition: {
-      control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
-    },
-  },
+  argTypes: TOOLTIP_KNOBS.argTypes,
+  args: TOOLTIP_KNOBS.args,
 };
 
 export default meta;

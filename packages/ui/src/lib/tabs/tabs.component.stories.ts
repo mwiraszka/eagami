@@ -2,26 +2,16 @@ import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { TabComponent } from './tab.component';
 import { TabsComponent } from './tabs.component';
+import { TABS_KNOBS } from './tabs.component.knobs';
 
 const meta: Meta<TabsComponent> = {
   title: 'Components/Tabs',
   component: TabsComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [TabComponent] })],
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['underline', 'filled'],
-    },
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    changed: { action: 'changed' },
-  },
+  argTypes: TABS_KNOBS.argTypes,
   args: {
-    variant: 'underline',
-    size: 'md',
+    ...TABS_KNOBS.args,
     activeTab: 'account',
   },
 };

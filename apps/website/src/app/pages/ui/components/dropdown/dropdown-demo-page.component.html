@@ -1,48 +1,22 @@
-<web-ui-component-demo-layout slug="dropdown">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-dropdown
-    [label]="messages().ui.component.demos.dropdown.fruitLabel"
-    [placeholder]="messages().ui.component.demos.dropdown.fruitPlaceholder"
-    [options]="dropdownOptions()"
-    [(value)]="dropdownValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-dropdown
-    [label]="messages().ui.component.demos.dropdown.fruitLabel"
-    [hint]="messages().ui.component.demos.dropdown.hintFavourite"
-    [options]="dropdownOptions()"
-    [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-dropdown
-    [label]="messages().ui.component.demos.dropdown.fruitLabel"
-    [errorMsg]="messages().ui.component.demos.dropdown.errorRequired"
-    [options]="dropdownOptions()"
-    [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <div class="demo-stack">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-dropdown
-      size="sm"
-      [label]="messages().ui.component.common.small"
-      [options]="dropdownOptions()"
-      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-    <ea-dropdown
-      size="md"
-      [label]="messages().ui.component.common.medium"
-      [options]="dropdownOptions()"
-      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-    <ea-dropdown
-      size="lg"
-      [label]="messages().ui.component.common.large"
-      [options]="dropdownOptions()"
-      [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
-  </div>
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-dropdown
-    [label]="messages().ui.component.demos.dropdown.fruitLabel"
-    [disabled]="true"
-    [options]="dropdownOptions()"
-    [placeholder]="messages().ui.component.demos.dropdown.selectPlaceholder" />
+      class="playground-field"
+      [options]="options()"
+      [label]="state().label"
+      [placeholder]="state().placeholder"
+      [size]="state().size"
+      [disabled]="state().disabled"
+      [readonly]="state().readonly"
+      [required]="state().required" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

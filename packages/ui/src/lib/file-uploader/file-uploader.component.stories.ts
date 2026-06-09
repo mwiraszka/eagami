@@ -7,6 +7,7 @@ import {
 
 import { PaperclipIconComponent } from '../icons/paperclip.component';
 import { FileUploaderComponent } from './file-uploader.component';
+import { FILE_UPLOADER_KNOBS } from './file-uploader.component.knobs';
 
 function makeSampleFile(name: string, bytes: number, type: string): File {
   return new File([new Blob([new ArrayBuffer(bytes)], { type })], name, {
@@ -34,16 +35,12 @@ const meta: Meta<FileUploaderComponent> = {
     template: `<ea-file-uploader ${argsToTemplate(args)} class="story-medium"></ea-file-uploader>`,
   }),
   argTypes: {
+    ...FILE_UPLOADER_KNOBS.argTypes,
     size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-    rejected: { action: 'rejected' },
-    fileRemoved: { action: 'fileRemoved' },
   },
   args: {
-    label: 'Attachments',
+    ...FILE_UPLOADER_KNOBS.args,
     size: 'md',
-    multiple: true,
-    disabled: false,
-    required: false,
   },
 };
 

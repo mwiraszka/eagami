@@ -2,6 +2,7 @@ import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import type { SelectOption } from '../select-option';
 import { SegmentedComponent } from './segmented.component';
+import { SEGMENTED_KNOBS } from './segmented.component.knobs';
 
 const viewOptions: SelectOption[] = [
   { value: 'list', label: 'List' },
@@ -18,18 +19,12 @@ const meta: Meta<SegmentedComponent> = {
     template: `<ea-segmented ${argsToTemplate(args)} />`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    changed: { action: 'changed' },
+    ...SEGMENTED_KNOBS.argTypes,
   },
   args: {
+    ...SEGMENTED_KNOBS.args,
     options: viewOptions,
-    size: 'md',
     value: 'list',
-    fullWidth: false,
-    disabled: false,
   },
 };
 

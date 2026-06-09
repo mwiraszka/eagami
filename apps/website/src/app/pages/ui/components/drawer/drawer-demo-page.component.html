@@ -1,78 +1,37 @@
-<web-ui-component-demo-layout slug="drawer">
-  <h2>{{ messages().ui.component.sectionHeadings.positions }}</h2>
-  <div class="demo-row">
-    <ea-button (clicked)="drawerOpenRight.set(true)">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    [childMarkup]="childMarkup"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-button (clicked)="open.set(true)">
       {{ messages().ui.component.demos.drawer.rightButton }}
     </ea-button>
-    <ea-button (clicked)="drawerOpenLeft.set(true)">
-      {{ messages().ui.component.demos.drawer.leftButton }}
-    </ea-button>
-    <ea-button (clicked)="drawerOpenTop.set(true)">
-      {{ messages().ui.component.demos.drawer.topButton }}
-    </ea-button>
-    <ea-button (clicked)="drawerOpenBottom.set(true)">
-      {{ messages().ui.component.demos.drawer.bottomButton }}
-    </ea-button>
-  </div>
-
-  <ea-drawer
-    position="right"
-    [(open)]="drawerOpenRight">
-    <span slot="header">
-      {{ messages().ui.component.demos.drawer.rightTitle }}
-    </span>
-    <p>{{ messages().ui.component.demos.drawer.rightBody }}</p>
-    <span slot="footer">
-      <ea-button
-        variant="secondary"
-        (clicked)="drawerOpenRight.set(false)">
-        {{ messages().ui.component.common.cancel }}
-      </ea-button>
-      <ea-button (clicked)="drawerOpenRight.set(false)">
-        {{ messages().ui.component.common.save }}
-      </ea-button>
-    </span>
-  </ea-drawer>
-
-  <ea-drawer
-    position="left"
-    [(open)]="drawerOpenLeft">
-    <span slot="header">
-      {{ messages().ui.component.demos.drawer.leftTitle }}
-    </span>
-    <p>{{ messages().ui.component.demos.drawer.leftBody }}</p>
-    <span slot="footer">
-      <ea-button (clicked)="drawerOpenLeft.set(false)">
-        {{ messages().ui.component.common.close }}
-      </ea-button>
-    </span>
-  </ea-drawer>
-
-  <ea-drawer
-    position="top"
-    [(open)]="drawerOpenTop">
-    <span slot="header">
-      {{ messages().ui.component.demos.drawer.topTitle }}
-    </span>
-    <p>{{ messages().ui.component.demos.drawer.topBody }}</p>
-    <span slot="footer">
-      <ea-button (clicked)="drawerOpenTop.set(false)">
-        {{ messages().ui.component.common.close }}
-      </ea-button>
-    </span>
-  </ea-drawer>
-
-  <ea-drawer
-    position="bottom"
-    [(open)]="drawerOpenBottom">
-    <span slot="header">
-      {{ messages().ui.component.demos.drawer.bottomTitle }}
-    </span>
-    <p>{{ messages().ui.component.demos.drawer.bottomBody }}</p>
-    <span slot="footer">
-      <ea-button (clicked)="drawerOpenBottom.set(false)">
-        {{ messages().ui.component.common.close }}
-      </ea-button>
-    </span>
-  </ea-drawer>
+    <ea-drawer
+      [(open)]="open"
+      [position]="state().position"
+      [width]="state().width"
+      [closeOnBackdrop]="state().closeOnBackdrop"
+      [closeOnEscape]="state().closeOnEscape"
+      [showClose]="state().showClose">
+      <span slot="header">{{ messages().ui.component.demos.drawer.rightTitle }}</span>
+      <p>{{ messages().ui.component.demos.drawer.rightBody }}</p>
+      <span slot="footer">
+        <ea-button
+          variant="secondary"
+          (clicked)="open.set(false)">
+          {{ messages().ui.component.common.cancel }}
+        </ea-button>
+        <ea-button (clicked)="open.set(false)">
+          {{ messages().ui.component.common.save }}
+        </ea-button>
+      </span>
+    </ea-drawer>
+  </web-component-playground>
 </web-ui-component-demo-layout>

@@ -1,6 +1,13 @@
-<web-ui-component-demo-layout slug="toast">
-  <h2>{{ messages().ui.component.sectionHeadings.trigger }}</h2>
-  <div class="demo-row">
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
     <ea-button
       variant="secondary"
       (clicked)="showToast('default')">
@@ -26,5 +33,5 @@
       (clicked)="showToast('info')">
       {{ messages().ui.component.common.infoLabel }}
     </ea-button>
-  </div>
+  </web-component-playground>
 </web-ui-component-demo-layout>

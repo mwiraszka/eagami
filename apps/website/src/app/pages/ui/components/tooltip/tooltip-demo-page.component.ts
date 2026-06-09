@@ -1,35 +1,52 @@
-import { AlertComponent, ButtonComponent, TooltipDirective } from '@eagami/ui';
+import { ButtonComponent, TooltipDirective, type TooltipPosition } from '@eagami/ui';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
-import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { UI_API } from '@app/data/ui-api.generated';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
+import {
+  ComponentPlaygroundComponent,
+  type KnobChange,
+} from '../_playground/component-playground.component';
+import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+
+interface TooltipKnobState {
+  // Index signature lets this typed state satisfy the playground's generic
+  // KnobState input; the explicit fields below still drive checked bindings.
+  [key: string]: KnobValue;
+  eaTooltip: string;
+  tooltipPosition: TooltipPosition;
+}
+
+const SLUG = 'tooltip';
 
 @Component({
   selector: 'web-tooltip-demo-page',
   templateUrl: './tooltip-demo-page.component.html',
-  styleUrl: './tooltip-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AlertComponent,
     ButtonComponent,
     TooltipDirective,
     UiComponentDemoLayoutComponent,
+    ComponentPlaygroundComponent,
   ],
 })
 export class TooltipDemoPageComponent {
-  protected readonly messages = inject(WebI18nService).messages;
+  protected readonly slug = SLUG;
+  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.tooltip, UI_API[SLUG]);
+  protected readonly state = signal<TooltipKnobState>(
+    initialKnobState(this.knobs, PLAYGROUND_KNOBS.tooltip) as TooltipKnobState,
+  );
 
-  /* Subscribe rather than read once: hover capability changes at runtime (DevTools
-     mobile emulation, Bluetooth peripherals), which a construction-time read misses. */
-  private readonly hoverMql =
-    typeof window !== 'undefined' && typeof window.matchMedia === 'function'
-      ? window.matchMedia('(hover: hover)')
-      : null;
-  protected readonly canHover = signal(this.hoverMql?.matches ?? true);
+  protected onKnob({ name, value }: KnobChange): void {
+    this.state.update(current => ({ ...current, [name]: value }) as TooltipKnobState);
+  }
 
-  constructor() {
-    this.hoverMql?.addEventListener('change', e => this.canHover.set(e.matches));
+  protected reset(): void {
+    this.state.set(
+      initialKnobState(this.knobs, PLAYGROUND_KNOBS.tooltip) as TooltipKnobState,
+    );
   }
 }

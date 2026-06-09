@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { TransferListComponent } from './transfer-list.component';
+import { TRANSFER_LIST_KNOBS } from './transfer-list.component.knobs';
 import type { TransferListItem } from './transfer-list.types';
 
 const ROLES: TransferListItem[] = [
@@ -16,13 +17,9 @@ const meta: Meta<TransferListComponent> = {
   title: 'Components/Transfer List',
   component: TransferListComponent,
   tags: ['autodocs'],
-  argTypes: {
-    size: { control: { type: 'inline-radio' }, options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-    disabled: { control: 'boolean' },
-  },
+  argTypes: TRANSFER_LIST_KNOBS.argTypes,
   args: {
-    size: 'md',
-    disabled: false,
+    ...TRANSFER_LIST_KNOBS.args,
     items: ROLES,
   },
 };
