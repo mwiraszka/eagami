@@ -46,9 +46,17 @@ export class CodeInputDemoPageComponent {
   );
 
   protected onKnob({ name, value }: KnobChange): void {
-    // The control panel is keyed by string; one cast bridges it back to the
-    // statically typed state that keeps the live <ea-code-input> bindings checked.
-    this.state.update(current => ({ ...current, [name]: value }) as CodeInputKnobState);
+    this.state.update(current => {
+      // The control panel is keyed by string; one cast bridges it back to the
+      // statically typed state that keeps the live <ea-code-input> bindings checked.
+      const next = { ...current, [name]: value } as CodeInputKnobState;
+      // Only the first `length` placeholder characters reach a cell, so cap the
+      // input there to make that limit obvious.
+      if (next.placeholder.length > next.length) {
+        next.placeholder = next.placeholder.slice(0, next.length);
+      }
+      return next;
+    });
   }
 
   protected reset(): void {

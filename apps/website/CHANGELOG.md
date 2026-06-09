@@ -7,7 +7,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Add a label control to the button playground and show a success toast when the button is clicked.
-- Keep the code-input demo centered, scroll it horizontally when its cells outgrow the card, and reserve room so a focused cell's ring is not clipped.
+- Keep the code-input demo centered, scroll it horizontally when its cells outgrow the card, reserve room so a focused cell's ring is not clipped, and cap the placeholder to the code length.
 - Pick up @eagami/ui v2.11.0.
 
 ## [2.10.0] - 2026-06-08
