@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.11.0] - 2026-06-09
 
+### Added
+
+- Add an `allowAllChars` input to `<ea-code-input>` for accepting any non-whitespace character, not just digits.
+
 ### Changed
 
 - Lighten the avatar's initials placeholder background in light mode.
+- Spread `<ea-code-input>`'s placeholder one character per cell instead of repeating it across every cell.
 
 ### Fixed
 
