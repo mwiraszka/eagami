@@ -20,6 +20,8 @@
   display: flex;
   justify-content: safe center;
   width: 100%;
+  // Room for each cell's focus ring so the scroll container doesn't clip it.
+  padding: var(--space-1);
 }
 
 // Definite width so an accordion preview keeps a stable size as panels open and
