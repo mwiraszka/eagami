@@ -20,6 +20,7 @@ interface CodeInputKnobState {
   placeholder: string;
   length: number;
   size: CodeInputSize;
+  allowAllChars: boolean;
   disabled: boolean;
   readonly: boolean;
   required: boolean;

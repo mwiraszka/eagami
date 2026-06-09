@@ -748,6 +748,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-code-input',
     inputs: [
       {
+        name: 'allowAllChars',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
