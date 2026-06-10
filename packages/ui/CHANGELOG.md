@@ -10,6 +10,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add playground control metadata for the remaining components so every component has an interactive demo.
+- Add an `animated` slide-in option to `<ea-drawer>`.
+- Add `size` and `groupThousands` inputs to `<ea-paginator>`.
+- Add `clearable` and `position` inputs to `<ea-toast>`.
+- Add a `maxWidth` input to the tooltip directive that wraps long text at a set width.
+- Add `<ea-icon-half-heart>` and `<ea-icon-half-circle>` so half-step ratings work with heart and circle icons.
+
+### Changed
+
+- **Breaking:** `<ea-multi-select>` keeps selected chips on one horizontally scrollable row with an always-visible clear button, and shows every chip by default instead of capping at three.
+
+### Fixed
+
+- Honor `<ea-drawer>`'s `closeOnEscape` when off, and keep the trigger working after Escape closes the drawer.
+- Trim `<ea-drawer>` vertical padding at the smaller sizes so top and bottom drawers no longer clip their content.
+- Use the interactive hover wash for `<ea-menu>` items so the hover state stays visible on dark surfaces.
+- Fix `<ea-paginator>` left and right alignment.
+- Show tooltips when keyboard focus lands on a wrapped trigger such as `<ea-button>`.
+- Stretch `<ea-segmented>` to the full width of its container when `fullWidth` is set.
+- Even out the connector spacing between `<ea-stepper>` steps.
 
 ## [2.11.0] - 2026-06-09
 
