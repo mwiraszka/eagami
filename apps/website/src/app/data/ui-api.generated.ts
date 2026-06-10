@@ -502,7 +502,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, {    alias: 'aria-label',  }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -538,14 +538,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaCurrent',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-current' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -658,7 +658,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -1255,7 +1255,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -1359,9 +1359,16 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-drawer',
     inputs: [
       {
+        name: 'animated',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2017,7 +2024,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, {    alias: 'aria-label',  }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2124,7 +2131,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'menu',
         type: 'MenuComponent',
-        default: "{ alias: 'eaMenuTrigger' }",
+        default: '',
         required: true,
         twoWay: false,
       },
@@ -2173,7 +2180,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'maxVisibleChips',
         type: 'number',
-        default: '3',
+        default: '0',
         required: false,
         twoWay: false,
       },
@@ -2299,6 +2306,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'groupThousands',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'page',
         type: 'number',
         default: '1',
@@ -2334,6 +2348,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'size',
+        type: 'PaginatorSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'totalItems',
         type: 'number',
         default: '',
@@ -2351,6 +2372,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     methods: [
+      {
+        name: 'formatNumber',
+        signature: 'formatNumber(value: number): string',
+      },
       {
         name: 'goToPage',
         signature: 'goToPage(page: number): void',
@@ -2378,7 +2403,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2575,7 +2600,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2672,14 +2697,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabelHigh',
         type: 'string | undefined',
-        default: "undefined, {    alias: 'aria-label-high',  }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
       {
         name: 'ariaLabelLow',
         type: 'string | undefined',
-        default: "undefined, {    alias: 'aria-label-low',  }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2944,7 +2969,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -3076,7 +3101,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -3341,7 +3366,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -3851,7 +3876,22 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   },
   toast: {
     selector: 'ea-toast',
-    inputs: [],
+    inputs: [
+      {
+        name: 'clearable',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'position',
+        type: 'ToastPosition',
+        default: "'bottom-right'",
+        required: false,
+        twoWay: false,
+      },
+    ],
     outputs: [],
     methods: [],
   },
@@ -3863,6 +3903,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         type: 'string',
         default: '',
         required: true,
+        twoWay: false,
+      },
+      {
+        name: 'maxWidth',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
         twoWay: false,
       },
       {
@@ -3931,7 +3978,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaLabel',
         type: 'string | undefined',
-        default: "undefined, { alias: 'aria-label' }",
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
