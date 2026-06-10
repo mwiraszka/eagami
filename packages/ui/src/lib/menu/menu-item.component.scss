@@ -13,9 +13,11 @@
   cursor: pointer;
   transition: var(--transition-colors);
 
+  // state-hover (a translucent wash) reads on the elevated menu surface in both
+  // themes; bg-muted collapses onto that surface's shade in dark mode.
   &:hover:not(&--disabled),
   &:focus-visible:not(&--disabled) {
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-state-hover);
   }
 
   &:focus-visible {

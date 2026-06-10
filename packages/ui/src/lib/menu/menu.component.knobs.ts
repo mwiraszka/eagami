@@ -18,6 +18,7 @@ export const MENU_KNOBS: ComponentKnobs = {
   },
   args: {
     placement: 'bottom-start',
+    ariaLabel: 'Actions menu',
     disabled: false,
   },
 };
