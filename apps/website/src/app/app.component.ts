@@ -16,6 +16,7 @@ import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '@app/components/footer/footer.component';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { ToastOutletService } from '@app/services/toast-outlet.service';
 
 @Component({
   selector: 'web-root',
@@ -31,6 +32,7 @@ export class AppComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
+  protected readonly toastOutlet = inject(ToastOutletService);
   protected readonly messages = this.i18n.messages;
 
   constructor() {

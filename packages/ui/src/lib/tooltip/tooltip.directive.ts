@@ -26,6 +26,8 @@ export class TooltipDirective implements OnDestroy {
 
   readonly eaTooltip = input.required<string>();
   readonly tooltipPosition = input<TooltipPosition>('top');
+  /** Max width in px; the text wraps at this width. Clamped to a 50px floor. */
+  readonly maxWidth = input<number | undefined>(undefined);
 
   private tooltipEl: HTMLElement | null = null;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
@@ -53,8 +55,11 @@ export class TooltipDirective implements OnDestroy {
      open even though the user has moved their cursor away. `:focus-visible`
      is the browser's signal for "keyboard activation", which is exactly
      when a tooltip on focus is welcome. */
-  private readonly focusHandler = () => {
-    if (!this.supportsFocusVisible || this.el.nativeElement.matches(':focus-visible')) {
+  private readonly focusHandler = (event: FocusEvent) => {
+    // focusin bubbles, so the focused element may be a child of the host (e.g. the
+    // inner <button> of <ea-button>); test it, not the host, for keyboard focus.
+    const target = event.target as HTMLElement;
+    if (!this.supportsFocusVisible || target.matches(':focus-visible')) {
       this.show();
     }
   };
@@ -92,9 +97,10 @@ export class TooltipDirective implements OnDestroy {
 
   constructor() {
     const native = this.el.nativeElement;
-    // Focus/blur/keydown always wire up; keyboard users benefit on any device.
-    native.addEventListener('focus', this.focusHandler);
-    native.addEventListener('blur', this.hideHandler);
+    // focusin/focusout (not focus/blur) so the tooltip still shows when the host
+    // wraps the focusable element (focus does not bubble; focusin does).
+    native.addEventListener('focusin', this.focusHandler);
+    native.addEventListener('focusout', this.hideHandler);
     native.addEventListener('keydown', this.keydownHandler);
 
     this.syncPointerListeners(this.hoverMql?.matches ?? true);
@@ -105,8 +111,8 @@ export class TooltipDirective implements OnDestroy {
     const native = this.el.nativeElement;
     native.removeEventListener('mouseenter', this.showHandler);
     native.removeEventListener('mouseleave', this.hideHandler);
-    native.removeEventListener('focus', this.focusHandler);
-    native.removeEventListener('blur', this.hideHandler);
+    native.removeEventListener('focusin', this.focusHandler);
+    native.removeEventListener('focusout', this.hideHandler);
     native.removeEventListener('keydown', this.keydownHandler);
     this.hoverMql?.removeEventListener('change', this.hoverChangeHandler);
     this.hide();
@@ -137,6 +143,12 @@ export class TooltipDirective implements OnDestroy {
     this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
     this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
     this.tooltipEl!.textContent = this.eaTooltip();
+
+    const maxWidth = this.maxWidth();
+    if (maxWidth != null) {
+      this.renderer.setStyle(this.tooltipEl, 'max-width', `${Math.max(50, maxWidth)}px`);
+      this.renderer.setStyle(this.tooltipEl, 'white-space', 'normal');
+    }
 
     this.renderer.appendChild(document.body, this.tooltipEl);
     this.appendDescribedBy();

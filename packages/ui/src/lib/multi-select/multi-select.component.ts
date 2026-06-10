@@ -84,8 +84,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly searchable = input<boolean>(true);
   /** Toggle the "Select all" row at the top of the option list. */
   readonly selectAll = input<boolean>(true);
-  /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap. */
-  readonly maxVisibleChips = input<number>(3);
+  /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap so every chip shows and the row scrolls horizontally. */
+  readonly maxVisibleChips = input<number>(0);
   readonly id = input<string>(uniqueId('ea-multi-select'));
 
   /** Selected option values, in the original options order. */

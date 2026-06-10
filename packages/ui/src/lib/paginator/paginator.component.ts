@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,9 +14,13 @@ import { ButtonComponent } from '../button/button.component';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
+import { type EaSize } from '../sizes';
 
 /** Horizontal alignment of paginator controls within their container. */
 export type PaginatorAlign = 'left' | 'center' | 'right';
+
+/** Visual size of the paginator. */
+export type PaginatorSize = EaSize;
 
 /** Snapshot of the paginator's page and page size. */
 export interface PaginatorState {
@@ -31,7 +36,12 @@ export interface PaginatorState {
  */
 @Component({
   selector: 'ea-paginator',
-  imports: [ButtonComponent, ChevronLeftIconComponent, ChevronRightIconComponent],
+  imports: [
+    NgClass,
+    ButtonComponent,
+    ChevronLeftIconComponent,
+    ChevronRightIconComponent,
+  ],
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,6 +55,9 @@ export class PaginatorComponent {
   readonly showPageSizeSelector = input<boolean>(true);
   readonly showRangeLabel = input<boolean>(true);
   readonly align = input<PaginatorAlign>('right');
+  readonly size = input<PaginatorSize>('md');
+  /** Group thousands with commas in the range and page numbers. */
+  readonly groupThousands = input<boolean>(true);
   readonly disabled = input<boolean>(false);
 
   readonly page = model<number>(1);
@@ -68,6 +81,11 @@ export class PaginatorComponent {
   readonly canGoPrev = computed(() => this.page() > 1);
 
   readonly canGoNext = computed(() => this.page() < this.totalPages());
+
+  /** Formats a number for display, grouping thousands with commas when enabled. */
+  protected formatNumber(value: number): string {
+    return this.groupThousands() ? value.toLocaleString('en-US') : `${value}`;
+  }
 
   readonly visiblePages = computed(() => {
     const total = this.totalPages();

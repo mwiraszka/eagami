@@ -202,6 +202,8 @@ export * from './lib/icons/gitlab.component';
 export * from './lib/icons/globe.component';
 export * from './lib/icons/google.component';
 export * from './lib/icons/grid.component';
+export * from './lib/icons/half-circle.component';
+export * from './lib/icons/half-heart.component';
 export * from './lib/icons/hard-drive.component';
 export * from './lib/icons/hash.component';
 export * from './lib/icons/headphones.component';

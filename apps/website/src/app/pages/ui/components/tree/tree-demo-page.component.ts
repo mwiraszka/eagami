@@ -1,22 +1,46 @@
-import { TreeComponent, type TreeNode } from '@eagami/ui';
+import { TreeComponent, type TreeNode, type TreeSize } from '@eagami/ui';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 
+import { UI_API } from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
+import {
+  ComponentPlaygroundComponent,
+  type KnobChange,
+} from '../_playground/component-playground.component';
+import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+
+interface TreeKnobState {
+  [key: string]: KnobValue;
+  size: TreeSize;
+  disabled: boolean;
+  ariaLabel: string;
+}
+
+const SLUG = 'tree';
 
 @Component({
   selector: 'web-tree-demo-page',
   templateUrl: './tree-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TreeComponent, UiComponentDemoLayoutComponent],
+  imports: [TreeComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })
 export class TreeDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
+  protected readonly slug = SLUG;
+  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['tree'], UI_API[SLUG]);
+  protected readonly state = signal<TreeKnobState>(
+    initialKnobState(this.knobs, PLAYGROUND_KNOBS['tree']) as TreeKnobState,
+  );
+
+  protected readonly extraAttributes = ['[nodes]="nodes"'];
+
   // File paths are universal proper nouns, so this stays untranslated
-  protected readonly fileTree: TreeNode[] = [
+  protected readonly nodes: TreeNode[] = [
     {
       id: 'src',
       label: 'src',
@@ -46,29 +70,13 @@ export class TreeDemoPageComponent {
     { id: 'tsconfig.json', label: 'tsconfig.json' },
   ];
 
-  // Role names stay in English as a generic example; consumers supply localised data
-  protected readonly orgChart: TreeNode[] = [
-    {
-      id: 'ceo',
-      label: 'CEO',
-      children: [
-        {
-          id: 'cto',
-          label: 'CTO',
-          children: [
-            { id: 'eng-mgr', label: 'Engineering Manager' },
-            { id: 'principal', label: 'Principal Engineer' },
-          ],
-        },
-        {
-          id: 'cfo',
-          label: 'CFO',
-          children: [
-            { id: 'controller', label: 'Controller' },
-            { id: 'finance-lead', label: 'Finance Lead (vacant)', disabled: true },
-          ],
-        },
-      ],
-    },
-  ];
+  protected onKnob({ name, value }: KnobChange): void {
+    this.state.update(current => ({ ...current, [name]: value }) as TreeKnobState);
+  }
+
+  protected reset(): void {
+    this.state.set(
+      initialKnobState(this.knobs, PLAYGROUND_KNOBS['tree']) as TreeKnobState,
+    );
+  }
 }

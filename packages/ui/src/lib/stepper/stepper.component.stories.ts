@@ -2,6 +2,7 @@ import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { StepComponent } from './step.component';
 import { StepperComponent } from './stepper.component';
+import { STEPPER_KNOBS } from './stepper.component.knobs';
 
 const stepperTemplate = (children: string) => `
   <ea-stepper
@@ -18,17 +19,10 @@ const meta: Meta<StepperComponent> = {
   component: StepperComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [StepComponent] })],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    changed: { action: 'changed' },
-  },
+  argTypes: STEPPER_KNOBS.argTypes,
   args: {
+    ...STEPPER_KNOBS.args,
     activeStep: 0,
-    linear: false,
-    size: 'md',
     disabled: false,
   },
 };

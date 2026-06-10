@@ -50,9 +50,6 @@
             }
           }
         </span>
-        <ea-icon-chevron-down
-          class="ea-multi-select__trigger-icon"
-          aria-hidden="true" />
       </div>
       @if (hasValue() && !isDisabled() && !readonly()) {
         <button
@@ -65,6 +62,10 @@
             aria-hidden="true" />
         </button>
       }
+      <ea-icon-chevron-down
+        class="ea-multi-select__trigger-icon"
+        aria-hidden="true"
+        (click)="toggle()" />
     </div>
 
     <ea-popover

@@ -88,7 +88,14 @@ export function generateSnippet(
 
   let markup: string;
   if (isDirective) {
-    markup = `<div ${[selector, ...attributes].join(' ')}></div>`;
+    // When an attribute already carries the directive's own selector (e.g. the
+    // `eaTooltip` input on the `[eaTooltip]` directive), don't repeat the bare
+    // selector alongside it.
+    const carriesSelector = attributes.some(
+      attr => attr.startsWith(`${selector}=`) || attr.startsWith(`[${selector}]=`),
+    );
+    const parts = carriesSelector ? attributes : [selector, ...attributes];
+    markup = `<div ${parts.join(' ')}></div>`;
   } else if (childMarkup) {
     const indented = childMarkup
       .split('\n')

@@ -577,6 +577,7 @@ export const pl: WebMessages = {
           rightLabel: 'Prawo',
         },
         drawer: {
+          openButton: 'Otwórz szufladę',
           rightButton: 'Prawy',
           leftButton: 'Lewy',
           topButton: 'Górny',
@@ -786,8 +787,8 @@ export const pl: WebMessages = {
           rightTooltip: 'Podpowiedź po prawej',
         },
         transferList: {
-          availableLabel: 'Dostępne',
-          assignedLabel: 'Przypisane',
+          sourceLabel: 'Dostępne',
+          targetLabel: 'Wybrane',
           roleAdmin: 'Administrator',
           roleEditor: 'Edytor',
           roleViewer: 'Czytelnik',
@@ -839,6 +840,9 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          tooltip: {
+            eaTooltip: 'Treść podpowiedzi',
+          },
           input: {
             label: 'Etykieta',
             placeholder: 'Tekst zastępczy',
@@ -1022,6 +1026,10 @@ export const pl: WebMessages = {
           },
         },
         descriptions: {
+          toast: {
+            position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
+            clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
+          },
           input: {
             label: 'Etykieta wyświetlana nad polem.',
             type: 'Natywny typ pola (password dodaje wbudowany przycisk pokaż/ukryj).',
@@ -1192,6 +1200,8 @@ export const pl: WebMessages = {
             icon: 'Opcjonalny komponent ikony renderowany w obszarze mediów nad tytułem.',
           },
           paginator: {
+            groupThousands: 'Grupuje tysiące przecinkami w zakresie i numerach stron.',
+            size: 'Rozmiar wizualny paginatora i jego elementów.',
             align:
               'Poziome wyrównanie elementów sterujących paginatora w ich kontenerze.',
             disabled: 'Wyłącza wszystkie elementy sterujące paginatora.',
@@ -1420,10 +1430,12 @@ export const pl: WebMessages = {
             updateImageDarkness:
               'Próbkuje widoczny obszar kadrowania, aby określić czy obraz jest ciemniejszy niż średnia szarość.',
           },
-          eaMenuTrigger: {
+          'menu-trigger': {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
           },
-          eaTooltip: {
+          tooltip: {
+            maxWidth:
+              'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px).',
             eaTooltip:
               'Treść tekstowa podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury.',
             tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',
@@ -1720,6 +1732,7 @@ export const pl: WebMessages = {
               'Emitowane, gdy aktywowany zostanie element okruszkowy niebędący wyłączonym ani ostatnim.',
           },
           drawer: {
+            animated: 'Wsuwa panel od jego krawędzi przy otwieraniu szuflady.',
             ariaLabel:
               'Dostępna etykieta panelu szuflady, gdy jego nagłówek nie jest wystarczająco opisowy.',
             closeOnBackdrop: 'Zamyka szufladę, gdy użytkownik kliknie tło.',
@@ -1911,9 +1924,9 @@ export const pl: WebMessages = {
           { value: 'date', label: 'Daktyl' },
         ],
         viewOptions: [
-          { value: 'list', label: 'Lista' },
-          { value: 'grid', label: 'Siatka' },
-          { value: 'kanban', label: 'Kanban' },
+          { value: 'day', label: 'Dzień' },
+          { value: 'week', label: 'Tydzień' },
+          { value: 'month', label: 'Miesiąc' },
         ],
         themeOptions: [
           { value: 'light', label: 'Jasny' },

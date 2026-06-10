@@ -1,7 +1,20 @@
-import { RatingComponent, type RatingSize, StarIconComponent } from '@eagami/ui';
+import {
+  HalfCircleIconComponent,
+  HalfHeartIconComponent,
+  LeftHalfStarIconComponent,
+  RatingComponent,
+  type RatingSize,
+  StarIconComponent,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  type Type,
+  computed,
+  signal,
+} from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -45,22 +58,11 @@ export class RatingDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.rating, UI_API[SLUG]),
-    iconKnob(
-      [
-        'star',
-        'heart',
-        'bell',
-        'bookmark',
-        'award',
-        'flag',
-        'smile',
-        'zap',
-        'sun',
-        'moon',
-        'gift',
-      ],
-      { name: 'iconClass', default: 'star', includeNone: false },
-    ),
+    iconKnob(['star', 'heart', 'circle'], {
+      name: 'iconClass',
+      default: 'star',
+      includeNone: false,
+    }),
   ];
   protected readonly state = signal<RatingKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.rating) as RatingKnobState,
@@ -68,6 +70,18 @@ export class RatingDemoPageComponent {
   protected readonly iconComponent = computed(
     () => iconComponentForSlug(this.state().iconClass) ?? StarIconComponent,
   );
+  // The default half-icon is a half-star, so pair heart and circle with their own
+  // half shapes; otherwise a half rating would show a stray half-star beside them.
+  protected readonly halfIconComponent = computed<Type<unknown>>(() => {
+    switch (this.state().iconClass) {
+      case 'heart':
+        return HalfHeartIconComponent;
+      case 'circle':
+        return HalfCircleIconComponent;
+      default:
+        return LeftHalfStarIconComponent;
+    }
+  });
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

@@ -444,6 +444,7 @@ export interface WebMessages {
           rightLabel: string;
         };
         drawer: {
+          openButton: string;
           rightButton: string;
           leftButton: string;
           topButton: string;
@@ -639,8 +640,8 @@ export interface WebMessages {
           rightTooltip: string;
         };
         transferList: {
-          availableLabel: string;
-          assignedLabel: string;
+          sourceLabel: string;
+          targetLabel: string;
           roleAdmin: string;
           roleEditor: string;
           roleViewer: string;

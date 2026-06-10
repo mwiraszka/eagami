@@ -1,63 +1,40 @@
-<web-ui-component-demo-layout slug="virtual-list">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <p class="demo-preview">
-    {{
-      messages().ui.component.demos.virtualList.scrollPosition(
-        visibleIndex() + 1,
-        rows.length
-      )
-    }}
-  </p>
-  <ea-virtual-list
-    [items]="rows"
-    [itemHeight]="44"
-    [viewportHeight]="360"
-    (scrollIndexChange)="onScrollIndex($event)">
-    <ng-template
-      #item
-      let-row
-      let-i="index">
-      <div
-        class="virtual-list-demo__row"
-        [class.virtual-list-demo__row--striped]="i % 2 === 1">
-        <strong>{{ row.label }}</strong>
-        <span>{{ row.detail }}</span>
-      </div>
-    </ng-template>
-  </ea-virtual-list>
-
-  <h2>{{ messages().ui.component.sectionHeadings.tinyList }}</h2>
-  <ea-virtual-list
-    [items]="rows.slice(0, 4)"
-    [itemHeight]="44"
-    [viewportHeight]="200">
-    <ng-template
-      #item
-      let-row
-      let-i="index">
-      <div
-        class="virtual-list-demo__row"
-        [class.virtual-list-demo__row--striped]="i % 2 === 1">
-        <strong>{{ row.label }}</strong>
-        <span>{{ row.detail }}</span>
-      </div>
-    </ng-template>
-  </ea-virtual-list>
-
-  <h2>{{ messages().ui.component.sectionHeadings.compactDensity }}</h2>
-  <ea-virtual-list
-    [items]="rows"
-    [itemHeight]="28"
-    [viewportHeight]="240">
-    <ng-template
-      #item
-      let-row
-      let-i="index">
-      <div
-        class="virtual-list-demo__row virtual-list-demo__row--compact"
-        [class.virtual-list-demo__row--striped]="i % 2 === 1">
-        {{ row.label }}
-      </div>
-    </ng-template>
-  </ea-virtual-list>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <p class="demo-preview">
+      {{
+        messages().ui.component.demos.virtualList.scrollPosition(
+          visibleIndex() + 1,
+          rows.length
+        )
+      }}
+    </p>
+    <ea-virtual-list
+      class="playground-fill"
+      [items]="rows"
+      [itemHeight]="state().itemHeight"
+      [viewportHeight]="state().viewportHeight"
+      [overscan]="state().overscan"
+      (scrollIndexChange)="onScrollIndex($event)">
+      <ng-template
+        #item
+        let-row
+        let-i="index">
+        <div
+          class="virtual-list-demo__row"
+          [class.virtual-list-demo__row--striped]="i % 2 === 1">
+          <strong>{{ row.label }}</strong>
+          <span>{{ row.detail }}</span>
+        </div>
+      </ng-template>
+    </ea-virtual-list>
+  </web-component-playground>
 </web-ui-component-demo-layout>

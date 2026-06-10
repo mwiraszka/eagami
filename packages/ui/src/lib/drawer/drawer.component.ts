@@ -52,6 +52,8 @@ export class DrawerComponent {
   readonly size = input<DrawerSize>('md');
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
+  /** Slide the panel in from its edge when the drawer opens. */
+  readonly animated = input<boolean>(false);
   readonly showClose = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(uniqueId('ea-drawer'));
@@ -115,5 +117,21 @@ export class DrawerComponent {
       return;
     }
     this.handleClose();
+  }
+
+  // The native <dialog> can close on its own (e.g. Escape), so reconcile the open
+  // model here. When closeOnEscape is off, Chrome's repeated-Escape abuse
+  // mitigation can force the close past cancel's preventDefault, so re-show to
+  // keep the drawer open; otherwise mirror the close back into the model.
+  onDialogClose(): void {
+    if (!this.open()) {
+      return;
+    }
+    if (this.closeOnEscape()) {
+      this.open.set(false);
+      this.closed.emit();
+    } else {
+      this.drawerEl()?.nativeElement.showModal();
+    }
   }
 }

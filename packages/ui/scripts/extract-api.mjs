@@ -22,15 +22,34 @@ function stripHtml(html) {
 }
 
 function slugFromSelector(selector) {
-  return (selector ?? '').replace(/[[\]]/g, '').replace(/^ea-/, '');
+  const cleaned = (selector ?? '').replace(/[[\]]/g, '').replace(/^ea-/, '');
+  // Camel-case attribute directives (eaTooltip, eaMenuTrigger) share the kebab
+  // slug style of the element selectors: eaTooltip -> tooltip.
+  if (/^ea[A-Z]/.test(cleaned)) {
+    return cleaned
+      .replace(/^ea/, '')
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
+  }
+  return cleaned;
 }
 
 // Inputs that default to a generated value (random id, timestamp) expose the
 // raw expression as their default; surface a readable placeholder instead.
 function cleanDefault(raw) {
   // Multi-line `input(\n  'value',\n)` declarations surface the arg with its
-  // trailing comma; strip it so defaults compare cleanly in the playground.
-  const value = (raw ?? '').trim().replace(/,\s*$/, '');
+  // trailing comma; strip it so defaults compare cleanly in the playground. Also
+  // drop a trailing options object, e.g. `input(undefined, { alias: '...' })`,
+  // so the default is just the value, not the whole argument list.
+  const value = (raw ?? '')
+    .trim()
+    .replace(/,\s*\{[\s\S]*$/, '')
+    .replace(/,\s*$/, '');
+  // A bare options object, e.g. `input.required({ alias: '...' })`, has no default
+  // value at all, so surface nothing rather than the config object.
+  if (/^\{[\s\S]*\balias\s*:/.test(value)) {
+    return '';
+  }
   if (/uniqueId|Math\.random|crypto\.|Date\.now|\$\{/.test(value)) {
     return '(auto-generated)';
   }

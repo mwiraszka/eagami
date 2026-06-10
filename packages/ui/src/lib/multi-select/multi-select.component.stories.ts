@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { MultiSelectComponent } from './multi-select.component';
+import { MULTI_SELECT_KNOBS } from './multi-select.component.knobs';
 
 const FRUITS = [
   { value: 'apple', label: 'Apple' },
@@ -29,21 +30,12 @@ const meta: Meta<MultiSelectComponent> = {
     template: `<ea-multi-select ${argsToTemplate(args)} class="story-narrow"></ea-multi-select>`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    changed: { action: 'changed' },
+    ...MULTI_SELECT_KNOBS.argTypes,
   },
   args: {
-    label: 'Fruits',
+    ...MULTI_SELECT_KNOBS.args,
     options: FRUITS,
-    size: 'md',
-    searchable: true,
     selectAll: true,
-    maxVisibleChips: 3,
-    disabled: false,
-    required: false,
   },
 };
 

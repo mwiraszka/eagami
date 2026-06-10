@@ -33,6 +33,9 @@ export type SegmentedSize = EaSize;
   templateUrl: './segmented.component.html',
   styleUrl: './segmented.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.ea-segmented-host--full-width]': 'fullWidth()',
+  },
   imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {

@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { DropdownComponent } from './dropdown.component';
+import { DROPDOWN_KNOBS } from './dropdown.component.knobs';
 
 const fruitOptions = [
   { value: 'apple', label: 'Apple' },
@@ -22,19 +23,11 @@ const meta: Meta<DropdownComponent> = {
     template: `<ea-dropdown ${argsToTemplate(args)} class="story-narrow"></ea-dropdown>`,
   }),
   argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    changed: { action: 'changed' },
+    ...DROPDOWN_KNOBS.argTypes,
   },
   args: {
-    label: 'Fruit',
-    placeholder: 'Select a fruit…',
+    ...DROPDOWN_KNOBS.args,
     options: fruitOptions,
-    size: 'md',
-    disabled: false,
-    required: false,
   },
 };
 

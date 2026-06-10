@@ -13,6 +13,13 @@
   max-width: 360px;
 }
 
+// Full-bleed projected components (paginator, virtual list) whose host would
+// otherwise shrink to content inside the centered preview, leaving alignment
+// inert or collapsing a fixed-size viewport to nothing.
+.playground-fill {
+  width: 100%;
+}
+
 // Code input has a variable number of fixed-width cells, so cap nothing: center it
 // while it fits and scroll horizontally once the cells outgrow the card.
 .demo-code-input {

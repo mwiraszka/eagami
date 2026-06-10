@@ -80,17 +80,17 @@ describe('TooltipDirective', () => {
     });
 
     it('renders on focus', () => {
-      getButton().dispatchEvent(new FocusEvent('focus'));
+      getButton().dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       fixture.detectChanges();
 
       expect(getTooltip()).toBeTruthy();
     });
 
     it('removes on blur', () => {
-      getButton().dispatchEvent(new FocusEvent('focus'));
+      getButton().dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       fixture.detectChanges();
 
-      getButton().dispatchEvent(new FocusEvent('blur'));
+      getButton().dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
       fixture.detectChanges();
 
       expect(getTooltip()).toBeNull();

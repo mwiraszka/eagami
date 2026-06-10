@@ -91,5 +91,7 @@
     <router-outlet />
   </main>
 
-  <ea-toast />
+  <ea-toast
+    [position]="toastOutlet.position()"
+    [clearable]="toastOutlet.clearable()" />
 </div>

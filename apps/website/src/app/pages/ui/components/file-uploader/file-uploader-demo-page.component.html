@@ -1,61 +1,22 @@
-<web-ui-component-demo-layout slug="file-uploader">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
-    [(value)]="fileUploaderValue" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withConstraints }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.imagesLabel"
-    [hint]="messages().ui.component.demos.fileUploader.imagesHint"
-    accept="image/png, image/jpeg"
-    [maxSize]="2 * 1024 * 1024"
-    [maxFiles]="4" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.singleFile }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.resumeLabel"
-    [multiple]="false"
-    accept=".pdf"
-    [maxSize]="5 * 1024 * 1024" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    size="sm" />
-  <ea-file-uploader
-    class="demo-form-narrow"
-    size="md" />
-  <ea-file-uploader
-    class="demo-form-narrow"
-    size="lg" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withHint }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
-    [hint]="messages().ui.component.demos.fileUploader.withHintHint" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withError }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
-    [errorMsg]="messages().ui.component.demos.fileUploader.withErrorText"
-    [required]="true" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.customIcon }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.customIconLabel">
-    <ea-icon-paperclip icon />
-  </ea-file-uploader>
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-file-uploader
-    class="demo-form-narrow"
-    [label]="messages().ui.component.demos.fileUploader.attachmentsLabel"
-    [disabled]="true" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-file-uploader
+      class="playground-field"
+      [label]="state().label"
+      [accept]="state().accept || undefined"
+      [multiple]="state().multiple"
+      [maxFiles]="state().maxFiles || undefined"
+      [maxSize]="state().maxSize || undefined"
+      [showFileList]="state().showFileList"
+      [disabled]="state().disabled"
+      [required]="state().required" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

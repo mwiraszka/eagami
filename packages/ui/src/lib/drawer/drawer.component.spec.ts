@@ -234,6 +234,29 @@ describe('DrawerComponent', () => {
       expect(event.defaultPrevented).toBe(true);
       expect(host.isOpen()).toBe(true);
     });
+
+    it('syncs the open model when the dialog closes on its own', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      getDrawer().dispatchEvent(new Event('close'));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('re-shows when force-closed while closeOnEscape is false', () => {
+      host.closeOnEscape.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      (HTMLDialogElement.prototype.showModal as jest.Mock).mockClear();
+
+      getDrawer().dispatchEvent(new Event('close'));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+      expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled();
+    });
   });
 
   describe('Content projection', () => {

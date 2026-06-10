@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { Component, signal } from '@angular/core';
 
 import { VirtualListComponent } from './virtual-list.component';
+import { VIRTUAL_LIST_KNOBS } from './virtual-list.component.knobs';
 
 interface Row {
   id: number;
@@ -20,15 +21,9 @@ const meta: Meta<VirtualListComponent> = {
   title: 'Components/Virtual List',
   component: VirtualListComponent,
   tags: ['autodocs'],
-  argTypes: {
-    itemHeight: { control: { type: 'number', min: 20, max: 120, step: 4 } },
-    viewportHeight: { control: { type: 'number', min: 100, max: 800, step: 50 } },
-    overscan: { control: { type: 'number', min: 0, max: 20 } },
-  },
+  argTypes: VIRTUAL_LIST_KNOBS.argTypes,
   args: {
-    itemHeight: 40,
-    viewportHeight: 320,
-    overscan: 3,
+    ...VIRTUAL_LIST_KNOBS.args,
     items: LONG_LIST,
   },
 };

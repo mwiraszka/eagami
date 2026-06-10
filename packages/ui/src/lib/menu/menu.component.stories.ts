@@ -7,6 +7,7 @@ import { TrashIconComponent } from '../icons/trash.component';
 import { MenuItemComponent } from './menu-item.component';
 import { MenuTriggerDirective } from './menu-trigger.directive';
 import { MenuComponent } from './menu.component';
+import { MENU_KNOBS } from './menu.component.knobs';
 
 const meta: Meta<MenuComponent> = {
   title: 'Components/Menu',
@@ -15,18 +16,8 @@ const meta: Meta<MenuComponent> = {
   parameters: {
     docs: { story: { height: '20rem' } },
   },
-  argTypes: {
-    placement: {
-      control: 'select',
-      options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'],
-    },
-    opened: { action: 'opened' },
-    closed: { action: 'closed' },
-  },
-  args: {
-    placement: 'bottom-start',
-    disabled: false,
-  },
+  argTypes: { ...MENU_KNOBS.argTypes },
+  args: { ...MENU_KNOBS.args },
 };
 
 export default meta;

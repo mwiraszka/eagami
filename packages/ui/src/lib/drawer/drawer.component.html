@@ -1,11 +1,13 @@
 <dialog
   #drawerEl
   class="ea-drawer"
+  [class.ea-drawer--animated]="animated()"
   [id]="id()"
   [attr.aria-label]="ariaLabel() ?? null"
   [attr.aria-labelledby]="!ariaLabel() ? id() + '-header' : null"
   (click)="handleBackdropClick($event)"
-  (cancel)="handleCancel($event)">
+  (cancel)="handleCancel($event)"
+  (close)="onDialogClose()">
   <div
     class="ea-drawer__panel"
     [ngClass]="panelClasses()">

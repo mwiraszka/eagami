@@ -1,46 +1,20 @@
-<web-ui-component-demo-layout slug="transfer-list">
-  <h2>{{ messages().ui.component.sectionHeadings.basic }}</h2>
-  <ea-transfer-list
-    [items]="roles()"
-    [sourceLabel]="messages().ui.component.demos.transferList.availableLabel"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withInitialValue }}</h2>
-  <ea-transfer-list
-    [items]="roles()"
-    [selectedIds]="['editor', 'viewer']"
-    [sourceLabel]="messages().ui.component.demos.transferList.availableLabel"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.withDisabledItem }}</h2>
-  <ea-transfer-list
-    [items]="roles()"
-    [selectedIds]="['owner']"
-    [sourceLabel]="messages().ui.component.demos.transferList.availableLabel"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.sizes }}</h2>
-  <ea-transfer-list
-    size="sm"
-    [items]="roles()"
-    [sourceLabel]="messages().ui.component.common.small"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-  <ea-transfer-list
-    size="md"
-    [items]="roles()"
-    [sourceLabel]="messages().ui.component.common.medium"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-  <ea-transfer-list
-    size="lg"
-    [items]="roles()"
-    [sourceLabel]="messages().ui.component.common.large"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel" />
-
-  <h2>{{ messages().ui.component.sectionHeadings.disabled }}</h2>
-  <ea-transfer-list
-    [items]="roles()"
-    [selectedIds]="['editor']"
-    [sourceLabel]="messages().ui.component.demos.transferList.availableLabel"
-    [targetLabel]="messages().ui.component.demos.transferList.assignedLabel"
-    [disabled]="true" />
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-transfer-list
+      [items]="items()"
+      [(selectedIds)]="selectedIds"
+      [size]="state().size"
+      [disabled]="state().disabled"
+      [sourceLabel]="state().sourceLabel || undefined"
+      [targetLabel]="state().targetLabel || undefined" />
+  </web-component-playground>
 </web-ui-component-demo-layout>

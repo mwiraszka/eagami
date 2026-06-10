@@ -136,6 +136,8 @@ import { GitlabIconComponent } from './gitlab.component';
 import { GlobeIconComponent } from './globe.component';
 import { GoogleIconComponent } from './google.component';
 import { GridIconComponent } from './grid.component';
+import { HalfCircleIconComponent } from './half-circle.component';
+import { HalfHeartIconComponent } from './half-heart.component';
 import { HardDriveIconComponent } from './hard-drive.component';
 import { HashIconComponent } from './hash.component';
 import { HeadphonesIconComponent } from './headphones.component';
@@ -479,6 +481,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     GlobeIconComponent,
     GoogleIconComponent,
     GridIconComponent,
+    HalfCircleIconComponent,
+    HalfHeartIconComponent,
     HardDriveIconComponent,
     HashIconComponent,
     HeadphonesIconComponent,

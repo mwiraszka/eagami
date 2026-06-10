@@ -1,42 +1,18 @@
-<web-ui-component-demo-layout slug="tooltip">
-  @if (!canHover()) {
-    <ea-alert variant="info">
-      {{ messages().ui.component.demos.alert.tooltipSuppressed }}
-    </ea-alert>
-  }
-  <h2>{{ messages().ui.component.sectionHeadings.positions }}</h2>
-  <div class="demo-tooltip-grid">
-    <div class="demo-tooltip-cell">
-      <ea-button
-        [eaTooltip]="messages().ui.component.demos.tooltip.topTooltip"
-        tooltipPosition="top"
-        [disabled]="!canHover()">
-        {{ messages().ui.component.demos.tooltip.topLabel }}
-      </ea-button>
-    </div>
-    <div class="demo-tooltip-cell">
-      <ea-button
-        [eaTooltip]="messages().ui.component.demos.tooltip.bottomTooltip"
-        tooltipPosition="bottom"
-        [disabled]="!canHover()">
-        {{ messages().ui.component.demos.tooltip.bottomLabel }}
-      </ea-button>
-    </div>
-    <div class="demo-tooltip-cell">
-      <ea-button
-        [eaTooltip]="messages().ui.component.demos.tooltip.leftTooltip"
-        tooltipPosition="left"
-        [disabled]="!canHover()">
-        {{ messages().ui.component.demos.tooltip.leftLabel }}
-      </ea-button>
-    </div>
-    <div class="demo-tooltip-cell">
-      <ea-button
-        [eaTooltip]="messages().ui.component.demos.tooltip.rightTooltip"
-        tooltipPosition="right"
-        [disabled]="!canHover()">
-        {{ messages().ui.component.demos.tooltip.rightLabel }}
-      </ea-button>
-    </div>
-  </div>
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-button
+      [eaTooltip]="state().eaTooltip"
+      [tooltipPosition]="state().tooltipPosition"
+      [maxWidth]="state().maxWidth">
+      Hover or focus me
+    </ea-button>
+  </web-component-playground>
 </web-ui-component-demo-layout>
