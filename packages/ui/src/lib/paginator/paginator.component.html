@@ -1,5 +1,6 @@
 <div
   class="ea-paginator"
+  [ngClass]="'ea-paginator--' + size()"
   [class.ea-paginator--left]="align() === 'left'"
   [class.ea-paginator--center]="align() === 'center'"
   [class.ea-paginator--disabled]="disabled()"
@@ -17,11 +18,11 @@
         id="ea-paginator-size"
         [disabled]="disabled()"
         (change)="onPageSizeChange($event)">
-        @for (size of pageSizeOptions(); track size) {
+        @for (option of pageSizeOptions(); track option) {
           <option
-            [value]="size"
-            [selected]="size === pageSize()">
-            {{ size }}
+            [value]="option"
+            [selected]="option === pageSize()">
+            {{ formatNumber(option) }}
           </option>
         }
       </select>
@@ -30,14 +31,22 @@
 
   @if (showRangeLabel()) {
     <span class="ea-paginator__range">
-      {{ i18n.messages().paginator.range(rangeStart(), rangeEnd(), totalItems()) }}
+      {{
+        i18n
+          .messages()
+          .paginator.range(
+            formatNumber(rangeStart()),
+            formatNumber(rangeEnd()),
+            formatNumber(totalItems())
+          )
+      }}
     </span>
   }
 
   <div class="ea-paginator__controls">
     <ea-button
       variant="ghost"
-      size="sm"
+      [size]="size()"
       [disabled]="disabled() || !canGoPrev()"
       [aria-label]="i18n.messages().paginator.previousPage"
       (clicked)="prevPage()">
@@ -52,18 +61,18 @@
           class="ea-paginator__page-btn"
           [class.ea-paginator__page-btn--active]="p === page()"
           variant="ghost"
-          size="sm"
+          [size]="size()"
           [disabled]="disabled()"
           [aria-current]="p === page() ? 'page' : undefined"
           (clicked)="goToPage(p)">
-          {{ p }}
+          {{ formatNumber(p) }}
         </ea-button>
       }
     }
 
     <ea-button
       variant="ghost"
-      size="sm"
+      [size]="size()"
       [disabled]="disabled() || !canGoNext()"
       [aria-label]="i18n.messages().paginator.nextPage"
       (clicked)="nextPage()">

@@ -120,7 +120,7 @@ export interface EagamiMessages {
   paginator: {
     label: string;
     rowsPerPage: string;
-    range: (start: number, end: number, total: number) => string;
+    range: (start: string, end: string, total: string) => string;
     previousPage: string;
     nextPage: string;
   };

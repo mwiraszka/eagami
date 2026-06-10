@@ -11,8 +11,13 @@ export const PAGINATOR_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['left', 'center', 'right'],
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     showPageSizeSelector: { control: 'boolean' },
     showRangeLabel: { control: 'boolean' },
+    groupThousands: { control: 'boolean' },
     disabled: { control: 'boolean' },
     totalItems: { control: 'number', min: 0, max: 1000000, maxLength: 7 },
     changed: { action: 'changed' },
@@ -20,8 +25,10 @@ export const PAGINATOR_KNOBS: ComponentKnobs = {
   args: {
     totalItems: 100,
     align: 'right',
+    size: 'md',
     showPageSizeSelector: true,
     showRangeLabel: true,
+    groupThousands: true,
     disabled: false,
   },
 };
