@@ -12,9 +12,11 @@ export const TOOLTIP_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['top', 'bottom', 'left', 'right'],
     },
+    maxWidth: { control: 'number', min: 50, max: 400, maxLength: 3 },
   },
   args: {
     eaTooltip: 'Tooltips add extra context on hover or focus',
     tooltipPosition: 'top',
+    maxWidth: 200,
   },
 };
