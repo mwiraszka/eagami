@@ -9,53 +9,23 @@
 .ea-multi-select {
   position: relative;
 
+  // The wrapper owns the bordered box and all field states so the clear button
+  // and chevron can sit beside the chips as always-visible siblings, outside the
+  // scrolling combobox; size sets only the font-size, every dimension is em-based.
   &__trigger-wrapper {
     position: relative;
-
-    &--xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &--sm {
-      font-size: var(--font-size-sm);
-    }
-
-    &--md {
-      font-size: var(--font-size-md);
-    }
-
-    &--lg {
-      font-size: var(--font-size-lg);
-    }
-
-    &--xl {
-      font-size: var(--font-size-xl);
-    }
-  }
-
-  &__trigger {
     display: flex;
     align-items: center;
     gap: 0.5em;
     width: 100%;
     min-height: 2.5em;
     padding: 0.375em 0.75em;
-    text-align: left;
-    font-family: var(--font-family-sans);
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
-    cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
 
-    &:focus-visible {
-      outline: none;
-      box-shadow: var(--shadow-focus-ring);
-    }
-
-    // Size sets only the font-size; padding, gap, min-height, and embedded icons
-    // are em-based, so the trigger scales entirely from this one knob.
     &--xs {
       font-size: var(--font-size-xs);
     }
@@ -76,33 +46,63 @@
       font-size: var(--font-size-xl);
     }
 
-    &--open {
+    &:has(.ea-multi-select__trigger:focus-visible) {
+      box-shadow: var(--shadow-focus-ring);
+    }
+
+    &:has(.ea-multi-select__trigger--open) {
       border-color: var(--color-border-focus);
       box-shadow: var(--shadow-focus-ring);
     }
 
-    &--error {
+    &:has(.ea-multi-select__trigger--error) {
       border-color: var(--color-error-default);
-
-      &.ea-multi-select__trigger--open {
-        box-shadow: var(--shadow-focus-ring-error);
-      }
     }
 
-    &--disabled {
+    &:has(.ea-multi-select__trigger--error.ea-multi-select__trigger--open) {
+      box-shadow: var(--shadow-focus-ring-error);
+    }
+
+    &:has(.ea-multi-select__trigger--disabled) {
       background-color: var(--color-bg-muted);
       opacity: 0.6;
       cursor: not-allowed;
     }
   }
 
+  &__trigger {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    font-family: var(--font-family-sans);
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  // Chips stay on one row and scroll horizontally instead of wrapping, so the
+  // box height stays fixed no matter how many options are selected.
   &__trigger-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: var(--space-1);
     flex: 1;
     min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+
+    ea-tag {
+      flex-shrink: 0;
+    }
   }
 
   &__trigger-placeholder {
@@ -114,15 +114,17 @@
     width: 1em;
     height: 1em;
     color: var(--color-text-secondary);
+    cursor: pointer;
     transition: var(--transition-transform);
   }
 
-  &__trigger--open &__trigger-icon {
+  &__trigger-wrapper:has(&__trigger--open) &__trigger-icon {
     transform: rotate(180deg);
   }
 
   &__more {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     padding: 0 var(--space-1-5);
     border-radius: var(--radius-lg);
@@ -134,11 +136,7 @@
 
   &__clear {
     @include ea.icon-button;
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    right: calc(1em + var(--space-5));
-    transform: translateY(-50%);
+    flex-shrink: 0;
   }
 
   &__clear-icon {

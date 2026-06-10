@@ -16,7 +16,7 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
-    maxVisibleChips: { control: 'number', min: 1, max: 10, maxLength: 2 },
+    maxVisibleChips: { control: 'number', min: 0, max: 10, maxLength: 2 },
     changed: { action: 'changed' },
   },
   args: {
@@ -27,6 +27,6 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
-    maxVisibleChips: 3,
+    maxVisibleChips: 0,
   },
 };
