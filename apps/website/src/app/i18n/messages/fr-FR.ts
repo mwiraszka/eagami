@@ -579,6 +579,7 @@ export const frFR: WebMessages = {
           rightLabel: 'Droite',
         },
         drawer: {
+          openButton: 'Ouvrir le tiroir',
           rightButton: 'Droite',
           leftButton: 'Gauche',
           topButton: 'Haut',
@@ -788,8 +789,8 @@ export const frFR: WebMessages = {
           rightTooltip: 'Infobulle à droite',
         },
         transferList: {
-          availableLabel: 'Disponibles',
-          assignedLabel: 'Attribués',
+          sourceLabel: 'Disponibles',
+          targetLabel: 'Sélectionnés',
           roleAdmin: 'Administrateur',
           roleEditor: 'Éditeur',
           roleViewer: 'Lecteur',
@@ -841,6 +842,9 @@ export const frFR: WebMessages = {
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
+          tooltip: {
+            eaTooltip: "Contenu de l'infobulle",
+          },
           input: {
             label: 'Libellé',
             placeholder: 'Texte indicatif',
@@ -1024,6 +1028,10 @@ export const frFR: WebMessages = {
           },
         },
         descriptions: {
+          toast: {
+            position: 'Coin ou bord de la fenêtre où la pile de toasts est ancrée.',
+            clearable: 'Affiche un bouton de fermeture sur chaque toast.',
+          },
           input: {
             label: 'Libellé affiché au-dessus du champ.',
             type: 'Type natif du champ (password ajoute un bouton afficher/masquer intégré).',
@@ -1200,6 +1208,9 @@ export const frFR: WebMessages = {
             icon: "Composant d'icône optionnel rendu dans la zone média au-dessus du titre.",
           },
           paginator: {
+            groupThousands:
+              'Groupe les milliers par des virgules dans la plage et les numéros de page.',
+            size: 'Taille visuelle du paginateur et de ses contrôles.',
             align:
               'Alignement horizontal des contrôles du paginateur au sein de leur conteneur.',
             disabled: 'Désactive tous les contrôles du paginateur.',
@@ -1431,6 +1442,8 @@ export const frFR: WebMessages = {
             menu: "L'instance ea-menu que ce déclencheur contrôle.",
           },
           tooltip: {
+            maxWidth:
+              'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px).',
             eaTooltip:
               "Contenu textuel de l'infobulle affichée au survol et au focus clavier.",
             tooltipPosition: "Position de l'infobulle par rapport à son élément hôte.",
@@ -1742,6 +1755,7 @@ export const frFR: WebMessages = {
               "Émis lorsqu'un élément du fil d'Ariane non désactivé et non final est activé.",
           },
           drawer: {
+            animated: "Fait glisser le panneau depuis son bord à l'ouverture du tiroir.",
             ariaLabel:
               "Libellé accessible du panneau du tiroir lorsque son titre n'est pas suffisamment descriptif.",
             closeOnBackdrop:
@@ -1942,9 +1956,9 @@ export const frFR: WebMessages = {
           { value: 'date', label: 'Datte' },
         ],
         viewOptions: [
-          { value: 'list', label: 'Liste' },
-          { value: 'grid', label: 'Grille' },
-          { value: 'kanban', label: 'Kanban' },
+          { value: 'day', label: 'Jour' },
+          { value: 'week', label: 'Semaine' },
+          { value: 'month', label: 'Mois' },
         ],
         themeOptions: [
           { value: 'light', label: 'Clair' },

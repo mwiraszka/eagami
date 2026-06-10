@@ -11,7 +11,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-button (clicked)="open.set(true)">
-      {{ messages().ui.component.demos.drawer.rightButton }}
+      {{ messages().ui.component.demos.drawer.openButton }}
     </ea-button>
     <ea-drawer
       [(open)]="open"
@@ -19,6 +19,7 @@
       [width]="state().width"
       [closeOnBackdrop]="state().closeOnBackdrop"
       [closeOnEscape]="state().closeOnEscape"
+      [animated]="state().animated"
       [showClose]="state().showClose">
       <span slot="header">{{ messages().ui.component.demos.drawer.rightTitle }}</span>
       <p>{{ messages().ui.component.demos.drawer.rightBody }}</p>

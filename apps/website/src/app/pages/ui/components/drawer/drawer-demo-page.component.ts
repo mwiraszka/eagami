@@ -24,6 +24,7 @@ interface DrawerKnobState {
   width: DrawerWidth;
   closeOnBackdrop: boolean;
   closeOnEscape: boolean;
+  animated: boolean;
   showClose: boolean;
 }
 

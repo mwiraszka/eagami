@@ -9,10 +9,13 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-paginator
+      class="playground-fill"
       [totalItems]="state().totalItems"
       [align]="state().align"
+      [size]="state().size"
       [showPageSizeSelector]="state().showPageSizeSelector"
       [showRangeLabel]="state().showRangeLabel"
+      [groupThousands]="state().groupThousands"
       [disabled]="state().disabled" />
   </web-component-playground>
 </web-ui-component-demo-layout>

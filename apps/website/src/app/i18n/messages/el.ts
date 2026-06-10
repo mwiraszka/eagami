@@ -575,6 +575,7 @@ export const el: WebMessages = {
           rightLabel: 'Δεξιά',
         },
         drawer: {
+          openButton: 'Άνοιγμα συρταριού',
           rightButton: 'Δεξιά',
           leftButton: 'Αριστερά',
           topButton: 'Πάνω',
@@ -786,8 +787,8 @@ export const el: WebMessages = {
           rightTooltip: 'Υπόδειξη δεξιά',
         },
         transferList: {
-          availableLabel: 'Διαθέσιμοι',
-          assignedLabel: 'Ανατεθειμένοι',
+          sourceLabel: 'Διαθέσιμα',
+          targetLabel: 'Επιλεγμένα',
           roleAdmin: 'Διαχειριστής',
           roleEditor: 'Συντάκτης',
           roleViewer: 'Αναγνώστης',
@@ -839,6 +840,9 @@ export const el: WebMessages = {
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },
         knobLabels: {
+          tooltip: {
+            eaTooltip: 'Περιεχόμενο επεξήγησης',
+          },
           input: {
             label: 'Ετικέτα',
             placeholder: 'Κείμενο υποδείγματος',
@@ -1022,6 +1026,11 @@ export const el: WebMessages = {
           },
         },
         descriptions: {
+          toast: {
+            position:
+              'Γωνία ή άκρη της προβολής όπου είναι αγκυρωμένη η στοίβα ειδοποιήσεων.',
+            clearable: 'Εμφανίζει κουμπί απόρριψης σε κάθε ειδοποίηση.',
+          },
           input: {
             label: 'Ετικέτα που εμφανίζεται πάνω από το πεδίο.',
             type: 'Εγγενής τύπος του πεδίου (το password προσθέτει ενσωματωμένο κουμπί εμφάνισης/απόκρυψης).',
@@ -1201,6 +1210,9 @@ export const el: WebMessages = {
             icon: 'Προαιρετικό συστατικό εικονιδίου που αποδίδεται στην περιοχή πολυμέσων πάνω από τον τίτλο.',
           },
           paginator: {
+            groupThousands:
+              'Ομαδοποιεί τις χιλιάδες με κόμματα στο εύρος και τους αριθμούς σελίδων.',
+            size: 'Οπτικό μέγεθος της σελιδοποίησης και των στοιχείων ελέγχου της.',
             align:
               'Οριζόντια στοίχιση των στοιχείων ελέγχου σελιδοποίησης εντός του περιέκτη τους.',
             disabled: 'Απενεργοποιεί όλα τα στοιχεία ελέγχου σελιδοποίησης.',
@@ -1442,6 +1454,8 @@ export const el: WebMessages = {
             menu: 'Το στιγμιότυπο ea-menu που ελέγχει αυτός ο ενεργοποιητής.',
           },
           tooltip: {
+            maxWidth:
+              'Μέγιστο πλάτος σε pixel· το κείμενο αναδιπλώνεται σε αυτό το πλάτος (ελάχιστο 50px).',
             eaTooltip:
               'Κείμενο της υπόδειξης που εμφανίζεται κατά την αιώρηση και την εστίαση πληκτρολογίου.',
             tooltipPosition: 'Τοποθέτηση της υπόδειξης σε σχέση με το στοιχείο ξενιστή.',
@@ -1756,6 +1770,8 @@ export const el: WebMessages = {
               'Εκπέμπεται όταν ενεργοποιείται ένα στοιχείο breadcrumb που δεν είναι απενεργοποιημένο ούτε τελευταίο.',
           },
           drawer: {
+            animated:
+              'Κάνει το πάνελ να εισέρχεται ολισθαίνοντας από την άκρη του όταν ανοίγει το συρτάρι.',
             ariaLabel:
               'Προσβάσιμη ετικέτα για τον πίνακα του συρταριού όταν η επικεφαλίδα του δεν είναι αρκετά περιγραφική.',
             closeOnBackdrop: 'Κλείνει το συρτάρι όταν ο χρήστης κάνει κλικ στο υπόβαθρο.',
@@ -1952,9 +1968,9 @@ export const el: WebMessages = {
           { value: 'date', label: 'Χουρμάς' },
         ],
         viewOptions: [
-          { value: 'list', label: 'Λίστα' },
-          { value: 'grid', label: 'Πλέγμα' },
-          { value: 'kanban', label: 'Kanban' },
+          { value: 'day', label: 'Ημέρα' },
+          { value: 'week', label: 'Εβδομάδα' },
+          { value: 'month', label: 'Μήνας' },
         ],
         themeOptions: [
           { value: 'light', label: 'Φωτεινό' },

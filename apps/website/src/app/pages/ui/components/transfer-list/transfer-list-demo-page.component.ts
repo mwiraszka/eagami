@@ -48,12 +48,7 @@ export class TransferListDemoPageComponent {
 
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['transfer-list'], UI_API[SLUG]);
-  protected readonly state = signal<TransferListKnobState>(
-    initialKnobState(
-      this.knobs,
-      PLAYGROUND_KNOBS['transfer-list'],
-    ) as TransferListKnobState,
-  );
+  protected readonly state = signal<TransferListKnobState>(this.initialState());
 
   protected readonly extraAttributes = ['[items]="items"'];
 
@@ -73,17 +68,34 @@ export class TransferListDemoPageComponent {
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(
-      current => ({ ...current, [name]: value }) as TransferListKnobState,
+      current =>
+        ({ ...current, [name]: this.coerceLabel(name, value) }) as TransferListKnobState,
     );
   }
 
   protected reset(): void {
     this.selectedIds.set([]);
-    this.state.set(
-      initialKnobState(
-        this.knobs,
-        PLAYGROUND_KNOBS['transfer-list'],
-      ) as TransferListKnobState,
-    );
+    this.state.set(this.initialState());
+  }
+
+  // Seed the label knobs with the component's resolved defaults so the controls
+  // read the same values the demo card shows, rather than starting blank.
+  private initialState(): TransferListKnobState {
+    const base = initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['transfer-list'],
+    ) as TransferListKnobState;
+    const m = this.messages().ui.component.demos.transferList;
+    return { ...base, sourceLabel: m.sourceLabel, targetLabel: m.targetLabel };
+  }
+
+  // Clearing a label field would otherwise fall back to the component's own
+  // default; reinstate it in the control too so the field always matches the card.
+  private coerceLabel(name: string, value: KnobValue): KnobValue {
+    if ((name === 'sourceLabel' || name === 'targetLabel') && value === '') {
+      const m = this.messages().ui.component.demos.transferList;
+      return name === 'sourceLabel' ? m.sourceLabel : m.targetLabel;
+    }
+    return value;
   }
 }

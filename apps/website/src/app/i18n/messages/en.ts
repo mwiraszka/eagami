@@ -568,6 +568,7 @@ export const en: WebMessages = {
           rightLabel: 'Right',
         },
         drawer: {
+          openButton: 'Open Drawer',
           rightButton: 'Right',
           leftButton: 'Left',
           topButton: 'Top',
@@ -768,8 +769,8 @@ export const en: WebMessages = {
           rightTooltip: 'Right tooltip',
         },
         transferList: {
-          availableLabel: 'Available',
-          assignedLabel: 'Assigned',
+          sourceLabel: 'Available',
+          targetLabel: 'Selected',
           roleAdmin: 'Admin',
           roleEditor: 'Editor',
           roleViewer: 'Viewer',
@@ -821,6 +822,9 @@ export const en: WebMessages = {
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
+          tooltip: {
+            eaTooltip: 'Tooltip Content',
+          },
           input: {
             label: 'Label',
             placeholder: 'Placeholder',
@@ -1004,6 +1008,10 @@ export const en: WebMessages = {
           },
         },
         descriptions: {
+          toast: {
+            position: 'Viewport corner or edge the toast stack is pinned to.',
+            clearable: 'Show a dismiss button on each toast.',
+          },
           input: {
             label: 'Text label rendered above the field.',
             type: 'Native input type (password adds a built-in show/hide toggle).',
@@ -1169,6 +1177,8 @@ export const en: WebMessages = {
             icon: 'Optional icon component rendered in the media area above the title.',
           },
           paginator: {
+            groupThousands: 'Groups thousands with commas in the range and page numbers.',
+            size: 'Visual size of the paginator and its controls.',
             align:
               'Horizontal alignment of the paginator controls within their container.',
             disabled: 'Disables all paginator controls.',
@@ -1386,6 +1396,8 @@ export const en: WebMessages = {
             menu: 'The ea-menu instance this trigger controls.',
           },
           tooltip: {
+            maxWidth:
+              'Maximum width in pixels; the text wraps at this width (50px floor).',
             eaTooltip: 'Text content of the tooltip shown on hover and keyboard focus.',
             tooltipPosition: 'Placement of the tooltip relative to its host element.',
           },
@@ -1664,6 +1676,7 @@ export const en: WebMessages = {
             clicked: 'Fires when a non-disabled, non-final breadcrumb is activated.',
           },
           drawer: {
+            animated: 'Slides the panel in from its edge when the drawer opens.',
             ariaLabel:
               'Accessible label for the drawer panel when its heading is not descriptive enough.',
             closeOnBackdrop: 'Closes the drawer when the user clicks the backdrop.',
@@ -1847,9 +1860,9 @@ export const en: WebMessages = {
           { value: 'date', label: 'Date' },
         ],
         viewOptions: [
-          { value: 'list', label: 'List' },
-          { value: 'grid', label: 'Grid' },
-          { value: 'kanban', label: 'Kanban' },
+          { value: 'day', label: 'Day' },
+          { value: 'week', label: 'Week' },
+          { value: 'month', label: 'Month' },
         ],
         themeOptions: [
           { value: 'light', label: 'Light' },

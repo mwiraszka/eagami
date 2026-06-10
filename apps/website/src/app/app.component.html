@@ -11,4 +11,6 @@
   <router-outlet />
 </main>
 <web-footer />
-<ea-toast />
+<ea-toast
+  [position]="toastOutlet.position()"
+  [clearable]="toastOutlet.clearable()" />

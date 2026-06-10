@@ -12,7 +12,8 @@
     (resetClicked)="reset()">
     <ea-button
       [eaMenuTrigger]="menuRef"
-      variant="secondary">
+      variant="secondary"
+      [disabled]="state().disabled">
       {{ messages().ui.component.demos.menu.actions }}
     </ea-button>
     <ea-menu

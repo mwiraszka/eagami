@@ -571,6 +571,7 @@ export const esES: WebMessages = {
           rightLabel: 'Derecha',
         },
         drawer: {
+          openButton: 'Abrir cajón',
           rightButton: 'Derecha',
           leftButton: 'Izquierda',
           topButton: 'Arriba',
@@ -779,8 +780,8 @@ export const esES: WebMessages = {
           rightTooltip: 'Descripción derecha',
         },
         transferList: {
-          availableLabel: 'Disponibles',
-          assignedLabel: 'Asignados',
+          sourceLabel: 'Disponibles',
+          targetLabel: 'Seleccionados',
           roleAdmin: 'Administrador',
           roleEditor: 'Editor',
           roleViewer: 'Lector',
@@ -832,6 +833,9 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          tooltip: {
+            eaTooltip: 'Contenido del tooltip',
+          },
           input: {
             label: 'Etiqueta',
             placeholder: 'Marcador de posición',
@@ -1015,6 +1019,10 @@ export const esES: WebMessages = {
           },
         },
         descriptions: {
+          toast: {
+            position: 'Esquina o borde de la ventana donde se ancla la pila de toasts.',
+            clearable: 'Muestra un botón de cierre en cada toast.',
+          },
           input: {
             label: 'Etiqueta mostrada encima del campo.',
             type: 'Tipo nativo del campo (password añade un botón de mostrar/ocultar integrado).',
@@ -1196,6 +1204,9 @@ export const esES: WebMessages = {
             icon: 'Componente de icono opcional renderizado en el área de medios encima del título.',
           },
           paginator: {
+            groupThousands:
+              'Agrupa los millares con comas en el rango y los números de página.',
+            size: 'Tamaño visual del paginador y sus controles.',
             align:
               'Alineación horizontal de los controles del paginador dentro de su contenedor.',
             disabled: 'Deshabilita todos los controles del paginador.',
@@ -1436,6 +1447,8 @@ export const esES: WebMessages = {
             menu: 'La instancia ea-menu que controla este disparador.',
           },
           tooltip: {
+            maxWidth:
+              'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px).',
             eaTooltip:
               'Contenido de texto de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado.',
             tooltipPosition:
@@ -1750,6 +1763,7 @@ export const esES: WebMessages = {
               'Se emite cuando se activa una miga de pan que no está deshabilitada ni es la última.',
           },
           drawer: {
+            animated: 'Desliza el panel desde su borde al abrir el cajón.',
             ariaLabel:
               'Etiqueta accesible para el panel del cajón cuando su encabezado no es lo bastante descriptivo.',
             closeOnBackdrop: 'Cierra el cajón cuando el usuario hace clic en el fondo.',
@@ -1945,9 +1959,9 @@ export const esES: WebMessages = {
           { value: 'date', label: 'Dátil' },
         ],
         viewOptions: [
-          { value: 'list', label: 'Lista' },
-          { value: 'grid', label: 'Cuadrícula' },
-          { value: 'kanban', label: 'Kanban' },
+          { value: 'day', label: 'Día' },
+          { value: 'week', label: 'Semana' },
+          { value: 'month', label: 'Mes' },
         ],
         themeOptions: [
           { value: 'light', label: 'Claro' },

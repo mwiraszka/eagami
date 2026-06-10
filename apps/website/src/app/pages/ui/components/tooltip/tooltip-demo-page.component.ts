@@ -18,6 +18,7 @@ interface TooltipKnobState {
   [key: string]: KnobValue;
   eaTooltip: string;
   tooltipPosition: TooltipPosition;
+  maxWidth: number;
 }
 
 const SLUG = 'tooltip';
