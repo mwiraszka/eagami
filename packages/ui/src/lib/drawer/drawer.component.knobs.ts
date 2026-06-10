@@ -18,6 +18,7 @@ export const DRAWER_KNOBS: ComponentKnobs = {
     },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },
+    animated: { control: 'boolean' },
     showClose: { control: 'boolean' },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
@@ -27,6 +28,7 @@ export const DRAWER_KNOBS: ComponentKnobs = {
     width: 'md',
     closeOnBackdrop: true,
     closeOnEscape: true,
+    animated: true,
     showClose: true,
   },
 };

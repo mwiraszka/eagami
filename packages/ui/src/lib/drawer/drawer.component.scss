@@ -20,6 +20,27 @@
     background-color: var(--color-bg-overlay);
   }
 
+  // Slide the panel in from its edge on open; the backdrop fades alongside it.
+  // Durations come from motion tokens, so reduced-motion users get them at 0ms.
+  &--animated[open] {
+    &::backdrop {
+      animation: ea-drawer-backdrop-in var(--duration-slow) var(--ease-out);
+    }
+
+    .ea-drawer__panel--right {
+      animation: ea-drawer-slide-right var(--duration-slow) var(--ease-out);
+    }
+    .ea-drawer__panel--left {
+      animation: ea-drawer-slide-left var(--duration-slow) var(--ease-out);
+    }
+    .ea-drawer__panel--top {
+      animation: ea-drawer-slide-top var(--duration-slow) var(--ease-out);
+    }
+    .ea-drawer__panel--bottom {
+      animation: ea-drawer-slide-bottom var(--duration-slow) var(--ease-out);
+    }
+  }
+
   &__panel {
     position: absolute;
     display: flex;
@@ -131,6 +152,41 @@
         height: calc(100vh - 3rem);
       }
     }
+
+    // Top and bottom drawers are height-bound, so trim the vertical padding at the
+    // smaller sizes to keep the header, body, and footer from being clipped.
+    &--top,
+    &--bottom {
+      &.ea-drawer__panel--sm {
+        .ea-drawer__header {
+          padding-top: var(--space-3);
+        }
+
+        .ea-drawer__body {
+          padding-block: var(--space-2);
+        }
+
+        .ea-drawer__footer {
+          padding-bottom: var(--space-3);
+        }
+      }
+
+      &.ea-drawer__panel--xs {
+        .ea-drawer__header {
+          padding-top: var(--space-2);
+          padding-bottom: var(--space-1);
+        }
+
+        .ea-drawer__body {
+          padding-block: var(--space-1);
+        }
+
+        .ea-drawer__footer {
+          padding-top: var(--space-1);
+          padding-bottom: var(--space-2);
+        }
+      }
+    }
   }
 
   &__close {
@@ -184,5 +240,35 @@
     &:empty {
       display: none;
     }
+  }
+}
+
+@keyframes ea-drawer-slide-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes ea-drawer-slide-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ea-drawer-slide-top {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes ea-drawer-slide-bottom {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes ea-drawer-backdrop-in {
+  from {
+    opacity: 0;
   }
 }
