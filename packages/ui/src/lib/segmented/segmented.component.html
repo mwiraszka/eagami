@@ -1,4 +1,6 @@
-<div class="ea-segmented-field">
+<div
+  class="ea-segmented-field"
+  [class.ea-segmented-field--full-width]="fullWidth()">
   @if (label(); as labelText) {
     <ea-field-label
       [text]="labelText"

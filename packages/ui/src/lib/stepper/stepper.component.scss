@@ -25,20 +25,15 @@
     font-size: var(--font-size-xl);
   }
 
+  // Buttons and connectors are flat siblings with one shared gap, so every step
+  // is spaced identically and the connectors all render at the same length.
   &__list {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: var(--space-2);
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    min-width: 0;
   }
 
   &__button {
@@ -135,7 +130,6 @@
     align-self: center;
     min-width: var(--space-4);
     height: var(--border-width-thin);
-    margin: 0 var(--space-2);
     background-color: var(--color-border-default);
     transition: var(--transition-colors);
 

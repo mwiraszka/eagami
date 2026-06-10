@@ -1,7 +1,18 @@
+// The control is shrink-to-fit by default; full width has to stretch the inline
+// host and field too, not just the inner group, or it has no room to expand.
+:host(.ea-segmented-host--full-width) {
+  display: block;
+  width: 100%;
+}
+
 .ea-segmented-field {
   display: inline-flex;
   flex-direction: column;
   gap: var(--space-1-5);
+
+  &--full-width {
+    width: 100%;
+  }
 }
 
 .ea-segmented {

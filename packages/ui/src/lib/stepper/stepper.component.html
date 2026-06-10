@@ -6,46 +6,44 @@
     role="tablist"
     (keydown)="handleKeydown($event)">
     @for (step of registeredSteps(); let i = $index; track step) {
-      <div class="ea-stepper__item">
-        <button
-          type="button"
-          role="tab"
-          class="ea-stepper__button"
-          [class.ea-stepper__button--active]="i === activeStep()"
-          [class.ea-stepper__button--completed]="step.completed()"
-          [id]="step.id() + '-tab'"
-          [attr.aria-controls]="step.id() + '-panel'"
-          [attr.aria-selected]="i === activeStep()"
-          [attr.aria-current]="i === activeStep() ? 'step' : null"
-          [disabled]="!canNavigateTo(i)"
-          [tabindex]="i === activeStep() ? 0 : -1"
-          (click)="selectStep(i)">
-          <span
-            class="ea-stepper__circle"
-            aria-hidden="true">
-            @if (step.completed()) {
-              <ea-icon-check />
-            } @else {
-              {{ i + 1 }}
-            }
-          </span>
-          <span class="ea-stepper__label">
-            {{ step.label() }}
-            @if (step.optional()) {
-              <span class="ea-stepper__optional">
-                ({{ i18n.messages().stepper.optional }})
-              </span>
-            }
-          </span>
-        </button>
-        @if (i < registeredSteps().length - 1) {
-          <span
-            class="ea-stepper__connector"
-            [class.ea-stepper__connector--completed]="step.completed()"
-            aria-hidden="true">
-          </span>
-        }
-      </div>
+      <button
+        type="button"
+        role="tab"
+        class="ea-stepper__button"
+        [class.ea-stepper__button--active]="i === activeStep()"
+        [class.ea-stepper__button--completed]="step.completed()"
+        [id]="step.id() + '-tab'"
+        [attr.aria-controls]="step.id() + '-panel'"
+        [attr.aria-selected]="i === activeStep()"
+        [attr.aria-current]="i === activeStep() ? 'step' : null"
+        [disabled]="!canNavigateTo(i)"
+        [tabindex]="i === activeStep() ? 0 : -1"
+        (click)="selectStep(i)">
+        <span
+          class="ea-stepper__circle"
+          aria-hidden="true">
+          @if (step.completed()) {
+            <ea-icon-check />
+          } @else {
+            {{ i + 1 }}
+          }
+        </span>
+        <span class="ea-stepper__label">
+          {{ step.label() }}
+          @if (step.optional()) {
+            <span class="ea-stepper__optional">
+              ({{ i18n.messages().stepper.optional }})
+            </span>
+          }
+        </span>
+      </button>
+      @if (i < registeredSteps().length - 1) {
+        <span
+          class="ea-stepper__connector"
+          [class.ea-stepper__connector--completed]="step.completed()"
+          aria-hidden="true">
+        </span>
+      }
     }
   </div>
   <ng-content />
