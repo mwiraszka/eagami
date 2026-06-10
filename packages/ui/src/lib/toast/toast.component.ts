@@ -2,12 +2,23 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  computed,
   inject,
+  input,
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 import { type Toast, ToastService } from './toast.service';
+
+/** Corner or edge of the viewport the toast stack is pinned to. */
+export type ToastPosition =
+  | 'top-left'
+  | 'top'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom'
+  | 'bottom-right';
 
 /**
  * Outlet that renders the stack of active toasts produced by
@@ -25,6 +36,15 @@ import { type Toast, ToastService } from './toast.service';
 export class ToastComponent {
   protected readonly toastService = inject(ToastService);
   protected readonly i18n = inject(EagamiI18nService);
+
+  /** Viewport corner or edge the toast stack is pinned to. */
+  readonly position = input<ToastPosition>('bottom-right');
+  /** Show a dismiss button on each toast. */
+  readonly clearable = input<boolean>(true);
+
+  protected readonly containerClass = computed(
+    () => `ea-toast-container ea-toast-container--${this.position()}`,
+  );
 
   protected getRole(toast: Toast): 'alert' | 'status' {
     return toast.variant === 'error' || toast.variant === 'warning' ? 'alert' : 'status';

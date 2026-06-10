@@ -1,12 +1,20 @@
 import type { ComponentKnobs } from '../../playground-knobs.types';
 
 /**
- * Knob spec for the Toast demo. `<ea-toast>` is the outlet only: toasts are
- * pushed through `ToastService`, so it exposes no inputs to knob. The demo drives
- * the playground with trigger buttons instead, and this empty spec keeps the
- * generated snippet to the bare `<ea-toast />` outlet.
+ * Knob spec for the Toast demo. `<ea-toast>` is the outlet: toasts are pushed
+ * through `ToastService`, while `position` and `clearable` configure the stack.
+ * The demo drives the playground with trigger buttons for each variant.
  */
 export const TOAST_KNOBS: ComponentKnobs = {
-  argTypes: {},
-  args: {},
+  argTypes: {
+    position: {
+      control: 'select',
+      options: ['top-left', 'top', 'top-right', 'bottom-left', 'bottom', 'bottom-right'],
+    },
+    clearable: { control: 'boolean' },
+  },
+  args: {
+    position: 'bottom-right',
+    clearable: true,
+  },
 };
