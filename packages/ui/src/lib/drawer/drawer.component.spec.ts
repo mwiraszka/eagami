@@ -4,7 +4,6 @@ import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   DrawerComponent,
   type DrawerPosition,
-  type DrawerSize,
   type DrawerWidth,
 } from './drawer.component';
 
@@ -26,7 +25,6 @@ beforeAll(() => {
       [(open)]="isOpen"
       [position]="position()"
       [width]="width()"
-      [size]="size()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
       [showClose]="showClose()">
@@ -39,8 +37,7 @@ beforeAll(() => {
 class TestHostComponent {
   isOpen = signal(false);
   position = signal<DrawerPosition>('right');
-  width = signal<DrawerWidth | undefined>(undefined);
-  size = signal<DrawerSize>('md');
+  width = signal<DrawerWidth>('md');
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
@@ -107,7 +104,7 @@ describe('DrawerComponent', () => {
     });
 
     it('applies different size classes', () => {
-      host.size.set('lg');
+      host.width.set('lg');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-drawer__panel--lg');
     });
@@ -116,14 +113,6 @@ describe('DrawerComponent', () => {
       host.width.set('xl');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-drawer__panel--xl');
-    });
-
-    it('prefers width over the deprecated size alias', () => {
-      host.size.set('sm');
-      host.width.set('lg');
-      fixture.detectChanges();
-      expect(getPanel().classList).toContain('ea-drawer__panel--lg');
-      expect(getPanel().classList).not.toContain('ea-drawer__panel--sm');
     });
   });
 

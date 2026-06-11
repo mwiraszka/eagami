@@ -22,8 +22,6 @@ import { uniqueId } from '../unique-id';
 export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
 /** Width of the drawer panel along its primary axis. */
 export type DrawerWidth = EaWidth;
-/** @deprecated Use `DrawerWidth` instead. Will be removed in v3.0.0. */
-export type DrawerSize = DrawerWidth;
 
 /**
  * Side panel backed by the native `<dialog>` element for browser-managed
@@ -45,11 +43,7 @@ export class DrawerComponent {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly position = input<DrawerPosition>('right');
-  readonly width = input<DrawerWidth | undefined>(undefined);
-  /**
-   * @deprecated Use `width` instead. Will be removed in v3.0.0.
-   */
-  readonly size = input<DrawerSize>('md');
+  readonly width = input<DrawerWidth>('md');
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   /** Slide the panel in from its edge when the drawer opens. */
@@ -65,12 +59,9 @@ export class DrawerComponent {
   /** Fires when the drawer closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
-  /** Effective panel width, preferring `width` over the deprecated `size`. */
-  readonly resolvedWidth = computed(() => this.width() ?? this.size());
-
   readonly panelClasses = computed(() => ({
     [`ea-drawer__panel--${this.position()}`]: true,
-    [`ea-drawer__panel--${this.resolvedWidth()}`]: true,
+    [`ea-drawer__panel--${this.width()}`]: true,
   }));
 
   constructor() {
