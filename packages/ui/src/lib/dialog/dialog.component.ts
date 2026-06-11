@@ -20,8 +20,6 @@ import { uniqueId } from '../unique-id';
 
 /** Width preset of the dialog panel. */
 export type DialogWidth = EaWidth;
-/** @deprecated Use `DialogWidth` instead. Will be removed in v3.0.0. */
-export type DialogSize = DialogWidth;
 
 /**
  * Modal dialog backed by the native `<dialog>` element. Uses `showModal()`
@@ -42,11 +40,7 @@ export class DialogComponent {
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
 
-  readonly width = input<DialogWidth | undefined>(undefined);
-  /**
-   * @deprecated Use `width` instead. Will be removed in v3.0.0.
-   */
-  readonly size = input<DialogSize>('md');
+  readonly width = input<DialogWidth>('md');
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
@@ -60,11 +54,8 @@ export class DialogComponent {
   /** Fires when the dialog closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
 
-  /** Effective panel width, preferring `width` over the deprecated `size`. */
-  readonly resolvedWidth = computed(() => this.width() ?? this.size());
-
   readonly panelClasses = computed(() => ({
-    [`ea-dialog__panel--${this.resolvedWidth()}`]: true,
+    [`ea-dialog__panel--${this.width()}`]: true,
   }));
 
   constructor() {
