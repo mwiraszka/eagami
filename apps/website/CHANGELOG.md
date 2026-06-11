@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.0.0] - 2026-06-11
+
+### Changed
+
+- Pick up @eagami/ui v3.0.0.
+
+### Fixed
+
+- Reinstate the transfer list's source and target label defaults in the controls when a label field is cleared.
+- Wrap each attribute onto its own line in the generated code snippet for directive-based components such as the tooltip.
+
 ## [2.12.0] - 2026-06-10
 
 ### Changed
@@ -557,6 +568,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.0.0]: https://github.com/mwiraszka/eagami/compare/website-v2.12.0...website-v3.0.0
 [2.12.0]: https://github.com/mwiraszka/eagami/compare/website-v2.11.0...website-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/website-v2.10.0...website-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/website-v2.9.0...website-v2.10.0

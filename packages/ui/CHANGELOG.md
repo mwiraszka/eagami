@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-06-11
+
+### Changed
+
+- **Breaking:** Remove the deprecated `size` input from `<ea-drawer>` and `<ea-dialog>`; use `width` instead.
+- **Breaking:** Remove the deprecated `showValue` input from `<ea-progress-bar>`; use `showPercentage` instead.
+- **Breaking:** Remove the deprecated `rows` input from `<ea-textarea>`; use `minHeight`, `maxHeight`, and the resize handle instead.
+- **Breaking:** Remove the deprecated numeric (`1`/`2`/`3`) variant aliases from `<ea-eagami-wordmark>`; use `default`, `byline`, or `tagline`.
+
+### Fixed
+
+- Keep `<ea-input>` reflecting its bound value even when it reverts to the value last applied, so a cleared field repopulates a re-applied default.
+
 ## [2.12.0] - 2026-06-10
 
 ### Added
@@ -715,6 +728,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[3.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.12.0...ui-v3.0.0
 [2.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.11.0...ui-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.10.0...ui-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.9.0...ui-v2.10.0
