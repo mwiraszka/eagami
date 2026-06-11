@@ -18,7 +18,7 @@ import {
   `,
 })
 class HostComponent {
-  variant: EagamiWordmarkVariant = 1;
+  variant: EagamiWordmarkVariant = 'default';
   layout: EagamiWordmarkLayout = 'stacked';
 }
 
@@ -33,8 +33,8 @@ describe('EagamiWordmarkComponent a11y', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  it.each([1, 2, 3] as const)(
-    'has no detectable violations for variant %i',
+  it.each(['default', 'byline', 'tagline'] as const)(
+    'has no detectable violations for variant %s',
     async variant => {
       const el = await render(host => (host.variant = variant));
 
@@ -46,7 +46,7 @@ describe('EagamiWordmarkComponent a11y', () => {
 
   it('has no detectable violations in the inline layout', async () => {
     const el = await render(host => {
-      host.variant = 3;
+      host.variant = 'tagline';
       host.layout = 'inline';
     });
 
