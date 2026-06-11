@@ -1016,7 +1016,6 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             resize: 'Zmiana rozmiaru',
-            rows: 'Wiersze',
             maxlength: 'Maksymalna długość (chars)',
             minHeight: 'Minimalna wysokość (px)',
             maxHeight: 'Maksymalna wysokość (px)',
@@ -1226,8 +1225,6 @@ export const pl: WebMessages = {
             value: 'Bieżąca wartość postępu.',
             max: 'Wartość, przy której pasek jest pełny.',
             showPercentage: 'Wyświetla bieżący procent obok paska.',
-            showValue:
-              'Przestarzały alias dla showPercentage; zostanie usunięty w v3.0.0.',
             indeterminate:
               'Odtwarza zapętloną animację dla postępu o nieznanym czasie trwania.',
             label: 'Etykieta tekstowa renderowana nad paskiem.',
@@ -1372,14 +1369,12 @@ export const pl: WebMessages = {
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxHeight:
               'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
-            minHeight:
-              'Minimalna wysokość w px; nigdy mniejsza niż wysokość wynikająca z liczby wierszy.',
+            minHeight: 'Minimalna wysokość w px; nigdy mniejsza niż wysokość domyślna.',
             maxlength: 'Maksymalna liczba znaków akceptowana przez pole.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
             resize: 'Oś, wzdłuż której użytkownik może zmieniać rozmiar pola.',
-            rows: 'Początkowa liczba widocznych wierszy tekstu.',
             size: 'Wizualny rozmiar pola.',
             value: 'Bieżąca wartość pola, dwukierunkowo wiązalna przez [(value)].',
             blurred: 'Emitowane, gdy pole traci fokus.',
@@ -1741,7 +1736,6 @@ export const pl: WebMessages = {
             open: 'Określa, czy szuflada jest otwarta, dwukierunkowo wiązalne przez [(open)].',
             position: 'Krawędź widocznego obszaru, od której wysuwa się szuflada.',
             showClose: 'Wyświetla przycisk zamknięcia w nagłówku szuflady.',
-            size: 'Przestarzały predefiniowany rozmiar panelu szuflady; zamiast tego użyj width.',
             width: 'Szerokość panelu szuflady wzdłuż jej głównej osi.',
             closed:
               'Emitowane, gdy szuflada zamyka się, niezależnie od sposobu (przycisk, tło lub Escape).',
@@ -1908,7 +1902,6 @@ export const pl: WebMessages = {
             id: 'id stosowane do natywnego elementu dialog, generowane automatycznie gdy pominięte.',
             open: 'Określa, czy okno dialogowe jest wyświetlane, dwukierunkowo wiązalne przez [(open)].',
             showClose: 'Wyświetla przycisk zamknięcia w nagłówku okna dialogowego.',
-            size: 'Przestarzały alias dla width; użyj zamiast tego width.',
             width: 'Wstępnie ustawiona szerokość panelu okna dialogowego.',
             closed:
               'Emitowane po zamknięciu okna dialogowego, niezależnie od tego, czy zamknął je użytkownik, czy nastąpiło to programowo.',

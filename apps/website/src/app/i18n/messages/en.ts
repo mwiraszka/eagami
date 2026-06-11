@@ -998,7 +998,6 @@ export const en: WebMessages = {
             placeholder: 'Placeholder',
             size: 'Size',
             resize: 'Resize',
-            rows: 'Rows',
             maxlength: 'Max length (chars)',
             minHeight: 'Min height (px)',
             maxHeight: 'Max height (px)',
@@ -1201,7 +1200,6 @@ export const en: WebMessages = {
             value: 'Current progress value.',
             max: 'Value the bar is full at.',
             showPercentage: 'Shows the current percentage alongside the bar.',
-            showValue: 'Deprecated alias for showPercentage; will be removed in v3.0.0.',
             indeterminate:
               'Renders a looping animation for progress of unknown duration.',
             label: 'Text label rendered above the bar.',
@@ -1341,14 +1339,12 @@ export const en: WebMessages = {
             label: 'Text label rendered above the field.',
             maxHeight:
               "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
-            minHeight:
-              'Minimum height in px; never less than the height implied by the rows.',
+            minHeight: 'Minimum height in px; never less than the default height.',
             maxlength: 'Maximum number of characters the field accepts.',
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
             resize: 'Axis along which the user may resize the field.',
-            rows: 'Initial number of visible text rows.',
             size: 'Visual size of the field.',
             value: 'Current field value, two-way bindable via [(value)].',
             blurred: 'Fires when the field loses focus.',
@@ -1685,7 +1681,6 @@ export const en: WebMessages = {
             open: 'Whether the drawer is open, two-way bindable via [(open)].',
             position: 'Edge of the viewport from which the drawer slides in.',
             showClose: 'Shows the close button in the drawer header.',
-            size: 'Deprecated width preset for the drawer panel; use width instead.',
             width: 'Width of the drawer panel along its primary axis.',
             closed:
               'Fires when the drawer closes, whether via the close button, backdrop, or Escape.',
@@ -1844,7 +1839,6 @@ export const en: WebMessages = {
             id: 'id applied to the native dialog element, auto-generated when omitted.',
             open: 'Whether the dialog is shown, two-way bindable via [(open)].',
             showClose: 'Shows the close button in the dialog header.',
-            size: 'Deprecated alias for width; use width instead.',
             width: 'Width preset for the dialog panel.',
             closed:
               'Fires when the dialog closes, regardless of whether it was closed by the user or programmatically.',

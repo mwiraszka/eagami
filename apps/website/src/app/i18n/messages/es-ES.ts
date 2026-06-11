@@ -1009,7 +1009,6 @@ export const esES: WebMessages = {
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             resize: 'Redimensionar',
-            rows: 'Filas',
             maxlength: 'Longitud máxima (chars)',
             minHeight: 'Altura mínima (px)',
             maxHeight: 'Altura máxima (px)',
@@ -1232,7 +1231,6 @@ export const esES: WebMessages = {
             value: 'Valor de progreso actual.',
             max: 'Valor con el que la barra está llena.',
             showPercentage: 'Muestra el porcentaje actual junto a la barra.',
-            showValue: 'Alias obsoleto de showPercentage; se eliminará en la v3.0.0.',
             indeterminate:
               'Reproduce una animación en bucle para progreso de duración desconocida.',
             label: 'Etiqueta de texto mostrada encima de la barra.',
@@ -1385,14 +1383,12 @@ export const esES: WebMessages = {
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxHeight:
               'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
-            minHeight:
-              'Altura mínima en px; nunca menor que la altura que implican las filas.',
+            minHeight: 'Altura mínima en px; nunca inferior a la altura predeterminada.',
             maxlength: 'Número máximo de caracteres que acepta el campo.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
             resize: 'Eje a lo largo del cual el usuario puede redimensionar el campo.',
-            rows: 'Número inicial de filas de texto visibles.',
             size: 'Tamaño visual del campo.',
             value:
               'Valor actual del campo, vinculable en dos sentidos mediante [(value)].',
@@ -1772,7 +1768,6 @@ export const esES: WebMessages = {
             open: 'Indica si el cajón está abierto, vinculable en dos sentidos mediante [(open)].',
             position: 'Borde del viewport desde el que se desliza el cajón.',
             showClose: 'Muestra el botón de cierre en el encabezado del cajón.',
-            size: 'Preajuste de ancho obsoleto del panel del cajón; usa width en su lugar.',
             width: 'Ancho del panel del cajón a lo largo de su eje principal.',
             closed:
               'Se emite cuando el cajón se cierra, ya sea mediante el botón, el fondo o Escape.',
@@ -1942,7 +1937,6 @@ export const esES: WebMessages = {
             id: 'id aplicado al elemento dialog nativo, generado automáticamente si se omite.',
             open: 'Indica si el diálogo se muestra, vinculable en dos sentidos mediante [(open)].',
             showClose: 'Muestra el botón de cierre en la cabecera del diálogo.',
-            size: 'Alias obsoleto de width; usa width en su lugar.',
             width: 'Preajuste de ancho para el panel del diálogo.',
             closed:
               'Se emite cuando el diálogo se cierra, independientemente de si lo cerró el usuario o mediante código.',
