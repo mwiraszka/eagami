@@ -7,6 +7,7 @@ import {
   type Type,
   afterNextRender,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
@@ -181,6 +182,18 @@ export class InputComponent implements ControlValueAccessor {
       },
       { injector: this.injector },
     );
+
+    // A `[value]` binding that reverts to the value Angular last wrote (e.g. a
+    // parent re-applying its default after the field is cleared) leaves the DOM
+    // showing the stale user edit, since the bound expression looks unchanged.
+    // Reconcile the element to the model so a controlled value always reflects.
+    effect(() => {
+      const el = this.inputEl()?.nativeElement;
+      const next = this.value();
+      if (el && el.value !== next) {
+        el.value = next;
+      }
+    });
   }
 
   writeValue(val: string): void {
