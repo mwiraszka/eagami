@@ -155,8 +155,8 @@ describe('ProgressBarComponent', () => {
       ).toBeTruthy();
     });
 
-    it('shows header when showValue is true', () => {
-      fixture.componentRef.setInput('showValue', true);
+    it('shows header when showPercentage is true', () => {
+      fixture.componentRef.setInput('showPercentage', true);
       fixture.detectChanges();
 
       expect(
@@ -172,8 +172,8 @@ describe('ProgressBarComponent', () => {
       expect(label?.textContent?.trim()).toBe('Uploading');
     });
 
-    it('shows rounded percentage when showValue is true', () => {
-      fixture.componentRef.setInput('showValue', true);
+    it('shows rounded percentage when showPercentage is true', () => {
+      fixture.componentRef.setInput('showPercentage', true);
       fixture.componentRef.setInput('value', 66);
       fixture.detectChanges();
 
@@ -182,7 +182,7 @@ describe('ProgressBarComponent', () => {
     });
 
     it('does not show percentage when indeterminate is true', () => {
-      fixture.componentRef.setInput('showValue', true);
+      fixture.componentRef.setInput('showPercentage', true);
       fixture.componentRef.setInput('indeterminate', true);
       fixture.detectChanges();
 
