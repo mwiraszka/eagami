@@ -11,17 +11,19 @@ export type WebLocale =
   | 'is'
   | 'nl';
 
+// English pinned first (default), then alphabetical by each language's own name
+// (Latin scripts first, then Greek and Chinese).
 export const WEB_LOCALES: readonly WebLocale[] = [
   'en',
-  'fr-FR',
-  'el',
-  'pl',
-  'es-ES',
   'de',
-  'pt-BR',
-  'zh-CN',
+  'es-ES',
+  'fr-FR',
   'is',
   'nl',
+  'pl',
+  'pt-BR',
+  'el',
+  'zh-CN',
 ];
 
 export const WEB_LOCALE_LABELS: Record<WebLocale, string> = {

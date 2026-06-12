@@ -14,18 +14,22 @@ export type EagamiLocale =
   | 'is'
   | 'nl';
 
-/** Ordered list of every supported locale, handy for language switchers. */
+/**
+ * Supported locales for language switchers: English pinned first (default
+ * fallback), then alphabetical by each language's own name (Latin scripts
+ * first, then Greek and Chinese).
+ */
 export const EAGAMI_LOCALES: readonly EagamiLocale[] = [
   'en',
-  'fr-FR',
-  'el',
-  'pl',
-  'es-ES',
   'de',
-  'pt-BR',
-  'zh-CN',
+  'es-ES',
+  'fr-FR',
   'is',
   'nl',
+  'pl',
+  'pt-BR',
+  'el',
+  'zh-CN',
 ];
 
 /**
