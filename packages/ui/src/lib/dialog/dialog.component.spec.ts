@@ -21,7 +21,6 @@ beforeAll(() => {
     <ea-dialog
       [(open)]="isOpen"
       [width]="width()"
-      [size]="size()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
       [showClose]="showClose()">
@@ -33,8 +32,7 @@ beforeAll(() => {
 })
 class TestHostComponent {
   isOpen = signal(false);
-  width = signal<DialogWidth | undefined>(undefined);
-  size = signal<'sm' | 'md' | 'lg' | 'full'>('md');
+  width = signal<DialogWidth>('md');
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
@@ -80,7 +78,7 @@ describe('DialogComponent', () => {
     });
 
     it('applies different size classes', () => {
-      host.size.set('lg');
+      host.width.set('lg');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-dialog__panel--lg');
     });
@@ -89,14 +87,6 @@ describe('DialogComponent', () => {
       host.width.set('xl');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-dialog__panel--xl');
-    });
-
-    it('prefers width over the deprecated size alias', () => {
-      host.size.set('sm');
-      host.width.set('lg');
-      fixture.detectChanges();
-      expect(getPanel().classList).toContain('ea-dialog__panel--lg');
-      expect(getPanel().classList).not.toContain('ea-dialog__panel--sm');
     });
   });
 

@@ -13,8 +13,9 @@
   // When a max-width switches the bubble to multi-line, break long unbreakable
   // strings (URLs, tokens) instead of letting them overflow the bubble.
   overflow-wrap: anywhere;
+  border: var(--border-width-thin) solid var(--color-tooltip-border);
   border-radius: var(--radius-md);
-  background-color: var(--color-neutral-800);
+  background-color: var(--color-tooltip-surface);
   color: var(--color-neutral-0);
   pointer-events: none;
   animation: ea-tooltip-fade-in var(--duration-fast) var(--ease-out);

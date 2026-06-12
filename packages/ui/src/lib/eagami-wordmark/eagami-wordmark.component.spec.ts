@@ -80,16 +80,6 @@ describe('EagamiWordmarkComponent', () => {
       expect(getOverline()).toBeNull();
     });
 
-    it('accepts the deprecated numeric variants as aliases', () => {
-      fixture.componentRef.setInput('variant', 2);
-      fixture.detectChanges();
-      expect(getOverline()?.textContent?.trim()).toBe('handcrafted by');
-
-      fixture.componentRef.setInput('variant', 3);
-      fixture.detectChanges();
-      expect(getTagline()?.textContent?.trim()).toBe('elegant web design');
-    });
-
     it('sets aria-label to "eagami" for the default variant', () => {
       expect(getAnchor().getAttribute('aria-label')).toBe('eagami');
     });

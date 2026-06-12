@@ -498,7 +498,7 @@ export interface WebMessages {
           emailPlaceholder: string;
         };
         menu: {
-          actions: string;
+          openButton: string;
           edit: string;
           duplicate: string;
           archive: string;
@@ -630,6 +630,7 @@ export interface WebMessages {
           message: (variant: string) => string;
         };
         tooltip: {
+          triggerLabel: string;
           topLabel: string;
           topTooltip: string;
           bottomLabel: string;

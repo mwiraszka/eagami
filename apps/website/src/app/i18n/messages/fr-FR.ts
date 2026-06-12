@@ -635,7 +635,7 @@ export const frFR: WebMessages = {
           emailPlaceholder: 'vous@exemple.com',
         },
         menu: {
-          actions: 'Actions',
+          openButton: 'Ouvrir le menu',
           edit: 'Modifier',
           duplicate: 'Dupliquer',
           archive: 'Archiver',
@@ -779,6 +779,7 @@ export const frFR: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(survolez-moi)',
           topLabel: 'Haut',
           topTooltip: 'Infobulle en haut',
           bottomLabel: 'Bas',
@@ -1018,7 +1019,6 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif',
             size: 'Taille',
             resize: 'Redimensionnement',
-            rows: 'Lignes',
             maxlength: 'Longueur maximale (chars)',
             minHeight: 'Hauteur minimale (px)',
             maxHeight: 'Hauteur maximale (px)',
@@ -1235,7 +1235,6 @@ export const frFR: WebMessages = {
             value: 'Valeur de progression actuelle.',
             max: 'Valeur à laquelle la barre est pleine.',
             showPercentage: 'Affiche le pourcentage actuel à côté de la barre.',
-            showValue: 'Alias obsolète de showPercentage ; sera supprimé dans la v3.0.0.',
             indeterminate:
               'Joue une animation en boucle pour une progression de durée inconnue.',
             label: 'Libellé textuel rendu au-dessus de la barre.',
@@ -1382,13 +1381,12 @@ export const frFR: WebMessages = {
             maxHeight:
               'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
             minHeight:
-              'Hauteur minimale en px ; jamais inférieure à la hauteur impliquée par les lignes.',
+              'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
             maxlength: 'Nombre maximal de caractères que le champ accepte.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
             resize: 'Axe selon lequel l’utilisateur peut redimensionner le champ.',
-            rows: 'Nombre initial de lignes de texte visibles.',
             size: 'Taille visuelle du champ.',
             value: 'Valeur actuelle du champ, liable en deux sens via [(value)].',
             blurred: 'Émis lorsque le champ perd le focus.',
@@ -1597,6 +1595,8 @@ export const frFR: WebMessages = {
             toggle: 'Bascule la popover du calendrier entre ouvert et fermé.',
           },
           menu: {
+            maxHeight:
+              'Hauteur maximale de la liste défilante (longueur CSS) ; les menus plus hauts défilent au-delà.',
             ariaLabel:
               'Libellé accessible de la liste du menu, revenant à la locale active si omis.',
             disabled: "Désactive le menu et l'empêche de s'ouvrir.",
@@ -1766,7 +1766,6 @@ export const frFR: WebMessages = {
             open: 'Indique si le tiroir est ouvert, liable en deux sens via [(open)].',
             position: "Bord de la fenêtre depuis lequel le tiroir s'ouvre en glissant.",
             showClose: "Affiche le bouton de fermeture dans l'en-tête du tiroir.",
-            size: 'Préréglage de largeur obsolète du panneau du tiroir ; utiliser width à la place.',
             width: 'Largeur du panneau du tiroir sur son axe principal.',
             closed:
               "Émis lorsque le tiroir se ferme, que ce soit via le bouton, l'arrière-plan ou Échap.",
@@ -1939,7 +1938,6 @@ export const frFR: WebMessages = {
             open: 'Indique si la boîte de dialogue est affichée, liable en deux sens via [(open)].',
             showClose:
               "Affiche le bouton de fermeture dans l'en-tête de la boîte de dialogue.",
-            size: 'Alias obsolète de width ; utilisez width à la place.',
             width: 'Préréglage de largeur du panneau de la boîte de dialogue.',
             closed:
               "Émis lorsque la boîte de dialogue se ferme, que ce soit par l'utilisateur ou de façon programmatique.",

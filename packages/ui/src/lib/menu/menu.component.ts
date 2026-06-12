@@ -41,6 +41,8 @@ export class MenuComponent {
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   readonly placement = input<MenuPlacement>('bottom-start');
+  /** Max height of the scrollable list as a CSS length; tall menus scroll past it. */
+  readonly maxHeight = input<string>('20rem');
   readonly disabled = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, {
     alias: 'aria-label',

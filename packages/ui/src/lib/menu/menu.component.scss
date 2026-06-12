@@ -5,7 +5,6 @@
 // Positioned by the host `<ea-popover>`; this class only owns visual chrome.
 .ea-menu__list {
   min-width: 10rem;
-  max-height: 20rem;
   padding: var(--space-1) 0;
   overflow-y: auto;
   border: var(--border-width-thin) solid var(--color-border-default);

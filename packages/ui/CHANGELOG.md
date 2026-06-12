@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-06-13
+
+### Added
+
+- Add German, Brazilian Portuguese, Mandarin Chinese, Icelandic, and Dutch translations (`de`, `pt-BR`, `zh-CN`, `is`, `nl`), bringing the built-in locales to ten.
+- Add a `maxHeight` input to `<ea-menu>` so long menus can scroll past a taller cap.
+- Add Angular 22 support by widening the `@angular/*` peer range to `^21.0.0 || ^22.0.0`.
+
+### Changed
+
+- **Breaking:** Remove the deprecated `size` input from `<ea-drawer>` and `<ea-dialog>`; use `width` instead.
+- **Breaking:** Remove the deprecated `showValue` input from `<ea-progress-bar>`; use `showPercentage` instead.
+- **Breaking:** Remove the deprecated `rows` input from `<ea-textarea>`; use `minHeight`, `maxHeight`, and the resize handle instead.
+- **Breaking:** Remove the deprecated numeric (`1`/`2`/`3`) variant aliases from `<ea-eagami-wordmark>`; use `default`, `byline`, or `tagline`.
+- **Breaking:** Default the tooltip directive's `maxWidth` to 200px, so a tooltip without an explicit width now wraps at 200px instead of running unbounded.
+
+### Fixed
+
+- Keep `<ea-input>` reflecting its bound value even when it reverts to the value last applied, so a cleared field repopulates a re-applied default.
+- Give tooltips a dedicated surface colour and a hairline border so they no longer blend into dark backgrounds.
+- Make `<ea-segmented>` block-level so it aligns with inputs and selects in a shared row instead of sitting lower.
+
 ## [2.12.0] - 2026-06-10
 
 ### Added
@@ -715,6 +737,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[3.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.12.0...ui-v3.0.0
 [2.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.11.0...ui-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.10.0...ui-v2.11.0
 [2.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.9.0...ui-v2.10.0

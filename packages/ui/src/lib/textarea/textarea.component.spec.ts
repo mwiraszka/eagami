@@ -62,13 +62,6 @@ describe('TextareaComponent', () => {
       expect(getTextarea().placeholder).toBe('Type here…');
     });
 
-    it('forwards rows to the textarea', () => {
-      fixture.componentRef.setInput('rows', 6);
-      fixture.detectChanges();
-
-      expect(getTextarea().rows).toBe(6);
-    });
-
     it('forwards maxlength to the textarea', () => {
       fixture.componentRef.setInput('maxlength', 200);
       fixture.detectChanges();

@@ -19,7 +19,7 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
   },
   args: {
-    label: 'Breed',
+    label: 'Dog breed',
     placeholder: 'Start typing…',
     size: 'md',
     minLength: 0,

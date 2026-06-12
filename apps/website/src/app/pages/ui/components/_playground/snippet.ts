@@ -95,7 +95,12 @@ export function generateSnippet(
       attr => attr.startsWith(`${selector}=`) || attr.startsWith(`[${selector}]=`),
     );
     const parts = carriesSelector ? attributes : [selector, ...attributes];
-    markup = `<div ${parts.join(' ')}></div>`;
+    // Wrap each attribute onto its own line for multi-attribute hosts, matching
+    // how the element components render; keep single-attribute hosts on one line.
+    markup =
+      parts.length <= 1
+        ? `<div ${parts.join(' ')}></div>`
+        : `<div\n  ${parts.join('\n  ')}>\n</div>`;
   } else if (childMarkup) {
     const indented = childMarkup
       .split('\n')
