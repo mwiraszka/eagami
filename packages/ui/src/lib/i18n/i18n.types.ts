@@ -2,7 +2,17 @@
  * BCP 47 locale tags supported out of the box. Consumers select one of these
  * via `provideEagamiUi({ locale })` or `EagamiI18nService.setLocale()`.
  */
-export type EagamiLocale = 'en' | 'fr-FR' | 'el' | 'pl' | 'es-ES';
+export type EagamiLocale =
+  | 'en'
+  | 'fr-FR'
+  | 'el'
+  | 'pl'
+  | 'es-ES'
+  | 'de'
+  | 'pt-BR'
+  | 'zh-CN'
+  | 'is'
+  | 'nl';
 
 /** Ordered list of every supported locale, handy for language switchers. */
 export const EAGAMI_LOCALES: readonly EagamiLocale[] = [
@@ -11,6 +21,11 @@ export const EAGAMI_LOCALES: readonly EagamiLocale[] = [
   'el',
   'pl',
   'es-ES',
+  'de',
+  'pt-BR',
+  'zh-CN',
+  'is',
+  'nl',
 ];
 
 /**

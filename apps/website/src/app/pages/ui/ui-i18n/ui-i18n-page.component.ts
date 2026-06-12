@@ -29,6 +29,11 @@ const LOCALE_LABELS: Record<EagamiLocale, string> = {
   el: 'Ελληνικά',
   pl: 'Polski',
   'es-ES': 'Español',
+  de: 'Deutsch',
+  'pt-BR': 'Português (Brasil)',
+  'zh-CN': '中文',
+  is: 'Íslenska',
+  nl: 'Nederlands',
 };
 
 const LOCALE_FLAGS: Record<EagamiLocale, string> = {
@@ -37,6 +42,11 @@ const LOCALE_FLAGS: Record<EagamiLocale, string> = {
   el: '🇬🇷',
   pl: '🇵🇱',
   'es-ES': '🇪🇸',
+  de: '🇩🇪',
+  'pt-BR': '🇧🇷',
+  'zh-CN': '🇨🇳',
+  is: '🇮🇸',
+  nl: '🇳🇱',
 };
 
 @Component({
