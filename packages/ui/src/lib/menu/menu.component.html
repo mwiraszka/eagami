@@ -10,7 +10,8 @@
   (closeRequested)="onPopoverCloseRequested()">
   <div
     #listEl
-    class="ea-menu__list">
+    class="ea-menu__list"
+    [style.max-height]="maxHeight()">
     <ng-content />
   </div>
 </ea-popover>

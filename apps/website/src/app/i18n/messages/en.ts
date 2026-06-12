@@ -1532,6 +1532,8 @@ export const en: WebMessages = {
             toggle: 'Toggles the calendar popover between open and closed.',
           },
           menu: {
+            maxHeight:
+              'Maximum height of the scrollable list as a CSS length; taller menus scroll past it.',
             ariaLabel:
               'Accessible label for the menu list, falling back to the active locale when omitted.',
             disabled: 'Disables the menu, preventing it from opening.',

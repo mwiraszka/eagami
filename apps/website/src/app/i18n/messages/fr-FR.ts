@@ -1594,6 +1594,8 @@ export const frFR: WebMessages = {
             toggle: 'Bascule la popover du calendrier entre ouvert et fermé.',
           },
           menu: {
+            maxHeight:
+              'Hauteur maximale de la liste défilante (longueur CSS) ; les menus plus hauts défilent au-delà.',
             ariaLabel:
               'Libellé accessible de la liste du menu, revenant à la locale active si omis.',
             disabled: "Désactive le menu et l'empêche de s'ouvrir.",

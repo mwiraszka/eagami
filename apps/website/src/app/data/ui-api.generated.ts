@@ -2029,6 +2029,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'maxHeight',
+        type: 'string',
+        default: "'20rem'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'open',
         type: 'boolean',
         default: 'false',

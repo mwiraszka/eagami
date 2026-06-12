@@ -1582,6 +1582,8 @@ export const pl: WebMessages = {
             toggle: 'Przełącza popover kalendarza między otwarciem a zamknięciem.',
           },
           menu: {
+            maxHeight:
+              'Maksymalna wysokość przewijanej listy jako długość CSS; wyższe menu są przewijane.',
             ariaLabel:
               'Dostępna etykieta listy menu, domyślnie aktywna locale gdy pominięta.',
             disabled: 'Wyłącza menu, uniemożliwiając jego otwarcie.',

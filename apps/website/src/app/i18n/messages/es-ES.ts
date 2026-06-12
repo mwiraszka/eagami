@@ -1601,6 +1601,8 @@ export const esES: WebMessages = {
             toggle: 'Alterna el popover del calendario entre abierto y cerrado.',
           },
           menu: {
+            maxHeight:
+              'Altura máxima de la lista desplazable como longitud CSS; los menús más altos se desplazan.',
             ariaLabel:
               'Etiqueta accesible para la lista del menú, usando la configuración regional activa si se omite.',
             disabled: 'Deshabilita el menú, impidiendo que se abra.',
