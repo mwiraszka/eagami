@@ -635,7 +635,7 @@ export const de: WebMessages = {
           emailPlaceholder: 'sie@beispiel.com',
         },
         menu: {
-          actions: 'Aktionen',
+          openButton: 'Menü öffnen',
           edit: 'Bearbeiten',
           duplicate: 'Duplizieren',
           archive: 'Archivieren',
@@ -777,6 +777,7 @@ export const de: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(fahr mit der Maus über mich)',
           topLabel: 'Oben',
           topTooltip: 'Tooltip oben',
           bottomLabel: 'Unten',

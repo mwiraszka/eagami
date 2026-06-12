@@ -24,6 +24,7 @@ interface MenuKnobState {
   placement: MenuPlacement;
   ariaLabel: string;
   disabled: boolean;
+  maxHeight: string;
 }
 
 const SLUG = 'menu';

@@ -23,7 +23,7 @@ export const PAGINATOR_KNOBS: ComponentKnobs = {
     changed: { action: 'changed' },
   },
   args: {
-    totalItems: 100,
+    totalItems: 1000,
     align: 'right',
     size: 'md',
     showPageSizeSelector: true,

@@ -8,11 +8,13 @@
     [state]="state()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <ea-button
+    <div
+      class="demo-tooltip-trigger"
+      tabindex="0"
       [eaTooltip]="state().eaTooltip"
       [tooltipPosition]="state().tooltipPosition"
       [maxWidth]="state().maxWidth">
-      Hover or focus me
-    </ea-button>
+      {{ messages().ui.component.demos.tooltip.triggerLabel }}
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

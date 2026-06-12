@@ -10,6 +10,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Changed
 
+- Refine the component demo pages with clearer triggers, labels, and defaults, and localize the new demo copy.
 - Pick up @eagami/ui v3.0.0.
 
 ### Fixed

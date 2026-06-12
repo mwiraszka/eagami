@@ -625,7 +625,7 @@ export const is: WebMessages = {
           emailPlaceholder: 'thu@daemi.is',
         },
         menu: {
-          actions: 'Aðgerðir',
+          openButton: 'Opna valmynd',
           edit: 'Breyta',
           duplicate: 'Afrita',
           archive: 'Geyma í safni',
@@ -771,6 +771,7 @@ export const is: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(svífðu yfir mig)',
           topLabel: 'Efst',
           topTooltip: 'Ábending efst',
           bottomLabel: 'Neðst',

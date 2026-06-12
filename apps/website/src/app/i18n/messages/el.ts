@@ -630,7 +630,7 @@ export const el: WebMessages = {
           emailPlaceholder: 'esas@paradeigma.com',
         },
         menu: {
-          actions: 'Ενέργειες',
+          openButton: 'Άνοιγμα μενού',
           edit: 'Επεξεργασία',
           duplicate: 'Διπλασιασμός',
           archive: 'Αρχειοθέτηση',
@@ -777,6 +777,7 @@ export const el: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(πέρασε από πάνω μου)',
           topLabel: 'Πάνω',
           topTooltip: 'Υπόδειξη πάνω',
           bottomLabel: 'Κάτω',

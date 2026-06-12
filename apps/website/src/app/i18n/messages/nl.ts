@@ -632,7 +632,7 @@ export const nl: WebMessages = {
           emailPlaceholder: 'jij@voorbeeld.com',
         },
         menu: {
-          actions: 'Acties',
+          openButton: 'Menu openen',
           edit: 'Bewerken',
           duplicate: 'Dupliceren',
           archive: 'Archiveren',
@@ -768,6 +768,7 @@ export const nl: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(zweef over mij)',
           topLabel: 'Boven',
           topTooltip: 'Tooltip boven',
           bottomLabel: 'Onder',

@@ -626,7 +626,7 @@ export const esES: WebMessages = {
           emailPlaceholder: 'tu@ejemplo.com',
         },
         menu: {
-          actions: 'Acciones',
+          openButton: 'Abrir menú',
           edit: 'Editar',
           duplicate: 'Duplicar',
           archive: 'Archivar',
@@ -770,6 +770,7 @@ export const esES: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(pasa el ratón por encima)',
           topLabel: 'Arriba',
           topTooltip: 'Descripción arriba',
           bottomLabel: 'Abajo',

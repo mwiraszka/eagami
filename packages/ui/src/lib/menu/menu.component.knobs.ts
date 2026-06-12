@@ -13,6 +13,7 @@ export const MENU_KNOBS: ComponentKnobs = {
     },
     ariaLabel: { control: 'text' },
     disabled: { control: 'boolean' },
+    maxHeight: { control: 'text' },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
   },
@@ -20,5 +21,6 @@ export const MENU_KNOBS: ComponentKnobs = {
     placement: 'bottom-start',
     ariaLabel: 'Actions menu',
     disabled: false,
+    maxHeight: '20rem',
   },
 };

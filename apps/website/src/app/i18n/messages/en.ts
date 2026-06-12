@@ -557,7 +557,7 @@ export const en: WebMessages = {
           withinNextWeeksHint: '±1 week / +3 weeks from today',
         },
         dialog: {
-          openButton: 'Open Dialog',
+          openButton: 'Open dialog',
           title: 'Dialog Title',
           body: 'This is the dialog body. It supports any content including forms, text, and other components.',
         },
@@ -568,7 +568,7 @@ export const en: WebMessages = {
           rightLabel: 'Right',
         },
         drawer: {
-          openButton: 'Open Drawer',
+          openButton: 'Open drawer',
           rightButton: 'Right',
           leftButton: 'Left',
           topButton: 'Top',
@@ -623,7 +623,7 @@ export const en: WebMessages = {
           emailPlaceholder: 'you@example.com',
         },
         menu: {
-          actions: 'Actions',
+          openButton: 'Open menu',
           edit: 'Edit',
           duplicate: 'Duplicate',
           archive: 'Archive',
@@ -759,6 +759,7 @@ export const en: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(hover over me)',
           topLabel: 'Top',
           topTooltip: 'Top tooltip',
           bottomLabel: 'Bottom',

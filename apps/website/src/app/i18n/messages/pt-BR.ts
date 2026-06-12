@@ -632,7 +632,7 @@ export const ptBR: WebMessages = {
           emailPlaceholder: 'voce@exemplo.com',
         },
         menu: {
-          actions: 'Ações',
+          openButton: 'Abrir menu',
           edit: 'Editar',
           duplicate: 'Duplicar',
           archive: 'Arquivar',
@@ -769,6 +769,7 @@ export const ptBR: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(passe o mouse sobre mim)',
           topLabel: 'Topo',
           topTooltip: 'Dica no topo',
           bottomLabel: 'Base',

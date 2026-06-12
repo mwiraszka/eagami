@@ -608,7 +608,7 @@ export const zhCN: WebMessages = {
           emailPlaceholder: 'you@example.com',
         },
         menu: {
-          actions: '操作',
+          openButton: '打开菜单',
           edit: '编辑',
           duplicate: '复制',
           archive: '归档',
@@ -741,6 +741,7 @@ export const zhCN: WebMessages = {
           message: variant => `这是一条${variant}提示`,
         },
         tooltip: {
+          triggerLabel: '(将鼠标悬停于此)',
           topLabel: '上',
           topTooltip: '顶部工具提示',
           bottomLabel: '下',

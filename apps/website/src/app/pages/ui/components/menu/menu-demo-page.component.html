@@ -12,14 +12,14 @@
     (resetClicked)="reset()">
     <ea-button
       [eaMenuTrigger]="menuRef"
-      variant="secondary"
       [disabled]="state().disabled">
-      {{ messages().ui.component.demos.menu.actions }}
+      {{ messages().ui.component.demos.menu.openButton }}
     </ea-button>
     <ea-menu
       #menuRef
       [placement]="state().placement"
       [disabled]="state().disabled"
+      [maxHeight]="state().maxHeight"
       [aria-label]="state().ariaLabel">
       <ea-menu-item>{{ messages().ui.component.demos.menu.edit }}</ea-menu-item>
       <ea-menu-item>

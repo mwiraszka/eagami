@@ -635,7 +635,7 @@ export const frFR: WebMessages = {
           emailPlaceholder: 'vous@exemple.com',
         },
         menu: {
-          actions: 'Actions',
+          openButton: 'Ouvrir le menu',
           edit: 'Modifier',
           duplicate: 'Dupliquer',
           archive: 'Archiver',
@@ -779,6 +779,7 @@ export const frFR: WebMessages = {
           },
         },
         tooltip: {
+          triggerLabel: '(survolez-moi)',
           topLabel: 'Haut',
           topTooltip: 'Infobulle en haut',
           bottomLabel: 'Bas',
