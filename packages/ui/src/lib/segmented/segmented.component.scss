@@ -1,3 +1,9 @@
+// Block-level flex so the host sits flush at the top beside other block-level
+// fields, and the inner field lays out as a flex item, not a baseline inline box.
+:host {
+  display: flex;
+}
+
 // The control is shrink-to-fit by default; full width has to stretch the inline
 // host and field too, not just the inner group, or it has no room to expand.
 :host(.ea-segmented-host--full-width) {

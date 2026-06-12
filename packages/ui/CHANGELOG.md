@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Keep `<ea-input>` reflecting its bound value even when it reverts to the value last applied, so a cleared field repopulates a re-applied default.
 - Give tooltips a dedicated surface colour and a hairline border so they no longer blend into dark backgrounds.
+- Make `<ea-segmented>` block-level so it aligns with inputs and selects in a shared row instead of sitting lower.
 
 ## [2.12.0] - 2026-06-10
 
