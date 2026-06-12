@@ -68,7 +68,7 @@ describe('EagamiI18nService', () => {
     const service = createService();
     const reference = service.messages();
 
-    for (const locale of ['fr-FR', 'el', 'pl', 'es-ES'] as const) {
+    for (const locale of EAGAMI_LOCALES) {
       service.setLocale(locale);
       const messages = service.messages();
       for (const group of Object.keys(reference) as (keyof typeof reference)[]) {
@@ -81,18 +81,28 @@ describe('EagamiI18nService', () => {
     'resolves every parameterized message in %s without throwing',
     (locale: EagamiLocale) => {
       const service = createService({ locale });
-      const messages = service.messages();
+      const m = service.messages();
 
-      const range = messages.paginator.range(1, 10, 100);
-      const groupLabel = messages.codeInput.groupLabel(6);
-      const digitLabel = messages.codeInput.digitLabel(2, 6);
+      const results = [
+        m.codeInput.groupLabel(6),
+        m.codeInput.digitLabel(2, 6),
+        m.fileUploader.removeFile('report.pdf'),
+        m.fileUploader.constraintsAccept('image/*'),
+        m.fileUploader.constraintsMaxSize('5 MB'),
+        m.fileUploader.constraintsMaxFiles(3),
+        m.fileUploader.rejectionType('report.pdf'),
+        m.fileUploader.rejectionSize('report.pdf', '5 MB'),
+        m.fileUploader.rejectionCount(3),
+        m.multiSelect.removeOption('Apple'),
+        m.multiSelect.selectedCount(3),
+        m.paginator.range('1', '10', '100'),
+        m.rating.valueLabel(3, 5),
+      ];
 
-      expect(typeof range).toBe('string');
-      expect(range.length).toBeGreaterThan(0);
-      expect(typeof groupLabel).toBe('string');
-      expect(groupLabel.length).toBeGreaterThan(0);
-      expect(typeof digitLabel).toBe('string');
-      expect(digitLabel.length).toBeGreaterThan(0);
+      for (const result of results) {
+        expect(typeof result).toBe('string');
+        expect(result.length).toBeGreaterThan(0);
+      }
     },
   );
 });
