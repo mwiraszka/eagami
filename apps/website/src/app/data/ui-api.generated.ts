@@ -3887,7 +3887,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'maxWidth',
         type: 'number | undefined',
-        default: 'undefined',
+        default: '200',
         required: false,
         twoWay: false,
       },

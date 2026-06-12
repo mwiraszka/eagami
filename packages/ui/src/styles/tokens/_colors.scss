@@ -92,6 +92,12 @@
   --color-bg-elevated: var(--color-neutral-0);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
+  // Tooltips float over arbitrary content, so their surface is a unique tone that
+  // never matches a page or palette colour in either theme; the translucent
+  // hairline border separates it from same-tone backgrounds.
+  --color-tooltip-surface: #1a1b21;
+  --color-tooltip-border: rgba(255, 255, 255, 0.15);
+
   // Interactive lift layers for hover and active/selected fills. Light surfaces
   // are all near-white and never collapse onto these shades, so solid muted
   // tones read cleanly. Dark mode swaps them for translucent washes (see the

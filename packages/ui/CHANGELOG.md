@@ -18,10 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking:** Remove the deprecated `showValue` input from `<ea-progress-bar>`; use `showPercentage` instead.
 - **Breaking:** Remove the deprecated `rows` input from `<ea-textarea>`; use `minHeight`, `maxHeight`, and the resize handle instead.
 - **Breaking:** Remove the deprecated numeric (`1`/`2`/`3`) variant aliases from `<ea-eagami-wordmark>`; use `default`, `byline`, or `tagline`.
+- **Breaking:** Default the tooltip directive's `maxWidth` to 200px, so a tooltip without an explicit width now wraps at 200px instead of running unbounded.
 
 ### Fixed
 
 - Keep `<ea-input>` reflecting its bound value even when it reverts to the value last applied, so a cleared field repopulates a re-applied default.
+- Give tooltips a dedicated surface colour and a hairline border so they no longer blend into dark backgrounds.
 
 ## [2.12.0] - 2026-06-10
 

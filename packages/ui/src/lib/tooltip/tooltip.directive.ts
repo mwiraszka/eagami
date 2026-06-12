@@ -27,7 +27,7 @@ export class TooltipDirective implements OnDestroy {
   readonly eaTooltip = input.required<string>();
   readonly tooltipPosition = input<TooltipPosition>('top');
   /** Max width in px; the text wraps at this width. Clamped to a 50px floor. */
-  readonly maxWidth = input<number | undefined>(undefined);
+  readonly maxWidth = input<number | undefined>(200);
 
   private tooltipEl: HTMLElement | null = null;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
