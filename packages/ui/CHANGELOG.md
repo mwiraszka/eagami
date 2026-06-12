@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add German, Brazilian Portuguese, Mandarin Chinese, Icelandic, and Dutch translations (`de`, `pt-BR`, `zh-CN`, `is`, `nl`), bringing the built-in locales to ten.
 - Add a `maxHeight` input to `<ea-menu>` so long menus can scroll past a taller cap.
+- Add Angular 22 support by widening the `@angular/*` peer range to `^21.0.0 || ^22.0.0`.
 
 ### Changed
 
