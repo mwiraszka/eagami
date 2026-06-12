@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.0] - 2026-06-11
+## [3.0.0] - 2026-06-12
+
+### Added
+
+- Add German, Brazilian Portuguese, Mandarin Chinese, Icelandic, and Dutch translations (`de`, `pt-BR`, `zh-CN`, `is`, `nl`), bringing the built-in locales to ten.
+- Add a `maxHeight` input to `<ea-menu>` so long menus can scroll past a taller cap.
 
 ### Changed
 

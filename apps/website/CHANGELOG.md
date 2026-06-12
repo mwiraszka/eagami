@@ -2,7 +2,11 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [3.0.0] - 2026-06-11
+## [3.0.0] - 2026-06-12
+
+### Added
+
+- Add German, Brazilian Portuguese, Mandarin Chinese, Icelandic, and Dutch to the language switcher.
 
 ### Changed
 
@@ -10,6 +14,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Fixed
 
+- Show every language in the locale switcher and align the menu to the trigger's right edge so it no longer clips the last entries.
 - Reinstate the transfer list's source and target label defaults in the controls when a label field is cleared.
 - Wrap each attribute onto its own line in the generated code snippet for directive-based components such as the tooltip.
 
