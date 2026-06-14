@@ -16,6 +16,7 @@ export const DROPDOWN_KNOBS: ComponentKnobs = {
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Fruit',
@@ -24,5 +25,6 @@ export const DROPDOWN_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    triggerError: false,
   },
 };

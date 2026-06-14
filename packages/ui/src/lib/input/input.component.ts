@@ -20,6 +20,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
@@ -86,6 +90,8 @@ export class InputComponent implements ControlValueAccessor {
   readonly hint = input<string | undefined>(undefined);
   /** Error message shown below the field; replaces the hint and flags the field invalid. */
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Disables the field. */
   readonly disabled = input<boolean>(false);
   /** Renders the field read-only. */
@@ -136,7 +142,12 @@ export class InputComponent implements ControlValueAccessor {
     this.type() === 'password' && this.passwordVisible() ? 'text' : this.type(),
   );
 
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

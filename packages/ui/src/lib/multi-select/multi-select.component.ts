@@ -19,6 +19,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SearchIconComponent } from '../icons/search.component';
@@ -80,6 +84,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Toggle the search input at the top of the popover. */
   readonly searchable = input<boolean>(true);
   /** Toggle the "Select all" row at the top of the option list. */
@@ -102,7 +108,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

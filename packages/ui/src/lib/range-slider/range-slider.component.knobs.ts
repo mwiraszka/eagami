@@ -20,6 +20,7 @@ export const RANGE_SLIDER_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Price range',
@@ -34,5 +35,6 @@ export const RANGE_SLIDER_KNOBS: ComponentKnobs = {
     groupThousands: true,
     disabled: false,
     required: false,
+    triggerError: false,
   },
 };

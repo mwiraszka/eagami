@@ -17,6 +17,7 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Dog breed',
@@ -27,5 +28,6 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    triggerError: false,
   },
 };

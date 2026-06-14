@@ -19,6 +19,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronUpIconComponent } from '../icons/chevron-up.component';
@@ -97,6 +101,8 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Display format for the trigger label. Wire value is always 24h. */
   readonly format = input<TimePickerFormat>('24h');
   readonly includeSeconds = input<boolean>(false);
@@ -122,7 +128,12 @@ export class TimePickerComponent implements ControlValueAccessor {
   private holdStartedAt = 0;
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

@@ -151,6 +151,16 @@ export const el: EagamiMessages = {
     expand: 'Ανάπτυξη',
     collapse: 'Σύμπτυξη',
   },
+  validation: {
+    required: 'Αυτό το πεδίο είναι υποχρεωτικό',
+    email: 'Εισαγάγετε έγκυρη διεύθυνση email',
+    min: min => `Πρέπει να είναι τουλάχιστον ${min}`,
+    max: max => `Πρέπει να είναι το πολύ ${max}`,
+    minlength: length => `Πρέπει να έχει τουλάχιστον ${length} χαρακτήρες`,
+    maxlength: length => `Πρέπει να έχει το πολύ ${length} χαρακτήρες`,
+    pattern: 'Μη έγκυρη μορφή',
+    invalid: 'Μη έγκυρη τιμή',
+  },
   wordmark: {
     overline: 'φτιαγμένο με μεράκι από',
     tagline: 'κομψός σχεδιασμός ιστού',

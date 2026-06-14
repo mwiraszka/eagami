@@ -150,6 +150,16 @@ export const zhCN: EagamiMessages = {
     expand: '展开',
     collapse: '折叠',
   },
+  validation: {
+    required: '此字段为必填项',
+    email: '请输入有效的电子邮件地址',
+    min: min => `不能小于 ${min}`,
+    max: max => `不能大于 ${max}`,
+    minlength: length => `至少需要 ${length} 个字符`,
+    maxlength: length => `最多 ${length} 个字符`,
+    pattern: '格式无效',
+    invalid: '值无效',
+  },
   wordmark: {
     overline: '匠心打造',
     tagline: '优雅的网页设计',

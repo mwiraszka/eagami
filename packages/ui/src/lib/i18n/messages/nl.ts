@@ -151,6 +151,16 @@ export const nl: EagamiMessages = {
     expand: 'Uitvouwen',
     collapse: 'Invouwen',
   },
+  validation: {
+    required: 'Dit veld is verplicht',
+    email: 'Voer een geldig e-mailadres in',
+    min: min => `Moet minimaal ${min} zijn`,
+    max: max => `Mag maximaal ${max} zijn`,
+    minlength: length => `Moet minimaal ${length} tekens bevatten`,
+    maxlength: length => `Mag maximaal ${length} tekens bevatten`,
+    pattern: 'Ongeldige indeling',
+    invalid: 'Ongeldige waarde',
+  },
   wordmark: {
     overline: 'handgemaakt door',
     tagline: 'elegant webontwerp',

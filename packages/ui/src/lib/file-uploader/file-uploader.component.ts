@@ -16,6 +16,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArchiveIconComponent } from '../icons/archive.component';
 import { FileTextIconComponent } from '../icons/file-text.component';
@@ -91,6 +95,8 @@ export class FileUploaderComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly size = input<FileUploaderSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
@@ -127,7 +133,12 @@ export class FileUploaderComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   protected readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-  protected readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  protected readonly errorText = this.errorState.error;
+  protected readonly hasError = this.errorState.hasError;
   protected readonly showError = this.hasError;
   protected readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

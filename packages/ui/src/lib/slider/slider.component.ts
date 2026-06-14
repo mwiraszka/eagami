@@ -15,6 +15,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -51,6 +55,8 @@ export class SliderComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Force the error-state styling without binding `errorMsg`. Lets consumers
    *  render the error text themselves (e.g. above the slider in a form layout)
    *  while still getting the built-in recolour of the fill and thumb. */
@@ -105,8 +111,13 @@ export class SliderComponent implements ControlValueAccessor {
       : `${value}`;
   }
 
-  readonly errored = computed(() => this.hasError() || !!this.errorMsg());
-  readonly showError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly errored = computed(() => this.hasError() || this.showError());
+  readonly showError = computed(() => this.errorText() !== null);
   /* Hint stays visible when the consumer is rendering the error elsewhere
      (`hasError=true` without `errorMsg`); only the slider's own inline message
      replaces it. */

@@ -12,10 +12,12 @@ export const RADIO_KNOBS: ComponentKnobs = {
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     disabled: { control: 'boolean' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Apple',
     size: 'md',
     disabled: false,
+    triggerError: false,
   },
 };

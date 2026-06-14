@@ -151,6 +151,16 @@ export const is: EagamiMessages = {
     expand: 'Fletta út',
     collapse: 'Fella saman',
   },
+  validation: {
+    required: 'Þennan reit þarf að fylla út',
+    email: 'Sláðu inn gilt netfang',
+    min: min => `Verður að vera að minnsta kosti ${min}`,
+    max: max => `Má mest vera ${max}`,
+    minlength: length => `Verður að innihalda að minnsta kosti ${length} stafi`,
+    maxlength: length => `Má mest innihalda ${length} stafi`,
+    pattern: 'Ógilt snið',
+    invalid: 'Ógilt gildi',
+  },
   wordmark: {
     overline: 'handunnið af',
     tagline: 'glæsileg vefhönnun',

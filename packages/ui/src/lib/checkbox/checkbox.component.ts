@@ -12,6 +12,10 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -49,6 +53,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   readonly count = input<string | number | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
@@ -64,7 +70,12 @@ export class CheckboxComponent implements ControlValueAccessor {
   private readonly _formDisabled = signal(false);
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

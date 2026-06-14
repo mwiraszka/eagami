@@ -151,6 +151,16 @@ export const ptBR: EagamiMessages = {
     expand: 'Expandir',
     collapse: 'Recolher',
   },
+  validation: {
+    required: 'Este campo é obrigatório',
+    email: 'Insira um e-mail válido',
+    min: min => `Deve ser no mínimo ${min}`,
+    max: max => `Deve ser no máximo ${max}`,
+    minlength: length => `Deve ter pelo menos ${length} caracteres`,
+    maxlength: length => `Deve ter no máximo ${length} caracteres`,
+    pattern: 'Formato inválido',
+    invalid: 'Valor inválido',
+  },
   wordmark: {
     overline: 'feito à mão por',
     tagline: 'web design elegante',

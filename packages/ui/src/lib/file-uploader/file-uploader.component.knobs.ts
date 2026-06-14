@@ -15,6 +15,7 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     rejected: { action: 'rejected' },
     fileRemoved: { action: 'fileRemoved' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Attachments',
@@ -23,5 +24,6 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
     showFileList: true,
     disabled: false,
     required: false,
+    triggerError: false,
   },
 };

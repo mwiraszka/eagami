@@ -23,6 +23,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Message',
@@ -35,5 +36,6 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    triggerError: false,
   },
 };
