@@ -17,6 +17,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
     completed: { action: 'completed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Verification code',
@@ -27,5 +28,6 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    triggerError: false,
   },
 };

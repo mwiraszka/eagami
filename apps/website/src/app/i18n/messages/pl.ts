@@ -837,6 +837,9 @@ export const pl: WebMessages = {
         colType: 'Typ',
         colDefault: 'Domyślnie',
         colDescription: 'Opis',
+        errorMessagesDescription:
+          'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
+        triggerErrorLabel: 'Wywołaj błąd',
         requiredBadge: 'wymagane',
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },

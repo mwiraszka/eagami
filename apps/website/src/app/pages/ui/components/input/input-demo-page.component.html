@@ -10,12 +10,12 @@
     (resetClicked)="reset()">
     <ea-input
       class="playground-field"
+      [formControl]="control"
       [icon]="iconComponent()"
       [label]="state().label"
       [placeholder]="state().placeholder"
       [size]="state().size"
       [type]="state().type"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required"
       [autofocus]="state().autofocus"

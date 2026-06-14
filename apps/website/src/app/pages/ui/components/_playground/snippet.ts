@@ -49,6 +49,11 @@ export function generateSnippet(
 
   for (const knob of knobs) {
     const value = state[knob.name];
+    // Demo-only controls (e.g. a validation trigger) drive the live preview but
+    // are not real component bindings, so they never appear in the snippet.
+    if (knob.demoOnly) {
+      continue;
+    }
     // Projected text content always renders, even at its default, since the
     // element would otherwise be empty.
     if (knob.control === 'content') {

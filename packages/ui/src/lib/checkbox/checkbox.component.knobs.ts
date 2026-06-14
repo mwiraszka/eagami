@@ -16,6 +16,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     indeterminate: { control: 'boolean' },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Accept terms and conditions',
@@ -24,5 +25,6 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
     disabled: false,
     required: false,
     indeterminate: false,
+    triggerError: false,
   },
 };

@@ -19,6 +19,7 @@ export const RATING_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     clearable: { control: 'boolean' },
     hoverChanged: { action: 'hoverChanged' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Rate your experience',
@@ -30,5 +31,6 @@ export const RATING_KNOBS: ComponentKnobs = {
     disabled: false,
     required: false,
     clearable: true,
+    triggerError: false,
   },
 };

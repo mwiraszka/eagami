@@ -28,6 +28,8 @@ export interface PlaygroundKnob {
   maxLength?: number;
   /** When set, the control is disabled unless the referenced knob matches. */
   condition?: KnobCondition;
+  /** Demo-only control; excluded from the generated code snippet. */
+  demoOnly?: boolean;
 }
 
 /** Whether a conditional knob is currently active given the live state. */
@@ -119,6 +121,7 @@ export function buildKnobs(
       step: argType?.step,
       maxLength: argType?.maxLength,
       condition: argType?.if,
+      demoOnly: argType?.demoOnly,
     });
   }
   return knobs;

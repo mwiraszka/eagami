@@ -35,6 +35,8 @@ export interface KnobArgType {
   maxLength?: number;
   /** Conditionally gate this knob on another knob's value. */
   if?: KnobCondition;
+  /** Demo-only control (e.g. a validation trigger); excluded from the generated code snippet. */
+  demoOnly?: boolean;
 }
 
 export interface ComponentKnobs {

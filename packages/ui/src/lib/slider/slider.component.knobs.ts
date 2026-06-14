@@ -21,6 +21,7 @@ export const SLIDER_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     hasError: { control: 'boolean' },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Volume',
@@ -34,5 +35,6 @@ export const SLIDER_KNOBS: ComponentKnobs = {
     disabled: false,
     required: false,
     hasError: false,
+    triggerError: false,
   },
 };

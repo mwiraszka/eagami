@@ -839,6 +839,9 @@ export const frFR: WebMessages = {
         colType: 'Type',
         colDefault: 'Défaut',
         colDescription: 'Description',
+        errorMessagesDescription:
+          "Remplace le message de validation par clé d'erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.",
+        triggerErrorLabel: 'Déclencher l’erreur',
         requiredBadge: 'requis',
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },

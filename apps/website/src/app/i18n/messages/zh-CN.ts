@@ -801,6 +801,9 @@ export const zhCN: WebMessages = {
         colType: '类型',
         colDefault: '默认值',
         colDescription: '描述',
+        errorMessagesDescription:
+          '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
+        triggerErrorLabel: '触发错误',
         requiredBadge: '必填',
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },

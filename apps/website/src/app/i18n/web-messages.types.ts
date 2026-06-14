@@ -689,6 +689,8 @@ export interface WebMessages {
         colType: string;
         colDefault: string;
         colDescription: string;
+        errorMessagesDescription: string;
+        triggerErrorLabel: string;
         requiredBadge: string;
         twoWayBadge: string;
         rangeHint: { between: string; min: string; max: string };

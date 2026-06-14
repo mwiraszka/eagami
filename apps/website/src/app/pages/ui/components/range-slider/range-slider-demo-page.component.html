@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-range-slider
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [hint]="state().hint"
@@ -20,7 +21,6 @@
       [showValue]="state().showValue"
       [showMinMaxLabels]="state().showMinMaxLabels"
       [groupThousands]="state().groupThousands"
-      [disabled]="state().disabled"
       [required]="state().required" />
   </web-component-playground>
 </web-ui-component-demo-layout>

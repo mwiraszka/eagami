@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-slider
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [size]="state().size"
@@ -18,7 +19,6 @@
       [showValue]="state().showValue"
       [showMinMaxLabels]="state().showMinMaxLabels"
       [groupThousands]="state().groupThousands"
-      [disabled]="state().disabled"
       [required]="state().required"
       [hasError]="state().hasError" />
   </web-component-playground>

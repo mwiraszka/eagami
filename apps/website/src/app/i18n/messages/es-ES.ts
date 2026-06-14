@@ -830,6 +830,9 @@ export const esES: WebMessages = {
         colType: 'Tipo',
         colDefault: 'Predeterminado',
         colDescription: 'Descripción',
+        errorMessagesDescription:
+          'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado.',
+        triggerErrorLabel: 'Provocar error',
         requiredBadge: 'obligatorio',
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },

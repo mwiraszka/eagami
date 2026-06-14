@@ -15,6 +15,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -63,6 +67,8 @@ export class RangeSliderComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly min = input<number>(0);
   readonly max = input<number>(100);
   readonly step = input<number>(1);
@@ -120,7 +126,12 @@ export class RangeSliderComponent implements ControlValueAccessor {
       : `${value}`;
   }
 
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

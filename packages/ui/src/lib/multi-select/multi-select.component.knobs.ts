@@ -18,6 +18,7 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     required: { control: 'boolean' },
     maxVisibleChips: { control: 'number', min: 0, max: 10, maxLength: 2 },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Fruits',
@@ -28,5 +29,6 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     readonly: false,
     required: false,
     maxVisibleChips: 0,
+    triggerError: false,
   },
 };

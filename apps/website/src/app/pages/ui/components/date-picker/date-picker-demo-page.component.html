@@ -9,12 +9,12 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-date-picker
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [placeholder]="state().placeholder"
       [size]="state().size"
       [format]="state().format"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required" />
   </web-component-playground>

@@ -16,6 +16,10 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import {
+  type EaErrorMessages,
+  injectControlErrorState,
+} from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
@@ -58,6 +62,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
+  /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
+  readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly minLength = input<number>(0);
   readonly maxResults = input<number>(10);
   readonly emptyMessage = input<string | undefined>(undefined);
@@ -85,7 +91,12 @@ export class AutocompleteComponent implements ControlValueAccessor {
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  readonly hasError = computed(() => !!this.errorMsg());
+  private readonly errorState = injectControlErrorState({
+    errorMsg: this.errorMsg,
+    errorMessages: this.errorMessages,
+  });
+  readonly errorText = this.errorState.error;
+  readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 

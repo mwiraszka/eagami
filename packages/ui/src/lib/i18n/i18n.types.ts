@@ -192,6 +192,16 @@ export interface EagamiMessages {
     expand: string;
     collapse: string;
   };
+  validation: {
+    required: string;
+    email: string;
+    min: (min: number) => string;
+    max: (max: number) => string;
+    minlength: (requiredLength: number) => string;
+    maxlength: (requiredLength: number) => string;
+    pattern: string;
+    invalid: string;
+  };
   wordmark: {
     overline: string;
     tagline: string;

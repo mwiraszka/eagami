@@ -10,12 +10,12 @@
     (resetClicked)="reset()">
     <div class="demo-code-input">
       <ea-code-input
+        [formControl]="control"
         [label]="state().label"
         [placeholder]="state().placeholder"
         [length]="state().length"
         [size]="state().size"
         [allowAllChars]="state().allowAllChars"
-        [disabled]="state().disabled"
         [readonly]="state().readonly"
         [required]="state().required" />
     </div>

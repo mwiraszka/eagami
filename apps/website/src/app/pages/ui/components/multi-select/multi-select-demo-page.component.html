@@ -10,13 +10,13 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-multi-select
+      [formControl]="control"
       class="playground-field"
       [options]="options()"
       [label]="state().label"
       [placeholder]="state().placeholder"
       [size]="state().size"
       [searchable]="state().searchable"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required"
       [maxVisibleChips]="state().maxVisibleChips" />

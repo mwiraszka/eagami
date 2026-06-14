@@ -14,11 +14,13 @@ export const SWITCH_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     changed: { action: 'changed' },
+    triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Toggle me',
     size: 'md',
     disabled: false,
     required: false,
+    triggerError: false,
   },
 };

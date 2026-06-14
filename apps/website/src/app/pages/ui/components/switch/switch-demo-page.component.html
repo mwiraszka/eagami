@@ -9,9 +9,9 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-switch
+      [formControl]="control"
       [label]="state().label"
       [size]="state().size"
-      [disabled]="state().disabled"
       [required]="state().required" />
   </web-component-playground>
 </web-ui-component-demo-layout>

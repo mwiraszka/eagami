@@ -32,6 +32,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     autofocus: { control: 'boolean' },
     showPasswordToggle: { control: 'boolean', if: { arg: 'type', eq: 'password' } },
     clearable: { control: 'boolean' },
+    triggerError: { control: 'boolean', demoOnly: true },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
   },
@@ -46,5 +47,6 @@ export const INPUT_KNOBS: ComponentKnobs = {
     autofocus: false,
     showPasswordToggle: true,
     clearable: false,
+    triggerError: false,
   },
 };

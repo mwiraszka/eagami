@@ -837,6 +837,9 @@ export const de: WebMessages = {
         colType: 'Typ',
         colDefault: 'Standard',
         colDescription: 'Beschreibung',
+        errorMessagesDescription:
+          'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung.',
+        triggerErrorLabel: 'Fehler auslösen',
         requiredBadge: 'erforderlich',
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min', max: 'Max' },

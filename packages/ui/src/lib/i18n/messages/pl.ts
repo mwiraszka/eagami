@@ -151,6 +151,16 @@ export const pl: EagamiMessages = {
     expand: 'Rozwiń',
     collapse: 'Zwiń',
   },
+  validation: {
+    required: 'To pole jest wymagane',
+    email: 'Podaj prawidłowy adres e-mail',
+    min: min => `Musi wynosić co najmniej ${min}`,
+    max: max => `Może wynosić najwyżej ${max}`,
+    minlength: length => `Musi mieć co najmniej ${length} znaków`,
+    maxlength: length => `Może mieć najwyżej ${length} znaków`,
+    pattern: 'Nieprawidłowy format',
+    invalid: 'Nieprawidłowa wartość',
+  },
   wordmark: {
     overline: 'ręcznie wykonane przez',
     tagline: 'elegancki projekt stron',

@@ -100,8 +100,15 @@ export class ComponentPlaygroundComponent {
   });
 
   protected knobLabel(name: string): string {
-    const labels = this.messages().ui.component.playground.knobLabels[this.slug()];
-    return labels?.[name] ?? humanizeKnobName(name);
+    const playground = this.messages().ui.component.playground;
+    const label = playground.knobLabels[this.slug()]?.[name];
+    if (label) {
+      return label;
+    }
+    // The shared demo-only error trigger isn't in any component's label map.
+    return name === 'triggerError'
+      ? playground.triggerErrorLabel
+      : humanizeKnobName(name);
   }
 
   protected optionsFor(name: string): SelectOption[] {

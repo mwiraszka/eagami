@@ -831,6 +831,9 @@ export const is: WebMessages = {
         colType: 'Tegund',
         colDefault: 'Sjálfgefið',
         colDescription: 'Lýsing',
+        errorMessagesDescription:
+          'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð.',
+        triggerErrorLabel: 'Sýna villu',
         requiredBadge: 'krafist',
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },

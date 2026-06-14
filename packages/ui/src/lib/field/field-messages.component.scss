@@ -21,6 +21,8 @@
 
 .ea-field-messages__icon {
   flex-shrink: 0;
-  width: 0.875em;
-  height: 0.875em;
+  // The icon's own host sets width/height in em off its font-size, so scale it
+  // here (a class width/height would lose to that inline host style). 1.2em
+  // makes the glyph a touch larger than the message text without dominating it.
+  font-size: 1.2em;
 }
