@@ -9,13 +9,13 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-rating
+      [formControl]="control"
       [label]="state().label"
       [size]="state().size"
       [min]="state().min"
       [max]="state().max"
       [allowHalf]="state().allowHalf"
       [readonly]="state().readonly"
-      [disabled]="state().disabled"
       [required]="state().required"
       [clearable]="state().clearable"
       [iconClass]="iconComponent()"

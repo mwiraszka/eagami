@@ -828,6 +828,9 @@ export const nl: WebMessages = {
         colType: 'Type',
         colDefault: 'Standaard',
         colDescription: 'Beschrijving',
+        errorMessagesDescription:
+          'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard.',
+        triggerErrorLabel: 'Fout activeren',
         requiredBadge: 'verplicht',
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },

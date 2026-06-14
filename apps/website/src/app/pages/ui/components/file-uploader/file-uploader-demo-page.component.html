@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-file-uploader
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [accept]="state().accept || undefined"
@@ -16,7 +17,6 @@
       [maxFiles]="state().maxFiles || undefined"
       [maxSize]="state().maxSize || undefined"
       [showFileList]="state().showFileList"
-      [disabled]="state().disabled"
       [required]="state().required" />
   </web-component-playground>
 </web-ui-component-demo-layout>

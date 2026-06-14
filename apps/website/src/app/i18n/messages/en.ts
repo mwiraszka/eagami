@@ -819,6 +819,9 @@ export const en: WebMessages = {
         colType: 'Type',
         colDefault: 'Default',
         colDescription: 'Description',
+        errorMessagesDescription:
+          'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
+        triggerErrorLabel: 'Trigger error',
         requiredBadge: 'required',
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },

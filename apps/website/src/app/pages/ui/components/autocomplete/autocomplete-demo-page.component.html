@@ -10,6 +10,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-autocomplete
+      [formControl]="control"
       class="playground-field"
       [options]="options()"
       [label]="state().label"
@@ -17,7 +18,6 @@
       [size]="state().size"
       [minLength]="state().minLength"
       [maxResults]="state().maxResults"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required" />
 

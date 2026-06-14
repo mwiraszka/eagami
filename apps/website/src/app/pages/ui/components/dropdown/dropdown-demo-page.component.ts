@@ -5,9 +5,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -29,6 +31,7 @@ interface DropdownKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  triggerError: boolean;
 }
 
 const SLUG = 'dropdown';
@@ -38,6 +41,7 @@ const SLUG = 'dropdown';
   templateUrl: './dropdown-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ReactiveFormsModule,
     DropdownComponent,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
@@ -62,6 +66,29 @@ export class DropdownDemoPageComponent {
       .join(', ');
     return [`[options]="[${literal}]"`];
   });
+
+  protected readonly control = new FormControl(null, {
+    validators: () => (this.state().triggerError ? { required: true } : null),
+  });
+
+  constructor() {
+    // The demo-only `triggerError` knob forces a validation error for as long
+    // as it stays on, so the localized message persists no matter what value is
+    // entered or which other controls change.
+    effect(() => {
+      if (this.state().disabled) {
+        this.control.disable({ emitEvent: false });
+      } else {
+        this.control.enable({ emitEvent: false });
+      }
+      this.control.updateValueAndValidity({ emitEvent: false });
+      if (this.state().triggerError) {
+        this.control.markAsTouched();
+      } else {
+        this.control.markAsUntouched();
+      }
+    });
+  }
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as DropdownKnobState);

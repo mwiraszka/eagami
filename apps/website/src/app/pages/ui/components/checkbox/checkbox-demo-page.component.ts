@@ -1,7 +1,8 @@
 import { CheckboxComponent, type CheckboxSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -22,6 +23,7 @@ interface CheckboxKnobState {
   disabled: boolean;
   required: boolean;
   indeterminate: boolean;
+  triggerError: boolean;
 }
 
 const SLUG = 'checkbox';
@@ -31,6 +33,7 @@ const SLUG = 'checkbox';
   templateUrl: './checkbox-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ReactiveFormsModule,
     CheckboxComponent,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
@@ -42,6 +45,29 @@ export class CheckboxDemoPageComponent {
   protected readonly state = signal<CheckboxKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.checkbox) as CheckboxKnobState,
   );
+
+  protected readonly control = new FormControl(null, {
+    validators: () => (this.state().triggerError ? { required: true } : null),
+  });
+
+  constructor() {
+    // The demo-only `triggerError` knob forces a validation error for as long
+    // as it stays on, so the localized message persists no matter what value is
+    // entered or which other controls change.
+    effect(() => {
+      if (this.state().disabled) {
+        this.control.disable({ emitEvent: false });
+      } else {
+        this.control.enable({ emitEvent: false });
+      }
+      this.control.updateValueAndValidity({ emitEvent: false });
+      if (this.state().triggerError) {
+        this.control.markAsTouched();
+      } else {
+        this.control.markAsUntouched();
+      }
+    });
+  }
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

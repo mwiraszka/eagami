@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-textarea
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [placeholder]="state().placeholder"
@@ -17,7 +18,6 @@
       [maxlength]="state().maxlength"
       [minHeight]="state().minHeight"
       [maxHeight]="state().maxHeight"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required" />
   </web-component-playground>

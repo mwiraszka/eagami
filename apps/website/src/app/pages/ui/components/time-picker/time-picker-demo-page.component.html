@@ -9,6 +9,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-time-picker
+      [formControl]="control"
       class="playground-field"
       [label]="state().label"
       [placeholder]="state().placeholder"
@@ -16,7 +17,6 @@
       [format]="state().format"
       [includeSeconds]="state().includeSeconds"
       [minuteStep]="state().minuteStep"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required" />
   </web-component-playground>

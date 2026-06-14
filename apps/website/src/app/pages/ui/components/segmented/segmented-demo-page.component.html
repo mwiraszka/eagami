@@ -10,11 +10,11 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-segmented
+      [formControl]="control"
       [options]="options()"
       [label]="state().label"
       [size]="state().size"
       [fullWidth]="state().fullWidth"
-      [disabled]="state().disabled"
       [required]="state().required" />
   </web-component-playground>
 </web-ui-component-demo-layout>

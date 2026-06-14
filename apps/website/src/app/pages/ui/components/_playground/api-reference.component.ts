@@ -72,9 +72,14 @@ export class ApiReferenceComponent {
   });
 
   protected describe(name: unknown): string {
-    return (
-      this.messages().ui.component.playground.descriptions[this.slug()]?.[String(name)] ??
-      ''
-    );
+    const key = String(name);
+    const playground = this.messages().ui.component.playground;
+    const described = playground.descriptions[this.slug()]?.[key];
+    if (described) {
+      return described;
+    }
+    // Every form control exposes the same errorMessages input, so it shares one
+    // description rather than repeating it in every component's dictionary.
+    return key === 'errorMessages' ? playground.errorMessagesDescription : '';
   }
 }

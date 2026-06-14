@@ -9,12 +9,12 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-radio-group
+      [formControl]="control"
       value="apple"
       [size]="state().size">
       <ea-radio
         value="apple"
-        [label]="state().label"
-        [disabled]="state().disabled" />
+        [label]="state().label" />
     </ea-radio-group>
   </web-component-playground>
 </web-ui-component-demo-layout>

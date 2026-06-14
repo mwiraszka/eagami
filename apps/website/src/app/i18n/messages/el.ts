@@ -837,6 +837,9 @@ export const el: WebMessages = {
         colType: 'Τύπος',
         colDefault: 'Προεπιλογή',
         colDescription: 'Περιγραφή',
+        errorMessagesDescription:
+          'Παρακάμπτει το μήνυμα επικύρωσης ανά κλειδί σφάλματος για ένα συνδεδεμένο στοιχείο φόρμας· τα κλειδιά που δεν ορίζονται χρησιμοποιούν την προεπιλεγμένη τοπική τιμή.',
+        triggerErrorLabel: 'Πρόκληση σφάλματος',
         requiredBadge: 'υποχρεωτικό',
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },

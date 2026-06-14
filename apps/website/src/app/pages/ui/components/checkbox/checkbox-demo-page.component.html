@@ -9,10 +9,10 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-checkbox
+      [formControl]="control"
       [label]="state().label"
       [count]="state().count"
       [size]="state().size"
-      [disabled]="state().disabled"
       [required]="state().required"
       [indeterminate]="state().indeterminate" />
   </web-component-playground>

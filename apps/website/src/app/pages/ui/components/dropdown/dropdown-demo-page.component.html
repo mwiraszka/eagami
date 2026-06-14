@@ -10,12 +10,12 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-dropdown
+      [formControl]="control"
       class="playground-field"
       [options]="options()"
       [label]="state().label"
       [placeholder]="state().placeholder"
       [size]="state().size"
-      [disabled]="state().disabled"
       [readonly]="state().readonly"
       [required]="state().required" />
   </web-component-playground>

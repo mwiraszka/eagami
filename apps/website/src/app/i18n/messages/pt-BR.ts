@@ -829,6 +829,9 @@ export const ptBR: WebMessages = {
         colType: 'Tipo',
         colDefault: 'Padrão',
         colDescription: 'Descrição',
+        errorMessagesDescription:
+          'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
+        triggerErrorLabel: 'Provocar erro',
         requiredBadge: 'obrigatório',
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
