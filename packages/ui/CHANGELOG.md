@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2026-06-14
+
+### Added
+
+- Integrate every form control with Angular reactive and template-driven forms, so validation errors surface automatically once a field is invalid and touched, with localized default messages for the standard validators.
+- Add an `errorMessages` input to every form control for overriding the validation text per error key.
+
+### Changed
+
+- Enlarge the field-level error icon slightly so it reads more clearly alongside the message.
+
 ## [3.0.0] - 2026-06-13
 
 ### Added
@@ -737,6 +748,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[3.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v3.0.0...ui-v3.1.0
 [3.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.12.0...ui-v3.0.0
 [2.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.11.0...ui-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v2.10.0...ui-v2.11.0

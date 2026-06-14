@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.1.0] - 2026-06-14
+
+### Added
+
+- Add a live validation control to every form component's playground so the localized error messages can be tried out interactively and switched between languages.
+
+### Changed
+
+- Document the `errorMessages` input on each form component's API reference.
+- Pick up @eagami/ui v3.1.0.
+
 ## [3.0.0] - 2026-06-13
 
 ### Added
@@ -574,6 +585,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.1.0]: https://github.com/mwiraszka/eagami/compare/website-v3.0.0...website-v3.1.0
 [3.0.0]: https://github.com/mwiraszka/eagami/compare/website-v2.12.0...website-v3.0.0
 [2.12.0]: https://github.com/mwiraszka/eagami/compare/website-v2.11.0...website-v2.12.0
 [2.11.0]: https://github.com/mwiraszka/eagami/compare/website-v2.10.0...website-v2.11.0
