@@ -5,12 +5,13 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc/spec",
     "rootDir": "./src",
-    "types": ["jest"],
+    "types": ["vitest/globals"],
     "moduleResolution": "bundler",
     "isolatedModules": true
   },
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/test-setup.ts"
   ]
 }
