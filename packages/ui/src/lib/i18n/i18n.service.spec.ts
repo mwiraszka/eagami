@@ -40,7 +40,7 @@ describe('EagamiI18nService', () => {
   it('resolves parameterized messages per locale', () => {
     const service = createService({ locale: 'pl' });
 
-    expect(service.messages().paginator.range(1, 10, 120)).toBe('1–10 z 120');
+    expect(service.messages().paginator.range('1', '10', '120')).toBe('1–10 z 120');
     expect(service.messages().codeInput.digitLabel(2, 6)).toBe('Cyfra 2 z 6');
   });
 

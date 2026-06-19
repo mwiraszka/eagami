@@ -132,7 +132,7 @@ describe('TextareaComponent', () => {
     });
 
     it('emits focused output on focus', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.focused.subscribe(spy);
 
       getTextarea().dispatchEvent(new FocusEvent('focus'));
@@ -141,7 +141,7 @@ describe('TextareaComponent', () => {
     });
 
     it('emits blurred output on blur', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.blurred.subscribe(spy);
 
       getTextarea().dispatchEvent(new FocusEvent('blur'));
@@ -209,7 +209,7 @@ describe('TextareaComponent', () => {
     });
 
     it('calls onChange on input', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
 
       const textarea = getTextarea();
@@ -220,7 +220,7 @@ describe('TextareaComponent', () => {
     });
 
     it('calls onTouched on blur', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
 
       getTextarea().dispatchEvent(new FocusEvent('blur'));

@@ -211,7 +211,7 @@ describe('PaginatorComponent', () => {
     });
 
     it('emits changed on page size change', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getSelect()!.value = '50';
@@ -236,7 +236,7 @@ describe('PaginatorComponent', () => {
 
   describe('Events', () => {
     it('emits changed on next click', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getNextBtn().click();
@@ -251,7 +251,7 @@ describe('PaginatorComponent', () => {
       component.page.set(3);
       fixture.detectChanges();
 
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getPrevBtn().click();
@@ -263,7 +263,7 @@ describe('PaginatorComponent', () => {
     });
 
     it('emits changed on page button click', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       const page2 = getPageButtons().find(btn => btn.textContent?.trim() === '2');
@@ -276,7 +276,7 @@ describe('PaginatorComponent', () => {
     });
 
     it('does not emit when clicking the already-active page', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getActivePageButton()?.click();

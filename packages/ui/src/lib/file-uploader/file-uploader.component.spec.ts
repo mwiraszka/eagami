@@ -294,7 +294,7 @@ describe('FileUploaderComponent', () => {
   describe('A11y', () => {
     it('opens the picker on Enter and Space, ignoring other keys', () => {
       const inputEl = getFileInput();
-      const clickSpy = jest.spyOn(inputEl, 'click');
+      const clickSpy = vi.spyOn(inputEl, 'click');
       getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
       getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
       getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));

@@ -1,4 +1,4 @@
-import { axe } from 'jest-axe';
+import { axe } from 'vitest-axe';
 
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -7,10 +7,10 @@ import { DrawerComponent } from './drawer.component';
 
 // jsdom lacks HTMLDialogElement showModal/close; stub them so the drawer opens and axe can see it
 beforeAll(() => {
-  HTMLDialogElement.prototype.showModal = jest.fn(function (this: HTMLDialogElement) {
+  HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
-  HTMLDialogElement.prototype.close = jest.fn(function (this: HTMLDialogElement) {
+  HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
 });

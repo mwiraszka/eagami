@@ -52,7 +52,9 @@ describe('StepperComponent', () => {
 
   function getButtons(): HTMLButtonElement[] {
     return Array.from(
-      fixture.nativeElement.querySelectorAll<HTMLButtonElement>('.ea-stepper__button'),
+      (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLButtonElement>(
+        '.ea-stepper__button',
+      ),
     );
   }
 

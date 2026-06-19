@@ -69,7 +69,7 @@ describe('SegmentedComponent', () => {
     });
 
     it('emits changed output', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getOptions()[1].click();

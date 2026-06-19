@@ -13,7 +13,7 @@
       "prefix": "ea",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "ng-package.json"
           },
@@ -26,6 +26,34 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "test-build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "polyfills": ["zone.js"]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "eagami-ui:test-build",
+            "tsConfig": "tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["src/test-setup.ts"],
+            "coverageReporters": ["text-summary", "lcov"],
+            "coverageExclude": [
+              "src/lib/**/*.stories.ts",
+              "src/**/*.spec.ts",
+              "src/lib/icons/**"
+            ],
+            "coverageThresholds": {
+              "statements": 80,
+              "branches": 60,
+              "functions": 80,
+              "lines": 80
+            }
+          }
         },
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
@@ -63,7 +91,11 @@
             "tsConfig": ".storybook/tsconfig.json",
             "styles": ["src/styles/eagami-ui.scss"],
             "assets": [
-              { "glob": "**/*", "input": "assets", "output": "assets" }
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
+              }
             ]
           }
         }

@@ -51,6 +51,16 @@ describe('TooltipDirective', () => {
     fixture = TestBed.createComponent(TestHostComponent);
     host = fixture.componentInstance;
     fixture.detectChanges();
+
+    // jsdom exposes `elementFromPoint` but it can't hit-test without layout (always
+    // returns null), which would make the directive's occlusion check hide the tooltip
+    // the moment it shows. Report the trigger so the check sees it as visible, not
+    // occluded; the occlusion test overrides this to simulate a covering element.
+    (
+      document as Document & {
+        elementFromPoint: (x: number, y: number) => Element | null;
+      }
+    ).elementFromPoint = () => getButton();
   });
 
   afterEach(() => {
@@ -80,6 +90,10 @@ describe('TooltipDirective', () => {
     });
 
     it('renders on focus', () => {
+      // The directive only shows on focus when the trigger is :focus-visible (keyboard
+      // focus). jsdom can't produce that state for a dispatched event, so simulate it.
+      vi.spyOn(getButton(), 'matches').mockReturnValue(true);
+
       getButton().dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       fixture.detectChanges();
 
@@ -200,7 +214,7 @@ describe('TooltipDirective', () => {
 
   describe('Occlusion', () => {
     it('hides the tooltip when the trigger is covered by another element', () => {
-      jest.useFakeTimers();
+      vi.useFakeTimers();
 
       // jsdom has no `elementFromPoint`; stub it to return document.body so the hit-test
       // sees the trigger as occluded.
@@ -221,7 +235,7 @@ describe('TooltipDirective', () => {
 
       // Resize triggers a reposition; flush the rAF callback that schedules positionTooltip then hide
       window.dispatchEvent(new Event('resize'));
-      jest.runOnlyPendingTimers();
+      vi.runOnlyPendingTimers();
       fixture.detectChanges();
 
       expect(getTooltip()).toBeNull();
@@ -231,7 +245,7 @@ describe('TooltipDirective', () => {
           elementFromPoint?: (x: number, y: number) => Element | null;
         }
       ).elementFromPoint = originalElementFromPoint;
-      jest.useRealTimers();
+      vi.useRealTimers();
     });
   });
 });

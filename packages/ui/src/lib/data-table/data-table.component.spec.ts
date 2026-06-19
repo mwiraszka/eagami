@@ -256,7 +256,7 @@ describe('DataTableComponent', () => {
     });
 
     it('emits sorted on header click', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.sorted.subscribe(spy);
 
       getHeaderCells()[1].click();

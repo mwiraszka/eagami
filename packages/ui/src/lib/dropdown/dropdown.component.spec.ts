@@ -117,7 +117,7 @@ describe('DropdownComponent', () => {
     });
 
     it('emits changed event on selection', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       getTrigger().click();
       fixture.detectChanges();
@@ -217,7 +217,7 @@ describe('DropdownComponent', () => {
     });
 
     it('calls onChange on selection', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
       getTrigger().click();
       fixture.detectChanges();

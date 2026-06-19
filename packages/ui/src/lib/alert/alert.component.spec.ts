@@ -88,7 +88,7 @@ describe('AlertComponent', () => {
     });
 
     it('emits dismissed when close button is clicked', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.dismissed.subscribe(spy);
       fixture.componentRef.setInput('dismissible', true);
       fixture.detectChanges();

@@ -78,17 +78,17 @@ describe('ToastComponent', () => {
   });
 
   it('auto-dismisses after the configured duration', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     toastService.show('disappearing', { duration: 1000 });
     fixture.detectChanges();
 
     expect(getToasts()).toHaveLength(1);
 
-    jest.advanceTimersByTime(1000);
+    vi.advanceTimersByTime(1000);
     fixture.detectChanges();
 
     expect(getContainer()).toBeNull();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('renders the toast message', () => {

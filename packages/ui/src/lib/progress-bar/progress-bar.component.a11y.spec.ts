@@ -1,4 +1,4 @@
-import { axe } from 'jest-axe';
+import { axe } from 'vitest-axe';
 
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -13,7 +13,6 @@ import { ProgressBarComponent, type ProgressBarVariant } from './progress-bar.co
       [max]="max"
       [variant]="variant"
       [label]="label"
-      [showValue]="showValue"
       [indeterminate]="indeterminate" />
   `,
 })
@@ -22,7 +21,6 @@ class HostComponent {
   max = 100;
   variant: ProgressBarVariant = 'default';
   label: string | undefined = 'Uploading files';
-  showValue = false;
   indeterminate = false;
 }
 
@@ -39,14 +37,6 @@ describe('ProgressBarComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
-
-    const results = await axe(el);
-
-    expect(results).toHaveNoViolations();
-  });
-
-  it('has no detectable violations with the value visible', async () => {
-    const el = await render(host => (host.showValue = true));
 
     const results = await axe(el);
 

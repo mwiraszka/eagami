@@ -207,7 +207,7 @@ describe('ColorPickerComponent', () => {
 
   describe('Emission and CVA', () => {
     it('emits the new value via changed on preset click', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       open();
 
@@ -219,7 +219,7 @@ describe('ColorPickerComponent', () => {
     });
 
     it('calls onChange with the formatted value', () => {
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       open();
 
@@ -233,7 +233,7 @@ describe('ColorPickerComponent', () => {
     it('respects the format input when emitting', () => {
       fixture.componentRef.setInput('format', 'rgb');
       fixture.componentRef.setInput('showAlpha', false);
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       fixture.detectChanges();
       open();
@@ -658,7 +658,7 @@ describe('ColorPickerComponent', () => {
   describe('Format emission', () => {
     it('emits HSL when format is hsl', () => {
       fixture.componentRef.setInput('format', 'hsl');
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       fixture.detectChanges();
 
@@ -669,7 +669,7 @@ describe('ColorPickerComponent', () => {
 
     it('emits rgba when format=rgb and alpha < 1', () => {
       fixture.componentRef.setInput('format', 'rgb');
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       fixture.detectChanges();
 
@@ -720,7 +720,7 @@ describe('ColorPickerComponent', () => {
     });
 
     it('close() is a no-op when not open', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
       component.close();
       expect(onTouched).not.toHaveBeenCalled();

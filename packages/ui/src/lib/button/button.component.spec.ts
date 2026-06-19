@@ -120,7 +120,7 @@ describe('ButtonComponent', () => {
 
   describe('Click handling', () => {
     it('emits clicked on click', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.clicked.subscribe(spy);
       getButton().click();
       expect(spy).toHaveBeenCalledTimes(1);
@@ -129,7 +129,7 @@ describe('ButtonComponent', () => {
     it('does not emit clicked when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.clicked.subscribe(spy);
       getButton().click();
       expect(spy).not.toHaveBeenCalled();
@@ -138,7 +138,7 @@ describe('ButtonComponent', () => {
     it('does not emit clicked when loading', () => {
       fixture.componentRef.setInput('loading', true);
       fixture.detectChanges();
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.clicked.subscribe(spy);
       getButton().click();
       expect(spy).not.toHaveBeenCalled();
@@ -148,7 +148,7 @@ describe('ButtonComponent', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
       const event = new MouseEvent('click');
-      const preventSpy = jest.spyOn(event, 'preventDefault');
+      const preventSpy = vi.spyOn(event, 'preventDefault');
       component.handleClick(event);
       expect(preventSpy).toHaveBeenCalled();
     });

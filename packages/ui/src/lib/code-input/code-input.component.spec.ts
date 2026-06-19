@@ -133,7 +133,7 @@ describe('CodeInputComponent', () => {
 
     it('auto-advances focus to next input after typing', () => {
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[1], 'focus');
+      const focusSpy = vi.spyOn(inputs[1], 'focus');
       typeDigit(inputs[0], '1');
       expect(focusSpy).toHaveBeenCalled();
     });
@@ -152,7 +152,7 @@ describe('CodeInputComponent', () => {
       component.value.set('12');
       fixture.detectChanges();
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[1], 'focus');
+      const focusSpy = vi.spyOn(inputs[1], 'focus');
       inputs[2].dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace' }));
       expect(focusSpy).toHaveBeenCalled();
     });
@@ -161,21 +161,21 @@ describe('CodeInputComponent', () => {
   describe('Arrow key navigation', () => {
     it('moves focus left on ArrowLeft', () => {
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[0], 'focus');
+      const focusSpy = vi.spyOn(inputs[0], 'focus');
       inputs[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
       expect(focusSpy).toHaveBeenCalled();
     });
 
     it('moves focus right on ArrowRight', () => {
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[2], 'focus');
+      const focusSpy = vi.spyOn(inputs[2], 'focus');
       inputs[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
       expect(focusSpy).toHaveBeenCalled();
     });
 
     it('does not move left past the first input', () => {
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[0], 'focus');
+      const focusSpy = vi.spyOn(inputs[0], 'focus');
       inputs[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
       expect(focusSpy).not.toHaveBeenCalled();
     });
@@ -208,7 +208,7 @@ describe('CodeInputComponent', () => {
     });
 
     it('emits completed when paste fills all digits', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.completed.subscribe(spy);
       const inputs = getDigitInputs();
       inputs[0].dispatchEvent(createPasteEvent('123456'));
@@ -218,7 +218,7 @@ describe('CodeInputComponent', () => {
 
   describe('Completed output', () => {
     it('emits completed when the last digit is entered', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.completed.subscribe(spy);
       component.value.set('12345');
       fixture.detectChanges();
@@ -228,7 +228,7 @@ describe('CodeInputComponent', () => {
     });
 
     it('does not emit completed for partial input', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.completed.subscribe(spy);
       const inputs = getDigitInputs();
       typeDigit(inputs[0], '1');
@@ -243,7 +243,7 @@ describe('CodeInputComponent', () => {
     });
 
     it('calls onChange when user types', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
       const inputs = getDigitInputs();
       typeDigit(inputs[0], '9');
@@ -251,7 +251,7 @@ describe('CodeInputComponent', () => {
     });
 
     it('calls onTouched on blur', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
       getDigitInputs()[0].dispatchEvent(new FocusEvent('blur'));
       expect(onTouched).toHaveBeenCalled();
@@ -298,7 +298,7 @@ describe('CodeInputComponent', () => {
       component.value.set('12');
       fixture.detectChanges();
       const inputs = getDigitInputs();
-      const focusSpy = jest.spyOn(inputs[2], 'focus');
+      const focusSpy = vi.spyOn(inputs[2], 'focus');
       component.focus();
       expect(focusSpy).toHaveBeenCalled();
     });

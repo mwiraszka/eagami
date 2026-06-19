@@ -130,7 +130,7 @@ describe('RadioGroup + Radio', () => {
     it('calls onChange when a radio is selected', () => {
       const group = fixture.debugElement.children[0]
         .componentInstance as RadioGroupComponent;
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       group.registerOnChange(onChange);
       getRadios()[0].click();
       expect(onChange).toHaveBeenCalledWith('a');

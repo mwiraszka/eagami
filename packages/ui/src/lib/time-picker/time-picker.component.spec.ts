@@ -217,7 +217,7 @@ describe('TimePickerComponent', () => {
     });
 
     it('emits changed on each step', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       component.writeValue('09:30');
       getTrigger().click();
@@ -626,7 +626,7 @@ describe('TimePickerComponent', () => {
     });
 
     it('calls onChange on step', () => {
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       component.writeValue('09:30');
       getTrigger().click();
@@ -639,7 +639,7 @@ describe('TimePickerComponent', () => {
     });
 
     it('calls onChange with null on clear', () => {
-      const onChange: jest.Mock<void, [string | null]> = jest.fn();
+      const onChange = vi.fn<(value: string | null) => void>();
       component.registerOnChange(onChange);
       component.writeValue('09:30');
       fixture.detectChanges();
