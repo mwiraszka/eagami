@@ -12,6 +12,7 @@
     <ea-breadcrumbs
       [items]="items()"
       [separator]="state().separator"
-      [aria-label]="state().ariaLabel || undefined" />
+      [aria-label]="state().ariaLabel || undefined"
+      (clicked)="onBreadcrumbClick($event)" />
   </web-component-playground>
 </web-ui-component-demo-layout>

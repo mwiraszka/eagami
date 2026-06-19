@@ -1,4 +1,5 @@
 import {
+  type BreadcrumbClickEvent,
   type BreadcrumbItem,
   BreadcrumbsComponent,
   type BreadcrumbsSeparator,
@@ -61,6 +62,10 @@ export class BreadcrumbsDemoPageComponent {
       { label: shared.breadcrumbMacBookPro },
     ];
   });
+
+  protected onBreadcrumbClick(event: BreadcrumbClickEvent): void {
+    event.event.preventDefault();
+  }
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as BreadcrumbsKnobState);
