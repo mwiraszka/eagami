@@ -1,12 +1,13 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+/// <reference types="node" />
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { WCAG_AA, contrastRatio } from './contrast';
 
 // Guards the library's brand tokens against WCAG AA failures. Parses the live SCSS
 // rather than mirroring values so any tweak to `_colors.scss` runs through these bars.
 const COLORS_SCSS = readFileSync(
-  join(__dirname, '../../styles/tokens/_colors.scss'),
+  join(process.cwd(), 'src/styles/tokens/_colors.scss'),
   'utf8',
 );
 

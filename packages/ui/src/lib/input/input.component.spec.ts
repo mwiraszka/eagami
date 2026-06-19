@@ -145,7 +145,7 @@ describe('InputComponent', () => {
     });
 
     it('calls onChange when user types', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
       const input = getNativeInput();
       input.value = 'new value';
@@ -154,7 +154,7 @@ describe('InputComponent', () => {
     });
 
     it('calls onTouched on blur', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
       getNativeInput().dispatchEvent(new FocusEvent('blur'));
       expect(onTouched).toHaveBeenCalled();
@@ -275,14 +275,14 @@ describe('InputComponent', () => {
     });
 
     it('emits focused on focus', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.focused.subscribe(spy);
       getNativeInput().dispatchEvent(new FocusEvent('focus'));
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('emits blurred on blur', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.blurred.subscribe(spy);
       getNativeInput().dispatchEvent(new FocusEvent('blur'));
       expect(spy).toHaveBeenCalledTimes(1);
@@ -385,7 +385,7 @@ describe('InputComponent', () => {
 
   describe('Programmatic focus', () => {
     it('exposes a focus() method that focuses the native input', () => {
-      const spy = jest.spyOn(getNativeInput(), 'focus');
+      const spy = vi.spyOn(getNativeInput(), 'focus');
       component.focus();
       expect(spy).toHaveBeenCalled();
     });

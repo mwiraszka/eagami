@@ -1,4 +1,4 @@
-import { axe } from 'jest-axe';
+import { axe } from 'vitest-axe';
 
 import { Component, signal, viewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';

@@ -6,13 +6,13 @@ describe('ToastService', () => {
   let service: ToastService;
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     TestBed.configureTestingModule({});
     service = TestBed.inject(ToastService);
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   describe('show', () => {
@@ -49,7 +49,7 @@ describe('ToastService', () => {
 
       expect(service.toasts()).toHaveLength(1);
 
-      jest.advanceTimersByTime(1500);
+      vi.advanceTimersByTime(1500);
 
       expect(service.toasts()).toHaveLength(0);
     });
@@ -57,7 +57,7 @@ describe('ToastService', () => {
     it('does not auto-dismiss when duration is 0', () => {
       service.show('Sticky', { duration: 0 });
 
-      jest.advanceTimersByTime(60_000);
+      vi.advanceTimersByTime(60_000);
 
       expect(service.toasts()).toHaveLength(1);
     });

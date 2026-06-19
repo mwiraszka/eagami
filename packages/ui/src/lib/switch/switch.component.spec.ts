@@ -80,7 +80,7 @@ describe('SwitchComponent', () => {
     });
 
     it('emits changed event with the new value', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
 
       getInput().click();
@@ -214,7 +214,7 @@ describe('SwitchComponent', () => {
     });
 
     it('calls onChange when toggled', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
 
       getInput().click();
@@ -223,7 +223,7 @@ describe('SwitchComponent', () => {
     });
 
     it('calls onTouched when toggled', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
 
       getInput().click();

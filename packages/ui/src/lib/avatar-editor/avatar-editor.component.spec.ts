@@ -70,14 +70,14 @@ function createMockFileReader(): MockFileReaderInstance {
 }
 
 const mockCtx = {
-  clearRect: jest.fn(),
-  fillRect: jest.fn(),
-  drawImage: jest.fn(),
-  beginPath: jest.fn(),
-  arc: jest.fn(),
-  fill: jest.fn(),
-  closePath: jest.fn(),
-  clip: jest.fn(),
+  clearRect: vi.fn(),
+  fillRect: vi.fn(),
+  drawImage: vi.fn(),
+  beginPath: vi.fn(),
+  arc: vi.fn(),
+  fill: vi.fn(),
+  closePath: vi.fn(),
+  clip: vi.fn(),
 } as unknown as CanvasRenderingContext2D;
 
 beforeAll(() => {
@@ -87,12 +87,12 @@ beforeAll(() => {
     writable: true,
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
-    value: jest.fn(() => mockCtx),
+    value: vi.fn(() => mockCtx),
     writable: true,
     configurable: true,
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
-    value: jest.fn((cb: BlobCallback) => cb(new Blob(['img'], { type: 'image/png' }))),
+    value: vi.fn((cb: BlobCallback) => cb(new Blob(['img'], { type: 'image/png' }))),
     writable: true,
     configurable: true,
   });
@@ -357,7 +357,7 @@ describe('AvatarEditorComponent', () => {
 
   describe('cropStateChanged emission', () => {
     it('does not emit during a programmatic load (afterNextRender not yet settled)', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
@@ -372,7 +372,7 @@ describe('AvatarEditorComponent', () => {
     it('emits after load has fully settled', () => {
       loadImage(); // runs afterNextRender so the suppress flag clears
 
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropStateChanged.subscribe(spy);
 
       component.setZoom(1.5);
@@ -381,7 +381,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('clears emission suppression on load error', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropStateChanged.subscribe(spy);
 
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
@@ -397,7 +397,7 @@ describe('AvatarEditorComponent', () => {
       loadImage();
       component.setZoom(1.5);
 
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropStateChanged.subscribe(spy);
 
       component.revertImage();
@@ -408,7 +408,7 @@ describe('AvatarEditorComponent', () => {
     it('emits cropStateChanged with the correct shape', () => {
       loadImage();
 
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropStateChanged.subscribe(spy);
       component.setZoom(2);
 
@@ -439,7 +439,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits the removed output', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.removed.subscribe(spy);
 
       component.removeImage();
@@ -790,7 +790,7 @@ describe('AvatarEditorComponent', () => {
 
   describe('File selection', () => {
     it('emits errored for a non-image file type', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.errored.subscribe(spy);
 
       selectFile(makeFile('application/pdf'));
@@ -799,7 +799,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits errored when the file exceeds maxFileSize', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.errored.subscribe(spy);
       fixture.componentRef.setInput('maxFileSize', 1);
 
@@ -809,7 +809,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits fileSelected for a valid file', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.fileSelected.subscribe(spy);
       const file = makeFile('image/jpeg');
 
@@ -883,7 +883,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits errored on drop of a non-image file', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.errored.subscribe(spy);
       const event = new Event('drop');
       Object.defineProperty(event, 'dataTransfer', {
@@ -896,7 +896,7 @@ describe('AvatarEditorComponent', () => {
     });
 
     it('emits fileSelected on drop of a valid image file', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.fileSelected.subscribe(spy);
       const file = makeFile('image/jpeg');
       const event = new Event('drop');
@@ -1018,7 +1018,7 @@ describe('AvatarEditorComponent', () => {
 
     it('emits cropped output with the blob and a dataUrl', async () => {
       loadImage();
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.cropped.subscribe(spy);
 
       const blob = await component.exportCrop();

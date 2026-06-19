@@ -178,7 +178,7 @@ describe('MultiSelectComponent', () => {
     });
 
     it('emits changed on toggle', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       getTrigger().click();
       fixture.detectChanges();
@@ -297,7 +297,7 @@ describe('MultiSelectComponent', () => {
 
       component.toggleSelectAll();
 
-      expect(component.value().sort()).toEqual(['apple', 'banana', 'date']);
+      expect([...component.value()].sort()).toEqual(['apple', 'banana', 'date']);
     });
 
     it('skips disabled options on select-all', () => {
@@ -432,7 +432,7 @@ describe('MultiSelectComponent', () => {
     });
 
     it('calls onChange on selection', () => {
-      const onChange: jest.Mock<void, [readonly string[]]> = jest.fn();
+      const onChange = vi.fn<(value: readonly string[]) => void>();
       component.registerOnChange(onChange);
       getTrigger().click();
       fixture.detectChanges();

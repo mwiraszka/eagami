@@ -156,7 +156,7 @@ describe('RadioGroupComponent', () => {
     it('calls onChange when select() runs', () => {
       const groupCmp = fixture.debugElement.children[0]
         .componentInstance as RadioGroupComponent;
-      const onChange: jest.Mock<void, [string]> = jest.fn();
+      const onChange = vi.fn<(value: string) => void>();
       groupCmp.registerOnChange(onChange);
 
       groupCmp.select('a');

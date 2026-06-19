@@ -6,10 +6,10 @@ import { DialogComponent, type DialogWidth } from './dialog.component';
 
 // Mock HTMLDialogElement methods for jsdom
 beforeAll(() => {
-  HTMLDialogElement.prototype.showModal = jest.fn(function (this: HTMLDialogElement) {
+  HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
-  HTMLDialogElement.prototype.close = jest.fn(function (this: HTMLDialogElement) {
+  HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
 });

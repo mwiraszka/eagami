@@ -96,7 +96,7 @@ describe('CheckboxComponent', () => {
     });
 
     it('emits changed event', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       getNativeInput().click();
       expect(spy).toHaveBeenCalledWith(true);
@@ -137,14 +137,14 @@ describe('CheckboxComponent', () => {
     });
 
     it('calls onChange when toggled', () => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       component.registerOnChange(onChange);
       getNativeInput().click();
       expect(onChange).toHaveBeenCalledWith(true);
     });
 
     it('calls onTouched when toggled', () => {
-      const onTouched = jest.fn();
+      const onTouched = vi.fn();
       component.registerOnTouched(onTouched);
       getNativeInput().click();
       expect(onTouched).toHaveBeenCalled();

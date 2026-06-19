@@ -139,7 +139,7 @@ describe('DatePickerComponent', () => {
     });
 
     it('emits changed on selection', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.changed.subscribe(spy);
       getTrigger().click();
       fixture.detectChanges();
@@ -365,7 +365,7 @@ describe('DatePickerComponent', () => {
     });
 
     it('calls onChange on selection', () => {
-      const onChange: jest.Mock<void, [Date | null]> = jest.fn();
+      const onChange = vi.fn<(value: Date | null) => void>();
       component.registerOnChange(onChange);
       component.viewYear.set(2026);
       component.viewMonth.set(3);

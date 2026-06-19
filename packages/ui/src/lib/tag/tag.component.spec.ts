@@ -78,7 +78,7 @@ describe('TagComponent', () => {
     });
 
     it('emits removed when remove button is clicked', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       component.removed.subscribe(spy);
       fixture.componentRef.setInput('removable', true);
       fixture.detectChanges();

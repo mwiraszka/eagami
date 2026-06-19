@@ -1,4 +1,4 @@
-import { axe } from 'jest-axe';
+import { axe } from 'vitest-axe';
 
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -33,6 +33,10 @@ describe('ButtonComponent a11y', () => {
     const fixture = TestBed.createComponent(HostComponent);
     setup?.(fixture.componentInstance);
     fixture.detectChanges();
+    // jsdom mis-evaluates `:empty` in getComputedStyle, so applied component styles make
+    // axe treat text-bearing elements as display:none. Strip styles so axe assesses the
+    // semantic DOM, as it did under the style-free jest setup.
+    document.querySelectorAll('style').forEach(el => el.remove());
     return fixture.nativeElement as HTMLElement;
   }
 
