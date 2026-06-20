@@ -15,22 +15,51 @@ export type EagamiLocale =
   | 'nl';
 
 /**
- * Supported locales for language switchers: English pinned first (default
- * fallback), then alphabetical by each language's own name (Latin scripts
- * first, then Greek and Chinese).
+ * Display metadata for a built-in locale: the language's name in its own
+ * language and a representative flag emoji.
  */
-export const EAGAMI_LOCALES: readonly EagamiLocale[] = [
-  'en',
-  'de',
-  'es-ES',
-  'fr-FR',
-  'is',
-  'nl',
-  'pl',
-  'pt-BR',
-  'el',
-  'zh-CN',
-];
+export interface EagamiLocaleMeta {
+  locale: EagamiLocale;
+  label: string;
+  flag: string;
+}
+
+/**
+ * Display name and flag for every built-in locale, in language-switcher order:
+ * English first (the default fallback), then alphabetical by each language's own
+ * name (Latin scripts first, then Greek and Chinese). Keyed by `EagamiLocale` so
+ * a locale added to the union without an entry fails to compile, keeping this
+ * single source exhaustive.
+ */
+const LOCALE_DISPLAY = {
+  en: { label: 'English', flag: '🇬🇧' },
+  de: { label: 'Deutsch', flag: '🇩🇪' },
+  'es-ES': { label: 'Español', flag: '🇪🇸' },
+  'fr-FR': { label: 'Français', flag: '🇫🇷' },
+  is: { label: 'Íslenska', flag: '🇮🇸' },
+  nl: { label: 'Nederlands', flag: '🇳🇱' },
+  pl: { label: 'Polski', flag: '🇵🇱' },
+  'pt-BR': { label: 'Português (Brasil)', flag: '🇧🇷' },
+  el: { label: 'Ελληνικά', flag: '🇬🇷' },
+  'zh-CN': { label: '中文', flag: '🇨🇳' },
+} satisfies Record<EagamiLocale, Omit<EagamiLocaleMeta, 'locale'>>;
+
+/**
+ * Display metadata for every built-in locale. The single source the Storybook
+ * locale toolbar and any consumer-built language switcher derive from, so the
+ * displayed list never drifts from the locales the library ships.
+ */
+export const EAGAMI_LOCALE_META: readonly EagamiLocaleMeta[] = (
+  Object.keys(LOCALE_DISPLAY) as EagamiLocale[]
+).map(locale => ({ locale, ...LOCALE_DISPLAY[locale] }));
+
+/**
+ * Supported locales for language switchers, in display order. Derived from
+ * `EAGAMI_LOCALE_META` so the two never drift.
+ */
+export const EAGAMI_LOCALES: readonly EagamiLocale[] = EAGAMI_LOCALE_META.map(
+  m => m.locale,
+);
 
 /**
  * Every user-facing string baked into the component library, grouped by
