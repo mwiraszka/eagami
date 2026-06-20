@@ -198,7 +198,7 @@ export const zhCN: WebMessages = {
         },
         {
           title: '本地化',
-          body: '内建组件文本提供英语、法语、希腊语、波兰语和西班牙语版本。',
+          body: '内建组件文本提供十种语言版本。',
         },
         {
           title: '现代',

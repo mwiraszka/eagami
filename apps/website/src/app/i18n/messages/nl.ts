@@ -210,7 +210,7 @@ export const nl: WebMessages = {
         },
         {
           title: 'Gelokaliseerd',
-          body: 'Ingebouwde componenttekst wordt geleverd in het Engels, Frans, Grieks, Pools en Spaans.',
+          body: 'Ingebouwde componenttekst wordt geleverd in tien talen.',
         },
         {
           title: 'Modern',

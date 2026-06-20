@@ -211,7 +211,7 @@ export const pl: WebMessages = {
         },
         {
           title: 'Zlokalizowane',
-          body: 'Wbudowane teksty komponentów dostępne są w językach: angielskim, francuskim, greckim, polskim i hiszpańskim.',
+          body: 'Wbudowane teksty komponentów dostępne są w dziesięciu językach.',
         },
         {
           title: 'Nowoczesne',

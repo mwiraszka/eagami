@@ -211,7 +211,7 @@ export const ptBR: WebMessages = {
         },
         {
           title: 'Localizado',
-          body: 'O texto integrado dos componentes vem em inglês, francês, grego, polonês e espanhol.',
+          body: 'O texto integrado dos componentes vem em dez idiomas.',
         },
         {
           title: 'Moderno',
