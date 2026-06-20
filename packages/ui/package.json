@@ -11,7 +11,7 @@
     "design-system",
     "accessible"
   ],
-  "homepage": "https://github.com/mwiraszka/eagami/tree/main/packages/ui#readme",
+  "homepage": "https://eagami.com/ui",
   "repository": {
     "type": "git",
     "url": "https://github.com/mwiraszka/eagami.git",
@@ -34,6 +34,7 @@
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
     "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",
+    "docs:changelog": "node scripts/extract-changelog.mjs",
     "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN",
     "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
   },
