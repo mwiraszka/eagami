@@ -18,7 +18,8 @@ export class InlineMarkdownPipe implements PipeTransform {
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, text: string, url: string) => {
-        const href = /^https?:\/\//.test(url) ? url : `${GITHUB_BLOB}${url}`;
+        const resolved = /^https?:\/\//.test(url) ? url : `${GITHUB_BLOB}${url}`;
+        const href = resolved.replace(/"/g, '&quot;');
         return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
       });
   }

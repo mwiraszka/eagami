@@ -69,9 +69,10 @@ jobs:
           pnpm --filter eagami-website exec prettier --write \
             src/app/data/ui-api.generated.ts \
             src/app/data/changelog.generated.ts
-          if ! git diff --quiet -- apps/website/src/app/data; then
+          GENERATED='apps/website/src/app/data/ui-api.generated.ts apps/website/src/app/data/changelog.generated.ts'
+          if ! git diff --quiet -- $GENERATED; then
             echo "::error::Generated docs data is stale. Run 'pnpm ui docs:api && pnpm ui docs:changelog && pnpm format', then commit the result."
-            git --no-pager diff -- apps/website/src/app/data
+            git --no-pager diff -- $GENERATED
             exit 1
           fi
 

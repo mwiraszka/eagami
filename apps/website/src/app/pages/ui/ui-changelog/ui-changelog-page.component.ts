@@ -17,8 +17,7 @@ import { InlineMarkdownPipe } from './inline-markdown.pipe';
   templateUrl: './ui-changelog-page.component.html',
   styleUrl: './ui-changelog-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // None so the inline-markdown HTML (code/strong/a injected via innerHTML, which
-  // never carries the component's encapsulation attribute) still gets styled.
+  // None: innerHTML-injected nodes carry no encapsulation attribute, so styles go global
   encapsulation: ViewEncapsulation.None,
   imports: [InlineMarkdownPipe],
 })

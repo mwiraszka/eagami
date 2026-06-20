@@ -11,7 +11,7 @@ const OUT = resolve(
   '../../../apps/website/src/app/data/changelog.generated.ts',
 );
 
-const lines = readFileSync(SRC, 'utf8').split('\n');
+const lines = readFileSync(SRC, 'utf8').split(/\r?\n/);
 
 const releases = [];
 let release = null;
