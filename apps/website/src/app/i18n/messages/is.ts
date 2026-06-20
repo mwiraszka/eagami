@@ -1721,6 +1721,8 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd með showModal().',
           },
           'data-table': {
+            navigable:
+              'Breytir töflunni í lyklaborðs-stýranlegt reitakerfi með færanlegum fókus og hreyfingu milli reita með örvalyklunum.',
             bordered: 'Birtir ramma um hverja reit.',
             columns:
               'Dálkaskilgreiningar sem lýsa lykli, merkimiða og valfrjálsri röðun eða sniðmáti hvers reits.',

@@ -181,4 +181,12 @@
       border-right: none;
     }
   }
+
+  // Inset ring so a focused grid cell reads clearly without being clipped by the
+  // table's overflow at the edges.
+  &--navigable &__cell:focus-visible {
+    outline: var(--border-width-medium) solid var(--color-border-focus);
+    outline-offset: calc(-1 * var(--border-width-medium));
+    box-shadow: none;
+  }
 }

@@ -32,6 +32,7 @@ interface DataTableKnobState {
   bordered: boolean;
   hoverable: boolean;
   stickyHeader: boolean;
+  navigable: boolean;
 }
 
 const SLUG = 'data-table';

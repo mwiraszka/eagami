@@ -28,12 +28,14 @@ const TEST_DATA: TestRow[] = [
   template: `
     <ea-data-table
       [columns]="columns"
-      [data]="data" />
+      [data]="data"
+      [navigable]="navigable" />
   `,
 })
 class HostComponent {
   columns: DataTableColumn<TestRow>[] = TEST_COLUMNS;
   data: TestRow[] = TEST_DATA;
+  navigable = false;
 }
 
 describe('DataTableComponent a11y', () => {
@@ -57,6 +59,14 @@ describe('DataTableComponent a11y', () => {
 
   it('has no detectable violations in the empty state', async () => {
     const el = await render(host => (host.data = []));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations as a navigable grid', async () => {
+    const el = await render(host => (host.navigable = true));
 
     const results = await axe(el);
 

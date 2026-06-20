@@ -1775,6 +1775,8 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché via showModal().',
           },
           'data-table': {
+            navigable:
+              'Transforme le tableau en une grille navigable au clavier, avec un focus mobile et un déplacement entre cellules via les flèches.',
             bordered: 'Affiche une bordure autour de chaque cellule.',
             columns:
               'Définitions de colonnes décrivant la clé, le libellé et, éventuellement, le tri ou le modèle de chaque champ.',

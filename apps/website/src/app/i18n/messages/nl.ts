@@ -1766,6 +1766,8 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond via showModal().',
           },
           'data-table': {
+            navigable:
+              'Maakt van de tabel een met het toetsenbord navigeerbaar raster met verplaatsbare focus en celbeweging via de pijltoetsen.',
             bordered: 'Geeft een rand rond elke cel weer.',
             columns:
               'Kolomdefinities die de sleutel, het label en optionele sortering of template van elk veld beschrijven.',

@@ -1559,6 +1559,7 @@ export const zhCN: WebMessages = {
             opened: '当抽屉通过 showModal() 显示后触发一次。',
           },
           'data-table': {
+            navigable: '将表格变为可用键盘导航的网格，支持移动焦点和方向键单元格移动。',
             bordered: '在每个单元格周围渲染边框。',
             columns: '描述每个字段的键、标签以及可选排序或模板的列定义。',
             data: '要在表格中显示的行对象数组。',

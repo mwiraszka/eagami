@@ -1759,6 +1759,8 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida via showModal().',
           },
           'data-table': {
+            navigable:
+              'Transforma a tabela em uma grade navegável pelo teclado, com foco móvel e movimentação entre células pelas setas.',
             bordered: 'Renderiza uma borda ao redor de cada célula.',
             columns:
               'Definições de coluna descrevendo a chave, o rótulo e a ordenação ou template opcionais de cada campo.',

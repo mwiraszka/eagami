@@ -1748,6 +1748,8 @@ export const pl: WebMessages = {
             opened: 'Emitowane raz po wyświetleniu szuflady przez showModal().',
           },
           'data-table': {
+            navigable:
+              'Zmienia tabelę w siatkę obsługiwaną z klawiatury z przesuwanym fokusem i przechodzeniem między komórkami strzałkami.',
             bordered: 'Renderuje obramowanie wokół każdej komórki.',
             columns:
               'Definicje kolumn opisujące klucz, etykietę i opcjonalnie sortowanie lub szablon każdego pola.',
