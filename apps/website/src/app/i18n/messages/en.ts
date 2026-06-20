@@ -163,7 +163,16 @@ export const en: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Changelog',
+      metaTitle: 'Eagami | Changelog',
+      metaDescription: 'Release history for the Eagami UI Angular component library.',
+      lead: 'Notable changes to @eagami/ui, newest first.',
+      migrationGuide: 'Migration guide',
+      fullHistory: 'Full history on GitHub',
+    },
     shell: {
+      changelog: 'Changelog',
       sidebarLabel: 'Documentation sidebar',
       navLabel: 'Documentation',
       overview: 'Overview',

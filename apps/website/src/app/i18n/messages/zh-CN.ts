@@ -157,7 +157,16 @@ export const zhCN: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: '更新日志',
+      metaTitle: 'Eagami | 更新日志',
+      metaDescription: 'Eagami UI Angular 组件库的版本历史。',
+      lead: '@eagami/ui 的重要更新，最新在前。',
+      migrationGuide: '迁移指南',
+      fullHistory: '在 GitHub 上查看完整历史',
+    },
     shell: {
+      changelog: '更新日志',
       sidebarLabel: '文档侧边栏',
       navLabel: '文档',
       overview: '概览',

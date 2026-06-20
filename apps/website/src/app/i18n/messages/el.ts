@@ -168,7 +168,16 @@ export const el: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Αρχείο αλλαγών',
+      metaTitle: 'Eagami | Αρχείο αλλαγών',
+      metaDescription: 'Ιστορικό εκδόσεων της βιβλιοθήκης στοιχείων Angular Eagami UI.',
+      lead: 'Αξιοσημείωτες αλλαγές στο @eagami/ui, οι πιο πρόσφατες πρώτα.',
+      migrationGuide: 'Οδηγός μετάβασης',
+      fullHistory: 'Πλήρες ιστορικό στο GitHub',
+    },
     shell: {
+      changelog: 'Αρχείο αλλαγών',
       sidebarLabel: 'Πλευρική στήλη τεκμηρίωσης',
       navLabel: 'Τεκμηρίωση',
       overview: 'Επισκόπηση',

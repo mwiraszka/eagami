@@ -90,7 +90,16 @@ export interface WebMessages {
   };
   ui: {
     metaTitle: string;
+    changelog: {
+      title: string;
+      metaTitle: string;
+      metaDescription: string;
+      lead: string;
+      migrationGuide: string;
+      fullHistory: string;
+    };
     shell: {
+      changelog: string;
       sidebarLabel: string;
       navLabel: string;
       overview: string;

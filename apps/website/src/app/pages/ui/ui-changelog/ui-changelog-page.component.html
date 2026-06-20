@@ -1,0 +1,46 @@
+<article class="ui-changelog">
+  <header class="ui-changelog__header">
+    <h1 class="ui-changelog__title">{{ messages().ui.changelog.title }}</h1>
+    <p class="ui-changelog__lead">{{ messages().ui.changelog.lead }}</p>
+    <p class="ui-changelog__links">
+      <a
+        class="ui-changelog__link"
+        [href]="migrationUrl"
+        target="_blank"
+        rel="noopener noreferrer">
+        {{ messages().ui.changelog.migrationGuide }}
+      </a>
+      <a
+        class="ui-changelog__link"
+        [href]="changelogUrl"
+        target="_blank"
+        rel="noopener noreferrer">
+        {{ messages().ui.changelog.fullHistory }}
+      </a>
+    </p>
+  </header>
+
+  @for (release of releases; track release.version) {
+    <section class="ui-changelog__release">
+      <h2 class="ui-changelog__version">
+        {{ release.version }}
+        @if (release.date) {
+          <span class="ui-changelog__date">{{ release.date }}</span>
+        }
+      </h2>
+      @for (section of release.sections; track section.heading) {
+        <h3 class="ui-changelog__section-heading">{{ section.heading }}</h3>
+        <ul
+          class="ui-changelog__entries"
+          role="list">
+          @for (entry of section.entries; track $index) {
+            <li
+              class="ui-changelog__entry"
+              [innerHTML]="entry | inlineMarkdown">
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  }
+</article>

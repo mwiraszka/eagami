@@ -163,7 +163,16 @@ export const is: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Breytingaskrá',
+      metaTitle: 'Eagami | Breytingaskrá',
+      metaDescription: 'Útgáfusaga Eagami UI Angular íhlutasafnsins.',
+      lead: 'Helstu breytingar á @eagami/ui, nýjustu fyrst.',
+      migrationGuide: 'Flutningsleiðbeiningar',
+      fullHistory: 'Öll sagan á GitHub',
+    },
     shell: {
+      changelog: 'Breytingaskrá',
       sidebarLabel: 'Hliðarstika skjölunar',
       navLabel: 'Skjölun',
       overview: 'Yfirlit',

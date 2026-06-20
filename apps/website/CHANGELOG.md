@@ -4,6 +4,10 @@ All notable changes to eagami.com are documented in this file.
 
 ## [3.2.2] - 2026-06-20
 
+### Added
+
+- Add a changelog page that surfaces the library's release history and links to the migration guide.
+
 ### Changed
 
 - Pick up @eagami/ui v4.0.0 and register all locales for the language switcher.
