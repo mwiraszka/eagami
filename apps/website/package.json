@@ -37,7 +37,7 @@
     "@angular/ssr": "21.2.14",
     "@eagami/ui": "workspace:*",
     "express": "5.2.1",
-    "resend": "6.12.4",
+    "resend": "6.14.0",
     "rxjs": "7.8.2",
     "tslib": "2.8.1",
     "zone.js": "0.16.2"
@@ -50,16 +50,16 @@
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/express": "5.0.6",
     "@types/node": "25.9.1",
-    "@vercel/node": "5.8.11",
-    "eslint": "10.4.1",
+    "@vercel/node": "5.8.17",
+    "eslint": "10.5.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-prettier": "5.5.6",
     "globals": "17.6.0",
-    "prettier": "3.8.3",
+    "prettier": "3.8.4",
     "prettier-eslint": "16.4.2",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.60.1"
+    "typescript-eslint": "8.61.1"
   }
 }
