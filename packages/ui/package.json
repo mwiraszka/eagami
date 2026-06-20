@@ -78,7 +78,7 @@
     "eslint-plugin-storybook": "10.4.6",
     "globals": "17.6.0",
     "jsdom": "26.1.0",
-    "ng-packagr": "21.2.5",
+    "ng-packagr": "22.0.0",
     "prettier": "3.8.4",
     "rxjs": "7.8.2",
     "storybook": "10.4.6",
