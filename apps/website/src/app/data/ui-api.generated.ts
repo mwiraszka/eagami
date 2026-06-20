@@ -1136,20 +1136,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         "twoWay": false
       }
     ],
-    "methods": [
-      {
-        "name": "bodyCellTabindex",
-        "signature": "bodyCellTabindex(row: number, colIndex: number): number | null"
-      },
-      {
-        "name": "headerTabindex",
-        "signature": "headerTabindex(col: DataTableColumn<T>, colIndex: number): number | null"
-      },
-      {
-        "name": "onCellFocus",
-        "signature": "onCellFocus(row: number, col: number): void"
-      }
-    ]
+    "methods": []
   },
   "date-picker": {
     "selector": "ea-date-picker",

@@ -191,7 +191,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return key ? (item as Record<string, unknown>)[key as string] : _index;
   }
 
-  /** Roving tabindex for a header cell; sortable-only focus outside grid mode. */
+  // Roving tabindex for a header cell; sortable-only focus outside grid mode
   headerTabindex(col: DataTableColumn<T>, colIndex: number): number | null {
     if (this.navigable()) {
       const active = this.activeCell();
@@ -200,7 +200,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return col.sortable ? 0 : null;
   }
 
-  /** Roving tabindex for a body cell; never focusable outside grid mode. */
+  // Roving tabindex for a body cell; never focusable outside grid mode
   bodyCellTabindex(row: number, colIndex: number): number | null {
     if (!this.navigable()) {
       return null;
@@ -209,7 +209,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return active.row === row && active.col === colIndex ? 0 : -1;
   }
 
-  /** Syncs roving focus when a cell is focused by mouse or keyboard tab. */
+  // Syncs roving focus when a cell is focused by mouse or keyboard tab
   onCellFocus(row: number, col: number): void {
     if (!this.navigable()) {
       return;
