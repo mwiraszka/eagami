@@ -23,6 +23,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
           '**Breaking:** Make the built-in locales opt-in so apps bundle only the languages they use. English is always available; register other languages via `provideEagamiUi({ locales: [...] })`, or pass the new `EAGAMI_ALL_LOCALES` for every shipped language. An unregistered locale now falls back to English. Replaces the removed `EAGAMI_MESSAGES` export. See [MIGRATION.md](MIGRATION.md).',
         ],
       },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep `<ea-radio-group>` options spaced apart when `orientation` is left unset.',
+        ],
+      },
     ],
   },
   {
