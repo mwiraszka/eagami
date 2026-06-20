@@ -1,8 +1,9 @@
-import { NgClass } from '@angular/common';
+import { NgClass, isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  PLATFORM_ID,
   ViewEncapsulation,
   computed,
   effect,
@@ -39,6 +40,7 @@ export class DialogComponent {
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly width = input<DialogWidth>('md');
   readonly closeOnBackdrop = input<boolean>(true);
@@ -61,11 +63,14 @@ export class DialogComponent {
   constructor() {
     effect(() => {
       const dialogRef = this.dialogEl()?.nativeElement;
-      if (!dialogRef) {
+      const open = this.open();
+      // `<dialog>` APIs and focus management are browser-only, but the effect
+      // still runs during SSR, so skip the DOM work on the server.
+      if (!dialogRef || !this.isBrowser) {
         return;
       }
 
-      if (this.open()) {
+      if (open) {
         if (!dialogRef.open) {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
           dialogRef.showModal();
