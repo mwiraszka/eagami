@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** Spanish (Spain) messages. */
-export const esES: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Descartar',
   },
@@ -165,4 +165,9 @@ export const esES: EagamiMessages = {
     overline: 'hecho a mano por',
     tagline: 'diseño web elegante',
   },
+};
+
+export const esES: EagamiLocaleBundle = {
+  locale: 'es-ES',
+  messages,
 };

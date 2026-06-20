@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** Simplified Chinese messages. */
-export const zhCN: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: '关闭',
   },
@@ -164,4 +164,9 @@ export const zhCN: EagamiMessages = {
     overline: '匠心打造',
     tagline: '优雅的网页设计',
   },
+};
+
+export const zhCN: EagamiLocaleBundle = {
+  locale: 'zh-CN',
+  messages,
 };
