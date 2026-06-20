@@ -1,4 +1,4 @@
-import { provideEagamiUi } from '@eagami/ui';
+import { EAGAMI_ALL_LOCALES, provideEagamiUi } from '@eagami/ui';
 
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -32,6 +32,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideEagamiUi(),
+    provideEagamiUi({ locales: EAGAMI_ALL_LOCALES }),
   ],
 };

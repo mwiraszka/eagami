@@ -93,10 +93,11 @@ export class UiI18nPageComponent {
 
   protected readonly demoTableData: Record<string, unknown>[] = [];
 
-  protected readonly quickSetupSnippet = `import { provideEagamiUi } from '@eagami/ui';
+  protected readonly quickSetupSnippet = `import { frFR, provideEagamiUi } from '@eagami/ui';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideEagamiUi({ locale: 'fr-FR' })],
+  // Register the languages you use; English is always available.
+  providers: [provideEagamiUi({ locale: 'fr-FR', locales: [frFR] })],
 };`;
 
   protected readonly runtimeSwitchSnippet = `import { EagamiI18nService } from '@eagami/ui';
