@@ -2,6 +2,16 @@
   display: block;
 }
 
+// Heading separating each sub-component's API tables on a composite component's
+// page; only rendered when more than one component is shown.
+.api-reference__component {
+  margin: 24px 0 8px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
 // The data-table reads its sticky bounds from its own host box via `inherit`,
 // so the max-height must sit here, on the <ea-data-table> element itself (a
 // wrapping div one level up never reaches it). display:block lets it apply.

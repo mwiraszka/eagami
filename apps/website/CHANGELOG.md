@@ -7,6 +7,7 @@ All notable changes to eagami.com are documented in this file.
 ### Added
 
 - Add a changelog page that surfaces the library's release history and links to the migration guide.
+- Document each composite component's public sub-components (such as `<ea-radio-group>` and `<ea-menu-item>`) in its API reference.
 
 ### Changed
 

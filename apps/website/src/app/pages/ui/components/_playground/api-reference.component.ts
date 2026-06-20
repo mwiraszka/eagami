@@ -15,16 +15,41 @@ import {
   viewChild,
 } from '@angular/core';
 
-import { UI_API } from '@app/data/ui-api.generated';
+import {
+  type ApiMethod,
+  type ApiProp,
+  type ComponentApi,
+  UI_API,
+} from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 type CellTemplate = TemplateRef<{ $implicit: Record<string, unknown>; value: unknown }>;
 
+interface ApiSection {
+  slug: string;
+  selectorLabel: string;
+  inputs: ApiProp[];
+  outputs: ApiProp[];
+  methods: ApiMethod[];
+}
+
+// Primary demo slug -> the public sub-components documented alongside it, so a
+// composite component's page covers every part (e.g. the radio page shows both
+// <ea-radio> and <ea-radio-group>). Slugs not listed here render on their own.
+const RELATED_SLUGS: Readonly<Record<string, readonly string[]>> = {
+  radio: ['radio-group'],
+  accordion: ['accordion-item'],
+  menu: ['menu-item', 'menu-trigger'],
+  tabs: ['tab'],
+  stepper: ['step'],
+};
+
 /**
  * Renders a component's inputs, outputs, and public methods from the compodoc
  * extracted API data, keyed by slug. Each group is an accordion whose body is an
- * ea-data-table with a sticky header. Descriptions fall back to the generated
- * (English) text when no localized override exists.
+ * ea-data-table with a sticky header. Composite components also list their public
+ * sub-components. Descriptions fall back to the generated (English) text when no
+ * localized override exists.
  */
 @Component({
   selector: 'web-api-reference',
@@ -38,7 +63,15 @@ export class ApiReferenceComponent {
 
   readonly slug = input.required<string>();
 
-  protected readonly api = computed(() => UI_API[this.slug()]);
+  protected readonly sections = computed<ApiSection[]>(() => {
+    const primary = this.slug();
+    const slugs = [primary, ...(RELATED_SLUGS[primary] ?? [])];
+    return slugs
+      .map(s => (UI_API[s] ? this.toSection(s, UI_API[s]) : null))
+      .filter((s): s is ApiSection => s !== null);
+  });
+
+  protected readonly multiComponent = computed(() => this.sections().length > 1);
 
   private readonly nameCell = viewChild<CellTemplate>('nameCell');
   private readonly codeCell = viewChild<CellTemplate>('codeCell');
@@ -71,10 +104,23 @@ export class ApiReferenceComponent {
     ];
   });
 
-  protected describe(name: unknown): string {
+  private toSection(slug: string, api: ComponentApi): ApiSection {
+    return {
+      slug,
+      selectorLabel: api.selector.startsWith('[') ? api.selector : `<${api.selector} />`,
+      inputs: api.inputs.map(p => ({ ...p, description: this.describe(slug, p.name) })),
+      outputs: api.outputs.map(p => ({ ...p, description: this.describe(slug, p.name) })),
+      methods: api.methods.map(m => ({
+        ...m,
+        description: this.describe(slug, m.name),
+      })),
+    };
+  }
+
+  private describe(slug: string, name: unknown): string {
     const key = String(name);
     const playground = this.messages().ui.component.playground;
-    const described = playground.descriptions[this.slug()]?.[key];
+    const described = playground.descriptions[slug]?.[key];
     if (described) {
       return described;
     }
