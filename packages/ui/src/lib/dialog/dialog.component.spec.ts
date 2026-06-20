@@ -1,7 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideEagamiUi } from '../i18n/i18n.provider';
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { frFR } from '../i18n/messages';
 import { DialogComponent, type DialogWidth } from './dialog.component';
 
 // Mock HTMLDialogElement methods for jsdom
@@ -57,6 +59,7 @@ describe('DialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
+      providers: [provideEagamiUi({ locales: [frFR] })],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);
