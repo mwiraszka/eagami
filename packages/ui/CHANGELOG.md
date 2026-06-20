@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Breaking:** Make the built-in locales opt-in so apps bundle only the languages they use. English is always available; register other languages via `provideEagamiUi({ locales: [...] })`, or pass the new `EAGAMI_ALL_LOCALES` for every shipped language. An unregistered locale now falls back to English. Replaces the removed `EAGAMI_MESSAGES` export. See [MIGRATION.md](MIGRATION.md).
 
+### Fixed
+
+- Keep `<ea-radio-group>` options spaced apart when `orientation` is left unset.
+
 ## [3.2.1] - 2026-06-20
 
 ### Fixed
