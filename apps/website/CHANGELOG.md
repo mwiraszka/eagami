@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.2.0] - 2026-06-20
+
+### Added
+
+- Add a keyboard-navigation toggle to the data table demo so the new grid navigation can be tried out interactively.
+
+### Changed
+
+- Pick up @eagami/ui v3.2.0.
+
 ## [3.1.1] - 2026-06-19
 
 ### Fixed
@@ -595,6 +605,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.2.0]: https://github.com/mwiraszka/eagami/compare/website-v3.1.1...website-v3.2.0
 [3.1.1]: https://github.com/mwiraszka/eagami/compare/website-v3.1.0...website-v3.1.1
 [3.1.0]: https://github.com/mwiraszka/eagami/compare/website-v3.0.0...website-v3.1.0
 [3.0.0]: https://github.com/mwiraszka/eagami/compare/website-v2.12.0...website-v3.0.0
