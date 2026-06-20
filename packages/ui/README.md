@@ -94,7 +94,7 @@ Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast
 
 ## Internationalization
 
-Built-in strings ship in English, French (France), Greek, Polish, and Spanish (Spain), with runtime switching via `EagamiI18nService`. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
+Built-in strings ship in ten languages, with runtime switching via `EagamiI18nService`. English is bundled by default; register the other languages you use with `provideEagamiUi({ locales: [...] })` (or pass `EAGAMI_ALL_LOCALES` for all of them) so you ship only what you need. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
 
 ## Server-side rendering
 
