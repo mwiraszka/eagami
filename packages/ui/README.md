@@ -96,6 +96,10 @@ Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast
 
 Built-in strings ship in English, French (France), Greek, Polish, and Spanish (Spain), with runtime switching via `EagamiI18nService`. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
 
+## Server-side rendering
+
+The library is SSR-safe and renders on the server (Angular Universal / `@angular/ssr`) without reaching for `window` or `document`. Browser-only work (focus management, the native `<dialog>`, overlay positioning, resize/intersection observers) is deferred to the client via `afterNextRender` and `isPlatformBrowser` guards, so prerendering, streaming SSR, and hydration work with no extra configuration.
+
 ## Framework integration
 
 `@eagami/ui` is Angular-only, but its design tokens are framework-agnostic. Copy-and-paste guides for non-Angular targets:
@@ -109,6 +113,7 @@ Built-in strings ship in English, French (France), Greek, Polish, and Spanish (S
 |---|---|
 | Angular | `^21.0.0` (peer dep) |
 | Node | `>= 20` for build/dev tooling |
+| Rendering | Browser, SSR / prerender (Angular Universal), hydration |
 | Browsers | Last 2 stable versions of Chrome, Edge, Firefox (plus current ESR), Safari |
 
 > **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md).
