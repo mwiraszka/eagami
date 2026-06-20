@@ -75,6 +75,10 @@ export const StripedAndBordered: Story = {
   args: { striped: true, bordered: true },
 };
 
+export const Navigable: Story = {
+  args: { navigable: true },
+};
+
 export const StickyHeader: Story = {
   args: { stickyHeader: true },
   render: args => ({

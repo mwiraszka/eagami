@@ -2,13 +2,20 @@
   class="ea-data-table"
   [ngClass]="hostClasses()">
   <div class="ea-data-table__scroll">
-    <table class="ea-data-table__table">
+    <table
+      class="ea-data-table__table"
+      [attr.role]="navigable() ? 'grid' : null"
+      (keydown)="onGridKeydown($event)">
       <thead class="ea-data-table__head">
-        <tr class="ea-data-table__row ea-data-table__row--header">
-          @for (col of columns(); track col.key) {
+        <tr
+          class="ea-data-table__row ea-data-table__row--header"
+          [attr.role]="navigable() ? 'row' : null">
+          @for (col of columns(); track col.key; let colIndex = $index) {
             <th
               scope="col"
               class="ea-data-table__cell ea-data-table__cell--header"
+              [attr.role]="navigable() ? 'columnheader' : null"
+              [attr.data-ea-cell]="navigable() ? '0-' + colIndex : null"
               [class.ea-data-table__cell--sortable]="col.sortable"
               [class.ea-data-table__cell--sorted]="
                 sort().column === col.key && sort().direction
@@ -28,7 +35,8 @@
               (click)="onHeaderClick(col)"
               (keydown.enter)="onHeaderClick(col)"
               (keydown.space)="$event.preventDefault(); onHeaderClick(col)"
-              [attr.tabindex]="col.sortable ? 0 : null">
+              (focus)="onCellFocus(0, colIndex)"
+              [attr.tabindex]="headerTabindex(col, colIndex)">
               @if (col.headerTemplate) {
                 <ng-container
                   [ngTemplateOutlet]="col.headerTemplate"
@@ -53,9 +61,12 @@
       </thead>
       <tbody class="ea-data-table__body">
         @if (sortedData().length === 0) {
-          <tr class="ea-data-table__row ea-data-table__row--empty">
+          <tr
+            class="ea-data-table__row ea-data-table__row--empty"
+            [attr.role]="navigable() ? 'row' : null">
             <td
               class="ea-data-table__cell ea-data-table__cell--empty"
+              [attr.role]="navigable() ? 'gridcell' : null"
               [attr.colspan]="columns().length">
               @if (noDataTemplate()) {
                 <ng-container [ngTemplateOutlet]="noDataTemplate()!" />
@@ -65,14 +76,24 @@
             </td>
           </tr>
         } @else {
-          @for (row of sortedData(); track trackByFn($index, row)) {
-            <tr class="ea-data-table__row">
-              @for (col of columns(); track col.key) {
+          @for (
+            row of sortedData();
+            track trackByFn($index, row);
+            let rowIndex = $index
+          ) {
+            <tr
+              class="ea-data-table__row"
+              [attr.role]="navigable() ? 'row' : null">
+              @for (col of columns(); track col.key; let colIndex = $index) {
                 <td
                   class="ea-data-table__cell"
                   [class.ea-data-table__cell--align-center]="col.align === 'center'"
                   [class.ea-data-table__cell--align-right]="col.align === 'right'"
-                  [style.width]="col.width ?? null">
+                  [style.width]="col.width ?? null"
+                  [attr.role]="navigable() ? 'gridcell' : null"
+                  [attr.data-ea-cell]="navigable() ? rowIndex + 1 + '-' + colIndex : null"
+                  [attr.tabindex]="bodyCellTabindex(rowIndex + 1, colIndex)"
+                  (focus)="onCellFocus(rowIndex + 1, colIndex)">
                   @if (col.cellTemplate) {
                     <ng-container
                       [ngTemplateOutlet]="col.cellTemplate"
