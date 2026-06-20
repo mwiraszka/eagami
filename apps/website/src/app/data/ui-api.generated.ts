@@ -25,4246 +25,4265 @@ export interface ComponentApi {
 }
 
 export const UI_API: Readonly<Record<string, ComponentApi>> = {
-  accordion: {
-    selector: 'ea-accordion',
-    inputs: [
+  "accordion": {
+    "selector": "ea-accordion",
+    "inputs": [
       {
-        name: 'multi',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
-      },
+        "name": "multi",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'accordion-item': {
-    selector: 'ea-accordion-item',
-    inputs: [
+  "accordion-item": {
+    "selector": "ea-accordion-item",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "label",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  alert: {
-    selector: 'ea-alert',
-    inputs: [
+  "alert": {
+    "selector": "ea-alert",
+    "inputs": [
       {
-        name: 'dismissible',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "dismissible",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'icon',
-        type: 'Type<unknown> | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "icon",
+        "type": "Type<unknown> | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'AlertSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "AlertSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'AlertVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
+        "name": "variant",
+        "type": "AlertVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'visible',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: true,
-      },
+        "name": "visible",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'dismissed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "dismissed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'dismiss',
-        signature: 'dismiss(): void',
-      },
-    ],
+        "name": "dismiss",
+        "signature": "dismiss(): void"
+      }
+    ]
   },
-  autocomplete: {
-    selector: 'ea-autocomplete',
-    inputs: [
+  "autocomplete": {
+    "selector": "ea-autocomplete",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'emptyMessage',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "emptyMessage",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxResults',
-        type: 'number',
-        default: '10',
-        required: false,
-        twoWay: false,
+        "name": "maxResults",
+        "type": "number",
+        "default": "10",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minLength',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "minLength",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'options',
-        type: 'SelectOption[]',
-        default: '[]',
-        required: false,
-        twoWay: false,
+        "name": "options",
+        "type": "SelectOption[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'AutocompleteSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "AutocompleteSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'blurred',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "blurred",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'changed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "changed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'focused',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "focused",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'selected',
-        type: 'SelectOption',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "selected",
+        "type": "SelectOption",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'close',
-        signature: 'close(): void',
+        "name": "close",
+        "signature": "close(): void"
       },
       {
-        name: 'focus',
-        signature: 'focus(): void',
+        "name": "focus",
+        "signature": "focus(): void"
       },
       {
-        name: 'selectOption',
-        signature: 'selectOption(option: SelectOption): void',
-      },
-    ],
+        "name": "selectOption",
+        "signature": "selectOption(option: SelectOption): void"
+      }
+    ]
   },
-  avatar: {
-    selector: 'ea-avatar',
-    inputs: [
+  "avatar": {
+    "selector": "ea-avatar",
+    "inputs": [
       {
-        name: 'alt',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "alt",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'initials',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "initials",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'shape',
-        type: 'AvatarShape',
-        default: "'circle'",
-        required: false,
-        twoWay: false,
+        "name": "shape",
+        "type": "AvatarShape",
+        "default": "'circle'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'AvatarSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "AvatarSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'src',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
+        "name": "src",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'avatar-editor': {
-    selector: 'ea-avatar-editor',
-    inputs: [
+  "avatar-editor": {
+    "selector": "ea-avatar-editor",
+    "inputs": [
       {
-        name: 'accept',
-        type: 'string',
-        default: "'image/*'",
-        required: false,
-        twoWay: false,
+        "name": "accept",
+        "type": "string",
+        "default": "'image/*'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'canvasSize',
-        type: 'number',
-        default: '200',
-        required: false,
-        twoWay: false,
+        "name": "canvasSize",
+        "type": "number",
+        "default": "200",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'cropState',
-        type: 'AvatarEditorCropState | null | undefined',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "cropState",
+        "type": "AvatarEditorCropState | null | undefined",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'currentSrc',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "currentSrc",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'exportQuality',
-        type: 'number',
-        default: '0.92',
-        required: false,
-        twoWay: false,
+        "name": "exportQuality",
+        "type": "number",
+        "default": "0.92",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'exportType',
-        type: 'string',
-        default: "'image/png'",
-        required: false,
-        twoWay: false,
+        "name": "exportType",
+        "type": "string",
+        "default": "'image/png'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'loading',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "loading",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxFileSize',
-        type: 'number',
-        default: '5 * 1024 * 1024',
-        required: false,
-        twoWay: false,
+        "name": "maxFileSize",
+        "type": "number",
+        "default": "5 * 1024 * 1024",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxZoom',
-        type: 'number',
-        default: '3',
-        required: false,
-        twoWay: false,
+        "name": "maxZoom",
+        "type": "number",
+        "default": "3",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minZoom',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: false,
+        "name": "minZoom",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'shape',
-        type: 'AvatarEditorShape',
-        default: "'circle'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "shape",
+        "type": "AvatarEditorShape",
+        "default": "'circle'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'cropped',
-        type: 'AvatarEditorCropEvent',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "cropped",
+        "type": "AvatarEditorCropEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'cropStateChanged',
-        type: 'AvatarEditorCropState',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "cropStateChanged",
+        "type": "AvatarEditorCropState",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errored',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "errored",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'fileSelected',
-        type: 'File',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "fileSelected",
+        "type": "File",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'removed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "removed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'captureOriginal',
-        signature: 'captureOriginal(): void',
+        "name": "captureOriginal",
+        "signature": "captureOriginal(): void"
       },
       {
-        name: 'exportCrop',
-        signature: 'exportCrop(): Promise<Blob>',
+        "name": "exportCrop",
+        "signature": "exportCrop(): Promise<Blob>"
       },
       {
-        name: 'openFilePicker',
-        signature: 'openFilePicker(): void',
+        "name": "openFilePicker",
+        "signature": "openFilePicker(): void"
       },
       {
-        name: 'removeImage',
-        signature: 'removeImage(): void',
+        "name": "removeImage",
+        "signature": "removeImage(): void"
       },
       {
-        name: 'revertImage',
-        signature: 'revertImage(): void',
+        "name": "revertImage",
+        "signature": "revertImage(): void"
       },
       {
-        name: 'setZoom',
-        signature: 'setZoom(value: number): void',
+        "name": "setZoom",
+        "signature": "setZoom(value: number): void"
       },
       {
-        name: 'updateImageDarkness',
-        signature:
-          'updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void',
-      },
-    ],
+        "name": "updateImageDarkness",
+        "signature": "updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void"
+      }
+    ]
   },
-  badge: {
-    selector: 'ea-badge',
-    inputs: [
+  "badge": {
+    "selector": "ea-badge",
+    "inputs": [
       {
-        name: 'shape',
-        type: 'BadgeShape',
-        default: "'pill'",
-        required: false,
-        twoWay: false,
+        "name": "shape",
+        "type": "BadgeShape",
+        "default": "'pill'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'BadgeSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "BadgeSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'BadgeVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "BadgeVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  breadcrumbs: {
-    selector: 'ea-breadcrumbs',
-    inputs: [
+  "breadcrumbs": {
+    "selector": "ea-breadcrumbs",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'items',
-        type: 'BreadcrumbItem[]',
-        default: '[]',
-        required: false,
-        twoWay: false,
+        "name": "items",
+        "type": "BreadcrumbItem[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'separator',
-        type: 'BreadcrumbsSeparator',
-        default: "'chevron'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "separator",
+        "type": "BreadcrumbsSeparator",
+        "default": "'chevron'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'clicked',
-        type: 'BreadcrumbClickEvent',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "clicked",
+        "type": "BreadcrumbClickEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  button: {
-    selector: 'ea-button',
-    inputs: [
+  "button": {
+    "selector": "ea-button",
+    "inputs": [
       {
-        name: 'ariaCurrent',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaCurrent",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'fullWidth',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "fullWidth",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'icon',
-        type: 'Type<unknown> | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "icon",
+        "type": "Type<unknown> | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'loading',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "loading",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'ButtonSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "ButtonSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'type',
-        type: 'ButtonType',
-        default: "'button'",
-        required: false,
-        twoWay: false,
+        "name": "type",
+        "type": "ButtonType",
+        "default": "'button'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'ButtonVariant',
-        default: "'primary'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "ButtonVariant",
+        "default": "'primary'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'clicked',
-        type: 'MouseEvent',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "clicked",
+        "type": "MouseEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  card: {
-    selector: 'ea-card',
-    inputs: [
+  "card": {
+    "selector": "ea-card",
+    "inputs": [
       {
-        name: 'fullWidth',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "fullWidth",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'headerAlign',
-        type: 'CardHeaderAlign',
-        default: "'center'",
-        required: false,
-        twoWay: false,
+        "name": "headerAlign",
+        "type": "CardHeaderAlign",
+        "default": "'center'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'headerDivider',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "headerDivider",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'padding',
-        type: 'CardPadding',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "padding",
+        "type": "CardPadding",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'CardVariant',
-        default: "'elevated'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "CardVariant",
+        "default": "'elevated'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  checkbox: {
-    selector: 'ea-checkbox',
-    inputs: [
+  "checkbox": {
+    "selector": "ea-checkbox",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'checked',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "checked",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'count',
-        type: 'string | number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "count",
+        "type": "string | number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'indeterminate',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "indeterminate",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'CheckboxSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "size",
+        "type": "CheckboxSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'boolean',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "boolean",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  'code-input': {
-    selector: 'ea-code-input',
-    inputs: [
+  "code-input": {
+    "selector": "ea-code-input",
+    "inputs": [
       {
-        name: 'allowAllChars',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "allowAllChars",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'length',
-        type: 'number',
-        default: '6',
-        required: false,
-        twoWay: false,
+        "name": "length",
+        "type": "number",
+        "default": "6",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'CodeInputSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "CodeInputSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'completed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "completed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'focus',
-        signature: 'focus(): void',
-      },
-    ],
+        "name": "focus",
+        "signature": "focus(): void"
+      }
+    ]
   },
-  'color-picker': {
-    selector: 'ea-color-picker',
-    inputs: [
+  "color-picker": {
+    "selector": "ea-color-picker",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'format',
-        type: 'ColorPickerFormat',
-        default: "'all'",
-        required: false,
-        twoWay: false,
+        "name": "format",
+        "type": "ColorPickerFormat",
+        "default": "'all'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'presets',
-        type: 'readonly string[]',
-        default: 'DEFAULT_PRESETS',
-        required: false,
-        twoWay: false,
+        "name": "presets",
+        "type": "readonly string[]",
+        "default": "DEFAULT_PRESETS",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showAlpha',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showAlpha",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'ColorPickerSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "ColorPickerSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string | null',
-        default: 'null',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string | null",
+        "default": "null",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string | null',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string | null",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'cycleInputMode',
-        signature: 'cycleInputMode(): void',
+        "name": "cycleInputMode",
+        "signature": "cycleInputMode(): void"
       },
       {
-        name: 'hasEyeDropper',
-        signature: 'hasEyeDropper(): boolean',
+        "name": "hasEyeDropper",
+        "signature": "hasEyeDropper(): boolean"
       },
       {
-        name: 'onHexInput',
-        signature: 'onHexInput(event: Event): void',
+        "name": "onHexInput",
+        "signature": "onHexInput(event: Event): void"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
-      },
-    ],
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
+      }
+    ]
   },
-  'command-palette': {
-    selector: 'ea-command-palette',
-    inputs: [
+  "command-palette": {
+    "selector": "ea-command-palette",
+    "inputs": [
       {
-        name: 'emptyMessage',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "emptyMessage",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'items',
-        type: 'readonly CommandPaletteItem[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "items",
+        "type": "readonly CommandPaletteItem[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'open',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "open",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'placeholder',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
-      },
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'execute',
-        type: 'CommandPaletteItem',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "execute",
+        "type": "CommandPaletteItem",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'showActiveHighlight',
-        signature: 'showActiveHighlight(flatIndex: number): boolean',
-      },
-    ],
+        "name": "showActiveHighlight",
+        "signature": "showActiveHighlight(flatIndex: number): boolean"
+      }
+    ]
   },
-  'data-table': {
-    selector: 'ea-data-table',
-    inputs: [
+  "data-table": {
+    "selector": "ea-data-table",
+    "inputs": [
       {
-        name: 'bordered',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "bordered",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'columns',
-        type: 'DataTableColumn<T>[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "columns",
+        "type": "DataTableColumn<T>[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'data',
-        type: 'T[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "data",
+        "type": "T[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'density',
-        type: 'DataTableDensity',
-        default: "'comfortable'",
-        required: false,
-        twoWay: false,
+        "name": "density",
+        "type": "DataTableDensity",
+        "default": "'comfortable'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hoverable',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "hoverable",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'noDataText',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "navigable",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'sort',
-        type: 'DataTableSortState',
-        default: "{ column: '', direction: null }",
-        required: false,
-        twoWay: true,
+        "name": "noDataText",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'stickyHeader',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "sort",
+        "type": "DataTableSortState",
+        "default": "{ column: '', direction: null }",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'striped',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "stickyHeader",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'trackBy',
-        type: 'keyof T | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "striped",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
+      {
+        "name": "trackBy",
+        "type": "keyof T | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'sorted',
-        type: 'DataTableSortState',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "sorted",
+        "type": "DataTableSortState",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": [
+      {
+        "name": "bodyCellTabindex",
+        "signature": "bodyCellTabindex(row: number, colIndex: number): number | null"
+      },
+      {
+        "name": "headerTabindex",
+        "signature": "headerTabindex(col: DataTableColumn<T>, colIndex: number): number | null"
+      },
+      {
+        "name": "onCellFocus",
+        "signature": "onCellFocus(row: number, col: number): void"
+      }
+    ]
   },
-  'date-picker': {
-    selector: 'ea-date-picker',
-    inputs: [
+  "date-picker": {
+    "selector": "ea-date-picker",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'format',
-        type: 'DatePickerFormat',
-        default: "'medium'",
-        required: false,
-        twoWay: false,
+        "name": "format",
+        "type": "DatePickerFormat",
+        "default": "'medium'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'locale',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "locale",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxDate',
-        type: 'Date | null',
-        default: 'null',
-        required: false,
-        twoWay: false,
+        "name": "maxDate",
+        "type": "Date | null",
+        "default": "null",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minDate',
-        type: 'Date | null',
-        default: 'null',
-        required: false,
-        twoWay: false,
+        "name": "minDate",
+        "type": "Date | null",
+        "default": "null",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'DatePickerSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "DatePickerSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'Date | null',
-        default: 'null',
-        required: false,
-        twoWay: true,
+        "name": "value",
+        "type": "Date | null",
+        "default": "null",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'weekStartsOn',
-        type: 'DatePickerWeekStart',
-        default: '1',
-        required: false,
-        twoWay: false,
-      },
+        "name": "weekStartsOn",
+        "type": "DatePickerWeekStart",
+        "default": "1",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'Date | null',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "Date | null",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'clear',
-        signature: 'clear(event: Event): void',
+        "name": "clear",
+        "signature": "clear(event: Event): void"
       },
       {
-        name: 'close',
-        signature: 'close(): void',
+        "name": "close",
+        "signature": "close(): void"
       },
       {
-        name: 'focus',
-        signature: 'focus(): void',
+        "name": "focus",
+        "signature": "focus(): void"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
       },
       {
-        name: 'open',
-        signature: 'open(): void',
+        "name": "open",
+        "signature": "open(): void"
       },
       {
-        name: 'toggle',
-        signature: 'toggle(): void',
-      },
-    ],
+        "name": "toggle",
+        "signature": "toggle(): void"
+      }
+    ]
   },
-  dialog: {
-    selector: 'ea-dialog',
-    inputs: [
+  "dialog": {
+    "selector": "ea-dialog",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnBackdrop',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnBackdrop",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnEscape',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnEscape",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'open',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "open",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'showClose',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showClose",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'width',
-        type: 'DialogWidth',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "width",
+        "type": "DialogWidth",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'closed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "closed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'opened',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "opened",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  divider: {
-    selector: 'ea-divider',
-    inputs: [
+  "divider": {
+    "selector": "ea-divider",
+    "inputs": [
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'orientation',
-        type: 'DividerOrientation',
-        default: "'horizontal'",
-        required: false,
-        twoWay: false,
+        "name": "orientation",
+        "type": "DividerOrientation",
+        "default": "'horizontal'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'thick',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
-      },
+        "name": "thick",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  drawer: {
-    selector: 'ea-drawer',
-    inputs: [
+  "drawer": {
+    "selector": "ea-drawer",
+    "inputs": [
       {
-        name: 'animated',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "animated",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnBackdrop',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnBackdrop",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnEscape',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnEscape",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'open',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "open",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'position',
-        type: 'DrawerPosition',
-        default: "'right'",
-        required: false,
-        twoWay: false,
+        "name": "position",
+        "type": "DrawerPosition",
+        "default": "'right'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showClose',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showClose",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'width',
-        type: 'DrawerWidth',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "width",
+        "type": "DrawerWidth",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'closed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "closed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'opened',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "opened",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  dropdown: {
-    selector: 'ea-dropdown',
-    inputs: [
+  "dropdown": {
+    "selector": "ea-dropdown",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'options',
-        type: 'SelectOption[]',
-        default: '[]',
-        required: false,
-        twoWay: false,
+        "name": "options",
+        "type": "SelectOption[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'DropdownSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "DropdownSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'close',
-        signature: 'close(): void',
+        "name": "close",
+        "signature": "close(): void"
       },
       {
-        name: 'focus',
-        signature: 'focus(): void',
+        "name": "focus",
+        "signature": "focus(): void"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
       },
       {
-        name: 'select',
-        signature: 'select(option: SelectOption): void',
+        "name": "select",
+        "signature": "select(option: SelectOption): void"
       },
       {
-        name: 'toggle',
-        signature: 'toggle(): void',
-      },
-    ],
+        "name": "toggle",
+        "signature": "toggle(): void"
+      }
+    ]
   },
-  'eagami-wordmark': {
-    selector: 'ea-eagami-wordmark',
-    inputs: [
+  "eagami-wordmark": {
+    "selector": "ea-eagami-wordmark",
+    "inputs": [
       {
-        name: 'layout',
-        type: 'EagamiWordmarkLayout',
-        default: "'stacked'",
-        required: false,
-        twoWay: false,
+        "name": "layout",
+        "type": "EagamiWordmarkLayout",
+        "default": "'stacked'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'number',
-        default: '48',
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "number",
+        "default": "48",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'EagamiWordmarkVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "EagamiWordmarkVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'empty-state': {
-    selector: 'ea-empty-state',
-    inputs: [
+  "empty-state": {
+    "selector": "ea-empty-state",
+    "inputs": [
       {
-        name: 'bordered',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "bordered",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'description',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "description",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'headingLevel',
-        type: 'EmptyStateHeadingLevel',
-        default: "'h2'",
-        required: false,
-        twoWay: false,
+        "name": "headingLevel",
+        "type": "EmptyStateHeadingLevel",
+        "default": "'h2'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'icon',
-        type: 'Type<unknown> | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "icon",
+        "type": "Type<unknown> | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'EmptyStateSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "EmptyStateSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'title',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
+        "name": "title",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'field-label': {
-    selector: 'ea-field-label',
-    inputs: [
+  "field-label": {
+    "selector": "ea-field-label",
+    "inputs": [
       {
-        name: 'forId',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "forId",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'labelId',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "labelId",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'text',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "text",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'field-messages': {
-    selector: 'ea-field-messages',
-    inputs: [
+  "field-messages": {
+    "selector": "ea-field-messages",
+    "inputs": [
       {
-        name: 'error',
-        type: 'string | null | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "error",
+        "type": "string | null | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | null | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | null | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "id",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'file-uploader': {
-    selector: 'ea-file-uploader',
-    inputs: [
+  "file-uploader": {
+    "selector": "ea-file-uploader",
+    "inputs": [
       {
-        name: 'accept',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "accept",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxFiles',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "maxFiles",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxSize',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "maxSize",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'multiple',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "multiple",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'progress',
-        type: 'ReadonlyMap<File, number> | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "progress",
+        "type": "ReadonlyMap<File, number> | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showFileList',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showFileList",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'FileUploaderSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "FileUploaderSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'readonly File[]',
-        default: '[]',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "readonly File[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'fileRemoved',
-        type: 'File',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "fileRemoved",
+        "type": "File",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'rejected',
-        type: 'readonly FileUploaderRejection[]',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "rejected",
+        "type": "readonly FileUploaderRejection[]",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'trackFile',
-        signature: 'trackFile(_index: number, file: File): string',
-      },
-    ],
+        "name": "trackFile",
+        "signature": "trackFile(_index: number, file: File): string"
+      }
+    ]
   },
-  input: {
-    selector: 'ea-input',
-    inputs: [
+  "input": {
+    "selector": "ea-input",
+    "inputs": [
       {
-        name: 'autocomplete',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "autocomplete",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'autofocus',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "autofocus",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'clearable',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "clearable",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'icon',
-        type: 'Type<unknown> | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "icon",
+        "type": "Type<unknown> | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'list',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "list",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'max',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "max",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxLength',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "maxLength",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'min',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "min",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minLength',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "minLength",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showPasswordToggle',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showPasswordToggle",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'InputSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "InputSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'step',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "step",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'type',
-        type: 'InputType',
-        default: "'text'",
-        required: false,
-        twoWay: false,
+        "name": "type",
+        "type": "InputType",
+        "default": "'text'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'blurred',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "blurred",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'focused',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "focused",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'clampToBounds',
-        signature: 'clampToBounds(): void',
+        "name": "clampToBounds",
+        "signature": "clampToBounds(): void"
       },
       {
-        name: 'clear',
-        signature: 'clear(event: MouseEvent): void',
+        "name": "clear",
+        "signature": "clear(event: MouseEvent): void"
       },
       {
-        name: 'focus',
-        signature: 'focus(): void',
+        "name": "focus",
+        "signature": "focus(): void"
       },
       {
-        name: 'togglePasswordVisibility',
-        signature: 'togglePasswordVisibility(): void',
-      },
-    ],
+        "name": "togglePasswordVisibility",
+        "signature": "togglePasswordVisibility(): void"
+      }
+    ]
   },
-  menu: {
-    selector: 'ea-menu',
-    inputs: [
+  "menu": {
+    "selector": "ea-menu",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxHeight',
-        type: 'string',
-        default: "'20rem'",
-        required: false,
-        twoWay: false,
+        "name": "maxHeight",
+        "type": "string",
+        "default": "'20rem'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'open',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "open",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'placement',
-        type: 'MenuPlacement',
-        default: "'bottom-start'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "placement",
+        "type": "MenuPlacement",
+        "default": "'bottom-start'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'closed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "closed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'opened',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "opened",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'close',
-        signature: 'close(restoreFocus: unknown): void',
+        "name": "close",
+        "signature": "close(restoreFocus: unknown): void"
       },
       {
-        name: 'focusFirstItem',
-        signature: 'focusFirstItem(): void',
+        "name": "focusFirstItem",
+        "signature": "focusFirstItem(): void"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
       },
       {
-        name: 'openAt',
-        signature: 'openAt(triggerEl: HTMLElement): void',
+        "name": "openAt",
+        "signature": "openAt(triggerEl: HTMLElement): void"
       },
       {
-        name: 'toggleAt',
-        signature: 'toggleAt(triggerEl: HTMLElement): void',
-      },
-    ],
+        "name": "toggleAt",
+        "signature": "toggleAt(triggerEl: HTMLElement): void"
+      }
+    ]
   },
-  'menu-item': {
-    selector: 'ea-menu-item',
-    inputs: [
+  "menu-item": {
+    "selector": "ea-menu-item",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'MenuItemVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "MenuItemVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'clicked',
-        type: 'MouseEvent',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "clicked",
+        "type": "MouseEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  'menu-trigger': {
-    selector: '[eaMenuTrigger]',
-    inputs: [
+  "menu-trigger": {
+    "selector": "[eaMenuTrigger]",
+    "inputs": [
       {
-        name: 'menu',
-        type: 'MenuComponent',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "menu",
+        "type": "MenuComponent",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'multi-select': {
-    selector: 'ea-multi-select',
-    inputs: [
+  "multi-select": {
+    "selector": "ea-multi-select",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxVisibleChips',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "maxVisibleChips",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'options',
-        type: 'readonly SelectOption[]',
-        default: '[]',
-        required: false,
-        twoWay: false,
+        "name": "options",
+        "type": "readonly SelectOption[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'searchable',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "searchable",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'searchPlaceholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "searchPlaceholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'selectAll',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "selectAll",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'MultiSelectSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "MultiSelectSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'readonly string[]',
-        default: '[]',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "readonly string[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'readonly string[]',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "readonly string[]",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'clear',
-        signature: 'clear(event: Event): void',
+        "name": "clear",
+        "signature": "clear(event: Event): void"
       },
       {
-        name: 'handlePopoverKeydown',
-        signature: 'handlePopoverKeydown(event: KeyboardEvent): void',
+        "name": "handlePopoverKeydown",
+        "signature": "handlePopoverKeydown(event: KeyboardEvent): void"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
       },
       {
-        name: 'orderedValues',
-        signature: 'orderedValues(set: Set<string>): string[]',
+        "name": "orderedValues",
+        "signature": "orderedValues(set: Set<string>): string[]"
       },
       {
-        name: 'removeChip',
-        signature: 'removeChip(opt: SelectOption): void',
+        "name": "removeChip",
+        "signature": "removeChip(opt: SelectOption): void"
       },
       {
-        name: 'toggleOption',
-        signature: 'toggleOption(opt: SelectOption): void',
+        "name": "toggleOption",
+        "signature": "toggleOption(opt: SelectOption): void"
       },
       {
-        name: 'toggleSelectAll',
-        signature: 'toggleSelectAll(): void',
-      },
-    ],
+        "name": "toggleSelectAll",
+        "signature": "toggleSelectAll(): void"
+      }
+    ]
   },
-  paginator: {
-    selector: 'ea-paginator',
-    inputs: [
+  "paginator": {
+    "selector": "ea-paginator",
+    "inputs": [
       {
-        name: 'align',
-        type: 'PaginatorAlign',
-        default: "'right'",
-        required: false,
-        twoWay: false,
+        "name": "align",
+        "type": "PaginatorAlign",
+        "default": "'right'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'groupThousands',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "groupThousands",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'page',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: true,
+        "name": "page",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'pageSize',
-        type: 'number',
-        default: '10',
-        required: false,
-        twoWay: true,
+        "name": "pageSize",
+        "type": "number",
+        "default": "10",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'pageSizeOptions',
-        type: 'number[]',
-        default: '[10, 25, 50, 100]',
-        required: false,
-        twoWay: false,
+        "name": "pageSizeOptions",
+        "type": "number[]",
+        "default": "[10, 25, 50, 100]",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showPageSizeSelector',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showPageSizeSelector",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showRangeLabel',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "showRangeLabel",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'PaginatorSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "PaginatorSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'totalItems',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "totalItems",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'PaginatorState',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "PaginatorState",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'formatNumber',
-        signature: 'formatNumber(value: number): string',
+        "name": "formatNumber",
+        "signature": "formatNumber(value: number): string"
       },
       {
-        name: 'goToPage',
-        signature: 'goToPage(page: number): void',
+        "name": "goToPage",
+        "signature": "goToPage(page: number): void"
       },
       {
-        name: 'nextPage',
-        signature: 'nextPage(): void',
+        "name": "nextPage",
+        "signature": "nextPage(): void"
       },
       {
-        name: 'prevPage',
-        signature: 'prevPage(): void',
-      },
-    ],
+        "name": "prevPage",
+        "signature": "prevPage(): void"
+      }
+    ]
   },
-  popover: {
-    selector: 'ea-popover',
-    inputs: [
+  "popover": {
+    "selector": "ea-popover",
+    "inputs": [
       {
-        name: 'anchor',
-        type: 'HTMLElement | ElementRef<HTMLElement> | undefined',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "anchor",
+        "type": "HTMLElement | ElementRef<HTMLElement> | undefined",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'clamp',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "clamp",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnEscape',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnEscape",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'closeOnOutsideClick',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "closeOnOutsideClick",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'flip',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "flip",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'matchAnchorWidth',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "matchAnchorWidth",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'offset',
-        type: 'number',
-        default: '2',
-        required: false,
-        twoWay: false,
+        "name": "offset",
+        "type": "number",
+        "default": "2",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'open',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "open",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placement',
-        type: 'PopoverPlacement',
-        default: "'bottom-start'",
-        required: false,
-        twoWay: false,
+        "name": "placement",
+        "type": "PopoverPlacement",
+        "default": "'bottom-start'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'role',
-        type: 'PopoverRole',
-        default: "'dialog'",
-        required: false,
-        twoWay: false,
+        "name": "role",
+        "type": "PopoverRole",
+        "default": "'dialog'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'scrollBehavior',
-        type: 'PopoverScrollBehavior',
-        default: "'reposition'",
-        required: false,
-        twoWay: false,
+        "name": "scrollBehavior",
+        "type": "PopoverScrollBehavior",
+        "default": "'reposition'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'surfaceId',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
-      },
+        "name": "surfaceId",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'closeRequested',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "closeRequested",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  'progress-bar': {
-    selector: 'ea-progress-bar',
-    inputs: [
+  "progress-bar": {
+    "selector": "ea-progress-bar",
+    "inputs": [
       {
-        name: 'indeterminate',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "indeterminate",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'max',
-        type: 'number',
-        default: '100',
-        required: false,
-        twoWay: false,
+        "name": "max",
+        "type": "number",
+        "default": "100",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showPercentage',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "showPercentage",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'ProgressBarSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "ProgressBarSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "value",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'ProgressBarVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "ProgressBarVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  radio: {
-    selector: 'ea-radio',
-    inputs: [
+  "radio": {
+    "selector": "ea-radio",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'radio-group': {
-    selector: 'ea-radio-group',
-    inputs: [
+  "radio-group": {
+    "selector": "ea-radio-group",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'name',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "name",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'orientation',
-        type: 'RadioOrientation',
-        default: "'vertical'",
-        required: false,
-        twoWay: false,
+        "name": "orientation",
+        "type": "RadioOrientation",
+        "default": "'vertical'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'RadioSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "RadioSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'select',
-        signature: 'select(val: string): void',
-      },
-    ],
+        "name": "select",
+        "signature": "select(val: string): void"
+      }
+    ]
   },
-  'range-slider': {
-    selector: 'ea-range-slider',
-    inputs: [
+  "range-slider": {
+    "selector": "ea-range-slider",
+    "inputs": [
       {
-        name: 'ariaLabelHigh',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabelHigh",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'ariaLabelLow',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabelLow",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'formatValue',
-        type: '(value: number) => string',
-        default: 'FORMAT_PLAIN',
-        required: false,
-        twoWay: false,
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "default": "FORMAT_PLAIN",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'groupThousands',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "groupThousands",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'max',
-        type: 'number',
-        default: '100',
-        required: false,
-        twoWay: false,
+        "name": "max",
+        "type": "number",
+        "default": "100",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'min',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showMinMaxLabels',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "showMinMaxLabels",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showValue',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "showValue",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'RangeSliderSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "RangeSliderSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'step',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: false,
+        "name": "step",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'RangeSliderValue',
-        default: '[0, 100]',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "RangeSliderValue",
+        "default": "[0, 100]",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'RangeSliderValue',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "RangeSliderValue",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'commitThumb',
-        signature: 'commitThumb(thumb: Thumb, raw: number): void',
+        "name": "commitThumb",
+        "signature": "commitThumb(thumb: Thumb, raw: number): void"
       },
       {
-        name: 'formatDisplay',
-        signature: 'formatDisplay(value: number): string',
-      },
-    ],
+        "name": "formatDisplay",
+        "signature": "formatDisplay(value: number): string"
+      }
+    ]
   },
-  rating: {
-    selector: 'ea-rating',
-    inputs: [
+  "rating": {
+    "selector": "ea-rating",
+    "inputs": [
       {
-        name: 'allowHalf',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "allowHalf",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'clearable',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "clearable",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'halfIconClass',
-        type: 'Type<unknown>',
-        default: 'LeftHalfStarIconComponent',
-        required: false,
-        twoWay: false,
+        "name": "halfIconClass",
+        "type": "Type<unknown>",
+        "default": "LeftHalfStarIconComponent",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'iconClass',
-        type: 'Type<unknown>',
-        default: 'StarIconComponent',
-        required: false,
-        twoWay: false,
+        "name": "iconClass",
+        "type": "Type<unknown>",
+        "default": "StarIconComponent",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'max',
-        type: 'number',
-        default: '5',
-        required: false,
-        twoWay: false,
+        "name": "max",
+        "type": "number",
+        "default": "5",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'min',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'RatingSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "RatingSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'hoverChanged',
-        type: 'number | null',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "hoverChanged",
+        "type": "number | null",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'iconForState',
-        signature: 'iconForState(state: RatingStarState): Type<unknown>',
+        "name": "iconForState",
+        "signature": "iconForState(state: RatingStarState): Type<unknown>"
       },
       {
-        name: 'stateFor',
-        signature: 'stateFor(pos: number): RatingStarState',
-      },
-    ],
+        "name": "stateFor",
+        "signature": "stateFor(pos: number): RatingStarState"
+      }
+    ]
   },
-  segmented: {
-    selector: 'ea-segmented',
-    inputs: [
+  "segmented": {
+    "selector": "ea-segmented",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'fullWidth',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "fullWidth",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'options',
-        type: 'SelectOption[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "options",
+        "type": "SelectOption[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'SegmentedSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "SegmentedSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'select',
-        signature: 'select(option: SelectOption): void',
-      },
-    ],
+        "name": "select",
+        "signature": "select(option: SelectOption): void"
+      }
+    ]
   },
-  skeleton: {
-    selector: 'ea-skeleton',
-    inputs: [
+  "skeleton": {
+    "selector": "ea-skeleton",
+    "inputs": [
       {
-        name: 'animated',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "animated",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'height',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "height",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'SkeletonVariant',
-        default: "'text'",
-        required: false,
-        twoWay: false,
+        "name": "variant",
+        "type": "SkeletonVariant",
+        "default": "'text'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'width',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
+        "name": "width",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  slider: {
-    selector: 'ea-slider',
-    inputs: [
+  "slider": {
+    "selector": "ea-slider",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'formatValue',
-        type: '(value: number) => string',
-        default: 'FORMAT_PLAIN',
-        required: false,
-        twoWay: false,
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "default": "FORMAT_PLAIN",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'groupThousands',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "groupThousands",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hasError',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "hasError",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'max',
-        type: 'number',
-        default: '100',
-        required: false,
-        twoWay: false,
+        "name": "max",
+        "type": "number",
+        "default": "100",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'min',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: false,
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showMinMaxLabels',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "showMinMaxLabels",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'showValue',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "showValue",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'SliderSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "SliderSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'step',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: false,
+        "name": "step",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'number',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "number",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'formatDisplay',
-        signature: 'formatDisplay(value: number): string',
-      },
-    ],
+        "name": "formatDisplay",
+        "signature": "formatDisplay(value: number): string"
+      }
+    ]
   },
-  spinner: {
-    selector: 'ea-spinner',
-    inputs: [
+  "spinner": {
+    "selector": "ea-spinner",
+    "inputs": [
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'SpinnerSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "size",
+        "type": "SpinnerSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  step: {
-    selector: 'ea-step',
-    inputs: [
+  "step": {
+    "selector": "ea-step",
+    "inputs": [
       {
-        name: 'completed',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "completed",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "label",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'optional',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
-      },
+        "name": "optional",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  stepper: {
-    selector: 'ea-stepper',
-    inputs: [
+  "stepper": {
+    "selector": "ea-stepper",
+    "inputs": [
       {
-        name: 'activeStep',
-        type: 'number',
-        default: '0',
-        required: false,
-        twoWay: true,
+        "name": "activeStep",
+        "type": "number",
+        "default": "0",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'linear',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "linear",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'StepperSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "size",
+        "type": "StepperSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'number',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "number",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'canNavigateTo',
-        signature: 'canNavigateTo(index: number): boolean',
+        "name": "canNavigateTo",
+        "signature": "canNavigateTo(index: number): boolean"
       },
       {
-        name: 'indexOf',
-        signature: 'indexOf(step: StepComponent): number',
+        "name": "indexOf",
+        "signature": "indexOf(step: StepComponent): number"
       },
       {
-        name: 'selectStep',
-        signature: 'selectStep(index: number): void',
-      },
-    ],
+        "name": "selectStep",
+        "signature": "selectStep(index: number): void"
+      }
+    ]
   },
-  switch: {
-    selector: 'ea-switch',
-    inputs: [
+  "switch": {
+    "selector": "ea-switch",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'checked',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: true,
+        "name": "checked",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'SwitchSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "size",
+        "type": "SwitchSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'boolean',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "boolean",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  tab: {
-    selector: 'ea-tab',
-    inputs: [
+  "tab": {
+    "selector": "ea-tab",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "label",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  tabs: {
-    selector: 'ea-tabs',
-    inputs: [
+  "tabs": {
+    "selector": "ea-tabs",
+    "inputs": [
       {
-        name: 'activeTab',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
+        "name": "activeTab",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'size',
-        type: 'TabsSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "TabsSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'TabsVariant',
-        default: "'underline'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "TabsVariant",
+        "default": "'underline'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'registerTab',
-        signature: 'registerTab(tab: TabComponent): void',
+        "name": "registerTab",
+        "signature": "registerTab(tab: TabComponent): void"
       },
       {
-        name: 'selectTab',
-        signature: 'selectTab(value: string): void',
+        "name": "selectTab",
+        "signature": "selectTab(value: string): void"
       },
       {
-        name: 'unregisterTab',
-        signature: 'unregisterTab(tab: TabComponent): void',
-      },
-    ],
+        "name": "unregisterTab",
+        "signature": "unregisterTab(tab: TabComponent): void"
+      }
+    ]
   },
-  tag: {
-    selector: 'ea-tag',
-    inputs: [
+  "tag": {
+    "selector": "ea-tag",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'removable',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "removable",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'removeLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "removeLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'TagSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "TagSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'variant',
-        type: 'TagVariant',
-        default: "'default'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "variant",
+        "type": "TagVariant",
+        "default": "'default'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'removed',
-        type: 'void',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "removed",
+        "type": "void",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  textarea: {
-    selector: 'ea-textarea',
-    inputs: [
+  "textarea": {
+    "selector": "ea-textarea",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxHeight',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "maxHeight",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'maxlength',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "maxlength",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minHeight',
-        type: 'number | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "minHeight",
+        "type": "number | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'resize',
-        type: 'TextareaResize',
-        default: "'vertical'",
-        required: false,
-        twoWay: false,
+        "name": "resize",
+        "type": "TextareaResize",
+        "default": "'vertical'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'TextareaSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "TextareaSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string',
-        default: "''",
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string",
+        "default": "''",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'blurred',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "blurred",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'focused',
-        type: 'FocusEvent',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "focused",
+        "type": "FocusEvent",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'focus',
-        signature: 'focus(): void',
-      },
-    ],
+        "name": "focus",
+        "signature": "focus(): void"
+      }
+    ]
   },
-  'time-picker': {
-    selector: 'ea-time-picker',
-    inputs: [
+  "time-picker": {
+    "selector": "ea-time-picker",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMessages',
-        type: 'EaErrorMessages | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMessages",
+        "type": "EaErrorMessages | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'errorMsg',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "errorMsg",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'format',
-        type: 'TimePickerFormat',
-        default: "'24h'",
-        required: false,
-        twoWay: false,
+        "name": "format",
+        "type": "TimePickerFormat",
+        "default": "'24h'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'hint',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "hint",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'id',
-        type: 'string',
-        default: '(auto-generated)',
-        required: false,
-        twoWay: false,
+        "name": "id",
+        "type": "string",
+        "default": "(auto-generated)",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'includeSeconds',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "includeSeconds",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'label',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "label",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'minuteStep',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: false,
+        "name": "minuteStep",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'placeholder',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "placeholder",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'readonly',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "readonly",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'required',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "required",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'secondStep',
-        type: 'number',
-        default: '1',
-        required: false,
-        twoWay: false,
+        "name": "secondStep",
+        "type": "number",
+        "default": "1",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'size',
-        type: 'TimePickerSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "TimePickerSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'value',
-        type: 'string | null',
-        default: 'null',
-        required: false,
-        twoWay: true,
-      },
+        "name": "value",
+        "type": "string | null",
+        "default": "null",
+        "required": false,
+        "twoWay": true
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'changed',
-        type: 'string | null',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "changed",
+        "type": "string | null",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'advanceFocus',
-        signature: 'advanceFocus(unit: Unit): void',
+        "name": "advanceFocus",
+        "signature": "advanceFocus(unit: Unit): void"
       },
       {
-        name: 'cannotExtend',
-        signature: 'cannotExtend(unit: Unit, digits: string): boolean',
+        "name": "cannotExtend",
+        "signature": "cannotExtend(unit: Unit, digits: string): boolean"
       },
       {
-        name: 'commitDigits',
-        signature: 'commitDigits(unit: Unit, digits: string): void',
+        "name": "commitDigits",
+        "signature": "commitDigits(unit: Unit, digits: string): void"
       },
       {
-        name: 'flushBuffer',
-        signature: 'flushBuffer(): void',
+        "name": "flushBuffer",
+        "signature": "flushBuffer(): void"
       },
       {
-        name: 'focusHoursWhenReady',
-        signature: 'focusHoursWhenReady(): void',
+        "name": "focusHoursWhenReady",
+        "signature": "focusHoursWhenReady(): void"
       },
       {
-        name: 'hoursFromTyped',
-        signature: 'hoursFromTyped(typed: number): number',
+        "name": "hoursFromTyped",
+        "signature": "hoursFromTyped(typed: number): number"
       },
       {
-        name: 'onPopoverCloseRequested',
-        signature: 'onPopoverCloseRequested(): void',
+        "name": "onPopoverCloseRequested",
+        "signature": "onPopoverCloseRequested(): void"
       },
       {
-        name: 'onSpinnerBlur',
-        signature: 'onSpinnerBlur(): void',
+        "name": "onSpinnerBlur",
+        "signature": "onSpinnerBlur(): void"
       },
       {
-        name: 'onSpinnerFocus',
-        signature: 'onSpinnerFocus(event: FocusEvent): void',
+        "name": "onSpinnerFocus",
+        "signature": "onSpinnerFocus(event: FocusEvent): void"
       },
       {
-        name: 'onSpinnerInput',
-        signature: 'onSpinnerInput(unit: Unit, event: Event): void',
+        "name": "onSpinnerInput",
+        "signature": "onSpinnerInput(unit: Unit, event: Event): void"
       },
       {
-        name: 'startHold',
-        signature: 'startHold(unit: Unit, direction: "1" | unknown, event: Event): void',
+        "name": "startHold",
+        "signature": "startHold(unit: Unit, direction: \"1\" | unknown, event: Event): void"
       },
       {
-        name: 'step',
-        signature: 'step(unit: Unit, direction: "1" | unknown): void',
+        "name": "step",
+        "signature": "step(unit: Unit, direction: \"1\" | unknown): void"
       },
       {
-        name: 'stopHold',
-        signature: 'stopHold(): void',
+        "name": "stopHold",
+        "signature": "stopHold(): void"
       },
       {
-        name: 'togglePeriod',
-        signature: 'togglePeriod(): void',
-      },
-    ],
+        "name": "togglePeriod",
+        "signature": "togglePeriod(): void"
+      }
+    ]
   },
-  toast: {
-    selector: 'ea-toast',
-    inputs: [
+  "toast": {
+    "selector": "ea-toast",
+    "inputs": [
       {
-        name: 'clearable',
-        type: 'boolean',
-        default: 'true',
-        required: false,
-        twoWay: false,
+        "name": "clearable",
+        "type": "boolean",
+        "default": "true",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'position',
-        type: 'ToastPosition',
-        default: "'bottom-right'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "position",
+        "type": "ToastPosition",
+        "default": "'bottom-right'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  tooltip: {
-    selector: '[eaTooltip]',
-    inputs: [
+  "tooltip": {
+    "selector": "[eaTooltip]",
+    "inputs": [
       {
-        name: 'eaTooltip',
-        type: 'string',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "eaTooltip",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'maxWidth',
-        type: 'number | undefined',
-        default: '200',
-        required: false,
-        twoWay: false,
+        "name": "maxWidth",
+        "type": "number | undefined",
+        "default": "200",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'tooltipPosition',
-        type: 'TooltipPosition',
-        default: "'top'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "tooltipPosition",
+        "type": "TooltipPosition",
+        "default": "'top'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  'transfer-list': {
-    selector: 'ea-transfer-list',
-    inputs: [
+  "transfer-list": {
+    "selector": "ea-transfer-list",
+    "inputs": [
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'items',
-        type: 'readonly TransferListItem[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "items",
+        "type": "readonly TransferListItem[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'selectedIds',
-        type: 'readonly string[]',
-        default: '[]',
-        required: false,
-        twoWay: true,
+        "name": "selectedIds",
+        "type": "readonly string[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'size',
-        type: 'TransferListSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
+        "name": "size",
+        "type": "TransferListSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'sourceLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "sourceLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'targetLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
-      },
+        "name": "targetLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [],
-    methods: [],
+    "outputs": [],
+    "methods": []
   },
-  tree: {
-    selector: 'ea-tree',
-    inputs: [
+  "tree": {
+    "selector": "ea-tree",
+    "inputs": [
       {
-        name: 'ariaLabel',
-        type: 'string | undefined',
-        default: 'undefined',
-        required: false,
-        twoWay: false,
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "default": "undefined",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'expandedIds',
-        type: 'readonly string[]',
-        default: '[]',
-        required: false,
-        twoWay: true,
+        "name": "expandedIds",
+        "type": "readonly string[]",
+        "default": "[]",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'nodes',
-        type: 'readonly TreeNode[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "nodes",
+        "type": "readonly TreeNode[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'selectedId',
-        type: 'string | null',
-        default: 'null',
-        required: false,
-        twoWay: true,
+        "name": "selectedId",
+        "type": "string | null",
+        "default": "null",
+        "required": false,
+        "twoWay": true
       },
       {
-        name: 'size',
-        type: 'TreeSize',
-        default: "'md'",
-        required: false,
-        twoWay: false,
-      },
+        "name": "size",
+        "type": "TreeSize",
+        "default": "'md'",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'nodeClick',
-        type: 'TreeNode',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "nodeClick",
+        "type": "TreeNode",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  'tree-node': {
-    selector: 'ea-tree-node',
-    inputs: [
+  "tree-node": {
+    "selector": "ea-tree-node",
+    "inputs": [
       {
-        name: 'collapseLabel',
-        type: 'string',
-        default: "'Collapse'",
-        required: false,
-        twoWay: false,
+        "name": "collapseLabel",
+        "type": "string",
+        "default": "'Collapse'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-        required: false,
-        twoWay: false,
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'expandedIds',
-        type: 'ReadonlySet<string>',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "expandedIds",
+        "type": "ReadonlySet<string>",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'expandLabel',
-        type: 'string',
-        default: "'Expand'",
-        required: false,
-        twoWay: false,
+        "name": "expandLabel",
+        "type": "string",
+        "default": "'Expand'",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'focusedId',
-        type: 'string | null',
-        default: 'null',
-        required: false,
-        twoWay: false,
+        "name": "focusedId",
+        "type": "string | null",
+        "default": "null",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'level',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "level",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'node',
-        type: 'TreeNode',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "node",
+        "type": "TreeNode",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'posInSet',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "posInSet",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'selectedId',
-        type: 'string | null',
-        default: 'null',
-        required: false,
-        twoWay: false,
+        "name": "selectedId",
+        "type": "string | null",
+        "default": "null",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'setSize',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "setSize",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'select',
-        type: 'TreeNode',
-        default: '',
-        required: false,
-        twoWay: false,
+        "name": "select",
+        "type": "TreeNode",
+        "default": "",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'toggle',
-        type: 'string',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "toggle",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [],
+    "methods": []
   },
-  'virtual-list': {
-    selector: 'ea-virtual-list',
-    inputs: [
+  "virtual-list": {
+    "selector": "ea-virtual-list",
+    "inputs": [
       {
-        name: 'itemHeight',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "itemHeight",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'items',
-        type: 'readonly unknown[]',
-        default: '',
-        required: true,
-        twoWay: false,
+        "name": "items",
+        "type": "readonly unknown[]",
+        "default": "",
+        "required": true,
+        "twoWay": false
       },
       {
-        name: 'overscan',
-        type: 'number',
-        default: '3',
-        required: false,
-        twoWay: false,
+        "name": "overscan",
+        "type": "number",
+        "default": "3",
+        "required": false,
+        "twoWay": false
       },
       {
-        name: 'viewportHeight',
-        type: 'number',
-        default: '',
-        required: true,
-        twoWay: false,
-      },
+        "name": "viewportHeight",
+        "type": "number",
+        "default": "",
+        "required": true,
+        "twoWay": false
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: 'scrollIndexChange',
-        type: 'number',
-        default: '',
-        required: false,
-        twoWay: false,
-      },
+        "name": "scrollIndexChange",
+        "type": "number",
+        "default": "",
+        "required": false,
+        "twoWay": false
+      }
     ],
-    methods: [
+    "methods": [
       {
-        name: 'scrollToIndex',
-        signature: 'scrollToIndex(index: number): void',
-      },
-    ],
-  },
+        "name": "scrollToIndex",
+        "signature": "scrollToIndex(index: number): void"
+      }
+    ]
+  }
 };
