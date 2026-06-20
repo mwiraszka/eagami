@@ -31,6 +31,7 @@
     "format": "prettier --write \"src/**\"",
     "lint": "eslint 'src/**'",
     "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
+    "check-parity": "node scripts/check-demo-parity.mjs",
     "storybook": "ng run eagami-ui:storybook",
     "build-storybook": "ng run eagami-ui:build-storybook",
     "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",

@@ -76,6 +76,13 @@ jobs:
             exit 1
           fi
 
+      # Demo/API parity: every input and output must carry an API-reference
+      # description, every knob must map to a real input/output, and every
+      # component with a knobs file must wire those knobs into its Storybook
+      # story. Keeps the website demos and Storybook in lockstep with the API.
+      - name: Check demo/API parity
+        run: pnpm --filter @eagami/ui check-parity
+
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression
       # guard. Budget is set generously above the current size — bump it
