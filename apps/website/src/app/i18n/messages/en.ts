@@ -206,7 +206,7 @@ export const en: WebMessages = {
         },
         {
           title: 'Localized',
-          body: 'Built-in component text ships in English, French, Greek, Polish, and Spanish.',
+          body: 'Built-in component text ships in ten languages.',
         },
         {
           title: 'Modern',

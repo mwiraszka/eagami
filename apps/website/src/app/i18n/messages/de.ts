@@ -211,7 +211,7 @@ export const de: WebMessages = {
         },
         {
           title: 'Lokalisiert',
-          body: 'Integrierter Komponententext wird in Englisch, Französisch, Griechisch, Polnisch und Spanisch ausgeliefert.',
+          body: 'Integrierter Komponententext wird in zehn Sprachen ausgeliefert.',
         },
         {
           title: 'Modern',

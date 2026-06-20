@@ -215,7 +215,7 @@ export const frFR: WebMessages = {
         },
         {
           title: 'Localisé',
-          body: 'Les textes intégrés des composants sont disponibles en anglais, français, grec, polonais et espagnol.',
+          body: 'Les textes intégrés des composants sont disponibles en dix langues.',
         },
         {
           title: 'Moderne',

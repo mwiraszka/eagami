@@ -206,7 +206,7 @@ export const is: WebMessages = {
         },
         {
           title: 'Staðfært',
-          body: 'Innbyggður einingatexti fylgir á ensku, frönsku, grísku, pólsku og spænsku.',
+          body: 'Innbyggður einingatexti fylgir á tíu tungumálum.',
         },
         {
           title: 'Nútímalegt',

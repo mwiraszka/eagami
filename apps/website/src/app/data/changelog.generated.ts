@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.1.1',
+    date: '2026-06-20',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Correct the internationalization documentation to state that built-in strings ship in ten languages.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.1.0',
     date: '2026-06-20',
     sections: [
