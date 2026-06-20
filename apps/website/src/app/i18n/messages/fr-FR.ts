@@ -320,15 +320,15 @@ export const frFR: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisation',
       metaDescription:
-        'Textes intégrés des composants en cinq langues, avec changement à l’exécution et remplacements chaîne par chaîne.',
+        'Textes intégrés des composants en dix langues, avec changement à l’exécution et remplacements chaîne par chaîne.',
       title: 'Internationalisation',
-      lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans cinq langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
+      lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans dix langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
       supportedHeading: 'Langues prises en charge',
       supportedFallback:
         'Les langues inconnues reviennent à l’anglais, tout comme les clés manquantes dans un remplacement partiel.',
       quickSetupHeading: 'Mise en place rapide',
       quickSetupBefore:
-        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application. Sans argument, l’anglais est utilisé par défaut : l’appel n’est requis que si vous voulez démarrer dans une autre langue.',
+        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',
       liveDemoHeading: 'Démo en direct',
       liveDemoIntro:
         'Choisissez une langue et observez les composants ci-dessous reprendre les chaînes et le formatage des dates correspondants.',

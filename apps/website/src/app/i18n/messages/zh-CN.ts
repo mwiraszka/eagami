@@ -300,14 +300,14 @@ export const zhCN: WebMessages = {
     },
     i18n: {
       metaTitle: 'Eagami | UI | 国际化',
-      metaDescription: '内建组件文本提供五种语言，支持运行时切换和逐字符串覆盖。',
+      metaDescription: '内建组件文本提供十种语言，支持运行时切换和逐字符串覆盖。',
       title: '国际化',
-      lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供五种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
+      lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供十种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
       supportedHeading: '支持的语言',
       supportedFallback: '未知语言会回退到英语，部分覆盖中缺失的任何键也是如此。',
       quickSetupHeading: '快速设置',
       quickSetupBefore:
-        '将 <code>provideEagamiUi()</code> 添加到你的应用配置中。不带参数时默认为英语，因此除非你想要不同的起始语言，否则调用它是可选的。',
+        '将 <code>provideEagamiUi()</code> 添加到你的应用配置中，并通过 <code>locales</code> 注册你使用的语言。英语始终可用，因此你只需打包所需的内容。',
       liveDemoHeading: '实时演示',
       liveDemoIntro: '选择一种语言，看看下方组件如何采用对应的字符串和日期格式。',
       runtimeSwitchHeading: '运行时切换',
