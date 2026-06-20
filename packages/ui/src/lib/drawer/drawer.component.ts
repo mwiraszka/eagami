@@ -1,8 +1,9 @@
-import { NgClass } from '@angular/common';
+import { NgClass, isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  PLATFORM_ID,
   ViewEncapsulation,
   computed,
   effect,
@@ -41,6 +42,7 @@ export class DrawerComponent {
   private readonly drawerEl = viewChild<ElementRef<HTMLDialogElement>>('drawerEl');
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly position = input<DrawerPosition>('right');
   readonly width = input<DrawerWidth>('md');
@@ -67,11 +69,14 @@ export class DrawerComponent {
   constructor() {
     effect(() => {
       const drawerRef = this.drawerEl()?.nativeElement;
-      if (!drawerRef) {
+      const open = this.open();
+      // `<dialog>` APIs and focus management are browser-only, but the effect
+      // still runs during SSR, so skip the DOM work on the server.
+      if (!drawerRef || !this.isBrowser) {
         return;
       }
 
-      if (this.open()) {
+      if (open) {
         if (!drawerRef.open) {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
           drawerRef.showModal();
