@@ -75,13 +75,16 @@
   }
 
   code {
-    @include mixins.code-chip;
-    font-size: 12px;
+    padding: 0;
+    font-size: 13px;
+    font-family: var(--text-code-family);
+    background-color: transparent;
+    color: var(--color-text-tertiary);
   }
 
   span {
     font-size: 14px;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
   }
 }
 
