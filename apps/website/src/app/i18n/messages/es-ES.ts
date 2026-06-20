@@ -1780,6 +1780,8 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado mediante showModal().',
           },
           'data-table': {
+            navigable:
+              'Convierte la tabla en una cuadrícula navegable por teclado con foco itinerante y movimiento entre celdas con las flechas.',
             bordered: 'Muestra un borde alrededor de cada celda.',
             columns:
               'Definiciones de columnas que describen la clave, la etiqueta y, opcionalmente, el orden o la plantilla de cada campo.',

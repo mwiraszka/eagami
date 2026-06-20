@@ -1693,6 +1693,8 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown via showModal().',
           },
           'data-table': {
+            navigable:
+              'Turns the table into a keyboard-navigable grid with roving focus and arrow-key cell movement.',
             bordered: 'Renders a border around every cell.',
             columns:
               "Column definitions describing each field's key, label, and optional sorting or template.",

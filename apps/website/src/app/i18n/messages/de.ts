@@ -1784,6 +1784,8 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer über showModal() angezeigt wurde.',
           },
           'data-table': {
+            navigable:
+              'Macht die Tabelle zu einem per Tastatur navigierbaren Raster mit wanderndem Fokus und Zellbewegung über die Pfeiltasten.',
             bordered: 'Rendert einen Rahmen um jede Zelle.',
             columns:
               'Spaltendefinitionen, die Schlüssel, Label und optionale Sortierung oder Template jedes Feldes beschreiben.',
