@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'packages/ui/**'
+      # Generated docs data the website renders is derived from packages/ui
+      # sources, so re-validate it whenever those committed files change too.
+      - 'apps/website/src/app/data/ui-api.generated.ts'
+      - 'apps/website/src/app/data/changelog.generated.ts'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -12,6 +16,10 @@ on:
   pull_request:
     paths:
       - 'packages/ui/**'
+      # Generated docs data the website renders is derived from packages/ui
+      # sources, so re-validate it whenever those committed files change too.
+      - 'apps/website/src/app/data/ui-api.generated.ts'
+      - 'apps/website/src/app/data/changelog.generated.ts'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
