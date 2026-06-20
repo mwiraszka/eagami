@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { ToastComponent } from './toast.component';
+import { TOAST_KNOBS } from './toast.component.knobs';
 import { ToastService } from './toast.service';
 
 const toastService = new ToastService();
@@ -10,19 +11,26 @@ const meta: Meta<ToastComponent> = {
   title: 'Components/Toast',
   component: ToastComponent,
   tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '28rem' } },
+  },
+  argTypes: TOAST_KNOBS.argTypes,
+  args: TOAST_KNOBS.args,
 };
 
 export default meta;
 type Story = StoryObj<ToastComponent>;
 
 export const Default: Story = {
-  render: () => ({
+  render: args => ({
     moduleMetadata: {
       imports: [ButtonComponent],
       providers: [{ provide: ToastService, useValue: toastService }],
     },
     template: `
-      <ea-toast />
+      <ea-toast
+        [position]="position"
+        [clearable]="clearable" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showDefault()">Default</ea-button>
         <ea-button variant="secondary" (clicked)="showSuccess()">Success</ea-button>
@@ -32,6 +40,7 @@ export const Default: Story = {
       </div>
     `,
     props: {
+      ...args,
       showDefault: () => toastService.show('This is a default toast'),
       showSuccess: () => toastService.success('Operation completed successfully'),
       showWarning: () => toastService.warning('Please review your input'),
