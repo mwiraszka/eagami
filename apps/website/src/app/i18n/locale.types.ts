@@ -1,53 +1,16 @@
-// Matches `EagamiLocale` from `@eagami/ui` so library and website translate in lockstep
-export type WebLocale =
-  | 'en'
-  | 'fr-FR'
-  | 'el'
-  | 'pl'
-  | 'es-ES'
-  | 'de'
-  | 'pt-BR'
-  | 'zh-CN'
-  | 'is'
-  | 'nl';
+import { EAGAMI_LOCALE_META, type EagamiLocale } from '@eagami/ui';
 
-// English pinned first (default), then alphabetical by each language's own name
-// (Latin scripts first, then Greek and Chinese).
-export const WEB_LOCALES: readonly WebLocale[] = [
-  'en',
-  'de',
-  'es-ES',
-  'fr-FR',
-  'is',
-  'nl',
-  'pl',
-  'pt-BR',
-  'el',
-  'zh-CN',
-];
+// The website translates in lockstep with the library, so its locale list,
+// labels, and flags all derive from @eagami/ui's single `EAGAMI_LOCALE_META`
+// source rather than re-declaring them (which silently drifted in the past).
+export type WebLocale = EagamiLocale;
 
-export const WEB_LOCALE_LABELS: Record<WebLocale, string> = {
-  en: 'English',
-  'fr-FR': 'Français',
-  el: 'Ελληνικά',
-  pl: 'Polski',
-  'es-ES': 'Español',
-  de: 'Deutsch',
-  'pt-BR': 'Português (Brasil)',
-  'zh-CN': '中文',
-  is: 'Íslenska',
-  nl: 'Nederlands',
-};
+export const WEB_LOCALES: readonly WebLocale[] = EAGAMI_LOCALE_META.map(m => m.locale);
 
-export const WEB_LOCALE_FLAGS: Record<WebLocale, string> = {
-  en: '🇬🇧',
-  'fr-FR': '🇫🇷',
-  el: '🇬🇷',
-  pl: '🇵🇱',
-  'es-ES': '🇪🇸',
-  de: '🇩🇪',
-  'pt-BR': '🇧🇷',
-  'zh-CN': '🇨🇳',
-  is: '🇮🇸',
-  nl: '🇳🇱',
-};
+export const WEB_LOCALE_LABELS: Record<WebLocale, string> = Object.fromEntries(
+  EAGAMI_LOCALE_META.map(m => [m.locale, m.label]),
+) as Record<WebLocale, string>;
+
+export const WEB_LOCALE_FLAGS: Record<WebLocale, string> = Object.fromEntries(
+  EAGAMI_LOCALE_META.map(m => [m.locale, m.flag]),
+) as Record<WebLocale, string>;

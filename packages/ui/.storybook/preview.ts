@@ -4,7 +4,12 @@ import type { Preview } from '@storybook/angular';
 
 import docJson from '../documentation.json';
 import { _eagamiI18nLocaleOverride } from '../src/lib/i18n/_storybook-locale-override';
-import { EAGAMI_ALL_LOCALES, EagamiLocale, provideEagamiUi } from '../src/public-api';
+import {
+  EAGAMI_ALL_LOCALES,
+  EAGAMI_LOCALE_META,
+  type EagamiLocale,
+  provideEagamiUi,
+} from '../src/public-api';
 
 // Story-layout utilities (`.story-row`, `.story-stack`, etc.) live in
 // `.storybook/preview-head.html` as inline CSS injected into every story
@@ -58,13 +63,13 @@ const preview: Preview = {
         title: 'Locale',
         icon: 'globe',
         dynamicTitle: true,
-        items: [
-          { value: 'en', title: 'English', right: '🇬🇧' },
-          { value: 'fr-FR', title: 'Français', right: '🇫🇷' },
-          { value: 'el', title: 'Ελληνικά', right: '🇬🇷' },
-          { value: 'pl', title: 'Polski', right: '🇵🇱' },
-          { value: 'es-ES', title: 'Español', right: '🇪🇸' },
-        ],
+        // Derived from the library's locale metadata so every shipped language
+        // appears automatically; adding a locale never needs a toolbar edit.
+        items: EAGAMI_LOCALE_META.map(({ locale, label, flag }) => ({
+          value: locale,
+          title: label,
+          right: flag,
+        })),
       },
     },
     theme: {

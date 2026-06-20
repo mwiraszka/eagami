@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-06-20
+
+### Added
+
+- Add `EAGAMI_LOCALE_META`, exposing each built-in locale's display name and flag so apps can build a language switcher without re-declaring the list.
+
 ## [4.0.0] - 2026-06-20
 
 ### Changed
@@ -776,6 +782,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.0.0...ui-v4.1.0
 [4.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v3.2.1...ui-v4.0.0
 [3.2.1]: https://github.com/mwiraszka/eagami/compare/ui-v3.2.0...ui-v3.2.1
 [3.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v3.1.1...ui-v3.2.0

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
-import { EAGAMI_LOCALES, type EagamiLocale } from './i18n.types';
+import { EAGAMI_LOCALES, EAGAMI_LOCALE_META, type EagamiLocale } from './i18n.types';
 import { EAGAMI_ALL_LOCALES, frFR } from './messages';
 
 describe('EagamiI18nService', () => {
@@ -122,4 +122,20 @@ describe('EagamiI18nService', () => {
       }
     },
   );
+});
+
+describe('EAGAMI_LOCALE_META', () => {
+  it('covers exactly the registered locales', () => {
+    const metaLocales = [...EAGAMI_LOCALE_META.map(m => m.locale)].sort();
+    const bundledLocales = [...EAGAMI_ALL_LOCALES.map(b => b.locale)].sort();
+
+    expect(metaLocales).toEqual(bundledLocales);
+  });
+
+  it('gives every locale a non-empty label and flag', () => {
+    for (const meta of EAGAMI_LOCALE_META) {
+      expect(meta.label.length).toBeGreaterThan(0);
+      expect(meta.flag.length).toBeGreaterThan(0);
+    }
+  });
 });

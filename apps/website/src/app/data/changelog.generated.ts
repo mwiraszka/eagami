@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.1.0',
+    date: '2026-06-20',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add `EAGAMI_LOCALE_META`, exposing each built-in locale's display name and flag so apps can build a language switcher without re-declaring the list.",
+        ],
+      },
+    ],
+  },
+  {
     version: '4.0.0',
     date: '2026-06-20',
     sections: [
