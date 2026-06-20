@@ -166,7 +166,17 @@ export const nl: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Wijzigingslogboek',
+      metaTitle: 'Eagami | Wijzigingslogboek',
+      metaDescription:
+        'Versiegeschiedenis van de Eagami UI Angular-componentenbibliotheek.',
+      lead: 'Noemenswaardige wijzigingen aan @eagami/ui, nieuwste eerst.',
+      migrationGuide: 'Migratiegids',
+      fullHistory: 'Volledige geschiedenis op GitHub',
+    },
     shell: {
+      changelog: 'Wijzigingslogboek',
       sidebarLabel: 'Documentatiezijbalk',
       navLabel: 'Documentatie',
       overview: 'Overzicht',
@@ -308,15 +318,15 @@ export const nl: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisatie',
       metaDescription:
-        'Ingebouwde componenttekst in vijf talen, met wisselen tijdens runtime en overschrijvingen per tekst.',
+        'Ingebouwde componenttekst in tien talen, met wisselen tijdens runtime en overschrijvingen per tekst.',
       title: 'Internationalisatie',
-      lede: 'Elke ingebouwde tekst (ARIA-labels, plaatsaanduidingen, lege toestanden, datumkiezerbediening) wordt geleverd in vijf talen. Stel er een in voor de hele app, wissel tijdens runtime, of overschrijf afzonderlijke teksten.',
+      lede: 'Elke ingebouwde tekst (ARIA-labels, plaatsaanduidingen, lege toestanden, datumkiezerbediening) wordt geleverd in tien talen. Stel er een in voor de hele app, wissel tijdens runtime, of overschrijf afzonderlijke teksten.',
       supportedHeading: 'Ondersteunde talen',
       supportedFallback:
         'Onbekende talen vallen terug op het Engels, net als sleutels die ontbreken in een gedeeltelijke overschrijving.',
       quickSetupHeading: 'Snelle installatie',
       quickSetupBefore:
-        'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie. Zonder argumenten valt het standaard terug op het Engels, dus het aanroepen is optioneel tenzij je met een andere taal wilt beginnen.',
+        'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd beschikbaar, dus je levert alleen wat je nodig hebt.',
       liveDemoHeading: 'Live demo',
       liveDemoIntro:
         'Kies een taal en zie hoe de onderstaande componenten de bijbehorende teksten en datumopmaak overnemen.',

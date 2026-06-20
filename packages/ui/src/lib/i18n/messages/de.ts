@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** German messages. */
-export const de: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Schließen',
   },
@@ -165,4 +165,9 @@ export const de: EagamiMessages = {
     overline: 'handgefertigt von',
     tagline: 'elegantes Webdesign',
   },
+};
+
+export const de: EagamiLocaleBundle = {
+  locale: 'de',
+  messages,
 };

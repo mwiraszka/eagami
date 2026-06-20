@@ -1,8 +1,14 @@
 @let t = messages().ui.component.playground;
 
-@if (api(); as componentApi) {
+@for (section of sections(); track section.slug) {
+  @if (multiComponent()) {
+    <h3 class="api-reference__component">
+      <code class="api-reference__code">{{ section.selectorLabel }}</code>
+    </h3>
+  }
+
   <ea-accordion [multi]="true">
-    @if (componentApi.inputs.length) {
+    @if (section.inputs.length) {
       <ea-accordion-item
         value="inputs"
         [label]="t.inputs">
@@ -10,13 +16,13 @@
           class="api-reference__table"
           density="compact"
           [columns]="inputColumns()"
-          [data]="componentApi.inputs"
+          [data]="section.inputs"
           [stickyHeader]="true"
           [hoverable]="false" />
       </ea-accordion-item>
     }
 
-    @if (componentApi.outputs.length) {
+    @if (section.outputs.length) {
       <ea-accordion-item
         value="outputs"
         [label]="t.outputs">
@@ -24,13 +30,13 @@
           class="api-reference__table"
           density="compact"
           [columns]="outputColumns()"
-          [data]="componentApi.outputs"
+          [data]="section.outputs"
           [stickyHeader]="true"
           [hoverable]="false" />
       </ea-accordion-item>
     }
 
-    @if (componentApi.methods.length) {
+    @if (section.methods.length) {
       <ea-accordion-item
         value="methods"
         [label]="t.methods">
@@ -38,7 +44,7 @@
           class="api-reference__table"
           density="compact"
           [columns]="methodColumns()"
-          [data]="componentApi.methods"
+          [data]="section.methods"
           [stickyHeader]="true"
           [hoverable]="false" />
       </ea-accordion-item>
@@ -72,5 +78,5 @@
 <ng-template
   #descCell
   let-row>
-  {{ describe(row['name']) }}
+  {{ row['description'] }}
 </ng-template>

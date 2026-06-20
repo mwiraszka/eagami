@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** Brazilian Portuguese messages. */
-export const ptBR: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Dispensar',
   },
@@ -165,4 +165,9 @@ export const ptBR: EagamiMessages = {
     overline: 'feito à mão por',
     tagline: 'web design elegante',
   },
+};
+
+export const ptBR: EagamiLocaleBundle = {
+  locale: 'pt-BR',
+  messages,
 };

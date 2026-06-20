@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'packages/ui/**'
+      # Generated docs data the website renders is derived from packages/ui
+      # sources, so re-validate it whenever those committed files change too.
+      - 'apps/website/src/app/data/ui-api.generated.ts'
+      - 'apps/website/src/app/data/changelog.generated.ts'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -12,6 +16,10 @@ on:
   pull_request:
     paths:
       - 'packages/ui/**'
+      # Generated docs data the website renders is derived from packages/ui
+      # sources, so re-validate it whenever those committed files change too.
+      - 'apps/website/src/app/data/ui-api.generated.ts'
+      - 'apps/website/src/app/data/changelog.generated.ts'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -21,7 +29,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
 
@@ -57,6 +65,31 @@ jobs:
       - run: pnpm --filter @eagami/ui test:coverage
 
       - run: pnpm --filter @eagami/ui build
+
+      # The website renders generated data (component API + changelog) committed
+      # under apps/website/src/app/data. Regenerate it from the packages/ui source
+      # of truth, format to match the committed style, and fail on any diff so a
+      # stale generated file can never merge.
+      - name: Check generated docs data is current
+        run: |
+          pnpm --filter @eagami/ui docs:api
+          pnpm --filter @eagami/ui docs:changelog
+          pnpm --filter eagami-website exec prettier --write \
+            src/app/data/ui-api.generated.ts \
+            src/app/data/changelog.generated.ts
+          GENERATED='apps/website/src/app/data/ui-api.generated.ts apps/website/src/app/data/changelog.generated.ts'
+          if ! git diff --quiet -- $GENERATED; then
+            echo "::error::Generated docs data is stale. Run 'pnpm ui docs:api && pnpm ui docs:changelog && pnpm format', then commit the result."
+            git --no-pager diff -- $GENERATED
+            exit 1
+          fi
+
+      # Demo/API parity: every input and output must carry an API-reference
+      # description, every knob must map to a real input/output, and every
+      # component with a knobs file must wire those knobs into its Storybook
+      # story. Keeps the website demos and Storybook in lockstep with the API.
+      - name: Check demo/API parity
+        run: pnpm --filter @eagami/ui check-parity
 
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression

@@ -51,6 +51,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'changelog',
+        loadComponent: () =>
+          import('./pages/ui/ui-changelog/ui-changelog-page.component').then(
+            c => c.UiChangelogPageComponent,
+          ),
+      },
+      {
         path: 'components',
         pathMatch: 'full',
         redirectTo: () => `components/${UI_COMPONENTS[0].slug}`,

@@ -34,10 +34,13 @@ export const EAGAMI_I18N_CONFIG = new InjectionToken<EagamiI18nConfig>(
  * Configures Eagami UI for the application.
  *
  * ```ts
+ * import { frFR, provideEagamiUi } from '@eagami/ui';
+ *
  * bootstrapApplication(AppComponent, {
  *   providers: [
  *     provideEagamiUi({
  *       locale: 'fr-FR',
+ *       locales: [frFR],
  *       palette: { primary: { base: '#3674a1' } },
  *     }),
  *   ],
@@ -45,11 +48,13 @@ export const EAGAMI_I18N_CONFIG = new InjectionToken<EagamiI18nConfig>(
  * ```
  *
  * Optional. Without it, the library defaults to English and ships its
- * built-in brand colours.
+ * built-in brand colours. Only English is bundled until you register more
+ * languages via `locales` (pass `EAGAMI_ALL_LOCALES` for all of them).
  */
 export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProviders {
   const i18nConfig: EagamiI18nConfig = {
     locale: config.locale,
+    locales: config.locales,
     messages: config.messages,
   };
 

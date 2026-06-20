@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** Greek messages. */
-export const el: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Απόρριψη',
   },
@@ -165,4 +165,9 @@ export const el: EagamiMessages = {
     overline: 'φτιαγμένο με μεράκι από',
     tagline: 'κομψός σχεδιασμός ιστού',
   },
+};
+
+export const el: EagamiLocaleBundle = {
+  locale: 'el',
+  messages,
 };

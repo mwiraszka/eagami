@@ -4,7 +4,7 @@ import type { Preview } from '@storybook/angular';
 
 import docJson from '../documentation.json';
 import { _eagamiI18nLocaleOverride } from '../src/lib/i18n/_storybook-locale-override';
-import { EagamiLocale, provideEagamiUi } from '../src/public-api';
+import { EAGAMI_ALL_LOCALES, EagamiLocale, provideEagamiUi } from '../src/public-api';
 
 // Story-layout utilities (`.story-row`, `.story-stack`, etc.) live in
 // `.storybook/preview-head.html` as inline CSS injected into every story
@@ -106,7 +106,7 @@ const preview: Preview = {
         }
       }
       return applicationConfig({
-        providers: [provideEagamiUi({ locale })],
+        providers: [provideEagamiUi({ locale, locales: EAGAMI_ALL_LOCALES })],
       })(storyFn, context);
     },
   ],

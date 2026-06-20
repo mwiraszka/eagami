@@ -1,0 +1,104 @@
+@use 'mixins' as mixins;
+
+.ui-changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 880px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-family: var(--font-family-brand);
+    color: var(--color-text-primary);
+  }
+
+  &__lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  &__links {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-brand-text);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__release {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: var(--border-width-thin) solid var(--color-border-subtle);
+  }
+
+  &__version {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__date {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-tertiary);
+  }
+
+  &__section-heading {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  &__entries {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 24px;
+    margin: 0;
+  }
+
+  &__entry {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+
+    code {
+      @include mixins.code-chip;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--color-brand-text);
+    }
+  }
+}

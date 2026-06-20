@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
   <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
+  <a href="https://main--6a14a63d5cab2ebad17871ff.chromatic.com"><img src="https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white" alt="Storybook" /></a>
 </p>
 
 `@eagami/ui` is a lightweight, accessible Angular component library. Sensible defaults out of the box, with a fully customizable design to fit any brand.
@@ -94,7 +95,7 @@ Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast
 
 ## Internationalization
 
-Built-in strings ship in English, French (France), Greek, Polish, and Spanish (Spain), with runtime switching via `EagamiI18nService`. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
+Built-in strings ship in ten languages, with runtime switching via `EagamiI18nService`. English is bundled by default; register the other languages you use with `provideEagamiUi({ locales: [...] })` (or pass `EAGAMI_ALL_LOCALES` for all of them) so you ship only what you need. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
 
 ## Server-side rendering
 

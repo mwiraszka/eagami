@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** English (default / fallback) messages. */
-export const en: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Dismiss',
   },
@@ -164,4 +164,9 @@ export const en: EagamiMessages = {
     overline: 'handcrafted by',
     tagline: 'elegant web design',
   },
+};
+
+export const en: EagamiLocaleBundle = {
+  locale: 'en',
+  messages,
 };

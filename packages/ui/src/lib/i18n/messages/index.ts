@@ -1,4 +1,4 @@
-import type { EagamiLocale, EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle } from '../i18n.types';
 import { de } from './de';
 import { el } from './el';
 import { en } from './en';
@@ -12,16 +12,19 @@ import { zhCN } from './zh-CN';
 
 export { de, el, en, esES, frFR, is, nl, pl, ptBR, zhCN };
 
-/** Built-in message dictionaries, keyed by locale. */
-export const EAGAMI_MESSAGES: Record<EagamiLocale, EagamiMessages> = {
+/**
+ * Every built-in locale bundle. Registering this pulls all shipped languages
+ * into the bundle; import individual locales instead to keep it lean.
+ */
+export const EAGAMI_ALL_LOCALES: readonly EagamiLocaleBundle[] = [
   en,
-  'fr-FR': frFR,
+  frFR,
   el,
   pl,
-  'es-ES': esES,
+  esES,
   de,
-  'pt-BR': ptBR,
-  'zh-CN': zhCN,
+  ptBR,
+  zhCN,
   is,
   nl,
-};
+];

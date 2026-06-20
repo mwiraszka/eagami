@@ -1,7 +1,7 @@
-import type { EagamiMessages } from '../i18n.types';
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
 
 /** Icelandic messages. */
-export const is: EagamiMessages = {
+const messages: EagamiMessages = {
   alert: {
     dismiss: 'Loka',
   },
@@ -165,4 +165,9 @@ export const is: EagamiMessages = {
     overline: 'handunnið af',
     tagline: 'glæsileg vefhönnun',
   },
+};
+
+export const is: EagamiLocaleBundle = {
+  locale: 'is',
+  messages,
 };

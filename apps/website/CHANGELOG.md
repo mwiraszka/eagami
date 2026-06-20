@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.2.2] - 2026-06-20
+
+### Added
+
+- Add a changelog page that surfaces the library's release history and links to the migration guide.
+- Document each composite component's public sub-components (such as `<ea-radio-group>` and `<ea-menu-item>`) in its API reference.
+
+### Changed
+
+- Pick up @eagami/ui v4.0.0 and register all locales for the language switcher.
+
 ## [3.2.1] - 2026-06-20
 
 ### Changed
@@ -611,6 +622,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.2.2]: https://github.com/mwiraszka/eagami/compare/website-v3.2.1...website-v3.2.2
 [3.2.1]: https://github.com/mwiraszka/eagami/compare/website-v3.2.0...website-v3.2.1
 [3.2.0]: https://github.com/mwiraszka/eagami/compare/website-v3.1.1...website-v3.2.0
 [3.1.1]: https://github.com/mwiraszka/eagami/compare/website-v3.1.0...website-v3.1.1

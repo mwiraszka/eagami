@@ -1,3 +1,37 @@
+# Migrating from v3.x to v4.0.0
+
+v4.0.0 makes the built-in locales opt-in, so an app bundles only the languages it actually uses instead of all ten. English is always available; every other language must now be registered.
+
+## Register the locales you use
+
+Before, every language resolved automatically:
+
+```ts
+provideEagamiUi({ locale: 'fr-FR' });
+```
+
+Now, register each non-English locale you reference:
+
+```ts
+import { frFR, provideEagamiUi } from '@eagami/ui';
+
+provideEagamiUi({ locale: 'fr-FR', locales: [frFR] });
+```
+
+To keep the old behavior (every shipped language available, e.g. for a language switcher), register them all:
+
+```ts
+import { EAGAMI_ALL_LOCALES, provideEagamiUi } from '@eagami/ui';
+
+provideEagamiUi({ locales: EAGAMI_ALL_LOCALES });
+```
+
+`EagamiI18nService.setLocale(locale)` and the `locale` config option now fall back to English when the requested locale was not registered.
+
+The `EAGAMI_MESSAGES` export has been removed; use `EAGAMI_ALL_LOCALES` (an array of locale bundles) instead.
+
+---
+
 # Migrating from v0.x to v1.0.0
 
 v1.0.0 is the first stable release. It consolidates the API surface across components for consistency and adds form-field plumbing and accessibility coverage that several components were missing. This guide gathers every breaking change in one place so consumers can upgrade in a single pass.

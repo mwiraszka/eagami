@@ -168,7 +168,16 @@ export const pl: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Dziennik zmian',
+      metaTitle: 'Eagami | Dziennik zmian',
+      metaDescription: 'Historia wersji biblioteki komponentów Angular Eagami UI.',
+      lead: 'Istotne zmiany w @eagami/ui, od najnowszych.',
+      migrationGuide: 'Przewodnik migracji',
+      fullHistory: 'Pełna historia na GitHubie',
+    },
     shell: {
+      changelog: 'Dziennik zmian',
       sidebarLabel: 'Pasek boczny dokumentacji',
       navLabel: 'Dokumentacja',
       overview: 'Przegląd',
@@ -310,15 +319,15 @@ export const pl: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacjonalizacja',
       metaDescription:
-        'Wbudowane teksty komponentów w pięciu językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
+        'Wbudowane teksty komponentów w dziesięciu językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
       title: 'Internacjonalizacja',
-      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w pięciu językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
+      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w dziesięciu językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
       supportedHeading: 'Obsługiwane języki',
       supportedFallback:
         'Nieznane języki przechodzą do angielskiego, podobnie jak klucze brakujące w częściowym nadpisaniu.',
       quickSetupHeading: 'Szybka konfiguracja',
       quickSetupBefore:
-        'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji. Bez argumentów domyślnym językiem jest angielski, więc wywołanie jest opcjonalne, chyba że chcesz zacząć w innym języku.',
+        'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze dostępny, więc dostarczasz tylko to, czego potrzebujesz.',
       liveDemoHeading: 'Demo na żywo',
       liveDemoIntro:
         'Wybierz język i obserwuj, jak poniższe komponenty przyjmują pasujące ciągi i formatowanie dat.',

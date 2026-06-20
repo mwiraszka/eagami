@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
 import { EAGAMI_LOCALES, type EagamiLocale } from './i18n.types';
+import { EAGAMI_ALL_LOCALES, frFR } from './messages';
 
 describe('EagamiI18nService', () => {
   function createService(
@@ -21,15 +22,30 @@ describe('EagamiI18nService', () => {
     expect(service.messages().dialog.close).toBe('Close dialog');
   });
 
-  it('uses the configured locale from provideEagamiUi', () => {
-    const service = createService({ locale: 'fr-FR' });
+  it('uses a configured locale once it is registered', () => {
+    const service = createService({ locale: 'fr-FR', locales: [frFR] });
 
     expect(service.locale()).toBe('fr-FR');
     expect(service.messages().dialog.close).toBe('Fermer la boîte de dialogue');
   });
 
+  it('falls back to English when the configured locale is not registered', () => {
+    const service = createService({ locale: 'fr-FR' });
+
+    expect(service.locale()).toBe('en');
+    expect(service.messages().dialog.close).toBe('Close dialog');
+  });
+
+  it('bundles only the registered locales, falling back for the rest', () => {
+    const service = createService({ locale: 'fr-FR', locales: [frFR] });
+
+    service.setLocale('de');
+
+    expect(service.locale()).toBe('en');
+  });
+
   it('switches locale reactively via setLocale', () => {
-    const service = createService();
+    const service = createService({ locales: EAGAMI_ALL_LOCALES });
 
     service.setLocale('es-ES');
 
@@ -38,7 +54,7 @@ describe('EagamiI18nService', () => {
   });
 
   it('resolves parameterized messages per locale', () => {
-    const service = createService({ locale: 'pl' });
+    const service = createService({ locale: 'pl', locales: EAGAMI_ALL_LOCALES });
 
     expect(service.messages().paginator.range('1', '10', '120')).toBe('1–10 z 120');
     expect(service.messages().codeInput.digitLabel(2, 6)).toBe('Cyfra 2 z 6');
@@ -56,6 +72,7 @@ describe('EagamiI18nService', () => {
   it('applies per-string overrides over the active locale', () => {
     const service = createService({
       locale: 'el',
+      locales: EAGAMI_ALL_LOCALES,
       messages: { alert: { dismiss: 'Κλείσιμο' } },
     });
 
@@ -65,7 +82,7 @@ describe('EagamiI18nService', () => {
   });
 
   it('keeps every supported locale dictionary complete', () => {
-    const service = createService();
+    const service = createService({ locales: EAGAMI_ALL_LOCALES });
     const reference = service.messages();
 
     for (const locale of EAGAMI_LOCALES) {
@@ -80,7 +97,7 @@ describe('EagamiI18nService', () => {
   it.each(EAGAMI_LOCALES)(
     'resolves every parameterized message in %s without throwing',
     (locale: EagamiLocale) => {
-      const service = createService({ locale });
+      const service = createService({ locale, locales: EAGAMI_ALL_LOCALES });
       const m = service.messages();
 
       const results = [

@@ -163,7 +163,16 @@ export const en: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Changelog',
+      metaTitle: 'Eagami | Changelog',
+      metaDescription: 'Release history for the Eagami UI Angular component library.',
+      lead: 'Notable changes to @eagami/ui, newest first.',
+      migrationGuide: 'Migration guide',
+      fullHistory: 'Full history on GitHub',
+    },
     shell: {
+      changelog: 'Changelog',
       sidebarLabel: 'Documentation sidebar',
       navLabel: 'Documentation',
       overview: 'Overview',
@@ -302,15 +311,15 @@ export const en: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalization',
       metaDescription:
-        'Built-in component text in five locales, with runtime switching and per-string overrides.',
+        'Built-in component text in ten locales, with runtime switching and per-string overrides.',
       title: 'Internationalization',
-      lede: 'Every built-in string (ARIA labels, placeholders, empty states, date-picker controls) ships in five locales. Set one for the whole app, switch at runtime, or override individual strings.',
+      lede: 'Every built-in string (ARIA labels, placeholders, empty states, date-picker controls) ships in ten locales. Set one for the whole app, switch at runtime, or override individual strings.',
       supportedHeading: 'Supported locales',
       supportedFallback:
         'Unknown locales fall back to English, as do any keys missing from a partial override.',
       quickSetupHeading: 'Quick setup',
       quickSetupBefore:
-        'Add <code>provideEagamiUi()</code> to your app config. Without arguments it defaults to English, so calling it is optional unless you want a different starting locale.',
+        'Add <code>provideEagamiUi()</code> to your app config and register the languages you use via <code>locales</code>. English is always available, so you ship only what you need.',
       liveDemoHeading: 'Live demo',
       liveDemoIntro:
         'Pick a locale and watch the components below pick up the matching strings and date formatting.',

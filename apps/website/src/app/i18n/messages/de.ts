@@ -167,7 +167,16 @@ export const de: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Änderungsprotokoll',
+      metaTitle: 'Eagami | Änderungsprotokoll',
+      metaDescription: 'Versionsverlauf der Eagami UI Angular-Komponentenbibliothek.',
+      lead: 'Wichtige Änderungen an @eagami/ui, neueste zuerst.',
+      migrationGuide: 'Migrationsleitfaden',
+      fullHistory: 'Vollständiger Verlauf auf GitHub',
+    },
     shell: {
+      changelog: 'Änderungsprotokoll',
       sidebarLabel: 'Dokumentations-Seitenleiste',
       navLabel: 'Dokumentation',
       overview: 'Überblick',
@@ -311,15 +320,15 @@ export const de: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisierung',
       metaDescription:
-        'Integrierter Komponententext in fünf Sprachräumen, mit Umschaltung zur Laufzeit und Überschreibungen pro Zeichenkette.',
+        'Integrierter Komponententext in zehn Sprachräumen, mit Umschaltung zur Laufzeit und Überschreibungen pro Zeichenkette.',
       title: 'Internationalisierung',
-      lede: 'Jede integrierte Zeichenkette (ARIA-Labels, Platzhalter, Leerzustände, Datumsauswahl-Steuerungen) wird in fünf Sprachräumen ausgeliefert. Legen Sie einen für die gesamte App fest, wechseln Sie zur Laufzeit oder überschreiben Sie einzelne Zeichenketten.',
+      lede: 'Jede integrierte Zeichenkette (ARIA-Labels, Platzhalter, Leerzustände, Datumsauswahl-Steuerungen) wird in zehn Sprachräumen ausgeliefert. Legen Sie einen für die gesamte App fest, wechseln Sie zur Laufzeit oder überschreiben Sie einzelne Zeichenketten.',
       supportedHeading: 'Unterstützte Sprachräume',
       supportedFallback:
         'Unbekannte Sprachräume greifen auf Englisch zurück, ebenso alle Schlüssel, die in einer Teilüberschreibung fehlen.',
       quickSetupHeading: 'Schnelleinrichtung',
       quickSetupBefore:
-        'Fügen Sie <code>provideEagamiUi()</code> zu Ihrer App-Konfiguration hinzu. Ohne Argumente wird standardmäßig Englisch verwendet, sodass der Aufruf optional ist, sofern Sie keinen anderen Ausgangs-Sprachraum wünschen.',
+        'Fügen Sie <code>provideEagamiUi()</code> zu Ihrer App-Konfiguration hinzu und registrieren Sie die verwendeten Sprachen über <code>locales</code>. Englisch ist immer verfügbar, sodass Sie nur das ausliefern, was Sie brauchen.',
       liveDemoHeading: 'Live-Demo',
       liveDemoIntro:
         'Wählen Sie einen Sprachraum und beobachten Sie, wie die Komponenten unten die passenden Zeichenketten und die Datumsformatierung übernehmen.',

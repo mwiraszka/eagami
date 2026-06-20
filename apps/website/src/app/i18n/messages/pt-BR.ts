@@ -167,7 +167,17 @@ export const ptBR: WebMessages = {
   },
   ui: {
     metaTitle: 'Eagami | UI',
+    changelog: {
+      title: 'Registro de alterações',
+      metaTitle: 'Eagami | Registro de alterações',
+      metaDescription:
+        'Histórico de versões da biblioteca de componentes Angular Eagami UI.',
+      lead: 'Alterações notáveis no @eagami/ui, das mais recentes primeiro.',
+      migrationGuide: 'Guia de migração',
+      fullHistory: 'Histórico completo no GitHub',
+    },
     shell: {
+      changelog: 'Registro de alterações',
       sidebarLabel: 'Barra lateral da documentação',
       navLabel: 'Documentação',
       overview: 'Visão geral',
@@ -309,15 +319,15 @@ export const ptBR: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacionalização',
       metaDescription:
-        'Texto integrado dos componentes em cinco idiomas, com troca em tempo de execução e sobrescritas por string.',
+        'Texto integrado dos componentes em dez idiomas, com troca em tempo de execução e sobrescritas por string.',
       title: 'Internacionalização',
-      lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em cinco idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
+      lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em dez idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
       supportedHeading: 'Idiomas suportados',
       supportedFallback:
         'Idiomas desconhecidos recorrem ao inglês, assim como quaisquer chaves ausentes em uma sobrescrita parcial.',
       quickSetupHeading: 'Configuração rápida',
       quickSetupBefore:
-        'Adicione <code>provideEagamiUi()</code> à configuração do seu aplicativo. Sem argumentos, o padrão é o inglês, então chamá-lo é opcional, a menos que você queira um idioma inicial diferente.',
+        'Adicione <code>provideEagamiUi()</code> à configuração do seu aplicativo e registre os idiomas que você usa via <code>locales</code>. O inglês está sempre disponível, então você inclui apenas o que precisa.',
       liveDemoHeading: 'Demonstração ao vivo',
       liveDemoIntro:
         'Escolha um idioma e veja os componentes abaixo adotarem as strings correspondentes e a formatação de data.',

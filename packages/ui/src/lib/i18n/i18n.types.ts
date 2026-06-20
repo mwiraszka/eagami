@@ -213,10 +213,26 @@ export type EagamiMessagesOverride = {
   [G in keyof EagamiMessages]?: Partial<EagamiMessages[G]>;
 };
 
+/**
+ * A self-identifying locale dictionary. Import the ones you need and register
+ * them via `provideEagamiUi({ locales: [...] })` so only those ship in your
+ * bundle; English is always available without registration.
+ */
+export interface EagamiLocaleBundle {
+  locale: EagamiLocale;
+  messages: EagamiMessages;
+}
+
 /** Configuration accepted by `provideEagamiUi`. */
 export interface EagamiI18nConfig {
-  /** Initial locale. Defaults to `'en'`. */
+  /** Initial locale. Defaults to `'en'`. Falls back to English if not registered. */
   locale?: EagamiLocale;
+  /**
+   * Locale dictionaries to make available at runtime, beyond the built-in
+   * English. Pass `EAGAMI_ALL_LOCALES` for every shipped language, or a subset
+   * to keep your bundle lean.
+   */
+  locales?: readonly EagamiLocaleBundle[];
   /** Optional per-string overrides merged over the active locale's messages. */
   messages?: EagamiMessagesOverride;
 }
