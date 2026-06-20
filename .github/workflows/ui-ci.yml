@@ -58,6 +58,23 @@ jobs:
 
       - run: pnpm --filter @eagami/ui build
 
+      # The website renders generated data (component API + changelog) committed
+      # under apps/website/src/app/data. Regenerate it from the packages/ui source
+      # of truth, format to match the committed style, and fail on any diff so a
+      # stale generated file can never merge.
+      - name: Check generated docs data is current
+        run: |
+          pnpm --filter @eagami/ui docs:api
+          pnpm --filter @eagami/ui docs:changelog
+          pnpm --filter eagami-website exec prettier --write \
+            src/app/data/ui-api.generated.ts \
+            src/app/data/changelog.generated.ts
+          if ! git diff --quiet -- apps/website/src/app/data; then
+            echo "::error::Generated docs data is stale. Run 'pnpm ui docs:api && pnpm ui docs:changelog && pnpm format', then commit the result."
+            git --no-pager diff -- apps/website/src/app/data
+            exit 1
+          fi
+
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression
       # guard. Budget is set generously above the current size — bump it
