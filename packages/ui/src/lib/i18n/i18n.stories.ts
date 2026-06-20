@@ -9,10 +9,9 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 
 /**
- * Every Eagami UI component ships its built-in strings — ARIA labels,
- * placeholders, empty states — in English, French (France), Greek, Polish, and
- * Spanish (Spain). Pick a language from the **Locale** toolbar control above to
- * see each story re-render in that language.
+ * Every Eagami UI component ships its built-in strings (ARIA labels,
+ * placeholders, empty states) in ten languages. Pick a language from the
+ * **Locale** toolbar control above to see each story re-render in that language.
  *
  * In an app, call `provideEagamiUi({ locale })` once at bootstrap, or inject
  * `EagamiI18nService` and call `setLocale()` to switch at runtime. Individual
@@ -41,8 +40,8 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Built-in component strings localized across English, French, Greek, ' +
-          'Polish, and Spanish. Use the Locale toolbar control to switch languages.',
+          'Built-in component strings localized across ten languages. ' +
+          'Use the Locale toolbar control to switch languages.',
       },
     },
   },
