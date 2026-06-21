@@ -17,7 +17,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-dialog-panel-background-color, var(--color-bg-elevated));
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-2xl);
     max-height: 85vh;

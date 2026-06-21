@@ -1,4 +1,6 @@
-:root {
+// :where() keeps these at zero specificity so consumer overrides win in every
+// theme; see the note in _colors.scss.
+:where(:root) {
   --shadow-none: none;
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
@@ -75,11 +77,11 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :where(:root:not([data-theme='light'])) {
     @include dark-elevation-tokens;
   }
 }
 
-:root[data-theme='dark'] {
+:where(:root[data-theme='dark']) {
   @include dark-elevation-tokens;
 }

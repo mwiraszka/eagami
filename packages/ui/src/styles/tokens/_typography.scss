@@ -1,4 +1,5 @@
-:root {
+// :where() keeps tokens at zero specificity so consumer overrides win; see _colors.scss.
+:where(:root) {
   // The `* Fallback` faces are Arial tuned with metric overrides to match the
   // web fonts, so they must sit right after each web font in the stack: that way
   // text laid out before the font loads has the same metrics and `font-display:

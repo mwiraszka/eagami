@@ -3,7 +3,7 @@
   width: 100%;
   border: var(--border-width-thin) solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
-  background-color: var(--color-bg-base);
+  background-color: var(--ea-data-table-background-color, var(--color-bg-base));
 
   // Owns horizontal scroll so the table can be wider than the host without dragging
   // the slotted paginator into the scrolled coordinate space, which would shorten
@@ -80,7 +80,8 @@
   }
 
   &__row {
-    border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
+    border-bottom: var(--border-width-thin) solid
+      var(--ea-data-table-row-border-color, var(--color-border-subtle));
     transition: var(--transition-colors);
 
     &:last-child {
@@ -167,11 +168,17 @@
   }
 
   &--striped &__body &__row:nth-child(even) {
-    background-color: var(--color-bg-stripe-subtle);
+    background-color: var(
+      --ea-data-table-row-stripe-background-color,
+      var(--color-bg-stripe-subtle)
+    );
   }
 
   &--hoverable &__body &__row:not(&__row--empty):hover {
-    background-color: var(--color-state-hover);
+    background-color: var(
+      --ea-data-table-row-hover-background-color,
+      var(--color-state-hover)
+    );
   }
 
   &--bordered &__cell {

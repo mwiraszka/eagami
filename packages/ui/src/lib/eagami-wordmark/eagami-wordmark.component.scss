@@ -53,6 +53,12 @@
     color: var(--color-text-secondary);
   }
 
+  // Dedicated hook so a consumer can recolour just the overline (e.g. a brand
+  // accent) without disturbing the separator and tagline
+  &__overline {
+    color: var(--ea-eagami-wordmark-overline-color, var(--color-text-secondary));
+  }
+
   &__brand {
     font-size: calc(var(--_size) * 0.5px);
     font-weight: var(--font-weight-medium);

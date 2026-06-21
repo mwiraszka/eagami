@@ -153,7 +153,10 @@
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
-    background-color: var(--color-bg-elevated);
+    background-color: var(
+      --ea-multi-select-popover-background-color,
+      var(--color-bg-elevated)
+    );
 
     &--xs {
       font-size: var(--font-size-xs);

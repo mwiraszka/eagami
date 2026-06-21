@@ -1,4 +1,5 @@
-:root {
+// :where() keeps tokens at zero specificity so consumer overrides win; see _colors.scss.
+:where(:root) {
   --duration-instant: 0ms;
   --duration-fast: 100ms;
   --duration-normal: 200ms;
@@ -27,7 +28,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root {
+  :where(:root) {
     --duration-fast: 0ms;
     --duration-normal: 0ms;
     --duration-slow: 0ms;
