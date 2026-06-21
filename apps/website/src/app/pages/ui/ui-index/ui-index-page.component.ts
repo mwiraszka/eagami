@@ -6,11 +6,13 @@ import { RouterLink } from '@angular/router';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
+import { UiShowcaseComponent } from './ui-showcase.component';
+
 @Component({
   selector: 'web-ui-index-page',
   templateUrl: './ui-index-page.component.html',
   styleUrl: './ui-index-page.component.scss',
-  imports: [RouterLink, CheckIconComponent],
+  imports: [RouterLink, CheckIconComponent, UiShowcaseComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiIndexPageComponent {
