@@ -152,8 +152,39 @@ export class TooltipDirective implements OnDestroy {
 
     this.renderer.appendChild(document.body, this.tooltipEl);
     this.appendDescribedBy();
+    this.shrinkToContent();
     this.positionTooltip();
     this.attachRepositionListeners();
+  }
+
+  /* A wrapping `max-width` box keeps its full max-width, leaving dead space to
+     the right of every line that ends short. Pin the width to the longest
+     rendered line so the bubble hugs its text. A Range over the contents spans
+     all line boxes, so its bounding width is the longest line; it returns 0 in
+     jsdom, where we leave the width alone. */
+  private shrinkToContent(): void {
+    if (this.maxWidth() == null || !this.tooltipEl) {
+      return;
+    }
+    const range = document.createRange();
+    range.selectNodeContents(this.tooltipEl);
+    const textWidth = range.getBoundingClientRect().width;
+    if (textWidth <= 0) {
+      return;
+    }
+    const style = getComputedStyle(this.tooltipEl);
+    const horizontalChrome =
+      style.boxSizing === 'border-box'
+        ? parseFloat(style.paddingLeft) +
+          parseFloat(style.paddingRight) +
+          parseFloat(style.borderLeftWidth) +
+          parseFloat(style.borderRightWidth)
+        : 0;
+    this.renderer.setStyle(
+      this.tooltipEl,
+      'width',
+      `${Math.ceil(textWidth + horizontalChrome)}px`,
+    );
   }
 
   private hide(): void {
