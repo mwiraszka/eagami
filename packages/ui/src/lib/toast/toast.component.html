@@ -8,6 +8,20 @@
         class="ea-toast ea-toast--{{ toast.variant }}"
         [attr.role]="getRole(toast)"
         [attr.aria-live]="getRole(toast) === 'alert' ? 'assertive' : 'polite'">
+        @switch (toast.variant) {
+          @case ('success') {
+            <ea-icon-check-circle class="ea-toast__icon" />
+          }
+          @case ('info') {
+            <ea-icon-info class="ea-toast__icon" />
+          }
+          @case ('warning') {
+            <ea-icon-alert-triangle class="ea-toast__icon" />
+          }
+          @case ('error') {
+            <ea-icon-alert-circle class="ea-toast__icon" />
+          }
+        }
         <span class="ea-toast__message">{{ toast.message }}</span>
         @if (clearable()) {
           <button

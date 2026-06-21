@@ -8,6 +8,10 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { AlertCircleIconComponent } from '../icons/alert-circle.component';
+import { AlertTriangleIconComponent } from '../icons/alert-triangle.component';
+import { CheckCircleIconComponent } from '../icons/check-circle.component';
+import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
 import { type Toast, ToastService } from './toast.service';
 
@@ -27,7 +31,13 @@ export type ToastPosition =
  */
 @Component({
   selector: 'ea-toast',
-  imports: [XIconComponent],
+  imports: [
+    XIconComponent,
+    CheckCircleIconComponent,
+    InfoIconComponent,
+    AlertTriangleIconComponent,
+    AlertCircleIconComponent,
+  ],
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
