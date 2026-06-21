@@ -2,6 +2,18 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.3.0] - 2026-06-22
+
+### Added
+
+- Showcase a wall of live, interactive components on the UI landing page.
+- Document the complete set of overridable surface, state, and border color tokens on the design tokens page.
+- Expand the internationalization live demo with more components whose built-in text is localized.
+
+### Changed
+
+- Pick up @eagami/ui v4.2.0.
+
 ## [3.2.4] - 2026-06-20
 
 ### Changed
@@ -329,7 +341,7 @@ All notable changes to eagami.com are documented in this file.
 ### Fixed
 
 - Improve dark-mode tooltip contrast so tooltips no longer blend into the surface beneath them.
-- Show a clear disabled state on the design-tokens *Simulate* button while a simulation is running.
+- Show a clear disabled state on the design-tokens _Simulate_ button while a simulation is running.
 
 ## [1.1.0] - 2026-05-16
 
@@ -358,7 +370,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Update the Open Graph social-share card artwork.
-- Overlap the home-hero type block with the heron so the bird's beak sits just above the *eagami* wordmark.
+- Overlap the home-hero type block with the heron so the bird's beak sits just above the _eagami_ wordmark.
 
 ### Fixed
 
@@ -369,41 +381,41 @@ All notable changes to eagami.com are documented in this file.
 
 ### Changed
 
-- Replace the giant centered-logo social-share preview with a purpose-built 1200×630 Open Graph card (brand-gradient backdrop, heron mark on the left, *eagami* wordmark + *elegant web design* tagline on the right), and switch the Twitter card to `summary_large_image` so WhatsApp, LinkedIn, Slack, Discord, and Twitter all render the new image as a designed card rather than a cropped square logo.
+- Replace the giant centered-logo social-share preview with a purpose-built 1200×630 Open Graph card (brand-gradient backdrop, heron mark on the left, _eagami_ wordmark + _elegant web design_ tagline on the right), and switch the Twitter card to `summary_large_image` so WhatsApp, LinkedIn, Slack, Discord, and Twitter all render the new image as a designed card rather than a cropped square logo.
 - Announce contact-form send-success and send-failure to screen readers via live regions, validate the email field's format inline once the user blurs it, and add the missing `Validators.email` + `autocomplete="email"`.
 - Deepen `--color-text-tertiary` in light mode from neutral-400 to neutral-500 so eyebrow labels, the footer copyright, and the icon-grid captions clear the WCAG AA 4.5:1 contrast floor against white.
 - Lift the dark-mode hero secondary link to neutral-50 / neutral-0 so it stays ≥ 4.5:1 against every phase of the hero's flutter-gradient.
-- Restate the home Services *Features* row as a styled eyebrow label rather than a heading and promote each add-on title to h3, fixing the broken h2 → h3 → h4 heading order screen readers were navigating through.
+- Restate the home Services _Features_ row as a styled eyebrow label rather than a heading and promote each add-on title to h3, fixing the broken h2 → h3 → h4 heading order screen readers were navigating through.
 - Hide the hero scroll-indicator chevron, the decorative bird icon, and the wordmark sheen duplicate from assistive tech, and label the hero region by the wordmark so screen-reader landmark lists name it correctly.
-- Announce screen-reader-only status text whenever the *Recent projects* carousel advances, and support left/right arrow keys when the carousel viewport is focused.
+- Announce screen-reader-only status text whenever the _Recent projects_ carousel advances, and support left/right arrow keys when the carousel viewport is focused.
 
 ### Fixed
 
-- Honor `prefers-reduced-motion` on the contact-form placeholder typewriter (now rotates slowly through full hints with no cursor), the Recent-projects carousel slide transition, and the design-token motion *Simulate* button (which now becomes disabled rather than animating against the user's setting).
+- Honor `prefers-reduced-motion` on the contact-form placeholder typewriter (now rotates slowly through full hints with no cursor), the Recent-projects carousel slide transition, and the design-token motion _Simulate_ button (which now becomes disabled rather than animating against the user's setting).
 - Stop the project-card focus ring from being clipped by the carousel's `overflow: hidden` viewport — focus now paints inside the card via an inset ring.
 - Restore a visible focus ring on `<main>` when the skip-link sends focus there; previously `outline: none` swallowed the indication.
 - Set decorative project-card logos to `alt=""` so screen readers don't read the project name twice in a row.
 - Add `role="list"` to every `list-style: none` list across the site so VoiceOver on Safari stops silently dropping them from the list rotor.
 - Add an accessible name to the `/ui` documentation sidebar, hide its decorative chevron caret from screen readers, and make the sidebar's scrollable region itself focusable via the keyboard.
-- Add `aria-pressed` to the header theme toggle and `aria-controls` / `aria-pressed` to the tokens *Simulate* button so screen readers convey their toggled state.
+- Add `aria-pressed` to the header theme toggle and `aria-controls` / `aria-pressed` to the tokens _Simulate_ button so screen readers convey their toggled state.
 
 ## [1.0.6] - 2026-05-14
 
 ### Added
 
-- Pulsing chevron-down indicator near the bottom of the hero (anchored to *Services*) so it's immediately obvious there's more content below the fold; hidden on landscape phones and disabled under `prefers-reduced-motion`.
+- Pulsing chevron-down indicator near the bottom of the hero (anchored to _Services_) so it's immediately obvious there's more content below the fold; hidden on landscape phones and disabled under `prefers-reduced-motion`.
 
 ### Changed
 
-- Move the *Recent projects* section below *Toolkit* so the home page flows pitch → showcase → proof → contact, and re-alternate every section's background so no two neighboring sections share the same shade.
-- Deepen the *subtle* surface shade in light mode (now neutral-100 rather than the near-invisible neutral-50) so the gray sections, project cards, and service cards read with a clear contrast against the white sections.
+- Move the _Recent projects_ section below _Toolkit_ so the home page flows pitch → showcase → proof → contact, and re-alternate every section's background so no two neighboring sections share the same shade.
+- Deepen the _subtle_ surface shade in light mode (now neutral-100 rather than the near-invisible neutral-50) so the gray sections, project cards, and service cards read with a clear contrast against the white sections.
 
 ### Fixed
 
 - Eliminate the flash of black text on first paint by inlining critical theme-aware background and text colors in the document head, so the page renders in the correct light or dark palette before the main stylesheet loads.
 - Preload the DM Sans italic latin subset so the hero tagline renders in its real italic on first paint instead of briefly flickering through a synthesized Arial fallback.
-- Extend the *eagami* wordmark sheen's painted area past the parent line-box so the gradient now sweeps all the way through the descender of the *g* instead of getting clipped a few pixels short.
-- Tighten the home contact section's height to `100dvh − header − footer` so jumping to `#contact` lands the *Got a project in mind?* heading at the top of the viewport without leaving an awkward empty band between the form and the footer.
+- Extend the _eagami_ wordmark sheen's painted area past the parent line-box so the gradient now sweeps all the way through the descender of the _g_ instead of getting clipped a few pixels short.
+- Tighten the home contact section's height to `100dvh − header − footer` so jumping to `#contact` lands the _Got a project in mind?_ heading at the top of the viewport without leaving an awkward empty band between the form and the footer.
 
 ## [1.0.5] - 2026-05-13
 
@@ -422,14 +434,14 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Dedicated 404 *Page not found* page so unknown URLs no longer silently redirect to home.
+- Dedicated 404 _Page not found_ page so unknown URLs no longer silently redirect to home.
 - Skip-to-main-content link at the top of every page for keyboard users.
 - Open Graph image, Twitter Card, and canonical link meta tags so the site previews cleanly when shared in Slack, LinkedIn, X, and search results.
 
 ### Changed
 
-- Rename the home page work section from *Selected work* to *Recent projects* and tighten its lede to "A few sites in active development."; update the hero CTA to "See recent projects" and refresh the page meta description to match.
-- Lift the carousel project cards off the *Recent projects* section by giving them a slightly subtler background in both light and dark mode.
+- Rename the home page work section from _Selected work_ to _Recent projects_ and tighten its lede to "A few sites in active development."; update the hero CTA to "See recent projects" and refresh the page meta description to match.
+- Lift the carousel project cards off the _Recent projects_ section by giving them a slightly subtler background in both light and dark mode.
 - Brand the installed-PWA toolbar color and Windows tile color with the eagami primary blue instead of plain white.
 - Expand sitemap.xml to list every routable page (the `/ui` landing, setup, design-tokens, icons, and each component playground).
 - Shift the icon cards on `/ui/icons` to sit one shade lighter than the page in dark mode (`bg-subtle` over `bg-base`) so they no longer blend into the page surface while remaining distinct from the click-to-copy tooltip.
@@ -445,7 +457,7 @@ All notable changes to eagami.com are documented in this file.
 ### Changed
 
 - Drop em-dashes from the `/ui/icons` and `/ui/design-tokens` intro paragraphs in favor of colons or rephrased connectives.
-- Refresh the Services section to drop technical jargon: rename *SaaS control plane* to *User management* and *Internationalization* to *Multilingual support*, change "from a single landing page to a full SaaS" to "...to a full web app", broaden Stripe payments to mention other providers on request, and tighten the maintenance, analytics, and email-notifications descriptions.
+- Refresh the Services section to drop technical jargon: rename _SaaS control plane_ to _User management_ and _Internationalization_ to _Multilingual support_, change "from a single landing page to a full SaaS" to "...to a full web app", broaden Stripe payments to mention other providers on request, and tighten the maintenance, analytics, and email-notifications descriptions.
 - Rewrite the contact-section lede ("Send a message using the form below") and inline success message ("Thanks for the message. You'll hear back soon") to drop the em-dashes and the explicit reply-time promise; the post-submit toast becomes a terse "Message sent".
 - Lighten the dark-mode "Get in touch" CTA so the button reads as more clearly brand-coloured against the deep hero and contact backgrounds, with a softer hover delta.
 - Sit the icon cards on `/ui/icons` flush with the page background in dark mode, defining them via their border so the tooltip still lifts off on hover.
@@ -454,8 +466,8 @@ All notable changes to eagami.com are documented in this file.
 
 ### Fixed
 
-- Stretch the home page contact section to fill the desktop viewport (minus the sticky header) so jumping to `#contact` no longer leaves a sliver of the previous section's *Explore the toolkit* button visible at the top.
-- Correct the *At a glance* count on the `/ui` Overview from 51 icons to the actual 100 icons shipped with `@eagami/ui`.
+- Stretch the home page contact section to fill the desktop viewport (minus the sticky header) so jumping to `#contact` no longer leaves a sliver of the previous section's _Explore the toolkit_ button visible at the top.
+- Correct the _At a glance_ count on the `/ui` Overview from 51 icons to the actual 100 icons shipped with `@eagami/ui`.
 
 ## [1.0.2] - 2026-05-12
 
@@ -474,7 +486,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Surface the missing *Tooltip* entry in the `/ui` Components sidebar (the playground demo at `/ui/components/tooltip` existed all along but was unreachable from navigation).
+- Surface the missing _Tooltip_ entry in the `/ui` Components sidebar (the playground demo at `/ui/components/tooltip` existed all along but was unreachable from navigation).
 
 ### Changed
 
@@ -493,11 +505,11 @@ All notable changes to eagami.com are documented in this file.
 
 ### Changed
 
-- Tidy the Toolkit showcase labels: rename Skeletons to *Loading skeletons* and reorder it above Tags, and rename the Services *Add-ons* subsection to *Features*.
+- Tidy the Toolkit showcase labels: rename Skeletons to _Loading skeletons_ and reorder it above Tags, and rename the Services _Add-ons_ subsection to _Features_.
 - Expand the Toolkit master checkbox to toggle all three left checkboxes together (including the disabled-but-checked one), with refined per-checkbox toast text.
 - Tune the home hero for short landscape viewports (phones rotated sideways): switch back to a side-by-side icon-and-text layout, drop the full-viewport-height floor, and scale the heron icon off `vh` so it fits the available height without overflow.
-- Rebuild the `/ui/icons` page: list 100 `@eagami/ui` icons alphabetically in a single grid (categories removed, brand-only *Apple* icon dropped), render icons at 24 × 24 px on hover-distinct cards, and credit Feather Icons / Cole Bemis (MIT) in the intro.
-- Refine the `/ui` sidebar Components disclosure: move the caret to sit after the *Components* label, and treat clicking *Components* as a page link — expand the children and jump to the first one (*Accordion*) when the user isn't already viewing a component.
+- Rebuild the `/ui/icons` page: list 100 `@eagami/ui` icons alphabetically in a single grid (categories removed, brand-only _Apple_ icon dropped), render icons at 24 × 24 px on hover-distinct cards, and credit Feather Icons / Cole Bemis (MIT) in the intro.
+- Refine the `/ui` sidebar Components disclosure: move the caret to sit after the _Components_ label, and treat clicking _Components_ as a page link — expand the children and jump to the first one (_Accordion_) when the user isn't already viewing a component.
 - Link the `@eagami/ui` mention in the `/ui/icons` and `/ui/design-tokens` page intros to the npm package, matching the convention used in the home Toolkit and Overview sections.
 
 ### Fixed
@@ -506,7 +518,7 @@ All notable changes to eagami.com are documented in this file.
 - Prevent the notch and curved corners on iPhones in edge-to-edge mode from clipping content in the header, hero, page sections, and footer by respecting iOS safe-area insets.
 - Suppress header icon tooltips on touch-only devices so a tap no longer latches the tooltip open until the user taps somewhere else.
 - Hide the `@eagami/ui` tooltip on touch-only devices too, so tapping an icon card on `/ui/icons` no longer leaves its selector tooltip stuck on screen.
-- Stop the trailing space after inline links (e.g. *Feather Icons* and *Cole Bemis* on the Icons page) from being underlined on hover.
+- Stop the trailing space after inline links (e.g. _Feather Icons_ and _Cole Bemis_ on the Icons page) from being underlined on hover.
 - Span the paginator's top-border divider across the full width of the data-table playground demo, even when the paginator's controls wrap to multiple lines.
 
 ## [0.8.0] - 2026-05-11
@@ -517,7 +529,7 @@ All notable changes to eagami.com are documented in this file.
 - Shrink `/ui` page headings from 48 px to 36 px across Overview, Setup, Design tokens, and Icons for a consistent docs heading scale.
 - Tighten the home-hero type stack by halving the gap between wordmark, tagline, and actions.
 - Rebuild the Toolkit section as a live `@eagami/ui` component medley with labelled rows for buttons, progress bars, sliders (with a live value badge), tags, spinners, switches, skeletons, radio buttons, and a master/child checkbox group — each interactive control firing an info toast on use to make the demos feel live.
-- Add a *See all components →* link below the showcase pointing at `/ui/components/accordion`, rename the section CTA from *Browse the components* to *Explore the toolkit*, and trim the trailing bullets to three short points.
+- Add a _See all components →_ link below the showcase pointing at `/ui/components/accordion`, rename the section CTA from _Browse the components_ to _Explore the toolkit_, and trim the trailing bullets to three short points.
 - Link the `@eagami/ui` code reference in both the home Toolkit lede and the `/ui` Overview lede to the npm package, opening in a new tab.
 - Give add-on service items a thin brand-gradient accent bar to break up the Services section without overpowering the copy.
 
@@ -528,18 +540,18 @@ All notable changes to eagami.com are documented in this file.
 - Rework the home page typography on mobile: section headings (Selected work, Services, Got a project in mind?) now scale down to a more natural size on small viewports, and section ledes, card titles, and descriptions follow suit.
 - Reduce section, card, and service-item padding on mobile so content uses the available width more efficiently.
 - Flatten the `/ui` sidebar: Overview, Setup, Design tokens, and Icons are now top-level links. Components sits at the same level with a chevron toggle and expands to reveal the full component list (auto-expands on `/ui/components/*` routes).
-- Rewrite the `/ui` Overview as a landing page with *At a glance*, *Design principles*, and *How to start* sections, instead of two link cards.
-- Rename *Setup guide* to *Setup* for consistency with the rest of the sidebar.
+- Rewrite the `/ui` Overview as a landing page with _At a glance_, _Design principles_, and _How to start_ sections, instead of two link cards.
+- Rename _Setup guide_ to _Setup_ for consistency with the rest of the sidebar.
 - Rename the design-tokens route from `/ui/tokens` to `/ui/design-tokens` for consistency with the sidebar label.
 - Redesign the Icons page: render each icon at 32 × 32 px in title-case-labelled cards, organised into Branding, Arrows & chevrons, Status & feedback, Actions, and Objects & content. Each card shows its selector (`ea-icon-…`) in a tooltip on hover or focus.
-- Contact form's *Send message* button only requires the three fields to be non-empty; format and length validation no longer block submission. Failure surfacing now uses the red error toast variant so it matches the inline error message color.
+- Contact form's _Send message_ button only requires the three fields to be non-empty; format and length validation no longer block submission. Failure surfacing now uses the red error toast variant so it matches the inline error message color.
 
 ### Fixed
 
-- Selected-work carousel no longer renders cards so narrow that titles like *London Chess* wrap on every word. Cards drop to a single full-width card below 800 px, two cards below 1000 px, and three cards above.
+- Selected-work carousel no longer renders cards so narrow that titles like _London Chess_ wrap on every word. Cards drop to a single full-width card below 800 px, two cards below 1000 px, and three cards above.
 - Carousel previous / next arrows are now always visible — they previously disappeared below 500 px, making the carousel unnavigable on phones.
 - Inline links on the Overview no longer underline the trailing space after the link text; the underline now sits cleanly under the link label only.
-- *Get in touch* and *See selected work* anchor links now scroll the target section below the sticky header on every viewport, including mobile, by configuring the router's `ViewportScroller` with a live header-height offset.
+- _Get in touch_ and _See selected work_ anchor links now scroll the target section below the sticky header on every viewport, including mobile, by configuring the router's `ViewportScroller` with a live header-height offset.
 - Sidebar divider line now extends the full page height as a single 1 px line, independent of whether the sticky sidebar has reached its end.
 - Sweep every component template to remove leading / trailing whitespace inside inline tag content and convert the awkward `>Text</tag\n>` form to the standard text-on-its-own-line layout for multi-attribute tags.
 
@@ -551,7 +563,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Changed
 
-- Contact form's *Send message* button is now disabled until name, email, and message are all filled in (and the email is a valid address).
+- Contact form's _Send message_ button is now disabled until name, email, and message are all filled in (and the email is a valid address).
 - Submitting the contact form now raises a success or warning toast in addition to the inline confirmation / error message.
 
 ## [0.5.0] - 2026-05-10
@@ -569,11 +581,11 @@ All notable changes to eagami.com are documented in this file.
 
 - Site header is now translucent with a backdrop blur instead of a solid background and bottom border.
 - Component playground cards no longer carry a redundant header label / divider — the page heading already names the component.
-- Hero call-to-action hierarchy reworked: *Get in touch* is now the primary filled button and *See selected work* steps down to a secondary text link.
-- Tighten the primary CTA hover behaviour — a stronger two-step contrast in light mode and a sub-shade blend in dark mode — and bring the contact form's *Send message* button onto the same scheme so it shares base and hover colors with the hero *Get in touch* CTA in both modes.
+- Hero call-to-action hierarchy reworked: _Get in touch_ is now the primary filled button and _See selected work_ steps down to a secondary text link.
+- Tighten the primary CTA hover behaviour — a stronger two-step contrast in light mode and a sub-shade blend in dark mode — and bring the contact form's _Send message_ button onto the same scheme so it shares base and hover colors with the hero _Get in touch_ CTA in both modes.
 - Color swatches on the design-tokens page are wider so each `--color-*` token name fits on one line, and the shade label + token name now sit inside the colored rectangle.
 - Elevation and shape preview captions now sit inside their cards instead of below them.
-- Browser tab title is now simply *Eagami* on the home page and *Eagami | UI* across all `/ui` pages.
+- Browser tab title is now simply _Eagami_ on the home page and _Eagami | UI_ across all `/ui` pages.
 - Drop the local dark-mode shadow workaround now that `@eagami/ui` 1.0.2 ships proper white-at-low-alpha shadows.
 - Bump `@eagami/ui` to 1.0.2, picking up dark-mode color fixes from the library.
 
@@ -583,10 +595,10 @@ All notable changes to eagami.com are documented in this file.
 - Hero in dark mode now resolves to the correct brand and gradient shades — fixes a view-encapsulation selector bug that was silently dropping every component-scoped dark-mode rule (hero, contact button, elevation surface).
 - Page scroll resets to the top on every route navigation instead of preserving the previous position.
 - Hero radial-gradient glow returns in dark mode in mid-tone brand shades, keeping the circular effect while leaving the hero text readable.
-- *See selected work* link is now legible in dark mode against the radial-gradient backdrop.
+- _See selected work_ link is now legible in dark mode against the radial-gradient backdrop.
 - Selected-work card edges are no longer clipped at the carousel column boundaries.
 - Project logos render at consistent visual size; Chordbomb's viewBox is now tight to the bomb shape.
-- CIRC Aesthetics inner *C* renders in `#bea477` instead of being a transparent cutout.
+- CIRC Aesthetics inner _C_ renders in `#bea477` instead of being a transparent cutout.
 - UI sidebar stays inside the docs region and no longer scrolls inside the viewport when the components list is long.
 
 ## [0.4.0] - 2026-05-09
@@ -638,6 +650,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.3.0]: https://github.com/mwiraszka/eagami/compare/website-v3.2.4...website-v3.3.0
 [3.2.4]: https://github.com/mwiraszka/eagami/compare/website-v3.2.3...website-v3.2.4
 [3.2.3]: https://github.com/mwiraszka/eagami/compare/website-v3.2.2...website-v3.2.3
 [3.2.2]: https://github.com/mwiraszka/eagami/compare/website-v3.2.1...website-v3.2.2
