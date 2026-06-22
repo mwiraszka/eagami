@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2026-06-22
+
+### Added
+
+- Add a batch of icons spanning AI, editor, commerce, and nature, plus a set of popular brand marks.
+- Add a `clickable` input and `rowActivate` output to `<ea-data-table>` for click and keyboard row activation with a pointer cursor.
+
 ## [4.2.0] - 2026-06-22
 
 ### Added
@@ -802,6 +809,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.2.0...ui-v4.3.0
 [4.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.1.1...ui-v4.2.0
 [4.1.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.1.0...ui-v4.1.1
 [4.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.0.0...ui-v4.1.0
