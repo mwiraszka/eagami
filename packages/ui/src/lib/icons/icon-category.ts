@@ -8,9 +8,10 @@ import { Directive, HostBinding, type Type, input } from '@angular/core';
  *
  * `feather`: derived from the upstream Feather Icons set (MIT). Uses Feather's
  *            canonical slug and design.
- * `eagami`:  original Eagami UI design (the brand mark, the basic shape set,
- *            household icons, and the brand-filled variants of icons that
- *            also exist as Feather outlines).
+ * `eagami`:  Eagami UI additions beyond the Feather set: the brand mark, the
+ *            basic shape set and household icons, brand-filled variants of
+ *            Feather outlines, the coloured brand marks (`isBrand`), and line
+ *            icons adapted from Lucide (ISC).
  */
 export type IconCategory = 'feather' | 'eagami';
 
