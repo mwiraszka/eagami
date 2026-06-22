@@ -87,11 +87,16 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly noDataText = input<string | undefined>(undefined);
   /** Enables grid keyboard navigation: `role="grid"`, roving tabindex, and arrow-key cell movement. */
   readonly navigable = input<boolean>(false);
+  /** Marks body rows as clickable: shows a pointer cursor and emits `rowActivate` on click or Enter/Space. Independent of `hoverable` and `navigable`. */
+  readonly clickable = input<boolean>(false);
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
   /** Fires whenever the sort column or direction changes via header click. */
   readonly sorted = output<DataTableSortState>();
+
+  /** Fires with the row's data when a body row is activated by click or Enter/Space while `clickable` is set. */
+  readonly rowActivate = output<T>();
 
   readonly noDataTemplate = contentChild<TemplateRef<unknown>>('noData');
 
@@ -107,6 +112,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     'ea-data-table--hoverable': this.hoverable(),
     'ea-data-table--bordered': this.bordered(),
     'ea-data-table--navigable': this.navigable(),
+    'ea-data-table--clickable': this.clickable(),
   }));
 
   constructor() {
@@ -207,6 +213,22 @@ export class DataTableComponent<T = Record<string, unknown>> {
     }
     const active = this.activeCell();
     return active.row === row && active.col === colIndex ? 0 : -1;
+  }
+
+  // Body rows are keyboard-focusable for activation only in clickable mode, and
+  // only when grid navigation (which owns cell-level focus) is off.
+  rowTabindex(): number | null {
+    return this.clickable() && !this.navigable() ? 0 : null;
+  }
+
+  // Click passes no event; Enter/Space pass one so default scroll/re-trigger is
+  // suppressed. In navigable mode the keydown bubbles up from the focused cell.
+  onRowActivate(row: T, event?: Event): void {
+    if (!this.clickable()) {
+      return;
+    }
+    event?.preventDefault();
+    this.rowActivate.emit(row);
   }
 
   // Syncs roving focus when a cell is focused by mouse or keyboard tab

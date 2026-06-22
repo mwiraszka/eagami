@@ -17,7 +17,9 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     hoverable: { control: 'boolean' },
     stickyHeader: { control: 'boolean' },
     navigable: { control: 'boolean' },
+    clickable: { control: 'boolean' },
     sorted: { action: 'sorted' },
+    rowActivate: { action: 'rowActivate' },
   },
   args: {
     density: 'comfortable',
@@ -26,5 +28,6 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     hoverable: true,
     stickyHeader: false,
     navigable: false,
+    clickable: false,
   },
 };

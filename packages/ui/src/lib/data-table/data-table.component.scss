@@ -181,6 +181,10 @@
     );
   }
 
+  &--clickable &__body &__row:not(&__row--empty) {
+    cursor: var(--ea-data-table-row-cursor, pointer);
+  }
+
   &--bordered &__cell {
     border-right: var(--border-width-thin) solid var(--color-border-subtle);
 

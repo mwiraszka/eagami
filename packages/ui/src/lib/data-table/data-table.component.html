@@ -83,7 +83,11 @@
           ) {
             <tr
               class="ea-data-table__row"
-              [attr.role]="navigable() ? 'row' : null">
+              [attr.role]="navigable() ? 'row' : null"
+              [attr.tabindex]="rowTabindex()"
+              (click)="onRowActivate(row)"
+              (keydown.enter)="onRowActivate(row, $event)"
+              (keydown.space)="onRowActivate(row, $event)">
               @for (col of columns(); track col.key; let colIndex = $index) {
                 <td
                   class="ea-data-table__cell"
