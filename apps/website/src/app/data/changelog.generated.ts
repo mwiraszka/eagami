@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.3.0',
+    date: '2026-06-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a batch of icons spanning AI, editor, commerce, and nature, plus a set of popular brand marks.',
+          'Add a `clickable` input and `rowActivate` output to `<ea-data-table>` for click and keyboard row activation with a pointer cursor.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.2.0',
     date: '2026-06-22',
     sections: [
