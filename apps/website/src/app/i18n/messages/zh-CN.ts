@@ -1594,6 +1594,9 @@ export const zhCN: WebMessages = {
             opened: '当抽屉通过 showModal() 显示后触发一次。',
           },
           'data-table': {
+            clickable:
+              '将数据行标记为可点击：显示指针光标，并在点击或按 Enter/空格 时触发 rowActivate。',
+            rowActivate: '当可点击的数据行通过点击或键盘激活时，携带该行数据触发。',
             navigable: '将表格变为可用键盘导航的网格，支持移动焦点和方向键单元格移动。',
             bordered: '在每个单元格周围渲染边框。',
             columns: '描述每个字段的键、标签以及可选排序或模板的列定义。',

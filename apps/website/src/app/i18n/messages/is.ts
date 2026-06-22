@@ -1756,6 +1756,10 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd með showModal().',
           },
           'data-table': {
+            clickable:
+              'Merkir gagnaraðir sem smellanlegar: sýnir bendil og sendir rowActivate við smell eða Enter/Bil.',
+            rowActivate:
+              'Sendir gögn raðarinnar þegar smellanleg röð er virkjuð með smelli eða lyklaborði.',
             navigable:
               'Breytir töflunni í lyklaborðs-stýranlegt reitakerfi með færanlegum fókus og hreyfingu milli reita með örvalyklunum.',
             bordered: 'Birtir ramma um hverja reit.',

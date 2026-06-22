@@ -1058,6 +1058,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'clickable',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'columns',
         type: 'DataTableColumn<T>[]',
         default: '',
@@ -1129,6 +1136,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     outputs: [
+      {
+        name: 'rowActivate',
+        type: 'T',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'sorted',
         type: 'DataTableSortState',
