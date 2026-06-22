@@ -51,7 +51,7 @@ const LABEL_KNOB: PlaygroundKnob = {
   name: 'label',
   control: 'content',
   options: [],
-  default: 'Click me!',
+  default: 'Press me',
 };
 
 // Auto-selected when the label is cleared while no icon is set, so the button is

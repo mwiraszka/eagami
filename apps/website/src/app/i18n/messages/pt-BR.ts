@@ -237,6 +237,7 @@ export const ptBR: WebMessages = {
         tag: 'Etiqueta',
         badge: 'Selo',
         tooltip: 'Informações adicionais exibidas em uma dica',
+        exploreMore: '...explorar mais componentes',
         list: 'Lista',
         grid: 'Grade',
         table: 'Tabela',
@@ -370,8 +371,6 @@ export const ptBR: WebMessages = {
       frenchSpacingBody:
         'A tipografia francesa exige um espaço estreito não separável antes de <code>? ! : ; »</code> e depois de <code>«</code>. O auxiliar exportado <code>frenchSpacing()</code> converte os espaços normais em suas próprias strings em francês (a biblioteca trata internamente suas mensagens em francês incluídas).',
       demoLocaleLabel: 'Idioma',
-      demoAppointmentLabel: 'Compromisso',
-      demoFruitLabel: 'Fruta',
     },
     component: {
       metaDescription: name =>
@@ -545,7 +544,7 @@ export const ptBR: WebMessages = {
           danger: 'Perigo',
           toggleLoading: 'Alternar carregamento',
           fullWidth: 'Largura total',
-          clickedToast: 'Botão clicado!',
+          clickedToast: 'Botão pressionado!',
         },
         card: {
           elevatedHeader: 'Elevado',

@@ -224,6 +224,7 @@ export const zhCN: WebMessages = {
         tag: '标签',
         badge: '徽章',
         tooltip: '在工具提示中显示的附加信息',
+        exploreMore: '...探索更多组件',
         list: '列表',
         grid: '网格',
         table: '表格',
@@ -349,8 +350,6 @@ export const zhCN: WebMessages = {
       frenchSpacingBody:
         '法语排版要求在 <code>? ! : ; »</code> 前以及 <code>«</code> 后使用窄不间断空格。导出的 <code>frenchSpacing()</code> 助手会转换你自己的法语字符串中的普通空格（库会在内部处理其捆绑的法语消息）。',
       demoLocaleLabel: '语言',
-      demoAppointmentLabel: '预约',
-      demoFruitLabel: '水果',
     },
     component: {
       metaDescription: name => `${name} 组件参考与实时演示。`,
@@ -521,7 +520,7 @@ export const zhCN: WebMessages = {
           danger: '危险',
           toggleLoading: '切换加载状态',
           fullWidth: '全宽',
-          clickedToast: '按钮已点击！',
+          clickedToast: '按钮已按下！',
         },
         card: {
           elevatedHeader: '凸起',

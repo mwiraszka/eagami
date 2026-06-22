@@ -237,6 +237,7 @@ export const nl: WebMessages = {
         tag: 'Label',
         badge: 'Insigne',
         tooltip: 'Aanvullende informatie weergegeven in een tooltip',
+        exploreMore: '...meer componenten verkennen',
         list: 'Lijst',
         grid: 'Raster',
         table: 'Tabel',
@@ -369,8 +370,6 @@ export const nl: WebMessages = {
       frenchSpacingBody:
         'Franse typografie verwacht een smalle vaste spatie voor <code>? ! : ; »</code> en na <code>«</code>. De geëxporteerde <code>frenchSpacing()</code>-helper zet gewone spaties in je eigen Franse teksten om (de bibliotheek verwerkt haar meegeleverde Franse teksten intern).',
       demoLocaleLabel: 'Taal',
-      demoAppointmentLabel: 'Afspraak',
-      demoFruitLabel: 'Fruit',
     },
     component: {
       metaDescription: name => `${name}-componentreferentie en live demo's.`,

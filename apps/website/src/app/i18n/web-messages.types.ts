@@ -128,6 +128,7 @@ export interface WebMessages {
         tag: string;
         badge: string;
         tooltip: string;
+        exploreMore: string;
         list: string;
         grid: string;
         table: string;
@@ -242,8 +243,6 @@ export interface WebMessages {
       frenchSpacingHeading: string;
       frenchSpacingBody: string;
       demoLocaleLabel: string;
-      demoAppointmentLabel: string;
-      demoFruitLabel: string;
     };
     component: {
       metaDescription: (name: string) => string;

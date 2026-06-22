@@ -27,6 +27,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
@@ -56,6 +57,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
     SwitchComponent,
     TagComponent,
     TooltipDirective,
+    RouterLink,
   ],
 })
 export class UiShowcaseComponent {
@@ -66,7 +68,7 @@ export class UiShowcaseComponent {
   protected readonly checkboxOn = signal(true);
   protected readonly radioValue = signal('this');
   protected readonly sliderValue = signal(50);
-  protected readonly ratingValue = signal(5);
+  protected readonly ratingValue = signal(4.5);
   protected readonly segmentedValue = signal('grid');
   protected readonly colorValue = signal<string | null>('#3674a1');
   protected readonly dropdownValue = signal('option-1');

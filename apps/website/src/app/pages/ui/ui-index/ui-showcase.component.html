@@ -31,6 +31,7 @@
   <div class="showcase__item showcase__item--track">
     <ea-slider
       [(value)]="sliderValue"
+      [showMinMaxLabels]="true"
       [aria-label]="messages().ui.index.showcase.ariaSlider" />
   </div>
 
@@ -51,6 +52,7 @@
   <div class="showcase__item">
     <ea-rating
       [(value)]="ratingValue"
+      [allowHalf]="true"
       [attr.aria-label]="messages().ui.index.showcase.ariaRating" />
   </div>
 
@@ -117,4 +119,10 @@
       [(value)]="colorValue"
       [attr.aria-label]="messages().ui.index.showcase.ariaColor" />
   </div>
+
+  <a
+    class="showcase__explore"
+    routerLink="/ui/components">
+    {{ messages().ui.index.showcase.exploreMore }}
+  </a>
 </div>

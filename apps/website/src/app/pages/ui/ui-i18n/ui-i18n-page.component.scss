@@ -100,7 +100,10 @@
 
 .ui-i18n__demo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  // Min column wide enough that none of the six components (data table, transfer
+  // list, paginator, file uploader) clip; at the 880px content width this caps the
+  // grid at two per row.
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 16px;
   align-items: start;
 }

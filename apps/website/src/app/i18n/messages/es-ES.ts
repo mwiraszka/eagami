@@ -233,6 +233,7 @@ export const esES: WebMessages = {
         tag: 'Etiqueta',
         badge: 'Insignia',
         tooltip: 'Información adicional mostrada en una descripción emergente',
+        exploreMore: '...explorar más componentes',
         list: 'Lista',
         grid: 'Cuadrícula',
         table: 'Tabla',
@@ -365,8 +366,6 @@ export const esES: WebMessages = {
       frenchSpacingBody:
         'La tipografía francesa requiere un espacio estrecho indivisible antes de <code>? ! : ; »</code> y después de <code>«</code>. El asistente exportado <code>frenchSpacing()</code> convierte los espacios normales en tus propias cadenas en francés (la biblioteca gestiona sus mensajes franceses integrados internamente).',
       demoLocaleLabel: 'Idioma',
-      demoAppointmentLabel: 'Cita',
-      demoFruitLabel: 'Fruta',
     },
     component: {
       metaDescription: name => `Referencia y demos en vivo del componente ${name}.`,

@@ -67,3 +67,18 @@
   top: -4px;
   right: -4px;
 }
+
+// margin-left: auto pushes the link to the right edge of the final wrapped row.
+.showcase__explore {
+  align-self: center;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
+}

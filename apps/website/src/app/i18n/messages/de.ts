@@ -238,6 +238,7 @@ export const de: WebMessages = {
         tag: 'Etikett',
         badge: 'Abzeichen',
         tooltip: 'Zusätzliche Informationen in einem Tooltip angezeigt',
+        exploreMore: '...weitere Komponenten entdecken',
         list: 'Liste',
         grid: 'Raster',
         table: 'Tabelle',
@@ -371,8 +372,6 @@ export const de: WebMessages = {
       frenchSpacingBody:
         'Die französische Typografie erwartet ein schmales geschütztes Leerzeichen vor <code>? ! : ; »</code> und nach <code>«</code>. Die exportierte Hilfsfunktion <code>frenchSpacing()</code> wandelt normale Leerzeichen in Ihren eigenen französischen Zeichenketten um (die gebündelten französischen Messages verwaltet die Bibliothek intern).',
       demoLocaleLabel: 'Sprachraum',
-      demoAppointmentLabel: 'Termin',
-      demoFruitLabel: 'Obst',
     },
     component: {
       metaDescription: name => `Referenz und Live-Demos zur Komponente ${name}.`,
@@ -545,7 +544,7 @@ export const de: WebMessages = {
           danger: 'Gefahr',
           toggleLoading: 'Ladezustand umschalten',
           fullWidth: 'Volle Breite',
-          clickedToast: 'Button geklickt!',
+          clickedToast: 'Button gedrückt!',
         },
         card: {
           elevatedHeader: 'Erhaben',

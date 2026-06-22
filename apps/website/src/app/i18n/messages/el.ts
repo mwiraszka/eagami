@@ -234,6 +234,7 @@ export const el: WebMessages = {
         tag: 'Ετικέτα',
         badge: 'Σήμα',
         tooltip: 'Πρόσθετες πληροφορίες σε επεξήγηση εργαλείου',
+        exploreMore: '...εξερευνήστε περισσότερα στοιχεία',
         list: 'Λίστα',
         grid: 'Πλέγμα',
         table: 'Πίνακας',
@@ -367,8 +368,6 @@ export const el: WebMessages = {
       frenchSpacingBody:
         'Η γαλλική τυπογραφία απαιτεί ένα στενό αδιάσπαστο διάστημα πριν από τα <code>? ! : ; »</code> και μετά το <code>«</code>. Το εξαγόμενο βοήθημα <code>frenchSpacing()</code> μετατρέπει τα κανονικά διαστήματα στις δικές σας γαλλικές συμβολοσειρές (η βιβλιοθήκη χειρίζεται εσωτερικά τα δικά της γαλλικά μηνύματα).',
       demoLocaleLabel: 'Γλώσσα',
-      demoAppointmentLabel: 'Ραντεβού',
-      demoFruitLabel: 'Φρούτο',
     },
     component: {
       metaDescription: name => `Αναφορά και ζωντανές επιδείξεις του συστατικού ${name}.`,

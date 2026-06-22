@@ -232,6 +232,7 @@ export const en: WebMessages = {
         tag: 'Tag',
         badge: 'Badge',
         tooltip: 'Additional information displayed in a tooltip',
+        exploreMore: '...explore more components',
         list: 'List',
         grid: 'Grid',
         table: 'Table',
@@ -362,8 +363,6 @@ export const en: WebMessages = {
       frenchSpacingBody:
         'French typography expects a narrow non-breaking space before <code>? ! : ; »</code> and after <code>«</code>. The exported <code>frenchSpacing()</code> helper converts regular spaces in your own French strings (the library handles its bundled French messages internally).',
       demoLocaleLabel: 'Locale',
-      demoAppointmentLabel: 'Appointment',
-      demoFruitLabel: 'Fruit',
     },
     component: {
       metaDescription: name => `${name} component reference and live demos.`,
@@ -535,7 +534,7 @@ export const en: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Toggle loading',
           fullWidth: 'Full width',
-          clickedToast: 'Button clicked!',
+          clickedToast: 'Button pressed!',
         },
         card: {
           elevatedHeader: 'Elevated',

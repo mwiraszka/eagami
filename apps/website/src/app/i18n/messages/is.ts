@@ -232,6 +232,7 @@ export const is: WebMessages = {
         tag: 'Merkimiði',
         badge: 'Merki',
         tooltip: 'Viðbótarupplýsingar birtar í ábendingu',
+        exploreMore: '...skoða fleiri einingar',
         list: 'Listi',
         grid: 'Rúðunet',
         table: 'Tafla',
@@ -363,8 +364,6 @@ export const is: WebMessages = {
       frenchSpacingBody:
         'Frönsk leturfræði býst við mjóu órjúfanlegu bili á undan <code>? ! : ; »</code> og á eftir <code>«</code>. Útflutta <code>frenchSpacing()</code> hjálpin breytir venjulegum bilum í þínum eigin frönsku strengjum (safnið meðhöndlar innfelldu frönsku skilaboðin sín innbyrðis).',
       demoLocaleLabel: 'Svæði',
-      demoAppointmentLabel: 'Tímabókun',
-      demoFruitLabel: 'Ávöxtur',
     },
     component: {
       metaDescription: name => `Tilvísun fyrir ${name} einingu og lifandi sýnishorn.`,
@@ -536,7 +535,7 @@ export const is: WebMessages = {
           danger: 'Hætta',
           toggleLoading: 'Víxla hleðslu',
           fullWidth: 'Full breidd',
-          clickedToast: 'Smellt á hnapp!',
+          clickedToast: 'Ýtt á hnapp!',
         },
         card: {
           elevatedHeader: 'Upphækkað',

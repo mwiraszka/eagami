@@ -238,6 +238,7 @@ export const pl: WebMessages = {
         tag: 'Etykieta',
         badge: 'Odznaka',
         tooltip: 'Dodatkowe informacje wyświetlane w podpowiedzi',
+        exploreMore: '...odkryj więcej komponentów',
         list: 'Lista',
         grid: 'Siatka',
         table: 'Tabela',
@@ -370,8 +371,6 @@ export const pl: WebMessages = {
       frenchSpacingBody:
         'Typografia francuska wymaga wąskiej, niełamliwej spacji przed <code>? ! : ; »</code> oraz po <code>«</code>. Wyeksportowany pomocnik <code>frenchSpacing()</code> konwertuje zwykłe spacje we własnych francuskich ciągach (biblioteka obsługuje swoje wbudowane francuskie komunikaty wewnętrznie).',
       demoLocaleLabel: 'Język',
-      demoAppointmentLabel: 'Spotkanie',
-      demoFruitLabel: 'Owoc',
     },
     component: {
       metaDescription: name => `Dokumentacja i demonstracje komponentu ${name} na żywo.`,
@@ -544,7 +543,7 @@ export const pl: WebMessages = {
           danger: 'Niebezpieczny',
           toggleLoading: 'Przełącz ładowanie',
           fullWidth: 'Pełna szerokość',
-          clickedToast: 'Kliknięto przycisk!',
+          clickedToast: 'Przycisk naciśnięty!',
         },
         card: {
           elevatedHeader: 'Wyniesiona',

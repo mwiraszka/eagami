@@ -238,6 +238,7 @@ export const frFR: WebMessages = {
         tag: 'Étiquette',
         badge: 'Badge',
         tooltip: 'Informations supplémentaires affichées dans une infobulle',
+        exploreMore: '...explorer plus de composants',
         list: 'Liste',
         grid: 'Grille',
         table: 'Tableau',
@@ -371,8 +372,6 @@ export const frFR: WebMessages = {
       frenchSpacingBody:
         'La typographie française attend une espace fine insécable avant <code>? ! : ; »</code> et après <code>«</code>. L’assistant <code>frenchSpacing()</code> exporté convertit les espaces ordinaires dans vos propres chaînes françaises (la bibliothèque gère ses messages français intégrés en interne).',
       demoLocaleLabel: 'Langue',
-      demoAppointmentLabel: 'Rendez-vous',
-      demoFruitLabel: 'Fruit',
     },
     component: {
       metaDescription: name => `Référence et démos en direct du composant ${name}.`,
@@ -545,7 +544,7 @@ export const frFR: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Basculer le chargement',
           fullWidth: 'Pleine largeur',
-          clickedToast: 'Bouton cliqué !',
+          clickedToast: 'Bouton pressé !',
         },
         card: {
           elevatedHeader: 'Surélevé',
