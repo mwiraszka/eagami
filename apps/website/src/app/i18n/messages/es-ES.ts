@@ -1816,6 +1816,10 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado mediante showModal().',
           },
           'data-table': {
+            clickable:
+              'Marca las filas de datos como clicables: muestra un cursor de puntero y emite rowActivate al hacer clic o pulsar Enter/Espacio.',
+            rowActivate:
+              'Se emite con los datos de la fila cuando una fila clicable se activa con clic o teclado.',
             navigable:
               'Convierte la tabla en una cuadrícula navegable por teclado con foco itinerante y movimiento entre celdas con las flechas.',
             bordered: 'Muestra un borde alrededor de cada celda.',

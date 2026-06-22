@@ -1802,6 +1802,10 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond via showModal().',
           },
           'data-table': {
+            clickable:
+              'Markeert gegevensrijen als klikbaar: toont een aanwijzer en activeert rowActivate bij klik of Enter/Spatie.',
+            rowActivate:
+              'Wordt geactiveerd met de rijgegevens wanneer een klikbare rij via klik of toetsenbord wordt geactiveerd.',
             navigable:
               'Maakt van de tabel een met het toetsenbord navigeerbaar raster met verplaatsbare focus en celbeweging via de pijltoetsen.',
             bordered: 'Geeft een rand rond elke cel weer.',

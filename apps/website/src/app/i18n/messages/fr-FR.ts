@@ -1811,6 +1811,10 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché via showModal().',
           },
           'data-table': {
+            clickable:
+              'Marque les lignes de données comme cliquables : affiche un curseur en forme de main et émet rowActivate au clic ou avec Entrée/Espace.',
+            rowActivate:
+              'Émis avec les données de la ligne lorsqu’une ligne cliquable est activée au clic ou au clavier.',
             navigable:
               'Transforme le tableau en une grille navigable au clavier, avec un focus mobile et un déplacement entre cellules via les flèches.',
             bordered: 'Affiche une bordure autour de chaque cellule.',

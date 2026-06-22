@@ -1728,6 +1728,10 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown via showModal().',
           },
           'data-table': {
+            clickable:
+              'Marks body rows as clickable: shows a pointer cursor and emits rowActivate on click or Enter/Space.',
+            rowActivate:
+              'Fires with the row data when a clickable body row is activated by click or keyboard.',
             navigable:
               'Turns the table into a keyboard-navigable grid with roving focus and arrow-key cell movement.',
             bordered: 'Renders a border around every cell.',

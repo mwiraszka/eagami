@@ -1783,6 +1783,10 @@ export const pl: WebMessages = {
             opened: 'Emitowane raz po wyświetleniu szuflady przez showModal().',
           },
           'data-table': {
+            clickable:
+              'Oznacza wiersze danych jako klikalne: pokazuje kursor wskaźnika i emituje rowActivate po kliknięciu lub Enter/Spacji.',
+            rowActivate:
+              'Emituje dane wiersza, gdy klikalny wiersz zostanie aktywowany kliknięciem lub klawiaturą.',
             navigable:
               'Zmienia tabelę w siatkę obsługiwaną z klawiatury z przesuwanym fokusem i przechodzeniem między komórkami strzałkami.',
             bordered: 'Renderuje obramowanie wokół każdej komórki.',

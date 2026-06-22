@@ -1819,6 +1819,10 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer über showModal() angezeigt wurde.',
           },
           'data-table': {
+            clickable:
+              'Markiert Datenzeilen als anklickbar: zeigt einen Zeiger-Cursor und löst rowActivate bei Klick oder Enter/Leertaste aus.',
+            rowActivate:
+              'Wird mit den Zeilendaten ausgelöst, wenn eine anklickbare Datenzeile per Klick oder Tastatur aktiviert wird.',
             navigable:
               'Macht die Tabelle zu einem per Tastatur navigierbaren Raster mit wanderndem Fokus und Zellbewegung über die Pfeiltasten.',
             bordered: 'Rendert einen Rahmen um jede Zelle.',

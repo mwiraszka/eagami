@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Mirror the CI "generated docs data is current" guard locally so a stale
+# ui-api.generated.ts / changelog.generated.ts can never reach CI. Runs only
+# when the outgoing commits touch the sources those files derive from.
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+# Diff the outgoing commits against the configured upstream, else origin/main.
+if base="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)"; then
+  :
+else
+  base="origin/main"
+fi
+
+changed="$(git diff --name-only "$base"...HEAD 2>/dev/null || true)"
+if ! printf '%s\n' "$changed" | grep -qE '^(packages/ui/src/|packages/ui/CHANGELOG\.md)'; then
+  exit 0
+fi
+
+echo "pre-push: verifying generated docs data is current..."
+if ! pnpm run regen-docs >/dev/null 2>&1; then
+  echo "pre-push: could not regenerate docs data (is the workspace installed?). Run 'pnpm run regen-docs' manually." >&2
+  exit 1
+fi
+
+generated='apps/website/src/app/data/ui-api.generated.ts apps/website/src/app/data/changelog.generated.ts'
+if ! git diff --quiet -- $generated; then
+  echo >&2
+  echo "Generated docs data was stale and has been regenerated in your working tree:" >&2
+  git --no-pager diff --stat -- $generated >&2
+  echo >&2
+  echo "Commit the regenerated file(s), then push again." >&2
+  exit 1
+fi
+
+echo "pre-push: generated docs data OK"

@@ -8,6 +8,7 @@ import { AlignJustifyIconComponent } from './align-justify.component';
 import { AlignLeftIconComponent } from './align-left.component';
 import { AlignRightIconComponent } from './align-right.component';
 import { AnchorIconComponent } from './anchor.component';
+import { AnthropicIconComponent } from './anthropic.component';
 import { ApertureIconComponent } from './aperture.component';
 import { ArchiveIconComponent } from './archive.component';
 import { ArrowDownCircleIconComponent } from './arrow-down-circle.component';
@@ -24,20 +25,26 @@ import { ArrowUpRightIconComponent } from './arrow-up-right.component';
 import { ArrowUpIconComponent } from './arrow-up.component';
 import { AtSignIconComponent } from './at-sign.component';
 import { AwardIconComponent } from './award.component';
+import { BadgeCheckIconComponent } from './badge-check.component';
 import { BarChart2IconComponent } from './bar-chart-2.component';
 import { BarChartIconComponent } from './bar-chart.component';
 import { BatteryChargingIconComponent } from './battery-charging.component';
 import { BatteryIconComponent } from './battery.component';
 import { BellOffIconComponent } from './bell-off.component';
 import { BellIconComponent } from './bell.component';
+import { BitcoinIconComponent } from './bitcoin.component';
 import { BluetoothIconComponent } from './bluetooth.component';
 import { BoldIconComponent } from './bold.component';
 import { BookOpenIconComponent } from './book-open.component';
 import { BookIconComponent } from './book.component';
+import { BookmarkCheckIconComponent } from './bookmark-check.component';
 import { BookmarkIconComponent } from './bookmark.component';
+import { BotIconComponent } from './bot.component';
 import { BottleIconComponent } from './bottle.component';
 import { BoxIconComponent } from './box.component';
+import { BrainIconComponent } from './brain.component';
 import { BriefcaseIconComponent } from './briefcase.component';
+import { CalendarCheckIconComponent } from './calendar-check.component';
 import { CalendarIconComponent } from './calendar.component';
 import { CameraOffIconComponent } from './camera-off.component';
 import { CameraIconComponent } from './camera.component';
@@ -57,6 +64,7 @@ import { ChevronsUpDownIconComponent } from './chevrons-up-down.component';
 import { ChevronsUpIconComponent } from './chevrons-up.component';
 import { ChromeIconComponent } from './chrome.component';
 import { CircleIconComponent } from './circle.component';
+import { ClipboardCheckIconComponent } from './clipboard-check.component';
 import { ClipboardIconComponent } from './clipboard.component';
 import { ClockIconComponent } from './clock.component';
 import { CloudDrizzleIconComponent } from './cloud-drizzle.component';
@@ -70,6 +78,7 @@ import { CodeIconComponent } from './code.component';
 import { CodepenIconComponent } from './codepen.component';
 import { CodesandboxIconComponent } from './codesandbox.component';
 import { CoffeeIconComponent } from './coffee.component';
+import { CoinsIconComponent } from './coins.component';
 import { ColumnsIconComponent } from './columns.component';
 import { CommandIconComponent } from './command.component';
 import { CompassIconComponent } from './compass.component';
@@ -118,13 +127,18 @@ import { FilePlusIconComponent } from './file-plus.component';
 import { FileTextIconComponent } from './file-text.component';
 import { FileIconComponent } from './file.component';
 import { FilmIconComponent } from './film.component';
+import { FilterXIconComponent } from './filter-x.component';
 import { FilterIconComponent } from './filter.component';
+import { FingerprintIconComponent } from './fingerprint.component';
 import { FlagIconComponent } from './flag.component';
+import { FlameIconComponent } from './flame.component';
 import { FolderMinusIconComponent } from './folder-minus.component';
 import { FolderPlusIconComponent } from './folder-plus.component';
 import { FolderIconComponent } from './folder.component';
 import { FramerIconComponent } from './framer.component';
 import { FrownIconComponent } from './frown.component';
+import { GaugeIconComponent } from './gauge.component';
+import { GeminiIconComponent } from './gemini.component';
 import { GiftIconComponent } from './gift.component';
 import { GitBranchIconComponent } from './git-branch.component';
 import { GitCommitIconComponent } from './git-commit.component';
@@ -157,12 +171,14 @@ import { KubernetesIconComponent } from './kubernetes.component';
 import { LampIconComponent } from './lamp.component';
 import { LayersIconComponent } from './layers.component';
 import { LayoutIconComponent } from './layout.component';
+import { LeafIconComponent } from './leaf.component';
 import { LeftHalfStarIconComponent } from './left-half-star.component';
 import { LifeBuoyIconComponent } from './life-buoy.component';
 import { Link2IconComponent } from './link-2.component';
 import { LinkIconComponent } from './link.component';
 import { Linkedin2IconComponent } from './linkedin-2.component';
 import { LinkedinIconComponent } from './linkedin.component';
+import { ListChecksIconComponent } from './list-checks.component';
 import { ListIconComponent } from './list.component';
 import { LoaderIconComponent } from './loader.component';
 import { LockIconComponent } from './lock.component';
@@ -224,19 +240,25 @@ import { PlusIconComponent } from './plus.component';
 import { PocketIconComponent } from './pocket.component';
 import { PowerIconComponent } from './power.component';
 import { PrinterIconComponent } from './printer.component';
+import { QrCodeIconComponent } from './qr-code.component';
 import { RadioIconComponent } from './radio.component';
+import { ReactIconComponent } from './react.component';
+import { ReceiptIconComponent } from './receipt.component';
 import { RectangleHorizontalIconComponent } from './rectangle-horizontal.component';
 import { RectangleVerticalIconComponent } from './rectangle-vertical.component';
 import { RedditIconComponent } from './reddit.component';
+import { RedoIconComponent } from './redo.component';
 import { RefreshCcwIconComponent } from './refresh-ccw.component';
 import { RefreshCwIconComponent } from './refresh-cw.component';
 import { RepeatIconComponent } from './repeat.component';
 import { RewindIconComponent } from './rewind.component';
 import { RightHalfStarIconComponent } from './right-half-star.component';
+import { RocketIconComponent } from './rocket.component';
 import { RotateCcwIconComponent } from './rotate-ccw.component';
 import { RotateCwIconComponent } from './rotate-cw.component';
 import { RssIconComponent } from './rss.component';
 import { SaveIconComponent } from './save.component';
+import { ScanIconComponent } from './scan.component';
 import { ScissorsIconComponent } from './scissors.component';
 import { SearchIconComponent } from './search.component';
 import { SendIconComponent } from './send.component';
@@ -258,7 +280,9 @@ import { SlashIconComponent } from './slash.component';
 import { SlidersIconComponent } from './sliders.component';
 import { SmartphoneIconComponent } from './smartphone.component';
 import { SmileIconComponent } from './smile.component';
+import { SnowflakeIconComponent } from './snowflake.component';
 import { SoccerBallIconComponent } from './soccer-ball.component';
+import { SparklesIconComponent } from './sparkles.component';
 import { SpeakerIconComponent } from './speaker.component';
 import { SpotifyIconComponent } from './spotify.component';
 import { SquareIconComponent } from './square.component';
@@ -271,11 +295,15 @@ import { SunsetIconComponent } from './sunset.component';
 import { TableIconComponent } from './table.component';
 import { TabletIconComponent } from './tablet.component';
 import { TagIconComponent } from './tag.component';
+import { TailwindIconComponent } from './tailwind.component';
 import { TargetIconComponent } from './target.component';
+import { TelegramIconComponent } from './telegram.component';
 import { TerminalIconComponent } from './terminal.component';
 import { ThermometerIconComponent } from './thermometer.component';
+import { ThreadsIconComponent } from './threads.component';
 import { ThumbsDownIconComponent } from './thumbs-down.component';
 import { ThumbsUpIconComponent } from './thumbs-up.component';
+import { TiktokIconComponent } from './tiktok.component';
 import { ToggleLeftIconComponent } from './toggle-left.component';
 import { ToggleRightIconComponent } from './toggle-right.component';
 import { ToolIconComponent } from './tool.component';
@@ -294,6 +322,7 @@ import { TwitterIconComponent } from './twitter.component';
 import { TypeIconComponent } from './type.component';
 import { UmbrellaIconComponent } from './umbrella.component';
 import { UnderlineIconComponent } from './underline.component';
+import { UndoIconComponent } from './undo.component';
 import { UnlockIconComponent } from './unlock.component';
 import { UploadCloudIconComponent } from './upload-cloud.component';
 import { UploadIconComponent } from './upload.component';
@@ -311,7 +340,10 @@ import { Volume1IconComponent } from './volume-1.component';
 import { Volume2IconComponent } from './volume-2.component';
 import { VolumeXIconComponent } from './volume-x.component';
 import { VolumeIconComponent } from './volume.component';
+import { WalletIconComponent } from './wallet.component';
+import { WandIconComponent } from './wand.component';
 import { WatchIconComponent } from './watch.component';
+import { WhatsappIconComponent } from './whatsapp.component';
 import { WifiOffIconComponent } from './wifi-off.component';
 import { WifiIconComponent } from './wifi.component';
 import { WindIconComponent } from './wind.component';
@@ -670,5 +702,37 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ZapIconComponent,
     ZoomInIconComponent,
     ZoomOutIconComponent,
+    AnthropicIconComponent,
+    BadgeCheckIconComponent,
+    BitcoinIconComponent,
+    BookmarkCheckIconComponent,
+    BotIconComponent,
+    BrainIconComponent,
+    CalendarCheckIconComponent,
+    ClipboardCheckIconComponent,
+    CoinsIconComponent,
+    FilterXIconComponent,
+    FingerprintIconComponent,
+    FlameIconComponent,
+    GaugeIconComponent,
+    GeminiIconComponent,
+    LeafIconComponent,
+    ListChecksIconComponent,
+    QrCodeIconComponent,
+    ReactIconComponent,
+    ReceiptIconComponent,
+    RedoIconComponent,
+    RocketIconComponent,
+    ScanIconComponent,
+    SnowflakeIconComponent,
+    SparklesIconComponent,
+    TailwindIconComponent,
+    TelegramIconComponent,
+    ThreadsIconComponent,
+    TiktokIconComponent,
+    UndoIconComponent,
+    WalletIconComponent,
+    WandIconComponent,
+    WhatsappIconComponent,
   ] as IconComponentType[]
 ).sort((a, b) => a.slug.localeCompare(b.slug));
