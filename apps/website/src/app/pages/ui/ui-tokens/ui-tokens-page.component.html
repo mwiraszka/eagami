@@ -106,6 +106,16 @@
     <ul
       class="token-list token-list--compact"
       role="list">
+      @for (key of semanticStateTokens; track key) {
+        <li class="token-list__item">
+          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+          <code>--color-{{ key }}</code>
+        </li>
+      }
+    </ul>
+    <ul
+      class="token-list token-list--compact"
+      role="list">
       @for (key of semanticBorderTokens; track key) {
         <li class="token-list__item">
           <span class="semantic-swatch semantic-swatch--{{ key }}"></span>

@@ -2,13 +2,16 @@ import {
   type DataTableColumn,
   DataTableComponent,
   DatePickerComponent,
-  DropdownComponent,
   EAGAMI_LOCALES,
   EagamiI18nService,
   type EagamiLocale,
+  FileUploaderComponent,
+  MultiSelectComponent,
   PaginatorComponent,
   SegmentedComponent,
   type SelectOption,
+  TransferListComponent,
+  type TransferListItem,
 } from '@eagami/ui';
 
 import {
@@ -58,9 +61,11 @@ const LOCALE_FLAGS: Record<EagamiLocale, string> = {
     CodeSnippetComponent,
     DataTableComponent,
     DatePickerComponent,
-    DropdownComponent,
+    FileUploaderComponent,
+    MultiSelectComponent,
     PaginatorComponent,
     SegmentedComponent,
+    TransferListComponent,
   ],
 })
 export class UiI18nPageComponent {
@@ -80,7 +85,7 @@ export class UiI18nPageComponent {
 
   protected readonly activeLocale = signal<EagamiLocale>(this.i18n.locale());
 
-  protected readonly demoDropdownOptions: SelectOption[] = [
+  protected readonly demoSelectOptions: SelectOption[] = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
     { value: 'cherry', label: 'Cherry' },
@@ -92,6 +97,13 @@ export class UiI18nPageComponent {
   ];
 
   protected readonly demoTableData: Record<string, unknown>[] = [];
+
+  protected readonly demoTransferItems: TransferListItem[] = [
+    { id: 'apple', label: 'Apple' },
+    { id: 'banana', label: 'Banana' },
+    { id: 'cherry', label: 'Cherry' },
+    { id: 'date', label: 'Date' },
+  ];
 
   protected readonly quickSetupSnippet = `import { frFR, provideEagamiUi } from '@eagami/ui';
 

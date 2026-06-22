@@ -45,7 +45,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-drawer-panel-background-color, var(--color-bg-elevated));
     box-shadow: var(--shadow-2xl);
     overflow: hidden;
 

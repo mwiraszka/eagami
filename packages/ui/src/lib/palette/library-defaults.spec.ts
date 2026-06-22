@@ -54,7 +54,7 @@ function parseScope(start: RegExp, end: RegExp): ScopeTokens {
   return tokens;
 }
 
-const lightRaw = parseScope(/:root\s*\{/, /^\}/m);
+const lightRaw = parseScope(/:where\(:root\)\s*\{/, /^\}/m);
 const darkRaw = { ...lightRaw, ...parseScope(/@mixin\s+dark-color-tokens\s*\{/, /^\}/m) };
 
 function tokens(raw: ScopeTokens): ScopeTokens {

@@ -225,6 +225,34 @@ export const is: WebMessages = {
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
       getStartedAfter: ' til að setja upp pakkann og tengja upp altæka stílblaðið.',
+      showcase: {
+        button: 'Ýttu á mig',
+        toggle: 'Skiptu um',
+        tick: 'Hakaðu við mig',
+        tag: 'Merkimiði',
+        badge: 'Merki',
+        tooltip: 'Viðbótarupplýsingar birtar í ábendingu',
+        exploreMore: '...skoða fleiri einingar',
+        list: 'Listi',
+        grid: 'Rúðunet',
+        table: 'Tafla',
+        radioThis: 'Þetta',
+        radioThat: 'Hitt',
+        option1: 'Valkostur 1',
+        option2: 'Valkostur 2',
+        option3: 'Valkostur 3',
+        toastButton: 'Ýtt á hnapp',
+        toastToggleOn: 'Kveikt á rofa',
+        toastToggleOff: 'Slökkt á rofa',
+        toastTickOn: 'Hakað í reit',
+        toastTickOff: 'Afhakað úr reit',
+        ariaView: 'Sýnisskoðun',
+        ariaSlider: 'Sýnissleði',
+        ariaRating: 'Sýniseinkunn',
+        ariaLayout: 'Sýnisútlit',
+        ariaColor: 'Sýnislitur',
+        ariaSelect: 'Sýnisval',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | Uppsetning',
@@ -336,8 +364,6 @@ export const is: WebMessages = {
       frenchSpacingBody:
         'Frönsk leturfræði býst við mjóu órjúfanlegu bili á undan <code>? ! : ; »</code> og á eftir <code>«</code>. Útflutta <code>frenchSpacing()</code> hjálpin breytir venjulegum bilum í þínum eigin frönsku strengjum (safnið meðhöndlar innfelldu frönsku skilaboðin sín innbyrðis).',
       demoLocaleLabel: 'Svæði',
-      demoAppointmentLabel: 'Tímabókun',
-      demoFruitLabel: 'Ávöxtur',
     },
     component: {
       metaDescription: name => `Tilvísun fyrir ${name} einingu og lifandi sýnishorn.`,
@@ -509,7 +535,7 @@ export const is: WebMessages = {
           danger: 'Hætta',
           toggleLoading: 'Víxla hleðslu',
           fullWidth: 'Full breidd',
-          clickedToast: 'Smellt á hnapp!',
+          clickedToast: 'Ýtt á hnapp!',
         },
         card: {
           elevatedHeader: 'Upphækkað',

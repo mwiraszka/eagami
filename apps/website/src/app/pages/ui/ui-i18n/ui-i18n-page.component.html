@@ -42,17 +42,19 @@
         (changed)="onLocaleChange($event)" />
 
       <div class="ui-i18n__demo-grid">
-        <ea-date-picker [label]="messages().ui.i18n.demoAppointmentLabel" />
+        <ea-date-picker />
 
-        <ea-dropdown
-          [label]="messages().ui.i18n.demoFruitLabel"
-          [options]="demoDropdownOptions" />
+        <ea-multi-select [options]="demoSelectOptions" />
 
         <ea-data-table
           [columns]="demoTableColumns"
           [data]="demoTableData" />
 
         <ea-paginator [totalItems]="100" />
+
+        <ea-transfer-list [items]="demoTransferItems" />
+
+        <ea-file-uploader />
       </div>
     </div>
   </section>

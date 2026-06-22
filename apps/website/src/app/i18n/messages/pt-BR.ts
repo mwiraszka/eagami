@@ -230,6 +230,34 @@ export const ptBR: WebMessages = {
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
       getStartedAfter: ' para instalar o pacote e configurar a folha de estilo global.',
+      showcase: {
+        button: 'Aperte aqui',
+        toggle: 'Alterne aqui',
+        tick: 'Marque aqui',
+        tag: 'Etiqueta',
+        badge: 'Selo',
+        tooltip: 'Informações adicionais exibidas em uma dica',
+        exploreMore: '...explorar mais componentes',
+        list: 'Lista',
+        grid: 'Grade',
+        table: 'Tabela',
+        radioThis: 'Este',
+        radioThat: 'Aquele',
+        option1: 'Opção 1',
+        option2: 'Opção 2',
+        option3: 'Opção 3',
+        toastButton: 'Botão pressionado',
+        toastToggleOn: 'Alternância ativada',
+        toastToggleOff: 'Alternância desativada',
+        toastTickOn: 'Caixa marcada',
+        toastTickOff: 'Caixa desmarcada',
+        ariaView: 'Visualização de demonstração',
+        ariaSlider: 'Controle deslizante de demonstração',
+        ariaRating: 'Avaliação de demonstração',
+        ariaLayout: 'Layout de demonstração',
+        ariaColor: 'Cor de demonstração',
+        ariaSelect: 'Seleção de demonstração',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | Configuração',
@@ -343,8 +371,6 @@ export const ptBR: WebMessages = {
       frenchSpacingBody:
         'A tipografia francesa exige um espaço estreito não separável antes de <code>? ! : ; »</code> e depois de <code>«</code>. O auxiliar exportado <code>frenchSpacing()</code> converte os espaços normais em suas próprias strings em francês (a biblioteca trata internamente suas mensagens em francês incluídas).',
       demoLocaleLabel: 'Idioma',
-      demoAppointmentLabel: 'Compromisso',
-      demoFruitLabel: 'Fruta',
     },
     component: {
       metaDescription: name =>
@@ -518,7 +544,7 @@ export const ptBR: WebMessages = {
           danger: 'Perigo',
           toggleLoading: 'Alternar carregamento',
           fullWidth: 'Largura total',
-          clickedToast: 'Botão clicado!',
+          clickedToast: 'Botão pressionado!',
         },
         card: {
           elevatedHeader: 'Elevado',

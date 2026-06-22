@@ -142,13 +142,20 @@ export class UiTokensPageComponent {
     'bg-base',
     'bg-subtle',
     'bg-stripe',
+    'bg-stripe-subtle',
     'bg-muted',
+    'bg-emphasis',
+    'bg-elevated',
+    'bg-overlay',
   ];
+
+  protected readonly semanticStateTokens = ['state-hover', 'state-active'];
 
   protected readonly semanticBorderTokens = [
     'border-subtle',
     'border-default',
     'border-strong',
+    'divider',
     'border-focus',
   ];
 

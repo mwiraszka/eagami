@@ -1,4 +1,10 @@
-:root {
+// Every token-declaring selector is wrapped in :where() so it contributes zero
+// specificity. A consumer's own root-level token override (specificity 0,1,0)
+// then wins in light mode, OS-dark, and forced dark alike, independent of
+// stylesheet load order. The library's own light-to-dark switching still
+// resolves correctly by source order, since the dark blocks come after the
+// light ones at equal (zero) specificity.
+:where(:root) {
   --color-primary-50: #ecf3f9;
   --color-primary-100: #d1e3f0;
   --color-primary-200: #abcbe3;
@@ -248,12 +254,12 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :where(:root:not([data-theme='light'])) {
     @include dark-color-tokens;
   }
 }
 
-:root[data-theme='dark'] {
+:where(:root[data-theme='dark']) {
   @include dark-color-tokens;
   color-scheme: dark;
 }

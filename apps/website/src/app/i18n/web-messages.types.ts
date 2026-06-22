@@ -121,6 +121,34 @@ export interface WebMessages {
       getStartedBefore: string;
       getStartedLink: string;
       getStartedAfter: string;
+      showcase: {
+        button: string;
+        toggle: string;
+        tick: string;
+        tag: string;
+        badge: string;
+        tooltip: string;
+        exploreMore: string;
+        list: string;
+        grid: string;
+        table: string;
+        radioThis: string;
+        radioThat: string;
+        option1: string;
+        option2: string;
+        option3: string;
+        toastButton: string;
+        toastToggleOn: string;
+        toastToggleOff: string;
+        toastTickOn: string;
+        toastTickOff: string;
+        ariaView: string;
+        ariaSlider: string;
+        ariaRating: string;
+        ariaLayout: string;
+        ariaColor: string;
+        ariaSelect: string;
+      };
     };
     setup: {
       metaTitle: string;
@@ -215,8 +243,6 @@ export interface WebMessages {
       frenchSpacingHeading: string;
       frenchSpacingBody: string;
       demoLocaleLabel: string;
-      demoAppointmentLabel: string;
-      demoFruitLabel: string;
     };
     component: {
       metaDescription: (name: string) => string;

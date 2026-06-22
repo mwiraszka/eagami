@@ -231,6 +231,34 @@ export const de: WebMessages = {
          provide the separator themselves. */
       getStartedAfter:
         ', um das Paket zu installieren und das globale Stylesheet einzubinden.',
+      showcase: {
+        button: 'Drück mich',
+        toggle: 'Schalt mich um',
+        tick: 'Hak mich an',
+        tag: 'Etikett',
+        badge: 'Abzeichen',
+        tooltip: 'Zusätzliche Informationen in einem Tooltip angezeigt',
+        exploreMore: '...weitere Komponenten entdecken',
+        list: 'Liste',
+        grid: 'Raster',
+        table: 'Tabelle',
+        radioThis: 'Dies',
+        radioThat: 'Das',
+        option1: 'Option 1',
+        option2: 'Option 2',
+        option3: 'Option 3',
+        toastButton: 'Schaltfläche gedrückt',
+        toastToggleOn: 'Schalter eingeschaltet',
+        toastToggleOff: 'Schalter ausgeschaltet',
+        toastTickOn: 'Kontrollkästchen aktiviert',
+        toastTickOff: 'Kontrollkästchen deaktiviert',
+        ariaView: 'Demo-Ansicht',
+        ariaSlider: 'Demo-Schieberegler',
+        ariaRating: 'Demo-Bewertung',
+        ariaLayout: 'Demo-Layout',
+        ariaColor: 'Demo-Farbe',
+        ariaSelect: 'Demo-Auswahl',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | Einrichtung',
@@ -344,8 +372,6 @@ export const de: WebMessages = {
       frenchSpacingBody:
         'Die französische Typografie erwartet ein schmales geschütztes Leerzeichen vor <code>? ! : ; »</code> und nach <code>«</code>. Die exportierte Hilfsfunktion <code>frenchSpacing()</code> wandelt normale Leerzeichen in Ihren eigenen französischen Zeichenketten um (die gebündelten französischen Messages verwaltet die Bibliothek intern).',
       demoLocaleLabel: 'Sprachraum',
-      demoAppointmentLabel: 'Termin',
-      demoFruitLabel: 'Obst',
     },
     component: {
       metaDescription: name => `Referenz und Live-Demos zur Komponente ${name}.`,
@@ -518,7 +544,7 @@ export const de: WebMessages = {
           danger: 'Gefahr',
           toggleLoading: 'Ladezustand umschalten',
           fullWidth: 'Volle Breite',
-          clickedToast: 'Button geklickt!',
+          clickedToast: 'Button gedrückt!',
         },
         card: {
           elevatedHeader: 'Erhaben',

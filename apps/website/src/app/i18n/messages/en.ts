@@ -225,6 +225,34 @@ export const en: WebMessages = {
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
       getStartedAfter: ' to install the package and wire up the global stylesheet.',
+      showcase: {
+        button: 'Press me',
+        toggle: 'Toggle me',
+        tick: 'Tick me',
+        tag: 'Tag',
+        badge: 'Badge',
+        tooltip: 'Additional information displayed in a tooltip',
+        exploreMore: '...explore more components',
+        list: 'List',
+        grid: 'Grid',
+        table: 'Table',
+        radioThis: 'This',
+        radioThat: 'That',
+        option1: 'Option 1',
+        option2: 'Option 2',
+        option3: 'Option 3',
+        toastButton: 'Button pressed',
+        toastToggleOn: 'Toggle switched on',
+        toastToggleOff: 'Toggle switched off',
+        toastTickOn: 'Checkbox ticked',
+        toastTickOff: 'Checkbox unticked',
+        ariaView: 'Demo view',
+        ariaSlider: 'Demo slider',
+        ariaRating: 'Demo rating',
+        ariaLayout: 'Demo layout',
+        ariaColor: 'Demo color',
+        ariaSelect: 'Demo select',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | Setup',
@@ -335,8 +363,6 @@ export const en: WebMessages = {
       frenchSpacingBody:
         'French typography expects a narrow non-breaking space before <code>? ! : ; »</code> and after <code>«</code>. The exported <code>frenchSpacing()</code> helper converts regular spaces in your own French strings (the library handles its bundled French messages internally).',
       demoLocaleLabel: 'Locale',
-      demoAppointmentLabel: 'Appointment',
-      demoFruitLabel: 'Fruit',
     },
     component: {
       metaDescription: name => `${name} component reference and live demos.`,
@@ -508,7 +534,7 @@ export const en: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Toggle loading',
           fullWidth: 'Full width',
-          clickedToast: 'Button clicked!',
+          clickedToast: 'Button pressed!',
         },
         card: {
           elevatedHeader: 'Elevated',

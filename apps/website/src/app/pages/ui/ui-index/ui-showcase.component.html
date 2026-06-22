@@ -1,0 +1,128 @@
+<div class="showcase">
+  <div class="showcase__item">
+    <ea-button
+      [eaTooltip]="messages().ui.index.showcase.tooltip"
+      (click)="pressButton()">
+      {{ messages().ui.index.showcase.button }}
+    </ea-button>
+  </div>
+
+  <div class="showcase__item">
+    <ea-switch
+      [label]="messages().ui.index.showcase.toggle"
+      [checked]="switchOn()"
+      (checkedChange)="onToggle($event)" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-checkbox
+      [label]="messages().ui.index.showcase.tick"
+      [checked]="checkboxOn()"
+      (checkedChange)="onTick($event)" />
+  </div>
+
+  <div class="showcase__item showcase__item--track">
+    <ea-dropdown
+      [options]="dropdownOptions()"
+      [(value)]="dropdownValue"
+      [attr.aria-label]="messages().ui.index.showcase.ariaSelect" />
+  </div>
+
+  <div class="showcase__item showcase__item--track">
+    <ea-slider
+      [(value)]="sliderValue"
+      [showMinMaxLabels]="true"
+      [aria-label]="messages().ui.index.showcase.ariaSlider" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-radio-group
+      [(value)]="radioValue"
+      [aria-label]="messages().ui.index.showcase.ariaView"
+      orientation="horizontal">
+      <ea-radio
+        value="this"
+        [label]="messages().ui.index.showcase.radioThis" />
+      <ea-radio
+        value="that"
+        [label]="messages().ui.index.showcase.radioThat" />
+    </ea-radio-group>
+  </div>
+
+  <div class="showcase__item">
+    <ea-rating
+      [(value)]="ratingValue"
+      [allowHalf]="true"
+      [attr.aria-label]="messages().ui.index.showcase.ariaRating" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-spinner />
+  </div>
+
+  <div class="showcase__item showcase__item--track">
+    <ea-progress-bar [indeterminate]="true" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-segmented
+      [options]="viewOptions()"
+      [(value)]="segmentedValue"
+      [aria-label]="messages().ui.index.showcase.ariaLayout" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-badge variant="success">
+      {{ messages().ui.index.showcase.badge }}
+    </ea-badge>
+  </div>
+
+  <div class="showcase__item">
+    <ea-tag variant="info">
+      {{ messages().ui.index.showcase.tag }}
+    </ea-tag>
+  </div>
+
+  <div class="showcase__item">
+    <span class="showcase__avatar">
+      <ea-avatar src="https://i.pravatar.cc/150?img=15" />
+      <ea-badge
+        class="showcase__notification"
+        variant="success"
+        shape="pin">
+        15
+      </ea-badge>
+    </span>
+  </div>
+
+  <div class="showcase__item">
+    <div class="showcase__skeleton">
+      <ea-skeleton
+        variant="circle"
+        width="40px"
+        height="40px" />
+      <div class="showcase__skeleton-lines">
+        <ea-skeleton
+          variant="rect"
+          width="120px"
+          height="14px" />
+        <ea-skeleton
+          variant="rect"
+          width="80px"
+          height="10px" />
+      </div>
+    </div>
+  </div>
+
+  <div class="showcase__item showcase__item--color">
+    <ea-color-picker
+      [(value)]="colorValue"
+      [attr.aria-label]="messages().ui.index.showcase.ariaColor" />
+  </div>
+
+  <a
+    class="showcase__explore"
+    routerLink="/ui/components">
+    {{ messages().ui.index.showcase.exploreMore }}
+  </a>
+</div>

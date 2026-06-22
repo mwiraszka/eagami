@@ -63,7 +63,9 @@
   --ea-toast-enter-y: 0;
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  // Base gap binds the leading icon tightly to the message; the close button adds
+  // its own margin so the message-to-close gap is twice the icon-to-message one.
+  gap: var(--space-1-5);
   width: 100%;
   padding: var(--space-3) var(--space-4);
   font-family: var(--font-family-sans);
@@ -87,7 +89,7 @@
   // Stack the *-subtle tint over a solid elevated base so the toast stays opaque;
   // in dark mode the *-subtle tokens are translucent and would otherwise bleed through
   &--success {
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-toast-background-color, var(--color-bg-elevated));
     background-image: linear-gradient(
       var(--color-success-subtle),
       var(--color-success-subtle)
@@ -96,7 +98,7 @@
   }
 
   &--warning {
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-toast-background-color, var(--color-bg-elevated));
     background-image: linear-gradient(
       var(--color-warning-subtle),
       var(--color-warning-subtle)
@@ -105,7 +107,7 @@
   }
 
   &--error {
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-toast-background-color, var(--color-bg-elevated));
     background-image: linear-gradient(
       var(--color-error-subtle),
       var(--color-error-subtle)
@@ -114,9 +116,17 @@
   }
 
   &--info {
-    background-color: var(--color-bg-elevated);
+    background-color: var(--ea-toast-background-color, var(--color-bg-elevated));
     background-image: linear-gradient(var(--color-info-subtle), var(--color-info-subtle));
     color: var(--color-info-text);
+  }
+
+  // Inherits the toast's variant text colour through currentColor. The icon host
+  // sets width/height to 1em inline, so scale via font-size (a class width/height
+  // would lose to the inline style); 1.5em makes the glyph 1.5x the message text.
+  &__icon {
+    flex-shrink: 0;
+    font-size: 1.5em;
   }
 
   &__message {
@@ -126,6 +136,7 @@
 
   &__close {
     @include ea.icon-button;
+    margin-left: var(--space-1-5);
 
     ea-icon-x {
       width: 1em;

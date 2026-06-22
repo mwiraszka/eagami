@@ -217,6 +217,34 @@ export const zhCN: WebMessages = {
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
       getStartedAfter: '页面安装该包并配置全局样式表。',
+      showcase: {
+        button: '点击我',
+        toggle: '切换我',
+        tick: '勾选我',
+        tag: '标签',
+        badge: '徽章',
+        tooltip: '在工具提示中显示的附加信息',
+        exploreMore: '...探索更多组件',
+        list: '列表',
+        grid: '网格',
+        table: '表格',
+        radioThis: '这个',
+        radioThat: '那个',
+        option1: '选项 1',
+        option2: '选项 2',
+        option3: '选项 3',
+        toastButton: '按钮已按下',
+        toastToggleOn: '开关已打开',
+        toastToggleOff: '开关已关闭',
+        toastTickOn: '复选框已勾选',
+        toastTickOff: '复选框已取消勾选',
+        ariaView: '演示视图',
+        ariaSlider: '演示滑块',
+        ariaRating: '演示评分',
+        ariaLayout: '演示布局',
+        ariaColor: '演示颜色',
+        ariaSelect: '演示选择',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | 安装',
@@ -322,8 +350,6 @@ export const zhCN: WebMessages = {
       frenchSpacingBody:
         '法语排版要求在 <code>? ! : ; »</code> 前以及 <code>«</code> 后使用窄不间断空格。导出的 <code>frenchSpacing()</code> 助手会转换你自己的法语字符串中的普通空格（库会在内部处理其捆绑的法语消息）。',
       demoLocaleLabel: '语言',
-      demoAppointmentLabel: '预约',
-      demoFruitLabel: '水果',
     },
     component: {
       metaDescription: name => `${name} 组件参考与实时演示。`,
@@ -494,7 +520,7 @@ export const zhCN: WebMessages = {
           danger: '危险',
           toggleLoading: '切换加载状态',
           fullWidth: '全宽',
-          clickedToast: '按钮已点击！',
+          clickedToast: '按钮已按下！',
         },
         card: {
           elevatedHeader: '凸起',

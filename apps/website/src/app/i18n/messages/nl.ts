@@ -230,6 +230,34 @@ export const nl: WebMessages = {
          provide the separator themselves. */
       getStartedAfter:
         ' om het pakket te installeren en de globale stylesheet aan te sluiten.',
+      showcase: {
+        button: 'Druk op mij',
+        toggle: 'Schakel mij',
+        tick: 'Vink mij aan',
+        tag: 'Label',
+        badge: 'Insigne',
+        tooltip: 'Aanvullende informatie weergegeven in een tooltip',
+        exploreMore: '...meer componenten verkennen',
+        list: 'Lijst',
+        grid: 'Raster',
+        table: 'Tabel',
+        radioThis: 'Dit',
+        radioThat: 'Dat',
+        option1: 'Optie 1',
+        option2: 'Optie 2',
+        option3: 'Optie 3',
+        toastButton: 'Knop ingedrukt',
+        toastToggleOn: 'Schakelaar aangezet',
+        toastToggleOff: 'Schakelaar uitgezet',
+        toastTickOn: 'Selectievakje aangevinkt',
+        toastTickOff: 'Selectievakje uitgevinkt',
+        ariaView: 'Demoweergave',
+        ariaSlider: 'Demoschuifregelaar',
+        ariaRating: 'Demobeoordeling',
+        ariaLayout: 'Demolay-out',
+        ariaColor: 'Demokleur',
+        ariaSelect: 'Demoselectie',
+      },
     },
     setup: {
       metaTitle: 'Eagami | UI | Installatie',
@@ -342,8 +370,6 @@ export const nl: WebMessages = {
       frenchSpacingBody:
         'Franse typografie verwacht een smalle vaste spatie voor <code>? ! : ; »</code> en na <code>«</code>. De geëxporteerde <code>frenchSpacing()</code>-helper zet gewone spaties in je eigen Franse teksten om (de bibliotheek verwerkt haar meegeleverde Franse teksten intern).',
       demoLocaleLabel: 'Taal',
-      demoAppointmentLabel: 'Afspraak',
-      demoFruitLabel: 'Fruit',
     },
     component: {
       metaDescription: name => `${name}-componentreferentie en live demo's.`,

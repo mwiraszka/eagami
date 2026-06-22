@@ -141,7 +141,10 @@
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
-    background-color: var(--color-bg-elevated);
+    background-color: var(
+      --ea-date-picker-popover-background-color,
+      var(--color-bg-elevated)
+    );
   }
 
   &__header {

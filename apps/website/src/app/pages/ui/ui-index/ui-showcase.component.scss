@@ -1,0 +1,84 @@
+.showcase {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 24px;
+  column-gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  background-color: var(--color-bg-base);
+  box-shadow: var(--shadow-md);
+}
+
+// A fixed, uniform height plus grid centering makes every control share one
+// vertical centerline (place-items centers the cell's child on both axes without
+// stretching it), so the wall reads as aligned rows regardless of each
+// component's intrinsic height or its own internal field wrapper.
+.showcase__item {
+  display: grid;
+  place-items: center;
+  height: 56px;
+}
+
+// Width-hungry controls (sliders, progress, segmented, dropdown) collapse to
+// their thumb/track minimum in a shrink-to-fit cell, so pin a width and stretch
+// the control to fill it.
+.showcase__item--track {
+  width: 170px;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.showcase__item--color {
+  width: 240px;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.showcase__avatar {
+  position: relative;
+  display: inline-flex;
+}
+
+.showcase__skeleton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.showcase__skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// Solid vivid green (via the badge token API) so the count reads as a live
+// notification rather than the badge's softer success tint.
+.showcase__notification {
+  --ea-badge-background-color: var(--color-success-600);
+  --ea-badge-color: var(--color-neutral-0);
+  z-index: 1;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+// margin-left: auto pushes the link to the right edge of the final wrapped row.
+.showcase__explore {
+  align-self: center;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
+}

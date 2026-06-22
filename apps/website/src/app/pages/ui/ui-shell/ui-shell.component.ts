@@ -1,7 +1,13 @@
 import { ChevronRightIconComponent, ToastComponent } from '@eagami/ui';
 import { filter, map, startWith } from 'rxjs';
 
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -47,9 +53,14 @@ export class UiShellComponent {
   );
 
   constructor() {
-    if (this.isComponentRoute()) {
-      this.componentsExpanded.set(true);
-    }
+    // Open the Components group whenever a component route is entered, not just on
+    // the shell's first load, so navigating in from elsewhere (e.g. the landing
+    // page's "explore more components" link) expands it too.
+    effect(() => {
+      if (this.isComponentRoute()) {
+        this.componentsExpanded.set(true);
+      }
+    });
   }
 
   protected toggleComponents(): void {

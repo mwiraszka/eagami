@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.0] - 2026-06-22
+
+### Added
+
+- Show a semantic leading icon on each `<ea-toast>` variant (success, info, warning, error).
+- Expose per-component surface tokens (such as `--ea-dropdown-menu-background-color` and `--ea-dialog-panel-background-color`) so floating overlays can be re-themed without overriding the shared elevated-surface token.
+- Add row-level styling tokens to `<ea-data-table>` (background, hover, stripe, and border) and an overline color token to `<ea-eagami-wordmark>`.
+
+### Fixed
+
+- Let a consumer's `:root` design-token overrides take effect in light mode, OS dark mode, and forced dark mode alike, regardless of stylesheet load order.
+- Shrink a wrapping multi-line tooltip to its longest line so it no longer leaves empty space along the right edge.
+- Center `<ea-radio>` on its content instead of an inline baseline, so radios no longer sit bottom-heavy (most visible in a horizontal `<ea-radio-group>`).
+
 ## [4.1.1] - 2026-06-20
 
 ### Fixed
@@ -788,6 +802,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.1.1...ui-v4.2.0
 [4.1.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.1.0...ui-v4.1.1
 [4.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.0.0...ui-v4.1.0
 [4.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v3.2.1...ui-v4.0.0

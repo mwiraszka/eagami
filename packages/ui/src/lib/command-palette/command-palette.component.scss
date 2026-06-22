@@ -26,7 +26,7 @@
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
-  background-color: var(--color-bg-elevated);
+  background-color: var(--ea-command-palette-background-color, var(--color-bg-elevated));
 }
 
 .ea-command-palette__search {
@@ -172,7 +172,7 @@
   // stays legible against the hover/active item background
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-sm);
-  background-color: var(--color-bg-elevated);
+  background-color: var(--ea-command-palette-background-color, var(--color-bg-elevated));
   color: var(--color-text-secondary);
 }
 

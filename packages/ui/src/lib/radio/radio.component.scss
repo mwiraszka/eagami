@@ -1,3 +1,13 @@
+// Without an explicit display the host is `inline`, so its inline-flex label
+// baseline-aligns to the bottom of a line-height-tall line box, leaving the
+// control bottom-heavy (most visible laid out in a horizontal group). Mirror the
+// checkbox host so the control sizes to its content and centers cleanly.
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 1;
+}
+
 .ea-radio {
   display: inline-flex;
   align-items: center;
