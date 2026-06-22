@@ -121,12 +121,12 @@
     color: var(--color-info-text);
   }
 
-  // Inherits the toast's variant text colour through currentColor, so no
-  // per-variant colour is needed here.
+  // Inherits the toast's variant text colour through currentColor. The icon host
+  // sets width/height to 1em inline, so scale via font-size (a class width/height
+  // would lose to the inline style); 1.5em makes the glyph 1.5x the message text.
   &__icon {
     flex-shrink: 0;
-    width: 1.5em;
-    height: 1.5em;
+    font-size: 1.5em;
   }
 
   &__message {
