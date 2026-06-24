@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.4.0] - 2026-06-24
+
+### Added
+
+- Support forced-colors (Windows High Contrast) mode across the library: keyboard focus rings now stay visible, floating surfaces (menus, dialogs, popovers, toasts, tooltips) keep a visible boundary, selected and checked states stay distinct, and meaningful colors (semantic alerts, tags, swatches, the brand wordmark) are preserved.
+
 ## [4.3.1] - 2026-06-24
 
 ### Fixed
@@ -815,6 +821,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.3.1...ui-v4.4.0
 [4.3.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.3.0...ui-v4.3.1
 [4.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.2.0...ui-v4.3.0
 [4.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.1.1...ui-v4.2.0
