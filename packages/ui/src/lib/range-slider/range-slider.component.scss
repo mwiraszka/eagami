@@ -1,6 +1,8 @@
 // Two-thumb sibling of `<ea-slider>`: same visual chrome, but the fill spans
 // between the two thumbs (positioned via `left` + `right` rather than `width`).
 
+@use '../../styles/mixins' as ea;
+
 .ea-range-slider-field {
   display: flex;
   flex-direction: column;
@@ -68,6 +70,10 @@
     background-color: var(--color-brand-default);
     border-radius: inherit;
     transition: var(--transition-colors);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+    }
   }
 
   &__thumb {
@@ -85,9 +91,15 @@
       box-shadow var(--duration-fast) var(--ease-out),
       transform var(--duration-fast) var(--ease-out);
 
+    // contrast against the Highlight fill the thumbs sit over
+    @media (forced-colors: active) {
+      background-color: Canvas;
+      border-color: CanvasText;
+    }
+
     &:focus-visible {
       z-index: 1;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
       outline: none;
     }
   }
@@ -131,7 +143,7 @@
     border-color: var(--color-error-default);
 
     &:focus-visible {
-      box-shadow: var(--shadow-focus-ring-error);
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
     }
   }
 }

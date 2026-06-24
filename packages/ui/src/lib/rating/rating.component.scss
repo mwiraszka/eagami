@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: inline-block;
 }
@@ -15,7 +17,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 
@@ -55,6 +57,8 @@
     }
     &--foreground {
       color: var(--ea-rating-color, var(--color-warning-default));
+      // star fill is meaningful; keep it in forced-colors
+      forced-color-adjust: none;
     }
   }
 
@@ -88,6 +92,6 @@
   }
 
   &--error &__stars:focus-visible {
-    box-shadow: var(--shadow-focus-ring-error);
+    @include ea.focus-ring(var(--shadow-focus-ring-error));
   }
 }

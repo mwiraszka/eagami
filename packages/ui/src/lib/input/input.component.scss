@@ -45,14 +45,14 @@
 
   &--focused {
     border-color: var(--color-border-focus);
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   &--error {
     border-color: var(--color-error-default);
 
     &.ea-input-wrapper--focused {
-      box-shadow: var(--shadow-focus-ring-error);
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
     }
   }
 

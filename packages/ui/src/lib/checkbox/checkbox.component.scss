@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: inline-flex;
   vertical-align: middle;
@@ -52,6 +54,13 @@
       background-color: var(--color-brand-default);
       border-color: var(--color-brand-default);
       color: var(--color-text-inverse);
+
+      // author colors flatten in forced-colors; system colors keep the state distinct
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
     }
   }
 
@@ -73,7 +82,7 @@
     border: 0;
 
     &:focus-visible + .ea-checkbox__box {
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 

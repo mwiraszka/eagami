@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-accordion-item {
   border-bottom: var(--border-width-thin) solid var(--color-border-default);
 
@@ -29,7 +31,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:disabled {

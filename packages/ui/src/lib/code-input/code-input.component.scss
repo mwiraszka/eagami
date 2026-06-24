@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-code-input-field {
   display: flex;
   flex-direction: column;
@@ -35,7 +37,7 @@
     border-color: var(--color-error-default);
 
     &--focused {
-      box-shadow: var(--shadow-focus-ring-error);
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
     }
   }
 
@@ -76,7 +78,7 @@
 
   &--focused {
     border-color: var(--color-border-focus);
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   &--filled {

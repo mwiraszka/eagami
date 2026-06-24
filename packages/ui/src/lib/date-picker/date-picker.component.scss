@@ -51,7 +51,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     // Size sets only the font-size; padding, gap, min-height, and the embedded
@@ -78,14 +78,14 @@
 
     &--open {
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--error {
       border-color: var(--color-error-default);
 
       &.ea-date-picker__trigger--open {
-        box-shadow: var(--shadow-focus-ring-error);
+        @include ea.focus-ring(var(--shadow-focus-ring-error));
       }
     }
 
@@ -145,6 +145,7 @@
       --ea-date-picker-popover-background-color,
       var(--color-bg-elevated)
     );
+    @include ea.elevated-surface-border;
   }
 
   &__header {
@@ -223,7 +224,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--outside {
@@ -246,6 +247,12 @@
 
       &:hover {
         background-color: var(--color-brand-hover);
+      }
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
       }
     }
 
@@ -284,7 +291,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 }

@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-slider-field {
   display: flex;
   flex-direction: column;
@@ -66,6 +68,10 @@
     background-color: var(--color-brand-default);
     border-radius: inherit;
     transition: var(--transition-colors);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+    }
   }
 
   &__thumb {
@@ -83,8 +89,14 @@
       box-shadow var(--duration-fast) var(--ease-out),
       transform var(--duration-fast) var(--ease-out);
 
+    // contrast against the Highlight fill the thumb sits over
+    @media (forced-colors: active) {
+      background-color: Canvas;
+      border-color: CanvasText;
+    }
+
     &:focus-visible {
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
       outline: none;
     }
   }
@@ -128,7 +140,7 @@
     border-color: var(--color-error-default);
 
     &:focus-visible {
-      box-shadow: var(--shadow-focus-ring-error);
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
     }
   }
 }

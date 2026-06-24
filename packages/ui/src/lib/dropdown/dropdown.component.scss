@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-dropdown-field {
   display: flex;
   flex-direction: column;
@@ -26,7 +28,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     // Size sets only the font-size; padding, gap, and min-height are em-based on
@@ -53,14 +55,14 @@
 
     &--open {
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--error {
       border-color: var(--color-error-default);
 
       &.ea-dropdown__trigger--open {
-        box-shadow: var(--shadow-focus-ring-error);
+        @include ea.focus-ring(var(--shadow-focus-ring-error));
       }
     }
 
@@ -105,6 +107,7 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     background-color: var(--ea-dropdown-menu-background-color, var(--color-bg-elevated));
+    @include ea.elevated-surface-border;
 
     &--xs {
       font-size: var(--font-size-xs);
@@ -138,16 +141,30 @@
 
     &--focused {
       background-color: var(--color-state-hover);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     &--selected {
       color: var(--color-brand-text);
       font-weight: var(--font-weight-medium);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     &--disabled {
       color: var(--color-text-disabled);
       cursor: not-allowed;
+
+      @media (forced-colors: active) {
+        color: GrayText;
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-tabs {
   display: flex;
   flex-direction: column;
@@ -19,6 +21,11 @@
         &--active {
           border-bottom-color: var(--color-brand-text);
           color: var(--color-brand-text);
+
+          @media (forced-colors: active) {
+            border-color: Highlight;
+            color: Highlight;
+          }
         }
 
         &:hover:not(:disabled):not(.ea-tabs__trigger--active) {
@@ -39,6 +46,12 @@
           background-color: var(--color-bg-base);
           box-shadow: var(--shadow-sm);
           color: var(--color-text-primary);
+
+          @media (forced-colors: active) {
+            background-color: Highlight;
+            border-color: Highlight;
+            color: HighlightText;
+          }
         }
       }
     }
@@ -87,7 +100,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:disabled {

@@ -76,6 +76,7 @@
   box-shadow: var(--shadow-lg);
   pointer-events: auto;
   animation: ea-toast-slide-in var(--duration-slow) var(--ease-out);
+  @include ea.elevated-surface-border;
 
   @media (min-width: 640px) {
     width: auto;

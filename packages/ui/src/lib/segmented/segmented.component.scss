@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 // Block-level flex so the host sits flush at the top beside other block-level
 // fields, and the inner field lays out as a flex item, not a baseline inline box.
 :host {
@@ -107,7 +109,7 @@
     }
 
     &:focus-visible {
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
       outline: none;
     }
 
@@ -116,6 +118,13 @@
       border-color: var(--color-border-default);
       color: var(--color-text-primary);
       box-shadow: var(--shadow-sm);
+
+      // author colors flatten in forced-colors; system colors keep the state distinct
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     &--disabled {

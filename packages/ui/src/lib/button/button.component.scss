@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 // Match the host's display to the inner `<button>` so its bounding box collapses
 // to the visible button. A `display: inline` host is sized by the line box's
 // ascent/descent rather than the inline-flex child, so anything anchoring against
@@ -33,7 +35,7 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   // Size sets only the font-size; padding, min-height, gap, and the spinner are

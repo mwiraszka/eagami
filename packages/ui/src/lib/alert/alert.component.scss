@@ -9,6 +9,8 @@
   line-height: var(--line-height-normal);
   border: var(--border-width-thin) solid;
   border-radius: var(--radius-lg);
+  // semantic color is meaningful; preserve it in forced-colors
+  forced-color-adjust: none;
 
   // Size drives font-size; the icon (em) and gap (em) scale in proportion
   &--xs {

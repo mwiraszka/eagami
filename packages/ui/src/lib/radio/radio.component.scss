@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 // Without an explicit display the host is `inline`, so its inline-flex label
 // baseline-aligns to the bottom of a line-height-tall line box, leaving the
 // control bottom-heavy (most visible laid out in a horizontal group). Mirror the
@@ -51,6 +53,15 @@
       &::after {
         transform: scale(1);
       }
+
+      // author colors flatten in forced-colors; system colors keep the state distinct
+      @media (forced-colors: active) {
+        border-color: Highlight;
+
+        &::after {
+          background-color: Highlight;
+        }
+      }
     }
   }
 
@@ -72,7 +83,7 @@
     border: 0;
 
     &:focus-visible + .ea-radio__circle {
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 

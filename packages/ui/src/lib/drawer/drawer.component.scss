@@ -48,6 +48,7 @@
     background-color: var(--ea-drawer-panel-background-color, var(--color-bg-elevated));
     box-shadow: var(--shadow-2xl);
     overflow: hidden;
+    @include ea.elevated-surface-border;
 
     &--right {
       top: 0;

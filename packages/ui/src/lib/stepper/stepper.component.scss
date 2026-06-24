@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-stepper {
   display: flex;
   flex-direction: column;
@@ -52,7 +54,7 @@
       outline: none;
 
       .ea-stepper__circle {
-        box-shadow: var(--shadow-focus-ring);
+        @include ea.focus-ring;
       }
     }
 
@@ -90,12 +92,24 @@
     border-color: var(--color-brand-default);
     background-color: var(--color-brand-default);
     color: var(--color-text-inverse);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
+    }
   }
 
   &__button--completed &__circle {
     border-color: var(--color-brand-default);
     background-color: var(--color-brand-default);
     color: var(--color-text-inverse);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
+    }
   }
 
   &__button:disabled &__circle {
@@ -135,6 +149,10 @@
 
     &--completed {
       background-color: var(--color-brand-default);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+      }
     }
   }
 

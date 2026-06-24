@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-data-table {
   overflow: hidden;
   width: 100%;
@@ -51,7 +53,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 
@@ -179,6 +181,16 @@
       --ea-data-table-row-hover-background-color,
       var(--color-state-hover)
     );
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      color: HighlightText;
+
+      // a sorted cell sets its own brand color, so re-pair it with the row
+      .ea-data-table__cell--sorted {
+        color: HighlightText;
+      }
+    }
   }
 
   &--clickable &__body &__row:not(&__row--empty) {

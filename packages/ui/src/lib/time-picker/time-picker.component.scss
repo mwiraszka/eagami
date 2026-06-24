@@ -53,19 +53,19 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--open {
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--error {
       border-color: var(--color-error-default);
 
       &.ea-time-picker__trigger--open {
-        box-shadow: var(--shadow-focus-ring-error);
+        @include ea.focus-ring(var(--shadow-focus-ring-error));
       }
     }
 
@@ -124,6 +124,7 @@
       --ea-time-picker-popover-background-color,
       var(--color-bg-elevated)
     );
+    @include ea.elevated-surface-border;
   }
 
   &__column {
@@ -173,7 +174,7 @@
     &:focus {
       outline: none;
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
       background-color: var(--color-bg-base);
     }
   }
@@ -217,7 +218,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--active {
@@ -229,6 +230,12 @@
         background-color: var(--color-brand-hover);
         border-color: var(--color-brand-hover);
         color: var(--color-text-inverse);
+      }
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
       }
     }
   }
