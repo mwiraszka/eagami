@@ -2,6 +2,29 @@
 //   @use '../../styles/mixins' as ea;
 //   .ea-foo__close { @include ea.icon-button; }
 
+// Standard focus indicator. The ring is a soft box-shadow halo, but box-shadow
+// is dropped in forced-colors (Windows High Contrast) mode, which would leave
+// keyboard users with no visible focus. Pair the halo with a real outline that
+// only renders in forced-colors so the ring survives there. Pass the full
+// box-shadow value to compose the ring with an existing shadow.
+@mixin focus-ring($ring: var(--shadow-focus-ring)) {
+  box-shadow: $ring;
+
+  @media (forced-colors: active) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+// Floating surfaces (menus, dialogs, popovers, toasts) lean on elevation shadow
+// for their boundary, but shadows are dropped in forced-colors mode. Add a
+// hairline border there so the surface stays separated from the content behind.
+@mixin elevated-surface-border {
+  @media (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
+}
+
 // Standard icon button: clear, close/dismiss, password-toggle, nav, etc. The box
 // is `--ea-icon-button-size` (em) so it scales with the host component's size and
 // is consistent across components at a given size tier. The glyph is enlarged so
@@ -35,7 +58,7 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus-ring);
+    @include focus-ring;
   }
 
   &:disabled {
