@@ -18,6 +18,11 @@
   &:hover:not(&--disabled),
   &:focus-visible:not(&--disabled) {
     background-color: var(--color-state-hover);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      color: HighlightText;
+    }
   }
 
   &:focus-visible {
@@ -30,6 +35,12 @@
     &:hover:not(.ea-menu-item--disabled),
     &:focus-visible:not(.ea-menu-item--disabled) {
       background-color: var(--color-error-subtle, var(--color-bg-muted));
+
+      // danger red can't survive forced-colors; fall back to the selection pair
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
   }
 

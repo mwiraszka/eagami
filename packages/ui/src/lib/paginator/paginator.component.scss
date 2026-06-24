@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-paginator {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +72,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:disabled {
@@ -104,6 +106,12 @@
 
     &:hover:not(.ea-button--disabled) {
       background-color: var(--color-brand-muted);
+    }
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
     }
   }
 

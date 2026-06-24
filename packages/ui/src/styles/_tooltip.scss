@@ -1,3 +1,5 @@
+@use 'mixins' as ea;
+
 // Guard against "sticky hover" on touch devices, which fire `mouseenter` on tap
 // but never the matching `mouseleave`. The directive gates pointer listeners on
 // `(hover: hover)`, but if a tooltip ever slips through keep it invisible on touch.
@@ -19,6 +21,7 @@
   color: var(--color-neutral-0);
   pointer-events: none;
   animation: ea-tooltip-fade-in var(--duration-fast) var(--ease-out);
+  @include ea.elevated-surface-border;
 
   @media (hover: none) {
     display: none;

@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-avatar-editor {
   display: inline-flex;
   flex-direction: column;
@@ -43,7 +45,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
   }
 
@@ -177,7 +179,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:disabled {
@@ -234,6 +236,12 @@
 
       &::-webkit-slider-thumb {
         box-shadow: var(--shadow-focus-ring);
+      }
+
+      // the thumb halo is a box-shadow, dropped in forced-colors; outline the track
+      @media (forced-colors: active) {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
       }
     }
 

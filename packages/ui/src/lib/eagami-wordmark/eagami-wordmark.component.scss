@@ -1,3 +1,4 @@
+@use '../../styles/mixins' as ea;
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&display=swap');
 
 :host {
@@ -19,13 +20,15 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   // font-size drives the size so `ea-icon-eagami`'s `1em` dimensions resolve to `--_size`
   &__logo {
     flex-shrink: 0;
     font-size: calc(var(--_size) * 1px);
+    // gradient is brand identity; preserve it in forced-colors
+    forced-color-adjust: none;
   }
 
   &__text {

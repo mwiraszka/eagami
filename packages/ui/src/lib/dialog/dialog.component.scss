@@ -22,6 +22,7 @@
     box-shadow: var(--shadow-2xl);
     max-height: 85vh;
     overflow: hidden;
+    @include ea.elevated-surface-border;
 
     &--xs {
       width: 20rem; // 320px

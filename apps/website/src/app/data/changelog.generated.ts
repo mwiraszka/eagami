@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.4.0',
+    date: '2026-06-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Support forced-colors (Windows High Contrast) mode across the library: keyboard focus rings now stay visible, floating surfaces (menus, dialogs, popovers, toasts, tooltips) keep a visible boundary, selected and checked states stay distinct, and meaningful colors (semantic alerts, tags, swatches, the brand wordmark) are preserved.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.3.1',
     date: '2026-06-24',
     sections: [

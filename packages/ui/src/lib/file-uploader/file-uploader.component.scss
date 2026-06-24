@@ -74,7 +74,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:disabled {
@@ -104,6 +104,10 @@
     border-color: var(--color-primary-500);
     background-color: var(--color-primary-50);
     color: var(--color-primary-600);
+
+    @media (forced-colors: active) {
+      border-color: Highlight;
+    }
   }
 
   &--error &__dropzone {

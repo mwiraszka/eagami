@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: block;
 }
@@ -57,12 +59,17 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   &--highlighted {
     background-color: var(--color-brand-subtle, var(--color-state-hover));
     color: var(--color-text-primary);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      color: HighlightText;
+    }
   }
 
   &--disabled {
@@ -108,7 +115,7 @@
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 
   &:disabled {

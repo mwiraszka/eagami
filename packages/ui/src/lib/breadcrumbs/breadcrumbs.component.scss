@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-breadcrumbs {
   font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
@@ -40,7 +42,7 @@
 
     &:focus-visible {
       outline: none;
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--disabled {

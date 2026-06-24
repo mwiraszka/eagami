@@ -47,12 +47,12 @@
     }
 
     &:has(.ea-multi-select__trigger:focus-visible) {
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:has(.ea-multi-select__trigger--open) {
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &:has(.ea-multi-select__trigger--error) {
@@ -60,7 +60,7 @@
     }
 
     &:has(.ea-multi-select__trigger--error.ea-multi-select__trigger--open) {
-      box-shadow: var(--shadow-focus-ring-error);
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
     }
 
     &:has(.ea-multi-select__trigger--disabled) {
@@ -157,6 +157,7 @@
       --ea-multi-select-popover-background-color,
       var(--color-bg-elevated)
     );
+    @include ea.elevated-surface-border;
 
     &--xs {
       font-size: var(--font-size-xs);
@@ -237,11 +238,20 @@
 
     &--focused {
       background-color: var(--color-state-hover);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     &--disabled {
       color: var(--color-text-disabled);
       cursor: not-allowed;
+
+      @media (forced-colors: active) {
+        color: GrayText;
+      }
     }
 
     &--select-all {
@@ -251,6 +261,11 @@
 
     &:hover:not(&--disabled) {
       background-color: var(--color-state-hover);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     // The toggle is handled on the option row so the label is clickable too;

@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: contents;
 }
@@ -11,4 +13,5 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   background-color: var(--ea-menu-list-background-color, var(--color-bg-elevated));
+  @include ea.elevated-surface-border;
 }

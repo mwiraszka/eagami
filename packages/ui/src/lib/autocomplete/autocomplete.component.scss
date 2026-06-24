@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 .ea-autocomplete {
   position: relative;
   display: flex;
@@ -40,14 +42,14 @@
 
     &--focused {
       border-color: var(--color-border-focus);
-      box-shadow: var(--shadow-focus-ring);
+      @include ea.focus-ring;
     }
 
     &--error {
       border-color: var(--color-error-default);
 
       &.ea-autocomplete__wrapper--focused {
-        box-shadow: var(--shadow-focus-ring-error);
+        @include ea.focus-ring(var(--shadow-focus-ring-error));
       }
     }
 
@@ -102,6 +104,7 @@
       --ea-autocomplete-listbox-background-color,
       var(--color-bg-elevated)
     );
+    @include ea.elevated-surface-border;
 
     &--xs {
       font-size: var(--font-size-xs);
@@ -134,11 +137,20 @@
 
     &--focused {
       background-color: var(--color-state-hover);
+
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
     }
 
     &--disabled {
       color: var(--color-text-disabled);
       cursor: not-allowed;
+
+      @media (forced-colors: active) {
+        color: GrayText;
+      }
     }
   }
 

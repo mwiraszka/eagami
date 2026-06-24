@@ -11,6 +11,8 @@
   border-width: var(--ea-badge-border-width, 0);
   border-color: var(--ea-badge-border-color, transparent);
   border-radius: var(--radius-full);
+  // semantic color is meaningful; preserve it in forced-colors
+  forced-color-adjust: none;
 
   // Size sets only the font-size; padding, gap, and the pin dimensions are all
   // em-based, so everything scales from this one knob. The scale runs one step

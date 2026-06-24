@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: block;
 }
@@ -34,7 +36,7 @@
 // focus ring on the row container instead, against the visible content
 .ea-tree-node:focus-visible {
   & > .ea-tree-node__row {
-    box-shadow: var(--shadow-focus-ring);
+    @include ea.focus-ring;
   }
 }
 
@@ -45,6 +47,11 @@
 .ea-tree-node--selected > .ea-tree-node__row {
   background-color: var(--color-bg-selected, var(--color-brand-subtle));
   color: var(--color-text-on-selected, var(--color-text-primary));
+
+  @media (forced-colors: active) {
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }
 
 .ea-tree-node--disabled > .ea-tree-node__row {

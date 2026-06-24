@@ -22,6 +22,8 @@ ea-tag {
   border-radius: var(--radius-lg);
   background-color: var(--color-bg-subtle);
   color: var(--color-text-secondary);
+  // semantic color is meaningful; preserve it in forced-colors
+  forced-color-adjust: none;
 
   // Size sets only the font-size; padding, gap, and the remove button are
   // em-based, so the chip scales entirely from this one knob.
