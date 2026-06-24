@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.3.1',
+    date: '2026-06-24',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Honor `prefers-reduced-motion` for the button's loading spinner and the file uploader's progress bar, so neither animates against the user's motion preference.",
+        ],
+      },
+    ],
+  },
+  {
     version: '4.3.0',
     date: '2026-06-22',
     sections: [

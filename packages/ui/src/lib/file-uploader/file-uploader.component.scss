@@ -177,7 +177,7 @@
     height: 100%;
     border-radius: inherit;
     background-color: var(--color-primary-500);
-    transition: width 0.2s ease-out;
+    transition: width var(--duration-normal) var(--ease-out);
   }
 
   &__remove {
