@@ -215,7 +215,7 @@ export const frFR: WebMessages = {
         },
         {
           title: 'Localisé',
-          body: 'Les textes intégrés des composants sont disponibles en dix langues.',
+          body: 'Les textes intégrés des composants sont disponibles en douze langues.',
         },
         {
           title: 'Moderne',
@@ -348,9 +348,9 @@ export const frFR: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisation',
       metaDescription:
-        'Textes intégrés des composants en dix langues, avec changement à l’exécution et remplacements chaîne par chaîne.',
+        'Textes intégrés des composants en douze langues, avec changement à l’exécution et remplacements chaîne par chaîne.',
       title: 'Internationalisation',
-      lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans dix langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
+      lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans douze langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
       supportedHeading: 'Langues prises en charge',
       supportedFallback:
         'Les langues inconnues reviennent à l’anglais, tout comme les clés manquantes dans un remplacement partiel.',
