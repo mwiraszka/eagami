@@ -206,7 +206,7 @@ export const is: WebMessages = {
         },
         {
           title: 'Staðfært',
-          body: 'Innbyggður einingatexti fylgir á tíu tungumálum.',
+          body: 'Innbyggður einingatexti fylgir á tólf tungumálum.',
         },
         {
           title: 'Nútímalegt',
@@ -340,9 +340,9 @@ export const is: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Alþjóðavæðing',
       metaDescription:
-        'Innbyggður einingatexti á tíu svæðum, með skiptingu á keyrslutíma og yfirskriftum fyrir einstakar strengi.',
+        'Innbyggður einingatexti á tólf svæðum, með skiptingu á keyrslutíma og yfirskriftum fyrir einstakar strengi.',
       title: 'Alþjóðavæðing',
-      lede: 'Hver innbyggður strengur (ARIA merkimiðar, staðgenglar, tóm ástönd, stýringar dagsetningarvelju) fylgir á tíu svæðum. Stilltu eitt fyrir allt forritið, skiptu á keyrslutíma eða yfirskrifaðu einstaka strengi.',
+      lede: 'Hver innbyggður strengur (ARIA merkimiðar, staðgenglar, tóm ástönd, stýringar dagsetningarvelju) fylgir á tólf svæðum. Stilltu eitt fyrir allt forritið, skiptu á keyrslutíma eða yfirskrifaðu einstaka strengi.',
       supportedHeading: 'Studd svæði',
       supportedFallback:
         'Óþekkt svæði falla aftur á ensku, eins og allir lyklar sem vantar í hlutayfirskrift.',

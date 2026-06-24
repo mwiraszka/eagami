@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.4.0] - 2026-06-25
+
+### Added
+
+- Translate the site into Ukrainian and Russian and add them to the language switcher.
+
+### Changed
+
+- Pick up @eagami/ui v4.5.0.
+
 ## [3.3.3] - 2026-06-24
 
 ### Changed
@@ -668,6 +678,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.4.0]: https://github.com/mwiraszka/eagami/compare/website-v3.3.3...website-v3.4.0
 [3.3.3]: https://github.com/mwiraszka/eagami/compare/website-v3.3.2...website-v3.3.3
 [3.3.2]: https://github.com/mwiraszka/eagami/compare/website-v3.3.1...website-v3.3.2
 [3.3.1]: https://github.com/mwiraszka/eagami/compare/website-v3.3.0...website-v3.3.1

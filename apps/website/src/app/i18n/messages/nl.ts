@@ -210,7 +210,7 @@ export const nl: WebMessages = {
         },
         {
           title: 'Gelokaliseerd',
-          body: 'Ingebouwde componenttekst wordt geleverd in tien talen.',
+          body: 'Ingebouwde componenttekst wordt geleverd in twaalf talen.',
         },
         {
           title: 'Modern',
@@ -346,9 +346,9 @@ export const nl: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisatie',
       metaDescription:
-        'Ingebouwde componenttekst in tien talen, met wisselen tijdens runtime en overschrijvingen per tekst.',
+        'Ingebouwde componenttekst in twaalf talen, met wisselen tijdens runtime en overschrijvingen per tekst.',
       title: 'Internationalisatie',
-      lede: 'Elke ingebouwde tekst (ARIA-labels, plaatsaanduidingen, lege toestanden, datumkiezerbediening) wordt geleverd in tien talen. Stel er een in voor de hele app, wissel tijdens runtime, of overschrijf afzonderlijke teksten.',
+      lede: 'Elke ingebouwde tekst (ARIA-labels, plaatsaanduidingen, lege toestanden, datumkiezerbediening) wordt geleverd in twaalf talen. Stel er een in voor de hele app, wissel tijdens runtime, of overschrijf afzonderlijke teksten.',
       supportedHeading: 'Ondersteunde talen',
       supportedFallback:
         'Onbekende talen vallen terug op het Engels, net als sleutels die ontbreken in een gedeeltelijke overschrijving.',

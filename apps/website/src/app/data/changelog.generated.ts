@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.5.0',
+    date: '2026-06-25',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add Ukrainian and Russian to the built-in locales, bringing the bundled languages to twelve.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.4.0',
     date: '2026-06-24',
     sections: [

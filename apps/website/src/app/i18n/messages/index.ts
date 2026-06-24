@@ -9,9 +9,11 @@ import { is } from './is';
 import { nl } from './nl';
 import { pl } from './pl';
 import { ptBR } from './pt-BR';
+import { ru } from './ru';
+import { uk } from './uk';
 import { zhCN } from './zh-CN';
 
-export { de, el, en, esES, frFR, is, nl, pl, ptBR, zhCN };
+export { de, el, en, esES, frFR, is, nl, pl, ptBR, ru, uk, zhCN };
 
 export const WEB_MESSAGES: Record<WebLocale, WebMessages> = {
   en,
@@ -24,4 +26,6 @@ export const WEB_MESSAGES: Record<WebLocale, WebMessages> = {
   'zh-CN': zhCN,
   is,
   nl,
+  uk,
+  ru,
 };

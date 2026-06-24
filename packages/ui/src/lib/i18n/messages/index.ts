@@ -8,9 +8,11 @@ import { is } from './is';
 import { nl } from './nl';
 import { pl } from './pl';
 import { ptBR } from './pt-BR';
+import { ru } from './ru';
+import { uk } from './uk';
 import { zhCN } from './zh-CN';
 
-export { de, el, en, esES, frFR, is, nl, pl, ptBR, zhCN };
+export { de, el, en, esES, frFR, is, nl, pl, ptBR, ru, uk, zhCN };
 
 /**
  * Every built-in locale bundle. Registering this pulls all shipped languages
@@ -27,4 +29,6 @@ export const EAGAMI_ALL_LOCALES: readonly EagamiLocaleBundle[] = [
   zhCN,
   is,
   nl,
+  uk,
+  ru,
 ];

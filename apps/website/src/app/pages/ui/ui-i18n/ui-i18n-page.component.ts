@@ -23,34 +23,9 @@ import {
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { WEB_LOCALE_FLAGS, WEB_LOCALE_LABELS } from '@app/i18n/locale.types';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
-
-const LOCALE_LABELS: Record<EagamiLocale, string> = {
-  en: 'English',
-  'fr-FR': 'Français',
-  el: 'Ελληνικά',
-  pl: 'Polski',
-  'es-ES': 'Español',
-  de: 'Deutsch',
-  'pt-BR': 'Português (Brasil)',
-  'zh-CN': '中文',
-  is: 'Íslenska',
-  nl: 'Nederlands',
-};
-
-const LOCALE_FLAGS: Record<EagamiLocale, string> = {
-  en: '🇬🇧',
-  'fr-FR': '🇫🇷',
-  el: '🇬🇷',
-  pl: '🇵🇱',
-  'es-ES': '🇪🇸',
-  de: '🇩🇪',
-  'pt-BR': '🇧🇷',
-  'zh-CN': '🇨🇳',
-  is: '🇮🇸',
-  nl: '🇳🇱',
-};
 
 @Component({
   selector: 'web-ui-i18n-page',
@@ -75,12 +50,12 @@ export class UiI18nPageComponent {
 
   protected readonly messages = this.webI18n.messages;
   protected readonly locales = EAGAMI_LOCALES;
-  protected readonly localeLabels = LOCALE_LABELS;
-  protected readonly localeFlags = LOCALE_FLAGS;
+  protected readonly localeLabels = WEB_LOCALE_LABELS;
+  protected readonly localeFlags = WEB_LOCALE_FLAGS;
 
   protected readonly localeOptions: SelectOption[] = EAGAMI_LOCALES.map(locale => ({
     value: locale,
-    label: LOCALE_LABELS[locale],
+    label: WEB_LOCALE_LABELS[locale],
   }));
 
   protected readonly activeLocale = signal<EagamiLocale>(this.i18n.locale());
