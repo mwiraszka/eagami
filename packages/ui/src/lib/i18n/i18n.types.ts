@@ -4,15 +4,17 @@
  */
 export type EagamiLocale =
   | 'en'
-  | 'fr-FR'
-  | 'el'
-  | 'pl'
-  | 'es-ES'
   | 'de'
-  | 'pt-BR'
-  | 'zh-CN'
+  | 'es-ES'
+  | 'fr-FR'
   | 'is'
-  | 'nl';
+  | 'nl'
+  | 'pl'
+  | 'pt-BR'
+  | 'el'
+  | 'ru'
+  | 'uk'
+  | 'zh-CN';
 
 /**
  * Display metadata for a built-in locale: the language's name in its own
@@ -27,9 +29,9 @@ export interface EagamiLocaleMeta {
 /**
  * Display name and flag for every built-in locale, in language-switcher order:
  * English first (the default fallback), then alphabetical by each language's own
- * name (Latin scripts first, then Greek and Chinese). Keyed by `EagamiLocale` so
- * a locale added to the union without an entry fails to compile, keeping this
- * single source exhaustive.
+ * name (Latin scripts first, then Greek, Cyrillic, and Chinese by Unicode block
+ * order). Keyed by `EagamiLocale` so a locale added to the union without an entry
+ * fails to compile, keeping this single source exhaustive.
  */
 const LOCALE_DISPLAY = {
   en: { label: 'English', flag: '🇬🇧' },
@@ -41,6 +43,8 @@ const LOCALE_DISPLAY = {
   pl: { label: 'Polski', flag: '🇵🇱' },
   'pt-BR': { label: 'Português (Brasil)', flag: '🇧🇷' },
   el: { label: 'Ελληνικά', flag: '🇬🇷' },
+  ru: { label: 'Русский', flag: '🇷🇺' },
+  uk: { label: 'Українська', flag: '🇺🇦' },
   'zh-CN': { label: '中文', flag: '🇨🇳' },
 } satisfies Record<EagamiLocale, Omit<EagamiLocaleMeta, 'locale'>>;
 
