@@ -1,15 +1,25 @@
 {
   "name": "@eagami/ui",
-  "version": "4.5.0",
-  "description": "Lightweight, accessible Angular UI component library built on CSS custom properties",
+  "version": "4.5.1",
+  "description": "Lightweight, accessible, themeable Angular UI component library and icon set built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
   "keywords": [
     "angular",
+    "angular-components",
     "ui",
+    "components",
     "component-library",
     "design-system",
-    "accessible"
+    "accessible",
+    "a11y",
+    "dark-mode",
+    "theming",
+    "icons",
+    "signals",
+    "standalone",
+    "typescript",
+    "css-variables"
   ],
   "homepage": "https://eagami.com/ui",
   "repository": {
@@ -37,7 +47,7 @@
     "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",
     "docs:changelog": "node scripts/extract-changelog.mjs",
     "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN",
-    "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public"
+    "publish:lib": "pnpm build && pnpm publish dist/eagami-ui --no-git-checks --access public --provenance"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0 || ^22.0.0",
