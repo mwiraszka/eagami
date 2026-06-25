@@ -13,7 +13,7 @@
 <ea-menu
   #localeMenu
   placement="bottom-end"
-  maxHeight="min(80vh, 28rem)"
+  maxHeight="min(80vh, 30rem)"
   [attr.aria-label]="messages().common.localeMenuLabel">
   @for (locale of locales; track locale) {
     <ea-menu-item (clicked)="onSelect(locale)">
