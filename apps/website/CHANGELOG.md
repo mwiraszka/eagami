@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.4.1] - 2026-06-26
+
+### Changed
+
+- Pick up @eagami/ui v4.5.1.
+
+### Fixed
+
+- Show all twelve languages in the locale menu without scrolling.
+
 ## [3.4.0] - 2026-06-25
 
 ### Added
@@ -678,6 +688,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.4.1]: https://github.com/mwiraszka/eagami/compare/website-v3.4.0...website-v3.4.1
 [3.4.0]: https://github.com/mwiraszka/eagami/compare/website-v3.3.3...website-v3.4.0
 [3.3.3]: https://github.com/mwiraszka/eagami/compare/website-v3.3.2...website-v3.3.3
 [3.3.2]: https://github.com/mwiraszka/eagami/compare/website-v3.3.1...website-v3.3.2

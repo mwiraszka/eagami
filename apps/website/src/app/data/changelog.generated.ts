@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.5.1',
+    date: '2026-06-26',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Publish the package with npm provenance attestation and an explicit file allowlist for a more verifiable install.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.5.0',
     date: '2026-06-25',
     sections: [
