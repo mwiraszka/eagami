@@ -1,0 +1,9 @@
+{
+  "schematics": {
+    "ng-add": {
+      "description": "Set up Eagami UI: register the global stylesheet and fonts in an Angular workspace.",
+      "factory": "./ng-add/index#ngAdd",
+      "schema": "./ng-add/schema.json"
+    }
+  }
+}

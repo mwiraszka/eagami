@@ -258,6 +258,8 @@ export const is: WebMessages = {
       metaTitle: 'Eagami | UI | Uppsetning',
       metaDescription: 'Settu upp @eagami/ui og tengdu altæka stílblaðið og leturgerðir.',
       title: 'Uppsetning',
+      ngAddLabel: 'Settu upp og stilltu allt með einni skipun:',
+      manualLabel: 'Eða settu það upp handvirkt:',
       installLabel: 'Settu upp pakkann:',
       or: 'eða',
       stylesheetLabel: {

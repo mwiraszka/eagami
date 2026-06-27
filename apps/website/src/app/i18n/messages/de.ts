@@ -265,6 +265,8 @@ export const de: WebMessages = {
       metaDescription:
         'Installieren Sie @eagami/ui und binden Sie das globale Stylesheet sowie die Schriften ein.',
       title: 'Einrichtung',
+      ngAddLabel: 'Alles mit einem Befehl installieren und konfigurieren:',
+      manualLabel: 'Oder manuell einrichten:',
       installLabel: 'Das Paket installieren:',
       or: 'oder',
       stylesheetLabel: {

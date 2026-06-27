@@ -25,6 +25,14 @@
 
 ## Installation
 
+The quickest way is the schematic, which installs the package and registers the global stylesheet and fonts for you:
+
+```bash
+ng add @eagami/ui
+```
+
+Prefer to wire it up by hand? Install the package:
+
 ```bash
 npm install @eagami/ui
 # or
@@ -33,7 +41,7 @@ pnpm add @eagami/ui
 yarn add @eagami/ui
 ```
 
-Add the global stylesheet to your `angular.json`:
+Then add the global stylesheet to your `angular.json`:
 
 ```json
 "styles": ["node_modules/@eagami/ui/src/styles/eagami-ui.scss"]

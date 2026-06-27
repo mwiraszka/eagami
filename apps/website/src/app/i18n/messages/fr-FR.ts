@@ -265,6 +265,8 @@ export const frFR: WebMessages = {
       metaDescription:
         'Installer @eagami/ui et brancher la feuille de style globale et les polices.',
       title: 'Installation',
+      ngAddLabel: 'Tout installer et configurer avec une seule commande :',
+      manualLabel: 'Ou configurer manuellement :',
       installLabel: 'Installer le paquet :',
       or: 'ou',
       stylesheetLabel: {
