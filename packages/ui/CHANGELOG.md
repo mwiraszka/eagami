@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] - 2026-06-27
+
+### Added
+
+- Add an `ng add @eagami/ui` schematic that registers the global stylesheet and fonts in an Angular workspace in one command.
+
+### Fixed
+
+- Restore the bundled stylesheets to the published package (a v4.5.1 packaging change accidentally excluded them, breaking the documented stylesheet import).
+
 ## [4.5.1] - 2026-06-26
 
 ### Changed
@@ -833,6 +843,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.1...ui-v4.6.0
 [4.5.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.0...ui-v4.5.1
 [4.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.4.0...ui-v4.5.0
 [4.4.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.3.1...ui-v4.4.0

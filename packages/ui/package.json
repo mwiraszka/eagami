@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "Lightweight, accessible, themeable Angular UI component library and icon set built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
@@ -33,7 +33,7 @@
   "sideEffects": false,
   "scripts": {
     "ng": "ng",
-    "build": "ng build eagami-ui && node scripts/clean-dist-package.mjs",
+    "build": "ng build eagami-ui && tsc -p tsconfig.schematics.json && node scripts/copy-schematics.mjs && node scripts/clean-dist-package.mjs",
     "watch": "ng build eagami-ui --watch --configuration development",
     "test": "ng test eagami-ui --no-watch",
     "test:watch": "ng test eagami-ui --watch",
@@ -61,6 +61,7 @@
     "@angular-devkit/architect": "0.2102.14",
     "@angular-devkit/build-angular": "21.2.14",
     "@angular-devkit/core": "21.2.14",
+    "@angular-devkit/schematics": "21.2.14",
     "@angular/build": "21.2.14",
     "@angular/cli": "21.2.14",
     "@angular/common": "21.2.16",
@@ -74,6 +75,7 @@
     "@chromatic-com/storybook": "5.2.1",
     "@compodoc/compodoc": "1.2.1",
     "@eslint/js": "10.0.1",
+    "@schematics/angular": "21.2.14",
     "@storybook/addon-a11y": "10.4.6",
     "@storybook/addon-docs": "10.4.6",
     "@storybook/angular": "10.4.6",

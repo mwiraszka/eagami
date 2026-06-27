@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.6.0',
+    date: '2026-06-27',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `ng add @eagami/ui` schematic that registers the global stylesheet and fonts in an Angular workspace in one command.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Restore the bundled stylesheets to the published package (a v4.5.1 packaging change accidentally excluded them, breaking the documented stylesheet import).',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.5.1',
     date: '2026-06-26',
     sections: [
