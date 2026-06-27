@@ -154,6 +154,8 @@ export interface WebMessages {
       metaTitle: string;
       metaDescription: string;
       title: string;
+      ngAddLabel: string;
+      manualLabel: string;
       installLabel: string;
       or: string;
       stylesheetLabel: {

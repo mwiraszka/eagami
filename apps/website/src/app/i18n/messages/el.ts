@@ -261,6 +261,8 @@ export const el: WebMessages = {
       metaDescription:
         'Εγκαταστήστε το @eagami/ui και συνδέστε το καθολικό φύλλο στυλ και τις γραμματοσειρές.',
       title: 'Εγκατάσταση',
+      ngAddLabel: 'Εγκαταστήστε και ρυθμίστε τα πάντα με μία εντολή:',
+      manualLabel: 'Ή ρυθμίστε το χειροκίνητα:',
       installLabel: 'Εγκαταστήστε το πακέτο:',
       or: 'ή',
       stylesheetLabel: {

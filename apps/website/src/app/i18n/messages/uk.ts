@@ -262,6 +262,8 @@ export const uk: WebMessages = {
       metaDescription:
         'Встановіть @eagami/ui та підключіть глобальну таблицю стилів і шрифти.',
       title: 'Налаштування',
+      ngAddLabel: 'Встановіть і налаштуйте все однією командою:',
+      manualLabel: 'Або налаштуйте вручну:',
       installLabel: 'Встановіть пакет:',
       or: 'або',
       stylesheetLabel: {

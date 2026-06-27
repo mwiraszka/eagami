@@ -258,6 +258,8 @@ export const en: WebMessages = {
       metaTitle: 'Eagami | UI | Setup',
       metaDescription: 'Install @eagami/ui and wire up the global stylesheet and fonts.',
       title: 'Setup',
+      ngAddLabel: 'Install and configure everything with one command:',
+      manualLabel: 'Or set it up manually:',
       installLabel: 'Install the package:',
       or: 'or',
       stylesheetLabel: {

@@ -265,6 +265,8 @@ export const pl: WebMessages = {
       metaDescription:
         'Zainstaluj @eagami/ui i podłącz globalny arkusz stylów oraz fonty.',
       title: 'Instalacja',
+      ngAddLabel: 'Zainstaluj i skonfiguruj wszystko jednym poleceniem:',
+      manualLabel: 'Lub skonfiguruj ręcznie:',
       installLabel: 'Zainstaluj pakiet:',
       or: 'lub',
       stylesheetLabel: {
