@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -153,16 +154,22 @@ export class SliderComponent implements ControlValueAccessor {
 
     const step = this.step();
     const bigStep = Math.max(step * 10, (this.max() - this.min()) / 10);
+    const track = this.trackEl()?.nativeElement;
+    const rtl = track ? isRtl(track) : false;
     let next: number;
 
     switch (event.key) {
-      case 'ArrowRight':
       case 'ArrowUp':
         next = this.clampedValue() + step;
         break;
-      case 'ArrowLeft':
       case 'ArrowDown':
         next = this.clampedValue() - step;
+        break;
+      case 'ArrowRight':
+        next = this.clampedValue() + (rtl ? -step : step);
+        break;
+      case 'ArrowLeft':
+        next = this.clampedValue() + (rtl ? step : -step);
         break;
       case 'PageUp':
         next = this.clampedValue() + bigStep;
@@ -224,7 +231,10 @@ export class SliderComponent implements ControlValueAccessor {
 
   private updateFromPointer(event: PointerEvent, track: HTMLDivElement): void {
     const rect = track.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    let ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    if (isRtl(track)) {
+      ratio = 1 - ratio;
+    }
     const range = this.max() - this.min();
     const raw = this.min() + ratio * range;
     this.commitValue(raw);
