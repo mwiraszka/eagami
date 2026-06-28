@@ -35,7 +35,7 @@
     line-height: var(--text-label-sm-lh);
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
-    text-align: left;
+    text-align: start;
     white-space: nowrap;
     color: var(--color-text-secondary);
     border-bottom: var(--border-width-thin) solid var(--color-border-subtle);
@@ -71,7 +71,7 @@
     vertical-align: middle;
     width: 1em;
     height: 1em;
-    margin-left: var(--space-1);
+    margin-inline-start: var(--space-1);
     opacity: 0.5;
     transition: var(--transition-opacity);
   }
@@ -92,7 +92,7 @@
   }
 
   &__cell {
-    text-align: left;
+    text-align: start;
     vertical-align: middle;
 
     &--align-center {
@@ -100,7 +100,7 @@
     }
 
     &--align-right {
-      text-align: right;
+      text-align: end;
     }
 
     &--empty {
@@ -198,10 +198,10 @@
   }
 
   &--bordered &__cell {
-    border-right: var(--border-width-thin) solid var(--color-border-subtle);
+    border-inline-end: var(--border-width-thin) solid var(--color-border-subtle);
 
     &:last-child {
-      border-right: none;
+      border-inline-end: none;
     }
   }
 

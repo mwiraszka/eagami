@@ -23,19 +23,19 @@
 
   &--top-left,
   &--bottom-left {
-    left: var(--space-6);
+    inset-inline-start: var(--space-6);
     align-items: flex-start;
   }
 
   &--top-right,
   &--bottom-right {
-    right: var(--space-6);
+    inset-inline-end: var(--space-6);
     align-items: flex-end;
   }
 
   &--top,
   &--bottom {
-    left: 50%;
+    inset-inline-start: 50%;
     align-items: center;
     transform: translateX(-50%);
   }
@@ -137,7 +137,7 @@
 
   &__close {
     @include ea.icon-button;
-    margin-left: var(--space-1-5);
+    margin-inline-start: var(--space-1-5);
 
     ea-icon-x {
       width: 1em;
