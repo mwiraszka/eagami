@@ -1,6 +1,6 @@
 # Migrating from v3.x to v4.0.0
 
-v4.0.0 makes the built-in locales opt-in, so an app bundles only the languages it actually uses instead of all ten. English is always available; every other language must now be registered.
+v4.0.0 makes the built-in locales opt-in, so an app bundles only the languages it actually uses instead of all of them. English is always available; every other language must now be registered.
 
 ## Register the locales you use
 
