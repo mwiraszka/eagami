@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -142,23 +143,27 @@ export class SegmentedComponent implements ControlValueAccessor {
       return;
     }
 
+    const rtl = isRtl(event.currentTarget as Element);
+    const current = enabled.findIndex(o => o.value === this.value());
+    const nextValue = (): string =>
+      enabled[(current + 1 + enabled.length) % enabled.length].value;
+    const prevValue = (): string =>
+      enabled[(current - 1 + enabled.length) % enabled.length].value;
     let targetValue: string | null = null;
 
     switch (event.key) {
+      case 'ArrowDown':
+        targetValue = nextValue();
+        break;
+      case 'ArrowUp':
+        targetValue = prevValue();
+        break;
       case 'ArrowRight':
-      case 'ArrowDown': {
-        const current = enabled.findIndex(o => o.value === this.value());
-        const nextIndex = (current + 1 + enabled.length) % enabled.length;
-        targetValue = enabled[nextIndex].value;
+        targetValue = rtl ? prevValue() : nextValue();
         break;
-      }
       case 'ArrowLeft':
-      case 'ArrowUp': {
-        const current = enabled.findIndex(o => o.value === this.value());
-        const prevIndex = (current - 1 + enabled.length) % enabled.length;
-        targetValue = enabled[prevIndex].value;
+        targetValue = rtl ? nextValue() : prevValue();
         break;
-      }
       case 'Home':
         targetValue = enabled[0].value;
         break;

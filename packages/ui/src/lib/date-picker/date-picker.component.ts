@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -367,14 +368,15 @@ export class DatePickerComponent implements ControlValueAccessor {
       return;
     }
     const focused = this.focusedDate() ?? this.startOfDay(new Date());
+    const rtl = isRtl(event.currentTarget as Element);
     let next: Date | null;
 
     switch (event.key) {
       case 'ArrowLeft':
-        next = this.addDays(focused, -1);
+        next = this.addDays(focused, rtl ? 1 : -1);
         break;
       case 'ArrowRight':
-        next = this.addDays(focused, 1);
+        next = this.addDays(focused, rtl ? -1 : 1);
         break;
       case 'ArrowUp':
         next = this.addDays(focused, -7);
