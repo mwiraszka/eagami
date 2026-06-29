@@ -35,7 +35,7 @@
 
   &--top,
   &--bottom {
-    inset-inline-start: 50%;
+    left: 50%;
     align-items: center;
     transform: translateX(-50%);
   }
@@ -44,7 +44,7 @@
   // default rightward slide so the motion always reads as coming in from outside.
   &--top-left .ea-toast,
   &--bottom-left .ea-toast {
-    --ea-toast-enter-x: -100%;
+    --ea-toast-enter-x: calc(-100% * var(--ea-rtl-sign));
   }
 
   &--top .ea-toast {
@@ -59,7 +59,7 @@
 }
 
 .ea-toast {
-  --ea-toast-enter-x: 100%;
+  --ea-toast-enter-x: calc(100% * var(--ea-rtl-sign));
   --ea-toast-enter-y: 0;
   display: flex;
   align-items: center;

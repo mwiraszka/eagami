@@ -50,7 +50,7 @@
       [disabled]="disabled() || !canGoPrev()"
       [aria-label]="i18n.messages().paginator.previousPage"
       (clicked)="prevPage()">
-      <ea-icon-chevron-left />
+      <ea-icon-chevron-left class="ea-rtl-flip" />
     </ea-button>
 
     @for (p of visiblePages(); track $index) {
@@ -76,7 +76,7 @@
       [disabled]="disabled() || !canGoNext()"
       [aria-label]="i18n.messages().paginator.nextPage"
       (clicked)="nextPage()">
-      <ea-icon-chevron-right />
+      <ea-icon-chevron-right class="ea-rtl-flip" />
     </ea-button>
   </div>
 </div>

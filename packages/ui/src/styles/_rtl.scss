@@ -1,0 +1,22 @@
+// Sign multiplier for horizontal translate animations: +1 in LTR, -1 in RTL, so
+// a single `translateX(calc(<x> * var(--ea-rtl-sign)))` mirrors automatically.
+:where(:root) {
+  --ea-rtl-sign: 1;
+}
+
+[dir='rtl'] {
+  --ea-rtl-sign: -1;
+}
+
+// Horizontally mirrors directional glyphs (prev/next chevrons, breadcrumb
+// separators, transfer arrows) when an ancestor sets dir="rtl". Opt in by
+// adding the `ea-rtl-flip` class to the icon element.
+[dir='rtl'] .ea-rtl-flip {
+  transform: scaleX(-1);
+}
+
+// background-position has no logical keyword, so flip the paginator select's
+// native chevron from the inline-end to the inline-start edge under RTL.
+[dir='rtl'] .ea-paginator__select {
+  background-position: left 6px center;
+}

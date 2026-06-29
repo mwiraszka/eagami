@@ -38,6 +38,8 @@ export interface PopoverPositionOptions {
   readonly margin?: number;
   /** Set the popover's width to match the anchor's. Useful for dropdown-style menus. */
   readonly matchAnchorWidth?: boolean;
+  /** Right-to-left context. Swaps `-start`/`-end` alignment so they track the reading direction. */
+  readonly rtl?: boolean;
 }
 
 interface Rect {
@@ -115,6 +117,7 @@ function placeRaw(
   popover: Rect,
   placement: PopoverPlacement,
   offset: number,
+  rtl: boolean,
 ): { top: number; left: number } {
   const s = side(placement);
   let top = 0;
@@ -133,10 +136,10 @@ function placeRaw(
   if (s === 'top' || s === 'bottom') {
     if (isCardinal(placement)) {
       left = anchor.left + (anchor.width - popover.width) / 2;
-    } else if (placement === 'top-start' || placement === 'bottom-start') {
-      left = anchor.left;
     } else {
-      left = anchor.right - popover.width;
+      // `-start` aligns to the anchor's leading edge: left in LTR, right in RTL.
+      const isStart = placement === 'top-start' || placement === 'bottom-start';
+      left = isStart !== rtl ? anchor.left : anchor.right - popover.width;
     }
   } else {
     top = anchor.top + (anchor.height - popover.height) / 2;
@@ -165,9 +168,10 @@ export function computePopoverPosition(
   const margin = options.margin ?? 8;
   const flip = options.flip ?? true;
   const clamp = options.clamp ?? true;
+  const rtl = options.rtl ?? false;
 
   let placement = options.placement;
-  let pos = placeRaw(anchorRect, popoverRect, placement, offset);
+  let pos = placeRaw(anchorRect, popoverRect, placement, offset, rtl);
 
   if (flip) {
     const overflowsTop = pos.top < margin;
@@ -184,7 +188,7 @@ export function computePopoverPosition(
 
     if (shouldFlip) {
       const flipped = flipPlacement(placement);
-      const flippedPos = placeRaw(anchorRect, popoverRect, flipped, offset);
+      const flippedPos = placeRaw(anchorRect, popoverRect, flipped, offset, rtl);
       const flippedFitsBetter =
         (s === 'top' &&
           flippedPos.top + popoverRect.height <= viewport.height - margin) ||

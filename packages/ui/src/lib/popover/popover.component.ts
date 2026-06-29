@@ -13,6 +13,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { uniqueId } from '../unique-id';
 import {
   type PopoverPlacement,
@@ -344,6 +345,7 @@ export class PopoverComponent {
           flip: this.flip(),
           clamp: this.clamp(),
           matchAnchorWidth: this.matchAnchorWidth(),
+          rtl: isRtl(anchor),
         },
       ),
     );

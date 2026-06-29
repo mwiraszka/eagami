@@ -56,7 +56,8 @@
   }
 
   &__select {
-    padding: 0.25em calc(0.5em + 1em) 0.25em 0.5em;
+    padding-block: 0.25em;
+    padding-inline: 0.5em calc(0.5em + 1em);
     font-size: inherit;
     font-family: var(--font-family-sans);
     border: var(--border-width-thin) solid var(--color-border-default);
