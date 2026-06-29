@@ -74,6 +74,10 @@ export class ComponentPlaygroundComponent {
   readonly slug = input.required<string>();
   readonly knobs = input.required<PlaygroundKnob[]>();
   readonly state = input.required<KnobState>();
+  /** Whether to offer the LTR/RTL preview toggle. Off for direction-agnostic components like the wordmark. */
+  readonly directionToggle = input<boolean>(true);
+  /** Whether the toggle mirrors the preview itself. Off when the demo content is mere triggers (e.g. toast) and the direction is applied elsewhere via directionChange. */
+  readonly reflectDirectionOnPreview = input<boolean>(true);
   /** Markup for component-shaped configuration the snippet should reflect as children, e.g. accordion items. */
   readonly childMarkup = input<string>('');
   /** Extra tag attributes the snippet should reflect, e.g. a built `[options]` binding. */
@@ -81,6 +85,7 @@ export class ComponentPlaygroundComponent {
 
   readonly knobChange = output<KnobChange>();
   readonly resetClicked = output<void>();
+  readonly directionChange = output<'ltr' | 'rtl'>();
 
   private readonly meta = computed(() => UI_COMPONENTS.find(c => c.slug === this.slug()));
 
@@ -141,7 +146,9 @@ export class ComponentPlaygroundComponent {
   }
 
   protected onDirectionChange(value: string): void {
-    this.direction.set(value === 'rtl' ? 'rtl' : 'ltr');
+    const dir = value === 'rtl' ? 'rtl' : 'ltr';
+    this.direction.set(dir);
+    this.directionChange.emit(dir);
   }
 
   // The number input emits raw strings; bindings to numeric component inputs

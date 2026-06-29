@@ -12,5 +12,6 @@
 </main>
 <web-footer />
 <ea-toast
+  [attr.dir]="toastOutlet.direction()"
   [position]="toastOutlet.position()"
   [clearable]="toastOutlet.clearable()" />
