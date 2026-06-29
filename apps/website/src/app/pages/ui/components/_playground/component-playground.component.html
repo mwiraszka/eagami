@@ -4,7 +4,9 @@
   <ea-card
     class="playground__card"
     variant="outlined">
-    <div class="playground__preview">
+    <div
+      class="playground__preview"
+      [attr.dir]="reflectDirectionOnPreview() ? direction() : null">
       <ng-content />
     </div>
   </ea-card>
@@ -98,6 +100,15 @@
                   (valueChange)="emit(knob.name, $event)" />
               }
             }
+          </div>
+        }
+        @if (directionToggle()) {
+          <div class="playground__control">
+            <ea-segmented
+              label="Direction"
+              [options]="directionOptions"
+              [value]="direction()"
+              (changed)="onDirectionChange($event)" />
           </div>
         }
       </div>

@@ -13,6 +13,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { uniqueId } from '../unique-id';
 import {
   type PopoverPlacement,
@@ -331,6 +332,9 @@ export class PopoverComponent {
     if (!anchor || !surface) {
       return;
     }
+    // The surface is portaled to <body>, escaping the anchor's dir context, so
+    // mirror the anchor's resolved direction onto it explicitly.
+    surface.dir = isRtl(anchor) ? 'rtl' : 'ltr';
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
     this.position.set(
@@ -344,6 +348,7 @@ export class PopoverComponent {
           flip: this.flip(),
           clamp: this.clamp(),
           matchAnchorWidth: this.matchAnchorWidth(),
+          rtl: isRtl(anchor),
         },
       ),
     );

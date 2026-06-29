@@ -32,7 +32,7 @@
         <span
           class="ea-date-picker__trigger-value"
           [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
-          {{ displayValue() || resolvedPlaceholder() }}
+          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
         </span>
       </button>
       @if (value() && !isDisabled() && !readonly()) {
@@ -66,15 +66,21 @@
             class="ea-date-picker__nav-btn"
             [attr.aria-label]="i18n.messages().datePicker.previousYear"
             (click)="goToPrevYear()">
-            <ea-icon-chevron-left aria-hidden="true" />
-            <ea-icon-chevron-left aria-hidden="true" />
+            <ea-icon-chevron-left
+              class="ea-rtl-flip"
+              aria-hidden="true" />
+            <ea-icon-chevron-left
+              class="ea-rtl-flip"
+              aria-hidden="true" />
           </button>
           <button
             type="button"
             class="ea-date-picker__nav-btn"
             [attr.aria-label]="i18n.messages().datePicker.previousMonth"
             (click)="goToPrevMonth()">
-            <ea-icon-chevron-left aria-hidden="true" />
+            <ea-icon-chevron-left
+              class="ea-rtl-flip"
+              aria-hidden="true" />
           </button>
           <span
             class="ea-date-picker__month-label"
@@ -87,15 +93,21 @@
             class="ea-date-picker__nav-btn"
             [attr.aria-label]="i18n.messages().datePicker.nextMonth"
             (click)="goToNextMonth()">
-            <ea-icon-chevron-right aria-hidden="true" />
+            <ea-icon-chevron-right
+              class="ea-rtl-flip"
+              aria-hidden="true" />
           </button>
           <button
             type="button"
             class="ea-date-picker__nav-btn"
             [attr.aria-label]="i18n.messages().datePicker.nextYear"
             (click)="goToNextYear()">
-            <ea-icon-chevron-right aria-hidden="true" />
-            <ea-icon-chevron-right aria-hidden="true" />
+            <ea-icon-chevron-right
+              class="ea-rtl-flip"
+              aria-hidden="true" />
+            <ea-icon-chevron-right
+              class="ea-rtl-flip"
+              aria-hidden="true" />
           </button>
         </div>
 

@@ -41,7 +41,14 @@
         [value]="activeLocale()"
         (changed)="onLocaleChange($event)" />
 
-      <div class="ui-i18n__demo-grid">
+      <ea-segmented
+        [options]="directionOptions"
+        [value]="direction()"
+        (changed)="onDirectionChange($event)" />
+
+      <div
+        class="ui-i18n__demo-grid"
+        [attr.dir]="direction()">
         <ea-date-picker />
 
         <ea-multi-select [options]="demoSelectOptions" />

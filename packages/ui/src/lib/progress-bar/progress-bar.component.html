@@ -4,10 +4,14 @@
   @if (label() || showsPercentage()) {
     <div class="ea-progress-bar__header">
       @if (label()) {
-        <span class="ea-progress-bar__label">{{ label() }}</span>
+        <span class="ea-progress-bar__label">
+          {{ label() }}
+        </span>
       }
       @if (showsPercentage() && !indeterminate()) {
-        <span class="ea-progress-bar__value">{{ percentageRounded() }}%</span>
+        <span class="ea-progress-bar__value">
+          <bdi>{{ percentageRounded() }}%</bdi>
+        </span>
       }
     </div>
   }

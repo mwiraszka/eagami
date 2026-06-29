@@ -85,11 +85,11 @@
 
 @keyframes ea-progress-indeterminate {
   0% {
-    transform: translateX(-110%);
+    transform: translateX(calc(-110% * var(--ea-rtl-sign)));
   }
 
   100% {
-    transform: translateX(260%);
+    transform: translateX(calc(260% * var(--ea-rtl-sign)));
   }
 }
 

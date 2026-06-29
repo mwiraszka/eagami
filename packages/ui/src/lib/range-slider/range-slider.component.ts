@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -174,16 +175,22 @@ export class RangeSliderComponent implements ControlValueAccessor {
     const current = thumb === 'low' ? lo : hi;
     const step = this.step();
     const bigStep = Math.max(step * 10, (this.max() - this.min()) / 10);
+    const track = this.trackEl()?.nativeElement;
+    const rtl = track ? isRtl(track) : false;
     let next: number;
 
     switch (event.key) {
-      case 'ArrowRight':
       case 'ArrowUp':
         next = current + step;
         break;
-      case 'ArrowLeft':
       case 'ArrowDown':
         next = current - step;
+        break;
+      case 'ArrowRight':
+        next = current + (rtl ? -step : step);
+        break;
+      case 'ArrowLeft':
+        next = current + (rtl ? step : -step);
         break;
       case 'PageUp':
         next = current + bigStep;
@@ -260,7 +267,10 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   private pointerToValue(event: PointerEvent, track: HTMLDivElement): number {
     const rect = track.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    let ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+    if (isRtl(track)) {
+      ratio = 1 - ratio;
+    }
     return this.min() + ratio * (this.max() - this.min());
   }
 

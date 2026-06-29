@@ -19,7 +19,7 @@
 - **Accessible.** Keyboard navigation, focus management, screen-reader support, and reduced-motion handling are built into every component.
 - **Lightweight.** Each component imports independently and the bundle only ships what you use.
 - **Themeable.** Fully customizable with [design tokens](https://eagami.com/ui/design-tokens) while maintaining a unified look across every page. Light and dark variants ship together and default to the user's system preference.
-- **Localized.** Built-in component text ships in English, French, Greek, Polish, and Spanish.
+- **Localized.** Built-in component text ships in twelve languages, with runtime switching and per-string overrides.
 - **Modern.** Regularly updated with the latest Angular features and modern web standards.
 - **Unlocked.** Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.
 

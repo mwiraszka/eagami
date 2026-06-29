@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.4.3] - 2026-06-30
+
+### Added
+
+- Add an LTR/RTL toggle to every component demo and the internationalization page for previewing right-to-left.
+
+### Changed
+
+- Pick up @eagami/ui v4.7.0.
+
 ## [3.4.2] - 2026-06-27
 
 ### Changed
@@ -695,6 +705,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.4.3]: https://github.com/mwiraszka/eagami/compare/website-v3.4.2...website-v3.4.3
 [3.4.2]: https://github.com/mwiraszka/eagami/compare/website-v3.4.1...website-v3.4.2
 [3.4.1]: https://github.com/mwiraszka/eagami/compare/website-v3.4.0...website-v3.4.1
 [3.4.0]: https://github.com/mwiraszka/eagami/compare/website-v3.3.3...website-v3.4.0

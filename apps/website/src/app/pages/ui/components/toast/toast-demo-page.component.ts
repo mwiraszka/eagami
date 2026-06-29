@@ -64,6 +64,10 @@ export class ToastDemoPageComponent implements OnDestroy {
     });
   }
 
+  protected onDirection(direction: 'ltr' | 'rtl'): void {
+    this.toastOutlet.direction.set(direction);
+  }
+
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }));
     this.syncOutlet();

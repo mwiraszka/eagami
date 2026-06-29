@@ -32,7 +32,7 @@
       <span
         class="ea-dropdown__value"
         [class.ea-dropdown__value--placeholder]="!selectedLabel()">
-        {{ selectedLabel() || resolvedPlaceholder() }}
+        <bdi>{{ selectedLabel() || resolvedPlaceholder() }}</bdi>
       </span>
       <ea-icon-chevron-down
         class="ea-dropdown__chevron"

@@ -14,6 +14,31 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.7.0',
+    date: '2026-06-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Right-to-left (RTL) support: set `dir="rtl"` and the library mirrors automatically. Styles use CSS logical properties, and pointer and keyboard interactions invert (sliders, rating, color picker, tabs, segmented, data table, date-picker calendar), with directional icons and slide animations flipping. Form fields keep typed content in its own direction, and toasts mirror their contents while keeping their on-screen corner.',
+          'Add direction-aware `start` and `end` placements to `<ea-drawer>` (`start` is the left edge in LTR, the right edge in RTL).',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Expand or collapse a tree node by clicking anywhere along its row, not only the chevron.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Correct the stale built-in language count in the README and migration guide.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.6.0',
     date: '2026-06-27',
     sections: [

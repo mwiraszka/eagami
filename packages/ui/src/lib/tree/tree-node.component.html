@@ -41,7 +41,9 @@
       </span>
     }
 
-    <span class="ea-tree-node__label">{{ node().label }}</span>
+    <span class="ea-tree-node__label">
+      {{ node().label }}
+    </span>
   </div>
 
   @if (hasChildren() && isExpanded()) {

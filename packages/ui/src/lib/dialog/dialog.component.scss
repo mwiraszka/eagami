@@ -55,7 +55,7 @@
     z-index: 1;
     position: absolute;
     top: var(--space-3);
-    right: var(--space-3);
+    inset-inline-end: var(--space-3);
     @include ea.icon-button;
 
     svg {

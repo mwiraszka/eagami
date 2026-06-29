@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.7.0] - 2026-06-30
+
+### Added
+
+- Right-to-left (RTL) support: set `dir="rtl"` and the library mirrors automatically. Styles use CSS logical properties, and pointer and keyboard interactions invert (sliders, rating, color picker, tabs, segmented, data table, date-picker calendar), with directional icons and slide animations flipping. Form fields keep typed content in its own direction, and toasts mirror their contents while keeping their on-screen corner.
+- Add direction-aware `start` and `end` placements to `<ea-drawer>` (`start` is the left edge in LTR, the right edge in RTL).
+
+### Changed
+
+- Expand or collapse a tree node by clicking anywhere along its row, not only the chevron.
+
+### Fixed
+
+- Correct the stale built-in language count in the README and migration guide.
+
 ## [4.6.0] - 2026-06-27
 
 ### Added
@@ -843,6 +858,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.6.0...ui-v4.7.0
 [4.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.1...ui-v4.6.0
 [4.5.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.0...ui-v4.5.1
 [4.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.4.0...ui-v4.5.0

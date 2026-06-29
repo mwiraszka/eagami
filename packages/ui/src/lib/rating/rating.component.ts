@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -246,16 +247,23 @@ export class RatingComponent implements ControlValueAccessor {
     const step = this.step();
     const min = this.min();
     const max = this.max();
+    const rtl = isRtl(event.currentTarget as Element);
+    const dec = (): number => Math.max(min, this.value() - step);
+    const inc = (): number => Math.min(max, this.value() + step);
     let next: number | null = null;
 
     switch (event.key) {
-      case 'ArrowLeft':
       case 'ArrowDown':
-        next = Math.max(min, this.value() - step);
+        next = dec();
+        break;
+      case 'ArrowUp':
+        next = inc();
+        break;
+      case 'ArrowLeft':
+        next = rtl ? inc() : dec();
         break;
       case 'ArrowRight':
-      case 'ArrowUp':
-        next = Math.min(max, this.value() + step);
+        next = rtl ? dec() : inc();
         break;
       case 'Home':
         next = Math.max(min, step);
@@ -305,7 +313,10 @@ export class RatingComponent implements ControlValueAccessor {
     if (!rect || rect.width === 0) {
       return pos;
     }
-    const ratio = (event.clientX - rect.left) / rect.width;
+    let ratio = (event.clientX - rect.left) / rect.width;
+    if (target && isRtl(target)) {
+      ratio = 1 - ratio;
+    }
     return ratio < 0.5 ? pos - 0.5 : pos;
   }
 }

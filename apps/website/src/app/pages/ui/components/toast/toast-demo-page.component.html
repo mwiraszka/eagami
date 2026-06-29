@@ -6,7 +6,9 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [reflectDirectionOnPreview]="false"
     (knobChange)="onKnob($event)"
+    (directionChange)="onDirection($event)"
     (resetClicked)="reset()">
     <ea-button
       variant="secondary"

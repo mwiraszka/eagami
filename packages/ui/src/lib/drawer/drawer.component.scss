@@ -3,9 +3,9 @@
 .ea-drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  inset-inline-end: 0;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100vw;
   max-width: none;
   height: 100vh;
@@ -33,6 +33,12 @@
     .ea-drawer__panel--left {
       animation: ea-drawer-slide-left var(--duration-slow) var(--ease-out);
     }
+    .ea-drawer__panel--start {
+      animation: ea-drawer-slide-start var(--duration-slow) var(--ease-out);
+    }
+    .ea-drawer__panel--end {
+      animation: ea-drawer-slide-end var(--duration-slow) var(--ease-out);
+    }
     .ea-drawer__panel--top {
       animation: ea-drawer-slide-top var(--duration-slow) var(--ease-out);
     }
@@ -55,25 +61,6 @@
       right: 0;
       bottom: 0;
       height: 100%;
-
-      &.ea-drawer__panel--xs {
-        width: 16rem;
-      }
-      &.ea-drawer__panel--sm {
-        width: 20rem;
-      }
-      &.ea-drawer__panel--md {
-        width: 28rem;
-      }
-      &.ea-drawer__panel--lg {
-        width: 36rem;
-      }
-      &.ea-drawer__panel--xl {
-        width: 44rem;
-      }
-      &.ea-drawer__panel--full {
-        width: calc(100vw - 3rem);
-      }
     }
 
     &--left {
@@ -81,7 +68,28 @@
       left: 0;
       bottom: 0;
       height: 100%;
+    }
 
+    // Logical placements: --start hugs the inline-start edge (left in LTR, right
+    // in RTL), --end the inline-end edge. The slide keyframes mirror via --ea-rtl-sign.
+    &--start {
+      top: 0;
+      inset-inline-start: 0;
+      bottom: 0;
+      height: 100%;
+    }
+
+    &--end {
+      top: 0;
+      inset-inline-end: 0;
+      bottom: 0;
+      height: 100%;
+    }
+
+    &--right,
+    &--left,
+    &--start,
+    &--end {
       &.ea-drawer__panel--xs {
         width: 16rem;
       }
@@ -104,8 +112,8 @@
 
     &--top {
       top: 0;
-      left: 0;
-      right: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
       width: 100%;
 
       &.ea-drawer__panel--xs {
@@ -130,8 +138,8 @@
 
     &--bottom {
       bottom: 0;
-      left: 0;
-      right: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
       width: 100%;
 
       &.ea-drawer__panel--xs {
@@ -194,7 +202,7 @@
     z-index: 1;
     position: absolute;
     top: var(--space-3);
-    right: var(--space-3);
+    inset-inline-end: var(--space-3);
 
     @include ea.icon-button;
 
@@ -253,6 +261,18 @@
 @keyframes ea-drawer-slide-left {
   from {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes ea-drawer-slide-start {
+  from {
+    transform: translateX(calc(-100% * var(--ea-rtl-sign)));
+  }
+}
+
+@keyframes ea-drawer-slide-end {
+  from {
+    transform: translateX(calc(100% * var(--ea-rtl-sign)));
   }
 }
 

@@ -30,7 +30,7 @@
           class="ea-time-picker__trigger-icon"
           aria-hidden="true" />
         <span class="ea-time-picker__trigger-value">
-          {{ displayValue() || resolvedPlaceholder() }}
+          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
         </span>
       </button>
       @if (hasValue() && !isDisabled() && !readonly()) {

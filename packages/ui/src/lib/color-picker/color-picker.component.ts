@@ -435,12 +435,16 @@ export class ColorPickerComponent implements ControlValueAccessor {
     const step = event.shiftKey ? 10 : 1;
     let h = this.hue();
     switch (event.key) {
-      case 'ArrowLeft':
       case 'ArrowDown':
         h -= step;
         break;
-      case 'ArrowRight':
       case 'ArrowUp':
+        h += step;
+        break;
+      case 'ArrowLeft':
+        h -= step;
+        break;
+      case 'ArrowRight':
         h += step;
         break;
       case 'Home':
@@ -497,12 +501,16 @@ export class ColorPickerComponent implements ControlValueAccessor {
     const step = event.shiftKey ? 0.1 : 0.01;
     let a = this.alpha();
     switch (event.key) {
-      case 'ArrowLeft':
       case 'ArrowDown':
         a -= step;
         break;
-      case 'ArrowRight':
       case 'ArrowUp':
+        a += step;
+        break;
+      case 'ArrowLeft':
+        a -= step;
+        break;
+      case 'ArrowRight':
         a += step;
         break;
       case 'Home':

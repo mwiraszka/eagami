@@ -19,8 +19,11 @@ import { XIconComponent } from '../icons/x.component';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
 
-/** Edge of the viewport from which the drawer slides in. */
-export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
+/**
+ * Edge of the viewport from which the drawer slides in. `start`/`end` are
+ * direction-aware (start = left in LTR, right in RTL); `left`/`right` are fixed.
+ */
+export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom' | 'start' | 'end';
 /** Width of the drawer panel along its primary axis. */
 export type DrawerWidth = EaWidth;
 

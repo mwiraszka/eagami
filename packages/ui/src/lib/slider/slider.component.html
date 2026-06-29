@@ -10,7 +10,9 @@
           [required]="required()" />
       }
       @if (showValue()) {
-        <span class="ea-slider-field__value">{{ formatDisplay(clampedValue()) }}</span>
+        <span class="ea-slider-field__value">
+          {{ formatDisplay(clampedValue()) }}
+        </span>
       }
     </div>
   }
@@ -44,7 +46,7 @@
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
-        [style.left.%]="percent()"
+        [style.inset-inline-start.%]="percent()"
         (keydown)="handleKeydown($event)"
         (blur)="handleBlur()">
       </div>
@@ -52,8 +54,12 @@
 
     @if (showMinMaxLabels()) {
       <div class="ea-slider__minmax">
-        <span class="ea-slider__minmax-label">{{ formatDisplay(min()) }}</span>
-        <span class="ea-slider__minmax-label">{{ formatDisplay(max()) }}</span>
+        <span class="ea-slider__minmax-label">
+          {{ formatDisplay(min()) }}
+        </span>
+        <span class="ea-slider__minmax-label">
+          {{ formatDisplay(max()) }}
+        </span>
       </div>
     }
   </div>

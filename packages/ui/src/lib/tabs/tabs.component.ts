@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { type EaSize } from '../sizes';
 import type { TabComponent } from './tab.component';
 
@@ -57,12 +58,15 @@ export class TabsComponent {
   handleKeydown(event: KeyboardEvent): void {
     const tabList = this.registeredTabs().filter(t => !t.disabled());
     const currentIndex = tabList.findIndex(t => t.value() === this.activeTab());
+    const rtl = isRtl(event.currentTarget as Element);
+    const forwardKey = rtl ? 'ArrowLeft' : 'ArrowRight';
+    const backwardKey = rtl ? 'ArrowRight' : 'ArrowLeft';
     let nextIndex = -1;
 
-    if (event.key === 'ArrowRight') {
+    if (event.key === forwardKey) {
       event.preventDefault();
       nextIndex = currentIndex < tabList.length - 1 ? currentIndex + 1 : 0;
-    } else if (event.key === 'ArrowLeft') {
+    } else if (event.key === backwardKey) {
       event.preventDefault();
       nextIndex = currentIndex > 0 ? currentIndex - 1 : tabList.length - 1;
     } else if (event.key === 'Home') {

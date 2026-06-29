@@ -60,6 +60,13 @@ export class UiI18nPageComponent {
 
   protected readonly activeLocale = signal<EagamiLocale>(this.i18n.locale());
 
+  protected readonly direction = signal<'ltr' | 'rtl'>('ltr');
+
+  protected readonly directionOptions: SelectOption[] = [
+    { value: 'ltr', label: 'LTR' },
+    { value: 'rtl', label: 'RTL' },
+  ];
+
   protected readonly demoSelectOptions: SelectOption[] = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
@@ -122,5 +129,9 @@ frenchSpacing('Il a dit « bonjour ».'); // 'Il a dit&#8239;«&#8239;bonjour&#8
     const locale = value as EagamiLocale;
     this.activeLocale.set(locale);
     this.i18n.setLocale(locale);
+  }
+
+  protected onDirectionChange(value: string): void {
+    this.direction.set(value === 'rtl' ? 'rtl' : 'ltr');
   }
 }

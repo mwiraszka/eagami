@@ -37,7 +37,7 @@
         <span
           class="ea-color-picker__trigger-value"
           [class.ea-color-picker__trigger-value--placeholder]="!displayValue()">
-          {{ displayValue() || resolvedPlaceholder() }}
+          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
         </span>
       </button>
       @if (value() && !isDisabled() && !readonly()) {
@@ -154,6 +154,7 @@
                 <input
                   class="ea-color-picker__input"
                   type="text"
+                  dir="auto"
                   spellcheck="false"
                   autocomplete="off"
                   maxlength="9"

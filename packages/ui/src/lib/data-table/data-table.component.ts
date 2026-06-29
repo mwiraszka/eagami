@@ -16,6 +16,7 @@ import {
   untracked,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArrowDownIconComponent } from '../icons/arrow-down.component';
 import { ArrowUpIconComponent } from '../icons/arrow-up.component';
@@ -255,13 +256,14 @@ export class DataTableComponent<T = Record<string, unknown>> {
     const { row, col } = this.activeCell();
     let nextRow = row;
     let nextCol = col;
+    const rtl = isRtl(event.currentTarget as Element);
 
     switch (event.key) {
       case 'ArrowRight':
-        nextCol = Math.min(cols - 1, col + 1);
+        nextCol = rtl ? Math.max(0, col - 1) : Math.min(cols - 1, col + 1);
         break;
       case 'ArrowLeft':
-        nextCol = Math.max(0, col - 1);
+        nextCol = rtl ? Math.min(cols - 1, col + 1) : Math.max(0, col - 1);
         break;
       case 'ArrowDown':
         nextRow = Math.min(rows, row + 1);
