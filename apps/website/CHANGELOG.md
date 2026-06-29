@@ -6,7 +6,7 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Add a text-direction (LTR/RTL) toggle to the internationalization demo.
+- Add an LTR/RTL toggle to every component demo and the internationalization page for previewing right-to-left.
 
 ### Changed
 

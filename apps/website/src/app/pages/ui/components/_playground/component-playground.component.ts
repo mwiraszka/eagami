@@ -16,6 +16,7 @@ import {
   inject,
   input,
   output,
+  signal,
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
@@ -62,6 +63,13 @@ export interface KnobChange {
 })
 export class ComponentPlaygroundComponent {
   protected readonly messages = inject(WebI18nService).messages;
+
+  protected readonly direction = signal<'ltr' | 'rtl'>('ltr');
+
+  protected readonly directionOptions: SelectOption[] = [
+    { value: 'ltr', label: 'LTR' },
+    { value: 'rtl', label: 'RTL' },
+  ];
 
   readonly slug = input.required<string>();
   readonly knobs = input.required<PlaygroundKnob[]>();
@@ -130,6 +138,10 @@ export class ComponentPlaygroundComponent {
 
   protected emit(name: string, value: KnobValue): void {
     this.knobChange.emit({ name, value });
+  }
+
+  protected onDirectionChange(value: string): void {
+    this.direction.set(value === 'rtl' ? 'rtl' : 'ltr');
   }
 
   // The number input emits raw strings; bindings to numeric component inputs
