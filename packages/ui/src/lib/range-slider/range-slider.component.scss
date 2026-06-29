@@ -85,8 +85,9 @@
     border: var(--border-width-medium) solid var(--color-brand-default);
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-sm);
+    margin-inline-start: calc(var(--ea-range-slider-size, 1.125rem) / -2);
     cursor: grab;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     transition:
       box-shadow var(--duration-fast) var(--ease-out),
       transform var(--duration-fast) var(--ease-out);
@@ -120,7 +121,7 @@
 .ea-range-slider--dragging {
   .ea-range-slider__thumb {
     cursor: grabbing;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1);
   }
 }
 

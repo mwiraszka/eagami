@@ -10,10 +10,11 @@
           [required]="required()" />
       }
       @if (showValue()) {
-        <span
-          class="ea-range-slider-field__value"
-          dir="auto">
-          {{ formatDisplay(clampedValue()[0]) }} – {{ formatDisplay(clampedValue()[1]) }}
+        <span class="ea-range-slider-field__value">
+          <bdi>
+            {{ formatDisplay(clampedValue()[0]) }} –
+            {{ formatDisplay(clampedValue()[1]) }}
+          </bdi>
         </span>
       }
     </div>
@@ -29,8 +30,8 @@
       (pointercancel)="handleTrackPointerUp($event)">
       <div
         class="ea-range-slider__fill"
-        [style.left.%]="lowPercent()"
-        [style.right.%]="100 - highPercent()">
+        [style.inset-inline-start.%]="lowPercent()"
+        [style.inset-inline-end.%]="100 - highPercent()">
       </div>
       <div
         class="ea-range-slider__thumb ea-range-slider__thumb--low"
@@ -49,7 +50,7 @@
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
-        [style.left.%]="lowPercent()"
+        [style.inset-inline-start.%]="lowPercent()"
         (keydown)="handleKeydown($event, 'low')"
         (blur)="handleBlur()">
       </div>
@@ -70,7 +71,7 @@
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
-        [style.left.%]="highPercent()"
+        [style.inset-inline-start.%]="highPercent()"
         (keydown)="handleKeydown($event, 'high')"
         (blur)="handleBlur()">
       </div>
@@ -78,14 +79,10 @@
 
     @if (showMinMaxLabels()) {
       <div class="ea-range-slider__minmax">
-        <span
-          class="ea-range-slider__minmax-label"
-          dir="auto">
+        <span class="ea-range-slider__minmax-label">
           {{ formatDisplay(min()) }}
         </span>
-        <span
-          class="ea-range-slider__minmax-label"
-          dir="auto">
+        <span class="ea-range-slider__minmax-label">
           {{ formatDisplay(max()) }}
         </span>
       </div>

@@ -332,6 +332,9 @@ export class PopoverComponent {
     if (!anchor || !surface) {
       return;
     }
+    // The surface is portaled to <body>, escaping the anchor's dir context, so
+    // mirror the anchor's resolved direction onto it explicitly.
+    surface.dir = isRtl(anchor) ? 'rtl' : 'ltr';
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
     this.position.set(

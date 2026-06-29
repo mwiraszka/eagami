@@ -83,6 +83,9 @@ export class TreeNodeComponent {
       return;
     }
     this.select.emit(this.node());
+    if (this.hasChildren()) {
+      this.toggle.emit(this.node().id);
+    }
   }
 
   protected onChevronClick(event: MouseEvent): void {

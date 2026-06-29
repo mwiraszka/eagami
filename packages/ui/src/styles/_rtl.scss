@@ -20,3 +20,19 @@
 [dir='rtl'] .ea-paginator__select {
   background-position: left 6px center;
 }
+
+// The tree disclosure chevron points toward the inline-start (left) when
+// collapsed in RTL; the open state still rotates down. A 180deg turn keeps it in
+// pure-rotation space so the expand transition stays smooth. Must live here, not
+// the component, because the dir ancestor is outside its encapsulation scope.
+[dir='rtl'] .ea-tree-node__chevron:not(.ea-tree-node__chevron--open) {
+  transform: rotate(180deg);
+}
+
+// Native fields use dir="auto" so typed LTR text stays LTR, but that resolves
+// an empty field to LTR and parks its placeholder on the left. Pin them to the
+// inline-end edge so every RTL field reads from the right like the others.
+[dir='rtl'] input[dir='auto'],
+[dir='rtl'] textarea[dir='auto'] {
+  text-align: right;
+}

@@ -83,14 +83,11 @@
           <div class="ea-file-uploader-field__meta">
             <span
               class="ea-file-uploader-field__name"
-              dir="auto"
               [title]="file.name">
-              {{ file.name }}
+              <bdi>{{ file.name }}</bdi>
             </span>
-            <span
-              class="ea-file-uploader-field__size"
-              dir="auto">
-              {{ formatBytes(file.size) }}
+            <span class="ea-file-uploader-field__size">
+              <bdi>{{ formatBytes(file.size) }}</bdi>
             </span>
             @if (progressFor(file); as p) {
               <div

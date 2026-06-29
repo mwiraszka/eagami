@@ -31,10 +31,8 @@
         (keydown)="handleTriggerKeydown($event)">
         <span class="ea-multi-select__trigger-content">
           @if (!hasValue()) {
-            <span
-              class="ea-multi-select__trigger-placeholder"
-              dir="auto">
-              {{ resolvedPlaceholder() }}
+            <span class="ea-multi-select__trigger-placeholder">
+              <bdi>{{ resolvedPlaceholder() }}</bdi>
             </span>
           } @else {
             @for (opt of visibleChips(); track opt.value) {
@@ -44,7 +42,7 @@
                 [removable]="!isDisabled() && !readonly()"
                 [removeLabel]="i18n.messages().multiSelect.removeOption(opt.label)"
                 (removed)="removeChip(opt)">
-                <span dir="auto">{{ opt.label }}</span>
+                <span>{{ opt.label }}</span>
               </ea-tag>
             }
             @if (hiddenChipCount() > 0) {
@@ -90,8 +88,8 @@
             <input
               #searchEl
               type="text"
-              class="ea-multi-select__search-input"
               dir="auto"
+              class="ea-multi-select__search-input"
               autocomplete="off"
               [placeholder]="resolvedSearchPlaceholder()"
               [value]="searchTerm()"
@@ -134,9 +132,7 @@
                 [checked]="selectedSet().has(opt.value)"
                 [disabled]="!!opt.disabled"
                 [ariaLabel]="opt.label" />
-              <span
-                class="ea-multi-select__option-label"
-                dir="auto">
+              <span class="ea-multi-select__option-label">
                 {{ opt.label }}
               </span>
             </li>

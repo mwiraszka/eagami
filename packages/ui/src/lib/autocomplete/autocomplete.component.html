@@ -17,8 +17,8 @@
     <input
       #inputEl
       class="ea-autocomplete__input"
-      dir="auto"
       type="text"
+      dir="auto"
       autocomplete="off"
       role="combobox"
       [id]="id()"
@@ -65,7 +65,6 @@
       @for (option of filteredOptions(); track option.value; let i = $index) {
         <div
           class="ea-autocomplete__option"
-          dir="auto"
           role="option"
           [id]="id() + '-option-' + i"
           [class.ea-autocomplete__option--focused]="i === focusedIndex()"

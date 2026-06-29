@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { isRtl } from '../direction';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -368,13 +367,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
     const step = event.shiftKey ? 0.1 : 0.01;
     let s = this.sat();
     let v = this.val();
-    const rtl = isRtl(event.currentTarget as Element);
     switch (event.key) {
       case 'ArrowLeft':
-        s += rtl ? step : -step;
+        s -= step;
         break;
       case 'ArrowRight':
-        s += rtl ? -step : step;
+        s += step;
         break;
       case 'ArrowUp':
         v += step;
@@ -401,10 +399,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
       return;
     }
     const rect = area.getBoundingClientRect();
-    let x = clamp01((event.clientX - rect.left) / rect.width);
-    if (isRtl(area)) {
-      x = 1 - x;
-    }
+    const x = clamp01((event.clientX - rect.left) / rect.width);
     const y = clamp01((event.clientY - rect.top) / rect.height);
     this.applyHsv(this.hue(), x, 1 - y);
   }
@@ -439,7 +434,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     }
     const step = event.shiftKey ? 10 : 1;
     let h = this.hue();
-    const rtl = isRtl(event.currentTarget as Element);
     switch (event.key) {
       case 'ArrowDown':
         h -= step;
@@ -448,10 +442,10 @@ export class ColorPickerComponent implements ControlValueAccessor {
         h += step;
         break;
       case 'ArrowLeft':
-        h += rtl ? step : -step;
+        h -= step;
         break;
       case 'ArrowRight':
-        h += rtl ? -step : step;
+        h += step;
         break;
       case 'Home':
         h = 0;
@@ -472,10 +466,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
       return;
     }
     const rect = track.getBoundingClientRect();
-    let ratio = clamp01((event.clientX - rect.left) / rect.width);
-    if (isRtl(track)) {
-      ratio = 1 - ratio;
-    }
+    const ratio = clamp01((event.clientX - rect.left) / rect.width);
     this.applyHsv(ratio * 360, this.sat(), this.val());
   }
 
@@ -509,7 +500,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
     }
     const step = event.shiftKey ? 0.1 : 0.01;
     let a = this.alpha();
-    const rtl = isRtl(event.currentTarget as Element);
     switch (event.key) {
       case 'ArrowDown':
         a -= step;
@@ -518,10 +508,10 @@ export class ColorPickerComponent implements ControlValueAccessor {
         a += step;
         break;
       case 'ArrowLeft':
-        a += rtl ? step : -step;
+        a -= step;
         break;
       case 'ArrowRight':
-        a += rtl ? -step : step;
+        a += step;
         break;
       case 'Home':
         a = 0;
@@ -543,10 +533,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
       return;
     }
     const rect = track.getBoundingClientRect();
-    let ratio = clamp01((event.clientX - rect.left) / rect.width);
-    if (isRtl(track)) {
-      ratio = 1 - ratio;
-    }
+    const ratio = clamp01((event.clientX - rect.left) / rect.width);
     this.alpha.set(ratio);
     this.commit();
   }

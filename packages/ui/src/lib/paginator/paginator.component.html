@@ -10,7 +10,6 @@
     <div class="ea-paginator__page-size">
       <label
         class="ea-paginator__label"
-        dir="auto"
         for="ea-paginator-size">
         {{ i18n.messages().paginator.rowsPerPage }}
       </label>
@@ -31,18 +30,18 @@
   }
 
   @if (showRangeLabel()) {
-    <span
-      class="ea-paginator__range"
-      dir="auto">
-      {{
-        i18n
-          .messages()
-          .paginator.range(
-            formatNumber(rangeStart()),
-            formatNumber(rangeEnd()),
-            formatNumber(totalItems())
-          )
-      }}
+    <span class="ea-paginator__range">
+      <bdi>
+        {{
+          i18n
+            .messages()
+            .paginator.range(
+              formatNumber(rangeStart()),
+              formatNumber(rangeEnd()),
+              formatNumber(totalItems())
+            )
+        }}
+      </bdi>
     </span>
   }
 

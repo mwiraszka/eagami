@@ -7,6 +7,7 @@ import {
   input,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { computePopoverPosition } from '../popover/popover-positioning';
 
 /** Placement of the tooltip relative to its host element. */
@@ -280,6 +281,13 @@ export class TooltipDirective implements OnDestroy {
       }
     }
 
+    // The bubble lives on <body>, escaping the host's dir context, so mirror
+    // the host's resolved direction onto it.
+    this.renderer.setAttribute(
+      this.tooltipEl,
+      'dir',
+      isRtl(this.el.nativeElement) ? 'rtl' : 'ltr',
+    );
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
     /* Defer placement math to the shared popover positioning helper. `flip:
        false` keeps the tooltip on the requested side, only nudging inward at

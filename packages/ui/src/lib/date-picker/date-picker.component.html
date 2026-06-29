@@ -31,9 +31,8 @@
           aria-hidden="true" />
         <span
           class="ea-date-picker__trigger-value"
-          dir="auto"
           [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
-          {{ displayValue() || resolvedPlaceholder() }}
+          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
         </span>
       </button>
       @if (value() && !isDisabled() && !readonly()) {
@@ -85,7 +84,6 @@
           </button>
           <span
             class="ea-date-picker__month-label"
-            dir="auto"
             [id]="id() + '-label'"
             aria-live="polite">
             {{ monthYearLabel() }}

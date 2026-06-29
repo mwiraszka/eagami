@@ -12,7 +12,6 @@
       @for (item of sourceItems(); track item.id) {
         <li
           class="ea-transfer-list__item"
-          dir="auto"
           role="option"
           [attr.aria-selected]="isHighlighted('source', item.id)"
           [attr.aria-disabled]="item.disabled || disabled() || null"
@@ -84,7 +83,6 @@
       @for (item of targetItems(); track item.id) {
         <li
           class="ea-transfer-list__item"
-          dir="auto"
           role="option"
           [attr.aria-selected]="isHighlighted('target', item.id)"
           [attr.aria-disabled]="item.disabled || disabled() || null"
