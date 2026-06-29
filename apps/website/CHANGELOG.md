@@ -2,7 +2,11 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [3.4.3] - 2026-06-28
+## [3.4.3] - 2026-06-29
+
+### Added
+
+- Add a text-direction (LTR/RTL) toggle to the internationalization demo.
 
 ### Changed
 
