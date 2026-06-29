@@ -222,6 +222,28 @@ describe('computePopoverPosition', () => {
     expect(result.left).toBe(80);
   });
 
+  it('aligns -start to the anchor end edge under RTL', () => {
+    const result = computePopoverPosition(
+      anchor(100, 200, 80, 32),
+      popoverRect,
+      viewport,
+      { placement: 'bottom-start', offset: 4, rtl: true },
+    );
+
+    expect(result.left).toBe(80);
+  });
+
+  it('aligns -end to the anchor start edge under RTL', () => {
+    const result = computePopoverPosition(
+      anchor(100, 200, 80, 32),
+      popoverRect,
+      viewport,
+      { placement: 'bottom-end', offset: 4, rtl: true },
+    );
+
+    expect(result.left).toBe(200);
+  });
+
   it('centres on bottom for cardinal placement', () => {
     const result = computePopoverPosition(
       anchor(100, 200, 80, 32),

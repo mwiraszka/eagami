@@ -51,6 +51,7 @@ const preview: Preview = {
       modes: {
         light: { globals: { theme: 'light' } },
         dark: { globals: { theme: 'dark' } },
+        rtl: { globals: { theme: 'light', direction: 'rtl' } },
       },
       pauseAnimationAtEnd: true,
     },
@@ -86,11 +87,25 @@ const preview: Preview = {
         ],
       },
     },
+    direction: {
+      description: 'Text direction',
+      defaultValue: 'ltr',
+      toolbar: {
+        title: 'Direction',
+        icon: 'transfer',
+        dynamicTitle: true,
+        items: [
+          { value: 'ltr', title: 'Left to right' },
+          { value: 'rtl', title: 'Right to left' },
+        ],
+      },
+    },
   },
   decorators: [
     (storyFn, context) => {
       const locale = context.globals['locale'] as EagamiLocale;
       const theme = context.globals['theme'] as 'auto' | 'light' | 'dark';
+      const direction = context.globals['direction'] as 'ltr' | 'rtl';
       // Storybook does not re-bootstrap the Angular app on global changes, so
       // changing `provideEagamiUi({ locale })` alone doesn't update an already-
       // constructed `EagamiI18nService`. Push the locale through the override
@@ -101,6 +116,7 @@ const preview: Preview = {
         // to text-transform: uppercase. In `el` that correctly drops the tonos
         // accent on uppercased Greek headings.
         document.documentElement.lang = locale;
+        document.documentElement.dir = direction;
         // The library's design tokens read `[data-theme="light"]` /
         // `[data-theme="dark"]` on `<html>`; the default `auto` removes the
         // attribute and falls back to `prefers-color-scheme`.
