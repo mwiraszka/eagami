@@ -7,16 +7,20 @@
         @if (last) {
           <span
             class="ea-breadcrumbs__current"
+            dir="auto"
             aria-current="page">
             {{ item.label }}
           </span>
         } @else if (item.disabled) {
-          <span class="ea-breadcrumbs__link ea-breadcrumbs__link--disabled">
+          <span
+            class="ea-breadcrumbs__link ea-breadcrumbs__link--disabled"
+            dir="auto">
             {{ item.label }}
           </span>
         } @else if (item.href) {
           <a
             class="ea-breadcrumbs__link"
+            dir="auto"
             [href]="item.href"
             (click)="handleClick(item, i, $event)">
             {{ item.label }}
@@ -25,6 +29,7 @@
           <button
             type="button"
             class="ea-breadcrumbs__link ea-breadcrumbs__link--button"
+            dir="auto"
             (click)="handleClick(item, i, $event)">
             {{ item.label }}
           </button>

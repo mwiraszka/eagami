@@ -36,6 +36,7 @@
         </span>
         <span
           class="ea-color-picker__trigger-value"
+          dir="auto"
           [class.ea-color-picker__trigger-value--placeholder]="!displayValue()">
           {{ displayValue() || resolvedPlaceholder() }}
         </span>
@@ -154,6 +155,7 @@
                 <input
                   class="ea-color-picker__input"
                   type="text"
+                  dir="auto"
                   spellcheck="false"
                   autocomplete="off"
                   maxlength="9"
@@ -168,6 +170,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -179,6 +182,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -190,6 +194,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -216,6 +221,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -227,6 +233,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -238,6 +245,7 @@
                 <input
                   class="ea-color-picker__input ea-color-picker__input--num"
                   type="text"
+                  dir="auto"
                   inputmode="numeric"
                   pattern="\d*"
                   maxlength="3"
@@ -263,6 +271,7 @@
             <button
               type="button"
               class="ea-color-picker__format-toggle"
+              dir="auto"
               [attr.aria-label]="i18n.messages().colorPicker.toggleFormat"
               (click)="cycleInputMode()">
               {{ formatLabel() }}

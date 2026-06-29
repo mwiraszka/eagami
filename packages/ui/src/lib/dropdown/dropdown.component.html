@@ -31,6 +31,7 @@
       (keydown)="handleKeydown($event)">
       <span
         class="ea-dropdown__value"
+        dir="auto"
         [class.ea-dropdown__value--placeholder]="!selectedLabel()">
         {{ selectedLabel() || resolvedPlaceholder() }}
       </span>
@@ -55,6 +56,7 @@
         @for (option of options(); track option.value; let i = $index) {
           <div
             class="ea-dropdown__option"
+            dir="auto"
             [class.ea-dropdown__option--selected]="option.value === value()"
             [class.ea-dropdown__option--focused]="i === focusedIndex()"
             [class.ea-dropdown__option--disabled]="option.disabled"

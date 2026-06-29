@@ -24,6 +24,7 @@
     @for (i of indices(); track i) {
       <input
         #digitEl
+        dir="auto"
         class="ea-code-input"
         [class.ea-code-input--focused]="focusedIndex() === i"
         [class.ea-code-input--filled]="digits()[i] !== ''"

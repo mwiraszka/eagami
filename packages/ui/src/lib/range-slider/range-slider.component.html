@@ -10,7 +10,9 @@
           [required]="required()" />
       }
       @if (showValue()) {
-        <span class="ea-range-slider-field__value">
+        <span
+          class="ea-range-slider-field__value"
+          dir="auto">
           {{ formatDisplay(clampedValue()[0]) }} – {{ formatDisplay(clampedValue()[1]) }}
         </span>
       }
@@ -76,10 +78,14 @@
 
     @if (showMinMaxLabels()) {
       <div class="ea-range-slider__minmax">
-        <span class="ea-range-slider__minmax-label">
+        <span
+          class="ea-range-slider__minmax-label"
+          dir="auto">
           {{ formatDisplay(min()) }}
         </span>
-        <span class="ea-range-slider__minmax-label">
+        <span
+          class="ea-range-slider__minmax-label"
+          dir="auto">
           {{ formatDisplay(max()) }}
         </span>
       </div>

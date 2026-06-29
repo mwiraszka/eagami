@@ -29,7 +29,9 @@
         <ea-icon-clock
           class="ea-time-picker__trigger-icon"
           aria-hidden="true" />
-        <span class="ea-time-picker__trigger-value">
+        <span
+          class="ea-time-picker__trigger-value"
+          dir="auto">
           {{ displayValue() || resolvedPlaceholder() }}
         </span>
       </button>
@@ -71,6 +73,7 @@
           <input
             #hoursEl
             type="text"
+            dir="auto"
             class="ea-time-picker__value"
             inputmode="numeric"
             autocomplete="off"
@@ -121,6 +124,7 @@
           <input
             #minutesEl
             type="text"
+            dir="auto"
             class="ea-time-picker__value"
             inputmode="numeric"
             autocomplete="off"
@@ -171,6 +175,7 @@
             <input
               #secondsEl
               type="text"
+              dir="auto"
               class="ea-time-picker__value"
               inputmode="numeric"
               autocomplete="off"

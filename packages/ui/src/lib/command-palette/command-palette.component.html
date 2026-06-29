@@ -13,6 +13,7 @@
         #searchEl
         class="ea-command-palette__input"
         type="text"
+        dir="auto"
         role="combobox"
         autocomplete="off"
         spellcheck="false"
@@ -73,11 +74,15 @@
                 </span>
               }
               <span class="ea-command-palette__item-text">
-                <span class="ea-command-palette__item-label">
+                <span
+                  class="ea-command-palette__item-label"
+                  dir="auto">
                   {{ entry.item.label }}
                 </span>
                 @if (entry.item.description) {
-                  <span class="ea-command-palette__item-description">
+                  <span
+                    class="ea-command-palette__item-description"
+                    dir="auto">
                     {{ entry.item.description }}
                   </span>
                 }

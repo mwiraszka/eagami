@@ -91,6 +91,7 @@
               @for (col of columns(); track col.key; let colIndex = $index) {
                 <td
                   class="ea-data-table__cell"
+                  dir="auto"
                   [class.ea-data-table__cell--align-center]="col.align === 'center'"
                   [class.ea-data-table__cell--align-right]="col.align === 'right'"
                   [style.width]="col.width ?? null"
