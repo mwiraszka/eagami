@@ -213,6 +213,8 @@
 
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.setAttribute('lang', locale);
+        // Keep this RTL set in sync with the library's locale `dir` metadata
+        // (WEB_LOCALE_DIRS); this inline script can't import it.
         document.documentElement.setAttribute(
           'dir',
           locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr',
