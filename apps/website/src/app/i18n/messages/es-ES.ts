@@ -211,7 +211,7 @@ export const esES: WebMessages = {
         },
         {
           title: 'Localizado',
-          body: 'Los textos integrados de los componentes se envían en doce idiomas.',
+          body: 'Los textos integrados de los componentes se envían en 15 idiomas.',
         },
         {
           title: 'Moderno',
@@ -344,9 +344,9 @@ export const esES: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacionalización',
       metaDescription:
-        'Textos integrados de los componentes en doce idiomas, con cambio en tiempo de ejecución y sobrescrituras por cadena.',
+        'Textos integrados de los componentes en 15 idiomas, con cambio en tiempo de ejecución y sobrescrituras por cadena.',
       title: 'Internacionalización',
-      lede: 'Cada cadena integrada (etiquetas ARIA, marcadores de posición, estados vacíos, controles del selector de fecha) se envía en doce idiomas. Define uno para toda la aplicación, cámbialo en tiempo de ejecución o sobrescribe cadenas individuales.',
+      lede: 'Cada cadena integrada (etiquetas ARIA, marcadores de posición, estados vacíos, controles del selector de fecha) se envía en 15 idiomas. Define uno para toda la aplicación, cámbialo en tiempo de ejecución o sobrescribe cadenas individuales.',
       supportedHeading: 'Idiomas compatibles',
       supportedFallback:
         'Los idiomas desconocidos vuelven al inglés, al igual que cualquier clave ausente en una sobrescritura parcial.',
@@ -486,7 +486,7 @@ export const esES: WebMessages = {
         successLabel: 'Éxito',
         warningLabel: 'Aviso',
         errorLabel: 'Error',
-        infoLabel: 'Info',
+        infoLabel: 'Información',
       },
       demos: {
         accordion: {
@@ -583,7 +583,7 @@ export const esES: WebMessages = {
           tableColumnId: 'ID',
           tableColumnFirstName: 'Nombre',
           tableColumnLastName: 'Apellido',
-          tableColumnAdmin: 'Admin',
+          tableColumnAdmin: 'Administrador',
           tableColumnPosts: 'Publicaciones',
         },
         datePicker: {
@@ -712,7 +712,7 @@ export const esES: WebMessages = {
           subscriptionPlanLabel: 'Plan de suscripción',
           freeLabel: 'Gratis',
           proLabel: 'Pro',
-          enterpriseLabel: 'Enterprise',
+          enterpriseLabel: 'Empresarial',
           deliverySpeedLabel: 'Velocidad de entrega',
           deliverySpeedHint: 'Elige la rapidez que quieres',
           standardLabel: 'Estándar',
@@ -779,7 +779,7 @@ export const esES: WebMessages = {
           generalContent: 'Ajustes generales',
           billing: 'Facturación',
           billingContent: 'Detalles de facturación',
-          admin: 'Admin',
+          admin: 'Administración',
           adminContent: 'Panel de administración',
         },
         tag: {

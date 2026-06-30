@@ -1,3 +1,5 @@
+import { EmptyStateComponent } from '@eagami/ui';
+
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -8,7 +10,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   selector: 'web-not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrl: './not-found-page.component.scss',
-  imports: [RouterLink],
+  imports: [RouterLink, EmptyStateComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotFoundPageComponent {

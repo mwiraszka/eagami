@@ -211,7 +211,7 @@ export const pl: WebMessages = {
         },
         {
           title: 'Zlokalizowane',
-          body: 'Wbudowane teksty komponentów dostępne są w dwunastu językach.',
+          body: 'Wbudowane teksty komponentów dostępne są w 15 językach.',
         },
         {
           title: 'Nowoczesne',
@@ -349,9 +349,9 @@ export const pl: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacjonalizacja',
       metaDescription:
-        'Wbudowane teksty komponentów w dwunastu językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
+        'Wbudowane teksty komponentów w 15 językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
       title: 'Internacjonalizacja',
-      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w dwunastu językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
+      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w 15 językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
       supportedHeading: 'Obsługiwane języki',
       supportedFallback:
         'Nieznane języki przechodzą do angielskiego, podobnie jak klucze brakujące w częściowym nadpisaniu.',
@@ -491,7 +491,7 @@ export const pl: WebMessages = {
         successLabel: 'Sukces',
         warningLabel: 'Ostrzeżenie',
         errorLabel: 'Błąd',
-        infoLabel: 'Info',
+        infoLabel: 'Informacja',
       },
       demos: {
         accordion: {
@@ -588,7 +588,7 @@ export const pl: WebMessages = {
           tableColumnId: 'ID',
           tableColumnFirstName: 'Imię',
           tableColumnLastName: 'Nazwisko',
-          tableColumnAdmin: 'Admin',
+          tableColumnAdmin: 'Administrator',
           tableColumnPosts: 'Posty',
         },
         datePicker: {
@@ -718,7 +718,7 @@ export const pl: WebMessages = {
           subscriptionPlanLabel: 'Plan subskrypcji',
           freeLabel: 'Darmowy',
           proLabel: 'Pro',
-          enterpriseLabel: 'Enterprise',
+          enterpriseLabel: 'Korporacyjny',
           deliverySpeedLabel: 'Szybkość dostawy',
           deliverySpeedHint: 'Wybierz, jak szybko ma dotrzeć',
           standardLabel: 'Standard',
@@ -785,7 +785,7 @@ export const pl: WebMessages = {
           generalContent: 'Ustawienia ogólne',
           billing: 'Rozliczenia',
           billingContent: 'Szczegóły rozliczeń',
-          admin: 'Admin',
+          admin: 'Administrator',
           adminContent: 'Panel administratora',
         },
         tag: {

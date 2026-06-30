@@ -1,12 +1,16 @@
 <section class="not-found">
-  <div class="not-found__inner">
-    <p class="not-found__eyebrow">{{ messages().notFound.eyebrow }}</p>
-    <h1 class="not-found__title">{{ messages().notFound.title }}</h1>
-    <p class="not-found__lede">{{ messages().notFound.lede }}</p>
+  <ea-empty-state [description]="messages().notFound.lede">
+    <h1
+      slot="media"
+      class="not-found__heading">
+      <span class="not-found__eyebrow">{{ messages().notFound.eyebrow }}</span>
+      <span class="not-found__title">{{ messages().notFound.title }}</span>
+    </h1>
     <a
+      slot="actions"
       class="not-found__cta"
       routerLink="/">
       {{ messages().notFound.cta }}
     </a>
-  </div>
+  </ea-empty-state>
 </section>

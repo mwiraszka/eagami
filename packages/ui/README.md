@@ -19,7 +19,7 @@
 - **Accessible.** Keyboard navigation, focus management, screen-reader support, and reduced-motion handling are built into every component.
 - **Lightweight.** Each component imports independently and the bundle only ships what you use.
 - **Themeable.** Fully customizable with [design tokens](https://eagami.com/ui/design-tokens) while maintaining a unified look across every page. Light and dark variants ship together and default to the user's system preference.
-- **Localized.** Built-in component text ships in twelve languages, with runtime switching and per-string overrides.
+- **Localized.** Built-in component text ships in 15 languages, with runtime switching and per-string overrides.
 - **Modern.** Regularly updated with the latest Angular features and modern web standards.
 - **Unlocked.** Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.
 
@@ -103,7 +103,7 @@ Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast
 
 ## Internationalization
 
-Built-in strings ship in twelve languages, with runtime switching via `EagamiI18nService`. English is bundled by default; register the other languages you use with `provideEagamiUi({ locales: [...] })` (or pass `EAGAMI_ALL_LOCALES` for all of them) so you ship only what you need. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
+Built-in strings ship in 15 languages, with runtime switching via `EagamiI18nService`. English is bundled by default; register the other languages you use with `provideEagamiUi({ locales: [...] })` (or pass `EAGAMI_ALL_LOCALES` for all of them) so you ship only what you need. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
 
 ## Server-side rendering
 

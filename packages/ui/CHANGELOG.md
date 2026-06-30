@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.8.0] - 2026-06-30
+
+### Added
+
+- Add Modern Standard Arabic, Hebrew, and Hindi to the built-in locales, bringing the total to 15; Arabic and Hebrew ship as right-to-left, identified by a new `dir` field on the locale metadata.
+
+### Fixed
+
+- Mirror a toast's icon, message, and dismiss button under RTL while keeping the toast pinned to its chosen screen corner.
+
 ## [4.7.0] - 2026-06-30
 
 ### Added
@@ -858,6 +868,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.7.0...ui-v4.8.0
 [4.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.6.0...ui-v4.7.0
 [4.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.1...ui-v4.6.0
 [4.5.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.0...ui-v4.5.1

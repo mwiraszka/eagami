@@ -14,3 +14,7 @@ export const WEB_LOCALE_LABELS: Record<WebLocale, string> = Object.fromEntries(
 export const WEB_LOCALE_FLAGS: Record<WebLocale, string> = Object.fromEntries(
   EAGAMI_LOCALE_META.map(m => [m.locale, m.flag]),
 ) as Record<WebLocale, string>;
+
+export const WEB_LOCALE_DIRS: Record<WebLocale, 'ltr' | 'rtl'> = Object.fromEntries(
+  EAGAMI_LOCALE_META.map(m => [m.locale, m.dir]),
+) as Record<WebLocale, 'ltr' | 'rtl'>;

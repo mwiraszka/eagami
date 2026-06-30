@@ -198,7 +198,7 @@ export const zhCN: WebMessages = {
         },
         {
           title: '本地化',
-          body: '内建组件文本提供十二种语言版本。',
+          body: '内建组件文本提供15 种语言版本。',
         },
         {
           title: '现代',
@@ -330,9 +330,9 @@ export const zhCN: WebMessages = {
     },
     i18n: {
       metaTitle: 'Eagami | UI | 国际化',
-      metaDescription: '内建组件文本提供十二种语言，支持运行时切换和逐字符串覆盖。',
+      metaDescription: '内建组件文本提供15 种语言，支持运行时切换和逐字符串覆盖。',
       title: '国际化',
-      lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供十二种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
+      lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供15 种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
       supportedHeading: '支持的语言',
       supportedFallback: '未知语言会回退到英语，部分覆盖中缺失的任何键也是如此。',
       quickSetupHeading: '快速设置',

@@ -19,6 +19,8 @@
 }
 
 .web-header__brand {
+  // Brand lockup is a logo, never mirrored: keep the bird left of the text in RTL
+  direction: ltr;
   display: inline-flex;
   align-items: center;
   gap: 4px;

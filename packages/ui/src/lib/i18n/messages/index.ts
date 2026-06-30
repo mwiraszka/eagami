@@ -1,9 +1,12 @@
 import type { EagamiLocaleBundle } from '../i18n.types';
+import { ar } from './ar';
 import { de } from './de';
 import { el } from './el';
 import { en } from './en';
 import { esES } from './es-ES';
 import { frFR } from './fr-FR';
+import { he } from './he';
+import { hi } from './hi';
 import { is } from './is';
 import { nl } from './nl';
 import { pl } from './pl';
@@ -12,7 +15,7 @@ import { ru } from './ru';
 import { uk } from './uk';
 import { zhCN } from './zh-CN';
 
-export { de, el, en, esES, frFR, is, nl, pl, ptBR, ru, uk, zhCN };
+export { ar, de, el, en, esES, frFR, he, hi, is, nl, pl, ptBR, ru, uk, zhCN };
 
 /**
  * Every built-in locale bundle. Registering this pulls all shipped languages
@@ -31,4 +34,7 @@ export const EAGAMI_ALL_LOCALES: readonly EagamiLocaleBundle[] = [
   nl,
   uk,
   ru,
+  he,
+  ar,
+  hi,
 ];

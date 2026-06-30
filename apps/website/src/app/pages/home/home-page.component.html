@@ -15,7 +15,11 @@
           data-text="eagami">
           eagami
         </h1>
-        <p class="home-hero__tagline">{{ messages().home.hero.tagline }}</p>
+        <p
+          class="home-hero__tagline"
+          dir="auto">
+          {{ messages().home.hero.tagline }}
+        </p>
         <div class="home-hero__actions">
           <a
             class="home-hero__cta"
@@ -135,8 +139,16 @@
                   alt=""
                   width="64"
                   height="64" />
-                <h3 class="project-card__title">{{ project.title }}</h3>
-                <p class="project-card__description">{{ project.description }}</p>
+                <h3
+                  class="project-card__title"
+                  dir="auto">
+                  {{ project.title }}
+                </h3>
+                <p
+                  class="project-card__description"
+                  dir="auto">
+                  {{ project.description }}
+                </p>
                 <span class="project-card__url">{{ project.display }}</span>
               </a>
             }

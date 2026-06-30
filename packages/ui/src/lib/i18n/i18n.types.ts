@@ -14,6 +14,9 @@ export type EagamiLocale =
   | 'el'
   | 'ru'
   | 'uk'
+  | 'he'
+  | 'ar'
+  | 'hi'
   | 'zh-CN';
 
 /**
@@ -24,28 +27,34 @@ export interface EagamiLocaleMeta {
   locale: EagamiLocale;
   label: string;
   flag: string;
+  /** Reading direction of the locale's script, for consumers wiring `dir`. */
+  dir: 'ltr' | 'rtl';
 }
 
 /**
- * Display name and flag for every built-in locale, in language-switcher order:
- * English first (the default fallback), then alphabetical by each language's own
- * name (Latin scripts first, then Greek, Cyrillic, and Chinese by Unicode block
- * order). Keyed by `EagamiLocale` so a locale added to the union without an entry
- * fails to compile, keeping this single source exhaustive.
+ * Display name, flag, and reading direction for every built-in locale, in
+ * language-switcher order: English first (the default fallback), then by each
+ * language's own name (Latin scripts first, then Greek, Cyrillic, Hebrew,
+ * Arabic, Devanagari, and Chinese by Unicode block order). Keyed by
+ * `EagamiLocale` so a locale added to the union without an entry fails to
+ * compile, keeping this single source exhaustive.
  */
 const LOCALE_DISPLAY = {
-  en: { label: 'English', flag: '🇬🇧' },
-  de: { label: 'Deutsch', flag: '🇩🇪' },
-  'es-ES': { label: 'Español', flag: '🇪🇸' },
-  'fr-FR': { label: 'Français', flag: '🇫🇷' },
-  is: { label: 'Íslenska', flag: '🇮🇸' },
-  nl: { label: 'Nederlands', flag: '🇳🇱' },
-  pl: { label: 'Polski', flag: '🇵🇱' },
-  'pt-BR': { label: 'Português (Brasil)', flag: '🇧🇷' },
-  el: { label: 'Ελληνικά', flag: '🇬🇷' },
-  ru: { label: 'Русский', flag: '🇷🇺' },
-  uk: { label: 'Українська', flag: '🇺🇦' },
-  'zh-CN': { label: '中文', flag: '🇨🇳' },
+  en: { label: 'English', flag: '🇬🇧', dir: 'ltr' },
+  de: { label: 'Deutsch', flag: '🇩🇪', dir: 'ltr' },
+  'es-ES': { label: 'Español', flag: '🇪🇸', dir: 'ltr' },
+  'fr-FR': { label: 'Français', flag: '🇫🇷', dir: 'ltr' },
+  is: { label: 'Íslenska', flag: '🇮🇸', dir: 'ltr' },
+  nl: { label: 'Nederlands', flag: '🇳🇱', dir: 'ltr' },
+  pl: { label: 'Polski', flag: '🇵🇱', dir: 'ltr' },
+  'pt-BR': { label: 'Português (Brasil)', flag: '🇧🇷', dir: 'ltr' },
+  el: { label: 'Ελληνικά', flag: '🇬🇷', dir: 'ltr' },
+  ru: { label: 'Русский', flag: '🇷🇺', dir: 'ltr' },
+  uk: { label: 'Українська', flag: '🇺🇦', dir: 'ltr' },
+  he: { label: 'עברית', flag: '🇮🇱', dir: 'rtl' },
+  ar: { label: 'العربية', flag: '🇸🇦', dir: 'rtl' },
+  hi: { label: 'हिन्दी', flag: '🇮🇳', dir: 'ltr' },
+  'zh-CN': { label: '中文', flag: '🇨🇳', dir: 'ltr' },
 } satisfies Record<EagamiLocale, Omit<EagamiLocaleMeta, 'locale'>>;
 
 /**

@@ -211,7 +211,7 @@ export const ptBR: WebMessages = {
         },
         {
           title: 'Localizado',
-          body: 'O texto integrado dos componentes vem em doze idiomas.',
+          body: 'O texto integrado dos componentes vem em 15 idiomas.',
         },
         {
           title: 'Moderno',
@@ -349,9 +349,9 @@ export const ptBR: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacionalização',
       metaDescription:
-        'Texto integrado dos componentes em doze idiomas, com troca em tempo de execução e sobrescritas por string.',
+        'Texto integrado dos componentes em 15 idiomas, com troca em tempo de execução e sobrescritas por string.',
       title: 'Internacionalização',
-      lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em doze idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
+      lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em 15 idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
       supportedHeading: 'Idiomas suportados',
       supportedFallback:
         'Idiomas desconhecidos recorrem ao inglês, assim como quaisquer chaves ausentes em uma sobrescrita parcial.',
@@ -717,7 +717,7 @@ export const ptBR: WebMessages = {
           subscriptionPlanLabel: 'Plano de assinatura',
           freeLabel: 'Gratuito',
           proLabel: 'Pro',
-          enterpriseLabel: 'Enterprise',
+          enterpriseLabel: 'Empresa',
           deliverySpeedLabel: 'Velocidade de entrega',
           deliverySpeedHint: 'Escolha a rapidez que você deseja',
           standardLabel: 'Padrão',
@@ -879,7 +879,7 @@ export const ptBR: WebMessages = {
           },
           input: {
             label: 'Rótulo',
-            placeholder: 'Placeholder',
+            placeholder: 'Espaço reservado',
             size: 'Tamanho',
             type: 'Tipo',
             disabled: 'Desativado',
@@ -935,14 +935,14 @@ export const ptBR: WebMessages = {
             size: 'Tamanho',
             length: 'Comprimento',
             label: 'Rótulo',
-            placeholder: 'Placeholder',
+            placeholder: 'Espaço reservado',
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
           },
           'color-picker': {
             label: 'Rótulo',
-            placeholder: 'Placeholder',
+            placeholder: 'Espaço reservado',
             size: 'Tamanho',
             format: 'Formato',
             showAlpha: 'Mostrar alfa',
@@ -1047,7 +1047,7 @@ export const ptBR: WebMessages = {
           },
           textarea: {
             label: 'Rótulo',
-            placeholder: 'Placeholder',
+            placeholder: 'Espaço reservado',
             size: 'Tamanho',
             resize: 'Redimensionar',
             maxlength: 'Comprimento máximo (caracteres)',

@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.5.0] - 2026-06-30
+
+### Added
+
+- Add Arabic, Hebrew, and Hindi, with the interface switching to right-to-left for Arabic and Hebrew.
+
+### Changed
+
+- Cap the language menu height so it scrolls rather than overflowing.
+- Pick up @eagami/ui v4.8.0.
+
 ## [3.4.3] - 2026-06-30
 
 ### Added
@@ -705,6 +716,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.5.0]: https://github.com/mwiraszka/eagami/compare/website-v3.4.3...website-v3.5.0
 [3.4.3]: https://github.com/mwiraszka/eagami/compare/website-v3.4.2...website-v3.4.3
 [3.4.2]: https://github.com/mwiraszka/eagami/compare/website-v3.4.1...website-v3.4.2
 [3.4.1]: https://github.com/mwiraszka/eagami/compare/website-v3.4.0...website-v3.4.1

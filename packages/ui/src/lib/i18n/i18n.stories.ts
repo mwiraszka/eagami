@@ -10,7 +10,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 
 /**
  * Every Eagami UI component ships its built-in strings (ARIA labels,
- * placeholders, empty states) in twelve languages. Pick a language from the
+ * placeholders, empty states) in 15 languages. Pick a language from the
  * **Locale** toolbar control above to see each story re-render in that language.
  *
  * In an app, call `provideEagamiUi({ locale })` once at bootstrap, or inject
@@ -40,7 +40,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Built-in component strings localized across twelve languages. ' +
+          'Built-in component strings localized across 15 languages. ' +
           'Use the Locale toolbar control to switch languages.',
       },
     },

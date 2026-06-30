@@ -191,3 +191,16 @@ $breakpoints: (
     border-radius: 4px;
   }
 }
+
+/// Deepened brand-token set the marketing CTAs (home hero/contact and the 404
+/// page) share so they stay clearly brand-coloured against the dark backdrop.
+@mixin brand-cta-dark-tokens {
+  --color-brand-default: var(--color-primary-800);
+  --color-brand-hover: color-mix(
+    in oklch,
+    var(--color-primary-800),
+    var(--color-primary-700) 40%
+  );
+  --color-brand-active: var(--color-primary-600);
+  --color-text-inverse: var(--color-neutral-50);
+}
