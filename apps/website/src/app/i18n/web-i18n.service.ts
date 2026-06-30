@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { WEB_LOCALES, type WebLocale } from './locale.types';
+import { WEB_LOCALES, WEB_LOCALE_DIRS, type WebLocale } from './locale.types';
 import { WEB_MESSAGES } from './messages';
 import type { WebMessages } from './web-messages.types';
 
@@ -111,6 +111,7 @@ export class WebI18nService {
 
     localStorage.setItem(STORAGE_KEY, locale);
     this.doc.documentElement.setAttribute('lang', locale);
+    this.doc.documentElement.setAttribute('dir', WEB_LOCALE_DIRS[locale]);
     /* The `web-locale-pending` class set by the inline <head> script is NOT
        removed here. Doing so in the service constructor would fire before
        Angular has re-rendered components with the active locale's strings,

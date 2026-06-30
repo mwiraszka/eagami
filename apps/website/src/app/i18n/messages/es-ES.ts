@@ -211,7 +211,7 @@ export const esES: WebMessages = {
         },
         {
           title: 'Localizado',
-          body: 'Los textos integrados de los componentes se envían en doce idiomas.',
+          body: 'Los textos integrados de los componentes se envían en 15 idiomas.',
         },
         {
           title: 'Moderno',
@@ -344,9 +344,9 @@ export const esES: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacionalización',
       metaDescription:
-        'Textos integrados de los componentes en doce idiomas, con cambio en tiempo de ejecución y sobrescrituras por cadena.',
+        'Textos integrados de los componentes en 15 idiomas, con cambio en tiempo de ejecución y sobrescrituras por cadena.',
       title: 'Internacionalización',
-      lede: 'Cada cadena integrada (etiquetas ARIA, marcadores de posición, estados vacíos, controles del selector de fecha) se envía en doce idiomas. Define uno para toda la aplicación, cámbialo en tiempo de ejecución o sobrescribe cadenas individuales.',
+      lede: 'Cada cadena integrada (etiquetas ARIA, marcadores de posición, estados vacíos, controles del selector de fecha) se envía en 15 idiomas. Define uno para toda la aplicación, cámbialo en tiempo de ejecución o sobrescribe cadenas individuales.',
       supportedHeading: 'Idiomas compatibles',
       supportedFallback:
         'Los idiomas desconocidos vuelven al inglés, al igual que cualquier clave ausente en una sobrescritura parcial.',

@@ -206,7 +206,7 @@ export const en: WebMessages = {
         },
         {
           title: 'Localized',
-          body: 'Built-in component text ships in twelve languages.',
+          body: 'Built-in component text ships in 15 languages.',
         },
         {
           title: 'Modern',
@@ -341,9 +341,9 @@ export const en: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalization',
       metaDescription:
-        'Built-in component text in twelve locales, with runtime switching and per-string overrides.',
+        'Built-in component text in 15 locales, with runtime switching and per-string overrides.',
       title: 'Internationalization',
-      lede: 'Every built-in string (ARIA labels, placeholders, empty states, date-picker controls) ships in twelve locales. Set one for the whole app, switch at runtime, or override individual strings.',
+      lede: 'Every built-in string (ARIA labels, placeholders, empty states, date-picker controls) ships in 15 locales. Set one for the whole app, switch at runtime, or override individual strings.',
       supportedHeading: 'Supported locales',
       supportedFallback:
         'Unknown locales fall back to English, as do any keys missing from a partial override.',

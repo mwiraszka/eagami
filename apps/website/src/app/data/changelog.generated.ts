@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.8.0',
+    date: '2026-06-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add Modern Standard Arabic, Hebrew, and Hindi to the built-in locales, bringing the total to 15; Arabic and Hebrew ship as right-to-left, identified by a new `dir` field on the locale metadata.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Mirror a toast's icon, message, and dismiss button under RTL while keeping the toast pinned to its chosen screen corner.",
+        ],
+      },
+    ],
+  },
+  {
     version: '4.7.0',
     date: '2026-06-30',
     sections: [

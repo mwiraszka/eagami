@@ -211,7 +211,7 @@ export const de: WebMessages = {
         },
         {
           title: 'Lokalisiert',
-          body: 'Integrierter Komponententext wird in zwölf Sprachen ausgeliefert.',
+          body: 'Integrierter Komponententext wird in 15 Sprachen ausgeliefert.',
         },
         {
           title: 'Modern',
@@ -350,9 +350,9 @@ export const de: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internationalisierung',
       metaDescription:
-        'Integrierter Komponententext in zwölf Sprachräumen, mit Umschaltung zur Laufzeit und Überschreibungen pro Zeichenkette.',
+        'Integrierter Komponententext in 15 Sprachräumen, mit Umschaltung zur Laufzeit und Überschreibungen pro Zeichenkette.',
       title: 'Internationalisierung',
-      lede: 'Jede integrierte Zeichenkette (ARIA-Labels, Platzhalter, Leerzustände, Datumsauswahl-Steuerungen) wird in zwölf Sprachräumen ausgeliefert. Legen Sie einen für die gesamte App fest, wechseln Sie zur Laufzeit oder überschreiben Sie einzelne Zeichenketten.',
+      lede: 'Jede integrierte Zeichenkette (ARIA-Labels, Platzhalter, Leerzustände, Datumsauswahl-Steuerungen) wird in 15 Sprachräumen ausgeliefert. Legen Sie einen für die gesamte App fest, wechseln Sie zur Laufzeit oder überschreiben Sie einzelne Zeichenketten.',
       supportedHeading: 'Unterstützte Sprachräume',
       supportedFallback:
         'Unbekannte Sprachräume greifen auf Englisch zurück, ebenso alle Schlüssel, die in einer Teilüberschreibung fehlen.',

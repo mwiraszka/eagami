@@ -211,7 +211,7 @@ export const pl: WebMessages = {
         },
         {
           title: 'Zlokalizowane',
-          body: 'Wbudowane teksty komponentów dostępne są w dwunastu językach.',
+          body: 'Wbudowane teksty komponentów dostępne są w 15 językach.',
         },
         {
           title: 'Nowoczesne',
@@ -349,9 +349,9 @@ export const pl: WebMessages = {
     i18n: {
       metaTitle: 'Eagami | UI | Internacjonalizacja',
       metaDescription:
-        'Wbudowane teksty komponentów w dwunastu językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
+        'Wbudowane teksty komponentów w 15 językach, z przełączaniem w czasie wykonywania i nadpisaniami pojedynczych ciągów.',
       title: 'Internacjonalizacja',
-      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w dwunastu językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
+      lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w 15 językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
       supportedHeading: 'Obsługiwane języki',
       supportedFallback:
         'Nieznane języki przechodzą do angielskiego, podobnie jak klucze brakujące w częściowym nadpisaniu.',

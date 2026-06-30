@@ -1,10 +1,13 @@
 import type { WebLocale } from '../locale.types';
 import type { WebMessages } from '../web-messages.types';
+import { ar } from './ar';
 import { de } from './de';
 import { el } from './el';
 import { en } from './en';
 import { esES } from './es-ES';
 import { frFR } from './fr-FR';
+import { he } from './he';
+import { hi } from './hi';
 import { is } from './is';
 import { nl } from './nl';
 import { pl } from './pl';
@@ -13,7 +16,7 @@ import { ru } from './ru';
 import { uk } from './uk';
 import { zhCN } from './zh-CN';
 
-export { de, el, en, esES, frFR, is, nl, pl, ptBR, ru, uk, zhCN };
+export { ar, de, el, en, esES, frFR, he, hi, is, nl, pl, ptBR, ru, uk, zhCN };
 
 export const WEB_MESSAGES: Record<WebLocale, WebMessages> = {
   en,
@@ -28,4 +31,7 @@ export const WEB_MESSAGES: Record<WebLocale, WebMessages> = {
   nl,
   uk,
   ru,
+  he,
+  ar,
+  hi,
 };
