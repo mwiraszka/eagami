@@ -1,0 +1,172 @@
+import type { EagamiLocaleBundle, EagamiMessages } from '../i18n.types';
+
+/** Hebrew messages. */
+const messages: EagamiMessages = {
+  alert: {
+    dismiss: 'סגור',
+  },
+  autocomplete: {
+    empty: 'אין תוצאות',
+  },
+  avatarEditor: {
+    upload: 'העלאת תמונה',
+    dropzone: 'גרור תמונה או לחץ להעלאה',
+    canvas: 'תצוגה מקדימה של התמונה, גרור או השתמש במקשי החצים להזזה ובמחוון לזום',
+    change: 'החלפת תמונה',
+    revert: 'שחזור למקור',
+    zoomOut: 'התרחקות',
+    zoom: 'זום',
+    zoomIn: 'התקרבות',
+    remove: 'הסרת תמונה',
+  },
+  breadcrumbs: {
+    label: 'נתיב ניווט',
+  },
+  codeInput: {
+    groupLabel: length => `קוד אימות, ${length} ספרות`,
+    digitLabel: (index, length) => `ספרה ${index} מתוך ${length}`,
+  },
+  commandPalette: {
+    dialogLabel: 'לוח פקודות',
+    searchPlaceholder: 'הקלד פקודה או חפש…',
+    empty: 'לא נמצאו תוצאות',
+    clear: 'ניקוי חיפוש',
+  },
+  colorPicker: {
+    placeholder: 'בחר צבע…',
+    clear: 'ניקוי צבע',
+    hue: 'גוון',
+    saturationAndValue: 'רוויה ובהירות',
+    alpha: 'שקיפות',
+    eyedropper: 'בחירה מהמסך',
+    presets: 'הגדרות מוכנות',
+    toggleFormat: 'החלפת פורמט קלט',
+  },
+  dataTable: {
+    noData: 'אין נתונים זמינים',
+  },
+  datePicker: {
+    placeholder: 'בחר תאריך…',
+    clear: 'ניקוי תאריך',
+    previousYear: 'שנה קודמת',
+    previousMonth: 'חודש קודם',
+    nextMonth: 'חודש הבא',
+    nextYear: 'שנה הבאה',
+    today: 'היום',
+  },
+  dialog: {
+    close: 'סגירת חלון',
+  },
+  drawer: {
+    close: 'סגירת לוח',
+  },
+  dropdown: {
+    placeholder: 'בחר…',
+  },
+  fileUploader: {
+    prompt: 'לחץ או גרור קבצים לכאן להעלאה',
+    promptSingle: 'לחץ או גרור קובץ לכאן להעלאה',
+    browse: 'עיון בקבצים',
+    removeFile: name => `הסרת ${name}`,
+    fileListLabel: 'קבצים שנבחרו',
+    constraintsAccept: accept => `מותר: ${accept}`,
+    constraintsMaxSize: size => `מקסימום ${size} לכל קובץ`,
+    constraintsMaxFiles: count => `עד ${count} קבצים`,
+    rejectionType: name => `${name} הוא סוג קובץ שאינו נתמך`,
+    rejectionSize: (name, max) => `${name} חורג מהמגבלה של ${max}`,
+    rejectionCount: max => `ניתן לבחור ${max} קבצים בלבד`,
+    bytesUnit: { b: 'B', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB' },
+  },
+  input: {
+    showPassword: 'הצגת סיסמה',
+    hidePassword: 'הסתרת סיסמה',
+    clear: 'ניקוי',
+  },
+  menu: {
+    label: 'תפריט',
+  },
+  multiSelect: {
+    placeholder: 'בחר…',
+    searchPlaceholder: 'חיפוש…',
+    searchEmpty: 'אין התאמות',
+    selectAll: 'בחירת הכול',
+    clearAll: 'ניקוי הבחירה',
+    removeOption: label => `הסרת ${label}`,
+    selectedCount: count => `${count} נבחרו`,
+  },
+  paginator: {
+    label: 'עימוד',
+    rowsPerPage: 'שורות בעמוד:',
+    range: (start, end, total) => `${start}–${end} מתוך ${total}`,
+    previousPage: 'עמוד קודם',
+    nextPage: 'עמוד הבא',
+  },
+  progressBar: {
+    label: 'התקדמות',
+  },
+  rating: {
+    label: 'דירוג',
+    valueLabel: (value, max) => `${value} מתוך ${max}`,
+    clear: 'ניקוי דירוג',
+  },
+  spinner: {
+    label: 'טוען',
+  },
+  stepper: {
+    optional: 'אופציונלי',
+  },
+  tag: {
+    remove: 'הסרה',
+  },
+  timePicker: {
+    placeholder: 'בחר שעה…',
+    clear: 'ניקוי שעה',
+    hoursLabel: 'שעות',
+    minutesLabel: 'דקות',
+    secondsLabel: 'שניות',
+    incrementHours: 'הגדלת שעות',
+    decrementHours: 'הקטנת שעות',
+    incrementMinutes: 'הגדלת דקות',
+    decrementMinutes: 'הקטנת דקות',
+    incrementSeconds: 'הגדלת שניות',
+    decrementSeconds: 'הקטנת שניות',
+    amLabel: 'AM',
+    pmLabel: 'PM',
+  },
+  toast: {
+    dismiss: 'סגור',
+  },
+  transferList: {
+    sourceLabel: 'זמין',
+    targetLabel: 'נבחר',
+    controlsLabel: 'בקרות העברה',
+    moveSelectedToTarget: 'העברת הנבחרים ליעד',
+    moveAllToTarget: 'העברת הכול ליעד',
+    moveSelectedToSource: 'העברת הנבחרים למקור',
+    moveAllToSource: 'העברת הכול למקור',
+    empty: 'אין פריטים',
+  },
+  tree: {
+    expand: 'הרחבה',
+    collapse: 'כיווץ',
+  },
+  validation: {
+    required: 'שדה זה הוא חובה',
+    email: 'הזן כתובת אימייל תקינה',
+    min: min => `חייב להיות לפחות ${min}`,
+    max: max => `חייב להיות לכל היותר ${max}`,
+    minlength: length => `חייב להכיל לפחות ${length} תווים`,
+    maxlength: length => `חייב להכיל לכל היותר ${length} תווים`,
+    pattern: 'פורמט לא תקין',
+    invalid: 'ערך לא תקין',
+  },
+  wordmark: {
+    overline: 'מעשה ידי',
+    tagline: 'עיצוב אתרים אלגנטי',
+  },
+};
+
+export const he: EagamiLocaleBundle = {
+  locale: 'he',
+  messages,
+};
