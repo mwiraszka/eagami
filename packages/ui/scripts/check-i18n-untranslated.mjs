@@ -204,13 +204,31 @@ const ALLOWLIST = new Set(
 
 function looksTranslatable(value) {
   const v = value.trim();
-  if (v.length === 0) return false;
+  if (v.length === 0) {
+    return false;
+  }
   // No letters at all (digits, punctuation, emoji, symbols) — nothing to translate.
-  if (!/\p{L}/u.test(v)) return false;
-  // URLs, emails, absolute paths, asset paths, and filenames are identical by design.
-  if (v.includes('://') || v.includes('@') || v.startsWith('/')) return false;
-  if (/^[\w./-]+\.(svg|png|jpe?g|webp|gif|ico|ts|js|css|scss|html|json)$/i.test(v)) return false;
-  if (ALLOWLIST.has(v.toLowerCase())) return false;
+  if (!/\p{L}/u.test(v)) {
+    return false;
+  }
+  // Values that are ENTIRELY a URL, email, or absolute path are identical by
+  // design. Anchored, not a substring test, so prose that merely mentions one
+  // (e.g. "View @eagami/ui on npm") is still checked for translation.
+  if (/^\S+:\/\/\S+$/.test(v)) {
+    return false;
+  }
+  if (/^\S+@\S+\.\S+$/.test(v)) {
+    return false;
+  }
+  if (/^\/\S*$/.test(v)) {
+    return false;
+  }
+  if (/^[\w./-]+\.(svg|png|jpe?g|webp|gif|ico|ts|js|css|scss|html|json)$/i.test(v)) {
+    return false;
+  }
+  if (ALLOWLIST.has(v.toLowerCase())) {
+    return false;
+  }
   return true;
 }
 
@@ -230,7 +248,10 @@ function extractStringLeaves(source) {
       collectFromObject(initializer, path);
     } else if (ts.isArrayLiteralExpression(initializer)) {
       collectFromArray(initializer, path);
-    } else if (ts.isStringLiteral(initializer) || ts.isNoSubstitutionTemplateLiteral(initializer)) {
+    } else if (
+      ts.isStringLiteral(initializer) ||
+      ts.isNoSubstitutionTemplateLiteral(initializer)
+    ) {
       leaves.set(path, initializer.text);
     }
     // Function expressions, template expressions, etc. are intentionally ignored.
@@ -242,13 +263,17 @@ function extractStringLeaves(source) {
 
   function collectFromObject(obj, path) {
     for (const prop of obj.properties) {
-      if (!ts.isPropertyAssignment(prop)) continue;
+      if (!ts.isPropertyAssignment(prop)) {
+        continue;
+      }
       const name = ts.isIdentifier(prop.name)
         ? prop.name.text
         : ts.isStringLiteral(prop.name)
           ? prop.name.text
           : null;
-      if (name === null) continue;
+      if (name === null) {
+        continue;
+      }
       record(path ? `${path}.${name}` : name, prop.initializer);
     }
   }
@@ -256,7 +281,9 @@ function extractStringLeaves(source) {
   function visit(node) {
     if (ts.isVariableDeclaration(node) && node.initializer) {
       let init = node.initializer;
-      if (ts.isAsExpression(init)) init = init.expression;
+      if (ts.isAsExpression(init)) {
+        init = init.expression;
+      }
       if (ts.isObjectLiteralExpression(init)) {
         collectFromObject(init, '');
         return;
@@ -281,15 +308,23 @@ function checkDirectory(dir) {
   let failures = 0;
 
   for (const file of files) {
-    if (file === 'en.ts') continue;
+    if (file === 'en.ts') {
+      continue;
+    }
     const leaves = extractStringLeaves(readFileSync(join(absDir, file), 'utf8'));
     const flagged = [];
 
     for (const [path, value] of leaves) {
       const enValue = en.get(path);
-      if (enValue === undefined) continue;
-      if (value !== enValue) continue;
-      if (!looksTranslatable(value)) continue;
+      if (enValue === undefined) {
+        continue;
+      }
+      if (value !== enValue) {
+        continue;
+      }
+      if (!looksTranslatable(value)) {
+        continue;
+      }
       flagged.push({ path, value });
     }
 
@@ -309,12 +344,16 @@ function checkDirectory(dir) {
 
 const dirs = process.argv.slice(2);
 if (dirs.length === 0) {
-  console.error('Usage: node check-i18n-untranslated.mjs <messages-dir> [<messages-dir> ...]');
+  console.error(
+    'Usage: node check-i18n-untranslated.mjs <messages-dir> [<messages-dir> ...]',
+  );
   process.exit(2);
 }
 
 let totalFailures = 0;
-for (const dir of dirs) totalFailures += checkDirectory(dir);
+for (const dir of dirs) {
+  totalFailures += checkDirectory(dir);
+}
 
 if (totalFailures > 0) {
   console.error(
@@ -323,6 +362,6 @@ if (totalFailures > 0) {
   process.exit(1);
 }
 
-console.log(
+console.error(
   `i18n values translated across ${dirs.length} director${dirs.length === 1 ? 'y' : 'ies'}.`,
 );
