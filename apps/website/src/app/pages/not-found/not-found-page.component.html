@@ -1,13 +1,11 @@
 <section class="not-found">
-  <ea-empty-state
-    size="xl"
-    [title]="messages().notFound.title"
-    [description]="messages().notFound.lede">
-    <span
+  <ea-empty-state [description]="messages().notFound.lede">
+    <h1
       slot="media"
-      class="not-found__eyebrow">
-      {{ messages().notFound.eyebrow }}
-    </span>
+      class="not-found__heading">
+      <span class="not-found__eyebrow">{{ messages().notFound.eyebrow }}</span>
+      <span class="not-found__title">{{ messages().notFound.title }}</span>
+    </h1>
     <a
       slot="actions"
       class="not-found__cta"
