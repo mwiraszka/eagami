@@ -8,14 +8,7 @@
 /* Hero and contact share these dark-mode brand-token overrides so their CTAs
    stay clearly brand-coloured against the dark backdrop. */
 :host-context([data-theme='dark']) :is(.home-hero, .home-section--contact) {
-  --color-brand-default: var(--color-primary-800);
-  --color-brand-hover: color-mix(
-    in oklch,
-    var(--color-primary-800),
-    var(--color-primary-700) 40%
-  );
-  --color-brand-active: var(--color-primary-600);
-  --color-text-inverse: var(--color-neutral-50);
+  @include mixins.brand-cta-dark-tokens;
 }
 
 .home-hero {
@@ -64,6 +57,9 @@
 }
 
 .home-hero__inner {
+  // Keep the bird logo to the left of the wordmark in RTL (the lockup is a logo,
+  // not mirrored); the hero text is centered, so direction does not shift it
+  direction: ltr;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -418,6 +414,9 @@
 }
 
 .work-carousel {
+  // Horizontal gallery: physical LTR island so the sliding track, grid columns,
+  // and arrow-key navigation behave identically regardless of page direction
+  direction: ltr;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;

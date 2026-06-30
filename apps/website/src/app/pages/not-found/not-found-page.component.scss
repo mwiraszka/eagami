@@ -15,15 +15,6 @@
   background-color: var(--color-bg-subtle);
 }
 
-.not-found__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  max-width: 520px;
-  text-align: center;
-}
-
 .not-found__eyebrow {
   font-size: 14px;
   font-weight: 700;
@@ -33,31 +24,14 @@
   color: var(--color-text-tertiary);
 }
 
-.not-found__title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
-
-  @include mixins.respond-to('lt-md') {
-    font-size: 28px;
-  }
-}
-
-.not-found__lede {
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-}
-
 .not-found__cta {
+  // Match the home page's brand CTAs: deepen the hover in light mode and use
+  // the shared darker brand set in dark mode (block below).
+  --color-brand-hover: var(--color-primary-800);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 48px;
-  margin-top: 16px;
   padding: 0 24px;
   border-radius: 8px;
   background-color: var(--color-brand-default);
@@ -75,4 +49,8 @@
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
   }
+}
+
+:host-context([data-theme='dark']) .not-found__cta {
+  @include mixins.brand-cta-dark-tokens;
 }
