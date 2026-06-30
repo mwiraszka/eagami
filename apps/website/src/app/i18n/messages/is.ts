@@ -1946,7 +1946,7 @@ export const is: WebMessages = {
           { value: 'jun', label: 'Júní' },
           { value: 'jul', label: 'Júlí' },
           { value: 'aug', label: 'Ágúst' },
-          { value: 'sep', label: 'September' },
+          { value: 'sep', label: 'september' },
           { value: 'oct', label: 'Október' },
           { value: 'nov', label: 'Nóvember' },
           { value: 'dec', label: 'Desember' },

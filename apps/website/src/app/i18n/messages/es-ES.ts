@@ -486,7 +486,7 @@ export const esES: WebMessages = {
         successLabel: 'Éxito',
         warningLabel: 'Aviso',
         errorLabel: 'Error',
-        infoLabel: 'Info',
+        infoLabel: 'Información',
       },
       demos: {
         accordion: {
@@ -583,7 +583,7 @@ export const esES: WebMessages = {
           tableColumnId: 'ID',
           tableColumnFirstName: 'Nombre',
           tableColumnLastName: 'Apellido',
-          tableColumnAdmin: 'Admin',
+          tableColumnAdmin: 'Administrador',
           tableColumnPosts: 'Publicaciones',
         },
         datePicker: {
@@ -712,7 +712,7 @@ export const esES: WebMessages = {
           subscriptionPlanLabel: 'Plan de suscripción',
           freeLabel: 'Gratis',
           proLabel: 'Pro',
-          enterpriseLabel: 'Enterprise',
+          enterpriseLabel: 'Empresarial',
           deliverySpeedLabel: 'Velocidad de entrega',
           deliverySpeedHint: 'Elige la rapidez que quieres',
           standardLabel: 'Estándar',
@@ -779,7 +779,7 @@ export const esES: WebMessages = {
           generalContent: 'Ajustes generales',
           billing: 'Facturación',
           billingContent: 'Detalles de facturación',
-          admin: 'Admin',
+          admin: 'Administración',
           adminContent: 'Panel de administración',
         },
         tag: {

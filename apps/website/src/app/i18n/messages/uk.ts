@@ -714,7 +714,7 @@ export const uk: WebMessages = {
           subscriptionPlanLabel: 'Тарифний план',
           freeLabel: 'Безкоштовний',
           proLabel: 'Pro',
-          enterpriseLabel: 'Enterprise',
+          enterpriseLabel: 'Корпоративний',
           deliverySpeedLabel: 'Швидкість доставки',
           deliverySpeedHint: 'Оберіть, наскільки швидко ви це хочете',
           standardLabel: 'Стандартна',

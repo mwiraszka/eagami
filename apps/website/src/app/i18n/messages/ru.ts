@@ -141,7 +141,7 @@ export const ru: WebMessages = {
       success: 'Спасибо за сообщение. Скоро мы вам ответим.',
       nameLabel: 'Имя',
       namePlaceholder: 'Ваше имя',
-      emailLabel: 'Email',
+      emailLabel: 'Электронная почта',
       emailPlaceholder: 'you@example.com',
       emailInvalid: 'Введите действительный адрес электронной почты',
       messageLabel: 'Сообщение',
@@ -664,7 +664,7 @@ export const ru: WebMessages = {
           passwordPlaceholder: 'Введите ваш пароль…',
           passwordNoToggleLabel: 'Пароль (переключатель скрыт)',
           passwordNoTogglePlaceholder: 'Без переключателя видимости',
-          emailLabel: 'Email',
+          emailLabel: 'Электронная почта',
           emailPlaceholder: 'you@example.com',
         },
         menu: {
