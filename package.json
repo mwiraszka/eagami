@@ -19,11 +19,15 @@
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
     "regen-docs": "pnpm ui docs:api && pnpm ui docs:changelog && pnpm website exec prettier --write src/app/data/ui-api.generated.ts src/app/data/changelog.generated.ts",
-    "start": "pnpm --filter eagami-website start",
+    "dev": "concurrently --kill-others --names \"web,book\" --prefix-colors \"cyan,magenta\" \"pnpm --filter eagami-website start\" \"pnpm --filter @eagami/ui storybook\"",
+    "site": "pnpm --filter eagami-website start",
     "storybook": "pnpm --filter @eagami/ui storybook",
     "ui": "pnpm --filter @eagami/ui",
     "website": "pnpm --filter eagami-website",
     "prepare": "git config core.hooksPath .githooks || true"
+  },
+  "devDependencies": {
+    "concurrently": "10.0.3"
   },
   "packageManager": "pnpm@10.33.0",
   "engines": {

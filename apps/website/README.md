@@ -12,11 +12,10 @@ From the monorepo root:
 
 ```bash
 pnpm install
-pnpm ui build      # build the library once so the website can resolve @eagami/ui
-pnpm start         # serve the website on http://localhost:4444
+pnpm site          # serve the website on http://localhost:4444
 ```
 
-For active library work, run `pnpm ui watch` in a second terminal so source edits flow into the running website without a manual rebuild.
+The website resolves `@eagami/ui` straight from the library source, so edits under `packages/ui/src/**` flow into the running dev server with no separate build. Use `pnpm dev` to run the website and Storybook side by side.
 
 ## Deployment
 
