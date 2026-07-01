@@ -7,6 +7,21 @@ set -euo pipefail
 root="$(git rev-parse --show-toplevel)"
 cd "$root"
 
+# Always surface the branch's PR link so it is visible after every push.
+branch="$(git rev-parse --abbrev-ref HEAD || true)"
+pr_url="$(gh pr view "$branch" --json url --jq .url 2>/dev/null || true)"
+if [ -z "$pr_url" ]; then
+  repo_url="$(gh repo view --json url --jq .url 2>/dev/null || true)"
+  if [ -n "$repo_url" ]; then
+    pr_url="$repo_url/pull/new/$branch"
+  fi
+fi
+if [ -n "$pr_url" ]; then
+  echo "pre-push: PR -> $pr_url"
+else
+  echo "pre-push: PR link unavailable (try: gh auth status)"
+fi
+
 # Diff the outgoing commits against the configured upstream, else origin/main.
 if base="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)"; then
   :
