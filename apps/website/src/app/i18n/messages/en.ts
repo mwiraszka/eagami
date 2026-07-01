@@ -1732,19 +1732,23 @@ export const en: WebMessages = {
             clicked: 'Fires when a non-disabled, non-final breadcrumb is activated.',
           },
           drawer: {
-            animated: 'Slides the panel in from its edge when the drawer opens.',
+            animation:
+              'Slide animation as the drawer opens and closes: none (instant), linear (constant speed), or eased (an ease-out curve).',
             ariaLabel:
               'Accessible label for the drawer panel when its heading is not descriptive enough.',
             closeOnBackdrop: 'Closes the drawer when the user clicks the backdrop.',
             closeOnEscape: 'Closes the drawer when the user presses the Escape key.',
             id: 'id applied to the dialog element, auto-generated when omitted.',
+            mode: 'How the drawer relates to the page: overlay floats over a dimmed, focus-trapped page, while push opens non-modally and reflows the page content aside.',
             open: 'Whether the drawer is open, two-way bindable via [(open)].',
             position: 'Edge of the viewport from which the drawer slides in.',
+            pushTarget:
+              'Element whose content is pushed aside in push mode, as a CSS selector or element reference; defaults to the document body.',
             showClose: 'Shows the close button in the drawer header.',
-            width: 'Width of the drawer panel along its primary axis.',
+            size: 'Extent of the drawer panel along its main axis: width for side drawers, height for top and bottom drawers.',
             closed:
               'Fires when the drawer closes, whether via the close button, backdrop, or Escape.',
-            opened: 'Fires once the drawer has been shown via showModal().',
+            opened: 'Fires once the drawer has been shown.',
           },
           'data-table': {
             clickable:

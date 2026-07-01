@@ -1804,21 +1804,24 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer een niet-uitgeschakelde, niet-laatste broodkruimel wordt geactiveerd.',
           },
           drawer: {
-            animated:
-              'Schuift het paneel vanaf zijn rand naar binnen wanneer de lade opent.',
+            animation:
+              'Schuifanimatie terwijl de lade opent en sluit: none (direct), linear (constante snelheid) of eased (een ease-out-curve).',
             ariaLabel:
               'Toegankelijk label voor het ladepaneel wanneer de koptekst niet beschrijvend genoeg is.',
             closeOnBackdrop:
               'Sluit de lade wanneer de gebruiker op de achtergrond klikt.',
             closeOnEscape: 'Sluit de lade wanneer de gebruiker op de Escape-toets drukt.',
             id: 'id toegepast op het dialoogelement, automatisch gegenereerd indien weggelaten.',
+            mode: 'Hoe de lade zich tot de pagina verhoudt: overlay zweeft over een gedimde pagina waarin de focus wordt vastgehouden, terwijl push niet-modaal opent en de pagina-inhoud opzij herschikt.',
             open: 'Of de lade open is, in twee richtingen te binden via [(open)].',
             position: 'Rand van de viewport vanwaar de lade naar binnen schuift.',
+            pushTarget:
+              'Element waarvan de inhoud in de push-modus opzij wordt geschoven, als CSS-selector of elementreferentie; standaard de document-body.',
             showClose: 'Toont de sluitknop in de ladekoptekst.',
-            width: 'Breedte van het ladepaneel langs zijn primaire as.',
+            size: 'Omvang van het ladepaneel langs zijn hoofdas: breedte voor zijladen, hoogte voor boven- en onderladen.',
             closed:
               'Wordt geactiveerd wanneer de lade sluit, of dat nu via de sluitknop, achtergrond of Escape is.',
-            opened: 'Wordt geactiveerd zodra de lade is getoond via showModal().',
+            opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
             clickable:

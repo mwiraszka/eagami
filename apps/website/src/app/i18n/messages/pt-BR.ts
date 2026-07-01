@@ -1798,20 +1798,24 @@ export const ptBR: WebMessages = {
             clicked: 'Dispara quando uma trilha não desativada e não final é ativada.',
           },
           drawer: {
-            animated: 'Desliza o painel a partir de sua borda quando a gaveta abre.',
+            animation:
+              'Animação de deslize conforme a gaveta abre e fecha: none (instantânea), linear (velocidade constante) ou eased (curva de desaceleração suave).',
             ariaLabel:
               'Rótulo acessível para o painel da gaveta quando seu título não é descritivo o suficiente.',
             closeOnBackdrop: 'Fecha a gaveta quando o usuário clica no fundo.',
             closeOnEscape: 'Fecha a gaveta quando o usuário pressiona a tecla Escape.',
             id: 'id aplicado ao elemento de diálogo, gerado automaticamente quando omitido.',
+            mode: 'Como a gaveta se relaciona com a página: overlay flutua sobre uma página escurecida e com foco confinado, enquanto push abre de forma não modal e reflui o conteúdo da página para o lado.',
             open: 'Se a gaveta está aberta, vinculável de forma bidirecional via [(open)].',
             position:
               'Borda da janela de visualização a partir da qual a gaveta desliza.',
+            pushTarget:
+              'Elemento cujo conteúdo é empurrado para o lado no modo push, como um seletor CSS ou referência de elemento; o padrão é o body do documento.',
             showClose: 'Mostra o botão de fechar no cabeçalho da gaveta.',
-            width: 'Largura do painel da gaveta ao longo de seu eixo principal.',
+            size: 'Extensão do painel da gaveta ao longo de seu eixo principal: largura para gavetas laterais, altura para gavetas superiores e inferiores.',
             closed:
               'Dispara quando a gaveta fecha, seja pelo botão de fechar, pelo fundo ou por Escape.',
-            opened: 'Dispara assim que a gaveta é exibida via showModal().',
+            opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
             clickable:

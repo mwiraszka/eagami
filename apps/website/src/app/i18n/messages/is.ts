@@ -1760,19 +1760,23 @@ export const is: WebMessages = {
             clicked: 'Kviknar þegar óvirkur, ekki-loka brauðmoli er virkjaður.',
           },
           drawer: {
-            animated: 'Rennir spjaldinu inn frá brún sinni þegar skúffan opnast.',
+            animation:
+              'Rennihreyfing þegar skúffan opnast og lokast: none (samstundis), linear (jafn hraði) eða eased (mýkingarferill í lokin).',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir skúffuspjaldið þegar fyrirsögn þess er ekki nógu lýsandi.',
             closeOnBackdrop: 'Lokar skúffunni þegar notandinn smellir á bakgrunninn.',
             closeOnEscape: 'Lokar skúffunni þegar notandinn ýtir á Escape takkann.',
             id: 'id sett á gluggastakið, sjálfvirkt búið til þegar því er sleppt.',
+            mode: 'Hvernig skúffan tengist síðunni: overlay svífur yfir deyfðri síðu með fókusgildru, á meðan push opnast ekki mótað og ýtir efni síðunnar til hliðar.',
             open: 'Hvort skúffan er opin, tvíátta bindanlegt með [(open)].',
             position: 'Brún sýnisvæðis sem skúffan rennur inn frá.',
+            pushTarget:
+              'Stak sem efni þess er ýtt til hliðar í push ham, sem CSS veljari eða stakvísun; sjálfgefið er það body skjalsins.',
             showClose: 'Sýnir lokunarhnappinn í skúffuhausnum.',
-            width: 'Breidd skúffuspjaldsins eftir aðalási þess.',
+            size: 'Stærð skúffuspjaldsins eftir aðalási þess: breidd fyrir hliðarskúffur, hæð fyrir efri og neðri skúffur.',
             closed:
               'Kviknar þegar skúffan lokast, hvort sem það er með lokunarhnappi, bakgrunni eða Escape.',
-            opened: 'Kviknar þegar skúffan hefur verið sýnd með showModal().',
+            opened: 'Kviknar þegar skúffan hefur verið sýnd.',
           },
           'data-table': {
             clickable:
