@@ -6,6 +6,7 @@ import {
   Injector,
   afterNextRender,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
@@ -161,6 +162,24 @@ export class ColorPickerComponent implements ControlValueAccessor {
    * expanded back into a 6-digit canonical form. */
   readonly hexInputValue = signal('');
   private readonly _formDisabled = signal(false);
+
+  /** The last value this component emitted, so the value-sync effect can tell an
+   * external `[(value)]` / reset change from its own commit and skip the echo. */
+  private lastCommitted: string | null = null;
+
+  // Sync internal HSV when `value` is set from outside (an input binding), which
+  // otherwise only happens through the forms `writeValue` path. Without this a
+  // `[(value)]`-bound initial color renders on the swatch as black.
+  private readonly valueSync = effect(() => {
+    const v = this.value();
+    if (v === null || v === this.lastCommitted) {
+      return;
+    }
+    const parsed = parseColor(v);
+    if (parsed) {
+      this.applyRgba(parsed.r, parsed.g, parsed.b, parsed.a, false);
+    }
+  });
 
   private onChange: (value: string | null) => void = () => {};
   private onTouched: () => void = () => {};
@@ -706,6 +725,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
     if (out === this.value()) {
       return;
     }
+    this.lastCommitted = out;
     this.value.set(out);
     this.onChange(out);
     this.changed.emit(out);

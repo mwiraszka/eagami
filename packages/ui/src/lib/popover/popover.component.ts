@@ -335,6 +335,21 @@ export class PopoverComponent {
     // The surface is portaled to <body>, escaping the anchor's dir context, so
     // mirror the anchor's resolved direction onto it explicitly.
     surface.dir = isRtl(anchor) ? 'rtl' : 'ltr';
+    // For the same reason, mirror the anchor's resolved font-family custom
+    // properties so panel content honours a consumer's font override set on the
+    // trigger's ancestor instead of falling back to the root font.
+    const anchorStyle = window.getComputedStyle(anchor);
+    for (const name of [
+      '--font-family-sans',
+      '--font-family-mono',
+      '--font-family-serif',
+      '--font-family-brand',
+    ]) {
+      const value = anchorStyle.getPropertyValue(name).trim();
+      if (value) {
+        surface.style.setProperty(name, value);
+      }
+    }
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
     this.position.set(

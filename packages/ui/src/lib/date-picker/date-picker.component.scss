@@ -40,6 +40,9 @@
     width: 100%;
     min-height: 2.5em;
     padding: 0.5em 0.75em;
+    // Reserve room for the absolutely-positioned clear button so a long value
+    // ellipsizes before it instead of sliding underneath it.
+    padding-inline-end: calc(var(--ea-icon-button-size) + var(--space-2) * 2);
     font-family: var(--font-family-sans);
     text-align: start;
     border: var(--border-width-thin) solid var(--color-border-default);

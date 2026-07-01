@@ -11,6 +11,10 @@
   // the surface never paints at its pre-positioned `top: 0; left: 0` first (the
   // "wrong place, then right place" flicker)
   visibility: hidden;
+  // Portaled to <body>, so it can't inherit a consumer's font override from the
+  // trigger's ancestor. Re-resolve the font var (whose value is mirrored onto the
+  // surface in JS) so inherited panel text follows the override, not the root font.
+  font-family: var(--font-family-sans);
 
   &--positioned {
     visibility: visible;
