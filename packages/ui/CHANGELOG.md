@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.8.1] - 2026-07-01
+
+### Fixed
+
+- Show a color on the color picker swatch when it is set through the `value` binding, not only through Angular forms.
+- Reserve room for the date picker's clear button so a long value ellipsizes rather than sliding underneath it.
+- Carry a font-family override through to popover panels (dropdown menus, the color and date pickers), which previously kept the root font because the panel is portaled to the document body.
+
 ## [4.8.0] - 2026-06-30
 
 ### Added
@@ -868,6 +876,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[4.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.0...ui-v4.8.1
 [4.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.7.0...ui-v4.8.0
 [4.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.6.0...ui-v4.7.0
 [4.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.5.1...ui-v4.6.0
