@@ -18,6 +18,8 @@ const messages: EagamiMessages = {
     zoom: 'تكبير/تصغير',
     zoomIn: 'تكبير',
     remove: 'إزالة الصورة',
+    invalidType: 'يجب أن يكون الملف صورة',
+    tooLarge: (maxMb: number) => `الملف يتجاوز حد ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'مسار التنقل',

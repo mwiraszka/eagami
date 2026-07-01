@@ -18,6 +18,8 @@ const messages: EagamiMessages = {
     zoom: '缩放',
     zoomIn: '放大',
     remove: '移除图片',
+    invalidType: '文件必须是图片',
+    tooLarge: (maxMb: number) => `文件超过 ${maxMb} MB 限制`,
   },
   breadcrumbs: {
     label: '面包屑导航',

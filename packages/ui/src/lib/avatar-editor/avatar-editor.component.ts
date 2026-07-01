@@ -500,12 +500,12 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private loadFile(file: File): void {
     if (!file.type.startsWith('image/')) {
-      this.errored.emit('File must be an image');
+      this.errored.emit(this.i18n.messages().avatarEditor.invalidType);
       return;
     }
     if (file.size > this.maxFileSize()) {
       const maxMb = Math.round(this.maxFileSize() / (1024 * 1024));
-      this.errored.emit(`File exceeds ${maxMb} MB limit`);
+      this.errored.emit(this.i18n.messages().avatarEditor.tooLarge(maxMb));
       return;
     }
 

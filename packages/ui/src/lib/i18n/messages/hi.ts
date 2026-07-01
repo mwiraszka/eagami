@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'ज़ूम',
     zoomIn: 'ज़ूम इन',
     remove: 'छवि हटाएं',
+    invalidType: 'फ़ाइल एक छवि होनी चाहिए',
+    tooLarge: (maxMb: number) => `फ़ाइल ${maxMb} MB की सीमा से अधिक है`,
   },
   breadcrumbs: {
     label: 'ब्रेडक्रंब',

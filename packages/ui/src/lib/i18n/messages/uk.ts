@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Масштаб',
     zoomIn: 'Збільшити',
     remove: 'Видалити зображення',
+    invalidType: 'Файл має бути зображенням',
+    tooLarge: (maxMb: number) => `Файл перевищує ліміт ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Навігаційний ланцюжок',

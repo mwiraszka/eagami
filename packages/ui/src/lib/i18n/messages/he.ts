@@ -18,6 +18,8 @@ const messages: EagamiMessages = {
     zoom: 'זום',
     zoomIn: 'התקרבות',
     remove: 'הסרת תמונה',
+    invalidType: 'הקובץ חייב להיות תמונה',
+    tooLarge: (maxMb: number) => `הקובץ חורג ממגבלת ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'נתיב ניווט',

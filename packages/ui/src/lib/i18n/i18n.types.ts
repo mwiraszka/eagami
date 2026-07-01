@@ -96,6 +96,8 @@ export interface EagamiMessages {
     zoom: string;
     zoomIn: string;
     remove: string;
+    invalidType: string;
+    tooLarge: (maxMb: number) => string;
   };
   breadcrumbs: {
     label: string;

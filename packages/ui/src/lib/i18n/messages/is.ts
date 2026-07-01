@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Aðdráttur',
     zoomIn: 'Auka aðdrátt',
     remove: 'Fjarlægja mynd',
+    invalidType: 'Skráin verður að vera mynd',
+    tooLarge: (maxMb: number) => `Skráin fer yfir ${maxMb} MB mörkin`,
   },
   breadcrumbs: {
     label: 'Brauðmolaslóð',

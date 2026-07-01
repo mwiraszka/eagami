@@ -30,6 +30,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
           "**Breaking:** Rename the drawer's `width` input to `size`, which sets the panel's extent along its main axis (width for side drawers, height for top and bottom).",
         ],
       },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Localize built-in text that was English-only: the slider, range-slider, and paginator now group numbers per the active locale, and the avatar-editor file-validation errors and tree expand/collapse labels are translated in every locale.',
+        ],
+      },
     ],
   },
   {

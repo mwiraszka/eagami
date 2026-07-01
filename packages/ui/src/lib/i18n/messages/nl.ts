@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Zoom',
     zoomIn: 'Inzoomen',
     remove: 'Afbeelding verwijderen',
+    invalidType: 'Bestand moet een afbeelding zijn',
+    tooLarge: (maxMb: number) => `Bestand overschrijdt de limiet van ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Broodkruimelnavigatie',

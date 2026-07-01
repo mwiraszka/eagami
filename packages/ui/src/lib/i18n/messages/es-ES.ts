@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Ampliación',
     zoomIn: 'Acercar',
     remove: 'Eliminar imagen',
+    invalidType: 'El archivo debe ser una imagen',
+    tooLarge: (maxMb: number) => `El archivo supera el límite de ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Ruta de navegación',

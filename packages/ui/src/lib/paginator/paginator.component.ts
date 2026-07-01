@@ -82,9 +82,9 @@ export class PaginatorComponent {
 
   readonly canGoNext = computed(() => this.page() < this.totalPages());
 
-  /** Formats a number for display, grouping thousands with commas when enabled. */
+  /** Formats a number for display, grouping thousands per the active locale when enabled. */
   protected formatNumber(value: number): string {
-    return this.groupThousands() ? value.toLocaleString('en-US') : `${value}`;
+    return this.groupThousands() ? value.toLocaleString(this.i18n.locale()) : `${value}`;
   }
 
   readonly visiblePages = computed(() => {

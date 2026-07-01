@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking:** Replace the drawer's boolean `animated` input with an `animation` input accepting `none`, `linear`, or `eased` (default `eased`); the panel now slides both in on open and out on close.
 - **Breaking:** Rename the drawer's `width` input to `size`, which sets the panel's extent along its main axis (width for side drawers, height for top and bottom).
 
+### Fixed
+
+- Localize built-in text that was English-only: the slider, range-slider, and paginator now group numbers per the active locale, and the avatar-editor file-validation errors and tree expand/collapse labels are translated in every locale.
+
 ## [4.8.1] - 2026-07-01
 
 ### Fixed
