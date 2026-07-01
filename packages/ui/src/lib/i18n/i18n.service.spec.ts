@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
+import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
 import { EAGAMI_LOCALES, EAGAMI_LOCALE_META, type EagamiLocale } from './i18n.types';
@@ -14,6 +15,8 @@ describe('EagamiI18nService', () => {
     });
     return TestBed.inject(EagamiI18nService);
   }
+
+  afterEach(() => _eagamiI18nLocaleOverride.set(null));
 
   it('defaults to English when no config is provided', () => {
     const service = createService();
@@ -42,6 +45,17 @@ describe('EagamiI18nService', () => {
     service.setLocale('de');
 
     expect(service.locale()).toBe('en');
+  });
+
+  it('reacts live to the Storybook locale override signal', () => {
+    const service = createService({ locales: EAGAMI_ALL_LOCALES });
+    expect(service.messages().paginator.rowsPerPage).toBe('Rows per page:');
+
+    _eagamiI18nLocaleOverride.set('is');
+    TestBed.tick();
+
+    expect(service.locale()).toBe('is');
+    expect(service.messages().paginator.rowsPerPage).toBe('Raðir á síðu:');
   });
 
   it('switches locale reactively via setLocale', () => {
