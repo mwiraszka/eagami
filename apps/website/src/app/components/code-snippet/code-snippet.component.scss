@@ -20,6 +20,10 @@
   font-size: 14px;
   line-height: 1.5;
   white-space: pre;
+  // Code is always left-to-right; isolate it from RTL prose so lines don't
+  // right-align and the bidi algorithm doesn't reorder the tokens.
+  direction: ltr;
+  unicode-bidi: isolate;
   font-family: var(--font-family-mono);
   background-color: var(--color-bg-muted);
   color: var(--color-text-primary);
