@@ -15,12 +15,8 @@ const meta: Meta<DrawerComponent> = {
 export default meta;
 type Story = StoryObj<DrawerComponent>;
 
-// A single controllable story: position, size, mode, animation, and showClose are
-// all reachable through the controls, so there is no need for hardcoded variants.
 export const Playground: Story = {
-  // `open` is an arg so it survives control changes; otherwise re-running render
-  // would reset a local flag and close the drawer whenever a knob (e.g. position)
-  // changes, hiding the effect being demonstrated.
+  // `open` is an arg so control changes don't reset it and close the drawer.
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({

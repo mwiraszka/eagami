@@ -45,11 +45,8 @@ const meta: Meta<CommandPaletteComponent> = {
 export default meta;
 type Story = StoryObj<CommandPaletteComponent>;
 
-// `items` and `placeholder` are reachable through the controls, so no hardcoded
-// data variants are needed. `open` is an arg so it survives control changes;
-// otherwise re-running render would reset a local flag and close the palette
-// whenever a knob changes.
 export const Playground: Story = {
+  // `open` is an arg so control changes don't reset it and close the palette.
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({

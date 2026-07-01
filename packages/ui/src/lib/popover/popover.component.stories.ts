@@ -10,8 +10,6 @@ import {
 } from './popover.component';
 import { POPOVER_KNOBS } from './popover.component.knobs';
 
-// Story wrapper: owns the click-to-toggle state, mirrors `<ea-popover>` inputs, and
-// brings its own styles so the trigger and content render with sensible defaults.
 @Component({
   selector: 'ea-popover-story-host',
   imports: [PopoverComponent],
@@ -44,9 +42,7 @@ import { POPOVER_KNOBS } from './popover.component.knobs';
   styleUrl: './popover.component.stories.scss',
 })
 class PopoverStoryHost {
-  // `open` is an arg so it survives control changes; otherwise re-running render
-  // would reset a local flag and close the popover whenever a knob changes, hiding
-  // the effect being demonstrated.
+  // `open` is an arg so control changes don't reset it and close the popover.
   @Input() set open(value: boolean) {
     this.isOpen.set(value);
   }

@@ -6,11 +6,8 @@ import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
 
-/**
- * Resolve a loader package from @angular-devkit/build-angular's dependency
- * tree. pnpm strict hoisting means these aren't directly resolvable from the
- * project root, but the Angular build package has them as dependencies.
- */
+// pnpm strict hoisting hides these loaders from the root, so resolve them from
+// @angular-devkit/build-angular, which depends on them.
 function resolveLoader(name: string): string {
   const buildAngularDir = dirname(
     require.resolve('@angular-devkit/build-angular/package.json'),
@@ -20,26 +17,17 @@ function resolveLoader(name: string): string {
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  // `@chromatic-com/storybook` is required for Chromatic's `modes` to apply
-  // the `theme` global during capture — without it the light/dark modes are
-  // created but both render at the default global (light).
-  addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-a11y',
-    '@chromatic-com/storybook',
-  ],
+  // @chromatic-com/storybook is what makes Chromatic's theme `modes` actually apply.
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@chromatic-com/storybook'],
   framework: '@storybook/angular',
-  // Present Storybook as a docs viewer: every component collapses to a single
-  // leaf that opens its autodocs page (description + interactive controls), with
-  // the individual stories hidden from the sidebar instead of sitting next to it.
+  // One docs entry per component; individual stories are hidden from the sidebar.
   docs: { docsMode: true },
   webpackFinal: async config => {
     const storybookDir = dirname(fileURLToPath(import.meta.url));
     const rules = config.module?.rules || [];
 
-    // Exclude .storybook/ from existing SCSS rules set up by the Angular
-    // preset — they lack css-loader/style-loader because the browserTarget
-    // uses the esbuild-based @angular/build:application builder.
+    // The Angular preset's SCSS rules lack css/style-loader (esbuild builder), so
+    // exclude .storybook/ from them and add our own rule below.
     for (const rule of rules) {
       if (
         rule &&
@@ -60,7 +48,6 @@ const config: StorybookConfig = {
       }
     }
 
-    // Add a complete SCSS rule for .storybook/ imports.
     rules.push({
       test: /\.scss$/,
       include: [storybookDir],

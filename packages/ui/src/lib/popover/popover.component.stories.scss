@@ -1,7 +1,4 @@
-// Story-host styles live here (loaded via `styleUrl`) rather than in
-// .storybook/storybook.scss, whose webpack hand-off doesn't compile into
-// Storybook's CSS output; component-scoped SCSS bundles reliably.
-
+// styleUrl-scoped SCSS bundles reliably; the .storybook global SCSS does not.
 .story-popover-fixture {
   display: flex;
   justify-content: center;
@@ -38,16 +35,4 @@
   box-shadow: var(--shadow-lg);
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
-}
-
-.story-popover-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 4rem;
-}
-
-.story-popover-grid-cell {
-  display: flex;
-  justify-content: center;
 }

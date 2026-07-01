@@ -15,13 +15,8 @@ const meta: Meta<DialogComponent> = {
 export default meta;
 type Story = StoryObj<DialogComponent>;
 
-// A single controllable story: width, closeOnBackdrop, closeOnEscape, and
-// showClose are all reachable through the controls, so hardcoded variants are
-// unnecessary.
 export const Playground: Story = {
-  // `open` is an arg so it survives control changes; otherwise re-running render
-  // would reset a local flag and close the dialog whenever a knob (e.g. width)
-  // changes, hiding the effect being demonstrated.
+  // `open` is an arg so control changes don't reset it and close the dialog.
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({
