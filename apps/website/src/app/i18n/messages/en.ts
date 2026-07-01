@@ -252,6 +252,23 @@ export const en: WebMessages = {
         ariaLayout: 'Demo layout',
         ariaColor: 'Demo color',
         ariaSelect: 'Demo select',
+        ariaDate: 'Demo date',
+        ariaMultiSelect: 'Demo multi-select',
+        msMusic: 'Music',
+        msTravel: 'Travel',
+        msFood: 'Food',
+      },
+      theme: {
+        heading: 'Make it your own',
+        ledeBefore: '',
+        ledeLink: 'Design tokens',
+        ledeAfter:
+          ' are what give each Eagami project a distinct personality: customizable colors, fonts, spacing, corners, shadows, and motion, all applied across the entire site or app. Modify a few below to see how they affect the components.',
+        brandColor: 'Brand color',
+        radius: 'Corner radius',
+        font: 'Font',
+        fontDefault: '(default)',
+        reset: 'Reset',
       },
     },
     setup: {

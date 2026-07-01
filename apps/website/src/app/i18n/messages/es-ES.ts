@@ -253,6 +253,23 @@ export const esES: WebMessages = {
         ariaLayout: 'Diseño de demostración',
         ariaColor: 'Color de demostración',
         ariaSelect: 'Selección de demostración',
+        ariaDate: 'Fecha de demostración',
+        ariaMultiSelect: 'Selección múltiple de demostración',
+        msMusic: 'Música',
+        msTravel: 'Viajes',
+        msFood: 'Comida',
+      },
+      theme: {
+        heading: 'Hazlo a tu medida',
+        ledeBefore: 'Los',
+        ledeLink: 'tokens de diseño',
+        ledeAfter:
+          ' son los que dan a cada proyecto de Eagami una personalidad distintiva: colores, fuentes, espaciado, esquinas, sombras y movimiento personalizables, todo aplicado al sitio o la aplicación completa. Modifica algunos abajo para ver cómo afectan a los componentes.',
+        brandColor: 'Color de marca',
+        radius: 'Radio de las esquinas',
+        font: 'Fuente',
+        fontDefault: '(predeterminado)',
+        reset: 'Restablecer',
       },
     },
     setup: {

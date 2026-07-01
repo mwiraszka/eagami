@@ -46,6 +46,12 @@
   gap: 12px;
 }
 
+// Pull the showcase up tight under the header rather than carrying the full
+// 48px inter-section gap above it.
+.ui-index__section--showcase {
+  margin-top: -32px;
+}
+
 .ui-index__heading {
   font-size: var(--text-section-heading-size);
   font-weight: var(--text-section-heading-weight);
@@ -62,6 +68,75 @@
   a {
     @include mixins.prose-link;
   }
+}
+
+.ui-theme__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ui-theme__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-bg-base);
+
+  // Labelled fields grow and wrap; the reset button hugs its own content.
+  > *:not(.ui-theme__reset) {
+    flex: 1 1 200px;
+    min-width: 0;
+  }
+}
+
+// Labels align along the top; the reset button (no label) drops to the control
+// baseline so it lines up with the fields' inputs rather than their labels.
+.ui-theme__reset {
+  align-self: flex-end;
+  flex: 0 0 auto;
+}
+
+// The slider carries no built-in label/value, so build the field by hand: a label
+// on top (aligned with the other field labels) and the thin track plus value
+// readout in a control band the same height as the neighbouring triggers, so the
+// track and value land on their baseline rather than riding up with the label.
+.ui-theme__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+}
+
+.ui-theme__label {
+  font-size: var(--text-label-md-size);
+  font-weight: var(--text-label-md-weight);
+  line-height: var(--text-label-md-lh);
+  color: var(--color-text-primary);
+}
+
+.ui-theme__slider-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 2.5em;
+}
+
+.ui-theme__slider {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-theme__value {
+  flex-shrink: 0;
+  min-width: 1.5em;
+  font-size: var(--text-label-md-size);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
 }
 
 .principle-grid {

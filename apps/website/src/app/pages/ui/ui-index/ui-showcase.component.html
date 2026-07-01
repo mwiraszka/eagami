@@ -95,6 +95,23 @@
     </span>
   </div>
 
+  <div class="showcase__item showcase__item--date">
+    <ea-date-picker
+      [(value)]="dateValue"
+      [attr.aria-label]="messages().ui.index.showcase.ariaDate" />
+  </div>
+
+  <div class="showcase__item showcase__item--multi">
+    <ea-multi-select
+      [options]="multiSelectOptions()"
+      [(value)]="multiSelectValue"
+      [attr.aria-label]="messages().ui.index.showcase.ariaMultiSelect" />
+  </div>
+
+  <div class="showcase__item">
+    <ea-breadcrumbs [items]="breadcrumbItems" />
+  </div>
+
   <div class="showcase__item">
     <div class="showcase__skeleton">
       <ea-skeleton

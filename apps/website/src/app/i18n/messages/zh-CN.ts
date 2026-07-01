@@ -244,6 +244,23 @@ export const zhCN: WebMessages = {
         ariaLayout: '演示布局',
         ariaColor: '演示颜色',
         ariaSelect: '演示选择',
+        ariaDate: '演示日期',
+        ariaMultiSelect: '演示多选',
+        msMusic: '音乐',
+        msTravel: '旅行',
+        msFood: '美食',
+      },
+      theme: {
+        heading: '打造专属于你的风格',
+        ledeBefore: '',
+        ledeLink: '设计令牌',
+        ledeAfter:
+          '赋予每个 Eagami 项目独特的个性：可自定义的颜色、字体、间距、圆角、阴影和动效，全部应用于整个网站或应用。在下方调整几项，即可查看它们如何影响这些组件。',
+        brandColor: '品牌色',
+        radius: '圆角半径',
+        font: '字体',
+        fontDefault: '（默认）',
+        reset: '重置',
       },
     },
     setup: {

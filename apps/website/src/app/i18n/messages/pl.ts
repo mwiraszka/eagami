@@ -258,6 +258,23 @@ export const pl: WebMessages = {
         ariaLayout: 'Układ demonstracyjny',
         ariaColor: 'Kolor demonstracyjny',
         ariaSelect: 'Wybór demonstracyjny',
+        ariaDate: 'Data demonstracyjna',
+        ariaMultiSelect: 'Wybór wielokrotny demonstracyjny',
+        msMusic: 'Muzyka',
+        msTravel: 'Podróże',
+        msFood: 'Jedzenie',
+      },
+      theme: {
+        heading: 'Dostosuj do siebie',
+        ledeBefore: '',
+        ledeLink: 'Tokeny projektowe',
+        ledeAfter:
+          ' nadają każdemu projektowi Eagami odrębny charakter: konfigurowalne kolory, czcionki, odstępy, narożniki, cienie i ruch, wszystko zastosowane w całej witrynie lub aplikacji. Zmień kilka poniżej i zobacz, jak wpływają na komponenty.',
+        brandColor: 'Kolor marki',
+        radius: 'Promień zaokrąglenia',
+        font: 'Czcionka',
+        fontDefault: '(domyślnie)',
+        reset: 'Resetuj',
       },
     },
     setup: {
