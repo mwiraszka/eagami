@@ -6,10 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const SRC = resolve(here, '../CHANGELOG.md');
-const OUT = resolve(
-  here,
-  '../../../apps/website/src/app/data/changelog.generated.ts',
-);
+const OUT = resolve(here, '../../../apps/website/src/app/data/changelog.generated.ts');
 
 const lines = readFileSync(SRC, 'utf8').split(/\r?\n/);
 

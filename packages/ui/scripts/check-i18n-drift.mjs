@@ -33,13 +33,17 @@ function extractKeyPaths(source) {
    */
   function collectFromObject(obj, path) {
     for (const prop of obj.properties) {
-      if (!ts.isPropertyAssignment(prop)) continue;
+      if (!ts.isPropertyAssignment(prop)) {
+        continue;
+      }
       const name = ts.isIdentifier(prop.name)
         ? prop.name.text
         : ts.isStringLiteral(prop.name)
           ? prop.name.text
           : null;
-      if (name === null) continue;
+      if (name === null) {
+        continue;
+      }
       const childPath = path ? `${path}.${name}` : name;
       if (ts.isObjectLiteralExpression(prop.initializer)) {
         collectFromObject(prop.initializer, childPath);
@@ -53,7 +57,9 @@ function extractKeyPaths(source) {
     if (ts.isVariableDeclaration(node) && node.initializer) {
       let init = node.initializer;
       // Strip an outer `as const` so we still see the literal underneath.
-      if (ts.isAsExpression(init)) init = init.expression;
+      if (ts.isAsExpression(init)) {
+        init = init.expression;
+      }
       if (ts.isObjectLiteralExpression(init)) {
         collectFromObject(init, '');
         return;
@@ -82,7 +88,9 @@ function checkDirectory(dir) {
   let failures = 0;
 
   for (const file of files) {
-    if (file === 'en.ts') continue;
+    if (file === 'en.ts') {
+      continue;
+    }
     const keys = extractKeyPaths(readFileSync(join(absDir, file), 'utf8'));
     const missing = diff(en, keys);
     const extra = diff(keys, en);
@@ -90,8 +98,12 @@ function checkDirectory(dir) {
     if (missing.length || extra.length) {
       const rel = `${dir}/${file}`;
       console.error(`\n${rel}:`);
-      if (missing.length) console.error(`  missing keys: ${missing.join(', ')}`);
-      if (extra.length) console.error(`  extra keys:   ${extra.join(', ')}`);
+      if (missing.length) {
+        console.error(`  missing keys: ${missing.join(', ')}`);
+      }
+      if (extra.length) {
+        console.error(`  extra keys:   ${extra.join(', ')}`);
+      }
       failures++;
     }
   }
@@ -106,7 +118,9 @@ if (dirs.length === 0) {
 }
 
 let totalFailures = 0;
-for (const dir of dirs) totalFailures += checkDirectory(dir);
+for (const dir of dirs) {
+  totalFailures += checkDirectory(dir);
+}
 
 if (totalFailures > 0) {
   console.error(`\n${totalFailures} locale file(s) drifted from en.ts.`);
