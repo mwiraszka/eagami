@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 2.4.0
-source: '@eagami/ui@2.4.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-05-28
+version: 5.0.0
+source: '@eagami/ui@5.0.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-01
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -96,7 +96,7 @@ Do not compose styles from raw `--font-size-*` / `--font-weight-*` tokens unless
 | Prop                 | Type                              | Notes                                                                                  |
 | -------------------- | --------------------------------- | -------------------------------------------------------------------------------------- |
 | `variant`            | union literal                     | Matches the Angular variant (e.g. `'primary' \| 'secondary' \| 'ghost' \| 'danger'`).  |
-| `size`               | `'sm' \| 'md' \| 'lg'`            | Default `'md'`.                                                                        |
+| `size`               | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Default `'md'`. Panel components (Dialog, Drawer) add `'full'`.                    |
 | `disabled`           | `boolean`                         | Default `false`.                                                                       |
 | `readOnly`           | `boolean`                         | Where applicable (form controls).                                                      |
 | `required`           | `boolean`                         | Where applicable (form controls).                                                      |
@@ -186,6 +186,22 @@ The secondary ramp is a single hue (H=264, S=25) varying only by lightness.
 | `--color-error-600`   | `#DC2626` |     | `--color-info-600`    | `#0891B2` |
 | `--color-error-700`   | `#B91C1C` |     | `--color-info-700`    | `#0E7490` |
 
+#### Color-picker intrinsics
+
+Pure RGB primaries for the color picker's hue wheel and saturation/value gradient. Intrinsic to the picker, not themeable, and identical in light and dark mode. Only the picker consumes them.
+
+| Token                          | Value                 |
+| ------------------------------ | --------------------- |
+| `--color-picker-hue-red`       | `#FF0000`             |
+| `--color-picker-hue-yellow`    | `#FFFF00`             |
+| `--color-picker-hue-green`     | `#00FF00`             |
+| `--color-picker-hue-cyan`      | `#00FFFF`             |
+| `--color-picker-hue-blue`      | `#0000FF`             |
+| `--color-picker-hue-magenta`   | `#FF00FF`             |
+| `--color-picker-sv-white`      | `#FFFFFF`             |
+| `--color-picker-sv-black`      | `#000000`             |
+| `--color-picker-thumb-halo`    | `rgba(0, 0, 0, 0.25)` |
+
 ### 2.2 Colors, semantic (light / dark)
 
 In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or `<html data-theme="dark">`):
@@ -203,12 +219,19 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-bg-base`                    | `--color-neutral-0`     | `--color-neutral-800`          |
 | `--color-bg-subtle`                  | `--color-neutral-50`    | `--color-neutral-700`          |
 | `--color-bg-stripe`                  | `--color-neutral-50`    | `--color-neutral-900`          |
+| `--color-bg-stripe-subtle`           | `color-mix(in srgb, bg-base 30%, bg-stripe)` | `color-mix(in srgb, bg-base 62.5%, bg-stripe)` |
+| `--color-bg-muted`                   | `--color-neutral-100`   | `--color-neutral-700`          |
+| `--color-bg-emphasis`                | `--color-neutral-100`   | `--color-neutral-600`          |
 | `--color-bg-elevated`                | `--color-neutral-0`     | `--color-neutral-700`          |
-| `--color-bg-muted`                   | `--color-neutral-100`   | `--color-neutral-600`          |
 | `--color-bg-overlay`                 | `rgba(0,0,0,0.5)`       | `rgba(0,0,0,0.5)`              |
+| `--color-tooltip-surface`            | `#1A1B21`               | `#1A1B21`                      |
+| `--color-tooltip-border`             | `rgba(255,255,255,0.15)`| `rgba(255,255,255,0.15)`       |
+| `--color-state-hover`                | `--color-neutral-100`   | `rgba(255,255,255,0.08)`       |
+| `--color-state-active`               | `--color-neutral-200`   | `rgba(255,255,255,0.14)`       |
 | `--color-border-subtle`              | `--color-neutral-200`   | `color-mix(in srgb, --color-neutral-700, --color-neutral-800)` |
 | `--color-border-default`             | `--color-neutral-200`   | `--color-neutral-400`          |
 | `--color-border-strong`              | `--color-neutral-400`   | `--color-neutral-300`          |
+| `--color-divider`                    | `--color-border-subtle` | `--color-neutral-600`          |
 | `--color-border-focus`               | `--color-primary-500`   | `--color-primary-500`          |
 | `--color-brand-default`              | `--color-primary-600`   | `--color-primary-500`          |
 | `--color-brand-hover`                | `--color-primary-700`   | `--color-primary-600`          |
@@ -224,19 +247,25 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-success-default`            | `--color-success-600`   | `--color-success-600`          |
 | `--color-success-subtle`             | `--color-success-50`    | `rgba(34, 197, 94, 0.15)`      |
 | `--color-success-muted`              | `--color-success-100`   | `rgba(34, 197, 94, 0.25)`      |
+| `--color-success-text`               | `--color-success-700`   | `--color-success-200`          |
 | `--color-warning-default`            | `--color-warning-600`   | `--color-warning-600`          |
 | `--color-warning-subtle`             | `--color-warning-50`    | `rgba(245, 158, 11, 0.15)`     |
 | `--color-warning-muted`              | `--color-warning-100`   | `rgba(245, 158, 11, 0.25)`     |
+| `--color-warning-text`               | `--color-warning-700`   | `--color-warning-200`          |
 | `--color-error-default`              | `--color-error-600`     | `--color-error-600`            |
 | `--color-error-subtle`               | `--color-error-50`      | `rgba(239, 68, 68, 0.15)`      |
 | `--color-error-muted`                | `--color-error-100`     | `rgba(239, 68, 68, 0.25)`      |
+| `--color-error-text`                 | `--color-error-700`     | `--color-error-200`            |
 | `--color-info-default`               | `--color-info-600`      | `--color-info-600`             |
 | `--color-info-subtle`                | `--color-info-50`       | `rgba(6, 182, 212, 0.15)`      |
 | `--color-info-muted`                 | `--color-info-100`      | `rgba(6, 182, 212, 0.25)`      |
+| `--color-info-text`                  | `--color-info-700`      | `--color-info-200`             |
 
-In dark mode the surface model splits the page (`bg-canvas`, deepest) from the surfaces that sit on it (`bg-base`, `bg-subtle`, `bg-elevated`, `bg-muted`). Canvas stays at neutral-950 while every component surface lifts to neutral-800 or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `bg-stripe` (neutral-900) is the alternating-row tone for tables; it sits *below* `bg-base` to keep odd rows darker than the surrounding card. `bg-muted` (neutral-600) is the topmost hover-state tone so it stays readable inside elevated surfaces.
+In dark mode the surface model splits the page (`bg-canvas`, deepest) from the surfaces that sit on it (`bg-base`, `bg-subtle`, `bg-elevated`, `bg-muted`). Canvas stays at neutral-950 while every component surface lifts to neutral-800 or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `bg-stripe` (neutral-900) is the alternating-row tone for tables; it sits *below* `bg-base` to keep odd rows darker than the surrounding card, and `bg-stripe-subtle` mixes it toward `bg-base` for a quieter zebra fill. `bg-muted` is the opaque static fill for disabled fields, tracks, and skeletons; `bg-emphasis` is the soft placeholder fill (e.g. avatar initials).
 
-`--color-brand-text` is the brand colour used as a **foreground** on a non-brand surface (selected dropdown row, today marker, sorted column header, spinner, active paginator page). It needs a 4.5:1 contrast against `--color-bg-base`, so light mode uses `primary-700` and dark mode uses `primary-300`. `--color-brand-default` stays free to be optimized as a surface (button background, badge background) without dragging the text-on-surface contrast along with it.
+Hover and active/selected fills route through `--color-state-hover` / `--color-state-active`, not through `bg-*`. Light mode uses solid neutral tones (neutral-100 / neutral-200); dark mode swaps to translucent white washes so a lift still reads on any dark surface, including the neutral-700 tier where several `bg-*` roles coincide.
+
+`--color-brand-text` is the brand colour used as a **foreground** on a non-brand surface (selected dropdown row, today marker, sorted column header, spinner, active paginator page). It needs a 4.5:1 contrast against `--color-bg-base`, so light mode uses `primary-700` and dark mode uses `primary-300`. `--color-brand-default` stays free to be optimized as a surface (button background, badge background) without dragging the text-on-surface contrast along with it. The status `*-text` tokens (`--color-success-text`, `--color-warning-text`, `--color-error-text`, `--color-info-text`) mirror this split: each is the status hue as a foreground on its own `*-subtle` / `*-muted` wash (badge, tag, toast), flipping from the `*-700` shade in light mode to the `*-200` pastel in dark mode to keep 4.5:1 on the translucent dark washes.
 
 ### 2.3 Spacing, base scale
 
@@ -292,14 +321,14 @@ Only these values are permitted (see section 1.1). The upstream SCSS defines add
 
 **Font families:**
 
-| Token                  | Stack                                                       |
-| ---------------------- | ----------------------------------------------------------- |
-| `--font-family-sans`   | DM Sans, Segoe UI, system-ui, -apple-system, sans-serif     |
-| `--font-family-brand`  | Syne, DM Sans, system-ui, sans-serif                        |
-| `--font-family-serif`  | Georgia, Times New Roman, serif                             |
-| `--font-family-mono`   | JetBrains Mono, Fira Code, Cascadia Code, monospace         |
+| Token                  | Stack                                                                      |
+| ---------------------- | -------------------------------------------------------------------------- |
+| `--font-family-sans`   | DM Sans, DM Sans Fallback, Segoe UI, system-ui, -apple-system, sans-serif  |
+| `--font-family-brand`  | Syne, Syne Fallback, DM Sans, DM Sans Fallback, system-ui, sans-serif      |
+| `--font-family-serif`  | Georgia, Times New Roman, serif                                            |
+| `--font-family-mono`   | ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace           |
 
-Load fonts via `<link>` to Google Fonts or self-hosted via `@font-face`.
+Load the web fonts (DM Sans, Syne) via `<link>` to Google Fonts or self-hosted via `@font-face`. The `* Fallback` faces are Arial tuned with metric overrides to match each web font, so they must sit immediately after the web font in the stack: text laid out before the font loads then shares the same metrics and `font-display: swap` causes no layout shift when the real font arrives. The mono stack is system-only (no web font). Set up the fallback `@font-face` metric-override declarations upstream, or drop the `* Fallback` entries if not replicating them.
 
 **Font sizes (rem, base 16px):**
 
@@ -340,8 +369,10 @@ Each role exposes three custom properties: `size`, `weight`, `lh`.
 | `label-lg`    | md          | medium  | tight   |
 | `label-md`    | sm          | medium  | tight   |
 | `label-sm`    | xs          | medium  | tight   |
-| `helper`      | xs          | regular | normal  |
-| `code`        | sm          | regular | normal  (+ mono family) |
+| `helper`      | 13px        | regular | normal  |
+| `code`        | 0.875em     | regular | normal  (+ mono family) |
+
+`helper` uses a fixed `0.8125rem` (13px), between `--font-size-xs` (12px) and `--font-size-sm` (14px), for field hint/error text and short metadata. `code` sizes in `em` (0.875em) so it tracks the surrounding text, and also exposes `--text-code-color`, `--text-code-bg`, `--text-code-padding`, and `--text-code-radius`; a parallel `--text-kbd-*` group styles keyboard-key glyphs.
 
 Usage example:
 
@@ -396,16 +427,16 @@ Usage example:
 | `--shadow-focus-ring-error`   | `0 0 0 3px var(--color-error-200)`                                                        |
 | `--shadow-focus-ring-success` | `0 0 0 3px var(--color-success-200)`                                                      |
 
-**Shadows (dark mode):** black drop shadows vanish against the near-black `bg-base`, so dark mode swaps to white-at-low-alpha values. `xs` through `lg` use the light geometry; `xl` and `2xl` use tighter offset/blur and lower alpha so the lighter fade does not bloom into a halo.
+**Shadows (dark mode):** a drop shadow is the absence of light, so dark mode keeps the shadows **black** (and deeper than light mode); a white "shadow" reads as a glow and looks wrong. Elevation is instead carried by the lifted surface tone plus a hairline top highlight (`--shadow-edge-highlight`, `inset 0 1px 0 0 rgba(255,255,255,0.06)` in dark, a `0 0 #0000` no-op in light) appended to every level so the surface catches light along its top edge.
 
 | Token         | Dark value                                                                                              |
 | ------------- | ------------------------------------------------------------------------------------------------------- |
-| `--shadow-xs` | `0 1px 2px 0 rgba(255,255,255,0.04)`                                                                    |
-| `--shadow-sm` | `0 1px 3px 0 rgba(255,255,255,0.05), 0 1px 2px -1px rgba(255,255,255,0.04)`                              |
-| `--shadow-md` | `0 4px 6px -1px rgba(255,255,255,0.06), 0 2px 4px -2px rgba(255,255,255,0.04)`                           |
-| `--shadow-lg` | `0 8px 12px -2px rgba(255,255,255,0.08), 0 3px 5px -3px rgba(255,255,255,0.05)`                          |
-| `--shadow-xl` | `0 12px 18px -4px rgba(255,255,255,0.05), 0 5px 8px -4px rgba(255,255,255,0.03)`                         |
-| `--shadow-2xl`| `0 16px 28px -8px rgba(255,255,255,0.06)`                                                                |
+| `--shadow-xs` | `0 1px 2px 0 rgba(0,0,0,0.4), var(--shadow-edge-highlight)`                                              |
+| `--shadow-sm` | `0 1px 3px 0 rgba(0,0,0,0.5), 0 1px 2px -1px rgba(0,0,0,0.4), var(--shadow-edge-highlight)`              |
+| `--shadow-md` | `0 4px 8px -2px rgba(0,0,0,0.55), 0 2px 4px -2px rgba(0,0,0,0.4), var(--shadow-edge-highlight)`          |
+| `--shadow-lg` | `0 12px 20px -4px rgba(0,0,0,0.6), 0 4px 8px -4px rgba(0,0,0,0.45), var(--shadow-edge-highlight)`        |
+| `--shadow-xl` | `0 20px 28px -6px rgba(0,0,0,0.65), 0 8px 12px -6px rgba(0,0,0,0.5), var(--shadow-edge-highlight)`       |
+| `--shadow-2xl`| `0 28px 50px -12px rgba(0,0,0,0.75), var(--shadow-edge-highlight)`                                       |
 
 **Bevel and well (relief):** paired inset shadows for surfaces that should read as raised or recessed. Compose with `--shadow-*` for an ambient drop, e.g. `box-shadow: var(--shadow-bevel), var(--shadow-sm);`. Dark-mode variants drop the highlight alpha and raise the shadow alpha so the relief still reads against the lifted `bg-base`.
 
@@ -482,7 +513,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS Tokens
- * Sync source: @eagami/ui@2.4.0 (packages/ui/src/styles/tokens/*.scss)
+ * Sync source: @eagami/ui@5.0.0 (packages/ui/src/styles/tokens/*.scss)
  * Do not edit by hand; regenerate from the upstream SCSS.
  * ------------------------------------------------------------------------- */
 
@@ -939,7 +970,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Sync source: @eagami/ui@2.4.0
+ * Sync source: @eagami/ui@5.0.0
  */
 
 export const palette = {
@@ -1230,7 +1261,8 @@ When building React components that mirror Eagami components, preserve the prop 
 
 ```ts
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
-type Size = 'sm' | 'md' | 'lg';
+// Shared t-shirt scale used by every sized component (mirrors upstream EaSize).
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type ButtonType = 'button' | 'submit' | 'reset';
 
 interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
@@ -1240,6 +1272,9 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
   disabled?: boolean;             // default false
   loading?: boolean;              // default false
   fullWidth?: boolean;            // default false
+  icon?: React.ComponentType;     // optional icon rendered to the left of the label
+  'aria-label'?: string;          // when the content is not descriptive enough
+  'aria-current'?: string;        // marks the button as the current item in a set
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void; // 'clicked' upstream
 }
@@ -1259,42 +1294,67 @@ type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | '
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type' | 'prefix'> {
   label?: string;
-  placeholder?: string;
+  placeholder?: string;           // default ''
   hint?: string;
   errorMsg?: string;              // setting this puts the input in the error visual state
   type?: InputType;               // default 'text'
   size?: Size;                    // default 'md'
   disabled?: boolean;
-  readOnly?: boolean;
+  readOnly?: boolean;             // 'readonly' upstream
   required?: boolean;
-  value?: string;
+  clearable?: boolean;            // default false; shows a clear button when non-empty
+  showPasswordToggle?: boolean;   // default true; only relevant when type === 'password'
+  autofocus?: boolean;            // default false
+  autocomplete?: string;          // native autocomplete attribute
+  list?: string;                  // native <datalist> id
+  min?: number;                   // for type 'number'
+  max?: number;                   // for type 'number'
+  step?: number;                  // for type 'number'
+  minLength?: number;
+  maxLength?: number;
+  icon?: React.ComponentType;     // leading icon rendered inside the input
+  value?: string;                 // default ''
   onChange?: (value: string) => void;          // emits string, not the event
   onFocus?: (e: React.FocusEvent) => void;     // mirrors `focused`
   onBlur?: (e: React.FocusEvent) => void;      // mirrors `blurred`
-  prefix?: React.ReactNode;       // icon/element rendered inside the input, left
-  suffix?: React.ReactNode;       // icon/element rendered inside the input, right
 }
 ```
 
-Note: there is no `status` prop and no `success` visual state. The error state is driven solely by `errorMsg`. The password-visibility toggle (when `type === 'password'`) must be keyboard-reachable, with an accessible name driven by the `input.showPassword` / `input.hidePassword` i18n strings (see section 6).
+Note: there is no `status` prop and no `success` visual state. The error state is driven solely by `errorMsg`. There is a single leading `icon` slot (no separate `prefix` / `suffix`). The password-visibility toggle (shown for `type === 'password'` unless `showPasswordToggle` is `false`) must be keyboard-reachable, with an accessible name driven by the `input.showPassword` / `input.hidePassword` i18n strings (see section 6). A `clearable` input renders a keyboard-reachable clear button named from `input.clear`.
 
 ### 5.3 Textarea
 
-Mirrors `Input` but renders a `<textarea>`. Same `label` / `hint` / `errorMsg` / `size` / `disabled` / `readOnly` / `required` / `value` / `onChange(value: string)` / `onFocus` / `onBlur` props. Add `rows?: number` and `autoResize?: boolean`.
+Mirrors `Input` but renders a `<textarea>`. Same `label` / `hint` / `errorMsg` / `size` / `disabled` / `readOnly` / `required` / `placeholder` / `value` / `onChange(value: string)` / `onFocus` / `onBlur` props. Instead of `rows` / `autoResize`, it exposes:
+
+```ts
+type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
+
+interface TextareaExtraProps {
+  resize?: TextareaResize;        // default 'vertical'
+  minHeight?: number;             // px; lower bound for auto-grow
+  maxHeight?: number;             // px; upper bound for auto-grow (scrolls past it)
+  maxLength?: number;             // 'maxlength' upstream
+}
+```
+
+The textarea auto-grows with its content between `minHeight` and `maxHeight`.
 
 ### 5.4 Checkbox
 
 ```ts
 interface CheckboxProps {
-  checked: boolean;
-  onChange: (checked: boolean) => void;
+  checked: boolean;               // default false; mirrors two-way [(checked)]
+  onChange: (checked: boolean) => void; // mirrors `changed`
   label?: string;
+  count?: string | number;        // supplementary value shown dimmed after the label
   hint?: string;
   errorMsg?: string;
   size?: Size;
   disabled?: boolean;
   required?: boolean;
-  indeterminate?: boolean;
+  indeterminate?: boolean;        // default false
+  id?: string;
+  'aria-label'?: string;          // accessible name when label is omitted
 }
 ```
 
@@ -1302,14 +1362,15 @@ interface CheckboxProps {
 
 ```ts
 interface SwitchProps {
-  checked: boolean;
-  onChange: (checked: boolean) => void;
+  checked: boolean;               // default false; mirrors two-way [(checked)]
+  onChange: (checked: boolean) => void; // mirrors `changed`
   label?: string;
   hint?: string;
   errorMsg?: string;
   size?: Size;
   disabled?: boolean;
   required?: boolean;
+  id?: string;
   'aria-label'?: string;          // required when label is omitted
 }
 ```
@@ -1318,9 +1379,9 @@ interface SwitchProps {
 
 ```ts
 interface RadioGroupProps<T extends string> {
-  value: T;
-  onChange: (value: T) => void;
-  name?: string;
+  value: T;                       // mirrors two-way [(value)]
+  onChange: (value: T) => void;   // mirrors `changed`
+  name?: string;                  // auto-generated when omitted
   label?: string;
   hint?: string;
   errorMsg?: string;
@@ -1329,13 +1390,15 @@ interface RadioGroupProps<T extends string> {
   disabled?: boolean;
   required?: boolean;
   id?: string;
+  'aria-label'?: string;          // accessible name when label is omitted
   children: React.ReactNode;      // expects <Radio> children
 }
 
 interface RadioProps<T extends string> {
-  value: T;
+  value: T;                       // required
   label?: string;
   disabled?: boolean;
+  id?: string;
 }
 ```
 
@@ -1346,10 +1409,12 @@ Vertically centre the label against the radio circle.
 ```ts
 type CardVariant = 'elevated' | 'outlined' | 'filled';
 type CardPadding = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+type CardHeaderAlign = 'start' | 'center' | 'end';
 
 interface CardProps {
   variant?: CardVariant;          // default 'elevated'
   padding?: CardPadding;          // default 'md'
+  headerAlign?: CardHeaderAlign;  // default 'center'; horizontal alignment of header content
   fullWidth?: boolean;
   headerDivider?: boolean;        // renders a divider between header and body
   header?: React.ReactNode;       // slotted via a `header` prop, not children
@@ -1363,12 +1428,12 @@ The `elevated` variant uses `--color-bg-elevated` for the surface and adds a hai
 ### 5.8 Dialog
 
 ```ts
-type DialogSize = 'sm' | 'md' | 'lg' | 'full';
+type DialogWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 interface DialogProps {
-  open: boolean;
+  open: boolean;                  // mirrors two-way [(open)]
   onOpenChange: (open: boolean) => void;
-  size?: DialogSize;              // default 'md'
+  width?: DialogWidth;            // default 'md'; width preset for the panel
   closeOnBackdrop?: boolean;      // default true
   closeOnEscape?: boolean;        // default true
   showClose?: boolean;            // default true
@@ -1377,6 +1442,8 @@ interface DialogProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   children: React.ReactNode;
+  onOpened?: () => void;          // mirrors `opened`
+  onClosed?: () => void;          // mirrors `closed`
 }
 ```
 
@@ -1385,14 +1452,20 @@ Build on the native `<dialog>` element with `showModal()` to inherit focus trap 
 ### 5.9 Drawer
 
 ```ts
-type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
-type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
+// 'start' / 'end' are direction-aware (map to left/right per the active `dir`).
+type DrawerPosition = 'left' | 'right' | 'top' | 'bottom' | 'start' | 'end';
+type DrawerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+type DrawerMode = 'overlay' | 'push';
+type DrawerAnimation = 'none' | 'linear' | 'eased';
 
 interface DrawerProps {
-  open: boolean;
+  open: boolean;                  // mirrors two-way [(open)]
   onOpenChange: (open: boolean) => void;
-  position?: DrawerPosition;      // default 'right'
-  size?: DrawerSize;              // default 'md'
+  position?: DrawerPosition;      // default 'right'; edge the drawer slides in from
+  size?: DrawerSize;              // default 'md'; extent along the main axis (width for side, height for top/bottom)
+  mode?: DrawerMode;              // default 'overlay'; 'push' opens non-modally and reflows page content aside
+  pushTarget?: string | HTMLElement | null; // default null; element pushed aside in push mode (CSS selector or ref), defaults to document body
+  animation?: DrawerAnimation;    // default 'eased'; 'none' is instant, 'linear' constant speed, 'eased' an ease-out curve
   closeOnBackdrop?: boolean;      // default true
   closeOnEscape?: boolean;        // default true
   showClose?: boolean;            // default true
@@ -1401,12 +1474,12 @@ interface DrawerProps {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   children: React.ReactNode;
-  onOpened?: () => void;
-  onClosed?: () => void;
+  onOpened?: () => void;          // mirrors `opened`
+  onClosed?: () => void;          // mirrors `closed`
 }
 ```
 
-Same `<dialog>`-based construction and focus-restore behavior as Dialog.
+There is no `width` prop (the axis extent is the single `size` input) and no boolean `animated` prop (use `animation`). In `overlay` mode the drawer floats over a dimmed, focus-trapped page with the same `<dialog>`-based construction and focus-restore behavior as Dialog; in `push` mode it opens non-modally and shifts the `pushTarget` content aside instead of trapping focus.
 
 ### 5.10 SelectOption
 
@@ -1546,10 +1619,11 @@ Calendar grid receives focus on open. Keyboard: arrows, PageUp/PageDown, Home/En
 
 ```ts
 interface CodeInputProps {
-  value: string;
+  value: string;                  // default ''; mirrors two-way [(value)]
   onChange: (value: string) => void;
-  onCompleted?: (value: string) => void;
+  onCompleted?: (value: string) => void; // mirrors `completed`
   length?: number;                // default 6
+  allowAllChars?: boolean;        // default false; when off only digits are accepted
   label?: string;
   placeholder?: string;
   hint?: string;
@@ -1571,16 +1645,17 @@ type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
 type DataTableSortDirection = 'asc' | 'desc' | null;
 
 interface DataTableColumn<T = Record<string, unknown>> {
-  key: keyof T & string;
-  header: string;
+  key: string;
+  label: string;                  // header text ('label' upstream, not 'header')
   sortable?: boolean;
   align?: 'left' | 'center' | 'right';
   width?: string;
-  cell?: (row: T) => React.ReactNode;
+  format?: (value: unknown) => string;   // format a raw cell value to a string
+  cell?: (row: T) => React.ReactNode;    // full custom cell render (mirrors cellTemplate)
 }
 
 interface DataTableSortState {
-  column: string;
+  column: string;                 // sorted column key ('' when none)
   direction: DataTableSortDirection;
 }
 
@@ -1589,13 +1664,16 @@ interface DataTableProps<T = Record<string, unknown>> {
   data: T[];                      // required
   trackBy?: keyof T;
   density?: DataTableDensity;     // default 'comfortable'
-  stickyHeader?: boolean;
-  striped?: boolean;
+  stickyHeader?: boolean;         // default false
+  striped?: boolean;              // default false
   hoverable?: boolean;            // default true
-  bordered?: boolean;
+  bordered?: boolean;             // default false
+  clickable?: boolean;            // default false; pointer cursor + emits rowActivate on click/Enter/Space
+  navigable?: boolean;            // default false; keyboard-navigable grid with roving focus and arrow-key cell movement
   noDataText?: string;            // default uses i18n dataTable.noData
-  sort?: DataTableSortState;
+  sort?: DataTableSortState;      // default { column: '', direction: null }; mirrors two-way [(sort)]
   onSortChange?: (sort: DataTableSortState) => void; // mirrors `sorted`
+  onRowActivate?: (row: T) => void;      // mirrors `rowActivate`; fires when a clickable row is activated
   children?: React.ReactNode;     // optional <Paginator/> footer slot
 }
 ```
@@ -1613,13 +1691,15 @@ interface PaginatorState {
 }
 
 interface PaginatorProps {
-  total: number;                          // total row count
-  page: number;
-  pageSize: number;
-  onChange: (state: PaginatorState) => void;
+  totalItems: number;                     // required; total item count used to compute the page count
+  page: number;                           // mirrors two-way [(page)]; default 1
+  pageSize: number;                       // mirrors two-way [(pageSize)]; default 10
+  onChange: (state: PaginatorState) => void; // mirrors `changed`
   pageSizeOptions?: number[];             // default [10, 25, 50, 100]
   showPageSizeSelector?: boolean;         // default true
   showRangeLabel?: boolean;               // default true
+  groupThousands?: boolean;               // default true; comma-group thousands in range/page numbers
+  size?: Size;                            // default 'md'
   align?: PaginatorAlign;                 // default 'right'
   disabled?: boolean;
 }
@@ -1727,9 +1807,11 @@ type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 
 interface AlertProps {
   variant?: AlertVariant;         // default 'default'
+  size?: Size;                    // default 'md'
   dismissible?: boolean;          // default false
   visible?: boolean;              // controlled visibility; default true
-  onDismiss?: () => void;
+  icon?: React.ComponentType;     // overrides the default per-variant status icon
+  onDismiss?: () => void;         // mirrors `dismissed`
   children: React.ReactNode;
 }
 ```
@@ -1740,6 +1822,9 @@ The decorative status icon is hidden from assistive technology. `error` and `war
 
 ```ts
 type ToastVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+type ToastPosition =
+  | 'top-left' | 'top' | 'top-right'
+  | 'bottom-left' | 'bottom' | 'bottom-right';
 
 interface Toast {
   id: number;
@@ -1750,10 +1835,15 @@ interface Toast {
 
 interface ToastOptions {
   variant?: ToastVariant;
-  duration?: number;              // default 4000 ms
+  duration?: number;              // default 4000 ms; pass 0 to disable auto-dismiss
 }
 
 // One <ToastOutlet /> must be mounted somewhere in the tree.
+interface ToastOutletProps {
+  position?: ToastPosition;       // default 'bottom-right'; corner or edge the stack is pinned to
+  clearable?: boolean;            // default true; shows a dismiss button on each toast
+}
+
 interface ToastApi {
   show(message: string, options?: ToastOptions): number;
   success(message: string, duration?: number): number;
@@ -1761,6 +1851,7 @@ interface ToastApi {
   warning(message: string, duration?: number): number;
   info(message: string, duration?: number): number;
   dismiss(id: number): void;
+  clear(): void;                  // dismisses every active toast
 }
 
 // Recommended API:
@@ -1776,8 +1867,9 @@ The slide-in animation degrades to an opacity-only fade under `prefers-reduced-m
 type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
 interface TooltipProps {
-  content: React.ReactNode;
-  position?: TooltipPosition;     // default 'top'
+  content: React.ReactNode;       // required; 'eaTooltip' upstream
+  position?: TooltipPosition;     // default 'top'; 'tooltipPosition' upstream
+  maxWidth?: number;              // px; default 200
   children: React.ReactElement;   // the trigger element
 }
 ```
@@ -1806,10 +1898,12 @@ There is no `primary` variant; tags are reserved for semantic statuses. For bran
 
 ```ts
 type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+type BadgeShape = 'pill' | 'pin';
 
 interface BadgeProps {
-  variant?: BadgeVariant;
-  size?: Size;
+  variant?: BadgeVariant;         // default 'default'
+  size?: Size;                    // default 'md'
+  shape?: BadgeShape;             // default 'pill'
   children: React.ReactNode;
 }
 ```
@@ -1819,10 +1913,10 @@ interface BadgeProps {
 ```ts
 interface AvatarProps {
   src?: string;
-  alt?: string;
+  alt?: string;                   // default ''
   initials?: string;              // used as the accessible name when `alt` is empty
-  size?: Size | number;
-  shape?: 'circle' | 'square';
+  size?: Size;                    // default 'md'
+  shape?: 'circle' | 'square';    // default 'circle'
 }
 ```
 
@@ -1873,10 +1967,12 @@ type EmptyStateHeadingLevel = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 interface EmptyStateProps {
   title?: string;
   description?: string;
-  size?: Size;
+  size?: Size;                    // default 'md'
   headingLevel?: EmptyStateHeadingLevel; // default 'h2'
-  media?: React.ReactNode;        // icon, illustration, etc.
-  actions?: React.ReactNode;      // CTA buttons
+  bordered?: boolean;             // default false; draws a dashed container border
+  icon?: React.ComponentType;     // convenience icon rendered above the title
+  media?: React.ReactNode;        // 'media' slot: icon, illustration, etc.
+  actions?: React.ReactNode;      // 'actions' slot: CTA buttons
 }
 ```
 
@@ -1895,10 +1991,10 @@ interface SkeletonProps {
 
 ### 5.32 ProgressBar, Spinner, Divider, EagamiWordmark
 
-- **ProgressBar:** `value: number`, `max?: number = 100`, `label?: string` (default `undefined`), `indeterminate?: boolean`. Exposes `aria-busy` while indeterminate.
-- **Spinner:** `size?: Size`. Honors `prefers-reduced-motion` by slowing the spin rather than disabling it.
-- **Divider:** `orientation?: 'horizontal' | 'vertical'`, `label?: string`.
-- **EagamiWordmark:** `variant?: 1 | 2 | 3 | 4` (numeric, maps to four text options internally), `layout?: 'stacked' | 'inline'`, `size?: number` (CSS pixel value for continuous scaling). Use for branded eagami pages only.
+- **ProgressBar:** `value?: number = 0`, `max?: number = 100`, `variant?: 'default' | 'success' | 'warning' | 'error' | 'info'` (default `'default'`), `size?: Size` (default `'md'`), `label?: string` (default `undefined`), `showPercentage?: boolean` (default `false`), `indeterminate?: boolean` (default `false`). Exposes `aria-busy` while indeterminate.
+- **Spinner:** `size?: Size` (default `'md'`), `label?: string` (accessible name for the busy state). Honors `prefers-reduced-motion` by slowing the spin rather than disabling it.
+- **Divider:** `orientation?: 'horizontal' | 'vertical'` (default `'horizontal'`), `label?: string`, `thick?: boolean` (default `false`).
+- **EagamiWordmark:** `variant?: 'default' | 'byline' | 'tagline'` (default `'default'`), `layout?: 'stacked' | 'inline'` (default `'stacked'`), `size?: number` (CSS pixel value for continuous scaling; default `48`). Use for branded eagami pages only.
 
 ### 5.33 Icon
 
@@ -1915,23 +2011,379 @@ Single-color brand icons (`GithubIcon`, `FacebookIcon`, `XTwitterIcon`, `Microso
 
 The full icon set: `AlertCircle`, `AlertTriangle`, `Archive`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `ArrowUp`, `AtSign`, `BarChart`, `Bell`, `Bookmark`, `Briefcase`, `Calendar`, `Camera`, `Check`, `CheckCircle`, `ChevronDown`, `ChevronLeft`, `ChevronRight`, `ChevronUp`, `ChevronsUpDown`, `Clipboard`, `Clock`, `Cloud`, `Copy`, `CreditCard`, `DollarSign`, `Download`, `Eagami` (brand mark), `ExternalLink`, `Eye`, `EyeOff`, `File`, `Filter`, `Flag`, `Folder`, `Gift`, `Globe`, `Hash`, `Heart`, `HelpCircle`, `Home`, `Image`, `Inbox`, `Info`, `Link`, `List`, `Loader`, `Lock`, `LogIn`, `LogOut`, `Mail`, `MapPin`, `Maximize`, `Menu`, `Mic`, `Minimize`, `Minus`, `Monitor`, `Moon`, `MoreHorizontal`, `Package`, `Paperclip`, `Pause`, `Pencil`, `Phone`, `Play`, `Plus`, `Printer`, `RefreshCw`, `RotateCcw`, `Save`, `Search`, `Send`, `Settings`, `Share`, `Shield`, `ShoppingCart`, `Smartphone`, `Star`, `Sun`, `ThumbsDown`, `ThumbsUp`, `Trash`, `TrendingUp`, `Unlock`, `Upload`, `User`, `Users`, `Video`, `Volume2`, `Wifi`, `X`, `XCircle`, `Zap`. Brand icons: `Apple` (deprecated), `Facebook`, `Github`, `Google`, `Microsoft`, `XTwitter`.
 
+### 5.34 ColorPicker
+
+```ts
+type ColorPickerFormat = 'hex' | 'rgb' | 'hsl' | 'all';
+
+interface ColorPickerProps {
+  value: string | null;             // default null; current color string, mirrors two-way [(value)]
+  onChange: (value: string | null) => void; // mirrors `changed`
+  format?: ColorPickerFormat;       // default 'all'; output format of the emitted color value
+  presets?: readonly string[];      // default DEFAULT_PRESETS; preset swatches, pass [] to hide them
+  showAlpha?: boolean;              // default true; shows the alpha slider and includes alpha in the value
+  label?: string;
+  placeholder?: string;             // shown on the trigger while no color is selected
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  readOnly?: boolean;               // 'readonly' upstream; keeps the popover from opening
+  required?: boolean;
+  id?: string;
+}
+```
+
+The trigger opens a popover swatch/slider picker built on the shared Popover primitive (see 5.38). An eyedropper control is offered where the browser supports the EyeDropper API; the hex/RGB input row can be cycled between modes.
+
+### 5.35 CommandPalette
+
+```ts
+interface CommandPaletteItem<T = unknown> {
+  id: string;                       // stable id used for tracking and aria-activedescendant
+  label: string;
+  description?: string;             // secondary text rendered below the label
+  icon?: React.ComponentType;       // leading icon component
+  shortcut?: string;                // decorative keyboard-shortcut hint on the right edge
+  group?: string;                   // section heading; ungrouped items render first
+  disabled?: boolean;
+  keywords?: readonly string[];     // extra hidden search terms
+  data?: T;                         // arbitrary payload passed through to onExecute
+}
+
+interface CommandPaletteProps {
+  items: readonly CommandPaletteItem[]; // required
+  open: boolean;                    // mirrors two-way [(open)]
+  onOpenChange: (open: boolean) => void;
+  onExecute: (item: CommandPaletteItem) => void; // 'execute' upstream; fires with the chosen item
+  placeholder?: string;             // default ''; search input placeholder
+  emptyMessage?: string;            // default uses i18n; shown when the query matches no items
+}
+```
+
+A modal search dialog: type to filter, arrow keys to move the active row, Enter to execute. The palette does not bind global shortcuts (`shortcut` is display-only); the consumer wires those.
+
+### 5.36 FileUploader
+
+```ts
+type FileUploaderRejectionReason = 'type' | 'size' | 'count';
+
+interface FileUploaderRejection {
+  file: File;
+  reason: FileUploaderRejectionReason;
+}
+
+interface FileUploaderProps {
+  value: readonly File[];           // default []; current file list, mirrors two-way [(value)]
+  onChange: (value: readonly File[]) => void;
+  onFileRemoved?: (file: File) => void;   // mirrors `fileRemoved`
+  onRejected?: (rejections: readonly FileUploaderRejection[]) => void; // mirrors `rejected`
+  accept?: string;                  // comma-separated MIME types / extensions, e.g. 'image/*,.pdf'
+  multiple?: boolean;               // default true
+  maxFiles?: number;                // files beyond the limit are rejected
+  maxSize?: number;                 // max size per file in bytes; larger files are rejected
+  showFileList?: boolean;           // default true; renders the selected-file list below the dropzone
+  progress?: ReadonlyMap<File, number>; // per-file upload progress (0-100), keyed by File; omit to hide bars
+  label?: string;
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  required?: boolean;
+  id?: string;
+}
+```
+
+Pure UI: the component validates and lists files but does not perform the upload. Drive progress bars by feeding back a `progress` map keyed by `File` identity.
+
+### 5.37 MultiSelect
+
+Reuses the shared `SelectOption` shape (see 5.10). Selection is by option `value`, and the current value is a plain string array.
+
+```ts
+interface MultiSelectProps {
+  options: readonly SelectOption[]; // default []
+  value: readonly string[];         // default []; selected option values, mirrors two-way [(value)]
+  onChange: (value: readonly string[]) => void; // mirrors `changed`
+  label?: string;
+  placeholder?: string;             // shown on the trigger while nothing is selected
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  readOnly?: boolean;               // 'readonly' upstream
+  required?: boolean;
+  searchable?: boolean;             // default true; shows a search input at the top of the popover
+  searchPlaceholder?: string;
+  selectAll?: boolean;              // default true; shows the tri-state select-all row
+  maxVisibleChips?: number;         // default 0 (no limit); chips past this collapse into a count pill
+  id?: string;
+}
+```
+
+Selected options render as removable chips in the trigger; the popover list (built on Popover, see 5.38) supports keyboard navigation, a tri-state select-all, and optional filtering.
+
+### 5.38 Popover
+
+The low-level positioning primitive that Menu, Dropdown, MultiSelect, ColorPicker, and TimePicker build on. It anchors a floating surface to a host element with `position: fixed` so it escapes overflow-clipping ancestors. Unlike the higher-level overlays, `open` here is one-way: the popover emits a close request and the parent mirrors it back into `open`.
+
+```ts
+type PopoverPlacement =
+  | 'top' | 'top-start' | 'top-end'
+  | 'bottom' | 'bottom-start' | 'bottom-end'
+  | 'left' | 'right';
+type PopoverRole = 'menu' | 'listbox' | 'dialog' | 'tooltip' | 'grid';
+type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
+
+interface PopoverProps {
+  anchor: HTMLElement | React.RefObject<HTMLElement>; // required; element the popover positions against
+  open: boolean;                    // default false
+  onCloseRequested: () => void;     // mirrors `closeRequested`; parent mirrors this into `open`
+  placement?: PopoverPlacement;     // default 'bottom-start'
+  role?: PopoverRole;               // default 'dialog'
+  offset?: number;                  // default 2; gap in px between anchor and surface
+  flip?: boolean;                   // default true; flips to the opposite side when the placement overflows
+  clamp?: boolean;                  // default true; clamps the surface inside the viewport
+  matchAnchorWidth?: boolean;       // default false; sets min-width to match the anchor
+  closeOnEscape?: boolean;          // default true
+  closeOnOutsideClick?: boolean;    // default true
+  scrollBehavior?: PopoverScrollBehavior; // default 'reposition'; response to scroll/resize while open
+  surfaceId?: string;               // id for the surface, referenced by triggers via aria-controls
+  'aria-label'?: string;            // name the surface when it has no visible heading
+  children: React.ReactNode;
+}
+```
+
+### 5.39 RangeSlider
+
+```ts
+type RangeSliderValue = readonly [number, number]; // [low, high]
+
+interface RangeSliderProps {
+  value: RangeSliderValue;          // default [0, 100]; mirrors two-way [(value)]
+  onChange: (value: RangeSliderValue) => void; // mirrors `changed`
+  min?: number;                     // default 0
+  max?: number;                     // default 100
+  step?: number;                    // default 1; increment each thumb snaps to
+  label?: string;
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  required?: boolean;
+  showValue?: boolean;              // default false; shows the current low and high values
+  showMinMaxLabels?: boolean;       // default false; shows the bounds at the ends of the track
+  groupThousands?: boolean;         // default true; ignored when formatValue is provided
+  formatValue?: (value: number) => string; // applied to each value before display
+  ariaLabelLow?: string;            // accessible name for the low thumb; falls back to the field label
+  ariaLabelHigh?: string;           // accessible name for the high thumb; falls back to the field label
+  id?: string;
+}
+```
+
+Two thumbs share a single track; the low thumb cannot cross above the high thumb and vice versa. Keyboard: arrows, PageUp/PageDown, Home/End per thumb.
+
+### 5.40 Rating
+
+```ts
+interface RatingProps {
+  value: number;                    // default 0; mirrors two-way [(value)]
+  onChange: (value: number) => void;
+  onHoverChange?: (value: number | null) => void; // 'hoverChanged'; previewed value, null on leave
+  min?: number;                     // default 0; lowest value the user can select
+  max?: number;                     // default 5; highest value and the number of icons rendered
+  allowHalf?: boolean;              // default false; enables 0.5 increments
+  clearable?: boolean;              // default true; clicking the current value clears back to 0
+  icon?: React.ComponentType;       // 'iconClass' upstream; icon for empty and full positions (default Star)
+  halfIcon?: React.ComponentType;   // 'halfIconClass' upstream; icon for half positions when allowHalf
+  label?: string;
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  readOnly?: boolean;               // 'readonly' upstream; display-only, ignores input
+  required?: boolean;
+  id?: string;
+}
+```
+
+### 5.41 Stepper (with Step)
+
+```ts
+interface StepperProps {
+  activeStep: number;               // default 0; zero-based index, mirrors two-way [(activeStep)]
+  onChange: (index: number) => void; // mirrors `changed`
+  linear?: boolean;                 // default false; require each non-optional step completed before advancing
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  id?: string;
+  children: React.ReactNode;        // <Step> children
+}
+
+interface StepProps {
+  label: string;                    // required; shown in the step indicator
+  completed?: boolean;              // default false; marks the step done, updating its indicator
+  optional?: boolean;               // default false; shown as a hint below the label
+  disabled?: boolean;
+  id?: string;
+  children?: React.ReactNode;       // panel content for this step
+}
+```
+
+In `linear` mode a step is only reachable once every preceding non-optional step is marked `completed`.
+
+### 5.42 TimePicker
+
+```ts
+type TimePickerFormat = '12h' | '24h';
+
+interface TimePickerProps {
+  value: string | null;             // default null; 'HH:MM' or 'HH:MM:SS' (24-hour wire value), mirrors [(value)]
+  onChange: (value: string | null) => void; // mirrors `changed`
+  format?: TimePickerFormat;        // default '24h'; display format of the trigger label
+  includeSeconds?: boolean;         // default false; shows a seconds column
+  minuteStep?: number;              // default 1; increment the minutes column snaps to
+  secondStep?: number;              // default 1; increment the seconds column snaps to
+  label?: string;
+  placeholder?: string;             // shown on the trigger while no time is selected
+  hint?: string;
+  errorMsg?: string;
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+  readOnly?: boolean;               // 'readonly' upstream; keeps the popover from opening
+  required?: boolean;
+  id?: string;
+}
+```
+
+The wire value is always 24-hour regardless of `format`. The popover exposes typeable spinner columns for each unit, with chevron long-press to step and auto-advance between columns as digits are typed.
+
+### 5.43 TransferList
+
+```ts
+interface TransferListItem {
+  id: string;
+  label: string;
+  disabled?: boolean;
+}
+
+interface TransferListProps {
+  items: readonly TransferListItem[]; // required; full pool across both panes
+  selectedIds: readonly string[];   // default []; ids on the target (right) side, mirrors two-way [(selectedIds)]
+  onSelectedIdsChange: (ids: readonly string[]) => void;
+  sourceLabel?: string;             // heading above the source (left) pane; falls back to i18n
+  targetLabel?: string;             // heading above the target (right) pane; falls back to i18n
+  size?: Size;                      // default 'md'
+  disabled?: boolean;
+}
+```
+
+Two side-by-side panes with move controls; items in `selectedIds` render in the target pane, the rest in the source pane.
+
+### 5.44 Tree (with TreeNode)
+
+```ts
+interface TreeNode<T = unknown> {
+  id: string;                       // stable, unique identifier
+  label: string;
+  children?: readonly TreeNode<T>[]; // omit or empty to render a leaf
+  icon?: React.ComponentType;       // leading icon component
+  disabled?: boolean;               // skipped by keyboard navigation, cannot be selected
+  data?: T;                         // arbitrary payload passed through to onNodeClick
+}
+
+interface TreeProps<T = unknown> {
+  nodes: readonly TreeNode<T>[];    // required; defines the hierarchy
+  selectedId: string | null;        // default null; mirrors two-way [(selectedId)]
+  onSelectedIdChange: (id: string | null) => void;
+  expandedIds: readonly string[];   // default []; expanded branch ids, mirrors two-way [(expandedIds)]
+  onExpandedIdsChange: (ids: readonly string[]) => void;
+  onNodeClick?: (node: TreeNode<T>) => void; // mirrors `nodeClick`
+  size?: Size;                      // default 'md'; scales text and spacing proportionally
+  disabled?: boolean;
+  'aria-label'?: string;            // accessible name for the tree widget
+}
+```
+
+Rendered as a single `role="tree"` widget with roving-tabindex focus, `aria-level` / `aria-posinset` / `aria-setsize` per row, and arrow-key navigation. Individual rows are an internal `TreeNode` sub-component driven from the parent; consumers describe the hierarchy through the `nodes` data, not by composing children.
+
+### 5.45 VirtualList
+
+```ts
+interface VirtualListProps<T = unknown> {
+  items: readonly T[];              // required; only the visible slice is mounted at a time
+  itemHeight: number;               // required; fixed px height shared by every row
+  viewportHeight: number;           // required; px height of the scrolling viewport
+  overscan?: number;                // default 3; extra rows rendered above/below the visible window
+  onScrollIndexChange?: (index: number) => void; // 'scrollIndexChange'; index of the first visible row
+  renderItem: (item: T, index: number) => React.ReactNode; // per-row render (Angular uses a template)
+}
+```
+
+Windows a long list by mounting only the visible rows plus `overscan` padding. All rows must share the same fixed `itemHeight`. Expose an imperative `scrollToIndex(index)` (e.g. via a forwarded ref) that scrolls the row at `index` to the top, clamped to the list bounds.
+
 ---
 
 ## 6. Internationalization
 
-The Angular library ships built-in strings (ARIA labels, placeholders, empty states, default labels) in five locales and exposes a runtime API to switch and override them. A faithful React port must replicate the same shape so consumer code is transferable.
+The Angular library ships built-in strings (ARIA labels, placeholders, empty states, default labels) in fifteen locales and exposes a runtime API to switch and override them. A faithful React port must replicate the same shape so consumer code is transferable.
 
 ### 6.1 Supported locales
 
-```ts
-export type EagamiLocale = 'en' | 'fr-FR' | 'el' | 'pl' | 'es-ES';
+The library ships fifteen locales. As of v4.0.0 they are **opt-in**: English is always available without registration, and every other locale must be registered (see 6.4) so only the languages you use ship in your bundle. English is the fallback for unregistered locales or missing keys.
 
-export const EAGAMI_LOCALES: readonly EagamiLocale[] = [
-  'en', 'fr-FR', 'el', 'pl', 'es-ES',
+```ts
+export type EagamiLocale =
+  | 'en'
+  | 'de'
+  | 'es-ES'
+  | 'fr-FR'
+  | 'is'
+  | 'nl'
+  | 'pl'
+  | 'pt-BR'
+  | 'el'
+  | 'ru'
+  | 'uk'
+  | 'he'
+  | 'ar'
+  | 'hi'
+  | 'zh-CN';
+
+export interface EagamiLocaleMeta {
+  locale: EagamiLocale;
+  label: string; // language's name in its own language
+  flag: string; // representative flag emoji
+  dir: 'ltr' | 'rtl'; // reading direction, for wiring the `dir` attribute
+}
+
+// Display order for a language switcher: English first, then by each
+// language's own name. Arabic ('ar') and Hebrew ('he') are the only two
+// right-to-left locales; every other locale is 'ltr'.
+export const EAGAMI_LOCALE_META: readonly EagamiLocaleMeta[] = [
+  { locale: 'en', label: 'English', flag: '🇬🇧', dir: 'ltr' },
+  { locale: 'de', label: 'Deutsch', flag: '🇩🇪', dir: 'ltr' },
+  { locale: 'es-ES', label: 'Español', flag: '🇪🇸', dir: 'ltr' },
+  { locale: 'fr-FR', label: 'Français', flag: '🇫🇷', dir: 'ltr' },
+  { locale: 'is', label: 'Íslenska', flag: '🇮🇸', dir: 'ltr' },
+  { locale: 'nl', label: 'Nederlands', flag: '🇳🇱', dir: 'ltr' },
+  { locale: 'pl', label: 'Polski', flag: '🇵🇱', dir: 'ltr' },
+  { locale: 'pt-BR', label: 'Português (Brasil)', flag: '🇧🇷', dir: 'ltr' },
+  { locale: 'el', label: 'Ελληνικά', flag: '🇬🇷', dir: 'ltr' },
+  { locale: 'ru', label: 'Русский', flag: '🇷🇺', dir: 'ltr' },
+  { locale: 'uk', label: 'Українська', flag: '🇺🇦', dir: 'ltr' },
+  { locale: 'he', label: 'עברית', flag: '🇮🇱', dir: 'rtl' },
+  { locale: 'ar', label: 'العربية', flag: '🇸🇦', dir: 'rtl' },
+  { locale: 'hi', label: 'हिन्दी', flag: '🇮🇳', dir: 'ltr' },
+  { locale: 'zh-CN', label: '中文', flag: '🇨🇳', dir: 'ltr' },
 ];
+
+export const EAGAMI_LOCALES: readonly EagamiLocale[] = EAGAMI_LOCALE_META.map(
+  m => m.locale,
+);
 ```
 
-English is the default and fallback for unknown locales or missing keys.
+When the active locale's `dir` is `rtl`, set `dir="rtl"` on the app root (or the relevant subtree) so layout mirrors. English is the default and the fallback for unregistered locales or missing keys.
 
 ### 6.2 Message dictionary shape
 
@@ -1957,6 +2409,22 @@ export interface EagamiMessages {
     groupLabel: (length: number) => string;
     digitLabel: (index: number, length: number) => string;
   };
+  commandPalette: {
+    dialogLabel: string;
+    searchPlaceholder: string;
+    empty: string;
+    clear: string;
+  };
+  colorPicker: {
+    placeholder: string;
+    clear: string;
+    hue: string;
+    saturationAndValue: string;
+    alpha: string;
+    eyedropper: string;
+    presets: string;
+    toggleFormat: string;
+  };
   dataTable: { noData: string };
   datePicker: {
     placeholder: string;
@@ -1970,19 +2438,84 @@ export interface EagamiMessages {
   dialog: { close: string };
   drawer: { close: string };
   dropdown: { placeholder: string };
-  input: { showPassword: string; hidePassword: string };
+  fileUploader: {
+    prompt: string;
+    promptSingle: string;
+    browse: string;
+    removeFile: (name: string) => string;
+    fileListLabel: string;
+    constraintsAccept: (accept: string) => string;
+    constraintsMaxSize: (size: string) => string;
+    constraintsMaxFiles: (count: number) => string;
+    rejectionType: (name: string) => string;
+    rejectionSize: (name: string, max: string) => string;
+    rejectionCount: (max: number) => string;
+    bytesUnit: { b: string; kb: string; mb: string; gb: string; tb: string };
+  };
+  input: { showPassword: string; hidePassword: string; clear: string };
   menu: { label: string };
+  multiSelect: {
+    placeholder: string;
+    searchPlaceholder: string;
+    searchEmpty: string;
+    selectAll: string;
+    clearAll: string;
+    removeOption: (label: string) => string;
+    selectedCount: (count: number) => string;
+  };
   paginator: {
     label: string;
     rowsPerPage: string;
-    range: (start: number, end: number, total: number) => string;
+    range: (start: string, end: string, total: string) => string;
     previousPage: string;
     nextPage: string;
   };
   progressBar: { label: string };
+  rating: {
+    label: string;
+    valueLabel: (value: number, max: number) => string;
+    clear: string;
+  };
   spinner: { label: string };
+  stepper: { optional: string };
   tag: { remove: string };
+  timePicker: {
+    placeholder: string;
+    clear: string;
+    hoursLabel: string;
+    minutesLabel: string;
+    secondsLabel: string;
+    incrementHours: string;
+    decrementHours: string;
+    incrementMinutes: string;
+    decrementMinutes: string;
+    incrementSeconds: string;
+    decrementSeconds: string;
+    amLabel: string;
+    pmLabel: string;
+  };
   toast: { dismiss: string };
+  transferList: {
+    sourceLabel: string;
+    targetLabel: string;
+    controlsLabel: string;
+    moveSelectedToTarget: string;
+    moveAllToTarget: string;
+    moveSelectedToSource: string;
+    moveAllToSource: string;
+    empty: string;
+  };
+  tree: { expand: string; collapse: string };
+  validation: {
+    required: string;
+    email: string;
+    min: (min: number) => string;
+    max: (max: number) => string;
+    minlength: (requiredLength: number) => string;
+    maxlength: (requiredLength: number) => string;
+    pattern: string;
+    invalid: string;
+  };
   wordmark: { overline: string; tagline: string };
 }
 
@@ -1990,24 +2523,41 @@ export type EagamiMessagesOverride = {
   [G in keyof EagamiMessages]?: Partial<EagamiMessages[G]>;
 };
 
+// A self-identifying locale dictionary. Import the ones you need and register
+// them (see 6.4) so only those ship in your bundle; English is always
+// available without registration.
+export interface EagamiLocaleBundle {
+  locale: EagamiLocale;
+  messages: EagamiMessages;
+}
+
 export interface EagamiI18nConfig {
-  locale?: EagamiLocale;                  // default 'en'
-  messages?: EagamiMessagesOverride;      // shallow-merged per group over the base
+  locale?: EagamiLocale;                       // default 'en'; falls back to English if not registered
+  locales?: readonly EagamiLocaleBundle[];     // dictionaries to make available beyond built-in English
+  messages?: EagamiMessagesOverride;           // shallow-merged per group over the active locale
 }
 ```
 
-Ship a `messages` directory with one file per locale (`en.ts`, `fr-FR.ts`, `el.ts`, `pl.ts`, `es-ES.ts`) plus an `index.ts` that exports the keyed lookup map `EAGAMI_MESSAGES: Record<EagamiLocale, EagamiMessages>`.
+Ship a `messages` directory with one file per locale (`en.ts`, `de.ts`, `es-ES.ts`, `fr-FR.ts`, `is.ts`, `nl.ts`, `pl.ts`, `pt-BR.ts`, `el.ts`, `ru.ts`, `uk.ts`, `he.ts`, `ar.ts`, `hi.ts`, `zh-CN.ts`), each exporting an `EagamiLocaleBundle` (`{ locale, messages }`). An `index.ts` re-exports every bundle plus an `EAGAMI_ALL_LOCALES: readonly EagamiLocaleBundle[]` array for consumers who want every shipped language at once.
 
 ### 6.3 Provider and hook
 
 ```tsx
 // EagamiI18nProvider.tsx
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import type { EagamiI18nConfig, EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
-import { EAGAMI_MESSAGES, en } from './messages';
+import type {
+  EagamiI18nConfig,
+  EagamiLocale,
+  EagamiLocaleBundle,
+  EagamiMessages,
+  EagamiMessagesOverride,
+} from './i18n.types';
+import { EAGAMI_LOCALE_META } from './i18n.types';
+import { en } from './messages';
 
 interface EagamiI18nContextValue {
   locale: EagamiLocale;
+  dir: 'ltr' | 'rtl';
   messages: EagamiMessages;
   setLocale: (locale: EagamiLocale) => void;
 }
@@ -2029,20 +2579,33 @@ export function EagamiI18nProvider({
   config?: EagamiI18nConfig;
   children: React.ReactNode;
 }) {
+  // English is always available; the config's `locales` are opt-in extras.
+  const registry = useMemo(() => {
+    const map = new Map<EagamiLocale, EagamiLocaleBundle>([['en', en]]);
+    for (const bundle of config.locales ?? []) map.set(bundle.locale, bundle);
+    return map;
+  }, [config.locales]);
+
   const [locale, setLocaleState] = useState<EagamiLocale>(config.locale ?? 'en');
 
-  const setLocale = useCallback((next: EagamiLocale) => {
-    setLocaleState(EAGAMI_MESSAGES[next] ? next : 'en');
-  }, []);
+  const setLocale = useCallback(
+    (next: EagamiLocale) => setLocaleState(registry.has(next) ? next : 'en'),
+    [registry],
+  );
 
   const messages = useMemo(() => {
-    const base = EAGAMI_MESSAGES[locale] ?? en;
+    const base = (registry.get(locale) ?? en).messages;
     return config.messages ? applyOverrides(base, config.messages) : base;
-  }, [locale, config.messages]);
+  }, [registry, locale, config.messages]);
+
+  const dir = useMemo(
+    () => EAGAMI_LOCALE_META.find(m => m.locale === locale)?.dir ?? 'ltr',
+    [locale],
+  );
 
   const value = useMemo<EagamiI18nContextValue>(
-    () => ({ locale, messages, setLocale }),
-    [locale, messages, setLocale],
+    () => ({ locale, dir, messages, setLocale }),
+    [locale, dir, messages, setLocale],
   );
 
   return <EagamiI18nContext.Provider value={value}>{children}</EagamiI18nContext.Provider>;
@@ -2052,7 +2615,7 @@ export function useEagamiI18n(): EagamiI18nContextValue {
   const ctx = useContext(EagamiI18nContext);
   if (!ctx) {
     // Library components must work without a provider; fall back silently.
-    return { locale: 'en', messages: en, setLocale: () => {} };
+    return { locale: 'en', dir: 'ltr', messages: en.messages, setLocale: () => {} };
   }
   return ctx;
 }
@@ -2060,42 +2623,53 @@ export function useEagamiI18n(): EagamiI18nContextValue {
 
 ### 6.4 Configuring the app
 
+Register only the non-English locales you actually use (English ships by default), so unused languages stay out of your bundle.
+
 ```tsx
 // main.tsx
 import { createRoot } from 'react-dom/client';
 import { EagamiI18nProvider } from './theme/EagamiI18nProvider';
+import { frFR, el } from './theme/messages';
 import App from './App';
 import './styles/eagami-tokens.css';
 
 createRoot(document.getElementById('root')!).render(
-  <EagamiI18nProvider config={{ locale: 'fr-FR' }}>
+  <EagamiI18nProvider config={{ locale: 'fr-FR', locales: [frFR, el] }}>
     <App />
   </EagamiI18nProvider>,
 );
 ```
 
+Pass `EAGAMI_ALL_LOCALES` for `locales` to ship every language at once. For right-to-left locales (`ar`, `he`), mirror the `dir` from the hook onto the app root:
+
+```tsx
+function AppShell({ children }: { children: React.ReactNode }) {
+  const { dir } = useEagamiI18n();
+  return <div dir={dir}>{children}</div>;
+}
+```
+
 ### 6.5 Switching locale at runtime
 
 ```tsx
+import { EAGAMI_LOCALE_META } from './theme/i18n.types';
+
 function LocaleSwitcher() {
   const { locale, setLocale } = useEagamiI18n();
   return (
-    <Segmented
+    <Dropdown
       value={locale}
       onChange={setLocale}
-      options={[
-        { value: 'en', label: 'EN' },
-        { value: 'fr-FR', label: 'FR' },
-        { value: 'el', label: 'EL' },
-        { value: 'pl', label: 'PL' },
-        { value: 'es-ES', label: 'ES' },
-      ]}
+      options={EAGAMI_LOCALE_META.map(m => ({
+        value: m.locale,
+        label: `${m.flag} ${m.label}`,
+      }))}
     />
   );
 }
 ```
 
-Changing the locale rerenders every consumer of `useEagamiI18n()`, so all built-in strings flip together.
+Offer only the locales you registered (English plus the `locales` you passed) so the switcher never selects an unavailable language. Changing the locale rerenders every consumer of `useEagamiI18n()`, so all built-in strings flip together; a switch to `ar` or `he` also flips `dir` to `rtl`.
 
 ### 6.6 Overriding individual strings
 
