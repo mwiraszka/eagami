@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-07-01
+
+### Added
+
+- Add a `push` mode to the drawer that opens it non-modally and reflows the page content aside instead of overlaying it, always keeping a strip of content visible, plus a `pushTarget` input to choose which element gets pushed.
+
+### Changed
+
+- **Breaking:** Replace the drawer's boolean `animated` input with an `animation` input accepting `none`, `linear`, or `eased` (default `eased`); the panel now slides both in on open and out on close.
+- **Breaking:** Rename the drawer's `width` input to `size`, which sets the panel's extent along its main axis (width for side drawers, height for top and bottom).
+
 ## [4.8.1] - 2026-07-01
 
 ### Fixed
@@ -876,6 +887,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.1...ui-v5.0.0
 [4.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.0...ui-v4.8.1
 [4.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.7.0...ui-v4.8.0
 [4.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.6.0...ui-v4.7.0
