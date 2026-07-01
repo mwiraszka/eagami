@@ -4167,8 +4167,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'collapseLabel',
-        type: 'string',
-        default: "'Collapse'",
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -4188,8 +4188,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'expandLabel',
-        type: 'string',
-        default: "'Expand'",
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
