@@ -21,7 +21,7 @@ const meta: Meta<EmptyStateComponent> = {
 export default meta;
 type Story = StoryObj<EmptyStateComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     template: `

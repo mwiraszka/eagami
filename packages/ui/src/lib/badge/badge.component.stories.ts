@@ -18,18 +18,4 @@ const meta: Meta<BadgeComponent> = {
 export default meta;
 type Story = StoryObj<BadgeComponent>;
 
-export const Default: Story = {};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row">
-        <ea-badge variant="default">Default</ea-badge>
-        <ea-badge variant="success">Success</ea-badge>
-        <ea-badge variant="warning">Warning</ea-badge>
-        <ea-badge variant="error">Error</ea-badge>
-        <ea-badge variant="info">Info</ea-badge>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

@@ -16,7 +16,7 @@ const meta: Meta<AccordionComponent> = {
 export default meta;
 type Story = StoryObj<AccordionComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     template: `
@@ -29,24 +29,6 @@ export const Default: Story = {
         </ea-accordion-item>
         <ea-accordion-item value="theme" label="Can I customize the theme?">
           Yes — override any CSS custom property on :root or scope overrides to individual components.
-        </ea-accordion-item>
-      </ea-accordion>
-    `,
-  }),
-};
-
-export const WithDisabledItem: Story = {
-  render: () => ({
-    template: `
-      <ea-accordion class="story-medium">
-        <ea-accordion-item value="active" label="Active Section">
-          This section can be toggled.
-        </ea-accordion-item>
-        <ea-accordion-item value="disabled" label="Disabled Section" [disabled]="true">
-          This content is not reachable.
-        </ea-accordion-item>
-        <ea-accordion-item value="another" label="Another Section">
-          This section also works.
         </ea-accordion-item>
       </ea-accordion>
     `,

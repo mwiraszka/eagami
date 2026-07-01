@@ -18,20 +18,4 @@ const meta: Meta<DividerComponent> = {
 export default meta;
 type Story = StoryObj<DividerComponent>;
 
-export const Horizontal: Story = {};
-
-// Kept separately because a bare vertical divider collapses without surrounding
-// content, so it needs a row wrapper the plain playground render cannot provide.
-export const Vertical: Story = {
-  args: { orientation: 'vertical', label: undefined },
-  render: args => ({
-    props: args,
-    template: `
-      <div class="story-row">
-        <span>Left</span>
-        <ea-divider ${argsToTemplate(args)} />
-        <span>Right</span>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

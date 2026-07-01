@@ -54,7 +54,7 @@ const meta: Meta<TreeComponent> = {
 export default meta;
 type Story = StoryObj<TreeComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: { ...args, expandedIds: ['src'] },
     template: `
@@ -65,36 +65,6 @@ export const Default: Story = {
         [expandedIds]="expandedIds"
         [size]="size"
         [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const Sizes: Story = {
-  render: () => ({
-    props: { nodes: FILE_TREE.slice(0, 1) },
-    template: `
-      <div class="story-stack">
-        <div>
-          <p class="story-label">Extra small</p>
-          <ea-tree aria-label="Extra small tree" [nodes]="nodes" [expandedIds]="['src']" size="xs" />
-        </div>
-        <div>
-          <p class="story-label">Small</p>
-          <ea-tree aria-label="Small tree" [nodes]="nodes" [expandedIds]="['src']" size="sm" />
-        </div>
-        <div>
-          <p class="story-label">Medium</p>
-          <ea-tree aria-label="Medium tree" [nodes]="nodes" [expandedIds]="['src']" size="md" />
-        </div>
-        <div>
-          <p class="story-label">Large</p>
-          <ea-tree aria-label="Large tree" [nodes]="nodes" [expandedIds]="['src']" size="lg" />
-        </div>
-        <div>
-          <p class="story-label">Extra large</p>
-          <ea-tree aria-label="Extra large tree" [nodes]="nodes" [expandedIds]="['src']" size="xl" />
-        </div>
-      </div>
     `,
   }),
 };

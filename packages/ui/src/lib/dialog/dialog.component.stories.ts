@@ -18,7 +18,7 @@ type Story = StoryObj<DialogComponent>;
 // A single controllable story: width, closeOnBackdrop, closeOnEscape, and
 // showClose are all reachable through the controls, so hardcoded variants are
 // unnecessary.
-export const Default: Story = {
+export const Playground: Story = {
   // `open` is an arg so it survives control changes; otherwise re-running render
   // would reset a local flag and close the dialog whenever a knob (e.g. width)
   // changes, hiding the effect being demonstrated.

@@ -18,4 +18,4 @@ const meta: Meta<EagamiWordmarkComponent> = {
 export default meta;
 type Story = StoryObj<EagamiWordmarkComponent>;
 
-export const Default: Story = {};
+export const Playground: Story = {};

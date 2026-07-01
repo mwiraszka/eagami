@@ -18,32 +18,4 @@ const meta: Meta<AvatarEditorComponent> = {
 export default meta;
 type Story = StoryObj<AvatarEditorComponent>;
 
-export const Default: Story = {};
-
-export const WithExistingImage: Story = {
-  args: { currentSrc: 'assets/sample-avatar.png' },
-};
-
-export const WithCropState: Story = {
-  args: {
-    currentSrc: 'assets/sample-avatar.png',
-    cropState: { zoom: 1.4, offsetX: -30, offsetY: -20 },
-  },
-};
-
-export const BothShapes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-shapes-row">
-        <div class="story-shape-item">
-          <span class="story-shape-label">Circle</span>
-          <ea-avatar-editor shape="circle" [canvasSize]="180" currentSrc="assets/sample-avatar.png"></ea-avatar-editor>
-        </div>
-        <div class="story-shape-item">
-          <span class="story-shape-label">Square</span>
-          <ea-avatar-editor shape="square" [canvasSize]="180" currentSrc="assets/sample-avatar.png"></ea-avatar-editor>
-        </div>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

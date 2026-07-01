@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { Component, HostListener, signal } from '@angular/core';
-
 import { ButtonComponent } from '../button/button.component';
 import { CommandPaletteComponent } from './command-palette.component';
 import { COMMAND_PALETTE_KNOBS } from './command-palette.component.knobs';
@@ -51,7 +49,7 @@ type Story = StoryObj<CommandPaletteComponent>;
 // data variants are needed. `open` is an arg so it survives control changes;
 // otherwise re-running render would reset a local flag and close the palette
 // whenever a knob changes.
-export const Default: Story = {
+export const Playground: Story = {
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({
@@ -64,42 +62,5 @@ export const Default: Story = {
         [placeholder]="placeholder"
         [(open)]="open" />
     `,
-  }),
-};
-
-// Wires Cmd/Ctrl+K to open the palette globally, mirroring the website demo so the
-// keyboard shortcut can be inspected in Storybook.
-@Component({
-  selector: 'ea-command-palette-shortcut-host',
-  imports: [CommandPaletteComponent, ButtonComponent],
-  template: `
-    <p
-      style="font-size: 0.875rem; margin: 0 0 0.75rem; color: var(--color-text-secondary);">
-      Press <kbd>Cmd</kbd> / <kbd>Ctrl</kbd> + <kbd>K</kbd> anywhere on this page, or
-      click the button below.
-    </p>
-    <ea-button (clicked)="open.set(true)">Open command palette</ea-button>
-    <ea-command-palette
-      [items]="items"
-      [(open)]="open" />
-  `,
-})
-class CommandPaletteShortcutHost {
-  readonly items = COMMANDS;
-  readonly open = signal(false);
-
-  @HostListener('document:keydown', ['$event'])
-  protected onGlobalKeydown(event: KeyboardEvent): void {
-    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-      event.preventDefault();
-      this.open.set(true);
-    }
-  }
-}
-
-export const WithGlobalShortcut: StoryObj<CommandPaletteShortcutHost> = {
-  render: () => ({
-    template: `<ea-command-palette-shortcut-host></ea-command-palette-shortcut-host>`,
-    moduleMetadata: { imports: [CommandPaletteShortcutHost] },
   }),
 };

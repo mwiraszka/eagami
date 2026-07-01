@@ -51,4 +51,4 @@ const meta: Meta<AutocompleteComponent> = {
 export default meta;
 type Story = StoryObj<AutocompleteComponent>;
 
-export const Default: Story = {};
+export const Playground: Story = {};

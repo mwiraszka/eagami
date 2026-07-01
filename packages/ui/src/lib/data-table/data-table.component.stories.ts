@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { PaginatorComponent } from '../paginator/paginator.component';
 import { type DataTableColumn, DataTableComponent } from './data-table.component';
 import { DATA_TABLE_KNOBS } from './data-table.component.knobs';
 
@@ -53,56 +52,4 @@ const meta: Meta<DataTableComponent<User>> = {
 export default meta;
 type Story = StoryObj<DataTableComponent<User>>;
 
-export const Default: Story = {};
-
-export const WithPaginator: Story = {
-  render: () => ({
-    moduleMetadata: { imports: [DataTableComponent, PaginatorComponent] },
-    props: {
-      columns,
-      allData: sampleData,
-      page: 1,
-      pageSize: 3,
-      get data() {
-        const start = (this['page'] - 1) * this['pageSize'];
-        return this['allData'].slice(start, start + this['pageSize']);
-      },
-      onPageChange(event: { page: number; pageSize: number }) {
-        this['page'] = event.page;
-        this['pageSize'] = event.pageSize;
-      },
-    },
-    template: `
-      <ea-data-table [columns]="columns" [data]="data" [striped]="true">
-        <ea-paginator
-          [totalItems]="allData.length"
-          [(page)]="page"
-          [(pageSize)]="pageSize"
-          [pageSizeOptions]="[3, 5, 8]"
-          (changed)="onPageChange($event)" />
-      </ea-data-table>
-    `,
-  }),
-};
-
-export const AllDensities: Story = {
-  render: () => ({
-    props: { columns, data: sampleData.slice(0, 3) },
-    template: `
-      <div class="story-stack--xl">
-        <div>
-          <h4 class="story-label">Compact</h4>
-          <ea-data-table [columns]="columns" [data]="data" density="compact" />
-        </div>
-        <div>
-          <h4 class="story-label">Comfortable</h4>
-          <ea-data-table [columns]="columns" [data]="data" density="comfortable" />
-        </div>
-        <div>
-          <h4 class="story-label">Spacious</h4>
-          <ea-data-table [columns]="columns" [data]="data" density="spacious" />
-        </div>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

@@ -18,18 +18,4 @@ const meta: Meta<ProgressBarComponent> = {
 export default meta;
 type Story = StoryObj<ProgressBarComponent>;
 
-export const Default: Story = {};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div class="story-stack story-medium">
-        <ea-progress-bar variant="default" [value]="60" label="Default" [showPercentage]="true" />
-        <ea-progress-bar variant="success" [value]="100" label="Success" [showPercentage]="true" />
-        <ea-progress-bar variant="warning" [value]="45" label="Warning" [showPercentage]="true" />
-        <ea-progress-bar variant="error" [value]="20" label="Error" [showPercentage]="true" />
-        <ea-progress-bar variant="info" [value]="80" label="Info" [showPercentage]="true" />
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

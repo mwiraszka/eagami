@@ -18,18 +18,4 @@ const meta: Meta<TagComponent> = {
 export default meta;
 type Story = StoryObj<TagComponent>;
 
-export const Default: Story = {};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row story-row--sm">
-        <ea-tag variant="default">Default</ea-tag>
-        <ea-tag variant="success">Success</ea-tag>
-        <ea-tag variant="warning">Warning</ea-tag>
-        <ea-tag variant="error">Error</ea-tag>
-        <ea-tag variant="info">Info</ea-tag>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

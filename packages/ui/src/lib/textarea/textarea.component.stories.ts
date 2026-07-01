@@ -18,18 +18,4 @@ const meta: Meta<TextareaComponent> = {
 export default meta;
 type Story = StoryObj<TextareaComponent>;
 
-export const Default: Story = {};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-stack story-narrow">
-        <ea-textarea size="xs" label="Extra small" placeholder="Extra small textarea"></ea-textarea>
-        <ea-textarea size="sm" label="Small" placeholder="Small textarea"></ea-textarea>
-        <ea-textarea size="md" label="Medium" placeholder="Medium textarea"></ea-textarea>
-        <ea-textarea size="lg" label="Large" placeholder="Large textarea"></ea-textarea>
-        <ea-textarea size="xl" label="Extra large" placeholder="Extra large textarea"></ea-textarea>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

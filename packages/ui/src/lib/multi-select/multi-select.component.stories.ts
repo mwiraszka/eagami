@@ -42,28 +42,4 @@ const meta: Meta<MultiSelectComponent> = {
 export default meta;
 type Story = StoryObj<MultiSelectComponent>;
 
-export const Default: Story = {};
-
-export const WithInitialValue: Story = {
-  args: {
-    value: ['apple', 'cherry', 'mango'],
-  },
-};
-
-export const WithHint: Story = {
-  args: {
-    hint: 'Pick a few favorites.',
-  },
-};
-
-export const NoSelectAll: Story = {
-  args: {
-    selectAll: false,
-  },
-};
-
-export const DisabledOptions: Story = {
-  args: {
-    options: FRUITS.map((o, i) => (i % 3 === 0 ? { ...o, disabled: true } : o)),
-  },
-};
+export const Playground: Story = {};

@@ -14,4 +14,4 @@ const meta: Meta<PaginatorComponent> = {
 export default meta;
 type Story = StoryObj<PaginatorComponent>;
 
-export const Default: Story = {};
+export const Playground: Story = {};

@@ -18,20 +18,6 @@ const meta: Meta<RangeSliderComponent> = {
 export default meta;
 type Story = StoryObj<RangeSliderComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   args: { value: [20, 80] },
-};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-stack">
-        <ea-range-slider size="xs" label="Extra small" [value]="[10, 50]" [showValue]="true" />
-        <ea-range-slider size="sm" label="Small" [value]="[20, 60]" [showValue]="true" />
-        <ea-range-slider size="md" label="Medium" [value]="[30, 70]" [showValue]="true" />
-        <ea-range-slider size="lg" label="Large" [value]="[40, 80]" [showValue]="true" />
-        <ea-range-slider size="xl" label="Extra large" [value]="[50, 90]" [showValue]="true" />
-      </div>
-    `,
-  }),
 };

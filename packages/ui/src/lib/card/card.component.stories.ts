@@ -24,25 +24,4 @@ const meta: Meta<CardComponent> = {
 export default meta;
 type Story = StoryObj<CardComponent>;
 
-export const Default: Story = {};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div class="story-card-grid">
-        <ea-card variant="elevated">
-          <span slot="header">Elevated</span>
-          Card with shadow elevation.
-        </ea-card>
-        <ea-card variant="outlined">
-          <span slot="header">Outlined</span>
-          Card with border outline.
-        </ea-card>
-        <ea-card variant="filled">
-          <span slot="header">Filled</span>
-          Card with subtle background.
-        </ea-card>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

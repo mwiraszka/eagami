@@ -31,19 +31,4 @@ const meta: Meta<SegmentedComponent> = {
 export default meta;
 type Story = StoryObj<SegmentedComponent>;
 
-export const Default: Story = {};
-
-export const AllSizes: Story = {
-  render: () => ({
-    props: { viewOptions },
-    template: `
-      <div class="story-stack">
-        <ea-segmented size="xs" [options]="viewOptions" value="list" />
-        <ea-segmented size="sm" [options]="viewOptions" value="list" />
-        <ea-segmented size="md" [options]="viewOptions" value="list" />
-        <ea-segmented size="lg" [options]="viewOptions" value="list" />
-        <ea-segmented size="xl" [options]="viewOptions" value="list" />
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

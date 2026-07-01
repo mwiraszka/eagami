@@ -30,18 +30,4 @@ const meta: Meta<DatePickerComponent> = {
 export default meta;
 type Story = StoryObj<DatePickerComponent>;
 
-export const Default: Story = {};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-stack story-narrow">
-        <ea-date-picker size="xs" label="Extra small" placeholder="Select…"></ea-date-picker>
-        <ea-date-picker size="sm" label="Small" placeholder="Select…"></ea-date-picker>
-        <ea-date-picker size="md" label="Medium" placeholder="Select…"></ea-date-picker>
-        <ea-date-picker size="lg" label="Large" placeholder="Select…"></ea-date-picker>
-        <ea-date-picker size="xl" label="Extra large" placeholder="Select…"></ea-date-picker>
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

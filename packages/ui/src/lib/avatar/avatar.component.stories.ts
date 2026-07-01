@@ -18,18 +18,4 @@ const meta: Meta<AvatarComponent> = {
 export default meta;
 type Story = StoryObj<AvatarComponent>;
 
-export const Default: Story = {};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row">
-        <ea-avatar size="xs" initials="XS" />
-        <ea-avatar size="sm" initials="SM" />
-        <ea-avatar size="md" initials="MD" />
-        <ea-avatar size="lg" initials="LG" />
-        <ea-avatar size="xl" initials="XL" />
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};
