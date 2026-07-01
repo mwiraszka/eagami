@@ -20,30 +20,121 @@
     background-color: var(--color-bg-overlay);
   }
 
-  // Slide the panel in from its edge on open; the backdrop fades alongside it.
-  // Durations come from motion tokens, so reduced-motion users get them at 0ms.
-  &--animated[open] {
+  // Push mode opens the drawer non-modally: no backdrop and no focus trap, so
+  // the page behind it stays interactive. The full-viewport dialog must let
+  // pointer events pass through to the page while keeping the panel clickable,
+  // and needs an explicit stacking order since non-modal dialogs are not
+  // promoted to the top layer.
+  &--push {
+    z-index: var(--z-index-modal);
+    pointer-events: none;
+
     &::backdrop {
-      animation: ea-drawer-backdrop-in var(--duration-slow) var(--ease-out);
+      display: none;
     }
 
+    .ea-drawer__panel {
+      pointer-events: auto;
+    }
+
+    // Never push the page content entirely off-screen. The reflow distance is
+    // measured from the panel, so capping the panel keeps at least this strip of
+    // content in view even at `full` width or on a narrow viewport.
+    .ea-drawer__panel--left,
+    .ea-drawer__panel--right,
+    .ea-drawer__panel--start,
+    .ea-drawer__panel--end {
+      max-inline-size: calc(100vw - var(--ea-drawer-push-min, 8rem));
+    }
+    .ea-drawer__panel--top,
+    .ea-drawer__panel--bottom {
+      max-block-size: calc(100vh - var(--ea-drawer-push-min, 8rem));
+    }
+  }
+
+  // `linear` swaps the shared ease-out curve for a constant-speed slide.
+  &--linear {
+    --ea-drawer-ease: var(--ease-linear);
+  }
+
+  // Slide the panel in and out from its edge, with the backdrop fading alongside.
+  // Transitions with @starting-style and `allow-discrete` animate both the enter
+  // and the exit purely in CSS: the dialog stays displayed (and in the top layer)
+  // until the exit transition finishes. Durations come from motion tokens, so
+  // reduced-motion users get them at 0ms. The easing is driven by --ea-drawer-ease
+  // so the `linear` animation can swap the curve without duplicating the rules.
+  &--animated {
+    transition:
+      overlay var(--duration-slow) allow-discrete,
+      display var(--duration-slow) allow-discrete;
+
+    &::backdrop {
+      opacity: 0;
+      transition:
+        opacity var(--duration-slow) var(--ea-drawer-ease, var(--ease-out)),
+        overlay var(--duration-slow) allow-discrete,
+        display var(--duration-slow) allow-discrete;
+    }
+
+    &[open]::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      &[open]::backdrop {
+        opacity: 0;
+      }
+    }
+
+    .ea-drawer__panel {
+      transition: transform var(--duration-slow) var(--ea-drawer-ease, var(--ease-out));
+    }
+
+    // Resting (closed) state parks the panel off its edge; [open] brings it in.
+    // The exit animates back to these values while the dialog is still displayed.
     .ea-drawer__panel--right {
-      animation: ea-drawer-slide-right var(--duration-slow) var(--ease-out);
+      transform: translateX(100%);
     }
     .ea-drawer__panel--left {
-      animation: ea-drawer-slide-left var(--duration-slow) var(--ease-out);
+      transform: translateX(-100%);
     }
     .ea-drawer__panel--start {
-      animation: ea-drawer-slide-start var(--duration-slow) var(--ease-out);
+      transform: translateX(calc(-100% * var(--ea-rtl-sign)));
     }
     .ea-drawer__panel--end {
-      animation: ea-drawer-slide-end var(--duration-slow) var(--ease-out);
+      transform: translateX(calc(100% * var(--ea-rtl-sign)));
     }
     .ea-drawer__panel--top {
-      animation: ea-drawer-slide-top var(--duration-slow) var(--ease-out);
+      transform: translateY(-100%);
     }
     .ea-drawer__panel--bottom {
-      animation: ea-drawer-slide-bottom var(--duration-slow) var(--ease-out);
+      transform: translateY(100%);
+    }
+
+    &[open] .ea-drawer__panel {
+      transform: none;
+    }
+
+    // Seed the same off-edge offsets as the enter's starting point.
+    @starting-style {
+      &[open] .ea-drawer__panel--right {
+        transform: translateX(100%);
+      }
+      &[open] .ea-drawer__panel--left {
+        transform: translateX(-100%);
+      }
+      &[open] .ea-drawer__panel--start {
+        transform: translateX(calc(-100% * var(--ea-rtl-sign)));
+      }
+      &[open] .ea-drawer__panel--end {
+        transform: translateX(calc(100% * var(--ea-rtl-sign)));
+      }
+      &[open] .ea-drawer__panel--top {
+        transform: translateY(-100%);
+      }
+      &[open] .ea-drawer__panel--bottom {
+        transform: translateY(100%);
+      }
     }
   }
 
@@ -249,47 +340,5 @@
     &:empty {
       display: none;
     }
-  }
-}
-
-@keyframes ea-drawer-slide-right {
-  from {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes ea-drawer-slide-left {
-  from {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes ea-drawer-slide-start {
-  from {
-    transform: translateX(calc(-100% * var(--ea-rtl-sign)));
-  }
-}
-
-@keyframes ea-drawer-slide-end {
-  from {
-    transform: translateX(calc(100% * var(--ea-rtl-sign)));
-  }
-}
-
-@keyframes ea-drawer-slide-top {
-  from {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes ea-drawer-slide-bottom {
-  from {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes ea-drawer-backdrop-in {
-  from {
-    opacity: 0;
   }
 }

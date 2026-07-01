@@ -8,27 +8,35 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const DRAWER_KNOBS: ComponentKnobs = {
   argTypes: {
+    mode: {
+      control: 'select',
+      options: ['overlay', 'push'],
+    },
     position: {
       control: 'select',
       options: ['left', 'right', 'top', 'bottom'],
     },
-    width: {
+    size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
     },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },
-    animated: { control: 'boolean' },
+    animation: {
+      control: 'select',
+      options: ['none', 'linear', 'eased'],
+    },
     showClose: { control: 'boolean' },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
   },
   args: {
+    mode: 'overlay',
     position: 'right',
-    width: 'md',
+    size: 'md',
     closeOnBackdrop: true,
     closeOnEscape: true,
-    animated: true,
+    animation: 'eased',
     showClose: true,
   },
 };
