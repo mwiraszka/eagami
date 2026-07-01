@@ -29,6 +29,10 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
   ],
   framework: '@storybook/angular',
+  // Present Storybook as a docs viewer: every component collapses to a single
+  // leaf that opens its autodocs page (description + interactive controls), with
+  // the individual stories hidden from the sidebar instead of sitting next to it.
+  docs: { docsMode: true },
   webpackFinal: async config => {
     const storybookDir = dirname(fileURLToPath(import.meta.url));
     const rules = config.module?.rules || [];

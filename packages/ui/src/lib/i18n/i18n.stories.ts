@@ -20,6 +20,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
  */
 const meta: Meta = {
   title: 'Foundations/Internationalization',
+  tags: ['autodocs'],
   // Stories build their own templates, but extractArgTypes crashes on a meta with no
   // component, so any imported component satisfies it without affecting what renders.
   component: SpinnerComponent,
