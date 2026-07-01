@@ -26,15 +26,6 @@ export const Default: Story = {
   args: { value: 3 },
 };
 
-export const AllowHalf: Story = {
-  args: {
-    label: 'Allow half steps',
-    value: 3.5,
-    allowHalf: true,
-    hint: 'Click the left or right half of a star to set a half-step value.',
-  },
-};
-
 export const Sizes: Story = {
   // Literal size attributes per instance; a shared `size` arg would force all three rows to one value
   render: () => ({
@@ -49,49 +40,6 @@ export const Sizes: Story = {
     `,
     props: { value: 3 },
   }),
-};
-
-export const Readonly: Story = {
-  args: {
-    label: 'Read-only',
-    value: 4,
-    readonly: true,
-    hint: 'Display-only — clicking or keyboard input does not change the value.',
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    label: 'How was your experience?',
-    value: 0,
-    required: true,
-    errorMsg: 'A rating is required',
-  },
-};
-
-export const NumberOfStars: Story = {
-  args: {
-    label: 'Rate it',
-    max: 10,
-    value: 7,
-  },
-};
-
-export const MinimumOne: Story = {
-  args: {
-    label: 'Minimum 1 star',
-    hint: 'Floor is 1: ArrowDown bottoms out at 1, and clicking the current star is a no-op (no clear).',
-    min: 1,
-    value: 3,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Locked rating',
-    value: 3,
-    disabled: true,
-  },
 };
 
 export const CustomIcon: Story = {

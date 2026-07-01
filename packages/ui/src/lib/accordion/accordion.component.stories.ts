@@ -35,26 +35,6 @@ export const Default: Story = {
   }),
 };
 
-export const MultiExpand: Story = {
-  args: { multi: true },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-accordion [multi]="multi" class="story-medium">
-        <ea-accordion-item value="one" label="Section One">
-          Content for section one. Multiple sections can be open at once.
-        </ea-accordion-item>
-        <ea-accordion-item value="two" label="Section Two">
-          Content for section two.
-        </ea-accordion-item>
-        <ea-accordion-item value="three" label="Section Three">
-          Content for section three.
-        </ea-accordion-item>
-      </ea-accordion>
-    `,
-  }),
-};
-
 export const WithDisabledItem: Story = {
   render: () => ({
     template: `

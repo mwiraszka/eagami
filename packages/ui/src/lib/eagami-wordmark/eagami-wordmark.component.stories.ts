@@ -19,27 +19,3 @@ export default meta;
 type Story = StoryObj<EagamiWordmarkComponent>;
 
 export const Default: Story = {};
-
-export const HandcraftedBy: Story = {
-  args: { variant: 'byline' },
-};
-
-export const Full: Story = {
-  args: { variant: 'tagline' },
-};
-
-export const Small: Story = {
-  args: { size: 32 },
-};
-
-export const Large: Story = {
-  args: { size: 160 },
-};
-
-export const InlineHandcraftedBy: Story = {
-  args: { variant: 'byline', layout: 'inline' },
-};
-
-export const InlineFull: Story = {
-  args: { variant: 'tagline', layout: 'inline' },
-};

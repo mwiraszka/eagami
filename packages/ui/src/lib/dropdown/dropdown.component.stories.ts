@@ -36,40 +36,6 @@ type Story = StoryObj<DropdownComponent>;
 
 export const Default: Story = {};
 
-export const WithHint: Story = {
-  args: {
-    hint: 'Choose your favourite fruit.',
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    errorMsg: 'This field is required.',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const WithDisabledOption: Story = {
-  args: {
-    options: [
-      { value: 'apple', label: 'Apple' },
-      { value: 'banana', label: 'Banana' },
-      { value: 'cherry', label: 'Cherry (sold out)', disabled: true },
-    ],
-  },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

@@ -20,32 +20,12 @@ type Story = StoryObj<AvatarEditorComponent>;
 
 export const Default: Story = {};
 
-export const Square: Story = {
-  args: { shape: 'square' },
-};
-
-export const LargeCanvas: Story = {
-  args: { canvasSize: 300 },
-};
-
 export const WithExistingImage: Story = {
   args: { currentSrc: 'assets/sample-avatar.png' },
 };
 
-export const SquareWithExistingImage: Story = {
-  args: { shape: 'square', currentSrc: 'assets/sample-avatar.png' },
-};
-
 export const WithCropState: Story = {
   args: {
-    currentSrc: 'assets/sample-avatar.png',
-    cropState: { zoom: 1.4, offsetX: -30, offsetY: -20 },
-  },
-};
-
-export const SquareWithCropState: Story = {
-  args: {
-    shape: 'square',
     currentSrc: 'assets/sample-avatar.png',
     cropState: { zoom: 1.4, offsetX: -30, offsetY: -20 },
   },

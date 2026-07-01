@@ -63,30 +63,3 @@ export const WithOptionalStep: Story = {
     `),
   }),
 };
-
-export const Linear: Story = {
-  args: { linear: true },
-  render: args => ({
-    props: args,
-    template: stepperTemplate(`
-      <ea-step label="Account" [completed]="true">Account details (completed).</ea-step>
-      <ea-step label="Profile">Profile info — fill this in before continuing.</ea-step>
-      <ea-step label="Review">Review and submit.</ea-step>
-    `),
-  }),
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-  render: Default.render,
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-  render: Default.render,
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-  render: Default.render,
-};

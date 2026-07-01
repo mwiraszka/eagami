@@ -64,62 +64,6 @@ export const Default: Story = {
   }),
 };
 
-export const TallRows: Story = {
-  args: { itemHeight: 80 },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-virtual-list
-        class="story-medium"
-        [items]="items"
-        [itemHeight]="itemHeight"
-        [viewportHeight]="viewportHeight"
-        [overscan]="overscan">
-        <ng-template #item let-row>
-          <div class="vl-row-tall">
-            <strong>{{ row.label }}</strong>
-            <small>{{ row.detail }}</small>
-          </div>
-        </ng-template>
-      </ea-virtual-list>
-
-      <style>
-        .vl-row-tall {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 0 var(--space-3);
-          height: 100%;
-          border-bottom: 1px solid var(--color-border-default);
-        }
-      </style>
-    `,
-  }),
-};
-
-export const TinyList: Story = {
-  args: {
-    items: LONG_LIST.slice(0, 4),
-  },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-virtual-list
-        class="story-medium"
-        [items]="items"
-        [itemHeight]="itemHeight"
-        [viewportHeight]="viewportHeight"
-        [overscan]="overscan">
-        <ng-template #item let-row>
-          <div style="display: flex; align-items: center; height: 100%; padding: 0 12px;">
-            {{ row.label }}
-          </div>
-        </ng-template>
-      </ea-virtual-list>
-    `,
-  }),
-};
-
 // Mirrors the website's "row X of Y" readout, pairing `(scrollIndexChange)` with the list
 @Component({
   selector: 'ea-virtual-list-scroll-host',

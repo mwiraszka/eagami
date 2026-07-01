@@ -24,38 +24,7 @@ const meta: Meta<CardComponent> = {
 export default meta;
 type Story = StoryObj<CardComponent>;
 
-export const Elevated: Story = {};
-
-export const Outlined: Story = {
-  args: { variant: 'outlined' },
-};
-
-export const Filled: Story = {
-  args: { variant: 'filled' },
-};
-
-export const SmallPadding: Story = {
-  args: { padding: 'sm' },
-};
-
-export const LargePadding: Story = {
-  args: { padding: 'lg' },
-};
-
-export const NoPadding: Story = {
-  args: { padding: 'none' },
-};
-
-export const BodyOnly: Story = {
-  render: args => ({
-    props: args,
-    template: `
-      <ea-card ${argsToTemplate(args)} class="story-narrow">
-        Simple card with body content only — no header or footer.
-      </ea-card>
-    `,
-  }),
-};
+export const Default: Story = {};
 
 export const AllVariants: Story = {
   render: () => ({

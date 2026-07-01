@@ -20,55 +20,6 @@ type Story = StoryObj<TextareaComponent>;
 
 export const Default: Story = {};
 
-export const WithHint: Story = {
-  args: {
-    hint: 'Maximum 500 characters.',
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    errorMsg: 'This field is required.',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const ReadOnly: Story = {
-  args: {
-    readonly: true,
-    value: 'This content cannot be edited.',
-  },
-};
-
-export const NoResize: Story = {
-  args: { resize: 'none' },
-};
-
-export const WithMaxlength: Story = {
-  args: { maxlength: 100 },
-};
-
-export const WithMaxHeight: Story = {
-  args: {
-    label: 'Notes',
-    hint: 'Caps at 200px; the field scrolls vertically beyond that.',
-    maxHeight: 200,
-    value:
-      'Type a long enough message that the textarea would normally grow past 200px. Once it hits the cap, the textarea stops growing and the field scrolls vertically instead.',
-  },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

@@ -47,45 +47,22 @@ const meta: Meta<CommandPaletteComponent> = {
 export default meta;
 type Story = StoryObj<CommandPaletteComponent>;
 
+// `items` and `placeholder` are reachable through the controls, so no hardcoded
+// data variants are needed. `open` is an arg so it survives control changes;
+// otherwise re-running render would reset a local flag and close the palette
+// whenever a knob changes.
 export const Default: Story = {
+  args: { open: true },
+  argTypes: { open: { control: 'boolean' } },
   render: args => ({
-    props: { ...args, isOpen: false },
+    props: { ...args },
     moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
     template: `
-      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
+      <ea-button (clicked)="open = true">Open command palette</ea-button>
       <ea-command-palette
         [items]="items"
         [placeholder]="placeholder"
-        [(open)]="isOpen" />
-    `,
-  }),
-};
-
-export const WithCustomPlaceholder: Story = {
-  args: { placeholder: 'Jump to anywhere…' },
-  render: args => ({
-    props: { ...args, isOpen: false },
-    moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
-    template: `
-      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
-      <ea-command-palette
-        [items]="items"
-        [placeholder]="placeholder"
-        [(open)]="isOpen" />
-    `,
-  }),
-};
-
-export const FlatList: Story = {
-  args: {
-    items: COMMANDS.map(({ group: _group, ...rest }) => rest),
-  },
-  render: args => ({
-    props: { ...args, isOpen: false },
-    moduleMetadata: { imports: [CommandPaletteComponent, ButtonComponent] },
-    template: `
-      <ea-button (clicked)="isOpen = true">Open command palette</ea-button>
-      <ea-command-palette [items]="items" [(open)]="isOpen" />
+        [(open)]="open" />
     `,
   }),
 };

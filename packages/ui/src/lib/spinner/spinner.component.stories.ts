@@ -20,18 +20,6 @@ type Story = StoryObj<SpinnerComponent>;
 
 export const Default: Story = {};
 
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const CustomLabel: Story = {
-  args: { label: 'Please wait...' },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

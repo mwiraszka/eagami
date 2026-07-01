@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 import type { PopoverPlacement } from './popover-positioning';
 import {
@@ -44,7 +44,13 @@ import { POPOVER_KNOBS } from './popover.component.knobs';
   styleUrl: './popover.component.stories.scss',
 })
 class PopoverStoryHost {
-  isOpen = signal(false);
+  // `open` is an arg so it survives control changes; otherwise re-running render
+  // would reset a local flag and close the popover whenever a knob changes, hiding
+  // the effect being demonstrated.
+  @Input() set open(value: boolean) {
+    this.isOpen.set(value);
+  }
+  isOpen = signal(true);
   placement: PopoverPlacement = 'bottom-start';
   role: PopoverRole = 'dialog';
   offset = 0;
@@ -61,22 +67,14 @@ const meta: Meta<PopoverStoryHost> = {
   component: PopoverStoryHost,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [PopoverStoryHost] })],
-  argTypes: { ...POPOVER_KNOBS.argTypes },
-  args: { ...POPOVER_KNOBS.args },
+  argTypes: { ...POPOVER_KNOBS.argTypes, open: { control: 'boolean' } },
+  args: { ...POPOVER_KNOBS.args, open: true },
 };
 
 export default meta;
 type Story = StoryObj<PopoverStoryHost>;
 
 export const Default: Story = {};
-
-export const MatchAnchorWidth: Story = {
-  args: { matchAnchorWidth: true },
-};
-
-export const TopPlacement: Story = {
-  args: { placement: 'top' },
-};
 
 // Each cell has its own anchor and popover so all eight placements can be inspected together
 @Component({

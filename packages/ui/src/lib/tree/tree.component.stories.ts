@@ -40,31 +40,6 @@ const FILE_TREE: TreeNode[] = [
   },
 ];
 
-const ORG_CHART: TreeNode[] = [
-  {
-    id: 'ceo',
-    label: 'CEO',
-    children: [
-      {
-        id: 'cto',
-        label: 'CTO',
-        children: [
-          { id: 'eng-mgr', label: 'Engineering Manager' },
-          { id: 'principal', label: 'Principal Engineer' },
-        ],
-      },
-      {
-        id: 'cfo',
-        label: 'CFO',
-        children: [
-          { id: 'controller', label: 'Controller' },
-          { id: 'finance-lead', label: 'Finance Lead', disabled: true },
-        ],
-      },
-    ],
-  },
-];
-
 const meta: Meta<TreeComponent> = {
   title: 'Components/Tree',
   component: TreeComponent,
@@ -86,53 +61,6 @@ export const Default: Story = {
       <ea-tree
         class="story-medium"
         aria-label="File tree"
-        [nodes]="nodes"
-        [expandedIds]="expandedIds"
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const FullyExpanded: Story = {
-  render: args => ({
-    props: { ...args, expandedIds: ['src', 'app', 'assets'] },
-    template: `
-      <ea-tree
-        class="story-medium"
-        aria-label="File tree"
-        [nodes]="nodes"
-        [expandedIds]="expandedIds"
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithSelection: Story = {
-  render: args => ({
-    props: { ...args, selectedId: 'app.component.ts', expandedIds: ['src', 'app'] },
-    template: `
-      <ea-tree
-        class="story-medium"
-        aria-label="File tree"
-        [nodes]="nodes"
-        [selectedId]="selectedId"
-        [expandedIds]="expandedIds"
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithDisabledNode: Story = {
-  args: { nodes: ORG_CHART },
-  render: args => ({
-    props: { ...args, expandedIds: ['ceo', 'cto', 'cfo'] },
-    template: `
-      <ea-tree
-        class="story-medium"
-        aria-label="Org chart"
         [nodes]="nodes"
         [expandedIds]="expandedIds"
         [size]="size"
@@ -167,22 +95,6 @@ export const Sizes: Story = {
           <ea-tree aria-label="Extra large tree" [nodes]="nodes" [expandedIds]="['src']" size="xl" />
         </div>
       </div>
-    `,
-  }),
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-  render: args => ({
-    props: { ...args, expandedIds: ['src'] },
-    template: `
-      <ea-tree
-        class="story-medium"
-        aria-label="File tree"
-        [nodes]="nodes"
-        [expandedIds]="expandedIds"
-        [size]="size"
-        [disabled]="disabled" />
     `,
   }),
 };

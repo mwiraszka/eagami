@@ -35,36 +35,9 @@ export const Default: Story = {
         class="story-medium"
         [items]="items"
         [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithInitialSelection: Story = {
-  render: args => ({
-    props: { ...args, selectedIds: ['editor', 'viewer'] },
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        [selectedIds]="selectedIds"
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithoutLabels: Story = {
-  render: args => ({
-    props: args,
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        sourceLabel=""
-        targetLabel=""
-        [size]="size"
-        [disabled]="disabled" />
+        [disabled]="disabled"
+        [sourceLabel]="sourceLabel"
+        [targetLabel]="targetLabel" />
     `,
   }),
 };
@@ -95,21 +68,6 @@ export const Sizes: Story = {
           <ea-transfer-list [items]="items" size="xl" />
         </div>
       </div>
-    `,
-  }),
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-  render: args => ({
-    props: { ...args, selectedIds: ['editor'] },
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        [selectedIds]="selectedIds"
-        [size]="size"
-        [disabled]="disabled" />
     `,
   }),
 };

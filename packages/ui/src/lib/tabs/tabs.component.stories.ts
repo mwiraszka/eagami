@@ -19,7 +19,7 @@ const meta: Meta<TabsComponent> = {
 export default meta;
 type Story = StoryObj<TabsComponent>;
 
-export const Underline: Story = {
+export const Default: Story = {
   render: args => ({
     props: args,
     template: `
@@ -32,18 +32,7 @@ export const Underline: Story = {
   }),
 };
 
-export const Filled: Story = {
-  render: () => ({
-    template: `
-      <ea-tabs variant="filled" activeTab="overview">
-        <ea-tab value="overview" label="Overview">Overview content</ea-tab>
-        <ea-tab value="analytics" label="Analytics">Analytics content</ea-tab>
-        <ea-tab value="reports" label="Reports">Reports content</ea-tab>
-      </ea-tabs>
-    `,
-  }),
-};
-
+// Tab-level `disabled` is not reachable through the Tabs controls, so this stays.
 export const WithDisabledTab: Story = {
   render: () => ({
     template: `
@@ -51,30 +40,6 @@ export const WithDisabledTab: Story = {
         <ea-tab value="general" label="General">General settings</ea-tab>
         <ea-tab value="billing" label="Billing">Billing details</ea-tab>
         <ea-tab value="admin" label="Admin" [disabled]="true">Admin panel</ea-tab>
-      </ea-tabs>
-    `,
-  }),
-};
-
-export const Small: Story = {
-  render: () => ({
-    template: `
-      <ea-tabs size="sm" activeTab="one">
-        <ea-tab value="one" label="First">First tab</ea-tab>
-        <ea-tab value="two" label="Second">Second tab</ea-tab>
-        <ea-tab value="three" label="Third">Third tab</ea-tab>
-      </ea-tabs>
-    `,
-  }),
-};
-
-export const Large: Story = {
-  render: () => ({
-    template: `
-      <ea-tabs size="lg" activeTab="one">
-        <ea-tab value="one" label="First">First tab</ea-tab>
-        <ea-tab value="two" label="Second">Second tab</ea-tab>
-        <ea-tab value="three" label="Third">Third tab</ea-tab>
       </ea-tabs>
     `,
   }),

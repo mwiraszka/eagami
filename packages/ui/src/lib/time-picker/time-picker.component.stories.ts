@@ -34,46 +34,6 @@ type Story = StoryObj<TimePickerComponent>;
 
 export const Default: Story = {};
 
-export const WithHint: Story = {
-  args: {
-    hint: 'Hours and minutes, 24-hour clock.',
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    errorMsg: 'This field is required.',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const WithInitialValue: Story = {
-  args: { value: '09:30' },
-};
-
-export const TwelveHourFormat: Story = {
-  args: { format: '12h' },
-};
-
-export const WithSeconds: Story = {
-  args: { includeSeconds: true },
-};
-
-export const QuarterHourSteps: Story = {
-  args: { minuteStep: 15 },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

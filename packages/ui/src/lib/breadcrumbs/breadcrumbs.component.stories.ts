@@ -30,10 +30,6 @@ type Story = StoryObj<BreadcrumbsComponent>;
 
 export const Default: Story = {};
 
-export const SlashSeparator: Story = {
-  args: { separator: 'slash' },
-};
-
 export const TwoLevels: Story = {
   args: {
     items: [{ label: 'Dashboard', href: '/' }, { label: 'Settings' }],

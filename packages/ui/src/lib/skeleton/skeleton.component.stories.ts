@@ -18,25 +18,7 @@ const meta: Meta<SkeletonComponent> = {
 export default meta;
 type Story = StoryObj<SkeletonComponent>;
 
-export const Text: Story = {
-  args: { variant: 'text', width: '', height: '' },
-};
-
-export const Circle: Story = {
-  args: { variant: 'circle', width: '', height: '' },
-};
-
-export const Rect: Story = {
-  args: { variant: 'rect', width: '', height: '' },
-};
-
-export const CustomSize: Story = {
-  args: { width: '200px', height: '120px' },
-};
-
-export const NotAnimated: Story = {
-  args: { animated: false, width: '', height: '' },
-};
+export const Default: Story = {};
 
 export const CardPlaceholder: Story = {
   render: () => ({

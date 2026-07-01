@@ -27,56 +27,12 @@ export const WithHint: Story = {
   },
 };
 
-export const WithError: Story = {
-  args: {
-    errorMsg: 'This field is required.',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Password: Story = {
-  args: { type: 'password' },
-};
-
-export const PasswordNoToggle: Story = {
-  args: { type: 'password', showPasswordToggle: false },
-};
-
 export const WithIcon: Story = {
   args: { icon: SearchIconComponent, placeholder: 'Search' },
   render: args => ({
     props: args,
     template: `<ea-input [icon]="icon" placeholder="Search" class="story-narrow"></ea-input>`,
   }),
-};
-
-export const Clearable: Story = {
-  args: { clearable: true, value: 'Sample text' },
-};
-
-export const WithAutocomplete: Story = {
-  args: { autocomplete: 'email' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const ReadOnly: Story = {
-  args: {
-    readonly: true,
-  },
-};
-
-export const Required: Story = {
-  args: { required: true },
 };
 
 export const AllSizes: Story = {

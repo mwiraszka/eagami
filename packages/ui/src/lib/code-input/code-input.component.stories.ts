@@ -20,44 +20,6 @@ type Story = StoryObj<CodeInputComponent>;
 
 export const Default: Story = {};
 
-export const WithHint: Story = {
-  args: {
-    hint: 'Check your email for the 6-digit code',
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    errorMsg: 'Invalid verification code',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const FourDigit: Story = {
-  args: { length: 4 },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const Required: Story = {
-  args: { required: true },
-};
-
-export const Prefilled: Story = {
-  args: {
-    value: '123456',
-  },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

@@ -56,39 +56,10 @@ export const WithHint: Story = {
   },
 };
 
-export const WithError: Story = {
-  args: {
-    errorMsg: 'Select at least one option.',
-  },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const NoSearch: Story = {
-  args: {
-    searchable: false,
-    options: FRUITS.slice(0, 6),
-  },
-};
-
 export const NoSelectAll: Story = {
   args: {
     selectAll: false,
   },
-};
-
-export const ShortChipCap: Story = {
-  args: { maxVisibleChips: 2 },
 };
 
 export const DisabledOptions: Story = {

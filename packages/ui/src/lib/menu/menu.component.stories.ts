@@ -112,21 +112,3 @@ export const WithDisabledItem: Story = {
     `,
   }),
 };
-
-export const BottomEnd: Story = {
-  args: { placement: 'bottom-end' },
-  render: args => ({
-    props: args,
-    moduleMetadata: {
-      imports: [MenuComponent, MenuTriggerDirective, MenuItemComponent, ButtonComponent],
-    },
-    template: `
-      <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
-      <ea-menu #m [placement]="placement">
-        <ea-menu-item>Edit</ea-menu-item>
-        <ea-menu-item>Share</ea-menu-item>
-        <ea-menu-item variant="danger">Delete</ea-menu-item>
-      </ea-menu>
-    `,
-  }),
-};

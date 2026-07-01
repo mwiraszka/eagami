@@ -20,42 +20,6 @@ type Story = StoryObj<CheckboxComponent>;
 
 export const Default: Story = {};
 
-export const Checked: Story = {
-  args: { checked: true },
-};
-
-export const Indeterminate: Story = {
-  args: { indeterminate: true },
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const DisabledChecked: Story = {
-  args: { disabled: true, checked: true },
-};
-
-export const Required: Story = {
-  args: { required: true },
-};
-
-export const WithHint: Story = {
-  args: { hint: 'You can opt out anytime' },
-};
-
-export const WithError: Story = {
-  args: { errorMsg: 'You must accept the terms to continue' },
-};
-
 export const AllSizes: Story = {
   render: () => ({
     template: `

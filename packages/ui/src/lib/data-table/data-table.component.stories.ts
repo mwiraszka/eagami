@@ -55,51 +55,6 @@ type Story = StoryObj<DataTableComponent<User>>;
 
 export const Default: Story = {};
 
-export const Compact: Story = {
-  args: { density: 'compact' },
-};
-
-export const Spacious: Story = {
-  args: { density: 'spacious' },
-};
-
-export const Striped: Story = {
-  args: { striped: true },
-};
-
-export const Bordered: Story = {
-  args: { bordered: true },
-};
-
-export const StripedAndBordered: Story = {
-  args: { striped: true, bordered: true },
-};
-
-export const Navigable: Story = {
-  args: { navigable: true },
-};
-
-export const StickyHeader: Story = {
-  args: { stickyHeader: true },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-data-table
-        class="story-sticky-table"
-        [columns]="columns"
-        [data]="data"
-        [stickyHeader]="true"
-        [density]="density"
-        [striped]="striped"
-        [hoverable]="hoverable" />
-    `,
-  }),
-};
-
-export const EmptyState: Story = {
-  args: { data: [] },
-};
-
 export const WithPaginator: Story = {
   render: () => ({
     moduleMetadata: { imports: [DataTableComponent, PaginatorComponent] },

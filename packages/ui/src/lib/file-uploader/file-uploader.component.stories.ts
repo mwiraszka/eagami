@@ -49,38 +49,10 @@ type Story = StoryObj<FileUploaderComponent>;
 
 export const Default: Story = {};
 
-export const WithConstraints: Story = {
-  args: {
-    label: 'Upload images',
-    hint: 'PNG or JPEG, up to 2 MB each, max 4 files',
-    accept: 'image/png,image/jpeg',
-    maxSize: 2 * 1024 * 1024,
-    maxFiles: 4,
-  },
-};
-
-export const SingleFile: Story = {
-  args: {
-    label: 'Upload resume',
-    multiple: false,
-    accept: '.pdf',
-    maxSize: 5 * 1024 * 1024,
-  },
-};
-
 export const WithInitialValue: Story = {
   args: {
     label: 'Selected files',
     value: SAMPLE_FILES,
-  },
-};
-
-export const WithError: Story = {
-  args: {
-    label: 'Upload images',
-    accept: 'image/*',
-    errorMsg: 'At least one image is required',
-    required: true,
   },
 };
 
@@ -110,14 +82,6 @@ export const Sizes: Story = {
       </div>
     `,
   }),
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Locked uploader',
-    disabled: true,
-    value: [SAMPLE_FILES[0]],
-  },
 };
 
 export const CustomIcon: Story = {
