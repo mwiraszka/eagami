@@ -7,6 +7,15 @@
     padding: 1rem !important;
   }
 
+  /* Color the story render area with the page-background token so a dark-mode
+     component sits on the dark canvas it is designed for, not on white. Scoped to
+     the story wrappers so Storybook's own docs prose keeps its manager theme. */
+  .docs-story,
+  .sb-story,
+  #storybook-root {
+    background-color: var(--color-bg-canvas);
+  }
+
   .story-row {
     display: flex;
     flex-wrap: wrap;
