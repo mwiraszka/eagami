@@ -257,6 +257,23 @@ export const ptBR: WebMessages = {
         ariaLayout: 'Layout de demonstração',
         ariaColor: 'Cor de demonstração',
         ariaSelect: 'Seleção de demonstração',
+        ariaDate: 'Data de demonstração',
+        ariaMultiSelect: 'Seleção múltipla de demonstração',
+        msMusic: 'Música',
+        msTravel: 'Viagens',
+        msFood: 'Comida',
+      },
+      theme: {
+        heading: 'Deixe do seu jeito',
+        ledeBefore: 'Os',
+        ledeLink: 'tokens de design',
+        ledeAfter:
+          ' são o que dá a cada projeto Eagami uma personalidade distinta: cores, fontes, espaçamento, cantos, sombras e movimento personalizáveis, tudo aplicado ao site ou aplicativo inteiro. Ajuste alguns abaixo para ver como eles afetam os componentes.',
+        brandColor: 'Cor da marca',
+        radius: 'Raio dos cantos',
+        font: 'Fonte',
+        fontDefault: '(padrão)',
+        reset: 'Redefinir',
       },
     },
     setup: {

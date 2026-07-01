@@ -250,6 +250,23 @@ export const ar: WebMessages = {
         ariaLayout: 'تخطيط توضيحي',
         ariaColor: 'لون توضيحي',
         ariaSelect: 'تحديد توضيحي',
+        ariaDate: 'تاريخ توضيحي',
+        ariaMultiSelect: 'تحديد متعدد توضيحي',
+        msMusic: 'موسيقى',
+        msTravel: 'سفر',
+        msFood: 'طعام',
+      },
+      theme: {
+        heading: 'اجعله خاصًا بك',
+        ledeBefore: '',
+        ledeLink: 'رموز التصميم',
+        ledeAfter:
+          ' هي ما يمنح كل مشروع Eagami طابعًا مميزًا: ألوان وخطوط ومسافات وزوايا وظلال وحركة قابلة للتخصيص، تُطبَّق جميعها على الموقع أو التطبيق بأكمله. عدّل بعضها في الأسفل لترى كيف تؤثر في المكونات.',
+        brandColor: 'لون العلامة التجارية',
+        radius: 'نصف قطر الزوايا',
+        font: 'الخط',
+        fontDefault: '(افتراضي)',
+        reset: 'إعادة تعيين',
       },
     },
     setup: {

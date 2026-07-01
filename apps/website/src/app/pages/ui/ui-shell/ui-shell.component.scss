@@ -20,7 +20,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 240px;
+    inset-inline-start: 240px;
     width: 1px;
     background-color: var(--color-border-default);
   }
@@ -40,7 +40,8 @@
   align-self: start;
   overflow-y: auto;
   max-height: calc(100dvh - var(--web-height-header));
-  padding: 24px 16px 24px 32px;
+  padding-block: 24px;
+  padding-inline: 32px 16px;
   scrollbar-gutter: stable;
 
   /* The aside is `tabindex="0"` so keyboards can focus and arrow-scroll it.
@@ -85,7 +86,8 @@
 }
 
 .ui-shell__list--components {
-  margin: 4px 0 4px 24px;
+  margin-block: 4px;
+  margin-inline-start: 24px;
 
   @include mixins.respond-to('lt-md') {
     flex: 1;
@@ -115,7 +117,7 @@
   background: none;
   font-family: inherit;
   font-size: 14px;
-  text-align: left;
+  text-align: start;
   color: var(--color-text-secondary);
   text-decoration: none;
   cursor: pointer;
@@ -151,6 +153,13 @@
   &--open {
     transform: rotate(90deg);
   }
+}
+
+// In RTL the collapsed chevron must point left (toward the text it expands),
+// mirroring the Tree component's caret. The open state still rotates to point
+// down, so only the collapsed state flips.
+:host-context([dir='rtl']) .ui-shell__caret:not(.ui-shell__caret--open) {
+  transform: rotate(180deg);
 }
 
 .ui-shell__main {

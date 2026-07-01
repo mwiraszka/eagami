@@ -258,6 +258,23 @@ export const de: WebMessages = {
         ariaLayout: 'Demo-Layout',
         ariaColor: 'Demo-Farbe',
         ariaSelect: 'Demo-Auswahl',
+        ariaDate: 'Demo-Datum',
+        ariaMultiSelect: 'Demo-Mehrfachauswahl',
+        msMusic: 'Musik',
+        msTravel: 'Reisen',
+        msFood: 'Essen',
+      },
+      theme: {
+        heading: 'Mach es zu deinem Eigenen',
+        ledeBefore: '',
+        ledeLink: 'Design-Tokens',
+        ledeAfter:
+          ' verleihen jedem Eagami-Projekt seine unverwechselbare Persönlichkeit: anpassbare Farben, Schriften, Abstände, Ecken, Schatten und Bewegung, die auf die ganze Website oder App angewendet werden. Passe unten ein paar an und sieh, wie sie die Komponenten beeinflussen.',
+        brandColor: 'Markenfarbe',
+        radius: 'Eckenradius',
+        font: 'Schriftart',
+        fontDefault: '(Standard)',
+        reset: 'Zurücksetzen',
       },
     },
     setup: {

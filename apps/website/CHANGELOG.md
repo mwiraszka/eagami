@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.6.0] - 2026-07-01
+
+### Added
+
+- Add a live theme customizer to the UI landing page that restyles the showcase and its toasts as you adjust the brand color, corner radius, and font.
+- Show the date picker, multi-select, and breadcrumbs in the component showcase.
+
+### Fixed
+
+- Fix right-to-left layout on the UI docs pages: the sidebar mirrors correctly, the expand caret points the right way, and code snippets no longer mirror.
+
 ## [3.5.0] - 2026-06-30
 
 ### Added
@@ -716,6 +727,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.6.0]: https://github.com/mwiraszka/eagami/compare/website-v3.5.0...website-v3.6.0
 [3.5.0]: https://github.com/mwiraszka/eagami/compare/website-v3.4.3...website-v3.5.0
 [3.4.3]: https://github.com/mwiraszka/eagami/compare/website-v3.4.2...website-v3.4.3
 [3.4.2]: https://github.com/mwiraszka/eagami/compare/website-v3.4.1...website-v3.4.2

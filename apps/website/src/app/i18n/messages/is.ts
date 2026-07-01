@@ -252,6 +252,23 @@ export const is: WebMessages = {
         ariaLayout: 'Sýnisútlit',
         ariaColor: 'Sýnislitur',
         ariaSelect: 'Sýnisval',
+        ariaDate: 'Sýnisdagsetning',
+        ariaMultiSelect: 'Sýnis-fjölval',
+        msMusic: 'Tónlist',
+        msTravel: 'Ferðalög',
+        msFood: 'Matur',
+      },
+      theme: {
+        heading: 'Gerðu það að þínu',
+        ledeBefore: '',
+        ledeLink: 'Hönnunartókn',
+        ledeAfter:
+          ' eru það sem gefur hverju Eagami-verkefni sérstakan persónuleika: aðlaganlegir litir, letur, bil, horn, skuggar og hreyfing, allt notað á heilu vefsíðuna eða forritið. Breyttu nokkrum hér að neðan til að sjá hvernig þau hafa áhrif á einingarnar.',
+        brandColor: 'Vörumerkjalitur',
+        radius: 'Hornaradíus',
+        font: 'Letur',
+        fontDefault: '(sjálfgefið)',
+        reset: 'Endurstilla',
       },
     },
     setup: {

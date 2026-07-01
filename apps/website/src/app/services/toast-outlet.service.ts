@@ -18,6 +18,10 @@ export class ToastOutletService {
   readonly position = signal<ToastPosition>('bottom-right');
   readonly clearable = signal<boolean>(true);
 
+  // Inline style the UI playground applies (font-family custom properties) so
+  // toasts fired from its showcase adopt the chosen font. Empty on other pages.
+  readonly style = signal<Record<string, string>>({});
+
   // Toasts follow the active locale's reading direction (RTL for Arabic and
   // Hebrew). The Toast playground overrides this to preview the other direction
   // and clears the override on leave.
@@ -30,9 +34,14 @@ export class ToastOutletService {
     this.directionOverride.set(direction);
   }
 
+  setStyle(style: Record<string, string>): void {
+    this.style.set(style);
+  }
+
   reset(): void {
     this.position.set('bottom-right');
     this.clearable.set(true);
     this.directionOverride.set(null);
+    this.style.set({});
   }
 }

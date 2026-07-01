@@ -257,6 +257,23 @@ export const nl: WebMessages = {
         ariaLayout: 'Demolay-out',
         ariaColor: 'Demokleur',
         ariaSelect: 'Demoselectie',
+        ariaDate: 'Demodatum',
+        ariaMultiSelect: 'Demo-meervoudige selectie',
+        msMusic: 'Muziek',
+        msTravel: 'Reizen',
+        msFood: 'Eten',
+      },
+      theme: {
+        heading: 'Maak het van jou',
+        ledeBefore: '',
+        ledeLink: 'Designtokens',
+        ledeAfter:
+          ' geven elk Eagami-project een eigen persoonlijkheid: aanpasbare kleuren, lettertypen, witruimte, hoeken, schaduwen en beweging, allemaal toegepast op de hele website of app. Pas er hieronder een paar aan om te zien hoe ze de componenten beïnvloeden.',
+        brandColor: 'Merkkleur',
+        radius: 'Hoekradius',
+        font: 'Lettertype',
+        fontDefault: '(standaard)',
+        reset: 'Resetten',
       },
     },
     setup: {

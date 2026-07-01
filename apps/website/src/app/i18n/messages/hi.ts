@@ -252,6 +252,23 @@ export const hi: WebMessages = {
         ariaLayout: 'डेमो लेआउट',
         ariaColor: 'डेमो रंग',
         ariaSelect: 'डेमो चयन',
+        ariaDate: 'डेमो तिथि',
+        ariaMultiSelect: 'डेमो बहु-चयन',
+        msMusic: 'संगीत',
+        msTravel: 'यात्रा',
+        msFood: 'भोजन',
+      },
+      theme: {
+        heading: 'इसे अपना बनाएं',
+        ledeBefore: '',
+        ledeLink: 'डिज़ाइन टोकन',
+        ledeAfter:
+          ' ही हर Eagami प्रोजेक्ट को एक अलग पहचान देते हैं: अनुकूलन योग्य रंग, फ़ॉन्ट, स्पेसिंग, कोने, छायाएं और मोशन, जो पूरी साइट या ऐप पर लागू होते हैं। नीचे कुछ बदलें और देखें कि वे घटकों को कैसे प्रभावित करते हैं।',
+        brandColor: 'ब्रांड रंग',
+        radius: 'कोना त्रिज्या',
+        font: 'फ़ॉन्ट',
+        fontDefault: '(डिफ़ॉल्ट)',
+        reset: 'रीसेट करें',
       },
     },
     setup: {

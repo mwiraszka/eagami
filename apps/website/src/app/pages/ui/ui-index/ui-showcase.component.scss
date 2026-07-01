@@ -11,14 +11,20 @@
   box-shadow: var(--shadow-md);
 }
 
-// A fixed, uniform height plus grid centering makes every control share one
+// A uniform min height plus grid centering makes every control share one
 // vertical centerline (place-items centers the cell's child on both axes without
-// stretching it), so the wall reads as aligned rows regardless of each
-// component's intrinsic height or its own internal field wrapper.
+// stretching it), so the wall reads as aligned rows. A control that grows past
+// it (e.g. a multi-select gaining chips) expands its own row and pushes the
+// neighbours down instead of overflowing on top of them.
 .showcase__item {
   display: grid;
   place-items: center;
-  height: 56px;
+  min-height: 56px;
+  // Re-resolve the font var per item so the playground's --font-family-sans
+  // override reaches the components; inheritance alone would carry the
+  // already-computed family from the body. The explore link is not an item, so
+  // it keeps the site default and is unaffected by the font control.
+  font-family: var(--font-family-sans);
 }
 
 // Width-hungry controls (sliders, progress, segmented, dropdown) collapse to
@@ -37,6 +43,32 @@
 
   > * {
     width: 100%;
+  }
+}
+
+// The date-picker host is inline by default, so a plain width: 100% is ignored
+// and a wide-font date sizes the field to its content and spills past the cell.
+// Force the host to a block so the field is constrained to 220px and the value
+// ellipsizes instead of overflowing onto the neighbour.
+.showcase__item--date {
+  width: 220px;
+
+  > * {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+// The multi-select sizes to its chips (200px floor) rather than a fixed width,
+// so the flex row reflows around it as options are added. flex-shrink: 0 keeps
+// the grid cell from shrinking below that floor, which would otherwise let the
+// centered host spill sideways over its neighbours.
+.showcase__item--multi {
+  flex-shrink: 0;
+
+  > * {
+    min-width: 200px;
   }
 }
 

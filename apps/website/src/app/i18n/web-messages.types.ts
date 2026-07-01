@@ -148,6 +148,22 @@ export interface WebMessages {
         ariaLayout: string;
         ariaColor: string;
         ariaSelect: string;
+        ariaDate: string;
+        ariaMultiSelect: string;
+        msMusic: string;
+        msTravel: string;
+        msFood: string;
+      };
+      theme: {
+        heading: string;
+        ledeBefore: string;
+        ledeLink: string;
+        ledeAfter: string;
+        brandColor: string;
+        radius: string;
+        font: string;
+        fontDefault: string;
+        reset: string;
       };
     };
     setup: {

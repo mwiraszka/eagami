@@ -249,6 +249,23 @@ export const he: WebMessages = {
         ariaLayout: 'פריסת הדגמה',
         ariaColor: 'צבע הדגמה',
         ariaSelect: 'בחירת הדגמה',
+        ariaDate: 'תאריך הדגמה',
+        ariaMultiSelect: 'בחירה מרובה להדגמה',
+        msMusic: 'מוזיקה',
+        msTravel: 'נסיעות',
+        msFood: 'אוכל',
+      },
+      theme: {
+        heading: 'התאימו לעצמכם',
+        ledeBefore: '',
+        ledeLink: 'אסימוני עיצוב',
+        ledeAfter:
+          ' הם שמעניקים לכל פרויקט Eagami אישיות ייחודית: צבעים, גופנים, מרווחים, פינות, צללים ותנועה הניתנים להתאמה, שכולם מוחלים על האתר או האפליקציה כולם. התאימו כמה מהם למטה כדי לראות כיצד הם משפיעים על הרכיבים.',
+        brandColor: 'צבע מותג',
+        radius: 'רדיוס פינות',
+        font: 'גופן',
+        fontDefault: '(ברירת מחדל)',
+        reset: 'איפוס',
       },
     },
     setup: {

@@ -153,6 +153,9 @@ $breakpoints: (
   font-size: var(--text-code-size);
   font-weight: var(--text-code-weight);
   font-family: var(--text-code-family);
+  // Inline code is always left-to-right, isolated from surrounding RTL prose.
+  direction: ltr;
+  unicode-bidi: isolate;
   border-radius: var(--text-code-radius);
   background-color: var(--text-code-bg);
   color: var(--text-code-color);

@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '4.8.1',
+    date: '2026-07-01',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Show a color on the color picker swatch when it is set through the `value` binding, not only through Angular forms.',
+          "Reserve room for the date picker's clear button so a long value ellipsizes rather than sliding underneath it.",
+          'Carry a font-family override through to popover panels (dropdown menus, the color and date pickers), which previously kept the root font because the panel is portaled to the document body.',
+        ],
+      },
+    ],
+  },
+  {
     version: '4.8.0',
     date: '2026-06-30',
     sections: [
