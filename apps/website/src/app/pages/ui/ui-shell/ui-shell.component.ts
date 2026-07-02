@@ -45,13 +45,12 @@ export class UiShellComponent {
   );
 
   constructor() {
-    // Open the Components group whenever a component route is entered, not just on
-    // the shell's first load, so navigating in from elsewhere (e.g. the landing
-    // page's "explore more components" link) expands it too.
+    // Keep the group in step with the route: entering a component page expands it
+    // (also from external links, e.g. the landing page's "explore more" link) and
+    // leaving collapses it, so from any other UI page the toggle always expands
+    // and jumps to the first component in a single click
     effect(() => {
-      if (this.isComponentRoute()) {
-        this.componentsExpanded.set(true);
-      }
+      this.componentsExpanded.set(this.isComponentRoute());
     });
   }
 
