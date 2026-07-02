@@ -40,4 +40,15 @@ export default [
       'import-x/no-duplicates': ['error', { 'prefer-inline': true }],
     },
   },
+  {
+    // Build/CI scripts are Node ESM tools, not browser code, and legitimately
+    // write to stdout.
+    files: ['scripts/**/*.{js,mjs,cjs}'],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      'no-console': 'off',
+    },
+  },
 ];

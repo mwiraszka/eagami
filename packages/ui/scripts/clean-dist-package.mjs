@@ -18,4 +18,4 @@ delete pkg.dependencies?.tslib;
 pkg.files = ['fesm2022', 'types', 'src/styles', 'schematics', 'README.md'];
 pkg.schematics = './schematics/collection.json';
 
-writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+writeFileSync(path, `${JSON.stringify(pkg, null, 2)}\n`);

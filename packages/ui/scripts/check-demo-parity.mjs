@@ -41,6 +41,7 @@ const KNOB_EXEMPT = new Set([
   'options',
   'value',
   'ngModel',
+  'pushTarget',
 ]);
 
 function readText(path) {
@@ -51,7 +52,9 @@ function readText(path) {
 // while ignoring braces inside string literals so prose values are safe.
 function extractObjectLiteral(src, marker) {
   const at = src.indexOf(marker);
-  if (at === -1) throw new Error(`marker not found: ${marker}`);
+  if (at === -1) {
+    throw new Error(`marker not found: ${marker}`);
+  }
   const open = src.indexOf('{', at);
   let depth = 0;
   let quote = null;
@@ -59,24 +62,28 @@ function extractObjectLiteral(src, marker) {
     const ch = src[i];
     const prev = src[i - 1];
     if (quote) {
-      if (ch === quote && prev !== '\\') quote = null;
+      if (ch === quote && prev !== '\\') {
+        quote = null;
+      }
       continue;
     }
     if (ch === '"' || ch === "'" || ch === '`') {
       quote = ch;
       continue;
     }
-    if (ch === '{') depth++;
-    else if (ch === '}') {
+    if (ch === '{') {
+      depth++;
+    } else if (ch === '}') {
       depth--;
-      if (depth === 0) return src.slice(open, i + 1);
+      if (depth === 0) {
+        return src.slice(open, i + 1);
+      }
     }
   }
   throw new Error(`unbalanced braces after ${marker}`);
 }
 
 function evalObject(literal) {
-  // eslint-disable-next-line no-new-func
   return new Function(`return (${literal});`)();
 }
 
@@ -90,7 +97,7 @@ const importPaths = new Map(); // exportName -> file path
 for (const m of barrel.matchAll(
   /import\s*\{\s*(\w+)\s*\}\s*from\s*'(\.\/lib\/[^']+)'/g,
 )) {
-  importPaths.set(m[1], resolve(here, '..', 'src', m[2].replace(/^\.\//, '') + '.ts'));
+  importPaths.set(m[1], resolve(here, '..', 'src', `${m[2].replace(/^\.\//, '')}.ts`));
 }
 const slugToExport = new Map(); // slug -> exportName
 const registry = extractObjectLiteral(barrel, 'export const PLAYGROUND_KNOBS');
@@ -101,12 +108,14 @@ for (const m of registry.matchAll(/(?:'([^']+)'|(\w[\w-]*))\s*:\s*(\w+_KNOBS)\s*
 const knobNames = new Map(); // slug -> { all:Set, demoOnly:Set }
 for (const [slug, exp] of slugToExport) {
   const file = importPaths.get(exp);
-  if (!file) continue;
+  if (!file) {
+    continue;
+  }
   let src = readText(file);
   src = src.replace(/^\s*import[^\n]*\n/gm, '');
   src = src.replace(/export const \w+\s*(?::\s*ComponentKnobs)?\s*=/, 'return');
   src = src.replace(/\bas const\b/g, '');
-  // eslint-disable-next-line no-new-func
+
   const knobs = new Function(src)();
   const all = new Set(Object.keys(knobs.argTypes ?? {}));
   const demoOnly = new Set(
@@ -149,19 +158,29 @@ for (const slug of apiSlugs) {
     }
   }
   for (const p of api.outputs) {
-    if (!desc.has(p.name)) missingDesc.push({ slug, kind: 'output', name: p.name });
+    if (!desc.has(p.name)) {
+      missingDesc.push({ slug, kind: 'output', name: p.name });
+    }
   }
   // Knobs that map to no real input or output, unioning related sub-components
   // (a knob may drive an event output as a Storybook action, or a sub-component
   // input). Anything left is a typo or a removed input.
   const boundNames = new Set([...apiInputNames, ...apiOutputNames]);
   for (const related of RELATED_SLUGS[slug] ?? []) {
-    for (const p of UI_API[related]?.inputs ?? []) boundNames.add(p.name);
-    for (const p of UI_API[related]?.outputs ?? []) boundNames.add(p.name);
+    for (const p of UI_API[related]?.inputs ?? []) {
+      boundNames.add(p.name);
+    }
+    for (const p of UI_API[related]?.outputs ?? []) {
+      boundNames.add(p.name);
+    }
   }
   for (const name of knob.all) {
-    if (knob.demoOnly.has(name)) continue;
-    if (!boundNames.has(name)) staleKnob.push({ slug, name });
+    if (knob.demoOnly.has(name)) {
+      continue;
+    }
+    if (!boundNames.has(name)) {
+      staleKnob.push({ slug, name });
+    }
   }
   // Descriptions for keys that aren't an input, output, or method
   for (const name of desc) {
@@ -181,12 +200,16 @@ for (const slug of apiSlugs) {
 // where an input is demoable on the site but not in Storybook.
 const unwiredStories = [];
 for (const dir of readdirSync(LIB_DIR, { withFileTypes: true })) {
-  if (!dir.isDirectory()) continue;
+  if (!dir.isDirectory()) {
+    continue;
+  }
   const d = resolve(LIB_DIR, dir.name);
   const files = readdirSync(d);
   const hasKnobs = files.some(f => f.endsWith('.knobs.ts'));
   const storyFile = files.find(f => f.endsWith('.stories.ts'));
-  if (!hasKnobs || !storyFile) continue;
+  if (!hasKnobs || !storyFile) {
+    continue;
+  }
   const story = readText(resolve(d, storyFile));
   if (!/_KNOBS/.test(story) || !/argTypes\s*:/.test(story)) {
     unwiredStories.push(dir.name);
@@ -197,9 +220,13 @@ for (const dir of readdirSync(LIB_DIR, { withFileTypes: true })) {
 const undocSlugs = apiSlugs.filter(s => !describedKeys.has(s));
 
 function report(title, rows, fmt) {
-  if (!rows.length) return;
+  if (!rows.length) {
+    return;
+  }
   console.log(`\n${title} (${rows.length}):`);
-  for (const r of rows) console.log('  ' + fmt(r));
+  for (const r of rows) {
+    console.log(`  ${fmt(r)}`);
+  }
 }
 
 console.log('=== Demo / API parity report ===');

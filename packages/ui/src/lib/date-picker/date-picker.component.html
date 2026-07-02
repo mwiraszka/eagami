@@ -58,6 +58,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-date-picker__popover"
+        [ngClass]="popoverClasses()"
         [attr.aria-labelledby]="id() + '-label'"
         (keydown)="handleGridKeydown($event)">
         <div class="ea-date-picker__header">

@@ -20,30 +20,87 @@
     background-color: var(--color-bg-overlay);
   }
 
-  // Slide the panel in from its edge on open; the backdrop fades alongside it.
-  // Durations come from motion tokens, so reduced-motion users get them at 0ms.
-  &--animated[open] {
+  // Push mode opens the drawer non-modally: no backdrop and no focus trap, so
+  // the page behind it stays interactive. The full-viewport dialog must let
+  // pointer events pass through to the page while keeping the panel clickable,
+  // and needs an explicit stacking order since non-modal dialogs are not
+  // promoted to the top layer.
+  &--push {
+    z-index: var(--z-index-modal);
+    pointer-events: none;
+
     &::backdrop {
-      animation: ea-drawer-backdrop-in var(--duration-slow) var(--ease-out);
+      display: none;
     }
 
-    .ea-drawer__panel--right {
-      animation: ea-drawer-slide-right var(--duration-slow) var(--ease-out);
+    .ea-drawer__panel {
+      pointer-events: auto;
     }
-    .ea-drawer__panel--left {
-      animation: ea-drawer-slide-left var(--duration-slow) var(--ease-out);
-    }
-    .ea-drawer__panel--start {
-      animation: ea-drawer-slide-start var(--duration-slow) var(--ease-out);
-    }
+
+    // Never push the page content entirely off-screen. The reflow distance is
+    // measured from the panel, so capping the panel keeps at least this strip of
+    // content in view even at `full` width or on a narrow viewport.
+    .ea-drawer__panel--left,
+    .ea-drawer__panel--right,
+    .ea-drawer__panel--start,
     .ea-drawer__panel--end {
-      animation: ea-drawer-slide-end var(--duration-slow) var(--ease-out);
+      max-inline-size: calc(100vw - var(--ea-drawer-push-min, 8rem));
     }
-    .ea-drawer__panel--top {
-      animation: ea-drawer-slide-top var(--duration-slow) var(--ease-out);
-    }
+    .ea-drawer__panel--top,
     .ea-drawer__panel--bottom {
-      animation: ea-drawer-slide-bottom var(--duration-slow) var(--ease-out);
+      max-block-size: calc(100vh - var(--ea-drawer-push-min, 8rem));
+    }
+  }
+
+  // `linear` swaps the shared ease-out curve for a constant-speed slide.
+  &--linear {
+    --ea-drawer-ease: var(--ease-linear);
+  }
+
+  // The panel rests off its positioned edge; the component adds `--entered` to
+  // slide it in (and fade the backdrop) and removes it to slide out before the
+  // dialog closes. Toggling a class, rather than relying on @starting-style and
+  // `allow-discrete` top-layer transitions, keeps the enter and exit
+  // deterministic across browsers. Easing is driven by --ea-drawer-ease so
+  // `linear` can swap the curve; durations come from motion tokens, so reduced
+  // motion collapses them to 0ms (and the component then closes synchronously).
+  &--animated {
+    &::backdrop {
+      opacity: 0;
+      transition: opacity var(--duration-slower) var(--ea-drawer-ease, var(--ease-out));
+    }
+
+    .ea-drawer__panel {
+      transition: transform var(--duration-slower) var(--ea-drawer-ease, var(--ease-out));
+    }
+  }
+
+  .ea-drawer__panel--right {
+    transform: translateX(100%);
+  }
+  .ea-drawer__panel--left {
+    transform: translateX(-100%);
+  }
+  .ea-drawer__panel--start {
+    transform: translateX(calc(-100% * var(--ea-rtl-sign)));
+  }
+  .ea-drawer__panel--end {
+    transform: translateX(calc(100% * var(--ea-rtl-sign)));
+  }
+  .ea-drawer__panel--top {
+    transform: translateY(-100%);
+  }
+  .ea-drawer__panel--bottom {
+    transform: translateY(100%);
+  }
+
+  &--entered {
+    &::backdrop {
+      opacity: 1;
+    }
+
+    .ea-drawer__panel {
+      transform: none;
     }
   }
 
@@ -249,47 +306,5 @@
     &:empty {
       display: none;
     }
-  }
-}
-
-@keyframes ea-drawer-slide-right {
-  from {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes ea-drawer-slide-left {
-  from {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes ea-drawer-slide-start {
-  from {
-    transform: translateX(calc(-100% * var(--ea-rtl-sign)));
-  }
-}
-
-@keyframes ea-drawer-slide-end {
-  from {
-    transform: translateX(calc(100% * var(--ea-rtl-sign)));
-  }
-}
-
-@keyframes ea-drawer-slide-top {
-  from {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes ea-drawer-slide-bottom {
-  from {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes ea-drawer-backdrop-in {
-  from {
-    opacity: 0;
   }
 }

@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Aðdráttur',
     zoomIn: 'Auka aðdrátt',
     remove: 'Fjarlægja mynd',
+    invalidType: 'Skráin verður að vera mynd',
+    tooLarge: (maxMb: number) => `Skráin fer yfir ${maxMb} MB mörkin`,
   },
   breadcrumbs: {
     label: 'Brauðmolaslóð',
@@ -46,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Engin gögn til staðar',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '.',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Veldu dagsetningu…',
     clear: 'Hreinsa dagsetningu',
@@ -54,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Næsti mánuður',
     nextYear: 'Næsta ár',
     today: 'Í dag',
+    weekdaysShort: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau.'],
+    months: [
+      'janúar',
+      'febrúar',
+      'mars',
+      'apríl',
+      'maí',
+      'júní',
+      'júlí',
+      'ágúst',
+      'september',
+      'október',
+      'nóvember',
+      'desember',
+    ],
   },
   dialog: {
     close: 'Loka glugga',

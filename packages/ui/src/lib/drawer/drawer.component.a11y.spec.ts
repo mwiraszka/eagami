@@ -10,6 +10,9 @@ beforeAll(() => {
   HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
+  HTMLDialogElement.prototype.show = vi.fn(function (this: HTMLDialogElement) {
+    this.setAttribute('open', '');
+  });
   HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
@@ -18,7 +21,9 @@ beforeAll(() => {
 @Component({
   imports: [DrawerComponent],
   template: `
-    <ea-drawer [(open)]="open">
+    <ea-drawer
+      [(open)]="open"
+      [mode]="mode">
       <span slot="header">Drawer Title</span>
       Drawer body content
       <span slot="footer">Footer</span>
@@ -27,6 +32,7 @@ beforeAll(() => {
 })
 class HostComponent {
   open = true;
+  mode: 'overlay' | 'push' = 'overlay';
 }
 
 describe('DrawerComponent a11y', () => {
@@ -42,6 +48,14 @@ describe('DrawerComponent a11y', () => {
 
   it('has no detectable violations when open with header and body content', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations in non-modal push mode', async () => {
+    const el = await render(host => (host.mode = 'push'));
 
     const results = await axe(el);
 

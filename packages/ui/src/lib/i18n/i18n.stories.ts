@@ -20,9 +20,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
  */
 const meta: Meta = {
   title: 'Foundations/Internationalization',
-  // Stories build their own templates, but extractArgTypes crashes on a meta with no
-  // component, so any imported component satisfies it without affecting what renders.
-  component: SpinnerComponent,
+  tags: ['autodocs'],
   decorators: [
     moduleMetadata({
       imports: [
@@ -64,7 +62,7 @@ export const Showcase: Story = {
       ],
     },
     template: `
-      <div class="story-stack story-stack--md story-medium">
+      <div class="story-stack story-medium">
         <ea-dropdown [options]="dropdownOptions" label="Dropdown" />
         <ea-input type="password" label="Password" [showPasswordToggle]="true" />
         <ea-date-picker label="Date picker" />

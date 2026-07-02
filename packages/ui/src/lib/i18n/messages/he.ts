@@ -18,6 +18,8 @@ const messages: EagamiMessages = {
     zoom: 'זום',
     zoomIn: 'התקרבות',
     remove: 'הסרת תמונה',
+    invalidType: 'הקובץ חייב להיות תמונה',
+    tooLarge: (maxMb: number) => `הקובץ חורג ממגבלת ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'נתיב ניווט',
@@ -45,6 +47,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'אין נתונים זמינים',
   },
+  numberFormat: {
+    decimal: '.',
+    group: ',',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'בחר תאריך…',
     clear: 'ניקוי תאריך',
@@ -53,6 +60,21 @@ const messages: EagamiMessages = {
     nextMonth: 'חודש הבא',
     nextYear: 'שנה הבאה',
     today: 'היום',
+    weekdaysShort: ['יום א׳', 'יום ב׳', 'יום ג׳', 'יום ד׳', 'יום ה׳', 'יום ו׳', 'שבת'],
+    months: [
+      'ינואר',
+      'פברואר',
+      'מרץ',
+      'אפריל',
+      'מאי',
+      'יוני',
+      'יולי',
+      'אוגוסט',
+      'ספטמבר',
+      'אוקטובר',
+      'נובמבר',
+      'דצמבר',
+    ],
   },
   dialog: {
     close: 'סגירת חלון',

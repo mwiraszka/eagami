@@ -96,6 +96,8 @@ export interface EagamiMessages {
     zoom: string;
     zoomIn: string;
     remove: string;
+    invalidType: string;
+    tooLarge: (maxMb: number) => string;
   };
   breadcrumbs: {
     label: string;
@@ -123,6 +125,18 @@ export interface EagamiMessages {
   dataTable: {
     noData: string;
   };
+  /** Locale numeric formatting rules, used to group numbers even when the
+   *  runtime's `Intl` lacks this locale's data (some browsers ship a reduced
+   *  ICU that drops long-tail locales). */
+  numberFormat: {
+    /** Decimal mark, e.g. `.` (en) or `,` (de). */
+    decimal: string;
+    /** Grouping separator, e.g. `,` (en), `.` (de), or a no-break space (fr). */
+    group: string;
+    /** Digit-group sizes from the right: `[3]` for most locales, `[3, 2]` for
+     *  Indian-style lakh/crore grouping. */
+    grouping: readonly number[];
+  };
   datePicker: {
     placeholder: string;
     clear: string;
@@ -131,6 +145,13 @@ export interface EagamiMessages {
     nextMonth: string;
     nextYear: string;
     today: string;
+    /** Abbreviated weekday names, Sunday first (index 0), for the calendar
+     *  header. Bundled so the calendar localizes even when the runtime's
+     *  `Intl` lacks this locale's date data. */
+    weekdaysShort: readonly string[];
+    /** Full month names, January first (index 0), for the calendar heading and
+     *  formatted values when `Intl` cannot localize this locale. */
+    months: readonly string[];
   };
   dialog: {
     close: string;

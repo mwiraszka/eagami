@@ -21,7 +21,7 @@ const meta: Meta<ToastComponent> = {
 export default meta;
 type Story = StoryObj<ToastComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     moduleMetadata: {
       imports: [ButtonComponent],

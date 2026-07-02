@@ -2,7 +2,6 @@ import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { FileIconComponent } from '../icons/file.component';
-import { SearchIconComponent } from '../icons/search.component';
 import { EmptyStateComponent } from './empty-state.component';
 import { EMPTY_STATE_KNOBS } from './empty-state.component.knobs';
 
@@ -12,7 +11,7 @@ const meta: Meta<EmptyStateComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [ButtonComponent, FileIconComponent, SearchIconComponent],
+      imports: [ButtonComponent, FileIconComponent],
     }),
   ],
   argTypes: EMPTY_STATE_KNOBS.argTypes,
@@ -22,123 +21,18 @@ const meta: Meta<EmptyStateComponent> = {
 export default meta;
 type Story = StoryObj<EmptyStateComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     template: `
-      <ea-empty-state [title]="title" [description]="description" [size]="size">
+      <ea-empty-state
+        [title]="title"
+        [description]="description"
+        [size]="size"
+        [bordered]="bordered">
         <ea-icon-file slot="media" />
         <ea-button slot="actions" variant="primary">
           Create item
-        </ea-button>
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const NoResults: Story = {
-  render: () => ({
-    template: `
-      <ea-empty-state
-        title="No results found"
-        description="Try adjusting your search or filter to find what you're looking for.">
-        <ea-icon-search slot="media" />
-        <ea-button slot="actions" variant="secondary">
-          Clear filters
-        </ea-button>
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const TitleOnly: Story = {
-  render: () => ({
-    template: `<ea-empty-state title="Nothing to see here" />`,
-  }),
-};
-
-export const WithoutMedia: Story = {
-  render: () => ({
-    template: `
-      <ea-empty-state
-        title="No notifications"
-        description="When you have new updates, they'll show up here." />
-    `,
-  }),
-};
-
-export const WithIcon: Story = {
-  render: () => ({
-    props: { icon: SearchIconComponent },
-    template: `
-      <ea-empty-state
-        [icon]="icon"
-        title="No results found"
-        description="Try adjusting your search or filter.">
-        <ea-button slot="actions" variant="secondary">
-          Clear filters
-        </ea-button>
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const Bordered: Story = {
-  render: () => ({
-    props: { icon: FileIconComponent },
-    template: `
-      <ea-empty-state
-        [icon]="icon"
-        [bordered]="true"
-        title="No files yet"
-        description="Drag and drop files here, or upload from your device.">
-        <ea-button slot="actions" variant="primary">
-          Upload files
-        </ea-button>
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const TwoActions: Story = {
-  render: () => ({
-    template: `
-      <ea-empty-state
-        title="No projects yet"
-        description="Create a project from scratch or import one from GitHub.">
-        <ea-icon-file slot="media" />
-        <ea-button slot="actions" variant="primary">
-          New project
-        </ea-button>
-        <ea-button slot="actions" variant="secondary">
-          Import
-        </ea-button>
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-empty-state [title]="title" [description]="description" [size]="size">
-        <ea-icon-file slot="media" />
-      </ea-empty-state>
-    `,
-  }),
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-  render: args => ({
-    props: args,
-    template: `
-      <ea-empty-state [title]="title" [description]="description" [size]="size">
-        <ea-icon-file slot="media" />
-        <ea-button slot="actions" variant="primary">
-          Get started
         </ea-button>
       </ea-empty-state>
     `,

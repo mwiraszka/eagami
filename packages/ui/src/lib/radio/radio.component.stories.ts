@@ -15,7 +15,7 @@ const meta: Meta<RadioGroupComponent> = {
 export default meta;
 type Story = StoryObj<RadioGroupComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
@@ -25,130 +25,6 @@ export const Default: Story = {
         <ea-radio value="banana" label="Banana"></ea-radio>
         <ea-radio value="cherry" label="Cherry"></ea-radio>
       </ea-radio-group>
-    `,
-  }),
-};
-
-export const Horizontal: Story = {
-  render: args => ({
-    props: { ...args, orientation: 'horizontal' },
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group [size]="size" orientation="horizontal" [disabled]="disabled">
-        <ea-radio value="sm" label="Small"></ea-radio>
-        <ea-radio value="md" label="Medium"></ea-radio>
-        <ea-radio value="lg" label="Large"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const WithDisabledOption: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group [size]="size" [orientation]="orientation">
-        <ea-radio value="a" label="Available"></ea-radio>
-        <ea-radio value="b" label="Also available"></ea-radio>
-        <ea-radio value="c" label="Unavailable" [disabled]="true"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const Disabled: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group [size]="size" [orientation]="orientation" [disabled]="true" value="a">
-        <ea-radio value="a" label="Option A"></ea-radio>
-        <ea-radio value="b" label="Option B"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const WithLabel: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group label="Subscription plan" [size]="size" value="pro">
-        <ea-radio value="free" label="Free"></ea-radio>
-        <ea-radio value="pro" label="Pro"></ea-radio>
-        <ea-radio value="enterprise" label="Enterprise"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const Required: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group label="Delivery speed" [required]="true" [size]="size">
-        <ea-radio value="standard" label="Standard"></ea-radio>
-        <ea-radio value="express" label="Express"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const WithHint: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group label="Delivery speed" hint="Choose how fast you want it" [size]="size">
-        <ea-radio value="standard" label="Standard"></ea-radio>
-        <ea-radio value="express" label="Express"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const WithError: Story = {
-  render: args => ({
-    props: args,
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <ea-radio-group label="Account type" errorMsg="Please choose an account type" [size]="size">
-        <ea-radio value="personal" label="Personal"></ea-radio>
-        <ea-radio value="business" label="Business"></ea-radio>
-      </ea-radio-group>
-    `,
-  }),
-};
-
-export const AllSizes: Story = {
-  render: () => ({
-    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
-    template: `
-      <div class="story-row story-row--xl">
-        <ea-radio-group size="xs" value="a">
-          <ea-radio value="a" label="XS A"></ea-radio>
-          <ea-radio value="b" label="XS B"></ea-radio>
-        </ea-radio-group>
-        <ea-radio-group size="sm" value="a">
-          <ea-radio value="a" label="Small A"></ea-radio>
-          <ea-radio value="b" label="Small B"></ea-radio>
-        </ea-radio-group>
-        <ea-radio-group size="md" value="a">
-          <ea-radio value="a" label="Medium A"></ea-radio>
-          <ea-radio value="b" label="Medium B"></ea-radio>
-        </ea-radio-group>
-        <ea-radio-group size="lg" value="a">
-          <ea-radio value="a" label="Large A"></ea-radio>
-          <ea-radio value="b" label="Large B"></ea-radio>
-        </ea-radio-group>
-        <ea-radio-group size="xl" value="a">
-          <ea-radio value="a" label="XL A"></ea-radio>
-          <ea-radio value="b" label="XL B"></ea-radio>
-        </ea-radio-group>
-      </div>
     `,
   }),
 };

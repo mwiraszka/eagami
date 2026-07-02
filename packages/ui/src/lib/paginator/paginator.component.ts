@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 
 import { ButtonComponent } from '../button/button.component';
+import { formatGroupedNumber } from '../i18n/format-number';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
@@ -82,9 +83,11 @@ export class PaginatorComponent {
 
   readonly canGoNext = computed(() => this.page() < this.totalPages());
 
-  /** Formats a number for display, grouping thousands with commas when enabled. */
+  /** Formats a number for display, grouping thousands per the active locale when enabled. */
   protected formatNumber(value: number): string {
-    return this.groupThousands() ? value.toLocaleString('en-US') : `${value}`;
+    return this.groupThousands()
+      ? formatGroupedNumber(value, this.i18n.locale(), this.i18n.messages().numberFormat)
+      : `${value}`;
   }
 
   readonly visiblePages = computed(() => {

@@ -1820,19 +1820,23 @@ export const esES: WebMessages = {
               'Se emite cuando se activa una miga de pan que no está deshabilitada ni es la última.',
           },
           drawer: {
-            animated: 'Desliza el panel desde su borde al abrir el cajón.',
+            animation:
+              'Animación de deslizamiento al abrir y cerrar el cajón: none (instantánea), linear (velocidad constante) o eased (una curva de salida suave).',
             ariaLabel:
               'Etiqueta accesible para el panel del cajón cuando su encabezado no es lo bastante descriptivo.',
             closeOnBackdrop: 'Cierra el cajón cuando el usuario hace clic en el fondo.',
             closeOnEscape: 'Cierra el cajón cuando el usuario pulsa la tecla Escape.',
             id: 'id aplicado al elemento dialog, generado automáticamente si se omite.',
+            mode: 'Cómo se relaciona el cajón con la página: overlay flota sobre una página atenuada con el foco atrapado, mientras que push se abre de forma no modal y reorganiza el contenido de la página hacia un lado.',
             open: 'Indica si el cajón está abierto, vinculable en dos sentidos mediante [(open)].',
             position: 'Borde del viewport desde el que se desliza el cajón.',
+            pushTarget:
+              'Elemento cuyo contenido se desplaza hacia un lado en el modo push, como selector CSS o referencia de elemento; de forma predeterminada, el cuerpo del documento.',
             showClose: 'Muestra el botón de cierre en el encabezado del cajón.',
-            width: 'Ancho del panel del cajón a lo largo de su eje principal.',
+            size: 'Extensión del panel del cajón a lo largo de su eje principal: ancho para los cajones laterales, alto para los cajones superiores e inferiores.',
             closed:
               'Se emite cuando el cajón se cierra, ya sea mediante el botón, el fondo o Escape.',
-            opened: 'Se emite una vez que el cajón se ha mostrado mediante showModal().',
+            opened: 'Se emite una vez que el cajón se ha mostrado.',
           },
           'data-table': {
             clickable:

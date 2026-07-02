@@ -18,47 +18,4 @@ const meta: Meta<AvatarComponent> = {
 export default meta;
 type Story = StoryObj<AvatarComponent>;
 
-export const Default: Story = {};
-
-export const WithInitials: Story = {
-  args: { initials: 'MW' },
-};
-
-export const WithImage: Story = {
-  args: {
-    src: 'assets/sample-avatar.png',
-    alt: 'User avatar',
-  },
-};
-
-export const Square: Story = {
-  args: {
-    initials: 'EA',
-    shape: 'square',
-  },
-};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row">
-        <ea-avatar size="xs" initials="XS" />
-        <ea-avatar size="sm" initials="SM" />
-        <ea-avatar size="md" initials="MD" />
-        <ea-avatar size="lg" initials="LG" />
-        <ea-avatar size="xl" initials="XL" />
-      </div>
-    `,
-  }),
-};
-
-export const AllShapes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row">
-        <ea-avatar shape="circle" initials="CI" />
-        <ea-avatar shape="square" initials="SQ" />
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

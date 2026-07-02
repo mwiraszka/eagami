@@ -4,14 +4,19 @@ import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
+  type DrawerAnimation,
   DrawerComponent,
+  type DrawerMode,
   type DrawerPosition,
-  type DrawerWidth,
+  type DrawerSize,
 } from './drawer.component';
 
 // Mock HTMLDialogElement methods for jsdom
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
+    this.setAttribute('open', '');
+  });
+  HTMLDialogElement.prototype.show = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
   HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
@@ -25,8 +30,10 @@ beforeAll(() => {
   template: `
     <ea-drawer
       [(open)]="isOpen"
+      [mode]="mode()"
       [position]="position()"
-      [width]="width()"
+      [size]="size()"
+      [animation]="animation()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
       [showClose]="showClose()">
@@ -38,8 +45,10 @@ beforeAll(() => {
 })
 class TestHostComponent {
   isOpen = signal(false);
+  mode = signal<DrawerMode>('overlay');
   position = signal<DrawerPosition>('right');
-  width = signal<DrawerWidth>('md');
+  size = signal<DrawerSize>('md');
+  animation = signal<DrawerAnimation>('eased');
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
@@ -63,7 +72,9 @@ describe('DrawerComponent', () => {
 
   beforeEach(async () => {
     (HTMLDialogElement.prototype.showModal as Mock).mockClear();
+    (HTMLDialogElement.prototype.show as Mock).mockClear();
     (HTMLDialogElement.prototype.close as Mock).mockClear();
+    document.body.removeAttribute('style');
 
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
@@ -106,15 +117,38 @@ describe('DrawerComponent', () => {
     });
 
     it('applies different size classes', () => {
-      host.width.set('lg');
+      host.size.set('lg');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-drawer__panel--lg');
     });
 
-    it('applies width classes', () => {
-      host.width.set('xl');
+    it('applies each size class', () => {
+      host.size.set('xl');
       fixture.detectChanges();
       expect(getPanel().classList).toContain('ea-drawer__panel--xl');
+    });
+  });
+
+  describe('Animation', () => {
+    it('marks the drawer animated for the eased animation', () => {
+      expect(getDrawer().classList).toContain('ea-drawer--animated');
+      expect(getDrawer().classList).not.toContain('ea-drawer--linear');
+    });
+
+    it('adds the linear modifier for the linear animation', () => {
+      host.animation.set('linear');
+      fixture.detectChanges();
+
+      expect(getDrawer().classList).toContain('ea-drawer--animated');
+      expect(getDrawer().classList).toContain('ea-drawer--linear');
+    });
+
+    it('drops the animated class when animation is none', () => {
+      host.animation.set('none');
+      fixture.detectChanges();
+
+      expect(getDrawer().classList).not.toContain('ea-drawer--animated');
+      expect(getDrawer().classList).not.toContain('ea-drawer--linear');
     });
   });
 
@@ -230,6 +264,8 @@ describe('DrawerComponent', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
 
+      // The native close event fires after the dialog has already closed.
+      getDrawer().removeAttribute('open');
       getDrawer().dispatchEvent(new Event('close'));
       fixture.detectChanges();
 
@@ -242,11 +278,92 @@ describe('DrawerComponent', () => {
       fixture.detectChanges();
       (HTMLDialogElement.prototype.showModal as Mock).mockClear();
 
+      getDrawer().removeAttribute('open');
       getDrawer().dispatchEvent(new Event('close'));
       fixture.detectChanges();
 
       expect(host.isOpen()).toBe(true);
       expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled();
+    });
+  });
+
+  describe('Push mode', () => {
+    it('opens non-modally via show() rather than showModal()', () => {
+      host.mode.set('push');
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(HTMLDialogElement.prototype.show).toHaveBeenCalled();
+      expect(HTMLDialogElement.prototype.showModal).not.toHaveBeenCalled();
+    });
+
+    it('applies the push modifier class to the dialog', () => {
+      host.mode.set('push');
+      fixture.detectChanges();
+
+      expect(getDrawer().classList).toContain('ea-drawer--push');
+    });
+
+    it('pushes the document body content aside on the position side', async () => {
+      host.mode.set('push');
+      host.position.set('right');
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      // The push offset is measured on the next frame, once the view reflects
+      // the current position and size.
+      await new Promise(resolve => requestAnimationFrame(resolve));
+
+      expect(document.body.style.getPropertyValue('padding-right')).not.toBe('');
+      expect(document.body.style.transition).toContain('padding');
+    });
+
+    it('releases the pushed content when the drawer closes', async () => {
+      host.mode.set('push');
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      await new Promise(resolve => requestAnimationFrame(resolve));
+
+      host.isOpen.set(false);
+      fixture.detectChanges();
+
+      expect(document.body.style.getPropertyValue('padding-right')).toBe('');
+    });
+
+    it('reopens in the matching modality when mode changes while open', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledTimes(1);
+
+      host.mode.set('push');
+      fixture.detectChanges();
+
+      expect(HTMLDialogElement.prototype.close).toHaveBeenCalled();
+      expect(HTMLDialogElement.prototype.show).toHaveBeenCalledTimes(1);
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('closes on Escape keydown when closeOnEscape is true', () => {
+      host.mode.set('push');
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      getDrawer().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('ignores Escape keydown when closeOnEscape is false', () => {
+      host.mode.set('push');
+      host.closeOnEscape.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      getDrawer().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
     });
   });
 

@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 2.4.0
-source: '@eagami/ui@2.4.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-05-28
+version: 5.0.0
+source: '@eagami/ui@5.0.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-01
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -92,7 +92,7 @@ Do not compose `TextStyle` from raw font sizes/weights. If a role is missing, ad
 
 ### 1.6 Interactive element sizing
 
-**RULE:** All tappable targets must be at least 44×44 logical pixels. Use the size tokens (`sm`, `md`, `lg`) which are calibrated to meet this for `md` and `lg`; `sm` is reserved for non-tappable or dense secondary contexts only.
+**RULE:** All tappable targets must be at least 44×44 logical pixels. Use the size tokens (`xs`, `sm`, `md`, `lg`, `xl`) which are calibrated to meet this for `md` and up; `xs` and `sm` are reserved for non-tappable or dense secondary contexts only.
 
 ### 1.7 Component API shape
 
@@ -101,7 +101,7 @@ Do not compose `TextStyle` from raw font sizes/weights. If a role is missing, ad
 | Prop              | Type                  | Notes                                                                            |
 | ----------------- | --------------------- | -------------------------------------------------------------------------------- |
 | `variant`         | enum                  | Matches Angular component's variant (e.g. Button → `ButtonVariant.primary`).      |
-| `size`            | `EagamiSize` enum     | `sm | md | lg`, default `md`. Defined once and reused by every sized component.   |
+| `size`            | `EagamiSize` enum     | `xs | sm | md | lg | xl`, default `md`. Defined once and reused by every sized component. |
 | `disabled`        | `bool`                | Default `false`.                                                                  |
 | `loading`         | `bool`                | Where applicable.                                                                 |
 | `fullWidth`       | `bool`                | Where applicable.                                                                 |
@@ -211,7 +211,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `surfaceSubtle`           | `neutral50`                     | `neutral700`                    |
 | `surfaceStripe`           | `neutral50`                     | `neutral900`                    |
 | `surfaceElevated`         | `neutral0`                      | `neutral700`                    |
-| `surfaceMuted`            | `neutral100`                    | `neutral600`                    |
+| `surfaceMuted`            | `neutral100`                    | `neutral700`                    |
 | `surfaceOverlay`          | `Color(0x80000000)`             | `Color(0x80000000)`             |
 | `borderSubtle`            | `neutral200`                    | `Color.lerp(neutral700, neutral800, 0.5)` |
 | `borderDefault`           | `neutral200`                    | `neutral400`                    |
@@ -241,7 +241,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `infoSubtle`              | `info50`                        | `Color(0x2606B6D4)`             |
 | `infoMuted`               | `info100`                       | `Color(0x4006B6D4)`             |
 
-In dark mode the surface model splits the page (`surfaceCanvas`, deepest) from the surfaces that sit on it (`surfaceBase`, `surfaceSubtle`, `surfaceElevated`, `surfaceMuted`). Canvas stays at `neutral950` while every component surface lifts to `neutral800` or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `surfaceStripe` (`neutral900`) is the alternating-row tone for tables; it sits **below** `surfaceBase` to keep odd rows darker than the surrounding card. `surfaceMuted` (`neutral600`) is the topmost hover-state tone so it stays readable inside elevated surfaces.
+In dark mode the surface model splits the page (`surfaceCanvas`, deepest) from the surfaces that sit on it (`surfaceBase`, `surfaceSubtle`, `surfaceElevated`, `surfaceMuted`). Canvas stays at `neutral950` while every component surface lifts to `neutral800` or higher so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `surfaceStripe` (`neutral900`) is the alternating-row tone for tables; it sits **below** `surfaceBase` to keep odd rows darker than the surrounding card. `surfaceMuted` (`neutral700`) is the opaque static fill for disabled fields, slider and progress tracks, and skeletons; hover and active fills route through translucent state tones upstream, so this shade never collides with them.
 
 `brandText` is the brand colour used as a **foreground** on a non-brand surface (selected dropdown row, today marker, sorted column header, spinner, active paginator page). It needs a 4.5:1 contrast against `surfaceBase`, so light mode uses `primary700` and dark mode uses `primary300`. `brandDefault` stays free to be optimized as a surface (button background, badge background) without dragging the text-on-surface contrast along with it.
 
@@ -306,7 +306,7 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 | `fontSans`  | DM Sans → Segoe UI → system-ui → -apple-system → sans-serif |
 | `fontBrand` | Syne → DM Sans → system-ui → sans-serif                     |
 | `fontSerif` | Georgia → Times New Roman → serif                           |
-| `fontMono`  | JetBrains Mono → Fira Code → Cascadia Code → monospace      |
+| `fontMono`  | ui-monospace → SFMono-Regular → Menlo → Monaco → Consolas → monospace |
 
 **Font sizes** (logical pixels; Flutter's `TextStyle.fontSize`):
 
@@ -371,7 +371,7 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 | `labelLg`    | 16   | medium     | 1.25        | sans          |
 | `labelMd`    | 14   | medium     | 1.25        | sans          |
 | `labelSm`    | 12   | medium     | 1.25        | sans          |
-| `helper`     | 12   | regular    | 1.5         | sans          |
+| `helper`     | 13   | regular    | 1.5         | sans          |
 | `code`       | 14   | regular    | 1.5         | mono          |
 
 ### 2.6 Shape
@@ -401,17 +401,17 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 
 ### 2.7 Elevation
 
-**Shadows** (Flutter `BoxShadow` list). Light-mode shadows are black-at-low-alpha. Dark-mode shadows are flipped to white-at-low-alpha because a black drop shadow is nearly invisible against a near-black page; the soft white fade blends down to a muted dark-grey that mirrors the role black-at-low-alpha plays in light mode. The larger tokens (`xl`, `2xl`) use tighter offset/blur in dark mode so the lighter fade does not sprawl into a halo.
+**Shadows** (Flutter `BoxShadow` list). Both modes use black-at-low-alpha drop shadows: a drop shadow is the absence of light, so a white "shadow" reads as a glow and looks wrong. Dark mode instead deepens the black alpha (0.4 to 0.75 versus 0.05 to 0.25 in light) because a subtle black shadow is nearly invisible against the near-black page, and it appends a hairline top highlight (`inset (0,1) spread 0` at 6% white) to every non-`none` level so the lifted surface catches light along its top edge. Elevation in dark mode is carried primarily by the lifted surface tone (see `surfaceElevated`) plus that top highlight, with the deeper drop shadow secondary.
 
 | Token       | Light                                                                                            | Dark                                                                                          |
 | ----------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
 | `none`      | `[]`                                                                                              | `[]`                                                                                           |
-| `xs`        | `(0,1) blur 2 spread 0` at 5% black                                                              | `(0,1) blur 2 spread 0` at 4% white                                                            |
-| `sm`        | `(0,1) blur 3 spread 0` at 10% + `(0,1) blur 2 spread -1` at 10% black                            | `(0,1) blur 3` at 5% + `(0,1) blur 2 spread -1` at 4% white                                    |
-| `md`        | `(0,4) blur 6 spread -1` at 10% + `(0,2) blur 4 spread -2` at 10% black                           | `(0,4) blur 6 spread -1` at 6% + `(0,2) blur 4 spread -2` at 4% white                          |
-| `lg`        | `(0,10) blur 15 spread -3` at 10% + `(0,4) blur 6 spread -4` at 10% black                         | `(0,8) blur 12 spread -2` at 8% + `(0,3) blur 5 spread -3` at 5% white                         |
-| `xl`        | `(0,20) blur 25 spread -5` at 10% + `(0,8) blur 10 spread -6` at 10% black                        | `(0,12) blur 18 spread -4` at 5% + `(0,5) blur 8 spread -4` at 3% white                        |
-| `2xl`       | `(0,25) blur 50 spread -12` at 25% black                                                         | `(0,16) blur 28 spread -8` at 6% white                                                         |
+| `xs`        | `(0,1) blur 2 spread 0` at 5% black                                                              | `(0,1) blur 2 spread 0` at 40% black + top highlight                                          |
+| `sm`        | `(0,1) blur 3 spread 0` at 10% + `(0,1) blur 2 spread -1` at 10% black                            | `(0,1) blur 3` at 50% + `(0,1) blur 2 spread -1` at 40% black + top highlight                 |
+| `md`        | `(0,4) blur 6 spread -1` at 10% + `(0,2) blur 4 spread -2` at 10% black                           | `(0,4) blur 8 spread -2` at 55% + `(0,2) blur 4 spread -2` at 40% black + top highlight       |
+| `lg`        | `(0,10) blur 15 spread -3` at 10% + `(0,4) blur 6 spread -4` at 10% black                         | `(0,12) blur 20 spread -4` at 60% + `(0,4) blur 8 spread -4` at 45% black + top highlight      |
+| `xl`        | `(0,20) blur 25 spread -5` at 10% + `(0,8) blur 10 spread -6` at 10% black                        | `(0,20) blur 28 spread -6` at 65% + `(0,8) blur 12 spread -6` at 50% black + top highlight     |
+| `2xl`       | `(0,25) blur 50 spread -12` at 25% black                                                         | `(0,28) blur 50 spread -12` at 75% black + top highlight                                       |
 | `inner`     | `inset (0,2) blur 4 spread 0` at 5% black                                                        | (same as light)                                                                                |
 
 **Bevel and well (relief)** — paired inset shadows that make a surface read as raised (`bevel`) or recessed (`well`). Flutter does not support inset `BoxShadow` natively; render with `CustomPainter`, stacked translucent `Container` overlays, or by painting a `BoxDecoration` whose `gradient` produces the highlight + shadow stops. Dark mode shifts the highlight to a lower alpha and the shadow to a higher alpha so the relief still reads on the lifted `surfaceBase` (`neutral800`).
@@ -513,7 +513,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Sync source: @eagami/ui@2.4.0 (packages/ui/src/styles/tokens/*.scss)
+// Sync source: @eagami/ui@5.0.0 (packages/ui/src/styles/tokens/*.scss)
 // =============================================================================
 
 @immutable
@@ -733,7 +733,7 @@ class EagamiColors {
     surfaceSubtle: Color(0xFF374151),
     surfaceStripe: Color(0xFF111827),
     surfaceElevated: Color(0xFF374151),
-    surfaceMuted: Color(0xFF4B5563),
+    surfaceMuted: Color(0xFF374151),
     surfaceOverlay: Color(0x80000000),
     borderSubtle: Color(0xFF2B3544),
     borderDefault: Color(0xFF9CA3AF),
@@ -820,7 +820,7 @@ class EagamiTypography {
     labelLg: TextStyle(fontFamily: _sans, fontSize: 16, fontWeight: FontWeight.w500, height: 1.25),
     labelMd: TextStyle(fontFamily: _sans, fontSize: 14, fontWeight: FontWeight.w500, height: 1.25),
     labelSm: TextStyle(fontFamily: _sans, fontSize: 12, fontWeight: FontWeight.w500, height: 1.25),
-    helper:  TextStyle(fontFamily: _sans, fontSize: 12, fontWeight: FontWeight.w400, height: 1.5),
+    helper:  TextStyle(fontFamily: _sans, fontSize: 13, fontWeight: FontWeight.w400, height: 1.5),
     code:    TextStyle(fontFamily: _mono, fontSize: 14, fontWeight: FontWeight.w400, height: 1.5),
   );
 }
@@ -974,29 +974,34 @@ class EagamiElevation {
     ],
   );
 
+  // Dark drop shadows stay black (deeper than light) rather than flipping to
+  // white, which would read as a glow. The upstream tokens also append a
+  // hairline top highlight (inset (0,1) at 6% white) to every non-none level;
+  // Flutter's BoxShadow has no inset, so paint that separately (a top-edge
+  // gradient stop or a 1px translucent-white top border on the surface).
   static const dark = EagamiElevation(
     none: [],
     xs: [
-      BoxShadow(offset: Offset(0, 1), blurRadius: 2, color: Color(0x0AFFFFFF)),
+      BoxShadow(offset: Offset(0, 1), blurRadius: 2, color: Color(0x66000000)),
     ],
     sm: [
-      BoxShadow(offset: Offset(0, 1), blurRadius: 3, color: Color(0x0DFFFFFF)),
-      BoxShadow(offset: Offset(0, 1), blurRadius: 2, spreadRadius: -1, color: Color(0x0AFFFFFF)),
+      BoxShadow(offset: Offset(0, 1), blurRadius: 3, color: Color(0x80000000)),
+      BoxShadow(offset: Offset(0, 1), blurRadius: 2, spreadRadius: -1, color: Color(0x66000000)),
     ],
     md: [
-      BoxShadow(offset: Offset(0, 4), blurRadius: 6, spreadRadius: -1, color: Color(0x0FFFFFFF)),
-      BoxShadow(offset: Offset(0, 2), blurRadius: 4, spreadRadius: -2, color: Color(0x0AFFFFFF)),
+      BoxShadow(offset: Offset(0, 4), blurRadius: 8, spreadRadius: -2, color: Color(0x8C000000)),
+      BoxShadow(offset: Offset(0, 2), blurRadius: 4, spreadRadius: -2, color: Color(0x66000000)),
     ],
     lg: [
-      BoxShadow(offset: Offset(0, 8), blurRadius: 12, spreadRadius: -2, color: Color(0x14FFFFFF)),
-      BoxShadow(offset: Offset(0, 3), blurRadius: 5, spreadRadius: -3, color: Color(0x0DFFFFFF)),
+      BoxShadow(offset: Offset(0, 12), blurRadius: 20, spreadRadius: -4, color: Color(0x99000000)),
+      BoxShadow(offset: Offset(0, 4), blurRadius: 8, spreadRadius: -4, color: Color(0x73000000)),
     ],
     xl: [
-      BoxShadow(offset: Offset(0, 12), blurRadius: 18, spreadRadius: -4, color: Color(0x0DFFFFFF)),
-      BoxShadow(offset: Offset(0, 5), blurRadius: 8, spreadRadius: -4, color: Color(0x08FFFFFF)),
+      BoxShadow(offset: Offset(0, 20), blurRadius: 28, spreadRadius: -6, color: Color(0xA6000000)),
+      BoxShadow(offset: Offset(0, 8), blurRadius: 12, spreadRadius: -6, color: Color(0x80000000)),
     ],
     xxl: [
-      BoxShadow(offset: Offset(0, 16), blurRadius: 28, spreadRadius: -8, color: Color(0x0FFFFFFF)),
+      BoxShadow(offset: Offset(0, 28), blurRadius: 50, spreadRadius: -12, color: Color(0xBF000000)),
     ],
     inner: [
       BoxShadow(offset: Offset(0, 2), blurRadius: 4, color: Color(0x0D000000)),
@@ -1228,7 +1233,14 @@ All sized components share a single `EagamiSize` enum:
 
 ```dart
 /// Visual size shared by every sized Eagami component.
-enum EagamiSize { sm, md, lg }
+enum EagamiSize { xs, sm, md, lg, xl }
+```
+
+Panel-style components that can also fill their axis (dialog, drawer) use a widened scale that adds a full-bleed option on top of the standard five:
+
+```dart
+/// Size scale for width/panel components, adding a full-bleed option.
+enum EagamiWidth { xs, sm, md, lg, xl, full }
 ```
 
 Form controls that surface an error state expose the same pair of inputs everywhere: `hint` for helper text and `errorMsg` for the error string. The presence of `errorMsg` (non-null, non-empty) is what flips the field into the error state, there is no separate `status` enum.
@@ -1250,6 +1262,7 @@ class EagamiButton extends StatelessWidget {
     this.disabled = false,
     this.loading = false,
     this.fullWidth = false,
+    this.icon,
     this.ariaLabel,
     this.ariaCurrent,
   });
@@ -1262,6 +1275,7 @@ class EagamiButton extends StatelessWidget {
   final bool disabled;
   final bool loading;
   final bool fullWidth;
+  final Widget? icon; // optional leading icon widget
   final String? ariaLabel;
   final String? ariaCurrent;
 }
@@ -1291,9 +1305,17 @@ class EagamiInput extends StatefulWidget {
     this.disabled = false,
     this.readonly = false,
     this.required = false,
+    this.clearable = false,
     this.autocomplete,
     this.autofocus = false,
     this.showPasswordToggle = true,
+    this.icon,
+    this.list,
+    this.min,
+    this.max,
+    this.step,
+    this.minLength,
+    this.maxLength,
     this.value,
     this.onChanged,
     this.onFocused,
@@ -1309,9 +1331,17 @@ class EagamiInput extends StatefulWidget {
   final bool disabled;
   final bool readonly;
   final bool required;
+  final bool clearable; // renders a clear (x) button when the field has a value
   final String? autocomplete;
   final bool autofocus;
   final bool showPasswordToggle;
+  final Widget? icon; // optional leading icon widget
+  final String? list; // id of a native datalist for suggestions
+  final num? min; // number-type bound
+  final num? max; // number-type bound
+  final num? step; // number-type increment
+  final int? minLength;
+  final int? maxLength;
   final String? value;
   final ValueChanged<String>? onChanged;
   final ValueChanged<FocusEvent>? onFocused;
@@ -1323,7 +1353,7 @@ class EagamiInput extends StatefulWidget {
 - A non-null/non-empty `errorMsg` forces the field into the error state. There is no `status` enum; `errorMsg` alone drives the visual.
 - `hint` displays below the input; replaced by `errorMsg` when the latter is present.
 - For `type: InputType.password`, the field renders a built-in show/hide toggle when `showPasswordToggle: true` (the default). The toggle is keyboard-reachable.
-- Prefix/suffix widgets accepted via named parameters (`prefix`, `suffix`).
+- `clearable: true` renders a clear button while the field holds a value; `min`/`max`/`step` apply to `InputType.number`.
 
 ### 5.3 Textarea
 
@@ -1341,8 +1371,9 @@ class EagamiTextarea extends StatefulWidget {
     this.disabled = false,
     this.readonly = false,
     this.required = false,
-    this.rows = 3,
     this.resize = TextareaResize.vertical,
+    this.minHeight,
+    this.maxHeight,
     this.maxlength,
     this.value,
     this.onChanged,
@@ -1358,8 +1389,9 @@ class EagamiTextarea extends StatefulWidget {
   final bool disabled;
   final bool readonly;
   final bool required;
-  final int rows;
   final TextareaResize resize;
+  final double? minHeight; // minimum height in logical pixels (auto-grow floor)
+  final double? maxHeight; // maximum height in logical pixels (auto-grow ceiling)
   final int? maxlength;
   final String? value;
   final ValueChanged<String>? onChanged;
@@ -1367,6 +1399,8 @@ class EagamiTextarea extends StatefulWidget {
   final ValueChanged<FocusEvent>? onBlurred;
 }
 ```
+
+The upstream `rows` input was removed; size the field with `minHeight` / `maxHeight` instead. The textarea auto-grows with content between those bounds.
 
 ### 5.4 Checkbox
 
@@ -1383,6 +1417,7 @@ class EagamiCheckbox extends StatelessWidget {
     this.disabled = false,
     this.required = false,
     this.indeterminate = false,
+    this.count,
     this.ariaLabel,
   });
 
@@ -1395,6 +1430,7 @@ class EagamiCheckbox extends StatelessWidget {
   final bool disabled;
   final bool required;
   final bool indeterminate;
+  final Object? count; // optional String or num shown as a trailing count next to the label
   final String? ariaLabel;
 }
 ```
@@ -1519,12 +1555,11 @@ class EagamiCard extends StatelessWidget {
 ### 5.8 Dialog
 
 ```dart
-enum DialogSize { sm, md, lg, full }
-
+// The width scale mirrors the shared EagamiWidth (xs..xl plus full).
 Future<T?> showEagamiDialog<T>({
   required BuildContext context,
   required WidgetBuilder builder,
-  DialogSize size = DialogSize.md,
+  EagamiWidth width = EagamiWidth.md,
   bool closeOnBackdrop = true,
   bool closeOnEscape = true,
   bool showClose = true,
@@ -1534,19 +1569,25 @@ Future<T?> showEagamiDialog<T>({
 });
 ```
 
-`closeOnBackdrop`/`closeOnEscape` default to `true`. When the dialog closes, restore focus to the element that was focused at the time it opened.
+The panel width is `width` (named `width`, not `size`), defaulting to `md`. `closeOnBackdrop`/`closeOnEscape` default to `true`. When the dialog closes, restore focus to the element that was focused at the time it opened.
 
 ### 5.9 Drawer
 
 ```dart
-enum DrawerPosition { left, right, top, bottom }
-enum DrawerSize { sm, md, lg, full }
+// `start`/`end` are direction-aware and resolve to left/right per the active
+// text direction (LTR: start = left; RTL: start = right).
+enum DrawerPosition { left, right, top, bottom, start, end }
+enum DrawerMode { overlay, push }
+enum DrawerAnimation { none, linear, eased }
 
 Future<T?> showEagamiDrawer<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   DrawerPosition position = DrawerPosition.right,
-  DrawerSize size = DrawerSize.md,
+  EagamiWidth size = EagamiWidth.md,
+  DrawerMode mode = DrawerMode.overlay,
+  Object? pushTarget, // a widget key / GlobalKey (or selector) whose content is shoved aside in push mode
+  DrawerAnimation animation = DrawerAnimation.eased,
   bool closeOnBackdrop = true,
   bool closeOnEscape = true,
   bool showClose = true,
@@ -1556,7 +1597,12 @@ Future<T?> showEagamiDrawer<T>({
 });
 ```
 
-A drawer slides in from `position` and otherwise behaves like a dialog (modal, focus-trapped, restores focus on close).
+**Behaviour:**
+- The panel extent is `size` (named `size`, using the shared `EagamiWidth` scale `xs..xl` plus `full`); there is no `width` parameter.
+- `position` accepts the four edges plus the direction-aware `start`/`end`.
+- `mode: DrawerMode.overlay` (the default) floats the drawer above a scrim; `mode: DrawerMode.push` slides the referenced `pushTarget` content aside instead of overlaying it.
+- `animation` selects the slide transition: `none` (no animation), `linear`, or `eased` (the default). Reduced motion still collapses the transition to zero via `context.eagamiDuration`.
+- Otherwise behaves like a dialog (modal, focus-trapped, restores focus on close).
 
 ### 5.10 Dropdown, Autocomplete, Segmented (single-select controls)
 
@@ -1755,6 +1801,7 @@ class EagamiCodeInput extends StatefulWidget {
     this.disabled = false,
     this.readonly = false,
     this.required = false,
+    this.allowAllChars = false,
     this.onCompleted,
   });
 
@@ -1769,6 +1816,7 @@ class EagamiCodeInput extends StatefulWidget {
   final bool disabled;
   final bool readonly;
   final bool required;
+  final bool allowAllChars; // when false (default), restrict entry to digits; true accepts any character
   final ValueChanged<String>? onCompleted;
 }
 ```
@@ -1792,8 +1840,10 @@ class EagamiSlider extends StatefulWidget {
     this.size = EagamiSize.md,
     this.disabled = false,
     this.required = false,
+    this.hasError = false,
     this.showValue = false,
     this.showMinMaxLabels = false,
+    this.groupThousands = true,
     this.formatValue,
     this.ariaLabel,
   });
@@ -1809,14 +1859,16 @@ class EagamiSlider extends StatefulWidget {
   final EagamiSize size;
   final bool disabled;
   final bool required;
+  final bool hasError; // forces the error visual without an errorMsg string
   final bool showValue;
   final bool showMinMaxLabels;
+  final bool groupThousands; // thousands separators in the displayed value
   final String Function(double value)? formatValue;
   final String? ariaLabel;
 }
 ```
 
-**Keyboard:** arrows step by `step`, PageUp/PageDown by `max(step * 10, range / 10)`, Home/End jump to bounds. Snap-clamp emitted values to the configured `min`/`max`/`step`.
+**Keyboard:** arrows step by `step`, PageUp/PageDown by `max(step * 10, range / 10)`, Home/End jump to bounds. Snap-clamp emitted values to the configured `min`/`max`/`step`. Either a non-empty `errorMsg` or `hasError: true` flips the slider into the error state.
 
 ### 5.14 Tabs
 
@@ -1900,6 +1952,7 @@ class EagamiMenu extends StatefulWidget {
     required this.children,
     required this.trigger, // widget that opens the menu (e.g. EagamiButton)
     this.placement = MenuPlacement.bottomStart,
+    this.maxHeight = '20rem',
     this.disabled = false,
     this.ariaLabel,
     this.onOpened,
@@ -1909,6 +1962,7 @@ class EagamiMenu extends StatefulWidget {
   final List<EagamiMenuItem> children;
   final Widget trigger;
   final MenuPlacement placement;
+  final String maxHeight; // max popup height before the list scrolls (CSS length string upstream)
   final bool disabled;
   final String? ariaLabel;
   final VoidCallback? onOpened;
@@ -1995,7 +2049,9 @@ class EagamiPaginator extends StatelessWidget {
     this.pageSizeOptions = const [10, 25, 50, 100],
     this.showPageSizeSelector = true,
     this.showRangeLabel = true,
+    this.groupThousands = true,
     this.align = PaginatorAlign.right,
+    this.size = EagamiSize.md,
     this.disabled = false,
   });
 
@@ -2006,7 +2062,9 @@ class EagamiPaginator extends StatelessWidget {
   final List<int> pageSizeOptions;
   final bool showPageSizeSelector;
   final bool showRangeLabel;
+  final bool groupThousands; // thousands separators in the range label and totals
   final PaginatorAlign align;
+  final EagamiSize size;
   final bool disabled;
 }
 ```
@@ -2017,8 +2075,10 @@ The range label ("1–10 of 47"), the "Rows per page" caption, and the prev/next
 
 ```dart
 enum DataTableDensity { compact, comfortable, spacious }
-enum DataTableSortDirection { asc, desc, none }
 enum DataTableAlign { left, center, right }
+
+/// Sort direction. `null` means no sort is applied (there is no `none` value).
+enum DataTableSortDirection { asc, desc }
 
 class DataTableColumn<T> {
   const DataTableColumn({
@@ -2043,9 +2103,9 @@ class DataTableColumn<T> {
 }
 
 class DataTableSortState {
-  const DataTableSortState({required this.column, required this.direction});
+  const DataTableSortState({required this.column, this.direction});
   final String column;
-  final DataTableSortDirection direction;
+  final DataTableSortDirection? direction; // null = unsorted
 }
 
 class EagamiDataTable<T> extends StatelessWidget {
@@ -2053,35 +2113,40 @@ class EagamiDataTable<T> extends StatelessWidget {
     super.key,
     required this.columns,
     required this.data,
-    required this.sort,
-    required this.onSorted,
+    this.sort = const DataTableSortState(column: ''),
+    this.onSorted,
     this.trackBy,
     this.density = DataTableDensity.comfortable,
     this.stickyHeader = false,
     this.striped = false,
     this.hoverable = true,
     this.bordered = false,
+    this.clickable = false,
+    this.navigable = false,
     this.noDataText, // falls back to locale `dataTable.noData`
-    this.noDataWidget,
+    this.onRowActivate,
   });
 
   final List<DataTableColumn<T>> columns;
   final List<T> data;
   final DataTableSortState sort;
   final ValueChanged<DataTableSortState>? onSorted;
-  final String? trackBy; // property name used for keying rows
+  final String? trackBy; // property name used for keying rows (keyof T upstream)
   final DataTableDensity density;
   final bool stickyHeader;
   final bool striped;
   final bool hoverable;
   final bool bordered;
+  final bool clickable; // rows become activatable (hover/press affordance + onRowActivate)
+  final bool navigable; // roving-tabindex grid keyboard navigation across cells
   final String? noDataText;
-  final Widget? noDataWidget;
+  final ValueChanged<T>? onRowActivate; // fires when a row is activated (click / Enter)
 }
 ```
 
 **Behaviour:**
-- Sortable columns cycle `none` → `asc` → `desc` → `none` on header click; clicking a different column starts at `asc`.
+- `sort` is two-way: `direction` is `asc`, `desc`, or `null` (unsorted). Sortable columns cycle `null` → `asc` → `desc` → `null` on header click; clicking a different column starts at `asc`.
+- `clickable: true` makes rows activatable and emits `onRowActivate` with the row; `navigable: true` adds roving-tabindex keyboard navigation across cells.
 - Use semantic table markup (header cells, row scope, etc.); avoid ARIA `grid`/`row`/`gridcell` roles, the upstream library uses native table semantics with `scope="col"` for screen-reader reliability.
 - For horizontal overflow, scroll an inner wrapper rather than the whole component so a sibling paginator is not pulled into the scrolled coordinate space.
 
@@ -2095,20 +2160,25 @@ class EagamiAlert extends StatelessWidget {
     super.key,
     required this.child,
     this.variant = AlertVariant.defaultVariant,
+    this.size = EagamiSize.md,
     this.dismissible = false,
     this.visible = true,
+    this.icon,
     this.onDismissed,
   });
 
   final Widget child;
   final AlertVariant variant;
+  final EagamiSize size;
   final bool dismissible;
   final bool visible;
+  final Widget? icon; // overrides the variant's default status icon
   final VoidCallback? onDismissed;
 }
 ```
 
 - `error` and `warning` variants render with `role: alert` (interrupting); other variants use `role: status` (polite).
+- `size` scales the text, icon, and gap together proportionally.
 - The decorative status icon should be marked decorative for screen readers; the dismiss button accessible name comes from the locale's `alert.dismiss`.
 - Vertically centre the status icon against the first line of content rather than against the icon container's top edge.
 
@@ -2145,6 +2215,7 @@ Tags cover semantic statuses only. There is no `primary` variant; for brand-colo
 
 ```dart
 enum BadgeVariant { defaultVariant, success, warning, error, info }
+enum BadgeShape { pill, pin }
 
 class EagamiBadge extends StatelessWidget {
   const EagamiBadge({
@@ -2152,18 +2223,21 @@ class EagamiBadge extends StatelessWidget {
     required this.child,
     this.variant = BadgeVariant.defaultVariant,
     this.size = EagamiSize.md,
+    this.shape = BadgeShape.pill,
   });
 
   final Widget child;
   final BadgeVariant variant;
   final EagamiSize size;
+  final BadgeShape shape;
 }
 ```
+
+`pill` hugs the content; `pin` renders as a circle for single characters.
 
 ### 5.23 Avatar
 
 ```dart
-enum AvatarSize { xs, sm, md, lg, xl } // five sizes, not the global EagamiSize
 enum AvatarShape { circle, square }
 
 class EagamiAvatar extends StatelessWidget {
@@ -2172,14 +2246,14 @@ class EagamiAvatar extends StatelessWidget {
     this.src,
     this.alt = '',
     this.initials,
-    this.size = AvatarSize.md,
+    this.size = EagamiSize.md,
     this.shape = AvatarShape.circle,
   });
 
   final String? src;
   final String alt;
   final String? initials;
-  final AvatarSize size;
+  final EagamiSize size;
   final AvatarShape shape;
 }
 ```
@@ -2308,7 +2382,7 @@ class EagamiProgressBar extends StatelessWidget {
     this.variant = ProgressBarVariant.defaultVariant,
     this.size = EagamiSize.md,
     this.label, // default: undefined; no automatic placeholder
-    this.showValue = false,
+    this.showPercentage = false,
     this.indeterminate = false,
   });
 
@@ -2317,7 +2391,7 @@ class EagamiProgressBar extends StatelessWidget {
   final ProgressBarVariant variant;
   final EagamiSize size;
   final String? label;
-  final bool showValue;
+  final bool showPercentage;
   final bool indeterminate;
 }
 ```
@@ -2336,6 +2410,7 @@ class EagamiEmptyState extends StatelessWidget {
     this.description,
     this.size = EagamiSize.md,
     this.headingLevel = EmptyStateHeadingLevel.h2,
+    this.bordered = false,
     this.media,
     this.actions,
   });
@@ -2344,12 +2419,13 @@ class EagamiEmptyState extends StatelessWidget {
   final String? description;
   final EagamiSize size;
   final EmptyStateHeadingLevel headingLevel;
+  final bool bordered;   // dashed frame around the block
   final Widget? media;   // icon or illustration slot
   final Widget? actions; // follow-up button row
 }
 ```
 
-Use `headingLevel` to fit the title into the surrounding document outline.
+Use `headingLevel` to fit the title into the surrounding document outline. `bordered` renders a dashed frame around the block.
 
 ### 5.29 Divider
 
@@ -2361,10 +2437,12 @@ class EagamiDivider extends StatelessWidget {
     super.key,
     this.orientation = DividerOrientation.horizontal,
     this.label, // optional centred label (e.g. "or")
+    this.thick = false,
   });
 
   final DividerOrientation orientation;
   final String? label;
+  final bool thick; // renders a heavier rule
 }
 ```
 
@@ -2380,16 +2458,19 @@ class EagamiTooltip extends StatelessWidget {
     required this.message,
     required this.child,
     this.position = TooltipPosition.top,
+    this.maxWidth = 200,
   });
 
   final String message;
   final Widget child;
   final TooltipPosition position;
+  final double maxWidth; // wrap width in px (50px floor)
 }
 ```
 
 **Behaviour:**
 - Show on hover and focus; hide on leave, blur, or Escape.
+- `maxWidth` caps the text width so the tooltip wraps at that width, clamped to a 50px floor.
 - Suppress hover-triggered tooltips on touch-only devices (touch taps fire `mouseenter` but never `mouseleave`, leaving tooltips latched open). Re-attach pointer listeners reactively when hover capability changes (Bluetooth pointer connects, DevTools mobile mode toggles off, etc.).
 - Wire `aria-describedby` on the host element by appending to any existing tokens (not overwriting).
 
@@ -2397,6 +2478,7 @@ class EagamiTooltip extends StatelessWidget {
 
 ```dart
 enum ToastVariant { defaultVariant, success, warning, error, info }
+enum ToastPosition { topLeft, top, topRight, bottomLeft, bottom, bottomRight }
 
 class Toast {
   const Toast({
@@ -2430,12 +2512,20 @@ class ToastService extends ChangeNotifier {
 }
 
 class EagamiToastOutlet extends StatelessWidget {
-  const EagamiToastOutlet({super.key});
+  const EagamiToastOutlet({
+    super.key,
+    this.position = ToastPosition.bottomRight,
+    this.clearable = true,
+  });
+
+  final ToastPosition position; // viewport corner/edge the stack pins to
+  final bool clearable;         // show a dismiss button on each toast
 }
 ```
 
 **Behaviour:**
 - Place a single `EagamiToastOutlet` once near the root of the app so toasts created from anywhere are surfaced.
+- `position` pins the toast stack to a viewport corner or edge; `clearable` toggles the per-toast dismiss button.
 - `error` and `warning` variants render with `role: alert`; other variants use `role: status`.
 - Honour reduced motion by degrading the slide-in to an opacity-only fade (the horizontal translate can trip vestibular sensitivity).
 - Dismiss button accessible name comes from the locale's `toast.dismiss`.
@@ -2443,17 +2533,17 @@ class EagamiToastOutlet extends StatelessWidget {
 ### 5.32 Eagami wordmark
 
 ```dart
-/// 1: "eagami", 2: "handcrafted by eagami" overline + "eagami",
-/// 3: "eagami design system", 4: same as 3 plus a tagline.
-enum EagamiWordmarkVariant { v1, v2, v3, v4 }
+/// default: the bare "eagami" wordmark; byline adds the "handcrafted by"
+/// overline; tagline adds the tagline line.
+enum EagamiWordmarkVariant { defaultVariant, byline, tagline }
 enum EagamiWordmarkLayout { stacked, inline }
 
 class EagamiWordmark extends StatelessWidget {
   const EagamiWordmark({
     super.key,
-    this.variant = EagamiWordmarkVariant.v1,
+    this.variant = EagamiWordmarkVariant.defaultVariant,
     this.layout = EagamiWordmarkLayout.stacked,
-    this.size = 32, // pixels, continuous (not preset bucket)
+    this.size = 48, // pixels the entire wordmark scales from (continuous, not a preset bucket)
   });
 
   final EagamiWordmarkVariant variant;
@@ -2462,7 +2552,7 @@ class EagamiWordmark extends StatelessWidget {
 }
 ```
 
-The brand name itself stays untranslated. Only the overline ("handcrafted by") and the tagline ("elegant web design") follow the active locale.
+The brand name itself stays untranslated. Only the overline ("handcrafted by") and the tagline follow the active locale.
 
 ### 5.33 Icons
 
@@ -2470,38 +2560,603 @@ The upstream library ships an SVG icon set covering core utility, semantic, navi
 
 - Treat each icon as an `IconData`-equivalent constant (use Flutter's `Icon` widget with a custom font, or render each SVG via `flutter_svg`).
 - Default sizing is `1em × 1em` so the icon scales to the inherited font size when placed inside buttons without an explicit size.
-- For the brand icons (`Github`, `Apple`, `Facebook`, `XTwitter`, `Microsoft`, `Google`), render in `currentColor` by default so they inherit surrounding text colour, with an opt-in `brand: true` flag that paints them in the official brand colour. **Apple's logo is the strictest trademark of the set** and is deprecated in the upstream library for v2.0.0 removal; source the asset directly from Apple for any "Sign in with Apple" use case.
+- Brand marks ship as two variants: an outline form (`Github`, `Facebook`, `Twitter`, `XTwitter`, `Microsoft`, `Google`) that renders in `currentColor` so it inherits surrounding text colour, and a brand-filled form (`Github2`, `Facebook2`, etc.) that carries a `brand` flag: leave it off to inherit `currentColor`, or set `brand: true` to paint the mark in the official brand colour.
 - The icon set is derived from Feather Icons (Cole Bemis, MIT). Brand icons are governed by trademark, not the MIT licence; consult each platform's brand guidelines before redistributing.
 
 ### 5.34 Icon button
 
 There is no dedicated `EagamiIconButton` widget in the current library. To render an icon-only button, use `EagamiButton` with `variant: ButtonVariant.ghost` and an icon child, and supply `ariaLabel` so the action is announced verbally.
 
+### 5.35 Color picker
+
+```dart
+enum ColorPickerFormat { hex, rgb, hsl, all }
+
+class EagamiColorPicker extends StatefulWidget {
+  const EagamiColorPicker({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.placeholder,
+    this.hint,
+    this.errorMsg,
+    this.size = EagamiSize.md,
+    this.format = ColorPickerFormat.all,
+    this.presets = kDefaultColorPresets, // pass const [] to hide the preset swatches
+    this.showAlpha = true,
+    this.disabled = false,
+    this.readonly = false,
+    this.required = false,
+  });
+
+  final String? value; // current color string, two-way bindable (null when unset)
+  final ValueChanged<String?>? onChanged;
+  final String? label;
+  final String? placeholder; // shown on the trigger while no color is selected
+  final String? hint;
+  final String? errorMsg;
+  final EagamiSize size;
+  final ColorPickerFormat format; // output format of the emitted value; all keeps the hex/rgb/hsl toggle
+  final List<String> presets;
+  final bool showAlpha; // shows the alpha slider and includes alpha in the emitted value
+  final bool disabled;
+  final bool readonly;
+  final bool required;
+}
+```
+
+The trigger opens a popover with a saturation/value area, hue and (optionally) alpha sliders, a preset row, and a hex/RGB input toggle. Where the platform exposes an eyedropper, offer it; otherwise hide that affordance.
+
+### 5.36 Command palette
+
+```dart
+class CommandPaletteItem<T> {
+  const CommandPaletteItem({
+    required this.id,
+    required this.label,
+    this.description,
+    this.icon,
+    this.shortcut,
+    this.group,
+    this.disabled = false,
+    this.keywords = const [],
+    this.data,
+  });
+
+  final String id;
+  final String label;
+  final String? description; // secondary text below the label
+  final Widget? icon;
+  final String? shortcut; // decorative shortcut hint on the right edge; the palette binds no global keys
+  final String? group; // section heading; ungrouped items render first
+  final bool disabled;
+  final List<String> keywords; // hidden search synonyms
+  final T? data; // passed through to onExecute
+}
+
+class EagamiCommandPalette<T> extends StatefulWidget {
+  const EagamiCommandPalette({
+    super.key,
+    required this.items,
+    required this.open,
+    required this.onOpenChanged,
+    required this.onExecute,
+    this.placeholder = '',
+    this.emptyMessage = '', // falls back to the locale's `commandPalette.empty`
+  });
+
+  final List<CommandPaletteItem<T>> items;
+  final bool open; // two-way: mirror onOpenChanged back into open
+  final ValueChanged<bool>? onOpenChanged;
+  final ValueChanged<CommandPaletteItem<T>>? onExecute;
+  final String placeholder;
+  final String emptyMessage;
+}
+```
+
+A modal search dialog. The filter matches case-insensitively on `label`, `description`, and `keywords`. Arrow keys move the active row, Enter executes it, Escape closes.
+
+### 5.37 File uploader
+
+```dart
+enum FileUploaderRejectionReason { type, size, count }
+
+class FileUploaderRejection {
+  const FileUploaderRejection({required this.file, required this.reason});
+  final XFile file;
+  final FileUploaderRejectionReason reason;
+}
+
+class EagamiFileUploader extends StatefulWidget {
+  const EagamiFileUploader({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.hint,
+    this.errorMsg,
+    this.size = EagamiSize.md,
+    this.accept, // comma-separated MIME types / extensions, e.g. 'image/*,.pdf'
+    this.multiple = true,
+    this.maxFiles,
+    this.maxSize, // max size per file in bytes
+    this.showFileList = true,
+    this.progress, // per-file progress 0-100 keyed by file identity; omit to hide progress bars
+    this.disabled = false,
+    this.required = false,
+    this.onFileRemoved,
+    this.onRejected,
+  });
+
+  final List<XFile> value; // two-way bindable
+  final ValueChanged<List<XFile>>? onChanged;
+  final String? label;
+  final String? hint;
+  final String? errorMsg;
+  final EagamiSize size;
+  final String? accept;
+  final bool multiple;
+  final int? maxFiles;
+  final int? maxSize;
+  final bool showFileList;
+  final Map<XFile, double>? progress;
+  final bool disabled;
+  final bool required;
+  final ValueChanged<XFile>? onFileRemoved;
+  final ValueChanged<List<FileUploaderRejection>>? onRejected;
+}
+```
+
+Pure UI: it manages selection, validation, and removal but performs no network I/O. The consumer uploads the resulting files and optionally feeds progress back via `progress`. Files failing the `accept` / `maxFiles` / `maxSize` checks are dropped and reported through `onRejected` with a per-file reason. A dropzone icon slot lets the consumer override the default upload glyph.
+
+### 5.38 Multi-select
+
+Reuses the shared `SelectOption` value type (see § 5.10).
+
+```dart
+class EagamiMultiSelect extends StatefulWidget {
+  const EagamiMultiSelect({
+    super.key,
+    required this.options,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.placeholder,
+    this.hint,
+    this.errorMsg,
+    this.size = EagamiSize.md,
+    this.maxVisibleChips = 0, // 0 = no cap; extra selections collapse into a count pill
+    this.searchable = true,
+    this.searchPlaceholder,
+    this.selectAll = true, // tri-state select-all row at the top of the list
+    this.disabled = false,
+    this.readonly = false,
+    this.required = false,
+  });
+
+  final List<SelectOption> options;
+  final List<String> value; // selected option values, two-way bindable
+  final ValueChanged<List<String>>? onChanged;
+  final String? label;
+  final String? placeholder;
+  final String? hint;
+  final String? errorMsg;
+  final EagamiSize size;
+  final int maxVisibleChips;
+  final bool searchable;
+  final String? searchPlaceholder;
+  final bool selectAll;
+  final bool disabled;
+  final bool readonly;
+  final bool required;
+}
+```
+
+Selected values render as removable chips in the trigger. The popover lists every option with a checkbox; a search field filters by label, and the select-all row toggles the filtered options.
+
+### 5.39 Popover
+
+The low-level anchored surface that dropdown, menu, multi-select, and the pickers are built on. Expose it for custom overlays.
+
+```dart
+enum PopoverPlacement { top, topStart, topEnd, bottom, bottomStart, bottomEnd, left, right }
+enum PopoverRole { menu, listbox, dialog, tooltip, grid }
+enum PopoverScrollBehavior { reposition, close, ignore }
+
+class EagamiPopover extends StatefulWidget {
+  const EagamiPopover({
+    super.key,
+    required this.anchor, // element the popover positions itself against
+    required this.child,
+    this.open = false,
+    this.placement = PopoverPlacement.bottomStart,
+    this.role = PopoverRole.dialog,
+    this.offset = 2, // gap in px between anchor and surface
+    this.flip = true, // flip to the opposite side when the placement overflows
+    this.clamp = true, // clamp inside the viewport when it would overflow
+    this.matchAnchorWidth = false, // set the surface min-width to the anchor width
+    this.closeOnEscape = true,
+    this.closeOnOutsideClick = true,
+    this.scrollBehavior = PopoverScrollBehavior.reposition,
+    this.ariaLabel, // provide when the surface has no visible heading
+    this.surfaceId, // DOM id used by triggers via aria-controls
+    this.onCloseRequested,
+  });
+
+  final GlobalKey anchor;
+  final Widget child;
+  final bool open;
+  final PopoverPlacement placement;
+  final PopoverRole role;
+  final double offset;
+  final bool flip;
+  final bool clamp;
+  final bool matchAnchorWidth;
+  final bool closeOnEscape;
+  final bool closeOnOutsideClick;
+  final PopoverScrollBehavior scrollBehavior;
+  final String? ariaLabel;
+  final String? surfaceId;
+  final VoidCallback? onCloseRequested; // parent mirrors this into `open`
+}
+```
+
+`open` is one-way here: the popover asks to close via `onCloseRequested` (Escape, outside click, or a scroll when `scrollBehavior` is `close`), and the parent decides whether to honour it by flipping `open`.
+
+### 5.40 Range slider
+
+```dart
+typedef RangeSliderValue = (double low, double high);
+
+class EagamiRangeSlider extends StatefulWidget {
+  const EagamiRangeSlider({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.hint,
+    this.errorMsg,
+    this.min = 0,
+    this.max = 100,
+    this.step = 1,
+    this.size = EagamiSize.md,
+    this.disabled = false,
+    this.required = false,
+    this.showValue = false,
+    this.showMinMaxLabels = false,
+    this.groupThousands = true,
+    this.formatValue,
+    this.ariaLabelLow,
+    this.ariaLabelHigh,
+  });
+
+  final RangeSliderValue value; // (low, high) tuple, two-way bindable
+  final ValueChanged<RangeSliderValue>? onChanged;
+  final String? label;
+  final String? hint;
+  final String? errorMsg;
+  final double min;
+  final double max;
+  final double step;
+  final EagamiSize size;
+  final bool disabled;
+  final bool required;
+  final bool showValue;
+  final bool showMinMaxLabels;
+  final bool groupThousands; // thousands separators in displayed values, ignored when formatValue is set
+  final String Function(double value)? formatValue;
+  final String? ariaLabelLow; // falls back to the field label
+  final String? ariaLabelHigh; // falls back to the field label
+}
+```
+
+Two thumbs whose values are snapped to `step`, clamped to `min`/`max`, and constrained by each other (the low thumb can never pass the high thumb).
+
+### 5.41 Rating
+
+```dart
+class EagamiRating extends StatefulWidget {
+  const EagamiRating({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.hint,
+    this.errorMsg,
+    this.min = 0,
+    this.max = 5, // highest value and the number of stars rendered
+    this.size = EagamiSize.md,
+    this.allowHalf = false, // permits 0.5 increments
+    this.clearable = true, // clicking the current value resets it to 0
+    this.readonly = false,
+    this.disabled = false,
+    this.required = false,
+    this.icon, // widget for empty and full positions (default: star)
+    this.halfIcon, // widget for half positions when allowHalf is true
+    this.onHoverChanged,
+  });
+
+  final double value; // two-way bindable
+  final ValueChanged<double>? onChanged;
+  final String? label;
+  final String? hint;
+  final String? errorMsg;
+  final double min;
+  final double max;
+  final EagamiSize size;
+  final bool allowHalf;
+  final bool clearable;
+  final bool readonly;
+  final bool disabled;
+  final bool required;
+  final Widget? icon;
+  final Widget? halfIcon;
+  final ValueChanged<double?>? onHoverChanged; // previewed value while hovering, null when the cursor leaves
+}
+```
+
+### 5.42 Stepper
+
+```dart
+class EagamiStep extends StatelessWidget {
+  const EagamiStep({
+    super.key,
+    required this.label,
+    required this.child,
+    this.completed = false,
+    this.optional = false, // shown as a hint below the label
+    this.disabled = false,
+  });
+
+  final String label;
+  final Widget child;
+  final bool completed;
+  final bool optional;
+  final bool disabled;
+}
+
+class EagamiStepper extends StatefulWidget {
+  const EagamiStepper({
+    super.key,
+    required this.activeStep,
+    required this.onChanged,
+    required this.children,
+    this.size = EagamiSize.md,
+    this.linear = false, // require each non-optional step to be completed before advancing
+    this.disabled = false,
+  });
+
+  final int activeStep; // zero-based index, two-way bindable
+  final ValueChanged<int>? onChanged;
+  final List<EagamiStep> children;
+  final EagamiSize size;
+  final bool linear;
+  final bool disabled;
+}
+```
+
+In `linear` mode a step is only reachable once every earlier non-optional step is marked `completed`.
+
+### 5.43 Time picker
+
+```dart
+enum TimePickerFormat { h12, h24 } // '12h' | '24h' upstream
+
+class EagamiTimePicker extends StatefulWidget {
+  const EagamiTimePicker({
+    super.key,
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.placeholder,
+    this.hint,
+    this.errorMsg,
+    this.size = EagamiSize.md,
+    this.format = TimePickerFormat.h24, // display only; the wire value is always 24-hour
+    this.includeSeconds = false,
+    this.minuteStep = 1,
+    this.secondStep = 1,
+    this.disabled = false,
+    this.readonly = false,
+    this.required = false,
+  });
+
+  final String? value; // 'HH:MM' or 'HH:MM:SS' 24-hour, two-way bindable (null when unset)
+  final ValueChanged<String?>? onChanged;
+  final String? label;
+  final String? placeholder;
+  final String? hint;
+  final String? errorMsg;
+  final EagamiSize size;
+  final TimePickerFormat format;
+  final bool includeSeconds;
+  final int minuteStep;
+  final int secondStep;
+  final bool disabled;
+  final bool readonly;
+  final bool required;
+}
+```
+
+The wire value stays 24-hour regardless of `format`. Typed digits auto-advance between the hour, minute, and (optional) second columns; each column can also be stepped or long-pressed to repeat.
+
+### 5.44 Transfer list
+
+```dart
+class TransferListItem {
+  const TransferListItem({required this.id, required this.label, this.disabled = false});
+  final String id;
+  final String label;
+  final bool disabled; // greyed out, cannot be highlighted, skipped by the move-all buttons
+}
+
+class EagamiTransferList extends StatefulWidget {
+  const EagamiTransferList({
+    super.key,
+    required this.items, // full pool across both panes
+    required this.selectedIds, // ids on the target (right) side, two-way bindable
+    required this.onSelectedIdsChanged,
+    this.size = EagamiSize.md,
+    this.sourceLabel, // heading above the source (left) pane, falls back to the locale
+    this.targetLabel, // heading above the target (right) pane, falls back to the locale
+    this.disabled = false,
+  });
+
+  final List<TransferListItem> items;
+  final List<String> selectedIds;
+  final ValueChanged<List<String>>? onSelectedIdsChanged;
+  final EagamiSize size;
+  final String? sourceLabel;
+  final String? targetLabel;
+  final bool disabled;
+}
+```
+
+Two panes with move and move-all controls between them. Items not in `selectedIds` sit in the source pane, the rest in the target pane.
+
+### 5.45 Tree
+
+```dart
+class TreeNode<T> {
+  const TreeNode({
+    required this.id, // unique across the entire tree
+    required this.label,
+    this.children = const [],
+    this.icon,
+    this.disabled = false,
+    this.data, // passed through to onNodeClick
+  });
+
+  final String id;
+  final String label;
+  final List<TreeNode<T>> children; // empty = leaf
+  final Widget? icon;
+  final bool disabled;
+  final T? data;
+}
+
+class EagamiTree<T> extends StatefulWidget {
+  const EagamiTree({
+    super.key,
+    required this.nodes,
+    required this.expandedIds,
+    required this.onExpandedIdsChanged,
+    required this.selectedId,
+    required this.onSelectedIdChanged,
+    this.size = EagamiSize.md,
+    this.disabled = false,
+    this.ariaLabel,
+    this.onNodeClick,
+  });
+
+  final List<TreeNode<T>> nodes;
+  final List<String> expandedIds; // ids of expanded branches, two-way bindable
+  final ValueChanged<List<String>>? onExpandedIdsChanged;
+  final String? selectedId; // two-way bindable, null when nothing is selected
+  final ValueChanged<String?>? onSelectedIdChanged;
+  final EagamiSize size;
+  final bool disabled;
+  final String? ariaLabel;
+  final ValueChanged<TreeNode<T>>? onNodeClick;
+}
+```
+
+Each row exposes `treeitem` semantics with `aria-level`, `aria-posinset`, and `aria-setsize`. A single row holds the roving tabindex: arrows move focus and expand/collapse branches, Enter/Space selects. The upstream `<ea-tree-node>` is an internal recursion detail rendered per node; consumers only interact with `EagamiTree` and the `TreeNode` data.
+
+### 5.46 Virtual list
+
+```dart
+class EagamiVirtualList<T> extends StatefulWidget {
+  const EagamiVirtualList({
+    super.key,
+    required this.items,
+    required this.itemHeight, // fixed px height shared by every row
+    required this.viewportHeight, // px height of the scrolling viewport
+    required this.itemBuilder,
+    this.overscan = 3, // extra rows rendered above and below the window to reduce blank edges
+    this.onScrollIndexChanged,
+  });
+
+  final List<T> items;
+  final double itemHeight;
+  final double viewportHeight;
+  final Widget Function(BuildContext, T item, int index) itemBuilder;
+  final int overscan;
+  final ValueChanged<int>? onScrollIndexChanged; // index of the first visible row on scroll
+}
+```
+
+Only the visible slice (plus `overscan`) is mounted at any time, so the list stays smooth over very large `items`. All rows must share the same fixed `itemHeight`. Expose an imperative `scrollToIndex(int index)` that scrolls the target row to the top, clamped to the list bounds.
+
 ---
 
 ## 6. Internationalization
 
-Eagami UI ships full i18n. Every built-in user-facing string (ARIA labels, placeholders, empty states, pagination labels, dismiss buttons, etc.) is provided in five locales and can be overridden per-string. A Flutter consumer should replicate the same surface so the design system stays consistent across both stacks.
+Eagami UI ships full i18n. Every built-in user-facing string (ARIA labels, placeholders, empty states, pagination labels, dismiss buttons, etc.) is provided in fifteen locales and can be overridden per-string. Locales are opt-in as of @eagami/ui@4.0.0: English is always available without registration, and every other locale must be registered (upstream via `provideEagamiUi({ locales: [...] })`) so only the languages you ship land in the bundle. Two locales are right-to-left (Arabic and Hebrew); every locale carries a `dir` field so a consumer can wire `Directionality` correctly. A Flutter consumer should replicate the same surface so the design system stays consistent across both stacks.
 
 ### 6.1 Supported locales
+
+Each locale carries display metadata (label in its own language, flag, and reading direction). Register the ones you need; English is always available.
 
 ```dart
 /// BCP 47 locale tags supported out of the box.
 enum EagamiLocale {
   en,    // English (default / fallback)
-  frFR,  // French (France)
-  el,    // Greek
-  pl,    // Polish
+  de,    // German
   esES,  // Spanish (Spain)
+  frFR,  // French (France)
+  is,    // Icelandic
+  nl,    // Dutch
+  pl,    // Polish
+  ptBR,  // Portuguese (Brazil)
+  el,    // Greek
+  ru,    // Russian
+  uk,    // Ukrainian
+  he,    // Hebrew (right-to-left)
+  ar,    // Arabic (right-to-left)
+  hi,    // Hindi
+  zhCN,  // Chinese (Simplified)
 }
 
-/// Ordered list, useful for language switchers.
-const List<EagamiLocale> kEagamiLocales = [
-  EagamiLocale.en,
-  EagamiLocale.frFR,
-  EagamiLocale.el,
-  EagamiLocale.pl,
-  EagamiLocale.esES,
+enum TextDir { ltr, rtl }
+
+/// Display metadata for one locale: label in its own language, flag, and
+/// reading direction (for wiring `Directionality`).
+@immutable
+class EagamiLocaleMeta {
+  const EagamiLocaleMeta({
+    required this.locale,
+    required this.label,
+    required this.flag,
+    required this.dir,
+  });
+
+  final EagamiLocale locale;
+  final String label;
+  final String flag;
+  final TextDir dir;
+}
+
+/// Ordered list (language-switcher order), plus per-locale metadata. English
+/// first, then Latin scripts, then Greek, Cyrillic, Hebrew, Arabic,
+/// Devanagari, and Chinese by Unicode block order.
+const List<EagamiLocaleMeta> kEagamiLocaleMeta = [
+  EagamiLocaleMeta(locale: EagamiLocale.en, label: 'English', flag: '🇬🇧', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.de, label: 'Deutsch', flag: '🇩🇪', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.esES, label: 'Español', flag: '🇪🇸', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.frFR, label: 'Français', flag: '🇫🇷', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.is, label: 'Íslenska', flag: '🇮🇸', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.nl, label: 'Nederlands', flag: '🇳🇱', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.pl, label: 'Polski', flag: '🇵🇱', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.ptBR, label: 'Português (Brasil)', flag: '🇧🇷', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.el, label: 'Ελληνικά', flag: '🇬🇷', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.ru, label: 'Русский', flag: '🇷🇺', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.uk, label: 'Українська', flag: '🇺🇦', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.he, label: 'עברית', flag: '🇮🇱', dir: TextDir.rtl),
+  EagamiLocaleMeta(locale: EagamiLocale.ar, label: 'العربية', flag: '🇸🇦', dir: TextDir.rtl),
+  EagamiLocaleMeta(locale: EagamiLocale.hi, label: 'हिन्दी', flag: '🇮🇳', dir: TextDir.ltr),
+  EagamiLocaleMeta(locale: EagamiLocale.zhCN, label: '中文', flag: '🇨🇳', dir: TextDir.ltr),
 ];
 ```
 
@@ -2517,18 +3172,28 @@ class EagamiMessages {
     required this.avatarEditor,
     required this.breadcrumbs,
     required this.codeInput,
+    required this.commandPalette,
+    required this.colorPicker,
     required this.dataTable,
     required this.datePicker,
     required this.dialog,
     required this.drawer,
     required this.dropdown,
+    required this.fileUploader,
     required this.input,
     required this.menu,
+    required this.multiSelect,
     required this.paginator,
     required this.progressBar,
+    required this.rating,
     required this.spinner,
+    required this.stepper,
     required this.tag,
+    required this.timePicker,
     required this.toast,
+    required this.transferList,
+    required this.tree,
+    required this.validation,
     required this.wordmark,
   });
 
@@ -2537,18 +3202,28 @@ class EagamiMessages {
   final AvatarEditorMessages avatarEditor; // { upload, dropzone, canvas, change, revert, zoomOut, zoom, zoomIn, remove }
   final BreadcrumbsMessages breadcrumbs; // { label }
   final CodeInputMessages codeInput;     // { groupLabel(length), digitLabel(index, length) }
+  final CommandPaletteMessages commandPalette; // { dialogLabel, searchPlaceholder, empty, clear }
+  final ColorPickerMessages colorPicker; // { placeholder, clear, hue, saturationAndValue, alpha, eyedropper, presets, toggleFormat }
   final DataTableMessages dataTable;     // { noData }
   final DatePickerMessages datePicker;   // { placeholder, clear, previousYear, previousMonth, nextMonth, nextYear, today }
   final DialogMessages dialog;           // { close }
   final DrawerMessages drawer;           // { close }
   final DropdownMessages dropdown;       // { placeholder }
-  final InputMessages input;             // { showPassword, hidePassword }
+  final FileUploaderMessages fileUploader; // { prompt, promptSingle, browse, removeFile(name), fileListLabel, constraintsAccept(accept), constraintsMaxSize(size), constraintsMaxFiles(count), rejectionType(name), rejectionSize(name, max), rejectionCount(max), bytesUnit { b, kb, mb, gb, tb } }
+  final InputMessages input;             // { showPassword, hidePassword, clear }
   final MenuMessages menu;               // { label }
+  final MultiSelectMessages multiSelect; // { placeholder, searchPlaceholder, searchEmpty, selectAll, clearAll, removeOption(label), selectedCount(count) }
   final PaginatorMessages paginator;     // { label, rowsPerPage, range(start, end, total), previousPage, nextPage }
   final ProgressBarMessages progressBar; // { label }
+  final RatingMessages rating;           // { label, valueLabel(value, max), clear }
   final SpinnerMessages spinner;         // { label }
+  final StepperMessages stepper;         // { optional }
   final TagMessages tag;                 // { remove }
+  final TimePickerMessages timePicker;   // { placeholder, clear, hoursLabel, minutesLabel, secondsLabel, incrementHours, decrementHours, incrementMinutes, decrementMinutes, incrementSeconds, decrementSeconds, amLabel, pmLabel }
   final ToastMessages toast;             // { dismiss }
+  final TransferListMessages transferList; // { sourceLabel, targetLabel, controlsLabel, moveSelectedToTarget, moveAllToTarget, moveSelectedToSource, moveAllToSource, empty }
+  final TreeMessages tree;               // { expand, collapse }
+  final ValidationMessages validation;   // { required, email, min(min), max(max), minlength(len), maxlength(len), pattern, invalid }
   final WordmarkMessages wordmark;       // { overline, tagline }
 }
 ```
@@ -2575,6 +3250,22 @@ const EagamiMessages kEagamiEnglish = EagamiMessages(
     groupLabel: (length) => 'Verification code, $length digits',
     digitLabel: (index, length) => 'Digit $index of $length',
   ),
+  commandPalette: CommandPaletteMessages(
+    dialogLabel: 'Command palette',
+    searchPlaceholder: 'Type a command or search…',
+    empty: 'No results found',
+    clear: 'Clear search',
+  ),
+  colorPicker:   ColorPickerMessages(
+    placeholder: 'Pick a color…',
+    clear: 'Clear color',
+    hue: 'Hue',
+    saturationAndValue: 'Saturation and value',
+    alpha: 'Alpha',
+    eyedropper: 'Pick from screen',
+    presets: 'Presets',
+    toggleFormat: 'Switch input format',
+  ),
   dataTable:     DataTableMessages(noData: 'No data available'),
   datePicker:    DatePickerMessages(
     placeholder: 'Select date…',
@@ -2588,8 +3279,31 @@ const EagamiMessages kEagamiEnglish = EagamiMessages(
   dialog:        DialogMessages(close: 'Close dialog'),
   drawer:        DrawerMessages(close: 'Close panel'),
   dropdown:      DropdownMessages(placeholder: 'Select…'),
-  input:         InputMessages(showPassword: 'Show password', hidePassword: 'Hide password'),
+  fileUploader:  FileUploaderMessages(
+    prompt: 'Click or drag files here to upload',
+    promptSingle: 'Click or drag a file here to upload',
+    browse: 'Browse files',
+    removeFile: (name) => 'Remove $name',
+    fileListLabel: 'Selected files',
+    constraintsAccept: (accept) => 'Accepted: $accept',
+    constraintsMaxSize: (size) => 'Max $size per file',
+    constraintsMaxFiles: (count) => 'Up to $count files',
+    rejectionType: (name) => '$name has an unsupported file type',
+    rejectionSize: (name, max) => '$name exceeds the $max limit',
+    rejectionCount: (max) => 'Only $max files can be selected',
+    bytesUnit: FileUploaderBytesUnit(b: 'B', kb: 'KB', mb: 'MB', gb: 'GB', tb: 'TB'),
+  ),
+  input:         InputMessages(showPassword: 'Show password', hidePassword: 'Hide password', clear: 'Clear'),
   menu:          MenuMessages(label: 'Menu'),
+  multiSelect:   MultiSelectMessages(
+    placeholder: 'Select…',
+    searchPlaceholder: 'Search…',
+    searchEmpty: 'No matches',
+    selectAll: 'Select all',
+    clearAll: 'Clear selection',
+    removeOption: (label) => 'Remove $label',
+    selectedCount: (count) => '$count selected',
+  ),
   paginator:     PaginatorMessages(
     label: 'Pagination',
     rowsPerPage: 'Rows per page:',
@@ -2598,9 +3312,51 @@ const EagamiMessages kEagamiEnglish = EagamiMessages(
     nextPage: 'Next page',
   ),
   progressBar:   ProgressBarMessages(label: 'Progress'),
+  rating:        RatingMessages(
+    label: 'Rating',
+    valueLabel: (value, max) => '$value of $max',
+    clear: 'Clear rating',
+  ),
   spinner:       SpinnerMessages(label: 'Loading'),
+  stepper:       StepperMessages(optional: 'optional'),
   tag:           TagMessages(remove: 'Remove'),
+  timePicker:    TimePickerMessages(
+    placeholder: 'Select time…',
+    clear: 'Clear time',
+    hoursLabel: 'Hours',
+    minutesLabel: 'Minutes',
+    secondsLabel: 'Seconds',
+    incrementHours: 'Increment hours',
+    decrementHours: 'Decrement hours',
+    incrementMinutes: 'Increment minutes',
+    decrementMinutes: 'Decrement minutes',
+    incrementSeconds: 'Increment seconds',
+    decrementSeconds: 'Decrement seconds',
+    amLabel: 'AM',
+    pmLabel: 'PM',
+  ),
   toast:         ToastMessages(dismiss: 'Dismiss'),
+  transferList:  TransferListMessages(
+    sourceLabel: 'Available',
+    targetLabel: 'Selected',
+    controlsLabel: 'Transfer controls',
+    moveSelectedToTarget: 'Move selected to target',
+    moveAllToTarget: 'Move all to target',
+    moveSelectedToSource: 'Move selected to source',
+    moveAllToSource: 'Move all to source',
+    empty: 'No items',
+  ),
+  tree:          TreeMessages(expand: 'Expand', collapse: 'Collapse'),
+  validation:    ValidationMessages(
+    required: 'This field is required',
+    email: 'Enter a valid email address',
+    min: (min) => 'Must be at least $min',
+    max: (max) => 'Must be at most $max',
+    minlength: (length) => 'Must be at least $length characters',
+    maxlength: (length) => 'Must be at most $length characters',
+    pattern: 'Invalid format',
+    invalid: 'Invalid value',
+  ),
   wordmark:      WordmarkMessages(
     overline: 'handcrafted by',
     tagline: 'elegant web design',
@@ -2608,18 +3364,24 @@ const EagamiMessages kEagamiEnglish = EagamiMessages(
 );
 ```
 
-Add `kEagamiFrench`, `kEagamiGreek`, `kEagamiPolish`, `kEagamiSpanish` constants that translate every key. **Use the upstream `packages/ui/src/lib/i18n/messages/*.ts` files as the source of truth for each translation** so wording stays in lockstep across stacks.
+Add one dictionary constant per registered locale (`kEagamiFrench`, `kEagamiGreek`, `kEagamiPolish`, `kEagamiSpanish`, `kEagamiGerman`, `kEagamiPortugueseBR`, `kEagamiChinese`, `kEagamiIcelandic`, `kEagamiDutch`, `kEagamiUkrainian`, `kEagamiRussian`, `kEagamiHebrew`, `kEagamiArabic`, `kEagamiHindi`) that translates every key. Ship only the ones your app registers (English is always present). **Use the upstream `packages/ui/src/lib/i18n/messages/*.ts` files as the source of truth for each translation** so wording stays in lockstep across stacks.
 
 ### 6.3 Runtime service
 
-Expose a `ChangeNotifier` (or Riverpod `StateNotifier` / Provider, whichever matches the host app's state convention) so locale changes propagate to every consuming widget reactively:
+Expose a `ChangeNotifier` (or Riverpod `StateNotifier` / Provider, whichever matches the host app's state convention) so locale changes propagate to every consuming widget reactively. Locales are opt-in: the consumer registers the dictionaries it ships, and English is always available as the fallback whether or not it is passed in.
 
 ```dart
 class EagamiI18n extends ChangeNotifier {
-  EagamiI18n({EagamiLocale initial = EagamiLocale.en, EagamiMessagesOverride? overrides})
-      : _locale = initial,
+  EagamiI18n({
+    EagamiLocale initial = EagamiLocale.en,
+    // Register only the locales you ship; English is always available.
+    Map<EagamiLocale, EagamiMessages> locales = const {},
+    EagamiMessagesOverride? overrides,
+  })  : _dictionaries = {EagamiLocale.en: kEagamiEnglish, ...locales},
+        _locale = initial,
         _overrides = overrides;
 
+  final Map<EagamiLocale, EagamiMessages> _dictionaries;
   EagamiLocale _locale;
   final EagamiMessagesOverride? _overrides;
 
@@ -2630,21 +3392,10 @@ class EagamiI18n extends ChangeNotifier {
   }
 
   void setLocale(EagamiLocale next) {
-    if (_dictionaries.containsKey(next)) {
-      _locale = next;
-    } else {
-      _locale = EagamiLocale.en; // unknown locale → fall back to English
-    }
+    // Unregistered locale falls back to English.
+    _locale = _dictionaries.containsKey(next) ? next : EagamiLocale.en;
     notifyListeners();
   }
-
-  static const Map<EagamiLocale, EagamiMessages> _dictionaries = {
-    EagamiLocale.en: kEagamiEnglish,
-    EagamiLocale.frFR: kEagamiFrench,
-    EagamiLocale.el: kEagamiGreek,
-    EagamiLocale.pl: kEagamiPolish,
-    EagamiLocale.esES: kEagamiSpanish,
-  };
 }
 ```
 
@@ -2746,7 +3497,7 @@ When regenerating this file from the upstream Angular library, verify in order:
 4. Spacing scale in § 2.3 matches `_spacing.scss` (only the 10-value whitelist).
 5. Typography composites in § 2.5 match the `--text-*` tokens in `_typography.scss`.
 6. Radius/border-width values in § 2.6 match `_shape.scss`.
-7. Shadow values in § 2.7 match `_elevation.scss` for both light and dark mode (dark uses white-at-low-alpha with tighter geometry on `xl` / `2xl`).
+7. Shadow values in § 2.7 match `_elevation.scss` for both light and dark mode (dark keeps black drop shadows but deepens their alpha and appends a hairline top highlight; the bevel/well relief pairs re-tint per mode).
 8. Motion durations and curves in § 2.8 match `_motion.scss`.
 9. Every `Color(0x…)` literal in § 3.2 matches the corresponding hex in § 2.
 10. Component API conventions in § 5 match the Angular component `input()` / `output()` / `model()` signatures in `packages/ui/src/lib/<component>/<component>.component.ts`. Particular regressions to watch for:
@@ -2756,12 +3507,13 @@ When regenerating this file from the upstream Angular library, verify in order:
     - Standardised output names: `changed`, `sorted`, `clicked`, `removed`, `cropStateChanged`, `errored` (past tense).
     - `Tag` has no `primary` variant; use `Badge` for brand chips.
     - Menu is opened via the `eaMenuTrigger` directive on the host element (not the `slot="trigger"` pattern); mirror with a `trigger:` parameter in Flutter.
-    - The `EagamiSize` enum is `sm | md | lg` (not `small | medium | large`); `EagamiAvatar` is the only component with its own five-bucket size scale.
+    - The `EagamiSize` enum is `xs | sm | md | lg | xl` (not `small | medium | large`), shared by every sized component; `EagamiWidth` adds `full` for width-style inputs.
 11. i18n surface in § 6 matches `packages/ui/src/lib/i18n/`:
-    - `EagamiLocale` enum matches `i18n.types.ts`.
-    - `EagamiMessages` shape (group keys, per-group keys, function signatures for parameterised strings) matches `i18n.types.ts`.
+    - `EagamiLocale` enum matches `i18n.types.ts` (15 locales; `ar` and `he` are `dir: rtl`, the rest `ltr`, per `EAGAMI_LOCALE_META`).
+    - Locales are opt-in as of 4.0.0: English is always available; every other locale must be registered. Reflect that in the § 6.3 service (English merged in by default).
+    - `EagamiMessages` shape (group keys, per-group keys, function signatures for parameterised strings) matches `i18n.types.ts`. Groups added since the previous sync: `commandPalette`, `colorPicker`, `fileUploader` (with nested `bytesUnit`), `multiSelect`, `rating`, `stepper`, `timePicker`, `transferList`, `tree`, `validation`; `input` gained `clear`.
     - English baseline strings in § 6.2 match `messages/en.ts`.
-    - The supported-locale list and the French spacing helper match `messages/index.ts` and `french-spacing.ts`.
+    - The registered-locale list and the French spacing helper match `messages/index.ts` and `french-spacing.ts`.
 12. `last-synced` date in frontmatter updated to today.
 
 **For AI agents performing the sync:** diff this file's tables and code blocks against the SCSS and TypeScript source of truth and report any discrepancies before editing Dart code. Do not regenerate blindly.

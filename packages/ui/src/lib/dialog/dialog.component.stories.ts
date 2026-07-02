@@ -15,14 +15,17 @@ const meta: Meta<DialogComponent> = {
 export default meta;
 type Story = StoryObj<DialogComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
+  // `open` is an arg so control changes don't reset it and close the dialog.
+  args: { open: true },
+  argTypes: { open: { control: 'boolean' } },
   render: args => ({
-    props: { ...args, isOpen: false },
+    props: { ...args },
     moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
     template: `
-      <ea-button (clicked)="isOpen = true">Open Dialog</ea-button>
+      <ea-button (clicked)="open = true">Open Dialog</ea-button>
       <ea-dialog
-        [(open)]="isOpen"
+        [(open)]="open"
         [width]="width"
         [closeOnBackdrop]="closeOnBackdrop"
         [closeOnEscape]="closeOnEscape"
@@ -30,61 +33,8 @@ export const Default: Story = {
         <span slot="header">Dialog Title</span>
         <p>This is the dialog body content. You can put anything here.</p>
         <div slot="footer">
-          <ea-button variant="secondary" (clicked)="isOpen = false">Cancel</ea-button>
-          <ea-button (clicked)="isOpen = false">Confirm</ea-button>
-        </div>
-      </ea-dialog>
-    `,
-  }),
-};
-
-export const Small: Story = {
-  render: args => ({
-    props: { ...args, isOpen: false, width: 'sm' },
-    moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
-    template: `
-      <ea-button (clicked)="isOpen = true">Open Small Dialog</ea-button>
-      <ea-dialog [(open)]="isOpen" width="sm">
-        <span slot="header">Small Dialog</span>
-        <p>A compact dialog for simple confirmations.</p>
-        <div slot="footer">
-          <ea-button variant="secondary" (clicked)="isOpen = false">Cancel</ea-button>
-          <ea-button (clicked)="isOpen = false">OK</ea-button>
-        </div>
-      </ea-dialog>
-    `,
-  }),
-};
-
-export const Large: Story = {
-  render: args => ({
-    props: { ...args, isOpen: false, width: 'lg' },
-    moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
-    template: `
-      <ea-button (clicked)="isOpen = true">Open Large Dialog</ea-button>
-      <ea-dialog [(open)]="isOpen" width="lg">
-        <span slot="header">Large Dialog</span>
-        <p>A larger dialog for more detailed content, forms, or data tables.</p>
-        <div slot="footer">
-          <ea-button variant="secondary" (clicked)="isOpen = false">Cancel</ea-button>
-          <ea-button (clicked)="isOpen = false">Save</ea-button>
-        </div>
-      </ea-dialog>
-    `,
-  }),
-};
-
-export const NoCloseButton: Story = {
-  render: args => ({
-    props: { ...args, isOpen: false },
-    moduleMetadata: { imports: [DialogComponent, ButtonComponent] },
-    template: `
-      <ea-button (clicked)="isOpen = true">Open Dialog</ea-button>
-      <ea-dialog [(open)]="isOpen" [showClose]="false">
-        <span slot="header">No Close Button</span>
-        <p>This dialog has no close button. Use the footer actions to dismiss.</p>
-        <div slot="footer">
-          <ea-button (clicked)="isOpen = false">Dismiss</ea-button>
+          <ea-button variant="secondary" (clicked)="open = false">Cancel</ea-button>
+          <ea-button (clicked)="open = false">Confirm</ea-button>
         </div>
       </ea-dialog>
     `,

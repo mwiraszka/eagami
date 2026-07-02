@@ -1820,8 +1820,8 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn ein nicht deaktivierter, nicht letzter Brotkrümel aktiviert wird.',
           },
           drawer: {
-            animated:
-              'Schiebt das Panel von seinem Rand ein, wenn sich der Drawer öffnet.',
+            animation:
+              'Schiebeanimation, während sich der Drawer öffnet und schließt: none (sofort), linear (konstante Geschwindigkeit) oder eased (eine Ease-out-Kurve).',
             ariaLabel:
               'Barrierefreies Label für das Drawer-Panel, wenn seine Überschrift nicht aussagekräftig genug ist.',
             closeOnBackdrop:
@@ -1829,13 +1829,16 @@ export const de: WebMessages = {
             closeOnEscape:
               'Schließt den Drawer, wenn der Nutzer die Escape-Taste drückt.',
             id: 'id, die auf das Dialog-Element angewendet wird, automatisch generiert, wenn weggelassen.',
+            mode: 'Wie sich der Drawer zur Seite verhält: overlay schwebt über einer abgedunkelten, fokusgefangenen Seite, während push nicht-modal öffnet und den Seiteninhalt zur Seite umbricht.',
             open: 'Ob der Drawer geöffnet ist, bidirektional bindbar über [(open)].',
             position: 'Rand des Viewports, von dem aus sich der Drawer einschiebt.',
+            pushTarget:
+              'Element, dessen Inhalt im push-Modus zur Seite geschoben wird, als CSS-Selektor oder Element-Referenz; standardmäßig der Dokument-Body.',
             showClose: 'Zeigt den Schließen-Button in der Drawer-Kopfzeile.',
-            width: 'Breite des Drawer-Panels entlang seiner Primärachse.',
+            size: 'Ausdehnung des Drawer-Panels entlang seiner Primärachse: Breite bei seitlichen Drawers, Höhe bei oberen und unteren Drawers.',
             closed:
               'Wird ausgelöst, wenn sich der Drawer schließt, ob über den Schließen-Button, den Hintergrund oder Escape.',
-            opened: 'Wird ausgelöst, sobald der Drawer über showModal() angezeigt wurde.',
+            opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
             clickable:

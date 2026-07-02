@@ -1,6 +1,5 @@
 import { setCompodocJson } from '@storybook/addon-docs/angular';
-import { applicationConfig } from '@storybook/angular';
-import type { Preview } from '@storybook/angular';
+import { type Preview, applicationConfig } from '@storybook/angular';
 
 import docJson from '../documentation.json';
 import { _eagamiI18nLocaleOverride } from '../src/lib/i18n/_storybook-locale-override';
@@ -11,11 +10,8 @@ import {
   provideEagamiUi,
 } from '../src/public-api';
 
-// Story-layout utilities (`.story-row`, `.story-stack`, etc.) live in
-// `.storybook/preview-head.html` as inline CSS injected into every story
-// iframe. Earlier attempts to load them via SCSS import or the host project's
-// `styles:` array silently dropped from the final bundle.
-
+// Story-layout helpers (.story-row etc.) live in preview-head.html; loading them
+// via SCSS or the styles array gets silently dropped from the bundle.
 setCompodocJson(docJson);
 
 const preview: Preview = {
@@ -27,16 +23,15 @@ const preview: Preview = {
       },
     },
     docs: {
-      // Disable @storybook/angular's compodoc-driven argType extraction.
-      // Storybook 10.4 + the chromatic runtime crashed with "Invalid
-      // component undefined" inside the extractor for every story; stories
-      // that need controls declare their own `argTypes` explicitly so we
-      // lose nothing by skipping the auto-extract.
+      // Auto argType extraction crashes ("Invalid component undefined") in SB 10.4;
+      // stories declare their own argTypes instead.
       extractArgTypes: () => null,
       // Default extractor throws on stories with an unresolved component
       extractComponentDescription: (component?: { name?: string }) => {
         const name = component?.name;
-        if (!name) return null;
+        if (!name) {
+          return null;
+        }
         const entry = (
           docJson as { components?: { name: string; rawdescription?: string }[] }
         ).components?.find(c => c.name === name);
@@ -44,10 +39,6 @@ const preview: Preview = {
       },
     },
     chromatic: {
-      // Capture every story twice (light + dark) by driving the `theme`
-      // toolbar global, which the decorator below maps onto `<html data-
-      // theme="…">`. Pause Storybook's animations so screenshots aren't
-      // racy with transitions.
       modes: {
         light: { globals: { theme: 'light' } },
         dark: { globals: { theme: 'dark' } },
@@ -64,8 +55,6 @@ const preview: Preview = {
         title: 'Locale',
         icon: 'globe',
         dynamicTitle: true,
-        // Derived from the library's locale metadata so every shipped language
-        // appears automatically; adding a locale never needs a toolbar edit.
         items: EAGAMI_LOCALE_META.map(({ locale, label, flag }) => ({
           value: locale,
           title: label,
@@ -106,20 +95,13 @@ const preview: Preview = {
       const locale = context.globals['locale'] as EagamiLocale;
       const theme = context.globals['theme'] as 'auto' | 'light' | 'dark';
       const direction = context.globals['direction'] as 'ltr' | 'rtl';
-      // Storybook does not re-bootstrap the Angular app on global changes, so
-      // changing `provideEagamiUi({ locale })` alone doesn't update an already-
-      // constructed `EagamiI18nService`. Push the locale through the override
-      // signal too — the service watches that and applies new values live.
+      // Storybook doesn't re-bootstrap Angular on a global change, so push the
+      // locale through the override signal, which the running service watches.
       _eagamiI18nLocaleOverride.set(locale);
       if (typeof document !== 'undefined') {
-        // Setting <html lang> lets the browser apply locale-aware case mapping
-        // to text-transform: uppercase. In `el` that correctly drops the tonos
-        // accent on uppercased Greek headings.
+        // <html lang> drives locale-aware uppercasing (e.g. Greek drops the tonos).
         document.documentElement.lang = locale;
         document.documentElement.dir = direction;
-        // The library's design tokens read `[data-theme="light"]` /
-        // `[data-theme="dark"]` on `<html>`; the default `auto` removes the
-        // attribute and falls back to `prefers-color-scheme`.
         if (theme === 'auto') {
           delete document.documentElement.dataset['theme'];
         } else {

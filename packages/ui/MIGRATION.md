@@ -1,3 +1,39 @@
+# Migrating from v4.x to v5.0.0
+
+v5.0.0 renames two `<ea-drawer>` inputs. Both are simple find/replace on the drawer's bindings.
+
+## `animated` becomes `animation`
+
+The boolean `animated` input is now an `animation` input with three values: `none`, `linear`, and `eased`.
+
+```html
+<!-- Before -->
+<ea-drawer [animated]="true" />
+<ea-drawer [animated]="false" />
+
+<!-- After -->
+<ea-drawer animation="eased" />
+<ea-drawer animation="none" />
+```
+
+`animation` defaults to `eased`, so a drawer that previously relied on the default (unanimated) now slides in and out unless you set `animation="none"`. The panel also animates on close now, not only on open.
+
+## `width` becomes `size`
+
+The `width` input is renamed to `size` (it sets the panel's extent along its main axis: width for side drawers, height for top and bottom drawers). The accepted values are unchanged.
+
+```html
+<!-- Before -->
+<ea-drawer width="lg" />
+
+<!-- After -->
+<ea-drawer size="lg" />
+```
+
+The exported `DrawerWidth` type is removed; use `DrawerSize` instead.
+
+---
+
 # Migrating from v3.x to v4.0.0
 
 v4.0.0 makes the built-in locales opt-in, so an app bundles only the languages it actually uses instead of all of them. English is always available; every other language must now be registered.

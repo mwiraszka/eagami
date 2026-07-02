@@ -1600,17 +1600,21 @@ export const zhCN: WebMessages = {
             clicked: '当一个未禁用、非末项的面包屑被激活时触发。',
           },
           drawer: {
-            animated: '抽屉打开时使面板从其边缘滑入。',
+            animation:
+              '抽屉打开和关闭时的滑动动画：none（瞬时）、linear（匀速）或 eased（缓出曲线）。',
             ariaLabel: '当抽屉标题描述性不足时，为抽屉面板提供的无障碍标签。',
             closeOnBackdrop: '当用户点击背景遮罩时关闭抽屉。',
             closeOnEscape: '当用户按下 Escape 键时关闭抽屉。',
             id: '应用于 dialog 元素的 id，省略时自动生成。',
+            mode: '抽屉与页面的关系：overlay 浮于变暗且焦点被限制的页面之上，而 push 以非模态方式打开并将页面内容推向一侧重新排布。',
             open: '抽屉是否打开，可通过 [(open)] 双向绑定。',
             position: '抽屉从中滑入的视口边缘。',
+            pushTarget:
+              '在 push 模式下内容被推向一侧的元素，以 CSS 选择器或元素引用的形式给出，默认为文档 body。',
             showClose: '在抽屉页眉中显示关闭按钮。',
-            width: '抽屉面板沿其主轴的宽度。',
+            size: '抽屉面板沿其主轴的尺寸：侧边抽屉为宽度，顶部和底部抽屉为高度。',
             closed: '当抽屉关闭时触发，无论是通过关闭按钮、背景遮罩还是 Escape。',
-            opened: '当抽屉通过 showModal() 显示后触发一次。',
+            opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
             clickable:

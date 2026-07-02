@@ -18,30 +18,4 @@ const meta: Meta<SpinnerComponent> = {
 export default meta;
 type Story = StoryObj<SpinnerComponent>;
 
-export const Default: Story = {};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-};
-
-export const CustomLabel: Story = {
-  args: { label: 'Please wait...' },
-};
-
-export const AllSizes: Story = {
-  render: () => ({
-    template: `
-      <div class="story-row">
-        <ea-spinner size="xs" />
-        <ea-spinner size="sm" />
-        <ea-spinner size="md" />
-        <ea-spinner size="lg" />
-        <ea-spinner size="xl" />
-      </div>
-    `,
-  }),
-};
+export const Playground: Story = {};

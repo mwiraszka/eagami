@@ -18,6 +18,8 @@ const messages: EagamiMessages = {
     zoom: '缩放',
     zoomIn: '放大',
     remove: '移除图片',
+    invalidType: '文件必须是图片',
+    tooLarge: (maxMb: number) => `文件超过 ${maxMb} MB 限制`,
   },
   breadcrumbs: {
     label: '面包屑导航',
@@ -45,6 +47,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: '暂无数据',
   },
+  numberFormat: {
+    decimal: '.',
+    group: ',',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: '选择日期…',
     clear: '清除日期',
@@ -53,6 +60,21 @@ const messages: EagamiMessages = {
     nextMonth: '下个月',
     nextYear: '下一年',
     today: '今天',
+    weekdaysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    months: [
+      '一月',
+      '二月',
+      '三月',
+      '四月',
+      '五月',
+      '六月',
+      '七月',
+      '八月',
+      '九月',
+      '十月',
+      '十一月',
+      '十二月',
+    ],
   },
   dialog: {
     close: '关闭对话框',

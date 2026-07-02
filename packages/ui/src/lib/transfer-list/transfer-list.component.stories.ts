@@ -27,7 +27,7 @@ const meta: Meta<TransferListComponent> = {
 export default meta;
 type Story = StoryObj<TransferListComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     template: `
@@ -35,81 +35,9 @@ export const Default: Story = {
         class="story-medium"
         [items]="items"
         [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithInitialSelection: Story = {
-  render: args => ({
-    props: { ...args, selectedIds: ['editor', 'viewer'] },
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        [selectedIds]="selectedIds"
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const WithoutLabels: Story = {
-  render: args => ({
-    props: args,
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        sourceLabel=""
-        targetLabel=""
-        [size]="size"
-        [disabled]="disabled" />
-    `,
-  }),
-};
-
-export const Sizes: Story = {
-  render: args => ({
-    props: args,
-    template: `
-      <div class="story-stack">
-        <div>
-          <p class="story-label">Extra small</p>
-          <ea-transfer-list [items]="items" size="xs" />
-        </div>
-        <div>
-          <p class="story-label">Small</p>
-          <ea-transfer-list [items]="items" size="sm" />
-        </div>
-        <div>
-          <p class="story-label">Medium</p>
-          <ea-transfer-list [items]="items" size="md" />
-        </div>
-        <div>
-          <p class="story-label">Large</p>
-          <ea-transfer-list [items]="items" size="lg" />
-        </div>
-        <div>
-          <p class="story-label">Extra large</p>
-          <ea-transfer-list [items]="items" size="xl" />
-        </div>
-      </div>
-    `,
-  }),
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-  render: args => ({
-    props: { ...args, selectedIds: ['editor'] },
-    template: `
-      <ea-transfer-list
-        class="story-medium"
-        [items]="items"
-        [selectedIds]="selectedIds"
-        [size]="size"
-        [disabled]="disabled" />
+        [disabled]="disabled"
+        [sourceLabel]="sourceLabel"
+        [targetLabel]="targetLabel" />
     `,
   }),
 };

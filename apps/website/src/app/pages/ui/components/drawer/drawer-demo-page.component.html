@@ -15,14 +15,15 @@
     </ea-button>
     <ea-drawer
       [(open)]="open"
+      [mode]="state().mode"
       [position]="state().position"
-      [width]="state().width"
+      [size]="state().size"
       [closeOnBackdrop]="state().closeOnBackdrop"
       [closeOnEscape]="state().closeOnEscape"
-      [animated]="state().animated"
+      [animation]="state().animation"
       [showClose]="state().showClose">
-      <span slot="header">{{ messages().ui.component.demos.drawer.rightTitle }}</span>
-      <p>{{ messages().ui.component.demos.drawer.rightBody }}</p>
+      <span slot="header">{{ content().title }}</span>
+      <p>{{ content().body }}</p>
       <span slot="footer">
         <ea-button
           variant="secondary"

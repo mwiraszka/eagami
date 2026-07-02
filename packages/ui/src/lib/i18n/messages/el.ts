@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Ζουμ',
     zoomIn: 'Μεγέθυνση',
     remove: 'Αφαίρεση εικόνας',
+    invalidType: 'Το αρχείο πρέπει να είναι εικόνα',
+    tooLarge: (maxMb: number) => `Το αρχείο υπερβαίνει το όριο των ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Διαδρομή πλοήγησης',
@@ -46,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Δεν υπάρχουν διαθέσιμα δεδομένα',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '.',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Επιλέξτε ημερομηνία…',
     clear: 'Εκκαθάριση ημερομηνίας',
@@ -54,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Επόμενος μήνας',
     nextYear: 'Επόμενο έτος',
     today: 'Σήμερα',
+    weekdaysShort: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
+    months: [
+      'Ιανουαρίου',
+      'Φεβρουαρίου',
+      'Μαρτίου',
+      'Απριλίου',
+      'Μαΐου',
+      'Ιουνίου',
+      'Ιουλίου',
+      'Αυγούστου',
+      'Σεπτεμβρίου',
+      'Οκτωβρίου',
+      'Νοεμβρίου',
+      'Δεκεμβρίου',
+    ],
   },
   dialog: {
     close: 'Κλείσιμο παραθύρου διαλόγου',

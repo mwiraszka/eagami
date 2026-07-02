@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 import type { PopoverPlacement } from './popover-positioning';
 import {
@@ -10,8 +10,6 @@ import {
 } from './popover.component';
 import { POPOVER_KNOBS } from './popover.component.knobs';
 
-// Story wrapper: owns the click-to-toggle state, mirrors `<ea-popover>` inputs, and
-// brings its own styles so the trigger and content render with sensible defaults.
 @Component({
   selector: 'ea-popover-story-host',
   imports: [PopoverComponent],
@@ -44,7 +42,11 @@ import { POPOVER_KNOBS } from './popover.component.knobs';
   styleUrl: './popover.component.stories.scss',
 })
 class PopoverStoryHost {
-  isOpen = signal(false);
+  // `open` is an arg so control changes don't reset it and close the popover.
+  @Input() set open(value: boolean) {
+    this.isOpen.set(value);
+  }
+  isOpen = signal(true);
   placement: PopoverPlacement = 'bottom-start';
   role: PopoverRole = 'dialog';
   offset = 0;
@@ -61,72 +63,11 @@ const meta: Meta<PopoverStoryHost> = {
   component: PopoverStoryHost,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [PopoverStoryHost] })],
-  argTypes: { ...POPOVER_KNOBS.argTypes },
-  args: { ...POPOVER_KNOBS.args },
+  argTypes: { ...POPOVER_KNOBS.argTypes, open: { control: 'boolean' } },
+  args: { ...POPOVER_KNOBS.args, open: true },
 };
 
 export default meta;
 type Story = StoryObj<PopoverStoryHost>;
 
-export const Default: Story = {};
-
-export const MatchAnchorWidth: Story = {
-  args: { matchAnchorWidth: true },
-};
-
-export const TopPlacement: Story = {
-  args: { placement: 'top' },
-};
-
-// Each cell has its own anchor and popover so all eight placements can be inspected together
-@Component({
-  selector: 'ea-popover-placements-host',
-  imports: [PopoverComponent],
-  template: `
-    <div class="story-popover-grid">
-      @for (p of placements; track p) {
-        <div class="story-popover-grid-cell">
-          <button
-            #anchor
-            type="button"
-            class="story-popover-trigger"
-            (click)="toggle(p)">
-            {{ p }}
-          </button>
-          <ea-popover
-            [anchor]="anchor"
-            [open]="open() === p"
-            [placement]="p"
-            role="dialog"
-            (closeRequested)="open.set(null)">
-            <div class="story-popover-content">{{ p }}</div>
-          </ea-popover>
-        </div>
-      }
-    </div>
-  `,
-  styleUrl: './popover.component.stories.scss',
-})
-class PopoverPlacementsHost {
-  readonly placements: PopoverPlacement[] = [
-    'top',
-    'top-start',
-    'top-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'left',
-    'right',
-  ];
-  readonly open = signal<PopoverPlacement | null>(null);
-  toggle(p: PopoverPlacement): void {
-    this.open.update(current => (current === p ? null : p));
-  }
-}
-
-export const AllPlacements: StoryObj<PopoverPlacementsHost> = {
-  render: () => ({
-    template: `<ea-popover-placements-host></ea-popover-placements-host>`,
-    moduleMetadata: { imports: [PopoverPlacementsHost] },
-  }),
-};
+export const Playground: Story = {};

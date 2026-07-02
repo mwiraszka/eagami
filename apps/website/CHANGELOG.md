@@ -2,6 +2,20 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.7.0] - 2026-07-02
+
+### Added
+
+- Add mode and animation controls to the drawer demo for switching between the overlay and push variants and between the slide animations.
+
+### Changed
+
+- Pick up @eagami/ui v5.0.0.
+
+### Fixed
+
+- Make the drawer demo's title and body follow the selected position instead of always reading "Right".
+
 ## [3.6.0] - 2026-07-01
 
 ### Added
@@ -727,6 +741,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.7.0]: https://github.com/mwiraszka/eagami/compare/website-v3.6.0...website-v3.7.0
 [3.6.0]: https://github.com/mwiraszka/eagami/compare/website-v3.5.0...website-v3.6.0
 [3.5.0]: https://github.com/mwiraszka/eagami/compare/website-v3.4.3...website-v3.5.0
 [3.4.3]: https://github.com/mwiraszka/eagami/compare/website-v3.4.2...website-v3.4.3

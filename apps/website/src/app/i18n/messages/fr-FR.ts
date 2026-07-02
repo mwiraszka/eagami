@@ -1813,7 +1813,8 @@ export const frFR: WebMessages = {
               "Émis lorsqu'un élément du fil d'Ariane non désactivé et non final est activé.",
           },
           drawer: {
-            animated: "Fait glisser le panneau depuis son bord à l'ouverture du tiroir.",
+            animation:
+              "Animation de glissement à l'ouverture et à la fermeture du tiroir : none (instantané), linear (vitesse constante) ou eased (une courbe d'atténuation en sortie).",
             ariaLabel:
               "Libellé accessible du panneau du tiroir lorsque son titre n'est pas suffisamment descriptif.",
             closeOnBackdrop:
@@ -1821,13 +1822,16 @@ export const frFR: WebMessages = {
             closeOnEscape:
               "Ferme le tiroir lorsque l'utilisateur appuie sur la touche Échap.",
             id: "id appliqué à l'élément dialog, généré automatiquement si omis.",
+            mode: "Comment le tiroir se rapporte à la page : overlay flotte au-dessus d'une page assombrie où le focus est piégé, tandis que push s'ouvre de façon non modale et réagence le contenu de la page sur le côté.",
             open: 'Indique si le tiroir est ouvert, liable en deux sens via [(open)].',
             position: "Bord de la fenêtre depuis lequel le tiroir s'ouvre en glissant.",
+            pushTarget:
+              "Élément dont le contenu est poussé sur le côté en mode push, sous forme de sélecteur CSS ou de référence d'élément ; par défaut, le corps du document.",
             showClose: "Affiche le bouton de fermeture dans l'en-tête du tiroir.",
-            width: 'Largeur du panneau du tiroir sur son axe principal.',
+            size: 'Étendue du panneau du tiroir sur son axe principal : largeur pour les tiroirs latéraux, hauteur pour les tiroirs supérieurs et inférieurs.',
             closed:
               "Émis lorsque le tiroir se ferme, que ce soit via le bouton, l'arrière-plan ou Échap.",
-            opened: 'Émis une fois le tiroir affiché via showModal().',
+            opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
             clickable:

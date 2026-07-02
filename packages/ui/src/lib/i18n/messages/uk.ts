@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Масштаб',
     zoomIn: 'Збільшити',
     remove: 'Видалити зображення',
+    invalidType: 'Файл має бути зображенням',
+    tooLarge: (maxMb: number) => `Файл перевищує ліміт ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Навігаційний ланцюжок',
@@ -46,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Дані відсутні',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '\u00A0',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Виберіть дату…',
     clear: 'Очистити дату',
@@ -54,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Наступний місяць',
     nextYear: 'Наступний рік',
     today: 'Сьогодні',
+    weekdaysShort: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+    months: [
+      'січень',
+      'лютий',
+      'березень',
+      'квітень',
+      'травень',
+      'червень',
+      'липень',
+      'серпень',
+      'вересень',
+      'жовтень',
+      'листопад',
+      'грудень',
+    ],
   },
   dialog: {
     close: 'Закрити діалог',

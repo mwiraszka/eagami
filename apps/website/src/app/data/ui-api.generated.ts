@@ -1408,9 +1408,9 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-drawer',
     inputs: [
       {
-        name: 'animated',
-        type: 'boolean',
-        default: 'false',
+        name: 'animation',
+        type: 'DrawerAnimation',
+        default: "'eased'",
         required: false,
         twoWay: false,
       },
@@ -1443,6 +1443,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'mode',
+        type: 'DrawerMode',
+        default: "'overlay'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'open',
         type: 'boolean',
         default: 'false',
@@ -1457,6 +1464,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'pushTarget',
+        type: 'string | HTMLElement | null',
+        default: 'null',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'showClose',
         type: 'boolean',
         default: 'true',
@@ -1464,8 +1478,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'width',
-        type: 'DrawerWidth',
+        name: 'size',
+        type: 'DrawerSize',
         default: "'md'",
         required: false,
         twoWay: false,
@@ -4153,8 +4167,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'collapseLabel',
-        type: 'string',
-        default: "'Collapse'",
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -4174,8 +4188,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'expandLabel',
-        type: 'string',
-        default: "'Expand'",
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },

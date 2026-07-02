@@ -135,12 +135,15 @@
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome.
   // The popover's `position: fixed` also stops the calendar being clipped by an
   // ancestor with `overflow: hidden`.
+  // Size sets only the font-size; the popover is portaled so it carries its own
+  // scale, and its gaps, dimensions, and embedded icon buttons are em-based, so
+  // the whole calendar scales from this one knob.
   &__popover {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
-    min-width: 17.5rem;
-    padding: var(--space-3);
+    gap: 0.5em;
+    min-width: 17.5em;
+    padding: 0.75em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -149,12 +152,28 @@
       var(--color-bg-elevated)
     );
     @include ea.elevated-surface-border;
+
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+    &--md {
+      font-size: var(--font-size-md);
+    }
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
+    &--xl {
+      font-size: var(--font-size-xl);
+    }
   }
 
   &__header {
     display: flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__nav-btn {
@@ -175,7 +194,7 @@
 
   &__month-label {
     flex: 1;
-    font-size: var(--font-size-sm);
+    font-size: 0.875em;
     font-weight: var(--font-weight-medium);
     text-align: center;
     color: var(--color-text-primary);
@@ -184,22 +203,23 @@
   &__grid {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__weekday-row,
   &__week {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__weekday {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1.5rem;
-    font-size: var(--font-size-xs);
+    // 2em of this element's 0.75em font is the original 24px at the md scale.
+    height: 2em;
+    font-size: 0.75em;
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
     color: var(--color-text-tertiary);
@@ -209,14 +229,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    // 2.25em of this element's 0.875em font is ~32px at the md scale.
+    width: 2.25em;
+    height: 2.25em;
     padding: 0;
     border: none;
     border-radius: var(--radius-sm);
     background: none;
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-sm);
+    font-size: 0.875em;
     color: var(--color-text-primary);
     cursor: pointer;
     transition: var(--transition-colors);
@@ -272,17 +293,17 @@
   &__footer {
     display: flex;
     justify-content: flex-end;
-    padding-top: var(--space-2);
+    padding-top: 0.5em;
     border-top: var(--border-width-thin) solid var(--color-border-default);
   }
 
   &__today-btn {
-    padding: var(--space-1) var(--space-2);
+    padding: 0.25em 0.5em;
     border: none;
     border-radius: var(--radius-sm);
     background: none;
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-sm);
+    font-size: 0.875em;
     font-weight: var(--font-weight-medium);
     color: var(--color-brand-text);
     cursor: pointer;

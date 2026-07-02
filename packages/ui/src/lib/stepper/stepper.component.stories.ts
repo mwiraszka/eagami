@@ -30,63 +30,13 @@ const meta: Meta<StepperComponent> = {
 export default meta;
 type Story = StoryObj<StepperComponent>;
 
-export const Default: Story = {
+export const Playground: Story = {
   render: args => ({
     props: args,
     template: stepperTemplate(`
-      <ea-step label="Account">Step 1 — account details.</ea-step>
-      <ea-step label="Profile">Step 2 — profile info.</ea-step>
-      <ea-step label="Review">Step 3 — review and submit.</ea-step>
+      <ea-step label="Account">Step 1: account details.</ea-step>
+      <ea-step label="Profile">Step 2: profile info.</ea-step>
+      <ea-step label="Review">Step 3: review and submit.</ea-step>
     `),
   }),
-};
-
-export const WithCompletedSteps: Story = {
-  args: { activeStep: 2 },
-  render: args => ({
-    props: args,
-    template: stepperTemplate(`
-      <ea-step label="Account" [completed]="true">Account details.</ea-step>
-      <ea-step label="Profile" [completed]="true">Profile info.</ea-step>
-      <ea-step label="Review">Review and submit.</ea-step>
-    `),
-  }),
-};
-
-export const WithOptionalStep: Story = {
-  render: args => ({
-    props: args,
-    template: stepperTemplate(`
-      <ea-step label="Account">Account details.</ea-step>
-      <ea-step label="Notifications" [optional]="true">Notification preferences.</ea-step>
-      <ea-step label="Review">Review and submit.</ea-step>
-    `),
-  }),
-};
-
-export const Linear: Story = {
-  args: { linear: true },
-  render: args => ({
-    props: args,
-    template: stepperTemplate(`
-      <ea-step label="Account" [completed]="true">Account details (completed).</ea-step>
-      <ea-step label="Profile">Profile info — fill this in before continuing.</ea-step>
-      <ea-step label="Review">Review and submit.</ea-step>
-    `),
-  }),
-};
-
-export const Small: Story = {
-  args: { size: 'sm' },
-  render: Default.render,
-};
-
-export const Large: Story = {
-  args: { size: 'lg' },
-  render: Default.render,
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-  render: Default.render,
 };

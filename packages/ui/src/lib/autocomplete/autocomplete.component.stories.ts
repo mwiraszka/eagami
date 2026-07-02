@@ -51,42 +51,4 @@ const meta: Meta<AutocompleteComponent> = {
 export default meta;
 type Story = StoryObj<AutocompleteComponent>;
 
-export const Default: Story = {};
-
-export const WithHint: Story = {
-  args: { hint: 'Start typing to see suggestions' },
-};
-
-export const WithError: Story = {
-  args: { errorMsg: 'Please select a valid option' },
-};
-
-export const Required: Story = {
-  args: { required: true },
-};
-
-export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const MinLength: Story = {
-  args: {
-    minLength: 2,
-    hint: 'Type at least 2 characters',
-  },
-};
-
-export const MaxResults: Story = {
-  args: {
-    maxResults: 3,
-    hint: 'Showing top 3 matches',
-  },
-};
-
-export const SmallSize: Story = {
-  args: { size: 'sm' },
-};
-
-export const LargeSize: Story = {
-  args: { size: 'lg' },
-};
+export const Playground: Story = {};

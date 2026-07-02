@@ -1787,19 +1787,23 @@ export const pl: WebMessages = {
               'Emitowane, gdy aktywowany zostanie element okruszkowy niebędący wyłączonym ani ostatnim.',
           },
           drawer: {
-            animated: 'Wsuwa panel od jego krawędzi przy otwieraniu szuflady.',
+            animation:
+              'Animacja wsuwania podczas otwierania i zamykania szuflady: none (natychmiast), linear (stała prędkość) lub eased (krzywa spowolnienia na końcu).',
             ariaLabel:
               'Dostępna etykieta panelu szuflady, gdy jego nagłówek nie jest wystarczająco opisowy.',
             closeOnBackdrop: 'Zamyka szufladę, gdy użytkownik kliknie tło.',
             closeOnEscape: 'Zamyka szufladę, gdy użytkownik naciśnie klawisz Escape.',
             id: 'id stosowane do elementu dialog, generowane automatycznie gdy pominięte.',
+            mode: 'Relacja szuflady ze stroną: overlay unosi się nad przyciemnioną stroną z pułapką fokusu, a push otwiera się niemodalnie i przesuwa treść strony na bok.',
             open: 'Określa, czy szuflada jest otwarta, dwukierunkowo wiązalne przez [(open)].',
             position: 'Krawędź widocznego obszaru, od której wysuwa się szuflada.',
+            pushTarget:
+              'Element, którego treść jest przesuwana na bok w trybie push, jako selektor CSS lub referencja do elementu; domyślnie jest to body dokumentu.',
             showClose: 'Wyświetla przycisk zamknięcia w nagłówku szuflady.',
-            width: 'Szerokość panelu szuflady wzdłuż jej głównej osi.',
+            size: 'Rozmiar panelu szuflady wzdłuż jej głównej osi: szerokość dla szuflad bocznych, wysokość dla szuflad górnych i dolnych.',
             closed:
               'Emitowane, gdy szuflada zamyka się, niezależnie od sposobu (przycisk, tło lub Escape).',
-            opened: 'Emitowane raz po wyświetleniu szuflady przez showModal().',
+            opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
             clickable:

@@ -19,6 +19,8 @@ const messages: EagamiMessages = {
     zoom: 'Zoom',
     zoomIn: 'Vergrößern',
     remove: 'Bild entfernen',
+    invalidType: 'Datei muss ein Bild sein',
+    tooLarge: (maxMb: number) => `Datei überschreitet das Limit von ${maxMb} MB`,
   },
   breadcrumbs: {
     label: 'Brotkrümelnavigation',
@@ -46,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Keine Daten verfügbar',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '.',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Datum auswählen…',
     clear: 'Datum löschen',
@@ -54,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Nächster Monat',
     nextYear: 'Nächstes Jahr',
     today: 'Heute',
+    weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    months: [
+      'Januar',
+      'Februar',
+      'März',
+      'April',
+      'Mai',
+      'Juni',
+      'Juli',
+      'August',
+      'September',
+      'Oktober',
+      'November',
+      'Dezember',
+    ],
   },
   dialog: {
     close: 'Dialog schließen',

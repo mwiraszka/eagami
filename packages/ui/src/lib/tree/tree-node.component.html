@@ -21,7 +21,7 @@
       <span
         class="ea-tree-node__chevron"
         [class.ea-tree-node__chevron--open]="isExpanded()"
-        [attr.aria-label]="isExpanded() ? collapseLabel() : expandLabel()"
+        [attr.aria-label]="isExpanded() ? resolvedCollapseLabel() : resolvedExpandLabel()"
         role="button"
         (click)="onChevronClick($event)">
         <ea-icon-chevron-right />

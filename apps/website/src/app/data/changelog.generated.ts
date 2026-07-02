@@ -14,6 +14,33 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.0.0',
+    date: '2026-07-02',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `push` mode to the drawer that opens it non-modally and reflows the page content aside instead of overlaying it, always keeping a strip of content visible, plus a `pushTarget` input to choose which element gets pushed. `closeOnBackdrop` now dismisses the drawer on an outside click in both overlay and push modes.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Replace the drawer's boolean `animated` input with an `animation` input accepting `none`, `linear`, or `eased` (default `eased`); the panel now slides both in on open and out on close.",
+          "**Breaking:** Rename the drawer's `width` input to `size`, which sets the panel's extent along its main axis (width for side drawers, height for top and bottom).",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the date picker's weekday and month names, and grouped numbers in the slider, range-slider, and paginator, in the active locale even on browsers whose built-in `Intl` omits that locale's data, instead of silently falling back to English.",
+          'Translate the avatar-editor file-validation errors and tree expand/collapse labels in every locale.',
+          "Scale the date picker's calendar popover with the `size` input (its text, day cells, and controls), not only the trigger.",
+        ],
+      },
+    ],
+  },
+  {
     version: '4.8.1',
     date: '2026-07-01',
     sections: [
