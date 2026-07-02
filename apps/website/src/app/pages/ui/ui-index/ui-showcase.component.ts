@@ -24,9 +24,12 @@ import {
   TooltipDirective,
 } from '@eagami/ui';
 
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  PLATFORM_ID,
   computed,
   inject,
   signal,
@@ -71,6 +74,9 @@ export class UiShowcaseComponent {
   private readonly toastService = inject(ToastService);
   protected readonly messages = inject(WebI18nService).messages;
 
+  // Compact sm controls on mobile so the wall stays dense on narrow screens
+  protected readonly controlSize = signal<'sm' | 'md'>('md');
+
   protected readonly switchOn = signal(true);
   protected readonly checkboxOn = signal(true);
   protected readonly radioValue = signal('this');
@@ -113,6 +119,17 @@ export class UiShowcaseComponent {
       { value: 'food', label: s.msFood },
     ];
   });
+
+  constructor() {
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      // Must track the lt-md breakpoint in styles/_mixins.scss
+      const query = window.matchMedia('(max-width: 800px)');
+      const update = (): void => this.controlSize.set(query.matches ? 'sm' : 'md');
+      update();
+      query.addEventListener('change', update);
+      inject(DestroyRef).onDestroy(() => query.removeEventListener('change', update));
+    }
+  }
 
   protected pressButton(): void {
     this.toastService.success(this.messages().ui.index.showcase.toastButton);

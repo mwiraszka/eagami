@@ -1,6 +1,7 @@
 <div class="showcase">
   <div class="showcase__item">
     <ea-button
+      [size]="controlSize()"
       [eaTooltip]="messages().ui.index.showcase.tooltip"
       (click)="pressButton()">
       {{ messages().ui.index.showcase.button }}
@@ -9,6 +10,7 @@
 
   <div class="showcase__item">
     <ea-switch
+      [size]="controlSize()"
       [label]="messages().ui.index.showcase.toggle"
       [checked]="switchOn()"
       (checkedChange)="onToggle($event)" />
@@ -16,6 +18,7 @@
 
   <div class="showcase__item">
     <ea-checkbox
+      [size]="controlSize()"
       [label]="messages().ui.index.showcase.tick"
       [checked]="checkboxOn()"
       (checkedChange)="onTick($event)" />
@@ -23,6 +26,7 @@
 
   <div class="showcase__item showcase__item--track">
     <ea-dropdown
+      [size]="controlSize()"
       [options]="dropdownOptions()"
       [(value)]="dropdownValue"
       [attr.aria-label]="messages().ui.index.showcase.ariaSelect" />
@@ -30,6 +34,7 @@
 
   <div class="showcase__item showcase__item--track">
     <ea-slider
+      [size]="controlSize()"
       [(value)]="sliderValue"
       [showMinMaxLabels]="true"
       [aria-label]="messages().ui.index.showcase.ariaSlider" />
@@ -37,6 +42,7 @@
 
   <div class="showcase__item">
     <ea-radio-group
+      [size]="controlSize()"
       [(value)]="radioValue"
       [aria-label]="messages().ui.index.showcase.ariaView"
       orientation="horizontal">
@@ -51,43 +57,54 @@
 
   <div class="showcase__item">
     <ea-rating
+      [size]="controlSize()"
       [(value)]="ratingValue"
       [allowHalf]="true"
       [attr.aria-label]="messages().ui.index.showcase.ariaRating" />
   </div>
 
   <div class="showcase__item">
-    <ea-spinner />
+    <ea-spinner [size]="controlSize()" />
   </div>
 
   <div class="showcase__item showcase__item--track">
-    <ea-progress-bar [indeterminate]="true" />
+    <ea-progress-bar
+      [size]="controlSize()"
+      [indeterminate]="true" />
   </div>
 
   <div class="showcase__item">
     <ea-segmented
+      [size]="controlSize()"
       [options]="viewOptions()"
       [(value)]="segmentedValue"
       [aria-label]="messages().ui.index.showcase.ariaLayout" />
   </div>
 
   <div class="showcase__item">
-    <ea-badge variant="success">
+    <ea-badge
+      [size]="controlSize()"
+      variant="success">
       {{ messages().ui.index.showcase.badge }}
     </ea-badge>
   </div>
 
   <div class="showcase__item">
-    <ea-tag variant="info">
+    <ea-tag
+      [size]="controlSize()"
+      variant="info">
       {{ messages().ui.index.showcase.tag }}
     </ea-tag>
   </div>
 
   <div class="showcase__item">
     <span class="showcase__avatar">
-      <ea-avatar src="https://i.pravatar.cc/150?img=15" />
+      <ea-avatar
+        [size]="controlSize()"
+        src="https://i.pravatar.cc/150?img=15" />
       <ea-badge
         class="showcase__notification"
+        [size]="controlSize()"
         variant="success"
         shape="pin">
         15
@@ -97,12 +114,14 @@
 
   <div class="showcase__item showcase__item--date">
     <ea-date-picker
+      [size]="controlSize()"
       [(value)]="dateValue"
       [attr.aria-label]="messages().ui.index.showcase.ariaDate" />
   </div>
 
   <div class="showcase__item showcase__item--multi">
     <ea-multi-select
+      [size]="controlSize()"
       [options]="multiSelectOptions()"
       [(value)]="multiSelectValue"
       [attr.aria-label]="messages().ui.index.showcase.ariaMultiSelect" />
@@ -133,6 +152,7 @@
 
   <div class="showcase__item showcase__item--color">
     <ea-color-picker
+      [size]="controlSize()"
       [(value)]="colorValue"
       [attr.aria-label]="messages().ui.index.showcase.ariaColor" />
   </div>
