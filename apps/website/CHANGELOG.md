@@ -6,12 +6,15 @@ All notable changes to eagami.com are documented in this file.
 
 ### Changed
 
-- Tighten the UI landing page showcase with smaller row gaps, and switch its controls to their compact sm size on mobile.
+- Tighten the UI landing page showcase with smaller row gaps, switch its controls to their compact sm size on mobile, and drop the color picker from the wall.
+- Move the theme card's reset control to a ghost button on its own row in the top corner, matching the component demo pages.
+- Lay out the UI section's page links in two columns on mobile so the expanded components list keeps more of the sidebar.
 - Pick up @eagami/ui v5.0.1.
 
 ### Fixed
 
 - Keep showcase controls inside the card edge when a wide playground font is selected.
+- Open the first component in a single click when selecting Components from another UI page.
 
 ## [3.7.0] - 2026-07-02
 

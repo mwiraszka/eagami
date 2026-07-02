@@ -21,6 +21,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Fixed',
         entries: [
           'Fix bottom and right drawers snapping open or overshooting and sliding faster than the selected animation, instead of easing in smoothly like left and top drawers.',
+          "Align the switch label's font size with other basic form controls like radio and checkbox across all size variants.",
         ],
       },
     ],
