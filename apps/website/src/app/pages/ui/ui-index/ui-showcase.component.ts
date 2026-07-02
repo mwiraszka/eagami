@@ -5,7 +5,6 @@ import {
   BreadcrumbsComponent,
   ButtonComponent,
   CheckboxComponent,
-  ColorPickerComponent,
   DatePickerComponent,
   DropdownComponent,
   MultiSelectComponent,
@@ -52,7 +51,6 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
     BreadcrumbsComponent,
     ButtonComponent,
     CheckboxComponent,
-    ColorPickerComponent,
     DatePickerComponent,
     DropdownComponent,
     MultiSelectComponent,
@@ -83,7 +81,6 @@ export class UiShowcaseComponent {
   protected readonly sliderValue = signal(50);
   protected readonly ratingValue = signal(4.5);
   protected readonly segmentedValue = signal('grid');
-  protected readonly colorValue = signal<string | null>('#3674a1');
   protected readonly dropdownValue = signal('option-1');
   protected readonly multiSelectValue = signal<readonly string[]>(['music', 'food']);
   protected readonly dateValue = signal<Date | null>(new Date(2026, 0, 15));

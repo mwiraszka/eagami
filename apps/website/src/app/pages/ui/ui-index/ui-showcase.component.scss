@@ -48,14 +48,6 @@
   }
 }
 
-.showcase__item--color {
-  width: 240px;
-
-  > * {
-    width: 100%;
-  }
-}
-
 // The date-picker host is inline by default, so a plain width: 100% is ignored
 // and a wide-font date sizes the field to its content and spills past the cell.
 // Force the host to a block so the field is constrained to 220px and the value
