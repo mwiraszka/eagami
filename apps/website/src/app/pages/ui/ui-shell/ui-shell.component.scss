@@ -98,13 +98,19 @@
   }
 }
 
+// Two columns on mobile halve the section's height so the expanded components
+// list below keeps most of the sidebar; the toggle spans the full width so it
+// sits directly above the list it controls
 .ui-shell__list--primary {
   @include mixins.respond-to('lt-md') {
+    display: grid;
     flex-shrink: 0;
-    overflow-y: auto;
-    min-height: 0;
-    max-height: 50%;
-    scrollbar-gutter: stable;
+    gap: 1px 8px;
+    grid-template-columns: 1fr 1fr;
+
+    li:last-child {
+      grid-column: 1 / -1;
+    }
   }
 }
 

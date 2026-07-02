@@ -6,6 +6,11 @@
   inset-inline-end: 0;
   bottom: 0;
   inset-inline-start: 0;
+  // clip, not hidden: the dialog's focusing steps scroll the focused close
+  // button into view, and a hidden box is still scrollable, so a panel resting
+  // off the right or bottom edge (positive-direction overflow) gets yanked on
+  // screen before the slide starts
+  overflow: clip;
   width: 100vw;
   max-width: none;
   height: 100vh;
@@ -14,7 +19,6 @@
   margin: 0;
   border: none;
   background: transparent;
-  overflow: hidden;
 
   &::backdrop {
     background-color: var(--color-bg-overlay);

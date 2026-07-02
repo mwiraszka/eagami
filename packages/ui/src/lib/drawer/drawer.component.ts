@@ -56,14 +56,7 @@ const PUSH_PROPERTY: Record<DrawerPosition, string> = {
 
 // Every padding side push can set. All are cleared before applying the current
 // one so a position change never leaves a stale offset that shifts content off.
-const PUSH_PROPERTIES = [
-  'padding-left',
-  'padding-right',
-  'padding-top',
-  'padding-bottom',
-  'padding-inline-start',
-  'padding-inline-end',
-];
+const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
 
 /**
  * Side panel backed by the native `<dialog>` element for browser-managed
@@ -85,7 +78,6 @@ export class DrawerComponent {
   private readonly panelEl = viewChild<ElementRef<HTMLElement>>('panelEl');
   private previouslyFocused: HTMLElement | null = null;
   private pushedTarget: HTMLElement | null = null;
-  private pushedProperty: string | null = null;
   private pushCleanupTimer: ReturnType<typeof setTimeout> | null = null;
   // Which modality the open dialog was shown with, so a `mode` change while it
   // is open can reopen it in the matching modality. `null` means it is closed.
@@ -285,7 +277,6 @@ export class DrawerComponent {
     if (dialog.open) {
       dialog.close();
     }
-    dialog.classList.remove('ea-drawer--entered');
     this.previouslyFocused?.focus?.();
     this.previouslyFocused = null;
     this.shownAsModal = null;
@@ -363,7 +354,6 @@ export class DrawerComponent {
       this.clearPushProperties(target);
       target.style.setProperty(PUSH_PROPERTY[position], `${size}px`);
       this.pushedTarget = target;
-      this.pushedProperty = PUSH_PROPERTY[position];
     });
   }
 
@@ -374,7 +364,6 @@ export class DrawerComponent {
     }
     const target = this.pushedTarget;
     this.pushedTarget = null;
-    this.pushedProperty = null;
     if (!target) {
       return;
     }
@@ -440,7 +429,6 @@ export class DrawerComponent {
     }
     const target = this.pushedTarget;
     this.pushedTarget = null;
-    this.pushedProperty = null;
     if (target) {
       this.clearPushProperties(target);
       target.style.removeProperty('transition');

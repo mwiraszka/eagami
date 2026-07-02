@@ -5,7 +5,6 @@ import {
   BreadcrumbsComponent,
   ButtonComponent,
   CheckboxComponent,
-  ColorPickerComponent,
   DatePickerComponent,
   DropdownComponent,
   MultiSelectComponent,
@@ -24,9 +23,12 @@ import {
   TooltipDirective,
 } from '@eagami/ui';
 
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  PLATFORM_ID,
   computed,
   inject,
   signal,
@@ -49,7 +51,6 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
     BreadcrumbsComponent,
     ButtonComponent,
     CheckboxComponent,
-    ColorPickerComponent,
     DatePickerComponent,
     DropdownComponent,
     MultiSelectComponent,
@@ -71,13 +72,15 @@ export class UiShowcaseComponent {
   private readonly toastService = inject(ToastService);
   protected readonly messages = inject(WebI18nService).messages;
 
+  // Compact sm controls on mobile so the wall stays dense on narrow screens
+  protected readonly controlSize = signal<'sm' | 'md'>('md');
+
   protected readonly switchOn = signal(true);
   protected readonly checkboxOn = signal(true);
   protected readonly radioValue = signal('this');
   protected readonly sliderValue = signal(50);
   protected readonly ratingValue = signal(4.5);
   protected readonly segmentedValue = signal('grid');
-  protected readonly colorValue = signal<string | null>('#3674a1');
   protected readonly dropdownValue = signal('option-1');
   protected readonly multiSelectValue = signal<readonly string[]>(['music', 'food']);
   protected readonly dateValue = signal<Date | null>(new Date(2026, 0, 15));
@@ -113,6 +116,17 @@ export class UiShowcaseComponent {
       { value: 'food', label: s.msFood },
     ];
   });
+
+  constructor() {
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      // Must track the lt-md breakpoint in styles/_mixins.scss
+      const query = window.matchMedia('(max-width: 800px)');
+      const update = (): void => this.controlSize.set(query.matches ? 'sm' : 'md');
+      update();
+      query.addEventListener('change', update);
+      inject(DestroyRef).onDestroy(() => query.removeEventListener('change', update));
+    }
+  }
 
   protected pressButton(): void {
     this.toastService.success(this.messages().ui.index.showcase.toastButton);
