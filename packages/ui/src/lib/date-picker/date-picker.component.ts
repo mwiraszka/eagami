@@ -168,6 +168,12 @@ export class DatePickerComponent implements ControlValueAccessor {
     [`ea-date-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
+  // The calendar popover is portaled to the document body, so it cannot inherit
+  // the trigger's font-size; this size class carries the scale over to it.
+  readonly popoverClasses = computed(() => ({
+    [`ea-date-picker__popover--${this.size()}`]: true,
+  }));
+
   readonly displayValue = computed(() => {
     const val = this.value();
     if (!val) {
