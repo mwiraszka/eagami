@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.0.1',
+    date: '2026-07-02',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Fix bottom and right drawers snapping open or overshooting and sliding faster than the selected animation, instead of easing in smoothly like left and top drawers.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.0.0',
     date: '2026-07-02',
     sections: [

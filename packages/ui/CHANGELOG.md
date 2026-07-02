@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.1] - 2026-07-02
+
+### Fixed
+
+- Fix bottom and right drawers snapping open or overshooting and sliding faster than the selected animation, instead of easing in smoothly like left and top drawers.
+
 ## [5.0.0] - 2026-07-02
 
 ### Added
@@ -893,6 +899,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.0.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.0.0...ui-v5.0.1
 [5.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.1...ui-v5.0.0
 [4.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.0...ui-v4.8.1
 [4.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.7.0...ui-v4.8.0

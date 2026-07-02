@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.7.1] - 2026-07-02
+
+### Changed
+
+- Tighten the UI landing page showcase with smaller row gaps, and switch its controls to their compact sm size on mobile.
+- Pick up @eagami/ui v5.0.1.
+
+### Fixed
+
+- Keep showcase controls inside the card edge when a wide playground font is selected.
+
 ## [3.7.0] - 2026-07-02
 
 ### Added
@@ -741,6 +752,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.7.1]: https://github.com/mwiraszka/eagami/compare/website-v3.7.0...website-v3.7.1
 [3.7.0]: https://github.com/mwiraszka/eagami/compare/website-v3.6.0...website-v3.7.0
 [3.6.0]: https://github.com/mwiraszka/eagami/compare/website-v3.5.0...website-v3.6.0
 [3.5.0]: https://github.com/mwiraszka/eagami/compare/website-v3.4.3...website-v3.5.0
