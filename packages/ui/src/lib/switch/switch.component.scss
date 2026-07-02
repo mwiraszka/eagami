@@ -14,26 +14,31 @@
   user-select: none;
   font-family: var(--font-family-sans);
 
-  // One per-size track height drives the track, thumb, and label so a new size
-  // only needs this single value and every part stays in proportion
+  // One per-size track height drives the track and thumb; the label follows the
+  // shared font-size tokens so it matches the other basic form controls
   &--xs {
     --ea-switch-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   &--sm {
     --ea-switch-size: 1rem;
+    font-size: var(--font-size-sm);
   }
 
   &--md {
     --ea-switch-size: 1.25rem;
+    font-size: var(--font-size-md);
   }
 
   &--lg {
     --ea-switch-size: 1.5rem;
+    font-size: var(--font-size-lg);
   }
 
   &--xl {
     --ea-switch-size: 1.75rem;
+    font-size: var(--font-size-xl);
   }
 
   &--checked {
@@ -107,7 +112,6 @@
   }
 
   &__label {
-    font-size: calc(var(--ea-switch-size, 1.25rem) * 0.8);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-normal);
     color: var(--color-text-primary);

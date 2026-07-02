@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix bottom and right drawers snapping open or overshooting and sliding faster than the selected animation, instead of easing in smoothly like left and top drawers.
+- Align the switch label's font size with other basic form controls like radio and checkbox across all size variants.
 
 ## [5.0.0] - 2026-07-02
 
