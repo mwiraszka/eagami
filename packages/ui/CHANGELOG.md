@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a `push` mode to the drawer that opens it non-modally and reflows the page content aside instead of overlaying it, always keeping a strip of content visible, plus a `pushTarget` input to choose which element gets pushed.
+- Add a `push` mode to the drawer that opens it non-modally and reflows the page content aside instead of overlaying it, always keeping a strip of content visible, plus a `pushTarget` input to choose which element gets pushed. `closeOnBackdrop` now dismisses the drawer on an outside click in both overlay and push modes.
 
 ### Changed
 
@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Keep the date picker's weekday and month names, and grouped numbers in the slider, range-slider, and paginator, in the active locale even on browsers whose built-in `Intl` omits that locale's data, instead of silently falling back to English.
 - Translate the avatar-editor file-validation errors and tree expand/collapse labels in every locale.
+- Scale the date picker's calendar popover with the `size` input (its text, day cells, and controls), not only the trigger.
 
 ## [4.8.1] - 2026-07-01
 
