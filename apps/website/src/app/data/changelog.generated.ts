@@ -15,7 +15,7 @@ export interface ChangelogRelease {
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
     version: '5.0.0',
-    date: '2026-07-01',
+    date: '2026-07-02',
     sections: [
       {
         heading: 'Added',
@@ -33,7 +33,8 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Fixed',
         entries: [
-          'Localize built-in text that was English-only: the slider, range-slider, and paginator now group numbers per the active locale, and the avatar-editor file-validation errors and tree expand/collapse labels are translated in every locale.',
+          "Keep the date picker's weekday and month names, and grouped numbers in the slider, range-slider, and paginator, in the active locale even on browsers whose built-in `Intl` omits that locale's data, instead of silently falling back to English.",
+          'Translate the avatar-editor file-validation errors and tree expand/collapse labels in every locale.',
         ],
       },
     ],

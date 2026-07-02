@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.0.0] - 2026-07-01
+## [5.0.0] - 2026-07-02
 
 ### Added
 
@@ -18,7 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Localize built-in text that was English-only: the slider, range-slider, and paginator now group numbers per the active locale, and the avatar-editor file-validation errors and tree expand/collapse labels are translated in every locale.
+- Keep the date picker's weekday and month names, and grouped numbers in the slider, range-slider, and paginator, in the active locale even on browsers whose built-in `Intl` omits that locale's data, instead of silently falling back to English.
+- Translate the avatar-editor file-validation errors and tree expand/collapse labels in every locale.
 
 ## [4.8.1] - 2026-07-01
 
