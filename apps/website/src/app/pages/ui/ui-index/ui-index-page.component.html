@@ -30,34 +30,37 @@
     <div
       class="ui-theme__controls"
       [style]="controlsStyle">
-      <ea-color-picker
-        [label]="messages().ui.index.theme.brandColor"
-        [(value)]="brandColor" />
-      <div class="ui-theme__field">
-        <span class="ui-theme__label">
-          {{ messages().ui.index.theme.radius }}
-        </span>
-        <div class="ui-theme__slider-control">
-          <ea-slider
-            class="ui-theme__slider"
-            [min]="0"
-            [max]="20"
-            [step]="1"
-            [aria-label]="messages().ui.index.theme.radius"
-            [(value)]="radius" />
-          <span class="ui-theme__value">{{ radius() }}</span>
-        </div>
-      </div>
-      <ea-dropdown
-        [label]="messages().ui.index.theme.font"
-        [options]="fontOptions()"
-        [(value)]="fontKey" />
       <ea-button
         class="ui-theme__reset"
-        variant="secondary"
+        variant="ghost"
+        size="sm"
         (clicked)="resetTheme()">
         {{ messages().ui.index.theme.reset }}
       </ea-button>
+      <div class="ui-theme__fields">
+        <ea-color-picker
+          [label]="messages().ui.index.theme.brandColor"
+          [(value)]="brandColor" />
+        <div class="ui-theme__field">
+          <span class="ui-theme__label">
+            {{ messages().ui.index.theme.radius }}
+          </span>
+          <div class="ui-theme__slider-control">
+            <ea-slider
+              class="ui-theme__slider"
+              [min]="0"
+              [max]="20"
+              [step]="1"
+              [aria-label]="messages().ui.index.theme.radius"
+              [(value)]="radius" />
+            <span class="ui-theme__value">{{ radius() }}</span>
+          </div>
+        </div>
+        <ea-dropdown
+          [label]="messages().ui.index.theme.font"
+          [options]="fontOptions()"
+          [(value)]="fontKey" />
+      </div>
     </div>
   </section>
 

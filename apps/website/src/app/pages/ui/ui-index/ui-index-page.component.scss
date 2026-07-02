@@ -78,27 +78,30 @@
 
 .ui-theme__controls {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 24px;
+  flex-direction: column;
+  gap: 8px;
   padding: 24px;
   border: 1px solid var(--color-border-subtle);
   border-radius: 16px;
   box-shadow: var(--shadow-sm);
   background-color: var(--color-bg-base);
+}
 
-  // Labelled fields grow and wrap; the reset button hugs its own content.
-  > *:not(.ui-theme__reset) {
+.ui-theme__reset {
+  align-self: flex-end;
+}
+
+.ui-theme__fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+
+  // Labelled fields grow and wrap to share the row
+  > * {
     flex: 1 1 200px;
     min-width: 0;
   }
-}
-
-// Labels align along the top; the reset button (no label) drops to the control
-// baseline so it lines up with the fields' inputs rather than their labels.
-.ui-theme__reset {
-  align-self: flex-end;
-  flex: 0 0 auto;
 }
 
 // The slider carries no built-in label/value, so build the field by hand: a label
