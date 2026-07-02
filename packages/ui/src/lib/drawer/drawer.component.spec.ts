@@ -304,20 +304,24 @@ describe('DrawerComponent', () => {
       expect(getDrawer().classList).toContain('ea-drawer--push');
     });
 
-    it('pushes the document body content aside on the position side', () => {
+    it('pushes the document body content aside on the position side', async () => {
       host.mode.set('push');
       host.position.set('right');
       host.isOpen.set(true);
       fixture.detectChanges();
+      // The push offset is measured on the next frame, once the view reflects
+      // the current position and size.
+      await new Promise(resolve => requestAnimationFrame(resolve));
 
       expect(document.body.style.getPropertyValue('padding-right')).not.toBe('');
       expect(document.body.style.transition).toContain('padding');
     });
 
-    it('releases the pushed content when the drawer closes', () => {
+    it('releases the pushed content when the drawer closes', async () => {
       host.mode.set('push');
       host.isOpen.set(true);
       fixture.detectChanges();
+      await new Promise(resolve => requestAnimationFrame(resolve));
 
       host.isOpen.set(false);
       fixture.detectChanges();

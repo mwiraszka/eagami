@@ -54,6 +54,17 @@ const PUSH_PROPERTY: Record<DrawerPosition, string> = {
   bottom: 'padding-bottom',
 };
 
+// Every padding side push can set. All are cleared before applying the current
+// one so a position change never leaves a stale offset that shifts content off.
+const PUSH_PROPERTIES = [
+  'padding-left',
+  'padding-right',
+  'padding-top',
+  'padding-bottom',
+  'padding-inline-start',
+  'padding-inline-end',
+];
+
 /**
  * Side panel backed by the native `<dialog>` element for browser-managed
  * focus trapping. Slides in from a configurable edge, supports backdrop and
@@ -80,6 +91,11 @@ export class DrawerComponent {
   // is open can reopen it in the matching modality. `null` means it is closed.
   private shownAsModal: boolean | null = null;
   private reopening = false;
+  private isLeaving = false;
+  private pushRaf: number | null = null;
+  private leaveTimer: ReturnType<typeof setTimeout> | null = null;
+  private leaveOnEnd: ((event: TransitionEvent) => void) | null = null;
+  private documentPointerListener: ((event: PointerEvent) => void) | null = null;
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
@@ -141,32 +157,42 @@ export class DrawerComponent {
         if (!drawerRef.open) {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
           this.showDialog(drawerRef, wantModal);
+          this.enter(true);
           this.opened.emit();
+        } else if (this.isLeaving) {
+          // Reopened mid-exit: cancel the pending close and slide back in.
+          this.enter(true);
         } else if (this.shownAsModal !== wantModal) {
           // A modality change while open can only be honoured by reopening: the
-          // native dialog fixes its modality at show()/showModal() time.
+          // native dialog fixes its modality at show()/showModal() time. The
+          // panel is already on screen, so re-enter without re-sliding it.
           this.reopening = true;
           drawerRef.close();
           this.showDialog(drawerRef, wantModal);
+          this.enter(false);
           this.reopening = false;
         }
         if (mode === 'push') {
           this.applyPush();
+          this.addPushDismiss();
         } else {
           this.clearPush();
+          this.removePushDismiss();
         }
       } else {
         if (drawerRef.open) {
-          drawerRef.close();
-          this.previouslyFocused?.focus?.();
-          this.previouslyFocused = null;
+          this.leave(drawerRef);
         }
-        this.shownAsModal = null;
         this.clearPush();
+        this.removePushDismiss();
       }
     });
 
-    inject(DestroyRef).onDestroy(() => this.teardownPush());
+    inject(DestroyRef).onDestroy(() => {
+      this.teardownPush();
+      this.removePushDismiss();
+      this.cancelLeave();
+    });
   }
 
   private showDialog(drawerRef: HTMLDialogElement, modal: boolean): void {
@@ -176,6 +202,102 @@ export class DrawerComponent {
       drawerRef.show();
     }
     this.shownAsModal = modal;
+  }
+
+  // Slides the panel in by toggling the `--entered` state. The panel rests off
+  // its positioned edge until `--entered` is added. Driving this from a class
+  // (rather than @starting-style / allow-discrete) keeps the enter and exit
+  // deterministic across browsers. `animate` is false when the panel is already
+  // on screen (a modality reopen), so it snaps into place.
+  private enter(animate: boolean): void {
+    const dialog = this.drawerEl()?.nativeElement;
+    if (!dialog) {
+      return;
+    }
+    this.cancelLeave();
+    if (!animate || this.animation() === 'none') {
+      dialog.classList.add('ea-drawer--entered');
+      return;
+    }
+    // The dialog has just switched from display:none, so a bare reflow is not
+    // enough to seed the transition. Paint the off-edge state, then add
+    // `--entered` two frames later so the browser animates the slide in.
+    dialog.classList.remove('ea-drawer--entered');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (this.open() && dialog.open) {
+          dialog.classList.add('ea-drawer--entered');
+        }
+      });
+    });
+  }
+
+  // Slides the panel back off its edge, then closes the dialog once the panel's
+  // transform transition ends. Collapses to a synchronous close when nothing
+  // animates (no animation, reduced motion, or no measurable duration).
+  private leave(dialog: HTMLDialogElement): void {
+    if (this.isLeaving) {
+      return;
+    }
+    const panel = this.panelEl()?.nativeElement;
+    dialog.classList.remove('ea-drawer--entered');
+    const duration = panel ? this.transitionMs(panel) : 0;
+    if (this.animation() === 'none' || duration <= 0 || !panel) {
+      this.finishClose(dialog);
+      return;
+    }
+    this.isLeaving = true;
+    const settle = (): void => {
+      if (!this.isLeaving) {
+        return;
+      }
+      this.cancelLeave();
+      this.finishClose(dialog);
+    };
+    this.leaveOnEnd = (event: TransitionEvent): void => {
+      if (event.target === panel && event.propertyName === 'transform') {
+        settle();
+      }
+    };
+    panel.addEventListener('transitionend', this.leaveOnEnd);
+    this.leaveTimer = setTimeout(settle, duration + 50);
+  }
+
+  // Cancels a pending exit (its transitionend listener and fallback timer) so a
+  // reopen mid-exit does not later close the drawer.
+  private cancelLeave(): void {
+    this.isLeaving = false;
+    if (this.leaveTimer !== null) {
+      clearTimeout(this.leaveTimer);
+      this.leaveTimer = null;
+    }
+    if (this.leaveOnEnd) {
+      this.panelEl()?.nativeElement.removeEventListener('transitionend', this.leaveOnEnd);
+      this.leaveOnEnd = null;
+    }
+  }
+
+  private finishClose(dialog: HTMLDialogElement): void {
+    // A reopen during the exit animation supersedes the close.
+    if (this.open()) {
+      return;
+    }
+    if (dialog.open) {
+      dialog.close();
+    }
+    dialog.classList.remove('ea-drawer--entered');
+    this.previouslyFocused?.focus?.();
+    this.previouslyFocused = null;
+    this.shownAsModal = null;
+  }
+
+  private transitionMs(el: HTMLElement): number {
+    const raw = getComputedStyle(el).transitionDuration.split(',')[0].trim();
+    const value = parseFloat(raw);
+    if (!Number.isFinite(value)) {
+      return 0;
+    }
+    return raw.endsWith('ms') ? value : value * 1000;
   }
 
   handleClose(): void {
@@ -202,87 +324,127 @@ export class DrawerComponent {
   }
 
   private applyPush(): void {
-    const panel = this.panelEl()?.nativeElement;
     const target = this.resolvePushTarget();
-    if (!panel || !target) {
+    if (!target) {
       return;
     }
-    const position = this.position();
-    const property = PUSH_PROPERTY[position];
-    // Undo a stale push if the target or side changed while the drawer is open.
-    if (
-      this.pushedTarget &&
-      this.pushedProperty &&
-      (this.pushedTarget !== target || this.pushedProperty !== property)
-    ) {
-      this.pushedTarget.style.removeProperty(this.pushedProperty);
+    if (this.pushRaf !== null) {
+      cancelAnimationFrame(this.pushRaf);
     }
     if (this.pushCleanupTimer !== null) {
       clearTimeout(this.pushCleanupTimer);
       this.pushCleanupTimer = null;
     }
-    const size =
-      position === 'top' || position === 'bottom'
-        ? panel.offsetHeight
-        : panel.offsetWidth;
-    // Match the content reflow to the panel's slide animation. The tokens resolve
-    // from :root, so the duration still honours reduced motion (collapses to 0ms).
-    const animation = this.animation();
-    if (animation === 'none') {
-      target.style.removeProperty('transition');
-    } else {
-      const ease = animation === 'linear' ? 'var(--ease-linear)' : 'var(--ease-out)';
-      target.style.transition = `padding var(--duration-slow) ${ease}`;
-    }
-    target.style.setProperty(property, `${size}px`);
-    this.pushedTarget = target;
-    this.pushedProperty = property;
+    // Measure on the next frame, once the view reflects the current position and
+    // size. Measuring synchronously reads the panel's previous dimensions, so a
+    // `height:100%` side panel switched to `top` would push content down by the
+    // full viewport height and shove it off screen.
+    this.pushRaf = requestAnimationFrame(() => {
+      this.pushRaf = null;
+      const panel = this.panelEl()?.nativeElement;
+      if (!panel || !this.open() || this.mode() !== 'push') {
+        return;
+      }
+      const position = this.position();
+      const size =
+        position === 'top' || position === 'bottom'
+          ? panel.offsetHeight
+          : panel.offsetWidth;
+      // Match the content reflow to the panel's slide. The tokens resolve from
+      // :root, so the duration still honours reduced motion (collapses to 0ms).
+      const animation = this.animation();
+      if (animation === 'none') {
+        target.style.removeProperty('transition');
+      } else {
+        const ease = animation === 'linear' ? 'var(--ease-linear)' : 'var(--ease-out)';
+        target.style.transition = `padding var(--duration-slower) ${ease}`;
+      }
+      // Clear every side first so a position change never stacks two offsets.
+      this.clearPushProperties(target);
+      target.style.setProperty(PUSH_PROPERTY[position], `${size}px`);
+      this.pushedTarget = target;
+      this.pushedProperty = PUSH_PROPERTY[position];
+    });
   }
 
   private clearPush(): void {
+    if (this.pushRaf !== null) {
+      cancelAnimationFrame(this.pushRaf);
+      this.pushRaf = null;
+    }
     const target = this.pushedTarget;
-    const property = this.pushedProperty;
     this.pushedTarget = null;
     this.pushedProperty = null;
-    if (!target || !property) {
+    if (!target) {
       return;
     }
     // Reflow the content back, then strip the leftover transition once it
     // settles. A timer (rather than `transitionend`) keeps cleanup deterministic
     // when no transition fires, e.g. under reduced motion.
-    target.style.removeProperty(property);
+    this.clearPushProperties(target);
     if (this.pushCleanupTimer !== null) {
       clearTimeout(this.pushCleanupTimer);
     }
     this.pushCleanupTimer = setTimeout(() => {
       target.style.removeProperty('transition');
       this.pushCleanupTimer = null;
-    }, this.pushTransitionMs(target));
+    }, this.transitionMs(target));
+  }
+
+  private clearPushProperties(target: HTMLElement): void {
+    for (const property of PUSH_PROPERTIES) {
+      target.style.removeProperty(property);
+    }
+  }
+
+  // Push mode has no modal backdrop, so an outside-click dismissal is wired to
+  // the document. Deferred a tick so the click that opened the drawer does not
+  // immediately close it.
+  private addPushDismiss(): void {
+    if (this.documentPointerListener || !this.isBrowser) {
+      return;
+    }
+    const listener = (event: PointerEvent): void => {
+      if (!this.closeOnBackdrop()) {
+        return;
+      }
+      const panel = this.panelEl()?.nativeElement;
+      if (panel && !panel.contains(event.target as Node)) {
+        this.handleClose();
+      }
+    };
+    this.documentPointerListener = listener;
+    setTimeout(() => {
+      if (this.documentPointerListener === listener) {
+        document.addEventListener('pointerdown', listener);
+      }
+    });
+  }
+
+  private removePushDismiss(): void {
+    if (this.documentPointerListener) {
+      document.removeEventListener('pointerdown', this.documentPointerListener);
+      this.documentPointerListener = null;
+    }
   }
 
   // Removes the push styles immediately, for teardown where no animation is wanted.
   private teardownPush(): void {
+    if (this.pushRaf !== null) {
+      cancelAnimationFrame(this.pushRaf);
+      this.pushRaf = null;
+    }
     if (this.pushCleanupTimer !== null) {
       clearTimeout(this.pushCleanupTimer);
       this.pushCleanupTimer = null;
     }
     const target = this.pushedTarget;
-    const property = this.pushedProperty;
     this.pushedTarget = null;
     this.pushedProperty = null;
-    if (target && property) {
-      target.style.removeProperty(property);
+    if (target) {
+      this.clearPushProperties(target);
       target.style.removeProperty('transition');
     }
-  }
-
-  private pushTransitionMs(target: HTMLElement): number {
-    const raw = getComputedStyle(target).transitionDuration.split(',')[0].trim();
-    const value = parseFloat(raw);
-    if (!Number.isFinite(value)) {
-      return 0;
-    }
-    return raw.endsWith('ms') ? value : value * 1000;
   }
 
   handleBackdropClick(event: MouseEvent): void {
@@ -296,11 +458,12 @@ export class DrawerComponent {
   }
 
   handleCancel(event: Event): void {
-    if (!this.closeOnEscape()) {
-      event.preventDefault();
-      return;
+    // Always cancel the native instant-close so the exit can animate; then drive
+    // the close ourselves, or keep the drawer open when Escape is disabled.
+    event.preventDefault();
+    if (this.closeOnEscape()) {
+      this.handleClose();
     }
-    this.handleClose();
   }
 
   // The native <dialog> can close on its own (e.g. Escape), so reconcile the open

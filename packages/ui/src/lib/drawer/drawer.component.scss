@@ -57,84 +57,50 @@
     --ea-drawer-ease: var(--ease-linear);
   }
 
-  // Slide the panel in and out from its edge, with the backdrop fading alongside.
-  // Transitions with @starting-style and `allow-discrete` animate both the enter
-  // and the exit purely in CSS: the dialog stays displayed (and in the top layer)
-  // until the exit transition finishes. Durations come from motion tokens, so
-  // reduced-motion users get them at 0ms. The easing is driven by --ea-drawer-ease
-  // so the `linear` animation can swap the curve without duplicating the rules.
+  // The panel rests off its positioned edge; the component adds `--entered` to
+  // slide it in (and fade the backdrop) and removes it to slide out before the
+  // dialog closes. Toggling a class, rather than relying on @starting-style and
+  // `allow-discrete` top-layer transitions, keeps the enter and exit
+  // deterministic across browsers. Easing is driven by --ea-drawer-ease so
+  // `linear` can swap the curve; durations come from motion tokens, so reduced
+  // motion collapses them to 0ms (and the component then closes synchronously).
   &--animated {
-    transition:
-      overlay var(--duration-slow) allow-discrete,
-      display var(--duration-slow) allow-discrete;
-
     &::backdrop {
       opacity: 0;
-      transition:
-        opacity var(--duration-slow) var(--ea-drawer-ease, var(--ease-out)),
-        overlay var(--duration-slow) allow-discrete,
-        display var(--duration-slow) allow-discrete;
-    }
-
-    &[open]::backdrop {
-      opacity: 1;
-    }
-
-    @starting-style {
-      &[open]::backdrop {
-        opacity: 0;
-      }
+      transition: opacity var(--duration-slower) var(--ea-drawer-ease, var(--ease-out));
     }
 
     .ea-drawer__panel {
-      transition: transform var(--duration-slow) var(--ea-drawer-ease, var(--ease-out));
+      transition: transform var(--duration-slower) var(--ea-drawer-ease, var(--ease-out));
+    }
+  }
+
+  .ea-drawer__panel--right {
+    transform: translateX(100%);
+  }
+  .ea-drawer__panel--left {
+    transform: translateX(-100%);
+  }
+  .ea-drawer__panel--start {
+    transform: translateX(calc(-100% * var(--ea-rtl-sign)));
+  }
+  .ea-drawer__panel--end {
+    transform: translateX(calc(100% * var(--ea-rtl-sign)));
+  }
+  .ea-drawer__panel--top {
+    transform: translateY(-100%);
+  }
+  .ea-drawer__panel--bottom {
+    transform: translateY(100%);
+  }
+
+  &--entered {
+    &::backdrop {
+      opacity: 1;
     }
 
-    // Resting (closed) state parks the panel off its edge; [open] brings it in.
-    // The exit animates back to these values while the dialog is still displayed.
-    .ea-drawer__panel--right {
-      transform: translateX(100%);
-    }
-    .ea-drawer__panel--left {
-      transform: translateX(-100%);
-    }
-    .ea-drawer__panel--start {
-      transform: translateX(calc(-100% * var(--ea-rtl-sign)));
-    }
-    .ea-drawer__panel--end {
-      transform: translateX(calc(100% * var(--ea-rtl-sign)));
-    }
-    .ea-drawer__panel--top {
-      transform: translateY(-100%);
-    }
-    .ea-drawer__panel--bottom {
-      transform: translateY(100%);
-    }
-
-    &[open] .ea-drawer__panel {
+    .ea-drawer__panel {
       transform: none;
-    }
-
-    // Seed the same off-edge offsets as the enter's starting point.
-    @starting-style {
-      &[open] .ea-drawer__panel--right {
-        transform: translateX(100%);
-      }
-      &[open] .ea-drawer__panel--left {
-        transform: translateX(-100%);
-      }
-      &[open] .ea-drawer__panel--start {
-        transform: translateX(calc(-100% * var(--ea-rtl-sign)));
-      }
-      &[open] .ea-drawer__panel--end {
-        transform: translateX(calc(100% * var(--ea-rtl-sign)));
-      }
-      &[open] .ea-drawer__panel--top {
-        transform: translateY(-100%);
-      }
-      &[open] .ea-drawer__panel--bottom {
-        transform: translateY(100%);
-      }
     }
   }
 
