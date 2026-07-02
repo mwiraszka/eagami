@@ -131,6 +131,27 @@ export class DatePickerComponent implements ControlValueAccessor {
   /** Locale used for date formatting: explicit `locale` input, else the global locale. */
   readonly effectiveLocale = computed(() => this.locale() ?? this.i18n.locale());
 
+  /** True when the active date locale is a registered locale we ship a bundle
+   *  for (no distinct per-instance `locale` override), so the bundled calendar
+   *  names apply and the calendar stays localized regardless of the runtime's
+   *  `Intl` locale coverage. */
+  private readonly bundleCalendarApplies = computed(
+    () => this.effectiveLocale() === this.i18n.locale(),
+  );
+
+  /** Whether the runtime's `Intl` actually has date data for the active locale.
+   *  Some browsers ship a reduced ICU that silently falls back to English for
+   *  less common locales, so a matching request is not a given. */
+  private readonly intlLocalizesEffectiveLocale = computed(() => {
+    const requested = this.effectiveLocale();
+    try {
+      const resolved = new Intl.DateTimeFormat(requested).resolvedOptions().locale;
+      return resolved.split('-')[0] === requested.split('-')[0];
+    } catch {
+      return false;
+    }
+  });
+
   /** Placeholder text: explicit `placeholder` input, else the active locale's default. */
   readonly resolvedPlaceholder = computed(
     () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
@@ -152,33 +173,48 @@ export class DatePickerComponent implements ControlValueAccessor {
     if (!val) {
       return '';
     }
+    if (this.bundleCalendarApplies() && !this.intlLocalizesEffectiveLocale()) {
+      const months = this.i18n.messages().datePicker.months;
+      return `${val.getDate()} ${months[val.getMonth()]} ${val.getFullYear()}`;
+    }
     return new Intl.DateTimeFormat(this.effectiveLocale(), this.formatOptions()).format(
       val,
     );
   });
 
   readonly monthYearLabel = computed(() => {
-    const date = new Date(this.viewYear(), this.viewMonth(), 1);
+    const year = this.viewYear();
+    const month = this.viewMonth();
+    // Defer to the bundle only when Intl can't localize this locale: the
+    // month/year heading carries locale-specific patterns (element order, era
+    // markers, connective words) that Intl composes and a plain join cannot.
+    if (this.bundleCalendarApplies() && !this.intlLocalizesEffectiveLocale()) {
+      return `${this.i18n.messages().datePicker.months[month]} ${year}`;
+    }
     return new Intl.DateTimeFormat(this.effectiveLocale(), {
       month: 'long',
       year: 'numeric',
-    }).format(date);
+    }).format(new Date(year, month, 1));
   });
 
   readonly weekdayLabels = computed(() => {
     const start = this.weekStartsOn();
+    // Weekday indices in display order; bundle names are Sunday-first (index 0)
+    const order = Array.from({ length: 7 }, (_, i) => (i + start) % 7);
+    if (this.bundleCalendarApplies()) {
+      const short = this.i18n.messages().datePicker.weekdaysShort;
+      return order.map(index => short[index]);
+    }
+    // A known Sunday (2024-01-07) anchors the offset into locale weekday names
+    const base = new Date(2024, 0, 7);
     const formatter = new Intl.DateTimeFormat(this.effectiveLocale(), {
       weekday: 'short',
     });
-    const labels: string[] = [];
-    // Use a known Sunday (2024-01-07) as anchor so we can offset for locale
-    const base = new Date(2024, 0, 7);
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(base);
-      d.setDate(base.getDate() + ((i + start) % 7));
-      labels.push(formatter.format(d));
-    }
-    return labels;
+    return order.map(index => {
+      const date = new Date(base);
+      date.setDate(base.getDate() + index);
+      return formatter.format(date);
+    });
   });
 
   readonly weeks = computed<CalendarDay[][]>(() => {

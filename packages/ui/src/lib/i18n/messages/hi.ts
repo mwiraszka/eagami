@@ -48,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'कोई डेटा उपलब्ध नहीं',
   },
+  numberFormat: {
+    decimal: '.',
+    group: ',',
+    grouping: [3, 2],
+  },
   datePicker: {
     placeholder: 'तारीख चुनें…',
     clear: 'तारीख साफ़ करें',
@@ -56,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'अगला महीना',
     nextYear: 'अगला वर्ष',
     today: 'आज',
+    weekdaysShort: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
+    months: [
+      'जनवरी',
+      'फ़रवरी',
+      'मार्च',
+      'अप्रैल',
+      'मई',
+      'जून',
+      'जुलाई',
+      'अगस्त',
+      'सितंबर',
+      'अक्टूबर',
+      'नवंबर',
+      'दिसंबर',
+    ],
   },
   dialog: {
     close: 'संवाद बंद करें',

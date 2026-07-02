@@ -21,6 +21,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import { formatGroupedNumber } from '../i18n/format-number';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -112,7 +113,14 @@ export class SliderComponent implements ControlValueAccessor {
       return formatter(value);
     }
     return this.groupThousands()
-      ? value.toLocaleString(this.i18n.locale(), { maximumFractionDigits: 20 })
+      ? formatGroupedNumber(
+          value,
+          this.i18n.locale(),
+          this.i18n.messages().numberFormat,
+          {
+            maximumFractionDigits: 20,
+          },
+        )
       : `${value}`;
   }
 

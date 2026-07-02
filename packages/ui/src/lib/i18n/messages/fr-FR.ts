@@ -48,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Aucune donnée disponible',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '\u202F',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Sélectionner une date…',
     clear: 'Effacer la date',
@@ -56,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Mois suivant',
     nextYear: 'Année suivante',
     today: "Aujourd'hui",
+    weekdaysShort: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+    months: [
+      'janvier',
+      'février',
+      'mars',
+      'avril',
+      'mai',
+      'juin',
+      'juillet',
+      'août',
+      'septembre',
+      'octobre',
+      'novembre',
+      'décembre',
+    ],
   },
   dialog: {
     close: 'Fermer la boîte de dialogue',

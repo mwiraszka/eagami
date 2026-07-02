@@ -48,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Geen gegevens beschikbaar',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '.',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Selecteer datum…',
     clear: 'Datum wissen',
@@ -56,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Volgende maand',
     nextYear: 'Volgend jaar',
     today: 'Vandaag',
+    weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+    months: [
+      'januari',
+      'februari',
+      'maart',
+      'april',
+      'mei',
+      'juni',
+      'juli',
+      'augustus',
+      'september',
+      'oktober',
+      'november',
+      'december',
+    ],
   },
   dialog: {
     close: 'Dialoogvenster sluiten',

@@ -48,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Нет доступных данных',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '\u00A0',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Выберите дату…',
     clear: 'Очистить дату',
@@ -56,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Следующий месяц',
     nextYear: 'Следующий год',
     today: 'Сегодня',
+    weekdaysShort: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+    months: [
+      'январь',
+      'февраль',
+      'март',
+      'апрель',
+      'май',
+      'июнь',
+      'июль',
+      'август',
+      'сентябрь',
+      'октябрь',
+      'ноябрь',
+      'декабрь',
+    ],
   },
   dialog: {
     close: 'Закрыть диалог',

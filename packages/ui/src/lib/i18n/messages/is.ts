@@ -48,6 +48,11 @@ const messages: EagamiMessages = {
   dataTable: {
     noData: 'Engin gögn til staðar',
   },
+  numberFormat: {
+    decimal: ',',
+    group: '.',
+    grouping: [3],
+  },
   datePicker: {
     placeholder: 'Veldu dagsetningu…',
     clear: 'Hreinsa dagsetningu',
@@ -56,6 +61,21 @@ const messages: EagamiMessages = {
     nextMonth: 'Næsti mánuður',
     nextYear: 'Næsta ár',
     today: 'Í dag',
+    weekdaysShort: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau.'],
+    months: [
+      'janúar',
+      'febrúar',
+      'mars',
+      'apríl',
+      'maí',
+      'júní',
+      'júlí',
+      'ágúst',
+      'september',
+      'október',
+      'nóvember',
+      'desember',
+    ],
   },
   dialog: {
     close: 'Loka glugga',
