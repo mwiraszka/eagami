@@ -184,6 +184,7 @@ export const de: WebMessages = {
       designTokens: 'Design-Tokens',
       icons: 'Symbole',
       i18n: 'Internationalisierung',
+      accessibility: 'Barrierefreiheit',
       components: 'Komponenten',
     },
     index: {
@@ -211,7 +212,7 @@ export const de: WebMessages = {
         },
         {
           title: 'Lokalisiert',
-          body: 'Integrierter Komponententext wird in 15 Sprachen ausgeliefert.',
+          body: 'Integrierter Komponententext wird in allen unterstützten Sprachen ausgeliefert.',
         },
         {
           title: 'Modern',
@@ -391,6 +392,51 @@ export const de: WebMessages = {
       frenchSpacingBody:
         'Die französische Typografie erwartet ein schmales geschütztes Leerzeichen vor <code>? ! : ; »</code> und nach <code>«</code>. Die exportierte Hilfsfunktion <code>frenchSpacing()</code> wandelt normale Leerzeichen in Ihren eigenen französischen Zeichenketten um (die gebündelten französischen Messages verwaltet die Bibliothek intern).',
       demoLocaleLabel: 'Sprachraum',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Barrierefreiheit',
+      metaDescription:
+        'WCAG 2.2-AA-Konformität, vollständige Tastaturunterstützung und Screenreader-freundliche Komponenten, mit jeder Version geprüft.',
+      title: 'Barrierefreiheit',
+      lede: 'Jede Komponente ist nach den führenden Standards für Barrierefreiheit im Web gebaut: korrekte Semantik, vollständige Tastaturunterstützung, Fokusverwaltung und Screenreader-Ansagen funktionieren von Haus aus.',
+      conformanceHeading: 'Konformität',
+      conformanceBody:
+        'Die Bibliothek entspricht <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, dem Standard, den die meisten Organisationen erfüllen müssen, und folgt den offiziellen Autorenrichtlinien des W3C für jede Art von Steuerelement, von Dialogen und Menüs bis hin zu Slidern und Datumsauswahlen. Screenreader-Ansagen sind in jeder unterstützten Sprache enthalten, sodass assistive Technologie immer die Sprache des Nutzers spricht.',
+      builtInHeading: 'Eingebaute Barrierefreiheit',
+      builtInItems: [
+        {
+          title: 'Semantik',
+          body: 'Native Elemente, wo möglich, explizite ARIA-Rollen, -Zustände und -Eigenschaften, wo nicht. Zustände wie aufgeklappt, ausgewählt, angehakt, ungültig und beschäftigt werden immer programmatisch offengelegt, nie allein über das Styling.',
+        },
+        {
+          title: 'Tastaturunterstützung',
+          body: 'Vollständige APG-Tastaturmuster: Roving Tabindex, Navigation mit den Pfeiltasten, Pos1 und Ende, Escape zum Schließen sowie Eingabetaste oder Leertaste zum Aktivieren, mit RTL-bewusster Pfeiltastenbehandlung.',
+        },
+        {
+          title: 'Fokusverwaltung',
+          body: 'Modals und Picker halten den Fokus, solange sie geöffnet sind, und geben ihn beim Schließen an den Auslöser zurück. Fokusindikatoren sind immer sichtbar und werden nie unterdrückt.',
+        },
+        {
+          title: 'Screenreader-Ansagen',
+          body: 'Toasts, Meldungen, Validierungsfehler und asynchrone Zustandsänderungen werden über Live-Regionen mit der passenden Dringlichkeitsstufe angesagt.',
+        },
+        {
+          title: 'Reduzierte Bewegung',
+          body: 'Animationen respektieren durchgehend die Media Query prefers-reduced-motion.',
+        },
+        {
+          title: 'Kontrast',
+          body: 'Das standardmäßige helle und dunkle Theme erfüllt die WCAG-Kontrastanforderungen, und die Theming-Werkzeuge markieren Kombinationen, die unter AA fallen.',
+        },
+      ],
+      labelsHeading: 'Barrierefreie Namen',
+      labelsBefore:
+        'Komponenten, die Text rendern, beschriften sich selbst. Alles, was nur aus Symbolen besteht oder grafisch ist, bietet einen <code>aria-label</code>-Input (mit lokalisierten Standardwerten für integrierte Steuerungen wie Löschen-, Schließen- und Verwerfen-Buttons), und Formularfelder verbinden <code>label</code>, Hinweise und Fehlermeldungen automatisch über <code>aria-describedby</code> mit dem Steuerelement.',
+      labelsAfter:
+        'Geben Sie bei Steuerelementen ohne sichtbaren Text ein <code>label</code> oder <code>aria-label</code> an, und die Komponente übernimmt den Rest: Namen, Hinweise und Fehlermeldungen bleiben automatisch miteinander verknüpft.',
+      testingHeading: 'Mit jeder Version geprüft',
+      testingBody:
+        'Jede Komponente wird bei jeder Änderung anhand branchenüblicher Barrierefreiheitsregeln geprüft, und eine Version erscheint nur, wenn jede Prüfung besteht, sodass die Barrierefreiheit, die Sie hier sehen, auch bei der Weiterentwicklung der Bibliothek Bestand hat.',
     },
     component: {
       metaDescription: name => `Referenz und Live-Demos zur Komponente ${name}.`,
@@ -893,6 +939,8 @@ export const de: WebMessages = {
         colDescription: 'Beschreibung',
         errorMessagesDescription:
           'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung.',
+        ariaLabelDescription:
+          'Barrierefreier Name, der von assistiver Technologie angesagt wird, wenn die Komponente kein sichtbares Label rendert.',
         triggerErrorLabel: 'Fehler auslösen',
         requiredBadge: 'erforderlich',
         twoWayBadge: 'bidirektional',
@@ -1125,6 +1173,8 @@ export const de: WebMessages = {
           },
           accordion: {
             multi: 'Erlaubt, dass mehrere Einträge gleichzeitig aufgeklappt bleiben.',
+            headingLevel:
+              'Überschriftenebene (1-6), die auf jeden Eintrags-Header angewendet wird, damit sich das Akkordeon in die Seitengliederung einfügt.',
           },
           alert: {
             dismissible:
@@ -1782,6 +1832,8 @@ export const de: WebMessages = {
             anchor: 'Host-Element oder ElementRef, an dem sich das Popover positioniert.',
             ariaLabel:
               'Barrierefreies Label für die Popover-Oberfläche; geben Sie eines an, wenn das Popover keine sichtbare Überschrift enthält.',
+            ariaLabelledby:
+              'Id des Elements, das die Popover-Oberfläche beschriftet, weitergegeben als aria-labelledby.',
             clamp:
               'Begrenzt das Popover innerhalb des Viewports, wenn es andernfalls überlaufen würde.',
             closeOnEscape: 'Schließt das Popover, wenn Escape gedrückt wird.',
@@ -1798,6 +1850,8 @@ export const de: WebMessages = {
               'Wie das Popover auf Scroll- und Resize-Ereignisse reagiert, während es geöffnet ist: neu positionieren, schließen oder ignorieren.',
             surfaceId:
               'DOM-id für die Popover-Oberfläche, von Auslöser-Elementen über aria-controls verwendet.',
+            trapFocus:
+              'Hält Tab und Umschalt+Tab im geöffneten Zustand innerhalb der Oberfläche im Kreis, für Popovers im Dialog-Stil.',
             closeRequested:
               'Wird ausgelöst, wenn das Popover angefordert wird zu schließen; das übergeordnete Element sollte dies in [open] spiegeln.',
           },

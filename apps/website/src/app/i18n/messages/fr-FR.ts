@@ -189,6 +189,7 @@ export const frFR: WebMessages = {
       designTokens: 'Tokens de design',
       icons: 'Icônes',
       i18n: 'Internationalisation',
+      accessibility: 'Accessibilité',
       components: 'Composants',
     },
     index: {
@@ -215,7 +216,7 @@ export const frFR: WebMessages = {
         },
         {
           title: 'Localisé',
-          body: 'Les textes intégrés des composants sont disponibles en 15 langues.',
+          body: 'Les textes intégrés des composants sont disponibles dans toutes les langues prises en charge.',
         },
         {
           title: 'Moderne',
@@ -391,6 +392,51 @@ export const frFR: WebMessages = {
       frenchSpacingBody:
         'La typographie française attend une espace fine insécable avant <code>? ! : ; »</code> et après <code>«</code>. L’assistant <code>frenchSpacing()</code> exporté convertit les espaces ordinaires dans vos propres chaînes françaises (la bibliothèque gère ses messages français intégrés en interne).',
       demoLocaleLabel: 'Langue',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Accessibilité',
+      metaDescription:
+        'Conformité WCAG 2.2 AA, prise en charge complète du clavier et composants adaptés aux lecteurs d’écran, le tout vérifié à chaque version.',
+      title: 'Accessibilité',
+      lede: 'Chaque composant est construit selon les principaux standards d’accessibilité du web : sémantique correcte, prise en charge complète du clavier, gestion du focus et annonces aux lecteurs d’écran fonctionnent d’emblée.',
+      conformanceHeading: 'Conformité',
+      conformanceBody:
+        'La bibliothèque se conforme à <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, le standard que la plupart des organisations sont tenues de respecter, et suit les pratiques de conception officielles du W3C pour chaque type de contrôle, des modales et des menus aux curseurs et aux sélecteurs de date. Les annonces aux lecteurs d’écran sont fournies dans toutes les langues prises en charge, de sorte que les technologies d’assistance parlent toujours la langue de l’utilisateur.',
+      builtInHeading: 'Accessibilité intégrée',
+      builtInItems: [
+        {
+          title: 'Sémantique',
+          body: 'Des éléments natifs lorsque c’est possible, des rôles, états et propriétés ARIA explicites sinon. Les états comme développé, sélectionné, coché, invalide et occupé sont toujours exposés programmatiquement, jamais par le seul style.',
+        },
+        {
+          title: 'Prise en charge du clavier',
+          body: 'Motifs clavier APG complets : roving tabindex, navigation aux touches fléchées, Début et Fin, Échap pour fermer, Entrée ou Espace pour activer, avec une gestion des flèches adaptée au RTL.',
+        },
+        {
+          title: 'Gestion du focus',
+          body: 'Les modales et les sélecteurs piègent le focus tant qu’ils sont ouverts et le rendent au déclencheur à la fermeture. Les indicateurs de focus sont toujours visibles et jamais supprimés.',
+        },
+        {
+          title: 'Annonces aux lecteurs d’écran',
+          body: 'Les toasts, les alertes, les erreurs de validation et les changements d’état asynchrones sont annoncés via des régions live avec le niveau de politesse approprié.',
+        },
+        {
+          title: 'Mouvements réduits',
+          body: 'Les animations respectent partout la requête média prefers-reduced-motion.',
+        },
+        {
+          title: 'Contraste',
+          body: 'Les thèmes clair et sombre par défaut respectent les exigences de contraste WCAG, et les outils de thématisation signalent les combinaisons qui passent sous le niveau AA.',
+        },
+      ],
+      labelsHeading: 'Noms accessibles',
+      labelsBefore:
+        'Les composants qui affichent du texte se nomment eux-mêmes. Tout élément graphique ou constitué d’une seule icône expose une entrée <code>aria-label</code> (avec des valeurs par défaut localisées pour les contrôles intégrés comme les boutons d’effacement, de fermeture et de masquage), et les champs de formulaire relient automatiquement <code>label</code>, indices et messages d’erreur au contrôle via <code>aria-describedby</code>.',
+      labelsAfter:
+        'Fournissez un <code>label</code> ou un <code>aria-label</code> pour les contrôles sans texte visible et le composant s’occupe du reste : noms, indices et messages d’erreur restent reliés automatiquement.',
+      testingHeading: 'Vérifié à chaque version',
+      testingBody:
+        'Chaque composant est vérifié selon les règles d’accessibilité du secteur à chaque modification, et une version n’est publiée que lorsque toutes les vérifications passent, de sorte que l’accessibilité que vous voyez ici se maintient à mesure que la bibliothèque évolue.',
     },
     component: {
       metaDescription: name => `Référence et démos en direct du composant ${name}.`,
@@ -896,6 +942,8 @@ export const frFR: WebMessages = {
         colDescription: 'Description',
         errorMessagesDescription:
           "Remplace le message de validation par clé d'erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.",
+        ariaLabelDescription:
+          'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
         triggerErrorLabel: 'Déclencher l’erreur',
         requiredBadge: 'requis',
         twoWayBadge: 'bidirectionnel',
@@ -1129,6 +1177,8 @@ export const frFR: WebMessages = {
           },
           accordion: {
             multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
+            headingLevel:
+              'Niveau de titre (1-6) appliqué à chaque en-tête d’élément, pour que l’accordéon s’insère dans le plan de la page.',
           },
           alert: {
             dismissible:
@@ -1777,6 +1827,8 @@ export const frFR: WebMessages = {
               'Élément hôte ou ElementRef par rapport auquel le popover se positionne.',
             ariaLabel:
               'Libellé accessible de la surface du popover ; à fournir lorsque le popover ne contient pas de titre visible.',
+            ariaLabelledby:
+              'Id de l’élément qui labellise la surface du popover, transmis comme aria-labelledby.',
             clamp:
               "Maintient le popover dans la fenêtre d'affichage lorsqu'il déborderait sinon.",
             closeOnEscape: 'Ferme le popover lorsque la touche Échap est pressée.',
@@ -1793,6 +1845,8 @@ export const frFR: WebMessages = {
               "Comportement du popover lors des événements de défilement et de redimensionnement lorsqu'il est ouvert : reposition, close ou ignore.",
             surfaceId:
               'id DOM de la surface du popover, utilisé par les éléments déclencheurs via aria-controls.',
+            trapFocus:
+              'Maintient Tab et Maj+Tab en cycle à l’intérieur de la surface tant qu’elle est ouverte, pour les popovers de type dialogue.',
             closeRequested:
               'Émis lorsque le popover demande à être fermé ; le parent doit répercuter cela dans [open].',
           },

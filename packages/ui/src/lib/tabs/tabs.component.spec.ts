@@ -7,7 +7,9 @@ import { TabsComponent } from './tabs.component';
 @Component({
   imports: [TabsComponent, TabComponent],
   template: `
-    <ea-tabs [(activeTab)]="activeTab">
+    <ea-tabs
+      [(activeTab)]="activeTab"
+      [ariaLabel]="ariaLabel">
       <ea-tab
         value="one"
         label="Tab One">
@@ -29,6 +31,7 @@ import { TabsComponent } from './tabs.component';
 })
 class TestHostComponent {
   activeTab = 'one';
+  ariaLabel?: string;
 }
 
 describe('TabsComponent', () => {
@@ -67,6 +70,18 @@ describe('TabsComponent', () => {
 
     it('renders a tablist role', () => {
       expect(getTabList()).toBeTruthy();
+    });
+
+    it('omits aria-label on the tablist by default', () => {
+      expect(getTabList().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('applies ariaLabel to the tablist', () => {
+      fixture.componentInstance.ariaLabel = 'Account sections';
+
+      fixture.detectChanges();
+
+      expect(getTabList().getAttribute('aria-label')).toBe('Account sections');
     });
 
     it('shows the active tab panel', () => {

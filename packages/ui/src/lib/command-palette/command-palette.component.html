@@ -17,11 +17,12 @@
         role="combobox"
         autocomplete="off"
         spellcheck="false"
-        [attr.aria-controls]="listboxId"
-        [attr.aria-expanded]="true"
+        [attr.aria-label]="resolvedPlaceholder()"
+        [attr.aria-controls]="filteredItems().length > 0 ? listboxId : null"
+        [attr.aria-expanded]="filteredItems().length > 0"
         [attr.aria-autocomplete]="'list'"
         [attr.aria-activedescendant]="activeId()"
-        [placeholder]="placeholder() || messages().commandPalette.searchPlaceholder"
+        [placeholder]="resolvedPlaceholder()"
         [value]="query()"
         (input)="onQueryInput($event)"
         (keydown)="onSearchKeydown($event)" />
@@ -37,7 +38,9 @@
     </div>
 
     @if (filteredItems().length === 0) {
-      <p class="ea-command-palette__empty">
+      <p
+        class="ea-command-palette__empty"
+        role="status">
         {{ emptyMessage() || messages().commandPalette.empty }}
       </p>
     } @else {
@@ -46,52 +49,71 @@
         role="listbox"
         [id]="listboxId"
         (mouseleave)="onListMouseLeave()">
-        @for (group of groupedItems(); track group.group) {
+        @for (group of groupedItems(); track group.group; let gi = $index) {
           @if (group.group) {
             <li
-              class="ea-command-palette__group"
+              class="ea-command-palette__section"
               role="presentation">
-              {{ group.group }}
-            </li>
-          }
-          @for (entry of group.items; track entry.item.id) {
-            <li
-              class="ea-command-palette__item"
-              role="option"
-              [id]="itemDomId(entry.item)"
-              [attr.aria-selected]="isActive(entry.flatIndex)"
-              [class.ea-command-palette__item--active]="
-                showActiveHighlight(entry.flatIndex)
-              "
-              [class.ea-command-palette__item--disabled]="entry.item.disabled"
-              (click)="onItemClick(entry.item)"
-              (mouseenter)="onItemMouseEnter(entry.flatIndex)">
-              @if (entry.item.icon; as iconClass) {
-                <span
-                  class="ea-command-palette__item-icon"
-                  aria-hidden="true">
-                  <ng-container *ngComponentOutlet="iconClass" />
-                </span>
-              }
-              <span class="ea-command-palette__item-text">
-                <span class="ea-command-palette__item-label">
-                  {{ entry.item.label }}
-                </span>
-                @if (entry.item.description) {
-                  <span class="ea-command-palette__item-description">
-                    {{ entry.item.description }}
-                  </span>
+              <div
+                class="ea-command-palette__group"
+                [id]="listboxId + '-group-' + gi">
+                {{ group.group }}
+              </div>
+              <ul
+                class="ea-command-palette__section-list"
+                role="group"
+                [attr.aria-labelledby]="listboxId + '-group-' + gi">
+                @for (entry of group.items; track entry.item.id) {
+                  <ng-container
+                    *ngTemplateOutlet="optionTpl; context: { $implicit: entry }" />
                 }
-              </span>
-              @if (entry.item.shortcut) {
-                <kbd class="ea-command-palette__item-shortcut">
-                  {{ entry.item.shortcut }}
-                </kbd>
-              }
+              </ul>
             </li>
+          } @else {
+            @for (entry of group.items; track entry.item.id) {
+              <ng-container
+                *ngTemplateOutlet="optionTpl; context: { $implicit: entry }" />
+            }
           }
         }
       </ul>
     }
   </div>
 </dialog>
+
+<ng-template
+  #optionTpl
+  let-entry>
+  <li
+    class="ea-command-palette__item"
+    role="option"
+    [id]="itemDomId(entry.item)"
+    [attr.aria-selected]="isActive(entry.flatIndex)"
+    [class.ea-command-palette__item--active]="showActiveHighlight(entry.flatIndex)"
+    [class.ea-command-palette__item--disabled]="entry.item.disabled"
+    (click)="onItemClick(entry.item)"
+    (mouseenter)="onItemMouseEnter(entry.flatIndex)">
+    @if (entry.item.icon; as iconClass) {
+      <span
+        class="ea-command-palette__item-icon"
+        aria-hidden="true">
+        <ng-container *ngComponentOutlet="iconClass" />
+      </span>
+    }
+    <span class="ea-command-palette__item-text">
+      <span class="ea-command-palette__item-label">
+        {{ entry.item.label }}
+      </span>
+      @if (entry.item.description) {
+        <span class="ea-command-palette__item-description">
+          {{ entry.item.description }}
+        </span>
+      }
+    </span>
+    @if (entry.item.shortcut) {
+      <kbd class="ea-command-palette__item-shortcut">
+        {{ entry.item.shortcut }}
+      </kbd>
+    }
+  </li>
+</ng-template>

@@ -107,6 +107,7 @@ export interface WebMessages {
       designTokens: string;
       icons: string;
       i18n: string;
+      accessibility: string;
       components: string;
     };
     index: {
@@ -261,6 +262,21 @@ export interface WebMessages {
       frenchSpacingHeading: string;
       frenchSpacingBody: string;
       demoLocaleLabel: string;
+    };
+    accessibility: {
+      metaTitle: string;
+      metaDescription: string;
+      title: string;
+      lede: string;
+      conformanceHeading: string;
+      conformanceBody: string;
+      builtInHeading: string;
+      builtInItems: ReadonlyArray<{ title: string; body: string }>;
+      labelsHeading: string;
+      labelsBefore: string;
+      labelsAfter: string;
+      testingHeading: string;
+      testingBody: string;
     };
     component: {
       metaDescription: (name: string) => string;
@@ -743,6 +759,7 @@ export interface WebMessages {
         colDefault: string;
         colDescription: string;
         errorMessagesDescription: string;
+        ariaLabelDescription: string;
         triggerErrorLabel: string;
         requiredBadge: string;
         twoWayBadge: string;

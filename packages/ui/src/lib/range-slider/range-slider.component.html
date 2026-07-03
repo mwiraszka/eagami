@@ -21,6 +21,16 @@
   }
 
   <div class="ea-range-slider">
+    <span
+      class="ea-range-slider__thumb-label"
+      [id]="id() + '-low-label'">
+      {{ lowThumbLabel() }}
+    </span>
+    <span
+      class="ea-range-slider__thumb-label"
+      [id]="id() + '-high-label'">
+      {{ highThumbLabel() }}
+    </span>
     <div
       #trackEl
       class="ea-range-slider__track"
@@ -38,8 +48,7 @@
         role="slider"
         tabindex="0"
         [id]="id() + '-low'"
-        [attr.aria-labelledby]="label() ? id() + '-label' : null"
-        [attr.aria-label]="!label() ? (ariaLabelLow() ?? null) : null"
+        [attr.aria-labelledby]="lowThumbLabelledBy()"
         [attr.aria-valuemin]="min()"
         [attr.aria-valuemax]="clampedValue()[1]"
         [attr.aria-valuenow]="clampedValue()[0]"
@@ -59,8 +68,7 @@
         role="slider"
         tabindex="0"
         [id]="id() + '-high'"
-        [attr.aria-labelledby]="label() ? id() + '-label' : null"
-        [attr.aria-label]="!label() ? (ariaLabelHigh() ?? null) : null"
+        [attr.aria-labelledby]="highThumbLabelledBy()"
         [attr.aria-valuemin]="clampedValue()[0]"
         [attr.aria-valuemax]="max()"
         [attr.aria-valuenow]="clampedValue()[1]"

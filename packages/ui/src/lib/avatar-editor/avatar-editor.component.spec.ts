@@ -238,6 +238,80 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
+  describe('Canvas accessibility', () => {
+    it('exposes the canvas as an application described by hidden instructions', () => {
+      loadImage();
+
+      const canvas = getCanvas()!;
+      const describedBy = canvas.getAttribute('aria-describedby')!;
+      const instructions: HTMLElement | null = fixture.nativeElement.querySelector(
+        `[id="${describedBy}"]`,
+      );
+
+      expect(canvas.getAttribute('role')).toBe('application');
+      expect(instructions).toBeTruthy();
+    });
+
+    it('opens the file picker on Enter', () => {
+      loadImage();
+      const clickSpy = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', cancelable: true }),
+      );
+
+      expect(clickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('opens the file picker on Space', () => {
+      loadImage();
+      const clickSpy = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: ' ', cancelable: true }),
+      );
+
+      expect(clickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('marks the canvas wrapper busy while loading', () => {
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
+      fixture.detectChanges();
+
+      const getWrapper = (): HTMLElement =>
+        fixture.nativeElement.querySelector('.ea-avatar-editor__canvas-wrapper')!;
+
+      expect(getWrapper().getAttribute('aria-busy')).toBe('true');
+
+      triggerLoad();
+      fixture.detectChanges();
+      fixture.detectChanges();
+
+      expect(getWrapper().getAttribute('aria-busy')).toBeNull();
+    });
+
+    it('announces validation errors via the alert region', () => {
+      selectFile(makeFile('application/pdf'));
+      fixture.detectChanges();
+
+      const alert: HTMLElement = fixture.nativeElement.querySelector('[role="alert"]')!;
+
+      expect(alert.textContent!.trim()).toBe('File must be an image');
+    });
+
+    it('clears the alert region once a valid file is selected', () => {
+      selectFile(makeFile('application/pdf'));
+      fixture.detectChanges();
+
+      selectFile(makeFile('image/jpeg'));
+      fixture.detectChanges();
+
+      const alert: HTMLElement = fixture.nativeElement.querySelector('[role="alert"]')!;
+
+      expect(alert.textContent!.trim()).toBe('');
+    });
+  });
+
   describe('currentSrc loading', () => {
     it('loads image from the provided URL', () => {
       fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');

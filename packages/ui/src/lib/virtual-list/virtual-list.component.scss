@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: block;
 }
@@ -10,6 +12,11 @@
   background-color: var(--color-bg-base);
   // Isolate to its own layer to avoid full-page repaints during fast scrolls
   contain: strict;
+
+  &:focus-visible {
+    outline: none;
+    @include ea.focus-ring;
+  }
 }
 
 .ea-virtual-list__spacer {

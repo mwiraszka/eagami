@@ -17,6 +17,7 @@ const FRUITS: SelectOption[] = [
   template: `
     <ea-autocomplete
       [label]="label"
+      [ariaLabel]="ariaLabel"
       [options]="options"
       [size]="size"
       [disabled]="disabled"
@@ -26,6 +27,7 @@ const FRUITS: SelectOption[] = [
 })
 class HostComponent {
   label: string | undefined = 'Fruit';
+  ariaLabel: string | undefined = undefined;
   options: SelectOption[] = FRUITS;
   size: AutocompleteSize = 'md';
   disabled = false;
@@ -46,6 +48,17 @@ describe('AutocompleteComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with only an aria-label', async () => {
+    const el = await render(host => {
+      host.label = undefined;
+      host.ariaLabel = 'Fruit';
+    });
 
     const results = await axe(el);
 

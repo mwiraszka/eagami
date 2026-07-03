@@ -208,4 +208,49 @@ describe('CommandPaletteComponent', () => {
       expect.arrayContaining(['Ctrl+N', 'Ctrl+O', 'Ctrl+F', 'Ctrl+H']),
     );
   });
+
+  describe('Accessibility attributes', () => {
+    it('names the combobox input after its placeholder', () => {
+      const input = getSearchInput();
+
+      expect(input.getAttribute('aria-label')).toBe(input.getAttribute('placeholder'));
+      expect(input.getAttribute('aria-label')).toBeTruthy();
+    });
+
+    it('reports the listbox as expanded only while results exist', () => {
+      const input = getSearchInput();
+      expect(input.getAttribute('aria-expanded')).toBe('true');
+      expect(input.getAttribute('aria-controls')).toBeTruthy();
+
+      typeQuery('nonexistent-thing');
+
+      expect(input.getAttribute('aria-expanded')).toBe('false');
+      expect(input.getAttribute('aria-controls')).toBeNull();
+    });
+
+    it('announces the empty state via role="status"', () => {
+      typeQuery('nonexistent-thing');
+
+      const empty = fixture.nativeElement.querySelector('.ea-command-palette__empty');
+
+      expect(empty?.getAttribute('role')).toBe('status');
+    });
+
+    it('wraps each named group in a labelled role="group" section', () => {
+      const sections = Array.from(
+        (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLElement>(
+          '.ea-command-palette__section-list',
+        ),
+      );
+
+      expect(sections.map(el => el.getAttribute('role'))).toEqual(['group', 'group']);
+      sections.forEach(section => {
+        const headingId = section.getAttribute('aria-labelledby');
+        const heading = headingId ? document.getElementById(headingId) : null;
+
+        expect(heading?.classList.contains('ea-command-palette__group')).toBe(true);
+        expect(heading?.textContent?.trim()).toBeTruthy();
+      });
+    });
+  });
 });

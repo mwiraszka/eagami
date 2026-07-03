@@ -1,0 +1,76 @@
+@use 'mixins' as mixins;
+
+.ui-accessibility {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 880px;
+}
+
+.ui-accessibility__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ui-accessibility__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -1px;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.ui-accessibility__lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.ui-accessibility__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  code {
+    @include mixins.code-chip;
+    white-space: nowrap;
+  }
+}
+
+.ui-accessibility__feature-list {
+  @include mixins.card-grid;
+}
+
+.ui-accessibility__feature {
+  @include mixins.feature-card;
+
+  h3 {
+    @include mixins.feature-card-title;
+  }
+
+  p {
+    @include mixins.feature-card-body;
+  }
+}
+
+.ui-accessibility__feature-header {
+  @include mixins.feature-card-header;
+}
+
+.ui-accessibility__feature-icon {
+  @include mixins.feature-card-icon;
+}

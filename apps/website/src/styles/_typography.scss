@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 /* Inline <code> token styling. Lives global, not in component SCSS, so <code>
    injected via `[innerHTML]` from translated strings still picks it up; Angular's
    encapsulation selectors don't reach innerHTML nodes. The `pre code` exclusion
@@ -11,4 +13,11 @@
   border-radius: var(--text-code-radius);
   background-color: var(--text-code-bg);
   color: var(--text-code-color);
+}
+
+/* Prose links live global for the same reason as inline <code> above: anchors
+   injected via [innerHTML] are unreachable from component styles. :where() keeps
+   specificity at zero so any component-styled anchor still wins. */
+:where(p) > a {
+  @include mixins.prose-link;
 }

@@ -2,12 +2,12 @@ import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccordionItemComponent } from './accordion-item.component';
-import { AccordionComponent } from './accordion.component';
+import { AccordionComponent, type AccordionHeadingLevel } from './accordion.component';
 
 @Component({
   imports: [AccordionComponent, AccordionItemComponent],
   template: `
-    <ea-accordion>
+    <ea-accordion [headingLevel]="headingLevel()">
       <ea-accordion-item
         value="a"
         label="First">
@@ -24,6 +24,7 @@ import { AccordionComponent } from './accordion.component';
 })
 class HostComponent {
   bDisabled = signal(false);
+  headingLevel = signal<AccordionHeadingLevel>(3);
 }
 
 describe('AccordionItemComponent', () => {
@@ -91,6 +92,28 @@ describe('AccordionItemComponent', () => {
     fixture.detectChanges();
 
     expect(getTriggers()[1].getAttribute('aria-expanded')).toBe('false');
+  });
+
+  it('wraps each trigger in a heading with aria-level 3 by default', () => {
+    const headers = Array.from(
+      fixture.nativeElement.querySelectorAll('.ea-accordion-item__header'),
+    ) as HTMLElement[];
+
+    expect(headers.length).toBe(2);
+    expect(headers[0].getAttribute('role')).toBe('heading');
+    expect(headers[0].getAttribute('aria-level')).toBe('3');
+    expect(headers[0].contains(getTriggers()[0])).toBe(true);
+  });
+
+  it('applies the configured heading level to every item header', () => {
+    host.headingLevel.set(2);
+    fixture.detectChanges();
+
+    const headers = Array.from(
+      fixture.nativeElement.querySelectorAll('.ea-accordion-item__header'),
+    ) as HTMLElement[];
+
+    expect(headers.every(h => h.getAttribute('aria-level') === '2')).toBe(true);
   });
 
   it('wires aria-controls and aria-labelledby between trigger and panel', () => {

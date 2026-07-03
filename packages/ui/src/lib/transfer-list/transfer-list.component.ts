@@ -82,6 +82,17 @@ export class TransferListComponent {
   private readonly leftAnchor = signal<string | null>(null);
   private readonly rightAnchor = signal<string | null>(null);
 
+  // Roving tabindex: one option per pane is tabbable; arrows move it
+  private readonly leftActiveId = signal<string | null>(null);
+  private readonly rightActiveId = signal<string | null>(null);
+
+  private readonly leftActiveIndex = computed(() =>
+    this.resolveActiveIndex(this.sourceItems(), this.leftActiveId()),
+  );
+  private readonly rightActiveIndex = computed(() =>
+    this.resolveActiveIndex(this.targetItems(), this.rightActiveId()),
+  );
+
   protected readonly sourceItems = computed(() => {
     const selected = new Set(this.selectedIds());
     return this.items().filter(item => !selected.has(item.id));
@@ -151,6 +162,19 @@ export class TransferListComponent {
     return set.has(id);
   }
 
+  protected itemTabindex(
+    pane: 'source' | 'target',
+    index: number,
+    item: TransferListItem,
+  ): number {
+    if (item.disabled || this.disabled()) {
+      return -1;
+    }
+    const activeIndex =
+      pane === 'source' ? this.leftActiveIndex() : this.rightActiveIndex();
+    return index === activeIndex ? 0 : -1;
+  }
+
   protected onItemClick(
     pane: 'source' | 'target',
     item: TransferListItem,
@@ -159,6 +183,7 @@ export class TransferListComponent {
     if (this.disabled() || item.disabled) {
       return;
     }
+    this.setActive(pane, item.id);
     if (event.shiftKey) {
       this.selectRangeTo(pane, item);
     } else {
@@ -178,7 +203,67 @@ export class TransferListComponent {
       } else {
         this.toggleHighlight(pane, item);
       }
+      return;
     }
+
+    const items = pane === 'source' ? this.sourceItems() : this.targetItems();
+    const currentIndex = items.findIndex(i => i.id === item.id);
+    let nextIndex: number;
+    switch (event.key) {
+      case 'ArrowDown':
+        nextIndex = this.nextEnabledIndex(items, currentIndex, 1);
+        break;
+      case 'ArrowUp':
+        nextIndex = this.nextEnabledIndex(items, currentIndex, -1);
+        break;
+      case 'Home':
+        nextIndex = items.findIndex(i => !i.disabled);
+        break;
+      case 'End':
+        nextIndex = this.nextEnabledIndex(items, items.length, -1);
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    if (nextIndex < 0) {
+      return;
+    }
+    this.setActive(pane, items[nextIndex].id);
+    this.focusOption(event, nextIndex);
+  }
+
+  private resolveActiveIndex(
+    items: readonly TransferListItem[],
+    activeId: string | null,
+  ): number {
+    const index = items.findIndex(i => i.id === activeId && !i.disabled);
+    return index >= 0 ? index : items.findIndex(i => !i.disabled);
+  }
+
+  private nextEnabledIndex(
+    items: readonly TransferListItem[],
+    from: number,
+    step: 1 | -1,
+  ): number {
+    for (let i = from + step; i >= 0 && i < items.length; i += step) {
+      if (!items[i].disabled) {
+        return i;
+      }
+    }
+    return from >= 0 && from < items.length ? from : -1;
+  }
+
+  private setActive(pane: 'source' | 'target', id: string): void {
+    const active = pane === 'source' ? this.leftActiveId : this.rightActiveId;
+    active.set(id);
+  }
+
+  private focusOption(event: KeyboardEvent, index: number): void {
+    const list = (event.currentTarget as HTMLElement).closest('[role="listbox"]');
+    const options = list?.querySelectorAll<HTMLElement>('[role="option"]');
+    options?.[index]?.focus();
   }
 
   private toggleHighlight(pane: 'source' | 'target', item: TransferListItem): void {

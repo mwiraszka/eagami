@@ -19,8 +19,11 @@
         role="combobox"
         [attr.tabindex]="isDisabled() ? -1 : 0"
         [attr.aria-labelledby]="label() ? id() + '-label' : null"
+        [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'listbox'"
+        [attr.aria-controls]="isOpen() ? listboxId() : null"
+        [attr.aria-activedescendant]="isOpen() && !searchable() ? activeOptionId() : null"
         [attr.aria-disabled]="isDisabled() || null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
@@ -72,7 +75,6 @@
       [anchor]="triggerEl"
       [open]="isOpen()"
       placement="bottom-start"
-      role="listbox"
       [matchAnchorWidth]="true"
       [closeOnEscape]="false"
       scrollBehavior="reposition"
@@ -93,6 +95,8 @@
               autocomplete="off"
               [placeholder]="resolvedSearchPlaceholder()"
               [value]="searchTerm()"
+              [attr.aria-controls]="listboxId()"
+              [attr.aria-activedescendant]="activeOptionId()"
               (input)="onSearchInput($event)"
               (keydown)="handlePopoverKeydown($event)" />
           </div>
@@ -115,23 +119,26 @@
 
         <ul
           class="ea-multi-select__list"
-          role="presentation">
+          role="listbox"
+          aria-multiselectable="true"
+          [id]="listboxId()"
+          [attr.aria-label]="label() ?? ariaLabel() ?? null">
           @for (opt of filteredOptions(); track opt.value; let i = $index) {
             <li
               class="ea-multi-select__option"
               [class.ea-multi-select__option--focused]="focusedIndex() === i"
               [class.ea-multi-select__option--disabled]="opt.disabled"
+              [id]="id() + '-opt-' + i"
               role="option"
-              tabindex="-1"
               [attr.aria-selected]="selectedSet().has(opt.value)"
               [attr.aria-disabled]="opt.disabled || null"
-              (click)="toggleOption(opt)"
-              (keydown)="handlePopoverKeydown($event)">
+              (click)="onOptionClick(opt, i)">
               <ea-checkbox
                 size="sm"
+                inert
+                aria-hidden="true"
                 [checked]="selectedSet().has(opt.value)"
-                [disabled]="!!opt.disabled"
-                [ariaLabel]="opt.label" />
+                [disabled]="!!opt.disabled" />
               <span class="ea-multi-select__option-label">
                 {{ opt.label }}
               </span>

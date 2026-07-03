@@ -59,7 +59,7 @@ Dependabot PRs aren't merged directly. When cutting a release branch, locally pu
 ## Pull requests
 
 - Title is the branch name (e.g. `website-v1.3.0`, `ui-v1.3.0-website-v1.2.5`)
-- Body left empty; the CHANGELOG entry is the source of truth
+- Body is the release notes: paste the version's CHANGELOG entries verbatim (both entries for a combined `ui-v...-website-v*` PR, each under its own heading)
 - CI must be green before merge
 
 ## Adding a new component
@@ -72,10 +72,11 @@ Use this checklist when creating a brand-new component. Skip nothing — partial
 - [ ] Standalone component with `ChangeDetectionStrategy.OnPush`
 - [ ] Inputs/outputs as signals (`input()`, `model()`, `output()`); reach for RxJS only when streams are genuinely needed
 - [ ] If form-like (exposes `errorMsg` / `hint`): follow the field-message pattern in [InputComponent](packages/ui/src/lib/input/input.component.ts) (icon + `role="alert"`, `var(--text-helper-*)` typography, `var(--color-error-default)` colour)
+- [ ] Implement the matching [WAI-ARIA APG pattern](https://www.w3.org/WAI/ARIA/apg/patterns/): correct roles/states/properties, full keyboard support (roving tabindex, arrows with RTL awareness, Home/End, Escape, Enter/Space), focus trapping and restoration for modal surfaces, live regions for async and validation state, `aria-hidden` on decorative elements, and an accessible name for every interactive element (localized defaults for built-in controls, an `aria-label` input for consumer-named ones)
 - [ ] No hard-coded color literals in `.scss`; tokens only (`packages/ui/src/styles/tokens/_colors.scss`)
 - [ ] Add `<slug>.component.stories.ts` — cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
 - [ ] Add `<slug>.component.spec.ts` — interaction tests, ARIA assertions, edge cases. No `any` casts
-- [ ] Add `<slug>.component.a11y.spec.ts` — `jest-axe` snapshot for each meaningful rendered state (default, error, disabled, expanded)
+- [ ] Add `<slug>.component.a11y.spec.ts` with `vitest-axe` assertions for each meaningful rendered state (default, error, disabled, expanded)
 - [ ] Export from `packages/ui/src/public-api.ts` in alphabetical order
 - [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook` — all must pass
 
@@ -84,7 +85,7 @@ Use this checklist when creating a brand-new component. Skip nothing — partial
 - [ ] Add an entry to `apps/website/src/app/data/ui-components.ts` (alphabetical by slug)
 - [ ] Add the route in `apps/website/src/app/app.routes.ts` under `ui/components/<slug>` with `loadComponent` pointing at the per-component page
 - [ ] Create `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.{ts,html,scss}` (selector `web-<slug>-demo-page`) demonstrating every variant
-- [ ] All demo strings go through i18n in all five locales (en, fr, de, es, pl)
+- [ ] All demo strings go through i18n in every locale file under `apps/website/src/app/i18n/messages/` (the set grows over time; mirror whatever `*.ts` files exist)
 - [ ] Run `pnpm website build` and visit `http://localhost:4444/ui/components/<slug>` to verify the demo renders in light and dark mode
 
 **Release**
@@ -99,9 +100,11 @@ Three surfaces stay in sync:
 
 1. The component at `packages/ui/src/lib/<name>/`
 2. Stories at `<name>.component.stories.ts` (cover new variants and inputs)
-3. The website's per-component demo at `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.html` (add a demo per variant, with i18n strings in all five locales)
+3. The website's per-component demo at `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.html` (add a demo per variant, with i18n strings in every locale file)
 
 Tests live alongside as `<name>.component.spec.ts` and `<name>.component.a11y.spec.ts`. For accessibility, ARIA, and form-field plumbing patterns, follow [InputComponent](packages/ui/src/lib/input/input.component.ts) and [DropdownComponent](packages/ui/src/lib/dropdown/dropdown.component.ts).
+
+Accessibility is release-blocking: changes must keep the component conformant with WCAG 2.2 AA and its WAI-ARIA APG pattern, and the axe suites must stay green. Anything that alters roles, names, keyboard behavior, or announcements needs a matching update to the README's Accessibility section and the website's accessibility page if it affects the claims made there.
 
 ## Code conventions
 

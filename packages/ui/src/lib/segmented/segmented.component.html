@@ -31,7 +31,7 @@
         [attr.aria-checked]="isSelected(option)"
         [attr.aria-disabled]="isOptionDisabled(option) || null"
         [disabled]="isOptionDisabled(option)"
-        [attr.tabindex]="isSelected(option) || (!value() && i === 0) ? 0 : -1"
+        [attr.tabindex]="i === tabStopIndex() ? 0 : -1"
         (click)="select(option)"
         (keydown)="handleKeydown($event, i)">
         {{ option.label }}

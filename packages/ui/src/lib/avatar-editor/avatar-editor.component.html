@@ -9,6 +9,18 @@
     [accept]="accept()"
     (change)="onFileSelected($event)" />
 
+  <span
+    class="ea-avatar-editor__visually-hidden"
+    [id]="instructionsId">
+    {{ i18n.messages().avatarEditor.canvasInstructions }}
+  </span>
+
+  <span
+    class="ea-avatar-editor__visually-hidden"
+    role="alert">
+    {{ lastError() }}
+  </span>
+
   @if (!hasImage() && !isLoading()) {
     <button
       type="button"
@@ -31,6 +43,7 @@
       class="ea-avatar-editor__canvas-wrapper"
       [style.width.px]="canvasSize()"
       [style.height.px]="canvasSize()"
+      [attr.aria-busy]="isLoading() || null"
       (dragover)="onDragOver($event)"
       (dragleave)="onDragLeave($event)"
       (drop)="onDrop($event)">
@@ -45,9 +58,10 @@
         <canvas
           #canvasEl
           class="ea-avatar-editor__canvas"
-          role="img"
+          role="application"
           tabindex="0"
           [attr.aria-label]="i18n.messages().avatarEditor.canvas"
+          [attr.aria-describedby]="instructionsId"
           [style.display]="isLoading() ? 'none' : 'block'"
           [width]="canvasSize()"
           [height]="canvasSize()"

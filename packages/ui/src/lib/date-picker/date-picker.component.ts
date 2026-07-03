@@ -157,6 +157,12 @@ export class DatePickerComponent implements ControlValueAccessor {
     () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
   );
 
+  readonly dialogId = computed(() => `${this.id()}-dialog`);
+
+  readonly triggerLabelledBy = computed(() =>
+    this.label() ? `${this.id()}-label ${this.id()}` : null,
+  );
+
   readonly triggerClasses = computed(() => ({
     [`ea-date-picker__trigger--${this.size()}`]: true,
     'ea-date-picker__trigger--error': this.hasError(),
@@ -333,6 +339,9 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   selectDay(day: CalendarDay): void {
     if (day.isDisabled) {
+      // aria-disabled days still take DOM focus on click, so the roving state
+      // must follow or keyboard navigation resumes from the wrong cell
+      this.focusedDate.set(this.startOfDay(day.date));
       return;
     }
     const date = this.startOfDay(day.date);
@@ -484,6 +493,7 @@ export class DatePickerComponent implements ControlValueAccessor {
       this.focusedDate.set(next);
       this.viewYear.set(next.getFullYear());
       this.viewMonth.set(next.getMonth());
+      afterNextRender(() => this.focusFocusedDayCell(), { injector: this.injector });
     }
   }
 

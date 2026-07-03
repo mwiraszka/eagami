@@ -27,6 +27,7 @@
       [readOnly]="readonly()"
       [required]="required()"
       [value]="value()"
+      [attr.aria-label]="label() ? null : ariaLabel()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
       [attr.aria-autocomplete]="'list'"
@@ -54,6 +55,7 @@
     [open]="showList()"
     placement="bottom-start"
     role="listbox"
+    [aria-label]="label() ?? ariaLabel()"
     [surfaceId]="id() + '-listbox'"
     [matchAnchorWidth]="true"
     [closeOnEscape]="false"
@@ -79,7 +81,7 @@
       @if (showEmpty()) {
         <div
           class="ea-autocomplete__empty"
-          role="presentation">
+          role="status">
           {{ resolvedEmptyMessage() }}
         </div>
       }

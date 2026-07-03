@@ -174,6 +174,7 @@ export const zhCN: WebMessages = {
       designTokens: '设计令牌',
       icons: '图标',
       i18n: '国际化',
+      accessibility: '无障碍',
       components: '组件',
     },
     index: {
@@ -198,7 +199,7 @@ export const zhCN: WebMessages = {
         },
         {
           title: '本地化',
-          body: '内建组件文本提供15 种语言版本。',
+          body: '内建组件文本提供所有受支持语言的版本。',
         },
         {
           title: '现代',
@@ -369,6 +370,51 @@ export const zhCN: WebMessages = {
       frenchSpacingBody:
         '法语排版要求在 <code>? ! : ; »</code> 前以及 <code>«</code> 后使用窄不间断空格。导出的 <code>frenchSpacing()</code> 助手会转换你自己的法语字符串中的普通空格（库会在内部处理其捆绑的法语消息）。',
       demoLocaleLabel: '语言',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | 无障碍',
+      metaDescription:
+        'WCAG 2.2 AA 符合性、完整的键盘支持和对屏幕阅读器友好的组件，每次发布都经过验证。',
+      title: '无障碍',
+      lede: '每个组件都按照领先的网页无障碍标准构建：正确的语义、完整的键盘支持、焦点管理和屏幕阅读器播报开箱即用。',
+      conformanceHeading: '符合性',
+      conformanceBody:
+        '库符合 <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>，这是大多数组织必须满足的标准，并为每一种控件遵循官方的 W3C 创作实践，从对话框、菜单到滑块和日期选择器无一例外。屏幕阅读器播报覆盖每一种受支持的语言，因此辅助技术始终说用户的语言。',
+      builtInHeading: '内建无障碍',
+      builtInItems: [
+        {
+          title: '语义',
+          body: '尽可能使用原生元素，无法使用时则显式声明 ARIA 角色、状态和属性。expanded、selected、checked、invalid、busy 等状态始终以编程方式暴露，绝不仅靠样式表达。',
+        },
+        {
+          title: '键盘支持',
+          body: '完整的 APG 键盘模式：漫游 tabindex、方向键导航、Home 和 End、Escape 关闭，以及 Enter 或空格键激活，方向键处理支持 RTL。',
+        },
+        {
+          title: '焦点管理',
+          body: '模态框和选择器打开时会捕获焦点，关闭时将焦点返还给触发器。焦点指示器始终可见，绝不会被隐藏。',
+        },
+        {
+          title: '屏幕阅读器播报',
+          body: '轻提示、警示、验证错误和异步状态变化都会通过实时区域以合适的播报级别进行播报。',
+        },
+        {
+          title: '减少动效',
+          body: '动画全程遵循 prefers-reduced-motion 媒体查询。',
+        },
+        {
+          title: '对比度',
+          body: '默认的浅色和深色主题满足 WCAG 对比度要求，主题工具会标记低于 AA 的组合。',
+        },
+      ],
+      labelsHeading: '无障碍名称',
+      labelsBefore:
+        '渲染文本的组件会自行提供标签。任何纯图标或图形化的组件都会暴露一个 <code>aria-label</code> 输入（清除、关闭、消除等内建控件带有本地化默认值），表单字段会自动通过 <code>aria-describedby</code> 将 <code>label</code>、提示和错误消息关联到控件。',
+      labelsAfter:
+        '为没有可见文本的控件提供 <code>label</code> 或 <code>aria-label</code>，其余的交给组件处理：名称、提示和错误消息会自动保持关联。',
+      testingHeading: '每次发布都经过验证',
+      testingBody:
+        '每个组件在每次变更时都会依据行业无障碍规则进行检查，只有当所有检查都通过时版本才会发布，因此你在这里看到的无障碍能力会随着库的演进持续保持。',
     },
     component: {
       metaDescription: name => `${name} 组件参考与实时演示。`,
@@ -857,6 +903,7 @@ export const zhCN: WebMessages = {
         colDescription: '描述',
         errorMessagesDescription:
           '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
+        ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
         triggerErrorLabel: '触发错误',
         requiredBadge: '必填',
         twoWayBadge: '双向',
@@ -1084,6 +1131,7 @@ export const zhCN: WebMessages = {
           },
           accordion: {
             multi: '允许同时展开多个项。',
+            headingLevel: '应用于每个项页眉的标题级别（1-6），使手风琴融入页面大纲。',
           },
           alert: {
             dismissible: '显示一个关闭按钮，让用户可以关闭提示。',
@@ -1572,6 +1620,7 @@ export const zhCN: WebMessages = {
           popover: {
             anchor: '浮层据以定位的宿主元素或 ElementRef。',
             ariaLabel: '浮层表面的无障碍标签；当浮层不含可见标题时请提供一个。',
+            ariaLabelledby: '为浮层表面提供标签的元素 id，会作为 aria-labelledby 转发。',
             clamp: '当浮层本会溢出时将其钳制在视口内。',
             closeOnEscape: '按下 Escape 时关闭浮层。',
             closeOnOutsideClick: '当用户在浮层及其锚点之外点击时关闭浮层。',
@@ -1584,6 +1633,7 @@ export const zhCN: WebMessages = {
             scrollBehavior:
               '浮层打开时对滚动和缩放事件的响应方式：reposition、close 或 ignore。',
             surfaceId: '浮层表面的 DOM id，供触发器元素通过 aria-controls 使用。',
+            trapFocus: '打开时让 Tab 和 Shift+Tab 在浮层表面内循环，用于对话框式浮层。',
             closeRequested: '当浮层请求关闭时触发；父级应将其映射到 [open]。',
           },
           'accordion-item': {

@@ -224,6 +224,10 @@
     transform: translate(-50%, -50%);
   }
 
+  &__sv-status {
+    @include ea.visually-hidden;
+  }
+
   &__slider-row {
     display: flex;
     align-items: center;

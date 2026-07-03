@@ -226,6 +226,11 @@ export class ColorPickerComponent implements ControlValueAccessor {
   /** Uppercase label for the format toggle, e.g. `HEX`. */
   readonly formatLabel = computed(() => this.activeFormat().toUpperCase());
 
+  /** Accessible name for the format toggle; includes the visible format text. */
+  readonly formatToggleLabel = computed(
+    () => `${this.i18n.messages().colorPicker.toggleFormat}: ${this.formatLabel()}`,
+  );
+
   readonly displayValue = computed(() => {
     if (this.value() === null) {
       return '';
@@ -235,6 +240,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   readonly resolvedPlaceholder = computed(
     () => this.placeholder() ?? this.i18n.messages().colorPicker.placeholder,
+  );
+
+  readonly popoverId = computed(() => `${this.id()}-popover`);
+
+  readonly triggerLabelledBy = computed(() =>
+    this.label() ? `${this.id()}-label ${this.id()}` : null,
   );
 
   readonly triggerClasses = computed(() => ({
@@ -353,6 +364,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly alphaPointerLeft = computed(() => `${this.alpha() * 100}%`);
   readonly hueRounded = computed(() => Math.round(this.hue()));
   readonly alphaPercentRounded = computed(() => Math.round(this.alpha() * 100));
+  readonly satPercent = computed(() => Math.round(this.sat() * 100));
+  readonly valPercent = computed(() => Math.round(this.val() * 100));
 
   onSvPointerDown(event: PointerEvent): void {
     if (this.isDisabled() || this.readonly()) {

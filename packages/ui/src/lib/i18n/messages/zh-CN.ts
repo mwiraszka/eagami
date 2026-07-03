@@ -12,6 +12,8 @@ const messages: EagamiMessages = {
     upload: '上传图片',
     dropzone: '拖放图片或点击上传',
     canvas: '图片预览，拖动或使用方向键平移，使用滑块缩放',
+    canvasInstructions:
+      '使用方向键移动图片，加号和减号缩放，按 Enter 或空格键选择其他照片',
     change: '更换照片',
     revert: '恢复原图',
     zoomOut: '缩小',
@@ -39,6 +41,8 @@ const messages: EagamiMessages = {
     clear: '清除颜色',
     hue: '色相',
     saturationAndValue: '饱和度和明度',
+    saturationAndValueStatus: (saturation, value) =>
+      `饱和度 ${saturation}%，明度 ${value}%`,
     alpha: '透明度',
     eyedropper: '从屏幕取色',
     presets: '预设',
@@ -54,6 +58,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: '选择日期…',
+    dialogLabel: '选择日期',
     clear: '清除日期',
     previousYear: '上一年',
     previousMonth: '上个月',
@@ -126,6 +131,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: '进度',
   },
+  rangeSlider: {
+    lowThumbLabel: '最小值',
+    highThumbLabel: '最大值',
+  },
   rating: {
     label: '评分',
     valueLabel: (value, max) => `${value} / ${max}`,
@@ -135,13 +144,16 @@ const messages: EagamiMessages = {
     label: '加载中',
   },
   stepper: {
+    stepsLabel: '步骤',
     optional: '可选',
+    stepCompleted: '已完成',
   },
   tag: {
     remove: '移除',
   },
   timePicker: {
     placeholder: '选择时间…',
+    dialogLabel: '选择时间',
     clear: '清除时间',
     hoursLabel: '时',
     minutesLabel: '分',

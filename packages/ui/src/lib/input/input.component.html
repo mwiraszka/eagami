@@ -59,7 +59,8 @@
         type="button"
         class="ea-input-wrapper__clear"
         [attr.aria-label]="i18n.messages().input.clear"
-        (mousedown)="clear($event)">
+        (mousedown)="onClearMousedown($event)"
+        (click)="clear()">
         <ea-icon-x class="ea-input-wrapper__clear-icon" />
       </button>
     }

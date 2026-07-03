@@ -1,5 +1,6 @@
 import {
   AccordionComponent,
+  type AccordionHeadingLevel,
   AccordionItemComponent,
   ButtonComponent,
   CheckboxComponent,
@@ -33,6 +34,7 @@ interface AccordionKnobState {
   // KnobState input; the explicit field below still drives the checked binding.
   [key: string]: KnobValue;
   multi: boolean;
+  headingLevel: AccordionHeadingLevel;
 }
 
 const SLUG = 'accordion';

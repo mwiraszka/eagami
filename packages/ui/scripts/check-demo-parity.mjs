@@ -33,6 +33,8 @@ const RELATED_SLUGS = {
 // event outputs. Listing them keeps the "missing knob" advisory signal honest.
 const KNOB_EXEMPT = new Set([
   'errorMessages',
+  'ariaLabel',
+  'ariaLabelledby',
   'cellTemplate',
   'columns',
   'rows',
@@ -150,7 +152,7 @@ for (const slug of apiSlugs) {
   const apiMethodNames = new Set(api.methods.map(m => m.name));
 
   for (const p of api.inputs) {
-    if (!desc.has(p.name) && p.name !== 'errorMessages') {
+    if (!desc.has(p.name) && p.name !== 'errorMessages' && p.name !== 'ariaLabel') {
       missingDesc.push({ slug, kind: 'input', name: p.name });
     }
     if (!knob.all.has(p.name) && !KNOB_EXEMPT.has(p.name) && p.type !== 'TemplateRef') {

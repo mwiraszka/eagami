@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   type ElementRef,
   computed,
   forwardRef,
@@ -83,8 +84,15 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
 
+  private typeaheadQuery = '';
+  private typeaheadTimer: ReturnType<typeof setTimeout> | undefined;
+
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
+
+  constructor() {
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.typeaheadTimer));
+  }
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
@@ -105,6 +113,10 @@ export class DropdownComponent implements ControlValueAccessor {
   /** Placeholder text, falling back to the active locale's translation. */
   readonly resolvedPlaceholder = computed(
     () => this.placeholder() ?? this.i18n.messages().dropdown.placeholder,
+  );
+
+  readonly triggerLabelledBy = computed(() =>
+    this.label() ? `${this.id()}-label ${this.id()}` : null,
   );
 
   readonly triggerClasses = computed(() => ({
@@ -162,6 +174,8 @@ export class DropdownComponent implements ControlValueAccessor {
   close(): void {
     this.isOpen.set(false);
     this.focusedIndex.set(-1);
+    this.typeaheadQuery = '';
+    clearTimeout(this.typeaheadTimer);
   }
 
   /** Moves keyboard focus to the dropdown trigger. */
@@ -181,18 +195,16 @@ export class DropdownComponent implements ControlValueAccessor {
     }
 
     switch (event.key) {
-      case 'Enter':
       case ' ':
-        event.preventDefault();
-        if (this.isOpen()) {
-          const opts = this.options();
-          const idx = this.focusedIndex();
-          if (idx >= 0 && idx < opts.length && !opts[idx].disabled) {
-            this.select(opts[idx]);
-          }
+        // Space extends an in-progress typeahead query instead of selecting
+        if (this.typeaheadQuery) {
+          this.handleTypeahead(event);
         } else {
-          this.toggle();
+          this.selectFocusedOrOpen(event);
         }
+        break;
+      case 'Enter':
+        this.selectFocusedOrOpen(event);
         break;
       case 'ArrowDown':
         event.preventDefault();
@@ -215,6 +227,79 @@ export class DropdownComponent implements ControlValueAccessor {
           this.elRef()?.nativeElement.focus();
         }
         break;
+      case 'Home':
+        event.preventDefault();
+        if (!this.isOpen()) {
+          this.toggle();
+        }
+        this.focusEdge(1);
+        break;
+      case 'End':
+        event.preventDefault();
+        if (!this.isOpen()) {
+          this.toggle();
+        }
+        this.focusEdge(-1);
+        break;
+      default:
+        this.handleTypeahead(event);
+        break;
+    }
+  }
+
+  private selectFocusedOrOpen(event: KeyboardEvent): void {
+    event.preventDefault();
+    if (this.isOpen()) {
+      const opts = this.options();
+      const idx = this.focusedIndex();
+      if (idx >= 0 && idx < opts.length && !opts[idx].disabled) {
+        this.select(opts[idx]);
+      }
+    } else {
+      this.toggle();
+    }
+  }
+
+  private focusEdge(direction: 1 | -1): void {
+    const opts = this.options();
+    let idx = direction === 1 ? 0 : opts.length - 1;
+    while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
+      idx += direction;
+    }
+    if (idx >= 0 && idx < opts.length) {
+      this.focusedIndex.set(idx);
+    }
+  }
+
+  private handleTypeahead(event: KeyboardEvent): void {
+    if (event.key.length !== 1 || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    if (this.typeaheadTimer !== undefined) {
+      clearTimeout(this.typeaheadTimer);
+    }
+    this.typeaheadTimer = setTimeout(() => (this.typeaheadQuery = ''), 500);
+    this.typeaheadQuery += event.key.toLowerCase();
+    const wasOpen = this.isOpen();
+    if (!wasOpen) {
+      this.toggle();
+    }
+    const opts = this.options();
+    if (opts.length === 0) {
+      return;
+    }
+    const start = Math.max(this.focusedIndex(), 0);
+    // A repeated first character cycles matches while open; a growing query or a
+    // just-opened list starts the scan at the current focus
+    const firstOffset = this.typeaheadQuery.length > 1 || !wasOpen ? 0 : 1;
+    for (let offset = firstOffset; offset <= opts.length; offset++) {
+      const idx = (start + offset) % opts.length;
+      const opt = opts[idx];
+      if (!opt.disabled && opt.label.toLowerCase().startsWith(this.typeaheadQuery)) {
+        this.focusedIndex.set(idx);
+        return;
+      }
     }
   }
 

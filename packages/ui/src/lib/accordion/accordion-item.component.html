@@ -2,19 +2,24 @@
   class="ea-accordion-item"
   [class.ea-accordion-item--expanded]="isExpanded()"
   [class.ea-accordion-item--disabled]="disabled()">
-  <button
-    class="ea-accordion-item__trigger"
-    type="button"
-    [id]="id() + '-trigger'"
-    [attr.aria-expanded]="isExpanded()"
-    [attr.aria-controls]="id() + '-content'"
-    [disabled]="disabled()"
-    (click)="toggle()">
-    <span class="ea-accordion-item__label">{{ label() }}</span>
-    <ea-icon-chevron-down
-      class="ea-accordion-item__chevron"
-      aria-hidden="true" />
-  </button>
+  <div
+    class="ea-accordion-item__header"
+    role="heading"
+    [attr.aria-level]="headingLevel()">
+    <button
+      class="ea-accordion-item__trigger"
+      type="button"
+      [id]="id() + '-trigger'"
+      [attr.aria-expanded]="isExpanded()"
+      [attr.aria-controls]="id() + '-content'"
+      [disabled]="disabled()"
+      (click)="toggle()">
+      <span class="ea-accordion-item__label">{{ label() }}</span>
+      <ea-icon-chevron-down
+        class="ea-accordion-item__chevron"
+        aria-hidden="true" />
+    </button>
+  </div>
   @if (isExpanded()) {
     <div
       class="ea-accordion-item__content"

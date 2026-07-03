@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.0.0
-source: '@eagami/ui@5.0.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-01
+version: 5.1.0
+source: '@eagami/ui@5.1.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-02
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -2741,6 +2741,8 @@ export function frenchSpacing(text: string): string {
 ---
 
 ## 7. Accessibility requirements
+
+The upstream library adheres to WCAG 2.2 Level AA and implements the matching [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) pattern per widget; see [eagami.com/ui/accessibility](https://eagami.com/ui/accessibility). A React port must preserve that bar: everything below is a requirement, not a suggestion.
 
 - **Semantics:** Use the right element. Buttons are `<button>`, links are `<a href>`, form fields use `<input>` / `<textarea>` / `<select>` with associated `<label>`. Icon-only buttons require `aria-label`.
 - **Contrast:** Token combinations pre-tested for WCAG AA:

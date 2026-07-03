@@ -124,8 +124,11 @@ export class ApiReferenceComponent {
     if (described) {
       return described;
     }
-    // Every form control exposes the same errorMessages input, so it shares one
-    // description rather than repeating it in every component's dictionary.
-    return key === 'errorMessages' ? playground.errorMessagesDescription : '';
+    // errorMessages and ariaLabel appear on many components with identical
+    // meaning, so each shares one description rather than repeating it per slug
+    if (key === 'errorMessages') {
+      return playground.errorMessagesDescription;
+    }
+    return key === 'ariaLabel' ? playground.ariaLabelDescription : '';
   }
 }

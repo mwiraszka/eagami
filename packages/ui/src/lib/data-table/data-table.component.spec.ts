@@ -34,6 +34,12 @@ describe('DataTableComponent', () => {
     );
   }
 
+  function getSortButtons(): HTMLButtonElement[] {
+    return Array.from(
+      fixture.nativeElement.querySelectorAll('.ea-data-table__sort-button'),
+    );
+  }
+
   function getBodyRows(): HTMLElement[] {
     return Array.from(
       fixture.nativeElement.querySelectorAll(
@@ -116,6 +122,15 @@ describe('DataTableComponent', () => {
       expect(getEmptyRow()!.textContent).toContain('Nothing here');
     });
 
+    it('announces the empty state via role="status"', () => {
+      fixture.componentRef.setInput('data', []);
+      fixture.detectChanges();
+
+      const status = getEmptyRow()!.querySelector('[role="status"]');
+
+      expect(status?.textContent).toContain('No data available');
+    });
+
     it('sets colspan on empty row to match column count', () => {
       fixture.componentRef.setInput('data', []);
       fixture.detectChanges();
@@ -194,7 +209,7 @@ describe('DataTableComponent', () => {
     });
 
     it('sorts ascending on first click', () => {
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       const names = getBodyRows().map(r => getCellsInRow(r)[1].textContent?.trim());
@@ -203,17 +218,17 @@ describe('DataTableComponent', () => {
     });
 
     it('sets aria-sort to ascending after first click', () => {
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       expect(getHeaderCells()[1].getAttribute('aria-sort')).toBe('ascending');
     });
 
     it('sorts descending on second click', () => {
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       const names = getBodyRows().map(r => getCellsInRow(r)[1].textContent?.trim());
@@ -222,23 +237,23 @@ describe('DataTableComponent', () => {
     });
 
     it('sets aria-sort to descending after second click', () => {
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       expect(getHeaderCells()[1].getAttribute('aria-sort')).toBe('descending');
     });
 
     it('clears sort on third click', () => {
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       const names = getBodyRows().map(r => getCellsInRow(r)[1].textContent?.trim());
@@ -247,7 +262,7 @@ describe('DataTableComponent', () => {
     });
 
     it('sorts numerically for number columns', () => {
-      getHeaderCells()[2].click();
+      getSortButtons()[2].click();
       fixture.detectChanges();
 
       const ages = getBodyRows().map(r => getCellsInRow(r)[2].textContent?.trim());
@@ -259,7 +274,7 @@ describe('DataTableComponent', () => {
       const spy = vi.fn();
       component.sorted.subscribe(spy);
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
 
       expect(spy).toHaveBeenCalledWith<[DataTableSortState]>({
         column: 'name',
@@ -268,16 +283,16 @@ describe('DataTableComponent', () => {
     });
 
     it('updates sort model on header click', () => {
-      getHeaderCells()[0].click();
+      getSortButtons()[0].click();
 
       expect(component.sort()).toEqual({ column: 'id', direction: 'asc' });
     });
 
     it('switches column when clicking a different sortable header', () => {
-      getHeaderCells()[0].click();
+      getSortButtons()[0].click();
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       expect(component.sort()).toEqual({ column: 'name', direction: 'asc' });
@@ -294,22 +309,28 @@ describe('DataTableComponent', () => {
       getHeaderCells()[0].click();
       fixture.detectChanges();
 
+      expect(getSortButtons()).toHaveLength(0);
       expect(component.sort().direction).toBeNull();
     });
   });
 
   describe('Keyboard', () => {
-    it('toggles sort on Enter key for sortable header', () => {
-      const header = getHeaderCells()[1];
+    it('renders each sortable header label inside a native button', () => {
+      const buttons = getSortButtons();
 
-      header.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
-      fixture.detectChanges();
-
-      expect(component.sort()).toEqual({ column: 'name', direction: 'asc' });
+      expect(buttons).toHaveLength(3);
+      buttons.forEach(button => {
+        expect(button.getAttribute('type')).toBe('button');
+      });
+      expect(buttons[1].textContent).toContain('Name');
     });
 
-    it('sets tabindex 0 on sortable headers', () => {
-      expect(getHeaderCells()[0].getAttribute('tabindex')).toBe('0');
+    it('does not make the header cell itself focusable', () => {
+      expect(getHeaderCells()[0].getAttribute('tabindex')).toBeNull();
+    });
+
+    it('keeps the sort button in the natural tab order outside grid mode', () => {
+      expect(getSortButtons()[0].getAttribute('tabindex')).toBeNull();
     });
 
     it('does not set tabindex on non-sortable headers', () => {
@@ -333,7 +354,7 @@ describe('DataTableComponent', () => {
       fixture.componentRef.setInput('data', dataWithNull);
       fixture.detectChanges();
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       expect(getBodyRows()).toHaveLength(3);
@@ -342,7 +363,7 @@ describe('DataTableComponent', () => {
     it('does not mutate original data array when sorting', () => {
       const original = [...testData];
 
-      getHeaderCells()[1].click();
+      getSortButtons()[1].click();
       fixture.detectChanges();
 
       expect(testData).toEqual(original);

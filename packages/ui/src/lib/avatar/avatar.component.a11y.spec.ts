@@ -43,6 +43,14 @@ describe('AvatarComponent a11y', () => {
     expect(results).toHaveNoViolations();
   });
 
+  it('has no detectable violations when decorative with no accessible name', async () => {
+    const el = await render(host => (host.alt = ''));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
   it('has no detectable violations with initials', async () => {
     const el = await render(host => (host.initials = 'MW'));
 

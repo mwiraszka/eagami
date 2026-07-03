@@ -31,6 +31,7 @@ export class AccordionItemComponent {
   readonly id = input<string>(uniqueId('ea-accordion-item'));
 
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
+  readonly headingLevel = computed(() => this.accordion.headingLevel());
 
   toggle(): void {
     if (this.disabled()) {

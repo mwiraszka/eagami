@@ -375,4 +375,37 @@ describe('PaginatorComponent', () => {
       expect(getRangeLabel()).toBe('91–95 of 95');
     });
   });
+
+  describe('A11y', () => {
+    it('pairs the page-size label and select via a unique generated id', () => {
+      const second = TestBed.createComponent(PaginatorComponent);
+      second.componentRef.setInput('totalItems', 100);
+      second.detectChanges();
+
+      const firstLabel: HTMLLabelElement =
+        fixture.nativeElement.querySelector('.ea-paginator__label');
+      const firstSelect = getSelect()!;
+      const secondSelect: HTMLSelectElement = second.nativeElement.querySelector(
+        '.ea-paginator__select',
+      );
+
+      expect(firstSelect.id).toBeTruthy();
+      expect(firstLabel.htmlFor).toBe(firstSelect.id);
+      expect(secondSelect.id).not.toBe(firstSelect.id);
+    });
+
+    it('hides the ellipsis from assistive technology', () => {
+      fixture.componentRef.setInput('totalItems', 200);
+      fixture.detectChanges();
+
+      expect(getEllipses()[0].getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('announces range changes via a polite live region', () => {
+      const range: HTMLElement =
+        fixture.nativeElement.querySelector('.ea-paginator__range');
+
+      expect(range.getAttribute('aria-live')).toBe('polite');
+    });
+  });
 });

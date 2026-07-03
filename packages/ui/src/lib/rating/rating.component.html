@@ -4,7 +4,7 @@
   @if (label(); as labelText) {
     <ea-field-label
       [text]="labelText"
-      [forId]="id()"
+      [labelId]="id() + '-label'"
       [required]="required()" />
   }
 
@@ -15,12 +15,14 @@
     tabindex="0"
     [id]="id()"
     [attr.aria-label]="resolvedAriaLabel()"
-    [attr.aria-valuemin]="0"
+    [attr.aria-valuemin]="min()"
     [attr.aria-valuemax]="max()"
     [attr.aria-valuenow]="value()"
     [attr.aria-valuetext]="starAriaLabel(value())"
     [attr.aria-readonly]="readonly() ? true : null"
     [attr.aria-disabled]="isDisabled() ? true : null"
+    [attr.aria-required]="required() || null"
+    [attr.aria-invalid]="hasError() || null"
     [attr.aria-describedby]="describedBy()"
     (keydown)="onKeydown($event)"
     (focus)="onFocus()"

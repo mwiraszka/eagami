@@ -291,6 +291,28 @@ describe('CodeInputComponent', () => {
         fixture.nativeElement.querySelector('.ea-field-messages__message--hint'),
       ).toBeNull();
     });
+
+    it('links every digit input to the error message via aria-describedby', () => {
+      fixture.componentRef.setInput('id', 'code');
+      fixture.componentRef.setInput('errorMsg', 'Invalid code');
+
+      fixture.detectChanges();
+
+      getDigitInputs().forEach(input => {
+        expect(input.getAttribute('aria-describedby')).toBe('code-error');
+      });
+    });
+
+    it('links every digit input to the hint via aria-describedby when no error', () => {
+      fixture.componentRef.setInput('id', 'code');
+      fixture.componentRef.setInput('hint', 'Check your email');
+
+      fixture.detectChanges();
+
+      getDigitInputs().forEach(input => {
+        expect(input.getAttribute('aria-describedby')).toBe('code-hint');
+      });
+    });
   });
 
   describe('Programmatic focus', () => {

@@ -54,6 +54,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   private readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
+  /** Accessible name for the input and suggestion list when no visible label is provided. */
+  readonly ariaLabel = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
   readonly options = input<SelectOption[]>([]);
   readonly size = input<AutocompleteSize>('md');
@@ -259,5 +261,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
       return;
     }
     this.focusedIndex.set(idx);
+    document
+      .getElementById(`${this.id()}-option-${idx}`)
+      ?.scrollIntoView({ block: 'nearest' });
   }
 }

@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 
+/** Heading level exposed by each item's header for assistive technology. */
+export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
 /**
  * Container for expandable content sections. By default only one item can be
  * open at a time; set `multi` to allow several to stay expanded together.
@@ -13,6 +16,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 })
 export class AccordionComponent {
   readonly multi = input<boolean>(false);
+  /** Heading level (1-6) applied to every item's header wrapper. */
+  readonly headingLevel = input<AccordionHeadingLevel>(3);
 
   readonly expandedItems = signal<Set<string>>(new Set());
 

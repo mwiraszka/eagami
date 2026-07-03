@@ -14,6 +14,7 @@
       class="ea-dropdown__trigger"
       [ngClass]="triggerClasses()"
       [id]="id()"
+      role="combobox"
       [disabled]="isDisabled()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
@@ -21,7 +22,7 @@
       [attr.aria-activedescendant]="
         isOpen() && focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
       "
-      [attr.aria-labelledby]="label() ? id() + '-label' : null"
+      [attr.aria-labelledby]="triggerLabelledBy()"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
@@ -45,13 +46,15 @@
       placement="bottom-start"
       role="listbox"
       [surfaceId]="id() + '-listbox'"
+      [aria-label]="label()"
       [matchAnchorWidth]="true"
       [closeOnEscape]="false"
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-dropdown__menu"
-        [ngClass]="menuClasses()">
+        [ngClass]="menuClasses()"
+        role="none">
         @for (option of options(); track option.value; let i = $index) {
           <div
             class="ea-dropdown__option"

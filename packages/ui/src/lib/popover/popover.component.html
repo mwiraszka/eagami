@@ -12,7 +12,9 @@
   [id]="surfaceId()"
   [attr.role]="open() ? role() : null"
   [attr.aria-label]="open() ? ariaLabel() : null"
+  [attr.aria-labelledby]="open() ? ariaLabelledby() : null"
   [attr.aria-hidden]="open() ? null : true"
-  [style]="surfaceStyle()">
+  [style]="surfaceStyle()"
+  (keydown)="onSurfaceKeydown($event)">
   <ng-content />
 </div>

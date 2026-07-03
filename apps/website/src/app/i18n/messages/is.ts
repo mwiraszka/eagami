@@ -180,6 +180,7 @@ export const is: WebMessages = {
       designTokens: 'Hönnunartóknar',
       icons: 'Táknmyndir',
       i18n: 'Alþjóðavæðing',
+      accessibility: 'Aðgengi',
       components: 'Einingar',
     },
     index: {
@@ -206,7 +207,7 @@ export const is: WebMessages = {
         },
         {
           title: 'Staðfært',
-          body: 'Innbyggður einingatexti fylgir á 15 tungumálum.',
+          body: 'Innbyggður einingatexti fylgir á öllum studdum tungumálum.',
         },
         {
           title: 'Nútímalegt',
@@ -383,6 +384,51 @@ export const is: WebMessages = {
       frenchSpacingBody:
         'Frönsk leturfræði býst við mjóu órjúfanlegu bili á undan <code>? ! : ; »</code> og á eftir <code>«</code>. Útflutta <code>frenchSpacing()</code> hjálpin breytir venjulegum bilum í þínum eigin frönsku strengjum (safnið meðhöndlar innfelldu frönsku skilaboðin sín innbyrðis).',
       demoLocaleLabel: 'Svæði',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Aðgengi',
+      metaDescription:
+        'WCAG 2.2 AA samræmi, fullur lyklaborðsstuðningur og einingar sem vinna vel með skjálesurum, staðfest með hverri útgáfu.',
+      title: 'Aðgengi',
+      lede: 'Hver eining er byggð samkvæmt fremstu aðgengisstöðlum vefsins: rétt merkingarfræði, fullur lyklaborðsstuðningur, fókusstjórnun og tilkynningar skjálesara virka strax án frekari vinnu.',
+      conformanceHeading: 'Samræmi',
+      conformanceBody:
+        'Safnið samræmist <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, staðlinum sem flestum stofnunum og fyrirtækjum er skylt að uppfylla, og fylgir opinberum leiðbeiningum W3C um gerð hvers konar stýringa, frá gluggum og valmyndum til sleða og dagsetningarvelja. Tilkynningar skjálesara fylgja með á öllum studdum tungumálum, svo hjálpartækni talar alltaf tungumál notandans.',
+      builtInHeading: 'Innbyggt aðgengi',
+      builtInItems: [
+        {
+          title: 'Merkingarfræði',
+          body: 'Innbyggð stök þar sem hægt er, skýr ARIA hlutverk, ástönd og eiginleikar annars staðar. Ástönd eins og útbreitt, valið, hakað, ógilt og upptekið eru alltaf aðgengileg forritunarlega, aldrei aðeins í gegnum stíla.',
+        },
+        {
+          title: 'Lyklaborðsstuðningur',
+          body: 'Fullkomin APG lyklaborðsmynstur: roving tabindex, örvatakkastýring, Home og End, Escape til að loka og Enter eða bilslá til að virkja, með örvameðhöndlun sem tekur tillit til RTL.',
+        },
+        {
+          title: 'Fókusstjórnun',
+          body: 'Gluggar og veljur halda fókus innan sín á meðan þau eru opin og skila honum á kveikjuna við lokun. Fókusvísar eru alltaf sýnilegir og aldrei bældir.',
+        },
+        {
+          title: 'Tilkynningar skjálesara',
+          body: 'Toast skilaboð, tilkynningar, staðfestingarvillur og ósamstilltar ástandsbreytingar eru tilkynntar í gegnum lifandi svæði með viðeigandi kurteisisstigi.',
+        },
+        {
+          title: 'Minnkuð hreyfing',
+          body: 'Hreyfimyndir virða prefers-reduced-motion miðlunarfyrirspurnina alls staðar.',
+        },
+        {
+          title: 'Birtuskil',
+          body: 'Sjálfgefnu ljósu og dökku þemun uppfylla birtuskilakröfur WCAG, og þemaverkfærin merkja samsetningar sem falla undir AA.',
+        },
+      ],
+      labelsHeading: 'Aðgengileg nöfn',
+      labelsBefore:
+        'Einingar sem birta texta merkja sig sjálfar. Allt sem er aðeins táknmynd eða myndrænt býður upp á <code>aria-label</code> inntak (með staðfærðum sjálfgildum fyrir innbyggðar stýringar eins og hreinsunar-, lokunar- og frávísunarhnappa), og formreitir tengja <code>label</code>, vísbendingar og villuskilaboð við stýringuna með <code>aria-describedby</code> sjálfkrafa.',
+      labelsAfter:
+        'Gefðu upp <code>label</code> eða <code>aria-label</code> fyrir stýringar án sýnilegs texta og einingin sér um afganginn: nöfn, vísbendingar og villuskilaboð haldast sjálfkrafa tengd saman.',
+      testingHeading: 'Staðfest með hverri útgáfu',
+      testingBody:
+        'Hver eining er athuguð samkvæmt viðurkenndum aðgengisreglum í hvert sinn sem hún breytist, og útgáfa fer aðeins út þegar allar athuganir standast, svo aðgengið sem þú sérð hér helst þegar safnið þróast.',
     },
     component: {
       metaDescription: name => `Tilvísun fyrir ${name} einingu og lifandi sýnishorn.`,
@@ -887,6 +933,8 @@ export const is: WebMessages = {
         colDescription: 'Lýsing',
         errorMessagesDescription:
           'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð.',
+        ariaLabelDescription:
+          'Aðgengilegt nafn tilkynnt hjálpartækni þegar einingin birtir engan sýnilegan merkimiða.',
         triggerErrorLabel: 'Sýna villu',
         requiredBadge: 'krafist',
         twoWayBadge: 'tvíátta',
@@ -1117,6 +1165,8 @@ export const is: WebMessages = {
           },
           accordion: {
             multi: 'Leyfir mörgum atriðum að vera útbreidd í einu.',
+            headingLevel:
+              'Fyrirsagnarstig (1-6) sett á haus hvers atriðis, svo harmonikkan passi í uppbyggingu síðunnar.',
           },
           alert: {
             dismissible:
@@ -1725,6 +1775,8 @@ export const is: WebMessages = {
               'Hýsilstak eða ElementRef sem sprettiglugginn staðsetur sig gagnvart.',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir yfirborð sprettigluggans; gefðu einn þegar sprettiglugginn hefur enga sýnilega fyrirsögn.',
+            ariaLabelledby:
+              'Id staksins sem merkir yfirborð sprettigluggans, áframsent sem aria-labelledby.',
             clamp:
               'Festir sprettigluggann inni í sýnisvæðinu þegar hann myndi annars flæða út.',
             closeOnEscape: 'Lokar sprettiglugganum þegar ýtt er á Escape.',
@@ -1741,6 +1793,8 @@ export const is: WebMessages = {
               'Hvernig sprettiglugginn bregst við skrun- og stærðarbreytingaratburðum á meðan opinn: endurstaðsetja, loka eða hunsa.',
             surfaceId:
               'DOM id fyrir yfirborð sprettigluggans, notað af kveikjustökum með aria-controls.',
+            trapFocus:
+              'Heldur Tab og Shift+Tab í hringrás innan yfirborðsins á meðan opið er, fyrir sprettiglugga í gluggastíl.',
             closeRequested:
               'Kviknar þegar sprettiglugginn óskar eftir að vera lokað; foreldrið ætti að spegla þetta í [open].',
           },

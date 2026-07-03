@@ -29,6 +29,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-accordion',
     inputs: [
       {
+        name: 'headingLevel',
+        type: 'AccordionHeadingLevel',
+        default: '3',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'multi',
         type: 'boolean',
         default: 'false',
@@ -132,6 +139,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   autocomplete: {
     selector: 'ea-autocomplete',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'disabled',
         type: 'boolean',
@@ -2083,7 +2097,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'clear',
-        signature: 'clear(event: MouseEvent): void',
+        signature: 'clear(): void',
       },
       {
         name: 'focus',
@@ -2226,6 +2240,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   'multi-select': {
     selector: 'ea-multi-select',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'disabled',
         type: 'boolean',
@@ -2499,6 +2520,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'clamp',
         type: 'boolean',
         default: 'true',
@@ -2572,6 +2600,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'surfaceId',
         type: 'string',
         default: '(auto-generated)',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'trapFocus',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -3610,6 +3645,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: true,
       },
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'size',
         type: 'TabsSize',
         default: "'md'",
@@ -3978,6 +4020,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'onPopoverCloseRequested(): void',
       },
       {
+        name: 'onPopoverEscape',
+        signature: 'onPopoverEscape(event: Event): void',
+      },
+      {
         name: 'onSpinnerBlur',
         signature: 'onSpinnerBlur(): void',
       },
@@ -4257,6 +4303,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   'virtual-list': {
     selector: 'ea-virtual-list',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'itemHeight',
         type: 'number',

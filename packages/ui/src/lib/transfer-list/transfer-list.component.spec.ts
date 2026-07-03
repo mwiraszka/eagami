@@ -199,4 +199,119 @@ describe('TransferListComponent', () => {
 
     expect(item.classList).toContain('ea-transfer-list__item--highlighted');
   });
+
+  describe('Keyboard navigation', () => {
+    function keydown(el: HTMLElement, key: string): void {
+      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+      fixture.detectChanges();
+    }
+
+    function tabindexes(pane: 'source' | 'target'): string[] {
+      return getListItems(pane).map(el => el.getAttribute('tabindex') ?? '');
+    }
+
+    it('makes only the first enabled option tabbable initially', () => {
+      expect(tabindexes('source')).toEqual(['0', '-1', '-1', '-1', '-1']);
+    });
+
+    it('skips disabled items when picking the initially tabbable option', () => {
+      host.items = [
+        { id: 'x', label: 'Xray', disabled: true },
+        { id: 'y', label: 'Yankee' },
+      ];
+
+      fixture.detectChanges();
+
+      expect(tabindexes('source')).toEqual(['-1', '0']);
+    });
+
+    it('moves the active option down with ArrowDown and focuses it', () => {
+      const items = getListItems('source');
+
+      keydown(items[0], 'ArrowDown');
+
+      expect(tabindexes('source')).toEqual(['-1', '0', '-1', '-1', '-1']);
+      expect(document.activeElement).toBe(items[1]);
+    });
+
+    it('skips disabled options when arrowing', () => {
+      const items = getListItems('source');
+
+      keydown(items[2], 'ArrowDown');
+
+      expect(tabindexes('source')).toEqual(['-1', '-1', '-1', '-1', '0']);
+      expect(document.activeElement).toBe(items[4]);
+    });
+
+    it('moves the active option up with ArrowUp', () => {
+      const items = getListItems('source');
+
+      keydown(items[1], 'ArrowUp');
+
+      expect(tabindexes('source')).toEqual(['0', '-1', '-1', '-1', '-1']);
+      expect(document.activeElement).toBe(items[0]);
+    });
+
+    it('keeps the active option on ArrowUp from the first option', () => {
+      const items = getListItems('source');
+
+      keydown(items[0], 'ArrowUp');
+
+      expect(tabindexes('source')).toEqual(['0', '-1', '-1', '-1', '-1']);
+    });
+
+    it('jumps to the first enabled option on Home', () => {
+      const items = getListItems('source');
+
+      keydown(items[4], 'Home');
+
+      expect(tabindexes('source')).toEqual(['0', '-1', '-1', '-1', '-1']);
+      expect(document.activeElement).toBe(items[0]);
+    });
+
+    it('jumps to the last enabled option on End', () => {
+      const items = getListItems('source');
+
+      keydown(items[0], 'End');
+
+      expect(tabindexes('source')).toEqual(['-1', '-1', '-1', '-1', '0']);
+      expect(document.activeElement).toBe(items[4]);
+    });
+
+    it('does not highlight options while arrowing', () => {
+      const items = getListItems('source');
+
+      keydown(items[0], 'ArrowDown');
+
+      expect(
+        getListItems('source').filter(el =>
+          el.classList.contains('ea-transfer-list__item--highlighted'),
+        ),
+      ).toHaveLength(0);
+    });
+
+    it('toggles highlight via Enter on the active option', () => {
+      const item = getListItems('source')[1];
+
+      keydown(item, 'Enter');
+
+      expect(item.classList).toContain('ea-transfer-list__item--highlighted');
+    });
+
+    it('makes a clicked option the tabbable one', () => {
+      clickItem('source', 'Gamma');
+
+      expect(tabindexes('source')).toEqual(['-1', '-1', '0', '-1', '-1']);
+    });
+
+    it('tracks the active option per pane independently', () => {
+      host.selectedIds.set(['a', 'b']);
+      fixture.detectChanges();
+
+      keydown(getListItems('target')[0], 'ArrowDown');
+
+      expect(tabindexes('target')).toEqual(['-1', '0']);
+      expect(tabindexes('source')).toEqual(['0', '-1', '-1']);
+    });
+  });
 });

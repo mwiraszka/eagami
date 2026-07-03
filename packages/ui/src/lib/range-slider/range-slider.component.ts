@@ -86,11 +86,11 @@ export class RangeSliderComponent implements ControlValueAccessor {
   readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
   /** Group thousands with commas in displayed values (ignored when a custom `formatValue` is set). */
   readonly groupThousands = input<boolean>(true);
-  /** Accessible label for the low (start) thumb. Falls back to the field label when omitted. */
+  /** Accessible label for the low (start) thumb. Falls back to a localized default when omitted. */
   readonly ariaLabelLow = input<string | undefined>(undefined, {
     alias: 'aria-label-low',
   });
-  /** Accessible label for the high (end) thumb. Falls back to the field label when omitted. */
+  /** Accessible label for the high (end) thumb. Falls back to a localized default when omitted. */
   readonly ariaLabelHigh = input<string | undefined>(undefined, {
     alias: 'aria-label-high',
   });
@@ -120,6 +120,21 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   readonly lowPercent = computed(() => this.toPercent(this.clampedValue()[0]));
   readonly highPercent = computed(() => this.toPercent(this.clampedValue()[1]));
+
+  readonly lowThumbLabel = computed(
+    () => this.ariaLabelLow() ?? this.i18n.messages().rangeSlider.lowThumbLabel,
+  );
+  readonly highThumbLabel = computed(
+    () => this.ariaLabelHigh() ?? this.i18n.messages().rangeSlider.highThumbLabel,
+  );
+
+  readonly lowThumbLabelledBy = computed(() => this.thumbLabelledBy('low'));
+  readonly highThumbLabelledBy = computed(() => this.thumbLabelledBy('high'));
+
+  private thumbLabelledBy(thumb: Thumb): string {
+    const thumbLabelId = `${this.id()}-${thumb}-label`;
+    return this.label() ? `${this.id()}-label ${thumbLabelId}` : thumbLabelId;
+  }
 
   /** Formats a value for display, grouping thousands with commas unless a custom `formatValue` is set. */
   protected formatDisplay(value: number): string {

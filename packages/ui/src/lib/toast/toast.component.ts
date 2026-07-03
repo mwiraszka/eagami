@@ -13,7 +13,7 @@ import { AlertTriangleIconComponent } from '../icons/alert-triangle.component';
 import { CheckCircleIconComponent } from '../icons/check-circle.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
-import { type Toast, ToastService } from './toast.service';
+import { ToastService } from './toast.service';
 
 /** Corner or edge of the viewport the toast stack is pinned to. */
 export type ToastPosition =
@@ -55,8 +55,4 @@ export class ToastComponent {
   protected readonly containerClass = computed(
     () => `ea-toast-container ea-toast-container--${this.position()}`,
   );
-
-  protected getRole(toast: Toast): 'alert' | 'status' {
-    return toast.variant === 'error' || toast.variant === 'warning' ? 'alert' : 'status';
-  }
 }

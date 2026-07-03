@@ -53,6 +53,10 @@
     --ea-range-slider-size: 1.625rem;
   }
 
+  &__thumb-label {
+    @include ea.visually-hidden;
+  }
+
   &__track {
     position: relative;
     width: 100%;

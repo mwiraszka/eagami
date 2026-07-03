@@ -180,6 +180,7 @@ export const en: WebMessages = {
       designTokens: 'Design tokens',
       icons: 'Icons',
       i18n: 'Internationalization',
+      accessibility: 'Accessibility',
       components: 'Components',
     },
     index: {
@@ -206,7 +207,7 @@ export const en: WebMessages = {
         },
         {
           title: 'Localized',
-          body: 'Built-in component text ships in 15 languages.',
+          body: 'Built-in component text ships in all supported languages.',
         },
         {
           title: 'Modern',
@@ -382,6 +383,51 @@ export const en: WebMessages = {
       frenchSpacingBody:
         'French typography expects a narrow non-breaking space before <code>? ! : ; »</code> and after <code>«</code>. The exported <code>frenchSpacing()</code> helper converts regular spaces in your own French strings (the library handles its bundled French messages internally).',
       demoLocaleLabel: 'Locale',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Accessibility',
+      metaDescription:
+        'WCAG 2.2 AA conformance, full keyboard support, and screen-reader friendly components, verified with every release.',
+      title: 'Accessibility',
+      lede: 'Every component is built to the leading web accessibility standards: correct semantics, full keyboard support, focus management, and screen-reader announcements work out of the box.',
+      conformanceHeading: 'Conformance',
+      conformanceBody:
+        'The library adheres to <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, the standard most organizations are required to meet, and follows the official W3C authoring practices for every kind of control, from dialogs and menus to sliders and date pickers. Screen-reader announcements ship in every supported language, so assistive technology always speaks the language of the user.',
+      builtInHeading: 'Accessibility built in',
+      builtInItems: [
+        {
+          title: 'Semantics',
+          body: 'Native elements where possible, explicit ARIA roles, states, and properties where not. States like expanded, selected, checked, invalid, and busy are always exposed programmatically, never through styling alone.',
+        },
+        {
+          title: 'Keyboard support',
+          body: 'Complete APG keyboard patterns: roving tabindex, arrow-key navigation, Home and End, Escape to dismiss, and Enter or Space to activate, with RTL-aware arrow handling.',
+        },
+        {
+          title: 'Focus management',
+          body: 'Modals and pickers trap focus while open and return it to the trigger on close. Focus indicators are always visible and never suppressed.',
+        },
+        {
+          title: 'Screen-reader announcements',
+          body: 'Toasts, alerts, validation errors, and async state changes are announced through live regions with the appropriate politeness level.',
+        },
+        {
+          title: 'Reduced motion',
+          body: 'Animations respect the prefers-reduced-motion media query throughout.',
+        },
+        {
+          title: 'Contrast',
+          body: 'The default light and dark themes meet WCAG contrast requirements, and the theming tools flag combinations that fall below AA.',
+        },
+      ],
+      labelsHeading: 'Accessible names',
+      labelsBefore:
+        'Components that render text label themselves. Anything icon-only or graphical exposes an <code>aria-label</code> input (with localized defaults for built-in controls like clear, close, and dismiss buttons), and form fields wire <code>label</code>, hints, and error messages to the control via <code>aria-describedby</code> automatically.',
+      labelsAfter:
+        'Provide a <code>label</code> or <code>aria-label</code> for controls without visible text and the component handles the rest: names, hints, and error messages stay wired together automatically.',
+      testingHeading: 'Verified with every release',
+      testingBody:
+        'Every component is checked against industry accessibility rules whenever it changes, and a release only ships when every check passes, so the accessibility you see here holds as the library evolves.',
     },
     component: {
       metaDescription: name => `${name} component reference and live demos.`,
@@ -875,6 +921,8 @@ export const en: WebMessages = {
         colDescription: 'Description',
         errorMessagesDescription:
           'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
+        ariaLabelDescription:
+          'Accessible name announced by assistive technology when the component renders no visible label.',
         triggerErrorLabel: 'Trigger error',
         requiredBadge: 'required',
         twoWayBadge: 'two-way',
@@ -1106,6 +1154,8 @@ export const en: WebMessages = {
           },
           accordion: {
             multi: 'Allows multiple items to stay expanded at once.',
+            headingLevel:
+              'Heading level (1-6) applied to every item header, so the accordion slots into the page outline.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1699,6 +1749,8 @@ export const en: WebMessages = {
             anchor: 'Host element or ElementRef the popover positions itself against.',
             ariaLabel:
               'Accessible label for the popover surface; provide one when the popover contains no visible heading.',
+            ariaLabelledby:
+              'Id of the element that labels the popover surface, forwarded as aria-labelledby.',
             clamp:
               'Clamps the popover inside the viewport when it would otherwise overflow.',
             closeOnEscape: 'Closes the popover when Escape is pressed.',
@@ -1714,6 +1766,8 @@ export const en: WebMessages = {
               'How the popover responds to scroll and resize events while open: reposition, close, or ignore.',
             surfaceId:
               'DOM id for the popover surface, used by trigger elements via aria-controls.',
+            trapFocus:
+              'Keeps Tab and Shift+Tab cycling inside the surface while open, for dialog-style popovers.',
             closeRequested:
               'Fires when the popover requests to be closed; the parent should mirror this into [open].',
           },

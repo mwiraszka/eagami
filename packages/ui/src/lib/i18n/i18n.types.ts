@@ -90,6 +90,7 @@ export interface EagamiMessages {
     upload: string;
     dropzone: string;
     canvas: string;
+    canvasInstructions: string;
     change: string;
     revert: string;
     zoomOut: string;
@@ -117,6 +118,7 @@ export interface EagamiMessages {
     clear: string;
     hue: string;
     saturationAndValue: string;
+    saturationAndValueStatus: (saturation: number, value: number) => string;
     alpha: string;
     eyedropper: string;
     presets: string;
@@ -139,6 +141,7 @@ export interface EagamiMessages {
   };
   datePicker: {
     placeholder: string;
+    dialogLabel: string;
     clear: string;
     previousYear: string;
     previousMonth: string;
@@ -209,6 +212,10 @@ export interface EagamiMessages {
   progressBar: {
     label: string;
   };
+  rangeSlider: {
+    lowThumbLabel: string;
+    highThumbLabel: string;
+  };
   rating: {
     label: string;
     valueLabel: (value: number, max: number) => string;
@@ -218,13 +225,16 @@ export interface EagamiMessages {
     label: string;
   };
   stepper: {
+    stepsLabel: string;
     optional: string;
+    stepCompleted: string;
   };
   tag: {
     remove: string;
   };
   timePicker: {
     placeholder: string;
+    dialogLabel: string;
     clear: string;
     hoursLabel: string;
     minutesLabel: string;

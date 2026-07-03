@@ -110,9 +110,20 @@ describe('TooltipDirective', () => {
       expect(getTooltip()).toBeNull();
     });
 
-    it('removes on Escape key', () => {
+    it('removes on Escape key pressed anywhere in the document', () => {
       show();
-      getButton().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('ignores Escape once the tooltip is hidden', () => {
+      show();
+      hide();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
       fixture.detectChanges();
 
       expect(getTooltip()).toBeNull();

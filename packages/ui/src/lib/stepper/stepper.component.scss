@@ -138,6 +138,10 @@
     color: var(--color-text-tertiary);
   }
 
+  &__completed-label {
+    @include ea.visually-hidden;
+  }
+
   &__connector {
     display: block;
     flex: 1;

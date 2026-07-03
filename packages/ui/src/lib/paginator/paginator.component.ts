@@ -16,6 +16,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { type EaSize } from '../sizes';
+import { uniqueId } from '../unique-id';
 
 /** Horizontal alignment of paginator controls within their container. */
 export type PaginatorAlign = 'left' | 'center' | 'right';
@@ -50,6 +51,7 @@ export interface PaginatorState {
 })
 export class PaginatorComponent {
   protected readonly i18n = inject(EagamiI18nService);
+  protected readonly sizeSelectId = uniqueId('ea-paginator-size');
 
   readonly totalItems = input.required<number>();
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);

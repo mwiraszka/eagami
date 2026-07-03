@@ -32,28 +32,42 @@
                       ? 'none'
                       : null
               "
-              (click)="onHeaderClick(col)"
-              (keydown.enter)="onHeaderClick(col)"
-              (keydown.space)="$event.preventDefault(); onHeaderClick(col)"
+              (keydown.enter)="onHeaderKeydown($event, col)"
+              (keydown.space)="onHeaderKeydown($event, col)"
               (focus)="onCellFocus(0, colIndex)"
-              [attr.tabindex]="headerTabindex(col, colIndex)">
-              @if (col.headerTemplate) {
+              [attr.tabindex]="headerTabindex(colIndex)">
+              @if (col.sortable) {
+                <button
+                  type="button"
+                  class="ea-data-table__sort-button"
+                  [attr.tabindex]="navigable() ? -1 : null"
+                  (click)="onHeaderClick(col)"
+                  (focus)="onCellFocus(0, colIndex)">
+                  @if (col.headerTemplate) {
+                    <ng-container
+                      [ngTemplateOutlet]="col.headerTemplate"
+                      [ngTemplateOutletContext]="{ $implicit: col }" />
+                  } @else {
+                    <span class="ea-data-table__header-text">{{ col.label }}</span>
+                  }
+                  <span class="ea-data-table__sort-icon">
+                    @if (sort().column === col.key && sort().direction === 'asc') {
+                      <ea-icon-arrow-up />
+                    } @else if (
+                      sort().column === col.key && sort().direction === 'desc'
+                    ) {
+                      <ea-icon-arrow-down />
+                    } @else {
+                      <ea-icon-chevrons-up-down />
+                    }
+                  </span>
+                </button>
+              } @else if (col.headerTemplate) {
                 <ng-container
                   [ngTemplateOutlet]="col.headerTemplate"
                   [ngTemplateOutletContext]="{ $implicit: col }" />
               } @else {
                 <span class="ea-data-table__header-text">{{ col.label }}</span>
-              }
-              @if (col.sortable) {
-                <span class="ea-data-table__sort-icon">
-                  @if (sort().column === col.key && sort().direction === 'asc') {
-                    <ea-icon-arrow-up />
-                  } @else if (sort().column === col.key && sort().direction === 'desc') {
-                    <ea-icon-arrow-down />
-                  } @else {
-                    <ea-icon-chevrons-up-down />
-                  }
-                </span>
               }
             </th>
           }
@@ -68,11 +82,13 @@
               class="ea-data-table__cell ea-data-table__cell--empty"
               [attr.role]="navigable() ? 'gridcell' : null"
               [attr.colspan]="columns().length">
-              @if (noDataTemplate()) {
-                <ng-container [ngTemplateOutlet]="noDataTemplate()!" />
-              } @else {
-                {{ resolvedNoDataText() }}
-              }
+              <div role="status">
+                @if (noDataTemplate()) {
+                  <ng-container [ngTemplateOutlet]="noDataTemplate()!" />
+                } @else {
+                  {{ resolvedNoDataText() }}
+                }
+              </div>
             </td>
           </tr>
         } @else {

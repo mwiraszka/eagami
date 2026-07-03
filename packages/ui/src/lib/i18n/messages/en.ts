@@ -12,6 +12,8 @@ const messages: EagamiMessages = {
     upload: 'Upload image',
     dropzone: 'Drop image or click to upload',
     canvas: 'Image preview, drag or use arrow keys to pan, slider to zoom',
+    canvasInstructions:
+      'Use the arrow keys to move the image, plus and minus to zoom, and Enter or Space to choose a different photo',
     change: 'Change photo',
     revert: 'Revert to original',
     zoomOut: 'Zoom out',
@@ -39,6 +41,8 @@ const messages: EagamiMessages = {
     clear: 'Clear color',
     hue: 'Hue',
     saturationAndValue: 'Saturation and value',
+    saturationAndValueStatus: (saturation, value) =>
+      `Saturation ${saturation}%, brightness ${value}%`,
     alpha: 'Alpha',
     eyedropper: 'Pick from screen',
     presets: 'Presets',
@@ -54,6 +58,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'Select date…',
+    dialogLabel: 'Choose date',
     clear: 'Clear date',
     previousYear: 'Previous year',
     previousMonth: 'Previous month',
@@ -126,6 +131,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'Progress',
   },
+  rangeSlider: {
+    lowThumbLabel: 'Minimum value',
+    highThumbLabel: 'Maximum value',
+  },
   rating: {
     label: 'Rating',
     valueLabel: (value, max) => `${value} of ${max}`,
@@ -135,13 +144,16 @@ const messages: EagamiMessages = {
     label: 'Loading',
   },
   stepper: {
+    stepsLabel: 'Steps',
     optional: 'optional',
+    stepCompleted: 'completed',
   },
   tag: {
     remove: 'Remove',
   },
   timePicker: {
     placeholder: 'Select time…',
+    dialogLabel: 'Choose time',
     clear: 'Clear time',
     hoursLabel: 'Hours',
     minutesLabel: 'Minutes',

@@ -13,6 +13,8 @@ const messages: EagamiMessages = {
     dropzone: 'Slepptu mynd eða smelltu til að hlaða upp',
     canvas:
       'Forskoðun myndar, dragðu eða notaðu örvatakka til að hreyfa, sleða til að aðdrátta',
+    canvasInstructions:
+      'Notaðu örvatakkana til að hreyfa myndina, plús og mínus til að breyta aðdrætti og Enter eða bilslá til að velja aðra mynd',
     change: 'Skipta um mynd',
     revert: 'Endurheimta upprunalega',
     zoomOut: 'Minnka aðdrátt',
@@ -40,6 +42,8 @@ const messages: EagamiMessages = {
     clear: 'Hreinsa lit',
     hue: 'Litblær',
     saturationAndValue: 'Mettun og birta',
+    saturationAndValueStatus: (saturation, value) =>
+      `Mettun ${saturation}%, birta ${value}%`,
     alpha: 'Gegnsæi',
     eyedropper: 'Velja af skjánum',
     presets: 'Forstillingar',
@@ -55,6 +59,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'Veldu dagsetningu…',
+    dialogLabel: 'Velja dagsetningu',
     clear: 'Hreinsa dagsetningu',
     previousYear: 'Fyrra ár',
     previousMonth: 'Fyrri mánuður',
@@ -127,6 +132,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'Framvinda',
   },
+  rangeSlider: {
+    lowThumbLabel: 'Lágmarksgildi',
+    highThumbLabel: 'Hámarksgildi',
+  },
   rating: {
     label: 'Einkunn',
     valueLabel: (value, max) => `${value} af ${max}`,
@@ -136,13 +145,16 @@ const messages: EagamiMessages = {
     label: 'Hleð',
   },
   stepper: {
+    stepsLabel: 'Skref',
     optional: 'valfrjálst',
+    stepCompleted: 'lokið',
   },
   tag: {
     remove: 'Fjarlægja',
   },
   timePicker: {
     placeholder: 'Veldu tíma…',
+    dialogLabel: 'Velja tíma',
     clear: 'Hreinsa tíma',
     hoursLabel: 'Klukkustundir',
     minutesLabel: 'Mínútur',

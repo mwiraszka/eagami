@@ -75,6 +75,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
 
   readonly label = input<string | undefined>(undefined);
+  /** Accessible name for the combobox when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly placeholder = input<string | undefined>(undefined);
   readonly searchPlaceholder = input<string | undefined>(undefined);
   readonly options = input<readonly SelectOption[]>([]);
@@ -137,6 +139,16 @@ export class MultiSelectComponent implements ControlValueAccessor {
   });
 
   readonly hasValue = computed(() => this.value().length > 0);
+
+  readonly listboxId = computed(() => `${this.id()}-listbox`);
+
+  /** Id of the keyboard-focused option, for `aria-activedescendant`. */
+  readonly activeOptionId = computed(() => {
+    const idx = this.focusedIndex();
+    return idx >= 0 && idx < this.filteredOptions().length
+      ? `${this.id()}-opt-${idx}`
+      : null;
+  });
 
   /** Chips visible inside the trigger, capped by `maxVisibleChips`. */
   readonly visibleChips = computed<readonly SelectOption[]>(() => {
@@ -252,6 +264,20 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.commit(this.orderedValues(set));
   }
 
+  // Options never take DOM focus, so a click must return focus to the
+  // element carrying aria-activedescendant
+  protected onOptionClick(opt: SelectOption, index: number): void {
+    if (!opt.disabled) {
+      this.focusedIndex.set(index);
+    }
+    this.toggleOption(opt);
+    if (this.searchable()) {
+      this.searchEl()?.nativeElement.focus();
+    } else {
+      this.triggerEl()?.nativeElement.focus();
+    }
+  }
+
   /**
    * Remove a single chip from the trigger. `<ea-tag>` already stops the
    * click from bubbling to the trigger's `(click)`, so no event handling
@@ -306,6 +332,12 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   handleTriggerKeydown(event: KeyboardEvent): void {
     if (this.isDisabled() || this.readonly()) {
+      return;
+    }
+    // Without a search input the trigger keeps focus while open, so it must
+    // drive the option navigation that the search input handles otherwise
+    if (this.isOpen() && !this.searchable()) {
+      this.handlePopoverKeydown(event);
       return;
     }
     if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
@@ -369,6 +401,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
       event.preventDefault();
       this.close();
       this.triggerEl()?.nativeElement.focus();
+    } else if (event.key === 'Tab') {
+      // Combobox popups dismiss on Tab; focus moves on to the next element
+      this.close();
     }
   }
 

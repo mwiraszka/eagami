@@ -26,6 +26,7 @@ import { TrashIconComponent } from '../icons/trash.component';
 import { UploadIconComponent } from '../icons/upload.component';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { uniqueId } from '../unique-id';
 
 /** Crop mask shape applied to the exported image. */
 export type AvatarEditorShape = 'circle' | 'square';
@@ -95,7 +96,10 @@ export class AvatarEditorComponent implements OnDestroy {
   /** Fires whenever the user pans or zooms the image; useful for persisting in-progress crops. */
   readonly cropStateChanged = output<AvatarEditorCropState>();
 
+  readonly instructionsId = uniqueId('ea-avatar-editor-instructions');
+
   readonly hasImage = signal(false);
+  readonly lastError = signal<string | null>(null);
   readonly isDragOver = signal(false);
   readonly isAtOriginal = signal(false);
   readonly isLoading = computed(() => this.isFetching() || this.loading());
@@ -308,6 +312,11 @@ export class AvatarEditorComponent implements OnDestroy {
     let handled = false;
 
     switch (event.key) {
+      case 'Enter':
+      case ' ':
+        this.openFilePicker();
+        event.preventDefault();
+        return;
       case 'ArrowLeft':
         this.offsetX += step;
         handled = true;
@@ -500,15 +509,20 @@ export class AvatarEditorComponent implements OnDestroy {
 
   private loadFile(file: File): void {
     if (!file.type.startsWith('image/')) {
-      this.errored.emit(this.i18n.messages().avatarEditor.invalidType);
+      const message = this.i18n.messages().avatarEditor.invalidType;
+      this.lastError.set(message);
+      this.errored.emit(message);
       return;
     }
     if (file.size > this.maxFileSize()) {
       const maxMb = Math.round(this.maxFileSize() / (1024 * 1024));
-      this.errored.emit(this.i18n.messages().avatarEditor.tooLarge(maxMb));
+      const message = this.i18n.messages().avatarEditor.tooLarge(maxMb);
+      this.lastError.set(message);
+      this.errored.emit(message);
       return;
     }
 
+    this.lastError.set(null);
     this.isAtOriginal.set(false);
     this.fileSelected.emit(file);
 

@@ -255,4 +255,61 @@ describe('MenuComponent', () => {
       expect(host.deleteCount).toBe(1);
     });
   });
+
+  describe('Roving tabindex', () => {
+    it('renders items with tabindex -1 before any focus management', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(getItems().map(item => item.tabIndex)).toEqual([-1, -1, -1]);
+    });
+
+    it('sets tabindex 0 only on the focused first item after opening', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      fixture.detectChanges();
+
+      const items = getItems();
+
+      expect(items[0].tabIndex).toBe(0);
+      expect(items[1].tabIndex).toBe(-1);
+      expect(items[2].tabIndex).toBe(-1);
+      expect(document.activeElement).toBe(items[0]);
+    });
+
+    it('moves tabindex 0 along with focus on arrow navigation', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      const items = getItems();
+
+      expect(items[0].tabIndex).toBe(-1);
+      expect(items[1].tabIndex).toBe(0);
+      expect(items[2].tabIndex).toBe(-1);
+      expect(document.activeElement).toBe(items[1]);
+    });
+
+    it('keeps the roving tabindex after the items re-render', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      host.itemDisabled.set(true);
+      fixture.detectChanges();
+
+      const items = getItems();
+
+      expect(items[0].tabIndex).toBe(-1);
+      expect(items[1].tabIndex).toBe(-1);
+      expect(items[2].tabIndex).toBe(0);
+    });
+  });
 });

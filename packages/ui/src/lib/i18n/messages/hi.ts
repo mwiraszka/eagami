@@ -13,6 +13,8 @@ const messages: EagamiMessages = {
     dropzone: 'छवि छोड़ें या अपलोड करने के लिए क्लिक करें',
     canvas:
       'छवि पूर्वावलोकन, पैन करने के लिए खींचें या तीर कुंजियों का उपयोग करें, ज़ूम के लिए स्लाइडर',
+    canvasInstructions:
+      'छवि को हिलाने के लिए तीर कुंजियों का उपयोग करें, ज़ूम के लिए प्लस और माइनस, और दूसरी फ़ोटो चुनने के लिए Enter या Space दबाएं',
     change: 'फ़ोटो बदलें',
     revert: 'मूल पर वापस लौटें',
     zoomOut: 'ज़ूम आउट',
@@ -40,6 +42,8 @@ const messages: EagamiMessages = {
     clear: 'रंग साफ़ करें',
     hue: 'रंगत',
     saturationAndValue: 'संतृप्ति और मान',
+    saturationAndValueStatus: (saturation, value) =>
+      `संतृप्ति ${saturation}%, चमक ${value}%`,
     alpha: 'अल्फ़ा',
     eyedropper: 'स्क्रीन से चुनें',
     presets: 'प्रीसेट',
@@ -55,6 +59,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'तारीख चुनें…',
+    dialogLabel: 'तारीख चुनें',
     clear: 'तारीख साफ़ करें',
     previousYear: 'पिछला वर्ष',
     previousMonth: 'पिछला महीना',
@@ -127,6 +132,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'प्रगति',
   },
+  rangeSlider: {
+    lowThumbLabel: 'न्यूनतम मान',
+    highThumbLabel: 'अधिकतम मान',
+  },
   rating: {
     label: 'रेटिंग',
     valueLabel: (value, max) => `${max} में से ${value}`,
@@ -136,13 +145,16 @@ const messages: EagamiMessages = {
     label: 'लोड हो रहा है',
   },
   stepper: {
+    stepsLabel: 'चरण',
     optional: 'वैकल्पिक',
+    stepCompleted: 'पूर्ण',
   },
   tag: {
     remove: 'हटाएं',
   },
   timePicker: {
     placeholder: 'समय चुनें…',
+    dialogLabel: 'समय चुनें',
     clear: 'समय साफ़ करें',
     hoursLabel: 'घंटे',
     minutesLabel: 'मिनट',

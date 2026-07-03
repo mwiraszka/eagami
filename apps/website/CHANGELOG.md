@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.8.0] - 2026-07-03
+
+### Added
+
+- Add an Accessibility page to the UI docs presenting the WCAG 2.2 AA conformance target and the accessibility features built into every component, translated into every locale.
+
+### Changed
+
+- Pick up @eagami/ui v5.1.0.
+- Surface the library's new accessibility inputs in the component playgrounds and API references, including a heading-level control on the accordion demo.
+
 ## [3.7.1] - 2026-07-02
 
 ### Changed
@@ -755,6 +766,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.8.0]: https://github.com/mwiraszka/eagami/compare/website-v3.7.1...website-v3.8.0
 [3.7.1]: https://github.com/mwiraszka/eagami/compare/website-v3.7.0...website-v3.7.1
 [3.7.0]: https://github.com/mwiraszka/eagami/compare/website-v3.6.0...website-v3.7.0
 [3.6.0]: https://github.com/mwiraszka/eagami/compare/website-v3.5.0...website-v3.6.0

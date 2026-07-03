@@ -298,9 +298,13 @@ export class InputComponent implements ControlValueAccessor {
     this.passwordVisible.update(value => !value);
   }
 
-  /** Clear the current value and restore focus to the input. */
-  clear(event: MouseEvent): void {
+  // Keeps focus in the input while the mouse presses the clear button
+  protected onClearMousedown(event: MouseEvent): void {
     event.preventDefault();
+  }
+
+  /** Clear the current value and restore focus to the input. */
+  clear(): void {
     this.value.set('');
     this.onChange('');
     this.inputEl()?.nativeElement.focus();
