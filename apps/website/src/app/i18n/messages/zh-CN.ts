@@ -693,6 +693,9 @@ export const zhCN: WebMessages = {
           withHintHint: '每个文件最大 10 MB',
           withErrorText: '至少需要一张图片',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: '默认',
           enterTextPlaceholder: '输入文本…',
@@ -924,6 +927,11 @@ export const zhCN: WebMessages = {
             showPasswordToggle: '显示密码切换',
             clearable: '可清除',
             autocomplete: '自动完成',
+          },
+          'form-field': {
+            label: '标签',
+            hint: '提示',
+            required: '必填',
           },
           alert: {
             variant: '变体',
@@ -1616,6 +1624,13 @@ export const zhCN: WebMessages = {
             fileRemoved: '当通过某行的移除按钮移除文件时触发。',
             rejected: '当一个或多个文件校验失败时触发，并附带每次拒绝的原因。',
             trackFile: '为文件返回一个稳定的跟踪键，供文件列表内部使用。',
+          },
+          'form-field': {
+            errorMsg: '显示在控件下方的错误消息，替换提示并将字段标记为无效。',
+            hint: '显示在控件下方的辅助文本，在显示错误时隐藏。',
+            id: '用于关联标签和消息的 id 种子，省略时自动生成。',
+            label: '渲染在控件上方的文本标签。',
+            required: '将字段标记为必填。',
           },
           popover: {
             anchor: '浮层据以定位的宿主元素或 ElementRef。',

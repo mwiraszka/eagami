@@ -552,6 +552,9 @@ export interface WebMessages {
           withHintHint: string;
           withErrorText: string;
         };
+        formField: {
+          emailPlaceholder: string;
+        };
         input: {
           defaultLabel: string;
           enterTextPlaceholder: string;

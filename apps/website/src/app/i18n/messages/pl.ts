@@ -718,6 +718,9 @@ export const pl: WebMessages = {
           withHintHint: 'Do 10 MB na plik',
           withErrorText: 'Wymagany jest co najmniej jeden obraz',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Domyślny',
           enterTextPlaceholder: 'Wprowadź tekst…',
@@ -961,6 +964,11 @@ export const pl: WebMessages = {
             showPasswordToggle: 'Przycisk pokazywania hasła',
             clearable: 'Z czyszczeniem',
             autocomplete: 'Autouzupełnianie',
+          },
+          'form-field': {
+            label: 'Etykieta',
+            hint: 'Podpowiedź',
+            required: 'Wymagane',
           },
           alert: {
             variant: 'Wariant',
@@ -1795,6 +1803,14 @@ export const pl: WebMessages = {
               'Emitowane, gdy jeden lub więcej plików nie przejdzie walidacji, wraz z powodem każdego odrzucenia.',
             trackFile:
               'Zwraca stabilny klucz śledzenia pliku, używany wewnętrznie przez listę plików.',
+          },
+          'form-field': {
+            errorMsg:
+              'Komunikat o błędzie pod kontrolką, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            hint: 'Tekst pomocniczy pod kontrolką, ukryty gdy występuje błąd.',
+            id: 'Podstawa id do powiązania etykiety i komunikatów, generowana automatycznie gdy pominięta.',
+            label: 'Etykieta wyświetlana nad kontrolką.',
+            required: 'Oznacza pole jako wymagane.',
           },
           popover: {
             anchor:

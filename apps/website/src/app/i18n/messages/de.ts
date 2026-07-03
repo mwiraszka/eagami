@@ -720,6 +720,9 @@ export const de: WebMessages = {
           withHintHint: 'Bis zu 10 MB pro Datei',
           withErrorText: 'Mindestens ein Bild ist erforderlich',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Standard',
           enterTextPlaceholder: 'Text eingeben…',
@@ -961,6 +964,11 @@ export const de: WebMessages = {
             showPasswordToggle: 'Passwort-Umschalter anzeigen',
             clearable: 'Löschbar',
             autocomplete: 'Autovervollständigung',
+          },
+          'form-field': {
+            label: 'Beschriftung',
+            hint: 'Hinweis',
+            required: 'Erforderlich',
           },
           alert: {
             variant: 'Variante',
@@ -1827,6 +1835,14 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn eine oder mehrere Dateien die Validierung nicht bestehen, mit dem Grund für jede Ablehnung.',
             trackFile:
               'Gibt einen stabilen Track-Key für eine Datei zurück, intern von der Dateiliste verwendet.',
+          },
+          'form-field': {
+            errorMsg:
+              'Fehlermeldung unter dem Steuerelement, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
+            hint: 'Hilfetext unter dem Steuerelement, ausgeblendet, solange ein Fehler angezeigt wird.',
+            id: 'id-Basis für die Verdrahtung von Label und Meldung, automatisch generiert, wenn weggelassen.',
+            label: 'Textlabel, das über dem Steuerelement gerendert wird.',
+            required: 'Kennzeichnet das Feld als erforderlich.',
           },
           popover: {
             anchor: 'Host-Element oder ElementRef, an dem sich das Popover positioniert.',

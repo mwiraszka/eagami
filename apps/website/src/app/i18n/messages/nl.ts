@@ -718,6 +718,9 @@ export const nl: WebMessages = {
           withHintHint: 'Tot 10 MB per bestand',
           withErrorText: 'Minstens één afbeelding is vereist',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Standaard',
           enterTextPlaceholder: 'Voer tekst in…',
@@ -953,6 +956,11 @@ export const nl: WebMessages = {
             showPasswordToggle: 'Wachtwoordschakelaar tonen',
             clearable: 'Wisbaar',
             autocomplete: 'Autocomplete',
+          },
+          'form-field': {
+            label: 'Label',
+            hint: 'Hint',
+            required: 'Verplicht',
           },
           alert: {
             variant: 'Variant',
@@ -1811,6 +1819,14 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer een of meer bestanden de validatie niet doorstaan, met de reden voor elke weigering.',
             trackFile:
               'Geeft een stabiele tracksleutel voor een bestand terug, intern gebruikt door de bestandslijst.',
+          },
+          'form-field': {
+            errorMsg:
+              'Foutmelding onder het besturingselement, die de hint vervangt en het veld als ongeldig markeert.',
+            hint: 'Hulptekst onder het besturingselement, verborgen terwijl een fout wordt getoond.',
+            id: 'id-basis voor de koppeling van label en meldingen, automatisch gegenereerd indien weggelaten.',
+            label: 'Tekstlabel weergegeven boven het besturingselement.',
+            required: 'Markeert het veld als verplicht.',
           },
           popover: {
             anchor:

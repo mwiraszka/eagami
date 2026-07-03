@@ -707,6 +707,9 @@ export const ar: WebMessages = {
           withHintHint: 'حتى 10 ميغابايت لكل ملف',
           withErrorText: 'مطلوب صورة واحدة على الأقل',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'افتراضي',
           enterTextPlaceholder: 'أدخل نصًا…',
@@ -940,6 +943,11 @@ export const ar: WebMessages = {
             showPasswordToggle: 'إظهار مبدّل كلمة المرور',
             clearable: 'قابل للمسح',
             autocomplete: 'إكمال تلقائي',
+          },
+          'form-field': {
+            label: 'التسمية',
+            hint: 'تلميح',
+            required: 'مطلوب',
           },
           alert: {
             variant: 'النمط',
@@ -1700,6 +1708,14 @@ export const ar: WebMessages = {
             fileRemoved: 'يُطلَق عندما يُزال ملف عبر زر الإزالة في صفّه.',
             rejected: 'يُطلَق عندما يفشل ملف واحد أو أكثر في التحقّق، مع سبب كل رفض.',
             trackFile: 'يُرجِع مفتاح تتبّع ثابتًا لملف، تستخدمه قائمة الملفات داخليًا.',
+          },
+          'form-field': {
+            errorMsg:
+              'رسالة خطأ تُعرَض أسفل عنصر التحكم، تستبدل التلميح وتُعلِّم الحقل كغير صالح.',
+            hint: 'نص مساعد يُعرَض أسفل عنصر التحكم، يُخفى عند عرض خطأ.',
+            id: 'معرّف أساس لربط التسمية والرسالة، يُولَّد تلقائيًا عند حذفه.',
+            label: 'تسمية نصية تُعرَض فوق عنصر التحكم.',
+            required: 'يُعلِّم الحقل كمطلوب.',
           },
           popover: {
             anchor:

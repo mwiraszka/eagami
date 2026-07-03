@@ -39,6 +39,7 @@ interface ApiSection {
 const RELATED_SLUGS: Readonly<Record<string, readonly string[]>> = {
   radio: ['radio-group'],
   accordion: ['accordion-item'],
+  'form-field': ['field-label', 'field-messages'],
   menu: ['menu-item', 'menu-trigger'],
   tabs: ['tab'],
   stepper: ['step'],

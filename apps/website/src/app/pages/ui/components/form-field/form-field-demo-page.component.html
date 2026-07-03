@@ -1,0 +1,22 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [childMarkup]="childMarkup"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-form-field
+      [label]="state().label"
+      [hint]="state().hint"
+      [required]="state().required">
+      <input
+        type="email"
+        [formControl]="control"
+        [placeholder]="messages().ui.component.demos.formField.emailPlaceholder" />
+    </ea-form-field>
+  </web-component-playground>
+</web-ui-component-demo-layout>

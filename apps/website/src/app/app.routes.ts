@@ -224,6 +224,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/form-field',
+        loadComponent: () =>
+          import('./pages/ui/components/form-field/form-field-demo-page.component').then(
+            c => c.FormFieldDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/input',
         loadComponent: () =>
           import('./pages/ui/components/input/input-demo-page.component').then(
