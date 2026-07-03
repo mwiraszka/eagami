@@ -198,13 +198,24 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return key ? (item as Record<string, unknown>)[key as string] : _index;
   }
 
-  // Roving tabindex for a header cell; sortable-only focus outside grid mode
-  headerTabindex(col: DataTableColumn<T>, colIndex: number): number | null {
-    if (this.navigable()) {
-      const active = this.activeCell();
-      return active.row === 0 && active.col === colIndex ? 0 : -1;
+  // Roving tabindex for a header cell in grid mode; outside grid mode the
+  // sortable header's inner sort button is the natural tab stop
+  headerTabindex(colIndex: number): number | null {
+    if (!this.navigable()) {
+      return null;
     }
-    return col.sortable ? 0 : null;
+    const active = this.activeCell();
+    return active.row === 0 && active.col === colIndex ? 0 : -1;
+  }
+
+  // Grid-mode cell activation; ignores keydowns bubbling up from the sort
+  // button, whose native Enter/Space activation already fires its click handler
+  onHeaderKeydown(event: Event, col: DataTableColumn<T>): void {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    event.preventDefault();
+    this.onHeaderClick(col);
   }
 
   // Roving tabindex for a body cell; never focusable outside grid mode

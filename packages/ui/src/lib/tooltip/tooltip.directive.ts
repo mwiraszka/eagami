@@ -64,6 +64,8 @@ export class TooltipDirective implements OnDestroy {
       this.show();
     }
   };
+  /* Registered on `document` while the tooltip is visible so Escape dismisses
+     hover-triggered tooltips too, wherever focus happens to be (WCAG 1.4.13). */
   private readonly keydownHandler = (event: KeyboardEvent) => {
     if (event.key === 'Escape' && this.tooltipEl) {
       this.hide();
@@ -102,7 +104,6 @@ export class TooltipDirective implements OnDestroy {
     // wraps the focusable element (focus does not bubble; focusin does).
     native.addEventListener('focusin', this.focusHandler);
     native.addEventListener('focusout', this.hideHandler);
-    native.addEventListener('keydown', this.keydownHandler);
 
     this.syncPointerListeners(this.hoverMql?.matches ?? true);
     this.hoverMql?.addEventListener('change', this.hoverChangeHandler);
@@ -114,7 +115,6 @@ export class TooltipDirective implements OnDestroy {
     native.removeEventListener('mouseleave', this.hideHandler);
     native.removeEventListener('focusin', this.focusHandler);
     native.removeEventListener('focusout', this.hideHandler);
-    native.removeEventListener('keydown', this.keydownHandler);
     this.hoverMql?.removeEventListener('change', this.hoverChangeHandler);
     this.hide();
   }
@@ -152,6 +152,7 @@ export class TooltipDirective implements OnDestroy {
     }
 
     this.renderer.appendChild(document.body, this.tooltipEl);
+    document.addEventListener('keydown', this.keydownHandler);
     this.appendDescribedBy();
     this.shrinkToContent();
     this.positionTooltip();
@@ -195,6 +196,7 @@ export class TooltipDirective implements OnDestroy {
       this.rafId = null;
     }
     if (this.tooltipEl) {
+      document.removeEventListener('keydown', this.keydownHandler);
       this.tooltipEl.remove();
       this.tooltipEl = null;
       this.removeDescribedBy();

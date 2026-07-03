@@ -17,6 +17,8 @@
     [attr.accept]="accept() ?? null"
     [attr.required]="required() ? true : null"
     [disabled]="isDisabled()"
+    tabindex="-1"
+    aria-hidden="true"
     (change)="onFileSelected($event)" />
 
   <button
@@ -53,6 +55,8 @@
   @if (showFileList() && value().length) {
     <ul
       class="ea-file-uploader-field__list"
+      aria-live="polite"
+      aria-relevant="additions removals"
       [attr.aria-label]="i18n.messages().fileUploader.fileListLabel">
       @for (file of value(); track trackFile($index, file)) {
         <li class="ea-file-uploader-field__item">
@@ -83,6 +87,7 @@
           <div class="ea-file-uploader-field__meta">
             <span
               class="ea-file-uploader-field__name"
+              [id]="id() + '-file-' + $index"
               [title]="file.name">
               <bdi>{{ file.name }}</bdi>
             </span>
@@ -93,6 +98,7 @@
               <div
                 class="ea-file-uploader-field__progress"
                 role="progressbar"
+                [attr.aria-labelledby]="id() + '-file-' + $index"
                 [attr.aria-valuenow]="p"
                 aria-valuemin="0"
                 aria-valuemax="100">

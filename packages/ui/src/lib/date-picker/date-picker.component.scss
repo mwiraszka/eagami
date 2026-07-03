@@ -242,7 +242,7 @@
     cursor: pointer;
     transition: var(--transition-colors);
 
-    &:hover:not(:disabled) {
+    &:hover:not([aria-disabled='true']) {
       background-color: var(--color-state-hover);
     }
 

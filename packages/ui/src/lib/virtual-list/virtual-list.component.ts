@@ -70,6 +70,14 @@ export class VirtualListComponent {
    */
   readonly overscan = input<number>(3);
 
+  /**
+   * Accessible name for the scrollable viewport. When set, the viewport gets
+   * `role="region"` with this label so keyboard and screen-reader users can
+   * identify it. Leave unset when the consumer supplies its own ARIA
+   * semantics around the list (e.g. an outer `role="listbox"`).
+   */
+  readonly ariaLabel = input<string | undefined>(undefined);
+
   /** Index of the first row currently visible at the top of the viewport. */
   readonly scrollIndexChange = output<number>();
 

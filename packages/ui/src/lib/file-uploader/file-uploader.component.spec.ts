@@ -307,5 +307,41 @@ describe('FileUploaderComponent', () => {
       const described = getDropzone().getAttribute('aria-describedby');
       expect(described).toContain('-hint');
     });
+
+    it('keeps the hidden file input out of the tab order and accessibility tree', () => {
+      const inputEl = getFileInput();
+
+      expect(inputEl.tabIndex).toBe(-1);
+      expect(inputEl.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('announces file list changes via a polite live region', () => {
+      component.writeValue([makeFile('a.txt', 10)]);
+      fixture.detectChanges();
+
+      const list: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-file-uploader-field__list',
+      );
+
+      expect(list.getAttribute('aria-live')).toBe('polite');
+      expect(list.getAttribute('aria-relevant')).toBe('additions removals');
+    });
+
+    it('names each per-file progressbar after its file name', () => {
+      const file = makeFile('a.txt', 10);
+      component.writeValue([file]);
+      fixture.componentRef.setInput('progress', new Map([[file, 40]]));
+      fixture.detectChanges();
+
+      const bar: HTMLElement =
+        fixture.nativeElement.querySelector('[role="progressbar"]');
+      const name: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-file-uploader-field__name',
+      );
+
+      expect(name.id).toBeTruthy();
+      expect(bar.getAttribute('aria-labelledby')).toBe(name.id);
+      expect(bar.getAttribute('aria-valuenow')).toBe('40');
+    });
   });
 });

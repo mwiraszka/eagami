@@ -87,6 +87,10 @@ export class SegmentedComponent implements ControlValueAccessor {
 
   readonly enabledOptions = computed(() => this.options().filter(opt => !opt.disabled));
 
+  readonly firstEnabledIndex = computed(() =>
+    this.options().findIndex(opt => !opt.disabled),
+  );
+
   readonly hostClasses = computed(() => ({
     [`ea-segmented--${this.size()}`]: true,
     'ea-segmented--full-width': this.fullWidth(),

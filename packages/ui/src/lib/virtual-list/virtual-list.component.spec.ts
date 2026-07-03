@@ -20,7 +20,8 @@ const ROWS: Row[] = Array.from({ length: 1000 }, (_, i) => ({
       [items]="items()"
       [itemHeight]="40"
       [viewportHeight]="200"
-      [overscan]="2">
+      [overscan]="2"
+      [ariaLabel]="ariaLabel()">
       <ng-template
         #item
         let-row
@@ -36,6 +37,7 @@ const ROWS: Row[] = Array.from({ length: 1000 }, (_, i) => ({
 })
 class HostComponent {
   items = signal<readonly Row[]>(ROWS);
+  ariaLabel = signal<string | undefined>(undefined);
 }
 
 describe('VirtualListComponent', () => {
@@ -119,5 +121,23 @@ describe('VirtualListComponent', () => {
       '.ea-virtual-list__spacer',
     ) as HTMLElement;
     expect(spacer.style.height).toBe('0px');
+  });
+
+  describe('Viewport accessibility', () => {
+    it('leaves the viewport out of the tab order and unlabelled by default', () => {
+      expect(getViewport().hasAttribute('tabindex')).toBe(false);
+      expect(getViewport().hasAttribute('role')).toBe(false);
+      expect(getViewport().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('names the viewport as a keyboard-focusable region when ariaLabel is set', () => {
+      fixture.componentInstance.ariaLabel.set('Search results');
+
+      fixture.detectChanges();
+
+      expect(getViewport().getAttribute('tabindex')).toBe('0');
+      expect(getViewport().getAttribute('role')).toBe('region');
+      expect(getViewport().getAttribute('aria-label')).toBe('Search results');
+    });
   });
 });

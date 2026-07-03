@@ -33,6 +33,8 @@ export class TabsComponent {
 
   readonly variant = input<TabsVariant>('underline');
   readonly size = input<TabsSize>('md');
+  /** Accessible name for the tablist, announced by screen readers. */
+  readonly ariaLabel = input<string | undefined>(undefined);
 
   readonly activeTab = model<string>('');
 

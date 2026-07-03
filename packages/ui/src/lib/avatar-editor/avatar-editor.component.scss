@@ -7,7 +7,8 @@
   gap: var(--space-3);
   font-family: var(--font-family-sans);
 
-  &__file-input {
+  &__file-input,
+  &__visually-hidden {
     position: absolute;
     overflow: hidden;
     width: 1px;

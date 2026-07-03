@@ -366,6 +366,110 @@ describe('MultiSelectComponent', () => {
     });
   });
 
+  describe('ARIA wiring', () => {
+    it('renders the option list as a multiselectable listbox with per-option ids', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const list = document.body.querySelector('.ea-multi-select__list');
+
+      expect(list?.getAttribute('role')).toBe('listbox');
+      expect(list?.getAttribute('aria-multiselectable')).toBe('true');
+      expect(getOptionRows()[0].id).toBe(`${component.id()}-opt-0`);
+    });
+
+    it('links the trigger to the popover surface via aria-controls while open', () => {
+      expect(getTrigger().getAttribute('aria-controls')).toBeNull();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+
+      expect(getTrigger().getAttribute('aria-controls')).toBe(component.listboxId());
+      expect(surface?.id).toBe(component.listboxId());
+    });
+
+    it('tracks the focused option on the search input via aria-activedescendant', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      const search = getSearchInput()!;
+
+      search.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(search.getAttribute('aria-activedescendant')).toBe(
+        `${component.id()}-opt-0`,
+      );
+    });
+
+    it('tracks the focused option on the trigger when not searchable', () => {
+      fixture.componentRef.setInput('searchable', false);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-activedescendant')).toBe(
+        `${component.id()}-opt-0`,
+      );
+      expect(component.value()).toEqual(['apple']);
+    });
+
+    it('names the trigger via aria-label only when no label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Fruits');
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBe('Fruits');
+
+      fixture.componentRef.setInput('label', 'Fruits');
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-label')).toBeNull();
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe(
+        `${component.id()}-label`,
+      );
+    });
+
+    it('hides the embedded option checkbox from the accessibility tree', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const checkbox = getOptionRows()[0].querySelector('ea-checkbox');
+
+      expect(checkbox?.getAttribute('aria-hidden')).toBe('true');
+      expect(checkbox?.hasAttribute('inert')).toBe(true);
+    });
+
+    it('conveys selection on the option row itself via aria-selected', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getOptionRows()[0].click();
+      fixture.detectChanges();
+
+      expect(getOptionRows()[0].getAttribute('aria-selected')).toBe('true');
+      expect(getOptionRows()[1].getAttribute('aria-selected')).toBe('false');
+      expect(getOptionRows()[0].hasAttribute('tabindex')).toBe(false);
+    });
+
+    it('returns focus to the search input after clicking an option', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getOptionRows()[1].click();
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getSearchInput());
+      expect(component.focusedIndex()).toBe(1);
+    });
+  });
+
   describe('Disabled state', () => {
     it('marks the trigger aria-disabled when disabled', () => {
       fixture.componentRef.setInput('disabled', true);

@@ -1,6 +1,9 @@
 <div
   #viewport
   class="ea-virtual-list__viewport"
+  [attr.tabindex]="ariaLabel() ? 0 : null"
+  [attr.role]="ariaLabel() ? 'region' : null"
+  [attr.aria-label]="ariaLabel() || null"
   [style]="viewportStyle()"
   (scroll)="onScroll($event)">
   <div

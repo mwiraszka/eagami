@@ -17,7 +17,7 @@
           [attr.aria-disabled]="item.disabled || disabled() || null"
           [class.ea-transfer-list__item--highlighted]="isHighlighted('source', item.id)"
           [class.ea-transfer-list__item--disabled]="item.disabled || disabled()"
-          [attr.tabindex]="item.disabled || disabled() ? -1 : 0"
+          [attr.tabindex]="itemTabindex('source', $index, item)"
           (click)="onItemClick('source', item, $event)"
           (keydown)="onItemKeydown($event, 'source', item)">
           {{ item.label }}
@@ -88,7 +88,7 @@
           [attr.aria-disabled]="item.disabled || disabled() || null"
           [class.ea-transfer-list__item--highlighted]="isHighlighted('target', item.id)"
           [class.ea-transfer-list__item--disabled]="item.disabled || disabled()"
-          [attr.tabindex]="item.disabled || disabled() ? -1 : 0"
+          [attr.tabindex]="itemTabindex('target', $index, item)"
           (click)="onItemClick('target', item, $event)"
           (keydown)="onItemKeydown($event, 'target', item)">
           {{ item.label }}

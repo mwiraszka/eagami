@@ -12,6 +12,8 @@ const messages: EagamiMessages = {
     upload: 'העלאת תמונה',
     dropzone: 'גרור תמונה או לחץ להעלאה',
     canvas: 'תצוגה מקדימה של התמונה, גרור או השתמש במקשי החצים להזזה ובמחוון לזום',
+    canvasInstructions:
+      'השתמש במקשי החצים להזזת התמונה, בפלוס ומינוס לזום, וב-Enter או ברווח לבחירת תמונה אחרת',
     change: 'החלפת תמונה',
     revert: 'שחזור למקור',
     zoomOut: 'התרחקות',
@@ -39,6 +41,8 @@ const messages: EagamiMessages = {
     clear: 'ניקוי צבע',
     hue: 'גוון',
     saturationAndValue: 'רוויה ובהירות',
+    saturationAndValueStatus: (saturation, value) =>
+      `רוויה ${saturation}%, בהירות ${value}%`,
     alpha: 'שקיפות',
     eyedropper: 'בחירה מהמסך',
     presets: 'הגדרות מוכנות',
@@ -54,6 +58,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'בחר תאריך…',
+    dialogLabel: 'בחירת תאריך',
     clear: 'ניקוי תאריך',
     previousYear: 'שנה קודמת',
     previousMonth: 'חודש קודם',
@@ -126,6 +131,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'התקדמות',
   },
+  rangeSlider: {
+    lowThumbLabel: 'ערך מינימלי',
+    highThumbLabel: 'ערך מקסימלי',
+  },
   rating: {
     label: 'דירוג',
     valueLabel: (value, max) => `${value} מתוך ${max}`,
@@ -135,13 +144,16 @@ const messages: EagamiMessages = {
     label: 'טוען',
   },
   stepper: {
+    stepsLabel: 'שלבים',
     optional: 'אופציונלי',
+    stepCompleted: 'הושלם',
   },
   tag: {
     remove: 'הסרה',
   },
   timePicker: {
     placeholder: 'בחר שעה…',
+    dialogLabel: 'בחירת שעה',
     clear: 'ניקוי שעה',
     hoursLabel: 'שעות',
     minutesLabel: 'דקות',

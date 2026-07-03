@@ -4,6 +4,7 @@
   <div
     class="ea-stepper__list"
     role="tablist"
+    [attr.aria-label]="i18n.messages().stepper.stepsLabel"
     (keydown)="handleKeydown($event)">
     @for (step of registeredSteps(); let i = $index; track step) {
       <button
@@ -13,9 +14,8 @@
         [class.ea-stepper__button--active]="i === activeStep()"
         [class.ea-stepper__button--completed]="step.completed()"
         [id]="step.id() + '-tab'"
-        [attr.aria-controls]="step.id() + '-panel'"
+        [attr.aria-controls]="i === activeStep() ? step.id() + '-panel' : null"
         [attr.aria-selected]="i === activeStep()"
-        [attr.aria-current]="i === activeStep() ? 'step' : null"
         [disabled]="!canNavigateTo(i)"
         [tabindex]="i === activeStep() ? 0 : -1"
         (click)="selectStep(i)">
@@ -36,6 +36,11 @@
             </span>
           }
         </span>
+        @if (step.completed()) {
+          <span class="ea-stepper__completed-label">
+            {{ i18n.messages().stepper.stepCompleted }}
+          </span>
+        }
       </button>
       @if (i < registeredSteps().length - 1) {
         <span

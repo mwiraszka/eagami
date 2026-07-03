@@ -128,7 +128,17 @@ export class MenuComponent {
    * and restoring focus on close.
    */
   private focusFirstItem(): void {
-    this.getEnabledItems()[0]?.focus({ preventScroll: true });
+    this.focusItem(this.getEnabledItems()[0]);
+  }
+
+  private focusItem(item: HTMLButtonElement | undefined): void {
+    if (!item) {
+      return;
+    }
+    for (const el of this.getEnabledItems()) {
+      el.tabIndex = el === item ? 0 : -1;
+    }
+    item.focus({ preventScroll: true });
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -169,7 +179,7 @@ export class MenuComponent {
     }
 
     if (next >= 0) {
-      items[next].focus({ preventScroll: true });
+      this.focusItem(items[next]);
     }
   }
 

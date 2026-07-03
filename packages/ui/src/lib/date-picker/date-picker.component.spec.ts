@@ -243,8 +243,8 @@ describe('DatePickerComponent', () => {
       component.viewMonth.set(3);
       fixture.detectChanges();
 
-      expect(findDayCell(5).disabled).toBe(true);
-      expect(findDayCell(15).disabled).toBe(false);
+      expect(findDayCell(5).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(15).getAttribute('aria-disabled')).toBeNull();
     });
 
     it('marks days after maxDate as disabled', () => {
@@ -255,8 +255,8 @@ describe('DatePickerComponent', () => {
       component.viewMonth.set(3);
       fixture.detectChanges();
 
-      expect(findDayCell(5).disabled).toBe(false);
-      expect(findDayCell(20).disabled).toBe(true);
+      expect(findDayCell(5).getAttribute('aria-disabled')).toBeNull();
+      expect(findDayCell(20).getAttribute('aria-disabled')).toBe('true');
     });
   });
 

@@ -484,6 +484,7 @@ export class DatePickerComponent implements ControlValueAccessor {
       this.focusedDate.set(next);
       this.viewYear.set(next.getFullYear());
       this.viewMonth.set(next.getMonth());
+      afterNextRender(() => this.focusFocusedDayCell(), { injector: this.injector });
     }
   }
 

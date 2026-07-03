@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { EagamiI18nService } from '../i18n/i18n.service';
 import { TimePickerComponent } from './time-picker.component';
 
 describe('TimePickerComponent', () => {
@@ -134,6 +135,28 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('omits aria-controls when closed', () => {
+      expect(getTrigger().hasAttribute('aria-controls')).toBe(false);
+    });
+
+    it('sets aria-controls to the popover surface id when open', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      expect(getTrigger().getAttribute('aria-controls')).toBe(surface?.id);
+    });
+
+    it('names the dialog via the popover aria-label', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      expect(surface?.getAttribute('aria-label')).toBe(
+        TestBed.inject(EagamiI18nService).messages().timePicker.dialogLabel,
+      );
     });
   });
 
@@ -274,6 +297,16 @@ describe('TimePickerComponent', () => {
       expect(amBtn.classList).not.toContain('ea-time-picker__period-option--active');
     });
 
+    it('sets aria-pressed to reflect the active period', () => {
+      component.writeValue('09:00');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [amBtn, pmBtn] = getPeriodOptions();
+      expect(amBtn.getAttribute('aria-pressed')).toBe('true');
+      expect(pmBtn.getAttribute('aria-pressed')).toBe('false');
+    });
+
     it('toggles 9 AM to 9 PM', () => {
       component.writeValue('09:00');
       getTrigger().click();
@@ -392,6 +425,20 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
+    });
+
+    it('closes and refocuses the trigger on Escape from inside the popover', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursUp] = getStepButtons();
+      hoursUp.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
     });
 
     it('steps via ArrowUp on the value spinner', () => {

@@ -10,12 +10,12 @@
     <div class="ea-paginator__page-size">
       <label
         class="ea-paginator__label"
-        for="ea-paginator-size">
+        [for]="sizeSelectId">
         {{ i18n.messages().paginator.rowsPerPage }}
       </label>
       <select
         class="ea-paginator__select"
-        id="ea-paginator-size"
+        [id]="sizeSelectId"
         [disabled]="disabled()"
         (change)="onPageSizeChange($event)">
         @for (option of pageSizeOptions(); track option) {
@@ -30,7 +30,9 @@
   }
 
   @if (showRangeLabel()) {
-    <span class="ea-paginator__range">
+    <span
+      class="ea-paginator__range"
+      aria-live="polite">
       <bdi>
         {{
           i18n
@@ -57,7 +59,11 @@
 
     @for (p of visiblePages(); track $index) {
       @if (p === 'ellipsis') {
-        <span class="ea-paginator__ellipsis">…</span>
+        <span
+          class="ea-paginator__ellipsis"
+          aria-hidden="true">
+          …
+        </span>
       } @else {
         <ea-button
           class="ea-paginator__page-btn"

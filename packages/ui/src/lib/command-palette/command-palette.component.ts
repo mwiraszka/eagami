@@ -1,4 +1,4 @@
-import { NgComponentOutlet } from '@angular/common';
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -44,7 +44,7 @@ interface GroupedItems {
   styleUrl: './command-palette.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [NgComponentOutlet, SearchIconComponent, XIconComponent],
+  imports: [NgComponentOutlet, NgTemplateOutlet, SearchIconComponent, XIconComponent],
 })
 export class CommandPaletteComponent {
   private readonly i18n = inject(EagamiI18nService);

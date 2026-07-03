@@ -10,6 +10,10 @@ describe('AlertComponent', () => {
     return fixture.nativeElement.querySelector('.ea-alert');
   }
 
+  function getContainer(): HTMLElement {
+    return fixture.nativeElement.querySelector('.ea-alert-container');
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AlertComponent],
@@ -36,19 +40,19 @@ describe('AlertComponent', () => {
     });
 
     it('uses role="status" for non-urgent variants by default', () => {
-      expect(getAlert()!.getAttribute('role')).toBe('status');
+      expect(getContainer().getAttribute('role')).toBe('status');
     });
 
     it('uses role="alert" for error variant', () => {
       fixture.componentRef.setInput('variant', 'error');
       fixture.detectChanges();
-      expect(getAlert()!.getAttribute('role')).toBe('alert');
+      expect(getContainer().getAttribute('role')).toBe('alert');
     });
 
     it('uses role="alert" for warning variant', () => {
       fixture.componentRef.setInput('variant', 'warning');
       fixture.detectChanges();
-      expect(getAlert()!.getAttribute('role')).toBe('alert');
+      expect(getContainer().getAttribute('role')).toBe('alert');
     });
 
     it('renders an icon', () => {
@@ -113,6 +117,17 @@ describe('AlertComponent', () => {
       component.visible.set(false);
       fixture.detectChanges();
       expect(getAlert()).toBeNull();
+    });
+
+    it('keeps the live-region container in the DOM while hidden', () => {
+      component.visible.set(false);
+      fixture.detectChanges();
+
+      const container = getContainer();
+
+      expect(container).toBeTruthy();
+      expect(container.getAttribute('role')).toBe('status');
+      expect(container.textContent!.trim()).toBe('');
     });
   });
 });

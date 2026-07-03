@@ -9,6 +9,7 @@
     [class.ea-tabs__list--lg]="size() === 'lg'"
     [class.ea-tabs__list--xl]="size() === 'xl'"
     role="tablist"
+    [attr.aria-label]="ariaLabel() || null"
     (keydown)="handleKeydown($event)">
     @for (tab of registeredTabs(); track tab.value()) {
       <button

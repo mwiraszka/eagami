@@ -20,6 +20,7 @@ const FRUITS: SelectOption[] = [
       [(value)]="value"
       [options]="options()"
       [label]="label()"
+      [ariaLabel]="ariaLabel()"
       [placeholder]="placeholder()"
       [size]="size()"
       [disabled]="disabled()"
@@ -35,6 +36,7 @@ class TestHostComponent {
   value = signal('');
   options = signal<SelectOption[]>(FRUITS);
   label = signal<string | undefined>(undefined);
+  ariaLabel = signal<string | undefined>(undefined);
   placeholder = signal('');
   size = signal<AutocompleteSize>('md');
   disabled = signal(false);
@@ -99,6 +101,10 @@ describe('AutocompleteComponent', () => {
   }
 
   beforeEach(async () => {
+    if (typeof Element.prototype.scrollIntoView !== 'function') {
+      Element.prototype.scrollIntoView = () => {};
+    }
+
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
     }).compileComponents();
@@ -145,6 +151,34 @@ describe('AutocompleteComponent', () => {
 
       expect(getInput().getAttribute('aria-invalid')).toBe('true');
     });
+
+    it('applies ariaLabel to the input when no label is provided', () => {
+      host.ariaLabel.set('Fruit');
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-label')).toBe('Fruit');
+    });
+
+    it('omits aria-label on the input when a visible label is provided', () => {
+      host.label.set('Fruit');
+      host.ariaLabel.set('Fruit search');
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-label')).toBeNull();
+    });
+
+    it('names the listbox popup from the label or ariaLabel', () => {
+      host.ariaLabel.set('Fruit');
+      fixture.detectChanges();
+
+      focus();
+
+      const surface = document.querySelector<HTMLElement>(
+        '.ea-popover__surface:not([aria-hidden])',
+      );
+
+      expect(surface?.getAttribute('aria-label')).toBe('Fruit');
+    });
   });
 
   describe('Filtering', () => {
@@ -187,6 +221,15 @@ describe('AutocompleteComponent', () => {
 
       expect(empty).toBeTruthy();
       expect(getOptions().length).toBe(0);
+    });
+
+    it('announces the empty message via role="status"', () => {
+      focus();
+      type('zzz');
+
+      const empty = getListbox()?.querySelector('.ea-autocomplete__empty');
+
+      expect(empty?.getAttribute('role')).toBe('status');
     });
 
     it('respects minLength', () => {
@@ -291,6 +334,16 @@ describe('AutocompleteComponent', () => {
 
       expect(host.value()).toBe('Apple');
       expect(host.lastSelected?.value).toBe('apple');
+    });
+
+    it('scrolls the newly focused option into view', () => {
+      focus();
+      const scrollSpy = vi.fn<Element['scrollIntoView']>();
+      getOptions()[0].scrollIntoView = scrollSpy;
+
+      press('ArrowDown');
+
+      expect(scrollSpy).toHaveBeenCalledWith({ block: 'nearest' });
     });
 
     it('closes on Escape', () => {

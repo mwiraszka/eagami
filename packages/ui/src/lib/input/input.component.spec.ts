@@ -383,6 +383,49 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Clear button', () => {
+    function getClearButton(): HTMLButtonElement {
+      return fixture.nativeElement.querySelector('.ea-input-wrapper__clear');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('clearable', true);
+      component.value.set('hello');
+      fixture.detectChanges();
+    });
+
+    it('clears the value and refocuses the input on click activation', () => {
+      const focusSpy = vi.spyOn(getNativeInput(), 'focus');
+
+      getClearButton().dispatchEvent(new MouseEvent('click'));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('');
+      expect(focusSpy).toHaveBeenCalled();
+    });
+
+    it('keeps focus in the input on mousedown without clearing', () => {
+      const event = new MouseEvent('mousedown', { cancelable: true });
+
+      getClearButton().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(component.value()).toBe('hello');
+    });
+
+    it('notifies onChange exactly once per activation', () => {
+      const onChange = vi.fn();
+      component.registerOnChange(onChange);
+      const button = getClearButton();
+
+      button.dispatchEvent(new MouseEvent('mousedown', { cancelable: true }));
+      button.dispatchEvent(new MouseEvent('click'));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith('');
+    });
+  });
+
   describe('Programmatic focus', () => {
     it('exposes a focus() method that focuses the native input', () => {
       const spy = vi.spyOn(getNativeInput(), 'focus');

@@ -12,6 +12,8 @@ const messages: EagamiMessages = {
     upload: 'تحميل صورة',
     dropzone: 'أفلت الصورة أو انقر للتحميل',
     canvas: 'معاينة الصورة، اسحب أو استخدم مفاتيح الأسهم للتحريك، وشريط التمرير للتكبير',
+    canvasInstructions:
+      'استخدم مفاتيح الأسهم لتحريك الصورة، وعلامتي الزائد والناقص للتكبير والتصغير، وEnter أو المسافة لاختيار صورة أخرى',
     change: 'تغيير الصورة',
     revert: 'استعادة الأصل',
     zoomOut: 'تصغير',
@@ -39,6 +41,8 @@ const messages: EagamiMessages = {
     clear: 'مسح اللون',
     hue: 'تدرج اللون',
     saturationAndValue: 'التشبع والقيمة',
+    saturationAndValueStatus: (saturation, value) =>
+      `التشبع ${saturation}%، السطوع ${value}%`,
     alpha: 'الشفافية',
     eyedropper: 'الاختيار من الشاشة',
     presets: 'الإعدادات المسبقة',
@@ -54,6 +58,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'اختر التاريخ…',
+    dialogLabel: 'اختيار التاريخ',
     clear: 'مسح التاريخ',
     previousYear: 'السنة السابقة',
     previousMonth: 'الشهر السابق',
@@ -134,6 +139,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'التقدم',
   },
+  rangeSlider: {
+    lowThumbLabel: 'القيمة الدنيا',
+    highThumbLabel: 'القيمة القصوى',
+  },
   rating: {
     label: 'التقييم',
     valueLabel: (value, max) => `${value} من ${max}`,
@@ -143,13 +152,16 @@ const messages: EagamiMessages = {
     label: 'جارٍ التحميل',
   },
   stepper: {
+    stepsLabel: 'الخطوات',
     optional: 'اختياري',
+    stepCompleted: 'مكتملة',
   },
   tag: {
     remove: 'إزالة',
   },
   timePicker: {
     placeholder: 'اختر الوقت…',
+    dialogLabel: 'اختيار الوقت',
     clear: 'مسح الوقت',
     hoursLabel: 'الساعات',
     minutesLabel: 'الدقائق',

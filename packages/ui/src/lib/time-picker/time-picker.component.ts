@@ -110,6 +110,8 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly secondStep = input<number>(1);
   readonly id = input<string>(uniqueId('ea-time-picker'));
 
+  readonly popoverId = computed(() => `${this.id()}-popover`);
+
   /** `"HH:MM"` or `"HH:MM:SS"` in 24-hour notation, or `null` when unset. */
   readonly value = model<string | null>(null);
   /** Fires with the new value whenever the user changes the time. */
@@ -421,13 +423,17 @@ export class TimePickerComponent implements ControlValueAccessor {
       this.commit(this.parsed());
       this.close();
       this.triggerEl()?.nativeElement.focus();
-    } else if (event.key === 'Escape') {
-      event.preventDefault();
-      this.editBuffer.set(null);
-      this.close();
-      this.triggerEl()?.nativeElement.focus();
     }
+    // Escape bubbles up to the popover wrapper's handler, which closes.
     // Tab is handled by the browser; (blur) on the leaving input flushes.
+  }
+
+  /** Escape from anywhere inside the popover closes it and refocuses the trigger. */
+  onPopoverEscape(event: Event): void {
+    event.preventDefault();
+    this.editBuffer.set(null);
+    this.close();
+    this.triggerEl()?.nativeElement.focus();
   }
 
   /** Select-all on focus so the first keystroke replaces the current value. */

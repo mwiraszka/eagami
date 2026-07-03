@@ -13,6 +13,8 @@ const messages: EagamiMessages = {
     dropzone: 'Sleep een afbeelding hierheen of klik om te uploaden',
     canvas:
       'Voorbeeld van afbeelding, sleep of gebruik de pijltjestoetsen om te verplaatsen, schuifregelaar om te zoomen',
+    canvasInstructions:
+      'Gebruik de pijltjestoetsen om de afbeelding te verplaatsen, plus en min om te zoomen, en Enter of de spatiebalk om een andere foto te kiezen',
     change: 'Foto wijzigen',
     revert: 'Terug naar origineel',
     zoomOut: 'Uitzoomen',
@@ -40,6 +42,8 @@ const messages: EagamiMessages = {
     clear: 'Kleur wissen',
     hue: 'Tint',
     saturationAndValue: 'Verzadiging en helderheid',
+    saturationAndValueStatus: (saturation, value) =>
+      `Verzadiging ${saturation}%, helderheid ${value}%`,
     alpha: 'Transparantie',
     eyedropper: 'Kies van het scherm',
     presets: 'Voorinstellingen',
@@ -55,6 +59,7 @@ const messages: EagamiMessages = {
   },
   datePicker: {
     placeholder: 'Selecteer datum…',
+    dialogLabel: 'Datum kiezen',
     clear: 'Datum wissen',
     previousYear: 'Vorig jaar',
     previousMonth: 'Vorige maand',
@@ -127,6 +132,10 @@ const messages: EagamiMessages = {
   progressBar: {
     label: 'Voortgang',
   },
+  rangeSlider: {
+    lowThumbLabel: 'Minimumwaarde',
+    highThumbLabel: 'Maximumwaarde',
+  },
   rating: {
     label: 'Beoordeling',
     valueLabel: (value, max) => `${value} van ${max}`,
@@ -136,13 +145,16 @@ const messages: EagamiMessages = {
     label: 'Laden',
   },
   stepper: {
+    stepsLabel: 'Stappen',
     optional: 'optioneel',
+    stepCompleted: 'voltooid',
   },
   tag: {
     remove: 'Verwijderen',
   },
   timePicker: {
     placeholder: 'Selecteer tijd…',
+    dialogLabel: 'Tijd kiezen',
     clear: 'Tijd wissen',
     hoursLabel: 'Uren',
     minutesLabel: 'Minuten',

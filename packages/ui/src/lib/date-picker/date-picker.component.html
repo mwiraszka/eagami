@@ -3,6 +3,7 @@
     <ea-field-label
       [text]="labelText"
       [forId]="id()"
+      [labelId]="id() + '-label'"
       [required]="required()" />
   }
 
@@ -19,6 +20,8 @@
         [disabled]="isDisabled()"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'dialog'"
+        [attr.aria-controls]="isOpen() ? id() + '-dialog' : null"
+        [attr.aria-labelledby]="label() ? id() + '-label ' + id() : null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
         [attr.aria-describedby]="
@@ -53,13 +56,15 @@
       [open]="isOpen()"
       placement="bottom-start"
       role="dialog"
+      [surfaceId]="id() + '-dialog'"
+      [aria-label]="i18n.messages().datePicker.dialogLabel"
+      [trapFocus]="true"
       [closeOnEscape]="false"
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-date-picker__popover"
         [ngClass]="popoverClasses()"
-        [attr.aria-labelledby]="id() + '-label'"
         (keydown)="handleGridKeydown($event)">
         <div class="ea-date-picker__header">
           <button
@@ -85,7 +90,6 @@
           </button>
           <span
             class="ea-date-picker__month-label"
-            [id]="id() + '-label'"
             aria-live="polite">
             {{ monthYearLabel() }}
           </span>
@@ -140,7 +144,7 @@
                   [class.ea-date-picker__day--selected]="day.isSelected"
                   [class.ea-date-picker__day--focused]="day.isFocused"
                   [class.ea-date-picker__day--disabled]="day.isDisabled"
-                  [disabled]="day.isDisabled"
+                  [attr.aria-disabled]="day.isDisabled || null"
                   [attr.aria-selected]="day.isSelected"
                   [attr.aria-current]="day.isToday ? 'date' : null"
                   [attr.tabindex]="day.isFocused ? 0 : -1"

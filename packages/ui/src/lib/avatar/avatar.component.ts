@@ -41,6 +41,8 @@ export class AvatarComponent {
     [`ea-avatar--${this.shape()}`]: true,
   }));
 
+  readonly accessibleName = computed(() => this.alt() || this.initials() || null);
+
   readonly showImage = computed(() => !!this.src());
   readonly showInitials = computed(() => !this.src() && !!this.initials());
   readonly showFallback = computed(() => !this.src() && !this.initials());

@@ -73,6 +73,7 @@ export type PopoverScrollBehavior = 'reposition' | 'close' | 'ignore';
   host: {
     '[attr.role]': 'null',
     '[attr.aria-label]': 'null',
+    '[attr.aria-labelledby]': 'null',
   },
 })
 export class PopoverComponent {
@@ -94,6 +95,14 @@ export class PopoverComponent {
 
   /** Accessible label. Falls back to nothing; consumers should provide one when no visible heading is in the popover. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+
+  /** Id of the element that labels the popover surface, forwarded as `aria-labelledby`. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
+
+  /** Keep Tab and Shift+Tab cycling within the surface while open (dialog pattern). */
+  readonly trapFocus = input<boolean>(false);
 
   /** DOM id for the surface so trigger elements can reference it via aria-controls. */
   readonly surfaceId = input<string>(uniqueId('ea-popover'));
@@ -386,6 +395,37 @@ export class PopoverComponent {
       return;
     }
     this.closeRequested.emit();
+  }
+
+  onSurfaceKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Tab' || !this.open() || !this.trapFocus()) {
+      return;
+    }
+    const surface = this.surfaceEl()?.nativeElement;
+    if (!surface) {
+      return;
+    }
+    const focusable = Array.from(
+      surface.querySelectorAll<HTMLElement>(
+        'a[href], button, input, select, textarea, [tabindex]',
+      ),
+    ).filter(el => el.tabIndex >= 0 && !el.hasAttribute('disabled'));
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (event.shiftKey) {
+      if (active === first || !surface.contains(active)) {
+        event.preventDefault();
+        last.focus();
+      }
+    } else if (active === last || !surface.contains(active)) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   @HostListener('document:keydown.escape')

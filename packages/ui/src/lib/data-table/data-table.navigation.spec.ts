@@ -78,6 +78,19 @@ describe('DataTableComponent grid keyboard navigation', () => {
     expect(rovingCell()).toBe('0-0');
   });
 
+  it('removes sort buttons from the tab order so the roving cell stays the only stop', async () => {
+    await setup();
+
+    const buttons = (
+      fixture.nativeElement as HTMLElement
+    ).querySelectorAll<HTMLButtonElement>('.ea-data-table__sort-button');
+
+    expect(buttons).toHaveLength(2);
+    buttons.forEach(button => {
+      expect(button.getAttribute('tabindex')).toBe('-1');
+    });
+  });
+
   it('moves the roving cell with the arrow keys', async () => {
     await setup();
 

@@ -19,6 +19,7 @@
         [disabled]="isDisabled()"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'dialog'"
+        [attr.aria-controls]="isOpen() ? popoverId() : null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
         [attr.aria-describedby]="
@@ -51,10 +52,14 @@
       [open]="isOpen()"
       placement="bottom-start"
       role="dialog"
+      [aria-label]="i18n.messages().timePicker.dialogLabel"
+      [surfaceId]="popoverId()"
       [closeOnEscape]="false"
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">
-      <div class="ea-time-picker__popover">
+      <div
+        class="ea-time-picker__popover"
+        (keydown.escape)="onPopoverEscape($event)">
         <div class="ea-time-picker__column">
           <button
             type="button"
@@ -206,6 +211,7 @@
               type="button"
               class="ea-time-picker__period-option"
               [class.ea-time-picker__period-option--active]="period() === 'AM'"
+              [attr.aria-pressed]="period() === 'AM'"
               (click)="period() === 'PM' && togglePeriod()">
               {{ i18n.messages().timePicker.amLabel }}
             </button>
@@ -213,6 +219,7 @@
               type="button"
               class="ea-time-picker__period-option"
               [class.ea-time-picker__period-option--active]="period() === 'PM'"
+              [attr.aria-pressed]="period() === 'PM'"
               (click)="period() === 'AM' && togglePeriod()">
               {{ i18n.messages().timePicker.pmLabel }}
             </button>

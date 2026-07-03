@@ -2,7 +2,7 @@
   @if (label(); as labelText) {
     <ea-field-label
       [text]="labelText"
-      [forId]="id()"
+      [labelId]="id() + '-label'"
       [required]="required()" />
   }
 
@@ -19,6 +19,8 @@
         [disabled]="isDisabled()"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'dialog'"
+        [attr.aria-labelledby]="label() ? id() + '-label ' + id() : null"
+        [attr.aria-controls]="isOpen() ? id() + '-popover' : null"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
         [attr.aria-describedby]="
@@ -56,6 +58,7 @@
     <ea-popover
       [anchor]="triggerEl"
       [open]="isOpen()"
+      [surfaceId]="id() + '-popover'"
       placement="bottom-start"
       role="dialog"
       [ariaLabel]="label() || i18n.messages().colorPicker.placeholder"
@@ -85,6 +88,16 @@
             [style.left]="svPointerLeft()"
             [style.top]="svPointerTop()">
           </div>
+        </div>
+
+        <div
+          class="ea-color-picker__sv-status"
+          aria-live="polite">
+          {{
+            i18n
+              .messages()
+              .colorPicker.saturationAndValueStatus(satPercent(), valPercent())
+          }}
         </div>
 
         <div class="ea-color-picker__sliders">
@@ -126,7 +139,8 @@
                   [attr.aria-label]="i18n.messages().colorPicker.alpha"
                   [attr.aria-valuemin]="0"
                   [attr.aria-valuemax]="100"
-                  [attr.aria-valuenow]="alphaPointerLeft()"
+                  [attr.aria-valuenow]="alphaPercentRounded()"
+                  [attr.aria-valuetext]="alphaPercentRounded() + '%'"
                   [style.--ea-color-picker-alpha-base]="opaqueColor()"
                   (pointerdown)="onAlphaPointerDown($event)"
                   (pointermove)="onAlphaPointerMove($event)"
@@ -264,7 +278,7 @@
             <button
               type="button"
               class="ea-color-picker__format-toggle"
-              [attr.aria-label]="i18n.messages().colorPicker.toggleFormat"
+              [attr.aria-label]="formatToggleLabel()"
               (click)="cycleInputMode()">
               {{ formatLabel() }}
             </button>
@@ -286,19 +300,21 @@
 
         @if (presets().length > 0) {
           <div class="ea-color-picker__presets">
-            <span class="ea-color-picker__presets-label">
+            <span
+              class="ea-color-picker__presets-label"
+              [id]="id() + '-presets-label'">
               {{ i18n.messages().colorPicker.presets }}
             </span>
             <div
               class="ea-color-picker__presets-grid"
-              role="listbox">
+              role="group"
+              [attr.aria-labelledby]="id() + '-presets-label'">
               @for (preset of presets(); track preset) {
                 <button
                   type="button"
                   class="ea-color-picker__preset"
-                  role="option"
                   [attr.aria-label]="preset"
-                  [attr.aria-selected]="value() === preset"
+                  [attr.aria-pressed]="value() === preset"
                   [style.background-color]="preset"
                   (click)="selectPreset(preset)">
                 </button>

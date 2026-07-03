@@ -813,4 +813,83 @@ describe('ColorPickerComponent', () => {
       }
     });
   });
+
+  describe('Accessibility attributes', () => {
+    it('names the trigger via the field label and its own value text', () => {
+      fixture.componentRef.setInput('label', 'Brand');
+      fixture.componentRef.setInput('id', 'cp');
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-labelledby')).toBe('cp-label cp');
+      expect(fixture.nativeElement.querySelector('#cp-label')?.textContent?.trim()).toBe(
+        'Brand',
+      );
+    });
+
+    it('omits aria-labelledby when there is no label', () => {
+      expect(getTrigger().getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('points aria-controls at the popover surface only while open', () => {
+      fixture.componentRef.setInput('id', 'cp');
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-controls')).toBeNull();
+
+      open();
+
+      expect(getTrigger().getAttribute('aria-controls')).toBe('cp-popover');
+      expect(document.getElementById('cp-popover')).toBeTruthy();
+    });
+
+    it('exposes a numeric aria-valuenow and percent aria-valuetext on the alpha slider', () => {
+      component.writeValue('rgba(255, 0, 0, 0.5)');
+      open();
+
+      const alphaTrack = document.body.querySelector('.ea-color-picker__strip--alpha');
+
+      expect(alphaTrack?.getAttribute('aria-valuenow')).toBe('50');
+      expect(alphaTrack?.getAttribute('aria-valuetext')).toBe('50%');
+    });
+
+    it('renders the presets as a labelled group of toggle buttons', () => {
+      fixture.componentRef.setInput('id', 'cp');
+      fixture.detectChanges();
+      open();
+
+      const grid = document.body.querySelector('.ea-color-picker__presets-grid');
+      const preset = document.body.querySelector<HTMLButtonElement>(
+        '.ea-color-picker__preset',
+      );
+      preset?.click();
+      fixture.detectChanges();
+
+      expect(grid?.getAttribute('role')).toBe('group');
+      expect(grid?.getAttribute('aria-labelledby')).toBe('cp-presets-label');
+      expect(document.getElementById('cp-presets-label')).toBeTruthy();
+      expect(preset?.getAttribute('aria-pressed')).toBe('true');
+    });
+
+    it('includes the visible format text in the format toggle name', () => {
+      open();
+
+      const toggle = document.body.querySelector('.ea-color-picker__format-toggle');
+
+      expect(toggle?.getAttribute('aria-label')).toContain('HEX');
+    });
+
+    it('announces saturation and brightness changes via a polite live region', () => {
+      open();
+
+      const status = document.body.querySelector('.ea-color-picker__sv-status');
+      const svArea = document.body.querySelector('.ea-color-picker__sv-area');
+      svArea?.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(status?.getAttribute('aria-live')).toBe('polite');
+      expect(status?.textContent).toContain('1');
+    });
+  });
 });

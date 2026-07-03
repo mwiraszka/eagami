@@ -19,8 +19,18 @@ describe('AvatarComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders with role=img', () => {
+    it('renders with role=img when an accessible name is available', () => {
+      fixture.componentRef.setInput('alt', 'Profile photo');
+      fixture.detectChanges();
+
       expect(getHost().getAttribute('role')).toBe('img');
+    });
+
+    it('is hidden from assistive technology when unnamed', () => {
+      const host = getHost();
+
+      expect(host.getAttribute('role')).toBeNull();
+      expect(host.getAttribute('aria-hidden')).toBe('true');
     });
 
     it('applies the default size and shape classes', () => {
@@ -82,7 +92,10 @@ describe('AvatarComponent', () => {
       fixture.componentRef.setInput('alt', 'Profile photo');
       fixture.detectChanges();
 
-      expect(getHost().getAttribute('aria-label')).toBe('Profile photo');
+      const host = getHost();
+
+      expect(host.getAttribute('aria-label')).toBe('Profile photo');
+      expect(host.getAttribute('aria-hidden')).toBeNull();
     });
 
     it('falls back to initials when alt is empty', () => {

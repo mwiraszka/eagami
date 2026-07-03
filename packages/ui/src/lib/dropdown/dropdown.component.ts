@@ -83,6 +83,9 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly focusedIndex = signal(-1);
   private readonly _formDisabled = signal(false);
 
+  private typeaheadQuery = '';
+  private typeaheadTimer: ReturnType<typeof setTimeout> | undefined;
+
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -215,6 +218,64 @@ export class DropdownComponent implements ControlValueAccessor {
           this.elRef()?.nativeElement.focus();
         }
         break;
+      case 'Home':
+        event.preventDefault();
+        if (!this.isOpen()) {
+          this.toggle();
+        }
+        this.focusEdge(1);
+        break;
+      case 'End':
+        event.preventDefault();
+        if (!this.isOpen()) {
+          this.toggle();
+        }
+        this.focusEdge(-1);
+        break;
+      default:
+        this.handleTypeahead(event);
+        break;
+    }
+  }
+
+  private focusEdge(direction: 1 | -1): void {
+    const opts = this.options();
+    let idx = direction === 1 ? 0 : opts.length - 1;
+    while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
+      idx += direction;
+    }
+    if (idx >= 0 && idx < opts.length) {
+      this.focusedIndex.set(idx);
+    }
+  }
+
+  private handleTypeahead(event: KeyboardEvent): void {
+    if (event.key.length !== 1 || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    if (this.typeaheadTimer !== undefined) {
+      clearTimeout(this.typeaheadTimer);
+    }
+    this.typeaheadTimer = setTimeout(() => (this.typeaheadQuery = ''), 500);
+    this.typeaheadQuery += event.key.toLowerCase();
+    if (!this.isOpen()) {
+      this.toggle();
+    }
+    const opts = this.options();
+    if (opts.length === 0) {
+      return;
+    }
+    const start = Math.max(this.focusedIndex(), 0);
+    // A repeated first character cycles matches; a growing query keeps the current match
+    const firstOffset = this.typeaheadQuery.length > 1 ? 0 : 1;
+    for (let offset = firstOffset; offset <= opts.length; offset++) {
+      const idx = (start + offset) % opts.length;
+      const opt = opts[idx];
+      if (!opt.disabled && opt.label.toLowerCase().startsWith(this.typeaheadQuery)) {
+        this.focusedIndex.set(idx);
+        return;
+      }
     }
   }
 

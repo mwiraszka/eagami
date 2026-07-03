@@ -72,19 +72,12 @@
   list-style: none;
 }
 
-.ea-command-palette__group {
+.ea-command-palette__section {
   position: relative;
   margin-top: var(--space-3);
-  padding: var(--space-2) var(--space-3) var(--space-1);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  user-select: none;
 
   // Pseudo-element divider so it can span the list's inner edges (matching the
-  // item rows' hover background) instead of being inset by the group `<li>`'s padding
+  // item rows' hover background) instead of being inset by the heading's padding
   &::before {
     content: '';
     position: absolute;
@@ -103,6 +96,22 @@
       display: none;
     }
   }
+}
+
+.ea-command-palette__section-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ea-command-palette__group {
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  user-select: none;
 }
 
 .ea-command-palette__item {

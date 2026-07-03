@@ -29,8 +29,17 @@ describe('ToastComponent', () => {
     toastService.clear();
   });
 
-  it('renders nothing when there are no active toasts', () => {
-    expect(getContainer()).toBeNull();
+  it('mounts an empty container before any toast is shown', () => {
+    expect(getContainer()).toBeTruthy();
+    expect(getToasts()).toHaveLength(0);
+  });
+
+  it('does not mark the container as a live region', () => {
+    toastService.show('hello', { duration: 0 });
+    fixture.detectChanges();
+
+    expect(getContainer()?.hasAttribute('aria-live')).toBe(false);
+    expect(getContainer()?.hasAttribute('aria-atomic')).toBe(false);
   });
 
   it('renders one element per active toast', () => {
@@ -74,7 +83,7 @@ describe('ToastComponent', () => {
     closeBtn.click();
     fixture.detectChanges();
 
-    expect(getContainer()).toBeNull();
+    expect(getToasts()).toHaveLength(0);
   });
 
   it('auto-dismisses after the configured duration', () => {
@@ -87,7 +96,7 @@ describe('ToastComponent', () => {
     vi.advanceTimersByTime(1000);
     fixture.detectChanges();
 
-    expect(getContainer()).toBeNull();
+    expect(getToasts()).toHaveLength(0);
     vi.useRealTimers();
   });
 
