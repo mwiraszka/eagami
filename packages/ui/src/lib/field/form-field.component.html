@@ -1,0 +1,15 @@
+<div class="ea-form-field">
+  @if (label(); as labelText) {
+    <ea-field-label
+      [text]="labelText"
+      [forId]="controlId()"
+      [required]="required()" />
+  }
+
+  <ng-content />
+
+  <ea-field-messages
+    [id]="id()"
+    [error]="errorText()"
+    [hint]="showHint() ? hint() : null" />
+</div>

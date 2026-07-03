@@ -1,0 +1,53 @@
+@use 'mixins' as ea;
+
+// Native controls projected into <ea-form-field> get the same visual treatment
+// as the library's own fields. Global because projected content sits outside
+// the component's style encapsulation.
+.ea-form-field > input,
+.ea-form-field > select,
+.ea-form-field > textarea {
+  width: 100%;
+  min-height: 2.5em;
+  padding: 0 0.75em;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  font-family: var(--font-family-sans);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  outline: none;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  transition: var(--transition-colors), var(--transition-shadow);
+
+  // `opacity: 1` overrides the Firefox/WebKit default of ~0.54 on placeholders,
+  // which would wash out the tertiary token and collapse contrast in dark mode
+  &::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: var(--color-border-focus);
+    @include ea.focus-ring;
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-error-default);
+
+    &:focus {
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    background-color: var(--color-bg-muted);
+    cursor: not-allowed;
+  }
+}
+
+.ea-form-field > textarea {
+  min-height: 5em;
+  padding: 0.5em 0.75em;
+  resize: vertical;
+}

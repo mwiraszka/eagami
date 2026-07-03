@@ -26,6 +26,7 @@ export * from './lib/eagami-wordmark/eagami-wordmark.component';
 export * from './lib/empty-state/empty-state.component';
 export * from './lib/field/field-label.component';
 export * from './lib/field/field-messages.component';
+export * from './lib/field/form-field.component';
 export type {
   EaErrorMessages,
   EaValidationErrorKey,
