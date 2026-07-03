@@ -25,9 +25,13 @@ import { FieldMessagesComponent } from './field-messages.component';
  * library's standard field chrome: a label with required marker, a hint, and
  * error messages, including localized validation errors auto-derived from a
  * bound reactive or template-driven control. The label's `for` and the
- * control's `aria-describedby` and `aria-invalid` are wired automatically.
- * The eagami form components render this chrome themselves; use this wrapper
- * so native or custom controls read as part of the same form.
+ * control's `aria-describedby`, `aria-invalid`, and `aria-required` are wired
+ * automatically. The eagami form components render this chrome themselves; use
+ * this wrapper so native or custom controls read as part of the same form.
+ *
+ * The label and aria wiring attach in the browser after render, since the
+ * projected control can't be reached before it exists; the server ships the
+ * plain markup and the associations complete on hydration.
  */
 @Component({
   selector: 'ea-form-field',
@@ -116,6 +120,14 @@ export class FormFieldComponent {
         el.setAttribute('aria-invalid', 'true');
       } else {
         el.removeAttribute('aria-invalid');
+      }
+      // aria-required rather than the native attribute: the projected control
+      // may already carry reactive-forms validators, so only the state is
+      // conveyed, without altering native constraint validation
+      if (this.required()) {
+        el.setAttribute('aria-required', 'true');
+      } else {
+        el.removeAttribute('aria-required');
       }
     });
   }

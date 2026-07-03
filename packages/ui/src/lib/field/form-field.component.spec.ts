@@ -93,6 +93,20 @@ describe('FormFieldComponent', () => {
     expect(el.querySelector('.ea-field-label--required')).toBeTruthy();
   });
 
+  it('conveys required to the projected control via aria-required', async () => {
+    expect(getInput().getAttribute('aria-required')).toBeNull();
+
+    host.required.set(true);
+    await settle();
+
+    expect(getInput().getAttribute('aria-required')).toBe('true');
+
+    host.required.set(false);
+    await settle();
+
+    expect(getInput().getAttribute('aria-required')).toBeNull();
+  });
+
   it('shows the hint and points aria-describedby at it', async () => {
     host.hint.set('Helpful text');
 

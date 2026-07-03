@@ -2,10 +2,12 @@
 
 // Native controls projected into <ea-form-field> get the same visual treatment
 // as the library's own fields. Global because projected content sits outside
-// the component's style encapsulation.
-.ea-form-field > input,
-.ea-form-field > select,
-.ea-form-field > textarea {
+// the component's style encapsulation. Descendant (not direct-child) so a
+// control wrapped for layout is styled like the aria wiring that already finds
+// it at any depth; the field's own label and messages hold no form controls.
+.ea-form-field input,
+.ea-form-field select,
+.ea-form-field textarea {
   width: 100%;
   min-height: 2.5em;
   padding: 0 0.75em;
@@ -46,7 +48,7 @@
   }
 }
 
-.ea-form-field > textarea {
+.ea-form-field textarea {
   min-height: 5em;
   padding: 0.5em 0.75em;
   resize: vertical;
