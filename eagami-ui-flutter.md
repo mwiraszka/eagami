@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.0.0
-source: '@eagami/ui@5.0.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-01
+version: 5.1.0
+source: '@eagami/ui@5.1.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-02
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -3463,6 +3463,8 @@ The bundled French dictionary already uses U+202F where appropriate (e.g. `Ligne
 ---
 
 ## 7. Accessibility requirements
+
+The upstream library adheres to WCAG 2.2 Level AA and implements the matching [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) pattern per widget; see [eagami.com/ui/accessibility](https://eagami.com/ui/accessibility). A Flutter port must preserve that bar: everything below is a requirement, not a suggestion.
 
 - **Semantics:** Every interactive widget must supply a `Semantics` label (either via the widget itself or a wrapping `Semantics`). Icon-only buttons must expose their action verbally via `ariaLabel`.
 - **Live regions:**

@@ -8,6 +8,7 @@
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
   <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
   <a href="https://main--6a14a63d5cab2ebad17871ff.chromatic.com"><img src="https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white" alt="Storybook" /></a>
+  <a href="https://eagami.com/ui/accessibility"><img src="https://img.shields.io/badge/WCAG%202.2%20AA-self--assessed-0b7261" alt="WCAG 2.2 AA (self-assessed)" /></a>
 </p>
 
 `@eagami/ui` is a lightweight, accessible Angular component library. Sensible defaults out of the box, with a fully customizable design to fit any brand.
@@ -104,6 +105,10 @@ Every brand-role pairing is checked against WCAG 2.1 AA at bootstrap; a contrast
 ## Internationalization
 
 Built-in strings ship in 15 languages, with runtime switching via `EagamiI18nService`. English is bundled by default; register the other languages you use with `provideEagamiUi({ locales: [...] })` (or pass `EAGAMI_ALL_LOCALES` for all of them) so you ship only what you need. See [internationalization](https://eagami.com/ui/i18n) for setup and per-string overrides.
+
+## Accessibility
+
+Every component adheres to WCAG 2.2 Level AA and follows the matching [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) pattern: correct roles and states, full keyboard support with roving tabindex and RTL-aware arrows, focus trapping and restoration in modal surfaces, and live-region announcements for toasts, alerts, and validation errors, localized in all 15 languages. Conformance is self-assessed and continuously verified: each component has an axe-core (vitest-axe) test suite that runs on every change, so regressions in roles, names, contrast, or ARIA usage fail the build. Components that render no visible text expose `aria-label` inputs (with localized defaults for built-in controls), which is the one piece the consuming app must supply. See [accessibility](https://eagami.com/ui/accessibility) for an overview.
 
 ## Server-side rendering
 
