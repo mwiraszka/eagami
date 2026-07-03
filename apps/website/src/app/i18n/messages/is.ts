@@ -710,6 +710,9 @@ export const is: WebMessages = {
           withHintHint: 'Allt að 10 MB á hverja skrá',
           withErrorText: 'Að minnsta kosti ein mynd er nauðsynleg',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Sjálfgefið',
           enterTextPlaceholder: 'Sláðu inn texta…',
@@ -955,6 +958,11 @@ export const is: WebMessages = {
             showPasswordToggle: 'Sýna lykilorðsvíxlun',
             clearable: 'Hreinsanlegt',
             autocomplete: 'Sjálfvirk útfylling',
+          },
+          'form-field': {
+            label: 'Merkimiði',
+            hint: 'Vísbending',
+            required: 'Krafist',
           },
           alert: {
             variant: 'Afbrigði',
@@ -1769,6 +1777,14 @@ export const is: WebMessages = {
               'Kviknar þegar ein eða fleiri skrár standast ekki staðfestingu, með ástæðu fyrir hverri höfnun.',
             trackFile:
               'Skilar stöðugum raklykli fyrir skrá, notaður innbyrðis af skráalistanum.',
+          },
+          'form-field': {
+            errorMsg:
+              'Villuboð sýnd fyrir neðan stýringuna, koma í stað vísbendingar og merkja reitinn ógildan.',
+            hint: 'Hjálpartexti sýndur fyrir neðan stýringuna, falinn á meðan villa er sýnd.',
+            id: 'id grunnur fyrir tengingu merkimiða og skilaboða, sjálfvirkt búið til þegar því er sleppt.',
+            label: 'Textamerkimiði birtur fyrir ofan stýringuna.',
+            required: 'Merkir reitinn sem nauðsynlegan.',
           },
           popover: {
             anchor:

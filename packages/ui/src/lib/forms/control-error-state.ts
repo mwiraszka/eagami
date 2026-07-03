@@ -1,13 +1,12 @@
 import {
-  DestroyRef,
   Injector,
   type Signal,
   afterNextRender,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { type AbstractControl, NgControl, type ValidationErrors } from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
@@ -50,40 +49,27 @@ export interface ControlErrorState {
  * `errorMsg`, a consumer `errorMessages` override, then the library's localized
  * default for the active `ValidationErrors` key. Auto-derived messages surface
  * only once the bound control is `invalid && touched`, matching the moment a
- * user expects validation feedback.
- *
- * The bound `NgControl` is resolved lazily from the injector rather than via
- * constructor injection: a control that provides `NG_VALUE_ACCESSOR` cannot
- * also inject its own `NgControl` directly without a circular dependency.
- * `afterNextRender` defers resolution to the browser, after the host directive
- * (`formControl` / `ngModel`) exists, so the server render simply shows no
- * error (an untouched control never does).
+ * user expects validation feedback. The control arrives as a signal so callers
+ * decide how it is resolved: from the host's own `NgControl` (CVA components)
+ * or from projected content (`<ea-form-field>`).
  */
-export function injectControlErrorState(
+export function controlErrorStateFrom(
+  control: Signal<AbstractControl | null>,
   config: ControlErrorStateConfig,
 ): ControlErrorState {
-  const injector = inject(Injector);
   const i18n = inject(EagamiI18nService);
-  const destroyRef = inject(DestroyRef);
 
-  const control = signal<AbstractControl | null>(null);
   // Bumped on every status/touched change so the computed re-reads the control.
   const revision = signal(0);
 
-  afterNextRender(
-    () => {
-      const ngControl = injector.get(NgControl, null);
-      const ctrl = ngControl?.control ?? null;
-      if (!ctrl) {
-        return;
-      }
-      control.set(ctrl);
-      ctrl.events.pipe(takeUntilDestroyed(destroyRef)).subscribe(() => {
-        revision.update(r => r + 1);
-      });
-    },
-    { injector },
-  );
+  effect(onCleanup => {
+    const ctrl = control();
+    if (!ctrl) {
+      return;
+    }
+    const sub = ctrl.events.subscribe(() => revision.update(r => r + 1));
+    onCleanup(() => sub.unsubscribe());
+  });
 
   const autoError = computed<string | null>(() => {
     revision();
@@ -98,6 +84,33 @@ export function injectControlErrorState(
   const hasError = computed(() => error() !== null);
 
   return { error, hasError };
+}
+
+/**
+ * `controlErrorStateFrom` for a component hosting its own form directive.
+ *
+ * The bound `NgControl` is resolved lazily from the injector rather than via
+ * constructor injection: a control that provides `NG_VALUE_ACCESSOR` cannot
+ * also inject its own `NgControl` directly without a circular dependency.
+ * `afterNextRender` defers resolution to the browser, after the host directive
+ * (`formControl` / `ngModel`) exists, so the server render simply shows no
+ * error (an untouched control never does).
+ */
+export function injectControlErrorState(
+  config: ControlErrorStateConfig,
+): ControlErrorState {
+  const injector = inject(Injector);
+
+  const control = signal<AbstractControl | null>(null);
+
+  afterNextRender(
+    () => {
+      control.set(injector.get(NgControl, null)?.control ?? null);
+    },
+    { injector },
+  );
+
+  return controlErrorStateFrom(control, config);
 }
 
 /**

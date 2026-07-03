@@ -1909,6 +1909,55 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
   },
+  'form-field': {
+    selector: 'ea-form-field',
+    inputs: [
+      {
+        name: 'errorMessages',
+        type: 'EaErrorMessages | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'errorMsg',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'hint',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'id',
+        type: 'string',
+        default: '(auto-generated)',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'label',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'required',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+    ],
+    outputs: [],
+    methods: [],
+  },
   input: {
     selector: 'ea-input',
     inputs: [

@@ -721,6 +721,9 @@ export const frFR: WebMessages = {
           withHintHint: 'Jusqu’à 10 Mo par fichier',
           withErrorText: 'Au moins une image est requise',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Par défaut',
           enterTextPlaceholder: 'Saisissez du texte…',
@@ -964,6 +967,11 @@ export const frFR: WebMessages = {
             showPasswordToggle: 'Bouton d’affichage du mot de passe',
             clearable: 'Effaçable',
             autocomplete: 'Autocomplétion',
+          },
+          'form-field': {
+            label: 'Libellé',
+            hint: 'Indication',
+            required: 'Requis',
           },
           alert: {
             variant: 'Variante',
@@ -1821,6 +1829,14 @@ export const frFR: WebMessages = {
               "Émis lorsqu'un ou plusieurs fichiers échouent à la validation, avec la raison de chaque rejet.",
             trackFile:
               'Retourne une clé de suivi stable pour un fichier, utilisée en interne par la liste de fichiers.',
+          },
+          'form-field': {
+            errorMsg:
+              "Message d'erreur affiché sous le contrôle, remplaçant l'indication et marquant le champ comme invalide.",
+            hint: "Texte d'aide affiché sous le contrôle, masqué en cas d'erreur.",
+            id: "Base d'id pour relier le libellé et le message, générée automatiquement si omise.",
+            label: 'Libellé affiché au-dessus du contrôle.',
+            required: 'Marque le champ comme requis.',
           },
           popover: {
             anchor:

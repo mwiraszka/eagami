@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.2.0',
+    date: '2026-07-04',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a form field component that wraps native inputs, selects, and textareas in the library's standard field chrome: label with required marker, hint, and error messages, with localized validation errors auto-derived from a bound form control and automatic label and aria wiring.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.1.0',
     date: '2026-07-03',
     sections: [

@@ -718,6 +718,9 @@ export const ptBR: WebMessages = {
           withHintHint: 'Até 10 MB por arquivo',
           withErrorText: 'É necessária ao menos uma imagem',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Padrão',
           enterTextPlaceholder: 'Digite o texto…',
@@ -954,6 +957,11 @@ export const ptBR: WebMessages = {
             showPasswordToggle: 'Mostrar alternância de senha',
             clearable: 'Limpável',
             autocomplete: 'Autocompletar',
+          },
+          'form-field': {
+            label: 'Rótulo',
+            hint: 'Dica',
+            required: 'Obrigatório',
           },
           alert: {
             variant: 'Variante',
@@ -1808,6 +1816,14 @@ export const ptBR: WebMessages = {
               'Dispara quando um ou mais arquivos falham na validação, com o motivo de cada rejeição.',
             trackFile:
               'Retorna uma chave de rastreamento estável para um arquivo, usada internamente pela lista de arquivos.',
+          },
+          'form-field': {
+            errorMsg:
+              'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
+            hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
+            id: 'id base para a vinculação do rótulo e da mensagem, gerado automaticamente quando omitido.',
+            label: 'Rótulo de texto renderizado acima do controle.',
+            required: 'Marca o campo como obrigatório.',
           },
           popover: {
             anchor:

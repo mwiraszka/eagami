@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.9.0] - 2026-07-04
+
+### Added
+
+- Add a demo page for the new form field component, with a live playground, API reference, and translations in every locale.
+
+### Changed
+
+- Pick up @eagami/ui v5.2.0.
+
 ## [3.8.0] - 2026-07-03
 
 ### Added
@@ -766,6 +776,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.9.0]: https://github.com/mwiraszka/eagami/compare/website-v3.8.0...website-v3.9.0
 [3.8.0]: https://github.com/mwiraszka/eagami/compare/website-v3.7.1...website-v3.8.0
 [3.7.1]: https://github.com/mwiraszka/eagami/compare/website-v3.7.0...website-v3.7.1
 [3.7.0]: https://github.com/mwiraszka/eagami/compare/website-v3.6.0...website-v3.7.0

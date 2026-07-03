@@ -1,0 +1,26 @@
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
+
+import { FormFieldComponent } from './form-field.component';
+import { FORM_FIELD_KNOBS } from './form-field.component.knobs';
+
+const meta: Meta<FormFieldComponent> = {
+  title: 'Components/Form Field',
+  component: FormFieldComponent,
+  tags: ['autodocs'],
+  parameters: {
+    docs: { story: { height: '8rem' } },
+  },
+  render: args => ({
+    props: args,
+    template: `<ea-form-field ${argsToTemplate(args)}>
+      <input type="email" placeholder="you@example.com" />
+    </ea-form-field>`,
+  }),
+  argTypes: FORM_FIELD_KNOBS.argTypes,
+  args: FORM_FIELD_KNOBS.args,
+};
+
+export default meta;
+type Story = StoryObj<FormFieldComponent>;
+
+export const Playground: Story = {};

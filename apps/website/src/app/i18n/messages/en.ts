@@ -708,6 +708,9 @@ export const en: WebMessages = {
           withHintHint: 'Up to 10 MB per file',
           withErrorText: 'At least one image is required',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Default',
           enterTextPlaceholder: 'Enter text…',
@@ -943,6 +946,11 @@ export const en: WebMessages = {
             showPasswordToggle: 'Show password toggle',
             clearable: 'Clearable',
             autocomplete: 'Autocomplete',
+          },
+          'form-field': {
+            label: 'Label',
+            hint: 'Hint',
+            required: 'Required',
           },
           alert: {
             variant: 'Variant',
@@ -1744,6 +1752,14 @@ export const en: WebMessages = {
               'Fires when one or more files fail validation, with the reason for each rejection.',
             trackFile:
               'Returns a stable track key for a file, used internally by the file list.',
+          },
+          'form-field': {
+            errorMsg:
+              'Error message shown below the control, replacing the hint and flagging the field invalid.',
+            hint: 'Helper text shown below the control, hidden while an error is showing.',
+            id: 'id seed for the label and message wiring, auto-generated when omitted.',
+            label: 'Text label rendered above the control.',
+            required: 'Marks the field as required.',
           },
           popover: {
             anchor: 'Host element or ElementRef the popover positions itself against.',

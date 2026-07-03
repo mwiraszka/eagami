@@ -705,6 +705,9 @@ export const he: WebMessages = {
           withHintHint: 'עד 10 מ"ב לכל קובץ',
           withErrorText: 'נדרשת לפחות תמונה אחת',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'ברירת מחדל',
           enterTextPlaceholder: 'הזינו טקסט…',
@@ -937,6 +940,11 @@ export const he: WebMessages = {
             showPasswordToggle: 'הצג מתג סיסמה',
             clearable: 'ניתן לניקוי',
             autocomplete: 'השלמה אוטומטית',
+          },
+          'form-field': {
+            label: 'תווית',
+            hint: 'רמז',
+            required: 'חובה',
           },
           alert: {
             variant: 'וריאנט',
@@ -1685,6 +1693,14 @@ export const he: WebMessages = {
             rejected: 'נורה כשקובץ אחד או יותר נכשלים באימות, עם הסיבה לכל דחייה.',
             trackFile:
               'מחזיר מפתח מעקב יציב עבור קובץ, המשמש פנימית על ידי רשימת הקבצים.',
+          },
+          'form-field': {
+            errorMsg:
+              'הודעת שגיאה המוצגת מתחת לפקד, מחליפה את הרמז ומסמנת את השדה כלא תקין.',
+            hint: 'טקסט עזר המוצג מתחת לפקד, מוסתר בזמן שמוצגת שגיאה.',
+            id: 'בסיס id לחיווט התווית וההודעה, נוצר אוטומטית כשמושמט.',
+            label: 'תווית טקסט המוצגת מעל הפקד.',
+            required: 'מסמן את השדה כחובה.',
           },
           popover: {
             anchor: 'אלמנט המארח או ElementRef שכלפיו הפופאובר ממקם את עצמו.',

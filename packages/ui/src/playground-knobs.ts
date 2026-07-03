@@ -19,6 +19,7 @@ import { DRAWER_KNOBS } from './lib/drawer/drawer.component.knobs';
 import { DROPDOWN_KNOBS } from './lib/dropdown/dropdown.component.knobs';
 import { EAGAMI_WORDMARK_KNOBS } from './lib/eagami-wordmark/eagami-wordmark.component.knobs';
 import { EMPTY_STATE_KNOBS } from './lib/empty-state/empty-state.component.knobs';
+import { FORM_FIELD_KNOBS } from './lib/field/form-field.component.knobs';
 import { FILE_UPLOADER_KNOBS } from './lib/file-uploader/file-uploader.component.knobs';
 import { INPUT_KNOBS } from './lib/input/input.component.knobs';
 import { MENU_KNOBS } from './lib/menu/menu.component.knobs';
@@ -81,6 +82,7 @@ export const PLAYGROUND_KNOBS = {
   'eagami-wordmark': EAGAMI_WORDMARK_KNOBS,
   'empty-state': EMPTY_STATE_KNOBS,
   'file-uploader': FILE_UPLOADER_KNOBS,
+  'form-field': FORM_FIELD_KNOBS,
   input: INPUT_KNOBS,
   menu: MENU_KNOBS,
   'multi-select': MULTI_SELECT_KNOBS,

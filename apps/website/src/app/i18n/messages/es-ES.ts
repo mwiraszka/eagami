@@ -712,6 +712,9 @@ export const esES: WebMessages = {
           withHintHint: 'Hasta 10 MB por archivo',
           withErrorText: 'Se requiere al menos una imagen',
         },
+        formField: {
+          emailPlaceholder: 'you@example.com',
+        },
         input: {
           defaultLabel: 'Predeterminado',
           enterTextPlaceholder: 'Introduce texto…',
@@ -955,6 +958,11 @@ export const esES: WebMessages = {
             showPasswordToggle: 'Mostrar botón de contraseña',
             clearable: 'Con botón de borrado',
             autocomplete: 'Autocompletar',
+          },
+          'form-field': {
+            label: 'Etiqueta',
+            hint: 'Ayuda',
+            required: 'Obligatorio',
           },
           alert: {
             variant: 'Variante',
@@ -1827,6 +1835,14 @@ export const esES: WebMessages = {
               'Se emite cuando uno o más archivos no superan la validación, con el motivo de cada rechazo.',
             trackFile:
               'Devuelve una clave de seguimiento estable para un archivo, usada internamente por la lista de archivos.',
+          },
+          'form-field': {
+            errorMsg:
+              'Mensaje de error mostrado bajo el control, que sustituye la ayuda y marca el campo como no válido.',
+            hint: 'Texto de ayuda mostrado bajo el control, oculto cuando hay un error.',
+            id: 'Base de id para conectar la etiqueta y el mensaje, generada automáticamente si se omite.',
+            label: 'Etiqueta mostrada encima del control.',
+            required: 'Marca el campo como obligatorio.',
           },
           popover: {
             anchor:
