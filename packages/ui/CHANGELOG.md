@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2026-07-03
+
+### Added
+
+- Add a `headingLevel` input to the accordion so item headers join the page's heading outline, and `ariaLabel` inputs to the autocomplete, multi-select, tabs, and virtual list for naming controls that render no visible label.
+- Give the popover opt-in focus containment via `trapFocus` and `aria-labelledby` forwarding, for dialog-style surfaces.
+- Document the library's WCAG 2.2 AA conformance and accessibility guarantees in the README.
+
+### Fixed
+
+- Announce the date and time picker popovers as named, focus-contained dialogs, move screen-reader focus along with arrow-key navigation in the calendar, and keep out-of-range days perceivable instead of removing them from the accessibility tree.
+- Expose the dropdown trigger as a combobox so the highlighted option is announced while arrowing, include the selected value in its accessible name, and support Home, End, and type-ahead.
+- Follow the ARIA listbox pattern in the multi-select and transfer list: valid option semantics, active-option announcement, and roving keyboard focus with arrow, Home, and End keys.
+- Turn sortable data-table headers into real buttons so screen readers know they are operable, and announce the empty state.
+- Announce toasts, alerts, file-uploader activity, and avatar-editor errors reliably by keeping live regions mounted before their content arrives and removing duplicate nested regions.
+- Dismiss hover-triggered tooltips with Escape regardless of where keyboard focus is.
+- Name previously unnamed controls: range-slider thumbs, the stepper and tabs tablists, decorative avatars, file-upload progress bars, the color-picker trigger and presets, and the paginator's page-size select (now with per-instance ids).
+- Make every interaction keyboard-reachable: the input clear button, changing the avatar-editor photo, scrolling the virtual list, and closing the time picker with Escape from any control inside it; menus now use roving tabindex so Tab leaves the menu.
+- Expose states that were visual-only to assistive technology: AM/PM selection, completed steps, rating required and error states, avatar-editor loading, live color-picker saturation and brightness announcements, and page-range updates in the paginator.
+- Skip disabled options when the segmented control decides its keyboard tab stop.
+- Localize all new screen-reader strings in every supported language.
+
 ## [5.0.1] - 2026-07-02
 
 ### Fixed
@@ -900,6 +922,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.1.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.0.1...ui-v5.1.0
 [5.0.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.0.0...ui-v5.0.1
 [5.0.0]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.1...ui-v5.0.0
 [4.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v4.8.0...ui-v4.8.1
