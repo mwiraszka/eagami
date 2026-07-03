@@ -143,50 +143,25 @@
 }
 
 .principle-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  @include mixins.card-grid;
 }
 
 .principle-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border: 1px solid var(--color-border-default);
-  border-radius: 8px;
-  background-color: var(--color-bg-elevated);
+  @include mixins.feature-card;
 }
 
 .principle-card__header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @include mixins.feature-card-header;
 }
 
 .principle-card__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  font-size: 18px;
-  color: var(--color-text-link);
+  @include mixins.feature-card-icon;
 }
 
 .principle-card__title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  @include mixins.feature-card-title;
 }
 
 .principle-card__body {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
+  @include mixins.feature-card-body;
 }

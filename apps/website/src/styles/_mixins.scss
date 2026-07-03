@@ -195,6 +195,61 @@ $breakpoints: (
   }
 }
 
+/// Responsive grid of feature cards, doubling as a list reset for `<ul>` hosts.
+@mixin card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/// Bordered feature card shared by the UI index and accessibility pages.
+@mixin feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+  background-color: var(--color-bg-elevated);
+}
+
+/// Icon + title row inside a feature card.
+@mixin feature-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/// Link-coloured icon leading a feature card header.
+@mixin feature-card-icon {
+  display: inline-flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: var(--color-text-link);
+}
+
+/// Feature card title text.
+@mixin feature-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/// Feature card body copy.
+@mixin feature-card-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
 /// Deepened brand-token set the marketing CTAs (home hero/contact and the 404
 /// page) share so they stay clearly brand-coloured against the dark backdrop.
 @mixin brand-cta-dark-tokens {
