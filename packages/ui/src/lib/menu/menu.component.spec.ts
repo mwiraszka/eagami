@@ -268,6 +268,7 @@ describe('MenuComponent', () => {
       getTrigger().click();
       fixture.detectChanges();
       await fixture.whenStable();
+      fixture.detectChanges();
 
       const items = getItems();
 
@@ -289,7 +290,26 @@ describe('MenuComponent', () => {
 
       expect(items[0].tabIndex).toBe(-1);
       expect(items[1].tabIndex).toBe(0);
+      expect(items[2].tabIndex).toBe(-1);
       expect(document.activeElement).toBe(items[1]);
+    });
+
+    it('keeps the roving tabindex after the items re-render', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      host.itemDisabled.set(true);
+      fixture.detectChanges();
+
+      const items = getItems();
+
+      expect(items[0].tabIndex).toBe(-1);
+      expect(items[1].tabIndex).toBe(-1);
+      expect(items[2].tabIndex).toBe(0);
     });
   });
 });

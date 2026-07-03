@@ -378,16 +378,20 @@ describe('MultiSelectComponent', () => {
       expect(getOptionRows()[0].id).toBe(`${component.id()}-opt-0`);
     });
 
-    it('links the trigger to the popover surface via aria-controls while open', () => {
+    it('links the trigger to the labelled listbox via aria-controls while open', () => {
+      fixture.componentRef.setInput('label', 'Fruits');
+      fixture.detectChanges();
+
       expect(getTrigger().getAttribute('aria-controls')).toBeNull();
 
       getTrigger().click();
       fixture.detectChanges();
 
-      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      const list = document.body.querySelector<HTMLElement>('[role="listbox"]');
 
       expect(getTrigger().getAttribute('aria-controls')).toBe(component.listboxId());
-      expect(surface?.id).toBe(component.listboxId());
+      expect(list?.id).toBe(component.listboxId());
+      expect(list?.getAttribute('aria-label')).toBe('Fruits');
     });
 
     it('tracks the focused option on the search input via aria-activedescendant', () => {

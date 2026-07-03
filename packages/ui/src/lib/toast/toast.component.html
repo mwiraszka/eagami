@@ -1,9 +1,9 @@
-<div [class]="containerClass()">
+<div
+  [class]="containerClass()"
+  aria-live="polite"
+  aria-atomic="false">
   @for (toast of toastService.toasts(); track toast.id) {
-    <div
-      class="ea-toast ea-toast--{{ toast.variant }}"
-      [attr.role]="getRole(toast)"
-      [attr.aria-live]="getRole(toast) === 'alert' ? 'assertive' : 'polite'">
+    <div class="ea-toast ea-toast--{{ toast.variant }}">
       @switch (toast.variant) {
         @case ('success') {
           <ea-icon-check-circle class="ea-toast__icon" />

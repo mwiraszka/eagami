@@ -242,6 +242,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
     () => this.placeholder() ?? this.i18n.messages().colorPicker.placeholder,
   );
 
+  readonly popoverId = computed(() => `${this.id()}-popover`);
+
+  readonly triggerLabelledBy = computed(() =>
+    this.label() ? `${this.id()}-label ${this.id()}` : null,
+  );
+
   readonly triggerClasses = computed(() => ({
     [`ea-color-picker__trigger--${this.size()}`]: true,
     'ea-color-picker__trigger--error': this.hasError(),

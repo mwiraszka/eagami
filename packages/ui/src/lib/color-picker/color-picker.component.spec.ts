@@ -87,6 +87,20 @@ describe('ColorPickerComponent', () => {
       expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
     });
 
+    it('traps Tab within the open dialog', () => {
+      open();
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      const focusable = Array.from(
+        surface?.querySelectorAll<HTMLElement>('button, input, [tabindex]') ?? [],
+      ).filter(el => el.tabIndex >= 0);
+      const last = focusable[focusable.length - 1];
+      last.focus();
+
+      last.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
+
+      expect(document.activeElement).toBe(focusable[0]);
+    });
+
     it('does not open when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();

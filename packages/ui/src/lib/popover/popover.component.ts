@@ -409,7 +409,12 @@ export class PopoverComponent {
       surface.querySelectorAll<HTMLElement>(
         'a[href], button, input, select, textarea, [tabindex]',
       ),
-    ).filter(el => el.tabIndex >= 0 && !el.hasAttribute('disabled'));
+    ).filter(
+      el =>
+        el.tabIndex >= 0 &&
+        !el.hasAttribute('disabled') &&
+        el.getClientRects().length > 0,
+    );
     if (focusable.length === 0) {
       event.preventDefault();
       return;

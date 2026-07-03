@@ -91,6 +91,15 @@ export class SegmentedComponent implements ControlValueAccessor {
     this.options().findIndex(opt => !opt.disabled),
   );
 
+  // The selected option only qualifies as the tab stop while enabled; a value
+  // pointing at a disabled or missing option must not leave the group unreachable
+  readonly tabStopIndex = computed(() => {
+    const selected = this.options().findIndex(
+      opt => opt.value === this.value() && !opt.disabled,
+    );
+    return selected >= 0 ? selected : this.firstEnabledIndex();
+  });
+
   readonly hostClasses = computed(() => ({
     [`ea-segmented--${this.size()}`]: true,
     'ea-segmented--full-width': this.fullWidth(),

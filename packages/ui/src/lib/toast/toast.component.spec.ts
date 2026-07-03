@@ -29,17 +29,10 @@ describe('ToastComponent', () => {
     toastService.clear();
   });
 
-  it('mounts an empty container before any toast is shown', () => {
-    expect(getContainer()).toBeTruthy();
+  it('keeps an empty polite live region mounted so later toasts are announced', () => {
+    expect(getContainer()?.getAttribute('aria-live')).toBe('polite');
+    expect(getContainer()?.getAttribute('aria-atomic')).toBe('false');
     expect(getToasts()).toHaveLength(0);
-  });
-
-  it('does not mark the container as a live region', () => {
-    toastService.show('hello', { duration: 0 });
-    fixture.detectChanges();
-
-    expect(getContainer()?.hasAttribute('aria-live')).toBe(false);
-    expect(getContainer()?.hasAttribute('aria-atomic')).toBe(false);
   });
 
   it('renders one element per active toast', () => {
@@ -57,20 +50,14 @@ describe('ToastComponent', () => {
     expect(getToasts()[0].classList).toContain('ea-toast--error');
   });
 
-  it('uses role="alert" for error and warning toasts', () => {
+  it('leaves toasts without their own live-region roles to avoid double announcements', () => {
     toastService.error('boom', 0);
-    fixture.detectChanges();
-
-    expect(getToasts()[0].getAttribute('role')).toBe('alert');
-    expect(getToasts()[0].getAttribute('aria-live')).toBe('assertive');
-  });
-
-  it('uses role="status" for info, success, and default toasts', () => {
     toastService.success('ok', 0);
     fixture.detectChanges();
 
-    expect(getToasts()[0].getAttribute('role')).toBe('status');
-    expect(getToasts()[0].getAttribute('aria-live')).toBe('polite');
+    expect(getToasts()[0].hasAttribute('role')).toBe(false);
+    expect(getToasts()[0].hasAttribute('aria-live')).toBe(false);
+    expect(getToasts()[1].hasAttribute('role')).toBe(false);
   });
 
   it('dismisses a toast via its close button', () => {

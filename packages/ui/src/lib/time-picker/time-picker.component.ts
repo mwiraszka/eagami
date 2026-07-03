@@ -424,8 +424,8 @@ export class TimePickerComponent implements ControlValueAccessor {
       this.close();
       this.triggerEl()?.nativeElement.focus();
     }
-    // Escape bubbles up to the popover wrapper's handler, which closes.
-    // Tab is handled by the browser; (blur) on the leaving input flushes.
+    // Escape bubbles up to the popover wrapper's handler, which closes
+    // Tab is handled by the browser; (blur) on the leaving input flushes
   }
 
   /** Escape from anywhere inside the popover closes it and refocuses the trigger. */

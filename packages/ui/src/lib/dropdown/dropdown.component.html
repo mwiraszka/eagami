@@ -22,7 +22,7 @@
       [attr.aria-activedescendant]="
         isOpen() && focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
       "
-      [attr.aria-labelledby]="label() ? id() + '-label ' + id() : null"
+      [attr.aria-labelledby]="triggerLabelledBy()"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="

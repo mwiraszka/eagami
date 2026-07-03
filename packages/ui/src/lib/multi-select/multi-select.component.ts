@@ -401,6 +401,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
       event.preventDefault();
       this.close();
       this.triggerEl()?.nativeElement.focus();
+    } else if (event.key === 'Tab') {
+      // Combobox popups dismiss on Tab; focus moves on to the next element
+      this.close();
     }
   }
 

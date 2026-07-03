@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+} from '@angular/core';
 
+import { uniqueId } from '../unique-id';
 import { MenuComponent } from './menu.component';
 
 /** Visual style of a menu item; `danger` for destructive actions. */
@@ -18,6 +26,11 @@ export type MenuItemVariant = 'default' | 'danger';
 })
 export class MenuItemComponent {
   private readonly menu = inject(MenuComponent, { optional: true });
+
+  protected readonly itemId = uniqueId('ea-menu-item');
+  protected readonly tabIndex = computed(() =>
+    this.menu?.activeItemId() === this.itemId ? 0 : -1,
+  );
 
   readonly disabled = input<boolean>(false);
   readonly variant = input<MenuItemVariant>('default');

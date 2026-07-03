@@ -54,6 +54,7 @@
       role="dialog"
       [aria-label]="i18n.messages().timePicker.dialogLabel"
       [surfaceId]="popoverId()"
+      [trapFocus]="true"
       [closeOnEscape]="false"
       scrollBehavior="close"
       (closeRequested)="onPopoverCloseRequested()">

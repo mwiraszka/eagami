@@ -158,6 +158,21 @@ describe('TimePickerComponent', () => {
         TestBed.inject(EagamiI18nService).messages().timePicker.dialogLabel,
       );
     });
+
+    it('traps Tab within the open dialog', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      const focusable = Array.from(
+        surface?.querySelectorAll<HTMLElement>('button, input') ?? [],
+      );
+      const last = focusable[focusable.length - 1];
+      last.focus();
+
+      last.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
+
+      expect(document.activeElement).toBe(focusable[0]);
+    });
   });
 
   describe('Stepping', () => {

@@ -6,6 +6,7 @@ import {
   Injector,
   afterNextRender,
   computed,
+  effect,
   inject,
   input,
   model,
@@ -62,6 +63,31 @@ export class MenuComponent {
 
   /** Trigger element currently anchoring the menu. Signal-typed so `<ea-popover>` reacts when it changes. */
   protected readonly triggerEl = signal<HTMLElement | undefined>(undefined);
+
+  // Read by each item's [attr.tabindex] binding so the roving state survives re-renders
+  readonly activeItemId = signal<string | null>(null);
+
+  constructor() {
+    // Consumers can open via the [(open)] model without openAt(), so the roving
+    // tab stop must be assigned whenever the menu opens, not only on openAt()
+    effect(() => {
+      if (!this.open()) {
+        this.activeItemId.set(null);
+        return;
+      }
+      afterNextRender(
+        () => {
+          if (this.open() && !this.activeItemId()) {
+            const first = this.getEnabledItems()[0];
+            if (first) {
+              this.activeItemId.set(first.id);
+            }
+          }
+        },
+        { injector: this.injector },
+      );
+    });
+  }
 
   /** Toggles the menu open state, anchoring it to the given trigger element. */
   toggleAt(triggerEl: HTMLElement): void {
@@ -135,9 +161,7 @@ export class MenuComponent {
     if (!item) {
       return;
     }
-    for (const el of this.getEnabledItems()) {
-      el.tabIndex = el === item ? 0 : -1;
-    }
+    this.activeItemId.set(item.id);
     item.focus({ preventScroll: true });
   }
 

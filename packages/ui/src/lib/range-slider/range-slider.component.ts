@@ -128,7 +128,10 @@ export class RangeSliderComponent implements ControlValueAccessor {
     () => this.ariaLabelHigh() ?? this.i18n.messages().rangeSlider.highThumbLabel,
   );
 
-  protected thumbLabelledBy(thumb: Thumb): string {
+  readonly lowThumbLabelledBy = computed(() => this.thumbLabelledBy('low'));
+  readonly highThumbLabelledBy = computed(() => this.thumbLabelledBy('high'));
+
+  private thumbLabelledBy(thumb: Thumb): string {
     const thumbLabelId = `${this.id()}-${thumb}-label`;
     return this.label() ? `${this.id()}-label ${thumbLabelId}` : thumbLabelId;
   }

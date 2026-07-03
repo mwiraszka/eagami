@@ -62,6 +62,10 @@ export class CommandPaletteComponent {
 
   protected readonly messages = this.i18n.messages;
 
+  protected readonly resolvedPlaceholder = computed(
+    () => this.placeholder() || this.messages().commandPalette.searchPlaceholder,
+  );
+
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
   private readonly searchEl = viewChild<ElementRef<HTMLInputElement>>('searchEl');
 
