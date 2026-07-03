@@ -76,7 +76,7 @@ Use this checklist when creating a brand-new component. Skip nothing — partial
 - [ ] No hard-coded color literals in `.scss`; tokens only (`packages/ui/src/styles/tokens/_colors.scss`)
 - [ ] Add `<slug>.component.stories.ts` — cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
 - [ ] Add `<slug>.component.spec.ts` — interaction tests, ARIA assertions, edge cases. No `any` casts
-- [ ] Add `<slug>.component.a11y.spec.ts` — `vitest-axe` assertions for each meaningful rendered state (default, error, disabled, expanded)
+- [ ] Add `<slug>.component.a11y.spec.ts` with `vitest-axe` assertions for each meaningful rendered state (default, error, disabled, expanded)
 - [ ] Export from `packages/ui/src/public-api.ts` in alphabetical order
 - [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook` — all must pass
 
