@@ -184,6 +184,7 @@ export const nl: WebMessages = {
       designTokens: 'Designtokens',
       icons: 'Iconen',
       i18n: 'Internationalisatie',
+      accessibility: 'Toegankelijkheid',
       components: 'Componenten',
     },
     index: {
@@ -210,7 +211,7 @@ export const nl: WebMessages = {
         },
         {
           title: 'Gelokaliseerd',
-          body: 'Ingebouwde componenttekst wordt geleverd in 15 talen.',
+          body: 'Ingebouwde componenttekst wordt geleverd in alle ondersteunde talen.',
         },
         {
           title: 'Modern',
@@ -389,6 +390,51 @@ export const nl: WebMessages = {
       frenchSpacingBody:
         'Franse typografie verwacht een smalle vaste spatie voor <code>? ! : ; »</code> en na <code>«</code>. De geëxporteerde <code>frenchSpacing()</code>-helper zet gewone spaties in je eigen Franse teksten om (de bibliotheek verwerkt haar meegeleverde Franse teksten intern).',
       demoLocaleLabel: 'Taal',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Toegankelijkheid',
+      metaDescription:
+        'WCAG 2.2 AA-conformiteit, volledige toetsenbordondersteuning en schermlezervriendelijke componenten, geverifieerd bij elke release.',
+      title: 'Toegankelijkheid',
+      lede: 'Elke component is gebouwd volgens de toonaangevende standaarden voor webtoegankelijkheid: correcte semantiek, volledige toetsenbordondersteuning, focusbeheer en schermlezeraankondigingen werken direct out of the box.',
+      conformanceHeading: 'Conformiteit',
+      conformanceBody:
+        'De bibliotheek houdt zich aan <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, de standaard waaraan de meeste organisaties moeten voldoen, en volgt de officiële richtlijnen van het W3C voor elk soort besturingselement, van dialogen en menu\'s tot sliders en datumkiezers. Schermlezeraankondigingen worden meegeleverd in elke ondersteunde taal, zodat hulptechnologie altijd de taal van de gebruiker spreekt.',
+      builtInHeading: 'Ingebouwde toegankelijkheid',
+      builtInItems: [
+        {
+          title: 'Semantiek',
+          body: 'Native elementen waar mogelijk, expliciete ARIA-rollen, -toestanden en -eigenschappen waar niet. Toestanden zoals uitgevouwen, geselecteerd, aangevinkt, ongeldig en bezig worden altijd programmatisch blootgesteld, nooit alleen via styling.',
+        },
+        {
+          title: 'Toetsenbordondersteuning',
+          body: 'Volledige APG-toetsenbordpatronen: roving tabindex, navigatie met de pijltjestoetsen, Home en End, Escape om te sluiten, en Enter of spatiebalk om te activeren, met RTL-bewuste afhandeling van de pijltjestoetsen.',
+        },
+        {
+          title: 'Focusbeheer',
+          body: 'Modals en kiezers houden de focus vast terwijl ze open zijn en geven die bij het sluiten terug aan de trigger. Focusindicatoren zijn altijd zichtbaar en worden nooit onderdrukt.',
+        },
+        {
+          title: 'Schermlezeraankondigingen',
+          body: 'Toasts, meldingen, validatiefouten en asynchrone toestandswijzigingen worden aangekondigd via live regions met het juiste beleefdheidsniveau.',
+        },
+        {
+          title: 'Gereduceerde beweging',
+          body: 'Animaties respecteren overal de mediaquery prefers-reduced-motion.',
+        },
+        {
+          title: 'Contrast',
+          body: "De standaard lichte en donkere thema's voldoen aan de WCAG-contrasteisen, en de themingtools markeren combinaties die onder AA uitkomen.",
+        },
+      ],
+      labelsHeading: 'Toegankelijke namen',
+      labelsBefore:
+        'Componenten die tekst renderen labelen zichzelf. Alles wat alleen uit een icoon bestaat of grafisch is, biedt een <code>aria-label</code>-input (met gelokaliseerde standaardwaarden voor ingebouwde bedieningen zoals wis-, sluit- en verwijderknoppen), en formuliervelden koppelen <code>label</code>, hints en foutberichten automatisch via <code>aria-describedby</code> aan het besturingselement.',
+      labelsAfter:
+        'Geef een <code>label</code> of <code>aria-label</code> op voor besturingselementen zonder zichtbare tekst en de component regelt de rest: namen, hints en foutberichten blijven automatisch aan elkaar gekoppeld.',
+      testingHeading: 'Geverifieerd bij elke release',
+      testingBody:
+        'Elke component wordt bij elke wijziging getoetst aan gangbare toegankelijkheidsregels uit de sector, en een release verschijnt pas wanneer elke controle slaagt, zodat de toegankelijkheid die je hier ziet standhoudt terwijl de bibliotheek zich verder ontwikkelt.',
     },
     component: {
       metaDescription: name => `${name}-componentreferentie en live demo's.`,
@@ -885,6 +931,8 @@ export const nl: WebMessages = {
         colDescription: 'Beschrijving',
         errorMessagesDescription:
           'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard.',
+        ariaLabelDescription:
+          'Toegankelijke naam aangekondigd door hulptechnologie wanneer de component geen zichtbaar label rendert.',
         triggerErrorLabel: 'Fout activeren',
         requiredBadge: 'verplicht',
         twoWayBadge: 'tweerichtings',
@@ -1117,6 +1165,8 @@ export const nl: WebMessages = {
           },
           accordion: {
             multi: 'Staat toe dat meerdere items tegelijk uitgevouwen blijven.',
+            headingLevel:
+              'Kopniveau (1-6) toegepast op elke itemkoptekst, zodat het accordeon in de paginastructuur past.',
           },
           alert: {
             dismissible:
@@ -1767,6 +1817,8 @@ export const nl: WebMessages = {
               'Hostelement of ElementRef waartegen de popover zichzelf positioneert.',
             ariaLabel:
               'Toegankelijk label voor het popoveroppervlak; geef er een op wanneer de popover geen zichtbare koptekst bevat.',
+            ariaLabelledby:
+              'Id van het element dat het popoveroppervlak labelt, doorgegeven als aria-labelledby.',
             clamp:
               'Kapt de popover binnen de viewport af wanneer deze anders zou overlopen.',
             closeOnEscape: 'Sluit de popover wanneer op Escape wordt gedrukt.',
@@ -1783,6 +1835,8 @@ export const nl: WebMessages = {
               'Hoe de popover reageert op scroll- en formaatwijzigingsgebeurtenissen terwijl open: herpositioneren, sluiten of negeren.',
             surfaceId:
               'DOM-id voor het popoveroppervlak, gebruikt door triggerelementen via aria-controls.',
+            trapFocus:
+              'Laat Tab en Shift+Tab binnen het oppervlak blijven rondgaan terwijl open, voor popovers in dialoogstijl.',
             closeRequested:
               'Wordt geactiveerd wanneer de popover verzoekt te worden gesloten; de ouder moet dit spiegelen naar [open].',
           },

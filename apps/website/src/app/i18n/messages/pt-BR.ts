@@ -185,6 +185,7 @@ export const ptBR: WebMessages = {
       designTokens: 'Tokens de design',
       icons: 'Ícones',
       i18n: 'Internacionalização',
+      accessibility: 'Acessibilidade',
       components: 'Componentes',
     },
     index: {
@@ -211,7 +212,7 @@ export const ptBR: WebMessages = {
         },
         {
           title: 'Localizado',
-          body: 'O texto integrado dos componentes vem em 15 idiomas.',
+          body: 'O texto integrado dos componentes vem em todos os idiomas suportados.',
         },
         {
           title: 'Moderno',
@@ -390,6 +391,51 @@ export const ptBR: WebMessages = {
       frenchSpacingBody:
         'A tipografia francesa exige um espaço estreito não separável antes de <code>? ! : ; »</code> e depois de <code>«</code>. O auxiliar exportado <code>frenchSpacing()</code> converte os espaços normais em suas próprias strings em francês (a biblioteca trata internamente suas mensagens em francês incluídas).',
       demoLocaleLabel: 'Idioma',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Acessibilidade',
+      metaDescription:
+        'Conformidade WCAG 2.2 AA, suporte completo a teclado e componentes amigáveis a leitores de tela, verificados a cada versão.',
+      title: 'Acessibilidade',
+      lede: 'Cada componente é construído segundo os principais padrões de acessibilidade da web: semântica correta, suporte completo a teclado, gerenciamento de foco e anúncios em leitores de tela funcionam desde o início.',
+      conformanceHeading: 'Conformidade',
+      conformanceBody:
+        'A biblioteca adere ao <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, o padrão que a maioria das organizações precisa cumprir, e segue as práticas oficiais de autoria do W3C para cada tipo de controle, de modais e menus a sliders e seletores de data. Os anúncios em leitores de tela estão disponíveis em todos os idiomas suportados, então a tecnologia assistiva sempre fala o idioma do usuário.',
+      builtInHeading: 'Acessibilidade integrada',
+      builtInItems: [
+        {
+          title: 'Semântica',
+          body: 'Elementos nativos sempre que possível, papéis, estados e propriedades ARIA explícitos quando não. Estados como expandido, selecionado, marcado, inválido e ocupado são sempre expostos programaticamente, nunca apenas por meio de estilo.',
+        },
+        {
+          title: 'Suporte a teclado',
+          body: 'Padrões de teclado completos do APG: roving tabindex, navegação pelas setas, Home e End, Escape para dispensar e Enter ou Espaço para ativar, com tratamento das setas ciente de RTL.',
+        },
+        {
+          title: 'Gerenciamento de foco',
+          body: 'Modais e seletores confinam o foco enquanto abertos e o devolvem ao gatilho ao fechar. Os indicadores de foco estão sempre visíveis e nunca são suprimidos.',
+        },
+        {
+          title: 'Anúncios em leitores de tela',
+          body: 'Toasts, alertas, erros de validação e mudanças de estado assíncronas são anunciados por meio de regiões ao vivo com o nível de polidez apropriado.',
+        },
+        {
+          title: 'Movimento reduzido',
+          body: 'As animações respeitam a media query prefers-reduced-motion em toda parte.',
+        },
+        {
+          title: 'Contraste',
+          body: 'Os temas claro e escuro padrão atendem aos requisitos de contraste das WCAG, e as ferramentas de temas sinalizam combinações que ficam abaixo do AA.',
+        },
+      ],
+      labelsHeading: 'Nomes acessíveis',
+      labelsBefore:
+        'Componentes que renderizam texto rotulam a si mesmos. Qualquer coisa apenas com ícone ou gráfica expõe uma entrada <code>aria-label</code> (com padrões localizados para controles integrados como botões de limpar, fechar e dispensar), e os campos de formulário vinculam <code>label</code>, dicas e mensagens de erro ao controle via <code>aria-describedby</code> automaticamente.',
+      labelsAfter:
+        'Forneça um <code>label</code> ou <code>aria-label</code> para controles sem texto visível e o componente cuida do resto: nomes, dicas e mensagens de erro permanecem vinculados automaticamente.',
+      testingHeading: 'Verificado a cada versão',
+      testingBody:
+        'Cada componente é verificado segundo as regras de acessibilidade do setor sempre que muda, e uma versão só é publicada quando todas as verificações passam, então a acessibilidade que você vê aqui se mantém conforme a biblioteca evolui.',
     },
     component: {
       metaDescription: name =>
@@ -886,6 +932,8 @@ export const ptBR: WebMessages = {
         colDescription: 'Descrição',
         errorMessagesDescription:
           'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
+        ariaLabelDescription:
+          'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
         triggerErrorLabel: 'Provocar erro',
         requiredBadge: 'obrigatório',
         twoWayBadge: 'bidirecional',
@@ -1119,6 +1167,8 @@ export const ptBR: WebMessages = {
           },
           accordion: {
             multi: 'Permite que vários itens permaneçam expandidos ao mesmo tempo.',
+            headingLevel:
+              'Nível de título (1-6) aplicado a cada cabeçalho de item, de modo que o accordion se encaixe no esquema da página.',
           },
           alert: {
             dismissible:
@@ -1764,6 +1814,8 @@ export const ptBR: WebMessages = {
               'Elemento hospedeiro ou ElementRef contra o qual o popover se posiciona.',
             ariaLabel:
               'Rótulo acessível para a superfície do popover; forneça um quando o popover não contiver um título visível.',
+            ariaLabelledby:
+              'Id do elemento que rotula a superfície do popover, encaminhado como aria-labelledby.',
             clamp:
               'Limita o popover dentro da janela de visualização quando ele transbordaria.',
             closeOnEscape: 'Fecha o popover quando Escape é pressionado.',
@@ -1780,6 +1832,8 @@ export const ptBR: WebMessages = {
               'Como o popover responde a eventos de rolagem e redimensionamento enquanto aberto: reposicionar, fechar ou ignorar.',
             surfaceId:
               'id do DOM para a superfície do popover, usado pelos elementos de gatilho via aria-controls.',
+            trapFocus:
+              'Mantém Tab e Shift+Tab circulando dentro da superfície enquanto aberto, para popovers no estilo de diálogo.',
             closeRequested:
               'Dispara quando o popover solicita ser fechado; o pai deve refletir isso em [open].',
           },

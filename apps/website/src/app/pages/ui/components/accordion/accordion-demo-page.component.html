@@ -11,7 +11,8 @@
     (resetClicked)="reset()">
     <ea-accordion
       class="playground-accordion"
-      [multi]="state().multi">
+      [multi]="state().multi"
+      [headingLevel]="state().headingLevel">
       @for (item of items(); track item.id) {
         <ea-accordion-item
           [value]="'item-' + item.id"

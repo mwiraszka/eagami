@@ -12,3 +12,15 @@
   background-color: var(--text-code-bg);
   color: var(--text-code-color);
 }
+
+/* Prose links live global for the same reason as inline <code> above: anchors
+   injected via [innerHTML] are unreachable from component styles. :where() keeps
+   specificity at zero so any component-styled anchor still wins. */
+:where(p) > a {
+  color: var(--color-text-link);
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
+}

@@ -185,6 +185,7 @@ export const pl: WebMessages = {
       designTokens: 'Tokeny designu',
       icons: 'Ikony',
       i18n: 'Internacjonalizacja',
+      accessibility: 'Dostępność',
       components: 'Komponenty',
     },
     index: {
@@ -211,7 +212,7 @@ export const pl: WebMessages = {
         },
         {
           title: 'Zlokalizowane',
-          body: 'Wbudowane teksty komponentów dostępne są w 15 językach.',
+          body: 'Wbudowane teksty komponentów dostępne są we wszystkich obsługiwanych językach.',
         },
         {
           title: 'Nowoczesne',
@@ -390,6 +391,51 @@ export const pl: WebMessages = {
       frenchSpacingBody:
         'Typografia francuska wymaga wąskiej, niełamliwej spacji przed <code>? ! : ; »</code> oraz po <code>«</code>. Wyeksportowany pomocnik <code>frenchSpacing()</code> konwertuje zwykłe spacje we własnych francuskich ciągach (biblioteka obsługuje swoje wbudowane francuskie komunikaty wewnętrznie).',
       demoLocaleLabel: 'Język',
+    },
+    accessibility: {
+      metaTitle: 'Eagami | UI | Dostępność',
+      metaDescription:
+        'Zgodność z WCAG 2.2 AA, pełna obsługa klawiatury i komponenty przyjazne czytnikom ekranu, weryfikowane przy każdym wydaniu.',
+      title: 'Dostępność',
+      lede: 'Każdy komponent jest budowany zgodnie z wiodącymi standardami dostępności w sieci: poprawna semantyka, pełna obsługa klawiatury, zarządzanie fokusem i komunikaty czytników ekranu działają od razu, bez dodatkowej konfiguracji.',
+      conformanceHeading: 'Zgodność',
+      conformanceBody:
+        'Biblioteka jest zgodna z <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">WCAG 2.2 Level AA</a>, standardem, który musi spełniać większość organizacji, i stosuje oficjalne wytyczne W3C dla każdego rodzaju formantu, od okien dialogowych i menu po suwaki i selektory dat. Komunikaty czytników ekranu są dostarczane we wszystkich obsługiwanych językach, więc technologie wspomagające zawsze mówią językiem użytkownika.',
+      builtInHeading: 'Dostępność wbudowana',
+      builtInItems: [
+        {
+          title: 'Semantyka',
+          body: 'Natywne elementy tam, gdzie to możliwe, jawne role, stany i właściwości ARIA tam, gdzie nie. Stany takie jak rozwinięty, wybrany, zaznaczony, nieprawidłowy i zajęty są zawsze udostępniane programowo, nigdy wyłącznie przez stylowanie.',
+        },
+        {
+          title: 'Obsługa klawiatury',
+          body: 'Kompletne wzorce klawiaturowe APG: przechodzący tabindex, nawigacja strzałkami, Home i End, Escape do zamykania oraz Enter lub spacja do aktywacji, z obsługą strzałek uwzględniającą RTL.',
+        },
+        {
+          title: 'Zarządzanie fokusem',
+          body: 'Okna modalne i selektory przechwytują fokus, gdy są otwarte, i zwracają go do elementu wyzwalającego po zamknięciu. Wskaźniki fokusu są zawsze widoczne i nigdy nie są wyłączane.',
+        },
+        {
+          title: 'Komunikaty czytników ekranu',
+          body: 'Toasty, alerty, błędy walidacji i asynchroniczne zmiany stanu są ogłaszane przez regiony na żywo z odpowiednim poziomem uprzejmości.',
+        },
+        {
+          title: 'Zredukowany ruch',
+          body: 'Animacje respektują zapytanie o media prefers-reduced-motion w całej bibliotece.',
+        },
+        {
+          title: 'Kontrast',
+          body: 'Domyślne motywy jasny i ciemny spełniają wymagania kontrastu WCAG, a narzędzia motywów oznaczają kombinacje spadające poniżej AA.',
+        },
+      ],
+      labelsHeading: 'Dostępne nazwy',
+      labelsBefore:
+        'Komponenty renderujące tekst etykietują się same. Wszystko, co składa się tylko z ikony lub grafiki, udostępnia wejście <code>aria-label</code> (ze zlokalizowanymi wartościami domyślnymi dla wbudowanych kontrolek, takich jak przyciski czyszczenia, zamykania i odrzucania), a pola formularzy automatycznie wiążą <code>label</code>, podpowiedzi i komunikaty błędów z formantem przez <code>aria-describedby</code>.',
+      labelsAfter:
+        'Podaj <code>label</code> lub <code>aria-label</code> dla formantów bez widocznego tekstu, a komponent zajmie się resztą: nazwy, podpowiedzi i komunikaty błędów pozostają automatycznie powiązane.',
+      testingHeading: 'Weryfikowane przy każdym wydaniu',
+      testingBody:
+        'Każdy komponent jest sprawdzany pod kątem branżowych reguł dostępności przy każdej zmianie, a wydanie ukazuje się tylko wtedy, gdy wszystkie kontrole przechodzą pomyślnie, więc dostępność, którą tu widzisz, utrzymuje się w miarę rozwoju biblioteki.',
     },
     component: {
       metaDescription: name => `Dokumentacja i demonstracje komponentu ${name} na żywo.`,
@@ -893,6 +939,8 @@ export const pl: WebMessages = {
         colDescription: 'Opis',
         errorMessagesDescription:
           'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
+        ariaLabelDescription:
+          'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
         triggerErrorLabel: 'Wywołaj błąd',
         requiredBadge: 'wymagane',
         twoWayBadge: 'dwukierunkowe',
@@ -1124,6 +1172,8 @@ export const pl: WebMessages = {
           },
           accordion: {
             multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',
+            headingLevel:
+              'Poziom nagłówka (1-6) stosowany do nagłówka każdego elementu, dzięki czemu akordeon wpasowuje się w konspekt strony.',
           },
           alert: {
             dismissible:
@@ -1751,6 +1801,8 @@ export const pl: WebMessages = {
               'Element hosta lub ElementRef, względem którego popover się pozycjonuje.',
             ariaLabel:
               'Dostępna etykieta powierzchni popovera; podaj ją, gdy popover nie zawiera widocznego nagłówka.',
+            ariaLabelledby:
+              'Id elementu, który etykietuje powierzchnię popovera, przekazywany jako aria-labelledby.',
             clamp:
               'Ogranicza popover do obszaru widoku, gdy w przeciwnym razie by go przekraczał.',
             closeOnEscape: 'Zamyka popover po naciśnięciu klawisza Escape.',
@@ -1767,6 +1819,8 @@ export const pl: WebMessages = {
               'Zachowanie popovera podczas zdarzeń przewijania i zmiany rozmiaru gdy jest otwarty: reposition, close lub ignore.',
             surfaceId:
               'Id DOM powierzchni popovera, używany przez elementy wyzwalające przez aria-controls.',
+            trapFocus:
+              'Utrzymuje przechodzenie Tab i Shift+Tab w pętli wewnątrz powierzchni, gdy popover jest otwarty, dla popoverów w stylu okna dialogowego.',
             closeRequested:
               'Emitowane, gdy popover żąda zamknięcia; rodzic powinien odzwierciedlić to w [open].',
           },

@@ -51,6 +51,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'accessibility',
+        loadComponent: () =>
+          import('./pages/ui/ui-accessibility/ui-accessibility-page.component').then(
+            c => c.UiAccessibilityPageComponent,
+          ),
+      },
+      {
         path: 'changelog',
         loadComponent: () =>
           import('./pages/ui/ui-changelog/ui-changelog-page.component').then(
