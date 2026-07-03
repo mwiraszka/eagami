@@ -1,10 +1,15 @@
 import {
   ButtonComponent,
-  CheckIconComponent,
   ColorPickerComponent,
   DropdownComponent,
+  DropletIconComponent,
+  FeatherIconComponent,
+  GlobeIconComponent,
   type SelectOption,
   SliderComponent,
+  SparklesIconComponent,
+  UnlockIconComponent,
+  UserCheckIconComponent,
 } from '@eagami/ui';
 
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
@@ -112,12 +117,17 @@ function radiusVars(r: number): Record<string, string> {
   styleUrl: './ui-index-page.component.scss',
   imports: [
     RouterLink,
-    CheckIconComponent,
     UiShowcaseComponent,
     ButtonComponent,
     ColorPickerComponent,
     DropdownComponent,
+    DropletIconComponent,
+    FeatherIconComponent,
+    GlobeIconComponent,
     SliderComponent,
+    SparklesIconComponent,
+    UnlockIconComponent,
+    UserCheckIconComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

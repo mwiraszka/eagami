@@ -69,13 +69,32 @@
     <ul
       class="principle-grid"
       role="list">
-      @for (point of messages().ui.index.principles; track point.title) {
+      @for (point of messages().ui.index.principles; track point.title; let i = $index) {
         <li class="principle-card">
           <header class="principle-card__header">
             <span
-              class="principle-card__ring"
+              class="principle-card__icon"
               aria-hidden="true">
-              <ea-icon-check class="principle-card__check" />
+              @switch (i) {
+                @case (0) {
+                  <ea-icon-user-check />
+                }
+                @case (1) {
+                  <ea-icon-feather />
+                }
+                @case (2) {
+                  <ea-icon-droplet />
+                }
+                @case (3) {
+                  <ea-icon-globe />
+                }
+                @case (4) {
+                  <ea-icon-sparkles />
+                }
+                @default {
+                  <ea-icon-unlock />
+                }
+              }
             </span>
             <h3 class="principle-card__title">{{ point.title }}</h3>
           </header>
