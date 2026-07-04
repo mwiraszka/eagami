@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 
 import { ButtonComponent } from '../button/button.component';
 import { DialogComponent } from './dialog.component';
@@ -39,4 +40,18 @@ export const Playground: Story = {
       </ea-dialog>
     `,
   }),
+};
+
+export const InteractionTest: Story = {
+  ...Playground,
+  tags: ['!autodocs'],
+  parameters: { chromatic: { disableSnapshot: true } },
+  play: async () => {
+    const dialog = await screen.findByRole('dialog');
+    await expect(within(dialog).getByText('Dialog Title')).toBeInTheDocument();
+
+    await userEvent.click(within(dialog).getByRole('button', { name: /confirm/i }));
+
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  },
 };

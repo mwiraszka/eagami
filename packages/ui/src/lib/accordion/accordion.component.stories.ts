@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent } from './accordion.component';
@@ -33,4 +34,22 @@ export const Playground: Story = {
       </ea-accordion>
     `,
   }),
+};
+
+export const InteractionTest: Story = {
+  ...Playground,
+  tags: ['!autodocs'],
+  parameters: { chromatic: { disableSnapshot: true } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('button', { name: /how do i install it/i });
+    await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+
+    await userEvent.click(trigger);
+
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    await expect(
+      canvas.getByRole('region', { name: /how do i install it/i }),
+    ).toBeVisible();
+  },
 };
