@@ -8,21 +8,31 @@
   <a href="https://www.npmjs.com/package/@eagami/ui"><img src="https://img.shields.io/npm/v/@eagami/ui.svg" alt="npm version" /></a>
   <a href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@eagami/ui.svg" alt="license" /></a>
   <a href="https://main--6a14a63d5cab2ebad17871ff.chromatic.com"><img src="https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white" alt="Storybook" /></a>
-  <a href="https://eagami.com/ui/accessibility"><img src="https://img.shields.io/badge/WCAG%202.2%20AA-self--assessed-0b7261" alt="WCAG 2.2 AA (self-assessed)" /></a>
+  <a href="https://eagami.com/ui/accessibility"><img src="https://img.shields.io/badge/WCAG%202.2%20AA-axe--core%20tested-0b7261" alt="WCAG 2.2 AA, tested with axe-core" /></a>
 </p>
 
 `@eagami/ui` is a lightweight, accessible Angular component library. Sensible defaults out of the box, with a fully customizable design to fit any brand.
 
 **Live documentation:** [eagami.com/ui](https://eagami.com/ui)
 
-## Design principles
+## Why Eagami UI
 
-- **Accessible.** Keyboard navigation, focus management, screen-reader support, and reduced-motion handling are built into every component.
-- **Lightweight.** Each component imports independently and the bundle only ships what you use.
-- **Themeable.** Fully customizable with [design tokens](https://eagami.com/ui/design-tokens) while maintaining a unified look across every page. Light and dark variants ship together and default to the user's system preference.
-- **Localized.** Built-in component text ships in 15 languages, with runtime switching and per-string overrides.
-- **Modern.** Regularly updated with the latest Angular features and modern web standards.
-- **Unlocked.** Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.
+Angular teams usually reach for [Angular Material](https://material.angular.io), [PrimeNG](https://primeng.org), or a Tailwind copy-paste kit like [Spartan](https://spartan.ng). Eagami UI is different where it counts:
+
+- **Themes to your brand.** Give it one color per role and it generates a full, accessibility-checked palette; every other style is a CSS variable you can override (see [design tokens](https://eagami.com/ui/design-tokens)). Light and dark are built in and follow the system preference.
+- **Lightweight.** One runtime dependency and no CSS framework to adopt. Components are standalone, so your app ships only what it imports.
+- **Accessible and localized out of the box.** Every component is keyboard-navigable and screen-reader-ready, with built-in text in 15 languages you can switch at runtime.
+- **Yours to own.** Plain Angular and CSS with no lock-in: read, copy, or fork any component like the rest of your app.
+- **Modern Angular.** Signals, native control flow, and SSR-safe rendering throughout.
+
+| | Eagami UI | Angular Material | PrimeNG | Spartan |
+|---|---|---|---|---|
+| Styling model | CSS custom properties | Sass / Material 3 tokens | Design tokens + presets | Tailwind, copy-paste |
+| Re-skin to any brand | First-class | Within Material Design | Preset-based | You own the markup |
+| Built-in text i18n | 15 languages, runtime | Provide your own | Provide your own | Your markup |
+| Per-component a11y tests | Yes (axe-core) | Backed by the CDK | Varies by component | Your responsibility |
+| Requires a CSS framework | No | No | No | Tailwind |
+| Runtime dependencies | 1 (`tslib`) | Angular CDK | multiple | Tailwind |
 
 ## Installation
 
@@ -120,6 +130,10 @@ The library is SSR-safe and renders on the server (Angular Universal / `@angular
 
 - **[eagami-ui-flutter.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-flutter.md)** for Flutter projects
 - **[eagami-ui-react.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-react.md)** for React projects
+
+## Stability and support
+
+Eagami UI follows [Semantic Versioning](https://semver.org). Breaking changes ship only in major releases, are listed under a **Breaking** heading in the [changelog](CHANGELOG.md), and are preceded by a deprecation period wherever practical. See [SUPPORT.md](https://github.com/mwiraszka/eagami/blob/main/SUPPORT.md) for the versioning policy, supported versions, deprecation policy, and how to get help.
 
 ## Compatibility
 

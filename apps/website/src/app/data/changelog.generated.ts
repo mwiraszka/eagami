@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.2.1',
+    date: '2026-07-04',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Expand the README with a comparison to other Angular UI libraries and a stability and support overview.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.2.0',
     date: '2026-07-04',
     sections: [
