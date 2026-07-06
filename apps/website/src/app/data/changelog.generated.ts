@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.2.2',
+    date: '2026-07-07',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a runnable starter example that opens in StackBlitz, linked from the README for a no-install first look.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.2.1',
     date: '2026-07-04',
     sections: [
