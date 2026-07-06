@@ -1,0 +1,36 @@
+<main class="starter">
+  <header class="starter__head">
+    <h1 class="starter__title">Eagami UI starter</h1>
+    <ea-badge variant="success">Live</ea-badge>
+  </header>
+
+  <p class="starter__lede">
+    Everything below is themed from the two brand colors in
+    <code>src/main.ts</code>. Change a hex, reload, and the whole app re-skins.
+  </p>
+
+  <ea-card>
+    <span slot="header">Create your account</span>
+
+    <div class="starter__form">
+      <ea-input label="Email" type="email" placeholder="you@example.com" />
+      <ea-input
+        label="Password"
+        type="password"
+        placeholder="At least 8 characters" />
+      <ea-switch label="Email me product updates" />
+    </div>
+
+    <div slot="footer" class="starter__actions">
+      <ea-button variant="secondary">Cancel</ea-button>
+      <ea-button variant="primary" (clicked)="onCreate()">
+        Create account
+      </ea-button>
+    </div>
+  </ea-card>
+
+  <p class="starter__hint">
+    "Create account" clicked {{ createdCount() }} times. Try importing another
+    component into <code>src/app/app.component.ts</code>.
+  </p>
+</main>

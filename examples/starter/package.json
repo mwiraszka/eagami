@@ -1,0 +1,29 @@
+{
+  "name": "eagami-ui-starter",
+  "version": "0.0.0",
+  "description": "Minimal Angular app wired up with @eagami/ui",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/common": "22.0.5",
+    "@angular/compiler": "22.0.5",
+    "@angular/core": "22.0.5",
+    "@angular/forms": "22.0.5",
+    "@angular/platform-browser": "22.0.5",
+    "@angular/router": "22.0.5",
+    "@eagami/ui": "5.2.1",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1",
+    "zone.js": "0.16.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "22.0.5",
+    "@angular/cli": "22.0.5",
+    "@angular/compiler-cli": "22.0.5",
+    "typescript": "6.0.3"
+  }
+}

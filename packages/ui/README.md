@@ -15,12 +15,14 @@
 
 **Live documentation:** [eagami.com/ui](https://eagami.com/ui)
 
+**Try it live:** [open a starter on StackBlitz](https://stackblitz.com/github/mwiraszka/eagami/tree/main/examples/starter), no install needed.
+
 ## Why Eagami UI
 
 Angular teams usually reach for [Angular Material](https://material.angular.io), [PrimeNG](https://primeng.org), or a Tailwind copy-paste kit like [Spartan](https://spartan.ng). Eagami UI is different where it counts:
 
 - **Themes to your brand.** Give it one color per role and it generates a full, accessibility-checked palette; every other style is a CSS variable you can override (see [design tokens](https://eagami.com/ui/design-tokens)). Light and dark are built in and follow the system preference.
-- **Lightweight.** One runtime dependency and no CSS framework to adopt. Components are standalone, so your app ships only what it imports.
+- **Lightweight.** One runtime dependency (`tslib`), no CSS framework, and standalone side-effect-free components, so your app bundles only what it imports (the whole library, every component and icon, is ~260 KB gzipped).
 - **Accessible and localized out of the box.** Every component is keyboard-navigable and screen-reader-ready, with built-in text in 15 languages you can switch at runtime.
 - **Yours to own.** Plain Angular and CSS with no lock-in: read, copy, or fork any component like the rest of your app.
 - **Modern Angular.** Signals, native control flow, and SSR-safe rendering throughout.

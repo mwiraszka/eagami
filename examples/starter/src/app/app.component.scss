@@ -1,0 +1,33 @@
+.starter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.starter__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.starter__title {
+  margin: 0;
+}
+
+.starter__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.starter__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.starter__hint {
+  color: var(--color-text-secondary);
+}
