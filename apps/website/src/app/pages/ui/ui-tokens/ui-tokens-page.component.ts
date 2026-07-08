@@ -8,6 +8,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -42,7 +43,7 @@ const SIMULATION_RESET_BUFFER_MS = 80; // lets the longest run land before the r
   templateUrl: './ui-tokens-page.component.html',
   styleUrl: './ui-tokens-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeSnippetComponent],
+  imports: [CodeSnippetComponent, RouterLink],
 })
 export class UiTokensPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
