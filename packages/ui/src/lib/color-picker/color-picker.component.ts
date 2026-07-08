@@ -130,6 +130,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Whether to show the alpha slider. When `false` the emitted value always has alpha = 1. */
   readonly showAlpha = input<boolean>(true);
+  /** Whether to show the clear button when a value is set. */
+  readonly clearable = input<boolean>(true);
   /** Output format. `all` lets the user cycle hex/rgb/hsl in the popover; a specific value locks it. */
   readonly format = input<ColorPickerFormat>('all');
   /** Preset swatches shown at the bottom of the popover. Pass an empty array to hide. */

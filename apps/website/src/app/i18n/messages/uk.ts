@@ -181,6 +181,7 @@ export const uk: WebMessages = {
       overview: 'Огляд',
       setup: 'Налаштування',
       designTokens: 'Дизайн-токени',
+      themeBuilder: 'Конструктор теми',
       icons: 'Іконки',
       i18n: 'Інтернаціоналізація',
       accessibility: 'Доступність',
@@ -294,6 +295,33 @@ export const uk: WebMessages = {
       },
       firstComponentHeading: 'Ваш перший компонент',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Конструктор теми',
+      metaDescription:
+        'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
+      title: 'Конструктор теми',
+      lede: 'Виберіть кольори бренду, і Eagami UI побудує повну шкалу 50–900 у просторі OKLCH, перевірить її контраст за WCAG у світлій і темній темі та надасть готову конфігурацію <code>provideEagamiUi</code>.',
+      controlsHeading: 'Кольори бренду',
+      primaryLabel: 'Основний колір',
+      secondaryLabel: 'Додатковий колір',
+      contrastHeading: 'Доступність',
+      contrastPass: 'Відповідає контрасту WCAG 2.2 AA у світлій і темній темі',
+      contrastFailIntro: 'Деякі поєднання не досягають порога контрасту WCAG AA:',
+      scaleHeading: 'Згенерована шкала',
+      previewHeading: 'Попередній перегляд',
+      previewHint: 'Перемкніть тему сайту, щоб переглянути палітру в темному режимі.',
+      previewButton: 'Почати',
+      previewSwitch: 'Сповіщення',
+      previewPrimary: 'Основний',
+      previewSecondary: 'Додатковий',
+      previewStep1: 'Акаунт',
+      previewStep2: 'Профіль',
+      previewStep3: 'Готово',
+      previewProgress: 'Прогрес:',
+      exportHeading: 'Використовуйте',
+      exportConfigLabel: 'Конфігурація провайдера',
+      exportCssLabel: 'CSS-змінні',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Дизайн-токени',
       metaDescription:
@@ -320,6 +348,8 @@ export const uk: WebMessages = {
         'Зафіксуйте конкретні відтінки або перепризначте, який виведений відтінок стоїть за кожною семантичною роллю:',
       paletteContrast:
         'Кожна пара бренд-роль (текст на поверхні, поверхня на полотні) перевіряється на відповідність WCAG 2.1 AA під час старту. Невдала комбінація викидає помилку ще до завантаження застосунку, тож баг контрасту в кольорі бренду виявляється на старті, а не у продакшені.',
+      paletteBuilderIntro: 'Створюйте й переглядайте палітру візуально в',
+      paletteBuilderLink: 'конструкторі теми',
       elevationDrop: 'Падаючі тіні',
       elevationRelief: 'Фаска та заглиблення',
       elevationReliefBefore:
@@ -1016,6 +1046,7 @@ export const uk: WebMessages = {
             size: 'Розмір',
             format: 'Формат',
             showAlpha: 'Показати прозорість',
+            clearable: 'Очищення',
             disabled: 'Вимкнено',
             readonly: 'Лише для читання',
             required: 'Обов’язковий',
@@ -1047,6 +1078,7 @@ export const uk: WebMessages = {
             size: 'Розмір',
             value: 'Значення',
             max: 'Макс',
+            buffer: 'Буфер',
             showPercentage: 'Показати відсоток',
             indeterminate: 'Невизначений',
             label: 'Мітка',
@@ -1271,6 +1303,7 @@ export const uk: WebMessages = {
             required: 'Позначає поле як обов’язкове.',
             showAlpha:
               'Показує повзунок прозорості та включає прозорість у видаване значення.',
+            clearable: 'Чи показувати кнопку очищення, коли задано значення.',
             size: 'Візуальний розмір тригера вибору.',
             value: 'Поточний рядок кольору, двостороннє прив’язування через [(value)].',
             changed: 'Спрацьовує з новим рядком кольору щоразу, коли змінюється вибір.',
@@ -1330,6 +1363,8 @@ export const uk: WebMessages = {
             size: 'Візуальна товщина смуги.',
             value: 'Поточне значення прогресу.',
             max: 'Значення, при якому смуга заповнена.',
+            buffer:
+              'Буферизована позиція попереду значення, показана додатковим кольором.',
             showPercentage: 'Показує поточний відсоток поряд зі смугою.',
             indeterminate:
               'Рендерить циклічну анімацію для прогресу невідомої тривалості.',

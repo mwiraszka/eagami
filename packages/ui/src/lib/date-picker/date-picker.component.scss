@@ -257,7 +257,9 @@
 
     &--today {
       font-weight: var(--font-weight-semibold);
-      color: var(--color-brand-text);
+      // The selected day carries the primary brand; today's marker uses the
+      // secondary brand so "where you are" reads distinctly from "your choice".
+      color: var(--color-brand-secondary-text);
     }
 
     &--focused:not(.ea-date-picker__day--selected) {
@@ -305,12 +307,14 @@
     font-family: var(--font-family-sans);
     font-size: 0.875em;
     font-weight: var(--font-weight-medium);
-    color: var(--color-brand-text);
+    // Matches the today cell's secondary marker, distinct from the primary
+    // selected day.
+    color: var(--color-brand-secondary-text);
     cursor: pointer;
     transition: var(--transition-colors);
 
     &:hover {
-      background-color: var(--color-brand-subtle);
+      background-color: var(--color-brand-secondary-subtle);
     }
 
     &:focus-visible {

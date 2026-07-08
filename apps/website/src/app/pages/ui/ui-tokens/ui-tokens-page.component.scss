@@ -60,11 +60,26 @@
   }
 }
 
+.tokens-section--colors {
+  gap: 8px;
+}
+
 .tokens-section__title {
   font-size: 24px;
   font-weight: 600;
   font-family: var(--font-family-brand);
   color: var(--color-text-primary);
+}
+
+.tokens-section__cta a {
+  font-weight: 600;
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-link-hover);
+    text-decoration: underline;
+  }
 }
 
 .tokens-subsection__lede {
@@ -108,57 +123,48 @@
   margin-top: -8px;
 }
 
-.swatch-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 8px;
+// The shade steps live inside the bar; this states the token pattern once per
+// scale so each variable name (prefix + visible step) stays readable at a glance.
+.tokens-scale__var {
+  font-size: 12px;
+  font-family: var(--font-family-mono);
+  color: var(--color-text-tertiary);
 }
 
-.swatch {
-  position: relative;
+// Sequential scales render as a single contiguous bar: each shade is a thin
+// segment with its step number inside, and the full token name on hover. Far
+// more compact than a grid of labelled cards while keeping the scale readable.
+.color-scale {
+  display: flex;
   overflow: hidden;
-  display: block;
-  height: 88px;
-  margin: 0;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
 }
 
-.swatch__color {
-  z-index: 0;
-  position: absolute;
-  inset: 0;
-  display: block;
+.color-scale__stop {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 0;
+  height: 56px;
+  padding-bottom: 6px;
+
+  &:not(:last-child) {
+    box-shadow: inset -1px 0 0 var(--color-border-subtle);
+  }
 }
 
-.swatch__caption {
-  z-index: 1;
-  position: absolute;
-  inset: auto 8px 8px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.color-scale__shade {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-family-mono);
   color: var(--color-neutral-900);
 }
 
-.swatch__shade {
-  font-size: 14px;
-  font-weight: 600;
-  color: inherit;
-}
-
-.swatch__name {
-  overflow: hidden;
-  font-size: 12px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-family: var(--font-family-mono);
-  color: inherit;
-  opacity: 0.8;
-}
-
 @each $shade in (500, 600, 700, 800, 900, 950) {
-  .swatch__color.swatch--#{$shade} ~ .swatch__caption {
+  .color-scale__stop.swatch--#{$shade} .color-scale__shade {
     color: var(--color-neutral-50);
   }
 }

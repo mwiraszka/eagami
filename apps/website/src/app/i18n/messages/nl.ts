@@ -182,6 +182,7 @@ export const nl: WebMessages = {
       overview: 'Overzicht',
       setup: 'Installatie',
       designTokens: 'Designtokens',
+      themeBuilder: 'Themabuilder',
       icons: 'Iconen',
       i18n: 'Internationalisatie',
       accessibility: 'Toegankelijkheid',
@@ -296,6 +297,34 @@ export const nl: WebMessages = {
       },
       firstComponentHeading: 'Je eerste component',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Themabuilder',
+      metaDescription:
+        'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
+      title: 'Themabuilder',
+      lede: 'Kies je merkkleuren en Eagami UI leidt er een volledige 50–900-schaal in de OKLCH-ruimte uit af, controleert het WCAG-contrast in de lichte en donkere modus en geeft je de <code>provideEagamiUi</code>-configuratie om direct toe te passen.',
+      controlsHeading: 'Merkkleuren',
+      primaryLabel: 'Primaire kleur',
+      secondaryLabel: 'Secundaire kleur',
+      contrastHeading: 'Toegankelijkheid',
+      contrastPass:
+        'Voldoet aan WCAG 2.2 AA-contrast in zowel de lichte als de donkere modus',
+      contrastFailIntro: 'Sommige combinaties blijven onder de WCAG AA-contrastdrempel:',
+      scaleHeading: 'Gegenereerde schaal',
+      previewHeading: 'Voorbeeld',
+      previewHint: 'Wissel het sitethema om het palet in de donkere modus te bekijken.',
+      previewButton: 'Aan de slag',
+      previewSwitch: 'Meldingen',
+      previewPrimary: 'Primair',
+      previewSecondary: 'Secundair',
+      previewStep1: 'Account',
+      previewStep2: 'Profiel',
+      previewStep3: 'Klaar',
+      previewProgress: 'Voortgang:',
+      exportHeading: 'Gebruik het',
+      exportConfigLabel: 'Providerconfiguratie',
+      exportCssLabel: 'CSS-custom-properties',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Designtokens',
       metaDescription:
@@ -322,6 +351,8 @@ export const nl: WebMessages = {
         'Zet specifieke tinten vast of wijs opnieuw toe welke afgeleide tint elke semantische rol ondersteunt:',
       paletteContrast:
         'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op WCAG 2.1 AA. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
+      paletteBuilderIntro: 'Stel je palet visueel samen en bekijk het in de',
+      paletteBuilderLink: 'themabuilder',
       elevationDrop: 'Slagschaduwen',
       elevationRelief: 'Reliëf en uitsparing',
       elevationReliefBefore:
@@ -1018,6 +1049,7 @@ export const nl: WebMessages = {
             size: 'Grootte',
             format: 'Formaat',
             showAlpha: 'Alpha tonen',
+            clearable: 'Wisbaar',
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
@@ -1049,6 +1081,7 @@ export const nl: WebMessages = {
             size: 'Grootte',
             value: 'Waarde',
             max: 'Max',
+            buffer: 'Buffer',
             showPercentage: 'Percentage tonen',
             indeterminate: 'Onbepaald',
             label: 'Label',
@@ -1279,6 +1312,7 @@ export const nl: WebMessages = {
             readonly: 'Maakt het veld alleen-lezen, waardoor de popover niet opent.',
             required: 'Markeert het veld als verplicht.',
             showAlpha: 'Toont de alphaschuif en neemt alpha op in de uitgezonden waarde.',
+            clearable: 'Of de wisknop wordt getoond wanneer er een waarde is ingesteld.',
             size: 'Visuele grootte van de kiezertrigger.',
             value: 'Huidige kleurtekst, in twee richtingen te binden via [(value)].',
             changed:
@@ -1338,6 +1372,8 @@ export const nl: WebMessages = {
             size: 'Visuele dikte van de balk.',
             value: 'Huidige voortgangswaarde.',
             max: 'Waarde waarbij de balk vol is.',
+            buffer:
+              'Gebufferde positie vóór de waarde, weergegeven in de secundaire kleur.',
             showPercentage: 'Toont het huidige percentage naast de balk.',
             indeterminate:
               'Geeft een herhalende animatie weer voor voortgang van onbekende duur.',

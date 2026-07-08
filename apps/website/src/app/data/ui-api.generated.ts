@@ -887,6 +887,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-color-picker',
     inputs: [
       {
+        name: 'clearable',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -2674,6 +2681,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   'progress-bar': {
     selector: 'ea-progress-bar',
     inputs: [
+      {
+        name: 'buffer',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'indeterminate',
         type: 'boolean',

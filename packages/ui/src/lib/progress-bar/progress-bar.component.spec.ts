@@ -213,4 +213,51 @@ describe('ProgressBarComponent', () => {
       expect(getFill()!.style.width).toBe('');
     });
   });
+
+  describe('Buffer', () => {
+    function getBuffer(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-progress-bar__buffer');
+    }
+
+    it('does not render a buffer segment by default', () => {
+      expect(getBuffer()).toBeNull();
+    });
+
+    it('renders a buffer segment at the buffered width when set', () => {
+      fixture.componentRef.setInput('buffer', 70);
+      fixture.detectChanges();
+
+      expect(getBuffer()!.style.width).toBe('70%');
+    });
+
+    it('scales the buffer width by max', () => {
+      fixture.componentRef.setInput('max', 200);
+      fixture.componentRef.setInput('buffer', 100);
+      fixture.detectChanges();
+
+      expect(getBuffer()!.style.width).toBe('50%');
+    });
+
+    it('clamps a buffer above max to 100%', () => {
+      fixture.componentRef.setInput('buffer', 150);
+      fixture.detectChanges();
+
+      expect(getBuffer()!.style.width).toBe('100%');
+    });
+
+    it('clamps a negative buffer to 0%', () => {
+      fixture.componentRef.setInput('buffer', -20);
+      fixture.detectChanges();
+
+      expect(getBuffer()!.style.width).toBe('0%');
+    });
+
+    it('does not render a buffer segment when indeterminate', () => {
+      fixture.componentRef.setInput('buffer', 70);
+      fixture.componentRef.setInput('indeterminate', true);
+      fixture.detectChanges();
+
+      expect(getBuffer()).toBeNull();
+    });
+  });
 });

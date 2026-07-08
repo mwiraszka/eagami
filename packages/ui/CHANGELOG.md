@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.0] - 2026-07-08
+
+### Added
+
+- Add a `buffer` input to the progress bar that renders the buffered-ahead segment in the secondary brand color, for download-then-process style progress.
+- Add a `clearable` input to the color picker (default `true`) to show or hide the clear button, matching the other form inputs.
+
+### Changed
+
+- Put the secondary brand color to work as a native accent: the date picker marks today in it (the selected day stays primary) and the stepper marks the current step in it (completed steps stay primary). Secondary brand tokens now carry full light and dark coverage.
+- Refresh the default secondary brand color to a cooler blue-violet.
+
 ## [5.2.2] - 2026-07-07
 
 ### Added
@@ -940,6 +952,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.3.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.2.2...ui-v5.3.0
 [5.2.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.2.1...ui-v5.2.2
 [5.2.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.2.0...ui-v5.2.1
 [5.2.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.1.0...ui-v5.2.0

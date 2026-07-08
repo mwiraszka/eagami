@@ -178,6 +178,7 @@ export const hi: WebMessages = {
       overview: 'अवलोकन',
       setup: 'सेटअप',
       designTokens: 'डिज़ाइन टोकन',
+      themeBuilder: 'थीम बिल्डर',
       icons: 'आइकन',
       i18n: 'अंतर्राष्ट्रीयकरण',
       accessibility: 'सुलभता',
@@ -291,6 +292,33 @@ export const hi: WebMessages = {
       },
       firstComponentHeading: 'आपका पहला कंपोनेंट',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | थीम बिल्डर',
+      metaDescription:
+        'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
+      title: 'थीम बिल्डर',
+      lede: 'अपने ब्रांड रंग चुनें और Eagami UI, OKLCH स्पेस में पूरी 50–900 स्केल बनाता है, लाइट और डार्क मोड में इसके WCAG कंट्रास्ट की जाँच करता है, और आपको सीधे उपयोग के लिए <code>provideEagamiUi</code> कॉन्फ़िगरेशन देता है।',
+      controlsHeading: 'ब्रांड रंग',
+      primaryLabel: 'प्राथमिक रंग',
+      secondaryLabel: 'द्वितीयक रंग',
+      contrastHeading: 'सुलभता',
+      contrastPass: 'लाइट और डार्क दोनों मोड में WCAG 2.2 AA कंट्रास्ट पूरा करता है',
+      contrastFailIntro: 'कुछ संयोजन WCAG AA कंट्रास्ट सीमा से नीचे हैं:',
+      scaleHeading: 'जनरेट की गई स्केल',
+      previewHeading: 'पूर्वावलोकन',
+      previewHint: 'डार्क मोड में पैलेट देखने के लिए साइट थीम बदलें।',
+      previewButton: 'शुरू करें',
+      previewSwitch: 'सूचनाएँ',
+      previewPrimary: 'प्राथमिक',
+      previewSecondary: 'द्वितीयक',
+      previewStep1: 'खाता',
+      previewStep2: 'प्रोफ़ाइल',
+      previewStep3: 'पूर्ण',
+      previewProgress: 'प्रगति:',
+      exportHeading: 'इसका उपयोग करें',
+      exportConfigLabel: 'प्रोवाइडर कॉन्फ़िगरेशन',
+      exportCssLabel: 'CSS कस्टम प्रॉपर्टीज़',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | डिज़ाइन टोकन',
       metaDescription:
@@ -317,6 +345,8 @@ export const hi: WebMessages = {
         'विशिष्ट शेड पिन करें या यह रीमैप करें कि कौन सा निकाला गया शेड प्रत्येक सिमेंटिक भूमिका को सपोर्ट करता है:',
       paletteContrast:
         'प्रत्येक ब्रांड-भूमिका जोड़ी (सरफ़ेस पर टेक्स्ट, कैनवास पर सरफ़ेस) की बूटस्ट्रैप पर WCAG 2.1 AA के विरुद्ध जांच की जाती है। एक विफल संयोजन ऐप लोड होने से पहले ही त्रुटि देता है, इसलिए ब्रांड रंग में कंट्रास्ट बग प्रोडक्शन के बजाय बूट पर पकड़ा जाता है।',
+      paletteBuilderIntro: 'दृश्य रूप से पैलेट बनाने और उसका पूर्वावलोकन करने के लिए:',
+      paletteBuilderLink: 'थीम बिल्डर',
       elevationDrop: 'ड्रॉप शैडो',
       elevationRelief: 'बेवल और वेल',
       elevationReliefBefore:
@@ -1009,6 +1039,7 @@ export const hi: WebMessages = {
             size: 'आकार',
             format: 'फ़ॉर्मेट',
             showAlpha: 'अल्फ़ा दिखाएं',
+            clearable: 'साफ़ करने योग्य',
             disabled: 'अक्षम',
             readonly: 'केवल-पढ़ने योग्य',
             required: 'आवश्यक',
@@ -1040,6 +1071,7 @@ export const hi: WebMessages = {
             size: 'आकार',
             value: 'मान',
             max: 'अधिकतम',
+            buffer: 'बफ़र',
             showPercentage: 'प्रतिशत दिखाएं',
             indeterminate: 'अनिश्चित',
             label: 'लेबल',
@@ -1267,6 +1299,7 @@ export const hi: WebMessages = {
             required: 'फ़ील्ड को आवश्यक के रूप में चिह्नित करता है।',
             showAlpha:
               'अल्फ़ा स्लाइडर दिखाता है और उत्सर्जित मान में अल्फ़ा शामिल करता है।',
+            clearable: 'मान सेट होने पर साफ़ करने वाला बटन दिखाना है या नहीं।',
             size: 'पिकर ट्रिगर का दृश्य आकार।',
             value:
               'वर्तमान रंग स्ट्रिंग, [(value)] के माध्यम से दो-तरफ़ा बाइंड करने योग्य।',
@@ -1324,6 +1357,7 @@ export const hi: WebMessages = {
             size: 'बार की दृश्य मोटाई।',
             value: 'वर्तमान प्रगति मान।',
             max: 'मान जिस पर बार भरा होता है।',
+            buffer: 'मान से आगे बफ़र की गई स्थिति, द्वितीयक रंग में दिखाई जाती है।',
             showPercentage: 'बार के साथ वर्तमान प्रतिशत दिखाता है।',
             indeterminate:
               'अज्ञात अवधि की प्रगति के लिए एक लूपिंग एनिमेशन रेंडर करता है।',

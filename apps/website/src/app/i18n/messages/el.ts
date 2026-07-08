@@ -183,6 +183,7 @@ export const el: WebMessages = {
       overview: 'Επισκόπηση',
       setup: 'Εγκατάσταση',
       designTokens: 'Tokens σχεδίασης',
+      themeBuilder: 'Δημιουργός θέματος',
       icons: 'Εικονίδια',
       i18n: 'Διεθνοποίηση',
       accessibility: 'Προσβασιμότητα',
@@ -293,6 +294,35 @@ export const el: WebMessages = {
       },
       firstComponentHeading: 'Το πρώτο σας συστατικό',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Δημιουργός θέματος',
+      metaDescription:
+        'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
+      title: 'Δημιουργός θέματος',
+      lede: 'Επιλέξτε τα χρώματα της μάρκας σας και το Eagami UI παράγει μια πλήρη κλίμακα 50–900 στον χώρο OKLCH, ελέγχει την αντίθεσή της κατά WCAG σε φωτεινή και σκοτεινή λειτουργία και σας δίνει έτοιμη τη διαμόρφωση <code>provideEagamiUi</code>.',
+      controlsHeading: 'Χρώματα μάρκας',
+      primaryLabel: 'Κύριο χρώμα',
+      secondaryLabel: 'Δευτερεύον χρώμα',
+      contrastHeading: 'Προσβασιμότητα',
+      contrastPass: 'Πληροί την αντίθεση WCAG 2.2 AA σε φωτεινή και σκοτεινή λειτουργία',
+      contrastFailIntro:
+        'Ορισμένοι συνδυασμοί βρίσκονται κάτω από το όριο αντίθεσης WCAG AA:',
+      scaleHeading: 'Παραγόμενη κλίμακα',
+      previewHeading: 'Προεπισκόπηση',
+      previewHint:
+        'Αλλάξτε το θέμα του ιστότοπου για προεπισκόπηση της παλέτας σε σκοτεινή λειτουργία.',
+      previewButton: 'Ξεκινήστε',
+      previewSwitch: 'Ειδοποιήσεις',
+      previewPrimary: 'Κύριο',
+      previewSecondary: 'Δευτερεύον',
+      previewStep1: 'Λογαριασμός',
+      previewStep2: 'Προφίλ',
+      previewStep3: 'Τέλος',
+      previewProgress: 'Πρόοδος:',
+      exportHeading: 'Χρησιμοποιήστε το',
+      exportConfigLabel: 'Διαμόρφωση παρόχου',
+      exportCssLabel: 'Προσαρμοσμένες ιδιότητες CSS',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Tokens σχεδίασης',
       metaDescription:
@@ -319,6 +349,8 @@ export const el: WebMessages = {
         'Καρφιτσώστε συγκεκριμένες αποχρώσεις ή αντιστοιχίστε ποιά παραγόμενη απόχρωση υποστηρίζει κάθε σημασιολογικό ρόλο:',
       paletteContrast:
         'Κάθε ζευγάρι ρόλων μάρκας (κείμενο πάνω σε επιφάνεια, επιφάνεια πάνω σε καμβά) ελέγχεται έναντι του WCAG 2.1 AA στην εκκίνηση. Ένας μη συμβατός συνδυασμός ρίχνει σφάλμα πριν φορτώσει η εφαρμογή, οπότε ένα bug αντίθεσης στο χρώμα της μάρκας πιάνεται στο boot και όχι στην παραγωγή.',
+      paletteBuilderIntro: 'Δημιουργήστε και δείτε την παλέτα σας οπτικά στον',
+      paletteBuilderLink: 'δημιουργό θέματος',
       elevationDrop: 'Σκιές πτώσης',
       elevationRelief: 'Ανάγλυφο και βαθούλωμα',
       elevationReliefBefore:
@@ -1026,6 +1058,7 @@ export const el: WebMessages = {
             size: 'Μέγεθος',
             format: 'Μορφή',
             showAlpha: 'Εμφάνιση άλφα',
+            clearable: 'Εκκαθάριση',
             disabled: 'Απενεργοποιημένο',
             readonly: 'Μόνο για ανάγνωση',
             required: 'Υποχρεωτικό',
@@ -1057,6 +1090,7 @@ export const el: WebMessages = {
             size: 'Μέγεθος',
             value: 'Τιμή',
             max: 'Μέγιστο',
+            buffer: 'Buffer',
             showPercentage: 'Εμφάνιση ποσοστού',
             indeterminate: 'Απροσδιόριστο',
             label: 'Ετικέτα',
@@ -1289,6 +1323,7 @@ export const el: WebMessages = {
             required: 'Επισημαίνει το πεδίο ως υποχρεωτικό.',
             showAlpha:
               'Εμφανίζει τον ολισθητή άλφα και συμπεριλαμβάνει το άλφα στην εκπεμπόμενη τιμή.',
+            clearable: 'Αν θα εμφανίζεται το κουμπί εκκαθάρισης όταν έχει οριστεί τιμή.',
             size: 'Οπτικό μέγεθος του ενεργοποιητή του επιλογέα.',
             value: 'Τρέχουσα συμβολοσειρά χρώματος, αμφίδρομα συνδέσιμη μέσω [(value)].',
             changed:
@@ -1354,6 +1389,7 @@ export const el: WebMessages = {
             size: 'Οπτικό πάχος της μπάρας.',
             value: 'Τρέχουσα τιμή προόδου.',
             max: 'Τιμή στην οποία η μπάρα είναι γεμάτη.',
+            buffer: 'Θέση προφόρτωσης πριν από την τιμή, στο δευτερεύον χρώμα.',
             showPercentage: 'Εμφανίζει το τρέχον ποσοστό δίπλα στην μπάρα.',
             indeterminate:
               'Αναπαράγει μια επαναλαμβανόμενη κίνηση για πρόοδο άγνωστης διάρκειας.',

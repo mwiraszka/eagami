@@ -1,0 +1,216 @@
+@use 'mixins' as mixins;
+
+.theme-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 880px;
+}
+
+.theme-builder__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.theme-builder__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--font-family-brand);
+  letter-spacing: -1px;
+  color: var(--color-text-primary);
+}
+
+.theme-builder__lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+
+  code {
+    @include mixins.code-chip;
+    overflow-wrap: break-word;
+  }
+}
+
+.theme-builder__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-width: 0;
+}
+
+.tb-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tb-controls__fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  ea-color-picker {
+    flex: 1 1 240px;
+    min-width: 0;
+    max-width: 340px;
+  }
+}
+
+.tb-output {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-width: 0;
+}
+
+.tb-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tb-section__title {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.tb-subsection__title {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.tb-scale-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.tb-hint {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-tertiary);
+}
+
+.tb-contrast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.tb-contrast--pass {
+  border-color: var(--color-success-200);
+  background-color: var(--color-success-50);
+  color: var(--color-success-700);
+}
+
+.tb-contrast--fail {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  border-color: var(--color-error-200);
+  background-color: var(--color-error-50);
+  color: var(--color-error-700);
+}
+
+.tb-contrast__intro {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.tb-contrast__icon {
+  flex-shrink: 0;
+  width: 1.125em;
+  height: 1.125em;
+}
+
+.tb-contrast__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 24px;
+  font-size: 14px;
+  list-style: disc;
+
+  code {
+    @include mixins.code-chip;
+  }
+}
+
+.tb-contrast__mode {
+  margin: 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+.tb-scale {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 4px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.tb-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tb-swatch__color {
+  display: block;
+  height: 48px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.tb-swatch__caption {
+  font-size: 12px;
+  text-align: center;
+  color: var(--color-text-tertiary);
+}
+
+.tb-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-base);
+}
+
+.tb-preview__date {
+  flex: 0 1 200px;
+}
+
+// Sits inline with the others when there's room, but never narrower than 150px;
+// when the row can't fit it, it wraps and grows to fill its own line.
+.tb-preview__progress {
+  flex: 1 1 150px;
+  min-width: 150px;
+}
+
+.tb-preview__stepper {
+  flex: 1 1 100%;
+}

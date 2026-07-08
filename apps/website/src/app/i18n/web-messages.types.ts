@@ -105,6 +105,7 @@ export interface WebMessages {
       overview: string;
       setup: string;
       designTokens: string;
+      themeBuilder: string;
       icons: string;
       i18n: string;
       accessibility: string;
@@ -185,6 +186,32 @@ export interface WebMessages {
       };
       firstComponentHeading: string;
     };
+    themeBuilder: {
+      metaTitle: string;
+      metaDescription: string;
+      title: string;
+      lede: string;
+      controlsHeading: string;
+      primaryLabel: string;
+      secondaryLabel: string;
+      contrastHeading: string;
+      contrastPass: string;
+      contrastFailIntro: string;
+      scaleHeading: string;
+      previewHeading: string;
+      previewHint: string;
+      previewButton: string;
+      previewSwitch: string;
+      previewPrimary: string;
+      previewSecondary: string;
+      previewStep1: string;
+      previewStep2: string;
+      previewStep3: string;
+      previewProgress: string;
+      exportHeading: string;
+      exportConfigLabel: string;
+      exportCssLabel: string;
+    };
     tokens: {
       metaTitle: string;
       metaDescription: string;
@@ -205,6 +232,8 @@ export interface WebMessages {
       paletteIntro: string;
       paletteOverrides: string;
       paletteContrast: string;
+      paletteBuilderIntro: string;
+      paletteBuilderLink: string;
       elevationDrop: string;
       elevationRelief: string;
       elevationReliefBefore: string;

@@ -182,6 +182,7 @@ export const de: WebMessages = {
       overview: 'Überblick',
       setup: 'Einrichtung',
       designTokens: 'Design-Tokens',
+      themeBuilder: 'Theme-Builder',
       icons: 'Symbole',
       i18n: 'Internationalisierung',
       accessibility: 'Barrierefreiheit',
@@ -297,6 +298,35 @@ export const de: WebMessages = {
       },
       firstComponentHeading: 'Ihre erste Komponente',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Theme-Builder',
+      metaDescription:
+        'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
+      title: 'Theme-Builder',
+      lede: 'Wählen Sie Ihre Markenfarben, und Eagami UI leitet daraus eine vollständige 50–900-Skala im OKLCH-Raum ab, prüft sie im hellen und dunklen Modus auf WCAG-Kontrast und liefert Ihnen die <code>provideEagamiUi</code>-Konfiguration zum direkten Einsetzen.',
+      controlsHeading: 'Markenfarben',
+      primaryLabel: 'Primärfarbe',
+      secondaryLabel: 'Sekundärfarbe',
+      contrastHeading: 'Barrierefreiheit',
+      contrastPass: 'Erfüllt den WCAG 2.2 AA-Kontrast im hellen und dunklen Modus',
+      contrastFailIntro:
+        'Einige Kombinationen liegen unter der WCAG AA-Kontrastschwelle:',
+      scaleHeading: 'Generierte Skala',
+      previewHeading: 'Vorschau',
+      previewHint:
+        'Wechseln Sie das Website-Theme, um die Palette im dunklen Modus anzusehen.',
+      previewButton: 'Loslegen',
+      previewSwitch: 'Benachrichtigungen',
+      previewPrimary: 'Primär',
+      previewSecondary: 'Sekundär',
+      previewStep1: 'Konto',
+      previewStep2: 'Profil',
+      previewStep3: 'Fertig',
+      previewProgress: 'Fortschritt:',
+      exportHeading: 'Verwenden',
+      exportConfigLabel: 'Provider-Konfiguration',
+      exportCssLabel: 'CSS-Custom-Properties',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Design-Tokens',
       metaDescription:
@@ -323,6 +353,8 @@ export const de: WebMessages = {
         'Fixieren Sie bestimmte Schattierungen oder ordnen Sie neu zu, welche abgeleitete Schattierung jeder semantischen Rolle zugrunde liegt:',
       paletteContrast:
         'Jede Marken-Rollen-Paarung (Text auf Oberfläche, Oberfläche auf Hintergrund) wird beim Bootstrap gegen WCAG 2.1 AA geprüft. Eine fehlschlagende Kombination wirft einen Fehler, bevor die App lädt, sodass ein Kontrastfehler in der Markenfarbe schon beim Start erkannt wird und nicht erst in der Produktion.',
+      paletteBuilderIntro: 'Erstellen und prüfen Sie Ihre Palette visuell im',
+      paletteBuilderLink: 'Theme-Builder',
       elevationDrop: 'Schlagschatten',
       elevationRelief: 'Abschrägung und Vertiefung',
       elevationReliefBefore:
@@ -1026,6 +1058,7 @@ export const de: WebMessages = {
             size: 'Größe',
             format: 'Format',
             showAlpha: 'Transparenz anzeigen',
+            clearable: 'Löschbar',
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
@@ -1057,6 +1090,7 @@ export const de: WebMessages = {
             size: 'Größe',
             value: 'Wert',
             max: 'Höchstwert',
+            buffer: 'Puffer',
             showPercentage: 'Prozentsatz anzeigen',
             indeterminate: 'Unbestimmt',
             label: 'Beschriftung',
@@ -1288,6 +1322,8 @@ export const de: WebMessages = {
             required: 'Kennzeichnet das Feld als erforderlich.',
             showAlpha:
               'Zeigt den Transparenz-Schieberegler und bezieht die Transparenz in den emittierten Wert ein.',
+            clearable:
+              'Ob die Löschschaltfläche angezeigt wird, wenn ein Wert gesetzt ist.',
             size: 'Visuelle Größe des Picker-Auslösers.',
             value: 'Aktuelle Farb-Zeichenkette, bidirektional bindbar über [(value)].',
             changed:
@@ -1351,6 +1387,7 @@ export const de: WebMessages = {
             size: 'Visuelle Dicke des Balkens.',
             value: 'Aktueller Fortschrittswert.',
             max: 'Wert, bei dem der Balken voll ist.',
+            buffer: 'Gepufferte Position vor dem Wert, dargestellt in der Sekundärfarbe.',
             showPercentage: 'Zeigt den aktuellen Prozentsatz neben dem Balken.',
             indeterminate:
               'Rendert eine endlose Animation für Fortschritt unbekannter Dauer.',

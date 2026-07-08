@@ -40,6 +40,12 @@ export class ProgressBarComponent {
   /** Shows the rounded percentage alongside the label. */
   readonly showPercentage = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
+  /**
+   * Optional buffered position ahead of `value` (same scale as `value`),
+   * rendered as a secondary-colour segment behind the fill. Use for
+   * download/upload-then-process style progress.
+   */
+  readonly buffer = input<number | undefined>(undefined);
 
   /** Whether to render the percentage. */
   readonly showsPercentage = computed(() => this.showPercentage());
@@ -53,6 +59,15 @@ export class ProgressBarComponent {
   });
 
   readonly percentageRounded = computed(() => Math.round(this.percentage()));
+
+  readonly bufferPercentage = computed<number | null>(() => {
+    const buffer = this.buffer();
+    const max = this.max();
+    if (buffer == null || max <= 0) {
+      return null;
+    }
+    return Math.min(100, Math.max(0, (buffer / max) * 100));
+  });
 
   readonly hostClasses = computed(() => ({
     [`ea-progress-bar--${this.variant()}`]: true,

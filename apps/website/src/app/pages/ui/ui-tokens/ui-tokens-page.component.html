@@ -22,62 +22,63 @@
     <p [innerHTML]="messages().ui.tokens.paletteOverrides"></p>
     <web-code-snippet [code]="paletteOverridesSnippet" />
     <p [innerHTML]="messages().ui.tokens.paletteContrast"></p>
+    <p class="tokens-section__cta">
+      {{ messages().ui.tokens.paletteBuilderIntro }}
+      <a routerLink="/ui/theme-builder">{{ messages().ui.tokens.paletteBuilderLink }}</a
+      >.
+    </p>
   </section>
 
-  <section class="tokens-section">
+  <section class="tokens-section tokens-section--colors">
     <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.colors }}</h2>
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsPrimary }}</h3>
-    <div class="swatch-row">
+    <code class="tokens-scale__var">--color-primary-*</code>
+    <div class="color-scale">
       @for (shade of primaryPalette; track shade) {
-        <figure class="swatch">
-          <span class="swatch__color swatch--primary swatch--{{ shade }}"></span>
-          <figcaption class="swatch__caption">
-            <span class="swatch__shade">{{ shade }}</span>
-            <code class="swatch__name">--color-primary-{{ shade }}</code>
-          </figcaption>
-        </figure>
+        <div
+          class="color-scale__stop swatch--primary swatch--{{ shade }}"
+          title="--color-primary-{{ shade }}">
+          <span class="color-scale__shade">{{ shade }}</span>
+        </div>
       }
     </div>
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSecondary }}</h3>
-    <div class="swatch-row">
+    <code class="tokens-scale__var">--color-secondary-*</code>
+    <div class="color-scale">
       @for (shade of secondaryPalette; track shade) {
-        <figure class="swatch">
-          <span class="swatch__color swatch--secondary swatch--{{ shade }}"></span>
-          <figcaption class="swatch__caption">
-            <span class="swatch__shade">{{ shade }}</span>
-            <code class="swatch__name">--color-secondary-{{ shade }}</code>
-          </figcaption>
-        </figure>
+        <div
+          class="color-scale__stop swatch--secondary swatch--{{ shade }}"
+          title="--color-secondary-{{ shade }}">
+          <span class="color-scale__shade">{{ shade }}</span>
+        </div>
       }
     </div>
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsNeutral }}</h3>
-    <div class="swatch-row">
+    <code class="tokens-scale__var">--color-neutral-*</code>
+    <div class="color-scale">
       @for (shade of neutralPalette; track shade) {
-        <figure class="swatch">
-          <span class="swatch__color swatch--neutral swatch--{{ shade }}"></span>
-          <figcaption class="swatch__caption">
-            <span class="swatch__shade">{{ shade }}</span>
-            <code class="swatch__name">--color-neutral-{{ shade }}</code>
-          </figcaption>
-        </figure>
+        <div
+          class="color-scale__stop swatch--neutral swatch--{{ shade }}"
+          title="--color-neutral-{{ shade }}">
+          <span class="color-scale__shade">{{ shade }}</span>
+        </div>
       }
     </div>
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsStatus }}</h3>
     @for (family of statusFamilies; track family) {
       <h4 class="tokens-subsection__sublabel">{{ family }}</h4>
-      <div class="swatch-row">
+      <code class="tokens-scale__var">--color-{{ family }}-*</code>
+      <div class="color-scale">
         @for (shade of statusShades; track shade) {
-          <figure class="swatch">
-            <span class="swatch__color swatch--{{ family }} swatch--{{ shade }}"></span>
-            <figcaption class="swatch__caption">
-              <span class="swatch__shade">{{ shade }}</span>
-              <code class="swatch__name">--color-{{ family }}-{{ shade }}</code>
-            </figcaption>
-          </figure>
+          <div
+            class="color-scale__stop swatch--{{ family }} swatch--{{ shade }}"
+            title="--color-{{ family }}-{{ shade }}">
+            <span class="color-scale__shade">{{ shade }}</span>
+          </div>
         }
       </div>
     }

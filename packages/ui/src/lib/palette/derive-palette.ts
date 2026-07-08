@@ -93,12 +93,10 @@ function emitFamily(
   dark[`${brandPrefix}-hover`] = scale[roles.surfaceHoverDark];
   dark[`${brandPrefix}-active`] = scale[roles.surfaceActiveDark];
 
-  if (family === 'primary') {
-    light['--color-brand-text'] = scale[roles.textLight];
-    dark['--color-brand-text'] = scale[roles.textDark];
-    light['--color-brand-subtle'] = scale[roles.subtleLight];
-    light['--color-brand-muted'] = scale[roles.mutedLight];
-  }
+  light[`${brandPrefix}-text`] = scale[roles.textLight];
+  dark[`${brandPrefix}-text`] = scale[roles.textDark];
+  light[`${brandPrefix}-subtle`] = scale[roles.subtleLight];
+  light[`${brandPrefix}-muted`] = scale[roles.mutedLight];
 }
 
 export function derivePalette(config: EagamiPaletteConfig): ModePalette {

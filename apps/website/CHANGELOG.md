@@ -2,6 +2,17 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.10.0] - 2026-07-08
+
+### Added
+
+- Add an interactive theme builder to the UI docs that derives a full light and dark palette from your brand colors, flags any WCAG contrast failures live, previews it on real components, and gives you the provider config and CSS to copy, translated into every locale.
+
+### Changed
+
+- Present the design-tokens color scales as compact swatch strips rather than large labelled cards, and link the theme builder from the page's palette section.
+- Pick up @eagami/ui v5.3.0; the theme builder preview now shows the secondary color at work via the progress bar's buffered segment.
+
 ## [3.9.2] - 2026-07-07
 
 ### Changed
@@ -788,6 +799,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.10.0]: https://github.com/mwiraszka/eagami/compare/website-v3.9.2...website-v3.10.0
 [3.9.2]: https://github.com/mwiraszka/eagami/compare/website-v3.9.1...website-v3.9.2
 [3.9.1]: https://github.com/mwiraszka/eagami/compare/website-v3.9.0...website-v3.9.1
 [3.9.0]: https://github.com/mwiraszka/eagami/compare/website-v3.8.0...website-v3.9.0
