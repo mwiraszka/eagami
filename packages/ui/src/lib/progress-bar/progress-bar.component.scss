@@ -45,6 +45,7 @@
   }
 
   &__track {
+    position: relative;
     overflow: hidden;
     // One per-size value drives the bar height so a new size only needs the
     // single custom property
@@ -53,7 +54,22 @@
     background-color: var(--color-bg-muted);
   }
 
+  // Sits behind the fill: the stretch from the fill's edge to the buffer's edge
+  // shows through in the secondary brand colour.
+  &__buffer {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background-color: var(--color-brand-secondary-default);
+    transition: width var(--duration-slow) var(--ease-out);
+  }
+
   &__fill {
+    z-index: 1;
+    position: relative;
     height: 100%;
     border-radius: var(--radius-full);
     background-color: var(--color-brand-default);

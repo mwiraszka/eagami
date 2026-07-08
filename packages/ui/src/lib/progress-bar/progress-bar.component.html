@@ -23,8 +23,15 @@
     aria-valuemax="100"
     [attr.aria-busy]="indeterminate() || null"
     [attr.aria-label]="label() || i18n.messages().progressBar.label">
+    @if (bufferPercentage() !== null && !indeterminate()) {
+      <div
+        class="ea-progress-bar__buffer"
+        [style.width]="bufferPercentage() + '%'">
+      </div>
+    }
     <div
       class="ea-progress-bar__fill"
-      [style.width]="indeterminate() ? null : percentage() + '%'"></div>
+      [style.width]="indeterminate() ? null : percentage() + '%'">
+    </div>
   </div>
 </div>
