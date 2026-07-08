@@ -272,6 +272,14 @@ describe('ColorPickerComponent', () => {
       expect(component.value()).toBeNull();
     });
 
+    it('hides the clear button when clearable is false', () => {
+      component.value.set('#ff0000');
+      fixture.componentRef.setInput('clearable', false);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.ea-color-picker__clear')).toBeNull();
+    });
+
     it('disables via setDisabledState', () => {
       component.setDisabledState(true);
       fixture.detectChanges();

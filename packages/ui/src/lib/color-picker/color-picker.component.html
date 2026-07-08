@@ -43,7 +43,7 @@
           <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
         </span>
       </button>
-      @if (value() && !isDisabled() && !readonly()) {
+      @if (clearable() && value() && !isDisabled() && !readonly()) {
         <button
           type="button"
           class="ea-color-picker__clear"
