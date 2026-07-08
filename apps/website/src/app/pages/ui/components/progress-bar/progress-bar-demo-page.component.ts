@@ -23,6 +23,7 @@ interface ProgressBarKnobState {
   label: string;
   value: number;
   max: number;
+  buffer: number;
   variant: ProgressBarVariant;
   size: ProgressBarSize;
   showPercentage: boolean;

@@ -37,6 +37,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'theme-builder',
+        loadComponent: () =>
+          import('./pages/ui/ui-theme-builder/ui-theme-builder-page.component').then(
+            c => c.UiThemeBuilderPageComponent,
+          ),
+      },
+      {
         path: 'icons',
         loadComponent: () =>
           import('./pages/ui/ui-icons/ui-icons-page.component').then(

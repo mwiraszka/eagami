@@ -187,6 +187,7 @@ export const frFR: WebMessages = {
       overview: 'Aperçu',
       setup: 'Installation',
       designTokens: 'Tokens de design',
+      themeBuilder: 'Générateur de thème',
       icons: 'Icônes',
       i18n: 'Internationalisation',
       accessibility: 'Accessibilité',
@@ -297,6 +298,35 @@ export const frFR: WebMessages = {
       },
       firstComponentHeading: 'Votre premier composant',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Générateur de thème',
+      metaDescription:
+        'Générez une palette vérifiée WCAG pour les modes clair et sombre à partir des couleurs de votre marque, puis copiez la configuration du fournisseur ou le CSS.',
+      title: 'Générateur de thème',
+      lede: 'Choisissez les couleurs de votre marque et Eagami UI en dérive une échelle complète 50–900 dans l’espace OKLCH, en vérifie le contraste WCAG en mode clair et sombre, et vous fournit la configuration <code>provideEagamiUi</code> prête à l’emploi.',
+      controlsHeading: 'Couleurs de marque',
+      primaryLabel: 'Couleur primaire',
+      secondaryLabel: 'Couleur secondaire',
+      contrastHeading: 'Accessibilité',
+      contrastPass: 'Respecte le contraste WCAG 2.2 AA en mode clair et sombre',
+      contrastFailIntro:
+        'Certaines associations n’atteignent pas le seuil de contraste WCAG AA :',
+      scaleHeading: 'Échelle générée',
+      previewHeading: 'Aperçu',
+      previewHint:
+        'Changez le thème du site pour prévisualiser la palette en mode sombre.',
+      previewButton: 'Commencer',
+      previewSwitch: 'Notifications',
+      previewPrimary: 'Primaire',
+      previewSecondary: 'Secondaire',
+      previewStep1: 'Compte',
+      previewStep2: 'Profil',
+      previewStep3: 'Terminé',
+      previewProgress: 'Progression :',
+      exportHeading: 'Utilisez-la',
+      exportConfigLabel: 'Configuration du fournisseur',
+      exportCssLabel: 'Propriétés personnalisées CSS',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Tokens de design',
       metaDescription:
@@ -323,6 +353,8 @@ export const frFR: WebMessages = {
         'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
       paletteContrast:
         'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.1 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
+      paletteBuilderIntro: 'Composez et prévisualisez votre palette visuellement dans le',
+      paletteBuilderLink: 'générateur de thème',
       elevationDrop: 'Ombres portées',
       elevationRelief: 'Relief et creux',
       elevationReliefBefore:
@@ -1029,6 +1061,7 @@ export const frFR: WebMessages = {
             size: 'Taille',
             format: 'Format',
             showAlpha: 'Afficher l’alpha',
+            clearable: 'Effaçable',
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
@@ -1060,6 +1093,7 @@ export const frFR: WebMessages = {
             size: 'Taille',
             value: 'Valeur',
             max: 'Maximum',
+            buffer: 'Tampon',
             showPercentage: 'Afficher le pourcentage',
             indeterminate: 'Indéterminé',
             label: 'Libellé',
@@ -1290,6 +1324,8 @@ export const frFR: WebMessages = {
               'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
             required: 'Marque le champ comme requis.',
             showAlpha: 'Affiche le curseur alpha et inclut l’alpha dans la valeur émise.',
+            clearable:
+              'Affiche ou non le bouton d’effacement lorsqu’une valeur est définie.',
             size: 'Taille visuelle du déclencheur du sélecteur.',
             value: 'Chaîne de couleur actuelle, liable en deux sens via [(value)].',
             changed:
@@ -1350,6 +1386,8 @@ export const frFR: WebMessages = {
             size: 'Épaisseur visuelle de la barre.',
             value: 'Valeur de progression actuelle.',
             max: 'Valeur à laquelle la barre est pleine.',
+            buffer:
+              'Position tamponnée en avance sur la valeur, affichée dans la couleur secondaire.',
             showPercentage: 'Affiche le pourcentage actuel à côté de la barre.',
             indeterminate:
               'Joue une animation en boucle pour une progression de durée inconnue.',

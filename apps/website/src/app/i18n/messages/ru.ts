@@ -181,6 +181,7 @@ export const ru: WebMessages = {
       overview: 'Обзор',
       setup: 'Установка',
       designTokens: 'Дизайн-токены',
+      themeBuilder: 'Конструктор темы',
       icons: 'Иконки',
       i18n: 'Интернационализация',
       accessibility: 'Доступность',
@@ -294,6 +295,33 @@ export const ru: WebMessages = {
       },
       firstComponentHeading: 'Ваш первый компонент',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Конструктор темы',
+      metaDescription:
+        'Создайте проверенную по WCAG палитру для светлой и тёмной темы на основе цветов вашего бренда и скопируйте конфигурацию провайдера или CSS.',
+      title: 'Конструктор темы',
+      lede: 'Выберите цвета бренда, и Eagami UI построит полную шкалу 50–900 в пространстве OKLCH, проверит её контраст по WCAG в светлой и тёмной теме и выдаст готовую конфигурацию <code>provideEagamiUi</code>.',
+      controlsHeading: 'Цвета бренда',
+      primaryLabel: 'Основной цвет',
+      secondaryLabel: 'Дополнительный цвет',
+      contrastHeading: 'Доступность',
+      contrastPass: 'Соответствует контрасту WCAG 2.2 AA в светлой и тёмной теме',
+      contrastFailIntro: 'Некоторые сочетания не достигают порога контраста WCAG AA:',
+      scaleHeading: 'Сгенерированная шкала',
+      previewHeading: 'Предпросмотр',
+      previewHint: 'Переключите тему сайта, чтобы увидеть палитру в тёмном режиме.',
+      previewButton: 'Начать',
+      previewSwitch: 'Уведомления',
+      previewPrimary: 'Основной',
+      previewSecondary: 'Дополнительный',
+      previewStep1: 'Аккаунт',
+      previewStep2: 'Профиль',
+      previewStep3: 'Готово',
+      previewProgress: 'Прогресс:',
+      exportHeading: 'Используйте',
+      exportConfigLabel: 'Конфигурация провайдера',
+      exportCssLabel: 'CSS-переменные',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Дизайн-токены',
       metaDescription:
@@ -320,6 +348,8 @@ export const ru: WebMessages = {
         'Закрепите конкретные оттенки или переназначьте, какой выведенный оттенок лежит в основе каждой семантической роли:',
       paletteContrast:
         'Каждая пара ролей бренда (текст на поверхности, поверхность на фоне) проверяется на соответствие WCAG 2.1 AA при инициализации. Несоответствующая комбинация выбрасывает ошибку до загрузки приложения, поэтому проблема контраста в цвете бренда выявляется при запуске, а не в продакшене.',
+      paletteBuilderIntro: 'Создавайте и просматривайте палитру визуально в',
+      paletteBuilderLink: 'конструкторе темы',
       elevationDrop: 'Отбрасываемые тени',
       elevationRelief: 'Фаска и углубление',
       elevationReliefBefore:
@@ -1014,6 +1044,7 @@ export const ru: WebMessages = {
             size: 'Размер',
             format: 'Формат',
             showAlpha: 'Показать альфа-канал',
+            clearable: 'Очистка',
             disabled: 'Отключено',
             readonly: 'Только для чтения',
             required: 'Обязательно',
@@ -1045,6 +1076,7 @@ export const ru: WebMessages = {
             size: 'Размер',
             value: 'Значение',
             max: 'Максимум',
+            buffer: 'Буфер',
             showPercentage: 'Показать проценты',
             indeterminate: 'Неопределённый',
             label: 'Метка',
@@ -1273,6 +1305,7 @@ export const ru: WebMessages = {
             required: 'Помечает поле как обязательное.',
             showAlpha:
               'Показывает альфа-ползунок и включает альфа-канал в испускаемое значение.',
+            clearable: 'Показывать ли кнопку очистки, когда задано значение.',
             size: 'Визуальный размер триггера выбора цвета.',
             value: 'Текущая строка цвета, двусторонняя привязка через [(value)].',
             changed:
@@ -1334,6 +1367,8 @@ export const ru: WebMessages = {
             size: 'Визуальная толщина полосы.',
             value: 'Текущее значение прогресса.',
             max: 'Значение, при котором полоса заполнена.',
+            buffer:
+              'Буферизованная позиция впереди значения, показанная дополнительным цветом.',
             showPercentage: 'Показывает текущий процент рядом с полосой.',
             indeterminate:
               'Отрисовывает зацикленную анимацию для прогресса неизвестной длительности.',

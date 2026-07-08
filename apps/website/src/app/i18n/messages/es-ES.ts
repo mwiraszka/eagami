@@ -183,6 +183,7 @@ export const esES: WebMessages = {
       overview: 'Resumen',
       setup: 'Instalación',
       designTokens: 'Tokens de diseño',
+      themeBuilder: 'Generador de temas',
       icons: 'Iconos',
       i18n: 'Internacionalización',
       accessibility: 'Accesibilidad',
@@ -292,6 +293,34 @@ export const esES: WebMessages = {
       },
       firstComponentHeading: 'Tu primer componente',
     },
+    themeBuilder: {
+      metaTitle: 'Eagami | UI | Generador de temas',
+      metaDescription:
+        'Genera una paleta verificada con WCAG para los modos claro y oscuro a partir de los colores de tu marca y copia la configuración del proveedor o el CSS.',
+      title: 'Generador de temas',
+      lede: 'Elige los colores de tu marca y Eagami UI deriva una escala completa 50–900 en el espacio OKLCH, comprueba su contraste WCAG en modo claro y oscuro, y te entrega la configuración <code>provideEagamiUi</code> lista para usar.',
+      controlsHeading: 'Colores de marca',
+      primaryLabel: 'Color primario',
+      secondaryLabel: 'Color secundario',
+      contrastHeading: 'Accesibilidad',
+      contrastPass: 'Cumple el contraste WCAG 2.2 AA en modo claro y oscuro',
+      contrastFailIntro:
+        'Algunas combinaciones no alcanzan el umbral de contraste WCAG AA:',
+      scaleHeading: 'Escala generada',
+      previewHeading: 'Vista previa',
+      previewHint: 'Cambia el tema del sitio para ver la paleta en modo oscuro.',
+      previewButton: 'Empezar',
+      previewSwitch: 'Notificaciones',
+      previewPrimary: 'Primario',
+      previewSecondary: 'Secundario',
+      previewStep1: 'Cuenta',
+      previewStep2: 'Perfil',
+      previewStep3: 'Listo',
+      previewProgress: 'Progreso:',
+      exportHeading: 'Úsalo',
+      exportConfigLabel: 'Configuración del proveedor',
+      exportCssLabel: 'Propiedades personalizadas CSS',
+    },
     tokens: {
       metaTitle: 'Eagami | UI | Tokens de diseño',
       metaDescription:
@@ -318,6 +347,8 @@ export const esES: WebMessages = {
         'Fija tonos concretos o reasigna qué tono derivado respalda cada rol semántico:',
       paletteContrast:
         'Cada combinación de rol de marca (texto sobre superficie, superficie sobre lienzo) se valida contra WCAG 2.1 AA al arrancar. Una combinación no conforme lanza un error antes de cargar la aplicación, así que un fallo de contraste en el color de marca se detecta al boot, no en producción.',
+      paletteBuilderIntro: 'Crea y previsualiza tu paleta de forma visual en el',
+      paletteBuilderLink: 'generador de temas',
       elevationDrop: 'Sombras proyectadas',
       elevationRelief: 'Relieve y hueco',
       elevationReliefBefore:
@@ -1020,6 +1051,7 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             format: 'Formato',
             showAlpha: 'Mostrar alfa',
+            clearable: 'Borrable',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
@@ -1051,6 +1083,7 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             value: 'Valor',
             max: 'Máximo',
+            buffer: 'Búfer',
             showPercentage: 'Mostrar porcentaje',
             indeterminate: 'Indeterminado',
             label: 'Etiqueta',
@@ -1284,6 +1317,8 @@ export const esES: WebMessages = {
             required: 'Marca el campo como obligatorio.',
             showAlpha:
               'Muestra el control deslizante de alfa e incluye el alfa en el valor emitido.',
+            clearable:
+              'Si se muestra el botón de borrado cuando hay un valor establecido.',
             size: 'Tamaño visual del activador del selector.',
             value:
               'Cadena de color actual, vinculable en dos sentidos mediante [(value)].',
@@ -1347,6 +1382,8 @@ export const esES: WebMessages = {
             size: 'Grosor visual de la barra.',
             value: 'Valor de progreso actual.',
             max: 'Valor con el que la barra está llena.',
+            buffer:
+              'Posición de búfer por delante del valor, mostrada en el color secundario.',
             showPercentage: 'Muestra el porcentaje actual junto a la barra.',
             indeterminate:
               'Reproduce una animación en bucle para progreso de duración desconocida.',
