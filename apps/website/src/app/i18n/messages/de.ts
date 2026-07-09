@@ -997,6 +997,18 @@ export const de: WebMessages = {
             clearable: 'Löschbar',
             autocomplete: 'Autovervollständigung',
           },
+          'number-input': {
+            allowNegative: 'Negative zulassen',
+            label: 'Beschriftung',
+            placeholder: 'Platzhalter',
+            size: 'Größe',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Schritt',
+            disabled: 'Deaktiviert',
+            readonly: 'Schreibgeschützt',
+            required: 'Erforderlich',
+          },
           'form-field': {
             label: 'Beschriftung',
             hint: 'Hinweis',
@@ -1212,6 +1224,29 @@ export const de: WebMessages = {
             step: 'Schrittweite für type="number"-Eingaben.',
             clampToBounds:
               'Begrenzt einen Zahlenwert in den konfigurierten Min/Max-Bereich, sobald die Bearbeitung abgeschlossen ist.',
+          },
+          'number-input': {
+            allowNegative:
+              'Ob negative Werte erlaubt sind; bei false wird der Wert auf 0 begrenzt.',
+            label: 'Textlabel, das über dem Feld gerendert wird.',
+            placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
+            size: 'Visuelle Größe des Feldes.',
+            hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
+            errorMsg:
+              'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
+            disabled: 'Deaktiviert das Feld.',
+            readonly: 'Rendert das Feld schreibgeschützt.',
+            required: 'Kennzeichnet das Feld als erforderlich.',
+            min: 'Mindestwert; eingegebene Werte werden beim Verlassen darauf begrenzt und die Schrittschaltflächen berücksichtigen ihn.',
+            max: 'Maximalwert; eingegebene Werte werden beim Verlassen darauf begrenzt und die Schrittschaltflächen berücksichtigen ihn.',
+            step: 'Betrag, den jeder Schritt (Pfeiltaste oder Schrittschaltfläche) addiert oder subtrahiert.',
+            id: 'id, die auf das native Input und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            value:
+              'Aktueller Feldwert, null wenn leer, bidirektional bindbar über [(value)].',
+            changed: 'Wird mit dem neuen Wert ausgelöst, wann immer er sich ändert.',
+            focused: 'Wird ausgelöst, wenn das Feld den Fokus erhält.',
+            blurred: 'Wird ausgelöst, wenn das Feld den Fokus verliert.',
+            focus: 'Verschiebt den Tastaturfokus auf das zugrunde liegende native Feld.',
           },
           accordion: {
             multi: 'Erlaubt, dass mehrere Einträge gleichzeitig aufgeklappt bleiben.',

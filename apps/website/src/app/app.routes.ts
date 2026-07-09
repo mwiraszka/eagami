@@ -259,6 +259,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/number-input',
+        loadComponent: () =>
+          import('./pages/ui/components/number-input/number-input-demo-page.component').then(
+            c => c.NumberInputDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/paginator',
         loadComponent: () =>
           import('./pages/ui/components/paginator/paginator-demo-page.component').then(

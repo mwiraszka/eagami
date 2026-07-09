@@ -988,6 +988,18 @@ export const nl: WebMessages = {
             clearable: 'Wisbaar',
             autocomplete: 'Autocomplete',
           },
+          'number-input': {
+            allowNegative: 'Negatief toestaan',
+            label: 'Label',
+            placeholder: 'Plaatsaanduiding',
+            size: 'Grootte',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Stap',
+            disabled: 'Uitgeschakeld',
+            readonly: 'Alleen-lezen',
+            required: 'Verplicht',
+          },
           'form-field': {
             label: 'Label',
             hint: 'Hint',
@@ -1203,6 +1215,30 @@ export const nl: WebMessages = {
             step: 'Stapincrement voor type="number"-velden.',
             clampToBounds:
               'Kapt een numerieke waarde af binnen het ingestelde min/max-bereik zodra het bewerken klaar is.',
+          },
+          'number-input': {
+            allowNegative:
+              'Of negatieve waarden zijn toegestaan; bij false is de ondergrens 0.',
+            label: 'Tekstlabel weergegeven boven het veld.',
+            placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
+            size: 'Visuele grootte van het veld.',
+            hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
+            errorMsg:
+              'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
+            disabled: 'Schakelt het veld uit.',
+            readonly: 'Maakt het veld alleen-lezen.',
+            required: 'Markeert het veld als verplicht.',
+            min: 'Minimumwaarde; ingevoerde waarden worden erop afgekapt bij blur en de stapknoppen respecteren deze.',
+            max: 'Maximumwaarde; ingevoerde waarden worden erop afgekapt bij blur en de stapknoppen respecteren deze.',
+            step: 'Hoeveelheid die elke stap (pijltoets of stapknop) optelt of aftrekt.',
+            id: 'id toegepast op de native input en het label for, automatisch gegenereerd indien weggelaten.',
+            value:
+              'Huidige veldwaarde; null wanneer leeg, in twee richtingen te binden via [(value)].',
+            changed:
+              'Wordt geactiveerd met de nieuwe waarde telkens wanneer deze verandert.',
+            focused: 'Wordt geactiveerd wanneer het veld de focus krijgt.',
+            blurred: 'Wordt geactiveerd wanneer het veld de focus verliest.',
+            focus: 'Verplaatst de toetsenbordfocus naar het onderliggende native veld.',
           },
           accordion: {
             multi: 'Staat toe dat meerdere items tegelijk uitgevouwen blijven.',

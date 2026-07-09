@@ -990,6 +990,18 @@ export const esES: WebMessages = {
             clearable: 'Con botón de borrado',
             autocomplete: 'Autocompletar',
           },
+          'number-input': {
+            allowNegative: 'Permitir negativos',
+            label: 'Etiqueta',
+            placeholder: 'Marcador de posición',
+            size: 'Tamaño',
+            min: 'Mínimo',
+            max: 'Máximo',
+            step: 'Paso',
+            disabled: 'Deshabilitado',
+            readonly: 'Solo lectura',
+            required: 'Obligatorio',
+          },
           'form-field': {
             label: 'Etiqueta',
             hint: 'Ayuda',
@@ -1206,6 +1218,29 @@ export const esES: WebMessages = {
             step: 'Incremento de paso para los campos type="number".',
             clampToBounds:
               'Acota un valor numérico dentro del rango mín./máx. configurado una vez que finaliza la edición.',
+          },
+          'number-input': {
+            allowNegative:
+              'Si se permiten valores negativos; con false, el valor se limita a 0.',
+            label: 'Etiqueta mostrada encima del campo.',
+            placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
+            size: 'Tamaño visual del campo.',
+            hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
+            errorMsg:
+              'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
+            disabled: 'Deshabilita el campo.',
+            readonly: 'Muestra el campo como de solo lectura.',
+            required: 'Marca el campo como obligatorio.',
+            min: 'Valor mínimo; los valores introducidos se acotan a él al perder el foco y los botones de paso lo respetan.',
+            max: 'Valor máximo; los valores introducidos se acotan a él al perder el foco y los botones de paso lo respetan.',
+            step: 'Cantidad que cada paso (tecla de flecha o botón de paso) suma o resta.',
+            id: 'id aplicado al campo nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            value:
+              'Valor actual del campo, null cuando está vacío, vinculable en dos sentidos mediante [(value)].',
+            changed: 'Se emite con el nuevo valor cada vez que cambia.',
+            focused: 'Se emite cuando el campo recibe el foco.',
+            blurred: 'Se emite cuando el campo pierde el foco.',
+            focus: 'Lleva el foco del teclado al campo nativo subyacente.',
           },
           accordion: {
             multi: 'Permite mantener varios elementos abiertos a la vez.',

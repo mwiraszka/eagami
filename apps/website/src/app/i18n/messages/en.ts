@@ -977,6 +977,18 @@ export const en: WebMessages = {
             clearable: 'Clearable',
             autocomplete: 'Autocomplete',
           },
+          'number-input': {
+            allowNegative: 'Allow negative',
+            label: 'Label',
+            placeholder: 'Placeholder',
+            size: 'Size',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Step',
+            disabled: 'Disabled',
+            readonly: 'Read-only',
+            required: 'Required',
+          },
           'form-field': {
             label: 'Label',
             hint: 'Hint',
@@ -1191,6 +1203,29 @@ export const en: WebMessages = {
             step: 'Step increment for type="number" inputs.',
             clampToBounds:
               'Clamps a number value into the configured min/max range once editing finishes.',
+          },
+          'number-input': {
+            allowNegative:
+              'Whether negative values are allowed; when false the value floors at 0.',
+            label: 'Text label rendered above the field.',
+            placeholder: 'Placeholder shown while the field is empty.',
+            size: 'Visual size of the field.',
+            hint: 'Helper text shown below the field, hidden while an error is showing.',
+            errorMsg:
+              'Error message shown below the field, replacing the hint and flagging the field invalid.',
+            disabled: 'Disables the field.',
+            readonly: 'Renders the field read-only.',
+            required: 'Marks the field as required.',
+            min: 'Minimum value; typed values are clamped to it on blur and the steppers respect it.',
+            max: 'Maximum value; typed values are clamped to it on blur and the steppers respect it.',
+            step: 'Amount each step (arrow key or stepper) adds or subtracts.',
+            id: 'id applied to the native input and label for, auto-generated when omitted.',
+            value:
+              'Current field value; null when empty, two-way bindable via [(value)].',
+            changed: 'Fires with the new value whenever it changes.',
+            focused: 'Fires when the input receives focus.',
+            blurred: 'Fires when the input loses focus.',
+            focus: 'Moves keyboard focus to the underlying native input.',
           },
           accordion: {
             multi: 'Allows multiple items to stay expanded at once.',

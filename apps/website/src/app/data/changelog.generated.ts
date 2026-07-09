@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.4.0',
+    date: '2026-07-09',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a number input: a numeric field with increment and decrement steppers, min/max/step bounds, and the standard label, hint, and error chrome, integrated with Angular forms.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.3.0',
     date: '2026-07-08',
     sections: [

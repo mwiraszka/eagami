@@ -1,0 +1,24 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-number-input
+      class="playground-field"
+      [formControl]="control"
+      [label]="state().label"
+      [placeholder]="state().placeholder"
+      [size]="state().size"
+      [min]="state().min"
+      [max]="state().max"
+      [step]="state().step"
+      [allowNegative]="state().allowNegative"
+      [readonly]="state().readonly"
+      [required]="state().required" />
+  </web-component-playground>
+</web-ui-component-demo-layout>

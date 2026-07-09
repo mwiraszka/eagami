@@ -990,6 +990,18 @@ export const is: WebMessages = {
             clearable: 'Hreinsanlegt',
             autocomplete: 'Sjálfvirk útfylling',
           },
+          'number-input': {
+            allowNegative: 'Leyfa neikvæð gildi',
+            label: 'Merkimiði',
+            placeholder: 'Staðgengill',
+            size: 'Stærð',
+            min: 'Lágmark',
+            max: 'Hámark',
+            step: 'Skref',
+            disabled: 'Óvirkt',
+            readonly: 'Skrifvarið',
+            required: 'Krafist',
+          },
           'form-field': {
             label: 'Merkimiði',
             hint: 'Vísbending',
@@ -1203,6 +1215,28 @@ export const is: WebMessages = {
             step: 'Skrefahækkun fyrir type="number" inntök.',
             clampToBounds:
               'Festir tölugildi inn í stillta lágm./hám. bilið þegar breytingu lýkur.',
+          },
+          'number-input': {
+            allowNegative: 'Hvort neikvæð gildi eru leyfð; þegar false er lágmarkið 0.',
+            label: 'Textamerkimiði birtur fyrir ofan reitinn.',
+            placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
+            size: 'Sjónræn stærð reitsins.',
+            hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
+            errorMsg:
+              'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
+            disabled: 'Gerir reitinn óvirkan.',
+            readonly: 'Birtir reitinn skrifvarinn.',
+            required: 'Merkir reitinn sem nauðsynlegan.',
+            min: 'Lágmarksgildi; innslegin gildi eru fest við það við fókusmissi og skrefahnapparnir virða það.',
+            max: 'Hámarksgildi; innslegin gildi eru fest við það við fókusmissi og skrefahnapparnir virða það.',
+            step: 'Magn sem hvert skref (örvatakki eða skrefahnappur) bætir við eða dregur frá.',
+            id: 'id sett á innbyggða inntakið og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            value:
+              'Núverandi reitgildi; null þegar tómt, tvíátta bindanlegt með [(value)].',
+            changed: 'Kviknar með nýja gildinu í hvert sinn sem það breytist.',
+            focused: 'Kviknar þegar reiturinn fær fókus.',
+            blurred: 'Kviknar þegar reiturinn missir fókus.',
+            focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða reitinn.',
           },
           accordion: {
             multi: 'Leyfir mörgum atriðum að vera útbreidd í einu.',

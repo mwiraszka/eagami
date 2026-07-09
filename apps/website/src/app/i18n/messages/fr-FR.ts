@@ -1000,6 +1000,18 @@ export const frFR: WebMessages = {
             clearable: 'Effaçable',
             autocomplete: 'Autocomplétion',
           },
+          'number-input': {
+            allowNegative: 'Autoriser les négatifs',
+            label: 'Libellé',
+            placeholder: 'Texte indicatif',
+            size: 'Taille',
+            min: 'Minimum',
+            max: 'Maximum',
+            step: 'Pas',
+            disabled: 'Désactivé',
+            readonly: 'Lecture seule',
+            required: 'Requis',
+          },
           'form-field': {
             label: 'Libellé',
             hint: 'Indication',
@@ -1216,6 +1228,29 @@ export const frFR: WebMessages = {
             step: 'Incrément de pas pour les champs type="number".',
             clampToBounds:
               "Borne une valeur numérique dans la plage min/max configurée une fois l'édition terminée.",
+          },
+          'number-input': {
+            allowNegative:
+              'Si les valeurs négatives sont autorisées ; avec false, la valeur ne descend pas sous 0.',
+            label: 'Libellé affiché au-dessus du champ.',
+            placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
+            size: 'Taille visuelle du champ.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
+            errorMsg:
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            disabled: 'Désactive le champ.',
+            readonly: 'Affiche le champ en lecture seule.',
+            required: 'Marque le champ comme requis.',
+            min: 'Valeur minimale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
+            max: 'Valeur maximale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
+            step: 'Quantité ajoutée ou soustraite à chaque pas (touche fléchée ou bouton pas à pas).',
+            id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
+            value:
+              'Valeur actuelle du champ ; null quand vide, liable en deux sens via [(value)].',
+            changed: 'Émis avec la nouvelle valeur à chaque changement.',
+            focused: 'Émis lorsque le champ reçoit le focus.',
+            blurred: 'Émis lorsque le champ perd le focus.',
+            focus: 'Place le focus clavier sur le champ natif sous-jacent.',
           },
           accordion: {
             multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
