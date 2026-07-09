@@ -77,6 +77,12 @@ export class NumberInputDemoPageComponent {
     });
   }
 
+  // A cleared number knob emits ''; map it to undefined for the bound input so
+  // an empty Min/Max reads as unbounded.
+  protected asBound(value: number | ''): number | undefined {
+    return value === '' ? undefined : value;
+  }
+
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the
     // statically typed state that keeps the live <ea-number-input> bindings checked.
