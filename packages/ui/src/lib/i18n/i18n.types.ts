@@ -190,6 +190,10 @@ export interface EagamiMessages {
     hidePassword: string;
     clear: string;
   };
+  numberInput: {
+    increment: string;
+    decrement: string;
+  };
   menu: {
     label: string;
   };

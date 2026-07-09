@@ -109,6 +109,10 @@ const messages: EagamiMessages = {
     hidePassword: 'הסתרת סיסמה',
     clear: 'ניקוי',
   },
+  numberInput: {
+    increment: 'הגדלה',
+    decrement: 'הקטנה',
+  },
   menu: {
     label: 'תפריט',
   },

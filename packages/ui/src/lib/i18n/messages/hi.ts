@@ -110,6 +110,10 @@ const messages: EagamiMessages = {
     hidePassword: 'पासवर्ड छिपाएं',
     clear: 'साफ़ करें',
   },
+  numberInput: {
+    increment: 'बढ़ाएँ',
+    decrement: 'घटाएँ',
+  },
   menu: {
     label: 'मेनू',
   },
