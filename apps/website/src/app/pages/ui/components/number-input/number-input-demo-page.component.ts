@@ -20,8 +20,9 @@ interface NumberInputKnobState {
   label: string;
   placeholder: string;
   size: NumberInputSize;
-  min: number;
-  max: number;
+  // A number knob emits '' when cleared; the template coerces that to undefined.
+  min: number | '';
+  max: number | '';
   step: number;
   allowNegative: boolean;
   disabled: boolean;
