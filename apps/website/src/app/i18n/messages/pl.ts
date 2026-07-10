@@ -979,6 +979,7 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          timeline: { orientation: 'Orientacja', align: 'Wyrównanie', size: 'Rozmiar' },
           tooltip: {
             eaTooltip: 'Treść podpowiedzi',
           },
@@ -1182,7 +1183,16 @@ export const pl: WebMessages = {
             required: 'Wymagane',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(tylko semantycznie)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Zdarzenia do wyświetlenia, w kolejności.',
+            orientation: 'Kierunek, w którym biegnie oś czasu.',
+            align:
+              'Rozmieszczenie treści względem linii; alternate dotyczy tylko pionowych osi czasu.',
+            size: 'Wizualny rozmiar osi czasu.',
+          },
           toast: {
             position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
             clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',

@@ -942,6 +942,7 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          timeline: { orientation: '方向', align: '对齐', size: '尺寸' },
           tooltip: {
             eaTooltip: '工具提示内容',
           },
@@ -1145,7 +1146,15 @@ export const zhCN: WebMessages = {
             required: '必填',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(仅语义)' } },
+
         descriptions: {
+          timeline: {
+            items: '要显示的事件，按顺序排列。',
+            orientation: '时间轴的走向。',
+            align: '内容相对于轴线的位置；alternate 仅适用于垂直时间轴。',
+            size: '时间轴的视觉尺寸。',
+          },
           toast: {
             position: '提示堆栈固定到的视口角落或边缘。',
             clearable: '在每条提示上显示关闭按钮。',

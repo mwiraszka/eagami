@@ -969,6 +969,7 @@ export const uk: WebMessages = {
         twoWayBadge: 'двостороннє',
         rangeHint: { between: 'до', min: 'Мін', max: 'Макс' },
         knobLabels: {
+          timeline: { orientation: 'Орієнтація', align: 'Вирівнювання', size: 'Розмір' },
           tooltip: {
             eaTooltip: 'Вміст підказки',
           },
@@ -1172,7 +1173,16 @@ export const uk: WebMessages = {
             required: 'Обов’язковий',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(лише семантично)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Події для відображення, за порядком.',
+            orientation: 'Напрямок, у якому йде часова шкала.',
+            align:
+              'Розташування вмісту відносно лінії; alternate застосовується лише до вертикальних шкал.',
+            size: 'Візуальний розмір часової шкали.',
+          },
           toast: {
             position: 'Кут або край вікна перегляду, до якого прикріплено стек тостів.',
             clearable: 'Показує кнопку закриття на кожному тості.',

@@ -961,6 +961,7 @@ export const en: WebMessages = {
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
+          timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
           tooltip: {
             eaTooltip: 'Tooltip Content',
           },
@@ -1164,7 +1165,16 @@ export const en: WebMessages = {
             required: 'Required',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(semantic-only)' } },
+
         descriptions: {
+          timeline: {
+            items: 'The events to render, in order.',
+            orientation: 'Direction the timeline flows.',
+            align:
+              'Content placement relative to the line; alternate applies to vertical timelines only.',
+            size: 'Visual size of the timeline.',
+          },
           toast: {
             position: 'Viewport corner or edge the toast stack is pinned to.',
             clearable: 'Show a dismiss button on each toast.',

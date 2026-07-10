@@ -974,6 +974,7 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
+          timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
           tooltip: {
             eaTooltip: 'Efni ábendingar',
           },
@@ -1177,7 +1178,16 @@ export const is: WebMessages = {
             required: 'Krafist',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(aðeins merkingarlegt)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Atburðirnir sem á að birta, í röð.',
+            orientation: 'Stefnan sem tímalínan liggur í.',
+            align:
+              'Staðsetning efnis miðað við línuna; alternate á aðeins við um lóðréttar tímalínur.',
+            size: 'Sjónræn stærð tímalínunnar.',
+          },
           toast: {
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
             clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',

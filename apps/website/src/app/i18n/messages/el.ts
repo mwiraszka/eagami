@@ -981,6 +981,11 @@ export const el: WebMessages = {
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },
         knobLabels: {
+          timeline: {
+            orientation: 'Προσανατολισμός',
+            align: 'Στοίχιση',
+            size: 'Μέγεθος',
+          },
           tooltip: {
             eaTooltip: 'Περιεχόμενο επεξήγησης',
           },
@@ -1184,7 +1189,16 @@ export const el: WebMessages = {
             required: 'Υποχρεωτικό',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(μόνο σημασιολογικά)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Τα συμβάντα προς εμφάνιση, με τη σειρά.',
+            orientation: 'Κατεύθυνση ροής του χρονολογίου.',
+            align:
+              'Τοποθέτηση περιεχομένου ως προς τη γραμμή· το alternate ισχύει μόνο για κατακόρυφα χρονολόγια.',
+            size: 'Οπτικό μέγεθος του χρονολογίου.',
+          },
           toast: {
             position:
               'Γωνία ή άκρη της προβολής όπου είναι αγκυρωμένη η στοίβα ειδοποιήσεων.',

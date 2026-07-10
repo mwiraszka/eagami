@@ -378,6 +378,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/timeline',
+        loadComponent: () =>
+          import('./pages/ui/components/timeline/timeline-demo-page.component').then(
+            c => c.TimelineDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/toast',
         loadComponent: () =>
           import('./pages/ui/components/toast/toast-demo-page.component').then(

@@ -4262,6 +4262,41 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
   },
+  timeline: {
+    selector: 'ea-timeline',
+    inputs: [
+      {
+        name: 'align',
+        type: 'TimelineAlign',
+        default: "'start'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'items',
+        type: 'TimelineItem[]',
+        default: '[]',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'orientation',
+        type: 'TimelineOrientation',
+        default: "'vertical'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'size',
+        type: 'TimelineSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+    ],
+    outputs: [],
+    methods: [],
+  },
   toast: {
     selector: 'ea-toast',
     inputs: [

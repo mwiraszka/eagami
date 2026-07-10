@@ -124,6 +124,12 @@ export class ComponentPlaygroundComponent {
       : humanizeKnobName(name);
   }
 
+  // A short secondary note shown under a control, e.g. flagging that a knob is
+  // semantic-only and has no visual effect. Empty when the knob has no note.
+  protected knobNote(name: string): string {
+    return this.messages().ui.component.playground.knobNotes[this.slug()]?.[name] ?? '';
+  }
+
   protected optionsFor(name: string): SelectOption[] {
     return this.optionsByKnob().get(name) ?? [];
   }

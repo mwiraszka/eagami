@@ -962,6 +962,7 @@ export const hi: WebMessages = {
         twoWayBadge: 'दो-तरफ़ा',
         rangeHint: { between: 'से', min: 'न्यूनतम', max: 'अधिकतम' },
         knobLabels: {
+          timeline: { orientation: 'दिशा', align: 'संरेखण', size: 'आकार' },
           tooltip: {
             eaTooltip: 'टूलटिप सामग्री',
           },
@@ -1165,7 +1166,16 @@ export const hi: WebMessages = {
             required: 'आवश्यक',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(केवल सिमैंटिक)' } },
+
         descriptions: {
+          timeline: {
+            items: 'प्रदर्शित करने के लिए घटनाएँ, क्रम में।',
+            orientation: 'वह दिशा जिसमें टाइमलाइन चलती है।',
+            align:
+              'रेखा के सापेक्ष सामग्री का स्थान; alternate केवल ऊर्ध्वाधर टाइमलाइन पर लागू होता है।',
+            size: 'टाइमलाइन का दृश्य आकार।',
+          },
           toast: {
             position: 'व्यूपोर्ट का कोना या किनारा जिससे टोस्ट स्टैक पिन किया गया है।',
             clearable: 'प्रत्येक टोस्ट पर एक खारिज बटन दिखाएं।',

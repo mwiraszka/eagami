@@ -972,6 +972,7 @@ export const nl: WebMessages = {
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
+          timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
           tooltip: {
             eaTooltip: 'Tooltipinhoud',
           },
@@ -1175,7 +1176,16 @@ export const nl: WebMessages = {
             required: 'Verplicht',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(alleen semantisch)' } },
+
         descriptions: {
+          timeline: {
+            items: 'De weer te geven gebeurtenissen, op volgorde.',
+            orientation: 'Richting waarin de tijdlijn loopt.',
+            align:
+              'Plaatsing van de inhoud ten opzichte van de lijn; alternate geldt alleen voor verticale tijdlijnen.',
+            size: 'Visuele grootte van de tijdlijn.',
+          },
           toast: {
             position: 'Hoek of rand van de viewport waaraan de toaststapel is vastgezet.',
             clearable: 'Toon een sluitknop op elke toast.',

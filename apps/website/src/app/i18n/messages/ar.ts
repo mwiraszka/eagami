@@ -958,6 +958,7 @@ export const ar: WebMessages = {
         twoWayBadge: 'ثنائي الاتجاه',
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
+          timeline: { orientation: 'الاتجاه', align: 'المحاذاة', size: 'الحجم' },
           tooltip: {
             eaTooltip: 'محتوى التلميح',
           },
@@ -1161,7 +1162,16 @@ export const ar: WebMessages = {
             required: 'مطلوب',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(دلالي فقط)' } },
+
         descriptions: {
+          timeline: {
+            items: 'الأحداث المراد عرضها، بالترتيب.',
+            orientation: 'الاتجاه الذي يسير فيه المخطط الزمني.',
+            align:
+              'موضع المحتوى بالنسبة للخط؛ ينطبق alternate على المخططات الزمنية العمودية فقط.',
+            size: 'الحجم المرئي للمخطط الزمني.',
+          },
           toast: {
             position: 'زاوية أو حافة منطقة العرض التي تُثبَّت بها مجموعة الإشعارات.',
             clearable: 'إظهار زر إغلاق على كل إشعار.',

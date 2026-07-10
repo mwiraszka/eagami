@@ -1,0 +1,62 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-timeline
+      [items]="items()"
+      [orientation]="state().orientation"
+      [align]="state().align"
+      [size]="state().size" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      @for (item of items(); track item.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Heading"
+            [value]="item.heading"
+            (valueChange)="updateItem(item.id, { heading: $event })" />
+          <ea-input
+            placeholder="Time"
+            [value]="item.time"
+            (valueChange)="updateItem(item.id, { time: $event })" />
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Description"
+            [value]="item.description"
+            (valueChange)="updateItem(item.id, { description: $event })" />
+          <ea-checkbox
+            label="Current"
+            [checked]="item.current"
+            (changed)="setCurrent(item.id, $event)" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            eaTooltip="Delete item"
+            aria-label="Delete item"
+            (clicked)="removeItem(item.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        eaTooltip="Add item"
+        aria-label="Add item"
+        (clicked)="addItem()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
+  </web-component-playground>
+</web-ui-component-demo-layout>
