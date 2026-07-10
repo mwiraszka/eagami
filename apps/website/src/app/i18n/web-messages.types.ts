@@ -797,6 +797,7 @@ export interface WebMessages {
         twoWayBadge: string;
         rangeHint: { between: string; min: string; max: string };
         knobLabels: { readonly [slug: string]: { readonly [prop: string]: string } };
+        knobNotes: { readonly [slug: string]: { readonly [prop: string]: string } };
         descriptions: { readonly [slug: string]: { readonly [member: string]: string } };
       };
       sharedOptions: {

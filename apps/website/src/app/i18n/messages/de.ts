@@ -981,6 +981,7 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
+          timeline: { orientation: 'Ausrichtung', align: 'Anordnung', size: 'Größe' },
           tooltip: {
             eaTooltip: 'Tooltip-Inhalt',
           },
@@ -1184,7 +1185,16 @@ export const de: WebMessages = {
             required: 'Erforderlich',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(nur semantisch)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Die anzuzeigenden Ereignisse, in Reihenfolge.',
+            orientation: 'Richtung, in die die Zeitleiste verläuft.',
+            align:
+              'Platzierung des Inhalts relativ zur Linie; alternate gilt nur für vertikale Zeitleisten.',
+            size: 'Visuelle Größe der Zeitleiste.',
+          },
           toast: {
             position:
               'Ecke oder Rand des Viewports, an dem der Toast-Stapel verankert ist.',

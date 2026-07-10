@@ -67,6 +67,12 @@
   min-width: 0;
 }
 
+.playground__control-note {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
 .playground__code {
   display: flex;
   flex-direction: column;

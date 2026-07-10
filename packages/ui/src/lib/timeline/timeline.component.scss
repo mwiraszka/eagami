@@ -1,0 +1,217 @@
+// Node geometry, kept in one place so the connector-clip lengths stay pinned to
+// the node's center if its size or vertical offset ever changes.
+$node-size: 0.875em;
+$node-offset: 0.15em;
+$node-center: $node-offset + $node-size * 0.5;
+
+.ea-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  // Size sets only the font-size; nodes, gaps, and text are all em-based, so the
+  // whole timeline scales from this one knob.
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
+
+  &__marker {
+    display: flex;
+  }
+
+  &__node {
+    flex-shrink: 0;
+    width: $node-size;
+    height: $node-size;
+    border-radius: var(--radius-full);
+    background-color: var(--color-border-strong);
+    transition: var(--transition-colors);
+  }
+
+  &__connector {
+    background-color: var(--color-border-default);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125em;
+    min-width: 0;
+  }
+
+  &__heading {
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+  }
+
+  &__time {
+    margin: 0;
+    font-size: 0.8125em;
+    color: var(--color-text-tertiary);
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 0.875em;
+    color: var(--color-text-secondary);
+  }
+
+  // Node colors. The current marker always wins the secondary brand and a halo;
+  // otherwise the item's semantic color paints the node.
+  &__item--primary &__node {
+    background-color: var(--color-brand-default);
+  }
+
+  &__item--secondary &__node {
+    background-color: var(--color-brand-secondary-default);
+  }
+
+  &__item--success &__node {
+    background-color: var(--color-success-default);
+  }
+
+  &__item--warning &__node {
+    background-color: var(--color-warning-default);
+  }
+
+  &__item--error &__node {
+    background-color: var(--color-error-default);
+  }
+
+  &__item--current &__node {
+    box-shadow: 0 0 0 0.25em var(--color-brand-secondary-muted);
+    background-color: var(--color-brand-secondary-default);
+
+    @media (forced-colors: active) {
+      outline: var(--border-width-thin) solid CanvasText;
+      outline-offset: 0.125em;
+    }
+  }
+
+  &--vertical &__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.875em;
+  }
+
+  &--vertical &__marker {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Node sits slightly below the row top to center on the heading, and paints
+  // above the connector so the track reads as one line passing behind it.
+  &--vertical &__node {
+    z-index: 1;
+    position: relative;
+    margin-top: $node-offset;
+  }
+
+  // A single line spanning the full row (behind the node) keeps the track
+  // unbroken between items; the first and last items clip it to their node.
+  &--vertical &__connector {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 0.125em;
+    transform: translateX(-50%);
+  }
+
+  &--vertical &__item:first-child &__connector {
+    top: $node-center;
+  }
+
+  &--vertical &__item:last-child &__connector {
+    top: 0;
+    bottom: auto;
+    height: $node-center;
+  }
+
+  &--vertical &__item:only-child &__connector {
+    display: none;
+  }
+
+  &--vertical &__content {
+    padding-bottom: 1.5em;
+  }
+
+  &--vertical &__item:last-child &__content {
+    padding-bottom: 0;
+  }
+
+  &--alternate &__item {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  &--alternate &__marker {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  &--alternate &__content {
+    grid-row: 1;
+  }
+
+  &--alternate &__item:nth-child(odd) &__content {
+    align-items: flex-end;
+    grid-column: 1;
+    text-align: end;
+  }
+
+  &--alternate &__item:nth-child(even) &__content {
+    grid-column: 3;
+  }
+
+  &--horizontal {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &--horizontal &__item {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &--horizontal &__marker {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &--horizontal &__connector {
+    flex: 1 0 auto;
+    height: 0.125em;
+    min-width: 1.5em;
+  }
+
+  &--horizontal &__content {
+    padding-top: 0.75em;
+    padding-inline-end: 0.875em;
+  }
+
+  &--horizontal &__item:last-child &__connector {
+    display: none;
+  }
+}

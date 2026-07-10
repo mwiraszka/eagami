@@ -1,0 +1,30 @@
+<ol
+  class="ea-timeline"
+  role="list"
+  [ngClass]="hostClasses()">
+  @for (item of items(); track $index) {
+    <li
+      class="ea-timeline__item"
+      role="listitem"
+      [ngClass]="itemModifier(item)"
+      [attr.aria-current]="item.current ? 'true' : null">
+      <div
+        class="ea-timeline__marker"
+        aria-hidden="true">
+        <span class="ea-timeline__node"></span>
+        <span class="ea-timeline__connector"></span>
+      </div>
+      <div class="ea-timeline__content">
+        @if (item.heading) {
+          <p class="ea-timeline__heading">{{ item.heading }}</p>
+        }
+        @if (item.time) {
+          <p class="ea-timeline__time">{{ item.time }}</p>
+        }
+        @if (item.description) {
+          <p class="ea-timeline__description">{{ item.description }}</p>
+        }
+      </div>
+    </li>
+  }
+</ol>

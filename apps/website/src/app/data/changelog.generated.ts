@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.5.0',
+    date: '2026-07-10',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a timeline: a vertical or horizontal sequence of events, each a colored node on a connecting line with an optional heading, timestamp, and description. A single item can be flagged as current to highlight it in the secondary brand color, and an alternate layout zig-zags content to either side of a centered line.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.4.0',
     date: '2026-07-10',
     sections: [

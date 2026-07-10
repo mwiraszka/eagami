@@ -973,6 +973,7 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          timeline: { orientation: 'Orientação', align: 'Alinhamento', size: 'Tamanho' },
           tooltip: {
             eaTooltip: 'Conteúdo da Dica',
           },
@@ -1176,7 +1177,16 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(apenas semântico)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Os eventos a serem exibidos, em ordem.',
+            orientation: 'Direção em que a linha do tempo flui.',
+            align:
+              'Posicionamento do conteúdo em relação à linha; alternate aplica-se apenas a linhas do tempo verticais.',
+            size: 'Tamanho visual da linha do tempo.',
+          },
           toast: {
             position:
               'Canto ou borda da janela de visualização onde a pilha de toasts é fixada.',

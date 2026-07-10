@@ -974,6 +974,7 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          timeline: { orientation: 'Orientación', align: 'Alineación', size: 'Tamaño' },
           tooltip: {
             eaTooltip: 'Contenido del tooltip',
           },
@@ -1177,7 +1178,16 @@ export const esES: WebMessages = {
             required: 'Obligatorio',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(solo semántico)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Los eventos que se mostrarán, en orden.',
+            orientation: 'Dirección en la que fluye la línea de tiempo.',
+            align:
+              'Ubicación del contenido respecto a la línea; alternate solo se aplica a líneas de tiempo verticales.',
+            size: 'Tamaño visual de la línea de tiempo.',
+          },
           toast: {
             position: 'Esquina o borde de la ventana donde se ancla la pila de toasts.',
             clearable: 'Muestra un botón de cierre en cada toast.',

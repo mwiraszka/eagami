@@ -41,6 +41,7 @@ import { TABS_KNOBS } from './lib/tabs/tabs.component.knobs';
 import { TAG_KNOBS } from './lib/tag/tag.component.knobs';
 import { TEXTAREA_KNOBS } from './lib/textarea/textarea.component.knobs';
 import { TIME_PICKER_KNOBS } from './lib/time-picker/time-picker.component.knobs';
+import { TIMELINE_KNOBS } from './lib/timeline/timeline.component.knobs';
 import { TOAST_KNOBS } from './lib/toast/toast.component.knobs';
 import { TOOLTIP_KNOBS } from './lib/tooltip/tooltip.directive.knobs';
 import { TRANSFER_LIST_KNOBS } from './lib/transfer-list/transfer-list.component.knobs';
@@ -104,6 +105,7 @@ export const PLAYGROUND_KNOBS = {
   tag: TAG_KNOBS,
   textarea: TEXTAREA_KNOBS,
   'time-picker': TIME_PICKER_KNOBS,
+  timeline: TIMELINE_KNOBS,
   toast: TOAST_KNOBS,
   tooltip: TOOLTIP_KNOBS,
   'transfer-list': TRANSFER_LIST_KNOBS,

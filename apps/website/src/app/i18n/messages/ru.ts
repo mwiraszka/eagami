@@ -967,6 +967,7 @@ export const ru: WebMessages = {
         twoWayBadge: 'двусторонняя',
         rangeHint: { between: 'до', min: 'Мин', max: 'Макс' },
         knobLabels: {
+          timeline: { orientation: 'Ориентация', align: 'Выравнивание', size: 'Размер' },
           tooltip: {
             eaTooltip: 'Содержимое подсказки',
           },
@@ -1170,7 +1171,16 @@ export const ru: WebMessages = {
             required: 'Обязательно',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(только семантически)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Отображаемые события по порядку.',
+            orientation: 'Направление, в котором идёт временная шкала.',
+            align:
+              'Расположение содержимого относительно линии; alternate применяется только к вертикальным шкалам.',
+            size: 'Визуальный размер временной шкалы.',
+          },
           toast: {
             position:
               'Угол или край области просмотра, к которому прикреплён стек уведомлений.',

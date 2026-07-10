@@ -955,6 +955,7 @@ export const he: WebMessages = {
         twoWayBadge: 'דו-כיווני',
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
+          timeline: { orientation: 'כיוון', align: 'יישור', size: 'גודל' },
           tooltip: {
             eaTooltip: 'תוכן חלונית העזר',
           },
@@ -1158,7 +1159,15 @@ export const he: WebMessages = {
             required: 'חובה',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(סמנטי בלבד)' } },
+
         descriptions: {
+          timeline: {
+            items: 'האירועים להצגה, לפי הסדר.',
+            orientation: 'הכיוון שבו ציר הזמן מתקדם.',
+            align: 'מיקום התוכן ביחס לקו; alternate חל על צירי זמן אנכיים בלבד.',
+            size: 'הגודל החזותי של ציר הזמן.',
+          },
           toast: {
             position: 'הפינה או הקצה של אזור התצוגה שאליו מוצמדת ערימת ה-toast.',
             clearable: 'הצג כפתור סגירה על כל toast.',

@@ -53,6 +53,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'tag', name: 'Tag', selector: 'ea-tag' },
   { slug: 'textarea', name: 'Textarea', selector: 'ea-textarea' },
   { slug: 'time-picker', name: 'Time Picker', selector: 'ea-time-picker' },
+  { slug: 'timeline', name: 'Timeline', selector: 'ea-timeline' },
   { slug: 'toast', name: 'Toast', selector: 'ea-toast' },
   { slug: 'tooltip', name: 'Tooltip', selector: 'eaTooltip', kind: 'directive' },
   { slug: 'transfer-list', name: 'Transfer List', selector: 'ea-transfer-list' },

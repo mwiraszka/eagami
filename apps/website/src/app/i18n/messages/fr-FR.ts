@@ -984,6 +984,7 @@ export const frFR: WebMessages = {
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
+          timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           tooltip: {
             eaTooltip: "Contenu de l'infobulle",
           },
@@ -1187,7 +1188,16 @@ export const frFR: WebMessages = {
             required: 'Requis',
           },
         },
+        knobNotes: { accordion: { headingLevel: '(sémantique uniquement)' } },
+
         descriptions: {
+          timeline: {
+            items: 'Les événements à afficher, dans l’ordre.',
+            orientation: 'Sens dans lequel la frise chronologique se déroule.',
+            align:
+              'Placement du contenu par rapport à la ligne ; alternate ne s’applique qu’aux frises verticales.',
+            size: 'Taille visuelle de la frise chronologique.',
+          },
           toast: {
             position: 'Coin ou bord de la fenêtre où la pile de toasts est ancrée.',
             clearable: 'Affiche un bouton de fermeture sur chaque toast.',
