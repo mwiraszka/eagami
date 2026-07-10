@@ -24,6 +24,7 @@ import { FILE_UPLOADER_KNOBS } from './lib/file-uploader/file-uploader.component
 import { INPUT_KNOBS } from './lib/input/input.component.knobs';
 import { MENU_KNOBS } from './lib/menu/menu.component.knobs';
 import { MULTI_SELECT_KNOBS } from './lib/multi-select/multi-select.component.knobs';
+import { NUMBER_INPUT_KNOBS } from './lib/number-input/number-input.component.knobs';
 import { PAGINATOR_KNOBS } from './lib/paginator/paginator.component.knobs';
 import { POPOVER_KNOBS } from './lib/popover/popover.component.knobs';
 import { PROGRESS_BAR_KNOBS } from './lib/progress-bar/progress-bar.component.knobs';
@@ -86,6 +87,7 @@ export const PLAYGROUND_KNOBS = {
   input: INPUT_KNOBS,
   menu: MENU_KNOBS,
   'multi-select': MULTI_SELECT_KNOBS,
+  'number-input': NUMBER_INPUT_KNOBS,
   paginator: PAGINATOR_KNOBS,
   popover: POPOVER_KNOBS,
   'progress-bar': PROGRESS_BAR_KNOBS,

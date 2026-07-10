@@ -1,0 +1,146 @@
+@use '../../styles/mixins' as ea;
+
+.ea-number-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+  color: var(--color-text-secondary);
+}
+
+.ea-number-input-wrapper {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  min-height: 2.5em;
+  // Logical padding: less room on the stepper (inline-end) side. Flips in RTL.
+  padding-block: 0;
+  padding-inline: 0.75em 0.5em;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-secondary);
+  transition: var(--transition-colors), var(--transition-shadow);
+
+  // Size sets only the font-size; padding, gap, min-height, and the steppers are
+  // em-based, so the field scales entirely from this one knob.
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    // 16px prevents iOS Safari auto-zoom on focus
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
+
+  &--focused {
+    border-color: var(--color-border-focus);
+    @include ea.focus-ring;
+  }
+
+  &--error {
+    border-color: var(--color-error-default);
+
+    &.ea-number-input-wrapper--focused {
+      @include ea.focus-ring(var(--shadow-focus-ring-error));
+    }
+  }
+
+  &--disabled {
+    border-color: var(--color-border-default);
+    background-color: var(--color-bg-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .ea-number-input {
+      cursor: not-allowed;
+    }
+  }
+
+  &--readonly {
+    background-color: var(--color-bg-subtle);
+  }
+
+  &__steppers {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.1em;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-xs);
+    background: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition-colors);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-state-hover);
+      color: var(--color-text-primary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+  }
+
+  &__step-icon {
+    width: 0.875em;
+    height: 0.875em;
+    pointer-events: none;
+  }
+}
+
+.ea-number-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 0.5em 0;
+  font-family: var(--font-family-sans);
+  line-height: var(--line-height-normal);
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  appearance: textfield;
+  -moz-appearance: textfield;
+
+  // `opacity: 1` overrides the Firefox/WebKit default of ~0.54 on placeholders,
+  // which would wash out the tertiary token and collapse contrast in dark mode.
+  &::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  // Hide the native spin buttons; the component renders its own steppers.
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+}

@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.11.0] - 2026-07-10
+
+### Added
+
+- Add a demo page for the new number input component, with a live playground and API reference, translated into every locale.
+
 ## [3.10.0] - 2026-07-08
 
 ### Added
@@ -799,6 +805,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.11.0]: https://github.com/mwiraszka/eagami/compare/website-v3.10.0...website-v3.11.0
 [3.10.0]: https://github.com/mwiraszka/eagami/compare/website-v3.9.2...website-v3.10.0
 [3.9.2]: https://github.com/mwiraszka/eagami/compare/website-v3.9.1...website-v3.9.2
 [3.9.1]: https://github.com/mwiraszka/eagami/compare/website-v3.9.0...website-v3.9.1

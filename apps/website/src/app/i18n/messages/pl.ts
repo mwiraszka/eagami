@@ -995,6 +995,18 @@ export const pl: WebMessages = {
             clearable: 'Z czyszczeniem',
             autocomplete: 'Autouzupełnianie',
           },
+          'number-input': {
+            allowNegative: 'Zezwól na ujemne',
+            label: 'Etykieta',
+            placeholder: 'Tekst zastępczy',
+            size: 'Rozmiar',
+            min: 'Minimum',
+            max: 'Maksimum',
+            step: 'Krok',
+            disabled: 'Wyłączone',
+            readonly: 'Tylko do odczytu',
+            required: 'Wymagane',
+          },
           'form-field': {
             label: 'Etykieta',
             hint: 'Podpowiedź',
@@ -1209,6 +1221,29 @@ export const pl: WebMessages = {
             step: 'Przyrost kroku dla pól type="number".',
             clampToBounds:
               'Ogranicza wartość liczbową do skonfigurowanego zakresu min/max po zakończeniu edycji.',
+          },
+          'number-input': {
+            allowNegative:
+              'Czy dozwolone są wartości ujemne; gdy false, wartość ma dolną granicę 0.',
+            label: 'Etykieta wyświetlana nad polem.',
+            placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
+            size: 'Wizualny rozmiar pola.',
+            hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
+            errorMsg:
+              'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
+            disabled: 'Wyłącza pole.',
+            readonly: 'Wyświetla pole tylko do odczytu.',
+            required: 'Oznacza pole jako wymagane.',
+            min: 'Wartość minimalna; wpisane wartości są do niej ograniczane przy utracie fokusu, a przyciski krokowe ją respektują.',
+            max: 'Wartość maksymalna; wpisane wartości są do niej ograniczane przy utracie fokusu, a przyciski krokowe ją respektują.',
+            step: 'Wartość dodawana lub odejmowana przy każdym kroku (klawiszem strzałki lub przyciskiem krokowym).',
+            id: 'id stosowane do natywnego pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            value:
+              'Bieżąca wartość pola; null gdy puste, dwukierunkowo wiązalna przez [(value)].',
+            changed: 'Emitowane z nową wartością przy każdej jej zmianie.',
+            focused: 'Emitowane, gdy pole otrzymuje fokus.',
+            blurred: 'Emitowane, gdy pole traci fokus.',
+            focus: 'Przenosi fokus klawiatury na natywne pole bazowe.',
           },
           accordion: {
             multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',

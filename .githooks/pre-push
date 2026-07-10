@@ -22,6 +22,38 @@ else
   echo "pre-push: PR link unavailable (try: gh auth status)"
 fi
 
+# Enforce that each version's CHANGELOG entry is dated today, so a release never
+# lands with a stale date (the release workflow consumes this entry verbatim).
+# Runs on every push to a version branch, catching a push made on a later day
+# than the entry was first drafted.
+today="$(date +%Y-%m-%d)"
+changelog_date_ok() {
+  local ver_re="${1//./\\.}" line
+  line="$(grep -m1 -E "^## \[${ver_re}\] - " "$2" 2>/dev/null || true)"
+  if [ -z "$line" ]; then
+    echo "pre-push: no '## [$1]' entry found in $2" >&2
+    return 1
+  fi
+  case "$line" in
+    *" - $today") return 0 ;;
+    *)
+      echo "pre-push: $2 entry for $3 v$1 is not dated today ($today):" >&2
+      echo "    $line" >&2
+      echo "pre-push: refresh the date to $today before pushing (CHANGELOG date must match the release day)." >&2
+      return 1
+      ;;
+  esac
+}
+
+date_fail=0
+if [[ "$branch" =~ ui-v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+  changelog_date_ok "${BASH_REMATCH[1]}" packages/ui/CHANGELOG.md ui || date_fail=1
+fi
+if [[ "$branch" =~ website-v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+  changelog_date_ok "${BASH_REMATCH[1]}" apps/website/CHANGELOG.md website || date_fail=1
+fi
+[ "$date_fail" -eq 0 ] || exit 1
+
 # Diff the outgoing commits against the configured upstream, else origin/main.
 if base="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)"; then
   :

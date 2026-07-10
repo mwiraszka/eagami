@@ -989,6 +989,18 @@ export const ptBR: WebMessages = {
             clearable: 'Limpável',
             autocomplete: 'Autocompletar',
           },
+          'number-input': {
+            allowNegative: 'Permitir negativos',
+            label: 'Rótulo',
+            placeholder: 'Espaço reservado',
+            size: 'Tamanho',
+            min: 'Mínimo',
+            max: 'Máximo',
+            step: 'Passo',
+            disabled: 'Desativado',
+            readonly: 'Somente leitura',
+            required: 'Obrigatório',
+          },
           'form-field': {
             label: 'Rótulo',
             hint: 'Dica',
@@ -1205,6 +1217,29 @@ export const ptBR: WebMessages = {
             step: 'Incremento de passo para inputs type="number".',
             clampToBounds:
               'Limita um valor numérico ao intervalo mín/máx configurado quando a edição termina.',
+          },
+          'number-input': {
+            allowNegative:
+              'Se valores negativos são permitidos; quando false, o valor tem piso 0.',
+            label: 'Rótulo de texto renderizado acima do campo.',
+            placeholder: 'Placeholder exibido enquanto o campo está vazio.',
+            size: 'Tamanho visual do campo.',
+            hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
+            errorMsg:
+              'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
+            disabled: 'Desativa o campo.',
+            readonly: 'Renderiza o campo como somente leitura.',
+            required: 'Marca o campo como obrigatório.',
+            min: 'Valor mínimo; valores digitados são limitados a ele ao perder o foco, e os botões de passo o respeitam.',
+            max: 'Valor máximo; valores digitados são limitados a ele ao perder o foco, e os botões de passo o respeitam.',
+            step: 'Quantidade que cada passo (tecla de seta ou botão de passo) adiciona ou subtrai.',
+            id: 'id aplicado ao input nativo e ao for do rótulo, gerado automaticamente quando omitido.',
+            value:
+              'Valor atual do campo; null quando vazio, vinculável de forma bidirecional via [(value)].',
+            changed: 'Dispara com o novo valor sempre que ele muda.',
+            focused: 'Dispara quando o campo recebe o foco.',
+            blurred: 'Dispara quando o campo perde o foco.',
+            focus: 'Move o foco do teclado para o campo nativo subjacente.',
           },
           accordion: {
             multi: 'Permite que vários itens permaneçam expandidos ao mesmo tempo.',

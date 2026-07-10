@@ -1,0 +1,64 @@
+<div class="ea-number-input-field">
+  @if (label(); as labelText) {
+    <ea-field-label
+      [text]="labelText"
+      [forId]="id()"
+      [required]="required()" />
+  }
+
+  <div
+    class="ea-number-input-wrapper"
+    [ngClass]="wrapperClasses()">
+    <input
+      #inputEl
+      type="number"
+      class="ea-number-input"
+      dir="auto"
+      [id]="id()"
+      [placeholder]="placeholder()"
+      [disabled]="isDisabled()"
+      [readOnly]="readonly()"
+      [required]="required()"
+      [attr.min]="effectiveMin() ?? null"
+      [attr.max]="max() ?? null"
+      [attr.step]="step()"
+      [attr.aria-label]="ariaLabel() ?? null"
+      [attr.aria-invalid]="hasError() || null"
+      [attr.aria-describedby]="
+        hasError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+      "
+      (input)="handleInput()"
+      (keydown)="handleKeydown($event)"
+      (wheel)="handleWheel($event)"
+      (focus)="handleFocus($event)"
+      (blur)="handleBlur($event)" />
+
+    <div class="ea-number-input-wrapper__steppers">
+      <button
+        type="button"
+        tabindex="-1"
+        class="ea-number-input-wrapper__step"
+        [disabled]="!canIncrement()"
+        [attr.aria-label]="i18n.messages().numberInput.increment"
+        (mousedown)="onStepMousedown($event)"
+        (click)="increment()">
+        <ea-icon-chevron-up class="ea-number-input-wrapper__step-icon" />
+      </button>
+      <button
+        type="button"
+        tabindex="-1"
+        class="ea-number-input-wrapper__step"
+        [disabled]="!canDecrement()"
+        [attr.aria-label]="i18n.messages().numberInput.decrement"
+        (mousedown)="onStepMousedown($event)"
+        (click)="decrement()">
+        <ea-icon-chevron-down class="ea-number-input-wrapper__step-icon" />
+      </button>
+    </div>
+  </div>
+
+  <ea-field-messages
+    [id]="id()"
+    [error]="errorText()"
+    [hint]="showHint() ? hint() : null" />
+</div>
