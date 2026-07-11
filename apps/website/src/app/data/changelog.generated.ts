@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.6.1',
+    date: '2026-07-12',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Drop the redundant publish flag; npm provenance is still generated automatically by trusted publishing.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.6.0',
     date: '2026-07-11',
     sections: [
