@@ -21,6 +21,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Changed',
         entries: [
           'Drop the redundant publish flag; npm provenance is still generated automatically by trusted publishing.',
+          'Sync the React and Flutter integration guides to the current token set (refreshed secondary palette).',
         ],
       },
     ],

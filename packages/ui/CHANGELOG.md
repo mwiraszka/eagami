@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Drop the redundant publish flag; npm provenance is still generated automatically by trusted publishing.
+- Sync the React and Flutter integration guides to the current token set (refreshed secondary palette).
 
 ## [5.6.0] - 2026-07-11
 
