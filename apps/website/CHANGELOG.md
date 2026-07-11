@@ -2,6 +2,21 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.11.2] - 2026-07-11
+
+### Added
+
+- List brand-guideline links for the ten new brand icons on the icons reference page; the gallery picks up all 21 new marks from @eagami/ui v5.6.0.
+
+### Changed
+
+- Use the new languages icon in place of the globe for the locale switcher and localization-related feature and principle cards.
+- Show `provideEagamiUi()` with parentheses consistently across the theming and i18n docs.
+
+### Fixed
+
+- Give the site header a hairline bottom border so it reads as a distinct bar consistently in light and dark mode, instead of blending into the page in light mode only.
+
 ## [3.11.1] - 2026-07-10
 
 ### Added
@@ -815,6 +830,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.11.2]: https://github.com/mwiraszka/eagami/compare/website-v3.11.1...website-v3.11.2
 [3.11.1]: https://github.com/mwiraszka/eagami/compare/website-v3.11.0...website-v3.11.1
 [3.11.0]: https://github.com/mwiraszka/eagami/compare/website-v3.10.0...website-v3.11.0
 [3.10.0]: https://github.com/mwiraszka/eagami/compare/website-v3.9.2...website-v3.10.0
