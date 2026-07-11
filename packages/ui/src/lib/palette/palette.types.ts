@@ -2,16 +2,7 @@
 
 /** The 10 derived shade positions, matching the library's existing scale. */
 export type PaletteShade =
-  | '50'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900';
+  '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
 
 /**
  * Which shade backs each semantic role. Defaults match the library's

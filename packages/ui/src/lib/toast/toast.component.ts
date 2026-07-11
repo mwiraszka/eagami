@@ -17,12 +17,7 @@ import { ToastService } from './toast.service';
 
 /** Corner or edge of the viewport the toast stack is pinned to. */
 export type ToastPosition =
-  | 'top-left'
-  | 'top'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom'
-  | 'bottom-right';
+  'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right';
 
 /**
  * Outlet that renders the stack of active toasts produced by

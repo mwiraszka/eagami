@@ -35,13 +35,7 @@ import { uniqueId } from '../unique-id';
 export type InputSize = EaSize;
 /** HTML `type` attribute applied to the underlying `<input>`. */
 export type InputType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'number'
-  | 'search'
-  | 'tel'
-  | 'url';
+  'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
 
 /**
  * Single-line text field with label, hint, and error message support.
