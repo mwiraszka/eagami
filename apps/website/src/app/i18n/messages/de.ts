@@ -73,7 +73,7 @@ export const de: WebMessages = {
           title: 'Mehrsprachige Unterstützung',
           description:
             'Sprachunterstützung für mehrere Sprachräume, mit optionaler automatischer Erkennung aus dem Browser des Besuchers.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Themes',
@@ -303,7 +303,7 @@ export const de: WebMessages = {
       metaDescription:
         'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
       title: 'Theme-Builder',
-      lede: 'Wählen Sie Ihre Markenfarben, und Eagami UI leitet daraus eine vollständige 50–900-Skala im OKLCH-Raum ab, prüft sie im hellen und dunklen Modus auf WCAG-Kontrast und liefert Ihnen die <code>provideEagamiUi</code>-Konfiguration zum direkten Einsetzen.',
+      lede: 'Wählen Sie Ihre Markenfarben, und Eagami UI leitet daraus eine vollständige 50–900-Skala im OKLCH-Raum ab, prüft sie im hellen und dunklen Modus auf WCAG-Kontrast und liefert Ihnen die <code>provideEagamiUi()</code>-Konfiguration zum direkten Einsetzen.',
       controlsHeading: 'Markenfarben',
       primaryLabel: 'Primärfarbe',
       secondaryLabel: 'Sekundärfarbe',
@@ -348,7 +348,7 @@ export const de: WebMessages = {
       themingScopedBefore:
         'Oder beschränken Sie Überschreibungen auf einzelne Komponenten, wo es sinnvoll ist:',
       paletteIntro:
-        'Übergeben Sie einen einzelnen Marken-Hexwert an <code>provideEagamiUi</code>, und die Bibliothek leitet eine vollständige Zehn-Schattierungen-Skala (50 bis 900) im <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-Raum ab, wobei Farbton und Chroma konstant bleiben, während die Helligkeit gestuft wird. Die abgeleiteten Schattierungen speisen jedes <code>--color-brand-*</code>-Token sowohl im Hell- als auch im Dunkelmodus:',
+        'Übergeben Sie einen einzelnen Marken-Hexwert an <code>provideEagamiUi()</code>, und die Bibliothek leitet eine vollständige Zehn-Schattierungen-Skala (50 bis 900) im <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-Raum ab, wobei Farbton und Chroma konstant bleiben, während die Helligkeit gestuft wird. Die abgeleiteten Schattierungen speisen jedes <code>--color-brand-*</code>-Token sowohl im Hell- als auch im Dunkelmodus:',
       paletteOverrides:
         'Fixieren Sie bestimmte Schattierungen oder ordnen Sie neu zu, welche abgeleitete Schattierung jeder semantischen Rolle zugrunde liegt:',
       paletteContrast:

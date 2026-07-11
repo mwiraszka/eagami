@@ -72,7 +72,7 @@ export const he: WebMessages = {
         {
           title: 'תמיכה רב-לשונית',
           description: 'תמיכה בשפות מרובות, עם זיהוי אוטומטי אופציונלי מהדפדפן של המבקר.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'ערכות נושא',
@@ -293,7 +293,7 @@ export const he: WebMessages = {
       metaDescription:
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
-      lede: 'בחרו את צבעי המותג שלכם ו-Eagami UI יגזור סקאלה מלאה של 50–900 במרחב OKLCH, יבדוק את הניגודיות שלה לפי WCAG במצב בהיר וכהה, וימסור לכם את תצורת <code>provideEagamiUi</code> מוכנה לשימוש.',
+      lede: 'בחרו את צבעי המותג שלכם ו-Eagami UI יגזור סקאלה מלאה של 50–900 במרחב OKLCH, יבדוק את הניגודיות שלה לפי WCAG במצב בהיר וכהה, וימסור לכם את תצורת <code>provideEagamiUi()</code> מוכנה לשימוש.',
       controlsHeading: 'צבעי המותג',
       primaryLabel: 'צבע ראשי',
       secondaryLabel: 'צבע משני',
@@ -335,7 +335,7 @@ export const he: WebMessages = {
         'דרסו כל אסימון ב-<code>:root</code> כדי לשנות את ערכת הנושא של כל הספרייה:',
       themingScopedBefore: 'או הגבילו דריסות לרכיבים בודדים במקום שזה שימושי:',
       paletteIntro:
-        'העבירו hex מותג בודד אל <code>provideEagamiUi</code> והספרייה תגזור סולם מלא של עשרה גוונים (מ-50 עד 900) במרחב <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, תוך שמירה על גוון ורוויה קבועים ושינוי הבהירות בלבד. הגוונים הנגזרים מזינים כל אסימון <code>--color-brand-*</code> במצב בהיר ובמצב כהה כאחד:',
+        'העבירו hex מותג בודד אל <code>provideEagamiUi()</code> והספרייה תגזור סולם מלא של עשרה גוונים (מ-50 עד 900) במרחב <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, תוך שמירה על גוון ורוויה קבועים ושינוי הבהירות בלבד. הגוונים הנגזרים מזינים כל אסימון <code>--color-brand-*</code> במצב בהיר ובמצב כהה כאחד:',
       paletteOverrides:
         'קבעו גוונים ספציפיים או מפו מחדש איזה גוון נגזר עומד מאחורי כל תפקיד סמנטי:',
       paletteContrast:

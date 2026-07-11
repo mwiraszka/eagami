@@ -77,7 +77,7 @@ export const frFR: WebMessages = {
           title: 'Support multilingue',
           description:
             'Prise en charge de plusieurs langues, avec détection automatique optionnelle depuis le navigateur du visiteur.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Thèmes',
@@ -303,7 +303,7 @@ export const frFR: WebMessages = {
       metaDescription:
         'Générez une palette vérifiée WCAG pour les modes clair et sombre à partir des couleurs de votre marque, puis copiez la configuration du fournisseur ou le CSS.',
       title: 'Générateur de thème',
-      lede: 'Choisissez les couleurs de votre marque et Eagami UI en dérive une échelle complète 50–900 dans l’espace OKLCH, en vérifie le contraste WCAG en mode clair et sombre, et vous fournit la configuration <code>provideEagamiUi</code> prête à l’emploi.',
+      lede: 'Choisissez les couleurs de votre marque et Eagami UI en dérive une échelle complète 50–900 dans l’espace OKLCH, en vérifie le contraste WCAG en mode clair et sombre, et vous fournit la configuration <code>provideEagamiUi()</code> prête à l’emploi.',
       controlsHeading: 'Couleurs de marque',
       primaryLabel: 'Couleur primaire',
       secondaryLabel: 'Couleur secondaire',
@@ -348,7 +348,7 @@ export const frFR: WebMessages = {
       themingScopedBefore:
         'Ou limitez les remplacements à des composants individuels là où c’est utile :',
       paletteIntro:
-        'Passez un seul hex de marque à <code>provideEagamiUi</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
+        'Passez un seul hex de marque à <code>provideEagamiUi()</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
       paletteOverrides:
         'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
       paletteContrast:

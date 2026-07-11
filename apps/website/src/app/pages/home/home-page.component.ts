@@ -4,8 +4,8 @@ import {
   ChevronDownIconComponent,
   CreditCardIconComponent,
   EagamiIconComponent,
-  GlobeIconComponent,
   InputComponent,
+  LanguagesIconComponent,
   MailIconComponent,
   MoonIconComponent,
   TextareaComponent,
@@ -43,7 +43,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 const ICON_BY_SLUG: Record<string, Type<unknown>> = {
   users: UsersIconComponent,
   'credit-card': CreditCardIconComponent,
-  globe: GlobeIconComponent,
+  languages: LanguagesIconComponent,
   moon: MoonIconComponent,
   'bar-chart': BarChartIconComponent,
   mail: MailIconComponent,

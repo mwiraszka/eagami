@@ -74,7 +74,7 @@ export const pl: WebMessages = {
           title: 'Obsługa wielu języków',
           description:
             'Wsparcie wielu lokalizacji, z opcjonalnym automatycznym wykrywaniem języka przeglądarki użytkownika.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Motywy',
@@ -303,7 +303,7 @@ export const pl: WebMessages = {
       metaDescription:
         'Wygeneruj sprawdzoną pod kątem WCAG paletę dla trybu jasnego i ciemnego na podstawie kolorów marki, a następnie skopiuj konfigurację dostawcy lub CSS.',
       title: 'Kreator motywu',
-      lede: 'Wybierz kolory swojej marki, a Eagami UI wyprowadzi pełną skalę 50–900 w przestrzeni OKLCH, sprawdzi jej kontrast WCAG w trybie jasnym i ciemnym oraz przekaże Ci gotową konfigurację <code>provideEagamiUi</code>.',
+      lede: 'Wybierz kolory swojej marki, a Eagami UI wyprowadzi pełną skalę 50–900 w przestrzeni OKLCH, sprawdzi jej kontrast WCAG w trybie jasnym i ciemnym oraz przekaże Ci gotową konfigurację <code>provideEagamiUi()</code>.',
       controlsHeading: 'Kolory marki',
       primaryLabel: 'Kolor podstawowy',
       secondaryLabel: 'Kolor dodatkowy',
@@ -346,7 +346,7 @@ export const pl: WebMessages = {
       themingScopedBefore:
         'Lub zawęź nadpisania do pojedynczych komponentów tam, gdzie to przydatne:',
       paletteIntro:
-        'Przekaż jeden hex marki do <code>provideEagamiUi</code>, a biblioteka wyprowadzi pełną skalę dziesięciu odcieni (50 do 900) w przestrzeni <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, utrzymując stały odcień i nasycenie przy zmianie jasności. Wyprowadzone odcienie zasilają każdy token <code>--color-brand-*</code> w trybie jasnym i ciemnym:',
+        'Przekaż jeden hex marki do <code>provideEagamiUi()</code>, a biblioteka wyprowadzi pełną skalę dziesięciu odcieni (50 do 900) w przestrzeni <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, utrzymując stały odcień i nasycenie przy zmianie jasności. Wyprowadzone odcienie zasilają każdy token <code>--color-brand-*</code> w trybie jasnym i ciemnym:',
       paletteOverrides:
         'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje dany rol semantyczny:',
       paletteContrast:

@@ -72,7 +72,7 @@ export const ar: WebMessages = {
         {
           title: 'دعم متعدد اللغات',
           description: 'دعم لعدة لغات، مع كشف تلقائي اختياري من متصفح الزائر.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'السمات',
@@ -294,7 +294,7 @@ export const ar: WebMessages = {
       metaDescription:
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
-      lede: 'اختر ألوان علامتك التجارية ويشتق Eagami UI مقياسًا كاملًا من 50–900 في فضاء OKLCH، ويتحقق من تباينه وفق WCAG في الوضعين الفاتح والداكن، ويمنحك إعداد <code>provideEagamiUi</code> جاهزًا للاستخدام.',
+      lede: 'اختر ألوان علامتك التجارية ويشتق Eagami UI مقياسًا كاملًا من 50–900 في فضاء OKLCH، ويتحقق من تباينه وفق WCAG في الوضعين الفاتح والداكن، ويمنحك إعداد <code>provideEagamiUi()</code> جاهزًا للاستخدام.',
       controlsHeading: 'ألوان العلامة التجارية',
       primaryLabel: 'اللون الأساسي',
       secondaryLabel: 'اللون الثانوي',
@@ -336,7 +336,7 @@ export const ar: WebMessages = {
         'تجاوز أي رمز على <code>:root</code> لإعادة تنسيق سمة المكتبة بأكملها:',
       themingScopedBefore: 'أو حصر التجاوزات على مكوّنات فردية حيثما كان ذلك مفيدًا:',
       paletteIntro:
-        'مرّر لون hex واحدًا للعلامة إلى <code>provideEagamiUi</code>، وستشتق المكتبة مقياسًا كاملًا من عشرة تدرّجات (من 50 إلى 900) في فضاء <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>، مع تثبيت درجة اللون والتشبّع وتغيير السطوع فقط. تغذّي التدرّجات المشتقة كل رمز <code>--color-brand-*</code> في الوضعين الفاتح والداكن:',
+        'مرّر لون hex واحدًا للعلامة إلى <code>provideEagamiUi()</code>، وستشتق المكتبة مقياسًا كاملًا من عشرة تدرّجات (من 50 إلى 900) في فضاء <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>، مع تثبيت درجة اللون والتشبّع وتغيير السطوع فقط. تغذّي التدرّجات المشتقة كل رمز <code>--color-brand-*</code> في الوضعين الفاتح والداكن:',
       paletteOverrides:
         'ثبّت تدرّجات محدّدة أو أعِد تعيين أي تدرّج مشتق يدعم كل دور دلالي:',
       paletteContrast:

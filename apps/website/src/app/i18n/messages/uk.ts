@@ -74,7 +74,7 @@ export const uk: WebMessages = {
           title: 'Багатомовна підтримка',
           description:
             'Підтримка кількох мовних версій з опціональним автоматичним визначенням за браузером відвідувача.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Теми',
@@ -300,7 +300,7 @@ export const uk: WebMessages = {
       metaDescription:
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
-      lede: 'Виберіть кольори бренду, і Eagami UI побудує повну шкалу 50–900 у просторі OKLCH, перевірить її контраст за WCAG у світлій і темній темі та надасть готову конфігурацію <code>provideEagamiUi</code>.',
+      lede: 'Виберіть кольори бренду, і Eagami UI побудує повну шкалу 50–900 у просторі OKLCH, перевірить її контраст за WCAG у світлій і темній темі та надасть готову конфігурацію <code>provideEagamiUi()</code>.',
       controlsHeading: 'Кольори бренду',
       primaryLabel: 'Основний колір',
       secondaryLabel: 'Додатковий колір',
@@ -343,7 +343,7 @@ export const uk: WebMessages = {
       themingScopedBefore:
         'Або обмежте перевизначення окремими компонентами, де це доречно:',
       paletteIntro:
-        'Передайте єдиний hex-код бренду до <code>provideEagamiUi</code>, і бібліотека виведе повну шкалу з десяти відтінків (від 50 до 900) у просторі <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, утримуючи відтінок і насиченість сталими, поки крокує яскравість. Виведені відтінки живлять кожен токен <code>--color-brand-*</code> як у світлому, так і в темному режимі:',
+        'Передайте єдиний hex-код бренду до <code>provideEagamiUi()</code>, і бібліотека виведе повну шкалу з десяти відтінків (від 50 до 900) у просторі <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, утримуючи відтінок і насиченість сталими, поки крокує яскравість. Виведені відтінки живлять кожен токен <code>--color-brand-*</code> як у світлому, так і в темному режимі:',
       paletteOverrides:
         'Зафіксуйте конкретні відтінки або перепризначте, який виведений відтінок стоїть за кожною семантичною роллю:',
       paletteContrast:

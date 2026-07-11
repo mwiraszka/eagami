@@ -70,7 +70,7 @@ export const zhCN: WebMessages = {
         {
           title: '多语言支持',
           description: '支持多种语言区域，可选根据访客浏览器自动检测语言。',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: '主题',
@@ -288,7 +288,7 @@ export const zhCN: WebMessages = {
       metaDescription:
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
-      lede: '选择你的品牌颜色，Eagami UI 会在 OKLCH 空间中推导出完整的 50–900 色阶，在浅色和深色模式下校验其 WCAG 对比度，并为你提供可直接使用的 <code>provideEagamiUi</code> 配置。',
+      lede: '选择你的品牌颜色，Eagami UI 会在 OKLCH 空间中推导出完整的 50–900 色阶，在浅色和深色模式下校验其 WCAG 对比度，并为你提供可直接使用的 <code>provideEagamiUi()</code> 配置。',
       controlsHeading: '品牌颜色',
       primaryLabel: '主色',
       secondaryLabel: '辅助色',
@@ -329,7 +329,7 @@ export const zhCN: WebMessages = {
         '在 <code>:root</code> 上覆盖任意令牌，即可为整个库重新设定主题：',
       themingScopedBefore: '或在需要时将覆盖范围限定到单个组件：',
       paletteIntro:
-        '向 <code>provideEagamiUi</code> 传入单个品牌十六进制色值，库便会在 <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> 空间中推导出完整的十级色阶（50 至 900），在逐级调整明度的同时保持色相和饱和度不变。推导出的色阶为浅色和深色模式中的每个 <code>--color-brand-*</code> 令牌提供取值：',
+        '向 <code>provideEagamiUi()</code> 传入单个品牌十六进制色值，库便会在 <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> 空间中推导出完整的十级色阶（50 至 900），在逐级调整明度的同时保持色相和饱和度不变。推导出的色阶为浅色和深色模式中的每个 <code>--color-brand-*</code> 令牌提供取值：',
       paletteOverrides: '固定特定色阶，或重新映射哪个推导色阶支撑各语义角色：',
       paletteContrast:
         '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 WCAG 2.1 AA 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',

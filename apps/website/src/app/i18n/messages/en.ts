@@ -73,7 +73,7 @@ export const en: WebMessages = {
           title: 'Multilingual support',
           description:
             "Language support for multiple locales, with optional auto-detection from the visitor's browser.",
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Theming',
@@ -296,7 +296,7 @@ export const en: WebMessages = {
       metaDescription:
         'Generate a WCAG-checked light and dark palette from your brand colors, then copy the provider config or CSS.',
       title: 'Theme builder',
-      lede: 'Pick your brand colors and Eagami UI derives a full 50–900 scale in OKLCH space, checks it for WCAG contrast in light and dark, and hands you the <code>provideEagamiUi</code> config to drop in.',
+      lede: 'Pick your brand colors and Eagami UI derives a full 50–900 scale in OKLCH space, checks it for WCAG contrast in light and dark, and hands you the <code>provideEagamiUi()</code> config to drop in.',
       controlsHeading: 'Brand colors',
       primaryLabel: 'Primary color',
       secondaryLabel: 'Secondary color',
@@ -338,7 +338,7 @@ export const en: WebMessages = {
         'Override any token on <code>:root</code> to retheme the entire library:',
       themingScopedBefore: 'Or scope overrides to individual components where useful:',
       paletteIntro:
-        'Pass a single brand hex to <code>provideEagamiUi</code> and the library derives a full ten-shade scale (50 through 900) in <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> space, holding hue and chroma steady while stepping lightness. The derived shades feed every <code>--color-brand-*</code> token in both light and dark mode:',
+        'Pass a single brand hex to <code>provideEagamiUi()</code> and the library derives a full ten-shade scale (50 through 900) in <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> space, holding hue and chroma steady while stepping lightness. The derived shades feed every <code>--color-brand-*</code> token in both light and dark mode:',
       paletteOverrides:
         'Pin specific shades or remap which derived shade backs each semantic role:',
       paletteContrast:

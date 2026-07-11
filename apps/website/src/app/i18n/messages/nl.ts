@@ -73,7 +73,7 @@ export const nl: WebMessages = {
           title: 'Meertalige ondersteuning',
           description:
             'Taalondersteuning voor meerdere talen, met optionele automatische detectie via de browser van de bezoeker.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Thema-aanpassing',
@@ -302,7 +302,7 @@ export const nl: WebMessages = {
       metaDescription:
         'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
       title: 'Themabuilder',
-      lede: 'Kies je merkkleuren en Eagami UI leidt er een volledige 50–900-schaal in de OKLCH-ruimte uit af, controleert het WCAG-contrast in de lichte en donkere modus en geeft je de <code>provideEagamiUi</code>-configuratie om direct toe te passen.',
+      lede: 'Kies je merkkleuren en Eagami UI leidt er een volledige 50–900-schaal in de OKLCH-ruimte uit af, controleert het WCAG-contrast in de lichte en donkere modus en geeft je de <code>provideEagamiUi()</code>-configuratie om direct toe te passen.',
       controlsHeading: 'Merkkleuren',
       primaryLabel: 'Primaire kleur',
       secondaryLabel: 'Secundaire kleur',
@@ -346,7 +346,7 @@ export const nl: WebMessages = {
       themingScopedBefore:
         'Of beperk overschrijvingen tot afzonderlijke componenten waar dat nuttig is:',
       paletteIntro:
-        'Geef een enkele merkhexkleur door aan <code>provideEagamiUi</code> en de bibliotheek leidt een volledige schaal van tien tinten af (50 tot en met 900) in de <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-ruimte, waarbij tint en chroma stabiel blijven terwijl de helderheid wordt aangepast. De afgeleide tinten voeden elk <code>--color-brand-*</code>-token in zowel de lichte als de donkere modus:',
+        'Geef een enkele merkhexkleur door aan <code>provideEagamiUi()</code> en de bibliotheek leidt een volledige schaal van tien tinten af (50 tot en met 900) in de <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-ruimte, waarbij tint en chroma stabiel blijven terwijl de helderheid wordt aangepast. De afgeleide tinten voeden elk <code>--color-brand-*</code>-token in zowel de lichte als de donkere modus:',
       paletteOverrides:
         'Zet specifieke tinten vast of wijs opnieuw toe welke afgeleide tint elke semantische rol ondersteunt:',
       paletteContrast:
