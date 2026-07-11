@@ -12,7 +12,7 @@ import { formatViolations, validatePalette } from '../palette/validate-palette';
 import type { EagamiI18nConfig } from './i18n.types';
 
 /**
- * Full provider configuration for `provideEagamiUi`. Extends the i18n config
+ * Full provider configuration for `provideEagamiUi()`. Extends the i18n config
  * with an optional brand palette; omit `palette` to keep the un-themed SCSS
  * defaults.
  */
