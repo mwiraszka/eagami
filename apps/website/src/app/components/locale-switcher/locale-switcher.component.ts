@@ -1,5 +1,5 @@
 import {
-  GlobeIconComponent,
+  LanguagesIconComponent,
   MenuComponent,
   MenuItemComponent,
   MenuTriggerDirective,
@@ -21,7 +21,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   templateUrl: './locale-switcher.component.html',
   styleUrl: './locale-switcher.component.scss',
   imports: [
-    GlobeIconComponent,
+    LanguagesIconComponent,
     MenuComponent,
     MenuItemComponent,
     MenuTriggerDirective,

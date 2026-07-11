@@ -73,7 +73,7 @@ export interface PaletteConfig {
   roles?: Partial<PaletteRoles>;
 }
 
-/** Top-level palette config accepted by `provideEagamiUi`. */
+/** Top-level palette config accepted by `provideEagamiUi()`. */
 export interface EagamiPaletteConfig {
   primary?: PaletteConfig;
   secondary?: PaletteConfig;

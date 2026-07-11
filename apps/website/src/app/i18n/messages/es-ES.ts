@@ -73,7 +73,7 @@ export const esES: WebMessages = {
           title: 'Soporte multilingüe',
           description:
             'Compatibilidad con varios idiomas, con detección automática opcional desde el navegador del visitante.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Temas',
@@ -298,7 +298,7 @@ export const esES: WebMessages = {
       metaDescription:
         'Genera una paleta verificada con WCAG para los modos claro y oscuro a partir de los colores de tu marca y copia la configuración del proveedor o el CSS.',
       title: 'Generador de temas',
-      lede: 'Elige los colores de tu marca y Eagami UI deriva una escala completa 50–900 en el espacio OKLCH, comprueba su contraste WCAG en modo claro y oscuro, y te entrega la configuración <code>provideEagamiUi</code> lista para usar.',
+      lede: 'Elige los colores de tu marca y Eagami UI deriva una escala completa 50–900 en el espacio OKLCH, comprueba su contraste WCAG en modo claro y oscuro, y te entrega la configuración <code>provideEagamiUi()</code> lista para usar.',
       controlsHeading: 'Colores de marca',
       primaryLabel: 'Color primario',
       secondaryLabel: 'Color secundario',
@@ -342,7 +342,7 @@ export const esES: WebMessages = {
       themingScopedBefore:
         'O limita las sobrescrituras a componentes individuales donde sea útil:',
       paletteIntro:
-        'Pasa un único hex de marca a <code>provideEagamiUi</code> y la biblioteca deriva una escala completa de diez tonos (50 a 900) en el espacio <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, manteniendo tono y croma estables mientras se gradúa la luminancia. Los tonos derivados alimentan cada token <code>--color-brand-*</code> tanto en modo claro como oscuro:',
+        'Pasa un único hex de marca a <code>provideEagamiUi()</code> y la biblioteca deriva una escala completa de diez tonos (50 a 900) en el espacio <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, manteniendo tono y croma estables mientras se gradúa la luminancia. Los tonos derivados alimentan cada token <code>--color-brand-*</code> tanto en modo claro como oscuro:',
       paletteOverrides:
         'Fija tonos concretos o reasigna qué tono derivado respalda cada rol semántico:',
       paletteContrast:

@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.6.0',
+    date: '2026-07-11',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add 21 icons: 11 general-purpose (folder-open, file-check, shield-check, bell-ring, clipboard-list, mail-check, calendar-days, git-compare, bookmark-plus, languages, keyboard) and 10 brand marks (Svelte, Node.js, Vue.js, Angular, Python, WordPress, Shopify, Android, Pinterest, Bluesky).',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.5.0',
     date: '2026-07-10',
     sections: [

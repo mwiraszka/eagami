@@ -73,7 +73,7 @@ export const is: WebMessages = {
           title: 'Stuðningur við mörg tungumál',
           description:
             'Tungumálastuðningur fyrir mörg svæði, með valfrjálsri sjálfvirkri greiningu úr vafra gestsins.',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'Þemur',
@@ -296,7 +296,7 @@ export const is: WebMessages = {
       metaDescription:
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
-      lede: 'Veldu vörumerkjalitina þína og Eagami UI leiðir út heildstæðan 50–900 kvarða í OKLCH-rými, athugar WCAG-birtuskil hans í ljósri og dökkri stillingu og réttir þér <code>provideEagamiUi</code>-stillinguna tilbúna til notkunar.',
+      lede: 'Veldu vörumerkjalitina þína og Eagami UI leiðir út heildstæðan 50–900 kvarða í OKLCH-rými, athugar WCAG-birtuskil hans í ljósri og dökkri stillingu og réttir þér <code>provideEagamiUi()</code>-stillinguna tilbúna til notkunar.',
       controlsHeading: 'Vörumerkjalitir',
       primaryLabel: 'Aðallitur',
       secondaryLabel: 'Aukalitur',
@@ -340,7 +340,7 @@ export const is: WebMessages = {
       themingScopedBefore:
         'Eða afmarkaðu yfirskriftir við einstakar einingar þar sem það hentar:',
       paletteIntro:
-        'Sendu eitt vörumerkjahex til <code>provideEagamiUi</code> og safnið leiðir út fullan kvarða með tíu tónum (50 til 900) í <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> rými, heldur litblæ og litmettun stöðugri á meðan birta er stigin. Útleiddu tónarnir mata hvern <code>--color-brand-*</code> tókna í bæði ljósum og dökkum ham:',
+        'Sendu eitt vörumerkjahex til <code>provideEagamiUi()</code> og safnið leiðir út fullan kvarða með tíu tónum (50 til 900) í <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> rými, heldur litblæ og litmettun stöðugri á meðan birta er stigin. Útleiddu tónarnir mata hvern <code>--color-brand-*</code> tókna í bæði ljósum og dökkum ham:',
       paletteOverrides:
         'Festu ákveðna tóna eða endurúthlutaðu hvaða útleiddi tónn liggur að baki hverju merkingarhlutverki:',
       paletteContrast:

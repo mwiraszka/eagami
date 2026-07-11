@@ -73,7 +73,7 @@ export const hi: WebMessages = {
           title: 'बहुभाषी समर्थन',
           description:
             'कई भाषाओं के लिए समर्थन, आगंतुक के ब्राउज़र से वैकल्पिक स्वतः-पहचान के साथ।',
-          iconSlug: 'globe',
+          iconSlug: 'languages',
         },
         {
           title: 'थीमिंग',
@@ -297,7 +297,7 @@ export const hi: WebMessages = {
       metaDescription:
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
-      lede: 'अपने ब्रांड रंग चुनें और Eagami UI, OKLCH स्पेस में पूरी 50–900 स्केल बनाता है, लाइट और डार्क मोड में इसके WCAG कंट्रास्ट की जाँच करता है, और आपको सीधे उपयोग के लिए <code>provideEagamiUi</code> कॉन्फ़िगरेशन देता है।',
+      lede: 'अपने ब्रांड रंग चुनें और Eagami UI, OKLCH स्पेस में पूरी 50–900 स्केल बनाता है, लाइट और डार्क मोड में इसके WCAG कंट्रास्ट की जाँच करता है, और आपको सीधे उपयोग के लिए <code>provideEagamiUi()</code> कॉन्फ़िगरेशन देता है।',
       controlsHeading: 'ब्रांड रंग',
       primaryLabel: 'प्राथमिक रंग',
       secondaryLabel: 'द्वितीयक रंग',
@@ -340,7 +340,7 @@ export const hi: WebMessages = {
       themingScopedBefore:
         'या जहां उपयोगी हो, ओवरराइड को अलग-अलग कंपोनेंट तक सीमित करें:',
       paletteIntro:
-        '<code>provideEagamiUi</code> को एक अकेला ब्रांड hex पास करें और लाइब्रेरी <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> स्पेस में दस-शेड का पूरा स्केल (50 से 900 तक) निकालती है, ह्यू और क्रोमा को स्थिर रखते हुए केवल लाइटनेस को बदलती है। निकाले गए शेड लाइट और डार्क दोनों मोड में हर <code>--color-brand-*</code> टोकन को फ़ीड करते हैं:',
+        '<code>provideEagamiUi()</code> को एक अकेला ब्रांड hex पास करें और लाइब्रेरी <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> स्पेस में दस-शेड का पूरा स्केल (50 से 900 तक) निकालती है, ह्यू और क्रोमा को स्थिर रखते हुए केवल लाइटनेस को बदलती है। निकाले गए शेड लाइट और डार्क दोनों मोड में हर <code>--color-brand-*</code> टोकन को फ़ीड करते हैं:',
       paletteOverrides:
         'विशिष्ट शेड पिन करें या यह रीमैप करें कि कौन सा निकाला गया शेड प्रत्येक सिमेंटिक भूमिका को सपोर्ट करता है:',
       paletteContrast:

@@ -30,8 +30,6 @@ jobs:
       - run: pnpm --filter @eagami/ui test:coverage
 
       - run: pnpm --filter @eagami/ui publish:lib
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create tag and GitHub release
         env:

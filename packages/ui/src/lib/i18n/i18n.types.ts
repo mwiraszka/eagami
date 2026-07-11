@@ -300,7 +300,7 @@ export interface EagamiLocaleBundle {
   messages: EagamiMessages;
 }
 
-/** Configuration accepted by `provideEagamiUi`. */
+/** Configuration accepted by `provideEagamiUi()`. */
 export interface EagamiI18nConfig {
   /** Initial locale. Defaults to `'en'`. Falls back to English if not registered. */
   locale?: EagamiLocale;
