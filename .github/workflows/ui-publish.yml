@@ -23,6 +23,10 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
+      # Only the publish uses npm: npm 11+ does the registry OIDC token exchange for trusted
+      # publishing that pnpm publish cannot; Node 22 still ships npm 10
+      - run: npm install -g npm@11
+
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm --filter @eagami/ui lint
