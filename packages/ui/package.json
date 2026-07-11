@@ -47,7 +47,7 @@
     "docs:api": "compodoc -p tsconfig.doc.json -e json -d dist/compodoc --silent && node scripts/extract-api.mjs",
     "docs:changelog": "node scripts/extract-changelog.mjs",
     "chromatic": "chromatic --project-token $CHROMATIC_PROJECT_TOKEN",
-    "publish:lib": "pnpm build && npm publish dist/eagami-ui --access public --provenance"
+    "publish:lib": "pnpm build && npm publish ./dist/eagami-ui --access public --provenance"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0 || ^22.0.0",

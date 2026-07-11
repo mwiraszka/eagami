@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.11.4] - 2026-07-11
+
+### Changed
+
+- Correct the release script so the @eagami/ui v5.6.0 npm publish succeeds; no functional website changes.
+
 ## [3.11.3] - 2026-07-11
 
 ### Changed
@@ -836,6 +842,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.11.4]: https://github.com/mwiraszka/eagami/compare/website-v3.11.3...website-v3.11.4
 [3.11.3]: https://github.com/mwiraszka/eagami/compare/website-v3.11.2...website-v3.11.3
 [3.11.2]: https://github.com/mwiraszka/eagami/compare/website-v3.11.1...website-v3.11.2
 [3.11.1]: https://github.com/mwiraszka/eagami/compare/website-v3.11.0...website-v3.11.1
