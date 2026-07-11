@@ -14,13 +14,7 @@ import type { EagamiMessages } from '../i18n/i18n.types';
 
 /** Validator error keys the library ships built-in localized messages for. */
 export type EaValidationErrorKey =
-  | 'required'
-  | 'email'
-  | 'min'
-  | 'max'
-  | 'minlength'
-  | 'maxlength'
-  | 'pattern';
+  'required' | 'email' | 'min' | 'max' | 'minlength' | 'maxlength' | 'pattern';
 
 /**
  * Per-error-key message overrides for a form control. Keys are validator error

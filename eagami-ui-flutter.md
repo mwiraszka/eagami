@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.1.0
-source: '@eagami/ui@5.1.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-02
+version: 5.6.1
+source: '@eagami/ui@5.6.1 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-11
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -144,20 +144,20 @@ Re-tuned in @eagami/ui@1.0.2 so the whole ramp shares H=205° / S=50% (varying o
 
 #### Secondary
 
-Re-tuned in @eagami/ui@1.0.2 to share H=264° / S=25%.
+Re-tuned in @eagami/ui@5.3.0 to a cooler blue-violet sharing H=222° / S=25%.
 
 | Token          | Hex       |
 | -------------- | --------- |
-| `secondary50`  | `#F2EFF5` |
-| `secondary100` | `#DFD9E8` |
-| `secondary200` | `#C4B9D5` |
-| `secondary300` | `#A493BE` |
-| `secondary400` | `#8169A5` |
-| `secondary500` | `#665086` |
-| `secondary600` | `#503F69` |
-| `secondary700` | `#3D3050` |
-| `secondary800` | `#292136` |
-| `secondary900` | `#181320` |
+| `secondary50`  | `#F3F5FA` |
+| `secondary100` | `#DCE1EC` |
+| `secondary200` | `#BBC4D8` |
+| `secondary300` | `#93A1BF` |
+| `secondary400` | `#687AA5` |
+| `secondary500` | `#506086` |
+| `secondary600` | `#404C6A` |
+| `secondary700` | `#313B51` |
+| `secondary800` | `#232938` |
+| `secondary900` | `#151922` |
 
 #### Neutral
 
@@ -513,7 +513,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Sync source: @eagami/ui@5.0.0 (packages/ui/src/styles/tokens/*.scss)
+// Sync source: @eagami/ui@5.6.1 (packages/ui/src/styles/tokens/*.scss)
 // =============================================================================
 
 @immutable
@@ -701,11 +701,11 @@ class EagamiColors {
     brandText: Color(0xFF204560),
     brandSubtle: Color(0xFFECF3F9),
     brandMuted: Color(0xFFD1E3F0),
-    brandSecondaryDefault: Color(0xFF665086),
-    brandSecondaryHover: Color(0xFF503F69),
-    brandSecondaryActive: Color(0xFF3D3050),
-    brandSecondarySubtle: Color(0xFFF2EFF5),
-    brandSecondaryMuted: Color(0xFFDFD9E8),
+    brandSecondaryDefault: Color(0xFF506086),
+    brandSecondaryHover: Color(0xFF404C6A),
+    brandSecondaryActive: Color(0xFF313B51),
+    brandSecondarySubtle: Color(0xFFF3F5FA),
+    brandSecondaryMuted: Color(0xFFDCE1EC),
     successDefault: Color(0xFF16A34A),
     successSubtle: Color(0xFFF0FDF4),
     successMuted: Color(0xFFDCFCE7),
@@ -745,11 +745,11 @@ class EagamiColors {
     brandText: Color(0xFF7DAFD4),
     brandSubtle: Color(0x1A4B91C3),
     brandMuted: Color(0x334B91C3),
-    brandSecondaryDefault: Color(0xFF665086),
-    brandSecondaryHover: Color(0xFF503F69),
-    brandSecondaryActive: Color(0xFF3D3050),
-    brandSecondarySubtle: Color(0xFFF2EFF5),
-    brandSecondaryMuted: Color(0xFFDFD9E8),
+    brandSecondaryDefault: Color(0xFF506086),
+    brandSecondaryHover: Color(0xFF404C6A),
+    brandSecondaryActive: Color(0xFF313B51),
+    brandSecondarySubtle: Color(0xFFF3F5FA),
+    brandSecondaryMuted: Color(0xFFDCE1EC),
     successDefault: Color(0xFF16A34A),
     successSubtle: Color(0x2622C55E),
     successMuted: Color(0x4022C55E),

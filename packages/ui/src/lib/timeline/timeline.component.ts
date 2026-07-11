@@ -20,12 +20,7 @@ export type TimelineAlign = 'start' | 'alternate';
 
 /** Semantic color of a timeline item's node. */
 export type TimelineItemColor =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error';
+  'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error';
 
 /** Visual size of the timeline. */
 export type TimelineSize = EaSize;

@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.1.0
-source: '@eagami/ui@5.1.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-02
+version: 5.6.1
+source: '@eagami/ui@5.6.1 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-11
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -137,20 +137,20 @@ The primary ramp is a single hue (H=205, S=50) varying only by lightness.
 
 #### Secondary
 
-The secondary ramp is a single hue (H=264, S=25) varying only by lightness.
+The secondary ramp is a single hue (H=222, S=25) varying only by lightness.
 
 | Token                   | Hex       |
 | ----------------------- | --------- |
-| `--color-secondary-50`  | `#F2EFF5` |
-| `--color-secondary-100` | `#DFD9E8` |
-| `--color-secondary-200` | `#C4B9D5` |
-| `--color-secondary-300` | `#A493BE` |
-| `--color-secondary-400` | `#8169A5` |
-| `--color-secondary-500` | `#665086` |
-| `--color-secondary-600` | `#503F69` |
-| `--color-secondary-700` | `#3D3050` |
-| `--color-secondary-800` | `#292136` |
-| `--color-secondary-900` | `#181320` |
+| `--color-secondary-50`  | `#F3F5FA` |
+| `--color-secondary-100` | `#DCE1EC` |
+| `--color-secondary-200` | `#BBC4D8` |
+| `--color-secondary-300` | `#93A1BF` |
+| `--color-secondary-400` | `#687AA5` |
+| `--color-secondary-500` | `#506086` |
+| `--color-secondary-600` | `#404C6A` |
+| `--color-secondary-700` | `#313B51` |
+| `--color-secondary-800` | `#232938` |
+| `--color-secondary-900` | `#151922` |
 
 #### Neutral
 
@@ -513,7 +513,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS Tokens
- * Sync source: @eagami/ui@5.0.0 (packages/ui/src/styles/tokens/*.scss)
+ * Sync source: @eagami/ui@5.6.1 (packages/ui/src/styles/tokens/*.scss)
  * Do not edit by hand; regenerate from the upstream SCSS.
  * ------------------------------------------------------------------------- */
 
@@ -531,16 +531,16 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-primary-900: #0d1c26;
 
   /* Primitive palette: secondary (H=264, S=25) */
-  --color-secondary-50: #f2eff5;
-  --color-secondary-100: #dfd9e8;
-  --color-secondary-200: #c4b9d5;
-  --color-secondary-300: #a493be;
-  --color-secondary-400: #8169a5;
-  --color-secondary-500: #665086;
-  --color-secondary-600: #503f69;
-  --color-secondary-700: #3d3050;
-  --color-secondary-800: #292136;
-  --color-secondary-900: #181320;
+  --color-secondary-50: #f3f5fa;
+  --color-secondary-100: #dce1ec;
+  --color-secondary-200: #bbc4d8;
+  --color-secondary-300: #93a1bf;
+  --color-secondary-400: #687aa5;
+  --color-secondary-500: #506086;
+  --color-secondary-600: #404c6a;
+  --color-secondary-700: #313b51;
+  --color-secondary-800: #232938;
+  --color-secondary-900: #151922;
 
   /* Primitive palette: neutral */
   --color-neutral-0: #ffffff;
@@ -970,7 +970,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Sync source: @eagami/ui@5.0.0
+ * Sync source: @eagami/ui@5.6.1
  */
 
 export const palette = {
@@ -979,8 +979,8 @@ export const palette = {
     500: '#3674a1', 600: '#2a5b7e', 700: '#204560', 800: '#162f41', 900: '#0d1c26',
   },
   secondary: {
-    50: '#f2eff5', 100: '#dfd9e8', 200: '#c4b9d5', 300: '#a493be', 400: '#8169a5',
-    500: '#665086', 600: '#503f69', 700: '#3d3050', 800: '#292136', 900: '#181320',
+    50: '#f3f5fa', 100: '#dce1ec', 200: '#bbc4d8', 300: '#93a1bf', 400: '#687aa5',
+    500: '#506086', 600: '#404c6a', 700: '#313b51', 800: '#232938', 900: '#151922',
   },
   neutral: {
     0: '#ffffff', 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db',
