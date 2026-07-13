@@ -298,6 +298,14 @@ export const frFR: WebMessages = {
       },
       firstComponentHeading: 'Votre premier composant',
     },
+    integrations: {
+      heading: 'Au-delà d’Angular',
+      intro:
+        'Les tokens de design sont indépendants du framework. Copier un guide d’intégration autonome dans un projet non Angular, ou consommer directement l’export de tokens lisible par machine.',
+      reactLink: 'Guide d’intégration React',
+      flutterLink: 'Guide d’intégration Flutter',
+      tokensLink: 'Tokens de design en JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Générateur de thème',
       metaDescription:

@@ -289,6 +289,14 @@ export const ar: WebMessages = {
       },
       firstComponentHeading: 'مكوّنك الأول',
     },
+    integrations: {
+      heading: 'ما بعد Angular',
+      intro:
+        'رموز التصميم مستقلة عن إطار العمل. انسخ دليل تكامل مستقلاً إلى مشروع لا يستخدم Angular أو استخدم مباشرةً تصدير الرموز القابل للقراءة آليًا.',
+      reactLink: 'دليل تكامل React',
+      flutterLink: 'دليل تكامل Flutter',
+      tokensLink: 'رموز التصميم بصيغة JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | منشئ السمة',
       metaDescription:

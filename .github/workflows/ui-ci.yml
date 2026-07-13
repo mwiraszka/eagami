@@ -9,6 +9,11 @@ on:
       # sources, so re-validate it whenever those committed files change too.
       - 'apps/website/src/app/data/ui-api.generated.ts'
       - 'apps/website/src/app/data/changelog.generated.ts'
+      # Integration guides and the token export are generated from the SCSS
+      # token source, so re-validate them whenever they change too.
+      - 'apps/website/src/assets/eagami-ui-react.md'
+      - 'apps/website/src/assets/eagami-ui-flutter.md'
+      - 'apps/website/src/assets/eagami-ui-tokens.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -20,6 +25,11 @@ on:
       # sources, so re-validate it whenever those committed files change too.
       - 'apps/website/src/app/data/ui-api.generated.ts'
       - 'apps/website/src/app/data/changelog.generated.ts'
+      # Integration guides and the token export are generated from the SCSS
+      # token source, so re-validate them whenever they change too.
+      - 'apps/website/src/assets/eagami-ui-react.md'
+      - 'apps/website/src/assets/eagami-ui-flutter.md'
+      - 'apps/website/src/assets/eagami-ui-tokens.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -102,6 +112,11 @@ jobs:
       # story. Keeps the website demos and Storybook in lockstep with the API.
       - name: Check demo/API parity
         run: pnpm --filter @eagami/ui check-parity
+
+      # Framework integration guides and the machine-readable token export
+      # must match the SCSS token source. Regenerate with 'pnpm ui sync-guides'.
+      - name: Check integration-guide token sync
+        run: pnpm --filter @eagami/ui check-tokens
 
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression

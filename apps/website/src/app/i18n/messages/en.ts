@@ -291,6 +291,14 @@ export const en: WebMessages = {
       },
       firstComponentHeading: 'Your first component',
     },
+    integrations: {
+      heading: 'Beyond Angular',
+      intro:
+        'The design tokens are framework-agnostic. Copy a self-contained integration guide into a non-Angular project, or consume the machine-readable token export directly.',
+      reactLink: 'React integration guide',
+      flutterLink: 'Flutter integration guide',
+      tokensLink: 'Design tokens as JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Theme builder',
       metaDescription:

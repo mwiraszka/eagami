@@ -297,6 +297,14 @@ export const ptBR: WebMessages = {
       },
       firstComponentHeading: 'Seu primeiro componente',
     },
+    integrations: {
+      heading: 'Além do Angular',
+      intro:
+        'Os tokens de design são independentes de framework. Copie um guia de integração autônomo para um projeto sem Angular ou consuma diretamente a exportação de tokens legível por máquina.',
+      reactLink: 'Guia de integração com React',
+      flutterLink: 'Guia de integração com Flutter',
+      tokensLink: 'Tokens de design em JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Gerador de temas',
       metaDescription:

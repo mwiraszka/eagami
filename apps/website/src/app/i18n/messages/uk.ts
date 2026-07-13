@@ -295,6 +295,14 @@ export const uk: WebMessages = {
       },
       firstComponentHeading: 'Ваш перший компонент',
     },
+    integrations: {
+      heading: 'За межами Angular',
+      intro:
+        'Дизайн-токени не залежать від фреймворку. Скопіюйте самодостатній посібник з інтеграції у проєкт без Angular або використовуйте машинозчитуваний експорт токенів напряму.',
+      reactLink: 'Посібник з інтеграції з React',
+      flutterLink: 'Посібник з інтеграції з Flutter',
+      tokensLink: 'Дизайн-токени у форматі JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Конструктор теми',
       metaDescription:

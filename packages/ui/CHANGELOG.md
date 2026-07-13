@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.6.2] - 2026-07-13
+
+### Changed
+
+- Publish the React and Flutter integration guides and a machine-readable design-token export (JSON) on eagami.com, kept in sync with the library's design tokens on every release.
+
+### Fixed
+
+- Sync stale values in the integration guides: dark-mode shadows, font stacks, secondary brand washes, and missing newer tokens.
+
 ## [5.6.1] - 2026-07-12
 
 ### Changed
@@ -977,6 +987,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.6.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.1...ui-v5.6.2
 [5.6.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.0...ui-v5.6.1
 [5.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.5.0...ui-v5.6.0
 [5.5.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.4.0...ui-v5.5.0

@@ -295,6 +295,14 @@ export const ru: WebMessages = {
       },
       firstComponentHeading: 'Ваш первый компонент',
     },
+    integrations: {
+      heading: 'За пределами Angular',
+      intro:
+        'Дизайн-токены не зависят от фреймворка. Скопируйте самодостаточное руководство по интеграции в проект без Angular или используйте машиночитаемый экспорт токенов напрямую.',
+      reactLink: 'Руководство по интеграции с React',
+      flutterLink: 'Руководство по интеграции с Flutter',
+      tokensLink: 'Дизайн-токены в формате JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Конструктор темы',
       metaDescription:

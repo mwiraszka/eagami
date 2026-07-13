@@ -1,0 +1,1555 @@
+{
+  "$description": "Eagami UI design tokens, generated from @eagami/ui@5.6.2 (packages/ui/src/styles/tokens/*.scss) by scripts/sync-integration-guides.mjs. Aliases use W3C Design Tokens {group.token} syntax. Dark-mode overrides live in $extensions['com.eagami.ui'].dark; tokens without one are identical in both modes. Shadow, ease, and transition tokens carry raw CSS values.",
+  "color": {
+    "primary-50": {
+      "$type": "color",
+      "$value": "#ecf3f9"
+    },
+    "primary-100": {
+      "$type": "color",
+      "$value": "#d1e3f0"
+    },
+    "primary-200": {
+      "$type": "color",
+      "$value": "#abcbe3"
+    },
+    "primary-300": {
+      "$type": "color",
+      "$value": "#7dafd4"
+    },
+    "primary-400": {
+      "$type": "color",
+      "$value": "#4b91c3"
+    },
+    "primary-500": {
+      "$type": "color",
+      "$value": "#3674a1"
+    },
+    "primary-600": {
+      "$type": "color",
+      "$value": "#2a5b7e"
+    },
+    "primary-700": {
+      "$type": "color",
+      "$value": "#204560"
+    },
+    "primary-800": {
+      "$type": "color",
+      "$value": "#162f41"
+    },
+    "primary-900": {
+      "$type": "color",
+      "$value": "#0d1c26"
+    },
+    "secondary-50": {
+      "$type": "color",
+      "$value": "#f3f5fa"
+    },
+    "secondary-100": {
+      "$type": "color",
+      "$value": "#dce1ec"
+    },
+    "secondary-200": {
+      "$type": "color",
+      "$value": "#bbc4d8"
+    },
+    "secondary-300": {
+      "$type": "color",
+      "$value": "#93a1bf"
+    },
+    "secondary-400": {
+      "$type": "color",
+      "$value": "#687aa5"
+    },
+    "secondary-500": {
+      "$type": "color",
+      "$value": "#506086"
+    },
+    "secondary-600": {
+      "$type": "color",
+      "$value": "#404c6a"
+    },
+    "secondary-700": {
+      "$type": "color",
+      "$value": "#313b51"
+    },
+    "secondary-800": {
+      "$type": "color",
+      "$value": "#232938"
+    },
+    "secondary-900": {
+      "$type": "color",
+      "$value": "#151922"
+    },
+    "neutral-0": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "neutral-50": {
+      "$type": "color",
+      "$value": "#f9fafb"
+    },
+    "neutral-100": {
+      "$type": "color",
+      "$value": "#f3f4f6"
+    },
+    "neutral-200": {
+      "$type": "color",
+      "$value": "#e5e7eb"
+    },
+    "neutral-300": {
+      "$type": "color",
+      "$value": "#d1d5db"
+    },
+    "neutral-400": {
+      "$type": "color",
+      "$value": "#9ca3af"
+    },
+    "neutral-500": {
+      "$type": "color",
+      "$value": "#6b7280"
+    },
+    "neutral-600": {
+      "$type": "color",
+      "$value": "#4b5563"
+    },
+    "neutral-700": {
+      "$type": "color",
+      "$value": "#374151"
+    },
+    "neutral-800": {
+      "$type": "color",
+      "$value": "#1f2937"
+    },
+    "neutral-900": {
+      "$type": "color",
+      "$value": "#111827"
+    },
+    "neutral-950": {
+      "$type": "color",
+      "$value": "#030712"
+    },
+    "success-50": {
+      "$type": "color",
+      "$value": "#f0fdf4"
+    },
+    "success-100": {
+      "$type": "color",
+      "$value": "#dcfce7"
+    },
+    "success-200": {
+      "$type": "color",
+      "$value": "#bbf7d0"
+    },
+    "success-500": {
+      "$type": "color",
+      "$value": "#22c55e"
+    },
+    "success-600": {
+      "$type": "color",
+      "$value": "#16a34a"
+    },
+    "success-700": {
+      "$type": "color",
+      "$value": "#15803d"
+    },
+    "warning-50": {
+      "$type": "color",
+      "$value": "#fffbeb"
+    },
+    "warning-100": {
+      "$type": "color",
+      "$value": "#fef3c7"
+    },
+    "warning-200": {
+      "$type": "color",
+      "$value": "#fde68a"
+    },
+    "warning-500": {
+      "$type": "color",
+      "$value": "#f59e0b"
+    },
+    "warning-600": {
+      "$type": "color",
+      "$value": "#d97706"
+    },
+    "warning-700": {
+      "$type": "color",
+      "$value": "#b45309"
+    },
+    "error-50": {
+      "$type": "color",
+      "$value": "#fef2f2"
+    },
+    "error-100": {
+      "$type": "color",
+      "$value": "#fee2e2"
+    },
+    "error-200": {
+      "$type": "color",
+      "$value": "#fecaca"
+    },
+    "error-500": {
+      "$type": "color",
+      "$value": "#ef4444"
+    },
+    "error-600": {
+      "$type": "color",
+      "$value": "#dc2626"
+    },
+    "error-700": {
+      "$type": "color",
+      "$value": "#b91c1c"
+    },
+    "info-50": {
+      "$type": "color",
+      "$value": "#ecfeff"
+    },
+    "info-100": {
+      "$type": "color",
+      "$value": "#cffafe"
+    },
+    "info-200": {
+      "$type": "color",
+      "$value": "#a5f3fc"
+    },
+    "info-500": {
+      "$type": "color",
+      "$value": "#06b6d4"
+    },
+    "info-600": {
+      "$type": "color",
+      "$value": "#0891b2"
+    },
+    "info-700": {
+      "$type": "color",
+      "$value": "#0e7490"
+    },
+    "text-primary": {
+      "$type": "color",
+      "$value": "{color.neutral-900}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-50}"
+        }
+      }
+    },
+    "text-secondary": {
+      "$type": "color",
+      "$value": "{color.neutral-600}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-300}"
+        }
+      }
+    },
+    "text-tertiary": {
+      "$type": "color",
+      "$value": "{color.neutral-400}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-500}"
+        }
+      }
+    },
+    "text-disabled": {
+      "$type": "color",
+      "$value": "{color.neutral-400}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-500}"
+        }
+      }
+    },
+    "text-inverse": {
+      "$type": "color",
+      "$value": "{color.neutral-0}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-900}"
+        }
+      }
+    },
+    "text-link": {
+      "$type": "color",
+      "$value": "{color.primary-600}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-300}"
+        }
+      }
+    },
+    "text-link-hover": {
+      "$type": "color",
+      "$value": "{color.primary-800}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-100}"
+        }
+      }
+    },
+    "bg-canvas": {
+      "$type": "color",
+      "$value": "{color.neutral-0}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-950}"
+        }
+      }
+    },
+    "bg-base": {
+      "$type": "color",
+      "$value": "{color.neutral-0}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-800}"
+        }
+      }
+    },
+    "bg-subtle": {
+      "$type": "color",
+      "$value": "{color.neutral-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-700}"
+        }
+      }
+    },
+    "bg-stripe": {
+      "$type": "color",
+      "$value": "{color.neutral-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-900}"
+        }
+      }
+    },
+    "bg-stripe-subtle": {
+      "$type": "color",
+      "$value": "color-mix(in srgb, #ffffff 30%, #f9fafb)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "color-mix(in srgb, #1f2937 62.5%, #111827)"
+        }
+      }
+    },
+    "bg-muted": {
+      "$type": "color",
+      "$value": "{color.neutral-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-700}"
+        }
+      }
+    },
+    "bg-emphasis": {
+      "$type": "color",
+      "$value": "{color.neutral-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-600}"
+        }
+      }
+    },
+    "bg-elevated": {
+      "$type": "color",
+      "$value": "{color.neutral-0}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-700}"
+        }
+      }
+    },
+    "bg-overlay": {
+      "$type": "color",
+      "$value": "rgba(0, 0, 0, 0.5)"
+    },
+    "tooltip-surface": {
+      "$type": "color",
+      "$value": "#1a1b21"
+    },
+    "tooltip-border": {
+      "$type": "color",
+      "$value": "rgba(255, 255, 255, 0.15)"
+    },
+    "state-hover": {
+      "$type": "color",
+      "$value": "{color.neutral-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(255, 255, 255, 0.08)"
+        }
+      }
+    },
+    "state-active": {
+      "$type": "color",
+      "$value": "{color.neutral-200}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(255, 255, 255, 0.14)"
+        }
+      }
+    },
+    "border-subtle": {
+      "$type": "color",
+      "$value": "{color.neutral-200}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "color-mix(in srgb, #374151, #1f2937)"
+        }
+      }
+    },
+    "border-default": {
+      "$type": "color",
+      "$value": "{color.neutral-200}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-400}"
+        }
+      }
+    },
+    "border-strong": {
+      "$type": "color",
+      "$value": "{color.neutral-400}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-300}"
+        }
+      }
+    },
+    "divider": {
+      "$type": "color",
+      "$value": "{color.border-subtle}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.neutral-600}"
+        }
+      }
+    },
+    "border-focus": {
+      "$type": "color",
+      "$value": "{color.primary-500}"
+    },
+    "brand-default": {
+      "$type": "color",
+      "$value": "{color.primary-600}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-500}"
+        }
+      }
+    },
+    "brand-hover": {
+      "$type": "color",
+      "$value": "{color.primary-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-600}"
+        }
+      }
+    },
+    "brand-active": {
+      "$type": "color",
+      "$value": "{color.primary-800}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-700}"
+        }
+      }
+    },
+    "brand-text": {
+      "$type": "color",
+      "$value": "{color.primary-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-300}"
+        }
+      }
+    },
+    "brand-subtle": {
+      "$type": "color",
+      "$value": "{color.primary-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(75, 145, 195, 0.1)"
+        }
+      }
+    },
+    "brand-muted": {
+      "$type": "color",
+      "$value": "{color.primary-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(75, 145, 195, 0.2)"
+        }
+      }
+    },
+    "brand-secondary-default": {
+      "$type": "color",
+      "$value": "{color.secondary-500}"
+    },
+    "brand-secondary-hover": {
+      "$type": "color",
+      "$value": "{color.secondary-600}"
+    },
+    "brand-secondary-active": {
+      "$type": "color",
+      "$value": "{color.secondary-700}"
+    },
+    "brand-secondary-text": {
+      "$type": "color",
+      "$value": "{color.secondary-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.secondary-200}"
+        }
+      }
+    },
+    "brand-secondary-subtle": {
+      "$type": "color",
+      "$value": "{color.secondary-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(104, 122, 165, 0.1)"
+        }
+      }
+    },
+    "brand-secondary-muted": {
+      "$type": "color",
+      "$value": "{color.secondary-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(104, 122, 165, 0.2)"
+        }
+      }
+    },
+    "success-default": {
+      "$type": "color",
+      "$value": "{color.success-600}"
+    },
+    "success-subtle": {
+      "$type": "color",
+      "$value": "{color.success-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(34, 197, 94, 0.15)"
+        }
+      }
+    },
+    "success-muted": {
+      "$type": "color",
+      "$value": "{color.success-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(34, 197, 94, 0.25)"
+        }
+      }
+    },
+    "success-text": {
+      "$type": "color",
+      "$value": "{color.success-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.success-200}"
+        }
+      }
+    },
+    "warning-default": {
+      "$type": "color",
+      "$value": "{color.warning-600}"
+    },
+    "warning-subtle": {
+      "$type": "color",
+      "$value": "{color.warning-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(245, 158, 11, 0.15)"
+        }
+      }
+    },
+    "warning-muted": {
+      "$type": "color",
+      "$value": "{color.warning-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(245, 158, 11, 0.25)"
+        }
+      }
+    },
+    "warning-text": {
+      "$type": "color",
+      "$value": "{color.warning-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.warning-200}"
+        }
+      }
+    },
+    "error-default": {
+      "$type": "color",
+      "$value": "{color.error-600}"
+    },
+    "error-subtle": {
+      "$type": "color",
+      "$value": "{color.error-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(239, 68, 68, 0.15)"
+        }
+      }
+    },
+    "error-muted": {
+      "$type": "color",
+      "$value": "{color.error-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(239, 68, 68, 0.25)"
+        }
+      }
+    },
+    "error-text": {
+      "$type": "color",
+      "$value": "{color.error-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.error-200}"
+        }
+      }
+    },
+    "info-default": {
+      "$type": "color",
+      "$value": "{color.info-600}"
+    },
+    "info-subtle": {
+      "$type": "color",
+      "$value": "{color.info-50}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(6, 182, 212, 0.15)"
+        }
+      }
+    },
+    "info-muted": {
+      "$type": "color",
+      "$value": "{color.info-100}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "rgba(6, 182, 212, 0.25)"
+        }
+      }
+    },
+    "info-text": {
+      "$type": "color",
+      "$value": "{color.info-700}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.info-200}"
+        }
+      }
+    },
+    "picker-hue-red": {
+      "$type": "color",
+      "$value": "#ff0000"
+    },
+    "picker-hue-yellow": {
+      "$type": "color",
+      "$value": "#ffff00"
+    },
+    "picker-hue-green": {
+      "$type": "color",
+      "$value": "#00ff00"
+    },
+    "picker-hue-cyan": {
+      "$type": "color",
+      "$value": "#00ffff"
+    },
+    "picker-hue-blue": {
+      "$type": "color",
+      "$value": "#0000ff"
+    },
+    "picker-hue-magenta": {
+      "$type": "color",
+      "$value": "#ff00ff"
+    },
+    "picker-sv-white": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "picker-sv-black": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "picker-thumb-halo": {
+      "$type": "color",
+      "$value": "rgba(0, 0, 0, 0.25)"
+    }
+  },
+  "font-family": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": "'DM Sans', 'DM Sans Fallback', 'Segoe UI', system-ui, -apple-system, sans-serif"
+    },
+    "brand": {
+      "$type": "fontFamily",
+      "$value": "'Syne', 'Syne Fallback', 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif"
+    },
+    "serif": {
+      "$type": "fontFamily",
+      "$value": "'Georgia', 'Times New Roman', serif"
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+    }
+  },
+  "font-size": {
+    "2xs": {
+      "$type": "dimension",
+      "$value": "0.625rem"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "0.875rem"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1.125rem"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "1.25rem"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": "1.875rem"
+    },
+    "4xl": {
+      "$type": "dimension",
+      "$value": "2.25rem"
+    },
+    "5xl": {
+      "$type": "dimension",
+      "$value": "3rem"
+    }
+  },
+  "font-weight": {
+    "regular": {
+      "$type": "fontWeight",
+      "$value": 400
+    },
+    "medium": {
+      "$type": "fontWeight",
+      "$value": 500
+    },
+    "semibold": {
+      "$type": "fontWeight",
+      "$value": 600
+    },
+    "bold": {
+      "$type": "fontWeight",
+      "$value": 700
+    },
+    "extrabold": {
+      "$type": "fontWeight",
+      "$value": 800
+    }
+  },
+  "line-height": {
+    "none": {
+      "$type": "number",
+      "$value": 1
+    },
+    "tight": {
+      "$type": "number",
+      "$value": 1.25
+    },
+    "snug": {
+      "$type": "number",
+      "$value": 1.375
+    },
+    "normal": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "relaxed": {
+      "$type": "number",
+      "$value": 1.625
+    },
+    "loose": {
+      "$type": "number",
+      "$value": 2
+    }
+  },
+  "letter-spacing": {
+    "tighter": {
+      "$type": "dimension",
+      "$value": "-0.05em"
+    },
+    "tight": {
+      "$type": "dimension",
+      "$value": "-0.025em"
+    },
+    "normal": {
+      "$type": "dimension",
+      "$value": "0em"
+    },
+    "wide": {
+      "$type": "dimension",
+      "$value": "0.025em"
+    },
+    "wider": {
+      "$type": "dimension",
+      "$value": "0.05em"
+    },
+    "widest": {
+      "$type": "dimension",
+      "$value": "0.1em"
+    }
+  },
+  "icon": {
+    "inline-size": {
+      "$type": "dimension",
+      "$value": "1.5em"
+    }
+  },
+  "text": {
+    "display-size": {
+      "$value": "{font-size.5xl}"
+    },
+    "display-weight": {
+      "$value": "{font-weight.bold}"
+    },
+    "display-lh": {
+      "$value": "{line-height.tight}"
+    },
+    "h1-size": {
+      "$value": "{font-size.4xl}"
+    },
+    "h1-weight": {
+      "$value": "{font-weight.bold}"
+    },
+    "h1-lh": {
+      "$value": "{line-height.tight}"
+    },
+    "h2-size": {
+      "$value": "{font-size.3xl}"
+    },
+    "h2-weight": {
+      "$value": "{font-weight.semibold}"
+    },
+    "h2-lh": {
+      "$value": "{line-height.snug}"
+    },
+    "h3-size": {
+      "$value": "{font-size.2xl}"
+    },
+    "h3-weight": {
+      "$value": "{font-weight.semibold}"
+    },
+    "h3-lh": {
+      "$value": "{line-height.snug}"
+    },
+    "h4-size": {
+      "$value": "{font-size.xl}"
+    },
+    "h4-weight": {
+      "$value": "{font-weight.semibold}"
+    },
+    "h4-lh": {
+      "$value": "{line-height.snug}"
+    },
+    "section-heading-size": {
+      "$value": "{font-size.xl}"
+    },
+    "section-heading-weight": {
+      "$value": "{font-weight.semibold}"
+    },
+    "section-heading-lh": {
+      "$value": "{line-height.snug}"
+    },
+    "section-heading-family": {
+      "$value": "{font-family.brand}"
+    },
+    "body-lg-size": {
+      "$value": "{font-size.lg}"
+    },
+    "body-lg-weight": {
+      "$value": "{font-weight.regular}"
+    },
+    "body-lg-lh": {
+      "$value": "{line-height.relaxed}"
+    },
+    "body-md-size": {
+      "$value": "{font-size.md}"
+    },
+    "body-md-weight": {
+      "$value": "{font-weight.regular}"
+    },
+    "body-md-lh": {
+      "$value": "{line-height.normal}"
+    },
+    "body-sm-size": {
+      "$value": "{font-size.sm}"
+    },
+    "body-sm-weight": {
+      "$value": "{font-weight.regular}"
+    },
+    "body-sm-lh": {
+      "$value": "{line-height.normal}"
+    },
+    "label-lg-size": {
+      "$value": "{font-size.md}"
+    },
+    "label-lg-weight": {
+      "$value": "{font-weight.medium}"
+    },
+    "label-lg-lh": {
+      "$value": "{line-height.tight}"
+    },
+    "label-md-size": {
+      "$value": "{font-size.sm}"
+    },
+    "label-md-weight": {
+      "$value": "{font-weight.medium}"
+    },
+    "label-md-lh": {
+      "$value": "{line-height.tight}"
+    },
+    "label-sm-size": {
+      "$value": "{font-size.xs}"
+    },
+    "label-sm-weight": {
+      "$value": "{font-weight.medium}"
+    },
+    "label-sm-lh": {
+      "$value": "{line-height.tight}"
+    },
+    "helper-size": {
+      "$value": "0.8125rem"
+    },
+    "helper-weight": {
+      "$value": "{font-weight.regular}"
+    },
+    "helper-lh": {
+      "$value": "{line-height.normal}"
+    },
+    "code-size": {
+      "$value": "0.875em"
+    },
+    "code-weight": {
+      "$value": "{font-weight.regular}"
+    },
+    "code-family": {
+      "$value": "{font-family.mono}"
+    },
+    "code-color": {
+      "$value": "{color.text-primary}"
+    },
+    "code-bg": {
+      "$value": "{color.bg-muted}"
+    },
+    "code-padding": {
+      "$value": "0.125rem 0.375rem"
+    },
+    "code-radius": {
+      "$value": "{radius.sm}"
+    },
+    "kbd-size": {
+      "$value": "0.8125em"
+    },
+    "kbd-weight": {
+      "$value": "{font-weight.medium}"
+    },
+    "kbd-family": {
+      "$value": "{font-family.mono}"
+    },
+    "kbd-color": {
+      "$value": "{color.text-primary}"
+    },
+    "kbd-bg": {
+      "$value": "{color.bg-base}"
+    },
+    "kbd-border": {
+      "$value": "1px solid #e5e7eb",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "1px solid #9ca3af"
+        }
+      }
+    },
+    "kbd-padding": {
+      "$value": "0.125rem 0.375rem"
+    },
+    "kbd-radius": {
+      "$value": "{radius.sm}"
+    },
+    "kbd-shadow": {
+      "$value": "0 1px 0 #e5e7eb",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 1px 0 #9ca3af"
+        }
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": 0
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "0.25rem"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "0.5rem"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "1.25rem"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "1.75rem"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "2rem"
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "2.25rem"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "2.5rem"
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "2.75rem"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "3rem"
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "3.5rem"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "4rem"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "5rem"
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "6rem"
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": "8rem"
+    },
+    "px": {
+      "$type": "dimension",
+      "$value": "1px"
+    },
+    "0-5": {
+      "$type": "dimension",
+      "$value": "0.125rem"
+    },
+    "1-5": {
+      "$type": "dimension",
+      "$value": "0.375rem"
+    },
+    "2-5": {
+      "$type": "dimension",
+      "$value": "0.625rem"
+    },
+    "3-5": {
+      "$type": "dimension",
+      "$value": "0.875rem"
+    },
+    "n-px": {
+      "$type": "dimension",
+      "$value": "-1px"
+    },
+    "n-0-5": {
+      "$type": "dimension",
+      "$value": "-0.125rem"
+    },
+    "n-1": {
+      "$type": "dimension",
+      "$value": "-0.25rem"
+    },
+    "n-1-5": {
+      "$type": "dimension",
+      "$value": "-0.375rem"
+    },
+    "n-2": {
+      "$type": "dimension",
+      "$value": "-0.5rem"
+    },
+    "n-2-5": {
+      "$type": "dimension",
+      "$value": "-0.625rem"
+    },
+    "n-3": {
+      "$type": "dimension",
+      "$value": "-0.75rem"
+    },
+    "n-3-5": {
+      "$type": "dimension",
+      "$value": "-0.875rem"
+    },
+    "n-4": {
+      "$type": "dimension",
+      "$value": "-1rem"
+    },
+    "n-5": {
+      "$type": "dimension",
+      "$value": "-1.25rem"
+    },
+    "n-6": {
+      "$type": "dimension",
+      "$value": "-1.5rem"
+    },
+    "n-7": {
+      "$type": "dimension",
+      "$value": "-1.75rem"
+    },
+    "n-8": {
+      "$type": "dimension",
+      "$value": "-2rem"
+    },
+    "n-9": {
+      "$type": "dimension",
+      "$value": "-2.25rem"
+    },
+    "n-10": {
+      "$type": "dimension",
+      "$value": "-2.5rem"
+    },
+    "n-11": {
+      "$type": "dimension",
+      "$value": "-2.75rem"
+    },
+    "n-12": {
+      "$type": "dimension",
+      "$value": "-3rem"
+    },
+    "n-14": {
+      "$type": "dimension",
+      "$value": "-3.5rem"
+    },
+    "n-16": {
+      "$type": "dimension",
+      "$value": "-4rem"
+    },
+    "n-20": {
+      "$type": "dimension",
+      "$value": "-5rem"
+    },
+    "n-24": {
+      "$type": "dimension",
+      "$value": "-6rem"
+    },
+    "n-32": {
+      "$type": "dimension",
+      "$value": "-8rem"
+    }
+  },
+  "inset": {
+    "xs": {
+      "$value": "0.25rem 0.5rem"
+    },
+    "sm": {
+      "$value": "0.375rem 0.75rem"
+    },
+    "md": {
+      "$value": "0.5rem 1rem"
+    },
+    "lg": {
+      "$value": "0.75rem 1.5rem"
+    },
+    "xl": {
+      "$value": "1rem 2rem"
+    }
+  },
+  "stack": {
+    "2xs": {
+      "$type": "dimension",
+      "$value": "{space.1}"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{space.6}"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "{space.8}"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "{space.12}"
+    }
+  },
+  "inline": {
+    "2xs": {
+      "$type": "dimension",
+      "$value": "{space.1}"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "{space.2}"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{space.6}"
+    }
+  },
+  "radius": {
+    "none": {
+      "$type": "dimension",
+      "$value": 0
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "0.125rem"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "0.25rem"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "0.375rem"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "0.5rem"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "border-width": {
+    "none": {
+      "$type": "dimension",
+      "$value": 0
+    },
+    "thin": {
+      "$type": "dimension",
+      "$value": "1px"
+    },
+    "medium": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "thick": {
+      "$type": "dimension",
+      "$value": "4px"
+    }
+  },
+  "component": {
+    "icon-button-size": {
+      "$type": "dimension",
+      "$value": "1.75em"
+    }
+  },
+  "shadow": {
+    "none": {
+      "$type": "shadow",
+      "$value": "none"
+    },
+    "xs": {
+      "$type": "shadow",
+      "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 1px 2px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "sm": {
+      "$type": "shadow",
+      "$value": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 4px 8px -2px rgba(0, 0, 0, 0.55), 0 2px 4px -2px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "lg": {
+      "$type": "shadow",
+      "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 12px 20px -4px rgba(0, 0, 0, 0.6), 0 4px 8px -4px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "xl": {
+      "$type": "shadow",
+      "$value": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 20px 28px -6px rgba(0, 0, 0, 0.65), 0 8px 12px -6px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "2xl": {
+      "$type": "shadow",
+      "$value": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 28px 50px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "inner": {
+      "$type": "shadow",
+      "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)"
+    },
+    "edge-highlight": {
+      "$type": "shadow",
+      "$value": "0 0 #0000",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "inset 0 1px 0 0 rgba(255, 255, 255, 0.06)"
+        }
+      }
+    },
+    "bevel": {
+      "$type": "shadow",
+      "$value": "inset 0 1px 1px rgba(255, 255, 255, 0.85), inset 0 -1px 1.5px rgba(0, 0, 0, 0.25)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "inset 0 1px 1px rgba(255, 255, 255, 0.18), inset 0 -1px 1.5px rgba(0, 0, 0, 0.6)"
+        }
+      }
+    },
+    "bevel-strong": {
+      "$type": "shadow",
+      "$value": "inset 0 1.5px 2px rgba(255, 255, 255, 0.9), inset 0 -2px 3px rgba(0, 0, 0, 0.3)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -2px 3px rgba(0, 0, 0, 0.7)"
+        }
+      }
+    },
+    "well": {
+      "$type": "shadow",
+      "$value": "inset 0 1px 1.5px rgba(0, 0, 0, 0.3), inset 0 -1px 0.5px rgba(255, 255, 255, 0.5)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "inset 0 1px 1.5px rgba(0, 0, 0, 0.55), inset 0 -1px 0.5px rgba(255, 255, 255, 0.08)"
+        }
+      }
+    },
+    "well-strong": {
+      "$type": "shadow",
+      "$value": "inset 0 2px 3px rgba(0, 0, 0, 0.4), inset 0 -1.5px 1px rgba(255, 255, 255, 0.55)",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "inset 0 2px 3px rgba(0, 0, 0, 0.7), inset 0 -1.5px 1px rgba(255, 255, 255, 0.12)"
+        }
+      }
+    },
+    "focus-ring": {
+      "$type": "shadow",
+      "$value": "0 0 0 3px rgba(59, 130, 246, 0.45)"
+    },
+    "focus-ring-error": {
+      "$type": "shadow",
+      "$value": "0 0 0 3px #fecaca"
+    },
+    "focus-ring-success": {
+      "$type": "shadow",
+      "$value": "0 0 0 3px #bbf7d0"
+    }
+  },
+  "z-index": {
+    "base": {
+      "$type": "number",
+      "$value": 0
+    },
+    "raised": {
+      "$type": "number",
+      "$value": 10
+    },
+    "dropdown": {
+      "$type": "number",
+      "$value": 100
+    },
+    "sticky": {
+      "$type": "number",
+      "$value": 200
+    },
+    "overlay": {
+      "$type": "number",
+      "$value": 300
+    },
+    "modal": {
+      "$type": "number",
+      "$value": 400
+    },
+    "popover": {
+      "$type": "number",
+      "$value": 500
+    },
+    "toast": {
+      "$type": "number",
+      "$value": 600
+    },
+    "tooltip": {
+      "$type": "number",
+      "$value": 700
+    }
+  },
+  "duration": {
+    "instant": {
+      "$type": "duration",
+      "$value": "0ms"
+    },
+    "fast": {
+      "$type": "duration",
+      "$value": "100ms",
+      "$extensions": {
+        "com.eagami.ui": {
+          "reducedMotion": "0ms"
+        }
+      }
+    },
+    "normal": {
+      "$type": "duration",
+      "$value": "200ms",
+      "$extensions": {
+        "com.eagami.ui": {
+          "reducedMotion": "0ms"
+        }
+      }
+    },
+    "slow": {
+      "$type": "duration",
+      "$value": "300ms",
+      "$extensions": {
+        "com.eagami.ui": {
+          "reducedMotion": "0ms"
+        }
+      }
+    },
+    "slower": {
+      "$type": "duration",
+      "$value": "500ms",
+      "$extensions": {
+        "com.eagami.ui": {
+          "reducedMotion": "0ms"
+        }
+      }
+    }
+  },
+  "ease": {
+    "linear": {
+      "$value": "linear"
+    },
+    "in": {
+      "$value": "cubic-bezier(0.4, 0, 1, 1)"
+    },
+    "out": {
+      "$value": "cubic-bezier(0, 0, 0.2, 1)"
+    },
+    "in-out": {
+      "$value": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "spring": {
+      "$value": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    }
+  },
+  "transition": {
+    "colors": {
+      "$value": "color 100ms cubic-bezier(0, 0, 0.2, 1), background-color 100ms cubic-bezier(0, 0, 0.2, 1), border-color 100ms cubic-bezier(0, 0, 0.2, 1), fill 100ms cubic-bezier(0, 0, 0.2, 1)"
+    },
+    "shadow": {
+      "$value": "box-shadow 100ms cubic-bezier(0, 0, 0.2, 1)"
+    },
+    "transform": {
+      "$value": "transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+    },
+    "opacity": {
+      "$value": "opacity 200ms cubic-bezier(0, 0, 0.2, 1)"
+    },
+    "all": {
+      "$value": "all 200ms cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  }
+}

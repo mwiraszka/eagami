@@ -1,0 +1,14 @@
+<ul
+  class="integration-links"
+  role="list">
+  @for (link of links; track link.href) {
+    <li>
+      <a
+        [href]="link.href"
+        download>
+        <ea-icon-download aria-hidden="true" />
+        <span>{{ messages().ui.integrations[link.labelKey] }}</span>
+      </a>
+    </li>
+  }
+</ul>

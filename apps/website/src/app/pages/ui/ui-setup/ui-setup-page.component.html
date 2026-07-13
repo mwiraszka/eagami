@@ -45,4 +45,10 @@
     <h2>{{ messages().ui.setup.firstComponentHeading }}</h2>
     <web-code-snippet [code]="quickStartSnippet" />
   </section>
+
+  <section class="ui-setup__section">
+    <h2>{{ messages().ui.integrations.heading }}</h2>
+    <p>{{ messages().ui.integrations.intro }}</p>
+    <web-integration-links />
+  </section>
 </article>

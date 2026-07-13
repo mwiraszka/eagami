@@ -11,6 +11,7 @@ import {
 import { RouterLink } from '@angular/router';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { IntegrationLinksComponent } from '@app/components/integration-links/integration-links.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -43,7 +44,7 @@ const SIMULATION_RESET_BUFFER_MS = 80; // lets the longest run land before the r
   templateUrl: './ui-tokens-page.component.html',
   styleUrl: './ui-tokens-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeSnippetComponent, RouterLink],
+  imports: [CodeSnippetComponent, IntegrationLinksComponent, RouterLink],
 })
 export class UiTokensPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
