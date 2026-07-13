@@ -128,10 +128,11 @@ The library is SSR-safe and renders on the server (Angular Universal / `@angular
 
 ## Framework integration
 
-`@eagami/ui` is Angular-only, but its design tokens are framework-agnostic. Copy-and-paste guides for non-Angular targets:
+`@eagami/ui` is Angular-only, but its design tokens are framework-agnostic. Self-contained copy-and-paste guides and a machine-readable token export are published with the docs and kept in sync with the token source on every release:
 
-- **[eagami-ui-flutter.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-flutter.md)** for Flutter projects
-- **[eagami-ui-react.md](https://github.com/mwiraszka/eagami/blob/main/eagami-ui-react.md)** for React projects
+- **[React integration guide](https://eagami.com/assets/eagami-ui-react.md)**
+- **[Flutter integration guide](https://eagami.com/assets/eagami-ui-flutter.md)**
+- **[Design tokens as JSON](https://eagami.com/assets/eagami-ui-tokens.json)** (W3C Design Tokens format where practical)
 
 ## Stability and support
 

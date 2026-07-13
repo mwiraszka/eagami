@@ -103,6 +103,11 @@ jobs:
       - name: Check demo/API parity
         run: pnpm --filter @eagami/ui check-parity
 
+      # Framework integration guides and the machine-readable token export
+      # must match the SCSS token source. Regenerate with 'pnpm ui sync-guides'.
+      - name: Check integration-guide token sync
+        run: pnpm --filter @eagami/ui check-tokens
+
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression
       # guard. Budget is set generously above the current size — bump it

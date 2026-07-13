@@ -18,7 +18,7 @@
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
-    "regen-docs": "pnpm ui docs:api && pnpm ui docs:changelog && pnpm website exec prettier --write src/app/data/ui-api.generated.ts src/app/data/changelog.generated.ts",
+    "regen-docs": "pnpm ui docs:api && pnpm ui docs:changelog && pnpm ui sync-guides && pnpm website exec prettier --write src/app/data/ui-api.generated.ts src/app/data/changelog.generated.ts",
     "dev": "concurrently --kill-others --names \"web,book\" --prefix-colors \"cyan,magenta\" \"pnpm --filter eagami-website start\" \"pnpm --filter @eagami/ui storybook\"",
     "site": "pnpm --filter eagami-website start",
     "storybook": "pnpm --filter @eagami/ui storybook",

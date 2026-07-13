@@ -38,6 +38,11 @@ jobs:
             exit 1
           fi
 
+      # Guards hand-edits to the served integration guides; the script is
+      # dependency-free so no workspace install is needed.
+      - name: Check integration-guide token sync
+        run: node packages/ui/scripts/sync-integration-guides.mjs --check
+
       - name: Install Vercel CLI
         run: pnpm install --global vercel
 
