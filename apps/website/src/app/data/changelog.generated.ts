@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.6.2',
+    date: '2026-07-13',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Publish the React and Flutter integration guides and a machine-readable design-token export (JSON) on eagami.com, with every value-bearing section (token tables, CSS and TypeScript blocks, Flutter theme code) generated straight from the SCSS token source on every release, so future token changes flow through with no hand edits.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Sync stale values in the integration guides: dark-mode shadows, font stacks, secondary brand washes, and missing newer tokens.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.6.1',
     date: '2026-07-12',
     sections: [
