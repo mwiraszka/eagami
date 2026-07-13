@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Publish the React and Flutter integration guides and a machine-readable design-token export (JSON) on eagami.com, with every value-bearing section (token tables, CSS and TypeScript blocks, Flutter theme code) generated straight from the SCSS token source on every release, so future token changes flow through with no hand edits.
+- Publish the React and Flutter integration guides and a machine-readable design-token export (JSON) on eagami.com, kept in sync with the library's design tokens on every release.
 
 ### Fixed
 

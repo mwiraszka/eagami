@@ -9,6 +9,11 @@ on:
       # sources, so re-validate it whenever those committed files change too.
       - 'apps/website/src/app/data/ui-api.generated.ts'
       - 'apps/website/src/app/data/changelog.generated.ts'
+      # Integration guides and the token export are generated from the SCSS
+      # token source, so re-validate them whenever they change too.
+      - 'apps/website/src/assets/eagami-ui-react.md'
+      - 'apps/website/src/assets/eagami-ui-flutter.md'
+      - 'apps/website/src/assets/eagami-ui-tokens.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'
@@ -20,6 +25,11 @@ on:
       # sources, so re-validate it whenever those committed files change too.
       - 'apps/website/src/app/data/ui-api.generated.ts'
       - 'apps/website/src/app/data/changelog.generated.ts'
+      # Integration guides and the token export are generated from the SCSS
+      # token source, so re-validate them whenever they change too.
+      - 'apps/website/src/assets/eagami-ui-react.md'
+      - 'apps/website/src/assets/eagami-ui-flutter.md'
+      - 'apps/website/src/assets/eagami-ui-tokens.json'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - 'package.json'

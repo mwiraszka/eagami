@@ -35,13 +35,43 @@ const TOKEN_FILES = [
 const errors = [];
 const fail = msg => errors.push(msg);
 
-// ---------------------------------------------------------------------------
 // SCSS parsing
 
+// Quote-aware so a '//' inside a quoted value never truncates a declaration
+function stripScssComments(src) {
+  let out = '';
+  let quote = null;
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i];
+    if (quote) {
+      if (ch === quote) {
+        quote = null;
+      }
+      out += ch;
+      continue;
+    }
+    if (ch === "'" || ch === '"') {
+      quote = ch;
+      out += ch;
+      continue;
+    }
+    if (ch === '/' && src[i + 1] === '*') {
+      const end = src.indexOf('*/', i + 2);
+      i = end === -1 ? src.length : end + 1;
+      continue;
+    }
+    if (ch === '/' && src[i + 1] === '/') {
+      const end = src.indexOf('\n', i);
+      i = (end === -1 ? src.length : end) - 1;
+      continue;
+    }
+    out += ch;
+  }
+  return out;
+}
+
 function parseScssFile(file) {
-  const src = readFileSync(join(TOKENS_DIR, file), 'utf8')
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/\/\/[^\n]*/g, '');
+  const src = stripScssComments(readFileSync(join(TOKENS_DIR, file), 'utf8'));
   const decls = [];
   const stack = [];
   let buf = '';
@@ -119,7 +149,6 @@ function resolveRefs(value, mode) {
   return out;
 }
 
-// ---------------------------------------------------------------------------
 // Generic value helpers
 
 function pxOf(value) {
@@ -135,10 +164,6 @@ function pxOf(value) {
     return Number(m[1]);
   }
   return null;
-}
-
-function fmtNum(n) {
-  return String(n);
 }
 
 function splitTopLevel(value) {
@@ -163,21 +188,46 @@ function splitTopLevel(value) {
   return parts;
 }
 
+// Greedy line packer shared by the CSS and TS emitters
+function packParts(parts, indent, terminator) {
+  const lines = [];
+  let buf = '';
+  parts.forEach((part, i) => {
+    const suffix = i === parts.length - 1 ? terminator : ',';
+    const next = buf ? `${buf} ${part}${suffix}` : `${indent}${part}${suffix}`;
+    if (next.length > 88 && buf) {
+      lines.push(buf);
+      buf = `${indent}${part}${suffix}`;
+    } else {
+      buf = next;
+    }
+  });
+  if (buf) {
+    lines.push(buf);
+  }
+  return lines;
+}
+
 function capFirst(s) {
   return s[0].toUpperCase() + s.slice(1);
 }
 
-// 'stripe-subtle' -> 'stripeSubtle', 'neutral-900' -> 'neutral900'
 function camel(key) {
   return key.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
 }
 
-// bare Dart/TS identifiers cannot lead with a digit, so 2xl becomes xxl
+// Bare identifiers cannot lead with a digit, so 2xl becomes xxl; anything
+// else digit-leading would generate invalid TS/Dart and must fail loudly
 function tsKey(key) {
-  return camel(key.replace(/^2x/, 'xx').replace(/^3x/, 'xxx'));
+  const id = camel(key.replace(/^2x/, 'xx').replace(/^3x/, 'xxx'));
+  if (!/^[a-zA-Z_]/.test(id)) {
+    throw new Error(`cannot form an identifier from token suffix "${key}"`);
+  }
+  return id;
 }
 
-// ---------------------------------------------------------------------------
+const flutterKey = (prefix, suffix) => `${prefix}${capFirst(camel(suffix))}`;
+
 // Color helpers
 
 function parseColor(css) {
@@ -231,8 +281,9 @@ function resolveColor(value, mode) {
 // every color the generator emits, so the literal safety scan can allow it
 const emittedColors = new Set();
 
+// Alpha is keyed as the 0-255 byte so rgba floats and Dart hex bytes agree
 function colorKey(c) {
-  return `${c.r},${c.g},${c.b},${Math.round(c.a * 100) / 100}`;
+  return `${c.r},${c.g},${c.b},${Math.round(c.a * 255)}`;
 }
 
 function dartColor(c) {
@@ -246,7 +297,60 @@ function displayHex(hex) {
   return hex.toUpperCase();
 }
 
-// ---------------------------------------------------------------------------
+function hueSat(hex) {
+  const { r, g, b } = parseColor(hex);
+  const rn = r / 255;
+  const gn = g / 255;
+  const bn = b / 255;
+  const max = Math.max(rn, gn, bn);
+  const min = Math.min(rn, gn, bn);
+  const d = max - min;
+  const l = (max + min) / 2;
+  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  let h = 0;
+  if (d) {
+    if (max === rn) {
+      h = 60 * (((gn - bn) / d) % 6);
+    } else if (max === gn) {
+      h = 60 * ((bn - rn) / d + 2);
+    } else {
+      h = 60 * ((rn - gn) / d + 4);
+    }
+  }
+  if (h < 0) {
+    h += 360;
+  }
+  return { h: Math.round(h), s: Math.round(s * 100) };
+}
+
+function rampAnnotation(group) {
+  const { h, s } = hueSat(
+    resolveRefs(tokenValue(`--color-${group}-500`, 'light'), 'light'),
+  );
+  return `(H=${h}, S=${s})`;
+}
+
+function rampNote(group) {
+  return `The ${group} ramp is a single hue ${rampAnnotation(group)} varying only by lightness.`;
+}
+
+// Web font names derive from the token stacks; the mono stack is asserted
+// system-only because the guides' font-loading prose depends on it
+function firstQuotedFamily(name) {
+  const m = tokenValue(name, 'light').match(/^'([^']+)'/);
+  return m ? m[1] : null;
+}
+const WEB_SANS = firstQuotedFamily('--font-family-sans');
+const WEB_BRAND = firstQuotedFamily('--font-family-brand');
+if (!WEB_SANS || !WEB_BRAND) {
+  throw new Error('cannot derive web font names from --font-family-sans/-brand');
+}
+if (firstQuotedFamily('--font-family-mono')) {
+  throw new Error(
+    'the mono stack gained a web font; update the font templates in sync-integration-guides.mjs',
+  );
+}
+
 // Shadow parsing
 
 function parseShadows(value) {
@@ -277,7 +381,11 @@ function parseShadows(value) {
   return { parts, highlight };
 }
 
-// ---------------------------------------------------------------------------
+function edgeHighlightAlphaPct() {
+  const { parts } = parseShadows(tokenValue('--shadow-edge-highlight', 'dark'));
+  return Math.round(resolveColor(parts[0].colorCss, 'dark').a * 100);
+}
+
 // Markdown helpers
 
 function mdTable(headers, rows) {
@@ -293,7 +401,6 @@ function mdTable(headers, rows) {
   ].join('\n');
 }
 
-// ---------------------------------------------------------------------------
 // Token groupings
 
 const PRIMITIVE_COLOR =
@@ -305,10 +412,18 @@ const SPACE_WHITELIST = new Set(
   ['0', '1', '2', '3', '4', '6', '8', '12', '16'].map(n => `--space-${n}`),
 );
 
+const shadesCache = new Map();
 function primitiveShades(group) {
-  return [...tokens.keys()]
-    .filter(n => new RegExp(`^--color-${group}-\\d+$`).test(n))
-    .map(n => ({ name: n, shade: n.split('-').pop(), hex: tokens.get(n).value }));
+  if (!shadesCache.has(group)) {
+    const re = new RegExp(`^--color-${group}-\\d+$`);
+    shadesCache.set(
+      group,
+      [...tokens.keys()]
+        .filter(n => re.test(n))
+        .map(n => ({ name: n, shade: n.split('-').pop(), hex: tokens.get(n).value })),
+    );
+  }
+  return shadesCache.get(group);
 }
 
 function semanticColorNames() {
@@ -317,7 +432,6 @@ function semanticColorNames() {
   );
 }
 
-// '--color-bg-stripe-subtle' -> 'surfaceStripeSubtle', '--color-divider' -> 'divider'
 function flutterColorName(cssName) {
   const kebab = cssName.slice('--color-'.length).replace(/^bg(-|$)/, 'surface$1');
   return camel(kebab);
@@ -337,11 +451,13 @@ function refName(value, prefix) {
 }
 
 function spaceScale() {
-  return [...SPACE_WHITELIST].map(n => ({
-    name: n,
-    suffix: n.slice('--space-'.length),
-    px: pxOf(tokens.get(n).value),
-  }));
+  return [...SPACE_WHITELIST].map(n => {
+    const token = tokens.get(n);
+    if (!token) {
+      throw new Error(`whitelisted spacing token ${n} is missing upstream`);
+    }
+    return { name: n, suffix: n.slice('--space-'.length), px: pxOf(token.value) };
+  });
 }
 
 function internalSpaceNames() {
@@ -356,7 +472,10 @@ function scaleOf(prefix) {
     .map(n => ({ name: n, suffix: n.slice(prefix.length), token: tokens.get(n) }));
 }
 
-// ---------------------------------------------------------------------------
+function gapPx(token) {
+  return pxOf(resolveRefs(token.value, 'light'));
+}
+
 // Machine-readable JSON export (W3C Design Tokens format where practical)
 
 const GROUPS = [
@@ -420,6 +539,13 @@ function buildTokensJson() {
     const ext = {};
     if (token.dark) {
       ext.dark = jsonValue(token.dark, 'dark');
+    } else if (typeof entry.$value === 'string' && !entry.$value.startsWith('{')) {
+      // A composite value can flip in dark mode through the vars it embeds
+      // even when the token itself has no dark override
+      const darkResolved = jsonValue(token.value, 'dark');
+      if (darkResolved !== entry.$value) {
+        ext.dark = darkResolved;
+      }
     }
     if (token.reduced) {
       ext.reducedMotion = jsonValue(token.reduced, 'light');
@@ -432,7 +558,6 @@ function buildTokensJson() {
   return `${JSON.stringify(out, null, 2)}\n`;
 }
 
-// ---------------------------------------------------------------------------
 // React guide: generated CSS block
 
 const CSS_SKIP = name =>
@@ -440,8 +565,11 @@ const CSS_SKIP = name =>
   name === '--ea-icon-button-size';
 
 const CSS_SECTIONS = [
-  ['Primitive palette: primary (H=205, S=50)', /^--color-primary-\d+$/],
-  ['Primitive palette: secondary (H=222, S=25)', /^--color-secondary-\d+$/],
+  [`Primitive palette: primary ${rampAnnotation('primary')}`, /^--color-primary-\d+$/],
+  [
+    `Primitive palette: secondary ${rampAnnotation('secondary')}`,
+    /^--color-secondary-\d+$/,
+  ],
   ['Primitive palette: neutral', /^--color-neutral-\d+$/],
   ['Primitive palette: feedback', /^--color-(success|warning|error|info)-\d+$/],
   ['Color picker intrinsics (not themeable)', /^--color-picker-/],
@@ -503,22 +631,7 @@ function declLines(name, rawValue, indent, mode) {
   if (parts.length === 1) {
     return [single];
   }
-  const lines = [`${indent}${name}:`];
-  let buf = '';
-  parts.forEach((part, i) => {
-    const suffix = i === parts.length - 1 ? ';' : ',';
-    const next = buf ? `${buf} ${part}${suffix}` : `${indent}  ${part}${suffix}`;
-    if (next.length > 88 && buf) {
-      lines.push(buf);
-      buf = `${indent}  ${part}${suffix}`;
-    } else {
-      buf = next;
-    }
-  });
-  if (buf) {
-    lines.push(buf);
-  }
-  return lines;
+  return [`${indent}${name}:`, ...packParts(parts, `${indent}  `, ';')];
 }
 
 function generateCssBlock() {
@@ -586,24 +699,7 @@ function generateCssBlock() {
   return lines.join('\n');
 }
 
-// ---------------------------------------------------------------------------
 // React guide: generated TypeScript block
-
-function packEntries(lines, body, indent) {
-  let buf = '';
-  for (const part of body) {
-    const next = buf ? `${buf} ${part},` : `${indent}${part},`;
-    if (next.length > 88 && buf) {
-      lines.push(buf);
-      buf = `${indent}${part},`;
-    } else {
-      buf = next;
-    }
-  }
-  if (buf) {
-    lines.push(buf);
-  }
-}
 
 function wrapObject(name, entries) {
   const body = entries.map(([k, v]) => `${k}: ${typeof v === 'string' ? `'${v}'` : v}`);
@@ -611,10 +707,7 @@ function wrapObject(name, entries) {
   if (oneLine.length <= 90) {
     return [oneLine];
   }
-  const lines = [`export const ${name} = {`];
-  packEntries(lines, body, '  ');
-  lines.push('} as const;');
-  return lines;
+  return [`export const ${name} = {`, ...packParts(body, '  ', ','), '} as const;'];
 }
 
 function generateTsBlock() {
@@ -643,18 +736,13 @@ function generateTsBlock() {
     if (oneLine.length <= 90) {
       lines.push(oneLine);
     } else {
-      lines.push(`  ${group}: {`);
-      packEntries(lines, body, '    ');
-      lines.push('  },');
+      lines.push(`  ${group}: {`, ...packParts(body, '    ', ','), '  },');
     }
   }
   lines.push('} as const;', '');
 
   const gapEntries = prefix =>
-    scaleOf(prefix).map(({ suffix, token }) => [
-      tsKey(suffix),
-      pxOf(resolveRefs(token.value, 'light')),
-    ]);
+    scaleOf(prefix).map(({ suffix, token }) => [tsKey(suffix), gapPx(token)]);
   lines.push('export const spacing = {');
   lines.push(
     `  ${spaceScale()
@@ -706,25 +794,13 @@ function generateTsBlock() {
   return lines.join('\n');
 }
 
-// ---------------------------------------------------------------------------
-// React guide: generated section 2
+// Shared section-2 table builders
 
-function reactCell(value) {
-  const single = value.match(/^var\((--[\w-]+)\)$/);
-  if (single) {
-    return `\`${single[1]}\``;
-  }
-  if (/^#[0-9a-f]{6}$/i.test(value)) {
-    return `\`${displayHex(value)}\``;
-  }
-  return `\`${value}\``;
-}
-
-function reactPaletteTable(group) {
+function paletteTable(group, nameOf) {
   return mdTable(
     ['Token', 'Hex'],
     primitiveShades(group).map(({ name, hex }) => [
-      `\`${name}\``,
+      `\`${nameOf(name)}\``,
       `\`${displayHex(hex)}\``,
     ]),
   );
@@ -751,6 +827,19 @@ function prosePairs(prefix, render = v => v) {
     .join(', ');
 }
 
+// React guide: generated section 2
+
+function reactCell(value) {
+  const single = value.match(/^var\((--[\w-]+)\)$/);
+  if (single) {
+    return `\`${single[1]}\``;
+  }
+  if (/^#[0-9a-f]{6}$/i.test(value)) {
+    return `\`${displayHex(value)}\``;
+  }
+  return `\`${value}\``;
+}
+
 function generateReactTokensSection() {
   const out = [];
   const push = (...blocks) => out.push(...blocks);
@@ -762,7 +851,7 @@ function generateReactTokensSection() {
     });
 
   push(
-    'All values below mirror the CSS custom properties in `packages/ui/src/styles/tokens/*.scss` in the upstream Angular library. This whole section is generated by `scripts/sync-integration-guides.mjs`; never edit it by hand, regenerate it with `pnpm ui sync-guides` when upstream tokens change (see section 8).',
+    'All values below mirror the CSS custom properties in `packages/ui/src/styles/tokens/*.scss` in the upstream Angular library. This whole section is generated by `scripts/sync-integration-guides.mjs`; never edit it by hand, regenerate it with `pnpm ui sync-guides` when upstream tokens change (see section 8). Values in any older copy of this document are superseded by this version; do not trust cached palettes.',
   );
 
   push('### 2.1 Colors, primitive palette');
@@ -770,13 +859,13 @@ function generateReactTokensSection() {
     'Use these only if a semantic token is not available. Adding a new semantic is almost always the right move.',
   );
   push('#### Primary (brand)');
-  push('The primary ramp is a single hue (H=205, S=50) varying only by lightness.');
-  push(reactPaletteTable('primary'));
+  push(rampNote('primary'));
+  push(paletteTable('primary', n => n));
   push('#### Secondary');
-  push('The secondary ramp is a single hue (H=222, S=25) varying only by lightness.');
-  push(reactPaletteTable('secondary'));
+  push(rampNote('secondary'));
+  push(paletteTable('secondary', n => n));
   push('#### Neutral');
-  push(reactPaletteTable('neutral'));
+  push(paletteTable('neutral', n => n));
   push('#### Feedback');
   push(pairedFeedbackTable(n => n));
   push('#### Color-picker intrinsics');
@@ -835,23 +924,29 @@ function generateReactTokensSection() {
   push(
     mdTable(
       ['Token', 'Value', 'px'],
-      scaleOf('--inset-').map(({ name, token }) => [
-        `\`${name}\``,
-        `\`${token.value}\``,
-        resolveRefs(token.value, 'light')
-          .split(' ')
-          .map(v => `${pxOf(v)}px`)
-          .join(' '),
-      ]),
+      scaleOf('--inset-').map(({ name, token }) => {
+        // Mirror the CSS block: values referencing off-whitelist spacing
+        // steps resolve to literals so the table never shows an
+        // unresolvable var() for the stylesheet the guide ships
+        const refs = [...token.value.matchAll(/var\((--[\w-]+)\)/g)].map(m => m[1]);
+        const value = refs.some(CSS_SKIP)
+          ? resolveRefs(token.value, 'light')
+          : token.value;
+        return [
+          `\`${name}\``,
+          `\`${value}\``,
+          resolveRefs(token.value, 'light')
+            .split(' ')
+            .map(v => `${pxOf(v)}px`)
+            .join(' '),
+        ];
+      }),
     ),
   );
   const gapTable = prefix =>
     mdTable(
       ['Token', 'Value'],
-      scaleOf(prefix).map(({ name, token }) => [
-        `\`${name}\``,
-        `${pxOf(resolveRefs(token.value, 'light'))}px`,
-      ]),
+      scaleOf(prefix).map(({ name, token }) => [`\`${name}\``, `${gapPx(token)}px`]),
     );
   push('**Stack (vertical gap):**');
   push(gapTable('--stack-'));
@@ -870,7 +965,7 @@ function generateReactTokensSection() {
     ),
   );
   push(
-    'Load the web fonts (DM Sans, Syne) via `<link>` to Google Fonts or self-hosted via `@font-face`. The `* Fallback` faces are Arial tuned with metric overrides to match each web font, so they must sit immediately after the web font in the stack: text laid out before the font loads then shares the same metrics and `font-display: swap` causes no layout shift when the real font arrives. The mono stack is system-only (no web font). Set up the fallback `@font-face` metric-override declarations upstream, or drop the `* Fallback` entries if not replicating them.',
+    `Load the web fonts (${WEB_SANS}, ${WEB_BRAND}) via \`<link>\` to Google Fonts or self-hosted via \`@font-face\`. The \`* Fallback\` faces are Arial tuned with metric overrides to match each web font, so they must sit immediately after the web font in the stack: text laid out before the font loads then shares the same metrics and \`font-display: swap\` causes no layout shift when the real font arrives. The mono stack is system-only (no web font). Set up the fallback \`@font-face\` metric-override declarations upstream, or drop the \`* Fallback\` entries if not replicating them.`,
   );
   push('**Font sizes (rem, base 16px):**');
   push(
@@ -1003,7 +1098,6 @@ function generateReactTokensSection() {
   return out.join('\n\n');
 }
 
-// ---------------------------------------------------------------------------
 // Flutter guide: generated section 2
 
 function flutterColorCell(value, mode) {
@@ -1038,9 +1132,9 @@ function shadowProse(name, mode) {
     return '`[]`';
   }
   const rendered = parts.map(p => {
-    const spread = p.spread ? ` spread ${fmtNum(p.spread)}` : '';
+    const spread = p.spread ? ` spread ${p.spread}` : '';
     const inset = p.inset ? 'inset ' : '';
-    return `${inset}\`(${fmtNum(p.x)},${fmtNum(p.y)}) blur ${fmtNum(p.blur)}${spread}\` at ${proseColor(p.colorCss, mode)}`;
+    return `${inset}\`(${p.x},${p.y}) blur ${p.blur}${spread}\` at ${proseColor(p.colorCss, mode)}`;
   });
   return rendered.join(' + ') + (highlight ? ' + top highlight' : '');
 }
@@ -1056,34 +1150,26 @@ function dartCurve(cssEase) {
 function generateFlutterTokensSection() {
   const out = [];
   const push = (...blocks) => out.push(...blocks);
-  const flutterKey = (prefix, suffix) => `${prefix}${capFirst(camel(suffix))}`;
 
   push(
-    'All values below are directly encoded into the Dart source in § 3. They mirror the CSS custom properties in `packages/ui/src/styles/tokens/*.scss` in the upstream Angular library. This whole section (and the theme code in § 3.2) is generated by `scripts/sync-integration-guides.mjs`; never edit it by hand, regenerate it with `pnpm ui sync-guides` when upstream tokens change (see § 8).',
+    'All values below are directly encoded into the Dart source in § 3. They mirror the CSS custom properties in `packages/ui/src/styles/tokens/*.scss` in the upstream Angular library. This whole section (and the theme code in § 3.2) is generated by `scripts/sync-integration-guides.mjs`; never edit it by hand, regenerate it with `pnpm ui sync-guides` when upstream tokens change (see § 8). Values in any older copy of this document are superseded by this version; do not trust cached palettes.',
   );
 
-  const paletteTable = group =>
-    mdTable(
-      ['Token', 'Hex'],
-      primitiveShades(group).map(({ shade, hex }) => [
-        `\`${group}${shade}\``,
-        `\`${displayHex(hex)}\``,
-      ]),
-    );
+  const flutterShade = n => camel(n.slice('--color-'.length));
   push('### 2.1 Colors, primitive palette');
   push(
     'Use these only if a semantic token is not available. Adding a new semantic is almost always the right move.',
   );
   push('#### Primary (brand)');
-  push('The primary ramp is a single hue (H=205, S=50) varying only by lightness.');
-  push(paletteTable('primary'));
+  push(rampNote('primary'));
+  push(paletteTable('primary', flutterShade));
   push('#### Secondary');
-  push('The secondary ramp is a single hue (H=222, S=25) varying only by lightness.');
-  push(paletteTable('secondary'));
+  push(rampNote('secondary'));
+  push(paletteTable('secondary', flutterShade));
   push('#### Neutral');
-  push(paletteTable('neutral'));
+  push(paletteTable('neutral', flutterShade));
   push('#### Feedback');
-  push(pairedFeedbackTable(n => camel(n.slice('--color-'.length))));
+  push(pairedFeedbackTable(flutterShade));
 
   push('### 2.2 Colors, semantic (light & dark)');
   push(
@@ -1143,7 +1229,7 @@ function generateFlutterTokensSection() {
       ['Token', 'Pixels'],
       scaleOf(prefix).map(({ suffix, token }) => [
         `\`${flutterKey(prefix.slice(2, -1), suffix)}\``,
-        pxOf(resolveRefs(token.value, 'light')),
+        gapPx(token),
       ]),
     );
   push('**Stack (vertical gap):**');
@@ -1326,22 +1412,38 @@ function generateFlutterTokensSection() {
   return out.join('\n\n');
 }
 
-// ---------------------------------------------------------------------------
 // Flutter guide: generated theme extension (eagami_theme.dart)
 
-function dartBoxShadow(part, indent) {
+function dartBoxShadow(part, indent, mode) {
   const args = [];
   if (part.x || part.y) {
-    args.push(`offset: Offset(${fmtNum(part.x)}, ${fmtNum(part.y)})`);
+    args.push(`offset: Offset(${part.x}, ${part.y})`);
   }
   if (part.blur) {
-    args.push(`blurRadius: ${fmtNum(part.blur)}`);
+    args.push(`blurRadius: ${part.blur}`);
   }
   if (part.spread) {
-    args.push(`spreadRadius: ${fmtNum(part.spread)}`);
+    args.push(`spreadRadius: ${part.spread}`);
   }
-  args.push(`color: ${dartColor(resolveColor(part.colorCss, 'light'))}`);
+  args.push(`color: ${dartColor(resolveColor(part.colorCss, mode))}`);
   return `${indent}BoxShadow(${args.join(', ')}),`;
+}
+
+// BoxShadow cannot paint inset shadows, so inset-only levels (like inner)
+// stay out of the Dart theme entirely and mixed levels drop their inset parts
+function paintableShadowLevels() {
+  return [...tokens.keys()]
+    .filter(n => SHADOW_LEVEL.test(n))
+    .filter(n => {
+      const { parts } = parseShadows(tokens.get(n).value);
+      return parts.length === 0 || parts.some(p => !p.inset);
+    })
+    .map(n => ({ css: n, dart: tsKey(n.slice('--shadow-'.length)) }));
+}
+
+function dartShadowListLines(cssName, mode, indent) {
+  const { parts } = parseShadows(tokenValue(cssName, mode));
+  return parts.filter(p => !p.inset).map(p => dartBoxShadow(p, indent, mode));
 }
 
 function generateFlutterTheme() {
@@ -1351,10 +1453,7 @@ function generateFlutterTheme() {
     dart: flutterColorName(n),
   }));
   const roles = textRoles();
-  const shadowLevels = [...tokens.keys()]
-    .filter(n => SHADOW_LEVEL.test(n))
-    .map(n => ({ css: n, dart: tsKey(n.slice('--shadow-'.length)) }));
-  const flutterKey = (prefix, suffix) => `${prefix}${capFirst(camel(suffix))}`;
+  const shadowLevels = paintableShadowLevels();
 
   lines.push(
     "import 'package:flutter/material.dart';",
@@ -1475,8 +1574,9 @@ function generateFlutterTheme() {
   }
   lines.push(
     '',
-    "  static const _sans = 'DM Sans';",
-    "  static const _brand = 'Syne';",
+    `  static const _sans = '${WEB_SANS}';`,
+    `  static const _brand = '${WEB_BRAND}';`,
+    '  // Bundled mono face; the upstream mono stack is system fonts only',
     "  static const _mono = 'JetBrains Mono';",
     '',
     '  static const base = EagamiTypography(',
@@ -1487,11 +1587,13 @@ function generateFlutterTheme() {
     const lh = tokens.get(`--text-${role}-lh`);
     const family = tokens.get(`--text-${role}-family`)?.value;
     const familyRef = family ? (refName(family, '--font-family-') ?? 'sans') : 'sans';
-    const familyVar =
-      { sans: '_sans', brand: '_brand', mono: '_mono' }[familyRef] ?? '_sans';
+    const familyVar = { sans: '_sans', brand: '_brand', mono: '_mono' }[familyRef];
+    if (!familyVar) {
+      throw new Error(`no Dart font constant for font family "${familyRef}"`);
+    }
     const args = [
       `fontFamily: ${familyVar}`,
-      `fontSize: ${fmtNum(size)}`,
+      `fontSize: ${size}`,
       `fontWeight: FontWeight.w${weight}`,
     ];
     if (lh) {
@@ -1513,7 +1615,7 @@ function generateFlutterTheme() {
     '  // Base scale, only these values are permitted (see § 1.1).',
   );
   for (const { suffix, px } of spaceScale()) {
-    lines.push(`  double get s${suffix} => ${fmtNum(px)};`);
+    lines.push(`  double get s${suffix} => ${px};`);
   }
   lines.push(
     '',
@@ -1533,13 +1635,13 @@ function generateFlutterTheme() {
       .split(' ')
       .map(x => pxOf(x));
     lines.push(
-      `  EdgeInsets get ${flutterKey('inset', suffix)} => const EdgeInsets.symmetric(vertical: ${fmtNum(v)}, horizontal: ${fmtNum(h)});`,
+      `  EdgeInsets get ${flutterKey('inset', suffix)} => const EdgeInsets.symmetric(vertical: ${v}, horizontal: ${h});`,
     );
   }
   const gapGetters = prefix => {
     for (const { suffix, token } of scaleOf(prefix)) {
       lines.push(
-        `  double get ${flutterKey(prefix.slice(2, -1), suffix)} => ${fmtNum(pxOf(resolveRefs(token.value, 'light')))};`,
+        `  double get ${flutterKey(prefix.slice(2, -1), suffix)} => ${gapPx(token)};`,
       );
     }
   };
@@ -1561,7 +1663,7 @@ function generateFlutterTheme() {
   );
   for (const { suffix, token } of scaleOf('--radius-')) {
     const px = pxOf(token.value);
-    const value = px === 0 ? 'BorderRadius.zero' : `BorderRadius.circular(${fmtNum(px)})`;
+    const value = px === 0 ? 'BorderRadius.zero' : `BorderRadius.circular(${px})`;
     lines.push(`  BorderRadius get ${tsKey(suffix)} => ${value};`);
   }
   lines.push(
@@ -1575,7 +1677,7 @@ function generateFlutterTheme() {
     '',
   );
   for (const { suffix, token } of scaleOf('--border-width-')) {
-    lines.push(`  double get ${tsKey(suffix)} => ${fmtNum(pxOf(token.value) ?? 0)};`);
+    lines.push(`  double get ${tsKey(suffix)} => ${pxOf(token.value) ?? 0};`);
   }
   lines.push('', '  static const base = EagamiBorderWidth();', '}', '');
 
@@ -1600,13 +1702,10 @@ function generateFlutterTheme() {
     '  // Focus rings are theme-independent (light/dark share the same values).',
   );
   for (const name of [...tokens.keys()].filter(n => /^--shadow-focus-ring/.test(n))) {
-    const { parts } = parseShadows(tokens.get(name).value);
     lines.push(
       `  List<BoxShadow> get ${tsKey(name.slice('--shadow-'.length))} => const [`,
     );
-    for (const part of parts) {
-      lines.push(dartBoxShadow(part, '        '));
-    }
+    lines.push(...dartShadowListLines(name, 'light', '        '));
     lines.push('      ];');
   }
   lines.push('', '  // Z-index constants (for Stack ordering / overlay layering)');
@@ -1616,16 +1715,12 @@ function generateFlutterTheme() {
   const elevationConst = mode => {
     lines.push('', `  static const ${mode} = EagamiElevation(`);
     for (const { css, dart } of shadowLevels) {
-      const { parts } = parseShadows(tokenValue(css, mode));
-      if (!parts.length) {
+      const shadowLines = dartShadowListLines(css, mode, '      ');
+      if (!shadowLines.length) {
         lines.push(`    ${dart}: [],`);
         continue;
       }
-      lines.push(`    ${dart}: [`);
-      for (const part of parts) {
-        lines.push(dartBoxShadow(part, '      '));
-      }
-      lines.push('    ],');
+      lines.push(`    ${dart}: [`, ...shadowLines, '    ],');
     }
     lines.push('  );');
   };
@@ -1634,11 +1729,11 @@ function generateFlutterTheme() {
     '',
     '  // Dark drop shadows stay black (deeper than light) rather than flipping to',
     '  // white, which would read as a glow. The upstream tokens also append a',
-    '  // hairline top highlight (inset (0,1) at 6% white) to every non-none level;',
+    `  // hairline top highlight (inset (0,1) at ${edgeHighlightAlphaPct()}% white) to every non-none level;`,
     "  // Flutter's BoxShadow has no inset, so paint that separately (a top-edge",
     '  // gradient stop or a 1px translucent-white top border on the surface).',
-    '  // The upstream bevel/well relief tokens are inset-only and are likewise',
-    '  // not modelled here; see § 2.7 for how to approximate them.',
+    '  // The upstream inner, bevel, and well tokens are inset-only and are',
+    '  // likewise not modelled here; see § 2.7 for how to approximate them.',
   );
   elevationConst('dark');
   lines.push('}', '');
@@ -1668,57 +1763,22 @@ function generateFlutterTheme() {
   return lines.join('\n');
 }
 
-// ---------------------------------------------------------------------------
 // Guide file rewriting
 
-function replaceGeneratedBlock(md, id, heading, lang, body) {
+function replaceGeneratedRegion(md, id, body) {
   const startMark = `<!-- eagami:generated:${id} start -->`;
   const endMark = `<!-- eagami:generated:${id} end -->`;
-  const block = `${startMark}\n\n\`\`\`${lang}\n${body}\n\`\`\`\n\n${endMark}`;
-  if (md.includes(startMark)) {
-    const start = md.indexOf(startMark);
-    const end = md.indexOf(endMark) + endMark.length;
-    if (end < start) {
-      throw new Error(`malformed markers for ${id}`);
-    }
-    return md.slice(0, start) + block + md.slice(end);
+  const start = md.indexOf(startMark);
+  const end = md.indexOf(endMark);
+  if (start === -1 || end < start) {
+    throw new Error(`missing or malformed markers for ${id}`);
   }
-  const headingIdx = md.indexOf(heading);
-  if (headingIdx === -1) {
-    throw new Error(`heading not found: ${heading}`);
-  }
-  const fenceStart = md.indexOf(`\`\`\`${lang}\n`, headingIdx);
-  const fenceEnd = md.indexOf('\n```', fenceStart + 3);
-  if (fenceStart === -1 || fenceEnd === -1) {
-    throw new Error(`no ${lang} fence found under ${heading}`);
-  }
-  return md.slice(0, fenceStart) + block + md.slice(fenceEnd + 4);
+  const block = `${startMark}\n\n${body}\n\n${endMark}`;
+  return md.slice(0, start) + block + md.slice(end + endMark.length);
 }
 
-function replaceSection(md, id, heading, nextHeading, body) {
-  const startMark = `<!-- eagami:generated:${id} start -->`;
-  const endMark = `<!-- eagami:generated:${id} end -->`;
-  const block = `${startMark}\n\n${body}\n\n${endMark}`;
-  if (md.includes(startMark)) {
-    const start = md.indexOf(startMark);
-    const end = md.indexOf(endMark) + endMark.length;
-    if (end < start) {
-      throw new Error(`malformed markers for ${id}`);
-    }
-    return md.slice(0, start) + block + md.slice(end);
-  }
-  const headingIdx = md.indexOf(`\n${heading}\n`);
-  if (headingIdx === -1) {
-    throw new Error(`heading not found: ${heading}`);
-  }
-  const contentStart = headingIdx + heading.length + 2;
-  const nextIdx = md.indexOf(`\n${nextHeading}`, contentStart);
-  if (nextIdx === -1) {
-    throw new Error(`next heading not found: ${nextHeading}`);
-  }
-  const sepIdx = md.lastIndexOf('\n---\n', nextIdx);
-  const contentEnd = sepIdx > contentStart ? sepIdx : nextIdx;
-  return `${md.slice(0, contentStart)}\n${block}\n${md.slice(contentEnd)}`;
+function replaceGeneratedBlock(md, id, lang, body) {
+  return replaceGeneratedRegion(md, id, `\`\`\`${lang}\n${body}\n\`\`\``);
 }
 
 function stampFrontmatter(md) {
@@ -1739,10 +1799,9 @@ function withSyncDate(md, previous) {
   return md.replace(/^last-synced: .*$/m, `last-synced: ${today}`);
 }
 
-// ---------------------------------------------------------------------------
 // Literal safety scan: any color or curve literal in the hand-written parts of
 // a guide must be a value the tokens (or this generator) produce, so a stale
-// hand-written example cannot survive a token change silently.
+// hand-written example cannot survive a token change silently
 
 function allowedColorKeys() {
   const keys = new Set(emittedColors);
@@ -1761,8 +1820,7 @@ function allowedColorKeys() {
   return keys;
 }
 
-function scanGuideLiterals(md, label, { curves = false } = {}) {
-  const allowed = allowedColorKeys();
+function scanGuideLiterals(md, label, allowed, { curves = false } = {}) {
   for (const m of md.matchAll(/#[0-9A-Fa-f]{6}\b/g)) {
     if (!allowed.has(colorKey(parseColor(m[0])))) {
       fail(`${label}: hex ${m[0]} is not an upstream token value`);
@@ -1774,7 +1832,7 @@ function scanGuideLiterals(md, label, { curves = false } = {}) {
       r: parseInt(argb.slice(2, 4), 16),
       g: parseInt(argb.slice(4, 6), 16),
       b: parseInt(argb.slice(6, 8), 16),
-      a: Math.round((parseInt(argb.slice(0, 2), 16) / 255) * 100) / 100,
+      a: parseInt(argb.slice(0, 2), 16) / 255,
     };
     if (!allowed.has(colorKey(c))) {
       fail(`${label}: Color(0x${argb}) is not an upstream token value`);
@@ -1794,7 +1852,6 @@ function scanGuideLiterals(md, label, { curves = false } = {}) {
   }
 }
 
-// ---------------------------------------------------------------------------
 // Main
 
 if (errors.length) {
@@ -1808,51 +1865,26 @@ artifacts.push({ path: TOKENS_JSON, content: buildTokensJson(), label: 'tokens j
 
 const reactPrev = readFileSync(REACT_GUIDE, 'utf8');
 let react = stampFrontmatter(reactPrev);
-react = replaceSection(
-  react,
-  'react-tokens',
-  '## 2. Tokens',
-  '## 3.',
-  generateReactTokensSection(),
-);
-react = replaceGeneratedBlock(
-  react,
-  'react-css',
-  '### 3.1 CSS custom properties',
-  'css',
-  generateCssBlock(),
-);
-react = replaceGeneratedBlock(
-  react,
-  'react-ts',
-  '### 3.2 TypeScript constants module',
-  'ts',
-  generateTsBlock(),
-);
+react = replaceGeneratedRegion(react, 'react-tokens', generateReactTokensSection());
+react = replaceGeneratedBlock(react, 'react-css', 'css', generateCssBlock());
+react = replaceGeneratedBlock(react, 'react-ts', 'ts', generateTsBlock());
 react = withSyncDate(react, reactPrev);
 artifacts.push({ path: REACT_GUIDE, content: react, label: 'react guide' });
 
 const flutterPrev = readFileSync(FLUTTER_GUIDE, 'utf8');
 let flutter = stampFrontmatter(flutterPrev);
-flutter = replaceSection(
+flutter = replaceGeneratedRegion(
   flutter,
   'flutter-tokens',
-  '## 2. Tokens',
-  '## 3.',
   generateFlutterTokensSection(),
 );
-flutter = replaceGeneratedBlock(
-  flutter,
-  'flutter-theme',
-  '### 3.2 Theme extension',
-  'dart',
-  generateFlutterTheme(),
-);
+flutter = replaceGeneratedBlock(flutter, 'flutter-theme', 'dart', generateFlutterTheme());
 flutter = withSyncDate(flutter, flutterPrev);
 artifacts.push({ path: FLUTTER_GUIDE, content: flutter, label: 'flutter guide' });
 
-scanGuideLiterals(react, 'react guide');
-scanGuideLiterals(flutter, 'flutter guide', { curves: true });
+const allowed = allowedColorKeys();
+scanGuideLiterals(react, 'react guide', allowed);
+scanGuideLiterals(flutter, 'flutter guide', allowed, { curves: true });
 
 let stale = false;
 for (const { path, content, label } of artifacts) {

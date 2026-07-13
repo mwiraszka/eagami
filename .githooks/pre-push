@@ -62,7 +62,7 @@ else
 fi
 
 changed="$(git diff --name-only "$base"...HEAD 2>/dev/null || true)"
-if ! printf '%s\n' "$changed" | grep -qE '^(packages/ui/src/|packages/ui/CHANGELOG\.md)'; then
+if ! printf '%s\n' "$changed" | grep -qE '^(packages/ui/src/|packages/ui/CHANGELOG\.md|packages/ui/package\.json)'; then
   exit 0
 fi
 
@@ -72,7 +72,7 @@ if ! pnpm run regen-docs >/dev/null 2>&1; then
   exit 1
 fi
 
-generated='apps/website/src/app/data/ui-api.generated.ts apps/website/src/app/data/changelog.generated.ts'
+generated='apps/website/src/app/data/ui-api.generated.ts apps/website/src/app/data/changelog.generated.ts apps/website/src/assets/eagami-ui-react.md apps/website/src/assets/eagami-ui-flutter.md apps/website/src/assets/eagami-ui-tokens.json'
 if ! git diff --quiet -- $generated; then
   echo >&2
   echo "Generated docs data was stale and has been regenerated in your working tree:" >&2

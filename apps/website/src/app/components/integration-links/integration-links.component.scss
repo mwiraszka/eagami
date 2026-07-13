@@ -1,0 +1,17 @@
+@use 'mixins' as mixins;
+
+.integration-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  a {
+    @include mixins.prose-link;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

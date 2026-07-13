@@ -982,7 +982,12 @@
       "$value": "{color.bg-base}"
     },
     "kbd-border": {
-      "$value": "1px solid #e5e7eb"
+      "$value": "1px solid #e5e7eb",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "1px solid #9ca3af"
+        }
+      }
     },
     "kbd-padding": {
       "$value": "0.125rem 0.375rem"
@@ -991,7 +996,12 @@
       "$value": "{radius.sm}"
     },
     "kbd-shadow": {
-      "$value": "0 1px 0 #e5e7eb"
+      "$value": "0 1px 0 #e5e7eb",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 1px 0 #9ca3af"
+        }
+      }
     }
   },
   "space": {
