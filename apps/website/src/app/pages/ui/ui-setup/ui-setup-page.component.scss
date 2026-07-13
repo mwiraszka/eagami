@@ -63,3 +63,19 @@
   font-size: 14px;
   color: var(--color-text-tertiary);
 }
+
+.ui-setup__integrations {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  a {
+    @include mixins.prose-link;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

@@ -294,6 +294,14 @@ export const el: WebMessages = {
       },
       firstComponentHeading: 'Το πρώτο σας συστατικό',
     },
+    integrations: {
+      heading: 'Πέρα από το Angular',
+      intro:
+        'Τα tokens σχεδίασης είναι ανεξάρτητα από το framework. Αντιγράψτε έναν αυτόνομο οδηγό ενσωμάτωσης σε ένα έργο εκτός Angular ή χρησιμοποιήστε απευθείας την εξαγωγή tokens σε μηχανικά αναγνώσιμη μορφή.',
+      reactLink: 'Οδηγός ενσωμάτωσης React',
+      flutterLink: 'Οδηγός ενσωμάτωσης Flutter',
+      tokensLink: 'Tokens σχεδίασης σε JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Δημιουργός θέματος',
       metaDescription:

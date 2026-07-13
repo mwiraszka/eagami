@@ -297,6 +297,14 @@ export const nl: WebMessages = {
       },
       firstComponentHeading: 'Je eerste component',
     },
+    integrations: {
+      heading: 'Voorbij Angular',
+      intro:
+        'De designtokens zijn framework-onafhankelijk. Kopieer een op zichzelf staande integratiegids naar een niet-Angular-project of gebruik de machineleesbare tokenexport rechtstreeks.',
+      reactLink: 'React-integratiegids',
+      flutterLink: 'Flutter-integratiegids',
+      tokensLink: 'Designtokens als JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Themabuilder',
       metaDescription:

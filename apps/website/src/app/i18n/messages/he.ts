@@ -288,6 +288,14 @@ export const he: WebMessages = {
       },
       firstComponentHeading: 'הרכיב הראשון שלכם',
     },
+    integrations: {
+      heading: 'מעבר ל-Angular',
+      intro:
+        'אסימוני העיצוב אינם תלויים במסגרת. העתיקו מדריך אינטגרציה עצמאי לפרויקט שאינו Angular או השתמשו ישירות בייצוא האסימונים הקריא למכונה.',
+      reactLink: 'מדריך אינטגרציה ל-React',
+      flutterLink: 'מדריך אינטגרציה ל-Flutter',
+      tokensLink: 'אסימוני עיצוב כ-JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | בונה ערכת נושא',
       metaDescription:

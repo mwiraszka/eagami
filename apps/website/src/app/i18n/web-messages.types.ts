@@ -186,6 +186,13 @@ export interface WebMessages {
       };
       firstComponentHeading: string;
     };
+    integrations: {
+      heading: string;
+      intro: string;
+      reactLink: string;
+      flutterLink: string;
+      tokensLink: string;
+    };
     themeBuilder: {
       metaTitle: string;
       metaDescription: string;

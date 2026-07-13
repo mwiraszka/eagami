@@ -291,6 +291,14 @@ export const is: WebMessages = {
       },
       firstComponentHeading: 'Fyrsta einingin þín',
     },
+    integrations: {
+      heading: 'Út fyrir Angular',
+      intro:
+        'Hönnunartóknarnir eru óháðir veflausnarramma. Afritaðu sjálfstæðar samþættingarleiðbeiningar í verkefni utan Angular eða notaðu véllesanlega tóknaútflutninginn beint.',
+      reactLink: 'Samþættingarleiðbeiningar fyrir React',
+      flutterLink: 'Samþættingarleiðbeiningar fyrir Flutter',
+      tokensLink: 'Hönnunartóknar sem JSON',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | Þemasmiður',
       metaDescription:

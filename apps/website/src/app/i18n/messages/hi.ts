@@ -292,6 +292,14 @@ export const hi: WebMessages = {
       },
       firstComponentHeading: 'आपका पहला कंपोनेंट',
     },
+    integrations: {
+      heading: 'Angular से आगे',
+      intro:
+        'डिज़ाइन टोकन किसी फ्रेमवर्क पर निर्भर नहीं हैं। किसी गैर-Angular प्रोजेक्ट में स्वतंत्र इंटीग्रेशन गाइड कॉपी करें या मशीन-पठनीय टोकन एक्सपोर्ट का सीधे उपयोग करें।',
+      reactLink: 'React इंटीग्रेशन गाइड',
+      flutterLink: 'Flutter इंटीग्रेशन गाइड',
+      tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | थीम बिल्डर',
       metaDescription:

@@ -1,3 +1,5 @@
+import { DownloadIconComponent } from '@eagami/ui';
+
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
@@ -9,7 +11,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   templateUrl: './ui-setup-page.component.html',
   styleUrl: './ui-setup-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeSnippetComponent],
+  imports: [CodeSnippetComponent, DownloadIconComponent],
 })
 export class UiSetupPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);

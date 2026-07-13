@@ -1,3 +1,5 @@
+import { DownloadIconComponent } from '@eagami/ui';
+
 import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -43,7 +45,7 @@ const SIMULATION_RESET_BUFFER_MS = 80; // lets the longest run land before the r
   templateUrl: './ui-tokens-page.component.html',
   styleUrl: './ui-tokens-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeSnippetComponent, RouterLink],
+  imports: [CodeSnippetComponent, DownloadIconComponent, RouterLink],
 })
 export class UiTokensPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);

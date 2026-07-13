@@ -283,6 +283,14 @@ export const zhCN: WebMessages = {
       },
       firstComponentHeading: '你的第一个组件',
     },
+    integrations: {
+      heading: '超越 Angular',
+      intro:
+        '设计令牌与框架无关。将独立的集成指南复制到非 Angular 项目中，或直接使用机器可读的令牌导出。',
+      reactLink: 'React 集成指南',
+      flutterLink: 'Flutter 集成指南',
+      tokensLink: 'JSON 格式的设计令牌',
+    },
     themeBuilder: {
       metaTitle: 'Eagami | UI | 主题生成器',
       metaDescription:
