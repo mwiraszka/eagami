@@ -10,6 +10,7 @@ export class MetaAndTitleService {
 
   public updateTitle(title: string): void {
     this.title.setTitle(title);
+    this.meta.updateTag({ property: 'og:title', content: title });
   }
 
   public updateDescription(content: string): void {

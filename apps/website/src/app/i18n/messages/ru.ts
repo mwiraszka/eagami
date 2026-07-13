@@ -165,10 +165,9 @@ export const ru: WebMessages = {
     cta: 'Вернуться на главную',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'История изменений',
-      metaTitle: 'Eagami | История изменений',
+      metaTitle: 'История изменений | Eagami UI',
       metaDescription: 'История релизов библиотеки компонентов Angular Eagami UI.',
       lead: 'Значимые изменения в @eagami/ui, начиная с последних.',
       migrationGuide: 'Руководство по миграции',
@@ -188,7 +187,7 @@ export const ru: WebMessages = {
       components: 'Компоненты',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Лёгкая, доступная библиотека компонентов Angular на основе CSS-переменных.',
       title: 'Eagami UI',
@@ -277,7 +276,7 @@ export const ru: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Установка',
+      metaTitle: 'Установка | Eagami UI',
       metaDescription:
         'Установите @eagami/ui и подключите глобальную таблицу стилей и шрифты.',
       title: 'Установка',
@@ -304,7 +303,7 @@ export const ru: WebMessages = {
       tokensLink: 'Дизайн-токены в формате JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Конструктор темы',
+      metaTitle: 'Конструктор темы | Eagami UI',
       metaDescription:
         'Создайте проверенную по WCAG палитру для светлой и тёмной темы на основе цветов вашего бренда и скопируйте конфигурацию провайдера или CSS.',
       title: 'Конструктор темы',
@@ -331,7 +330,7 @@ export const ru: WebMessages = {
       exportCssLabel: 'CSS-переменные',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Дизайн-токены',
+      metaTitle: 'Дизайн-токены | Eagami UI',
       metaDescription:
         'CSS-переменные для цветов, типографики, отступов, возвышения, формы и движения.',
       title: 'Дизайн-токены',
@@ -379,7 +378,7 @@ export const ru: WebMessages = {
       motionEasings: 'Функции плавности',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Иконки',
+      metaTitle: 'Иконки | Eagami UI',
       metaDescription: 'Набор иконок, поставляемый с @eagami/ui.',
       title: 'Иконки',
       lede: 'Самостоятельные компоненты Angular, которые наследуют свой цвет и масштабируются по <code>font-size</code>, поэтому отрисовываются в любом размере. Большинство получено из <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> авторства <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> по <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>лицензии MIT</span></a>; остальные это оригинальные иконки Eagami UI. Иконки Feather также можно рисовать более тонкими или более толстыми штрихами. Нажмите на иконку, чтобы скопировать её селектор.',
@@ -400,7 +399,7 @@ export const ru: WebMessages = {
       brandLinkLabel: 'Ресурсы брендов',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Интернационализация',
+      metaTitle: 'Интернационализация | Eagami UI',
       metaDescription:
         'Встроенный текст компонентов на 15 языках с переключением во время выполнения и переопределением отдельных строк.',
       title: 'Интернационализация',
@@ -428,7 +427,7 @@ export const ru: WebMessages = {
       demoLocaleLabel: 'Язык',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Доступность',
+      metaTitle: 'Доступность | Eagami UI',
       metaDescription:
         'Соответствие WCAG 2.2 AA, полная поддержка клавиатуры и компоненты, дружественные к программам чтения с экрана, с проверкой при каждом релизе.',
       title: 'Доступность',
@@ -473,6 +472,7 @@ export const ru: WebMessages = {
         'Каждый компонент проверяется по отраслевым правилам доступности при каждом изменении, а релиз выходит только тогда, когда пройдены все проверки, поэтому доступность, которую вы видите здесь, сохраняется по мере развития библиотеки.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `Справочник по компоненту ${name} и живые демонстрации.`,
       demoHeading: 'Демо',
       notFoundTitle: 'Компонент не найден',

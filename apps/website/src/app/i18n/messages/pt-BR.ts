@@ -166,10 +166,9 @@ export const ptBR: WebMessages = {
     cta: 'Voltar ao início',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Registro de alterações',
-      metaTitle: 'Eagami | Registro de alterações',
+      metaTitle: 'Registro de alterações | Eagami UI',
       metaDescription:
         'Histórico de versões da biblioteca de componentes Angular Eagami UI.',
       lead: 'Alterações notáveis no @eagami/ui, das mais recentes primeiro.',
@@ -190,7 +189,7 @@ export const ptBR: WebMessages = {
       components: 'Componentes',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Biblioteca de componentes Angular leve e acessível, construída sobre propriedades personalizadas de CSS.',
       title: 'Eagami UI',
@@ -279,7 +278,7 @@ export const ptBR: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Configuração',
+      metaTitle: 'Configuração | Eagami UI',
       metaDescription:
         'Instale o @eagami/ui e configure a folha de estilo global e as fontes.',
       title: 'Configuração',
@@ -306,7 +305,7 @@ export const ptBR: WebMessages = {
       tokensLink: 'Tokens de design em JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Gerador de temas',
+      metaTitle: 'Gerador de temas | Eagami UI',
       metaDescription:
         'Gere uma paleta verificada pelo WCAG para os modos claro e escuro a partir das cores da sua marca e copie a configuração do provedor ou o CSS.',
       title: 'Gerador de temas',
@@ -334,7 +333,7 @@ export const ptBR: WebMessages = {
       exportCssLabel: 'Propriedades personalizadas CSS',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Tokens de design',
+      metaTitle: 'Tokens de design | Eagami UI',
       metaDescription:
         'Propriedades personalizadas de CSS para cores, tipografia, espaçamento, elevação, forma e movimento.',
       title: 'Tokens de design',
@@ -382,7 +381,7 @@ export const ptBR: WebMessages = {
       motionEasings: 'Suavizações',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Ícones',
+      metaTitle: 'Ícones | Eagami UI',
       metaDescription: 'Conjunto de ícones incluído no @eagami/ui.',
       title: 'Ícones',
       lede: 'Componentes Angular independentes que herdam sua cor e escalam com <code>font-size</code>, de modo que se renderizam em qualquer tamanho. A maioria deriva dos <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sob a <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licença MIT</span></a>; os demais são ícones originais da Eagami UI. Os ícones Feather também podem ser desenhados com traços mais finos ou mais grossos. Clique em um ícone para copiar seu seletor.',
@@ -404,7 +403,7 @@ export const ptBR: WebMessages = {
       brandLinkLabel: 'Recursos da marca',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Internacionalização',
+      metaTitle: 'Internacionalização | Eagami UI',
       metaDescription:
         'Texto integrado dos componentes em 15 idiomas, com troca em tempo de execução e sobrescritas por string.',
       title: 'Internacionalização',
@@ -432,7 +431,7 @@ export const ptBR: WebMessages = {
       demoLocaleLabel: 'Idioma',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Acessibilidade',
+      metaTitle: 'Acessibilidade | Eagami UI',
       metaDescription:
         'Conformidade WCAG 2.2 AA, suporte completo a teclado e componentes amigáveis a leitores de tela, verificados a cada versão.',
       title: 'Acessibilidade',
@@ -477,6 +476,7 @@ export const ptBR: WebMessages = {
         'Cada componente é verificado segundo as regras de acessibilidade do setor sempre que muda, e uma versão só é publicada quando todas as verificações passam, então a acessibilidade que você vê aqui se mantém conforme a biblioteca evolui.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name =>
         `Referência e demonstrações ao vivo do componente ${name}.`,
       demoHeading: 'Demonstração',

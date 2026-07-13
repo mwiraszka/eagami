@@ -160,10 +160,9 @@ export const ar: WebMessages = {
     cta: 'العودة إلى الصفحة الرئيسية',
   },
   ui: {
-    metaTitle: 'Eagami | واجهة المستخدم',
     changelog: {
       title: 'سجل التغييرات',
-      metaTitle: 'Eagami | سجل التغييرات',
+      metaTitle: 'سجل التغييرات | Eagami UI',
       metaDescription: 'سجل الإصدارات لمكتبة مكوّنات Angular الخاصة بـ Eagami UI.',
       lead: 'تغييرات بارزة في @eagami/ui، بدءًا من الأحدث.',
       migrationGuide: 'دليل الترحيل',
@@ -183,7 +182,7 @@ export const ar: WebMessages = {
       components: 'المكوّنات',
     },
     index: {
-      metaTitle: 'Eagami | واجهة المستخدم',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
       title: 'Eagami UI',
@@ -272,7 +271,7 @@ export const ar: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | واجهة المستخدم | الإعداد',
+      metaTitle: 'الإعداد | Eagami UI',
       metaDescription: 'ثبّت @eagami/ui واربط ورقة الأنماط العامة والخطوط.',
       title: 'الإعداد',
       ngAddLabel: 'ثبّت وهيّئ كل شيء بأمر واحد:',
@@ -298,7 +297,7 @@ export const ar: WebMessages = {
       tokensLink: 'رموز التصميم بصيغة JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | منشئ السمة',
+      metaTitle: 'منشئ السمة | Eagami UI',
       metaDescription:
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
@@ -325,7 +324,7 @@ export const ar: WebMessages = {
       exportCssLabel: 'خصائص CSS المخصّصة',
     },
     tokens: {
-      metaTitle: 'Eagami | واجهة المستخدم | رموز التصميم',
+      metaTitle: 'رموز التصميم | Eagami UI',
       metaDescription:
         'خصائص CSS المخصّصة للألوان والطباعة والتباعد والارتفاع والشكل والحركة.',
       title: 'رموز التصميم',
@@ -372,7 +371,7 @@ export const ar: WebMessages = {
       motionEasings: 'دوال التيسير',
     },
     icons: {
-      metaTitle: 'Eagami | واجهة المستخدم | الأيقونات',
+      metaTitle: 'الأيقونات | Eagami UI',
       metaDescription: 'مجموعة الأيقونات المرفقة مع @eagami/ui.',
       title: 'الأيقونات',
       lede: 'مكوّنات Angular مستقلة ترث لونها وتتكيّف مع <code>font-size</code>، لذا تُعرَض بأي حجم. معظمها مشتق من <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> بقلم <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> بموجب <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>رخصة MIT</span></a>؛ والباقي أيقونات Eagami UI أصلية. يمكن أيضًا رسم أيقونات Feather بخطوط أرفع أو أثخن. انقر على أيقونة لنسخ محدّدها.',
@@ -393,7 +392,7 @@ export const ar: WebMessages = {
       brandLinkLabel: 'موارد العلامات',
     },
     i18n: {
-      metaTitle: 'Eagami | واجهة المستخدم | التدويل',
+      metaTitle: 'التدويل | Eagami UI',
       metaDescription:
         'نص المكوّنات المدمج بـ 15 لغة، مع التبديل أثناء التشغيل وتجاوزات لكل سلسلة.',
       title: 'التدويل',
@@ -421,7 +420,7 @@ export const ar: WebMessages = {
       demoLocaleLabel: 'اللغة',
     },
     accessibility: {
-      metaTitle: 'Eagami | واجهة المستخدم | إمكانية الوصول',
+      metaTitle: 'إمكانية الوصول | Eagami UI',
       metaDescription:
         'مطابقة WCAG 2.2 بمستوى AA ودعم كامل للوحة المفاتيح ومكوّنات صديقة لقارئات الشاشة، يُتحقّق منها مع كل إصدار.',
       title: 'إمكانية الوصول',
@@ -466,6 +465,7 @@ export const ar: WebMessages = {
         'يُفحَص كل مكوّن وفق قواعد إمكانية الوصول المعتمدة في المجال عند كل تغيير، ولا يصدر أي إصدار إلا عندما تجتاز جميع الفحوص، لذا تظل إمكانية الوصول التي تراها هنا قائمة مع تطوّر المكتبة.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `مرجع مكوّن ${name} وعروض حية.`,
       demoHeading: 'عرض توضيحي',
       notFoundTitle: 'المكوّن غير موجود',

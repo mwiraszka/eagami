@@ -39,7 +39,7 @@ export class UiComponentDemoLayoutComponent {
       const c = this.component();
       if (c) {
         this.metaAndTitleService.updateTitle(
-          `${this.messages().ui.metaTitle} | ${c.name}`,
+          this.messages().ui.component.metaTitle(c.name),
         );
         this.metaAndTitleService.updateDescription(
           this.messages().ui.component.metaDescription(c.name),

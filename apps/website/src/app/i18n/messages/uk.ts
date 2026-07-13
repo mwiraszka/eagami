@@ -165,10 +165,9 @@ export const uk: WebMessages = {
     cta: 'На головну',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Журнал змін',
-      metaTitle: 'Eagami | Журнал змін',
+      metaTitle: 'Журнал змін | Eagami UI',
       metaDescription: 'Історія випусків бібліотеки компонентів Angular Eagami UI.',
       lead: 'Помітні зміни в @eagami/ui, найновіші згори.',
       migrationGuide: 'Посібник з міграції',
@@ -188,7 +187,7 @@ export const uk: WebMessages = {
       components: 'Компоненти',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Легка, доступна бібліотека компонентів Angular на основі CSS-змінних.',
       title: 'Eagami UI',
@@ -277,7 +276,7 @@ export const uk: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Налаштування',
+      metaTitle: 'Налаштування | Eagami UI',
       metaDescription:
         'Встановіть @eagami/ui та підключіть глобальну таблицю стилів і шрифти.',
       title: 'Налаштування',
@@ -304,7 +303,7 @@ export const uk: WebMessages = {
       tokensLink: 'Дизайн-токени у форматі JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Конструктор теми',
+      metaTitle: 'Конструктор теми | Eagami UI',
       metaDescription:
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
@@ -331,7 +330,7 @@ export const uk: WebMessages = {
       exportCssLabel: 'CSS-змінні',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Дизайн-токени',
+      metaTitle: 'Дизайн-токени | Eagami UI',
       metaDescription:
         'CSS-змінні для кольорів, типографіки, відступів, висоти, форми та руху.',
       title: 'Дизайн-токени',
@@ -379,7 +378,7 @@ export const uk: WebMessages = {
       motionEasings: 'Згладжування',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Іконки',
+      metaTitle: 'Іконки | Eagami UI',
       metaDescription: 'Набір іконок, що постачається з @eagami/ui.',
       title: 'Іконки',
       lede: 'Самостійні компоненти Angular, що успадковують свій колір і масштабуються разом з <code>font-size</code>, тож вони рендеряться в будь-якому розмірі. Більшість походить з <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> від <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> за <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>ліцензією MIT</span></a>; решта це оригінальні іконки Eagami UI. Іконки Feather також можна малювати тоншими або товщими штрихами. Клацніть іконку, щоб скопіювати її селектор.',
@@ -400,7 +399,7 @@ export const uk: WebMessages = {
       brandLinkLabel: 'Ресурси брендів',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Інтернаціоналізація',
+      metaTitle: 'Інтернаціоналізація | Eagami UI',
       metaDescription:
         'Вбудований текст компонентів 15 мовами, з перемиканням під час виконання та перевизначеннями для окремих рядків.',
       title: 'Інтернаціоналізація',
@@ -428,7 +427,7 @@ export const uk: WebMessages = {
       demoLocaleLabel: 'Мова',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Доступність',
+      metaTitle: 'Доступність | Eagami UI',
       metaDescription:
         'Відповідність WCAG 2.2 AA, повна підтримка клавіатури та компоненти, дружні до зчитувачів екрана, перевірені з кожним релізом.',
       title: 'Доступність',
@@ -473,6 +472,7 @@ export const uk: WebMessages = {
         'Кожен компонент перевіряється за галузевими правилами доступності при кожній зміні, а реліз виходить лише тоді, коли всі перевірки пройдено, тож доступність, яку ви бачите тут, зберігається в міру розвитку бібліотеки.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `Довідник і живі демонстрації компонента ${name}.`,
       demoHeading: 'Демонстрація',
       notFoundTitle: 'Компонент не знайдено',

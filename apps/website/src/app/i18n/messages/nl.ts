@@ -165,10 +165,9 @@ export const nl: WebMessages = {
     cta: 'Terug naar home',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Wijzigingslogboek',
-      metaTitle: 'Eagami | Wijzigingslogboek',
+      metaTitle: 'Wijzigingslogboek | Eagami UI',
       metaDescription:
         'Versiegeschiedenis van de Eagami UI Angular-componentenbibliotheek.',
       lead: 'Noemenswaardige wijzigingen aan @eagami/ui, nieuwste eerst.',
@@ -189,7 +188,7 @@ export const nl: WebMessages = {
       components: 'Componenten',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Lichtgewicht, toegankelijke Angular-componentenbibliotheek gebouwd op CSS-aangepaste eigenschappen.',
       title: 'Eagami UI',
@@ -279,7 +278,7 @@ export const nl: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Installatie',
+      metaTitle: 'Installatie | Eagami UI',
       metaDescription:
         'Installeer @eagami/ui en sluit de globale stylesheet en lettertypen aan.',
       title: 'Installatie',
@@ -306,7 +305,7 @@ export const nl: WebMessages = {
       tokensLink: 'Designtokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Themabuilder',
+      metaTitle: 'Themabuilder | Eagami UI',
       metaDescription:
         'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
       title: 'Themabuilder',
@@ -334,7 +333,7 @@ export const nl: WebMessages = {
       exportCssLabel: 'CSS-custom-properties',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Designtokens',
+      metaTitle: 'Designtokens | Eagami UI',
       metaDescription:
         'CSS-aangepaste eigenschappen voor kleuren, typografie, witruimte, elevatie, vorm en beweging.',
       title: 'Designtokens',
@@ -382,7 +381,7 @@ export const nl: WebMessages = {
       motionEasings: 'Easings',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Iconen',
+      metaTitle: 'Iconen | Eagami UI',
       metaDescription: 'Iconenset meegeleverd met @eagami/ui.',
       title: 'Iconen',
       lede: 'Standalone Angular-componenten die hun kleur erven en meeschalen met <code>font-size</code>, zodat ze op elke grootte worden weergegeven. De meeste zijn afgeleid van <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> van <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> onder de <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-licentie</span></a>; de rest zijn originele Eagami UI-iconen. Feather-iconen kunnen ook met dunnere of dikkere lijnen worden getekend. Klik op een icoon om de selector te kopiëren.',
@@ -403,7 +402,7 @@ export const nl: WebMessages = {
       brandLinkLabel: 'Merkbronnen',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Internationalisatie',
+      metaTitle: 'Internationalisatie | Eagami UI',
       metaDescription:
         'Ingebouwde componenttekst in 15 talen, met wisselen tijdens runtime en overschrijvingen per tekst.',
       title: 'Internationalisatie',
@@ -431,7 +430,7 @@ export const nl: WebMessages = {
       demoLocaleLabel: 'Taal',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Toegankelijkheid',
+      metaTitle: 'Toegankelijkheid | Eagami UI',
       metaDescription:
         'WCAG 2.2 AA-conformiteit, volledige toetsenbordondersteuning en schermlezervriendelijke componenten, geverifieerd bij elke release.',
       title: 'Toegankelijkheid',
@@ -476,6 +475,7 @@ export const nl: WebMessages = {
         'Elke component wordt bij elke wijziging getoetst aan gangbare toegankelijkheidsregels uit de sector, en een release verschijnt pas wanneer elke controle slaagt, zodat de toegankelijkheid die je hier ziet standhoudt terwijl de bibliotheek zich verder ontwikkelt.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `${name}-componentreferentie en live demo's.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Component niet gevonden',

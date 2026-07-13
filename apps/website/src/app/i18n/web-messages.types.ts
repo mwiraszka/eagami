@@ -89,7 +89,6 @@ export interface WebMessages {
     cta: string;
   };
   ui: {
-    metaTitle: string;
     changelog: {
       title: string;
       metaTitle: string;
@@ -315,6 +314,7 @@ export interface WebMessages {
       testingBody: string;
     };
     component: {
+      metaTitle: (name: string) => string;
       metaDescription: (name: string) => string;
       demoHeading: string;
       notFoundTitle: string;
