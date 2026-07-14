@@ -1,4 +1,4 @@
-import { EAGAMI_ALL_LOCALES, provideEagamiUi } from '@eagami/ui';
+import { provideEagamiUi } from '@eagami/ui';
 
 import { ViewportScroller } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -17,6 +17,7 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
+import { UI_LOCALE_LOADERS } from './i18n/locale-chunks';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -38,6 +39,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideEagamiUi({ locales: EAGAMI_ALL_LOCALES }),
+    provideEagamiUi({ localeLoaders: UI_LOCALE_LOADERS }),
   ],
 };

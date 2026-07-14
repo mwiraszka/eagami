@@ -402,6 +402,9 @@ export const he: WebMessages = {
       quickSetupHeading: 'הגדרה מהירה',
       quickSetupBefore:
         'הוסיפו <code>provideEagamiUi()</code> לתצורת האפליקציה ורשמו את השפות שאתם משתמשים בהן באמצעות <code>locales</code>. אנגלית זמינה תמיד, כך שאתם כוללים רק את מה שאתם צריכים.',
+      lazyHeading: 'טעינה עצלה',
+      lazyBefore:
+        'רשמו <code>localeLoaders</code> במקום <code>locales</code>: שפה נטענת בפעם הראשונה שבה היא מופעלת ונשארת מחוץ לחבילה ההתחלתית. הפנו כל טוען למודול שמייצא מחדש חבילת שפה אחת, וטענו מראש באמצעות <code>loadLocale()</code> כשהמעבר צריך להיות מיידי.',
       liveDemoHeading: 'הדגמה חיה',
       liveDemoIntro:
         'בחרו שפה וצפו כיצד הרכיבים שלהלן קולטים את המחרוזות ועיצוב התאריך התואמים.',

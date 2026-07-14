@@ -407,6 +407,9 @@ export const is: WebMessages = {
       quickSetupHeading: 'Hröð uppsetning',
       quickSetupBefore:
         'Bættu <code>provideEagamiUi()</code> við stillingar forritsins og skráðu tungumálin sem þú notar með <code>locales</code>. Enska er alltaf í boði, svo þú sendir aðeins það sem þú þarft.',
+      lazyHeading: 'Hleðsla eftir þörfum',
+      lazyBefore:
+        'Skráðu <code>localeLoaders</code> í stað <code>locales</code>: tungumál er sótt í fyrsta sinn sem það er virkjað og er því ekki í upphafspakkanum. Láttu hvern hlaðara vísa á einingu sem endurútflytur eitt tungumálasafn og forhlaðaðu með <code>loadLocale()</code> þegar skiptingin á að gerast samstundis.',
       liveDemoHeading: 'Lifandi sýnishorn',
       liveDemoIntro:
         'Veldu svæði og horfðu á einingarnar hér að neðan taka upp samsvarandi strengi og dagsetningarsnið.',

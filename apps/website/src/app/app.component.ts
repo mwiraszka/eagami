@@ -8,9 +8,10 @@ import {
   Component,
   DestroyRef,
   PLATFORM_ID,
+  afterRenderEffect,
   inject,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 
 import { FooterComponent } from '@app/components/footer/footer.component';
@@ -42,15 +43,15 @@ export class AppComponent {
   protected readonly toastOutlet = inject(ToastOutletService);
   protected readonly messages = this.i18n.messages;
 
-  constructor() {
-    /* The inline <head> script hides `body` via `web-locale-pending` for any
-       non-English locale until we reveal it here.
+  private readonly stable = toSignal(
+    this.appRef.isStable.pipe(
+      filter(stable => stable),
+      first(),
+    ),
+    { initialValue: false },
+  );
 
-       Gate on `ApplicationRef.isStable`, not `afterNextRender`: the first render
-       only claims the prerendered DOM, while hydration mismatch reconciliation
-       (which swaps English strings for the active locale) runs in a follow-up
-       microtask. Revealing earlier flashes the still-English DOM for a frame;
-       `isStable` fires once that reconciliation has settled. */
+  constructor() {
     if (!this.isBrowser) {
       return;
     }
@@ -61,11 +62,25 @@ export class AppComponent {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {
-        this.doc.documentElement.classList.remove('web-locale-pending');
         // Hand pre-hydration navigation feedback (index.html click listener)
         // over to the router-driven overlay
         this.doc.documentElement.classList.remove('web-nav-pending');
         this.doc.documentElement.classList.add('web-hydrated');
       });
+
+    /* The inline <head> script hides `body` via `web-locale-pending` for any
+       non-English locale until we reveal it here.
+
+       Reveal only once BOTH hold: `ApplicationRef.isStable`, because the first
+       render merely claims the prerendered DOM while hydration mismatch
+       reconciliation runs in a follow-up microtask, and `applied`, because the
+       active locale's dictionaries load lazily. `afterRenderEffect` fires
+       after the render that commits the localized strings, so the English
+       prerendered DOM is never flashed. */
+    afterRenderEffect(() => {
+      if (this.stable() && this.i18n.applied()) {
+        this.doc.documentElement.classList.remove('web-locale-pending');
+      }
+    });
   }
 }

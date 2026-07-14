@@ -31,6 +31,12 @@
   </section>
 
   <section class="ui-i18n__section">
+    <h2>{{ messages().ui.i18n.lazyHeading }}</h2>
+    <p [innerHTML]="messages().ui.i18n.lazyBefore"></p>
+    <web-code-snippet [code]="lazyLoadingSnippet" />
+  </section>
+
+  <section class="ui-i18n__section">
     <h2>{{ messages().ui.i18n.liveDemoHeading }}</h2>
     <p>{{ messages().ui.i18n.liveDemoIntro }}</p>
 

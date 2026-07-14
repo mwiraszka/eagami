@@ -409,6 +409,9 @@ export const esES: WebMessages = {
       quickSetupHeading: 'Configuración rápida',
       quickSetupBefore:
         'Añade <code>provideEagamiUi()</code> a la configuración de tu aplicación y registra los idiomas que uses mediante <code>locales</code>. El inglés siempre está disponible, así que solo incluyes lo que necesitas.',
+      lazyHeading: 'Carga diferida',
+      lazyBefore:
+        'Registra <code>localeLoaders</code> en lugar de <code>locales</code>: un idioma se descarga la primera vez que se activa y queda fuera del bundle inicial. Apunta cada loader a un módulo que reexporte un único paquete de idioma y precarga con <code>loadLocale()</code> cuando el cambio deba ser instantáneo.',
       liveDemoHeading: 'Demo en directo',
       liveDemoIntro:
         'Elige un idioma y observa cómo los componentes siguientes adoptan las cadenas y el formato de fecha correspondientes.',
