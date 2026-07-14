@@ -156,10 +156,9 @@ export const zhCN: WebMessages = {
     cta: '返回首页',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: '更新日志',
-      metaTitle: 'Eagami | 更新日志',
+      metaTitle: '更新日志 | Eagami UI',
       metaDescription: 'Eagami UI Angular 组件库的版本历史。',
       lead: '@eagami/ui 的重要更新，最新在前。',
       migrationGuide: '迁移指南',
@@ -179,7 +178,7 @@ export const zhCN: WebMessages = {
       components: '组件',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
       title: 'Eagami UI',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',
@@ -266,7 +265,7 @@ export const zhCN: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | 安装',
+      metaTitle: '安装 | Eagami UI',
       metaDescription: '安装 @eagami/ui 并配置全局样式表和字体。',
       title: '安装',
       ngAddLabel: '一条命令完成安装和配置：',
@@ -292,7 +291,7 @@ export const zhCN: WebMessages = {
       tokensLink: 'JSON 格式的设计令牌',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | 主题生成器',
+      metaTitle: '主题生成器 | Eagami UI',
       metaDescription:
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
@@ -319,7 +318,7 @@ export const zhCN: WebMessages = {
       exportCssLabel: 'CSS 自定义属性',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | 设计令牌',
+      metaTitle: '设计令牌 | Eagami UI',
       metaDescription: '用于颜色、排版、间距、立面、形状和动效的 CSS 自定义属性。',
       title: '设计令牌',
       lede: '驱动库中每个组件的 CSS 自定义属性：颜色、排版、间距、立面、形状和动效。在你自己的样式中通过 <code>var(--token-name)</code> 引用这些令牌，以在整个应用中保持视觉一致性。',
@@ -364,7 +363,7 @@ export const zhCN: WebMessages = {
       motionEasings: '缓动',
     },
     icons: {
-      metaTitle: 'Eagami | UI | 图标',
+      metaTitle: '图标 | Eagami UI',
       metaDescription: '随 @eagami/ui 一同提供的图标集。',
       title: '图标',
       lede: '独立的 Angular 组件，会继承其颜色并随 <code>font-size</code> 缩放，因此可在任意尺寸下渲染。大多数图标衍生自 <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> 在 <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT 许可证</span></a> 下提供的 <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a>；其余为 Eagami UI 原创图标。Feather 图标还可绘制为更细或更粗的线条。点击图标即可复制其选择器。',
@@ -385,7 +384,7 @@ export const zhCN: WebMessages = {
       brandLinkLabel: '品牌资源',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | 国际化',
+      metaTitle: '国际化 | Eagami UI',
       metaDescription: '内建组件文本提供15 种语言，支持运行时切换和逐字符串覆盖。',
       title: '国际化',
       lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供15 种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
@@ -410,7 +409,7 @@ export const zhCN: WebMessages = {
       demoLocaleLabel: '语言',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | 无障碍',
+      metaTitle: '无障碍 | Eagami UI',
       metaDescription:
         'WCAG 2.2 AA 符合性、完整的键盘支持和对屏幕阅读器友好的组件，每次发布都经过验证。',
       title: '无障碍',
@@ -455,6 +454,7 @@ export const zhCN: WebMessages = {
         '每个组件在每次变更时都会依据行业无障碍规则进行检查，只有当所有检查都通过时版本才会发布，因此你在这里看到的无障碍能力会随着库的演进持续保持。',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `${name} 组件参考与实时演示。`,
       demoHeading: '演示',
       notFoundTitle: '未找到组件',

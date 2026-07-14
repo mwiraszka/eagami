@@ -13,6 +13,42 @@ ea-icon-github svg path {
   fill: currentColor;
 }
 
+/* Loading feedback for internal-link clicks that land before Angular has booted:
+   hydration event replay holds those clicks until the app is ready, so no in-app
+   indicator can run yet. The inline index.html script sets `web-nav-pending` on
+   click; the app removes it once stable and its router-driven overlay takes over.
+   CSS-only so it needs nothing beyond this stylesheet. */
+html.web-nav-pending::after {
+  z-index: var(--z-index-overlay);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-bg-overlay);
+  content: '';
+}
+
+html.web-nav-pending::before {
+  z-index: calc(var(--z-index-overlay) + 1);
+  position: fixed;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  border-top-color: var(--color-brand-default);
+  border-radius: 50%;
+  animation: web-nav-pending-spin 0.8s linear infinite;
+  content: '';
+}
+
+@keyframes web-nav-pending-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes web-gradient-flutter {
   0% {
     background-position: 0% 50%;

@@ -18,13 +18,20 @@ import {
 } from '@angular/router';
 
 import { UI_COMPONENTS } from '@app/data/ui-components';
+import { PendingLinkDirective } from '@app/directives/pending-link.directive';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 @Component({
   selector: 'web-ui-shell',
   templateUrl: './ui-shell.component.html',
   styleUrl: './ui-shell.component.scss',
-  imports: [ChevronRightIconComponent, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [
+    ChevronRightIconComponent,
+    PendingLinkDirective,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiShellComponent {

@@ -159,10 +159,9 @@ export const he: WebMessages = {
     cta: 'חזרה לדף הבית',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'יומן שינויים',
-      metaTitle: 'Eagami | יומן שינויים',
+      metaTitle: 'יומן שינויים | Eagami UI',
       metaDescription: 'היסטוריית מהדורות של ספריית רכיבי Angular‏ Eagami UI.',
       lead: 'שינויים בולטים ב-@eagami/ui, החדשים ביותר תחילה.',
       migrationGuide: 'מדריך מעבר',
@@ -182,7 +181,7 @@ export const he: WebMessages = {
       components: 'רכיבים',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
       title: 'Eagami UI',
@@ -271,7 +270,7 @@ export const he: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | התקנה',
+      metaTitle: 'התקנה | Eagami UI',
       metaDescription: 'התקינו את @eagami/ui וחברו את גיליון הסגנונות הגלובלי והגופנים.',
       title: 'התקנה',
       ngAddLabel: 'התקינו והגדירו הכול בפקודה אחת:',
@@ -297,7 +296,7 @@ export const he: WebMessages = {
       tokensLink: 'אסימוני עיצוב כ-JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | בונה ערכת נושא',
+      metaTitle: 'בונה ערכת נושא | Eagami UI',
       metaDescription:
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
@@ -324,7 +323,7 @@ export const he: WebMessages = {
       exportCssLabel: 'מאפייני CSS מותאמים',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | אסימוני עיצוב',
+      metaTitle: 'אסימוני עיצוב | Eagami UI',
       metaDescription:
         'מאפייני CSS מותאמים אישית עבור צבעים, טיפוגרפיה, ריווח, גובה, צורה ותנועה.',
       title: 'אסימוני עיצוב',
@@ -371,7 +370,7 @@ export const he: WebMessages = {
       motionEasings: 'פונקציות האטה',
     },
     icons: {
-      metaTitle: 'Eagami | UI | אייקונים',
+      metaTitle: 'אייקונים | Eagami UI',
       metaDescription: 'ערכת האייקונים המצורפת ל-@eagami/ui.',
       title: 'אייקונים',
       lede: 'רכיבי Angular עצמאיים היורשים את צבעם ומתאימים את גודלם לפי <code>font-size</code>, כך שהם מוצגים בכל גודל. רובם נגזרים מ-<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> מאת <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> תחת <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>רישיון MIT</span></a>; השאר הם אייקונים מקוריים של Eagami UI. אייקוני Feather ניתנים גם לציור בקווים דקים או עבים יותר. לחצו על אייקון כדי להעתיק את הסלקטור שלו.',
@@ -392,7 +391,7 @@ export const he: WebMessages = {
       brandLinkLabel: 'משאבי מותגים',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | בינאום',
+      metaTitle: 'בינאום | Eagami UI',
       metaDescription:
         'טקסט מובנה של רכיבים ב-15 שפות, עם החלפה בזמן ריצה ודריסות לכל מחרוזת.',
       title: 'בינאום',
@@ -420,7 +419,7 @@ export const he: WebMessages = {
       demoLocaleLabel: 'שפה',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | נגישות',
+      metaTitle: 'נגישות | Eagami UI',
       metaDescription:
         'עמידה ב-WCAG 2.2 ברמה AA, תמיכה מלאה במקלדת ורכיבים ידידותיים לקוראי מסך, מאומתים עם כל שחרור.',
       title: 'נגישות',
@@ -465,6 +464,7 @@ export const he: WebMessages = {
         'כל רכיב נבדק מול כללי הנגישות המקובלים בתעשייה בכל שינוי, ושחרור יוצא רק כאשר כל בדיקה עוברת, כך שהנגישות שאתם רואים כאן נשמרת ככל שהספרייה מתפתחת.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `סימוכין לרכיב ${name} והדגמות חיות.`,
       demoHeading: 'הדגמה',
       notFoundTitle: 'הרכיב לא נמצא',

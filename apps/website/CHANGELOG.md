@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.13.0] - 2026-07-14
+
+### Added
+
+- Show a dimmed loading overlay when navigation takes more than a moment, highlight the destination link the instant it is clicked, and preload pages in the background so navigation stays fast on slow connections.
+
+### Changed
+
+- Improve page titles and meta descriptions across the docs for search and link sharing: titles now lead with the page topic (e.g. "Angular Button Component | Eagami UI"), and every page sets an Open Graph title.
+
 ## [3.12.0] - 2026-07-13
 
 ### Added
@@ -854,6 +864,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.13.0]: https://github.com/mwiraszka/eagami/compare/website-v3.12.0...website-v3.13.0
 [3.12.0]: https://github.com/mwiraszka/eagami/compare/website-v3.11.5...website-v3.12.0
 [3.11.5]: https://github.com/mwiraszka/eagami/compare/website-v3.11.4...website-v3.11.5
 [3.11.4]: https://github.com/mwiraszka/eagami/compare/website-v3.11.3...website-v3.11.4

@@ -222,6 +222,35 @@
         if (locale !== 'en') {
           document.documentElement.classList.add('web-locale-pending');
         }
+
+        // Internal-link clicks before Angular boots are held back by hydration
+        // event replay, so nothing in-app can indicate loading yet. Flag the
+        // click so the stylesheet's CSS-only overlay shows; the app removes the
+        // class once stable and its router-driven overlay takes over.
+        document.addEventListener(
+          'click',
+          function (e) {
+            if (document.documentElement.classList.contains('web-hydrated')) {
+              return;
+            }
+            if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+              return;
+            }
+            var el = e.target;
+            while (el && el.tagName !== 'A') {
+              el = el.parentElement;
+            }
+            if (!el || (el.target && el.target !== '_self')) {
+              return;
+            }
+            var href = el.getAttribute('href');
+            if (!href || href.charAt(0) !== '/') {
+              return;
+            }
+            document.documentElement.classList.add('web-nav-pending');
+          },
+          true,
+        );
       })();
     </script>
     <!-- Critical theme colors inlined so background and text paint in the correct

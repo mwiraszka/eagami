@@ -162,10 +162,9 @@ export const hi: WebMessages = {
     cta: 'होम पर वापस जाएं',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'चेंजलॉग',
-      metaTitle: 'Eagami | चेंजलॉग',
+      metaTitle: 'चेंजलॉग | Eagami UI',
       metaDescription: 'Eagami UI Angular कंपोनेंट लाइब्रेरी का रिलीज़ इतिहास।',
       lead: '@eagami/ui में उल्लेखनीय परिवर्तन, नवीनतम पहले।',
       migrationGuide: 'माइग्रेशन गाइड',
@@ -185,7 +184,7 @@ export const hi: WebMessages = {
       components: 'कंपोनेंट',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
       title: 'Eagami UI',
@@ -274,7 +273,7 @@ export const hi: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | सेटअप',
+      metaTitle: 'सेटअप | Eagami UI',
       metaDescription:
         '@eagami/ui इंस्टॉल करें और ग्लोबल स्टाइलशीट तथा फ़ॉन्ट को जोड़ें।',
       title: 'सेटअप',
@@ -301,7 +300,7 @@ export const hi: WebMessages = {
       tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | थीम बिल्डर',
+      metaTitle: 'थीम बिल्डर | Eagami UI',
       metaDescription:
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
@@ -328,7 +327,7 @@ export const hi: WebMessages = {
       exportCssLabel: 'CSS कस्टम प्रॉपर्टीज़',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | डिज़ाइन टोकन',
+      metaTitle: 'डिज़ाइन टोकन | Eagami UI',
       metaDescription:
         'रंगों, टाइपोग्राफी, स्पेसिंग, उन्नयन, आकार और गति के लिए CSS कस्टम प्रॉपर्टीज़।',
       title: 'डिज़ाइन टोकन',
@@ -376,7 +375,7 @@ export const hi: WebMessages = {
       motionEasings: 'ईज़िंग',
     },
     icons: {
-      metaTitle: 'Eagami | UI | आइकन',
+      metaTitle: 'आइकन | Eagami UI',
       metaDescription: '@eagami/ui के साथ बंडल किया गया आइकन सेट।',
       title: 'आइकन',
       lede: 'स्टैंडअलोन Angular कंपोनेंट जो अपना रंग विरासत में लेते हैं और <code>font-size</code> के साथ स्केल होते हैं, इसलिए वे किसी भी आकार पर रेंडर होते हैं। अधिकांश <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> द्वारा बनाए गए <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> से <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT लाइसेंस</span></a> के तहत प्राप्त किए गए हैं; शेष मूल Eagami UI आइकन हैं। Feather आइकन को पतले या मोटे स्ट्रोक के साथ भी बनाया जा सकता है। किसी आइकन का सेलेक्टर कॉपी करने के लिए उस पर क्लिक करें।',
@@ -397,7 +396,7 @@ export const hi: WebMessages = {
       brandLinkLabel: 'ब्रांड संसाधन',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | अंतर्राष्ट्रीयकरण',
+      metaTitle: 'अंतर्राष्ट्रीयकरण | Eagami UI',
       metaDescription:
         '15 लोकेल में अंतर्निहित कंपोनेंट टेक्स्ट, रनटाइम स्विचिंग और प्रति-स्ट्रिंग ओवरराइड के साथ।',
       title: 'अंतर्राष्ट्रीयकरण',
@@ -425,7 +424,7 @@ export const hi: WebMessages = {
       demoLocaleLabel: 'लोकेल',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | सुलभता',
+      metaTitle: 'सुलभता | Eagami UI',
       metaDescription:
         'WCAG 2.2 AA अनुरूपता, पूर्ण कीबोर्ड समर्थन और स्क्रीन-रीडर अनुकूल कंपोनेंट, हर रिलीज़ के साथ सत्यापित।',
       title: 'सुलभता',
@@ -470,6 +469,7 @@ export const hi: WebMessages = {
         'जब भी किसी कंपोनेंट में बदलाव होता है, उसे उद्योग के सुलभता नियमों के आधार पर जांचा जाता है, और रिलीज़ तभी शिप होती है जब हर जांच पास हो, इसलिए जो सुलभता आप यहां देखते हैं वह लाइब्रेरी के विकसित होने के साथ बनी रहती है।',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `${name} कंपोनेंट संदर्भ और लाइव डेमो।`,
       demoHeading: 'डेमो',
       notFoundTitle: 'कंपोनेंट नहीं मिला',

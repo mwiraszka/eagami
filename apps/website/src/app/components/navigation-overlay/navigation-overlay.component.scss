@@ -1,0 +1,29 @@
+.navigation-overlay {
+  z-index: var(--z-index-overlay);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-overlay);
+  animation: navigation-overlay-fade-in 0.2s ease;
+}
+
+@keyframes navigation-overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation-overlay {
+    animation: none;
+  }
+}

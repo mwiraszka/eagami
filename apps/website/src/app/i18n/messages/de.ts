@@ -166,10 +166,9 @@ export const de: WebMessages = {
     cta: 'Zurück zur Startseite',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Änderungsprotokoll',
-      metaTitle: 'Eagami | Änderungsprotokoll',
+      metaTitle: 'Änderungsprotokoll | Eagami UI',
       metaDescription: 'Versionsverlauf der Eagami UI Angular-Komponentenbibliothek.',
       lead: 'Wichtige Änderungen an @eagami/ui, neueste zuerst.',
       migrationGuide: 'Migrationsleitfaden',
@@ -189,7 +188,7 @@ export const de: WebMessages = {
       components: 'Komponenten',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Leichtgewichtige, barrierefreie Angular-Komponentenbibliothek auf Basis von CSS-Custom-Properties.',
       title: 'Eagami UI',
@@ -280,7 +279,7 @@ export const de: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Einrichtung',
+      metaTitle: 'Einrichtung | Eagami UI',
       metaDescription:
         'Installieren Sie @eagami/ui und binden Sie das globale Stylesheet sowie die Schriften ein.',
       title: 'Einrichtung',
@@ -307,7 +306,7 @@ export const de: WebMessages = {
       tokensLink: 'Design-Tokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Theme-Builder',
+      metaTitle: 'Theme-Builder | Eagami UI',
       metaDescription:
         'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
       title: 'Theme-Builder',
@@ -336,7 +335,7 @@ export const de: WebMessages = {
       exportCssLabel: 'CSS-Custom-Properties',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Design-Tokens',
+      metaTitle: 'Design-Tokens | Eagami UI',
       metaDescription:
         'CSS-Custom-Properties für Farben, Typografie, Abstände, Erhebung, Form und Bewegung.',
       title: 'Design-Tokens',
@@ -384,7 +383,7 @@ export const de: WebMessages = {
       motionEasings: 'Beschleunigungen',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Symbole',
+      metaTitle: 'Symbole | Eagami UI',
       metaDescription: 'Symbolsatz, der mit @eagami/ui gebündelt wird.',
       title: 'Symbole',
       lede: 'Eigenständige Angular-Komponenten, die ihre Farbe erben und mit <code>font-size</code> skalieren, sodass sie in jeder Größe gerendert werden. Die meisten stammen von <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> von <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> unter der <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-Lizenz</span></a>; die übrigen sind originale Eagami-UI-Symbole. Feather-Symbole können auch mit dünneren oder dickeren Strichen gezeichnet werden. Klicken Sie auf ein Symbol, um seinen Selektor zu kopieren.',
@@ -406,7 +405,7 @@ export const de: WebMessages = {
       brandLinkLabel: 'Markenressourcen',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Internationalisierung',
+      metaTitle: 'Internationalisierung | Eagami UI',
       metaDescription:
         'Integrierter Komponententext in 15 Sprachräumen, mit Umschaltung zur Laufzeit und Überschreibungen pro Zeichenkette.',
       title: 'Internationalisierung',
@@ -434,7 +433,7 @@ export const de: WebMessages = {
       demoLocaleLabel: 'Sprachraum',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Barrierefreiheit',
+      metaTitle: 'Barrierefreiheit | Eagami UI',
       metaDescription:
         'WCAG 2.2-AA-Konformität, vollständige Tastaturunterstützung und Screenreader-freundliche Komponenten, mit jeder Version geprüft.',
       title: 'Barrierefreiheit',
@@ -479,6 +478,7 @@ export const de: WebMessages = {
         'Jede Komponente wird bei jeder Änderung anhand branchenüblicher Barrierefreiheitsregeln geprüft, und eine Version erscheint nur, wenn jede Prüfung besteht, sodass die Barrierefreiheit, die Sie hier sehen, auch bei der Weiterentwicklung der Bibliothek Bestand hat.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `Referenz und Live-Demos zur Komponente ${name}.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Komponente nicht gefunden',

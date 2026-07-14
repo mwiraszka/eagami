@@ -167,10 +167,9 @@ export const el: WebMessages = {
     cta: 'Επιστροφή στην αρχική',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Αρχείο αλλαγών',
-      metaTitle: 'Eagami | Αρχείο αλλαγών',
+      metaTitle: 'Αρχείο αλλαγών | Eagami UI',
       metaDescription: 'Ιστορικό εκδόσεων της βιβλιοθήκης στοιχείων Angular Eagami UI.',
       lead: 'Αξιοσημείωτες αλλαγές στο @eagami/ui, οι πιο πρόσφατες πρώτα.',
       migrationGuide: 'Οδηγός μετάβασης',
@@ -190,7 +189,7 @@ export const el: WebMessages = {
       components: 'Συστατικά',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
       title: 'Eagami UI',
@@ -276,7 +275,7 @@ export const el: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Εγκατάσταση',
+      metaTitle: 'Εγκατάσταση | Eagami UI',
       metaDescription:
         'Εγκαταστήστε το @eagami/ui και συνδέστε το καθολικό φύλλο στυλ και τις γραμματοσειρές.',
       title: 'Εγκατάσταση',
@@ -303,7 +302,7 @@ export const el: WebMessages = {
       tokensLink: 'Tokens σχεδίασης σε JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Δημιουργός θέματος',
+      metaTitle: 'Δημιουργός θέματος | Eagami UI',
       metaDescription:
         'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
       title: 'Δημιουργός θέματος',
@@ -332,7 +331,7 @@ export const el: WebMessages = {
       exportCssLabel: 'Προσαρμοσμένες ιδιότητες CSS',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Tokens σχεδίασης',
+      metaTitle: 'Tokens σχεδίασης | Eagami UI',
       metaDescription:
         'Προσαρμοσμένες ιδιότητες CSS για χρώματα, τυπογραφία, αποστάσεις, ανύψωση, σχήμα και κίνηση.',
       title: 'Tokens σχεδίασης',
@@ -380,7 +379,7 @@ export const el: WebMessages = {
       motionEasings: 'Καμπύλες',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Εικονίδια',
+      metaTitle: 'Εικονίδια | Eagami UI',
       metaDescription: 'Σύνολο εικονιδίων που συνοδεύει το @eagami/ui.',
       title: 'Εικονίδια',
       lede: 'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο <code>font-size</code>, ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Τα περισσότερα προέρχονται από τα <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> του <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> υπό την <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>άδεια MIT</span></a>· τα υπόλοιπα είναι πρωτότυπα εικονίδια του Eagami UI. Τα εικονίδια Feather μπορούν επίσης να σχεδιαστούν με λεπτότερες ή παχύτερες γραμμές. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
@@ -402,7 +401,7 @@ export const el: WebMessages = {
       brandLinkLabel: 'Πόροι μάρκας',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Διεθνοποίηση',
+      metaTitle: 'Διεθνοποίηση | Eagami UI',
       metaDescription:
         'Ενσωματωμένα κείμενα συστατικών σε 15 γλώσσες, με εναλλαγή κατά την εκτέλεση και παρακάμψεις ανά συμβολοσειρά.',
       title: 'Διεθνοποίηση',
@@ -430,7 +429,7 @@ export const el: WebMessages = {
       demoLocaleLabel: 'Γλώσσα',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Προσβασιμότητα',
+      metaTitle: 'Προσβασιμότητα | Eagami UI',
       metaDescription:
         'Συμμόρφωση με WCAG 2.2 AA, πλήρης υποστήριξη πληκτρολογίου και συστατικά φιλικά προς τους αναγνώστες οθόνης, επαληθευμένα με κάθε έκδοση.',
       title: 'Προσβασιμότητα',
@@ -475,6 +474,7 @@ export const el: WebMessages = {
         'Κάθε συστατικό ελέγχεται με βάση τους κανόνες προσβασιμότητας του κλάδου κάθε φορά που αλλάζει, και μια έκδοση κυκλοφορεί μόνο όταν περάσουν όλοι οι έλεγχοι, οπότε η προσβασιμότητα που βλέπετε εδώ διατηρείται καθώς η βιβλιοθήκη εξελίσσεται.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `Αναφορά και ζωντανές επιδείξεις του συστατικού ${name}.`,
       demoHeading: 'Επίδειξη',
       notFoundTitle: 'Το συστατικό δεν βρέθηκε',

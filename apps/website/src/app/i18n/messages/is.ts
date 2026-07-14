@@ -162,10 +162,9 @@ export const is: WebMessages = {
     cta: 'Til baka á forsíðu',
   },
   ui: {
-    metaTitle: 'Eagami | UI',
     changelog: {
       title: 'Breytingaskrá',
-      metaTitle: 'Eagami | Breytingaskrá',
+      metaTitle: 'Breytingaskrá | Eagami UI',
       metaDescription: 'Útgáfusaga Eagami UI Angular íhlutasafnsins.',
       lead: 'Helstu breytingar á @eagami/ui, nýjustu fyrst.',
       migrationGuide: 'Flutningsleiðbeiningar',
@@ -185,7 +184,7 @@ export const is: WebMessages = {
       components: 'Einingar',
     },
     index: {
-      metaTitle: 'Eagami | UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
       title: 'Eagami UI',
@@ -274,7 +273,7 @@ export const is: WebMessages = {
       },
     },
     setup: {
-      metaTitle: 'Eagami | UI | Uppsetning',
+      metaTitle: 'Uppsetning | Eagami UI',
       metaDescription: 'Settu upp @eagami/ui og tengdu altæka stílblaðið og leturgerðir.',
       title: 'Uppsetning',
       ngAddLabel: 'Settu upp og stilltu allt með einni skipun:',
@@ -300,7 +299,7 @@ export const is: WebMessages = {
       tokensLink: 'Hönnunartóknar sem JSON',
     },
     themeBuilder: {
-      metaTitle: 'Eagami | UI | Þemasmiður',
+      metaTitle: 'Þemasmiður | Eagami UI',
       metaDescription:
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
@@ -328,7 +327,7 @@ export const is: WebMessages = {
       exportCssLabel: 'CSS sérsniðnar eigindir',
     },
     tokens: {
-      metaTitle: 'Eagami | UI | Hönnunartóknar',
+      metaTitle: 'Hönnunartóknar | Eagami UI',
       metaDescription:
         'CSS sérsniðnir eiginleikar fyrir liti, leturfræði, bil, upphækkun, lögun og hreyfingu.',
       title: 'Hönnunartóknar',
@@ -376,7 +375,7 @@ export const is: WebMessages = {
       motionEasings: 'Mýkingar',
     },
     icons: {
-      metaTitle: 'Eagami | UI | Táknmyndir',
+      metaTitle: 'Táknmyndir | Eagami UI',
       metaDescription: 'Táknmyndasett sem fylgir @eagami/ui.',
       title: 'Táknmyndir',
       lede: 'Sjálfstæðar Angular einingar sem erfa lit sinn og kvarðast með <code>font-size</code>, svo þær birtast í hvaða stærð sem er. Flestar eru leiddar af <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> eftir <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> undir <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT leyfinu</span></a>; afgangurinn eru frumlegar Eagami UI táknmyndir. Einnig má teikna Feather táknmyndir með þynnri eða þykkari strikum. Smelltu á táknmynd til að afrita veljara hennar.',
@@ -397,7 +396,7 @@ export const is: WebMessages = {
       brandLinkLabel: 'Vörumerkjaúrræði',
     },
     i18n: {
-      metaTitle: 'Eagami | UI | Alþjóðavæðing',
+      metaTitle: 'Alþjóðavæðing | Eagami UI',
       metaDescription:
         'Innbyggður einingatexti á 15 svæðum, með skiptingu á keyrslutíma og yfirskriftum fyrir einstakar strengi.',
       title: 'Alþjóðavæðing',
@@ -425,7 +424,7 @@ export const is: WebMessages = {
       demoLocaleLabel: 'Svæði',
     },
     accessibility: {
-      metaTitle: 'Eagami | UI | Aðgengi',
+      metaTitle: 'Aðgengi | Eagami UI',
       metaDescription:
         'WCAG 2.2 AA samræmi, fullur lyklaborðsstuðningur og einingar sem vinna vel með skjálesurum, staðfest með hverri útgáfu.',
       title: 'Aðgengi',
@@ -470,6 +469,7 @@ export const is: WebMessages = {
         'Hver eining er athuguð samkvæmt viðurkenndum aðgengisreglum í hvert sinn sem hún breytist, og útgáfa fer aðeins út þegar allar athuganir standast, svo aðgengið sem þú sérð hér helst þegar safnið þróast.',
     },
     component: {
+      metaTitle: name => `${name} | Eagami UI`,
       metaDescription: name => `Tilvísun fyrir ${name} einingu og lifandi sýnishorn.`,
       demoHeading: 'Sýnishorn',
       notFoundTitle: 'Eining fannst ekki',

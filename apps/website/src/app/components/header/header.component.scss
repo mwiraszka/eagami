@@ -83,7 +83,8 @@
     outline-offset: 2px;
   }
 
-  &--active {
+  &--active,
+  &.web-link-pending {
     color: var(--color-text-primary);
   }
 
