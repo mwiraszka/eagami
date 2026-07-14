@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.14.0] - 2026-07-14
+
+### Added
+
+- Document lazy locale loading on the internationalization page.
+
+### Changed
+
+- Download each language's dictionaries only when that language is first used, instead of shipping all 15 with the initial page, so the site loads faster, especially on slow connections.
+
 ## [3.13.0] - 2026-07-14
 
 ### Added
@@ -864,6 +874,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.14.0]: https://github.com/mwiraszka/eagami/compare/website-v3.13.0...website-v3.14.0
 [3.13.0]: https://github.com/mwiraszka/eagami/compare/website-v3.12.0...website-v3.13.0
 [3.12.0]: https://github.com/mwiraszka/eagami/compare/website-v3.11.5...website-v3.12.0
 [3.11.5]: https://github.com/mwiraszka/eagami/compare/website-v3.11.4...website-v3.11.5

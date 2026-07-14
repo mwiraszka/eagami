@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.0] - 2026-07-14
+
+### Added
+
+- Support lazy locale loading: register `localeLoaders` in `provideEagamiUi()` to fetch a language's dictionary on demand the first time it is activated, preload one with `EagamiI18nService.loadLocale()`, and fall back to English if a load fails.
+
 ## [5.6.2] - 2026-07-13
 
 ### Changed
@@ -987,6 +993,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.2...ui-v5.7.0
 [5.6.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.1...ui-v5.6.2
 [5.6.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.0...ui-v5.6.1
 [5.6.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.5.0...ui-v5.6.0

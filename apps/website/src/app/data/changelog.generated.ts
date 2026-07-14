@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.7.0',
+    date: '2026-07-14',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Support lazy locale loading: register `localeLoaders` in `provideEagamiUi()` to fetch a language's dictionary on demand the first time it is activated, preload one with `EagamiI18nService.loadLocale()`, and fall back to English if a load fails.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.6.2',
     date: '2026-07-13',
     sections: [
