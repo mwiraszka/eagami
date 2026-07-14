@@ -94,6 +94,16 @@ export const appConfig: ApplicationConfig = {
   providers: [provideEagamiUi({ locale: 'fr-FR', locales: [frFR] })],
 };`;
 
+  protected readonly lazyLoadingSnippet = `// locales/fr-FR.ts
+export { frFR } from '@eagami/ui';
+
+// app.config.ts
+provideEagamiUi({
+  localeLoaders: {
+    'fr-FR': () => import('./locales/fr-FR').then(m => m.frFR),
+  },
+});`;
+
   protected readonly runtimeSwitchSnippet = `import { EagamiI18nService } from '@eagami/ui';
 
 export class LanguageSwitcher {

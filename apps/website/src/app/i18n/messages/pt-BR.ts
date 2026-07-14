@@ -414,6 +414,9 @@ export const ptBR: WebMessages = {
       quickSetupHeading: 'Configuração rápida',
       quickSetupBefore:
         'Adicione <code>provideEagamiUi()</code> à configuração do seu aplicativo e registre os idiomas que você usa via <code>locales</code>. O inglês está sempre disponível, então você inclui apenas o que precisa.',
+      lazyHeading: 'Carregamento sob demanda',
+      lazyBefore:
+        'Registre <code>localeLoaders</code> em vez de <code>locales</code>: um idioma é baixado na primeira vez em que se torna ativo e fica fora do bundle inicial. Aponte cada loader para um módulo que reexporta um único pacote de idioma e pré-carregue com <code>loadLocale()</code> quando a troca precisar ser instantânea.',
       liveDemoHeading: 'Demonstração ao vivo',
       liveDemoIntro:
         'Escolha um idioma e veja os componentes abaixo adotarem as strings correspondentes e a formatação de data.',

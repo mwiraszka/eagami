@@ -413,6 +413,9 @@ export const pl: WebMessages = {
       quickSetupHeading: 'Szybka konfiguracja',
       quickSetupBefore:
         'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze dostępny, więc dostarczasz tylko to, czego potrzebujesz.',
+      lazyHeading: 'Leniwe ładowanie',
+      lazyBefore:
+        'Zarejestruj <code>localeLoaders</code> zamiast <code>locales</code>: język jest pobierany przy pierwszej aktywacji i nie trafia do początkowej paczki. Skieruj każdy loader na moduł reeksportujący pojedynczy pakiet językowy, a gdy przełączenie ma być natychmiastowe, załaduj go wcześniej przez <code>loadLocale()</code>.',
       liveDemoHeading: 'Demo na żywo',
       liveDemoIntro:
         'Wybierz język i obserwuj, jak poniższe komponenty przyjmują pasujące ciągi i formatowanie dat.',

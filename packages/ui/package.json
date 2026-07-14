@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "5.6.2",
+  "version": "5.7.0",
   "description": "Lightweight, accessible, themeable Angular UI component library and icon set built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",

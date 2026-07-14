@@ -413,6 +413,9 @@ export const nl: WebMessages = {
       quickSetupHeading: 'Snelle installatie',
       quickSetupBefore:
         'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd beschikbaar, dus je levert alleen wat je nodig hebt.',
+      lazyHeading: 'Lazy loading',
+      lazyBefore:
+        'Registreer <code>localeLoaders</code> in plaats van <code>locales</code>: een taal wordt pas opgehaald zodra die actief wordt en blijft zo buiten de initiële bundel. Laat elke loader wijzen naar een module die één taalpakket herexporteert, en laad vooraf met <code>loadLocale()</code> als het wisselen direct moet gebeuren.',
       liveDemoHeading: 'Live demo',
       liveDemoIntro:
         'Kies een taal en zie hoe de onderstaande componenten de bijbehorende teksten en datumopmaak overnemen.',

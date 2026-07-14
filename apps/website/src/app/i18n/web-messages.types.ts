@@ -287,6 +287,8 @@ export interface WebMessages {
       supportedFallback: string;
       quickSetupHeading: string;
       quickSetupBefore: string;
+      lazyHeading: string;
+      lazyBefore: string;
       liveDemoHeading: string;
       liveDemoIntro: string;
       runtimeSwitchHeading: string;

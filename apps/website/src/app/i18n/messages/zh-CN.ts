@@ -393,6 +393,9 @@ export const zhCN: WebMessages = {
       quickSetupHeading: '快速设置',
       quickSetupBefore:
         '将 <code>provideEagamiUi()</code> 添加到你的应用配置中，并通过 <code>locales</code> 注册你使用的语言。英语始终可用，因此你只需打包所需的内容。',
+      lazyHeading: '按需加载',
+      lazyBefore:
+        '注册 <code>localeLoaders</code> 而非 <code>locales</code>:语言在首次启用时才会下载,不会进入初始包。将每个加载器指向仅重新导出单个语言包的模块;如需立即切换,可先用 <code>loadLocale()</code> 预加载。',
       liveDemoHeading: '实时演示',
       liveDemoIntro: '选择一种语言，看看下方组件如何采用对应的字符串和日期格式。',
       runtimeSwitchHeading: '运行时切换',

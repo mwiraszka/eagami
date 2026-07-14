@@ -1,17 +1,11 @@
 import { EagamiI18nService } from '@eagami/ui';
 
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import {
-  Injectable,
-  PLATFORM_ID,
-  type Signal,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import { Injectable, PLATFORM_ID, type Signal, inject, signal } from '@angular/core';
 
+import { WEB_LOCALE_CHUNKS } from './locale-chunks';
 import { WEB_LOCALES, WEB_LOCALE_DIRS, type WebLocale } from './locale.types';
-import { WEB_MESSAGES } from './messages';
+import { en } from './messages/en';
 import type { WebMessages } from './web-messages.types';
 
 const STORAGE_KEY = 'web-locale';
@@ -24,7 +18,10 @@ function isWebLocale(value: unknown): value is WebLocale {
  * Holds the active website locale, persists it across reloads (matches the
  * theme service's pattern), keeps the document `lang` attribute in sync, and
  * forwards the locale to the embedded `EagamiI18nService` so the bundled UI
- * library translates in lockstep with the website chrome.
+ * library translates in lockstep with the website chrome. Only English ships
+ * in the initial bundle; every other locale's dictionaries (website and
+ * library together) load as one lazy chunk, and both services switch in the
+ * same tick once it arrives so the page never renders mixed languages.
  */
 @Injectable({ providedIn: 'root' })
 export class WebI18nService {
@@ -34,24 +31,27 @@ export class WebI18nService {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   /* Read localStorage during signal init (not in the constructor) so the first
-     render already speaks the persisted locale. Reading after construction
-     would briefly render the prerendered English content before re-rendering
-     in the active locale. The matching inline script in `index.html` mirrors
-     this for the `<html lang>` attribute so screen readers and the parser
-     pick up the right language before hydration. */
+     render already reports the persisted locale. The matching inline script in
+     `index.html` mirrors this for the `<html lang>` attribute so screen
+     readers and the parser pick up the right language before hydration. */
   private readonly _locale = signal<WebLocale>(this.readStoredLocale());
+  private readonly _messages = signal<WebMessages>(en);
+  private readonly _applied = signal(false);
+
+  private pendingLocale: WebLocale | null = null;
 
   /** The currently active locale. Reactive. */
   public readonly locale: Signal<WebLocale> = this._locale.asReadonly();
 
   /** The resolved message dictionary for the active locale. */
-  public readonly messages: Signal<WebMessages> = computed(
-    () => WEB_MESSAGES[this._locale()],
-  );
+  public readonly messages: Signal<WebMessages> = this._messages.asReadonly();
+
+  /** True once the active locale's dictionaries are loaded and applied. */
+  public readonly applied: Signal<boolean> = this._applied.asReadonly();
 
   constructor() {
     if (this.isBrowser) {
-      this.applyLocale();
+      void this.applyLocale(this._locale());
     }
   }
 
@@ -59,8 +59,45 @@ export class WebI18nService {
     if (!isWebLocale(locale)) {
       return;
     }
+    void this.applyLocale(locale);
+  }
+
+  private async applyLocale(requested: WebLocale): Promise<void> {
+    this.pendingLocale = requested;
+    let locale = requested;
+    let messages = en;
+    if (requested !== 'en') {
+      try {
+        const [chunk] = await Promise.all([
+          WEB_LOCALE_CHUNKS[requested](),
+          this.eagamiI18n.loadLocale(requested),
+        ]);
+        messages = chunk.web;
+      } catch {
+        // Chunk fetch failed (e.g. offline): fall back to the bundled English
+        // rather than stranding the page half-translated
+        locale = 'en';
+      }
+    }
+    if (this.pendingLocale !== requested) {
+      return;
+    }
+    this.pendingLocale = null;
+
+    // Both dictionaries are registered by now, so all three signals flip in
+    // the same tick and the library switches synchronously in lockstep
+    void this.eagamiI18n.setLocale(locale);
     this._locale.set(locale);
-    this.applyLocale();
+    this._messages.set(messages);
+
+    localStorage.setItem(STORAGE_KEY, locale);
+    this.doc.documentElement.setAttribute('lang', locale);
+    this.doc.documentElement.setAttribute('dir', WEB_LOCALE_DIRS[locale]);
+    /* The `web-locale-pending` class set by the inline <head> script is NOT
+       removed here: that would fire before Angular re-renders with the new
+       strings, flashing the English prerendered DOM. AppComponent clears it
+       after the render that follows `applied` flipping true. */
+    this._applied.set(true);
   }
 
   private readStoredLocale(): WebLocale {
@@ -99,25 +136,5 @@ export class WebI18nService {
       }
     }
     return 'en';
-  }
-
-  private applyLocale(): void {
-    const locale = this._locale();
-    this.eagamiI18n.setLocale(locale);
-
-    if (!this.isBrowser) {
-      return;
-    }
-
-    localStorage.setItem(STORAGE_KEY, locale);
-    this.doc.documentElement.setAttribute('lang', locale);
-    this.doc.documentElement.setAttribute('dir', WEB_LOCALE_DIRS[locale]);
-    /* The `web-locale-pending` class set by the inline <head> script is NOT
-       removed here. Doing so in the service constructor would fire before
-       Angular has re-rendered components with the active locale's strings,
-       so the English prerendered DOM would briefly show through the moment
-       it became visible. AppComponent clears the class from an
-       `afterNextRender` callback instead, after the first render commits
-       in the active locale. */
   }
 }

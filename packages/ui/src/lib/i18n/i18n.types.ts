@@ -300,6 +300,9 @@ export interface EagamiLocaleBundle {
   messages: EagamiMessages;
 }
 
+/** Lazily resolves a locale's dictionary, typically via a dynamic `import()`. */
+export type EagamiLocaleLoader = () => Promise<EagamiLocaleBundle>;
+
 /** Configuration accepted by `provideEagamiUi()`. */
 export interface EagamiI18nConfig {
   /** Initial locale. Defaults to `'en'`. Falls back to English if not registered. */
@@ -310,6 +313,14 @@ export interface EagamiI18nConfig {
    * to keep your bundle lean.
    */
   locales?: readonly EagamiLocaleBundle[];
+  /**
+   * Lazy loaders for locale dictionaries, keyed by locale. A locale with a
+   * loader stays out of the initial bundle and is fetched the first time it
+   * is activated via `setLocale()` (or preloaded via `loadLocale()`). Point
+   * each loader at a module that re-exports a single locale bundle so the
+   * bundler emits one chunk per locale.
+   */
+  localeLoaders?: Partial<Record<EagamiLocale, EagamiLocaleLoader>>;
   /** Optional per-string overrides merged over the active locale's messages. */
   messages?: EagamiMessagesOverride;
 }

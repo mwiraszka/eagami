@@ -403,6 +403,9 @@ export const ar: WebMessages = {
       quickSetupHeading: 'إعداد سريع',
       quickSetupBefore:
         'أضف <code>provideEagamiUi()</code> إلى إعدادات تطبيقك وسجّل اللغات التي تستخدمها عبر <code>locales</code>. الإنجليزية متاحة دائمًا، لذا لا تشحن إلا ما تحتاج إليه.',
+      lazyHeading: 'التحميل الكسول',
+      lazyBefore:
+        'سجّل <code>localeLoaders</code> بدلاً من <code>locales</code>: تُجلب اللغة عند تفعيلها لأول مرة وتبقى خارج الحزمة الأولية. وجّه كل مُحمّل إلى وحدة تعيد تصدير حزمة لغة واحدة، وحمّل مسبقًا عبر <code>loadLocale()</code> عندما يلزم أن يكون التبديل فوريًا.',
       liveDemoHeading: 'عرض حي',
       liveDemoIntro:
         'اختر لغة وراقب المكوّنات أدناه وهي تلتقط السلاسل المطابقة وتنسيق التاريخ.',

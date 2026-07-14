@@ -406,6 +406,9 @@ export const en: WebMessages = {
       quickSetupHeading: 'Quick setup',
       quickSetupBefore:
         'Add <code>provideEagamiUi()</code> to your app config and register the languages you use via <code>locales</code>. English is always available, so you ship only what you need.',
+      lazyHeading: 'Lazy loading',
+      lazyBefore:
+        'Register <code>localeLoaders</code> instead of <code>locales</code> and a language is fetched the first time it becomes active, keeping it out of the initial bundle. Point each loader at a module that re-exports one locale bundle, and preload with <code>loadLocale()</code> when the switch needs to be instant.',
       liveDemoHeading: 'Live demo',
       liveDemoIntro:
         'Pick a locale and watch the components below pick up the matching strings and date formatting.',
