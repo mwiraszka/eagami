@@ -3,8 +3,24 @@ import { TestBed } from '@angular/core/testing';
 import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
 import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
-import { EAGAMI_LOCALES, EAGAMI_LOCALE_META, type EagamiLocale } from './i18n.types';
-import { EAGAMI_ALL_LOCALES, frFR } from './messages';
+import {
+  EAGAMI_LOCALES,
+  EAGAMI_LOCALE_META,
+  type EagamiLocale,
+  type EagamiLocaleBundle,
+} from './i18n.types';
+import { EAGAMI_ALL_LOCALES, de, frFR } from './messages';
+
+function deferredBundle(): {
+  promise: Promise<EagamiLocaleBundle>;
+  resolve: (bundle: EagamiLocaleBundle) => void;
+} {
+  let resolve!: (bundle: EagamiLocaleBundle) => void;
+  const promise = new Promise<EagamiLocaleBundle>(res => {
+    resolve = res;
+  });
+  return { promise, resolve };
+}
 
 describe('EagamiI18nService', () => {
   function createService(
@@ -81,6 +97,97 @@ describe('EagamiI18nService', () => {
 
     expect(service.locale()).toBe('en');
     expect(service.messages().alert.dismiss).toBe('Dismiss');
+  });
+
+  it('loads a locale on demand through its loader', async () => {
+    const loader = vi.fn(() => Promise.resolve(frFR));
+    const service = createService({ localeLoaders: { 'fr-FR': loader } });
+
+    await service.setLocale('fr-FR');
+
+    expect(loader).toHaveBeenCalledTimes(1);
+    expect(service.locale()).toBe('fr-FR');
+    expect(service.messages().dialog.close).toBe('Fermer la boîte de dialogue');
+  });
+
+  it('keeps the active locale until a lazy load resolves', async () => {
+    const load = deferredBundle();
+    const service = createService({ localeLoaders: { 'fr-FR': () => load.promise } });
+
+    const switched = service.setLocale('fr-FR');
+
+    expect(service.locale()).toBe('en');
+
+    load.resolve(frFR);
+    await switched;
+
+    expect(service.locale()).toBe('fr-FR');
+  });
+
+  it('lets the newest setLocale supersede an in-flight lazy switch', async () => {
+    const load = deferredBundle();
+    const service = createService({
+      locales: [de],
+      localeLoaders: { 'fr-FR': () => load.promise },
+    });
+
+    const superseded = service.setLocale('fr-FR');
+    await service.setLocale('de');
+    load.resolve(frFR);
+    await superseded;
+
+    expect(service.locale()).toBe('de');
+  });
+
+  it('preloads via loadLocale without switching, then switches instantly', async () => {
+    const loader = vi.fn(() => Promise.resolve(frFR));
+    const service = createService({ localeLoaders: { 'fr-FR': loader } });
+
+    await service.loadLocale('fr-FR');
+
+    expect(service.locale()).toBe('en');
+
+    await service.setLocale('fr-FR');
+
+    expect(loader).toHaveBeenCalledTimes(1);
+    expect(service.locale()).toBe('fr-FR');
+  });
+
+  it('shares one in-flight load between concurrent requests', async () => {
+    const load = deferredBundle();
+    const loader = vi.fn(() => load.promise);
+    const service = createService({ localeLoaders: { 'fr-FR': loader } });
+
+    const preload = service.loadLocale('fr-FR');
+    const switched = service.setLocale('fr-FR');
+    load.resolve(frFR);
+    await Promise.all([preload, switched]);
+
+    expect(loader).toHaveBeenCalledTimes(1);
+    expect(service.locale()).toBe('fr-FR');
+  });
+
+  it('falls back to English when a locale loader fails', async () => {
+    const service = createService({
+      locale: 'de',
+      locales: [de],
+      localeLoaders: { 'fr-FR': () => Promise.reject(new Error('offline')) },
+    });
+
+    await service.setLocale('fr-FR');
+
+    expect(service.locale()).toBe('en');
+  });
+
+  it('activates a lazily loaded initial locale once it arrives', async () => {
+    const service = createService({
+      locale: 'fr-FR',
+      localeLoaders: { 'fr-FR': () => Promise.resolve(frFR) },
+    });
+
+    expect(service.locale()).toBe('en');
+
+    await vi.waitFor(() => expect(service.locale()).toBe('fr-FR'));
   });
 
   it('applies per-string overrides over the active locale', () => {

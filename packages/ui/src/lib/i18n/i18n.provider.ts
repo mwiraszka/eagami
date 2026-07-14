@@ -49,12 +49,22 @@ export const EAGAMI_I18N_CONFIG = new InjectionToken<EagamiI18nConfig>(
  *
  * Optional. Without it, the library defaults to English and ships its
  * built-in brand colours. Only English is bundled until you register more
- * languages via `locales` (pass `EAGAMI_ALL_LOCALES` for all of them).
+ * languages via `locales` (pass `EAGAMI_ALL_LOCALES` for all of them), or
+ * keep them out of the initial bundle entirely with `localeLoaders`:
+ *
+ * ```ts
+ * provideEagamiUi({
+ *   localeLoaders: {
+ *     'fr-FR': () => import('./i18n/fr-FR').then(m => m.frFR),
+ *   },
+ * });
+ * ```
  */
 export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProviders {
   const i18nConfig: EagamiI18nConfig = {
     locale: config.locale,
     locales: config.locales,
+    localeLoaders: config.localeLoaders,
     messages: config.messages,
   };
 
