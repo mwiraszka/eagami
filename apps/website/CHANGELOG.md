@@ -4,6 +4,10 @@ All notable changes to eagami.com are documented in this file.
 
 ## [3.13.0] - 2026-07-14
 
+### Added
+
+- Show a dimmed loading overlay when navigation takes more than a moment, highlight the destination link the instant it is clicked, and preload pages in the background so navigation stays fast on slow connections.
+
 ### Changed
 
 - Improve page titles and meta descriptions across the docs for search and link sharing: titles now lead with the page topic (e.g. "Angular Button Component | Eagami UI"), and every page sets an Open Graph title.

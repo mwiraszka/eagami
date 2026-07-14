@@ -14,6 +14,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 
 import { LocaleSwitcherComponent } from '@app/components/locale-switcher/locale-switcher.component';
 import { ThemeToggleComponent } from '@app/components/theme-toggle/theme-toggle.component';
+import { PendingLinkDirective } from '@app/directives/pending-link.directive';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 @Component({
@@ -23,6 +24,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   imports: [
     EagamiIconComponent,
     LocaleSwitcherComponent,
+    PendingLinkDirective,
     RouterLink,
     RouterLinkActive,
     ThemeToggleComponent,

@@ -15,6 +15,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { FooterComponent } from '@app/components/footer/footer.component';
 import { HeaderComponent } from '@app/components/header/header.component';
+import { NavigationOverlayComponent } from '@app/components/navigation-overlay/navigation-overlay.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { ToastOutletService } from '@app/services/toast-outlet.service';
 
@@ -22,7 +23,13 @@ import { ToastOutletService } from '@app/services/toast-outlet.service';
   selector: 'web-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [FooterComponent, HeaderComponent, RouterOutlet, ToastComponent],
+  imports: [
+    FooterComponent,
+    HeaderComponent,
+    NavigationOverlayComponent,
+    RouterOutlet,
+    ToastComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
@@ -55,6 +62,10 @@ export class AppComponent {
       )
       .subscribe(() => {
         this.doc.documentElement.classList.remove('web-locale-pending');
+        // Hand pre-hydration navigation feedback (index.html click listener)
+        // over to the router-driven overlay
+        this.doc.documentElement.classList.remove('web-nav-pending');
+        this.doc.documentElement.classList.add('web-hydrated');
       });
   }
 }
