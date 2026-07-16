@@ -2,6 +2,7 @@ import {
   type DataTableColumn,
   DataTableComponent,
   type DataTableDensity,
+  type DataTableSize,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -28,6 +29,7 @@ interface DataTableKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   density: DataTableDensity;
+  size: DataTableSize;
   striped: boolean;
   bordered: boolean;
   hoverable: boolean;

@@ -2,6 +2,7 @@ import {
   ButtonComponent,
   type ToastPosition,
   ToastService,
+  type ToastSize,
   type ToastVariant,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
@@ -81,6 +82,7 @@ export class ToastDemoPageComponent implements OnDestroy {
   private syncOutlet(): void {
     const current = this.state();
     this.toastOutlet.position.set(current['position'] as ToastPosition);
+    this.toastOutlet.size.set(current['size'] as ToastSize);
     this.toastOutlet.clearable.set(current['clearable'] as boolean);
   }
 }

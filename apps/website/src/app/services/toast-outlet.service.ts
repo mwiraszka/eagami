@@ -1,4 +1,4 @@
-import { type ToastPosition } from '@eagami/ui';
+import { type ToastPosition, type ToastSize } from '@eagami/ui';
 
 import { Injectable, type Signal, computed, inject, signal } from '@angular/core';
 
@@ -16,6 +16,7 @@ export class ToastOutletService {
   private readonly i18n = inject(WebI18nService);
 
   readonly position = signal<ToastPosition>('bottom-right');
+  readonly size = signal<ToastSize>('md');
   readonly clearable = signal<boolean>(true);
 
   // Inline style the UI playground applies (font-family custom properties) so
@@ -40,6 +41,7 @@ export class ToastOutletService {
 
   reset(): void {
     this.position.set('bottom-right');
+    this.size.set('md');
     this.clearable.set(true);
     this.directionOverride.set(null);
     this.style.set({});

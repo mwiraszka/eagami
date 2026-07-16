@@ -1025,6 +1025,7 @@ export const frFR: WebMessages = {
             required: 'Requis',
           },
           'form-field': {
+            size: 'Taille',
             label: 'Libellé',
             hint: 'Indication',
             required: 'Requis',
@@ -1210,6 +1211,7 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle de la frise chronologique.',
           },
           toast: {
+            size: 'Taille visuelle appliquée à chaque toast de la pile.',
             position: 'Coin ou bord de la fenêtre où la pile de toasts est ancrée.',
             clearable: 'Affiche un bouton de fermeture sur chaque toast.',
           },
@@ -1274,6 +1276,7 @@ export const frFR: WebMessages = {
             focus: 'Place le focus clavier sur le champ natif sous-jacent.',
           },
           accordion: {
+            size: "Taille visuelle de l'accordéon ; chaque élément en hérite.",
             multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
             headingLevel:
               'Niveau de titre (1-6) appliqué à chaque en-tête d’élément, pour que l’accordéon s’insère dans le plan de la page.',
@@ -1805,6 +1808,7 @@ export const frFR: WebMessages = {
             toggle: 'Bascule la popover du calendrier entre ouvert et fermé.',
           },
           menu: {
+            size: 'Taille visuelle du menu ; chaque élément en hérite.',
             maxHeight:
               'Hauteur maximale de la liste défilante (longueur CSS) ; les menus plus hauts défilent au-delà.',
             ariaLabel:
@@ -1925,6 +1929,7 @@ export const frFR: WebMessages = {
               'Retourne une clé de suivi stable pour un fichier, utilisée en interne par la liste de fichiers.',
           },
           'form-field': {
+            size: 'Taille visuelle du champ ; le libellé, le texte du contrôle, les espacements et les messages évoluent avec elle.',
             errorMsg:
               "Message d'erreur affiché sous le contrôle, remplaçant l'indication et marquant le champ comme invalide.",
             hint: "Texte d'aide affiché sous le contrôle, masqué en cas d'erreur.",
@@ -1967,6 +1972,7 @@ export const frFR: WebMessages = {
             value: 'Clé unique qui identifie cet élément dans son accordéon parent.',
           },
           breadcrumbs: {
+            size: "Taille visuelle du fil d'Ariane.",
             ariaLabel:
               "Libellé accessible de la navigation de fil d'Ariane, basculant sur la traduction de la locale active si omis.",
             items:
@@ -1998,6 +2004,7 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
+            size: 'Taille visuelle du tableau ; les marges de densité et les icônes évoluent avec elle.',
             clickable:
               'Marque les lignes de données comme cliquables : affiche un curseur en forme de main et émet rowActivate au clic ou avec Entrée/Espace.',
             rowActivate:

@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.0',
+    date: '2026-07-16',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a size input to the menu, accordion, breadcrumbs, data table, form field, and toast components, scaling all inner text, paddings, and icons proportionally from the shared font-size scale; menu items and accordion items inherit the size from their parent.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** the menu, accordion, breadcrumbs, data table, and toast components now default to the shared md font scale (16px) instead of their previous fixed 14px text, so they render slightly larger out of the box; pass `size="sm"` to keep the old appearance.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.7.0',
     date: '2026-07-14',
     sections: [

@@ -1004,6 +1004,7 @@ export const en: WebMessages = {
             required: 'Required',
           },
           'form-field': {
+            size: 'Size',
             label: 'Label',
             hint: 'Hint',
             required: 'Required',
@@ -1189,6 +1190,7 @@ export const en: WebMessages = {
             size: 'Visual size of the timeline.',
           },
           toast: {
+            size: 'Visual size applied to every toast in the stack.',
             position: 'Viewport corner or edge the toast stack is pinned to.',
             clearable: 'Show a dismiss button on each toast.',
           },
@@ -1251,6 +1253,7 @@ export const en: WebMessages = {
             focus: 'Moves keyboard focus to the underlying native input.',
           },
           accordion: {
+            size: 'Visual size of the accordion; every item inherits it.',
             multi: 'Allows multiple items to stay expanded at once.',
             headingLevel:
               'Heading level (1-6) applied to every item header, so the accordion slots into the page outline.',
@@ -1740,6 +1743,7 @@ export const en: WebMessages = {
             toggle: 'Toggles the calendar popover between open and closed.',
           },
           menu: {
+            size: 'Visual size of the menu; every item inherits it.',
             maxHeight:
               'Maximum height of the scrollable list as a CSS length; taller menus scroll past it.',
             ariaLabel:
@@ -1846,6 +1850,7 @@ export const en: WebMessages = {
               'Returns a stable track key for a file, used internally by the file list.',
           },
           'form-field': {
+            size: 'Visual size of the field; the label, control text, spacing, and messages scale with it.',
             errorMsg:
               'Error message shown below the control, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the control, hidden while an error is showing.',
@@ -1886,6 +1891,7 @@ export const en: WebMessages = {
             value: 'Unique key that identifies this item within its parent accordion.',
           },
           breadcrumbs: {
+            size: 'Visual size of the breadcrumb trail.',
             ariaLabel:
               "Accessible label for the breadcrumb nav, falling back to the active locale's translation when omitted.",
             items:
@@ -1913,6 +1919,7 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown.',
           },
           'data-table': {
+            size: 'Visual size of the table; density paddings and icons scale with it.',
             clickable:
               'Marks body rows as clickable: shows a pointer cursor and emits rowActivate on click or Enter/Space.',
             rowActivate:

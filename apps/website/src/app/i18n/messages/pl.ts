@@ -1020,6 +1020,7 @@ export const pl: WebMessages = {
             required: 'Wymagane',
           },
           'form-field': {
+            size: 'Rozmiar',
             label: 'Etykieta',
             hint: 'Podpowiedź',
             required: 'Wymagane',
@@ -1205,6 +1206,7 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar osi czasu.',
           },
           toast: {
+            size: 'Wizualny rozmiar stosowany do każdego powiadomienia w stosie.',
             position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
             clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
           },
@@ -1267,6 +1269,7 @@ export const pl: WebMessages = {
             focus: 'Przenosi fokus klawiatury na natywne pole bazowe.',
           },
           accordion: {
+            size: 'Wizualny rozmiar akordeonu; każdy element go dziedziczy.',
             multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',
             headingLevel:
               'Poziom nagłówka (1-6) stosowany do nagłówka każdego elementu, dzięki czemu akordeon wpasowuje się w konspekt strony.',
@@ -1788,6 +1791,7 @@ export const pl: WebMessages = {
             toggle: 'Przełącza popover kalendarza między otwarciem a zamknięciem.',
           },
           menu: {
+            size: 'Wizualny rozmiar menu; każdy element go dziedziczy.',
             maxHeight:
               'Maksymalna wysokość przewijanej listy jako długość CSS; wyższe menu są przewijane.',
             ariaLabel:
@@ -1895,6 +1899,7 @@ export const pl: WebMessages = {
               'Zwraca stabilny klucz śledzenia pliku, używany wewnętrznie przez listę plików.',
           },
           'form-field': {
+            size: 'Wizualny rozmiar pola; etykieta, tekst kontrolki, odstępy i komunikaty skalują się wraz z nim.',
             errorMsg:
               'Komunikat o błędzie pod kontrolką, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod kontrolką, ukryty gdy występuje błąd.',
@@ -1937,6 +1942,7 @@ export const pl: WebMessages = {
             value: 'Unikalny klucz identyfikujący ten element w nadrzędnym akordeonie.',
           },
           breadcrumbs: {
+            size: 'Wizualny rozmiar ścieżki okruszkowej.',
             ariaLabel:
               'Dostępna etykieta nawigacji okruszkowej, domyślnie używająca tłumaczenia aktywnej lokalizacji gdy pominięta.',
             items:
@@ -1966,6 +1972,7 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            size: 'Wizualny rozmiar tabeli; wypełnienia gęstości i ikony skalują się wraz z nim.',
             clickable:
               'Oznacza wiersze danych jako klikalne: pokazuje kursor wskaźnika i emituje rowActivate po kliknięciu lub Enter/Spacji.',
             rowActivate:

@@ -1013,6 +1013,7 @@ export const nl: WebMessages = {
             required: 'Verplicht',
           },
           'form-field': {
+            size: 'Grootte',
             label: 'Label',
             hint: 'Hint',
             required: 'Verplicht',
@@ -1198,6 +1199,7 @@ export const nl: WebMessages = {
             size: 'Visuele grootte van de tijdlijn.',
           },
           toast: {
+            size: 'Visuele grootte toegepast op elke toast in de stapel.',
             position: 'Hoek of rand van de viewport waaraan de toaststapel is vastgezet.',
             clearable: 'Toon een sluitknop op elke toast.',
           },
@@ -1262,6 +1264,7 @@ export const nl: WebMessages = {
             focus: 'Verplaatst de toetsenbordfocus naar het onderliggende native veld.',
           },
           accordion: {
+            size: 'Visuele grootte van de accordeon; elk item erft deze.',
             multi: 'Staat toe dat meerdere items tegelijk uitgevouwen blijven.',
             headingLevel:
               'Kopniveau (1-6) toegepast op elke itemkoptekst, zodat het accordeon in de paginastructuur past.',
@@ -1797,6 +1800,7 @@ export const nl: WebMessages = {
             toggle: 'Wisselt de kalenderpopover tussen open en gesloten.',
           },
           menu: {
+            size: 'Visuele grootte van het menu; elk item erft deze.',
             maxHeight:
               "Maximale hoogte van de scrollbare lijst als CSS-lengte; hogere menu's scrollen daarbuiten.",
             ariaLabel:
@@ -1914,6 +1918,7 @@ export const nl: WebMessages = {
               'Geeft een stabiele tracksleutel voor een bestand terug, intern gebruikt door de bestandslijst.',
           },
           'form-field': {
+            size: 'Visuele grootte van het veld; het label, de tekst van het besturingselement, de afstanden en de meldingen schalen mee.',
             errorMsg:
               'Foutmelding onder het besturingselement, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het besturingselement, verborgen terwijl een fout wordt getoond.',
@@ -1957,6 +1962,7 @@ export const nl: WebMessages = {
               'Unieke sleutel die dit item identificeert binnen zijn bovenliggende accordion.',
           },
           breadcrumbs: {
+            size: 'Visuele grootte van het broodkruimelpad.',
             ariaLabel:
               'Toegankelijk label voor de broodkruimelnavigatie, dat terugvalt op de vertaling van de actieve taal indien weggelaten.',
             items:
@@ -1987,6 +1993,7 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
+            size: 'Visuele grootte van de tabel; dichtheidsopvulling en pictogrammen schalen mee.',
             clickable:
               'Markeert gegevensrijen als klikbaar: toont een aanwijzer en activeert rowActivate bij klik of Enter/Spatie.',
             rowActivate:

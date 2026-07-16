@@ -1015,6 +1015,7 @@ export const is: WebMessages = {
             required: 'Krafist',
           },
           'form-field': {
+            size: 'Stærð',
             label: 'Merkimiði',
             hint: 'Vísbending',
             required: 'Krafist',
@@ -1200,6 +1201,7 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð tímalínunnar.',
           },
           toast: {
+            size: 'Sjónræn stærð sem gildir um hverja tilkynningu í staflanum.',
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
             clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',
           },
@@ -1260,6 +1262,7 @@ export const is: WebMessages = {
             focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða reitinn.',
           },
           accordion: {
+            size: 'Sjónræn stærð harmonikkunnar; hvert atriði erfir hana.',
             multi: 'Leyfir mörgum atriðum að vera útbreidd í einu.',
             headingLevel:
               'Fyrirsagnarstig (1-6) sett á haus hvers atriðis, svo harmonikkan passi í uppbyggingu síðunnar.',
@@ -1762,6 +1765,7 @@ export const is: WebMessages = {
             toggle: 'Víxlar dagatalssprettiglugganum milli opins og lokaðs.',
           },
           menu: {
+            size: 'Sjónræn stærð valmyndarinnar; hvert atriði erfir hana.',
             maxHeight:
               'Hámarkshæð skrunlistans sem CSS-lengd; hærri valmyndir skruna umfram hana.',
             ariaLabel:
@@ -1869,6 +1873,7 @@ export const is: WebMessages = {
               'Skilar stöðugum raklykli fyrir skrá, notaður innbyrðis af skráalistanum.',
           },
           'form-field': {
+            size: 'Sjónræn stærð reitsins; merkimiðinn, texti stýringarinnar, bil og skilaboð kvarðast með henni.',
             errorMsg:
               'Villuboð sýnd fyrir neðan stýringuna, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan stýringuna, falinn á meðan villa er sýnd.',
@@ -1912,6 +1917,7 @@ export const is: WebMessages = {
               'Einkvæmur lykill sem auðkennir þetta atriði innan foreldra harmonikkunnar.',
           },
           breadcrumbs: {
+            size: 'Sjónræn stærð brauðmolaslóðarinnar.',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir brauðmolaleiðsögnina, fellur aftur á þýðingu virka svæðisins þegar honum er sleppt.',
             items:
@@ -1939,6 +1945,7 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd.',
           },
           'data-table': {
+            size: 'Sjónræn stærð töflunnar; þéttleikainnfylling og tákn kvarðast með henni.',
             clickable:
               'Merkir gagnaraðir sem smellanlegar: sýnir bendil og sendir rowActivate við smell eða Enter/Bil.',
             rowActivate:

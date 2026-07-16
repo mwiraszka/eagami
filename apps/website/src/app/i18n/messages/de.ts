@@ -1022,6 +1022,7 @@ export const de: WebMessages = {
             required: 'Erforderlich',
           },
           'form-field': {
+            size: 'Größe',
             label: 'Beschriftung',
             hint: 'Hinweis',
             required: 'Erforderlich',
@@ -1207,6 +1208,7 @@ export const de: WebMessages = {
             size: 'Visuelle Größe der Zeitleiste.',
           },
           toast: {
+            size: 'Visuelle Größe, die auf jeden Toast im Stapel angewendet wird.',
             position:
               'Ecke oder Rand des Viewports, an dem der Toast-Stapel verankert ist.',
             clearable: 'Zeigt auf jedem Toast einen Schließen-Button.',
@@ -1270,6 +1272,7 @@ export const de: WebMessages = {
             focus: 'Verschiebt den Tastaturfokus auf das zugrunde liegende native Feld.',
           },
           accordion: {
+            size: 'Visuelle Größe des Akkordeons; jeder Eintrag erbt sie.',
             multi: 'Erlaubt, dass mehrere Einträge gleichzeitig aufgeklappt bleiben.',
             headingLevel:
               'Überschriftenebene (1-6), die auf jeden Eintrags-Header angewendet wird, damit sich das Akkordeon in die Seitengliederung einfügt.',
@@ -1812,6 +1815,7 @@ export const de: WebMessages = {
             toggle: 'Schaltet das Kalender-Popover zwischen geöffnet und geschlossen um.',
           },
           menu: {
+            size: 'Visuelle Größe des Menüs; jeder Eintrag erbt sie.',
             maxHeight:
               'Maximale Höhe der scrollbaren Liste als CSS-Länge; höhere Menüs scrollen darüber hinaus.',
             ariaLabel:
@@ -1930,6 +1934,7 @@ export const de: WebMessages = {
               'Gibt einen stabilen Track-Key für eine Datei zurück, intern von der Dateiliste verwendet.',
           },
           'form-field': {
+            size: 'Visuelle Größe des Feldes; Label, Steuerelementtext, Abstände und Meldungen skalieren mit ihr.',
             errorMsg:
               'Fehlermeldung unter dem Steuerelement, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Steuerelement, ausgeblendet, solange ein Fehler angezeigt wird.',
@@ -1973,6 +1978,7 @@ export const de: WebMessages = {
               'Eindeutiger Schlüssel, der diesen Eintrag innerhalb seines übergeordneten Accordions identifiziert.',
           },
           breadcrumbs: {
+            size: 'Visuelle Größe der Brotkrümel-Navigation.',
             ariaLabel:
               'Barrierefreies Label für die Brotkrümel-Navigation, das auf den aktiven Sprachraum zurückgreift, wenn weggelassen.',
             items:
@@ -2004,6 +2010,7 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
+            size: 'Visuelle Größe der Tabelle; Dichte-Innenabstände und Symbole skalieren mit ihr.',
             clickable:
               'Markiert Datenzeilen als anklickbar: zeigt einen Zeiger-Cursor und löst rowActivate bei Klick oder Enter/Leertaste aus.',
             rowActivate:
