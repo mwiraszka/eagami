@@ -1,5 +1,5 @@
 <nav
-  class="ea-breadcrumbs"
+  class="ea-breadcrumbs ea-breadcrumbs--{{ size() }}"
   [attr.aria-label]="resolvedAriaLabel()">
   <ol class="ea-breadcrumbs__list">
     @for (item of items(); track $index; let i = $index; let last = $last) {

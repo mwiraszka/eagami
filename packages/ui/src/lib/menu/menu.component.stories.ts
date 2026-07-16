@@ -28,7 +28,7 @@ export const Playground: Story = {
     },
     template: `
       <ea-button [eaMenuTrigger]="m" variant="secondary">Actions</ea-button>
-      <ea-menu #m [placement]="placement" [disabled]="disabled">
+      <ea-menu #m [placement]="placement" [size]="size" [disabled]="disabled">
         <ea-menu-item>Edit</ea-menu-item>
         <ea-menu-item>Duplicate</ea-menu-item>
         <ea-menu-item>Archive</ea-menu-item>

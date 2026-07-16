@@ -11,10 +11,15 @@ export const TOAST_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['top-left', 'top', 'top-right', 'bottom-left', 'bottom', 'bottom-right'],
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     clearable: { control: 'boolean' },
   },
   args: {
     position: 'bottom-right',
+    size: 'md',
     clearable: true,
   },
 };

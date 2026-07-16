@@ -7,14 +7,36 @@
     border-bottom: none;
   }
 
+  // Size (inherited from the parent accordion) sets only the font-size; the
+  // trigger, chevron, and content are em-based so they all scale from it
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
+
   &__trigger {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-3);
+    gap: 0.75em;
     width: 100%;
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--font-size-sm);
+    padding: 0.75em 1em;
+    font-size: inherit;
     font-weight: var(--font-weight-medium);
     font-family: var(--font-family-sans);
     line-height: var(--line-height-normal);
@@ -53,8 +75,7 @@
   }
 
   &__content {
-    padding: var(--space-2) var(--space-4) var(--space-4);
-    font-size: var(--font-size-sm);
+    padding: 0.5em 1em 1em;
     line-height: var(--line-height-normal);
     color: var(--color-text-secondary);
   }

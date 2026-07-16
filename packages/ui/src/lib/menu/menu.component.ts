@@ -17,10 +17,14 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { PopoverComponent } from '../popover/popover.component';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
 /** Placement of the menu list relative to its trigger. */
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
+
+/** Visual size of the menu, shared by all of its items. */
+export type MenuSize = EaSize;
 
 /**
  * Popup action menu attached to any focusable element via the
@@ -42,6 +46,8 @@ export class MenuComponent {
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
 
   readonly placement = input<MenuPlacement>('bottom-start');
+  /** Visual size of the menu; every item inherits it. */
+  readonly size = input<MenuSize>('md');
   /** Max height of the scrollable list as a CSS length; tall menus scroll past it. */
   readonly maxHeight = input<string>('20rem');
   readonly disabled = input<boolean>(false);

@@ -1,6 +1,7 @@
 @use '../../styles/mixins' as ea;
 
 .ea-data-table {
+  --ea-data-table-font-size: var(--font-size-md);
   overflow: hidden;
   width: 100%;
   border: var(--border-width-thin) solid var(--color-border-subtle);
@@ -14,12 +15,36 @@
     overflow-x: auto;
   }
 
+  // Size sets one custom property that the table font, header font, density
+  // paddings, and sort icon all derive from. Paddings use calc() against it
+  // rather than em so header cells (whose own font is smaller) stay aligned
+  // with body cells.
+  &--xs {
+    --ea-data-table-font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    --ea-data-table-font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    --ea-data-table-font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    --ea-data-table-font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    --ea-data-table-font-size: var(--font-size-xl);
+  }
+
   &__table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-sm);
+    font-size: var(--ea-data-table-font-size);
     color: var(--color-text-primary);
     table-layout: auto;
   }
@@ -31,7 +56,7 @@
   &__cell--header {
     position: relative;
     font-weight: var(--font-weight-medium);
-    font-size: var(--text-label-sm-size);
+    font-size: calc(var(--ea-data-table-font-size) * 0.75);
     line-height: var(--text-label-sm-lh);
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
@@ -94,7 +119,8 @@
     vertical-align: middle;
     width: 1em;
     height: 1em;
-    margin-inline-start: var(--space-1);
+    // calc against the table scale, not em: the header cell's own font is 0.75x
+    margin-inline-start: calc(var(--ea-data-table-font-size) * 0.25);
     opacity: 0.5;
     transition: var(--transition-opacity);
   }
@@ -134,15 +160,16 @@
   }
 
   &--compact &__cell {
-    padding: var(--space-1-5) var(--space-3);
+    padding: calc(var(--ea-data-table-font-size) * 0.375)
+      calc(var(--ea-data-table-font-size) * 0.75);
   }
 
   &--comfortable &__cell {
-    padding: var(--space-2-5) var(--space-4);
+    padding: calc(var(--ea-data-table-font-size) * 0.625) var(--ea-data-table-font-size);
   }
 
   &--spacious &__cell {
-    padding: var(--space-4) var(--space-6);
+    padding: var(--ea-data-table-font-size) calc(var(--ea-data-table-font-size) * 1.5);
   }
 
   &--sticky {
@@ -163,7 +190,7 @@
   &--sticky &__table {
     display: flex;
     flex-direction: column;
-    min-width: 32rem;
+    min-width: calc(var(--ea-data-table-font-size) * 32);
     max-height: inherit;
     height: inherit;
   }

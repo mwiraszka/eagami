@@ -2,15 +2,36 @@
 
 .ea-breadcrumbs {
   font-family: var(--font-family-sans);
-  font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   color: var(--color-text-secondary);
+
+  // Size sets only the font-size; gaps, padding, and the separator are em-based
+  // so the whole trail scales from it
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-1);
+    gap: 0.25em;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -19,12 +40,12 @@
   &__item {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: 0.25em;
     min-width: 0;
   }
 
   &__link {
-    padding: var(--space-0-5) var(--space-1);
+    padding: 0.125em 0.25em;
     border: none;
     border-radius: var(--radius-sm);
     background: transparent;
@@ -52,7 +73,7 @@
   }
 
   &__current {
-    padding: var(--space-0-5) var(--space-1);
+    padding: 0.125em 0.25em;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
   }
@@ -61,8 +82,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
     color: var(--color-text-tertiary);
     flex-shrink: 0;
     user-select: none;
@@ -70,7 +91,6 @@
     &--slash {
       width: auto;
       height: auto;
-      font-size: var(--font-size-sm);
     }
   }
 }

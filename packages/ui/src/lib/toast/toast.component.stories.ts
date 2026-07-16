@@ -30,6 +30,7 @@ export const Playground: Story = {
     template: `
       <ea-toast
         [position]="position"
+        [size]="size"
         [clearable]="clearable" />
       <div class="story-row">
         <ea-button variant="secondary" (clicked)="showDefault()">Default</ea-button>

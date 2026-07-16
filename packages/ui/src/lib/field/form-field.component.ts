@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  ViewEncapsulation,
   afterNextRender,
   computed,
   contentChild,
@@ -16,9 +17,13 @@ import {
   type EaErrorMessages,
   controlErrorStateFrom,
 } from '../forms/control-error-state';
+import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 import { FieldLabelComponent } from './field-label.component';
 import { FieldMessagesComponent } from './field-messages.component';
+
+/** Visual size of the field (label, control text, spacing, and messages). */
+export type FormFieldSize = EaSize;
 
 /**
  * Wraps a projected native control (`input`, `select`, or `textarea`) in the
@@ -38,6 +43,9 @@ import { FieldMessagesComponent } from './field-messages.component';
   templateUrl: './form-field.component.html',
   styleUrl: './form-field.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // None so the styles can reach the projected native control, which carries
+  // the consumer's scoping attribute rather than this component's
+  encapsulation: ViewEncapsulation.None,
   imports: [FieldLabelComponent, FieldMessagesComponent],
 })
 export class FormFieldComponent {
@@ -53,6 +61,8 @@ export class FormFieldComponent {
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   /** Marks the field as required. */
   readonly required = input<boolean>(false);
+  /** Visual size of the field; the label, control text, spacing, and messages scale with it. */
+  readonly size = input<FormFieldSize>('md');
   /** id seed for the label and message wiring; auto-generated when omitted. */
   readonly id = input<string>(uniqueId('ea-form-field'));
 

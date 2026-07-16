@@ -6,12 +6,34 @@
 
 // Positioned by the host `<ea-popover>`; this class only owns visual chrome.
 .ea-menu__list {
-  min-width: 10rem;
-  padding: var(--space-1) 0;
+  min-width: 10em;
+  padding: 0.25em 0;
   overflow-y: auto;
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   background-color: var(--ea-menu-list-background-color, var(--color-bg-elevated));
   @include ea.elevated-surface-border;
+
+  // Size sets only the font-size; the list's padding and min-width are em-based
+  // and each item inherits the font-size, so everything scales together
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
 }

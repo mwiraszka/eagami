@@ -16,7 +16,8 @@ export type MenuItemVariant = 'default' | 'danger';
 /**
  * Selectable row inside an `ea-menu`. Supports leading icons via the `icon`
  * content slot, a disabled state, and a `danger` variant for destructive
- * actions. Activating an item closes its parent menu.
+ * actions. Inherits its size from the parent menu, and activating an item
+ * closes that menu.
  */
 @Component({
   selector: 'ea-menu-item',
