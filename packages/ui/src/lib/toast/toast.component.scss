@@ -80,11 +80,10 @@
   align-items: center;
   // Base gap binds the leading icon tightly to the message; the close button adds
   // its own margin so the message-to-close gap is twice the icon-to-message one.
-  gap: var(--space-1-5);
+  gap: 0.375em;
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding: 0.75em 1em;
   font-family: var(--font-family-sans);
-  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-normal);
   border-radius: var(--radius-lg);
@@ -95,6 +94,28 @@
 
   @media (min-width: 640px) {
     width: auto;
+  }
+
+  // Size sets only the font-size; padding, gaps, and both icons are em-based
+  // so the whole toast scales from it
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
   }
 
   &--default {
@@ -152,7 +173,7 @@
 
   &__close {
     @include ea.icon-button;
-    margin-inline-start: var(--space-1-5);
+    margin-inline-start: 0.375em;
 
     ea-icon-x {
       width: 1em;

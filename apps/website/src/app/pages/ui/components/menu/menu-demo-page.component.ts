@@ -3,6 +3,7 @@ import {
   MenuComponent,
   MenuItemComponent,
   type MenuPlacement,
+  type MenuSize,
   MenuTriggerDirective,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
@@ -22,6 +23,7 @@ import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/kno
 interface MenuKnobState {
   [key: string]: KnobValue;
   placement: MenuPlacement;
+  size: MenuSize;
   ariaLabel: string;
   disabled: boolean;
   maxHeight: string;

@@ -983,6 +983,7 @@ export const zhCN: WebMessages = {
             required: '必填',
           },
           'form-field': {
+            size: '尺寸',
             label: '标签',
             hint: '提示',
             required: '必填',
@@ -1167,6 +1168,7 @@ export const zhCN: WebMessages = {
             size: '时间轴的视觉尺寸。',
           },
           toast: {
+            size: '应用于堆栈中每个提示的视觉尺寸。',
             position: '提示堆栈固定到的视口角落或边缘。',
             clearable: '在每条提示上显示关闭按钮。',
           },
@@ -1222,6 +1224,7 @@ export const zhCN: WebMessages = {
             focus: '将键盘焦点移到底层原生字段。',
           },
           accordion: {
+            size: '手风琴的视觉尺寸；每个项都会继承它。',
             multi: '允许同时展开多个项。',
             headingLevel: '应用于每个项页眉的标题级别（1-6），使手风琴融入页面大纲。',
           },
@@ -1623,6 +1626,7 @@ export const zhCN: WebMessages = {
             toggle: '在打开和关闭之间切换日历浮层。',
           },
           menu: {
+            size: '菜单的视觉尺寸；每个菜单项都会继承它。',
             maxHeight: '可滚动列表的最大高度（CSS 长度）；更高的菜单会滚动显示。',
             ariaLabel: '菜单列表的无障碍标签，省略时回退到当前语言。',
             disabled: '禁用该菜单，阻止其打开。',
@@ -1712,6 +1716,7 @@ export const zhCN: WebMessages = {
             trackFile: '为文件返回一个稳定的跟踪键，供文件列表内部使用。',
           },
           'form-field': {
+            size: '字段的视觉尺寸；标签、控件文本、间距和消息随之缩放。',
             errorMsg: '显示在控件下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在控件下方的辅助文本，在显示错误时隐藏。',
             id: '用于关联标签和消息的 id 种子，省略时自动生成。',
@@ -1744,6 +1749,7 @@ export const zhCN: WebMessages = {
             value: '在其父手风琴中标识此项的唯一键。',
           },
           breadcrumbs: {
+            size: '面包屑导航的视觉尺寸。',
             ariaLabel: '面包屑导航的无障碍标签，省略时回退到当前语言的翻译。',
             items:
               '面包屑条目数组；带 href 的项渲染为链接，其余渲染为按钮，最后一项不可交互。',
@@ -1768,6 +1774,7 @@ export const zhCN: WebMessages = {
             opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
+            size: '表格的视觉尺寸；密度内边距和图标随之缩放。',
             clickable:
               '将数据行标记为可点击：显示指针光标，并在点击或按 Enter/空格 时触发 rowActivate。',
             rowActivate: '当可点击的数据行通过点击或键盘激活时，携带该行数据触发。',

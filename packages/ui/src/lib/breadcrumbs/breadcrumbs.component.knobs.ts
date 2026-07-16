@@ -11,11 +11,16 @@ export const BREADCRUMBS_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['chevron', 'slash'],
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     ariaLabel: { control: 'text' },
     clicked: { action: 'clicked' },
   },
   args: {
     separator: 'chevron',
+    size: 'md',
     ariaLabel: '',
   },
 };

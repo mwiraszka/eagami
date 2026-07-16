@@ -8,10 +8,15 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const ACCORDION_KNOBS: ComponentKnobs = {
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     multi: { control: 'boolean' },
     headingLevel: { control: 'number', min: 1, max: 6, step: 1, maxLength: 1 },
   },
   args: {
+    size: 'md',
     multi: false,
     headingLevel: 3,
   },

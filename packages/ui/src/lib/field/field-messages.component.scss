@@ -6,7 +6,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  font-size: var(--text-helper-size);
+  // A sized ancestor (ea-form-field) provides an em-valued override so the
+  // messages scale with it; everywhere else the fixed helper token applies
+  font-size: var(--ea-field-messages-size, var(--text-helper-size));
   font-weight: var(--text-helper-weight);
   line-height: var(--text-helper-lh);
 }

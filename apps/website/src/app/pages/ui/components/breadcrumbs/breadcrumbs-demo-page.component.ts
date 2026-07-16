@@ -3,6 +3,7 @@ import {
   type BreadcrumbItem,
   BreadcrumbsComponent,
   type BreadcrumbsSeparator,
+  type BreadcrumbsSize,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -27,6 +28,7 @@ import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/kno
 interface BreadcrumbsKnobState {
   [key: string]: KnobValue;
   separator: BreadcrumbsSeparator;
+  size: BreadcrumbsSize;
   ariaLabel: string;
 }
 

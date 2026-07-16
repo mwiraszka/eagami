@@ -11,6 +11,10 @@ export const MENU_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'],
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     ariaLabel: { control: 'text' },
     disabled: { control: 'boolean' },
     maxHeight: { control: 'text' },
@@ -19,6 +23,7 @@ export const MENU_KNOBS: ComponentKnobs = {
   },
   args: {
     placement: 'bottom-start',
+    size: 'md',
     ariaLabel: 'Actions menu',
     disabled: false,
     maxHeight: '20rem',

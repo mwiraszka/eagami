@@ -13,11 +13,15 @@ import { AlertTriangleIconComponent } from '../icons/alert-triangle.component';
 import { CheckCircleIconComponent } from '../icons/check-circle.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
+import { type EaSize } from '../sizes';
 import { ToastService } from './toast.service';
 
 /** Corner or edge of the viewport the toast stack is pinned to. */
 export type ToastPosition =
   'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right';
+
+/** Visual size of every toast rendered by the outlet. */
+export type ToastSize = EaSize;
 
 /**
  * Outlet that renders the stack of active toasts produced by
@@ -44,6 +48,8 @@ export class ToastComponent {
 
   /** Viewport corner or edge the toast stack is pinned to. */
   readonly position = input<ToastPosition>('bottom-right');
+  /** Visual size applied to every toast in the stack. */
+  readonly size = input<ToastSize>('md');
   /** Show a dismiss button on each toast. */
   readonly clearable = input<boolean>(true);
 

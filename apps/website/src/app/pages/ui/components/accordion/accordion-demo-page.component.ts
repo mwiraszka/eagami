@@ -2,6 +2,7 @@ import {
   AccordionComponent,
   type AccordionHeadingLevel,
   AccordionItemComponent,
+  type AccordionSize,
   ButtonComponent,
   CheckboxComponent,
   InputComponent,
@@ -33,6 +34,7 @@ interface AccordionKnobState {
   // Index signature lets this typed state satisfy the playground's generic
   // KnobState input; the explicit field below still drives the checked binding.
   [key: string]: KnobValue;
+  size: AccordionSize;
   multi: boolean;
   headingLevel: AccordionHeadingLevel;
 }

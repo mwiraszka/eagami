@@ -1,4 +1,4 @@
-import { FormFieldComponent } from '@eagami/ui';
+import { FormFieldComponent, type FormFieldSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
@@ -26,6 +26,7 @@ interface FormFieldKnobState {
   [key: string]: KnobValue;
   label: string;
   hint: string;
+  size: FormFieldSize;
   required: boolean;
   triggerError: boolean;
 }

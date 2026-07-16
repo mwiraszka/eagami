@@ -1014,6 +1014,7 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
           },
           'form-field': {
+            size: 'Tamanho',
             label: 'Rótulo',
             hint: 'Dica',
             required: 'Obrigatório',
@@ -1199,6 +1200,7 @@ export const ptBR: WebMessages = {
             size: 'Tamanho visual da linha do tempo.',
           },
           toast: {
+            size: 'Tamanho visual aplicado a cada toast da pilha.',
             position:
               'Canto ou borda da janela de visualização onde a pilha de toasts é fixada.',
             clearable: 'Mostra um botão de dispensar em cada toast.',
@@ -1263,6 +1265,7 @@ export const ptBR: WebMessages = {
             focus: 'Move o foco do teclado para o campo nativo subjacente.',
           },
           accordion: {
+            size: 'Tamanho visual do acordeão; cada item o herda.',
             multi: 'Permite que vários itens permaneçam expandidos ao mesmo tempo.',
             headingLevel:
               'Nível de título (1-6) aplicado a cada cabeçalho de item, de modo que o accordion se encaixe no esquema da página.',
@@ -1794,6 +1797,7 @@ export const ptBR: WebMessages = {
             toggle: 'Alterna o popover do calendário entre aberto e fechado.',
           },
           menu: {
+            size: 'Tamanho visual do menu; cada item o herda.',
             maxHeight:
               'Altura máxima da lista rolável como comprimento CSS; menus mais altos rolam além disso.',
             ariaLabel:
@@ -1909,6 +1913,7 @@ export const ptBR: WebMessages = {
               'Retorna uma chave de rastreamento estável para um arquivo, usada internamente pela lista de arquivos.',
           },
           'form-field': {
+            size: 'Tamanho visual do campo; o rótulo, o texto do controle, os espaçamentos e as mensagens escalam com ele.',
             errorMsg:
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
@@ -1951,6 +1956,7 @@ export const ptBR: WebMessages = {
             value: 'Chave única que identifica este item dentro de seu accordion pai.',
           },
           breadcrumbs: {
+            size: 'Tamanho visual da trilha de navegação.',
             ariaLabel:
               'Rótulo acessível para a navegação da trilha, recorrendo à tradução do idioma ativo quando omitido.',
             items:
@@ -1979,6 +1985,7 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
+            size: 'Tamanho visual da tabela; os preenchimentos de densidade e os ícones escalam com ele.',
             clickable:
               'Marca as linhas de dados como clicáveis: mostra um cursor de ponteiro e emite rowActivate ao clicar ou pressionar Enter/Espaço.',
             rowActivate:

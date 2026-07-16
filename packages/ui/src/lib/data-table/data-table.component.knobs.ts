@@ -12,6 +12,10 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['compact', 'comfortable', 'spacious'],
     },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     striped: { control: 'boolean' },
     bordered: { control: 'boolean' },
     hoverable: { control: 'boolean' },
@@ -23,6 +27,7 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
   },
   args: {
     density: 'comfortable',
+    size: 'md',
     striped: false,
     bordered: false,
     hoverable: true,

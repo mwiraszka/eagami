@@ -7,12 +7,17 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const FORM_FIELD_KNOBS: ComponentKnobs = {
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
     required: { control: 'boolean' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Email address',
     hint: 'We only use this to reach you',
+    size: 'md',
     required: false,
     triggerError: false,
   },

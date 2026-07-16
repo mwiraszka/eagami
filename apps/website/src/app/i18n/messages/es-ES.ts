@@ -1015,6 +1015,7 @@ export const esES: WebMessages = {
             required: 'Obligatorio',
           },
           'form-field': {
+            size: 'Tamaño',
             label: 'Etiqueta',
             hint: 'Ayuda',
             required: 'Obligatorio',
@@ -1200,6 +1201,7 @@ export const esES: WebMessages = {
             size: 'Tamaño visual de la línea de tiempo.',
           },
           toast: {
+            size: 'Tamaño visual aplicado a cada toast de la pila.',
             position: 'Esquina o borde de la ventana donde se ancla la pila de toasts.',
             clearable: 'Muestra un botón de cierre en cada toast.',
           },
@@ -1264,6 +1266,7 @@ export const esES: WebMessages = {
             focus: 'Lleva el foco del teclado al campo nativo subyacente.',
           },
           accordion: {
+            size: 'Tamaño visual del acordeón; cada elemento lo hereda.',
             multi: 'Permite mantener varios elementos abiertos a la vez.',
             headingLevel:
               'Nivel de encabezado (1-6) aplicado a cada encabezado de elemento, para que el acordeón encaje en el esquema de la página.',
@@ -1811,6 +1814,7 @@ export const esES: WebMessages = {
             toggle: 'Alterna el popover del calendario entre abierto y cerrado.',
           },
           menu: {
+            size: 'Tamaño visual del menú; cada elemento lo hereda.',
             maxHeight:
               'Altura máxima de la lista desplazable como longitud CSS; los menús más altos se desplazan.',
             ariaLabel:
@@ -1930,6 +1934,7 @@ export const esES: WebMessages = {
               'Devuelve una clave de seguimiento estable para un archivo, usada internamente por la lista de archivos.',
           },
           'form-field': {
+            size: 'Tamaño visual del campo; la etiqueta, el texto del control, los espacios y los mensajes escalan con él.',
             errorMsg:
               'Mensaje de error mostrado bajo el control, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el control, oculto cuando hay un error.',
@@ -1973,6 +1978,7 @@ export const esES: WebMessages = {
               'Clave única que identifica este elemento dentro de su acordeón padre.',
           },
           breadcrumbs: {
+            size: 'Tamaño visual de las migas de pan.',
             ariaLabel:
               'Etiqueta accesible para la navegación de migas de pan, con reserva en la traducción de la configuración regional activa si se omite.',
             items:
@@ -2002,6 +2008,7 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado.',
           },
           'data-table': {
+            size: 'Tamaño visual de la tabla; los rellenos de densidad y los iconos escalan con él.',
             clickable:
               'Marca las filas de datos como clicables: muestra un cursor de puntero y emite rowActivate al hacer clic o pulsar Enter/Espacio.',
             rowActivate:

@@ -11,6 +11,7 @@
     (resetClicked)="reset()">
     <ea-accordion
       class="playground-accordion"
+      [size]="state().size"
       [multi]="state().multi"
       [headingLevel]="state().headingLevel">
       @for (item of items(); track item.id) {

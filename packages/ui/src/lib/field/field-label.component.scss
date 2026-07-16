@@ -3,7 +3,9 @@
 }
 
 .ea-field-label {
-  font-size: var(--text-label-md-size);
+  // A sized ancestor (ea-form-field) provides an em-valued override so the
+  // label scales with it; everywhere else the fixed label token applies
+  font-size: var(--ea-field-label-size, var(--text-label-md-size));
   font-weight: var(--text-label-md-weight);
   line-height: var(--text-label-md-lh);
   color: var(--color-text-primary);

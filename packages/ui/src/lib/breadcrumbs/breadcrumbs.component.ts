@@ -10,9 +10,13 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
+import { type EaSize } from '../sizes';
 
 /** Visual style of the separator rendered between breadcrumb items. */
 export type BreadcrumbsSeparator = 'chevron' | 'slash';
+
+/** Visual size of the breadcrumb trail. */
+export type BreadcrumbsSize = EaSize;
 
 /** Single entry in a breadcrumb trail. */
 export interface BreadcrumbItem {
@@ -46,6 +50,8 @@ export class BreadcrumbsComponent {
 
   readonly items = input<BreadcrumbItem[]>([]);
   readonly separator = input<BreadcrumbsSeparator>('chevron');
+  /** Visual size of the breadcrumb trail. */
+  readonly size = input<BreadcrumbsSize>('md');
   readonly ariaLabel = input<string | undefined>(undefined, {
     alias: 'aria-label',
   });

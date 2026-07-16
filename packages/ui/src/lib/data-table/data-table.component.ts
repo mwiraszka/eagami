@@ -21,9 +21,13 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArrowDownIconComponent } from '../icons/arrow-down.component';
 import { ArrowUpIconComponent } from '../icons/arrow-up.component';
 import { ChevronsUpDownIconComponent } from '../icons/chevrons-up-down.component';
+import { type EaSize } from '../sizes';
 
 /** Vertical density preset for table rows and header cells. */
 export type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
+
+/** Visual size of the table's text, paddings, and icons. */
+export type DataTableSize = EaSize;
 
 /** Sort direction; `null` means no sort is applied. */
 export type DataTableSortDirection = 'asc' | 'desc' | null;
@@ -81,6 +85,8 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly data = input.required<T[]>();
   readonly trackBy = input<keyof T | undefined>(undefined);
   readonly density = input<DataTableDensity>('comfortable');
+  /** Visual size of the table; density paddings and icons scale with it. */
+  readonly size = input<DataTableSize>('md');
   readonly stickyHeader = input<boolean>(false);
   readonly striped = input<boolean>(false);
   readonly hoverable = input<boolean>(true);
@@ -108,6 +114,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   readonly hostClasses = computed(() => ({
     [`ea-data-table--${this.density()}`]: true,
+    [`ea-data-table--${this.size()}`]: true,
     'ea-data-table--sticky': this.stickyHeader(),
     'ea-data-table--striped': this.striped(),
     'ea-data-table--hoverable': this.hoverable(),

@@ -3,7 +3,7 @@
   aria-live="polite"
   aria-atomic="false">
   @for (toast of toastService.toasts(); track toast.id) {
-    <div class="ea-toast ea-toast--{{ toast.variant }}">
+    <div class="ea-toast ea-toast--{{ toast.variant }} ea-toast--{{ size() }}">
       @switch (toast.variant) {
         @case ('success') {
           <ea-icon-check-circle class="ea-toast__icon" />

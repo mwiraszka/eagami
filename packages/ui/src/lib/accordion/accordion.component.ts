@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 
+import { type EaSize } from '../sizes';
+
 /** Heading level exposed by each item's header for assistive technology. */
 export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
+/** Visual size of the accordion, shared by all of its items. */
+export type AccordionSize = EaSize;
 
 /**
  * Container for expandable content sections. By default only one item can be
@@ -16,6 +21,8 @@ export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 })
 export class AccordionComponent {
   readonly multi = input<boolean>(false);
+  /** Visual size of the accordion; every item inherits it. */
+  readonly size = input<AccordionSize>('md');
   /** Heading level (1-6) applied to every item's header wrapper. */
   readonly headingLevel = input<AccordionHeadingLevel>(3);
 
