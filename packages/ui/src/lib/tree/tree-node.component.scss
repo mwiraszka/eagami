@@ -14,15 +14,16 @@
 .ea-tree-node__row {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.5em;
 
   // `--ea-tree-node-level` (inline per row) drives indentation; `--ea-tree-indent`
-  // sets the step and is overridable per `<ea-tree>` host
-  padding: var(--ea-tree-row-padding-block, var(--space-1))
-    var(--ea-tree-row-padding-inline, var(--space-2));
+  // sets the step and is overridable per `<ea-tree>` host. Defaults are em so the
+  // indent and padding scale with the size-driven font-size
+  padding: var(--ea-tree-row-padding-block, 0.5em)
+    var(--ea-tree-row-padding-inline, 0.5em);
   padding-inline-start: calc(
-    var(--ea-tree-row-padding-inline, var(--space-2)) + var(--ea-tree-node-level) *
-      var(--ea-tree-indent, var(--space-4))
+    var(--ea-tree-row-padding-inline, 0.5em) + var(--ea-tree-node-level) *
+      var(--ea-tree-indent, 1em)
   );
   border-radius: var(--radius-sm);
   background-color: transparent;

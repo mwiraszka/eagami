@@ -20,7 +20,7 @@
 
 .ea-transfer-list__pane-label {
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: 0.875em;
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
 }
@@ -32,7 +32,7 @@
   // Sub-token gap just large enough to keep consecutive highlighted rows reading
   // as distinct selections rather than merging into one block
   gap: 2px;
-  min-height: 160px;
+  min-height: 10em;
   padding: var(--space-1);
   margin: 0;
   overflow-y: auto;
@@ -47,7 +47,7 @@
 }
 
 .ea-transfer-list__item {
-  padding: var(--space-2) var(--space-3);
+  padding: 0.5em 0.75em;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: var(--transition-colors);
@@ -95,57 +95,24 @@
 }
 
 .ea-transfer-list__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
+  @include ea.icon-button;
+  --ea-icon-button-size: 2em;
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
-  cursor: pointer;
-  transition: var(--transition-colors);
 
   &:hover:not(:disabled) {
     border-color: var(--color-border-strong);
-    background-color: var(--color-state-hover);
-  }
-
-  &:focus-visible {
-    outline: none;
-    @include ea.focus-ring;
-  }
-
-  &:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
   }
 }
 
 .ea-transfer-list--xs {
   font-size: var(--font-size-xs);
-
-  .ea-transfer-list__list {
-    min-height: 120px;
-  }
-
-  .ea-transfer-list__item {
-    padding: var(--space-1) var(--space-2);
-  }
 }
 
 .ea-transfer-list--sm {
   font-size: var(--font-size-sm);
-
-  .ea-transfer-list__list {
-    min-height: 120px;
-  }
-
-  .ea-transfer-list__item {
-    padding: var(--space-1) var(--space-2);
-  }
 }
 
 .ea-transfer-list--md {
@@ -154,36 +121,10 @@
 
 .ea-transfer-list--lg {
   font-size: var(--font-size-lg);
-
-  .ea-transfer-list__list {
-    min-height: 200px;
-  }
-
-  .ea-transfer-list__item {
-    padding: var(--space-2) var(--space-4);
-  }
-
-  .ea-transfer-list__button {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
 }
 
 .ea-transfer-list--xl {
   font-size: var(--font-size-xl);
-
-  .ea-transfer-list__list {
-    min-height: 200px;
-  }
-
-  .ea-transfer-list__item {
-    padding: var(--space-2) var(--space-4);
-  }
-
-  .ea-transfer-list__button {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
 }
 
 .ea-transfer-list--disabled {
