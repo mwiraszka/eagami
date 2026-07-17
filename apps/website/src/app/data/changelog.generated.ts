@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.1',
+    date: '2026-07-17',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Make the transfer list and tree scale proportionally across all sizes: list heights, row padding, indentation, and the transfer controls now grow smoothly with the size input instead of jumping between a few hand-set steps, so adjacent sizes are no longer identical.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.0',
     date: '2026-07-16',
     sections: [
