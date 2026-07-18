@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.4] - 2026-07-18
+
+### Changed
+
+- Align the avatar editor controls and number input steppers with the shared icon-button styling so their hover, focus, and disabled states match the rest of the library.
+
 ## [5.8.3] - 2026-07-18
 
 ### Fixed
@@ -1022,6 +1028,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.8.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.3...ui-v5.8.4
 [5.8.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.2...ui-v5.8.3
 [5.8.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.1...ui-v5.8.2
 [5.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.0...ui-v5.8.1
