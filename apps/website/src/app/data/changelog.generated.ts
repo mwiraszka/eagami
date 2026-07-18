@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.3',
+    date: '2026-07-18',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Scale the color picker's popover with its size input, so the saturation area, hue and alpha sliders, value inputs, and preset swatches grow with the field instead of staying a fixed size.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.2',
     date: '2026-07-18',
     sections: [
