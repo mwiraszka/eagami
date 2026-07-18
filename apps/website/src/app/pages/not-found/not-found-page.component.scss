@@ -40,30 +40,8 @@
 }
 
 .not-found__cta {
-  // Match the home page's brand CTAs: deepen the hover in light mode and use
-  // the shared darker brand set in dark mode (block below).
-  --color-brand-hover: var(--color-primary-800);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 8px;
-  background-color: var(--color-brand-default);
-  color: var(--color-text-inverse);
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: var(--color-brand-hover);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
+  @include mixins.brand-cta-light-tokens;
+  @include mixins.brand-cta-button;
 }
 
 :host-context([data-theme='dark']) .not-found__cta {

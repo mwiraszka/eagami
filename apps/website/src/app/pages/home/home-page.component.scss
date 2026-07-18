@@ -32,7 +32,7 @@
     20% 30%,
     50% 100%;
   color: var(--color-text-primary);
-  --color-brand-hover: var(--color-primary-800);
+  @include mixins.brand-cta-light-tokens;
   animation: home-bg-flutter 30s ease-in-out infinite;
 
   @media (prefers-reduced-motion: reduce) {
@@ -200,32 +200,13 @@
 }
 
 .home-hero__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 8px;
-  background-color: var(--color-brand-default);
-  color: var(--color-text-inverse);
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
+  @include mixins.brand-cta-button;
   transition:
     background-color 0.15s ease,
     transform 0.15s ease;
 
-  &:hover {
-    background-color: var(--color-brand-hover);
-  }
-
   &:active {
     transform: translateY(1px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
   }
 }
 
@@ -343,7 +324,7 @@
 .home-section--contact {
   min-height: calc(100dvh - var(--web-height-header) - var(--web-height-footer));
   background-color: var(--color-bg-subtle);
-  --color-brand-hover: var(--color-primary-800);
+  @include mixins.brand-cta-light-tokens;
 }
 
 .home-section__inner {
@@ -644,7 +625,7 @@
   gap: 48px;
 
   @include mixins.respond-to('lt-md') {
-    gap: 36px;
+    gap: 32px;
   }
 }
 
@@ -706,10 +687,6 @@
   flex-direction: column;
   gap: 16px;
   max-width: 560px;
-
-  ::ng-deep .ea-textarea {
-    max-height: 300px;
-  }
 }
 
 .contact-success {
