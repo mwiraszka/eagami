@@ -151,8 +151,8 @@
     forced-color-adjust: none;
 
     &--lg {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.5em;
+      height: 2.5em;
       border-radius: var(--radius-md);
     }
   }
@@ -164,13 +164,15 @@
     forced-color-adjust: none;
   }
 
-  // Positioned by the host `<ea-popover>`; this class only owns visual chrome
+  // Positioned by the host `<ea-popover>`; this class owns visual chrome. The
+  // popover is portaled so it carries its own scale, and its gaps, dimensions,
+  // and fonts are em-based, so it scales from this one knob.
   &__popover {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
-    width: 17.5rem;
-    padding: var(--space-3);
+    gap: 0.75em;
+    width: 17.5em;
+    padding: 0.75em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -179,13 +181,29 @@
       var(--color-bg-elevated)
     );
     @include ea.elevated-surface-border;
+
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+    &--md {
+      font-size: var(--font-size-md);
+    }
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
+    &--xl {
+      font-size: var(--font-size-xl);
+    }
   }
 
   &__sv-area {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 10rem;
+    height: 10em;
     border-radius: var(--radius-sm);
     cursor: crosshair;
     // color is meaningful content; preserve it in forced-colors
@@ -215,8 +233,8 @@
   &__sv-pointer {
     position: absolute;
     z-index: 1;
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 0.875em;
+    height: 0.875em;
     border: 2px solid var(--color-neutral-0);
     border-radius: var(--radius-full);
     box-shadow: 0 0 0 1px var(--color-picker-thumb-halo);
@@ -231,20 +249,20 @@
   &__slider-row {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.5em;
   }
 
   &__strip-stack {
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: var(--space-2);
+    gap: 0.5em;
   }
 
   &__strip {
     position: relative;
     width: 100%;
-    height: 0.75rem;
+    height: 0.75em;
     border-radius: var(--radius-full);
     cursor: pointer;
     // color is meaningful content; preserve it in forced-colors
@@ -299,8 +317,8 @@
   &__strip-thumb {
     position: absolute;
     top: 50%;
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 0.875em;
+    height: 0.875em;
     border: 2px solid var(--color-neutral-0);
     border-radius: var(--radius-full);
     box-shadow: 0 0 0 1px var(--color-picker-thumb-halo);
@@ -314,14 +332,14 @@
   &__inputs {
     display: flex;
     align-items: end;
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__input-group {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0.25em;
     min-width: 0;
     text-align: center;
 
@@ -332,13 +350,14 @@
 
   &__format-toggle {
     flex-shrink: 0;
-    min-width: 3.25rem;
-    padding: var(--space-1) var(--space-2);
+    // 5.2em of this element's 0.625em font is the original 52px at the md scale
+    min-width: 5.2em;
+    padding: 0.4em 0.8em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-base);
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-2xs);
+    font-size: 0.625em;
     font-weight: var(--font-weight-medium);
     letter-spacing: 0.04em;
     color: var(--color-text-secondary);
@@ -357,7 +376,7 @@
   }
 
   &__input-label {
-    font-size: var(--font-size-2xs);
+    font-size: 0.625em;
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -367,12 +386,12 @@
   &__input {
     width: 100%;
     min-width: 0;
-    padding: var(--space-1) var(--space-1-5);
+    padding: 0.375em 0.5em;
     background-color: var(--color-bg-base);
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
+    font-size: 0.75em;
     text-align: center;
     color: var(--color-text-primary);
 
@@ -401,13 +420,13 @@
   &__tool-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1-5);
-    padding: var(--space-1) var(--space-2);
+    gap: 0.5em;
+    padding: 0.375em 0.75em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-base);
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-xs);
+    font-size: 0.75em;
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: var(--transition-colors);
@@ -431,13 +450,13 @@
   &__presets {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1-5);
-    padding-top: var(--space-2);
+    gap: 0.375em;
+    padding-top: 0.5em;
     border-top: var(--border-width-thin) solid var(--color-border-default);
   }
 
   &__presets-label {
-    font-size: var(--font-size-2xs);
+    font-size: 0.625em;
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -447,7 +466,7 @@
   &__presets-grid {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__preset {

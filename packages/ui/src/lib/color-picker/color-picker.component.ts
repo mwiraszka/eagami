@@ -261,6 +261,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
     [`ea-color-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
+  // The popover is portaled to the document body, so it cannot inherit the
+  // trigger's font-size; this size class carries the scale over to it.
+  readonly popoverClasses = computed(() => ({
+    [`ea-color-picker__popover--${this.size()}`]: true,
+  }));
+
   /**
    * True when the browser supports the EyeDropper API. Not a `computed`:
    * `window.EyeDropper` isn't a signal, so a memoized computed would cache the
