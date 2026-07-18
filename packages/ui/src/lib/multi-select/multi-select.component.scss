@@ -139,11 +139,6 @@
     flex-shrink: 0;
   }
 
-  &__clear-icon {
-    width: 1em;
-    height: 1em;
-  }
-
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome
   &__popover {
     display: flex;

@@ -144,46 +144,23 @@
   }
 
   &__icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    padding: 0;
-
-    ea-icon-rotate-ccw,
-    ea-icon-minus,
-    ea-icon-plus,
-    ea-icon-trash {
-      width: 1rem;
-      height: 1rem;
-    }
+    @include ea.icon-button;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
-    cursor: pointer;
-    transition: var(--transition-colors);
 
     &:hover:not(:disabled) {
       border-color: var(--color-border-focus);
     }
 
-    &:focus-visible {
-      outline: none;
-      @include ea.focus-ring;
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
     &--danger {
       color: var(--color-error-default);
 
+      // The shared hover sets text-primary; hold the danger tint on hover too
       &:hover:not(:disabled) {
         border-color: var(--color-error-default);
+        color: var(--color-error-default);
       }
     }
   }
