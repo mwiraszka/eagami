@@ -116,7 +116,7 @@
   }
 
   &__minmax-label {
-    font-size: var(--font-size-xs);
+    font-size: calc(var(--ea-range-slider-size, 1.125rem) * 0.67);
     color: var(--color-text-tertiary);
     font-variant-numeric: tabular-nums;
   }

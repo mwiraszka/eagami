@@ -60,6 +60,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-time-picker__popover"
+        [ngClass]="popoverClasses()"
         (keydown.escape)="onPopoverEscape($event)">
         <div class="ea-time-picker__column">
           <button
