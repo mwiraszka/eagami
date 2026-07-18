@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.5] - 2026-07-18
+
+### Fixed
+
+- Give the command palette's search input a visible focus ring for keyboard users.
+- Make the paginator's page-size dropdown chevron follow the theme colour so it is visible in dark mode, and scale it with the paginator's size.
+
 ## [5.8.4] - 2026-07-18
 
 ### Changed
@@ -1028,6 +1035,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.8.5]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.4...ui-v5.8.5
 [5.8.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.3...ui-v5.8.4
 [5.8.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.2...ui-v5.8.3
 [5.8.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.1...ui-v5.8.2

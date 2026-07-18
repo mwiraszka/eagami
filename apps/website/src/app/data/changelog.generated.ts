@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.5',
+    date: '2026-07-18',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Give the command palette's search input a visible focus ring for keyboard users.",
+          "Make the paginator's page-size dropdown chevron follow the theme colour so it is visible in dark mode, and scale it with the paginator's size.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.4',
     date: '2026-07-18',
     sections: [

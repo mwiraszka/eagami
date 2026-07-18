@@ -13,6 +13,7 @@ import {
 import { ButtonComponent } from '../button/button.component';
 import { formatGroupedNumber } from '../i18n/format-number';
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import { type EaSize } from '../sizes';
@@ -41,6 +42,7 @@ export interface PaginatorState {
   imports: [
     NgClass,
     ButtonComponent,
+    ChevronDownIconComponent,
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
   ],

@@ -13,19 +13,24 @@
         [for]="sizeSelectId">
         {{ i18n.messages().paginator.rowsPerPage }}
       </label>
-      <select
-        class="ea-paginator__select"
-        [id]="sizeSelectId"
-        [disabled]="disabled()"
-        (change)="onPageSizeChange($event)">
-        @for (option of pageSizeOptions(); track option) {
-          <option
-            [value]="option"
-            [selected]="option === pageSize()">
-            {{ formatNumber(option) }}
-          </option>
-        }
-      </select>
+      <span class="ea-paginator__select-wrapper">
+        <select
+          class="ea-paginator__select"
+          [id]="sizeSelectId"
+          [disabled]="disabled()"
+          (change)="onPageSizeChange($event)">
+          @for (option of pageSizeOptions(); track option) {
+            <option
+              [value]="option"
+              [selected]="option === pageSize()">
+              {{ formatNumber(option) }}
+            </option>
+          }
+        </select>
+        <ea-icon-chevron-down
+          class="ea-paginator__select-chevron"
+          aria-hidden="true" />
+      </span>
     </div>
   }
 
