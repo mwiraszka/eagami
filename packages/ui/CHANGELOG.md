@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.8.2] - 2026-07-18
+
+### Fixed
+
+- Scale the time picker's popover with its size input, so the hour/minute steppers, value fields, and AM/PM controls grow with the field instead of staying fixed.
+- Make the switch, badge dot, slider and range-slider min/max labels, and the dropdown, autocomplete, and multi-select option rows scale proportionally with their size input; the badge dot now covers the full size range without an abrupt jump.
+
 ## [5.8.1] - 2026-07-17
 
 ### Fixed
@@ -1009,6 +1016,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.8.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.1...ui-v5.8.2
 [5.8.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.0...ui-v5.8.1
 [5.8.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.7.0...ui-v5.8.0
 [5.7.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.6.2...ui-v5.7.0

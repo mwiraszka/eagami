@@ -78,16 +78,27 @@
     padding: 0 var(--space-1);
     font-variant-numeric: tabular-nums;
 
+    // The digit sits a notch smaller than the badge label so it fits the circular
+    // dot; scale it as a fixed fraction of each size's font so the run stays
+    // monotonic across the full xs-xl range
+    &.ea-badge--xs {
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-2xs) * 0.75));
+    }
+
     &.ea-badge--sm {
-      font-size: var(--ea-badge-font-size, 9px);
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-xs) * 0.75));
     }
 
     &.ea-badge--md {
-      font-size: var(--ea-badge-font-size, 10px);
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-sm) * 0.75));
     }
 
     &.ea-badge--lg {
-      font-size: var(--ea-badge-font-size, 12px);
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-md) * 0.75));
+    }
+
+    &.ea-badge--xl {
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-lg) * 0.75));
     }
   }
 }

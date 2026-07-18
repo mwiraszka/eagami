@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.2',
+    date: '2026-07-18',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Scale the time picker's popover with its size input, so the hour/minute steppers, value fields, and AM/PM controls grow with the field instead of staying fixed.",
+          'Make the switch, badge dot, slider and range-slider min/max labels, and the dropdown, autocomplete, and multi-select option rows scale proportionally with their size input; the badge dot now covers the full size range without an abrupt jump.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.1',
     date: '2026-07-17',
     sections: [

@@ -111,12 +111,13 @@
   }
 
   // Positioned by the host `<ea-popover>`; this class owns visual chrome and the
-  // column layout
+  // column layout. The popover is portaled so it carries its own scale, and its
+  // gaps, dimensions, and fonts are em-based, so it scales from this one knob.
   &__popover {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3);
+    gap: 0.5em;
+    padding: 0.75em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -125,19 +126,35 @@
       var(--color-bg-elevated)
     );
     @include ea.elevated-surface-border;
+
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+    &--md {
+      font-size: var(--font-size-md);
+    }
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
+    &--xl {
+      font-size: var(--font-size-xl);
+    }
   }
 
   &__column {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-1);
+    gap: 0.25em;
   }
 
   &__step {
     @include ea.icon-button;
-    width: 2.25rem;
-    height: 1.75rem;
+    width: 2.25em;
+    height: 1.75em;
 
     ea-icon-chevron-up,
     ea-icon-chevron-down {
@@ -147,14 +164,14 @@
   }
 
   &__value {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.25em;
+    height: 2.25em;
     padding: 0;
     border: var(--border-width-thin) solid transparent;
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-muted);
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-md);
+    font-size: 1em;
     font-weight: var(--font-weight-medium);
     text-align: center;
     color: var(--color-text-primary);
@@ -181,7 +198,7 @@
 
   &__separator {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-md);
+    font-size: 1em;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
     user-select: none;
@@ -190,8 +207,8 @@
   &__period {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
-    margin-inline-start: var(--space-1);
+    gap: 0.25em;
+    margin-inline-start: 0.25em;
   }
 
   &__period-option {
@@ -199,13 +216,14 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 2.5rem;
-    padding: var(--space-1) var(--space-2);
+    // 3.33em of this element's 0.75em font is the original 40px at the md scale
+    min-width: 3.33em;
+    padding: 0.33em 0.66em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-base);
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-xs);
+    font-size: 0.75em;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
     cursor: pointer;

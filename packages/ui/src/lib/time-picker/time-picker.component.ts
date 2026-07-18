@@ -232,6 +232,12 @@ export class TimePickerComponent implements ControlValueAccessor {
     [`ea-time-picker__trigger-wrapper--${this.size()}`]: true,
   }));
 
+  // The popover is portaled to the document body, so it cannot inherit the
+  // trigger's font-size; this size class carries the scale over to it.
+  readonly popoverClasses = computed(() => ({
+    [`ea-time-picker__popover--${this.size()}`]: true,
+  }));
+
   writeValue(val: string | null | undefined): void {
     this.value.set(val ?? null);
   }
