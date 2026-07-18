@@ -139,7 +139,7 @@
 }
 
 .demo-stack--xl {
-  gap: 36px;
+  gap: 32px;
 }
 
 .demo-preview {
@@ -151,7 +151,7 @@
 // Label above a demo component; mirrors form field-label typography for consistency
 .demo-label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: var(--text-label-md-size);
   font-weight: var(--text-label-md-weight);
   line-height: var(--text-label-md-lh);

@@ -262,3 +262,36 @@ $breakpoints: (
   --color-brand-active: var(--color-primary-600);
   --color-text-inverse: var(--color-neutral-50);
 }
+
+/// Light-mode complement to `brand-cta-dark-tokens`: deepen the CTA hover so the
+/// marketing CTAs read as clearly brand-coloured on a light backdrop.
+@mixin brand-cta-light-tokens {
+  --color-brand-hover: var(--color-primary-800);
+}
+
+/// Solid brand-filled pill shared by the marketing CTAs (home hero/contact and
+/// the 404 page). Pair with `brand-cta-light-tokens` / `brand-cta-dark-tokens`
+/// for the per-theme hover colour.
+@mixin brand-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: var(--color-brand-default);
+  color: var(--color-text-inverse);
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-brand-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}

@@ -208,6 +208,7 @@
             [label]="messages().home.contact.messageLabel"
             formControlName="message"
             [placeholder]="contactMessagePlaceholder()"
+            [maxHeight]="300"
             [required]="true" />
 
           @if (contactError(); as err) {
