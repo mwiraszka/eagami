@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.4',
+    date: '2026-07-18',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Align the avatar editor controls and number input steppers with the shared icon-button styling so their hover, focus, and disabled states match the rest of the library.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.3',
     date: '2026-07-18',
     sections: [
