@@ -69,6 +69,7 @@
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-color-picker__popover"
+        [ngClass]="popoverClasses()"
         (keydown)="onPopoverKeydown($event)">
         <div
           #svAreaEl
