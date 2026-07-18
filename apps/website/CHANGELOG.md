@@ -2,6 +2,12 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.14.7] - 2026-07-18
+
+### Changed
+
+- Consolidate the marketing CTA button styles into a shared mixin and align internal page spacing to the standard scale.
+
 ## [3.14.6] - 2026-07-18
 
 ### Changed
@@ -910,6 +916,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.14.7]: https://github.com/mwiraszka/eagami/compare/website-v3.14.6...website-v3.14.7
 [3.14.6]: https://github.com/mwiraszka/eagami/compare/website-v3.14.5...website-v3.14.6
 [3.14.5]: https://github.com/mwiraszka/eagami/compare/website-v3.14.4...website-v3.14.5
 [3.14.4]: https://github.com/mwiraszka/eagami/compare/website-v3.14.3...website-v3.14.4
