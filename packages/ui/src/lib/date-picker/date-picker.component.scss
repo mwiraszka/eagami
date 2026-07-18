@@ -127,11 +127,6 @@
     transform: translateY(-50%);
   }
 
-  &__clear-icon {
-    width: 1em;
-    height: 1em;
-  }
-
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome.
   // The popover's `position: fixed` also stops the calendar being clipped by an
   // ancestor with `overflow: hidden`.

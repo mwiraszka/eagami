@@ -95,11 +95,6 @@
     @include ea.icon-button;
   }
 
-  &__clear-icon {
-    width: 1em;
-    height: 1em;
-  }
-
   &__password-toggle {
     @include ea.icon-button;
     color: var(--ea-input-toggle-color, var(--color-text-secondary));

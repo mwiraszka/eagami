@@ -174,11 +174,6 @@
   &__close {
     @include ea.icon-button;
     margin-inline-start: 0.375em;
-
-    ea-icon-x {
-      width: 1em;
-      height: 1em;
-    }
   }
 }
 

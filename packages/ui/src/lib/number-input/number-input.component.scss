@@ -80,33 +80,19 @@
   }
 
   &__step {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include ea.icon-button;
     width: 1.5em;
     height: 1.1em;
-    padding: 0;
-    border: none;
     border-radius: var(--radius-xs);
-    background: none;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    transition: var(--transition-colors);
 
-    &:hover:not(:disabled) {
-      background-color: var(--color-state-hover);
-      color: var(--color-text-primary);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.4;
+    // Shorter than a standard icon button, so hold the glyph at 1em to keep it
+    // within the box instead of the mixin's larger default
+    > * {
+      font-size: 1em;
     }
   }
 
   &__step-icon {
-    width: 0.875em;
-    height: 0.875em;
     pointer-events: none;
   }
 }

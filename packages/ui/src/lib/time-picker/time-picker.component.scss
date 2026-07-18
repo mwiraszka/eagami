@@ -105,11 +105,6 @@
     transform: translateY(-50%);
   }
 
-  &__clear-icon {
-    width: 1em;
-    height: 1em;
-  }
-
   // Positioned by the host `<ea-popover>`; this class owns visual chrome and the
   // column layout. The popover is portaled so it carries its own scale, and its
   // gaps, dimensions, and fonts are em-based, so it scales from this one knob.

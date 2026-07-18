@@ -57,11 +57,6 @@
     top: var(--space-3);
     inset-inline-end: var(--space-3);
     @include ea.icon-button;
-
-    svg {
-      width: 1em;
-      height: 1em;
-    }
   }
 
   &__header {
