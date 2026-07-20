@@ -43,7 +43,7 @@ export const en: WebMessages = {
         before: 'Larger projects can be built on',
         link: 'Eagami UI',
         after:
-          ', a custom component library and design system, for a consistent and modern visual language across the site.',
+          ', a custom component library, for a consistent and modern visual language across the site.',
       },
       core: [
         {
@@ -309,7 +309,7 @@ export const en: WebMessages = {
       primaryLabel: 'Primary color',
       secondaryLabel: 'Secondary color',
       contrastHeading: 'Accessibility',
-      contrastPass: 'Passes WCAG 2.2 AA contrast in both light and dark mode',
+      contrastPass: 'Passes WCAG 2.1 AA contrast in both light and dark mode',
       contrastFailIntro: 'Some pairings fall below the WCAG AA contrast bar:',
       scaleHeading: 'Generated scale',
       previewHeading: 'Preview',
