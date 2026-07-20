@@ -65,10 +65,10 @@ See the [Setup](https://eagami.com/ui/setup) page for fonts and your first compo
 ## What's included
 
 - **Actions**: Button, Command Palette
-- **Form controls**: Autocomplete, Avatar Editor, Checkbox, Code Input, Color Picker, Date Picker, Dropdown, File Uploader, Input, Multi-Select, Radio, Range Slider, Rating, Segmented, Slider, Switch, Textarea, Time Picker, Transfer List
+- **Form controls**: Autocomplete, Avatar Editor, Checkbox, Code Input, Color Picker, Date Picker, Dropdown, File Uploader, Form Field, Input, Multi-Select, Number Input, Radio, Range Slider, Rating, Segmented, Slider, Switch, Textarea, Time Picker, Transfer List
 - **Overlays**: Dialog, Drawer, Menu, Popover, Toast, Tooltip
 - **Navigation**: Breadcrumbs, Paginator, Stepper, Tabs
-- **Display**: Accordion, Alert, Avatar, Badge, Card, Data Table, Divider, Eagami Wordmark, Empty State, Progress Bar, Skeleton, Spinner, Tag, Tree, Virtual List
+- **Display**: Accordion, Alert, Avatar, Badge, Card, Data Table, Divider, Eagami Wordmark, Empty State, Progress Bar, Skeleton, Spinner, Tag, Timeline, Tree, Virtual List
 
 Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/components).
 
@@ -142,7 +142,7 @@ Eagami UI follows [Semantic Versioning](https://semver.org). Breaking changes sh
 
 | | |
 |---|---|
-| Angular | `^21.0.0` (peer dep) |
+| Angular | `^21.0.0 || ^22.0.0` (peer dep) |
 | Node | `>= 20` for build/dev tooling |
 | Rendering | Browser, SSR / prerender (Angular Universal), hydration |
 | Browsers | Last 2 stable versions of Chrome, Edge, Firefox (plus current ESR), Safari |
