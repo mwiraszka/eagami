@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.8.6',
+    date: '2026-07-21',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Update the README to list all components (adding Form Field, Number Input, and Timeline) and reflect the Angular v21 and v22 peer range.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Mark the Twitter, Instagram, Trello, and Dribbble icons as brand icons (`isBrand`), matching the other Feather brand marks.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.5',
     date: '2026-07-18',
     sections: [
