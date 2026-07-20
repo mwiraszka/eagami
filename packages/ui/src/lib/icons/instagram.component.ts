@@ -35,6 +35,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
 export class InstagramIconComponent extends IconComponentBase {
   static readonly slug = 'instagram';
   static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = [
     'instagram',
     'social',

@@ -24,6 +24,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
 export class TwitterIconComponent extends IconComponentBase {
   static readonly slug = 'twitter';
   static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = [
     'twitter',
     'social',
