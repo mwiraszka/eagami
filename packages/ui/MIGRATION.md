@@ -72,7 +72,7 @@ The `EAGAMI_MESSAGES` export has been removed; use `EAGAMI_ALL_LOCALES` (an arra
 
 v1.0.0 is the first stable release. It consolidates the API surface across components for consistency and adds form-field plumbing and accessibility coverage that several components were missing. This guide gathers every breaking change in one place so consumers can upgrade in a single pass.
 
-If you only have time for one thing, run the [find/replace table](#findreplace-quick-reference) below — that covers most of the migration.
+If you only have time for one thing, run the [find/replace table](#findreplace-quick-reference) below. It covers most of the migration.
 
 ## Find/replace quick reference
 
@@ -187,7 +187,7 @@ A new `focus()` public method is now available on the component as a programmati
 
 These don't break v0.x consumers but are worth knowing about as upgrade incentives:
 
-- **Form-field plumbing on RadioGroup, Switch, Checkbox, Segmented** — they now accept `label`, `hint`, `errorMsg`, `required` for parity with Input/Textarea/Dropdown
+- **Form-field plumbing on RadioGroup, Switch, Checkbox, Segmented:** they now accept `label`, `hint`, `errorMsg`, `required` for parity with Input/Textarea/Dropdown
 - **`focus()` public method** on Autocomplete, Dropdown, Date picker (Input, Textarea, Code input already had one)
 - **`readonly` input** on Dropdown, Date picker, Code input
 - **`placeholder` input** on Code input
@@ -195,10 +195,10 @@ These don't break v0.x consumers but are worth knowing about as upgrade incentiv
 - **`headingLevel` input** on Empty state (default `h2`, accepts `h2`–`h6`)
 - **`id` input** exposed on Menu, Dialog, Drawer, Radio group for external `aria-labelledby` / `aria-controls` references
 - **Roving keyboard navigation** on Menu items
-- **Calendar focus management** — the Date picker grid receives focus when the calendar opens
+- **Calendar focus management:** the Date picker grid receives focus when the calendar opens
 - **Improved accessible names** on overlays, custom triggers, and tags
-- **Dark-mode link tokens** — `--color-text-link` and `--color-text-link-hover` now have dark-mode overrides
+- **Dark-mode link tokens:** `--color-text-link` and `--color-text-link-hover` now have dark-mode overrides
 
 ## Need a hand?
 
-If you hit something this guide doesn't cover, please [open an issue](https://github.com/mwiraszka/eagami/issues) describing what you tried and what surprised you — it's the fastest way to get this guide better.
+If you hit something this guide doesn't cover, please [open an issue](https://github.com/mwiraszka/eagami/issues) describing what you tried and what surprised you. It's the fastest way to get this guide better.

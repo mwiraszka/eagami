@@ -28,6 +28,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
 export class DribbbleIconComponent extends IconComponentBase {
   static readonly slug = 'dribbble';
   static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = [
     'dribbble',
     'design',

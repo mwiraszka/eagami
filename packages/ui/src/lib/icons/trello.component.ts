@@ -39,6 +39,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
 export class TrelloIconComponent extends IconComponentBase {
   static readonly slug = 'trello';
   static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = [
     'trello',
     'board',

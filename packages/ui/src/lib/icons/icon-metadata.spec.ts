@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CameraIconComponent } from './camera.component';
+import { DribbbleIconComponent } from './dribbble.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Github2IconComponent } from './github-2.component';
 import { GithubIconComponent } from './github.component';
@@ -10,7 +11,10 @@ import {
   IconComponentBase,
   type IconComponentType,
 } from './icon-category';
+import { InstagramIconComponent } from './instagram.component';
 import { StarIconComponent } from './star.component';
+import { TrelloIconComponent } from './trello.component';
+import { TwitterIconComponent } from './twitter.component';
 
 describe('Icon metadata API', () => {
   describe('IconComponentBase', () => {
@@ -67,6 +71,10 @@ describe('Icon metadata API', () => {
     const home: IconComponentType = HomeIconComponent;
     const github: IconComponentType = GithubIconComponent;
     const github2: IconComponentType = Github2IconComponent;
+    const twitter: IconComponentType = TwitterIconComponent;
+    const instagram: IconComponentType = InstagramIconComponent;
+    const trello: IconComponentType = TrelloIconComponent;
+    const dribbble: IconComponentType = DribbbleIconComponent;
 
     it('exposes slug, category, and tags on every icon class', () => {
       // Sample a Feather icon (no brand mark)
@@ -80,6 +88,10 @@ describe('Icon metadata API', () => {
     it('flags brand marks via the `isBrand` field', () => {
       expect(github.isBrand).toBe(true);
       expect(github2.isBrand).toBe(true);
+      expect(twitter.isBrand).toBe(true);
+      expect(instagram.isBrand).toBe(true);
+      expect(trello.isBrand).toBe(true);
+      expect(dribbble.isBrand).toBe(true);
     });
 
     it('uses canonical Feather slugs and routes the brand-filled to `-2`', () => {

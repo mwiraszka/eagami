@@ -42,7 +42,7 @@ export const ptBR: WebMessages = {
         before: 'Projetos maiores podem ser construídos sobre',
         link: 'Eagami UI',
         after:
-          ', uma biblioteca de componentes e design system personalizados, para uma linguagem visual consistente e moderna em todo o site.',
+          ', uma biblioteca de componentes personalizados, para uma linguagem visual consistente e moderna em todo o site.',
       },
       core: [
         {
