@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.9.0] - 2026-07-24
+
+### Added
+
+- Add 10 commonly used icons: bug, building, calculator, history, lightbulb, megaphone, palette, pin, plug, and timer.
+
 ## [5.8.6] - 2026-07-21
 
 ### Changed
@@ -1045,6 +1051,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.6...ui-v5.9.0
 [5.8.6]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.5...ui-v5.8.6
 [5.8.5]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.4...ui-v5.8.5
 [5.8.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.3...ui-v5.8.4
