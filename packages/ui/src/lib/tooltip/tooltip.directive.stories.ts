@@ -86,7 +86,7 @@ export const TemplateContent: Story = {
         .sb-tooltip-tip {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 12px;
           padding: 4px 2px;
         }
 
@@ -131,7 +131,7 @@ export const TemplateContent: Story = {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          padding-top: 16px;
+          padding-top: 12px;
           border-top: var(--border-width-thin) solid var(--color-tooltip-border);
         }
 
