@@ -4,7 +4,8 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  * Single source of truth for the Tooltip demo's interactive controls. Consumed by
  * `tooltip.directive.stories.ts` (as Storybook `argTypes`/`args`) and by the
  * website's component playground. `eaTooltip` is the directive's own (and required)
- * text input.
+ * content input; the knob drives it with a string, though it also accepts a
+ * TemplateRef.
  */
 export const TOOLTIP_KNOBS: ComponentKnobs = {
   argTypes: {
