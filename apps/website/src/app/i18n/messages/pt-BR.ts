@@ -916,6 +916,8 @@ export const ptBR: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(passe o mouse sobre mim)',
+          templateTriggerLabel: '(passe o cursor para uma dica com template)',
+          templateTipStatus: 'Online agora',
           topLabel: 'Topo',
           topTooltip: 'Dica no topo',
           bottomLabel: 'Base',
@@ -1645,7 +1647,7 @@ export const ptBR: WebMessages = {
             maxWidth:
               'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px).',
             eaTooltip:
-              'Conteúdo de texto da dica exibida ao passar o cursor e ao foco do teclado.',
+              'Conteúdo da dica exibida ao passar o cursor e ao foco do teclado. Aceita uma string simples ou um TemplateRef para conteúdo estilizado.',
             tooltipPosition:
               'Posicionamento da dica em relação ao seu elemento hospedeiro.',
           },

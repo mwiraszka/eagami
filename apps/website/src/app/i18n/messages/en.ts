@@ -906,6 +906,8 @@ export const en: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(hover over me)',
+          templateTriggerLabel: '(hover for a template tooltip)',
+          templateTipStatus: 'Online now',
           topLabel: 'Top',
           topTooltip: 'Top tooltip',
           bottomLabel: 'Bottom',
@@ -1605,7 +1607,8 @@ export const en: WebMessages = {
           tooltip: {
             maxWidth:
               'Maximum width in pixels; the text wraps at this width (50px floor).',
-            eaTooltip: 'Text content of the tooltip shown on hover and keyboard focus.',
+            eaTooltip:
+              'Tooltip content shown on hover and keyboard focus. Accepts a plain string or a TemplateRef for styled content.',
             tooltipPosition: 'Placement of the tooltip relative to its host element.',
           },
           'time-picker': {

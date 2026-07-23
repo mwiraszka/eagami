@@ -1,10 +1,16 @@
+.demo-tooltip-triggers {
+  display: flex;
+  align-self: center;
+  gap: 16px;
+}
+
 .demo-tooltip-trigger {
   display: flex;
   align-self: center;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 96px;
+  width: 150px;
+  height: 150px;
   padding: var(--space-2);
   font-size: var(--font-size-sm);
   text-align: center;
@@ -17,5 +23,86 @@
   &:focus-visible {
     outline: none;
     box-shadow: var(--shadow-focus-ring);
+  }
+}
+
+.demo-tooltip-tip {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 2px;
+}
+
+.demo-tooltip-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-tooltip-tip-avatar {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--color-brand-default);
+  border-radius: 50%;
+}
+
+.demo-tooltip-tip-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-tooltip-tip-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.demo-tooltip-tip-verified {
+  color: var(--color-info-default);
+}
+
+.demo-tooltip-tip-role {
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.demo-tooltip-tip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: var(--border-width-thin) solid var(--color-tooltip-border);
+}
+
+.demo-tooltip-tip-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.demo-tooltip-tip-meta-icon {
+  color: var(--color-warning-default);
+}
+
+// Same 1em box as the icons above so the dot centres under them and the text
+// starts at the same x as the other rows
+.demo-tooltip-tip-status-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+
+  &::before {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-success-default);
+    content: '';
   }
 }

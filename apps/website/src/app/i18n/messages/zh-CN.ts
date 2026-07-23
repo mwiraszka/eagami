@@ -886,6 +886,8 @@ export const zhCN: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(将鼠标悬停于此)',
+          templateTriggerLabel: '（悬停查看模板工具提示）',
+          templateTipStatus: '当前在线',
           topLabel: '上',
           topTooltip: '顶部工具提示',
           bottomLabel: '下',
@@ -1516,7 +1518,8 @@ export const zhCN: WebMessages = {
           },
           tooltip: {
             maxWidth: '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。',
-            eaTooltip: '悬停和键盘聚焦时显示的工具提示的文本内容。',
+            eaTooltip:
+              '悬停和键盘聚焦时显示的工具提示内容。接受纯文本字符串或用于样式化内容的 TemplateRef。',
             tooltipPosition: '工具提示相对于其宿主元素的放置位置。',
           },
           'time-picker': {

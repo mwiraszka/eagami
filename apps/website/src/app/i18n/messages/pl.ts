@@ -922,6 +922,8 @@ export const pl: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(najedź na mnie)',
+          templateTriggerLabel: '(najedź, aby zobaczyć podpowiedź z szablonu)',
+          templateTipStatus: 'Teraz online',
           topLabel: 'Góra',
           topTooltip: 'Podpowiedź u góry',
           bottomLabel: 'Dół',
@@ -1641,7 +1643,7 @@ export const pl: WebMessages = {
             maxWidth:
               'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px).',
             eaTooltip:
-              'Treść tekstowa podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury.',
+              'Treść podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury. Przyjmuje zwykły tekst lub TemplateRef dla stylizowanej treści.',
             tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',
           },
           'time-picker': {

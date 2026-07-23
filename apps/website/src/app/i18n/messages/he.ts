@@ -898,6 +898,8 @@ export const he: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(רחפו מעליי)',
+          templateTriggerLabel: '(רחפו לחלונית עזר מתבנית)',
+          templateTipStatus: 'מחובר כעת',
           topLabel: 'למעלה',
           topTooltip: 'חלונית עזר עליונה',
           bottomLabel: 'למטה',
@@ -1563,7 +1565,8 @@ export const he: WebMessages = {
           },
           tooltip: {
             maxWidth: 'רוחב מרבי בפיקסלים; הטקסט נגלש ברוחב זה (רצפה של 50px).',
-            eaTooltip: 'תוכן הטקסט של חלונית העזר המוצגת בריחוף ובפוקוס מקלדת.',
+            eaTooltip:
+              'תוכן חלונית העזר המוצגת בריחוף ובפוקוס מקלדת. מקבל מחרוזת טקסט או TemplateRef לתוכן מעוצב.',
             tooltipPosition: 'מיקום חלונית העזר ביחס לאלמנט המארח שלה.',
           },
           'time-picker': {

@@ -917,6 +917,8 @@ export const is: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(svífðu yfir mig)',
+          templateTriggerLabel: '(svífðu fyrir sniðmátsábendingu)',
+          templateTipStatus: 'Á netinu núna',
           topLabel: 'Efst',
           topTooltip: 'Ábending efst',
           bottomLabel: 'Neðst',
@@ -1622,7 +1624,7 @@ export const is: WebMessages = {
             maxWidth:
               'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf).',
             eaTooltip:
-              'Textaefni ábendingarinnar sem sýnt er við yfirsveiflu og lyklaborðsfókus.',
+              'Efni ábendingarinnar sem sýnt er við yfirsveiflu og lyklaborðsfókus. Tekur við einföldum texta eða TemplateRef fyrir stílað efni.',
             tooltipPosition: 'Staðsetning ábendingarinnar miðað við hýsilstak hennar.',
           },
           'time-picker': {

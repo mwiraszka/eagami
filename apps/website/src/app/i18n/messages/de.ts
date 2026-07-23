@@ -924,6 +924,8 @@ export const de: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(fahr mit der Maus über mich)',
+          templateTriggerLabel: '(Hover für einen Template-Tooltip)',
+          templateTipStatus: 'Jetzt online',
           topLabel: 'Oben',
           topTooltip: 'Tooltip oben',
           bottomLabel: 'Unten',
@@ -1662,7 +1664,7 @@ export const de: WebMessages = {
             maxWidth:
               'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px).',
             eaTooltip:
-              'Textinhalt des Tooltips, der bei Hover und Tastaturfokus angezeigt wird.',
+              'Inhalt des Tooltips, der bei Hover und Tastaturfokus angezeigt wird. Akzeptiert einen einfachen String oder eine TemplateRef für gestalteten Inhalt.',
             tooltipPosition: 'Platzierung des Tooltips relativ zu seinem Host-Element.',
           },
           'time-picker': {

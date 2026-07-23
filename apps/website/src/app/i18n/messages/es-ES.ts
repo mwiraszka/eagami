@@ -917,6 +917,8 @@ export const esES: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(pasa el ratón por encima)',
+          templateTriggerLabel: '(pasa el cursor para un tooltip con plantilla)',
+          templateTipStatus: 'En línea ahora',
           topLabel: 'Arriba',
           topTooltip: 'Descripción arriba',
           bottomLabel: 'Abajo',
@@ -1659,7 +1661,7 @@ export const esES: WebMessages = {
             maxWidth:
               'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px).',
             eaTooltip:
-              'Contenido de texto de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado.',
+              'Contenido de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado. Acepta una cadena de texto o un TemplateRef para contenido con estilos.',
             tooltipPosition:
               'Posición de la descripción emergente respecto a su elemento anfitrión.',
           },
