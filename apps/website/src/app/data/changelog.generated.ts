@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.9.0',
+    date: '2026-07-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add 10 commonly used icons: bug, building, calculator, history, lightbulb, megaphone, palette, pin, plug, and timer.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.8.6',
     date: '2026-07-21',
     sections: [
