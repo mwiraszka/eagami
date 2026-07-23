@@ -289,7 +289,6 @@ import { SearchIconComponent } from './search.component';
 import { SendIconComponent } from './send.component';
 import { ServerIconComponent } from './server.component';
 import { SettingsIconComponent } from './settings.component';
-import { Share2IconComponent } from './share-2.component';
 import { ShareIconComponent } from './share.component';
 import { ShieldCheckIconComponent } from './shield-check.component';
 import { ShieldOffIconComponent } from './shield-off.component';
@@ -649,7 +648,6 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SendIconComponent,
     ServerIconComponent,
     SettingsIconComponent,
-    Share2IconComponent,
     ShareIconComponent,
     ShieldOffIconComponent,
     ShieldIconComponent,
