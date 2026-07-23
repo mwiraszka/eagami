@@ -49,6 +49,9 @@ import { BottleIconComponent } from './bottle.component';
 import { BoxIconComponent } from './box.component';
 import { BrainIconComponent } from './brain.component';
 import { BriefcaseIconComponent } from './briefcase.component';
+import { BugIconComponent } from './bug.component';
+import { BuildingIconComponent } from './building.component';
+import { CalculatorIconComponent } from './calculator.component';
 import { CalendarCheckIconComponent } from './calendar-check.component';
 import { CalendarDaysIconComponent } from './calendar-days.component';
 import { CalendarIconComponent } from './calendar.component';
@@ -169,6 +172,7 @@ import { HeartIconComponent } from './heart.component';
 import { HelpCircleIconComponent } from './help-circle.component';
 import { HeptagonIconComponent } from './heptagon.component';
 import { HexagonIconComponent } from './hexagon.component';
+import { HistoryIconComponent } from './history.component';
 import { HomeIconComponent } from './home.component';
 import type { IconComponentType } from './icon-category';
 import { ImageIconComponent } from './image.component';
@@ -186,6 +190,7 @@ import { LayoutIconComponent } from './layout.component';
 import { LeafIconComponent } from './leaf.component';
 import { LeftHalfStarIconComponent } from './left-half-star.component';
 import { LifeBuoyIconComponent } from './life-buoy.component';
+import { LightbulbIconComponent } from './lightbulb.component';
 import { Link2IconComponent } from './link-2.component';
 import { LinkIconComponent } from './link.component';
 import { Linkedin2IconComponent } from './linkedin-2.component';
@@ -203,6 +208,7 @@ import { MapIconComponent } from './map.component';
 import { MastercardIconComponent } from './mastercard.component';
 import { Maximize2IconComponent } from './maximize-2.component';
 import { MaximizeIconComponent } from './maximize.component';
+import { MegaphoneIconComponent } from './megaphone.component';
 import { MehIconComponent } from './meh.component';
 import { MenuIconComponent } from './menu.component';
 import { MessageCircleIconComponent } from './message-circle.component';
@@ -231,6 +237,7 @@ import { NotionIconComponent } from './notion.component';
 import { NpmIconComponent } from './npm.component';
 import { OctagonIconComponent } from './octagon.component';
 import { PackageIconComponent } from './package.component';
+import { PaletteIconComponent } from './palette.component';
 import { PaperclipIconComponent } from './paperclip.component';
 import { PauseCircleIconComponent } from './pause-circle.component';
 import { PauseIconComponent } from './pause.component';
@@ -246,9 +253,11 @@ import { PhoneOffIconComponent } from './phone-off.component';
 import { PhoneOutgoingIconComponent } from './phone-outgoing.component';
 import { PhoneIconComponent } from './phone.component';
 import { PieChartIconComponent } from './pie-chart.component';
+import { PinIconComponent } from './pin.component';
 import { PinterestIconComponent } from './pinterest.component';
 import { PlayCircleIconComponent } from './play-circle.component';
 import { PlayIconComponent } from './play.component';
+import { PlugIconComponent } from './plug.component';
 import { PlusCircleIconComponent } from './plus-circle.component';
 import { PlusSquareIconComponent } from './plus-square.component';
 import { PlusIconComponent } from './plus.component';
@@ -323,6 +332,7 @@ import { ThreadsIconComponent } from './threads.component';
 import { ThumbsDownIconComponent } from './thumbs-down.component';
 import { ThumbsUpIconComponent } from './thumbs-up.component';
 import { TiktokIconComponent } from './tiktok.component';
+import { TimerIconComponent } from './timer.component';
 import { ToggleLeftIconComponent } from './toggle-left.component';
 import { ToggleRightIconComponent } from './toggle-right.component';
 import { ToolIconComponent } from './tool.component';
@@ -776,5 +786,15 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SvelteIconComponent,
     VueIconComponent,
     WordpressIconComponent,
+    BugIconComponent,
+    BuildingIconComponent,
+    CalculatorIconComponent,
+    HistoryIconComponent,
+    LightbulbIconComponent,
+    MegaphoneIconComponent,
+    PaletteIconComponent,
+    PinIconComponent,
+    PlugIconComponent,
+    TimerIconComponent,
   ] as IconComponentType[]
 ).sort((a, b) => a.slug.localeCompare(b.slug));
