@@ -66,17 +66,21 @@
         role="list">
         @for (icon of filteredIcons(); track icon.slug) {
           <li class="icons-grid__item">
+            <ng-template #tip>
+              <span class="icons-grid__tip-name">{{ displayName(icon.slug) }}</span>
+              <code class="icons-grid__tip-code">ea-icon-{{ icon.slug }}</code>
+            </ng-template>
             <button
               type="button"
               class="icons-grid__card"
               [attr.aria-label]="'ea-icon-' + icon.slug"
-              [eaTooltip]="'ea-icon-' + icon.slug"
+              [eaTooltip]="tip"
               tooltipPosition="bottom"
+              [maxWidth]="300"
               (click)="copySelector(icon.slug)">
               <span class="icons-grid__glyph">
                 <ng-container *ngComponentOutlet="icon" />
               </span>
-              <span class="icons-grid__name">{{ displayName(icon.slug) }}</span>
             </button>
           </li>
         }
