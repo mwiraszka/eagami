@@ -6,6 +6,9 @@
 .ea-tooltip {
   z-index: var(--z-index-tooltip);
   position: absolute;
+  // Template content can contain unbreakable element rows (avatars, icon rows)
+  // that a max-width cannot wrap; let the bubble grow instead of clipping them
+  min-width: min-content;
   padding: var(--space-1-5) var(--space-2-5);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-xs);
