@@ -528,7 +528,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-breadcrumbs',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -571,14 +571,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-button',
     inputs: [
       {
-        name: 'ariaCurrent',
+        name: 'aria-current',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
       },
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -691,7 +691,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-checkbox',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -1151,7 +1151,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'sort',
         type: 'DataTableSortState',
-        default: "{ column: '', direction: null }",
+        default: '',
         required: false,
         twoWay: true,
       },
@@ -1351,7 +1351,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-dialog',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -1457,7 +1457,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2197,7 +2197,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-menu',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2318,7 +2318,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: '[eaMenuTrigger]',
     inputs: [
       {
-        name: 'menu',
+        name: 'eaMenuTrigger',
         type: 'MenuComponent',
         default: '',
         required: true,
@@ -2332,7 +2332,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-multi-select',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2475,7 +2475,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'orderedValues',
-        signature: 'orderedValues(set: Set<string>): string[]',
+        signature: 'orderedValues(set: Set<string>): readonly string[]',
       },
       {
         name: 'removeChip',
@@ -2502,7 +2502,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2750,14 +2750,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
       },
       {
-        name: 'ariaLabelledby',
+        name: 'aria-labelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2961,7 +2961,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-radio-group',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -3065,14 +3065,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-range-slider',
     inputs: [
       {
-        name: 'ariaLabelHigh',
+        name: 'aria-label-high',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
       },
       {
-        name: 'ariaLabelLow',
+        name: 'aria-label-low',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -3351,7 +3351,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-segmented',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -3490,7 +3490,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-slider',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -3762,7 +3762,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-switch',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -4365,7 +4365,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'eaTooltip',
-        type: 'string',
+        type: 'string | TemplateRef<unknown>',
         default: '',
         required: true,
         twoWay: false,
@@ -4441,7 +4441,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-tree',
     inputs: [
       {
-        name: 'ariaLabel',
+        name: 'aria-label',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
