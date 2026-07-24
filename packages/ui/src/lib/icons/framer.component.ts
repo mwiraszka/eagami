@@ -23,6 +23,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
 export class FramerIconComponent extends IconComponentBase {
   static readonly slug = 'framer';
   static readonly category: IconCategory = 'feather';
+  static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = [
     'framer',
     'design',
