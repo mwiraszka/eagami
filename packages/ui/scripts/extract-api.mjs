@@ -1,13 +1,33 @@
 // Transforms the compodoc `documentation.json` into a trimmed, typed API
 // dataset the website renders as each component's reference table. Run after
 // compodoc via the `docs:api` script; not meant to be invoked on its own.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
+const UI_ROOT = resolve(here, '..');
 const DOC_JSON = resolve(here, '../dist/compodoc/documentation.json');
 const OUT_FILE = resolve(here, '../../../apps/website/src/app/data/ui-api.generated.ts');
+
+// Compodoc 2 reports aliased inputs/outputs under their public alias (e.g.
+// `aria-label`, `eaMenuTrigger`), but the knobs files, i18n descriptions, and
+// playground state are all keyed by the TS property name, so map each alias
+// back to the property that declares it
+function aliasMapFor(entity) {
+  const file = entity.file ? resolve(UI_ROOT, entity.file) : null;
+  if (!file || !existsSync(file)) {
+    return {};
+  }
+  const src = readFileSync(file, 'utf8');
+  const map = {};
+  for (const match of src.matchAll(
+    /(\w+)\s*=\s*(?:input|model|output)(?:\.required)?[^;]*?alias:\s*'([^']+)'/g,
+  )) {
+    map[match[2]] = map[match[2]] ?? match[1];
+  }
+  return map;
+}
 
 function stripHtml(html) {
   return (html ?? '')
@@ -77,8 +97,10 @@ function toMethod(method) {
 }
 
 function buildEntry(entity) {
-  const inputs = entity.inputsClass ?? [];
-  const outputs = entity.outputsClass ?? [];
+  const aliasMap = aliasMapFor(entity);
+  const unalias = prop => ({ ...prop, name: aliasMap[prop.name] ?? prop.name });
+  const inputs = (entity.inputsClass ?? []).map(unalias);
+  const outputs = (entity.outputsClass ?? []).map(unalias);
   const inputNames = new Set(inputs.map(i => i.name));
 
   return {
