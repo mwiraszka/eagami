@@ -1,4 +1,4 @@
-// Excludes U+202F and U+00A0 so the substitution is idempotent.
+// Excludes U+202F and U+00A0 so the substitution is idempotent
 const SPACE_BEFORE_HIGH_PUNCT = / ([!?:;»])/g;
 
 const SPACE_AFTER_OPEN_GUILLEMET = /(«) /g;

@@ -56,7 +56,7 @@
     }
   }
 
-  // `linear` swaps the shared ease-out curve for a constant-speed slide.
+  // `linear` swaps the shared ease-out curve for a constant-speed slide
   &--linear {
     --ea-drawer-ease: var(--ease-linear);
   }

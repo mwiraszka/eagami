@@ -211,7 +211,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     this.focusDigit(index);
   }
 
-  // Removes disallowed characters: whitespace in free mode, non-digits otherwise.
+  // Removes disallowed characters: whitespace in free mode, non-digits otherwise
   private sanitize(text: string): string {
     return this.allowAllChars() ? text.replace(/\s/g, '') : text.replace(/[^0-9]/g, '');
   }

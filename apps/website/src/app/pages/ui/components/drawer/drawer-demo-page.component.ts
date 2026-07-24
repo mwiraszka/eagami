@@ -72,7 +72,7 @@ export class DrawerDemoPageComponent {
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.drawer) as DrawerKnobState,
   );
 
-  // Header and body copy follow the selected Position so the demo matches the edge.
+  // Header and body copy follow the selected Position so the demo matches the edge
   protected readonly content = computed(() => {
     const drawer = this.messages().ui.component.demos.drawer;
     const byPosition = {

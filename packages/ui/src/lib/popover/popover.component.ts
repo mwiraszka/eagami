@@ -218,7 +218,7 @@ export class PopoverComponent {
         this.stable.set(false);
         return;
       }
-      // Re-read inputs so signal subscriptions stay current after a re-open.
+      // Re-read inputs so signal subscriptions stay current after a re-open
       this.placement();
       this.offset();
       this.flip();

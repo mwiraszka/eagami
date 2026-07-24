@@ -140,7 +140,7 @@ export class StepperComponent {
       const buttons = (
         event.currentTarget as HTMLElement
       ).querySelectorAll<HTMLButtonElement>('.ea-stepper__button:not([disabled])');
-      // Match the focused button to the new index (visit order matches DOM order).
+      // Match the focused button to the new index (visit order matches DOM order)
       const reachableIndices = this.registeredSteps()
         .map((_, i) => i)
         .filter(i => this.canNavigateTo(i));

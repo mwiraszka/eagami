@@ -1,4 +1,4 @@
-name: UI — CI
+name: UI - CI
 
 on:
   push:
@@ -120,7 +120,7 @@ jobs:
 
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression
-      # guard. Budget is set generously above the current size — bump it
+      # guard. Budget is set generously above the current size; bump it
       # deliberately when adding genuinely new surface area (a major new
       # component, an icon-set expansion).
       - name: Check bundle size

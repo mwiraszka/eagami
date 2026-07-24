@@ -367,7 +367,7 @@ export const en: WebMessages = {
       typographyWeights: 'Weights',
       typographyComposites: 'Composite styles',
       typographyCompositesBefore:
-        'Composite tokens bundle a size, weight, line-height (and sometimes family) for a specific role. <code>--text-section-heading-*</code> is the first composite that pins a font-family — use it for the <code>&lt;h2&gt;</code> subsection title on docs and marketing pages.',
+        'Composite tokens bundle a size, weight, line-height (and sometimes family) for a specific role. <code>--text-section-heading-*</code> is the first composite that pins a font-family; use it for the <code>&lt;h2&gt;</code> subsection title on docs and marketing pages.',
       typographySectionHeadingSample: 'Brand voice section heading',
       motionSimulate: 'Simulate',
       motionDurations: 'Durations',
@@ -948,7 +948,7 @@ export const en: WebMessages = {
           toggleTheme: 'Toggle theme',
           toggleThemeDescription: 'Switch between light and dark mode',
           lockWorkspace: 'Lock workspace',
-          lockWorkspaceDescription: 'Currently disabled — feature in beta',
+          lockWorkspaceDescription: 'Currently disabled (feature in beta)',
           executedToast: label => `Executed: ${label}`,
         },
         avatarEditorActions: {

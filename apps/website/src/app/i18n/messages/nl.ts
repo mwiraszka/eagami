@@ -957,7 +957,7 @@ export const nl: WebMessages = {
           toggleTheme: 'Thema wisselen',
           toggleThemeDescription: 'Schakel tussen lichte en donkere modus',
           lockWorkspace: 'Werkruimte vergrendelen',
-          lockWorkspaceDescription: 'Momenteel uitgeschakeld — functie in bèta',
+          lockWorkspaceDescription: 'Momenteel uitgeschakeld (functie in bèta)',
           executedToast: label => `Uitgevoerd: ${label}`,
         },
         avatarEditorActions: {

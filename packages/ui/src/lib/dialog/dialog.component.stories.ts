@@ -17,7 +17,7 @@ export default meta;
 type Story = StoryObj<DialogComponent>;
 
 export const Playground: Story = {
-  // `open` is an arg so control changes don't reset it and close the dialog.
+  // `open` is an arg so control changes don't reset it and close the dialog
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({

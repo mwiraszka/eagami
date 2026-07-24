@@ -122,7 +122,7 @@
     cursor: not-allowed;
   }
 
-  // Hide the native spin buttons; the component renders its own steppers.
+  // Hide the native spin buttons; the component renders its own steppers
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     margin: 0;

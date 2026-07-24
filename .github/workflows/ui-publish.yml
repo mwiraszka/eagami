@@ -1,4 +1,4 @@
-name: UI — Publish
+name: UI - Publish
 
 on:
   pull_request:

@@ -371,7 +371,7 @@ export const pl: WebMessages = {
       colorsSemantic: 'Semantyczny',
       typographyComposites: 'Style złożone',
       typographyCompositesBefore:
-        'Tokeny złożone łączą rozmiar, grubość, interlinię (a czasem rodzinę) dla konkretnej roli. <code>--text-section-heading-*</code> to pierwszy złożony token, który ustawia rodzinę kroju — używaj go w tytułach <code>&lt;h2&gt;</code> sekcji na stronach dokumentacji i marketingu.',
+        'Tokeny złożone łączą rozmiar, grubość, interlinię (a czasem rodzinę) dla konkretnej roli. <code>--text-section-heading-*</code> to pierwszy złożony token, który ustawia rodzinę kroju; używaj go w tytułach <code>&lt;h2&gt;</code> sekcji na stronach dokumentacji i marketingu.',
       typographySectionHeadingSample: 'Tytuł sekcji w głosie marki',
       typographyFamilies: 'Rodziny',
       typographySizes: 'Rozmiary',

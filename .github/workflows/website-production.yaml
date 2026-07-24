@@ -1,4 +1,4 @@
-name: Website — Production Deployment
+name: Website - Production Deployment
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

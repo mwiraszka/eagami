@@ -958,7 +958,7 @@ export const ptBR: WebMessages = {
           toggleTheme: 'Alternar tema',
           toggleThemeDescription: 'Alternar entre os modos claro e escuro',
           lockWorkspace: 'Bloquear área de trabalho',
-          lockWorkspaceDescription: 'Atualmente desativado — recurso em beta',
+          lockWorkspaceDescription: 'Atualmente desativado (recurso em beta)',
           executedToast: label => `Executado: ${label}`,
         },
         avatarEditorActions: {

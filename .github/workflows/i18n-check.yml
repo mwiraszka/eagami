@@ -1,4 +1,4 @@
-name: i18n — Key Drift Check
+name: i18n - Key Drift Check
 
 # Fires whenever a PR (or push to main) touches a message file in either
 # package, so a new key added to en.ts but forgotten in fr-FR / pl / etc.

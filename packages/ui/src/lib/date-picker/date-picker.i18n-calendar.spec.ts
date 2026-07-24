@@ -66,7 +66,7 @@ describe('DatePicker localized calendar names', () => {
     svc.setLocale('is');
     fixture.detectChanges();
 
-    // No English weekday abbreviation should appear in any position.
+    // No English weekday abbreviation should appear in any position
     const english = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const rendered = openAndRead().weekdays;
 

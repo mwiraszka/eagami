@@ -28,9 +28,9 @@ interface StepItem {
 }
 
 const STEPS: readonly StepItem[] = [
-  { label: 'Account', content: 'Step 1 — account details.' },
-  { label: 'Profile', content: 'Step 2 — profile info.' },
-  { label: 'Review', content: 'Step 3 — review and submit.' },
+  { label: 'Account', content: 'Step 1: account details.' },
+  { label: 'Profile', content: 'Step 2: profile info.' },
+  { label: 'Review', content: 'Step 3: review and submit.' },
 ];
 
 @Component({

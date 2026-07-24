@@ -23,7 +23,7 @@ const COMMANDS: CommandPaletteItem[] = [
   {
     id: 'lock',
     label: 'Lock workspace',
-    description: 'Currently disabled — feature in beta',
+    description: 'Currently disabled (feature in beta)',
     disabled: true,
   },
 ];
@@ -46,7 +46,7 @@ export default meta;
 type Story = StoryObj<CommandPaletteComponent>;
 
 export const Playground: Story = {
-  // `open` is an arg so control changes don't reset it and close the palette.
+  // `open` is an arg so control changes don't reset it and close the palette
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({

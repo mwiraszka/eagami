@@ -29,7 +29,7 @@ export const Playground: Story = {
           Run npm install @eagami/ui or pnpm add @eagami/ui, then add the global stylesheet.
         </ea-accordion-item>
         <ea-accordion-item value="theme" label="Can I customize the theme?">
-          Yes — override any CSS custom property on :root or scope overrides to individual components.
+          Yes: override any CSS custom property on :root or scope overrides to individual components.
         </ea-accordion-item>
       </ea-accordion>
     `,

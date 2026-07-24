@@ -966,7 +966,7 @@ export const de: WebMessages = {
           toggleTheme: 'Theme umschalten',
           toggleThemeDescription: 'Zwischen Hell- und Dunkelmodus wechseln',
           lockWorkspace: 'Arbeitsbereich sperren',
-          lockWorkspaceDescription: 'Derzeit deaktiviert — Funktion in der Beta',
+          lockWorkspaceDescription: 'Derzeit deaktiviert (Funktion in der Beta)',
           executedToast: label => `Ausgeführt: ${label}`,
         },
         avatarEditorActions: {

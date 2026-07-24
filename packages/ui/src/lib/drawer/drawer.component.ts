@@ -132,7 +132,7 @@ export class DrawerComponent {
       const drawerRef = this.drawerEl()?.nativeElement;
       const open = this.open();
       const mode = this.mode();
-      // Re-run the push measurement if size, position, or target change while open.
+      // Re-run the push measurement if size, position, or target change while open
       this.size();
       this.position();
       this.pushTarget();
@@ -142,7 +142,7 @@ export class DrawerComponent {
         return;
       }
 
-      // Push mode stays non-modal so the page behind it remains interactive.
+      // Push mode stays non-modal so the page behind it remains interactive
       const wantModal = mode !== 'push';
 
       if (open) {
@@ -152,7 +152,7 @@ export class DrawerComponent {
           this.enter(true);
           this.opened.emit();
         } else if (this.isLeaving) {
-          // Reopened mid-exit: cancel the pending close and slide back in.
+          // Reopened mid-exit: cancel the pending close and slide back in
           this.enter(true);
         } else if (this.shownAsModal !== wantModal) {
           // A modality change while open can only be honoured by reopening: the
@@ -270,7 +270,7 @@ export class DrawerComponent {
   }
 
   private finishClose(dialog: HTMLDialogElement): void {
-    // A reopen during the exit animation supersedes the close.
+    // A reopen during the exit animation supersedes the close
     if (this.open()) {
       return;
     }
@@ -296,7 +296,7 @@ export class DrawerComponent {
     this.closed.emit();
   }
 
-  // Non-modal push drawers do not emit `cancel`, so Escape is handled here.
+  // Non-modal push drawers do not emit `cancel`, so Escape is handled here
   handleKeydown(event: KeyboardEvent): void {
     if (this.mode() === 'push' && this.closeOnEscape() && event.key === 'Escape') {
       this.handleClose();
@@ -350,7 +350,7 @@ export class DrawerComponent {
         const ease = animation === 'linear' ? 'var(--ease-linear)' : 'var(--ease-out)';
         target.style.transition = `padding var(--duration-slower) ${ease}`;
       }
-      // Clear every side first so a position change never stacks two offsets.
+      // Clear every side first so a position change never stacks two offsets
       this.clearPushProperties(target);
       target.style.setProperty(PUSH_PROPERTY[position], `${size}px`);
       this.pushedTarget = target;
@@ -417,7 +417,7 @@ export class DrawerComponent {
     }
   }
 
-  // Removes the push styles immediately, for teardown where no animation is wanted.
+  // Removes the push styles immediately, for teardown where no animation is wanted
   private teardownPush(): void {
     if (this.pushRaf !== null) {
       cancelAnimationFrame(this.pushRaf);
@@ -460,7 +460,7 @@ export class DrawerComponent {
   // keep the drawer open; otherwise mirror the close back into the model.
   onDialogClose(): void {
     const drawerRef = this.drawerEl()?.nativeElement;
-    // Ignore the stale close event fired while reopening to switch modality.
+    // Ignore the stale close event fired while reopening to switch modality
     if (this.reopening || !this.open() || drawerRef?.open) {
       return;
     }

@@ -51,7 +51,7 @@ interface Hsv {
   v: number;
 }
 
-// Minimal EyeDropper API typing; not in lib.dom.
+// Minimal EyeDropper API typing; not in lib.dom
 interface EyeDropperResult {
   sRGBHex: string;
 }
@@ -595,7 +595,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   onHexBlur(): void {
-    // Reset the partial text to the canonical hex of the current color.
+    // Reset the partial text to the canonical hex of the current color
     this.hexInputValue.set(this.hexDisplay());
     this.onTouched();
   }
@@ -721,7 +721,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
     refreshHex = true,
   ): void {
     const hsv = rgbToHsv(r, g, b);
-    // Preserve current hue when the new color is achromatic (sat = 0).
+    // Preserve current hue when the new color is achromatic (sat = 0)
     this.hue.set(hsv.s === 0 ? this.hue() : hsv.h);
     this.sat.set(hsv.s);
     this.val.set(hsv.v);

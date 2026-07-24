@@ -221,7 +221,7 @@ export class InputComponent implements ControlValueAccessor {
     const el = event.target as HTMLInputElement;
     let value = el.value;
     const maxLen = this.maxLength();
-    // Native maxlength is ignored on number inputs, so enforce it here.
+    // Native maxlength is ignored on number inputs, so enforce it here
     if (this.type() === 'number' && maxLen != null && value.length > maxLen) {
       value = value.slice(0, maxLen);
       el.value = value;
