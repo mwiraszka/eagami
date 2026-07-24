@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.10.0
-source: '@eagami/ui@5.10.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-23
+version: 5.10.1
+source: '@eagami/ui@5.10.1 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-24
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.10.0 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.10.1 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -1197,7 +1197,7 @@ Map<int, Color> derivePrimaryScale(Color base) {
 }
 ```
 
-Run the helper in a one-off script when picking a new brand colour and copy the result into `EagamiColors`. For brand books that pin specific hexes, override individual shades after derivation. After regenerating, verify with the Flutter inspector that text-on-surface and surface-on-canvas pairs still meet AA — the Angular library does this assertion at bootstrap; with compile-time constants you assert manually.
+Run the helper in a one-off script when picking a new brand colour and copy the result into `EagamiColors`. For brand books that pin specific hexes, override individual shades after derivation. After regenerating, verify with the Flutter inspector that text-on-surface and surface-on-canvas pairs still meet AA; the Angular library does this assertion at bootstrap; with compile-time constants you assert manually.
 
 ---
 
