@@ -408,7 +408,7 @@ export class TimePickerComponent implements ControlValueAccessor {
     } else if (event.key === 'PageUp') {
       event.preventDefault();
       this.flushBuffer();
-      // Coarse step: 5× the configured step (or 10 for hours).
+      // Coarse step: 5× the configured step (or 10 for hours)
       const coarse = unit === 'hours' ? 10 : 5;
       for (let i = 0; i < coarse; i++) {
         this.step(unit, 1);
@@ -445,7 +445,7 @@ export class TimePickerComponent implements ControlValueAccessor {
   /** Select-all on focus so the first keystroke replaces the current value. */
   onSpinnerFocus(event: FocusEvent): void {
     const el = event.currentTarget as HTMLInputElement;
-    // afterNextRender-ish: wait one tick so iOS / Safari accept the select().
+    // afterNextRender-ish: wait one tick so iOS / Safari accept the select()
     queueMicrotask(() => el.select());
   }
 

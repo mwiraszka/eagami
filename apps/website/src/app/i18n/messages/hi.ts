@@ -947,7 +947,7 @@ export const hi: WebMessages = {
           toggleTheme: 'थीम टॉगल करें',
           toggleThemeDescription: 'लाइट और डार्क मोड के बीच स्विच करें',
           lockWorkspace: 'वर्कस्पेस लॉक करें',
-          lockWorkspaceDescription: 'वर्तमान में अक्षम — सुविधा बीटा में है',
+          lockWorkspaceDescription: 'वर्तमान में अक्षम (सुविधा बीटा में है)',
           executedToast: label => `निष्पादित: ${label}`,
         },
         avatarEditorActions: {

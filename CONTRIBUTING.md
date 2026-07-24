@@ -4,8 +4,8 @@ Conventions for the eagami monorepo.
 
 ## Layout
 
-- `packages/ui/` — `@eagami/ui`, the Angular component library and Storybook
-- `apps/website/` — [eagami.com](https://eagami.com), the marketing site and live docs
+- `packages/ui/`: `@eagami/ui`, the Angular component library and Storybook
+- `apps/website/`: [eagami.com](https://eagami.com), the marketing site and live docs
 
 The website consumes the library via `"@eagami/ui": "workspace:*"`, aliased through tsconfig directly to the library's source at `packages/ui/src/public-api`. The website's build compiles the library source as part of its own bundle, with Storybook being the canonical workbench for component-in-isolation work.
 
@@ -64,7 +64,7 @@ Dependabot PRs aren't merged directly. When cutting a release branch, locally pu
 
 ## Adding a new component
 
-Use this checklist when creating a brand-new component. Skip nothing — partial coverage breaks the assumption that every component has stories, a website demo, and a11y tests.
+Use this checklist when creating a brand-new component. Skip nothing; partial coverage breaks the assumption that every component has stories, a website demo, and a11y tests.
 
 **Library (`packages/ui/`)**
 
@@ -74,11 +74,11 @@ Use this checklist when creating a brand-new component. Skip nothing — partial
 - [ ] If form-like (exposes `errorMsg` / `hint`): follow the field-message pattern in [InputComponent](packages/ui/src/lib/input/input.component.ts) (icon + `role="alert"`, `var(--text-helper-*)` typography, `var(--color-error-default)` colour)
 - [ ] Implement the matching [WAI-ARIA APG pattern](https://www.w3.org/WAI/ARIA/apg/patterns/): correct roles/states/properties, full keyboard support (roving tabindex, arrows with RTL awareness, Home/End, Escape, Enter/Space), focus trapping and restoration for modal surfaces, live regions for async and validation state, `aria-hidden` on decorative elements, and an accessible name for every interactive element (localized defaults for built-in controls, an `aria-label` input for consumer-named ones)
 - [ ] No hard-coded color literals in `.scss`; tokens only (`packages/ui/src/styles/tokens/_colors.scss`)
-- [ ] Add `<slug>.component.stories.ts` — cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
-- [ ] Add `<slug>.component.spec.ts` — interaction tests, ARIA assertions, edge cases. No `any` casts
+- [ ] Add `<slug>.component.stories.ts`: cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
+- [ ] Add `<slug>.component.spec.ts`: interaction tests, ARIA assertions, edge cases. No `any` casts
 - [ ] Add `<slug>.component.a11y.spec.ts` with `vitest-axe` assertions for each meaningful rendered state (default, error, disabled, expanded)
 - [ ] Export from `packages/ui/src/public-api.ts` in alphabetical order
-- [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook` — all must pass
+- [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook`; all must pass
 
 **Website (`apps/website/`)**
 
@@ -113,7 +113,7 @@ Accessibility is release-blocking: changes must keep the component conformant wi
 - Selector prefix: `ea-` for library, `web-` for website
 - No inline styles; everything in `.scss`
 - No hard-coded color literals in component SCSS; use the tokens in `packages/ui/src/styles/tokens/_colors.scss` or `apps/website/src/styles/_variables.scss`
-- Brand colours are derivable from a single hex via the OKLCH pipeline in `packages/ui/src/lib/palette/`. The default `--color-primary-*` and `--color-secondary-*` scales in `_colors.scss` are the un-themed fallback; consumers can replace either ramp at runtime by passing a `palette` to `provideEagamiUi`. When touching colour tokens, keep the two paths in sync — any new `--color-brand-*` role added in `_colors.scss` should be mapped in `palette.types.ts` (`PaletteRoles`) and `apply-palette.ts`, and the contrast assertions in `validate-palette.ts` should be extended to cover it
+- Brand colours are derivable from a single hex via the OKLCH pipeline in `packages/ui/src/lib/palette/`. The default `--color-primary-*` and `--color-secondary-*` scales in `_colors.scss` are the un-themed fallback; consumers can replace either ramp at runtime by passing a `palette` to `provideEagamiUi`. When touching colour tokens, keep the two paths in sync: any new `--color-brand-*` role added in `_colors.scss` should be mapped in `palette.types.ts` (`PaletteRoles`) and `apply-palette.ts`, and the contrast assertions in `validate-palette.ts` should be extended to cover it
 - No `any` casts in tests; type your mocks (`@ts-expect-error` is fine for accessing private/protected members)
 - Spacing values: `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` only
 

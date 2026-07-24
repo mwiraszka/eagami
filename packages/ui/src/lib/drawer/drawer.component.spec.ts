@@ -264,7 +264,7 @@ describe('DrawerComponent', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
 
-      // The native close event fires after the dialog has already closed.
+      // The native close event fires after the dialog has already closed
       getDrawer().removeAttribute('open');
       getDrawer().dispatchEvent(new Event('close'));
       fixture.detectChanges();

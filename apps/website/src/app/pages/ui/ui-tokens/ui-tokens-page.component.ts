@@ -281,7 +281,7 @@ export class UiTokensPageComponent {
     },
   ];
 
-  // y for an output of 1; the curve's top reference and the dot's resting line.
+  // y for an output of 1; the curve's top reference and the dot's resting line
   protected readonly curveTopY = 100 - CURVE_UNIT;
 
   protected readonly isSimulatingDurations = signal(false);

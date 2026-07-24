@@ -351,7 +351,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.close();
       this.triggerEl()?.nativeElement.focus();
     } else if (event.key === 'Backspace' && this.hasValue() && !this.isOpen()) {
-      // Quick-remove the last chip when the trigger is focused and no popover.
+      // Quick-remove the last chip when the trigger is focused and no popover
       event.preventDefault();
       this.commit(this.value().slice(0, -1));
     }

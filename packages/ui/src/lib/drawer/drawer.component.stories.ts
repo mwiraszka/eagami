@@ -16,7 +16,7 @@ export default meta;
 type Story = StoryObj<DrawerComponent>;
 
 export const Playground: Story = {
-  // `open` is an arg so control changes don't reset it and close the drawer.
+  // `open` is an arg so control changes don't reset it and close the drawer
   args: { open: true },
   argTypes: { open: { control: 'boolean' } },
   render: args => ({

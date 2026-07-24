@@ -238,7 +238,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
     if (files.length) {
       this.acceptFiles(files);
     }
-    // Reset so re-picking the same file re-triggers the input.
+    // Reset so re-picking the same file re-triggers the input
     inputEl.value = '';
   }
 

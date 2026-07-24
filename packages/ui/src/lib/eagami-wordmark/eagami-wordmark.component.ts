@@ -26,7 +26,7 @@ export type EagamiWordmarkLayout = 'stacked' | 'inline';
   styleUrl: './eagami-wordmark.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    // The wordmark is a fixed brand lockup; it never mirrors with UI direction.
+    // The wordmark is a fixed brand lockup; it never mirrors with UI direction
     dir: 'ltr',
     '[style.--_size]': 'resolvedSize()',
   },

@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.10.1] - 2026-07-24
+
+### Added
+
+- Add checkbox label and count colour styling hooks (`--ea-checkbox-label-color`, `--ea-checkbox-count-color`).
+
+### Fixed
+
+- Mark the Framer icon as a brand icon, matching the other brand marks.
+
 ## [5.10.0] - 2026-07-24
 
 ### Added
@@ -1065,6 +1075,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.10.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.0...ui-v5.10.1
 [5.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.9.0...ui-v5.10.0
 [5.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.6...ui-v5.9.0
 [5.8.6]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.5...ui-v5.8.6

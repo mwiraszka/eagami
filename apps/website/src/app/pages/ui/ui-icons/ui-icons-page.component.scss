@@ -91,19 +91,15 @@
   align-items: center;
   cursor: pointer;
 
-  ::ng-deep .ea-checkbox__label,
-  ::ng-deep .ea-checkbox__count {
-    transition: color 0.15s ease;
-  }
-
-  &:hover ::ng-deep .ea-checkbox__label {
-    color: var(--color-brand-default);
-  }
-
-  &:hover ::ng-deep .ea-checkbox__count {
+  &:hover {
+    --ea-checkbox-label-color: var(--color-brand-default);
     /* Brand colour at lower opacity keeps the count subordinate while still
        signalling it as part of the hoverable target. */
-    color: color-mix(in oklch, var(--color-brand-default), transparent 40%);
+    --ea-checkbox-count-color: color-mix(
+      in oklch,
+      var(--color-brand-default),
+      transparent 40%
+    );
   }
 }
 

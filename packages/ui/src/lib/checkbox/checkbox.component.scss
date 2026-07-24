@@ -109,6 +109,8 @@
 
   &__label {
     font-weight: var(--font-weight-regular);
+    color: var(--ea-checkbox-label-color, inherit);
+    transition: color var(--duration-fast) var(--ease-out);
 
     &--required::after {
       content: ' *';
@@ -118,7 +120,8 @@
 
   &__count {
     margin-inline-start: 0.25em;
-    color: var(--color-text-tertiary);
+    color: var(--ea-checkbox-count-color, var(--color-text-tertiary));
+    transition: color var(--duration-fast) var(--ease-out);
   }
 
   &--error {

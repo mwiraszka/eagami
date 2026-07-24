@@ -146,7 +146,7 @@ describe('RadioGroup + Radio', () => {
   });
 });
 
-describe('RadioGroupComponent — form-field plumbing', () => {
+describe('RadioGroupComponent: form-field plumbing', () => {
   let fixture: ComponentFixture<RadioGroupComponent>;
 
   function getGroupEl(): HTMLElement {

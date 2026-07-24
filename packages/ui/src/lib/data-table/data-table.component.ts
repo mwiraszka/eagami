@@ -78,7 +78,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
   // body rows are 1..N. Only meaningful while `navigable` is true.
   private readonly activeCell = signal<{ row: number; col: number }>({ row: 0, col: 0 });
 
-  // Rows skipped per PageUp/PageDown within the grid body.
+  // Rows skipped per PageUp/PageDown within the grid body
   private static readonly PAGE_JUMP = 10;
 
   readonly columns = input.required<DataTableColumn<T>[]>();

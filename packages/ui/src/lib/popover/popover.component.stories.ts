@@ -42,7 +42,7 @@ import { POPOVER_KNOBS } from './popover.component.knobs';
   styleUrl: './popover.component.stories.scss',
 })
 class PopoverStoryHost {
-  // `open` is an arg so control changes don't reset it and close the popover.
+  // `open` is an arg so control changes don't reset it and close the popover
   @Input() set open(value: boolean) {
     this.isOpen.set(value);
   }

@@ -27,7 +27,7 @@ describe('frenchSpacing', () => {
     expect(result).toBe(`Il a dit «${NBSP}bonjour${NBSP}».`);
   });
 
-  it('is idempotent — running twice produces the same output as once', () => {
+  it('is idempotent: running twice produces the same output as once', () => {
     const input = "Voici un test : qu'en penses-tu ?";
     const once = frenchSpacing(input);
     const twice = frenchSpacing(once);

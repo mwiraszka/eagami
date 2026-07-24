@@ -53,7 +53,7 @@ export class AlertDemoPageComponent {
 
   protected onAlertDismissed(): void {
     this.alertVisible.set(false);
-    // Restore the alert so the playground stays usable after a dismissal.
+    // Restore the alert so the playground stays usable after a dismissal
     setTimeout(() => this.alertVisible.set(true), 2000);
   }
 

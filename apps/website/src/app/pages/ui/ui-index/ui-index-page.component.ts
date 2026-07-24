@@ -38,9 +38,9 @@ const DEFAULT_FONT = 'sans';
 interface FontChoice {
   value: string;
   label: string;
-  // The `--font-family-sans` value to apply; empty keeps the site default.
+  // The `--font-family-sans` value to apply; empty keeps the site default
   stack: string;
-  // Google Fonts family query, fetched on demand the first time it is picked.
+  // Google Fonts family query, fetched on demand the first time it is picked
   google?: string;
 }
 
@@ -169,7 +169,7 @@ export class UiIndexPageComponent {
     const stack = FONT_BY_VALUE.get(this.appliedFont())?.stack;
     if (stack) {
       style['--font-family-sans'] = stack;
-      // Override mono too so the color picker's hex/RGB inputs follow the font.
+      // Override mono too so the color picker's hex/RGB inputs follow the font
       style['--font-family-mono'] = stack;
     }
     return style;

@@ -376,7 +376,7 @@ export const frFR: WebMessages = {
       typographyWeights: 'Graisses',
       typographyComposites: 'Styles composites',
       typographyCompositesBefore:
-        'Les tokens composites regroupent une taille, une graisse, une hauteur de ligne (et parfois une famille) pour un rôle précis. <code>--text-section-heading-*</code> est le premier composite qui fixe une famille — utilisez-le pour les titres <code>&lt;h2&gt;</code> de sous-section sur les pages de docs et marketing.',
+        'Les tokens composites regroupent une taille, une graisse, une hauteur de ligne (et parfois une famille) pour un rôle précis. <code>--text-section-heading-*</code> est le premier composite qui fixe une famille ; utilisez-le pour les titres <code>&lt;h2&gt;</code> de sous-section sur les pages de docs et marketing.',
       typographySectionHeadingSample: 'Titre de section voix de marque',
       motionSimulate: 'Simuler',
       motionDurations: 'Durées',

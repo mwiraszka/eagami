@@ -118,7 +118,7 @@ export class ComponentPlaygroundComponent {
     if (label) {
       return label;
     }
-    // The shared demo-only error trigger isn't in any component's label map.
+    // The shared demo-only error trigger isn't in any component's label map
     return name === 'triggerError'
       ? playground.triggerErrorLabel
       : humanizeKnobName(name);
@@ -171,7 +171,7 @@ export class ComponentPlaygroundComponent {
     this.emitNumber(name, (event.target as HTMLInputElement).value);
   }
 
-  // Enter blurs the field, routing through the same clamp-then-commit path.
+  // Enter blurs the field, routing through the same clamp-then-commit path
   protected commitOnEnter(event: Event): void {
     (event.target as HTMLInputElement).blur();
   }

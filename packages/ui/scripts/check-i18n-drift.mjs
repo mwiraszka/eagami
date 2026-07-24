@@ -1,7 +1,7 @@
 /*
  * Verifies that every locale file in a messages directory exposes the exact
  * same set of key paths as `en.ts`. Catches the case where a new key is added
- * to one locale but forgotten in another — easy to miss across 5+ files and
+ * to one locale but forgotten in another, easy to miss across 5+ files and
  * silently degrades the experience for non-default locales.
  *
  * Usage: node check-i18n-drift.mjs <messages-dir> [<messages-dir> ...]
@@ -11,7 +11,7 @@
  * against `en.ts`; values aren't compared because runtime function bodies
  * (e.g. `paginator.range`) and locale-appropriate text are expected to differ.
  *
- * Resolves `typescript` from the directory the script lives in — which is why
+ * Resolves `typescript` from the directory the script lives in, which is why
  * this file is colocated with `packages/ui/scripts/`. Both library and website
  * workflows can invoke it through `pnpm --filter @eagami/ui exec`.
  */
@@ -56,7 +56,7 @@ function extractKeyPaths(source) {
   function visit(node) {
     if (ts.isVariableDeclaration(node) && node.initializer) {
       let init = node.initializer;
-      // Strip an outer `as const` so we still see the literal underneath.
+      // Strip an outer `as const` so we still see the literal underneath
       if (ts.isAsExpression(init)) {
         init = init.expression;
       }

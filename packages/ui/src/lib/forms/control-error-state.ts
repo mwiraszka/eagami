@@ -53,7 +53,7 @@ export function controlErrorStateFrom(
 ): ControlErrorState {
   const i18n = inject(EagamiI18nService);
 
-  // Bumped on every status/touched change so the computed re-reads the control.
+  // Bumped on every status/touched change so the computed re-reads the control
   const revision = signal(0);
 
   effect(onCleanup => {

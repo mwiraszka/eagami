@@ -39,7 +39,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/ui
           storybookBuildDir: dist/storybook/eagami-ui
-          # TurboSnap — only re-snapshot stories whose dependencies actually
+          # TurboSnap: only re-snapshot stories whose dependencies actually
           # changed in this PR, saving quota on large library refactors.
           onlyChanged: true
           # Don't block this job waiting for human review in Chromatic; the

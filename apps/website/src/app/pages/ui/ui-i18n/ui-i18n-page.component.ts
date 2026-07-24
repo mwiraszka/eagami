@@ -90,7 +90,7 @@ export class UiI18nPageComponent {
   protected readonly quickSetupSnippet = `import { frFR, provideEagamiUi } from '@eagami/ui';
 
 export const appConfig: ApplicationConfig = {
-  // Register the languages you use; English is always available.
+  // Register the languages you use; English is always available
   providers: [provideEagamiUi({ locale: 'fr-FR', locales: [frFR] })],
 };`;
 

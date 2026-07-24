@@ -74,7 +74,7 @@ Full API and live demos at [eagami.com/ui/components](https://eagami.com/ui/comp
 
 ## Icons
 
-Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. The library ships the full [Feather Icons](https://feathericons.com/) set (287 icons at their canonical slugs) by [Cole Bemis](https://github.com/colebemis), used under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE), plus additional line icons from [Lucide](https://lucide.dev/) (ISC License), a set of original Eagami UI additions (basic shapes, household objects, the Eagami brand mark), and a coloured brand-icon set for nominative use that includes marks from [Simple Icons](https://simpleicons.org/) (CC0).
+Standalone Angular components (`<ea-icon-*>`) that inherit their color and scale with `font-size`, so they render at any size. The library ships the [Feather Icons](https://feathericons.com/) set (286 icons at their canonical slugs) by [Cole Bemis](https://github.com/colebemis), used under the [MIT License](https://github.com/feathericons/feather/blob/master/LICENSE), plus additional line icons from [Lucide](https://lucide.dev/) (ISC License), a set of original Eagami UI additions (basic shapes, household objects, the Eagami brand mark), and a coloured brand-icon set for nominative use that includes marks from [Simple Icons](https://simpleicons.org/) (CC0).
 
 Each icon component exposes `static readonly` metadata so consumers can build catalogues, search indices, or doc tables without importing every icon:
 

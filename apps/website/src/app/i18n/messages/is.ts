@@ -959,7 +959,7 @@ export const is: WebMessages = {
           toggleTheme: 'Víxla þema',
           toggleThemeDescription: 'Skipta milli ljóss og dökks hams',
           lockWorkspace: 'Læsa vinnusvæði',
-          lockWorkspaceDescription: 'Óvirkt sem stendur — eiginleiki í beta',
+          lockWorkspaceDescription: 'Óvirkt sem stendur (eiginleiki í beta)',
           executedToast: label => `Keyrt: ${label}`,
         },
         avatarEditorActions: {
