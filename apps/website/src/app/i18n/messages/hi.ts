@@ -905,6 +905,8 @@ export const hi: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(मुझ पर होवर करें)',
+          templateTriggerLabel: '(टेम्पलेट टूलटिप के लिए होवर करें)',
+          templateTipStatus: 'अभी ऑनलाइन',
           topLabel: 'ऊपर',
           topTooltip: 'ऊपरी टूलटिप',
           bottomLabel: 'नीचे',
@@ -1622,7 +1624,8 @@ export const hi: WebMessages = {
           tooltip: {
             maxWidth:
               'पिक्सेल में अधिकतम चौड़ाई; टेक्स्ट इस चौड़ाई पर रैप होता है (50px फ़्लोर)।',
-            eaTooltip: 'होवर और कीबोर्ड फ़ोकस पर दिखाए गए टूलटिप की टेक्स्ट सामग्री।',
+            eaTooltip:
+              'होवर और कीबोर्ड फ़ोकस पर दिखाई जाने वाली टूलटिप की सामग्री। सादा टेक्स्ट या स्टाइल की गई सामग्री के लिए TemplateRef स्वीकार करता है।',
             tooltipPosition: 'अपने होस्ट एलिमेंट के सापेक्ष टूलटिप का स्थान।',
           },
           'time-picker': {

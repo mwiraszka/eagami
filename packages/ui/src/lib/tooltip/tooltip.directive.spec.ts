@@ -21,6 +21,19 @@ class TestHostComponent {
   existingDescribedBy = signal<string | null>(null);
 }
 
+@Component({
+  selector: 'ea-template-test-host',
+  imports: [TooltipDirective],
+  template: `
+    <ng-template #tip>
+      <span class="tip-label">Bell Ring</span>
+      <code class="tip-code">ea-icon-bell-ring</code>
+    </ng-template>
+    <button [eaTooltip]="tip">Trigger</button>
+  `,
+})
+class TemplateTestHostComponent {}
+
 describe('TooltipDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
@@ -257,6 +270,45 @@ describe('TooltipDirective', () => {
         }
       ).elementFromPoint = originalElementFromPoint;
       vi.useRealTimers();
+    });
+  });
+
+  describe('Template content', () => {
+    let templateFixture: ComponentFixture<TemplateTestHostComponent>;
+
+    function templateButton(): HTMLButtonElement {
+      return templateFixture.nativeElement.querySelector('button');
+    }
+
+    beforeEach(() => {
+      templateFixture = TestBed.createComponent(TemplateTestHostComponent);
+      templateFixture.detectChanges();
+      (
+        document as Document & {
+          elementFromPoint: (x: number, y: number) => Element | null;
+        }
+      ).elementFromPoint = () => templateButton();
+    });
+
+    it('renders the template nodes inside the tooltip', () => {
+      templateButton().dispatchEvent(new MouseEvent('mouseenter'));
+      templateFixture.detectChanges();
+
+      const tip = getTooltip();
+
+      expect(tip).toBeTruthy();
+      expect(tip!.querySelector('.tip-label')!.textContent).toBe('Bell Ring');
+      expect(tip!.querySelector('.tip-code')!.textContent).toBe('ea-icon-bell-ring');
+    });
+
+    it('removes the embedded view when the tooltip hides', () => {
+      templateButton().dispatchEvent(new MouseEvent('mouseenter'));
+      templateFixture.detectChanges();
+
+      templateButton().dispatchEvent(new MouseEvent('mouseleave'));
+      templateFixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
     });
   });
 });

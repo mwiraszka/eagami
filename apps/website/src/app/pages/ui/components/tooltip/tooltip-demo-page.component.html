@@ -8,13 +8,56 @@
     [state]="state()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <div
-      class="demo-tooltip-trigger"
-      tabindex="0"
-      [eaTooltip]="state().eaTooltip"
-      [tooltipPosition]="state().tooltipPosition"
-      [maxWidth]="state().maxWidth">
-      {{ messages().ui.component.demos.tooltip.triggerLabel }}
+    <div class="demo-tooltip-triggers">
+      <div
+        class="demo-tooltip-trigger"
+        tabindex="0"
+        [eaTooltip]="state().eaTooltip"
+        [tooltipPosition]="state().tooltipPosition"
+        [maxWidth]="state().maxWidth">
+        {{ messages().ui.component.demos.tooltip.triggerLabel }}
+      </div>
+      <ng-template #richTip>
+        <div class="demo-tooltip-tip">
+          <div class="demo-tooltip-tip-header">
+            <img
+              class="demo-tooltip-tip-avatar"
+              alt=""
+              [src]="avatarSrc" />
+            <div class="demo-tooltip-tip-identity">
+              <span class="demo-tooltip-tip-name">
+                Bob Vance
+                <ea-icon-badge-check class="demo-tooltip-tip-verified" />
+              </span>
+              <span class="demo-tooltip-tip-role">Vance Refrigeration</span>
+            </div>
+          </div>
+          <div class="demo-tooltip-tip-meta">
+            <span class="demo-tooltip-tip-meta-row">
+              <ea-icon-building class="demo-tooltip-tip-meta-icon" />
+              Dunder Mifflin
+            </span>
+            <span class="demo-tooltip-tip-meta-row">
+              <ea-icon-map-pin class="demo-tooltip-tip-meta-icon" />
+              Scranton, PA
+            </span>
+            <span class="demo-tooltip-tip-meta-row">
+              <span
+                class="demo-tooltip-tip-status-dot"
+                aria-hidden="true">
+              </span>
+              {{ messages().ui.component.demos.tooltip.templateTipStatus }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <div
+        class="demo-tooltip-trigger"
+        tabindex="0"
+        [eaTooltip]="richTip"
+        [tooltipPosition]="state().tooltipPosition">
+        {{ messages().ui.component.demos.tooltip.templateTriggerLabel }}
+      </div>
     </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

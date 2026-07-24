@@ -915,6 +915,8 @@ export const nl: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(zweef over mij)',
+          templateTriggerLabel: '(hover voor een template-tooltip)',
+          templateTipStatus: 'Nu online',
           topLabel: 'Boven',
           topTooltip: 'Tooltip boven',
           bottomLabel: 'Onder',
@@ -1649,7 +1651,7 @@ export const nl: WebMessages = {
             maxWidth:
               'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px).',
             eaTooltip:
-              'Tekstinhoud van de tooltip getoond bij hoveren en toetsenbordfocus.',
+              'Inhoud van de tooltip getoond bij hoveren en toetsenbordfocus. Accepteert een gewone tekst of een TemplateRef voor opgemaakte inhoud.',
             tooltipPosition: 'Plaatsing van de tooltip ten opzichte van het hostelement.',
           },
           'time-picker': {

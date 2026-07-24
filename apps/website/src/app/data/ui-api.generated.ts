@@ -1151,7 +1151,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'sort',
         type: 'DataTableSortState',
-        default: "{ column: '', direction: null }",
+        default: '',
         required: false,
         twoWay: true,
       },
@@ -2475,7 +2475,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'orderedValues',
-        signature: 'orderedValues(set: Set<string>): string[]',
+        signature: 'orderedValues(set: Set<string>): readonly string[]',
       },
       {
         name: 'removeChip',
@@ -4365,7 +4365,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'eaTooltip',
-        type: 'string',
+        type: 'string | TemplateRef<unknown>',
         default: '',
         required: true,
         twoWay: false,

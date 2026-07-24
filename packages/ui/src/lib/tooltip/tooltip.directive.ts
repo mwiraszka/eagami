@@ -1,8 +1,11 @@
 import {
   Directive,
   ElementRef,
+  type EmbeddedViewRef,
   type OnDestroy,
   Renderer2,
+  TemplateRef,
+  ViewContainerRef,
   inject,
   input,
 } from '@angular/core';
@@ -16,7 +19,8 @@ export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * Attaches a positioned tooltip to its host element. Shows on hover and
  * focus, hides on leave/blur or Escape, and wires up `aria-describedby` so
- * the tooltip text is announced to assistive technology.
+ * the tooltip text is announced to assistive technology. Accepts either a
+ * plain string or a `TemplateRef` for styled multi-part content.
  */
 @Directive({
   selector: '[eaTooltip]',
@@ -24,13 +28,15 @@ export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 export class TooltipDirective implements OnDestroy {
   private readonly el = inject(ElementRef);
   private readonly renderer = inject(Renderer2);
+  private readonly viewContainer = inject(ViewContainerRef);
 
-  readonly eaTooltip = input.required<string>();
+  readonly eaTooltip = input.required<string | TemplateRef<unknown>>();
   readonly tooltipPosition = input<TooltipPosition>('top');
   /** Max width in px; the text wraps at this width. Clamped to a 50px floor. */
   readonly maxWidth = input<number | undefined>(200);
 
   private tooltipEl: HTMLElement | null = null;
+  private templateView: EmbeddedViewRef<unknown> | null = null;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
 
   // Touch devices fire `mouseenter` on tap but never fire `mouseleave` until
@@ -143,7 +149,16 @@ export class TooltipDirective implements OnDestroy {
     this.renderer.addClass(this.tooltipEl, `ea-tooltip--${this.tooltipPosition()}`);
     this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
     this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
-    this.tooltipEl!.textContent = this.eaTooltip();
+    const content = this.eaTooltip();
+    if (content instanceof TemplateRef) {
+      this.templateView = this.viewContainer.createEmbeddedView(content);
+      this.templateView.detectChanges();
+      for (const node of this.templateView.rootNodes) {
+        this.renderer.appendChild(this.tooltipEl, node);
+      }
+    } else {
+      this.tooltipEl!.textContent = content;
+    }
 
     const maxWidth = this.maxWidth();
     if (maxWidth != null) {
@@ -199,6 +214,8 @@ export class TooltipDirective implements OnDestroy {
       document.removeEventListener('keydown', this.keydownHandler);
       this.tooltipEl.remove();
       this.tooltipEl = null;
+      this.templateView?.destroy();
+      this.templateView = null;
       this.removeDescribedBy();
     }
   }

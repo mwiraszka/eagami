@@ -927,6 +927,8 @@ export const frFR: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(survolez-moi)',
+          templateTriggerLabel: '(survolez pour une infobulle à template)',
+          templateTipStatus: 'En ligne',
           topLabel: 'Haut',
           topTooltip: 'Infobulle en haut',
           bottomLabel: 'Bas',
@@ -1656,7 +1658,7 @@ export const frFR: WebMessages = {
             maxWidth:
               'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px).',
             eaTooltip:
-              "Contenu textuel de l'infobulle affichée au survol et au focus clavier.",
+              "Contenu de l'infobulle affichée au survol et au focus clavier. Accepte une chaîne de texte ou un TemplateRef pour du contenu stylisé.",
             tooltipPosition: "Position de l'infobulle par rapport à son élément hôte.",
           },
           'time-picker': {

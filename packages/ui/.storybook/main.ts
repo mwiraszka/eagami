@@ -17,6 +17,7 @@ function resolveLoader(name: string): string {
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  staticDirs: ['./assets'],
   // @chromatic-com/storybook is what makes Chromatic's theme `modes` actually apply.
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@chromatic-com/storybook'],
   framework: '@storybook/angular',

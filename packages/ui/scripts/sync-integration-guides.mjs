@@ -6,15 +6,17 @@
 //   2. the full section 2 token tables in both guides
 //   3. the CSS and TS code blocks in eagami-ui-react.md
 //   4. the eagami_theme.dart code block in eagami-ui-flutter.md
-//   5. both guides' frontmatter version, source, and last-synced date
+//   5. the full icon list in eagami-ui-react.md (from the icon components)
+//   6. both guides' frontmatter version, source, and last-synced date
 // Run with --check to verify without writing (CI mode).
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const UI_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO_ROOT = resolve(UI_ROOT, '../..');
 const TOKENS_DIR = join(UI_ROOT, 'src/styles/tokens');
+const ICONS_DIR = join(UI_ROOT, 'src/lib/icons');
 const ASSETS_DIR = join(REPO_ROOT, 'apps/website/src/assets');
 const REACT_GUIDE = join(ASSETS_DIR, 'eagami-ui-react.md');
 const FLUTTER_GUIDE = join(ASSETS_DIR, 'eagami-ui-flutter.md');
@@ -1763,6 +1765,34 @@ function generateFlutterTheme() {
   return lines.join('\n');
 }
 
+// React guide: generated icon list
+
+function iconMeta() {
+  const icons = [];
+  for (const file of readdirSync(ICONS_DIR)) {
+    if (!file.endsWith('.component.ts')) {
+      continue;
+    }
+    const src = readFileSync(join(ICONS_DIR, file), 'utf8');
+    const slug = src.match(/static readonly slug = '([^']+)'/)?.[1];
+    if (!slug) {
+      continue;
+    }
+    icons.push({ slug, isBrand: /static readonly isBrand = true/.test(src) });
+  }
+  return icons.sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+function generateReactIconsSection() {
+  const icons = iconMeta();
+  const pascal = slug => slug.split('-').map(capFirst).join('');
+  const names = list => list.map(i => `\`${pascal(i.slug)}\``).join(', ');
+  return [
+    `The full icon set (${icons.length} icons). Single-color icons: ${names(icons.filter(i => !i.isBrand))}.`,
+    `Brand marks (flagged \`isBrand\` upstream): ${names(icons.filter(i => i.isBrand))}.`,
+  ].join('\n\n');
+}
+
 // Guide file rewriting
 
 function replaceGeneratedRegion(md, id, body) {
@@ -1868,6 +1898,7 @@ let react = stampFrontmatter(reactPrev);
 react = replaceGeneratedRegion(react, 'react-tokens', generateReactTokensSection());
 react = replaceGeneratedBlock(react, 'react-css', 'css', generateCssBlock());
 react = replaceGeneratedBlock(react, 'react-ts', 'ts', generateTsBlock());
+react = replaceGeneratedRegion(react, 'react-icons', generateReactIconsSection());
 react = withSyncDate(react, reactPrev);
 artifacts.push({ path: REACT_GUIDE, content: react, label: 'react guide' });
 

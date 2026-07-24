@@ -901,6 +901,8 @@ export const ar: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(حوّم فوقي)',
+          templateTriggerLabel: '(حوّم لعرض تلميح بقالب)',
+          templateTipStatus: 'متصل الآن',
           topLabel: 'أعلى',
           topTooltip: 'تلميح علوي',
           bottomLabel: 'أسفل',
@@ -1578,7 +1580,8 @@ export const ar: WebMessages = {
           tooltip: {
             maxWidth:
               'العرض الأقصى بالبكسل؛ يلتفّ النص عند هذا العرض (الحد الأدنى 50px).',
-            eaTooltip: 'المحتوى النصي للتلميح المعروض عند التحويم وتركيز لوحة المفاتيح.',
+            eaTooltip:
+              'محتوى التلميح المعروض عند التحويم وتركيز لوحة المفاتيح. يقبل نصًا عاديًا أو TemplateRef لمحتوى منسق.',
             tooltipPosition: 'موضع التلميح بالنسبة إلى عنصره المضيف.',
           },
           'time-picker': {

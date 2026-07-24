@@ -2,6 +2,21 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.15.0] - 2026-07-24
+
+### Added
+
+- Add a rich template-content example to the tooltip demo page.
+
+### Changed
+
+- Display icons in a compact icon-only grid, with each icon's name and selector shown in its tooltip.
+- Pick up @eagami/ui v5.10.0.
+
+### Fixed
+
+- Fix the React integration guide's outdated icon list; it now stays in sync with the library automatically.
+
 ## [3.14.9] - 2026-07-24
 
 ### Changed
@@ -928,6 +943,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.15.0]: https://github.com/mwiraszka/eagami/compare/website-v3.14.9...website-v3.15.0
 [3.14.9]: https://github.com/mwiraszka/eagami/compare/website-v3.14.8...website-v3.14.9
 [3.14.8]: https://github.com/mwiraszka/eagami/compare/website-v3.14.7...website-v3.14.8
 [3.14.7]: https://github.com/mwiraszka/eagami/compare/website-v3.14.6...website-v3.14.7

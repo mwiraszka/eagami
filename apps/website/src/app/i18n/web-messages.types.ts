@@ -741,6 +741,8 @@ export interface WebMessages {
         };
         tooltip: {
           triggerLabel: string;
+          templateTriggerLabel: string;
+          templateTipStatus: string;
           topLabel: string;
           topTooltip: string;
           bottomLabel: string;

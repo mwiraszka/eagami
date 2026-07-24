@@ -315,7 +315,6 @@ export * from './lib/icons/send.component';
 export * from './lib/icons/server.component';
 export * from './lib/icons/settings.component';
 export * from './lib/icons/share.component';
-export * from './lib/icons/share-2.component';
 export * from './lib/icons/shield.component';
 export * from './lib/icons/shield-off.component';
 export * from './lib/icons/shopping-bag.component';

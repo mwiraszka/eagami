@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.9.0
-source: '@eagami/ui@5.9.0 (https://github.com/mwiraszka/eagami)'
+version: 5.10.0
+source: '@eagami/ui@5.10.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-07-23
 audience: human developers and AI coding agents
 purpose: >
@@ -522,7 +522,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.9.0 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.10.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -1069,7 +1069,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.9.0 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.10.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
@@ -2118,9 +2118,15 @@ interface IconProps extends React.SVGAttributes<SVGSVGElement> {
 }
 ```
 
-Single-color brand icons (`GithubIcon`, `FacebookIcon`, `XTwitterIcon`, `MicrosoftIcon`, `GoogleIcon`) default to `currentColor` so they inherit surrounding text color. Pass `brand` to opt back in to the original brand color. `AppleIcon` is deprecated and will be removed in a future major; consumers needing it should source the asset directly from Apple per their brand guidelines.
+Single-color brand icons (`GithubIcon`, `FacebookIcon`, `XTwitterIcon`, `MicrosoftIcon`, `GoogleIcon`) default to `currentColor` so they inherit surrounding text color. Pass `brand` to opt back in to the original brand color.
 
-The full icon set: `AlertCircle`, `AlertTriangle`, `Archive`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `ArrowUp`, `AtSign`, `BarChart`, `Bell`, `Bookmark`, `Briefcase`, `Calendar`, `Camera`, `Check`, `CheckCircle`, `ChevronDown`, `ChevronLeft`, `ChevronRight`, `ChevronUp`, `ChevronsUpDown`, `Clipboard`, `Clock`, `Cloud`, `Copy`, `CreditCard`, `DollarSign`, `Download`, `Eagami` (brand mark), `ExternalLink`, `Eye`, `EyeOff`, `File`, `Filter`, `Flag`, `Folder`, `Gift`, `Globe`, `Hash`, `Heart`, `HelpCircle`, `Home`, `Image`, `Inbox`, `Info`, `Link`, `List`, `Loader`, `Lock`, `LogIn`, `LogOut`, `Mail`, `MapPin`, `Maximize`, `Menu`, `Mic`, `Minimize`, `Minus`, `Monitor`, `Moon`, `MoreHorizontal`, `Package`, `Paperclip`, `Pause`, `Pencil`, `Phone`, `Play`, `Plus`, `Printer`, `RefreshCw`, `RotateCcw`, `Save`, `Search`, `Send`, `Settings`, `Share`, `Shield`, `ShoppingCart`, `Smartphone`, `Star`, `Sun`, `ThumbsDown`, `ThumbsUp`, `Trash`, `TrendingUp`, `Unlock`, `Upload`, `User`, `Users`, `Video`, `Volume2`, `Wifi`, `X`, `XCircle`, `Zap`. Brand icons: `Apple` (deprecated), `Facebook`, `Github`, `Google`, `Microsoft`, `XTwitter`.
+<!-- eagami:generated:react-icons start -->
+
+The full icon set (389 icons). Single-color icons: `Activity`, `Airplay`, `AlertCircle`, `AlertOctagon`, `AlertTriangle`, `AlignCenter`, `AlignJustify`, `AlignLeft`, `AlignRight`, `Anchor`, `Aperture`, `Archive`, `ArrowDown`, `ArrowDownCircle`, `ArrowDownLeft`, `ArrowDownRight`, `ArrowLeft`, `ArrowLeftCircle`, `ArrowRight`, `ArrowRightCircle`, `ArrowUp`, `ArrowUpCircle`, `ArrowUpLeft`, `ArrowUpRight`, `AtSign`, `Award`, `BadgeCheck`, `BarChart`, `BarChart2`, `Battery`, `BatteryCharging`, `Bell`, `BellOff`, `BellRing`, `Bitcoin`, `Bluetooth`, `Bold`, `Book`, `BookOpen`, `Bookmark`, `BookmarkCheck`, `BookmarkPlus`, `Bot`, `Bottle`, `Box`, `Brain`, `Briefcase`, `Bug`, `Building`, `Calculator`, `Calendar`, `CalendarCheck`, `CalendarDays`, `Camera`, `CameraOff`, `Candle`, `Cast`, `Check`, `CheckCircle`, `CheckSquare`, `ChevronDown`, `ChevronLeft`, `ChevronRight`, `ChevronUp`, `ChevronsDown`, `ChevronsLeft`, `ChevronsRight`, `ChevronsUp`, `ChevronsUpDown`, `Circle`, `Clipboard`, `ClipboardCheck`, `ClipboardList`, `Clock`, `Cloud`, `CloudDrizzle`, `CloudLightning`, `CloudOff`, `CloudRain`, `CloudSnow`, `Code`, `Coffee`, `Coins`, `Columns`, `Command`, `Compass`, `Copy`, `CornerDownLeft`, `CornerDownRight`, `CornerLeftDown`, `CornerLeftUp`, `CornerRightDown`, `CornerRightUp`, `CornerUpLeft`, `CornerUpRight`, `Cpu`, `CreditCard`, `Crop`, `Crosshair`, `Database`, `Delete`, `Disc`, `Divide`, `DivideCircle`, `DivideSquare`, `DollarSign`, `Download`, `DownloadCloud`, `Droplet`, `Edit`, `Edit2`, `Edit3`, `ExternalLink`, `Eye`, `EyeOff`, `FastForward`, `Feather`, `File`, `FileCheck`, `FileMinus`, `FilePlus`, `FileText`, `Film`, `Filter`, `FilterX`, `Fingerprint`, `Flag`, `Flame`, `Folder`, `FolderMinus`, `FolderOpen`, `FolderPlus`, `Framer`, `Frown`, `Gauge`, `Gift`, `GitBranch`, `GitCommit`, `GitCompare`, `GitMerge`, `GitPullRequest`, `Globe`, `Grid`, `HalfCircle`, `HalfHeart`, `HardDrive`, `Hash`, `Headphones`, `Heart`, `HelpCircle`, `Heptagon`, `Hexagon`, `History`, `Home`, `Image`, `Inbox`, `Info`, `Italic`, `Key`, `Keyboard`, `Lamp`, `Languages`, `Layers`, `Layout`, `Leaf`, `LeftHalfStar`, `LifeBuoy`, `Lightbulb`, `Link`, `Link2`, `List`, `ListChecks`, `Loader`, `Lock`, `LogIn`, `LogOut`, `Mail`, `MailCheck`, `Map`, `MapPin`, `Maximize`, `Maximize2`, `Megaphone`, `Meh`, `Menu`, `MessageCircle`, `MessageSquare`, `Mic`, `MicOff`, `Minimize`, `Minimize2`, `Minus`, `MinusCircle`, `MinusSquare`, `Monitor`, `Moon`, `MoreHorizontal`, `MoreVertical`, `MousePointer`, `Move`, `Music`, `Navigation`, `Navigation2`, `Octagon`, `Package`, `Palette`, `Paperclip`, `Pause`, `PauseCircle`, `PenTool`, `Pentagon`, `Percent`, `Phone`, `PhoneCall`, `PhoneForwarded`, `PhoneIncoming`, `PhoneMissed`, `PhoneOff`, `PhoneOutgoing`, `PieChart`, `Pin`, `Play`, `PlayCircle`, `Plug`, `Plus`, `PlusCircle`, `PlusSquare`, `Pocket`, `Power`, `Printer`, `QrCode`, `Radio`, `Receipt`, `RectangleHorizontal`, `RectangleVertical`, `Redo`, `RefreshCcw`, `RefreshCw`, `Repeat`, `Rewind`, `RightHalfStar`, `Rocket`, `RotateCcw`, `RotateCw`, `Rss`, `Save`, `Scan`, `Scissors`, `Search`, `Send`, `Server`, `Settings`, `Share`, `Shield`, `ShieldCheck`, `ShieldOff`, `ShoppingBag`, `ShoppingCart`, `Shuffle`, `Sidebar`, `SkipBack`, `SkipForward`, `Slash`, `Sliders`, `Smartphone`, `Smile`, `Snowflake`, `SoccerBall`, `Sparkles`, `Speaker`, `Square`, `Star`, `StopCircle`, `Sun`, `Sunrise`, `Sunset`, `Table`, `Tablet`, `Tag`, `Target`, `Terminal`, `Thermometer`, `ThumbsDown`, `ThumbsUp`, `Timer`, `ToggleLeft`, `ToggleRight`, `Tool`, `Trash`, `Trash2`, `TrendingDown`, `TrendingUp`, `Triangle`, `Trophy`, `Truck`, `Tv`, `Type`, `Umbrella`, `Underline`, `Undo`, `Unlock`, `Upload`, `UploadCloud`, `User`, `UserCheck`, `UserMinus`, `UserPlus`, `UserX`, `Users`, `Video`, `VideoOff`, `Voicemail`, `Volume`, `Volume1`, `Volume2`, `VolumeX`, `Wallet`, `Wand`, `Watch`, `Wifi`, `WifiOff`, `Wind`, `X`, `XCircle`, `XOctagon`, `XSquare`, `Zap`, `ZapOff`, `ZoomIn`, `ZoomOut`.
+
+Brand marks (flagged `isBrand` upstream): `Android`, `Angular`, `Anthropic`, `Bluesky`, `Chrome`, `Cloudflare`, `Codepen`, `Codesandbox`, `Discord`, `Docker`, `Dribbble`, `Dropbox`, `Eagami`, `Facebook`, `Facebook2`, `Figma`, `Figma2`, `Gemini`, `Github`, `Github2`, `Gitlab`, `Google`, `Instagram`, `Kubernetes`, `Linkedin`, `Linkedin2`, `Mastercard`, `Microsoft`, `Mongodb`, `Netlify`, `Nodejs`, `Notion`, `Npm`, `Paypal`, `Pinterest`, `Python`, `React`, `Reddit`, `Shopify`, `Slack`, `Slack2`, `Spotify`, `Stripe`, `Svelte`, `Tailwind`, `Telegram`, `Threads`, `Tiktok`, `Trello`, `Twitch`, `Twitch2`, `Twitter`, `Vercel`, `Vue`, `Whatsapp`, `Wordpress`, `XTwitter`, `Youtube`, `Youtube2`.
+
+<!-- eagami:generated:react-icons end -->
 
 ### 5.34 ColorPicker
 

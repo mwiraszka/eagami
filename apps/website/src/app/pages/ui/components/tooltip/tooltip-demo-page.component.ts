@@ -1,4 +1,10 @@
-import { TooltipDirective, type TooltipPosition } from '@eagami/ui';
+import {
+  BadgeCheckIconComponent,
+  BuildingIconComponent,
+  MapPinIconComponent,
+  TooltipDirective,
+  type TooltipPosition,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
@@ -23,6 +29,7 @@ interface TooltipKnobState {
 }
 
 const SLUG = 'tooltip';
+const DEMO_AVATAR_SRC = 'assets/demo-avatar.png';
 
 @Component({
   selector: 'web-tooltip-demo-page',
@@ -30,6 +37,9 @@ const SLUG = 'tooltip';
   styleUrl: './tooltip-demo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    BadgeCheckIconComponent,
+    BuildingIconComponent,
+    MapPinIconComponent,
     TooltipDirective,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
@@ -39,6 +49,7 @@ export class TooltipDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
+  protected readonly avatarSrc = DEMO_AVATAR_SRC;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.tooltip, UI_API[SLUG]);
   protected readonly state = signal<TooltipKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.tooltip) as TooltipKnobState,

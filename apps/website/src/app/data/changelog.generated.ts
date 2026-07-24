@@ -14,6 +14,30 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.10.0',
+    date: '2026-07-24',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Allow the tooltip to render a TemplateRef, so consumers can show styled multi-part content instead of a plain string.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Remove the share-2 icon, which was an accidental duplicate of the share icon.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Let the tooltip bubble grow past its max width instead of clipping unbreakable template content such as avatars and icon rows.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.9.0',
     date: '2026-07-24',
     sections: [
