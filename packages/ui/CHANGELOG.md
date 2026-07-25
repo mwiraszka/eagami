@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.11.0] - 2026-07-25
+
+### Added
+
+- Add a `--ea-dialog-size` custom property that drives the dialog panel width.
+
+### Changed
+
+- **Breaking:** Make the tree expand chevron decorative; expansion state is announced via the treeitem's `aria-expanded` and toggled with the arrow keys. The tree-node `expandLabel` and `collapseLabel` inputs and the `tree.expand`/`tree.collapse` locale messages are removed.
+
 ## [5.10.1] - 2026-07-24
 
 ### Added
@@ -1075,6 +1085,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.1...ui-v5.11.0
 [5.10.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.0...ui-v5.10.1
 [5.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.9.0...ui-v5.10.0
 [5.9.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.8.6...ui-v5.9.0

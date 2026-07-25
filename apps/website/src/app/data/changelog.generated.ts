@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.11.0',
+    date: '2026-07-25',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `--ea-dialog-size` custom property that drives the dialog panel width.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Make the tree expand chevron decorative; expansion state is announced via the treeitem's `aria-expanded` and toggled with the arrow keys. The tree-node `expandLabel` and `collapseLabel` inputs and the `tree.expand`/`tree.collapse` locale messages are removed.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.10.1',
     date: '2026-07-24',
     sections: [
