@@ -2050,25 +2050,6 @@ export const ptBR: WebMessages = {
               'Dispara com o novo valor quando o usuário seleciona uma opção diferente.',
             select: 'Seleciona programaticamente a opção dada.',
           },
-          'tree-node': {
-            collapseLabel: 'Rótulo acessível para o botão de chevron de recolher.',
-            disabled: 'Desativa a interação com o nó e seus descendentes.',
-            expandedIds: 'Conjunto de ids de nós que estão atualmente expandidos.',
-            expandLabel: 'Rótulo acessível para o botão de chevron de expandir.',
-            focusedId: 'Id do nó que atualmente detém o foco de roving tabindex.',
-            level:
-              'Profundidade a partir da raiz da árvore (indexada em 0), usada para recuo e aria-level.',
-            node: 'Objeto de dados que descreve este nó, incluindo seu id, rótulo, filhos e estado desativado.',
-            posInSet:
-              'Posição indexada em 1 entre os filhos do nó pai, usada para aria-posinset.',
-            selectedId:
-              'Id do nó atualmente selecionado, ou null quando nada está selecionado.',
-            setSize:
-              'Número total de irmãos na lista de filhos do nó pai, usado para aria-setsize.',
-            select: 'Dispara quando o usuário clica ou ativa a linha do nó.',
-            toggle:
-              'Dispara com o id do nó quando o usuário clica no chevron de expandir ou recolher.',
-          },
           tree: {
             ariaLabel: 'Rótulo acessível para o widget de árvore.',
             disabled: 'Desativa todos os nós da árvore.',

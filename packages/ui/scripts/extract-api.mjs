@@ -125,10 +125,21 @@ function buildEntry(entity) {
 const doc = JSON.parse(readFileSync(DOC_JSON, 'utf8'));
 const entities = [...(doc.components ?? []), ...(doc.directives ?? [])];
 
+// Only entities exported from the public API are documented; internal
+// renderers (e.g. ea-tree-node) would otherwise surface as orphan slugs
+// with no demo page
+const publicFiles = new Set(
+  [
+    ...readFileSync(resolve(UI_ROOT, 'src/public-api.ts'), 'utf8').matchAll(
+      /export \* from '\.\/(.+?)';/g,
+    ),
+  ].map(m => `src/${m[1]}.ts`),
+);
+
 const api = {};
 for (const entity of entities) {
   const slug = slugFromSelector(entity.selector);
-  if (slug) {
+  if (slug && publicFiles.has(entity.file)) {
     api[slug] = buildEntry(entity);
   }
 }

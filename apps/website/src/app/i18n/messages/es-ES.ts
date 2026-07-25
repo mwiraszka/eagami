@@ -2076,26 +2076,6 @@ export const esES: WebMessages = {
               'Se emite con el nuevo valor cuando el usuario selecciona una opción diferente.',
             select: 'Selecciona la opción indicada mediante programación.',
           },
-          'tree-node': {
-            collapseLabel: 'Etiqueta accesible para el botón de contraer.',
-            disabled: 'Deshabilita la interacción con el nodo y sus descendientes.',
-            expandedIds: 'Conjunto de ids de nodos actualmente expandidos.',
-            expandLabel: 'Etiqueta accesible para el botón de expandir.',
-            focusedId:
-              'Id del nodo que actualmente tiene el foco del tabindex itinerante.',
-            level:
-              'Profundidad desde la raíz del árbol (base 0), usada para la sangría y aria-level.',
-            node: 'Objeto de datos que describe este nodo, incluidos su id, etiqueta, hijos y estado deshabilitado.',
-            posInSet:
-              'Posición (base 1) entre los hijos del nodo padre, usada para aria-posinset.',
-            selectedId:
-              'Id del nodo actualmente seleccionado, o null si no hay ninguno seleccionado.',
-            setSize:
-              'Número total de nodos hermanos en la lista de hijos del nodo padre, usado para aria-setsize.',
-            select: 'Se emite cuando el usuario hace clic o activa la fila del nodo.',
-            toggle:
-              'Se emite con el id del nodo cuando el usuario hace clic en el chevron de expandir o contraer.',
-          },
           tree: {
             ariaLabel: 'Etiqueta accesible para el widget de árbol.',
             disabled: 'Deshabilita todos los nodos del árbol.',

@@ -1981,25 +1981,6 @@ export const en: WebMessages = {
             changed: 'Fires with the new value when the user selects a different option.',
             select: 'Programmatically selects the given option.',
           },
-          'tree-node': {
-            collapseLabel: 'Accessible label for the collapse chevron button.',
-            disabled: 'Disables interaction with the node and its descendants.',
-            expandedIds: 'Set of node ids that are currently expanded.',
-            expandLabel: 'Accessible label for the expand chevron button.',
-            focusedId: 'Id of the node that currently holds the roving tabindex focus.',
-            level:
-              'Depth from the tree root (0-indexed), used for indentation and aria-level.',
-            node: 'Data object describing this node, including its id, label, children, and disabled state.',
-            posInSet:
-              "1-indexed position among the parent node's children, used for aria-posinset.",
-            selectedId:
-              'Id of the currently selected node, or null when nothing is selected.',
-            setSize:
-              "Total number of siblings in the parent node's children list, used for aria-setsize.",
-            select: 'Fires when the user clicks or activates the node row.',
-            toggle:
-              'Fires with the node id when the user clicks the expand or collapse chevron.',
-          },
           tree: {
             ariaLabel: 'Accessible label for the tree widget.',
             disabled: 'Disables all nodes in the tree.',

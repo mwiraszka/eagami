@@ -2006,23 +2006,6 @@ export const is: WebMessages = {
             changed: 'Kviknar með nýja gildinu þegar notandinn velur annan valkost.',
             select: 'Velur gefna valkostinn forritunarlega.',
           },
-          'tree-node': {
-            collapseLabel: 'Aðgengilegur merkimiði fyrir samanfellingaroddahnappinn.',
-            disabled: 'Gerir samskipti við hnútinn og afkomendur hans óvirk.',
-            expandedIds: 'Sett af hnútaauðkennum sem eru nú útbreidd.',
-            expandLabel: 'Aðgengilegur merkimiði fyrir útbreiðsluoddahnappinn.',
-            focusedId: 'Auðkenni hnútsins sem heldur nú á reikandi tabindex fókusnum.',
-            level: 'Dýpt frá rót trésins (0-vísað), notuð fyrir inndrátt og aria-level.',
-            node: 'Gagnahlutur sem lýsir þessum hnút, þar á meðal auðkenni hans, merkimiða, börnum og óvirku ástandi.',
-            posInSet:
-              '1-vísuð staða meðal barna foreldrahnútsins, notuð fyrir aria-posinset.',
-            selectedId: 'Auðkenni nú valda hnútsins, eða null þegar ekkert er valið.',
-            setSize:
-              'Heildarfjöldi systkina í barnalista foreldrahnútsins, notaður fyrir aria-setsize.',
-            select: 'Kviknar þegar notandinn smellir á eða virkjar hnútaröðina.',
-            toggle:
-              'Kviknar með hnútaauðkenni þegar notandinn smellir á útbreiðslu- eða samanfellingaroddann.',
-          },
           tree: {
             ariaLabel: 'Aðgengilegur merkimiði fyrir trjáfítlið.',
             disabled: 'Gerir alla hnúta í trénu óvirka.',
