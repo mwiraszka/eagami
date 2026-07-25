@@ -184,10 +184,6 @@ const messages: EagamiMessages = {
     moveAllToSource: '将全部移至左侧',
     empty: '无项目',
   },
-  tree: {
-    expand: '展开',
-    collapse: '折叠',
-  },
   validation: {
     required: '此字段为必填项',
     email: '请输入有效的电子邮件地址',

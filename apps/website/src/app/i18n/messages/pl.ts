@@ -2036,26 +2036,6 @@ export const pl: WebMessages = {
             changed: 'Emitowane z nową wartością, gdy użytkownik wybiera inną opcję.',
             select: 'Programowo zaznacza podaną opcję.',
           },
-          'tree-node': {
-            collapseLabel: 'Dostępna etykieta przycisku zwijania.',
-            disabled: 'Wyłącza interakcję z węzłem i jego potomkami.',
-            expandedIds: 'Zbiór identyfikatorów węzłów aktualnie rozwiniętych.',
-            expandLabel: 'Dostępna etykieta przycisku rozwijania.',
-            focusedId:
-              'Identyfikator węzła aktualnie posiadającego fokus ruchomego tabindex.',
-            level:
-              'Głębokość od korzenia drzewa (indeksowana od 0), używana do wcięcia i aria-level.',
-            node: 'Obiekt danych opisujący ten węzeł, zawierający jego id, etykietę, potomków i stan wyłączenia.',
-            posInSet:
-              'Pozycja (indeksowana od 1) wśród potomków węzła nadrzędnego, używana dla aria-posinset.',
-            selectedId:
-              'Identyfikator aktualnie wybranego węzła lub null gdy nic nie jest wybrane.',
-            setSize:
-              'Całkowita liczba węzłów na tym samym poziomie w liście potomków węzła nadrzędnego, używana dla aria-setsize.',
-            select: 'Emitowane, gdy użytkownik klika lub aktywuje wiersz węzła.',
-            toggle:
-              'Emitowane z identyfikatorem węzła, gdy użytkownik klika strzałkę rozwijania lub zwijania.',
-          },
           tree: {
             ariaLabel: 'Dostępna etykieta widżetu drzewa.',
             disabled: 'Wyłącza wszystkie węzły drzewa.',

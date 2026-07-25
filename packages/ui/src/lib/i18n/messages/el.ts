@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Μεταφορά όλων στην πηγή',
     empty: 'Καμία εγγραφή',
   },
-  tree: {
-    expand: 'Ανάπτυξη',
-    collapse: 'Σύμπτυξη',
-  },
   validation: {
     required: 'Αυτό το πεδίο είναι υποχρεωτικό',
     email: 'Εισαγάγετε έγκυρη διεύθυνση email',

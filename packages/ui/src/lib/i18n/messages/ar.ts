@@ -192,10 +192,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'نقل الكل إلى اليسار',
     empty: 'لا توجد عناصر',
   },
-  tree: {
-    expand: 'توسيع',
-    collapse: 'طي',
-  },
   validation: {
     required: 'هذا الحقل مطلوب',
     email: 'أدخل عنوان بريد إلكتروني صالحًا',

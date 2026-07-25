@@ -184,10 +184,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'העברת הכול למקור',
     empty: 'אין פריטים',
   },
-  tree: {
-    expand: 'הרחבה',
-    collapse: 'כיווץ',
-  },
   validation: {
     required: 'שדה זה הוא חובה',
     email: 'הזן כתובת אימייל תקינה',

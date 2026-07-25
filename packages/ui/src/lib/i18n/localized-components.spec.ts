@@ -79,9 +79,10 @@ describe('Component localization (de)', () => {
     expect(emitted).toBe('Datei muss ein Bild sein');
   });
 
-  it('tree renders a localized expand aria-label on branch chevrons', () => {
+  // The tree chevron is decorative (aria-hidden); the treeitem's aria-expanded
+  // carries expansion state, so the tree no longer renders localized strings
+  it('tree marks the expand chevron as decorative', () => {
     withLocale();
-    const expected = TestBed.inject(EagamiI18nService).messages().tree.expand;
     const fixture = TestBed.createComponent(TreeComponent);
     fixture.componentRef.setInput('nodes', [
       { id: 'a', label: 'A', children: [{ id: 'b', label: 'B' }] },
@@ -90,6 +91,7 @@ describe('Component localization (de)', () => {
 
     const chevron = fixture.nativeElement.querySelector('.ea-tree-node__chevron');
 
-    expect(chevron.getAttribute('aria-label')).toBe(expected);
+    expect(chevron.getAttribute('aria-hidden')).toBe('true');
+    expect(chevron.getAttribute('role')).toBeNull();
   });
 });

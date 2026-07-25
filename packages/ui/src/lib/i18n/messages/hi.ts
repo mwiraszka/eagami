@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'सभी को स्रोत में ले जाएं',
     empty: 'कोई आइटम नहीं',
   },
-  tree: {
-    expand: 'विस्तृत करें',
-    collapse: 'संक्षिप्त करें',
-  },
   validation: {
     required: 'यह फ़ील्ड आवश्यक है',
     email: 'एक मान्य ईमेल पता दर्ज करें',

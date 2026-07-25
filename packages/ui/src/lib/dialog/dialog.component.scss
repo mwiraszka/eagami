@@ -17,6 +17,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    width: var(--ea-dialog-size, 32rem);
     background-color: var(--ea-dialog-panel-background-color, var(--color-bg-elevated));
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-2xl);
@@ -25,23 +26,23 @@
     @include ea.elevated-surface-border;
 
     &--xs {
-      width: 20rem; // 320px
+      --ea-dialog-size: 20rem; // 320px
     }
 
     &--sm {
-      width: 24rem; // 384px
+      --ea-dialog-size: 24rem; // 384px
     }
 
     &--md {
-      width: 32rem; // 512px
+      --ea-dialog-size: 32rem; // 512px
     }
 
     &--lg {
-      width: 42rem; // 672px
+      --ea-dialog-size: 42rem; // 672px
     }
 
     &--xl {
-      width: 52rem; // 832px
+      --ea-dialog-size: 52rem; // 832px
     }
 
     &--full {

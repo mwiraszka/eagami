@@ -2076,26 +2076,6 @@ export const de: WebMessages = {
               'Wird mit dem neuen Wert ausgelöst, wenn der Nutzer eine andere Option auswählt.',
             select: 'Wählt programmatisch die gegebene Option aus.',
           },
-          'tree-node': {
-            collapseLabel: 'Barrierefreies Label für den Zuklappen-Chevron-Button.',
-            disabled: 'Deaktiviert die Interaktion mit dem Knoten und seinen Nachfahren.',
-            expandedIds: 'Menge der Knoten-ids, die derzeit aufgeklappt sind.',
-            expandLabel: 'Barrierefreies Label für den Aufklappen-Chevron-Button.',
-            focusedId: 'Id des Knotens, der derzeit den Roving-Tabindex-Fokus hält.',
-            level:
-              'Tiefe von der Baumwurzel (0-indexiert), verwendet für Einrückung und aria-level.',
-            node: 'Datenobjekt, das diesen Knoten beschreibt, einschließlich id, Label, Kindern und deaktiviertem Zustand.',
-            posInSet:
-              '1-indexierte Position unter den Kindern des übergeordneten Knotens, verwendet für aria-posinset.',
-            selectedId:
-              'Id des aktuell ausgewählten Knotens, oder null, wenn nichts ausgewählt ist.',
-            setSize:
-              'Gesamtzahl der Geschwister in der Kinderliste des übergeordneten Knotens, verwendet für aria-setsize.',
-            select:
-              'Wird ausgelöst, wenn der Nutzer die Knotenzeile anklickt oder aktiviert.',
-            toggle:
-              'Wird mit der Knoten-id ausgelöst, wenn der Nutzer den Aufklappen- oder Zuklappen-Chevron anklickt.',
-          },
           tree: {
             ariaLabel: 'Barrierefreies Label für das Baum-Widget.',
             disabled: 'Deaktiviert alle Knoten im Baum.',

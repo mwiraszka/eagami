@@ -2070,26 +2070,6 @@ export const frFR: WebMessages = {
               "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une autre option.",
             select: "Sélectionne l'option donnée par programmation.",
           },
-          'tree-node': {
-            collapseLabel: 'Libellé accessible du bouton chevron de réduction.',
-            disabled: "Désactive l'interaction avec le nœud et ses descendants.",
-            expandedIds: "Ensemble d'identifiants de nœuds actuellement développés.",
-            expandLabel: 'Libellé accessible du bouton chevron de développement.',
-            focusedId:
-              'Identifiant du nœud qui détient actuellement le focus de tabindex mobile.',
-            level:
-              "Profondeur depuis la racine de l'arbre (base 0), utilisée pour l'indentation et aria-level.",
-            node: 'Objet de données décrivant ce nœud, incluant son id, son libellé, ses enfants et son état désactivé.',
-            posInSet:
-              'Position (base 1) parmi les enfants du nœud parent, utilisée pour aria-posinset.',
-            selectedId:
-              "Identifiant du nœud actuellement sélectionné, ou null si aucun n'est sélectionné.",
-            setSize:
-              'Nombre total de frères dans la liste des enfants du nœud parent, utilisé pour aria-setsize.',
-            select: "Émis lorsque l'utilisateur clique ou active la ligne du nœud.",
-            toggle:
-              "Émis avec l'identifiant du nœud lorsque l'utilisateur clique sur le chevron d'expansion ou de réduction.",
-          },
           tree: {
             ariaLabel: 'Libellé accessible du composant arbre.',
             disabled: "Désactive tous les nœuds de l'arbre.",

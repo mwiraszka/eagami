@@ -2061,26 +2061,6 @@ export const nl: WebMessages = {
               'Wordt geactiveerd met de nieuwe waarde wanneer de gebruiker een andere optie selecteert.',
             select: 'Selecteert programmatisch de gegeven optie.',
           },
-          'tree-node': {
-            collapseLabel: 'Toegankelijk label voor de invouwchevronknop.',
-            disabled: 'Schakelt interactie met de node en zijn afstammelingen uit.',
-            expandedIds: "Set van node-id's die momenteel uitgevouwen zijn.",
-            expandLabel: 'Toegankelijk label voor de uitvouwchevronknop.',
-            focusedId: 'Id van de node die momenteel de roving tabindex-focus vasthoudt.',
-            level:
-              'Diepte vanaf de boomwortel (0-geïndexeerd), gebruikt voor inspringing en aria-level.',
-            node: 'Data-object dat deze node beschrijft, inclusief id, label, kinderen en uitgeschakelde toestand.',
-            posInSet:
-              '1-geïndexeerde positie tussen de kinderen van de bovenliggende node, gebruikt voor aria-posinset.',
-            selectedId:
-              'Id van de momenteel geselecteerde node, of null wanneer niets is geselecteerd.',
-            setSize:
-              'Totaal aantal broers en zussen in de kinderlijst van de bovenliggende node, gebruikt voor aria-setsize.',
-            select:
-              'Wordt geactiveerd wanneer de gebruiker op de noderij klikt of deze activeert.',
-            toggle:
-              'Wordt geactiveerd met de node-id wanneer de gebruiker op de uitvouw- of invouwchevron klikt.',
-          },
           tree: {
             ariaLabel: 'Toegankelijk label voor de boomwidget.',
             disabled: 'Schakelt alle nodes in de boom uit.',

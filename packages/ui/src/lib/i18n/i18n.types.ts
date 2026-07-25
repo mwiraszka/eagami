@@ -265,10 +265,6 @@ export interface EagamiMessages {
     moveAllToSource: string;
     empty: string;
   };
-  tree: {
-    expand: string;
-    collapse: string;
-  };
   validation: {
     required: string;
     email: string;

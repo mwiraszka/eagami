@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Перенести все вліво',
     empty: 'Немає елементів',
   },
-  tree: {
-    expand: 'Розгорнути',
-    collapse: 'Згорнути',
-  },
   validation: {
     required: 'Це поле обов’язкове',
     email: 'Введіть дійсну електронну адресу',

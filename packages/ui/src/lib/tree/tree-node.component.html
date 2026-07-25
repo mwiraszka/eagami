@@ -21,8 +21,7 @@
       <span
         class="ea-tree-node__chevron"
         [class.ea-tree-node__chevron--open]="isExpanded()"
-        [attr.aria-label]="isExpanded() ? resolvedCollapseLabel() : resolvedExpandLabel()"
-        role="button"
+        aria-hidden="true"
         (click)="onChevronClick($event)">
         <ea-icon-chevron-right />
       </span>
@@ -60,8 +59,6 @@
           [focusedId]="focusedId()"
           [expandedIds]="expandedIds()"
           [disabled]="disabled()"
-          [expandLabel]="expandLabel()"
-          [collapseLabel]="collapseLabel()"
           (toggle)="toggle.emit($event)"
           (select)="select.emit($event)" />
       }

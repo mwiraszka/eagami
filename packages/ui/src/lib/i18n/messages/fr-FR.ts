@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Tout déplacer vers la source',
     empty: 'Aucun élément',
   },
-  tree: {
-    expand: 'Développer',
-    collapse: 'Réduire',
-  },
   validation: {
     required: 'Ce champ est obligatoire',
     email: 'Saisissez une adresse e-mail valide',
