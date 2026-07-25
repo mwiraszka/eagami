@@ -3,12 +3,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject,
   input,
   output,
 } from '@angular/core';
 
-import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronRightIconComponent } from '../icons/chevron-right.component';
 import type { TreeNode } from './tree.types';
 
@@ -29,8 +27,6 @@ import type { TreeNode } from './tree.types';
   },
 })
 export class TreeNodeComponent {
-  private readonly i18n = inject(EagamiI18nService);
-
   readonly node = input.required<TreeNode>();
 
   /** Depth from the tree root (0-indexed). Drives indentation and `aria-level`. */
@@ -53,20 +49,6 @@ export class TreeNodeComponent {
 
   /** Whole-tree disabled state. */
   readonly disabled = input<boolean>(false);
-
-  /** aria-label for the expand chevron; falls back to the active locale's default. */
-  readonly expandLabel = input<string | undefined>(undefined);
-
-  /** aria-label for the collapse chevron; falls back to the active locale's default. */
-  readonly collapseLabel = input<string | undefined>(undefined);
-
-  protected readonly resolvedExpandLabel = computed(
-    () => this.expandLabel() ?? this.i18n.messages().tree.expand,
-  );
-
-  protected readonly resolvedCollapseLabel = computed(
-    () => this.collapseLabel() ?? this.i18n.messages().tree.collapse,
-  );
 
   readonly toggle = output<string>();
 

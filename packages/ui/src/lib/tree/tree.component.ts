@@ -13,7 +13,6 @@ import {
   viewChild,
 } from '@angular/core';
 
-import { EagamiI18nService } from '../i18n/i18n.service';
 import { type EaSize } from '../sizes';
 import { TreeNodeComponent } from './tree-node.component';
 import { type TreeNode, visibleNodeIds, walkTree } from './tree.types';
@@ -42,7 +41,6 @@ export type TreeSize = EaSize;
 })
 export class TreeComponent {
   private readonly hostEl = inject<ElementRef<HTMLElement>>(ElementRef);
-  private readonly i18n = inject(EagamiI18nService);
 
   readonly nodes = input.required<readonly TreeNode[]>();
 
@@ -87,8 +85,6 @@ export class TreeComponent {
     const visible = visibleNodeIds(this.nodes(), this.expandedSet());
     return visible[0] ?? null;
   });
-
-  protected readonly messages = this.i18n.messages;
 
   protected readonly hostClasses = computed(() => [
     'ea-tree',

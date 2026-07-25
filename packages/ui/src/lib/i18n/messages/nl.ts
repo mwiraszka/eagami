@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Alles naar links verplaatsen',
     empty: 'Geen items',
   },
-  tree: {
-    expand: 'Uitvouwen',
-    collapse: 'Invouwen',
-  },
   validation: {
     required: 'Dit veld is verplicht',
     email: 'Voer een geldig e-mailadres in',

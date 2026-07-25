@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Alle nach links verschieben',
     empty: 'Keine Einträge',
   },
-  tree: {
-    expand: 'Aufklappen',
-    collapse: 'Zuklappen',
-  },
   validation: {
     required: 'Dieses Feld ist erforderlich',
     email: 'Gültige E-Mail-Adresse eingeben',

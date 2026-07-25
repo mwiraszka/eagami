@@ -185,10 +185,6 @@ const messages: EagamiMessages = {
     moveAllToSource: 'Færa allt til baka',
     empty: 'Engin atriði',
   },
-  tree: {
-    expand: 'Fletta út',
-    collapse: 'Fella saman',
-  },
   validation: {
     required: 'Þennan reit þarf að fylla út',
     email: 'Sláðu inn gilt netfang',
