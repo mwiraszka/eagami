@@ -195,7 +195,7 @@ const messages: EagamiMessages = {
     invalid: '值无效',
   },
   wordmark: {
-    overline: '匠心打造',
+    overline: '设计出品',
     tagline: '优雅的网页设计',
   },
 };

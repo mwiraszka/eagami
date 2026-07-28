@@ -196,7 +196,7 @@ const messages: EagamiMessages = {
     invalid: 'Valeur invalide',
   },
   wordmark: {
-    overline: 'conçu avec soin par',
+    overline: 'conçu par',
     tagline: 'design web élégant',
   },
 };

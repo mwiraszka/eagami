@@ -195,7 +195,7 @@ const messages: EagamiMessages = {
     invalid: 'ערך לא תקין',
   },
   wordmark: {
-    overline: 'מעשה ידי',
+    overline: 'בעיצוב',
     tagline: 'עיצוב אתרים אלגנטי',
   },
 };

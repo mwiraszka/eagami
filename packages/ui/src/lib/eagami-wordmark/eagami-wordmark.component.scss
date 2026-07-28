@@ -9,24 +9,28 @@
 .ea-eagami-wordmark {
   display: inline-flex;
   align-items: center;
+  // gap is one twelfth of the logo size (logo = 1.5x text, so 0.125x text)
+  gap: calc(var(--_size) * 0.125px);
   border-radius: var(--radius-sm);
   color: var(--color-text-primary);
   text-decoration: none;
   transition: var(--transition-opacity);
 
-  &:hover {
+  // interactive affordances only apply to the linked (anchor) variant
+  &:any-link:hover {
     opacity: 0.75;
   }
 
-  &:focus-visible {
+  &:any-link:focus-visible {
     outline: none;
     @include ea.focus-ring;
   }
 
-  // font-size drives the size so `ea-icon-eagami`'s `1em` dimensions resolve to `--_size`
+  // `--_size` is the brand text's font-size; the logo is 1.5x that, resolved
+  // through `ea-icon-eagami`'s `1em` dimensions
   &__logo {
     flex-shrink: 0;
-    font-size: calc(var(--_size) * 1px);
+    font-size: calc(var(--_size) * 1.5px);
     // gradient is brand identity; preserve it in forced-colors
     forced-color-adjust: none;
   }
@@ -49,7 +53,7 @@
   &__overline,
   &__separator,
   &__tagline {
-    font-size: calc(var(--_size) * 0.2px);
+    font-size: calc(var(--_size) * 0.4px);
     font-weight: var(--font-weight-regular);
     letter-spacing: var(--letter-spacing-wide);
     font-family: var(--font-family-sans);
@@ -59,25 +63,35 @@
   // Dedicated hook so a consumer can recolour just the overline (e.g. a brand
   // accent) without disturbing the separator and tagline
   &__overline {
+    // pull the overline tight against the brand text below it
+    margin-bottom: calc(var(--_size) * -0.15px);
     color: var(--ea-eagami-wordmark-overline-color, var(--color-text-secondary));
   }
 
   &__brand {
-    font-size: calc(var(--_size) * 0.5px);
+    font-size: calc(var(--_size) * 1px);
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-wide);
     font-family: var(--font-family-brand);
   }
 
+  // Optical nudge: the stacked tagline variant's text mass sits low against
+  // the logo, so raise it by an eighth of the text size
+  &--tagline &__text {
+    transform: translateY(calc(var(--_size) * -0.125px));
+  }
+
   &--inline &__text {
     flex-direction: row;
     align-items: baseline;
-    gap: calc(var(--_size) * 0.2px);
+    gap: calc(var(--_size) * 0.4px);
+    transform: none;
   }
 
   &--inline &__overline,
   &--inline &__separator,
   &--inline &__tagline {
-    font-size: calc(var(--_size) * 0.5px);
+    margin-bottom: 0;
+    font-size: calc(var(--_size) * 1px);
   }
 }
