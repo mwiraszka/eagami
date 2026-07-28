@@ -14,6 +14,27 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.12.0',
+    date: '2026-07-28',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `linked` input to the wordmark so it can render without its built-in eagami.com link, for embedding in a custom link.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Make the wordmark `size` input the brand text's font-size in px (previously it was the logo's size); the default drops from 48 to 24 so the rendered default is unchanged.",
+          'Re-proportion the wordmark: the logo renders at 1.5 times the text size, with a gap of one twelfth of the logo between them.',
+          'Change the wordmark byline to "designed by" in every locale.',
+          "Tuck the wordmark byline closer to the brand text, and raise the tagline variant's text for optical balance against the logo.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.11.0',
     date: '2026-07-25',
     sections: [

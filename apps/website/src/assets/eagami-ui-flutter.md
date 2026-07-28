@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.11.0
-source: '@eagami/ui@5.11.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-24
+version: 5.12.0
+source: '@eagami/ui@5.12.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-27
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.11.0 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.12.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -2627,12 +2627,14 @@ class EagamiWordmark extends StatelessWidget {
     super.key,
     this.variant = EagamiWordmarkVariant.defaultVariant,
     this.layout = EagamiWordmarkLayout.stacked,
-    this.size = 48, // pixels the entire wordmark scales from (continuous, not a preset bucket)
+    this.size = 24, // font size in px of the brand text (continuous, not a preset bucket)
+    this.linked = true, // false embeds the lockup without its built-in eagami.com link
   });
 
   final EagamiWordmarkVariant variant;
   final EagamiWordmarkLayout layout;
   final double size;
+  final bool linked;
 }
 ```
 
