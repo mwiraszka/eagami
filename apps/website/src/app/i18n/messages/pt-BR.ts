@@ -1090,6 +1090,7 @@ export const ptBR: WebMessages = {
             variant: 'Variante',
             layout: 'Layout',
             size: 'Tamanho (px)',
+            linked: 'Com link',
           },
           'empty-state': {
             size: 'Tamanho',
@@ -1396,9 +1397,11 @@ export const ptBR: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de conteúdo: default é o wordmark puro, byline adiciona a linha feito-à-mão-por, tagline adiciona o slogan.',
+              'Variante de conteúdo: default é o wordmark puro, byline adiciona a linha projetado-por, tagline adiciona o slogan.',
             layout: 'Organiza o wordmark empilhado em várias linhas ou em linha única.',
-            size: 'Valor em pixels a partir do qual todo o wordmark escala.',
+            size: 'Tamanho da fonte em px do texto da marca; o restante do wordmark escala a partir dele.',
+            linked:
+              'Renderiza o wordmark como link para eagami.com; desative para incorporá-lo em um link próprio ou contexto estático.',
           },
           'empty-state': {
             title: 'Texto de título exibido acima da descrição.',

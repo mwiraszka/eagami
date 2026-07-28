@@ -1075,6 +1075,7 @@ export const ar: WebMessages = {
             variant: 'النمط',
             layout: 'التخطيط',
             size: 'الحجم (px)',
+            linked: 'مرتبط',
           },
           'empty-state': {
             size: 'الحجم',
@@ -1361,9 +1362,11 @@ export const ar: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'نمط المحتوى: default هو الشعار النصي المجرّد، وbyline يضيف سطر «handcrafted-by»، وtagline يضيف الشعار.',
+              'نمط المحتوى: default هو الشعار النصي المجرّد، وbyline يضيف سطر «designed-by»، وtagline يضيف الشعار.',
             layout: 'يرتّب الشعار النصي مكدّسًا عبر أسطر أو داخليًا في سطر واحد.',
-            size: 'قيمة بالبكسل يتكيّف منها الشعار النصي بأكمله.',
+            size: 'حجم خط نص العلامة بالبكسل؛ يتكيّف باقي الشعار منه.',
+            linked:
+              'يعرض الشعار كرابط إلى eagami.com؛ عطّله لتضمينه داخل رابط مخصص أو سياق ثابت.',
           },
           'empty-state': {
             title: 'نص العنوان المعروض فوق الوصف.',

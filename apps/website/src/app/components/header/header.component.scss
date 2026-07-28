@@ -20,11 +20,8 @@
 }
 
 .web-header__brand {
-  // Brand lockup is a logo, never mirrored: keep the bird left of the text in RTL
-  direction: ltr;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   color: var(--color-text-primary);
   text-decoration: none;
   transition: opacity 1.5s ease;
@@ -38,18 +35,6 @@
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
-}
-
-.web-header__brand-icon {
-  font-size: 31px;
-}
-
-.web-header__brand-text {
-  font-size: 18px;
-  font-weight: 600;
-  font-family: var(--font-family-brand);
-  letter-spacing: -0.5px;
-  color: var(--color-text-primary);
 }
 
 .web-header__nav {

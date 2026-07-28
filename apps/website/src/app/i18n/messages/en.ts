@@ -1080,6 +1080,7 @@ export const en: WebMessages = {
             variant: 'Variant',
             layout: 'Layout',
             size: 'Size (px)',
+            linked: 'Linked',
           },
           'empty-state': {
             size: 'Size',
@@ -1373,10 +1374,12 @@ export const en: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Content variant: default is the bare wordmark, byline adds the handcrafted-by line, tagline adds the tagline.',
+              'Content variant: default is the bare wordmark, byline adds the designed-by line, tagline adds the tagline.',
             layout:
               'Arranges the wordmark stacked across lines or inline on a single line.',
-            size: 'Pixel value the entire wordmark scales from.',
+            size: 'Font size in px of the brand text; the rest of the wordmark scales from it.',
+            linked:
+              'Renders the wordmark as a link to eagami.com; turn off to embed it in a custom link or static context.',
           },
           'empty-state': {
             title: 'Heading text shown above the description.',

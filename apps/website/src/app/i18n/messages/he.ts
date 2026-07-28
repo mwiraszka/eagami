@@ -1072,6 +1072,7 @@ export const he: WebMessages = {
             variant: 'וריאנט',
             layout: 'פריסה',
             size: 'גודל (px)',
+            linked: 'מקושר',
           },
           'empty-state': {
             size: 'גודל',
@@ -1353,9 +1354,11 @@ export const he: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'וריאנט תוכן: default הוא הלוגוטקסט החשוף, byline מוסיף את שורת ה-handcrafted-by, tagline מוסיף את הסלוגן.',
+              'וריאנט תוכן: default הוא הלוגוטקסט החשוף, byline מוסיף את שורת ה-designed-by, tagline מוסיף את הסלוגן.',
             layout: 'מסדר את הלוגוטקסט בערימה לאורך שורות או בשורה אחת.',
-            size: 'ערך הפיקסל שממנו מתאים את עצמו כל הלוגוטקסט.',
+            size: 'גודל הגופן בפיקסלים של טקסט המותג; שאר הלוגו מותאם ממנו.',
+            linked:
+              'מציג את הלוגו כקישור אל eagami.com; כבו כדי לשלב אותו בקישור מותאם או בהקשר סטטי.',
           },
           'empty-state': {
             title: 'טקסט כותרת המוצג מעל התיאור.',

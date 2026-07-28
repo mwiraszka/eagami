@@ -6,8 +6,9 @@
     [attr.tabindex]="brandVisible() ? null : -1"
     routerLink="/"
     [attr.aria-label]="messages().common.brandHome">
-    <ea-icon-eagami class="web-header__brand-icon" />
-    <span class="web-header__brand-text">eagami</span>
+    <ea-eagami-wordmark
+      [linked]="false"
+      [size]="18" />
   </a>
   <nav
     class="web-header__nav"

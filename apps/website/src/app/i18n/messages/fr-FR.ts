@@ -1101,6 +1101,7 @@ export const frFR: WebMessages = {
             variant: 'Variante',
             layout: 'Disposition',
             size: 'Taille (px)',
+            linked: 'Lié',
           },
           'empty-state': {
             size: 'Taille',
@@ -1406,10 +1407,12 @@ export const frFR: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de contenu : default est le logotype seul, byline ajoute la mention de fabrication, tagline ajoute la signature.',
+              'Variante de contenu : default est le logotype seul, byline ajoute la mention de conception, tagline ajoute la signature.',
             layout:
               'Dispose le logotype empilé sur plusieurs lignes ou en ligne sur une seule ligne.',
-            size: 'Valeur en pixels à partir de laquelle l’ensemble du logotype est mis à l’échelle.',
+            size: 'Taille de police en px du texte de marque ; le reste du logotype est mis à l’échelle à partir de celle-ci.',
+            linked:
+              "Affiche le logotype sous forme de lien vers eagami.com ; désactivez-le pour l'intégrer dans un lien personnalisé ou un contexte statique.",
           },
           'empty-state': {
             title: 'Texte du titre affiché au-dessus de la description.',

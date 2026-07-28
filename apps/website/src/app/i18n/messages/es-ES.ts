@@ -1091,6 +1091,7 @@ export const esES: WebMessages = {
             variant: 'Variante',
             layout: 'Disposición',
             size: 'Tamaño (px)',
+            linked: 'Enlazado',
           },
           'empty-state': {
             size: 'Tamaño',
@@ -1404,7 +1405,9 @@ export const esES: WebMessages = {
               'Variante de contenido: default es el logotipo de texto sin más, byline añade la línea de autoría, tagline añade el eslogan.',
             layout:
               'Dispone el logotipo de texto apilado en varias líneas o en línea en una sola.',
-            size: 'Valor en píxeles desde el que se escala todo el logotipo de texto.',
+            size: 'Tamaño de fuente en px del texto de marca; el resto del logotipo se escala a partir de él.',
+            linked:
+              'Muestra el logotipo como enlace a eagami.com; desactívalo para incrustarlo en un enlace propio o un contexto estático.',
           },
           'empty-state': {
             title: 'Texto del encabezado mostrado encima de la descripción.',
