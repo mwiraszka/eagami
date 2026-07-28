@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.11.0
-source: '@eagami/ui@5.11.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-24
+version: 5.12.0
+source: '@eagami/ui@5.12.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-07-27
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -522,7 +522,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.11.0 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.12.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -1069,7 +1069,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.11.0 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.12.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
@@ -2105,7 +2105,7 @@ interface SkeletonProps {
 - **ProgressBar:** `value?: number = 0`, `max?: number = 100`, `variant?: 'default' | 'success' | 'warning' | 'error' | 'info'` (default `'default'`), `size?: Size` (default `'md'`), `label?: string` (default `undefined`), `showPercentage?: boolean` (default `false`), `indeterminate?: boolean` (default `false`). Exposes `aria-busy` while indeterminate.
 - **Spinner:** `size?: Size` (default `'md'`), `label?: string` (accessible name for the busy state). Honors `prefers-reduced-motion` by slowing the spin rather than disabling it.
 - **Divider:** `orientation?: 'horizontal' | 'vertical'` (default `'horizontal'`), `label?: string`, `thick?: boolean` (default `false`).
-- **EagamiWordmark:** `variant?: 'default' | 'byline' | 'tagline'` (default `'default'`), `layout?: 'stacked' | 'inline'` (default `'stacked'`), `size?: number` (CSS pixel value for continuous scaling; default `48`). Use for branded eagami pages only.
+- **EagamiWordmark:** `variant?: 'default' | 'byline' | 'tagline'` (default `'default'`), `layout?: 'stacked' | 'inline'` (default `'stacked'`), `size?: number` (font size in px of the brand text, from which the rest of the lockup scales; default `24`), `linked?: boolean` (default `true`; false renders without the built-in eagami.com link for embedding in a custom link). Use for branded eagami pages only.
 
 ### 5.33 Icon
 

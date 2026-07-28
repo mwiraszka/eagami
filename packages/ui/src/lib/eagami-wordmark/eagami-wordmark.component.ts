@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,13 +16,13 @@ export type EagamiWordmarkVariant = 'default' | 'byline' | 'tagline';
 export type EagamiWordmarkLayout = 'stacked' | 'inline';
 
 /**
- * Branded eagami wordmark logo. Scales continuously from a single `size`
- * pixel value and supports three content variants paired with stacked or
- * inline layouts.
+ * Branded eagami wordmark logo. `size` is the brand text's font-size in px
+ * and the rest of the lockup scales proportionally from it; supports three
+ * content variants paired with stacked or inline layouts.
  */
 @Component({
   selector: 'ea-eagami-wordmark',
-  imports: [EagamiIconComponent],
+  imports: [EagamiIconComponent, NgTemplateOutlet],
   templateUrl: './eagami-wordmark.component.html',
   styleUrl: './eagami-wordmark.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,14 +38,17 @@ export class EagamiWordmarkComponent {
   /** Content variant. */
   readonly variant = input<EagamiWordmarkVariant>('default');
   readonly layout = input<EagamiWordmarkLayout>('stacked');
-  readonly size = input<number>(48);
+  readonly size = input<number>(24);
+
+  /** Renders the wordmark as a link to eagami.com; disable to embed it inside a custom link or static context. */
+  readonly linked = input<boolean>(true);
 
   /** Clamps size to a 10px floor and falls back to the default when cleared. */
   protected readonly resolvedSize = computed<number>(() => {
     const raw = this.size();
     const value = typeof raw === 'number' ? raw : Number(raw);
     if (!Number.isFinite(value) || value <= 0) {
-      return 48;
+      return 24;
     }
     return Math.max(10, value);
   });

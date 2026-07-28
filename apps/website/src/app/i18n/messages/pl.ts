@@ -1096,6 +1096,7 @@ export const pl: WebMessages = {
             variant: 'Wariant',
             layout: 'Układ',
             size: 'Rozmiar (px)',
+            linked: 'Z linkiem',
           },
           'empty-state': {
             size: 'Rozmiar',
@@ -1397,7 +1398,9 @@ export const pl: WebMessages = {
             variant:
               'Wariant treści: default to sam znak słowny, byline dodaje wiersz autorski, tagline dodaje hasło.',
             layout: 'Układa znak słowny w stos wielowierszowy lub w jednej linii.',
-            size: 'Wartość w pikselach, od której skaluje się cały znak słowny.',
+            size: 'Rozmiar czcionki tekstu marki w px; reszta znaku słownego skaluje się od niego.',
+            linked:
+              'Wyświetla znak słowny jako link do eagami.com; wyłącz, aby osadzić go we własnym linku lub kontekście statycznym.',
           },
           'empty-state': {
             title: 'Tekst nagłówka wyświetlany nad opisem.',

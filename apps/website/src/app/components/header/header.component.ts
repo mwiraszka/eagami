@@ -1,4 +1,4 @@
-import { EagamiIconComponent, TooltipDirective } from '@eagami/ui';
+import { EagamiWordmarkComponent, TooltipDirective } from '@eagami/ui';
 import { filter, map } from 'rxjs/operators';
 
 import {
@@ -22,7 +22,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   imports: [
-    EagamiIconComponent,
+    EagamiWordmarkComponent,
     LocaleSwitcherComponent,
     PendingLinkDirective,
     RouterLink,

@@ -203,7 +203,7 @@ const messages: EagamiMessages = {
     invalid: 'قيمة غير صالحة',
   },
   wordmark: {
-    overline: 'صناعة يدوية من',
+    overline: 'من تصميم',
     tagline: 'تصميم ويب أنيق',
   },
 };

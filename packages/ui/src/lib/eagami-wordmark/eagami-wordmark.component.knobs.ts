@@ -16,10 +16,12 @@ export const EAGAMI_WORDMARK_KNOBS: ComponentKnobs = {
       options: ['stacked', 'inline'],
     },
     size: { control: 'number', min: 10, max: 512, maxLength: 3 },
+    linked: { control: 'boolean' },
   },
   args: {
     variant: 'default',
     layout: 'stacked',
-    size: 48,
+    size: 24,
+    linked: true,
   },
 };

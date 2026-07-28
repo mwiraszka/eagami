@@ -15,6 +15,11 @@ on:
       - 'package.json'
       - '.github/workflows/website-preview.yaml'
 
+# A newer push supersedes any preview still building for the same branch
+concurrency:
+  group: website-preview-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
@@ -22,6 +27,24 @@ jobs:
       - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
+        with:
+          version: 10.33.0
+
+      # Warm pnpm store so the install inside `vercel build` reuses it
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # Angular's persistent build cache turns the cold SSR build into an
+      # incremental one; keyed by sha so each run saves on top of the last
+      - uses: actions/cache@v4
+        with:
+          path: apps/website/.angular/cache
+          key: angular-preview-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
+          restore-keys: |
+            angular-preview-${{ hashFiles('pnpm-lock.yaml') }}-
+            angular-preview-
 
       - name: Check version matches branch
         if: startsWith(github.ref_name, 'website-v') || contains(github.ref_name, '-website-v')

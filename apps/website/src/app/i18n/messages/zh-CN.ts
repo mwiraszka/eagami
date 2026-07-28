@@ -1059,6 +1059,7 @@ export const zhCN: WebMessages = {
             variant: '变体',
             layout: '布局',
             size: '尺寸（px）',
+            linked: '链接',
           },
           'empty-state': {
             size: '尺寸',
@@ -1328,9 +1329,11 @@ export const zhCN: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              '内容变体：default 是纯文字标志，byline 添加匠心打造行，tagline 添加标语。',
+              '内容变体：default 是纯文字标志，byline 添加设计出品行，tagline 添加标语。',
             layout: '将文字标志跨行堆叠排列，或在单行内联排列。',
-            size: '整个文字标志据以缩放的像素值。',
+            size: '品牌文字的字号（px）；标志的其余部分据此缩放。',
+            linked:
+              '将文字标志渲染为指向 eagami.com 的链接；关闭后可嵌入自定义链接或静态场景。',
           },
           'empty-state': {
             title: '显示在描述上方的标题文本。',

@@ -2,6 +2,13 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.15.3] - 2026-07-28
+
+### Changed
+
+- Build the header brand lockup from the library wordmark component instead of a hand-rolled icon and text pair.
+- Pick up @eagami/ui v5.12.0.
+
 ## [3.15.2] - 2026-07-25
 
 ### Changed
@@ -960,6 +967,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.15.3]: https://github.com/mwiraszka/eagami/compare/website-v3.15.2...website-v3.15.3
 [3.15.2]: https://github.com/mwiraszka/eagami/compare/website-v3.15.1...website-v3.15.2
 [3.15.1]: https://github.com/mwiraszka/eagami/compare/website-v3.15.0...website-v3.15.1
 [3.15.0]: https://github.com/mwiraszka/eagami/compare/website-v3.14.9...website-v3.15.0

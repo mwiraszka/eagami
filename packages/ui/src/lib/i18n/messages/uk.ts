@@ -196,7 +196,7 @@ const messages: EagamiMessages = {
     invalid: 'Неправильне значення',
   },
   wordmark: {
-    overline: 'ручна робота від',
+    overline: 'дизайн від',
     tagline: 'елегантний веб-дизайн',
   },
 };

@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.12.0] - 2026-07-28
+
+### Added
+
+- Add a `linked` input to the wordmark so it can render without its built-in eagami.com link, for embedding in a custom link.
+
+### Changed
+
+- **Breaking:** Make the wordmark `size` input the brand text's font-size in px (previously it was the logo's size); the default drops from 48 to 24 so the rendered default is unchanged.
+- Re-proportion the wordmark: the logo renders at 1.5 times the text size, with a gap of one twelfth of the logo between them.
+- Change the wordmark byline to "designed by" in every locale.
+- Tuck the wordmark byline closer to the brand text, and raise the tagline variant's text for optical balance against the logo.
+
 ## [5.11.0] - 2026-07-25
 
 ### Added
@@ -1085,6 +1098,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.11.0...ui-v5.12.0
 [5.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.1...ui-v5.11.0
 [5.10.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.0...ui-v5.10.1
 [5.10.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.9.0...ui-v5.10.0

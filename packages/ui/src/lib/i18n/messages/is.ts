@@ -196,7 +196,7 @@ const messages: EagamiMessages = {
     invalid: 'Ógilt gildi',
   },
   wordmark: {
-    overline: 'handunnið af',
+    overline: 'hannað af',
     tagline: 'glæsileg vefhönnun',
   },
 };

@@ -1089,6 +1089,7 @@ export const nl: WebMessages = {
             variant: 'Variant',
             layout: 'Indeling',
             size: 'Grootte (px)',
+            linked: 'Gelinkt',
           },
           'empty-state': {
             size: 'Grootte',
@@ -1394,9 +1395,11 @@ export const nl: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Inhoudsvariant: default is het kale woordmerk, byline voegt de handcrafted-by-regel toe, tagline voegt de tagline toe.',
+              'Inhoudsvariant: default is het kale woordmerk, byline voegt de designed-by-regel toe, tagline voegt de tagline toe.',
             layout: 'Schikt het woordmerk gestapeld over regels of inline op één regel.',
-            size: 'Pixelwaarde waarvan het hele woordmerk schaalt.',
+            size: 'Lettergrootte in px van de merktekst; de rest van het woordmerk schaalt daarvan.',
+            linked:
+              'Toont het woordmerk als link naar eagami.com; schakel uit om het in een eigen link of statische context in te bedden.',
           },
           'empty-state': {
             title: 'Koptekst weergegeven boven de beschrijving.',

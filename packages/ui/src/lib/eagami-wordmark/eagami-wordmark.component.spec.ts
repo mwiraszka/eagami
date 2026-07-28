@@ -66,7 +66,7 @@ describe('EagamiWordmarkComponent', () => {
       fixture.componentRef.setInput('variant', 'byline');
       fixture.detectChanges();
 
-      expect(getOverline()?.textContent?.trim()).toBe('handcrafted by');
+      expect(getOverline()?.textContent?.trim()).toBe('designed by');
       expect(getBrand()?.textContent?.trim()).toBe('eagami');
       expect(getTagline()).toBeNull();
     });
@@ -84,11 +84,11 @@ describe('EagamiWordmarkComponent', () => {
       expect(getAnchor().getAttribute('aria-label')).toBe('eagami');
     });
 
-    it('sets aria-label to "handcrafted by eagami" for the byline variant', () => {
+    it('sets aria-label to "designed by eagami" for the byline variant', () => {
       fixture.componentRef.setInput('variant', 'byline');
       fixture.detectChanges();
 
-      expect(getAnchor().getAttribute('aria-label')).toBe('handcrafted by eagami');
+      expect(getAnchor().getAttribute('aria-label')).toBe('designed by eagami');
     });
 
     it('sets aria-label to the full text for the tagline variant', () => {
@@ -100,8 +100,8 @@ describe('EagamiWordmarkComponent', () => {
   });
 
   describe('Size', () => {
-    it('sets --_size to 48 by default', () => {
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
+    it('sets --_size to 24 by default', () => {
+      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('24');
     });
 
     it('sets --_size to the provided value', () => {
@@ -118,11 +118,11 @@ describe('EagamiWordmarkComponent', () => {
       expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('10');
     });
 
-    it('falls back to 48 when size is cleared or invalid', () => {
+    it('falls back to 24 when size is cleared or invalid', () => {
       fixture.componentRef.setInput('size', NaN);
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
+      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('24');
     });
   });
 
@@ -143,7 +143,7 @@ describe('EagamiWordmarkComponent', () => {
       fixture.componentRef.setInput('layout', 'inline');
       fixture.detectChanges();
 
-      expect(getOverline()?.textContent?.trim()).toBe('handcrafted by');
+      expect(getOverline()?.textContent?.trim()).toBe('designed by');
       expect(getBrand()?.textContent?.trim()).toBe('eagami');
     });
 

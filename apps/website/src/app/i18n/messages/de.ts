@@ -1098,6 +1098,7 @@ export const de: WebMessages = {
             variant: 'Variante',
             layout: 'Anordnung',
             size: 'Größe (px)',
+            linked: 'Verlinkt',
           },
           'empty-state': {
             size: 'Größe',
@@ -1405,10 +1406,12 @@ export const de: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Inhaltsvariante: default ist das reine Wortmark, byline fügt die Handgefertigt-von-Zeile hinzu, tagline fügt den Slogan hinzu.',
+              'Inhaltsvariante: default ist das reine Wortmark, byline fügt die Gestaltet-von-Zeile hinzu, tagline fügt den Slogan hinzu.',
             layout:
               'Ordnet das Wortmark über mehrere Zeilen gestapelt oder inline in einer einzelnen Zeile an.',
-            size: 'Pixelwert, von dem das gesamte Wortmark skaliert.',
+            size: 'Schriftgröße des Markentexts in px; der Rest des Wortmarks skaliert davon.',
+            linked:
+              'Rendert das Wortmark als Link zu eagami.com; deaktivieren, um es in einen eigenen Link oder statischen Kontext einzubetten.',
           },
           'empty-state': {
             title: 'Überschriftstext, der über der Beschreibung angezeigt wird.',

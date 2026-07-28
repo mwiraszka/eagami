@@ -1091,6 +1091,7 @@ export const is: WebMessages = {
             variant: 'Afbrigði',
             layout: 'Uppsetning',
             size: 'Stærð (px)',
+            linked: 'Tengt',
           },
           'empty-state': {
             size: 'Stærð',
@@ -1388,9 +1389,11 @@ export const is: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Efnisafbrigði: sjálfgefið er bert orðmerki, byline bætir við handunnið-af línunni, tagline bætir við slagorðinu.',
+              'Efnisafbrigði: sjálfgefið er bert orðmerki, byline bætir við hannað-af línunni, tagline bætir við slagorðinu.',
             layout: 'Raðar orðmerkinu staflað yfir línur eða innfellt á einni línu.',
-            size: 'Pixlagildi sem allt orðmerkið kvarðast frá.',
+            size: 'Leturstærð vörumerkjatextans í px; afgangur orðmerkisins kvarðast frá henni.',
+            linked:
+              'Birtir orðmerkið sem tengil á eagami.com; slökktu til að fella það inn í eigin tengil eða kyrrstætt samhengi.',
           },
           'empty-state': {
             title: 'Fyrirsagnartexti sýndur fyrir ofan lýsinguna.',

@@ -1,10 +1,24 @@
-<a
-  class="ea-eagami-wordmark"
-  [class.ea-eagami-wordmark--inline]="layout() === 'inline'"
-  href="https://eagami.com"
-  target="_blank"
-  rel="noopener"
-  [attr.aria-label]="ariaLabel()">
+@if (linked()) {
+  <a
+    class="ea-eagami-wordmark"
+    [class.ea-eagami-wordmark--inline]="layout() === 'inline'"
+    [class.ea-eagami-wordmark--tagline]="showTagline()"
+    href="https://eagami.com"
+    target="_blank"
+    rel="noopener"
+    [attr.aria-label]="ariaLabel()">
+    <ng-container [ngTemplateOutlet]="lockup" />
+  </a>
+} @else {
+  <span
+    class="ea-eagami-wordmark"
+    [class.ea-eagami-wordmark--inline]="layout() === 'inline'"
+    [class.ea-eagami-wordmark--tagline]="showTagline()">
+    <ng-container [ngTemplateOutlet]="lockup" />
+  </span>
+}
+
+<ng-template #lockup>
   <ea-icon-eagami
     class="ea-eagami-wordmark__logo"
     aria-hidden="true" />
@@ -29,4 +43,4 @@
       </span>
     }
   </span>
-</a>
+</ng-template>

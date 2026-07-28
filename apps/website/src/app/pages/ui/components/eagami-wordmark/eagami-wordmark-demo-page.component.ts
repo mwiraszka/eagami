@@ -23,6 +23,7 @@ interface EagamiWordmarkKnobState {
   variant: EagamiWordmarkVariant;
   layout: EagamiWordmarkLayout;
   size: number;
+  linked: boolean;
 }
 
 const SLUG = 'eagami-wordmark';

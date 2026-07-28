@@ -196,7 +196,7 @@ const messages: EagamiMessages = {
     invalid: 'Μη έγκυρη τιμή',
   },
   wordmark: {
-    overline: 'φτιαγμένο με μεράκι από',
+    overline: 'σχεδιασμένο από',
     tagline: 'κομψός σχεδιασμός ιστού',
   },
 };

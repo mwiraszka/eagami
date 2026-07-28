@@ -1676,9 +1676,16 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'linked',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'size',
         type: 'number',
-        default: '48',
+        default: '24',
         required: false,
         twoWay: false,
       },
