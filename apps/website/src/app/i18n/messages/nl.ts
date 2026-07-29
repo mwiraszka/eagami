@@ -12,7 +12,8 @@ export const nl: WebMessages = {
     localeMenuTooltip: 'Taal wijzigen',
     activeLocale: label => `Huidige taal: ${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: 'Alle rechten voorbehouden.',
       npmLink: 'npm',
       npmTooltip: '@eagami/ui op npm bekijken',
       githubAriaLabel: 'eagami op GitHub',
@@ -112,6 +113,14 @@ export const nl: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description:
+            'Herkent het nummer dat om je heen speelt en leidt het akkoordenschema af.',
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description:
             'Cosmetic Interventional Radiology Clinic gevestigd in London, ON.',
@@ -125,13 +134,6 @@ export const nl: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: 'Binnenkort beschikbaar...',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -153,7 +155,7 @@ export const nl: WebMessages = {
       submit: 'Bericht verzenden',
       sentToast: 'Bericht verzonden',
       errorMessage:
-        'Sorry, er is iets misgegaan. Stuur een e-mail rechtstreeks naar michal@eagami.com.',
+        'Sorry, er is iets misgegaan. Stuur een e-mail rechtstreeks naar info@eagami.com.',
     },
   },
   notFound: {

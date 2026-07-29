@@ -16,7 +16,8 @@ export const frFR: WebMessages = {
     localeMenuTooltip: 'Changer de langue',
     activeLocale: label => `Langue actuelle : ${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: 'Tous droits réservés.',
       npmLink: 'npm',
       npmTooltip: 'Voir @eagami/ui sur npm',
       githubAriaLabel: 'eagami sur GitHub',
@@ -116,6 +117,14 @@ export const frFR: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description:
+            "Identifie la chanson qui joue autour de vous et en déduit la progression d'accords.",
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description:
             'Clinique de radiologie interventionnelle esthétique située à London, ON.',
@@ -130,13 +139,6 @@ export const frFR: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: 'Bientôt disponible…',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -158,7 +160,7 @@ export const frFR: WebMessages = {
       submit: 'Envoyer le message',
       sentToast: 'Message envoyé',
       errorMessage:
-        'Désolé, une erreur s’est produite. Merci d’écrire directement à michal@eagami.com.',
+        'Désolé, une erreur s’est produite. Merci d’écrire directement à info@eagami.com.',
     },
   },
   notFound: {

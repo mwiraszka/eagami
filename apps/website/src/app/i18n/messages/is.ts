@@ -12,7 +12,8 @@ export const is: WebMessages = {
     localeMenuTooltip: 'Breyta tungumáli',
     activeLocale: label => `Núverandi tungumál: ${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: 'Öll réttindi áskilin.',
       npmLink: 'npm',
       npmTooltip: 'Skoða @eagami/ui á npm',
       githubAriaLabel: 'eagami á GitHub',
@@ -110,6 +111,14 @@ export const is: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description:
+            'Þekkir lagið sem spilast í kringum þig og finnur út hljómaganginn.',
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description: 'Snyrtileg inngripsröntgenstofa með aðsetur í London, ON.',
           url: 'https://circaesthetics.ca',
@@ -122,13 +131,6 @@ export const is: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: 'Væntanlegt...',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -150,7 +152,7 @@ export const is: WebMessages = {
       submit: 'Senda skilaboð',
       sentToast: 'Skilaboð send',
       errorMessage:
-        'Því miður, eitthvað fór úrskeiðis. Vinsamlegast sendu tölvupóst beint á michal@eagami.com.',
+        'Því miður, eitthvað fór úrskeiðis. Vinsamlegast sendu tölvupóst beint á info@eagami.com.',
     },
   },
   notFound: {
