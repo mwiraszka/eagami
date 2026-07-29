@@ -1,7 +1,13 @@
 <footer class="web-footer">
-  <p class="web-footer__copyright">{{
-    messages().common.footer.copyright(currentYear)
-  }}</p>
+  <!-- div, not p: the divider renders a block element, which the HTML parser
+       would eject from a p when hydrating the server-rendered markup -->
+  <div class="web-footer__copyright">
+    {{ messages().common.footer.copyright(currentYear) }}
+    <ea-divider
+      class="web-footer__divider"
+      orientation="vertical" />
+    {{ messages().common.footer.allRightsReserved }}
+  </div>
   <nav
     class="web-footer__links"
     [attr.aria-label]="messages().common.footer.navLabel">

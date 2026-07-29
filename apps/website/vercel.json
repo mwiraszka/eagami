@@ -7,7 +7,7 @@
   "trailingSlash": false,
   "functions": {
     "api/**/*.ts": {
-      "runtime": "@vercel/node@5.8.11"
+      "runtime": "@vercel/node@5.9.0"
     }
   },
   "redirects": [

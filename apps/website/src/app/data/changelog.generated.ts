@@ -14,6 +14,22 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.12.1',
+    date: '2026-07-29',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `--ea-divider-length` styling hook that pins the vertical divider's exact length.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: ['Update development tooling dependencies.'],
+      },
+    ],
+  },
+  {
     version: '5.12.0',
     date: '2026-07-28',
     sections: [

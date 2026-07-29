@@ -16,6 +16,7 @@ export interface WebMessages {
     activeLocale: (label: string) => string;
     footer: {
       copyright: (year: number) => string;
+      allRightsReserved: string;
       npmLink: string;
       npmTooltip: string;
       githubAriaLabel: string;

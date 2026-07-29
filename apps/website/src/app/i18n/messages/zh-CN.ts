@@ -12,7 +12,8 @@ export const zhCN: WebMessages = {
     localeMenuTooltip: '更改语言',
     activeLocale: label => `当前语言：${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: '版权所有。',
       npmLink: 'npm',
       npmTooltip: '在 npm 上查看 @eagami/ui',
       githubAriaLabel: 'eagami on GitHub',
@@ -105,6 +106,13 @@ export const zhCN: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description: '识别你周围正在播放的歌曲，并推断其和弦进行。',
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description: '位于安大略省伦敦市的美容介入放射诊所。',
           url: 'https://circaesthetics.ca',
@@ -117,13 +125,6 @@ export const zhCN: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: '敬请期待…',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -144,7 +145,7 @@ export const zhCN: WebMessages = {
       ],
       submit: '发送留言',
       sentToast: '留言已发送',
-      errorMessage: '抱歉，出了点问题。请直接发邮件至 michal@eagami.com。',
+      errorMessage: '抱歉，出了点问题。请直接发邮件至 info@eagami.com。',
     },
   },
   notFound: {

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Resend } from 'resend';
+import { createTransport } from 'nodemailer';
 
 interface ContactPayload {
   name?: unknown;
@@ -7,8 +7,7 @@ interface ContactPayload {
   message?: unknown;
 }
 
-const FROM = 'eagami.com <noreply@eagami.com>';
-const TO = 'michal@eagami.com';
+const TO = 'info@eagami.com';
 
 export default async function handler(
   req: VercelRequest,
@@ -19,9 +18,12 @@ export default async function handler(
     return;
   }
 
-  const apiKey = process.env['RESEND_API_KEY'];
-  if (!apiKey) {
-    console.error('[contact] RESEND_API_KEY env var is missing');
+  // Zoho SMTP with an app-specific password; the authenticated mailbox must
+  // also be the from address or Zoho rejects the send
+  const user = process.env['ZOHO_SMTP_USER'];
+  const pass = process.env['ZOHO_SMTP_PASS'];
+  if (!user || !pass) {
+    console.error('[contact] ZOHO_SMTP_USER / ZOHO_SMTP_PASS env vars are missing');
     res.status(500).json({ error: 'Mail service not configured' });
     return;
   }
@@ -44,26 +46,25 @@ export default async function handler(
     return;
   }
 
-  const resend = new Resend(apiKey);
+  const transport = createTransport({
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
+    auth: { user, pass },
+  });
 
   try {
-    const result = await resend.emails.send({
-      from: FROM,
+    await transport.sendMail({
+      from: `eagami.com <${user}>`,
       to: TO,
       replyTo: email,
       subject: `New eagami.com inquiry from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
     });
 
-    if (result.error) {
-      console.error('[contact] Resend returned an error:', result.error);
-      res.status(502).json({ error: 'Failed to send message' });
-      return;
-    }
-
     res.status(200).json({ ok: true });
   } catch (error) {
-    console.error('[contact] Resend threw:', error);
+    console.error('[contact] SMTP send failed:', error);
     res.status(502).json({ error: 'Failed to send message' });
   }
 }

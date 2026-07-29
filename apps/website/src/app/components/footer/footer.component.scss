@@ -11,7 +11,20 @@
 }
 
 .web-footer__copyright {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--color-text-secondary);
+}
+
+// Shorter than the ea-divider default and dimmed so it reads like punctuation.
+// The nudge counters the text's line-height pushing the glyphs below centre
+.web-footer__divider {
+  --color-divider: var(--web-color-footerTextDivider);
+  --ea-divider-length: 16px;
+  // Doubles the row's 8px gap on both sides
+  margin: 0 8px;
+  transform: translateY(2px);
 }
 
 .web-footer__links {

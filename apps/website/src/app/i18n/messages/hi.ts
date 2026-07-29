@@ -12,7 +12,8 @@ export const hi: WebMessages = {
     localeMenuTooltip: 'भाषा बदलें',
     activeLocale: label => `वर्तमान भाषा: ${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: 'सर्वाधिकार सुरक्षित।',
       npmLink: 'npm',
       npmTooltip: 'npm पर @eagami/ui देखें',
       githubAriaLabel: 'GitHub पर eagami',
@@ -109,6 +110,14 @@ export const hi: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description:
+            'आपके आस-पास बज रहे गाने को पहचानता है और उसकी कॉर्ड प्रोग्रेशन निकालता है।',
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description: 'लंदन, ON स्थित कॉस्मेटिक इंटरवेंशनल रेडियोलॉजी क्लिनिक।',
           url: 'https://circaesthetics.ca',
@@ -122,13 +131,6 @@ export const hi: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: 'जल्द आ रहा है...',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -150,7 +152,7 @@ export const hi: WebMessages = {
       submit: 'संदेश भेजें',
       sentToast: 'संदेश भेजा गया',
       errorMessage:
-        'क्षमा करें, कुछ गलत हो गया। कृपया सीधे michal@eagami.com पर ईमेल करें।',
+        'क्षमा करें, कुछ गलत हो गया। कृपया सीधे info@eagami.com पर ईमेल करें।',
     },
   },
   notFound: {

@@ -13,7 +13,8 @@ export const el: WebMessages = {
     localeMenuTooltip: 'Αλλαγή γλώσσας',
     activeLocale: label => `Τρέχουσα γλώσσα: ${label}`,
     footer: {
-      copyright: year => `© ${year} eagami`,
+      copyright: year => `© ${year} Eagami`,
+      allRightsReserved: 'Με επιφύλαξη παντός δικαιώματος.',
       npmLink: 'npm',
       npmTooltip: 'Δείτε το @eagami/ui στο npm',
       githubAriaLabel: 'eagami στο GitHub',
@@ -113,6 +114,14 @@ export const el: WebMessages = {
           logo: 'assets/projects/londonchess.svg',
         },
         {
+          title: 'Chordbomb',
+          description:
+            'Αναγνωρίζει το τραγούδι που παίζει γύρω σας και βρίσκει την ακολουθία συγχορδιών του.',
+          url: 'https://chordbomb.com',
+          display: 'chordbomb.com',
+          logo: 'assets/projects/chordbomb.svg',
+        },
+        {
           title: 'CIRC Aesthetics',
           description:
             'Κλινική Επεμβατικής Καλλωπιστικής Ακτινολογίας με έδρα το London, ON.',
@@ -127,13 +136,6 @@ export const el: WebMessages = {
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
-        },
-        {
-          title: 'Chordbomb',
-          description: 'Έρχεται σύντομα…',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
         },
       ],
     },
@@ -155,7 +157,7 @@ export const el: WebMessages = {
       submit: 'Αποστολή μηνύματος',
       sentToast: 'Το μήνυμα στάλθηκε',
       errorMessage:
-        'Συγγνώμη, κάτι πήγε στραβά. Παρακαλώ στείλτε e-mail απευθείας στο michal@eagami.com.',
+        'Συγγνώμη, κάτι πήγε στραβά. Παρακαλώ στείλτε e-mail απευθείας στο info@eagami.com.',
     },
   },
   notFound: {
