@@ -22,8 +22,9 @@
   &--vertical {
     display: inline-block;
     width: var(--ea-divider-thickness);
-    height: 1.5em;
-    min-height: 1rem;
+    // consumers can pin an exact rule length (e.g. a short text separator)
+    height: var(--ea-divider-length, 1.5em);
+    min-height: var(--ea-divider-length, 1rem);
     background-color: var(--color-divider);
 
     &.ea-divider--with-label {
