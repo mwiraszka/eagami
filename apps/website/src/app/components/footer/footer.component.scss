@@ -15,6 +15,14 @@
   align-items: center;
   gap: 8px;
   color: var(--color-text-secondary);
+
+  // Stack the two notices; the parent footer keeps the pair vertically
+  // centered against the nav icons
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
 }
 
 // Shorter than the ea-divider default and dimmed so it reads like punctuation.
@@ -25,6 +33,10 @@
   // Doubles the row's 8px gap on both sides
   margin: 0 8px;
   transform: translateY(2px);
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .web-footer__links {

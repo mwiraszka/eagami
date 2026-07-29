@@ -2,11 +2,11 @@
   <!-- div, not p: the divider renders a block element, which the HTML parser
        would eject from a p when hydrating the server-rendered markup -->
   <div class="web-footer__copyright">
-    {{ messages().common.footer.copyright(currentYear) }}
+    <span>{{ messages().common.footer.copyright(currentYear) }}</span>
     <ea-divider
       class="web-footer__divider"
       orientation="vertical" />
-    {{ messages().common.footer.allRightsReserved }}
+    <span>{{ messages().common.footer.allRightsReserved }}</span>
   </div>
   <nav
     class="web-footer__links"
