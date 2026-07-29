@@ -2,6 +2,15 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.15.4] - 2026-07-29
+
+### Changed
+
+- Direct contact-form messages and the security contact to the eagami.com shared inboxes instead of a personal address.
+- Deliver contact-form mail through the existing Zoho account instead of a separate mail service.
+- Capitalise the footer copyright and follow it with an "All rights reserved" note.
+- Fill in the Chordbomb project card now that the site is live.
+
 ## [3.15.3] - 2026-07-28
 
 ### Changed
@@ -967,6 +976,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.15.4]: https://github.com/mwiraszka/eagami/compare/website-v3.15.3...website-v3.15.4
 [3.15.3]: https://github.com/mwiraszka/eagami/compare/website-v3.15.2...website-v3.15.3
 [3.15.2]: https://github.com/mwiraszka/eagami/compare/website-v3.15.1...website-v3.15.2
 [3.15.1]: https://github.com/mwiraszka/eagami/compare/website-v3.15.0...website-v3.15.1

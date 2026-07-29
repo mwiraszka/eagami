@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.12.1] - 2026-07-29
+
+### Added
+
+- Add a `--ea-divider-length` styling hook that pins the vertical divider's exact length.
+
+### Changed
+
+- Update development tooling dependencies.
+
 ## [5.12.0] - 2026-07-28
 
 ### Added
@@ -1098,6 +1108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.12.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.0...ui-v5.12.1
 [5.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.11.0...ui-v5.12.0
 [5.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.1...ui-v5.11.0
 [5.10.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.0...ui-v5.10.1
