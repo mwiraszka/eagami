@@ -310,7 +310,7 @@ export const en: WebMessages = {
       primaryLabel: 'Primary color',
       secondaryLabel: 'Secondary color',
       contrastHeading: 'Accessibility',
-      contrastPass: 'Passes WCAG 2.1 AA contrast in both light and dark mode',
+      contrastPass: 'Passes WCAG 2.2 AA contrast in both light and dark mode',
       contrastFailIntro: 'Some pairings fall below the WCAG AA contrast bar:',
       scaleHeading: 'Generated scale',
       previewHeading: 'Preview',
@@ -351,7 +351,7 @@ export const en: WebMessages = {
       paletteOverrides:
         'Pin specific shades or remap which derived shade backs each semantic role:',
       paletteContrast:
-        'Every brand-role pairing (text on surface, surface on canvas) is checked against WCAG 2.1 AA at bootstrap. A failing combination throws before the app loads, so a contrast bug in the brand colour is caught at boot rather than in production.',
+        'Every brand-role pairing (text on surface, surface on canvas) is checked against WCAG 2.2 AA at bootstrap. A failing combination throws before the app loads, so a contrast bug in the brand color is caught at boot rather than in production.',
       paletteBuilderIntro: 'Build and preview your palette visually in the',
       paletteBuilderLink: 'theme builder',
       elevationDrop: 'Drop shadows',
@@ -618,7 +618,7 @@ export const en: WebMessages = {
           infoText: 'A new version is available',
           dismissibleText: 'This alert can be dismissed',
           tooltipSuppressed:
-            'Tooltips are suppressed on touch devices to avoid sticky-hover behaviour. View this section on a device with a mouse to see the demos in action.',
+            'Tooltips are suppressed on touch devices to avoid sticky-hover behavior. View this section on a device with a mouse to see the demos in action.',
         },
         autocomplete: {
           startTyping: 'Start typing…',
@@ -1279,13 +1279,13 @@ export const en: WebMessages = {
             shape: 'Outline of the avatar: round or rounded-square.',
           },
           badge: {
-            variant: 'Semantic colour scheme of the badge.',
+            variant: 'Semantic color scheme of the badge.',
             size: 'Visual size of the badge.',
             shape:
               'Outer shape of the badge (pill hugs the content, pin renders as a circle for single characters).',
           },
           button: {
-            variant: 'Visual style of the button, driving its colour and emphasis.',
+            variant: 'Visual style of the button, driving its color and emphasis.',
             size: 'Visual size of the button.',
             type: 'Native type attribute applied to the underlying button element.',
             disabled: 'Disables the button and suppresses click events.',
@@ -1369,7 +1369,7 @@ export const en: WebMessages = {
               'Closes the popover when the user clicks outside the picker.',
           },
           divider: {
-            label: 'Optional centred label rendered within the divider rule.',
+            label: 'Optional centered label rendered within the divider rule.',
             orientation: 'Orientation the divider rule runs in.',
             thick: 'Renders a heavier rule.',
           },
@@ -1538,7 +1538,7 @@ export const en: WebMessages = {
               'Fires with the new checked state whenever the user toggles the switch.',
           },
           tag: {
-            variant: 'Semantic colour scheme of the tag.',
+            variant: 'Semantic color scheme of the tag.',
             size: 'Visual size of the tag.',
             removable: 'Renders a remove button that emits removed when activated.',
             disabled: 'Disables the tag and its remove button.',

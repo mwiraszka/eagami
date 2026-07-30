@@ -7,7 +7,7 @@ export const zhCN: WebMessages = {
     navUi: 'UI',
     navUiTooltip: '组件库文档',
     themeToggleTooltip: '切换主题',
-    themeToggleLabel: next => `切换到${next}模式`,
+    themeToggleLabel: next => `切换到${next === 'light' ? '浅色' : '深色'}模式`,
     localeMenuLabel: '语言',
     localeMenuTooltip: '更改语言',
     activeLocale: label => `当前语言：${label}`,
@@ -16,7 +16,7 @@ export const zhCN: WebMessages = {
       allRightsReserved: '版权所有。',
       npmLink: 'npm',
       npmTooltip: '在 npm 上查看 @eagami/ui',
-      githubAriaLabel: 'eagami on GitHub',
+      githubAriaLabel: 'GitHub 上的 eagami',
       githubTooltip: '在 GitHub 上查看源代码',
       navLabel: '页脚',
     },
@@ -28,7 +28,8 @@ export const zhCN: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: '优雅的网页设计',
+    metaDescription:
+      '优雅的网页设计，也是 Eagami UI 的家：一套轻量、无障碍的 Angular 组件库。',
     hero: {
       tagline: '优雅的网页设计。',
       ctaPrimary: '联系我们',
@@ -42,8 +43,7 @@ export const zhCN: WebMessages = {
       uiNote: {
         before: '更大型的项目可以基于',
         link: 'Eagami UI',
-        after:
-          '构建，这是一套定制的组件库和设计系统，让整个网站拥有一致而现代的视觉语言。',
+        after: '构建，这是一套定制的组件库，让整个网站拥有一致而现代的视觉语言。',
       },
       core: [
         {
@@ -179,7 +179,7 @@ export const zhCN: WebMessages = {
       components: '组件',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Angular 组件库',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
       title: 'Eagami UI',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',
@@ -292,7 +292,7 @@ export const zhCN: WebMessages = {
       tokensLink: 'JSON 格式的设计令牌',
     },
     themeBuilder: {
-      metaTitle: '主题生成器 | Eagami UI',
+      metaTitle: 'Angular 主题生成器 | Eagami UI',
       metaDescription:
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
@@ -340,7 +340,7 @@ export const zhCN: WebMessages = {
         '向 <code>provideEagamiUi()</code> 传入单个品牌十六进制色值，库便会在 <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> 空间中推导出完整的十级色阶（50 至 900），在逐级调整明度的同时保持色相和饱和度不变。推导出的色阶为浅色和深色模式中的每个 <code>--color-brand-*</code> 令牌提供取值：',
       paletteOverrides: '固定特定色阶，或重新映射哪个推导色阶支撑各语义角色：',
       paletteContrast:
-        '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 WCAG 2.1 AA 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',
+        '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 WCAG 2.2 AA 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',
       paletteBuilderIntro: '直观地构建并预览你的调色板，前往',
       paletteBuilderLink: '主题生成器',
       elevationDrop: '投影',
@@ -364,7 +364,7 @@ export const zhCN: WebMessages = {
       motionEasings: '缓动',
     },
     icons: {
-      metaTitle: '图标 | Eagami UI',
+      metaTitle: 'Angular 图标 | Eagami UI',
       metaDescription: '随 @eagami/ui 一同提供的图标集。',
       title: '图标',
       lede: '独立的 Angular 组件，会继承其颜色并随 <code>font-size</code> 缩放，因此可在任意尺寸下渲染。大多数图标衍生自 <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> 在 <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT 许可证</span></a> 下提供的 <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a>；其余为 Eagami UI 原创图标。Feather 图标还可绘制为更细或更粗的线条。点击图标即可复制其选择器。',
@@ -458,8 +458,9 @@ export const zhCN: WebMessages = {
         '每个组件在每次变更时都会依据行业无障碍规则进行检查，只有当所有检查都通过时版本才会发布，因此你在这里看到的无障碍能力会随着库的演进持续保持。',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `${name} 组件参考与实时演示。`,
+      metaTitle: name => `Angular ${name} 组件 | Eagami UI`,
+      metaDescription: name =>
+        `Angular ${name} 组件：实时演示、API 参考，以及基于 CSS 变量的主题定制。`,
       demoHeading: '演示',
       notFoundTitle: '未找到组件',
       notFoundBody: '从侧边栏选择一个组件，或',

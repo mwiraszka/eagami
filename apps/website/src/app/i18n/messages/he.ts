@@ -28,7 +28,8 @@ export const he: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'עיצוב אתרים אלגנטי',
+    metaDescription:
+      'עיצוב אתרים אלגנטי, והבית של Eagami UI: ספריית רכיבי Angular קלת משקל ונגישה.',
     hero: {
       tagline: 'עיצוב אתרים אלגנטי.',
       ctaPrimary: 'צרו קשר',
@@ -42,8 +43,7 @@ export const he: WebMessages = {
       uiNote: {
         before: 'פרויקטים גדולים יותר ניתן לבנות על',
         link: 'Eagami UI',
-        after:
-          ', ספריית רכיבים ומערכת עיצוב מותאמת אישית, לשפה ויזואלית עקבית ומודרנית בכל האתר.',
+        after: ', ספריית רכיבים מותאמת אישית, לשפה ויזואלית עקבית ומודרנית בכל האתר.',
       },
       core: [
         {
@@ -182,7 +182,7 @@ export const he: WebMessages = {
       components: 'רכיבים',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | ספריית רכיבי Angular',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
       title: 'Eagami UI',
@@ -297,7 +297,7 @@ export const he: WebMessages = {
       tokensLink: 'אסימוני עיצוב כ-JSON',
     },
     themeBuilder: {
-      metaTitle: 'בונה ערכת נושא | Eagami UI',
+      metaTitle: 'בונה ערכת נושא ל-Angular | Eagami UI',
       metaDescription:
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
@@ -347,7 +347,7 @@ export const he: WebMessages = {
       paletteOverrides:
         'קבעו גוונים ספציפיים או מפו מחדש איזה גוון נגזר עומד מאחורי כל תפקיד סמנטי:',
       paletteContrast:
-        'כל זוג תפקידי מותג (טקסט על משטח, משטח על בד) נבדק מול WCAG 2.1 AA באתחול. שילוב שאינו עומד בדרישות זורק שגיאה לפני שהאפליקציה נטענת, כך שבאג ניגודיות בצבע המותג נתפס באתחול ולא בייצור.',
+        'כל זוג תפקידי מותג (טקסט על משטח, משטח על בד) נבדק מול WCAG 2.2 AA באתחול. שילוב שאינו עומד בדרישות זורק שגיאה לפני שהאפליקציה נטענת, כך שבאג ניגודיות בצבע המותג נתפס באתחול ולא בייצור.',
       paletteBuilderIntro: 'בנו את הפלטה שלכם באופן חזותי בעזרת',
       paletteBuilderLink: 'בונה ערכת הנושא',
       elevationDrop: 'צללים מוטלים',
@@ -371,7 +371,7 @@ export const he: WebMessages = {
       motionEasings: 'פונקציות האטה',
     },
     icons: {
-      metaTitle: 'אייקונים | Eagami UI',
+      metaTitle: 'אייקוני Angular | Eagami UI',
       metaDescription: 'ערכת האייקונים המצורפת ל-@eagami/ui.',
       title: 'אייקונים',
       lede: 'רכיבי Angular עצמאיים היורשים את צבעם ומתאימים את גודלם לפי <code>font-size</code>, כך שהם מוצגים בכל גודל. רובם נגזרים מ-<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> מאת <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> תחת <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>רישיון MIT</span></a>; השאר הם אייקונים מקוריים של Eagami UI. אייקוני Feather ניתנים גם לציור בקווים דקים או עבים יותר. לחצו על אייקון כדי להעתיק את הסלקטור שלו.',
@@ -435,7 +435,7 @@ export const he: WebMessages = {
       builtInItems: [
         {
           title: 'סמנטיקה',
-          body: 'אלמנטים מקוריים היכן שאפשר, ותפקידי ARIA, מצבים ומאפיינים מפורשים היכן שלא. מצבים כמו מורחב, נבחר, מסומן, לא תקין ועסוק נחשפים תמיד באופן תכנותי, לעולם לא באמצעות עיצוב בלבד.',
+          body: 'אלמנטים מקוריים היכן שאפשר, ותפקידי ARIA, מצבים ומאפיינים מפורשים היכן שלא. מצבים כמו expanded, selected, checked, invalid ו-busy נחשפים תמיד באופן תכנותי, לעולם לא באמצעות עיצוב בלבד.',
         },
         {
           title: 'תמיכה במקלדת',
@@ -468,8 +468,9 @@ export const he: WebMessages = {
         'כל רכיב נבדק מול כללי הנגישות המקובלים בתעשייה בכל שינוי, ושחרור יוצא רק כאשר כל בדיקה עוברת, כך שהנגישות שאתם רואים כאן נשמרת ככל שהספרייה מתפתחת.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `סימוכין לרכיב ${name} והדגמות חיות.`,
+      metaTitle: name => `רכיב ${name} ל-Angular | Eagami UI`,
+      metaDescription: name =>
+        `רכיב ${name} ל-Angular: הדגמה חיה, סימוכין ל-API והתאמת ערכת נושא עם משתני CSS.`,
       demoHeading: 'הדגמה',
       notFoundTitle: 'הרכיב לא נמצא',
       notFoundBody: 'בחרו רכיב מסרגל הצד, או',

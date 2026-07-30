@@ -29,7 +29,8 @@ export const el: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Κομψός σχεδιασμός ιστού',
+    metaDescription:
+      'Κομψός σχεδιασμός ιστού και έδρα του Eagami UI: μιας ελαφριάς, προσβάσιμης βιβλιοθήκης συστατικών Angular.',
     hero: {
       tagline: 'κομψός σχεδιασμός ιστού.',
       ctaPrimary: 'Επικοινωνία',
@@ -44,7 +45,7 @@ export const el: WebMessages = {
         before: 'Τα μεγαλύτερα έργα μπορούν να χτιστούν πάνω στο',
         link: 'Eagami UI',
         after:
-          ', μια προσαρμοσμένη βιβλιοθήκη συστατικών και σύστημα σχεδίασης, για μια συνεπή και σύγχρονη οπτική γλώσσα σε όλη τη σελίδα.',
+          ', μια προσαρμοσμένη βιβλιοθήκη συστατικών, για μια συνεπή και σύγχρονη οπτική γλώσσα σε όλη τη σελίδα.',
       },
       core: [
         {
@@ -191,7 +192,7 @@ export const el: WebMessages = {
       components: 'Συστατικά',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Βιβλιοθήκη συστατικών Angular',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
       title: 'Eagami UI',
@@ -304,7 +305,7 @@ export const el: WebMessages = {
       tokensLink: 'Tokens σχεδίασης σε JSON',
     },
     themeBuilder: {
-      metaTitle: 'Δημιουργός θέματος | Eagami UI',
+      metaTitle: 'Δημιουργός θέματος Angular | Eagami UI',
       metaDescription:
         'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
       title: 'Δημιουργός θέματος',
@@ -357,7 +358,7 @@ export const el: WebMessages = {
       paletteOverrides:
         'Καρφιτσώστε συγκεκριμένες αποχρώσεις ή αντιστοιχίστε ποιά παραγόμενη απόχρωση υποστηρίζει κάθε σημασιολογικό ρόλο:',
       paletteContrast:
-        'Κάθε ζευγάρι ρόλων μάρκας (κείμενο πάνω σε επιφάνεια, επιφάνεια πάνω σε καμβά) ελέγχεται έναντι του WCAG 2.1 AA στην εκκίνηση. Ένας μη συμβατός συνδυασμός ρίχνει σφάλμα πριν φορτώσει η εφαρμογή, οπότε ένα bug αντίθεσης στο χρώμα της μάρκας πιάνεται στο boot και όχι στην παραγωγή.',
+        'Κάθε ζευγάρι ρόλων μάρκας (κείμενο πάνω σε επιφάνεια, επιφάνεια πάνω σε καμβά) ελέγχεται έναντι του WCAG 2.2 AA στην εκκίνηση. Ένας μη συμβατός συνδυασμός ρίχνει σφάλμα πριν φορτώσει η εφαρμογή, οπότε ένα bug αντίθεσης στο χρώμα της μάρκας πιάνεται στο boot και όχι στην παραγωγή.',
       paletteBuilderIntro: 'Δημιουργήστε και δείτε την παλέτα σας οπτικά στον',
       paletteBuilderLink: 'δημιουργό θέματος',
       elevationDrop: 'Σκιές πτώσης',
@@ -381,7 +382,7 @@ export const el: WebMessages = {
       motionEasings: 'Καμπύλες',
     },
     icons: {
-      metaTitle: 'Εικονίδια | Eagami UI',
+      metaTitle: 'Εικονίδια Angular | Eagami UI',
       metaDescription: 'Σύνολο εικονιδίων που συνοδεύει το @eagami/ui.',
       title: 'Εικονίδια',
       lede: 'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο <code>font-size</code>, ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Τα περισσότερα προέρχονται από τα <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> του <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> υπό την <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>άδεια MIT</span></a>· τα υπόλοιπα είναι πρωτότυπα εικονίδια του Eagami UI. Τα εικονίδια Feather μπορούν επίσης να σχεδιαστούν με λεπτότερες ή παχύτερες γραμμές. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
@@ -479,8 +480,9 @@ export const el: WebMessages = {
         'Κάθε συστατικό ελέγχεται με βάση τους κανόνες προσβασιμότητας του κλάδου κάθε φορά που αλλάζει, και μια έκδοση κυκλοφορεί μόνο όταν περάσουν όλοι οι έλεγχοι, οπότε η προσβασιμότητα που βλέπετε εδώ διατηρείται καθώς η βιβλιοθήκη εξελίσσεται.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Αναφορά και ζωντανές επιδείξεις του συστατικού ${name}.`,
+      metaTitle: name => `Συστατικό Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Συστατικό Angular ${name}: ζωντανή επίδειξη, αναφορά API και θεματοποίηση με μεταβλητές CSS.`,
       demoHeading: 'Επίδειξη',
       notFoundTitle: 'Το συστατικό δεν βρέθηκε',
       notFoundBody: 'Επιλέξτε ένα συστατικό από την πλευρική στήλη ή',
@@ -499,7 +501,7 @@ export const el: WebMessages = {
         withLabel: 'με ετικέτα',
         withIcons: 'με εικονίδια',
         withFooter: 'με υποσέλιδο',
-        withPaginator: 'με paginator',
+        withPaginator: 'με σελιδοποίηση',
         withDisabledItem: 'με απενεργοποιημένο στοιχείο',
         withDisabledTab: 'με απενεργοποιημένη καρτέλα',
         required: 'υποχρεωτικό',
@@ -793,7 +795,7 @@ export const el: WebMessages = {
           saveAs: 'Αποθήκευση ως',
         },
         popover: {
-          openLabel: 'Άνοιγμα popover',
+          openLabel: 'Άνοιγμα αναδυόμενου παραθύρου',
           basicContent:
             'Μια αιωρούμενη επιφάνεια αγκιστρωμένη στο στοιχείο ενεργοποίησής της. Χρησιμοποίησέ την ως δομικό στοιχείο για μενού, αναπτυσσόμενες λίστες και προσαρμοσμένα επιστρώματα.',
           placementTopLabel: 'top',
@@ -926,7 +928,7 @@ export const el: WebMessages = {
         },
         tooltip: {
           triggerLabel: '(πέρασε από πάνω μου)',
-          templateTriggerLabel: '(αιωρήσου για υπόδειξη με template)',
+          templateTriggerLabel: '(περάστε τον δείκτη για υπόδειξη με πρότυπο)',
           templateTipStatus: 'Σε σύνδεση τώρα',
           topLabel: 'Πάνω',
           topTooltip: 'Υπόδειξη πάνω',
@@ -972,7 +974,7 @@ export const el: WebMessages = {
           executedToast: label => `Εκτελέστηκε: ${label}`,
         },
         avatarEditorActions: {
-          avatarUpdatedToast: 'Το avatar ενημερώθηκε',
+          avatarUpdatedToast: 'Το άβαταρ ενημερώθηκε',
         },
       },
       playground: {

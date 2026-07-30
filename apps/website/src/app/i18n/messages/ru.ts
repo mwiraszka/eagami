@@ -29,7 +29,8 @@ export const ru: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Элегантный веб-дизайн',
+    metaDescription:
+      'Элегантный веб-дизайн и дом Eagami UI: лёгкой и доступной библиотеки компонентов Angular.',
     hero: {
       tagline: 'элегантный веб-дизайн.',
       ctaPrimary: 'Связаться',
@@ -44,7 +45,7 @@ export const ru: WebMessages = {
         before: 'Более крупные проекты можно построить на',
         link: 'Eagami UI',
         after:
-          ', собственной библиотеке компонентов и дизайн-системе, для единого и современного визуального языка по всему сайту.',
+          ', собственной библиотеке компонентов, для единого и современного визуального языка по всему сайту.',
       },
       core: [
         {
@@ -189,7 +190,7 @@ export const ru: WebMessages = {
       components: 'Компоненты',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Библиотека компонентов Angular',
       metaDescription:
         'Лёгкая, доступная библиотека компонентов Angular на основе CSS-переменных.',
       title: 'Eagami UI',
@@ -305,7 +306,7 @@ export const ru: WebMessages = {
       tokensLink: 'Дизайн-токены в формате JSON',
     },
     themeBuilder: {
-      metaTitle: 'Конструктор темы | Eagami UI',
+      metaTitle: 'Конструктор темы Angular | Eagami UI',
       metaDescription:
         'Создайте проверенную по WCAG палитру для светлой и тёмной темы на основе цветов вашего бренда и скопируйте конфигурацию провайдера или CSS.',
       title: 'Конструктор темы',
@@ -356,7 +357,7 @@ export const ru: WebMessages = {
       paletteOverrides:
         'Закрепите конкретные оттенки или переназначьте, какой выведенный оттенок лежит в основе каждой семантической роли:',
       paletteContrast:
-        'Каждая пара ролей бренда (текст на поверхности, поверхность на фоне) проверяется на соответствие WCAG 2.1 AA при инициализации. Несоответствующая комбинация выбрасывает ошибку до загрузки приложения, поэтому проблема контраста в цвете бренда выявляется при запуске, а не в продакшене.',
+        'Каждая пара ролей бренда (текст на поверхности, поверхность на фоне) проверяется на соответствие WCAG 2.2 AA при инициализации. Несоответствующая комбинация выбрасывает ошибку до загрузки приложения, поэтому проблема контраста в цвете бренда выявляется при запуске, а не в продакшене.',
       paletteBuilderIntro: 'Создавайте и просматривайте палитру визуально в',
       paletteBuilderLink: 'конструкторе темы',
       elevationDrop: 'Отбрасываемые тени',
@@ -380,7 +381,7 @@ export const ru: WebMessages = {
       motionEasings: 'Функции плавности',
     },
     icons: {
-      metaTitle: 'Иконки | Eagami UI',
+      metaTitle: 'Иконки Angular | Eagami UI',
       metaDescription: 'Набор иконок, поставляемый с @eagami/ui.',
       title: 'Иконки',
       lede: 'Самостоятельные компоненты Angular, которые наследуют свой цвет и масштабируются по <code>font-size</code>, поэтому отрисовываются в любом размере. Большинство получено из <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> авторства <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> по <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>лицензии MIT</span></a>; остальные это оригинальные иконки Eagami UI. Иконки Feather также можно рисовать более тонкими или более толстыми штрихами. Нажмите на иконку, чтобы скопировать её селектор.',
@@ -477,8 +478,9 @@ export const ru: WebMessages = {
         'Каждый компонент проверяется по отраслевым правилам доступности при каждом изменении, а релиз выходит только тогда, когда пройдены все проверки, поэтому доступность, которую вы видите здесь, сохраняется по мере развития библиотеки.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Справочник по компоненту ${name} и живые демонстрации.`,
+      metaTitle: name => `Компонент Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Компонент Angular ${name}: живая демонстрация, справочник API и темизация через CSS-переменные.`,
       demoHeading: 'Демо',
       notFoundTitle: 'Компонент не найден',
       notFoundBody: 'Выберите компонент на боковой панели или',
@@ -908,7 +910,7 @@ export const ru: WebMessages = {
           readonlyValue: 'Содержимое только для чтения',
         },
         toast: {
-          message: variant => `Это уведомление варианта ${variant}`,
+          message: variant => `Это тост варианта ${variant}`,
         },
         tooltip: {
           triggerLabel: '(наведите на меня)',
@@ -1073,7 +1075,7 @@ export const ru: WebMessages = {
             size: 'Размер',
             format: 'Формат',
             showAlpha: 'Показать альфа-канал',
-            clearable: 'Очистка',
+            clearable: 'Очищаемое',
             disabled: 'Отключено',
             readonly: 'Только для чтения',
             required: 'Обязательно',
@@ -1199,10 +1201,10 @@ export const ru: WebMessages = {
             size: 'Визуальный размер временной шкалы.',
           },
           toast: {
-            size: 'Визуальный размер, применяемый к каждому уведомлению в стеке.',
+            size: 'Визуальный размер, применяемый к каждому тосту в стеке.',
             position:
-              'Угол или край области просмотра, к которому прикреплён стек уведомлений.',
-            clearable: 'Показывать кнопку закрытия на каждом уведомлении.',
+              'Угол или край области просмотра, к которому прикреплён стек тостов.',
+            clearable: 'Показывать кнопку закрытия на каждом тосте.',
           },
           input: {
             label: 'Текстовая метка, отображаемая над полем.',

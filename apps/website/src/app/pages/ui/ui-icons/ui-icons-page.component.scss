@@ -165,34 +165,9 @@
 }
 
 .ui-icons__filter-clear {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
+  @include mixins.icon-button(28px, 16px);
   margin-right: 8px;
-  font-size: 16px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
   appearance: none;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: color-mix(
-      in oklch,
-      var(--color-bg-subtle),
-      var(--color-text-primary) 10%
-    );
-    color: var(--color-text-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
 }
 
 .ui-icons__no-results {

@@ -29,7 +29,8 @@ export const uk: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Елегантний вебдизайн',
+    metaDescription:
+      'Елегантний вебдизайн і дім Eagami UI: легкої та доступної бібліотеки компонентів Angular.',
     hero: {
       tagline: 'елегантний вебдизайн.',
       ctaPrimary: "Зв'язатися",
@@ -44,7 +45,7 @@ export const uk: WebMessages = {
         before: 'Більші проєкти можна будувати на',
         link: 'Eagami UI',
         after:
-          ', власній бібліотеці компонентів і дизайн-системі, заради послідовної та сучасної візуальної мови на всьому сайті.',
+          ', власній бібліотеці компонентів, заради послідовної та сучасної візуальної мови на всьому сайті.',
       },
       core: [
         {
@@ -189,7 +190,7 @@ export const uk: WebMessages = {
       components: 'Компоненти',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Бібліотека компонентів Angular',
       metaDescription:
         'Легка, доступна бібліотека компонентів Angular на основі CSS-змінних.',
       title: 'Eagami UI',
@@ -305,7 +306,7 @@ export const uk: WebMessages = {
       tokensLink: 'Дизайн-токени у форматі JSON',
     },
     themeBuilder: {
-      metaTitle: 'Конструктор теми | Eagami UI',
+      metaTitle: 'Конструктор теми Angular | Eagami UI',
       metaDescription:
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
@@ -356,7 +357,7 @@ export const uk: WebMessages = {
       paletteOverrides:
         'Зафіксуйте конкретні відтінки або перепризначте, який виведений відтінок стоїть за кожною семантичною роллю:',
       paletteContrast:
-        'Кожна пара бренд-роль (текст на поверхні, поверхня на полотні) перевіряється на відповідність WCAG 2.1 AA під час старту. Невдала комбінація викидає помилку ще до завантаження застосунку, тож баг контрасту в кольорі бренду виявляється на старті, а не у продакшені.',
+        'Кожна пара бренд-роль (текст на поверхні, поверхня на полотні) перевіряється на відповідність WCAG 2.2 AA під час старту. Невдала комбінація викидає помилку ще до завантаження застосунку, тож баг контрасту в кольорі бренду виявляється на старті, а не у продакшені.',
       paletteBuilderIntro: 'Створюйте й переглядайте палітру візуально в',
       paletteBuilderLink: 'конструкторі теми',
       elevationDrop: 'Падаючі тіні',
@@ -380,7 +381,7 @@ export const uk: WebMessages = {
       motionEasings: 'Згладжування',
     },
     icons: {
-      metaTitle: 'Іконки | Eagami UI',
+      metaTitle: 'Іконки Angular | Eagami UI',
       metaDescription: 'Набір іконок, що постачається з @eagami/ui.',
       title: 'Іконки',
       lede: 'Самостійні компоненти Angular, що успадковують свій колір і масштабуються разом з <code>font-size</code>, тож вони рендеряться в будь-якому розмірі. Більшість походить з <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> від <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> за <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>ліцензією MIT</span></a>; решта це оригінальні іконки Eagami UI. Іконки Feather також можна малювати тоншими або товщими штрихами. Клацніть іконку, щоб скопіювати її селектор.',
@@ -393,8 +394,8 @@ export const uk: WebMessages = {
       countAll: count => `${count} іконок`,
       countFiltered: (shown, total) => `${shown} з ${total} іконок`,
       noResults: 'Жодна іконка не відповідає вашому пошуку',
-      copiedToast: selector => `"${selector}" скопійовано до буфера обміну`,
-      copyFailedToast: selector => `Не вдалося скопіювати "${selector}" до буфера обміну`,
+      copiedToast: selector => `«${selector}» скопійовано до буфера обміну`,
+      copyFailedToast: selector => `Не вдалося скопіювати «${selector}» до буфера обміну`,
       brandTitle: 'Іконки брендів',
       brandIntro:
         'Іконки брендів у списку нижче зображують торговельні марки третіх сторін і надаються лише для номінативного використання, тобто для позначення бренду, який вони представляють в інтерфейсі (кнопка «Увійти через Google», посилання «Поділитися у Facebook» тощо). Вони не ліцензовані для загального декоративного використання. Споживачі відповідають за дотримання настанов кожного бренду:',
@@ -444,7 +445,7 @@ export const uk: WebMessages = {
       builtInItems: [
         {
           title: 'Семантика',
-          body: 'Нативні елементи, де це можливо, явні ARIA-ролі, стани та властивості, де ні. Стани на кшталт розгорнутий, вибраний, позначений, недійсний і зайнятий завжди доступні програмно, ніколи лише через стилі.',
+          body: 'Нативні елементи, де це можливо, явні ARIA-ролі, стани та властивості, де ні. Стани на кшталт expanded, selected, checked, invalid і busy завжди доступні програмно, ніколи лише через стилі.',
         },
         {
           title: 'Підтримка клавіатури',
@@ -477,8 +478,9 @@ export const uk: WebMessages = {
         'Кожен компонент перевіряється за галузевими правилами доступності при кожній зміні, а реліз виходить лише тоді, коли всі перевірки пройдено, тож доступність, яку ви бачите тут, зберігається в міру розвитку бібліотеки.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Довідник і живі демонстрації компонента ${name}.`,
+      metaTitle: name => `Компонент Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Компонент Angular ${name}: жива демонстрація, довідник API і темізація через CSS-змінні.`,
       demoHeading: 'Демонстрація',
       notFoundTitle: 'Компонент не знайдено',
       notFoundBody: 'Оберіть компонент на бічній панелі або',
@@ -1075,7 +1077,7 @@ export const uk: WebMessages = {
             size: 'Розмір',
             format: 'Формат',
             showAlpha: 'Показати прозорість',
-            clearable: 'Очищення',
+            clearable: 'Очищуваний',
             disabled: 'Вимкнено',
             readonly: 'Лише для читання',
             required: 'Обов’язковий',

@@ -28,7 +28,8 @@ export const esES: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Diseño web elegante',
+    metaDescription:
+      'Diseño web elegante, y hogar de Eagami UI: una biblioteca de componentes Angular ligera y accesible.',
     hero: {
       tagline: 'diseño web elegante.',
       ctaPrimary: 'Ponte en contacto',
@@ -43,7 +44,7 @@ export const esES: WebMessages = {
         before: 'Los proyectos más grandes pueden construirse sobre',
         link: 'Eagami UI',
         after:
-          ', una biblioteca de componentes y un sistema de diseño a medida, para un lenguaje visual coherente y moderno en todo el sitio.',
+          ', una biblioteca de componentes a medida, para un lenguaje visual coherente y moderno en todo el sitio.',
       },
       core: [
         {
@@ -155,7 +156,8 @@ export const esES: WebMessages = {
       ],
       submit: 'Enviar mensaje',
       sentToast: 'Mensaje enviado',
-      errorMessage: 'Algo ha ido mal. Por favor, escribe directamente a info@eagami.com.',
+      errorMessage:
+        'Lo sentimos, algo ha ido mal. Por favor, escribe directamente a info@eagami.com.',
     },
   },
   notFound: {
@@ -190,7 +192,7 @@ export const esES: WebMessages = {
       components: 'Componentes',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Biblioteca de componentes Angular',
       metaDescription:
         'Biblioteca de componentes Angular ligera y accesible, construida sobre propiedades CSS personalizadas.',
       title: 'Eagami UI',
@@ -234,7 +236,7 @@ export const esES: WebMessages = {
         tick: 'Márcame',
         tag: 'Etiqueta',
         badge: 'Insignia',
-        tooltip: 'Información adicional mostrada en una descripción emergente',
+        tooltip: 'Información adicional mostrada en un tooltip',
         exploreMore: '...explorar más componentes',
         list: 'Lista',
         grid: 'Cuadrícula',
@@ -302,7 +304,7 @@ export const esES: WebMessages = {
       tokensLink: 'Tokens de diseño en JSON',
     },
     themeBuilder: {
-      metaTitle: 'Generador de temas | Eagami UI',
+      metaTitle: 'Generador de temas Angular | Eagami UI',
       metaDescription:
         'Genera una paleta verificada con WCAG para los modos claro y oscuro a partir de los colores de tu marca y copia la configuración del proveedor o el CSS.',
       title: 'Generador de temas',
@@ -354,7 +356,7 @@ export const esES: WebMessages = {
       paletteOverrides:
         'Fija tonos concretos o reasigna qué tono derivado respalda cada rol semántico:',
       paletteContrast:
-        'Cada combinación de rol de marca (texto sobre superficie, superficie sobre lienzo) se valida contra WCAG 2.1 AA al arrancar. Una combinación no conforme lanza un error antes de cargar la aplicación, así que un fallo de contraste en el color de marca se detecta al boot, no en producción.',
+        'Cada combinación de rol de marca (texto sobre superficie, superficie sobre lienzo) se valida contra WCAG 2.2 AA al arrancar. Una combinación no conforme lanza un error antes de cargar la aplicación, así que un fallo de contraste en el color de marca se detecta al boot, no en producción.',
       paletteBuilderIntro: 'Crea y previsualiza tu paleta de forma visual en el',
       paletteBuilderLink: 'generador de temas',
       elevationDrop: 'Sombras proyectadas',
@@ -378,7 +380,7 @@ export const esES: WebMessages = {
       motionEasings: 'Curvas',
     },
     icons: {
-      metaTitle: 'Iconos | Eagami UI',
+      metaTitle: 'Iconos Angular | Eagami UI',
       metaDescription: 'Conjunto de iconos incluido con @eagami/ui.',
       title: 'Iconos',
       lede: 'Componentes Angular autónomos que heredan su color y se escalan con <code>font-size</code>, por lo que se renderizan a cualquier tamaño. La mayoría se derivan de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> bajo la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licencia MIT</span></a>; el resto son iconos originales de Eagami UI. Los iconos Feather también pueden dibujarse con trazos más finos o más gruesos. Haz clic en un icono para copiar su selector.',
@@ -442,7 +444,7 @@ export const esES: WebMessages = {
       builtInItems: [
         {
           title: 'Semántica',
-          body: 'Elementos nativos siempre que es posible, y roles, estados y propiedades ARIA explícitos cuando no. Estados como expandido, seleccionado, marcado, inválido y ocupado se exponen siempre de forma programática, nunca solo mediante estilos.',
+          body: 'Elementos nativos siempre que es posible, y roles, estados y propiedades ARIA explícitos cuando no. Estados como expanded, selected, checked, invalid y busy se exponen siempre de forma programática, nunca solo mediante estilos.',
         },
         {
           title: 'Compatibilidad con teclado',
@@ -475,8 +477,9 @@ export const esES: WebMessages = {
         'Cada componente se comprueba según las reglas de accesibilidad del sector cada vez que cambia, y una versión solo se publica cuando todas las comprobaciones pasan, de modo que la accesibilidad que ves aquí se mantiene a medida que la biblioteca evoluciona.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Referencia y demos en vivo del componente ${name}.`,
+      metaTitle: name => `Componente Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Componente Angular ${name}: demo en vivo, referencia de API y tematización con variables CSS.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Componente no encontrado',
       notFoundBody: 'Elige un componente de la barra lateral, o',
@@ -488,7 +491,7 @@ export const esES: WebMessages = {
         states: 'estados',
         disabled: 'deshabilitado',
         dismissible: 'descartable',
-        clearable: 'borrable',
+        clearable: 'con botón de borrado',
         hintAndError: 'pista y error',
         withHint: 'con pista',
         withError: 'con error',
@@ -621,7 +624,7 @@ export const esES: WebMessages = {
           infoText: 'Hay una nueva versión disponible',
           dismissibleText: 'Esta alerta se puede cerrar',
           tooltipSuppressed:
-            'Las descripciones emergentes se suprimen en dispositivos táctiles para evitar el comportamiento de hover persistente. Visita esta sección en un dispositivo con ratón para ver las demos en acción.',
+            'Los tooltips se suprimen en dispositivos táctiles para evitar el comportamiento de hover persistente. Visita esta sección en un dispositivo con ratón para ver las demos en acción.',
         },
         autocomplete: {
           startTyping: 'Empieza a escribir…',
@@ -921,13 +924,13 @@ export const esES: WebMessages = {
           templateTriggerLabel: '(pasa el cursor para un tooltip con plantilla)',
           templateTipStatus: 'En línea ahora',
           topLabel: 'Arriba',
-          topTooltip: 'Descripción arriba',
+          topTooltip: 'Tooltip arriba',
           bottomLabel: 'Abajo',
-          bottomTooltip: 'Descripción abajo',
+          bottomTooltip: 'Tooltip abajo',
           leftLabel: 'Izquierda',
-          leftTooltip: 'Descripción izquierda',
+          leftTooltip: 'Tooltip a la izquierda',
           rightLabel: 'Derecha',
-          rightTooltip: 'Descripción derecha',
+          rightTooltip: 'Tooltip a la derecha',
         },
         transferList: {
           sourceLabel: 'Disponibles',
@@ -1079,7 +1082,7 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             format: 'Formato',
             showAlpha: 'Mostrar alfa',
-            clearable: 'Borrable',
+            clearable: 'Con botón de borrado',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
@@ -1186,7 +1189,7 @@ export const esES: WebMessages = {
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             resize: 'Redimensionar',
-            maxlength: 'Longitud máxima (chars)',
+            maxlength: 'Longitud máxima (caracteres)',
             minHeight: 'Altura mínima (px)',
             maxHeight: 'Altura máxima (px)',
             disabled: 'Deshabilitado',
@@ -1665,9 +1668,8 @@ export const esES: WebMessages = {
             maxWidth:
               'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px).',
             eaTooltip:
-              'Contenido de la descripción emergente mostrada al pasar el cursor y al enfocar con el teclado. Acepta una cadena de texto o un TemplateRef para contenido con estilos.',
-            tooltipPosition:
-              'Posición de la descripción emergente respecto a su elemento anfitrión.',
+              'Contenido del tooltip mostrado al pasar el cursor y al enfocar con el teclado. Acepta una cadena de texto o un TemplateRef para contenido con estilos.',
+            tooltipPosition: 'Posición del tooltip respecto a su elemento anfitrión.',
           },
           'time-picker': {
             disabled: 'Deshabilita el selector.',
@@ -1724,7 +1726,7 @@ export const esES: WebMessages = {
           autocomplete: {
             disabled: 'Deshabilita el campo.',
             emptyMessage:
-              'Mensaje mostrado en la lista cuando ninguna opción coincide con la entrada actual, con reserva en la traducción de la configuración regional activa si se omite.',
+              'Mensaje mostrado en la lista cuando ninguna opción coincide con la entrada actual; si se omite, se usa la traducción del idioma activo.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
@@ -1754,7 +1756,7 @@ export const esES: WebMessages = {
           },
           'command-palette': {
             emptyMessage:
-              'Mensaje mostrado cuando la consulta de búsqueda no coincide con ningún elemento, con reserva en la traducción de la configuración regional activa si se omite.',
+              'Mensaje mostrado cuando la consulta de búsqueda no coincide con ningún elemento; si se omite, se usa la traducción del idioma activo.',
             items:
               'Lista completa de elementos de comando disponibles para buscar y ejecutar.',
             open: 'Indica si el cuadro de diálogo de la paleta está abierto, vinculable en dos sentidos mediante [(open)].',
@@ -2029,7 +2031,7 @@ export const esES: WebMessages = {
               'Preajuste de densidad vertical que controla el relleno de las filas y las celdas de encabezado.',
             hoverable: 'Resalta la fila bajo el puntero al pasar el cursor.',
             noDataText:
-              'Texto mostrado en el estado vacío, con repercusión en la traducción de la configuración regional activa.',
+              'Texto mostrado en el estado vacío; si se omite, se usa la traducción del idioma activo.',
             sort: 'Estado de orden actual (clave de columna y dirección), vinculable en dos sentidos mediante [(sort)].',
             stickyHeader:
               'Fija la fila de encabezado en la parte superior de la tabla cuando el contenido se desplaza.',

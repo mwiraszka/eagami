@@ -1,3 +1,5 @@
+@use 'mixins' as mixins;
+
 // min-width:0 lets the snippet shrink inside a flex/grid parent so a wide line
 // scrolls inside __code (overflow-x) instead of stretching the whole layout.
 // The copy button is positioned to this non-scrolling box, so it stays pinned
@@ -37,21 +39,13 @@
 }
 
 .code-snippet__copy {
+  @include mixins.icon-button(32px, 16px);
+  // Floats over the code block, so it keeps a bordered opaque box for contrast
   position: absolute;
   top: 8px;
   right: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
   border: 1px solid var(--color-border-default);
-  border-radius: 6px;
-  font-size: 16px;
   background-color: var(--color-bg-base);
-  color: var(--color-text-secondary);
-  cursor: pointer;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease,

@@ -7,7 +7,8 @@ export const is: WebMessages = {
     navUi: 'UI',
     navUiTooltip: 'Skjölun fyrir einingasafn',
     themeToggleTooltip: 'Skipta um þema',
-    themeToggleLabel: next => `Skipta yfir í ${next} ham`,
+    themeToggleLabel: next =>
+      `Skipta yfir í ${next === 'light' ? 'ljósan' : 'dökkan'} ham`,
     localeMenuLabel: 'Tungumál',
     localeMenuTooltip: 'Breyta tungumáli',
     activeLocale: label => `Núverandi tungumál: ${label}`,
@@ -28,7 +29,8 @@ export const is: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Glæsileg vefhönnun',
+    metaDescription:
+      'Glæsileg vefhönnun og heimili Eagami UI: létt, aðgengilegt Angular einingasafn.',
     hero: {
       tagline: 'glæsileg vefhönnun.',
       ctaPrimary: 'Hafa samband',
@@ -43,7 +45,7 @@ export const is: WebMessages = {
         before: 'Stærri verkefni má byggja á',
         link: 'Eagami UI',
         after:
-          ', sérsmíðuðu einingasafni og hönnunarkerfi, fyrir samræmt og nútímalegt sjónrænt yfirbragð á öllum vefnum.',
+          ', sérsmíðuðu einingasafni, fyrir samræmt og nútímalegt sjónrænt yfirbragð á öllum vefnum.',
       },
       core: [
         {
@@ -120,7 +122,7 @@ export const is: WebMessages = {
         },
         {
           title: 'CIRC Aesthetics',
-          description: 'Snyrtileg inngripsröntgenstofa með aðsetur í London, ON.',
+          description: 'Stofa í fegrunar-inngripsröntgenfræði með aðsetur í London, ON.',
           url: 'https://circaesthetics.ca',
           display: 'circaesthetics.ca',
           logo: 'assets/projects/circaesthetics.svg',
@@ -186,7 +188,7 @@ export const is: WebMessages = {
       components: 'Einingar',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Angular-einingasafn',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
       title: 'Eagami UI',
@@ -264,7 +266,7 @@ export const is: WebMessages = {
       theme: {
         heading: 'Gerðu það að þínu',
         ledeBefore: '',
-        ledeLink: 'Hönnunartókn',
+        ledeLink: 'Hönnunartóknar',
         ledeAfter:
           ' eru það sem gefur hverju Eagami-verkefni sérstakan persónuleika: aðlaganlegir litir, letur, bil, horn, skuggar og hreyfing, allt notað á heilu vefsíðuna eða forritið. Breyttu nokkrum hér að neðan til að sjá hvernig þau hafa áhrif á einingarnar.',
         brandColor: 'Vörumerkjalitur',
@@ -301,7 +303,7 @@ export const is: WebMessages = {
       tokensLink: 'Hönnunartóknar sem JSON',
     },
     themeBuilder: {
-      metaTitle: 'Þemasmiður | Eagami UI',
+      metaTitle: 'Angular-þemasmiður | Eagami UI',
       metaDescription:
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
@@ -353,7 +355,7 @@ export const is: WebMessages = {
       paletteOverrides:
         'Festu ákveðna tóna eða endurúthlutaðu hvaða útleiddi tónn liggur að baki hverju merkingarhlutverki:',
       paletteContrast:
-        'Hver vörumerkjahlutverkspörun (texti á yfirborði, yfirborð á striga) er athuguð gagnvart WCAG 2.1 AA við ræsingu. Samsetning sem stenst ekki kastar villu áður en forritið hleðst, svo birtuskilavilla í vörumerkjalit næst við ræsingu frekar en í framleiðslu.',
+        'Hver vörumerkjahlutverkspörun (texti á yfirborði, yfirborð á striga) er athuguð gagnvart WCAG 2.2 AA við ræsingu. Samsetning sem stenst ekki kastar villu áður en forritið hleðst, svo birtuskilavilla í vörumerkjalit næst við ræsingu frekar en í framleiðslu.',
       paletteBuilderIntro: 'Búðu til og forskoðaðu litatöfluna þína sjónrænt í',
       paletteBuilderLink: 'þemasmiðnum',
       elevationDrop: 'Slagskuggar',
@@ -377,7 +379,7 @@ export const is: WebMessages = {
       motionEasings: 'Mýkingar',
     },
     icons: {
-      metaTitle: 'Táknmyndir | Eagami UI',
+      metaTitle: 'Angular-táknmyndir | Eagami UI',
       metaDescription: 'Táknmyndasett sem fylgir @eagami/ui.',
       title: 'Táknmyndir',
       lede: 'Sjálfstæðar Angular einingar sem erfa lit sinn og kvarðast með <code>font-size</code>, svo þær birtast í hvaða stærð sem er. Flestar eru leiddar af <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> eftir <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> undir <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT leyfinu</span></a>; afgangurinn eru frumlegar Eagami UI táknmyndir. Einnig má teikna Feather táknmyndir með þynnri eða þykkari strikum. Smelltu á táknmynd til að afrita veljara hennar.',
@@ -400,7 +402,7 @@ export const is: WebMessages = {
     i18n: {
       metaTitle: 'Alþjóðavæðing | Eagami UI',
       metaDescription:
-        'Innbyggður einingatexti á 15 svæðum, með skiptingu á keyrslutíma og yfirskriftum fyrir einstakar strengi.',
+        'Innbyggður einingatexti á 15 svæðum, með skiptingu á keyrslutíma og yfirskriftum fyrir einstaka strengi.',
       title: 'Alþjóðavæðing',
       lede: 'Hver innbyggður strengur (ARIA merkimiðar, staðgenglar, tóm ástönd, stýringar dagsetningarvelju) fylgir á 15 svæðum. Stilltu eitt fyrir allt forritið, skiptu á keyrslutíma eða yfirskrifaðu einstaka strengi.',
       supportedHeading: 'Studd svæði',
@@ -441,7 +443,7 @@ export const is: WebMessages = {
       builtInItems: [
         {
           title: 'Merkingarfræði',
-          body: 'Innbyggð stök þar sem hægt er, skýr ARIA hlutverk, ástönd og eiginleikar annars staðar. Ástönd eins og útbreitt, valið, hakað, ógilt og upptekið eru alltaf aðgengileg forritunarlega, aldrei aðeins í gegnum stíla.',
+          body: 'Innbyggð stök þar sem hægt er, skýr ARIA hlutverk, ástönd og eiginleikar annars staðar. Ástönd eins og expanded, selected, checked, invalid og busy eru alltaf aðgengileg forritunarlega, aldrei aðeins í gegnum stíla.',
         },
         {
           title: 'Lyklaborðsstuðningur',
@@ -474,8 +476,9 @@ export const is: WebMessages = {
         'Hver eining er athuguð samkvæmt viðurkenndum aðgengisreglum í hvert sinn sem hún breytist, og útgáfa fer aðeins út þegar allar athuganir standast, svo aðgengið sem þú sérð hér helst þegar safnið þróast.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Tilvísun fyrir ${name} einingu og lifandi sýnishorn.`,
+      metaTitle: name => `Angular-eining ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Angular-eining ${name}: lifandi sýnishorn, API-tilvísun og þemun með CSS-breytum.`,
       demoHeading: 'Sýnishorn',
       notFoundTitle: 'Eining fannst ekki',
       notFoundBody: 'Veldu einingu úr hliðarstikunni, eða',
@@ -1035,7 +1038,7 @@ export const is: WebMessages = {
             shape: 'Lögun',
             src: 'Uppspretta myndar',
             initials: 'Upphafsstafir',
-            alt: 'Hjálpartexti',
+            alt: 'Staðgengilstexti',
           },
           badge: {
             variant: 'Afbrigði',
@@ -1180,7 +1183,7 @@ export const is: WebMessages = {
             size: 'Stærð',
             removable: 'Fjarlægjanlegt',
             disabled: 'Óvirkt',
-            removeLabel: 'Fjarlægja merkimiða',
+            removeLabel: 'Merkimiði fyrir fjarlægingarhnapp',
           },
           textarea: {
             label: 'Merkimiði',
@@ -1286,7 +1289,7 @@ export const is: WebMessages = {
           },
           avatar: {
             src: 'Mynd-URL til að birta; fellur aftur á upphafsstafi, svo almenna notendatáknmynd.',
-            alt: 'Hjálpartexti fyrir notandamyndina.',
+            alt: 'Staðgengilstexti fyrir notandamyndina.',
             initials: 'Upphafsstafir sýndir þegar engin myndauppspretta er gefin.',
             size: 'Þvermálsforstilling fyrir notandamyndina.',
             shape: 'Útlína notandamyndarinnar: hringur eða rúnnaður ferningur.',
