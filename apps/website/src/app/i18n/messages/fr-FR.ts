@@ -14,7 +14,7 @@ export const frFR: WebMessages = {
     themeToggleLabel: next => `Passer en mode ${next === 'light' ? 'clair' : 'sombre'}`,
     localeMenuLabel: 'Langue',
     localeMenuTooltip: 'Changer de langue',
-    activeLocale: label => `Langue actuelle : ${label}`,
+    activeLocale: label => `Langue actuelle : ${label}`,
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Tous droits réservés.',
@@ -32,7 +32,8 @@ export const frFR: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Conception web élégante',
+    metaDescription:
+      'Conception web élégante, et maison d’Eagami UI : une bibliothèque de composants Angular légère et accessible.',
     hero: {
       tagline: 'conception web élégante.',
       ctaPrimary: 'Prendre contact',
@@ -47,13 +48,13 @@ export const frFR: WebMessages = {
         before: 'Les projets de grande envergure peuvent s’appuyer sur',
         link: 'Eagami UI',
         after:
-          ', une bibliothèque de composants et un système de design sur mesure, pour un langage visuel cohérent et moderne sur tout le site.',
+          ', une bibliothèque de composants sur mesure, pour un langage visuel cohérent et moderne sur tout le site.',
       },
       core: [
         {
           title: 'Sites web sur mesure',
           description:
-            'Un site complet conçu de zéro : configuration du domaine, hébergement, identité visuelle, design et mise en ligne. Révisions illimitées jusqu’au lancement.',
+            'Un site complet conçu de zéro : configuration du domaine, hébergement, identité visuelle, design et mise en ligne. Révisions illimitées jusqu’au lancement.',
         },
         {
           title: 'Maintenance continue',
@@ -119,7 +120,7 @@ export const frFR: WebMessages = {
         {
           title: 'Chordbomb',
           description:
-            "Identifie la chanson qui joue autour de vous et en déduit la progression d'accords.",
+            'Identifie la chanson qui joue autour de vous et en déduit la progression d’accords.',
           url: 'https://chordbomb.com',
           display: 'chordbomb.com',
           logo: 'assets/projects/chordbomb.svg',
@@ -195,7 +196,7 @@ export const frFR: WebMessages = {
       components: 'Composants',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Bibliothèque de composants Angular',
       metaDescription:
         'Bibliothèque de composants Angular légère et accessible, construite sur des propriétés CSS personnalisées.',
       title: 'Eagami UI',
@@ -226,7 +227,7 @@ export const frFR: WebMessages = {
         },
         {
           title: 'Sans verrouillage',
-          body: 'Chaque composant est du simple Angular et CSS, sans dépendance propriétaire : la source peut être lue, copiée ou modifiée comme tout autre code de votre projet.',
+          body: 'Chaque composant est du simple Angular et CSS, sans dépendance propriétaire : la source peut être lue, copiée ou modifiée comme tout autre code de votre projet.',
         },
       ],
       getStartedHeading: 'Commencer',
@@ -270,9 +271,9 @@ export const frFR: WebMessages = {
       theme: {
         heading: 'Personnalisez-le',
         ledeBefore: 'Les',
-        ledeLink: 'jetons de conception',
+        ledeLink: 'tokens de design',
         ledeAfter:
-          ' sont ce qui donne à chaque projet Eagami une personnalité distincte : couleurs, polices, espacements, coins, ombres et mouvements personnalisables, le tout appliqué au site ou à l’application entière. Modifiez-en quelques-uns ci-dessous pour voir comment ils influencent les composants.',
+          ' sont ce qui donne à chaque projet Eagami une personnalité distincte : couleurs, polices, espacements, coins, ombres et mouvements personnalisables, le tout appliqué au site ou à l’application entière. Modifiez-en quelques-uns ci-dessous pour voir comment ils influencent les composants.',
         brandColor: 'Couleur de marque',
         radius: 'Rayon des coins',
         font: 'Police',
@@ -308,7 +309,7 @@ export const frFR: WebMessages = {
       tokensLink: 'Tokens de design en JSON',
     },
     themeBuilder: {
-      metaTitle: 'Générateur de thème | Eagami UI',
+      metaTitle: 'Générateur de thème Angular | Eagami UI',
       metaDescription:
         'Générez une palette vérifiée WCAG pour les modes clair et sombre à partir des couleurs de votre marque, puis copiez la configuration du fournisseur ou le CSS.',
       title: 'Générateur de thème',
@@ -319,7 +320,7 @@ export const frFR: WebMessages = {
       contrastHeading: 'Accessibilité',
       contrastPass: 'Respecte le contraste WCAG 2.2 AA en mode clair et sombre',
       contrastFailIntro:
-        'Certaines associations n’atteignent pas le seuil de contraste WCAG AA :',
+        'Certaines associations n’atteignent pas le seuil de contraste WCAG AA :',
       scaleHeading: 'Échelle générée',
       previewHeading: 'Aperçu',
       previewHint:
@@ -331,7 +332,7 @@ export const frFR: WebMessages = {
       previewStep1: 'Compte',
       previewStep2: 'Profil',
       previewStep3: 'Terminé',
-      previewProgress: 'Progression :',
+      previewProgress: 'Progression :',
       exportHeading: 'Utilisez-la',
       exportConfigLabel: 'Configuration du fournisseur',
       exportCssLabel: 'Propriétés personnalisées CSS',
@@ -341,7 +342,7 @@ export const frFR: WebMessages = {
       metaDescription:
         'Propriétés CSS personnalisées pour les couleurs, la typographie, l’espacement, l’élévation, la forme et le mouvement.',
       title: 'Tokens de design',
-      lede: 'Les propriétés CSS personnalisées qui pilotent chaque composant de la bibliothèque : couleurs, typographie, espacement, élévation, forme et mouvement. Référencez ces tokens dans vos propres styles via <code>var(--token-name)</code> pour conserver une cohérence visuelle sur toute l’application.',
+      lede: 'Les propriétés CSS personnalisées qui pilotent chaque composant de la bibliothèque : couleurs, typographie, espacement, élévation, forme et mouvement. Référencez ces tokens dans vos propres styles via <code>var(--token-name)</code> pour conserver une cohérence visuelle sur toute l’application.',
       sections: {
         theming: 'Thèmes',
         palette: 'Palette de marque',
@@ -357,17 +358,17 @@ export const frFR: WebMessages = {
       themingScopedBefore:
         'Ou limitez les remplacements à des composants individuels là où c’est utile :',
       paletteIntro:
-        'Passez un seul hex de marque à <code>provideEagamiUi()</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
+        'Passez un seul hex de marque à <code>provideEagamiUi()</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
       paletteOverrides:
-        'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
+        'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
       paletteContrast:
-        'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.1 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
+        'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.2 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
       paletteBuilderIntro: 'Composez et prévisualisez votre palette visuellement dans le',
       paletteBuilderLink: 'générateur de thème',
       elevationDrop: 'Ombres portées',
       elevationRelief: 'Relief et creux',
       elevationReliefBefore:
-        '<code>--shadow-bevel</code> associe un reflet intérieur (haut) à une ombre intérieure (bas) pour les surfaces qui doivent paraître surélevées. <code>--shadow-well</code> inverse l’éclairage pour un effet en creux. Combinez avec <code>--shadow-*</code> pour ajouter une ombre portée : <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
+        '<code>--shadow-bevel</code> associe un reflet intérieur (haut) à une ombre intérieure (bas) pour les surfaces qui doivent paraître surélevées. <code>--shadow-well</code> inverse l’éclairage pour un effet en creux. Combinez avec <code>--shadow-*</code> pour ajouter une ombre portée : <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
       colorsPrimary: 'Primaire',
       colorsSecondary: 'Secondaire',
       colorsNeutral: 'Neutre',
@@ -378,17 +379,17 @@ export const frFR: WebMessages = {
       typographyWeights: 'Graisses',
       typographyComposites: 'Styles composites',
       typographyCompositesBefore:
-        'Les tokens composites regroupent une taille, une graisse, une hauteur de ligne (et parfois une famille) pour un rôle précis. <code>--text-section-heading-*</code> est le premier composite qui fixe une famille ; utilisez-le pour les titres <code>&lt;h2&gt;</code> de sous-section sur les pages de docs et marketing.',
+        'Les tokens composites regroupent une taille, une graisse, une hauteur de ligne (et parfois une famille) pour un rôle précis. <code>--text-section-heading-*</code> est le premier composite qui fixe une famille ; utilisez-le pour les titres <code>&lt;h2&gt;</code> de sous-section sur les pages de docs et marketing.',
       typographySectionHeadingSample: 'Titre de section voix de marque',
       motionSimulate: 'Simuler',
       motionDurations: 'Durées',
       motionEasings: 'Courbes',
     },
     icons: {
-      metaTitle: 'Icônes | Eagami UI',
+      metaTitle: 'Icônes Angular | Eagami UI',
       metaDescription: 'Jeu d’icônes intégré à @eagami/ui.',
       title: 'Icônes',
-      lede: 'Composants Angular autonomes qui héritent de leur couleur et s’adaptent à <code>font-size</code>, pour un rendu à toute taille. La plupart sont dérivées de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sous la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licence MIT</span></a> ; les autres sont des icônes originales d’Eagami UI. Les icônes Feather peuvent aussi être dessinées avec des traits plus fins ou plus épais. Cliquez sur une icône pour copier son sélecteur.',
+      lede: 'Composants Angular autonomes qui héritent de leur couleur et s’adaptent à <code>font-size</code>, pour un rendu à toute taille. La plupart sont dérivées de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sous la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licence MIT</span></a> ; les autres sont des icônes originales d’Eagami UI. Les icônes Feather peuvent aussi être dessinées avec des traits plus fins ou plus épais. Cliquez sur une icône pour copier son sélecteur.',
       filterLabel: 'Filtrer les icônes',
       filterPlaceholder: 'Rechercher des icônes',
       filterClearLabel: 'Effacer la recherche',
@@ -398,12 +399,12 @@ export const frFR: WebMessages = {
       countAll: count => `${count} icônes`,
       countFiltered: (shown, total) => `${shown} icônes sur ${total}`,
       noResults: 'Aucune icône ne correspond à votre recherche',
-      copiedToast: selector => `« ${selector} » copié dans le presse-papiers`,
+      copiedToast: selector => `« ${selector} » copié dans le presse-papiers`,
       copyFailedToast: selector =>
-        `Impossible de copier « ${selector} » dans le presse-papiers`,
+        `Impossible de copier « ${selector} » dans le presse-papiers`,
       brandTitle: 'Icônes de marques',
       brandIntro:
-        'Les icônes de marques ci-dessous représentent des marques tierces et sont fournies uniquement pour un usage nominatif, c’est-à-dire pour identifier la marque qu’elles représentent dans une interface (un bouton « Se connecter avec Google », un lien « Partager sur Facebook », etc.). Elles ne sont pas concédées sous licence pour un usage décoratif général. Les consommateurs sont responsables du respect des directives de chaque marque :',
+        'Les icônes de marques ci-dessous représentent des marques tierces et sont fournies uniquement pour un usage nominatif, c’est-à-dire pour identifier la marque qu’elles représentent dans une interface (un bouton « Se connecter avec Google », un lien « Partager sur Facebook », etc.). Elles ne sont pas concédées sous licence pour un usage décoratif général. Les consommateurs sont responsables du respect des directives de chaque marque :',
       brandLinkLabel: 'Ressources de marque',
     },
     i18n: {
@@ -417,10 +418,10 @@ export const frFR: WebMessages = {
         'Les langues inconnues reviennent à l’anglais, tout comme les clés manquantes dans un remplacement partiel.',
       quickSetupHeading: 'Mise en place rapide',
       quickSetupBefore:
-        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',
+        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',
       lazyHeading: 'Chargement différé',
       lazyBefore:
-        'Enregistrez <code>localeLoaders</code> au lieu de <code>locales</code> : une langue est téléchargée à sa première activation et reste hors du bundle initial. Faites pointer chaque loader vers un module qui réexporte un seul paquet de langue, et préchargez avec <code>loadLocale()</code> pour un changement instantané.',
+        'Enregistrez <code>localeLoaders</code> au lieu de <code>locales</code> : une langue est téléchargée à sa première activation et reste hors du bundle initial. Faites pointer chaque loader vers un module qui réexporte un seul paquet de langue, et préchargez avec <code>loadLocale()</code> pour un changement instantané.',
       liveDemoHeading: 'Démo en direct',
       liveDemoIntro:
         'Choisissez une langue et observez les composants ci-dessous reprendre les chaînes et le formatage des dates correspondants.',
@@ -434,7 +435,7 @@ export const frFR: WebMessages = {
         'La plupart des composants exposent aussi des entrées de message individuelles (par ex. <code>placeholder</code> sur <code>&lt;ea-dropdown&gt;</code>) pour des remplacements ponctuels sur place.',
       frenchSpacingHeading: 'Aide à l’espacement français',
       frenchSpacingBody:
-        'La typographie française attend une espace fine insécable avant <code>? ! : ; »</code> et après <code>«</code>. L’assistant <code>frenchSpacing()</code> exporté convertit les espaces ordinaires dans vos propres chaînes françaises (la bibliothèque gère ses messages français intégrés en interne).',
+        'La typographie française attend une espace fine insécable avant <code>? ! : ; »</code> et après <code>«</code>. L’assistant <code>frenchSpacing()</code> exporté convertit les espaces ordinaires dans vos propres chaînes françaises (la bibliothèque gère ses messages français intégrés en interne).',
       demoLocaleLabel: 'Langue',
     },
     accessibility: {
@@ -450,7 +451,7 @@ export const frFR: WebMessages = {
       builtInItems: [
         {
           title: 'Sémantique',
-          body: 'Des éléments natifs lorsque c’est possible, des rôles, états et propriétés ARIA explicites sinon. Les états comme développé, sélectionné, coché, invalide et occupé sont toujours exposés programmatiquement, jamais par le seul style.',
+          body: 'Des éléments natifs lorsque c’est possible, des rôles, états et propriétés ARIA explicites sinon. Les états comme expanded, selected, checked, invalid et busy sont toujours exposés programmatiquement, jamais par le seul style.',
         },
         {
           title: 'Prise en charge du clavier',
@@ -483,8 +484,9 @@ export const frFR: WebMessages = {
         'Chaque composant est vérifié selon les règles d’accessibilité du secteur à chaque modification, et une version n’est publiée que lorsque toutes les vérifications passent, de sorte que l’accessibilité que vous voyez ici se maintient à mesure que la bibliothèque évolue.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Référence et démos en direct du composant ${name}.`,
+      metaTitle: name => `Composant Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Composant Angular ${name} : démo en direct, référence API et thématisation avec des variables CSS.`,
       demoHeading: 'Démo',
       notFoundTitle: 'Composant introuvable',
       notFoundBody: 'Choisissez un composant dans la barre latérale, ou',
@@ -554,7 +556,7 @@ export const frFR: WebMessages = {
         iconTrigger: 'déclencheur icône',
         placements: 'positions',
         canvasSizes: 'tailles de canevas',
-        cappedChipCount: 'nombre de jetons plafonné',
+        cappedChipCount: 'nombre de chips plafonné',
         customIcon: 'icône personnalisée',
         customIconAndColor: 'icône et couleur personnalisées',
         customLabel: 'libellé personnalisé',
@@ -612,7 +614,7 @@ export const frFR: WebMessages = {
             'Lancez pnpm add @eagami/ui, puis ajoutez la feuille de style globale à votre angular.json.',
           themeLabel: 'Puis-je personnaliser le thème ?',
           themeBody:
-            'Oui, remplacez n’importe quelle propriété CSS personnalisée sur :root ou limitez les remplacements à des composants individuels.',
+            'Oui, remplacez n’importe quelle propriété CSS personnalisée sur :root ou limitez les remplacements à des composants individuels.',
           sectionOneLabel: 'Section un',
           sectionOneBody:
             'Plusieurs sections peuvent être ouvertes en même temps en mode multiple.',
@@ -654,7 +656,7 @@ export const frFR: WebMessages = {
           danger: 'Danger',
           toggleLoading: 'Basculer le chargement',
           fullWidth: 'Pleine largeur',
-          clickedToast: 'Bouton pressé !',
+          clickedToast: 'Bouton pressé !',
         },
         card: {
           elevatedHeader: 'Surélevé',
@@ -851,7 +853,7 @@ export const frFR: WebMessages = {
           withHintHint: 'Cliquez sur une étoile pour définir la note',
           withErrorText: 'Une note est requise',
           numberOfStarsLabel: 'Évaluez',
-          customIconLabel: 'À quel point vous l’aimez ?',
+          customIconLabel: 'À quel point vous l’aimez ?',
         },
         segmented: {
           viewLabel: 'Vue',
@@ -970,9 +972,9 @@ export const frFR: WebMessages = {
           undo: 'Annuler',
           toggleTheme: 'Basculer le thème',
           toggleThemeDescription: 'Passer entre le mode clair et le mode sombre',
-          lockWorkspace: "Verrouiller l'espace de travail",
+          lockWorkspace: 'Verrouiller l’espace de travail',
           lockWorkspaceDescription: 'Désactivé pour le moment, fonctionnalité en bêta',
-          executedToast: label => `Exécuté : ${label}`,
+          executedToast: label => `Exécuté : ${label}`,
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar mis à jour',
@@ -991,7 +993,7 @@ export const frFR: WebMessages = {
         colDefault: 'Défaut',
         colDescription: 'Description',
         errorMessagesDescription:
-          "Remplace le message de validation par clé d'erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.",
+          'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.',
         ariaLabelDescription:
           'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
         triggerErrorLabel: 'Déclencher l’erreur',
@@ -1001,7 +1003,7 @@ export const frFR: WebMessages = {
         knobLabels: {
           timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           tooltip: {
-            eaTooltip: "Contenu de l'infobulle",
+            eaTooltip: 'Contenu de l’infobulle',
           },
           input: {
             label: 'Libellé',
@@ -1197,7 +1199,7 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif',
             size: 'Taille',
             resize: 'Redimensionnement',
-            maxlength: 'Longueur maximale (chars)',
+            maxlength: 'Longueur maximale (caractères)',
             minHeight: 'Hauteur minimale (px)',
             maxHeight: 'Hauteur maximale (px)',
             disabled: 'Désactivé',
@@ -1212,7 +1214,7 @@ export const frFR: WebMessages = {
             items: 'Les événements à afficher, dans l’ordre.',
             orientation: 'Sens dans lequel la frise chronologique se déroule.',
             align:
-              'Placement du contenu par rapport à la ligne ; alternate ne s’applique qu’aux frises verticales.',
+              'Placement du contenu par rapport à la ligne ; alternate ne s’applique qu’aux frises verticales.',
             size: 'Taille visuelle de la frise chronologique.',
           },
           toast: {
@@ -1247,19 +1249,19 @@ export const frFR: WebMessages = {
             togglePasswordVisibility:
               'Bascule l’affichage du mot de passe pour les champs type="password".',
             icon: 'Composant d’icône de tête affiché avant le texte.',
-            max: 'Valeur maximale pour type="number" ; la valeur y est bornée à la perte de focus.',
+            max: 'Valeur maximale pour type="number" ; la valeur y est bornée à la perte de focus.',
             maxLength:
-              'Nombre maximal de caractères ; appliqué pour type="number" où le maxlength natif est ignoré.',
-            min: 'Valeur minimale pour type="number" ; la valeur y est bornée à la perte de focus.',
+              'Nombre maximal de caractères ; appliqué pour type="number" où le maxlength natif est ignoré.',
+            min: 'Valeur minimale pour type="number" ; la valeur y est bornée à la perte de focus.',
             minLength:
-              "Nombre minimal de caractères, transmis en tant qu'attribut natif minlength.",
+              'Nombre minimal de caractères, transmis en tant qu’attribut natif minlength.',
             step: 'Incrément de pas pour les champs type="number".',
             clampToBounds:
-              "Borne une valeur numérique dans la plage min/max configurée une fois l'édition terminée.",
+              'Borne une valeur numérique dans la plage min/max configurée une fois l’édition terminée.',
           },
           'number-input': {
             allowNegative:
-              'Si les valeurs négatives sont autorisées ; avec false, la valeur ne descend pas sous 0.',
+              'Si les valeurs négatives sont autorisées ; avec false, la valeur ne descend pas sous 0.',
             label: 'Libellé affiché au-dessus du champ.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             size: 'Taille visuelle du champ.',
@@ -1269,19 +1271,19 @@ export const frFR: WebMessages = {
             disabled: 'Désactive le champ.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
-            min: 'Valeur minimale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
-            max: 'Valeur maximale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
+            min: 'Valeur minimale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
+            max: 'Valeur maximale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
             step: 'Quantité ajoutée ou soustraite à chaque pas (touche fléchée ou bouton pas à pas).',
             id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
             value:
-              'Valeur actuelle du champ ; null quand vide, liable en deux sens via [(value)].',
+              'Valeur actuelle du champ ; null quand vide, liable en deux sens via [(value)].',
             changed: 'Émis avec la nouvelle valeur à chaque changement.',
             focused: 'Émis lorsque le champ reçoit le focus.',
             blurred: 'Émis lorsque le champ perd le focus.',
             focus: 'Place le focus clavier sur le champ natif sous-jacent.',
           },
           accordion: {
-            size: "Taille visuelle de l'accordéon ; chaque élément en hérite.",
+            size: 'Taille visuelle de l’accordéon ; chaque élément en hérite.',
             multi: 'Permet de garder plusieurs éléments ouverts à la fois.',
             headingLevel:
               'Niveau de titre (1-6) appliqué à chaque en-tête d’élément, pour que l’accordéon s’insère dans le plan de la page.',
@@ -1300,11 +1302,11 @@ export const frFR: WebMessages = {
             icon: 'Remplace l’icône de statut par défaut de la variante par n’importe quel composant d’icône.',
           },
           avatar: {
-            src: 'URL de l’image à afficher ; bascule sur les initiales, puis sur une icône d’utilisateur générique.',
+            src: 'URL de l’image à afficher ; bascule sur les initiales, puis sur une icône d’utilisateur générique.',
             alt: 'Texte alternatif de l’image de l’avatar.',
             initials: 'Initiales affichées lorsqu’aucune source d’image n’est fournie.',
             size: 'Préréglage de diamètre de l’avatar.',
-            shape: 'Contour de l’avatar : rond ou carré arrondi.',
+            shape: 'Contour de l’avatar : rond ou carré arrondi.',
           },
           badge: {
             variant: 'Schéma de couleurs sémantique du badge.',
@@ -1326,7 +1328,7 @@ export const frFR: WebMessages = {
               'Valeur de l’attribut natif aria-current, marquant le bouton comme l’élément actuel d’un ensemble.',
             clicked:
               'Émis lorsque le bouton est activé, supprimé lorsqu’il est désactivé ou en chargement.',
-            icon: "Composant d'icône optionnel rendu à gauche du libellé.",
+            icon: 'Composant d’icône optionnel rendu à gauche du libellé.',
           },
           card: {
             variant: 'Style visuel de la surface de la carte.',
@@ -1370,7 +1372,7 @@ export const frFR: WebMessages = {
             focus:
               'Place le focus clavier sur le prochain chiffre vide (ou le dernier lorsque tout est rempli).',
             allowAllChars:
-              'Autorise tout caractère non blanc ; sinon, seuls les chiffres sont acceptés.',
+              'Autorise tout caractère non blanc ; sinon, seuls les chiffres sont acceptés.',
           },
           'color-picker': {
             disabled: 'Désactive le champ.',
@@ -1383,7 +1385,7 @@ export const frFR: WebMessages = {
             placeholder:
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune couleur n’est sélectionnée.',
             presets:
-              'Échantillons prédéfinis affichés au bas de la popover ; passez un tableau vide pour les masquer.',
+              'Échantillons prédéfinis affichés au bas de la popover ; passez un tableau vide pour les masquer.',
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
             required: 'Marque le champ comme requis.',
@@ -1409,12 +1411,12 @@ export const frFR: WebMessages = {
           },
           'eagami-wordmark': {
             variant:
-              'Variante de contenu : default est le logotype seul, byline ajoute la mention de conception, tagline ajoute la signature.',
+              'Variante de contenu : default est le logotype seul, byline ajoute la mention de conception, tagline ajoute la signature.',
             layout:
               'Dispose le logotype empilé sur plusieurs lignes ou en ligne sur une seule ligne.',
-            size: 'Taille de police en px du texte de marque ; le reste du logotype est mis à l’échelle à partir de celle-ci.',
+            size: 'Taille de police en px du texte de marque ; le reste du logotype est mis à l’échelle à partir de celle-ci.',
             linked:
-              "Affiche le logotype sous forme de lien vers eagami.com ; désactivez-le pour l'intégrer dans un lien personnalisé ou un contexte statique.",
+              'Affiche le logotype sous forme de lien vers eagami.com ; désactivez-le pour l’intégrer dans un lien personnalisé ou un contexte statique.',
           },
           'empty-state': {
             title: 'Texte du titre affiché au-dessus de la description.',
@@ -1423,7 +1425,7 @@ export const frFR: WebMessages = {
             headingLevel:
               'Niveau de titre utilisé pour le titre afin qu’il s’intègre au plan du document environnant.',
             bordered: 'Affiche un cadre en pointillés autour du bloc.',
-            icon: "Composant d'icône optionnel rendu dans la zone média au-dessus du titre.",
+            icon: 'Composant d’icône optionnel rendu dans la zone média au-dessus du titre.',
           },
           paginator: {
             groupThousands:
@@ -1492,9 +1494,9 @@ export const frFR: WebMessages = {
             commitThumb:
               'Aligne un curseur sur le pas le plus proche, le borne aux limites et le contraint par le curseur opposé.',
             groupThousands:
-              "Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu'un formatValue personnalisé est fourni.",
+              'Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu’un formatValue personnalisé est fourni.',
             formatDisplay:
-              "Formate une valeur pour l'affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.",
+              'Formate une valeur pour l’affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.',
           },
           rating: {
             allowHalf:
@@ -1530,7 +1532,7 @@ export const frFR: WebMessages = {
             height:
               'Hauteur CSS explicite appliquée au placeholder, revenant à la taille intrinsèque de la forme si omise.',
             variant:
-              'Préréglage de forme du placeholder : ligne de texte, cercle ou rectangle.',
+              'Préréglage de forme du placeholder : ligne de texte, cercle ou rectangle.',
             width:
               'Largeur CSS explicite appliquée au placeholder, revenant à la taille intrinsèque de la forme si omise.',
           },
@@ -1556,9 +1558,9 @@ export const frFR: WebMessages = {
             changed:
               'Émis avec la nouvelle valeur alignée chaque fois que le curseur se déplace.',
             groupThousands:
-              "Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu'un formatValue personnalisé est fourni.",
+              'Regroupe les valeurs affichées avec des séparateurs de milliers, ignoré lorsqu’un formatValue personnalisé est fourni.',
             formatDisplay:
-              "Formate une valeur pour l'affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.",
+              'Formate une valeur pour l’affichage en appliquant le regroupement des milliers, sauf si une fonction formatValue personnalisée est définie.',
           },
           spinner: {
             label:
@@ -1599,9 +1601,9 @@ export const frFR: WebMessages = {
             id: 'id appliqué au textarea natif et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé textuel rendu au-dessus du champ.',
             maxHeight:
-              'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
+              'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
             minHeight:
-              'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
+              'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
             maxlength: 'Nombre maximal de caractères que le champ accepte.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
@@ -1615,104 +1617,104 @@ export const frFR: WebMessages = {
           },
           'avatar-editor': {
             accept:
-              "Types MIME acceptés par le sélecteur de fichiers, transmis à l'entrée native.",
+              'Types MIME acceptés par le sélecteur de fichiers, transmis à l’entrée native.',
             canvasSize: 'Largeur et hauteur en pixels du canevas de recadrage carré.',
             cropState:
-              "État de panoramique/zoom initial à restaurer lors du chargement d'une image source.",
-            currentSrc: "URL de l'image à charger dans l'éditeur à l'initialisation.",
+              'État de panoramique/zoom initial à restaurer lors du chargement d’une image source.',
+            currentSrc: 'URL de l’image à charger dans l’éditeur à l’initialisation.',
             exportQuality:
-              "Qualité JPEG/WebP utilisée lors de l'exportation de l'image recadrée, entre 0 et 1.",
+              'Qualité JPEG/WebP utilisée lors de l’exportation de l’image recadrée, entre 0 et 1.',
             exportType:
-              "Type MIME du blob d'image exporté (par ex. image/png ou image/jpeg).",
+              'Type MIME du blob d’image exporté (par ex. image/png ou image/jpeg).',
             loading:
-              "Affiche un squelette de chargement pendant qu'une ressource externe se charge.",
+              'Affiche un squelette de chargement pendant qu’une ressource externe se charge.',
             maxFileSize:
-              'Taille maximale autorisée en octets ; les fichiers dépassant cette limite émettent errored.',
-            maxZoom: "Facteur de zoom maximal que l'utilisateur peut atteindre.",
-            minZoom: "Facteur de zoom minimal que l'utilisateur peut atteindre.",
+              'Taille maximale autorisée en octets ; les fichiers dépassant cette limite émettent errored.',
+            maxZoom: 'Facteur de zoom maximal que l’utilisateur peut atteindre.',
+            minZoom: 'Facteur de zoom minimal que l’utilisateur peut atteindre.',
             shape:
-              "Forme du masque de recadrage appliquée au canevas et à l'image exportée.",
+              'Forme du masque de recadrage appliquée au canevas et à l’image exportée.',
             cropped:
-              "Émis lorsque l'utilisateur exporte un recadrage, fournissant à la fois un Blob et une URL de données.",
+              'Émis lorsque l’utilisateur exporte un recadrage, fournissant à la fois un Blob et une URL de données.',
             cropStateChanged:
-              "Émis à chaque fois que l'utilisateur déplace ou zoome l'image, utile pour conserver l'état d'édition.",
+              'Émis à chaque fois que l’utilisateur déplace ou zoome l’image, utile pour conserver l’état d’édition.',
             errored:
               'Émis avec un message lisible lorsque la validation du fichier échoue.',
             fileSelected:
-              "Émis lorsqu'un fichier est choisi depuis le disque ou déposé sur l'éditeur.",
+              'Émis lorsqu’un fichier est choisi depuis le disque ou déposé sur l’éditeur.',
             removed:
-              "Émis lorsque l'image actuelle est supprimée via le contrôle de suppression.",
+              'Émis lorsque l’image actuelle est supprimée via le contrôle de suppression.',
             captureOriginal:
-              "Marque l'image actuelle et l'état de recadrage comme référence pour revertImage.",
+              'Marque l’image actuelle et l’état de recadrage comme référence pour revertImage.',
             exportCrop:
               'Rend le recadrage actuel sur un canevas hors écran, émet cropped et résout avec le Blob.',
             openFilePicker: 'Ouvre la boîte de dialogue native de sélection de fichiers.',
             removeImage:
-              "Efface l'image chargée et réinitialise le panoramique et le zoom aux valeurs par défaut.",
+              'Efface l’image chargée et réinitialise le panoramique et le zoom aux valeurs par défaut.',
             revertImage:
-              "Restaure l'image et l'état de recadrage capturés par le dernier appel à captureOriginal.",
+              'Restaure l’image et l’état de recadrage capturés par le dernier appel à captureOriginal.',
             setZoom:
               'Définit le niveau de zoom, limité à la plage minZoom/maxZoom configurée.',
             updateImageDarkness:
-              "Échantillonne la région de recadrage visible pour déterminer si l'image est plus sombre que le gris moyen.",
+              'Échantillonne la région de recadrage visible pour déterminer si l’image est plus sombre que le gris moyen.',
           },
           'menu-trigger': {
-            menu: "L'instance ea-menu que ce déclencheur contrôle.",
+            menu: 'L’instance ea-menu que ce déclencheur contrôle.',
           },
           tooltip: {
             maxWidth:
               'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px).',
             eaTooltip:
-              "Contenu de l'infobulle affichée au survol et au focus clavier. Accepte une chaîne de texte ou un TemplateRef pour du contenu stylisé.",
-            tooltipPosition: "Position de l'infobulle par rapport à son élément hôte.",
+              'Contenu de l’infobulle affichée au survol et au focus clavier. Accepte une chaîne de texte ou un TemplateRef pour du contenu stylisé.',
+            tooltipPosition: 'Position de l’infobulle par rapport à son élément hôte.',
           },
           'time-picker': {
             disabled: 'Désactive le sélecteur.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             format:
-              "Format d'affichage du libellé déclencheur ; la valeur transmise est toujours en 24 h.",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Format d’affichage du libellé déclencheur ; la valeur transmise est toujours en 24 h.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             includeSeconds:
               'Affiche une colonne des secondes en plus des heures et des minutes.',
             label: 'Libellé affiché au-dessus du champ.',
             minuteStep:
-              "Incrément auquel la colonne des minutes s'aligne lors d'un déplacement.",
+              'Incrément auquel la colonne des minutes s’aligne lors d’un déplacement.',
             placeholder:
-              "Texte indicatif affiché sur le déclencheur lorsqu'aucune heure n'est sélectionnée.",
+              'Texte indicatif affiché sur le déclencheur lorsqu’aucune heure n’est sélectionnée.',
             readonly:
-              "Affiche le champ en lecture seule, empêchant l'ouverture de la popover.",
+              'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
             required: 'Marque le champ comme requis.',
             secondStep:
-              "Incrément auquel la colonne des secondes s'aligne lors d'un déplacement.",
+              'Incrément auquel la colonne des secondes s’aligne lors d’un déplacement.',
             size: 'Taille visuelle du déclencheur du sélecteur.',
             value:
               'Heure actuelle au format HH:MM ou HH:MM:SS (24 h), liable en deux sens via [(value)], ou null si non définie.',
             changed:
-              "Émis avec la nouvelle heure chaque fois que l'utilisateur modifie l'heure sélectionnée.",
+              'Émis avec la nouvelle heure chaque fois que l’utilisateur modifie l’heure sélectionnée.',
             advanceFocus:
-              "Déplace le focus vers la colonne d'unité suivante une fois la saisie d'un chiffre terminée.",
+              'Déplace le focus vers la colonne d’unité suivante une fois la saisie d’un chiffre terminée.',
             cannotExtend:
-              "Renvoie true lorsqu'aucun chiffre supplémentaire ne peut étendre valablement le tampon courant pour l'unité donnée.",
+              'Renvoie true lorsqu’aucun chiffre supplémentaire ne peut étendre valablement le tampon courant pour l’unité donnée.',
             commitDigits:
-              "Analyse la chaîne de chiffres en tampon, la borne à la plage valide de l'unité et l'écrit dans la valeur.",
-            flushBuffer: "Valide tout tampon de chiffres en attente et l'efface.",
+              'Analyse la chaîne de chiffres en tampon, la borne à la plage valide de l’unité et l’écrit dans la valeur.',
+            flushBuffer: 'Valide tout tampon de chiffres en attente et l’efface.',
             focusHoursWhenReady:
               'Place le focus sur le champ des heures une fois la surface de la popover rendue dans le DOM.',
             hoursFromTyped:
-              "Convertit une valeur d'heures saisie en son équivalent 24 h en tenant compte de la période AM/PM actuelle.",
+              'Convertit une valeur d’heures saisie en son équivalent 24 h en tenant compte de la période AM/PM actuelle.',
             onPopoverCloseRequested:
-              "Ferme la popover lorsque l'utilisateur clique en dehors du sélecteur.",
+              'Ferme la popover lorsque l’utilisateur clique en dehors du sélecteur.',
             onSpinnerBlur:
-              "Valide tout tampon de chiffres en attente lorsqu'une colonne de défilement perd le focus.",
+              'Valide tout tampon de chiffres en attente lorsqu’une colonne de défilement perd le focus.',
             onSpinnerFocus:
-              "Sélectionne tout le texte d'une colonne de défilement lors de la prise de focus afin que la première frappe le remplace.",
+              'Sélectionne tout le texte d’une colonne de défilement lors de la prise de focus afin que la première frappe le remplace.',
             onSpinnerInput:
               'Gère la saisie de chiffres dans une colonne de défilement, met à jour le tampon et avance automatiquement le focus lorsque la colonne est pleine.',
             startHold:
-              "Démarre une répétition par maintien sur un bouton chevron, incrémentant l'unité donnée et accélérant après un délai.",
-            step: "Incrémente ou décrémente la colonne d'unité donnée d'un incrément configuré.",
+              'Démarre une répétition par maintien sur un bouton chevron, incrémentant l’unité donnée et accélérant après un délai.',
+            step: 'Incrémente ou décrémente la colonne d’unité donnée d’un incrément configuré.',
             stopHold: 'Annule les minuteries de répétition par maintien en cours.',
             togglePeriod:
               'Bascule la période AM/PM en mode 12 h en inversant le décalage de 12 heures.',
@@ -1720,16 +1722,16 @@ export const frFR: WebMessages = {
           autocomplete: {
             disabled: 'Désactive le champ.',
             emptyMessage:
-              "Message affiché dans la liste lorsqu'aucune option ne correspond à la saisie, avec repli sur la traduction de la locale active si omis.",
+              'Message affiché dans la liste lorsqu’aucune option ne correspond à la saisie, avec repli sur la traduction de la locale active si omis.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             maxResults:
-              "Nombre maximum d'options affichées à la fois dans la liste de suggestions.",
+              'Nombre maximum d’options affichées à la fois dans la liste de suggestions.',
             minLength:
-              "Nombre minimal de caractères requis avant l'affichage de la liste de suggestions.",
+              'Nombre minimal de caractères requis avant l’affichage de la liste de suggestions.',
             options:
               'Liste complète des options disponibles pour le filtrage et la sélection.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
@@ -1742,114 +1744,114 @@ export const frFR: WebMessages = {
               'Émis à chaque modification du texte saisi, y compris lors des éditions libres.',
             focused: 'Émis lorsque le champ reçoit le focus.',
             selected:
-              "Émis lorsque l'utilisateur sélectionne une option dans la liste de suggestions.",
+              'Émis lorsque l’utilisateur sélectionne une option dans la liste de suggestions.',
             close: 'Ferme la liste de suggestions sans modifier la valeur actuelle.',
             focus: 'Place le focus clavier sur le champ texte sous-jacent.',
             selectOption:
-              "Sélectionne par programme l'option donnée, met à jour la valeur et ferme la liste.",
+              'Sélectionne par programme l’option donnée, met à jour la valeur et ferme la liste.',
           },
           'command-palette': {
             emptyMessage:
               'Message affiché lorsque la recherche ne correspond à aucun élément, avec repli sur la traduction de la locale active si omis.',
             items:
-              "Liste complète des commandes disponibles pour la recherche et l'exécution.",
+              'Liste complète des commandes disponibles pour la recherche et l’exécution.',
             open: 'Indique si la boîte de dialogue est ouverte, liable en deux sens via [(open)].',
             placeholder:
-              "Texte indicatif affiché dans le champ de recherche lorsqu'il est vide.",
+              'Texte indicatif affiché dans le champ de recherche lorsqu’il est vide.',
             execute:
-              "Émis lorsque l'utilisateur sélectionne une commande, transmettant l'élément choisi.",
+              'Émis lorsque l’utilisateur sélectionne une commande, transmettant l’élément choisi.',
             showActiveHighlight:
-              "Indique si la ligne active doit afficher son arrière-plan mis en évidence pour l'index plat donné.",
+              'Indique si la ligne active doit afficher son arrière-plan mis en évidence pour l’index plat donné.',
           },
           tabs: {
             activeTab:
-              "Valeur de l'onglet actuellement actif, liable en deux sens via [(activeTab)].",
+              'Valeur de l’onglet actuellement actif, liable en deux sens via [(activeTab)].',
             size: 'Taille visuelle des onglets.',
-            variant: "Style visuel de la barre d'onglets : souligné ou rempli.",
+            variant: 'Style visuel de la barre d’onglets : souligné ou rempli.',
             changed:
-              "Émis avec la valeur du nouvel onglet actif à chaque changement d'onglet actif.",
+              'Émis avec la valeur du nouvel onglet actif à chaque changement d’onglet actif.',
             registerTab:
-              "Enregistre un onglet enfant pour qu'il apparaisse dans la barre ; appelé automatiquement par ea-tab.",
-            selectTab: "Active par programme l'onglet correspondant à la valeur donnée.",
+              'Enregistre un onglet enfant pour qu’il apparaisse dans la barre ; appelé automatiquement par ea-tab.',
+            selectTab: 'Active par programme l’onglet correspondant à la valeur donnée.',
             unregisterTab:
-              'Supprime un onglet enfant précédemment enregistré ; appelé automatiquement par ea-tab.',
+              'Supprime un onglet enfant précédemment enregistré ; appelé automatiquement par ea-tab.',
           },
           tab: {
-            disabled: "Désactive cet onglet, empêchant l'utilisateur de le sélectionner.",
-            id: "id appliqué au bouton de l'onglet et à son panneau, généré automatiquement si omis.",
-            label: "Libellé affiché sur le bouton de l'onglet.",
+            disabled: 'Désactive cet onglet, empêchant l’utilisateur de le sélectionner.',
+            id: 'id appliqué au bouton de l’onglet et à son panneau, généré automatiquement si omis.',
+            label: 'Libellé affiché sur le bouton de l’onglet.',
             value:
               'Valeur unique identifiant cet onglet au sein de son groupe ea-tabs parent.',
           },
           'date-picker': {
             disabled: 'Désactive le sélecteur de date.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
-            format: "Format d'affichage de la date sélectionnée (short, medium ou long).",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            format: 'Format d’affichage de la date sélectionnée (short, medium ou long).',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             locale:
               'Balise de locale BCP 47 pour le formatage des dates, revenant à la locale globale si omise.',
             maxDate:
-              'Date la plus tardive sélectionnable ; les dates suivantes sont désactivées dans le calendrier.',
+              'Date la plus tardive sélectionnable ; les dates suivantes sont désactivées dans le calendrier.',
             minDate:
-              'Date la plus ancienne sélectionnable ; les dates antérieures sont désactivées dans le calendrier.',
+              'Date la plus ancienne sélectionnable ; les dates antérieures sont désactivées dans le calendrier.',
             placeholder:
-              "Texte indicatif affiché sur le déclencheur lorsqu'aucune date n'est sélectionnée.",
+              'Texte indicatif affiché sur le déclencheur lorsqu’aucune date n’est sélectionnée.',
             readonly:
-              "Affiche le champ en lecture seule, empêchant l'ouverture du calendrier.",
+              'Affiche le champ en lecture seule, empêchant l’ouverture du calendrier.',
             required: 'Marque le champ comme requis.',
             size: 'Taille visuelle du déclencheur du sélecteur de date.',
             value: 'Date sélectionnée actuelle, liable en deux sens via [(value)].',
             weekStartsOn:
               'Premier jour de la semaine dans la grille du calendrier (0 pour dimanche, 1 pour lundi).',
             changed:
-              "Émis lorsque la date sélectionnée change, y compris lors d'un effacement.",
+              'Émis lorsque la date sélectionnée change, y compris lors d’un effacement.',
             clear: 'Efface la date sélectionnée et émet changed avec null.',
             close: 'Ferme la popover du calendrier.',
             focus: 'Place le focus clavier sur le bouton déclencheur.',
             onPopoverCloseRequested:
-              "Ferme la popover lorsque l'utilisateur clique en dehors du sélecteur de date.",
+              'Ferme la popover lorsque l’utilisateur clique en dehors du sélecteur de date.',
             open: 'Ouvre la popover du calendrier et place le focus sur la cellule du jour ciblé.',
             toggle: 'Bascule la popover du calendrier entre ouvert et fermé.',
           },
           menu: {
-            size: 'Taille visuelle du menu ; chaque élément en hérite.',
+            size: 'Taille visuelle du menu ; chaque élément en hérite.',
             maxHeight:
-              'Hauteur maximale de la liste défilante (longueur CSS) ; les menus plus hauts défilent au-delà.',
+              'Hauteur maximale de la liste défilante (longueur CSS) ; les menus plus hauts défilent au-delà.',
             ariaLabel:
               'Libellé accessible de la liste du menu, revenant à la locale active si omis.',
-            disabled: "Désactive le menu et l'empêche de s'ouvrir.",
-            id: "id appliqué à l'élément de liste du menu, généré automatiquement si omis.",
+            disabled: 'Désactive le menu et l’empêche de s’ouvrir.',
+            id: 'id appliqué à l’élément de liste du menu, généré automatiquement si omis.',
             open: 'Indique si le menu est ouvert, liable en deux sens via [(open)].',
             placement:
               'Position de la liste du menu par rapport à son élément déclencheur.',
             closed: 'Émis lorsque le menu se ferme.',
-            opened: "Émis lorsque le menu s'ouvre.",
+            opened: 'Émis lorsque le menu s’ouvre.',
             close:
-              "Ferme le menu et rétablit optionnellement le focus sur l'élément déclencheur.",
+              'Ferme le menu et rétablit optionnellement le focus sur l’élément déclencheur.',
             focusFirstItem:
               'Place le focus clavier sur le premier élément activé du menu.',
             onPopoverCloseRequested:
-              "Ferme le menu lorsque l'utilisateur clique en dehors.",
+              'Ferme le menu lorsque l’utilisateur clique en dehors.',
             openAt:
-              "Ouvre le menu ancré à l'élément déclencheur donné et place le focus sur le premier élément.",
+              'Ouvre le menu ancré à l’élément déclencheur donné et place le focus sur le premier élément.',
             toggleAt:
-              "Bascule l'état du menu, en l'ancrant à l'élément déclencheur donné.",
+              'Bascule l’état du menu, en l’ancrant à l’élément déclencheur donné.',
           },
           'menu-item': {
-            disabled: "Désactive l'élément et supprime les événements de clic.",
+            disabled: 'Désactive l’élément et supprime les événements de clic.',
             variant:
-              "Style visuel de l'élément ; utiliser danger pour les actions destructives.",
+              'Style visuel de l’élément ; utiliser danger pour les actions destructives.',
             clicked:
-              "Émis lorsque l'élément est activé ; le menu parent se ferme immédiatement après.",
+              'Émis lorsque l’élément est activé ; le menu parent se ferme immédiatement après.',
           },
           'multi-select': {
             disabled: 'Désactive le multi-select.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             maxVisibleChips:
@@ -1857,90 +1859,90 @@ export const frFR: WebMessages = {
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante.',
             placeholder:
-              "Texte indicatif affiché sur le déclencheur lorsqu'aucune option n'est sélectionnée.",
+              'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
             searchable: 'Affiche le champ de recherche en haut de la popover.',
             searchPlaceholder:
               'Texte indicatif affiché dans le champ de recherche lorsque la saisie est vide.',
             selectAll:
-              "Affiche la ligne de sélection totale à trois états en haut de la liste d'options.",
+              'Affiche la ligne de sélection totale à trois états en haut de la liste d’options.',
             size: 'Taille visuelle du déclencheur du multi-select.',
             value:
               'Valeurs des options sélectionnées, liables en deux sens via [(value)].',
             changed: 'Émis avec la nouvelle valeur chaque fois que la sélection change.',
             clear:
-              "Efface toutes les sélections et arrête la propagation de l'événement.",
+              'Efface toutes les sélections et arrête la propagation de l’événement.',
             handlePopoverKeydown:
               'Gère la navigation clavier dans la popover ouverte, en traitant les touches fléchées, Entrée, Espace et Échap.',
             onPopoverCloseRequested:
-              "Appelé par la popover lorsque l'utilisateur clique en dehors ou fait défiler ; ferme le panneau et marque le champ comme touché.",
+              'Appelé par la popover lorsque l’utilisateur clique en dehors ou fait défiler ; ferme le panneau et marque le champ comme touché.',
             orderedValues:
-              "Renvoie l'ensemble de valeurs donné réordonné pour correspondre au tableau d'options d'entrée.",
-            removeChip: "Supprime l'option donnée de la sélection actuelle.",
+              'Renvoie l’ensemble de valeurs donné réordonné pour correspondre au tableau d’options d’entrée.',
+            removeChip: 'Supprime l’option donnée de la sélection actuelle.',
             toggleOption:
-              "Bascule l'appartenance de l'option donnée à la sélection actuelle.",
+              'Bascule l’appartenance de l’option donnée à la sélection actuelle.',
             toggleSelectAll:
               'Sélectionne toutes les options filtrées si certaines sont désélectionnées, ou désélectionne toutes les options filtrées si toutes sont sélectionnées.',
           },
           dropdown: {
             disabled: 'Désactive le menu déroulant.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante.',
             placeholder:
-              "Texte indicatif affiché sur le déclencheur lorsqu'aucune option n'est sélectionnée.",
+              'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
             size: 'Taille visuelle du déclencheur du menu déroulant.',
             value: 'Valeur sélectionnée actuelle, liable en deux sens via [(value)].',
             changed:
-              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une option.",
+              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option.',
             close: 'Ferme la liste déroulante sans modifier la valeur actuelle.',
             focus: 'Place le focus clavier sur le déclencheur du menu déroulant.',
             onPopoverCloseRequested:
-              "Appelé par la popover lorsque l'utilisateur clique en dehors du menu déroulant ; ferme le panneau et marque le champ comme touché.",
-            select: "Sélectionne l'option donnée par programmation et ferme la liste.",
+              'Appelé par la popover lorsque l’utilisateur clique en dehors du menu déroulant ; ferme le panneau et marque le champ comme touché.',
+            select: 'Sélectionne l’option donnée par programmation et ferme la liste.',
             toggle: 'Bascule la liste déroulante entre ouverte et fermée.',
           },
           'file-uploader': {
             accept:
-              "Types MIME et extensions de fichier acceptés par la zone de dépôt, séparés par des virgules, ex. 'image/*,.pdf'.",
+              'Types MIME et extensions de fichier acceptés par la zone de dépôt, séparés par des virgules, ex. ’image/*,.pdf’.',
             disabled: 'Désactive le téléverseur.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué à la zone de dépôt et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             maxFiles:
-              'Nombre total maximal de fichiers ; les fichiers excédentaires sont rejetés.',
+              'Nombre total maximal de fichiers ; les fichiers excédentaires sont rejetés.',
             maxSize:
-              'Taille maximale par fichier en octets ; les fichiers plus volumineux sont rejetés.',
+              'Taille maximale par fichier en octets ; les fichiers plus volumineux sont rejetés.',
             multiple: 'Permet de sélectionner plusieurs fichiers à la fois.',
             progress:
-              'Carte de progression du téléversement par fichier (0-100) indexée par identité de File ; omettez-la pour masquer les barres de progression.',
+              'Carte de progression du téléversement par fichier (0-100) indexée par identité de File ; omettez-la pour masquer les barres de progression.',
             required: 'Marque le champ comme requis.',
             showFileList:
               'Affiche la liste des fichiers sélectionnés sous la zone de dépôt.',
             size: 'Taille visuelle du téléverseur.',
             value: 'Liste de fichiers actuelle, liable en deux sens via [(value)].',
             fileRemoved:
-              "Émis lorsqu'un fichier est supprimé via le bouton de suppression de sa ligne.",
+              'Émis lorsqu’un fichier est supprimé via le bouton de suppression de sa ligne.',
             rejected:
-              "Émis lorsqu'un ou plusieurs fichiers échouent à la validation, avec la raison de chaque rejet.",
+              'Émis lorsqu’un ou plusieurs fichiers échouent à la validation, avec la raison de chaque rejet.',
             trackFile:
               'Retourne une clé de suivi stable pour un fichier, utilisée en interne par la liste de fichiers.',
           },
           'form-field': {
-            size: 'Taille visuelle du champ ; le libellé, le texte du contrôle, les espacements et les messages évoluent avec elle.',
+            size: 'Taille visuelle du champ ; le libellé, le texte du contrôle, les espacements et les messages évoluent avec elle.',
             errorMsg:
-              "Message d'erreur affiché sous le contrôle, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le contrôle, masqué en cas d'erreur.",
-            id: "Base d'id pour relier le libellé et le message, générée automatiquement si omise.",
+              'Message d’erreur affiché sous le contrôle, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le contrôle, masqué en cas d’erreur.',
+            id: 'Base d’id pour relier le libellé et le message, générée automatiquement si omise.',
             label: 'Libellé affiché au-dessus du contrôle.',
             required: 'Marque le champ comme requis.',
           },
@@ -1948,72 +1950,72 @@ export const frFR: WebMessages = {
             anchor:
               'Élément hôte ou ElementRef par rapport auquel le popover se positionne.',
             ariaLabel:
-              'Libellé accessible de la surface du popover ; à fournir lorsque le popover ne contient pas de titre visible.',
+              'Libellé accessible de la surface du popover ; à fournir lorsque le popover ne contient pas de titre visible.',
             ariaLabelledby:
               'Id de l’élément qui labellise la surface du popover, transmis comme aria-labelledby.',
             clamp:
-              "Maintient le popover dans la fenêtre d'affichage lorsqu'il déborderait sinon.",
+              'Maintient le popover dans la fenêtre d’affichage lorsqu’il déborderait sinon.',
             closeOnEscape: 'Ferme le popover lorsque la touche Échap est pressée.',
             closeOnOutsideClick:
-              "Ferme le popover lorsque l'utilisateur clique en dehors du popover et de son ancre.",
-            flip: "Bascule vers le côté opposé lorsque le placement demandé déborde de la fenêtre d'affichage.",
+              'Ferme le popover lorsque l’utilisateur clique en dehors du popover et de son ancre.',
+            flip: 'Bascule vers le côté opposé lorsque le placement demandé déborde de la fenêtre d’affichage.',
             matchAnchorWidth:
-              "Définit la largeur minimale du popover pour correspondre à celle de l'ancre.",
-            offset: "Écart en px entre l'ancre et la surface du popover.",
+              'Définit la largeur minimale du popover pour correspondre à celle de l’ancre.',
+            offset: 'Écart en px entre l’ancre et la surface du popover.',
             open: 'Indique si le popover est actuellement ouvert.',
             placement: 'Position préférée du popover par rapport à son ancre.',
             role: 'Rôle ARIA appliqué à la surface du popover.',
             scrollBehavior:
-              "Comportement du popover lors des événements de défilement et de redimensionnement lorsqu'il est ouvert : reposition, close ou ignore.",
+              'Comportement du popover lors des événements de défilement et de redimensionnement lorsqu’il est ouvert : reposition, close ou ignore.',
             surfaceId:
               'id DOM de la surface du popover, utilisé par les éléments déclencheurs via aria-controls.',
             trapFocus:
               'Maintient Tab et Maj+Tab en cycle à l’intérieur de la surface tant qu’elle est ouverte, pour les popovers de type dialogue.',
             closeRequested:
-              'Émis lorsque le popover demande à être fermé ; le parent doit répercuter cela dans [open].',
+              'Émis lorsque le popover demande à être fermé ; le parent doit répercuter cela dans [open].',
           },
           'accordion-item': {
             disabled: 'Désactive cet élément et empêche son ouverture/fermeture.',
-            id: "id appliqué au bouton d'en-tête et au panneau de l'élément, généré automatiquement si omis.",
-            label: "Texte affiché dans le bouton d'en-tête de l'élément.",
+            id: 'id appliqué au bouton d’en-tête et au panneau de l’élément, généré automatiquement si omis.',
+            label: 'Texte affiché dans le bouton d’en-tête de l’élément.',
             value: 'Clé unique qui identifie cet élément dans son accordéon parent.',
           },
           breadcrumbs: {
-            size: "Taille visuelle du fil d'Ariane.",
+            size: 'Taille visuelle du fil d’Ariane.',
             ariaLabel:
-              "Libellé accessible de la navigation de fil d'Ariane, basculant sur la traduction de la locale active si omis.",
+              'Libellé accessible de la navigation de fil d’Ariane, basculant sur la traduction de la locale active si omis.',
             items:
-              "Tableau d'entrées de fil d'Ariane ; les éléments avec href s'affichent comme liens, les autres comme boutons, et le dernier est non interactif.",
+              'Tableau d’entrées de fil d’Ariane ; les éléments avec href s’affichent comme liens, les autres comme boutons, et le dernier est non interactif.',
             separator:
-              "Style visuel du séparateur affiché entre les éléments du fil d'Ariane.",
+              'Style visuel du séparateur affiché entre les éléments du fil d’Ariane.',
             clicked:
-              "Émis lorsqu'un élément du fil d'Ariane non désactivé et non final est activé.",
+              'Émis lorsqu’un élément du fil d’Ariane non désactivé et non final est activé.',
           },
           drawer: {
             animation:
-              "Animation de glissement à l'ouverture et à la fermeture du tiroir : none (instantané), linear (vitesse constante) ou eased (une courbe d'atténuation en sortie).",
+              'Animation de glissement à l’ouverture et à la fermeture du tiroir : none (instantané), linear (vitesse constante) ou eased (une courbe d’atténuation en sortie).',
             ariaLabel:
-              "Libellé accessible du panneau du tiroir lorsque son titre n'est pas suffisamment descriptif.",
+              'Libellé accessible du panneau du tiroir lorsque son titre n’est pas suffisamment descriptif.',
             closeOnBackdrop:
-              "Ferme le tiroir lorsque l'utilisateur clique sur l'arrière-plan.",
+              'Ferme le tiroir lorsque l’utilisateur clique sur l’arrière-plan.',
             closeOnEscape:
-              "Ferme le tiroir lorsque l'utilisateur appuie sur la touche Échap.",
-            id: "id appliqué à l'élément dialog, généré automatiquement si omis.",
-            mode: "Comment le tiroir se rapporte à la page : overlay flotte au-dessus d'une page assombrie où le focus est piégé, tandis que push s'ouvre de façon non modale et réagence le contenu de la page sur le côté.",
+              'Ferme le tiroir lorsque l’utilisateur appuie sur la touche Échap.',
+            id: 'id appliqué à l’élément dialog, généré automatiquement si omis.',
+            mode: 'Comment le tiroir se rapporte à la page : overlay flotte au-dessus d’une page assombrie où le focus est piégé, tandis que push s’ouvre de façon non modale et réagence le contenu de la page sur le côté.',
             open: 'Indique si le tiroir est ouvert, liable en deux sens via [(open)].',
-            position: "Bord de la fenêtre depuis lequel le tiroir s'ouvre en glissant.",
+            position: 'Bord de la fenêtre depuis lequel le tiroir s’ouvre en glissant.',
             pushTarget:
-              "Élément dont le contenu est poussé sur le côté en mode push, sous forme de sélecteur CSS ou de référence d'élément ; par défaut, le corps du document.",
-            showClose: "Affiche le bouton de fermeture dans l'en-tête du tiroir.",
-            size: 'Étendue du panneau du tiroir sur son axe principal : largeur pour les tiroirs latéraux, hauteur pour les tiroirs supérieurs et inférieurs.',
+              'Élément dont le contenu est poussé sur le côté en mode push, sous forme de sélecteur CSS ou de référence d’élément ; par défaut, le corps du document.',
+            showClose: 'Affiche le bouton de fermeture dans l’en-tête du tiroir.',
+            size: 'Étendue du panneau du tiroir sur son axe principal : largeur pour les tiroirs latéraux, hauteur pour les tiroirs supérieurs et inférieurs.',
             closed:
-              "Émis lorsque le tiroir se ferme, que ce soit via le bouton, l'arrière-plan ou Échap.",
+              'Émis lorsque le tiroir se ferme, que ce soit via le bouton, l’arrière-plan ou Échap.',
             opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
-            size: 'Taille visuelle du tableau ; les marges de densité et les icônes évoluent avec elle.',
+            size: 'Taille visuelle du tableau ; les marges de densité et les icônes évoluent avec elle.',
             clickable:
-              'Marque les lignes de données comme cliquables : affiche un curseur en forme de main et émet rowActivate au clic ou avec Entrée/Espace.',
+              'Marque les lignes de données comme cliquables : affiche un curseur en forme de main et émet rowActivate au clic ou avec Entrée/Espace.',
             rowActivate:
               'Émis avec les données de la ligne lorsqu’une ligne cliquable est activée au clic ou au clavier.',
             navigable:
@@ -2021,30 +2023,30 @@ export const frFR: WebMessages = {
             bordered: 'Affiche une bordure autour de chaque cellule.',
             columns:
               'Définitions de colonnes décrivant la clé, le libellé et, éventuellement, le tri ou le modèle de chaque champ.',
-            data: "Tableau d'objets de lignes à afficher dans le tableau.",
+            data: 'Tableau d’objets de lignes à afficher dans le tableau.',
             density:
-              "Préréglage de densité verticale contrôlant le rembourrage des lignes et des cellules d'en-tête.",
+              'Préréglage de densité verticale contrôlant le rembourrage des lignes et des cellules d’en-tête.',
             hoverable: 'Met en évidence la ligne sous le pointeur au survol.',
             noDataText:
-              "Texte affiché dans l'état vide, avec repli sur la traduction de la locale active.",
+              'Texte affiché dans l’état vide, avec repli sur la traduction de la locale active.',
             sort: 'État de tri actuel (clé de colonne et direction), liable en deux sens via [(sort)].',
             stickyHeader:
-              "Fixe la ligne d'en-tête en haut du tableau lorsque le contenu défile.",
+              'Fixe la ligne d’en-tête en haut du tableau lorsque le contenu défile.',
             striped:
-              "Applique un ombrage d'arrière-plan alterné aux lignes paires et impaires.",
+              'Applique un ombrage d’arrière-plan alterné aux lignes paires et impaires.',
             trackBy:
-              "Clé de propriété de ligne utilisée par la détection de changement d'Angular pour identifier les lignes efficacement.",
+              'Clé de propriété de ligne utilisée par la détection de changement d’Angular pour identifier les lignes efficacement.',
             sorted:
-              "Émis chaque fois que la colonne ou la direction de tri change via un clic sur l'en-tête.",
+              'Émis chaque fois que la colonne ou la direction de tri change via un clic sur l’en-tête.',
           },
           'radio-group': {
             ariaLabel:
-              "Libellé accessible du groupe lorsqu'aucun libellé visible n'est rendu.",
+              'Libellé accessible du groupe lorsqu’aucun libellé visible n’est rendu.',
             disabled: 'Désactive toutes les options radio du groupe.',
             errorMsg:
-              "Message d'erreur affiché sous le groupe, remplaçant l'indication et marquant le champ comme invalide.",
-            hint: "Texte d'aide affiché sous le groupe, masqué en cas d'erreur.",
-            id: "id appliqué à l'élément du groupe et au for de son libellé, généré automatiquement si omis.",
+              'Message d’erreur affiché sous le groupe, remplaçant l’indication et marquant le champ comme invalide.',
+            hint: 'Texte d’aide affiché sous le groupe, masqué en cas d’erreur.',
+            id: 'id appliqué à l’élément du groupe et au for de son libellé, généré automatiquement si omis.',
             label: 'Libellé textuel rendu au-dessus du groupe.',
             name: 'Attribut name partagé appliqué à tous les boutons radio du groupe, généré automatiquement si omis.',
             orientation: 'Direction de disposition des options radio au sein du groupe.',
@@ -2052,70 +2054,70 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle appliquée à toutes les options radio du groupe.',
             value: 'Valeur actuellement sélectionnée, liable en deux sens via [(value)].',
             changed:
-              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une option.",
-            select: "Sélectionne par programmation l'option avec la valeur donnée.",
+              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option.',
+            select: 'Sélectionne par programmation l’option avec la valeur donnée.',
           },
           segmented: {
             ariaLabel:
-              "Libellé accessible du contrôle lorsqu'aucun libellé visible n'est affiché.",
+              'Libellé accessible du contrôle lorsqu’aucun libellé visible n’est affiché.',
             disabled: 'Désactive le contrôle segmenté.',
             errorMsg:
-              "Message d'erreur affiché sous le champ, remplaçant l'indication et marquant le champ comme invalide.",
+              'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             fullWidth: 'Étire le contrôle pour remplir la largeur de son conteneur.',
-            hint: "Texte d'aide affiché sous le champ, masqué en cas d'erreur.",
+            hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au contrôle et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du contrôle.',
             options:
-              "Tableau d'options affichées sous forme de boutons bascule dans le contrôle.",
+              'Tableau d’options affichées sous forme de boutons bascule dans le contrôle.',
             required: 'Marque le champ comme requis.',
             size: 'Taille visuelle du contrôle segmenté.',
             value:
-              "Valeur de l'option actuellement sélectionnée, liable en deux sens via [(value)].",
+              'Valeur de l’option actuellement sélectionnée, liable en deux sens via [(value)].',
             changed:
-              "Émis avec la nouvelle valeur lorsque l'utilisateur sélectionne une autre option.",
-            select: "Sélectionne l'option donnée par programmation.",
+              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une autre option.',
+            select: 'Sélectionne l’option donnée par programmation.',
           },
           tree: {
             ariaLabel: 'Libellé accessible du composant arbre.',
-            disabled: "Désactive tous les nœuds de l'arbre.",
+            disabled: 'Désactive tous les nœuds de l’arbre.',
             expandedIds:
               'Identifiants des nœuds branche actuellement développés, liables en deux sens via [(expandedIds)].',
-            nodes: "Tableau d'objets de données de nœuds définissant la hiérarchie.",
+            nodes: 'Tableau d’objets de données de nœuds définissant la hiérarchie.',
             selectedId:
               'Identifiant du nœud actuellement sélectionné, liable en deux sens via [(selectedId)].',
-            size: "Taille visuelle de l'arbre, mettant à l'échelle le texte et l'espacement proportionnellement.",
+            size: 'Taille visuelle de l’arbre, mettant à l’échelle le texte et l’espacement proportionnellement.',
             nodeClick:
-              "Émis avec les données du nœud lorsque l'utilisateur sélectionne un nœud.",
+              'Émis avec les données du nœud lorsque l’utilisateur sélectionne un nœud.',
           },
           step: {
             completed:
-              "Marque l'étape comme terminée, mettant à jour son indicateur visuel.",
-            disabled: "Empêche l'activation de l'étape.",
-            id: "id appliqué au panneau de l'étape et à son onglet, généré automatiquement si omis.",
-            label: "Libellé affiché dans l'indicateur d'étape.",
+              'Marque l’étape comme terminée, mettant à jour son indicateur visuel.',
+            disabled: 'Empêche l’activation de l’étape.',
+            id: 'id appliqué au panneau de l’étape et à son onglet, généré automatiquement si omis.',
+            label: 'Libellé affiché dans l’indicateur d’étape.',
             optional:
-              "Marque l'étape comme facultative, affichée en indication sous le libellé.",
+              'Marque l’étape comme facultative, affichée en indication sous le libellé.',
           },
           stepper: {
             activeStep:
-              "Indice de l'étape active (base zéro), liable en deux sens via [(activeStep)].",
+              'Indice de l’étape active (base zéro), liable en deux sens via [(activeStep)].',
             disabled:
-              "Désactive l'intégralité du stepper et toute navigation entre étapes.",
-            id: "id appliqué à l'élément hôte du stepper, généré automatiquement si omis.",
+              'Désactive l’intégralité du stepper et toute navigation entre étapes.',
+            id: 'id appliqué à l’élément hôte du stepper, généré automatiquement si omis.',
             linear:
-              "Exige que chaque étape non optionnelle soit marquée comme terminée avant que l'utilisateur puisse avancer.",
-            size: "Taille visuelle du stepper, mettant à l'échelle les indicateurs et les libellés ensemble.",
+              'Exige que chaque étape non optionnelle soit marquée comme terminée avant que l’utilisateur puisse avancer.',
+            size: 'Taille visuelle du stepper, mettant à l’échelle les indicateurs et les libellés ensemble.',
             changed:
-              "Émis avec le nouvel indice d'étape active lorsque l'utilisateur navigue vers une autre étape.",
+              'Émis avec le nouvel indice d’étape active lorsque l’utilisateur navigue vers une autre étape.',
             canNavigateTo:
-              "Retourne si l'étape à l'indice donné est accessible depuis l'état actuel.",
+              'Retourne si l’étape à l’indice donné est accessible depuis l’état actuel.',
             indexOf:
-              "Retourne l'indice de l'étape donnée, ou -1 si elle n'est pas enregistrée.",
-            selectStep: "Active l'étape à l'indice donné si elle est accessible.",
+              'Retourne l’indice de l’étape donnée, ou -1 si elle n’est pas enregistrée.',
+            selectStep: 'Active l’étape à l’indice donné si elle est accessible.',
           },
           'transfer-list': {
             disabled:
-              "Désactive l'intégralité de la liste de transfert et tous les contrôles de déplacement.",
+              'Désactive l’intégralité de la liste de transfert et tous les contrôles de déplacement.',
             items:
               'Ensemble complet des éléments disponibles dans les deux volets, identifiés par id.',
             selectedIds:
@@ -2128,45 +2130,45 @@ export const frFR: WebMessages = {
           },
           'virtual-list': {
             itemHeight:
-              'Hauteur en pixels de chaque ligne ; toutes les lignes doivent partager la même hauteur fixe.',
+              'Hauteur en pixels de chaque ligne ; toutes les lignes doivent partager la même hauteur fixe.',
             items:
-              'Tableau complet des données à afficher ; seule la tranche visible est montée à tout moment.',
+              'Tableau complet des données à afficher ; seule la tranche visible est montée à tout moment.',
             overscan:
               'Nombre de lignes supplémentaires rendues au-dessus et en dessous de la fenêtre visible pour réduire les bords vides lors du défilement rapide.',
             viewportHeight: 'Hauteur en pixels de la fenêtre de défilement.',
             scrollIndexChange:
-              "Émis avec l'indice de la première ligne visible en haut de la fenêtre chaque fois que l'utilisateur fait défiler.",
+              'Émis avec l’indice de la première ligne visible en haut de la fenêtre chaque fois que l’utilisateur fait défiler.',
             scrollToIndex:
-              "Faire défiler la fenêtre pour que la ligne à l'indice donné apparaisse en haut, limité aux bornes de la liste.",
+              'Faire défiler la fenêtre pour que la ligne à l’indice donné apparaisse en haut, limité aux bornes de la liste.',
           },
           'field-label': {
             forId:
-              'id du contrôle associé ; rend un <label for> si défini, sinon un <span>.',
+              'id du contrôle associé ; rend un <label for> si défini, sinon un <span>.',
             labelId:
-              "id appliqué à l'élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.",
+              'id appliqué à l’élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.',
             required: 'Affiche un indicateur de champ requis sur le libellé.',
-            text: "Texte du libellé affiché dans l'élément de libellé.",
+            text: 'Texte du libellé affiché dans l’élément de libellé.',
           },
           'field-messages': {
             error:
-              "Message d'erreur à afficher ; lorsqu'il est défini, l'indication est masquée et le message est annoncé comme une alerte.",
-            hint: "Texte d'aide affiché sous le champ en l'absence d'erreur.",
-            id: "id de base utilisé pour dériver les ids ARIA des éléments d'erreur et d'indication.",
+              'Message d’erreur à afficher ; lorsqu’il est défini, l’indication est masquée et le message est annoncé comme une alerte.',
+            hint: 'Texte d’aide affiché sous le champ en l’absence d’erreur.',
+            id: 'id de base utilisé pour dériver les ids ARIA des éléments d’erreur et d’indication.',
           },
           dialog: {
             ariaLabel:
-              "Libellé accessible de la boîte de dialogue lorsque son emplacement d'en-tête ne contient pas de titre visible.",
+              'Libellé accessible de la boîte de dialogue lorsque son emplacement d’en-tête ne contient pas de titre visible.',
             closeOnBackdrop:
-              "Ferme la boîte de dialogue lorsque l'utilisateur clique sur la zone d'arrière-plan en dehors du panneau.",
+              'Ferme la boîte de dialogue lorsque l’utilisateur clique sur la zone d’arrière-plan en dehors du panneau.',
             closeOnEscape:
-              "Ferme la boîte de dialogue lorsque l'utilisateur appuie sur Échap.",
-            id: "id appliqué à l'élément dialog natif, généré automatiquement si omis.",
+              'Ferme la boîte de dialogue lorsque l’utilisateur appuie sur Échap.',
+            id: 'id appliqué à l’élément dialog natif, généré automatiquement si omis.',
             open: 'Indique si la boîte de dialogue est affichée, liable en deux sens via [(open)].',
             showClose:
-              "Affiche le bouton de fermeture dans l'en-tête de la boîte de dialogue.",
+              'Affiche le bouton de fermeture dans l’en-tête de la boîte de dialogue.',
             width: 'Préréglage de largeur du panneau de la boîte de dialogue.',
             closed:
-              "Émis lorsque la boîte de dialogue se ferme, que ce soit par l'utilisateur ou de façon programmatique.",
+              'Émis lorsque la boîte de dialogue se ferme, que ce soit par l’utilisateur ou de façon programmatique.',
             opened:
               'Émis une fois que la boîte de dialogue est affichée via showModal().',
           },

@@ -28,7 +28,8 @@ export const hi: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'सुरुचिपूर्ण वेब डिज़ाइन',
+    metaDescription:
+      'सुरुचिपूर्ण वेब डिज़ाइन, और Eagami UI का घर: एक हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
     hero: {
       tagline: 'सुरुचिपूर्ण वेब डिज़ाइन।',
       ctaPrimary: 'संपर्क करें',
@@ -43,7 +44,7 @@ export const hi: WebMessages = {
         before: 'बड़े प्रोजेक्ट इस पर बनाए जा सकते हैं',
         link: 'Eagami UI',
         after:
-          ', एक कस्टम कंपोनेंट लाइब्रेरी और डिज़ाइन सिस्टम, ताकि पूरी साइट पर एक सुसंगत और आधुनिक दृश्य भाषा बनी रहे।',
+          ', एक कस्टम कंपोनेंट लाइब्रेरी, ताकि पूरी साइट पर एक सुसंगत और आधुनिक दृश्य भाषा बनी रहे।',
       },
       core: [
         {
@@ -186,7 +187,7 @@ export const hi: WebMessages = {
       components: 'कंपोनेंट',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Angular कंपोनेंट लाइब्रेरी',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
       title: 'Eagami UI',
@@ -302,7 +303,7 @@ export const hi: WebMessages = {
       tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
     },
     themeBuilder: {
-      metaTitle: 'थीम बिल्डर | Eagami UI',
+      metaTitle: 'Angular थीम बिल्डर | Eagami UI',
       metaDescription:
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
@@ -353,7 +354,7 @@ export const hi: WebMessages = {
       paletteOverrides:
         'विशिष्ट शेड पिन करें या यह रीमैप करें कि कौन सा निकाला गया शेड प्रत्येक सिमेंटिक भूमिका को सपोर्ट करता है:',
       paletteContrast:
-        'प्रत्येक ब्रांड-भूमिका जोड़ी (सरफ़ेस पर टेक्स्ट, कैनवास पर सरफ़ेस) की बूटस्ट्रैप पर WCAG 2.1 AA के विरुद्ध जांच की जाती है। एक विफल संयोजन ऐप लोड होने से पहले ही त्रुटि देता है, इसलिए ब्रांड रंग में कंट्रास्ट बग प्रोडक्शन के बजाय बूट पर पकड़ा जाता है।',
+        'प्रत्येक ब्रांड-भूमिका जोड़ी (सरफ़ेस पर टेक्स्ट, कैनवास पर सरफ़ेस) की बूटस्ट्रैप पर WCAG 2.2 AA के विरुद्ध जांच की जाती है। एक विफल संयोजन ऐप लोड होने से पहले ही त्रुटि देता है, इसलिए ब्रांड रंग में कंट्रास्ट बग प्रोडक्शन के बजाय बूट पर पकड़ा जाता है।',
       paletteBuilderIntro: 'दृश्य रूप से पैलेट बनाने और उसका पूर्वावलोकन करने के लिए:',
       paletteBuilderLink: 'थीम बिल्डर',
       elevationDrop: 'ड्रॉप शैडो',
@@ -377,7 +378,7 @@ export const hi: WebMessages = {
       motionEasings: 'ईज़िंग',
     },
     icons: {
-      metaTitle: 'आइकन | Eagami UI',
+      metaTitle: 'Angular आइकन | Eagami UI',
       metaDescription: '@eagami/ui के साथ बंडल किया गया आइकन सेट।',
       title: 'आइकन',
       lede: 'स्टैंडअलोन Angular कंपोनेंट जो अपना रंग विरासत में लेते हैं और <code>font-size</code> के साथ स्केल होते हैं, इसलिए वे किसी भी आकार पर रेंडर होते हैं। अधिकांश <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> द्वारा बनाए गए <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> से <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT लाइसेंस</span></a> के तहत प्राप्त किए गए हैं; शेष मूल Eagami UI आइकन हैं। Feather आइकन को पतले या मोटे स्ट्रोक के साथ भी बनाया जा सकता है। किसी आइकन का सेलेक्टर कॉपी करने के लिए उस पर क्लिक करें।',
@@ -474,8 +475,9 @@ export const hi: WebMessages = {
         'जब भी किसी कंपोनेंट में बदलाव होता है, उसे उद्योग के सुलभता नियमों के आधार पर जांचा जाता है, और रिलीज़ तभी शिप होती है जब हर जांच पास हो, इसलिए जो सुलभता आप यहां देखते हैं वह लाइब्रेरी के विकसित होने के साथ बनी रहती है।',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `${name} कंपोनेंट संदर्भ और लाइव डेमो।`,
+      metaTitle: name => `Angular ${name} कंपोनेंट | Eagami UI`,
+      metaDescription: name =>
+        `Angular ${name} कंपोनेंट: लाइव डेमो, API संदर्भ, और CSS वेरिएबल्स के साथ थीमिंग।`,
       demoHeading: 'डेमो',
       notFoundTitle: 'कंपोनेंट नहीं मिला',
       notFoundBody: 'साइडबार से एक कंपोनेंट चुनें, या',

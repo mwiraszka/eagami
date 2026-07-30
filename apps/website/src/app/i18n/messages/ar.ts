@@ -7,7 +7,8 @@ export const ar: WebMessages = {
     navUi: 'واجهة المستخدم',
     navUiTooltip: 'توثيق مكتبة المكوّنات',
     themeToggleTooltip: 'تبديل السمة',
-    themeToggleLabel: next => `التبديل إلى الوضع ${next}`,
+    themeToggleLabel: next =>
+      `التبديل إلى الوضع ${next === 'light' ? 'الفاتح' : 'الداكن'}`,
     localeMenuLabel: 'اللغة',
     localeMenuTooltip: 'تغيير اللغة',
     activeLocale: label => `اللغة الحالية: ${label}`,
@@ -28,7 +29,8 @@ export const ar: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'تصميم ويب أنيق',
+    metaDescription:
+      'تصميم ويب أنيق، وموطن Eagami UI: مكتبة مكوّنات Angular خفيفة وسهلة الوصول.',
     hero: {
       tagline: 'تصميم ويب أنيق.',
       ctaPrimary: 'تواصل معنا',
@@ -43,7 +45,7 @@ export const ar: WebMessages = {
         before: 'يمكن بناء المشاريع الأكبر على',
         link: 'Eagami UI',
         after:
-          '، وهي مكتبة مكوّنات ونظام تصميم مخصّصان، من أجل لغة بصرية موحّدة وعصرية عبر الموقع بأكمله.',
+          '، وهي مكتبة مكوّنات مخصّصة، من أجل لغة بصرية موحّدة وعصرية عبر الموقع بأكمله.',
       },
       core: [
         {
@@ -183,7 +185,7 @@ export const ar: WebMessages = {
       components: 'المكوّنات',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | مكتبة مكوّنات Angular',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
       title: 'Eagami UI',
@@ -298,7 +300,7 @@ export const ar: WebMessages = {
       tokensLink: 'رموز التصميم بصيغة JSON',
     },
     themeBuilder: {
-      metaTitle: 'منشئ السمة | Eagami UI',
+      metaTitle: 'منشئ السمة لـ Angular | Eagami UI',
       metaDescription:
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
@@ -348,7 +350,7 @@ export const ar: WebMessages = {
       paletteOverrides:
         'ثبّت تدرّجات محدّدة أو أعِد تعيين أي تدرّج مشتق يدعم كل دور دلالي:',
       paletteContrast:
-        'يُفحَص كل اقتران لأدوار العلامة (النص على السطح، والسطح على القماشة) للتحقق من مطابقته لمعيار WCAG 2.1 AA عند التهيئة. يُطلِق التركيب غير المطابق خطأً قبل تحميل التطبيق، لذا يُكتشَف خلل التباين في لون العلامة عند الإقلاع وليس في الإنتاج.',
+        'يُفحَص كل اقتران لأدوار العلامة (النص على السطح، والسطح على القماشة) للتحقق من مطابقته لمعيار WCAG 2.2 AA عند التهيئة. يُطلِق التركيب غير المطابق خطأً قبل تحميل التطبيق، لذا يُكتشَف خلل التباين في لون العلامة عند الإقلاع وليس في الإنتاج.',
       paletteBuilderIntro: 'أنشئ لوحتك وعاينها بصريًا في',
       paletteBuilderLink: 'منشئ السمة',
       elevationDrop: 'الظلال المسقطة',
@@ -372,7 +374,7 @@ export const ar: WebMessages = {
       motionEasings: 'دوال التيسير',
     },
     icons: {
-      metaTitle: 'الأيقونات | Eagami UI',
+      metaTitle: 'أيقونات Angular | Eagami UI',
       metaDescription: 'مجموعة الأيقونات المرفقة مع @eagami/ui.',
       title: 'الأيقونات',
       lede: 'مكوّنات Angular مستقلة ترث لونها وتتكيّف مع <code>font-size</code>، لذا تُعرَض بأي حجم. معظمها مشتق من <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> بقلم <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> بموجب <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>رخصة MIT</span></a>؛ والباقي أيقونات Eagami UI أصلية. يمكن أيضًا رسم أيقونات Feather بخطوط أرفع أو أثخن. انقر على أيقونة لنسخ محدّدها.',
@@ -436,7 +438,7 @@ export const ar: WebMessages = {
       builtInItems: [
         {
           title: 'الدلالات',
-          body: 'عناصر أصلية حيثما أمكن، وأدوار ARIA وحالات وخصائص صريحة حيث لا يمكن. حالات مثل موسّع ومحدد ومؤشَّر وغير صالح ومشغول تُعرَض برمجيًا دائمًا، لا عبر التنسيق وحده.',
+          body: 'عناصر أصلية حيثما أمكن، وأدوار ARIA وحالات وخصائص صريحة حيث لا يمكن. حالات مثل expanded وselected وchecked وinvalid وbusy تُعرَض برمجيًا دائمًا، لا عبر التنسيق وحده.',
         },
         {
           title: 'دعم لوحة المفاتيح',
@@ -469,8 +471,9 @@ export const ar: WebMessages = {
         'يُفحَص كل مكوّن وفق قواعد إمكانية الوصول المعتمدة في المجال عند كل تغيير، ولا يصدر أي إصدار إلا عندما تجتاز جميع الفحوص، لذا تظل إمكانية الوصول التي تراها هنا قائمة مع تطوّر المكتبة.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `مرجع مكوّن ${name} وعروض حية.`,
+      metaTitle: name => `مكوّن ${name} لـ Angular | Eagami UI`,
+      metaDescription: name =>
+        `مكوّن ${name} لـ Angular: عرض توضيحي حي، ومرجع API، وتخصيص السمة عبر متغيّرات CSS.`,
       demoHeading: 'عرض توضيحي',
       notFoundTitle: 'المكوّن غير موجود',
       notFoundBody: 'اختر مكوّنًا من الشريط الجانبي، أو',

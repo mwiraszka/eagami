@@ -7,7 +7,8 @@ export const ptBR: WebMessages = {
     navUi: 'UI',
     navUiTooltip: 'Documentação da biblioteca de componentes',
     themeToggleTooltip: 'Alternar tema',
-    themeToggleLabel: next => `Mudar para o modo ${next}`,
+    themeToggleLabel: next =>
+      `Mudar para o modo ${next === 'light' ? 'claro' : 'escuro'}`,
     localeMenuLabel: 'Idioma',
     localeMenuTooltip: 'Mudar idioma',
     activeLocale: label => `Idioma atual: ${label}`,
@@ -28,7 +29,8 @@ export const ptBR: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Web design elegante',
+    metaDescription:
+      'Web design elegante e a casa da Eagami UI: uma biblioteca de componentes Angular leve e acessível.',
     hero: {
       tagline: 'web design elegante.',
       ctaPrimary: 'Entre em contato',
@@ -191,7 +193,7 @@ export const ptBR: WebMessages = {
       components: 'Componentes',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Biblioteca de componentes Angular',
       metaDescription:
         'Biblioteca de componentes Angular leve e acessível, construída sobre propriedades personalizadas de CSS.',
       title: 'Eagami UI',
@@ -307,7 +309,7 @@ export const ptBR: WebMessages = {
       tokensLink: 'Tokens de design em JSON',
     },
     themeBuilder: {
-      metaTitle: 'Gerador de temas | Eagami UI',
+      metaTitle: 'Gerador de temas Angular | Eagami UI',
       metaDescription:
         'Gere uma paleta verificada pelo WCAG para os modos claro e escuro a partir das cores da sua marca e copie a configuração do provedor ou o CSS.',
       title: 'Gerador de temas',
@@ -359,7 +361,7 @@ export const ptBR: WebMessages = {
       paletteOverrides:
         'Fixe tons específicos ou remapeie qual tom derivado sustenta cada papel semântico:',
       paletteContrast:
-        'Cada combinação de papel da marca (texto sobre superfície, superfície sobre tela) é verificada em relação ao WCAG 2.1 AA na inicialização. Uma combinação que falha lança um erro antes do aplicativo carregar, então um problema de contraste na cor da marca é detectado na inicialização em vez de em produção.',
+        'Cada combinação de papel da marca (texto sobre superfície, superfície sobre tela) é verificada em relação ao WCAG 2.2 AA na inicialização. Uma combinação que falha lança um erro antes do aplicativo carregar, então um problema de contraste na cor da marca é detectado na inicialização em vez de em produção.',
       paletteBuilderIntro: 'Crie e visualize sua paleta de forma visual no',
       paletteBuilderLink: 'gerador de temas',
       elevationDrop: 'Sombras projetadas',
@@ -383,7 +385,7 @@ export const ptBR: WebMessages = {
       motionEasings: 'Suavizações',
     },
     icons: {
-      metaTitle: 'Ícones | Eagami UI',
+      metaTitle: 'Ícones Angular | Eagami UI',
       metaDescription: 'Conjunto de ícones incluído no @eagami/ui.',
       title: 'Ícones',
       lede: 'Componentes Angular independentes que herdam sua cor e escalam com <code>font-size</code>, de modo que se renderizam em qualquer tamanho. A maioria deriva dos <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sob a <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licença MIT</span></a>; os demais são ícones originais da Eagami UI. Os ícones Feather também podem ser desenhados com traços mais finos ou mais grossos. Clique em um ícone para copiar seu seletor.',
@@ -448,7 +450,7 @@ export const ptBR: WebMessages = {
       builtInItems: [
         {
           title: 'Semântica',
-          body: 'Elementos nativos sempre que possível, papéis, estados e propriedades ARIA explícitos quando não. Estados como expandido, selecionado, marcado, inválido e ocupado são sempre expostos programaticamente, nunca apenas por meio de estilo.',
+          body: 'Elementos nativos sempre que possível, papéis, estados e propriedades ARIA explícitos quando não. Estados como expanded, selected, checked, invalid e busy são sempre expostos programaticamente, nunca apenas por meio de estilo.',
         },
         {
           title: 'Suporte a teclado',
@@ -481,9 +483,9 @@ export const ptBR: WebMessages = {
         'Cada componente é verificado segundo as regras de acessibilidade do setor sempre que muda, e uma versão só é publicada quando todas as verificações passam, então a acessibilidade que você vê aqui se mantém conforme a biblioteca evolui.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
+      metaTitle: name => `Componente Angular ${name} | Eagami UI`,
       metaDescription: name =>
-        `Referência e demonstrações ao vivo do componente ${name}.`,
+        `Componente Angular ${name}: demonstração ao vivo, referência de API e temas com variáveis CSS.`,
       demoHeading: 'Demonstração',
       notFoundTitle: 'Componente não encontrado',
       notFoundBody: 'Escolha um componente na barra lateral, ou',

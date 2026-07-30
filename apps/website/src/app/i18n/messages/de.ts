@@ -7,7 +7,8 @@ export const de: WebMessages = {
     navUi: 'UI',
     navUiTooltip: 'Dokumentation der Komponentenbibliothek',
     themeToggleTooltip: 'Design umschalten',
-    themeToggleLabel: next => `In den ${next} Modus wechseln`,
+    themeToggleLabel: next =>
+      `In den ${next === 'light' ? 'hellen' : 'dunklen'} Modus wechseln`,
     localeMenuLabel: 'Sprache',
     localeMenuTooltip: 'Sprache ändern',
     activeLocale: label => `Aktuelle Sprache: ${label}`,
@@ -28,7 +29,8 @@ export const de: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Elegantes Webdesign',
+    metaDescription:
+      'Elegantes Webdesign und Zuhause von Eagami UI: eine leichtgewichtige, barrierefreie Angular-Komponentenbibliothek.',
     hero: {
       tagline: 'elegantes Webdesign.',
       ctaPrimary: 'Kontakt aufnehmen',
@@ -43,7 +45,7 @@ export const de: WebMessages = {
         before: 'Größere Projekte können auf',
         link: 'Eagami UI',
         after:
-          ' aufgebaut werden, einer maßgeschneiderten Komponentenbibliothek und einem Designsystem, für eine konsistente und moderne visuelle Sprache über die gesamte Website.',
+          ' aufgebaut werden, einer maßgeschneiderten Komponentenbibliothek, für eine konsistente und moderne visuelle Sprache über die gesamte Website.',
       },
       core: [
         {
@@ -190,7 +192,7 @@ export const de: WebMessages = {
       components: 'Komponenten',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Angular-Komponentenbibliothek',
       metaDescription:
         'Leichtgewichtige, barrierefreie Angular-Komponentenbibliothek auf Basis von CSS-Custom-Properties.',
       title: 'Eagami UI',
@@ -226,7 +228,7 @@ export const de: WebMessages = {
         },
       ],
       getStartedHeading: 'Erste Schritte',
-      getStartedBefore: 'Gehen Sie zu',
+      getStartedBefore: 'Gehen Sie zur',
       getStartedLink: 'Einrichtung',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
@@ -268,11 +270,11 @@ export const de: WebMessages = {
         msFood: 'Essen',
       },
       theme: {
-        heading: 'Mach es zu deinem Eigenen',
+        heading: 'Machen Sie es zu Ihrem Eigenen',
         ledeBefore: '',
         ledeLink: 'Design-Tokens',
         ledeAfter:
-          ' verleihen jedem Eagami-Projekt seine unverwechselbare Persönlichkeit: anpassbare Farben, Schriften, Abstände, Ecken, Schatten und Bewegung, die auf die ganze Website oder App angewendet werden. Passe unten ein paar an und sieh, wie sie die Komponenten beeinflussen.',
+          ' verleihen jedem Eagami-Projekt seine unverwechselbare Persönlichkeit: anpassbare Farben, Schriften, Abstände, Ecken, Schatten und Bewegung, die auf die ganze Website oder App angewendet werden. Passen Sie unten ein paar an und sehen Sie, wie sie die Komponenten beeinflussen.',
         brandColor: 'Markenfarbe',
         radius: 'Eckenradius',
         font: 'Schriftart',
@@ -308,7 +310,7 @@ export const de: WebMessages = {
       tokensLink: 'Design-Tokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Theme-Builder | Eagami UI',
+      metaTitle: 'Angular Theme-Builder | Eagami UI',
       metaDescription:
         'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
       title: 'Theme-Builder',
@@ -343,7 +345,7 @@ export const de: WebMessages = {
       title: 'Design-Tokens',
       lede: 'Die CSS-Custom-Properties, die jede Komponente der Bibliothek steuern: Farben, Typografie, Abstände, Erhebung, Form und Bewegung. Verweisen Sie in Ihren eigenen Styles über <code>var(--token-name)</code> auf diese Tokens, um visuelle Konsistenz in der gesamten App zu wahren.',
       sections: {
-        theming: 'Gestaltung',
+        theming: 'Theming',
         palette: 'Markenpalette',
         colors: 'Farben',
         typography: 'Typografie',
@@ -361,7 +363,7 @@ export const de: WebMessages = {
       paletteOverrides:
         'Fixieren Sie bestimmte Schattierungen oder ordnen Sie neu zu, welche abgeleitete Schattierung jeder semantischen Rolle zugrunde liegt:',
       paletteContrast:
-        'Jede Marken-Rollen-Paarung (Text auf Oberfläche, Oberfläche auf Hintergrund) wird beim Bootstrap gegen WCAG 2.1 AA geprüft. Eine fehlschlagende Kombination wirft einen Fehler, bevor die App lädt, sodass ein Kontrastfehler in der Markenfarbe schon beim Start erkannt wird und nicht erst in der Produktion.',
+        'Jede Marken-Rollen-Paarung (Text auf Oberfläche, Oberfläche auf Hintergrund) wird beim Bootstrap gegen WCAG 2.2 AA geprüft. Eine fehlschlagende Kombination wirft einen Fehler, bevor die App lädt, sodass ein Kontrastfehler in der Markenfarbe schon beim Start erkannt wird und nicht erst in der Produktion.',
       paletteBuilderIntro: 'Erstellen und prüfen Sie Ihre Palette visuell im',
       paletteBuilderLink: 'Theme-Builder',
       elevationDrop: 'Schlagschatten',
@@ -385,7 +387,7 @@ export const de: WebMessages = {
       motionEasings: 'Beschleunigungen',
     },
     icons: {
-      metaTitle: 'Symbole | Eagami UI',
+      metaTitle: 'Angular-Symbole | Eagami UI',
       metaDescription: 'Symbolsatz, der mit @eagami/ui gebündelt wird.',
       title: 'Symbole',
       lede: 'Eigenständige Angular-Komponenten, die ihre Farbe erben und mit <code>font-size</code> skalieren, sodass sie in jeder Größe gerendert werden. Die meisten stammen von <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> von <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> unter der <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-Lizenz</span></a>; die übrigen sind originale Eagami-UI-Symbole. Feather-Symbole können auch mit dünneren oder dickeren Strichen gezeichnet werden. Klicken Sie auf ein Symbol, um seinen Selektor zu kopieren.',
@@ -418,9 +420,9 @@ export const de: WebMessages = {
       quickSetupHeading: 'Schnelleinrichtung',
       quickSetupBefore:
         'Fügen Sie <code>provideEagamiUi()</code> zu Ihrer App-Konfiguration hinzu und registrieren Sie die verwendeten Sprachen über <code>locales</code>. Englisch ist immer verfügbar, sodass Sie nur das ausliefern, was Sie brauchen.',
-      lazyHeading: 'Lazy Loading',
+      lazyHeading: 'Verzögertes Laden',
       lazyBefore:
-        'Registriere <code>localeLoaders</code> statt <code>locales</code>: eine Sprache wird erst geladen, wenn sie aktiv wird, und bleibt so aus dem initialen Bundle. Verweise jeden Loader auf ein Modul, das genau ein Locale-Bundle re-exportiert, und lade mit <code>loadLocale()</code> vor, wenn der Wechsel sofort erfolgen soll.',
+        'Registrieren Sie <code>localeLoaders</code> statt <code>locales</code>: eine Sprache wird erst geladen, wenn sie aktiv wird, und bleibt so aus dem initialen Bundle. Verweisen Sie jeden Loader auf ein Modul, das genau ein Locale-Bundle re-exportiert, und laden Sie mit <code>loadLocale()</code> vor, wenn der Wechsel sofort erfolgen soll.',
       liveDemoHeading: 'Live-Demo',
       liveDemoIntro:
         'Wählen Sie einen Sprachraum und beobachten Sie, wie die Komponenten unten die passenden Zeichenketten und die Datumsformatierung übernehmen.',
@@ -450,7 +452,7 @@ export const de: WebMessages = {
       builtInItems: [
         {
           title: 'Semantik',
-          body: 'Native Elemente, wo möglich, explizite ARIA-Rollen, -Zustände und -Eigenschaften, wo nicht. Zustände wie aufgeklappt, ausgewählt, angehakt, ungültig und beschäftigt werden immer programmatisch offengelegt, nie allein über das Styling.',
+          body: 'Native Elemente, wo möglich, explizite ARIA-Rollen, -Zustände und -Eigenschaften, wo nicht. Zustände wie expanded, selected, checked, invalid und busy werden immer programmatisch offengelegt, nie allein über das Styling.',
         },
         {
           title: 'Tastaturunterstützung',
@@ -483,8 +485,9 @@ export const de: WebMessages = {
         'Jede Komponente wird bei jeder Änderung anhand branchenüblicher Barrierefreiheitsregeln geprüft, und eine Version erscheint nur, wenn jede Prüfung besteht, sodass die Barrierefreiheit, die Sie hier sehen, auch bei der Weiterentwicklung der Bibliothek Bestand hat.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Referenz und Live-Demos zur Komponente ${name}.`,
+      metaTitle: name => `Angular-Komponente ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Angular-Komponente ${name}: Live-Demo, API-Referenz und Theming mit CSS-Variablen.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Komponente nicht gefunden',
       notFoundBody: 'Wählen Sie eine Komponente aus der Seitenleiste, oder',
@@ -654,7 +657,7 @@ export const de: WebMessages = {
           danger: 'Gefahr',
           toggleLoading: 'Ladezustand umschalten',
           fullWidth: 'Volle Breite',
-          clickedToast: 'Button gedrückt!',
+          clickedToast: 'Schaltfläche gedrückt!',
         },
         card: {
           elevatedHeader: 'Erhaben',
@@ -669,7 +672,7 @@ export const de: WebMessages = {
         },
         checkbox: {
           acceptTermsAndConditions: 'Allgemeine Geschäftsbedingungen akzeptieren',
-          disabledChecked: 'Deaktiviert angekreuzt',
+          disabledChecked: 'Deaktiviert (aktiviert)',
           indeterminate: 'Unbestimmt',
           iAgreeToTerms: 'Ich stimme den Bedingungen zu',
           subscribeToUpdates: 'Updates abonnieren',
@@ -1119,7 +1122,7 @@ export const de: WebMessages = {
             variant: 'Variante',
             size: 'Größe',
             value: 'Wert',
-            max: 'Höchstwert',
+            max: 'Max.',
             buffer: 'Puffer',
             showPercentage: 'Prozentsatz anzeigen',
             indeterminate: 'Unbestimmt',
@@ -1133,8 +1136,8 @@ export const de: WebMessages = {
             label: 'Beschriftung',
             hint: 'Hinweis',
             errorMsg: 'Fehlermeldung',
-            min: 'Mindestwert',
-            max: 'Höchstwert',
+            min: 'Minimum',
+            max: 'Maximum',
             step: 'Schritt',
             size: 'Größe',
             showValue: 'Wert anzeigen',
@@ -1145,8 +1148,8 @@ export const de: WebMessages = {
           rating: {
             label: 'Beschriftung',
             size: 'Größe',
-            min: 'Mindestwert',
-            max: 'Höchstwert',
+            min: 'Minimum',
+            max: 'Maximum',
             allowHalf: 'Halbe Schritte erlauben',
             readonly: 'Schreibgeschützt',
             disabled: 'Deaktiviert',
@@ -1162,8 +1165,8 @@ export const de: WebMessages = {
           },
           slider: {
             size: 'Größe',
-            min: 'Mindestwert',
-            max: 'Höchstwert',
+            min: 'Min.',
+            max: 'Max.',
             step: 'Schritt',
             showValue: 'Wert anzeigen',
             showMinMaxLabels: 'Min/Max-Labels anzeigen',

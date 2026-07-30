@@ -3,11 +3,12 @@ import type { WebMessages } from '../web-messages.types';
 export const nl: WebMessages = {
   common: {
     skipToContent: 'Ga naar hoofdinhoud',
-    brandHome: 'eagami home',
+    brandHome: 'eagami startpagina',
     navUi: 'UI',
     navUiTooltip: 'Documentatie componentenbibliotheek',
     themeToggleTooltip: 'Thema wisselen',
-    themeToggleLabel: next => `Schakel naar ${next} modus`,
+    themeToggleLabel: next =>
+      `Schakel naar de ${next === 'light' ? 'lichte' : 'donkere'} modus`,
     localeMenuLabel: 'Taal',
     localeMenuTooltip: 'Taal wijzigen',
     activeLocale: label => `Huidige taal: ${label}`,
@@ -28,7 +29,8 @@ export const nl: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Elegant webontwerp',
+    metaDescription:
+      'Elegant webontwerp en de thuisbasis van Eagami UI: een lichtgewicht, toegankelijke Angular-componentenbibliotheek.',
     hero: {
       tagline: 'elegant webontwerp.',
       ctaPrimary: 'Neem contact op',
@@ -43,7 +45,7 @@ export const nl: WebMessages = {
         before: 'Grotere projecten kunnen worden gebouwd op',
         link: 'Eagami UI',
         after:
-          ', een eigen componentenbibliotheek en designsysteem, voor een consistente en moderne visuele taal over de hele site.',
+          ', een eigen componentenbibliotheek, voor een consistente en moderne visuele taal over de hele site.',
       },
       core: [
         {
@@ -130,7 +132,8 @@ export const nl: WebMessages = {
         },
         {
           title: 'Brewski Bets',
-          description: 'Een tracker voor onderonsjes tussen vrienden, vereffend in bier.',
+          description:
+            'Een tracker voor vriendschappelijke weddenschappen, vereffend in bier.',
           url: 'https://brewskibets.com',
           display: 'brewskibets.com',
           logo: 'assets/projects/brewskibets.svg',
@@ -190,7 +193,7 @@ export const nl: WebMessages = {
       components: 'Componenten',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Angular-componentenbibliotheek',
       metaDescription:
         'Lichtgewicht, toegankelijke Angular-componentenbibliotheek gebouwd op CSS-aangepaste eigenschappen.',
       title: 'Eagami UI',
@@ -307,7 +310,7 @@ export const nl: WebMessages = {
       tokensLink: 'Designtokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Themabuilder | Eagami UI',
+      metaTitle: 'Angular-themabuilder | Eagami UI',
       metaDescription:
         'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
       title: 'Themabuilder',
@@ -359,7 +362,7 @@ export const nl: WebMessages = {
       paletteOverrides:
         'Zet specifieke tinten vast of wijs opnieuw toe welke afgeleide tint elke semantische rol ondersteunt:',
       paletteContrast:
-        'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op WCAG 2.1 AA. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
+        'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op WCAG 2.2 AA. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
       paletteBuilderIntro: 'Stel je palet visueel samen en bekijk het in de',
       paletteBuilderLink: 'themabuilder',
       elevationDrop: 'Slagschaduwen',
@@ -383,7 +386,7 @@ export const nl: WebMessages = {
       motionEasings: 'Easings',
     },
     icons: {
-      metaTitle: 'Iconen | Eagami UI',
+      metaTitle: 'Angular-iconen | Eagami UI',
       metaDescription: 'Iconenset meegeleverd met @eagami/ui.',
       title: 'Iconen',
       lede: 'Standalone Angular-componenten die hun kleur erven en meeschalen met <code>font-size</code>, zodat ze op elke grootte worden weergegeven. De meeste zijn afgeleid van <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> van <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> onder de <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-licentie</span></a>; de rest zijn originele Eagami UI-iconen. Feather-iconen kunnen ook met dunnere of dikkere lijnen worden getekend. Klik op een icoon om de selector te kopiëren.',
@@ -415,7 +418,7 @@ export const nl: WebMessages = {
       quickSetupHeading: 'Snelle installatie',
       quickSetupBefore:
         'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd beschikbaar, dus je levert alleen wat je nodig hebt.',
-      lazyHeading: 'Lazy loading',
+      lazyHeading: 'Lui laden',
       lazyBefore:
         'Registreer <code>localeLoaders</code> in plaats van <code>locales</code>: een taal wordt pas opgehaald zodra die actief wordt en blijft zo buiten de initiële bundel. Laat elke loader wijzen naar een module die één taalpakket herexporteert, en laad vooraf met <code>loadLocale()</code> als het wisselen direct moet gebeuren.',
       liveDemoHeading: 'Live demo',
@@ -447,7 +450,7 @@ export const nl: WebMessages = {
       builtInItems: [
         {
           title: 'Semantiek',
-          body: 'Native elementen waar mogelijk, expliciete ARIA-rollen, -toestanden en -eigenschappen waar niet. Toestanden zoals uitgevouwen, geselecteerd, aangevinkt, ongeldig en bezig worden altijd programmatisch blootgesteld, nooit alleen via styling.',
+          body: 'Native elementen waar mogelijk, expliciete ARIA-rollen, -toestanden en -eigenschappen waar niet. Toestanden zoals expanded, selected, checked, invalid en busy worden altijd programmatisch blootgesteld, nooit alleen via styling.',
         },
         {
           title: 'Toetsenbordondersteuning',
@@ -480,8 +483,9 @@ export const nl: WebMessages = {
         'Elke component wordt bij elke wijziging getoetst aan gangbare toegankelijkheidsregels uit de sector, en een release verschijnt pas wanneer elke controle slaagt, zodat de toegankelijkheid die je hier ziet standhoudt terwijl de bibliotheek zich verder ontwikkelt.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `${name}-componentreferentie en live demo's.`,
+      metaTitle: name => `Angular-component ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Angular-component ${name}: live demo, API-referentie en theming met CSS-variabelen.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Component niet gevonden',
       notFoundBody: 'Kies een component uit de zijbalk, of',

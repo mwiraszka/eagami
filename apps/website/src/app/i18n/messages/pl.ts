@@ -29,7 +29,8 @@ export const pl: WebMessages = {
   },
   home: {
     metaTitle: 'Eagami',
-    metaDescription: 'Eleganckie projektowanie stron internetowych',
+    metaDescription:
+      'Eleganckie projektowanie stron internetowych i dom Eagami UI: lekkiej, dostępnej biblioteki komponentów Angular.',
     hero: {
       tagline: 'eleganckie projektowanie stron.',
       ctaPrimary: 'Skontaktuj się',
@@ -44,7 +45,7 @@ export const pl: WebMessages = {
         before: 'Większe projekty można zbudować w oparciu o',
         link: 'Eagami UI',
         after:
-          ', autorską bibliotekę komponentów i system projektowy, dla spójnego i nowoczesnego języka wizualnego w całym serwisie.',
+          ', autorską bibliotekę komponentów, dla spójnego i nowoczesnego języka wizualnego w całym serwisie.',
       },
       core: [
         {
@@ -116,7 +117,7 @@ export const pl: WebMessages = {
         {
           title: 'Chordbomb',
           description:
-            'Rozpoznaje utwór grający w pobliżu i odtwarza jego progresję akordów.',
+            'Rozpoznaje utwór grający w pobliżu i ustala jego progresję akordów.',
           url: 'https://chordbomb.com',
           display: 'chordbomb.com',
           logo: 'assets/projects/chordbomb.svg',
@@ -142,7 +143,7 @@ export const pl: WebMessages = {
     contact: {
       title: 'Masz projekt na oku?',
       lede: 'Porozmawiajmy o nim!',
-      success: 'Wiadomość została odebrana. Odpowiedź wkrótce.',
+      success: 'Dziękujemy za wiadomość. Wkrótce się odezwiemy.',
       nameLabel: 'Imię',
       namePlaceholder: 'Twoje imię',
       emailLabel: 'E-mail',
@@ -165,7 +166,7 @@ export const pl: WebMessages = {
     metaDescription: 'Strona nie znaleziona.',
     eyebrow: '404',
     title: 'Strona nie znaleziona',
-    lede: 'Strona, której szukałeś, nie istnieje lub została przeniesiona.',
+    lede: 'Strona, której szukasz, nie istnieje lub została przeniesiona.',
     cta: 'Wróć na stronę główną',
   },
   ui: {
@@ -191,7 +192,7 @@ export const pl: WebMessages = {
       components: 'Komponenty',
     },
     index: {
-      metaTitle: 'Eagami UI',
+      metaTitle: 'Eagami UI | Biblioteka komponentów Angular',
       metaDescription:
         'Lekka, dostępna biblioteka komponentów Angular oparta na niestandardowych właściwościach CSS.',
       title: 'Eagami UI',
@@ -270,7 +271,7 @@ export const pl: WebMessages = {
       theme: {
         heading: 'Dostosuj do siebie',
         ledeBefore: '',
-        ledeLink: 'Tokeny projektowe',
+        ledeLink: 'Tokeny designu',
         ledeAfter:
           ' nadają każdemu projektowi Eagami odrębny charakter: konfigurowalne kolory, czcionki, odstępy, narożniki, cienie i ruch, wszystko zastosowane w całej witrynie lub aplikacji. Zmień kilka poniżej i zobacz, jak wpływają na komponenty.',
         brandColor: 'Kolor marki',
@@ -308,7 +309,7 @@ export const pl: WebMessages = {
       tokensLink: 'Tokeny designu jako JSON',
     },
     themeBuilder: {
-      metaTitle: 'Kreator motywu | Eagami UI',
+      metaTitle: 'Kreator motywu Angular | Eagami UI',
       metaDescription:
         'Wygeneruj sprawdzoną pod kątem WCAG paletę dla trybu jasnego i ciemnego na podstawie kolorów marki, a następnie skopiuj konfigurację dostawcy lub CSS.',
       title: 'Kreator motywu',
@@ -357,12 +358,12 @@ export const pl: WebMessages = {
       paletteIntro:
         'Przekaż jeden hex marki do <code>provideEagamiUi()</code>, a biblioteka wyprowadzi pełną skalę dziesięciu odcieni (50 do 900) w przestrzeni <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, utrzymując stały odcień i nasycenie przy zmianie jasności. Wyprowadzone odcienie zasilają każdy token <code>--color-brand-*</code> w trybie jasnym i ciemnym:',
       paletteOverrides:
-        'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje dany rol semantyczny:',
+        'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje daną rolę semantyczną:',
       paletteContrast:
-        'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem WCAG 2.1 AA przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
+        'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem WCAG 2.2 AA przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
       paletteBuilderIntro: 'Twórz i podglądaj paletę wizualnie w',
       paletteBuilderLink: 'kreatorze motywu',
-      elevationDrop: 'Cienie',
+      elevationDrop: 'Cienie rzucane',
       elevationRelief: 'Wypukłość i wgłębienie',
       elevationReliefBefore:
         '<code>--shadow-bevel</code> łączy wewnętrzne podświetlenie (góra) z wewnętrznym cieniem (dół), dzięki czemu powierzchnia wygląda na uniesioną. <code>--shadow-well</code> odwraca oświetlenie i daje efekt wgłębienia. Połącz z <code>--shadow-*</code>, aby dodać cień otoczenia: <code>box-shadow: var(--shadow-bevel), var(--shadow-sm);</code>',
@@ -383,7 +384,7 @@ export const pl: WebMessages = {
       motionEasings: 'Krzywe',
     },
     icons: {
-      metaTitle: 'Ikony | Eagami UI',
+      metaTitle: 'Ikony Angular | Eagami UI',
       metaDescription: 'Zestaw ikon dołączony do @eagami/ui.',
       title: 'Ikony',
       lede: 'Samodzielne komponenty Angular, które dziedziczą kolor i skalują się wraz z <code>font-size</code>, dzięki czemu renderują się w dowolnym rozmiarze. Większość pochodzi z <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> autorstwa <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole’a Bemisa</span></a> i używana jest na <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licencji MIT</span></a>; pozostałe to oryginalne ikony Eagami UI. Ikony Feather mogą być również rysowane z cieńszymi lub grubszymi liniami. Kliknij ikonę, aby skopiować jej selektor.',
@@ -447,7 +448,7 @@ export const pl: WebMessages = {
       builtInItems: [
         {
           title: 'Semantyka',
-          body: 'Natywne elementy tam, gdzie to możliwe, jawne role, stany i właściwości ARIA tam, gdzie nie. Stany takie jak rozwinięty, wybrany, zaznaczony, nieprawidłowy i zajęty są zawsze udostępniane programowo, nigdy wyłącznie przez stylowanie.',
+          body: 'Natywne elementy tam, gdzie to możliwe, jawne role, stany i właściwości ARIA tam, gdzie nie. Stany takie jak expanded, selected, checked, invalid i busy są zawsze udostępniane programowo, nigdy wyłącznie przez stylowanie.',
         },
         {
           title: 'Obsługa klawiatury',
@@ -480,8 +481,9 @@ export const pl: WebMessages = {
         'Każdy komponent jest sprawdzany pod kątem branżowych reguł dostępności przy każdej zmianie, a wydanie ukazuje się tylko wtedy, gdy wszystkie kontrole przechodzą pomyślnie, więc dostępność, którą tu widzisz, utrzymuje się w miarę rozwoju biblioteki.',
     },
     component: {
-      metaTitle: name => `${name} | Eagami UI`,
-      metaDescription: name => `Dokumentacja i demonstracje komponentu ${name} na żywo.`,
+      metaTitle: name => `Komponent Angular ${name} | Eagami UI`,
+      metaDescription: name =>
+        `Komponent Angular ${name}: demo na żywo, dokumentacja API i tworzenie motywów za pomocą zmiennych CSS.`,
       demoHeading: 'Demo',
       notFoundTitle: 'Nie znaleziono komponentu',
       notFoundBody: 'Wybierz komponent z paska bocznego lub',
@@ -493,7 +495,7 @@ export const pl: WebMessages = {
         states: 'stany',
         disabled: 'wyłączony',
         dismissible: 'zamykalny',
-        clearable: 'czyszczone',
+        clearable: 'z czyszczeniem',
         hintAndError: 'wskazówka i błąd',
         withHint: 'ze wskazówką',
         withError: 'z błędem',
@@ -512,7 +514,7 @@ export const pl: WebMessages = {
         circle: 'koło',
         square: 'kwadrat',
         shapes: 'kształty',
-        shapesAndFallbacks: 'kształty i zapasowe',
+        shapesAndFallbacks: 'kształty i wartości zapasowe',
         chevronSeparator: 'separator chevron',
         slashSeparator: 'separator ukośnik',
         twoLevels: 'dwa poziomy',
@@ -555,7 +557,7 @@ export const pl: WebMessages = {
         customIcon: 'niestandardowa ikona',
         customIconAndColor: 'niestandardowa ikona i kolor',
         customLabel: 'etykieta niestandardowa',
-        halfSteps: 'pół-kroki',
+        halfSteps: 'półkroki',
         customSize: 'rozmiar niestandardowy',
         linearFlow: 'przepływ liniowy',
         manyLevels: 'wiele poziomów',
@@ -664,13 +666,13 @@ export const pl: WebMessages = {
           cardWithFooterBody: 'Ta karta ma nagłówek, treść i stopkę z akcjami.',
         },
         checkbox: {
-          acceptTermsAndConditions: 'Akceptuję regulamin',
+          acceptTermsAndConditions: 'Zaakceptuj regulamin i warunki',
           disabledChecked: 'Wyłączony zaznaczony',
           indeterminate: 'Nieokreślony',
           iAgreeToTerms: 'Akceptuję warunki',
           subscribeToUpdates: 'Subskrybuj aktualizacje',
           subscribeHint: 'Co miesiąc wysyłany jest skrót, bez spamu',
-          acceptTermsLabel: 'Akceptuj warunki',
+          acceptTermsLabel: 'Zaakceptuj warunki',
           acceptTermsError: 'Aby kontynuować, należy zaakceptować warunki',
         },
         codeInput: {
@@ -949,7 +951,7 @@ export const pl: WebMessages = {
           row: 'Wiersz',
           detail: n => `Wygenerowany rekord nr ${n}`,
           scrollPosition: (first, total) =>
-            `Wiersz ${first.toLocaleString('pl-PL')} z ${total.toLocaleString('pl-PL')}`,
+            `Wyświetlanie wiersza ${first.toLocaleString('pl-PL')} z ${total.toLocaleString('pl-PL')}`,
         },
         commandPalette: {
           hint: 'Naciśnij Ctrl + K (lub Cmd + K), aby otworzyć paletę poleceń w dowolnym miejscu strony.',
@@ -1085,7 +1087,7 @@ export const pl: WebMessages = {
             size: 'Rozmiar',
             format: 'Format',
             showAlpha: 'Pokaż kanał alfa',
-            clearable: 'Czyszczenie',
+            clearable: 'Z czyszczeniem',
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
@@ -1192,7 +1194,7 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             resize: 'Zmiana rozmiaru',
-            maxlength: 'Maksymalna długość (chars)',
+            maxlength: 'Maksymalna długość (znaków)',
             minHeight: 'Minimalna wysokość (px)',
             maxHeight: 'Maksymalna wysokość (px)',
             disabled: 'Wyłączone',
@@ -1706,7 +1708,7 @@ export const pl: WebMessages = {
           autocomplete: {
             disabled: 'Wyłącza pole.',
             emptyMessage:
-              'Komunikat wyświetlany na liście, gdy żadna opcja nie pasuje do wpisanego tekstu, z powrotem do tłumaczenia aktywnej lokalizacji gdy pominięty.',
+              'Komunikat wyświetlany na liście, gdy żadna opcja nie pasuje do wpisanego tekstu; w razie pominięcia używane jest tłumaczenie aktywnego języka.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
@@ -1734,7 +1736,7 @@ export const pl: WebMessages = {
           },
           'command-palette': {
             emptyMessage:
-              'Komunikat wyświetlany gdy zapytanie nie pasuje do żadnego elementu, z powrotem do tłumaczenia aktywnej lokalizacji gdy pominięty.',
+              'Komunikat wyświetlany gdy zapytanie nie pasuje do żadnego elementu; w razie pominięcia używane jest tłumaczenie aktywnego języka.',
             items:
               'Pełna lista elementów poleceń dostępnych do wyszukiwania i wykonania.',
             open: 'Określa, czy okno dialogowe palety jest otwarte, dwukierunkowo wiązalne przez [(open)].',
@@ -1994,14 +1996,14 @@ export const pl: WebMessages = {
               'Predefiniowana pionowa gęstość sterująca wypełnieniem wierszy i komórek nagłówka.',
             hoverable: 'Podświetla wiersz pod wskaźnikiem po najechaniu kursorem.',
             noDataText:
-              'Tekst wyświetlany w stanie pustym, z powrotem do tłumaczenia aktywnej lokalizacji.',
+              'Tekst wyświetlany w stanie pustym; w razie pominięcia używane jest tłumaczenie aktywnego języka.',
             sort: 'Bieżący stan sortowania (klucz kolumny i kierunek), dwukierunkowo wiązalny przez [(sort)].',
             stickyHeader:
               'Przytwierdza wiersz nagłówka do góry tabeli podczas przewijania zawartości.',
             striped:
               'Stosuje naprzemienne cieniowanie tła do nieparzystych i parzystych wierszy.',
             trackBy:
-              'Klucz właściwości wiersza używany przez wykrywanie zmian Angular do efektywnej identyfikacji wierszy.',
+              'Klucz właściwości wiersza używany przez wykrywanie zmian Angulara do efektywnej identyfikacji wierszy.',
             sorted:
               'Emitowane za każdym razem, gdy kolumna lub kierunek sortowania zmienia się przez kliknięcie nagłówka.',
           },
