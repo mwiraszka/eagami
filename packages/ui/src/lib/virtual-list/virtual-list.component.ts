@@ -2,10 +2,11 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  type ElementRef,
+  ElementRef,
   type TemplateRef,
   computed,
   contentChild,
+  inject,
   input,
   output,
   signal,
@@ -55,6 +56,15 @@ export interface VirtualListItemContext<T = unknown> {
   imports: [NgTemplateOutlet],
 })
 export class VirtualListComponent {
+  // A composite consumer (a role on the host, e.g. listbox or grid) manages
+  // keyboard interaction and scrolling itself, and a focusable generic inside
+  // it would break the pattern. Without one, the viewport must take focus so
+  // keyboard users can scroll it.
+  private readonly hostRole: string | null =
+    inject(ElementRef).nativeElement.getAttribute('role');
+
+  protected readonly viewportTabindex = this.hostRole === null ? 0 : null;
+
   readonly items = input.required<readonly unknown[]>();
 
   /** Pixel height of each item. Must be > 0. */

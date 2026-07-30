@@ -6,7 +6,7 @@
   [class.ea-drawer--push]="mode() === 'push'"
   [id]="id()"
   [attr.aria-label]="ariaLabel() ?? null"
-  [attr.aria-labelledby]="!ariaLabel() ? id() + '-header' : null"
+  [attr.aria-labelledby]="!ariaLabel() && hasHeader() ? id() + '-header' : null"
   (click)="handleBackdropClick($event)"
   (cancel)="handleCancel($event)"
   (keydown)="handleKeydown($event)"
@@ -26,6 +26,7 @@
     }
 
     <div
+      #headerEl
       class="ea-drawer__header"
       [id]="id() + '-header'">
       <ng-content select="[slot=header]" />

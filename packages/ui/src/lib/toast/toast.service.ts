@@ -26,6 +26,11 @@ export interface ToastOptions {
 @Injectable({ providedIn: 'root' })
 export class ToastService {
   private nextId = 0;
+  private readonly timers = new Map<
+    number,
+    { handle: ReturnType<typeof setTimeout> | null; startedAt: number; remaining: number }
+  >();
+  private paused = false;
 
   readonly toasts = signal<Toast[]>([]);
 
@@ -42,10 +47,50 @@ export class ToastService {
     this.toasts.update(list => [...list, toast]);
 
     if (toast.duration > 0) {
-      setTimeout(() => this.dismiss(id), toast.duration);
+      const entry = {
+        handle: null as ReturnType<typeof setTimeout> | null,
+        startedAt: Date.now(),
+        remaining: toast.duration,
+      };
+      if (!this.paused) {
+        entry.handle = setTimeout(() => this.dismiss(id), toast.duration);
+      }
+      this.timers.set(id, entry);
     }
 
     return id;
+  }
+
+  /**
+   * Suspends every auto-dismiss countdown, keeping the time each toast has
+   * left. The `<ea-toast />` outlet calls this while the pointer or keyboard
+   * focus is on the stack so users get time to read or reach the dismiss
+   * button.
+   */
+  pause(): void {
+    if (this.paused) {
+      return;
+    }
+    this.paused = true;
+    for (const entry of this.timers.values()) {
+      if (entry.handle !== null) {
+        clearTimeout(entry.handle);
+        entry.handle = null;
+        entry.remaining = Math.max(0, entry.remaining - (Date.now() - entry.startedAt));
+      }
+    }
+  }
+
+  /** Resumes auto-dismiss countdowns suspended by {@link pause}. */
+  resume(): void {
+    if (!this.paused) {
+      return;
+    }
+    this.paused = false;
+    for (const [id, entry] of this.timers) {
+      entry.startedAt = Date.now();
+      entry.handle = setTimeout(() => this.dismiss(id), entry.remaining);
+    }
   }
 
   /** Shows a `success` toast and returns its id. */
@@ -70,11 +115,22 @@ export class ToastService {
 
   /** Removes the toast with the given id, if it is still active. */
   dismiss(id: number): void {
+    const entry = this.timers.get(id);
+    if (entry?.handle != null) {
+      clearTimeout(entry.handle);
+    }
+    this.timers.delete(id);
     this.toasts.update(list => list.filter(t => t.id !== id));
   }
 
   /** Removes all currently visible toasts. */
   clear(): void {
+    for (const entry of this.timers.values()) {
+      if (entry.handle !== null) {
+        clearTimeout(entry.handle);
+      }
+    }
+    this.timers.clear();
     this.toasts.set([]);
   }
 }

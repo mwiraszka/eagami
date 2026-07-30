@@ -13,6 +13,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { type EaSize } from '../sizes';
 import { TreeNodeComponent } from './tree-node.component';
 import { type TreeNode, visibleNodeIds, walkTree } from './tree.types';
@@ -156,7 +157,17 @@ export class TreeComponent {
     const currentId = this.focusedId();
     const currentIdx = currentId ? visible.indexOf(currentId) : -1;
 
-    switch (event.key) {
+    // In RTL the horizontal arrows swap: the arrow pointing towards the child
+    // indent expands, the one pointing towards the root collapses
+    const rtl = isRtl(event.currentTarget as Element);
+    let key = event.key;
+    if (rtl && key === 'ArrowRight') {
+      key = 'ArrowLeft';
+    } else if (rtl && key === 'ArrowLeft') {
+      key = 'ArrowRight';
+    }
+
+    switch (key) {
       case 'ArrowDown': {
         event.preventDefault();
         const next = visible[Math.min(currentIdx + 1, visible.length - 1)];

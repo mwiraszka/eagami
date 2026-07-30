@@ -142,12 +142,27 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   readonly listboxId = computed(() => `${this.id()}-listbox`);
 
+  /** Whether the Select-all row renders as the first option in the listbox. */
+  protected readonly selectAllVisible = computed(
+    () => this.selectAll() && this.filteredOptions().length > 0,
+  );
+
+  /** Row-index offset the Select-all row adds ahead of the filtered options. */
+  protected readonly selectAllOffset = computed(() => (this.selectAllVisible() ? 1 : 0));
+
+  private readonly rowCount = computed(
+    () => this.filteredOptions().length + this.selectAllOffset(),
+  );
+
+  protected readonly selectAllAriaChecked = computed(() => {
+    const state = this.selectAllState();
+    return state === 'some' ? 'mixed' : state === 'all' ? 'true' : 'false';
+  });
+
   /** Id of the keyboard-focused option, for `aria-activedescendant`. */
   readonly activeOptionId = computed(() => {
     const idx = this.focusedIndex();
-    return idx >= 0 && idx < this.filteredOptions().length
-      ? `${this.id()}-opt-${idx}`
-      : null;
+    return idx >= 0 && idx < this.rowCount() ? `${this.id()}-opt-${idx}` : null;
   });
 
   /** Chips visible inside the trigger, capped by `maxVisibleChips`. */
@@ -264,13 +279,36 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.commit(this.orderedValues(set));
   }
 
+  /**
+   * Clicks on the bordered box (trigger, padding, chevron) all toggle; the
+   * clear button and chip remove buttons stop propagation before reaching
+   * here. The combobox element only takes focus natively when clicked
+   * directly, so focus is restored explicitly for the activedescendant model.
+   */
+  protected onTriggerAreaClick(): void {
+    this.toggle();
+    if (!this.isOpen() || !this.searchable()) {
+      this.triggerEl()?.nativeElement.focus();
+    }
+  }
+
   // Options never take DOM focus, so a click must return focus to the
   // element carrying aria-activedescendant
   protected onOptionClick(opt: SelectOption, index: number): void {
     if (!opt.disabled) {
-      this.focusedIndex.set(index);
+      this.focusedIndex.set(index + this.selectAllOffset());
     }
     this.toggleOption(opt);
+    this.restoreTypingFocus();
+  }
+
+  protected onSelectAllClick(): void {
+    this.focusedIndex.set(0);
+    this.toggleSelectAll();
+    this.restoreTypingFocus();
+  }
+
+  private restoreTypingFocus(): void {
     if (this.searchable()) {
       this.searchEl()?.nativeElement.focus();
     } else {
@@ -366,37 +404,28 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (this.isDisabled() || this.readonly()) {
       return;
     }
-    const opts = this.filteredOptions();
     const onSearchInput = event.target === this.searchEl()?.nativeElement;
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      const next = Math.min(opts.length - 1, this.focusedIndex() + 1);
-      this.focusedIndex.set(next);
+      this.moveFocusedRow(Math.min(this.rowCount() - 1, this.focusedIndex() + 1));
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
-      const next = Math.max(0, this.focusedIndex() - 1);
-      this.focusedIndex.set(next);
+      this.moveFocusedRow(Math.max(0, this.focusedIndex() - 1));
     } else if (event.key === 'Home') {
       event.preventDefault();
-      this.focusedIndex.set(0);
+      this.moveFocusedRow(0);
     } else if (event.key === 'End') {
       event.preventDefault();
-      this.focusedIndex.set(opts.length - 1);
+      this.moveFocusedRow(this.rowCount() - 1);
     } else if (event.key === 'Enter') {
       event.preventDefault();
-      const idx = this.focusedIndex();
-      if (idx >= 0 && idx < opts.length) {
-        this.toggleOption(opts[idx]);
-      }
+      this.activateRow(this.focusedIndex());
     } else if (event.key === ' ' && !onSearchInput) {
       // Toggle on Space only when an option row has focus; the search input
       // needs Space for typing.
       event.preventDefault();
-      const idx = this.focusedIndex();
-      if (idx >= 0 && idx < opts.length) {
-        this.toggleOption(opts[idx]);
-      }
+      this.activateRow(this.focusedIndex());
     } else if (event.key === 'Escape') {
       event.preventDefault();
       this.close();
@@ -411,6 +440,30 @@ export class MultiSelectComponent implements ControlValueAccessor {
     afterNextRender(() => this.searchEl()?.nativeElement.focus(), {
       injector: this.injector,
     });
+  }
+
+  private moveFocusedRow(row: number): void {
+    this.focusedIndex.set(row);
+    const activeId = this.activeOptionId();
+    if (activeId) {
+      document.getElementById(activeId)?.scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  /** Enter/Space on the focused row: row 0 is Select-all when visible. */
+  private activateRow(row: number): void {
+    const offset = this.selectAllOffset();
+    if (row < 0) {
+      return;
+    }
+    if (offset === 1 && row === 0) {
+      this.toggleSelectAll();
+      return;
+    }
+    const opt = this.filteredOptions()[row - offset];
+    if (opt) {
+      this.toggleOption(opt);
+    }
   }
 
   /** Reorder a value-set against the input `options` array. */

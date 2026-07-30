@@ -348,12 +348,26 @@ describe('MultiSelectComponent', () => {
     it('toggles the focused option on Enter', () => {
       getTrigger().click();
       fixture.detectChanges();
-      component.focusedIndex.set(1);
+      // Row 0 is the Select-all row, so the second option sits at row 2
+      component.focusedIndex.set(2);
 
       const search = getSearchInput()!;
       search.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 
       expect(component.value()).toEqual(['banana']);
+    });
+
+    it('toggles every option via the Select-all row on Enter', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      const search = getSearchInput()!;
+
+      search.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
+      );
+      search.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+
+      expect(component.value()).toEqual(['apple', 'banana', 'cherry', 'date']);
     });
 
     it('removes the last chip on Backspace when the trigger is focused and closed', () => {
@@ -375,7 +389,10 @@ describe('MultiSelectComponent', () => {
 
       expect(list?.getAttribute('role')).toBe('listbox');
       expect(list?.getAttribute('aria-multiselectable')).toBe('true');
-      expect(getOptionRows()[0].id).toBe(`${component.id()}-opt-0`);
+      const selectAllRow = list?.querySelector('.ea-multi-select__option--select-all');
+      expect(selectAllRow?.getAttribute('role')).toBe('option');
+      expect(selectAllRow?.id).toBe(`${component.id()}-opt-0`);
+      expect(getOptionRows()[0].id).toBe(`${component.id()}-opt-1`);
     });
 
     it('links the trigger to the labelled listbox via aria-controls while open', () => {
@@ -415,12 +432,13 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
       getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
       fixture.detectChanges();
 
       expect(getTrigger().getAttribute('aria-activedescendant')).toBe(
-        `${component.id()}-opt-0`,
+        `${component.id()}-opt-1`,
       );
       expect(component.value()).toEqual(['apple']);
     });
@@ -470,7 +488,7 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       expect(document.activeElement).toBe(getSearchInput());
-      expect(component.focusedIndex()).toBe(1);
+      expect(component.focusedIndex()).toBe(2);
     });
   });
 

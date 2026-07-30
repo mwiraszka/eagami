@@ -10,6 +10,7 @@ import {
   signal,
 } from '@angular/core';
 
+import { isRtl } from '../direction';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { CheckIconComponent } from '../icons/check.component';
 import { type EaSize } from '../sizes';
@@ -120,11 +121,15 @@ export class StepperComponent {
       return;
     }
 
+    const rtl = isRtl(event.currentTarget as Element);
+    const forwardKey = rtl ? 'ArrowLeft' : 'ArrowRight';
+    const backwardKey = rtl ? 'ArrowRight' : 'ArrowLeft';
+
     let nextIndex = -1;
-    if (event.key === 'ArrowRight') {
+    if (event.key === forwardKey) {
       event.preventDefault();
       nextIndex = this.nextReachable(this.activeStep(), 1);
-    } else if (event.key === 'ArrowLeft') {
+    } else if (event.key === backwardKey) {
       event.preventDefault();
       nextIndex = this.nextReachable(this.activeStep(), -1);
     } else if (event.key === 'Home') {

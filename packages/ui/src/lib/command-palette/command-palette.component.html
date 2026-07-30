@@ -89,6 +89,7 @@
     role="option"
     [id]="itemDomId(entry.item)"
     [attr.aria-selected]="isActive(entry.flatIndex)"
+    [attr.aria-disabled]="entry.item.disabled || null"
     [class.ea-command-palette__item--active]="showActiveHighlight(entry.flatIndex)"
     [class.ea-command-palette__item--disabled]="entry.item.disabled"
     (click)="onItemClick(entry.item)"

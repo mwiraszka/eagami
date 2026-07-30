@@ -75,9 +75,19 @@
   color: var(--color-text-secondary);
 }
 
+// Kept a non-focusable pointer affordance per the ARIA tree pattern (arrow keys
+// expand and collapse), but hover feedback matches the shared icon-button look
 .ea-tree-node__chevron {
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: transform var(--motion-duration-fast) var(--motion-easing-standard);
+  transition:
+    var(--transition-colors),
+    transform var(--motion-duration-fast) var(--motion-easing-standard);
+
+  &:hover {
+    background-color: var(--color-state-hover);
+    color: var(--color-text-primary);
+  }
 
   &--open {
     transform: rotate(90deg);

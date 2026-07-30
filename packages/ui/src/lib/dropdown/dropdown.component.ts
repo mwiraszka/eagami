@@ -267,8 +267,16 @@ export class DropdownComponent implements ControlValueAccessor {
       idx += direction;
     }
     if (idx >= 0 && idx < opts.length) {
-      this.focusedIndex.set(idx);
+      this.setFocusedIndex(idx);
     }
+  }
+
+  /** Keeps the keyboard-focused option visible inside the scrolling listbox. */
+  private setFocusedIndex(idx: number): void {
+    this.focusedIndex.set(idx);
+    document
+      .getElementById(`${this.id()}-option-${idx}`)
+      ?.scrollIntoView({ block: 'nearest' });
   }
 
   private handleTypeahead(event: KeyboardEvent): void {
@@ -297,7 +305,7 @@ export class DropdownComponent implements ControlValueAccessor {
       const idx = (start + offset) % opts.length;
       const opt = opts[idx];
       if (!opt.disabled && opt.label.toLowerCase().startsWith(this.typeaheadQuery)) {
-        this.focusedIndex.set(idx);
+        this.setFocusedIndex(idx);
         return;
       }
     }
@@ -310,7 +318,7 @@ export class DropdownComponent implements ControlValueAccessor {
       idx += delta;
     }
     if (idx >= 0 && idx < opts.length) {
-      this.focusedIndex.set(idx);
+      this.setFocusedIndex(idx);
     }
   }
 }

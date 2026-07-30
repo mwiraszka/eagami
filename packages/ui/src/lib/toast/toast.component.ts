@@ -1,10 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  type ElementRef,
   ViewEncapsulation,
   computed,
   inject,
   input,
+  viewChild,
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
@@ -45,6 +47,10 @@ export type ToastSize = EaSize;
 export class ToastComponent {
   protected readonly toastService = inject(ToastService);
   protected readonly i18n = inject(EagamiI18nService);
+  private readonly containerEl = viewChild<ElementRef<HTMLElement>>('containerEl');
+
+  private hovered = false;
+  private focused = false;
 
   /** Viewport corner or edge the toast stack is pinned to. */
   readonly position = input<ToastPosition>('bottom-right');
@@ -56,4 +62,38 @@ export class ToastComponent {
   protected readonly containerClass = computed(
     () => `ea-toast-container ea-toast-container--${this.position()}`,
   );
+
+  /** Errors and warnings interrupt like `ea-alert`; the rest wait politely. */
+  protected toastRole(variant: string): 'alert' | 'status' {
+    return variant === 'error' || variant === 'warning' ? 'alert' : 'status';
+  }
+
+  protected onMouseEnter(): void {
+    this.hovered = true;
+    this.syncPause();
+  }
+
+  protected onMouseLeave(): void {
+    this.hovered = false;
+    this.syncPause();
+  }
+
+  protected onFocusIn(): void {
+    this.focused = true;
+    this.syncPause();
+  }
+
+  protected onFocusOut(event: FocusEvent): void {
+    const container = this.containerEl()?.nativeElement;
+    this.focused = !!container && container.contains(event.relatedTarget as Node | null);
+    this.syncPause();
+  }
+
+  private syncPause(): void {
+    if (this.hovered || this.focused) {
+      this.toastService.pause();
+    } else {
+      this.toastService.resume();
+    }
+  }
 }

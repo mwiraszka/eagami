@@ -124,8 +124,8 @@ describe('VirtualListComponent', () => {
   });
 
   describe('Viewport accessibility', () => {
-    it('leaves the viewport out of the tab order and unlabelled by default', () => {
-      expect(getViewport().hasAttribute('tabindex')).toBe(false);
+    it('keeps the viewport keyboard-focusable but unlabelled by default', () => {
+      expect(getViewport().getAttribute('tabindex')).toBe('0');
       expect(getViewport().hasAttribute('role')).toBe(false);
       expect(getViewport().hasAttribute('aria-label')).toBe(false);
     });

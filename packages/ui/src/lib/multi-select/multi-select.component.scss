@@ -24,6 +24,7 @@
     border-radius: var(--radius-md);
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
+    cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
 
     &--xs {
@@ -114,7 +115,6 @@
     width: 1em;
     height: 1em;
     color: var(--color-text-secondary);
-    cursor: pointer;
     transition: var(--transition-transform);
   }
 
