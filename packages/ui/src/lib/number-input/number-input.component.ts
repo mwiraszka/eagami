@@ -126,6 +126,7 @@ export class NumberInputComponent implements ControlValueAccessor {
   });
   readonly errorText = this.errorState.error;
   readonly hasError = this.errorState.hasError;
+  readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
   readonly canIncrement = computed(() => {

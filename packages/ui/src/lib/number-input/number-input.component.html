@@ -25,7 +25,7 @@
       [attr.aria-label]="ariaLabel() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
-        hasError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
       (input)="handleInput()"
       (keydown)="handleKeydown($event)"

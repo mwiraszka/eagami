@@ -340,6 +340,18 @@ export class TimePickerComponent implements ControlValueAccessor {
   }
 
   /**
+   * Keyboard activation of a stepper button dispatches only a click, never the
+   * pointer events that drive the hold repeat. `detail` is 0 for those
+   * synthetic clicks, so pointer presses (already handled by startHold) are
+   * ignored here.
+   */
+  onStepClick(unit: Unit, direction: 1 | -1, event: MouseEvent): void {
+    if (event.detail === 0) {
+      this.step(unit, direction);
+    }
+  }
+
+  /**
    * Begin a long-press repeat on a chevron button. Fires once immediately,
    * then after a `HOLD_INITIAL_DELAY` pause repeats at `HOLD_INTERVAL_MS`,
    * accelerating to `HOLD_FAST_INTERVAL_MS` after `HOLD_ACCELERATE_AFTER_MS`

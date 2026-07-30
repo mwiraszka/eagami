@@ -14,6 +14,30 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.12.2',
+    date: '2026-07-31',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Ensure time picker stepper buttons respond to keyboard activation.',
+          'Announce error and warning toasts immediately, and pause toast auto-dismiss while the pointer or keyboard focus is on the stack.',
+          "Make the multi-select's Select all row keyboard-accessible inside the option list, announce empty search results, and let the whole box toggle the list on click.",
+          'Keep the keyboard-focused option scrolled into view in dropdown and multi-select lists.',
+          "Correct the autocomplete's expanded state and selected-option announcements.",
+          "Restore button semantics for the date picker's calendar day cells.",
+          'Prevent a required file uploader from silently blocking form submission.',
+          'Stop dialogs and drawers referencing an empty header as their accessible name.',
+          'Expose disabled command palette items to assistive technology and skip them during arrow-key navigation.',
+          'Let keyboard users scroll the virtual list even without an aria-label.',
+          "Remove the avatar editor's invisible tab stop on its hidden file input.",
+          'Mirror stepper and tree arrow-key navigation in right-to-left layouts.',
+          "Add hover feedback to the tree's expand chevron, and an explicit label association to the switch.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.12.1',
     date: '2026-07-29',
     sections: [

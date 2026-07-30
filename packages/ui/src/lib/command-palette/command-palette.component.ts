@@ -226,49 +226,71 @@ export class CommandPaletteComponent {
   }
 
   protected onSearchKeydown(event: KeyboardEvent): void {
-    const max = this.filteredItems().length - 1;
-    if (max < 0) {
+    if (this.filteredItems().length === 0) {
       return;
     }
 
     switch (event.key) {
       case 'ArrowDown': {
         event.preventDefault();
-        this._activeIndex.set(this.activeIndex() < max ? this.activeIndex() + 1 : 0);
-        this.interaction.set('keyboard');
-        this.scrollActiveIntoView();
+        this.moveActive(1);
         break;
       }
       case 'ArrowUp': {
         event.preventDefault();
-        this._activeIndex.set(this.activeIndex() > 0 ? this.activeIndex() - 1 : max);
-        this.interaction.set('keyboard');
-        this.scrollActiveIntoView();
+        this.moveActive(-1);
         break;
       }
       case 'Home': {
         event.preventDefault();
-        this._activeIndex.set(0);
-        this.interaction.set('keyboard');
-        this.scrollActiveIntoView();
+        this.edgeActive(1);
         break;
       }
       case 'End': {
         event.preventDefault();
-        this._activeIndex.set(max);
-        this.interaction.set('keyboard');
-        this.scrollActiveIntoView();
+        this.edgeActive(-1);
         break;
       }
       case 'Enter': {
         event.preventDefault();
         const item = this.filteredItems()[this.activeIndex()];
-        if (item) {
+        if (item && !item.disabled) {
           this.executeItem(item);
         }
         break;
       }
     }
+  }
+
+  /** Wrapping arrow-key move that skips disabled items. */
+  private moveActive(delta: 1 | -1): void {
+    const items = this.filteredItems();
+    let idx = this.activeIndex();
+    for (let i = 0; i < items.length; i++) {
+      idx = (idx + delta + items.length) % items.length;
+      if (!items[idx].disabled) {
+        this.setActiveByKeyboard(idx);
+        return;
+      }
+    }
+  }
+
+  /** Home/End move to the first enabled item from the given end. */
+  private edgeActive(direction: 1 | -1): void {
+    const items = this.filteredItems();
+    let idx = direction === 1 ? 0 : items.length - 1;
+    while (idx >= 0 && idx < items.length && items[idx].disabled) {
+      idx += direction;
+    }
+    if (idx >= 0 && idx < items.length) {
+      this.setActiveByKeyboard(idx);
+    }
+  }
+
+  private setActiveByKeyboard(idx: number): void {
+    this._activeIndex.set(idx);
+    this.interaction.set('keyboard');
+    this.scrollActiveIntoView();
   }
 
   protected onItemClick(item: CommandPaletteItem): void {

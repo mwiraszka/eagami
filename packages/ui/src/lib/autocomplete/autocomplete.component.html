@@ -28,7 +28,7 @@
       [required]="required()"
       [value]="value()"
       [attr.aria-label]="label() ? null : ariaLabel()"
-      [attr.aria-expanded]="isOpen()"
+      [attr.aria-expanded]="showList()"
       [attr.aria-haspopup]="'listbox'"
       [attr.aria-autocomplete]="'list'"
       [attr.aria-controls]="id() + '-listbox'"
@@ -71,7 +71,7 @@
           [id]="id() + '-option-' + i"
           [class.ea-autocomplete__option--focused]="i === focusedIndex()"
           [class.ea-autocomplete__option--disabled]="option.disabled"
-          [attr.aria-selected]="i === focusedIndex()"
+          [attr.aria-selected]="option.label === value()"
           [attr.aria-disabled]="option.disabled || null"
           (mousedown)="selectOption(option)"
           (mouseenter)="focusedIndex.set(i)">

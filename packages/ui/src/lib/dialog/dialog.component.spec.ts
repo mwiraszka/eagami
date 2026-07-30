@@ -40,6 +40,15 @@ class TestHostComponent {
   showClose = signal(true);
 }
 
+@Component({
+  selector: 'ea-test-no-header-host',
+  imports: [DialogComponent],
+  template: `<ea-dialog [(open)]="isOpen">Body only</ea-dialog>`,
+})
+class NoHeaderHostComponent {
+  isOpen = signal(true);
+}
+
 describe('DialogComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
@@ -199,6 +208,23 @@ describe('DialogComponent', () => {
     it('projects footer content', () => {
       const footer = fixture.nativeElement.querySelector('.ea-dialog__footer');
       expect(footer.textContent).toContain('Footer');
+    });
+  });
+
+  describe('Accessible name', () => {
+    it('points aria-labelledby at the projected header', () => {
+      const dialog = fixture.nativeElement.querySelector('.ea-dialog') as HTMLElement;
+
+      expect(dialog.getAttribute('aria-labelledby')).toBe(`${dialog.id}-header`);
+    });
+
+    it('drops aria-labelledby when no header content is projected', () => {
+      const bare = TestBed.createComponent(NoHeaderHostComponent);
+      bare.detectChanges();
+
+      const dialog = bare.nativeElement.querySelector('.ea-dialog') as HTMLElement;
+
+      expect(dialog.getAttribute('aria-labelledby')).toBeNull();
     });
   });
 

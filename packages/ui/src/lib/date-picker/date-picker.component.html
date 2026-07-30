@@ -135,22 +135,25 @@
               class="ea-date-picker__week"
               role="row">
               @for (day of week; track day.date.getTime()) {
-                <button
-                  type="button"
-                  class="ea-date-picker__day"
+                <div
+                  class="ea-date-picker__cell"
                   role="gridcell"
-                  [class.ea-date-picker__day--outside]="!day.isCurrentMonth"
-                  [class.ea-date-picker__day--today]="day.isToday"
-                  [class.ea-date-picker__day--selected]="day.isSelected"
-                  [class.ea-date-picker__day--focused]="day.isFocused"
-                  [class.ea-date-picker__day--disabled]="day.isDisabled"
-                  [attr.aria-disabled]="day.isDisabled || null"
-                  [attr.aria-selected]="day.isSelected"
-                  [attr.aria-current]="day.isToday ? 'date' : null"
-                  [attr.tabindex]="day.isFocused ? 0 : -1"
-                  (click)="selectDay(day)">
-                  {{ day.day }}
-                </button>
+                  [attr.aria-selected]="day.isSelected">
+                  <button
+                    type="button"
+                    class="ea-date-picker__day"
+                    [class.ea-date-picker__day--outside]="!day.isCurrentMonth"
+                    [class.ea-date-picker__day--today]="day.isToday"
+                    [class.ea-date-picker__day--selected]="day.isSelected"
+                    [class.ea-date-picker__day--focused]="day.isFocused"
+                    [class.ea-date-picker__day--disabled]="day.isDisabled"
+                    [attr.aria-disabled]="day.isDisabled || null"
+                    [attr.aria-current]="day.isToday ? 'date' : null"
+                    [attr.tabindex]="day.isFocused ? 0 : -1"
+                    (click)="selectDay(day)">
+                    {{ day.day }}
+                  </button>
+                </div>
               }
             </div>
           }

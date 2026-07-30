@@ -1,5 +1,6 @@
 import { NgClass, isPlatformBrowser } from '@angular/common';
 import {
+  type AfterContentChecked,
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
@@ -11,6 +12,7 @@ import {
   input,
   model,
   output,
+  signal,
   viewChild,
 } from '@angular/core';
 
@@ -36,8 +38,9 @@ export type DialogWidth = EaWidth;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class DialogComponent {
+export class DialogComponent implements AfterContentChecked {
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
+  private readonly headerEl = viewChild<ElementRef<HTMLElement>>('headerEl');
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
@@ -59,6 +62,16 @@ export class DialogComponent {
   readonly panelClasses = computed(() => ({
     [`ea-dialog__panel--${this.width()}`]: true,
   }));
+
+  /** Whether the header slot received content, so labelledby never points at an empty node. */
+  protected readonly hasHeader = signal(false);
+
+  ngAfterContentChecked(): void {
+    const header = this.headerEl()?.nativeElement;
+    this.hasHeader.set(
+      !!header && (header.children.length > 0 || !!header.textContent?.trim()),
+    );
+  }
 
   constructor() {
     effect(() => {

@@ -1,5 +1,6 @@
 import { NgClass, isPlatformBrowser } from '@angular/common';
 import {
+  type AfterContentChecked,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -12,6 +13,7 @@ import {
   input,
   model,
   output,
+  signal,
   viewChild,
 } from '@angular/core';
 
@@ -73,9 +75,10 @@ const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class DrawerComponent {
+export class DrawerComponent implements AfterContentChecked {
   private readonly drawerEl = viewChild<ElementRef<HTMLDialogElement>>('drawerEl');
   private readonly panelEl = viewChild<ElementRef<HTMLElement>>('panelEl');
+  private readonly headerEl = viewChild<ElementRef<HTMLElement>>('headerEl');
   private previouslyFocused: HTMLElement | null = null;
   private pushedTarget: HTMLElement | null = null;
   private pushCleanupTimer: ReturnType<typeof setTimeout> | null = null;
@@ -126,6 +129,16 @@ export class DrawerComponent {
     [`ea-drawer__panel--${this.position()}`]: true,
     [`ea-drawer__panel--${this.size()}`]: true,
   }));
+
+  /** Whether the header slot received content, so labelledby never points at an empty node. */
+  protected readonly hasHeader = signal(false);
+
+  ngAfterContentChecked(): void {
+    const header = this.headerEl()?.nativeElement;
+    this.hasHeader.set(
+      !!header && (header.children.length > 0 || !!header.textContent?.trim()),
+    );
+  }
 
   constructor() {
     effect(() => {

@@ -5,7 +5,8 @@
     #fileInputEl
     type="file"
     class="ea-avatar-editor__file-input"
-    [attr.aria-label]="i18n.messages().avatarEditor.upload"
+    tabindex="-1"
+    aria-hidden="true"
     [accept]="accept()"
     (change)="onFileSelected($event)" />
 

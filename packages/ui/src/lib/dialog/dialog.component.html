@@ -3,7 +3,7 @@
   class="ea-dialog"
   [id]="id()"
   [attr.aria-label]="ariaLabel() ?? null"
-  [attr.aria-labelledby]="!ariaLabel() ? id() + '-header' : null"
+  [attr.aria-labelledby]="!ariaLabel() && hasHeader() ? id() + '-header' : null"
   (click)="handleBackdropClick($event)"
   (cancel)="handleCancel($event)">
   <div
@@ -20,6 +20,7 @@
     }
 
     <div
+      #headerEl
       class="ea-dialog__header"
       [id]="id() + '-header'">
       <ng-content select="[slot=header]" />

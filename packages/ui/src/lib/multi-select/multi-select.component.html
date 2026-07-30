@@ -10,7 +10,8 @@
   <div class="ea-multi-select">
     <div
       class="ea-multi-select__trigger-wrapper"
-      [ngClass]="wrapperClasses()">
+      [ngClass]="wrapperClasses()"
+      (click)="onTriggerAreaClick()">
       <div
         #triggerEl
         class="ea-multi-select__trigger"
@@ -30,7 +31,6 @@
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
-        (click)="toggle()"
         (keydown)="handleTriggerKeydown($event)">
         <span class="ea-multi-select__trigger-content">
           @if (!hasValue()) {
@@ -67,8 +67,7 @@
       }
       <ea-icon-chevron-down
         class="ea-multi-select__trigger-icon"
-        aria-hidden="true"
-        (click)="toggle()" />
+        aria-hidden="true" />
     </div>
 
     <ea-popover
@@ -102,33 +101,40 @@
           </div>
         }
 
-        @if (selectAll() && filteredOptions().length > 0) {
-          <div
-            class="ea-multi-select__option ea-multi-select__option--select-all"
-            (click)="toggleSelectAll()">
-            <ea-checkbox
-              size="sm"
-              [checked]="selectAllState() === 'all'"
-              [indeterminate]="selectAllState() === 'some'"
-              [ariaLabel]="i18n.messages().multiSelect.selectAll" />
-            <span class="ea-multi-select__option-label">
-              {{ i18n.messages().multiSelect.selectAll }}
-            </span>
-          </div>
-        }
-
         <ul
           class="ea-multi-select__list"
           role="listbox"
           aria-multiselectable="true"
           [id]="listboxId()"
           [attr.aria-label]="label() ?? ariaLabel() ?? null">
+          @if (selectAllVisible()) {
+            <li
+              class="ea-multi-select__option ea-multi-select__option--select-all"
+              [class.ea-multi-select__option--focused]="focusedIndex() === 0"
+              [id]="id() + '-opt-0'"
+              role="option"
+              [attr.aria-selected]="selectAllState() === 'all'"
+              [attr.aria-checked]="selectAllAriaChecked()"
+              (click)="onSelectAllClick()">
+              <ea-checkbox
+                size="sm"
+                inert
+                aria-hidden="true"
+                [checked]="selectAllState() === 'all'"
+                [indeterminate]="selectAllState() === 'some'" />
+              <span class="ea-multi-select__option-label">
+                {{ i18n.messages().multiSelect.selectAll }}
+              </span>
+            </li>
+          }
           @for (opt of filteredOptions(); track opt.value; let i = $index) {
             <li
               class="ea-multi-select__option"
-              [class.ea-multi-select__option--focused]="focusedIndex() === i"
+              [class.ea-multi-select__option--focused]="
+                focusedIndex() === i + selectAllOffset()
+              "
               [class.ea-multi-select__option--disabled]="opt.disabled"
-              [id]="id() + '-opt-' + i"
+              [id]="id() + '-opt-' + (i + selectAllOffset())"
               role="option"
               [attr.aria-selected]="selectedSet().has(opt.value)"
               [attr.aria-disabled]="opt.disabled || null"
@@ -143,12 +149,15 @@
                 {{ opt.label }}
               </span>
             </li>
-          } @empty {
-            <li class="ea-multi-select__empty">
-              {{ i18n.messages().multiSelect.searchEmpty }}
-            </li>
           }
         </ul>
+        @if (filteredOptions().length === 0) {
+          <div
+            class="ea-multi-select__empty"
+            role="status">
+            {{ i18n.messages().multiSelect.searchEmpty }}
+          </div>
+        }
       </div>
     </ea-popover>
   </div>

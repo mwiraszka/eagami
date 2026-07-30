@@ -220,6 +220,11 @@
     color: var(--color-text-tertiary);
   }
 
+  &__cell {
+    display: flex;
+    justify-content: center;
+  }
+
   &__day {
     display: flex;
     align-items: center;
