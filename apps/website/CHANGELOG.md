@@ -2,6 +2,22 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.15.7] - 2026-07-31
+
+### Changed
+
+- Unify the standalone icon buttons (theme toggle, locale switcher, code copy, filter clear) on one shared style, with the theme toggle now using Eagami UI's sun and moon icons.
+- State WCAG 2.2 AA for the palette contrast checks and standardize the English copy on American spellings.
+
+### Fixed
+
+- Bring every locale up to date with the richer page metadata: the full home-page description and the Angular-prefixed titles for the components, icons, and theme builder pages.
+- Drop the retired "design system" wording from the remaining locales.
+- Translate the theme toggle's mode name in the six locales that showed it in English, along with other missed translations.
+- Correct mistranslations and grammar slips across locales, and unify in-locale terminology (tooltips, tokens, chips, clearable states, toasts).
+- Keep ARIA state names as literal identifiers in every locale's accessibility page copy.
+- Normalize French typographic punctuation to narrow no-break spaces and curly apostrophes.
+
 ## [3.15.6] - 2026-07-31
 
 ### Changed
@@ -988,6 +1004,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.15.7]: https://github.com/mwiraszka/eagami/compare/website-v3.15.6...website-v3.15.7
 [3.15.6]: https://github.com/mwiraszka/eagami/compare/website-v3.15.5...website-v3.15.6
 [3.15.5]: https://github.com/mwiraszka/eagami/compare/website-v3.15.4...website-v3.15.5
 [3.15.4]: https://github.com/mwiraszka/eagami/compare/website-v3.15.3...website-v3.15.4
