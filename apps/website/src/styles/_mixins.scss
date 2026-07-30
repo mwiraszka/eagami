@@ -87,6 +87,42 @@ $breakpoints: (
   white-space: nowrap;
 }
 
+/// Bare icon-wrapping button (theme toggle, locale switcher, copy, clear) so
+/// box, hover, and focus treatment stay identical across the site. Icons size
+/// via font-size so `ea-icon-*` children scale without per-icon rules.
+@mixin icon-button($size: 36px, $icon-size: 20px) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  padding: 0;
+  font-size: $icon-size;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
 /// Slow, animated diagonal gradient using muted brand-palette stops.
 /// Pairs with the global `web-gradient-flutter` keyframes (see main.scss).
 /// Honors `prefers-reduced-motion`.

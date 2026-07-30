@@ -1,38 +1,17 @@
+@use 'mixins' as mixins;
+
 :host {
   display: inline-flex;
   align-items: center;
 }
 
 .web-locale-switcher__trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: none;
-  border-radius: 8px;
-  background-color: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
-
-  &:hover {
-    background-color: var(--color-bg-muted);
-    color: var(--color-text-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
+  @include mixins.icon-button;
 }
 
 .web-locale-switcher__icon {
-  width: 20px;
-  height: 20px;
+  width: 1em;
+  height: 1em;
 }
 
 .web-locale-switcher__item {
