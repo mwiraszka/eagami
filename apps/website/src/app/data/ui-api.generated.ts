@@ -1077,6 +1077,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     ],
     methods: [
       {
+        name: 'edgeActive',
+        signature: 'edgeActive(direction: "1" | unknown): void',
+      },
+      {
+        name: 'moveActive',
+        signature: 'moveActive(delta: "1" | unknown): void',
+      },
+      {
         name: 'showActiveHighlight',
         signature: 'showActiveHighlight(flatIndex: number): boolean',
       },
@@ -1658,6 +1666,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'select',
         signature: 'select(option: SelectOption): void',
+      },
+      {
+        name: 'setFocusedIndex',
+        signature: 'setFocusedIndex(idx: number): void',
       },
       {
         name: 'toggle',
@@ -2469,6 +2481,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     ],
     methods: [
       {
+        name: 'activateRow',
+        signature: 'activateRow(row: number): void',
+      },
+      {
         name: 'clear',
         signature: 'clear(event: Event): void',
       },
@@ -2479,6 +2495,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'onPopoverCloseRequested',
         signature: 'onPopoverCloseRequested(): void',
+      },
+      {
+        name: 'onTriggerAreaClick',
+        signature: 'onTriggerAreaClick(): void',
       },
       {
         name: 'orderedValues',
@@ -4287,6 +4307,11 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'onSpinnerInput(unit: Unit, event: Event): void',
       },
       {
+        name: 'onStepClick',
+        signature:
+          'onStepClick(unit: Unit, direction: "1" | unknown, event: MouseEvent): void',
+      },
+      {
         name: 'startHold',
         signature: 'startHold(unit: Unit, direction: "1" | unknown, event: Event): void',
       },
@@ -4365,7 +4390,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     outputs: [],
-    methods: [],
+    methods: [
+      {
+        name: 'toastRole',
+        signature: 'toastRole(variant: string): "alert" | "status"',
+      },
+    ],
   },
   tooltip: {
     selector: '[eaTooltip]',

@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.12.2] - 2026-07-31
+
+### Fixed
+
+- Ensure time picker stepper buttons respond to keyboard activation.
+- Announce error and warning toasts immediately, and pause toast auto-dismiss while the pointer or keyboard focus is on the stack.
+- Make the multi-select's Select all row keyboard-accessible inside the option list, announce empty search results, and let the whole box toggle the list on click.
+- Keep the keyboard-focused option scrolled into view in dropdown and multi-select lists.
+- Correct the autocomplete's expanded state and selected-option announcements.
+- Restore button semantics for the date picker's calendar day cells.
+- Prevent a required file uploader from silently blocking form submission.
+- Stop dialogs and drawers referencing an empty header as their accessible name.
+- Expose disabled command palette items to assistive technology and skip them during arrow-key navigation.
+- Let keyboard users scroll the virtual list even without an aria-label.
+- Remove the avatar editor's invisible tab stop on its hidden file input.
+- Mirror stepper and tree arrow-key navigation in right-to-left layouts.
+- Add hover feedback to the tree's expand chevron, and an explicit label association to the switch.
+
 ## [5.12.1] - 2026-07-29
 
 ### Added
@@ -1108,6 +1126,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.12.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.1...ui-v5.12.2
 [5.12.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.0...ui-v5.12.1
 [5.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.11.0...ui-v5.12.0
 [5.11.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.10.1...ui-v5.11.0
