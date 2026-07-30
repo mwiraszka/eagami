@@ -357,6 +357,26 @@ describe('MultiSelectComponent', () => {
       expect(component.value()).toEqual(['banana']);
     });
 
+    it('toggles every option when clicking the Select-all row', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const selectAllRow = document.body.querySelector<HTMLElement>(
+        '.ea-multi-select__option--select-all',
+      )!;
+      selectAllRow.click();
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual(['apple', 'banana', 'cherry', 'date']);
+      expect(selectAllRow.getAttribute('aria-checked')).toBe('true');
+
+      selectAllRow.click();
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual([]);
+      expect(selectAllRow.getAttribute('aria-checked')).toBe('false');
+    });
+
     it('toggles every option via the Select-all row on Enter', () => {
       getTrigger().click();
       fixture.detectChanges();

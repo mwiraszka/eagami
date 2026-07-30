@@ -54,6 +54,15 @@ class TestHostComponent {
   showClose = signal(true);
 }
 
+@Component({
+  selector: 'ea-test-no-header-host',
+  imports: [DrawerComponent],
+  template: `<ea-drawer [(open)]="isOpen">Body only</ea-drawer>`,
+})
+class NoHeaderHostComponent {
+  isOpen = signal(true);
+}
+
 describe('DrawerComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let host: TestHostComponent;
@@ -364,6 +373,23 @@ describe('DrawerComponent', () => {
       fixture.detectChanges();
 
       expect(host.isOpen()).toBe(true);
+    });
+  });
+
+  describe('Accessible name', () => {
+    it('points aria-labelledby at the projected header', () => {
+      const drawer = fixture.nativeElement.querySelector('.ea-drawer') as HTMLElement;
+
+      expect(drawer.getAttribute('aria-labelledby')).toBe(`${drawer.id}-header`);
+    });
+
+    it('drops aria-labelledby when no header content is projected', () => {
+      const bare = TestBed.createComponent(NoHeaderHostComponent);
+      bare.detectChanges();
+
+      const drawer = bare.nativeElement.querySelector('.ea-drawer') as HTMLElement;
+
+      expect(drawer.getAttribute('aria-labelledby')).toBeNull();
     });
   });
 

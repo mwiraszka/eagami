@@ -176,6 +176,29 @@ describe('TimePickerComponent', () => {
   });
 
   describe('Stepping', () => {
+    it('steps on a keyboard-dispatched click', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursUp] = getStepButtons();
+      // Keyboard activation of a button dispatches a click with detail 0
+      hoursUp.dispatchEvent(new MouseEvent('click', { detail: 0 }));
+
+      expect(component.value()).toBe('10:30');
+    });
+
+    it('ignores the click that follows a pointer press to avoid double stepping', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursUp] = getStepButtons();
+      hoursUp.dispatchEvent(new MouseEvent('click', { detail: 1 }));
+
+      expect(component.value()).toBe('09:30');
+    });
+
     it('increments hours via the step button', () => {
       component.writeValue('09:30');
       getTrigger().click();

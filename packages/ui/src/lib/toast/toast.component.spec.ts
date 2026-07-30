@@ -62,6 +62,47 @@ describe('ToastComponent', () => {
     expect(getToasts()[3].getAttribute('role')).toBe('status');
   });
 
+  it('pauses auto-dismiss while hovered and resumes on leave', () => {
+    const pause = vi.spyOn(toastService, 'pause');
+    const resume = vi.spyOn(toastService, 'resume');
+    const container = getContainer()!;
+
+    container.dispatchEvent(new MouseEvent('mouseenter'));
+
+    expect(pause).toHaveBeenCalledTimes(1);
+    expect(resume).not.toHaveBeenCalled();
+
+    container.dispatchEvent(new MouseEvent('mouseleave'));
+
+    expect(resume).toHaveBeenCalledTimes(1);
+  });
+
+  it('pauses auto-dismiss while focus is inside the stack', () => {
+    toastService.show('hello', { duration: 0 });
+    fixture.detectChanges();
+    const pause = vi.spyOn(toastService, 'pause');
+    const resume = vi.spyOn(toastService, 'resume');
+    const container = getContainer()!;
+    const closeBtn = getToasts()[0].querySelector<HTMLButtonElement>('.ea-toast__close')!;
+
+    container.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+
+    expect(pause).toHaveBeenCalledTimes(1);
+
+    // Focus moving between toasts stays paused; leaving the stack resumes
+    container.dispatchEvent(
+      new FocusEvent('focusout', { bubbles: true, relatedTarget: closeBtn }),
+    );
+
+    expect(resume).not.toHaveBeenCalled();
+
+    container.dispatchEvent(
+      new FocusEvent('focusout', { bubbles: true, relatedTarget: document.body }),
+    );
+
+    expect(resume).toHaveBeenCalledTimes(1);
+  });
+
   it('dismisses a toast via its close button', () => {
     toastService.show('hello', { duration: 0 });
     fixture.detectChanges();
