@@ -79,10 +79,11 @@
     flex-shrink: 0;
   }
 
+  // Half-height so the up/down pair stacks inside one field row
   &__step {
     @include ea.icon-button;
+    --ea-icon-button-size: 1.1em;
     width: 1.5em;
-    height: 1.1em;
     border-radius: var(--radius-xs);
 
     // Shorter than a standard icon button, so hold the glyph at 1em to keep it

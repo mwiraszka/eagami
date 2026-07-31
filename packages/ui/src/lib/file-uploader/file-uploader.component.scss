@@ -101,9 +101,9 @@
   }
 
   &--drag-over &__dropzone {
-    border-color: var(--color-primary-500);
-    background-color: var(--color-primary-50);
-    color: var(--color-primary-600);
+    border-color: var(--color-border-focus);
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-default);
 
     @media (forced-colors: active) {
       border-color: Highlight;
@@ -180,7 +180,7 @@
   &__progress-bar {
     height: 100%;
     border-radius: inherit;
-    background-color: var(--color-primary-500);
+    background-color: var(--color-brand-default);
     transition: width var(--duration-normal) var(--ease-out);
   }
 
