@@ -169,4 +169,165 @@ describe('TreeComponent', () => {
 
     expect(host.expandedIds()).toEqual([]);
   });
+
+  describe('Keyboard navigation', () => {
+    function press(key: string): void {
+      const list = fixture.nativeElement.querySelector('.ea-tree__list') as HTMLElement;
+      list.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+      fixture.detectChanges();
+    }
+
+    /** The roving tabindex is the user-visible record of which node has focus. */
+    function focusedId(): string | null {
+      const el: HTMLElement | null = fixture.nativeElement.querySelector(
+        '[role="treeitem"][tabindex="0"]',
+      );
+      return el?.getAttribute('data-treeitem-id') ?? null;
+    }
+
+    it('walks visible nodes with ArrowDown and ArrowUp', () => {
+      expect(focusedId()).toBe('fruits');
+
+      press('ArrowDown');
+
+      expect(focusedId()).toBe('vegetables');
+
+      press('ArrowUp');
+
+      expect(focusedId()).toBe('fruits');
+    });
+
+    it('skips disabled nodes while walking', () => {
+      clickChevron('fruits');
+
+      press('ArrowDown');
+
+      expect(focusedId()).toBe('apple');
+
+      // Banana sits between apple and cherry and is disabled
+      press('ArrowDown');
+
+      expect(focusedId()).toBe('cherry');
+    });
+
+    it('stops at the ends instead of wrapping', () => {
+      press('ArrowUp');
+
+      expect(focusedId()).toBe('fruits');
+
+      press('End');
+      press('ArrowDown');
+
+      expect(focusedId()).toBe('vegetables');
+    });
+
+    it('jumps to the first and last visible node with Home and End', () => {
+      clickChevron('vegetables');
+
+      press('End');
+
+      expect(focusedId()).toBe('leafy');
+
+      press('Home');
+
+      expect(focusedId()).toBe('fruits');
+    });
+
+    it('expands a collapsed branch with ArrowRight, then steps into it', () => {
+      press('ArrowRight');
+
+      expect(host.expandedIds()).toContain('fruits');
+      expect(focusedId()).toBe('fruits');
+
+      press('ArrowRight');
+
+      expect(focusedId()).toBe('apple');
+    });
+
+    it('steps past a disabled first child when entering a branch', () => {
+      host.expandedIds.set(['vegetables', 'leafy']);
+      host.nodes = [
+        {
+          id: 'vegetables',
+          label: 'Vegetables',
+          children: [
+            { id: 'carrot', label: 'Carrot', disabled: true },
+            { id: 'leek', label: 'Leek' },
+          ],
+        },
+      ];
+      fixture.detectChanges();
+
+      press('ArrowRight');
+
+      expect(focusedId()).toBe('leek');
+    });
+
+    it('does nothing on ArrowRight from a leaf', () => {
+      clickChevron('fruits');
+      press('ArrowDown');
+
+      press('ArrowRight');
+
+      expect(focusedId()).toBe('apple');
+      expect(host.expandedIds()).toEqual(['fruits']);
+    });
+
+    it('collapses an expanded branch with ArrowLeft, then climbs to the parent', () => {
+      clickChevron('fruits');
+
+      press('ArrowLeft');
+
+      expect(host.expandedIds()).not.toContain('fruits');
+
+      clickChevron('fruits');
+      press('ArrowDown');
+      press('ArrowLeft');
+
+      expect(focusedId()).toBe('fruits');
+    });
+
+    it('selects the focused node on Enter and Space', () => {
+      press('Enter');
+
+      expect(host.selectedId()).toBe('fruits');
+
+      press('End');
+      press(' ');
+
+      expect(host.selectedId()).toBe('vegetables');
+    });
+
+    it('ignores keys entirely while disabled', () => {
+      host.disabled = true;
+      fixture.detectChanges();
+
+      press('ArrowRight');
+      press('ArrowDown');
+
+      expect(host.expandedIds()).toEqual([]);
+      expect(host.selectedId()).toBeNull();
+    });
+
+    it('mirrors the horizontal arrows under dir="rtl"', () => {
+      const list = fixture.nativeElement.querySelector('.ea-tree__list') as HTMLElement;
+      // jsdom does not resolve the dir attribute into a computed direction, so
+      // report rtl for the tree itself and let every other lookup through
+      const computed = window.getComputedStyle.bind(window);
+      vi.spyOn(window, 'getComputedStyle').mockImplementation((el, pseudo) =>
+        el === list
+          ? ({ direction: 'rtl' } as CSSStyleDeclaration)
+          : computed(el, pseudo),
+      );
+
+      // ArrowLeft points towards the child indent in RTL, so it expands
+      press('ArrowLeft');
+
+      expect(host.expandedIds()).toContain('fruits');
+
+      press('ArrowRight');
+
+      expect(host.expandedIds()).not.toContain('fruits');
+    });
+  });
 });

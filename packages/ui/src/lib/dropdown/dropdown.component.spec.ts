@@ -180,6 +180,155 @@ describe('DropdownComponent', () => {
     });
   });
 
+  describe('Typeahead and focus movement', () => {
+    // Two options share a first letter so repeat-key cycling is observable, and
+    // the first and last are disabled so the edge jumps have something to skip
+    const typeaheadOptions: SelectOption[] = [
+      { value: 'almond', label: 'Almond', disabled: true },
+      { value: 'beta', label: 'Beta' },
+      { value: 'blueberry', label: 'Blueberry' },
+      { value: 'cherry', label: 'Cherry' },
+      { value: 'date', label: 'Date', disabled: true },
+    ];
+
+    function press(key: string, modifiers: KeyboardEventInit = {}): void {
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key, ...modifiers }));
+      fixture.detectChanges();
+    }
+
+    function focusedLabel(): string | null {
+      const focused = document.querySelector('.ea-dropdown__option--focused');
+      return focused?.textContent?.trim() ?? null;
+    }
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+      fixture.componentRef.setInput('options', typeaheadOptions);
+      fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('opens the list and focuses the first match when typing', () => {
+      press('c');
+
+      expect(getMenu()).toBeTruthy();
+      expect(focusedLabel()).toBe('Cherry');
+    });
+
+    it('narrows to a longer match as the query grows', () => {
+      press('b');
+
+      expect(focusedLabel()).toBe('Beta');
+
+      press('l');
+
+      expect(focusedLabel()).toBe('Blueberry');
+    });
+
+    it('cycles through matches when the same letter repeats', () => {
+      press('b');
+
+      expect(focusedLabel()).toBe('Beta');
+
+      // The query resets after the idle window, so this is a fresh single-letter
+      // press rather than a growing query
+      vi.advanceTimersByTime(500);
+      press('b');
+
+      expect(focusedLabel()).toBe('Blueberry');
+    });
+
+    it('never lands typeahead on a disabled option', () => {
+      press('a');
+
+      expect(focusedLabel()).not.toBe('Almond');
+    });
+
+    it('opens onto the first selectable option when the first is disabled', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(focusedLabel()).toBe('Beta');
+    });
+
+    it('opens onto the selected option when there is one', () => {
+      component.writeValue('cherry');
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(focusedLabel()).toBe('Cherry');
+    });
+
+    it('ignores keystrokes modified by ctrl, meta, or alt', () => {
+      press('c', { ctrlKey: true });
+
+      expect(getMenu()).toBeNull();
+    });
+
+    it('ignores non-character keys', () => {
+      press('Shift');
+
+      expect(getMenu()).toBeNull();
+    });
+
+    it('lets Space extend an in-progress query instead of selecting', () => {
+      fixture.componentRef.setInput('options', [
+        ...typeaheadOptions,
+        { value: 'blue-cheese', label: 'Blue cheese' },
+      ]);
+      fixture.detectChanges();
+
+      press('b');
+      press('l');
+      press('u');
+      press('e');
+      press(' ');
+
+      expect(focusedLabel()).toBe('Blue cheese');
+      expect(component.value()).toBe('');
+    });
+
+    it('selects the focused option on Space once no query is pending', () => {
+      press('ArrowDown');
+
+      expect(focusedLabel()).toBe('Beta');
+
+      press(' ');
+
+      expect(component.value()).toBe('beta');
+    });
+
+    it('jumps to the first and last enabled option with Home and End', () => {
+      press('Home');
+
+      expect(focusedLabel()).toBe('Beta');
+
+      press('End');
+
+      expect(focusedLabel()).toBe('Cherry');
+    });
+
+    it('steps over disabled options with the arrow keys', () => {
+      press('End');
+
+      expect(focusedLabel()).toBe('Cherry');
+
+      // Date is disabled, so there is nowhere further down to go
+      press('ArrowDown');
+
+      expect(focusedLabel()).toBe('Cherry');
+
+      press('ArrowUp');
+
+      expect(focusedLabel()).toBe('Blueberry');
+    });
+  });
+
   describe('Error and hint', () => {
     it('shows error message when set', () => {
       fixture.componentRef.setInput('errorMsg', 'Required');
