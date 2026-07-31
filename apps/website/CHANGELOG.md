@@ -2,7 +2,7 @@
 
 All notable changes to eagami.com are documented in this file.
 
-## [3.16.0] - 2026-07-31
+## [3.16.0] - 2026-08-01
 
 ### Added
 
