@@ -36,6 +36,7 @@ interface ApiSection {
 // Primary demo slug -> the public sub-components documented alongside it, so a
 // composite component's page covers every part (e.g. the radio page shows both
 // <ea-radio> and <ea-radio-group>). Slugs not listed here render on their own.
+// `check-demo-parity` parses this map, so keep it a plain literal.
 const RELATED_SLUGS: Readonly<Record<string, readonly string[]>> = {
   radio: ['radio-group'],
   accordion: ['accordion-item'],

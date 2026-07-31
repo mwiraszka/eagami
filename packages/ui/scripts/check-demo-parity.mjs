@@ -16,17 +16,32 @@ const API_FILE = resolve(repo, 'apps/website/src/app/data/ui-api.generated.ts');
 const EN_FILE = resolve(repo, 'apps/website/src/app/i18n/messages/en.ts');
 const KNOBS_BARREL = resolve(here, '../src/playground-knobs.ts');
 const LIB_DIR = resolve(here, '../src/lib');
+const API_REFERENCE_FILE = resolve(
+  repo,
+  'apps/website/src/app/pages/ui/components/_playground/api-reference.component.ts',
+);
 
 // Primary demo slug -> public sub-components documented alongside it. A knob on
 // the primary may drive a sub-component input (e.g. the radio demo's `size` is a
-// <ea-radio-group> input), so the stale-knob check unions both APIs.
-const RELATED_SLUGS = {
-  radio: ['radio-group'],
-  accordion: ['accordion-item'],
-  menu: ['menu-item', 'menu-trigger'],
-  tabs: ['tab'],
-  stepper: ['step'],
-};
+// <ea-radio-group> input), so the stale-knob check unions both APIs. Parsed from
+// the website's own map rather than duplicated, so the two cannot drift.
+const RELATED_SLUGS = parseRelatedSlugs();
+
+function parseRelatedSlugs() {
+  const source = readText(API_REFERENCE_FILE);
+  const start = source.indexOf('const RELATED_SLUGS');
+  const open = source.indexOf('{', start);
+  const close = source.indexOf('};', open);
+  if (start === -1 || open === -1 || close === -1) {
+    throw new Error(`Could not parse RELATED_SLUGS from ${API_REFERENCE_FILE}`);
+  }
+  const body = source.slice(open + 1, close);
+  const map = {};
+  for (const [, key, list] of body.matchAll(/'?([\w-]+)'?\s*:\s*\[([^\]]*)\]/g)) {
+    map[key] = Array.from(list.matchAll(/'([^']+)'/g), m => m[1]);
+  }
+  return map;
+}
 
 // Inputs/outputs that are intentionally never wired as interactive knobs:
 // content-projection slots, template refs, complex object/array config, and
@@ -263,7 +278,11 @@ report(
 );
 
 const hardFailures =
-  missingDesc.length + staleKnob.length + staleDesc.length + unwiredStories.length;
+  missingDesc.length +
+  staleKnob.length +
+  staleDesc.length +
+  unwiredStories.length +
+  undocSlugs.length;
 console.log(
   `\nSummary: ${missingDesc.length} missing descriptions, ${missingKnob.length} missing knobs (advisory), ${staleKnob.length} stale knobs, ${staleDesc.length} stale descriptions, ${undocSlugs.length} undocumented slugs, ${unwiredStories.length} unwired stories.`,
 );
