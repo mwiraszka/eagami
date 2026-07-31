@@ -433,4 +433,21 @@ describe('InputComponent', () => {
       expect(spy).toHaveBeenCalled();
     });
   });
+
+  describe('Accessible name', () => {
+    it('names the control via aria-label when no visible label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Search');
+      fixture.detectChanges();
+
+      expect(getNativeInput().getAttribute('aria-label')).toBe('Search');
+    });
+
+    it('defers to the visible label when both are set', () => {
+      fixture.componentRef.setInput('aria-label', 'Search');
+      fixture.componentRef.setInput('label', 'Email');
+      fixture.detectChanges();
+
+      expect(getNativeInput().getAttribute('aria-label')).toBeNull();
+    });
+  });
 });

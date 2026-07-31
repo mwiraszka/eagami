@@ -43,6 +43,7 @@
                 [size]="size()"
                 variant="default"
                 [removable]="!isDisabled() && !readonly()"
+                [removeTabbable]="false"
                 [removeLabel]="i18n.messages().multiSelect.removeOption(opt.label)"
                 (removed)="removeChip(opt)">
                 <span>{{ opt.label }}</span>

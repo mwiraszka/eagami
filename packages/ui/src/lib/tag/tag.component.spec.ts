@@ -95,6 +95,21 @@ describe('TagComponent', () => {
 
       expect(getRemoveButton()!.disabled).toBe(true);
     });
+
+    it('keeps the remove button in the tab order by default', () => {
+      fixture.componentRef.setInput('removable', true);
+      fixture.detectChanges();
+
+      expect(getRemoveButton()!.hasAttribute('tabindex')).toBe(false);
+    });
+
+    it('takes the remove button out of the tab order when removeTabbable is false', () => {
+      fixture.componentRef.setInput('removable', true);
+      fixture.componentRef.setInput('removeTabbable', false);
+      fixture.detectChanges();
+
+      expect(getRemoveButton()!.getAttribute('tabindex')).toBe('-1');
+    });
   });
 
   describe('Disabled', () => {

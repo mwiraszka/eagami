@@ -40,6 +40,7 @@
       [attr.step]="type() === 'number' ? (step() ?? null) : null"
       [attr.maxlength]="maxLength() ?? null"
       [attr.minlength]="minLength() ?? null"
+      [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null

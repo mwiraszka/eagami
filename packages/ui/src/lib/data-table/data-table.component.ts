@@ -83,6 +83,10 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   readonly columns = input.required<DataTableColumn<T>[]>();
   readonly data = input.required<T[]>();
+  /** Accessible name for the table, announced when it takes focus as a grid. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Visible caption rendered above the table; also names it for assistive technology. */
+  readonly caption = input<string | undefined>(undefined);
   readonly trackBy = input<keyof T | undefined>(undefined);
   readonly density = input<DataTableDensity>('comfortable');
   /** Visual size of the table; density paddings and icons scale with it. */

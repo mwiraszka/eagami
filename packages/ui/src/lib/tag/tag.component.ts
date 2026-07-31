@@ -40,6 +40,12 @@ export class TagComponent {
   readonly removable = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly removeLabel = input<string | undefined>(undefined);
+  /**
+   * Whether the remove button is a tab stop. Set `false` inside a composite
+   * widget (a combobox trigger, a grid cell) whose own keyboard model owns
+   * navigation, since roles like `combobox` forbid focusable descendants.
+   */
+  readonly removeTabbable = input<boolean>(true);
 
   /** Fires when the user activates the remove button on a `removable` tag. */
   readonly removed = output<void>();

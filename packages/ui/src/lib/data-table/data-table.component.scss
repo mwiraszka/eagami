@@ -49,6 +49,14 @@
     table-layout: auto;
   }
 
+  &__caption {
+    padding: var(--space-2) var(--space-3);
+    text-align: start;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    caption-side: top;
+  }
+
   &__head {
     background-color: var(--color-bg-stripe);
   }

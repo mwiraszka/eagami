@@ -235,4 +235,21 @@ describe('TextareaComponent', () => {
       expect(getTextarea().disabled).toBe(true);
     });
   });
+
+  describe('Accessible name', () => {
+    it('names the control via aria-label when no visible label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Notes');
+      fixture.detectChanges();
+
+      expect(getTextarea().getAttribute('aria-label')).toBe('Notes');
+    });
+
+    it('defers to the visible label when both are set', () => {
+      fixture.componentRef.setInput('aria-label', 'Notes');
+      fixture.componentRef.setInput('label', 'Comment');
+      fixture.detectChanges();
+
+      expect(getTextarea().getAttribute('aria-label')).toBeNull();
+    });
+  });
 });
