@@ -1,6 +1,7 @@
 <div
   class="ea-avatar-editor"
-  [ngClass]="hostClasses()">
+  [ngClass]="hostClasses()"
+  [style.--ea-avatar-editor-canvas.px]="canvasSize()">
   <input
     #fileInputEl
     type="file"
