@@ -1581,6 +1581,8 @@ export const ptBR: WebMessages = {
             disabled: 'Desativa a tag e seu botão de remover.',
             removeLabel:
               'Rótulo acessível para o botão de remover, recorrendo ao idioma ativo.',
+            removeTabbable:
+              'Se o botão de remover é uma parada de tabulação; defina como false dentro de um widget composto que controla a navegação por teclado.',
             removed:
               'Dispara quando o usuário ativa o botão de remover em uma tag removível.',
           },
@@ -2002,6 +2004,8 @@ export const ptBR: WebMessages = {
             navigable:
               'Transforma a tabela em uma grade navegável pelo teclado, com foco móvel e movimentação entre células pelas setas.',
             bordered: 'Renderiza uma borda ao redor de cada célula.',
+            caption:
+              'Legenda visível exibida acima da tabela; também a nomeia para a tecnologia assistiva.',
             columns:
               'Definições de coluna descrevendo a chave, o rótulo e a ordenação ou template opcionais de cada campo.',
             data: 'Array de objetos de linha a exibir na tabela.',

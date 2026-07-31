@@ -1472,6 +1472,8 @@ export const zhCN: WebMessages = {
             removable: '渲染一个移除按钮，激活时发出 removed。',
             disabled: '禁用标签及其移除按钮。',
             removeLabel: '移除按钮的无障碍标签，回退到当前语言。',
+            removeTabbable:
+              '移除按钮是否为 Tab 停靠点；在自行管理键盘导航的复合控件内设为 false。',
             removed: '当用户激活可移除标签上的移除按钮时触发。',
           },
           textarea: {
@@ -1788,6 +1790,7 @@ export const zhCN: WebMessages = {
             rowActivate: '当可点击的数据行通过点击或键盘激活时，携带该行数据触发。',
             navigable: '将表格变为可用键盘导航的网格，支持移动焦点和方向键单元格移动。',
             bordered: '在每个单元格周围渲染边框。',
+            caption: '显示在表格上方的可见标题；同时为辅助技术提供表格名称。',
             columns: '描述每个字段的键、标签以及可选排序或模板的列定义。',
             data: '要在表格中显示的行对象数组。',
             density: '控制行和表头单元格内边距的垂直密度预设。',

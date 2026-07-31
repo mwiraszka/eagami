@@ -1094,9 +1094,23 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-data-table',
     inputs: [
       {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'bordered',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'caption',
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -2015,6 +2029,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   input: {
     selector: 'ea-input',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'autocomplete',
         type: 'string | undefined',
@@ -3986,6 +4007,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'removeTabbable',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'size',
         type: 'TagSize',
         default: "'md'",
@@ -4014,6 +4042,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
   textarea: {
     selector: 'ea-textarea',
     inputs: [
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
       {
         name: 'disabled',
         type: 'boolean',

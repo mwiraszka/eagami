@@ -1575,6 +1575,8 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza tag i jego przycisk usuwania.',
             removeLabel:
               'Dostępna etykieta przycisku usuwania, w razie braku używa aktywnej lokalizacji.',
+            removeTabbable:
+              'Czy przycisk usuwania jest przystankiem tabulacji; ustaw false wewnątrz złożonego widżetu, który sam obsługuje nawigację klawiaturową.',
             removed:
               'Emitowane, gdy użytkownik aktywuje przycisk usuwania na tagu z możliwością usunięcia.',
           },
@@ -1989,6 +1991,8 @@ export const pl: WebMessages = {
             navigable:
               'Zmienia tabelę w siatkę obsługiwaną z klawiatury z przesuwanym fokusem i przechodzeniem między komórkami strzałkami.',
             bordered: 'Renderuje obramowanie wokół każdej komórki.',
+            caption:
+              'Widoczny podpis wyświetlany nad tabelą; nadaje jej także nazwę dla technologii wspomagających.',
             columns:
               'Definicje kolumn opisujące klucz, etykietę i opcjonalnie sortowanie lub szablon każdego pola.',
             data: 'Tablica obiektów wierszy do wyświetlenia w tabeli.',
