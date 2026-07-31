@@ -132,6 +132,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${start}–${end} з ${total}`,
     previousPage: 'Попередня сторінка',
     nextPage: 'Наступна сторінка',
+    page: page => `Перейти на сторінку ${page}`,
   },
   progressBar: {
     label: 'Прогрес',
@@ -184,6 +185,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: 'Перенести вибрані вліво',
     moveAllToSource: 'Перенести все вліво',
     empty: 'Немає елементів',
+    moved: (count, listLabel) => `Переміщено ${count} до списку «${listLabel}»`,
   },
   validation: {
     required: 'Це поле обов’язкове',

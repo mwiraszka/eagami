@@ -151,6 +151,10 @@ export class TransferListComponent {
     () => this.targetLabel() ?? this.messages().transferList.targetLabel,
   );
 
+  // Moves rearrange both panes at once, which a screen reader has no way to
+  // report on its own, so each transfer is summarized in a live region.
+  protected readonly announcement = signal('');
+
   protected readonly hostClasses = computed(() => [
     'ea-transfer-list',
     `ea-transfer-list--${this.size()}`,
@@ -320,6 +324,7 @@ export class TransferListComponent {
     const toMove = Array.from(highlighted).filter(id => sourceIds.has(id));
     this.selectedIds.set([...this.selectedIds(), ...toMove]);
     this.leftHighlighted.set(new Set<string>());
+    this.announceMove(toMove.length, this.resolvedTargetLabel());
   }
 
   protected moveAllRight(): void {
@@ -331,6 +336,7 @@ export class TransferListComponent {
       .map(i => i.id);
     this.selectedIds.set([...this.selectedIds(), ...moveable]);
     this.leftHighlighted.set(new Set<string>());
+    this.announceMove(moveable.length, this.resolvedTargetLabel());
   }
 
   protected moveSelectedLeft(): void {
@@ -346,6 +352,7 @@ export class TransferListComponent {
     const toRemove = new Set(Array.from(highlighted).filter(id => targetIds.has(id)));
     this.selectedIds.set(this.selectedIds().filter(id => !toRemove.has(id)));
     this.rightHighlighted.set(new Set<string>());
+    this.announceMove(toRemove.size, this.resolvedSourceLabel());
   }
 
   protected moveAllLeft(): void {
@@ -357,7 +364,15 @@ export class TransferListComponent {
         .filter(i => i.disabled)
         .map(i => i.id),
     );
+    const movedCount = this.targetItems().filter(i => !i.disabled).length;
     this.selectedIds.set(this.selectedIds().filter(id => stickyIds.has(id)));
     this.rightHighlighted.set(new Set<string>());
+    this.announceMove(movedCount, this.resolvedSourceLabel());
+  }
+
+  private announceMove(count: number, listLabel: string): void {
+    if (count > 0) {
+      this.announcement.set(this.messages().transferList.moved(`${count}`, listLabel));
+    }
   }
 }

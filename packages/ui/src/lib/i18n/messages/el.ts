@@ -132,6 +132,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${start}–${end} από ${total}`,
     previousPage: 'Προηγούμενη σελίδα',
     nextPage: 'Επόμενη σελίδα',
+    page: page => `Μετάβαση στη σελίδα ${page}`,
   },
   progressBar: {
     label: 'Πρόοδος',
@@ -184,6 +185,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: 'Μεταφορά επιλογής στην πηγή',
     moveAllToSource: 'Μεταφορά όλων στην πηγή',
     empty: 'Καμία εγγραφή',
+    moved: (count, listLabel) => `Μεταφορά σε ${listLabel}: ${count}`,
   },
   validation: {
     required: 'Αυτό το πεδίο είναι υποχρεωτικό',

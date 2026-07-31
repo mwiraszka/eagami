@@ -76,6 +76,7 @@
           variant="ghost"
           [size]="size()"
           [disabled]="disabled()"
+          [aria-label]="i18n.messages().paginator.page(formatNumber(p))"
           [aria-current]="p === page() ? 'page' : undefined"
           (clicked)="goToPage(p)">
           {{ formatNumber(p) }}
