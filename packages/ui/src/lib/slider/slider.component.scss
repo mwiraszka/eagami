@@ -3,9 +3,35 @@
 .ea-slider-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0.375em;
   font-family: var(--font-family-sans);
   color: var(--color-text-secondary);
+
+  // The track and thumb scale off their own rem knob; this font-size is what
+  // scales the label, value, and messages alongside them. The size class lands
+  // on this same element, hence the compound selectors.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
+
+  &.ea-slider--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &.ea-slider--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &.ea-slider--md {
+    font-size: var(--font-size-md);
+  }
+
+  &.ea-slider--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &.ea-slider--xl {
+    font-size: var(--font-size-xl);
+  }
 
   &__header {
     display: flex;

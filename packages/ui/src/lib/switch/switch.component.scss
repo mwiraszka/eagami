@@ -3,20 +3,14 @@
 .ea-switch-field {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--space-1-5);
-}
+  gap: 0.375em;
 
-.ea-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  cursor: pointer;
-  user-select: none;
-  font-family: var(--font-family-sans);
+  // Size sets only the font-size here; the label follows it directly, the track
+  // and thumb derive from it via the em-based `--ea-switch-size`, and the gap and
+  // message size below are em-based too, so the whole field scales from this one
+  // knob. At md the messages land exactly on the fixed --text-helper-size token.
+  --ea-field-messages-size: 0.8125em;
 
-  // Size sets only the font-size; the label follows it directly and the track and
-  // thumb derive from it via the em-based `--ea-switch-size`, so the whole control
-  // scales from this one knob
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -36,6 +30,15 @@
   &--xl {
     font-size: var(--font-size-xl);
   }
+}
+
+.ea-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family-sans);
 
   &--checked {
     .ea-switch__track {

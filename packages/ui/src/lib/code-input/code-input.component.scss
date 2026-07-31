@@ -3,35 +3,41 @@
 .ea-code-input-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
   color: var(--color-text-secondary);
+
+  // Size sets only the font-size here; the gap, the digit cells, and the label
+  // and message sizes below are all em-based, so the whole field scales from
+  // this one knob. At md these land exactly on the fixed
+  // --text-label-md-size / --text-helper-size tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    // 16px prevents iOS Safari auto-zoom on focus
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .ea-code-input-group {
   display: flex;
   gap: var(--space-2);
-
-  // Size sets only the font-size; the cell width and height are em-based on the
-  // base rule, so each digit cell scales entirely from this one knob.
-  &--xs .ea-code-input {
-    font-size: var(--font-size-xs);
-  }
-
-  &--sm .ea-code-input {
-    font-size: var(--font-size-sm);
-  }
-
-  &--md .ea-code-input {
-    font-size: var(--font-size-md);
-  }
-
-  &--lg .ea-code-input {
-    font-size: var(--font-size-lg);
-  }
-
-  &--xl .ea-code-input {
-    font-size: var(--font-size-xl);
-  }
 
   &--error .ea-code-input {
     border-color: var(--color-error-default);

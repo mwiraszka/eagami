@@ -3,22 +3,15 @@
 .ea-textarea-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
   color: var(--color-text-secondary);
-}
 
-.ea-textarea-wrapper {
-  display: flex;
-  min-width: 12em;
-  background-color: var(--color-bg-base);
-  border: var(--border-width-thin) solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  transition: var(--transition-colors), var(--transition-shadow);
-  overflow: hidden;
+  // Size sets only the font-size; the gap and the control box are em-based, and
+  // the label and messages consume these em-valued properties, so the whole
+  // field scales from this one knob.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
 
-  // Size sets the font-size on the wrapper (the textarea inherits it); the inner
-  // field's padding and the wrapper's min-height/min-width are em-based, so the
-  // whole control scales from this one knob.
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -38,6 +31,16 @@
   &--xl {
     font-size: var(--font-size-xl);
   }
+}
+
+.ea-textarea-wrapper {
+  display: flex;
+  min-width: 12em;
+  background-color: var(--color-bg-base);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: var(--transition-colors), var(--transition-shadow);
+  overflow: hidden;
 
   &--focused {
     border-color: var(--color-border-focus);

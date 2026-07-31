@@ -3,27 +3,16 @@
 .ea-number-input-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
   color: var(--color-text-secondary);
-}
 
-.ea-number-input-wrapper {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 0.25em;
-  min-height: 2.5em;
-  // Logical padding: less room on the stepper (inline-end) side. Flips in RTL.
-  padding-block: 0;
-  padding-inline: 0.75em 0.5em;
-  border: var(--border-width-thin) solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  background-color: var(--color-bg-base);
-  color: var(--color-text-secondary);
-  transition: var(--transition-colors), var(--transition-shadow);
+  // Size sets only the font-size here; the gap, the control box, and the label
+  // and message sizes below are all em-based, so the whole field scales from
+  // this one knob. At md these land exactly on the fixed
+  // --text-label-md-size / --text-helper-size tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
 
-  // Size sets only the font-size; padding, gap, min-height, and the steppers are
-  // em-based, so the field scales entirely from this one knob.
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -44,6 +33,22 @@
   &--xl {
     font-size: var(--font-size-xl);
   }
+}
+
+.ea-number-input-wrapper {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  min-height: 2.5em;
+  // Logical padding: less room on the stepper (inline-end) side. Flips in RTL.
+  padding-block: 0;
+  padding-inline: 0.75em 0.5em;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-secondary);
+  transition: var(--transition-colors), var(--transition-shadow);
 
   &--focused {
     border-color: var(--color-border-focus);
