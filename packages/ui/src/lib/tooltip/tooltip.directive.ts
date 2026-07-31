@@ -10,6 +10,7 @@ import {
   input,
 } from '@angular/core';
 
+import { resolveAriaTarget } from '../aria-target';
 import { isRtl } from '../direction';
 import { computePopoverPosition } from '../popover/popover-positioning';
 
@@ -254,7 +255,7 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private appendDescribedBy(): void {
-    const native = this.el.nativeElement;
+    const native = resolveAriaTarget(this.el.nativeElement);
     const existing = (native.getAttribute('aria-describedby') ?? '').trim();
     const tokens = existing ? existing.split(/\s+/) : [];
     if (!tokens.includes(this.tooltipId)) {
@@ -264,7 +265,7 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private removeDescribedBy(): void {
-    const native = this.el.nativeElement;
+    const native = resolveAriaTarget(this.el.nativeElement);
     const existing = (native.getAttribute('aria-describedby') ?? '').trim();
     const tokens = existing.split(/\s+/).filter((t: string) => t && t !== this.tooltipId);
     if (tokens.length) {

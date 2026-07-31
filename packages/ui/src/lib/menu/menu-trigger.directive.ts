@@ -1,5 +1,6 @@
-import { Directive, ElementRef, inject, input } from '@angular/core';
+import { Directive, ElementRef, Renderer2, effect, inject, input } from '@angular/core';
 
+import { resolveAriaTarget } from '../aria-target';
 import type { MenuComponent } from './menu.component';
 
 /**
@@ -10,17 +11,32 @@ import type { MenuComponent } from './menu.component';
 @Directive({
   selector: '[eaMenuTrigger]',
   host: {
-    '[attr.aria-haspopup]': '"menu"',
-    '[attr.aria-expanded]': 'menu()?.open() ?? false',
-    '[attr.aria-controls]': 'menu()?.id() ?? null',
     '(click)': 'handleClick()',
     '(keydown)': 'handleKeydown($event)',
   },
 })
 export class MenuTriggerDirective {
   private readonly el = inject(ElementRef<HTMLElement>);
+  private readonly renderer = inject(Renderer2);
 
   readonly menu = input.required<MenuComponent>({ alias: 'eaMenuTrigger' });
+
+  constructor() {
+    effect(() => {
+      const menu = this.menu();
+      const open = menu?.open() ?? false;
+      const controls = menu?.id() ?? null;
+      const target = resolveAriaTarget(this.el.nativeElement);
+
+      this.renderer.setAttribute(target, 'aria-haspopup', 'menu');
+      this.renderer.setAttribute(target, 'aria-expanded', String(open));
+      if (controls) {
+        this.renderer.setAttribute(target, 'aria-controls', controls);
+      } else {
+        this.renderer.removeAttribute(target, 'aria-controls');
+      }
+    });
+  }
 
   handleClick(): void {
     const m = this.menu();

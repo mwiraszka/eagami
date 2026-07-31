@@ -24,10 +24,19 @@ export const Playground: Story = {
       imports: [ButtonComponent, TooltipDirective],
     },
     template: `
-      <div style="display: flex; justify-content: center; padding: 64px;">
+      <div class="sb-tooltip-story">
         <ea-button eaTooltip="This is a tooltip" variant="secondary">Hover me</ea-button>
       </div>
     `,
+    styles: [
+      `
+        .sb-tooltip-story {
+          display: flex;
+          justify-content: center;
+          padding: 64px;
+        }
+      `,
+    ],
   }),
 };
 
