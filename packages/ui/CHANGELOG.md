@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Scale the avatar editor's dropzone, icons, and controls continuously from `canvasSize` instead of switching at two hard-coded breakpoints, so a small canvas no longer jumps between densities.
 - Derive the drawer's panel extent from one custom property per axis, replacing the per-size width and height rules duplicated across each placement.
 
+### Fixed
+
+- Open the dropdown onto the first selectable option instead of highlighting a disabled first option.
+
 ## [5.13.0] - 2026-08-01
 
 ### Added

@@ -26,6 +26,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
           "Derive the drawer's panel extent from one custom property per axis, replacing the per-size width and height rules duplicated across each placement.",
         ],
       },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Open the dropdown onto the first selectable option instead of highlighting a disabled first option.',
+        ],
+      },
     ],
   },
   {
