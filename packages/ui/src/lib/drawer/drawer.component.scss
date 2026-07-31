@@ -147,28 +147,44 @@
       height: 100%;
     }
 
+    // One pair of knobs per size drives the panel's extent; the placement rules
+    // below each consume the one for their own axis. A new size needs only the
+    // two values here.
+    &--xs {
+      --ea-drawer-inline-size: 16rem;
+      --ea-drawer-block-size: 8rem;
+    }
+
+    &--sm {
+      --ea-drawer-inline-size: 20rem;
+      --ea-drawer-block-size: 12rem;
+    }
+
+    &--md {
+      --ea-drawer-inline-size: 28rem;
+      --ea-drawer-block-size: 20rem;
+    }
+
+    &--lg {
+      --ea-drawer-inline-size: 36rem;
+      --ea-drawer-block-size: 28rem;
+    }
+
+    &--xl {
+      --ea-drawer-inline-size: 44rem;
+      --ea-drawer-block-size: 36rem;
+    }
+
+    &--full {
+      --ea-drawer-inline-size: calc(100vw - 3rem);
+      --ea-drawer-block-size: calc(100vh - 3rem);
+    }
+
     &--right,
     &--left,
     &--start,
     &--end {
-      &.ea-drawer__panel--xs {
-        width: 16rem;
-      }
-      &.ea-drawer__panel--sm {
-        width: 20rem;
-      }
-      &.ea-drawer__panel--md {
-        width: 28rem;
-      }
-      &.ea-drawer__panel--lg {
-        width: 36rem;
-      }
-      &.ea-drawer__panel--xl {
-        width: 44rem;
-      }
-      &.ea-drawer__panel--full {
-        width: calc(100vw - 3rem);
-      }
+      width: var(--ea-drawer-inline-size, 28rem);
     }
 
     &--top {
@@ -176,25 +192,7 @@
       inset-inline-start: 0;
       inset-inline-end: 0;
       width: 100%;
-
-      &.ea-drawer__panel--xs {
-        height: 8rem;
-      }
-      &.ea-drawer__panel--sm {
-        height: 12rem;
-      }
-      &.ea-drawer__panel--md {
-        height: 20rem;
-      }
-      &.ea-drawer__panel--lg {
-        height: 28rem;
-      }
-      &.ea-drawer__panel--xl {
-        height: 36rem;
-      }
-      &.ea-drawer__panel--full {
-        height: calc(100vh - 3rem);
-      }
+      height: var(--ea-drawer-block-size, 20rem);
     }
 
     &--bottom {
@@ -202,25 +200,7 @@
       inset-inline-start: 0;
       inset-inline-end: 0;
       width: 100%;
-
-      &.ea-drawer__panel--xs {
-        height: 8rem;
-      }
-      &.ea-drawer__panel--sm {
-        height: 12rem;
-      }
-      &.ea-drawer__panel--md {
-        height: 20rem;
-      }
-      &.ea-drawer__panel--lg {
-        height: 28rem;
-      }
-      &.ea-drawer__panel--xl {
-        height: 36rem;
-      }
-      &.ea-drawer__panel--full {
-        height: calc(100vh - 3rem);
-      }
+      height: var(--ea-drawer-block-size, 20rem);
     }
 
     // Top and bottom drawers are height-bound, so trim the vertical padding at the
