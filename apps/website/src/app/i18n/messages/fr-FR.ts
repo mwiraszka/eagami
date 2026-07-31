@@ -1590,6 +1590,8 @@ export const frFR: WebMessages = {
             disabled: 'Désactive l’étiquette et son bouton de suppression.',
             removeLabel:
               'Libellé accessible du bouton de suppression, revenant à la locale active.',
+            removeTabbable:
+              'Indique si le bouton de suppression est un arrêt de tabulation ; définir false à l’intérieur d’un widget composite qui gère lui-même la navigation clavier.',
             removed:
               'Émis lorsque l’utilisateur active le bouton de suppression d’une étiquette supprimable.',
           },
@@ -2021,6 +2023,8 @@ export const frFR: WebMessages = {
             navigable:
               'Transforme le tableau en une grille navigable au clavier, avec un focus mobile et un déplacement entre cellules via les flèches.',
             bordered: 'Affiche une bordure autour de chaque cellule.',
+            caption:
+              'Légende visible affichée au-dessus du tableau ; le nomme également pour les technologies d’assistance.',
             columns:
               'Définitions de colonnes décrivant la clé, le libellé et, éventuellement, le tri ou le modèle de chaque champ.',
             data: 'Tableau d’objets de lignes à afficher dans le tableau.',

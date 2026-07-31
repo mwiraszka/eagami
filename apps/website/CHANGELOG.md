@@ -2,6 +2,16 @@
 
 All notable changes to eagami.com are documented in this file.
 
+## [3.16.0] - 2026-08-01
+
+### Added
+
+- Add a caption control to the data table playground.
+
+### Changed
+
+- Pick up @eagami/ui v5.13.0.
+
 ## [3.15.7] - 2026-07-31
 
 ### Changed
@@ -1004,6 +1014,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.16.0]: https://github.com/mwiraszka/eagami/compare/website-v3.15.7...website-v3.16.0
 [3.15.7]: https://github.com/mwiraszka/eagami/compare/website-v3.15.6...website-v3.15.7
 [3.15.6]: https://github.com/mwiraszka/eagami/compare/website-v3.15.5...website-v3.15.6
 [3.15.5]: https://github.com/mwiraszka/eagami/compare/website-v3.15.4...website-v3.15.5

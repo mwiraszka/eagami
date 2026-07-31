@@ -7,6 +7,7 @@
       type="button"
       class="ea-tag__remove"
       [disabled]="disabled() || null"
+      [attr.tabindex]="removeTabbable() ? null : -1"
       [attr.aria-label]="resolvedRemoveLabel()"
       (click)="onRemove($event)">
       <ea-icon-x />

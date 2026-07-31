@@ -1544,6 +1544,8 @@ export const en: WebMessages = {
             disabled: 'Disables the tag and its remove button.',
             removeLabel:
               'Accessible label for the remove button, falling back to the active locale.',
+            removeTabbable:
+              'Whether the remove button is a tab stop; set false inside a composite widget that owns keyboard navigation.',
             removed:
               'Fires when the user activates the remove button on a removable tag.',
           },
@@ -1934,6 +1936,8 @@ export const en: WebMessages = {
             navigable:
               'Turns the table into a keyboard-navigable grid with roving focus and arrow-key cell movement.',
             bordered: 'Renders a border around every cell.',
+            caption:
+              'Visible caption rendered above the table; also names it for assistive technology.',
             columns:
               "Column definitions describing each field's key, label, and optional sorting or template.",
             data: 'Array of row objects to display in the table.',

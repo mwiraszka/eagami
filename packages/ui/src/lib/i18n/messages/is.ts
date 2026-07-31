@@ -132,6 +132,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${start}–${end} af ${total}`,
     previousPage: 'Fyrri síða',
     nextPage: 'Næsta síða',
+    page: page => `Fara á síðu ${page}`,
   },
   progressBar: {
     label: 'Framvinda',
@@ -184,6 +185,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: 'Færa valið til baka',
     moveAllToSource: 'Færa allt til baka',
     empty: 'Engin atriði',
+    moved: (count, listLabel) => `Flutt í ${listLabel}: ${count}`,
   },
   validation: {
     required: 'Þennan reit þarf að fylla út',

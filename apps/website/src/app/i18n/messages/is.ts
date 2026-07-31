@@ -1562,6 +1562,8 @@ export const is: WebMessages = {
             disabled: 'Gerir merkið og fjarlægingarhnapp þess óvirk.',
             removeLabel:
               'Aðgengilegur merkimiði fyrir fjarlægingarhnappinn, fellur aftur á virka svæðið.',
+            removeTabbable:
+              'Hvort fjarlægingarhnappurinn sé Tab-viðkomustaður; stilltu á false inni í samsettri einingu sem stýrir sjálf lyklaborðsleiðsögninni.',
             removed:
               'Kviknar þegar notandinn virkjar fjarlægingarhnappinn á fjarlægjanlegu merki.',
           },
@@ -1963,6 +1965,8 @@ export const is: WebMessages = {
             navigable:
               'Breytir töflunni í lyklaborðs-stýranlegt reitakerfi með færanlegum fókus og hreyfingu milli reita með örvalyklunum.',
             bordered: 'Birtir ramma um hverja reit.',
+            caption:
+              'Sýnilegur skýringartexti sem birtist fyrir ofan töfluna; nefnir hana einnig fyrir hjálpartækni.',
             columns:
               'Dálkaskilgreiningar sem lýsa lykli, merkimiða og valfrjálsri röðun eða sniðmáti hvers reits.',
             data: 'Fylki raðhluta til að birta í töflunni.',

@@ -28,6 +28,7 @@ interface DataTableKnobState {
   // Index signature lets this typed state satisfy the playground's generic
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
+  caption: string;
   density: DataTableDensity;
   size: DataTableSize;
   striped: boolean;

@@ -23,6 +23,7 @@
       [required]="required()"
       [value]="value()"
       [attr.maxlength]="maxlength() ?? null"
+      [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null

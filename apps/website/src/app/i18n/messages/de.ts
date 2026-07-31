@@ -1596,6 +1596,8 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert das Tag und seinen Entfernen-Button.',
             removeLabel:
               'Barrierefreies Label für den Entfernen-Button, das auf den aktiven Sprachraum zurückgreift.',
+            removeTabbable:
+              'Ob der Entfernen-Button ein Tabstopp ist; setzen Sie ihn auf false innerhalb eines zusammengesetzten Widgets, das die Tastaturnavigation selbst steuert.',
             removed:
               'Wird ausgelöst, wenn der Nutzer den Entfernen-Button eines entfernbaren Tags aktiviert.',
           },
@@ -2028,6 +2030,8 @@ export const de: WebMessages = {
             navigable:
               'Macht die Tabelle zu einem per Tastatur navigierbaren Raster mit wanderndem Fokus und Zellbewegung über die Pfeiltasten.',
             bordered: 'Rendert einen Rahmen um jede Zelle.',
+            caption:
+              'Sichtbare Beschriftung über der Tabelle; benennt sie zugleich für assistive Technologien.',
             columns:
               'Spaltendefinitionen, die Schlüssel, Label und optionale Sortierung oder Template jedes Feldes beschreiben.',
             data: 'Array von Zeilenobjekten, die in der Tabelle angezeigt werden.',

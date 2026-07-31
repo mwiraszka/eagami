@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.13.0] - 2026-08-01
+
+### Added
+
+- Add an `aria-label` input to `<ea-input>` and `<ea-textarea>` for fields with no visible label.
+- Add `aria-label` and `caption` inputs to `<ea-data-table>` so a table can be named, with the caption also rendering above it.
+- Add a `removeTabbable` input to `<ea-tag>` for chips inside a composite widget that owns keyboard navigation.
+
+### Changed
+
+- Announce transfer list moves in a live region so the destination and count are spoken.
+- Name paginator page buttons beyond their bare digit.
+
+### Fixed
+
+- Apply menu trigger and tooltip ARIA to the control a component renders, so state reaches the button inside `<ea-button>` instead of stranding on the wrapper.
+- Take multi-select chip remove buttons out of the tab order, which nested focusable controls inside the combobox.
+- Draw the file uploader and avatar editor accents from the semantic color tokens so they follow a retheme.
+
 ## [5.12.2] - 2026-07-31
 
 ### Fixed
@@ -1126,6 +1145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.13.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.2...ui-v5.13.0
 [5.12.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.1...ui-v5.12.2
 [5.12.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.0...ui-v5.12.1
 [5.12.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.11.0...ui-v5.12.0

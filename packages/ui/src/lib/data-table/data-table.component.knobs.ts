@@ -8,6 +8,7 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const DATA_TABLE_KNOBS: ComponentKnobs = {
   argTypes: {
+    caption: { control: 'text' },
     density: {
       control: 'select',
       options: ['compact', 'comfortable', 'spacious'],
@@ -26,6 +27,7 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     rowActivate: { action: 'rowActivate' },
   },
   args: {
+    caption: '',
     density: 'comfortable',
     size: 'md',
     striped: false,

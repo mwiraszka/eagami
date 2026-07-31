@@ -314,4 +314,37 @@ describe('TransferListComponent', () => {
       expect(tabindexes('source')).toEqual(['0', '-1', '-1']);
     });
   });
+
+  describe('Move announcements', () => {
+    function getAnnouncement(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-transfer-list__announcement');
+    }
+
+    it('starts empty so nothing is announced before a move', () => {
+      expect(getAnnouncement().getAttribute('role')).toBe('status');
+      expect(getAnnouncement().textContent?.trim()).toBe('');
+    });
+
+    it('reports the count and destination after moving a selection', () => {
+      getListItems('source')[0].click();
+      fixture.detectChanges();
+
+      getButton('Move selected to target').click();
+      fixture.detectChanges();
+
+      expect(getAnnouncement().textContent?.trim()).toBe('1 moved to Selected');
+    });
+
+    it('reports every moved item when moving all, then back again', () => {
+      getButton('Move all to target').click();
+      fixture.detectChanges();
+
+      expect(getAnnouncement().textContent?.trim()).toBe('4 moved to Selected');
+
+      getButton('Move all to source').click();
+      fixture.detectChanges();
+
+      expect(getAnnouncement().textContent?.trim()).toBe('4 moved to Available');
+    });
+  });
 });

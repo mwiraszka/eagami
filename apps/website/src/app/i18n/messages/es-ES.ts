@@ -1593,6 +1593,8 @@ export const esES: WebMessages = {
             disabled: 'Deshabilita la etiqueta y su botón de eliminación.',
             removeLabel:
               'Etiqueta accesible para el botón de eliminación, que recurre al idioma activo.',
+            removeTabbable:
+              'Si el botón de eliminación es una parada de tabulación; establézcalo en false dentro de un widget compuesto que controle la navegación con teclado.',
             removed:
               'Se emite cuando el usuario activa el botón de eliminación en una etiqueta eliminable.',
           },
@@ -2024,6 +2026,8 @@ export const esES: WebMessages = {
             navigable:
               'Convierte la tabla en una cuadrícula navegable por teclado con foco itinerante y movimiento entre celdas con las flechas.',
             bordered: 'Muestra un borde alrededor de cada celda.',
+            caption:
+              'Título visible mostrado encima de la tabla; también le da nombre para las tecnologías de asistencia.',
             columns:
               'Definiciones de columnas que describen la clave, la etiqueta y, opcionalmente, el orden o la plantilla de cada campo.',
             data: 'Array de objetos de fila que mostrar en la tabla.',

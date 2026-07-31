@@ -93,6 +93,15 @@ describe('MenuComponent', () => {
       expect(getTrigger().getAttribute('aria-haspopup')).toBe('menu');
     });
 
+    it('tracks the open state on the trigger via aria-expanded', () => {
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('false');
+
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
+    });
+
     it('does not render the menu list when closed', () => {
       expect(getList()).toBeNull();
     });

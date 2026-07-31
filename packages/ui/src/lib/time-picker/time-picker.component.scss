@@ -146,10 +146,11 @@
     gap: 0.25em;
   }
 
+  // Wider than tall so the stacked pair spans the column; height stays on the
+  // shared icon-button box
   &__step {
     @include ea.icon-button;
     width: 2.25em;
-    height: 1.75em;
 
     ea-icon-chevron-up,
     ea-icon-chevron-down {

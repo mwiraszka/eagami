@@ -1585,6 +1585,8 @@ export const nl: WebMessages = {
             disabled: 'Schakelt de tag en de verwijderknop uit.',
             removeLabel:
               'Toegankelijk label voor de verwijderknop, dat terugvalt op de actieve taal.',
+            removeTabbable:
+              'Of de verwijderknop een tabstop is; zet dit op false binnen een samengestelde widget die zelf de toetsenbordnavigatie regelt.',
             removed:
               'Wordt geactiveerd wanneer de gebruiker de verwijderknop op een verwijderbare tag activeert.',
           },
@@ -2012,6 +2014,8 @@ export const nl: WebMessages = {
             navigable:
               'Maakt van de tabel een met het toetsenbord navigeerbaar raster met verplaatsbare focus en celbeweging via de pijltoetsen.',
             bordered: 'Geeft een rand rond elke cel weer.',
+            caption:
+              'Zichtbaar bijschrift boven de tabel; benoemt deze ook voor hulptechnologie.',
             columns:
               'Kolomdefinities die de sleutel, het label en optionele sortering of template van elk veld beschrijven.',
             data: 'Array van rij-objecten om in de tabel te tonen.',

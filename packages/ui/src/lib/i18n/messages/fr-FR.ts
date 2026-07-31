@@ -132,6 +132,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${start}–${end} sur ${total}`,
     previousPage: 'Page précédente',
     nextPage: 'Page suivante',
+    page: page => `Aller à la page ${page}`,
   },
   progressBar: {
     label: 'Progression',
@@ -184,6 +185,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: 'Déplacer la sélection vers la source',
     moveAllToSource: 'Tout déplacer vers la source',
     empty: 'Aucun élément',
+    moved: (count, listLabel) => `${count} déplacés vers ${listLabel}`,
   },
   validation: {
     required: 'Ce champ est obligatoire',

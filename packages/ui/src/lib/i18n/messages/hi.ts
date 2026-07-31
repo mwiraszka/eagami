@@ -132,6 +132,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${total} में से ${start}–${end}`,
     previousPage: 'पिछला पृष्ठ',
     nextPage: 'अगला पृष्ठ',
+    page: page => `पृष्ठ ${page} पर जाएँ`,
   },
   progressBar: {
     label: 'प्रगति',
@@ -184,6 +185,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: 'चयनित को स्रोत में ले जाएं',
     moveAllToSource: 'सभी को स्रोत में ले जाएं',
     empty: 'कोई आइटम नहीं',
+    moved: (count, listLabel) => `${count} को ${listLabel} में ले जाया गया`,
   },
   validation: {
     required: 'यह फ़ील्ड आवश्यक है',

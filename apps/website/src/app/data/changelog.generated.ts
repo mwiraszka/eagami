@@ -14,6 +14,35 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.13.0',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `aria-label` input to `<ea-input>` and `<ea-textarea>` for fields with no visible label.',
+          'Add `aria-label` and `caption` inputs to `<ea-data-table>` so a table can be named, with the caption also rendering above it.',
+          'Add a `removeTabbable` input to `<ea-tag>` for chips inside a composite widget that owns keyboard navigation.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Announce transfer list moves in a live region so the destination and count are spoken.',
+          'Name paginator page buttons beyond their bare digit.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Apply menu trigger and tooltip ARIA to the control a component renders, so state reaches the button inside `<ea-button>` instead of stranding on the wrapper.',
+          'Take multi-select chip remove buttons out of the tab order, which nested focusable controls inside the combobox.',
+          'Draw the file uploader and avatar editor accents from the semantic color tokens so they follow a retheme.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.12.2',
     date: '2026-07-31',
     sections: [

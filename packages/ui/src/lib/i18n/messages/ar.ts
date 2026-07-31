@@ -139,6 +139,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `${start}–${end} من ${total}`,
     previousPage: 'الصفحة السابقة',
     nextPage: 'الصفحة التالية',
+    page: page => `الانتقال إلى الصفحة ${page}`,
   },
   progressBar: {
     label: 'التقدم',
@@ -185,12 +186,13 @@ const messages: EagamiMessages = {
   transferList: {
     sourceLabel: 'المتاح',
     targetLabel: 'المحدد',
-    controlsLabel: 'عناصr التحكم بالنقل',
+    controlsLabel: 'عناصر التحكم بالنقل',
     moveSelectedToTarget: 'نقل المحدد إلى اليمين',
     moveAllToTarget: 'نقل الكل إلى اليمين',
     moveSelectedToSource: 'نقل المحدد إلى اليسار',
     moveAllToSource: 'نقل الكل إلى اليسار',
     empty: 'لا توجد عناصر',
+    moved: (count, listLabel) => `تم نقل ${count} إلى ${listLabel}`,
   },
   validation: {
     required: 'هذا الحقل مطلوب',

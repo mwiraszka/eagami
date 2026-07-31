@@ -72,6 +72,8 @@ export class InputComponent implements ControlValueAccessor {
 
   /** Text label rendered above the field. */
   readonly label = input<string | undefined>(undefined);
+  /** Accessible name for the control when no visible `label` is set. */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Native input type; `password` adds a built-in show/hide toggle. */
   readonly type = input<InputType>('text');
   /** Placeholder shown while the field is empty. */

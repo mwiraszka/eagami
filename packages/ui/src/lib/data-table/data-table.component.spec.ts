@@ -369,4 +369,33 @@ describe('DataTableComponent', () => {
       expect(testData).toEqual(original);
     });
   });
+
+  describe('Accessible name', () => {
+    function getTable(): HTMLTableElement {
+      return fixture.nativeElement.querySelector('.ea-data-table__table');
+    }
+
+    it('renders no caption and no aria-label by default', () => {
+      expect(getTable().querySelector('caption')).toBeNull();
+      expect(getTable().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('names the table via aria-label', () => {
+      fixture.componentRef.setInput('aria-label', 'Team members');
+      fixture.detectChanges();
+
+      expect(getTable().getAttribute('aria-label')).toBe('Team members');
+    });
+
+    it('renders a visible caption that supersedes aria-label', () => {
+      fixture.componentRef.setInput('aria-label', 'Team members');
+      fixture.componentRef.setInput('caption', 'Active staff');
+      fixture.detectChanges();
+
+      expect(getTable().querySelector('caption')?.textContent?.trim()).toBe(
+        'Active staff',
+      );
+      expect(getTable().hasAttribute('aria-label')).toBe(false);
+    });
+  });
 });

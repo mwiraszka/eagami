@@ -212,6 +212,7 @@ export interface EagamiMessages {
     range: (start: string, end: string, total: string) => string;
     previousPage: string;
     nextPage: string;
+    page: (page: string) => string;
   };
   progressBar: {
     label: string;
@@ -264,6 +265,7 @@ export interface EagamiMessages {
     moveSelectedToSource: string;
     moveAllToSource: string;
     empty: string;
+    moved: (count: string, listLabel: string) => string;
   };
   validation: {
     required: string;

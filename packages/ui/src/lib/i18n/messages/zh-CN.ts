@@ -131,6 +131,7 @@ const messages: EagamiMessages = {
     range: (start, end, total) => `共 ${total} 项中的 ${start}–${end}`,
     previousPage: '上一页',
     nextPage: '下一页',
+    page: page => `转到第 ${page} 页`,
   },
   progressBar: {
     label: '进度',
@@ -183,6 +184,7 @@ const messages: EagamiMessages = {
     moveSelectedToSource: '将所选项移至左侧',
     moveAllToSource: '将全部移至左侧',
     empty: '无项目',
+    moved: (count, listLabel) => `已将 ${count} 项移至 ${listLabel}`,
   },
   validation: {
     required: '此字段为必填项',

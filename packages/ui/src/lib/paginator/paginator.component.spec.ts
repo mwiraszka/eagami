@@ -407,5 +407,12 @@ describe('PaginatorComponent', () => {
 
       expect(range.getAttribute('aria-live')).toBe('polite');
     });
+
+    it('names each page button beyond its bare digit', () => {
+      const labels = getPageButtons().map(b => b.getAttribute('aria-label'));
+
+      expect(labels[0]).toBe('Go to page 1');
+      expect(labels.every(l => l?.startsWith('Go to page '))).toBe(true);
+    });
   });
 });

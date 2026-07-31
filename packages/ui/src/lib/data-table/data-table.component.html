@@ -5,7 +5,13 @@
     <table
       class="ea-data-table__table"
       [attr.role]="navigable() ? 'grid' : null"
+      [attr.aria-label]="caption() ? null : (ariaLabel() ?? null)"
       (keydown)="onGridKeydown($event)">
+      @if (caption(); as captionText) {
+        <caption class="ea-data-table__caption">
+          {{ captionText }}
+        </caption>
+      }
       <thead class="ea-data-table__head">
         <tr
           class="ea-data-table__row ea-data-table__row--header"
