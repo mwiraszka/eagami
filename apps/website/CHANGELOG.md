@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - List the supported locales as a checkmarked list that reflows from three columns to one, instead of a row of cards.
-- Put the page name first in every browser tab title, which the 404 and component library pages did the other way round.
+- Make every browser tab title match the page's own heading, dropping the Angular prefixes and abbreviations that did not match.
 - Set every page heading on a consistent scale with a divider rule beneath it.
 - Capitalize Eagami wherever it reads as a name rather than the wordmark.
 - Expand the footer into a full site map, and retire the header's UI link now that the footer covers it.
