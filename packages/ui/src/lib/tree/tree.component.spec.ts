@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import { TreeComponent } from './tree.component';
 import type { TreeNode } from './tree.types';
 
@@ -313,11 +314,10 @@ describe('TreeComponent', () => {
       const list = fixture.nativeElement.querySelector('.ea-tree__list') as HTMLElement;
       // jsdom does not resolve the dir attribute into a computed direction, so
       // report rtl for the tree itself and let every other lookup through
-      const computed = window.getComputedStyle.bind(window);
       vi.spyOn(window, 'getComputedStyle').mockImplementation((el, pseudo) =>
         el === list
           ? ({ direction: 'rtl' } as CSSStyleDeclaration)
-          : computed(el, pseudo),
+          : REAL_GET_COMPUTED_STYLE(el, pseudo),
       );
 
       // ArrowLeft points towards the child indent in RTL, so it expands
