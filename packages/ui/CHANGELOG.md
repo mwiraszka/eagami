@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Re-disable the avatar editor's revert control once the crop is panned or zoomed back to where it started.
+- Keep the avatar editor's revert control disabled while a replacement image is still loading.
 
 ## [5.15.0] - 2026-08-01
 

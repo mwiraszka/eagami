@@ -789,6 +789,31 @@ describe('AvatarEditorComponent', () => {
       expect(component.canRevert()).toBe(false);
     });
 
+    it('takes the clamped zoom as the baseline when cropState is out of range', () => {
+      fixture.componentRef.setInput('maxZoom', 3);
+      fixture.componentRef.setInput('cropState', {
+        zoom: 5,
+        offsetX: 0,
+        offsetY: 0,
+      } satisfies AvatarEditorCropState);
+      loadImage();
+
+      component.setZoom(2);
+      component.setZoom(3);
+
+      expect(component.canRevert()).toBe(false);
+    });
+
+    it('disables canRevert while a replacement image is still loading', () => {
+      loadImage();
+      component.setZoom(2);
+
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/other.jpg');
+      fixture.detectChanges();
+
+      expect(component.canRevert()).toBe(false);
+    });
+
     it('keeps canRevert enabled for a new file cropped like the original', () => {
       loadImage();
 

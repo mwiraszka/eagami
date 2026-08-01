@@ -490,10 +490,6 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'setZoom(value: number): void',
       },
       {
-        name: 'syncAtOriginal',
-        signature: 'syncAtOriginal(): void',
-      },
-      {
         name: 'updateImageDarkness',
         signature:
           'updateImageDarkness(ctx: CanvasRenderingContext2D, size: number): void',

@@ -21,6 +21,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Fixed',
         entries: [
           "Re-disable the avatar editor's revert control once the crop is panned or zoomed back to where it started.",
+          "Keep the avatar editor's revert control disabled while a replacement image is still loading.",
         ],
       },
     ],
