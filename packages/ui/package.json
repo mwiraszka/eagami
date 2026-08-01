@@ -80,7 +80,7 @@
     "@schematics/angular": "21.2.19",
     "@storybook/addon-a11y": "10.5.5",
     "@storybook/addon-docs": "10.5.5",
-    "@storybook/angular": "10.5.3",
+    "@storybook/angular": "10.5.5",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/node": "26.1.2",
     "@vitest/coverage-v8": "4.1.10",
