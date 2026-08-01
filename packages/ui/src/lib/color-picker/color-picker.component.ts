@@ -663,6 +663,11 @@ export class ColorPickerComponent implements ControlValueAccessor {
   /** Cycles the format through hex, rgb, and hsl (only used when `format` is `all`). */
   cycleInputMode(): void {
     this.inputMode.update(m => (m === 'hex' ? 'rgb' : m === 'rgb' ? 'hsl' : 'hex'));
+    // The toggle picks the notation the consumer receives, so re-emit straight
+    // away rather than leaving the value in the old format until the next edit
+    if (this.value() !== null) {
+      this.commit();
+    }
   }
 
   onAlphaInput(event: Event): void {

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Emit the colour in the newly chosen notation as soon as the format toggle is cycled, instead of leaving the bound value in the previous format until the next edit.
 - Send the color picker's hue slider to the end of the strip on End, which previously jumped back to the start.
 - Mark the matching colour preset as pressed regardless of which output format the value uses.
 - Keep the colour swatch opaque when the alpha slider is hidden, matching the value the picker actually emits.

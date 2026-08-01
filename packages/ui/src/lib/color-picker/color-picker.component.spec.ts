@@ -158,6 +158,37 @@ describe('ColorPickerComponent', () => {
       expect(toggle.textContent?.trim()).toBe('RGB');
     });
 
+    it('re-emits the colour in the newly chosen notation', () => {
+      component.value.set('#ff8800');
+      fixture.detectChanges();
+      const changed = vi.fn<(value: string | null) => void>();
+      component.changed.subscribe(changed);
+      open();
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('rgb(255, 136, 0)');
+      expect(changed).toHaveBeenCalledWith('rgb(255, 136, 0)');
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('hsl(32, 100%, 50%)');
+    });
+
+    it('emits nothing when there is no colour to reformat', () => {
+      const changed = vi.fn<(value: string | null) => void>();
+      component.changed.subscribe(changed);
+      open();
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(changed).not.toHaveBeenCalled();
+    });
+
     it('cycles to HSL and renders H, S, L inputs', () => {
       open();
       component.cycleInputMode();
