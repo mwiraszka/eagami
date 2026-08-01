@@ -373,6 +373,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     } else {
       this.viewMonth.set(month - 1);
     }
+    this.pullFocusIntoView();
   }
 
   goToNextMonth(): void {
@@ -383,14 +384,31 @@ export class DatePickerComponent implements ControlValueAccessor {
     } else {
       this.viewMonth.set(month + 1);
     }
+    this.pullFocusIntoView();
   }
 
   goToPrevYear(): void {
     this.viewYear.update(y => y - 1);
+    this.pullFocusIntoView();
   }
 
   goToNextYear(): void {
     this.viewYear.update(y => y + 1);
+    this.pullFocusIntoView();
+  }
+
+  /**
+   * Moves the roving date into the month now on screen, keeping the day where
+   * the month is long enough. Without this the only tabbable day cell stays in
+   * the month the user navigated away from, so inside the focus-trapped dialog
+   * no day is reachable and the next arrow key snaps the view back.
+   */
+  private pullFocusIntoView(): void {
+    const year = this.viewYear();
+    const month = this.viewMonth();
+    const day = this.focusedDate()?.getDate() ?? 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    this.focusedDate.set(new Date(year, month, Math.min(day, daysInMonth)));
   }
 
   goToToday(): void {
@@ -546,8 +564,17 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   private addMonths(date: Date, months: number): Date {
-    const result = new Date(date);
-    result.setMonth(date.getMonth() + months);
-    return result;
+    // Clamping to the target month's length keeps the step at exactly one
+    // month; a bare setMonth overflows short months into the one after
+    const daysInTarget = new Date(
+      date.getFullYear(),
+      date.getMonth() + months + 1,
+      0,
+    ).getDate();
+    return new Date(
+      date.getFullYear(),
+      date.getMonth() + months,
+      Math.min(date.getDate(), daysInTarget),
+    );
   }
 }

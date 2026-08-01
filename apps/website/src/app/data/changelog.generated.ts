@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.14.1',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Step the date picker a whole month on PageUp and PageDown, which previously skipped past short months entirely when the focused day had no counterpart there.',
+          "Move the date picker's keyboard focus into the month the header buttons navigate to, so days stay reachable and the next arrow key no longer jumps back.",
+          'Accept percentage channels in an `rgb()` color, which were previously read as raw numbers and rendered far too dark.',
+          'Normalize out-of-range `hsl()` colors instead of deriving negative or overflowing channels from them.',
+          "Release the previous push target when a drawer's `pushTarget` changes while it is open, which left the old element permanently indented.",
+          'Correct the migration guide, which skipped the v1 to v2 and v2 to v3 upgrades entirely.',
+          'Correct several changelog entries whose stated icon counts, deprecation versions, and wordmark sizing did not match what shipped.',
+          'Point the Angular Material comparison link at its current domain.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.14.0',
     date: '2026-08-01',
     sections: [
@@ -116,7 +135,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Changed',
         entries: [
-          "**Breaking:** Make the wordmark `size` input the brand text's font-size in px (previously it was the logo's size); the default drops from 48 to 24 so the rendered default is unchanged.",
+          "**Breaking:** Make the wordmark `size` input the brand text's font-size in px (previously it was the logo's size); the default drops from 48 to 24 so the brand text renders at its previous size.",
           'Re-proportion the wordmark: the logo renders at 1.5 times the text size, with a gap of one twelfth of the logo between them.',
           'Change the wordmark byline to "designed by" in every locale.',
           "Tuck the wordmark byline closer to the brand text, and raise the tagline variant's text for optical balance against the logo.",
@@ -1176,7 +1195,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Changed',
         entries: [
-          '**Breaking:** Remove `<ea-icon-apple>` / `AppleIconComponent`. The icon depicted Apple Inc.\'s logo, which is more strictly protected than other brand marks; consumers needing it (e.g. "Sign in with Apple") should source the asset directly from Apple per their brand guidelines. The component was deprecated in v1.3.0.',
+          '**Breaking:** Remove `<ea-icon-apple>` / `AppleIconComponent`. The icon depicted Apple Inc.\'s logo, which is more strictly protected than other brand marks; consumers needing it (e.g. "Sign in with Apple") should source the asset directly from Apple per their brand guidelines. The component was deprecated in v1.1.0.',
           "**Breaking:** Remove `<ea-icon-pencil>` / `PencilIconComponent`. The icon depicted the same mark as Feather's canonical `edit-2` and was deprecated in v1.4.0 as redundant; switch to `<ea-icon-edit-2>` / `Edit2IconComponent`.",
           'Default the `<ea-popover>` `offset` to `0` so the popover sits flush against its anchor on the placement axis (was 2px).',
           "Apply a font-aware `min-height` to `<ea-textarea>` matching one line of text plus the active size's vertical padding, so a textarea is never visually shorter than a single-line `<ea-input>` at the same size.",
@@ -1260,7 +1279,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Expand the icon set from 100 to 268 icons. Round out the Feather Icons coverage with 148 additions (activity, airplay, alert-octagon, align-{center,justify,left,right}, anchor, aperture, arrow-down-{left,right}, arrow-up-{left,right}, award, battery, battery-charging, bell-off, bluetooth, bold, book, book-open, box, chrome, code, codepen, codesandbox, coffee, columns, command, compass, corner-{down,up}-{left,right}, cpu, crop, crosshair, database, delete, disc, divide, download-cloud, droplet, edit, edit-2, edit-3, fast-forward, feather, file-minus, file-plus, file-text, film, frown, git-branch, git-commit, git-merge, git-pull-request, gitlab, grid, hard-drive, headphones, italic, key, layers, layout, life-buoy, link-2, map, maximize-2, meh, message-circle, message-square, mic-off, minimize-2, minus-circle, minus-square, more-vertical, mouse-pointer, move, music, navigation, navigation-2, octagon, pause-circle, percent, pie-chart, play-circle, plus-circle, plus-square, pocket, power, radio, repeat, rewind, rotate-cw, rss, scissors, server, share-2, shield-off, shopping-bag, shuffle, sidebar, skip-back, skip-forward, slack, slash, sliders, smile, speaker, square, stop-circle, sunrise, sunset, tablet, tag, target, terminal, thermometer, toggle-left, toggle-right, tool, trash-2, trending-down, triangle, truck, tv, type, umbrella, underline, upload-cloud, user-check, user-minus, user-plus, user-x, video-off, voicemail, volume, volume-1, volume-x, watch, wifi-off, wind, x-octagon, x-square, zap-off, zoom-in, zoom-out)',
+          'Expand the icon set from 101 to 268 icons. Round out the Feather Icons coverage with 148 additions (activity, airplay, alert-octagon, align-{center,justify,left,right}, anchor, aperture, arrow-down-{left,right}, arrow-up-{left,right}, award, battery, battery-charging, bell-off, bluetooth, bold, book, book-open, box, chrome, code, codepen, codesandbox, coffee, columns, command, compass, corner-{down,up}-{left,right}, cpu, crop, crosshair, database, delete, disc, divide, download-cloud, droplet, edit, edit-2, edit-3, fast-forward, feather, file-minus, file-plus, file-text, film, frown, git-branch, git-commit, git-merge, git-pull-request, gitlab, grid, hard-drive, headphones, italic, key, layers, layout, life-buoy, link-2, map, maximize-2, meh, message-circle, message-square, mic-off, minimize-2, minus-circle, minus-square, more-vertical, mouse-pointer, move, music, navigation, navigation-2, octagon, pause-circle, percent, pie-chart, play-circle, plus-circle, plus-square, pocket, power, radio, repeat, rewind, rotate-cw, rss, scissors, server, share-2, shield-off, shopping-bag, shuffle, sidebar, skip-back, skip-forward, slack, slash, sliders, smile, speaker, square, stop-circle, sunrise, sunset, tablet, tag, target, terminal, thermometer, toggle-left, toggle-right, tool, trash-2, trending-down, triangle, truck, tv, type, umbrella, underline, upload-cloud, user-check, user-minus, user-plus, user-x, video-off, voicemail, volume, volume-1, volume-x, watch, wifi-off, wind, x-octagon, x-square, zap-off, zoom-in, zoom-out)',
           'Add a coloured brand-icon set for nominative use: LinkedIn, Discord, YouTube, Reddit, Twitch, Spotify, Notion, Figma, Dropbox, npm, Stripe, PayPal, Mastercard, Vercel, Netlify, Cloudflare, Docker, Kubernetes, MongoDB. Each ships with a reminder that brand icons depict third-party trademarks and may only be used to identify the brand they represent',
         ],
       },
@@ -1343,7 +1362,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Expand the icon set from 52 to 100 icons. New: archive, at-sign, bar-chart, bookmark, briefcase, clipboard, cloud, credit-card, dollar-sign, flag, folder, gift, globe, hash, help-circle, home, inbox, list, lock, log-in, map-pin, maximize, mic, minimize, monitor, moon, package, paperclip, pause, phone, play, printer, refresh-cw, save, send, share, shield, shopping-cart, smartphone, sun, thumbs-down, thumbs-up, trending-up, unlock, users, video, volume-2, wifi, zap',
+          'Expand the icon set from 52 to 101 icons. New: archive, at-sign, bar-chart, bookmark, briefcase, clipboard, cloud, credit-card, dollar-sign, flag, folder, gift, globe, hash, help-circle, home, inbox, list, lock, log-in, map-pin, maximize, mic, minimize, monitor, moon, package, paperclip, pause, phone, play, printer, refresh-cw, save, send, share, shield, shopping-cart, smartphone, sun, thumbs-down, thumbs-up, trending-up, unlock, users, video, volume-2, wifi, zap',
           'Honor `prefers-reduced-motion` on `ToastComponent` — the slide-in animation degrades to an opacity-only fade so the toast still appears smoothly without translateX motion that can trip vestibular sensitivity',
           "Document icon attribution and brand-icon usage in the README. The icon set is derived from Feather Icons (Cole Bemis, MIT). Brand icons (Facebook, GitHub, Google, Microsoft, X/Twitter) include links to each platform's brand guidelines, since their use is governed by trademark rather than the library's MIT license",
         ],

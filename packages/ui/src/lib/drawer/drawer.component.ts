@@ -363,6 +363,12 @@ export class DrawerComponent implements AfterContentChecked {
         const ease = animation === 'linear' ? 'var(--ease-linear)' : 'var(--ease-out)';
         target.style.transition = `padding var(--duration-slower) ${ease}`;
       }
+      // A target swap while open has to release the previous element too, or its
+      // offset sticks around with nothing left to clear it
+      if (this.pushedTarget && this.pushedTarget !== target) {
+        this.clearPushProperties(this.pushedTarget);
+        this.pushedTarget.style.removeProperty('transition');
+      }
       // Clear every side first so a position change never stacks two offsets
       this.clearPushProperties(target);
       target.style.setProperty(PUSH_PROPERTY[position], `${size}px`);

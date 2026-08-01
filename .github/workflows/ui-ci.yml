@@ -77,16 +77,9 @@ jobs:
 
       - run: pnpm --filter @eagami/ui lint
 
+      # Thresholds in angular.json fail this step directly, so the run itself is
+      # the coverage gate; no PR comment is posted.
       - run: pnpm --filter @eagami/ui test:coverage
-
-      # Post a per-PR coverage summary comment from the Vitest coverage output.
-      # No third-party service; reads the json reporters emitted above.
-      - name: Report coverage on PRs
-        if: github.event_name == 'pull_request'
-        uses: davelosert/vitest-coverage-report-action@v2
-        with:
-          json-summary-path: packages/ui/coverage/eagami-ui/coverage-summary.json
-          json-final-path: packages/ui/coverage/eagami-ui/coverage-final.json
 
       - run: pnpm --filter @eagami/ui build
 

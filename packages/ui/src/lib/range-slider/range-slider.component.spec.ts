@@ -321,4 +321,92 @@ describe('RangeSliderComponent', () => {
       expect(component.value()).toEqual([20, 80]);
     });
   });
+
+  /**
+   * Dragging is the primary way most people set a range, and the thumb-picking
+   * rule (grab whichever thumb is nearer, never let them cross) is the part a
+   * refactor is most likely to get subtly wrong.
+   */
+  describe('Pointer dragging', () => {
+    function track(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-range-slider__track');
+    }
+
+    /** jsdom lays nothing out, so the track needs a measurable box. */
+    function stubTrackRect(): void {
+      track().getBoundingClientRect = () =>
+        ({ left: 0, width: 100, top: 0, height: 8 }) as DOMRect;
+    }
+
+    function pointer(type: string, clientX: number): void {
+      const event = new PointerEvent(type, { clientX, bubbles: true, pointerId: 1 });
+      track().dispatchEvent(event);
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('value', [20, 80]);
+      fixture.detectChanges();
+      stubTrackRect();
+    });
+
+    it('grabs the nearer thumb and moves it to the press', () => {
+      pointer('pointerdown', 30);
+
+      expect(component.value()).toEqual([30, 80]);
+    });
+
+    it('grabs the high thumb when the press is nearer to it', () => {
+      pointer('pointerdown', 70);
+
+      expect(component.value()).toEqual([20, 70]);
+    });
+
+    it('breaks a tie toward the low thumb', () => {
+      pointer('pointerdown', 50);
+
+      expect(component.value()).toEqual([50, 80]);
+    });
+
+    it('keeps following the pointer until release', () => {
+      pointer('pointerdown', 30);
+
+      pointer('pointermove', 45);
+
+      expect(component.value()).toEqual([45, 80]);
+
+      pointer('pointerup', 45);
+      pointer('pointermove', 10);
+
+      expect(component.value()).toEqual([45, 80]);
+    });
+
+    it('refuses to drag the low thumb past the high one', () => {
+      pointer('pointerdown', 30);
+
+      pointer('pointermove', 95);
+
+      const [low, high] = component.value();
+
+      expect(low).toBeLessThanOrEqual(high);
+      expect(high).toBe(80);
+    });
+
+    it('clamps a drag beyond the track to the bounds', () => {
+      pointer('pointerdown', 30);
+
+      pointer('pointermove', -50);
+
+      expect(component.value()).toEqual([0, 80]);
+    });
+
+    it('ignores pointer input while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      pointer('pointerdown', 50);
+
+      expect(component.value()).toEqual([20, 80]);
+    });
+  });
 });

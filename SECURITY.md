@@ -14,6 +14,6 @@ Include enough detail to reproduce: affected version, browser/runtime, and a min
 Only the latest minor of the latest major receives security fixes. Older majors are end-of-life on release of the next major.
 
 | Version | Supported |
-|---------|-----------|
-| 1.x     | ✅        |
-| < 1.0   | ❌        |
+| ------- | --------- |
+| `5.x`   | Active    |
+| `< 5.0` | Upgrade recommended |

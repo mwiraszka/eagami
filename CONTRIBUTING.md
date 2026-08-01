@@ -30,7 +30,12 @@ pnpm storybook          # Storybook
 pnpm test               # library tests
 pnpm lint               # lint every package
 pnpm format             # prettier every package
-pnpm build              # build the library to packages/ui/dist/eagami-ui
+pnpm build              # build every workspace package
+
+pnpm regen-docs         # regenerate the website's generated API and changelog data
+pnpm ui check-parity    # every input/output has a description, knob, and story wiring
+pnpm website check-i18n # every website locale file carries the same keys
+pnpm ui check-tokens    # the framework integration guides match the token source
 
 pnpm ui <script>        # run any script in @eagami/ui
 pnpm website <script>   # run any script in the website
@@ -77,8 +82,8 @@ Use this checklist when creating a brand-new component. Skip nothing; partial co
 - [ ] Add `<slug>.component.stories.ts`: cover every variant, state, size, and edge case (loading, error, empty, RTL where relevant)
 - [ ] Add `<slug>.component.spec.ts`: interaction tests, ARIA assertions, edge cases. No `any` casts
 - [ ] Add `<slug>.component.a11y.spec.ts` with `vitest-axe` assertions for each meaningful rendered state (default, error, disabled, expanded)
-- [ ] Export from `packages/ui/src/public-api.ts` in alphabetical order
-- [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm build-storybook`; all must pass
+- [ ] Export from `packages/ui/src/public-api.ts` in the component block (the file is grouped: shared modules, then components, then icons)
+- [ ] Run `pnpm ui test`, `pnpm ui lint`, `pnpm ui build-storybook`; all must pass
 
 **Website (`apps/website/`)**
 
@@ -86,7 +91,8 @@ Use this checklist when creating a brand-new component. Skip nothing; partial co
 - [ ] Add the route in `apps/website/src/app/app.routes.ts` under `ui/components/<slug>` with `loadComponent` pointing at the per-component page
 - [ ] Create `apps/website/src/app/pages/ui/components/<slug>/<slug>-demo-page.component.{ts,html,scss}` (selector `web-<slug>-demo-page`) demonstrating every variant
 - [ ] All demo strings go through i18n in every locale file under `apps/website/src/app/i18n/messages/` (the set grows over time; mirror whatever `*.ts` files exist)
-- [ ] Run `pnpm website build` and visit `http://localhost:4444/ui/components/<slug>` to verify the demo renders in light and dark mode
+- [ ] Run `pnpm regen-docs` and commit the regenerated `apps/website/src/app/data/*.generated.ts` files; the pre-push hook blocks the push without them
+- [ ] Run `pnpm site` (or `pnpm dev` for the site plus Storybook) and visit `http://localhost:4444/ui/components/<slug>` to verify the demo renders in light and dark mode
 
 **Release**
 

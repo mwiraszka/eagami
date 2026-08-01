@@ -19,7 +19,7 @@
 
 ## Why Eagami UI
 
-Angular teams usually reach for [Angular Material](https://material.angular.io), [PrimeNG](https://primeng.org), or a Tailwind copy-paste kit like [Spartan](https://spartan.ng). Eagami UI is different where it counts:
+Angular teams usually reach for [Angular Material](https://material.angular.dev), [PrimeNG](https://primeng.org), or a Tailwind copy-paste kit like [Spartan](https://spartan.ng). Eagami UI is different where it counts:
 
 - **Themes to your brand.** Give it one color per role and it generates a full, accessibility-checked palette; every other style is a CSS variable you can override (see [design tokens](https://eagami.com/ui/design-tokens)). Light and dark are built in and follow the system preference.
 - **Lightweight.** One runtime dependency (`tslib`), no CSS framework, and standalone side-effect-free components, so your app bundles only what it imports (the whole library, every component and icon, is ~260 KB gzipped).
@@ -147,4 +147,4 @@ Eagami UI follows [Semantic Versioning](https://semver.org). Breaking changes sh
 | Rendering | Browser, SSR / prerender (Angular Universal), hydration |
 | Browsers | Last 2 stable versions of Chrome, Edge, Firefox (plus current ESR), Safari |
 
-> **Upgrading from v0.x?** See [MIGRATION.md](MIGRATION.md).
+> **Upgrading across a major version?** See [MIGRATION.md](MIGRATION.md).

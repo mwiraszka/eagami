@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import type { SelectOption } from '../select-option';
 import { SegmentedComponent } from './segmented.component';
 
@@ -104,6 +105,78 @@ describe('SegmentedComponent', () => {
       fixture.detectChanges();
 
       dispatchKey(getOptions()[1], 'Home');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('jumps to the last enabled option on End, not the last option', () => {
+      dispatchKey(getOptions()[0], 'End');
+
+      // Cherry is disabled, so Banana is the real end of the group
+      expect(component.value()).toBe('b');
+    });
+
+    it('moves backwards on ArrowLeft', () => {
+      fixture.componentRef.setInput('value', 'b');
+      fixture.detectChanges();
+
+      dispatchKey(getOptions()[1], 'ArrowLeft');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('wraps from the last enabled option back to the first', () => {
+      fixture.componentRef.setInput('value', 'b');
+      fixture.detectChanges();
+
+      dispatchKey(getOptions()[1], 'ArrowRight');
+
+      expect(component.value()).toBe('a');
+
+      dispatchKey(getOptions()[0], 'ArrowLeft');
+
+      expect(component.value()).toBe('b');
+    });
+
+    it('treats the vertical arrows like the horizontal ones', () => {
+      dispatchKey(getOptions()[0], 'ArrowDown');
+
+      expect(component.value()).toBe('b');
+
+      dispatchKey(getOptions()[1], 'ArrowUp');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('selects the pressed option on Enter and Space', () => {
+      dispatchKey(getOptions()[1], 'Enter');
+
+      expect(component.value()).toBe('b');
+
+      dispatchKey(getOptions()[0], ' ');
+
+      expect(component.value()).toBe('a');
+    });
+
+    it('mirrors the horizontal arrows under dir="rtl"', () => {
+      const first = getOptions()[0];
+      // jsdom does not resolve the dir attribute into a computed direction
+      vi.spyOn(window, 'getComputedStyle').mockImplementation((el, pseudo) =>
+        el === first
+          ? ({ direction: 'rtl' } as CSSStyleDeclaration)
+          : REAL_GET_COMPUTED_STYLE(el, pseudo),
+      );
+
+      dispatchKey(first, 'ArrowLeft');
+
+      expect(component.value()).toBe('b');
+    });
+
+    it('ignores keys while the whole group is disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      dispatchKey(getOptions()[0], 'ArrowRight');
 
       expect(component.value()).toBe('a');
     });

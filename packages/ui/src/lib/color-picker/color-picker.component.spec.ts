@@ -10,6 +10,10 @@ describe('ColorPickerComponent', () => {
     return fixture.nativeElement.querySelector('.ea-color-picker__trigger');
   }
 
+  function getTriggerText(): string {
+    return getTrigger().textContent?.trim() ?? '';
+  }
+
   function getPopover(): HTMLElement | null {
     // Surface renders unconditionally in `document.body`, hidden via `display: none`;
     // treat a hidden one as "no popover".
@@ -689,6 +693,24 @@ describe('ColorPickerComponent', () => {
       expect(onChange.mock.calls[0][0]).toMatch(/^hsl\(\d+, \d+%, \d+%\)$/);
     });
 
+    it('reports the right hue for a color in each sector of the wheel', () => {
+      fixture.componentRef.setInput('format', 'hsl');
+      const seen: string[] = [];
+
+      for (const color of ['#ff0000', '#00ff00', '#0000ff', '#ff00ff']) {
+        component.value.set(color);
+        fixture.detectChanges();
+        seen.push(getTriggerText());
+      }
+
+      expect(seen).toEqual([
+        'hsl(0, 100%, 50%)',
+        'hsl(120, 100%, 50%)',
+        'hsl(240, 100%, 50%)',
+        'hsl(300, 100%, 50%)',
+      ]);
+    });
+
     it('emits rgba when format=rgb and alpha < 1', () => {
       fixture.componentRef.setInput('format', 'rgb');
       const onChange = vi.fn<(value: string | null) => void>();
@@ -819,6 +841,12 @@ describe('ColorPickerComponent', () => {
       }
     });
 
+    it('focus() moves focus to the trigger button', () => {
+      component.focus();
+
+      expect(document.activeElement).toBe(getTrigger());
+    });
+
     it('pickFromScreen swallows a user-cancelled EyeDropper rejection', async () => {
       const win = window as unknown as {
         EyeDropper?: new () => { open: () => Promise<{ sRGBHex: string }> };
@@ -912,6 +940,417 @@ describe('ColorPickerComponent', () => {
 
       expect(status?.getAttribute('aria-live')).toBe('polite');
       expect(status?.textContent).toContain('1');
+    });
+  });
+
+  describe('Color string parsing', () => {
+    it('wraps a negative hue in an hsl() string', () => {
+      component.writeValue('hsl(-60, 100%, 50%)');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 255 });
+      expect(component.hexDisplay()).toBe('#ff00ff');
+    });
+
+    it('clamps hsl() saturation and lightness above 100%', () => {
+      component.writeValue('hsl(0, 500%, 300%)');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 255, b: 255 });
+      expect(component.hexDisplay()).toBe('#ffffff');
+    });
+
+    it('scales percentage rgb() channels onto the 0-255 range', () => {
+      component.writeValue('rgb(100%, 0%, 50%)');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 128 });
+    });
+
+    it('clamps rgb() channels outside 0-255', () => {
+      component.writeValue('rgb(300, -20, 20)');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 20 });
+    });
+
+    it('parses the space-separated rgb() syntax with a slash alpha', () => {
+      component.writeValue('rgb(10 20 30 / 0.4)');
+
+      expect(component.rgb()).toEqual({ r: 10, g: 20, b: 30 });
+      expect(component.alphaPercentRounded()).toBe(40);
+    });
+
+    it('reads a percentage alpha in rgba()', () => {
+      component.writeValue('rgba(0, 0, 0, 50%)');
+
+      expect(component.alphaPercentRounded()).toBe(50);
+    });
+
+    it('expands a 4-digit hex shorthand including its alpha nibble', () => {
+      component.writeValue('#f80a');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 136, b: 0 });
+      expect(component.alphaPercentRounded()).toBe(67);
+    });
+
+    it('keeps the current color when a hex has an unusable digit count', () => {
+      component.writeValue('#ff0000');
+
+      component.writeValue('#12345');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 0 });
+    });
+
+    it('keeps the current color when an rgb() string is missing a channel', () => {
+      component.writeValue('#ff0000');
+
+      component.writeValue('rgb(1, 2)');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 0 });
+    });
+
+    it('accepts an uppercase hex and canonicalizes it on blur', () => {
+      open();
+      const hexInput = document.body.querySelector<HTMLInputElement>(
+        '.ea-color-picker__input-group--hex .ea-color-picker__input',
+      )!;
+
+      hexInput.value = '#AABBCC';
+      hexInput.dispatchEvent(new Event('input'));
+      hexInput.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(component.rgb()).toEqual({ r: 170, g: 187, b: 204 });
+      expect(component.hexInputValue()).toBe('#aabbcc');
+    });
+  });
+
+  describe('Alpha across output formats', () => {
+    it('keeps the alpha channel as the user cycles the output format', () => {
+      component.value.set('rgba(255, 136, 0, 0.5)');
+      fixture.detectChanges();
+      open();
+      const toggle = document.body.querySelector<HTMLButtonElement>(
+        '.ea-color-picker__format-toggle',
+      )!;
+
+      const seen = [getTriggerText()];
+      toggle.click();
+      fixture.detectChanges();
+      seen.push(getTriggerText());
+      toggle.click();
+      fixture.detectChanges();
+      seen.push(getTriggerText());
+
+      expect(seen).toEqual([
+        '#ff880080',
+        'rgba(255, 136, 0, 0.5)',
+        'hsla(32, 100%, 50%, 0.5)',
+      ]);
+    });
+
+    it('omits the alpha channel from the value when showAlpha is false', () => {
+      fixture.componentRef.setInput('showAlpha', false);
+
+      component.value.set('rgba(255, 136, 0, 0.5)');
+      fixture.detectChanges();
+
+      expect(getTriggerText()).toBe('#ff8800');
+    });
+  });
+
+  describe('Numeric field entry', () => {
+    function openIn(mode: 'rgb' | 'hsl'): HTMLInputElement[] {
+      open();
+      component.cycleInputMode();
+      if (mode === 'hsl') {
+        component.cycleInputMode();
+      }
+      fixture.detectChanges();
+      return Array.from(
+        document.body.querySelectorAll<HTMLInputElement>('.ea-color-picker__input--num'),
+      );
+    }
+
+    function type(field: HTMLInputElement, text: string): void {
+      field.value = text;
+      field.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+    }
+
+    it('clamps an RGB channel above 255 and snaps the field back', () => {
+      component.writeValue('#000000');
+      const [r] = openIn('rgb');
+
+      type(r, '999');
+
+      expect(component.rgb().r).toBe(255);
+      expect(r.value).toBe('255');
+    });
+
+    it('truncates an RGB channel typed beyond three digits', () => {
+      component.writeValue('#000000');
+      const [r] = openIn('rgb');
+
+      type(r, '1234');
+
+      expect(component.rgb().r).toBe(123);
+      expect(r.value).toBe('123');
+    });
+
+    it('keeps the current color when an RGB channel is cleared', () => {
+      component.writeValue('#3366ff');
+      const [r] = openIn('rgb');
+
+      type(r, '');
+
+      expect(component.rgb()).toEqual({ r: 51, g: 102, b: 255 });
+    });
+
+    it('routes each RGB field to its own channel', () => {
+      component.writeValue('#000000');
+      const [r, g, b] = openIn('rgb');
+
+      type(r, '10');
+      type(g, '20');
+      type(b, '30');
+
+      expect(component.rgb()).toEqual({ r: 10, g: 20, b: 30 });
+    });
+
+    it('routes each HSL field to its own channel', () => {
+      component.writeValue('#ff0000');
+      const [h, s, l] = openIn('hsl');
+
+      type(h, '120');
+      type(s, '50');
+      type(l, '25');
+
+      expect(component.rgb()).toEqual({ r: 32, g: 96, b: 32 });
+    });
+
+    it('clamps a typed HSL hue at 360 instead of wrapping it', () => {
+      component.writeValue('#00ff00');
+      const [h] = openIn('hsl');
+
+      type(h, '400');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 0 });
+    });
+
+    it('clamps typed HSL saturation at 100%', () => {
+      component.writeValue('#bf4040');
+      const [, s] = openIn('hsl');
+
+      type(s, '999');
+
+      expect(component.rgb()).toEqual({ r: 255, g: 0, b: 0 });
+      expect(s.value).toBe('100');
+    });
+
+    it('clamps the alpha field at 100%', () => {
+      component.writeValue('rgba(255, 0, 0, 0.5)');
+      const fields = openIn('rgb');
+
+      type(fields[3], '999');
+
+      expect(component.alphaPercentRounded()).toBe(100);
+      expect(fields[3].value).toBe('100');
+    });
+  });
+
+  describe('Pointer dragging', () => {
+    function pointer(el: HTMLElement, type: string, x: number, y: number): void {
+      el.dispatchEvent(
+        new PointerEvent(type, { clientX: x, clientY: y, pointerId: 1, bubbles: true }),
+      );
+      fixture.detectChanges();
+    }
+
+    function stubRect(el: HTMLElement, width: number, height: number): void {
+      el.getBoundingClientRect = () => new DOMRect(0, 0, width, height);
+    }
+
+    function openWithRect(selector: string, width: number, height: number): HTMLElement {
+      component.writeValue('#ff0000');
+      open();
+      const el = document.body.querySelector<HTMLElement>(selector)!;
+      stubRect(el, width, height);
+      return el;
+    }
+
+    it('tracks a drag across the SV area and stops once the pointer is released', () => {
+      const area = openWithRect('.ea-color-picker__sv-area', 200, 100);
+
+      pointer(area, 'pointerdown', 200, 0);
+      pointer(area, 'pointermove', 100, 50);
+      pointer(area, 'pointerup', 100, 50);
+      pointer(area, 'pointermove', 0, 100);
+
+      expect(component.satPercent()).toBe(50);
+      expect(component.valPercent()).toBe(50);
+    });
+
+    it('clamps an SV drag that travels beyond the corners', () => {
+      const area = openWithRect('.ea-color-picker__sv-area', 200, 100);
+
+      pointer(area, 'pointerdown', 400, -80);
+      const pastTopRight = { s: component.satPercent(), v: component.valPercent() };
+      pointer(area, 'pointermove', -400, 800);
+      const pastBottomLeft = { s: component.satPercent(), v: component.valPercent() };
+
+      expect(pastTopRight).toEqual({ s: 100, v: 100 });
+      expect(pastBottomLeft).toEqual({ s: 0, v: 0 });
+    });
+
+    it('tracks a hue drag and stops once the pointer is released', () => {
+      const track = openWithRect('.ea-color-picker__strip--hue', 360, 12);
+
+      pointer(track, 'pointerdown', 90, 6);
+      pointer(track, 'pointermove', 180, 6);
+      pointer(track, 'pointerup', 180, 6);
+      pointer(track, 'pointermove', 300, 6);
+
+      expect(track.getAttribute('aria-valuenow')).toBe('180');
+    });
+
+    it('maps the far right of the hue strip to the maximum hue', () => {
+      const track = openWithRect('.ea-color-picker__strip--hue', 360, 12);
+
+      pointer(track, 'pointerdown', 360, 6);
+
+      expect(track.getAttribute('aria-valuenow')).toBe('360');
+    });
+
+    it('tracks an alpha drag and stops once the pointer is released', () => {
+      const track = openWithRect('.ea-color-picker__strip--alpha', 100, 12);
+
+      pointer(track, 'pointerdown', 80, 6);
+      pointer(track, 'pointermove', 40, 6);
+      pointer(track, 'pointerup', 40, 6);
+      pointer(track, 'pointermove', 10, 6);
+
+      expect(track.getAttribute('aria-valuenow')).toBe('40');
+    });
+
+    it('maps the far left of the alpha strip to a fully transparent color', () => {
+      const track = openWithRect('.ea-color-picker__strip--alpha', 100, 12);
+
+      pointer(track, 'pointerdown', 0, 6);
+
+      expect(track.getAttribute('aria-valuenow')).toBe('0');
+      expect(component.value()).toBe('#ff000000');
+    });
+  });
+
+  describe('External value binding', () => {
+    it('paints the trigger swatch with a value set from outside', () => {
+      component.value.set('rgba(0, 255, 0, 0.5)');
+      fixture.detectChanges();
+
+      const fill: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-color-picker__swatch-fill',
+      );
+      expect(fill.style.backgroundColor).toBe('rgba(0, 255, 0, 0.5)');
+    });
+
+    it('does not echo a value that was set from outside back to the form', () => {
+      const onChange = vi.fn<(value: string | null) => void>();
+      const changed = vi.fn<(value: string | null) => void>();
+      component.registerOnChange(onChange);
+      component.changed.subscribe(changed);
+
+      component.value.set('#00ff00');
+      fixture.detectChanges();
+
+      expect(onChange).not.toHaveBeenCalled();
+      expect(changed).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Clearing', () => {
+    it('notifies the form and restores the placeholder when cleared', () => {
+      const onChange = vi.fn<(value: string | null) => void>();
+      const changed = vi.fn<(value: string | null) => void>();
+      component.registerOnChange(onChange);
+      component.changed.subscribe(changed);
+      component.value.set('#ff0000');
+      fixture.detectChanges();
+
+      const clearBtn: HTMLButtonElement = fixture.nativeElement.querySelector(
+        '.ea-color-picker__clear',
+      );
+      clearBtn.click();
+      fixture.detectChanges();
+
+      expect(onChange).toHaveBeenCalledWith(null);
+      expect(changed).toHaveBeenCalledWith(null);
+      expect(getTriggerText()).toBe('Pick a color…');
+    });
+  });
+
+  describe('Presets', () => {
+    function getPresets(): HTMLButtonElement[] {
+      return Array.from(
+        document.body.querySelectorAll<HTMLButtonElement>('.ea-color-picker__preset'),
+      );
+    }
+
+    it('hides the preset section when the list is empty', () => {
+      fixture.componentRef.setInput('presets', []);
+
+      open();
+
+      expect(document.body.querySelector('.ea-color-picker__presets')).toBeNull();
+    });
+
+    it('applies the clicked swatch from a custom preset list', () => {
+      fixture.componentRef.setInput('presets', ['#00ff00', '#0000ff']);
+      open();
+
+      getPresets()[1].click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('#0000ff');
+    });
+
+    it('ignores a preset that is not a parseable color', () => {
+      fixture.componentRef.setInput('presets', ['not-a-color']);
+      open();
+
+      getPresets()[0].click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+    });
+  });
+
+  describe('Eyedropper tool', () => {
+    class FakeEyeDropper {
+      open(): Promise<{ sRGBHex: string }> {
+        return Promise.resolve({ sRGBHex: '#3366ff' });
+      }
+    }
+
+    afterEach(() => {
+      Reflect.deleteProperty(window, 'EyeDropper');
+    });
+
+    it('renders the tool button and applies the picked color', async () => {
+      Reflect.set(window, 'EyeDropper', FakeEyeDropper);
+      open();
+      const button = document.body.querySelector<HTMLButtonElement>(
+        '.ea-color-picker__tool-btn',
+      );
+
+      button?.click();
+      await fixture.whenStable();
+
+      expect(button).not.toBeNull();
+      expect(component.rgb()).toEqual({ r: 51, g: 102, b: 255 });
+    });
+
+    it('hides the tool button when the browser has no EyeDropper', () => {
+      open();
+
+      expect(document.body.querySelector('.ea-color-picker__tool-btn')).toBeNull();
     });
   });
 });

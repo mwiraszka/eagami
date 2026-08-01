@@ -68,6 +68,50 @@ The `EAGAMI_MESSAGES` export has been removed; use `EAGAMI_ALL_LOCALES` (an arra
 
 ---
 
+# Migrating from v2.x to v3.0.0
+
+v3.0.0 removes inputs that were deprecated during v2, and gives tooltips a default width. Every removal has a direct replacement.
+
+## Removed deprecated inputs
+
+| Component                | Removed        | Use instead                                          |
+| ------------------------ | -------------- | ---------------------------------------------------- |
+| `<ea-drawer>`            | `size`         | `width`                                               |
+| `<ea-dialog>`            | `size`         | `width`                                               |
+| `<ea-progress-bar>`      | `showValue`    | `showPercentage`                                      |
+| `<ea-textarea>`          | `rows`         | `minHeight`, `maxHeight`, and the resize handle       |
+| `<ea-eagami-wordmark>`   | `variant="1\|2\|3"` | `variant="default\|byline\|tagline"`             |
+
+Note that the drawer's `size` input returns in v5.0.0 with a different meaning; see the v4 to v5 guide above.
+
+## Tooltips now wrap at 200px
+
+`[eaTooltip]` defaults `maxWidth` to 200px, so a tooltip without an explicit width wraps instead of running unbounded. Pass `[maxWidth]="undefined"` to restore the old behaviour, or a number to choose your own.
+
+---
+
+# Migrating from v1.x to v2.0.0
+
+v2.0.0 removes two icons. Both were deprecated during v1.
+
+## Removed icons
+
+`<ea-icon-apple>` / `AppleIconComponent` is gone. It depicted Apple Inc.'s logo, which is more strictly protected than other brand marks; source the asset directly from Apple per their brand guidelines if you need it (for example for "Sign in with Apple").
+
+`<ea-icon-pencil>` / `PencilIconComponent` is gone as a duplicate of Feather's canonical mark; switch to `<ea-icon-edit-2>` / `Edit2IconComponent`.
+
+```html
+<!-- Before -->
+<ea-icon-pencil />
+
+<!-- After -->
+<ea-icon-edit-2 />
+```
+
+Several components moved onto the new `<ea-popover>` primitive in this release. Their public APIs are unchanged, but two internal hooks moved: `<ea-dropdown>`'s option list is now `<div role="listbox">` rather than `<ul>`/`<li>`, and the menu's placement classes (`.ea-menu__list--bottom-start`) are replaced by the popover surface's (`.ea-popover__surface--bottom-start`). Only styling that reached into those internals needs updating.
+
+---
+
 # Migrating from v0.x to v1.0.0
 
 v1.0.0 is the first stable release. It consolidates the API surface across components for consistency and adds form-field plumbing and accessibility coverage that several components were missing. This guide gathers every breaking change in one place so consumers can upgrade in a single pass.

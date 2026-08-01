@@ -931,9 +931,9 @@ function parseRgbFunc(value: string): (Rgb & { a: number }) | null {
   if (parts.length < 3) {
     return null;
   }
-  const r = clampByte(parseFloat(parts[0]));
-  const g = clampByte(parseFloat(parts[1]));
-  const b = clampByte(parseFloat(parts[2]));
+  const r = parseByte(parts[0]);
+  const g = parseByte(parts[1]);
+  const b = parseByte(parts[2]);
   const a = parts[3] !== undefined ? clampAlpha(parts[3]) : 1;
   if ([r, g, b].some(Number.isNaN)) {
     return null;
@@ -987,7 +987,12 @@ function parseViaCanvas(value: string): (Rgb & { a: number }) | null {
   return { r: data[0], g: data[1], b: data[2], a: data[3] / 255 };
 }
 
-function hslToRgb(h: number, s: number, l: number): Rgb {
+function hslToRgb(hue: number, sat: number, lum: number): Rgb {
+  // `sectorToRgb` assumes a non-negative sector and in-range channels; an out-of-range
+  // `hsl()` string would otherwise yield negative or >255 components
+  const h = ((hue % 360) + 360) % 360;
+  const s = clamp01(sat);
+  const l = clamp01(lum);
   const c = (1 - Math.abs(2 * l - 1)) * s;
   const hh = (h / 60) % 6;
   const x = c * (1 - Math.abs((hh % 2) - 1));
@@ -998,6 +1003,11 @@ function hslToRgb(h: number, s: number, l: number): Rgb {
     g: Math.round((g + m) * 255),
     b: Math.round((b + m) * 255),
   };
+}
+
+function parseByte(value: string): number {
+  const n = parseFloat(value);
+  return clampByte(value.endsWith('%') ? (n / 100) * 255 : n);
 }
 
 function clampByte(n: number): number {
