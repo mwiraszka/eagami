@@ -1427,4 +1427,41 @@ describe('ColorPickerComponent', () => {
       expect(swatch.style.backgroundColor).toBe('rgba(255, 0, 0, 1)');
     });
   });
+
+  describe('Saturation area semantics', () => {
+    function svArea(): HTMLElement {
+      return document.body.querySelector('.ea-color-picker__sv-area')!;
+    }
+
+    it('exposes itself as a slider rather than seizing browse mode', () => {
+      open();
+
+      // role="application" would switch the whole subtree out of browse mode
+      expect(svArea().getAttribute('role')).toBe('slider');
+      expect(svArea().getAttribute('aria-valuemin')).toBe('0');
+      expect(svArea().getAttribute('aria-valuemax')).toBe('100');
+    });
+
+    it('reports both axes in its spoken value', () => {
+      component.value.set('#ff8800');
+      fixture.detectChanges();
+      open();
+
+      expect(svArea().getAttribute('aria-valuenow')).toBe('100');
+      expect(svArea().getAttribute('aria-valuetext')).toBe(
+        'Saturation 100%, brightness 100%',
+      );
+    });
+
+    it('keeps the spoken value in step with the arrow keys', () => {
+      component.value.set('#ff8800');
+      fixture.detectChanges();
+      open();
+
+      svArea().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+      fixture.detectChanges();
+
+      expect(svArea().getAttribute('aria-valuenow')).toBe('99');
+    });
+  });
 });

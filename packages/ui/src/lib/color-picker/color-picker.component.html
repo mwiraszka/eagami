@@ -74,9 +74,17 @@
         <div
           #svAreaEl
           class="ea-color-picker__sv-area"
-          role="application"
+          role="slider"
           tabindex="0"
           [attr.aria-label]="i18n.messages().colorPicker.saturationAndValue"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-valuenow]="satPercent()"
+          [attr.aria-valuetext]="
+            i18n
+              .messages()
+              .colorPicker.saturationAndValueStatus(satPercent(), valPercent())
+          "
           [style.background-color]="hueColor()"
           (pointerdown)="onSvPointerDown($event)"
           (pointermove)="onSvPointerMove($event)"
