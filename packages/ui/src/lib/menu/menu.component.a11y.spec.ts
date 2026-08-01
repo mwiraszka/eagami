@@ -1,8 +1,9 @@
 import { axe } from 'vitest-axe';
 
 import { Component, signal } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { revealPopoverSurfaces } from '../../test-setup';
 import { MenuItemComponent } from './menu-item.component';
 import { MenuTriggerDirective } from './menu-trigger.directive';
 import { MenuComponent } from './menu.component';
@@ -35,6 +36,17 @@ describe('MenuComponent a11y', () => {
     return { fixture, el: fixture.nativeElement as HTMLElement };
   }
 
+  /** Opens the menu and hands back the portaled surface holding the items. */
+  function openMenu(
+    fixture: ComponentFixture<HostComponent>,
+    el: HTMLElement,
+  ): HTMLElement {
+    el.querySelector<HTMLElement>('button')!.click();
+    fixture.detectChanges();
+    const [surface] = revealPopoverSurfaces();
+    return surface;
+  }
+
   afterEach(() => {
     document.querySelectorAll('.ea-popover__surface').forEach(node => node.remove());
   });
@@ -55,6 +67,14 @@ describe('MenuComponent a11y', () => {
       rules: { region: { enabled: false } },
     });
     fixture.destroy();
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with the item list open', async () => {
+    const { fixture, el } = await render();
+
+    const results = await axe(openMenu(fixture, el));
 
     expect(results).toHaveNoViolations();
   });

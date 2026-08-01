@@ -1,8 +1,9 @@
 import { axe } from 'vitest-axe';
 
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { revealPopoverSurfaces } from '../../test-setup';
 import type { SelectOption } from '../select-option';
 import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
 
@@ -36,14 +37,26 @@ class HostComponent {
 }
 
 describe('AutocompleteComponent a11y', () => {
+  let fixture: ComponentFixture<HostComponent>;
+
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
       imports: [HostComponent],
     }).compileComponents();
-    const fixture = TestBed.createComponent(HostComponent);
+    fixture = TestBed.createComponent(HostComponent);
     setup?.(fixture.componentInstance);
     fixture.detectChanges();
     return fixture.nativeElement as HTMLElement;
+  }
+
+  /** Opens the list and hands back the portaled surface holding the options. */
+  function openList(el: HTMLElement): HTMLElement {
+    el.querySelector<HTMLElement>('.ea-autocomplete__input')!.dispatchEvent(
+      new FocusEvent('focus'),
+    );
+    fixture.detectChanges();
+    const [surface] = revealPopoverSurfaces();
+    return surface;
   }
 
   it('has no detectable violations in the default state', async () => {
@@ -85,6 +98,14 @@ describe('AutocompleteComponent a11y', () => {
     const el = await render(host => (host.disabled = true));
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with the option list open', async () => {
+    const el = await render();
+
+    const results = await axe(openList(el));
 
     expect(results).toHaveNoViolations();
   });

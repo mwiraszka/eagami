@@ -24,6 +24,26 @@ beforeEach(() => {
  */
 export const REAL_GET_COMPUTED_STYLE = window.getComputedStyle.bind(window);
 
+/**
+ * Reveals the open popover surfaces so an accessibility scan can reach them.
+ *
+ * A surface is portaled to `document.body`, so it sits outside the fixture
+ * element most specs scan, and it stays `visibility: hidden` until a
+ * measurement-stable reposition adds `--positioned`, which never happens
+ * without a layout engine. Left alone, axe treats the whole subtree as hidden
+ * and silently skips it, so a scan of a menu, dropdown, or picker checks the
+ * trigger and nothing else. Returns the surfaces so the caller can scan them.
+ */
+export function revealPopoverSurfaces(): HTMLElement[] {
+  const surfaces = Array.from(
+    document.querySelectorAll<HTMLElement>('.ea-popover__surface'),
+  ).filter(surface => surface.style.display !== 'none');
+  for (const surface of surfaces) {
+    surface.classList.add('ea-popover__surface--positioned');
+  }
+  return surfaces;
+}
+
 // Popover surfaces are teleported to `document.body`, so they outlive the
 // TestBed fixture that created them. Left behind, a later spec looking up "the
 // open surface" finds a previous spec's, which passes in isolation and fails in
