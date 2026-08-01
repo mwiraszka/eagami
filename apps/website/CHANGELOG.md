@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Capitalize Eagami wherever it reads as a name rather than the wordmark.
 - Expand the footer into a full site map, and retire the header's UI link now that the footer covers it.
 - Mark every link that leaves the site with an open-in-new-tab icon.
+- List every page in the sitemap, which had fallen 22 pages behind.
 - Pick up @eagami/ui v5.15.1.
 
 ## [3.17.0] - 2026-08-01
