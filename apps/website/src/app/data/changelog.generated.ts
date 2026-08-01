@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.14.4',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Expose the colour picker's saturation area as a slider carrying its own value, instead of a role that switches screen readers out of browse mode without reporting anything.",
+          "Keep each date picker's keyboard focus inside its own calendar when more than one is open.",
+          'Stop a popover erroring when an application dispatches a scroll event directly at the window.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.14.3',
     date: '2026-08-01',
     sections: [

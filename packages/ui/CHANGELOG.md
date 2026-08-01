@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.14.4] - 2026-08-01
+
+### Fixed
+
+- Expose the colour picker's saturation area as a slider carrying its own value, instead of a role that switches screen readers out of browse mode without reporting anything.
+- Keep each date picker's keyboard focus inside its own calendar when more than one is open.
+- Stop a popover erroring when an application dispatches a scroll event directly at the window.
+
 ## [5.14.3] - 2026-08-01
 
 ### Fixed
@@ -1186,6 +1194,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.14.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.3...ui-v5.14.4
 [5.14.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.2...ui-v5.14.3
 [5.14.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.1...ui-v5.14.2
 [5.14.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.0...ui-v5.14.1
