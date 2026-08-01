@@ -38,7 +38,7 @@ jobs:
 
       # Angular's persistent build cache turns the cold SSR build into an
       # incremental one; keyed by sha so each run saves on top of the last
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: apps/website/.angular/cache
           key: angular-preview-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
