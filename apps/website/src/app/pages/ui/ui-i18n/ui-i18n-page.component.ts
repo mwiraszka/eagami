@@ -1,4 +1,5 @@
 import {
+  CheckIconComponent,
   type DataTableColumn,
   DataTableComponent,
   DatePickerComponent,
@@ -33,6 +34,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   styleUrl: './ui-i18n-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CheckIconComponent,
     CodeSnippetComponent,
     DataTableComponent,
     DatePickerComponent,
