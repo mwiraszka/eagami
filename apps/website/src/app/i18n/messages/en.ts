@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const en: WebMessages = {
   common: {
     skipToContent: 'Skip to main content',
-    brandHome: 'eagami home',
+    brandHome: 'Eagami home',
     navUi: 'UI',
     navUiTooltip: 'Component library docs',
     themeToggleTooltip: 'Toggle theme',
@@ -18,7 +18,7 @@ export const en: WebMessages = {
       termsLink: 'Terms',
       npmLink: 'npm',
       npmTooltip: 'View @eagami/ui on npm',
-      githubAriaLabel: 'eagami on GitHub',
+      githubAriaLabel: 'Eagami on GitHub',
       githubTooltip: 'View source on GitHub',
       navLabel: 'Footer',
     },
@@ -163,7 +163,7 @@ export const en: WebMessages = {
     title: 'Privacy policy',
     lastUpdated: date => `Last updated ${date}`,
     languageNote:
-      'This policy is maintained in English. Translations of the site interface do not change its meaning.',
+      'This policy is only maintained in English. Any translated version is provided for convenience only.',
   },
   terms: {
     metaTitle: 'Terms | Eagami',
@@ -171,7 +171,7 @@ export const en: WebMessages = {
     title: 'Terms of use',
     lastUpdated: date => `Last updated ${date}`,
     languageNote:
-      'These terms are maintained in English. Translations of the site interface do not change their meaning.',
+      'These terms are only maintained in English. Any translated version is provided for convenience only.',
   },
   notFound: {
     metaTitle: 'Page not found | Eagami',

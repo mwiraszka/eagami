@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const he: WebMessages = {
   common: {
     skipToContent: 'דלג לתוכן הראשי',
-    brandHome: 'דף הבית של eagami',
+    brandHome: 'דף הבית של Eagami',
     navUi: 'UI',
     navUiTooltip: 'תיעוד ספריית הרכיבים',
     themeToggleTooltip: 'החלף ערכת נושא',
@@ -18,7 +18,7 @@ export const he: WebMessages = {
       termsLink: 'תנאי שימוש',
       npmLink: 'npm',
       npmTooltip: 'הצג את @eagami/ui ב-npm',
-      githubAriaLabel: 'eagami ב-GitHub',
+      githubAriaLabel: 'Eagami ב-GitHub',
       githubTooltip: 'הצג את קוד המקור ב-GitHub',
       navLabel: 'כותרת תחתונה',
     },
@@ -158,14 +158,14 @@ export const he: WebMessages = {
     metaDescription: 'מה eagami.com אוסף ומה לא.',
     title: 'מדיניות פרטיות',
     lastUpdated: date => `עודכן לאחרונה: ${date}`,
-    languageNote: 'מדיניות זו מתוחזקת באנגלית. תרגומי ממשק האתר אינם משנים את משמעותה.',
+    languageNote: 'מדיניות זו מתוחזקת באנגלית בלבד. כל גרסה מתורגמת ניתנת לנוחות בלבד.',
   },
   terms: {
     metaTitle: 'תנאי שימוש | Eagami',
     metaDescription: 'תנאים לשימוש ב-eagami.com ובספריית הרכיבים Eagami UI.',
     title: 'תנאי שימוש',
     lastUpdated: date => `עודכן לאחרונה: ${date}`,
-    languageNote: 'תנאים אלה מתוחזקים באנגלית. תרגומי ממשק האתר אינם משנים את משמעותם.',
+    languageNote: 'תנאים אלה מתוחזקים באנגלית בלבד. כל גרסה מתורגמת ניתנת לנוחות בלבד.',
   },
   notFound: {
     metaTitle: 'הדף לא נמצא | Eagami',

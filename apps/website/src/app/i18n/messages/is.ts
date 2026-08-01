@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const is: WebMessages = {
   common: {
     skipToContent: 'Fara í meginefni',
-    brandHome: 'eagami heim',
+    brandHome: 'Eagami heim',
     navUi: 'UI',
     navUiTooltip: 'Skjölun fyrir einingasafn',
     themeToggleTooltip: 'Skipta um þema',
@@ -19,7 +19,7 @@ export const is: WebMessages = {
       termsLink: 'Skilmálar',
       npmLink: 'npm',
       npmTooltip: 'Skoða @eagami/ui á npm',
-      githubAriaLabel: 'eagami á GitHub',
+      githubAriaLabel: 'Eagami á GitHub',
       githubTooltip: 'Skoða frumkóða á GitHub',
       navLabel: 'Síðufótur',
     },
@@ -165,7 +165,7 @@ export const is: WebMessages = {
     title: 'Persónuverndarstefna',
     lastUpdated: date => `Síðast uppfært: ${date}`,
     languageNote:
-      'Þessari stefnu er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu hennar.',
+      'Þessari stefnu er aðeins viðhaldið á ensku. Þýddar útgáfur eru eingöngu til hægðarauka.',
   },
   terms: {
     metaTitle: 'Skilmálar | Eagami',
@@ -173,7 +173,7 @@ export const is: WebMessages = {
     title: 'Notkunarskilmálar',
     lastUpdated: date => `Síðast uppfært: ${date}`,
     languageNote:
-      'Þessum skilmálum er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu þeirra.',
+      'Þessum skilmálum er aðeins viðhaldið á ensku. Þýddar útgáfur eru eingöngu til hægðarauka.',
   },
   notFound: {
     metaTitle: 'Síða fannst ekki | Eagami',

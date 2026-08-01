@@ -7,7 +7,7 @@ import type { WebMessages } from '../web-messages.types';
 export const frFR: WebMessages = {
   common: {
     skipToContent: 'Aller au contenu principal',
-    brandHome: 'Accueil eagami',
+    brandHome: 'Accueil Eagami',
     navUi: 'UI',
     navUiTooltip: 'Documentation de la bibliothèque',
     themeToggleTooltip: 'Changer de thème',
@@ -22,7 +22,7 @@ export const frFR: WebMessages = {
       termsLink: 'Conditions',
       npmLink: 'npm',
       npmTooltip: 'Voir @eagami/ui sur npm',
-      githubAriaLabel: 'eagami sur GitHub',
+      githubAriaLabel: 'Eagami sur GitHub',
       githubTooltip: 'Voir le code source sur GitHub',
       navLabel: 'Pied de page',
     },
@@ -172,7 +172,7 @@ export const frFR: WebMessages = {
     title: 'Politique de confidentialité',
     lastUpdated: date => `Dernière mise à jour : ${date}`,
     languageNote:
-      'Cette politique est tenue à jour en anglais. Les traductions de l’interface du site n’en changent pas le sens.',
+      'Cette politique n’est tenue à jour qu’en anglais. Toute version traduite est fournie à titre indicatif.',
   },
   terms: {
     metaTitle: 'Conditions | Eagami',
@@ -181,7 +181,7 @@ export const frFR: WebMessages = {
     title: 'Conditions d’utilisation',
     lastUpdated: date => `Dernière mise à jour : ${date}`,
     languageNote:
-      'Ces conditions sont tenues à jour en anglais. Les traductions de l’interface du site n’en changent pas le sens.',
+      'Ces conditions ne sont tenues à jour qu’en anglais. Toute version traduite est fournie à titre indicatif.',
   },
   notFound: {
     metaTitle: 'Page introuvable | Eagami',

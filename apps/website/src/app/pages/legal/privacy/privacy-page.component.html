@@ -1,36 +1,26 @@
 <article class="legal">
   <h1 class="legal__title">{{ messages().privacy.title }}</h1>
-  <p class="legal__updated">{{ messages().privacy.lastUpdated(lastUpdated()) }}</p>
+  <ea-divider />
 
   <section class="legal__section">
     <p>
-      Eagami does not advertise or track across other sites. There are no accounts, and
-      the only personal information the site receives is what you type into the contact
-      form.
+      Eagami collects the bare minimum needed to keep the site running and to know which
+      pages people find useful. There are no accounts, no advertising, and nothing that
+      follows you to other sites.
     </p>
   </section>
 
   <section class="legal__section">
-    <h2>What the site measures</h2>
+    <h2>What the site collects</h2>
     <p>
-      Visits are measured with
+      Traffic is measured with
       <a
         href="https://plausible.io"
         target="_blank"
         rel="noopener noreferrer"
         >Plausible Analytics</a
-      >, which sets no cookies and collects no personal information. It records aggregate
-      figures such as page views, referring site, country, and broad device type.
-      Individual visitors cannot be identified or followed between sites.
-    </p>
-    <p>Two preferences are saved in your browser's local storage:</p>
-    <ul>
-      <li><code>web-theme</code>, whether you chose light or dark mode</li>
-      <li><code>web-locale</code>, the language you selected</li>
-    </ul>
-    <p>
-      These stay on your device, are never sent to a server, and disappear if you clear
-      your browser's site data.
+      >, which reports which pages were opened, which country a visit came from, and which
+      site or search led there. It sets no cookies and stores nothing on your device.
     </p>
     <p>
       The site is hosted by
@@ -39,43 +29,41 @@
         target="_blank"
         rel="noopener noreferrer"
         >Vercel</a
-      >, which processes standard request information such as IP address in order to serve
-      pages and protect the service.
+      >, one of the platforms most modern sites are deployed on, which keeps the usual
+      server logs of the requests it serves.
+    </p>
+    <p>
+      Your theme and language preferences are saved by your browser so the site remembers
+      them next time. They never leave your device and are cleared with your browser data.
     </p>
   </section>
 
   <section class="legal__section">
     <h2>When you get in touch</h2>
     <p>
-      Sending a message through the contact form emails your name, email address, and the
-      message itself to eagami. Nothing is written to a database and nothing is used for
-      marketing. Messages are kept for as long as needed to answer you and to keep a
-      record of the correspondence.
+      The contact form sends your name, email address, and message to Eagami as an email.
+      It is used to reply to you and nothing else: it is not sent to any third party and
+      is not added to any mailing list.
     </p>
   </section>
 
   <section class="legal__section">
     <h2>The component library</h2>
     <p>
-      The <code>&#64;eagami/ui</code> package collects nothing. It makes no network
-      requests, sets no cookies, and contains no analytics. Installing or using it sends
-      no data to eagami.
+      The <code>&#64;eagami/ui</code> package does not collect anything. It makes no
+      network requests and contains no analytics, so installing it or building with it
+      sends nothing back to Eagami.
     </p>
   </section>
 
   <section class="legal__section">
-    <h2>Your choices</h2>
+    <h2>Questions</h2>
     <p>
-      To ask what correspondence is held about you, or to have it deleted, email
-      <a href="mailto:privacy&#64;eagami.com">privacy&#64;eagami.com</a>. Analytics data
-      is aggregate and cannot be traced back to an individual, so it cannot be retrieved
-      or deleted per person.
-    </p>
-    <p>
-      If this policy changes, the date at the top of the page changes with it. Material
-      changes are noted in the site changelog.
+      If you have any questions about Eagami's privacy policy, please email
+      <a href="mailto:privacy&#64;eagami.com">privacy&#64;eagami.com</a>.
     </p>
   </section>
 
   <p class="legal__note">{{ messages().privacy.languageNote }}</p>
+  <p class="legal__updated">{{ messages().privacy.lastUpdated(lastUpdated()) }}</p>
 </article>

@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const pl: WebMessages = {
   common: {
     skipToContent: 'Przejdź do treści głównej',
-    brandHome: 'Strona główna eagami',
+    brandHome: 'Strona główna Eagami',
     navUi: 'UI',
     navUiTooltip: 'Dokumentacja biblioteki komponentów',
     themeToggleTooltip: 'Przełącz motyw',
@@ -19,7 +19,7 @@ export const pl: WebMessages = {
       termsLink: 'Regulamin',
       npmLink: 'npm',
       npmTooltip: 'Zobacz @eagami/ui w npm',
-      githubAriaLabel: 'eagami na GitHubie',
+      githubAriaLabel: 'Eagami na GitHubie',
       githubTooltip: 'Zobacz kod źródłowy na GitHubie',
       navLabel: 'Stopka',
     },
@@ -169,7 +169,7 @@ export const pl: WebMessages = {
     title: 'Polityka prywatności',
     lastUpdated: date => `Ostatnia aktualizacja: ${date}`,
     languageNote:
-      'Ta polityka jest prowadzona w języku angielskim. Tłumaczenia interfejsu witryny nie zmieniają jej znaczenia.',
+      'Ta polityka jest prowadzona wyłącznie w języku angielskim. Wszelkie tłumaczenia mają charakter wyłącznie pomocniczy.',
   },
   terms: {
     metaTitle: 'Regulamin | Eagami',
@@ -178,7 +178,7 @@ export const pl: WebMessages = {
     title: 'Regulamin',
     lastUpdated: date => `Ostatnia aktualizacja: ${date}`,
     languageNote:
-      'Ten regulamin jest prowadzony w języku angielskim. Tłumaczenia interfejsu witryny nie zmieniają jego znaczenia.',
+      'Ten regulamin jest prowadzony wyłącznie w języku angielskim. Wszelkie tłumaczenia mają charakter wyłącznie pomocniczy.',
   },
   notFound: {
     metaTitle: 'Strona nie znaleziona | Eagami',

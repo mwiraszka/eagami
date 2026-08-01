@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const nl: WebMessages = {
   common: {
     skipToContent: 'Ga naar hoofdinhoud',
-    brandHome: 'eagami startpagina',
+    brandHome: 'Eagami startpagina',
     navUi: 'UI',
     navUiTooltip: 'Documentatie componentenbibliotheek',
     themeToggleTooltip: 'Thema wisselen',
@@ -19,7 +19,7 @@ export const nl: WebMessages = {
       termsLink: 'Voorwaarden',
       npmLink: 'npm',
       npmTooltip: '@eagami/ui op npm bekijken',
-      githubAriaLabel: 'eagami op GitHub',
+      githubAriaLabel: 'Eagami op GitHub',
       githubTooltip: 'Broncode op GitHub bekijken',
       navLabel: 'Voettekst',
     },
@@ -169,7 +169,7 @@ export const nl: WebMessages = {
     title: 'Privacybeleid',
     lastUpdated: date => `Laatst bijgewerkt: ${date}`,
     languageNote:
-      'Dit beleid wordt in het Engels bijgehouden. Vertalingen van de website-interface veranderen de betekenis ervan niet.',
+      'Dit beleid wordt alleen in het Engels bijgehouden. Een vertaalde versie is uitsluitend bedoeld als hulpmiddel.',
   },
   terms: {
     metaTitle: 'Voorwaarden | Eagami',
@@ -178,7 +178,7 @@ export const nl: WebMessages = {
     title: 'Gebruiksvoorwaarden',
     lastUpdated: date => `Laatst bijgewerkt: ${date}`,
     languageNote:
-      'Deze voorwaarden worden in het Engels bijgehouden. Vertalingen van de website-interface veranderen de betekenis ervan niet.',
+      'Deze voorwaarden worden alleen in het Engels bijgehouden. Een vertaalde versie is uitsluitend bedoeld als hulpmiddel.',
   },
   notFound: {
     metaTitle: 'Pagina niet gevonden | Eagami',

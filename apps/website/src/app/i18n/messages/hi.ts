@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const hi: WebMessages = {
   common: {
     skipToContent: 'मुख्य सामग्री पर जाएं',
-    brandHome: 'eagami होम',
+    brandHome: 'Eagami होम',
     navUi: 'UI',
     navUiTooltip: 'कंपोनेंट लाइब्रेरी दस्तावेज़',
     themeToggleTooltip: 'थीम बदलें',
@@ -18,7 +18,7 @@ export const hi: WebMessages = {
       termsLink: 'शर्तें',
       npmLink: 'npm',
       npmTooltip: 'npm पर @eagami/ui देखें',
-      githubAriaLabel: 'GitHub पर eagami',
+      githubAriaLabel: 'GitHub पर Eagami',
       githubTooltip: 'GitHub पर स्रोत कोड देखें',
       navLabel: 'फ़ुटर',
     },
@@ -164,7 +164,7 @@ export const hi: WebMessages = {
     title: 'गोपनीयता नीति',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
     languageNote:
-      'यह नीति अंग्रेज़ी में बनाए रखी जाती है। साइट इंटरफ़ेस के अनुवाद इसका अर्थ नहीं बदलते।',
+      'यह नीति केवल अंग्रेज़ी में बनाए रखी जाती है। कोई भी अनूदित संस्करण केवल सुविधा के लिए दिया गया है।',
   },
   terms: {
     metaTitle: 'शर्तें | Eagami',
@@ -172,7 +172,7 @@ export const hi: WebMessages = {
     title: 'उपयोग की शर्तें',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
     languageNote:
-      'ये शर्तें अंग्रेज़ी में बनाए रखी जाती हैं। साइट इंटरफ़ेस के अनुवाद इनका अर्थ नहीं बदलते।',
+      'ये शर्तें केवल अंग्रेज़ी में बनाए रखी जाती हैं। कोई भी अनूदित संस्करण केवल सुविधा के लिए दिया गया है।',
   },
   notFound: {
     metaTitle: 'पेज नहीं मिला | Eagami',

@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const uk: WebMessages = {
   common: {
     skipToContent: 'Перейти до основного вмісту',
-    brandHome: 'Головна eagami',
+    brandHome: 'Головна Eagami',
     navUi: 'UI',
     navUiTooltip: 'Документація бібліотеки компонентів',
     themeToggleTooltip: 'Перемкнути тему',
@@ -19,7 +19,7 @@ export const uk: WebMessages = {
       termsLink: 'Умови',
       npmLink: 'npm',
       npmTooltip: 'Переглянути @eagami/ui на npm',
-      githubAriaLabel: 'eagami на GitHub',
+      githubAriaLabel: 'Eagami на GitHub',
       githubTooltip: 'Переглянути вихідний код на GitHub',
       navLabel: 'Нижній колонтитул',
     },
@@ -167,7 +167,7 @@ export const uk: WebMessages = {
     title: 'Політика конфіденційності',
     lastUpdated: date => `Останнє оновлення: ${date}`,
     languageNote:
-      'Ця політика ведеться англійською мовою. Переклади інтерфейсу сайту не змінюють її змісту.',
+      'Ця політика ведеться лише англійською мовою. Будь-який переклад надається виключно для зручності.',
   },
   terms: {
     metaTitle: 'Умови | Eagami',
@@ -175,7 +175,7 @@ export const uk: WebMessages = {
     title: 'Умови використання',
     lastUpdated: date => `Останнє оновлення: ${date}`,
     languageNote:
-      'Ці умови ведуться англійською мовою. Переклади інтерфейсу сайту не змінюють їх змісту.',
+      'Ці умови ведуться лише англійською мовою. Будь-який переклад надається виключно для зручності.',
   },
   notFound: {
     metaTitle: 'Сторінку не знайдено | Eagami',

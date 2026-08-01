@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const zhCN: WebMessages = {
   common: {
     skipToContent: '跳转到主要内容',
-    brandHome: 'eagami 首页',
+    brandHome: 'Eagami 首页',
     navUi: 'UI',
     navUiTooltip: '组件库文档',
     themeToggleTooltip: '切换主题',
@@ -18,7 +18,7 @@ export const zhCN: WebMessages = {
       termsLink: '条款',
       npmLink: 'npm',
       npmTooltip: '在 npm 上查看 @eagami/ui',
-      githubAriaLabel: 'GitHub 上的 eagami',
+      githubAriaLabel: 'GitHub 上的 Eagami',
       githubTooltip: '在 GitHub 上查看源代码',
       navLabel: '页脚',
     },
@@ -155,14 +155,14 @@ export const zhCN: WebMessages = {
     metaDescription: 'eagami.com 收集哪些信息，不收集哪些信息。',
     title: '隐私政策',
     lastUpdated: date => `最后更新：${date}`,
-    languageNote: '本政策以英文维护。站点界面的翻译不改变其含义。',
+    languageNote: '本政策仅以英文维护。任何译文仅供参考。',
   },
   terms: {
     metaTitle: '条款 | Eagami',
     metaDescription: '使用 eagami.com 和 Eagami UI 组件库的条款。',
     title: '使用条款',
     lastUpdated: date => `最后更新：${date}`,
-    languageNote: '本条款以英文维护。站点界面的翻译不改变其含义。',
+    languageNote: '本条款仅以英文维护。任何译文仅供参考。',
   },
   notFound: {
     metaTitle: '页面未找到 | Eagami',

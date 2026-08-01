@@ -3,7 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const el: WebMessages = {
   common: {
     skipToContent: 'Μετάβαση στο κύριο περιεχόμενο',
-    brandHome: 'Αρχική eagami',
+    brandHome: 'Αρχική Eagami',
     navUi: 'UI',
     navUiTooltip: 'Τεκμηρίωση της βιβλιοθήκης',
     themeToggleTooltip: 'Εναλλαγή θέματος',
@@ -19,7 +19,7 @@ export const el: WebMessages = {
       termsLink: 'Όροι',
       npmLink: 'npm',
       npmTooltip: 'Δείτε το @eagami/ui στο npm',
-      githubAriaLabel: 'eagami στο GitHub',
+      githubAriaLabel: 'Eagami στο GitHub',
       githubTooltip: 'Δείτε τον πηγαίο κώδικα στο GitHub',
       navLabel: 'Υποσέλιδο',
     },
@@ -169,7 +169,7 @@ export const el: WebMessages = {
     title: 'Πολιτική απορρήτου',
     lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
     languageNote:
-      'Η πολιτική αυτή τηρείται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά της.',
+      'Η πολιτική αυτή τηρείται μόνο στα αγγλικά. Κάθε μεταφρασμένη εκδοχή παρέχεται μόνο για διευκόλυνση.',
   },
   terms: {
     metaTitle: 'Όροι | Eagami',
@@ -178,7 +178,7 @@ export const el: WebMessages = {
     title: 'Όροι χρήσης',
     lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
     languageNote:
-      'Οι όροι αυτοί τηρούνται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά τους.',
+      'Οι όροι αυτοί τηρούνται μόνο στα αγγλικά. Κάθε μεταφρασμένη εκδοχή παρέχεται μόνο για διευκόλυνση.',
   },
   notFound: {
     metaTitle: 'Η σελίδα δεν βρέθηκε | Eagami',
