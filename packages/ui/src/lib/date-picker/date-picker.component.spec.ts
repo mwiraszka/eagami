@@ -187,6 +187,54 @@ describe('DatePickerComponent', () => {
 
       expect(component.value()).toBeNull();
     });
+
+    it('notifies the bound control and emits null when cleared', () => {
+      const onChange = vi.fn<(value: Date | null) => void>();
+      const changed = vi.fn<(value: Date | null) => void>();
+      component.registerOnChange(onChange);
+      component.changed.subscribe(changed);
+      component.writeValue(new Date(2026, 3, 15));
+      fixture.detectChanges();
+
+      const clearBtn: HTMLButtonElement = fixture.nativeElement.querySelector(
+        '.ea-date-picker__clear',
+      );
+      clearBtn.click();
+      fixture.detectChanges();
+
+      expect(onChange).toHaveBeenCalledWith(null);
+      expect(changed).toHaveBeenCalledWith(null);
+    });
+
+    it('opens on the selected month and marks that day alone as selected', () => {
+      const today = new Date();
+      const target = new Date(today.getFullYear(), today.getMonth() + 2, 15);
+      component.writeValue(target);
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const selected = Array.from(
+        document.body.querySelectorAll('.ea-date-picker__cell[aria-selected="true"]'),
+      );
+      expect(component.viewMonth()).toBe(target.getMonth());
+      expect(selected).toHaveLength(1);
+      expect(selected[0].textContent!.trim()).toBe('15');
+    });
+
+    it('closes and marks the control touched on an outside click', () => {
+      const onTouched = vi.fn<() => void>();
+      component.registerOnTouched(onTouched);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(onTouched).toHaveBeenCalled();
+    });
   });
 
   describe('Navigation', () => {
@@ -258,6 +306,26 @@ describe('DatePickerComponent', () => {
       expect(findDayCell(5).getAttribute('aria-disabled')).toBeNull();
       expect(findDayCell(20).getAttribute('aria-disabled')).toBe('true');
     });
+
+    it('ignores a click on an out-of-range day and stays open', () => {
+      const changed = vi.fn<(value: Date | null) => void>();
+      component.changed.subscribe(changed);
+      getTrigger().click();
+      fixture.detectChanges();
+      fixture.componentRef.setInput(
+        'minDate',
+        new Date(component.viewYear(), component.viewMonth(), 10),
+      );
+      fixture.detectChanges();
+
+      findDayCell(5).click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(changed).not.toHaveBeenCalled();
+      expect(getPopover()).not.toBeNull();
+      expect(findDayCell(5).classList).toContain('ea-date-picker__day--focused');
+    });
   });
 
   describe('Disabled state', () => {
@@ -276,6 +344,56 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
+    });
+  });
+
+  describe('Readonly state', () => {
+    it('does not open the calendar', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+    });
+
+    it('stays closed when opened programmatically', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      component.open();
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+    });
+
+    it('hides the clear button while still showing the value', () => {
+      component.writeValue(new Date(2026, 3, 15));
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.ea-date-picker__clear')).toBeNull();
+      expect(getTrigger().textContent).not.toContain('Select date…');
+    });
+  });
+
+  describe('Formatting', () => {
+    it('maps each format to a distinct Intl date style', () => {
+      const date = new Date(2024, 5, 20);
+      fixture.componentRef.setInput('locale', 'en-US');
+      component.writeValue(date);
+
+      const rendered = (['short', 'medium', 'long'] as const).map(format => {
+        fixture.componentRef.setInput('format', format);
+        fixture.detectChanges();
+        return getTrigger().textContent!.trim();
+      });
+
+      const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+      expect(new Set(rendered).size).toBe(3);
+      expect(rendered[2]).toContain(monthName);
+      expect(rendered[0]).not.toContain(monthName);
     });
   });
 
@@ -355,6 +473,24 @@ describe('DatePickerComponent', () => {
 
       expect(component.value()).not.toBeNull();
       expect(component.value()!.getFullYear()).toBe(2026);
+    });
+
+    it('ignores an unparseable string from the form', () => {
+      component.writeValue('not a date');
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(getTrigger().textContent).toContain('Select date…');
+    });
+
+    it('clears rather than rendering an invalid Date from the form', () => {
+      component.writeValue(new Date(2026, 3, 15));
+
+      component.writeValue(new Date('nonsense'));
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(getTrigger().textContent).toContain('Select date…');
     });
 
     it('writes null via writeValue', () => {
