@@ -3,6 +3,7 @@ import type { Mock } from 'vitest';
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import {
   type DrawerAnimation,
   DrawerComponent,
@@ -694,12 +695,11 @@ describe('DrawerComponent', () => {
     // jsdom resolves the panel's token-driven transition to no duration, so the
     // animated exit only runs against an explicitly stubbed duration
     function stubPanelDuration(duration: string): void {
-      const realGetComputedStyle = window.getComputedStyle.bind(window);
       const stubbed = document.createElement('div').style;
       stubbed.transitionDuration = duration;
       const panel = getPanel();
       vi.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) =>
-        element === panel ? stubbed : realGetComputedStyle(element, pseudoElement),
+        element === panel ? stubbed : REAL_GET_COMPUTED_STYLE(element, pseudoElement),
       );
     }
 

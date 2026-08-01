@@ -7,12 +7,10 @@
   },
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "src",
     "declaration": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "ignoreDeprecations": "5.0",
     "importHelpers": true,
     "isolatedModules": true,
     "module": "ES2022",
@@ -24,10 +22,10 @@
     "outDir": "./dist/out-tsc",
     "rootDir": "../..",
     "paths": {
-      "@app/*": ["app/*"],
-      "@env": ["environments/environment"],
-      "@eagami/ui": ["../../../packages/ui/src/public-api"],
-      "@eagami/ui-knobs": ["../../../packages/ui/src/playground-knobs"]
+      "@app/*": ["./src/app/*"],
+      "@env": ["./src/environments/environment"],
+      "@eagami/ui": ["../../packages/ui/src/public-api"],
+      "@eagami/ui-knobs": ["../../packages/ui/src/playground-knobs"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

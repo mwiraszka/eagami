@@ -16,15 +16,15 @@ const ITEMS: TransferListItem[] = [
   imports: [TransferListComponent],
   template: `
     <ea-transfer-list
-      [items]="items"
+      [items]="items()"
       [(selectedIds)]="selectedIds"
-      [disabled]="disabled" />
+      [disabled]="disabled()" />
   `,
 })
 class HostComponent {
-  items: TransferListItem[] = ITEMS;
+  items = signal<readonly TransferListItem[]>(ITEMS);
   selectedIds = signal<readonly string[]>([]);
-  disabled = false;
+  disabled = signal(false);
 }
 
 describe('TransferListComponent', () => {
@@ -162,7 +162,7 @@ describe('TransferListComponent', () => {
   });
 
   it('disables every button when [disabled]=true', () => {
-    host.disabled = true;
+    host.disabled.set(true);
     fixture.detectChanges();
 
     expect(getButton('Move selected to target').disabled).toBe(true);
@@ -215,10 +215,10 @@ describe('TransferListComponent', () => {
     });
 
     it('skips disabled items when picking the initially tabbable option', () => {
-      host.items = [
+      host.items.set([
         { id: 'x', label: 'Xray', disabled: true },
         { id: 'y', label: 'Yankee' },
-      ];
+      ]);
 
       fixture.detectChanges();
 

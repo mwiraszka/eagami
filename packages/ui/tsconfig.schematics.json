@@ -1,8 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
+    // node10 resolution is deprecated in TypeScript 6; node16 is its supported
+    // successor for the CommonJS output the Angular CLI loads schematics from
+    "moduleResolution": "node16",
     "target": "es2022",
     "lib": ["es2022"],
     "outDir": "./dist/eagami-ui/schematics",

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabComponent } from './tab.component';
@@ -9,7 +9,7 @@ import { TabsComponent } from './tabs.component';
   template: `
     <ea-tabs
       [(activeTab)]="activeTab"
-      [ariaLabel]="ariaLabel">
+      [ariaLabel]="ariaLabel()">
       <ea-tab
         value="one"
         label="Tab One">
@@ -30,8 +30,8 @@ import { TabsComponent } from './tabs.component';
   `,
 })
 class TestHostComponent {
-  activeTab = 'one';
-  ariaLabel?: string;
+  activeTab = signal('one');
+  ariaLabel = signal<string | undefined>(undefined);
 }
 
 describe('TabsComponent', () => {
@@ -77,7 +77,7 @@ describe('TabsComponent', () => {
     });
 
     it('applies ariaLabel to the tablist', () => {
-      fixture.componentInstance.ariaLabel = 'Account sections';
+      fixture.componentInstance.ariaLabel.set('Account sections');
 
       fixture.detectChanges();
 
@@ -99,7 +99,7 @@ describe('TabsComponent', () => {
     it('updates activeTab on the host', () => {
       getTriggers()[1].click();
       fixture.detectChanges();
-      expect(fixture.componentInstance.activeTab).toBe('two');
+      expect(fixture.componentInstance.activeTab()).toBe('two');
     });
 
     it('marks the active trigger with aria-selected', () => {
@@ -135,7 +135,7 @@ describe('TabsComponent', () => {
     });
 
     it('wraps around on ArrowRight at end', () => {
-      fixture.componentInstance.activeTab = 'two';
+      fixture.componentInstance.activeTab.set('two');
       fixture.detectChanges();
       // "two" is index 1 of enabled tabs, ArrowRight goes to index 0 (wraps, skips disabled)
       getTabList().dispatchEvent(
@@ -146,7 +146,7 @@ describe('TabsComponent', () => {
     });
 
     it('moves to previous tab on ArrowLeft', () => {
-      fixture.componentInstance.activeTab = 'two';
+      fixture.componentInstance.activeTab.set('two');
       fixture.detectChanges();
       getTabList().dispatchEvent(
         new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
@@ -156,7 +156,7 @@ describe('TabsComponent', () => {
     });
 
     it('moves to first tab on Home', () => {
-      fixture.componentInstance.activeTab = 'two';
+      fixture.componentInstance.activeTab.set('two');
       fixture.detectChanges();
       getTabList().dispatchEvent(
         new KeyboardEvent('keydown', { key: 'Home', bubbles: true }),

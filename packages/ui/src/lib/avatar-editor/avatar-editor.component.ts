@@ -155,6 +155,9 @@ export class AvatarEditorComponent implements OnDestroy {
     effect(() => {
       this.canvasSize();
       if (this.image) {
+        // Offsets were computed against the previous frame, so a shrink would
+        // otherwise leave the image drawn outside it with a gap showing
+        this.clampOffset();
         this.draw();
       }
     });
@@ -163,6 +166,12 @@ export class AvatarEditorComponent implements OnDestroy {
   ngOnDestroy(): void {
     const canvas = this.canvasEl()?.nativeElement;
     canvas?.removeEventListener('wheel', this.boundWheel);
+    // A drag in flight owns document-level listeners; destroying mid-drag
+    // (route change, dialog close) would otherwise leave them bound forever
+    document.removeEventListener('mousemove', this.onMouseMoveBound);
+    document.removeEventListener('mouseup', this.onMouseUpBound);
+    document.removeEventListener('touchmove', this.onTouchMoveBound);
+    document.removeEventListener('touchend', this.onTouchEndBound);
   }
 
   onDragOver(event: DragEvent): void {

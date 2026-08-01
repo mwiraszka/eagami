@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BadgeComponent } from './badge.component';
@@ -7,17 +7,17 @@ import { BadgeComponent } from './badge.component';
   imports: [BadgeComponent],
   template: `
     <ea-badge
-      [variant]="variant"
-      [size]="size"
-      [shape]="shape">
+      [variant]="variant()"
+      [size]="size()"
+      [shape]="shape()">
       Hello
     </ea-badge>
   `,
 })
 class HostComponent {
-  variant: 'default' | 'success' | 'warning' | 'error' | 'info' = 'default';
-  size: 'sm' | 'md' | 'lg' = 'md';
-  shape: 'pill' | 'pin' = 'pill';
+  variant = signal<'default' | 'success' | 'warning' | 'error' | 'info'>('default');
+  size = signal<'sm' | 'md' | 'lg'>('md');
+  shape = signal<'pill' | 'pin'>('pill');
 }
 
 describe('BadgeComponent', () => {
@@ -49,7 +49,7 @@ describe('BadgeComponent', () => {
   });
 
   it('applies the success variant class', () => {
-    host.variant = 'success';
+    host.variant.set('success');
     fixture.detectChanges();
 
     expect(getBadge().classList).toContain('ea-badge--success');
@@ -57,7 +57,7 @@ describe('BadgeComponent', () => {
   });
 
   it('applies the small size class', () => {
-    host.size = 'sm';
+    host.size.set('sm');
     fixture.detectChanges();
 
     expect(getBadge().classList).toContain('ea-badge--sm');
@@ -67,7 +67,7 @@ describe('BadgeComponent', () => {
   it.each(['default', 'success', 'warning', 'error', 'info'] as const)(
     'supports the %s variant',
     variant => {
-      host.variant = variant;
+      host.variant.set(variant);
       fixture.detectChanges();
 
       expect(getBadge().classList).toContain(`ea-badge--${variant}`);
@@ -75,14 +75,14 @@ describe('BadgeComponent', () => {
   );
 
   it.each(['sm', 'md', 'lg'] as const)('supports the %s size', size => {
-    host.size = size;
+    host.size.set(size);
     fixture.detectChanges();
 
     expect(getBadge().classList).toContain(`ea-badge--${size}`);
   });
 
   it.each(['pill', 'pin'] as const)('supports the %s shape', shape => {
-    host.shape = shape;
+    host.shape.set(shape);
     fixture.detectChanges();
 
     expect(getBadge().classList).toContain(`ea-badge--${shape}`);

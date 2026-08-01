@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.15.0] - 2026-08-01
+
+### Changed
+
+- Build and test against Angular 22 and TypeScript 6. The supported peer range is unchanged, so Angular 21 and 22 consumers are both still supported.
+
+### Fixed
+
+- Release the avatar editor's drag listeners when it is destroyed mid-drag, which previously left them bound to the document.
+- Re-clamp the avatar editor's image when the canvas shrinks, which could leave a gap inside the frame.
+
 ## [5.14.4] - 2026-08-01
 
 ### Fixed
@@ -1194,6 +1205,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.15.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.4...ui-v5.15.0
 [5.14.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.3...ui-v5.14.4
 [5.14.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.2...ui-v5.14.3
 [5.14.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.1...ui-v5.14.2

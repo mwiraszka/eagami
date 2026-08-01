@@ -69,7 +69,11 @@ function createMockFileReader(): MockFileReaderInstance {
   return instance;
 }
 
-const mockCtx = {
+// getImageData is deliberately left without an implementation: it then returns
+// undefined and the component's try/catch takes the CORS-tainted path, which is
+// what every spec that doesn't care about pixels wants. Darkness specs hand it
+// real pixel data with mockReturnValue.
+const ctxSpies = {
   clearRect: vi.fn(),
   fillRect: vi.fn(),
   drawImage: vi.fn(),
@@ -78,7 +82,15 @@ const mockCtx = {
   fill: vi.fn(),
   closePath: vi.fn(),
   clip: vi.fn(),
-} as unknown as CanvasRenderingContext2D;
+  getImageData:
+    vi.fn<(x: number, y: number, w: number, h: number) => { data: Uint8ClampedArray }>(),
+};
+
+const mockCtx = ctxSpies as unknown as CanvasRenderingContext2D;
+
+const toBlobMock = vi.fn<(cb: BlobCallback, type?: string, quality?: number) => void>(
+  cb => cb(new Blob(['img'], { type: 'image/png' })),
+);
 
 beforeAll(() => {
   Object.defineProperty(globalThis, 'Image', { value: MockImage, writable: true });
@@ -92,7 +104,7 @@ beforeAll(() => {
     configurable: true,
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
-    value: vi.fn((cb: BlobCallback) => cb(new Blob(['img'], { type: 'image/png' }))),
+    value: toBlobMock,
     writable: true,
     configurable: true,
   });
@@ -105,6 +117,32 @@ afterEach(() => {
 
 function makeFile(type = 'image/jpeg', byteCount = 100): File {
   return new File([new Uint8Array(byteCount)], 'photo.jpg', { type });
+}
+
+/** Builds an RGBA buffer of `size × size` pixels from a per-pixel colour function. */
+function pixels(
+  size: number,
+  at: (x: number, y: number) => [number, number, number, number],
+): Uint8ClampedArray {
+  const data = new Uint8ClampedArray(size * size * 4);
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const i = (y * size + x) * 4;
+      const [r, g, b, a] = at(x, y);
+      data[i] = r;
+      data[i + 1] = g;
+      data[i + 2] = b;
+      data[i + 3] = a;
+    }
+  }
+  return data;
+}
+
+/** jsdom has no Touch constructor, so touch points are plain coordinate objects. */
+function touchEvent(type: string, points: { clientX: number; clientY: number }[]): Event {
+  const event = new Event(type, { bubbles: true, cancelable: true });
+  Object.defineProperty(event, 'touches', { value: points });
+  return event;
 }
 
 describe('AvatarEditorComponent', () => {
@@ -238,6 +276,125 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
+  describe('Canvas painting', () => {
+    it('cuts a circular hole out of the dimming mask for a circle crop', () => {
+      loadImage();
+
+      // One fillRect dims the frame, then an arc punches the visible crop out
+      expect(ctxSpies.fillRect).toHaveBeenCalledTimes(1);
+      expect(ctxSpies.arc).toHaveBeenCalled();
+    });
+
+    it('cuts a rectangular hole out of the dimming mask for a square crop', () => {
+      fixture.componentRef.setInput('shape', 'square');
+
+      loadImage();
+
+      expect(ctxSpies.fillRect).toHaveBeenCalledTimes(2);
+      expect(ctxSpies.arc).not.toHaveBeenCalled();
+    });
+
+    it('repaints at the new scale when canvasSize changes', () => {
+      loadImage();
+      ctxSpies.drawImage.mockClear();
+
+      fixture.componentRef.setInput('canvasSize', 400);
+      fixture.detectChanges();
+
+      // A 100×100 source has to be drawn at 400×400 to still cover the frame
+      expect(ctxSpies.drawImage).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.any(Number),
+        expect.any(Number),
+        400,
+        400,
+      );
+    });
+  });
+
+  /**
+   * The hover overlay's label sits directly on the photo, so its ink colour is
+   * chosen from the brightness of the pixels it covers. Only the pixels that
+   * survive the crop mask may count.
+   */
+  describe('Overlay contrast', () => {
+    const SIZE = 16;
+
+    function overlay(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-avatar-editor__canvas-overlay')!;
+    }
+
+    function isOnLight(): boolean {
+      return overlay().classList.contains('ea-avatar-editor__canvas-overlay--on-light');
+    }
+
+    function loadWithPixels(
+      at: (x: number, y: number) => [number, number, number, number],
+    ): void {
+      fixture.componentRef.setInput('canvasSize', SIZE);
+      ctxSpies.getImageData.mockReturnValue({ data: pixels(SIZE, at) });
+      loadImage();
+      fixture.detectChanges();
+    }
+
+    function inCircle(x: number, y: number): boolean {
+      const dx = x - SIZE / 2;
+      const dy = y - SIZE / 2;
+      return dx * dx + dy * dy <= (SIZE / 2) * (SIZE / 2);
+    }
+
+    it('keeps white ink on a dark photo', () => {
+      loadWithPixels(() => [12, 12, 12, 255]);
+
+      expect(isOnLight()).toBe(false);
+    });
+
+    it('switches to dark ink on a bright photo', () => {
+      loadWithPixels(() => [250, 250, 250, 255]);
+
+      expect(isOnLight()).toBe(true);
+    });
+
+    // 200 reads as light on its own, but averages below the threshold once the
+    // black corners are folded in, so the two crops must disagree.
+    it('ignores the corners a circle crop masks away', () => {
+      loadWithPixels((x, y) => (inCircle(x, y) ? [200, 200, 200, 255] : [0, 0, 0, 255]));
+
+      expect(isOnLight()).toBe(true);
+    });
+
+    it('counts the corners a square crop keeps', () => {
+      fixture.componentRef.setInput('shape', 'square');
+
+      loadWithPixels((x, y) => (inCircle(x, y) ? [200, 200, 200, 255] : [0, 0, 0, 255]));
+
+      expect(isOnLight()).toBe(false);
+    });
+
+    it('does not let transparent pixels darken the average', () => {
+      fixture.componentRef.setInput('shape', 'square');
+
+      // A mostly-transparent PNG with a small opaque white mark
+      loadWithPixels((x, y) => (x < 4 && y < 4 ? [255, 255, 255, 255] : [0, 0, 0, 0]));
+
+      expect(isOnLight()).toBe(true);
+    });
+
+    it('keeps the previous ink colour when every sampled pixel is transparent', () => {
+      fixture.componentRef.setInput('shape', 'square');
+      loadWithPixels(() => [250, 250, 250, 255]);
+      expect(isOnLight()).toBe(true);
+
+      ctxSpies.getImageData.mockReturnValue({
+        data: pixels(SIZE, () => [0, 0, 0, 0]),
+      });
+      component.setZoom(1.5);
+      fixture.detectChanges();
+
+      expect(isOnLight()).toBe(true);
+    });
+  });
+
   describe('Canvas accessibility', () => {
     it('exposes the canvas as an application described by hidden instructions', () => {
       loadImage();
@@ -272,6 +429,30 @@ describe('AvatarEditorComponent', () => {
       );
 
       expect(clickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('ignores arrow keys while a new image is still loading', () => {
+      loadImage();
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+      fixture.componentRef.setInput('loading', true);
+      fixture.detectChanges();
+
+      getCanvas()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('leaves keys it does not handle to the browser', () => {
+      loadImage();
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+      const event = new KeyboardEvent('keydown', { key: 'Tab', cancelable: true });
+
+      getCanvas()!.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('marks the canvas wrapper busy while loading', () => {
@@ -662,6 +843,28 @@ describe('AvatarEditorComponent', () => {
       expect(component.hasImage()).toBe(true);
       expect(component.isAtOriginal()).toBe(true);
     });
+
+    it('keeps the captured original when currentSrc is cleared', () => {
+      loadImage();
+      component.setZoom(2);
+
+      fixture.componentRef.setInput('currentSrc', undefined);
+      fixture.detectChanges();
+      component.revertImage();
+
+      expect(component.hasImage()).toBe(true);
+      expect(component.zoom()).toBe(1);
+    });
+
+    it('leaves an in-flight load alone', () => {
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
+      fixture.detectChanges();
+
+      component.revertImage();
+
+      expect(component.isLoading()).toBe(true);
+      expect(component.hasImage()).toBe(false);
+    });
   });
 
   describe('captureOriginal', () => {
@@ -922,6 +1125,18 @@ describe('AvatarEditorComponent', () => {
       // value is reset so the same file can be re-selected
       expect(getFileInput().value).toBe('');
     });
+
+    it('does nothing when the picker is dismissed without a file', () => {
+      const selected = vi.fn();
+      const errored = vi.fn();
+      component.fileSelected.subscribe(selected);
+      component.errored.subscribe(errored);
+
+      getFileInput().dispatchEvent(new Event('change'));
+
+      expect(selected).not.toHaveBeenCalled();
+      expect(errored).not.toHaveBeenCalled();
+    });
   });
 
   describe('Drag and drop', () => {
@@ -967,6 +1182,20 @@ describe('AvatarEditorComponent', () => {
       getDropzone()!.dispatchEvent(event);
 
       expect(spy).toHaveBeenCalledWith('File must be an image');
+    });
+
+    it('ignores a drop that carries no file', () => {
+      const selected = vi.fn();
+      const errored = vi.fn();
+      component.fileSelected.subscribe(selected);
+      component.errored.subscribe(errored);
+      const event = new Event('drop');
+      Object.defineProperty(event, 'dataTransfer', { value: { files: [] } });
+
+      getDropzone()!.dispatchEvent(event);
+
+      expect(selected).not.toHaveBeenCalled();
+      expect(errored).not.toHaveBeenCalled();
     });
 
     it('emits fileSelected on drop of a valid image file', () => {
@@ -1102,6 +1331,32 @@ describe('AvatarEditorComponent', () => {
         dataUrl: expect.any(String),
       });
     });
+
+    it('clips the export to a circle for a circle crop', async () => {
+      loadImage();
+      ctxSpies.clip.mockClear();
+
+      await component.exportCrop();
+
+      expect(ctxSpies.clip).toHaveBeenCalled();
+    });
+
+    it('exports the full frame for a square crop', async () => {
+      fixture.componentRef.setInput('shape', 'square');
+      loadImage();
+      ctxSpies.clip.mockClear();
+
+      await component.exportCrop();
+
+      expect(ctxSpies.clip).not.toHaveBeenCalled();
+    });
+
+    it('rejects when the canvas cannot produce a blob', async () => {
+      loadImage();
+      toBlobMock.mockImplementationOnce(cb => cb(null));
+
+      await expect(component.exportCrop()).rejects.toThrow('Canvas export failed');
+    });
   });
   /**
    * The image must always cover the frame: panning may never expose a gap. Both
@@ -1223,6 +1478,88 @@ describe('AvatarEditorComponent', () => {
       expect(picker).not.toHaveBeenCalled();
     });
 
+    it('treats a jittery press as a click rather than a drag', () => {
+      const picker = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 52, clientY: 51 }));
+      document.dispatchEvent(new MouseEvent('mouseup'));
+
+      expect(picker).toHaveBeenCalled();
+    });
+
+    it('pans on a one-finger touch drag', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      getCanvas()!.dispatchEvent(
+        touchEvent('touchstart', [{ clientX: 50, clientY: 50 }]),
+      );
+      document.dispatchEvent(touchEvent('touchmove', [{ clientX: 20, clientY: 50 }]));
+      document.dispatchEvent(touchEvent('touchend', []));
+
+      expect(lastCropState(spy).offsetX).toBeLessThan(0);
+    });
+
+    it('does not reopen the picker after a touch drag', () => {
+      const picker = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        touchEvent('touchstart', [{ clientX: 50, clientY: 50 }]),
+      );
+      document.dispatchEvent(touchEvent('touchmove', [{ clientX: 20, clientY: 50 }]));
+      document.dispatchEvent(touchEvent('touchend', []));
+
+      expect(picker).not.toHaveBeenCalled();
+    });
+
+    it('treats a tap as a request to change the photo', () => {
+      const picker = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        touchEvent('touchstart', [{ clientX: 50, clientY: 50 }]),
+      );
+      document.dispatchEvent(touchEvent('touchmove', [{ clientX: 51, clientY: 52 }]));
+      document.dispatchEvent(touchEvent('touchend', []));
+
+      expect(picker).toHaveBeenCalled();
+    });
+
+    it('never starts a pan from a two-finger gesture', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      getCanvas()!.dispatchEvent(
+        touchEvent('touchstart', [
+          { clientX: 50, clientY: 50 },
+          { clientX: 90, clientY: 90 },
+        ]),
+      );
+      document.dispatchEvent(touchEvent('touchmove', [{ clientX: 20, clientY: 50 }]));
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('suspends the pan when a second finger joins mid-drag', () => {
+      getCanvas()!.dispatchEvent(
+        touchEvent('touchstart', [{ clientX: 50, clientY: 50 }]),
+      );
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      document.dispatchEvent(
+        touchEvent('touchmove', [
+          { clientX: 20, clientY: 50 },
+          { clientX: 90, clientY: 90 },
+        ]),
+      );
+      document.dispatchEvent(touchEvent('touchend', []));
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
     it('stops tracking the pointer once the drag ends', () => {
       getCanvas()!.dispatchEvent(
         new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
@@ -1256,6 +1593,48 @@ describe('AvatarEditorComponent', () => {
       }
 
       expect(component.zoom()).toBe(1.5);
+    });
+  });
+
+  describe('Teardown and resize', () => {
+    it('releases the document drag listeners when destroyed mid-drag', () => {
+      loadImage();
+      const remove = vi.spyOn(document, 'removeEventListener');
+
+      getCanvas()!.dispatchEvent(new MouseEvent('mousedown', { clientX: 5, clientY: 5 }));
+      fixture.destroy();
+
+      const released = remove.mock.calls.map(call => call[0]);
+
+      expect(released).toEqual(
+        expect.arrayContaining(['mousemove', 'mouseup', 'touchmove', 'touchend']),
+      );
+    });
+
+    it('re-clamps the image when the canvas shrinks', () => {
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
+      fixture.detectChanges();
+      lastImage().width = 400;
+      lastImage().height = 200;
+      triggerLoad();
+      fixture.detectChanges();
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      fixture.componentRef.setInput('canvasSize', 50);
+      fixture.detectChanges();
+
+      // Offsets left over from the 200px frame would put the image outside a
+      // 50px one, showing a gap
+      getCanvas()!.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+      fixture.detectChanges();
+      const state = spy.mock.calls[spy.mock.calls.length - 1][0] as {
+        offsetX: number;
+        offsetY: number;
+      };
+
+      expect(state.offsetX).toBeLessThanOrEqual(0);
+      expect(state.offsetX).toBeGreaterThanOrEqual(-50);
     });
   });
 });
