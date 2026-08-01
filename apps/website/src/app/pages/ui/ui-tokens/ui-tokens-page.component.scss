@@ -95,7 +95,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
   &:first-of-type {
     margin-top: 0;
@@ -108,7 +108,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: capitalize;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
 }
 
 // The first sublabel sits directly beneath its subsection title, so pull it
@@ -122,7 +122,7 @@
 .tokens-scale__var {
   font-size: 12px;
   font-family: var(--font-family-mono);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
 }
 
 // Sequential scales render as a single contiguous bar: each shade is a thin

@@ -46,13 +46,12 @@
 }
 
 // Three columns where there is room, two on narrower viewports, one on phones.
-// auto-fit with a min track keeps the count responsive without breakpoints, and
-// the max cap stops two locales stretching across the whole row.
+// The min track is wide enough for the longest locale so a column drops rather
+// than an entry wrapping, which `nowrap` on the row then rules out entirely.
 .ui-i18n__locale-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 8px 24px;
-  max-width: 840px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 8px 16px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -62,6 +61,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 
   .ui-i18n__locale-check {
     flex-shrink: 0;
