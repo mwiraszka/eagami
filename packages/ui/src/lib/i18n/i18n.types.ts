@@ -114,6 +114,7 @@ export interface EagamiMessages {
     clear: string;
   };
   colorPicker: {
+    dialogLabel: string;
     placeholder: string;
     clear: string;
     hue: string;
@@ -198,6 +199,7 @@ export interface EagamiMessages {
     label: string;
   };
   multiSelect: {
+    dialogLabel: string;
     placeholder: string;
     searchPlaceholder: string;
     searchEmpty: string;
