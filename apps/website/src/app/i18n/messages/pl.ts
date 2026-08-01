@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const pl: WebMessages = {
   common: {
     skipToContent: 'Przejdź do treści głównej',
-    brandHome: 'Strona główna eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Dokumentacja biblioteki komponentów',
+    brandHome: 'Strona główna Eagami',
     themeToggleTooltip: 'Przełącz motyw',
     themeToggleLabel: next =>
       `Przełącz na motyw ${next === 'light' ? 'jasny' : 'ciemny'}`,
@@ -15,11 +13,17 @@ export const pl: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Wszelkie prawa zastrzeżone.',
-      npmLink: 'npm',
-      npmTooltip: 'Zobacz @eagami/ui w npm',
-      githubAriaLabel: 'eagami na GitHubie',
-      githubTooltip: 'Zobacz kod źródłowy na GitHubie',
       navLabel: 'Stopka',
+      siteHeading: 'O nas',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Przewodniki',
+      integrationsHeading: 'Integracje',
+      resourcesHeading: 'Zasoby',
+      legalHeading: 'Informacje prawne',
+      homeLink: 'Strona główna',
+      contactLink: 'Kontakt',
+      sourceCodeLink: 'Kod źródłowy',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Skopiuj do schowka',
@@ -161,8 +165,25 @@ export const pl: WebMessages = {
         'Niestety coś poszło nie tak. Proszę o wysłanie e-maila bezpośrednio na info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Polityka prywatności | Eagami',
+    metaDescription: 'Co zbiera eagami.com, a czego nie.',
+    title: 'Polityka prywatności',
+    lastUpdated: date => `Ostatnia aktualizacja: ${date}`,
+    languageNote:
+      'Ta polityka jest prowadzona wyłącznie w języku angielskim. Wszelkie tłumaczenia mają charakter wyłącznie pomocniczy.',
+  },
+  terms: {
+    metaTitle: 'Regulamin | Eagami',
+    metaDescription:
+      'Warunki korzystania z eagami.com i biblioteki komponentów Eagami UI.',
+    title: 'Regulamin',
+    lastUpdated: date => `Ostatnia aktualizacja: ${date}`,
+    languageNote:
+      'Ten regulamin jest prowadzony wyłącznie w języku angielskim. Wszelkie tłumaczenia mają charakter wyłącznie pomocniczy.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Strona nie znaleziona | Eagami',
     metaDescription: 'Strona nie znaleziona.',
     eyebrow: '404',
     title: 'Strona nie znaleziona',
@@ -174,7 +195,8 @@ export const pl: WebMessages = {
       title: 'Dziennik zmian',
       metaTitle: 'Dziennik zmian | Eagami UI',
       metaDescription: 'Historia wersji biblioteki komponentów Angular Eagami UI.',
-      lead: 'Istotne zmiany w @eagami/ui, od najnowszych.',
+      leadBefore: 'Istotne zmiany w ',
+      leadAfter: ', od najnowszych.',
       migrationGuide: 'Przewodnik migracji',
       fullHistory: 'Pełna historia na GitHubie',
     },
@@ -192,7 +214,7 @@ export const pl: WebMessages = {
       components: 'Komponenty',
     },
     index: {
-      metaTitle: 'Eagami UI | Biblioteka komponentów Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Lekka, dostępna biblioteka komponentów Angular oparta na niestandardowych właściwościach CSS.',
       title: 'Eagami UI',
@@ -309,7 +331,7 @@ export const pl: WebMessages = {
       tokensLink: 'Tokeny designu jako JSON',
     },
     themeBuilder: {
-      metaTitle: 'Kreator motywu Angular | Eagami UI',
+      metaTitle: 'Kreator motywu | Eagami UI',
       metaDescription:
         'Wygeneruj sprawdzoną pod kątem WCAG paletę dla trybu jasnego i ciemnego na podstawie kolorów marki, a następnie skopiuj konfigurację dostawcy lub CSS.',
       title: 'Kreator motywu',
@@ -384,7 +406,7 @@ export const pl: WebMessages = {
       motionEasings: 'Krzywe',
     },
     icons: {
-      metaTitle: 'Ikony Angular | Eagami UI',
+      metaTitle: 'Ikony | Eagami UI',
       metaDescription: 'Zestaw ikon dołączony do @eagami/ui.',
       title: 'Ikony',
       lede: 'Samodzielne komponenty Angular, które dziedziczą kolor i skalują się wraz z <code>font-size</code>, dzięki czemu renderują się w dowolnym rozmiarze. Większość pochodzi z <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> autorstwa <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole’a Bemisa</span></a> i używana jest na <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licencji MIT</span></a>; pozostałe to oryginalne ikony Eagami UI. Ikony Feather mogą być również rysowane z cieńszymi lub grubszymi liniami. Kliknij ikonę, aby skopiować jej selektor.',
@@ -411,8 +433,6 @@ export const pl: WebMessages = {
       title: 'Internacjonalizacja',
       lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w 15 językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
       supportedHeading: 'Obsługiwane języki',
-      supportedFallback:
-        'Nieznane języki przechodzą do angielskiego, podobnie jak klucze brakujące w częściowym nadpisaniu.',
       quickSetupHeading: 'Szybka konfiguracja',
       quickSetupBefore:
         'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze dostępny, więc dostarczasz tylko to, czego potrzebujesz.',
@@ -481,7 +501,7 @@ export const pl: WebMessages = {
         'Każdy komponent jest sprawdzany pod kątem branżowych reguł dostępności przy każdej zmianie, a wydanie ukazuje się tylko wtedy, gdy wszystkie kontrole przechodzą pomyślnie, więc dostępność, którą tu widzisz, utrzymuje się w miarę rozwoju biblioteki.',
     },
     component: {
-      metaTitle: name => `Komponent Angular ${name} | Eagami UI`,
+      metaTitle: name => `Komponent ${name} | Eagami UI`,
       metaDescription: name =>
         `Komponent Angular ${name}: demo na żywo, dokumentacja API i tworzenie motywów za pomocą zmiennych CSS.`,
       demoHeading: 'Demo',

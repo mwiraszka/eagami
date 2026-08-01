@@ -767,6 +767,65 @@ describe('AvatarEditorComponent', () => {
       expect(component.canRevert()).toBe(true);
     });
 
+    it('disables canRevert again once the zoom returns to the original', () => {
+      loadImage();
+
+      component.setZoom(2);
+      component.setZoom(1);
+
+      expect(component.canRevert()).toBe(false);
+    });
+
+    it('disables canRevert again once a pan returns to the original', () => {
+      loadImage();
+
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 20, clientY: 50 }));
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 50, clientY: 50 }));
+      document.dispatchEvent(new MouseEvent('mouseup'));
+
+      expect(component.canRevert()).toBe(false);
+    });
+
+    it('takes the clamped zoom as the baseline when cropState is out of range', () => {
+      fixture.componentRef.setInput('maxZoom', 3);
+      fixture.componentRef.setInput('cropState', {
+        zoom: 5,
+        offsetX: 0,
+        offsetY: 0,
+      } satisfies AvatarEditorCropState);
+      loadImage();
+
+      component.setZoom(2);
+      component.setZoom(3);
+
+      expect(component.canRevert()).toBe(false);
+    });
+
+    it('disables canRevert while a replacement image is still loading', () => {
+      loadImage();
+      component.setZoom(2);
+
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/other.jpg');
+      fixture.detectChanges();
+
+      expect(component.canRevert()).toBe(false);
+    });
+
+    it('keeps canRevert enabled for a new file cropped like the original', () => {
+      loadImage();
+
+      selectFile(makeFile('image/jpeg'));
+      lastMockFileReader!.onload!({ target: { result: 'data:image/jpeg;base64,abc' } });
+      triggerLoad();
+      fixture.detectChanges();
+      component.setZoom(1);
+
+      expect(component.canRevert()).toBe(true);
+    });
+
     it('restores original image after uploading a new file', () => {
       loadImage();
 

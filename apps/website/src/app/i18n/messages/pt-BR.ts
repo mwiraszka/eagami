@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const ptBR: WebMessages = {
   common: {
     skipToContent: 'Pular para o conteúdo principal',
-    brandHome: 'página inicial da eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Documentação da biblioteca de componentes',
+    brandHome: 'página inicial da Eagami',
     themeToggleTooltip: 'Alternar tema',
     themeToggleLabel: next =>
       `Mudar para o modo ${next === 'light' ? 'claro' : 'escuro'}`,
@@ -15,11 +13,17 @@ export const ptBR: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Todos os direitos reservados.',
-      npmLink: 'npm',
-      npmTooltip: 'Ver @eagami/ui no npm',
-      githubAriaLabel: 'eagami no GitHub',
-      githubTooltip: 'Ver código-fonte no GitHub',
       navLabel: 'Rodapé',
+      siteHeading: 'Sobre',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guias',
+      integrationsHeading: 'Integrações',
+      resourcesHeading: 'Recursos',
+      legalHeading: 'Jurídico',
+      homeLink: 'Início',
+      contactLink: 'Contato',
+      sourceCodeLink: 'Código-fonte',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copiar para a área de transferência',
@@ -161,8 +165,25 @@ export const ptBR: WebMessages = {
         'Desculpe, algo deu errado. Envie um e-mail diretamente para info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Política de privacidade | Eagami',
+    metaDescription: 'O que o eagami.com coleta e o que não coleta.',
+    title: 'Política de privacidade',
+    lastUpdated: date => `Última atualização: ${date}`,
+    languageNote:
+      'Esta política é mantida apenas em inglês. Qualquer versão traduzida é fornecida somente para facilitar a leitura.',
+  },
+  terms: {
+    metaTitle: 'Termos de uso | Eagami',
+    metaDescription:
+      'Termos de uso do eagami.com e da biblioteca de componentes Eagami UI.',
+    title: 'Termos de uso',
+    lastUpdated: date => `Última atualização: ${date}`,
+    languageNote:
+      'Estes termos são mantidos apenas em inglês. Qualquer versão traduzida é fornecida somente para facilitar a leitura.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Página não encontrada | Eagami',
     metaDescription: 'Página não encontrada.',
     eyebrow: '404',
     title: 'Página não encontrada',
@@ -175,7 +196,8 @@ export const ptBR: WebMessages = {
       metaTitle: 'Registro de alterações | Eagami UI',
       metaDescription:
         'Histórico de versões da biblioteca de componentes Angular Eagami UI.',
-      lead: 'Alterações notáveis no @eagami/ui, das mais recentes primeiro.',
+      leadBefore: 'Alterações notáveis no ',
+      leadAfter: ', das mais recentes primeiro.',
       migrationGuide: 'Guia de migração',
       fullHistory: 'Histórico completo no GitHub',
     },
@@ -193,7 +215,7 @@ export const ptBR: WebMessages = {
       components: 'Componentes',
     },
     index: {
-      metaTitle: 'Eagami UI | Biblioteca de componentes Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Biblioteca de componentes Angular leve e acessível, construída sobre propriedades personalizadas de CSS.',
       title: 'Eagami UI',
@@ -309,7 +331,7 @@ export const ptBR: WebMessages = {
       tokensLink: 'Tokens de design em JSON',
     },
     themeBuilder: {
-      metaTitle: 'Gerador de temas Angular | Eagami UI',
+      metaTitle: 'Gerador de temas | Eagami UI',
       metaDescription:
         'Gere uma paleta verificada pelo WCAG para os modos claro e escuro a partir das cores da sua marca e copie a configuração do provedor ou o CSS.',
       title: 'Gerador de temas',
@@ -385,7 +407,7 @@ export const ptBR: WebMessages = {
       motionEasings: 'Suavizações',
     },
     icons: {
-      metaTitle: 'Ícones Angular | Eagami UI',
+      metaTitle: 'Ícones | Eagami UI',
       metaDescription: 'Conjunto de ícones incluído no @eagami/ui.',
       title: 'Ícones',
       lede: 'Componentes Angular independentes que herdam sua cor e escalam com <code>font-size</code>, de modo que se renderizam em qualquer tamanho. A maioria deriva dos <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sob a <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>Licença MIT</span></a>; os demais são ícones originais da Eagami UI. Os ícones Feather também podem ser desenhados com traços mais finos ou mais grossos. Clique em um ícone para copiar seu seletor.',
@@ -413,8 +435,6 @@ export const ptBR: WebMessages = {
       title: 'Internacionalização',
       lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em 15 idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
       supportedHeading: 'Idiomas suportados',
-      supportedFallback:
-        'Idiomas desconhecidos recorrem ao inglês, assim como quaisquer chaves ausentes em uma sobrescrita parcial.',
       quickSetupHeading: 'Configuração rápida',
       quickSetupBefore:
         'Adicione <code>provideEagamiUi()</code> à configuração do seu aplicativo e registre os idiomas que você usa via <code>locales</code>. O inglês está sempre disponível, então você inclui apenas o que precisa.',
@@ -483,7 +503,7 @@ export const ptBR: WebMessages = {
         'Cada componente é verificado segundo as regras de acessibilidade do setor sempre que muda, e uma versão só é publicada quando todas as verificações passam, então a acessibilidade que você vê aqui se mantém conforme a biblioteca evolui.',
     },
     component: {
-      metaTitle: name => `Componente Angular ${name} | Eagami UI`,
+      metaTitle: name => `Componente ${name} | Eagami UI`,
       metaDescription: name =>
         `Componente Angular ${name}: demonstração ao vivo, referência de API e temas com variáveis CSS.`,
       demoHeading: 'Demonstração',

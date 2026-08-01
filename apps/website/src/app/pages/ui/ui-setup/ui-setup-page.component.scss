@@ -7,13 +7,13 @@
   max-width: 880px;
 }
 
+.ui-setup__header {
+  display: flex;
+  flex-direction: column;
+}
+
 .ui-setup__title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1;
-  font-family: var(--font-family-brand);
-  letter-spacing: -1px;
-  color: var(--color-text-primary);
+  @include mixins.page-title(16px);
 }
 
 .ui-setup__section {

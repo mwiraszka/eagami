@@ -14,15 +14,10 @@
 .ui-component__header {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .ui-component__title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.1;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
+  @include mixins.page-title;
 }
 
 .ui-component__selector {

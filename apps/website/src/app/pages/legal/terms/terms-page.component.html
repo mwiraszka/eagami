@@ -1,0 +1,78 @@
+<article class="legal">
+  <h1 class="legal__title">{{ messages().terms.title }}</h1>
+  <ea-divider />
+
+  <section class="legal__section">
+    <h2>The site</h2>
+    <p>
+      Everything here is free to read and share, and any code sample on the site can be
+      copied straight into your own project.
+    </p>
+  </section>
+
+  <section class="legal__section">
+    <h2>The library</h2>
+    <p>
+      The
+      <a
+        href="https://www.npmjs.com/package/&#64;eagami/ui"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><code>&#64;eagami/ui</code></a
+      >
+      package is governed by its own license rather than this page. It is released under
+      the
+      <a
+        href="https://github.com/mwiraszka/eagami/blob/main/LICENSE"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><span>MIT License</span></a
+      >, so you are free to use, change, and ship it, including in commercial work, as
+      long as you keep the copyright notice with it. That covers the code; the Eagami name
+      and wordmark stay with the project, and mark which releases are the official ones.
+    </p>
+  </section>
+
+  <section class="legal__section">
+    <h2>No guarantees</h2>
+    <p>
+      The site and the library come as they are, with no guarantees. The documentation can
+      be wrong or out of date, and the library might not suit what you are building, so
+      please check it does before relying on it. Pages and APIs change; anything that
+      breaks is written up in the changelog and follows semantic versioning.
+    </p>
+    <p>
+      Links go out to places like
+      <a
+        href="https://www.npmjs.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><span>npm</span></a
+      >,
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><span>GitHub</span></a
+      >, and
+      <a
+        href="https://www.chromatic.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><span>Chromatic</span></a
+      >, which run under their own terms of use.
+    </p>
+  </section>
+
+  <section class="legal__section">
+    <h2>Questions</h2>
+    <p>
+      If you have any questions about our terms of use, please email
+      <a href="mailto:terms&#64;eagami.com">terms&#64;eagami.com</a>.
+    </p>
+  </section>
+
+  <ea-divider class="legal__rule" />
+  <p class="legal__note">{{ messages().terms.languageNote }}</p>
+  <p class="legal__updated">{{ messages().terms.lastUpdated(lastUpdated()) }}</p>
+</article>

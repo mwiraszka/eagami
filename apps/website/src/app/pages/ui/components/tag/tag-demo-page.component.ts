@@ -36,7 +36,7 @@ const SLUG = 'tag';
 export class TagDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
-    textKnob('eagami'),
+    textKnob('Eagami'),
     ...buildKnobs(PLAYGROUND_KNOBS.tag, UI_API[SLUG]),
   ];
   protected readonly state = signal<TagKnobState>(

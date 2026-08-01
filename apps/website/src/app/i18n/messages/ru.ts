@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const ru: WebMessages = {
   common: {
     skipToContent: 'Перейти к основному содержимому',
-    brandHome: 'Главная eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Документация по библиотеке компонентов',
+    brandHome: 'Главная Eagami',
     themeToggleTooltip: 'Переключить тему',
     themeToggleLabel: next =>
       `Переключиться на ${next === 'light' ? 'светлый' : 'тёмный'} режим`,
@@ -15,11 +13,17 @@ export const ru: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Все права защищены.',
-      npmLink: 'npm',
-      npmTooltip: 'Открыть @eagami/ui на npm',
-      githubAriaLabel: 'eagami на GitHub',
-      githubTooltip: 'Посмотреть исходный код на GitHub',
       navLabel: 'Подвал',
+      siteHeading: 'О нас',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Руководства',
+      integrationsHeading: 'Интеграции',
+      resourcesHeading: 'Ресурсы',
+      legalHeading: 'Правовая информация',
+      homeLink: 'Главная',
+      contactLink: 'Контакты',
+      sourceCodeLink: 'Исходный код',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Скопировать в буфер обмена',
@@ -159,8 +163,25 @@ export const ru: WebMessages = {
         'Извините, что-то пошло не так. Напишите напрямую на info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Политика конфиденциальности | Eagami',
+    metaDescription: 'Что собирает eagami.com и что не собирает.',
+    title: 'Политика конфиденциальности',
+    lastUpdated: date => `Последнее обновление: ${date}`,
+    languageNote:
+      'Эта политика ведётся только на английском языке. Любой перевод предоставляется исключительно для удобства.',
+  },
+  terms: {
+    metaTitle: 'Условия использования | Eagami',
+    metaDescription:
+      'Условия использования eagami.com и библиотеки компонентов Eagami UI.',
+    title: 'Условия использования',
+    lastUpdated: date => `Последнее обновление: ${date}`,
+    languageNote:
+      'Эти условия ведутся только на английском языке. Любой перевод предоставляется исключительно для удобства.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Страница не найдена | Eagami',
     metaDescription: 'Страница не найдена.',
     eyebrow: '404',
     title: 'Страница не найдена',
@@ -172,7 +193,8 @@ export const ru: WebMessages = {
       title: 'История изменений',
       metaTitle: 'История изменений | Eagami UI',
       metaDescription: 'История релизов библиотеки компонентов Angular Eagami UI.',
-      lead: 'Значимые изменения в @eagami/ui, начиная с последних.',
+      leadBefore: 'Значимые изменения в ',
+      leadAfter: ', начиная с последних.',
       migrationGuide: 'Руководство по миграции',
       fullHistory: 'Полная история на GitHub',
     },
@@ -190,7 +212,7 @@ export const ru: WebMessages = {
       components: 'Компоненты',
     },
     index: {
-      metaTitle: 'Eagami UI | Библиотека компонентов Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Лёгкая, доступная библиотека компонентов Angular на основе CSS-переменных.',
       title: 'Eagami UI',
@@ -306,7 +328,7 @@ export const ru: WebMessages = {
       tokensLink: 'Дизайн-токены в формате JSON',
     },
     themeBuilder: {
-      metaTitle: 'Конструктор темы Angular | Eagami UI',
+      metaTitle: 'Конструктор темы | Eagami UI',
       metaDescription:
         'Создайте проверенную по WCAG палитру для светлой и тёмной темы на основе цветов вашего бренда и скопируйте конфигурацию провайдера или CSS.',
       title: 'Конструктор темы',
@@ -381,7 +403,7 @@ export const ru: WebMessages = {
       motionEasings: 'Функции плавности',
     },
     icons: {
-      metaTitle: 'Иконки Angular | Eagami UI',
+      metaTitle: 'Иконки | Eagami UI',
       metaDescription: 'Набор иконок, поставляемый с @eagami/ui.',
       title: 'Иконки',
       lede: 'Самостоятельные компоненты Angular, которые наследуют свой цвет и масштабируются по <code>font-size</code>, поэтому отрисовываются в любом размере. Большинство получено из <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> авторства <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> по <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>лицензии MIT</span></a>; остальные это оригинальные иконки Eagami UI. Иконки Feather также можно рисовать более тонкими или более толстыми штрихами. Нажмите на иконку, чтобы скопировать её селектор.',
@@ -408,8 +430,6 @@ export const ru: WebMessages = {
       title: 'Интернационализация',
       lede: 'Каждая встроенная строка (ARIA-метки, плейсхолдеры, пустые состояния, элементы управления выбором даты) поставляется на 15 языках. Задайте один для всего приложения, переключайте во время выполнения или переопределяйте отдельные строки.',
       supportedHeading: 'Поддерживаемые языки',
-      supportedFallback:
-        'Неизвестные языки откатываются к английскому, как и любые ключи, отсутствующие в частичном переопределении.',
       quickSetupHeading: 'Быстрая настройка',
       quickSetupBefore:
         'Добавьте <code>provideEagamiUi()</code> в конфигурацию приложения и зарегистрируйте используемые языки через <code>locales</code>. Английский доступен всегда, поэтому вы поставляете только то, что вам нужно.',
@@ -478,7 +498,7 @@ export const ru: WebMessages = {
         'Каждый компонент проверяется по отраслевым правилам доступности при каждом изменении, а релиз выходит только тогда, когда пройдены все проверки, поэтому доступность, которую вы видите здесь, сохраняется по мере развития библиотеки.',
     },
     component: {
-      metaTitle: name => `Компонент Angular ${name} | Eagami UI`,
+      metaTitle: name => `Компонент ${name} | Eagami UI`,
       metaDescription: name =>
         `Компонент Angular ${name}: живая демонстрация, справочник API и темизация через CSS-переменные.`,
       demoHeading: 'Демо',

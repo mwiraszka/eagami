@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const is: WebMessages = {
   common: {
     skipToContent: 'Fara í meginefni',
-    brandHome: 'eagami heim',
-    navUi: 'UI',
-    navUiTooltip: 'Skjölun fyrir einingasafn',
+    brandHome: 'Eagami heim',
     themeToggleTooltip: 'Skipta um þema',
     themeToggleLabel: next =>
       `Skipta yfir í ${next === 'light' ? 'ljósan' : 'dökkan'} ham`,
@@ -15,11 +13,17 @@ export const is: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Öll réttindi áskilin.',
-      npmLink: 'npm',
-      npmTooltip: 'Skoða @eagami/ui á npm',
-      githubAriaLabel: 'eagami á GitHub',
-      githubTooltip: 'Skoða frumkóða á GitHub',
       navLabel: 'Síðufótur',
+      siteHeading: 'Um',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Leiðbeiningar',
+      integrationsHeading: 'Samþættingar',
+      resourcesHeading: 'Tilföng',
+      legalHeading: 'Lagalegt',
+      homeLink: 'Forsíða',
+      contactLink: 'Hafa samband',
+      sourceCodeLink: 'Frumkóði',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Afrita á klippiborð',
@@ -157,8 +161,24 @@ export const is: WebMessages = {
         'Því miður, eitthvað fór úrskeiðis. Vinsamlegast sendu tölvupóst beint á info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Persónuverndarstefna | Eagami',
+    metaDescription: 'Hverju eagami.com safnar og hverju ekki.',
+    title: 'Persónuverndarstefna',
+    lastUpdated: date => `Síðast uppfært: ${date}`,
+    languageNote:
+      'Þessari stefnu er aðeins viðhaldið á ensku. Þýddar útgáfur eru eingöngu til hægðarauka.',
+  },
+  terms: {
+    metaTitle: 'Notkunarskilmálar | Eagami',
+    metaDescription: 'Skilmálar fyrir notkun á eagami.com og Eagami UI einingasafninu.',
+    title: 'Notkunarskilmálar',
+    lastUpdated: date => `Síðast uppfært: ${date}`,
+    languageNote:
+      'Þessum skilmálum er aðeins viðhaldið á ensku. Þýddar útgáfur eru eingöngu til hægðarauka.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Síða fannst ekki | Eagami',
     metaDescription: 'Síða fannst ekki.',
     eyebrow: '404',
     title: 'Síða fannst ekki',
@@ -170,7 +190,8 @@ export const is: WebMessages = {
       title: 'Breytingaskrá',
       metaTitle: 'Breytingaskrá | Eagami UI',
       metaDescription: 'Útgáfusaga Eagami UI Angular íhlutasafnsins.',
-      lead: 'Helstu breytingar á @eagami/ui, nýjustu fyrst.',
+      leadBefore: 'Helstu breytingar á ',
+      leadAfter: ', nýjustu fyrst.',
       migrationGuide: 'Flutningsleiðbeiningar',
       fullHistory: 'Öll sagan á GitHub',
     },
@@ -188,7 +209,7 @@ export const is: WebMessages = {
       components: 'Einingar',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular-einingasafn',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
       title: 'Eagami UI',
@@ -303,7 +324,7 @@ export const is: WebMessages = {
       tokensLink: 'Hönnunartóknar sem JSON',
     },
     themeBuilder: {
-      metaTitle: 'Angular-þemasmiður | Eagami UI',
+      metaTitle: 'Þemasmiður | Eagami UI',
       metaDescription:
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
@@ -379,7 +400,7 @@ export const is: WebMessages = {
       motionEasings: 'Mýkingar',
     },
     icons: {
-      metaTitle: 'Angular-táknmyndir | Eagami UI',
+      metaTitle: 'Táknmyndir | Eagami UI',
       metaDescription: 'Táknmyndasett sem fylgir @eagami/ui.',
       title: 'Táknmyndir',
       lede: 'Sjálfstæðar Angular einingar sem erfa lit sinn og kvarðast með <code>font-size</code>, svo þær birtast í hvaða stærð sem er. Flestar eru leiddar af <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> eftir <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> undir <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT leyfinu</span></a>; afgangurinn eru frumlegar Eagami UI táknmyndir. Einnig má teikna Feather táknmyndir með þynnri eða þykkari strikum. Smelltu á táknmynd til að afrita veljara hennar.',
@@ -406,8 +427,6 @@ export const is: WebMessages = {
       title: 'Alþjóðavæðing',
       lede: 'Hver innbyggður strengur (ARIA merkimiðar, staðgenglar, tóm ástönd, stýringar dagsetningarvelju) fylgir á 15 svæðum. Stilltu eitt fyrir allt forritið, skiptu á keyrslutíma eða yfirskrifaðu einstaka strengi.',
       supportedHeading: 'Studd svæði',
-      supportedFallback:
-        'Óþekkt svæði falla aftur á ensku, eins og allir lyklar sem vantar í hlutayfirskrift.',
       quickSetupHeading: 'Hröð uppsetning',
       quickSetupBefore:
         'Bættu <code>provideEagamiUi()</code> við stillingar forritsins og skráðu tungumálin sem þú notar með <code>locales</code>. Enska er alltaf í boði, svo þú sendir aðeins það sem þú þarft.',
@@ -476,7 +495,7 @@ export const is: WebMessages = {
         'Hver eining er athuguð samkvæmt viðurkenndum aðgengisreglum í hvert sinn sem hún breytist, og útgáfa fer aðeins út þegar allar athuganir standast, svo aðgengið sem þú sérð hér helst þegar safnið þróast.',
     },
     component: {
-      metaTitle: name => `Angular-eining ${name} | Eagami UI`,
+      metaTitle: name => `${name}-eining | Eagami UI`,
       metaDescription: name =>
         `Angular-eining ${name}: lifandi sýnishorn, API-tilvísun og þemun með CSS-breytum.`,
       demoHeading: 'Sýnishorn',

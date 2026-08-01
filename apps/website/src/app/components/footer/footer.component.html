@@ -1,34 +1,196 @@
 <footer class="web-footer">
+  <nav
+    class="web-footer__sitemap"
+    [attr.aria-label]="messages().common.footer.navLabel">
+    <div class="web-footer__group">
+      <h2 class="web-footer__heading">{{ messages().common.footer.siteHeading }}</h2>
+      <ul class="web-footer__list">
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/">
+            <span>{{ messages().common.footer.homeLink }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/"
+            fragment="services">
+            <span>{{ messages().home.services.title }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/"
+            fragment="projects">
+            <span>{{ messages().home.projects.title }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/"
+            fragment="contact">
+            <span>{{ messages().common.footer.contactLink }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="web-footer__group">
+      <h2 class="web-footer__heading">{{ messages().common.footer.libraryHeading }}</h2>
+      <ul class="web-footer__list">
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui">
+            <span>{{ messages().ui.shell.overview }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/setup">
+            <span>{{ messages().ui.shell.setup }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/components">
+            <span>{{ messages().ui.shell.components }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/icons">
+            <span>{{ messages().ui.shell.icons }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="web-footer__group">
+      <h2 class="web-footer__heading">{{ messages().common.footer.guidesHeading }}</h2>
+      <ul class="web-footer__list">
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/design-tokens">
+            <span>{{ messages().ui.shell.designTokens }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/theme-builder">
+            <span>{{ messages().ui.shell.themeBuilder }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/i18n">
+            <span>{{ messages().ui.shell.i18n }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/accessibility">
+            <span>{{ messages().ui.shell.accessibility }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="web-footer__group">
+      <h2 class="web-footer__heading">{{ messages().common.footer.resourcesHeading }}</h2>
+      <ul class="web-footer__list">
+        <li>
+          <a
+            class="web-footer__link"
+            routerLink="/ui/changelog">
+            <span>{{ messages().ui.shell.changelog }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            [href]="migrationUrl"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span>{{ messages().ui.changelog.migrationGuide }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            [href]="repoUrl"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span>{{ messages().common.footer.sourceCodeLink }}</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="web-footer__link"
+            [href]="packageUrl"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span>{{ messages().common.footer.npmLink }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="web-footer__group">
+      <h2 class="web-footer__heading">
+        {{ messages().common.footer.integrationsHeading }}
+      </h2>
+      <ul class="web-footer__list">
+        @for (link of integrationLinks; track link.href) {
+          <li>
+            <a
+              class="web-footer__link"
+              [href]="link.href"
+              download>
+              <span>{{ messages().ui.integrations[link.labelKey] }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <ea-divider class="web-footer__rule" />
+
   <!-- div, not p: the divider renders a block element, which the HTML parser
        would eject from a p when hydrating the server-rendered markup -->
-  <div class="web-footer__copyright">
-    <span>{{ messages().common.footer.copyright(currentYear) }}</span>
-    <ea-divider
-      class="web-footer__divider"
-      orientation="vertical" />
-    <span>{{ messages().common.footer.allRightsReserved }}</span>
+  <div class="web-footer__bottom">
+    <div class="web-footer__copyright">
+      <span>{{ messages().common.footer.copyright(currentYear) }}</span>
+      <ea-divider
+        class="web-footer__divider"
+        orientation="vertical" />
+      <span>{{ messages().common.footer.allRightsReserved }}</span>
+    </div>
+    <nav
+      class="web-footer__legal"
+      [attr.aria-label]="messages().common.footer.legalHeading">
+      <a
+        class="web-footer__link"
+        routerLink="/privacy">
+        <span>{{ messages().privacy.title }}</span>
+      </a>
+      <a
+        class="web-footer__link"
+        routerLink="/terms">
+        <span>{{ messages().terms.title }}</span>
+      </a>
+    </nav>
   </div>
-  <nav
-    class="web-footer__links"
-    [attr.aria-label]="messages().common.footer.navLabel">
-    <a
-      class="web-footer__link"
-      href="https://www.npmjs.com/package/@eagami/ui"
-      target="_blank"
-      rel="noopener noreferrer"
-      [eaTooltip]="messages().common.footer.npmTooltip"
-      tooltipPosition="top">
-      {{ messages().common.footer.npmLink }}
-    </a>
-    <a
-      class="web-footer__link web-footer__link--icon"
-      href="https://github.com/mwiraszka/eagami"
-      target="_blank"
-      rel="noopener noreferrer"
-      [attr.aria-label]="messages().common.footer.githubAriaLabel"
-      [eaTooltip]="messages().common.footer.githubTooltip"
-      tooltipPosition="top">
-      <ea-icon-github />
-    </a>
-  </nav>
 </footer>

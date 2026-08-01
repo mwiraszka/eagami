@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const el: WebMessages = {
   common: {
     skipToContent: 'Μετάβαση στο κύριο περιεχόμενο',
-    brandHome: 'Αρχική eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Τεκμηρίωση της βιβλιοθήκης',
+    brandHome: 'Αρχική Eagami',
     themeToggleTooltip: 'Εναλλαγή θέματος',
     themeToggleLabel: next =>
       `Εναλλαγή σε ${next === 'light' ? 'φωτεινό' : 'σκοτεινό'} θέμα`,
@@ -15,11 +13,17 @@ export const el: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Με επιφύλαξη παντός δικαιώματος.',
-      npmLink: 'npm',
-      npmTooltip: 'Δείτε το @eagami/ui στο npm',
-      githubAriaLabel: 'eagami στο GitHub',
-      githubTooltip: 'Δείτε τον πηγαίο κώδικα στο GitHub',
       navLabel: 'Υποσέλιδο',
+      siteHeading: 'Σχετικά',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Οδηγοί',
+      integrationsHeading: 'Ενσωματώσεις',
+      resourcesHeading: 'Πόροι',
+      legalHeading: 'Νομικά',
+      homeLink: 'Αρχική',
+      contactLink: 'Επικοινωνία',
+      sourceCodeLink: 'Πηγαίος κώδικας',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Αντιγραφή στο πρόχειρο',
@@ -161,8 +165,25 @@ export const el: WebMessages = {
         'Συγγνώμη, κάτι πήγε στραβά. Παρακαλώ στείλτε e-mail απευθείας στο info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Πολιτική απορρήτου | Eagami',
+    metaDescription: 'Τι συλλέγει το eagami.com και τι όχι.',
+    title: 'Πολιτική απορρήτου',
+    lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
+    languageNote:
+      'Η πολιτική αυτή τηρείται μόνο στα αγγλικά. Κάθε μεταφρασμένη εκδοχή παρέχεται μόνο για διευκόλυνση.',
+  },
+  terms: {
+    metaTitle: 'Όροι χρήσης | Eagami',
+    metaDescription:
+      'Όροι χρήσης του eagami.com και της βιβλιοθήκης στοιχείων Eagami UI.',
+    title: 'Όροι χρήσης',
+    lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
+    languageNote:
+      'Οι όροι αυτοί τηρούνται μόνο στα αγγλικά. Κάθε μεταφρασμένη εκδοχή παρέχεται μόνο για διευκόλυνση.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Η σελίδα δεν βρέθηκε | Eagami',
     metaDescription: 'Η σελίδα δεν βρέθηκε.',
     eyebrow: '404',
     title: 'Η σελίδα δεν βρέθηκε',
@@ -174,7 +195,8 @@ export const el: WebMessages = {
       title: 'Αρχείο αλλαγών',
       metaTitle: 'Αρχείο αλλαγών | Eagami UI',
       metaDescription: 'Ιστορικό εκδόσεων της βιβλιοθήκης στοιχείων Angular Eagami UI.',
-      lead: 'Αξιοσημείωτες αλλαγές στο @eagami/ui, οι πιο πρόσφατες πρώτα.',
+      leadBefore: 'Αξιοσημείωτες αλλαγές στο ',
+      leadAfter: ', οι πιο πρόσφατες πρώτα.',
       migrationGuide: 'Οδηγός μετάβασης',
       fullHistory: 'Πλήρες ιστορικό στο GitHub',
     },
@@ -192,7 +214,7 @@ export const el: WebMessages = {
       components: 'Συστατικά',
     },
     index: {
-      metaTitle: 'Eagami UI | Βιβλιοθήκη συστατικών Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
       title: 'Eagami UI',
@@ -305,7 +327,7 @@ export const el: WebMessages = {
       tokensLink: 'Tokens σχεδίασης σε JSON',
     },
     themeBuilder: {
-      metaTitle: 'Δημιουργός θέματος Angular | Eagami UI',
+      metaTitle: 'Δημιουργός θέματος | Eagami UI',
       metaDescription:
         'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
       title: 'Δημιουργός θέματος',
@@ -382,7 +404,7 @@ export const el: WebMessages = {
       motionEasings: 'Καμπύλες',
     },
     icons: {
-      metaTitle: 'Εικονίδια Angular | Eagami UI',
+      metaTitle: 'Εικονίδια | Eagami UI',
       metaDescription: 'Σύνολο εικονιδίων που συνοδεύει το @eagami/ui.',
       title: 'Εικονίδια',
       lede: 'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο <code>font-size</code>, ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Τα περισσότερα προέρχονται από τα <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> του <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> υπό την <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>άδεια MIT</span></a>· τα υπόλοιπα είναι πρωτότυπα εικονίδια του Eagami UI. Τα εικονίδια Feather μπορούν επίσης να σχεδιαστούν με λεπτότερες ή παχύτερες γραμμές. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
@@ -410,8 +432,6 @@ export const el: WebMessages = {
       title: 'Διεθνοποίηση',
       lede: 'Κάθε ενσωματωμένη συμβολοσειρά (ετικέτες ARIA, σύμβολα κράτησης θέσης, κενές καταστάσεις, χειριστήρια επιλογέα ημερομηνίας) στέλνεται σε 15 γλώσσες. Ορίστε μία για όλη την εφαρμογή, αλλάξτε κατά την εκτέλεση ή παρακάμψτε μεμονωμένες συμβολοσειρές.',
       supportedHeading: 'Υποστηριζόμενες γλώσσες',
-      supportedFallback:
-        'Άγνωστες γλώσσες επιστρέφουν στα αγγλικά, όπως και τυχόν κλειδιά που λείπουν από μια μερική παράκαμψη.',
       quickSetupHeading: 'Γρήγορη εγκατάσταση',
       quickSetupBefore:
         'Προσθέστε το <code>provideEagamiUi()</code> στη διαμόρφωση της εφαρμογής σας και δηλώστε τις γλώσσες που χρησιμοποιείτε μέσω <code>locales</code>. Τα αγγλικά είναι πάντα διαθέσιμα, οπότε περιλαμβάνετε μόνο όσα χρειάζεστε.',
@@ -480,7 +500,7 @@ export const el: WebMessages = {
         'Κάθε συστατικό ελέγχεται με βάση τους κανόνες προσβασιμότητας του κλάδου κάθε φορά που αλλάζει, και μια έκδοση κυκλοφορεί μόνο όταν περάσουν όλοι οι έλεγχοι, οπότε η προσβασιμότητα που βλέπετε εδώ διατηρείται καθώς η βιβλιοθήκη εξελίσσεται.',
     },
     component: {
-      metaTitle: name => `Συστατικό Angular ${name} | Eagami UI`,
+      metaTitle: name => `Συστατικό ${name} | Eagami UI`,
       metaDescription: name =>
         `Συστατικό Angular ${name}: ζωντανή επίδειξη, αναφορά API και θεματοποίηση με μεταβλητές CSS.`,
       demoHeading: 'Επίδειξη',

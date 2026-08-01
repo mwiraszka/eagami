@@ -1,3 +1,5 @@
+import { DividerComponent } from '@eagami/ui';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { UI_CHANGELOG } from '@app/data/changelog.generated';
+import { CHANGELOG_URL, MIGRATION_URL } from '@app/data/external-links';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -19,7 +22,7 @@ import { InlineMarkdownPipe } from './inline-markdown.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // None: innerHTML-injected nodes carry no encapsulation attribute, so styles go global
   encapsulation: ViewEncapsulation.None,
-  imports: [InlineMarkdownPipe],
+  imports: [DividerComponent, InlineMarkdownPipe],
 })
 export class UiChangelogPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
@@ -27,10 +30,8 @@ export class UiChangelogPageComponent {
 
   protected readonly messages = this.i18n.messages;
   protected readonly releases = UI_CHANGELOG;
-  protected readonly migrationUrl =
-    'https://github.com/mwiraszka/eagami/blob/main/packages/ui/MIGRATION.md';
-  protected readonly changelogUrl =
-    'https://github.com/mwiraszka/eagami/blob/main/packages/ui/CHANGELOG.md';
+  protected readonly migrationUrl = MIGRATION_URL;
+  protected readonly changelogUrl = CHANGELOG_URL;
 
   constructor() {
     effect(() => {

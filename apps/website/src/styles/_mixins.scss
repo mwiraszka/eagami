@@ -182,6 +182,24 @@ $breakpoints: (
   }
 }
 
+/// Top-level page heading and the `<ea-divider>` that follows it: 8px above the
+/// rule, 32px below. Both are margin alone, so the heading's parent must not add
+/// a row gap of its own; `$space-below` drops to 32px minus that gap where it does.
+@mixin page-title($space-below: 32px) {
+  margin-bottom: 8px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+
+  + ea-divider {
+    display: block;
+    margin-bottom: $space-below;
+  }
+}
+
 /// Inline code chip applying the `--text-code-*` tokens from `@eagami/ui`. Per-call
 /// overrides (e.g. `white-space: nowrap`) follow the `@include` in the same block.
 @mixin code-chip {
@@ -212,22 +230,34 @@ $breakpoints: (
 
 /// Variant for `<a><code>token</code></a>` patterns: no underline, just shift the
 /// code's text colour on hover since its background already carries the visual weight.
-@mixin prose-code-link {
+/// Pass `$tint: false` where the chip should keep its own colours, which a link
+/// colour would fight.
+@mixin prose-code-link($tint: true) {
   text-decoration: none;
 
-  code {
-    color: var(--color-text-link);
-    transition: color 0.15s ease;
+  &:hover {
+    text-decoration: none;
   }
 
-  &:hover code {
-    color: var(--color-text-link-hover);
+  @if $tint {
+    code {
+      color: var(--color-text-link);
+      transition: color 0.15s ease;
+    }
+
+    &:hover code {
+      color: var(--color-text-link-hover);
+    }
+  } @else {
+    code {
+      @include code-chip;
+    }
   }
 
   &:focus-visible {
+    border-radius: 4px;
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
-    border-radius: 4px;
   }
 }
 

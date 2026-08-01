@@ -9,22 +9,21 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 12px;
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -1px;
-    font-family: var(--font-family-brand);
-    color: var(--color-text-primary);
+    @include mixins.page-title;
   }
 
   &__lead {
+    margin-bottom: 12px;
     font-size: 16px;
     line-height: 1.6;
     color: var(--color-text-secondary);
+  }
+
+  &__package {
+    @include mixins.prose-code-link($tint: false);
   }
 
   &__links {
@@ -33,12 +32,12 @@
   }
 
   &__link {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     text-decoration: none;
     color: var(--color-brand-text);
 
-    &:hover {
+    &:hover > span {
       text-decoration: underline;
     }
   }
@@ -48,7 +47,7 @@
     flex-direction: column;
     gap: 12px;
     padding-top: 24px;
-    border-top: var(--border-width-thin) solid var(--color-border-subtle);
+    border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
   }
 
   &__version {
@@ -67,7 +66,7 @@
   }
 
   &__section-heading {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -83,7 +82,7 @@
   }
 
   &__entry {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--color-text-secondary);
 
@@ -97,8 +96,12 @@
     }
 
     a {
-      text-decoration: underline;
+      text-decoration: none;
       color: var(--color-brand-text);
+
+      > span {
+        text-decoration: underline;
+      }
     }
   }
 }

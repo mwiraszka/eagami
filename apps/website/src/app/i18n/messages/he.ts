@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const he: WebMessages = {
   common: {
     skipToContent: 'דלג לתוכן הראשי',
-    brandHome: 'דף הבית של eagami',
-    navUi: 'UI',
-    navUiTooltip: 'תיעוד ספריית הרכיבים',
+    brandHome: 'דף הבית של Eagami',
     themeToggleTooltip: 'החלף ערכת נושא',
     themeToggleLabel: next => `עבור למצב ${next === 'light' ? 'בהיר' : 'כהה'}`,
     localeMenuLabel: 'שפה',
@@ -14,11 +12,17 @@ export const he: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'כל הזכויות שמורות.',
-      npmLink: 'npm',
-      npmTooltip: 'הצג את @eagami/ui ב-npm',
-      githubAriaLabel: 'eagami ב-GitHub',
-      githubTooltip: 'הצג את קוד המקור ב-GitHub',
       navLabel: 'כותרת תחתונה',
+      siteHeading: 'אודות',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'מדריכים',
+      integrationsHeading: 'אינטגרציות',
+      resourcesHeading: 'משאבים',
+      legalHeading: 'משפטי',
+      homeLink: 'דף הבית',
+      contactLink: 'צור קשר',
+      sourceCodeLink: 'קוד מקור',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'העתק ללוח',
@@ -151,8 +155,22 @@ export const he: WebMessages = {
       errorMessage: 'מצטערים, משהו השתבש. אנא שלחו אימייל ישירות אל info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'מדיניות פרטיות | Eagami',
+    metaDescription: 'מה eagami.com אוסף ומה לא.',
+    title: 'מדיניות פרטיות',
+    lastUpdated: date => `עודכן לאחרונה: ${date}`,
+    languageNote: 'מדיניות זו מתוחזקת באנגלית בלבד. כל גרסה מתורגמת ניתנת לנוחות בלבד.',
+  },
+  terms: {
+    metaTitle: 'תנאי שימוש | Eagami',
+    metaDescription: 'תנאים לשימוש ב-eagami.com ובספריית הרכיבים Eagami UI.',
+    title: 'תנאי שימוש',
+    lastUpdated: date => `עודכן לאחרונה: ${date}`,
+    languageNote: 'תנאים אלה מתוחזקים באנגלית בלבד. כל גרסה מתורגמת ניתנת לנוחות בלבד.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'הדף לא נמצא | Eagami',
     metaDescription: 'הדף לא נמצא.',
     eyebrow: '404',
     title: 'הדף לא נמצא',
@@ -164,7 +182,8 @@ export const he: WebMessages = {
       title: 'יומן שינויים',
       metaTitle: 'יומן שינויים | Eagami UI',
       metaDescription: 'היסטוריית מהדורות של ספריית רכיבי Angular‏ Eagami UI.',
-      lead: 'שינויים בולטים ב-@eagami/ui, החדשים ביותר תחילה.',
+      leadBefore: 'שינויים בולטים ב-',
+      leadAfter: ', החדשים ביותר תחילה.',
       migrationGuide: 'מדריך מעבר',
       fullHistory: 'היסטוריה מלאה ב-GitHub',
     },
@@ -182,7 +201,7 @@ export const he: WebMessages = {
       components: 'רכיבים',
     },
     index: {
-      metaTitle: 'Eagami UI | ספריית רכיבי Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
       title: 'Eagami UI',
@@ -297,7 +316,7 @@ export const he: WebMessages = {
       tokensLink: 'אסימוני עיצוב כ-JSON',
     },
     themeBuilder: {
-      metaTitle: 'בונה ערכת נושא ל-Angular | Eagami UI',
+      metaTitle: 'בונה ערכת נושא | Eagami UI',
       metaDescription:
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
@@ -371,7 +390,7 @@ export const he: WebMessages = {
       motionEasings: 'פונקציות האטה',
     },
     icons: {
-      metaTitle: 'אייקוני Angular | Eagami UI',
+      metaTitle: 'אייקונים | Eagami UI',
       metaDescription: 'ערכת האייקונים המצורפת ל-@eagami/ui.',
       title: 'אייקונים',
       lede: 'רכיבי Angular עצמאיים היורשים את צבעם ומתאימים את גודלם לפי <code>font-size</code>, כך שהם מוצגים בכל גודל. רובם נגזרים מ-<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> מאת <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> תחת <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>רישיון MIT</span></a>; השאר הם אייקונים מקוריים של Eagami UI. אייקוני Feather ניתנים גם לציור בקווים דקים או עבים יותר. לחצו על אייקון כדי להעתיק את הסלקטור שלו.',
@@ -398,8 +417,6 @@ export const he: WebMessages = {
       title: 'בינאום',
       lede: 'כל מחרוזת מובנית (תוויות ARIA, מצייני מיקום, מצבים ריקים, בקרות בורר תאריכים) מגיעה ב-15 שפות. הגדירו אחת עבור כל האפליקציה, החליפו בזמן ריצה או דרסו מחרוזות בודדות.',
       supportedHeading: 'שפות נתמכות',
-      supportedFallback:
-        'שפות לא ידועות נסוגות לאנגלית, וכך גם כל מפתח החסר מדריסה חלקית.',
       quickSetupHeading: 'הגדרה מהירה',
       quickSetupBefore:
         'הוסיפו <code>provideEagamiUi()</code> לתצורת האפליקציה ורשמו את השפות שאתם משתמשים בהן באמצעות <code>locales</code>. אנגלית זמינה תמיד, כך שאתם כוללים רק את מה שאתם צריכים.',
@@ -468,7 +485,7 @@ export const he: WebMessages = {
         'כל רכיב נבדק מול כללי הנגישות המקובלים בתעשייה בכל שינוי, ושחרור יוצא רק כאשר כל בדיקה עוברת, כך שהנגישות שאתם רואים כאן נשמרת ככל שהספרייה מתפתחת.',
     },
     component: {
-      metaTitle: name => `רכיב ${name} ל-Angular | Eagami UI`,
+      metaTitle: name => `רכיב ${name} | Eagami UI`,
       metaDescription: name =>
         `רכיב ${name} ל-Angular: הדגמה חיה, סימוכין ל-API והתאמת ערכת נושא עם משתני CSS.`,
       demoHeading: 'הדגמה',

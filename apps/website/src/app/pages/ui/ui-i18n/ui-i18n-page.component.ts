@@ -1,7 +1,9 @@
 import {
+  CheckIconComponent,
   type DataTableColumn,
   DataTableComponent,
   DatePickerComponent,
+  DividerComponent,
   EAGAMI_LOCALES,
   EagamiI18nService,
   type EagamiLocale,
@@ -33,9 +35,11 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   styleUrl: './ui-i18n-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CheckIconComponent,
     CodeSnippetComponent,
     DataTableComponent,
     DatePickerComponent,
+    DividerComponent,
     FileUploaderComponent,
     MultiSelectComponent,
     PaginatorComponent,

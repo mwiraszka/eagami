@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.15.1',
+    date: '2026-08-02',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Re-disable the avatar editor's revert control once the crop is panned or zoomed back to where it started.",
+          "Keep the avatar editor's revert control disabled while a replacement image is still loading.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.15.0',
     date: '2026-08-01',
     sections: [

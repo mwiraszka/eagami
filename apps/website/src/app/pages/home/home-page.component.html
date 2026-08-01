@@ -129,7 +129,7 @@
             [class.work-carousel__track--instant]="suppressTransition()">
             @for (project of orderedProjects(); track $index) {
               <a
-                class="project-card"
+                class="project-card web-link-plain"
                 [href]="project.url"
                 target="_blank"
                 rel="noopener noreferrer">

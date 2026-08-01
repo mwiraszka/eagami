@@ -10,16 +10,10 @@
 .ui-accessibility__header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .ui-accessibility__title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -1px;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
+  @include mixins.page-title;
 }
 
 .ui-accessibility__lede {

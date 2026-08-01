@@ -1,6 +1,9 @@
 <article class="ui-setup">
   <section class="ui-setup__section">
-    <h1 class="ui-setup__title">{{ messages().ui.setup.title }}</h1>
+    <header class="ui-setup__header">
+      <h1 class="ui-setup__title">{{ messages().ui.setup.title }}</h1>
+      <ea-divider />
+    </header>
 
     <p class="ui-setup__step-label">{{ messages().ui.setup.ngAddLabel }}</p>
     <web-code-snippet code="ng add @eagami/ui" />

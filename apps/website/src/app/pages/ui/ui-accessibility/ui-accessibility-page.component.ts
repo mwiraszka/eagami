@@ -1,6 +1,7 @@
 import {
   CodeIconComponent,
   CommandIconComponent,
+  DividerComponent,
   EyeIconComponent,
   PauseCircleIconComponent,
   TargetIconComponent,
@@ -19,9 +20,10 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   styleUrl: './ui-accessibility-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CodeSnippetComponent,
     CodeIconComponent,
+    CodeSnippetComponent,
     CommandIconComponent,
+    DividerComponent,
     EyeIconComponent,
     PauseCircleIconComponent,
     TargetIconComponent,

@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const hi: WebMessages = {
   common: {
     skipToContent: 'मुख्य सामग्री पर जाएं',
-    brandHome: 'eagami होम',
-    navUi: 'UI',
-    navUiTooltip: 'कंपोनेंट लाइब्रेरी दस्तावेज़',
+    brandHome: 'Eagami होम',
     themeToggleTooltip: 'थीम बदलें',
     themeToggleLabel: next => `${next === 'light' ? 'लाइट' : 'डार्क'} मोड पर स्विच करें`,
     localeMenuLabel: 'भाषा',
@@ -14,11 +12,17 @@ export const hi: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'सर्वाधिकार सुरक्षित।',
-      npmLink: 'npm',
-      npmTooltip: 'npm पर @eagami/ui देखें',
-      githubAriaLabel: 'GitHub पर eagami',
-      githubTooltip: 'GitHub पर स्रोत कोड देखें',
       navLabel: 'फ़ुटर',
+      siteHeading: 'परिचय',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'गाइड',
+      integrationsHeading: 'एकीकरण',
+      resourcesHeading: 'संसाधन',
+      legalHeading: 'कानूनी',
+      homeLink: 'होम',
+      contactLink: 'संपर्क',
+      sourceCodeLink: 'स्रोत कोड',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'क्लिपबोर्ड पर कॉपी करें',
@@ -156,8 +160,24 @@ export const hi: WebMessages = {
         'क्षमा करें, कुछ गलत हो गया। कृपया सीधे info@eagami.com पर ईमेल करें।',
     },
   },
+  privacy: {
+    metaTitle: 'गोपनीयता नीति | Eagami',
+    metaDescription: 'eagami.com क्या एकत्र करता है और क्या नहीं।',
+    title: 'गोपनीयता नीति',
+    lastUpdated: date => `अंतिम अपडेट: ${date}`,
+    languageNote:
+      'यह नीति केवल अंग्रेज़ी में बनाए रखी जाती है। कोई भी अनूदित संस्करण केवल सुविधा के लिए दिया गया है।',
+  },
+  terms: {
+    metaTitle: 'उपयोग की शर्तें | Eagami',
+    metaDescription: 'eagami.com और Eagami UI कंपोनेंट लाइब्रेरी के उपयोग की शर्तें।',
+    title: 'उपयोग की शर्तें',
+    lastUpdated: date => `अंतिम अपडेट: ${date}`,
+    languageNote:
+      'ये शर्तें केवल अंग्रेज़ी में बनाए रखी जाती हैं। कोई भी अनूदित संस्करण केवल सुविधा के लिए दिया गया है।',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'पेज नहीं मिला | Eagami',
     metaDescription: 'पेज नहीं मिला।',
     eyebrow: '404',
     title: 'पेज नहीं मिला',
@@ -169,7 +189,8 @@ export const hi: WebMessages = {
       title: 'चेंजलॉग',
       metaTitle: 'चेंजलॉग | Eagami UI',
       metaDescription: 'Eagami UI Angular कंपोनेंट लाइब्रेरी का रिलीज़ इतिहास।',
-      lead: '@eagami/ui में उल्लेखनीय परिवर्तन, नवीनतम पहले।',
+      leadBefore: '',
+      leadAfter: ' में उल्लेखनीय परिवर्तन, नवीनतम पहले।',
       migrationGuide: 'माइग्रेशन गाइड',
       fullHistory: 'GitHub पर पूरा इतिहास',
     },
@@ -187,7 +208,7 @@ export const hi: WebMessages = {
       components: 'कंपोनेंट',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular कंपोनेंट लाइब्रेरी',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
       title: 'Eagami UI',
@@ -303,7 +324,7 @@ export const hi: WebMessages = {
       tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
     },
     themeBuilder: {
-      metaTitle: 'Angular थीम बिल्डर | Eagami UI',
+      metaTitle: 'थीम बिल्डर | Eagami UI',
       metaDescription:
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
@@ -378,7 +399,7 @@ export const hi: WebMessages = {
       motionEasings: 'ईज़िंग',
     },
     icons: {
-      metaTitle: 'Angular आइकन | Eagami UI',
+      metaTitle: 'आइकन | Eagami UI',
       metaDescription: '@eagami/ui के साथ बंडल किया गया आइकन सेट।',
       title: 'आइकन',
       lede: 'स्टैंडअलोन Angular कंपोनेंट जो अपना रंग विरासत में लेते हैं और <code>font-size</code> के साथ स्केल होते हैं, इसलिए वे किसी भी आकार पर रेंडर होते हैं। अधिकांश <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> द्वारा बनाए गए <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> से <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT लाइसेंस</span></a> के तहत प्राप्त किए गए हैं; शेष मूल Eagami UI आइकन हैं। Feather आइकन को पतले या मोटे स्ट्रोक के साथ भी बनाया जा सकता है। किसी आइकन का सेलेक्टर कॉपी करने के लिए उस पर क्लिक करें।',
@@ -405,8 +426,6 @@ export const hi: WebMessages = {
       title: 'अंतर्राष्ट्रीयकरण',
       lede: 'प्रत्येक अंतर्निहित स्ट्रिंग (ARIA लेबल, प्लेसहोल्डर, खाली स्थितियां, डेट-पिकर नियंत्रण) 15 लोकेल में शिप होती है। पूरे ऐप के लिए एक सेट करें, रनटाइम पर स्विच करें, या अलग-अलग स्ट्रिंग को ओवरराइड करें।',
       supportedHeading: 'समर्थित लोकेल',
-      supportedFallback:
-        'अज्ञात लोकेल अंग्रेज़ी पर फ़ॉलबैक करते हैं, जैसा कि आंशिक ओवरराइड से गायब कोई भी कुंजी।',
       quickSetupHeading: 'त्वरित सेटअप',
       quickSetupBefore:
         'अपने ऐप कॉन्फ़िग में <code>provideEagamiUi()</code> जोड़ें और <code>locales</code> के माध्यम से उपयोग की जाने वाली भाषाएं पंजीकृत करें। अंग्रेज़ी हमेशा उपलब्ध रहती है, इसलिए आप केवल वही शिप करते हैं जिसकी आपको आवश्यकता है।',
@@ -475,7 +494,7 @@ export const hi: WebMessages = {
         'जब भी किसी कंपोनेंट में बदलाव होता है, उसे उद्योग के सुलभता नियमों के आधार पर जांचा जाता है, और रिलीज़ तभी शिप होती है जब हर जांच पास हो, इसलिए जो सुलभता आप यहां देखते हैं वह लाइब्रेरी के विकसित होने के साथ बनी रहती है।',
     },
     component: {
-      metaTitle: name => `Angular ${name} कंपोनेंट | Eagami UI`,
+      metaTitle: name => `${name} कंपोनेंट | Eagami UI`,
       metaDescription: name =>
         `Angular ${name} कंपोनेंट: लाइव डेमो, API संदर्भ, और CSS वेरिएबल्स के साथ थीमिंग।`,
       demoHeading: 'डेमो',

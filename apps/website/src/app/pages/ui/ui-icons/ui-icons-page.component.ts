@@ -1,5 +1,6 @@
 import {
   CheckboxComponent,
+  DividerComponent,
   type IconCategory,
   type IconComponentType,
   SearchIconComponent,
@@ -38,6 +39,7 @@ type CategoryTab = IconCategory | 'brand';
   styleUrl: './ui-icons-page.component.scss',
   imports: [
     CheckboxComponent,
+    DividerComponent,
     FormsModule,
     NgComponentOutlet,
     SearchIconComponent,

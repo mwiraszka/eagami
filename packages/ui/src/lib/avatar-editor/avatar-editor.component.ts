@@ -44,6 +44,9 @@ export interface AvatarEditorCropState {
   offsetY: number;
 }
 
+const ZOOM_TOLERANCE = 1e-3;
+const OFFSET_TOLERANCE = 0.5;
+
 /**
  * Canvas-based image editor for cropping avatars. Supports drag-and-drop
  * upload, mouse/touch panning, zoom via slider or scroll wheel, and exports
@@ -104,7 +107,7 @@ export class AvatarEditorComponent implements OnDestroy {
   readonly isAtOriginal = signal(false);
   readonly isLoading = computed(() => this.isFetching() || this.loading());
   readonly zoom = signal(1);
-  readonly canRevert = computed(() => !this.isAtOriginal() && this.originalCaptured);
+  readonly canRevert = computed(() => !this.isAtOriginal() && this.originalCaptured());
   /** True when the visible crop is darker than mid-grey; drives the `--on-light` class on the overlay so the "Change photo" affordance stays readable. */
   readonly isImageDark = signal(true);
 
@@ -119,7 +122,7 @@ export class AvatarEditorComponent implements OnDestroy {
   private initialOffsetY = 0;
   private _suppressCropStateEmit = false;
   private readonly isFetching = signal(false);
-  private originalCaptured = false;
+  private readonly originalCaptured = signal(false);
   private originalImage: HTMLImageElement | null = null;
   private originalCropState: { zoom: number; offsetX: number; offsetY: number } | null =
     null;
@@ -138,15 +141,15 @@ export class AvatarEditorComponent implements OnDestroy {
       const src = this.currentSrc();
       if (!src) {
         this.isFetching.set(false);
-        if (!this.originalCaptured) {
-          this.originalCaptured = true;
+        if (!this.originalCaptured()) {
+          this.originalCaptured.set(true);
           this.originalImage = null;
           this.originalCropState = null;
           this.isAtOriginal.set(true);
         }
         return;
       }
-      this.originalCaptured = false;
+      this.originalCaptured.set(false);
       this.originalImage = null;
       this.originalCropState = null;
       this.loadFromUrl(src, untracked(() => this.cropState()) ?? null, true);
@@ -158,6 +161,7 @@ export class AvatarEditorComponent implements OnDestroy {
         // Offsets were computed against the previous frame, so a shrink would
         // otherwise leave the image drawn outside it with a gap showing
         this.clampOffset();
+        untracked(() => this.syncAtOriginal());
         this.draw();
       }
     });
@@ -256,11 +260,11 @@ export class AvatarEditorComponent implements OnDestroy {
     const dy = event.clientY - this.dragStartY;
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
       this.hasDragged = true;
-      this.isAtOriginal.set(false);
     }
     this.offsetX = this.initialOffsetX + dx;
     this.offsetY = this.initialOffsetY + dy;
     this.clampOffset();
+    this.syncAtOriginal();
     this.draw();
     this.emitCropStateChange();
   }
@@ -284,11 +288,11 @@ export class AvatarEditorComponent implements OnDestroy {
     const dy = touch.clientY - this.dragStartY;
     if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
       this.hasDragged = true;
-      this.isAtOriginal.set(false);
     }
     this.offsetX = this.initialOffsetX + dx;
     this.offsetY = this.initialOffsetY + dy;
     this.clampOffset();
+    this.syncAtOriginal();
     this.draw();
     this.emitCropStateChange();
   }
@@ -354,8 +358,8 @@ export class AvatarEditorComponent implements OnDestroy {
 
     if (handled) {
       event.preventDefault();
-      this.isAtOriginal.set(false);
       this.clampOffset();
+      this.syncAtOriginal();
       this.draw();
       this.emitCropStateChange();
     }
@@ -363,10 +367,9 @@ export class AvatarEditorComponent implements OnDestroy {
 
   /** Sets the zoom level, clamped to the configured `minZoom`/`maxZoom` range. */
   setZoom(value: number): void {
-    this.isAtOriginal.set(false);
-    const clamped = Math.min(this.maxZoom(), Math.max(this.minZoom(), value));
-    this.zoom.set(Math.round(clamped * 100) / 100);
+    this.applyZoom(value);
     this.clampOffset();
+    this.syncAtOriginal();
     this.draw();
     this.emitCropStateChange();
   }
@@ -385,13 +388,35 @@ export class AvatarEditorComponent implements OnDestroy {
     this.offsetX = 0;
     this.offsetY = 0;
     this.clearCanvas();
-    this.isAtOriginal.set(this.originalCaptured && !this.originalImage);
+    this.syncAtOriginal();
     this.removed.emit();
+  }
+
+  // Pan and zoom write to plain properties rather than signals, so the revert
+  // control cannot derive its own state. Every handler that moves the crop calls
+  // this instead, so returning to the committed values re-disables the control.
+  // Offsets are recalculated on zoom and both values are floats, so the
+  // comparison is a tolerance rather than equality
+  private syncAtOriginal(): void {
+    if (!this.originalCaptured() || this.image !== this.originalImage) {
+      this.isAtOriginal.set(false);
+      return;
+    }
+    const crop = this.originalCropState;
+    if (!crop) {
+      this.isAtOriginal.set(!this.image);
+      return;
+    }
+    this.isAtOriginal.set(
+      Math.abs(this.zoom() - crop.zoom) < ZOOM_TOLERANCE &&
+        Math.abs(this.offsetX - crop.offsetX) < OFFSET_TOLERANCE &&
+        Math.abs(this.offsetY - crop.offsetY) < OFFSET_TOLERANCE,
+    );
   }
 
   /** Marks the current image and crop state as the baseline for {@link revertImage}. */
   captureOriginal(): void {
-    this.originalCaptured = true;
+    this.originalCaptured.set(true);
     this.originalImage = this.image;
     this.originalCropState = this.image
       ? { zoom: this.zoom(), offsetX: this.offsetX, offsetY: this.offsetY }
@@ -401,7 +426,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
   /** Restores the image and crop state captured by the most recent {@link captureOriginal}. */
   revertImage(): void {
-    if (!this.originalCaptured) {
+    if (!this.originalCaptured()) {
       return;
     }
 
@@ -411,7 +436,7 @@ export class AvatarEditorComponent implements OnDestroy {
 
       const crop = this.originalCropState;
       if (crop) {
-        this.zoom.set(Math.min(this.maxZoom(), Math.max(this.minZoom(), crop.zoom)));
+        this.applyZoom(crop.zoom);
         this.offsetX = crop.offsetX;
         this.offsetY = crop.offsetY;
         this.clampOffset();
@@ -493,7 +518,7 @@ export class AvatarEditorComponent implements OnDestroy {
       this.image = img;
       this.hasImage.set(true);
       if (cropState) {
-        this.zoom.set(Math.min(this.maxZoom(), Math.max(this.minZoom(), cropState.zoom)));
+        this.applyZoom(cropState.zoom);
         this.offsetX = cropState.offsetX;
         this.offsetY = cropState.offsetY;
         this.clampOffset();
@@ -502,11 +527,13 @@ export class AvatarEditorComponent implements OnDestroy {
         this.centerImage();
       }
       if (suppressEmit) {
-        this.originalCaptured = true;
+        this.originalCaptured.set(true);
         this.originalImage = img;
-        this.originalCropState = cropState
-          ? { ...cropState }
-          : { zoom: this.zoom(), offsetX: this.offsetX, offsetY: this.offsetY };
+        this.originalCropState = {
+          zoom: this.zoom(),
+          offsetX: this.offsetX,
+          offsetY: this.offsetY,
+        };
         this.isAtOriginal.set(true);
       }
       this.scheduleDrawAfterRender();
@@ -599,6 +626,11 @@ export class AvatarEditorComponent implements OnDestroy {
       drawW: this.image.width * scale,
       drawH: this.image.height * scale,
     };
+  }
+
+  private applyZoom(value: number): void {
+    const clamped = Math.min(this.maxZoom(), Math.max(this.minZoom(), value));
+    this.zoom.set(Math.round(clamped * 100) / 100);
   }
 
   private clampOffset(): void {

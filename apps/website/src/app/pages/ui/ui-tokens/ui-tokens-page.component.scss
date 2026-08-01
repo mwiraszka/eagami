@@ -10,16 +10,10 @@
 .ui-tokens__header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .ui-tokens__title {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1;
-  font-family: var(--font-family-brand);
-  letter-spacing: -1px;
-  color: var(--color-text-primary);
+  @include mixins.page-title;
 }
 
 .ui-tokens__lede {
@@ -101,7 +95,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 
   &:first-of-type {
     margin-top: 0;
@@ -114,7 +108,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: capitalize;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
 }
 
 // The first sublabel sits directly beneath its subsection title, so pull it
@@ -128,7 +122,7 @@
 .tokens-scale__var {
   font-size: 12px;
   font-family: var(--font-family-mono);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
 }
 
 // Sequential scales render as a single contiguous bar: each shade is a thin

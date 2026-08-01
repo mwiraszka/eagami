@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const ar: WebMessages = {
   common: {
     skipToContent: 'تخطَّ إلى المحتوى الرئيسي',
-    brandHome: 'الصفحة الرئيسية لـ eagami',
-    navUi: 'واجهة المستخدم',
-    navUiTooltip: 'توثيق مكتبة المكوّنات',
+    brandHome: 'الصفحة الرئيسية لـ Eagami',
     themeToggleTooltip: 'تبديل السمة',
     themeToggleLabel: next =>
       `التبديل إلى الوضع ${next === 'light' ? 'الفاتح' : 'الداكن'}`,
@@ -15,11 +13,17 @@ export const ar: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'جميع الحقوق محفوظة.',
-      npmLink: 'npm',
-      npmTooltip: 'عرض @eagami/ui على npm',
-      githubAriaLabel: 'eagami على GitHub',
-      githubTooltip: 'عرض الشيفرة المصدرية على GitHub',
       navLabel: 'التذييل',
+      siteHeading: 'نبذة',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'أدلة',
+      integrationsHeading: 'التكاملات',
+      resourcesHeading: 'الموارد',
+      legalHeading: 'قانوني',
+      homeLink: 'الرئيسية',
+      contactLink: 'تواصل',
+      sourceCodeLink: 'الكود المصدري',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'النسخ إلى الحافظة',
@@ -154,8 +158,24 @@ export const ar: WebMessages = {
       errorMessage: 'عذرًا، حدث خطأ ما. يرجى مراسلة info@eagami.com مباشرةً.',
     },
   },
+  privacy: {
+    metaTitle: 'سياسة الخصوصية | Eagami',
+    metaDescription: 'ما الذي يجمعه موقع eagami.com وما لا يجمعه.',
+    title: 'سياسة الخصوصية',
+    lastUpdated: date => `آخر تحديث: ${date}`,
+    languageNote:
+      'يُحتفظ بهذه السياسة باللغة الإنجليزية فقط. وأي نسخة مترجمة تُقدَّم للتيسير فقط.',
+  },
+  terms: {
+    metaTitle: 'شروط الاستخدام | Eagami',
+    metaDescription: 'شروط استخدام موقع eagami.com ومكتبة مكوّنات Eagami UI.',
+    title: 'شروط الاستخدام',
+    lastUpdated: date => `آخر تحديث: ${date}`,
+    languageNote:
+      'يُحتفظ بهذه الشروط باللغة الإنجليزية فقط. وأي نسخة مترجمة تُقدَّم للتيسير فقط.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'الصفحة غير موجودة | Eagami',
     metaDescription: 'الصفحة غير موجودة.',
     eyebrow: '404',
     title: 'الصفحة غير موجودة',
@@ -167,7 +187,8 @@ export const ar: WebMessages = {
       title: 'سجل التغييرات',
       metaTitle: 'سجل التغييرات | Eagami UI',
       metaDescription: 'سجل الإصدارات لمكتبة مكوّنات Angular الخاصة بـ Eagami UI.',
-      lead: 'تغييرات بارزة في @eagami/ui، بدءًا من الأحدث.',
+      leadBefore: 'تغييرات بارزة في ',
+      leadAfter: '، بدءًا من الأحدث.',
       migrationGuide: 'دليل الترحيل',
       fullHistory: 'السجل الكامل على GitHub',
     },
@@ -185,7 +206,7 @@ export const ar: WebMessages = {
       components: 'المكوّنات',
     },
     index: {
-      metaTitle: 'Eagami UI | مكتبة مكوّنات Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
       title: 'Eagami UI',
@@ -300,7 +321,7 @@ export const ar: WebMessages = {
       tokensLink: 'رموز التصميم بصيغة JSON',
     },
     themeBuilder: {
-      metaTitle: 'منشئ السمة لـ Angular | Eagami UI',
+      metaTitle: 'منشئ السمة | Eagami UI',
       metaDescription:
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
@@ -374,7 +395,7 @@ export const ar: WebMessages = {
       motionEasings: 'دوال التيسير',
     },
     icons: {
-      metaTitle: 'أيقونات Angular | Eagami UI',
+      metaTitle: 'الأيقونات | Eagami UI',
       metaDescription: 'مجموعة الأيقونات المرفقة مع @eagami/ui.',
       title: 'الأيقونات',
       lede: 'مكوّنات Angular مستقلة ترث لونها وتتكيّف مع <code>font-size</code>، لذا تُعرَض بأي حجم. معظمها مشتق من <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> بقلم <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> بموجب <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>رخصة MIT</span></a>؛ والباقي أيقونات Eagami UI أصلية. يمكن أيضًا رسم أيقونات Feather بخطوط أرفع أو أثخن. انقر على أيقونة لنسخ محدّدها.',
@@ -401,8 +422,6 @@ export const ar: WebMessages = {
       title: 'التدويل',
       lede: 'تأتي كل سلسلة مدمجة (تسميات ARIA والعناصر النائبة والحالات الفارغة وعناصر التحكم في منتقي التاريخ) بـ 15 لغة. عيّن لغة واحدة للتطبيق بأكمله، أو بدّل أثناء التشغيل، أو تجاوز سلاسل فردية.',
       supportedHeading: 'اللغات المدعومة',
-      supportedFallback:
-        'تعود اللغات غير المعروفة إلى الإنجليزية، وكذلك أي مفاتيح مفقودة من تجاوز جزئي.',
       quickSetupHeading: 'إعداد سريع',
       quickSetupBefore:
         'أضف <code>provideEagamiUi()</code> إلى إعدادات تطبيقك وسجّل اللغات التي تستخدمها عبر <code>locales</code>. الإنجليزية متاحة دائمًا، لذا لا تشحن إلا ما تحتاج إليه.',
@@ -471,7 +490,7 @@ export const ar: WebMessages = {
         'يُفحَص كل مكوّن وفق قواعد إمكانية الوصول المعتمدة في المجال عند كل تغيير، ولا يصدر أي إصدار إلا عندما تجتاز جميع الفحوص، لذا تظل إمكانية الوصول التي تراها هنا قائمة مع تطوّر المكتبة.',
     },
     component: {
-      metaTitle: name => `مكوّن ${name} لـ Angular | Eagami UI`,
+      metaTitle: name => `مكوّن ${name} | Eagami UI`,
       metaDescription: name =>
         `مكوّن ${name} لـ Angular: عرض توضيحي حي، ومرجع API، وتخصيص السمة عبر متغيّرات CSS.`,
       demoHeading: 'عرض توضيحي',

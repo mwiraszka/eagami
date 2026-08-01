@@ -7,9 +7,7 @@ import type { WebMessages } from '../web-messages.types';
 export const frFR: WebMessages = {
   common: {
     skipToContent: 'Aller au contenu principal',
-    brandHome: 'Accueil eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Documentation de la bibliothèque',
+    brandHome: 'Accueil Eagami',
     themeToggleTooltip: 'Changer de thème',
     themeToggleLabel: next => `Passer en mode ${next === 'light' ? 'clair' : 'sombre'}`,
     localeMenuLabel: 'Langue',
@@ -18,11 +16,17 @@ export const frFR: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Tous droits réservés.',
-      npmLink: 'npm',
-      npmTooltip: 'Voir @eagami/ui sur npm',
-      githubAriaLabel: 'eagami sur GitHub',
-      githubTooltip: 'Voir le code source sur GitHub',
       navLabel: 'Pied de page',
+      siteHeading: 'À propos',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guides',
+      integrationsHeading: 'Intégrations',
+      resourcesHeading: 'Ressources',
+      legalHeading: 'Mentions légales',
+      homeLink: 'Accueil',
+      contactLink: 'Contact',
+      sourceCodeLink: 'Code source',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copier dans le presse-papiers',
@@ -164,8 +168,25 @@ export const frFR: WebMessages = {
         'Désolé, une erreur s’est produite. Merci d’écrire directement à info@eagami.com.',
     },
   },
+  privacy: {
+    metaTitle: 'Politique de confidentialité | Eagami',
+    metaDescription: 'Ce qu’eagami.com collecte, et ce qu’il ne collecte pas.',
+    title: 'Politique de confidentialité',
+    lastUpdated: date => `Dernière mise à jour : ${date}`,
+    languageNote:
+      'Cette politique n’est tenue à jour qu’en anglais. Toute version traduite est fournie à titre indicatif.',
+  },
+  terms: {
+    metaTitle: 'Conditions d’utilisation | Eagami',
+    metaDescription:
+      'Conditions d’utilisation d’eagami.com et de la bibliothèque de composants Eagami UI.',
+    title: 'Conditions d’utilisation',
+    lastUpdated: date => `Dernière mise à jour : ${date}`,
+    languageNote:
+      'Ces conditions ne sont tenues à jour qu’en anglais. Toute version traduite est fournie à titre indicatif.',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Page introuvable | Eagami',
     metaDescription: 'Page introuvable.',
     eyebrow: '404',
     title: 'Page introuvable',
@@ -178,7 +199,8 @@ export const frFR: WebMessages = {
       metaTitle: 'Journal des modifications | Eagami UI',
       metaDescription:
         'Historique des versions de la bibliothèque de composants Angular Eagami UI.',
-      lead: 'Changements notables de @eagami/ui, les plus récents en premier.',
+      leadBefore: 'Changements notables de ',
+      leadAfter: ', les plus récents en premier.',
       migrationGuide: 'Guide de migration',
       fullHistory: 'Historique complet sur GitHub',
     },
@@ -196,7 +218,7 @@ export const frFR: WebMessages = {
       components: 'Composants',
     },
     index: {
-      metaTitle: 'Eagami UI | Bibliothèque de composants Angular',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Bibliothèque de composants Angular légère et accessible, construite sur des propriétés CSS personnalisées.',
       title: 'Eagami UI',
@@ -309,7 +331,7 @@ export const frFR: WebMessages = {
       tokensLink: 'Tokens de design en JSON',
     },
     themeBuilder: {
-      metaTitle: 'Générateur de thème Angular | Eagami UI',
+      metaTitle: 'Générateur de thème | Eagami UI',
       metaDescription:
         'Générez une palette vérifiée WCAG pour les modes clair et sombre à partir des couleurs de votre marque, puis copiez la configuration du fournisseur ou le CSS.',
       title: 'Générateur de thème',
@@ -386,7 +408,7 @@ export const frFR: WebMessages = {
       motionEasings: 'Courbes',
     },
     icons: {
-      metaTitle: 'Icônes Angular | Eagami UI',
+      metaTitle: 'Icônes | Eagami UI',
       metaDescription: 'Jeu d’icônes intégré à @eagami/ui.',
       title: 'Icônes',
       lede: 'Composants Angular autonomes qui héritent de leur couleur et s’adaptent à <code>font-size</code>, pour un rendu à toute taille. La plupart sont dérivées de <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> de <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> sous la <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>licence MIT</span></a> ; les autres sont des icônes originales d’Eagami UI. Les icônes Feather peuvent aussi être dessinées avec des traits plus fins ou plus épais. Cliquez sur une icône pour copier son sélecteur.',
@@ -414,8 +436,6 @@ export const frFR: WebMessages = {
       title: 'Internationalisation',
       lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans 15 langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
       supportedHeading: 'Langues prises en charge',
-      supportedFallback:
-        'Les langues inconnues reviennent à l’anglais, tout comme les clés manquantes dans un remplacement partiel.',
       quickSetupHeading: 'Mise en place rapide',
       quickSetupBefore:
         'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',
@@ -484,7 +504,7 @@ export const frFR: WebMessages = {
         'Chaque composant est vérifié selon les règles d’accessibilité du secteur à chaque modification, et une version n’est publiée que lorsque toutes les vérifications passent, de sorte que l’accessibilité que vous voyez ici se maintient à mesure que la bibliothèque évolue.',
     },
     component: {
-      metaTitle: name => `Composant Angular ${name} | Eagami UI`,
+      metaTitle: name => `Composant ${name} | Eagami UI`,
       metaDescription: name =>
         `Composant Angular ${name} : démo en direct, référence API et thématisation avec des variables CSS.`,
       demoHeading: 'Démo',

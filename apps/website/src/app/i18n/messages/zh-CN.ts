@@ -3,9 +3,7 @@ import type { WebMessages } from '../web-messages.types';
 export const zhCN: WebMessages = {
   common: {
     skipToContent: '跳转到主要内容',
-    brandHome: 'eagami 首页',
-    navUi: 'UI',
-    navUiTooltip: '组件库文档',
+    brandHome: 'Eagami 首页',
     themeToggleTooltip: '切换主题',
     themeToggleLabel: next => `切换到${next === 'light' ? '浅色' : '深色'}模式`,
     localeMenuLabel: '语言',
@@ -14,11 +12,17 @@ export const zhCN: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: '版权所有。',
-      npmLink: 'npm',
-      npmTooltip: '在 npm 上查看 @eagami/ui',
-      githubAriaLabel: 'GitHub 上的 eagami',
-      githubTooltip: '在 GitHub 上查看源代码',
       navLabel: '页脚',
+      siteHeading: '关于',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: '指南',
+      integrationsHeading: '集成',
+      resourcesHeading: '资源',
+      legalHeading: '法律',
+      homeLink: '首页',
+      contactLink: '联系',
+      sourceCodeLink: '源代码',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: '复制到剪贴板',
@@ -148,8 +152,22 @@ export const zhCN: WebMessages = {
       errorMessage: '抱歉，出了点问题。请直接发邮件至 info@eagami.com。',
     },
   },
+  privacy: {
+    metaTitle: '隐私政策 | Eagami',
+    metaDescription: 'eagami.com 收集哪些信息，不收集哪些信息。',
+    title: '隐私政策',
+    lastUpdated: date => `最后更新：${date}`,
+    languageNote: '本政策仅以英文维护。任何译文仅供参考。',
+  },
+  terms: {
+    metaTitle: '使用条款 | Eagami',
+    metaDescription: '使用 eagami.com 和 Eagami UI 组件库的条款。',
+    title: '使用条款',
+    lastUpdated: date => `最后更新：${date}`,
+    languageNote: '本条款仅以英文维护。任何译文仅供参考。',
+  },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: '页面未找到 | Eagami',
     metaDescription: '页面未找到。',
     eyebrow: '404',
     title: '页面未找到',
@@ -161,7 +179,8 @@ export const zhCN: WebMessages = {
       title: '更新日志',
       metaTitle: '更新日志 | Eagami UI',
       metaDescription: 'Eagami UI Angular 组件库的版本历史。',
-      lead: '@eagami/ui 的重要更新，最新在前。',
+      leadBefore: '',
+      leadAfter: ' 的重要更新，最新在前。',
       migrationGuide: '迁移指南',
       fullHistory: '在 GitHub 上查看完整历史',
     },
@@ -179,7 +198,7 @@ export const zhCN: WebMessages = {
       components: '组件',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular 组件库',
+      metaTitle: 'Eagami UI',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
       title: 'Eagami UI',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',
@@ -292,7 +311,7 @@ export const zhCN: WebMessages = {
       tokensLink: 'JSON 格式的设计令牌',
     },
     themeBuilder: {
-      metaTitle: 'Angular 主题生成器 | Eagami UI',
+      metaTitle: '主题生成器 | Eagami UI',
       metaDescription:
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
@@ -364,7 +383,7 @@ export const zhCN: WebMessages = {
       motionEasings: '缓动',
     },
     icons: {
-      metaTitle: 'Angular 图标 | Eagami UI',
+      metaTitle: '图标 | Eagami UI',
       metaDescription: '随 @eagami/ui 一同提供的图标集。',
       title: '图标',
       lede: '独立的 Angular 组件，会继承其颜色并随 <code>font-size</code> 缩放，因此可在任意尺寸下渲染。大多数图标衍生自 <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> 在 <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT 许可证</span></a> 下提供的 <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a>；其余为 Eagami UI 原创图标。Feather 图标还可绘制为更细或更粗的线条。点击图标即可复制其选择器。',
@@ -390,7 +409,6 @@ export const zhCN: WebMessages = {
       title: '国际化',
       lede: '每一条内建字符串（ARIA 标签、占位符、空状态、日期选择器控件）都提供15 种语言。可为整个应用设定一种语言、在运行时切换，或覆盖单条字符串。',
       supportedHeading: '支持的语言',
-      supportedFallback: '未知语言会回退到英语，部分覆盖中缺失的任何键也是如此。',
       quickSetupHeading: '快速设置',
       quickSetupBefore:
         '将 <code>provideEagamiUi()</code> 添加到你的应用配置中，并通过 <code>locales</code> 注册你使用的语言。英语始终可用，因此你只需打包所需的内容。',
@@ -458,7 +476,7 @@ export const zhCN: WebMessages = {
         '每个组件在每次变更时都会依据行业无障碍规则进行检查，只有当所有检查都通过时版本才会发布，因此你在这里看到的无障碍能力会随着库的演进持续保持。',
     },
     component: {
-      metaTitle: name => `Angular ${name} 组件 | Eagami UI`,
+      metaTitle: name => `${name} 组件 | Eagami UI`,
       metaDescription: name =>
         `Angular ${name} 组件：实时演示、API 参考，以及基于 CSS 变量的主题定制。`,
       demoHeading: '演示',
