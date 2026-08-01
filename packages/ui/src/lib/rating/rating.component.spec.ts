@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
+import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
 import { RatingComponent } from './rating.component';
 
 describe('RatingComponent', () => {
@@ -164,6 +165,58 @@ describe('RatingComponent', () => {
       expect(component.value()).toBe(4);
       getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: '9' }));
       expect(component.value()).toBe(5);
+    });
+
+    it('jumps to the ends with Home and End', () => {
+      component.writeValue(3);
+      fixture.detectChanges();
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
+
+      expect(component.value()).toBe(5);
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'Home' }));
+
+      expect(component.value()).toBe(1);
+    });
+
+    it('holds at the bounds instead of running past them', () => {
+      component.writeValue(5);
+      fixture.detectChanges();
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+
+      expect(component.value()).toBe(5);
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'Home' }));
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+
+      expect(component.value()).toBe(0);
+    });
+
+    it('ignores keys it does not handle', () => {
+      component.writeValue(3);
+      fixture.detectChanges();
+
+      getGroup().dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+
+      expect(component.value()).toBe(3);
+    });
+
+    it('mirrors the horizontal arrows under dir="rtl"', () => {
+      component.writeValue(3);
+      fixture.detectChanges();
+      const group = getGroup();
+      vi.spyOn(window, 'getComputedStyle').mockImplementation((el, pseudo) =>
+        el === group
+          ? ({ direction: 'rtl' } as CSSStyleDeclaration)
+          : REAL_GET_COMPUTED_STYLE(el, pseudo),
+      );
+
+      group.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+
+      expect(component.value()).toBe(4);
     });
 
     it('clears the rating on Delete / Backspace', () => {

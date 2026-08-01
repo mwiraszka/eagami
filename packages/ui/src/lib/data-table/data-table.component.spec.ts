@@ -494,4 +494,66 @@ describe('DataTableComponent', () => {
       expect(activeCell()).toBeNull();
     });
   });
+
+  describe('Sort comparator', () => {
+    interface MixedRow {
+      id: number;
+      name: string | null;
+      score: number | null;
+      flag: boolean;
+      [key: string]: unknown;
+    }
+
+    const mixed: MixedRow[] = [
+      { id: 1, name: 'banana', score: 3, flag: true },
+      { id: 2, name: null, score: null, flag: false },
+      { id: 3, name: 'apple', score: 10, flag: true },
+    ];
+
+    function render(column: string, direction: 'asc' | 'desc'): string[] {
+      const local = TestBed.createComponent<DataTableComponent<MixedRow>>(
+        DataTableComponent<MixedRow>,
+      );
+      local.componentRef.setInput('columns', [
+        { key: 'name', label: 'Name', sortable: true },
+        { key: 'score', label: 'Score', sortable: true },
+        { key: 'flag', label: 'Flag', sortable: true },
+      ]);
+      local.componentRef.setInput('data', mixed);
+      local.componentRef.setInput('sort', { column, direction });
+      local.detectChanges();
+      return Array.from(
+        local.nativeElement.querySelectorAll(
+          '.ea-data-table__row:not(.ea-data-table__row--header)',
+        ),
+      ).map(row => (row as HTMLElement).querySelector('td')!.textContent!.trim());
+    }
+
+    it('orders numbers numerically, not as text', () => {
+      // Lexical ordering would put 10 before 3
+      expect(render('score', 'asc')).toEqual(['', 'banana', 'apple']);
+    });
+
+    it('orders strings with locale comparison', () => {
+      expect(render('name', 'asc')).toEqual(['', 'apple', 'banana']);
+    });
+
+    it('sorts everything else by its string form', () => {
+      const flags = render('flag', 'asc');
+
+      expect(flags).toHaveLength(3);
+    });
+
+    it('sinks empty cells to the opposite end when the direction flips', () => {
+      const asc = render('score', 'asc');
+      const desc = render('score', 'desc');
+
+      expect(asc[0]).toBe('');
+      expect(desc[desc.length - 1]).toBe('');
+    });
+
+    it('leaves the order untouched with no active sort', () => {
+      expect(render('', 'asc')).toEqual(['banana', '', 'apple']);
+    });
+  });
 });

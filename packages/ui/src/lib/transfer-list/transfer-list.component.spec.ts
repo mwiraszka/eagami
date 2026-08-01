@@ -347,4 +347,57 @@ describe('TransferListComponent', () => {
       expect(getAnnouncement().textContent?.trim()).toBe('4 moved to Available');
     });
   });
+
+  describe('Range selection', () => {
+    function keydown(el: HTMLElement, key: string, init: KeyboardEventInit = {}): void {
+      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, ...init }));
+      fixture.detectChanges();
+    }
+
+    function highlighted(pane: 'source' | 'target'): string[] {
+      return getListItems(pane)
+        .filter(el => el.getAttribute('aria-selected') === 'true')
+        .map(el => el.textContent!.trim());
+    }
+
+    it('extends the highlight from the anchor on shift', () => {
+      keydown(getListItems('source')[0], ' ');
+
+      keydown(getListItems('source')[2], ' ', { shiftKey: true });
+
+      expect(highlighted('source')).toEqual(['Alpha', 'Beta', 'Gamma']);
+    });
+
+    it('extends upwards from a lower anchor too', () => {
+      keydown(getListItems('source')[2], ' ');
+
+      keydown(getListItems('source')[0], ' ', { shiftKey: true });
+
+      expect(highlighted('source')).toEqual(['Alpha', 'Beta', 'Gamma']);
+    });
+
+    it('never highlights a disabled row inside the range', () => {
+      keydown(getListItems('source')[2], ' ');
+
+      keydown(getListItems('source')[4], ' ', { shiftKey: true });
+
+      expect(highlighted('source')).not.toContain('Delta');
+    });
+
+    it('falls back to a single toggle when there is no anchor yet', () => {
+      keydown(getListItems('source')[1], ' ', { shiftKey: true });
+
+      expect(highlighted('source')).toEqual(['Beta']);
+    });
+
+    it('jumps to the first and last enabled row with Home and End', () => {
+      keydown(getListItems('source')[0], 'End');
+
+      expect(document.activeElement?.textContent?.trim()).toBe('Epsilon');
+
+      keydown(getListItems('source')[4], 'Home');
+
+      expect(document.activeElement?.textContent?.trim()).toBe('Alpha');
+    });
+  });
 });

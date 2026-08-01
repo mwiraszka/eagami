@@ -344,4 +344,75 @@ describe('FileUploaderComponent', () => {
       expect(bar.getAttribute('aria-valuenow')).toBe('40');
     });
   });
+
+  describe('File type icons', () => {
+    function iconFor(name: string, type: string): string {
+      Object.defineProperty(getFileInput(), 'files', {
+        value: fileList(makeFile(name, 10, type)),
+        configurable: true,
+      });
+      getFileInput().dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+      const icon = getRows()[0].querySelector('.ea-file-uploader-field__type-icon *');
+      return icon?.tagName.toLowerCase() ?? '';
+    }
+
+    it.each([
+      ['photo.png', 'image/png', 'image'],
+      ['clip.mp4', 'video/mp4', 'film'],
+      ['song.mp3', 'audio/mpeg', 'music'],
+      ['notes.txt', 'text/plain', 'file-text'],
+      ['report.pdf', 'application/pdf', 'file-text'],
+      ['bundle.zip', 'application/zip', 'archive'],
+      ['mystery.bin', 'application/octet-stream', 'file'],
+    ])('picks an icon matching %s', (name, type, expected) => {
+      expect(iconFor(name, type)).toContain(expected);
+    });
+
+    it('falls back to the extension when the type is not reported', () => {
+      expect(iconFor('backup.rar', '')).toContain('archive');
+    });
+  });
+
+  describe('Picker and keyboard', () => {
+    it('opens the picker on Enter and Space', () => {
+      const click = vi.spyOn(getFileInput(), 'click');
+
+      getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
+
+      expect(click).toHaveBeenCalledTimes(2);
+    });
+
+    it('ignores other keys', () => {
+      const click = vi.spyOn(getFileInput(), 'click');
+
+      getDropzone().dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+
+      expect(click).not.toHaveBeenCalled();
+    });
+
+    it('does not open the picker while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+      const click = vi.spyOn(getFileInput(), 'click');
+
+      getDropzone().click();
+
+      expect(click).not.toHaveBeenCalled();
+    });
+
+    it('clears the native input so the same file can be picked twice', () => {
+      const el = getFileInput();
+      Object.defineProperty(el, 'files', {
+        value: fileList(makeFile('a.png', 10, 'image/png')),
+        configurable: true,
+      });
+
+      el.dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+
+      expect(el.value).toBe('');
+    });
+  });
 });
