@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Put the page name first in every browser tab title, which the 404 and component library pages did the other way round.
 - Set every page heading on a consistent scale with a divider rule beneath it.
 - Capitalize Eagami wherever it reads as a name rather than the wordmark.
+- Expand the footer into a full site map, and retire the header's UI link now that the footer covers it.
+- Pick up @eagami/ui v5.15.1.
 
 ## [3.17.0] - 2026-08-01
 
