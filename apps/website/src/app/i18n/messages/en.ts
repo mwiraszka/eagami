@@ -14,6 +14,8 @@ export const en: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'All rights reserved.',
+      privacyLink: 'Privacy',
+      termsLink: 'Terms',
       npmLink: 'npm',
       npmTooltip: 'View @eagami/ui on npm',
       githubAriaLabel: 'eagami on GitHub',
@@ -154,6 +156,22 @@ export const en: WebMessages = {
       sentToast: 'Message sent',
       errorMessage: 'Sorry, something went wrong. Please email info@eagami.com directly.',
     },
+  },
+  privacy: {
+    metaTitle: 'Privacy | eagami',
+    metaDescription: 'What eagami.com collects, and what it does not.',
+    title: 'Privacy policy',
+    lastUpdated: date => `Last updated ${date}`,
+    languageNote:
+      'This policy is maintained in English. Translations of the site interface do not change its meaning.',
+  },
+  terms: {
+    metaTitle: 'Terms | eagami',
+    metaDescription: 'Terms for using eagami.com and the Eagami UI component library.',
+    title: 'Terms of use',
+    lastUpdated: date => `Last updated ${date}`,
+    languageNote:
+      'These terms are maintained in English. Translations of the site interface do not change their meaning.',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

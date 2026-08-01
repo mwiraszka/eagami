@@ -14,6 +14,8 @@ export const hi: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'सर्वाधिकार सुरक्षित।',
+      privacyLink: 'गोपनीयता',
+      termsLink: 'शर्तें',
       npmLink: 'npm',
       npmTooltip: 'npm पर @eagami/ui देखें',
       githubAriaLabel: 'GitHub पर eagami',
@@ -155,6 +157,22 @@ export const hi: WebMessages = {
       errorMessage:
         'क्षमा करें, कुछ गलत हो गया। कृपया सीधे info@eagami.com पर ईमेल करें।',
     },
+  },
+  privacy: {
+    metaTitle: 'गोपनीयता | eagami',
+    metaDescription: 'eagami.com क्या एकत्र करता है और क्या नहीं।',
+    title: 'गोपनीयता नीति',
+    lastUpdated: date => `अंतिम अपडेट: ${date}`,
+    languageNote:
+      'यह नीति अंग्रेज़ी में बनाए रखी जाती है। साइट इंटरफ़ेस के अनुवाद इसका अर्थ नहीं बदलते।',
+  },
+  terms: {
+    metaTitle: 'शर्तें | eagami',
+    metaDescription: 'eagami.com और Eagami UI कंपोनेंट लाइब्रेरी के उपयोग की शर्तें।',
+    title: 'उपयोग की शर्तें',
+    lastUpdated: date => `अंतिम अपडेट: ${date}`,
+    languageNote:
+      'ये शर्तें अंग्रेज़ी में बनाए रखी जाती हैं। साइट इंटरफ़ेस के अनुवाद इनका अर्थ नहीं बदलते।',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

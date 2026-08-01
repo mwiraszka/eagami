@@ -15,6 +15,8 @@ export const el: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Με επιφύλαξη παντός δικαιώματος.',
+      privacyLink: 'Απόρρητο',
+      termsLink: 'Όροι',
       npmLink: 'npm',
       npmTooltip: 'Δείτε το @eagami/ui στο npm',
       githubAriaLabel: 'eagami στο GitHub',
@@ -160,6 +162,23 @@ export const el: WebMessages = {
       errorMessage:
         'Συγγνώμη, κάτι πήγε στραβά. Παρακαλώ στείλτε e-mail απευθείας στο info@eagami.com.',
     },
+  },
+  privacy: {
+    metaTitle: 'Απόρρητο | eagami',
+    metaDescription: 'Τι συλλέγει το eagami.com και τι όχι.',
+    title: 'Πολιτική απορρήτου',
+    lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
+    languageNote:
+      'Η πολιτική αυτή τηρείται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά της.',
+  },
+  terms: {
+    metaTitle: 'Όροι | eagami',
+    metaDescription:
+      'Όροι χρήσης του eagami.com και της βιβλιοθήκης στοιχείων Eagami UI.',
+    title: 'Όροι χρήσης',
+    lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
+    languageNote:
+      'Οι όροι αυτοί τηρούνται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά τους.',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

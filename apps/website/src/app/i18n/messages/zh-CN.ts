@@ -14,6 +14,8 @@ export const zhCN: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: '版权所有。',
+      privacyLink: '隐私',
+      termsLink: '条款',
       npmLink: 'npm',
       npmTooltip: '在 npm 上查看 @eagami/ui',
       githubAriaLabel: 'GitHub 上的 eagami',
@@ -147,6 +149,20 @@ export const zhCN: WebMessages = {
       sentToast: '留言已发送',
       errorMessage: '抱歉，出了点问题。请直接发邮件至 info@eagami.com。',
     },
+  },
+  privacy: {
+    metaTitle: '隐私 | eagami',
+    metaDescription: 'eagami.com 收集哪些信息，不收集哪些信息。',
+    title: '隐私政策',
+    lastUpdated: date => `最后更新：${date}`,
+    languageNote: '本政策以英文维护。站点界面的翻译不改变其含义。',
+  },
+  terms: {
+    metaTitle: '条款 | eagami',
+    metaDescription: '使用 eagami.com 和 Eagami UI 组件库的条款。',
+    title: '使用条款',
+    lastUpdated: date => `最后更新：${date}`,
+    languageNote: '本条款以英文维护。站点界面的翻译不改变其含义。',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

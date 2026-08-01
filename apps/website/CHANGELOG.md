@@ -5,6 +5,16 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.18.0] - 2026-08-01
+
+### Added
+
+- Add privacy policy and terms of use pages, linked from the footer.
+
+### Changed
+
+- List the supported locales as a checkmarked list that reflows from three columns to one, instead of a row of cards.
+
 ## [3.17.0] - 2026-08-01
 
 ### Changed
@@ -1053,6 +1063,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.18.0]: https://github.com/mwiraszka/eagami/compare/website-v3.17.0...website-v3.18.0
 [3.17.0]: https://github.com/mwiraszka/eagami/compare/website-v3.16.5...website-v3.17.0
 [3.16.5]: https://github.com/mwiraszka/eagami/compare/website-v3.16.4...website-v3.16.5
 [3.16.4]: https://github.com/mwiraszka/eagami/compare/website-v3.16.3...website-v3.16.4

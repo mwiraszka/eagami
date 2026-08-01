@@ -15,6 +15,8 @@ export const uk: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Усі права захищені.',
+      privacyLink: 'Конфіденційність',
+      termsLink: 'Умови',
       npmLink: 'npm',
       npmTooltip: 'Переглянути @eagami/ui на npm',
       githubAriaLabel: 'eagami на GitHub',
@@ -158,6 +160,22 @@ export const uk: WebMessages = {
       errorMessage:
         'Вибачте, щось пішло не так. Напишіть, будь ласка, безпосередньо на info@eagami.com.',
     },
+  },
+  privacy: {
+    metaTitle: 'Конфіденційність | eagami',
+    metaDescription: 'Що збирає eagami.com і чого не збирає.',
+    title: 'Політика конфіденційності',
+    lastUpdated: date => `Останнє оновлення: ${date}`,
+    languageNote:
+      'Ця політика ведеться англійською мовою. Переклади інтерфейсу сайту не змінюють її змісту.',
+  },
+  terms: {
+    metaTitle: 'Умови | eagami',
+    metaDescription: 'Умови користування eagami.com і бібліотекою компонентів Eagami UI.',
+    title: 'Умови використання',
+    lastUpdated: date => `Останнє оновлення: ${date}`,
+    languageNote:
+      'Ці умови ведуться англійською мовою. Переклади інтерфейсу сайту не змінюють їх змісту.',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

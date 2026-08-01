@@ -15,6 +15,8 @@ export const is: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Öll réttindi áskilin.',
+      privacyLink: 'Persónuvernd',
+      termsLink: 'Skilmálar',
       npmLink: 'npm',
       npmTooltip: 'Skoða @eagami/ui á npm',
       githubAriaLabel: 'eagami á GitHub',
@@ -156,6 +158,22 @@ export const is: WebMessages = {
       errorMessage:
         'Því miður, eitthvað fór úrskeiðis. Vinsamlegast sendu tölvupóst beint á info@eagami.com.',
     },
+  },
+  privacy: {
+    metaTitle: 'Persónuvernd | eagami',
+    metaDescription: 'Hverju eagami.com safnar og hverju ekki.',
+    title: 'Persónuverndarstefna',
+    lastUpdated: date => `Síðast uppfært: ${date}`,
+    languageNote:
+      'Þessari stefnu er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu hennar.',
+  },
+  terms: {
+    metaTitle: 'Skilmálar | eagami',
+    metaDescription: 'Skilmálar fyrir notkun á eagami.com og Eagami UI einingasafninu.',
+    title: 'Notkunarskilmálar',
+    lastUpdated: date => `Síðast uppfært: ${date}`,
+    languageNote:
+      'Þessum skilmálum er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu þeirra.',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

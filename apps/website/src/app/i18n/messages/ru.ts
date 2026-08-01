@@ -15,6 +15,8 @@ export const ru: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Все права защищены.',
+      privacyLink: 'Конфиденциальность',
+      termsLink: 'Условия',
       npmLink: 'npm',
       npmTooltip: 'Открыть @eagami/ui на npm',
       githubAriaLabel: 'eagami на GitHub',
@@ -158,6 +160,23 @@ export const ru: WebMessages = {
       errorMessage:
         'Извините, что-то пошло не так. Напишите напрямую на info@eagami.com.',
     },
+  },
+  privacy: {
+    metaTitle: 'Конфиденциальность | eagami',
+    metaDescription: 'Что собирает eagami.com и что не собирает.',
+    title: 'Политика конфиденциальности',
+    lastUpdated: date => `Последнее обновление: ${date}`,
+    languageNote:
+      'Эта политика ведётся на английском языке. Переводы интерфейса сайта не меняют её смысла.',
+  },
+  terms: {
+    metaTitle: 'Условия | eagami',
+    metaDescription:
+      'Условия использования eagami.com и библиотеки компонентов Eagami UI.',
+    title: 'Условия использования',
+    lastUpdated: date => `Последнее обновление: ${date}`,
+    languageNote:
+      'Эти условия ведутся на английском языке. Переводы интерфейса сайта не меняют их смысла.',
   },
   notFound: {
     metaTitle: 'Eagami | 404',

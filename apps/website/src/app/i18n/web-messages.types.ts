@@ -17,6 +17,8 @@ export interface WebMessages {
     footer: {
       copyright: (year: number) => string;
       allRightsReserved: string;
+      privacyLink: string;
+      termsLink: string;
       npmLink: string;
       npmTooltip: string;
       githubAriaLabel: string;
@@ -80,6 +82,20 @@ export interface WebMessages {
       sentToast: string;
       errorMessage: string;
     };
+  };
+  privacy: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    lastUpdated: (date: string) => string;
+    languageNote: string;
+  };
+  terms: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    lastUpdated: (date: string) => string;
+    languageNote: string;
   };
   notFound: {
     metaTitle: string;
