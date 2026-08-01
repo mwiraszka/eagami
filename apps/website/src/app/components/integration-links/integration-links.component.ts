@@ -2,13 +2,8 @@ import { DownloadIconComponent } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
+import { INTEGRATION_LINKS } from '@app/data/external-links';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
-import type { WebMessages } from '@app/i18n/web-messages.types';
-
-interface IntegrationLink {
-  href: string;
-  labelKey: keyof WebMessages['ui']['integrations'];
-}
 
 @Component({
   selector: 'web-integration-links',
@@ -22,9 +17,5 @@ export class IntegrationLinksComponent {
 
   protected readonly messages = this.i18n.messages;
 
-  protected readonly links: IntegrationLink[] = [
-    { href: '/assets/eagami-ui-react.md', labelKey: 'reactLink' },
-    { href: '/assets/eagami-ui-flutter.md', labelKey: 'flutterLink' },
-    { href: '/assets/eagami-ui-tokens.json', labelKey: 'tokensLink' },
-  ];
+  protected readonly links = INTEGRATION_LINKS;
 }

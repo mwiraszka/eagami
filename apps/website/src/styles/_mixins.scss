@@ -230,22 +230,34 @@ $breakpoints: (
 
 /// Variant for `<a><code>token</code></a>` patterns: no underline, just shift the
 /// code's text colour on hover since its background already carries the visual weight.
-@mixin prose-code-link {
+/// Pass `$tint: false` where the chip should keep its own colours, which a link
+/// colour would fight.
+@mixin prose-code-link($tint: true) {
   text-decoration: none;
 
-  code {
-    color: var(--color-text-link);
-    transition: color 0.15s ease;
+  &:hover {
+    text-decoration: none;
   }
 
-  &:hover code {
-    color: var(--color-text-link-hover);
+  @if $tint {
+    code {
+      color: var(--color-text-link);
+      transition: color 0.15s ease;
+    }
+
+    &:hover code {
+      color: var(--color-text-link-hover);
+    }
+  } @else {
+    code {
+      @include code-chip;
+    }
   }
 
   &:focus-visible {
+    border-radius: 4px;
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
-    border-radius: 4px;
   }
 }
 

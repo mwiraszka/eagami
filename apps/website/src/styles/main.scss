@@ -13,7 +13,13 @@
    through [innerHTML] (localized prose, rendered changelog entries) and cannot
    host an icon component. Masked so it inherits the link's colour. Card-sized
    links opt out with `web-link-plain`, where a trailing glyph reads as debris. */
-a[href^='http']:not([href*='//eagami.com']):not(.web-link-plain)::after {
+a[href^='http']:not(
+    [href^='https://eagami.com'],
+    [href^='http://eagami.com'],
+    [href^='https://www.eagami.com'],
+    [href^='http://www.eagami.com'],
+    .web-link-plain
+  )::after {
   display: inline-block;
   width: 0.75em;
   height: 0.75em;

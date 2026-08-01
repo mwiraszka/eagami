@@ -54,10 +54,8 @@
     @include mixins.prose-link;
   }
 
-  // A package name keeps its code chip; only the underline goes
-  a:has(> code),
-  a:has(> code):hover {
-    text-decoration: none;
+  a:has(> code) {
+    @include mixins.prose-code-link($tint: false);
   }
 
   code {
