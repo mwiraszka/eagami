@@ -27,7 +27,7 @@ import { RadioComponent } from './radio.component';
   `,
 })
 class HostComponent {
-  value = '';
+  value = signal('');
   label = signal<string | undefined>(undefined);
   disabled = signal(false);
   errorMsg = signal<string | undefined>(undefined);
@@ -74,11 +74,11 @@ describe('RadioGroupComponent', () => {
     getRadioInputs()[1].click();
     fixture.detectChanges();
 
-    expect(host.value).toBe('b');
+    expect(host.value()).toBe('b');
   });
 
   it('marks the selected radio as checked', () => {
-    host.value = 'b';
+    host.value.set('b');
     fixture.detectChanges();
 
     expect(getRadioInputs()[1].checked).toBe(true);
@@ -93,7 +93,7 @@ describe('RadioGroupComponent', () => {
     getRadioInputs()[1].click();
     fixture.detectChanges();
 
-    expect(host.value).toBe('');
+    expect(host.value()).toBe('');
   });
 
   it('does not select an individually disabled radio', () => {
@@ -103,7 +103,7 @@ describe('RadioGroupComponent', () => {
     getRadioInputs()[2].click();
     fixture.detectChanges();
 
-    expect(host.value).toBe('');
+    expect(host.value()).toBe('');
   });
 
   it('renders the group label when set, with aria-labelledby pointing to it', () => {
@@ -150,7 +150,7 @@ describe('RadioGroupComponent', () => {
       groupCmp.writeValue('c');
       fixture.detectChanges();
 
-      expect(host.value).toBe('c');
+      expect(host.value()).toBe('c');
     });
 
     it('calls onChange when select() runs', () => {
@@ -174,7 +174,7 @@ describe('RadioGroupComponent', () => {
       getRadioInputs()[0].click();
       fixture.detectChanges();
 
-      expect(host.value).toBe('');
+      expect(host.value()).toBe('');
     });
   });
 });

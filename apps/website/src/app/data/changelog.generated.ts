@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.15.0',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Build and test against Angular 22 and TypeScript 6. The supported peer range is unchanged, so Angular 21 and 22 consumers are both still supported.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Release the avatar editor's drag listeners when it is destroyed mid-drag, which previously left them bound to the document.",
+          "Re-clamp the avatar editor's image when the canvas shrinks, which could leave a gap inside the frame.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.14.4',
     date: '2026-08-01',
     sections: [

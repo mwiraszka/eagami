@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StepComponent } from './step.component';
@@ -7,24 +7,24 @@ import { StepperComponent } from './stepper.component';
 @Component({
   template: `
     <ea-stepper
-      [activeStep]="activeStep"
-      [linear]="linear"
-      [disabled]="disabled"
+      [activeStep]="activeStep()"
+      [linear]="linear()"
+      [disabled]="disabled()"
       (changed)="onChanged($event)">
       <ea-step
         label="One"
-        [completed]="step1Completed"
+        [completed]="step1Completed()"
         >Step one body</ea-step
       >
       <ea-step
         label="Two"
-        [completed]="step2Completed"
-        [optional]="step2Optional">
+        [completed]="step2Completed()"
+        [optional]="step2Optional()">
         Step two body
       </ea-step>
       <ea-step
         label="Three"
-        [disabled]="step3Disabled"
+        [disabled]="step3Disabled()"
         >Step three body</ea-step
       >
     </ea-stepper>
@@ -32,13 +32,13 @@ import { StepperComponent } from './stepper.component';
   imports: [StepperComponent, StepComponent],
 })
 class HostComponent {
-  activeStep = 0;
-  linear = false;
-  disabled = false;
-  step1Completed = false;
-  step2Completed = false;
-  step2Optional = false;
-  step3Disabled = false;
+  activeStep = signal(0);
+  linear = signal(false);
+  disabled = signal(false);
+  step1Completed = signal(false);
+  step2Completed = signal(false);
+  step2Optional = signal(false);
+  step3Disabled = signal(false);
   changedEvents: number[] = [];
 
   onChanged(index: number): void {
@@ -95,7 +95,7 @@ describe('StepperComponent', () => {
     });
 
     it('renders the optional marker when a step is optional', () => {
-      host.step2Optional = true;
+      host.step2Optional.set(true);
       fixture.detectChanges();
 
       const optional = fixture.nativeElement.querySelector('.ea-stepper__optional');
@@ -103,7 +103,7 @@ describe('StepperComponent', () => {
     });
 
     it('renders a check icon on completed steps', () => {
-      host.step1Completed = true;
+      host.step1Completed.set(true);
       fixture.detectChanges();
 
       const buttons = getButtons();
@@ -136,7 +136,7 @@ describe('StepperComponent', () => {
     });
 
     it('disables a step when its disabled input is true', () => {
-      host.step3Disabled = true;
+      host.step3Disabled.set(true);
       fixture.detectChanges();
 
       const buttons = getButtons();
@@ -150,7 +150,7 @@ describe('StepperComponent', () => {
 
   describe('Linear mode', () => {
     beforeEach(() => {
-      host.linear = true;
+      host.linear.set(true);
       fixture.detectChanges();
     });
 
@@ -164,8 +164,8 @@ describe('StepperComponent', () => {
     });
 
     it('allows skipping optional steps', () => {
-      host.step1Completed = true;
-      host.step2Optional = true;
+      host.step1Completed.set(true);
+      host.step2Optional.set(true);
       fixture.detectChanges();
 
       // step 1 completed and step 2 optional, so step 2 (index 2, "Three") is reachable
@@ -174,7 +174,7 @@ describe('StepperComponent', () => {
     });
 
     it('unblocks the next step when the current is completed', () => {
-      host.step1Completed = true;
+      host.step1Completed.set(true);
       fixture.detectChanges();
 
       const buttons = getButtons();
@@ -199,7 +199,7 @@ describe('StepperComponent', () => {
     });
 
     it('moves backward on ArrowLeft', () => {
-      host.activeStep = 2;
+      host.activeStep.set(2);
       fixture.detectChanges();
 
       dispatchKey('ArrowLeft');
@@ -208,7 +208,7 @@ describe('StepperComponent', () => {
     });
 
     it('jumps to first / last reachable on Home / End', () => {
-      host.activeStep = 1;
+      host.activeStep.set(1);
       fixture.detectChanges();
 
       dispatchKey('Home');
@@ -220,7 +220,7 @@ describe('StepperComponent', () => {
 
   describe('Disabled stepper', () => {
     beforeEach(() => {
-      host.disabled = true;
+      host.disabled.set(true);
       fixture.detectChanges();
     });
 

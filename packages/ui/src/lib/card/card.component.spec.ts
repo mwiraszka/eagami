@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
@@ -8,23 +8,23 @@ import { CardComponent } from './card.component';
   imports: [CardComponent],
   template: `
     <ea-card
-      [variant]="variant"
-      [padding]="padding"
-      [fullWidth]="fullWidth"
-      [headerDivider]="headerDivider">
-      <span slot="header">{{ header }}</span>
+      [variant]="variant()"
+      [padding]="padding()"
+      [fullWidth]="fullWidth()"
+      [headerDivider]="headerDivider()">
+      <span slot="header">{{ header() }}</span>
       Body content
-      <span slot="footer">{{ footer }}</span>
+      <span slot="footer">{{ footer() }}</span>
     </ea-card>
   `,
 })
 class TestHostComponent {
-  variant: 'elevated' | 'outlined' | 'filled' = 'elevated';
-  padding: 'none' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
-  fullWidth = false;
-  headerDivider = false;
-  header = '';
-  footer = '';
+  variant = signal<'elevated' | 'outlined' | 'filled'>('elevated');
+  padding = signal<'none' | 'sm' | 'md' | 'lg' | 'xl'>('md');
+  fullWidth = signal(false);
+  headerDivider = signal(false);
+  header = signal('');
+  footer = signal('');
 }
 
 describe('CardComponent', () => {
@@ -65,13 +65,13 @@ describe('CardComponent', () => {
 
   describe('Variants', () => {
     it('applies outlined variant', () => {
-      host.variant = 'outlined';
+      host.variant.set('outlined');
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--outlined');
     });
 
     it('applies filled variant', () => {
-      host.variant = 'filled';
+      host.variant.set('filled');
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--filled');
     });
@@ -79,19 +79,19 @@ describe('CardComponent', () => {
 
   describe('Padding', () => {
     it('applies none padding', () => {
-      host.padding = 'none';
+      host.padding.set('none');
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--padding-none');
     });
 
     it('applies lg padding', () => {
-      host.padding = 'lg';
+      host.padding.set('lg');
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--padding-lg');
     });
 
     it('applies xl padding', () => {
-      host.padding = 'xl';
+      host.padding.set('xl');
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--padding-xl');
     });
@@ -99,14 +99,14 @@ describe('CardComponent', () => {
 
   describe('Slots', () => {
     it('projects header content', () => {
-      host.header = 'Card Title';
+      host.header.set('Card Title');
       fixture.detectChanges();
       const header = fixture.nativeElement.querySelector('.ea-card__header');
       expect(header.textContent).toContain('Card Title');
     });
 
     it('projects footer content', () => {
-      host.footer = 'Footer text';
+      host.footer.set('Footer text');
       fixture.detectChanges();
       const footer = fixture.nativeElement.querySelector('.ea-card__footer');
       expect(footer.textContent).toContain('Footer text');
@@ -115,7 +115,7 @@ describe('CardComponent', () => {
 
   describe('Full width', () => {
     it('applies full-width class', () => {
-      host.fullWidth = true;
+      host.fullWidth.set(true);
       fixture.detectChanges();
       expect(getCard().classList).toContain('ea-card--full-width');
     });
@@ -127,7 +127,7 @@ describe('CardComponent', () => {
     });
 
     it('renders a divider when enabled', () => {
-      host.headerDivider = true;
+      host.headerDivider.set(true);
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('.ea-card__divider')).toBeTruthy();
     });

@@ -438,6 +438,70 @@ describe('TimePickerComponent', () => {
 
       expect(getPopover()).toBeNull();
     });
+
+    /**
+     * A form can disable the control while its popover is already open. Nothing
+     * inside the popover carries the `disabled` attribute, so the only thing
+     * keeping the spinners inert is the guard on each handler.
+     */
+    it('ignores chevron presses once the form disables the control mid-edit', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+      component.setDisabledState(true);
+      fixture.detectChanges();
+
+      const [hoursUp] = getStepButtons();
+      pressStep(hoursUp);
+      hoursUp.dispatchEvent(new MouseEvent('click', { detail: 0 }));
+
+      expect(component.value()).toBe('09:30');
+    });
+
+    it('ignores typing and arrow keys once the form disables the control mid-edit', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+      component.setDisabledState(true);
+      fixture.detectChanges();
+
+      const [hoursInput] = getValueDisplays() as HTMLInputElement[];
+      hoursInput.value = '5';
+      hoursInput.dispatchEvent(new Event('input', { bubbles: true }));
+      hoursInput.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('09:30');
+      expect(component.editBuffer()).toBeNull();
+    });
+  });
+
+  describe('Readonly state', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('readonly', true);
+      component.writeValue('09:30');
+      fixture.detectChanges();
+    });
+
+    it('leaves the trigger enabled but does not open on click', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getTrigger().disabled).toBe(false);
+      expect(getPopover()).toBeNull();
+    });
+
+    it('does not open on Enter', () => {
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+    });
+
+    it('hides the clear button', () => {
+      expect(fixture.nativeElement.querySelector('.ea-time-picker__clear')).toBeNull();
+    });
   });
 
   describe('Keyboard navigation', () => {
@@ -503,6 +567,93 @@ describe('TimePickerComponent', () => {
       );
 
       expect(component.value()).toBe('08:30');
+    });
+
+    it('keeps the popover open when ArrowDown is pressed again on the trigger', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeTruthy();
+    });
+
+    it('leaves Escape to the page while the popover is closed', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Escape', cancelable: true });
+
+      getTrigger().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('jumps ten hours on PageUp', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursSpinner] = getValueDisplays();
+      hoursSpinner.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'PageUp', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('19:30');
+    });
+
+    it('drops ten hours on PageDown', () => {
+      component.writeValue('14:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursSpinner] = getValueDisplays();
+      hoursSpinner.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'PageDown', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('04:30');
+    });
+
+    it('jumps five minute steps on PageUp', () => {
+      fixture.componentRef.setInput('minuteStep', 5);
+      component.writeValue('09:00');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [, minutesSpinner] = getValueDisplays();
+      minutesSpinner.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'PageUp', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('09:25');
+    });
+
+    it('drops five minute steps on PageDown', () => {
+      fixture.componentRef.setInput('minuteStep', 5);
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [, minutesSpinner] = getValueDisplays();
+      minutesSpinner.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'PageDown', bubbles: true }),
+      );
+
+      expect(component.value()).toBe('09:05');
+    });
+
+    it('commits the shown time and closes on Enter', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursSpinner] = getValueDisplays();
+      hoursSpinner.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('00:00');
+      expect(getPopover()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
     });
   });
 
@@ -637,6 +788,99 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(hoursInput.value).toBe('1');
+    });
+
+    it('commits the previous column when the user moves on mid-edit', () => {
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursInput, minutesInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(hoursInput, '1');
+      hoursInput.dispatchEvent(new FocusEvent('blur'));
+      typeInto(minutesInput, '3');
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('01:30');
+      expect(hoursInput.value).toBe('01');
+      expect(minutesInput.value).toBe('3');
+    });
+
+    it('does not re-emit when the typed value matches the current one', () => {
+      const spy = vi.fn();
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+      component.changed.subscribe(spy);
+
+      const [hoursInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(hoursInput, '09');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('maps typed 12 to noon while PM is active', () => {
+      fixture.componentRef.setInput('format', '12h');
+      component.writeValue('21:00');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(hoursInput, '12');
+
+      expect(component.value()).toBe('12:00');
+    });
+
+    it('keeps a typed hour in the morning while AM is active', () => {
+      fixture.componentRef.setInput('format', '12h');
+      component.writeValue('09:00');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(hoursInput, '05');
+
+      expect(component.value()).toBe('05:00');
+    });
+
+    it('shows a partly typed second before it commits', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:15');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [, , secondsInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(secondsInput, '4');
+      fixture.detectChanges();
+
+      expect(secondsInput.value).toBe('4');
+      expect(component.value()).toBe('09:30:15');
+    });
+
+    it('commits typed seconds and wraps focus back to hours', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:15');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [hoursInput, , secondsInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(secondsInput, '45');
+
+      expect(component.value()).toBe('09:30:45');
+      expect(document.activeElement).toBe(hoursInput);
+    });
+
+    it('advances from minutes to seconds when the seconds column is shown', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:00:00');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [, minutesInput, secondsInput] = getValueDisplays() as HTMLInputElement[];
+      typeInto(minutesInput, '45');
+
+      expect(component.value()).toBe('09:45:00');
+      expect(document.activeElement).toBe(secondsInput);
     });
 
     it('Escape clears the buffer and closes', () => {
@@ -875,6 +1119,15 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.value()).toBe('09:30');
+    });
+
+    it('reports no period and refuses to toggle one in 24h mode', () => {
+      component.writeValue('09:00');
+
+      component.togglePeriod();
+
+      expect(component.period()).toBeNull();
+      expect(component.value()).toBe('09:00');
     });
   });
 });

@@ -36,17 +36,17 @@ const SAMPLE_TREE: TreeNode[] = [
   imports: [TreeComponent],
   template: `
     <ea-tree
-      [nodes]="nodes"
+      [nodes]="nodes()"
       [(selectedId)]="selectedId"
       [(expandedIds)]="expandedIds"
-      [disabled]="disabled" />
+      [disabled]="disabled()" />
   `,
 })
 class HostComponent {
-  nodes: TreeNode[] = SAMPLE_TREE;
+  nodes = signal<readonly TreeNode[]>(SAMPLE_TREE);
   selectedId = signal<string | null>(null);
   expandedIds = signal<readonly string[]>([]);
-  disabled = false;
+  disabled = signal(false);
 }
 
 describe('TreeComponent', () => {
@@ -163,7 +163,7 @@ describe('TreeComponent', () => {
   });
 
   it('disables interaction when the [disabled] flag is set', () => {
-    host.disabled = true;
+    host.disabled.set(true);
     fixture.detectChanges();
 
     clickChevron('fruits');
@@ -262,7 +262,7 @@ describe('TreeComponent', () => {
 
     it('steps past a disabled first child when entering a branch', () => {
       host.expandedIds.set(['vegetables', 'leafy']);
-      host.nodes = [
+      host.nodes.set([
         {
           id: 'vegetables',
           label: 'Vegetables',
@@ -271,7 +271,7 @@ describe('TreeComponent', () => {
             { id: 'leek', label: 'Leek' },
           ],
         },
-      ];
+      ]);
       fixture.detectChanges();
 
       press('ArrowRight');
@@ -315,7 +315,7 @@ describe('TreeComponent', () => {
     });
 
     it('ignores keys entirely while disabled', () => {
-      host.disabled = true;
+      host.disabled.set(true);
       fixture.detectChanges();
 
       press('ArrowRight');
