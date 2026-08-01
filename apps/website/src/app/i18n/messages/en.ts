@@ -158,7 +158,7 @@ export const en: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Privacy | eagami',
+    metaTitle: 'Privacy | Eagami',
     metaDescription: 'What eagami.com collects, and what it does not.',
     title: 'Privacy policy',
     lastUpdated: date => `Last updated ${date}`,
@@ -166,7 +166,7 @@ export const en: WebMessages = {
       'This policy is maintained in English. Translations of the site interface do not change its meaning.',
   },
   terms: {
-    metaTitle: 'Terms | eagami',
+    metaTitle: 'Terms | Eagami',
     metaDescription: 'Terms for using eagami.com and the Eagami UI component library.',
     title: 'Terms of use',
     lastUpdated: date => `Last updated ${date}`,
@@ -174,7 +174,7 @@ export const en: WebMessages = {
       'These terms are maintained in English. Translations of the site interface do not change their meaning.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Page not found | Eagami',
     metaDescription: 'Page not found.',
     eyebrow: '404',
     title: 'Page not found',
@@ -204,7 +204,7 @@ export const en: WebMessages = {
       components: 'Components',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular Component Library',
+      metaTitle: 'Angular Component Library | Eagami UI',
       metaDescription:
         'Lightweight, accessible Angular component library built on CSS custom properties.',
       title: 'Eagami UI',

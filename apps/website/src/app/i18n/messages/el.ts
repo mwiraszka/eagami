@@ -164,7 +164,7 @@ export const el: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Απόρρητο | eagami',
+    metaTitle: 'Απόρρητο | Eagami',
     metaDescription: 'Τι συλλέγει το eagami.com και τι όχι.',
     title: 'Πολιτική απορρήτου',
     lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
@@ -172,7 +172,7 @@ export const el: WebMessages = {
       'Η πολιτική αυτή τηρείται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά της.',
   },
   terms: {
-    metaTitle: 'Όροι | eagami',
+    metaTitle: 'Όροι | Eagami',
     metaDescription:
       'Όροι χρήσης του eagami.com και της βιβλιοθήκης στοιχείων Eagami UI.',
     title: 'Όροι χρήσης',
@@ -181,7 +181,7 @@ export const el: WebMessages = {
       'Οι όροι αυτοί τηρούνται στα αγγλικά. Οι μεταφράσεις της διεπαφής του ιστότοπου δεν αλλάζουν το νόημά τους.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Η σελίδα δεν βρέθηκε | Eagami',
     metaDescription: 'Η σελίδα δεν βρέθηκε.',
     eyebrow: '404',
     title: 'Η σελίδα δεν βρέθηκε',
@@ -211,7 +211,7 @@ export const el: WebMessages = {
       components: 'Συστατικά',
     },
     index: {
-      metaTitle: 'Eagami UI | Βιβλιοθήκη συστατικών Angular',
+      metaTitle: 'Βιβλιοθήκη συστατικών Angular | Eagami UI',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
       title: 'Eagami UI',

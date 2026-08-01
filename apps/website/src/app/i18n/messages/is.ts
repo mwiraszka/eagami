@@ -160,7 +160,7 @@ export const is: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Persónuvernd | eagami',
+    metaTitle: 'Persónuvernd | Eagami',
     metaDescription: 'Hverju eagami.com safnar og hverju ekki.',
     title: 'Persónuverndarstefna',
     lastUpdated: date => `Síðast uppfært: ${date}`,
@@ -168,7 +168,7 @@ export const is: WebMessages = {
       'Þessari stefnu er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu hennar.',
   },
   terms: {
-    metaTitle: 'Skilmálar | eagami',
+    metaTitle: 'Skilmálar | Eagami',
     metaDescription: 'Skilmálar fyrir notkun á eagami.com og Eagami UI einingasafninu.',
     title: 'Notkunarskilmálar',
     lastUpdated: date => `Síðast uppfært: ${date}`,
@@ -176,7 +176,7 @@ export const is: WebMessages = {
       'Þessum skilmálum er viðhaldið á ensku. Þýðingar á viðmóti vefsins breyta ekki merkingu þeirra.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Síða fannst ekki | Eagami',
     metaDescription: 'Síða fannst ekki.',
     eyebrow: '404',
     title: 'Síða fannst ekki',
@@ -206,7 +206,7 @@ export const is: WebMessages = {
       components: 'Einingar',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular-einingasafn',
+      metaTitle: 'Angular-einingasafn | Eagami UI',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
       title: 'Eagami UI',

@@ -157,7 +157,7 @@ export const ar: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'الخصوصية | eagami',
+    metaTitle: 'الخصوصية | Eagami',
     metaDescription: 'ما الذي يجمعه موقع eagami.com وما لا يجمعه.',
     title: 'سياسة الخصوصية',
     lastUpdated: date => `آخر تحديث: ${date}`,
@@ -165,7 +165,7 @@ export const ar: WebMessages = {
       'يُحتفظ بهذه السياسة باللغة الإنجليزية. ترجمات واجهة الموقع لا تغيّر معناها.',
   },
   terms: {
-    metaTitle: 'الشروط | eagami',
+    metaTitle: 'الشروط | Eagami',
     metaDescription: 'شروط استخدام موقع eagami.com ومكتبة مكوّنات Eagami UI.',
     title: 'شروط الاستخدام',
     lastUpdated: date => `آخر تحديث: ${date}`,
@@ -173,7 +173,7 @@ export const ar: WebMessages = {
       'يُحتفظ بهذه الشروط باللغة الإنجليزية. ترجمات واجهة الموقع لا تغيّر معناها.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'الصفحة غير موجودة | Eagami',
     metaDescription: 'الصفحة غير موجودة.',
     eyebrow: '404',
     title: 'الصفحة غير موجودة',
@@ -203,7 +203,7 @@ export const ar: WebMessages = {
       components: 'المكوّنات',
     },
     index: {
-      metaTitle: 'Eagami UI | مكتبة مكوّنات Angular',
+      metaTitle: 'مكتبة مكوّنات Angular | Eagami UI',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
       title: 'Eagami UI',

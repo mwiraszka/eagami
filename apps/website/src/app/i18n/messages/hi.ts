@@ -159,7 +159,7 @@ export const hi: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'गोपनीयता | eagami',
+    metaTitle: 'गोपनीयता | Eagami',
     metaDescription: 'eagami.com क्या एकत्र करता है और क्या नहीं।',
     title: 'गोपनीयता नीति',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
@@ -167,7 +167,7 @@ export const hi: WebMessages = {
       'यह नीति अंग्रेज़ी में बनाए रखी जाती है। साइट इंटरफ़ेस के अनुवाद इसका अर्थ नहीं बदलते।',
   },
   terms: {
-    metaTitle: 'शर्तें | eagami',
+    metaTitle: 'शर्तें | Eagami',
     metaDescription: 'eagami.com और Eagami UI कंपोनेंट लाइब्रेरी के उपयोग की शर्तें।',
     title: 'उपयोग की शर्तें',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
@@ -175,7 +175,7 @@ export const hi: WebMessages = {
       'ये शर्तें अंग्रेज़ी में बनाए रखी जाती हैं। साइट इंटरफ़ेस के अनुवाद इनका अर्थ नहीं बदलते।',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'पेज नहीं मिला | Eagami',
     metaDescription: 'पेज नहीं मिला।',
     eyebrow: '404',
     title: 'पेज नहीं मिला',
@@ -205,7 +205,7 @@ export const hi: WebMessages = {
       components: 'कंपोनेंट',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular कंपोनेंट लाइब्रेरी',
+      metaTitle: 'Angular कंपोनेंट लाइब्रेरी | Eagami UI',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
       title: 'Eagami UI',

@@ -151,21 +151,21 @@ export const zhCN: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: '隐私 | eagami',
+    metaTitle: '隐私 | Eagami',
     metaDescription: 'eagami.com 收集哪些信息，不收集哪些信息。',
     title: '隐私政策',
     lastUpdated: date => `最后更新：${date}`,
     languageNote: '本政策以英文维护。站点界面的翻译不改变其含义。',
   },
   terms: {
-    metaTitle: '条款 | eagami',
+    metaTitle: '条款 | Eagami',
     metaDescription: '使用 eagami.com 和 Eagami UI 组件库的条款。',
     title: '使用条款',
     lastUpdated: date => `最后更新：${date}`,
     languageNote: '本条款以英文维护。站点界面的翻译不改变其含义。',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: '页面未找到 | Eagami',
     metaDescription: '页面未找到。',
     eyebrow: '404',
     title: '页面未找到',
@@ -195,7 +195,7 @@ export const zhCN: WebMessages = {
       components: '组件',
     },
     index: {
-      metaTitle: 'Eagami UI | Angular 组件库',
+      metaTitle: 'Angular 组件库 | Eagami UI',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
       title: 'Eagami UI',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',

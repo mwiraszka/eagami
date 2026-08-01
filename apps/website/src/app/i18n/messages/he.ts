@@ -154,21 +154,21 @@ export const he: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'פרטיות | eagami',
+    metaTitle: 'פרטיות | Eagami',
     metaDescription: 'מה eagami.com אוסף ומה לא.',
     title: 'מדיניות פרטיות',
     lastUpdated: date => `עודכן לאחרונה: ${date}`,
     languageNote: 'מדיניות זו מתוחזקת באנגלית. תרגומי ממשק האתר אינם משנים את משמעותה.',
   },
   terms: {
-    metaTitle: 'תנאי שימוש | eagami',
+    metaTitle: 'תנאי שימוש | Eagami',
     metaDescription: 'תנאים לשימוש ב-eagami.com ובספריית הרכיבים Eagami UI.',
     title: 'תנאי שימוש',
     lastUpdated: date => `עודכן לאחרונה: ${date}`,
     languageNote: 'תנאים אלה מתוחזקים באנגלית. תרגומי ממשק האתר אינם משנים את משמעותם.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'הדף לא נמצא | Eagami',
     metaDescription: 'הדף לא נמצא.',
     eyebrow: '404',
     title: 'הדף לא נמצא',
@@ -198,7 +198,7 @@ export const he: WebMessages = {
       components: 'רכיבים',
     },
     index: {
-      metaTitle: 'Eagami UI | ספריית רכיבי Angular',
+      metaTitle: 'ספריית רכיבי Angular | Eagami UI',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
       title: 'Eagami UI',

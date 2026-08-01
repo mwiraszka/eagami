@@ -164,7 +164,7 @@ export const ptBR: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Privacidade | eagami',
+    metaTitle: 'Privacidade | Eagami',
     metaDescription: 'O que o eagami.com coleta e o que não coleta.',
     title: 'Política de privacidade',
     lastUpdated: date => `Última atualização: ${date}`,
@@ -172,7 +172,7 @@ export const ptBR: WebMessages = {
       'Esta política é mantida em inglês. As traduções da interface do site não alteram seu significado.',
   },
   terms: {
-    metaTitle: 'Termos | eagami',
+    metaTitle: 'Termos | Eagami',
     metaDescription:
       'Termos de uso do eagami.com e da biblioteca de componentes Eagami UI.',
     title: 'Termos de uso',
@@ -181,7 +181,7 @@ export const ptBR: WebMessages = {
       'Estes termos são mantidos em inglês. As traduções da interface do site não alteram seu significado.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Página não encontrada | Eagami',
     metaDescription: 'Página não encontrada.',
     eyebrow: '404',
     title: 'Página não encontrada',
@@ -212,7 +212,7 @@ export const ptBR: WebMessages = {
       components: 'Componentes',
     },
     index: {
-      metaTitle: 'Eagami UI | Biblioteca de componentes Angular',
+      metaTitle: 'Biblioteca de componentes Angular | Eagami UI',
       metaDescription:
         'Biblioteca de componentes Angular leve e acessível, construída sobre propriedades personalizadas de CSS.',
       title: 'Eagami UI',

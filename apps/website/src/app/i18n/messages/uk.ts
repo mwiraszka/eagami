@@ -162,7 +162,7 @@ export const uk: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Конфіденційність | eagami',
+    metaTitle: 'Конфіденційність | Eagami',
     metaDescription: 'Що збирає eagami.com і чого не збирає.',
     title: 'Політика конфіденційності',
     lastUpdated: date => `Останнє оновлення: ${date}`,
@@ -170,7 +170,7 @@ export const uk: WebMessages = {
       'Ця політика ведеться англійською мовою. Переклади інтерфейсу сайту не змінюють її змісту.',
   },
   terms: {
-    metaTitle: 'Умови | eagami',
+    metaTitle: 'Умови | Eagami',
     metaDescription: 'Умови користування eagami.com і бібліотекою компонентів Eagami UI.',
     title: 'Умови використання',
     lastUpdated: date => `Останнє оновлення: ${date}`,
@@ -178,7 +178,7 @@ export const uk: WebMessages = {
       'Ці умови ведуться англійською мовою. Переклади інтерфейсу сайту не змінюють їх змісту.',
   },
   notFound: {
-    metaTitle: 'Eagami | 404',
+    metaTitle: 'Сторінку не знайдено | Eagami',
     metaDescription: 'Сторінку не знайдено.',
     eyebrow: '404',
     title: 'Сторінку не знайдено',
@@ -208,7 +208,7 @@ export const uk: WebMessages = {
       components: 'Компоненти',
     },
     index: {
-      metaTitle: 'Eagami UI | Бібліотека компонентів Angular',
+      metaTitle: 'Бібліотека компонентів Angular | Eagami UI',
       metaDescription:
         'Легка, доступна бібліотека компонентів Angular на основі CSS-змінних.',
       title: 'Eagami UI',
