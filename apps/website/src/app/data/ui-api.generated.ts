@@ -1364,6 +1364,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'open(): void',
       },
       {
+        name: 'pullFocusIntoView',
+        signature: 'pullFocusIntoView(): void',
+      },
+      {
         name: 'toggle',
         signature: 'toggle(): void',
       },

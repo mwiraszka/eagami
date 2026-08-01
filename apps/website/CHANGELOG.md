@@ -2,6 +2,20 @@
 
 All notable changes to eagami.com are documented in this file.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.16.2] - 2026-08-01
+
+### Fixed
+
+- Drop the retired "design system" wording from the integration guides and the page keywords.
+- Correct the icon totals quoted in an older changelog entry.
+
+### Changed
+
+- Pick up @eagami/ui v5.14.1.
+
 ## [3.16.1] - 2026-08-01
 
 ### Changed
@@ -657,10 +671,10 @@ All notable changes to eagami.com are documented in this file.
 
 ### Added
 
-- Pick up @eagami/ui v1.4.0, which adds 11 new icons (`bottle`, `candle`, `circle`, `heptagon`, `hexagon`, `lamp`, `pentagon`, `rectangle-horizontal`, `rectangle-vertical`, `soccer-ball`, `trophy`) and closes coverage of the upstream Feather Icons set: 39 previously-missing Feather icons (arrows, chevrons, weather, phone variants, etc.) plus second-variant Feather-outline versions (`<brand>-2`) of every brand mark that ships as a filled brand-coloured icon. Categorization on the page is now invariant: every icon is exactly one of `feather` or `eagami`, with `brand` as an orthogonal tag. Total visible on `/ui/icons`: 326 (the deprecated `pencil` alias is hidden).
+- Pick up @eagami/ui v1.4.0, which adds 11 new icons (`bottle`, `candle`, `circle`, `heptagon`, `hexagon`, `lamp`, `pentagon`, `rectangle-horizontal`, `rectangle-vertical`, `soccer-ball`, `trophy`) and closes coverage of the upstream Feather Icons set: 39 previously-missing Feather icons (arrows, chevrons, weather, phone variants, etc.) plus second-variant Feather-outline versions (`<brand>-2`) of every brand mark that ships as a filled brand-coloured icon. Categorization on the page is now invariant: every icon is exactly one of `feather` or `eagami`, with `brand` as an orthogonal tag. Total visible on `/ui/icons`: 323 (the deprecated `pencil` alias is hidden).
 - Add a sticky search-and-filter card to `/ui/icons`. Typing matches against a multilingual tag list per icon (English plus French, Spanish, Greek, and Polish equivalents), so a French user can find `cœur` for `heart`, a Polish user can find `wiadomość` for the message icons, and so on. Diacritics are normalized on both sides of the match, the input is capped at 64 characters, and an empty-result state shows a localized "no icons match your search" message. The card sits as a rounded, drop-shadowed panel below the app header so it reads as its own UI rather than a header extension. Stickiness is scoped to the icon-grid section so the card releases before the brand-icons reference section.
 - Add three category checkboxes (Feather, Eagami UI, Brand), built with `<ea-checkbox>` from the library, to the filter card. Each carries its running count in dimmer secondary text, and hovering the row tints both the label and the count for clear interactive affordance. Combined with the text filter, they let a reader narrow to e.g. "all Eagami UI shapes" in one click. Categories live on each icon as a typed `categories: IconCategory[]` field so an icon can belong to more than one group (e.g. the `eagami` brand mark counts as both `eagami` and `brand`).
-- Show a running total below the input (`279 icons` when unfiltered, `42 of 279 icons` when narrowed), localized in all five locales and announced via `aria-live="polite"` so screen readers pick up the new total as the user types.
+- Show a running total below the input (`323 icons` when unfiltered, `42 of 323 icons` when narrowed), localized in all five locales and announced via `aria-live="polite"` so screen readers pick up the new total as the user types.
 - Tag audio-control icons (play, pause, skip-forward, headphones, volume, etc.) with `music` / `audio` so a user can collect the whole group with one query. Other family tags (`shape` on all basic shapes) round out the multilingual coverage.
 
 ### Changed
@@ -675,27 +689,21 @@ All notable changes to eagami.com are documented in this file.
 
 - Translate the entire site into five locales (English, French, Greek, Polish, Spanish). Every page (Home, UI Overview, UI Setup, UI Design tokens, UI Icons, UI Internationalization, UI Components, 404) plus the header, footer, theme toggle, and 404 page now reads in the active language, and the active locale also drives every embedded `@eagami/ui` component (date picker, paginator, etc.) through `EagamiI18nService`.
 - Add a globe icon and locale dropdown to the app header. Switching language updates the UI immediately and persists across reloads (same pattern as the dark-mode toggle), and the `<html lang>` attribute updates so assistive tech and search engines pick up the right language.
+- Auto-detect the user's preferred theme and locale on first visit. Theme falls back to the OS preference (`prefers-color-scheme: dark` → dark mode), and locale picks the first match in `navigator.languages` (exact, then language-only — `fr-CA` resolves to `fr-FR`, `es-MX` to `es-ES`, etc.). Explicit choices through the toggle and locale switcher still win and persist as before.
 
 ### Changed
 
-- Pick up @eagami/ui v1.3.0, which expands the icon set from 100 to 268 icons. The Icons documentation page now lists every Feather icon plus a coloured brand-icon set, with links to each brand's official guidelines.
+- Pick up @eagami/ui v1.3.0, which expands the icon set from 101 to 268 icons. The Icons documentation page now lists every Feather icon plus a coloured brand-icon set, with links to each brand's official guidelines.
 - Run the dev server on port 4444 by default (set in `angular.json`), avoiding collisions with other Angular dev servers on the default 4200.
 - Replace the CSS-only `[data-tooltip]` pattern used on header links and toggles with the library's `[eaTooltip]` directive so every tooltip benefits from the directive's viewport clamping and re-positions cleanly when the page reflows under it.
+- Remove the GitHub link from the app header. It was duplicated in the footer; the footer is the canonical home for repository / npm links. Footer npm and GitHub links now carry tooltips ("View @eagami/ui on npm", "View source on GitHub", localised).
+- Refresh the "Ongoing maintenance" service description: "Monthly upkeep covering hosting, security patches, dependency upgrades, content edits, and analytics reviews." Sharper verbs throughout ("patches" for unambiguous security fixes, "dependency upgrades" for "third-party package upgrades", "edits" for "revisions", "analytics reviews" to clarify the work is reviewing analytics, not setting them up). Translated to all five locales.
 
 ### Fixed
 
 - Eliminate the theme and locale flash on reload. The inline `<head>` bootstrap script now resolves theme and locale (auto-detecting from `prefers-color-scheme` and `navigator.languages` when nothing is stored), then sets `data-theme` and `<html lang>` before any paint. For locales other than the prerendered English, the body is held with `visibility: hidden` until `AppComponent`'s `ApplicationRef.isStable` callback fires — waiting on full app stability rather than just the first render lets Angular's hydration reconciliation finish swapping the English strings out for the active locale's strings before the gate lifts.
 - Inset the focus ring on the `/ui` sidebar so it no longer gets clipped on the right and bottom edges by neighbouring grid cells and the sticky scroll context.
 - Polish: change the UI overview "Zacznij" link from "Instalacja" (nominative) to "Instalacji" (genitive) so "Przejdź do Instalacji" reads naturally, and route every locale's `getStartedAfter` through the same whitespace-suppressed template so the comma in the Polish phrase no longer renders with a leading space.
-
-### Changed
-
-- Remove the GitHub link from the app header. It was duplicated in the footer; the footer is the canonical home for repository / npm links. Footer npm and GitHub links now carry tooltips ("View @eagami/ui on npm", "View source on GitHub", localised).
-- Refresh the "Ongoing maintenance" service description: "Monthly upkeep covering hosting, security patches, dependency upgrades, content edits, and analytics reviews." Sharper verbs throughout ("patches" for unambiguous security fixes, "dependency upgrades" for "third-party package upgrades", "edits" for "revisions", "analytics reviews" to clarify the work is reviewing analytics, not setting them up). Translated to all five locales.
-
-### Added
-
-- Auto-detect the user's preferred theme and locale on first visit. Theme falls back to the OS preference (`prefers-color-scheme: dark` → dark mode), and locale picks the first match in `navigator.languages` (exact, then language-only — `fr-CA` resolves to `fr-FR`, `es-MX` to `es-ES`, etc.). Explicit choices through the toggle and locale switcher still win and persist as before.
 
 ## [1.2.0] - 2026-05-16
 
@@ -1020,6 +1028,7 @@ All notable changes to eagami.com are documented in this file.
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.16.2]: https://github.com/mwiraszka/eagami/compare/website-v3.16.1...website-v3.16.2
 [3.16.1]: https://github.com/mwiraszka/eagami/compare/website-v3.16.0...website-v3.16.1
 [3.16.0]: https://github.com/mwiraszka/eagami/compare/website-v3.15.7...website-v3.16.0
 [3.15.7]: https://github.com/mwiraszka/eagami/compare/website-v3.15.6...website-v3.15.7

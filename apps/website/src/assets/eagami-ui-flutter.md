@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.14.0
-source: '@eagami/ui@5.14.0 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-07-31
+version: 5.14.1
+source: '@eagami/ui@5.14.1 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-08-01
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.14.0 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.14.1 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -3179,7 +3179,7 @@ Only the visible slice (plus `overscan`) is mounted at any time, so the list sta
 
 ## 6. Internationalization
 
-Eagami UI ships full i18n. Every built-in user-facing string (ARIA labels, placeholders, empty states, pagination labels, dismiss buttons, etc.) is provided in fifteen locales and can be overridden per-string. Locales are opt-in as of @eagami/ui@4.0.0: English is always available without registration, and every other locale must be registered (upstream via `provideEagamiUi({ locales: [...] })`) so only the languages you ship land in the bundle. Two locales are right-to-left (Arabic and Hebrew); every locale carries a `dir` field so a consumer can wire `Directionality` correctly. A Flutter consumer should replicate the same surface so the design system stays consistent across both stacks.
+Eagami UI ships full i18n. Every built-in user-facing string (ARIA labels, placeholders, empty states, pagination labels, dismiss buttons, etc.) is provided in fifteen locales and can be overridden per-string. Locales are opt-in as of @eagami/ui@4.0.0: English is always available without registration, and every other locale must be registered (upstream via `provideEagamiUi({ locales: [...] })`) so only the languages you ship land in the bundle. Two locales are right-to-left (Arabic and Hebrew); every locale carries a `dir` field so a consumer can wire `Directionality` correctly. A Flutter consumer should replicate the same surface so the component library stays consistent across both stacks.
 
 ### 6.1 Supported locales
 
