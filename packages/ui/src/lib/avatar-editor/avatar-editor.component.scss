@@ -4,8 +4,16 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: 0.75em;
   font-family: var(--font-family-sans);
+  // The chrome shares the canvas's footprint, so it scales from the canvas
+  // rather than the shared size scale. Clamped so a tiny canvas stays legible
+  // and a large one does not inflate the surrounding text.
+  font-size: clamp(
+    0.625rem,
+    calc(var(--ea-avatar-editor-canvas, 200px) * 0.075),
+    0.875rem
+  );
 
   &__file-input,
   &__visually-hidden {
@@ -17,10 +25,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--space-2);
-    padding: var(--space-4);
+    gap: 0.5em;
+    padding: 1em;
     font-family: inherit;
-    font-size: var(--font-size-sm);
+    font-size: inherit;
     line-height: var(--line-height-normal);
     border: 2px dashed var(--color-border-default);
     border-radius: var(--radius-lg);
@@ -52,37 +60,13 @@
   }
 
   &__upload-icon {
-    width: 32px;
-    height: 32px;
+    width: 2.25em;
+    height: 2.25em;
     opacity: 0.6;
   }
 
   &__dropzone-text {
     text-align: center;
-  }
-
-  &--compact &__dropzone {
-    gap: var(--space-1-5);
-    padding: var(--space-3);
-    font-size: 0.75rem;
-    line-height: 1.35;
-  }
-
-  &--compact &__upload-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  &--ultra-compact &__dropzone {
-    gap: var(--space-1);
-    padding: var(--space-2);
-    font-size: 0.625rem;
-    line-height: 1.2;
-  }
-
-  &--ultra-compact &__upload-icon {
-    width: 16px;
-    height: 16px;
   }
 
   &__canvas-wrapper {
@@ -129,8 +113,8 @@
   }
 
   &__overlay-icon {
-    width: 24px;
-    height: 24px;
+    width: 1.75em;
+    height: 1.75em;
   }
 
   &__canvas-wrapper:hover &__canvas-overlay {
@@ -140,7 +124,7 @@
   &__controls {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.5em;
   }
 
   &__icon-btn {
@@ -166,16 +150,16 @@
   }
 
   &__zoom-slider {
-    width: 7rem;
-    height: 4px;
+    width: 8em;
+    height: 0.3em;
     border-radius: var(--radius-full);
     background: var(--color-neutral-200);
     appearance: none;
     cursor: pointer;
 
     &::-webkit-slider-thumb {
-      width: 1rem;
-      height: 1rem;
+      width: 1.15em;
+      height: 1.15em;
       border: 2px solid var(--color-brand-default);
       border-radius: var(--radius-full);
       background: var(--color-bg-base);
@@ -188,8 +172,8 @@
     }
 
     &::-moz-range-thumb {
-      width: 1rem;
-      height: 1rem;
+      width: 1.15em;
+      height: 1.15em;
       border: 2px solid var(--color-brand-default);
       border-radius: var(--radius-full);
       background: var(--color-bg-base);

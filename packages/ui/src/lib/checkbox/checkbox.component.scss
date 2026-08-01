@@ -9,20 +9,14 @@
 .ea-checkbox-field {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--space-1-5);
-}
+  gap: 0.375em;
 
-.ea-checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  cursor: pointer;
-  user-select: none;
-  font-family: var(--font-family-sans);
-  color: var(--color-text-primary);
+  // Size sets only the font-size here; the box dimensions, the label, the gap,
+  // and the message size below are all em-based, so the whole field scales from
+  // this one knob. At md the messages land exactly on the fixed
+  // --text-helper-size token.
+  --ea-field-messages-size: 0.8125em;
 
-  // Size sets only the font-size; the box dimensions and gap are em-based on the
-  // base rule, so the checkbox scales entirely from this one knob.
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -42,6 +36,16 @@
   &--xl {
     font-size: var(--font-size-xl);
   }
+}
+
+.ea-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
 
   &--disabled {
     opacity: 0.45;

@@ -153,8 +153,14 @@ export class DropdownComponent implements ControlValueAccessor {
     }
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
-      const idx = this.options().findIndex(o => o.value === this.value());
-      this.focusedIndex.set(idx >= 0 ? idx : 0);
+      const selected = this.options().findIndex(o => o.value === this.value());
+      if (selected >= 0) {
+        this.focusedIndex.set(selected);
+      } else {
+        // Falling back to index 0 would point the active descendant at a
+        // disabled first option, so walk to the first selectable one instead
+        this.focusEdge(1);
+      }
     }
   }
 

@@ -7,7 +7,13 @@
 .ea-rating-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
+
+  // Size sets only the font-size; the gap, the stars, and the label and message
+  // sizes below are all em-based, so the whole field scales from this one knob.
+  // At md they land on the fixed label and helper tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
 
   &__stars {
     display: inline-flex;

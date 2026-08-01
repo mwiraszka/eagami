@@ -55,8 +55,14 @@ describe('DatePicker localized calendar names', () => {
     fixture.detectChanges();
 
     const r = openAndRead();
+    // The calendar opens on the current month, so the expected name has to come
+    // from the bundle by index rather than being pinned to one month
+    const expectedMonth = svc
+      .messages()
+      .datePicker.months[new Date().getMonth()].toLowerCase();
+
     expect(r.weekdays).toEqual(['mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau.', 'sun.']);
-    expect(r.month.toLowerCase()).toContain('júl');
+    expect(r.month.toLowerCase()).toContain(expectedMonth);
     expect(r.today).toBe('Í dag');
   });
 

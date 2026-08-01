@@ -3,7 +3,33 @@
 .ea-multi-select-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
+
+  // Size sets only the font-size; the gap and the trigger box are em-based, and
+  // the label and messages consume these em-valued properties, so the whole
+  // field scales from this one knob.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .ea-multi-select {
@@ -11,7 +37,7 @@
 
   // The wrapper owns the bordered box and all field states so the clear button
   // and chevron can sit beside the chips as always-visible siblings, outside the
-  // scrolling combobox; size sets only the font-size, every dimension is em-based.
+  // scrolling combobox.
   &__trigger-wrapper {
     position: relative;
     display: flex;
@@ -26,26 +52,6 @@
     color: var(--color-text-primary);
     cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
-
-    &--xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &--sm {
-      font-size: var(--font-size-sm);
-    }
-
-    &--md {
-      font-size: var(--font-size-md);
-    }
-
-    &--lg {
-      font-size: var(--font-size-lg);
-    }
-
-    &--xl {
-      font-size: var(--font-size-xl);
-    }
 
     &:has(.ea-multi-select__trigger:focus-visible) {
       @include ea.focus-ring;

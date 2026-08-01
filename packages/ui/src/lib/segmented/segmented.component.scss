@@ -16,10 +16,36 @@
 .ea-segmented-field {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
+
+  // Size sets only the font-size; the gap, the option box, and the label and
+  // message sizes below are all em-based, so the whole field scales from this
+  // one knob. At md they land on the fixed label and helper tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
 
   &--full-width {
     width: 100%;
+  }
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
   }
 }
 
@@ -55,38 +81,6 @@
     border-color: var(--color-error-default);
   }
 
-  // Size sets only the font-size; min-height, padding, and gap are em-based on the
-  // base __option rule, so the control scales entirely from this one knob.
-  &--xs {
-    .ea-segmented__option {
-      font-size: var(--font-size-xs);
-    }
-  }
-
-  &--sm {
-    .ea-segmented__option {
-      font-size: var(--font-size-sm);
-    }
-  }
-
-  &--md {
-    .ea-segmented__option {
-      font-size: var(--font-size-md);
-    }
-  }
-
-  &--lg {
-    .ea-segmented__option {
-      font-size: var(--font-size-lg);
-    }
-  }
-
-  &--xl {
-    .ea-segmented__option {
-      font-size: var(--font-size-xl);
-    }
-  }
-
   &__option {
     display: inline-flex;
     align-items: center;
@@ -94,6 +88,8 @@
     gap: 0.375em;
     min-height: 2.25em;
     padding: 0.375em 0.75em;
+    // buttons don't inherit font-size, so pull it from the sized field root
+    font-size: inherit;
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-tight);
     background: transparent;

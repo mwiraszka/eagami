@@ -3,7 +3,34 @@
 .ea-color-picker-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
+
+  // Size sets only the font-size here; the trigger, the gap, and the label and
+  // message sizes below are all em-based, so the whole field scales from this
+  // one knob. At md these land exactly on the fixed
+  // --text-label-md-size / --text-helper-size tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .ea-color-picker {
@@ -11,26 +38,6 @@
 
   &__trigger-wrapper {
     position: relative;
-
-    &--xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &--sm {
-      font-size: var(--font-size-sm);
-    }
-
-    &--md {
-      font-size: var(--font-size-md);
-    }
-
-    &--lg {
-      font-size: var(--font-size-lg);
-    }
-
-    &--xl {
-      font-size: var(--font-size-xl);
-    }
   }
 
   &__trigger {
@@ -52,28 +59,6 @@
     &:focus-visible {
       outline: none;
       @include ea.focus-ring;
-    }
-
-    // Size sets only the font-size; padding, gap, min-height, and the swatch are
-    // em-based, so the trigger scales entirely from this one knob.
-    &--xs {
-      font-size: var(--font-size-xs);
-    }
-
-    &--sm {
-      font-size: var(--font-size-sm);
-    }
-
-    &--md {
-      font-size: var(--font-size-md);
-    }
-
-    &--lg {
-      font-size: var(--font-size-lg);
-    }
-
-    &--xl {
-      font-size: var(--font-size-xl);
     }
 
     &--open {

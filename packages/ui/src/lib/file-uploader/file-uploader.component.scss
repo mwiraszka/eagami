@@ -7,12 +7,15 @@
 .ea-file-uploader-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: 0.375em;
 
-  // Size sets only the font-size; dropzone padding, the icon, the list rows, and
-  // the embedded buttons are all em-based, so everything scales from this one
-  // knob. The label and messages set their own absolute font-size, so they stay
-  // fixed across sizes.
+  // Size sets only the font-size; dropzone padding, the icon, the list rows, the
+  // embedded buttons, the gap, and the label and message sizes below are all
+  // em-based, so everything scales from this one knob. At md these land exactly
+  // on the fixed --text-label-md-size / --text-helper-size tokens.
+  --ea-field-label-size: 0.875em;
+  --ea-field-messages-size: 0.8125em;
+
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -95,7 +98,7 @@
   }
 
   &__constraints {
-    font-size: var(--text-helper-size);
+    font-size: var(--ea-field-messages-size, var(--text-helper-size));
     line-height: var(--text-helper-lh);
     color: var(--color-text-tertiary);
   }
@@ -163,7 +166,7 @@
   }
 
   &__size {
-    font-size: var(--text-helper-size);
+    font-size: var(--ea-field-messages-size, var(--text-helper-size));
     line-height: var(--text-helper-lh);
     color: var(--color-text-tertiary);
   }

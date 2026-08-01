@@ -14,6 +14,27 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.14.0',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "Scale every form component's label, hint, and error text with its `size`, so a large field no longer pairs a large control with small chrome. Sizes other than `md` change appearance; `md` is unchanged.",
+          "Scale the progress bar's label and value with its `size`, which previously rendered identically at every size.",
+          "Scale the avatar editor's dropzone, icons, and controls continuously from `canvasSize` instead of switching at two hard-coded breakpoints, so a small canvas no longer jumps between densities.",
+          "Derive the drawer's panel extent from one custom property per axis, replacing the per-size width and height rules duplicated across each placement.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Open the dropdown onto the first selectable option instead of highlighting a disabled first option.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.13.0',
     date: '2026-08-01',
     sections: [

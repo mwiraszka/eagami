@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.14.0] - 2026-08-01
+
+### Changed
+
+- Scale every form component's label, hint, and error text with its `size`, so a large field no longer pairs a large control with small chrome. Sizes other than `md` change appearance; `md` is unchanged.
+- Scale the progress bar's label and value with its `size`, which previously rendered identically at every size.
+- Scale the avatar editor's dropzone, icons, and controls continuously from `canvasSize` instead of switching at two hard-coded breakpoints, so a small canvas no longer jumps between densities.
+- Derive the drawer's panel extent from one custom property per axis, replacing the per-size width and height rules duplicated across each placement.
+
+### Fixed
+
+- Open the dropdown onto the first selectable option instead of highlighting a disabled first option.
+
 ## [5.13.0] - 2026-08-01
 
 ### Added
@@ -1145,6 +1158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.14.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.13.0...ui-v5.14.0
 [5.13.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.2...ui-v5.13.0
 [5.12.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.1...ui-v5.12.2
 [5.12.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.12.0...ui-v5.12.1
