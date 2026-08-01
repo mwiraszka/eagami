@@ -196,7 +196,8 @@ export const ptBR: WebMessages = {
       metaTitle: 'Registro de alterações | Eagami UI',
       metaDescription:
         'Histórico de versões da biblioteca de componentes Angular Eagami UI.',
-      lead: 'Alterações notáveis no @eagami/ui, das mais recentes primeiro.',
+      leadBefore: 'Alterações notáveis no ',
+      leadAfter: ', das mais recentes primeiro.',
       migrationGuide: 'Guia de migração',
       fullHistory: 'Histórico completo no GitHub',
     },

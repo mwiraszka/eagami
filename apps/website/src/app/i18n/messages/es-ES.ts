@@ -195,7 +195,8 @@ export const esES: WebMessages = {
       metaTitle: 'Registro de cambios | Eagami UI',
       metaDescription:
         'Historial de versiones de la biblioteca de componentes Angular Eagami UI.',
-      lead: 'Cambios destacados en @eagami/ui, los más recientes primero.',
+      leadBefore: 'Cambios destacados en ',
+      leadAfter: ', los más recientes primero.',
       migrationGuide: 'Guía de migración',
       fullHistory: 'Historial completo en GitHub',
     },

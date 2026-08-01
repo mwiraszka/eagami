@@ -112,7 +112,8 @@ export interface WebMessages {
       title: string;
       metaTitle: string;
       metaDescription: string;
-      lead: string;
+      leadBefore: string;
+      leadAfter: string;
       migrationGuide: string;
       fullHistory: string;
     };

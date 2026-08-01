@@ -196,7 +196,8 @@ export const nl: WebMessages = {
       metaTitle: 'Wijzigingslogboek | Eagami UI',
       metaDescription:
         'Versiegeschiedenis van de Eagami UI Angular-componentenbibliotheek.',
-      lead: 'Noemenswaardige wijzigingen aan @eagami/ui, nieuwste eerst.',
+      leadBefore: 'Noemenswaardige wijzigingen aan ',
+      leadAfter: ', nieuwste eerst.',
       migrationGuide: 'Migratiegids',
       fullHistory: 'Volledige geschiedenis op GitHub',
     },
