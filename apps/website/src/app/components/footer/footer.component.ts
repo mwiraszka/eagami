@@ -1,6 +1,7 @@
 import { DividerComponent, GithubIconComponent, TooltipDirective } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 
@@ -8,7 +9,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-footer',
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
-  imports: [DividerComponent, GithubIconComponent, TooltipDirective],
+  imports: [DividerComponent, GithubIconComponent, RouterLink, TooltipDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {

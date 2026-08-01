@@ -13,6 +13,16 @@
     [attr.aria-label]="messages().common.footer.navLabel">
     <a
       class="web-footer__link"
+      routerLink="/privacy">
+      {{ messages().common.footer.privacyLink }}
+    </a>
+    <a
+      class="web-footer__link"
+      routerLink="/terms">
+      {{ messages().common.footer.termsLink }}
+    </a>
+    <a
+      class="web-footer__link"
       href="https://www.npmjs.com/package/@eagami/ui"
       target="_blank"
       rel="noopener noreferrer"

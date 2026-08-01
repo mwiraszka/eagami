@@ -10,6 +10,18 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'privacy',
+    loadComponent: () =>
+      import('./pages/legal/privacy/privacy-page.component').then(
+        c => c.PrivacyPageComponent,
+      ),
+  },
+  {
+    path: 'terms',
+    loadComponent: () =>
+      import('./pages/legal/terms/terms-page.component').then(c => c.TermsPageComponent),
+  },
+  {
     path: 'ui',
     loadComponent: () =>
       import('./pages/ui/ui-shell/ui-shell.component').then(c => c.UiShellComponent),
