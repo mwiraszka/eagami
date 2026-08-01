@@ -208,4 +208,105 @@ describe('NumberInputComponent', () => {
       expect(changed).not.toHaveBeenCalled();
     });
   });
+
+  describe('Typing guards and commit', () => {
+    function type(value: string): void {
+      input().value = value;
+      input().dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+    }
+
+    function keydown(key: string): KeyboardEvent {
+      const event = new KeyboardEvent('keydown', { key, cancelable: true });
+      input().dispatchEvent(event);
+      fixture.detectChanges();
+      return event;
+    }
+
+    it('blocks exponent notation, which would escape the bounds', () => {
+      expect(keydown('e').defaultPrevented).toBe(true);
+      expect(keydown('E').defaultPrevented).toBe(true);
+    });
+
+    it('blocks the minus sign only when negatives are disallowed', () => {
+      fixture.componentRef.setInput('allowNegative', false);
+      fixture.detectChanges();
+
+      expect(keydown('-').defaultPrevented).toBe(true);
+
+      fixture.componentRef.setInput('allowNegative', true);
+      fixture.detectChanges();
+
+      expect(keydown('-').defaultPrevented).toBe(false);
+    });
+
+    it('leaves ordinary digits alone', () => {
+      expect(keydown('5').defaultPrevented).toBe(false);
+    });
+
+    it('swallows the wheel only while focused, so a page scroll cannot nudge it', () => {
+      const away = new WheelEvent('wheel', { cancelable: true });
+      input().dispatchEvent(away);
+
+      expect(away.defaultPrevented).toBe(false);
+
+      input().dispatchEvent(new Event('focus'));
+      fixture.detectChanges();
+      const focused = new WheelEvent('wheel', { cancelable: true });
+      input().dispatchEvent(focused);
+
+      expect(focused.defaultPrevented).toBe(true);
+    });
+
+    it('clamps into range on blur but not while typing', () => {
+      fixture.componentRef.setInput('min', 0);
+      fixture.componentRef.setInput('max', 10);
+      fixture.detectChanges();
+
+      type('50');
+
+      expect(component.value()).toBe(50);
+
+      input().dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe(10);
+    });
+
+    it('treats a cleared field as null', () => {
+      type('7');
+
+      type('');
+
+      expect(component.value()).toBeNull();
+    });
+
+    it('stays quiet on a blur that changes nothing', () => {
+      component.writeValue(5);
+      fixture.detectChanges();
+      const changed = vi.fn<(value: number | null) => void>();
+      component.changed.subscribe(changed);
+
+      input().dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(changed).not.toHaveBeenCalled();
+    });
+
+    it('accepts an out-of-range value written by the form without clamping it', () => {
+      fixture.componentRef.setInput('max', 10);
+      fixture.detectChanges();
+
+      component.writeValue(99);
+      fixture.detectChanges();
+
+      expect(component.value()).toBe(99);
+    });
+
+    it('treats a non-numeric form value as empty', () => {
+      component.writeValue(Number.NaN);
+
+      expect(component.value()).toBeNull();
+    });
+  });
 });

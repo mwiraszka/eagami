@@ -158,6 +158,37 @@ describe('ColorPickerComponent', () => {
       expect(toggle.textContent?.trim()).toBe('RGB');
     });
 
+    it('re-emits the colour in the newly chosen notation', () => {
+      component.value.set('#ff8800');
+      fixture.detectChanges();
+      const changed = vi.fn<(value: string | null) => void>();
+      component.changed.subscribe(changed);
+      open();
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('rgb(255, 136, 0)');
+      expect(changed).toHaveBeenCalledWith('rgb(255, 136, 0)');
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('hsl(32, 100%, 50%)');
+    });
+
+    it('emits nothing when there is no colour to reformat', () => {
+      const changed = vi.fn<(value: string | null) => void>();
+      component.changed.subscribe(changed);
+      open();
+
+      component.cycleInputMode();
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(changed).not.toHaveBeenCalled();
+    });
+
     it('cycles to HSL and renders H, S, L inputs', () => {
       open();
       component.cycleInputMode();
@@ -555,6 +586,20 @@ describe('ColorPickerComponent', () => {
     beforeEach(() => {
       component.writeValue('#ff0000');
       open();
+    });
+
+    it('sends End to the far end of the strip, not back to the start', () => {
+      hueKey('End');
+
+      expect(getHueTrack().getAttribute('aria-valuenow')).toBe('360');
+    });
+
+    it('sends Home to the start of the strip', () => {
+      hueKey('End');
+
+      hueKey('Home');
+
+      expect(getHueTrack().getAttribute('aria-valuenow')).toBe('0');
     });
 
     it('advances hue on ArrowRight and rolls past 360', () => {
@@ -1351,6 +1396,35 @@ describe('ColorPickerComponent', () => {
       open();
 
       expect(document.body.querySelector('.ea-color-picker__tool-btn')).toBeNull();
+    });
+  });
+
+  describe('Preset and swatch state', () => {
+    function presetButtons(): HTMLButtonElement[] {
+      return Array.from(document.body.querySelectorAll('.ea-color-picker__preset'));
+    }
+
+    it('marks the matching preset pressed whatever format the value is in', () => {
+      fixture.componentRef.setInput('presets', ['#ff0000', '#00ff00']);
+      fixture.componentRef.setInput('format', 'rgb');
+      component.writeValue('rgb(255, 0, 0)');
+      open();
+
+      const pressed = presetButtons().map(b => b.getAttribute('aria-pressed'));
+
+      expect(pressed).toEqual(['true', 'false']);
+    });
+
+    it('keeps the swatch opaque when the alpha slider is off', () => {
+      fixture.componentRef.setInput('showAlpha', false);
+      component.value.set('#ff000080');
+      fixture.detectChanges();
+
+      const swatch: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-color-picker__swatch-fill',
+      );
+
+      expect(swatch.style.backgroundColor).toBe('rgba(255, 0, 0, 1)');
     });
   });
 });

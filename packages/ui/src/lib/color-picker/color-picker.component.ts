@@ -199,9 +199,34 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   readonly rgb = computed<Rgb>(() => hsvToRgb(this.hue(), this.sat(), this.val()));
 
+  /**
+   * Presets whose colour matches the current one. Comparing the parsed colour
+   * rather than the emitted string keeps the pressed state working in every
+   * output format, not only when the value happens to be canonical hex.
+   */
+  protected readonly activePresets = computed(() => {
+    const { r, g, b } = this.rgb();
+    const a = this.showAlpha() ? this.alpha() : 1;
+    return new Set(
+      this.presets().filter(preset => {
+        const parsed = parseColor(preset);
+        return (
+          !!parsed &&
+          parsed.r === r &&
+          parsed.g === g &&
+          parsed.b === b &&
+          Math.abs(parsed.a - a) < 0.005
+        );
+      }),
+    );
+  });
+
   readonly displayColor = computed(() => {
     const { r, g, b } = this.rgb();
-    return `rgba(${r}, ${g}, ${b}, ${this.alpha()})`;
+    // With the alpha slider off the emitted value is always opaque, so the
+    // swatch must not preview a transparency the consumer never receives
+    const a = this.showAlpha() ? this.alpha() : 1;
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
   });
 
   /** Opaque version of the current color, used as the hue/SV reference. */
@@ -488,11 +513,15 @@ export class ColorPickerComponent implements ControlValueAccessor {
         h += step;
         break;
       case 'Home':
-        h = 0;
-        break;
+        this.applyHsv(0, this.sat(), this.val());
+        event.preventDefault();
+        return;
       case 'End':
-        h = 360;
-        break;
+        // The pointer path reaches 360 at the right edge, so End must too;
+        // wrapping it would send the thumb to the opposite end
+        this.applyHsv(360, this.sat(), this.val());
+        event.preventDefault();
+        return;
       default:
         return;
     }
@@ -634,6 +663,11 @@ export class ColorPickerComponent implements ControlValueAccessor {
   /** Cycles the format through hex, rgb, and hsl (only used when `format` is `all`). */
   cycleInputMode(): void {
     this.inputMode.update(m => (m === 'hex' ? 'rgb' : m === 'rgb' ? 'hsl' : 'hex'));
+    // The toggle picks the notation the consumer receives, so re-emit straight
+    // away rather than leaving the value in the old format until the next edit
+    if (this.value() !== null) {
+      this.commit();
+    }
   }
 
   onAlphaInput(event: Event): void {

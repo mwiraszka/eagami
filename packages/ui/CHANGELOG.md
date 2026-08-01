@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.14.3] - 2026-08-01
+
+### Fixed
+
+- Emit the colour in the newly chosen notation as soon as the format toggle is cycled, instead of leaving the bound value in the previous format until the next edit.
+- Send the color picker's hue slider to the end of the strip on End, which previously jumped back to the start.
+- Mark the matching colour preset as pressed regardless of which output format the value uses.
+- Keep the colour swatch opaque when the alpha slider is hidden, matching the value the picker actually emits.
+
 ## [5.14.2] - 2026-08-01
 
 ### Fixed
@@ -1177,6 +1186,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.14.3]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.2...ui-v5.14.3
 [5.14.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.1...ui-v5.14.2
 [5.14.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.0...ui-v5.14.1
 [5.14.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.13.0...ui-v5.14.0
