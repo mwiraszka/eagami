@@ -156,7 +156,7 @@ export const he: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'פרטיות | Eagami',
+    metaTitle: 'מדיניות פרטיות | Eagami',
     metaDescription: 'מה eagami.com אוסף ומה לא.',
     title: 'מדיניות פרטיות',
     lastUpdated: date => `עודכן לאחרונה: ${date}`,
@@ -201,7 +201,7 @@ export const he: WebMessages = {
       components: 'רכיבים',
     },
     index: {
-      metaTitle: 'ספריית רכיבי Angular | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
       title: 'Eagami UI',
@@ -316,7 +316,7 @@ export const he: WebMessages = {
       tokensLink: 'אסימוני עיצוב כ-JSON',
     },
     themeBuilder: {
-      metaTitle: 'בונה ערכת נושא ל-Angular | Eagami UI',
+      metaTitle: 'בונה ערכת נושא | Eagami UI',
       metaDescription:
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
@@ -390,7 +390,7 @@ export const he: WebMessages = {
       motionEasings: 'פונקציות האטה',
     },
     icons: {
-      metaTitle: 'אייקוני Angular | Eagami UI',
+      metaTitle: 'אייקונים | Eagami UI',
       metaDescription: 'ערכת האייקונים המצורפת ל-@eagami/ui.',
       title: 'אייקונים',
       lede: 'רכיבי Angular עצמאיים היורשים את צבעם ומתאימים את גודלם לפי <code>font-size</code>, כך שהם מוצגים בכל גודל. רובם נגזרים מ-<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> מאת <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> תחת <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>רישיון MIT</span></a>; השאר הם אייקונים מקוריים של Eagami UI. אייקוני Feather ניתנים גם לציור בקווים דקים או עבים יותר. לחצו על אייקון כדי להעתיק את הסלקטור שלו.',
@@ -485,7 +485,7 @@ export const he: WebMessages = {
         'כל רכיב נבדק מול כללי הנגישות המקובלים בתעשייה בכל שינוי, ושחרור יוצא רק כאשר כל בדיקה עוברת, כך שהנגישות שאתם רואים כאן נשמרת ככל שהספרייה מתפתחת.',
     },
     component: {
-      metaTitle: name => `רכיב ${name} ל-Angular | Eagami UI`,
+      metaTitle: name => `רכיב ${name} | Eagami UI`,
       metaDescription: name =>
         `רכיב ${name} ל-Angular: הדגמה חיה, סימוכין ל-API והתאמת ערכת נושא עם משתני CSS.`,
       demoHeading: 'הדגמה',

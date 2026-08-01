@@ -164,7 +164,7 @@ export const uk: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Конфіденційність | Eagami',
+    metaTitle: 'Політика конфіденційності | Eagami',
     metaDescription: 'Що збирає eagami.com і чого не збирає.',
     title: 'Політика конфіденційності',
     lastUpdated: date => `Останнє оновлення: ${date}`,
@@ -172,7 +172,7 @@ export const uk: WebMessages = {
       'Ця політика ведеться лише англійською мовою. Будь-який переклад надається виключно для зручності.',
   },
   terms: {
-    metaTitle: 'Умови | Eagami',
+    metaTitle: 'Умови використання | Eagami',
     metaDescription: 'Умови користування eagami.com і бібліотекою компонентів Eagami UI.',
     title: 'Умови використання',
     lastUpdated: date => `Останнє оновлення: ${date}`,
@@ -211,7 +211,7 @@ export const uk: WebMessages = {
       components: 'Компоненти',
     },
     index: {
-      metaTitle: 'Бібліотека компонентів Angular | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Легка, доступна бібліотека компонентів Angular на основі CSS-змінних.',
       title: 'Eagami UI',
@@ -327,7 +327,7 @@ export const uk: WebMessages = {
       tokensLink: 'Дизайн-токени у форматі JSON',
     },
     themeBuilder: {
-      metaTitle: 'Конструктор теми Angular | Eagami UI',
+      metaTitle: 'Конструктор теми | Eagami UI',
       metaDescription:
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
@@ -402,7 +402,7 @@ export const uk: WebMessages = {
       motionEasings: 'Згладжування',
     },
     icons: {
-      metaTitle: 'Іконки Angular | Eagami UI',
+      metaTitle: 'Іконки | Eagami UI',
       metaDescription: 'Набір іконок, що постачається з @eagami/ui.',
       title: 'Іконки',
       lede: 'Самостійні компоненти Angular, що успадковують свій колір і масштабуються разом з <code>font-size</code>, тож вони рендеряться в будь-якому розмірі. Більшість походить з <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> від <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> за <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>ліцензією MIT</span></a>; решта це оригінальні іконки Eagami UI. Іконки Feather також можна малювати тоншими або товщими штрихами. Клацніть іконку, щоб скопіювати її селектор.',
@@ -497,7 +497,7 @@ export const uk: WebMessages = {
         'Кожен компонент перевіряється за галузевими правилами доступності при кожній зміні, а реліз виходить лише тоді, коли всі перевірки пройдено, тож доступність, яку ви бачите тут, зберігається в міру розвитку бібліотеки.',
     },
     component: {
-      metaTitle: name => `Компонент Angular ${name} | Eagami UI`,
+      metaTitle: name => `Компонент ${name} | Eagami UI`,
       metaDescription: name =>
         `Компонент Angular ${name}: жива демонстрація, довідник API і темізація через CSS-змінні.`,
       demoHeading: 'Демонстрація',

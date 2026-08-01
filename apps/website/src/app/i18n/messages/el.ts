@@ -166,7 +166,7 @@ export const el: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Απόρρητο | Eagami',
+    metaTitle: 'Πολιτική απορρήτου | Eagami',
     metaDescription: 'Τι συλλέγει το eagami.com και τι όχι.',
     title: 'Πολιτική απορρήτου',
     lastUpdated: date => `Τελευταία ενημέρωση: ${date}`,
@@ -174,7 +174,7 @@ export const el: WebMessages = {
       'Η πολιτική αυτή τηρείται μόνο στα αγγλικά. Κάθε μεταφρασμένη εκδοχή παρέχεται μόνο για διευκόλυνση.',
   },
   terms: {
-    metaTitle: 'Όροι | Eagami',
+    metaTitle: 'Όροι χρήσης | Eagami',
     metaDescription:
       'Όροι χρήσης του eagami.com και της βιβλιοθήκης στοιχείων Eagami UI.',
     title: 'Όροι χρήσης',
@@ -214,7 +214,7 @@ export const el: WebMessages = {
       components: 'Συστατικά',
     },
     index: {
-      metaTitle: 'Βιβλιοθήκη συστατικών Angular | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
       title: 'Eagami UI',
@@ -327,7 +327,7 @@ export const el: WebMessages = {
       tokensLink: 'Tokens σχεδίασης σε JSON',
     },
     themeBuilder: {
-      metaTitle: 'Δημιουργός θέματος Angular | Eagami UI',
+      metaTitle: 'Δημιουργός θέματος | Eagami UI',
       metaDescription:
         'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
       title: 'Δημιουργός θέματος',
@@ -404,7 +404,7 @@ export const el: WebMessages = {
       motionEasings: 'Καμπύλες',
     },
     icons: {
-      metaTitle: 'Εικονίδια Angular | Eagami UI',
+      metaTitle: 'Εικονίδια | Eagami UI',
       metaDescription: 'Σύνολο εικονιδίων που συνοδεύει το @eagami/ui.',
       title: 'Εικονίδια',
       lede: 'Αυτόνομα συστατικά Angular που κληρονομούν το χρώμα τους και προσαρμόζονται στο <code>font-size</code>, ώστε να αποδίδονται σε οποιοδήποτε μέγεθος. Τα περισσότερα προέρχονται από τα <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> του <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> υπό την <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>άδεια MIT</span></a>· τα υπόλοιπα είναι πρωτότυπα εικονίδια του Eagami UI. Τα εικονίδια Feather μπορούν επίσης να σχεδιαστούν με λεπτότερες ή παχύτερες γραμμές. Κάντε κλικ σε ένα εικονίδιο για να αντιγράψετε τον επιλογέα του.',
@@ -500,7 +500,7 @@ export const el: WebMessages = {
         'Κάθε συστατικό ελέγχεται με βάση τους κανόνες προσβασιμότητας του κλάδου κάθε φορά που αλλάζει, και μια έκδοση κυκλοφορεί μόνο όταν περάσουν όλοι οι έλεγχοι, οπότε η προσβασιμότητα που βλέπετε εδώ διατηρείται καθώς η βιβλιοθήκη εξελίσσεται.',
     },
     component: {
-      metaTitle: name => `Συστατικό Angular ${name} | Eagami UI`,
+      metaTitle: name => `Συστατικό ${name} | Eagami UI`,
       metaDescription: name =>
         `Συστατικό Angular ${name}: ζωντανή επίδειξη, αναφορά API και θεματοποίηση με μεταβλητές CSS.`,
       demoHeading: 'Επίδειξη',

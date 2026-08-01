@@ -159,7 +159,7 @@ export const ar: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'الخصوصية | Eagami',
+    metaTitle: 'سياسة الخصوصية | Eagami',
     metaDescription: 'ما الذي يجمعه موقع eagami.com وما لا يجمعه.',
     title: 'سياسة الخصوصية',
     lastUpdated: date => `آخر تحديث: ${date}`,
@@ -167,7 +167,7 @@ export const ar: WebMessages = {
       'يُحتفظ بهذه السياسة باللغة الإنجليزية فقط. وأي نسخة مترجمة تُقدَّم للتيسير فقط.',
   },
   terms: {
-    metaTitle: 'الشروط | Eagami',
+    metaTitle: 'شروط الاستخدام | Eagami',
     metaDescription: 'شروط استخدام موقع eagami.com ومكتبة مكوّنات Eagami UI.',
     title: 'شروط الاستخدام',
     lastUpdated: date => `آخر تحديث: ${date}`,
@@ -206,7 +206,7 @@ export const ar: WebMessages = {
       components: 'المكوّنات',
     },
     index: {
-      metaTitle: 'مكتبة مكوّنات Angular | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
       title: 'Eagami UI',
@@ -321,7 +321,7 @@ export const ar: WebMessages = {
       tokensLink: 'رموز التصميم بصيغة JSON',
     },
     themeBuilder: {
-      metaTitle: 'منشئ السمة لـ Angular | Eagami UI',
+      metaTitle: 'منشئ السمة | Eagami UI',
       metaDescription:
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
@@ -395,7 +395,7 @@ export const ar: WebMessages = {
       motionEasings: 'دوال التيسير',
     },
     icons: {
-      metaTitle: 'أيقونات Angular | Eagami UI',
+      metaTitle: 'الأيقونات | Eagami UI',
       metaDescription: 'مجموعة الأيقونات المرفقة مع @eagami/ui.',
       title: 'الأيقونات',
       lede: 'مكوّنات Angular مستقلة ترث لونها وتتكيّف مع <code>font-size</code>، لذا تُعرَض بأي حجم. معظمها مشتق من <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> بقلم <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> بموجب <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>رخصة MIT</span></a>؛ والباقي أيقونات Eagami UI أصلية. يمكن أيضًا رسم أيقونات Feather بخطوط أرفع أو أثخن. انقر على أيقونة لنسخ محدّدها.',
@@ -490,7 +490,7 @@ export const ar: WebMessages = {
         'يُفحَص كل مكوّن وفق قواعد إمكانية الوصول المعتمدة في المجال عند كل تغيير، ولا يصدر أي إصدار إلا عندما تجتاز جميع الفحوص، لذا تظل إمكانية الوصول التي تراها هنا قائمة مع تطوّر المكتبة.',
     },
     component: {
-      metaTitle: name => `مكوّن ${name} لـ Angular | Eagami UI`,
+      metaTitle: name => `مكوّن ${name} | Eagami UI`,
       metaDescription: name =>
         `مكوّن ${name} لـ Angular: عرض توضيحي حي، ومرجع API، وتخصيص السمة عبر متغيّرات CSS.`,
       demoHeading: 'عرض توضيحي',

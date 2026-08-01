@@ -153,14 +153,14 @@ export const zhCN: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: '隐私 | Eagami',
+    metaTitle: '隐私政策 | Eagami',
     metaDescription: 'eagami.com 收集哪些信息，不收集哪些信息。',
     title: '隐私政策',
     lastUpdated: date => `最后更新：${date}`,
     languageNote: '本政策仅以英文维护。任何译文仅供参考。',
   },
   terms: {
-    metaTitle: '条款 | Eagami',
+    metaTitle: '使用条款 | Eagami',
     metaDescription: '使用 eagami.com 和 Eagami UI 组件库的条款。',
     title: '使用条款',
     lastUpdated: date => `最后更新：${date}`,
@@ -198,7 +198,7 @@ export const zhCN: WebMessages = {
       components: '组件',
     },
     index: {
-      metaTitle: 'Angular 组件库 | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
       title: 'Eagami UI',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',
@@ -311,7 +311,7 @@ export const zhCN: WebMessages = {
       tokensLink: 'JSON 格式的设计令牌',
     },
     themeBuilder: {
-      metaTitle: 'Angular 主题生成器 | Eagami UI',
+      metaTitle: '主题生成器 | Eagami UI',
       metaDescription:
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
@@ -383,7 +383,7 @@ export const zhCN: WebMessages = {
       motionEasings: '缓动',
     },
     icons: {
-      metaTitle: 'Angular 图标 | Eagami UI',
+      metaTitle: '图标 | Eagami UI',
       metaDescription: '随 @eagami/ui 一同提供的图标集。',
       title: '图标',
       lede: '独立的 Angular 组件，会继承其颜色并随 <code>font-size</code> 缩放，因此可在任意尺寸下渲染。大多数图标衍生自 <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> 在 <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT 许可证</span></a> 下提供的 <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a>；其余为 Eagami UI 原创图标。Feather 图标还可绘制为更细或更粗的线条。点击图标即可复制其选择器。',
@@ -476,7 +476,7 @@ export const zhCN: WebMessages = {
         '每个组件在每次变更时都会依据行业无障碍规则进行检查，只有当所有检查都通过时版本才会发布，因此你在这里看到的无障碍能力会随着库的演进持续保持。',
     },
     component: {
-      metaTitle: name => `Angular ${name} 组件 | Eagami UI`,
+      metaTitle: name => `${name} 组件 | Eagami UI`,
       metaDescription: name =>
         `Angular ${name} 组件：实时演示、API 参考，以及基于 CSS 变量的主题定制。`,
       demoHeading: '演示',

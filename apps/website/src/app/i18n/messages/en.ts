@@ -160,7 +160,7 @@ export const en: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Privacy | Eagami',
+    metaTitle: 'Privacy policy | Eagami',
     metaDescription: 'What eagami.com collects, and what it does not.',
     title: 'Privacy policy',
     lastUpdated: date => `Last updated ${date}`,
@@ -168,7 +168,7 @@ export const en: WebMessages = {
       'This policy is only maintained in English. Any translated version is provided for convenience only.',
   },
   terms: {
-    metaTitle: 'Terms | Eagami',
+    metaTitle: 'Terms of use | Eagami',
     metaDescription: 'Terms for using eagami.com and the Eagami UI component library.',
     title: 'Terms of use',
     lastUpdated: date => `Last updated ${date}`,
@@ -207,7 +207,7 @@ export const en: WebMessages = {
       components: 'Components',
     },
     index: {
-      metaTitle: 'Angular Component Library | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Lightweight, accessible Angular component library built on CSS custom properties.',
       title: 'Eagami UI',
@@ -322,7 +322,7 @@ export const en: WebMessages = {
       tokensLink: 'Design tokens as JSON',
     },
     themeBuilder: {
-      metaTitle: 'Angular Theme Builder | Eagami UI',
+      metaTitle: 'Theme builder | Eagami UI',
       metaDescription:
         'Generate a WCAG-checked light and dark palette from your brand colors, then copy the provider config or CSS.',
       title: 'Theme builder',
@@ -349,7 +349,7 @@ export const en: WebMessages = {
       exportCssLabel: 'CSS custom properties',
     },
     tokens: {
-      metaTitle: 'Design Tokens | Eagami UI',
+      metaTitle: 'Design tokens | Eagami UI',
       metaDescription:
         'CSS custom properties for colors, typography, spacing, elevation, shape, and motion.',
       title: 'Design tokens',
@@ -396,7 +396,7 @@ export const en: WebMessages = {
       motionEasings: 'Easings',
     },
     icons: {
-      metaTitle: 'Angular Icons | Eagami UI',
+      metaTitle: 'Icons | Eagami UI',
       metaDescription: 'Icon set bundled with @eagami/ui.',
       title: 'Icons',
       lede: 'Standalone Angular components that inherit their color and scale with <code>font-size</code>, so they render at any size. Most are derived from <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> by <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> under the <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT License</span></a>; the remainder are original Eagami UI icons. Feather icons can also be drawn with thinner or thicker strokes. Click an icon to copy its selector.',
@@ -491,7 +491,7 @@ export const en: WebMessages = {
         'Every component is checked against industry accessibility rules whenever it changes, and a release only ships when every check passes, so the accessibility you see here holds as the library evolves.',
     },
     component: {
-      metaTitle: name => `Angular ${name} Component | Eagami UI`,
+      metaTitle: name => `${name} Component | Eagami UI`,
       metaDescription: name =>
         `Angular ${name} component: live demo, API reference, and theming with CSS variables.`,
       demoHeading: 'Demo',

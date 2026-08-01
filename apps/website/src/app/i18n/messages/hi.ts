@@ -161,7 +161,7 @@ export const hi: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'गोपनीयता | Eagami',
+    metaTitle: 'गोपनीयता नीति | Eagami',
     metaDescription: 'eagami.com क्या एकत्र करता है और क्या नहीं।',
     title: 'गोपनीयता नीति',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
@@ -169,7 +169,7 @@ export const hi: WebMessages = {
       'यह नीति केवल अंग्रेज़ी में बनाए रखी जाती है। कोई भी अनूदित संस्करण केवल सुविधा के लिए दिया गया है।',
   },
   terms: {
-    metaTitle: 'शर्तें | Eagami',
+    metaTitle: 'उपयोग की शर्तें | Eagami',
     metaDescription: 'eagami.com और Eagami UI कंपोनेंट लाइब्रेरी के उपयोग की शर्तें।',
     title: 'उपयोग की शर्तें',
     lastUpdated: date => `अंतिम अपडेट: ${date}`,
@@ -208,7 +208,7 @@ export const hi: WebMessages = {
       components: 'कंपोनेंट',
     },
     index: {
-      metaTitle: 'Angular कंपोनेंट लाइब्रेरी | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
       title: 'Eagami UI',
@@ -324,7 +324,7 @@ export const hi: WebMessages = {
       tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
     },
     themeBuilder: {
-      metaTitle: 'Angular थीम बिल्डर | Eagami UI',
+      metaTitle: 'थीम बिल्डर | Eagami UI',
       metaDescription:
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
@@ -399,7 +399,7 @@ export const hi: WebMessages = {
       motionEasings: 'ईज़िंग',
     },
     icons: {
-      metaTitle: 'Angular आइकन | Eagami UI',
+      metaTitle: 'आइकन | Eagami UI',
       metaDescription: '@eagami/ui के साथ बंडल किया गया आइकन सेट।',
       title: 'आइकन',
       lede: 'स्टैंडअलोन Angular कंपोनेंट जो अपना रंग विरासत में लेते हैं और <code>font-size</code> के साथ स्केल होते हैं, इसलिए वे किसी भी आकार पर रेंडर होते हैं। अधिकांश <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> द्वारा बनाए गए <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> से <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT लाइसेंस</span></a> के तहत प्राप्त किए गए हैं; शेष मूल Eagami UI आइकन हैं। Feather आइकन को पतले या मोटे स्ट्रोक के साथ भी बनाया जा सकता है। किसी आइकन का सेलेक्टर कॉपी करने के लिए उस पर क्लिक करें।',
@@ -494,7 +494,7 @@ export const hi: WebMessages = {
         'जब भी किसी कंपोनेंट में बदलाव होता है, उसे उद्योग के सुलभता नियमों के आधार पर जांचा जाता है, और रिलीज़ तभी शिप होती है जब हर जांच पास हो, इसलिए जो सुलभता आप यहां देखते हैं वह लाइब्रेरी के विकसित होने के साथ बनी रहती है।',
     },
     component: {
-      metaTitle: name => `Angular ${name} कंपोनेंट | Eagami UI`,
+      metaTitle: name => `${name} कंपोनेंट | Eagami UI`,
       metaDescription: name =>
         `Angular ${name} कंपोनेंट: लाइव डेमो, API संदर्भ, और CSS वेरिएबल्स के साथ थीमिंग।`,
       demoHeading: 'डेमो',

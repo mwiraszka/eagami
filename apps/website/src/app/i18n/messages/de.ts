@@ -166,7 +166,7 @@ export const de: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Datenschutz | Eagami',
+    metaTitle: 'Datenschutzerklärung | Eagami',
     metaDescription: 'Was eagami.com erfasst und was nicht.',
     title: 'Datenschutzerklärung',
     lastUpdated: date => `Zuletzt aktualisiert: ${date}`,
@@ -214,7 +214,7 @@ export const de: WebMessages = {
       components: 'Komponenten',
     },
     index: {
-      metaTitle: 'Angular-Komponentenbibliothek | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Leichtgewichtige, barrierefreie Angular-Komponentenbibliothek auf Basis von CSS-Custom-Properties.',
       title: 'Eagami UI',
@@ -332,7 +332,7 @@ export const de: WebMessages = {
       tokensLink: 'Design-Tokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Angular Theme-Builder | Eagami UI',
+      metaTitle: 'Theme-Builder | Eagami UI',
       metaDescription:
         'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
       title: 'Theme-Builder',
@@ -409,7 +409,7 @@ export const de: WebMessages = {
       motionEasings: 'Beschleunigungen',
     },
     icons: {
-      metaTitle: 'Angular-Symbole | Eagami UI',
+      metaTitle: 'Symbole | Eagami UI',
       metaDescription: 'Symbolsatz, der mit @eagami/ui gebündelt wird.',
       title: 'Symbole',
       lede: 'Eigenständige Angular-Komponenten, die ihre Farbe erben und mit <code>font-size</code> skalieren, sodass sie in jeder Größe gerendert werden. Die meisten stammen von <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> von <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> unter der <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-Lizenz</span></a>; die übrigen sind originale Eagami-UI-Symbole. Feather-Symbole können auch mit dünneren oder dickeren Strichen gezeichnet werden. Klicken Sie auf ein Symbol, um seinen Selektor zu kopieren.',
@@ -505,7 +505,7 @@ export const de: WebMessages = {
         'Jede Komponente wird bei jeder Änderung anhand branchenüblicher Barrierefreiheitsregeln geprüft, und eine Version erscheint nur, wenn jede Prüfung besteht, sodass die Barrierefreiheit, die Sie hier sehen, auch bei der Weiterentwicklung der Bibliothek Bestand hat.',
     },
     component: {
-      metaTitle: name => `Angular-Komponente ${name} | Eagami UI`,
+      metaTitle: name => `${name}-Komponente | Eagami UI`,
       metaDescription: name =>
         `Angular-Komponente ${name}: Live-Demo, API-Referenz und Theming mit CSS-Variablen.`,
       demoHeading: 'Demo',

@@ -166,7 +166,7 @@ export const nl: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Privacy | Eagami',
+    metaTitle: 'Privacybeleid | Eagami',
     metaDescription: 'Wat eagami.com verzamelt en wat niet.',
     title: 'Privacybeleid',
     lastUpdated: date => `Laatst bijgewerkt: ${date}`,
@@ -174,7 +174,7 @@ export const nl: WebMessages = {
       'Dit beleid wordt alleen in het Engels bijgehouden. Een vertaalde versie is uitsluitend bedoeld als hulpmiddel.',
   },
   terms: {
-    metaTitle: 'Voorwaarden | Eagami',
+    metaTitle: 'Gebruiksvoorwaarden | Eagami',
     metaDescription:
       'Voorwaarden voor het gebruik van eagami.com en de Eagami UI-componentenbibliotheek.',
     title: 'Gebruiksvoorwaarden',
@@ -215,7 +215,7 @@ export const nl: WebMessages = {
       components: 'Componenten',
     },
     index: {
-      metaTitle: 'Angular-componentenbibliotheek | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Lichtgewicht, toegankelijke Angular-componentenbibliotheek gebouwd op CSS-aangepaste eigenschappen.',
       title: 'Eagami UI',
@@ -332,7 +332,7 @@ export const nl: WebMessages = {
       tokensLink: 'Designtokens als JSON',
     },
     themeBuilder: {
-      metaTitle: 'Angular-themabuilder | Eagami UI',
+      metaTitle: 'Themabuilder | Eagami UI',
       metaDescription:
         'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
       title: 'Themabuilder',
@@ -408,7 +408,7 @@ export const nl: WebMessages = {
       motionEasings: 'Easings',
     },
     icons: {
-      metaTitle: 'Angular-iconen | Eagami UI',
+      metaTitle: 'Iconen | Eagami UI',
       metaDescription: 'Iconenset meegeleverd met @eagami/ui.',
       title: 'Iconen',
       lede: 'Standalone Angular-componenten die hun kleur erven en meeschalen met <code>font-size</code>, zodat ze op elke grootte worden weergegeven. De meeste zijn afgeleid van <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> van <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> onder de <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT-licentie</span></a>; de rest zijn originele Eagami UI-iconen. Feather-iconen kunnen ook met dunnere of dikkere lijnen worden getekend. Klik op een icoon om de selector te kopiëren.',
@@ -503,7 +503,7 @@ export const nl: WebMessages = {
         'Elke component wordt bij elke wijziging getoetst aan gangbare toegankelijkheidsregels uit de sector, en een release verschijnt pas wanneer elke controle slaagt, zodat de toegankelijkheid die je hier ziet standhoudt terwijl de bibliotheek zich verder ontwikkelt.',
     },
     component: {
-      metaTitle: name => `Angular-component ${name} | Eagami UI`,
+      metaTitle: name => `${name}-component | Eagami UI`,
       metaDescription: name =>
         `Angular-component ${name}: live demo, API-referentie en theming met CSS-variabelen.`,
       demoHeading: 'Demo',

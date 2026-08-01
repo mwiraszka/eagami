@@ -162,7 +162,7 @@ export const is: WebMessages = {
     },
   },
   privacy: {
-    metaTitle: 'Persónuvernd | Eagami',
+    metaTitle: 'Persónuverndarstefna | Eagami',
     metaDescription: 'Hverju eagami.com safnar og hverju ekki.',
     title: 'Persónuverndarstefna',
     lastUpdated: date => `Síðast uppfært: ${date}`,
@@ -170,7 +170,7 @@ export const is: WebMessages = {
       'Þessari stefnu er aðeins viðhaldið á ensku. Þýddar útgáfur eru eingöngu til hægðarauka.',
   },
   terms: {
-    metaTitle: 'Skilmálar | Eagami',
+    metaTitle: 'Notkunarskilmálar | Eagami',
     metaDescription: 'Skilmálar fyrir notkun á eagami.com og Eagami UI einingasafninu.',
     title: 'Notkunarskilmálar',
     lastUpdated: date => `Síðast uppfært: ${date}`,
@@ -209,7 +209,7 @@ export const is: WebMessages = {
       components: 'Einingar',
     },
     index: {
-      metaTitle: 'Angular-einingasafn | Eagami UI',
+      metaTitle: 'Eagami UI',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
       title: 'Eagami UI',
@@ -324,7 +324,7 @@ export const is: WebMessages = {
       tokensLink: 'Hönnunartóknar sem JSON',
     },
     themeBuilder: {
-      metaTitle: 'Angular-þemasmiður | Eagami UI',
+      metaTitle: 'Þemasmiður | Eagami UI',
       metaDescription:
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
@@ -400,7 +400,7 @@ export const is: WebMessages = {
       motionEasings: 'Mýkingar',
     },
     icons: {
-      metaTitle: 'Angular-táknmyndir | Eagami UI',
+      metaTitle: 'Táknmyndir | Eagami UI',
       metaDescription: 'Táknmyndasett sem fylgir @eagami/ui.',
       title: 'Táknmyndir',
       lede: 'Sjálfstæðar Angular einingar sem erfa lit sinn og kvarðast með <code>font-size</code>, svo þær birtast í hvaða stærð sem er. Flestar eru leiddar af <a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer"><span>Feather Icons</span></a> eftir <a href="https://github.com/colebemis" target="_blank" rel="noopener noreferrer"><span>Cole Bemis</span></a> undir <a href="https://github.com/feathericons/feather/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><span>MIT leyfinu</span></a>; afgangurinn eru frumlegar Eagami UI táknmyndir. Einnig má teikna Feather táknmyndir með þynnri eða þykkari strikum. Smelltu á táknmynd til að afrita veljara hennar.',
@@ -495,7 +495,7 @@ export const is: WebMessages = {
         'Hver eining er athuguð samkvæmt viðurkenndum aðgengisreglum í hvert sinn sem hún breytist, og útgáfa fer aðeins út þegar allar athuganir standast, svo aðgengið sem þú sérð hér helst þegar safnið þróast.',
     },
     component: {
-      metaTitle: name => `Angular-eining ${name} | Eagami UI`,
+      metaTitle: name => `${name}-eining | Eagami UI`,
       metaDescription: name =>
         `Angular-eining ${name}: lifandi sýnishorn, API-tilvísun og þemun með CSS-breytum.`,
       demoHeading: 'Sýnishorn',
