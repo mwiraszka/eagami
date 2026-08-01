@@ -9,19 +9,14 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 12px;
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -1px;
-    font-family: var(--font-family-brand);
-    color: var(--color-text-primary);
+    @include mixins.page-title;
   }
 
   &__lead {
+    margin-bottom: 12px;
     font-size: 16px;
     line-height: 1.6;
     color: var(--color-text-secondary);

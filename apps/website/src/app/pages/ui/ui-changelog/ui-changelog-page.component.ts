@@ -1,3 +1,5 @@
+import { DividerComponent } from '@eagami/ui';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,7 +21,7 @@ import { InlineMarkdownPipe } from './inline-markdown.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // None: innerHTML-injected nodes carry no encapsulation attribute, so styles go global
   encapsulation: ViewEncapsulation.None,
-  imports: [InlineMarkdownPipe],
+  imports: [DividerComponent, InlineMarkdownPipe],
 })
 export class UiChangelogPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);

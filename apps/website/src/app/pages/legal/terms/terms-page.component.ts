@@ -1,3 +1,5 @@
+import { DividerComponent } from '@eagami/ui';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +16,7 @@ const LAST_UPDATED = new Date(2026, 7, 1);
 
 @Component({
   selector: 'web-terms-page',
+  imports: [DividerComponent],
   templateUrl: './terms-page.component.html',
   styleUrl: '../legal-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

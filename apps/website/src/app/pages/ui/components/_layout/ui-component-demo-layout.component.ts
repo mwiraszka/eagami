@@ -1,4 +1,4 @@
-import { CardComponent } from '@eagami/ui';
+import { CardComponent, DividerComponent } from '@eagami/ui';
 
 import {
   ChangeDetectionStrategy,
@@ -17,7 +17,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   selector: 'web-ui-component-demo-layout',
   templateUrl: './ui-component-demo-layout.component.html',
   styleUrl: './ui-component-demo-layout.component.scss',
-  imports: [CardComponent],
+  imports: [CardComponent, DividerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiComponentDemoLayoutComponent {
