@@ -595,4 +595,64 @@ describe('MultiSelectComponent', () => {
       expect(getTrigger().getAttribute('aria-disabled')).toBe('true');
     });
   });
+
+  describe('Keyboard edges', () => {
+    function popoverKey(key: string): void {
+      const search = getSearchInput()!;
+      search.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      getTrigger().click();
+      fixture.detectChanges();
+    });
+
+    it('walks to the last row on End and clamps there', () => {
+      popoverKey('End');
+      const atEnd = component.focusedIndex();
+
+      popoverKey('ArrowDown');
+
+      expect(component.focusedIndex()).toBe(atEnd);
+    });
+
+    it('clamps at the Select-all row rather than going negative', () => {
+      popoverKey('Home');
+
+      popoverKey('ArrowUp');
+
+      expect(component.focusedIndex()).toBe(0);
+    });
+
+    it('leaves Space to the search input so a query can contain one', () => {
+      popoverKey(' ');
+
+      expect(component.value()).toEqual([]);
+    });
+
+    it('dismisses the popover on Tab so focus moves on', () => {
+      popoverKey('Tab');
+
+      expect(getPopover()).toBeNull();
+    });
+
+    it('does nothing when Enter lands with no row focused', () => {
+      component.focusedIndex.set(-1);
+
+      popoverKey('Enter');
+
+      expect(component.value()).toEqual([]);
+      expect(getPopover()).toBeTruthy();
+    });
+
+    it('ignores keys entirely while readonly', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      popoverKey('ArrowDown');
+
+      expect(component.focusedIndex()).toBe(-1);
+    });
+  });
 });

@@ -279,4 +279,78 @@ describe('SliderComponent', () => {
       expect(component.value()).toBe(50);
     });
   });
+
+  describe('Pointer dragging', () => {
+    function track(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-slider__track');
+    }
+
+    /** jsdom lays nothing out, so the track needs a measurable box. */
+    function stubTrackRect(): void {
+      track().getBoundingClientRect = () =>
+        ({ left: 0, width: 100, top: 0, height: 8 }) as DOMRect;
+    }
+
+    function pointer(type: string, clientX: number): void {
+      track().dispatchEvent(
+        new PointerEvent(type, { clientX, bubbles: true, pointerId: 1 }),
+      );
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('value', 20);
+      fixture.detectChanges();
+      stubTrackRect();
+    });
+
+    it('jumps to the pressed position on the track', () => {
+      pointer('pointerdown', 60);
+
+      expect(component.value()).toBe(60);
+    });
+
+    it('follows the pointer until release', () => {
+      pointer('pointerdown', 60);
+
+      pointer('pointermove', 75);
+
+      expect(component.value()).toBe(75);
+
+      pointer('pointerup', 75);
+      pointer('pointermove', 10);
+
+      expect(component.value()).toBe(75);
+    });
+
+    it('clamps a drag past either end to the bounds', () => {
+      pointer('pointerdown', 50);
+
+      pointer('pointermove', 250);
+
+      expect(component.value()).toBe(100);
+
+      pointer('pointermove', -80);
+
+      expect(component.value()).toBe(0);
+    });
+
+    it('snaps a drag to the configured step', () => {
+      fixture.componentRef.setInput('step', 25);
+      fixture.detectChanges();
+
+      pointer('pointerdown', 60);
+
+      expect(component.value()).toBe(50);
+    });
+
+    it('ignores pointer input while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      pointer('pointerdown', 60);
+
+      expect(component.value()).toBe(20);
+    });
+  });
 });

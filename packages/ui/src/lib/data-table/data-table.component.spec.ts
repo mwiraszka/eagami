@@ -398,4 +398,100 @@ describe('DataTableComponent', () => {
       expect(getTable().hasAttribute('aria-label')).toBe(false);
     });
   });
+
+  /**
+   * In `navigable` mode the table is a grid with a single roving tab stop, so a
+   * broken bound leaves focus stranded off the edge or on a cell that no longer
+   * exists. Row 0 is the header row; body rows start at 1.
+   */
+  describe('Grid keyboard navigation', () => {
+    function activeCell(): string | null {
+      return document.activeElement?.getAttribute('data-ea-cell') ?? null;
+    }
+
+    function gridKey(key: string, init: KeyboardEventInit = {}): void {
+      const table: HTMLElement = fixture.nativeElement.querySelector(
+        '.ea-data-table__table',
+      );
+      table.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, ...init }));
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('navigable', true);
+      fixture.detectChanges();
+    });
+
+    it('walks across columns and down rows', () => {
+      gridKey('ArrowRight');
+
+      expect(activeCell()).toBe('0-1');
+
+      gridKey('ArrowDown');
+
+      expect(activeCell()).toBe('1-1');
+    });
+
+    it('stops at the first and last column instead of wrapping', () => {
+      gridKey('ArrowLeft');
+
+      expect(activeCell()).toBeNull();
+
+      gridKey('End');
+
+      expect(activeCell()).toBe('0-2');
+
+      gridKey('ArrowRight');
+
+      expect(activeCell()).toBe('0-2');
+    });
+
+    it('stops at the header row and the last body row', () => {
+      gridKey('ArrowUp');
+
+      expect(activeCell()).toBeNull();
+
+      // Three rows of data plus the header
+      for (let i = 0; i < 10; i++) {
+        gridKey('ArrowDown');
+      }
+
+      expect(activeCell()).toBe('3-0');
+    });
+
+    it('jumps a page of rows at a time', () => {
+      gridKey('PageDown');
+
+      expect(activeCell()).toBe('3-0');
+
+      gridKey('PageUp');
+
+      expect(activeCell()).toBe('0-0');
+    });
+
+    it('jumps to the far corners with ctrl Home and End', () => {
+      gridKey('End', { ctrlKey: true });
+
+      expect(activeCell()).toBe('3-2');
+
+      gridKey('Home', { ctrlKey: true });
+
+      expect(activeCell()).toBe('0-0');
+    });
+
+    it('leaves unrelated keys to the browser', () => {
+      gridKey('a');
+
+      expect(activeCell()).toBeNull();
+    });
+
+    it('does nothing at all when navigable is off', () => {
+      fixture.componentRef.setInput('navigable', false);
+      fixture.detectChanges();
+
+      gridKey('ArrowRight');
+
+      expect(activeCell()).toBeNull();
+    });
+  });
 });

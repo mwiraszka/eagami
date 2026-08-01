@@ -1103,4 +1103,159 @@ describe('AvatarEditorComponent', () => {
       });
     });
   });
+  /**
+   * The image must always cover the frame: panning may never expose a gap. Both
+   * the keyboard and pointer paths run every offset through the same clamp, and
+   * `cropStateChanged` is the public record of where the image ended up.
+   */
+  describe('Panning and zooming', () => {
+    function lastCropState(spy: ReturnType<typeof vi.fn>): AvatarEditorCropState {
+      return spy.mock.calls[spy.mock.calls.length - 1][0] as AvatarEditorCropState;
+    }
+
+    function keydown(key: string, init: KeyboardEventInit = {}): void {
+      getCanvas()!.dispatchEvent(new KeyboardEvent('keydown', { key, ...init }));
+      fixture.detectChanges();
+    }
+
+    // A 400x200 image in a 200px frame scales to exactly cover it: 200px of
+    // horizontal slack and none vertically, so one axis can pan and the other
+    // must stay pinned. The dimensions have to be set before onload, since the
+    // scale and centring are computed there.
+    beforeEach(() => {
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
+      fixture.detectChanges();
+      lastImage().width = 400;
+      lastImage().height = 200;
+      triggerLoad();
+      fixture.detectChanges();
+    });
+
+    it('pans by a small step on an arrow key and a large step with shift', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      keydown('ArrowLeft');
+      const small = lastCropState(spy).offsetX;
+
+      keydown('ArrowLeft', { shiftKey: true });
+      const large = lastCropState(spy).offsetX;
+
+      expect(large - small).toBe(20);
+    });
+
+    it('stops panning once the image edge reaches the frame edge', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      // Far more presses than the 200px of slack the image actually has
+      for (let i = 0; i < 60; i++) {
+        keydown('ArrowRight');
+        keydown('ArrowDown');
+      }
+
+      const state = lastCropState(spy);
+
+      // Exactly flush: any further and a gap would open on the right
+      expect(state.offsetX).toBe(-200);
+      expect(state.offsetY).toBe(0);
+    });
+
+    it('stops panning at the opposite edge too', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      for (let i = 0; i < 60; i++) {
+        keydown('ArrowLeft');
+        keydown('ArrowUp');
+      }
+
+      const state = lastCropState(spy);
+
+      expect(state.offsetX).toBe(0);
+      expect(state.offsetY).toBe(0);
+    });
+
+    it('zooms with the plus and minus keys', () => {
+      keydown('+');
+
+      expect(component.zoom()).toBeCloseTo(1.1, 5);
+
+      keydown('-');
+
+      expect(component.zoom()).toBeCloseTo(1, 5);
+    });
+
+    it('pans on a mouse drag', () => {
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 20, clientY: 50 }));
+      document.dispatchEvent(new MouseEvent('mouseup'));
+
+      expect(spy).toHaveBeenCalled();
+      expect(lastCropState(spy).offsetX).toBeLessThan(0);
+    });
+
+    it('treats a press with no movement as a click that reopens the picker', () => {
+      const picker = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mouseup'));
+
+      expect(picker).toHaveBeenCalled();
+    });
+
+    it('does not reopen the picker after an actual drag', () => {
+      const picker = vi.spyOn(getFileInput(), 'click');
+
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 50 }));
+      document.dispatchEvent(new MouseEvent('mouseup'));
+
+      expect(picker).not.toHaveBeenCalled();
+    });
+
+    it('stops tracking the pointer once the drag ends', () => {
+      getCanvas()!.dispatchEvent(
+        new MouseEvent('mousedown', { clientX: 50, clientY: 50 }),
+      );
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 20, clientY: 50 }));
+      document.dispatchEvent(new MouseEvent('mouseup'));
+      const spy = vi.fn();
+      component.cropStateChanged.subscribe(spy);
+
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: 0, clientY: 0 }));
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('zooms in and out on wheel scroll', () => {
+      getCanvas()!.dispatchEvent(new WheelEvent('wheel', { deltaY: -100 }));
+
+      expect(component.zoom()).toBeCloseTo(1.1, 5);
+
+      getCanvas()!.dispatchEvent(new WheelEvent('wheel', { deltaY: 100 }));
+
+      expect(component.zoom()).toBeCloseTo(1, 5);
+    });
+
+    it('holds the wheel zoom inside the configured bounds', () => {
+      fixture.componentRef.setInput('maxZoom', 1.5);
+      fixture.detectChanges();
+
+      for (let i = 0; i < 20; i++) {
+        getCanvas()!.dispatchEvent(new WheelEvent('wheel', { deltaY: -100 }));
+      }
+
+      expect(component.zoom()).toBe(1.5);
+    });
+  });
 });

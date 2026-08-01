@@ -744,4 +744,137 @@ describe('TimePickerComponent', () => {
       expect(getTrigger().disabled).toBe(true);
     });
   });
+
+  /**
+   * The chevrons repeat while held and cancel on every pointer exit path. The
+   * suite above only ever dispatches mousedown/mouseup, so the touch handlers
+   * and the repeat timers never run.
+   */
+  describe('Holding and touch stepping', () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('repeats while the chevron stays held', () => {
+      const [hoursUp] = getStepButtons();
+
+      hoursUp.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+
+      expect(component.value()).toBe('10:30');
+
+      // Nothing more until the initial delay elapses
+      vi.advanceTimersByTime(399);
+
+      expect(component.value()).toBe('10:30');
+
+      vi.advanceTimersByTime(1 + 90 * 3);
+
+      expect(component.value()).toBe('13:30');
+    });
+
+    it('stops repeating once the button is released', () => {
+      const [hoursUp] = getStepButtons();
+      hoursUp.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      vi.advanceTimersByTime(400 + 90);
+      const held = component.value();
+
+      hoursUp.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe(held);
+    });
+
+    it('stops repeating when the pointer leaves the button', () => {
+      const [hoursUp] = getStepButtons();
+      hoursUp.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      vi.advanceTimersByTime(400 + 90);
+      const held = component.value();
+
+      hoursUp.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe(held);
+    });
+
+    it('steps once on a touch tap and stops on touchend', () => {
+      const [hoursUp] = getStepButtons();
+
+      hoursUp.dispatchEvent(new TouchEvent('touchstart', { bubbles: true }));
+
+      expect(component.value()).toBe('10:30');
+
+      hoursUp.dispatchEvent(new TouchEvent('touchend', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe('10:30');
+    });
+
+    it('abandons the repeat when the touch is cancelled', () => {
+      const [hoursUp] = getStepButtons();
+      hoursUp.dispatchEvent(new TouchEvent('touchstart', { bubbles: true }));
+      vi.advanceTimersByTime(400 + 90);
+      const held = component.value();
+
+      hoursUp.dispatchEvent(new TouchEvent('touchcancel', { bubbles: true }));
+      vi.advanceTimersByTime(1000);
+
+      expect(component.value()).toBe(held);
+    });
+
+    it('accelerates after a long hold', () => {
+      const [hoursUp] = getStepButtons();
+
+      hoursUp.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      vi.advanceTimersByTime(400 + 1500);
+      const beforeAcceleration = component.value();
+      // One slow interval would advance a single hour in this window
+      vi.advanceTimersByTime(35 * 3);
+
+      expect(component.value()).not.toBe(beforeAcceleration);
+
+      hoursUp.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+    });
+  });
+
+  describe('Seconds and period controls', () => {
+    it('steps the seconds column from its own chevrons', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      component.writeValue('09:30:10');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      // Columns are hours, minutes, seconds: two chevrons each
+      const secondsUp = getStepButtons()[4];
+      secondsUp.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      secondsUp.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+
+      expect(component.value()).toBe('09:30:11');
+    });
+
+    it('switches between AM and PM from the period buttons', () => {
+      fixture.componentRef.setInput('format', '12h');
+      component.writeValue('09:30');
+      getTrigger().click();
+      fixture.detectChanges();
+
+      const [am, pm] = getPeriodOptions();
+
+      pm.click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('21:30');
+
+      am.click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('09:30');
+    });
+  });
 });

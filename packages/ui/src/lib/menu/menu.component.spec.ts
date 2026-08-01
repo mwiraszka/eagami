@@ -303,6 +303,46 @@ describe('MenuComponent', () => {
       expect(document.activeElement).toBe(items[1]);
     });
 
+    it('wraps focus from the last item back to the first', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getItems()[2]);
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getItems()[0]);
+    });
+
+    it('wraps backwards from the first item to the last', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getItems()[2]);
+    });
+
+    it('jumps to the first item on Home', async () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'End' }));
+      fixture.detectChanges();
+
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home' }));
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getItems()[0]);
+    });
+
     it('keeps the roving tabindex after the items re-render', async () => {
       getTrigger().click();
       fixture.detectChanges();
