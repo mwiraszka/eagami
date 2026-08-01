@@ -4,8 +4,6 @@ export const ar: WebMessages = {
   common: {
     skipToContent: 'تخطَّ إلى المحتوى الرئيسي',
     brandHome: 'الصفحة الرئيسية لـ Eagami',
-    navUi: 'واجهة المستخدم',
-    navUiTooltip: 'توثيق مكتبة المكوّنات',
     themeToggleTooltip: 'تبديل السمة',
     themeToggleLabel: next =>
       `التبديل إلى الوضع ${next === 'light' ? 'الفاتح' : 'الداكن'}`,
@@ -15,13 +13,17 @@ export const ar: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'جميع الحقوق محفوظة.',
-      privacyLink: 'الخصوصية',
-      termsLink: 'الشروط',
-      npmLink: 'npm',
-      npmTooltip: 'عرض @eagami/ui على npm',
-      githubAriaLabel: 'Eagami على GitHub',
-      githubTooltip: 'عرض الشيفرة المصدرية على GitHub',
       navLabel: 'التذييل',
+      siteHeading: 'نبذة',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'أدلة',
+      integrationsHeading: 'التكاملات',
+      resourcesHeading: 'الموارد',
+      legalHeading: 'قانوني',
+      homeLink: 'الرئيسية',
+      contactLink: 'تواصل',
+      sourceCodeLink: 'الكود المصدري',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'النسخ إلى الحافظة',
@@ -419,8 +421,6 @@ export const ar: WebMessages = {
       title: 'التدويل',
       lede: 'تأتي كل سلسلة مدمجة (تسميات ARIA والعناصر النائبة والحالات الفارغة وعناصر التحكم في منتقي التاريخ) بـ 15 لغة. عيّن لغة واحدة للتطبيق بأكمله، أو بدّل أثناء التشغيل، أو تجاوز سلاسل فردية.',
       supportedHeading: 'اللغات المدعومة',
-      supportedFallback:
-        'تعود اللغات غير المعروفة إلى الإنجليزية، وكذلك أي مفاتيح مفقودة من تجاوز جزئي.',
       quickSetupHeading: 'إعداد سريع',
       quickSetupBefore:
         'أضف <code>provideEagamiUi()</code> إلى إعدادات تطبيقك وسجّل اللغات التي تستخدمها عبر <code>locales</code>. الإنجليزية متاحة دائمًا، لذا لا تشحن إلا ما تحتاج إليه.',

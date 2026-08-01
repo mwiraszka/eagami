@@ -4,8 +4,6 @@ export const hi: WebMessages = {
   common: {
     skipToContent: 'मुख्य सामग्री पर जाएं',
     brandHome: 'Eagami होम',
-    navUi: 'UI',
-    navUiTooltip: 'कंपोनेंट लाइब्रेरी दस्तावेज़',
     themeToggleTooltip: 'थीम बदलें',
     themeToggleLabel: next => `${next === 'light' ? 'लाइट' : 'डार्क'} मोड पर स्विच करें`,
     localeMenuLabel: 'भाषा',
@@ -14,13 +12,17 @@ export const hi: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'सर्वाधिकार सुरक्षित।',
-      privacyLink: 'गोपनीयता',
-      termsLink: 'शर्तें',
-      npmLink: 'npm',
-      npmTooltip: 'npm पर @eagami/ui देखें',
-      githubAriaLabel: 'GitHub पर Eagami',
-      githubTooltip: 'GitHub पर स्रोत कोड देखें',
       navLabel: 'फ़ुटर',
+      siteHeading: 'परिचय',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'गाइड',
+      integrationsHeading: 'एकीकरण',
+      resourcesHeading: 'संसाधन',
+      legalHeading: 'कानूनी',
+      homeLink: 'होम',
+      contactLink: 'संपर्क',
+      sourceCodeLink: 'स्रोत कोड',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'क्लिपबोर्ड पर कॉपी करें',
@@ -423,8 +425,6 @@ export const hi: WebMessages = {
       title: 'अंतर्राष्ट्रीयकरण',
       lede: 'प्रत्येक अंतर्निहित स्ट्रिंग (ARIA लेबल, प्लेसहोल्डर, खाली स्थितियां, डेट-पिकर नियंत्रण) 15 लोकेल में शिप होती है। पूरे ऐप के लिए एक सेट करें, रनटाइम पर स्विच करें, या अलग-अलग स्ट्रिंग को ओवरराइड करें।',
       supportedHeading: 'समर्थित लोकेल',
-      supportedFallback:
-        'अज्ञात लोकेल अंग्रेज़ी पर फ़ॉलबैक करते हैं, जैसा कि आंशिक ओवरराइड से गायब कोई भी कुंजी।',
       quickSetupHeading: 'त्वरित सेटअप',
       quickSetupBefore:
         'अपने ऐप कॉन्फ़िग में <code>provideEagamiUi()</code> जोड़ें और <code>locales</code> के माध्यम से उपयोग की जाने वाली भाषाएं पंजीकृत करें। अंग्रेज़ी हमेशा उपलब्ध रहती है, इसलिए आप केवल वही शिप करते हैं जिसकी आपको आवश्यकता है।',

@@ -1,4 +1,4 @@
-import { EagamiWordmarkComponent, TooltipDirective } from '@eagami/ui';
+import { EagamiWordmarkComponent } from '@eagami/ui';
 import { filter, map } from 'rxjs/operators';
 
 import {
@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 import { LocaleSwitcherComponent } from '@app/components/locale-switcher/locale-switcher.component';
 import { ThemeToggleComponent } from '@app/components/theme-toggle/theme-toggle.component';
@@ -26,9 +26,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
     LocaleSwitcherComponent,
     PendingLinkDirective,
     RouterLink,
-    RouterLinkActive,
     ThemeToggleComponent,
-    TooltipDirective,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

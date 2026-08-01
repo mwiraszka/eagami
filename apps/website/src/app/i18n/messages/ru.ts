@@ -4,8 +4,6 @@ export const ru: WebMessages = {
   common: {
     skipToContent: 'Перейти к основному содержимому',
     brandHome: 'Главная Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Документация по библиотеке компонентов',
     themeToggleTooltip: 'Переключить тему',
     themeToggleLabel: next =>
       `Переключиться на ${next === 'light' ? 'светлый' : 'тёмный'} режим`,
@@ -15,13 +13,17 @@ export const ru: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Все права защищены.',
-      privacyLink: 'Конфиденциальность',
-      termsLink: 'Условия',
-      npmLink: 'npm',
-      npmTooltip: 'Открыть @eagami/ui на npm',
-      githubAriaLabel: 'Eagami на GitHub',
-      githubTooltip: 'Посмотреть исходный код на GitHub',
       navLabel: 'Подвал',
+      siteHeading: 'О нас',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Руководства',
+      integrationsHeading: 'Интеграции',
+      resourcesHeading: 'Ресурсы',
+      legalHeading: 'Правовая информация',
+      homeLink: 'Главная',
+      contactLink: 'Контакты',
+      sourceCodeLink: 'Исходный код',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Скопировать в буфер обмена',
@@ -427,8 +429,6 @@ export const ru: WebMessages = {
       title: 'Интернационализация',
       lede: 'Каждая встроенная строка (ARIA-метки, плейсхолдеры, пустые состояния, элементы управления выбором даты) поставляется на 15 языках. Задайте один для всего приложения, переключайте во время выполнения или переопределяйте отдельные строки.',
       supportedHeading: 'Поддерживаемые языки',
-      supportedFallback:
-        'Неизвестные языки откатываются к английскому, как и любые ключи, отсутствующие в частичном переопределении.',
       quickSetupHeading: 'Быстрая настройка',
       quickSetupBefore:
         'Добавьте <code>provideEagamiUi()</code> в конфигурацию приложения и зарегистрируйте используемые языки через <code>locales</code>. Английский доступен всегда, поэтому вы поставляете только то, что вам нужно.',

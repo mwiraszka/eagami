@@ -4,8 +4,6 @@ export const de: WebMessages = {
   common: {
     skipToContent: 'Zum Hauptinhalt springen',
     brandHome: 'Eagami Startseite',
-    navUi: 'UI',
-    navUiTooltip: 'Dokumentation der Komponentenbibliothek',
     themeToggleTooltip: 'Design umschalten',
     themeToggleLabel: next =>
       `In den ${next === 'light' ? 'hellen' : 'dunklen'} Modus wechseln`,
@@ -15,13 +13,17 @@ export const de: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Alle Rechte vorbehalten.',
-      privacyLink: 'Datenschutz',
-      termsLink: 'Nutzungsbedingungen',
-      npmLink: 'npm',
-      npmTooltip: '@eagami/ui auf npm ansehen',
-      githubAriaLabel: 'Eagami auf GitHub',
-      githubTooltip: 'Quellcode auf GitHub ansehen',
       navLabel: 'Fußzeile',
+      siteHeading: 'Über',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Anleitungen',
+      integrationsHeading: 'Integrationen',
+      resourcesHeading: 'Ressourcen',
+      legalHeading: 'Rechtliches',
+      homeLink: 'Startseite',
+      contactLink: 'Kontakt',
+      sourceCodeLink: 'Quellcode',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'In die Zwischenablage kopieren',
@@ -434,8 +436,6 @@ export const de: WebMessages = {
       title: 'Internationalisierung',
       lede: 'Jede integrierte Zeichenkette (ARIA-Labels, Platzhalter, Leerzustände, Datumsauswahl-Steuerungen) wird in 15 Sprachräumen ausgeliefert. Legen Sie einen für die gesamte App fest, wechseln Sie zur Laufzeit oder überschreiben Sie einzelne Zeichenketten.',
       supportedHeading: 'Unterstützte Sprachräume',
-      supportedFallback:
-        'Unbekannte Sprachräume greifen auf Englisch zurück, ebenso alle Schlüssel, die in einer Teilüberschreibung fehlen.',
       quickSetupHeading: 'Schnelleinrichtung',
       quickSetupBefore:
         'Fügen Sie <code>provideEagamiUi()</code> zu Ihrer App-Konfiguration hinzu und registrieren Sie die verwendeten Sprachen über <code>locales</code>. Englisch ist immer verfügbar, sodass Sie nur das ausliefern, was Sie brauchen.',

@@ -4,8 +4,6 @@ export const esES: WebMessages = {
   common: {
     skipToContent: 'Saltar al contenido principal',
     brandHome: 'Inicio de Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Documentación de la biblioteca de componentes',
     themeToggleTooltip: 'Cambiar tema',
     themeToggleLabel: next => `Cambiar al modo ${next === 'light' ? 'claro' : 'oscuro'}`,
     localeMenuLabel: 'Idioma',
@@ -14,13 +12,17 @@ export const esES: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Todos los derechos reservados.',
-      privacyLink: 'Privacidad',
-      termsLink: 'Términos',
-      npmLink: 'npm',
-      npmTooltip: 'Ver @eagami/ui en npm',
-      githubAriaLabel: 'Eagami en GitHub',
-      githubTooltip: 'Ver código fuente en GitHub',
       navLabel: 'Pie de página',
+      siteHeading: 'Acerca de',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guías',
+      integrationsHeading: 'Integraciones',
+      resourcesHeading: 'Recursos',
+      legalHeading: 'Legal',
+      homeLink: 'Inicio',
+      contactLink: 'Contacto',
+      sourceCodeLink: 'Código fuente',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copiar al portapapeles',
@@ -426,8 +428,6 @@ export const esES: WebMessages = {
       title: 'Internacionalización',
       lede: 'Cada cadena integrada (etiquetas ARIA, marcadores de posición, estados vacíos, controles del selector de fecha) se envía en 15 idiomas. Define uno para toda la aplicación, cámbialo en tiempo de ejecución o sobrescribe cadenas individuales.',
       supportedHeading: 'Idiomas compatibles',
-      supportedFallback:
-        'Los idiomas desconocidos vuelven al inglés, al igual que cualquier clave ausente en una sobrescritura parcial.',
       quickSetupHeading: 'Configuración rápida',
       quickSetupBefore:
         'Añade <code>provideEagamiUi()</code> a la configuración de tu aplicación y registra los idiomas que uses mediante <code>locales</code>. El inglés siempre está disponible, así que solo incluyes lo que necesitas.',

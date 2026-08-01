@@ -4,8 +4,6 @@ export const he: WebMessages = {
   common: {
     skipToContent: 'דלג לתוכן הראשי',
     brandHome: 'דף הבית של Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'תיעוד ספריית הרכיבים',
     themeToggleTooltip: 'החלף ערכת נושא',
     themeToggleLabel: next => `עבור למצב ${next === 'light' ? 'בהיר' : 'כהה'}`,
     localeMenuLabel: 'שפה',
@@ -14,13 +12,17 @@ export const he: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'כל הזכויות שמורות.',
-      privacyLink: 'פרטיות',
-      termsLink: 'תנאי שימוש',
-      npmLink: 'npm',
-      npmTooltip: 'הצג את @eagami/ui ב-npm',
-      githubAriaLabel: 'Eagami ב-GitHub',
-      githubTooltip: 'הצג את קוד המקור ב-GitHub',
       navLabel: 'כותרת תחתונה',
+      siteHeading: 'אודות',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'מדריכים',
+      integrationsHeading: 'אינטגרציות',
+      resourcesHeading: 'משאבים',
+      legalHeading: 'משפטי',
+      homeLink: 'דף הבית',
+      contactLink: 'צור קשר',
+      sourceCodeLink: 'קוד מקור',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'העתק ללוח',
@@ -414,8 +416,6 @@ export const he: WebMessages = {
       title: 'בינאום',
       lede: 'כל מחרוזת מובנית (תוויות ARIA, מצייני מיקום, מצבים ריקים, בקרות בורר תאריכים) מגיעה ב-15 שפות. הגדירו אחת עבור כל האפליקציה, החליפו בזמן ריצה או דרסו מחרוזות בודדות.',
       supportedHeading: 'שפות נתמכות',
-      supportedFallback:
-        'שפות לא ידועות נסוגות לאנגלית, וכך גם כל מפתח החסר מדריסה חלקית.',
       quickSetupHeading: 'הגדרה מהירה',
       quickSetupBefore:
         'הוסיפו <code>provideEagamiUi()</code> לתצורת האפליקציה ורשמו את השפות שאתם משתמשים בהן באמצעות <code>locales</code>. אנגלית זמינה תמיד, כך שאתם כוללים רק את מה שאתם צריכים.',

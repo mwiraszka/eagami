@@ -7,8 +7,6 @@ export interface WebMessages {
   common: {
     skipToContent: string;
     brandHome: string;
-    navUi: string;
-    navUiTooltip: string;
     themeToggleTooltip: string;
     themeToggleLabel: (next: 'light' | 'dark') => string;
     localeMenuLabel: string;
@@ -17,13 +15,17 @@ export interface WebMessages {
     footer: {
       copyright: (year: number) => string;
       allRightsReserved: string;
-      privacyLink: string;
-      termsLink: string;
-      npmLink: string;
-      npmTooltip: string;
-      githubAriaLabel: string;
-      githubTooltip: string;
       navLabel: string;
+      siteHeading: string;
+      libraryHeading: string;
+      guidesHeading: string;
+      integrationsHeading: string;
+      resourcesHeading: string;
+      legalHeading: string;
+      homeLink: string;
+      contactLink: string;
+      sourceCodeLink: string;
+      npmLink: string;
     };
     codeSnippet: {
       copyLabel: string;
@@ -301,7 +303,6 @@ export interface WebMessages {
       title: string;
       lede: string;
       supportedHeading: string;
-      supportedFallback: string;
       quickSetupHeading: string;
       quickSetupBefore: string;
       lazyHeading: string;

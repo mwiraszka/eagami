@@ -4,8 +4,6 @@ export const pl: WebMessages = {
   common: {
     skipToContent: 'Przejdź do treści głównej',
     brandHome: 'Strona główna Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Dokumentacja biblioteki komponentów',
     themeToggleTooltip: 'Przełącz motyw',
     themeToggleLabel: next =>
       `Przełącz na motyw ${next === 'light' ? 'jasny' : 'ciemny'}`,
@@ -15,13 +13,17 @@ export const pl: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Wszelkie prawa zastrzeżone.',
-      privacyLink: 'Prywatność',
-      termsLink: 'Regulamin',
-      npmLink: 'npm',
-      npmTooltip: 'Zobacz @eagami/ui w npm',
-      githubAriaLabel: 'Eagami na GitHubie',
-      githubTooltip: 'Zobacz kod źródłowy na GitHubie',
       navLabel: 'Stopka',
+      siteHeading: 'O nas',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Przewodniki',
+      integrationsHeading: 'Integracje',
+      resourcesHeading: 'Zasoby',
+      legalHeading: 'Informacje prawne',
+      homeLink: 'Strona główna',
+      contactLink: 'Kontakt',
+      sourceCodeLink: 'Kod źródłowy',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Skopiuj do schowka',
@@ -430,8 +432,6 @@ export const pl: WebMessages = {
       title: 'Internacjonalizacja',
       lede: 'Każdy wbudowany ciąg (etykiety ARIA, podpowiedzi, stany puste, kontrolki kalendarza) dostarczany jest w 15 językach. Ustaw jeden dla całej aplikacji, zmieniaj w czasie wykonywania lub nadpisuj pojedyncze ciągi.',
       supportedHeading: 'Obsługiwane języki',
-      supportedFallback:
-        'Nieznane języki przechodzą do angielskiego, podobnie jak klucze brakujące w częściowym nadpisaniu.',
       quickSetupHeading: 'Szybka konfiguracja',
       quickSetupBefore:
         'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze dostępny, więc dostarczasz tylko to, czego potrzebujesz.',

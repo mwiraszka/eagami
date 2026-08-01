@@ -4,8 +4,6 @@ export const en: WebMessages = {
   common: {
     skipToContent: 'Skip to main content',
     brandHome: 'Eagami home',
-    navUi: 'UI',
-    navUiTooltip: 'Component library docs',
     themeToggleTooltip: 'Toggle theme',
     themeToggleLabel: next => `Switch to ${next} mode`,
     localeMenuLabel: 'Language',
@@ -14,13 +12,17 @@ export const en: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'All rights reserved.',
-      privacyLink: 'Privacy',
-      termsLink: 'Terms',
-      npmLink: 'npm',
-      npmTooltip: 'View @eagami/ui on npm',
-      githubAriaLabel: 'Eagami on GitHub',
-      githubTooltip: 'View source on GitHub',
       navLabel: 'Footer',
+      siteHeading: 'About',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guides',
+      integrationsHeading: 'Integrations',
+      resourcesHeading: 'Resources',
+      legalHeading: 'Legal',
+      homeLink: 'Home',
+      contactLink: 'Contact',
+      sourceCodeLink: 'Source code',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copy to clipboard',
@@ -420,8 +422,6 @@ export const en: WebMessages = {
       title: 'Internationalization',
       lede: 'Every built-in string (ARIA labels, placeholders, empty states, date-picker controls) ships in 15 locales. Set one for the whole app, switch at runtime, or override individual strings.',
       supportedHeading: 'Supported locales',
-      supportedFallback:
-        'Unknown locales fall back to English, as do any keys missing from a partial override.',
       quickSetupHeading: 'Quick setup',
       quickSetupBefore:
         'Add <code>provideEagamiUi()</code> to your app config and register the languages you use via <code>locales</code>. English is always available, so you ship only what you need.',

@@ -8,8 +8,6 @@ export const frFR: WebMessages = {
   common: {
     skipToContent: 'Aller au contenu principal',
     brandHome: 'Accueil Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Documentation de la bibliothèque',
     themeToggleTooltip: 'Changer de thème',
     themeToggleLabel: next => `Passer en mode ${next === 'light' ? 'clair' : 'sombre'}`,
     localeMenuLabel: 'Langue',
@@ -18,13 +16,17 @@ export const frFR: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Tous droits réservés.',
-      privacyLink: 'Confidentialité',
-      termsLink: 'Conditions',
-      npmLink: 'npm',
-      npmTooltip: 'Voir @eagami/ui sur npm',
-      githubAriaLabel: 'Eagami sur GitHub',
-      githubTooltip: 'Voir le code source sur GitHub',
       navLabel: 'Pied de page',
+      siteHeading: 'À propos',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guides',
+      integrationsHeading: 'Intégrations',
+      resourcesHeading: 'Ressources',
+      legalHeading: 'Mentions légales',
+      homeLink: 'Accueil',
+      contactLink: 'Contact',
+      sourceCodeLink: 'Code source',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copier dans le presse-papiers',
@@ -433,8 +435,6 @@ export const frFR: WebMessages = {
       title: 'Internationalisation',
       lede: 'Toutes les chaînes intégrées (labels ARIA, espaces réservés, états vides, contrôles du sélecteur de date) sont livrées dans 15 langues. Définissez-en une pour toute l’application, changez-en à l’exécution ou remplacez des chaînes individuelles.',
       supportedHeading: 'Langues prises en charge',
-      supportedFallback:
-        'Les langues inconnues reviennent à l’anglais, tout comme les clés manquantes dans un remplacement partiel.',
       quickSetupHeading: 'Mise en place rapide',
       quickSetupBefore:
         'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',

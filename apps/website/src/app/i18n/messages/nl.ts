@@ -4,8 +4,6 @@ export const nl: WebMessages = {
   common: {
     skipToContent: 'Ga naar hoofdinhoud',
     brandHome: 'Eagami startpagina',
-    navUi: 'UI',
-    navUiTooltip: 'Documentatie componentenbibliotheek',
     themeToggleTooltip: 'Thema wisselen',
     themeToggleLabel: next =>
       `Schakel naar de ${next === 'light' ? 'lichte' : 'donkere'} modus`,
@@ -15,13 +13,17 @@ export const nl: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Alle rechten voorbehouden.',
-      privacyLink: 'Privacy',
-      termsLink: 'Voorwaarden',
-      npmLink: 'npm',
-      npmTooltip: '@eagami/ui op npm bekijken',
-      githubAriaLabel: 'Eagami op GitHub',
-      githubTooltip: 'Broncode op GitHub bekijken',
       navLabel: 'Voettekst',
+      siteHeading: 'Over',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Handleidingen',
+      integrationsHeading: 'Integraties',
+      resourcesHeading: 'Bronnen',
+      legalHeading: 'Juridisch',
+      homeLink: 'Home',
+      contactLink: 'Contact',
+      sourceCodeLink: 'Broncode',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Kopiëren naar klembord',
@@ -432,8 +434,6 @@ export const nl: WebMessages = {
       title: 'Internationalisatie',
       lede: 'Elke ingebouwde tekst (ARIA-labels, plaatsaanduidingen, lege toestanden, datumkiezerbediening) wordt geleverd in 15 talen. Stel er een in voor de hele app, wissel tijdens runtime, of overschrijf afzonderlijke teksten.',
       supportedHeading: 'Ondersteunde talen',
-      supportedFallback:
-        'Onbekende talen vallen terug op het Engels, net als sleutels die ontbreken in een gedeeltelijke overschrijving.',
       quickSetupHeading: 'Snelle installatie',
       quickSetupBefore:
         'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd beschikbaar, dus je levert alleen wat je nodig hebt.',

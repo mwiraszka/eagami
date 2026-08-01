@@ -4,8 +4,6 @@ export const el: WebMessages = {
   common: {
     skipToContent: 'Μετάβαση στο κύριο περιεχόμενο',
     brandHome: 'Αρχική Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Τεκμηρίωση της βιβλιοθήκης',
     themeToggleTooltip: 'Εναλλαγή θέματος',
     themeToggleLabel: next =>
       `Εναλλαγή σε ${next === 'light' ? 'φωτεινό' : 'σκοτεινό'} θέμα`,
@@ -15,13 +13,17 @@ export const el: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Με επιφύλαξη παντός δικαιώματος.',
-      privacyLink: 'Απόρρητο',
-      termsLink: 'Όροι',
-      npmLink: 'npm',
-      npmTooltip: 'Δείτε το @eagami/ui στο npm',
-      githubAriaLabel: 'Eagami στο GitHub',
-      githubTooltip: 'Δείτε τον πηγαίο κώδικα στο GitHub',
       navLabel: 'Υποσέλιδο',
+      siteHeading: 'Σχετικά',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Οδηγοί',
+      integrationsHeading: 'Ενσωματώσεις',
+      resourcesHeading: 'Πόροι',
+      legalHeading: 'Νομικά',
+      homeLink: 'Αρχική',
+      contactLink: 'Επικοινωνία',
+      sourceCodeLink: 'Πηγαίος κώδικας',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Αντιγραφή στο πρόχειρο',
@@ -429,8 +431,6 @@ export const el: WebMessages = {
       title: 'Διεθνοποίηση',
       lede: 'Κάθε ενσωματωμένη συμβολοσειρά (ετικέτες ARIA, σύμβολα κράτησης θέσης, κενές καταστάσεις, χειριστήρια επιλογέα ημερομηνίας) στέλνεται σε 15 γλώσσες. Ορίστε μία για όλη την εφαρμογή, αλλάξτε κατά την εκτέλεση ή παρακάμψτε μεμονωμένες συμβολοσειρές.',
       supportedHeading: 'Υποστηριζόμενες γλώσσες',
-      supportedFallback:
-        'Άγνωστες γλώσσες επιστρέφουν στα αγγλικά, όπως και τυχόν κλειδιά που λείπουν από μια μερική παράκαμψη.',
       quickSetupHeading: 'Γρήγορη εγκατάσταση',
       quickSetupBefore:
         'Προσθέστε το <code>provideEagamiUi()</code> στη διαμόρφωση της εφαρμογής σας και δηλώστε τις γλώσσες που χρησιμοποιείτε μέσω <code>locales</code>. Τα αγγλικά είναι πάντα διαθέσιμα, οπότε περιλαμβάνετε μόνο όσα χρειάζεστε.',

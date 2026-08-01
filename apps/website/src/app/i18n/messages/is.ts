@@ -4,8 +4,6 @@ export const is: WebMessages = {
   common: {
     skipToContent: 'Fara í meginefni',
     brandHome: 'Eagami heim',
-    navUi: 'UI',
-    navUiTooltip: 'Skjölun fyrir einingasafn',
     themeToggleTooltip: 'Skipta um þema',
     themeToggleLabel: next =>
       `Skipta yfir í ${next === 'light' ? 'ljósan' : 'dökkan'} ham`,
@@ -15,13 +13,17 @@ export const is: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Öll réttindi áskilin.',
-      privacyLink: 'Persónuvernd',
-      termsLink: 'Skilmálar',
-      npmLink: 'npm',
-      npmTooltip: 'Skoða @eagami/ui á npm',
-      githubAriaLabel: 'Eagami á GitHub',
-      githubTooltip: 'Skoða frumkóða á GitHub',
       navLabel: 'Síðufótur',
+      siteHeading: 'Um',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Leiðbeiningar',
+      integrationsHeading: 'Samþættingar',
+      resourcesHeading: 'Tilföng',
+      legalHeading: 'Lagalegt',
+      homeLink: 'Forsíða',
+      contactLink: 'Hafa samband',
+      sourceCodeLink: 'Frumkóði',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Afrita á klippiborð',
@@ -424,8 +426,6 @@ export const is: WebMessages = {
       title: 'Alþjóðavæðing',
       lede: 'Hver innbyggður strengur (ARIA merkimiðar, staðgenglar, tóm ástönd, stýringar dagsetningarvelju) fylgir á 15 svæðum. Stilltu eitt fyrir allt forritið, skiptu á keyrslutíma eða yfirskrifaðu einstaka strengi.',
       supportedHeading: 'Studd svæði',
-      supportedFallback:
-        'Óþekkt svæði falla aftur á ensku, eins og allir lyklar sem vantar í hlutayfirskrift.',
       quickSetupHeading: 'Hröð uppsetning',
       quickSetupBefore:
         'Bættu <code>provideEagamiUi()</code> við stillingar forritsins og skráðu tungumálin sem þú notar með <code>locales</code>. Enska er alltaf í boði, svo þú sendir aðeins það sem þú þarft.',

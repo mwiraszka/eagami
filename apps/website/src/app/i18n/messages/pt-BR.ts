@@ -4,8 +4,6 @@ export const ptBR: WebMessages = {
   common: {
     skipToContent: 'Pular para o conteúdo principal',
     brandHome: 'página inicial da Eagami',
-    navUi: 'UI',
-    navUiTooltip: 'Documentação da biblioteca de componentes',
     themeToggleTooltip: 'Alternar tema',
     themeToggleLabel: next =>
       `Mudar para o modo ${next === 'light' ? 'claro' : 'escuro'}`,
@@ -15,13 +13,17 @@ export const ptBR: WebMessages = {
     footer: {
       copyright: year => `© ${year} Eagami`,
       allRightsReserved: 'Todos os direitos reservados.',
-      privacyLink: 'Privacidade',
-      termsLink: 'Termos',
-      npmLink: 'npm',
-      npmTooltip: 'Ver @eagami/ui no npm',
-      githubAriaLabel: 'Eagami no GitHub',
-      githubTooltip: 'Ver código-fonte no GitHub',
       navLabel: 'Rodapé',
+      siteHeading: 'Sobre',
+      libraryHeading: 'Eagami UI',
+      guidesHeading: 'Guias',
+      integrationsHeading: 'Integrações',
+      resourcesHeading: 'Recursos',
+      legalHeading: 'Jurídico',
+      homeLink: 'Início',
+      contactLink: 'Contato',
+      sourceCodeLink: 'Código-fonte',
+      npmLink: 'npm',
     },
     codeSnippet: {
       copyLabel: 'Copiar para a área de transferência',
@@ -432,8 +434,6 @@ export const ptBR: WebMessages = {
       title: 'Internacionalização',
       lede: 'Cada string integrada (rótulos ARIA, placeholders, estados vazios, controles do seletor de data) vem em 15 idiomas. Defina um para todo o aplicativo, troque em tempo de execução ou sobrescreva strings individuais.',
       supportedHeading: 'Idiomas suportados',
-      supportedFallback:
-        'Idiomas desconhecidos recorrem ao inglês, assim como quaisquer chaves ausentes em uma sobrescrita parcial.',
       quickSetupHeading: 'Configuração rápida',
       quickSetupBefore:
         'Adicione <code>provideEagamiUi()</code> à configuração do seu aplicativo e registre os idiomas que você usa via <code>locales</code>. O inglês está sempre disponível, então você inclui apenas o que precisa.',
