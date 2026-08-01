@@ -38,6 +38,7 @@ const messages: EagamiMessages = {
     clear: 'Wyczyść wyszukiwanie',
   },
   colorPicker: {
+    dialogLabel: 'Wybierz kolor',
     placeholder: 'Wybierz kolor…',
     clear: 'Wyczyść kolor',
     hue: 'Barwa',
@@ -118,6 +119,7 @@ const messages: EagamiMessages = {
     label: 'Menu',
   },
   multiSelect: {
+    dialogLabel: 'Wybierz opcje',
     placeholder: 'Wybierz…',
     searchPlaceholder: 'Szukaj…',
     searchEmpty: 'Brak wyników',

@@ -38,6 +38,7 @@ const messages: EagamiMessages = {
     clear: 'Εκκαθάριση αναζήτησης',
   },
   colorPicker: {
+    dialogLabel: 'Επιλογή χρώματος',
     placeholder: 'Επιλέξτε χρώμα…',
     clear: 'Εκκαθάριση χρώματος',
     hue: 'Απόχρωση',
@@ -118,6 +119,7 @@ const messages: EagamiMessages = {
     label: 'Μενού',
   },
   multiSelect: {
+    dialogLabel: 'Επιλογή επιλογών',
     placeholder: 'Επιλέξτε…',
     searchPlaceholder: 'Αναζήτηση…',
     searchEmpty: 'Δεν βρέθηκαν αποτελέσματα',

@@ -38,6 +38,7 @@ const messages: EagamiMessages = {
     clear: 'Hreinsa leit',
   },
   colorPicker: {
+    dialogLabel: 'Velja lit',
     placeholder: 'Veldu lit…',
     clear: 'Hreinsa lit',
     hue: 'Litblær',
@@ -118,6 +119,7 @@ const messages: EagamiMessages = {
     label: 'Valmynd',
   },
   multiSelect: {
+    dialogLabel: 'Velja valkosti',
     placeholder: 'Veldu…',
     searchPlaceholder: 'Leita…',
     searchEmpty: 'Engin samsvörun',
