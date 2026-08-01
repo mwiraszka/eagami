@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.14.1
-source: '@eagami/ui@5.14.1 (https://github.com/mwiraszka/eagami)'
+version: 5.14.2
+source: '@eagami/ui@5.14.2 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-08-01
 audience: human developers and AI coding agents
 purpose: >
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.14.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.14.2 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 

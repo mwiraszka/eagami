@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.14.2',
+    date: '2026-08-01',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Name the menu, color picker, and multi-select panels, whose accessible names were bound through a mismatched alias and never reached the rendered surface.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.14.1',
     date: '2026-08-01',
     sections: [

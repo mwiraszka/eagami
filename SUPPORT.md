@@ -31,7 +31,7 @@ Every breaking change is:
 
 ## Supported versions
 
-Fixes and security patches target the latest major release. Because the library is young, only the current major is actively supported; once a new major ships, the previous one receives security fixes only for a short transition window.
+Fixes and security patches target the latest minor of the latest major. Because the library is young, only the current major is actively supported: older majors are end-of-life on release of the next major (see [SECURITY.md](SECURITY.md)).
 
 | Version | Supported |
 | ------- | --------- |
