@@ -8,6 +8,22 @@
 @forward 'theme';
 @forward 'ui-demo';
 
+/* Marks every link that leaves eagami.com with the same open-in-new-tab glyph.
+   Done here rather than per template because many of these links are injected
+   through [innerHTML] (localized prose, rendered changelog entries) and cannot
+   host an icon component. Masked so it inherits the link's colour. Card-sized
+   links opt out with `web-link-plain`, where a trailing glyph reads as debris. */
+a[href^='http']:not([href*='//eagami.com']):not(.web-link-plain)::after {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-inline-start: 0.3em;
+  background-color: currentColor;
+  mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M18%2013v6a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2V8a2%202%200%200%201%202-2h6%22%2F%3E%3Cpolyline%20points%3D%2215%203%2021%203%2021%209%22%2F%3E%3Cline%20x1%3D%2210%22%20y1%3D%2214%22%20x2%3D%2221%22%20y2%3D%223%22%2F%3E%3C%2Fsvg%3E')
+    center / contain no-repeat;
+  content: '';
+}
+
 /* Force hard-coded brand-icon fills to inherit currentColor for dark-mode visibility */
 ea-icon-github svg path {
   fill: currentColor;
