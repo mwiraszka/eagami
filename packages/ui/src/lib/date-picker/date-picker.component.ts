@@ -321,12 +321,14 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   private focusFocusedDayCell(): void {
     // The calendar lives inside the popover surface, which `<ea-popover>`
-    // teleports to `document.body`. Query the document directly so the lookup
-    // works regardless of where the surface is mounted.
+    // teleports to `document.body`, so the lookup starts from the surface's own
+    // id rather than the document. Two pickers open at once would otherwise
+    // both match and steal each other's focus.
     if (typeof document === 'undefined') {
       return;
     }
-    const focusedCell = document.querySelector<HTMLButtonElement>(
+    const surface = document.getElementById(this.dialogId());
+    const focusedCell = surface?.querySelector<HTMLButtonElement>(
       '.ea-date-picker__day--focused',
     );
     focusedCell?.focus();

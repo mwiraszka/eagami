@@ -528,4 +528,34 @@ describe('DatePickerComponent calendar navigation', () => {
       expect(component.focusedDate()).toEqual(new Date(2026, 1, 28));
     });
   });
+
+  describe('Multiple pickers', () => {
+    it("focuses its own day cell, not the other open picker's", async () => {
+      open();
+      const second = TestBed.createComponent(DatePickerComponent);
+      document.body.appendChild(second.nativeElement);
+      second.detectChanges();
+      second.nativeElement.querySelector('.ea-date-picker__trigger').click();
+      second.detectChanges();
+      await second.whenStable();
+
+      // The stale lookup matched the first picker in document order, so it is
+      // the second one whose focus went astray
+      const secondSurface: HTMLElement = document.getElementById(
+        second.componentInstance.dialogId(),
+      )!;
+      secondSurface.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      );
+      second.detectChanges();
+      await second.whenStable();
+      second.detectChanges();
+
+      expect(document.activeElement?.closest('.ea-popover__surface')?.id).toBe(
+        second.componentInstance.dialogId(),
+      );
+
+      second.destroy();
+    });
+  });
 });

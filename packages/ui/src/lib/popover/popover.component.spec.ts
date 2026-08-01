@@ -361,6 +361,13 @@ describe('PopoverComponent', () => {
   });
 
   describe('Scroll and resize', () => {
+    it('survives a scroll dispatched straight at window', async () => {
+      await openAnchoredAt(new DOMRect(10, 10, 40, 20));
+
+      // A window-targeted scroll has a non-Node target, which `contains` rejects
+      expect(() => window.dispatchEvent(new Event('scroll'))).not.toThrow();
+    });
+
     it('closes on an outside scroll when scrollBehavior is close', async () => {
       host.scrollBehavior.set('close');
       await openAnchoredAt(new DOMRect(200, 100, 80, 32));

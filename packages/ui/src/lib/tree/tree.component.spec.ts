@@ -171,6 +171,21 @@ describe('TreeComponent', () => {
     expect(host.expandedIds()).toEqual([]);
   });
 
+  it('keeps the node wrappers out of the accessibility tree', () => {
+    clickChevron('fruits');
+
+    // Each treeitem sits inside an <ea-tree-node>; without role="none" that
+    // wrapper would break the tree-to-treeitem relationship
+    const wrappers = fixture.nativeElement.querySelectorAll('ea-tree-node');
+
+    expect(wrappers.length).toBeGreaterThan(0);
+    expect(
+      Array.from(wrappers).every(
+        (el): boolean => (el as HTMLElement).getAttribute('role') === 'none',
+      ),
+    ).toBe(true);
+  });
+
   describe('Keyboard navigation', () => {
     function press(key: string): void {
       const list = fixture.nativeElement.querySelector('.ea-tree__list') as HTMLElement;

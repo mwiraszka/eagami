@@ -284,7 +284,10 @@ export class PopoverComponent {
         }
         // Scrolling within the popover's own surface (e.g. a long dropdown list)
         // must not dismiss or re-track it; only outside/viewport scroll should.
-        const target = event?.target as Node | null;
+        // A scroll event dispatched straight at `window` has a non-Node target,
+        // which `contains` rejects outright
+        const rawTarget = event?.target;
+        const target = rawTarget instanceof Node ? rawTarget : null;
         if (
           event?.type === 'scroll' &&
           target &&
