@@ -136,7 +136,8 @@
             [showPercentage]="true" />
           <ea-stepper
             class="tb-preview__stepper"
-            [activeStep]="1">
+            [activeStep]="1"
+            [orientation]="stepperOrientation()">
             <ea-step
               [label]="messages().ui.themeBuilder.previewStep1"
               [completed]="true" />

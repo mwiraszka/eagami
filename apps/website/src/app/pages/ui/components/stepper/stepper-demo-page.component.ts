@@ -1,4 +1,9 @@
-import { StepComponent, StepperComponent, type StepperSize } from '@eagami/ui';
+import {
+  StepComponent,
+  StepperComponent,
+  type StepperOrientation,
+  type StepperSize,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
@@ -17,6 +22,7 @@ interface StepperKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   linear: boolean;
+  orientation: StepperOrientation;
   size: StepperSize;
 }
 
