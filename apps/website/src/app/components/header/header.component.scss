@@ -27,21 +27,31 @@
 
 // Names the section of the site the page belongs to, next to the brand it sits under
 .web-header__section {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-size: 16px;
   line-height: var(--line-height-none);
   color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
 
-  &::before {
-    content: '\00B7';
-    font-size: 24px;
-    line-height: var(--line-height-none);
-    color: var(--web-color-separatorDot);
+  &:hover,
+  &.web-link-pending {
+    color: var(--color-text-primary);
   }
 
-  // The docs' own menu bar names the section on narrow screens
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 4px;
+  }
+}
+
+.web-header__dot {
+  @include mixins.separator-dot;
+}
+
+// The docs' own menu bar names the section on narrow screens
+.web-header__section,
+.web-header__dot {
   @include mixins.respond-to('lt-md') {
     display: none;
   }

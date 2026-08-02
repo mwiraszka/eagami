@@ -12,7 +12,16 @@
         [size]="18" />
     </a>
     @if (inUiSection()) {
-      <span class="web-header__section">Eagami UI</span>
+      <span
+        class="web-header__dot"
+        aria-hidden="true">
+        &#183;
+      </span>
+      <a
+        class="web-header__section"
+        routerLink="/ui">
+        Eagami UI
+      </a>
     }
   </div>
   <nav

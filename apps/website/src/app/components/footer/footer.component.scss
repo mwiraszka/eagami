@@ -117,9 +117,7 @@
 }
 
 .web-footer__dot {
-  font-size: 24px;
-  line-height: var(--line-height-none);
-  color: var(--web-color-separatorDot);
+  @include mixins.separator-dot;
 }
 
 .web-footer__copyright {
