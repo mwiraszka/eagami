@@ -14,7 +14,6 @@ import {
   StepperComponent,
   type StepperOrientation,
   SwitchComponent,
-  applyPalette,
   derivePalette,
   validatePalette,
 } from '@eagami/ui';
@@ -43,6 +42,13 @@ const DEFAULT_SECONDARY = '#506086';
 // The palette engine derives from an opaque `#RRGGBB` anchor; ignore any other
 // value the picker may momentarily emit rather than feed it to `hexToOklch`.
 const HEX = /^#[0-9a-fA-F]{6}$/;
+
+const PREVIEW_STYLE_ID = 'web-theme-builder-preview';
+
+// The page and anything it portals to the body (the preview's calendar), but not
+// the chrome around it: the docs nav and site header keep the site's own palette
+// rather than repainting with whatever colours are being tried out.
+const PREVIEW_SCOPE = '.theme-builder, .ea-date-picker__popover, .ea-popover__surface';
 
 const SHADES: readonly PaletteShade[] = [
   '50',
@@ -138,14 +144,14 @@ export class UiThemeBuilderPageComponent {
       this.metaAndTitleService.updateDescription(m.metaDescription);
     });
 
-    // Apply the derived palette to the whole document, not a scoped wrapper, so
-    // portaled surfaces (the date picker's calendar popover) re-theme too. The
-    // library writes both light and dark, so the site theme toggle still drives
-    // which mode shows. Cleared on leave so the theme doesn't outlive the page.
-    effect(() => applyPalette(this.palette()));
-    inject(DestroyRef).onDestroy(() => applyPalette({ light: {}, dark: {} }));
-
     if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      // Both modes are written, so the site theme toggle still drives which one
+      // shows. Cleared on leave so the theme doesn't outlive the page.
+      effect(() => this.applyPreviewPalette(this.palette()));
+      inject(DestroyRef).onDestroy(() =>
+        document.getElementById(PREVIEW_STYLE_ID)?.remove(),
+      );
+
       // A row of three steps stops fitting the preview well before the page's
       // own breakpoint, so this one is measured against the preview column
       const query = window.matchMedia('(max-width: 640px)');
@@ -205,5 +211,37 @@ ${this.declarations(palette.dark)}
     return Object.entries(map)
       .map(([name, value]) => `  ${name}: ${value};`)
       .join('\n');
+  }
+
+  private applyPreviewPalette(palette: ModePalette): void {
+    const existing = document.getElementById(PREVIEW_STYLE_ID);
+    const tag = existing ?? document.createElement('style');
+
+    if (!existing) {
+      tag.id = PREVIEW_STYLE_ID;
+      document.head.appendChild(tag);
+    }
+
+    tag.textContent = this.buildPreviewCss(palette);
+  }
+
+  private buildPreviewCss(palette: ModePalette): string {
+    const light = this.declarations(palette.light);
+    const dark = this.declarations(palette.dark);
+    const scoped = `:is(${PREVIEW_SCOPE})`;
+
+    return `${PREVIEW_SCOPE} {
+${light}
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) ${scoped} {
+${dark}
+  }
+}
+
+:root[data-theme='dark'] ${scoped} {
+${dark}
+}`;
   }
 }

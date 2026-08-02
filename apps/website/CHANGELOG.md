@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Scroll the internationalization page's live demo horizontally on phones, where its components spilled out of the card.
 - Keep the library sidebar's focus ring inside the link it belongs to, where it overlapped the one below.
+- Confine the theme builder's preview to the page, so the surrounding navigation no longer repaints with the colours being tried out.
 
 ## [3.18.1] - 2026-08-02
 
