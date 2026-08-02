@@ -164,6 +164,22 @@
     }
   }
 
+  // Stacked steps keep the connector under the circle it grows from, so the
+  // rail reads as one continuous line down the left of the labels.
+  &--vertical &__list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &--vertical &__connector {
+    flex: none;
+    align-self: flex-start;
+    width: var(--border-width-thin);
+    min-width: 0;
+    height: var(--space-4);
+    margin-inline-start: calc(1em - var(--border-width-thin) / 2);
+  }
+
   &--disabled {
     opacity: 0.6;
     pointer-events: none;

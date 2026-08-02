@@ -8,6 +8,7 @@ const stepperTemplate = (children: string) => `
   <ea-stepper
     [activeStep]="activeStep"
     [linear]="linear"
+    [orientation]="orientation"
     [size]="size"
     [disabled]="disabled">
     ${children}
