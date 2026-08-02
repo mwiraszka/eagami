@@ -53,27 +53,75 @@
     border-radius: 4px;
   }
 
-  /* On mobile the sidebar is capped at 50dvh so it can't dominate the viewport;
-     the aside stops scrolling and its nav/components children scroll instead. */
+  // The drawer carries the nav on mobile, where a permanent sidebar would eat the
+  // viewport before the page's own content starts
   @include mixins.respond-to('lt-md') {
-    position: static;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    max-height: 50dvh;
-    padding: 16px 32px;
-    border-bottom: 1px solid var(--color-border-default);
+    display: none;
   }
+}
+
+// Mobile stand-in for the sidebar: one sticky row that opens the nav drawer and
+// names the page you are on. Matches the header's own surface so the two read as one
+.ui-shell__menu-trigger {
+  display: none;
+
+  @include mixins.respond-to('lt-md') {
+    z-index: 1;
+    position: sticky;
+    top: var(--web-height-header);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    @include mixins.safe-area-padding(12px, 32px);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid var(--color-border-default);
+    background-color: var(--web-color-headerBg);
+    color: var(--color-text-primary);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-border-focus);
+      outline-offset: -2px;
+    }
+  }
+}
+
+.ui-shell__menu-icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--color-text-secondary);
 }
 
 .ui-shell__nav {
   display: flex;
   flex-direction: column;
+}
 
-  @include mixins.respond-to('lt-md') {
-    flex: 1;
-    min-height: 0;
-  }
+.ui-shell__rule {
+  --color-divider: var(--web-color-dividerSubtle);
+
+  margin-block: 16px;
+}
+
+.ui-shell__heading {
+  padding: 0 12px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-brand-secondary-text);
 }
 
 .ui-shell__list {
@@ -88,30 +136,6 @@
 .ui-shell__list--components {
   margin-block: 4px;
   margin-inline-start: 24px;
-
-  @include mixins.respond-to('lt-md') {
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-    margin: 8px 0 0 0;
-    scrollbar-gutter: stable;
-  }
-}
-
-// Two columns on mobile halve the section's height so the expanded components
-// list below keeps most of the sidebar; the toggle spans the full width so it
-// sits directly above the list it controls
-.ui-shell__list--primary {
-  @include mixins.respond-to('lt-md') {
-    display: grid;
-    flex-shrink: 0;
-    gap: 1px 8px;
-    grid-template-columns: 1fr 1fr;
-
-    li:last-child {
-      grid-column: 1 / -1;
-    }
-  }
 }
 
 .ui-shell__link {
