@@ -111,7 +111,7 @@
 .ui-shell__rule {
   --color-divider: var(--web-color-dividerSubtle);
 
-  margin-block: 16px;
+  margin-block: 32px;
 }
 
 .ui-shell__heading {
@@ -121,7 +121,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-brand-secondary-text);
+  color: var(--color-text-tertiary);
 }
 
 .ui-shell__list {
