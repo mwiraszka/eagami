@@ -9,6 +9,7 @@ import { StepperComponent } from './stepper.component';
     <ea-stepper
       [activeStep]="activeStep()"
       [linear]="linear()"
+      [orientation]="orientation()"
       [disabled]="disabled()"
       (changed)="onChanged($event)">
       <ea-step
@@ -34,6 +35,7 @@ import { StepperComponent } from './stepper.component';
 class HostComponent {
   activeStep = signal(0);
   linear = signal(false);
+  orientation = signal<'horizontal' | 'vertical'>('horizontal');
   disabled = signal(false);
   step1Completed = signal(false);
   step2Completed = signal(false);
@@ -207,6 +209,26 @@ describe('StepperComponent', () => {
       expect(host.changedEvents).toEqual([1]);
     });
 
+    it('walks with ArrowDown / ArrowUp when vertical', () => {
+      host.orientation.set('vertical');
+      fixture.detectChanges();
+
+      dispatchKey('ArrowDown');
+      dispatchKey('ArrowDown');
+      dispatchKey('ArrowUp');
+
+      expect(host.changedEvents).toEqual([1, 2, 1]);
+    });
+
+    it('ignores the horizontal arrows when vertical', () => {
+      host.orientation.set('vertical');
+      fixture.detectChanges();
+
+      dispatchKey('ArrowRight');
+
+      expect(host.changedEvents).toEqual([]);
+    });
+
     it('jumps to first / last reachable on Home / End', () => {
       host.activeStep.set(1);
       fixture.detectChanges();
@@ -215,6 +237,27 @@ describe('StepperComponent', () => {
       dispatchKey('End');
 
       expect(host.changedEvents).toEqual([0, 2]);
+    });
+  });
+
+  describe('Orientation', () => {
+    it('lays out horizontally by default', () => {
+      const stepper = fixture.nativeElement.querySelector('.ea-stepper');
+      const list = fixture.nativeElement.querySelector('.ea-stepper__list');
+
+      expect(stepper.classList).toContain('ea-stepper--horizontal');
+      expect(list.getAttribute('aria-orientation')).toBe('horizontal');
+    });
+
+    it('marks the tablist vertical when stacked', () => {
+      host.orientation.set('vertical');
+      fixture.detectChanges();
+
+      const stepper = fixture.nativeElement.querySelector('.ea-stepper');
+      const list = fixture.nativeElement.querySelector('.ea-stepper__list');
+
+      expect(stepper.classList).toContain('ea-stepper--vertical');
+      expect(list.getAttribute('aria-orientation')).toBe('vertical');
     });
   });
 

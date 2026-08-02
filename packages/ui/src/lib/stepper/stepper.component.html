@@ -5,6 +5,7 @@
     class="ea-stepper__list"
     role="tablist"
     [attr.aria-label]="i18n.messages().stepper.stepsLabel"
+    [attr.aria-orientation]="orientation()"
     (keydown)="handleKeydown($event)">
     @for (step of registeredSteps(); let i = $index; track step) {
       <button

@@ -20,6 +20,9 @@ import type { StepComponent } from './step.component';
 /** Visual size of the stepper. */
 export type StepperSize = EaSize;
 
+/** Axis the steps are laid out along. */
+export type StepperOrientation = 'horizontal' | 'vertical';
+
 /**
  * Multi-step navigation paired with content panels. Child `<ea-step>`
  * components register themselves automatically and the active panel is
@@ -45,6 +48,7 @@ export class StepperComponent {
   readonly activeStep = model<number>(0);
   readonly linear = input<boolean>(false);
   readonly size = input<StepperSize>('md');
+  readonly orientation = input<StepperOrientation>('horizontal');
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(uniqueId('ea-stepper'));
 
@@ -53,6 +57,7 @@ export class StepperComponent {
 
   readonly hostClasses = computed(() => ({
     [`ea-stepper--${this.size()}`]: true,
+    [`ea-stepper--${this.orientation()}`]: true,
     'ea-stepper--disabled': this.disabled(),
   }));
 
@@ -121,9 +126,10 @@ export class StepperComponent {
       return;
     }
 
+    const vertical = this.orientation() === 'vertical';
     const rtl = isRtl(event.currentTarget as Element);
-    const forwardKey = rtl ? 'ArrowLeft' : 'ArrowRight';
-    const backwardKey = rtl ? 'ArrowRight' : 'ArrowLeft';
+    const forwardKey = vertical ? 'ArrowDown' : rtl ? 'ArrowLeft' : 'ArrowRight';
+    const backwardKey = vertical ? 'ArrowUp' : rtl ? 'ArrowRight' : 'ArrowLeft';
 
     let nextIndex = -1;
     if (event.key === forwardKey) {

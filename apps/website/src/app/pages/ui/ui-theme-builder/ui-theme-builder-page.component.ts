@@ -12,16 +12,19 @@ import {
   ProgressBarComponent,
   StepComponent,
   StepperComponent,
+  type StepperOrientation,
   SwitchComponent,
   applyPalette,
   derivePalette,
   validatePalette,
 } from '@eagami/ui';
 
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  PLATFORM_ID,
   computed,
   effect,
   inject,
@@ -96,6 +99,7 @@ export class UiThemeBuilderPageComponent {
   protected readonly secondaryBase = signal(DEFAULT_SECONDARY);
 
   protected readonly demoSwitch = signal(true);
+  protected readonly stepperOrientation = signal<StepperOrientation>('horizontal');
 
   private readonly config = computed<EagamiPaletteConfig>(() => {
     const config: EagamiPaletteConfig = {};
@@ -140,6 +144,17 @@ export class UiThemeBuilderPageComponent {
     // which mode shows. Cleared on leave so the theme doesn't outlive the page.
     effect(() => applyPalette(this.palette()));
     inject(DestroyRef).onDestroy(() => applyPalette({ light: {}, dark: {} }));
+
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      // A row of three steps stops fitting the preview well before the page's
+      // own breakpoint, so this one is measured against the preview column
+      const query = window.matchMedia('(max-width: 640px)');
+      const update = (): void =>
+        this.stepperOrientation.set(query.matches ? 'vertical' : 'horizontal');
+      update();
+      query.addEventListener('change', update);
+      inject(DestroyRef).onDestroy(() => query.removeEventListener('change', update));
+    }
   }
 
   protected onPrimaryChange(value: string | null): void {

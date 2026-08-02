@@ -11,6 +11,7 @@
     (resetClicked)="reset()">
     <ea-stepper
       [linear]="state().linear"
+      [orientation]="state().orientation"
       [size]="state().size">
       @for (step of steps; track step.label) {
         <ea-step [label]="step.label">

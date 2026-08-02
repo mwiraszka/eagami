@@ -3779,6 +3779,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'orientation',
+        type: 'StepperOrientation',
+        default: "'horizontal'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'size',
         type: 'StepperSize',
         default: "'md'",

@@ -172,10 +172,9 @@
 .ui-shell__main {
   grid-column: 2;
   min-width: 0;
-  padding: 32px 48px;
+  @include mixins.page-padding;
 
   @include mixins.respond-to('lt-md') {
     grid-column: 1;
-    padding: 24px 32px;
   }
 }

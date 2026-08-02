@@ -187,16 +187,17 @@ export const ar: WebMessages = {
       title: 'سجل التغييرات',
       metaTitle: 'سجل التغييرات | Eagami UI',
       metaDescription: 'سجل الإصدارات لمكتبة مكوّنات Angular الخاصة بـ Eagami UI.',
-      leadBefore: 'تغييرات بارزة في ',
-      leadAfter: '، بدءًا من الأحدث.',
+      lede: (pkg, version, history) =>
+        `في ما يلي قائمة بجميع التغييرات البارزة في مكتبة ${pkg} منذ إصدار الإصدار ${version}. للاطّلاع على السجل الكامل، راجع ${history}.`,
+      historyInline: 'ملف CHANGELOG.md على GitHub',
       migrationGuide: 'دليل الترحيل',
-      fullHistory: 'السجل الكامل على GitHub',
     },
     shell: {
       changelog: 'سجل التغييرات',
       sidebarLabel: 'الشريط الجانبي للتوثيق',
       navLabel: 'التوثيق',
       overview: 'نظرة عامة',
+      overviewNav: 'نظرة عامة على UI',
       setup: 'الإعداد',
       designTokens: 'رموز التصميم',
       themeBuilder: 'منشئ السمة',
@@ -1984,6 +1985,8 @@ export const ar: WebMessages = {
             id: 'معرّف يُطبَّق على العنصر المضيف للمُدرِّج، يُولَّد تلقائيًا عند حذفه.',
             linear:
               'يتطلّب تعليم كل خطوة غير اختيارية كمكتملة قبل أن يتمكّن المستخدم من التقدّم.',
+            orientation:
+              'المحور الذي تُرتَّب عليه الخطوات؛ رتّبها عموديًا عندما لا يتّسع الصف.',
             size: 'الحجم البصري للمُدرِّج، يكيّف مؤشّرات الخطوات والتسميات معًا.',
             changed:
               'يُطلَق مع فهرس الخطوة النشطة الجديد عندما ينتقل المستخدم إلى خطوة مختلفة.',

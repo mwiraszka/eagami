@@ -2,31 +2,9 @@
   <header class="ui-changelog__header">
     <h1 class="ui-changelog__title">{{ messages().ui.changelog.title }}</h1>
     <ea-divider />
-    <p class="ui-changelog__lead">
-      {{ messages().ui.changelog.leadBefore
-      }}<a
-        class="ui-changelog__package"
-        href="https://www.npmjs.com/package/&#64;eagami/ui"
-        target="_blank"
-        rel="noopener noreferrer"
-        ><code>&#64;eagami/ui</code></a
-      >{{ messages().ui.changelog.leadAfter }}
-    </p>
-    <p class="ui-changelog__links">
-      <a
-        class="ui-changelog__link"
-        [href]="migrationUrl"
-        target="_blank"
-        rel="noopener noreferrer">
-        <span>{{ messages().ui.changelog.migrationGuide }}</span>
-      </a>
-      <a
-        class="ui-changelog__link"
-        [href]="changelogUrl"
-        target="_blank"
-        rel="noopener noreferrer">
-        <span>{{ messages().ui.changelog.fullHistory }}</span>
-      </a>
+    <p
+      class="ui-changelog__lede"
+      [innerHTML]="ledeHtml()">
     </p>
   </header>
 

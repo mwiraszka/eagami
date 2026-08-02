@@ -8,6 +8,10 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
 export const STEPPER_KNOBS: ComponentKnobs = {
   argTypes: {
     linear: { control: 'boolean' },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+    },
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
@@ -16,6 +20,7 @@ export const STEPPER_KNOBS: ComponentKnobs = {
   },
   args: {
     linear: false,
+    orientation: 'horizontal',
     size: 'md',
   },
 };
