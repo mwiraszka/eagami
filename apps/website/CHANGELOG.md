@@ -5,6 +5,20 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.18.1] - 2026-08-02
+
+### Changed
+
+- Give every page the same content padding and measure, which the legal pages set narrower and taller than the rest.
+- Space the legal pages' sections on the same rhythm as their paragraphs.
+- Name the library sidebar's first link UI Overview, and match the theme builder's preview note to the page introduction.
+- Rewrite the changelog page's introduction as one paragraph with the GitHub history linked inline, and list only releases from v5.0.0 onward.
+- Pick up @eagami/ui v5.16.0.
+
+### Fixed
+
+- Stack the theme builder's preview stepper vertically on narrow screens, where a row of steps overflowed.
+
 ## [3.18.0] - 2026-08-02
 
 ### Added
@@ -1070,6 +1084,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.18.1]: https://github.com/mwiraszka/eagami/compare/website-v3.18.0...website-v3.18.1
 [3.18.0]: https://github.com/mwiraszka/eagami/compare/website-v3.17.0...website-v3.18.0
 [3.17.0]: https://github.com/mwiraszka/eagami/compare/website-v3.16.5...website-v3.17.0
 [3.16.5]: https://github.com/mwiraszka/eagami/compare/website-v3.16.4...website-v3.16.5

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.16.0] - 2026-08-02
+
+### Added
+
+- Add an `orientation` input to the stepper, so steps can stack vertically where a row will not fit.
+
 ## [5.15.1] - 2026-08-02
 
 ### Fixed
@@ -1212,6 +1218,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.16.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.15.1...ui-v5.16.0
 [5.15.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.15.0...ui-v5.15.1
 [5.15.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.4...ui-v5.15.0
 [5.14.4]: https://github.com/mwiraszka/eagami/compare/ui-v5.14.3...ui-v5.14.4
