@@ -77,6 +77,13 @@
   &.web-link-pending {
     color: var(--color-text-primary);
   }
+
+  // Baseline alignment seats the outbound-link glyph on the text; a leading icon
+  // instead has to centre against it
+  &--download {
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 .web-footer__rule {
@@ -105,7 +112,14 @@
 
 .web-footer__legal {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 12px;
+}
+
+.web-footer__dot {
+  font-size: 24px;
+  line-height: var(--line-height-none);
+  color: var(--web-color-separatorDot);
 }
 
 .web-footer__copyright {
@@ -118,19 +132,5 @@
   @media (max-width: 420px) {
     flex-direction: column;
     gap: 4px;
-  }
-}
-
-// Shorter than the ea-divider default and dimmed so it reads like punctuation.
-// The nudge counters the text's line-height pushing the glyphs below centre
-.web-footer__divider {
-  --color-divider: var(--web-color-footerTextDivider);
-  --ea-divider-length: 16px;
-  // Doubles the row's 8px gap on both sides
-  margin: 0 8px;
-  transform: translateY(2px);
-
-  @media (max-width: 420px) {
-    display: none;
   }
 }

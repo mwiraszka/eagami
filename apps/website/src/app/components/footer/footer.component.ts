@@ -1,4 +1,4 @@
-import { DividerComponent } from '@eagami/ui';
+import { DividerComponent, DownloadIconComponent } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -16,7 +16,7 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
   selector: 'web-footer',
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
-  imports: [DividerComponent, PendingLinkDirective, RouterLink],
+  imports: [DividerComponent, DownloadIconComponent, PendingLinkDirective, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {

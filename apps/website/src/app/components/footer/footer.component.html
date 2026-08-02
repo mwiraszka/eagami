@@ -155,9 +155,10 @@
         @for (link of integrationLinks; track link.href) {
           <li>
             <a
-              class="web-footer__link"
+              class="web-footer__link web-footer__link--download"
               [href]="link.href"
               download>
+              <ea-icon-download aria-hidden="true" />
               <span>{{ messages().ui.integrations[link.labelKey] }}</span>
             </a>
           </li>
@@ -173,9 +174,6 @@
   <div class="web-footer__bottom">
     <div class="web-footer__copyright">
       <span>{{ messages().common.footer.copyright(currentYear) }}</span>
-      <ea-divider
-        class="web-footer__divider"
-        orientation="vertical" />
       <span>{{ messages().common.footer.allRightsReserved }}</span>
     </div>
     <nav
@@ -186,6 +184,11 @@
         routerLink="/privacy">
         <span>{{ messages().privacy.title }}</span>
       </a>
+      <span
+        class="web-footer__dot"
+        aria-hidden="true">
+        &#183;
+      </span>
       <a
         class="web-footer__link"
         routerLink="/terms">
