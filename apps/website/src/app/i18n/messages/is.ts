@@ -190,16 +190,17 @@ export const is: WebMessages = {
       title: 'Breytingaskrá',
       metaTitle: 'Breytingaskrá | Eagami UI',
       metaDescription: 'Útgáfusaga Eagami UI Angular íhlutasafnsins.',
-      leadBefore: 'Helstu breytingar á ',
-      leadAfter: ', nýjustu fyrst.',
+      lede: (pkg, version, history) =>
+        `Hér að neðan eru allar helstu breytingar á ${pkg} safninu frá útgáfu ${version}. Alla söguna má sjá í ${history}.`,
+      historyInline: 'CHANGELOG.md á GitHub',
       migrationGuide: 'Flutningsleiðbeiningar',
-      fullHistory: 'Öll sagan á GitHub',
     },
     shell: {
       changelog: 'Breytingaskrá',
       sidebarLabel: 'Hliðarstika skjölunar',
       navLabel: 'Skjölun',
       overview: 'Yfirlit',
+      overviewNav: 'UI-yfirlit',
       setup: 'Uppsetning',
       designTokens: 'Hönnunartóknar',
       themeBuilder: 'Þemasmiður',
@@ -2063,6 +2064,8 @@ export const is: WebMessages = {
             id: 'id sett á hýsilstak skrefatólsins, sjálfvirkt búið til þegar því er sleppt.',
             linear:
               'Krefst þess að hvert ekki-valfrjálst skref sé merkt lokið áður en notandinn getur haldið áfram.',
+            orientation:
+              'Ásinn sem þrepin raðast eftir; staflaðu þeim lóðrétt þar sem röð kemst ekki fyrir.',
             size: 'Sjónræn stærð skrefatólsins, kvarðar skrefavísana og merkimiðana saman.',
             changed:
               'Kviknar með nýja virka skrefastuðlinum þegar notandinn fer á annað skref.',

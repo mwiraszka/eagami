@@ -112,16 +112,16 @@ export interface WebMessages {
       title: string;
       metaTitle: string;
       metaDescription: string;
-      leadBefore: string;
-      leadAfter: string;
+      lede: (pkg: string, version: string, history: string) => string;
+      historyInline: string;
       migrationGuide: string;
-      fullHistory: string;
     };
     shell: {
       changelog: string;
       sidebarLabel: string;
       navLabel: string;
       overview: string;
+      overviewNav: string;
       setup: string;
       designTokens: string;
       themeBuilder: string;

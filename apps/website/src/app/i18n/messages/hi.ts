@@ -189,16 +189,17 @@ export const hi: WebMessages = {
       title: 'चेंजलॉग',
       metaTitle: 'चेंजलॉग | Eagami UI',
       metaDescription: 'Eagami UI Angular कंपोनेंट लाइब्रेरी का रिलीज़ इतिहास।',
-      leadBefore: '',
-      leadAfter: ' में उल्लेखनीय परिवर्तन, नवीनतम पहले।',
+      lede: (pkg, version, history) =>
+        `नीचे ${version} संस्करण के बाद से ${pkg} लाइब्रेरी के सभी उल्लेखनीय परिवर्तनों की सूची दी गई है। पूरे इतिहास के लिए ${history} देखें।`,
+      historyInline: 'GitHub पर CHANGELOG.md',
       migrationGuide: 'माइग्रेशन गाइड',
-      fullHistory: 'GitHub पर पूरा इतिहास',
     },
     shell: {
       changelog: 'चेंजलॉग',
       sidebarLabel: 'दस्तावेज़ साइडबार',
       navLabel: 'दस्तावेज़',
       overview: 'अवलोकन',
+      overviewNav: 'UI अवलोकन',
       setup: 'सेटअप',
       designTokens: 'डिज़ाइन टोकन',
       themeBuilder: 'थीम बिल्डर',
@@ -2072,6 +2073,8 @@ export const hi: WebMessages = {
             id: 'स्टेपर होस्ट एलिमेंट पर लागू id, छोड़े जाने पर स्वतः-उत्पन्न।',
             linear:
               'उपयोगकर्ता के आगे बढ़ने से पहले प्रत्येक गैर-वैकल्पिक चरण को पूर्ण चिह्नित करने की आवश्यकता होती है।',
+            orientation:
+              'वह अक्ष जिस पर चरण व्यवस्थित होते हैं; जहाँ एक पंक्ति न समाए वहाँ उन्हें लंबवत रखें.',
             size: 'स्टेपर का दृश्य आकार, चरण संकेतकों और लेबल को एक साथ स्केल करता है।',
             changed:
               'जब उपयोगकर्ता किसी अलग चरण पर नेविगेट करता है तो नए सक्रिय चरण इंडेक्स के साथ ट्रिगर होता है।',

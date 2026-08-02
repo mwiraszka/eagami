@@ -199,16 +199,17 @@ export const frFR: WebMessages = {
       metaTitle: 'Journal des modifications | Eagami UI',
       metaDescription:
         'Historique des versions de la bibliothèque de composants Angular Eagami UI.',
-      leadBefore: 'Changements notables de ',
-      leadAfter: ', les plus récents en premier.',
+      lede: (pkg, version, history) =>
+        `Vous trouverez ci-dessous tous les changements notables de la bibliothèque ${pkg} depuis la version ${version}. Pour l’historique complet, voir ${history}.`,
+      historyInline: 'CHANGELOG.md sur GitHub',
       migrationGuide: 'Guide de migration',
-      fullHistory: 'Historique complet sur GitHub',
     },
     shell: {
       changelog: 'Journal des modifications',
       sidebarLabel: 'Barre latérale de documentation',
       navLabel: 'Documentation',
       overview: 'Aperçu',
+      overviewNav: 'Vue d’ensemble de l’UI',
       setup: 'Installation',
       designTokens: 'Tokens de design',
       themeBuilder: 'Générateur de thème',
@@ -2130,6 +2131,8 @@ export const frFR: WebMessages = {
             id: 'id appliqué à l’élément hôte du stepper, généré automatiquement si omis.',
             linear:
               'Exige que chaque étape non optionnelle soit marquée comme terminée avant que l’utilisateur puisse avancer.',
+            orientation:
+              'Axe selon lequel les étapes sont disposées ; empilez-les verticalement là où une ligne ne tient pas.',
             size: 'Taille visuelle du stepper, mettant à l’échelle les indicateurs et les libellés ensemble.',
             changed:
               'Émis avec le nouvel indice d’étape active lorsque l’utilisateur navigue vers une autre étape.',

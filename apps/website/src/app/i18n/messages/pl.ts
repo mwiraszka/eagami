@@ -195,16 +195,17 @@ export const pl: WebMessages = {
       title: 'Dziennik zmian',
       metaTitle: 'Dziennik zmian | Eagami UI',
       metaDescription: 'Historia wersji biblioteki komponentów Angular Eagami UI.',
-      leadBefore: 'Istotne zmiany w ',
-      leadAfter: ', od najnowszych.',
+      lede: (pkg, version, history) =>
+        `Poniżej znajdziesz wszystkie istotne zmiany w bibliotece ${pkg} od wersji ${version}. Pełny zapis znajdziesz w ${history}.`,
+      historyInline: 'pliku CHANGELOG.md na GitHubie',
       migrationGuide: 'Przewodnik migracji',
-      fullHistory: 'Pełna historia na GitHubie',
     },
     shell: {
       changelog: 'Dziennik zmian',
       sidebarLabel: 'Pasek boczny dokumentacji',
       navLabel: 'Dokumentacja',
       overview: 'Przegląd',
+      overviewNav: 'Przegląd UI',
       setup: 'Instalacja',
       designTokens: 'Tokeny designu',
       themeBuilder: 'Kreator motywu',
@@ -2094,6 +2095,8 @@ export const pl: WebMessages = {
             id: 'id stosowane do elementu hosta steppera, generowane automatycznie gdy pominięte.',
             linear:
               'Wymaga oznaczenia każdego nieobowiązkowego kroku jako ukończonego przed przejściem dalej.',
+            orientation:
+              'Oś, wzdłuż której układane są kroki; ułóż je pionowo tam, gdzie wiersz się nie mieści.',
             size: 'Wizualny rozmiar steppera, skalujący wskaźniki kroków i etykiety razem.',
             changed:
               'Emitowane z nowym indeksem aktywnego kroku, gdy użytkownik przechodzi do innego kroku.',

@@ -196,16 +196,17 @@ export const nl: WebMessages = {
       metaTitle: 'Wijzigingslogboek | Eagami UI',
       metaDescription:
         'Versiegeschiedenis van de Eagami UI Angular-componentenbibliotheek.',
-      leadBefore: 'Noemenswaardige wijzigingen aan ',
-      leadAfter: ', nieuwste eerst.',
+      lede: (pkg, version, history) =>
+        `Hieronder vind je alle noemenswaardige wijzigingen aan de ${pkg}-bibliotheek sinds versie ${version}. Voor de volledige historie, zie ${history}.`,
+      historyInline: 'CHANGELOG.md op GitHub',
       migrationGuide: 'Migratiegids',
-      fullHistory: 'Volledige geschiedenis op GitHub',
     },
     shell: {
       changelog: 'Wijzigingslogboek',
       sidebarLabel: 'Documentatiezijbalk',
       navLabel: 'Documentatie',
       overview: 'Overzicht',
+      overviewNav: 'UI-overzicht',
       setup: 'Installatie',
       designTokens: 'Designtokens',
       themeBuilder: 'Themabuilder',
@@ -2121,6 +2122,8 @@ export const nl: WebMessages = {
             id: 'id toegepast op het stepper-hostelement, automatisch gegenereerd indien weggelaten.',
             linear:
               'Vereist dat elke niet-optionele stap als voltooid is gemarkeerd voordat de gebruiker verder kan.',
+            orientation:
+              'As waarlangs de stappen worden geplaatst; stapel ze verticaal waar een rij niet past.',
             size: 'Visuele grootte van de stepper, die de stapindicatoren en labels samen schaalt.',
             changed:
               'Wordt geactiveerd met de nieuwe actieve stapindex wanneer de gebruiker naar een andere stap navigeert.',
