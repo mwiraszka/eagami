@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.16.1',
+    date: '2026-08-02',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the paginator's controls reachable in a container too narrow for them, where end and centre alignment pushed them off the start edge with no way to scroll back.",
+          "Stop the transfer list's panes collapsing to a width that clips their own item labels.",
+          'Centre the wordmark against text placed beside it, where a line box left empty space under the logo.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.16.0',
     date: '2026-08-02',
     sections: [

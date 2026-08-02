@@ -5,6 +5,25 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.19.0] - 2026-08-02
+
+### Added
+
+- Open the library documentation navigation from a drawer on phones, behind a bar that gives the page back to its content.
+
+### Changed
+
+- Name the library sidebar's first link and the page it opens Overview.
+- Mark the library section in the site header, and separate the footer's legal links with a centre dot.
+- Group the library sidebar under Guides and Resources headings, in the same order as the footer.
+- Show the download icon on the footer's integration links, and end the copyright line with a full stop instead of a divider.
+- Limit the sidebar's Components button to expanding its list, so it no longer jumps to the first component.
+- Pick up @eagami/ui v5.16.1.
+
+### Fixed
+
+- Scroll the internationalization page's live demo horizontally on phones, where its components spilled out of the card.
+
 ## [3.18.1] - 2026-08-02
 
 ### Changed
@@ -1084,6 +1103,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.19.0]: https://github.com/mwiraszka/eagami/compare/website-v3.18.1...website-v3.19.0
 [3.18.1]: https://github.com/mwiraszka/eagami/compare/website-v3.18.0...website-v3.18.1
 [3.18.0]: https://github.com/mwiraszka/eagami/compare/website-v3.17.0...website-v3.18.0
 [3.17.0]: https://github.com/mwiraszka/eagami/compare/website-v3.16.5...website-v3.17.0
