@@ -1,15 +1,20 @@
 <header class="web-header">
-  <a
-    class="web-header__brand"
-    [class.web-header__brand--hidden]="!brandVisible()"
-    [attr.aria-hidden]="!brandVisible() ? 'true' : null"
-    [attr.tabindex]="brandVisible() ? null : -1"
-    routerLink="/"
-    [attr.aria-label]="messages().common.brandHome">
-    <ea-eagami-wordmark
-      [linked]="false"
-      [size]="18" />
-  </a>
+  <div class="web-header__lockup">
+    <a
+      class="web-header__brand"
+      [class.web-header__brand--hidden]="!brandVisible()"
+      [attr.aria-hidden]="!brandVisible() ? 'true' : null"
+      [attr.tabindex]="brandVisible() ? null : -1"
+      routerLink="/"
+      [attr.aria-label]="messages().common.brandHome">
+      <ea-eagami-wordmark
+        [linked]="false"
+        [size]="18" />
+    </a>
+    @if (inUiSection()) {
+      <span class="web-header__section">Eagami UI</span>
+    }
+  </div>
   <nav
     class="web-header__nav"
     aria-label="Primary">

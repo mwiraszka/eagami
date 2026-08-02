@@ -19,11 +19,11 @@
   /* Translucent header background, mixed off bg-base so it tracks theme overrides.
      Pairs with backdrop-filter. */
   --web-color-headerBg: color-mix(in srgb, var(--color-bg-base) 78%, transparent);
-  /* Small vertical divider between footer texts: dimmer than the text around
-     it so it reads as punctuation, not structure */
-  --web-color-footerTextDivider: color-mix(
+  /* Centre dot between two inline labels (header lockup, footer legal links):
+     dimmer than both so it reads as punctuation rather than a third label */
+  --web-color-separatorDot: color-mix(
     in srgb,
-    var(--color-text-secondary) 22%,
+    var(--color-text-secondary) 45%,
     transparent
   );
 
