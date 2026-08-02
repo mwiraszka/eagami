@@ -89,13 +89,21 @@
 }
 
 .ui-i18n__demo {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 24px;
+  overflow-x: auto;
   border: 1px solid var(--color-border-default);
   border-radius: 12px;
   background-color: var(--color-bg-elevated);
+}
+
+// The card's padding sits here rather than on the scroll container, whose trailing
+// padding is dropped from the scrollable area; `min-content` then widens this box to
+// the demo's true minimum so the padding travels to the end of the scroll.
+.ui-i18n__demo-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: min-content;
+  padding: 24px;
 }
 
 .ui-i18n__demo-grid {
@@ -106,4 +114,10 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 16px;
   align-items: start;
+
+  // One column sized to what the components actually need: everything that can
+  // narrow does, and only the ones with a real minimum push the card into a scroll
+  @include mixins.respond-to('lt-md') {
+    grid-template-columns: 1fr;
+  }
 }

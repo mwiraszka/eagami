@@ -44,33 +44,35 @@
     <p>{{ messages().ui.i18n.liveDemoIntro }}</p>
 
     <div class="ui-i18n__demo">
-      <ea-segmented
-        [label]="messages().ui.i18n.demoLocaleLabel"
-        [options]="localeOptions"
-        [value]="activeLocale()"
-        (changed)="onLocaleChange($event)" />
+      <div class="ui-i18n__demo-inner">
+        <ea-segmented
+          [label]="messages().ui.i18n.demoLocaleLabel"
+          [options]="localeOptions"
+          [value]="activeLocale()"
+          (changed)="onLocaleChange($event)" />
 
-      <ea-segmented
-        [options]="directionOptions"
-        [value]="direction()"
-        (changed)="onDirectionChange($event)" />
+        <ea-segmented
+          [options]="directionOptions"
+          [value]="direction()"
+          (changed)="onDirectionChange($event)" />
 
-      <div
-        class="ui-i18n__demo-grid"
-        [attr.dir]="direction()">
-        <ea-date-picker />
+        <div
+          class="ui-i18n__demo-grid"
+          [attr.dir]="direction()">
+          <ea-date-picker />
 
-        <ea-multi-select [options]="demoSelectOptions" />
+          <ea-multi-select [options]="demoSelectOptions" />
 
-        <ea-data-table
-          [columns]="demoTableColumns"
-          [data]="demoTableData" />
+          <ea-data-table
+            [columns]="demoTableColumns"
+            [data]="demoTableData" />
 
-        <ea-paginator [totalItems]="100" />
+          <ea-paginator [totalItems]="100" />
 
-        <ea-transfer-list [items]="demoTransferItems" />
+          <ea-transfer-list [items]="demoTransferItems" />
 
-        <ea-file-uploader />
+          <ea-file-uploader />
+        </div>
       </div>
     </div>
   </section>
