@@ -1,8 +1,11 @@
 @use '../../styles/mixins' as ea;
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&display=swap');
 
+// Flex, not inline-block: an inline-block wraps the lockup in a line box, whose
+// strut leaves a descender's worth of empty space under the logo and throws the
+// wordmark off-centre against text beside it
 :host {
-  display: inline-block;
+  display: inline-flex;
   line-height: var(--line-height-none);
 }
 

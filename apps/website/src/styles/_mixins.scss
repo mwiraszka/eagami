@@ -373,3 +373,11 @@ $breakpoints: (
     outline-offset: 2px;
   }
 }
+
+/// Decorative dot that separates two inline labels: the header lockup's section
+/// name, the footer's legal links.
+@mixin separator-dot {
+  font-size: 24px;
+  line-height: var(--line-height-none);
+  color: var(--web-color-separatorDot);
+}

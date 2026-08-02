@@ -10,7 +10,7 @@ export const he: WebMessages = {
     localeMenuTooltip: 'שנה שפה',
     activeLocale: label => `השפה הנוכחית: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'כל הזכויות שמורות.',
       navLabel: 'כותרת תחתונה',
       siteHeading: 'אודות',
@@ -190,9 +190,9 @@ export const he: WebMessages = {
     shell: {
       changelog: 'יומן שינויים',
       sidebarLabel: 'סרגל צד של התיעוד',
+      menu: 'תפריט התיעוד',
       navLabel: 'תיעוד',
       overview: 'סקירה כללית',
-      overviewNav: 'סקירת UI',
       setup: 'התקנה',
       designTokens: 'אסימוני עיצוב',
       themeBuilder: 'בונה ערכת נושא',
@@ -205,7 +205,7 @@ export const he: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'ספריית רכיבי Angular קלת משקל ונגישה הבנויה על מאפייני CSS מותאמים אישית.',
-      title: 'Eagami UI',
+      title: 'סקירה כללית',
       ledeBefore: 'היא ספריית רכיבי Angular קלת משקל ונגישה.',
       ledeAfter:
         'ברירות מחדל הגיוניות מהקופסה, עם עיצוב הניתן להתאמה אישית מלאה כדי להתאים לכל מותג.',

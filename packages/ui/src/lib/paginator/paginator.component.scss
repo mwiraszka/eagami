@@ -4,7 +4,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  // `safe` on every alignment: once the page buttons outgrow the container, end and
+  // centre alignment would push them off the start edge, where no scrollbar reaches
+  justify-content: safe flex-end;
   // Span the container so justify-content has free space to align within; without
   // a full width the controls hug their content and left/right look identical.
   gap: 1em;
@@ -41,7 +43,7 @@
   }
 
   &--center {
-    justify-content: center;
+    justify-content: safe center;
   }
 
   &__page-size {

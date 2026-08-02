@@ -11,7 +11,7 @@ export const de: WebMessages = {
     localeMenuTooltip: 'Sprache ändern',
     activeLocale: label => `Aktuelle Sprache: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'Alle Rechte vorbehalten.',
       navLabel: 'Fußzeile',
       siteHeading: 'Über',
@@ -203,9 +203,9 @@ export const de: WebMessages = {
     shell: {
       changelog: 'Änderungsprotokoll',
       sidebarLabel: 'Dokumentations-Seitenleiste',
+      menu: 'Dokumentationsmenü',
       navLabel: 'Dokumentation',
       overview: 'Überblick',
-      overviewNav: 'UI-Übersicht',
       setup: 'Einrichtung',
       designTokens: 'Design-Tokens',
       themeBuilder: 'Theme-Builder',
@@ -218,7 +218,7 @@ export const de: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'Leichtgewichtige, barrierefreie Angular-Komponentenbibliothek auf Basis von CSS-Custom-Properties.',
-      title: 'Eagami UI',
+      title: 'Überblick',
       ledeBefore:
         'ist eine leichtgewichtige, barrierefreie Angular-Komponentenbibliothek.',
       ledeAfter:

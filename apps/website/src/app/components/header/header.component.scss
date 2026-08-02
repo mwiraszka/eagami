@@ -19,6 +19,44 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
+.web-header__lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+// Names the section of the site the page belongs to, next to the brand it sits under
+.web-header__section {
+  font-size: 16px;
+  line-height: var(--line-height-none);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &.web-link-pending {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 4px;
+  }
+}
+
+.web-header__dot {
+  @include mixins.separator-dot;
+}
+
+// The docs' own menu bar names the section on narrow screens
+.web-header__section,
+.web-header__dot {
+  @include mixins.respond-to('lt-md') {
+    display: none;
+  }
+}
+
 .web-header__brand {
   display: inline-flex;
   align-items: center;

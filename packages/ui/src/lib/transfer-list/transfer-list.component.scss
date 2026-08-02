@@ -11,10 +11,12 @@
   color: var(--color-text-primary);
 }
 
+// An explicit floor rather than `0`: the panes stop collapsing to a width that clips
+// their own item labels, and still never blow out on a long one
 .ea-transfer-list__pane {
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  min-width: 6em;
   gap: var(--space-2);
 }
 

@@ -11,7 +11,7 @@ export const el: WebMessages = {
     localeMenuTooltip: 'Αλλαγή γλώσσας',
     activeLocale: label => `Τρέχουσα γλώσσα: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'Με επιφύλαξη παντός δικαιώματος.',
       navLabel: 'Υποσέλιδο',
       siteHeading: 'Σχετικά',
@@ -203,9 +203,9 @@ export const el: WebMessages = {
     shell: {
       changelog: 'Αρχείο αλλαγών',
       sidebarLabel: 'Πλευρική στήλη τεκμηρίωσης',
+      menu: 'Μενού τεκμηρίωσης',
       navLabel: 'Τεκμηρίωση',
       overview: 'Επισκόπηση',
-      overviewNav: 'Επισκόπηση UI',
       setup: 'Εγκατάσταση',
       designTokens: 'Tokens σχεδίασης',
       themeBuilder: 'Δημιουργός θέματος',
@@ -218,7 +218,7 @@ export const el: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'Ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular, χτισμένη πάνω σε προσαρμοσμένες ιδιότητες CSS.',
-      title: 'Eagami UI',
+      title: 'Επισκόπηση',
       ledeBefore: 'είναι μια ελαφριά, προσβάσιμη βιβλιοθήκη συστατικών Angular.',
       ledeAfter:
         'Λογικές προεπιλογές εκτός κουτιού, με πλήρως προσαρμόσιμο σχεδιασμό για να ταιριάζει σε οποιαδήποτε μάρκα.',

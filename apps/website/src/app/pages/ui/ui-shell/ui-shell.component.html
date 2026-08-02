@@ -1,117 +1,167 @@
 <div class="ui-shell">
+  <button
+    type="button"
+    class="ui-shell__menu-trigger"
+    [attr.aria-label]="'Eagami UI, ' + messages().ui.shell.menu"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="ui-shell-drawer"
+    (click)="menuOpen.set(true)">
+    <ea-icon-menu
+      class="ui-shell__menu-icon"
+      aria-hidden="true" />
+    <span>Eagami UI</span>
+  </button>
+
   <aside
     class="ui-shell__sidebar"
     [attr.aria-label]="messages().ui.shell.sidebarLabel"
     tabindex="0">
-    <nav
-      class="ui-shell__nav"
-      [attr.aria-label]="messages().ui.shell.navLabel">
-      <ul
-        class="ui-shell__list ui-shell__list--primary"
-        role="list">
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui"
-            routerLinkActive="ui-shell__link--active"
-            [routerLinkActiveOptions]="{ exact: true }">
-            {{ messages().ui.shell.overviewNav }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/setup"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.setup }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/design-tokens"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.designTokens }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/theme-builder"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.themeBuilder }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/icons"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.icons }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/i18n"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.i18n }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/accessibility"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.accessibility }}
-          </a>
-        </li>
-        <li>
-          <a
-            class="ui-shell__link"
-            routerLink="/ui/changelog"
-            routerLinkActive="ui-shell__link--active">
-            {{ messages().ui.shell.changelog }}
-          </a>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="ui-shell__link ui-shell__link--toggle"
-            [class.ui-shell__link--active]="isComponentRoute()"
-            [attr.aria-expanded]="componentsExpanded()"
-            aria-controls="ui-shell-components"
-            (click)="toggleComponents()">
-            <span>{{ messages().ui.shell.components }}</span>
-            <ea-icon-chevron-right
-              class="ui-shell__caret"
-              [class.ui-shell__caret--open]="componentsExpanded()"
-              aria-hidden="true" />
-          </button>
-        </li>
-      </ul>
-
-      @if (componentsExpanded()) {
-        <ul
-          id="ui-shell-components"
-          class="ui-shell__list ui-shell__list--components"
-          role="list">
-          @for (component of components; track component.slug) {
-            <li>
-              <a
-                class="ui-shell__link"
-                [routerLink]="['/ui/components', component.slug]"
-                routerLinkActive="ui-shell__link--active">
-                {{ component.name }}
-              </a>
-            </li>
-          }
-        </ul>
-      }
-    </nav>
+    <ng-container *ngTemplateOutlet="nav; context: { $implicit: 'ui-shell-sidebar' }" />
   </aside>
 
   <main class="ui-shell__main">
     <router-outlet />
   </main>
 </div>
+
+<ea-drawer
+  id="ui-shell-drawer"
+  position="start"
+  size="sm"
+  [(open)]="menuOpen"
+  (opened)="revealActiveLink()">
+  <span slot="header">Eagami UI</span>
+  <div
+    #drawerNav
+    class="ui-shell__drawer-nav"
+    (click)="closeOnLinkClick($event)">
+    <ng-container *ngTemplateOutlet="nav; context: { $implicit: 'ui-shell-drawer' }" />
+  </div>
+</ea-drawer>
+
+<ng-template
+  #nav
+  let-idPrefix>
+  <nav
+    class="ui-shell__nav"
+    [attr.aria-label]="messages().ui.shell.navLabel">
+    <ul
+      class="ui-shell__list ui-shell__list--primary"
+      role="list">
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui"
+          routerLinkActive="ui-shell__link--active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          {{ messages().ui.shell.overview }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/setup"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.setup }}
+        </a>
+      </li>
+      <li>
+        <button
+          type="button"
+          class="ui-shell__link ui-shell__link--toggle"
+          [class.ui-shell__link--active]="isComponentRoute()"
+          [attr.aria-expanded]="componentsExpanded()"
+          [attr.aria-controls]="idPrefix + '-components'"
+          (click)="toggleComponents()">
+          <span>{{ messages().ui.shell.components }}</span>
+          <ea-icon-chevron-right
+            class="ui-shell__caret"
+            [class.ui-shell__caret--open]="componentsExpanded()"
+            aria-hidden="true" />
+        </button>
+
+        @if (componentsExpanded()) {
+          <ul
+            class="ui-shell__list ui-shell__list--components"
+            [id]="idPrefix + '-components'"
+            role="list">
+            @for (component of components; track component.slug) {
+              <li>
+                <a
+                  class="ui-shell__link"
+                  [routerLink]="['/ui/components', component.slug]"
+                  routerLinkActive="ui-shell__link--active">
+                  {{ component.name }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/icons"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.icons }}
+        </a>
+      </li>
+    </ul>
+
+    <ea-divider class="ui-shell__rule" />
+
+    <h2 class="ui-shell__heading">{{ messages().common.footer.guidesHeading }}</h2>
+    <ul
+      class="ui-shell__list"
+      role="list">
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/design-tokens"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.designTokens }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/theme-builder"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.themeBuilder }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/i18n"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.i18n }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/accessibility"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.accessibility }}
+        </a>
+      </li>
+    </ul>
+
+    <ea-divider class="ui-shell__rule" />
+
+    <h2 class="ui-shell__heading">{{ messages().common.footer.resourcesHeading }}</h2>
+    <ul
+      class="ui-shell__list"
+      role="list">
+      <li>
+        <a
+          class="ui-shell__link"
+          routerLink="/ui/changelog"
+          routerLinkActive="ui-shell__link--active">
+          {{ messages().ui.shell.changelog }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</ng-template>

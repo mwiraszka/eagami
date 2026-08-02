@@ -10,7 +10,7 @@ export const zhCN: WebMessages = {
     localeMenuTooltip: '更改语言',
     activeLocale: label => `当前语言：${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: '版权所有。',
       navLabel: '页脚',
       siteHeading: '关于',
@@ -187,9 +187,9 @@ export const zhCN: WebMessages = {
     shell: {
       changelog: '更新日志',
       sidebarLabel: '文档侧边栏',
+      menu: '文档菜单',
       navLabel: '文档',
       overview: '概览',
-      overviewNav: 'UI 概览',
       setup: '安装',
       designTokens: '设计令牌',
       themeBuilder: '主题生成器',
@@ -201,7 +201,7 @@ export const zhCN: WebMessages = {
     index: {
       metaTitle: 'Eagami UI',
       metaDescription: '轻量、无障碍的 Angular 组件库，基于 CSS 自定义属性构建。',
-      title: 'Eagami UI',
+      title: '概览',
       ledeBefore: '是一套轻量、无障碍的 Angular 组件库。',
       ledeAfter: '开箱即用的合理默认设置，并可完全自定义设计以契合任何品牌。',
       principlesHeading: '设计原则',

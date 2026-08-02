@@ -119,9 +119,9 @@ export interface WebMessages {
     shell: {
       changelog: string;
       sidebarLabel: string;
+      menu: string;
       navLabel: string;
       overview: string;
-      overviewNav: string;
       setup: string;
       designTokens: string;
       themeBuilder: string;

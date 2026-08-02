@@ -49,6 +49,8 @@ export class HeaderComponent {
     return url === '/' || url === '' || url.startsWith('/?') || url.startsWith('/#');
   });
 
+  protected readonly inUiSection = computed(() => this.currentUrl().startsWith('/ui'));
+
   private readonly scrolled = signal(false);
 
   protected readonly brandVisible = computed(() => !this.isHome() || this.scrolled());
