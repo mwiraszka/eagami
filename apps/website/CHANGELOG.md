@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Name the library sidebar's first link and the page it opens Overview.
-- Mark the library section in the site header, and separate the footer's legal links with a centre dot.
+- Name the library section in the site header and link it back to the library, and separate the footer's legal links with a centre dot.
 - Group the library sidebar under Guides and Resources headings, in the same order as the footer.
 - Show the download icon on the footer's integration links, and end the copyright line with a full stop instead of a divider.
 - Limit the sidebar's Components button to expanding its list, so it no longer jumps to the first component.
