@@ -71,6 +71,18 @@ $breakpoints: (
   padding-left: max(#{$horizontal}, env(safe-area-inset-left));
 }
 
+/// Content padding shared by every routed page, so the space reserved around
+/// copy is the same wherever the reader lands. Pairs with each page's own
+/// `max-width`, which sets the measure.
+/// @access public
+@mixin page-padding {
+  @include safe-area-padding(32px, 48px);
+
+  @include respond-to('lt-md') {
+    @include safe-area-padding(24px, 32px);
+  }
+}
+
 /// Visually hide an element while keeping it discoverable by assistive
 /// technologies. Use for live-region status text or labels that are only
 /// meaningful to screen readers.
