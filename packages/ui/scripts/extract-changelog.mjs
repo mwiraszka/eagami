@@ -8,6 +8,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 const SRC = resolve(here, '../CHANGELOG.md');
 const OUT = resolve(here, '../../../apps/website/src/app/data/changelog.generated.ts');
 
+// The page reads as a history of the current major line; everything below this
+// predates the API the site documents.
+const MIN_MAJOR = 5;
+
 const lines = readFileSync(SRC, 'utf8').split(/\r?\n/);
 
 const releases = [];
@@ -17,6 +21,9 @@ let section = null;
 for (const line of lines) {
   const versionMatch = /^## \[(.+?)\](?: - (.+))?$/.exec(line);
   if (versionMatch) {
+    if (Number.parseInt(versionMatch[1], 10) < MIN_MAJOR) {
+      break;
+    }
     release = { version: versionMatch[1], date: versionMatch[2] ?? '', sections: [] };
     releases.push(release);
     section = null;
