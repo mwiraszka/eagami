@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Scroll the internationalization page's live demo horizontally on phones, where its components spilled out of the card.
+- Keep the library sidebar's focus ring inside the link it belongs to, where it overlapped the one below.
 
 ## [3.18.1] - 2026-08-02
 

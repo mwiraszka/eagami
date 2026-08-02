@@ -157,9 +157,11 @@
     color: var(--color-text-primary);
   }
 
+  // Inset: rows sit a pixel apart, so a ring drawn outside the box lands on the
+  // neighbouring link
   &:focus-visible {
     outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
+    outline-offset: -2px;
   }
 
   &--active,
