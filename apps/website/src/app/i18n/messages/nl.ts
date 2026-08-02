@@ -11,7 +11,7 @@ export const nl: WebMessages = {
     localeMenuTooltip: 'Taal wijzigen',
     activeLocale: label => `Huidige taal: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'Alle rechten voorbehouden.',
       navLabel: 'Voettekst',
       siteHeading: 'Over',
@@ -204,9 +204,9 @@ export const nl: WebMessages = {
     shell: {
       changelog: 'Wijzigingslogboek',
       sidebarLabel: 'Documentatiezijbalk',
+      menu: 'Documentatiemenu',
       navLabel: 'Documentatie',
       overview: 'Overzicht',
-      overviewNav: 'UI-overzicht',
       setup: 'Installatie',
       designTokens: 'Designtokens',
       themeBuilder: 'Themabuilder',
@@ -219,7 +219,7 @@ export const nl: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'Lichtgewicht, toegankelijke Angular-componentenbibliotheek gebouwd op CSS-aangepaste eigenschappen.',
-      title: 'Eagami UI',
+      title: 'Overzicht',
       ledeBefore: 'is een lichtgewicht, toegankelijke Angular-componentenbibliotheek.',
       ledeAfter:
         'Verstandige standaardinstellingen out of the box, met een volledig aanpasbaar ontwerp dat bij elk merk past.',

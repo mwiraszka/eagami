@@ -11,7 +11,7 @@ export const ar: WebMessages = {
     localeMenuTooltip: 'تغيير اللغة',
     activeLocale: label => `اللغة الحالية: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'جميع الحقوق محفوظة.',
       navLabel: 'التذييل',
       siteHeading: 'نبذة',
@@ -195,9 +195,9 @@ export const ar: WebMessages = {
     shell: {
       changelog: 'سجل التغييرات',
       sidebarLabel: 'الشريط الجانبي للتوثيق',
+      menu: 'قائمة التوثيق',
       navLabel: 'التوثيق',
       overview: 'نظرة عامة',
-      overviewNav: 'نظرة عامة على UI',
       setup: 'الإعداد',
       designTokens: 'رموز التصميم',
       themeBuilder: 'منشئ السمة',
@@ -210,7 +210,7 @@ export const ar: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'مكتبة مكوّنات Angular خفيفة وسهلة الوصول مبنية على خصائص CSS المخصّصة.',
-      title: 'Eagami UI',
+      title: 'نظرة عامة',
       ledeBefore: 'هي مكتبة مكوّنات Angular خفيفة وسهلة الوصول.',
       ledeAfter:
         'إعدادات افتراضية معقولة جاهزة للاستخدام، مع تصميم قابل للتخصيص بالكامل ليلائم أي علامة تجارية.',

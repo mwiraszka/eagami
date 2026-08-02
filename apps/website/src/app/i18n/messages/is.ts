@@ -11,7 +11,7 @@ export const is: WebMessages = {
     localeMenuTooltip: 'Breyta tungumáli',
     activeLocale: label => `Núverandi tungumál: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'Öll réttindi áskilin.',
       navLabel: 'Síðufótur',
       siteHeading: 'Um',
@@ -198,9 +198,9 @@ export const is: WebMessages = {
     shell: {
       changelog: 'Breytingaskrá',
       sidebarLabel: 'Hliðarstika skjölunar',
+      menu: 'Valmynd skjölunar',
       navLabel: 'Skjölun',
       overview: 'Yfirlit',
-      overviewNav: 'UI-yfirlit',
       setup: 'Uppsetning',
       designTokens: 'Hönnunartóknar',
       themeBuilder: 'Þemasmiður',
@@ -213,7 +213,7 @@ export const is: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'Létt, aðgengilegt Angular einingasafn byggt á CSS sérsniðnum eiginleikum.',
-      title: 'Eagami UI',
+      title: 'Yfirlit',
       ledeBefore: 'er létt, aðgengilegt Angular einingasafn.',
       ledeAfter:
         'Skynsamleg sjálfgildi strax úr kassanum, með fullkomlega sérsniðanlegri hönnun sem hentar hvaða vörumerki sem er.',

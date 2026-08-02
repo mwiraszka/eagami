@@ -14,7 +14,7 @@ export const frFR: WebMessages = {
     localeMenuTooltip: 'Changer de langue',
     activeLocale: label => `Langue actuelle : ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'Tous droits réservés.',
       navLabel: 'Pied de page',
       siteHeading: 'À propos',
@@ -207,9 +207,9 @@ export const frFR: WebMessages = {
     shell: {
       changelog: 'Journal des modifications',
       sidebarLabel: 'Barre latérale de documentation',
+      menu: 'Menu de documentation',
       navLabel: 'Documentation',
       overview: 'Aperçu',
-      overviewNav: 'Vue d’ensemble de l’UI',
       setup: 'Installation',
       designTokens: 'Tokens de design',
       themeBuilder: 'Générateur de thème',
@@ -222,7 +222,7 @@ export const frFR: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'Bibliothèque de composants Angular légère et accessible, construite sur des propriétés CSS personnalisées.',
-      title: 'Eagami UI',
+      title: 'Aperçu',
       ledeBefore: 'est une bibliothèque de composants Angular légère et accessible.',
       ledeAfter:
         'Valeurs par défaut sensées prêtes à l’emploi, avec un design entièrement personnalisable pour s’adapter à toute marque.',

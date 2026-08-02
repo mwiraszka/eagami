@@ -10,7 +10,7 @@ export const hi: WebMessages = {
     localeMenuTooltip: 'भाषा बदलें',
     activeLocale: label => `वर्तमान भाषा: ${label}`,
     footer: {
-      copyright: year => `© ${year} Eagami`,
+      copyright: year => `© ${year} Eagami.`,
       allRightsReserved: 'सर्वाधिकार सुरक्षित।',
       navLabel: 'फ़ुटर',
       siteHeading: 'परिचय',
@@ -197,9 +197,9 @@ export const hi: WebMessages = {
     shell: {
       changelog: 'चेंजलॉग',
       sidebarLabel: 'दस्तावेज़ साइडबार',
+      menu: 'दस्तावेज़ मेनू',
       navLabel: 'दस्तावेज़',
       overview: 'अवलोकन',
-      overviewNav: 'UI अवलोकन',
       setup: 'सेटअप',
       designTokens: 'डिज़ाइन टोकन',
       themeBuilder: 'थीम बिल्डर',
@@ -212,7 +212,7 @@ export const hi: WebMessages = {
       metaTitle: 'Eagami UI',
       metaDescription:
         'CSS कस्टम प्रॉपर्टीज़ पर बनी हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी।',
-      title: 'Eagami UI',
+      title: 'अवलोकन',
       ledeBefore: 'एक हल्की, सुलभ Angular कंपोनेंट लाइब्रेरी है।',
       ledeAfter:
         'बॉक्स से बाहर समझदार डिफ़ॉल्ट, और किसी भी ब्रांड के अनुरूप पूरी तरह अनुकूलन योग्य डिज़ाइन।',
