@@ -14,14 +14,18 @@
   </header>
 
   <section
-    class="ui-index__section ui-index__section--showcase"
+    class="web-section web-section--no-divider"
     [style]="showcaseStyle()">
     <web-ui-showcase />
   </section>
 
-  <section class="ui-index__section">
+  <section
+    id="make-it-your-own"
+    class="web-section">
     <header class="ui-theme__header">
-      <h2 class="ui-index__heading">{{ messages().ui.index.theme.heading }}</h2>
+      <web-section-heading fragment="make-it-your-own">
+        <h2 class="ui-index__heading">{{ messages().ui.index.theme.heading }}</h2>
+      </web-section-heading>
       <p class="ui-index__body">
         {{ messages().ui.index.theme.ledeBefore }}
         <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a
@@ -33,7 +37,7 @@
       [style]="controlsStyle">
       <ea-button
         class="ui-theme__reset"
-        variant="ghost"
+        variant="secondary"
         size="sm"
         (clicked)="resetTheme()">
         {{ messages().ui.index.theme.reset }}
@@ -65,8 +69,12 @@
     </div>
   </section>
 
-  <section class="ui-index__section">
-    <h2 class="ui-index__heading">{{ messages().ui.index.principlesHeading }}</h2>
+  <section
+    id="design-principles"
+    class="web-section">
+    <web-section-heading fragment="design-principles">
+      <h2 class="ui-index__heading">{{ messages().ui.index.principlesHeading }}</h2>
+    </web-section-heading>
     <ul
       class="principle-grid"
       role="list">
@@ -105,8 +113,12 @@
     </ul>
   </section>
 
-  <section class="ui-index__section">
-    <h2 class="ui-index__heading">{{ messages().ui.index.getStartedHeading }}</h2>
+  <section
+    id="get-started"
+    class="web-section">
+    <web-section-heading fragment="get-started">
+      <h2 class="ui-index__heading">{{ messages().ui.index.getStartedHeading }}</h2>
+    </web-section-heading>
     <!-- `</a` and `>{{ }}` are split across lines to suppress the inter-tag
          whitespace prettier would insert: Polish needs the link to butt against
          its trailing comma ("Instalacji, aby"), not "Instalacji , aby". Non-Polish

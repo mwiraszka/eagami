@@ -8,7 +8,7 @@
     </p>
   </header>
 
-  <div class="ui-icons__browser">
+  <div class="web-section web-section--no-divider ui-icons__browser">
     <div class="ui-icons__filter">
       <label
         class="ui-icons__filter-field"
@@ -91,8 +91,12 @@
     }
   </div>
 
-  <section class="ui-icons__brand-section">
-    <h2 class="ui-icons__brand-title">{{ messages().ui.icons.brandTitle }}</h2>
+  <section
+    id="brand-icons"
+    class="web-section ui-icons__brand-section">
+    <web-section-heading fragment="brand-icons">
+      <h2 class="ui-icons__brand-title">{{ messages().ui.icons.brandTitle }}</h2>
+    </web-section-heading>
     <p class="ui-icons__brand-body">{{ messages().ui.icons.brandIntro }}</p>
     <ul
       class="ui-icons__brand-list"

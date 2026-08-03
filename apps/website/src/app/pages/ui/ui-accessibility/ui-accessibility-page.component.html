@@ -5,13 +5,21 @@
     <p class="ui-accessibility__lede">{{ messages().ui.accessibility.lede }}</p>
   </header>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.conformanceHeading }}</h2>
+  <section
+    id="conformance"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="conformance">
+      <h2>{{ messages().ui.accessibility.conformanceHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.conformanceBody"></p>
   </section>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.builtInHeading }}</h2>
+  <section
+    id="built-in"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="built-in">
+      <h2>{{ messages().ui.accessibility.builtInHeading }}</h2>
+    </web-section-heading>
     <ul
       class="ui-accessibility__feature-list"
       role="list">
@@ -54,15 +62,23 @@
     </ul>
   </section>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.labelsHeading }}</h2>
+  <section
+    id="accessible-names"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="accessible-names">
+      <h2>{{ messages().ui.accessibility.labelsHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.labelsBefore"></p>
     <web-code-snippet [code]="labelsSnippet" />
     <p [innerHTML]="messages().ui.accessibility.labelsAfter"></p>
   </section>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.testingHeading }}</h2>
+  <section
+    id="testing"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="testing">
+      <h2>{{ messages().ui.accessibility.testingHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.testingBody"></p>
   </section>
 </article>

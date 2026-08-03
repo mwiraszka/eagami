@@ -8,16 +8,24 @@
     </p>
   </header>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.theming }}</h2>
+  <section
+    id="theming"
+    class="web-section tokens-section">
+    <web-section-heading fragment="theming">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.theming }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.tokens.themingRootBefore"></p>
     <web-code-snippet [code]="rootThemeSnippet" />
     <p>{{ messages().ui.tokens.themingScopedBefore }}</p>
     <web-code-snippet [code]="scopedThemeSnippet" />
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.palette }}</h2>
+  <section
+    id="brand-palette"
+    class="web-section tokens-section">
+    <web-section-heading fragment="brand-palette">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.palette }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.tokens.paletteIntro"></p>
     <web-code-snippet [code]="paletteBaseSnippet" />
     <p [innerHTML]="messages().ui.tokens.paletteOverrides"></p>
@@ -30,11 +38,17 @@
     </p>
   </section>
 
-  <section class="tokens-section tokens-section--colors">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.colors }}</h2>
+  <section
+    id="colors"
+    class="web-section tokens-section">
+    <web-section-heading fragment="colors">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.colors }}</h2>
+    </web-section-heading>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsPrimary }}</h3>
-    <code class="tokens-scale__var">--color-primary-*</code>
+    <div class="tokens-subsection__row">
+      <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsPrimary }}</h3>
+      <code class="tokens-scale__var">--color-primary-*</code>
+    </div>
     <div class="color-scale">
       @for (shade of primaryPalette; track shade) {
         <div
@@ -45,8 +59,10 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSecondary }}</h3>
-    <code class="tokens-scale__var">--color-secondary-*</code>
+    <div class="tokens-subsection__row">
+      <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSecondary }}</h3>
+      <code class="tokens-scale__var">--color-secondary-*</code>
+    </div>
     <div class="color-scale">
       @for (shade of secondaryPalette; track shade) {
         <div
@@ -57,8 +73,10 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsNeutral }}</h3>
-    <code class="tokens-scale__var">--color-neutral-*</code>
+    <div class="tokens-subsection__row">
+      <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsNeutral }}</h3>
+      <code class="tokens-scale__var">--color-neutral-*</code>
+    </div>
     <div class="color-scale">
       @for (shade of neutralPalette; track shade) {
         <div
@@ -69,10 +87,11 @@
       }
     </div>
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsStatus }}</h3>
     @for (family of statusFamilies; track family) {
-      <h4 class="tokens-subsection__sublabel">{{ family }}</h4>
-      <code class="tokens-scale__var">--color-{{ family }}-*</code>
+      <div class="tokens-subsection__row">
+        <h3 class="tokens-subsection__title">{{ family }}</h3>
+        <code class="tokens-scale__var">--color-{{ family }}-*</code>
+      </div>
       <div class="color-scale">
         @for (shade of statusShades; track shade) {
           <div
@@ -84,61 +103,71 @@
       </div>
     }
 
-    <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSemantic }}</h3>
-    <ul
-      class="token-list token-list--compact"
-      role="list">
-      @for (key of semanticTextTokens; track key) {
-        <li class="token-list__item">
-          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
-          <code>--color-{{ key }}</code>
-        </li>
-      }
-    </ul>
-    <ul
-      class="token-list token-list--compact"
-      role="list">
-      @for (key of semanticBgTokens; track key) {
-        <li class="token-list__item">
-          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
-          <code>--color-{{ key }}</code>
-        </li>
-      }
-    </ul>
-    <ul
-      class="token-list token-list--compact"
-      role="list">
-      @for (key of semanticStateTokens; track key) {
-        <li class="token-list__item">
-          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
-          <code>--color-{{ key }}</code>
-        </li>
-      }
-    </ul>
-    <ul
-      class="token-list token-list--compact"
-      role="list">
-      @for (key of semanticBorderTokens; track key) {
-        <li class="token-list__item">
-          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
-          <code>--color-{{ key }}</code>
-        </li>
-      }
-    </ul>
-    <ul
-      class="token-list token-list--compact"
-      role="list">
-      @for (key of semanticBrandTokens; track key) {
-        <li class="token-list__item">
-          <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
-          <code>--color-{{ key }}</code>
-        </li>
-      }
-    </ul>
+    <div class="tokens-subsection__row">
+      <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsSemantic }}</h3>
+    </div>
+    <div class="semantic-groups">
+      <ul
+        class="token-list token-list--compact"
+        role="list">
+        @for (key of semanticTextTokens; track key) {
+          <li class="token-list__item">
+            <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+            <code>--color-{{ key }}</code>
+          </li>
+        }
+      </ul>
+      <ul
+        class="token-list token-list--compact"
+        role="list">
+        @for (key of semanticBgTokens; track key) {
+          <li class="token-list__item">
+            <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+            <code>--color-{{ key }}</code>
+          </li>
+        }
+      </ul>
+      <ul
+        class="token-list token-list--compact"
+        role="list">
+        @for (key of semanticStateTokens; track key) {
+          <li class="token-list__item">
+            <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+            <code>--color-{{ key }}</code>
+          </li>
+        }
+      </ul>
+      <ul
+        class="token-list token-list--compact"
+        role="list">
+        @for (key of semanticBorderTokens; track key) {
+          <li class="token-list__item">
+            <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+            <code>--color-{{ key }}</code>
+          </li>
+        }
+      </ul>
+      <ul
+        class="token-list token-list--compact"
+        role="list">
+        @for (key of semanticBrandTokens; track key) {
+          <li class="token-list__item">
+            <span class="semantic-swatch semantic-swatch--{{ key }}"></span>
+            <code>--color-{{ key }}</code>
+          </li>
+        }
+      </ul>
+    </div>
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.typography }}</h2>
+  <section
+    id="typography"
+    class="web-section tokens-section">
+    <web-section-heading fragment="typography">
+      <h2 class="tokens-section__title">{{
+        messages().ui.tokens.sections.typography
+      }}</h2>
+    </web-section-heading>
 
     <h3 class="tokens-subsection__title">{{
       messages().ui.tokens.typographyFamilies
@@ -161,7 +190,7 @@
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.typographySizes }}</h3>
     <ul
-      class="token-list token-list--compact"
+      class="token-list token-list--compact token-list--columns"
       role="list">
       @for (size of fontSizes; track size) {
         <li class="token-list__item">
@@ -173,15 +202,17 @@
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.typographyWeights }}</h3>
     <ul
-      class="token-list"
+      class="token-list token-list--weights"
       role="list">
       @for (weight of fontWeights; track weight.token) {
         <li class="token-list__item">
-          <span class="weight-sample weight-sample--{{ weight.label.toLowerCase() }}">
-            {{ weight.label }}
+          <span class="weight-label">
+            <span class="weight-sample weight-sample--{{ weight.label.toLowerCase() }}">
+              {{ weight.label }}
+            </span>
+            <span class="weight-label__value">({{ weight.value }})</span>
           </span>
           <code>{{ weight.token }}</code>
-          <span class="token-list__value">{{ weight.value }}</span>
         </li>
       }
     </ul>
@@ -205,10 +236,14 @@
     </ul>
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.spacing }}</h2>
+  <section
+    id="spacing"
+    class="web-section tokens-section">
+    <web-section-heading fragment="spacing">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.spacing }}</h2>
+    </web-section-heading>
     <ul
-      class="token-list token-list--compact"
+      class="token-list token-list--compact token-list--columns"
       role="list">
       @for (step of spacingScale; track step) {
         <li class="token-list__item">
@@ -219,8 +254,12 @@
     </ul>
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.elevation }}</h2>
+  <section
+    id="elevation"
+    class="web-section tokens-section">
+    <web-section-heading fragment="elevation">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.elevation }}</h2>
+    </web-section-heading>
 
     <h3 class="tokens-subsection__title">{{ messages().ui.tokens.elevationDrop }}</h3>
     <div class="elevation-grid elevation-grid--drop">
@@ -251,8 +290,12 @@
     </div>
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.shape }}</h2>
+  <section
+    id="shape"
+    class="web-section tokens-section">
+    <web-section-heading fragment="shape">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.shape }}</h2>
+    </web-section-heading>
     <div class="shape-grid">
       @for (radius of radii; track radius) {
         <figure class="shape-card">
@@ -266,9 +309,11 @@
   </section>
 
   <section
-    id="tokens-motion-region"
-    class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.motion }}</h2>
+    id="motion"
+    class="web-section tokens-section">
+    <web-section-heading fragment="motion">
+      <h2 class="tokens-section__title">{{ messages().ui.tokens.sections.motion }}</h2>
+    </web-section-heading>
 
     <div
       id="tokens-motion-durations"
@@ -359,9 +404,13 @@
     </div>
   </section>
 
-  <section class="tokens-section">
-    <h2 class="tokens-section__title">{{ messages().ui.integrations.heading }}</h2>
-    <p>{{ messages().ui.integrations.intro }}</p>
+  <section
+    id="beyond-angular"
+    class="web-section tokens-section">
+    <web-section-heading fragment="beyond-angular">
+      <h2 class="tokens-section__title">{{ messages().ui.integrations.heading }}</h2>
+    </web-section-heading>
+    <p>{{ messages().ui.tokens.integrationsIntro }}</p>
     <web-integration-links />
   </section>
 </article>

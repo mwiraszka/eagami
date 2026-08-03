@@ -26,6 +26,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 import { ToastOutletService } from '@app/services/toast-outlet.service';
@@ -125,6 +126,7 @@ function radiusVars(r: number): Record<string, string> {
     FeatherIconComponent,
     LanguagesIconComponent,
     RouterLink,
+    SectionHeadingComponent,
     SliderComponent,
     SparklesIconComponent,
     UiShowcaseComponent,

@@ -25,6 +25,7 @@ import {
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WEB_LOCALE_FLAGS, WEB_LOCALE_LABELS } from '@app/i18n/locale.types';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
@@ -41,6 +42,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     DatePickerComponent,
     DividerComponent,
     FileUploaderComponent,
+    SectionHeadingComponent,
     MultiSelectComponent,
     PaginatorComponent,
     SegmentedComponent,

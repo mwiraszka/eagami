@@ -8,164 +8,179 @@
     </p>
   </header>
 
-  <div class="theme-builder__layout">
-    <section
-      class="tb-controls"
-      aria-labelledby="tb-controls-heading">
+  <section
+    id="brand-colors"
+    class="web-section tb-controls"
+    aria-labelledby="tb-controls-heading">
+    <web-section-heading fragment="brand-colors">
       <h2
         id="tb-controls-heading"
         class="tb-section__title">
         {{ messages().ui.themeBuilder.controlsHeading }}
       </h2>
+    </web-section-heading>
 
-      <div class="tb-controls__fields">
-        <ea-color-picker
-          format="hex"
-          [label]="messages().ui.themeBuilder.primaryLabel"
-          [value]="primaryBase()"
-          [showAlpha]="false"
-          [clearable]="false"
-          (changed)="onPrimaryChange($event)" />
-        <ea-color-picker
-          format="hex"
-          [label]="messages().ui.themeBuilder.secondaryLabel"
-          [value]="secondaryBase()"
-          [showAlpha]="false"
-          [clearable]="false"
-          (changed)="onSecondaryChange($event)" />
-      </div>
-    </section>
-
-    <div class="tb-output">
-      <section
-        class="tb-section"
-        aria-labelledby="tb-scale-heading">
-        <h2
-          id="tb-scale-heading"
-          class="tb-section__title">
-          {{ messages().ui.themeBuilder.scaleHeading }}
-        </h2>
-
-        <p class="tb-scale-label">{{ messages().ui.themeBuilder.previewPrimary }}</p>
-        <div class="tb-scale">
-          @for (stop of primaryScale(); track stop.shade) {
-            <figure class="tb-swatch">
-              <span
-                class="tb-swatch__color"
-                [style.background-color]="stop.value">
-              </span>
-              <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
-            </figure>
-          }
-        </div>
-
-        <p class="tb-scale-label">{{ messages().ui.themeBuilder.previewSecondary }}</p>
-        <div class="tb-scale">
-          @for (stop of secondaryScale(); track stop.shade) {
-            <figure class="tb-swatch">
-              <span
-                class="tb-swatch__color"
-                [style.background-color]="stop.value">
-              </span>
-              <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
-            </figure>
-          }
-        </div>
-      </section>
-
-      <section
-        class="tb-section"
-        aria-labelledby="tb-contrast-heading">
-        <h2
-          id="tb-contrast-heading"
-          class="tb-section__title">
-          {{ messages().ui.themeBuilder.contrastHeading }}
-        </h2>
-
-        @if (passesContrast()) {
-          <p
-            class="tb-contrast tb-contrast--pass"
-            role="status">
-            <ea-icon-check-circle class="tb-contrast__icon" />
-            {{ messages().ui.themeBuilder.contrastPass }}
-          </p>
-        } @else {
-          <div
-            class="tb-contrast tb-contrast--fail"
-            role="status">
-            <p class="tb-contrast__intro">
-              <ea-icon-alert-circle class="tb-contrast__icon" />
-              {{ messages().ui.themeBuilder.contrastFailIntro }}
-            </p>
-            <ul class="tb-contrast__list">
-              @for (row of violations(); track row.token + row.mode) {
-                <li>
-                  <code>{{ row.token }}</code>
-                  <span class="tb-contrast__mode">{{ row.mode }}</span>
-                  {{ row.ratio }}:1 &lt; {{ row.required }}:1
-                </li>
-              }
-            </ul>
-          </div>
-        }
-      </section>
-
-      <section
-        class="tb-section"
-        aria-labelledby="tb-preview-heading">
-        <h2
-          id="tb-preview-heading"
-          class="tb-section__title">
-          {{ messages().ui.themeBuilder.previewHeading }}
-        </h2>
-        <p class="tb-hint">{{ messages().ui.themeBuilder.previewHint }}</p>
-
-        <div class="tb-preview">
-          <ea-button variant="primary">
-            {{ messages().ui.themeBuilder.previewButton }}
-          </ea-button>
-          <ea-switch
-            [label]="messages().ui.themeBuilder.previewSwitch"
-            [(checked)]="demoSwitch" />
-          <ea-date-picker class="tb-preview__date" />
-          <ea-progress-bar
-            class="tb-preview__progress"
-            [label]="messages().ui.themeBuilder.previewProgress"
-            [value]="45"
-            [buffer]="72"
-            [showPercentage]="true" />
-          <ea-stepper
-            class="tb-preview__stepper"
-            [activeStep]="1"
-            [orientation]="stepperOrientation()">
-            <ea-step
-              [label]="messages().ui.themeBuilder.previewStep1"
-              [completed]="true" />
-            <ea-step [label]="messages().ui.themeBuilder.previewStep2" />
-            <ea-step [label]="messages().ui.themeBuilder.previewStep3" />
-          </ea-stepper>
-        </div>
-      </section>
-
-      <section
-        class="tb-section"
-        aria-labelledby="tb-export-heading">
-        <h2
-          id="tb-export-heading"
-          class="tb-section__title">
-          {{ messages().ui.themeBuilder.exportHeading }}
-        </h2>
-
-        <h3 class="tb-subsection__title">
-          {{ messages().ui.themeBuilder.exportConfigLabel }}
-        </h3>
-        <web-code-snippet [code]="configSnippet()" />
-
-        <h3 class="tb-subsection__title">
-          {{ messages().ui.themeBuilder.exportCssLabel }}
-        </h3>
-        <web-code-snippet [code]="cssSnippet()" />
-      </section>
+    <div class="tb-controls__fields">
+      <ea-color-picker
+        format="hex"
+        size="lg"
+        [label]="messages().ui.themeBuilder.primaryLabel"
+        [value]="primaryBase()"
+        [showAlpha]="false"
+        [clearable]="false"
+        (changed)="onPrimaryChange($event)" />
+      <ea-color-picker
+        format="hex"
+        size="lg"
+        [label]="messages().ui.themeBuilder.secondaryLabel"
+        [value]="secondaryBase()"
+        [showAlpha]="false"
+        [clearable]="false"
+        (changed)="onSecondaryChange($event)" />
     </div>
-  </div>
+  </section>
+
+  <section
+    id="generated-scale"
+    class="web-section"
+    aria-labelledby="tb-scale-heading">
+    <web-section-heading fragment="generated-scale">
+      <h2
+        id="tb-scale-heading"
+        class="tb-section__title">
+        {{ messages().ui.themeBuilder.scaleHeading }}
+      </h2>
+    </web-section-heading>
+
+    <h3 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewPrimary }}</h3>
+    <div class="tb-scale">
+      @for (stop of primaryScale(); track stop.shade) {
+        <figure class="tb-swatch">
+          <span
+            class="tb-swatch__color"
+            [style.background-color]="stop.value">
+          </span>
+          <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
+        </figure>
+      }
+    </div>
+
+    <h3 class="tb-subsection__title">{{
+      messages().ui.themeBuilder.previewSecondary
+    }}</h3>
+    <div class="tb-scale">
+      @for (stop of secondaryScale(); track stop.shade) {
+        <figure class="tb-swatch">
+          <span
+            class="tb-swatch__color"
+            [style.background-color]="stop.value">
+          </span>
+          <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
+        </figure>
+      }
+    </div>
+  </section>
+
+  <section
+    id="accessibility"
+    class="web-section"
+    aria-labelledby="tb-contrast-heading">
+    <web-section-heading fragment="accessibility">
+      <h2
+        id="tb-contrast-heading"
+        class="tb-section__title">
+        {{ messages().ui.themeBuilder.contrastHeading }}
+      </h2>
+    </web-section-heading>
+
+    @if (passesContrast()) {
+      <p
+        class="tb-contrast tb-contrast--pass"
+        role="status">
+        <ea-icon-check-circle class="tb-contrast__icon" />
+        {{ messages().ui.themeBuilder.contrastPass }}
+      </p>
+    } @else {
+      <div
+        class="tb-contrast tb-contrast--fail"
+        role="status">
+        <p class="tb-contrast__intro">
+          <ea-icon-alert-circle class="tb-contrast__icon" />
+          {{ messages().ui.themeBuilder.contrastFailIntro }}
+        </p>
+        <ul class="tb-contrast__list">
+          @for (row of violations(); track row.token + row.mode) {
+            <li>
+              <code>{{ row.token }}</code>
+              <span class="tb-contrast__mode">{{ row.mode }}</span>
+              {{ row.ratio }}:1 &lt; {{ row.required }}:1
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </section>
+
+  <section
+    id="preview"
+    class="web-section"
+    aria-labelledby="tb-preview-heading">
+    <web-section-heading fragment="preview">
+      <h2
+        id="tb-preview-heading"
+        class="tb-section__title">
+        {{ messages().ui.themeBuilder.previewHeading }}
+      </h2>
+    </web-section-heading>
+    <p class="tb-hint">{{ messages().ui.themeBuilder.previewHint }}</p>
+
+    <div class="tb-preview">
+      <ea-button variant="primary">
+        {{ messages().ui.themeBuilder.previewButton }}
+      </ea-button>
+      <ea-switch
+        [label]="messages().ui.themeBuilder.previewSwitch"
+        [(checked)]="demoSwitch" />
+      <ea-date-picker class="tb-preview__date" />
+      <ea-progress-bar
+        class="tb-preview__progress"
+        [label]="messages().ui.themeBuilder.previewProgress"
+        [value]="45"
+        [buffer]="72"
+        [showPercentage]="true" />
+      <ea-stepper
+        class="tb-preview__stepper"
+        [activeStep]="1"
+        [orientation]="stepperOrientation()">
+        <ea-step
+          [label]="messages().ui.themeBuilder.previewStep1"
+          [completed]="true" />
+        <ea-step [label]="messages().ui.themeBuilder.previewStep2" />
+        <ea-step [label]="messages().ui.themeBuilder.previewStep3" />
+      </ea-stepper>
+    </div>
+  </section>
+
+  <section
+    id="use-it"
+    class="web-section"
+    aria-labelledby="tb-export-heading">
+    <web-section-heading fragment="use-it">
+      <h2
+        id="tb-export-heading"
+        class="tb-section__title">
+        {{ messages().ui.themeBuilder.exportHeading }}
+      </h2>
+    </web-section-heading>
+
+    <h3 class="tb-subsection__title">
+      {{ messages().ui.themeBuilder.exportConfigLabel }}
+    </h3>
+    <web-code-snippet [code]="configSnippet()" />
+
+    <h3 class="tb-subsection__title">
+      {{ messages().ui.themeBuilder.exportCssLabel }}
+    </h3>
+    <web-code-snippet [code]="cssSnippet()" />
+  </section>
 </article>

@@ -27,19 +27,6 @@
   }
 }
 
-.theme-builder__layout {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  min-width: 0;
-}
-
-.tb-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .tb-controls__fields {
   display: flex;
   flex-wrap: wrap;
@@ -52,39 +39,14 @@
   }
 }
 
-.tb-output {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  min-width: 0;
-}
-
-.tb-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .tb-section__title {
-  font-size: 24px;
-  font-weight: 600;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
+  @include mixins.section-title;
 }
 
 .tb-subsection__title {
-  margin-top: 8px;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
-
-.tb-scale-label {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
 }

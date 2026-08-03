@@ -1,13 +1,15 @@
 <article class="ui-setup">
-  <section class="ui-setup__section">
-    <header class="ui-setup__header">
-      <h1 class="ui-setup__title">{{ messages().ui.setup.title }}</h1>
-      <ea-divider />
-    </header>
+  <header class="ui-setup__header">
+    <h1 class="ui-setup__title">{{ messages().ui.setup.title }}</h1>
+    <ea-divider />
+  </header>
 
+  <section class="web-section ui-setup__section">
     <p class="ui-setup__step-label">{{ messages().ui.setup.ngAddLabel }}</p>
     <web-code-snippet code="ng add @eagami/ui" />
+  </section>
 
+  <section class="web-section ui-setup__section">
     <p class="ui-setup__step-label">{{ messages().ui.setup.manualLabel }}</p>
     <ol
       class="ui-setup__steps"
@@ -44,13 +46,21 @@
     </ol>
   </section>
 
-  <section class="ui-setup__section">
-    <h2>{{ messages().ui.setup.firstComponentHeading }}</h2>
+  <section
+    id="your-first-component"
+    class="web-section ui-setup__section">
+    <web-section-heading fragment="your-first-component">
+      <h2>{{ messages().ui.setup.firstComponentHeading }}</h2>
+    </web-section-heading>
     <web-code-snippet [code]="quickStartSnippet" />
   </section>
 
-  <section class="ui-setup__section">
-    <h2>{{ messages().ui.integrations.heading }}</h2>
+  <section
+    id="beyond-angular"
+    class="web-section ui-setup__section">
+    <web-section-heading fragment="beyond-angular">
+      <h2>{{ messages().ui.integrations.heading }}</h2>
+    </web-section-heading>
     <p>{{ messages().ui.integrations.intro }}</p>
     <web-integration-links />
   </section>

@@ -1,0 +1,9 @@
+<ng-content />
+<button
+  type="button"
+  class="section-heading__copy-link"
+  [attr.aria-label]="messages().common.copyLinkLabel"
+  [eaTooltip]="messages().common.copyLinkLabel"
+  (click)="copyLink()">
+  <ea-icon-link />
+</button>

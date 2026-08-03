@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
 import { IntegrationLinksComponent } from '@app/components/integration-links/integration-links.component';
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -12,7 +13,12 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
   templateUrl: './ui-setup-page.component.html',
   styleUrl: './ui-setup-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CodeSnippetComponent, DividerComponent, IntegrationLinksComponent],
+  imports: [
+    CodeSnippetComponent,
+    DividerComponent,
+    IntegrationLinksComponent,
+    SectionHeadingComponent,
+  ],
 })
 export class UiSetupPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);

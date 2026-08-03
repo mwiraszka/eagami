@@ -11,6 +11,7 @@ import {
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -26,6 +27,7 @@ import { MetaAndTitleService } from '@app/services/meta-and-title.service';
     DividerComponent,
     EyeIconComponent,
     PauseCircleIconComponent,
+    SectionHeadingComponent,
     TargetIconComponent,
     Volume2IconComponent,
   ],

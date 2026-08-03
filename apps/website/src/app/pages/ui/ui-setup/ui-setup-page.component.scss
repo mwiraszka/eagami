@@ -13,18 +13,13 @@
 }
 
 .ui-setup__title {
-  @include mixins.page-title(16px);
+  // -16px nets the canonical 32px below the divider against the 48px article gap
+  @include mixins.page-title(-16px);
 }
 
 .ui-setup__section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
   h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-text-primary);
+    @include mixins.section-title;
   }
 
   p {

@@ -30,6 +30,26 @@ a[href^='http']:not(
   content: '';
 }
 
+/* Shared section block for the Eagami UI documentation pages: 48px between
+   sections (page-level flex gap) with a subtle divider carrying 24px of extra
+   space on each side, 16px between items within a section, and fragment
+   scrolling that clears the fixed header. Tweaks here restyle every page. */
+.web-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
+  scroll-margin-top: var(--web-height-header);
+}
+
+.web-section--no-divider {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: none;
+}
+
 /* Force hard-coded brand-icon fills to inherit currentColor for dark-mode visibility */
 ea-icon-github svg path {
   fill: currentColor;

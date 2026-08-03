@@ -34,24 +34,8 @@
   @include mixins.prose-link;
 }
 
-.ui-index__section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-// Pull the showcase up tight under the header rather than carrying the full
-// 48px inter-section gap above it.
-.ui-index__section--showcase {
-  margin-top: -32px;
-}
-
 .ui-index__heading {
-  font-size: var(--text-section-heading-size);
-  font-weight: var(--text-section-heading-weight);
-  line-height: var(--text-section-heading-lh);
-  font-family: var(--text-section-heading-family);
-  color: var(--color-text-primary);
+  @include mixins.section-title;
 }
 
 .ui-index__body {
@@ -67,7 +51,7 @@
 .ui-theme__header {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
 }
 
 .ui-theme__controls {

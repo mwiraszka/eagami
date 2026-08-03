@@ -3,7 +3,7 @@
 .ui-icons {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 48px;
 }
 
 .ui-icons__header {
@@ -34,12 +34,6 @@
 
 /* Scopes the filter card's sticky tracking to the icon grid, so it stops at the
    wrapper's end and leaves the brand section below unobstructed. */
-.ui-icons__browser {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 /* Sticks below the app header, with a drop-shadow so it lifts off the grid
    scrolling beneath it. Children flex-wrap as the row narrows. */
 .ui-icons__filter {
@@ -249,16 +243,11 @@
 }
 
 .ui-icons__brand-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   max-width: 880px;
 }
 
 .ui-icons__brand-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  @include mixins.section-title;
 }
 
 .ui-icons__brand-body {
