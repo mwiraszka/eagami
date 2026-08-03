@@ -169,7 +169,26 @@
     background-color: var(--color-brand-subtle);
     color: var(--color-brand-default);
     font-weight: 500;
+
+    &:hover {
+      background-color: var(--color-brand-subtle);
+      color: var(--color-text-primary);
+    }
   }
+}
+
+// The drawer panel sits on the same neutral tier as bg-muted in dark mode, so
+// the default hover fill vanishes there; state-hover exists for exactly that
+.ui-shell__drawer-nav
+  .ui-shell__link:not(.ui-shell__link--active):not(.web-link-pending):hover {
+  background-color: var(--color-state-hover);
+}
+
+// Aligns with the link text below (the links carry 12px inner inline padding)
+.ui-shell__drawer-title {
+  padding-inline-start: 12px;
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-family-brand);
 }
 
 .ui-shell__link--toggle {

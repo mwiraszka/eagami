@@ -30,7 +30,11 @@
   size="sm"
   [(open)]="menuOpen"
   (opened)="revealActiveLink()">
-  <span slot="header">Eagami UI</span>
+  <span
+    slot="header"
+    class="ui-shell__drawer-title">
+    Eagami UI
+  </span>
   <div
     #drawerNav
     class="ui-shell__drawer-nav"
