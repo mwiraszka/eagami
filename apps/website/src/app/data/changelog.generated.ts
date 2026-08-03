@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.17.0',
+    date: '2026-08-03',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Enlarge the section-heading composite style from 20px to 24px, so page subsections read a clear step above body text.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop the divider throwing a hydration error during server-side rendering when several dividers hydrate on the same page.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.16.1',
     date: '2026-08-02',
     sections: [

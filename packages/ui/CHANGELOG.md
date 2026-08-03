@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.17.0] - 2026-08-03
+
+### Changed
+
+- Enlarge the section-heading composite style from 20px to 24px, so page subsections read a clear step above body text.
+
+### Fixed
+
+- Stop the divider throwing a hydration error during server-side rendering when several dividers hydrate on the same page.
+
 ## [5.16.1] - 2026-08-02
 
 ### Fixed
@@ -1226,6 +1236,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.17.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.1...ui-v5.17.0
 [5.16.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.0...ui-v5.16.1
 [5.16.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.15.1...ui-v5.16.0
 [5.15.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.15.0...ui-v5.15.1

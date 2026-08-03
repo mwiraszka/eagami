@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.16.1
-source: '@eagami/ui@5.16.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-08-02
+version: 5.17.0
+source: '@eagami/ui@5.17.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-08-03
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -365,7 +365,7 @@ Each role exposes `size`, `weight`, and (for most roles) `lh` custom properties;
 | `h2`              | 3xl       | semibold | snug        | -      |
 | `h3`              | 2xl       | semibold | snug        | -      |
 | `h4`              | xl        | semibold | snug        | -      |
-| `section-heading` | xl        | semibold | snug        | brand  |
+| `section-heading` | 2xl       | semibold | snug        | brand  |
 | `body-lg`         | lg        | regular  | relaxed     | -      |
 | `body-md`         | md        | regular  | normal      | -      |
 | `body-sm`         | sm        | regular  | normal      | -      |
@@ -522,7 +522,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.16.1 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.17.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -765,7 +765,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --text-h4-size: var(--font-size-xl);
   --text-h4-weight: var(--font-weight-semibold);
   --text-h4-lh: var(--line-height-snug);
-  --text-section-heading-size: var(--font-size-xl);
+  --text-section-heading-size: var(--font-size-2xl);
   --text-section-heading-weight: var(--font-weight-semibold);
   --text-section-heading-lh: var(--line-height-snug);
   --text-section-heading-family: var(--font-family-brand);
@@ -1069,7 +1069,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.16.1 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.17.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
