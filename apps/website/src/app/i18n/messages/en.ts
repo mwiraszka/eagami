@@ -29,6 +29,7 @@ export const en: WebMessages = {
       copySuccess: 'Copied to clipboard',
       copyError: 'Could not copy to clipboard',
     },
+    copyLinkLabel: 'Copy link to section',
   },
   home: {
     metaTitle: 'Eagami',
@@ -317,7 +318,7 @@ export const en: WebMessages = {
     integrations: {
       heading: 'Beyond Angular',
       intro:
-        'The design tokens are framework-agnostic. Copy a self-contained integration guide into a non-Angular project, or consume the machine-readable token export directly.',
+        "Eagami's design tokens are framework-agnostic. Copy a self-contained integration guide into a non-Angular project, or consume the machine-readable token export directly.",
       reactLink: 'React integration guide',
       flutterLink: 'Flutter integration guide',
       tokensLink: 'Design tokens as JSON',
@@ -354,7 +355,7 @@ export const en: WebMessages = {
       metaDescription:
         'CSS custom properties for colors, typography, spacing, elevation, shape, and motion.',
       title: 'Design tokens',
-      lede: 'The CSS custom properties that drive every component in the library: colors, typography, spacing, elevation, shape, and motion. Reference these tokens in your own styles via <code>var(--token-name)</code> to keep visual consistency across the app.',
+      lede: 'Design tokens are the CSS custom properties that drive every component in the library: colors, typography, spacing, elevation, shape, and motion. Reference these tokens in your own styles via <code>var(--token-name)</code> to keep visual consistency across the app.',
       sections: {
         theming: 'Theming',
         palette: 'Brand palette',
@@ -366,14 +367,14 @@ export const en: WebMessages = {
         motion: 'Motion',
       },
       themingRootBefore:
-        'Override any token on <code>:root</code> to retheme the entire library:',
+        'Every Eagami design token can be overridden, so the library adapts to any brand. Override any token on <code>:root</code> to retheme the entire library:',
       themingScopedBefore: 'Or scope overrides to individual components where useful:',
       paletteIntro:
         'Pass a single brand hex to <code>provideEagamiUi()</code> and the library derives a full ten-shade scale (50 through 900) in <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> space, holding hue and chroma steady while stepping lightness. The derived shades feed every <code>--color-brand-*</code> token in both light and dark mode:',
       paletteOverrides:
         'Pin specific shades or remap which derived shade backs each semantic role:',
       paletteContrast:
-        'Every brand-role pairing (text on surface, surface on canvas) is checked against WCAG 2.2 AA at bootstrap. A failing combination throws before the app loads, so a contrast bug in the brand color is caught at boot rather than in production.',
+        'Every brand-role pairing (text on surface, surface on canvas) is checked against <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> at bootstrap. A failing combination throws an error before the app loads, so a contrast bug in the brand color is caught at boot rather than in production.',
       paletteBuilderIntro: 'Build and preview your palette visually in the',
       paletteBuilderLink: 'theme builder',
       elevationDrop: 'Drop shadows',
@@ -383,7 +384,6 @@ export const en: WebMessages = {
       colorsPrimary: 'Primary',
       colorsSecondary: 'Secondary',
       colorsNeutral: 'Neutral',
-      colorsStatus: 'Status',
       colorsSemantic: 'Semantic',
       typographyFamilies: 'Families',
       typographySizes: 'Sizes',
@@ -395,6 +395,8 @@ export const en: WebMessages = {
       motionSimulate: 'Simulate',
       motionDurations: 'Durations',
       motionEasings: 'Easings',
+      integrationsIntro:
+        'All of the above design tokens are framework-agnostic. For non-Angular projects, simply pass a self-contained integration guide to your AI agent, or have it consume the machine-readable token export directly.',
     },
     icons: {
       metaTitle: 'Icons | Eagami UI',
@@ -426,7 +428,7 @@ export const en: WebMessages = {
       supportedHeading: 'Supported locales',
       quickSetupHeading: 'Quick setup',
       quickSetupBefore:
-        'Add <code>provideEagamiUi()</code> to your app config and register the languages you use via <code>locales</code>. English is always available, so you ship only what you need.',
+        'Add <code>provideEagamiUi()</code> to your app config and register the languages you use via <code>locales</code>. English is always included, and only the locales you register are added to your bundle.',
       lazyHeading: 'Lazy loading',
       lazyBefore:
         'Register <code>localeLoaders</code> instead of <code>locales</code> and a language is fetched the first time it becomes active, keeping it out of the initial bundle. Point each loader at a module that re-exports one locale bundle, and preload with <code>loadLocale()</code> when the switch needs to be instant.',

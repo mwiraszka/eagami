@@ -30,6 +30,7 @@ export const nl: WebMessages = {
       copySuccess: 'Gekopieerd naar klembord',
       copyError: 'Kon niet naar klembord kopiëren',
     },
+    copyLinkLabel: 'Link naar sectie kopiëren',
   },
   home: {
     metaTitle: 'Eagami',
@@ -327,7 +328,7 @@ export const nl: WebMessages = {
     integrations: {
       heading: 'Voorbij Angular',
       intro:
-        'De designtokens zijn framework-onafhankelijk. Kopieer een op zichzelf staande integratiegids naar een niet-Angular-project of gebruik de machineleesbare tokenexport rechtstreeks.',
+        'De designtokens van Eagami zijn framework-onafhankelijk. Kopieer een op zichzelf staande integratiegids naar een niet-Angular-project of gebruik de machineleesbare tokenexport rechtstreeks.',
       reactLink: 'React-integratiegids',
       flutterLink: 'Flutter-integratiegids',
       tokensLink: 'Designtokens als JSON',
@@ -365,7 +366,7 @@ export const nl: WebMessages = {
       metaDescription:
         'CSS-aangepaste eigenschappen voor kleuren, typografie, witruimte, elevatie, vorm en beweging.',
       title: 'Designtokens',
-      lede: 'De CSS-aangepaste eigenschappen die elke component in de bibliotheek aansturen: kleuren, typografie, witruimte, elevatie, vorm en beweging. Verwijs naar deze tokens in je eigen stijlen via <code>var(--token-name)</code> om visuele consistentie in de hele app te behouden.',
+      lede: 'Designtokens zijn de CSS-aangepaste eigenschappen die elke component in de bibliotheek aansturen: kleuren, typografie, witruimte, elevatie, vorm en beweging. Verwijs naar deze tokens in je eigen stijlen via <code>var(--token-name)</code> om visuele consistentie in de hele app te behouden.',
       sections: {
         theming: 'Thema',
         palette: 'Merkpalet',
@@ -377,7 +378,7 @@ export const nl: WebMessages = {
         motion: 'Beweging',
       },
       themingRootBefore:
-        'Overschrijf een token op <code>:root</code> om de hele bibliotheek opnieuw te thematiseren:',
+        'Elk Eagami-designtoken kan worden overschreven, zodat de bibliotheek zich aan elk merk aanpast. Overschrijf een token op <code>:root</code> om de hele bibliotheek opnieuw te thematiseren:',
       themingScopedBefore:
         'Of beperk overschrijvingen tot afzonderlijke componenten waar dat nuttig is:',
       paletteIntro:
@@ -385,7 +386,7 @@ export const nl: WebMessages = {
       paletteOverrides:
         'Zet specifieke tinten vast of wijs opnieuw toe welke afgeleide tint elke semantische rol ondersteunt:',
       paletteContrast:
-        'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op WCAG 2.2 AA. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
+        'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a>. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
       paletteBuilderIntro: 'Stel je palet visueel samen en bekijk het in de',
       paletteBuilderLink: 'themabuilder',
       elevationDrop: 'Slagschaduwen',
@@ -395,7 +396,6 @@ export const nl: WebMessages = {
       colorsPrimary: 'Primair',
       colorsSecondary: 'Secundair',
       colorsNeutral: 'Neutraal',
-      colorsStatus: 'Status',
       colorsSemantic: 'Semantisch',
       typographyFamilies: 'Families',
       typographySizes: 'Groottes',
@@ -407,6 +407,8 @@ export const nl: WebMessages = {
       motionSimulate: 'Simuleren',
       motionDurations: 'Duur',
       motionEasings: 'Easings',
+      integrationsIntro:
+        'Alle bovenstaande designtokens zijn framework-onafhankelijk. Geef voor niet-Angular-projecten simpelweg een op zichzelf staande integratiegids aan je AI-agent, of laat die de machineleesbare tokenexport rechtstreeks gebruiken.',
     },
     icons: {
       metaTitle: 'Iconen | Eagami UI',
@@ -438,7 +440,7 @@ export const nl: WebMessages = {
       supportedHeading: 'Ondersteunde talen',
       quickSetupHeading: 'Snelle installatie',
       quickSetupBefore:
-        'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd beschikbaar, dus je levert alleen wat je nodig hebt.',
+        'Voeg <code>provideEagamiUi()</code> toe aan je app-configuratie en registreer de talen die je gebruikt via <code>locales</code>. Engels is altijd inbegrepen, en alleen de talen die je registreert worden aan je bundel toegevoegd.',
       lazyHeading: 'Lui laden',
       lazyBefore:
         'Registreer <code>localeLoaders</code> in plaats van <code>locales</code>: een taal wordt pas opgehaald zodra die actief wordt en blijft zo buiten de initiële bundel. Laat elke loader wijzen naar een module die één taalpakket herexporteert, en laad vooraf met <code>loadLocale()</code> als het wisselen direct moet gebeuren.',

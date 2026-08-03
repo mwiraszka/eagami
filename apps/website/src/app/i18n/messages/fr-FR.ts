@@ -33,6 +33,7 @@ export const frFR: WebMessages = {
       copySuccess: 'Copié dans le presse-papiers',
       copyError: 'Impossible de copier dans le presse-papiers',
     },
+    copyLinkLabel: 'Copier le lien vers la section',
   },
   home: {
     metaTitle: 'Eagami',
@@ -326,7 +327,7 @@ export const frFR: WebMessages = {
     integrations: {
       heading: 'Au-delà d’Angular',
       intro:
-        'Les tokens de design sont indépendants du framework. Copier un guide d’intégration autonome dans un projet non Angular, ou consommer directement l’export de tokens lisible par machine.',
+        'Les tokens de design d’Eagami sont indépendants du framework. Copier un guide d’intégration autonome dans un projet non Angular, ou consommer directement l’export de tokens lisible par machine.',
       reactLink: 'Guide d’intégration React',
       flutterLink: 'Guide d’intégration Flutter',
       tokensLink: 'Tokens de design en JSON',
@@ -365,7 +366,7 @@ export const frFR: WebMessages = {
       metaDescription:
         'Propriétés CSS personnalisées pour les couleurs, la typographie, l’espacement, l’élévation, la forme et le mouvement.',
       title: 'Tokens de design',
-      lede: 'Les propriétés CSS personnalisées qui pilotent chaque composant de la bibliothèque : couleurs, typographie, espacement, élévation, forme et mouvement. Référencez ces tokens dans vos propres styles via <code>var(--token-name)</code> pour conserver une cohérence visuelle sur toute l’application.',
+      lede: 'Les tokens de design sont les propriétés CSS personnalisées qui pilotent chaque composant de la bibliothèque : couleurs, typographie, espacement, élévation, forme et mouvement. Référencez ces tokens dans vos propres styles via <code>var(--token-name)</code> pour conserver une cohérence visuelle sur toute l’application.',
       sections: {
         theming: 'Thèmes',
         palette: 'Palette de marque',
@@ -377,7 +378,7 @@ export const frFR: WebMessages = {
         motion: 'Mouvement',
       },
       themingRootBefore:
-        'Remplacez n’importe quel token sur <code>:root</code> pour rethémer toute la bibliothèque :',
+        'Chaque token de design Eagami peut être remplacé, de sorte que la bibliothèque s’adapte à n’importe quelle marque. Remplacez n’importe quel token sur <code>:root</code> pour rethémer toute la bibliothèque :',
       themingScopedBefore:
         'Ou limitez les remplacements à des composants individuels là où c’est utile :',
       paletteIntro:
@@ -385,7 +386,7 @@ export const frFR: WebMessages = {
       paletteOverrides:
         'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
       paletteContrast:
-        'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à WCAG 2.2 AA au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
+        'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
       paletteBuilderIntro: 'Composez et prévisualisez votre palette visuellement dans le',
       paletteBuilderLink: 'générateur de thème',
       elevationDrop: 'Ombres portées',
@@ -395,7 +396,6 @@ export const frFR: WebMessages = {
       colorsPrimary: 'Primaire',
       colorsSecondary: 'Secondaire',
       colorsNeutral: 'Neutre',
-      colorsStatus: 'État',
       colorsSemantic: 'Sémantique',
       typographyFamilies: 'Familles',
       typographySizes: 'Tailles',
@@ -407,6 +407,8 @@ export const frFR: WebMessages = {
       motionSimulate: 'Simuler',
       motionDurations: 'Durées',
       motionEasings: 'Courbes',
+      integrationsIntro:
+        'Tous les tokens de design ci-dessus sont indépendants du framework. Pour les projets non Angular, il suffit de transmettre un guide d’intégration autonome à votre agent IA, ou de le laisser consommer directement l’export de tokens lisible par machine.',
     },
     icons: {
       metaTitle: 'Icônes | Eagami UI',
@@ -439,7 +441,7 @@ export const frFR: WebMessages = {
       supportedHeading: 'Langues prises en charge',
       quickSetupHeading: 'Mise en place rapide',
       quickSetupBefore:
-        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours disponible : vous n’embarquez donc que ce dont vous avez besoin.',
+        'Ajoutez <code>provideEagamiUi()</code> à votre configuration d’application et enregistrez les langues que vous utilisez via <code>locales</code>. L’anglais est toujours inclus, et seules les langues que vous enregistrez sont ajoutées à votre bundle.',
       lazyHeading: 'Chargement différé',
       lazyBefore:
         'Enregistrez <code>localeLoaders</code> au lieu de <code>locales</code> : une langue est téléchargée à sa première activation et reste hors du bundle initial. Faites pointer chaque loader vers un module qui réexporte un seul paquet de langue, et préchargez avec <code>loadLocale()</code> pour un changement instantané.',

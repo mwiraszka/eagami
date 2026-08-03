@@ -29,6 +29,7 @@ export const he: WebMessages = {
       copySuccess: 'הועתק ללוח',
       copyError: 'לא ניתן היה להעתיק ללוח',
     },
+    copyLinkLabel: 'העתקת קישור למקטע',
   },
   home: {
     metaTitle: 'Eagami',
@@ -311,7 +312,7 @@ export const he: WebMessages = {
     integrations: {
       heading: 'מעבר ל-Angular',
       intro:
-        'אסימוני העיצוב אינם תלויים במסגרת. העתיקו מדריך אינטגרציה עצמאי לפרויקט שאינו Angular או השתמשו ישירות בייצוא האסימונים הקריא למכונה.',
+        'אסימוני העיצוב של Eagami אינם תלויים במסגרת. העתיקו מדריך אינטגרציה עצמאי לפרויקט שאינו Angular או השתמשו ישירות בייצוא האסימונים הקריא למכונה.',
       reactLink: 'מדריך אינטגרציה ל-React',
       flutterLink: 'מדריך אינטגרציה ל-Flutter',
       tokensLink: 'אסימוני עיצוב כ-JSON',
@@ -348,7 +349,7 @@ export const he: WebMessages = {
       metaDescription:
         'מאפייני CSS מותאמים אישית עבור צבעים, טיפוגרפיה, ריווח, גובה, צורה ותנועה.',
       title: 'אסימוני עיצוב',
-      lede: 'מאפייני ה-CSS המותאמים אישית שמניעים כל רכיב בספרייה: צבעים, טיפוגרפיה, ריווח, גובה, צורה ותנועה. הפנו לאסימונים אלה בסגנונות שלכם באמצעות <code>var(--token-name)</code> כדי לשמור על עקביות ויזואלית בכל האפליקציה.',
+      lede: 'אסימוני עיצוב הם מאפייני ה-CSS המותאמים אישית שמניעים כל רכיב בספרייה: צבעים, טיפוגרפיה, ריווח, גובה, צורה ותנועה. הפנו לאסימונים אלה בסגנונות שלכם באמצעות <code>var(--token-name)</code> כדי לשמור על עקביות ויזואלית בכל האפליקציה.',
       sections: {
         theming: 'ערכות נושא',
         palette: 'פלטת מותג',
@@ -360,14 +361,14 @@ export const he: WebMessages = {
         motion: 'תנועה',
       },
       themingRootBefore:
-        'דרסו כל אסימון ב-<code>:root</code> כדי לשנות את ערכת הנושא של כל הספרייה:',
+        'כל אסימון עיצוב של Eagami ניתן לדריסה, כך שהספרייה מתאימה את עצמה לכל מותג. דרסו כל אסימון ב-<code>:root</code> כדי לשנות את ערכת הנושא של כל הספרייה:',
       themingScopedBefore: 'או הגבילו דריסות לרכיבים בודדים במקום שזה שימושי:',
       paletteIntro:
         'העבירו hex מותג בודד אל <code>provideEagamiUi()</code> והספרייה תגזור סולם מלא של עשרה גוונים (מ-50 עד 900) במרחב <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, תוך שמירה על גוון ורוויה קבועים ושינוי הבהירות בלבד. הגוונים הנגזרים מזינים כל אסימון <code>--color-brand-*</code> במצב בהיר ובמצב כהה כאחד:',
       paletteOverrides:
         'קבעו גוונים ספציפיים או מפו מחדש איזה גוון נגזר עומד מאחורי כל תפקיד סמנטי:',
       paletteContrast:
-        'כל זוג תפקידי מותג (טקסט על משטח, משטח על בד) נבדק מול WCAG 2.2 AA באתחול. שילוב שאינו עומד בדרישות זורק שגיאה לפני שהאפליקציה נטענת, כך שבאג ניגודיות בצבע המותג נתפס באתחול ולא בייצור.',
+        'כל זוג תפקידי מותג (טקסט על משטח, משטח על בד) נבדק מול <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> באתחול. שילוב שאינו עומד בדרישות זורק שגיאה לפני שהאפליקציה נטענת, כך שבאג ניגודיות בצבע המותג נתפס באתחול ולא בייצור.',
       paletteBuilderIntro: 'בנו את הפלטה שלכם באופן חזותי בעזרת',
       paletteBuilderLink: 'בונה ערכת הנושא',
       elevationDrop: 'צללים מוטלים',
@@ -377,7 +378,6 @@ export const he: WebMessages = {
       colorsPrimary: 'ראשי',
       colorsSecondary: 'משני',
       colorsNeutral: 'ניטרלי',
-      colorsStatus: 'סטטוס',
       colorsSemantic: 'סמנטי',
       typographyFamilies: 'משפחות',
       typographySizes: 'גדלים',
@@ -389,6 +389,8 @@ export const he: WebMessages = {
       motionSimulate: 'הדמה',
       motionDurations: 'משכי זמן',
       motionEasings: 'פונקציות האטה',
+      integrationsIntro:
+        'כל אסימוני העיצוב שלמעלה אינם תלויים במסגרת. בפרויקטים שאינם Angular, פשוט העבירו מדריך אינטגרציה עצמאי לסוכן ה-AI שלכם, או תנו לו להשתמש ישירות בייצוא האסימונים הקריא למכונה.',
     },
     icons: {
       metaTitle: 'אייקונים | Eagami UI',
@@ -420,7 +422,7 @@ export const he: WebMessages = {
       supportedHeading: 'שפות נתמכות',
       quickSetupHeading: 'הגדרה מהירה',
       quickSetupBefore:
-        'הוסיפו <code>provideEagamiUi()</code> לתצורת האפליקציה ורשמו את השפות שאתם משתמשים בהן באמצעות <code>locales</code>. אנגלית זמינה תמיד, כך שאתם כוללים רק את מה שאתם צריכים.',
+        'הוסיפו <code>provideEagamiUi()</code> לתצורת האפליקציה ורשמו את השפות שאתם משתמשים בהן באמצעות <code>locales</code>. אנגלית תמיד כלולה, ורק השפות שאתם רושמים מתווספות לחבילה.',
       lazyHeading: 'טעינה עצלה',
       lazyBefore:
         'רשמו <code>localeLoaders</code> במקום <code>locales</code>: שפה נטענת בפעם הראשונה שבה היא מופעלת ונשארת מחוץ לחבילה ההתחלתית. הפנו כל טוען למודול שמייצא מחדש חבילת שפה אחת, וטענו מראש באמצעות <code>loadLocale()</code> כשהמעבר צריך להיות מיידי.',

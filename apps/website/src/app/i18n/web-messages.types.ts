@@ -32,6 +32,7 @@ export interface WebMessages {
       copySuccess: string;
       copyError: string;
     };
+    copyLinkLabel: string;
   };
   home: {
     metaTitle: string;
@@ -266,7 +267,6 @@ export interface WebMessages {
       colorsPrimary: string;
       colorsSecondary: string;
       colorsNeutral: string;
-      colorsStatus: string;
       colorsSemantic: string;
       typographyFamilies: string;
       typographySizes: string;
@@ -277,6 +277,7 @@ export interface WebMessages {
       motionSimulate: string;
       motionDurations: string;
       motionEasings: string;
+      integrationsIntro: string;
     };
     icons: {
       metaTitle: string;

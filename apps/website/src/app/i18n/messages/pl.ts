@@ -30,6 +30,7 @@ export const pl: WebMessages = {
       copySuccess: 'Skopiowano do schowka',
       copyError: 'Nie udało się skopiować do schowka',
     },
+    copyLinkLabel: 'Kopiuj link do sekcji',
   },
   home: {
     metaTitle: 'Eagami',
@@ -326,7 +327,7 @@ export const pl: WebMessages = {
     integrations: {
       heading: 'Poza Angularem',
       intro:
-        'Tokeny designu są niezależne od frameworka. Skopiuj samodzielny przewodnik integracji do projektu spoza Angulara albo korzystaj bezpośrednio z maszynowo odczytywalnego eksportu tokenów.',
+        'Tokeny designu Eagami są niezależne od frameworka. Skopiuj samodzielny przewodnik integracji do projektu spoza Angulara albo korzystaj bezpośrednio z maszynowo odczytywalnego eksportu tokenów.',
       reactLink: 'Przewodnik integracji z React',
       flutterLink: 'Przewodnik integracji z Flutter',
       tokensLink: 'Tokeny designu jako JSON',
@@ -363,7 +364,7 @@ export const pl: WebMessages = {
       metaDescription:
         'Niestandardowe właściwości CSS dla kolorów, typografii, odstępów, elewacji, kształtu i ruchu.',
       title: 'Tokeny designu',
-      lede: 'Niestandardowe właściwości CSS, które napędzają każdy komponent biblioteki: kolory, typografia, odstępy, elewacja, kształt i ruch. Odwołuj się do tych tokenów we własnych stylach przez <code>var(--token-name)</code>, aby zachować spójność wizualną w całej aplikacji.',
+      lede: 'Tokeny designu to niestandardowe właściwości CSS, które napędzają każdy komponent biblioteki: kolory, typografia, odstępy, elewacja, kształt i ruch. Odwołuj się do tych tokenów we własnych stylach przez <code>var(--token-name)</code>, aby zachować spójność wizualną w całej aplikacji.',
       sections: {
         theming: 'Motywy',
         palette: 'Paleta marki',
@@ -375,7 +376,7 @@ export const pl: WebMessages = {
         motion: 'Ruch',
       },
       themingRootBefore:
-        'Nadpisz dowolny token na <code>:root</code>, aby zmienić motyw całej biblioteki:',
+        'Każdy token designu Eagami można nadpisać, dzięki czemu biblioteka dopasowuje się do dowolnej marki. Nadpisz dowolny token na <code>:root</code>, aby zmienić motyw całej biblioteki:',
       themingScopedBefore:
         'Lub zawęź nadpisania do pojedynczych komponentów tam, gdzie to przydatne:',
       paletteIntro:
@@ -383,7 +384,7 @@ export const pl: WebMessages = {
       paletteOverrides:
         'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje daną rolę semantyczną:',
       paletteContrast:
-        'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem WCAG 2.2 AA przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
+        'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
       paletteBuilderIntro: 'Twórz i podglądaj paletę wizualnie w',
       paletteBuilderLink: 'kreatorze motywu',
       elevationDrop: 'Cienie rzucane',
@@ -393,7 +394,6 @@ export const pl: WebMessages = {
       colorsPrimary: 'Główny',
       colorsSecondary: 'Drugorzędny',
       colorsNeutral: 'Neutralny',
-      colorsStatus: 'Status',
       colorsSemantic: 'Semantyczny',
       typographyComposites: 'Style złożone',
       typographyCompositesBefore:
@@ -405,6 +405,8 @@ export const pl: WebMessages = {
       motionSimulate: 'Symuluj',
       motionDurations: 'Czasy trwania',
       motionEasings: 'Krzywe',
+      integrationsIntro:
+        'Wszystkie powyższe tokeny designu są niezależne od frameworka. W projektach spoza Angulara wystarczy przekazać samodzielny przewodnik integracji swojemu agentowi AI albo pozwolić mu korzystać bezpośrednio z maszynowo odczytywalnego eksportu tokenów.',
     },
     icons: {
       metaTitle: 'Ikony | Eagami UI',
@@ -436,7 +438,7 @@ export const pl: WebMessages = {
       supportedHeading: 'Obsługiwane języki',
       quickSetupHeading: 'Szybka konfiguracja',
       quickSetupBefore:
-        'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze dostępny, więc dostarczasz tylko to, czego potrzebujesz.',
+        'Dodaj <code>provideEagamiUi()</code> do konfiguracji aplikacji i zarejestruj używane języki przez <code>locales</code>. Angielski jest zawsze wbudowany, a do paczki trafiają tylko języki, które zarejestrujesz.',
       lazyHeading: 'Leniwe ładowanie',
       lazyBefore:
         'Zarejestruj <code>localeLoaders</code> zamiast <code>locales</code>: język jest pobierany przy pierwszej aktywacji i nie trafia do początkowej paczki. Skieruj każdy loader na moduł reeksportujący pojedynczy pakiet językowy, a gdy przełączenie ma być natychmiastowe, załaduj go wcześniej przez <code>loadLocale()</code>.',

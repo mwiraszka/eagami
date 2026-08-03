@@ -30,6 +30,7 @@ export const is: WebMessages = {
       copySuccess: 'Afritað á klippiborð',
       copyError: 'Ekki tókst að afrita á klippiborð',
     },
+    copyLinkLabel: 'Afrita tengil á hlutann',
   },
   home: {
     metaTitle: 'Eagami',
@@ -319,7 +320,7 @@ export const is: WebMessages = {
     integrations: {
       heading: 'Út fyrir Angular',
       intro:
-        'Hönnunartóknarnir eru óháðir veflausnarramma. Afritaðu sjálfstæðar samþættingarleiðbeiningar í verkefni utan Angular eða notaðu véllesanlega tóknaútflutninginn beint.',
+        'Hönnunartóknar Eagami eru óháðir veflausnarramma. Afritaðu sjálfstæðar samþættingarleiðbeiningar í verkefni utan Angular eða notaðu véllesanlega tóknaútflutninginn beint.',
       reactLink: 'Samþættingarleiðbeiningar fyrir React',
       flutterLink: 'Samþættingarleiðbeiningar fyrir Flutter',
       tokensLink: 'Hönnunartóknar sem JSON',
@@ -357,7 +358,7 @@ export const is: WebMessages = {
       metaDescription:
         'CSS sérsniðnir eiginleikar fyrir liti, leturfræði, bil, upphækkun, lögun og hreyfingu.',
       title: 'Hönnunartóknar',
-      lede: 'CSS sérsniðnu eiginleikarnir sem keyra hverja einingu í safninu: liti, leturfræði, bil, upphækkun, lögun og hreyfingu. Vísaðu í þessa tóknar í þínum eigin stílum með <code>var(--token-name)</code> til að halda sjónrænu samræmi um allt forritið.',
+      lede: 'Hönnunartóknar eru CSS sérsniðnu eiginleikarnir sem keyra hverja einingu í safninu: liti, leturfræði, bil, upphækkun, lögun og hreyfingu. Vísaðu í þessa tóknar í þínum eigin stílum með <code>var(--token-name)</code> til að halda sjónrænu samræmi um allt forritið.',
       sections: {
         theming: 'Þemun',
         palette: 'Litaspjald vörumerkis',
@@ -369,7 +370,7 @@ export const is: WebMessages = {
         motion: 'Hreyfing',
       },
       themingRootBefore:
-        'Yfirskrifaðu hvaða tókna sem er á <code>:root</code> til að þemata allt safnið:',
+        'Sérhvern hönnunartókna Eagami má yfirskrifa, svo safnið lagar sig að hvaða vörumerki sem er. Yfirskrifaðu hvaða tókna sem er á <code>:root</code> til að þemata allt safnið:',
       themingScopedBefore:
         'Eða afmarkaðu yfirskriftir við einstakar einingar þar sem það hentar:',
       paletteIntro:
@@ -377,7 +378,7 @@ export const is: WebMessages = {
       paletteOverrides:
         'Festu ákveðna tóna eða endurúthlutaðu hvaða útleiddi tónn liggur að baki hverju merkingarhlutverki:',
       paletteContrast:
-        'Hver vörumerkjahlutverkspörun (texti á yfirborði, yfirborð á striga) er athuguð gagnvart WCAG 2.2 AA við ræsingu. Samsetning sem stenst ekki kastar villu áður en forritið hleðst, svo birtuskilavilla í vörumerkjalit næst við ræsingu frekar en í framleiðslu.',
+        'Hver vörumerkjahlutverkspörun (texti á yfirborði, yfirborð á striga) er athuguð gagnvart <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> við ræsingu. Samsetning sem stenst ekki kastar villu áður en forritið hleðst, svo birtuskilavilla í vörumerkjalit næst við ræsingu frekar en í framleiðslu.',
       paletteBuilderIntro: 'Búðu til og forskoðaðu litatöfluna þína sjónrænt í',
       paletteBuilderLink: 'þemasmiðnum',
       elevationDrop: 'Slagskuggar',
@@ -387,7 +388,6 @@ export const is: WebMessages = {
       colorsPrimary: 'Aðallitur',
       colorsSecondary: 'Aukalitur',
       colorsNeutral: 'Hlutlaust',
-      colorsStatus: 'Staða',
       colorsSemantic: 'Merkingarlegt',
       typographyFamilies: 'Leturfjölskyldur',
       typographySizes: 'Stærðir',
@@ -399,6 +399,8 @@ export const is: WebMessages = {
       motionSimulate: 'Hermir',
       motionDurations: 'Tímalengdir',
       motionEasings: 'Mýkingar',
+      integrationsIntro:
+        'Allir ofangreindir hönnunartóknar eru óháðir veflausnarramma. Fyrir verkefni utan Angular er nóg að rétta gervigreindarfulltrúa þínum sjálfstæðar samþættingarleiðbeiningar, eða láta hann nota véllesanlega tóknaútflutninginn beint.',
     },
     icons: {
       metaTitle: 'Táknmyndir | Eagami UI',
@@ -430,7 +432,7 @@ export const is: WebMessages = {
       supportedHeading: 'Studd svæði',
       quickSetupHeading: 'Hröð uppsetning',
       quickSetupBefore:
-        'Bættu <code>provideEagamiUi()</code> við stillingar forritsins og skráðu tungumálin sem þú notar með <code>locales</code>. Enska er alltaf í boði, svo þú sendir aðeins það sem þú þarft.',
+        'Bættu <code>provideEagamiUi()</code> við stillingar forritsins og skráðu tungumálin sem þú notar með <code>locales</code>. Enska fylgir alltaf með og aðeins þau tungumál sem þú skráir bætast í pakkann.',
       lazyHeading: 'Hleðsla eftir þörfum',
       lazyBefore:
         'Skráðu <code>localeLoaders</code> í stað <code>locales</code>: tungumál er sótt í fyrsta sinn sem það er virkjað og er því ekki í upphafspakkanum. Láttu hvern hlaðara vísa á einingu sem endurútflytur eitt tungumálasafn og forhlaðaðu með <code>loadLocale()</code> þegar skiptingin á að gerast samstundis.',
