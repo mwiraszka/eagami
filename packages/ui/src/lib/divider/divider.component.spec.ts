@@ -40,7 +40,9 @@ describe('DividerComponent', () => {
   });
 
   it('renders no label by default', () => {
-    expect(fixture.nativeElement.querySelector('.ea-divider__label')).toBeNull();
+    const labelEl = fixture.nativeElement.querySelector('.ea-divider__label');
+
+    expect(labelEl.textContent.trim()).toBe('');
     expect(getDivider().classList).not.toContain('ea-divider--with-label');
   });
 

@@ -62,6 +62,12 @@
     }
   }
 
+  // The label span renders unconditionally (a static template avoids SSR
+  // hydration mismatches), so hide it whenever no label is set
+  &:not(.ea-divider--with-label) .ea-divider__label {
+    display: none;
+  }
+
   &__label {
     flex-shrink: 0;
     font-size: var(--font-size-sm);
