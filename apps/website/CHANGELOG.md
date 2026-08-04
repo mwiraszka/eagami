@@ -5,23 +5,29 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.20.0] - 2026-08-03
+## [3.20.0] - 2026-08-04
 
 ### Added
 
 - Link straight to any section of the library documentation pages, with a copy-link button beside every section heading, including each changelog release.
+- Give the toast demo an icon picker that drives the library's new icon override, alongside a no-icon option.
 
 ### Changed
 
-- Bring every library documentation page onto one section style: brand-font headings, a shared rhythm of gaps, and a divider above each section.
+- Bring every library documentation page onto one section style: brand-font headings, a shared rhythm of gaps, a divider above each section, and a tighter scale on phones.
+- Redesign the theme builder into a single flow: each colour picker sits above the scale it derives, the contrast verdict reads as a plain status line, and the export offers Angular config and CSS variables as tabs.
 - Rework the design tokens page's listings: semantic colours flow into balanced columns without splitting a family, colour scales pair each subheading with its token pattern, and weights show their numeric value beside the name.
+- Split colour scales evenly onto two rows when their swatches run out of room, on the design tokens and theme builder pages alike.
 - Reword the design tokens and internationalization copy for clarity, and link the contrast check to the WCAG 2.2 Level AA standard, in every language.
-- Enlarge feature-card text and section headings, and align the drawer menu's heading with its links.
+- Enlarge feature-card text, and align the drawer menu's heading with its links.
+- Simplify the overview: the theme controls follow the showcase directly, and the closing get-started section is gone.
+- Fold the accessibility page's release-verification note into its conformance section, with all-caps subheadings across the docs sharing one quieter style.
 
 ### Fixed
 
 - Render bold and extrabold text in their true weights, which the site's font declaration previously capped at semibold.
 - Keep the selected sidebar link's highlight while hovering it, and show a visible hover state on the drawer menu's links.
+- Account for the mobile menu bar when scrolling to a linked section, which previously hid the heading beneath it.
 
 ## [3.19.0] - 2026-08-02
 

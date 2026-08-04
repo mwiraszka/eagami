@@ -15,12 +15,19 @@ export interface ChangelogRelease {
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
     version: '5.17.0',
-    date: '2026-08-03',
+    date: '2026-08-04',
     sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add an icon override to the toast service, so any toast can carry any icon component in place of its variant's own, or none at all.",
+        ],
+      },
       {
         heading: 'Changed',
         entries: [
-          'Enlarge the section-heading composite style from 20px to 24px, so page subsections read a clear step above body text.',
+          'Rebalance the toast: default to the small size, match the status icon to the text size, and align its gap and width cap with the alert.',
+          'Enlarge the section-heading composite style from 20px to 22px, so page subsections read a clear step above body text.',
         ],
       },
       {

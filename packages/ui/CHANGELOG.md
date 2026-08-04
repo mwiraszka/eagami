@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.17.0] - 2026-08-03
+## [5.17.0] - 2026-08-04
+
+### Added
+
+- Add an icon override to the toast service, so any toast can carry any icon component in place of its variant's own, or none at all.
 
 ### Changed
 
-- Enlarge the section-heading composite style from 20px to 24px, so page subsections read a clear step above body text.
+- Rebalance the toast: default to the small size, match the status icon to the text size, and align its gap and width cap with the alert.
+- Enlarge the section-heading composite style from 20px to 22px, so page subsections read a clear step above body text.
 
 ### Fixed
 
