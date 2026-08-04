@@ -9,18 +9,26 @@
     <div
       class="ea-toast ea-toast--{{ toast.variant }} ea-toast--{{ size() }}"
       [attr.role]="toastRole(toast.variant)">
-      @switch (toast.variant) {
-        @case ('success') {
-          <ea-icon-check-circle class="ea-toast__icon" />
+      @if (toast.icon !== undefined) {
+        @if (toast.icon) {
+          <span class="ea-toast__icon">
+            <ng-container *ngComponentOutlet="toast.icon" />
+          </span>
         }
-        @case ('info') {
-          <ea-icon-info class="ea-toast__icon" />
-        }
-        @case ('warning') {
-          <ea-icon-alert-triangle class="ea-toast__icon" />
-        }
-        @case ('error') {
-          <ea-icon-alert-circle class="ea-toast__icon" />
+      } @else {
+        @switch (toast.variant) {
+          @case ('success') {
+            <ea-icon-check-circle class="ea-toast__icon" />
+          }
+          @case ('info') {
+            <ea-icon-info class="ea-toast__icon" />
+          }
+          @case ('warning') {
+            <ea-icon-alert-triangle class="ea-toast__icon" />
+          }
+          @case ('error') {
+            <ea-icon-alert-circle class="ea-toast__icon" />
+          }
         }
       }
       <span class="ea-toast__message">{{ toast.message }}</span>

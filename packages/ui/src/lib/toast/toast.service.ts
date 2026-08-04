@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, type Type, signal } from '@angular/core';
 
 /** Semantic colour scheme of a toast. */
 export type ToastVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
@@ -9,12 +9,16 @@ export interface Toast {
   message: string;
   variant: ToastVariant;
   duration: number;
+  /** Icon component rendered in place of the variant's own; `null` renders none. */
+  icon?: Type<unknown> | null;
 }
 
 /** Optional configuration for a toast; defaults to `default` variant and 4s duration. */
 export interface ToastOptions {
   variant?: ToastVariant;
   duration?: number;
+  /** Any icon component to render in place of the variant's own; `null` for no icon. */
+  icon?: Type<unknown> | null;
 }
 
 /**
@@ -42,6 +46,7 @@ export class ToastService {
       message,
       variant: options.variant ?? 'default',
       duration: options.duration ?? 4000,
+      icon: options.icon,
     };
 
     this.toasts.update(list => [...list, toast]);

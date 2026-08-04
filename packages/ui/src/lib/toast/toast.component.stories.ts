@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
+import { HeartIconComponent } from '../icons/heart.component';
 import { ToastComponent } from './toast.component';
 import { TOAST_KNOBS } from './toast.component.knobs';
 import { ToastService } from './toast.service';
@@ -47,6 +48,35 @@ export const Playground: Story = {
       showWarning: () => toastService.warning('Please review your input'),
       showError: () => toastService.error('Something went wrong'),
       showInfo: () => toastService.info('Here is some useful information'),
+    },
+  }),
+};
+
+export const IconOverride: Story = {
+  render: args => ({
+    moduleMetadata: {
+      imports: [ButtonComponent],
+      providers: [{ provide: ToastService, useValue: toastService }],
+    },
+    template: `
+      <ea-toast
+        [position]="position"
+        [size]="size"
+        [clearable]="clearable" />
+      <div class="story-row">
+        <ea-button variant="secondary" (clicked)="showCustom()">Custom icon</ea-button>
+        <ea-button variant="secondary" (clicked)="showNone()">No icon</ea-button>
+      </div>
+    `,
+    props: {
+      ...args,
+      showCustom: () =>
+        toastService.show('Saved to favourites', {
+          variant: 'success',
+          icon: HeartIconComponent,
+        }),
+      showNone: () =>
+        toastService.show('Preferences updated', { variant: 'info', icon: null }),
     },
   }),
 };

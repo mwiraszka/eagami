@@ -1,3 +1,4 @@
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,6 +34,7 @@ export type ToastSize = EaSize;
 @Component({
   selector: 'ea-toast',
   imports: [
+    NgComponentOutlet,
     XIconComponent,
     CheckCircleIconComponent,
     InfoIconComponent,
@@ -55,7 +57,7 @@ export class ToastComponent {
   /** Viewport corner or edge the toast stack is pinned to. */
   readonly position = input<ToastPosition>('bottom-right');
   /** Visual size applied to every toast in the stack. */
-  readonly size = input<ToastSize>('md');
+  readonly size = input<ToastSize>('sm');
   /** Show a dismiss button on each toast. */
   readonly clearable = input<boolean>(true);
 
