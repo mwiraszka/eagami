@@ -31,7 +31,10 @@ export class UiChangelogPageComponent {
   private readonly i18n = inject(WebI18nService);
 
   protected readonly messages = this.i18n.messages;
-  protected readonly releases = UI_CHANGELOG;
+  protected readonly releases = UI_CHANGELOG.map(release => ({
+    ...release,
+    anchor: `v${release.version}`,
+  }));
   // Built here rather than in the template: each locale owns the whole sentence,
   // including where the package name, version, and link fall in it
   protected readonly ledeHtml = computed(() => {

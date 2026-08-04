@@ -5,6 +5,13 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.20.1] - 2026-08-04
+
+### Fixed
+
+- Correct the toast demo's copied snippet, which advertised an icon input the outlet does not have, and add a true no-icon choice to its picker.
+- Restore a sound heading order on the theme builder page for assistive technology.
+
 ## [3.20.0] - 2026-08-04
 
 ### Added
@@ -1129,6 +1136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.20.1]: https://github.com/mwiraszka/eagami/compare/website-v3.20.0...website-v3.20.1
 [3.20.0]: https://github.com/mwiraszka/eagami/compare/website-v3.19.0...website-v3.20.0
 [3.19.0]: https://github.com/mwiraszka/eagami/compare/website-v3.18.1...website-v3.19.0
 [3.18.1]: https://github.com/mwiraszka/eagami/compare/website-v3.18.0...website-v3.18.1

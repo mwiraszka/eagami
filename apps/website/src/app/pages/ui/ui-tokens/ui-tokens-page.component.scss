@@ -103,14 +103,10 @@ web-section-heading + .tokens-subsection__row {
 
 // Sequential scales render as a single contiguous bar: each shade is a thin
 // segment with its step number inside, and the full token name on hover. Once
-// the stops can no longer hold 45px each, a scale splits evenly into two rows,
-// and scrolls sideways when even the split rows cannot fit.
+// the stops can no longer hold 45px each, a scale splits evenly into two rows.
 .color-scale {
-  display: grid;
+  @include mixins.color-scale-bar;
   grid-template-columns: repeat(var(--scale-cols, 10), minmax(45px, 1fr));
-  overflow-x: auto;
-  border: 1px solid var(--color-border-default);
-  border-radius: 8px;
 }
 
 .color-scale--neutral {
@@ -140,23 +136,11 @@ web-section-heading + .tokens-subsection__row {
 }
 
 .color-scale__stop {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  height: 56px;
-  padding-block-end: 8px;
-  padding-inline-end: 8px;
-
-  &:not(:last-child) {
-    box-shadow: inset -1px 0 0 var(--color-border-subtle);
-  }
+  @include mixins.color-scale-stop;
 }
 
 .color-scale__shade {
-  font-size: 12px;
-  font-weight: 600;
-  font-family: var(--font-family-mono);
-  color: var(--color-neutral-900);
+  @include mixins.color-scale-shade;
 }
 
 @each $shade in (500, 600, 700, 800, 900, 950) {

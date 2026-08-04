@@ -251,10 +251,6 @@ export const ptBR: WebMessages = {
           body: 'Cada componente é Angular e CSS puros, sem dependência de fornecedor, então o código-fonte pode ser lido, copiado ou modificado como qualquer outro código do seu projeto.',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'Aperte aqui',
         toggle: 'Alterne aqui',

@@ -251,10 +251,6 @@ export const de: WebMessages = {
           body: 'Jede Komponente ist reines Angular und CSS ohne Anbieterbindung, sodass der Quellcode wie jeder andere Code in Ihrem Projekt gelesen, kopiert oder verändert werden kann.',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'Drück mich',
         toggle: 'Schalt mich um',

@@ -1,8 +1,9 @@
-import { LinkIconComponent, ToastService, TooltipDirective } from '@eagami/ui';
+import { LinkIconComponent, TooltipDirective } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { ClipboardService } from '@app/services/clipboard.service';
 
 /**
  * Heading row for a documentation page section: the projected heading on the
@@ -19,17 +20,14 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
 export class SectionHeadingComponent {
   readonly fragment = input.required<string>();
 
-  private readonly toastService = inject(ToastService);
+  private readonly clipboard = inject(ClipboardService);
   private readonly i18n = inject(WebI18nService);
 
   protected readonly messages = this.i18n.messages;
 
   protected copyLink(): void {
-    const m = this.messages().common;
-    const url = `${window.location.origin}${window.location.pathname}#${this.fragment()}`;
-    void navigator.clipboard
-      .writeText(url)
-      .then(() => this.toastService.success(m.codeSnippet.copySuccess))
-      .catch(() => this.toastService.error(m.codeSnippet.copyError));
+    this.clipboard.copy(
+      `${window.location.origin}${window.location.pathname}#${this.fragment()}`,
+    );
   }
 }

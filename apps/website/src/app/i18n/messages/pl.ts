@@ -250,11 +250,6 @@ export const pl: WebMessages = {
           body: 'Każdy komponent to czysty Angular i CSS bez żadnego uzależnienia od dostawcy, więc źródło można czytać, kopiować lub modyfikować jak każdy inny kod w projekcie.',
         },
       ],
-      /* "Instalacja" is the nominative form (used as-is on the page title and
-         the sidebar). Inside "Przejdź do …", the preposition "do" requires
-         the genitive case, so this link reads "Instalacji". Polish inflects
-         nouns by case; per i18n best practice we keep a separate key per
-         grammatical context rather than try to derive cases at runtime. */
       showcase: {
         button: 'Naciśnij mnie',
         toggle: 'Przełącz mnie',

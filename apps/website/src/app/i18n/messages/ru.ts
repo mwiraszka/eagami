@@ -248,10 +248,6 @@ export const ru: WebMessages = {
           body: 'Каждый компонент это обычный Angular и CSS без привязки к поставщику, поэтому исходный код можно читать, копировать или изменять, как любой другой код в вашем проекте.',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'Нажми меня',
         toggle: 'Переключи меня',

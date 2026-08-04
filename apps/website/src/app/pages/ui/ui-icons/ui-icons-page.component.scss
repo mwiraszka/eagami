@@ -26,8 +26,6 @@
   }
 }
 
-/* Scopes the filter card's sticky tracking to the icon grid, so it stops at the
-   wrapper's end and leaves the brand section below unobstructed. */
 /* Sticks below the app header, with a drop-shadow so it lifts off the grid
    scrolling beneath it. Children flex-wrap as the row narrows. */
 .ui-icons__filter {
@@ -35,11 +33,6 @@
   container-type: inline-size;
   position: sticky;
   top: calc(var(--web-height-header) + 8px);
-
-  // Clear the sticky Eagami UI menu-trigger bar shown under the header
-  @include mixins.respond-to('lt-md') {
-    top: calc(var(--web-height-header) + var(--web-height-ui-trigger) + 8px);
-  }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -55,6 +48,11 @@
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
+
+  // Clear the sticky Eagami UI menu-trigger bar shown under the header
+  @include mixins.respond-to('lt-md') {
+    top: calc(var(--web-height-header) + var(--web-height-ui-trigger) + 8px);
+  }
 
   &:focus-within {
     border-color: var(--color-border-focus);

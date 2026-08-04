@@ -69,6 +69,7 @@ const SHADES: readonly PaletteShade[] = [
 interface ScaleStop {
   shade: PaletteShade;
   value: string;
+  dark: boolean;
 }
 
 interface ViolationRow {
@@ -169,10 +170,6 @@ export class UiThemeBuilderPageComponent {
     }
   }
 
-  protected isDarkShade(shade: PaletteShade): boolean {
-    return Number(shade) >= 500;
-  }
-
   protected onPrimaryChange(value: string | null): void {
     if (value) {
       this.primaryBase.set(value);
@@ -190,6 +187,7 @@ export class UiThemeBuilderPageComponent {
     return this.shades.map(shade => ({
       shade,
       value: light[`--color-${family}-${shade}`] ?? 'transparent',
+      dark: Number(shade) >= 500,
     }));
   }
 

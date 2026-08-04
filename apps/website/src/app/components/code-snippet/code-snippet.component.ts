@@ -1,8 +1,9 @@
-import { CopyIconComponent, ToastService, TooltipDirective } from '@eagami/ui';
+import { CopyIconComponent, TooltipDirective } from '@eagami/ui';
 
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { ClipboardService } from '@app/services/clipboard.service';
 
 @Component({
   selector: 'web-code-snippet',
@@ -14,16 +15,12 @@ import { WebI18nService } from '@app/i18n/web-i18n.service';
 export class CodeSnippetComponent {
   readonly code = input.required<string>();
 
-  private readonly toastService = inject(ToastService);
+  private readonly clipboard = inject(ClipboardService);
   private readonly i18n = inject(WebI18nService);
 
   protected readonly messages = this.i18n.messages;
 
   protected copy(): void {
-    const m = this.messages().common.codeSnippet;
-    void navigator.clipboard
-      .writeText(this.code())
-      .then(() => this.toastService.success(m.copySuccess))
-      .catch(() => this.toastService.error(m.copyError));
+    this.clipboard.copy(this.code());
   }
 }

@@ -14,6 +14,8 @@ export interface IconKnobConfig {
   default?: string;
   /** Prepend a "none" option for inputs whose icon is optional. Defaults to true. */
   includeNone?: boolean;
+  /** Exclude from the generated snippet, for icons applied outside a component input */
+  demoOnly?: boolean;
 }
 
 /**
@@ -30,12 +32,18 @@ export function iconKnob(
   options: readonly string[],
   config: IconKnobConfig = {},
 ): PlaygroundKnob {
-  const { name = 'icon', default: defaultSlug = ICON_NONE, includeNone = true } = config;
+  const {
+    name = 'icon',
+    default: defaultSlug = ICON_NONE,
+    includeNone = true,
+    demoOnly,
+  } = config;
   return {
     name,
     control: 'icon',
     options: includeNone ? [ICON_NONE, ...options] : [...options],
     default: defaultSlug,
+    demoOnly,
   };
 }
 

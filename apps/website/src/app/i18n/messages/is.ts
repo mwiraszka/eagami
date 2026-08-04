@@ -245,10 +245,6 @@ export const is: WebMessages = {
           body: 'Hver eining er einfalt Angular og CSS án bindingar við söluaðila, svo hægt er að lesa frumkóðann, afrita hann eða breyta honum eins og hverjum öðrum kóða í verkefninu þínu.',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'Ýttu á mig',
         toggle: 'Skiptu um',

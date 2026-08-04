@@ -242,10 +242,6 @@ export const ar: WebMessages = {
           body: 'كل مكوّن هو Angular وCSS عادي دون ارتباط بمزوّد، لذا يمكن قراءة الشيفرة المصدرية أو نسخها أو تعديلها مثل أي شيفرة أخرى في مشروعك.',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'اضغط عليّ',
         toggle: 'بدّلني',

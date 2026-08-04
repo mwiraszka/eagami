@@ -119,15 +119,10 @@
   opacity: 0.75;
 }
 
-// Contiguous shade bar matching the design tokens page's colour scales; once
-// ten stops can no longer hold 45px each, they split evenly into two rows of
-// five, scrolling sideways when even those cannot fit
+// Once ten stops can no longer hold 45px each, they split evenly into two rows
 .tb-scale {
-  display: grid;
+  @include mixins.color-scale-bar;
   grid-template-columns: repeat(10, minmax(45px, 1fr));
-  overflow-x: auto;
-  border: 1px solid var(--color-border-default);
-  border-radius: 8px;
 }
 
 @container (max-width: 519px) {
@@ -137,23 +132,11 @@
 }
 
 .tb-scale__stop {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  height: 56px;
-  padding-block-end: 8px;
-  padding-inline-end: 8px;
-
-  &:not(:last-child) {
-    box-shadow: inset -1px 0 0 var(--color-border-subtle);
-  }
+  @include mixins.color-scale-stop;
 }
 
 .tb-scale__shade {
-  font-size: 12px;
-  font-weight: 600;
-  font-family: var(--font-family-mono);
-  color: var(--color-neutral-900);
+  @include mixins.color-scale-shade;
 }
 
 .tb-scale__stop--dark .tb-scale__shade {

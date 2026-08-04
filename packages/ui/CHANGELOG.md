@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.17.1] - 2026-08-04
+
+### Fixed
+
+- Hide a toast's custom icon from assistive technology, matching the alert's decorative icon treatment.
+
 ## [5.17.0] - 2026-08-04
 
 ### Added
@@ -1241,6 +1247,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.17.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.0...ui-v5.17.1
 [5.17.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.1...ui-v5.17.0
 [5.16.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.0...ui-v5.16.1
 [5.16.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.15.1...ui-v5.16.0
