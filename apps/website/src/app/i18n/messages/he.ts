@@ -275,6 +275,7 @@ export const he: WebMessages = {
         msFood: 'אוכל',
       },
       theme: {
+        heading: 'התאימו לעצמכם',
         ledeBefore: '',
         ledeLink: 'אסימוני עיצוב',
         ledeAfter:

@@ -285,6 +285,7 @@ export const uk: WebMessages = {
         msFood: 'Їжа',
       },
       theme: {
+        heading: 'Зробіть по-своєму',
         ledeBefore: '',
         ledeLink: 'Токени дизайну',
         ledeAfter:

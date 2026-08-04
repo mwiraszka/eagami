@@ -282,6 +282,7 @@ export const hi: WebMessages = {
         msFood: 'भोजन',
       },
       theme: {
+        heading: 'इसे अपना बनाएं',
         ledeBefore: '',
         ledeLink: 'डिज़ाइन टोकन',
         ledeAfter:

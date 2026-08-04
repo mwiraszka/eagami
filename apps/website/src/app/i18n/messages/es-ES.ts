@@ -284,6 +284,7 @@ export const esES: WebMessages = {
         msFood: 'Comida',
       },
       theme: {
+        heading: 'Hazlo a tu medida',
         ledeBefore: 'Los',
         ledeLink: 'tokens de diseño',
         ledeAfter:

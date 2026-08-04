@@ -10,7 +10,8 @@
 }
 
 .ui-index__title {
-  @include mixins.page-title;
+  // -16px nets the canonical 32px below the divider against the 48px page gap
+  @include mixins.page-title(-16px);
 }
 
 .ui-index__lede {
@@ -31,13 +32,22 @@
   @include mixins.prose-link;
 }
 
-// Pull the showcase to 16px below the header lede, against the 48px page gap
+// Sets the showcase apart from the prose around it without any heading chrome:
+// the section's 16px gap plus this reads as the page's full section spacing
 .ui-index__showcase {
-  margin-top: -32px;
+  margin-block: 32px;
+
+  @include mixins.respond-to('lt-sm') {
+    margin-block: 16px;
+  }
 }
 
 .ui-index__heading {
   @include mixins.section-title;
+}
+
+.ui-index__subheading {
+  @include mixins.subsection-title;
 }
 
 .ui-index__body {

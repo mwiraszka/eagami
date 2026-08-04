@@ -289,6 +289,7 @@ export const ptBR: WebMessages = {
         msFood: 'Comida',
       },
       theme: {
+        heading: 'Deixe do seu jeito',
         ledeBefore: 'Os',
         ledeLink: 'tokens de design',
         ledeAfter:

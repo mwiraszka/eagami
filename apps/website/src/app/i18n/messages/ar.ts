@@ -280,6 +280,7 @@ export const ar: WebMessages = {
         msFood: 'طعام',
       },
       theme: {
+        heading: 'اجعله خاصًا بك',
         ledeBefore: '',
         ledeLink: 'رموز التصميم',
         ledeAfter:

@@ -281,6 +281,7 @@ export const en: WebMessages = {
         msFood: 'Food',
       },
       theme: {
+        heading: 'Make it your own',
         ledeBefore: '',
         ledeLink: 'Design tokens',
         ledeAfter:

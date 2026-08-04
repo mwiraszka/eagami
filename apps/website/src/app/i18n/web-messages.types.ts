@@ -173,6 +173,7 @@ export interface WebMessages {
         msFood: string;
       };
       theme: {
+        heading: string;
         ledeBefore: string;
         ledeLink: string;
         ledeAfter: string;

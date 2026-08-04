@@ -2,6 +2,9 @@
   <header class="ui-index__header">
     <h1 class="ui-index__title">{{ messages().ui.index.title }}</h1>
     <ea-divider />
+  </header>
+
+  <section class="web-section web-section--no-divider">
     <p class="ui-index__lede">
       <a
         href="https://www.npmjs.com/package/@eagami/ui"
@@ -11,10 +14,10 @@
       </a>
       {{ messages().ui.index.ledeBefore }} {{ messages().ui.index.ledeAfter }}
     </p>
-  </header>
-
-  <section class="web-section web-section--no-divider ui-index__showcase">
-    <web-ui-showcase [style]="showcaseStyle()" />
+    <web-ui-showcase
+      class="ui-index__showcase"
+      [style]="showcaseStyle()" />
+    <h2 class="ui-index__subheading">{{ messages().ui.index.theme.heading }}</h2>
     <p class="ui-index__body">
       {{ messages().ui.index.theme.ledeBefore }}
       <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a

@@ -283,6 +283,7 @@ export const is: WebMessages = {
         msFood: 'Matur',
       },
       theme: {
+        heading: 'Gerðu það að þínu',
         ledeBefore: '',
         ledeLink: 'Hönnunartóknar',
         ledeAfter:

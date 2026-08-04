@@ -286,6 +286,7 @@ export const ru: WebMessages = {
         msFood: 'Еда',
       },
       theme: {
+        heading: 'Сделайте по-своему',
         ledeBefore: '',
         ledeLink: 'Токены дизайна',
         ledeAfter:

@@ -289,6 +289,7 @@ export const pl: WebMessages = {
         msFood: 'Jedzenie',
       },
       theme: {
+        heading: 'Dostosuj do siebie',
         ledeBefore: '',
         ledeLink: 'Tokeny designu',
         ledeAfter:

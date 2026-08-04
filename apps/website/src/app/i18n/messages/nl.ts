@@ -289,6 +289,7 @@ export const nl: WebMessages = {
         msFood: 'Eten',
       },
       theme: {
+        heading: 'Maak het van jou',
         ledeBefore: '',
         ledeLink: 'Designtokens',
         ledeAfter:

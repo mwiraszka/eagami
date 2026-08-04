@@ -284,6 +284,7 @@ export const el: WebMessages = {
         msFood: 'Φαγητό',
       },
       theme: {
+        heading: 'Κάντε το δικό σας',
         ledeBefore: 'Τα',
         ledeLink: 'διακριτικά σχεδίασης',
         ledeAfter:

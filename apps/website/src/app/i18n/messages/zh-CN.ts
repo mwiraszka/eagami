@@ -270,6 +270,7 @@ export const zhCN: WebMessages = {
         msFood: '美食',
       },
       theme: {
+        heading: '打造专属于你的风格',
         ledeBefore: '',
         ledeLink: '设计令牌',
         ledeAfter:
