@@ -250,15 +250,11 @@ export const pl: WebMessages = {
           body: 'Każdy komponent to czysty Angular i CSS bez żadnego uzależnienia od dostawcy, więc źródło można czytać, kopiować lub modyfikować jak każdy inny kod w projekcie.',
         },
       ],
-      getStartedHeading: 'Zacznij',
-      getStartedBefore: 'Przejdź do',
       /* "Instalacja" is the nominative form (used as-is on the page title and
          the sidebar). Inside "Przejdź do …", the preposition "do" requires
          the genitive case, so this link reads "Instalacji". Polish inflects
          nouns by case; per i18n best practice we keep a separate key per
          grammatical context rather than try to derive cases at runtime. */
-      getStartedLink: 'Instalacji',
-      getStartedAfter: ', aby zainstalować pakiet i podpiąć globalny arkusz stylów.',
       showcase: {
         button: 'Naciśnij mnie',
         toggle: 'Przełącz mnie',
@@ -293,7 +289,6 @@ export const pl: WebMessages = {
         msFood: 'Jedzenie',
       },
       theme: {
-        heading: 'Dostosuj do siebie',
         ledeBefore: '',
         ledeLink: 'Tokeny designu',
         ledeAfter:
@@ -338,26 +333,21 @@ export const pl: WebMessages = {
         'Wygeneruj sprawdzoną pod kątem WCAG paletę dla trybu jasnego i ciemnego na podstawie kolorów marki, a następnie skopiuj konfigurację dostawcy lub CSS.',
       title: 'Kreator motywu',
       lede: 'Wybierz kolory swojej marki, a Eagami UI wyprowadzi pełną skalę 50–900 w przestrzeni OKLCH, sprawdzi jej kontrast WCAG w trybie jasnym i ciemnym oraz przekaże Ci gotową konfigurację <code>provideEagamiUi()</code>.',
-      controlsHeading: 'Kolory marki',
       primaryLabel: 'Kolor podstawowy',
       secondaryLabel: 'Kolor dodatkowy',
-      contrastHeading: 'Dostępność',
       contrastPass: 'Spełnia kontrast WCAG 2.2 AA w trybie jasnym i ciemnym',
       contrastFailIntro: 'Niektóre zestawienia nie osiągają progu kontrastu WCAG AA:',
-      scaleHeading: 'Wygenerowana skala',
       previewHeading: 'Podgląd',
       previewHint: 'Przełącz motyw witryny, aby zobaczyć paletę w trybie ciemnym.',
       previewButton: 'Rozpocznij',
       previewSwitch: 'Powiadomienia',
-      previewPrimary: 'Podstawowy',
-      previewSecondary: 'Dodatkowy',
       previewStep1: 'Konto',
       previewStep2: 'Profil',
       previewStep3: 'Gotowe',
       previewProgress: 'Postęp:',
-      exportHeading: 'Użyj',
-      exportConfigLabel: 'Konfiguracja dostawcy',
-      exportCssLabel: 'Właściwości niestandardowe CSS',
+      exportHeading: 'Eksport',
+      exportConfigLabel: 'Konfiguracja Angulara',
+      exportCssLabel: 'Zmienne CSS',
     },
     tokens: {
       metaTitle: 'Tokeny designu | Eagami UI',
@@ -1058,6 +1048,9 @@ export const pl: WebMessages = {
             variant: 'Wariant',
             dismissible: 'Z możliwością zamknięcia',
             size: 'Rozmiar',
+            icon: 'Ikona (zastąp)',
+          },
+          toast: {
             icon: 'Ikona (zastąp)',
           },
           avatar: {

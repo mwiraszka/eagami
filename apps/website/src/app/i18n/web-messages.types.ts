@@ -139,10 +139,6 @@ export interface WebMessages {
       ledeAfter: string;
       principlesHeading: string;
       principles: ReadonlyArray<{ title: string; body: string }>;
-      getStartedHeading: string;
-      getStartedBefore: string;
-      getStartedLink: string;
-      getStartedAfter: string;
       showcase: {
         button: string;
         toggle: string;
@@ -177,7 +173,6 @@ export interface WebMessages {
         msFood: string;
       };
       theme: {
-        heading: string;
         ledeBefore: string;
         ledeLink: string;
         ledeAfter: string;
@@ -218,19 +213,14 @@ export interface WebMessages {
       metaDescription: string;
       title: string;
       lede: string;
-      controlsHeading: string;
       primaryLabel: string;
       secondaryLabel: string;
-      contrastHeading: string;
       contrastPass: string;
       contrastFailIntro: string;
-      scaleHeading: string;
       previewHeading: string;
       previewHint: string;
       previewButton: string;
       previewSwitch: string;
-      previewPrimary: string;
-      previewSecondary: string;
       previewStep1: string;
       previewStep2: string;
       previewStep3: string;

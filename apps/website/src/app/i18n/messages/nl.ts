@@ -251,15 +251,10 @@ export const nl: WebMessages = {
           body: 'Elke component is gewoon Angular en CSS zonder leveranciersbinding, zodat de broncode net als elke andere code in je project kan worden gelezen, gekopieerd of aangepast.',
         },
       ],
-      getStartedHeading: 'Aan de slag',
-      getStartedBefore: 'Ga naar',
-      getStartedLink: 'Installatie',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter:
-        ' om het pakket te installeren en de globale stylesheet aan te sluiten.',
       showcase: {
         button: 'Druk op mij',
         toggle: 'Schakel mij',
@@ -294,7 +289,6 @@ export const nl: WebMessages = {
         msFood: 'Eten',
       },
       theme: {
-        heading: 'Maak het van jou',
         ledeBefore: '',
         ledeLink: 'Designtokens',
         ledeAfter:
@@ -339,27 +333,22 @@ export const nl: WebMessages = {
         'Genereer op basis van je merkkleuren een WCAG-gecontroleerd palet voor de lichte en donkere modus en kopieer vervolgens de providerconfiguratie of CSS.',
       title: 'Themabuilder',
       lede: 'Kies je merkkleuren en Eagami UI leidt er een volledige 50–900-schaal in de OKLCH-ruimte uit af, controleert het WCAG-contrast in de lichte en donkere modus en geeft je de <code>provideEagamiUi()</code>-configuratie om direct toe te passen.',
-      controlsHeading: 'Merkkleuren',
       primaryLabel: 'Primaire kleur',
       secondaryLabel: 'Secundaire kleur',
-      contrastHeading: 'Toegankelijkheid',
       contrastPass:
         'Voldoet aan WCAG 2.2 AA-contrast in zowel de lichte als de donkere modus',
       contrastFailIntro: 'Sommige combinaties blijven onder de WCAG AA-contrastdrempel:',
-      scaleHeading: 'Gegenereerde schaal',
       previewHeading: 'Voorbeeld',
       previewHint: 'Wissel het sitethema om het palet in de donkere modus te bekijken.',
       previewButton: 'Aan de slag',
       previewSwitch: 'Meldingen',
-      previewPrimary: 'Primair',
-      previewSecondary: 'Secundair',
       previewStep1: 'Account',
       previewStep2: 'Profiel',
       previewStep3: 'Klaar',
       previewProgress: 'Voortgang:',
-      exportHeading: 'Gebruik het',
-      exportConfigLabel: 'Providerconfiguratie',
-      exportCssLabel: 'CSS-custom-properties',
+      exportHeading: 'Exporteren',
+      exportConfigLabel: 'Angular-configuratie',
+      exportCssLabel: 'CSS-variabelen',
     },
     tokens: {
       metaTitle: 'Designtokens | Eagami UI',
@@ -1053,6 +1042,9 @@ export const nl: WebMessages = {
             variant: 'Variant',
             dismissible: 'Sluitbaar',
             size: 'Grootte',
+            icon: 'Icoon (overschrijven)',
+          },
+          toast: {
             icon: 'Icoon (overschrijven)',
           },
           avatar: {

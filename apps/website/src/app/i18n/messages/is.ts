@@ -245,14 +245,10 @@ export const is: WebMessages = {
           body: 'Hver eining er einfalt Angular og CSS án bindingar við söluaðila, svo hægt er að lesa frumkóðann, afrita hann eða breyta honum eins og hverjum öðrum kóða í verkefninu þínu.',
         },
       ],
-      getStartedHeading: 'Byrjaðu',
-      getStartedBefore: 'Farðu í',
-      getStartedLink: 'Uppsetningu',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' til að setja upp pakkann og tengja upp altæka stílblaðið.',
       showcase: {
         button: 'Ýttu á mig',
         toggle: 'Skiptu um',
@@ -287,7 +283,6 @@ export const is: WebMessages = {
         msFood: 'Matur',
       },
       theme: {
-        heading: 'Gerðu það að þínu',
         ledeBefore: '',
         ledeLink: 'Hönnunartóknar',
         ledeAfter:
@@ -331,27 +326,22 @@ export const is: WebMessages = {
         'Búðu til WCAG-yfirfarna litatöflu fyrir ljósa og dökka stillingu út frá vörumerkjalitunum þínum og afritaðu svo veitustillingarnar eða CSS.',
       title: 'Þemasmiður',
       lede: 'Veldu vörumerkjalitina þína og Eagami UI leiðir út heildstæðan 50–900 kvarða í OKLCH-rými, athugar WCAG-birtuskil hans í ljósri og dökkri stillingu og réttir þér <code>provideEagamiUi()</code>-stillinguna tilbúna til notkunar.',
-      controlsHeading: 'Vörumerkjalitir',
       primaryLabel: 'Aðallitur',
       secondaryLabel: 'Aukalitur',
-      contrastHeading: 'Aðgengi',
       contrastPass: 'Uppfyllir WCAG 2.2 AA birtuskil í bæði ljósri og dökkri stillingu',
       contrastFailIntro: 'Sumar samsetningar ná ekki WCAG AA birtuskilamörkunum:',
-      scaleHeading: 'Myndaður kvarði',
       previewHeading: 'Forskoðun',
       previewHint:
         'Skiptu um þema vefsins til að forskoða litatöfluna í dökkri stillingu.',
       previewButton: 'Byrja',
       previewSwitch: 'Tilkynningar',
-      previewPrimary: 'Aðal',
-      previewSecondary: 'Auka',
       previewStep1: 'Reikningur',
       previewStep2: 'Prófíll',
       previewStep3: 'Lokið',
       previewProgress: 'Framvinda:',
-      exportHeading: 'Notaðu það',
-      exportConfigLabel: 'Veitustillingar',
-      exportCssLabel: 'CSS sérsniðnar eigindir',
+      exportHeading: 'Útflutningur',
+      exportConfigLabel: 'Angular-stilling',
+      exportCssLabel: 'CSS-breytur',
     },
     tokens: {
       metaTitle: 'Hönnunartóknar | Eagami UI',
@@ -1053,6 +1043,9 @@ export const is: WebMessages = {
             variant: 'Afbrigði',
             dismissible: 'Lokanlegt',
             size: 'Stærð',
+            icon: 'Táknmynd (yfirskrift)',
+          },
+          toast: {
             icon: 'Táknmynd (yfirskrift)',
           },
           avatar: {

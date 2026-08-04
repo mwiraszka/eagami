@@ -254,11 +254,6 @@ export const frFR: WebMessages = {
           body: 'Chaque composant est du simple Angular et CSS, sans dépendance propriétaire : la source peut être lue, copiée ou modifiée comme tout autre code de votre projet.',
         },
       ],
-      getStartedHeading: 'Commencer',
-      getStartedBefore: 'Rendez-vous sur',
-      getStartedLink: 'Installation',
-      getStartedAfter:
-        ' pour installer le paquet et brancher la feuille de style globale.',
       showcase: {
         button: 'Cliquez-moi',
         toggle: 'Basculez-moi',
@@ -293,7 +288,6 @@ export const frFR: WebMessages = {
         msFood: 'Nourriture',
       },
       theme: {
-        heading: 'Personnalisez-le',
         ledeBefore: 'Les',
         ledeLink: 'tokens de design',
         ledeAfter:
@@ -338,28 +332,23 @@ export const frFR: WebMessages = {
         'Générez une palette vérifiée WCAG pour les modes clair et sombre à partir des couleurs de votre marque, puis copiez la configuration du fournisseur ou le CSS.',
       title: 'Générateur de thème',
       lede: 'Choisissez les couleurs de votre marque et Eagami UI en dérive une échelle complète 50–900 dans l’espace OKLCH, en vérifie le contraste WCAG en mode clair et sombre, et vous fournit la configuration <code>provideEagamiUi()</code> prête à l’emploi.',
-      controlsHeading: 'Couleurs de marque',
       primaryLabel: 'Couleur primaire',
       secondaryLabel: 'Couleur secondaire',
-      contrastHeading: 'Accessibilité',
       contrastPass: 'Respecte le contraste WCAG 2.2 AA en mode clair et sombre',
       contrastFailIntro:
         'Certaines associations n’atteignent pas le seuil de contraste WCAG AA :',
-      scaleHeading: 'Échelle générée',
       previewHeading: 'Aperçu',
       previewHint:
         'Changez le thème du site pour prévisualiser la palette en mode sombre.',
       previewButton: 'Commencer',
       previewSwitch: 'Notifications',
-      previewPrimary: 'Primaire',
-      previewSecondary: 'Secondaire',
       previewStep1: 'Compte',
       previewStep2: 'Profil',
       previewStep3: 'Terminé',
       previewProgress: 'Progression :',
-      exportHeading: 'Utilisez-la',
-      exportConfigLabel: 'Configuration du fournisseur',
-      exportCssLabel: 'Propriétés personnalisées CSS',
+      exportHeading: 'Exporter',
+      exportConfigLabel: 'Configuration Angular',
+      exportCssLabel: 'Variables CSS',
     },
     tokens: {
       metaTitle: 'Tokens de design | Eagami UI',
@@ -1063,6 +1052,9 @@ export const frFR: WebMessages = {
             variant: 'Variante',
             dismissible: 'Fermable',
             size: 'Taille',
+            icon: 'Icône (remplacer)',
+          },
+          toast: {
             icon: 'Icône (remplacer)',
           },
           avatar: {

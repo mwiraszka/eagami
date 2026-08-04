@@ -250,11 +250,6 @@ export const el: WebMessages = {
           body: 'Κάθε συστατικό είναι απλό Angular και CSS χωρίς εξάρτηση από προμηθευτή, οπότε ο πηγαίος κώδικας μπορεί να διαβαστεί, να αντιγραφεί ή να τροποποιηθεί όπως κάθε άλλος κώδικας στο έργο σας.',
         },
       ],
-      getStartedHeading: 'Ξεκινήστε',
-      getStartedBefore: 'Πηγαίνετε στην',
-      getStartedLink: 'Εγκατάσταση',
-      getStartedAfter:
-        ' για να εγκαταστήσετε το πακέτο και να συνδέσετε το καθολικό φύλλο στυλ.',
       showcase: {
         button: 'Πάτησέ με',
         toggle: 'Εναλλαγή',
@@ -289,7 +284,6 @@ export const el: WebMessages = {
         msFood: 'Φαγητό',
       },
       theme: {
-        heading: 'Κάντε το δικό σας',
         ledeBefore: 'Τα',
         ledeLink: 'διακριτικά σχεδίασης',
         ledeAfter:
@@ -334,28 +328,23 @@ export const el: WebMessages = {
         'Δημιουργήστε μια παλέτα ελεγμένη κατά WCAG για τη φωτεινή και τη σκοτεινή λειτουργία από τα χρώματα της μάρκας σας και αντιγράψτε τη διαμόρφωση του παρόχου ή το CSS.',
       title: 'Δημιουργός θέματος',
       lede: 'Επιλέξτε τα χρώματα της μάρκας σας και το Eagami UI παράγει μια πλήρη κλίμακα 50–900 στον χώρο OKLCH, ελέγχει την αντίθεσή της κατά WCAG σε φωτεινή και σκοτεινή λειτουργία και σας δίνει έτοιμη τη διαμόρφωση <code>provideEagamiUi()</code>.',
-      controlsHeading: 'Χρώματα μάρκας',
       primaryLabel: 'Κύριο χρώμα',
       secondaryLabel: 'Δευτερεύον χρώμα',
-      contrastHeading: 'Προσβασιμότητα',
       contrastPass: 'Πληροί την αντίθεση WCAG 2.2 AA σε φωτεινή και σκοτεινή λειτουργία',
       contrastFailIntro:
         'Ορισμένοι συνδυασμοί βρίσκονται κάτω από το όριο αντίθεσης WCAG AA:',
-      scaleHeading: 'Παραγόμενη κλίμακα',
       previewHeading: 'Προεπισκόπηση',
       previewHint:
         'Αλλάξτε το θέμα του ιστότοπου για προεπισκόπηση της παλέτας σε σκοτεινή λειτουργία.',
       previewButton: 'Ξεκινήστε',
       previewSwitch: 'Ειδοποιήσεις',
-      previewPrimary: 'Κύριο',
-      previewSecondary: 'Δευτερεύον',
       previewStep1: 'Λογαριασμός',
       previewStep2: 'Προφίλ',
       previewStep3: 'Τέλος',
       previewProgress: 'Πρόοδος:',
-      exportHeading: 'Χρησιμοποιήστε το',
-      exportConfigLabel: 'Διαμόρφωση παρόχου',
-      exportCssLabel: 'Προσαρμοσμένες ιδιότητες CSS',
+      exportHeading: 'Εξαγωγή',
+      exportConfigLabel: 'Ρύθμιση Angular',
+      exportCssLabel: 'Μεταβλητές CSS',
     },
     tokens: {
       metaTitle: 'Tokens σχεδίασης | Eagami UI',
@@ -1064,6 +1053,9 @@ export const el: WebMessages = {
             variant: 'Παραλλαγή',
             dismissible: 'Με δυνατότητα απόρριψης',
             size: 'Μέγεθος',
+            icon: 'Εικονίδιο (παράκαμψη)',
+          },
+          toast: {
             icon: 'Εικονίδιο (παράκαμψη)',
           },
           avatar: {

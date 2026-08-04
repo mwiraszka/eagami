@@ -237,14 +237,10 @@ export const he: WebMessages = {
           body: 'כל רכיב הוא Angular ו-CSS רגילים ללא נעילת ספק, כך שניתן לקרוא, להעתיק או לשנות את קוד המקור כמו כל קוד אחר בפרויקט שלכם.',
         },
       ],
-      getStartedHeading: 'כדי להתחיל',
-      getStartedBefore: 'עברו אל',
-      getStartedLink: 'התקנה',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' כדי להתקין את החבילה ולחבר את גיליון הסגנונות הגלובלי.',
       showcase: {
         button: 'לחצו עליי',
         toggle: 'החליפו אותי',
@@ -279,7 +275,6 @@ export const he: WebMessages = {
         msFood: 'אוכל',
       },
       theme: {
-        heading: 'התאימו לעצמכם',
         ledeBefore: '',
         ledeLink: 'אסימוני עיצוב',
         ledeAfter:
@@ -323,26 +318,21 @@ export const he: WebMessages = {
         'צרו פלטת צבעים שנבדקה לפי WCAG למצב בהיר וכהה מתוך צבעי המותג שלכם, ואז העתיקו את תצורת הספק או ה-CSS.',
       title: 'בונה ערכת נושא',
       lede: 'בחרו את צבעי המותג שלכם ו-Eagami UI יגזור סקאלה מלאה של 50–900 במרחב OKLCH, יבדוק את הניגודיות שלה לפי WCAG במצב בהיר וכהה, וימסור לכם את תצורת <code>provideEagamiUi()</code> מוכנה לשימוש.',
-      controlsHeading: 'צבעי המותג',
       primaryLabel: 'צבע ראשי',
       secondaryLabel: 'צבע משני',
-      contrastHeading: 'נגישות',
       contrastPass: 'עומד בניגודיות WCAG 2.2 AA במצב בהיר וכהה',
       contrastFailIntro: 'חלק מהשילובים נמוכים מסף הניגודיות של WCAG AA:',
-      scaleHeading: 'סקאלה שנוצרה',
       previewHeading: 'תצוגה מקדימה',
       previewHint: 'החליפו את ערכת הנושא של האתר כדי לצפות בפלטה במצב כהה.',
       previewButton: 'להתחיל',
       previewSwitch: 'התראות',
-      previewPrimary: 'ראשי',
-      previewSecondary: 'משני',
       previewStep1: 'חשבון',
       previewStep2: 'פרופיל',
       previewStep3: 'סיום',
       previewProgress: 'התקדמות:',
-      exportHeading: 'השתמשו בזה',
-      exportConfigLabel: 'תצורת הספק',
-      exportCssLabel: 'מאפייני CSS מותאמים',
+      exportHeading: 'ייצוא',
+      exportConfigLabel: 'תצורת Angular',
+      exportCssLabel: 'משתני CSS',
     },
     tokens: {
       metaTitle: 'אסימוני עיצוב | Eagami UI',
@@ -1029,6 +1019,9 @@ export const he: WebMessages = {
             variant: 'וריאנט',
             dismissible: 'ניתן לסגירה',
             size: 'גודל',
+            icon: 'אייקון (דריסה)',
+          },
+          toast: {
             icon: 'אייקון (דריסה)',
           },
           avatar: {

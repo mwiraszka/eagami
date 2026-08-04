@@ -16,7 +16,7 @@ export class ToastOutletService {
   private readonly i18n = inject(WebI18nService);
 
   readonly position = signal<ToastPosition>('bottom-right');
-  readonly size = signal<ToastSize>('md');
+  readonly size = signal<ToastSize>('sm');
   readonly clearable = signal<boolean>(true);
 
   // Inline style the UI playground applies (font-family custom properties) so
@@ -41,7 +41,7 @@ export class ToastOutletService {
 
   reset(): void {
     this.position.set('bottom-right');
-    this.size.set('md');
+    this.size.set('sm');
     this.clearable.set(true);
     this.directionOverride.set(null);
     this.style.set({});

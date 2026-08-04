@@ -244,14 +244,10 @@ export const hi: WebMessages = {
           body: 'प्रत्येक कंपोनेंट सादा Angular और CSS है, बिना किसी वेंडर लॉक-इन के, इसलिए स्रोत को आपके प्रोजेक्ट के किसी भी अन्य कोड की तरह पढ़ा, कॉपी या संशोधित किया जा सकता है।',
         },
       ],
-      getStartedHeading: 'शुरू करें',
-      getStartedBefore: 'जाएं',
-      getStartedLink: 'सेटअप',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' पर पैकेज इंस्टॉल करने और ग्लोबल स्टाइलशीट को जोड़ने के लिए।',
       showcase: {
         button: 'मुझे दबाएं',
         toggle: 'मुझे टॉगल करें',
@@ -286,7 +282,6 @@ export const hi: WebMessages = {
         msFood: 'भोजन',
       },
       theme: {
-        heading: 'इसे अपना बनाएं',
         ledeBefore: '',
         ledeLink: 'डिज़ाइन टोकन',
         ledeAfter:
@@ -331,26 +326,21 @@ export const hi: WebMessages = {
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
       lede: 'अपने ब्रांड रंग चुनें और Eagami UI, OKLCH स्पेस में पूरी 50–900 स्केल बनाता है, लाइट और डार्क मोड में इसके WCAG कंट्रास्ट की जाँच करता है, और आपको सीधे उपयोग के लिए <code>provideEagamiUi()</code> कॉन्फ़िगरेशन देता है।',
-      controlsHeading: 'ब्रांड रंग',
       primaryLabel: 'प्राथमिक रंग',
       secondaryLabel: 'द्वितीयक रंग',
-      contrastHeading: 'सुलभता',
       contrastPass: 'लाइट और डार्क दोनों मोड में WCAG 2.2 AA कंट्रास्ट पूरा करता है',
       contrastFailIntro: 'कुछ संयोजन WCAG AA कंट्रास्ट सीमा से नीचे हैं:',
-      scaleHeading: 'जनरेट की गई स्केल',
       previewHeading: 'पूर्वावलोकन',
       previewHint: 'डार्क मोड में पैलेट देखने के लिए साइट थीम बदलें।',
       previewButton: 'शुरू करें',
       previewSwitch: 'सूचनाएँ',
-      previewPrimary: 'प्राथमिक',
-      previewSecondary: 'द्वितीयक',
       previewStep1: 'खाता',
       previewStep2: 'प्रोफ़ाइल',
       previewStep3: 'पूर्ण',
       previewProgress: 'प्रगति:',
-      exportHeading: 'इसका उपयोग करें',
-      exportConfigLabel: 'प्रोवाइडर कॉन्फ़िगरेशन',
-      exportCssLabel: 'CSS कस्टम प्रॉपर्टीज़',
+      exportHeading: 'एक्सपोर्ट',
+      exportConfigLabel: 'Angular कॉन्फ़िग',
+      exportCssLabel: 'CSS वेरिएबल',
     },
     tokens: {
       metaTitle: 'डिज़ाइन टोकन | Eagami UI',
@@ -1040,6 +1030,9 @@ export const hi: WebMessages = {
             variant: 'वेरिएंट',
             dismissible: 'खारिज करने योग्य',
             size: 'आकार',
+            icon: 'आइकन (ओवरराइड)',
+          },
+          toast: {
             icon: 'आइकन (ओवरराइड)',
           },
           avatar: {

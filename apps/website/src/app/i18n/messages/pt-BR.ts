@@ -251,14 +251,10 @@ export const ptBR: WebMessages = {
           body: 'Cada componente é Angular e CSS puros, sem dependência de fornecedor, então o código-fonte pode ser lido, copiado ou modificado como qualquer outro código do seu projeto.',
         },
       ],
-      getStartedHeading: 'Comece agora',
-      getStartedBefore: 'Vá até',
-      getStartedLink: 'Configuração',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' para instalar o pacote e configurar a folha de estilo global.',
       showcase: {
         button: 'Aperte aqui',
         toggle: 'Alterne aqui',
@@ -293,7 +289,6 @@ export const ptBR: WebMessages = {
         msFood: 'Comida',
       },
       theme: {
-        heading: 'Deixe do seu jeito',
         ledeBefore: 'Os',
         ledeLink: 'tokens de design',
         ledeAfter:
@@ -338,27 +333,22 @@ export const ptBR: WebMessages = {
         'Gere uma paleta verificada pelo WCAG para os modos claro e escuro a partir das cores da sua marca e copie a configuração do provedor ou o CSS.',
       title: 'Gerador de temas',
       lede: 'Escolha as cores da sua marca e o Eagami UI deriva uma escala completa de 50–900 no espaço OKLCH, verifica o contraste WCAG nos modos claro e escuro e entrega a configuração <code>provideEagamiUi()</code> pronta para usar.',
-      controlsHeading: 'Cores da marca',
       primaryLabel: 'Cor primária',
       secondaryLabel: 'Cor secundária',
-      contrastHeading: 'Acessibilidade',
       contrastPass: 'Atende ao contraste WCAG 2.2 AA nos modos claro e escuro',
       contrastFailIntro:
         'Algumas combinações ficam abaixo do limite de contraste WCAG AA:',
-      scaleHeading: 'Escala gerada',
       previewHeading: 'Prévia',
       previewHint: 'Alterne o tema do site para visualizar a paleta no modo escuro.',
       previewButton: 'Começar',
       previewSwitch: 'Notificações',
-      previewPrimary: 'Primária',
-      previewSecondary: 'Secundária',
       previewStep1: 'Conta',
       previewStep2: 'Perfil',
       previewStep3: 'Concluído',
       previewProgress: 'Progresso:',
-      exportHeading: 'Use',
-      exportConfigLabel: 'Configuração do provedor',
-      exportCssLabel: 'Propriedades personalizadas CSS',
+      exportHeading: 'Exportar',
+      exportConfigLabel: 'Configuração Angular',
+      exportCssLabel: 'Variáveis CSS',
     },
     tokens: {
       metaTitle: 'Tokens de design | Eagami UI',
@@ -1052,6 +1042,9 @@ export const ptBR: WebMessages = {
             variant: 'Variante',
             dismissible: 'Dispensável',
             size: 'Tamanho',
+            icon: 'Ícone (sobrescrita)',
+          },
+          toast: {
             icon: 'Ícone (sobrescrita)',
           },
           avatar: {

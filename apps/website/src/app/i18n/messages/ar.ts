@@ -242,14 +242,10 @@ export const ar: WebMessages = {
           body: 'كل مكوّن هو Angular وCSS عادي دون ارتباط بمزوّد، لذا يمكن قراءة الشيفرة المصدرية أو نسخها أو تعديلها مثل أي شيفرة أخرى في مشروعك.',
         },
       ],
-      getStartedHeading: 'البدء',
-      getStartedBefore: 'انتقل إلى',
-      getStartedLink: 'الإعداد',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' لتثبيت الحزمة وربط ورقة الأنماط العامة.',
       showcase: {
         button: 'اضغط عليّ',
         toggle: 'بدّلني',
@@ -284,7 +280,6 @@ export const ar: WebMessages = {
         msFood: 'طعام',
       },
       theme: {
-        heading: 'اجعله خاصًا بك',
         ledeBefore: '',
         ledeLink: 'رموز التصميم',
         ledeAfter:
@@ -328,26 +323,21 @@ export const ar: WebMessages = {
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
       lede: 'اختر ألوان علامتك التجارية ويشتق Eagami UI مقياسًا كاملًا من 50–900 في فضاء OKLCH، ويتحقق من تباينه وفق WCAG في الوضعين الفاتح والداكن، ويمنحك إعداد <code>provideEagamiUi()</code> جاهزًا للاستخدام.',
-      controlsHeading: 'ألوان العلامة التجارية',
       primaryLabel: 'اللون الأساسي',
       secondaryLabel: 'اللون الثانوي',
-      contrastHeading: 'إمكانية الوصول',
       contrastPass: 'يستوفي تباين WCAG 2.2 AA في الوضعين الفاتح والداكن',
       contrastFailIntro: 'بعض التركيبات أقل من حدّ تباين WCAG AA:',
-      scaleHeading: 'المقياس المُنشأ',
       previewHeading: 'معاينة',
       previewHint: 'بدّل سمة الموقع لمعاينة لوحة الألوان في الوضع الداكن.',
       previewButton: 'ابدأ الآن',
       previewSwitch: 'الإشعارات',
-      previewPrimary: 'أساسي',
-      previewSecondary: 'ثانوي',
       previewStep1: 'الحساب',
       previewStep2: 'الملف الشخصي',
       previewStep3: 'تم',
       previewProgress: 'التقدم:',
-      exportHeading: 'استخدمها',
-      exportConfigLabel: 'إعدادات المزوّد',
-      exportCssLabel: 'خصائص CSS المخصّصة',
+      exportHeading: 'التصدير',
+      exportConfigLabel: 'إعدادات Angular',
+      exportCssLabel: 'متغيرات CSS',
     },
     tokens: {
       metaTitle: 'رموز التصميم | Eagami UI',
@@ -1036,6 +1026,9 @@ export const ar: WebMessages = {
             variant: 'النمط',
             dismissible: 'قابل للإغلاق',
             size: 'الحجم',
+            icon: 'الأيقونة (تجاوز)',
+          },
+          toast: {
             icon: 'الأيقونة (تجاوز)',
           },
           avatar: {

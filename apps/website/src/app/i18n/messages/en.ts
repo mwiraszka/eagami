@@ -243,14 +243,10 @@ export const en: WebMessages = {
           body: 'Every component is plain Angular and CSS with no vendor lock-in, so the source can be read, copied, or modified like any other code in your project.',
         },
       ],
-      getStartedHeading: 'Get started',
-      getStartedBefore: 'Head to',
-      getStartedLink: 'Setup',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' to install the package and wire up the global stylesheet.',
       showcase: {
         button: 'Press me',
         toggle: 'Toggle me',
@@ -285,7 +281,6 @@ export const en: WebMessages = {
         msFood: 'Food',
       },
       theme: {
-        heading: 'Make it your own',
         ledeBefore: '',
         ledeLink: 'Design tokens',
         ledeAfter:
@@ -329,26 +324,21 @@ export const en: WebMessages = {
         'Generate a WCAG-checked light and dark palette from your brand colors, then copy the provider config or CSS.',
       title: 'Theme builder',
       lede: 'Pick your brand colors and Eagami UI derives a full 50–900 scale in OKLCH space, checks it for WCAG contrast in light and dark, and hands you the <code>provideEagamiUi()</code> config to drop in.',
-      controlsHeading: 'Brand colors',
       primaryLabel: 'Primary color',
       secondaryLabel: 'Secondary color',
-      contrastHeading: 'Accessibility',
       contrastPass: 'Passes WCAG 2.2 AA contrast in both light and dark mode',
       contrastFailIntro: 'Some pairings fall below the WCAG AA contrast bar:',
-      scaleHeading: 'Generated scale',
       previewHeading: 'Preview',
       previewHint: 'Toggle the site theme to preview the palette in dark mode.',
       previewButton: 'Get started',
       previewSwitch: 'Notifications',
-      previewPrimary: 'Primary',
-      previewSecondary: 'Secondary',
       previewStep1: 'Account',
       previewStep2: 'Profile',
       previewStep3: 'Done',
       previewProgress: 'Progress:',
-      exportHeading: 'Use it',
-      exportConfigLabel: 'Provider config',
-      exportCssLabel: 'CSS custom properties',
+      exportHeading: 'Export',
+      exportConfigLabel: 'Angular config',
+      exportCssLabel: 'CSS variables',
     },
     tokens: {
       metaTitle: 'Design tokens | Eagami UI',
@@ -1038,6 +1028,9 @@ export const en: WebMessages = {
             variant: 'Variant',
             dismissible: 'Dismissible',
             size: 'Size',
+            icon: 'Icon (override)',
+          },
+          toast: {
             icon: 'Icon (override)',
           },
           avatar: {

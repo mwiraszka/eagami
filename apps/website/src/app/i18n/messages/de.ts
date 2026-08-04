@@ -251,15 +251,10 @@ export const de: WebMessages = {
           body: 'Jede Komponente ist reines Angular und CSS ohne Anbieterbindung, sodass der Quellcode wie jeder andere Code in Ihrem Projekt gelesen, kopiert oder verändert werden kann.',
         },
       ],
-      getStartedHeading: 'Erste Schritte',
-      getStartedBefore: 'Gehen Sie zur',
-      getStartedLink: 'Einrichtung',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter:
-        ', um das Paket zu installieren und das globale Stylesheet einzubinden.',
       showcase: {
         button: 'Drück mich',
         toggle: 'Schalt mich um',
@@ -294,7 +289,6 @@ export const de: WebMessages = {
         msFood: 'Essen',
       },
       theme: {
-        heading: 'Machen Sie es zu Ihrem Eigenen',
         ledeBefore: '',
         ledeLink: 'Design-Tokens',
         ledeAfter:
@@ -339,28 +333,23 @@ export const de: WebMessages = {
         'Generieren Sie aus Ihren Markenfarben eine WCAG-geprüfte Palette für den hellen und dunklen Modus und kopieren Sie dann die Provider-Konfiguration oder das CSS.',
       title: 'Theme-Builder',
       lede: 'Wählen Sie Ihre Markenfarben, und Eagami UI leitet daraus eine vollständige 50–900-Skala im OKLCH-Raum ab, prüft sie im hellen und dunklen Modus auf WCAG-Kontrast und liefert Ihnen die <code>provideEagamiUi()</code>-Konfiguration zum direkten Einsetzen.',
-      controlsHeading: 'Markenfarben',
       primaryLabel: 'Primärfarbe',
       secondaryLabel: 'Sekundärfarbe',
-      contrastHeading: 'Barrierefreiheit',
       contrastPass: 'Erfüllt den WCAG 2.2 AA-Kontrast im hellen und dunklen Modus',
       contrastFailIntro:
         'Einige Kombinationen liegen unter der WCAG AA-Kontrastschwelle:',
-      scaleHeading: 'Generierte Skala',
       previewHeading: 'Vorschau',
       previewHint:
         'Wechseln Sie das Website-Theme, um die Palette im dunklen Modus anzusehen.',
       previewButton: 'Loslegen',
       previewSwitch: 'Benachrichtigungen',
-      previewPrimary: 'Primär',
-      previewSecondary: 'Sekundär',
       previewStep1: 'Konto',
       previewStep2: 'Profil',
       previewStep3: 'Fertig',
       previewProgress: 'Fortschritt:',
-      exportHeading: 'Verwenden',
-      exportConfigLabel: 'Provider-Konfiguration',
-      exportCssLabel: 'CSS-Custom-Properties',
+      exportHeading: 'Export',
+      exportConfigLabel: 'Angular-Konfiguration',
+      exportCssLabel: 'CSS-Variablen',
     },
     tokens: {
       metaTitle: 'Design-Tokens | Eagami UI',
@@ -1061,6 +1050,9 @@ export const de: WebMessages = {
             variant: 'Variante',
             dismissible: 'Schließbar',
             size: 'Größe',
+            icon: 'Symbol (Überschreibung)',
+          },
+          toast: {
             icon: 'Symbol (Überschreibung)',
           },
           avatar: {

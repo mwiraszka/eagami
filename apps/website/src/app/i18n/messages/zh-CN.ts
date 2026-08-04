@@ -232,14 +232,10 @@ export const zhCN: WebMessages = {
           body: '每个组件都是纯 Angular 和 CSS，没有供应商锁定，因此源代码可以像项目中的其他代码一样被阅读、复制或修改。',
         },
       ],
-      getStartedHeading: '开始使用',
-      getStartedBefore: '前往',
-      getStartedLink: '安装',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: '页面安装该包并配置全局样式表。',
       showcase: {
         button: '点击我',
         toggle: '切换我',
@@ -274,7 +270,6 @@ export const zhCN: WebMessages = {
         msFood: '美食',
       },
       theme: {
-        heading: '打造专属于你的风格',
         ledeBefore: '',
         ledeLink: '设计令牌',
         ledeAfter:
@@ -318,26 +313,21 @@ export const zhCN: WebMessages = {
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
       lede: '选择你的品牌颜色，Eagami UI 会在 OKLCH 空间中推导出完整的 50–900 色阶，在浅色和深色模式下校验其 WCAG 对比度，并为你提供可直接使用的 <code>provideEagamiUi()</code> 配置。',
-      controlsHeading: '品牌颜色',
       primaryLabel: '主色',
       secondaryLabel: '辅助色',
-      contrastHeading: '无障碍',
       contrastPass: '在浅色和深色模式下均符合 WCAG 2.2 AA 对比度',
       contrastFailIntro: '部分配色低于 WCAG AA 对比度标准：',
-      scaleHeading: '生成的色阶',
       previewHeading: '预览',
       previewHint: '切换站点主题即可在深色模式下预览调色板。',
       previewButton: '开始使用',
       previewSwitch: '通知',
-      previewPrimary: '主色',
-      previewSecondary: '辅助色',
       previewStep1: '账户',
       previewStep2: '资料',
       previewStep3: '完成',
       previewProgress: '进度：',
-      exportHeading: '使用',
-      exportConfigLabel: '提供程序配置',
-      exportCssLabel: 'CSS 自定义属性',
+      exportHeading: '导出',
+      exportConfigLabel: 'Angular 配置',
+      exportCssLabel: 'CSS 变量',
     },
     tokens: {
       metaTitle: '设计令牌 | Eagami UI',
@@ -1017,6 +1007,9 @@ export const zhCN: WebMessages = {
             variant: '变体',
             dismissible: '可关闭',
             size: '尺寸',
+            icon: '图标（覆盖）',
+          },
+          toast: {
             icon: '图标（覆盖）',
           },
           avatar: {

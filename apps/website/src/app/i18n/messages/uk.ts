@@ -247,14 +247,10 @@ export const uk: WebMessages = {
           body: 'Кожен компонент це чистий Angular і CSS без прив’язки до постачальника, тож вихідний код можна читати, копіювати чи змінювати, як і будь-який інший код у вашому проєкті.',
         },
       ],
-      getStartedHeading: 'Початок роботи',
-      getStartedBefore: 'Перейдіть до',
-      getStartedLink: 'Налаштування',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ', щоб встановити пакет і підключити глобальну таблицю стилів.',
       showcase: {
         button: 'Натисни мене',
         toggle: 'Перемкни мене',
@@ -289,7 +285,6 @@ export const uk: WebMessages = {
         msFood: 'Їжа',
       },
       theme: {
-        heading: 'Зробіть по-своєму',
         ledeBefore: '',
         ledeLink: 'Токени дизайну',
         ledeAfter:
@@ -334,25 +329,20 @@ export const uk: WebMessages = {
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
       lede: 'Виберіть кольори бренду, і Eagami UI побудує повну шкалу 50–900 у просторі OKLCH, перевірить її контраст за WCAG у світлій і темній темі та надасть готову конфігурацію <code>provideEagamiUi()</code>.',
-      controlsHeading: 'Кольори бренду',
       primaryLabel: 'Основний колір',
       secondaryLabel: 'Додатковий колір',
-      contrastHeading: 'Доступність',
       contrastPass: 'Відповідає контрасту WCAG 2.2 AA у світлій і темній темі',
       contrastFailIntro: 'Деякі поєднання не досягають порога контрасту WCAG AA:',
-      scaleHeading: 'Згенерована шкала',
       previewHeading: 'Попередній перегляд',
       previewHint: 'Перемкніть тему сайту, щоб переглянути палітру в темному режимі.',
       previewButton: 'Почати',
       previewSwitch: 'Сповіщення',
-      previewPrimary: 'Основний',
-      previewSecondary: 'Додатковий',
       previewStep1: 'Акаунт',
       previewStep2: 'Профіль',
       previewStep3: 'Готово',
       previewProgress: 'Прогрес:',
-      exportHeading: 'Використовуйте',
-      exportConfigLabel: 'Конфігурація провайдера',
+      exportHeading: 'Експорт',
+      exportConfigLabel: 'Конфігурація Angular',
       exportCssLabel: 'CSS-змінні',
     },
     tokens: {
@@ -1047,6 +1037,9 @@ export const uk: WebMessages = {
             variant: 'Варіант',
             dismissible: 'Закриваний',
             size: 'Розмір',
+            icon: 'Іконка (перевизначення)',
+          },
+          toast: {
             icon: 'Іконка (перевизначення)',
           },
           avatar: {
