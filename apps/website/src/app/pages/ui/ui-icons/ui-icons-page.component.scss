@@ -35,6 +35,11 @@
   container-type: inline-size;
   position: sticky;
   top: calc(var(--web-height-header) + 8px);
+
+  // Clear the sticky Eagami UI menu-trigger bar shown under the header
+  @include mixins.respond-to('lt-md') {
+    top: calc(var(--web-height-header) + var(--web-height-ui-trigger) + 8px);
+  }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -69,17 +74,18 @@
 }
 
 .ui-icons__category {
+  --ea-checkbox-label-color: var(--color-text-secondary);
   display: inline-flex;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    --ea-checkbox-label-color: var(--color-brand-default);
-    /* Brand colour at lower opacity keeps the count subordinate while still
-       signalling it as part of the hoverable target. */
+    --ea-checkbox-label-color: var(--color-text-primary);
+    /* Lower opacity keeps the count subordinate while still signalling it as
+       part of the hoverable target. */
     --ea-checkbox-count-color: color-mix(
       in oklch,
-      var(--color-brand-default),
+      var(--color-text-primary),
       transparent 40%
     );
   }
