@@ -66,7 +66,8 @@
   display: none;
 
   @include mixins.respond-to('lt-md') {
-    z-index: 1;
+    // Above the pages' own sticky elements (e.g. the icons filter card at 1)
+    z-index: 2;
     position: sticky;
     top: var(--web-height-header);
     display: flex;
@@ -184,11 +185,16 @@
   background-color: var(--color-state-hover);
 }
 
+// The elevated tier reads too light for a full-height panel in dark mode; drop
+// the drawer to the base surface tier, which still lifts off the canvas
+:host-context([data-theme='dark']) ea-drawer {
+  --ea-drawer-panel-background-color: var(--color-bg-base);
+}
+
 // Aligns with the link text below (the links carry 12px inner inline padding)
 .ui-shell__drawer-title {
   padding-inline-start: 12px;
   font-weight: var(--font-weight-regular);
-  font-family: var(--font-family-brand);
 }
 
 .ui-shell__link--toggle {

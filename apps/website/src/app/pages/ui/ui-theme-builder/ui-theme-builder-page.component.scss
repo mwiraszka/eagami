@@ -31,7 +31,8 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 
-  @include mixins.respond-to('lt-sm') {
+  // Below this the docs sidebar leaves the pair too narrow for its swatch rows
+  @include mixins.respond-to('lt-lg') {
     grid-template-columns: 1fr;
   }
 }
@@ -119,18 +120,19 @@
 }
 
 // Contiguous shade bar matching the design tokens page's colour scales; once
-// ten stops can no longer hold 50px each, they split evenly into two rows of five
+// ten stops can no longer hold 45px each, they split evenly into two rows of
+// five, scrolling sideways when even those cannot fit
 .tb-scale {
   display: grid;
-  grid-template-columns: repeat(10, minmax(50px, 1fr));
-  overflow: hidden;
+  grid-template-columns: repeat(10, minmax(45px, 1fr));
+  overflow-x: auto;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
 }
 
 @container (max-width: 519px) {
   .tb-scale {
-    grid-template-columns: repeat(5, minmax(50px, 1fr));
+    grid-template-columns: repeat(5, minmax(45px, 1fr));
   }
 }
 

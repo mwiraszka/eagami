@@ -103,11 +103,12 @@ web-section-heading + .tokens-subsection__row {
 
 // Sequential scales render as a single contiguous bar: each shade is a thin
 // segment with its step number inside, and the full token name on hover. Once
-// the stops can no longer hold 50px each, a scale splits evenly into two rows.
+// the stops can no longer hold 45px each, a scale splits evenly into two rows,
+// and scrolls sideways when even the split rows cannot fit.
 .color-scale {
   display: grid;
-  grid-template-columns: repeat(var(--scale-cols, 10), minmax(50px, 1fr));
-  overflow: hidden;
+  grid-template-columns: repeat(var(--scale-cols, 10), minmax(45px, 1fr));
+  overflow-x: auto;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
 }
@@ -122,19 +123,19 @@ web-section-heading + .tokens-subsection__row {
 
 @container (max-width: 519px) {
   .color-scale:not(.color-scale--neutral):not(.color-scale--status) {
-    grid-template-columns: repeat(5, minmax(50px, 1fr));
+    grid-template-columns: repeat(5, minmax(45px, 1fr));
   }
 }
 
 @container (max-width: 619px) {
   .color-scale--neutral {
-    grid-template-columns: repeat(6, minmax(50px, 1fr));
+    grid-template-columns: repeat(6, minmax(45px, 1fr));
   }
 }
 
 @container (max-width: 319px) {
   .color-scale--status {
-    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    grid-template-columns: repeat(3, minmax(45px, 1fr));
   }
 }
 
