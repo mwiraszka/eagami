@@ -29,6 +29,9 @@ import { type KnobState, buildKnobs, initialKnobState } from '../_playground/kno
 
 const SLUG = 'toast';
 
+// Sentinel that keeps each variant's own icon (the service's default behaviour)
+const VARIANT_ICON = 'variant-default';
+
 @Component({
   selector: 'web-toast-demo-page',
   templateUrl: './toast-demo-page.component.html',
@@ -47,18 +50,25 @@ export class ToastDemoPageComponent implements OnDestroy {
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.toast, UI_API[SLUG]),
-    iconKnob([
-      'bell',
-      'heart',
-      'star',
-      'zap',
-      'gift',
-      'mail',
-      'download',
-      'trash-2',
-      'shield',
-      'rocket',
-    ]),
+    // demoOnly: the icon is a ToastService.show() option, not an <ea-toast>
+    // input, so it must stay out of the generated snippet
+    iconKnob(
+      [
+        VARIANT_ICON,
+        ICON_NONE,
+        'bell',
+        'heart',
+        'star',
+        'zap',
+        'gift',
+        'mail',
+        'download',
+        'trash-2',
+        'shield',
+        'rocket',
+      ],
+      { includeNone: false, default: VARIANT_ICON, demoOnly: true },
+    ),
   ];
   protected readonly state = signal<KnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.toast),
@@ -78,8 +88,12 @@ export class ToastDemoPageComponent implements OnDestroy {
     const slug = this.state()['icon'] as string;
     this.toastService.show(this.messages().ui.component.demos.toast.message(variant), {
       variant,
-      // The knob's "none" sentinel keeps each variant's own icon
-      icon: slug === ICON_NONE ? undefined : iconComponentForSlug(slug),
+      icon:
+        slug === VARIANT_ICON
+          ? undefined
+          : slug === ICON_NONE
+            ? null
+            : iconComponentForSlug(slug),
     });
   }
 
