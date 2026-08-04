@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.17.1',
+    date: '2026-08-04',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Hide a toast's custom icon from assistive technology, matching the alert's decorative icon treatment.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.17.0',
     date: '2026-08-04',
     sections: [

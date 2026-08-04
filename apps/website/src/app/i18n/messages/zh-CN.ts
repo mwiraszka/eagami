@@ -232,10 +232,6 @@ export const zhCN: WebMessages = {
           body: '每个组件都是纯 Angular 和 CSS，没有供应商锁定，因此源代码可以像项目中的其他代码一样被阅读、复制或修改。',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: '点击我',
         toggle: '切换我',

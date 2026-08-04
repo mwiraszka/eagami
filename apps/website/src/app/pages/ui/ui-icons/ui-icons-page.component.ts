@@ -4,7 +4,6 @@ import {
   type IconCategory,
   type IconComponentType,
   SearchIconComponent,
-  ToastService,
   TooltipDirective,
   XIconComponent,
   iconDisplayName,
@@ -24,6 +23,7 @@ import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
 
 import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
+import { ClipboardService } from '@app/services/clipboard.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
 import { ICONS } from './icons.data';
@@ -52,7 +52,7 @@ type CategoryTab = IconCategory | 'brand';
 })
 export class UiIconsPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);
-  private readonly toastService = inject(ToastService);
+  private readonly clipboard = inject(ClipboardService);
   private readonly i18n = inject(WebI18nService);
   private readonly sanitizer = inject(DomSanitizer);
 
@@ -153,15 +153,13 @@ export class UiIconsPageComponent {
     this.query.set('');
   }
 
-  protected async copySelector(slug: string): Promise<void> {
+  protected copySelector(slug: string): void {
     const selector = `ea-icon-${slug}`;
     const m = this.messages().ui.icons;
-    try {
-      await navigator.clipboard.writeText(selector);
-      this.toastService.show(m.copiedToast(selector), { variant: 'success' });
-    } catch {
-      this.toastService.show(m.copyFailedToast(selector), { variant: 'error' });
-    }
+    this.clipboard.copy(selector, {
+      success: m.copiedToast(selector),
+      error: m.copyFailedToast(selector),
+    });
   }
 }
 

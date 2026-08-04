@@ -236,9 +236,52 @@ $breakpoints: (
 @mixin subsection-title {
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
+}
+
+/// Contiguous colour-scale bar shared by the design tokens and theme builder
+/// pages. Callers set their own `grid-template-columns` (full row vs an even
+/// split); the bar scrolls sideways when even the split rows cannot fit.
+@mixin color-scale-bar {
+  overflow-x: auto;
+  display: grid;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+}
+
+/// One shade segment in a colour-scale bar, its step number bottom-right.
+@mixin color-scale-stop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 56px;
+  padding-block-end: 8px;
+  padding-inline-end: 8px;
+
+  &:not(:last-child) {
+    box-shadow: inset -1px 0 0 var(--color-border-subtle);
+  }
+}
+
+/// The step number inside a colour-scale segment; callers flip it to
+/// neutral-50 on shades dark enough to need light text.
+@mixin color-scale-shade {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-family-mono);
+  color: var(--color-neutral-900);
+}
+
+/// Fragment-anchor offset clearing the fixed header, plus the sticky menu
+/// trigger bar shown under it on narrow screens.
+@mixin fragment-scroll-margin {
+  scroll-margin-top: var(--web-height-header);
+
+  @include respond-to('lt-md') {
+    scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
+  }
 }
 
 /// Inline code chip applying the `--text-code-*` tokens from `@eagami/ui`. Per-call

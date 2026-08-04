@@ -54,11 +54,7 @@ a[href^='http']:not(
   padding-top: 24px;
   margin-top: 24px;
   border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
-  scroll-margin-top: var(--web-height-header);
-
-  @include mixins.respond-to('lt-md') {
-    scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
-  }
+  @include mixins.fragment-scroll-margin;
 
   @include mixins.respond-to('lt-sm') {
     padding-top: 16px;

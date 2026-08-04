@@ -32,11 +32,7 @@
     gap: 16px;
     padding-top: 32px;
     border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
-    scroll-margin-top: var(--web-height-header);
-
-    @include mixins.respond-to('lt-md') {
-      scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
-    }
+    @include mixins.fragment-scroll-margin;
   }
 
   &__version {
@@ -57,8 +53,8 @@
   &__section-heading {
     font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0.04em;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--color-text-tertiary);
   }
 

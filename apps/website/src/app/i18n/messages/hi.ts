@@ -244,10 +244,6 @@ export const hi: WebMessages = {
           body: 'प्रत्येक कंपोनेंट सादा Angular और CSS है, बिना किसी वेंडर लॉक-इन के, इसलिए स्रोत को आपके प्रोजेक्ट के किसी भी अन्य कोड की तरह पढ़ा, कॉपी या संशोधित किया जा सकता है।',
         },
       ],
-      /* Leading space because the template suppresses whitespace between the
-         link and this string so Polish can butt its trailing comma directly
-         against "Instalacji". Locales that continue with a word (en/fr/el/es)
-         provide the separator themselves. */
       showcase: {
         button: 'मुझे दबाएं',
         toggle: 'मुझे टॉगल करें',

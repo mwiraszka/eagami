@@ -11,8 +11,8 @@
   @for (release of releases; track release.version) {
     <section
       class="ui-changelog__release"
-      [id]="'v' + release.version">
-      <web-section-heading [fragment]="'v' + release.version">
+      [id]="release.anchor">
+      <web-section-heading [fragment]="release.anchor">
         <h2 class="ui-changelog__version">
           {{ release.version }}
           @if (release.date) {
