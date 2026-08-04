@@ -23,7 +23,7 @@
           @for (stop of primaryScale(); track stop.shade) {
             <div
               class="tb-scale__stop"
-              [class.tb-scale__stop--dark]="isDarkShade(stop.shade)"
+              [class.tb-scale__stop--dark]="stop.dark"
               [style.background-color]="stop.value"
               [title]="stop.value">
               <span class="tb-scale__shade">{{ stop.shade }}</span>
@@ -45,7 +45,7 @@
           @for (stop of secondaryScale(); track stop.shade) {
             <div
               class="tb-scale__stop"
-              [class.tb-scale__stop--dark]="isDarkShade(stop.shade)"
+              [class.tb-scale__stop--dark]="stop.dark"
               [style.background-color]="stop.value"
               [title]="stop.value">
               <span class="tb-scale__shade">{{ stop.shade }}</span>
@@ -82,7 +82,7 @@
       </div>
     }
 
-    <h3 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewHeading }}</h3>
+    <h2 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewHeading }}</h2>
     <p class="tb-hint">{{ messages().ui.themeBuilder.previewHint }}</p>
 
     <div class="tb-preview">
