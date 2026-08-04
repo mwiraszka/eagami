@@ -24,6 +24,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { ICON_NONE, iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobState, buildKnobs, initialKnobState } from '../_playground/knob';
 
 const SLUG = 'toast';
@@ -44,7 +45,21 @@ export class ToastDemoPageComponent implements OnDestroy {
   protected readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.toast, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.toast, UI_API[SLUG]),
+    iconKnob([
+      'bell',
+      'heart',
+      'star',
+      'zap',
+      'gift',
+      'mail',
+      'download',
+      'trash-2',
+      'shield',
+      'rocket',
+    ]),
+  ];
   protected readonly state = signal<KnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.toast),
   );
@@ -60,8 +75,11 @@ export class ToastDemoPageComponent implements OnDestroy {
   }
 
   protected showToast(variant: ToastVariant): void {
+    const slug = this.state()['icon'] as string;
     this.toastService.show(this.messages().ui.component.demos.toast.message(variant), {
       variant,
+      // The knob's "none" sentinel keeps each variant's own icon
+      icon: slug === ICON_NONE ? undefined : iconComponentForSlug(slug),
     });
   }
 

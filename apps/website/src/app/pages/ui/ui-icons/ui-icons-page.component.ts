@@ -22,6 +22,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
 
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -42,6 +43,7 @@ type CategoryTab = IconCategory | 'brand';
     DividerComponent,
     FormsModule,
     NgComponentOutlet,
+    SectionHeadingComponent,
     SearchIconComponent,
     TooltipDirective,
     XIconComponent,

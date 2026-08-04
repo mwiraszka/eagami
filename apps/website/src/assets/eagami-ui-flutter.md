@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.16.1
-source: '@eagami/ui@5.16.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-08-02
+version: 5.17.0
+source: '@eagami/ui@5.17.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-08-04
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -378,7 +378,7 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 | `h2`             | 30   | 600    | 1.375       | sans   |
 | `h3`             | 24   | 600    | 1.375       | sans   |
 | `h4`             | 20   | 600    | 1.375       | sans   |
-| `sectionHeading` | 20   | 600    | 1.375       | brand  |
+| `sectionHeading` | 22   | 600    | 1.375       | brand  |
 | `bodyLg`         | 18   | 400    | 1.625       | sans   |
 | `bodyMd`         | 16   | 400    | 1.5         | sans   |
 | `bodySm`         | 14   | 400    | 1.5         | sans   |
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.16.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.17.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -884,7 +884,7 @@ class EagamiTypography {
     h2: TextStyle(fontFamily: _sans, fontSize: 30, fontWeight: FontWeight.w600, height: 1.375),
     h3: TextStyle(fontFamily: _sans, fontSize: 24, fontWeight: FontWeight.w600, height: 1.375),
     h4: TextStyle(fontFamily: _sans, fontSize: 20, fontWeight: FontWeight.w600, height: 1.375),
-    sectionHeading: TextStyle(fontFamily: _brand, fontSize: 20, fontWeight: FontWeight.w600, height: 1.375),
+    sectionHeading: TextStyle(fontFamily: _brand, fontSize: 22, fontWeight: FontWeight.w600, height: 1.375),
     bodyLg: TextStyle(fontFamily: _sans, fontSize: 18, fontWeight: FontWeight.w400, height: 1.625),
     bodyMd: TextStyle(fontFamily: _sans, fontSize: 16, fontWeight: FontWeight.w400, height: 1.5),
     bodySm: TextStyle(fontFamily: _sans, fontSize: 14, fontWeight: FontWeight.w400, height: 1.5),

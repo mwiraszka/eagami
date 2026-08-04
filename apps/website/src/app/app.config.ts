@@ -32,9 +32,14 @@ export const appConfig: ApplicationConfig = {
     ),
     provideEnvironmentInitializer(() => {
       const scroller = inject(ViewportScroller);
+      // On narrow screens the sticky Eagami UI menu trigger sits under the
+      // header; measuring live means it only counts when actually shown
       scroller.setOffset(() => {
         const header = document.querySelector('web-header');
-        return [0, header?.getBoundingClientRect().height ?? 64];
+        const trigger = document.querySelector('.ui-shell__menu-trigger');
+        const headerHeight = header?.getBoundingClientRect().height ?? 64;
+        const triggerHeight = trigger?.getBoundingClientRect().height ?? 0;
+        return [0, headerHeight + triggerHeight];
       });
     }),
     provideClientHydration(withEventReplay()),

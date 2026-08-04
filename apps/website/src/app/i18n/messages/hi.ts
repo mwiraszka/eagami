@@ -29,6 +29,7 @@ export const hi: WebMessages = {
       copySuccess: 'क्लिपबोर्ड पर कॉपी किया गया',
       copyError: 'क्लिपबोर्ड पर कॉपी नहीं किया जा सका',
     },
+    copyLinkLabel: 'सेक्शन का लिंक कॉपी करें',
   },
   home: {
     metaTitle: 'Eagami',
@@ -243,14 +244,10 @@ export const hi: WebMessages = {
           body: 'प्रत्येक कंपोनेंट सादा Angular और CSS है, बिना किसी वेंडर लॉक-इन के, इसलिए स्रोत को आपके प्रोजेक्ट के किसी भी अन्य कोड की तरह पढ़ा, कॉपी या संशोधित किया जा सकता है।',
         },
       ],
-      getStartedHeading: 'शुरू करें',
-      getStartedBefore: 'जाएं',
-      getStartedLink: 'सेटअप',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' पर पैकेज इंस्टॉल करने और ग्लोबल स्टाइलशीट को जोड़ने के लिए।',
       showcase: {
         button: 'मुझे दबाएं',
         toggle: 'मुझे टॉगल करें',
@@ -319,7 +316,7 @@ export const hi: WebMessages = {
     integrations: {
       heading: 'Angular से आगे',
       intro:
-        'डिज़ाइन टोकन किसी फ्रेमवर्क पर निर्भर नहीं हैं। किसी गैर-Angular प्रोजेक्ट में स्वतंत्र इंटीग्रेशन गाइड कॉपी करें या मशीन-पठनीय टोकन एक्सपोर्ट का सीधे उपयोग करें।',
+        'Eagami के डिज़ाइन टोकन किसी फ्रेमवर्क पर निर्भर नहीं हैं। किसी गैर-Angular प्रोजेक्ट में स्वतंत्र इंटीग्रेशन गाइड कॉपी करें या मशीन-पठनीय टोकन एक्सपोर्ट का सीधे उपयोग करें।',
       reactLink: 'React इंटीग्रेशन गाइड',
       flutterLink: 'Flutter इंटीग्रेशन गाइड',
       tokensLink: 'JSON के रूप में डिज़ाइन टोकन',
@@ -330,33 +327,28 @@ export const hi: WebMessages = {
         'अपने ब्रांड रंगों से लाइट और डार्क मोड के लिए WCAG-जाँची गई पैलेट बनाएँ, फिर प्रोवाइडर कॉन्फ़िगरेशन या CSS कॉपी करें।',
       title: 'थीम बिल्डर',
       lede: 'अपने ब्रांड रंग चुनें और Eagami UI, OKLCH स्पेस में पूरी 50–900 स्केल बनाता है, लाइट और डार्क मोड में इसके WCAG कंट्रास्ट की जाँच करता है, और आपको सीधे उपयोग के लिए <code>provideEagamiUi()</code> कॉन्फ़िगरेशन देता है।',
-      controlsHeading: 'ब्रांड रंग',
       primaryLabel: 'प्राथमिक रंग',
       secondaryLabel: 'द्वितीयक रंग',
-      contrastHeading: 'सुलभता',
       contrastPass: 'लाइट और डार्क दोनों मोड में WCAG 2.2 AA कंट्रास्ट पूरा करता है',
       contrastFailIntro: 'कुछ संयोजन WCAG AA कंट्रास्ट सीमा से नीचे हैं:',
-      scaleHeading: 'जनरेट की गई स्केल',
       previewHeading: 'पूर्वावलोकन',
       previewHint: 'डार्क मोड में पैलेट देखने के लिए साइट थीम बदलें।',
       previewButton: 'शुरू करें',
       previewSwitch: 'सूचनाएँ',
-      previewPrimary: 'प्राथमिक',
-      previewSecondary: 'द्वितीयक',
       previewStep1: 'खाता',
       previewStep2: 'प्रोफ़ाइल',
       previewStep3: 'पूर्ण',
       previewProgress: 'प्रगति:',
-      exportHeading: 'इसका उपयोग करें',
-      exportConfigLabel: 'प्रोवाइडर कॉन्फ़िगरेशन',
-      exportCssLabel: 'CSS कस्टम प्रॉपर्टीज़',
+      exportHeading: 'एक्सपोर्ट',
+      exportConfigLabel: 'Angular कॉन्फ़िग',
+      exportCssLabel: 'CSS वेरिएबल',
     },
     tokens: {
       metaTitle: 'डिज़ाइन टोकन | Eagami UI',
       metaDescription:
         'रंगों, टाइपोग्राफी, स्पेसिंग, उन्नयन, आकार और गति के लिए CSS कस्टम प्रॉपर्टीज़।',
       title: 'डिज़ाइन टोकन',
-      lede: 'CSS कस्टम प्रॉपर्टीज़ जो लाइब्रेरी के हर कंपोनेंट को चलाती हैं: रंग, टाइपोग्राफी, स्पेसिंग, उन्नयन, आकार और गति। पूरे ऐप में दृश्य संगति बनाए रखने के लिए अपनी शैलियों में इन टोकन को <code>var(--token-name)</code> के माध्यम से संदर्भित करें।',
+      lede: 'डिज़ाइन टोकन वे CSS कस्टम प्रॉपर्टीज़ हैं जो लाइब्रेरी के हर कंपोनेंट को चलाती हैं: रंग, टाइपोग्राफी, स्पेसिंग, उन्नयन, आकार और गति। पूरे ऐप में दृश्य संगति बनाए रखने के लिए अपनी शैलियों में इन टोकन को <code>var(--token-name)</code> के माध्यम से संदर्भित करें।',
       sections: {
         theming: 'थीमिंग',
         palette: 'ब्रांड पैलेट',
@@ -368,7 +360,7 @@ export const hi: WebMessages = {
         motion: 'गति',
       },
       themingRootBefore:
-        'पूरी लाइब्रेरी को री-थीम करने के लिए <code>:root</code> पर किसी भी टोकन को ओवरराइड करें:',
+        'Eagami के हर डिज़ाइन टोकन को ओवरराइड किया जा सकता है, जिससे लाइब्रेरी किसी भी ब्रांड के अनुकूल हो जाती है। पूरी लाइब्रेरी को री-थीम करने के लिए <code>:root</code> पर किसी भी टोकन को ओवरराइड करें:',
       themingScopedBefore:
         'या जहां उपयोगी हो, ओवरराइड को अलग-अलग कंपोनेंट तक सीमित करें:',
       paletteIntro:
@@ -376,7 +368,7 @@ export const hi: WebMessages = {
       paletteOverrides:
         'विशिष्ट शेड पिन करें या यह रीमैप करें कि कौन सा निकाला गया शेड प्रत्येक सिमेंटिक भूमिका को सपोर्ट करता है:',
       paletteContrast:
-        'प्रत्येक ब्रांड-भूमिका जोड़ी (सरफ़ेस पर टेक्स्ट, कैनवास पर सरफ़ेस) की बूटस्ट्रैप पर WCAG 2.2 AA के विरुद्ध जांच की जाती है। एक विफल संयोजन ऐप लोड होने से पहले ही त्रुटि देता है, इसलिए ब्रांड रंग में कंट्रास्ट बग प्रोडक्शन के बजाय बूट पर पकड़ा जाता है।',
+        'प्रत्येक ब्रांड-भूमिका जोड़ी (सरफ़ेस पर टेक्स्ट, कैनवास पर सरफ़ेस) की बूटस्ट्रैप पर <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> के विरुद्ध जांच की जाती है। एक विफल संयोजन ऐप लोड होने से पहले ही त्रुटि देता है, इसलिए ब्रांड रंग में कंट्रास्ट बग प्रोडक्शन के बजाय बूट पर पकड़ा जाता है।',
       paletteBuilderIntro: 'दृश्य रूप से पैलेट बनाने और उसका पूर्वावलोकन करने के लिए:',
       paletteBuilderLink: 'थीम बिल्डर',
       elevationDrop: 'ड्रॉप शैडो',
@@ -386,7 +378,6 @@ export const hi: WebMessages = {
       colorsPrimary: 'प्राथमिक',
       colorsSecondary: 'द्वितीयक',
       colorsNeutral: 'तटस्थ',
-      colorsStatus: 'स्थिति',
       colorsSemantic: 'सिमेंटिक',
       typographyFamilies: 'फ़ैमिली',
       typographySizes: 'आकार',
@@ -398,6 +389,8 @@ export const hi: WebMessages = {
       motionSimulate: 'अनुकरण करें',
       motionDurations: 'अवधि',
       motionEasings: 'ईज़िंग',
+      integrationsIntro:
+        'ऊपर दिए गए सभी डिज़ाइन टोकन किसी फ्रेमवर्क पर निर्भर नहीं हैं। गैर-Angular प्रोजेक्ट्स के लिए, बस अपने AI एजेंट को एक स्वतंत्र इंटीग्रेशन गाइड दें, या उससे मशीन-पठनीय टोकन एक्सपोर्ट का सीधे उपयोग करवाएँ।',
     },
     icons: {
       metaTitle: 'आइकन | Eagami UI',
@@ -429,7 +422,7 @@ export const hi: WebMessages = {
       supportedHeading: 'समर्थित लोकेल',
       quickSetupHeading: 'त्वरित सेटअप',
       quickSetupBefore:
-        'अपने ऐप कॉन्फ़िग में <code>provideEagamiUi()</code> जोड़ें और <code>locales</code> के माध्यम से उपयोग की जाने वाली भाषाएं पंजीकृत करें। अंग्रेज़ी हमेशा उपलब्ध रहती है, इसलिए आप केवल वही शिप करते हैं जिसकी आपको आवश्यकता है।',
+        'अपने ऐप कॉन्फ़िग में <code>provideEagamiUi()</code> जोड़ें और <code>locales</code> के माध्यम से उपयोग की जाने वाली भाषाएं पंजीकृत करें। अंग्रेज़ी हमेशा शामिल रहती है, और केवल वही भाषाएं आपके बंडल में जुड़ती हैं जिन्हें आप पंजीकृत करते हैं।',
       lazyHeading: 'लेज़ी लोडिंग',
       lazyBefore:
         '<code>locales</code> की जगह <code>localeLoaders</code> रजिस्टर करें: कोई भाषा पहली बार सक्रिय होने पर ही डाउनलोड होती है और शुरुआती बंडल से बाहर रहती है। हर लोडर को ऐसे मॉड्यूल की ओर इंगित करें जो एक ही लोकेल बंडल को री-एक्सपोर्ट करता हो, और स्विच तुरंत चाहिए तो <code>loadLocale()</code> से पहले से लोड कर लें।',
@@ -1038,6 +1031,9 @@ export const hi: WebMessages = {
             variant: 'वेरिएंट',
             dismissible: 'खारिज करने योग्य',
             size: 'आकार',
+            icon: 'आइकन (ओवरराइड)',
+          },
+          toast: {
             icon: 'आइकन (ओवरराइड)',
           },
           avatar: {

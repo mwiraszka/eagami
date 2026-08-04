@@ -1,9 +1,6 @@
 @use 'mixins' as mixins;
 
 .ui-index {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 960px;
 }
 
@@ -13,7 +10,8 @@
 }
 
 .ui-index__title {
-  @include mixins.page-title;
+  // -16px nets the canonical 32px below the divider against the 48px page gap
+  @include mixins.page-title(-16px);
 }
 
 .ui-index__lede {
@@ -34,24 +32,22 @@
   @include mixins.prose-link;
 }
 
-.ui-index__section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+// Sets the showcase apart from the prose around it without any heading chrome:
+// the section's 16px gap plus this reads as the page's full section spacing
+.ui-index__showcase {
+  margin-block: 32px;
 
-// Pull the showcase up tight under the header rather than carrying the full
-// 48px inter-section gap above it.
-.ui-index__section--showcase {
-  margin-top: -32px;
+  @include mixins.respond-to('lt-sm') {
+    margin-block: 16px;
+  }
 }
 
 .ui-index__heading {
-  font-size: var(--text-section-heading-size);
-  font-weight: var(--text-section-heading-weight);
-  line-height: var(--text-section-heading-lh);
-  font-family: var(--text-section-heading-family);
-  color: var(--color-text-primary);
+  @include mixins.section-title;
+}
+
+.ui-index__subheading {
+  @include mixins.subsection-title;
 }
 
 .ui-index__body {
@@ -62,12 +58,6 @@
   a {
     @include mixins.prose-link;
   }
-}
-
-.ui-theme__header {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 .ui-theme__controls {

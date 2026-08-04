@@ -29,6 +29,7 @@ export const zhCN: WebMessages = {
       copySuccess: '已复制到剪贴板',
       copyError: '无法复制到剪贴板',
     },
+    copyLinkLabel: '复制该部分链接',
   },
   home: {
     metaTitle: 'Eagami',
@@ -231,14 +232,10 @@ export const zhCN: WebMessages = {
           body: '每个组件都是纯 Angular 和 CSS，没有供应商锁定，因此源代码可以像项目中的其他代码一样被阅读、复制或修改。',
         },
       ],
-      getStartedHeading: '开始使用',
-      getStartedBefore: '前往',
-      getStartedLink: '安装',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: '页面安装该包并配置全局样式表。',
       showcase: {
         button: '点击我',
         toggle: '切换我',
@@ -306,7 +303,7 @@ export const zhCN: WebMessages = {
     integrations: {
       heading: '超越 Angular',
       intro:
-        '设计令牌与框架无关。将独立的集成指南复制到非 Angular 项目中，或直接使用机器可读的令牌导出。',
+        'Eagami 的设计令牌与框架无关。将独立的集成指南复制到非 Angular 项目中，或直接使用机器可读的令牌导出。',
       reactLink: 'React 集成指南',
       flutterLink: 'Flutter 集成指南',
       tokensLink: 'JSON 格式的设计令牌',
@@ -317,32 +314,27 @@ export const zhCN: WebMessages = {
         '根据品牌颜色生成经过 WCAG 校验的浅色和深色调色板，然后复制提供程序配置或 CSS。',
       title: '主题生成器',
       lede: '选择你的品牌颜色，Eagami UI 会在 OKLCH 空间中推导出完整的 50–900 色阶，在浅色和深色模式下校验其 WCAG 对比度，并为你提供可直接使用的 <code>provideEagamiUi()</code> 配置。',
-      controlsHeading: '品牌颜色',
       primaryLabel: '主色',
       secondaryLabel: '辅助色',
-      contrastHeading: '无障碍',
       contrastPass: '在浅色和深色模式下均符合 WCAG 2.2 AA 对比度',
       contrastFailIntro: '部分配色低于 WCAG AA 对比度标准：',
-      scaleHeading: '生成的色阶',
       previewHeading: '预览',
       previewHint: '切换站点主题即可在深色模式下预览调色板。',
       previewButton: '开始使用',
       previewSwitch: '通知',
-      previewPrimary: '主色',
-      previewSecondary: '辅助色',
       previewStep1: '账户',
       previewStep2: '资料',
       previewStep3: '完成',
       previewProgress: '进度：',
-      exportHeading: '使用',
-      exportConfigLabel: '提供程序配置',
-      exportCssLabel: 'CSS 自定义属性',
+      exportHeading: '导出',
+      exportConfigLabel: 'Angular 配置',
+      exportCssLabel: 'CSS 变量',
     },
     tokens: {
       metaTitle: '设计令牌 | Eagami UI',
       metaDescription: '用于颜色、排版、间距、立面、形状和动效的 CSS 自定义属性。',
       title: '设计令牌',
-      lede: '驱动库中每个组件的 CSS 自定义属性：颜色、排版、间距、立面、形状和动效。在你自己的样式中通过 <code>var(--token-name)</code> 引用这些令牌，以在整个应用中保持视觉一致性。',
+      lede: '设计令牌是驱动库中每个组件的 CSS 自定义属性：颜色、排版、间距、立面、形状和动效。在你自己的样式中通过 <code>var(--token-name)</code> 引用这些令牌，以在整个应用中保持视觉一致性。',
       sections: {
         theming: '主题',
         palette: '品牌调色板',
@@ -354,13 +346,13 @@ export const zhCN: WebMessages = {
         motion: '动效',
       },
       themingRootBefore:
-        '在 <code>:root</code> 上覆盖任意令牌，即可为整个库重新设定主题：',
+        'Eagami 的每个设计令牌都可以被覆盖，让库适配任何品牌。在 <code>:root</code> 上覆盖任意令牌，即可为整个库重新设定主题：',
       themingScopedBefore: '或在需要时将覆盖范围限定到单个组件：',
       paletteIntro:
         '向 <code>provideEagamiUi()</code> 传入单个品牌十六进制色值，库便会在 <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> 空间中推导出完整的十级色阶（50 至 900），在逐级调整明度的同时保持色相和饱和度不变。推导出的色阶为浅色和深色模式中的每个 <code>--color-brand-*</code> 令牌提供取值：',
       paletteOverrides: '固定特定色阶，或重新映射哪个推导色阶支撑各语义角色：',
       paletteContrast:
-        '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 WCAG 2.2 AA 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',
+        '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',
       paletteBuilderIntro: '直观地构建并预览你的调色板，前往',
       paletteBuilderLink: '主题生成器',
       elevationDrop: '投影',
@@ -370,7 +362,6 @@ export const zhCN: WebMessages = {
       colorsPrimary: '主色',
       colorsSecondary: '辅色',
       colorsNeutral: '中性色',
-      colorsStatus: '状态色',
       colorsSemantic: '语义色',
       typographyFamilies: '字体族',
       typographySizes: '字号',
@@ -382,6 +373,8 @@ export const zhCN: WebMessages = {
       motionSimulate: '模拟',
       motionDurations: '时长',
       motionEasings: '缓动',
+      integrationsIntro:
+        '以上所有设计令牌都与框架无关。对于非 Angular 项目，只需将独立的集成指南交给你的 AI 代理，或让它直接使用机器可读的令牌导出。',
     },
     icons: {
       metaTitle: '图标 | Eagami UI',
@@ -412,7 +405,7 @@ export const zhCN: WebMessages = {
       supportedHeading: '支持的语言',
       quickSetupHeading: '快速设置',
       quickSetupBefore:
-        '将 <code>provideEagamiUi()</code> 添加到你的应用配置中，并通过 <code>locales</code> 注册你使用的语言。英语始终可用，因此你只需打包所需的内容。',
+        '将 <code>provideEagamiUi()</code> 添加到你的应用配置中，并通过 <code>locales</code> 注册你使用的语言。英语始终内置，只有你注册的语言才会被打包。',
       lazyHeading: '按需加载',
       lazyBefore:
         '注册 <code>localeLoaders</code> 而非 <code>locales</code>:语言在首次启用时才会下载,不会进入初始包。将每个加载器指向仅重新导出单个语言包的模块;如需立即切换,可先用 <code>loadLocale()</code> 预加载。',
@@ -1015,6 +1008,9 @@ export const zhCN: WebMessages = {
             variant: '变体',
             dismissible: '可关闭',
             size: '尺寸',
+            icon: '图标（覆盖）',
+          },
+          toast: {
             icon: '图标（覆盖）',
           },
           avatar: {

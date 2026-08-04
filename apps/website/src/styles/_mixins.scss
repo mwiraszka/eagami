@@ -206,10 +206,39 @@ $breakpoints: (
   font-family: var(--font-family-brand);
   color: var(--color-text-primary);
 
+  @include respond-to('lt-sm') {
+    font-size: 22px;
+  }
+
   + ea-divider {
     display: block;
     margin-bottom: $space-below;
   }
+}
+
+/// Section-level heading (an `<h2>` under the page `<h1>`) shared by the UI
+/// documentation pages, driven by the `--text-section-heading-*` composite
+/// from `@eagami/ui`.
+@mixin section-title {
+  font-size: var(--text-section-heading-size);
+  font-weight: var(--text-section-heading-weight);
+  line-height: var(--text-section-heading-lh);
+  font-family: var(--text-section-heading-family);
+  color: var(--color-text-primary);
+
+  @include respond-to('lt-sm') {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/// Uppercase subsection heading (an `<h3>` within a page section) shared by the
+/// UI documentation pages.
+@mixin subsection-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
 
 /// Inline code chip applying the `--text-code-*` tokens from `@eagami/ui`. Per-call
@@ -316,14 +345,14 @@ $breakpoints: (
 
 /// Feature card title text.
 @mixin feature-card-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 /// Feature card body copy.
 @mixin feature-card-body {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--color-text-secondary);
 }

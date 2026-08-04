@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
 import { IntegrationLinksComponent } from '@app/components/integration-links/integration-links.component';
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -51,6 +52,7 @@ const SIMULATION_RESET_BUFFER_MS = 80; // lets the longest run land before the r
     DividerComponent,
     IntegrationLinksComponent,
     RouterLink,
+    SectionHeadingComponent,
   ],
 })
 export class UiTokensPageComponent {

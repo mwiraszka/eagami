@@ -1,9 +1,6 @@
 @use 'mixins' as mixins;
 
 .ui-accessibility {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 880px;
 }
 
@@ -22,15 +19,14 @@
   color: var(--color-text-secondary);
 }
 
-.ui-accessibility__section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.ui-accessibility__subheading {
+  @include mixins.subsection-title;
+  margin-top: 16px;
+}
 
+.ui-accessibility__section {
   h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-text-primary);
+    @include mixins.section-title;
   }
 
   p {

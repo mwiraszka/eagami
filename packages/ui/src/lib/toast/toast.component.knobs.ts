@@ -19,7 +19,7 @@ export const TOAST_KNOBS: ComponentKnobs = {
   },
   args: {
     position: 'bottom-right',
-    size: 'md',
+    size: 'sm',
     clearable: true,
   },
 };

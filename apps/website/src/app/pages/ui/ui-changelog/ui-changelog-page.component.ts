@@ -9,6 +9,7 @@ import {
   inject,
 } from '@angular/core';
 
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { UI_CHANGELOG } from '@app/data/changelog.generated';
 import { CHANGELOG_URL, PACKAGE_URL } from '@app/data/external-links';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -23,7 +24,7 @@ import { InlineMarkdownPipe } from './inline-markdown.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // None: innerHTML-injected nodes carry no encapsulation attribute, so styles go global
   encapsulation: ViewEncapsulation.None,
-  imports: [DividerComponent, InlineMarkdownPipe],
+  imports: [DividerComponent, InlineMarkdownPipe, SectionHeadingComponent],
 })
 export class UiChangelogPageComponent {
   private readonly metaAndTitleService = inject(MetaAndTitleService);

@@ -14,6 +14,8 @@ import {
   StepperComponent,
   type StepperOrientation,
   SwitchComponent,
+  TabComponent,
+  TabsComponent,
   derivePalette,
   validatePalette,
 } from '@eagami/ui';
@@ -31,6 +33,7 @@ import {
 } from '@angular/core';
 
 import { CodeSnippetComponent } from '@app/components/code-snippet/code-snippet.component';
+import { SectionHeadingComponent } from '@app/components/section-heading/section-heading.component';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
@@ -89,9 +92,12 @@ interface ViolationRow {
     DatePickerComponent,
     DividerComponent,
     ProgressBarComponent,
+    SectionHeadingComponent,
     StepComponent,
     StepperComponent,
     SwitchComponent,
+    TabComponent,
+    TabsComponent,
   ],
 })
 export class UiThemeBuilderPageComponent {
@@ -161,6 +167,10 @@ export class UiThemeBuilderPageComponent {
       query.addEventListener('change', update);
       inject(DestroyRef).onDestroy(() => query.removeEventListener('change', update));
     }
+  }
+
+  protected isDarkShade(shade: PaletteShade): boolean {
+    return Number(shade) >= 500;
   }
 
   protected onPrimaryChange(value: string | null): void {

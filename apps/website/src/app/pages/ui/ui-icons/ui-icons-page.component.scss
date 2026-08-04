@@ -1,11 +1,5 @@
 @use 'mixins' as mixins;
 
-.ui-icons {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
 .ui-icons__header {
   display: flex;
   flex-direction: column;
@@ -34,12 +28,6 @@
 
 /* Scopes the filter card's sticky tracking to the icon grid, so it stops at the
    wrapper's end and leaves the brand section below unobstructed. */
-.ui-icons__browser {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 /* Sticks below the app header, with a drop-shadow so it lifts off the grid
    scrolling beneath it. Children flex-wrap as the row narrows. */
 .ui-icons__filter {
@@ -47,6 +35,11 @@
   container-type: inline-size;
   position: sticky;
   top: calc(var(--web-height-header) + 8px);
+
+  // Clear the sticky Eagami UI menu-trigger bar shown under the header
+  @include mixins.respond-to('lt-md') {
+    top: calc(var(--web-height-header) + var(--web-height-ui-trigger) + 8px);
+  }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -81,17 +74,18 @@
 }
 
 .ui-icons__category {
+  --ea-checkbox-label-color: var(--color-text-secondary);
   display: inline-flex;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    --ea-checkbox-label-color: var(--color-brand-default);
-    /* Brand colour at lower opacity keeps the count subordinate while still
-       signalling it as part of the hoverable target. */
+    --ea-checkbox-label-color: var(--color-text-primary);
+    /* Lower opacity keeps the count subordinate while still signalling it as
+       part of the hoverable target. */
     --ea-checkbox-count-color: color-mix(
       in oklch,
-      var(--color-brand-default),
+      var(--color-text-primary),
       transparent 40%
     );
   }
@@ -249,16 +243,11 @@
 }
 
 .ui-icons__brand-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   max-width: 880px;
 }
 
 .ui-icons__brand-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  @include mixins.section-title;
 }
 
 .ui-icons__brand-body {

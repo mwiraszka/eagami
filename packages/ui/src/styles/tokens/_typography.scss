@@ -66,10 +66,10 @@
   --text-h4-weight: var(--font-weight-semibold);
   --text-h4-lh: var(--line-height-snug);
 
-  // Page-level subsection title (an `<h2>` under the page `<h1>`). Mirrors
-  // `--text-h4-*` metrics but pins the brand family so it reads as wordmark,
-  // not body. Only composite that pins a font-family.
-  --text-section-heading-size: var(--font-size-xl);
+  // Page-level subsection title (an `<h2>` under the page `<h1>`). Sits between
+  // the h3 and h4 tiers and pins the brand family so it reads as wordmark, not
+  // body. Only composite that pins a font-family.
+  --text-section-heading-size: 1.375rem; // 22px
   --text-section-heading-weight: var(--font-weight-semibold);
   --text-section-heading-lh: var(--line-height-snug);
   --text-section-heading-family: var(--font-family-brand);

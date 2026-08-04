@@ -1,9 +1,7 @@
 @use 'mixins' as mixins;
 
 .ui-tokens {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
+  container-type: inline-size;
   max-width: 880px;
 }
 
@@ -38,10 +36,6 @@
 }
 
 .tokens-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
   p {
     font-size: 16px;
     line-height: 1.6;
@@ -54,19 +48,11 @@
   }
 }
 
-.tokens-section--colors {
-  gap: 8px;
-}
-
 .tokens-section__title {
-  font-size: 24px;
-  font-weight: 600;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
+  @include mixins.section-title;
 }
 
 .tokens-section__cta a {
-  font-weight: 600;
   color: var(--color-text-link);
   text-decoration: none;
 
@@ -77,7 +63,6 @@
 }
 
 .tokens-subsection__lede {
-  margin-bottom: 16px;
   font-size: 14px;
   line-height: 1.55;
   color: var(--color-text-secondary);
@@ -90,60 +75,77 @@
 }
 
 .tokens-subsection__title {
+  @include mixins.subsection-title;
   margin-top: 24px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-primary);
 
   &:first-of-type {
     margin-top: 0;
   }
 }
 
-.tokens-subsection__sublabel {
-  margin-top: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: capitalize;
-  color: var(--color-text-secondary);
+// Groups a scale's subheading with its token pattern, so each variable name
+// (prefix + visible step) stays readable at a glance
+.tokens-subsection__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 16px;
 }
 
-// The first sublabel sits directly beneath its subsection title, so pull it
-// tight (the 16px section gap minus this) to read as a child, not a sibling block.
-.tokens-subsection__title + .tokens-subsection__sublabel {
-  margin-top: -8px;
+web-section-heading + .tokens-subsection__row {
+  margin-top: 0;
 }
 
-// The shade steps live inside the bar; this states the token pattern once per
-// scale so each variable name (prefix + visible step) stays readable at a glance.
 .tokens-scale__var {
-  font-size: 12px;
-  font-family: var(--font-family-mono);
-  color: var(--color-text-secondary);
+  @include mixins.code-chip;
 }
 
 // Sequential scales render as a single contiguous bar: each shade is a thin
-// segment with its step number inside, and the full token name on hover. Far
-// more compact than a grid of labelled cards while keeping the scale readable.
+// segment with its step number inside, and the full token name on hover. Once
+// the stops can no longer hold 45px each, a scale splits evenly into two rows,
+// and scrolls sideways when even the split rows cannot fit.
 .color-scale {
-  display: flex;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(var(--scale-cols, 10), minmax(45px, 1fr));
+  overflow-x: auto;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
 }
 
+.color-scale--neutral {
+  --scale-cols: 12;
+}
+
+.color-scale--status {
+  --scale-cols: 6;
+}
+
+@container (max-width: 519px) {
+  .color-scale:not(.color-scale--neutral):not(.color-scale--status) {
+    grid-template-columns: repeat(5, minmax(45px, 1fr));
+  }
+}
+
+@container (max-width: 619px) {
+  .color-scale--neutral {
+    grid-template-columns: repeat(6, minmax(45px, 1fr));
+  }
+}
+
+@container (max-width: 319px) {
+  .color-scale--status {
+    grid-template-columns: repeat(3, minmax(45px, 1fr));
+  }
+}
+
 .color-scale__stop {
-  position: relative;
   display: flex;
-  flex: 1 1 0;
   align-items: flex-end;
-  justify-content: center;
-  min-width: 0;
+  justify-content: flex-end;
   height: 56px;
-  padding-bottom: 8px;
+  padding-block-end: 8px;
+  padding-inline-end: 8px;
 
   &:not(:last-child) {
     box-shadow: inset -1px 0 0 var(--color-border-subtle);
@@ -151,7 +153,7 @@
 }
 
 .color-scale__shade {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   font-family: var(--font-family-mono);
   color: var(--color-neutral-900);
@@ -228,6 +230,48 @@
     padding: 0;
     border-radius: 0;
     background-color: transparent;
+  }
+}
+
+// Where the page is wide enough, balance single-group lists into two equal columns
+@container (min-width: 560px) {
+  .token-list--columns {
+    display: block;
+    column-count: 2;
+    column-gap: 24px;
+
+    .token-list__item {
+      break-inside: avoid;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+// One list per semantic family (text, bg, ...), separated by roughly one item's
+// height. In the two-column layout whole families move between columns; a family
+// never splits across the column break.
+.semantic-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@container (min-width: 560px) {
+  .semantic-groups {
+    display: block;
+    column-count: 2;
+    column-gap: 24px;
+
+    .token-list--compact {
+      break-inside: avoid;
+
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+    }
   }
 }
 
@@ -319,9 +363,22 @@
   color: var(--color-text-primary);
 }
 
+.token-list--weights code {
+  margin-left: auto;
+}
+
+.weight-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.weight-label__value {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+}
+
 .weight-sample {
-  flex-shrink: 0;
-  width: 120px;
   font-size: 16px;
   color: var(--color-text-primary);
 }

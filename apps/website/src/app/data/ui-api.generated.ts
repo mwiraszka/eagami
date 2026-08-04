@@ -4430,7 +4430,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'size',
         type: 'ToastSize',
-        default: "'md'",
+        default: "'sm'",
         required: false,
         twoWay: false,
       },

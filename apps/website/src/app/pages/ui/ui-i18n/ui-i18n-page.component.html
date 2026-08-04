@@ -1,12 +1,16 @@
-<article class="ui-i18n">
+<article class="web-page ui-i18n">
   <header class="ui-i18n__header">
     <h1 class="ui-i18n__title">{{ messages().ui.i18n.title }}</h1>
     <ea-divider />
     <p class="ui-i18n__lede">{{ messages().ui.i18n.lede }}</p>
   </header>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.supportedHeading }}</h2>
+  <section
+    id="supported-locales"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="supported-locales">
+      <h2>{{ messages().ui.i18n.supportedHeading }}</h2>
+    </web-section-heading>
     <ul
       class="ui-i18n__locale-list"
       role="list">
@@ -27,20 +31,32 @@
     </ul>
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.quickSetupHeading }}</h2>
+  <section
+    id="quick-setup"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="quick-setup">
+      <h2>{{ messages().ui.i18n.quickSetupHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.i18n.quickSetupBefore"></p>
     <web-code-snippet [code]="quickSetupSnippet" />
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.lazyHeading }}</h2>
+  <section
+    id="lazy-loading"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="lazy-loading">
+      <h2>{{ messages().ui.i18n.lazyHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.i18n.lazyBefore"></p>
     <web-code-snippet [code]="lazyLoadingSnippet" />
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.liveDemoHeading }}</h2>
+  <section
+    id="live-demo"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="live-demo">
+      <h2>{{ messages().ui.i18n.liveDemoHeading }}</h2>
+    </web-section-heading>
     <p>{{ messages().ui.i18n.liveDemoIntro }}</p>
 
     <div class="ui-i18n__demo">
@@ -77,21 +93,33 @@
     </div>
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.runtimeSwitchHeading }}</h2>
+  <section
+    id="runtime-switching"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="runtime-switching">
+      <h2>{{ messages().ui.i18n.runtimeSwitchHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.i18n.runtimeSwitchBefore"></p>
     <web-code-snippet [code]="runtimeSwitchSnippet" />
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.perStringHeading }}</h2>
+  <section
+    id="per-string-overrides"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="per-string-overrides">
+      <h2>{{ messages().ui.i18n.perStringHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.i18n.perStringBefore"></p>
     <web-code-snippet [code]="perStringOverridesSnippet" />
     <p [innerHTML]="messages().ui.i18n.perStringAfter"></p>
   </section>
 
-  <section class="ui-i18n__section">
-    <h2>{{ messages().ui.i18n.frenchSpacingHeading }}</h2>
+  <section
+    id="french-spacing"
+    class="web-section ui-i18n__section">
+    <web-section-heading fragment="french-spacing">
+      <h2>{{ messages().ui.i18n.frenchSpacingHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.i18n.frenchSpacingBody"></p>
     <web-code-snippet [code]="frenchSpacingSnippet" />
   </section>

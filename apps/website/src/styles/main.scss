@@ -8,6 +8,8 @@
 @forward 'theme';
 @forward 'ui-demo';
 
+@use 'mixins' as mixins;
+
 /* Marks every link that leaves eagami.com with the same open-in-new-tab glyph.
    Done here rather than per template because many of these links are injected
    through [innerHTML] (localized prose, rendered changelog entries) and cannot
@@ -28,6 +30,46 @@ a[href^='http']:not(
   mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M18%2013v6a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2V8a2%202%200%200%201%202-2h6%22%2F%3E%3Cpolyline%20points%3D%2215%203%2021%203%2021%209%22%2F%3E%3Cline%20x1%3D%2210%22%20y1%3D%2214%22%20x2%3D%2221%22%20y2%3D%223%22%2F%3E%3C%2Fsvg%3E')
     center / contain no-repeat;
   content: '';
+}
+
+/* Shared layout for the Eagami UI documentation pages: 48px between sections
+   with a subtle divider carrying 24px of extra space on each side, 16px between
+   items within a section, and fragment scrolling that clears the fixed header
+   (plus the sticky menu-trigger bar on narrow screens). The rhythm tightens on
+   phones. Tweaks here restyle every page. */
+.web-page {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include mixins.respond-to('lt-sm') {
+    gap: 32px;
+  }
+}
+
+.web-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
+  scroll-margin-top: var(--web-height-header);
+
+  @include mixins.respond-to('lt-md') {
+    scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
+  }
+
+  @include mixins.respond-to('lt-sm') {
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+}
+
+.web-section--no-divider {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: none;
 }
 
 /* Force hard-coded brand-icon fills to inherit currentColor for dark-mode visibility */

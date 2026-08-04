@@ -1,17 +1,29 @@
-<article class="ui-accessibility">
+<article class="web-page ui-accessibility">
   <header class="ui-accessibility__header">
     <h1 class="ui-accessibility__title">{{ messages().ui.accessibility.title }}</h1>
     <ea-divider />
     <p class="ui-accessibility__lede">{{ messages().ui.accessibility.lede }}</p>
   </header>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.conformanceHeading }}</h2>
+  <section
+    id="conformance"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="conformance">
+      <h2>{{ messages().ui.accessibility.conformanceHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.conformanceBody"></p>
+    <h3 class="ui-accessibility__subheading">{{
+      messages().ui.accessibility.testingHeading
+    }}</h3>
+    <p [innerHTML]="messages().ui.accessibility.testingBody"></p>
   </section>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.builtInHeading }}</h2>
+  <section
+    id="built-in"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="built-in">
+      <h2>{{ messages().ui.accessibility.builtInHeading }}</h2>
+    </web-section-heading>
     <ul
       class="ui-accessibility__feature-list"
       role="list">
@@ -54,15 +66,14 @@
     </ul>
   </section>
 
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.labelsHeading }}</h2>
+  <section
+    id="accessible-names"
+    class="web-section ui-accessibility__section">
+    <web-section-heading fragment="accessible-names">
+      <h2>{{ messages().ui.accessibility.labelsHeading }}</h2>
+    </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.labelsBefore"></p>
     <web-code-snippet [code]="labelsSnippet" />
     <p [innerHTML]="messages().ui.accessibility.labelsAfter"></p>
-  </section>
-
-  <section class="ui-accessibility__section">
-    <h2>{{ messages().ui.accessibility.testingHeading }}</h2>
-    <p [innerHTML]="messages().ui.accessibility.testingBody"></p>
   </section>
 </article>

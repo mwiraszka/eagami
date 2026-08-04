@@ -14,6 +14,31 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.17.0',
+    date: '2026-08-04',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add an icon override to the toast service, so any toast can carry any icon component in place of its variant's own, or none at all.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Rebalance the toast: default to the small size, match the status icon to the text size, and align its gap and width cap with the alert.',
+          'Enlarge the section-heading composite style from 20px to 22px, so page subsections read a clear step above body text.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop the divider throwing a hydration error during server-side rendering when several dividers hydrate on the same page.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.16.1',
     date: '2026-08-02',
     sections: [

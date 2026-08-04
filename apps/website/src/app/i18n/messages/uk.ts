@@ -30,6 +30,7 @@ export const uk: WebMessages = {
       copySuccess: 'Скопійовано до буфера обміну',
       copyError: 'Не вдалося скопіювати до буфера обміну',
     },
+    copyLinkLabel: 'Скопіювати посилання на розділ',
   },
   home: {
     metaTitle: 'Eagami',
@@ -246,14 +247,10 @@ export const uk: WebMessages = {
           body: 'Кожен компонент це чистий Angular і CSS без прив’язки до постачальника, тож вихідний код можна читати, копіювати чи змінювати, як і будь-який інший код у вашому проєкті.',
         },
       ],
-      getStartedHeading: 'Початок роботи',
-      getStartedBefore: 'Перейдіть до',
-      getStartedLink: 'Налаштування',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ', щоб встановити пакет і підключити глобальну таблицю стилів.',
       showcase: {
         button: 'Натисни мене',
         toggle: 'Перемкни мене',
@@ -322,7 +319,7 @@ export const uk: WebMessages = {
     integrations: {
       heading: 'За межами Angular',
       intro:
-        'Дизайн-токени не залежать від фреймворку. Скопіюйте самодостатній посібник з інтеграції у проєкт без Angular або використовуйте машинозчитуваний експорт токенів напряму.',
+        'Дизайн-токени Eagami не залежать від фреймворку. Скопіюйте самодостатній посібник з інтеграції у проєкт без Angular або використовуйте машинозчитуваний експорт токенів напряму.',
       reactLink: 'Посібник з інтеграції з React',
       flutterLink: 'Посібник з інтеграції з Flutter',
       tokensLink: 'Дизайн-токени у форматі JSON',
@@ -333,25 +330,20 @@ export const uk: WebMessages = {
         'Створіть перевірену за WCAG палітру для світлої та темної теми на основі кольорів вашого бренду й скопіюйте конфігурацію провайдера або CSS.',
       title: 'Конструктор теми',
       lede: 'Виберіть кольори бренду, і Eagami UI побудує повну шкалу 50–900 у просторі OKLCH, перевірить її контраст за WCAG у світлій і темній темі та надасть готову конфігурацію <code>provideEagamiUi()</code>.',
-      controlsHeading: 'Кольори бренду',
       primaryLabel: 'Основний колір',
       secondaryLabel: 'Додатковий колір',
-      contrastHeading: 'Доступність',
       contrastPass: 'Відповідає контрасту WCAG 2.2 AA у світлій і темній темі',
       contrastFailIntro: 'Деякі поєднання не досягають порога контрасту WCAG AA:',
-      scaleHeading: 'Згенерована шкала',
       previewHeading: 'Попередній перегляд',
       previewHint: 'Перемкніть тему сайту, щоб переглянути палітру в темному режимі.',
       previewButton: 'Почати',
       previewSwitch: 'Сповіщення',
-      previewPrimary: 'Основний',
-      previewSecondary: 'Додатковий',
       previewStep1: 'Акаунт',
       previewStep2: 'Профіль',
       previewStep3: 'Готово',
       previewProgress: 'Прогрес:',
-      exportHeading: 'Використовуйте',
-      exportConfigLabel: 'Конфігурація провайдера',
+      exportHeading: 'Експорт',
+      exportConfigLabel: 'Конфігурація Angular',
       exportCssLabel: 'CSS-змінні',
     },
     tokens: {
@@ -359,7 +351,7 @@ export const uk: WebMessages = {
       metaDescription:
         'CSS-змінні для кольорів, типографіки, відступів, висоти, форми та руху.',
       title: 'Дизайн-токени',
-      lede: 'CSS-змінні, що керують кожним компонентом бібліотеки: кольори, типографіка, відступи, висота, форма та рух. Посилайтеся на ці токени у власних стилях через <code>var(--token-name)</code>, щоб зберігати візуальну послідовність у всьому застосунку.',
+      lede: 'Дизайн-токени — це CSS-змінні, що керують кожним компонентом бібліотеки: кольори, типографіка, відступи, висота, форма та рух. Посилайтеся на ці токени у власних стилях через <code>var(--token-name)</code>, щоб зберігати візуальну послідовність у всьому застосунку.',
       sections: {
         theming: 'Темізація',
         palette: 'Палітра бренду',
@@ -371,7 +363,7 @@ export const uk: WebMessages = {
         motion: 'Рух',
       },
       themingRootBefore:
-        'Перевизначте будь-який токен на <code>:root</code>, щоб переоформити всю бібліотеку:',
+        'Кожен дизайн-токен Eagami можна перевизначити, тож бібліотека адаптується під будь-який бренд. Перевизначте будь-який токен на <code>:root</code>, щоб переоформити всю бібліотеку:',
       themingScopedBefore:
         'Або обмежте перевизначення окремими компонентами, де це доречно:',
       paletteIntro:
@@ -379,7 +371,7 @@ export const uk: WebMessages = {
       paletteOverrides:
         'Зафіксуйте конкретні відтінки або перепризначте, який виведений відтінок стоїть за кожною семантичною роллю:',
       paletteContrast:
-        'Кожна пара бренд-роль (текст на поверхні, поверхня на полотні) перевіряється на відповідність WCAG 2.2 AA під час старту. Невдала комбінація викидає помилку ще до завантаження застосунку, тож баг контрасту в кольорі бренду виявляється на старті, а не у продакшені.',
+        'Кожна пара бренд-роль (текст на поверхні, поверхня на полотні) перевіряється на відповідність <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> під час старту. Невдала комбінація викидає помилку ще до завантаження застосунку, тож баг контрасту в кольорі бренду виявляється на старті, а не у продакшені.',
       paletteBuilderIntro: 'Створюйте й переглядайте палітру візуально в',
       paletteBuilderLink: 'конструкторі теми',
       elevationDrop: 'Падаючі тіні',
@@ -389,7 +381,6 @@ export const uk: WebMessages = {
       colorsPrimary: 'Основний',
       colorsSecondary: 'Додатковий',
       colorsNeutral: 'Нейтральний',
-      colorsStatus: 'Статус',
       colorsSemantic: 'Семантичний',
       typographyFamilies: 'Гарнітури',
       typographySizes: 'Розміри',
@@ -401,6 +392,8 @@ export const uk: WebMessages = {
       motionSimulate: 'Симулювати',
       motionDurations: 'Тривалості',
       motionEasings: 'Згладжування',
+      integrationsIntro:
+        'Усі наведені вище дизайн-токени не залежать від фреймворку. Для проєктів без Angular просто передайте самодостатній посібник з інтеграції своєму ШІ-агенту або дозвольте йому напряму використовувати машинозчитуваний експорт токенів.',
     },
     icons: {
       metaTitle: 'Іконки | Eagami UI',
@@ -432,7 +425,7 @@ export const uk: WebMessages = {
       supportedHeading: 'Підтримувані мови',
       quickSetupHeading: 'Швидке налаштування',
       quickSetupBefore:
-        'Додайте <code>provideEagamiUi()</code> до конфігурації застосунку та зареєструйте мови, які ви використовуєте, через <code>locales</code>. Англійська доступна завжди, тож ви постачаєте лише те, що потрібно.',
+        'Додайте <code>provideEagamiUi()</code> до конфігурації застосунку та зареєструйте мови, які ви використовуєте, через <code>locales</code>. Англійська включена завжди, а до збірки додаються лише ті мови, які ви реєструєте.',
       lazyHeading: 'Ліниве завантаження',
       lazyBefore:
         'Зареєструйте <code>localeLoaders</code> замість <code>locales</code>: мова завантажується під час першої активації й не потрапляє до початкового бандла. Спрямуйте кожен завантажувач на модуль, що реекспортує один мовний пакет, а коли перемикання має бути миттєвим, попередньо завантажте його через <code>loadLocale()</code>.',
@@ -1045,6 +1038,9 @@ export const uk: WebMessages = {
             variant: 'Варіант',
             dismissible: 'Закриваний',
             size: 'Розмір',
+            icon: 'Іконка (перевизначення)',
+          },
+          toast: {
             icon: 'Іконка (перевизначення)',
           },
           avatar: {

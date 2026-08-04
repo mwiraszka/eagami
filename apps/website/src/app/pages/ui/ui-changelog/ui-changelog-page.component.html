@@ -1,4 +1,4 @@
-<article class="ui-changelog">
+<article class="web-page ui-changelog">
   <header class="ui-changelog__header">
     <h1 class="ui-changelog__title">{{ messages().ui.changelog.title }}</h1>
     <ea-divider />
@@ -9,13 +9,17 @@
   </header>
 
   @for (release of releases; track release.version) {
-    <section class="ui-changelog__release">
-      <h2 class="ui-changelog__version">
-        {{ release.version }}
-        @if (release.date) {
-          <span class="ui-changelog__date">{{ release.date }}</span>
-        }
-      </h2>
+    <section
+      class="ui-changelog__release"
+      [id]="'v' + release.version">
+      <web-section-heading [fragment]="'v' + release.version">
+        <h2 class="ui-changelog__version">
+          {{ release.version }}
+          @if (release.date) {
+            <span class="ui-changelog__date">{{ release.date }}</span>
+          }
+        </h2>
+      </web-section-heading>
       @for (section of release.sections; track section.heading) {
         <h3 class="ui-changelog__section-heading">{{ section.heading }}</h3>
         <ul

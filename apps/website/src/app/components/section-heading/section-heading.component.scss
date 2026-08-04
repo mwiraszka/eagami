@@ -1,0 +1,12 @@
+@use 'mixins' as mixins;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-heading__copy-link {
+  @include mixins.icon-button(32px, 16px);
+}

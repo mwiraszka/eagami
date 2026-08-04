@@ -1,7 +1,10 @@
-<article class="ui-index">
+<article class="web-page ui-index">
   <header class="ui-index__header">
     <h1 class="ui-index__title">{{ messages().ui.index.title }}</h1>
     <ea-divider />
+  </header>
+
+  <section class="web-section web-section--no-divider">
     <p class="ui-index__lede">
       <a
         href="https://www.npmjs.com/package/@eagami/ui"
@@ -11,23 +14,15 @@
       </a>
       {{ messages().ui.index.ledeBefore }} {{ messages().ui.index.ledeAfter }}
     </p>
-  </header>
-
-  <section
-    class="ui-index__section ui-index__section--showcase"
-    [style]="showcaseStyle()">
-    <web-ui-showcase />
-  </section>
-
-  <section class="ui-index__section">
-    <header class="ui-theme__header">
-      <h2 class="ui-index__heading">{{ messages().ui.index.theme.heading }}</h2>
-      <p class="ui-index__body">
-        {{ messages().ui.index.theme.ledeBefore }}
-        <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a
-        >{{ messages().ui.index.theme.ledeAfter }}
-      </p>
-    </header>
+    <web-ui-showcase
+      class="ui-index__showcase"
+      [style]="showcaseStyle()" />
+    <h2 class="ui-index__subheading">{{ messages().ui.index.theme.heading }}</h2>
+    <p class="ui-index__body">
+      {{ messages().ui.index.theme.ledeBefore }}
+      <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a
+      >{{ messages().ui.index.theme.ledeAfter }}
+    </p>
     <div
       class="ui-theme__controls"
       [style]="controlsStyle">
@@ -65,8 +60,12 @@
     </div>
   </section>
 
-  <section class="ui-index__section">
-    <h2 class="ui-index__heading">{{ messages().ui.index.principlesHeading }}</h2>
+  <section
+    id="design-principles"
+    class="web-section">
+    <web-section-heading fragment="design-principles">
+      <h2 class="ui-index__heading">{{ messages().ui.index.principlesHeading }}</h2>
+    </web-section-heading>
     <ul
       class="principle-grid"
       role="list">
@@ -103,19 +102,5 @@
         </li>
       }
     </ul>
-  </section>
-
-  <section class="ui-index__section">
-    <h2 class="ui-index__heading">{{ messages().ui.index.getStartedHeading }}</h2>
-    <!-- `</a` and `>{{ }}` are split across lines to suppress the inter-tag
-         whitespace prettier would insert: Polish needs the link to butt against
-         its trailing comma ("Instalacji, aby"), not "Instalacji , aby". Non-Polish
-         locales carry their own leading space in `getStartedAfter`. Same trick as
-         in home-page.component.html. -->
-    <p class="ui-index__body">
-      {{ messages().ui.index.getStartedBefore }}
-      <a routerLink="/ui/setup">{{ messages().ui.index.getStartedLink }}</a
-      >{{ messages().ui.index.getStartedAfter }}
-    </p>
   </section>
 </article>

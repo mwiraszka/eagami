@@ -30,6 +30,7 @@ export const ar: WebMessages = {
       copySuccess: 'تم النسخ إلى الحافظة',
       copyError: 'تعذّر النسخ إلى الحافظة',
     },
+    copyLinkLabel: 'نسخ رابط القسم',
   },
   home: {
     metaTitle: 'Eagami',
@@ -241,14 +242,10 @@ export const ar: WebMessages = {
           body: 'كل مكوّن هو Angular وCSS عادي دون ارتباط بمزوّد، لذا يمكن قراءة الشيفرة المصدرية أو نسخها أو تعديلها مثل أي شيفرة أخرى في مشروعك.',
         },
       ],
-      getStartedHeading: 'البدء',
-      getStartedBefore: 'انتقل إلى',
-      getStartedLink: 'الإعداد',
       /* Leading space because the template suppresses whitespace between the
          link and this string so Polish can butt its trailing comma directly
          against "Instalacji". Locales that continue with a word (en/fr/el/es)
          provide the separator themselves. */
-      getStartedAfter: ' لتثبيت الحزمة وربط ورقة الأنماط العامة.',
       showcase: {
         button: 'اضغط عليّ',
         toggle: 'بدّلني',
@@ -316,7 +313,7 @@ export const ar: WebMessages = {
     integrations: {
       heading: 'ما بعد Angular',
       intro:
-        'رموز التصميم مستقلة عن إطار العمل. انسخ دليل تكامل مستقلاً إلى مشروع لا يستخدم Angular أو استخدم مباشرةً تصدير الرموز القابل للقراءة آليًا.',
+        'رموز التصميم في Eagami مستقلة عن إطار العمل. انسخ دليل تكامل مستقلاً إلى مشروع لا يستخدم Angular أو استخدم مباشرةً تصدير الرموز القابل للقراءة آليًا.',
       reactLink: 'دليل تكامل React',
       flutterLink: 'دليل تكامل Flutter',
       tokensLink: 'رموز التصميم بصيغة JSON',
@@ -327,33 +324,28 @@ export const ar: WebMessages = {
         'أنشئ لوحة ألوان مُتحقَّقة وفق WCAG للوضعين الفاتح والداكن من ألوان علامتك التجارية، ثم انسخ إعدادات المزوّد أو CSS.',
       title: 'منشئ السمة',
       lede: 'اختر ألوان علامتك التجارية ويشتق Eagami UI مقياسًا كاملًا من 50–900 في فضاء OKLCH، ويتحقق من تباينه وفق WCAG في الوضعين الفاتح والداكن، ويمنحك إعداد <code>provideEagamiUi()</code> جاهزًا للاستخدام.',
-      controlsHeading: 'ألوان العلامة التجارية',
       primaryLabel: 'اللون الأساسي',
       secondaryLabel: 'اللون الثانوي',
-      contrastHeading: 'إمكانية الوصول',
       contrastPass: 'يستوفي تباين WCAG 2.2 AA في الوضعين الفاتح والداكن',
       contrastFailIntro: 'بعض التركيبات أقل من حدّ تباين WCAG AA:',
-      scaleHeading: 'المقياس المُنشأ',
       previewHeading: 'معاينة',
       previewHint: 'بدّل سمة الموقع لمعاينة لوحة الألوان في الوضع الداكن.',
       previewButton: 'ابدأ الآن',
       previewSwitch: 'الإشعارات',
-      previewPrimary: 'أساسي',
-      previewSecondary: 'ثانوي',
       previewStep1: 'الحساب',
       previewStep2: 'الملف الشخصي',
       previewStep3: 'تم',
       previewProgress: 'التقدم:',
-      exportHeading: 'استخدمها',
-      exportConfigLabel: 'إعدادات المزوّد',
-      exportCssLabel: 'خصائص CSS المخصّصة',
+      exportHeading: 'التصدير',
+      exportConfigLabel: 'إعدادات Angular',
+      exportCssLabel: 'متغيرات CSS',
     },
     tokens: {
       metaTitle: 'رموز التصميم | Eagami UI',
       metaDescription:
         'خصائص CSS المخصّصة للألوان والطباعة والتباعد والارتفاع والشكل والحركة.',
       title: 'رموز التصميم',
-      lede: 'خصائص CSS المخصّصة التي تحرّك كل مكوّن في المكتبة: الألوان والطباعة والتباعد والارتفاع والشكل والحركة. ارجع إلى هذه الرموز في أنماطك الخاصة عبر <code>var(--token-name)</code> للحفاظ على الاتساق البصري عبر التطبيق.',
+      lede: 'رموز التصميم هي خصائص CSS المخصّصة التي تحرّك كل مكوّن في المكتبة: الألوان والطباعة والتباعد والارتفاع والشكل والحركة. ارجع إلى هذه الرموز في أنماطك الخاصة عبر <code>var(--token-name)</code> للحفاظ على الاتساق البصري عبر التطبيق.',
       sections: {
         theming: 'السمات',
         palette: 'لوحة ألوان العلامة',
@@ -365,14 +357,14 @@ export const ar: WebMessages = {
         motion: 'الحركة',
       },
       themingRootBefore:
-        'تجاوز أي رمز على <code>:root</code> لإعادة تنسيق سمة المكتبة بأكملها:',
+        'يمكن تجاوز أي رمز تصميم في Eagami، بحيث تتكيف المكتبة مع أي علامة تجارية. تجاوز أي رمز على <code>:root</code> لإعادة تنسيق سمة المكتبة بأكملها:',
       themingScopedBefore: 'أو حصر التجاوزات على مكوّنات فردية حيثما كان ذلك مفيدًا:',
       paletteIntro:
         'مرّر لون hex واحدًا للعلامة إلى <code>provideEagamiUi()</code>، وستشتق المكتبة مقياسًا كاملًا من عشرة تدرّجات (من 50 إلى 900) في فضاء <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>، مع تثبيت درجة اللون والتشبّع وتغيير السطوع فقط. تغذّي التدرّجات المشتقة كل رمز <code>--color-brand-*</code> في الوضعين الفاتح والداكن:',
       paletteOverrides:
         'ثبّت تدرّجات محدّدة أو أعِد تعيين أي تدرّج مشتق يدعم كل دور دلالي:',
       paletteContrast:
-        'يُفحَص كل اقتران لأدوار العلامة (النص على السطح، والسطح على القماشة) للتحقق من مطابقته لمعيار WCAG 2.2 AA عند التهيئة. يُطلِق التركيب غير المطابق خطأً قبل تحميل التطبيق، لذا يُكتشَف خلل التباين في لون العلامة عند الإقلاع وليس في الإنتاج.',
+        'يُفحَص كل اقتران لأدوار العلامة (النص على السطح، والسطح على القماشة) للتحقق من مطابقته لمعيار <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> عند التهيئة. يُطلِق التركيب غير المطابق خطأً قبل تحميل التطبيق، لذا يُكتشَف خلل التباين في لون العلامة عند الإقلاع وليس في الإنتاج.',
       paletteBuilderIntro: 'أنشئ لوحتك وعاينها بصريًا في',
       paletteBuilderLink: 'منشئ السمة',
       elevationDrop: 'الظلال المسقطة',
@@ -382,7 +374,6 @@ export const ar: WebMessages = {
       colorsPrimary: 'أساسي',
       colorsSecondary: 'ثانوي',
       colorsNeutral: 'محايد',
-      colorsStatus: 'الحالة',
       colorsSemantic: 'دلالي',
       typographyFamilies: 'العائلات',
       typographySizes: 'الأحجام',
@@ -394,6 +385,8 @@ export const ar: WebMessages = {
       motionSimulate: 'محاكاة',
       motionDurations: 'المدد',
       motionEasings: 'دوال التيسير',
+      integrationsIntro:
+        'جميع رموز التصميم أعلاه مستقلة عن إطار العمل. للمشاريع التي لا تستخدم Angular، ما عليك سوى تمرير دليل تكامل مستقل إلى وكيل الذكاء الاصطناعي لديك، أو دعه يستخدم تصدير الرموز القابل للقراءة آليًا مباشرةً.',
     },
     icons: {
       metaTitle: 'الأيقونات | Eagami UI',
@@ -425,7 +418,7 @@ export const ar: WebMessages = {
       supportedHeading: 'اللغات المدعومة',
       quickSetupHeading: 'إعداد سريع',
       quickSetupBefore:
-        'أضف <code>provideEagamiUi()</code> إلى إعدادات تطبيقك وسجّل اللغات التي تستخدمها عبر <code>locales</code>. الإنجليزية متاحة دائمًا، لذا لا تشحن إلا ما تحتاج إليه.',
+        'أضف <code>provideEagamiUi()</code> إلى إعدادات تطبيقك وسجّل اللغات التي تستخدمها عبر <code>locales</code>. الإنجليزية مضمّنة دائمًا، ولا تُضاف إلى الحزمة إلا اللغات التي تسجّلها.',
       lazyHeading: 'التحميل الكسول',
       lazyBefore:
         'سجّل <code>localeLoaders</code> بدلاً من <code>locales</code>: تُجلب اللغة عند تفعيلها لأول مرة وتبقى خارج الحزمة الأولية. وجّه كل مُحمّل إلى وحدة تعيد تصدير حزمة لغة واحدة، وحمّل مسبقًا عبر <code>loadLocale()</code> عندما يلزم أن يكون التبديل فوريًا.',
@@ -1034,6 +1027,9 @@ export const ar: WebMessages = {
             variant: 'النمط',
             dismissible: 'قابل للإغلاق',
             size: 'الحجم',
+            icon: 'الأيقونة (تجاوز)',
+          },
+          toast: {
             icon: 'الأيقونة (تجاوز)',
           },
           avatar: {

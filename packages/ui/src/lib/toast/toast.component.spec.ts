@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HeartIconComponent } from '../icons/heart.component';
 import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 
@@ -47,6 +48,27 @@ describe('ToastComponent', () => {
     fixture.detectChanges();
 
     expect(getToasts()[0].classList).toContain('ea-toast--error');
+  });
+
+  it('renders a custom icon component in place of the variant icon', () => {
+    toastService.show('saved', {
+      variant: 'success',
+      duration: 0,
+      icon: HeartIconComponent,
+    });
+    fixture.detectChanges();
+
+    const toast = getToasts()[0];
+
+    expect(toast.querySelector('ea-icon-heart')).not.toBeNull();
+    expect(toast.querySelector('ea-icon-check-circle')).toBeNull();
+  });
+
+  it('renders no icon when the override is null', () => {
+    toastService.show('saved', { variant: 'success', duration: 0, icon: null });
+    fixture.detectChanges();
+
+    expect(getToasts()[0].querySelector('.ea-toast__icon')).toBeNull();
   });
 
   it('announces errors and warnings assertively and the rest politely', () => {
