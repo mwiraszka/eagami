@@ -2,9 +2,6 @@
 
 .ui-tokens {
   container-type: inline-size;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 880px;
 }
 
@@ -78,12 +75,8 @@
 }
 
 .tokens-subsection__title {
+  @include mixins.subsection-title;
   margin-top: 24px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-primary);
 
   &:first-of-type {
     margin-top: 0;
@@ -109,24 +102,49 @@ web-section-heading + .tokens-subsection__row {
 }
 
 // Sequential scales render as a single contiguous bar: each shade is a thin
-// segment with its step number inside, and the full token name on hover. Far
-// more compact than a grid of labelled cards while keeping the scale readable.
+// segment with its step number inside, and the full token name on hover. Once
+// the stops can no longer hold 50px each, a scale splits evenly into two rows.
 .color-scale {
-  display: flex;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(var(--scale-cols, 10), minmax(50px, 1fr));
+  overflow: hidden;
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
 }
 
+.color-scale--neutral {
+  --scale-cols: 12;
+}
+
+.color-scale--status {
+  --scale-cols: 6;
+}
+
+@container (max-width: 519px) {
+  .color-scale:not(.color-scale--neutral):not(.color-scale--status) {
+    grid-template-columns: repeat(5, minmax(50px, 1fr));
+  }
+}
+
+@container (max-width: 619px) {
+  .color-scale--neutral {
+    grid-template-columns: repeat(6, minmax(50px, 1fr));
+  }
+}
+
+@container (max-width: 319px) {
+  .color-scale--status {
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+  }
+}
+
 .color-scale__stop {
-  position: relative;
   display: flex;
-  flex: 1 1 0;
   align-items: flex-end;
-  justify-content: center;
-  min-width: 30px;
+  justify-content: flex-end;
   height: 56px;
-  padding-bottom: 8px;
+  padding-block-end: 8px;
+  padding-inline-end: 8px;
 
   &:not(:last-child) {
     box-shadow: inset -1px 0 0 var(--color-border-subtle);
@@ -134,7 +152,7 @@ web-section-heading + .tokens-subsection__row {
 }
 
 .color-scale__shade {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   font-family: var(--font-family-mono);
   color: var(--color-neutral-900);

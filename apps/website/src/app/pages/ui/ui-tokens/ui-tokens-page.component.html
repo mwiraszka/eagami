@@ -1,4 +1,4 @@
-<article class="ui-tokens">
+<article class="web-page ui-tokens">
   <header class="ui-tokens__header">
     <h1 class="ui-tokens__title">{{ messages().ui.tokens.title }}</h1>
     <ea-divider />
@@ -77,7 +77,7 @@
       <h3 class="tokens-subsection__title">{{ messages().ui.tokens.colorsNeutral }}</h3>
       <code class="tokens-scale__var">--color-neutral-*</code>
     </div>
-    <div class="color-scale">
+    <div class="color-scale color-scale--neutral">
       @for (shade of neutralPalette; track shade) {
         <div
           class="color-scale__stop swatch--neutral swatch--{{ shade }}"
@@ -92,7 +92,7 @@
         <h3 class="tokens-subsection__title">{{ family }}</h3>
         <code class="tokens-scale__var">--color-{{ family }}-*</code>
       </div>
-      <div class="color-scale">
+      <div class="color-scale color-scale--status">
         @for (shade of statusShades; track shade) {
           <div
             class="color-scale__stop swatch--{{ family }} swatch--{{ shade }}"

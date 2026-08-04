@@ -1,4 +1,4 @@
-<article class="theme-builder">
+<article class="web-page theme-builder">
   <header class="theme-builder__header">
     <h1 class="theme-builder__title">{{ messages().ui.themeBuilder.title }}</h1>
     <ea-divider />
@@ -8,90 +8,52 @@
     </p>
   </header>
 
-  <section
-    id="brand-colors"
-    class="web-section tb-controls"
-    aria-labelledby="tb-controls-heading">
-    <web-section-heading fragment="brand-colors">
-      <h2
-        id="tb-controls-heading"
-        class="tb-section__title">
-        {{ messages().ui.themeBuilder.controlsHeading }}
-      </h2>
-    </web-section-heading>
+  <div class="web-section web-section--no-divider">
+    <div class="tb-builder">
+      <div class="tb-builder__family">
+        <ea-color-picker
+          format="hex"
+          size="lg"
+          [label]="messages().ui.themeBuilder.primaryLabel"
+          [value]="primaryBase()"
+          [showAlpha]="false"
+          [clearable]="false"
+          (changed)="onPrimaryChange($event)" />
+        <div class="tb-scale">
+          @for (stop of primaryScale(); track stop.shade) {
+            <div
+              class="tb-scale__stop"
+              [class.tb-scale__stop--dark]="isDarkShade(stop.shade)"
+              [style.background-color]="stop.value"
+              [title]="stop.value">
+              <span class="tb-scale__shade">{{ stop.shade }}</span>
+            </div>
+          }
+        </div>
+      </div>
 
-    <div class="tb-controls__fields">
-      <ea-color-picker
-        format="hex"
-        size="lg"
-        [label]="messages().ui.themeBuilder.primaryLabel"
-        [value]="primaryBase()"
-        [showAlpha]="false"
-        [clearable]="false"
-        (changed)="onPrimaryChange($event)" />
-      <ea-color-picker
-        format="hex"
-        size="lg"
-        [label]="messages().ui.themeBuilder.secondaryLabel"
-        [value]="secondaryBase()"
-        [showAlpha]="false"
-        [clearable]="false"
-        (changed)="onSecondaryChange($event)" />
+      <div class="tb-builder__family">
+        <ea-color-picker
+          format="hex"
+          size="lg"
+          [label]="messages().ui.themeBuilder.secondaryLabel"
+          [value]="secondaryBase()"
+          [showAlpha]="false"
+          [clearable]="false"
+          (changed)="onSecondaryChange($event)" />
+        <div class="tb-scale">
+          @for (stop of secondaryScale(); track stop.shade) {
+            <div
+              class="tb-scale__stop"
+              [class.tb-scale__stop--dark]="isDarkShade(stop.shade)"
+              [style.background-color]="stop.value"
+              [title]="stop.value">
+              <span class="tb-scale__shade">{{ stop.shade }}</span>
+            </div>
+          }
+        </div>
+      </div>
     </div>
-  </section>
-
-  <section
-    id="generated-scale"
-    class="web-section"
-    aria-labelledby="tb-scale-heading">
-    <web-section-heading fragment="generated-scale">
-      <h2
-        id="tb-scale-heading"
-        class="tb-section__title">
-        {{ messages().ui.themeBuilder.scaleHeading }}
-      </h2>
-    </web-section-heading>
-
-    <h3 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewPrimary }}</h3>
-    <div class="tb-scale">
-      @for (stop of primaryScale(); track stop.shade) {
-        <figure class="tb-swatch">
-          <span
-            class="tb-swatch__color"
-            [style.background-color]="stop.value">
-          </span>
-          <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
-        </figure>
-      }
-    </div>
-
-    <h3 class="tb-subsection__title">{{
-      messages().ui.themeBuilder.previewSecondary
-    }}</h3>
-    <div class="tb-scale">
-      @for (stop of secondaryScale(); track stop.shade) {
-        <figure class="tb-swatch">
-          <span
-            class="tb-swatch__color"
-            [style.background-color]="stop.value">
-          </span>
-          <figcaption class="tb-swatch__caption">{{ stop.shade }}</figcaption>
-        </figure>
-      }
-    </div>
-  </section>
-
-  <section
-    id="accessibility"
-    class="web-section"
-    aria-labelledby="tb-contrast-heading">
-    <web-section-heading fragment="accessibility">
-      <h2
-        id="tb-contrast-heading"
-        class="tb-section__title">
-        {{ messages().ui.themeBuilder.contrastHeading }}
-      </h2>
-    </web-section-heading>
 
     @if (passesContrast()) {
       <p
@@ -119,19 +81,8 @@
         </ul>
       </div>
     }
-  </section>
 
-  <section
-    id="preview"
-    class="web-section"
-    aria-labelledby="tb-preview-heading">
-    <web-section-heading fragment="preview">
-      <h2
-        id="tb-preview-heading"
-        class="tb-section__title">
-        {{ messages().ui.themeBuilder.previewHeading }}
-      </h2>
-    </web-section-heading>
+    <h3 class="tb-subsection__title">{{ messages().ui.themeBuilder.previewHeading }}</h3>
     <p class="tb-hint">{{ messages().ui.themeBuilder.previewHint }}</p>
 
     <div class="tb-preview">
@@ -159,13 +110,13 @@
         <ea-step [label]="messages().ui.themeBuilder.previewStep3" />
       </ea-stepper>
     </div>
-  </section>
+  </div>
 
   <section
-    id="use-it"
+    id="export"
     class="web-section"
     aria-labelledby="tb-export-heading">
-    <web-section-heading fragment="use-it">
+    <web-section-heading fragment="export">
       <h2
         id="tb-export-heading"
         class="tb-section__title">
@@ -173,14 +124,17 @@
       </h2>
     </web-section-heading>
 
-    <h3 class="tb-subsection__title">
-      {{ messages().ui.themeBuilder.exportConfigLabel }}
-    </h3>
-    <web-code-snippet [code]="configSnippet()" />
-
-    <h3 class="tb-subsection__title">
-      {{ messages().ui.themeBuilder.exportCssLabel }}
-    </h3>
-    <web-code-snippet [code]="cssSnippet()" />
+    <ea-tabs activeTab="angular">
+      <ea-tab
+        value="angular"
+        [label]="messages().ui.themeBuilder.exportConfigLabel">
+        <web-code-snippet [code]="configSnippet()" />
+      </ea-tab>
+      <ea-tab
+        value="css"
+        [label]="messages().ui.themeBuilder.exportCssLabel">
+        <web-code-snippet [code]="cssSnippet()" />
+      </ea-tab>
+    </ea-tabs>
   </section>
 </article>

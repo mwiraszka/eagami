@@ -1,9 +1,6 @@
 @use 'mixins' as mixins;
 
 .theme-builder {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 880px;
 }
 
@@ -27,28 +24,33 @@
   }
 }
 
-.tb-controls__fields {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+// Each brand family pairs its picker with the scale it derives, cause above
+// effect, side by side until the pair no longer fits
+.tb-builder {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 
-  ea-color-picker {
-    flex: 1 1 240px;
-    min-width: 0;
-    max-width: 340px;
+  @include mixins.respond-to('lt-sm') {
+    grid-template-columns: 1fr;
   }
+}
+
+.tb-builder__family {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .tb-section__title {
   @include mixins.section-title;
 }
 
+// 48px above Preview (16px section gap plus this) to set it off from the builder
 .tb-subsection__title {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
+  @include mixins.subsection-title;
+  margin-top: 32px;
 }
 
 .tb-hint {
@@ -116,33 +118,44 @@
   opacity: 0.75;
 }
 
+// Contiguous shade bar matching the design tokens page's colour scales; once
+// ten stops can no longer hold 50px each, they split evenly into two rows of five
 .tb-scale {
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(10, minmax(50px, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+}
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+@container (max-width: 519px) {
+  .tb-scale {
+    grid-template-columns: repeat(5, minmax(50px, 1fr));
   }
 }
 
-.tb-swatch {
+.tb-scale__stop {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 56px;
+  padding-block-end: 8px;
+  padding-inline-end: 8px;
+
+  &:not(:last-child) {
+    box-shadow: inset -1px 0 0 var(--color-border-subtle);
+  }
 }
 
-.tb-swatch__color {
-  display: block;
-  height: 48px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
-}
-
-.tb-swatch__caption {
+.tb-scale__shade {
   font-size: 12px;
-  text-align: center;
-  color: var(--color-text-tertiary);
+  font-weight: 600;
+  font-family: var(--font-family-mono);
+  color: var(--color-neutral-900);
+}
+
+.tb-scale__stop--dark .tb-scale__shade {
+  color: var(--color-neutral-50);
 }
 
 .tb-preview {
