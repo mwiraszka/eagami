@@ -8,6 +8,8 @@
 @forward 'theme';
 @forward 'ui-demo';
 
+@use 'mixins' as mixins;
+
 /* Marks every link that leaves eagami.com with the same open-in-new-tab glyph.
    Done here rather than per template because many of these links are injected
    through [innerHTML] (localized prose, rendered changelog entries) and cannot
@@ -30,10 +32,21 @@ a[href^='http']:not(
   content: '';
 }
 
-/* Shared section block for the Eagami UI documentation pages: 48px between
-   sections (page-level flex gap) with a subtle divider carrying 24px of extra
-   space on each side, 16px between items within a section, and fragment
-   scrolling that clears the fixed header. Tweaks here restyle every page. */
+/* Shared layout for the Eagami UI documentation pages: 48px between sections
+   with a subtle divider carrying 24px of extra space on each side, 16px between
+   items within a section, and fragment scrolling that clears the fixed header
+   (plus the sticky menu-trigger bar on narrow screens). The rhythm tightens on
+   phones. Tweaks here restyle every page. */
+.web-page {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include mixins.respond-to('lt-sm') {
+    gap: 32px;
+  }
+}
+
 .web-section {
   display: flex;
   flex-direction: column;
@@ -42,6 +55,15 @@ a[href^='http']:not(
   margin-top: 24px;
   border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
   scroll-margin-top: var(--web-height-header);
+
+  @include mixins.respond-to('lt-md') {
+    scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
+  }
+
+  @include mixins.respond-to('lt-sm') {
+    padding-top: 16px;
+    margin-top: 16px;
+  }
 }
 
 .web-section--no-divider {

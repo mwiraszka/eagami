@@ -1,9 +1,6 @@
 @use 'mixins' as mixins;
 
 .ui-changelog {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 880px;
 
   &__header {
@@ -36,13 +33,17 @@
     padding-top: 32px;
     border-top: var(--border-width-thin) solid var(--web-color-dividerSubtle);
     scroll-margin-top: var(--web-height-header);
+
+    @include mixins.respond-to('lt-md') {
+      scroll-margin-top: calc(var(--web-height-header) + var(--web-height-ui-trigger));
+    }
   }
 
   &__version {
     display: flex;
     align-items: baseline;
     gap: 12px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: var(--color-text-primary);
   }
@@ -58,7 +59,7 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--color-text-secondary);
+    color: var(--color-text-tertiary);
   }
 
   &__entries {

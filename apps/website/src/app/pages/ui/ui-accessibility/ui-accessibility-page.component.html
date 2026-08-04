@@ -1,4 +1,4 @@
-<article class="ui-accessibility">
+<article class="web-page ui-accessibility">
   <header class="ui-accessibility__header">
     <h1 class="ui-accessibility__title">{{ messages().ui.accessibility.title }}</h1>
     <ea-divider />
@@ -12,6 +12,10 @@
       <h2>{{ messages().ui.accessibility.conformanceHeading }}</h2>
     </web-section-heading>
     <p [innerHTML]="messages().ui.accessibility.conformanceBody"></p>
+    <h3 class="ui-accessibility__subheading">{{
+      messages().ui.accessibility.testingHeading
+    }}</h3>
+    <p [innerHTML]="messages().ui.accessibility.testingBody"></p>
   </section>
 
   <section
@@ -71,14 +75,5 @@
     <p [innerHTML]="messages().ui.accessibility.labelsBefore"></p>
     <web-code-snippet [code]="labelsSnippet" />
     <p [innerHTML]="messages().ui.accessibility.labelsAfter"></p>
-  </section>
-
-  <section
-    id="testing"
-    class="web-section ui-accessibility__section">
-    <web-section-heading fragment="testing">
-      <h2>{{ messages().ui.accessibility.testingHeading }}</h2>
-    </web-section-heading>
-    <p [innerHTML]="messages().ui.accessibility.testingBody"></p>
   </section>
 </article>

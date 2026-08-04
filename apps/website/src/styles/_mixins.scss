@@ -206,6 +206,10 @@ $breakpoints: (
   font-family: var(--font-family-brand);
   color: var(--color-text-primary);
 
+  @include respond-to('lt-sm') {
+    font-size: 22px;
+  }
+
   + ea-divider {
     display: block;
     margin-bottom: $space-below;
@@ -221,6 +225,20 @@ $breakpoints: (
   line-height: var(--text-section-heading-lh);
   font-family: var(--text-section-heading-family);
   color: var(--color-text-primary);
+
+  @include respond-to('lt-sm') {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/// Uppercase subsection heading (an `<h3>` within a page section) shared by the
+/// UI documentation pages.
+@mixin subsection-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
 
 /// Inline code chip applying the `--text-code-*` tokens from `@eagami/ui`. Per-call

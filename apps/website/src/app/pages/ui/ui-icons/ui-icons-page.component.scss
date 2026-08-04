@@ -1,11 +1,5 @@
 @use 'mixins' as mixins;
 
-.ui-icons {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-
 .ui-icons__header {
   display: flex;
   flex-direction: column;

@@ -1,4 +1,4 @@
-<article class="ui-index">
+<article class="web-page ui-index">
   <header class="ui-index__header">
     <h1 class="ui-index__title">{{ messages().ui.index.title }}</h1>
     <ea-divider />
@@ -13,31 +13,19 @@
     </p>
   </header>
 
-  <section
-    class="web-section web-section--no-divider"
-    [style]="showcaseStyle()">
-    <web-ui-showcase />
-  </section>
-
-  <section
-    id="make-it-your-own"
-    class="web-section">
-    <header class="ui-theme__header">
-      <web-section-heading fragment="make-it-your-own">
-        <h2 class="ui-index__heading">{{ messages().ui.index.theme.heading }}</h2>
-      </web-section-heading>
-      <p class="ui-index__body">
-        {{ messages().ui.index.theme.ledeBefore }}
-        <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a
-        >{{ messages().ui.index.theme.ledeAfter }}
-      </p>
-    </header>
+  <section class="web-section web-section--no-divider ui-index__showcase">
+    <web-ui-showcase [style]="showcaseStyle()" />
+    <p class="ui-index__body">
+      {{ messages().ui.index.theme.ledeBefore }}
+      <a routerLink="/ui/design-tokens">{{ messages().ui.index.theme.ledeLink }}</a
+      >{{ messages().ui.index.theme.ledeAfter }}
+    </p>
     <div
       class="ui-theme__controls"
       [style]="controlsStyle">
       <ea-button
         class="ui-theme__reset"
-        variant="secondary"
+        variant="ghost"
         size="sm"
         (clicked)="resetTheme()">
         {{ messages().ui.index.theme.reset }}
@@ -111,23 +99,5 @@
         </li>
       }
     </ul>
-  </section>
-
-  <section
-    id="get-started"
-    class="web-section">
-    <web-section-heading fragment="get-started">
-      <h2 class="ui-index__heading">{{ messages().ui.index.getStartedHeading }}</h2>
-    </web-section-heading>
-    <!-- `</a` and `>{{ }}` are split across lines to suppress the inter-tag
-         whitespace prettier would insert: Polish needs the link to butt against
-         its trailing comma ("Instalacji, aby"), not "Instalacji , aby". Non-Polish
-         locales carry their own leading space in `getStartedAfter`. Same trick as
-         in home-page.component.html. -->
-    <p class="ui-index__body">
-      {{ messages().ui.index.getStartedBefore }}
-      <a routerLink="/ui/setup">{{ messages().ui.index.getStartedLink }}</a
-      >{{ messages().ui.index.getStartedAfter }}
-    </p>
   </section>
 </article>

@@ -4,6 +4,9 @@
 :root {
   --web-width-content: 1140px;
   --web-height-header: 64px;
+  /* Sticky Eagami UI menu-trigger bar shown under the header on narrow screens;
+     fragment scrolling adds it to the header offset there */
+  --web-height-ui-trigger: 48px;
   /* Footer height as a constant so .home-section--contact can stretch to exactly
      `100dvh - header - footer`; otherwise scrolling to #contact misaligns. Tracks
      the sitemap grid, which reflows to fewer columns and more rows as it narrows. */

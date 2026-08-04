@@ -1,9 +1,6 @@
 @use 'mixins' as mixins;
 
 .ui-index {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
   max-width: 960px;
 }
 
@@ -34,6 +31,11 @@
   @include mixins.prose-link;
 }
 
+// Pull the showcase to 16px below the header lede, against the 48px page gap
+.ui-index__showcase {
+  margin-top: -32px;
+}
+
 .ui-index__heading {
   @include mixins.section-title;
 }
@@ -46,12 +48,6 @@
   a {
     @include mixins.prose-link;
   }
-}
-
-.ui-theme__header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .ui-theme__controls {
