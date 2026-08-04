@@ -11,7 +11,9 @@
       [attr.role]="toastRole(toast.variant)">
       @if (toast.icon !== undefined) {
         @if (toast.icon) {
-          <span class="ea-toast__icon">
+          <span
+            class="ea-toast__icon"
+            aria-hidden="true">
             <ng-container *ngComponentOutlet="toast.icon" />
           </span>
         }
