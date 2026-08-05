@@ -309,8 +309,14 @@ export class DrawerComponent implements AfterContentChecked {
     this.closed.emit();
   }
 
-  // Non-modal push drawers do not emit `cancel`, so Escape is handled here
+  // Non-modal push drawers do not emit `cancel`, so Escape is handled here.
+  // An overlay inside the drawer (menu, dropdown, picker) consumes the key it
+  // acts on, which a modal drawer honours through `cancel`; respect it here too
+  // so one press never dismisses both the overlay and the drawer.
   handleKeydown(event: KeyboardEvent): void {
+    if (event.defaultPrevented) {
+      return;
+    }
     if (this.mode() === 'push' && this.closeOnEscape() && event.key === 'Escape') {
       this.handleClose();
     }

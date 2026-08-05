@@ -195,6 +195,31 @@ describe('MenuComponent', () => {
       expect(host.isOpen()).toBe(false);
     });
 
+    it('consumes the Escape it handles, so a host modal keeps its own open', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      const event = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('leaves an Escape untouched while closed', () => {
+      const event = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
     it('closes when clicking outside', () => {
       host.isOpen.set(true);
       fixture.detectChanges();

@@ -213,11 +213,14 @@ export class MenuComponent {
     }
   }
 
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: Event): void {
     if (!this.open()) {
       return;
     }
+    // Consume the key, or a native modal hosting this menu reads the same
+    // Escape as its own close request and both shut at once
+    event.preventDefault();
     this.close(true);
   }
 }
