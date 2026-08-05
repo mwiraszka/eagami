@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.17.2',
+    date: '2026-08-06',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Show menus, dropdowns, selects, pickers, and tooltips opened from inside a dialog or drawer, which until now were painted behind the modal and unreachable.',
+          'Stop Escape closing a menu or popover and the dialog around it at the same time, so one press dismisses only the innermost overlay.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.17.1',
     date: '2026-08-04',
     sections: [
