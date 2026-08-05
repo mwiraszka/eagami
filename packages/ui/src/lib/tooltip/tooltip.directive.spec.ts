@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { type TopLayerStubs, installTopLayerStubs } from '../../test-setup';
 import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
 
 @Component({
@@ -270,6 +271,59 @@ describe('TooltipDirective', () => {
         }
       ).elementFromPoint = originalElementFromPoint;
       vi.useRealTimers();
+    });
+  });
+
+  describe('Top layer', () => {
+    let stubs: TopLayerStubs;
+
+    beforeEach(() => {
+      stubs = installTopLayerStubs();
+    });
+
+    afterEach(() => {
+      stubs.restore();
+    });
+
+    it('raises the bubble when the trigger sits inside a modal', () => {
+      stubs.openAsModal(fixture.nativeElement);
+
+      show();
+
+      expect(getTooltip()?.getAttribute('popover')).toBe('manual');
+      expect(stubs.shown()).toEqual([getTooltip()]);
+    });
+
+    it('keeps the bubble in the normal layer outside a modal', () => {
+      show();
+
+      expect(getTooltip()?.hasAttribute('popover')).toBe(false);
+      expect(stubs.shown()).toEqual([]);
+    });
+
+    it('stops the sticky-overlay check at the modal the trigger lives in', () => {
+      stubs.openAsModal(fixture.nativeElement);
+      // The bubble's centre resolves to sibling content inside the modal. The
+      // modal itself is `position: fixed`, which the ancestor walk would read
+      // as a covering overlay if it did not stop at the shared container.
+      const sibling = document.createElement('div');
+      fixture.nativeElement.appendChild(sibling);
+      vi.spyOn(window, 'getComputedStyle').mockImplementation(
+        element =>
+          ({
+            position: element === fixture.nativeElement ? 'fixed' : 'static',
+          }) as CSSStyleDeclaration,
+      );
+      let hit = 0;
+      (
+        document as Document & {
+          elementFromPoint: (x: number, y: number) => Element | null;
+        }
+      ).elementFromPoint = () => (hit++ === 0 ? getButton() : sibling);
+
+      show();
+
+      expect(getTooltip()).toBeTruthy();
     });
   });
 

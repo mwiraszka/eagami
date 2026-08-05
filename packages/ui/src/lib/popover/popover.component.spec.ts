@@ -7,7 +7,11 @@ import {
 } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
+import {
+  REAL_GET_COMPUTED_STYLE,
+  type TopLayerStubs,
+  installTopLayerStubs,
+} from '../../test-setup';
 import {
   type PopoverPlacement,
   type PopoverPositionResult,
@@ -226,6 +230,43 @@ describe('PopoverComponent', () => {
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 
       expect(host.closeCount()).toBe(0);
+    });
+
+    it('consumes the Escape it handles, so a host modal keeps its own open', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      const event = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('leaves an Escape it ignores for the modal to act on', () => {
+      host.closeOnEscape.set(false);
+      host.open.set(true);
+      fixture.detectChanges();
+
+      const event = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('leaves an Escape untouched while closed', () => {
+      const event = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
     });
 
     it('emits closeRequested on click outside the anchor and surface', () => {
@@ -534,6 +575,49 @@ describe('PopoverComponent', () => {
 
       expect(event.defaultPrevented).toBe(false);
       expect(document.activeElement).toBe(last);
+    });
+  });
+
+  describe('Top layer', () => {
+    let stubs: TopLayerStubs;
+
+    beforeEach(() => {
+      stubs = installTopLayerStubs();
+    });
+
+    afterEach(() => {
+      stubs.restore();
+    });
+
+    it('promotes the surface when the anchor sits inside a modal', () => {
+      stubs.openAsModal(fixture.nativeElement);
+
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getSurface()?.getAttribute('popover')).toBe('manual');
+      expect(stubs.shown()).toEqual([getSurface()]);
+    });
+
+    it('demotes the surface again on close', () => {
+      stubs.openAsModal(fixture.nativeElement);
+      host.open.set(true);
+      fixture.detectChanges();
+      const surface = getSurface()!;
+
+      host.open.set(false);
+      fixture.detectChanges();
+
+      expect(surface.hasAttribute('popover')).toBe(false);
+      expect(stubs.shown()).toEqual([]);
+    });
+
+    it('leaves the surface in the normal layer outside a modal', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getSurface()?.hasAttribute('popover')).toBe(false);
+      expect(stubs.shown()).toEqual([]);
     });
   });
 });

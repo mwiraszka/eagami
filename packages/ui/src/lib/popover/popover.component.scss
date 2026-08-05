@@ -1,10 +1,14 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: contents;
 }
 
 .ea-popover__surface {
-  // Sit above sticky headers, overlays, and modals so a menu opened from inside any
-  // of them is never clipped or covered; stays below the toast and tooltip layers.
+  // Sit above sticky headers and overlays so a menu opened from inside any of them
+  // is never clipped or covered; stays below the toast and tooltip layers. Modals
+  // render in the top layer, which no z-index can reach, so a surface anchored
+  // inside one is promoted there too (see `top-layer.ts`).
   z-index: var(--z-index-popover);
   position: fixed;
   // Hidden until `--positioned` flips on after a measurement-stable reposition, so
@@ -18,5 +22,16 @@
 
   &--positioned {
     visibility: visible;
+  }
+
+  // The surface is a bare positioning box; the projected panel supplies the
+  // visible chrome, so the UA's bordered, opaque popover box is undone in full.
+  &[popover] {
+    @include ea.top-layer-reset;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    color: inherit;
   }
 }

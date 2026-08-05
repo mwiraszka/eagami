@@ -13,6 +13,7 @@ import {
 import { resolveAriaTarget } from '../aria-target';
 import { isRtl } from '../direction';
 import { computePopoverPosition } from '../popover/popover-positioning';
+import { enterTopLayer, leaveTopLayer } from '../top-layer';
 
 /** Placement of the tooltip relative to its host element. */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -168,6 +169,10 @@ export class TooltipDirective implements OnDestroy {
     }
 
     this.renderer.appendChild(document.body, this.tooltipEl);
+    // Before any measuring below: a trigger inside a modal needs its bubble in
+    // the top layer to be visible at all, and a promoted bubble only has layout
+    // once shown.
+    enterTopLayer(this.tooltipEl!, this.el.nativeElement);
     document.addEventListener('keydown', this.keydownHandler);
     this.appendDescribedBy();
     this.shrinkToContent();
@@ -213,6 +218,7 @@ export class TooltipDirective implements OnDestroy {
     }
     if (this.tooltipEl) {
       document.removeEventListener('keydown', this.keydownHandler);
+      leaveTopLayer(this.tooltipEl);
       this.tooltipEl.remove();
       this.tooltipEl = null;
       this.templateView?.destroy();
@@ -339,6 +345,12 @@ export class TooltipDirective implements OnDestroy {
       if (underBubble && !this.el.nativeElement.contains(underBubble)) {
         let cursor: Element | null = underBubble;
         while (cursor && cursor !== document.body) {
+          /* A fixed / sticky container that also holds the trigger (a modal
+             dialog, a popover surface) is the surface the bubble sits on, not
+             chrome covering it, so stop before mistaking it for an overlay. */
+          if (cursor.contains(this.el.nativeElement)) {
+            break;
+          }
           const pos = getComputedStyle(cursor).position;
           if (pos === 'fixed' || pos === 'sticky') {
             this.hide();
@@ -349,7 +361,7 @@ export class TooltipDirective implements OnDestroy {
       }
     }
 
-    this.renderer.setStyle(this.tooltipEl, 'top', `${top + window.scrollY}px`);
-    this.renderer.setStyle(this.tooltipEl, 'left', `${left + window.scrollX}px`);
+    this.renderer.setStyle(this.tooltipEl, 'top', `${top}px`);
+    this.renderer.setStyle(this.tooltipEl, 'left', `${left}px`);
   }
 }

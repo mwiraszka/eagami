@@ -82,3 +82,16 @@
     opacity: 0.5;
   }
 }
+
+// Strips the geometry the UA stylesheet forces on a `[popover]` element (a
+// centred, viewport-filling, scrollable box) so a surface promoted into the top
+// layer keeps the box it has in the normal layer. Colour and spacing chrome
+// (`padding`, `border`, `background`, `color`) is left alone: a surface that
+// declares its own already wins, and one that does not resets it alongside the
+// include.
+@mixin top-layer-reset {
+  inset: auto;
+  overflow: visible;
+  width: auto;
+  height: auto;
+}
