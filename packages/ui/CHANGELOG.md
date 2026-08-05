@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.17.2] - 2026-08-06
+
+### Fixed
+
+- Show menus, dropdowns, selects, pickers, and tooltips opened from inside a dialog or drawer, which until now were painted behind the modal and unreachable.
+- Stop Escape closing a menu or popover and the dialog around it at the same time, so one press dismisses only the innermost overlay.
+
 ## [5.17.1] - 2026-08-04
 
 ### Fixed
@@ -1247,6 +1254,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.17.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.1...ui-v5.17.2
 [5.17.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.0...ui-v5.17.1
 [5.17.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.1...ui-v5.17.0
 [5.16.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.16.0...ui-v5.16.1

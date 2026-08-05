@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 
 import { isRtl } from '../direction';
+import { enterTopLayer, leaveTopLayer } from '../top-layer';
 import { uniqueId } from '../unique-id';
 import {
   type PopoverPlacement,
@@ -214,10 +215,18 @@ export class PopoverComponent {
       const anchor = this.resolveAnchor();
       const isOpen = this.open();
       if (!surface || !anchor || !isOpen) {
+        if (surface) {
+          leaveTopLayer(surface);
+        }
         this.position.set(null);
         this.stable.set(false);
         return;
       }
+      // Join the top layer before the first measurement below, so a popover
+      // opened from inside a modal is not painted behind it. Promoting first
+      // also gives the surface layout: a `popover` element is `display: none`
+      // until shown, and would measure as a zero-sized box.
+      enterTopLayer(surface, anchor);
       // Re-read inputs so signal subscriptions stay current after a re-open
       this.placement();
       this.offset();
@@ -436,11 +445,14 @@ export class PopoverComponent {
     }
   }
 
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: Event): void {
     if (!this.open() || !this.closeOnEscape()) {
       return;
     }
+    // Consume the key, or a native modal hosting this popover reads the same
+    // Escape as its own close request and both shut at once
+    event.preventDefault();
     this.closeRequested.emit();
   }
 }

@@ -5,7 +5,10 @@
 // `(hover: hover)`, but if a tooltip ever slips through keep it invisible on touch.
 .ea-tooltip {
   z-index: var(--z-index-tooltip);
-  position: absolute;
+  // Viewport-relative, matching the coordinates the shared positioning helper
+  // returns. Also keeps the box unambiguous once the bubble is promoted into
+  // the top layer, where the containing block is the viewport either way.
+  position: fixed;
   // Template content can contain unbreakable element rows (avatars, icon rows)
   // that a max-width cannot wrap; let the bubble grow instead of clipping them
   min-width: min-content;
@@ -28,6 +31,12 @@
 
   @media (hover: none) {
     display: none;
+  }
+
+  // The bubble already declares its own padding, border, background and color,
+  // so only the UA's popover geometry needs undoing once it is promoted.
+  &[popover] {
+    @include ea.top-layer-reset;
   }
 }
 
