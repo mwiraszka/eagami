@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
+import { provideEagamiUi } from '../eagami-ui.provider';
 import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
-import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
 import {
   EAGAMI_LOCALES,

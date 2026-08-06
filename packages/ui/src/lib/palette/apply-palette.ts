@@ -12,8 +12,12 @@ const STYLE_TAG_ID = 'eagami-palette';
  * Idempotent: subsequent calls replace the previous stylesheet rather than
  * append, so a theme switcher can re-apply without leaking style tags.
  * No-ops outside a DOM context (SSR).
+ *
+ * Pass `nonce` under a `style-src` policy that requires one, or the browser
+ * drops the stylesheet and the app silently renders the library's own colours.
+ * `provideEagamiUi()` forwards Angular's `CSP_NONCE` automatically.
  */
-export function applyPalette(palette: ModePalette): void {
+export function applyPalette(palette: ModePalette, nonce?: string | null): void {
   if (typeof document === 'undefined') {
     return;
   }
@@ -23,6 +27,10 @@ export function applyPalette(palette: ModePalette): void {
   if (!tag) {
     tag = document.createElement('style');
     tag.id = STYLE_TAG_ID;
+    // Before insertion: the policy is checked as the tag enters the document
+    if (nonce) {
+      tag.setAttribute('nonce', nonce);
+    }
     document.head.appendChild(tag);
   }
   tag.textContent = css;

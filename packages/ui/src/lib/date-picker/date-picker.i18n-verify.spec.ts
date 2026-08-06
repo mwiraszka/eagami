@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
+import { provideEagamiUi } from '../eagami-ui.provider';
 import { _eagamiI18nLocaleOverride } from '../i18n/_storybook-locale-override';
-import { provideEagamiUi } from '../i18n/i18n.provider';
 import { EAGAMI_ALL_LOCALES } from '../i18n/messages';
 import { DatePickerComponent } from './date-picker.component';
 
