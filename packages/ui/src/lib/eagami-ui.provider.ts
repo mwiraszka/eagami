@@ -1,5 +1,7 @@
 import {
+  CSP_NONCE,
   type EnvironmentProviders,
+  inject,
   makeEnvironmentProviders,
   provideEnvironmentInitializer,
 } from '@angular/core';
@@ -54,6 +56,10 @@ export interface EagamiUiConfig extends EagamiI18nConfig {
  *   },
  * });
  * ```
+ *
+ * A `palette` installs a `<style>` tag at bootstrap, carrying Angular's
+ * `CSP_NONCE` when the app provides one, so a strict `style-src` policy admits
+ * it instead of dropping the theme.
  */
 export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProviders {
   const i18nConfig: EagamiI18nConfig = {
@@ -74,7 +80,7 @@ export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProvide
       if (violations.length > 0) {
         throw new Error(formatViolations(violations));
       }
-      applyPalette(palette);
+      applyPalette(palette, inject(CSP_NONCE, { optional: true }));
     }),
   ]);
 }
