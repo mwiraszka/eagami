@@ -1,5 +1,5 @@
 export * from './i18n.types';
-export { EAGAMI_I18N_CONFIG, provideEagamiUi } from './i18n.provider';
+export { EAGAMI_I18N_CONFIG } from './i18n.token';
 export { EagamiI18nService } from './i18n.service';
 export {
   EAGAMI_ALL_LOCALES,

@@ -1,7 +1,7 @@
 import { Injectable, type Signal, computed, effect, inject, signal } from '@angular/core';
 
 import { _eagamiI18nLocaleOverride } from './_storybook-locale-override';
-import { EAGAMI_I18N_CONFIG } from './i18n.provider';
+import { EAGAMI_I18N_CONFIG } from './i18n.token';
 import type { EagamiLocale, EagamiMessages, EagamiMessagesOverride } from './i18n.types';
 import { en } from './messages';
 

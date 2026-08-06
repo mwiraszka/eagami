@@ -1,3 +1,4 @@
+export * from './lib/eagami-ui.provider';
 export * from './lib/i18n';
 export * from './lib/palette';
 export * from './lib/sizes';

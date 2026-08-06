@@ -1,15 +1,15 @@
 import {
   type EnvironmentProviders,
-  InjectionToken,
   makeEnvironmentProviders,
   provideEnvironmentInitializer,
 } from '@angular/core';
 
-import { applyPalette } from '../palette/apply-palette';
-import { derivePalette } from '../palette/derive-palette';
-import type { EagamiPaletteConfig } from '../palette/palette.types';
-import { formatViolations, validatePalette } from '../palette/validate-palette';
-import type { EagamiI18nConfig } from './i18n.types';
+import { EAGAMI_I18N_CONFIG } from './i18n/i18n.token';
+import type { EagamiI18nConfig } from './i18n/i18n.types';
+import { applyPalette } from './palette/apply-palette';
+import { derivePalette } from './palette/derive-palette';
+import type { EagamiPaletteConfig } from './palette/palette.types';
+import { formatViolations, validatePalette } from './palette/validate-palette';
 
 /**
  * Full provider configuration for `provideEagamiUi()`. Extends the i18n config
@@ -24,11 +24,6 @@ export interface EagamiUiConfig extends EagamiI18nConfig {
    */
   palette?: EagamiPaletteConfig;
 }
-
-/** DI token carrying the consumer-supplied i18n configuration. */
-export const EAGAMI_I18N_CONFIG = new InjectionToken<EagamiI18nConfig>(
-  'EAGAMI_I18N_CONFIG',
-);
 
 /**
  * Configures Eagami UI for the application.

@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AvatarEditorComponent } from '../avatar-editor/avatar-editor.component';
+import { provideEagamiUi } from '../eagami-ui.provider';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { RangeSliderComponent } from '../range-slider/range-slider.component';
 import { SliderComponent } from '../slider/slider.component';
 import { TreeComponent } from '../tree/tree.component';
-import { provideEagamiUi } from './i18n.provider';
 import { EagamiI18nService } from './i18n.service';
 import { EAGAMI_ALL_LOCALES } from './messages';
 
