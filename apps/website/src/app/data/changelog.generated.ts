@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.18.0',
+    date: '2026-08-06',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Export the `EagamiUiConfig` type, so an app can name or extend the object it passes to `provideEagamiUi()`.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Apply a consumer's brand palette under a strict Content Security Policy, where the theme stylesheet was dropped and the app quietly fell back to the library's own colours.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.17.2',
     date: '2026-08-06',
     sections: [
