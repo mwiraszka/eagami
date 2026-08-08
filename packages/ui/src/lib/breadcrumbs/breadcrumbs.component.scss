@@ -7,6 +7,10 @@
 
   // Size sets only the font-size; gaps, padding, and the separator are em-based
   // so the whole trail scales from it
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

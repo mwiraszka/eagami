@@ -18,6 +18,10 @@
 
 // Indent step and row padding are em-based (see tree-node), so setting only
 // font-size here scales the whole tree as one unit
+.ea-tree--2xs {
+  font-size: var(--font-size-2xs);
+}
+
 .ea-tree--xs {
   font-size: var(--font-size-xs);
 }

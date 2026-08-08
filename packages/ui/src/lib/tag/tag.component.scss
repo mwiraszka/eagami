@@ -27,6 +27,10 @@ ea-tag {
 
   // Size sets only the font-size; padding, gap, and the remove button are
   // em-based, so the chip scales entirely from this one knob.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

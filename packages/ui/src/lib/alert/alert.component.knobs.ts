@@ -13,7 +13,7 @@ export const ALERT_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     dismissible: { control: 'boolean' },
     dismissed: { action: 'dismissed' },

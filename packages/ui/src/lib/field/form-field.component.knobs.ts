@@ -9,7 +9,7 @@ export const FORM_FIELD_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     required: { control: 'boolean' },
     triggerError: { control: 'boolean', demoOnly: true },

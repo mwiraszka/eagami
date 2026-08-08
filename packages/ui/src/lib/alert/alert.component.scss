@@ -13,6 +13,10 @@
   forced-color-adjust: none;
 
   // Size drives font-size; the icon (em) and gap (em) scale in proportion
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

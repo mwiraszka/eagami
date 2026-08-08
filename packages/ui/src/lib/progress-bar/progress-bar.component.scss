@@ -7,6 +7,11 @@
   // The track and the header text scale on their own curves: a 2px track pairs
   // with readable 12px text, not with text derived from the track. Each size
   // therefore sets the track knob and the font-size the header text keys off.
+  &--2xs {
+    --ea-progress-bar-size: 0.0625rem;
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     --ea-progress-bar-size: 0.125rem;
     font-size: var(--font-size-xs);

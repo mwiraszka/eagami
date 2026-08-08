@@ -40,6 +40,10 @@
 
   // Size sets only the font-size; padding, min-height, gap, and the spinner are
   // all em-based on the base rule, so everything scales from this one knob.
+  &--2xs {
+    font-size: var(--ea-button-font-size, var(--font-size-2xs));
+  }
+
   &--xs {
     font-size: var(--ea-button-font-size, var(--font-size-xs));
   }

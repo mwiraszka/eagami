@@ -9,6 +9,10 @@
 
   // Size (inherited from the parent accordion) sets only the font-size; the
   // trigger, chevron, and content are em-based so they all scale from it
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

@@ -6,6 +6,10 @@
 
   // Size sets only the font-size (the label text); the circle is 1.5em of it and
   // the gap is em, so the spinner is always 1.5x the text and scales as one unit.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

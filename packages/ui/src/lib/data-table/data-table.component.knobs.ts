@@ -15,7 +15,7 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     striped: { control: 'boolean' },
     bordered: { control: 'boolean' },

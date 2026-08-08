@@ -13,6 +13,10 @@
   font-family: var(--font-family-sans);
   font-weight: var(--font-weight-medium);
 
+  &--2xs {
+    --ea-avatar-size: 1.25rem;
+  }
+
   &--xs {
     --ea-avatar-size: 1.5rem;
   }

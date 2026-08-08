@@ -11,6 +11,10 @@ $node-center: $node-offset + $node-size * 0.5;
 
   // Size sets only the font-size; nodes, gaps, and text are all em-based, so the
   // whole timeline scales from this one knob.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

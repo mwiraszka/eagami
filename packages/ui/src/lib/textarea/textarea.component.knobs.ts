@@ -9,7 +9,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     resize: {
       control: 'select',

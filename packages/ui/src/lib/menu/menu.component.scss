@@ -17,6 +17,10 @@
 
   // Size sets only the font-size; the list's padding and min-width are em-based
   // and each item inherits the font-size, so everything scales together
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

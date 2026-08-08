@@ -11,6 +11,10 @@
   --ea-field-label-size: 0.875em;
   --ea-field-messages-size: 0.8125em;
 
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -112,6 +116,10 @@
     box-shadow: var(--shadow-lg);
     background-color: var(--ea-dropdown-menu-background-color, var(--color-bg-elevated));
     @include ea.elevated-surface-border;
+
+    &--2xs {
+      font-size: var(--font-size-2xs);
+    }
 
     &--xs {
       font-size: var(--font-size-xs);

@@ -11,6 +11,10 @@
 
   // Size sets only the font-size; gap, padding, and the media/title/description
   // dimensions are em-based, so the block scales entirely from this one knob.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }
