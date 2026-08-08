@@ -10,20 +10,6 @@ describe('NumberInputComponent', () => {
     return fixture.nativeElement.querySelector('input.ea-number-input');
   }
 
-  function steppers(): HTMLButtonElement[] {
-    return Array.from(
-      fixture.nativeElement.querySelectorAll('.ea-number-input-wrapper__step'),
-    );
-  }
-
-  function incrementBtn(): HTMLButtonElement {
-    return steppers()[0];
-  }
-
-  function decrementBtn(): HTMLButtonElement {
-    return steppers()[1];
-  }
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NumberInputComponent],
@@ -35,9 +21,9 @@ describe('NumberInputComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders a native number input and two steppers', () => {
+    it('renders a bare native number input, with no stepper chrome', () => {
       expect(input().type).toBe('number');
-      expect(steppers().length).toBe(2);
+      expect(fixture.nativeElement.querySelector('button')).toBeNull();
     });
 
     it('applies the size class', () => {
@@ -127,73 +113,32 @@ describe('NumberInputComponent', () => {
     });
   });
 
-  describe('Steppers', () => {
-    it('increments by step', () => {
-      fixture.componentRef.setInput('step', 5);
-      component.value.set(10);
-      fixture.detectChanges();
-
-      incrementBtn().click();
-
-      expect(component.value()).toBe(15);
-    });
-
-    it('decrements by step', () => {
-      component.value.set(10);
-      fixture.detectChanges();
-
-      decrementBtn().click();
-
-      expect(component.value()).toBe(9);
-    });
-
-    it('disables the increment stepper at max', () => {
-      fixture.componentRef.setInput('max', 5);
-      component.value.set(5);
-      fixture.detectChanges();
-
-      expect(incrementBtn().disabled).toBe(true);
-    });
-
-    it('disables the decrement stepper at min', () => {
-      fixture.componentRef.setInput('min', 0);
-      component.value.set(0);
-      fixture.detectChanges();
-
-      expect(decrementBtn().disabled).toBe(true);
-    });
-  });
-
   describe('Forms', () => {
-    it('calls onChange when stepped', () => {
+    it('calls onChange when a value is typed', () => {
       const onChange = vi.fn<(value: number | null) => void>();
       component.registerOnChange(onChange);
-      component.value.set(1);
-      fixture.detectChanges();
 
-      incrementBtn().click();
+      const el = input();
+      el.value = '2';
+      el.dispatchEvent(new Event('input'));
 
       expect(onChange).toHaveBeenCalledWith(2);
     });
 
-    it('does not step when disabled', () => {
-      component.value.set(3);
+    // Stepping is the native control's own arrow-key behaviour now, so these
+    // assert the state the browser gates that on
+    it('disables the native input when disabled', () => {
       component.setDisabledState(true);
       fixture.detectChanges();
 
-      incrementBtn().click();
-
-      expect(component.value()).toBe(3);
+      expect(input().disabled).toBe(true);
     });
 
-    it('does not step when read-only', () => {
+    it('marks the native input read-only when read-only', () => {
       fixture.componentRef.setInput('readonly', true);
-      component.value.set(3);
       fixture.detectChanges();
 
-      incrementBtn().click();
-
-      expect(component.value()).toBe(3);
+      expect(input().readOnly).toBe(true);
     });
 
     it('does not emit on a no-op blur', () => {

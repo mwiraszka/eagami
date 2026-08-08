@@ -111,10 +111,6 @@ const messages: EagamiMessages = {
     hidePassword: 'Fela lykilorð',
     clear: 'Hreinsa',
   },
-  numberInput: {
-    increment: 'Hækka',
-    decrement: 'Lækka',
-  },
   menu: {
     label: 'Valmynd',
   },

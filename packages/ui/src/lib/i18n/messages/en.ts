@@ -110,10 +110,6 @@ const messages: EagamiMessages = {
     hidePassword: 'Hide password',
     clear: 'Clear',
   },
-  numberInput: {
-    increment: 'Increment',
-    decrement: 'Decrement',
-  },
   menu: {
     label: 'Menu',
   },
