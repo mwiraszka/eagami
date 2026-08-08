@@ -1044,6 +1044,7 @@ export const ptBR: WebMessages = {
           },
           toast: {
             icon: 'Ícone (sobrescrita)',
+            title: 'Título',
           },
           avatar: {
             size: 'Tamanho',
@@ -1796,7 +1797,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             format: 'Formato de exibição da data selecionada (curto, médio ou longo).',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
-            id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
+            id: 'id aplicado ao campo e ao for do rótulo, gerado automaticamente quando omitido.',
             label: 'Rótulo de texto renderizado acima do campo.',
             locale:
               'Tag de idioma BCP 47 usada para a formatação de data, recorrendo ao idioma global quando omitida.',
@@ -1805,11 +1806,11 @@ export const ptBR: WebMessages = {
             minDate:
               'Data mais antiga que o usuário pode selecionar; datas anteriores a esta são desativadas no calendário.',
             placeholder:
-              'Placeholder exibido no gatilho enquanto nenhuma data é selecionada.',
+              'Placeholder exibido no campo enquanto nenhuma data é selecionada.',
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do calendário.',
             required: 'Marca o campo como obrigatório.',
-            size: 'Tamanho visual do gatilho do seletor de data.',
+            size: 'Tamanho visual do campo do seletor de data.',
             value:
               'Data selecionada atual, vinculável de forma bidirecional via [(value)].',
             weekStartsOn:
@@ -1817,7 +1818,7 @@ export const ptBR: WebMessages = {
             changed: 'Dispara quando a data selecionada muda, inclusive quando limpa.',
             clear: 'Limpa a data selecionada e emite changed com null.',
             close: 'Fecha o popover do calendário.',
-            focus: 'Move o foco do teclado para o botão do gatilho.',
+            focus: 'Move o foco do teclado para o campo de data.',
             onPopoverCloseRequested:
               'Fecha o popover quando o usuário clica fora do seletor de data.',
             open: 'Abre o popover do calendário e move o foco para a célula do dia focado.',

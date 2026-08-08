@@ -1058,6 +1058,7 @@ export const frFR: WebMessages = {
           },
           toast: {
             icon: 'Icône (remplacer)',
+            title: 'Titre',
           },
           avatar: {
             size: 'Taille',
@@ -1810,7 +1811,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             format: 'Format d’affichage de la date sélectionnée (short, medium ou long).',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
-            id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            id: 'id appliqué au champ et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             locale:
               'Balise de locale BCP 47 pour le formatage des dates, revenant à la locale globale si omise.',
@@ -1819,11 +1820,11 @@ export const frFR: WebMessages = {
             minDate:
               'Date la plus ancienne sélectionnable ; les dates antérieures sont désactivées dans le calendrier.',
             placeholder:
-              'Texte indicatif affiché sur le déclencheur lorsqu’aucune date n’est sélectionnée.',
+              'Texte indicatif affiché dans le champ lorsqu’aucune date n’est sélectionnée.',
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture du calendrier.',
             required: 'Marque le champ comme requis.',
-            size: 'Taille visuelle du déclencheur du sélecteur de date.',
+            size: 'Taille visuelle du champ du sélecteur de date.',
             value: 'Date sélectionnée actuelle, liable en deux sens via [(value)].',
             weekStartsOn:
               'Premier jour de la semaine dans la grille du calendrier (0 pour dimanche, 1 pour lundi).',
@@ -1831,7 +1832,7 @@ export const frFR: WebMessages = {
               'Émis lorsque la date sélectionnée change, y compris lors d’un effacement.',
             clear: 'Efface la date sélectionnée et émet changed avec null.',
             close: 'Ferme la popover du calendrier.',
-            focus: 'Place le focus clavier sur le bouton déclencheur.',
+            focus: 'Place le focus clavier sur le champ de date.',
             onPopoverCloseRequested:
               'Ferme la popover lorsque l’utilisateur clique en dehors du sélecteur de date.',
             open: 'Ouvre la popover du calendrier et place le focus sur la cellule du jour ciblé.',

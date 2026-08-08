@@ -1045,6 +1045,7 @@ export const is: WebMessages = {
           },
           toast: {
             icon: 'Táknmynd (yfirskrift)',
+            title: 'Titill',
           },
           avatar: {
             size: 'Stærð',
@@ -1764,7 +1765,7 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             format: 'Birtingarsnið valdu dagsetningarinnar (stutt, miðlungs eða langt).',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
-            id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            id: 'id sett á reitinn og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             locale:
               'BCP 47 svæðismerki notað fyrir dagsetningarsnið, fellur aftur á altæka svæðið þegar því er sleppt.',
@@ -1773,11 +1774,11 @@ export const is: WebMessages = {
             minDate:
               'Fyrsta dagsetning sem notandinn getur valið; dagsetningar fyrir þessa eru óvirkar í dagatalinu.',
             placeholder:
-              'Staðgengill sýndur á kveikjunni á meðan engin dagsetning er valin.',
+              'Staðgengill sýndur í reitnum á meðan engin dagsetning er valin.',
             readonly:
               'Birtir reitinn skrifvarinn, kemur í veg fyrir að dagatalið opnist.',
             required: 'Merkir reitinn sem nauðsynlegan.',
-            size: 'Sjónræn stærð dagsetningarveljukveikjunnar.',
+            size: 'Sjónræn stærð dagsetningarveljureitsins.',
             value: 'Núverandi valda dagsetning, tvíátta bindanleg með [(value)].',
             weekStartsOn:
               'Fyrsti dagur vikunnar í dagatalsrúðunetinu (0 fyrir sunnudag, 1 fyrir mánudag).',
@@ -1785,7 +1786,7 @@ export const is: WebMessages = {
               'Kviknar þegar valda dagsetningin breytist, þar á meðal þegar hreinsuð.',
             clear: 'Hreinsar völdu dagsetninguna og sendir changed með null.',
             close: 'Lokar dagatalssprettiglugganum.',
-            focus: 'Færir lyklaborðsfókus á kveikjuhnappinn.',
+            focus: 'Færir lyklaborðsfókus á dagsetningarreitinn.',
             onPopoverCloseRequested:
               'Lokar sprettiglugganum þegar notandinn smellir utan dagsetningarveljunnar.',
             open: 'Opnar dagatalssprettigluggann og færir fókus á fókusaða dagsreitinn.',

@@ -1049,6 +1049,7 @@ export const pl: WebMessages = {
           },
           toast: {
             icon: 'Ikona (zastąp)',
+            title: 'Tytuł',
           },
           avatar: {
             size: 'Rozmiar',
@@ -1790,7 +1791,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             format: 'Format wyświetlania wybranej daty (short, medium lub long).',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
-            id: 'id stosowane do przycisku wyzwalacza i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            id: 'id stosowane do pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             label: 'Etykieta wyświetlana nad polem.',
             locale:
               'Znacznik locale BCP 47 używany do formatowania dat, domyślnie globalna locale gdy pominięty.',
@@ -1798,19 +1799,18 @@ export const pl: WebMessages = {
               'Najpóźniejsza data do wyboru; późniejsze daty są wyłączone w kalendarzu.',
             minDate:
               'Najwcześniejsza data do wyboru; wcześniejsze daty są wyłączone w kalendarzu.',
-            placeholder:
-              'Tekst zastępczy na wyzwalaczu, gdy żadna data nie jest wybrana.',
+            placeholder: 'Tekst zastępczy w polu, gdy żadna data nie jest wybrana.',
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie kalendarza.',
             required: 'Oznacza pole jako wymagane.',
-            size: 'Wizualny rozmiar wyzwalacza selektora daty.',
+            size: 'Wizualny rozmiar pola selektora daty.',
             value: 'Bieżąca wybrana data, dwukierunkowo wiązalna przez [(value)].',
             weekStartsOn:
               'Pierwszy dzień tygodnia w siatce kalendarza (0 dla niedzieli, 1 dla poniedziałku).',
             changed: 'Emitowane, gdy wybrana data zmienia się, w tym po wyczyszczeniu.',
             clear: 'Czyści wybraną datę i emituje changed z wartością null.',
             close: 'Zamyka popover kalendarza.',
-            focus: 'Przenosi fokus klawiatury na przycisk wyzwalacza.',
+            focus: 'Przenosi fokus klawiatury na pole daty.',
             onPopoverCloseRequested:
               'Zamyka popover, gdy użytkownik kliknie poza selektorem daty.',
             open: 'Otwiera popover kalendarza i przenosi fokus na aktywną komórkę dnia.',

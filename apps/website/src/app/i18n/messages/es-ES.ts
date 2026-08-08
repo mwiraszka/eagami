@@ -1049,6 +1049,7 @@ export const esES: WebMessages = {
           },
           toast: {
             icon: 'Icono (sustituir)',
+            title: 'Título',
           },
           avatar: {
             size: 'Tamaño',
@@ -1816,7 +1817,7 @@ export const esES: WebMessages = {
             format:
               'Formato de visualización de la fecha seleccionada (short, medium o long).',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
-            id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            id: 'id aplicado al campo y al for de la etiqueta, generado automáticamente si se omite.',
             label: 'Etiqueta mostrada encima del campo.',
             locale:
               'Etiqueta de configuración regional BCP 47 para el formato de fecha, usando la configuración global si se omite.',
@@ -1825,11 +1826,11 @@ export const esES: WebMessages = {
             minDate:
               'Fecha más temprana que el usuario puede seleccionar; las fechas anteriores quedan deshabilitadas en el calendario.',
             placeholder:
-              'Texto de marcador mostrado en el activador cuando no hay ninguna fecha seleccionada.',
+              'Texto de marcador mostrado en el campo cuando no hay ninguna fecha seleccionada.',
             readonly:
               'Muestra el campo como de solo lectura, impidiendo que se abra el calendario.',
             required: 'Marca el campo como obligatorio.',
-            size: 'Tamaño visual del activador del selector de fecha.',
+            size: 'Tamaño visual del campo del selector de fecha.',
             value:
               'Fecha seleccionada actual, vinculable en dos sentidos mediante [(value)].',
             weekStartsOn:
@@ -1837,7 +1838,7 @@ export const esES: WebMessages = {
             changed: 'Se emite cuando cambia la fecha seleccionada, incluso al borrarla.',
             clear: 'Borra la fecha seleccionada y emite changed con null.',
             close: 'Cierra el popover del calendario.',
-            focus: 'Lleva el foco del teclado al botón activador.',
+            focus: 'Lleva el foco del teclado al campo de fecha.',
             onPopoverCloseRequested:
               'Cierra el popover cuando el usuario hace clic fuera del selector de fecha.',
             open: 'Abre el popover del calendario y lleva el foco a la celda del día enfocado.',
