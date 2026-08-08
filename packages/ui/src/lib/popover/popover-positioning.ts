@@ -22,6 +22,8 @@ export interface PopoverPositionResult {
   readonly left: number;
   /** Width hint when the popover should match the anchor's width. */
   readonly width?: number;
+  /** The anchor's measured width, for a caller capping the popover against it. */
+  readonly anchorWidth: number;
   /** Effective placement after any flip logic ran. */
   readonly placement: PopoverPlacement;
 }
@@ -233,6 +235,7 @@ export function computePopoverPosition(
     top: pos.top,
     left: pos.left,
     placement,
+    anchorWidth: anchorRect.width,
     ...(options.matchAnchorWidth ? { width: anchorRect.width } : {}),
   };
 }

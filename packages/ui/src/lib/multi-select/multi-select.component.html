@@ -9,6 +9,7 @@
 
   <div class="ea-multi-select">
     <div
+      #wrapperEl
       class="ea-multi-select__trigger-wrapper"
       [ngClass]="wrapperClasses()"
       (click)="onTriggerAreaClick()">
@@ -42,6 +43,7 @@
               <ea-tag
                 [size]="size()"
                 variant="default"
+                [maxWidth]="maxChipWidth()"
                 [removable]="!isDisabled() && !readonly()"
                 [removeTabbable]="false"
                 [removeLabel]="i18n.messages().multiSelect.removeOption(opt.label)"
@@ -72,11 +74,12 @@
     </div>
 
     <ea-popover
-      [anchor]="triggerEl"
+      [anchor]="wrapperEl"
       [open]="isOpen()"
       placement="bottom-start"
       [aria-label]="i18n.messages().multiSelect.dialogLabel"
       [matchAnchorWidth]="true"
+      [maxWidth]="popoverMaxWidth()"
       [closeOnEscape]="false"
       scrollBehavior="reposition"
       (closeRequested)="onPopoverCloseRequested()">
@@ -104,6 +107,7 @@
         }
 
         <ul
+          #listEl
           class="ea-multi-select__list"
           role="listbox"
           aria-multiselectable="true"
@@ -147,7 +151,11 @@
                 aria-hidden="true"
                 [checked]="selectedSet().has(opt.value)"
                 [disabled]="!!opt.disabled" />
-              <span class="ea-multi-select__option-label">
+              <span
+                #optionLabelEl
+                class="ea-multi-select__option-label"
+                [attr.data-value]="opt.value"
+                [eaTooltip]="clippedOptions().has(opt.value) ? opt.label : ''">
                 {{ opt.label }}
               </span>
             </li>
