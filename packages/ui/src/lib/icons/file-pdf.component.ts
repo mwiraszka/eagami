@@ -26,11 +26,10 @@ import { type IconCategory, IconComponentBase } from './icon-category';
   `,
 })
 export class FilePdfIconComponent extends IconComponentBase {
-  // Letterforms need a lighter stroke to stay legible inside the file body
-  static override readonly defaultStrokeWidth = 1.5;
-
   static readonly slug = 'file-pdf';
   static readonly category: IconCategory = 'eagami';
+  // Letterforms need a lighter stroke to stay legible inside the file body
+  static override readonly defaultStrokeWidth = 1.5;
   static readonly tags: ReadonlyArray<string> = [
     'file pdf',
     'document',
