@@ -1599,7 +1599,7 @@ export const nl: WebMessages = {
             maxWidth:
               'Maximale breedte van de tag in px; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
             tooltip:
-              'Of een door maxWidth afgekapt label zijn volledige tekst in een tooltip toont; none voor een tag binnen een tooltip.',
+              'Waar een door maxWidth afgekapt label zijn volledige tekst toont: boven of onder de tag, of none om het te onderdrukken.',
             removable:
               'Geeft een verwijderknop weer die removed uitzendt wanneer geactiveerd.',
             disabled: 'Schakelt de tag en de verwijderknop uit.',

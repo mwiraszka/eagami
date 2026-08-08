@@ -1590,7 +1590,7 @@ export const pl: WebMessages = {
             maxWidth:
               'Maksymalna szerokość tagu w px; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
             tooltip:
-              'Czy etykieta skrócona przez maxWidth pokazuje pełny tekst w podpowiedzi; none dla tagu wewnątrz podpowiedzi.',
+              'Gdzie etykieta skrócona przez maxWidth pokazuje pełny tekst: nad tagiem lub pod nim, albo none, aby go ukryć.',
             removable: 'Renderuje przycisk usuwania emitujący removed po aktywacji.',
             disabled: 'Wyłącza tag i jego przycisk usuwania.',
             removeLabel:

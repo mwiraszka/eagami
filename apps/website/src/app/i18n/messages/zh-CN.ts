@@ -1486,7 +1486,7 @@ export const zhCN: WebMessages = {
             maxWidth:
               '标签的最大宽度（px）；更长的文本会被省略。也可通过 --ea-tag-max-width 设置。',
             tooltip:
-              '被 maxWidth 裁剪的文本是否在提示中显示完整内容；提示内部的标签请设为 none。',
+              '被 maxWidth 裁剪的文本在何处显示完整内容：标签上方或下方，或用 none 隐藏。',
             removable: '渲染一个移除按钮，激活时发出 removed。',
             disabled: '禁用标签及其移除按钮。',
             removeLabel: '移除按钮的无障碍标签，回退到当前语言。',

@@ -1608,7 +1608,7 @@ export const frFR: WebMessages = {
             maxWidth:
               'Largeur maximale du tag en px ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
             tooltip:
-              'Si un libellé tronqué par maxWidth révèle son texte complet dans une infobulle ; none pour un tag placé dans une infobulle.',
+              'Où un libellé tronqué par maxWidth révèle son texte complet : au-dessus ou en dessous du tag, ou none pour le masquer.',
             removable:
               'Affiche un bouton de suppression qui émet removed lorsqu’il est activé.',
             disabled: 'Désactive l’étiquette et son bouton de suppression.',

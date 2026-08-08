@@ -1612,7 +1612,7 @@ export const esES: WebMessages = {
             maxWidth:
               'Ancho máximo de la etiqueta en px; un texto más largo se recorta con puntos suspensivos. También configurable como --ea-tag-max-width.',
             tooltip:
-              'Si una etiqueta recortada por maxWidth muestra su texto completo en un tooltip; usa none para una etiqueta dentro de un tooltip.',
+              'Dónde muestra su texto completo una etiqueta recortada por maxWidth: encima o debajo del tag, o none para ocultarlo.',
             removable:
               'Renderiza un botón de eliminación que emite removed cuando se activa.',
             disabled: 'Deshabilita la etiqueta y su botón de eliminación.',

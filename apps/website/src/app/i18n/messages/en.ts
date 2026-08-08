@@ -1559,7 +1559,7 @@ export const en: WebMessages = {
             maxWidth:
               'Widest the tag may grow in px; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
             tooltip:
-              'Whether a label clipped by maxWidth reveals its full text in a tooltip; set none for a tag inside a tooltip.',
+              'Where a label clipped by maxWidth reveals its full text: above or below the tag, or none to suppress it.',
             removable: 'Renders a remove button that emits removed when activated.',
             disabled: 'Disables the tag and its remove button.',
             removeLabel:

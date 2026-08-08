@@ -2434,7 +2434,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'maxChipWidth',
         type: 'number | undefined',
-        default: 'undefined',
+        default: '200',
         required: false,
         twoWay: false,
       },
@@ -4045,7 +4045,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'maxWidth',
         type: 'number | undefined',
-        default: 'undefined',
+        default: '200',
         required: false,
         twoWay: false,
       },
@@ -4080,7 +4080,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'tooltip',
         type: 'TagTooltip',
-        default: "'auto'",
+        default: "'above'",
         required: false,
         twoWay: false,
       },

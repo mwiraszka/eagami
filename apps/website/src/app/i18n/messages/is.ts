@@ -1577,7 +1577,7 @@ export const is: WebMessages = {
             maxWidth:
               'Mesta breidd merkisins í px; lengri texti styttist. Einnig stillanlegt sem --ea-tag-max-width.',
             tooltip:
-              'Hvort texti sem maxWidth styttir birti fulla útgáfu sína í ábendingu; none fyrir merki inni í ábendingu.',
+              'Hvar texti sem maxWidth styttir birtir fulla útgáfu sína: fyrir ofan eða neðan merkið, eða none til að fela hana.',
             removable: 'Birtir fjarlægingarhnapp sem sendir removed þegar virkjaður.',
             disabled: 'Gerir merkið og fjarlægingarhnapp þess óvirk.',
             removeLabel:

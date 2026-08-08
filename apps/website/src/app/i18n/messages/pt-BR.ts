@@ -1597,7 +1597,7 @@ export const ptBR: WebMessages = {
             maxWidth:
               'Largura máxima da tag em px; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
             tooltip:
-              'Se um rótulo truncado por maxWidth revela seu texto completo em um tooltip; use none para uma tag dentro de um tooltip.',
+              'Onde um rótulo truncado por maxWidth revela seu texto completo: acima ou abaixo da tag, ou none para ocultá-lo.',
             removable: 'Renderiza um botão de remover que emite removed quando ativado.',
             disabled: 'Desativa a tag e seu botão de remover.',
             removeLabel:

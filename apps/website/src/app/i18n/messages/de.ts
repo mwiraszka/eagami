@@ -1610,7 +1610,7 @@ export const de: WebMessages = {
             maxWidth:
               'Maximale Breite des Tags in px; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
             tooltip:
-              'Ob ein durch maxWidth gekürztes Label seinen vollständigen Text in einem Tooltip zeigt; none für ein Tag in einem Tooltip.',
+              'Wo ein durch maxWidth gekürztes Label seinen vollständigen Text zeigt: über oder unter dem Tag, oder none zum Unterdrücken.',
             removable:
               'Rendert einen Entfernen-Button, der bei Aktivierung removed ausgibt.',
             disabled: 'Deaktiviert das Tag und seinen Entfernen-Button.',

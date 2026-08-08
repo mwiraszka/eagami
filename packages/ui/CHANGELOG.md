@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Cap a tag's width with `maxWidth`, ellipsizing a longer label and revealing its full text in a tooltip.
+- Cap a tag's width with `maxWidth`, 200px by default, ellipsizing a longer label and revealing its full text in a tooltip above or below the chip.
 - Cap the multi-select's option panel to the field's width and its chips with `maxChipWidth`, with a tooltip on any option label the panel clips.
 - Emit the file uploader's drag-over state, and expose custom properties for the dropzone's background and text colours.
 
