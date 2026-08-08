@@ -14,6 +14,27 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.21.0',
+    date: '2026-08-08',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Give the toast an optional title, shown above the message, which steps the message back when set.',
+          "Accept a date typed straight into the date picker, in ISO, all-numeric, or month-name form, and rewrite it in the picker's own format.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Drop the date picker's default placeholder text; pass `placeholder` to show one.",
+          'Enlarge the toast icon and give it more room from the text beside it.',
+          'Quiet a readonly field under the pointer: no focus ring on click, no hover on its icons, and no pointer cursor.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.20.0',
     date: '2026-08-08',
     sections: [

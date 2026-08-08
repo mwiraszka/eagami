@@ -40,35 +40,19 @@
 .ea-date-picker {
   position: relative;
 
-  &__trigger-wrapper {
-    position: relative;
-  }
-
-  &__trigger {
+  &__field {
+    overflow: hidden;
     display: flex;
     align-items: center;
     gap: 0.5em;
-    width: 100%;
     min-height: 2.5em;
-    padding: 0.5em 0.75em;
-    // Reserve room for the absolutely-positioned clear button so a long value
-    // ellipsizes before it instead of sliding underneath it.
-    padding-inline-end: calc(var(--ea-icon-button-size) + var(--space-2) * 2);
-    font-family: var(--font-family-sans);
-    text-align: start;
+    padding: 0 0.75em;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     background-color: var(--color-bg-base);
-    color: var(--color-text-primary);
-    cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
 
-    &:focus-visible {
-      outline: none;
-      @include ea.focus-ring;
-    }
-
-    &--open {
+    &--focused {
       border-color: var(--color-border-focus);
       @include ea.focus-ring;
     }
@@ -76,44 +60,60 @@
     &--error {
       border-color: var(--color-error-default);
 
-      &.ea-date-picker__trigger--open {
+      &.ea-date-picker__field--focused {
         @include ea.focus-ring(var(--shadow-focus-ring-error));
       }
     }
 
     &--disabled {
-      background-color: var(--color-bg-muted);
       opacity: 0.6;
+      background-color: var(--color-bg-muted);
       cursor: not-allowed;
+    }
+
+    &--readonly {
+      background-color: var(--color-bg-subtle);
+      @include ea.readonly-field;
+
+      // The calendar button is disabled here only because the field is
+      // readonly, so it drops the dimming that marks a genuinely disabled one
+      .ea-date-picker__calendar-button:disabled {
+        opacity: 1;
+        cursor: default;
+      }
     }
   }
 
-  &__trigger-icon {
-    flex-shrink: 0;
-    width: 1em;
-    height: 1em;
-    color: var(--color-text-secondary);
+  &__calendar-button {
+    @include ea.icon-button;
   }
 
-  &__trigger-value {
+  &__input {
     flex: 1;
+    width: 100%;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 0.5em 0;
+    font-family: var(--font-family-sans);
+    line-height: var(--line-height-normal);
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-text-primary);
 
-    &--placeholder {
+    // `opacity: 1` overrides the Firefox/WebKit default of ~0.54 on placeholders,
+    // which would wash out the tertiary token and collapse contrast in dark mode
+    &::placeholder {
       color: var(--color-text-tertiary);
+      opacity: 1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 
   &__clear {
     @include ea.icon-button;
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    inset-inline-end: var(--space-2);
-    transform: translateY(-50%);
   }
 
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome.

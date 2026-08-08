@@ -1052,6 +1052,7 @@ export const de: WebMessages = {
           },
           toast: {
             icon: 'Symbol (Überschreibung)',
+            title: 'Titel',
           },
           avatar: {
             size: 'Größe',
@@ -1814,7 +1815,7 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             format: 'Anzeigeformat des ausgewählten Datums (short, medium oder long).',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
-            id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            id: 'id, die auf das Feld und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             locale:
               'BCP-47-Sprach-Tag, das für die Datumsformatierung verwendet wird, mit dem globalen Sprachraum als Standard, wenn weggelassen.',
@@ -1823,11 +1824,11 @@ export const de: WebMessages = {
             minDate:
               'Frühestes Datum, das der Nutzer auswählen kann; Daten davor sind im Kalender deaktiviert.',
             placeholder:
-              'Platzhalter, der auf dem Auslöser angezeigt wird, solange kein Datum ausgewählt ist.',
+              'Platzhalter, der im Feld angezeigt wird, solange kein Datum ausgewählt ist.',
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich der Kalender öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',
-            size: 'Visuelle Größe des Datumsauswahl-Auslösers.',
+            size: 'Visuelle Größe des Datumsauswahl-Feldes.',
             value: 'Aktuell ausgewähltes Datum, bidirektional bindbar über [(value)].',
             weekStartsOn:
               'Erster Tag der Woche im Kalenderraster (0 für Sonntag, 1 für Montag).',
@@ -1835,7 +1836,7 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn sich das ausgewählte Datum ändert, auch beim Löschen.',
             clear: 'Löscht das ausgewählte Datum und gibt changed mit null aus.',
             close: 'Schließt das Kalender-Popover.',
-            focus: 'Verschiebt den Tastaturfokus auf den Auslöser-Button.',
+            focus: 'Verschiebt den Tastaturfokus auf das Datumsfeld.',
             onPopoverCloseRequested:
               'Schließt das Popover, wenn der Nutzer außerhalb der Datumsauswahl klickt.',
             open: 'Öffnet das Kalender-Popover und verschiebt den Fokus auf die fokussierte Tageszelle.',

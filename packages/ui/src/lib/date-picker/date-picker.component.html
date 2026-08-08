@@ -9,35 +9,41 @@
 
   <div class="ea-date-picker">
     <div
-      class="ea-date-picker__trigger-wrapper"
-      [ngClass]="wrapperClasses()">
+      #fieldEl
+      class="ea-date-picker__field"
+      [ngClass]="fieldClasses()">
       <button
-        #triggerEl
         type="button"
-        class="ea-date-picker__trigger"
-        [ngClass]="triggerClasses()"
-        [id]="id()"
-        [disabled]="isDisabled()"
-        [attr.aria-expanded]="isOpen()"
+        class="ea-date-picker__calendar-button"
+        [disabled]="isDisabled() || readonly()"
+        [attr.aria-label]="i18n.messages().datePicker.dialogLabel"
         [attr.aria-haspopup]="'dialog'"
+        [attr.aria-expanded]="isOpen()"
         [attr.aria-controls]="isOpen() ? dialogId() : null"
-        [attr.aria-labelledby]="triggerLabelledBy()"
+        (click)="toggle()">
+        <ea-icon-calendar aria-hidden="true" />
+      </button>
+      <input
+        #inputEl
+        type="text"
+        dir="auto"
+        autocomplete="off"
+        class="ea-date-picker__input"
+        [id]="id()"
+        [value]="inputText()"
+        [placeholder]="resolvedPlaceholder()"
+        [disabled]="isDisabled()"
+        [readOnly]="readonly()"
+        [attr.aria-label]="label() ? null : fallbackLabel()"
         [attr.aria-required]="required() || null"
         [attr.aria-invalid]="hasError() || null"
         [attr.aria-describedby]="
           showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
         "
-        (click)="toggle()"
-        (keydown)="handleTriggerKeydown($event)">
-        <ea-icon-calendar
-          class="ea-date-picker__trigger-icon"
-          aria-hidden="true" />
-        <span
-          class="ea-date-picker__trigger-value"
-          [class.ea-date-picker__trigger-value--placeholder]="!displayValue()">
-          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
-        </span>
-      </button>
+        (input)="onInput($event)"
+        (keydown)="handleInputKeydown($event)"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()" />
       @if (value() && !isDisabled() && !readonly()) {
         <button
           type="button"
@@ -52,7 +58,7 @@
     </div>
 
     <ea-popover
-      [anchor]="triggerEl"
+      [anchor]="fieldEl"
       [open]="isOpen()"
       placement="bottom-start"
       role="dialog"

@@ -6,8 +6,24 @@ describe('DatePickerComponent', () => {
   let fixture: ComponentFixture<DatePickerComponent>;
   let component: DatePickerComponent;
 
-  function getTrigger(): HTMLButtonElement {
-    return fixture.nativeElement.querySelector('.ea-date-picker__trigger');
+  function getInput(): HTMLInputElement {
+    return fixture.nativeElement.querySelector('.ea-date-picker__input');
+  }
+
+  function getCalendarButton(): HTMLButtonElement {
+    return fixture.nativeElement.querySelector('.ea-date-picker__calendar-button');
+  }
+
+  function type(text: string): void {
+    const input = getInput();
+    input.value = text;
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+  }
+
+  function commit(): void {
+    getInput().dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
   }
 
   function getPopover(): HTMLElement | null {
@@ -54,12 +70,21 @@ describe('DatePickerComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders a trigger button', () => {
-      expect(getTrigger()).toBeTruthy();
+    it('renders an editable field and a calendar button', () => {
+      expect(getInput()).toBeTruthy();
+      expect(getCalendarButton()).toBeTruthy();
     });
 
-    it('shows placeholder when no value is selected', () => {
-      expect(getTrigger().textContent).toContain('Select date…');
+    it('starts empty, with no placeholder of its own', () => {
+      expect(getInput().value).toBe('');
+      expect(getInput().placeholder).toBe('');
+    });
+
+    it('shows the placeholder when one is given', () => {
+      fixture.componentRef.setInput('placeholder', 'mm/dd/yy');
+      fixture.detectChanges();
+
+      expect(getInput().placeholder).toBe('mm/dd/yy');
     });
 
     it('renders a label when provided', () => {
@@ -75,44 +100,45 @@ describe('DatePickerComponent', () => {
     });
 
     it('applies the default size class', () => {
-      expect(getTrigger().classList).toContain('ea-date-picker__trigger--md');
+      const field = fixture.nativeElement.querySelector('.ea-date-picker-field');
+      expect(field.classList).toContain('ea-date-picker-field--md');
     });
   });
 
   describe('Opening and closing', () => {
-    it('opens the popover on trigger click', () => {
-      getTrigger().click();
+    it('opens the popover on calendar button click', () => {
+      getCalendarButton().click();
       fixture.detectChanges();
 
       expect(getPopover()).toBeTruthy();
     });
 
     it('renders a 6-week grid when open', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       expect(getDayCells()).toHaveLength(42);
     });
 
-    it('closes the popover on second trigger click', () => {
-      getTrigger().click();
+    it('closes the popover on second calendar button click', () => {
+      getCalendarButton().click();
       fixture.detectChanges();
 
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
     });
 
     it('sets aria-expanded when open', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
-      expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
+      expect(getCalendarButton().getAttribute('aria-expanded')).toBe('true');
     });
 
     it('renders weekday headers when open', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       const weekdays = document.body.querySelectorAll('.ea-date-picker__weekday');
@@ -122,7 +148,7 @@ describe('DatePickerComponent', () => {
 
   describe('Selection', () => {
     it('selects a day on click', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
@@ -141,7 +167,7 @@ describe('DatePickerComponent', () => {
     it('emits changed on selection', () => {
       const spy = vi.fn();
       component.changed.subscribe(spy);
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
@@ -154,7 +180,7 @@ describe('DatePickerComponent', () => {
     });
 
     it('closes the popover after selection', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       findDayCell(15).click();
@@ -166,13 +192,13 @@ describe('DatePickerComponent', () => {
     it('displays the formatted value after selection', () => {
       component.viewYear.set(2026);
       component.viewMonth.set(3);
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       findDayCell(15).click();
       fixture.detectChanges();
 
-      expect(getTrigger().textContent).not.toContain('Select date…');
+      expect(getInput().value).not.toBe('');
     });
 
     it('clears value via the clear button', () => {
@@ -212,7 +238,7 @@ describe('DatePickerComponent', () => {
       component.writeValue(target);
       fixture.detectChanges();
 
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       const selected = Array.from(
@@ -226,7 +252,7 @@ describe('DatePickerComponent', () => {
     it('closes and marks the control touched on an outside click', () => {
       const onTouched = vi.fn<() => void>();
       component.registerOnTouched(onTouched);
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -239,7 +265,7 @@ describe('DatePickerComponent', () => {
 
   describe('Navigation', () => {
     it('navigates to the previous month', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
@@ -285,7 +311,7 @@ describe('DatePickerComponent', () => {
   describe('Min and max dates', () => {
     it('marks days before minDate as disabled', () => {
       fixture.componentRef.setInput('minDate', new Date(2026, 3, 10));
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
@@ -297,7 +323,7 @@ describe('DatePickerComponent', () => {
 
     it('marks days after maxDate as disabled', () => {
       fixture.componentRef.setInput('maxDate', new Date(2026, 3, 10));
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       component.viewYear.set(2026);
       component.viewMonth.set(3);
@@ -310,7 +336,7 @@ describe('DatePickerComponent', () => {
     it('ignores a click on an out-of-range day and stays open', () => {
       const changed = vi.fn<(value: Date | null) => void>();
       component.changed.subscribe(changed);
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
       fixture.componentRef.setInput(
         'minDate',
@@ -333,14 +359,14 @@ describe('DatePickerComponent', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
 
-      expect(getTrigger().disabled).toBe(true);
+      expect(getInput().disabled).toBe(true);
     });
 
     it('does not open when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
 
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
@@ -352,7 +378,7 @@ describe('DatePickerComponent', () => {
       fixture.componentRef.setInput('readonly', true);
       fixture.detectChanges();
 
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
@@ -374,7 +400,120 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       expect(fixture.nativeElement.querySelector('.ea-date-picker__clear')).toBeNull();
-      expect(getTrigger().textContent).not.toContain('Select date…');
+      expect(getInput().value).not.toBe('');
+    });
+
+    it('makes the field read-only', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      expect(getInput().readOnly).toBe(true);
+    });
+  });
+
+  describe('Typed entry', () => {
+    const target = new Date(2026, 3, 15);
+
+    function formatted(date: Date): string {
+      return new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' }).format(date);
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('locale', 'en-GB');
+      fixture.detectChanges();
+    });
+
+    it('adopts an ISO entry and rewrites it in the configured format', () => {
+      type('2026-04-15');
+
+      commit();
+
+      expect(component.value()).toEqual(target);
+      expect(getInput().value).toBe(formatted(target));
+    });
+
+    it("reads an all-numeric entry in the locale's field order", () => {
+      type('15/04/26');
+
+      commit();
+
+      expect(component.value()).toEqual(target);
+    });
+
+    it('reads an entry that names its month', () => {
+      type('15 April 2026');
+
+      commit();
+
+      expect(component.value()).toEqual(target);
+    });
+
+    it('notifies the bound control and emits changed', () => {
+      const onChange = vi.fn<(value: Date | null) => void>();
+      const changed = vi.fn<(value: Date | null) => void>();
+      component.registerOnChange(onChange);
+      component.changed.subscribe(changed);
+      type('15 April 2026');
+
+      commit();
+
+      expect(onChange).toHaveBeenCalledWith(target);
+      expect(changed).toHaveBeenCalledWith(target);
+    });
+
+    it('clears the value when the entry is emptied', () => {
+      component.writeValue(target);
+      fixture.detectChanges();
+      type('');
+
+      commit();
+
+      expect(component.value()).toBeNull();
+    });
+
+    it('restores the current value when the entry names no date', () => {
+      component.writeValue(target);
+      fixture.detectChanges();
+      type('whenever');
+
+      commit();
+
+      expect(component.value()).toEqual(target);
+      expect(getInput().value).toBe(formatted(target));
+    });
+
+    it('rejects an entry outside the min and max bounds', () => {
+      fixture.componentRef.setInput('minDate', new Date(2026, 3, 10));
+      fixture.componentRef.setInput('maxDate', new Date(2026, 3, 20));
+      fixture.detectChanges();
+      type('2026-05-01');
+
+      commit();
+
+      expect(component.value()).toBeNull();
+      expect(getInput().value).toBe('');
+    });
+
+    it('commits on Enter without opening the calendar', () => {
+      type('2026-04-15');
+
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual(target);
+      expect(getPopover()).toBeNull();
+    });
+
+    it('abandons the entry on Escape', () => {
+      component.writeValue(target);
+      fixture.detectChanges();
+      type('nonsense');
+
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual(target);
+      expect(getInput().value).toBe(formatted(target));
     });
   });
 
@@ -387,7 +526,7 @@ describe('DatePickerComponent', () => {
       const rendered = (['short', 'medium', 'long'] as const).map(format => {
         fixture.componentRef.setInput('format', format);
         fixture.detectChanges();
-        return getTrigger().textContent!.trim();
+        return getInput().value.trim();
       });
 
       const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
@@ -398,22 +537,22 @@ describe('DatePickerComponent', () => {
   });
 
   describe('Keyboard navigation', () => {
-    it('opens on Enter key', () => {
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    it('does not open on Enter, which commits the entry instead', () => {
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
       fixture.detectChanges();
 
-      expect(getPopover()).toBeTruthy();
+      expect(getPopover()).toBeNull();
     });
 
     it('opens on ArrowDown key', () => {
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
 
       expect(getPopover()).toBeTruthy();
     });
 
     it('closes on Escape key', () => {
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       const popover = getPopover()!;
@@ -480,7 +619,7 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.value()).toBeNull();
-      expect(getTrigger().textContent).toContain('Select date…');
+      expect(getInput().value).toBe('');
     });
 
     it('clears rather than rendering an invalid Date from the form', () => {
@@ -490,7 +629,7 @@ describe('DatePickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.value()).toBeNull();
-      expect(getTrigger().textContent).toContain('Select date…');
+      expect(getInput().value).toBe('');
     });
 
     it('writes null via writeValue', () => {
@@ -505,7 +644,7 @@ describe('DatePickerComponent', () => {
       component.registerOnChange(onChange);
       component.viewYear.set(2026);
       component.viewMonth.set(3);
-      getTrigger().click();
+      getCalendarButton().click();
       fixture.detectChanges();
 
       findDayCell(15).click();
@@ -518,7 +657,7 @@ describe('DatePickerComponent', () => {
       component.setDisabledState(true);
       fixture.detectChanges();
 
-      expect(getTrigger().disabled).toBe(true);
+      expect(getInput().disabled).toBe(true);
     });
   });
 });

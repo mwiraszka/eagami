@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.21.0] - 2026-08-08
+
+### Added
+
+- Give the toast an optional title, shown above the message, which steps the message back when set.
+- Accept a date typed straight into the date picker, in ISO, all-numeric, or month-name form, and rewrite it in the picker's own format.
+
+### Changed
+
+- **Breaking:** Drop the date picker's default placeholder text; pass `placeholder` to show one.
+- Enlarge the toast icon and give it more room from the text beside it.
+- Quiet a readonly field under the pointer: no focus ring on click, no hover on its icons, and no pointer cursor.
+
 ## [5.20.0] - 2026-08-08
 
 ### Added
@@ -1288,6 +1301,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.21.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.20.0...ui-v5.21.0
 [5.20.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.19.0...ui-v5.20.0
 [5.19.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.18.0...ui-v5.19.0
 [5.18.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.2...ui-v5.18.0

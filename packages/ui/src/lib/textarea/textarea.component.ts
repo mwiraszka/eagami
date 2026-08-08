@@ -99,7 +99,7 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-textarea-wrapper--${this.size()}`]: true,
     'ea-textarea-wrapper--error': this.hasError(),
-    'ea-textarea-wrapper--focused': this.isFocused(),
+    'ea-textarea-wrapper--focused': this.isFocused() && !this.readonly(),
     'ea-textarea-wrapper--disabled': this.isDisabled(),
     'ea-textarea-wrapper--readonly': this.readonly(),
   }));

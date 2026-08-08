@@ -11,8 +11,12 @@ describe('DatePickerComponent calendar navigation', () => {
   let fixture: ComponentFixture<DatePickerComponent>;
   let component: DatePickerComponent;
 
-  function trigger(): HTMLButtonElement {
-    return fixture.nativeElement.querySelector('.ea-date-picker__trigger');
+  function calendarButton(): HTMLButtonElement {
+    return fixture.nativeElement.querySelector('.ea-date-picker__calendar-button');
+  }
+
+  function input(): HTMLInputElement {
+    return fixture.nativeElement.querySelector('.ea-date-picker__input');
   }
 
   function surface(): HTMLElement | null {
@@ -55,7 +59,7 @@ describe('DatePickerComponent calendar navigation', () => {
   }
 
   function open(): void {
-    trigger().click();
+    calendarButton().click();
     fixture.detectChanges();
   }
 
@@ -471,21 +475,21 @@ describe('DatePickerComponent calendar navigation', () => {
       expect(document.activeElement).toBe(focusedCell());
     });
 
-    it('restores focus to the trigger on Escape', () => {
+    it('restores focus to the field on Escape', () => {
       open();
 
       press('Escape');
 
-      expect(document.activeElement).toBe(trigger());
+      expect(document.activeElement).toBe(input());
     });
 
-    it('restores focus to the trigger after selecting a day', () => {
+    it('restores focus to the field after selecting a day', () => {
       open();
 
       inMonthCell(12).click();
       fixture.detectChanges();
 
-      expect(document.activeElement).toBe(trigger());
+      expect(document.activeElement).toBe(input());
     });
   });
 
@@ -535,7 +539,7 @@ describe('DatePickerComponent calendar navigation', () => {
       const second = TestBed.createComponent(DatePickerComponent);
       document.body.appendChild(second.nativeElement);
       second.detectChanges();
-      second.nativeElement.querySelector('.ea-date-picker__trigger').click();
+      second.nativeElement.querySelector('.ea-date-picker__calendar-button').click();
       second.detectChanges();
       await second.whenStable();
 

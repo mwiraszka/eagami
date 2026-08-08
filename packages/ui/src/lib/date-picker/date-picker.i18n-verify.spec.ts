@@ -9,7 +9,7 @@ function openAndRead(): { weekdays: string[]; month: string; today: string } {
   const fixture = TestBed.createComponent(DatePickerComponent);
   fixture.detectChanges();
   (
-    fixture.nativeElement.querySelector('.ea-date-picker__trigger') as HTMLElement
+    fixture.nativeElement.querySelector('.ea-date-picker__calendar-button') as HTMLElement
   ).click();
   fixture.detectChanges();
   const surface = document.body.querySelector('.ea-popover__surface')!;

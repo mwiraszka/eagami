@@ -163,16 +163,29 @@
 
   // Inherits the toast's variant text colour through currentColor. The icon host
   // sets width/height to 1em inline, so scale via font-size (a class width/height
-  // would lose to the inline style); 1em matches the glyph to the message text.
+  // would lose to the inline style).
   &__icon {
     display: inline-flex;
     flex-shrink: 0;
-    font-size: 1em;
+    margin-inline-end: 0.25em;
+    font-size: 1.25em;
   }
 
-  &__message {
+  &__content {
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    gap: 0.125em;
     min-width: 0;
+  }
+
+  &__title {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  // With a title above it the message is the supporting line, so it steps back
+  &__title + &__message {
+    opacity: 0.85;
   }
 
   &__close {

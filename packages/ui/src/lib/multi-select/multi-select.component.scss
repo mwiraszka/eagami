@@ -79,6 +79,14 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
+
+    &:has(.ea-multi-select__trigger--readonly) {
+      cursor: default;
+    }
+
+    &:has(.ea-multi-select__trigger--readonly:focus-visible) {
+      @include ea.readonly-focus-cue;
+    }
   }
 
   &__trigger {
@@ -96,6 +104,10 @@
 
     &--disabled {
       cursor: not-allowed;
+    }
+
+    &--readonly {
+      cursor: default;
     }
   }
 

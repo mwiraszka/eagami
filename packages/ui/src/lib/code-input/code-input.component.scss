@@ -91,6 +91,10 @@
     @include ea.focus-ring;
   }
 
+  &--readonly {
+    @include ea.readonly-control;
+  }
+
   &--filled {
     border-color: var(--color-border-strong);
   }

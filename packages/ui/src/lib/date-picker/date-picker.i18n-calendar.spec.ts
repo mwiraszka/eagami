@@ -42,7 +42,9 @@ describe('DatePicker localized calendar names', () => {
     const fixture = TestBed.createComponent(DatePickerComponent);
     fixture.detectChanges();
     (
-      fixture.nativeElement.querySelector('.ea-date-picker__trigger') as HTMLElement
+      fixture.nativeElement.querySelector(
+        '.ea-date-picker__calendar-button',
+      ) as HTMLElement
     ).click();
     fixture.detectChanges();
     return { svc, fixture };

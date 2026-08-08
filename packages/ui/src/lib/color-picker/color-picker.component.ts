@@ -280,6 +280,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
     'ea-color-picker__trigger--error': this.hasError(),
     'ea-color-picker__trigger--open': this.isOpen(),
     'ea-color-picker__trigger--disabled': this.isDisabled(),
+    'ea-color-picker__trigger--readonly': this.readonly() && !this.isDisabled(),
   }));
 
   readonly wrapperClasses = computed(() => ({

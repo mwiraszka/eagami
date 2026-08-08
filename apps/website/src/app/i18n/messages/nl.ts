@@ -1044,6 +1044,7 @@ export const nl: WebMessages = {
           },
           toast: {
             icon: 'Icoon (overschrijven)',
+            title: 'Titel',
           },
           avatar: {
             size: 'Grootte',
@@ -1800,7 +1801,7 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             format: 'Weergaveformaat van de geselecteerde datum (kort, middel of lang).',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
-            id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
+            id: 'id toegepast op het veld en het label for, automatisch gegenereerd indien weggelaten.',
             label: 'Tekstlabel weergegeven boven het veld.',
             locale:
               'BCP 47-taaltag gebruikt voor datumopmaak, die terugvalt op de globale taal indien weggelaten.',
@@ -1809,10 +1810,10 @@ export const nl: WebMessages = {
             minDate:
               'Vroegste datum die de gebruiker kan selecteren; datums hiervoor zijn uitgeschakeld in de kalender.',
             placeholder:
-              'Plaatsaanduiding getoond op de trigger terwijl geen datum is geselecteerd.',
+              'Plaatsaanduiding getoond in het veld terwijl geen datum is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de kalender niet opent.',
             required: 'Markeert het veld als verplicht.',
-            size: 'Visuele grootte van de datumkiezertrigger.',
+            size: 'Visuele grootte van het datumkiezerveld.',
             value:
               'Huidige geselecteerde datum, in twee richtingen te binden via [(value)].',
             weekStartsOn:
@@ -1821,7 +1822,7 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer de geselecteerde datum verandert, ook bij wissen.',
             clear: 'Wist de geselecteerde datum en zendt changed uit met null.',
             close: 'Sluit de kalenderpopover.',
-            focus: 'Verplaatst de toetsenbordfocus naar de triggerknop.',
+            focus: 'Verplaatst de toetsenbordfocus naar het datumveld.',
             onPopoverCloseRequested:
               'Sluit de popover wanneer de gebruiker buiten de datumkiezer klikt.',
             open: 'Opent de kalenderpopover en verplaatst de focus naar de gefocuste dagcel.',

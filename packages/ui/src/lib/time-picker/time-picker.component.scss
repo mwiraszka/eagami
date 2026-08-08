@@ -84,6 +84,10 @@
       cursor: not-allowed;
     }
 
+    &--readonly {
+      @include ea.readonly-control;
+    }
+
     &--placeholder .ea-time-picker__trigger-value {
       color: var(--color-text-tertiary);
     }

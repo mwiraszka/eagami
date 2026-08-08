@@ -23,7 +23,7 @@ export const DATE_PICKER_KNOBS: ComponentKnobs = {
   },
   args: {
     label: 'Appointment date',
-    placeholder: 'Pick a date',
+    placeholder: 'mm/dd/yy',
     size: 'md',
     format: 'medium',
     disabled: false,

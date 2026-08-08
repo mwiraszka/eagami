@@ -78,6 +78,7 @@
 
   &--readonly {
     background-color: var(--color-bg-subtle);
+    @include ea.readonly-field;
   }
 
   &__prefix,

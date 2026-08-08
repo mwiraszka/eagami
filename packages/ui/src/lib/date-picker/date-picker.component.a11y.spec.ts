@@ -38,7 +38,7 @@ describe('DatePickerComponent a11y', () => {
 
   /** Opens the calendar and hands back the portaled surface holding the grid. */
   function openCalendar(el: HTMLElement): HTMLElement {
-    el.querySelector<HTMLElement>('.ea-date-picker__trigger')!.click();
+    el.querySelector<HTMLElement>('.ea-date-picker__calendar-button')!.click();
     fixture.detectChanges();
     const [surface] = revealPopoverSurfaces();
     return surface;

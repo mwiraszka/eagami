@@ -64,6 +64,30 @@ describe('ToastComponent', () => {
     expect(toast.querySelector('ea-icon-check-circle')).toBeNull();
   });
 
+  it('renders a title above the message when one is given', () => {
+    toastService.show('Your changes are live', {
+      title: 'Deployment finished',
+      duration: 0,
+    });
+    fixture.detectChanges();
+
+    const toast = getToasts()[0];
+
+    expect(toast.querySelector('.ea-toast__title')!.textContent).toContain(
+      'Deployment finished',
+    );
+    expect(toast.querySelector('.ea-toast__message')!.textContent).toContain(
+      'Your changes are live',
+    );
+  });
+
+  it('renders no title element when none is given', () => {
+    toastService.show('Your changes are live', { duration: 0 });
+    fixture.detectChanges();
+
+    expect(getToasts()[0].querySelector('.ea-toast__title')).toBeNull();
+  });
+
   it('renders no icon when the override is null', () => {
     toastService.show('saved', { variant: 'success', duration: 0, icon: null });
     fixture.detectChanges();

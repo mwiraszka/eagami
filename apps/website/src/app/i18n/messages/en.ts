@@ -1030,6 +1030,7 @@ export const en: WebMessages = {
           },
           toast: {
             icon: 'Icon (override)',
+            title: 'Title',
           },
           avatar: {
             size: 'Size',
@@ -1742,7 +1743,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             format: 'Display format of the selected date (short, medium, or long).',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
-            id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            id: 'id applied to the field and label for, auto-generated when omitted.',
             label: 'Text label rendered above the field.',
             locale:
               'BCP 47 locale tag used for date formatting, falling back to the global locale when omitted.',
@@ -1750,17 +1751,17 @@ export const en: WebMessages = {
               'Latest date the user can select; dates after this are disabled in the calendar.',
             minDate:
               'Earliest date the user can select; dates before this are disabled in the calendar.',
-            placeholder: 'Placeholder shown on the trigger while no date is selected.',
+            placeholder: 'Placeholder shown in the field while no date is selected.',
             readonly: 'Renders the field read-only, keeping the calendar from opening.',
             required: 'Marks the field as required.',
-            size: 'Visual size of the date picker trigger.',
+            size: 'Visual size of the date picker field.',
             value: 'Current selected date, two-way bindable via [(value)].',
             weekStartsOn:
               'First day of the week in the calendar grid (0 for Sunday, 1 for Monday).',
             changed: 'Fires when the selected date changes, including when cleared.',
             clear: 'Clears the selected date and emits changed with null.',
             close: 'Closes the calendar popover.',
-            focus: 'Moves keyboard focus to the trigger button.',
+            focus: 'Moves keyboard focus to the date field.',
             onPopoverCloseRequested:
               'Closes the popover when the user clicks outside the date picker.',
             open: 'Opens the calendar popover and moves focus to the focused day cell.',
