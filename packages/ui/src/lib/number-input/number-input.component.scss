@@ -43,11 +43,12 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 0.25em;
+  // Hugs the field rather than filling the row, so the control is only as wide
+  // as the characters it holds. The label and messages still lay out full width.
+  width: fit-content;
   min-height: 2.5em;
-  // Logical padding: less room on the stepper (inline-end) side. Flips in RTL.
   padding-block: 0;
-  padding-inline: 0.75em 0.5em;
+  padding-inline: 0.75em;
   border: var(--border-width-thin) solid var(--color-border-default);
   border-radius: var(--radius-md);
   background-color: var(--color-bg-base);
@@ -81,39 +82,21 @@
   &--readonly {
     background-color: var(--color-bg-subtle);
   }
-
-  &__steppers {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-  }
-
-  // Half-height so the up/down pair stacks inside one field row
-  &__step {
-    @include ea.icon-button;
-    --ea-icon-button-size: 1.1em;
-    width: 1.5em;
-    border-radius: var(--radius-xs);
-
-    // Shorter than a standard icon button, so hold the glyph at 1em to keep it
-    // within the box instead of the mixin's larger default
-    > * {
-      font-size: 1em;
-    }
-  }
-
-  &__step-icon {
-    pointer-events: none;
-  }
 }
 
 .ea-number-input {
-  flex: 1;
-  width: 100%;
+  // Sized in `ch`, the advance of "0". Paired with the tabular figures below
+  // every digit is exactly 1ch, so this holds the widest possible value of that
+  // many characters rather than an average one. `maxDigits` feeds the custom
+  // property; without it a field wide enough for six characters suits most values.
+  width: calc(var(--ea-number-input-chars, 6) * 1ch);
   min-width: 0;
   padding: 0.5em 0;
   font-family: var(--font-family-sans);
   line-height: var(--line-height-normal);
+  // Equal-width digits, so the width above is exact and the value does not
+  // shift around as it is typed
+  font-variant-numeric: tabular-nums;
   border: none;
   outline: none;
   background: transparent;
@@ -132,7 +115,8 @@
     cursor: not-allowed;
   }
 
-  // Hide the native spin buttons; the component renders its own steppers
+  // Hide the native spin buttons: the field reads as a plain text input,
+  // stepping stays on the arrow keys the native control already provides
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     margin: 0;

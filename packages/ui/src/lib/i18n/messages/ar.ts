@@ -118,10 +118,6 @@ const messages: EagamiMessages = {
     hidePassword: 'إخفاء كلمة المرور',
     clear: 'مسح',
   },
-  numberInput: {
-    increment: 'زيادة',
-    decrement: 'إنقاص',
-  },
   menu: {
     label: 'القائمة',
   },

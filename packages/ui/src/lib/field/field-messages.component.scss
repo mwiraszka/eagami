@@ -7,8 +7,11 @@
   align-items: center;
   gap: var(--space-1);
   // A sized ancestor (ea-form-field) provides an em-valued override so the
-  // messages scale with it; everywhere else the fixed helper token applies
-  font-size: var(--ea-field-messages-size, var(--text-helper-size));
+  // messages scale with it; everywhere else the fixed helper token applies. The
+  // floor stops the dense tiers scaling error and hint text into illegibility
+  // (xs and 2xs would otherwise land at 9.8px and 8.1px), and applies here, at
+  // the single point of use, so every component that sets the variable inherits it.
+  font-size: max(var(--ea-field-messages-size, var(--text-helper-size)), 0.6875rem);
   font-weight: var(--text-helper-weight);
   line-height: var(--text-helper-lh);
 }

@@ -1025,6 +1025,7 @@ export const nl: WebMessages = {
             min: 'Minimum',
             max: 'Maximum',
             step: 'Stap',
+            maxDigits: 'Max. cijfers',
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
@@ -1272,9 +1273,11 @@ export const nl: WebMessages = {
             disabled: 'Schakelt het veld uit.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
-            min: 'Minimumwaarde; ingevoerde waarden worden erop afgekapt bij blur en de stapknoppen respecteren deze.',
-            max: 'Maximumwaarde; ingevoerde waarden worden erop afgekapt bij blur en de stapknoppen respecteren deze.',
-            step: 'Hoeveelheid die elke stap (pijltoets of stapknop) optelt of aftrekt.',
+            min: 'Minimumwaarde; getypte waarden worden er bij verlies van focus naartoe begrensd.',
+            max: 'Maximumwaarde; getypte waarden worden er bij verlies van focus naartoe begrensd.',
+            step: 'Bedrag dat elke stap met de pijltoetsen optelt of aftrekt.',
+            maxDigits:
+              'Beperkt hoeveel tekens het veld accepteert en hoe breed het wordt weergegeven; zes tekens als niets is ingesteld.',
             id: 'id toegepast op de native input en het label for, automatisch gegenereerd indien weggelaten.',
             value:
               'Huidige veldwaarde; null wanneer leeg, in twee richtingen te binden via [(value)].',

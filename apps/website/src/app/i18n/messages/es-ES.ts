@@ -1030,6 +1030,7 @@ export const esES: WebMessages = {
             min: 'Mínimo',
             max: 'Máximo',
             step: 'Paso',
+            maxDigits: 'Dígitos máx.',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
@@ -1278,9 +1279,11 @@ export const esES: WebMessages = {
             disabled: 'Deshabilita el campo.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
-            min: 'Valor mínimo; los valores introducidos se acotan a él al perder el foco y los botones de paso lo respetan.',
-            max: 'Valor máximo; los valores introducidos se acotan a él al perder el foco y los botones de paso lo respetan.',
-            step: 'Cantidad que cada paso (tecla de flecha o botón de paso) suma o resta.',
+            min: 'Valor mínimo; los valores escritos se ajustan a él al salir del campo.',
+            max: 'Valor máximo; los valores escritos se ajustan a él al salir del campo.',
+            step: 'Cantidad que suma o resta cada paso con las teclas de flecha.',
+            maxDigits:
+              'Limita cuántos caracteres acepta el campo y su anchura; seis caracteres si no se indica.',
             id: 'id aplicado al campo nativo y al for de la etiqueta, generado automáticamente si se omite.',
             value:
               'Valor actual del campo, null cuando está vacío, vinculable en dos sentidos mediante [(value)].',

@@ -13,6 +13,40 @@
   max-width: 360px;
 }
 
+// The playground centres its preview, so a control that resizes would drift as
+// its knob changes. Reserve the field's widest footprint once (12 characters,
+// the `maxDigits` ceiling, plus the wrapper's inline padding and borders) and
+// let the control sit at the start of it, so the left edge never moves as
+// `maxDigits` changes. The host mirrors the tier's font-size and family, so the
+// `ch` and `em` here measure the same text the field does.
+.demo-number-input {
+  display: block;
+  width: calc(12ch + 1.5em + 2 * var(--border-width-thin));
+  font-family: var(--font-family-sans);
+
+  // The reserved width is the control's, not the message's, so a message would
+  // wrap inside it. Let it run past the reservation towards the card's right
+  // edge instead. Reaches into the library's own message element because there
+  // is no public control for it, and it does not belong in the library: wrapping
+  // is right in a real form, and this is playground layout only.
+  .ea-field-messages__message {
+    white-space: nowrap;
+  }
+}
+
+// Holds the message row open on any demo whose playground has a `triggerError`
+// knob, so flipping it costs no height and the card stops jumping. The library
+// leaves `<ea-field-messages>` at `display: contents`, which collapses to
+// nothing when there is no message; that collapse is correct in a real form,
+// so it is reserved here rather than in the library.
+.demo-reserve-messages ea-field-messages {
+  display: block;
+  min-height: calc(
+    max(var(--ea-field-messages-size, var(--text-helper-size)), 0.6875rem) *
+      var(--text-helper-lh)
+  );
+}
+
 // Full-bleed projected components (paginator, virtual list) whose host would
 // otherwise shrink to content inside the centered preview, leaving alignment
 // inert or collapsing a fixed-size viewport to nothing.

@@ -1033,6 +1033,7 @@ export const de: WebMessages = {
             min: 'Minimum',
             max: 'Maximum',
             step: 'Schritt',
+            maxDigits: 'Max. Ziffern',
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
@@ -1280,9 +1281,11 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert das Feld.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
-            min: 'Mindestwert; eingegebene Werte werden beim Verlassen darauf begrenzt und die Schrittschaltflächen berücksichtigen ihn.',
-            max: 'Maximalwert; eingegebene Werte werden beim Verlassen darauf begrenzt und die Schrittschaltflächen berücksichtigen ihn.',
-            step: 'Betrag, den jeder Schritt (Pfeiltaste oder Schrittschaltfläche) addiert oder subtrahiert.',
+            min: 'Minimalwert; eingegebene Werte werden beim Verlassen des Felds darauf begrenzt.',
+            max: 'Maximalwert; eingegebene Werte werden beim Verlassen des Felds darauf begrenzt.',
+            step: 'Betrag, den jeder Schritt mit den Pfeiltasten addiert oder subtrahiert.',
+            maxDigits:
+              'Begrenzt, wie viele Zeichen das Feld annimmt und wie breit es dargestellt wird; ohne Angabe sechs Zeichen.',
             id: 'id, die auf das native Input und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
             value:
               'Aktueller Feldwert, null wenn leer, bidirektional bindbar über [(value)].',

@@ -111,10 +111,6 @@ const messages: EagamiMessages = {
     hidePassword: 'Απόκρυψη κωδικού πρόσβασης',
     clear: 'Καθαρισμός',
   },
-  numberInput: {
-    increment: 'Αύξηση',
-    decrement: 'Μείωση',
-  },
   menu: {
     label: 'Μενού',
   },

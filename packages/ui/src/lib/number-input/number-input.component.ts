@@ -22,8 +22,6 @@ import {
   injectControlErrorState,
 } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
-import { ChevronDownIconComponent } from '../icons/chevron-down.component';
-import { ChevronUpIconComponent } from '../icons/chevron-up.component';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -31,7 +29,7 @@ import { uniqueId } from '../unique-id';
 export type NumberInputSize = EaSize;
 
 /**
- * Numeric field with increment and decrement steppers, min/max/step bounds, and
+ * Numeric field with min/max/step bounds, native arrow-key stepping, and
  * the standard label, hint, and error chrome. The native input carries the
  * `spinbutton` role, so arrow keys step it; the steppers are pointer
  * affordances. Integrates with Angular forms via `ControlValueAccessor`.
@@ -41,13 +39,7 @@ export type NumberInputSize = EaSize;
   templateUrl: './number-input.component.html',
   styleUrl: './number-input.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ChevronDownIconComponent,
-    ChevronUpIconComponent,
-    FieldLabelComponent,
-    FieldMessagesComponent,
-    NgClass,
-  ],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -80,10 +72,16 @@ export class NumberInputComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   /** Minimum value; typed values are clamped to it on blur and the steppers respect it. */
   readonly min = input<number | undefined>(undefined);
-  /** Maximum value; typed values are clamped to it on blur and the steppers respect it. */
+  /** Maximum value; typed values are clamped to it on blur. */
   readonly max = input<number | undefined>(undefined);
-  /** Amount each step (arrow key or stepper) adds or subtracts. */
+  /** Amount each arrow-key step adds or subtracts. */
   readonly step = input<number>(1);
+  /**
+   * Caps how many characters the field accepts, counting the digits, the minus
+   * sign, and the decimal point. Also sets how wide the field renders; without
+   * it the field is six characters wide.
+   */
+  readonly maxDigits = input<number | undefined>(undefined);
   /** Whether negative values are allowed; when `false` the value floors at 0. */
   readonly allowNegative = input<boolean>(true);
   /** Accessible name for the field when no visible `label` is set. */
@@ -128,22 +126,6 @@ export class NumberInputComponent implements ControlValueAccessor {
   readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
-
-  readonly canIncrement = computed(() => {
-    if (!this.isInteractive()) {
-      return false;
-    }
-    const max = this.max();
-    return max == null || (this.value() ?? this.min() ?? 0) < max;
-  });
-
-  readonly canDecrement = computed(() => {
-    if (!this.isInteractive()) {
-      return false;
-    }
-    const min = this.effectiveMin();
-    return min == null || (this.value() ?? this.max() ?? 0) > min;
-  });
 
   readonly wrapperClasses = computed(() => ({
     [`ea-number-input-wrapper--${this.size()}`]: true,
@@ -191,7 +173,22 @@ export class NumberInputComponent implements ControlValueAccessor {
   }
 
   protected handleInput(): void {
+    this.enforceMaxDigits();
     this.commitFromElement(false);
+  }
+
+  // `type="number"` ignores `maxlength`, so the cap is applied to the element's
+  // own value. Trimming from the end mirrors what the browser would have done
+  // had it stopped accepting the keystroke, and covers paste and drop too. The
+  // caret is left alone: a number input supports no selection API, and reading
+  // `selectionStart` on one throws.
+  private enforceMaxDigits(): void {
+    const max = this.maxDigits();
+    const el = this.inputEl()?.nativeElement;
+    if (max == null || !el || el.value.length <= max) {
+      return;
+    }
+    el.value = el.value.slice(0, max);
   }
 
   protected handleFocus(event: FocusEvent): void {
@@ -226,35 +223,9 @@ export class NumberInputComponent implements ControlValueAccessor {
     }
   }
 
-  // Keeps focus in the input while the mouse presses a stepper, so the field
-  // does not blur (and prematurely commit or mark touched) on each click.
-  protected onStepMousedown(event: MouseEvent): void {
-    event.preventDefault();
-  }
-
-  protected increment(): void {
-    this.stepBy(el => el.stepUp());
-  }
-
-  protected decrement(): void {
-    this.stepBy(el => el.stepDown());
-  }
-
   /** Moves keyboard focus to the underlying native input element. */
   focus(): void {
     this.inputEl()?.nativeElement.focus();
-  }
-
-  private stepBy(apply: (el: HTMLInputElement) => void): void {
-    const el = this.inputEl()?.nativeElement;
-    if (!el || !this.isInteractive()) {
-      return;
-    }
-    // Delegates to the native spinbutton so bounds, step, and grid-snapping
-    // match arrow-key stepping exactly.
-    apply(el);
-    this.commitFromElement(true);
-    el.focus();
   }
 
   // Reads the element, optionally clamps into the effective bounds, and emits

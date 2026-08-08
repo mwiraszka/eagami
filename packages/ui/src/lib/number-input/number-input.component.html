@@ -1,4 +1,6 @@
-<div class="ea-number-input-field ea-number-input-field--{{ size() }}">
+<div
+  class="ea-number-input-field ea-number-input-field--{{ size() }}"
+  [style.--ea-number-input-chars]="maxDigits()">
   @if (label(); as labelText) {
     <ea-field-label
       [text]="labelText"
@@ -32,29 +34,6 @@
       (wheel)="handleWheel($event)"
       (focus)="handleFocus($event)"
       (blur)="handleBlur($event)" />
-
-    <div class="ea-number-input-wrapper__steppers">
-      <button
-        type="button"
-        tabindex="-1"
-        class="ea-number-input-wrapper__step"
-        [disabled]="!canIncrement()"
-        [attr.aria-label]="i18n.messages().numberInput.increment"
-        (mousedown)="onStepMousedown($event)"
-        (click)="increment()">
-        <ea-icon-chevron-up class="ea-number-input-wrapper__step-icon" />
-      </button>
-      <button
-        type="button"
-        tabindex="-1"
-        class="ea-number-input-wrapper__step"
-        [disabled]="!canDecrement()"
-        [attr.aria-label]="i18n.messages().numberInput.decrement"
-        (mousedown)="onStepMousedown($event)"
-        (click)="decrement()">
-        <ea-icon-chevron-down class="ea-number-input-wrapper__step-icon" />
-      </button>
-    </div>
   </div>
 
   <ea-field-messages

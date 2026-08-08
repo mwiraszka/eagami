@@ -1025,6 +1025,7 @@ export const ptBR: WebMessages = {
             min: 'Mínimo',
             max: 'Máximo',
             step: 'Passo',
+            maxDigits: 'Dígitos máx.',
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
@@ -1273,9 +1274,11 @@ export const ptBR: WebMessages = {
             disabled: 'Desativa o campo.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
-            min: 'Valor mínimo; valores digitados são limitados a ele ao perder o foco, e os botões de passo o respeitam.',
-            max: 'Valor máximo; valores digitados são limitados a ele ao perder o foco, e os botões de passo o respeitam.',
-            step: 'Quantidade que cada passo (tecla de seta ou botão de passo) adiciona ou subtrai.',
+            min: 'Valor mínimo; valores digitados são limitados a ele ao sair do campo.',
+            max: 'Valor máximo; valores digitados são limitados a ele ao sair do campo.',
+            step: 'Quantidade que cada passo com as teclas de seta soma ou subtrai.',
+            maxDigits:
+              'Limita quantos caracteres o campo aceita e a largura com que ele é exibido; seis caracteres quando não definido.',
             id: 'id aplicado ao input nativo e ao for do rótulo, gerado automaticamente quando omitido.',
             value:
               'Valor atual do campo; null quando vazio, vinculável de forma bidirecional via [(value)].',

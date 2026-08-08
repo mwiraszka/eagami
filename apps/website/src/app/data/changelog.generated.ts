@@ -14,6 +14,27 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.20.0',
+    date: '2026-08-08',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Give the number input a `maxDigits` input, capping how many characters it accepts and sizing the field to match.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Size the number input to the characters it accepts instead of filling its container, six by default, with equal-width digits so the value no longer shifts as it is typed.',
+          '**Breaking:** Strip the increment and decrement buttons from the number input, leaving a plain field that still accepts only numbers and keeps its min, max, and step bounds; stepping stays on the arrow keys. The `numberInput.increment` and `numberInput.decrement` messages are removed.',
+          '**Breaking:** Grow the pointer target of every clear, close, and dismiss button to the 24px WCAG 2.2 minimum without changing how large it looks, so the dense sizes stay operable.',
+          "**Breaking:** Stop the field label shrinking below 12px, and error and hint text below 11px, however small the component's size is set.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.19.0',
     date: '2026-08-08',
     sections: [

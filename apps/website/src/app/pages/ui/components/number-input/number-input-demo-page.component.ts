@@ -1,7 +1,13 @@
 import { NumberInputComponent, type NumberInputSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -24,6 +30,7 @@ interface NumberInputKnobState {
   min: number | '';
   max: number | '';
   step: number;
+  maxDigits: number | '';
   allowNegative: boolean;
   disabled: boolean;
   readonly: boolean;
@@ -79,6 +86,13 @@ export class NumberInputDemoPageComponent {
 
   // A cleared number knob emits ''; map it to undefined for the bound input so
   // an empty Min/Max reads as unbounded.
+  // The reserved footprint is sized in `ch` and `em`, which resolve against the
+  // host's own font-size rather than the tier's, so mirror the tier here. The
+  // `size` values map one-to-one onto the font-size tokens.
+  protected readonly tierFontSize = computed(
+    () => `var(--font-size-${this.state().size})`,
+  );
+
   protected asBound(value: number | ''): number | undefined {
     return value === '' ? undefined : value;
   }
