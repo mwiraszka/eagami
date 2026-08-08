@@ -1,7 +1,13 @@
 <span
   class="ea-tag"
-  [ngClass]="hostClasses()">
-  <ng-content />
+  [ngClass]="hostClasses()"
+  [style.max-width.px]="maxWidth()">
+  <span
+    #labelEl
+    class="ea-tag__label"
+    [eaTooltip]="labelTooltip()">
+    <ng-content />
+  </span>
   @if (removable()) {
     <button
       type="button"

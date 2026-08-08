@@ -29,6 +29,21 @@ describe('TagComponent', () => {
       expect(getTag()).toBeTruthy();
     });
 
+    it('wraps the projected content in a label element it can truncate', () => {
+      expect(fixture.nativeElement.querySelector('.ea-tag__label')).toBeTruthy();
+    });
+
+    it('caps the tag at maxWidth', () => {
+      fixture.componentRef.setInput('maxWidth', 120);
+      fixture.detectChanges();
+
+      expect(getTag()!.style.maxWidth).toBe('120px');
+    });
+
+    it('leaves the width uncapped when maxWidth is unset', () => {
+      expect(getTag()!.style.maxWidth).toBe('');
+    });
+
     it('applies the default variant class', () => {
       expect(getTag()!.classList).toContain('ea-tag--default');
     });

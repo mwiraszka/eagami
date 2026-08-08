@@ -15,6 +15,8 @@ export const TAG_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
+    maxWidth: { control: 'number', min: 0, max: 400, step: 10, maxLength: 3 },
+    tooltip: { control: 'select', options: ['auto', 'none'] },
     removable: { control: 'boolean' },
     disabled: { control: 'boolean' },
     removeLabel: { if: { arg: 'removable', eq: true } },
@@ -23,6 +25,8 @@ export const TAG_KNOBS: ComponentKnobs = {
   args: {
     variant: 'default',
     size: 'md',
+    maxWidth: 0,
+    tooltip: 'auto',
     removable: false,
     disabled: false,
     removeLabel: 'Remove tag',
