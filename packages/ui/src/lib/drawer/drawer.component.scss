@@ -248,12 +248,12 @@
   }
 
   &__close {
+    @include ea.icon-button;
+
     z-index: 1;
     position: absolute;
     top: var(--space-3);
     inset-inline-end: var(--space-3);
-
-    @include ea.icon-button;
   }
 
   &__header {

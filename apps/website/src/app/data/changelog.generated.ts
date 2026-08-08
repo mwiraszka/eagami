@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.22.1',
+    date: '2026-08-08',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Pin the dialog's and drawer's close button back to the top-right corner of the panel.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.22.0',
     date: '2026-08-08',
     sections: [
