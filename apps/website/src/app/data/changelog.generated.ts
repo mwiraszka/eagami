@@ -24,6 +24,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
           'Add 16 media icons covering file formats, playback, and editing: file image, file video, file audio, file PDF, images, clapperboard, waveform, subtitles, picture-in-picture, aspect ratio, transcode, record, playlist, keyframe, timecode, and trim.',
         ],
       },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Give a button that has an icon and no label equal padding on all four sides, taken from the smaller vertical value, so it renders as a square instead of a wide pill.',
+        ],
+      },
     ],
   },
   {
