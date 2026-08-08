@@ -225,6 +225,7 @@ export class TimePickerComponent implements ControlValueAccessor {
     'ea-time-picker__trigger--error': this.hasError(),
     'ea-time-picker__trigger--open': this.isOpen(),
     'ea-time-picker__trigger--disabled': this.isDisabled(),
+    'ea-time-picker__trigger--readonly': this.readonly() && !this.isDisabled(),
     'ea-time-picker__trigger--placeholder': !this.hasValue(),
   }));
 

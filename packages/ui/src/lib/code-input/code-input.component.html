@@ -25,7 +25,8 @@
       <input
         #digitEl
         class="ea-code-input"
-        [class.ea-code-input--focused]="focusedIndex() === i"
+        [class.ea-code-input--focused]="focusedIndex() === i && !readonly()"
+        [class.ea-code-input--readonly]="readonly()"
         [class.ea-code-input--filled]="digits()[i] !== ''"
         type="text"
         [attr.inputmode]="allowAllChars() ? 'text' : 'numeric'"

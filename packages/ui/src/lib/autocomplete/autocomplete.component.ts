@@ -134,7 +134,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-autocomplete__wrapper--${this.size()}`]: true,
     'ea-autocomplete__wrapper--error': this.hasError(),
-    'ea-autocomplete__wrapper--focused': this.isFocused(),
+    'ea-autocomplete__wrapper--focused': this.isFocused() && !this.readonly(),
+    'ea-autocomplete__wrapper--readonly': this.readonly(),
     'ea-autocomplete__wrapper--disabled': this.isDisabled(),
   }));
 

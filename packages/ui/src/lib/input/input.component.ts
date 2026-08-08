@@ -154,7 +154,7 @@ export class InputComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-input-wrapper--${this.size()}`]: true,
     'ea-input-wrapper--error': this.hasError(),
-    'ea-input-wrapper--focused': this.isFocused(),
+    'ea-input-wrapper--focused': this.isFocused() && !this.readonly(),
     'ea-input-wrapper--disabled': this.isDisabled(),
     'ea-input-wrapper--readonly': this.readonly(),
   }));

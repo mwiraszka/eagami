@@ -124,6 +124,7 @@ export class DropdownComponent implements ControlValueAccessor {
     'ea-dropdown__trigger--error': this.hasError(),
     'ea-dropdown__trigger--open': this.isOpen(),
     'ea-dropdown__trigger--disabled': this.isDisabled(),
+    'ea-dropdown__trigger--readonly': this.readonly() && !this.isDisabled(),
   }));
 
   readonly menuClasses = computed(() => ({

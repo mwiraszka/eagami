@@ -130,7 +130,7 @@ export class NumberInputComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-number-input-wrapper--${this.size()}`]: true,
     'ea-number-input-wrapper--error': this.hasError(),
-    'ea-number-input-wrapper--focused': this.isFocused(),
+    'ea-number-input-wrapper--focused': this.isFocused() && !this.readonly(),
     'ea-number-input-wrapper--disabled': this.isDisabled(),
     'ea-number-input-wrapper--readonly': this.readonly(),
   }));

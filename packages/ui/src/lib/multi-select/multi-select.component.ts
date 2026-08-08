@@ -214,6 +214,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     'ea-multi-select__trigger--error': this.hasError(),
     'ea-multi-select__trigger--open': this.isOpen(),
     'ea-multi-select__trigger--disabled': this.isDisabled(),
+    'ea-multi-select__trigger--readonly': this.readonly() && !this.isDisabled(),
     'ea-multi-select__trigger--placeholder': !this.hasValue(),
   }));
 

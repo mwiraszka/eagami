@@ -30,6 +30,46 @@ $target-size-min: 24px;
   }
 }
 
+// A readonly field takes no input, so it offers a pointer nothing: no ring on
+// click, no icon hover, no pointer cursor. Keyboard focus still has to be
+// visible, so the border alone picks up the focus colour, without the halo.
+@mixin readonly-focus-cue {
+  border-color: var(--color-border-focus);
+  box-shadow: none;
+
+  // Border colour is unreliable in forced-colors, so the ring's outline stands
+  // in there, matching what `focus-ring` paints for an editable field
+  @media (forced-colors: active) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+@mixin readonly-field {
+  &:has(:focus-visible) {
+    @include readonly-focus-cue;
+  }
+
+  button {
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+      color: var(--color-text-secondary);
+    }
+  }
+}
+
+// `readonly-field` for a control whose root is the focusable element itself: it
+// keeps the quiet keyboard cue but stops offering to be pressed or typed into.
+@mixin readonly-control {
+  cursor: default;
+
+  &:focus-visible {
+    @include readonly-focus-cue;
+  }
+}
+
 // Hides an element visually while keeping it in the accessibility tree, so
 // screen readers still announce it. The clip pattern is used instead of
 // `display: none` or `visibility: hidden`, which would remove it entirely.
