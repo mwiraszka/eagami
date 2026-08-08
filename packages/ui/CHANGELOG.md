@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.20.0] - 2026-08-08
+
+### Added
+
+- Give the number input a `maxDigits` input, capping how many characters it accepts and sizing the field to match.
+
+### Changed
+
+- **Breaking:** Size the number input to the characters it accepts instead of filling its container, six by default, with equal-width digits so the value no longer shifts as it is typed.
+- **Breaking:** Strip the increment and decrement buttons from the number input, leaving a plain field that still accepts only numbers and keeps its min, max, and step bounds; stepping stays on the arrow keys. The `numberInput.increment` and `numberInput.decrement` messages are removed.
+- **Breaking:** Grow the pointer target of every clear, close, and dismiss button to the 24px WCAG 2.2 minimum without changing how large it looks, so the dense sizes stay operable.
+- **Breaking:** Stop the field label shrinking below 12px, and error and hint text below 11px, however small the component's size is set.
+
 ## [5.19.0] - 2026-08-08
 
 ### Added
@@ -1275,6 +1288,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.20.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.19.0...ui-v5.20.0
 [5.19.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.18.0...ui-v5.19.0
 [5.18.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.2...ui-v5.18.0
 [5.17.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.1...ui-v5.17.2

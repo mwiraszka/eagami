@@ -2610,6 +2610,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'maxDigits',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'min',
         type: 'number | undefined',
         default: 'undefined',
