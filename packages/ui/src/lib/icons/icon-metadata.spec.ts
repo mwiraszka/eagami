@@ -1,3 +1,7 @@
+/// <reference types="node" />
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CameraIconComponent } from './camera.component';
@@ -100,6 +104,37 @@ describe('Icon metadata API', () => {
 
       expect(github2.slug).toBe('github-2');
       expect(github2.category).toBe<IconCategory>('eagami');
+    });
+  });
+
+  // Both lists drifted into per-release batches once already: each release
+  // appended its own sorted run at the end, so the file read as sorted locally
+  // while being unsorted overall. Assert against the source text, since the
+  // runtime `.sort()` in `ICONS` hides the literal's order from every other test.
+  describe('Source ordering', () => {
+    function read(relativePath: string): string {
+      return readFileSync(join(process.cwd(), relativePath), 'utf8');
+    }
+
+    it('lists every icon export in one alphabetical run', () => {
+      const slugs = [
+        ...read('src/public-api.ts').matchAll(
+          /export \* from '\.\/lib\/icons\/(.+)\.component';/g,
+        ),
+      ].map(m => m[1]);
+
+      expect(slugs.length).toBeGreaterThan(400);
+      expect(slugs).toEqual([...slugs].sort());
+    });
+
+    it('lists every ICONS entry in one alphabetical run', () => {
+      const catalogue = read('src/lib/icons/icons-catalogue.ts');
+      const entries = [...catalogue.matchAll(/^ {4}(\w+IconComponent),$/gm)].map(
+        m => m[1],
+      );
+
+      expect(entries.length).toBeGreaterThan(400);
+      expect(entries).toEqual([...entries].sort());
     });
   });
 });
