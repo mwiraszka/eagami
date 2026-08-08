@@ -12,7 +12,11 @@ import { type EaSize } from '../sizes';
 /** Semantic colour scheme of a badge. */
 export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Visual size of a badge. */
-export type BadgeSize = EaSize;
+/**
+ * The badge ladder sits one step below the shared scale (its `xs` is already
+ * `--font-size-2xs`), so it bottoms out where the others gain a `2xs`.
+ */
+export type BadgeSize = Exclude<EaSize, '2xs'>;
 /**
  * Outer shape of a badge.
  * - `pill` (default): content-shaped pill, ideal for inline status labels

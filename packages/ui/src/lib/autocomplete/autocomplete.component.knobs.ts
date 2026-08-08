@@ -10,7 +10,7 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     minLength: { control: 'number', min: 0, max: 10, maxLength: 2 },
     maxResults: { control: 'number', min: 1, max: 50, maxLength: 2 },

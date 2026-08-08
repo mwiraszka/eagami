@@ -97,6 +97,10 @@
 
   // Size sets only the font-size; padding, gaps, and both icons are em-based
   // so the whole toast scales from it
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

@@ -21,6 +21,10 @@
 
   // Size sets only the font-size; the circle and label line-height are em-based on
   // the base rule, so everything scales from this one knob.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

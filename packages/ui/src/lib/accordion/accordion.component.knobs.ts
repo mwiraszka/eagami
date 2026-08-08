@@ -10,7 +10,7 @@ export const ACCORDION_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     multi: { control: 'boolean' },
     headingLevel: { control: 'number', min: 1, max: 6, step: 1, maxLength: 1 },

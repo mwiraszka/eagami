@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.19.0] - 2026-08-08
+
+### Added
+
+- Add a `2xs` size to every sized component, one step below `xs`, for dense toolbars and compact chrome.
+- Expand the icon set with 16 media icons covering file formats, playback, and editing: file image, file video, file audio, file PDF, images, clapperboard, waveform, subtitles, picture-in-picture, aspect ratio, transcode, record, playlist, keyframe, timecode, and trim.
+
+### Changed
+
+- **Breaking:** Give a button that has an icon and no label equal padding on all four sides, taken from the smaller vertical value, so it renders as a square instead of a wide pill.
+
 ## [5.18.0] - 2026-08-06
 
 ### Changed
@@ -1264,6 +1275,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.19.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.18.0...ui-v5.19.0
 [5.18.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.2...ui-v5.18.0
 [5.17.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.1...ui-v5.17.2
 [5.17.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.17.0...ui-v5.17.1

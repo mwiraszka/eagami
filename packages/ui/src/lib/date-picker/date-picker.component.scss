@@ -12,6 +12,10 @@
   --ea-field-label-size: 0.875em;
   --ea-field-messages-size: 0.8125em;
 
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }
@@ -132,6 +136,10 @@
       var(--color-bg-elevated)
     );
     @include ea.elevated-surface-border;
+
+    &--2xs {
+      font-size: var(--font-size-2xs);
+    }
 
     &--xs {
       font-size: var(--font-size-xs);

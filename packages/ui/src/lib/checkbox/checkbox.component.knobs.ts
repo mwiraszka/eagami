@@ -9,7 +9,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     count: { control: 'number', min: 0, max: 999, maxLength: 3 },
     disabled: { control: 'boolean' },

@@ -9,7 +9,7 @@ export const SLIDER_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     min: { control: 'number', min: -1000, max: 1000, maxLength: 5 },
     max: { control: 'number', min: -1000, max: 1000, maxLength: 5 },

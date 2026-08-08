@@ -18,6 +18,10 @@
 
   // Size sets only the font-size; spacing and the embedded buttons are em-based,
   // so the whole control scales from this one knob.
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

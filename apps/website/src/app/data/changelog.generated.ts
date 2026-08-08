@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.19.0',
+    date: '2026-08-08',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `2xs` size to every sized component, one step below `xs`, for dense toolbars and compact chrome.',
+          'Expand the icon set with 16 media icons covering file formats, playback, and editing: file image, file video, file audio, file PDF, images, clapperboard, waveform, subtitles, picture-in-picture, aspect ratio, transcode, record, playlist, keyframe, timecode, and trim.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Give a button that has an icon and no label equal padding on all four sides, taken from the smaller vertical value, so it renders as a square instead of a wide pill.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.18.0',
     date: '2026-08-06',
     sections: [

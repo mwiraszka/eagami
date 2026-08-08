@@ -25,6 +25,10 @@
     overflow: hidden;
     @include ea.elevated-surface-border;
 
+    &--2xs {
+      --ea-dialog-size: 16rem; // 256px
+    }
+
     &--xs {
       --ea-dialog-size: 20rem; // 320px
     }

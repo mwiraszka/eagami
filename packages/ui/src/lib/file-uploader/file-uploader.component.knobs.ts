@@ -7,6 +7,10 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
+    },
     multiple: { control: 'boolean' },
     maxFiles: { control: 'number', min: 1, max: 20, maxLength: 2 },
     maxSize: { control: 'number', min: 0, max: 104857600, maxLength: 9 },
@@ -19,6 +23,7 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
   },
   args: {
     label: 'Attachments',
+    size: 'md',
     accept: '',
     multiple: true,
     showFileList: true,

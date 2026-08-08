@@ -14,14 +14,8 @@ const meta: Meta<FileUploaderComponent> = {
     props: args,
     template: `<ea-file-uploader ${argsToTemplate(args)} class="story-medium"></ea-file-uploader>`,
   }),
-  argTypes: {
-    ...FILE_UPLOADER_KNOBS.argTypes,
-    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-  },
-  args: {
-    ...FILE_UPLOADER_KNOBS.args,
-    size: 'md',
-  },
+  argTypes: FILE_UPLOADER_KNOBS.argTypes,
+  args: FILE_UPLOADER_KNOBS.args,
 };
 
 export default meta;

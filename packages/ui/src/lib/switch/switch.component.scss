@@ -11,6 +11,10 @@
   // knob. At md the messages land exactly on the fixed --text-helper-size token.
   --ea-field-messages-size: 0.8125em;
 
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     font-size: var(--font-size-xs);
   }

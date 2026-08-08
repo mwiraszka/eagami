@@ -25,6 +25,7 @@ import { ArrowUpCircleIconComponent } from './arrow-up-circle.component';
 import { ArrowUpLeftIconComponent } from './arrow-up-left.component';
 import { ArrowUpRightIconComponent } from './arrow-up-right.component';
 import { ArrowUpIconComponent } from './arrow-up.component';
+import { AspectRatioIconComponent } from './aspect-ratio.component';
 import { AtSignIconComponent } from './at-sign.component';
 import { AwardIconComponent } from './award.component';
 import { BadgeCheckIconComponent } from './badge-check.component';
@@ -73,6 +74,7 @@ import { ChevronsUpDownIconComponent } from './chevrons-up-down.component';
 import { ChevronsUpIconComponent } from './chevrons-up.component';
 import { ChromeIconComponent } from './chrome.component';
 import { CircleIconComponent } from './circle.component';
+import { ClapperboardIconComponent } from './clapperboard.component';
 import { ClipboardCheckIconComponent } from './clipboard-check.component';
 import { ClipboardListIconComponent } from './clipboard-list.component';
 import { ClipboardIconComponent } from './clipboard.component';
@@ -132,10 +134,14 @@ import { FastForwardIconComponent } from './fast-forward.component';
 import { FeatherIconComponent } from './feather.component';
 import { Figma2IconComponent } from './figma-2.component';
 import { FigmaIconComponent } from './figma.component';
+import { FileAudioIconComponent } from './file-audio.component';
 import { FileCheckIconComponent } from './file-check.component';
+import { FileImageIconComponent } from './file-image.component';
 import { FileMinusIconComponent } from './file-minus.component';
+import { FilePdfIconComponent } from './file-pdf.component';
 import { FilePlusIconComponent } from './file-plus.component';
 import { FileTextIconComponent } from './file-text.component';
+import { FileVideoIconComponent } from './file-video.component';
 import { FileIconComponent } from './file.component';
 import { FilmIconComponent } from './film.component';
 import { FilterXIconComponent } from './filter-x.component';
@@ -176,12 +182,14 @@ import { HistoryIconComponent } from './history.component';
 import { HomeIconComponent } from './home.component';
 import type { IconComponentType } from './icon-category';
 import { ImageIconComponent } from './image.component';
+import { ImagesIconComponent } from './images.component';
 import { InboxIconComponent } from './inbox.component';
 import { InfoIconComponent } from './info.component';
 import { InstagramIconComponent } from './instagram.component';
 import { ItalicIconComponent } from './italic.component';
 import { KeyIconComponent } from './key.component';
 import { KeyboardIconComponent } from './keyboard.component';
+import { KeyframeIconComponent } from './keyframe.component';
 import { KubernetesIconComponent } from './kubernetes.component';
 import { LampIconComponent } from './lamp.component';
 import { LanguagesIconComponent } from './languages.component';
@@ -252,11 +260,13 @@ import { PhoneMissedIconComponent } from './phone-missed.component';
 import { PhoneOffIconComponent } from './phone-off.component';
 import { PhoneOutgoingIconComponent } from './phone-outgoing.component';
 import { PhoneIconComponent } from './phone.component';
+import { PictureInPictureIconComponent } from './picture-in-picture.component';
 import { PieChartIconComponent } from './pie-chart.component';
 import { PinIconComponent } from './pin.component';
 import { PinterestIconComponent } from './pinterest.component';
 import { PlayCircleIconComponent } from './play-circle.component';
 import { PlayIconComponent } from './play.component';
+import { PlaylistIconComponent } from './playlist.component';
 import { PlugIconComponent } from './plug.component';
 import { PlusCircleIconComponent } from './plus-circle.component';
 import { PlusSquareIconComponent } from './plus-square.component';
@@ -269,6 +279,7 @@ import { QrCodeIconComponent } from './qr-code.component';
 import { RadioIconComponent } from './radio.component';
 import { ReactIconComponent } from './react.component';
 import { ReceiptIconComponent } from './receipt.component';
+import { RecordIconComponent } from './record.component';
 import { RectangleHorizontalIconComponent } from './rectangle-horizontal.component';
 import { RectangleVerticalIconComponent } from './rectangle-vertical.component';
 import { RedditIconComponent } from './reddit.component';
@@ -315,6 +326,7 @@ import { SquareIconComponent } from './square.component';
 import { StarIconComponent } from './star.component';
 import { StopCircleIconComponent } from './stop-circle.component';
 import { StripeIconComponent } from './stripe.component';
+import { SubtitlesIconComponent } from './subtitles.component';
 import { SunIconComponent } from './sun.component';
 import { SunriseIconComponent } from './sunrise.component';
 import { SunsetIconComponent } from './sunset.component';
@@ -331,16 +343,19 @@ import { ThreadsIconComponent } from './threads.component';
 import { ThumbsDownIconComponent } from './thumbs-down.component';
 import { ThumbsUpIconComponent } from './thumbs-up.component';
 import { TiktokIconComponent } from './tiktok.component';
+import { TimecodeIconComponent } from './timecode.component';
 import { TimerIconComponent } from './timer.component';
 import { ToggleLeftIconComponent } from './toggle-left.component';
 import { ToggleRightIconComponent } from './toggle-right.component';
 import { ToolIconComponent } from './tool.component';
+import { TranscodeIconComponent } from './transcode.component';
 import { Trash2IconComponent } from './trash-2.component';
 import { TrashIconComponent } from './trash.component';
 import { TrelloIconComponent } from './trello.component';
 import { TrendingDownIconComponent } from './trending-down.component';
 import { TrendingUpIconComponent } from './trending-up.component';
 import { TriangleIconComponent } from './triangle.component';
+import { TrimIconComponent } from './trim.component';
 import { TrophyIconComponent } from './trophy.component';
 import { TruckIconComponent } from './truck.component';
 import { TvIconComponent } from './tv.component';
@@ -372,6 +387,7 @@ import { VueIconComponent } from './vue.component';
 import { WalletIconComponent } from './wallet.component';
 import { WandIconComponent } from './wand.component';
 import { WatchIconComponent } from './watch.component';
+import { WaveformIconComponent } from './waveform.component';
 import { WhatsappIconComponent } from './whatsapp.component';
 import { WifiOffIconComponent } from './wifi-off.component';
 import { WifiIconComponent } from './wifi.component';
@@ -394,8 +410,9 @@ import { ZoomOutIconComponent } from './zoom-out.component';
  * sorted by `slug` so that consumers iterating it (the `/ui/icons` reference
  * page, the sandbox gallery, downstream pickers) get a stable alphabetical
  * order where a base icon always precedes its `-2` variant (e.g. `facebook`
- * before `facebook-2`). The literal order below is left in class-name order
- * for diff-friendliness; the `.sort()` at the bottom is the source of truth.
+ * before `facebook-2`). The literal below is kept in class-name order so a new
+ * icon has one obvious insertion point; the `.sort()` at the bottom is the
+ * source of truth for consumers.
  *
  * Bundle-size note: importing this constant brings every icon component into
  * the consuming bundle, which is the right trade-off when you actually want
@@ -415,44 +432,61 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     AlignLeftIconComponent,
     AlignRightIconComponent,
     AnchorIconComponent,
+    AndroidIconComponent,
+    AngularIconComponent,
+    AnthropicIconComponent,
     ApertureIconComponent,
     ArchiveIconComponent,
     ArrowDownCircleIconComponent,
+    ArrowDownIconComponent,
     ArrowDownLeftIconComponent,
     ArrowDownRightIconComponent,
-    ArrowDownIconComponent,
     ArrowLeftCircleIconComponent,
     ArrowLeftIconComponent,
     ArrowRightCircleIconComponent,
     ArrowRightIconComponent,
     ArrowUpCircleIconComponent,
+    ArrowUpIconComponent,
     ArrowUpLeftIconComponent,
     ArrowUpRightIconComponent,
-    ArrowUpIconComponent,
+    AspectRatioIconComponent,
     AtSignIconComponent,
     AwardIconComponent,
+    BadgeCheckIconComponent,
     BarChart2IconComponent,
     BarChartIconComponent,
     BatteryChargingIconComponent,
     BatteryIconComponent,
-    BellOffIconComponent,
     BellIconComponent,
+    BellOffIconComponent,
+    BellRingIconComponent,
+    BitcoinIconComponent,
+    BlueskyIconComponent,
     BluetoothIconComponent,
     BoldIconComponent,
-    BookOpenIconComponent,
     BookIconComponent,
+    BookOpenIconComponent,
+    BookmarkCheckIconComponent,
     BookmarkIconComponent,
+    BookmarkPlusIconComponent,
+    BotIconComponent,
     BottleIconComponent,
     BoxIconComponent,
+    BrainIconComponent,
     BriefcaseIconComponent,
+    BugIconComponent,
+    BuildingIconComponent,
+    CalculatorIconComponent,
+    CalendarCheckIconComponent,
+    CalendarDaysIconComponent,
     CalendarIconComponent,
-    CameraOffIconComponent,
     CameraIconComponent,
+    CameraOffIconComponent,
     CandleIconComponent,
     CastIconComponent,
     CheckCircleIconComponent,
-    CheckSquareIconComponent,
     CheckIconComponent,
+    CheckSquareIconComponent,
     ChevronDownIconComponent,
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
@@ -464,19 +498,23 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ChevronsUpIconComponent,
     ChromeIconComponent,
     CircleIconComponent,
+    ClapperboardIconComponent,
+    ClipboardCheckIconComponent,
     ClipboardIconComponent,
+    ClipboardListIconComponent,
     ClockIconComponent,
     CloudDrizzleIconComponent,
+    CloudIconComponent,
     CloudLightningIconComponent,
     CloudOffIconComponent,
     CloudRainIconComponent,
     CloudSnowIconComponent,
-    CloudIconComponent,
     CloudflareIconComponent,
     CodeIconComponent,
     CodepenIconComponent,
     CodesandboxIconComponent,
     CoffeeIconComponent,
+    CoinsIconComponent,
     ColumnsIconComponent,
     CommandIconComponent,
     CompassIconComponent,
@@ -498,8 +536,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     DiscIconComponent,
     DiscordIconComponent,
     DivideCircleIconComponent,
-    DivideSquareIconComponent,
     DivideIconComponent,
+    DivideSquareIconComponent,
     DockerIconComponent,
     DollarSignIconComponent,
     DownloadCloudIconComponent,
@@ -512,29 +550,41 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Edit3IconComponent,
     EditIconComponent,
     ExternalLinkIconComponent,
-    EyeOffIconComponent,
     EyeIconComponent,
+    EyeOffIconComponent,
     Facebook2IconComponent,
     FacebookIconComponent,
     FastForwardIconComponent,
     FeatherIconComponent,
     Figma2IconComponent,
     FigmaIconComponent,
+    FileAudioIconComponent,
+    FileCheckIconComponent,
+    FileIconComponent,
+    FileImageIconComponent,
     FileMinusIconComponent,
+    FilePdfIconComponent,
     FilePlusIconComponent,
     FileTextIconComponent,
-    FileIconComponent,
+    FileVideoIconComponent,
     FilmIconComponent,
     FilterIconComponent,
+    FilterXIconComponent,
+    FingerprintIconComponent,
     FlagIconComponent,
-    FolderMinusIconComponent,
-    FolderPlusIconComponent,
+    FlameIconComponent,
     FolderIconComponent,
+    FolderMinusIconComponent,
+    FolderOpenIconComponent,
+    FolderPlusIconComponent,
     FramerIconComponent,
     FrownIconComponent,
+    GaugeIconComponent,
+    GeminiIconComponent,
     GiftIconComponent,
     GitBranchIconComponent,
     GitCommitIconComponent,
+    GitCompareIconComponent,
     GitMergeIconComponent,
     GitPullRequestIconComponent,
     Github2IconComponent,
@@ -552,46 +602,56 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     HelpCircleIconComponent,
     HeptagonIconComponent,
     HexagonIconComponent,
+    HistoryIconComponent,
     HomeIconComponent,
     ImageIconComponent,
+    ImagesIconComponent,
     InboxIconComponent,
     InfoIconComponent,
     InstagramIconComponent,
     ItalicIconComponent,
     KeyIconComponent,
+    KeyboardIconComponent,
+    KeyframeIconComponent,
     KubernetesIconComponent,
     LampIconComponent,
+    LanguagesIconComponent,
     LayersIconComponent,
     LayoutIconComponent,
+    LeafIconComponent,
     LeftHalfStarIconComponent,
     LifeBuoyIconComponent,
+    LightbulbIconComponent,
     Link2IconComponent,
     LinkIconComponent,
     Linkedin2IconComponent,
     LinkedinIconComponent,
+    ListChecksIconComponent,
     ListIconComponent,
     LoaderIconComponent,
     LockIconComponent,
     LogInIconComponent,
     LogOutIconComponent,
+    MailCheckIconComponent,
     MailIconComponent,
-    MapPinIconComponent,
     MapIconComponent,
+    MapPinIconComponent,
     MastercardIconComponent,
     Maximize2IconComponent,
     MaximizeIconComponent,
+    MegaphoneIconComponent,
     MehIconComponent,
     MenuIconComponent,
     MessageCircleIconComponent,
     MessageSquareIconComponent,
-    MicOffIconComponent,
     MicIconComponent,
+    MicOffIconComponent,
     MicrosoftIconComponent,
     Minimize2IconComponent,
     MinimizeIconComponent,
     MinusCircleIconComponent,
-    MinusSquareIconComponent,
     MinusIconComponent,
+    MinusSquareIconComponent,
     MongodbIconComponent,
     MonitorIconComponent,
     MoonIconComponent,
@@ -603,10 +663,12 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Navigation2IconComponent,
     NavigationIconComponent,
     NetlifyIconComponent,
+    NodejsIconComponent,
     NotionIconComponent,
     NpmIconComponent,
     OctagonIconComponent,
     PackageIconComponent,
+    PaletteIconComponent,
     PaperclipIconComponent,
     PauseCircleIconComponent,
     PauseIconComponent,
@@ -616,41 +678,56 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PercentIconComponent,
     PhoneCallIconComponent,
     PhoneForwardedIconComponent,
+    PhoneIconComponent,
     PhoneIncomingIconComponent,
     PhoneMissedIconComponent,
     PhoneOffIconComponent,
     PhoneOutgoingIconComponent,
-    PhoneIconComponent,
+    PictureInPictureIconComponent,
     PieChartIconComponent,
+    PinIconComponent,
+    PinterestIconComponent,
     PlayCircleIconComponent,
     PlayIconComponent,
+    PlaylistIconComponent,
+    PlugIconComponent,
     PlusCircleIconComponent,
-    PlusSquareIconComponent,
     PlusIconComponent,
+    PlusSquareIconComponent,
     PocketIconComponent,
     PowerIconComponent,
     PrinterIconComponent,
+    PythonIconComponent,
+    QrCodeIconComponent,
     RadioIconComponent,
+    ReactIconComponent,
+    ReceiptIconComponent,
+    RecordIconComponent,
     RectangleHorizontalIconComponent,
     RectangleVerticalIconComponent,
     RedditIconComponent,
+    RedoIconComponent,
     RefreshCcwIconComponent,
     RefreshCwIconComponent,
     RepeatIconComponent,
     RewindIconComponent,
     RightHalfStarIconComponent,
+    RocketIconComponent,
     RotateCcwIconComponent,
     RotateCwIconComponent,
     RssIconComponent,
     SaveIconComponent,
+    ScanIconComponent,
     ScissorsIconComponent,
     SearchIconComponent,
     SendIconComponent,
     ServerIconComponent,
     SettingsIconComponent,
     ShareIconComponent,
-    ShieldOffIconComponent,
+    ShieldCheckIconComponent,
     ShieldIconComponent,
+    ShieldOffIconComponent,
+    ShopifyIconComponent,
     ShoppingBagIconComponent,
     ShoppingCartIconComponent,
     ShuffleIconComponent,
@@ -663,33 +740,45 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SlidersIconComponent,
     SmartphoneIconComponent,
     SmileIconComponent,
+    SnowflakeIconComponent,
     SoccerBallIconComponent,
+    SparklesIconComponent,
     SpeakerIconComponent,
     SpotifyIconComponent,
     SquareIconComponent,
     StarIconComponent,
     StopCircleIconComponent,
     StripeIconComponent,
+    SubtitlesIconComponent,
     SunIconComponent,
     SunriseIconComponent,
     SunsetIconComponent,
+    SvelteIconComponent,
     TableIconComponent,
     TabletIconComponent,
     TagIconComponent,
+    TailwindIconComponent,
     TargetIconComponent,
+    TelegramIconComponent,
     TerminalIconComponent,
     ThermometerIconComponent,
+    ThreadsIconComponent,
     ThumbsDownIconComponent,
     ThumbsUpIconComponent,
+    TiktokIconComponent,
+    TimecodeIconComponent,
+    TimerIconComponent,
     ToggleLeftIconComponent,
     ToggleRightIconComponent,
     ToolIconComponent,
+    TranscodeIconComponent,
     Trash2IconComponent,
     TrashIconComponent,
     TrelloIconComponent,
     TrendingDownIconComponent,
     TrendingUpIconComponent,
     TriangleIconComponent,
+    TrimIconComponent,
     TrophyIconComponent,
     TruckIconComponent,
     TvIconComponent,
@@ -699,100 +788,44 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     TypeIconComponent,
     UmbrellaIconComponent,
     UnderlineIconComponent,
+    UndoIconComponent,
     UnlockIconComponent,
     UploadCloudIconComponent,
     UploadIconComponent,
     UserCheckIconComponent,
+    UserIconComponent,
     UserMinusIconComponent,
     UserPlusIconComponent,
     UserXIconComponent,
-    UserIconComponent,
     UsersIconComponent,
     VercelIconComponent,
-    VideoOffIconComponent,
     VideoIconComponent,
+    VideoOffIconComponent,
     VoicemailIconComponent,
     Volume1IconComponent,
     Volume2IconComponent,
-    VolumeXIconComponent,
     VolumeIconComponent,
+    VolumeXIconComponent,
+    VueIconComponent,
+    WalletIconComponent,
+    WandIconComponent,
     WatchIconComponent,
-    WifiOffIconComponent,
+    WaveformIconComponent,
+    WhatsappIconComponent,
     WifiIconComponent,
+    WifiOffIconComponent,
     WindIconComponent,
+    WordpressIconComponent,
     XCircleIconComponent,
+    XIconComponent,
     XOctagonIconComponent,
     XSquareIconComponent,
     XTwitterIconComponent,
-    XIconComponent,
     Youtube2IconComponent,
     YoutubeIconComponent,
-    ZapOffIconComponent,
     ZapIconComponent,
+    ZapOffIconComponent,
     ZoomInIconComponent,
     ZoomOutIconComponent,
-    AnthropicIconComponent,
-    BadgeCheckIconComponent,
-    BitcoinIconComponent,
-    BookmarkCheckIconComponent,
-    BotIconComponent,
-    BrainIconComponent,
-    CalendarCheckIconComponent,
-    ClipboardCheckIconComponent,
-    CoinsIconComponent,
-    FilterXIconComponent,
-    FingerprintIconComponent,
-    FlameIconComponent,
-    GaugeIconComponent,
-    GeminiIconComponent,
-    LeafIconComponent,
-    ListChecksIconComponent,
-    QrCodeIconComponent,
-    ReactIconComponent,
-    ReceiptIconComponent,
-    RedoIconComponent,
-    RocketIconComponent,
-    ScanIconComponent,
-    SnowflakeIconComponent,
-    SparklesIconComponent,
-    TailwindIconComponent,
-    TelegramIconComponent,
-    ThreadsIconComponent,
-    TiktokIconComponent,
-    UndoIconComponent,
-    WalletIconComponent,
-    WandIconComponent,
-    WhatsappIconComponent,
-    AndroidIconComponent,
-    AngularIconComponent,
-    BellRingIconComponent,
-    BlueskyIconComponent,
-    BookmarkPlusIconComponent,
-    CalendarDaysIconComponent,
-    ClipboardListIconComponent,
-    FileCheckIconComponent,
-    FolderOpenIconComponent,
-    GitCompareIconComponent,
-    KeyboardIconComponent,
-    LanguagesIconComponent,
-    MailCheckIconComponent,
-    NodejsIconComponent,
-    PinterestIconComponent,
-    PythonIconComponent,
-    ShieldCheckIconComponent,
-    ShopifyIconComponent,
-    SvelteIconComponent,
-    VueIconComponent,
-    WordpressIconComponent,
-    BugIconComponent,
-    BuildingIconComponent,
-    CalculatorIconComponent,
-    HistoryIconComponent,
-    LightbulbIconComponent,
-    MegaphoneIconComponent,
-    PaletteIconComponent,
-    PinIconComponent,
-    PlugIconComponent,
-    TimerIconComponent,
   ] as IconComponentType[]
 ).sort((a, b) => a.slug.localeCompare(b.slug));

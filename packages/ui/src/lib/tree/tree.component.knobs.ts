@@ -9,7 +9,7 @@ export const TREE_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     disabled: { control: 'boolean' },
     ariaLabel: { control: 'text' },

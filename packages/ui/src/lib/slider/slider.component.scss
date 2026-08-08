@@ -13,6 +13,10 @@
   --ea-field-label-size: 0.875em;
   --ea-field-messages-size: 0.8125em;
 
+  &.ea-slider--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
   &.ea-slider--xs {
     font-size: var(--font-size-xs);
   }
@@ -56,6 +60,10 @@
 
   // One per-size thumb diameter drives both the track height and the thumb so a
   // new size only needs this single value and the two stay in proportion
+  .ea-slider--2xs & {
+    --ea-slider-size: 0.5rem;
+  }
+
   .ea-slider--xs & {
     --ea-slider-size: 0.625rem;
   }

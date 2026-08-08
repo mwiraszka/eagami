@@ -9,7 +9,7 @@ export const RATING_KNOBS: ComponentKnobs = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     min: { control: 'number', min: 0, max: 10, maxLength: 2 },
     max: { control: 'number', min: 1, max: 10, maxLength: 2 },

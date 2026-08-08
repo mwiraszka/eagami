@@ -1,4 +1,4 @@
-import { FileUploaderComponent } from '@eagami/ui';
+import { FileUploaderComponent, type FileUploaderSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
@@ -18,6 +18,7 @@ interface FileUploaderKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  size: FileUploaderSize;
   accept: string;
   multiple: boolean;
   maxFiles: number;

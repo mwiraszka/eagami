@@ -150,6 +150,11 @@
     // One pair of knobs per size drives the panel's extent; the placement rules
     // below each consume the one for their own axis. A new size needs only the
     // two values here.
+    &--2xs {
+      --ea-drawer-inline-size: 12rem;
+      --ea-drawer-block-size: 6rem;
+    }
+
     &--xs {
       --ea-drawer-inline-size: 16rem;
       --ea-drawer-block-size: 8rem;
@@ -221,7 +226,10 @@
         }
       }
 
-      &.ea-drawer__panel--xs {
+      // Already the tightest the chrome takes, so 2xs shares it rather than
+      // trimming further
+      &.ea-drawer__panel--xs,
+      &.ea-drawer__panel--2xs {
         .ea-drawer__header {
           padding-top: var(--space-2);
           padding-bottom: var(--space-1);

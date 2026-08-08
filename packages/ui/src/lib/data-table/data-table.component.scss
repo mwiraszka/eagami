@@ -19,6 +19,10 @@
   // paddings, and sort icon all derive from. Paddings use calc() against it
   // rather than em so header cells (whose own font is smaller) stay aligned
   // with body cells.
+  &--2xs {
+    --ea-data-table-font-size: var(--font-size-2xs);
+  }
+
   &--xs {
     --ea-data-table-font-size: var(--font-size-xs);
   }

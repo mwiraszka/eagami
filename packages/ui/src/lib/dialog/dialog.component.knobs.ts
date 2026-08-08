@@ -10,7 +10,7 @@ export const DIALOG_KNOBS: ComponentKnobs = {
   argTypes: {
     width: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', 'full'],
     },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },
