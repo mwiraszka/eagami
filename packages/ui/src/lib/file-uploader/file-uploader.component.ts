@@ -100,6 +100,11 @@ export class FileUploaderComponent implements ControlValueAccessor {
   readonly size = input<FileUploaderSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
+  /**
+   * Whether a selection adds to the current files or replaces them. Defaults
+   * to `true`: picking a second file appends it rather than swapping it in, so
+   * a single-file field has to set this to `false` explicitly.
+   */
   readonly multiple = input<boolean>(true);
   /** Comma-separated MIME types and / or file extensions, e.g. `'image/*,.pdf'`. */
   readonly accept = input<string | undefined>(undefined);
@@ -124,6 +129,12 @@ export class FileUploaderComponent implements ControlValueAccessor {
   readonly rejected = output<readonly FileUploaderRejection[]>();
   /** Fires whenever a file is removed via its row's X button. */
   readonly fileRemoved = output<File>();
+  /**
+   * Fires when a drag enters or leaves the dropzone. The component consumes
+   * the drag events it handles, so a wrapper tracking its own drag styling
+   * reads the state from here rather than from the DOM.
+   */
+  readonly dragOverChanged = output<boolean>();
 
   protected readonly isDragOver = signal(false);
   protected readonly isFocused = signal(false);
@@ -242,25 +253,37 @@ export class FileUploaderComponent implements ControlValueAccessor {
     inputEl.value = '';
   }
 
+  // Handled alongside dragover so the pair a wrapper listens for stays
+  // balanced: consuming dragenter without it would strand the wrapper's own
+  // drag state, since it never sees the matching dragleave or drop
+  protected onDragEnter(event: DragEvent): void {
+    if (this.isDisabled()) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    this.setDragOver(true);
+  }
+
   protected onDragOver(event: DragEvent): void {
     if (this.isDisabled()) {
       return;
     }
     event.preventDefault();
     event.stopPropagation();
-    this.isDragOver.set(true);
+    this.setDragOver(true);
   }
 
   protected onDragLeave(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    this.isDragOver.set(false);
+    this.setDragOver(false);
   }
 
   protected onDrop(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    this.isDragOver.set(false);
+    this.setDragOver(false);
     if (this.isDisabled()) {
       return;
     }
@@ -268,6 +291,14 @@ export class FileUploaderComponent implements ControlValueAccessor {
     if (files.length) {
       this.acceptFiles(files);
     }
+  }
+
+  private setDragOver(next: boolean): void {
+    if (this.isDragOver() === next) {
+      return;
+    }
+    this.isDragOver.set(next);
+    this.dragOverChanged.emit(next);
   }
 
   protected removeFile(file: File): void {
