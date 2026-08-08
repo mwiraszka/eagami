@@ -2,6 +2,11 @@
 //   @use '../../styles/mixins' as ea;
 //   .ea-foo__close { @include ea.icon-button; }
 
+// WCAG 2.2 SC 2.5.8 Target Size (Minimum), Level AA. Any pointer target the
+// library ships has to reach this in at least one dimension pair, or qualify
+// for one of the SC's exceptions (inline, spacing, essential).
+$target-size-min: 24px;
+
 // Standard focus indicator. The ring is a soft box-shadow halo, but box-shadow
 // is dropped in forced-colors (Windows High Contrast) mode, which would leave
 // keyboard users with no visible focus. Pair the halo with a real outline that
@@ -47,6 +52,8 @@
 // it reads clearly inside the box regardless of how much padding the icon's own
 // viewBox carries (the feather `x`, for instance, only fills its middle half).
 @mixin icon-button {
+  // Anchors the grown pointer target below
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -65,6 +72,25 @@
   // host size and still scales with the box.
   > * {
     font-size: 1.25em;
+  }
+
+  // The visible box is deliberately small on the dense tiers (17.5px at 2xs,
+  // 21px at xs), which is under the 24px WCAG 2.2 SC 2.5.8 target minimum.
+  // SC 2.5.8 measures the interactive target rather than the painted control,
+  // so the target is grown here and the visuals are left alone.
+  //
+  // A layout that stacks or abuts these buttons closer than the minimum must
+  // opt out via `--ea-icon-button-target: 0`, because grown targets that
+  // overlap steal each other's clicks, which is worse than the undersized
+  // targets the SC's spacing exception already covers.
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, var(--ea-icon-button-target, #{$target-size-min}));
+    height: max(100%, var(--ea-icon-button-target, #{$target-size-min}));
+    transform: translate(-50%, -50%);
   }
 
   &:hover {
