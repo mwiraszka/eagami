@@ -52,6 +52,35 @@ export const Playground: Story = {
   }),
 };
 
+export const WithTitle: Story = {
+  render: args => ({
+    moduleMetadata: {
+      imports: [ButtonComponent],
+      providers: [{ provide: ToastService, useValue: toastService }],
+    },
+    template: `
+      <ea-toast
+        [position]="position"
+        [size]="size"
+        [clearable]="clearable" />
+      <div class="story-row">
+        <ea-button variant="secondary" (clicked)="showTitled()">Titled</ea-button>
+        <ea-button variant="secondary" (clicked)="showUntitled()">Untitled</ea-button>
+      </div>
+    `,
+    props: {
+      ...args,
+      showTitled: () =>
+        toastService.show('Your changes are live on eagami.com', {
+          title: 'Deployment finished',
+          variant: 'success',
+        }),
+      showUntitled: () =>
+        toastService.show('Your changes are live on eagami.com', { variant: 'success' }),
+    },
+  }),
+};
+
 export const IconOverride: Story = {
   render: args => ({
     moduleMetadata: {

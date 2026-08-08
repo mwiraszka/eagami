@@ -44,6 +44,18 @@ describe('ToastService', () => {
       expect(service.toasts()[0].duration).toBe(1000);
     });
 
+    it('carries an optional title alongside the message', () => {
+      service.show('Saved', { title: 'All done' });
+
+      expect(service.toasts()[0].title).toBe('All done');
+    });
+
+    it('leaves the title unset when none is given', () => {
+      service.show('Saved');
+
+      expect(service.toasts()[0].title).toBeUndefined();
+    });
+
     it('auto-dismisses after the duration elapses', () => {
       service.show('Bye', { duration: 1500 });
 

@@ -7,6 +7,8 @@ export type ToastVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 export interface Toast {
   id: number;
   message: string;
+  /** Heading shown above the message; the message steps back when set. */
+  title?: string;
   variant: ToastVariant;
   duration: number;
   /** Icon component rendered in place of the variant's own; `null` renders none. */
@@ -15,6 +17,8 @@ export interface Toast {
 
 /** Optional configuration for a toast; defaults to `default` variant and 4s duration. */
 export interface ToastOptions {
+  /** Heading shown above the message; the message steps back when set. */
+  title?: string;
   variant?: ToastVariant;
   duration?: number;
   /** Any icon component to render in place of the variant's own; `null` for no icon. */
@@ -44,6 +48,7 @@ export class ToastService {
     const toast: Toast = {
       id,
       message,
+      title: options.title,
       variant: options.variant ?? 'default',
       duration: options.duration ?? 4000,
       icon: options.icon,

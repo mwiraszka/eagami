@@ -33,7 +33,12 @@
           }
         }
       }
-      <span class="ea-toast__message">{{ toast.message }}</span>
+      <div class="ea-toast__content">
+        @if (toast.title) {
+          <span class="ea-toast__title">{{ toast.title }}</span>
+        }
+        <span class="ea-toast__message">{{ toast.message }}</span>
+      </div>
       @if (clearable()) {
         <button
           class="ea-toast__close"
