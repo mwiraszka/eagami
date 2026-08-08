@@ -9,7 +9,8 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-number-input
-      class="playground-field"
+      class="demo-number-input demo-reserve-messages"
+      [style.font-size]="tierFontSize()"
       [formControl]="control"
       [label]="state().label"
       [placeholder]="state().placeholder"
@@ -17,6 +18,7 @@
       [min]="asBound(state().min)"
       [max]="asBound(state().max)"
       [step]="state().step"
+      [maxDigits]="asBound(state().maxDigits)"
       [allowNegative]="state().allowNegative"
       [readonly]="state().readonly"
       [required]="state().required" />

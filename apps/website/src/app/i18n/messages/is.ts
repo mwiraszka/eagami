@@ -1026,6 +1026,7 @@ export const is: WebMessages = {
             min: 'Lágmark',
             max: 'Hámark',
             step: 'Skref',
+            maxDigits: 'Hámarksfjöldi stafa',
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
@@ -1270,9 +1271,11 @@ export const is: WebMessages = {
             disabled: 'Gerir reitinn óvirkan.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
-            min: 'Lágmarksgildi; innslegin gildi eru fest við það við fókusmissi og skrefahnapparnir virða það.',
-            max: 'Hámarksgildi; innslegin gildi eru fest við það við fókusmissi og skrefahnapparnir virða það.',
-            step: 'Magn sem hvert skref (örvatakki eða skrefahnappur) bætir við eða dregur frá.',
+            min: 'Lágmarksgildi; innslegin gildi eru bundin við það þegar reiturinn missir fókus.',
+            max: 'Hámarksgildi; innslegin gildi eru bundin við það þegar reiturinn missir fókus.',
+            step: 'Upphæðin sem hvert skref með örvatökkunum bætir við eða dregur frá.',
+            maxDigits:
+              'Takmarkar hversu marga stafi reiturinn tekur við og hversu breiður hann er; sex stafir sé ekkert gefið.',
             id: 'id sett á innbyggða inntakið og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
             value:
               'Núverandi reitgildi; null þegar tómt, tvíátta bindanlegt með [(value)].',

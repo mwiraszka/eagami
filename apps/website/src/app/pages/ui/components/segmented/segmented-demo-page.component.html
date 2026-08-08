@@ -10,6 +10,7 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-segmented
+      class="demo-reserve-messages"
       [formControl]="control"
       [options]="options()"
       [label]="state().label"

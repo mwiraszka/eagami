@@ -1039,6 +1039,7 @@ export const frFR: WebMessages = {
             min: 'Minimum',
             max: 'Maximum',
             step: 'Pas',
+            maxDigits: 'Chiffres max.',
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
@@ -1287,9 +1288,11 @@ export const frFR: WebMessages = {
             disabled: 'Désactive le champ.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
-            min: 'Valeur minimale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
-            max: 'Valeur maximale ; les valeurs saisies y sont bornées à la perte de focus et les boutons pas à pas la respectent.',
-            step: 'Quantité ajoutée ou soustraite à chaque pas (touche fléchée ou bouton pas à pas).',
+            min: 'Valeur minimale ; les valeurs saisies y sont ramenées à la perte du focus.',
+            max: 'Valeur maximale ; les valeurs saisies y sont ramenées à la perte du focus.',
+            step: 'Valeur ajoutée ou retranchée à chaque pas avec les touches fléchées.',
+            maxDigits:
+              'Limite le nombre de caractères acceptés par le champ ainsi que sa largeur ; six caractères par défaut.',
             id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
             value:
               'Valeur actuelle du champ ; null quand vide, liable en deux sens via [(value)].',

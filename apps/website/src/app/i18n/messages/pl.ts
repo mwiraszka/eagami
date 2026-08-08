@@ -1030,6 +1030,7 @@ export const pl: WebMessages = {
             min: 'Minimum',
             max: 'Maksimum',
             step: 'Krok',
+            maxDigits: 'Maks. cyfr',
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
@@ -1276,9 +1277,11 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza pole.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
-            min: 'Wartość minimalna; wpisane wartości są do niej ograniczane przy utracie fokusu, a przyciski krokowe ją respektują.',
-            max: 'Wartość maksymalna; wpisane wartości są do niej ograniczane przy utracie fokusu, a przyciski krokowe ją respektują.',
-            step: 'Wartość dodawana lub odejmowana przy każdym kroku (klawiszem strzałki lub przyciskiem krokowym).',
+            min: 'Wartość minimalna; wpisane wartości są do niej ograniczane po opuszczeniu pola.',
+            max: 'Wartość maksymalna; wpisane wartości są do niej ograniczane po opuszczeniu pola.',
+            step: 'Wartość dodawana lub odejmowana przy każdym kroku klawiszami strzałek.',
+            maxDigits:
+              'Ogranicza liczbę znaków przyjmowanych przez pole oraz jego szerokość; sześć znaków, gdy nie podano.',
             id: 'id stosowane do natywnego pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             value:
               'Bieżąca wartość pola; null gdy puste, dwukierunkowo wiązalna przez [(value)].',

@@ -1011,6 +1011,7 @@ export const en: WebMessages = {
             min: 'Minimum',
             max: 'Maximum',
             step: 'Step',
+            maxDigits: 'Max digits',
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
@@ -1257,9 +1258,11 @@ export const en: WebMessages = {
             disabled: 'Disables the field.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
-            min: 'Minimum value; typed values are clamped to it on blur and the steppers respect it.',
-            max: 'Maximum value; typed values are clamped to it on blur and the steppers respect it.',
-            step: 'Amount each step (arrow key or stepper) adds or subtracts.',
+            min: 'Minimum value; typed values are clamped to it on blur.',
+            max: 'Maximum value; typed values are clamped to it on blur.',
+            step: 'Amount each arrow-key step adds or subtracts.',
+            maxDigits:
+              'Caps how many characters the field accepts and how wide it renders; six characters when unset.',
             id: 'id applied to the native input and label for, auto-generated when omitted.',
             value:
               'Current field value; null when empty, two-way bindable via [(value)].',
