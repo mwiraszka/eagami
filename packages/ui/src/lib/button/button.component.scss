@@ -38,6 +38,13 @@
     @include ea.focus-ring;
   }
 
+  // An icon with no label takes the vertical padding on all four sides, so the
+  // glyph sits centred in a square rather than off-centre in a wide pill. With
+  // the 1.5em icon this lands exactly on the 2.5em min-height.
+  &:has(.ea-button__icon):has(.ea-button__label:empty) {
+    padding: 0.5em;
+  }
+
   // Size sets only the font-size; padding, min-height, gap, and the spinner are
   // all em-based on the base rule, so everything scales from this one knob.
   &--2xs {

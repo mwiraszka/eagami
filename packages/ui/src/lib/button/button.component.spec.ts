@@ -70,6 +70,20 @@ describe('ButtonComponent', () => {
       expect(icon).toBeTruthy();
       expect(icon.querySelector('ea-icon-check')).toBeTruthy();
     });
+
+    // The square icon-only padding and the hidden label both key off this
+    // selector, so the label must genuinely match `:empty` with nothing
+    // projected into it
+    it('matches the icon-only selector when no label content is projected', () => {
+      fixture.componentRef.setInput('icon', CheckIconComponent);
+      fixture.detectChanges();
+
+      expect(
+        getButton().matches(
+          '.ea-button:has(.ea-button__icon):has(.ea-button__label:empty)',
+        ),
+      ).toBe(true);
+    });
   });
 
   describe('Disabled state', () => {
