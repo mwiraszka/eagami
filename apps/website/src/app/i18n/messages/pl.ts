@@ -1587,6 +1587,10 @@ export const pl: WebMessages = {
           tag: {
             variant: 'Semantyczny schemat kolorów tagu.',
             size: 'Wizualny rozmiar tagu.',
+            maxWidth:
+              'Maksymalna szerokość tagu w px; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
+            tooltip:
+              'Czy etykieta skrócona przez maxWidth pokazuje pełny tekst w podpowiedzi; none dla tagu wewnątrz podpowiedzi.',
             removable: 'Renderuje przycisk usuwania emitujący removed po aktywacji.',
             disabled: 'Wyłącza tag i jego przycisk usuwania.',
             removeLabel:
@@ -1852,6 +1856,10 @@ export const pl: WebMessages = {
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxVisibleChips:
               'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
+            maxChipWidth:
+              'Maksymalna szerokość chipu wybranej wartości w px; dłuższa etykieta jest skracana i pokazuje pełny tekst w podpowiedzi.',
+            popoverMaxWidth:
+              'Maksymalna szerokość listy opcji w px albo anchor, aby ograniczyć ją do szerokości pola.',
             options: 'Lista opcji do wyboru renderowanych na liście rozwijanej.',
             placeholder:
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
@@ -1919,6 +1927,8 @@ export const pl: WebMessages = {
             value: 'Bieżąca lista plików, dwukierunkowo wiązalna przez [(value)].',
             fileRemoved:
               'Emitowane, gdy plik zostanie usunięty przyciskiem usuwania jego wiersza.',
+            dragOverChanged:
+              'Emitowane, gdy przeciąganie wchodzi w obszar upuszczania lub go opuszcza, dla kontenera z własnym stylem przeciągania.',
             rejected:
               'Emitowane, gdy jeden lub więcej plików nie przejdzie walidacji, wraz z powodem każdego odrzucenia.',
             trackFile:
@@ -1948,6 +1958,8 @@ export const pl: WebMessages = {
             flip: 'Przełącza na przeciwną stronę, gdy żądane umieszczenie przekracza obszar widoku.',
             matchAnchorWidth:
               'Ustawia min-width popovera tak, aby odpowiadało szerokości kotwicy.',
+            maxWidth:
+              'Maksymalna szerokość powierzchni w px albo anchor, aby ograniczyć ją do szerokości elementu kotwiczącego.',
             offset: 'Odstęp w px między kotwicą a powierzchnią popovera.',
             open: 'Określa, czy popover jest aktualnie otwarty.',
             placement: 'Preferowana pozycja popovera względem jego kotwicy.',

@@ -1609,6 +1609,10 @@ export const esES: WebMessages = {
           tag: {
             variant: 'Esquema de color semántico de la etiqueta.',
             size: 'Tamaño visual de la etiqueta.',
+            maxWidth:
+              'Ancho máximo de la etiqueta en px; un texto más largo se recorta con puntos suspensivos. También configurable como --ea-tag-max-width.',
+            tooltip:
+              'Si una etiqueta recortada por maxWidth muestra su texto completo en un tooltip; usa none para una etiqueta dentro de un tooltip.',
             removable:
               'Renderiza un botón de eliminación que emite removed cuando se activa.',
             disabled: 'Deshabilita la etiqueta y su botón de eliminación.',
@@ -1882,6 +1886,10 @@ export const esES: WebMessages = {
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxVisibleChips:
               'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
+            maxChipWidth:
+              'Ancho máximo de un chip de valor seleccionado en px; un texto más largo se recorta y muestra su contenido completo en un tooltip.',
+            popoverMaxWidth:
+              'Ancho máximo del popover de opciones en px, o anchor para limitarlo al ancho del campo.',
             options:
               'Lista de opciones seleccionables mostradas en la lista desplegable.',
             placeholder:
@@ -1959,6 +1967,8 @@ export const esES: WebMessages = {
               'Lista de archivos actual, vinculable en dos sentidos mediante [(value)].',
             fileRemoved:
               'Se emite cuando se elimina un archivo mediante el botón de su fila.',
+            dragOverChanged:
+              'Se emite cuando un arrastre entra o sale de la zona de soltado, para un contenedor que gestiona su propio estilo de arrastre.',
             rejected:
               'Se emite cuando uno o más archivos no superan la validación, con el motivo de cada rechazo.',
             trackFile:
@@ -1988,6 +1998,8 @@ export const esES: WebMessages = {
             flip: 'Cambia al lado opuesto cuando el posicionamiento solicitado se desborda del viewport.',
             matchAnchorWidth:
               'Establece el min-width del popover para que coincida con el ancho del ancla.',
+            maxWidth:
+              'Ancho máximo de la superficie en px, o anchor para limitarla al ancho del elemento ancla.',
             offset: 'Espacio en px entre el ancla y la superficie del popover.',
             open: 'Indica si el popover está actualmente abierto.',
             placement: 'Posición preferida del popover respecto a su ancla.',

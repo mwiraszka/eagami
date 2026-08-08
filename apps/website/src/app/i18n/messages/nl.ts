@@ -1596,6 +1596,10 @@ export const nl: WebMessages = {
           tag: {
             variant: 'Semantisch kleurenschema van de tag.',
             size: 'Visuele grootte van de tag.',
+            maxWidth:
+              'Maximale breedte van de tag in px; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
+            tooltip:
+              'Of een door maxWidth afgekapt label zijn volledige tekst in een tooltip toont; none voor een tag binnen een tooltip.',
             removable:
               'Geeft een verwijderknop weer die removed uitzendt wanneer geactiveerd.',
             disabled: 'Schakelt de tag en de verwijderknop uit.',
@@ -1867,6 +1871,10 @@ export const nl: WebMessages = {
             label: 'Tekstlabel weergegeven boven het veld.',
             maxVisibleChips:
               'Maximaal aantal chips getoond in de trigger voordat de rest samenklapt tot een aantalpil.',
+            maxChipWidth:
+              'Maximale breedte van een geselecteerde-waardechip in px; een langer label wordt afgekapt en toont zijn volledige tekst in een tooltip.',
+            popoverMaxWidth:
+              'Maximale breedte van de optiepopover in px, of anchor om deze op de veldbreedte te houden.',
             options: 'Lijst van selecteerbare opties weergegeven in de dropdownlijst.',
             placeholder:
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
@@ -1941,6 +1949,8 @@ export const nl: WebMessages = {
             value: 'Huidige bestandslijst, in twee richtingen te binden via [(value)].',
             fileRemoved:
               'Wordt geactiveerd wanneer een bestand via de verwijderknop van de rij wordt verwijderd.',
+            dragOverChanged:
+              'Vuurt wanneer een sleepactie de dropzone binnenkomt of verlaat, voor een wrapper die zijn eigen sleepstijl bijhoudt.',
             rejected:
               'Wordt geactiveerd wanneer een of meer bestanden de validatie niet doorstaan, met de reden voor elke weigering.',
             trackFile:
@@ -1970,6 +1980,8 @@ export const nl: WebMessages = {
             flip: 'Klapt naar de tegenovergestelde zijde wanneer de gevraagde plaatsing de viewport overloopt.',
             matchAnchorWidth:
               'Stelt de min-width van de popover in om overeen te komen met de breedte van de anchor.',
+            maxWidth:
+              'Maximale breedte van het oppervlak in px, of anchor om het te beperken tot de breedte van het ankerelement.',
             offset: 'Tussenruimte in px tussen de anchor en het popoveroppervlak.',
             open: 'Of de popover momenteel open is.',
             placement: 'Voorkeurspositie van de popover ten opzichte van zijn anchor.',

@@ -1483,6 +1483,10 @@ export const zhCN: WebMessages = {
           tag: {
             variant: '标签的语义配色方案。',
             size: '标签的视觉尺寸。',
+            maxWidth:
+              '标签的最大宽度（px）；更长的文本会被省略。也可通过 --ea-tag-max-width 设置。',
+            tooltip:
+              '被 maxWidth 裁剪的文本是否在提示中显示完整内容；提示内部的标签请设为 none。',
             removable: '渲染一个移除按钮，激活时发出 removed。',
             disabled: '禁用标签及其移除按钮。',
             removeLabel: '移除按钮的无障碍标签，回退到当前语言。',
@@ -1677,6 +1681,9 @@ export const zhCN: WebMessages = {
             id: '应用于触发器和 label for 的 id，省略时自动生成。',
             label: '渲染在字段上方的文本标签。',
             maxVisibleChips: '其余项折叠为计数胶囊之前，触发器中显示的最大标签数量。',
+            maxChipWidth:
+              '已选值标签的最大宽度（px）；更长的文本会被省略，并在提示中显示完整内容。',
+            popoverMaxWidth: '选项浮层的最大宽度（px），或用 anchor 将其限制为字段宽度。',
             options: '渲染在下拉列表中的可选选项列表。',
             placeholder: '未选择选项时显示在触发器上的占位符。',
             readonly: '将字段渲染为只读。',
@@ -1736,6 +1743,8 @@ export const zhCN: WebMessages = {
             size: '上传器的视觉尺寸。',
             value: '当前文件列表，可通过 [(value)] 双向绑定。',
             fileRemoved: '当通过某行的移除按钮移除文件时触发。',
+            dragOverChanged:
+              '当拖拽进入或离开放置区时触发，供自行维护拖拽样式的外层容器使用。',
             rejected: '当一个或多个文件校验失败时触发，并附带每次拒绝的原因。',
             trackFile: '为文件返回一个稳定的跟踪键，供文件列表内部使用。',
           },
@@ -1756,6 +1765,7 @@ export const zhCN: WebMessages = {
             closeOnOutsideClick: '当用户在浮层及其锚点之外点击时关闭浮层。',
             flip: '当请求的放置位置溢出视口时翻转到对侧。',
             matchAnchorWidth: '将浮层的 min-width 设置为与锚点宽度一致。',
+            maxWidth: '浮层的最大宽度（px），或用 anchor 将其限制为锚点元素的宽度。',
             offset: '锚点与浮层表面之间的间距（px）。',
             open: '浮层当前是否打开。',
             placement: '浮层相对于其锚点的首选位置。',

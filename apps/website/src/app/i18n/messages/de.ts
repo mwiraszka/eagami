@@ -1607,6 +1607,10 @@ export const de: WebMessages = {
           tag: {
             variant: 'Semantisches Farbschema des Tags.',
             size: 'Visuelle Größe des Tags.',
+            maxWidth:
+              'Maximale Breite des Tags in px; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
+            tooltip:
+              'Ob ein durch maxWidth gekürztes Label seinen vollständigen Text in einem Tooltip zeigt; none für ein Tag in einem Tooltip.',
             removable:
               'Rendert einen Entfernen-Button, der bei Aktivierung removed ausgibt.',
             disabled: 'Deaktiviert das Tag und seinen Entfernen-Button.',
@@ -1881,6 +1885,10 @@ export const de: WebMessages = {
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxVisibleChips:
               'Maximale Anzahl der Chips, die im Auslöser angezeigt werden, bevor der Rest in eine Zähl-Pille zusammenklappt.',
+            maxChipWidth:
+              'Maximale Breite eines Auswahl-Chips in px; ein längeres Label wird gekürzt und zeigt seinen vollständigen Text in einem Tooltip.',
+            popoverMaxWidth:
+              'Maximale Breite des Options-Popovers in px, oder anchor, um es auf die Feldbreite zu begrenzen.',
             options:
               'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden.',
             placeholder:
@@ -1956,6 +1964,8 @@ export const de: WebMessages = {
             value: 'Aktuelle Dateiliste, bidirektional bindbar über [(value)].',
             fileRemoved:
               'Wird ausgelöst, wenn eine Datei über den Entfernen-Button ihrer Zeile entfernt wird.',
+            dragOverChanged:
+              'Wird ausgelöst, wenn ein Drag die Ablagefläche betritt oder verlässt, für einen Wrapper mit eigenem Drag-Styling.',
             rejected:
               'Wird ausgelöst, wenn eine oder mehrere Dateien die Validierung nicht bestehen, mit dem Grund für jede Ablehnung.',
             trackFile:
@@ -1984,6 +1994,8 @@ export const de: WebMessages = {
             flip: 'Klappt auf die gegenüberliegende Seite um, wenn die angeforderte Platzierung den Viewport überläuft.',
             matchAnchorWidth:
               'Setzt die min-width des Popovers, sodass sie der Breite des Ankers entspricht.',
+            maxWidth:
+              'Maximale Breite der Oberfläche in px, oder anchor, um sie auf die Breite des Ankerelements zu begrenzen.',
             offset: 'Abstand in px zwischen dem Anker und der Popover-Oberfläche.',
             open: 'Ob das Popover derzeit geöffnet ist.',
             placement: 'Bevorzugte Position des Popovers relativ zu seinem Anker.',

@@ -1,4 +1,4 @@
-import { TagComponent, type TagSize, type TagVariant } from '@eagami/ui';
+import { TagComponent, type TagSize, type TagTooltip, type TagVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
@@ -20,6 +20,8 @@ interface TagKnobState {
   text: string;
   variant: TagVariant;
   size: TagSize;
+  maxWidth: number;
+  tooltip: TagTooltip;
   removable: boolean;
   disabled: boolean;
   removeLabel: string;
