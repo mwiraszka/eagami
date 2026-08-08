@@ -16,7 +16,7 @@ const meta: Meta<FileUploaderComponent> = {
   }),
   argTypes: {
     ...FILE_UPLOADER_KNOBS.argTypes,
-    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
+    size: { control: 'select', options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'] },
   },
   args: {
     ...FILE_UPLOADER_KNOBS.args,
