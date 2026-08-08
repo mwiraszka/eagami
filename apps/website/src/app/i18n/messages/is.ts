@@ -1574,6 +1574,10 @@ export const is: WebMessages = {
           tag: {
             variant: 'Merkingarlegt litakerfi merkisins.',
             size: 'Sjónræn stærð merkisins.',
+            maxWidth:
+              'Mesta breidd merkisins í px; lengri texti styttist. Einnig stillanlegt sem --ea-tag-max-width.',
+            tooltip:
+              'Hvar texti sem maxWidth styttir birtir fulla útgáfu sína: fyrir ofan eða neðan merkið, eða none til að fela hana.',
             removable: 'Birtir fjarlægingarhnapp sem sendir removed þegar virkjaður.',
             disabled: 'Gerir merkið og fjarlægingarhnapp þess óvirk.',
             removeLabel:
@@ -1829,6 +1833,10 @@ export const is: WebMessages = {
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxVisibleChips:
               'Hámarksfjöldi merkja sýndur í kveikjunni áður en restin fellur saman í talningarpillu.',
+            maxChipWidth:
+              'Mesta breidd valins gildisflipa í px; lengri texti styttist og birtir fulla útgáfu sína í ábendingu.',
+            popoverMaxWidth:
+              'Mesta breidd valglugga í px, eða anchor til að halda honum við breidd reitsins.',
             options: 'Listi valanlegra valkosta birtur í fellilistanum.',
             placeholder:
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
@@ -1895,6 +1903,8 @@ export const is: WebMessages = {
             value: 'Núverandi skráalisti, tvíátta bindanlegur með [(value)].',
             fileRemoved:
               'Kviknar þegar skrá er fjarlægð með fjarlægingarhnappi raðar hennar.',
+            dragOverChanged:
+              'Kviknar þegar dráttur kemur inn í eða fer út af sleppisvæðinu, fyrir umbúðir sem halda utan um eigin dráttarstíl.',
             rejected:
               'Kviknar þegar ein eða fleiri skrár standast ekki staðfestingu, með ástæðu fyrir hverri höfnun.',
             trackFile:
@@ -1924,6 +1934,8 @@ export const is: WebMessages = {
             flip: 'Snýr á gagnstæða hlið þegar umbeðin staðsetning flæðir út úr sýnisvæðinu.',
             matchAnchorWidth:
               'Stillir lágmarksbreidd sprettigluggans til að passa við breidd festunnar.',
+            maxWidth:
+              'Mesta breidd flatarins í px, eða anchor til að takmarka hana við breidd akkerisins.',
             offset: 'Bil í px milli festunnar og yfirborðs sprettigluggans.',
             open: 'Hvort sprettiglugginn er nú opinn.',
             placement: 'Æskileg staðsetning sprettigluggans miðað við festu hans.',

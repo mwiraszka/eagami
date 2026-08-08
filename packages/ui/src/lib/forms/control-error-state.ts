@@ -89,6 +89,11 @@ export function controlErrorStateFrom(
  * `afterNextRender` defers resolution to the browser, after the host directive
  * (`formControl` / `ngModel`) exists, so the server render simply shows no
  * error (an untouched control never does).
+ *
+ * The lookup is `self`-scoped to the host element. Without it the search walks
+ * up the element injectors, so a field rendered inside another bound field
+ * (the checkboxes in a multi-select's option list, say) would adopt the outer
+ * control and repeat its error message on every row.
  */
 export function injectControlErrorState(
   config: ControlErrorStateConfig,
@@ -99,7 +104,8 @@ export function injectControlErrorState(
 
   afterNextRender(
     () => {
-      control.set(injector.get(NgControl, null)?.control ?? null);
+      const ngControl = injector.get(NgControl, null, { self: true, optional: true });
+      control.set(ngControl?.control ?? null);
     },
     { injector },
   );

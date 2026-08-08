@@ -37,6 +37,7 @@ interface MultiSelectKnobState {
   readonly: boolean;
   required: boolean;
   maxVisibleChips: number;
+  maxChipWidth: number;
   triggerError: boolean;
 }
 

@@ -57,6 +57,13 @@
     cursor: pointer;
     transition: var(--transition-colors), var(--transition-shadow);
 
+    // Chips stand taller than the placeholder they replace, so the row trims
+    // its own vertical padding once they appear; `min-height` then keeps
+    // governing, holding a filled trigger at exactly the height of an empty one
+    &:has(ea-tag) {
+      padding-block: 0.125em;
+    }
+
     &:has(.ea-multi-select__trigger:focus-visible) {
       @include ea.focus-ring;
     }
@@ -125,6 +132,9 @@
 
     ea-tag {
       flex-shrink: 0;
+      // A chip is taller than the placeholder line it replaces, so it gives up
+      // its vertical padding to keep the trigger at one fixed height
+      --ea-tag-padding-block: 0;
     }
   }
 

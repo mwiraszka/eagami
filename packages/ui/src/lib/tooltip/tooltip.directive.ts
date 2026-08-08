@@ -22,7 +22,14 @@ export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
  * Attaches a positioned tooltip to its host element. Shows on hover and
  * focus, hides on leave/blur or Escape, and wires up `aria-describedby` so
  * the tooltip text is announced to assistive technology. Accepts either a
- * plain string or a `TemplateRef` for styled multi-part content.
+ * plain string or a `TemplateRef` for styled multi-part content. Binding an
+ * empty string suppresses the bubble, which is how a host shows one only in
+ * some states (a label that is currently truncated, say).
+ *
+ * The directive listens on `focusin`, not `focus`, so it fires for a focusable
+ * descendant of the host as well as the host itself. A host listener paired
+ * with `eaTooltip` has to use `focusin` for the same reason: `focus` does not
+ * bubble, so it never fires when the focus lands on a child.
  */
 @Directive({
   selector: '[eaTooltip]',

@@ -238,6 +238,44 @@ describe('FileUploaderComponent', () => {
       expect(hostClasses().contains('ea-file-uploader-field--drag-over')).toBe(false);
     });
 
+    it('flags drag-over on dragenter, so a wrapper still sees the matching leave', () => {
+      getDropzone().dispatchEvent(dragEvent('dragenter'));
+      fixture.detectChanges();
+
+      expect(hostClasses().contains('ea-file-uploader-field--drag-over')).toBe(true);
+    });
+
+    it('emits the drag state as it enters and leaves', () => {
+      const states: boolean[] = [];
+      component.dragOverChanged.subscribe(state => states.push(state));
+
+      getDropzone().dispatchEvent(dragEvent('dragenter'));
+      getDropzone().dispatchEvent(dragEvent('dragover'));
+      getDropzone().dispatchEvent(dragEvent('dragleave'));
+
+      expect(states).toEqual([true, false]);
+    });
+
+    it('emits false once a drop ends the drag', () => {
+      const states: boolean[] = [];
+      getDropzone().dispatchEvent(dragEvent('dragenter'));
+      component.dragOverChanged.subscribe(state => states.push(state));
+
+      getDropzone().dispatchEvent(dragEvent('drop', makeFile('a.txt', 10)));
+
+      expect(states).toEqual([false]);
+    });
+
+    it('ignores a dragenter while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      getDropzone().dispatchEvent(dragEvent('dragenter'));
+      fixture.detectChanges();
+
+      expect(hostClasses().contains('ea-file-uploader-field--drag-over')).toBe(false);
+    });
+
     it('accepts dropped files into the value model', () => {
       const file = makeFile('a.txt', 10);
       getDropzone().dispatchEvent(dragEvent('drop', file));

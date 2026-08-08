@@ -1953,6 +1953,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     ],
     outputs: [
       {
+        name: 'dragOverChanged',
+        type: 'boolean',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'fileRemoved',
         type: 'File',
         default: '',
@@ -2425,6 +2432,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'maxChipWidth',
+        type: 'number | undefined',
+        default: '200',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'maxVisibleChips',
         type: 'number',
         default: '0',
@@ -2442,6 +2456,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'placeholder',
         type: 'string | undefined',
         default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'popoverMaxWidth',
+        type: 'PopoverMaxWidth',
+        default: "'anchor'",
         required: false,
         twoWay: false,
       },
@@ -2516,6 +2537,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'handlePopoverKeydown',
         signature: 'handlePopoverKeydown(event: KeyboardEvent): void',
+      },
+      {
+        name: 'measureClippedOptions',
+        signature: 'measureClippedOptions(): void',
       },
       {
         name: 'onPopoverCloseRequested',
@@ -2854,6 +2879,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'matchAnchorWidth',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'maxWidth',
+        type: 'PopoverMaxWidth | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -4011,6 +4043,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'maxWidth',
+        type: 'number | undefined',
+        default: '200',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'removable',
         type: 'boolean',
         default: 'false',
@@ -4039,6 +4078,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'tooltip',
+        type: 'TagTooltip',
+        default: "'above'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'variant',
         type: 'TagVariant',
         default: "'default'",
@@ -4055,7 +4101,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
-    methods: [],
+    methods: [
+      {
+        name: 'watchLabel',
+        signature: 'watchLabel(): void',
+      },
+    ],
   },
   textarea: {
     selector: 'ea-textarea',

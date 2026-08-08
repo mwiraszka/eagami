@@ -13,7 +13,8 @@ ea-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
-  padding: 0.25em 0.5em;
+  max-width: var(--ea-tag-max-width, none);
+  padding: var(--ea-tag-padding-block, 0.25em) 0.5em;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-none);
   white-space: nowrap;
@@ -78,6 +79,20 @@ ea-tag {
   &--disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  // Owned by the component so a capped chip ellipsizes its label instead of
+  // clipping its own rounded edge and remove button. The chip's line-height of
+  // 1 leaves this box exactly one em tall, so hiding the overflow would take
+  // the descenders with it; the padding grows the clip box and the matching
+  // negative margin keeps the chip the same height.
+  &__label {
+    overflow: hidden;
+    min-width: 0;
+    padding-block: 0.25em;
+    margin-block: -0.25em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__remove {

@@ -14,6 +14,34 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.22.0',
+    date: '2026-08-08',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Cap a tag's width with `maxWidth`, 200px by default, ellipsizing a longer label and revealing its full text in a tooltip above or below the chip.",
+          "Cap the multi-select's option panel to the field's width and its chips with `maxChipWidth`, with a tooltip on any option label the panel clips.",
+          "Emit the file uploader's drag-over state, and expose custom properties for the dropzone's background and text colours.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "Open the multi-select panel from the field's edge rather than from the chip row, matching every other field.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Handle `dragenter` in the file uploader, which used to leave a wrapping element's own drag state stuck on.",
+          "Stop a field nested inside a bound field adopting the outer control's error, which repeated the message under every option in a multi-select.",
+          'Hold the multi-select trigger at one height whether or not it holds chips.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.21.0',
     date: '2026-08-08',
     sections: [

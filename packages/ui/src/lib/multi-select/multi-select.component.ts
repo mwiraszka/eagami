@@ -2,9 +2,11 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   type ElementRef,
   Injector,
   afterNextRender,
+  afterRenderEffect,
   computed,
   forwardRef,
   inject,
@@ -13,6 +15,7 @@ import {
   output,
   signal,
   viewChild,
+  viewChildren,
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -27,10 +30,12 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
-import { PopoverComponent } from '../popover/popover.component';
+import { PopoverComponent, type PopoverMaxWidth } from '../popover/popover.component';
 import type { SelectOption } from '../select-option';
 import { type EaSize } from '../sizes';
 import { TagComponent } from '../tag/tag.component';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { isTruncated } from '../truncation';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of the multi-select trigger. */
@@ -58,6 +63,7 @@ export type MultiSelectSize = EaSize;
     PopoverComponent,
     SearchIconComponent,
     TagComponent,
+    TooltipDirective,
     XIconComponent,
   ],
   providers: [
@@ -69,10 +75,15 @@ export type MultiSelectSize = EaSize;
   ],
 })
 export class MultiSelectComponent implements ControlValueAccessor {
+  protected readonly wrapperEl = viewChild<ElementRef<HTMLElement>>('wrapperEl');
   protected readonly triggerEl = viewChild<ElementRef<HTMLElement>>('triggerEl');
   protected readonly searchEl = viewChild<ElementRef<HTMLInputElement>>('searchEl');
+  private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
+  private readonly optionLabelEls =
+    viewChildren<ElementRef<HTMLElement>>('optionLabelEl');
   protected readonly i18n = inject(EagamiI18nService);
   private readonly injector = inject(Injector);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly label = input<string | undefined>(undefined);
   /** Accessible name for the combobox when no visible `label` is set. */
@@ -94,6 +105,16 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly selectAll = input<boolean>(true);
   /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap so every chip shows and the row scrolls horizontally. */
   readonly maxVisibleChips = input<number>(0);
+  /**
+   * Widest a selected-value chip may grow, in px; a longer label ellipsizes
+   * and reveals its full text in a tooltip.
+   */
+  readonly maxChipWidth = input<number | undefined>(200);
+  /**
+   * Widest the option popover may grow: a px value, or `anchor` to hold it to
+   * the field's own width so a long option truncates instead of widening it.
+   */
+  readonly popoverMaxWidth = input<PopoverMaxWidth>('anchor');
   readonly id = input<string>(uniqueId('ea-multi-select'));
 
   /** Selected option values, in the original options order. */
@@ -225,6 +246,19 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly wrapperClasses = computed(() => ({
     [`ea-multi-select__trigger-wrapper--${this.size()}`]: true,
   }));
+
+  /** Values whose rendered option label is currently clipped by the panel. */
+  protected readonly clippedOptions = signal<ReadonlySet<string>>(new Set());
+
+  constructor() {
+    // The panel is portaled, so a consumer has no element to hang a tooltip on
+    // and no event path back here; the component resolves its own truncation.
+    afterRenderEffect(() => {
+      this.optionLabelEls();
+      this.measureClippedOptions();
+    });
+    afterNextRender(() => this.watchListWidth(), { injector: this.injector });
+  }
 
   writeValue(val: readonly string[] | null | undefined): void {
     this.value.set(val ?? []);
@@ -484,5 +518,39 @@ export class MultiSelectComponent implements ControlValueAccessor {
     this.onChange(next);
     this.onTouched();
     this.changed.emit(next);
+  }
+
+  /**
+   * Re-reads which option labels are clipped. The result is written back only
+   * when the set actually differs, since an unconditional write would render,
+   * re-measure, and write again forever.
+   */
+  private measureClippedOptions(): void {
+    const clipped = new Set<string>();
+    for (const ref of this.optionLabelEls()) {
+      const el = ref.nativeElement;
+      const value = el.dataset['value'];
+      if (value !== undefined && isTruncated(el)) {
+        clipped.add(value);
+      }
+    }
+    const current = this.clippedOptions();
+    const same =
+      current.size === clipped.size && [...clipped].every(value => current.has(value));
+    if (!same) {
+      this.clippedOptions.set(clipped);
+    }
+  }
+
+  // The panel settles on its final width a frame after opening, which changes
+  // what fits without changing the option set the render effect watches
+  private watchListWidth(): void {
+    const el = this.listEl()?.nativeElement;
+    if (!el || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const observer = new ResizeObserver(() => this.measureClippedOptions());
+    observer.observe(el);
+    this.destroyRef.onDestroy(() => observer.disconnect());
   }
 }

@@ -1,5 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { TagComponent } from './tag.component';
 
 describe('TagComponent', () => {
@@ -12,6 +14,12 @@ describe('TagComponent', () => {
 
   function getRemoveButton(): HTMLButtonElement | null {
     return fixture.nativeElement.querySelector('.ea-tag__remove');
+  }
+
+  function tooltipDirective(): TooltipDirective {
+    return fixture.debugElement
+      .query(By.directive(TooltipDirective))
+      .injector.get(TooltipDirective);
   }
 
   beforeEach(async () => {
@@ -27,6 +35,36 @@ describe('TagComponent', () => {
   describe('Rendering', () => {
     it('renders the tag element', () => {
       expect(getTag()).toBeTruthy();
+    });
+
+    it('wraps the projected content in a label element it can truncate', () => {
+      expect(fixture.nativeElement.querySelector('.ea-tag__label')).toBeTruthy();
+    });
+
+    it('caps the tag at maxWidth', () => {
+      fixture.componentRef.setInput('maxWidth', 120);
+      fixture.detectChanges();
+
+      expect(getTag()!.style.maxWidth).toBe('120px');
+    });
+
+    it('caps the tag at 200px by default', () => {
+      expect(getTag()!.style.maxWidth).toBe('200px');
+    });
+
+    it('anchors the tooltip on the whole tag, above it by default', () => {
+      expect(tooltipDirective().tooltipPosition()).toBe('top');
+      expect(
+        fixture.debugElement.query(By.directive(TooltipDirective)).nativeElement
+          .classList,
+      ).toContain('ea-tag');
+    });
+
+    it('places the tooltip below the tag when asked', () => {
+      fixture.componentRef.setInput('tooltip', 'below');
+      fixture.detectChanges();
+
+      expect(tooltipDirective().tooltipPosition()).toBe('bottom');
     });
 
     it('applies the default variant class', () => {

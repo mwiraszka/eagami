@@ -1594,6 +1594,10 @@ export const ptBR: WebMessages = {
           tag: {
             variant: 'Esquema de cores semântico da tag.',
             size: 'Tamanho visual da tag.',
+            maxWidth:
+              'Largura máxima da tag em px; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
+            tooltip:
+              'Onde um rótulo truncado por maxWidth revela seu texto completo: acima ou abaixo da tag, ou none para ocultá-lo.',
             removable: 'Renderiza um botão de remover que emite removed quando ativado.',
             disabled: 'Desativa a tag e seu botão de remover.',
             removeLabel:
@@ -1862,6 +1866,10 @@ export const ptBR: WebMessages = {
             label: 'Rótulo de texto renderizado acima do campo.',
             maxVisibleChips:
               'Número máximo de chips exibidos no gatilho antes que os demais colapsem em uma pill de contagem.',
+            maxChipWidth:
+              'Largura máxima de um chip de valor selecionado em px; um rótulo maior é truncado e revela seu texto completo em um tooltip.',
+            popoverMaxWidth:
+              'Largura máxima do popover de opções em px, ou anchor para mantê-lo na largura do campo.',
             options: 'Lista de opções selecionáveis renderizadas na lista suspensa.',
             placeholder:
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
@@ -1935,6 +1943,8 @@ export const ptBR: WebMessages = {
               'Lista de arquivos atual, vinculável de forma bidirecional via [(value)].',
             fileRemoved:
               'Dispara quando um arquivo é removido pelo botão de remover de sua linha.',
+            dragOverChanged:
+              'Disparado quando um arraste entra ou sai da área de soltura, para um wrapper que controla o próprio estilo de arraste.',
             rejected:
               'Dispara quando um ou mais arquivos falham na validação, com o motivo de cada rejeição.',
             trackFile:
@@ -1964,6 +1974,8 @@ export const ptBR: WebMessages = {
             flip: 'Vira para o lado oposto quando o posicionamento solicitado transborda a janela de visualização.',
             matchAnchorWidth:
               'Define o min-width do popover para corresponder à largura da âncora.',
+            maxWidth:
+              'Largura máxima da superfície em px, ou anchor para limitá-la à largura do elemento âncora.',
             offset: 'Espaço em px entre a âncora e a superfície do popover.',
             open: 'Se o popover está atualmente aberto.',
             placement: 'Posição preferida do popover em relação à sua âncora.',

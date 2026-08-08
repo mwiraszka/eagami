@@ -1556,6 +1556,10 @@ export const en: WebMessages = {
           tag: {
             variant: 'Semantic color scheme of the tag.',
             size: 'Visual size of the tag.',
+            maxWidth:
+              'Widest the tag may grow in px; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
+            tooltip:
+              'Where a label clipped by maxWidth reveals its full text: above or below the tag, or none to suppress it.',
             removable: 'Renders a remove button that emits removed when activated.',
             disabled: 'Disables the tag and its remove button.',
             removeLabel:
@@ -1803,6 +1807,10 @@ export const en: WebMessages = {
             label: 'Text label rendered above the field.',
             maxVisibleChips:
               'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
+            maxChipWidth:
+              'Widest a selected-value chip may grow in px; a longer label ellipsizes and reveals its full text in a tooltip.',
+            popoverMaxWidth:
+              'Widest the option popover may grow in px, or anchor to hold it to the field width.',
             options: 'List of selectable options rendered in the dropdown list.',
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
@@ -1869,6 +1877,8 @@ export const en: WebMessages = {
             size: 'Visual size of the uploader.',
             value: 'Current file list, two-way bindable via [(value)].',
             fileRemoved: "Fires when a file is removed via its row's remove button.",
+            dragOverChanged:
+              'Fires when a drag enters or leaves the dropzone, for a wrapper tracking its own drag styling.',
             rejected:
               'Fires when one or more files fail validation, with the reason for each rejection.',
             trackFile:
@@ -1896,6 +1906,8 @@ export const en: WebMessages = {
               'Closes the popover when the user clicks outside both the popover and its anchor.',
             flip: 'Flips to the opposite side when the requested placement overflows the viewport.',
             matchAnchorWidth: "Sets the popover's min-width to match the anchor's width.",
+            maxWidth:
+              'Widest the surface may grow in px, or anchor to cap it at the anchor element width.',
             offset: 'Gap in px between the anchor and the popover surface.',
             open: 'Whether the popover is currently open.',
             placement: 'Preferred position of the popover relative to its anchor.',

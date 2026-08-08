@@ -1605,6 +1605,10 @@ export const frFR: WebMessages = {
           tag: {
             variant: 'Schéma de couleurs sémantique de l’étiquette.',
             size: 'Taille visuelle de l’étiquette.',
+            maxWidth:
+              'Largeur maximale du tag en px ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
+            tooltip:
+              'Où un libellé tronqué par maxWidth révèle son texte complet : au-dessus ou en dessous du tag, ou none pour le masquer.',
             removable:
               'Affiche un bouton de suppression qui émet removed lorsqu’il est activé.',
             disabled: 'Désactive l’étiquette et son bouton de suppression.',
@@ -1878,6 +1882,10 @@ export const frFR: WebMessages = {
             label: 'Libellé affiché au-dessus du champ.',
             maxVisibleChips:
               'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
+            maxChipWidth:
+              'Largeur maximale d’une puce de valeur sélectionnée en px ; un libellé plus long est tronqué et révèle son texte complet dans une infobulle.',
+            popoverMaxWidth:
+              'Largeur maximale du popover d’options en px, ou anchor pour la limiter à celle du champ.',
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante.',
             placeholder:
@@ -1954,6 +1962,8 @@ export const frFR: WebMessages = {
             value: 'Liste de fichiers actuelle, liable en deux sens via [(value)].',
             fileRemoved:
               'Émis lorsqu’un fichier est supprimé via le bouton de suppression de sa ligne.',
+            dragOverChanged:
+              'Émis quand un glisser entre dans la zone de dépôt ou en sort, pour un conteneur qui gère son propre style de glisser.',
             rejected:
               'Émis lorsqu’un ou plusieurs fichiers échouent à la validation, avec la raison de chaque rejet.',
             trackFile:
@@ -1983,6 +1993,8 @@ export const frFR: WebMessages = {
             flip: 'Bascule vers le côté opposé lorsque le placement demandé déborde de la fenêtre d’affichage.',
             matchAnchorWidth:
               'Définit la largeur minimale du popover pour correspondre à celle de l’ancre.',
+            maxWidth:
+              'Largeur maximale de la surface en px, ou anchor pour la limiter à celle de l’élément d’ancrage.',
             offset: 'Écart en px entre l’ancre et la surface du popover.',
             open: 'Indique si le popover est actuellement ouvert.',
             placement: 'Position préférée du popover par rapport à son ancre.',

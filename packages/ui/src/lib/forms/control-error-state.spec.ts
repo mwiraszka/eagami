@@ -1,16 +1,21 @@
-import { type Signal, signal } from '@angular/core';
+import { Component, type Signal, forwardRef, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import {
   type AbstractControl,
+  type ControlValueAccessor,
   FormControl,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
   type ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 import {
   type ControlErrorState,
   type EaErrorMessages,
   controlErrorStateFrom,
+  injectControlErrorState,
 } from './control-error-state';
 
 /**
@@ -144,5 +149,57 @@ describe('controlErrorStateFrom', () => {
 
     expect(state.error()).toBe('Standalone failure');
     expect(state.hasError()).toBe(true);
+  });
+});
+
+describe('injectControlErrorState', () => {
+  const noConfig = { errorMsg: signal(undefined), errorMessages: signal(undefined) };
+
+  @Component({ selector: 'ea-test-inner', template: '' })
+  class InnerComponent {
+    readonly state = injectControlErrorState(noConfig);
+  }
+
+  @Component({
+    selector: 'ea-test-outer',
+    imports: [InnerComponent],
+    template: '<ea-test-inner />',
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => OuterComponent),
+        multi: true,
+      },
+    ],
+  })
+  class OuterComponent implements ControlValueAccessor {
+    readonly state = injectControlErrorState(noConfig);
+    writeValue(): void {}
+    registerOnChange(): void {}
+    registerOnTouched(): void {}
+  }
+
+  @Component({
+    imports: [OuterComponent, ReactiveFormsModule],
+    template: '<ea-test-outer [formControl]="control" />',
+  })
+  class HostComponent {
+    readonly control = new FormControl('', Validators.required);
+  }
+
+  it('keeps a nested field out of the control bound to the field around it', async () => {
+    const fixture = TestBed.createComponent(HostComponent);
+    fixture.componentInstance.control.markAsTouched();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const outer = fixture.debugElement.query(By.directive(OuterComponent))
+      .componentInstance as OuterComponent;
+    const inner = fixture.debugElement.query(By.directive(InnerComponent))
+      .componentInstance as InnerComponent;
+
+    expect(outer.state.error()).toBe('This field is required');
+    expect(inner.state.error()).toBeNull();
   });
 });
