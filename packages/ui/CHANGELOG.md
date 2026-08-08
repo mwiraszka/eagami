@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Handle `dragenter` in the file uploader, which used to leave a wrapping element's own drag state stuck on.
+- Stop a field nested inside a bound field adopting the outer control's error, which repeated the message under every option in a multi-select.
+- Hold the multi-select trigger at one height whether or not it holds chips.
 
 ## [5.21.0] - 2026-08-08
 
