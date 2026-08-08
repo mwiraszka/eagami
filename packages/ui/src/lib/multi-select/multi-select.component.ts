@@ -107,9 +107,9 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly maxVisibleChips = input<number>(0);
   /**
    * Widest a selected-value chip may grow, in px; a longer label ellipsizes
-   * and reveals its full text in a tooltip. Uncapped when omitted.
+   * and reveals its full text in a tooltip.
    */
-  readonly maxChipWidth = input<number | undefined>(undefined);
+  readonly maxChipWidth = input<number | undefined>(200);
   /**
    * Widest the option popover may grow: a px value, or `anchor` to hold it to
    * the field's own width so a long option truncates instead of widening it.

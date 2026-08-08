@@ -17,7 +17,7 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
     maxVisibleChips: { control: 'number', min: 0, max: 10, maxLength: 2 },
-    maxChipWidth: { control: 'number', min: 0, max: 400, step: 10, maxLength: 3 },
+    maxChipWidth: { control: 'number', min: 40, max: 400, step: 10, maxLength: 3 },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -30,7 +30,7 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     readonly: false,
     required: false,
     maxVisibleChips: 0,
-    maxChipWidth: 0,
+    maxChipWidth: 200,
     triggerError: false,
   },
 };

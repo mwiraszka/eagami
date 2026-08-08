@@ -82,10 +82,15 @@ ea-tag {
   }
 
   // Owned by the component so a capped chip ellipsizes its label instead of
-  // clipping its own rounded edge and remove button
+  // clipping its own rounded edge and remove button. The chip's line-height of
+  // 1 leaves this box exactly one em tall, so hiding the overflow would take
+  // the descenders with it; the padding grows the clip box and the matching
+  // negative margin keeps the chip the same height.
   &__label {
     overflow: hidden;
     min-width: 0;
+    padding-block: 0.25em;
+    margin-block: -0.25em;
     text-overflow: ellipsis;
     white-space: nowrap;
   }

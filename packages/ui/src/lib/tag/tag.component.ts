@@ -17,15 +17,15 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 import { type EaSize } from '../sizes';
-import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { TooltipDirective, type TooltipPosition } from '../tooltip/tooltip.directive';
 import { isTruncated } from '../truncation';
 
 /** Semantic colour scheme of a tag. */
 export type TagVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Visual size of a tag. */
 export type TagSize = EaSize;
-/** Whether a clipped label reveals its full text in a tooltip. */
-export type TagTooltip = 'auto' | 'none';
+/** Where a clipped label reveals its full text, or `none` to suppress it. */
+export type TagTooltip = 'above' | 'below' | 'none';
 
 /**
  * Inline label commonly used to represent filters, categories, or selected
@@ -59,13 +59,13 @@ export class TagComponent {
    * Widest the chip may grow, in px; a longer label ellipsizes instead. Also
    * settable in CSS as `--ea-tag-max-width`, which this input overrides.
    */
-  readonly maxWidth = input<number | undefined>(undefined);
+  readonly maxWidth = input<number | undefined>(200);
   /**
-   * Whether a label clipped by `maxWidth` reveals its full text in a tooltip.
-   * Set `none` for a tag rendered inside a tooltip, which would otherwise
-   * stack a second bubble over the first.
+   * Where a label clipped by `maxWidth` reveals its full text. Set `none` for
+   * a tag rendered inside a tooltip, which would otherwise stack a second
+   * bubble over the first.
    */
-  readonly tooltip = input<TagTooltip>('auto');
+  readonly tooltip = input<TagTooltip>('above');
   /**
    * Whether the remove button is a tab stop. Set `false` inside a composite
    * widget (a combobox trigger, a grid cell) whose own keyboard model owns
@@ -87,6 +87,10 @@ export class TagComponent {
   /** Tooltip text for the label; empty suppresses the bubble entirely. */
   protected readonly labelTooltip = computed(() =>
     this.tooltip() === 'none' ? '' : this.clippedText(),
+  );
+
+  protected readonly tooltipPosition = computed<TooltipPosition>(() =>
+    this.tooltip() === 'below' ? 'bottom' : 'top',
   );
 
   readonly hostClasses = computed(() => ({
