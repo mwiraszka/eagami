@@ -4,13 +4,18 @@ import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { revealPopoverSurfaces } from '../../test-setup';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptions } from '../select-option';
 import { DropdownComponent } from './dropdown.component';
 
 const TEST_OPTIONS: SelectOption[] = [
   { value: 'a', label: 'Alpha' },
   { value: 'b', label: 'Beta' },
   { value: 'c', label: 'Gamma' },
+];
+
+const GROUPED_OPTIONS: SelectOptions = [
+  { label: 'Recently used', options: [{ value: 'c', label: 'Gamma' }] },
+  { options: [...TEST_OPTIONS] },
 ];
 
 @Component({
@@ -26,7 +31,7 @@ const TEST_OPTIONS: SelectOption[] = [
 })
 class HostComponent {
   label = 'Country';
-  options: SelectOption[] = TEST_OPTIONS;
+  options: SelectOptions = TEST_OPTIONS;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
@@ -91,6 +96,14 @@ describe('DropdownComponent a11y', () => {
 
   it('has no detectable violations with the option list open', async () => {
     const el = await render();
+
+    const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a grouped option list open', async () => {
+    const el = await render(host => (host.options = GROUPED_OPTIONS));
 
     const results = await axe(openList(el));
 

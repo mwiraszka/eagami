@@ -24,7 +24,13 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { PopoverComponent } from '../popover/popover.component';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptions } from '../select-option';
+import {
+  flattenGroups,
+  isGrouped,
+  toGroups,
+  toRenderedGroups,
+} from '../select-option-list';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -64,7 +70,8 @@ export class DropdownComponent implements ControlValueAccessor {
 
   readonly label = input<string | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
-  readonly options = input<SelectOption[]>([]);
+  /** Selectable options, either flat or split into groups. */
+  readonly options = input<SelectOptions>([]);
   readonly size = input<DropdownSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -105,8 +112,21 @@ export class DropdownComponent implements ControlValueAccessor {
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
+  private readonly optionGroups = computed(() => toGroups(this.options()));
+
+  /** Whether the consumer supplied groups, which the list exposes as ARIA groups. */
+  protected readonly grouped = computed(() => isGrouped(this.options()));
+
+  /** Every option in the order given, flattened across groups; drives all index maths. */
+  private readonly flatOptions = computed(() => flattenGroups(this.optionGroups()));
+
+  /** Groups to render, each option carrying its index into the flattened list. */
+  protected readonly renderedGroups = computed(() =>
+    toRenderedGroups(this.optionGroups()),
+  );
+
   readonly selectedLabel = computed(() => {
-    const opt = this.options().find(o => o.value === this.value());
+    const opt = this.flatOptions().find(o => o.value === this.value());
     return opt?.label ?? '';
   });
 
@@ -154,7 +174,7 @@ export class DropdownComponent implements ControlValueAccessor {
     }
     this.isOpen.set(!this.isOpen());
     if (this.isOpen()) {
-      const selected = this.options().findIndex(o => o.value === this.value());
+      const selected = this.flatOptions().findIndex(o => o.value === this.value());
       if (selected >= 0) {
         this.focusedIndex.set(selected);
       } else {
@@ -257,7 +277,7 @@ export class DropdownComponent implements ControlValueAccessor {
   private selectFocusedOrOpen(event: KeyboardEvent): void {
     event.preventDefault();
     if (this.isOpen()) {
-      const opts = this.options();
+      const opts = this.flatOptions();
       const idx = this.focusedIndex();
       if (idx >= 0 && idx < opts.length && !opts[idx].disabled) {
         this.select(opts[idx]);
@@ -268,7 +288,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   private focusEdge(direction: 1 | -1): void {
-    const opts = this.options();
+    const opts = this.flatOptions();
     let idx = direction === 1 ? 0 : opts.length - 1;
     while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
       idx += direction;
@@ -300,7 +320,7 @@ export class DropdownComponent implements ControlValueAccessor {
     if (!wasOpen) {
       this.toggle();
     }
-    const opts = this.options();
+    const opts = this.flatOptions();
     if (opts.length === 0) {
       return;
     }
@@ -319,7 +339,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   private moveFocus(delta: number): void {
-    const opts = this.options();
+    const opts = this.flatOptions();
     let idx = this.focusedIndex() + delta;
     while (idx >= 0 && idx < opts.length && opts[idx].disabled) {
       idx += delta;

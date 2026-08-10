@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { revealPopoverSurfaces } from '../../test-setup';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptions } from '../select-option';
 import { MultiSelectComponent } from './multi-select.component';
 
 const OPTIONS: readonly SelectOption[] = [
@@ -12,6 +12,11 @@ const OPTIONS: readonly SelectOption[] = [
   { value: 'banana', label: 'Banana' },
   { value: 'cherry', label: 'Cherry' },
   { value: 'date', label: 'Date' },
+];
+
+const GROUPED_OPTIONS: SelectOptions = [
+  { label: 'Recently used', options: [{ value: 'cherry', label: 'Cherry' }] },
+  { options: [...OPTIONS] },
 ];
 
 @Component({
@@ -27,7 +32,7 @@ const OPTIONS: readonly SelectOption[] = [
 })
 class HostComponent {
   label: string | undefined = 'Fruits';
-  options: readonly SelectOption[] = OPTIONS;
+  options: SelectOptions = OPTIONS;
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
@@ -92,6 +97,14 @@ describe('MultiSelectComponent a11y', () => {
 
   it('has no detectable violations with the option list open', async () => {
     const el = await render();
+
+    const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a grouped option list open', async () => {
+    const el = await render(host => (host.options = GROUPED_OPTIONS));
 
     const results = await axe(openList(el));
 

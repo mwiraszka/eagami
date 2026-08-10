@@ -22,7 +22,15 @@ import {
 } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { PopoverComponent } from '../popover/popover.component';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptions } from '../select-option';
+import {
+  filterGroups,
+  flattenGroups,
+  isGrouped,
+  limitGroups,
+  toGroups,
+  toRenderedGroups,
+} from '../select-option-list';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -57,7 +65,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   /** Accessible name for the input and suggestion list when no visible label is provided. */
   readonly ariaLabel = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');
-  readonly options = input<SelectOption[]>([]);
+  /** Selectable options, either flat or split into groups. */
+  readonly options = input<SelectOptions>([]);
   readonly size = input<AutocompleteSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -102,21 +111,34 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
 
-  readonly filteredOptions = computed<SelectOption[]>(() => {
+  private readonly optionGroups = computed(() => toGroups(this.options()));
+
+  /** Whether the consumer supplied groups, which the list exposes as ARIA groups. */
+  protected readonly grouped = computed(() => isGrouped(this.options()));
+
+  private readonly filteredGroups = computed(() => {
     const query = this.value().trim().toLowerCase();
-    const allOptions = this.options();
-    const max = this.maxResults();
+    const groups = this.optionGroups();
 
     if (query.length < this.minLength()) {
       return [];
     }
 
     const matched = query
-      ? allOptions.filter(o => o.label.toLowerCase().includes(query))
-      : allOptions;
+      ? filterGroups(groups, o => o.label.toLowerCase().includes(query))
+      : groups;
 
-    return matched.slice(0, max);
+    return limitGroups(matched, this.maxResults());
   });
+
+  readonly filteredOptions = computed<SelectOption[]>(() =>
+    flattenGroups(this.filteredGroups()),
+  );
+
+  /** Groups to render, each option carrying its index into `filteredOptions`. */
+  protected readonly renderedGroups = computed(() =>
+    toRenderedGroups(this.filteredGroups()),
+  );
 
   readonly showList = computed(
     () => this.isOpen() && this.value().length >= this.minLength(),

@@ -4,13 +4,18 @@ import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { revealPopoverSurfaces } from '../../test-setup';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptions } from '../select-option';
 import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
 
 const FRUITS: SelectOption[] = [
   { value: 'apple', label: 'Apple' },
   { value: 'banana', label: 'Banana' },
   { value: 'cherry', label: 'Cherry' },
+];
+
+const GROUPED_FRUITS: SelectOptions = [
+  { label: 'Recently used', options: [{ value: 'cherry', label: 'Cherry' }] },
+  { options: [...FRUITS] },
 ];
 
 @Component({
@@ -29,7 +34,7 @@ const FRUITS: SelectOption[] = [
 class HostComponent {
   label: string | undefined = 'Fruit';
   ariaLabel: string | undefined = undefined;
-  options: SelectOption[] = FRUITS;
+  options: SelectOptions = FRUITS;
   size: AutocompleteSize = 'md';
   disabled = false;
   hint: string | undefined = undefined;
@@ -104,6 +109,14 @@ describe('AutocompleteComponent a11y', () => {
 
   it('has no detectable violations with the option list open', async () => {
     const el = await render();
+
+    const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a grouped option list open', async () => {
+    const el = await render(host => (host.options = GROUPED_FRUITS));
 
     const results = await axe(openList(el));
 

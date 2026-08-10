@@ -19,6 +19,29 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     maxVisibleChips: { control: 'number', min: 0, max: 10, maxLength: 2 },
     maxChipWidth: { control: 'number', min: 40, max: 400, step: 10, maxLength: 3 },
     changed: { action: 'changed' },
+    groupedOptions: { control: 'boolean', demoOnly: true },
+    firstGroup: {
+      control: 'select',
+      options: ['heading', 'none'],
+      if: { arg: 'groupedOptions', eq: true },
+      demoOnly: true,
+    },
+    firstGroupLabel: {
+      control: 'text',
+      if: { arg: 'firstGroup', eq: 'heading' },
+      demoOnly: true,
+    },
+    secondGroup: {
+      control: 'select',
+      options: ['heading', 'divider'],
+      if: { arg: 'groupedOptions', eq: true },
+      demoOnly: true,
+    },
+    secondGroupLabel: {
+      control: 'text',
+      if: { arg: 'secondGroup', eq: 'heading' },
+      demoOnly: true,
+    },
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
@@ -31,6 +54,11 @@ export const MULTI_SELECT_KNOBS: ComponentKnobs = {
     required: false,
     maxVisibleChips: 0,
     maxChipWidth: 200,
+    groupedOptions: false,
+    firstGroup: 'heading',
+    firstGroupLabel: 'Recently used',
+    secondGroup: 'heading',
+    secondGroupLabel: 'Everything else',
     triggerError: false,
   },
 };

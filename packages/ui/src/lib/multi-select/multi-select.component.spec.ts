@@ -1,6 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptionGroup } from '../select-option';
 import { MultiSelectComponent } from './multi-select.component';
 
 const FRUITS: SelectOption[] = [
@@ -8,6 +8,23 @@ const FRUITS: SelectOption[] = [
   { value: 'banana', label: 'Banana' },
   { value: 'cherry', label: 'Cherry' },
   { value: 'date', label: 'Date' },
+];
+
+const GROUPS: SelectOptionGroup[] = [
+  {
+    label: 'Citrus',
+    options: [
+      { value: 'lemon', label: 'Lemon' },
+      { value: 'lime', label: 'Lime' },
+    ],
+  },
+  {
+    label: 'Berries',
+    options: [
+      { value: 'blueberry', label: 'Blueberry' },
+      { value: 'raspberry', label: 'Raspberry' },
+    ],
+  },
 ];
 
 describe('MultiSelectComponent', () => {
@@ -653,6 +670,130 @@ describe('MultiSelectComponent', () => {
       popoverKey('ArrowDown');
 
       expect(component.focusedIndex()).toBe(-1);
+    });
+  });
+
+  describe('Option groups', () => {
+    function getGroups(): HTMLElement[] {
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      return surface
+        ? Array.from(surface.querySelectorAll<HTMLElement>('[role="group"]'))
+        : [];
+    }
+
+    function getHeadings(): HTMLElement[] {
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      return surface
+        ? Array.from(
+            surface.querySelectorAll<HTMLElement>('.ea-multi-select__group-label'),
+          )
+        : [];
+    }
+
+    function openGrouped(groups: SelectOptionGroup[] = GROUPS): void {
+      fixture.componentRef.setInput('options', groups);
+      fixture.detectChanges();
+      getTrigger().click();
+      fixture.detectChanges();
+    }
+
+    it('wraps each group in a labelled role="group" container', () => {
+      openGrouped();
+
+      expect(getGroups().map(el => el.getAttribute('aria-label'))).toEqual([
+        'Citrus',
+        'Berries',
+      ]);
+    });
+
+    it('renders a heading that is not itself an option', () => {
+      openGrouped();
+
+      const headings = getHeadings();
+
+      expect(headings.map(el => el.textContent?.trim())).toEqual(['Citrus', 'Berries']);
+      expect(headings.every(el => el.getAttribute('role') === null)).toBe(true);
+      expect(headings.every(el => el.getAttribute('aria-hidden') === 'true')).toBe(true);
+      expect(getOptionRows()).toHaveLength(4);
+    });
+
+    it('renders an unlabelled group as a rule with no heading', () => {
+      openGrouped([{ options: GROUPS[0].options }, { options: GROUPS[1].options }]);
+
+      const rules = document.body.querySelectorAll('.ea-multi-select__group--ruled');
+
+      expect(rules).toHaveLength(1);
+      expect(getHeadings()).toHaveLength(0);
+      expect(getGroups().every(el => el.getAttribute('aria-label') === null)).toBe(true);
+    });
+
+    it('numbers the option rows across groups, counting options alone', () => {
+      openGrouped();
+
+      // Row 0 is the Select-all row, so the four options run from row 1
+      expect(getOptionRows().map(el => el.id)).toEqual([
+        `${component.id()}-opt-1`,
+        `${component.id()}-opt-2`,
+        `${component.id()}-opt-3`,
+        `${component.id()}-opt-4`,
+      ]);
+    });
+
+    it('walks straight from one group into the next on ArrowDown', () => {
+      openGrouped();
+      const search = getSearchInput()!;
+
+      // Rows 0-2 are Select-all and the two Citrus options; row 3 opens Berries
+      for (let i = 0; i < 4; i++) {
+        search.dispatchEvent(
+          new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
+        );
+      }
+      search.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+
+      expect(component.focusedIndex()).toBe(3);
+      expect(component.value()).toEqual(['blueberry']);
+    });
+
+    it('drops a group whose options all filter out, heading and all', () => {
+      openGrouped();
+
+      component.searchTerm.set('lem');
+      fixture.detectChanges();
+
+      expect(getGroups().map(el => el.getAttribute('aria-label'))).toEqual(['Citrus']);
+      expect(getHeadings().map(el => el.textContent?.trim())).toEqual(['Citrus']);
+      expect(getOptionRows()).toHaveLength(1);
+    });
+
+    it('selects every group\'s options in the order given on "select all"', () => {
+      openGrouped();
+
+      component.toggleSelectAll();
+
+      expect(component.value()).toEqual(['lemon', 'lime', 'blueberry', 'raspberry']);
+    });
+
+    it('resolves a value repeated across groups to one chip and one entry', () => {
+      openGrouped([
+        { label: 'Recently used', options: [{ value: 'lime', label: 'Lime' }] },
+        ...GROUPS,
+      ]);
+
+      component.toggleSelectAll();
+      fixture.detectChanges();
+
+      expect(component.value()).toEqual(['lime', 'lemon', 'blueberry', 'raspberry']);
+      expect(fixture.nativeElement.querySelectorAll('ea-tag')).toHaveLength(4);
+    });
+
+    it('leaves a flat option list ungrouped', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getGroups()).toHaveLength(0);
+      expect(getHeadings()).toHaveLength(0);
+      expect(getOptionRows()).toHaveLength(4);
     });
   });
 });

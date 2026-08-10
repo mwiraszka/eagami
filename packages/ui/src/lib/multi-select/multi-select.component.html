@@ -133,31 +133,52 @@
               </span>
             </li>
           }
-          @for (opt of filteredOptions(); track opt.value; let i = $index) {
+          @for (group of renderedGroups(); track $index) {
             <li
-              class="ea-multi-select__option"
-              [class.ea-multi-select__option--focused]="
-                focusedIndex() === i + selectAllOffset()
-              "
-              [class.ea-multi-select__option--disabled]="opt.disabled"
-              [id]="id() + '-opt-' + (i + selectAllOffset())"
-              role="option"
-              [attr.aria-selected]="selectedSet().has(opt.value)"
-              [attr.aria-disabled]="opt.disabled || null"
-              (click)="onOptionClick(opt, i)">
-              <ea-checkbox
-                size="sm"
-                inert
-                aria-hidden="true"
-                [checked]="selectedSet().has(opt.value)"
-                [disabled]="!!opt.disabled" />
-              <span
-                #optionLabelEl
-                class="ea-multi-select__option-label"
-                [attr.data-value]="opt.value"
-                [eaTooltip]="clippedOptions().has(opt.value) ? opt.label : ''">
-                {{ opt.label }}
-              </span>
+              class="ea-multi-select__group"
+              [class.ea-multi-select__group--ruled]="group.rule"
+              role="presentation">
+              @if (group.label; as groupLabel) {
+                <span
+                  class="ea-multi-select__group-label"
+                  aria-hidden="true">
+                  {{ groupLabel }}
+                </span>
+              }
+              <ul
+                class="ea-multi-select__group-options"
+                [attr.role]="grouped() ? 'group' : 'presentation'"
+                [attr.aria-label]="group.label ?? null">
+                @for (entry of group.options; track entry.option.value) {
+                  <li
+                    class="ea-multi-select__option"
+                    [class.ea-multi-select__option--focused]="
+                      focusedIndex() === entry.index + selectAllOffset()
+                    "
+                    [class.ea-multi-select__option--disabled]="entry.option.disabled"
+                    [id]="id() + '-opt-' + (entry.index + selectAllOffset())"
+                    role="option"
+                    [attr.aria-selected]="selectedSet().has(entry.option.value)"
+                    [attr.aria-disabled]="entry.option.disabled || null"
+                    (click)="onOptionClick(entry.option, entry.index)">
+                    <ea-checkbox
+                      size="sm"
+                      inert
+                      aria-hidden="true"
+                      [checked]="selectedSet().has(entry.option.value)"
+                      [disabled]="!!entry.option.disabled" />
+                    <span
+                      #optionLabelEl
+                      class="ea-multi-select__option-label"
+                      [attr.data-value]="entry.option.value"
+                      [eaTooltip]="
+                        clippedOptions().has(entry.option.value) ? entry.option.label : ''
+                      ">
+                      {{ entry.option.label }}
+                    </span>
+                  </li>
+                }
+              </ul>
             </li>
           }
         </ul>

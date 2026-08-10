@@ -18,6 +18,11 @@ const FRUITS = [
   { value: 'nectarine', label: 'Nectarine' },
 ];
 
+const RECENTLY_USED = [
+  { value: 'cherry', label: 'Cherry' },
+  { value: 'mango', label: 'Mango' },
+];
+
 const meta: Meta<MultiSelectComponent> = {
   title: 'Components/Multi-select',
   component: MultiSelectComponent,
@@ -43,3 +48,18 @@ export default meta;
 type Story = StoryObj<MultiSelectComponent>;
 
 export const Playground: Story = {};
+
+export const Grouped: Story = {
+  args: {
+    options: [
+      { label: 'Recently used', options: RECENTLY_USED },
+      { label: 'All fruits', options: FRUITS },
+    ],
+  },
+};
+
+export const GroupedWithoutHeadings: Story = {
+  args: {
+    options: [{ options: RECENTLY_USED }, { options: FRUITS }],
+  },
+};
