@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Accept option groups on the multi-select, dropdown, and autocomplete: pass sections instead of a flat list and each renders under its own heading, or under a rule when it has no label. Keyboard navigation, type-ahead, filtering, and select-all count options alone, and a flat list keeps working unchanged.
+- Accept option groups on the multi-select, dropdown, and autocomplete, each rendering under its own heading or under a rule when unlabelled.
 
 ## [5.22.1] - 2026-08-08
 

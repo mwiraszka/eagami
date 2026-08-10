@@ -20,7 +20,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Accept option groups on the multi-select, dropdown, and autocomplete: pass sections instead of a flat list and each renders under its own heading, or under a rule when it has no label. Keyboard navigation, type-ahead, filtering, and select-all count options alone, and a flat list keeps working unchanged.',
+          'Accept option groups on the multi-select, dropdown, and autocomplete, each rendering under its own heading or under a rule when unlabelled.',
         ],
       },
     ],
