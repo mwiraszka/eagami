@@ -144,34 +144,11 @@
   }
 
   &__group {
-    position: relative;
-
-    // Pseudo-element rule so it spans the listbox's inner edges instead of being
-    // inset by the option padding, and stays out of the option list entirely
-    &--ruled {
-      margin-top: 0.25em;
-      padding-top: 0.25em;
-
-      &::before {
-        position: absolute;
-        top: 0;
-        inset-inline-end: 0;
-        inset-inline-start: 0;
-        height: var(--border-width-thin);
-        background-color: var(--color-border-default);
-        content: '';
-      }
-    }
+    @include ea.option-group;
   }
 
   &__group-label {
-    padding: 0.5em 0.75em 0.125em;
-    font-size: 0.8125em;
-    font-weight: var(--font-weight-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-tertiary);
-    user-select: none;
+    @include ea.option-group-label;
   }
 
   &__option {
