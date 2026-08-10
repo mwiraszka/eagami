@@ -1740,7 +1740,8 @@ export const pl: WebMessages = {
               'Maksymalna liczba opcji wyświetlanych jednocześnie na liście sugestii.',
             minLength:
               'Minimalna liczba znaków wymagana przed pojawieniem się listy sugestii.',
-            options: 'Pełna lista opcji dostępnych do filtrowania i wyboru.',
+            options:
+              'Pełna lista opcji dostępnych do filtrowania i wyboru, płaska lub podzielona na grupy.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
@@ -1860,7 +1861,8 @@ export const pl: WebMessages = {
               'Maksymalna szerokość chipu wybranej wartości w px; dłuższa etykieta jest skracana i pokazuje pełny tekst w podpowiedzi.',
             popoverMaxWidth:
               'Maksymalna szerokość listy opcji w px albo anchor, aby ograniczyć ją do szerokości pola.',
-            options: 'Lista opcji do wyboru renderowanych na liście rozwijanej.',
+            options:
+              'Lista opcji do wyboru renderowanych na liście rozwijanej, płaska lub podzielona na grupy.',
             placeholder:
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
             readonly: 'Wyświetla pole tylko do odczytu.',
@@ -1892,7 +1894,8 @@ export const pl: WebMessages = {
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             label: 'Etykieta tekstowa renderowana nad polem.',
-            options: 'Lista opcji do wyboru renderowanych na liście rozwijanej.',
+            options:
+              'Lista opcji do wyboru renderowanych na liście rozwijanej, płaska lub podzielona na grupy.',
             placeholder:
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
             readonly: 'Wyświetla pole tylko do odczytu.',

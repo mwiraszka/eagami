@@ -218,7 +218,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'options',
-        type: 'SelectOption[]',
+        type: 'SelectOptions',
         default: '[]',
         required: false,
         twoWay: false,
@@ -1618,7 +1618,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'options',
-        type: 'SelectOption[]',
+        type: 'SelectOptions',
         default: '[]',
         required: false,
         twoWay: false,
@@ -2447,7 +2447,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'options',
-        type: 'readonly SelectOption[]',
+        type: 'SelectOptions',
         default: '[]',
         required: false,
         twoWay: false,

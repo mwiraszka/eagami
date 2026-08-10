@@ -1716,7 +1716,8 @@ export const is: WebMessages = {
             maxResults: 'Hámarksfjöldi valkosta sýndur í tillögulistanum í einu.',
             minLength:
               'Lágmarksfjöldi stafa sem krafist er áður en tillögulistinn birtist.',
-            options: 'Fullur listi valkosta tiltækra til síunar og vals.',
+            options:
+              'Fullur listi valkosta tiltækra til síunar og vals, flatur eða skiptur í hópa.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
@@ -1837,7 +1838,8 @@ export const is: WebMessages = {
               'Mesta breidd valins gildisflipa í px; lengri texti styttist og birtir fulla útgáfu sína í ábendingu.',
             popoverMaxWidth:
               'Mesta breidd valglugga í px, eða anchor til að halda honum við breidd reitsins.',
-            options: 'Listi valanlegra valkosta birtur í fellilistanum.',
+            options:
+              'Listi valanlegra valkosta birtur í fellilistanum, flatur eða skiptur í hópa.',
             placeholder:
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
             readonly: 'Birtir reitinn skrifvarinn.',
@@ -1868,7 +1870,8 @@ export const is: WebMessages = {
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
-            options: 'Listi valanlegra valkosta birtur í fellilistanum.',
+            options:
+              'Listi valanlegra valkosta birtur í fellilistanum, flatur eða skiptur í hópa.',
             placeholder:
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
             readonly: 'Birtir reitinn skrifvarinn.',

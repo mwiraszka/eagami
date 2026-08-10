@@ -1748,7 +1748,7 @@ export const nl: WebMessages = {
             minLength:
               'Minimaal aantal tekens vereist voordat de suggestielijst verschijnt.',
             options:
-              'Volledige lijst van opties beschikbaar voor filteren en selecteren.',
+              'Volledige lijst van opties beschikbaar voor filteren en selecteren, plat of opgesplitst in groepen.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
@@ -1875,7 +1875,8 @@ export const nl: WebMessages = {
               'Maximale breedte van een geselecteerde-waardechip in px; een langer label wordt afgekapt en toont zijn volledige tekst in een tooltip.',
             popoverMaxWidth:
               'Maximale breedte van de optiepopover in px, of anchor om deze op de veldbreedte te houden.',
-            options: 'Lijst van selecteerbare opties weergegeven in de dropdownlijst.',
+            options:
+              'Lijst van selecteerbare opties weergegeven in de dropdownlijst, plat of opgesplitst in groepen.',
             placeholder:
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen.',
@@ -1910,7 +1911,8 @@ export const nl: WebMessages = {
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
             label: 'Tekstlabel weergegeven boven het veld.',
-            options: 'Lijst van selecteerbare opties weergegeven in de dropdownlijst.',
+            options:
+              'Lijst van selecteerbare opties weergegeven in de dropdownlijst, plat of opgesplitst in groepen.',
             placeholder:
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen.',

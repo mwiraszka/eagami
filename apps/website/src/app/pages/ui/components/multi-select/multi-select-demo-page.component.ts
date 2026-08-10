@@ -2,6 +2,7 @@ import {
   MultiSelectComponent,
   type MultiSelectSize,
   type SelectOption,
+  type SelectOptions,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -24,6 +25,7 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
 interface MultiSelectKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -38,6 +40,11 @@ interface MultiSelectKnobState {
   required: boolean;
   maxVisibleChips: number;
   maxChipWidth: number;
+  groupedOptions: boolean;
+  firstGroup: string;
+  firstGroupLabel: string;
+  secondGroup: string;
+  secondGroupLabel: string;
   triggerError: boolean;
 }
 
@@ -63,16 +70,16 @@ export class MultiSelectDemoPageComponent {
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
   );
 
-  protected readonly options = computed<SelectOption[]>(() =>
+  private readonly fruits = computed<SelectOption[]>(() =>
     this.messages().ui.component.sharedOptions.fruitOptions.map(o => ({ ...o })),
   );
 
-  protected readonly extraAttributes = computed(() => {
-    const literal = this.options()
-      .map(option => `{ value: '${option.value}', label: '${option.label}' }`)
-      .join(', ');
-    return [`[options]="[${literal}]"`];
+  protected readonly options = computed<SelectOptions>(() => {
+    const state = this.state();
+    return state.groupedOptions ? demoOptionGroups(this.fruits(), state) : this.fruits();
   });
+
+  protected readonly extraAttributes = computed(() => [optionsAttribute(this.options())]);
 
   protected readonly control = new FormControl(null, {
     validators: () => (this.state().triggerError ? { required: true } : null),

@@ -1759,7 +1759,7 @@ export const frFR: WebMessages = {
             minLength:
               'Nombre minimal de caractères requis avant l’affichage de la liste de suggestions.',
             options:
-              'Liste complète des options disponibles pour le filtrage et la sélection.',
+              'Liste complète des options disponibles pour le filtrage et la sélection, plate ou répartie en groupes.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
@@ -1887,7 +1887,7 @@ export const frFR: WebMessages = {
             popoverMaxWidth:
               'Largeur maximale du popover d’options en px, ou anchor pour la limiter à celle du champ.',
             options:
-              'Liste des options sélectionnables affichées dans la liste déroulante.',
+              'Liste des options sélectionnables affichées dans la liste déroulante, plate ou répartie en groupes.',
             placeholder:
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
@@ -1923,7 +1923,7 @@ export const frFR: WebMessages = {
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             label: 'Libellé affiché au-dessus du champ.',
             options:
-              'Liste des options sélectionnables affichées dans la liste déroulante.',
+              'Liste des options sélectionnables affichées dans la liste déroulante, plate ou répartie en groupes.',
             placeholder:
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
