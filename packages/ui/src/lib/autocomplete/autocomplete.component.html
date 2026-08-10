@@ -84,7 +84,7 @@
               [id]="id() + '-option-' + entry.index"
               [class.ea-autocomplete__option--focused]="entry.index === focusedIndex()"
               [class.ea-autocomplete__option--disabled]="entry.option.disabled"
-              [attr.aria-selected]="entry.option.label === value()"
+              [attr.aria-selected]="entry.index === selectedIndex()"
               [attr.aria-disabled]="entry.option.disabled || null"
               (mousedown)="selectOption(entry.option)"
               (mouseenter)="focusedIndex.set(entry.index)">

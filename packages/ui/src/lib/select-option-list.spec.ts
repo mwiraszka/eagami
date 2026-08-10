@@ -96,6 +96,26 @@ describe('select-option-list', () => {
       expect(rendered[0].rule).toBe(false);
     });
 
+    it('leaves out a group holding no options, heading and rule with it', () => {
+      const rendered = toRenderedGroups([
+        { label: 'Empty', options: [] },
+        { options: FLAT },
+      ]);
+
+      expect(rendered).toHaveLength(1);
+      expect(rendered[0].rule).toBe(false);
+    });
+
+    it('treats a blank label as no label at all', () => {
+      const rendered = toRenderedGroups([
+        { label: 'One', options: [FLAT[0]] },
+        { label: '', options: [FLAT[1]] },
+      ]);
+
+      expect(rendered[1].label).toBeUndefined();
+      expect(rendered[1].rule).toBe(true);
+    });
+
     it('leaves a labelled group to its heading instead of a rule', () => {
       const rendered = toRenderedGroups([
         { label: 'One', options: [FLAT[0]] },

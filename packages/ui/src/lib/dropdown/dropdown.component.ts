@@ -125,6 +125,12 @@ export class DropdownComponent implements ControlValueAccessor {
     toRenderedGroups(this.optionGroups()),
   );
 
+  // A value repeated across groups renders twice, but a single-select listbox
+  // may only mark one option selected
+  protected readonly selectedIndex = computed(() =>
+    this.flatOptions().findIndex(o => o.value === this.value()),
+  );
+
   readonly selectedLabel = computed(() => {
     const opt = this.flatOptions().find(o => o.value === this.value());
     return opt?.label ?? '';

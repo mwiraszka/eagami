@@ -140,6 +140,12 @@ export class AutocompleteComponent implements ControlValueAccessor {
     toRenderedGroups(this.filteredGroups()),
   );
 
+  // An option repeated across groups renders twice, but a single-select listbox
+  // may only mark one option selected
+  protected readonly selectedIndex = computed(() =>
+    this.filteredOptions().findIndex(o => o.label === this.value()),
+  );
+
   readonly showList = computed(
     () => this.isOpen() && this.value().length >= this.minLength(),
   );

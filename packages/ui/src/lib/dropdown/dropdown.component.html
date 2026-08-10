@@ -76,7 +76,7 @@
                 [class.ea-dropdown__option--disabled]="entry.option.disabled"
                 [id]="id() + '-option-' + entry.index"
                 role="option"
-                [attr.aria-selected]="entry.option.value === value()"
+                [attr.aria-selected]="entry.index === selectedIndex()"
                 [attr.aria-disabled]="entry.option.disabled || null"
                 (click)="select(entry.option)"
                 (mouseenter)="focusedIndex.set(entry.index)">

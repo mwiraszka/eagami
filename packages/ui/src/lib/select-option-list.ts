@@ -45,7 +45,7 @@ export function filterGroups(
   return kept;
 }
 
-/** Trims the groups down to at most `max` options in total, dropping any left empty. */
+/** Trims the groups down to at most `max` options in total, dropping any that no longer fit. */
 export function limitGroups(
   groups: readonly SelectOptionGroup[],
   max: number,
@@ -71,13 +71,16 @@ export function flattenGroups(groups: readonly SelectOptionGroup[]): SelectOptio
 /**
  * Pairs every option with its index into the flattened list, so keyboard
  * navigation and selection count options alone while the template still renders
- * the headings and rules that sit between them.
+ * the headings and rules that sit between them. Groups holding no options are
+ * left out, so neither a heading nor a rule can render over nothing.
  */
 export function toRenderedGroups(groups: readonly SelectOptionGroup[]): RenderedGroup[] {
   let index = 0;
-  return groups.map((group, position) => ({
-    label: group.label,
-    rule: position > 0 && !group.label,
-    options: group.options.map(option => ({ option, index: index++ })),
-  }));
+  return groups
+    .filter(group => group.options.length > 0)
+    .map((group, position) => ({
+      label: group.label || undefined,
+      rule: position > 0 && !group.label,
+      options: group.options.map(option => ({ option, index: index++ })),
+    }));
 }
