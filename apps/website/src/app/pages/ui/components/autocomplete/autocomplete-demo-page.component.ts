@@ -5,6 +5,7 @@ import {
   InputComponent,
   PlusIconComponent,
   type SelectOption,
+  type SelectOptions,
   TooltipDirective,
   TrashIconComponent,
 } from '@eagami/ui';
@@ -27,6 +28,7 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
 interface OptionModel {
   id: number;
@@ -45,6 +47,11 @@ interface AutocompleteKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  groupedOptions: boolean;
+  firstGroup: string;
+  firstGroupLabel: string;
+  secondGroup: string;
+  secondGroupLabel: string;
   triggerError: boolean;
 }
 
@@ -93,7 +100,7 @@ export class AutocompleteDemoPageComponent {
   private nextId = 1;
   protected readonly optionItems = signal<OptionModel[]>(this.seedOptions());
 
-  protected readonly options = computed<SelectOption[]>(() =>
+  private readonly breeds = computed<SelectOption[]>(() =>
     this.optionItems()
       .filter(item => item.label.trim() !== '')
       .map(item => ({
@@ -102,13 +109,13 @@ export class AutocompleteDemoPageComponent {
       })),
   );
 
-  /** Snippet `[options]` binding for the playground's generated code, mirroring the live list. */
-  protected readonly extraAttributes = computed(() => {
-    const literal = this.options()
-      .map(option => `{ value: '${option.value}', label: '${option.label}' }`)
-      .join(', ');
-    return [`[options]="[${literal}]"`];
+  protected readonly options = computed<SelectOptions>(() => {
+    const state = this.state();
+    return state.groupedOptions ? demoOptionGroups(this.breeds(), state) : this.breeds();
   });
+
+  /** Snippet `[options]` binding for the playground's generated code, mirroring the live list. */
+  protected readonly extraAttributes = computed(() => [optionsAttribute(this.options())]);
 
   protected readonly control = new FormControl(null, {
     validators: () => (this.state().triggerError ? { required: true } : null),

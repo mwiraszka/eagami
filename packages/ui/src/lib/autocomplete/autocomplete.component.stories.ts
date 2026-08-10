@@ -52,3 +52,18 @@ export default meta;
 type Story = StoryObj<AutocompleteComponent>;
 
 export const Playground: Story = {};
+
+export const Grouped: Story = {
+  args: {
+    options: [
+      { label: 'Recently used', options: countries.slice(0, 2) },
+      { label: 'All countries', options: countries },
+    ],
+  },
+};
+
+export const GroupedWithoutHeadings: Story = {
+  args: {
+    options: [{ options: countries.slice(0, 2) }, { options: countries }],
+  },
+};

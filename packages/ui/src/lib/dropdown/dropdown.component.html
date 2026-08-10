@@ -55,19 +55,34 @@
         class="ea-dropdown__menu"
         [ngClass]="menuClasses()"
         role="none">
-        @for (option of options(); track option.value; let i = $index) {
+        @for (group of renderedGroups(); track $index) {
           <div
-            class="ea-dropdown__option"
-            [class.ea-dropdown__option--selected]="option.value === value()"
-            [class.ea-dropdown__option--focused]="i === focusedIndex()"
-            [class.ea-dropdown__option--disabled]="option.disabled"
-            [id]="id() + '-option-' + i"
-            role="option"
-            [attr.aria-selected]="option.value === value()"
-            [attr.aria-disabled]="option.disabled || null"
-            (click)="select(option)"
-            (mouseenter)="focusedIndex.set(i)">
-            {{ option.label }}
+            class="ea-dropdown__group"
+            [class.ea-dropdown__group--ruled]="group.rule"
+            [attr.role]="grouped() ? 'group' : 'presentation'"
+            [attr.aria-label]="group.label ?? null">
+            @if (group.label; as groupLabel) {
+              <div
+                class="ea-dropdown__group-label"
+                aria-hidden="true">
+                {{ groupLabel }}
+              </div>
+            }
+            @for (entry of group.options; track entry.option.value) {
+              <div
+                class="ea-dropdown__option"
+                [class.ea-dropdown__option--selected]="entry.option.value === value()"
+                [class.ea-dropdown__option--focused]="entry.index === focusedIndex()"
+                [class.ea-dropdown__option--disabled]="entry.option.disabled"
+                [id]="id() + '-option-' + entry.index"
+                role="option"
+                [attr.aria-selected]="entry.index === selectedIndex()"
+                [attr.aria-disabled]="entry.option.disabled || null"
+                (click)="select(entry.option)"
+                (mouseenter)="focusedIndex.set(entry.index)">
+                {{ entry.option.label }}
+              </div>
+            }
           </div>
         }
       </div>

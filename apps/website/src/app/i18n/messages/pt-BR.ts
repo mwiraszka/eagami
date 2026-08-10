@@ -1746,7 +1746,8 @@ export const ptBR: WebMessages = {
               'Número máximo de opções exibidas na lista de sugestões de uma só vez.',
             minLength:
               'Número mínimo de caracteres exigidos antes que a lista de sugestões apareça.',
-            options: 'Lista completa de opções disponíveis para filtragem e seleção.',
+            options:
+              'Lista completa de opções disponíveis para filtragem e seleção, plana ou dividida em grupos.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
@@ -1870,7 +1871,8 @@ export const ptBR: WebMessages = {
               'Largura máxima de um chip de valor selecionado em px; um rótulo maior é truncado e revela seu texto completo em um tooltip.',
             popoverMaxWidth:
               'Largura máxima do popover de opções em px, ou anchor para mantê-lo na largura do campo.',
-            options: 'Lista de opções selecionáveis renderizadas na lista suspensa.',
+            options:
+              'Lista de opções selecionáveis renderizadas na lista suspensa, plana ou dividida em grupos.',
             placeholder:
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',
@@ -1903,7 +1905,8 @@ export const ptBR: WebMessages = {
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
             label: 'Rótulo de texto renderizado acima do campo.',
-            options: 'Lista de opções selecionáveis renderizadas na lista suspensa.',
+            options:
+              'Lista de opções selecionáveis renderizadas na lista suspensa, plana ou dividida em grupos.',
             placeholder:
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',

@@ -1,6 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptionGroup } from '../select-option';
 import { DropdownComponent } from './dropdown.component';
 
 describe('DropdownComponent', () => {
@@ -378,6 +378,116 @@ describe('DropdownComponent', () => {
       component.setDisabledState(true);
       fixture.detectChanges();
       expect(getTrigger().disabled).toBe(true);
+    });
+  });
+
+  describe('Option groups', () => {
+    const groupedOptions: SelectOptionGroup[] = [
+      {
+        label: 'Recently used',
+        options: [{ value: 'gamma', label: 'Gamma' }],
+      },
+      {
+        label: 'All letters',
+        options: [
+          { value: 'a', label: 'Alpha' },
+          { value: 'b', label: 'Beta' },
+        ],
+      },
+    ];
+
+    function getGroups(): HTMLElement[] {
+      const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
+      return surface
+        ? Array.from(surface.querySelectorAll<HTMLElement>('[role="group"]'))
+        : [];
+    }
+
+    function getHeadings(): HTMLElement[] {
+      const surface = document.querySelector<HTMLElement>('.ea-popover__surface');
+      return surface
+        ? Array.from(surface.querySelectorAll<HTMLElement>('.ea-dropdown__group-label'))
+        : [];
+    }
+
+    function openGrouped(groups: SelectOptionGroup[] = groupedOptions): void {
+      fixture.componentRef.setInput('options', groups);
+      fixture.detectChanges();
+      getTrigger().click();
+      fixture.detectChanges();
+    }
+
+    it('wraps each group in a labelled role="group" container', () => {
+      openGrouped();
+
+      expect(getGroups().map(el => el.getAttribute('aria-label'))).toEqual([
+        'Recently used',
+        'All letters',
+      ]);
+      expect(getHeadings().map(el => el.textContent?.trim())).toEqual([
+        'Recently used',
+        'All letters',
+      ]);
+    });
+
+    it('renders an unlabelled group as a rule with no heading', () => {
+      openGrouped([
+        { options: groupedOptions[0].options },
+        { options: groupedOptions[1].options },
+      ]);
+
+      expect(document.querySelectorAll('.ea-dropdown__group--ruled')).toHaveLength(1);
+      expect(getHeadings()).toHaveLength(0);
+    });
+
+    it('numbers the options across groups, counting options alone', () => {
+      openGrouped();
+
+      expect(getOptions().map(el => el.id)).toEqual([
+        `${component.id()}-option-0`,
+        `${component.id()}-option-1`,
+        `${component.id()}-option-2`,
+      ]);
+    });
+
+    it('walks straight from one group into the next on ArrowDown', () => {
+      openGrouped();
+
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      expect(
+        document.querySelector('.ea-dropdown__option--focused')?.textContent?.trim(),
+      ).toBe('Alpha');
+    });
+
+    it('runs typeahead across every group', () => {
+      openGrouped();
+
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'b' }));
+      fixture.detectChanges();
+
+      expect(
+        document.querySelector('.ea-dropdown__option--focused')?.textContent?.trim(),
+      ).toBe('Beta');
+    });
+
+    it('selects an option from a group like a flat one', () => {
+      openGrouped();
+
+      getOptions()[0].click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('gamma');
+      expect(getTrigger().textContent).toContain('Gamma');
+    });
+
+    it('leaves a flat option list ungrouped', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getGroups()).toHaveLength(0);
+      expect(getOptions()).toHaveLength(3);
     });
   });
 });

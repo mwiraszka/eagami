@@ -31,7 +31,14 @@ import { ChevronDownIconComponent } from '../icons/chevron-down.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent, type PopoverMaxWidth } from '../popover/popover.component';
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptionGroup, SelectOptions } from '../select-option';
+import {
+  filterGroups,
+  flattenGroups,
+  isGrouped,
+  toGroups,
+  toRenderedGroups,
+} from '../select-option-list';
 import { type EaSize } from '../sizes';
 import { TagComponent } from '../tag/tag.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
@@ -90,7 +97,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly placeholder = input<string | undefined>(undefined);
   readonly searchPlaceholder = input<string | undefined>(undefined);
-  readonly options = input<readonly SelectOption[]>([]);
+  /** Selectable options, either flat or split into groups. */
+  readonly options = input<SelectOptions>([]);
   readonly size = input<MultiSelectSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -143,21 +151,37 @@ export class MultiSelectComponent implements ControlValueAccessor {
   /** Set-backed lookup for `selectedSet().has(value)`. */
   readonly selectedSet = computed(() => new Set(this.value()));
 
-  /** Options matching the current search term (case-insensitive substring on label). */
-  readonly filteredOptions = computed<readonly SelectOption[]>(() => {
+  private readonly optionGroups = computed(() => toGroups(this.options()));
+
+  /** Whether the consumer supplied groups, which the list exposes as ARIA groups. */
+  protected readonly grouped = computed(() => isGrouped(this.options()));
+
+  /** Every option in the order given, flattened across groups. */
+  private readonly flatOptions = computed(() => flattenGroups(this.optionGroups()));
+
+  private readonly filteredGroups = computed<readonly SelectOptionGroup[]>(() => {
     const term = this.searchTerm().trim().toLowerCase();
-    const opts = this.options();
+    const groups = this.optionGroups();
     if (!term) {
-      return opts;
+      return groups;
     }
-    return opts.filter(o => o.label.toLowerCase().includes(term));
+    return filterGroups(groups, o => o.label.toLowerCase().includes(term));
   });
 
+  /** Options matching the current search term (case-insensitive substring on label). */
+  readonly filteredOptions = computed<readonly SelectOption[]>(() =>
+    flattenGroups(this.filteredGroups()),
+  );
+
+  /** Groups to render, each option carrying its index into `filteredOptions`. */
+  protected readonly renderedGroups = computed(() =>
+    toRenderedGroups(this.filteredGroups()),
+  );
+
   /** Currently selected options, ordered to match the input `options`. */
-  readonly selectedOptions = computed<readonly SelectOption[]>(() => {
-    const set = this.selectedSet();
-    return this.options().filter(o => set.has(o.value));
-  });
+  readonly selectedOptions = computed<readonly SelectOption[]>(() =>
+    this.optionsFor(this.selectedSet()),
+  );
 
   readonly hasValue = computed(() => this.value().length > 0);
 
@@ -503,9 +527,22 @@ export class MultiSelectComponent implements ControlValueAccessor {
 
   /** Reorder a value-set against the input `options` array. */
   private orderedValues(set: Set<string>): readonly string[] {
-    return this.options()
-      .filter(o => set.has(o.value))
-      .map(o => o.value);
+    return this.optionsFor(set).map(o => o.value);
+  }
+
+  // A value listed in more than one group (a "recently used" section repeating an
+  // option below it) still stands for one selection, so it resolves to one chip
+  // and one entry in the value
+  private optionsFor(values: ReadonlySet<string>): SelectOption[] {
+    const seen = new Set<string>();
+    const picked: SelectOption[] = [];
+    for (const option of this.flatOptions()) {
+      if (values.has(option.value) && !seen.has(option.value)) {
+        seen.add(option.value);
+        picked.push(option);
+      }
+    }
+    return picked;
   }
 
   private resetEditState(): void {

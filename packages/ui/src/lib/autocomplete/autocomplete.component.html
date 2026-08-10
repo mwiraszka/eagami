@@ -64,18 +64,33 @@
     <div
       class="ea-autocomplete__listbox"
       [ngClass]="listboxClasses()">
-      @for (option of filteredOptions(); track option.value; let i = $index) {
+      @for (group of renderedGroups(); track $index) {
         <div
-          class="ea-autocomplete__option"
-          role="option"
-          [id]="id() + '-option-' + i"
-          [class.ea-autocomplete__option--focused]="i === focusedIndex()"
-          [class.ea-autocomplete__option--disabled]="option.disabled"
-          [attr.aria-selected]="option.label === value()"
-          [attr.aria-disabled]="option.disabled || null"
-          (mousedown)="selectOption(option)"
-          (mouseenter)="focusedIndex.set(i)">
-          {{ option.label }}
+          class="ea-autocomplete__group"
+          [class.ea-autocomplete__group--ruled]="group.rule"
+          [attr.role]="grouped() ? 'group' : 'presentation'"
+          [attr.aria-label]="group.label ?? null">
+          @if (group.label; as groupLabel) {
+            <div
+              class="ea-autocomplete__group-label"
+              aria-hidden="true">
+              {{ groupLabel }}
+            </div>
+          }
+          @for (entry of group.options; track entry.option.value) {
+            <div
+              class="ea-autocomplete__option"
+              role="option"
+              [id]="id() + '-option-' + entry.index"
+              [class.ea-autocomplete__option--focused]="entry.index === focusedIndex()"
+              [class.ea-autocomplete__option--disabled]="entry.option.disabled"
+              [attr.aria-selected]="entry.index === selectedIndex()"
+              [attr.aria-disabled]="entry.option.disabled || null"
+              (mousedown)="selectOption(entry.option)"
+              (mouseenter)="focusedIndex.set(entry.index)">
+              {{ entry.option.label }}
+            </div>
+          }
         </div>
       }
       @if (showEmpty()) {

@@ -1695,7 +1695,8 @@ export const en: WebMessages = {
             maxResults: 'Maximum number of options shown in the suggestion list at once.',
             minLength:
               'Minimum number of characters required before the suggestion list appears.',
-            options: 'Full list of options available for filtering and selection.',
+            options:
+              'Full list of options available for filtering and selection, flat or split into groups.',
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
@@ -1811,7 +1812,8 @@ export const en: WebMessages = {
               'Widest a selected-value chip may grow in px; a longer label ellipsizes and reveals its full text in a tooltip.',
             popoverMaxWidth:
               'Widest the option popover may grow in px, or anchor to hold it to the field width.',
-            options: 'List of selectable options rendered in the dropdown list.',
+            options:
+              'List of selectable options rendered in the dropdown list, flat or split into groups.',
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
@@ -1843,7 +1845,8 @@ export const en: WebMessages = {
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
             label: 'Text label rendered above the field.',
-            options: 'List of selectable options rendered in the dropdown list.',
+            options:
+              'List of selectable options rendered in the dropdown list, flat or split into groups.',
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',

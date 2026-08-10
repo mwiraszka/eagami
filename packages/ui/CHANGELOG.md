@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.23.0] - 2026-08-10
+
+### Added
+
+- Accept option groups on the multi-select, dropdown, and autocomplete, each rendering under its own heading or under a rule when unlabelled.
+
 ## [5.22.1] - 2026-08-08
 
 ### Fixed
@@ -1325,6 +1331,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.23.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.1...ui-v5.23.0
 [5.22.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.0...ui-v5.22.1
 [5.22.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.21.0...ui-v5.22.0
 [5.21.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.20.0...ui-v5.21.0

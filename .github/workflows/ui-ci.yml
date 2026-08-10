@@ -42,7 +42,11 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      # Full history so the CSS property-order check can find the merge base
+      # with the PR's target branch.
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v6
         with:
@@ -112,6 +116,18 @@ jobs:
       # must match the SCSS token source. Regenerate with 'pnpm ui sync-guides'.
       - name: Check integration-guide token sync
         run: pnpm --filter @eagami/ui check-tokens
+
+      # The release workflow publishes the topmost CHANGELOG entry verbatim, so
+      # its wording is enforced rather than reviewed: Added/Changed/Fixed
+      # sections, one sentence per bullet, opening on a present-tense verb.
+      - name: Check changelog format
+        run: pnpm --filter @eagami/ui check-changelog
+
+      # Property order in any stylesheet line this branch adds. Scoped to the
+      # diff because the existing stylesheets predate the rule.
+      - name: Check CSS property order
+        if: github.event_name == 'pull_request'
+        run: node packages/ui/scripts/check-css-property-order.mjs --since="origin/${GITHUB_BASE_REF}"
 
       # Bundle-size budget. The FESM is the npm-published bundle that
       # consumers tree-shake from, so its raw size is a useful regression

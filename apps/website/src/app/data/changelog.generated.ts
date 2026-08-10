@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.23.0',
+    date: '2026-08-10',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Accept option groups on the multi-select, dropdown, and autocomplete, each rendering under its own heading or under a rule when unlabelled.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.22.1',
     date: '2026-08-08',
     sections: [

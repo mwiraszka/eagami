@@ -35,3 +35,18 @@ export default meta;
 type Story = StoryObj<DropdownComponent>;
 
 export const Playground: Story = {};
+
+export const Grouped: Story = {
+  args: {
+    options: [
+      { label: 'Recently used', options: [fruitOptions[2]] },
+      { label: 'All fruits', options: fruitOptions },
+    ],
+  },
+};
+
+export const GroupedWithoutHeadings: Story = {
+  args: {
+    options: [{ options: [fruitOptions[2]] }, { options: fruitOptions }],
+  },
+};

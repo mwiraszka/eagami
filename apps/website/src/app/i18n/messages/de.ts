@@ -1762,7 +1762,7 @@ export const de: WebMessages = {
             minLength:
               'Mindestzeichenanzahl, die erforderlich ist, bevor die Vorschlagsliste erscheint.',
             options:
-              'Vollständige Liste der zur Filterung und Auswahl verfügbaren Optionen.',
+              'Vollständige Liste der zur Filterung und Auswahl verfügbaren Optionen, flach oder in Gruppen unterteilt.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
@@ -1890,7 +1890,7 @@ export const de: WebMessages = {
             popoverMaxWidth:
               'Maximale Breite des Options-Popovers in px, oder anchor, um es auf die Feldbreite zu begrenzen.',
             options:
-              'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden.',
+              'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden, flach oder in Gruppen unterteilt.',
             placeholder:
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Option ausgewählt ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
@@ -1925,7 +1925,7 @@ export const de: WebMessages = {
             id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             options:
-              'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden.',
+              'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden, flach oder in Gruppen unterteilt.',
             placeholder:
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Option ausgewählt ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',

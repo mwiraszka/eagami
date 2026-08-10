@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import type { SelectOption } from '../select-option';
+import type { SelectOption, SelectOptionGroup, SelectOptions } from '../select-option';
 import { AutocompleteComponent, type AutocompleteSize } from './autocomplete.component';
 
 const FRUITS: SelectOption[] = [
@@ -34,7 +34,7 @@ const FRUITS: SelectOption[] = [
 })
 class TestHostComponent {
   value = signal('');
-  options = signal<SelectOption[]>(FRUITS);
+  options = signal<SelectOptions>(FRUITS);
   label = signal<string | undefined>(undefined);
   ariaLabel = signal<string | undefined>(undefined);
   placeholder = signal('');
@@ -392,6 +392,118 @@ describe('AutocompleteComponent', () => {
 
       expect(error.textContent).toContain('Required');
       expect(hint).toBeNull();
+    });
+  });
+
+  describe('Option groups', () => {
+    const groupedFruits: SelectOptionGroup[] = [
+      {
+        label: 'Recently used',
+        options: [{ value: 'cherry', label: 'Cherry' }],
+      },
+      {
+        label: 'All fruits',
+        options: [
+          { value: 'apple', label: 'Apple' },
+          { value: 'apricot', label: 'Apricot' },
+        ],
+      },
+    ];
+
+    function getGroups(): HTMLElement[] {
+      const listbox = getListbox();
+      return listbox
+        ? Array.from(listbox.querySelectorAll<HTMLElement>('[role="group"]'))
+        : [];
+    }
+
+    function getHeadings(): HTMLElement[] {
+      const listbox = getListbox();
+      return listbox
+        ? Array.from(
+            listbox.querySelectorAll<HTMLElement>('.ea-autocomplete__group-label'),
+          )
+        : [];
+    }
+
+    beforeEach(() => {
+      host.options.set(groupedFruits);
+      fixture.detectChanges();
+    });
+
+    it('wraps each group in a labelled role="group" container', () => {
+      focus();
+
+      expect(getGroups().map(el => el.getAttribute('aria-label'))).toEqual([
+        'Recently used',
+        'All fruits',
+      ]);
+      expect(getHeadings().map(el => el.textContent?.trim())).toEqual([
+        'Recently used',
+        'All fruits',
+      ]);
+    });
+
+    it('renders an unlabelled group as a rule with no heading', () => {
+      host.options.set([
+        { options: groupedFruits[0].options },
+        { options: groupedFruits[1].options },
+      ]);
+      fixture.detectChanges();
+
+      focus();
+
+      expect(
+        getListbox()?.querySelectorAll('.ea-autocomplete__group--ruled'),
+      ).toHaveLength(1);
+      expect(getHeadings()).toHaveLength(0);
+    });
+
+    it('drops a group whose options all filter out, heading and all', () => {
+      type('apr');
+
+      expect(getGroups().map(el => el.getAttribute('aria-label'))).toEqual([
+        'All fruits',
+      ]);
+      expect(getOptions().map(el => el.textContent?.trim())).toEqual(['Apricot']);
+    });
+
+    it('numbers the options across groups, counting options alone', () => {
+      focus();
+
+      getOptions().forEach((option, index) => {
+        expect(option.id).toMatch(new RegExp(`-option-${index}$`));
+      });
+    });
+
+    it('walks straight from one group into the next on ArrowDown', () => {
+      focus();
+
+      press('ArrowDown');
+      press('ArrowDown');
+      press('Enter');
+
+      expect(host.value()).toBe('Apple');
+    });
+
+    it('caps the total options at maxResults across groups', () => {
+      host.maxResults.set(2);
+      fixture.detectChanges();
+
+      focus();
+
+      expect(getOptions().map(el => el.textContent?.trim())).toEqual(['Cherry', 'Apple']);
+      expect(getGroups()).toHaveLength(2);
+    });
+
+    it('leaves a flat option list ungrouped', () => {
+      host.options.set(FRUITS);
+      fixture.detectChanges();
+
+      focus();
+
+      expect(getGroups()).toHaveLength(0);
+      expect(getOptions()).toHaveLength(5);
     });
   });
 });

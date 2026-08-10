@@ -149,6 +149,42 @@ $target-size-min: 24px;
   }
 }
 
+// Section wrapper in a grouped select-like option list, and the rule an
+// unlabelled section carries in place of a heading. The rule is a
+// pseudo-element so it spans the list's inner edges instead of being inset by
+// the option padding, and stays out of the option list entirely.
+@mixin option-group {
+  position: relative;
+
+  &--ruled {
+    padding-top: 0.25em;
+    margin-top: 0.25em;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      inset-inline-end: 0;
+      inset-inline-start: 0;
+      height: var(--border-width-thin);
+      background-color: var(--color-border-default);
+      content: '';
+    }
+  }
+}
+
+// Heading above a labelled section, sized in em so it scales with the host
+// component's `size`.
+@mixin option-group-label {
+  display: block;
+  padding: 0.5em 0.75em 0.125em;
+  font-size: 0.8125em;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-tertiary);
+  user-select: none;
+}
+
 // Strips the geometry the UA stylesheet forces on a `[popover]` element (a
 // centred, viewport-filling, scrollable box) so a surface promoted into the top
 // layer keeps the box it has in the normal layer. Colour and spacing chrome

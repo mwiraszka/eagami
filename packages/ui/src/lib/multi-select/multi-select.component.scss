@@ -256,6 +256,20 @@
     list-style: none;
   }
 
+  &__group {
+    @include ea.option-group;
+  }
+
+  &__group-options {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__group-label {
+    @include ea.option-group-label;
+  }
+
   &__option {
     display: flex;
     align-items: center;

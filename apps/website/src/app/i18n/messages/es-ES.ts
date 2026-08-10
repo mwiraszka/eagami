@@ -1763,7 +1763,8 @@ export const esES: WebMessages = {
               'Número máximo de opciones mostradas a la vez en la lista de sugerencias.',
             minLength:
               'Número mínimo de caracteres necesarios para que aparezca la lista de sugerencias.',
-            options: 'Lista completa de opciones disponibles para filtrar y seleccionar.',
+            options:
+              'Lista completa de opciones disponibles para filtrar y seleccionar, plana o dividida en grupos.',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
@@ -1891,7 +1892,7 @@ export const esES: WebMessages = {
             popoverMaxWidth:
               'Ancho máximo del popover de opciones en px, o anchor para limitarlo al ancho del campo.',
             options:
-              'Lista de opciones seleccionables mostradas en la lista desplegable.',
+              'Lista de opciones seleccionables mostradas en la lista desplegable, plana o dividida en grupos.',
             placeholder:
               'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
             readonly: 'Muestra el campo como de solo lectura.',
@@ -1926,7 +1927,7 @@ export const esES: WebMessages = {
             id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             options:
-              'Lista de opciones seleccionables mostradas en la lista desplegable.',
+              'Lista de opciones seleccionables mostradas en la lista desplegable, plana o dividida en grupos.',
             placeholder:
               'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
             readonly: 'Muestra el campo como de solo lectura.',

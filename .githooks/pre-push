@@ -54,6 +54,19 @@ if [[ "$branch" =~ website-v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
 fi
 [ "$date_fail" -eq 0 ] || exit 1
 
+# Wording of the entry the release workflow will publish, and the property order
+# of any stylesheet line this branch adds. Both mirror ui-ci.yml so a push
+# cannot fail CI on something a script can decide here in a second.
+format_fail=0
+node packages/ui/scripts/check-changelog-format.mjs packages/ui/CHANGELOG.md >/dev/null || format_fail=1
+node packages/ui/scripts/check-changelog-format.mjs apps/website/CHANGELOG.md >/dev/null || format_fail=1
+node packages/ui/scripts/check-css-property-order.mjs --since=origin/main >/dev/null || format_fail=1
+if [ "$format_fail" -ne 0 ]; then
+  echo "pre-push: convention checks failed; rerun for detail:" >&2
+  echo "    pnpm ui check-changelog && pnpm ui check-css-order" >&2
+  exit 1
+fi
+
 # Diff the outgoing commits against the configured upstream, else origin/main.
 if base="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)"; then
   :
