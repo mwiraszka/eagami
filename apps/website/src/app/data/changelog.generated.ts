@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.23.0',
+    date: '2026-08-10',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Accept option groups on the multi-select, dropdown, and autocomplete: pass sections instead of a flat list and each renders under its own heading, or under a rule when it has no label. Keyboard navigation, type-ahead, filtering, and select-all count options alone, and a flat list keeps working unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.22.1',
     date: '2026-08-08',
     sections: [
