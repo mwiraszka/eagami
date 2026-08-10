@@ -49,6 +49,7 @@ export * from './lib/range-slider/range-slider.component';
 export * from './lib/rating/rating.component';
 export * from './lib/segmented/segmented.component';
 export * from './lib/select-option';
+export { isGrouped } from './lib/select-option-list';
 export * from './lib/skeleton/skeleton.component';
 export * from './lib/slider/slider.component';
 export * from './lib/spinner/spinner.component';

@@ -1,4 +1,9 @@
-import type { SelectOption, SelectOptionGroup, SelectOptions } from '@eagami/ui';
+import {
+  type SelectOption,
+  type SelectOptionGroup,
+  type SelectOptions,
+  isGrouped,
+} from '@eagami/ui';
 
 /** The option-group knobs shared by the select-like demos. */
 export interface OptionGroupState {
@@ -9,18 +14,19 @@ export interface OptionGroupState {
   secondGroupLabel: string;
 }
 
-function isGroupList(options: SelectOptions): options is readonly SelectOptionGroup[] {
-  const first = options[0];
-  return first !== undefined && 'options' in first;
+// Option labels are demo-editable free text, so they are escaped before going
+// into the snippet's single-quoted literals
+function quoted(text: string): string {
+  return `'${text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 }
 
 function optionLiteral(option: SelectOption): string {
-  return `{ value: '${option.value}', label: '${option.label}' }`;
+  return `{ value: ${quoted(option.value)}, label: ${quoted(option.label)} }`;
 }
 
 function groupLiteral(group: SelectOptionGroup): string {
   const options = `options: [${group.options.map(optionLiteral).join(', ')}]`;
-  return group.label ? `{ label: '${group.label}', ${options} }` : `{ ${options} }`;
+  return group.label ? `{ label: ${quoted(group.label)}, ${options} }` : `{ ${options} }`;
 }
 
 /**
@@ -46,7 +52,7 @@ export function demoOptionGroups(
 
 /** The `[options]` binding for the generated snippet, mirroring the live one. */
 export function optionsAttribute(options: SelectOptions): string {
-  const literal = isGroupList(options)
+  const literal = isGrouped(options)
     ? options.map(groupLiteral).join(', ')
     : options.map(optionLiteral).join(', ');
   return `[options]="[${literal}]"`;
