@@ -17,7 +17,7 @@ import { CheckCircleIconComponent } from '../icons/check-circle.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { XIconComponent } from '../icons/x.component';
 import { type EaSize } from '../sizes';
-import { ToastService } from './toast.service';
+import { type ToastSegment, ToastService, type ToastText } from './toast.service';
 
 /** Corner or edge of the viewport the toast stack is pinned to. */
 export type ToastPosition =
@@ -65,9 +65,20 @@ export class ToastComponent {
     () => `ea-toast-container ea-toast-container--${this.position()}`,
   );
 
-  /** Errors and warnings interrupt like `ea-alert`; the rest wait politely. */
+  // Errors and warnings interrupt like `ea-alert`; the rest wait politely
   protected toastRole(variant: string): 'alert' | 'status' {
     return variant === 'error' || variant === 'warning' ? 'alert' : 'status';
+  }
+
+  // null keeps plain text a bare text node rather than a wrapped segment
+  protected segmentsOf(text: ToastText): readonly ToastSegment[] | null {
+    return typeof text === 'string' ? null : text;
+  }
+
+  protected segmentClass(segment: ToastSegment): string {
+    return segment.strong
+      ? 'ea-toast__segment ea-toast__segment--strong'
+      : 'ea-toast__segment';
   }
 
   protected onMouseEnter(): void {

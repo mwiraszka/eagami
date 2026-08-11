@@ -81,6 +81,46 @@ export const WithTitle: Story = {
   }),
 };
 
+export const SegmentedText: Story = {
+  render: args => ({
+    moduleMetadata: {
+      imports: [ButtonComponent],
+      providers: [{ provide: ToastService, useValue: toastService }],
+    },
+    template: `
+      <ea-toast
+        [position]="position"
+        [size]="size"
+        [clearable]="clearable" />
+      <div class="story-row">
+        <ea-button variant="secondary" (clicked)="showSegmented()">Segmented</ea-button>
+        <ea-button variant="secondary" (clicked)="showPlain()">Plain</ea-button>
+      </div>
+    `,
+    props: {
+      ...args,
+      showSegmented: () =>
+        toastService.show(
+          [
+            { text: 'Moved ' },
+            { text: 'Q3 roadmap', strong: true },
+            { text: ' to ' },
+            { text: 'Archived projects', strong: true },
+          ],
+          {
+            title: [{ text: 'Bob Jones', strong: true }, { text: ' updated the board' }],
+            variant: 'success',
+          },
+        ),
+      showPlain: () =>
+        toastService.show('Moved Q3 roadmap to Archived projects', {
+          title: 'Bob Jones updated the board',
+          variant: 'success',
+        }),
+    },
+  }),
+};
+
 export const IconOverride: Story = {
   render: args => ({
     moduleMetadata: {
