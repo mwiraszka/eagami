@@ -35,9 +35,25 @@
       }
       <div class="ea-toast__content">
         @if (toast.title) {
-          <span class="ea-toast__title">{{ toast.title }}</span>
+          @if (segmentsOf(toast.title); as segments) {
+            <span class="ea-toast__title">
+              @for (segment of segments; track $index) {
+                <span [class]="segmentClass(segment)">{{ segment.text }}</span>
+              }
+            </span>
+          } @else {
+            <span class="ea-toast__title">{{ toast.title }}</span>
+          }
         }
-        <span class="ea-toast__message">{{ toast.message }}</span>
+        @if (segmentsOf(toast.message); as segments) {
+          <span class="ea-toast__message">
+            @for (segment of segments; track $index) {
+              <span [class]="segmentClass(segment)">{{ segment.text }}</span>
+            }
+          </span>
+        } @else {
+          <span class="ea-toast__message">{{ toast.message }}</span>
+        }
       </div>
       @if (clearable()) {
         <button

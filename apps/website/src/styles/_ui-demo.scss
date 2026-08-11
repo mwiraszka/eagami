@@ -80,6 +80,12 @@
   gap: 12px;
 }
 
+.demo-items-editor__heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
 .demo-item-row {
   display: flex;
   flex-wrap: wrap;

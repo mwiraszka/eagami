@@ -932,6 +932,7 @@ export const esES: WebMessages = {
             };
             return `Este es un toast ${labels[variant] ?? variant}`;
           },
+          segmentsLabel: 'Segmentos',
         },
         tooltip: {
           triggerLabel: '(pasa el ratón por encima)',
@@ -1230,6 +1231,16 @@ export const esES: WebMessages = {
             size: 'Tamaño visual aplicado a cada toast de la pila.',
             position: 'Esquina o borde de la ventana donde se ancla la pila de toasts.',
             clearable: 'Muestra un botón de cierre en cada toast.',
+            show: 'Muestra un toast y devuelve su id. Su mensaje y su título aceptan una cadena simple o segmentos con énfasis.',
+            success: 'Muestra un toast de éxito y devuelve su id.',
+            error: 'Muestra un toast de error y devuelve su id.',
+            warning: 'Muestra un toast de advertencia y devuelve su id.',
+            info: 'Muestra un toast informativo y devuelve su id.',
+            dismiss: 'Elimina el toast con el id indicado, si sigue visible.',
+            clear: 'Elimina todos los toasts visibles en este momento.',
+            pause:
+              'Suspende todas las cuentas atrás de cierre automático, conservando el tiempo restante de cada toast.',
+            resume: 'Reanuda las cuentas atrás suspendidas por pause.',
           },
           input: {
             label: 'Etiqueta mostrada encima del campo.',

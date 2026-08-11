@@ -52,6 +52,20 @@ describe('ToastComponent a11y', () => {
     expect(results).toHaveNoViolations();
   });
 
+  it('has no detectable violations with a segmented toast visible', async () => {
+    const fixture = await render(host =>
+      host.toastService.show([{ text: 'Moved ' }, { text: 'Q3 roadmap', strong: true }], {
+        title: [{ text: 'Bob Jones', strong: true }, { text: ' updated the board' }],
+        duration: 0,
+      }),
+    );
+    fixture.detectChanges();
+
+    const results = await axe(fixture.nativeElement as HTMLElement);
+
+    expect(results).toHaveNoViolations();
+  });
+
   it('has no detectable violations with an error toast visible', async () => {
     const fixture = await render(host =>
       host.toastService.error('Something went wrong', 0),

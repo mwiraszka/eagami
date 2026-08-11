@@ -50,6 +50,15 @@ describe('ToastService', () => {
       expect(service.toasts()[0].title).toBe('All done');
     });
 
+    it('carries segmented text through for both the message and the title', () => {
+      const message = [{ text: 'Moved ' }, { text: 'Q3 roadmap', strong: true }];
+      const title = [{ text: 'Bob Jones', strong: true }, { text: ' updated the board' }];
+      service.show(message, { title });
+
+      expect(service.toasts()[0].message).toEqual(message);
+      expect(service.toasts()[0].title).toEqual(title);
+    });
+
     it('leaves the title unset when none is given', () => {
       service.show('Saved');
 

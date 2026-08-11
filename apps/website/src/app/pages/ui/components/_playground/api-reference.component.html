@@ -49,6 +49,20 @@
           [hoverable]="false" />
       </ea-accordion-item>
     }
+
+    @if (section.service; as service) {
+      <ea-accordion-item
+        value="service"
+        [label]="service.name">
+        <ea-data-table
+          class="api-reference__table"
+          density="compact"
+          [columns]="methodColumns()"
+          [data]="service.methods"
+          [stickyHeader]="true"
+          [hoverable]="false" />
+      </ea-accordion-item>
+    }
   </ea-accordion>
 }
 

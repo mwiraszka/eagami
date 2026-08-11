@@ -928,6 +928,7 @@ export const is: WebMessages = {
             };
             return `Þetta er ${labels[variant] ?? variant} tilkynning`;
           },
+          segmentsLabel: 'Bútar',
         },
         tooltip: {
           triggerLabel: '(svífðu yfir mig)',
@@ -1226,6 +1227,16 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð sem gildir um hverja tilkynningu í staflanum.',
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
             clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',
+            show: 'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
+            success: 'Sýnir tilkynningu um velgengni og skilar auðkenni hennar.',
+            error: 'Sýnir villutilkynningu og skilar auðkenni hennar.',
+            warning: 'Sýnir viðvörunartilkynningu og skilar auðkenni hennar.',
+            info: 'Sýnir upplýsingatilkynningu og skilar auðkenni hennar.',
+            dismiss: 'Fjarlægir tilkynninguna með uppgefnu auðkenni, sé hún enn sýnileg.',
+            clear: 'Fjarlægir allar tilkynningar sem eru sýnilegar núna.',
+            pause:
+              'Frestar allri niðurtalningu sjálfvirkrar lokunar og heldur þeim tíma sem eftir er á hverri tilkynningu.',
+            resume: 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',

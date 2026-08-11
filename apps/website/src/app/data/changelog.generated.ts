@@ -14,6 +14,22 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.24.0',
+    date: '2026-08-11',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Accept a toast's title and message as text segments, drawing the parts marked strong at full strength while the rest of the line steps back, with `--ea-toast-strong-weight` to retune the weight.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: ['Draw the spinner in the primary brand colour.'],
+      },
+    ],
+  },
+  {
     version: '5.23.0',
     date: '2026-08-10',
     sections: [

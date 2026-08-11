@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.24.0] - 2026-08-11
+
+### Added
+
+- Accept a toast's title and message as text segments, drawing the parts marked strong at full strength while the rest of the line steps back, with `--ea-toast-strong-weight` to retune the weight.
+
+### Changed
+
+- Draw the spinner in the primary brand colour.
+
 ## [5.23.0] - 2026-08-10
 
 ### Added
@@ -1331,6 +1341,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.24.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.23.0...ui-v5.24.0
 [5.23.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.1...ui-v5.23.0
 [5.22.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.0...ui-v5.22.1
 [5.22.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.21.0...ui-v5.22.0

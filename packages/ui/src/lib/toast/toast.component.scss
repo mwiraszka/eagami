@@ -183,9 +183,23 @@
     font-weight: var(--font-weight-semibold);
   }
 
+  &__segment--strong {
+    font-weight: var(--ea-toast-strong-weight, var(--font-weight-semibold));
+  }
+
   // With a title above it the message is the supporting line, so it steps back
   &__title + &__message {
     opacity: 0.85;
+
+    // A child cannot lift a parent's opacity, so once a strong segment has to
+    // read at full strength the step-back moves onto the segments beside it
+    &:has(.ea-toast__segment--strong) {
+      opacity: 1;
+
+      .ea-toast__segment:not(.ea-toast__segment--strong) {
+        opacity: 0.85;
+      }
+    }
   }
 
   &__close {

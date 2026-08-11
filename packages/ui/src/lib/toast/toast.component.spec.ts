@@ -184,4 +184,58 @@ describe('ToastComponent', () => {
       'hello world',
     );
   });
+
+  it('renders a plain message as a single text node, with no segment spans', () => {
+    toastService.show('hello world', { duration: 0 });
+    fixture.detectChanges();
+
+    const message = getToasts()[0].querySelector('.ea-toast__message')!;
+
+    expect(message.querySelectorAll('.ea-toast__segment')).toHaveLength(0);
+    expect(message.childNodes).toHaveLength(1);
+  });
+
+  it('renders one span per segment and marks the strong ones', () => {
+    toastService.show([{ text: 'Moved ' }, { text: 'Q3 roadmap', strong: true }], {
+      duration: 0,
+    });
+    fixture.detectChanges();
+
+    const segments = getToasts()[0].querySelectorAll(
+      '.ea-toast__message .ea-toast__segment',
+    );
+
+    expect(segments).toHaveLength(2);
+    expect(segments[0].classList).not.toContain('ea-toast__segment--strong');
+    expect(segments[1].classList).toContain('ea-toast__segment--strong');
+  });
+
+  it('reads a segmented message as the equivalent plain string', () => {
+    toastService.show([{ text: 'Moved ' }, { text: 'Q3 roadmap', strong: true }], {
+      duration: 0,
+    });
+    fixture.detectChanges();
+
+    expect(getToasts()[0].querySelector('.ea-toast__message')!.textContent).toBe(
+      'Moved Q3 roadmap',
+    );
+  });
+
+  it('segments a title while leaving a plain message untouched', () => {
+    toastService.show('Your changes are live', {
+      title: [{ text: 'Bob Jones', strong: true }, { text: ' deployed the site' }],
+      duration: 0,
+    });
+    fixture.detectChanges();
+
+    const toast = getToasts()[0];
+
+    expect(toast.querySelector('.ea-toast__title')!.textContent).toBe(
+      'Bob Jones deployed the site',
+    );
+    expect(toast.querySelectorAll('.ea-toast__title .ea-toast__segment')).toHaveLength(2);
+    expect(toast.querySelectorAll('.ea-toast__message .ea-toast__segment')).toHaveLength(
+      0,
+    );
+  });
 });

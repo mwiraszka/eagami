@@ -927,6 +927,7 @@ export const nl: WebMessages = {
           message: variant => {
             return `Dit is een ${variant} toast`;
           },
+          segmentsLabel: 'Segmenten',
         },
         tooltip: {
           triggerLabel: '(zweef over mij)',
@@ -1225,6 +1226,17 @@ export const nl: WebMessages = {
             size: 'Visuele grootte toegepast op elke toast in de stapel.',
             position: 'Hoek of rand van de viewport waaraan de toaststapel is vastgezet.',
             clearable: 'Toon een sluitknop op elke toast.',
+            show: 'Toont een toast en geeft het id ervan terug. Het bericht en de titel accepteren een gewone tekenreeks of nadruksegmenten.',
+            success: 'Toont een succes-toast en geeft het id ervan terug.',
+            error: 'Toont een fout-toast en geeft het id ervan terug.',
+            warning: 'Toont een waarschuwings-toast en geeft het id ervan terug.',
+            info: 'Toont een info-toast en geeft het id ervan terug.',
+            dismiss:
+              'Verwijdert de toast met het opgegeven id, als die nog zichtbaar is.',
+            clear: 'Verwijdert elke toast die nu zichtbaar is.',
+            pause:
+              'Schort elke aftelling voor automatisch sluiten op en behoudt de resterende tijd van elke toast.',
+            resume: 'Hervat de aftellingen die door pause zijn opgeschort.',
           },
           input: {
             label: 'Tekstlabel weergegeven boven het veld.',

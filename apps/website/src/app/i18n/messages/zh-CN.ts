@@ -893,6 +893,7 @@ export const zhCN: WebMessages = {
         },
         toast: {
           message: variant => `这是一条${variant}提示`,
+          segmentsLabel: '分段',
         },
         tooltip: {
           triggerLabel: '(将鼠标悬停于此)',
@@ -1189,6 +1190,15 @@ export const zhCN: WebMessages = {
             size: '应用于堆栈中每个提示的视觉尺寸。',
             position: '提示堆栈固定到的视口角落或边缘。',
             clearable: '在每条提示上显示关闭按钮。',
+            show: '显示一条提示并返回其 id。其消息和标题均可接受纯字符串或强调分段。',
+            success: '显示一条成功提示并返回其 id。',
+            error: '显示一条错误提示并返回其 id。',
+            warning: '显示一条警告提示并返回其 id。',
+            info: '显示一条信息提示并返回其 id。',
+            dismiss: '移除具有给定 id 的提示（若其仍在显示）。',
+            clear: '移除当前显示的所有提示。',
+            pause: '暂停所有自动关闭倒计时，并保留每条提示的剩余时间。',
+            resume: '恢复被 pause 暂停的倒计时。',
           },
           input: {
             label: '渲染在字段上方的文本标签。',

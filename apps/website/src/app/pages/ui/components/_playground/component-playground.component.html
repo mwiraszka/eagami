@@ -123,6 +123,9 @@
       <h2 class="playground__heading">{{ chrome.code }}</h2>
       <div class="playground__code">
         <web-code-snippet [code]="snippet().markup" />
+        @if (extraSnippet()) {
+          <web-code-snippet [code]="extraSnippet()" />
+        }
         @if (snippet().css) {
           <web-code-snippet [code]="snippet().css" />
         }

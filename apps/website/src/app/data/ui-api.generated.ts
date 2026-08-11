@@ -17,11 +17,17 @@ export interface ApiMethod {
   signature: string;
 }
 
+export interface ServiceApi {
+  name: string;
+  methods: ApiMethod[];
+}
+
 export interface ComponentApi {
   selector: string;
   inputs: ApiProp[];
   outputs: ApiProp[];
   methods: ApiMethod[];
+  service?: ServiceApi;
 }
 
 export const UI_API: Readonly<Record<string, ComponentApi>> = {
@@ -2316,7 +2322,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     methods: [
       {
         name: 'close',
-        signature: 'close(restoreFocus: unknown): void',
+        signature: 'close(restoreFocus?: unknown): void',
       },
       {
         name: 'focusFirstItem',
@@ -4494,12 +4500,48 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     outputs: [],
-    methods: [
-      {
-        name: 'toastRole',
-        signature: 'toastRole(variant: string): "alert" | "status"',
-      },
-    ],
+    methods: [],
+    service: {
+      name: 'ToastService',
+      methods: [
+        {
+          name: 'clear',
+          signature: 'clear(): void',
+        },
+        {
+          name: 'dismiss',
+          signature: 'dismiss(id: number): void',
+        },
+        {
+          name: 'error',
+          signature: 'error(message: ToastText, duration?: number): number',
+        },
+        {
+          name: 'info',
+          signature: 'info(message: ToastText, duration?: number): number',
+        },
+        {
+          name: 'pause',
+          signature: 'pause(): void',
+        },
+        {
+          name: 'resume',
+          signature: 'resume(): void',
+        },
+        {
+          name: 'show',
+          signature: 'show(message: ToastText, options?: ToastOptions): number',
+        },
+        {
+          name: 'success',
+          signature: 'success(message: ToastText, duration?: number): number',
+        },
+        {
+          name: 'warning',
+          signature: 'warning(message: ToastText, duration?: number): number',
+        },
+      ],
+    },
   },
   tooltip: {
     selector: '[eaTooltip]',

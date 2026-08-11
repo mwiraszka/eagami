@@ -6,6 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [extraSnippet]="serviceSnippet()"
     [reflectDirectionOnPreview]="false"
     (knobChange)="onKnob($event)"
     (directionChange)="onDirection($event)"
@@ -35,5 +36,43 @@
       (clicked)="showToast('info')">
       {{ messages().ui.component.common.infoLabel }}
     </ea-button>
+
+    <div
+      customControls
+      class="demo-items-editor">
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.toast.segmentsLabel }}
+      </h3>
+      @for (segment of segments(); track segment.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Segment text"
+            [value]="segment.text"
+            (valueChange)="updateSegment(segment.id, { text: $event })" />
+          <ea-checkbox
+            label="Emphasized"
+            [checked]="segment.strong"
+            (changed)="updateSegment(segment.id, { strong: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            eaTooltip="Delete segment"
+            aria-label="Delete segment"
+            (clicked)="removeSegment(segment.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        eaTooltip="Add segment"
+        aria-label="Add segment"
+        (clicked)="addSegment()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

@@ -3,12 +3,26 @@ import { Injectable, type Type, signal } from '@angular/core';
 /** Semantic colour scheme of a toast. */
 export type ToastVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 
+/** One run of a toast's title or message. */
+export interface ToastSegment {
+  text: string;
+  /** Drawn at full strength, for the part the reader is meant to catch. */
+  strong?: boolean;
+}
+
+/**
+ * A toast's title or message: a plain string, or segments so the parts worth
+ * catching (a name, a count) can be emphasized. Segments are bound as text and
+ * rendered in order with nothing between them, so they read as one sentence.
+ */
+export type ToastText = string | readonly ToastSegment[];
+
 /** A single live toast notification rendered by `ea-toast`. */
 export interface Toast {
   id: number;
-  message: string;
+  message: ToastText;
   /** Heading shown above the message; the message steps back when set. */
-  title?: string;
+  title?: ToastText;
   variant: ToastVariant;
   duration: number;
   /** Icon component rendered in place of the variant's own; `null` renders none. */
@@ -18,7 +32,7 @@ export interface Toast {
 /** Optional configuration for a toast; defaults to `default` variant and 4s duration. */
 export interface ToastOptions {
   /** Heading shown above the message; the message steps back when set. */
-  title?: string;
+  title?: ToastText;
   variant?: ToastVariant;
   duration?: number;
   /** Any icon component to render in place of the variant's own; `null` for no icon. */
@@ -43,7 +57,7 @@ export class ToastService {
   readonly toasts = signal<Toast[]>([]);
 
   /** Shows a toast and returns its id; pass `duration: 0` to disable auto-dismiss. */
-  show(message: string, options: ToastOptions = {}): number {
+  show(message: ToastText, options: ToastOptions = {}): number {
     const id = this.nextId++;
     const toast: Toast = {
       id,
@@ -104,22 +118,22 @@ export class ToastService {
   }
 
   /** Shows a `success` toast and returns its id. */
-  success(message: string, duration?: number): number {
+  success(message: ToastText, duration?: number): number {
     return this.show(message, { variant: 'success', duration });
   }
 
   /** Shows an `error` toast and returns its id. */
-  error(message: string, duration?: number): number {
+  error(message: ToastText, duration?: number): number {
     return this.show(message, { variant: 'error', duration });
   }
 
   /** Shows a `warning` toast and returns its id. */
-  warning(message: string, duration?: number): number {
+  warning(message: ToastText, duration?: number): number {
     return this.show(message, { variant: 'warning', duration });
   }
 
   /** Shows an `info` toast and returns its id. */
-  info(message: string, duration?: number): number {
+  info(message: ToastText, duration?: number): number {
     return this.show(message, { variant: 'info', duration });
   }
 
