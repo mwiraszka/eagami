@@ -87,8 +87,13 @@ function toInput(prop, twoWay) {
 }
 
 function toMethod(method) {
+  // An argument with a default is optional at the call site, even though the
+  // declaration carries no `?`
   const args = (method.args ?? [])
-    .map(a => `${a.name}${a.optional ? '?' : ''}: ${a.type || 'unknown'}`)
+    .map(
+      a =>
+        `${a.name}${a.optional || a.defaultValue !== undefined ? '?' : ''}: ${a.type || 'unknown'}`,
+    )
     .join(', ');
   return {
     name: method.name,
@@ -137,10 +142,29 @@ const publicFiles = new Set(
 );
 
 const api = {};
+const slugsByDir = new Map();
 for (const entity of entities) {
   const slug = slugFromSelector(entity.selector);
   if (slug && publicFiles.has(entity.file)) {
     api[slug] = buildEntry(entity);
+    const dir = dirname(entity.file);
+    slugsByDir.set(dir, [...(slugsByDir.get(dir) ?? []), slug]);
+  }
+}
+
+// A component whose real API is a service (ea-toast is an outlet; every toast
+// comes from ToastService) documents that service alongside it. Attached only
+// when the folder holds a single component, so the pairing is unambiguous.
+for (const injectable of doc.injectables ?? []) {
+  const slugs = slugsByDir.get(dirname(injectable.file ?? '')) ?? [];
+  if (!publicFiles.has(injectable.file) || slugs.length !== 1) {
+    continue;
+  }
+  const methods = (injectable.methods ?? [])
+    .filter(m => !m.modifierKind?.length && stripHtml(m.description))
+    .map(toMethod);
+  if (methods.length) {
+    api[slugs[0]].service = { name: injectable.name, methods };
   }
 }
 
@@ -170,11 +194,17 @@ export interface ApiMethod {
   signature: string;
 }
 
+export interface ServiceApi {
+  name: string;
+  methods: ApiMethod[];
+}
+
 export interface ComponentApi {
   selector: string;
   inputs: ApiProp[];
   outputs: ApiProp[];
   methods: ApiMethod[];
+  service?: ServiceApi;
 }
 `;
 
