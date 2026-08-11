@@ -19,6 +19,7 @@ import {
   type ApiMethod,
   type ApiProp,
   type ComponentApi,
+  type ServiceApi,
   UI_API,
 } from '@app/data/ui-api.generated';
 import { WebI18nService } from '@app/i18n/web-i18n.service';
@@ -31,6 +32,7 @@ interface ApiSection {
   inputs: ApiProp[];
   outputs: ApiProp[];
   methods: ApiMethod[];
+  service: ServiceApi | null;
 }
 
 // Primary demo slug -> the public sub-components documented alongside it, so a
@@ -116,6 +118,15 @@ export class ApiReferenceComponent {
         ...m,
         description: this.describe(slug, m.name),
       })),
+      service: api.service
+        ? {
+            ...api.service,
+            methods: api.service.methods.map(m => ({
+              ...m,
+              description: this.describe(slug, m.name),
+            })),
+          }
+        : null,
     };
   }
 

@@ -935,6 +935,7 @@ export const de: WebMessages = {
             const article = variant === 'error' || variant === 'info' ? 'eine' : 'ein';
             return `Dies ist ${article} ${variant} Toast`;
           },
+          segmentsLabel: 'Segmente',
         },
         tooltip: {
           triggerLabel: '(fahr mit der Maus über mich)',
@@ -1234,6 +1235,17 @@ export const de: WebMessages = {
             position:
               'Ecke oder Rand des Viewports, an dem der Toast-Stapel verankert ist.',
             clearable: 'Zeigt auf jedem Toast einen Schließen-Button.',
+            show: 'Zeigt einen Toast und gibt seine ID zurück. Nachricht und Titel akzeptieren jeweils einen einfachen String oder Hervorhebungssegmente.',
+            success: 'Zeigt einen Erfolgs-Toast und gibt seine ID zurück.',
+            error: 'Zeigt einen Fehler-Toast und gibt seine ID zurück.',
+            warning: 'Zeigt einen Warnungs-Toast und gibt seine ID zurück.',
+            info: 'Zeigt einen Info-Toast und gibt seine ID zurück.',
+            dismiss:
+              'Entfernt den Toast mit der angegebenen ID, sofern er noch sichtbar ist.',
+            clear: 'Entfernt alle aktuell sichtbaren Toasts.',
+            pause:
+              'Hält alle Countdowns zum automatischen Ausblenden an und behält die verbleibende Zeit jedes Toasts.',
+            resume: 'Setzt die von pause angehaltenen Countdowns fort.',
           },
           input: {
             label: 'Textlabel, das über dem Feld gerendert wird.',

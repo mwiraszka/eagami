@@ -749,6 +749,7 @@ export interface WebMessages {
         };
         toast: {
           message: (variant: string) => string;
+          segmentsLabel: string;
         };
         tooltip: {
           triggerLabel: string;

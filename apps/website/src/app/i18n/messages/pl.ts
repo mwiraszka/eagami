@@ -932,6 +932,7 @@ export const pl: WebMessages = {
             };
             return `To jest toast ${labels[variant] ?? variant}`;
           },
+          segmentsLabel: 'Segmenty',
         },
         tooltip: {
           triggerLabel: '(najedź na mnie)',
@@ -1230,6 +1231,16 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar stosowany do każdego powiadomienia w stosie.',
             position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
             clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
+            show: 'Pokazuje powiadomienie i zwraca jego id. Jego treść i tytuł przyjmują zwykły tekst albo segmenty z wyróżnieniem.',
+            success: 'Pokazuje powiadomienie o powodzeniu i zwraca jego id.',
+            error: 'Pokazuje powiadomienie o błędzie i zwraca jego id.',
+            warning: 'Pokazuje powiadomienie ostrzegawcze i zwraca jego id.',
+            info: 'Pokazuje powiadomienie informacyjne i zwraca jego id.',
+            dismiss: 'Usuwa powiadomienie o podanym id, jeśli nadal jest widoczne.',
+            clear: 'Usuwa wszystkie widoczne obecnie powiadomienia.',
+            pause:
+              'Wstrzymuje każde odliczanie do automatycznego zamknięcia, zachowując czas pozostały każdemu powiadomieniu.',
+            resume: 'Wznawia odliczania wstrzymane przez pause.',
           },
           input: {
             label: 'Etykieta wyświetlana nad polem.',
