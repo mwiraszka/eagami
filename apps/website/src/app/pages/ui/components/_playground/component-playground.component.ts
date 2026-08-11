@@ -82,6 +82,8 @@ export class ComponentPlaygroundComponent {
   readonly childMarkup = input<string>('');
   /** Extra tag attributes the snippet should reflect, e.g. a built `[options]` binding. */
   readonly extraAttributes = input<readonly string[]>([]);
+  /** Second code block shown under the markup, for configuration made in TypeScript rather than the template, e.g. a service call. */
+  readonly extraSnippet = input<string>('');
 
   readonly knobChange = output<KnobChange>();
   readonly resetClicked = output<void>();
