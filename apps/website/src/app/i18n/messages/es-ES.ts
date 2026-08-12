@@ -1704,7 +1704,9 @@ export const esES: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px).',
+              'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px). El tooltip nunca supera el viewport.',
+            dismissDelay:
+              'Retardo en milisegundos antes de que un tooltip desplazable se oculte tras salir el cursor, suficiente para moverse hasta él. Los que caben se ocultan de inmediato.',
             eaTooltip:
               'Contenido del tooltip mostrado al pasar el cursor y al enfocar con el teclado. Acepta una cadena de texto o un TemplateRef para contenido con estilos.',
             tooltipPosition: 'Posición del tooltip respecto a su elemento anfitrión.',

@@ -11,6 +11,8 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
     <button
       [eaTooltip]="text()"
       [tooltipPosition]="pos()"
+      [maxWidth]="maxWidth()"
+      [dismissDelay]="dismissDelay()"
       [attr.aria-describedby]="existingDescribedBy()">
       Trigger
     </button>
@@ -19,6 +21,8 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
 class TestHostComponent {
   text = signal('Save your changes');
   pos = signal<TooltipPosition>('top');
+  maxWidth = signal<number | undefined>(200);
+  dismissDelay = signal(150);
   existingDescribedBy = signal<string | null>(null);
 }
 
@@ -227,6 +231,121 @@ describe('TooltipDirective', () => {
     });
   });
 
+  describe('Viewport containment', () => {
+    it('hands the max width to the stylesheet as a custom property', () => {
+      show();
+
+      const tip = getTooltip()!;
+
+      expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe('200px');
+      expect(tip.style.maxWidth).toBe('');
+      expect(tip.classList).toContain('ea-tooltip--wrapping');
+    });
+
+    it('floors the max width at 50px', () => {
+      host.maxWidth.set(10);
+      fixture.detectChanges();
+
+      show();
+
+      expect(getTooltip()!.style.getPropertyValue('--ea-tooltip-max-width')).toBe('50px');
+    });
+
+    it('leaves the bubble on one line when no max width is set', () => {
+      host.maxWidth.set(undefined);
+      fixture.detectChanges();
+
+      show();
+
+      const tip = getTooltip()!;
+
+      expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe('');
+      expect(tip.classList).not.toContain('ea-tooltip--wrapping');
+    });
+  });
+
+  describe('Scrollable bubbles', () => {
+    function overflowTooltip(tip: HTMLElement): void {
+      Object.defineProperty(tip, 'scrollHeight', { value: 400, configurable: true });
+      Object.defineProperty(tip, 'clientHeight', { value: 120, configurable: true });
+    }
+
+    // A reposition is what re-measures the bubble against the clamp, so the
+    // overflow only registers once one runs.
+    function showOverflowing(): HTMLElement {
+      show();
+      const tip = getTooltip()!;
+      overflowTooltip(tip);
+      window.dispatchEvent(new Event('resize'));
+      vi.runOnlyPendingTimers();
+      fixture.detectChanges();
+      return tip;
+    }
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('marks a bubble scrollable once the clamp cuts its content off', () => {
+      const tip = showOverflowing();
+
+      expect(tip.classList).toContain('ea-tooltip--scrollable');
+    });
+
+    it('leaves a bubble that fits display-only', () => {
+      show();
+
+      expect(getTooltip()!.classList).not.toContain('ea-tooltip--scrollable');
+    });
+
+    it('waits out the dismiss delay before hiding a scrollable bubble', () => {
+      showOverflowing();
+
+      hide();
+
+      expect(getTooltip()).toBeTruthy();
+
+      vi.advanceTimersByTime(150);
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('keeps the bubble open when the pointer reaches it in time', () => {
+      const tip = showOverflowing();
+
+      hide();
+      tip.dispatchEvent(new MouseEvent('mouseenter'));
+      vi.advanceTimersByTime(1000);
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('hides once the pointer leaves the bubble itself', () => {
+      const tip = showOverflowing();
+
+      hide();
+      tip.dispatchEvent(new MouseEvent('mouseenter'));
+      tip.dispatchEvent(new MouseEvent('mouseleave'));
+      vi.advanceTimersByTime(150);
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('cancels a pending hide when the pointer returns to the trigger', () => {
+      showOverflowing();
+
+      hide();
+      show();
+      vi.advanceTimersByTime(1000);
+
+      expect(getTooltip()).toBeTruthy();
+    });
+  });
+
   describe('Cleanup', () => {
     it('removes the tooltip when the host is destroyed', () => {
       show();
@@ -308,11 +427,14 @@ describe('TooltipDirective', () => {
       // as a covering overlay if it did not stop at the shared container.
       const sibling = document.createElement('div');
       fixture.nativeElement.appendChild(sibling);
-      vi.spyOn(window, 'getComputedStyle').mockImplementation(
-        element =>
-          ({
-            position: element === fixture.nativeElement ? 'fixed' : 'static',
-          }) as CSSStyleDeclaration,
+      // A real declaration, so the directive's own custom-property reads still work
+      function styleWith(position: string): CSSStyleDeclaration {
+        const { style } = document.createElement('div');
+        style.position = position;
+        return style;
+      }
+      vi.spyOn(window, 'getComputedStyle').mockImplementation(element =>
+        styleWith(element === fixture.nativeElement ? 'fixed' : 'static'),
       );
       let hit = 0;
       (

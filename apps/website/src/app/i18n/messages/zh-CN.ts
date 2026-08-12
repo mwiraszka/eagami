@@ -1552,7 +1552,10 @@ export const zhCN: WebMessages = {
             menu: '此触发器所控制的 ea-menu 实例。',
           },
           tooltip: {
-            maxWidth: '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。',
+            maxWidth:
+              '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。提示气泡不会超出视口。',
+            dismissDelay:
+              '指针移开后，可滚动的工具提示隐藏前的延迟（毫秒），足以让指针移到提示上。能完整显示的提示会立即隐藏。',
             eaTooltip:
               '悬停和键盘聚焦时显示的工具提示内容。接受纯文本字符串或用于样式化内容的 TemplateRef。',
             tooltipPosition: '工具提示相对于其宿主元素的放置位置。',

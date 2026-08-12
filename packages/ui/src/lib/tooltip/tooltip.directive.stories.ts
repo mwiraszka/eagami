@@ -174,3 +174,70 @@ export const TemplateContent: Story = {
     ],
   }),
 };
+
+// A phone-sized viewport against content that fits neither dimension: the bubble
+// stops at the viewport margin on all four sides and scrolls the rest.
+export const ViewportClamped: Story = {
+  globals: { viewport: { value: '360-640' } },
+  render: () => ({
+    moduleMetadata: {
+      imports: [ButtonComponent, TooltipDirective],
+    },
+    template: `
+      <div class="sb-tooltip-story">
+        <ng-template #details>
+          <table class="sb-tooltip-table">
+            <caption class="sb-tooltip-table__caption">Shipment SR-40118</caption>
+            <tbody>
+              <tr><th scope="row">Consignor</th><td>Vance Refrigeration, Scranton</td></tr>
+              <tr><th scope="row">Consignee</th><td>Dunder Mifflin Paper Company</td></tr>
+              <tr><th scope="row">Origin</th><td>1725 Slough Avenue, Scranton, PA</td></tr>
+              <tr><th scope="row">Destination</th><td>34 Chestnut Street, Stamford, CT</td></tr>
+              <tr><th scope="row">Service</th><td>Refrigerated, temperature logged</td></tr>
+              <tr><th scope="row">Container</th><td>REEF-8841-002 (40ft high cube)</td></tr>
+              <tr><th scope="row">Seal</th><td>SL-99204471-A</td></tr>
+              <tr><th scope="row">Gross weight</th><td>18,400 kg</td></tr>
+              <tr><th scope="row">Pieces</th><td>1,204 cartons on 22 pallets</td></tr>
+              <tr><th scope="row">Departed</th><td>Tuesday 04:15, on schedule</td></tr>
+              <tr><th scope="row">Last scan</th><td>Allentown hub, inbound sort</td></tr>
+              <tr><th scope="row">Due</th><td>Thursday, between 09:00 and 13:00</td></tr>
+              <tr><th scope="row">Handler</th><td>Bob Vance</td></tr>
+            </tbody>
+          </table>
+        </ng-template>
+        <ea-button [eaTooltip]="details" tooltipPosition="bottom" [maxWidth]="320" variant="secondary">Hover me</ea-button>
+      </div>
+    `,
+    styles: [
+      `
+        .sb-tooltip-story {
+          display: flex;
+          justify-content: center;
+          padding: 64px;
+        }
+
+        .sb-tooltip-table {
+          border-spacing: 0;
+        }
+
+        .sb-tooltip-table__caption {
+          padding-bottom: 8px;
+          text-align: start;
+          font-weight: var(--font-weight-semibold);
+        }
+
+        .sb-tooltip-table th,
+        .sb-tooltip-table td {
+          padding: 2px 8px 2px 0;
+          text-align: start;
+          white-space: nowrap;
+        }
+
+        .sb-tooltip-table th {
+          font-weight: var(--font-weight-medium);
+          opacity: 0.75;
+        }
+      `,
+    ],
+  }),
+};

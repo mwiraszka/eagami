@@ -4,6 +4,7 @@ import {
   type EmbeddedViewRef,
   type OnDestroy,
   Renderer2,
+  RendererStyleFlags2,
   TemplateRef,
   ViewContainerRef,
   inject,
@@ -18,6 +19,21 @@ import { enterTopLayer, leaveTopLayer } from '../top-layer';
 /** Placement of the tooltip relative to its host element. */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
+/** Gap between the trigger and the bubble. */
+const TRIGGER_GAP = 8;
+/** Matches the `--ea-tooltip-viewport-margin` fallback in `_tooltip.scss`. */
+const DEFAULT_VIEWPORT_MARGIN = 8;
+
+/** Keeps one axis inside the viewport, leaving `margin` at each edge. */
+function clampToViewport(
+  value: number,
+  size: number,
+  viewport: number,
+  margin: number,
+): number {
+  return Math.min(Math.max(value, margin), Math.max(margin, viewport - size - margin));
+}
+
 /**
  * Attaches a positioned tooltip to its host element. Shows on hover and
  * focus, hides on leave/blur or Escape, and wires up `aria-describedby` so
@@ -30,6 +46,13 @@ export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
  * descendant of the host as well as the host itself. A host listener paired
  * with `eaTooltip` has to use `focusin` for the same reason: `focus` does not
  * bubble, so it never fires when the focus lands on a child.
+ *
+ * Bubbles never grow past the viewport: they clamp to it, minus
+ * `--ea-tooltip-viewport-margin` on each side, and scroll whatever the clamp
+ * cuts off. A clamped bubble takes pointer events so that scrollbar is
+ * reachable, which also means it waits `dismissDelay` before hiding rather than
+ * going the moment the pointer leaves the trigger. Bubbles that fit stay
+ * display-only.
  */
 @Directive({
   selector: '[eaTooltip]',
@@ -41,11 +64,22 @@ export class TooltipDirective implements OnDestroy {
 
   readonly eaTooltip = input.required<string | TemplateRef<unknown>>();
   readonly tooltipPosition = input<TooltipPosition>('top');
-  /** Max width in px; the text wraps at this width. Clamped to a 50px floor. */
+  /**
+   * Max width in px; the text wraps at this width. Clamped to a 50px floor, and
+   * to the viewport, which no value can push the bubble past.
+   */
   readonly maxWidth = input<number | undefined>(200);
+  /**
+   * Grace period in ms before a bubble the viewport clamp made scrollable hides
+   * after the pointer leaves, long enough to cross the gap onto the bubble and
+   * reach its scrollbar. Bubbles that fit hide immediately.
+   */
+  readonly dismissDelay = input<number>(150);
 
   private tooltipEl: HTMLElement | null = null;
   private templateView: EmbeddedViewRef<unknown> | null = null;
+  private scrollable = false;
+  private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
 
   // Touch devices fire `mouseenter` on tap but never fire `mouseleave` until
@@ -59,7 +93,8 @@ export class TooltipDirective implements OnDestroy {
       : null;
 
   private readonly showHandler = () => this.show();
-  private readonly hideHandler = () => this.hide();
+  private readonly hideHandler = () => this.requestHide();
+  private readonly bubbleEnterHandler = () => this.cancelPendingHide();
   /* `:focus-visible` is supported in every targeted browser (Chrome, Firefox,
      Safari, Edge). Feature-detect so non-browser test environments (jsdom)
      fall back to always-on-focus behaviour rather than never showing. */
@@ -149,7 +184,12 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private show(): void {
-    if (this.tooltipEl || !this.eaTooltip()) {
+    if (this.tooltipEl) {
+      // The pointer came back to the trigger before a scheduled hide fired
+      this.cancelPendingHide();
+      return;
+    }
+    if (!this.eaTooltip()) {
       return;
     }
 
@@ -171,11 +211,19 @@ export class TooltipDirective implements OnDestroy {
 
     const maxWidth = this.maxWidth();
     if (maxWidth != null) {
-      this.renderer.setStyle(this.tooltipEl, 'max-width', `${Math.max(50, maxWidth)}px`);
-      this.renderer.setStyle(this.tooltipEl, 'white-space', 'normal');
+      this.renderer.setStyle(
+        this.tooltipEl,
+        '--ea-tooltip-max-width',
+        `${Math.max(50, maxWidth)}px`,
+        RendererStyleFlags2.DashCase,
+      );
+      this.renderer.addClass(this.tooltipEl, 'ea-tooltip--wrapping');
     }
 
     this.renderer.appendChild(document.body, this.tooltipEl);
+    // Inert until the bubble turns out to be scrollable and takes the pointer
+    this.tooltipEl!.addEventListener('mouseenter', this.bubbleEnterHandler);
+    this.tooltipEl!.addEventListener('mouseleave', this.hideHandler);
     // Before any measuring below: a trigger inside a modal needs its bubble in
     // the top layer to be visible at all, and a promoted bubble only has layout
     // once shown.
@@ -203,13 +251,19 @@ export class TooltipDirective implements OnDestroy {
       return;
     }
     const style = getComputedStyle(this.tooltipEl);
+    const borders =
+      parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+    // Whatever the border box holds beyond its content box: the borders, plus a
+    // scrollbar if the height clamp put one there. Both have to stay outside the
+    // width we pin to the text, or the text reflows and overflows sideways
+    const outsideContent = Math.max(
+      0,
+      this.tooltipEl.offsetWidth - this.tooltipEl.clientWidth,
+    );
     const horizontalChrome =
       style.boxSizing === 'border-box'
-        ? parseFloat(style.paddingLeft) +
-          parseFloat(style.paddingRight) +
-          parseFloat(style.borderLeftWidth) +
-          parseFloat(style.borderRightWidth)
-        : 0;
+        ? parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) + outsideContent
+        : Math.max(0, outsideContent - borders);
     this.renderer.setStyle(
       this.tooltipEl,
       'width',
@@ -217,7 +271,33 @@ export class TooltipDirective implements OnDestroy {
     );
   }
 
+  /* A scrollable bubble has to be reachable, so leaving the trigger only
+     schedules the hide and moving onto the bubble in time cancels it. A bubble
+     that fits shows nothing the pointer needs, so it goes straight away. */
+  private requestHide(): void {
+    if (!this.scrollable) {
+      this.hide();
+      return;
+    }
+    this.cancelPendingHide();
+    this.hideTimer = setTimeout(
+      () => {
+        this.hideTimer = null;
+        this.hide();
+      },
+      Math.max(0, this.dismissDelay()),
+    );
+  }
+
+  private cancelPendingHide(): void {
+    if (this.hideTimer !== null) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+  }
+
   private hide(): void {
+    this.cancelPendingHide();
     this.detachRepositionListeners();
     if (this.rafId !== null) {
       cancelAnimationFrame(this.rafId);
@@ -228,6 +308,7 @@ export class TooltipDirective implements OnDestroy {
       leaveTopLayer(this.tooltipEl);
       this.tooltipEl.remove();
       this.tooltipEl = null;
+      this.scrollable = false;
       this.templateView?.destroy();
       this.templateView = null;
       this.removeDescribedBy();
@@ -297,18 +378,22 @@ export class TooltipDirective implements OnDestroy {
 
     /* Hide if the trigger itself has scrolled behind a sticky/fixed ancestor
        (typical app-header pattern) to keep the tooltip from tracking the
-       trigger's coordinates into the header chrome. `elementFromPoint`
-       ignores the tooltip (it sets `pointer-events: none`), so the hit-test
-       reflects what the user actually sees at the trigger's centre. Also
-       covers fully off-screen triggers without a separate viewport check.
-       Feature-detected so jsdom (no `elementFromPoint`) and SSR skip the
-       check rather than erroring. */
+       trigger's coordinates into the header chrome. A display-only bubble is
+       invisible to `elementFromPoint` (`pointer-events: none`), so the hit-test
+       reflects what the user actually sees at the trigger's centre; a scrollable
+       one is not, and finding it there means the trigger is still on screen with
+       its own bubble over it, not chrome. Also covers fully off-screen triggers
+       without a separate viewport check. Feature-detected so jsdom (no
+       `elementFromPoint`) and SSR skip the check rather than erroring. */
     const canHitTest = typeof document?.elementFromPoint === 'function';
     if (canHitTest) {
       const cx = hostRect.left + hostRect.width / 2;
       const cy = hostRect.top + hostRect.height / 2;
       const topmost = document.elementFromPoint(cx, cy);
-      if (!topmost || !this.el.nativeElement.contains(topmost)) {
+      const visible =
+        topmost &&
+        (this.el.nativeElement.contains(topmost) || this.tooltipEl.contains(topmost));
+      if (!visible) {
         this.hide();
         return;
       }
@@ -321,22 +406,30 @@ export class TooltipDirective implements OnDestroy {
       'dir',
       isRtl(this.el.nativeElement) ? 'rtl' : 'ltr',
     );
+    // Read after the stylesheet's clamp has applied, so a bubble the viewport cut
+    // down is placed at the size it actually renders at
     const tooltipRect = this.tooltipEl.getBoundingClientRect();
+    const viewport = {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight,
+    };
+    const margin = this.viewportMargin();
     /* Defer placement math to the shared popover positioning helper. `flip:
-       false` keeps the tooltip on the requested side, only nudging inward at
-       the edges: the caret is centered on the host and would point at empty
-       space if we flipped. `margin: 8` keeps breathing room between the bubble
-       and the viewport edge. */
+       false` keeps the tooltip on the side the consumer asked for, nudging it
+       inward at the edges rather than jumping across the trigger mid-hover. */
     const placed = computePopoverPosition(
       hostRect,
       { width: tooltipRect.width, height: tooltipRect.height },
-      {
-        width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight,
-      },
-      { placement: this.tooltipPosition(), offset: 8, flip: false, margin: 8 },
+      viewport,
+      { placement: this.tooltipPosition(), offset: TRIGGER_GAP, flip: false, margin },
     );
-    const { top, left } = placed;
+    /* The helper leaves the placement axis alone so a panel too tall for the
+       space beside its anchor can overflow and scroll with the page. A bubble
+       cannot: it is clamped to the viewport and fixed there, so anything pushed
+       past an edge is simply unreachable. Pin both axes and accept that a bubble
+       as tall as the viewport ends up over its own trigger. */
+    const left = clampToViewport(placed.left, tooltipRect.width, viewport.width, margin);
+    const top = clampToViewport(placed.top, tooltipRect.height, viewport.height, margin);
 
     /* Hide if the calculated bubble would render on top of a sticky/fixed
        overlay (typically the app header). Catches the case where the trigger
@@ -349,7 +442,11 @@ export class TooltipDirective implements OnDestroy {
       const tcx = left + tooltipRect.width / 2;
       const tcy = top + tooltipRect.height / 2;
       const underBubble = document.elementFromPoint(tcx, tcy);
-      if (underBubble && !this.el.nativeElement.contains(underBubble)) {
+      if (
+        underBubble &&
+        !this.el.nativeElement.contains(underBubble) &&
+        !this.tooltipEl.contains(underBubble)
+      ) {
         let cursor: Element | null = underBubble;
         while (cursor && cursor !== document.body) {
           /* A fixed / sticky container that also holds the trigger (a modal
@@ -370,5 +467,40 @@ export class TooltipDirective implements OnDestroy {
 
     this.renderer.setStyle(this.tooltipEl, 'top', `${top}px`);
     this.renderer.setStyle(this.tooltipEl, 'left', `${left}px`);
+    this.syncScrollable();
+  }
+
+  /* The stylesheet's viewport cap and the margin the bubble is placed against
+     have to agree, so both read the same token. */
+  private viewportMargin(): number {
+    if (!this.tooltipEl) {
+      return DEFAULT_VIEWPORT_MARGIN;
+    }
+    const declared = parseFloat(
+      getComputedStyle(this.tooltipEl).getPropertyValue('--ea-tooltip-viewport-margin'),
+    );
+    return Number.isFinite(declared) ? declared : DEFAULT_VIEWPORT_MARGIN;
+  }
+
+  /* Content the clamp cut off is only reachable once the bubble takes the
+     pointer. Re-checked on every reposition, since a resize can bring the cap
+     into play or take it back out under a bubble that is already open. */
+  private syncScrollable(): void {
+    if (!this.tooltipEl) {
+      return;
+    }
+    // A pixel of slack: sub-pixel content rounds `scrollHeight` up on a box that fits
+    const scrollable =
+      this.tooltipEl.scrollHeight > this.tooltipEl.clientHeight + 1 ||
+      this.tooltipEl.scrollWidth > this.tooltipEl.clientWidth + 1;
+    if (scrollable === this.scrollable) {
+      return;
+    }
+    this.scrollable = scrollable;
+    if (scrollable) {
+      this.renderer.addClass(this.tooltipEl, 'ea-tooltip--scrollable');
+    } else {
+      this.renderer.removeClass(this.tooltipEl, 'ea-tooltip--scrollable');
+    }
   }
 }
