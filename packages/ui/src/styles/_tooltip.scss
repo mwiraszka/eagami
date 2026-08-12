@@ -9,9 +9,20 @@
   // returns. Also keeps the box unambiguous once the bubble is promoted into
   // the top layer, where the containing block is the viewport either way.
   position: fixed;
-  // Template content can contain unbreakable element rows (avatars, icon rows)
-  // that a max-width cannot wrap; let the bubble grow instead of clipping them
-  min-width: min-content;
+  // A bubble clamped to the viewport has nowhere left to overflow to, so what
+  // the cap cuts off scrolls inside it. Both axes: template content can hold
+  // rows (avatars, icon rows) too unbreakable to wrap
+  overflow: auto;
+  // The consumer's `maxWidth` arrives as `--ea-tooltip-max-width` so the viewport
+  // cap can win here instead of losing a specificity fight with an inline style.
+  // The directive reads the margin token too, so keep it a px length
+  max-width: min(
+    var(--ea-tooltip-max-width, 100vw),
+    calc(100vw - 2 * var(--ea-tooltip-viewport-margin, 8px))
+  );
+  // dvh, so retracting mobile browser chrome cannot leave the bubble taller than
+  // what the user can actually see
+  max-height: calc(100dvh - 2 * var(--ea-tooltip-viewport-margin, 8px));
   padding: var(--space-1-5) var(--space-2-5);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-xs);
@@ -29,6 +40,17 @@
   animation: ea-tooltip-fade-in var(--duration-fast) var(--ease-out);
   @include ea.elevated-surface-border;
 
+  // An explicit `maxWidth` is a width to wrap at, not only a width to stop at
+  &--wrapping {
+    white-space: normal;
+  }
+
+  // A bubble the cap cut content off from is the one kind worth reaching with a
+  // pointer, since it has a scrollbar; the rest stay click-through
+  &--scrollable {
+    pointer-events: auto;
+  }
+
   @media (hover: none) {
     display: none;
   }
@@ -37,6 +59,8 @@
   // so only the UA's popover geometry needs undoing once it is promoted.
   &[popover] {
     @include ea.top-layer-reset;
+    // the reset clears the UA popover's overflow, which the clamp still needs
+    overflow: auto;
   }
 }
 
