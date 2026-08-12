@@ -1704,7 +1704,9 @@ export const de: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px).',
+              'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px). Die Sprechblase wächst nie über den Viewport hinaus.',
+            dismissDelay:
+              'Verzögerung in Millisekunden, bevor eine scrollbare Sprechblase nach dem Verlassen des Zeigers ausgeblendet wird, lang genug, um auf sie zu wechseln. Blasen, die hineinpassen, werden sofort ausgeblendet.',
             eaTooltip:
               'Inhalt des Tooltips, der bei Hover und Tastaturfokus angezeigt wird. Akzeptiert einen einfachen String oder eine TemplateRef für gestalteten Inhalt.',
             tooltipPosition: 'Platzierung des Tooltips relativ zu seinem Host-Element.',

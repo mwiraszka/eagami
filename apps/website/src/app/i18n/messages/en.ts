@@ -1643,7 +1643,9 @@ export const en: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Maximum width in pixels; the text wraps at this width (50px floor).',
+              'Maximum width in pixels; the text wraps at this width (50px floor). The bubble never grows past the viewport.',
+            dismissDelay:
+              'Delay in milliseconds before a scrollable bubble hides once the pointer leaves, long enough to move onto it. Bubbles that fit hide immediately.',
             eaTooltip:
               'Tooltip content shown on hover and keyboard focus. Accepts a plain string or a TemplateRef for styled content.',
             tooltipPosition: 'Placement of the tooltip relative to its host element.',

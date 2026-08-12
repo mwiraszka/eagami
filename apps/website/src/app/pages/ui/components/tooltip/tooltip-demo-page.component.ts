@@ -26,6 +26,7 @@ interface TooltipKnobState {
   eaTooltip: string;
   tooltipPosition: TooltipPosition;
   maxWidth: number;
+  dismissDelay: number;
 }
 
 const SLUG = 'tooltip';

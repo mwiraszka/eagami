@@ -1686,7 +1686,9 @@ export const ptBR: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px).',
+              'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
+            dismissDelay:
+              'Atraso em milissegundos antes de uma dica rolável ser ocultada após o cursor sair, tempo suficiente para alcançá-la. Dicas que cabem são ocultadas imediatamente.',
             eaTooltip:
               'Conteúdo da dica exibida ao passar o cursor e ao foco do teclado. Aceita uma string simples ou um TemplateRef para conteúdo estilizado.',
             tooltipPosition:

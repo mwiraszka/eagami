@@ -14,7 +14,8 @@
         tabindex="0"
         [eaTooltip]="state().eaTooltip"
         [tooltipPosition]="state().tooltipPosition"
-        [maxWidth]="state().maxWidth">
+        [maxWidth]="state().maxWidth"
+        [dismissDelay]="state().dismissDelay">
         {{ messages().ui.component.demos.tooltip.triggerLabel }}
       </div>
       <ng-template #richTip>
@@ -55,7 +56,8 @@
         class="demo-tooltip-trigger"
         tabindex="0"
         [eaTooltip]="richTip"
-        [tooltipPosition]="state().tooltipPosition">
+        [tooltipPosition]="state().tooltipPosition"
+        [dismissDelay]="state().dismissDelay">
         {{ messages().ui.component.demos.tooltip.templateTriggerLabel }}
       </div>
     </div>

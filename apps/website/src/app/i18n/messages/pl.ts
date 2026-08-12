@@ -1681,7 +1681,9 @@ export const pl: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px).',
+              'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px). Podpowiedź nigdy nie wykracza poza widoczny obszar.',
+            dismissDelay:
+              'Opóźnienie w milisekundach, zanim przewijalna podpowiedź zniknie po opuszczeniu jej przez kursor, wystarczające, aby na nią najechać. Podpowiedzi, które się mieszczą, znikają natychmiast.',
             eaTooltip:
               'Treść podpowiedzi wyświetlanej przy najechaniu kursorem i fokusie klawiatury. Przyjmuje zwykły tekst lub TemplateRef dla stylizowanej treści.',
             tooltipPosition: 'Pozycja podpowiedzi względem elementu nadrzędnego.',

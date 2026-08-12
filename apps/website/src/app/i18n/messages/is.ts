@@ -1663,7 +1663,9 @@ export const is: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf).',
+              'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf). Ábendingin fer aldrei út fyrir sýnisgluggann.',
+            dismissDelay:
+              'Töf í millisekúndum áður en skrunanleg ábending hverfur eftir að bendillinn fer, nógu löng til að færa sig yfir á hana. Ábendingar sem komast fyrir hverfa strax.',
             eaTooltip:
               'Efni ábendingarinnar sem sýnt er við yfirsveiflu og lyklaborðsfókus. Tekur við einföldum texta eða TemplateRef fyrir stílað efni.',
             tooltipPosition: 'Staðsetning ábendingarinnar miðað við hýsilstak hennar.',

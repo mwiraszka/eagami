@@ -1700,7 +1700,9 @@ export const frFR: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px).',
+              'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
+            dismissDelay:
+              'Délai en millisecondes avant qu’une infobulle défilante ne se ferme après le départ du pointeur, assez long pour l’atteindre. Celles qui tiennent se ferment immédiatement.',
             eaTooltip:
               'Contenu de l’infobulle affichée au survol et au focus clavier. Accepte une chaîne de texte ou un TemplateRef pour du contenu stylisé.',
             tooltipPosition: 'Position de l’infobulle par rapport à son élément hôte.',

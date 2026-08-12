@@ -4547,6 +4547,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: '[eaTooltip]',
     inputs: [
       {
+        name: 'dismissDelay',
+        type: 'number',
+        default: '150',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'eaTooltip',
         type: 'string | TemplateRef<unknown>',
         default: '',

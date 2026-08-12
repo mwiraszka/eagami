@@ -1692,7 +1692,9 @@ export const nl: WebMessages = {
           },
           tooltip: {
             maxWidth:
-              'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px).',
+              'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px). De tooltip wordt nooit groter dan de viewport.',
+            dismissDelay:
+              'Vertraging in milliseconden voordat een scrollbare tooltip verdwijnt nadat de muisaanwijzer weggaat, lang genoeg om ernaartoe te bewegen. Tooltips die passen verdwijnen meteen.',
             eaTooltip:
               'Inhoud van de tooltip getoond bij hoveren en toetsenbordfocus. Accepteert een gewone tekst of een TemplateRef voor opgemaakte inhoud.',
             tooltipPosition: 'Plaatsing van de tooltip ten opzichte van het hostelement.',
