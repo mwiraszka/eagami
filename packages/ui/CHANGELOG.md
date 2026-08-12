@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.25.0] - 2026-08-12
+
+### Added
+
+- Add `dismissDelay` to the tooltip, a grace period before a scrollable bubble hides so the pointer can reach it.
+
+### Changed
+
+- Keep every tooltip inside the viewport, scrolling content that no longer fits and letting the pointer reach it, with `--ea-tooltip-viewport-margin` setting the gap left at each edge.
+
 ## [5.24.0] - 2026-08-11
 
 ### Added
@@ -1341,6 +1351,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.25.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.24.0...ui-v5.25.0
 [5.24.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.23.0...ui-v5.24.0
 [5.23.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.1...ui-v5.23.0
 [5.22.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.22.0...ui-v5.22.1

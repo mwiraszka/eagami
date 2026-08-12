@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.25.0',
+    date: '2026-08-12',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `dismissDelay` to the tooltip, a grace period before a scrollable bubble hides so the pointer can reach it.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Keep every tooltip inside the viewport, scrolling content that no longer fits and letting the pointer reach it, with `--ea-tooltip-viewport-margin` setting the gap left at each edge.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.24.0',
     date: '2026-08-11',
     sections: [
