@@ -44,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-2);
+    gap: 0.5em;
   }
 
   &__value {
@@ -58,7 +58,7 @@
 .ea-range-slider {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: 0.25em;
   width: 100%;
 
   // One per-size thumb diameter drives both the track height and the thumb so a
@@ -146,7 +146,7 @@
   &__minmax {
     display: flex;
     justify-content: space-between;
-    margin-top: var(--space-1);
+    margin-top: 0.25em;
   }
 
   &__minmax-label {

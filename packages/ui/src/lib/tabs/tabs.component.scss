@@ -7,7 +7,7 @@
 
   &__list {
     display: flex;
-    gap: var(--space-1);
+    gap: 0.25em;
 
     &--underline {
       border-bottom: var(--border-width-thin) solid var(--color-border-default);
@@ -35,9 +35,9 @@
     }
 
     &--filled {
-      background-color: var(--color-bg-muted);
+      padding: 0.25em;
       border-radius: var(--radius-lg);
-      padding: var(--space-1);
+      background-color: var(--color-bg-muted);
 
       .ea-tabs__trigger {
         border-radius: var(--radius-md);
@@ -56,29 +56,29 @@
       }
     }
 
-    // Size sets only the font-size; the trigger's padding is em-based on the base
-    // rule, so the whole tab scales from this one knob.
-    &--2xs .ea-tabs__trigger {
+    // Size sets only the font-size; the gaps and paddings are em-based on the
+    // base rules, so the whole bar scales from this one knob.
+    &--2xs {
       font-size: var(--font-size-2xs);
     }
 
-    &--xs .ea-tabs__trigger {
+    &--xs {
       font-size: var(--font-size-xs);
     }
 
-    &--sm .ea-tabs__trigger {
+    &--sm {
       font-size: var(--font-size-sm);
     }
 
-    &--md .ea-tabs__trigger {
+    &--md {
       font-size: var(--font-size-md);
     }
 
-    &--lg .ea-tabs__trigger {
+    &--lg {
       font-size: var(--font-size-lg);
     }
 
-    &--xl .ea-tabs__trigger {
+    &--xl {
       font-size: var(--font-size-xl);
     }
   }
@@ -88,6 +88,8 @@
     align-items: center;
     justify-content: center;
     padding: 0.5em 1em;
+    // buttons don't inherit font-size, so pull it from the sized list
+    font-size: inherit;
     font-weight: var(--font-weight-medium);
     font-family: var(--font-family-sans);
     line-height: var(--line-height-normal);

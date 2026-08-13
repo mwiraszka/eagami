@@ -7,7 +7,7 @@
 .ea-transfer-list {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: var(--space-3);
+  gap: 0.75em;
   color: var(--color-text-primary);
 }
 
@@ -16,8 +16,8 @@
 .ea-transfer-list__pane {
   display: flex;
   flex-direction: column;
+  gap: 0.5em;
   min-width: 6em;
-  gap: var(--space-2);
 }
 
 .ea-transfer-list__pane-label {
@@ -35,7 +35,7 @@
   // as distinct selections rather than merging into one block
   gap: 2px;
   min-height: 10em;
-  padding: var(--space-1);
+  padding: 0.25em;
   margin: 0;
   overflow-y: auto;
   border: var(--border-width-thin) solid var(--color-border-default);
@@ -81,7 +81,7 @@
 }
 
 .ea-transfer-list__empty {
-  padding: var(--space-3);
+  padding: 0.75em;
   // Track the container's size-scaled font-size
   font-size: inherit;
   text-align: center;
@@ -93,7 +93,7 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  gap: var(--space-2);
+  gap: 0.5em;
 }
 
 .ea-transfer-list__button {

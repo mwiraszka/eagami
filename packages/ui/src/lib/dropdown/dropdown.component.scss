@@ -112,7 +112,7 @@
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome
   &__menu {
     max-height: 15rem;
-    padding: var(--space-1) 0;
+    padding: 0.25em 0;
     overflow-y: auto;
     overscroll-behavior: none;
     border: var(--border-width-thin) solid var(--color-border-default);
