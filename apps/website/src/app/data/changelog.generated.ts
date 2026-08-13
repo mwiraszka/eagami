@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.25.1',
+    date: '2026-08-13',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Scale the remaining fixed gaps and paddings with the `size` input across the stepper, radio, radio group, tabs, multi-select, transfer list, slider, range slider, code input, autocomplete, dropdown, data table, badge, file uploader, and segmented control.',
+          'Apply the `2xs` size to the tabs, which previously fell back to the surrounding font size.',
+          "Scale the stepper's optional-step caption with the `size` input.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.25.0',
     date: '2026-08-12',
     sections: [

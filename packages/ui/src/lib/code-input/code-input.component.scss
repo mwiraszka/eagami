@@ -41,7 +41,7 @@
 
 .ea-code-input-group {
   display: flex;
-  gap: var(--space-2);
+  gap: 0.5em;
 
   &--error .ea-code-input {
     border-color: var(--color-error-default);

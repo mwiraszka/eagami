@@ -3,7 +3,7 @@
 .ea-stepper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: 1em;
 
   // Size sets only the font-size; the circle box, label, and optional text are
   // em-based, so the whole control scales from this one knob.
@@ -36,7 +36,7 @@
   &__list {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.5em;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -45,9 +45,11 @@
   &__button {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.5em;
     flex-shrink: 0;
     padding: 0;
+    // buttons don't inherit font-size, so pull it from the sized root
+    font-size: inherit;
     border: none;
     background: none;
     color: var(--color-text-secondary);
@@ -141,7 +143,7 @@
   }
 
   &__optional {
-    font-size: var(--font-size-xs);
+    font-size: 0.875em;
     font-weight: var(--font-weight-regular);
     color: var(--color-text-tertiary);
   }
@@ -154,7 +156,7 @@
     display: block;
     flex: 1;
     align-self: center;
-    min-width: var(--space-4);
+    min-width: 1em;
     height: var(--border-width-thin);
     background-color: var(--color-border-default);
     transition: var(--transition-colors);
@@ -180,7 +182,7 @@
     align-self: flex-start;
     width: var(--border-width-thin);
     min-width: 0;
-    height: var(--space-4);
+    height: 1em;
     margin-inline-start: calc(1em - var(--border-width-thin) / 2);
   }
 

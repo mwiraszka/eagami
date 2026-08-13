@@ -54,7 +54,8 @@
   }
 
   &__caption {
-    padding: var(--space-2) var(--space-3);
+    padding: calc(var(--ea-data-table-font-size) * 0.5)
+      calc(var(--ea-data-table-font-size) * 0.75);
     text-align: start;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);

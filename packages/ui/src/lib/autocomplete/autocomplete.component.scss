@@ -107,7 +107,7 @@
     overflow-y: auto;
     overscroll-behavior: none;
     max-height: 15rem;
-    padding: var(--space-1) 0;
+    padding: 0.25em 0;
     list-style: none;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
@@ -179,7 +179,7 @@
   }
 
   &__empty {
-    padding: var(--space-2) var(--space-3);
+    padding: 0.5em 0.75em;
     font-size: inherit;
     font-style: italic;
     color: var(--color-text-tertiary);
