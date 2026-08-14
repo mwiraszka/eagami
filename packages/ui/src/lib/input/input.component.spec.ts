@@ -98,6 +98,20 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Spellcheck', () => {
+    it('leaves the attribute off by default', () => {
+      expect(getNativeInput().getAttribute('spellcheck')).toBeNull();
+    });
+
+    it('forwards the attribute when set', () => {
+      fixture.componentRef.setInput('spellcheck', false);
+
+      fixture.detectChanges();
+
+      expect(getNativeInput().getAttribute('spellcheck')).toBe('false');
+    });
+  });
+
   describe('ARIA passthrough', () => {
     it('forwards role and combobox attributes to the native input', () => {
       fixture.componentRef.setInput('role', 'combobox');

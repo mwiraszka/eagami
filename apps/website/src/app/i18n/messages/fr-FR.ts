@@ -1239,6 +1239,8 @@ export const frFR: WebMessages = {
             resume: 'Reprend les comptes à rebours suspendus par pause.',
           },
           input: {
+            spellcheck:
+              'Valeur de l’attribut natif spellcheck, laissée au réglage par défaut du navigateur si elle n’est pas définie.',
             keepIcon:
               'Garde l’icône de tête visible tant que le champ a une valeur ; avec false, l’icône n’apparaît qu’avec le placeholder.',
             role: 'Rôle ARIA appliqué au champ natif, p. ex. combobox pour un hôte de saisie semi-automatique.',

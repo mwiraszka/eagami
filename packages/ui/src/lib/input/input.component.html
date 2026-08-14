@@ -34,6 +34,7 @@
       [required]="required()"
       [value]="value()"
       [attr.autocomplete]="autocomplete() ?? null"
+      [attr.spellcheck]="spellcheck() ?? null"
       [attr.list]="list() ?? null"
       [attr.min]="type() === 'number' ? (min() ?? null) : null"
       [attr.max]="type() === 'number' ? (max() ?? null) : null"

@@ -1211,6 +1211,8 @@ export const en: WebMessages = {
             resume: 'Resumes the countdowns suspended by pause.',
           },
           input: {
+            spellcheck:
+              'Value for the native spellcheck attribute, left to the browser default when unset.',
             keepIcon:
               'Keeps the leading icon visible while the field has a value; when false the icon shows only while the placeholder does.',
             role: 'ARIA role applied to the native input, e.g. combobox for a typeahead host.',

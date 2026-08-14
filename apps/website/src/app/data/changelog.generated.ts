@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.27.0',
+    date: '2026-08-14',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `spellcheck` input to the input, left to the browser default when unset.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Stop the command palette's search field from spellchecking the commands typed into it.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.26.1',
     date: '2026-08-14',
     sections: [

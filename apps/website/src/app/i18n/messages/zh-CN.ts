@@ -1188,6 +1188,7 @@ export const zhCN: WebMessages = {
             resume: '恢复被 pause 暂停的倒计时。',
           },
           input: {
+            spellcheck: '原生 spellcheck 属性的值，未设置时沿用浏览器默认行为。',
             keepIcon:
               '在字段有值时保持前置图标可见；设为 false 时图标仅与占位符一同显示。',
             role: '应用于原生输入框的 ARIA 角色，例如用于预输入宿主的 combobox。',

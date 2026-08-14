@@ -2247,6 +2247,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'spellcheck',
+        type: 'boolean | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'step',
         type: 'number | undefined',
         default: 'undefined',

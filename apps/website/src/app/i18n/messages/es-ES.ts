@@ -1230,6 +1230,8 @@ export const esES: WebMessages = {
             resume: 'Reanuda las cuentas atrás suspendidas por pause.',
           },
           input: {
+            spellcheck:
+              'Valor del atributo nativo spellcheck, que sin definir mantiene el valor por defecto del navegador.',
             keepIcon:
               'Mantiene visible el icono inicial mientras el campo tiene valor; con false el icono solo aparece junto al placeholder.',
             role: 'Rol ARIA aplicado al campo nativo, p. ej. combobox para un host de autocompletado.',
