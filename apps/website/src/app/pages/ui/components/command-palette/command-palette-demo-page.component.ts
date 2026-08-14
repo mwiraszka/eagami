@@ -29,7 +29,7 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
-import { quoted } from '../_playground/option-groups';
+import { quoted } from '../_playground/snippet';
 
 interface CommandModel {
   id: number;

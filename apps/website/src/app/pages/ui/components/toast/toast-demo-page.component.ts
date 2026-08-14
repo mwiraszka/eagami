@@ -38,6 +38,7 @@ import {
   buildKnobs,
   initialKnobState,
 } from '../_playground/knob';
+import { quoted } from '../_playground/snippet';
 
 const SLUG = 'toast';
 
@@ -56,10 +57,6 @@ const DEFAULT_SEGMENTS: readonly Omit<MessageSegmentModel, 'id'>[] = [
   { text: ' to ', strong: false },
   { text: 'Archived projects', strong: true },
 ];
-
-function quoted(value: string): string {
-  return `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
-}
 
 @Component({
   selector: 'web-toast-demo-page',

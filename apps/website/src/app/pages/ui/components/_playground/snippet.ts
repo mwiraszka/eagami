@@ -5,6 +5,11 @@ export interface GeneratedSnippet {
   css: string;
 }
 
+/** Wraps demo-editable free text in a single-quoted literal, escaping as needed. */
+export function quoted(text: string): string {
+  return `'${text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+}
+
 function attribute(name: string, value: KnobValue): string {
   // Booleans and numbers are property bindings; strings render as plain
   // attributes, matching how the templates are authored across the library.
