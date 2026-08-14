@@ -1,7 +1,7 @@
-// Enforces the documented CSS property order (CLAUDE.md, "CSS/SCSS Property
-// Order") so the ordering never depends on a reviewer noticing it. Properties
-// outside the documented groups are ignored, as are custom properties,
-// at-rules, and nested selectors.
+// Enforces the documented CSS property order (CONTRIBUTING.md, "CSS/SCSS
+// property order") so the ordering never depends on a reviewer noticing it.
+// Properties outside the documented groups are ignored, as are custom
+// properties, at-rules, and nested selectors.
 //
 // `--since=<ref>` reports only lines the working tree adds on top of that ref,
 // which is how CI and the pre-push hook run it: the stylesheets predate the
@@ -194,7 +194,7 @@ if (problems.length > 0) {
       `  ${relative(repo, problem.path)}:${problem.line}  ${problem.message}`,
     );
   }
-  console.error('\nSee the CSS/SCSS Property Order list in CLAUDE.md.\n');
+  console.error('\nSee the CSS/SCSS property order list in CONTRIBUTING.md.\n');
   process.exitCode = 1;
 } else {
   console.log(

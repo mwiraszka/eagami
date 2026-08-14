@@ -5,6 +5,8 @@ import {
   isGrouped,
 } from '@eagami/ui';
 
+import { quoted } from './snippet';
+
 /** The option-group knobs shared by the select-like demos. */
 export interface OptionGroupState {
   groupedOptions: boolean;
@@ -12,12 +14,6 @@ export interface OptionGroupState {
   firstGroupLabel: string;
   secondGroup: string;
   secondGroupLabel: string;
-}
-
-// Demo-editable free text is escaped before going into a snippet's
-// single-quoted literals
-export function quoted(text: string): string {
-  return `'${text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 }
 
 function optionLiteral(option: SelectOption): string {

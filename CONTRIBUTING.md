@@ -36,6 +36,8 @@ pnpm regen-docs         # regenerate the website's generated API and changelog d
 pnpm ui check-parity    # every input/output has a description, knob, and story wiring
 pnpm website check-i18n # every website locale file carries the same keys
 pnpm ui check-tokens    # the framework integration guides match the token source
+pnpm ui check-changelog # the release's changelog entry follows the conventions below
+pnpm ui check-css-order # SCSS declarations follow the property order below
 
 pnpm ui <script>        # run any script in @eagami/ui
 pnpm website <script>   # run any script in the website
@@ -53,6 +55,20 @@ Plain `vX.Y.Z` and standalone `ui-vX.Y.Z` are not allowed; CI rejects them.
 The website bump in a combined PR is usually a patch, with a one-line `### Changed` entry like `- Pick up @eagami/ui v1.3.0`. If substantial website changes ship in the same PR, the pickup folds into the larger website bump.
 
 Dependabot PRs aren't merged directly. When cutting a release branch, locally pull in the pending dependabot bumps you want, then bump versions and CHANGELOGs as one PR. Dependabot auto-closes its PRs when the underlying bumps land on `main`.
+
+## Changelog entries
+
+Each package keeps its own changelog (`packages/ui/CHANGELOG.md`, `apps/website/CHANGELOG.md`); there is no root one. The release workflow publishes the entry verbatim as the GitHub release notes, so entries are written for the people using the package:
+
+- Group entries under `### Added`, `### Changed`, or `### Fixed`, and omit a section with nothing in it. Removals belong under `### Changed`
+- Breaking entries come first within `### Changed`, prefixed `**Breaking:**`
+- Open with a present-tense verb (`Add`, `Fix`, `Prevent`, `Ensure`) and vary it, rather than starting every line the same way
+- One sentence per entry, ending in a period, and no em-dashes
+- User-facing changes only. Lockfile syncs, tooling, and CI work stay out, unless they are the entire release, in which case keep the entry short and high level
+- A brand-new component gets a single consolidated entry, never one per input or variant
+- Footer links compare tags: `.../compare/ui-v1.2.0...ui-v1.3.0` for the library, `.../compare/website-v1.1.0...website-v1.2.0` for the website
+
+`pnpm ui check-changelog` enforces the mechanical half of that (sections, opening verb, single sentence, trailing period) against the entry a release is about to ship. If it rejects a verb that is genuinely the right word, add it to the list in [check-changelog-format.mjs](packages/ui/scripts/check-changelog-format.mjs) in the same PR.
 
 ## Commits
 
@@ -122,6 +138,21 @@ Accessibility is release-blocking: changes must keep the component conformant wi
 - Brand colours are derivable from a single hex via the OKLCH pipeline in `packages/ui/src/lib/palette/`. The default `--color-primary-*` and `--color-secondary-*` scales in `_colors.scss` are the un-themed fallback; consumers can replace either ramp at runtime by passing a `palette` to `provideEagamiUi`. When touching colour tokens, keep the two paths in sync: any new `--color-brand-*` role added in `_colors.scss` should be mapped in `palette.types.ts` (`PaletteRoles`) and `apply-palette.ts`, and the contrast assertions in `validate-palette.ts` should be extended to cover it
 - No `any` casts in tests; type your mocks (`@ts-expect-error` is fine for accessing private/protected members)
 - Spacing values: `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` only
+
+### CSS/SCSS property order
+
+Declarations within a rule are grouped by category, in this order, so every stylesheet reads the same way:
+
+1. **Display and positioning**: `z-index`, `position`, `top`/`right`/`bottom`/`left`, `overflow`, `opacity`, `visibility`, `display`
+2. **Flexbox and grid**: `flex`, `flex-direction`, `align-items`, `justify-content`, `gap`, `grid-template-*`
+3. **Box model**: `box-sizing`, `width`, `height`, `padding`, `margin`, `aspect-ratio`
+4. **Typography**: `font-size`, `font-weight`, `line-height`, `text-align`, `letter-spacing`, `font-family`
+5. **Colour and borders**: `border`, `border-radius`, `outline`, `box-shadow`, `background`, `color`, `filter`
+6. **Interaction**: `cursor`, `pointer-events`, `user-select`, `appearance`, `resize`
+7. **Animation**: `transition`, `transform`, `animation-*`, `will-change`, `transform-origin`
+8. **Miscellaneous**: `content`, `quotes`, `page-break-inside`
+
+Custom properties, at-rules, and nested selectors are exempt. `pnpm ui check-css-order` checks the declarations your branch adds on top of `main`, since the stylesheets predate the rule; the full ordered list of properties lives in [check-css-property-order.mjs](packages/ui/scripts/check-css-property-order.mjs).
 
 ## Reporting issues
 

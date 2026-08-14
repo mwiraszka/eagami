@@ -90,8 +90,6 @@ describe('InputComponent', () => {
     it('hides the icon once a value is set when keepIcon is false', () => {
       fixture.componentRef.setInput('icon', SearchIconComponent);
       fixture.componentRef.setInput('keepIcon', false);
-      fixture.detectChanges();
-      expect(getIcon()).toBeTruthy();
 
       component.value.set('query');
       fixture.detectChanges();

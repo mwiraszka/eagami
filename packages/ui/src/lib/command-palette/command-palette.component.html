@@ -14,8 +14,8 @@
         [role]="'combobox'"
         [autocomplete]="'off'"
         [aria-label]="resolvedPlaceholder()"
-        [aria-controls]="filteredItems().length > 0 ? listboxId : undefined"
-        [aria-expanded]="filteredItems().length > 0"
+        [aria-controls]="filteredEntries().length > 0 ? listboxId : undefined"
+        [aria-expanded]="filteredEntries().length > 0"
         [aria-autocomplete]="'list'"
         [aria-activedescendant]="activeId()"
         [placeholder]="resolvedPlaceholder()"
@@ -24,7 +24,7 @@
         (keydown)="onSearchKeydown($event)" />
     </div>
 
-    @if (filteredItems().length === 0) {
+    @if (filteredEntries().length === 0) {
       <p
         class="ea-command-palette__empty"
         role="status">
@@ -76,11 +76,11 @@
     role="option"
     [id]="itemDomId(entry.item)"
     [attr.aria-selected]="isActive(entry.flatIndex)"
-    [attr.aria-disabled]="isItemDisabled(entry.item) || null"
+    [attr.aria-disabled]="entry.disabled || null"
     [class.ea-command-palette__item--active]="showActiveHighlight(entry.flatIndex)"
-    [class.ea-command-palette__item--disabled]="isItemDisabled(entry.item)"
-    (click)="onItemClick(entry.item)"
-    (mouseenter)="onItemMouseEnter(entry.flatIndex)">
+    [class.ea-command-palette__item--disabled]="entry.disabled"
+    (click)="onItemClick(entry)"
+    (mouseenter)="onItemMouseEnter(entry)">
     @if (entry.item.icon; as iconClass) {
       <span
         class="ea-command-palette__item-icon"

@@ -85,7 +85,7 @@ export class InputComponent implements ControlValueAccessor {
     alias: 'aria-controls',
   });
   /** `id` of the active option in a controlled popup, forwarded as `aria-activedescendant`. */
-  readonly ariaActivedescendant = input<string | null | undefined>(undefined, {
+  readonly ariaActivedescendant = input<string | undefined>(undefined, {
     alias: 'aria-activedescendant',
   });
   /** Autocomplete behavior hint, forwarded as `aria-autocomplete`. */

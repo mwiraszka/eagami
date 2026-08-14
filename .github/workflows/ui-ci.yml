@@ -62,8 +62,8 @@ jobs:
         run: |
           BRANCH="${GITHUB_HEAD_REF}"
 
-          # Option B: library releases must pair with a website patch bump, so a
-          # ui-v* branch must always carry a -website-v* suffix (see CLAUDE.md).
+          # Library releases must pair with a website patch bump, so a ui-v*
+          # branch must always carry a -website-v* suffix (see CONTRIBUTING.md).
           if [[ "$BRANCH" != *-website-v* ]]; then
             echo "::error::Library releases must pair with a website patch bump. Use branch name ui-vA.B.C-website-vX.Y.Z"
             exit 1

@@ -1094,6 +1094,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'edgeActive(direction: "1" | unknown): void',
       },
       {
+        name: 'firstEnabled',
+        signature: 'firstEnabled(start: number, step: "1" | unknown): number',
+      },
+      {
         name: 'moveActive',
         signature: 'moveActive(delta: "1" | unknown): void',
       },
@@ -2055,7 +2059,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'ariaActivedescendant',
-        type: 'string | null | undefined',
+        type: 'string | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
