@@ -257,6 +257,19 @@ describe('CommandPaletteComponent', () => {
     });
   });
 
+  it('leaves Enter on the clear button for the button to handle', () => {
+    typeQuery('open');
+    const clear: HTMLElement = fixture.nativeElement.querySelector(
+      '.ea-input-wrapper__clear',
+    );
+
+    clear.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    fixture.detectChanges();
+
+    expect(host.lastExecuted).toBeNull();
+    expect(host.open()).toBe(true);
+  });
+
   it('renders the shortcut hint when provided', () => {
     const kbds = fixture.nativeElement.querySelectorAll(
       '.ea-command-palette__item-shortcut',

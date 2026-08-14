@@ -20,9 +20,15 @@ import { InputComponent } from '../input/input.component';
 import { uniqueId } from '../unique-id';
 import type { CommandPaletteItem } from './command-palette.types';
 
+interface PaletteEntry {
+  item: CommandPaletteItem;
+  flatIndex: number;
+  disabled: boolean;
+}
+
 interface GroupedItems {
   group: string;
-  items: ReadonlyArray<{ item: CommandPaletteItem; flatIndex: number }>;
+  items: readonly PaletteEntry[];
 }
 
 /**
@@ -84,11 +90,14 @@ export class CommandPaletteComponent {
   /**
    * Items bucketed by `group`, then flattened back into display order
    * (ungrouped items first, then each named group). The matching
-   * `filteredItems` array follows this same order so `flatIndex` lines up
-   * one-to-one with what the user sees.
+   * `filteredEntries` array follows this same order so `flatIndex` lines up
+   * one-to-one with what the user sees. Each entry resolves its disabled state
+   * once here, so a consumer's `disabledWhen` runs once per match rather than
+   * on every binding read.
    */
   protected readonly groupedItems = computed<GroupedItems[]>(() => {
     const q = this.query().trim().toLowerCase();
+    const disabledWhen = this.disabledWhen();
     const candidates = this.items().filter(item => {
       if (!q) {
         return true;
@@ -117,7 +126,11 @@ export class CommandPaletteComponent {
     const pushGroup = (group: string, items: CommandPaletteItem[]) => {
       groups.push({
         group,
-        items: items.map(item => ({ item, flatIndex: flatIndex++ })),
+        items: items.map(item => ({
+          item,
+          flatIndex: flatIndex++,
+          disabled: !!item.disabled || !!disabledWhen?.(item),
+        })),
       });
     };
 
@@ -137,8 +150,8 @@ export class CommandPaletteComponent {
    * Flat list of matches in display order. Drives keyboard navigation and
    * `aria-activedescendant`.
    */
-  protected readonly filteredItems = computed(() =>
-    this.groupedItems().flatMap(group => group.items.map(entry => entry.item)),
+  protected readonly filteredEntries = computed(() =>
+    this.groupedItems().flatMap(group => group.items),
   );
 
   private readonly _activeIndex = signal<number>(0);
@@ -157,35 +170,23 @@ export class CommandPaletteComponent {
   private readonly interaction = signal<'keyboard' | 'mouse' | 'none'>('keyboard');
 
   protected readonly activeIndex = computed(() => {
-    const items = this.filteredItems();
-    if (items.length === 0) {
+    const entries = this.filteredEntries();
+    if (entries.length === 0) {
       return -1;
     }
     // Open/filter resets pin the index at 0, which may be a disabled row;
     // resolve to the nearest enabled one, preferring the next row down
-    const start = Math.min(this._activeIndex(), items.length - 1);
-    if (!this.isItemDisabled(items[start])) {
-      return start;
-    }
-    for (let idx = start + 1; idx < items.length; idx++) {
-      if (!this.isItemDisabled(items[idx])) {
-        return idx;
-      }
-    }
-    for (let idx = start - 1; idx >= 0; idx--) {
-      if (!this.isItemDisabled(items[idx])) {
-        return idx;
-      }
-    }
-    return -1;
+    const start = Math.min(this._activeIndex(), entries.length - 1);
+    const forward = this.firstEnabled(start, 1);
+    return forward >= 0 ? forward : this.firstEnabled(start - 1, -1);
   });
 
   protected readonly activeId = computed(() => {
     const idx = this.activeIndex();
     if (idx < 0) {
-      return null;
+      return undefined;
     }
-    return `ea-command-palette-item-${this.filteredItems()[idx].id}`;
+    return `ea-command-palette-item-${this.filteredEntries()[idx].item.id}`;
   });
 
   constructor() {
@@ -217,8 +218,15 @@ export class CommandPaletteComponent {
     return `ea-command-palette-item-${item.id}`;
   }
 
-  protected isItemDisabled(item: CommandPaletteItem): boolean {
-    return !!item.disabled || !!this.disabledWhen()?.(item);
+  /** Index of the first enabled entry from `start`, walking in `step`; -1 when none. */
+  private firstEnabled(start: number, step: 1 | -1): number {
+    const entries = this.filteredEntries();
+    for (let idx = start; idx >= 0 && idx < entries.length; idx += step) {
+      if (!entries[idx].disabled) {
+        return idx;
+      }
+    }
+    return -1;
   }
 
   protected isActive(flatIndex: number): boolean {
@@ -244,7 +252,12 @@ export class CommandPaletteComponent {
   }
 
   protected onSearchKeydown(event: KeyboardEvent): void {
-    if (this.filteredItems().length === 0) {
+    /* Bound on the field host, which also contains the clear button; keys
+       pressed there must reach the button rather than drive the list. */
+    if (event.target !== this.searchEl()?.inputEl()?.nativeElement) {
+      return;
+    }
+    if (this.filteredEntries().length === 0) {
       return;
     }
 
@@ -271,9 +284,9 @@ export class CommandPaletteComponent {
       }
       case 'Enter': {
         event.preventDefault();
-        const item = this.filteredItems()[this.activeIndex()];
-        if (item && !this.isItemDisabled(item)) {
-          this.executeItem(item);
+        const entry = this.filteredEntries()[this.activeIndex()];
+        if (entry) {
+          this.executeItem(entry);
         }
         break;
       }
@@ -282,11 +295,11 @@ export class CommandPaletteComponent {
 
   /** Wrapping arrow-key move that skips disabled items. */
   private moveActive(delta: 1 | -1): void {
-    const items = this.filteredItems();
+    const entries = this.filteredEntries();
     let idx = this.activeIndex();
-    for (let i = 0; i < items.length; i++) {
-      idx = (idx + delta + items.length) % items.length;
-      if (!this.isItemDisabled(items[idx])) {
+    for (let i = 0; i < entries.length; i++) {
+      idx = (idx + delta + entries.length) % entries.length;
+      if (!entries[idx].disabled) {
         this.setActiveByKeyboard(idx);
         return;
       }
@@ -295,12 +308,9 @@ export class CommandPaletteComponent {
 
   /** Home/End move to the first enabled item from the given end. */
   private edgeActive(direction: 1 | -1): void {
-    const items = this.filteredItems();
-    let idx = direction === 1 ? 0 : items.length - 1;
-    while (idx >= 0 && idx < items.length && this.isItemDisabled(items[idx])) {
-      idx += direction;
-    }
-    if (idx >= 0 && idx < items.length) {
+    const start = direction === 1 ? 0 : this.filteredEntries().length - 1;
+    const idx = this.firstEnabled(start, direction);
+    if (idx >= 0) {
       this.setActiveByKeyboard(idx);
     }
   }
@@ -311,19 +321,15 @@ export class CommandPaletteComponent {
     this.scrollActiveIntoView();
   }
 
-  protected onItemClick(item: CommandPaletteItem): void {
-    if (this.isItemDisabled(item)) {
-      return;
-    }
-    this.executeItem(item);
+  protected onItemClick(entry: PaletteEntry): void {
+    this.executeItem(entry);
   }
 
-  protected onItemMouseEnter(flatIndex: number): void {
-    const item = this.filteredItems()[flatIndex];
-    if (!item || this.isItemDisabled(item)) {
+  protected onItemMouseEnter(entry: PaletteEntry): void {
+    if (entry.disabled) {
       return;
     }
-    this._activeIndex.set(flatIndex);
+    this._activeIndex.set(entry.flatIndex);
     this.interaction.set('mouse');
   }
 
@@ -352,11 +358,11 @@ export class CommandPaletteComponent {
     }
   }
 
-  private executeItem(item: CommandPaletteItem): void {
-    if (this.isItemDisabled(item)) {
+  private executeItem(entry: PaletteEntry): void {
+    if (entry.disabled) {
       return;
     }
-    this.execute.emit(item);
+    this.execute.emit(entry.item);
     this.open.set(false);
   }
 
