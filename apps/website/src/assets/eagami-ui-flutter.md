@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.25.1
-source: '@eagami/ui@5.25.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-08-13
+version: 5.26.0
+source: '@eagami/ui@5.26.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-08-14
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -224,7 +224,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `borderSubtle`          | `neutral200`        | `Color(0xFF2B3544)` |
 | `borderDefault`         | `neutral200`        | `neutral400`        |
 | `borderStrong`          | `neutral400`        | `neutral300`        |
-| `divider`               | `borderSubtle`      | `neutral600`        |
+| `divider`               | `Color(0x1A000000)` | `Color(0x1FFFFFFF)` |
 | `borderFocus`           | `primary500`        | `primary500`        |
 | `brandDefault`          | `primary600`        | `primary500`        |
 | `brandHover`            | `primary700`        | `primary600`        |
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.25.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.26.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -744,7 +744,7 @@ class EagamiColors {
     borderSubtle: Color(0xFFE5E7EB),
     borderDefault: Color(0xFFE5E7EB),
     borderStrong: Color(0xFF9CA3AF),
-    divider: Color(0xFFE5E7EB),
+    divider: Color(0x1A000000),
     borderFocus: Color(0xFF3674A1),
     brandDefault: Color(0xFF2A5B7E),
     brandHover: Color(0xFF204560),
@@ -800,7 +800,7 @@ class EagamiColors {
     borderSubtle: Color(0xFF2B3544),
     borderDefault: Color(0xFF9CA3AF),
     borderStrong: Color(0xFFD1D5DB),
-    divider: Color(0xFF4B5563),
+    divider: Color(0x1FFFFFFF),
     borderFocus: Color(0xFF3674A1),
     brandDefault: Color(0xFF3674A1),
     brandHover: Color(0xFF2A5B7E),
