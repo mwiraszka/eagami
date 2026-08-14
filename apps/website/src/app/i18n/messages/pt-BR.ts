@@ -1226,6 +1226,8 @@ export const ptBR: WebMessages = {
             resume: 'Retoma as contagens regressivas suspensas por pause.',
           },
           input: {
+            spellcheck:
+              'Valor do atributo nativo spellcheck, mantendo o padrão do navegador quando não definido.',
             keepIcon:
               'Mantém o ícone inicial visível enquanto o campo tem valor; com false o ícone aparece apenas junto do placeholder.',
             role: 'Papel ARIA aplicado ao campo nativo, por exemplo combobox para um host de typeahead.',

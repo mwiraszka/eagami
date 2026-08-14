@@ -1230,6 +1230,8 @@ export const pl: WebMessages = {
             resume: 'Wznawia odliczania wstrzymane przez pause.',
           },
           input: {
+            spellcheck:
+              'Wartość natywnego atrybutu spellcheck, a przy braku ustawienia obowiązuje domyślne zachowanie przeglądarki.',
             keepIcon:
               'Zachowuje widoczność wiodącej ikony, gdy pole ma wartość; przy false ikona pojawia się tylko razem z placeholderem.',
             role: 'Rola ARIA zastosowana do natywnego pola, np. combobox dla hosta typeahead.',

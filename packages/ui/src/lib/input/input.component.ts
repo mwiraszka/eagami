@@ -117,6 +117,8 @@ export class InputComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   /** Value for the native `autocomplete` attribute. */
   readonly autocomplete = input<string | undefined>(undefined);
+  /** Value for the native `spellcheck` attribute; left to the browser default when unset. */
+  readonly spellcheck = input<boolean | undefined>(undefined);
   /** `id` of a `<datalist>` to associate for native suggestions. */
   readonly list = input<string | undefined>(undefined);
   /** Minimum value for `type="number"`; the value is clamped to it on blur. */

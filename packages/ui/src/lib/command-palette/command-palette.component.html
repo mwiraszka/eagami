@@ -13,6 +13,7 @@
         [clearable]="true"
         [role]="'combobox'"
         [autocomplete]="'off'"
+        [spellcheck]="false"
         [aria-label]="resolvedPlaceholder()"
         [aria-controls]="filteredEntries().length > 0 ? listboxId : undefined"
         [aria-expanded]="filteredEntries().length > 0"

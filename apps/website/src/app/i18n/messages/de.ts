@@ -1235,6 +1235,8 @@ export const de: WebMessages = {
             resume: 'Setzt die von pause angehaltenen Countdowns fort.',
           },
           input: {
+            spellcheck:
+              'Wert für das native spellcheck-Attribut, ohne Angabe bleibt die Browservorgabe bestehen.',
             keepIcon:
               'Zeigt das führende Icon auch, während das Feld einen Wert hat; bei false erscheint es nur zusammen mit dem Platzhalter.',
             role: 'ARIA-Rolle für das native Eingabefeld, z. B. combobox für einen Typeahead-Host.',

@@ -1226,6 +1226,8 @@ export const is: WebMessages = {
             resume: 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
+            spellcheck:
+              'Gildi fyrir innbyggða spellcheck-eigindið, en sjálfgildi vafrans gildir sé það ekki sett.',
             keepIcon:
               'Heldur fremra tákninu sýnilegu meðan reiturinn hefur gildi; með false birtist táknið aðeins með staðgengilstextanum.',
             role: 'ARIA-hlutverk sett á innbyggða reitinn, t.d. combobox fyrir typeahead-hýsil.',

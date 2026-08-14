@@ -1226,6 +1226,8 @@ export const nl: WebMessages = {
             resume: 'Hervat de aftellingen die door pause zijn opgeschort.',
           },
           input: {
+            spellcheck:
+              'Waarde voor het native spellcheck-attribuut, zonder instelling geldt de standaard van de browser.',
             keepIcon:
               'Houdt het voorloopicoon zichtbaar terwijl het veld een waarde heeft; met false verschijnt het icoon alleen samen met de placeholder.',
             role: 'ARIA-rol toegepast op het native invoerveld, bijv. combobox voor een typeahead-host.',

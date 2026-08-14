@@ -257,6 +257,10 @@ describe('CommandPaletteComponent', () => {
     });
   });
 
+  it('turns off spellcheck on the search input', () => {
+    expect(getSearchInput().getAttribute('spellcheck')).toBe('false');
+  });
+
   it('leaves Enter on the clear button for the button to handle', () => {
     typeQuery('open');
     const clear: HTMLElement = fixture.nativeElement.querySelector(
