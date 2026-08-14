@@ -34,7 +34,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'לוח פקודות',
     searchPlaceholder: 'הקלד פקודה או חפש…',
     empty: 'לא נמצאו תוצאות',
-    clear: 'ניקוי חיפוש',
   },
   colorPicker: {
     dialogLabel: 'בחירת צבע',

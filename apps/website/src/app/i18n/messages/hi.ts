@@ -949,19 +949,6 @@ export const hi: WebMessages = {
         commandPalette: {
           hint: 'इस पेज पर कहीं भी कमांड पैलेट खोलने के लिए Ctrl + K (या Cmd + K) दबाएं।',
           openButton: 'कमांड पैलेट खोलें',
-          fileGroup: 'फ़ाइल',
-          editGroup: 'संपादन',
-          newFile: 'नई फ़ाइल',
-          openFile: 'फ़ाइल खोलें',
-          save: 'सहेजें',
-          find: 'खोजें',
-          findKeyword: 'खोज',
-          replace: 'बदलें',
-          undo: 'पूर्ववत करें',
-          toggleTheme: 'थीम टॉगल करें',
-          toggleThemeDescription: 'लाइट और डार्क मोड के बीच स्विच करें',
-          lockWorkspace: 'वर्कस्पेस लॉक करें',
-          lockWorkspaceDescription: 'वर्तमान में अक्षम (सुविधा बीटा में है)',
           executedToast: label => `निष्पादित: ${label}`,
         },
         avatarEditorActions: {
@@ -1226,6 +1213,17 @@ export const hi: WebMessages = {
             resume: 'pause द्वारा रोकी गई उलटी गिनतियाँ फिर से शुरू करता है।',
           },
           input: {
+            keepIcon:
+              'फ़ील्ड में मान होने पर भी अग्रणी आइकन दिखाए रखता है; false होने पर आइकन केवल प्लेसहोल्डर के साथ दिखता है।',
+            role: 'नेटिव इनपुट पर लागू ARIA भूमिका, जैसे typeahead होस्ट के लिए combobox।',
+            ariaExpanded:
+              'नियंत्रित पॉपअप की विस्तारित स्थिति, aria-expanded के रूप में अग्रेषित।',
+            ariaControls:
+              'उस पॉपअप तत्व की id जिसे इनपुट नियंत्रित करता है, aria-controls के रूप में अग्रेषित।',
+            ariaActivedescendant:
+              'नियंत्रित पॉपअप में सक्रिय विकल्प की id, aria-activedescendant के रूप में अग्रेषित।',
+            ariaAutocomplete:
+              'स्वतः पूर्णता व्यवहार का संकेत, aria-autocomplete के रूप में अग्रेषित।',
             label: 'फ़ील्ड के ऊपर रेंडर किया गया टेक्स्ट लेबल।',
             type: 'नेटिव इनपुट प्रकार (password एक अंतर्निहित दिखाएं/छिपाएं टॉगल जोड़ता है)।',
             placeholder: 'फ़ील्ड खाली होने पर दिखाया गया प्लेसहोल्डर।',
@@ -1749,6 +1747,8 @@ export const hi: WebMessages = {
               'दिए गए विकल्प को प्रोग्रामेटिक रूप से चुनता है, मान को अपडेट करता है और सूची को बंद करता है।',
           },
           'command-palette': {
+            disabledWhen:
+              'वैकल्पिक प्रेडिकेट जो हर उस आइटम को अक्षम करता है जिसके लिए यह true लौटाता है, प्रत्येक आइटम के अपने disabled फ़्लैग के अतिरिक्त।',
             emptyMessage:
               'जब खोज क्वेरी किसी आइटम से मेल नहीं खाती तो दिखाया गया संदेश, छोड़े जाने पर सक्रिय लोकेल के अनुवाद पर फ़ॉलबैक करता है।',
             items: 'खोज और निष्पादन के लिए उपलब्ध कमांड आइटम की पूरी सूची।',

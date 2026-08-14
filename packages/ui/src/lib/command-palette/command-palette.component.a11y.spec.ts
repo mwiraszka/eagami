@@ -10,6 +10,7 @@ const COMMANDS: CommandPaletteItem[] = [
   { id: 'a', label: 'New file', shortcut: 'Ctrl+N', group: 'File' },
   { id: 'b', label: 'Open file', shortcut: 'Ctrl+O', group: 'File' },
   { id: 'c', label: 'Find', shortcut: 'Ctrl+F', group: 'Edit' },
+  { id: 'd', label: 'Lock workspace', disabled: true },
 ];
 
 @Component({

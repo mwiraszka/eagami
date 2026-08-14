@@ -35,7 +35,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'Палітра команд',
     searchPlaceholder: 'Введіть команду або шукайте…',
     empty: 'Нічого не знайдено',
-    clear: 'Очистити пошук',
   },
   colorPicker: {
     dialogLabel: 'Виберіть колір',

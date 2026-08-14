@@ -18,12 +18,14 @@ const COMMANDS: CommandPaletteItem[] = [
   template: `
     <ea-command-palette
       [items]="items"
+      [disabledWhen]="disabledWhen()"
       [(open)]="open"
       (execute)="lastExecuted = $event.id" />
   `,
 })
 class HostComponent {
   items: CommandPaletteItem[] = COMMANDS;
+  disabledWhen = signal<((item: CommandPaletteItem) => boolean) | undefined>(undefined);
   open = signal<boolean>(true);
   lastExecuted: string | null = null;
 }
@@ -33,7 +35,7 @@ describe('CommandPaletteComponent', () => {
   let host: HostComponent;
 
   function getSearchInput(): HTMLInputElement {
-    return fixture.nativeElement.querySelector('.ea-command-palette__input');
+    return fixture.nativeElement.querySelector('.ea-command-palette__search input');
   }
 
   function getItems(): HTMLElement[] {
@@ -80,12 +82,19 @@ describe('CommandPaletteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('renders all non-disabled commands when the query is empty', () => {
+  it('renders every command, including disabled ones, when the query is empty', () => {
     const labels = getItems().map(el =>
       el.querySelector('.ea-command-palette__item-label')?.textContent?.trim(),
     );
-    // 'save' is disabled, so `filteredItems` omits it
-    expect(labels).toEqual(['Toggle theme', 'New file', 'Open file', 'Find', 'Replace']);
+
+    expect(labels).toEqual([
+      'Toggle theme',
+      'New file',
+      'Open file',
+      'Save',
+      'Find',
+      'Replace',
+    ]);
   });
 
   it('filters by label substring', () => {
@@ -197,6 +206,55 @@ describe('CommandPaletteComponent', () => {
     press('ArrowDown');
 
     expect(getActiveItem()).toBeTruthy();
+  });
+
+  describe('Disabled items', () => {
+    it('marks a disabled item with aria-disabled and the disabled class', () => {
+      const save = getItems()[3];
+
+      expect(save.getAttribute('aria-disabled')).toBe('true');
+      expect(save.classList.contains('ea-command-palette__item--disabled')).toBe(true);
+    });
+
+    it('does not execute a disabled item on click', () => {
+      getItems()[3].click();
+      fixture.detectChanges();
+
+      expect(host.lastExecuted).toBeNull();
+      expect(host.open()).toBe(true);
+    });
+
+    it('skips disabled items during keyboard navigation', () => {
+      press('ArrowDown');
+      press('ArrowDown');
+      press('ArrowDown');
+
+      expect(getActiveItem()?.textContent?.trim()).toContain('Find');
+    });
+
+    it('keeps a disabled item visible but inactive when it is the only match', () => {
+      typeQuery('save');
+
+      expect(getItems()).toHaveLength(1);
+      expect(getActiveItem()).toBeUndefined();
+
+      press('Enter');
+
+      expect(host.lastExecuted).toBeNull();
+    });
+
+    it('disables items matched by the disabledWhen predicate', () => {
+      host.disabledWhen.set(item => item.id === 'find');
+      fixture.detectChanges();
+
+      const find = getItems()[4];
+      expect(find.classList.contains('ea-command-palette__item--disabled')).toBe(true);
+
+      find.click();
+      fixture.detectChanges();
+
+      expect(host.lastExecuted).toBeNull();
+    });
   });
 
   it('renders the shortcut hint when provided', () => {

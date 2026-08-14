@@ -962,19 +962,6 @@ export const is: WebMessages = {
         commandPalette: {
           hint: 'Ýttu á Ctrl + K (eða Cmd + K) til að opna skipanaspjaldið hvar sem er á þessari síðu.',
           openButton: 'Opna skipanaspjald',
-          fileGroup: 'Skrá',
-          editGroup: 'Breyta',
-          newFile: 'Ný skrá',
-          openFile: 'Opna skrá',
-          save: 'Vista',
-          find: 'Finna',
-          findKeyword: 'leita',
-          replace: 'Skipta út',
-          undo: 'Afturkalla',
-          toggleTheme: 'Víxla þema',
-          toggleThemeDescription: 'Skipta milli ljóss og dökks hams',
-          lockWorkspace: 'Læsa vinnusvæði',
-          lockWorkspaceDescription: 'Óvirkt sem stendur (eiginleiki í beta)',
           executedToast: label => `Keyrt: ${label}`,
         },
         avatarEditorActions: {
@@ -1239,6 +1226,17 @@ export const is: WebMessages = {
             resume: 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
+            keepIcon:
+              'Heldur fremra tákninu sýnilegu meðan reiturinn hefur gildi; með false birtist táknið aðeins með staðgengilstextanum.',
+            role: 'ARIA-hlutverk sett á innbyggða reitinn, t.d. combobox fyrir typeahead-hýsil.',
+            ariaExpanded:
+              'Útvíkkunarstaða stýrðs sprettiglugga, áframsend sem aria-expanded.',
+            ariaControls:
+              'Auðkenni sprettigluggans sem reiturinn stýrir, áframsent sem aria-controls.',
+            ariaActivedescendant:
+              'Auðkenni virka valkostsins í stýrða sprettiglugganum, áframsent sem aria-activedescendant.',
+            ariaAutocomplete:
+              'Vísbending um sjálfvirka útfyllingu, áframsend sem aria-autocomplete.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             type: 'Innbyggð inntaksgerð (lykilorð bætir við innbyggðri sýna/fela víxlun).',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
@@ -1747,6 +1745,8 @@ export const is: WebMessages = {
               'Velur gefna valkostinn forritunarlega, uppfærir gildið og lokar listanum.',
           },
           'command-palette': {
+            disabledWhen:
+              'Valkvætt skilyrði sem gerir hvert atriði óvirkt sem það skilar true fyrir, til viðbótar við disabled-flagg hvers atriðis.',
             emptyMessage:
               'Skilaboð sýnd þegar leitarfyrirspurnin passar við engin atriði, fellur aftur á þýðingu virka svæðisins þegar því er sleppt.',
             items: 'Fullur listi skipanaatriða tiltækra til leitar og keyrslu.',

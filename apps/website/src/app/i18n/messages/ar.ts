@@ -945,19 +945,6 @@ export const ar: WebMessages = {
         commandPalette: {
           hint: 'اضغط Ctrl + K (أو Cmd + K) لفتح لوحة الأوامر في أي مكان على هذه الصفحة.',
           openButton: 'فتح لوحة الأوامر',
-          fileGroup: 'ملف',
-          editGroup: 'تحرير',
-          newFile: 'ملف جديد',
-          openFile: 'فتح ملف',
-          save: 'حفظ',
-          find: 'بحث',
-          findKeyword: 'بحث',
-          replace: 'استبدال',
-          undo: 'تراجع',
-          toggleTheme: 'تبديل السمة',
-          toggleThemeDescription: 'التبديل بين الوضع الفاتح والداكن',
-          lockWorkspace: 'قفل مساحة العمل',
-          lockWorkspaceDescription: 'معطّل حاليًا، الميزة في مرحلة تجريبية',
           executedToast: label => `تم التنفيذ: ${label}`,
         },
         avatarEditorActions: {
@@ -1222,6 +1209,16 @@ export const ar: WebMessages = {
             resume: 'يستأنف عمليات العد التنازلي التي أوقفتها pause.',
           },
           input: {
+            keepIcon:
+              'يبقي الأيقونة البادئة ظاهرة أثناء وجود قيمة في الحقل، وعند تعيينه إلى false تظهر الأيقونة فقط مع النص النائب.',
+            role: 'دور ARIA المطبق على حقل الإدخال الأصلي، مثل combobox لمضيف الإكمال التلقائي.',
+            ariaExpanded:
+              'حالة التوسيع لقائمة منبثقة خاضعة للتحكم، تُمرر كـ aria-expanded.',
+            ariaControls:
+              'معرّف العنصر المنبثق الذي يتحكم به الحقل، يُمرر كـ aria-controls.',
+            ariaActivedescendant:
+              'معرّف الخيار النشط في القائمة المنبثقة الخاضعة للتحكم، يُمرر كـ aria-activedescendant.',
+            ariaAutocomplete: 'تلميح سلوك الإكمال التلقائي، يُمرر كـ aria-autocomplete.',
             label: 'تسمية نصية تُعرَض فوق الحقل.',
             type: 'نوع input الأصلي (يضيف password مبدّل إظهار/إخفاء مدمجًا).',
             placeholder: 'العنصر النائب المعروض ما دام الحقل فارغًا.',
@@ -1696,6 +1693,8 @@ export const ar: WebMessages = {
             selectOption: 'يختار الخيار المعطى برمجيًا، محدّثًا القيمة ومغلقًا القائمة.',
           },
           'command-palette': {
+            disabledWhen:
+              'دالة اختيارية تعطّل كل عنصر تُرجع له true، إضافةً إلى خاصية disabled الخاصة بكل عنصر.',
             emptyMessage:
               'الرسالة المعروضة عندما لا يطابق استعلام البحث أي عنصر، تعود إلى ترجمة اللغة النشطة عند حذفها.',
             items: 'القائمة الكاملة لعناصر الأوامر المتاحة للبحث والتنفيذ.',

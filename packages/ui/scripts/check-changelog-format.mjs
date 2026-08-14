@@ -16,7 +16,7 @@ const VERBS = new Set(
    Capitalize Carry Center Centre Change Confine Consolidate Correct Cycle Darken Deepen
    Default Deliver Deprecate Derive Direct Disable Dismiss Display Document Double
    Download Draw Drop Eliminate Emit Enlarge Ensure Expand Export Expose Extend Feature
-   Fill Fix Flatten Fold Follow Gate Generate Give Group Guard Handle Hide Hold Honor
+   Fill Fix Flatten Fold Follow Forward Gate Generate Give Group Guard Handle Hide Hold Honor
    Host Improve Increase Inline Inset Integrate Introduce Keep Lay Layer Let Lift Lighten
    Limit Link List Load Localize Make Mark Mention Migrate Mirror Move Name Normalize
    Observe Offset Open Overlap Override Pick Pin Point Polish Preload Present Preserve
@@ -68,7 +68,7 @@ for (const line of body.slice(1)) {
 
   entries++;
   const entry = line.slice(2).trim();
-  const first = entry.split(/[\s,:]/)[0];
+  const first = entry.replace(/^\*\*Breaking:\*\* /, '').split(/[\s,:]/)[0];
   if (!VERBS.has(first)) {
     problems.push(
       `"${entry}" does not open with a known present-tense verb ("${first}"); ` +

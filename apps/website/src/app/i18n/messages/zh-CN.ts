@@ -927,19 +927,6 @@ export const zhCN: WebMessages = {
         commandPalette: {
           hint: '在本页面任意位置按 Ctrl + K（或 Cmd + K）打开命令面板。',
           openButton: '打开命令面板',
-          fileGroup: '文件',
-          editGroup: '编辑',
-          newFile: '新建文件',
-          openFile: '打开文件',
-          save: '保存',
-          find: '查找',
-          findKeyword: '搜索',
-          replace: '替换',
-          undo: '撤销',
-          toggleTheme: '切换主题',
-          toggleThemeDescription: '在浅色和深色模式之间切换',
-          lockWorkspace: '锁定工作区',
-          lockWorkspaceDescription: '当前已禁用，功能尚处测试阶段',
           executedToast: label => `已执行：${label}`,
         },
         avatarEditorActions: {
@@ -1201,6 +1188,14 @@ export const zhCN: WebMessages = {
             resume: '恢复被 pause 暂停的倒计时。',
           },
           input: {
+            keepIcon:
+              '在字段有值时保持前置图标可见；设为 false 时图标仅与占位符一同显示。',
+            role: '应用于原生输入框的 ARIA 角色，例如用于预输入宿主的 combobox。',
+            ariaExpanded: '受控弹出层的展开状态，作为 aria-expanded 转发。',
+            ariaControls: '输入框所控制的弹出元素的 id，作为 aria-controls 转发。',
+            ariaActivedescendant:
+              '受控弹出层中活动选项的 id，作为 aria-activedescendant 转发。',
+            ariaAutocomplete: '自动完成行为提示，作为 aria-autocomplete 转发。',
             label: '渲染在字段上方的文本标签。',
             type: '原生输入类型（password 会添加内建的显示/隐藏切换）。',
             placeholder: '字段为空时显示的占位符。',
@@ -1620,6 +1615,8 @@ export const zhCN: WebMessages = {
             selectOption: '以编程方式选择给定选项，更新值并关闭列表。',
           },
           'command-palette': {
+            disabledWhen:
+              '可选谓词，除各项自身的 disabled 标志外，凡返回 true 的项均会被禁用。',
             emptyMessage: '当搜索查询无匹配项时显示的消息，省略时回退到当前语言的翻译。',
             items: '可供搜索和执行的完整命令项列表。',
             open: '面板对话框是否打开，可通过 [(open)] 双向绑定。',

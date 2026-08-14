@@ -1044,6 +1044,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-command-palette',
     inputs: [
       {
+        name: 'disabledWhen',
+        type: '(item: CommandPaletteItem) => boolean',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'emptyMessage',
         type: 'string',
         default: "''",
@@ -2047,6 +2054,34 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-input',
     inputs: [
       {
+        name: 'ariaActivedescendant',
+        type: 'string | null | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaAutocomplete',
+        type: "'none' | 'inline' | 'list' | 'both' | undefined",
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaControls',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaExpanded',
+        type: 'boolean | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabel',
         type: 'string | undefined',
         default: 'undefined',
@@ -2117,6 +2152,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'keepIcon',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'label',
         type: 'string | undefined',
         default: 'undefined',
@@ -2176,6 +2218,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'required',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'role',
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },

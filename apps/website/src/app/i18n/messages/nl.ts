@@ -961,19 +961,6 @@ export const nl: WebMessages = {
         commandPalette: {
           hint: 'Druk op Ctrl + K (of Cmd + K) om het opdrachtenpalet overal op deze pagina te openen.',
           openButton: 'Opdrachtenpalet openen',
-          fileGroup: 'Bestand',
-          editGroup: 'Bewerken',
-          newFile: 'Nieuw bestand',
-          openFile: 'Bestand openen',
-          save: 'Opslaan',
-          find: 'Zoeken',
-          findKeyword: 'zoeken',
-          replace: 'Vervangen',
-          undo: 'Ongedaan maken',
-          toggleTheme: 'Thema wisselen',
-          toggleThemeDescription: 'Schakel tussen lichte en donkere modus',
-          lockWorkspace: 'Werkruimte vergrendelen',
-          lockWorkspaceDescription: 'Momenteel uitgeschakeld (functie in bèta)',
           executedToast: label => `Uitgevoerd: ${label}`,
         },
         avatarEditorActions: {
@@ -1239,6 +1226,17 @@ export const nl: WebMessages = {
             resume: 'Hervat de aftellingen die door pause zijn opgeschort.',
           },
           input: {
+            keepIcon:
+              'Houdt het voorloopicoon zichtbaar terwijl het veld een waarde heeft; met false verschijnt het icoon alleen samen met de placeholder.',
+            role: 'ARIA-rol toegepast op het native invoerveld, bijv. combobox voor een typeahead-host.',
+            ariaExpanded:
+              'Uitgeklapte status van een bestuurde popup, doorgegeven als aria-expanded.',
+            ariaControls:
+              'id van het popup-element dat het veld bestuurt, doorgegeven als aria-controls.',
+            ariaActivedescendant:
+              'id van de actieve optie in de bestuurde popup, doorgegeven als aria-activedescendant.',
+            ariaAutocomplete:
+              'Hint voor het autoaanvulgedrag, doorgegeven als aria-autocomplete.',
             label: 'Tekstlabel weergegeven boven het veld.',
             type: 'Native invoertype (password voegt een ingebouwde tonen/verbergen-schakelaar toe).',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
@@ -1780,6 +1778,8 @@ export const nl: WebMessages = {
               'Selecteert programmatisch de gegeven optie, werkt de waarde bij en sluit de lijst.',
           },
           'command-palette': {
+            disabledWhen:
+              'Optioneel predicaat dat elk item uitschakelt waarvoor het true retourneert, naast de eigen disabled-vlag van elk item.',
             emptyMessage:
               'Melding getoond wanneer de zoekopdracht met geen enkel item overeenkomt, die terugvalt op de vertaling van de actieve taal indien weggelaten.',
             items:

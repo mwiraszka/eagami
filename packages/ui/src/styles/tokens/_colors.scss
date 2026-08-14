@@ -115,7 +115,9 @@
   --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
-  --color-divider: var(--color-border-subtle);
+  // Dividers are a translucent wash, like the state fills, so hairline rules
+  // inside a surface read evenly on base, elevated, and hover tones alike.
+  --color-divider: rgba(0, 0, 0, 0.1);
   --color-border-focus: var(--color-primary-500);
 
   // brand-default/-hover/-active are the brand colour as a surface (solid bg
@@ -220,9 +222,8 @@
   );
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
-  // Dividers read as barely-there against dark surfaces at border-subtle, so
-  // they step one neutral lighter for a visible-but-quiet rule.
-  --color-divider: var(--color-neutral-600);
+  // Dividers flip to a light wash so the rule stays visible on every dark tier
+  --color-divider: rgba(255, 255, 255, 0.12);
 
   // Surface roles step one shade lighter than light mode so the button clears
   // WCAG 1.4.11 (3:1) on the near-black canvas while keeping a white label

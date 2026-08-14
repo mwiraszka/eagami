@@ -14,9 +14,9 @@ export interface OptionGroupState {
   secondGroupLabel: string;
 }
 
-// Option labels are demo-editable free text, so they are escaped before going
-// into the snippet's single-quoted literals
-function quoted(text: string): string {
+// Demo-editable free text is escaped before going into a snippet's
+// single-quoted literals
+export function quoted(text: string): string {
   return `'${text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 }
 

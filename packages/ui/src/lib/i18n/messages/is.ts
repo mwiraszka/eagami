@@ -35,7 +35,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'Skipanaspjald',
     searchPlaceholder: 'Sláðu inn skipun eða leitaðu…',
     empty: 'Engar niðurstöður fundust',
-    clear: 'Hreinsa leit',
   },
   colorPicker: {
     dialogLabel: 'Velja lit',

@@ -10,7 +10,7 @@
     class="ea-input-wrapper"
     [ngClass]="wrapperClasses()"
     [style.max-width]="numberWidth()">
-    @if (!value() && icon(); as leadingIcon) {
+    @if ((keepIcon() || !value()) && icon(); as leadingIcon) {
       <span
         class="ea-input-wrapper__icon"
         aria-hidden="true">
@@ -40,7 +40,12 @@
       [attr.step]="type() === 'number' ? (step() ?? null) : null"
       [attr.maxlength]="maxLength() ?? null"
       [attr.minlength]="minLength() ?? null"
+      [attr.role]="role() ?? null"
       [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
+      [attr.aria-expanded]="ariaExpanded() ?? null"
+      [attr.aria-controls]="ariaControls() ?? null"
+      [attr.aria-activedescendant]="ariaActivedescendant() ?? null"
+      [attr.aria-autocomplete]="ariaAutocomplete() ?? null"
       [attr.aria-invalid]="hasError() || null"
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null

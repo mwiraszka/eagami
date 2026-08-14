@@ -6,7 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
-    [extraAttributes]="extraAttributes"
+    [extraAttributes]="extraAttributes()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-button (clicked)="open.set(true)">
@@ -18,5 +18,55 @@
       [placeholder]="state().placeholder"
       [emptyMessage]="state().emptyMessage"
       (execute)="onExecute($event)" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      @for (item of items(); track item.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Label"
+            [value]="item.label"
+            (valueChange)="updateItem(item.id, { label: $event })" />
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Description"
+            [value]="item.description"
+            (valueChange)="updateItem(item.id, { description: $event })" />
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Shortcut"
+            [value]="item.shortcut"
+            (valueChange)="updateItem(item.id, { shortcut: $event })" />
+          <ea-input
+            class="demo-item-row__grow"
+            placeholder="Group"
+            [value]="item.group"
+            (valueChange)="updateItem(item.id, { group: $event })" />
+          <ea-checkbox
+            label="Disabled"
+            [checked]="item.disabled"
+            (changed)="updateItem(item.id, { disabled: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            eaTooltip="Delete command"
+            aria-label="Delete command"
+            (clicked)="removeItem(item.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        eaTooltip="Add command"
+        aria-label="Add command"
+        (clicked)="addItem()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

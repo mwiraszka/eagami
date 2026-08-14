@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.26.0] - 2026-08-14
+
+### Added
+
+- Add `disabledWhen` to the command palette, a predicate that disables matching commands, and keep disabled commands visible as greyed-out, inert rows instead of hiding them.
+- Add `keepIcon` to the input, keeping the leading icon while the field has a value, with `false` restoring the previous hide-with-placeholder behaviour.
+- Forward `role`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, and `aria-autocomplete` from the input to its native control for combobox-style hosts.
+
+### Changed
+
+- **Breaking:** Remove the unused `commandPalette.clear` message from the localized message set.
+- Rebuild the command palette's search field on the input component, giving it the standard focus ring, leading search icon, and clear button.
+- Soften dividers to a translucent wash in both themes across the command palette, grouped option lists, and the divider.
+- Inset the command palette's top divider to match its section rules.
+- Shrink the input's leading icon to two thirds of its previous size.
+
 ## [5.25.1] - 2026-08-13
 
 ### Fixed
@@ -1359,6 +1375,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.26.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.25.1...ui-v5.26.0
 [5.25.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.25.0...ui-v5.25.1
 [5.25.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.24.0...ui-v5.25.0
 [5.24.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.23.0...ui-v5.24.0

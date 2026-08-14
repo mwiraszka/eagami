@@ -14,6 +14,30 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.26.0',
+    date: '2026-08-14',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `disabledWhen` to the command palette, a predicate that disables matching commands, and keep disabled commands visible as greyed-out, inert rows instead of hiding them.',
+          'Add `keepIcon` to the input, keeping the leading icon while the field has a value, with `false` restoring the previous hide-with-placeholder behaviour.',
+          'Forward `role`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, and `aria-autocomplete` from the input to its native control for combobox-style hosts.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Remove the unused `commandPalette.clear` message from the localized message set.',
+          "Rebuild the command palette's search field on the input component, giving it the standard focus ring, leading search icon, and clear button.",
+          'Soften dividers to a translucent wash in both themes across the command palette, grouped option lists, and the divider.',
+          "Inset the command palette's top divider to match its section rules.",
+          "Shrink the input's leading icon to two thirds of its previous size.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.25.1',
     date: '2026-08-13',
     sections: [
