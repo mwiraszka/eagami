@@ -35,7 +35,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'Opdrachtenpalet',
     searchPlaceholder: 'Typ een opdracht of zoek…',
     empty: 'Geen resultaten gevonden',
-    clear: 'Zoekopdracht wissen',
   },
   colorPicker: {
     dialogLabel: 'Kleur kiezen',

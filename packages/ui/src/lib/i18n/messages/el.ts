@@ -35,7 +35,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'Παλέτα εντολών',
     searchPlaceholder: 'Πληκτρολογήστε εντολή ή αναζητήστε…',
     empty: 'Δεν βρέθηκαν αποτελέσματα',
-    clear: 'Εκκαθάριση αναζήτησης',
   },
   colorPicker: {
     dialogLabel: 'Επιλογή χρώματος',

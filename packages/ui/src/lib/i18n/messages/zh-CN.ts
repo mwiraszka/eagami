@@ -34,7 +34,6 @@ const messages: EagamiMessages = {
     dialogLabel: '命令面板',
     searchPlaceholder: '输入命令或搜索…',
     empty: '未找到结果',
-    clear: '清除搜索',
   },
   colorPicker: {
     dialogLabel: '选择颜色',

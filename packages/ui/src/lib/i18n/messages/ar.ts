@@ -34,7 +34,6 @@ const messages: EagamiMessages = {
     dialogLabel: 'لوحة الأوامر',
     searchPlaceholder: 'اكتب أمرًا أو ابحث…',
     empty: 'لم يتم العثور على نتائج',
-    clear: 'مسح البحث',
   },
   colorPicker: {
     dialogLabel: 'اختيار اللون',

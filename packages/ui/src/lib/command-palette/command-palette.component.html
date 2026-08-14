@@ -6,35 +6,22 @@
   (click)="onBackdropClick($event)">
   <div class="ea-command-palette__panel">
     <div class="ea-command-palette__search">
-      <ea-icon-search
-        class="ea-command-palette__search-icon"
-        aria-hidden="true" />
-      <input
+      <ea-input
         #searchEl
-        class="ea-command-palette__input"
-        type="text"
-        dir="auto"
-        role="combobox"
-        autocomplete="off"
-        spellcheck="false"
-        [attr.aria-label]="resolvedPlaceholder()"
-        [attr.aria-controls]="filteredItems().length > 0 ? listboxId : null"
-        [attr.aria-expanded]="filteredItems().length > 0"
-        [attr.aria-autocomplete]="'list'"
-        [attr.aria-activedescendant]="activeId()"
+        class="ea-command-palette__search-input"
+        [icon]="searchIcon"
+        [clearable]="true"
+        [role]="'combobox'"
+        [autocomplete]="'off'"
+        [aria-label]="resolvedPlaceholder()"
+        [aria-controls]="filteredItems().length > 0 ? listboxId : undefined"
+        [aria-expanded]="filteredItems().length > 0"
+        [aria-autocomplete]="'list'"
+        [aria-activedescendant]="activeId()"
         [placeholder]="resolvedPlaceholder()"
         [value]="query()"
-        (input)="onQueryInput($event)"
+        (valueChange)="onQueryChange($event)"
         (keydown)="onSearchKeydown($event)" />
-      @if (query()) {
-        <button
-          type="button"
-          class="ea-command-palette__clear"
-          [attr.aria-label]="messages().commandPalette.clear"
-          (click)="clearQuery()">
-          <ea-icon-x />
-        </button>
-      }
     </div>
 
     @if (filteredItems().length === 0) {
@@ -89,9 +76,9 @@
     role="option"
     [id]="itemDomId(entry.item)"
     [attr.aria-selected]="isActive(entry.flatIndex)"
-    [attr.aria-disabled]="entry.item.disabled || null"
+    [attr.aria-disabled]="isItemDisabled(entry.item) || null"
     [class.ea-command-palette__item--active]="showActiveHighlight(entry.flatIndex)"
-    [class.ea-command-palette__item--disabled]="entry.item.disabled"
+    [class.ea-command-palette__item--disabled]="isItemDisabled(entry.item)"
     (click)="onItemClick(entry.item)"
     (mouseenter)="onItemMouseEnter(entry.flatIndex)">
     @if (entry.item.icon; as iconClass) {

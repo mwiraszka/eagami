@@ -111,7 +111,6 @@ export interface EagamiMessages {
     dialogLabel: string;
     searchPlaceholder: string;
     empty: string;
-    clear: string;
   };
   colorPicker: {
     dialogLabel: string;

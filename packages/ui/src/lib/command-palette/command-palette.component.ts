@@ -16,7 +16,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { SearchIconComponent } from '../icons/search.component';
-import { XIconComponent } from '../icons/x.component';
+import { InputComponent } from '../input/input.component';
 import { uniqueId } from '../unique-id';
 import type { CommandPaletteItem } from './command-palette.types';
 
@@ -44,7 +44,7 @@ interface GroupedItems {
   styleUrl: './command-palette.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [NgComponentOutlet, NgTemplateOutlet, SearchIconComponent, XIconComponent],
+  imports: [NgComponentOutlet, NgTemplateOutlet, InputComponent],
 })
 export class CommandPaletteComponent {
   private readonly i18n = inject(EagamiI18nService);
@@ -58,6 +58,12 @@ export class CommandPaletteComponent {
 
   readonly emptyMessage = input<string>('');
 
+  /**
+   * Optional predicate that disables every item it returns `true` for, in
+   * addition to each item's own `disabled` flag.
+   */
+  readonly disabledWhen = input<(item: CommandPaletteItem) => boolean>();
+
   readonly execute = output<CommandPaletteItem>();
 
   protected readonly messages = this.i18n.messages;
@@ -67,7 +73,9 @@ export class CommandPaletteComponent {
   );
 
   private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialogEl');
-  private readonly searchEl = viewChild<ElementRef<HTMLInputElement>>('searchEl');
+  private readonly searchEl = viewChild<InputComponent>('searchEl');
+
+  protected readonly searchIcon = SearchIconComponent;
 
   protected readonly query = signal<string>('');
 
@@ -82,9 +90,6 @@ export class CommandPaletteComponent {
   protected readonly groupedItems = computed<GroupedItems[]>(() => {
     const q = this.query().trim().toLowerCase();
     const candidates = this.items().filter(item => {
-      if (item.disabled) {
-        return false;
-      }
       if (!q) {
         return true;
       }
@@ -152,11 +157,27 @@ export class CommandPaletteComponent {
   private readonly interaction = signal<'keyboard' | 'mouse' | 'none'>('keyboard');
 
   protected readonly activeIndex = computed(() => {
-    const max = this.filteredItems().length - 1;
-    if (max < 0) {
+    const items = this.filteredItems();
+    if (items.length === 0) {
       return -1;
     }
-    return Math.min(this._activeIndex(), max);
+    // Open/filter resets pin the index at 0, which may be a disabled row;
+    // resolve to the nearest enabled one, preferring the next row down
+    const start = Math.min(this._activeIndex(), items.length - 1);
+    if (!this.isItemDisabled(items[start])) {
+      return start;
+    }
+    for (let idx = start + 1; idx < items.length; idx++) {
+      if (!this.isItemDisabled(items[idx])) {
+        return idx;
+      }
+    }
+    for (let idx = start - 1; idx >= 0; idx--) {
+      if (!this.isItemDisabled(items[idx])) {
+        return idx;
+      }
+    }
+    return -1;
   });
 
   protected readonly activeId = computed(() => {
@@ -185,7 +206,7 @@ export class CommandPaletteComponent {
         this.query.set('');
         this._activeIndex.set(0);
         this.interaction.set('keyboard');
-        queueMicrotask(() => this.searchEl()?.nativeElement.focus());
+        queueMicrotask(() => this.searchEl()?.focus());
       } else if (dialog.open) {
         dialog.close();
       }
@@ -194,6 +215,10 @@ export class CommandPaletteComponent {
 
   protected itemDomId(item: CommandPaletteItem): string {
     return `ea-command-palette-item-${item.id}`;
+  }
+
+  protected isItemDisabled(item: CommandPaletteItem): boolean {
+    return !!item.disabled || !!this.disabledWhen()?.(item);
   }
 
   protected isActive(flatIndex: number): boolean {
@@ -210,19 +235,12 @@ export class CommandPaletteComponent {
     return this.interaction() === 'keyboard' && this.isActive(flatIndex);
   }
 
-  protected onQueryInput(event: Event): void {
-    this.query.set((event.target as HTMLInputElement).value);
+  protected onQueryChange(value: string): void {
+    this.query.set(value);
     this._activeIndex.set(0);
     // Typing implies keyboard intent; surface the first match so the user
     // knows what Enter would pick without having to mouse over.
     this.interaction.set('keyboard');
-  }
-
-  protected clearQuery(): void {
-    this.query.set('');
-    this._activeIndex.set(0);
-    this.interaction.set('keyboard');
-    this.searchEl()?.nativeElement.focus();
   }
 
   protected onSearchKeydown(event: KeyboardEvent): void {
@@ -254,7 +272,7 @@ export class CommandPaletteComponent {
       case 'Enter': {
         event.preventDefault();
         const item = this.filteredItems()[this.activeIndex()];
-        if (item && !item.disabled) {
+        if (item && !this.isItemDisabled(item)) {
           this.executeItem(item);
         }
         break;
@@ -268,7 +286,7 @@ export class CommandPaletteComponent {
     let idx = this.activeIndex();
     for (let i = 0; i < items.length; i++) {
       idx = (idx + delta + items.length) % items.length;
-      if (!items[idx].disabled) {
+      if (!this.isItemDisabled(items[idx])) {
         this.setActiveByKeyboard(idx);
         return;
       }
@@ -279,7 +297,7 @@ export class CommandPaletteComponent {
   private edgeActive(direction: 1 | -1): void {
     const items = this.filteredItems();
     let idx = direction === 1 ? 0 : items.length - 1;
-    while (idx >= 0 && idx < items.length && items[idx].disabled) {
+    while (idx >= 0 && idx < items.length && this.isItemDisabled(items[idx])) {
       idx += direction;
     }
     if (idx >= 0 && idx < items.length) {
@@ -294,13 +312,17 @@ export class CommandPaletteComponent {
   }
 
   protected onItemClick(item: CommandPaletteItem): void {
-    if (item.disabled) {
+    if (this.isItemDisabled(item)) {
       return;
     }
     this.executeItem(item);
   }
 
   protected onItemMouseEnter(flatIndex: number): void {
+    const item = this.filteredItems()[flatIndex];
+    if (!item || this.isItemDisabled(item)) {
+      return;
+    }
     this._activeIndex.set(flatIndex);
     this.interaction.set('mouse');
   }
@@ -331,7 +353,7 @@ export class CommandPaletteComponent {
   }
 
   private executeItem(item: CommandPaletteItem): void {
-    if (item.disabled) {
+    if (this.isItemDisabled(item)) {
       return;
     }
     this.execute.emit(item);
