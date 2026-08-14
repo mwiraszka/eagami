@@ -34,6 +34,7 @@ interface InputKnobState {
   autofocus: boolean;
   showPasswordToggle: boolean;
   clearable: boolean;
+  keepIcon: boolean;
   autocomplete: string;
   icon: string;
   triggerError: boolean;

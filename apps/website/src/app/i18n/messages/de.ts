@@ -969,19 +969,6 @@ export const de: WebMessages = {
         commandPalette: {
           hint: 'Drücken Sie Strg + K (oder Cmd + K), um die Befehlspalette überall auf dieser Seite zu öffnen.',
           openButton: 'Befehlspalette öffnen',
-          fileGroup: 'Datei',
-          editGroup: 'Bearbeiten',
-          newFile: 'Neue Datei',
-          openFile: 'Datei öffnen',
-          save: 'Speichern',
-          find: 'Suchen',
-          findKeyword: 'suchen',
-          replace: 'Ersetzen',
-          undo: 'Rückgängig',
-          toggleTheme: 'Theme umschalten',
-          toggleThemeDescription: 'Zwischen Hell- und Dunkelmodus wechseln',
-          lockWorkspace: 'Arbeitsbereich sperren',
-          lockWorkspaceDescription: 'Derzeit deaktiviert (Funktion in der Beta)',
           executedToast: label => `Ausgeführt: ${label}`,
         },
         avatarEditorActions: {
@@ -1248,6 +1235,17 @@ export const de: WebMessages = {
             resume: 'Setzt die von pause angehaltenen Countdowns fort.',
           },
           input: {
+            keepIcon:
+              'Zeigt das führende Icon auch, während das Feld einen Wert hat; bei false erscheint es nur zusammen mit dem Platzhalter.',
+            role: 'ARIA-Rolle für das native Eingabefeld, z. B. combobox für einen Typeahead-Host.',
+            ariaExpanded:
+              'Aufgeklappt-Zustand eines gesteuerten Popups, weitergereicht als aria-expanded.',
+            ariaControls:
+              'id des Popup-Elements, das das Feld steuert, weitergereicht als aria-controls.',
+            ariaActivedescendant:
+              'id der aktiven Option im gesteuerten Popup, weitergereicht als aria-activedescendant.',
+            ariaAutocomplete:
+              'Hinweis auf das Autovervollständigungsverhalten, weitergereicht als aria-autocomplete.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             type: 'Nativer Input-Typ (password fügt einen integrierten Anzeigen/Verbergen-Umschalter hinzu).',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
@@ -1794,6 +1792,8 @@ export const de: WebMessages = {
               'Wählt programmatisch die gegebene Option aus, aktualisiert den Wert und schließt die Liste.',
           },
           'command-palette': {
+            disabledWhen:
+              'Optionales Prädikat, das jedes Element deaktiviert, für das es true zurückgibt, zusätzlich zum disabled-Flag des jeweiligen Elements.',
             emptyMessage:
               'Meldung, die angezeigt wird, wenn die Suchanfrage keine Einträge findet, mit der Übersetzung des aktiven Sprachraums als Standard, wenn weggelassen.',
             items:

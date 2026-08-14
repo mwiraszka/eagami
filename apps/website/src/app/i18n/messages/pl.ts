@@ -966,19 +966,6 @@ export const pl: WebMessages = {
         commandPalette: {
           hint: 'Naciśnij Ctrl + K (lub Cmd + K), aby otworzyć paletę poleceń w dowolnym miejscu strony.',
           openButton: 'Otwórz paletę poleceń',
-          fileGroup: 'Plik',
-          editGroup: 'Edycja',
-          newFile: 'Nowy plik',
-          openFile: 'Otwórz plik',
-          save: 'Zapisz',
-          find: 'Znajdź',
-          findKeyword: 'wyszukaj',
-          replace: 'Zamień',
-          undo: 'Cofnij',
-          toggleTheme: 'Przełącz motyw',
-          toggleThemeDescription: 'Przełączaj między trybem jasnym a ciemnym',
-          lockWorkspace: 'Zablokuj obszar roboczy',
-          lockWorkspaceDescription: 'Obecnie wyłączone, funkcja w wersji beta',
           executedToast: label => `Wykonano: ${label}`,
         },
         avatarEditorActions: {
@@ -1243,6 +1230,17 @@ export const pl: WebMessages = {
             resume: 'Wznawia odliczania wstrzymane przez pause.',
           },
           input: {
+            keepIcon:
+              'Zachowuje widoczność wiodącej ikony, gdy pole ma wartość; przy false ikona pojawia się tylko razem z placeholderem.',
+            role: 'Rola ARIA zastosowana do natywnego pola, np. combobox dla hosta typeahead.',
+            ariaExpanded:
+              'Stan rozwinięcia kontrolowanego okienka, przekazywany jako aria-expanded.',
+            ariaControls:
+              'id elementu okienka kontrolowanego przez pole, przekazywane jako aria-controls.',
+            ariaActivedescendant:
+              'id aktywnej opcji w kontrolowanym okienku, przekazywane jako aria-activedescendant.',
+            ariaAutocomplete:
+              'Wskazówka zachowania autouzupełniania, przekazywana jako aria-autocomplete.',
             label: 'Etykieta wyświetlana nad polem.',
             type: 'Natywny typ pola (password dodaje wbudowany przycisk pokaż/ukryj).',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
@@ -1771,6 +1769,8 @@ export const pl: WebMessages = {
               'Programowo zaznacza podaną opcję, aktualizuje wartość i zamyka listę.',
           },
           'command-palette': {
+            disabledWhen:
+              'Opcjonalny predykat wyłączający każdy element, dla którego zwraca true, oprócz własnej flagi disabled danego elementu.',
             emptyMessage:
               'Komunikat wyświetlany gdy zapytanie nie pasuje do żadnego elementu; w razie pominięcia używane jest tłumaczenie aktywnego języka.',
             items:

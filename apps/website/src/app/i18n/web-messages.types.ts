@@ -782,19 +782,6 @@ export interface WebMessages {
         commandPalette: {
           hint: string;
           openButton: string;
-          fileGroup: string;
-          editGroup: string;
-          newFile: string;
-          openFile: string;
-          save: string;
-          find: string;
-          findKeyword: string;
-          replace: string;
-          undo: string;
-          toggleTheme: string;
-          toggleThemeDescription: string;
-          lockWorkspace: string;
-          lockWorkspaceDescription: string;
           executedToast: (label: string) => string;
         };
         avatarEditorActions: {

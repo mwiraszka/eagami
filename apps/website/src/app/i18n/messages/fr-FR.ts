@@ -975,19 +975,6 @@ export const frFR: WebMessages = {
         commandPalette: {
           hint: 'Appuyez sur Ctrl + K (ou Cmd + K) pour ouvrir la palette de commandes depuis cette page.',
           openButton: 'Ouvrir la palette de commandes',
-          fileGroup: 'Fichier',
-          editGroup: 'Édition',
-          newFile: 'Nouveau fichier',
-          openFile: 'Ouvrir un fichier',
-          save: 'Enregistrer',
-          find: 'Rechercher',
-          findKeyword: 'recherche',
-          replace: 'Remplacer',
-          undo: 'Annuler',
-          toggleTheme: 'Basculer le thème',
-          toggleThemeDescription: 'Passer entre le mode clair et le mode sombre',
-          lockWorkspace: 'Verrouiller l’espace de travail',
-          lockWorkspaceDescription: 'Désactivé pour le moment, fonctionnalité en bêta',
           executedToast: label => `Exécuté : ${label}`,
         },
         avatarEditorActions: {
@@ -1252,6 +1239,17 @@ export const frFR: WebMessages = {
             resume: 'Reprend les comptes à rebours suspendus par pause.',
           },
           input: {
+            keepIcon:
+              'Garde l’icône de tête visible tant que le champ a une valeur ; avec false, l’icône n’apparaît qu’avec le placeholder.',
+            role: 'Rôle ARIA appliqué au champ natif, p. ex. combobox pour un hôte de saisie semi-automatique.',
+            ariaExpanded:
+              'État déplié d’une fenêtre contextuelle contrôlée, transmis via aria-expanded.',
+            ariaControls:
+              'id de l’élément contextuel que le champ contrôle, transmis via aria-controls.',
+            ariaActivedescendant:
+              'id de l’option active dans la fenêtre contextuelle contrôlée, transmis via aria-activedescendant.',
+            ariaAutocomplete:
+              'Indice de comportement de saisie semi-automatique, transmis via aria-autocomplete.',
             label: 'Libellé affiché au-dessus du champ.',
             type: 'Type natif du champ (password ajoute un bouton afficher/masquer intégré).',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
@@ -1790,6 +1788,8 @@ export const frFR: WebMessages = {
               'Sélectionne par programme l’option donnée, met à jour la valeur et ferme la liste.',
           },
           'command-palette': {
+            disabledWhen:
+              'Prédicat facultatif qui désactive chaque élément pour lequel il renvoie true, en plus de l’indicateur disabled propre à chaque élément.',
             emptyMessage:
               'Message affiché lorsque la recherche ne correspond à aucun élément, avec repli sur la traduction de la locale active si omis.',
             items:

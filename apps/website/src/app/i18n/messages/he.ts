@@ -938,19 +938,6 @@ export const he: WebMessages = {
         commandPalette: {
           hint: 'הקישו Ctrl + K (או Cmd + K) כדי לפתוח את לוח הפקודות בכל מקום בדף זה.',
           openButton: 'פתח לוח פקודות',
-          fileGroup: 'קובץ',
-          editGroup: 'עריכה',
-          newFile: 'קובץ חדש',
-          openFile: 'פתח קובץ',
-          save: 'שמירה',
-          find: 'חיפוש',
-          findKeyword: 'חיפוש',
-          replace: 'החלפה',
-          undo: 'ביטול',
-          toggleTheme: 'החלף ערכת נושא',
-          toggleThemeDescription: 'מעבר בין מצב בהיר לכהה',
-          lockWorkspace: 'נעל סביבת עבודה',
-          lockWorkspaceDescription: 'מושבת כעת, התכונה בבטא',
           executedToast: label => `בוצע: ${label}`,
         },
         avatarEditorActions: {
@@ -1213,6 +1200,14 @@ export const he: WebMessages = {
             resume: 'ממשיך את הספירות לאחור שהושהו על ידי pause.',
           },
           input: {
+            keepIcon:
+              'משאיר את האייקון המוביל גלוי בזמן שלשדה יש ערך; עם false האייקון מוצג רק יחד עם ה-placeholder.',
+            role: 'תפקיד ARIA המוחל על שדה הקלט המקורי, למשל combobox עבור מארח השלמה אוטומטית.',
+            ariaExpanded: 'מצב הרחבה של חלונית נשלטת, מועבר כ-aria-expanded.',
+            ariaControls: 'מזהה רכיב החלונית שהשדה שולט בו, מועבר כ-aria-controls.',
+            ariaActivedescendant:
+              'מזהה האפשרות הפעילה בחלונית הנשלטת, מועבר כ-aria-activedescendant.',
+            ariaAutocomplete: 'רמז להתנהגות ההשלמה האוטומטית, מועבר כ-aria-autocomplete.',
             label: 'תווית טקסט המוצגת מעל השדה.',
             type: 'סוג input מקורי (password מוסיף מתג הצגה/הסתרה מובנה).',
             placeholder: 'מציין מיקום המוצג כשהשדה ריק.',
@@ -1675,6 +1670,8 @@ export const he: WebMessages = {
               'בוחר תכנותית את האפשרות הנתונה, מעדכן את הערך וסוגר את הרשימה.',
           },
           'command-palette': {
+            disabledWhen:
+              'פרדיקט אופציונלי המשבית כל פריט שעבורו הוא מחזיר true, בנוסף לדגל disabled של כל פריט.',
             emptyMessage:
               'הודעה המוצגת כששאילתת החיפוש אינה תואמת לאף פריט, נסוגה לתרגום של השפה הפעילה כשמושמטת.',
             items: 'הרשימה המלאה של פריטי הפקודות הזמינים לחיפוש ולביצוע.',

@@ -947,19 +947,6 @@ export const en: WebMessages = {
         commandPalette: {
           hint: 'Press Ctrl + K (or Cmd + K) to open the command palette anywhere on this page.',
           openButton: 'Open command palette',
-          fileGroup: 'File',
-          editGroup: 'Edit',
-          newFile: 'New file',
-          openFile: 'Open file',
-          save: 'Save',
-          find: 'Find',
-          findKeyword: 'search',
-          replace: 'Replace',
-          undo: 'Undo',
-          toggleTheme: 'Toggle theme',
-          toggleThemeDescription: 'Switch between light and dark mode',
-          lockWorkspace: 'Lock workspace',
-          lockWorkspaceDescription: 'Currently disabled (feature in beta)',
           executedToast: label => `Executed: ${label}`,
         },
         avatarEditorActions: {
@@ -1224,6 +1211,17 @@ export const en: WebMessages = {
             resume: 'Resumes the countdowns suspended by pause.',
           },
           input: {
+            keepIcon:
+              'Keeps the leading icon visible while the field has a value; when false the icon shows only while the placeholder does.',
+            role: 'ARIA role applied to the native input, e.g. combobox for a typeahead host.',
+            ariaExpanded:
+              'Expanded state of a controlled popup, forwarded as aria-expanded.',
+            ariaControls:
+              'id of the popup element the input controls, forwarded as aria-controls.',
+            ariaActivedescendant:
+              'id of the active option in a controlled popup, forwarded as aria-activedescendant.',
+            ariaAutocomplete:
+              'Autocomplete behavior hint, forwarded as aria-autocomplete.',
             label: 'Text label rendered above the field.',
             type: 'Native input type (password adds a built-in show/hide toggle).',
             placeholder: 'Placeholder shown while the field is empty.',
@@ -1726,6 +1724,8 @@ export const en: WebMessages = {
               'Programmatically selects the given option, updating the value and closing the list.',
           },
           'command-palette': {
+            disabledWhen:
+              "Optional predicate that disables every item it returns true for, in addition to each item's own disabled flag.",
             emptyMessage:
               "Message shown when the search query matches no items, falling back to the active locale's translation when omitted.",
             items: 'Full list of command items available for search and execution.',

@@ -966,19 +966,6 @@ export const esES: WebMessages = {
         commandPalette: {
           hint: 'Pulsa Ctrl + K (o Cmd + K) para abrir la paleta de comandos desde cualquier punto de la página.',
           openButton: 'Abrir paleta de comandos',
-          fileGroup: 'Archivo',
-          editGroup: 'Editar',
-          newFile: 'Nuevo archivo',
-          openFile: 'Abrir archivo',
-          save: 'Guardar',
-          find: 'Buscar',
-          findKeyword: 'búsqueda',
-          replace: 'Reemplazar',
-          undo: 'Deshacer',
-          toggleTheme: 'Cambiar tema',
-          toggleThemeDescription: 'Alternar entre modo claro y oscuro',
-          lockWorkspace: 'Bloquear espacio de trabajo',
-          lockWorkspaceDescription: 'Actualmente deshabilitado, función en beta',
           executedToast: label => `Ejecutado: ${label}`,
         },
         avatarEditorActions: {
@@ -1243,6 +1230,17 @@ export const esES: WebMessages = {
             resume: 'Reanuda las cuentas atrás suspendidas por pause.',
           },
           input: {
+            keepIcon:
+              'Mantiene visible el icono inicial mientras el campo tiene valor; con false el icono solo aparece junto al placeholder.',
+            role: 'Rol ARIA aplicado al campo nativo, p. ej. combobox para un host de autocompletado.',
+            ariaExpanded:
+              'Estado expandido de un popup controlado, reenviado como aria-expanded.',
+            ariaControls:
+              'id del elemento emergente que controla el campo, reenviado como aria-controls.',
+            ariaActivedescendant:
+              'id de la opción activa del popup controlado, reenviado como aria-activedescendant.',
+            ariaAutocomplete:
+              'Indicación del comportamiento de autocompletado, reenviada como aria-autocomplete.',
             label: 'Etiqueta mostrada encima del campo.',
             type: 'Tipo nativo del campo (password añade un botón de mostrar/ocultar integrado).',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
@@ -1796,6 +1794,8 @@ export const esES: WebMessages = {
               'Selecciona mediante programación la opción dada, actualiza el valor y cierra la lista.',
           },
           'command-palette': {
+            disabledWhen:
+              'Predicado opcional que deshabilita cada elemento para el que devuelve true, además del indicador disabled propio de cada elemento.',
             emptyMessage:
               'Mensaje mostrado cuando la consulta de búsqueda no coincide con ningún elemento; si se omite, se usa la traducción del idioma activo.',
             items:
