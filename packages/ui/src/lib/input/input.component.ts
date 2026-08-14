@@ -74,12 +74,33 @@ export class InputComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   /** Accessible name for the control when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** ARIA role applied to the native input, e.g. `combobox` for a typeahead host. */
+  readonly role = input<string | undefined>(undefined);
+  /** Expanded state of a controlled popup, forwarded as `aria-expanded`. */
+  readonly ariaExpanded = input<boolean | undefined>(undefined, {
+    alias: 'aria-expanded',
+  });
+  /** `id` of the popup element the input controls, forwarded as `aria-controls`. */
+  readonly ariaControls = input<string | undefined>(undefined, {
+    alias: 'aria-controls',
+  });
+  /** `id` of the active option in a controlled popup, forwarded as `aria-activedescendant`. */
+  readonly ariaActivedescendant = input<string | null | undefined>(undefined, {
+    alias: 'aria-activedescendant',
+  });
+  /** Autocomplete behavior hint, forwarded as `aria-autocomplete`. */
+  readonly ariaAutocomplete = input<'none' | 'inline' | 'list' | 'both' | undefined>(
+    undefined,
+    { alias: 'aria-autocomplete' },
+  );
   /** Native input type; `password` adds a built-in show/hide toggle. */
   readonly type = input<InputType>('text');
   /** Placeholder shown while the field is empty. */
   readonly placeholder = input<string>('');
   /** Leading icon component rendered before the text, e.g. a search or filter glyph. */
   readonly icon = input<Type<unknown> | undefined>(undefined);
+  /** Keeps the leading icon while the field has a value; when false it shows only alongside the placeholder. */
+  readonly keepIcon = input<boolean>(true);
   /** Visual size of the field. */
   readonly size = input<InputSize>('md');
   /** Helper text shown below the field; hidden while an error is showing. */

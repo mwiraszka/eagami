@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { SearchIconComponent } from '../icons/search.component';
 import { InputComponent } from './input.component';
 
 describe('InputComponent', () => {
@@ -69,6 +70,60 @@ describe('InputComponent', () => {
       fixture.componentRef.setInput('size', 'lg');
       fixture.detectChanges();
       expect(getWrapper().classList).toContain('ea-input-wrapper--lg');
+    });
+  });
+
+  describe('Leading icon', () => {
+    function getIcon(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-input-wrapper__icon');
+    }
+
+    it('keeps the icon while the field has a value by default', () => {
+      fixture.componentRef.setInput('icon', SearchIconComponent);
+      component.value.set('query');
+
+      fixture.detectChanges();
+
+      expect(getIcon()).toBeTruthy();
+    });
+
+    it('hides the icon once a value is set when keepIcon is false', () => {
+      fixture.componentRef.setInput('icon', SearchIconComponent);
+      fixture.componentRef.setInput('keepIcon', false);
+      fixture.detectChanges();
+      expect(getIcon()).toBeTruthy();
+
+      component.value.set('query');
+      fixture.detectChanges();
+
+      expect(getIcon()).toBeNull();
+    });
+  });
+
+  describe('ARIA passthrough', () => {
+    it('forwards role and combobox attributes to the native input', () => {
+      fixture.componentRef.setInput('role', 'combobox');
+      fixture.componentRef.setInput('aria-expanded', true);
+      fixture.componentRef.setInput('aria-controls', 'listbox-1');
+      fixture.componentRef.setInput('aria-activedescendant', 'option-2');
+      fixture.componentRef.setInput('aria-autocomplete', 'list');
+
+      fixture.detectChanges();
+
+      const input = getNativeInput();
+      expect(input.getAttribute('role')).toBe('combobox');
+      expect(input.getAttribute('aria-expanded')).toBe('true');
+      expect(input.getAttribute('aria-controls')).toBe('listbox-1');
+      expect(input.getAttribute('aria-activedescendant')).toBe('option-2');
+      expect(input.getAttribute('aria-autocomplete')).toBe('list');
+    });
+
+    it('renders none of the attributes when unset', () => {
+      const input = getNativeInput();
+
+      expect(input.getAttribute('role')).toBeNull();
+      expect(input.getAttribute('aria-expanded')).toBeNull();
+      expect(input.getAttribute('aria-autocomplete')).toBeNull();
     });
   });
 
