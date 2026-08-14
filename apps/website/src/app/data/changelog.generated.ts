@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.26.1',
+    date: '2026-08-14',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Clear the command palette's search when Enter is pressed on its clear button, which ran the highlighted command instead.",
+          "Narrow the input's `aria-activedescendant` to a single unset form, so it no longer accepts both `null` and `undefined`.",
+          "Run a command palette's `disabledWhen` predicate once per matching command rather than on every keystroke and hover.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.26.0',
     date: '2026-08-14',
     sections: [

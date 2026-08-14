@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.26.1] - 2026-08-14
+
+### Fixed
+
+- Clear the command palette's search when Enter is pressed on its clear button, which ran the highlighted command instead.
+- Narrow the input's `aria-activedescendant` to a single unset form, so it no longer accepts both `null` and `undefined`.
+- Run a command palette's `disabledWhen` predicate once per matching command rather than on every keystroke and hover.
+
 ## [5.26.0] - 2026-08-14
 
 ### Added
@@ -1375,6 +1383,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.26.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.0...ui-v5.26.1
 [5.26.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.25.1...ui-v5.26.0
 [5.25.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.25.0...ui-v5.25.1
 [5.25.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.24.0...ui-v5.25.0
