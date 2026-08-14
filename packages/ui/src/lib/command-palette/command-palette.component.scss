@@ -32,26 +32,16 @@
 
 .ea-command-palette__search {
   position: relative;
-  display: flex;
-  align-items: center;
   padding: var(--space-3) var(--space-4);
 
-  // Pseudo-element divider so it can inset to the list's inner edges like the
-  // section rules, instead of spanning the panel's full width
+  // Inset to the list's padding so the rule lines up with the section rules below
   &::after {
-    position: absolute;
-    bottom: 0;
-    inset-inline-end: var(--space-1);
-    inset-inline-start: var(--space-1);
-    height: var(--border-width-thin);
-    background-color: var(--color-divider);
-    content: '';
+    @include ea.divider-rule(bottom, var(--space-1));
   }
 }
 
 .ea-command-palette__search-input {
-  flex: 1;
-  min-width: 0;
+  display: block;
 }
 
 .ea-command-palette__list {
@@ -66,16 +56,8 @@
   position: relative;
   margin-top: var(--space-3);
 
-  // Pseudo-element divider so it can span the list's inner edges (matching the
-  // item rows' hover background) instead of being inset by the heading's padding
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    inset-inline-end: 0;
-    inset-inline-start: 0;
-    height: var(--border-width-thin);
-    background-color: var(--color-divider);
+    @include ea.divider-rule;
   }
 
   // First group sits flush with the search bar, no leading divider
