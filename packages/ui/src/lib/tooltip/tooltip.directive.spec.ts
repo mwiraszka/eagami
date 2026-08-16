@@ -17,6 +17,8 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
       [tooltipPosition]="pos()"
       [maxWidth]="maxWidth()"
       [dismissDelay]="dismissDelay()"
+      [flip]="flip()"
+      [whenClipped]="whenClipped()"
       [attr.aria-describedby]="existingDescribedBy()">
       Trigger
     </button>
@@ -27,6 +29,8 @@ class TestHostComponent {
   pos = signal<TooltipPosition>('top');
   maxWidth = signal<number | undefined>(200);
   dismissDelay = signal(150);
+  flip = signal(true);
+  whenClipped = signal(false);
   existingDescribedBy = signal<string | null>(null);
 }
 
@@ -265,6 +269,108 @@ describe('TooltipDirective', () => {
 
       expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe('');
       expect(tip.classList).not.toContain('ea-tooltip--wrapping');
+    });
+  });
+
+  describe('Flipping', () => {
+    // jsdom lays nothing out, so both the viewport the sides are measured
+    // against and the trigger's own rect have to be stated.
+    function triggerAt(top: number): void {
+      getButton().getBoundingClientRect = () => new DOMRect(100, top, 40, 20);
+    }
+
+    beforeEach(() => {
+      Object.defineProperty(document.documentElement, 'clientHeight', {
+        value: 768,
+        configurable: true,
+      });
+      Object.defineProperty(document.documentElement, 'clientWidth', {
+        value: 1024,
+        configurable: true,
+      });
+    });
+
+    afterEach(() => {
+      Reflect.deleteProperty(document.documentElement, 'clientHeight');
+      Reflect.deleteProperty(document.documentElement, 'clientWidth');
+    });
+
+    it('moves a bubble with no room above it below the trigger', () => {
+      triggerAt(2);
+
+      show();
+
+      expect(getTooltip()!.classList).toContain('ea-tooltip--bottom');
+      expect(getTooltip()!.classList).not.toContain('ea-tooltip--top');
+    });
+
+    it('keeps the requested side when it fits', () => {
+      triggerAt(400);
+
+      show();
+
+      expect(getTooltip()!.classList).toContain('ea-tooltip--top');
+    });
+
+    it('holds the side it opened on while it still fits', () => {
+      triggerAt(2);
+      show();
+
+      triggerAt(400);
+      window.dispatchEvent(new Event('resize'));
+
+      expect(getTooltip()!.classList).toContain('ea-tooltip--bottom');
+    });
+
+    it('stays on the requested side when flip is off', () => {
+      host.flip.set(false);
+      fixture.detectChanges();
+      triggerAt(2);
+
+      show();
+
+      expect(getTooltip()!.classList).toContain('ea-tooltip--top');
+    });
+  });
+
+  describe('Clipped triggers', () => {
+    function clipTrigger(clipped: boolean): void {
+      const button = getButton();
+      Object.defineProperty(button, 'scrollWidth', { value: clipped ? 300 : 100 });
+      Object.defineProperty(button, 'clientWidth', { value: 100 });
+    }
+
+    beforeEach(() => {
+      host.whenClipped.set(true);
+      fixture.detectChanges();
+    });
+
+    it('shows nothing while the trigger holds all of its content', () => {
+      clipTrigger(false);
+
+      show();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('shows once the trigger cuts its content off', () => {
+      clipTrigger(true);
+
+      show();
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('measures descendants, since the box doing the cutting is usually inner', () => {
+      const inner = document.createElement('span');
+      Object.defineProperty(inner, 'scrollWidth', { value: 300 });
+      Object.defineProperty(inner, 'clientWidth', { value: 100 });
+      getButton().appendChild(inner);
+      clipTrigger(false);
+
+      show();
+
+      expect(getTooltip()).toBeTruthy();
     });
   });
 

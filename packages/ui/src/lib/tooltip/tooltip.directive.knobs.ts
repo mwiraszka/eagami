@@ -15,11 +15,15 @@ export const TOOLTIP_KNOBS: ComponentKnobs = {
     },
     maxWidth: { control: 'number', min: 50, max: 400, maxLength: 3 },
     dismissDelay: { control: 'number', min: 0, max: 1000, step: 50, maxLength: 4 },
+    flip: { control: 'boolean' },
+    whenClipped: { control: 'boolean' },
   },
   args: {
     eaTooltip: 'Tooltips add extra context on hover or focus',
     tooltipPosition: 'top',
     maxWidth: 200,
     dismissDelay: 150,
+    flip: true,
+    whenClipped: false,
   },
 };
