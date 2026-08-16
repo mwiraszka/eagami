@@ -16,6 +16,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { readableInk } from '../palette/contrast';
 import { type EaSize } from '../sizes';
 import { TooltipDirective, type TooltipPosition } from '../tooltip/tooltip.directive';
 import { isTruncated } from '../truncation';
@@ -56,10 +57,17 @@ export class TagComponent {
   readonly disabled = input<boolean>(false);
   readonly removeLabel = input<string | undefined>(undefined);
   /**
-   * Widest the chip may grow, in px; a longer label ellipsizes instead. Also
-   * settable in CSS as `--ea-tag-max-width`, which this input overrides.
+   * Widest the chip may grow: a number of px, or any CSS length for a chip that
+   * has to give way to its container (`'100%'` in a responsive grid cell).
+   * Also settable in CSS as `--ea-tag-max-width`, which this input overrides.
    */
-  readonly maxWidth = input<number | undefined>(200);
+  readonly maxWidth = input<number | string | undefined>(200);
+  /**
+   * Fill colour as a hex value, for a tag carrying a colour of its own (a
+   * user-chosen label). Paints the chip and its border, and picks whichever ink
+   * reads better on it. Takes precedence over `variant`.
+   */
+  readonly color = input<string | undefined>(undefined);
   /**
    * Where a label clipped by `maxWidth` reveals its full text. Set `none` for
    * a tag rendered inside a tooltip, which would otherwise stack a second
@@ -98,6 +106,25 @@ export class TagComponent {
     [`ea-tag--${this.size()}`]: true,
     'ea-tag--disabled': this.disabled(),
   }));
+
+  /** `maxWidth` as a CSS length; a bare number is px, as the input documents. */
+  protected readonly resolvedMaxWidth = computed(() => {
+    const max = this.maxWidth();
+    if (max === undefined || max === null) {
+      return null;
+    }
+    return typeof max === 'number' ? `${max}px` : max;
+  });
+
+  /** Ink that reads on `color`, or `null` when it is not a hex the library can measure. */
+  protected readonly resolvedInk = computed(() => {
+    const color = this.color();
+    if (!color) {
+      return null;
+    }
+    const ink = readableInk(color);
+    return ink === null ? null : `var(--color-neutral-${ink === 'light' ? '0' : '950'})`;
+  });
 
   constructor() {
     afterNextRender(() => this.watchLabel());

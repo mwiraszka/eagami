@@ -1,7 +1,9 @@
 <span
   class="ea-tag"
   [ngClass]="hostClasses()"
-  [style.max-width.px]="maxWidth()"
+  [style.--ea-tag-max-width]="resolvedMaxWidth()"
+  [style.--ea-tag-color]="color() || null"
+  [style.--ea-tag-ink]="resolvedInk()"
   [eaTooltip]="labelTooltip()"
   [tooltipPosition]="tooltipPosition()">
   <span

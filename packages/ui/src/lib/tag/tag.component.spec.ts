@@ -45,11 +45,44 @@ describe('TagComponent', () => {
       fixture.componentRef.setInput('maxWidth', 120);
       fixture.detectChanges();
 
-      expect(getTag()!.style.maxWidth).toBe('120px');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('120px');
     });
 
     it('caps the tag at 200px by default', () => {
-      expect(getTag()!.style.maxWidth).toBe('200px');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('200px');
+    });
+
+    it('takes a fluid cap so the chip gives way to its container', () => {
+      fixture.componentRef.setInput('maxWidth', '100%');
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('100%');
+    });
+
+    it('paints a caller-supplied colour and picks ink that reads on it', () => {
+      fixture.componentRef.setInput('color', '#0b3d91');
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe('#0b3d91');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe(
+        'var(--color-neutral-0)',
+      );
+    });
+
+    it('picks dark ink on a light colour', () => {
+      fixture.componentRef.setInput('color', '#fde68a');
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe(
+        'var(--color-neutral-950)',
+      );
+    });
+
+    it('leaves the ink alone for a colour it cannot measure', () => {
+      fixture.componentRef.setInput('color', 'rebeccapurple');
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe('');
     });
 
     it('anchors the tooltip on the whole tag, above it by default', () => {
