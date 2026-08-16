@@ -14,6 +14,30 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.30.0',
+    date: '2026-08-16',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.',
+          'Ship an `@eagami/ui/testing` entry point with a native dialog shim for jsdom test runs.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "**Breaking:** Move the dialog's close button into the header row, so header content lays out against it instead of reserving room by hand.",
+          "**Breaking:** Restore the tag's uncapped default width, making `maxWidth` clipping opt-in again.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: ['Fix tooltips collapsing to a sliver of their text in Safari.'],
+      },
+    ],
+  },
+  {
     version: '5.29.0',
     date: '2026-08-16',
     sections: [
