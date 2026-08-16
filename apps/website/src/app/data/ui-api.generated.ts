@@ -780,6 +780,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         required: false,
         twoWay: false,
       },
+      {
+        name: 'truncate',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
     ],
     outputs: [
       {
@@ -910,6 +917,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'clearable',
         type: 'boolean',
         default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'compact',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -1401,6 +1415,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'closeDisabled',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'closeOnBackdrop',
         type: 'boolean',
         default: 'true',
@@ -1418,6 +1439,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'id',
         type: 'string',
         default: '(auto-generated)',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'manualClose',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -1452,6 +1480,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'closeRequested',
+        type: 'void',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'opened',
         type: 'void',
         default: '',
@@ -1459,7 +1494,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
-    methods: [],
+    methods: [
+      {
+        name: 'requestClose',
+        signature: 'requestClose(): void',
+      },
+    ],
   },
   divider: {
     selector: 'ea-divider',
@@ -2449,6 +2489,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-multi-select',
     inputs: [
       {
+        name: 'allowCreate',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabel',
         type: 'string | undefined',
         default: 'undefined',
@@ -2590,6 +2637,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         required: false,
         twoWay: false,
       },
+      {
+        name: 'created',
+        type: 'string',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
     ],
     methods: [
       {
@@ -2599,6 +2653,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'clear',
         signature: 'clear(event: Event): void',
+      },
+      {
+        name: 'createOption',
+        signature: 'createOption(): void',
       },
       {
         name: 'handlePopoverKeydown',
@@ -4102,6 +4160,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-tag',
     inputs: [
       {
+        name: 'color',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -4110,7 +4175,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'maxWidth',
-        type: 'number | undefined',
+        type: 'number | string | undefined',
         default: '200',
         required: false,
         twoWay: false,
@@ -4621,6 +4686,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'flip',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'maxWidth',
         type: 'number | undefined',
         default: '200',
@@ -4631,6 +4703,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'tooltipPosition',
         type: 'TooltipPosition',
         default: "'top'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'whenClipped',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
