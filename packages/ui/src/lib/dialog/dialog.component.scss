@@ -19,12 +19,12 @@
     flex-direction: column;
     width: var(--ea-dialog-size, 32rem);
     // Every preset is wider than a phone, so the width is a ceiling the viewport
-    // still wins against, leaving the same margin the full-bleed preset keeps
-    max-width: calc(100vw - 2rem);
+    // still wins against, leaving the same inset the full preset keeps
+    max-width: calc(100vw - 2 * var(--ea-dialog-inset, var(--space-4)));
+    max-height: var(--ea-dialog-max-height, 85vh);
     background-color: var(--ea-dialog-panel-background-color, var(--color-bg-elevated));
-    border-radius: var(--radius-xl);
+    border-radius: var(--ea-dialog-radius, var(--radius-xl));
     box-shadow: var(--shadow-2xl);
-    max-height: 85vh;
     overflow: hidden;
     @include ea.elevated-surface-border;
 
@@ -57,51 +57,73 @@
     }
 
     &--full {
-      width: calc(100vw - 2rem);
-      height: calc(100vh - 2rem);
-      max-height: calc(100vh - 2rem);
+      width: calc(100vw - 2 * var(--ea-dialog-inset, var(--space-4)));
+      height: calc(100vh - 2 * var(--ea-dialog-inset, var(--space-4)));
+      max-height: calc(100vh - 2 * var(--ea-dialog-inset, var(--space-4)));
     }
 
     // Each slot pads the edge it sits against generously and the seam between
     // slots tightly. A missing slot leaves the body's tight edge facing the
-    // panel, so the body takes over the outer padding the slot would have kept
-    &:not(:has(> .ea-dialog__header:not(:empty))) > .ea-dialog__body {
-      padding-top: var(--space-5);
+    // panel, so the body takes over the outer padding the slot would have kept.
+    // Every rule restates the full shorthand behind the public token, so a
+    // consumer's padding wins in every slot combination
+    &:has(> .ea-dialog__header--hidden) > .ea-dialog__body {
+      padding: var(
+        --ea-dialog-body-padding,
+        var(--space-5) var(--space-6) var(--space-3)
+      );
     }
 
     &:not(:has(> .ea-dialog__footer:not(:empty))) > .ea-dialog__status:not(:empty) {
-      padding-bottom: var(--space-5);
+      padding: var(
+        --ea-dialog-status-padding,
+        var(--space-2) var(--space-6) var(--space-5)
+      );
     }
 
     &:not(:has(> .ea-dialog__footer:not(:empty), > .ea-dialog__status:not(:empty)))
       > .ea-dialog__body {
-      padding-bottom: var(--space-5);
+      padding: var(
+        --ea-dialog-body-padding,
+        var(--space-3) var(--space-6) var(--space-5)
+      );
+    }
+
+    &:has(> .ea-dialog__header--hidden):not(
+        :has(> .ea-dialog__footer:not(:empty), > .ea-dialog__status:not(:empty))
+      )
+      > .ea-dialog__body {
+      padding: var(--ea-dialog-body-padding, var(--space-5) var(--space-6));
     }
   }
 
   &__close {
     @include ea.icon-button;
-    z-index: 1;
-    position: absolute;
-    top: var(--space-3);
-    inset-inline-end: var(--space-3);
+    flex-shrink: 0;
   }
 
   &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
     padding: var(--space-5) var(--space-6) var(--space-3);
-    font-size: var(--ea-dialog-header-font-size, var(--text-h4-size));
-    font-weight: var(--ea-dialog-header-font-weight, var(--text-h4-weight));
-    line-height: var(--text-h4-lh);
-    color: var(--color-text-primary);
 
-    &:empty {
+    &--hidden {
       display: none;
     }
   }
 
+  &__header-content {
+    flex: 1;
+    font-size: var(--ea-dialog-header-font-size, var(--text-h4-size));
+    font-weight: var(--ea-dialog-header-font-weight, var(--text-h4-weight));
+    line-height: var(--text-h4-lh);
+    color: var(--color-text-primary);
+  }
+
   &__body {
     flex: 1;
-    padding: var(--space-3) var(--space-6);
+    padding: var(--ea-dialog-body-padding, var(--space-3) var(--space-6));
     overflow-y: auto;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
@@ -112,7 +134,7 @@
   // notice stays in view however far the content is scrolled
   &__status {
     flex-shrink: 0;
-    padding: var(--space-2) var(--space-6);
+    padding: var(--ea-dialog-status-padding, var(--space-2) var(--space-6));
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
     color: var(--color-text-secondary);

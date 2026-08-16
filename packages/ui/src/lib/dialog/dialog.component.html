@@ -9,22 +9,25 @@
   <div
     class="ea-dialog__panel"
     [ngClass]="panelClasses()">
-    @if (showClose()) {
-      <button
-        type="button"
-        class="ea-dialog__close"
-        [attr.aria-label]="i18n.messages().dialog.close"
-        [disabled]="closeDisabled()"
-        (click)="requestClose()">
-        <ea-icon-x />
-      </button>
-    }
-
     <div
-      #headerEl
       class="ea-dialog__header"
-      [id]="id() + '-header'">
-      <ng-content select="[slot=header]" />
+      [class.ea-dialog__header--hidden]="!hasHeader() && !showClose()">
+      <div
+        #headerEl
+        class="ea-dialog__header-content"
+        [id]="id() + '-header'">
+        <ng-content select="[slot=header]" />
+      </div>
+      @if (showClose()) {
+        <button
+          type="button"
+          class="ea-dialog__close"
+          [attr.aria-label]="i18n.messages().dialog.close"
+          [disabled]="closeDisabled()"
+          (click)="requestClose()">
+          <ea-icon-x />
+        </button>
+      }
     </div>
 
     <div class="ea-dialog__body">

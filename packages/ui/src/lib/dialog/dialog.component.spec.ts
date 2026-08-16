@@ -50,10 +50,15 @@ class TestHostComponent {
 @Component({
   selector: 'ea-test-no-header-host',
   imports: [DialogComponent],
-  template: `<ea-dialog [(open)]="isOpen">Body only</ea-dialog>`,
+  template: `<ea-dialog
+    [(open)]="isOpen"
+    [showClose]="showClose()">
+    Body only
+  </ea-dialog>`,
 })
 class NoHeaderHostComponent {
   isOpen = signal(true);
+  showClose = signal(true);
 }
 
 describe('DialogComponent', () => {
@@ -299,6 +304,31 @@ describe('DialogComponent', () => {
     it('projects header content', () => {
       const header = fixture.nativeElement.querySelector('.ea-dialog__header');
       expect(header.textContent).toContain('Test Title');
+    });
+
+    it('renders the close button inside the header row', () => {
+      const header = fixture.nativeElement.querySelector('.ea-dialog__header');
+
+      expect(header.contains(getCloseButton())).toBe(true);
+    });
+
+    it('keeps the header row for the close button when nothing is projected', () => {
+      const bare = TestBed.createComponent(NoHeaderHostComponent);
+      bare.detectChanges();
+
+      const header = bare.nativeElement.querySelector('.ea-dialog__header');
+
+      expect(header.classList.contains('ea-dialog__header--hidden')).toBe(false);
+    });
+
+    it('hides the header row when nothing is projected and the close button is off', () => {
+      const bare = TestBed.createComponent(NoHeaderHostComponent);
+      bare.componentInstance.showClose.set(false);
+      bare.detectChanges();
+
+      const header = bare.nativeElement.querySelector('.ea-dialog__header');
+
+      expect(header.classList.contains('ea-dialog__header--hidden')).toBe(true);
     });
 
     it('projects body content', () => {
