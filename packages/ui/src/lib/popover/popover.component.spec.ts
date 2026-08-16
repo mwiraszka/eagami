@@ -301,6 +301,34 @@ describe('PopoverComponent', () => {
       expect(host.closeCount()).toBe(0);
     });
 
+    it('does not emit closeRequested when a drag out of the surface ends outside', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+      const outside = document.createElement('div');
+      document.body.appendChild(outside);
+
+      getSurface()!.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      outside.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      outside.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(0);
+      outside.remove();
+    });
+
+    it('emits closeRequested when the whole press happened outside', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+      const outside = document.createElement('div');
+      document.body.appendChild(outside);
+
+      outside.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      outside.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      outside.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(1);
+      outside.remove();
+    });
+
     it('ignores dismissal events while closed', () => {
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
       document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -398,6 +426,70 @@ describe('PopoverComponent', () => {
 
       expect(getSurface()?.dir).toBe('rtl');
       expect(getSurface()?.style.left).toBe('280px');
+    });
+  });
+
+  describe('Placement stability', () => {
+    // jsdom lays the surface out at 0x0, so the height that decides a flip has
+    // to be faked; `resize` is the cheapest way to force a fresh reposition.
+    function setSurfaceHeight(height: number): void {
+      const surface = getSurface()!;
+      surface.getBoundingClientRect = () => new DOMRect(0, 0, 200, height);
+    }
+
+    function reposition(): void {
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+    }
+
+    async function openFlippedUp(): Promise<void> {
+      getAnchor().getBoundingClientRect = () => new DOMRect(0, 700, 200, 32);
+      host.open.set(true);
+      fixture.detectChanges();
+      setSurfaceHeight(300);
+      await nextFrame();
+      fixture.detectChanges();
+    }
+
+    it('flips above the anchor when the surface does not fit below', async () => {
+      await openFlippedUp();
+
+      expect(host.popover().effectivePlacement()).toBe('top-start');
+    });
+
+    it('stays above the anchor after the surface shrinks enough to fit below', async () => {
+      await openFlippedUp();
+
+      setSurfaceHeight(40);
+      reposition();
+
+      expect(host.popover().effectivePlacement()).toBe('top-start');
+      expect(getSurface()?.style.top).toBe('658px');
+    });
+
+    it('flips back once the settled side stops fitting', async () => {
+      await openFlippedUp();
+      setSurfaceHeight(40);
+      reposition();
+
+      getAnchor().getBoundingClientRect = () => new DOMRect(0, 4, 200, 32);
+      reposition();
+
+      expect(host.popover().effectivePlacement()).toBe('bottom-start');
+    });
+
+    it('resolves the placement afresh on the next open', async () => {
+      await openFlippedUp();
+      host.open.set(false);
+      fixture.detectChanges();
+
+      getAnchor().getBoundingClientRect = () => new DOMRect(0, 100, 200, 32);
+      host.open.set(true);
+      fixture.detectChanges();
+      await nextFrame();
+      fixture.detectChanges();
+
+      expect(host.popover().effectivePlacement()).toBe('bottom-start');
     });
   });
 

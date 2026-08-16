@@ -10,10 +10,12 @@ import {
   input,
   output,
   signal,
+  untracked,
   viewChild,
 } from '@angular/core';
 
 import { isRtl } from '../direction';
+import { PointerPressTracker } from '../pointer-press';
 import { enterTopLayer, leaveTopLayer } from '../top-layer';
 import { uniqueId } from '../unique-id';
 import {
@@ -82,6 +84,7 @@ export type PopoverMaxWidth = number | 'anchor';
 })
 export class PopoverComponent {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly press = inject(PointerPressTracker);
 
   private readonly surfaceEl = viewChild<ElementRef<HTMLElement>>('surfaceEl');
 
@@ -145,6 +148,18 @@ export class PopoverComponent {
   readonly closeRequested = output<void>();
 
   private readonly position = signal<PopoverPositionResult | null>(null);
+
+  /* The side an open panel settled on, fed back in as the requested placement
+     on every later reposition. Content shrinking (a filtered option list losing
+     rows) frees up room on the original side again, and recomputing from the
+     input placement would jump the panel back across the anchor mid-interaction;
+     going through the flip logic keeps the move available for when the settled
+     side genuinely stops fitting. Keyed by the requested placement so a changed
+     input still wins. */
+  private latched: {
+    requested: PopoverPlacement;
+    resolved: PopoverPlacement;
+  } | null = null;
 
   /** True placement after flip, for class-based styling (e.g. arrow direction). */
   readonly effectivePlacement = computed(
@@ -233,6 +248,7 @@ export class PopoverComponent {
         }
         this.position.set(null);
         this.stable.set(false);
+        this.latched = null;
         return;
       }
       // Join the top layer before the first measurement below, so a popover
@@ -386,21 +402,28 @@ export class PopoverComponent {
     }
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
-    this.position.set(
-      computePopoverPosition(
-        anchorRect,
-        { width: surfaceRect.width, height: surfaceRect.height },
-        { width: window.innerWidth, height: window.innerHeight },
-        {
-          placement: this.placement(),
-          offset: this.offset(),
-          flip: this.flip(),
-          clamp: this.clamp(),
-          matchAnchorWidth: this.matchAnchorWidth(),
-          rtl: isRtl(anchor),
-        },
-      ),
+    const requested = this.placement();
+    // The opening measurements can read the surface at its natural size, so the
+    // side they resolve is only worth holding on to once `stable` has latched
+    const placement =
+      untracked(this.stable) && this.latched?.requested === requested
+        ? this.latched.resolved
+        : requested;
+    const result = computePopoverPosition(
+      anchorRect,
+      { width: surfaceRect.width, height: surfaceRect.height },
+      { width: window.innerWidth, height: window.innerHeight },
+      {
+        placement,
+        offset: this.offset(),
+        flip: this.flip(),
+        clamp: this.clamp(),
+        matchAnchorWidth: this.matchAnchorWidth(),
+        rtl: isRtl(anchor),
+      },
     );
+    this.latched = { requested, resolved: result.placement };
+    this.position.set(result);
   }
 
   @HostListener('document:click', ['$event'])
@@ -413,10 +436,13 @@ export class PopoverComponent {
       return;
     }
     const anchor = this.resolveAnchor();
-    if (anchor?.contains(target)) {
+    const surface = this.surfaceEl()?.nativeElement;
+    if (anchor?.contains(target) || surface?.contains(target)) {
       return;
     }
-    if (this.surfaceEl()?.nativeElement.contains(target)) {
+    // A drag that started or ended on the panel (selecting text, dragging a
+    // slider) lands its click on an ancestor of both, which is not a dismissal
+    if (this.press.touchedInside(anchor) || this.press.touchedInside(surface)) {
       return;
     }
     this.closeRequested.emit();
