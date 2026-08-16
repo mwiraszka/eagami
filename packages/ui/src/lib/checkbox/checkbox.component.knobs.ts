@@ -15,6 +15,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     indeterminate: { control: 'boolean' },
+    truncate: { control: 'boolean' },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -25,6 +26,7 @@ export const CHECKBOX_KNOBS: ComponentKnobs = {
     disabled: false,
     required: false,
     indeterminate: false,
+    truncate: false,
     triggerError: false,
   },
 };

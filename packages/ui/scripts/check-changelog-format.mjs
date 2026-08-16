@@ -12,21 +12,21 @@ const SECTIONS = new Set(['Added', 'Changed', 'Fixed']);
 // needs a verb that is not here yet; the point is to catch a noun phrase, not
 // to police vocabulary.
 const VERBS = new Set(
-  `Accept Add Align Allow Anchor Animate Announce Apply Bring Build Bump Cap Capitalise
+  `Accept Add Align Allow Anchor Animate Announce Apply Balance Bring Build Bump Cap Capitalise
    Capitalize Carry Center Centre Change Clear Confine Consolidate Correct Cycle Darken Deepen
    Default Deliver Deprecate Derive Direct Disable Dismiss Display Document Double
    Download Draw Drop Eliminate Emit Enlarge Ensure Expand Export Expose Extend Feature
    Fill Fix Flatten Fold Follow Forward Gate Generate Give Group Guard Handle Hide Hold Honor
    Host Improve Increase Inline Inset Integrate Introduce Keep Lay Layer Let Lift Lighten
    Limit Link List Load Localize Make Mark Mention Migrate Mirror Move Name Narrow Normalize
-   Observe Offset Open Overlap Override Pick Pin Point Polish Preload Present Preserve
+   Observe Offer Offset Open Overlap Override Pick Pin Point Polish Preload Present Preserve
    Prevent Publish Put Quiet Rebalance Rebuild Redesign Redraw Reduce Refine Reformat
    Refresh Reinstate Release Remove Rename Render Replace Reposition Rescale Reserve
    Resolve Restate Restore Restructure Retire Retune Reword Rework Rewrite Round Route
    Run Scaffold Scale Scope Scroll Send Separate Set Share Shift Ship Shorten Show
    Showcase Shrink Simplify Sit Size Skip Soften Sort Space Span Split Spread Stack Stage
    Standardize State Step Stop Stretch Strip Stub Support Suppress Surface Swap Sweep
-   Switch Sync Take Tidy Tighten Tone Translate Trim Tuck Tune Turn Unify Untangle Unwrap
+   Switch Sync Take Tidy Tighten Toggle Tone Translate Trim Tuck Tune Turn Unify Untangle Unwrap
    Update Upgrade Use Wire Wrap`.split(/\s+/),
 );
 

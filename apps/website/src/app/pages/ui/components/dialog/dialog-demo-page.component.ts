@@ -21,6 +21,8 @@ interface DialogKnobState {
   closeOnBackdrop: boolean;
   closeOnEscape: boolean;
   showClose: boolean;
+  closeDisabled: boolean;
+  manualClose: boolean;
 }
 
 const SLUG = 'dialog';

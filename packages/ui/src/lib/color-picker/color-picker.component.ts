@@ -132,6 +132,12 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly showAlpha = input<boolean>(true);
   /** Whether to show the clear button when a value is set. */
   readonly clearable = input<boolean>(true);
+  /**
+   * Trigger as a bare square swatch instead of a field with the value beside
+   * it, for a colour sitting in a dense row or a toolbar. The value text and
+   * the clear button, which have nowhere to go at that size, are dropped.
+   */
+  readonly compact = input<boolean>(false);
   /** Output format. `all` lets the user cycle hex/rgb/hsl in the popover; a specific value locks it. */
   readonly format = input<ColorPickerFormat>('all');
   /** Preset swatches shown at the bottom of the popover. Pass an empty array to hide. */
@@ -277,6 +283,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
 
   readonly triggerClasses = computed(() => ({
     [`ea-color-picker__trigger--${this.size()}`]: true,
+    'ea-color-picker__trigger--compact': this.compact(),
     'ea-color-picker__trigger--error': this.hasError(),
     'ea-color-picker__trigger--open': this.isOpen(),
     'ea-color-picker__trigger--disabled': this.isDisabled(),

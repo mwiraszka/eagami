@@ -68,6 +68,21 @@ describe('ColorPickerComponent', () => {
     it('applies the default size class', () => {
       expect(getTrigger().classList).toContain('ea-color-picker__trigger--md');
     });
+
+    it('drops the value and the clear button in compact mode', () => {
+      component.writeValue('#ff0000');
+      fixture.componentRef.setInput('compact', true);
+      fixture.detectChanges();
+
+      expect(getTrigger().classList).toContain('ea-color-picker__trigger--compact');
+      expect(
+        fixture.nativeElement.querySelector('.ea-color-picker__trigger-value'),
+      ).toBeNull();
+      expect(fixture.nativeElement.querySelector('.ea-color-picker__clear')).toBeNull();
+      expect(
+        fixture.nativeElement.querySelector('.ea-color-picker__swatch'),
+      ).toBeTruthy();
+    });
   });
 
   describe('Opening and closing', () => {

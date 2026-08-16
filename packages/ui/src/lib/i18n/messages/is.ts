@@ -122,6 +122,7 @@ const messages: EagamiMessages = {
     clearAll: 'Hreinsa val',
     removeOption: label => `Fjarlægja ${label}`,
     selectedCount: count => `${count} valdar`,
+    create: text => `Búa til „${text}“`,
   },
   paginator: {
     label: 'Síðuskipting',

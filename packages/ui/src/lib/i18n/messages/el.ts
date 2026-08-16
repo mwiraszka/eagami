@@ -122,6 +122,7 @@ const messages: EagamiMessages = {
     clearAll: 'Εκκαθάριση επιλογής',
     removeOption: label => `Αφαίρεση ${label}`,
     selectedCount: count => `${count} επιλεγμέν${count === 1 ? 'ο' : 'α'}`,
+    create: text => `Δημιουργία «${text}»`,
   },
   paginator: {
     label: 'Σελιδοποίηση',

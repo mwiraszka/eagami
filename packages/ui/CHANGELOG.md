@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.29.0] - 2026-08-16
+
+### Added
+
+- Let a dialog refuse a close: `manualClose` reports every close route through `closeRequested` and leaves the dialog open until the consumer closes it.
+- Add `closeDisabled` to the dialog, for a close button that has to be unavailable while a task is in flight.
+- Add a `status` slot to the dialog, held between the body and the footer and out of the body's scroll box.
+- Extend the dialog and drawer width scale with a `2xl` step above `xl`.
+- Offer a Create row in the multi-select through `allowCreate`, reporting the typed text as `created` when the search matches no option.
+- Give the tag a `color` input that paints the chip from a hex value and picks whichever ink reads on it.
+- Accept a fluid `maxWidth` on the tag, so a chip can be capped against its container rather than a fixed width.
+- Add `truncate` to the checkbox, ellipsizing a label too long for its column and revealing the full text in a tooltip.
+- Add a `compact` colour picker trigger, a bare swatch without the value text or the clear button.
+- Let a tooltip move to the side that fits with `flip`, and show only over clipped content with `whenClipped`.
+- Expose the dialog header typography, the input focus treatment, and the code input's cells, spacing and state borders as custom properties.
+
+### Changed
+
+- **Breaking:** Move a tooltip with no room on its requested side to the opposite one by default; set `flip` to false for the old behaviour of nudging it inward.
+- Toggle a focused checkbox on Enter, which a native checkbox leaves to the form.
+- Hold a dialog inside the viewport, so a wide preset no longer overflows a narrow screen sideways.
+- Balance a dialog's body padding when it has no header or no footer, instead of leaving the content tight against one edge.
+
 ## [5.28.0] - 2026-08-16
 
 ### Added
@@ -1413,6 +1436,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.29.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.28.0...ui-v5.29.0
 [5.28.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.27.0...ui-v5.28.0
 [5.27.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.1...ui-v5.27.0
 [5.26.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.0...ui-v5.26.1

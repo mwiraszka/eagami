@@ -15,6 +15,7 @@ import { resolveAriaTarget } from '../aria-target';
 import { isRtl } from '../direction';
 import { computePopoverPosition } from '../popover/popover-positioning';
 import { enterTopLayer, leaveTopLayer } from '../top-layer';
+import { isContentClipped } from '../truncation';
 
 /** Placement of the tooltip relative to its host element. */
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -65,6 +66,19 @@ export class TooltipDirective implements OnDestroy {
   readonly eaTooltip = input.required<string | TemplateRef<unknown>>();
   readonly tooltipPosition = input<TooltipPosition>('top');
   /**
+   * Whether a bubble with no room on the requested side moves to the opposite
+   * one. The side is resolved when the bubble opens and held while it still
+   * fits, so a bubble does not hop across its trigger mid-hover.
+   */
+  readonly flip = input<boolean>(true);
+  /**
+   * Show only while the trigger is cutting its own content off, which is how a
+   * label that ellipsizes reveals its full text without a bubble on every
+   * label that fits. The whole subtree is measured, since the box doing the
+   * cutting is usually an inner one.
+   */
+  readonly whenClipped = input<boolean>(false);
+  /**
    * Max width in px; the text wraps at this width. Clamped to a 50px floor, and
    * to the viewport, which no value can push the bubble past.
    */
@@ -77,6 +91,8 @@ export class TooltipDirective implements OnDestroy {
   readonly dismissDelay = input<number>(150);
 
   private tooltipEl: HTMLElement | null = null;
+  /** Side the open bubble settled on, held across repositions while it fits. */
+  private placedPosition: TooltipPosition = 'top';
   private templateView: EmbeddedViewRef<unknown> | null = null;
   private scrollable = false;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
@@ -199,10 +215,14 @@ export class TooltipDirective implements OnDestroy {
     if (!this.eaTooltip()) {
       return;
     }
+    if (this.whenClipped() && !isContentClipped(this.el.nativeElement)) {
+      return;
+    }
 
     this.tooltipEl = this.renderer.createElement('div');
     this.renderer.addClass(this.tooltipEl, 'ea-tooltip');
-    this.renderer.addClass(this.tooltipEl, `ea-tooltip--${this.tooltipPosition()}`);
+    this.placedPosition = this.tooltipPosition();
+    this.renderer.addClass(this.tooltipEl, `ea-tooltip--${this.placedPosition}`);
     this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
     this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
     const content = this.eaTooltip();
@@ -425,15 +445,22 @@ export class TooltipDirective implements OnDestroy {
       height: document.documentElement.clientHeight,
     };
     const margin = this.viewportMargin();
-    /* Defer placement math to the shared popover positioning helper. `flip:
-       false` keeps the tooltip on the side the consumer asked for, nudging it
-       inward at the edges rather than jumping across the trigger mid-hover. */
+    /* Defer placement math to the shared popover positioning helper. The side
+       already resolved is the one fed back in, so a bubble moves off it only
+       once it stops fitting rather than hopping across the trigger mid-hover;
+       with `flip` off it is nudged inward at the edges instead. */
     const placed = computePopoverPosition(
       hostRect,
       { width: tooltipRect.width, height: tooltipRect.height },
       viewport,
-      { placement: this.tooltipPosition(), offset: TRIGGER_GAP, flip: false, margin },
+      {
+        placement: this.placedPosition,
+        offset: TRIGGER_GAP,
+        flip: this.flip(),
+        margin,
+      },
     );
+    this.applyPlacedPosition(placed.placement as TooltipPosition);
     /* The helper leaves the placement axis alone so a panel too tall for the
        space beside its anchor can overflow and scroll with the page. A bubble
        cannot: it is clamped to the viewport and fixed there, so anything pushed
@@ -479,6 +506,15 @@ export class TooltipDirective implements OnDestroy {
     this.renderer.setStyle(this.tooltipEl, 'top', `${top}px`);
     this.renderer.setStyle(this.tooltipEl, 'left', `${left}px`);
     this.syncScrollable();
+  }
+
+  private applyPlacedPosition(position: TooltipPosition): void {
+    if (!this.tooltipEl || position === this.placedPosition) {
+      return;
+    }
+    this.renderer.removeClass(this.tooltipEl, `ea-tooltip--${this.placedPosition}`);
+    this.renderer.addClass(this.tooltipEl, `ea-tooltip--${position}`);
+    this.placedPosition = position;
   }
 
   /* The stylesheet's viewport cap and the margin the bubble is placed against

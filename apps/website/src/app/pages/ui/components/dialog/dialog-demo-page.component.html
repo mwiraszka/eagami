@@ -18,7 +18,10 @@
       [width]="state().width"
       [closeOnBackdrop]="state().closeOnBackdrop"
       [closeOnEscape]="state().closeOnEscape"
-      [showClose]="state().showClose">
+      [showClose]="state().showClose"
+      [closeDisabled]="state().closeDisabled"
+      [manualClose]="state().manualClose"
+      (closeRequested)="open.set(false)">
       <span slot="header">{{ messages().ui.component.demos.dialog.title }}</span>
       <p>{{ messages().ui.component.demos.dialog.body }}</p>
       <span slot="footer">

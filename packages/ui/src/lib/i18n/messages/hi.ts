@@ -122,6 +122,7 @@ const messages: EagamiMessages = {
     clearAll: 'चयन साफ़ करें',
     removeOption: label => `${label} हटाएं`,
     selectedCount: count => `${count} चयनित`,
+    create: text => `"${text}" बनाएँ`,
   },
   paginator: {
     label: 'पृष्ठ क्रमांकन',

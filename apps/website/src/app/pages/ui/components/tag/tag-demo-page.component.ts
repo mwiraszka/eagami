@@ -21,6 +21,7 @@ interface TagKnobState {
   variant: TagVariant;
   size: TagSize;
   maxWidth: number;
+  color: string;
   tooltip: TagTooltip;
   removable: boolean;
   disabled: boolean;

@@ -129,6 +129,7 @@ const messages: EagamiMessages = {
     clearAll: 'مسح التحديد',
     removeOption: label => `إزالة ${label}`,
     selectedCount: count => `${count} محدد`,
+    create: text => `إنشاء «${text}»`,
   },
   paginator: {
     label: 'ترقيم الصفحات',

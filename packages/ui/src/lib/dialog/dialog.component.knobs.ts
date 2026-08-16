@@ -10,18 +10,23 @@ export const DIALOG_KNOBS: ComponentKnobs = {
   argTypes: {
     width: {
       control: 'select',
-      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', 'full'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'],
     },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },
     showClose: { control: 'boolean' },
+    closeDisabled: { control: 'boolean', if: { arg: 'showClose', eq: true } },
+    manualClose: { control: 'boolean' },
     opened: { action: 'opened' },
     closed: { action: 'closed' },
+    closeRequested: { action: 'closeRequested' },
   },
   args: {
     width: 'md',
     closeOnBackdrop: true,
     closeOnEscape: true,
     showClose: true,
+    closeDisabled: false,
+    manualClose: false,
   },
 };

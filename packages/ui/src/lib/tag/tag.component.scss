@@ -6,6 +6,10 @@
 ea-tag {
   display: inline-flex;
   vertical-align: middle;
+  // A chip capped against its container (`maxWidth: '100%'`) is only as wide as
+  // the host it sits in, and a flex or grid item refuses to shrink below its
+  // content without this
+  min-width: 0;
   line-height: 1;
 }
 
@@ -19,10 +23,12 @@ ea-tag {
   line-height: var(--line-height-none);
   white-space: nowrap;
   font-family: var(--font-family-sans);
-  border: var(--border-width-thin) solid var(--color-border-default);
+  // `--ea-tag-color` is the caller's own fill, which outranks the variant's; it
+  // arrives with `--ea-tag-ink` already resolved against it
+  border: var(--border-width-thin) solid var(--ea-tag-color, var(--color-border-default));
   border-radius: var(--radius-lg);
-  background-color: var(--color-bg-subtle);
-  color: var(--color-text-secondary);
+  background-color: var(--ea-tag-color, var(--color-bg-subtle));
+  color: var(--ea-tag-ink, var(--color-text-secondary));
   // semantic color is meaningful; preserve it in forced-colors
   forced-color-adjust: none;
 
@@ -53,27 +59,27 @@ ea-tag {
   }
 
   &--success {
-    border-color: var(--color-success-muted);
-    background-color: var(--color-success-subtle);
-    color: var(--color-success-text);
+    border-color: var(--ea-tag-color, var(--color-success-muted));
+    background-color: var(--ea-tag-color, var(--color-success-subtle));
+    color: var(--ea-tag-ink, var(--color-success-text));
   }
 
   &--warning {
-    border-color: var(--color-warning-muted);
-    background-color: var(--color-warning-subtle);
-    color: var(--color-warning-text);
+    border-color: var(--ea-tag-color, var(--color-warning-muted));
+    background-color: var(--ea-tag-color, var(--color-warning-subtle));
+    color: var(--ea-tag-ink, var(--color-warning-text));
   }
 
   &--error {
-    border-color: var(--color-error-muted);
-    background-color: var(--color-error-subtle);
-    color: var(--color-error-text);
+    border-color: var(--ea-tag-color, var(--color-error-muted));
+    background-color: var(--ea-tag-color, var(--color-error-subtle));
+    color: var(--ea-tag-ink, var(--color-error-text));
   }
 
   &--info {
-    border-color: var(--color-info-muted);
-    background-color: var(--color-info-subtle);
-    color: var(--color-info-text);
+    border-color: var(--ea-tag-color, var(--color-info-muted));
+    background-color: var(--ea-tag-color, var(--color-info-subtle));
+    color: var(--ea-tag-ink, var(--color-info-text));
   }
 
   &--disabled {

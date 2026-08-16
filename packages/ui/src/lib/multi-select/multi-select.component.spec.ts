@@ -388,6 +388,69 @@ describe('MultiSelectComponent', () => {
     });
   });
 
+  describe('Creating an option', () => {
+    function getCreateRow(): HTMLElement | null {
+      const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
+      return (
+        surface?.querySelector<HTMLElement>('.ea-multi-select__option--create') ?? null
+      );
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('allowCreate', true);
+      getTrigger().click();
+      fixture.detectChanges();
+    });
+
+    it('offers a create row for text that matches no option', () => {
+      typeSearch('Elderberry');
+
+      expect(getCreateRow()?.textContent).toContain('Elderberry');
+      expect(document.body.querySelector('.ea-multi-select__empty')).toBeNull();
+    });
+
+    it('offers no create row while the text matches an option, whatever its case', () => {
+      typeSearch('BANANA');
+
+      expect(getCreateRow()).toBeNull();
+    });
+
+    it('offers no create row when the feature is off', () => {
+      fixture.componentRef.setInput('allowCreate', false);
+
+      typeSearch('Elderberry');
+
+      expect(getCreateRow()).toBeNull();
+    });
+
+    it('focuses the create row when nothing else matches, so Enter takes it', () => {
+      const spy = vi.fn();
+      component.created.subscribe(spy);
+
+      typeSearch('Elderberry');
+      getSearchInput()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(spy).toHaveBeenCalledWith('Elderberry');
+      expect(component.searchTerm()).toBe('');
+      expect(document.activeElement).toBe(getSearchInput());
+    });
+
+    it('reports the text on a click, leaving the selection to the consumer', () => {
+      const spy = vi.fn();
+      component.created.subscribe(spy);
+
+      typeSearch('Elderberry');
+      getCreateRow()!.click();
+      fixture.detectChanges();
+
+      expect(spy).toHaveBeenCalledWith('Elderberry');
+      expect(component.value()).toEqual([]);
+    });
+  });
+
   describe('Select all', () => {
     it('selects all filtered options when none are selected', () => {
       getTrigger().click();

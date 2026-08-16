@@ -1364,6 +1364,8 @@ export const de: WebMessages = {
             headerDivider: 'Zeigt eine Trennlinie zwischen Kopfzeile und Hauptteil.',
           },
           checkbox: {
+            truncate:
+              'Kürzt ein zu langes Label mit Auslassungspunkten und zeigt den vollen Text im Tooltip.',
             ariaLabel:
               'Barrierefreier Name für die Checkbox, wenn kein sichtbares Label gerendert wird.',
             checked: 'Aktueller Ankreuzzustand, bidirektional bindbar über [(checked)].',
@@ -1401,6 +1403,8 @@ export const de: WebMessages = {
               'Erlaubt jedes Zeichen ohne Leerzeichen; ist es aus, werden nur Ziffern akzeptiert.',
           },
           'color-picker': {
+            compact:
+              'Zeigt den Auslöser als reines Farbfeld, ohne Wert und ohne Löschschaltfläche.',
             disabled: 'Deaktiviert das Feld.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -1617,6 +1621,8 @@ export const de: WebMessages = {
               'Wird mit dem neuen Ankreuzzustand ausgelöst, wann immer der Nutzer den Schalter umschaltet.',
           },
           tag: {
+            color:
+              'Füllfarbe als Hex-Wert, färbt den Chip und wählt die besser lesbare Schriftfarbe.',
             variant: 'Semantisches Farbschema des Tags.',
             size: 'Visuelle Größe des Tags.',
             maxWidth:
@@ -1703,6 +1709,9 @@ export const de: WebMessages = {
             menu: 'Die ea-menu-Instanz, die dieser Auslöser steuert.',
           },
           tooltip: {
+            whenClipped:
+              'Zeigt die Sprechblase nur, solange der Auslöser seinen Inhalt abschneidet.',
+            flip: 'Verschiebt eine Sprechblase ohne Platz auf der gewünschten Seite auf die gegenüberliegende.',
             maxWidth:
               'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px). Die Sprechblase wächst nie über den Viewport hinaus.',
             dismissDelay:
@@ -1893,6 +1902,10 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn der Eintrag aktiviert wird; das übergeordnete Menü schließt sich unmittelbar danach.',
           },
           'multi-select': {
+            created:
+              'Wird mit dem eingegebenen Text ausgelöst, wenn die Anlegen-Zeile gewählt wird.',
+            allowCreate:
+              'Bietet eine Anlegen-Zeile an, wenn der Suchtext zu keiner Option passt.',
             disabled: 'Deaktiviert das Multi-Select.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2213,6 +2226,12 @@ export const de: WebMessages = {
             id: 'Basis-id, die zur Ableitung der aria-ids für die Fehler- und Hinweis-Elemente verwendet wird.',
           },
           dialog: {
+            closeRequested:
+              'Wird bei manualClose für jeden Schließversuch ausgelöst, ohne den Dialog zu schließen.',
+            manualClose:
+              'Meldet jedes Schließen über closeRequested und lässt den Dialog offen, bis open auf false gesetzt wird.',
+            closeDisabled:
+              'Deaktiviert die eingebaute Schließen-Schaltfläche, etwa während ein Speichern läuft.',
             ariaLabel:
               'Barrierefreies Label für den Dialog, wenn sein Header-Slot keinen sichtbaren Titel enthält.',
             closeOnBackdrop:

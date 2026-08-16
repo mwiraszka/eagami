@@ -1350,6 +1350,7 @@ export const is: WebMessages = {
             headerDivider: 'Sýnir skilrúm milli hauss og meginmáls.',
           },
           checkbox: {
+            truncate: 'Styttir of langan merkimiða og sýnir allan textann í ábendingu.',
             ariaLabel:
               'Aðgengilegt nafn fyrir gátreitinn þegar enginn sýnilegur merkimiði er birtur.',
             checked: 'Núverandi valið ástand, tvíátta bindanlegt með [(checked)].',
@@ -1387,6 +1388,8 @@ export const is: WebMessages = {
               'Leyfa hvaða staf sem er án bils; þegar slökkt eru aðeins tölustafir samþykktir.',
           },
           'color-picker': {
+            compact:
+              'Sýnir hnappinn sem einfaldan litareit, án gildis og hreinsunarhnapps.',
             disabled: 'Gerir reitinn óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -1583,6 +1586,8 @@ export const is: WebMessages = {
               'Kviknar með nýja valda ástandinu hvenær sem notandinn víxlar rofanum.',
           },
           tag: {
+            color:
+              'Fyllingarlitur sem hex-gildi, litar merkið og velur læsilegan textalit.',
             variant: 'Merkingarlegt litakerfi merkisins.',
             size: 'Sjónræn stærð merkisins.',
             maxWidth:
@@ -1662,6 +1667,9 @@ export const is: WebMessages = {
             menu: 'ea-menu tilvikið sem þessi kveikja stjórnar.',
           },
           tooltip: {
+            whenClipped:
+              'Sýnir ábendinguna aðeins meðan hnappurinn klippir eigið innihald.',
+            flip: 'Færir ábendinguna á gagnstæða hlið þegar ekki er pláss á umbeðinni hlið.',
             maxWidth:
               'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf). Ábendingin fer aldrei út fyrir sýnisgluggann.',
             dismissDelay:
@@ -1841,6 +1849,9 @@ export const is: WebMessages = {
               'Kviknar þegar atriðið er virkjað; foreldravalmyndin lokast strax á eftir.',
           },
           'multi-select': {
+            created: 'Kviknar með innslegnum texta þegar stofnlínan er valin.',
+            allowCreate:
+              'Býður upp á línu til að stofna gildi þegar leitartextinn passar við enga valmöguleika.',
             disabled: 'Gerir fjölvalið óvirkt.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2139,6 +2150,12 @@ export const is: WebMessages = {
             id: 'Grunn-id notað til að leiða út aria auðkennin fyrir villu- og vísbendingastökin.',
           },
           dialog: {
+            closeRequested:
+              'Kviknar með manualClose í hvert sinn sem beðið er um lokun, án þess að loka.',
+            manualClose:
+              'Tilkynnir hverja lokun með closeRequested og heldur glugganum opnum þar til open verður false.',
+            closeDisabled:
+              'Slekkur á innbyggða lokunarhnappnum, til dæmis meðan verið er að vista.',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir gluggann þegar hausarauf hans inniheldur ekki sýnilegan titil.',
             closeOnBackdrop:

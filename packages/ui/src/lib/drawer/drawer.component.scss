@@ -180,6 +180,11 @@
       --ea-drawer-block-size: 36rem;
     }
 
+    &--2xl {
+      --ea-drawer-inline-size: 56rem;
+      --ea-drawer-block-size: 44rem;
+    }
+
     &--full {
       --ea-drawer-inline-size: calc(100vw - 3rem);
       --ea-drawer-block-size: calc(100vh - 3rem);

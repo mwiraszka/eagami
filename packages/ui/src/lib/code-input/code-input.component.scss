@@ -39,9 +39,13 @@
   }
 }
 
+// The cell box, its type and its state borders are all tokens: a consumer
+// restyling the cells sets values rather than out-specifying the rules. Set the
+// box tokens to fixed lengths to size a cell independently of its character,
+// which the em defaults tie together.
 .ea-code-input-group {
   display: flex;
-  gap: 0.5em;
+  gap: var(--ea-code-input-gap, 0.5em);
 
   &--error .ea-code-input {
     border-color: var(--color-error-default);
@@ -66,20 +70,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5em;
-  height: 3em;
+  width: var(--ea-code-input-cell-width, 2.5em);
+  height: var(--ea-code-input-cell-height, 3em);
   padding: 0;
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--ea-code-input-font-size, 1em);
+  font-weight: var(--ea-code-input-font-weight, var(--font-weight-semibold));
   text-align: center;
-  font-family: var(--font-family-sans);
+  font-family: var(--ea-code-input-font-family, var(--font-family-sans));
   line-height: var(--line-height-none);
   letter-spacing: var(--letter-spacing-normal);
-  background-color: var(--color-bg-base);
-  border: var(--border-width-thin) solid var(--color-border-default);
-  border-radius: var(--radius-md);
+  background-color: var(--ea-code-input-background-color, var(--color-bg-base));
+  border: var(--border-width-thin) solid
+    var(--ea-code-input-border-color, var(--color-border-default));
+  border-radius: var(--ea-code-input-radius, var(--radius-md));
   outline: none;
-  color: var(--color-text-primary);
-  caret-color: transparent;
+  color: var(--ea-code-input-color, var(--color-text-primary));
+  // A code field reads as a row of slots rather than a text field, so the caret
+  // is hidden by default; set the token to `auto` to bring it back
+  caret-color: var(--ea-code-input-caret-color, transparent);
   transition: var(--transition-colors), var(--transition-shadow);
 
   &::placeholder {
@@ -87,16 +95,17 @@
   }
 
   &--focused {
-    border-color: var(--color-border-focus);
-    @include ea.focus-ring;
+    border-color: var(--ea-code-input-border-color-focus, var(--color-border-focus));
+    @include ea.focus-ring(var(--ea-code-input-shadow-focus, var(--shadow-focus-ring)));
   }
 
   &--readonly {
     @include ea.readonly-control;
   }
 
+  // Point the token at the resting border colour to opt out of the filled cue
   &--filled {
-    border-color: var(--color-border-strong);
+    border-color: var(--ea-code-input-border-color-filled, var(--color-border-strong));
   }
 
   &:disabled {

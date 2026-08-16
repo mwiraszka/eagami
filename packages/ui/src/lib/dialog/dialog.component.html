@@ -14,7 +14,8 @@
         type="button"
         class="ea-dialog__close"
         [attr.aria-label]="i18n.messages().dialog.close"
-        (click)="handleClose()">
+        [disabled]="closeDisabled()"
+        (click)="requestClose()">
         <ea-icon-x />
       </button>
     }
@@ -28,6 +29,10 @@
 
     <div class="ea-dialog__body">
       <ng-content />
+    </div>
+
+    <div class="ea-dialog__status">
+      <ng-content select="[slot=status]" />
     </div>
 
     <div class="ea-dialog__footer">

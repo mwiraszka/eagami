@@ -202,6 +202,7 @@ export interface EagamiMessages {
     clearAll: string;
     removeOption: (label: string) => string;
     selectedCount: (count: number) => string;
+    create: (text: string) => string;
   };
   paginator: {
     label: string;

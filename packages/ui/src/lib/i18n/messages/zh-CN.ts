@@ -121,6 +121,7 @@ const messages: EagamiMessages = {
     clearAll: '清除选择',
     removeOption: label => `移除 ${label}`,
     selectedCount: count => `已选择 ${count} 项`,
+    create: text => `创建“${text}”`,
   },
   paginator: {
     label: '分页',

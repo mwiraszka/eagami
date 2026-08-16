@@ -310,6 +310,11 @@
       font-weight: var(--font-weight-medium);
     }
 
+    &--create {
+      font-weight: var(--font-weight-medium);
+      color: var(--color-brand-text);
+    }
+
     &:hover:not(&--disabled) {
       background-color: var(--color-state-hover);
 
@@ -327,6 +332,12 @@
       align-items: center;
       line-height: 1;
     }
+  }
+
+  &__create-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
   }
 
   &__option-label {
