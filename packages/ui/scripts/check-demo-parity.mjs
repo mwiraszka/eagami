@@ -213,64 +213,66 @@ for (const slug of apiSlugs) {
   }
 }
 
-// Demo template knob coverage: a demo page may render its component more than
-// once (a plain and a templated tooltip trigger, say). Every instance must bind
-// every knob that maps to one of the component's own inputs; an instance that
-// skips one silently ignores the playground control it claims to demonstrate.
+// Demo template knob coverage: every instance of the component on its own demo
+// page must bind every knob that maps to one of its inputs. A knob bound on no
+// instance passes when the page TS consumes it, the programmatic route to the
+// component. Every knob slug has both page files, so a failed read is a rename
+// to surface, not a case to skip.
 const DEMO_PAGES_DIR = resolve(repo, 'apps/website/src/app/pages/ui/components');
 const unboundKnobs = []; // { slug, name, index, total }
+// Attribute values may hold `>` inside binding expressions, so a tag runs to
+// the first `>` outside quotes
+const TAG_ATTRS = `(?:"[^"]*"|'[^']*'|[^>"'])*`;
 for (const [slug, knob] of knobNames) {
   const api = UI_API[slug];
   if (!api) {
     continue;
   }
-  let html;
-  let pageTs;
-  try {
-    html = readText(resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.html`));
-    pageTs = readText(resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.ts`));
-  } catch {
-    continue;
-  }
   const inputNames = new Set(api.inputs.map(p => p.name));
-  // A knob the page TS consumes is wired programmatically (a form demo routes
-  // `disabled` through its FormControl), so no template binding is expected
-  const consumedInTs = name => new RegExp(`state\\(\\)\\.${name}\\b`).test(pageTs);
-  const required = [...knob.all].filter(
-    n => !knob.demoOnly.has(n) && inputNames.has(n) && !consumedInTs(n),
-  );
+  const required = [...knob.all].filter(n => !knob.demoOnly.has(n) && inputNames.has(n));
   if (!required.length) {
     continue;
   }
-  // A knob may be bound by its property name or, for aliased inputs like
-  // `ariaLabel`, by the kebab-case attribute the alias exposes
+  const html = readText(
+    resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.html`),
+  );
+  const pageTs = readText(
+    resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.ts`),
+  );
+  // A knob may be bound by its property name or by the kebab-case attribute
+  // an alias exposes
   const bindingRe = name => {
-    const kebab = name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    const kebab = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
     return new RegExp(`\\s[\\[(]{0,2}(?:${name}|${kebab})[\\])]{0,2}=`);
   };
   const instances = [];
   if (api.selector.startsWith('[')) {
-    const attrName = api.selector.slice(1, -1);
-    for (const [tag] of html.matchAll(/<[a-z][^>]*>/gi)) {
-      if (bindingRe(attrName).test(tag)) {
+    const attrRe = bindingRe(api.selector.slice(1, -1));
+    for (const [tag] of html.matchAll(new RegExp(`<[a-z]${TAG_ATTRS}>`, 'gi'))) {
+      if (attrRe.test(tag)) {
         instances.push(tag);
       }
     }
   } else {
     // `(?![\w-])` so `ea-menu` cannot also swallow every `ea-menu-item`
     for (const [tag] of html.matchAll(
-      new RegExp(`<${api.selector}(?![\\w-])[^>]*>`, 'g'),
+      new RegExp(`<${api.selector}(?![\\w-])${TAG_ATTRS}>`, 'g'),
     )) {
       instances.push(tag);
     }
   }
-  instances.forEach((tag, index) => {
-    for (const name of required) {
-      if (!bindingRe(name).test(tag)) {
+  for (const name of required) {
+    const re = bindingRe(name);
+    const boundSomewhere = instances.some(tag => re.test(tag));
+    if (!boundSomewhere && new RegExp(`state\\(\\)\\.${name}\\b`).test(pageTs)) {
+      continue;
+    }
+    instances.forEach((tag, index) => {
+      if (!re.test(tag)) {
         unboundKnobs.push({ slug, name, index: index + 1, total: instances.length });
       }
-    }
-  });
+    });
+  }
 }
 
 // Story wiring: a component with a knobs file must surface those knobs in its
