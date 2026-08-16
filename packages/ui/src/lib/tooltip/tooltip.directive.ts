@@ -283,11 +283,9 @@ export class TooltipDirective implements OnDestroy {
     const style = getComputedStyle(this.tooltipEl);
     /* Whatever the border box holds beyond its content box: padding, borders,
        and a scrollbar if the height clamp put one there. Summed from the
-       fractional longhands rather than read as border box minus computed
-       `width`: WebKit resolves computed `width` to the border box under
-       `box-sizing: border-box`, which zeroes that difference. The longhands are
-       exact under page zoom; only the scrollbar goes through the whole-pixel
-       `offsetWidth - clientWidth`, with the exact borders backed out. */
+       fractional longhands, since WebKit resolves computed `width` to the
+       border box under `box-sizing: border-box`. Only the scrollbar goes
+       through the whole-pixel `offsetWidth - clientWidth`. */
     const paddings = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
     const borders =
       parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
@@ -297,6 +295,9 @@ export class TooltipDirective implements OnDestroy {
     );
     const horizontalChrome =
       style.boxSizing === 'border-box' ? paddings + borders + scrollbar : scrollbar;
+    if (!Number.isFinite(horizontalChrome)) {
+      return;
+    }
     this.renderer.setStyle(
       this.tooltipEl,
       'width',
