@@ -334,19 +334,47 @@ describe('TooltipDirective', () => {
   });
 
   describe('Clipped triggers', () => {
-    function clipTrigger(clipped: boolean): void {
-      const button = getButton();
-      Object.defineProperty(button, 'scrollWidth', { value: clipped ? 300 : 100 });
-      Object.defineProperty(button, 'clientWidth', { value: 100 });
+    // jsdom lays nothing out and resolves every `overflow` to `visible`, so a
+    // box has to declare both the sizes that overflow and what it does with them.
+    const overflows = new Map<Element, string>();
+
+    function box(
+      el: HTMLElement,
+      { overflow = 'hidden', scrollWidth = 300, clientWidth = 100 } = {},
+    ): void {
+      Object.defineProperty(el, 'scrollWidth', {
+        value: scrollWidth,
+        configurable: true,
+      });
+      Object.defineProperty(el, 'clientWidth', {
+        value: clientWidth,
+        configurable: true,
+      });
+      overflows.set(el, overflow);
     }
 
     beforeEach(() => {
+      overflows.clear();
+      vi.spyOn(window, 'getComputedStyle').mockImplementation(
+        (element, pseudoElement) => {
+          const overflow = overflows.get(element);
+          if (overflow === undefined) {
+            return REAL_GET_COMPUTED_STYLE(element, pseudoElement);
+          }
+          const style = document.createElement('div').style;
+          // jsdom leaves the `overflow` shorthand unexpanded, and the check
+          // reads the longhands
+          style.overflowX = overflow;
+          style.overflowY = overflow;
+          return style as CSSStyleDeclaration;
+        },
+      );
       host.whenClipped.set(true);
       fixture.detectChanges();
     });
 
     it('shows nothing while the trigger holds all of its content', () => {
-      clipTrigger(false);
+      box(getButton(), { scrollWidth: 100 });
 
       show();
 
@@ -354,7 +382,7 @@ describe('TooltipDirective', () => {
     });
 
     it('shows once the trigger cuts its content off', () => {
-      clipTrigger(true);
+      box(getButton());
 
       show();
 
@@ -363,14 +391,21 @@ describe('TooltipDirective', () => {
 
     it('measures descendants, since the box doing the cutting is usually inner', () => {
       const inner = document.createElement('span');
-      Object.defineProperty(inner, 'scrollWidth', { value: 300 });
-      Object.defineProperty(inner, 'clientWidth', { value: 100 });
       getButton().appendChild(inner);
-      clipTrigger(false);
+      box(getButton(), { scrollWidth: 100 });
+      box(inner);
 
       show();
 
       expect(getTooltip()).toBeTruthy();
+    });
+
+    it('leaves content the user can still scroll to alone', () => {
+      box(getButton(), { overflow: 'auto' });
+
+      show();
+
+      expect(getTooltip()).toBeNull();
     });
   });
 
