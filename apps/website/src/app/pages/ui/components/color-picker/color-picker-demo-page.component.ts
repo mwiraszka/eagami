@@ -27,6 +27,7 @@ interface ColorPickerKnobState {
   format: ColorPickerFormat;
   showAlpha: boolean;
   clearable: boolean;
+  compact: boolean;
   disabled: boolean;
   readonly: boolean;
   required: boolean;

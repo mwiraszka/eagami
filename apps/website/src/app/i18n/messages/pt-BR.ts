@@ -1356,6 +1356,8 @@ export const ptBR: WebMessages = {
             headerDivider: 'Mostra um divisor entre o cabeçalho e o corpo.',
           },
           checkbox: {
+            truncate:
+              'Corta com reticências um rótulo longo demais e mostra o texto completo em um tooltip.',
             ariaLabel:
               'Nome acessível para a caixa de seleção quando nenhum rótulo visível é renderizado.',
             checked:
@@ -1395,6 +1397,8 @@ export const ptBR: WebMessages = {
               'Permite qualquer caractere sem espaço em branco; quando desativado, somente dígitos são aceitos.',
           },
           'color-picker': {
+            compact:
+              'Mostra o gatilho como uma amostra de cor simples, sem o valor nem o botão de limpar.',
             disabled: 'Desativa o campo.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -1603,6 +1607,8 @@ export const ptBR: WebMessages = {
               'Dispara com o novo estado marcado sempre que o usuário alterna o interruptor.',
           },
           tag: {
+            color:
+              'Cor de preenchimento em hexadecimal, que pinta a tag e escolhe a tinta mais legível.',
             variant: 'Esquema de cores semântico da tag.',
             size: 'Tamanho visual da tag.',
             maxWidth:
@@ -1685,6 +1691,9 @@ export const ptBR: WebMessages = {
             menu: 'A instância de ea-menu que este gatilho controla.',
           },
           tooltip: {
+            whenClipped:
+              'Mostra o balão apenas enquanto o gatilho corta o próprio conteúdo.',
+            flip: 'Move o balão para o lado oposto quando não há espaço no lado pedido.',
             maxWidth:
               'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
             dismissDelay:
@@ -1874,6 +1883,10 @@ export const ptBR: WebMessages = {
               'Dispara quando o item é ativado; o menu pai fecha imediatamente em seguida.',
           },
           'multi-select': {
+            created:
+              'Emitido com o texto digitado quando a linha de criação é escolhida.',
+            allowCreate:
+              'Oferece uma linha de criação quando o texto da busca não corresponde a nenhuma opção.',
             disabled: 'Desativa a seleção múltipla.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -2186,6 +2199,12 @@ export const ptBR: WebMessages = {
             id: 'id base usado para derivar os ids aria dos elementos de erro e dica.',
           },
           dialog: {
+            closeRequested:
+              'Emitido com manualClose a cada pedido de fechamento, sem fechar o diálogo.',
+            manualClose:
+              'Informa cada fechamento por closeRequested e mantém o diálogo aberto até open virar false.',
+            closeDisabled:
+              'Desativa o botão de fechar interno, por exemplo enquanto um salvamento está em andamento.',
             ariaLabel:
               'Rótulo acessível para o diálogo quando seu slot de cabeçalho não contém um título visível.',
             closeOnBackdrop:

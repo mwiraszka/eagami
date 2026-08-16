@@ -35,6 +35,7 @@ interface MultiSelectKnobState {
   placeholder: string;
   size: MultiSelectSize;
   searchable: boolean;
+  allowCreate: boolean;
   disabled: boolean;
   readonly: boolean;
   required: boolean;
@@ -70,9 +71,13 @@ export class MultiSelectDemoPageComponent {
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
   );
 
-  private readonly fruits = computed<SelectOption[]>(() =>
-    this.messages().ui.component.sharedOptions.fruitOptions.map(o => ({ ...o })),
-  );
+  /** Options the visitor added through the `allowCreate` row, on top of the fixed list. */
+  private readonly createdOptions = signal<SelectOption[]>([]);
+
+  private readonly fruits = computed<SelectOption[]>(() => [
+    ...this.messages().ui.component.sharedOptions.fruitOptions.map(o => ({ ...o })),
+    ...this.createdOptions(),
+  ]);
 
   protected readonly options = computed<SelectOptions>(() => {
     const state = this.state();
@@ -81,7 +86,8 @@ export class MultiSelectDemoPageComponent {
 
   protected readonly extraAttributes = computed(() => [optionsAttribute(this.options())]);
 
-  protected readonly control = new FormControl(null, {
+  protected readonly control = new FormControl<readonly string[]>([], {
+    nonNullable: true,
     validators: () => (this.state().triggerError ? { required: true } : null),
   });
 
@@ -104,11 +110,20 @@ export class MultiSelectDemoPageComponent {
     });
   }
 
+  // What a consumer does for real: create the record, then select it. Here the
+  // record is just another option appended to the list.
+  protected onCreated(text: string): void {
+    const option: SelectOption = { value: text.toLowerCase(), label: text };
+    this.createdOptions.update(created => [...created, option]);
+    this.control.setValue([...this.control.value, option.value]);
+  }
+
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as MultiSelectKnobState);
   }
 
   protected reset(): void {
+    this.createdOptions.set([]);
     this.state.set(
       initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
     );

@@ -1369,6 +1369,8 @@ export const frFR: WebMessages = {
             headerDivider: 'Affiche un séparateur entre l’en-tête et le corps.',
           },
           checkbox: {
+            truncate:
+              'Tronque un libellé trop long pour sa colonne et révèle le texte complet dans une infobulle.',
             ariaLabel:
               'Nom accessible de la case à cocher lorsqu’aucun libellé visible n’est rendu.',
             checked: 'État coché actuel, liable en deux sens via [(checked)].',
@@ -1406,6 +1408,8 @@ export const frFR: WebMessages = {
               'Autorise tout caractère non blanc ; sinon, seuls les chiffres sont acceptés.',
           },
           'color-picker': {
+            compact:
+              'Affiche le déclencheur comme une simple pastille, sans la valeur ni le bouton d’effacement.',
             disabled: 'Désactive le champ.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -1614,6 +1618,8 @@ export const frFR: WebMessages = {
               'Émis avec le nouvel état coché chaque fois que l’utilisateur bascule l’interrupteur.',
           },
           tag: {
+            color:
+              'Couleur de remplissage en hexadécimal, qui peint la puce et choisit l’encre la plus lisible.',
             variant: 'Schéma de couleurs sémantique de l’étiquette.',
             size: 'Taille visuelle de l’étiquette.',
             maxWidth:
@@ -1699,6 +1705,9 @@ export const frFR: WebMessages = {
             menu: 'L’instance ea-menu que ce déclencheur contrôle.',
           },
           tooltip: {
+            whenClipped:
+              'N’affiche la bulle que lorsque le déclencheur tronque son contenu.',
+            flip: 'Déplace une bulle sans place du côté demandé vers le côté opposé.',
             maxWidth:
               'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
             dismissDelay:
@@ -1889,6 +1898,9 @@ export const frFR: WebMessages = {
               'Émis lorsque l’élément est activé ; le menu parent se ferme immédiatement après.',
           },
           'multi-select': {
+            created: 'Émis avec le texte saisi lorsque la ligne de création est choisie.',
+            allowCreate:
+              'Propose une ligne de création lorsque le texte saisi ne correspond à aucune option.',
             disabled: 'Désactive le multi-select.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2209,6 +2221,12 @@ export const frFR: WebMessages = {
             id: 'id de base utilisé pour dériver les ids ARIA des éléments d’erreur et d’indication.',
           },
           dialog: {
+            closeRequested:
+              'Émis avec manualClose à chaque demande de fermeture, sans fermer la boîte.',
+            manualClose:
+              'Signale chaque fermeture via closeRequested et laisse la boîte ouverte jusqu’à ce que open passe à false.',
+            closeDisabled:
+              'Désactive le bouton de fermeture intégré, par exemple pendant un enregistrement.',
             ariaLabel:
               'Libellé accessible de la boîte de dialogue lorsque son emplacement d’en-tête ne contient pas de titre visible.',
             closeOnBackdrop:

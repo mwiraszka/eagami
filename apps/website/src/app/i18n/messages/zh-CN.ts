@@ -1294,6 +1294,7 @@ export const zhCN: WebMessages = {
             headerDivider: '在页眉和正文之间显示分隔线。',
           },
           checkbox: {
+            truncate: '为过长的标签添加省略号，并在提示中显示完整文本。',
             ariaLabel: '未渲染可见标签时，为复选框提供的无障碍名称。',
             checked: '当前勾选状态，可通过 [(checked)] 双向绑定。',
             count: '紧跟在标签后以暗淡显示的补充值。',
@@ -1324,6 +1325,7 @@ export const zhCN: WebMessages = {
             allowAllChars: '允许任何非空白字符；关闭时仅接受数字。',
           },
           'color-picker': {
+            compact: '将触发器显示为纯色块，不显示数值和清除按钮。',
             disabled: '禁用该字段。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             format: '发出的颜色值的输出格式（hex、rgb 或 hsl）。',
@@ -1487,6 +1489,7 @@ export const zhCN: WebMessages = {
             changed: '每当用户切换开关时，随新的勾选状态一同触发。',
           },
           tag: {
+            color: '十六进制填充颜色，为标签着色并选择易读的文字颜色。',
             variant: '标签的语义配色方案。',
             size: '标签的视觉尺寸。',
             maxWidth:
@@ -1548,6 +1551,8 @@ export const zhCN: WebMessages = {
             menu: '此触发器所控制的 ea-menu 实例。',
           },
           tooltip: {
+            whenClipped: '仅当触发元素裁切自身内容时才显示气泡。',
+            flip: '当请求的一侧没有空间时，将气泡移到相反一侧。',
             maxWidth:
               '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。提示气泡不会超出视口。',
             dismissDelay:
@@ -1686,6 +1691,8 @@ export const zhCN: WebMessages = {
             clicked: '当该项被激活时触发；父菜单随后立即关闭。',
           },
           'multi-select': {
+            created: '选择“创建”行时，携带输入的文本触发。',
+            allowCreate: '当搜索文本与任何选项都不匹配时提供“创建”行。',
             disabled: '禁用该多选。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
@@ -1924,6 +1931,10 @@ export const zhCN: WebMessages = {
             id: '用于派生错误和提示元素的 aria id 的基础 id。',
           },
           dialog: {
+            closeRequested: '在 manualClose 下，每次用户请求关闭时触发，且不关闭对话框。',
+            manualClose:
+              '通过 closeRequested 报告每次关闭请求，在 open 置为 false 之前保持对话框打开。',
+            closeDisabled: '禁用内置的关闭按钮，例如在保存过程中。',
             ariaLabel: '当对话框的页眉插槽不含可见标题时，为对话框提供的无障碍标签。',
             closeOnBackdrop: '当用户点击面板外的背景遮罩区域时关闭对话框。',
             closeOnEscape: '当用户按下 Escape 时关闭对话框。',

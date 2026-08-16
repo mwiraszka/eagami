@@ -1355,6 +1355,7 @@ export const pl: WebMessages = {
             headerDivider: 'Wyświetla linię oddzielającą nagłówek od treści.',
           },
           checkbox: {
+            truncate: 'Skraca zbyt długą etykietę i pokazuje pełny tekst w dymku.',
             ariaLabel:
               'Dostępna nazwa pola wyboru, gdy nie jest renderowana widoczna etykieta.',
             checked:
@@ -1392,6 +1393,8 @@ export const pl: WebMessages = {
               'Zezwala na dowolny znak niebędący białym; w przeciwnym razie akceptowane są tylko cyfry.',
           },
           'color-picker': {
+            compact:
+              'Pokazuje przycisk jako samą próbkę koloru, bez wartości i przycisku czyszczenia.',
             disabled: 'Wyłącza pole.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -1596,6 +1599,8 @@ export const pl: WebMessages = {
               'Emitowane z nowym stanem zaznaczenia, gdy użytkownik przełączy przełącznik.',
           },
           tag: {
+            color:
+              'Kolor wypełnienia jako wartość szesnastkowa, który maluje tag i dobiera czytelny kolor tekstu.',
             variant: 'Semantyczny schemat kolorów tagu.',
             size: 'Wizualny rozmiar tagu.',
             maxWidth:
@@ -1680,6 +1685,8 @@ export const pl: WebMessages = {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
           },
           tooltip: {
+            whenClipped: 'Pokazuje dymek tylko wtedy, gdy element przycina własną treść.',
+            flip: 'Przenosi dymek na przeciwną stronę, gdy po wskazanej stronie brakuje miejsca.',
             maxWidth:
               'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px). Podpowiedź nigdy nie wykracza poza widoczny obszar.',
             dismissDelay:
@@ -1864,6 +1871,10 @@ export const pl: WebMessages = {
               'Emitowane po aktywacji elementu; menu nadrzędne zamyka się natychmiast po tym.',
           },
           'multi-select': {
+            created:
+              'Zgłaszane z wpisanym tekstem, gdy użytkownik wybierze wiersz tworzenia.',
+            allowCreate:
+              'Proponuje wiersz tworzenia, gdy wyszukiwany tekst nie pasuje do żadnej opcji.',
             disabled: 'Wyłącza multi-select.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2170,6 +2181,12 @@ export const pl: WebMessages = {
             id: 'Bazowe id używane do wyprowadzania identyfikatorów ARIA dla elementów błędu i podpowiedzi.',
           },
           dialog: {
+            closeRequested:
+              'Zgłaszane przy manualClose za każdym razem, gdy użytkownik chce zamknąć okno.',
+            manualClose:
+              'Zgłasza każde zamknięcie przez closeRequested i zostawia okno otwarte, dopóki open nie będzie false.',
+            closeDisabled:
+              'Wyłącza wbudowany przycisk zamykania, na przykład podczas zapisywania.',
             ariaLabel:
               'Dostępna etykieta okna dialogowego, gdy jego slot nagłówka nie zawiera widocznego tytułu.',
             closeOnBackdrop:

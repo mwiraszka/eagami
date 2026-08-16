@@ -1360,6 +1360,8 @@ export const esES: WebMessages = {
             headerDivider: 'Muestra un separador entre el encabezado y el cuerpo.',
           },
           checkbox: {
+            truncate:
+              'Recorta con puntos suspensivos una etiqueta demasiado larga y muestra el texto completo en un tooltip.',
             ariaLabel:
               'Nombre accesible para la casilla cuando no se renderiza ninguna etiqueta visible.',
             checked:
@@ -1399,6 +1401,8 @@ export const esES: WebMessages = {
               'Permite cualquier carácter que no sea un espacio; de lo contrario, solo se aceptan dígitos.',
           },
           'color-picker': {
+            compact:
+              'Muestra el activador como una muestra de color simple, sin el valor ni el botón de borrado.',
             disabled: 'Deshabilita el campo.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -1618,6 +1622,8 @@ export const esES: WebMessages = {
               'Se emite con el nuevo estado de marcado cada vez que el usuario alterna el interruptor.',
           },
           tag: {
+            color:
+              'Color de relleno en hexadecimal, que pinta la etiqueta y elige la tinta más legible.',
             variant: 'Esquema de color semántico de la etiqueta.',
             size: 'Tamaño visual de la etiqueta.',
             maxWidth:
@@ -1703,6 +1709,9 @@ export const esES: WebMessages = {
             menu: 'La instancia ea-menu que controla este disparador.',
           },
           tooltip: {
+            whenClipped:
+              'Muestra el globo solo mientras el activador recorta su propio contenido.',
+            flip: 'Mueve el globo al lado opuesto cuando no hay espacio en el lado solicitado.',
             maxWidth:
               'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px). El tooltip nunca supera el viewport.',
             dismissDelay:
@@ -1894,6 +1903,9 @@ export const esES: WebMessages = {
               'Se emite cuando se activa el elemento; el menú padre se cierra inmediatamente después.',
           },
           'multi-select': {
+            created: 'Se emite con el texto escrito cuando se elige la fila de creación.',
+            allowCreate:
+              'Ofrece una fila de creación cuando el texto de búsqueda no coincide con ninguna opción.',
             disabled: 'Deshabilita el multi-select.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2213,6 +2225,12 @@ export const esES: WebMessages = {
             id: 'id base usado para derivar los ids ARIA de los elementos de error y ayuda.',
           },
           dialog: {
+            closeRequested:
+              'Se emite con manualClose cada vez que se pide cerrar, sin cerrar el diálogo.',
+            manualClose:
+              'Notifica cada cierre mediante closeRequested y mantiene el diálogo abierto hasta que open sea false.',
+            closeDisabled:
+              'Desactiva el botón de cierre integrado, por ejemplo mientras se guarda.',
             ariaLabel:
               'Etiqueta accesible para el diálogo cuando su ranura de cabecera no contiene un título visible.',
             closeOnBackdrop:

@@ -17,6 +17,8 @@
       [placeholder]="state().placeholder"
       [size]="state().size"
       [searchable]="state().searchable"
+      [allowCreate]="state().allowCreate"
+      (created)="onCreated($event)"
       [readonly]="state().readonly"
       [required]="state().required"
       [maxVisibleChips]="state().maxVisibleChips"

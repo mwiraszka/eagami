@@ -1357,6 +1357,8 @@ export const nl: WebMessages = {
             headerDivider: 'Toont een scheiding tussen de koptekst en de body.',
           },
           checkbox: {
+            truncate:
+              'Kort een te lang label af en toont de volledige tekst in een tooltip.',
             ariaLabel:
               'Toegankelijke naam voor de checkbox wanneer geen zichtbaar label wordt weergegeven.',
             checked:
@@ -1395,6 +1397,8 @@ export const nl: WebMessages = {
               'Sta elk teken zonder witruimte toe; wanneer uit worden alleen cijfers geaccepteerd.',
           },
           'color-picker': {
+            compact:
+              'Toont de trigger als een kaal kleurvlak, zonder waarde en zonder wisknop.',
             disabled: 'Schakelt het veld uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -1606,6 +1610,8 @@ export const nl: WebMessages = {
               'Wordt geactiveerd met de nieuwe aangevinkte toestand telkens wanneer de gebruiker de switch omschakelt.',
           },
           tag: {
+            color:
+              'Vulkleur als hexwaarde, die de chip kleurt en de best leesbare tekstkleur kiest.',
             variant: 'Semantisch kleurenschema van de tag.',
             size: 'Visuele grootte van de tag.',
             maxWidth:
@@ -1691,6 +1697,9 @@ export const nl: WebMessages = {
             menu: 'De ea-menu-instantie die deze trigger bedient.',
           },
           tooltip: {
+            whenClipped:
+              'Toont de ballon alleen zolang de trigger zijn eigen inhoud afkapt.',
+            flip: 'Verplaatst een ballon naar de andere kant wanneer er aan de gevraagde kant geen ruimte is.',
             maxWidth:
               'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px). De tooltip wordt nooit groter dan de viewport.',
             dismissDelay:
@@ -1879,6 +1888,10 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer het item wordt geactiveerd; het bovenliggende menu sluit onmiddellijk daarna.',
           },
           'multi-select': {
+            created:
+              'Wordt met de getypte tekst gemeld wanneer de aanmaakrij wordt gekozen.',
+            allowCreate:
+              'Biedt een aanmaakrij aan wanneer de zoektekst met geen enkele optie overeenkomt.',
             disabled: 'Schakelt de multi-select uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2198,6 +2211,12 @@ export const nl: WebMessages = {
             id: "Basis-id gebruikt om de aria-id's voor de fout- en hintelementen af te leiden.",
           },
           dialog: {
+            closeRequested:
+              'Wordt bij manualClose gemeld bij elke sluitpoging, zonder te sluiten.',
+            manualClose:
+              'Meldt elke sluitpoging via closeRequested en houdt het dialoogvenster open tot open false is.',
+            closeDisabled:
+              'Schakelt de ingebouwde sluitknop uit, bijvoorbeeld tijdens het opslaan.',
             ariaLabel:
               'Toegankelijk label voor het dialoogvenster wanneer de koptekstslot geen zichtbare titel bevat.',
             closeOnBackdrop:

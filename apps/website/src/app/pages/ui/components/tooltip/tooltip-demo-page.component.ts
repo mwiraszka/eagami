@@ -27,6 +27,8 @@ interface TooltipKnobState {
   tooltipPosition: TooltipPosition;
   maxWidth: number;
   dismissDelay: number;
+  flip: boolean;
+  whenClipped: boolean;
 }
 
 const SLUG = 'tooltip';

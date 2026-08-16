@@ -1334,6 +1334,8 @@ export const en: WebMessages = {
             headerDivider: 'Shows a divider between the header and the body.',
           },
           checkbox: {
+            truncate:
+              'Ellipsizes a label too long for its column and reveals the full text in a tooltip.',
             ariaLabel:
               'Accessible name for the checkbox when no visible label is rendered.',
             checked: 'Current checked state, two-way bindable via [(checked)].',
@@ -1370,6 +1372,8 @@ export const en: WebMessages = {
               'Allow any non-whitespace character; when off only digits are accepted.',
           },
           'color-picker': {
+            compact:
+              'Renders the trigger as a bare swatch, without the value text or the clear button.',
             disabled: 'Disables the field.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -1565,6 +1569,8 @@ export const en: WebMessages = {
               'Fires with the new checked state whenever the user toggles the switch.',
           },
           tag: {
+            color:
+              'Fill color as a hex value, painting the chip and picking whichever ink reads on it.',
             variant: 'Semantic color scheme of the tag.',
             size: 'Visual size of the tag.',
             maxWidth:
@@ -1642,6 +1648,9 @@ export const en: WebMessages = {
             menu: 'The ea-menu instance this trigger controls.',
           },
           tooltip: {
+            whenClipped:
+              'Shows the bubble only while the trigger is cutting its own content off.',
+            flip: 'Moves a bubble with no room on the requested side to the opposite one.',
             maxWidth:
               'Maximum width in pixels; the text wraps at this width (50px floor). The bubble never grows past the viewport.',
             dismissDelay:
@@ -1815,6 +1824,8 @@ export const en: WebMessages = {
               'Fires when the item is activated; the parent menu closes immediately afterwards.',
           },
           'multi-select': {
+            created: 'Fires with the typed text when the user takes the Create row.',
+            allowCreate: 'Offers a Create row when the search text matches no option.',
             disabled: 'Disables the multi-select.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -2110,6 +2121,12 @@ export const en: WebMessages = {
             id: 'Base id used to derive the aria ids for the error and hint elements.',
           },
           dialog: {
+            closeRequested:
+              'Fires under manualClose for every close the user asks for, leaving the dialog open.',
+            manualClose:
+              'Reports every close through closeRequested and leaves the dialog open until open is set false.',
+            closeDisabled:
+              'Disables the built-in close button, for a dialog that must not be dismissed mid-task.',
             ariaLabel:
               'Accessible label for the dialog when its header slot does not contain a visible title.',
             closeOnBackdrop:

@@ -23,6 +23,7 @@ interface CheckboxKnobState {
   disabled: boolean;
   required: boolean;
   indeterminate: boolean;
+  truncate: boolean;
   triggerError: boolean;
 }
 
