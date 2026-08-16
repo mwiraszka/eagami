@@ -51,6 +51,15 @@ export class DialogComponent implements AfterContentChecked {
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
+  /** Disables the built-in close button, for a dialog that must not be dismissed mid-task (a save in flight). */
+  readonly closeDisabled = input<boolean>(false);
+  /**
+   * Hands every close route to the consumer: the dialog reports
+   * `closeRequested` and stays open until `open` is set false, so an unsaved
+   * edit can be confirmed first. Escape and the backdrop still report, which is
+   * what `closeOnEscape` / `closeOnBackdrop` remove entirely.
+   */
+  readonly manualClose = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly id = input<string>(uniqueId('ea-dialog'));
 
@@ -60,6 +69,8 @@ export class DialogComponent implements AfterContentChecked {
   readonly opened = output<void>();
   /** Fires when the dialog closes (via close button, backdrop, or Escape). */
   readonly closed = output<void>();
+  /** Fires under `manualClose` for every close the user asks for, leaving the dialog open. */
+  readonly closeRequested = output<void>();
 
   readonly panelClasses = computed(() => ({
     [`ea-dialog__panel--${this.width()}`]: true,
@@ -106,6 +117,15 @@ export class DialogComponent implements AfterContentChecked {
     this.closed.emit();
   }
 
+  /** Every close route the user can take, routed through `manualClose`. */
+  protected requestClose(): void {
+    if (this.manualClose()) {
+      this.closeRequested.emit();
+      return;
+    }
+    this.handleClose();
+  }
+
   handleBackdropClick(event: MouseEvent): void {
     if (!this.closeOnBackdrop()) {
       return;
@@ -115,13 +135,20 @@ export class DialogComponent implements AfterContentChecked {
     // as a click too, since that is the first ancestor the panel and the
     // backdrop share; only a press confined to the backdrop dismisses
     if (event.target === dialogRef && this.press.stayedOn(dialogRef)) {
-      this.handleClose();
+      this.requestClose();
     }
   }
 
   handleCancel(event: Event): void {
     if (!this.closeOnEscape()) {
       event.preventDefault();
+      return;
+    }
+    // The native cancel is preventable, so a vetoed Escape leaves the dialog
+    // showing rather than closing and reopening it a frame later
+    if (this.manualClose()) {
+      event.preventDefault();
+      this.closeRequested.emit();
       return;
     }
     this.handleClose();

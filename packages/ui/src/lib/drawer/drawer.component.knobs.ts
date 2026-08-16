@@ -18,7 +18,7 @@ export const DRAWER_KNOBS: ComponentKnobs = {
     },
     size: {
       control: 'select',
-      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', 'full'],
+      options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'],
     },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },

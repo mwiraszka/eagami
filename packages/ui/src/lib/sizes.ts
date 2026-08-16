@@ -6,6 +6,8 @@ export type EaSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 /**
  * Size scale for width-based components (panels such as drawer and dialog),
- * adding a full-bleed option on top of the standard scale.
+ * adding a step above `xl` and a full-bleed option on top of the standard
+ * scale. A panel holds layouts (grids, tables) that a control never does, so it
+ * runs one step wider before the jump to full.
  */
-export type EaWidth = EaSize | 'full';
+export type EaWidth = EaSize | '2xl' | 'full';

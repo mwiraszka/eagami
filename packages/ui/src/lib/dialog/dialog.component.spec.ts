@@ -25,9 +25,13 @@ beforeAll(() => {
       [width]="width()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
-      [showClose]="showClose()">
+      [showClose]="showClose()"
+      [closeDisabled]="closeDisabled()"
+      [manualClose]="manualClose()"
+      (closeRequested)="closeRequests.set(closeRequests() + 1)">
       <span slot="header">Test Title</span>
       Dialog body content
+      <span slot="status">Uploading</span>
       <span slot="footer">Footer</span>
     </ea-dialog>
   `,
@@ -38,6 +42,9 @@ class TestHostComponent {
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
+  closeDisabled = signal(false);
+  manualClose = signal(false);
+  closeRequests = signal(0);
 }
 
 @Component({
@@ -209,7 +216,86 @@ describe('DialogComponent', () => {
     });
   });
 
+  describe('Manual close', () => {
+    function openManual(): void {
+      host.manualClose.set(true);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+    }
+
+    it('reports the close button instead of closing', () => {
+      openManual();
+
+      getCloseButton()!.click();
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(1);
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('vetoes the native cancel so Escape leaves the dialog showing', () => {
+      openManual();
+
+      const event = new Event('cancel', { cancelable: true });
+      getDialog().dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(host.closeRequests()).toBe(1);
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('reports a backdrop click instead of closing', () => {
+      openManual();
+
+      const dialog = getDialog();
+      const event = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(event, 'target', { value: dialog });
+      dialog.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(1);
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('closes as usual when manualClose is off', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      getCloseButton()!.click();
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(0);
+      expect(host.isOpen()).toBe(false);
+    });
+  });
+
+  describe('Close button', () => {
+    it('disables the close button on closeDisabled', () => {
+      host.closeDisabled.set(true);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(getCloseButton()!.disabled).toBe(true);
+    });
+  });
+
   describe('Content projection', () => {
+    it('projects status content between the body and the footer', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      const status = fixture.nativeElement.querySelector('.ea-dialog__status');
+      const body = fixture.nativeElement.querySelector('.ea-dialog__body');
+      const footer = fixture.nativeElement.querySelector('.ea-dialog__footer');
+
+      expect(status.textContent).toContain('Uploading');
+      expect(body.compareDocumentPosition(status)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+      expect(footer.compareDocumentPosition(status)).toBe(
+        Node.DOCUMENT_POSITION_PRECEDING,
+      );
+    });
+
     it('projects header content', () => {
       const header = fixture.nativeElement.querySelector('.ea-dialog__header');
       expect(header.textContent).toContain('Test Title');
