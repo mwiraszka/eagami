@@ -3,6 +3,9 @@
 :host {
   display: inline-flex;
   vertical-align: middle;
+  // Never wider than the column it is placed in, so a clamped label has an
+  // edge to ellipsize against
+  max-width: 100%;
   line-height: 1;
 }
 
@@ -10,6 +13,10 @@
   display: inline-flex;
   flex-direction: column;
   gap: 0.375em;
+
+  &--truncate {
+    min-width: 0;
+  }
 
   // Size sets only the font-size here; the box dimensions, the label, the gap,
   // and the message size below are all em-based, so the whole field scales from
@@ -112,6 +119,19 @@
       position: absolute;
       width: 65%;
       height: 65%;
+    }
+  }
+
+  // The label is the only part that gives way, so the box keeps its size and
+  // the text ellipsizes into whatever the column leaves
+  &--truncate {
+    min-width: 0;
+
+    .ea-checkbox__label {
+      overflow: hidden;
+      min-width: 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

@@ -17,6 +17,7 @@ import {
   injectControlErrorState,
 } from '../forms/control-error-state';
 import { type EaSize } from '../sizes';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { uniqueId } from '../unique-id';
 
 /** Visual size of a checkbox. */
@@ -29,7 +30,7 @@ export type CheckboxSize = EaSize;
  */
 @Component({
   selector: 'ea-checkbox',
-  imports: [FieldMessagesComponent, NgClass],
+  imports: [FieldMessagesComponent, NgClass, TooltipDirective],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,6 +57,12 @@ export class CheckboxComponent implements ControlValueAccessor {
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
+  /**
+   * Ellipsize a label too long for the space the checkbox is given, revealing
+   * the full text in a tooltip while it is clipped. Off by default, since a
+   * checkbox otherwise widens its column rather than hiding any of its label.
+   */
+  readonly truncate = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
@@ -81,6 +88,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   readonly hostClasses = computed(() => ({
     [`ea-checkbox--${this.size()}`]: true,
+    'ea-checkbox--truncate': this.truncate(),
     'ea-checkbox--disabled': this.isDisabled(),
     'ea-checkbox--checked': this.checked(),
     'ea-checkbox--indeterminate': this.indeterminate(),
@@ -104,6 +112,17 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this._formDisabled.set(isDisabled);
+  }
+
+  // A native checkbox answers to Space alone, and Enter submits the form
+  // around it instead, which is not what a person tabbing through a filter
+  // column expects
+  handleKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Enter') {
+      return;
+    }
+    event.preventDefault();
+    this.handleChange();
   }
 
   handleChange(): void {

@@ -1,5 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { CheckboxComponent } from './checkbox.component';
 
 describe('CheckboxComponent', () => {
@@ -100,6 +102,57 @@ describe('CheckboxComponent', () => {
       component.changed.subscribe(spy);
       getNativeInput().click();
       expect(spy).toHaveBeenCalledWith(true);
+    });
+
+    it('toggles on Enter, which a native checkbox ignores', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Enter', cancelable: true });
+
+      getNativeInput().dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(component.checked()).toBe(true);
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('leaves other keys to the browser', () => {
+      getNativeInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+
+      expect(component.checked()).toBe(false);
+    });
+
+    it('does not toggle on Enter while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      getNativeInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.checked()).toBe(false);
+    });
+  });
+
+  describe('Truncated label', () => {
+    it('clamps the label and offers the full text in a tooltip when asked', () => {
+      fixture.componentRef.setInput('label', 'A filter name too long for its column');
+      fixture.componentRef.setInput('truncate', true);
+      fixture.detectChanges();
+
+      const tooltip = fixture.debugElement.query(By.directive(TooltipDirective));
+
+      expect(getLabel().classList).toContain('ea-checkbox--truncate');
+      expect(tooltip.injector.get(TooltipDirective).eaTooltip()).toBe(
+        'A filter name too long for its column',
+      );
+      expect(tooltip.injector.get(TooltipDirective).whenClipped()).toBe(true);
+    });
+
+    it('leaves the label alone by default', () => {
+      fixture.componentRef.setInput('label', 'Inbox');
+      fixture.detectChanges();
+
+      const tooltip = fixture.debugElement.query(By.directive(TooltipDirective));
+
+      expect(getLabel().classList).not.toContain('ea-checkbox--truncate');
+      expect(tooltip.injector.get(TooltipDirective).eaTooltip()).toBe('');
     });
   });
 

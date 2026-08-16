@@ -1,4 +1,6 @@
-<div class="ea-checkbox-field ea-checkbox-field--{{ size() }}">
+<div
+  class="ea-checkbox-field ea-checkbox-field--{{ size() }}"
+  [class.ea-checkbox-field--truncate]="truncate()">
   <label
     class="ea-checkbox"
     [ngClass]="hostClasses()"
@@ -19,7 +21,8 @@
       [attr.aria-describedby]="
         showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
       "
-      (change)="handleChange()" />
+      (change)="handleChange()"
+      (keydown)="handleKeydown($event)" />
 
     <span
       class="ea-checkbox__box"
@@ -53,7 +56,9 @@
     @if (label()) {
       <span
         class="ea-checkbox__label"
-        [class.ea-checkbox__label--required]="required()">
+        [class.ea-checkbox__label--required]="required()"
+        [eaTooltip]="truncate() ? (label() ?? '') : ''"
+        [whenClipped]="true">
         {{ label() }}
         @if (count() !== undefined && count() !== null) {
           <span class="ea-checkbox__count">{{ count() }}</span>
