@@ -2126,7 +2126,7 @@ export const en: WebMessages = {
             manualClose:
               'Reports every close through closeRequested and leaves the dialog open until open is set false.',
             closeDisabled:
-              'Disables the built-in close button, for a dialog that must not be dismissed mid-task.',
+              'Disables the built-in close button while a task is in flight; the other close routes have their own inputs.',
             ariaLabel:
               'Accessible label for the dialog when its header slot does not contain a visible title.',
             closeOnBackdrop:

@@ -51,7 +51,11 @@ export class DialogComponent implements AfterContentChecked {
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
-  /** Disables the built-in close button, for a dialog that must not be dismissed mid-task (a save in flight). */
+  /**
+   * Disables the built-in close button while a task is in flight (a save, an
+   * upload). It governs that button alone; pair it with `closeOnEscape` /
+   * `closeOnBackdrop` or `manualClose` to hold the other routes shut too.
+   */
   readonly closeDisabled = input<boolean>(false);
   /**
    * Hands every close route to the consumer: the dialog reports
