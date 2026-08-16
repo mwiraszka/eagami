@@ -5,6 +5,12 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.20.19] - 2026-08-16
+
+### Changed
+
+- Pick up @eagami/ui v5.30.1.
+
 ## [3.20.18] - 2026-08-16
 
 ### Changed
@@ -1252,6 +1258,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.20.19]: https://github.com/mwiraszka/eagami/compare/website-v3.20.18...website-v3.20.19
 [3.20.18]: https://github.com/mwiraszka/eagami/compare/website-v3.20.17...website-v3.20.18
 [3.20.17]: https://github.com/mwiraszka/eagami/compare/website-v3.20.16...website-v3.20.17
 [3.20.16]: https://github.com/mwiraszka/eagami/compare/website-v3.20.15...website-v3.20.16
