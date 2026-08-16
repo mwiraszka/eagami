@@ -69,6 +69,26 @@ describe('MultiSelectComponent', () => {
     );
   }
 
+  function nextFrame(): Promise<void> {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
+  }
+
+  // The panel only becomes visible, and so focusable, once the popover has
+  // measured itself a frame after opening
+  async function openPanel(): Promise<void> {
+    getTrigger().click();
+    fixture.detectChanges();
+    await nextFrame();
+    fixture.detectChanges();
+  }
+
+  function typeSearch(query: string): void {
+    const search = getSearchInput()!;
+    search.value = query;
+    search.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MultiSelectComponent],
@@ -124,6 +144,30 @@ describe('MultiSelectComponent', () => {
       fixture.detectChanges();
 
       expect(getPopover()).toBeTruthy();
+    });
+
+    it('focuses the search input once the panel is on screen', async () => {
+      await openPanel();
+
+      expect(document.activeElement).toBe(getSearchInput());
+    });
+
+    it('focuses the search input when opened from the keyboard', async () => {
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      await nextFrame();
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getSearchInput());
+    });
+
+    it('leaves focus on the trigger when there is no search input', async () => {
+      fixture.componentRef.setInput('searchable', false);
+      fixture.detectChanges();
+
+      await openPanel();
+
+      expect(document.activeElement).toBe(getTrigger());
     });
 
     it('renders one option row per option', () => {
@@ -269,6 +313,78 @@ describe('MultiSelectComponent', () => {
       expect(getOptionRows()).toHaveLength(0);
       const empty = document.body.querySelector('.ea-multi-select__empty');
       expect(empty).toBeTruthy();
+    });
+
+    it('focuses the last remaining option so Enter takes it', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      typeSearch('AN');
+
+      // Row 0 is the Select-all row, so the only match sits at row 1
+      expect(component.focusedIndex()).toBe(1);
+
+      getSearchInput()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+
+      expect(component.value()).toEqual(['banana']);
+    });
+
+    it('leaves no option focused while several still match', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      typeSearch('a');
+
+      expect(component.focusedIndex()).toBe(-1);
+    });
+
+    it('skips a lone match that cannot be selected', () => {
+      fixture.componentRef.setInput('options', [
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana', disabled: true },
+      ]);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      typeSearch('AN');
+
+      expect(component.focusedIndex()).toBe(-1);
+    });
+
+    it('clears the query and returns focus to the search input once a value is taken', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+      typeSearch('AN');
+
+      getSearchInput()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(component.searchTerm()).toBe('');
+      expect(getSearchInput()!.value).toBe('');
+      expect(getOptionRows()).toHaveLength(FRUITS.length);
+      expect(document.activeElement).toBe(getSearchInput());
+      expect(component.focusedIndex()).toBe(-1);
+    });
+
+    it('takes a second value on the same type-then-Enter run', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      typeSearch('AN');
+      getSearchInput()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+      fixture.detectChanges();
+      typeSearch('che');
+      getSearchInput()!.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+
+      expect(component.value()).toEqual(['banana', 'cherry']);
     });
   });
 

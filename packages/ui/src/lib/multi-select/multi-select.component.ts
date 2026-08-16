@@ -14,6 +14,7 @@ import {
   model,
   output,
   signal,
+  untracked,
   viewChild,
   viewChildren,
 } from '@angular/core';
@@ -83,6 +84,7 @@ export type MultiSelectSize = EaSize;
 })
 export class MultiSelectComponent implements ControlValueAccessor {
   protected readonly wrapperEl = viewChild<ElementRef<HTMLElement>>('wrapperEl');
+  private readonly popover = viewChild(PopoverComponent);
   protected readonly triggerEl = viewChild<ElementRef<HTMLElement>>('triggerEl');
   protected readonly searchEl = viewChild<ElementRef<HTMLInputElement>>('searchEl');
   private readonly listEl = viewChild<ElementRef<HTMLElement>>('listEl');
@@ -281,6 +283,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.optionLabelEls();
       this.measureClippedOptions();
     });
+
+    // The panel stays invisible until the popover has measured itself, and an
+    // invisible input cannot take focus. Waiting on that signal from the
+    // after-render phase puts the focus call after the frame that reveals it.
+    afterRenderEffect(() => {
+      if (this.searchable() && this.popover()?.isPositioned()) {
+        untracked(() => this.searchEl()?.nativeElement.focus());
+      }
+    });
     afterNextRender(() => this.watchListWidth(), { injector: this.injector });
   }
 
@@ -306,9 +317,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
     }
     const opening = !this.isOpen();
     this.isOpen.set(opening);
-    if (opening) {
-      this.focusSearchWhenReady();
-    } else {
+    if (!opening) {
       this.resetEditState();
     }
   }
@@ -336,6 +345,7 @@ export class MultiSelectComponent implements ControlValueAccessor {
       set.add(opt.value);
     }
     this.commit(this.orderedValues(set));
+    this.clearSearchForNextValue();
   }
 
   /**
@@ -424,7 +434,25 @@ export class MultiSelectComponent implements ControlValueAccessor {
   onSearchInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchTerm.set(target.value);
+    this.focusedIndex.set(this.soleOptionRow());
+  }
+
+  // Narrowing the list to a single selectable option makes Enter unambiguous,
+  // so that row takes focus and the value can be taken without arrowing to it
+  private soleOptionRow(): number {
+    const options = this.filteredOptions();
+    return options.length === 1 && !options[0].disabled ? this.selectAllOffset() : -1;
+  }
+
+  // A query that has served its purpose otherwise has to be cleared by hand
+  // before the next value can be searched for
+  private clearSearchForNextValue(): void {
+    if (!this.searchTerm()) {
+      return;
+    }
+    this.searchTerm.set('');
     this.focusedIndex.set(-1);
+    this.restoreTypingFocus();
   }
 
   handleTriggerKeydown(event: KeyboardEvent): void {
@@ -441,7 +469,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
       event.preventDefault();
       if (!this.isOpen()) {
         this.isOpen.set(true);
-        this.focusSearchWhenReady();
       }
     } else if (event.key === 'Escape' && this.isOpen()) {
       event.preventDefault();
@@ -493,12 +520,6 @@ export class MultiSelectComponent implements ControlValueAccessor {
       // Combobox popups dismiss on Tab; focus moves on to the next element
       this.close();
     }
-  }
-
-  private focusSearchWhenReady(): void {
-    afterNextRender(() => this.searchEl()?.nativeElement.focus(), {
-      injector: this.injector,
-    });
   }
 
   private moveFocusedRow(row: number): void {
