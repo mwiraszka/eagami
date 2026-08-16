@@ -704,6 +704,25 @@ describe('PopoverComponent', () => {
       expect(stubs.shown()).toEqual([]);
     });
 
+    // A modal makes the rest of the document inert, and the top layer does not
+    // lift that: a surface portaled to `<body>` paints above the dialog and is
+    // still unfocusable, so it has to live inside the dialog itself
+    it('portals the surface into the modal rather than the body', () => {
+      stubs.openAsModal(fixture.nativeElement);
+
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getSurface()?.parentElement).toBe(fixture.nativeElement);
+    });
+
+    it('portals the surface to the body when no modal is involved', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getSurface()?.parentElement).toBe(document.body);
+    });
+
     it('leaves the surface in the normal layer outside a modal', () => {
       host.open.set(true);
       fixture.detectChanges();

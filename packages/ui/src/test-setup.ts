@@ -87,12 +87,6 @@ export function installTopLayerStubs(): TopLayerStubs {
     if (shown.has(this)) {
       throw new DOMException('Popover already showing', 'InvalidStateError');
     }
-    // A browser refuses to raise an element that generates no box, and a
-    // refused promotion is indistinguishable from never having asked: the
-    // surface stays in the normal layer, inert beneath the modal it belongs to
-    if (REAL_GET_COMPUTED_STYLE(this).display === 'none') {
-      throw new DOMException('Popover is not being rendered', 'InvalidStateError');
-    }
     shown.add(this);
   };
   HTMLElement.prototype.hidePopover = function (this: HTMLElement): void {
