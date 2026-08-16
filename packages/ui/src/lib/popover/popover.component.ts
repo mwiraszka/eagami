@@ -16,7 +16,7 @@ import {
 
 import { isRtl } from '../direction';
 import { PointerPressTracker } from '../pointer-press';
-import { enterTopLayer, leaveTopLayer } from '../top-layer';
+import { enterTopLayer, leaveTopLayer, topLayerHost } from '../top-layer';
 import { uniqueId } from '../unique-id';
 import {
   type PopoverPlacement,
@@ -229,12 +229,21 @@ export class PopoverComponent {
     // is settled and dimensions are accurate. Skipped in SSR (no `document`).
     effect(() => {
       const surface = this.surfaceEl()?.nativeElement;
-      if (
-        surface &&
-        typeof document !== 'undefined' &&
-        surface.parentNode !== document.body
-      ) {
-        document.body.appendChild(surface);
+      const anchor = this.resolveAnchor();
+      const isOpen = this.open();
+      if (!surface || typeof document === 'undefined') {
+        return;
+      }
+      const host = topLayerHost(anchor);
+      if (surface.parentNode === host) {
+        return;
+      }
+      // Moving a raised surface drops it out of the top layer, so it goes back
+      // up once it has reached its new home
+      leaveTopLayer(surface);
+      host.appendChild(surface);
+      if (isOpen && anchor) {
+        enterTopLayer(surface, anchor);
       }
     });
 
@@ -251,12 +260,6 @@ export class PopoverComponent {
         this.latched = null;
         return;
       }
-      // The closed state's `display: none` is still on the element: this
-      // effect runs before the binding carrying `surfaceStyle()` reaches it.
-      // `showPopover()` refuses an element with no layout box, and a refused
-      // promotion leaves the surface portaled to `<body>`, outside the modal
-      // and therefore inert, so it is cleared here rather than a frame later.
-      surface.style.removeProperty('display');
       // Join the top layer before the first measurement below, so a popover
       // opened from inside a modal is not painted behind it. Promoting first
       // also gives the surface layout: a `popover` element is `display: none`

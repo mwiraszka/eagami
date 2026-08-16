@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.30.2',
+    date: '2026-08-16',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Fix every popover opened from inside a modal dialog being unusable: its surface now sits inside the dialog, where a select, autocomplete, date picker or menu can take the focus and the pointer again.',
+          "Balance a dialog's padding across every combination of slots: each seam between two slots carries a single gap, no seam is padded from both sides, and the outermost slot on each side carries the panel's own edge.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.30.1',
     date: '2026-08-16',
     sections: [

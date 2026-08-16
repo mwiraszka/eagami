@@ -61,6 +61,23 @@ export function enterTopLayer(surface: HTMLElement, anchor: Element): void {
   }
 }
 
+/**
+ * Where a portaled surface has to live to stay usable: inside the top-layer
+ * container its anchor belongs to, or `<body>` when there is none.
+ *
+ * A modal `<dialog>` makes the rest of the document inert, and raising a
+ * surface into the top layer does not lift that. An element portaled to
+ * `<body>` while a modal is open paints above it and is still unfocusable and
+ * untouchable: clicks land on the dialog behind it, so a field inside it takes
+ * neither the caret nor a selection. Inertness follows the DOM, so the surface
+ * has to sit inside the dialog; promotion then keeps it clear of any ancestor
+ * that would clip it and above the dialog's own content.
+ */
+export function topLayerHost(anchor: Element | null | undefined): HTMLElement {
+  const container = anchor?.closest(TOP_LAYER_CONTAINER);
+  return container instanceof HTMLElement ? container : document.body;
+}
+
 /** Returns `surface` to the normal layer, undoing {@link enterTopLayer}. */
 export function leaveTopLayer(surface: HTMLElement): void {
   if (!surface.hasAttribute('popover')) {
