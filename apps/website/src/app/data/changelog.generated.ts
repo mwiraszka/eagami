@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.30.1',
+    date: '2026-08-16',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Fix a popover opened from inside a modal dialog being left in the normal layer, where it took no focus and closed on its own clicks.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.30.0',
     date: '2026-08-16',
     sections: [
