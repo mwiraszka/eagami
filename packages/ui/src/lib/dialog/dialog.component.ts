@@ -38,6 +38,9 @@ export type DialogWidth = EaWidth;
  * `--ea-dialog-max-height`, `--ea-dialog-header-padding`,
  * `--ea-dialog-body-padding`, and `--ea-dialog-status-padding`; an
  * edge-to-edge media surface zeroes the inset, radius, and paddings.
+ *
+ * Specs running under jsdom need `installNativeDialogShim()` from
+ * `@eagami/ui/testing` before opening one.
  */
 @Component({
   selector: 'ea-dialog',
