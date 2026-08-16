@@ -251,6 +251,12 @@ export class PopoverComponent {
         this.latched = null;
         return;
       }
+      // The closed state's `display: none` is still on the element: this
+      // effect runs before the binding carrying `surfaceStyle()` reaches it.
+      // `showPopover()` refuses an element with no layout box, and a refused
+      // promotion leaves the surface portaled to `<body>`, outside the modal
+      // and therefore inert, so it is cleared here rather than a frame later.
+      surface.style.removeProperty('display');
       // Join the top layer before the first measurement below, so a popover
       // opened from inside a modal is not painted behind it. Promoting first
       // also gives the surface layout: a `popover` element is `display: none`
