@@ -2,7 +2,7 @@
   class="ea-tag"
   [ngClass]="hostClasses()"
   [style.--ea-tag-max-width]="resolvedMaxWidth()"
-  [style.--ea-tag-color]="color() || null"
+  [style.--ea-tag-color]="resolvedColor()"
   [style.--ea-tag-ink]="resolvedInk()"
   [eaTooltip]="labelTooltip()"
   [tooltipPosition]="tooltipPosition()">

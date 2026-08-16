@@ -78,11 +78,12 @@ describe('TagComponent', () => {
       );
     });
 
-    it('leaves the ink alone for a colour it cannot measure', () => {
+    it('leaves the chip unpainted for a colour it cannot measure', () => {
       fixture.componentRef.setInput('color', 'rebeccapurple');
       fixture.detectChanges();
 
       expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe('');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe('');
     });
 
     it('anchors the tooltip on the whole tag, above it by default', () => {

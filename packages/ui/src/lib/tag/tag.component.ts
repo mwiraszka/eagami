@@ -126,6 +126,12 @@ export class TagComponent {
     return ink === null ? null : `var(--color-neutral-${ink === 'light' ? '0' : '950'})`;
   });
 
+  // A fill whose ink cannot be resolved is left unpainted: taking the colour
+  // without the matching ink is how a chip ends up unreadable
+  protected readonly resolvedColor = computed(() =>
+    this.resolvedInk() === null ? null : (this.color() ?? null),
+  );
+
   constructor() {
     afterNextRender(() => this.watchLabel());
   }
