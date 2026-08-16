@@ -59,7 +59,10 @@
         tabindex="0"
         [eaTooltip]="richTip"
         [tooltipPosition]="state().tooltipPosition"
-        [dismissDelay]="state().dismissDelay">
+        [maxWidth]="state().maxWidth"
+        [dismissDelay]="state().dismissDelay"
+        [flip]="state().flip"
+        [whenClipped]="state().whenClipped">
         {{ messages().ui.component.demos.tooltip.templateTriggerLabel }}
       </div>
     </div>
