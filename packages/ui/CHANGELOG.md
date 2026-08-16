@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Breaking:** Move a tooltip with no room on its requested side to the opposite one by default; set `flip` to false for the old behaviour of nudging it inward.
 - Toggle a focused checkbox on Enter, which a native checkbox leaves to the form.
 - Hold a dialog inside the viewport, so a wide preset no longer overflows a narrow screen sideways.
 - Balance a dialog's body padding when it has no header or no footer, instead of leaving the content tight against one edge.
