@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.
+- Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-header-padding`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.
 - Ship an `@eagami/ui/testing` entry point with a native dialog shim for jsdom test runs.
 
 ### Changed

@@ -35,9 +35,9 @@ export type DialogWidth = EaWidth;
  * close button, and it applies the h4 type scale to that content, so a heading
  * element projected into it should carry `font: inherit`. Panel chrome is
  * tunable per dialog via `--ea-dialog-inset`, `--ea-dialog-radius`,
- * `--ea-dialog-max-height`, `--ea-dialog-body-padding`, and
- * `--ea-dialog-status-padding`; an edge-to-edge media surface zeroes the
- * inset, radius, and body padding.
+ * `--ea-dialog-max-height`, `--ea-dialog-header-padding`,
+ * `--ea-dialog-body-padding`, and `--ea-dialog-status-padding`; an
+ * edge-to-edge media surface zeroes the inset, radius, and paddings.
  */
 @Component({
   selector: 'ea-dialog',

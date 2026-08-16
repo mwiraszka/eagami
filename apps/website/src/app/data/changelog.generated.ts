@@ -20,7 +20,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.',
+          'Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-header-padding`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.',
           'Ship an `@eagami/ui/testing` entry point with a native dialog shim for jsdom test runs.',
         ],
       },
