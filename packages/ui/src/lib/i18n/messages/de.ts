@@ -122,6 +122,7 @@ const messages: EagamiMessages = {
     clearAll: 'Auswahl aufheben',
     removeOption: label => `${label} entfernen`,
     selectedCount: count => `${count} ausgewählt`,
+    create: text => `„${text}“ erstellen`,
   },
   paginator: {
     label: 'Seitennummerierung',

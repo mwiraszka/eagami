@@ -122,6 +122,7 @@ const messages: EagamiMessages = {
     clearAll: 'Очистити вибір',
     removeOption: label => `Видалити ${label}`,
     selectedCount: count => `Вибрано: ${count}`,
+    create: text => `Створити «${text}»`,
   },
   paginator: {
     label: 'Нумерація сторінок',

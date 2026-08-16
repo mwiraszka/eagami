@@ -29,6 +29,7 @@ import {
 } from '../forms/control-error-state';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ChevronDownIconComponent } from '../icons/chevron-down.component';
+import { PlusIconComponent } from '../icons/plus.component';
 import { SearchIconComponent } from '../icons/search.component';
 import { XIconComponent } from '../icons/x.component';
 import { PopoverComponent, type PopoverMaxWidth } from '../popover/popover.component';
@@ -68,6 +69,7 @@ export type MultiSelectSize = EaSize;
     FieldLabelComponent,
     FieldMessagesComponent,
     NgClass,
+    PlusIconComponent,
     PopoverComponent,
     SearchIconComponent,
     TagComponent,
@@ -113,6 +115,13 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly searchable = input<boolean>(true);
   /** Toggle the "Select all" row at the top of the option list. */
   readonly selectAll = input<boolean>(true);
+  /**
+   * Offer a "Create" row when the search text matches no option, for a value
+   * the list cannot know about yet (a new tag, a new person). The component
+   * only reports the text through `created`; the consumer creates the record
+   * and pushes its value into `value`.
+   */
+  readonly allowCreate = input<boolean>(false);
   /** Max number of chips shown inside the trigger; the rest collapse into a "+N more" pill. `0` removes the cap so every chip shows and the row scrolls horizontally. */
   readonly maxVisibleChips = input<number>(0);
   /**
@@ -131,6 +140,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly value = model<readonly string[]>([]);
   /** Fires with the new value whenever the selection changes. */
   readonly changed = output<readonly string[]>();
+  /** Fires with the typed text when the user takes the `allowCreate` row. */
+  readonly created = output<string>();
 
   readonly isOpen = signal(false);
   readonly searchTerm = signal('');
@@ -197,8 +208,30 @@ export class MultiSelectComponent implements ControlValueAccessor {
   /** Row-index offset the Select-all row adds ahead of the filtered options. */
   protected readonly selectAllOffset = computed(() => (this.selectAllVisible() ? 1 : 0));
 
+  /** The text a Create row would carry, or `''` when no such row is offered. */
+  protected readonly creatableText = computed(() => {
+    const term = this.searchTerm().trim();
+    if (!this.allowCreate() || !term) {
+      return '';
+    }
+    const taken = term.toLowerCase();
+    // Measured against every option, not the filtered ones: an option hidden by
+    // a group filter is still an option that exists
+    return this.flatOptions().some(o => o.label.trim().toLowerCase() === taken)
+      ? ''
+      : term;
+  });
+
+  /** Row index of the Create row, which sits after the options, or `-1`. */
+  protected readonly createRow = computed(() =>
+    this.creatableText() ? this.filteredOptions().length + this.selectAllOffset() : -1,
+  );
+
   private readonly rowCount = computed(
-    () => this.filteredOptions().length + this.selectAllOffset(),
+    () =>
+      this.filteredOptions().length +
+      this.selectAllOffset() +
+      (this.creatableText() ? 1 : 0),
   );
 
   protected readonly selectAllAriaChecked = computed(() => {
@@ -438,10 +471,14 @@ export class MultiSelectComponent implements ControlValueAccessor {
   }
 
   // Narrowing the list to a single selectable option makes Enter unambiguous,
-  // so that row takes focus and the value can be taken without arrowing to it
+  // so that row takes focus and the value can be taken without arrowing to it.
+  // A query matching nothing at all leaves the Create row in that position.
   private soleOptionRow(): number {
     const options = this.filteredOptions();
-    return options.length === 1 && !options[0].disabled ? this.selectAllOffset() : -1;
+    if (options.length === 1 && !options[0].disabled) {
+      return this.selectAllOffset();
+    }
+    return options.length === 0 ? this.createRow() : -1;
   }
 
   // A query that has served its purpose otherwise has to be cleared by hand
@@ -540,10 +577,26 @@ export class MultiSelectComponent implements ControlValueAccessor {
       this.toggleSelectAll();
       return;
     }
+    if (row === this.createRow()) {
+      this.createOption();
+      return;
+    }
     const opt = this.filteredOptions()[row - offset];
     if (opt) {
       this.toggleOption(opt);
     }
+  }
+
+  /** Report the typed text, then clear it so the new value can be followed by another. */
+  protected createOption(): void {
+    const text = this.creatableText();
+    if (this.isDisabled() || this.readonly() || !text) {
+      return;
+    }
+    this.created.emit(text);
+    this.searchTerm.set('');
+    this.focusedIndex.set(-1);
+    this.restoreTypingFocus();
   }
 
   /** Reorder a value-set against the input `options` array. */

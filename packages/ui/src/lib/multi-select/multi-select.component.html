@@ -181,8 +181,24 @@
               </ul>
             </li>
           }
+          @if (creatableText(); as newText) {
+            <li
+              class="ea-multi-select__option ea-multi-select__option--create"
+              [class.ea-multi-select__option--focused]="focusedIndex() === createRow()"
+              [id]="id() + '-opt-' + createRow()"
+              role="option"
+              [attr.aria-selected]="false"
+              (click)="createOption()">
+              <ea-icon-plus
+                class="ea-multi-select__create-icon"
+                aria-hidden="true" />
+              <span class="ea-multi-select__option-label">
+                {{ i18n.messages().multiSelect.create(newText) }}
+              </span>
+            </li>
+          }
         </ul>
-        @if (filteredOptions().length === 0) {
+        @if (filteredOptions().length === 0 && !creatableText()) {
           <div
             class="ea-multi-select__empty"
             role="status">

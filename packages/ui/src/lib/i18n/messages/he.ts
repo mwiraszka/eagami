@@ -121,6 +121,7 @@ const messages: EagamiMessages = {
     clearAll: 'ניקוי הבחירה',
     removeOption: label => `הסרת ${label}`,
     selectedCount: count => `${count} נבחרו`,
+    create: text => `צור "${text}"`,
   },
   paginator: {
     label: 'עימוד',
