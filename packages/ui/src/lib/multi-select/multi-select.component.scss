@@ -128,7 +128,13 @@
     flex: 1;
     min-width: 0;
     overflow-x: auto;
-    scrollbar-width: thin;
+    // A classic scrollbar is laid out inside the row, so the field would stand
+    // taller once the chips overflowed than it does holding one or none
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     ea-tag {
       flex-shrink: 0;
