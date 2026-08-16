@@ -79,6 +79,17 @@
     border-radius: var(--radius-full);
   }
 
+  // Drawn over the canvas rather than on the wrapper, so taking the drop target
+  // does not resize the frame the image is composed against
+  &--drag-over &__canvas-wrapper::after {
+    position: absolute;
+    inset: 0;
+    border: 2px dotted var(--color-brand-default);
+    border-radius: inherit;
+    pointer-events: none;
+    content: '';
+  }
+
   &__canvas {
     display: block;
     cursor: grab;
@@ -98,8 +109,10 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-1);
+    padding: 0 1em;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
+    text-align: center;
     color: var(--color-neutral-0);
     opacity: 0;
     pointer-events: none;
@@ -117,7 +130,8 @@
     height: 1.75em;
   }
 
-  &__canvas-wrapper:hover &__canvas-overlay {
+  &__canvas-wrapper:hover &__canvas-overlay,
+  &--drag-over &__canvas-overlay {
     opacity: 1;
   }
 

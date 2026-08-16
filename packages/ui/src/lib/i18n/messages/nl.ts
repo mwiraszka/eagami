@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Afbeelding uploaden',
-    dropzone: 'Sleep een afbeelding hierheen of klik om te uploaden',
+    dropzone: 'Sleep een afbeelding hierheen of klik om te bladeren',
     canvas:
       'Voorbeeld van afbeelding, sleep of gebruik de pijltjestoetsen om te verplaatsen, schuifregelaar om te zoomen',
     canvasInstructions:

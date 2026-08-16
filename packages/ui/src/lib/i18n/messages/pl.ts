@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Prześlij obraz',
-    dropzone: 'Upuść obraz lub kliknij, aby przesłać',
+    dropzone: 'Upuść obraz lub kliknij, aby wybrać',
     canvas:
       'Podgląd obrazu, przeciągnij lub użyj strzałek, aby przesunąć, suwaka, aby przybliżyć',
     canvasInstructions:

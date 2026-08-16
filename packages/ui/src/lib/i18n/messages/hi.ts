@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'छवि अपलोड करें',
-    dropzone: 'छवि छोड़ें या अपलोड करने के लिए क्लिक करें',
+    dropzone: 'छवि छोड़ें या चुनने के लिए क्लिक करें',
     canvas:
       'छवि पूर्वावलोकन, पैन करने के लिए खींचें या तीर कुंजियों का उपयोग करें, ज़ूम के लिए स्लाइडर',
     canvasInstructions:

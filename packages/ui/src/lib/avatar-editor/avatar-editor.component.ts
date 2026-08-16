@@ -23,7 +23,6 @@ import { MinusIconComponent } from '../icons/minus.component';
 import { PlusIconComponent } from '../icons/plus.component';
 import { RotateCcwIconComponent } from '../icons/rotate-ccw.component';
 import { TrashIconComponent } from '../icons/trash.component';
-import { UploadIconComponent } from '../icons/upload.component';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { uniqueId } from '../unique-id';
@@ -63,7 +62,6 @@ const OFFSET_TOLERANCE = 0.5;
     SkeletonComponent,
     TooltipDirective,
     TrashIconComponent,
-    UploadIconComponent,
   ],
   templateUrl: './avatar-editor.component.html',
   styleUrl: './avatar-editor.component.scss',
@@ -178,15 +176,36 @@ export class AvatarEditorComponent implements OnDestroy {
     document.removeEventListener('touchend', this.onTouchEndBound);
   }
 
+  // Handled alongside dragover so browsers that settle the drop target on
+  // dragenter take one, and so a wrapping element listening for the pair is not
+  // left with its own drag state stuck on
+  onDragEnter(event: DragEvent): void {
+    this.acceptDrag(event);
+  }
+
   onDragOver(event: DragEvent): void {
+    this.acceptDrag(event);
+  }
+
+  private acceptDrag(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
+    if (event.dataTransfer) {
+      event.dataTransfer.dropEffect = 'copy';
+    }
     this.isDragOver.set(true);
   }
 
   onDragLeave(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
+    // dragleave also fires when the pointer crosses onto a child of the drop
+    // target (the canvas, the hover overlay), where the drop is still on offer
+    const target = event.currentTarget as HTMLElement | null;
+    const next = event.relatedTarget as Node | null;
+    if (target && next && target.contains(next)) {
+      return;
+    }
     this.isDragOver.set(false);
   }
 
@@ -575,18 +594,24 @@ export class AvatarEditorComponent implements OnDestroy {
     reader.readAsDataURL(file);
   }
 
+  // Replacing an image the editor already holds changes no signal the template
+  // reads, so there is no render to defer to; a canvas that is already mounted
+  // is drawn straight away
   private scheduleDrawAfterRender(): void {
-    afterNextRender(
-      () => {
-        this.draw();
-        this.isFetching.set(false);
-        this._suppressCropStateEmit = false;
-        const canvas = this.canvasEl()?.nativeElement;
-        canvas?.removeEventListener('wheel', this.boundWheel);
-        canvas?.addEventListener('wheel', this.boundWheel, { passive: false });
-      },
-      { injector: this.injector },
-    );
+    if (this.canvasEl()) {
+      this.drawLoadedImage();
+      return;
+    }
+    afterNextRender(() => this.drawLoadedImage(), { injector: this.injector });
+  }
+
+  private drawLoadedImage(): void {
+    this.draw();
+    this.isFetching.set(false);
+    this._suppressCropStateEmit = false;
+    const canvas = this.canvasEl()?.nativeElement;
+    canvas?.removeEventListener('wheel', this.boundWheel);
+    canvas?.addEventListener('wheel', this.boundWheel, { passive: false });
   }
 
   private centerImage(): void {

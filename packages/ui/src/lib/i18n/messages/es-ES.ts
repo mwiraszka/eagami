@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Subir imagen',
-    dropzone: 'Suelta una imagen o haz clic para subir',
+    dropzone: 'Suelta una imagen o haz clic para elegir',
     canvas:
       'Vista previa de la imagen, arrastra o usa las flechas para desplazar, el control deslizante para ampliar',
     canvasInstructions:

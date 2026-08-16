@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Bild hochladen',
-    dropzone: 'Bild ablegen oder zum Hochladen klicken',
+    dropzone: 'Bild ablegen oder zum Auswählen klicken',
     canvas:
       'Bildvorschau, ziehen oder Pfeiltasten zum Verschieben verwenden, Schieberegler zum Zoomen',
     canvasInstructions:
