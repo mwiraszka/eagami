@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.28.0] - 2026-08-16
+
+### Added
+
+- Accept an image dropped onto the avatar editor's preview, outlined and captioned while a file is held over it.
+
+### Changed
+
+- Keep an open dropdown on the side of its field it opened on, moving it only when that side no longer fits.
+- Move focus to the multi-select's last remaining match as it is typed, so Enter takes it and clears the search for the next one.
+- Give the multi-select's search input focus as soon as its panel opens.
+- Reword the avatar editor's drop prompt away from uploading, and settle on the camera icon for both of its prompts.
+
+### Fixed
+
+- Redraw the avatar editor when a dropped image replaces the one already loaded.
+- Keep a dialog, drawer, command palette or popover open when a drag that began inside it is released outside, so selecting text no longer dismisses it.
+- Fix the dead space left beside a tooltip that wraps after a page zoom.
+- Hold the multi-select at one height once its chips start to scroll.
+
 ## [5.27.0] - 2026-08-14
 
 ### Added
@@ -1393,6 +1413,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.28.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.27.0...ui-v5.28.0
 [5.27.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.1...ui-v5.27.0
 [5.26.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.0...ui-v5.26.1
 [5.26.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.25.1...ui-v5.26.0
