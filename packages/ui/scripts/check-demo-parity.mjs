@@ -213,6 +213,68 @@ for (const slug of apiSlugs) {
   }
 }
 
+// Demo template knob coverage: every instance of the component on its own demo
+// page must bind every knob that maps to one of its inputs. A knob bound on no
+// instance passes when the page TS consumes it, the programmatic route to the
+// component. Every knob slug has both page files, so a failed read is a rename
+// to surface, not a case to skip.
+const DEMO_PAGES_DIR = resolve(repo, 'apps/website/src/app/pages/ui/components');
+const unboundKnobs = []; // { slug, name, index, total }
+// Attribute values may hold `>` inside binding expressions, so a tag runs to
+// the first `>` outside quotes
+const TAG_ATTRS = `(?:"[^"]*"|'[^']*'|[^>"'])*`;
+for (const [slug, knob] of knobNames) {
+  const api = UI_API[slug];
+  if (!api) {
+    continue;
+  }
+  const inputNames = new Set(api.inputs.map(p => p.name));
+  const required = [...knob.all].filter(n => !knob.demoOnly.has(n) && inputNames.has(n));
+  if (!required.length) {
+    continue;
+  }
+  const html = readText(
+    resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.html`),
+  );
+  const pageTs = readText(
+    resolve(DEMO_PAGES_DIR, slug, `${slug}-demo-page.component.ts`),
+  );
+  // A knob may be bound by its property name or by the kebab-case attribute
+  // an alias exposes
+  const bindingRe = name => {
+    const kebab = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+    return new RegExp(`\\s[\\[(]{0,2}(?:${name}|${kebab})[\\])]{0,2}=`);
+  };
+  const instances = [];
+  if (api.selector.startsWith('[')) {
+    const attrRe = bindingRe(api.selector.slice(1, -1));
+    for (const [tag] of html.matchAll(new RegExp(`<[a-z]${TAG_ATTRS}>`, 'gi'))) {
+      if (attrRe.test(tag)) {
+        instances.push(tag);
+      }
+    }
+  } else {
+    // `(?![\w-])` so `ea-menu` cannot also swallow every `ea-menu-item`
+    for (const [tag] of html.matchAll(
+      new RegExp(`<${api.selector}(?![\\w-])${TAG_ATTRS}>`, 'g'),
+    )) {
+      instances.push(tag);
+    }
+  }
+  for (const name of required) {
+    const re = bindingRe(name);
+    const boundSomewhere = instances.some(tag => re.test(tag));
+    if (!boundSomewhere && new RegExp(`state\\(\\)\\.${name}\\b`).test(pageTs)) {
+      continue;
+    }
+    instances.forEach((tag, index) => {
+      if (!re.test(tag)) {
+        unboundKnobs.push({ slug, name, index: index + 1, total: instances.length });
+      }
+    });
+  }
+}
+
 // Story wiring: a component with a knobs file must surface those knobs in its
 // Storybook story (import *_KNOBS + spread its argTypes/args), so Storybook and
 // the website playground expose the same controls. Catches the class of drift
@@ -272,6 +334,11 @@ if (process.argv.includes('--advisory')) {
     r => `${r.slug}.${r.name} : ${r.type}`,
   );
 }
+report(
+  'Demo instances NOT binding a knob (control silently ignored)',
+  unboundKnobs,
+  r => `${r.slug}.${r.name} [instance ${r.index}/${r.total}]`,
+);
 report('STALE knobs (no matching input)', staleKnob, r => `${r.slug}.${r.name}`);
 report(
   'STALE descriptions (no matching input/output/method)',
@@ -284,8 +351,9 @@ const hardFailures =
   staleKnob.length +
   staleDesc.length +
   unwiredStories.length +
-  undocSlugs.length;
+  undocSlugs.length +
+  unboundKnobs.length;
 console.log(
-  `\nSummary: ${missingDesc.length} missing descriptions, ${missingKnob.length} missing knobs (advisory), ${staleKnob.length} stale knobs, ${staleDesc.length} stale descriptions, ${undocSlugs.length} undocumented slugs, ${unwiredStories.length} unwired stories.`,
+  `\nSummary: ${missingDesc.length} missing descriptions, ${missingKnob.length} missing knobs (advisory), ${staleKnob.length} stale knobs, ${staleDesc.length} stale descriptions, ${undocSlugs.length} undocumented slugs, ${unwiredStories.length} unwired stories, ${unboundKnobs.length} unbound demo knobs.`,
 );
 process.exitCode = hardFailures > 0 ? 1 : 0;

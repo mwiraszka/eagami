@@ -410,29 +410,32 @@ describe('TooltipDirective', () => {
   });
 
   describe('Content-hugging width', () => {
-    // jsdom lays every box out at 0×0, so the three measurements the pin is
-    // derived from are faked: the longest rendered line, and the bubble's own
-    // content-box and border-box widths.
-    function stubMeasurements(text: number, content: number, borderBox: number): void {
+    // jsdom lays every box out at 0×0, so the measurements the pin is derived
+    // from are faked: the longest rendered line and the bubble's box chrome.
+    function stubMeasurements(text: number): void {
       vi.spyOn(document, 'createRange').mockReturnValue({
         selectNodeContents: () => {},
         getBoundingClientRect: () => new DOMRect(0, 0, text, 16),
       } as unknown as Range);
       const bubbleStyle = document.createElement('div').style;
       bubbleStyle.boxSizing = 'border-box';
-      bubbleStyle.width = `${content}px`;
+      bubbleStyle.padding = '0 10px';
+      bubbleStyle.borderLeftWidth = '1.85px';
+      bubbleStyle.borderRightWidth = '1.85px';
+      // Resolves to the border box in WebKit, so the chrome must come from the longhands
+      bubbleStyle.width = '200px';
       vi.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) =>
         element.classList?.contains('ea-tooltip')
           ? (bubbleStyle as CSSStyleDeclaration)
           : REAL_GET_COMPUTED_STYLE(element, pseudoElement),
       );
       vi.spyOn(HTMLDivElement.prototype, 'getBoundingClientRect').mockReturnValue(
-        new DOMRect(0, 0, borderBox, 16),
+        new DOMRect(0, 0, 200, 16),
       );
     }
 
     it('pins the bubble to its longest line plus the box chrome', () => {
-      stubMeasurements(120.4, 176.3, 200);
+      stubMeasurements(120.4);
 
       show();
 
@@ -441,10 +444,10 @@ describe('TooltipDirective', () => {
     });
 
     it('re-derives the width when a zoom re-lays out the page', () => {
-      stubMeasurements(120.4, 176.3, 200);
+      stubMeasurements(120.4);
       show();
 
-      stubMeasurements(150, 176.3, 200);
+      stubMeasurements(150);
       window.dispatchEvent(new Event('resize'));
 
       expect(getTooltip()!.style.width).toBe('174px');

@@ -34,8 +34,8 @@ export type TagTooltip = 'above' | 'below' | 'none';
  * accessible name of that button is configurable via `removeLabel` and
  * otherwise falls back to the active locale's translation.
  *
- * The projected label is capped by `maxWidth` (or the `--ea-tag-max-width`
- * custom property) and ellipsizes rather than widening the chip, revealing its
+ * When capped by `maxWidth` (or the `--ea-tag-max-width` custom property),
+ * the projected label ellipsizes rather than widening the chip, revealing its
  * full text in a tooltip while it is clipped.
  */
 @Component({
@@ -61,7 +61,7 @@ export class TagComponent {
    * has to give way to its container (`'100%'` in a responsive grid cell).
    * Also settable in CSS as `--ea-tag-max-width`, which this input overrides.
    */
-  readonly maxWidth = input<number | string | undefined>(200);
+  readonly maxWidth = input<number | string | undefined>(undefined);
   /**
    * Fill colour as a hex value, for a tag carrying a colour of its own (a
    * user-chosen label). Paints the chip and its border, and picks whichever ink

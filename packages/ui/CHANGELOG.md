@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.30.0] - 2026-08-16
+
+### Added
+
+- Add `--ea-dialog-inset`, `--ea-dialog-radius`, `--ea-dialog-max-height`, `--ea-dialog-header-padding`, `--ea-dialog-body-padding` and `--ea-dialog-status-padding`, so a dialog can run edge to edge or tune its chrome per instance.
+- Ship an `@eagami/ui/testing` entry point with a native dialog shim for jsdom test runs.
+
+### Changed
+
+- **Breaking:** Move the dialog's close button into the header row, so header content lays out against it instead of reserving room by hand.
+- **Breaking:** Restore the tag's uncapped default width, making `maxWidth` clipping opt-in again.
+
+### Fixed
+
+- Fix tooltips collapsing to a sliver of their text in Safari.
+
 ## [5.29.0] - 2026-08-16
 
 ### Added
@@ -1436,6 +1452,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.30.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.29.0...ui-v5.30.0
 [5.29.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.28.0...ui-v5.29.0
 [5.28.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.27.0...ui-v5.28.0
 [5.27.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.26.1...ui-v5.27.0

@@ -1,6 +1,6 @@
 {
   "name": "@eagami/ui",
-  "version": "5.29.0",
+  "version": "5.30.0",
   "description": "Lightweight, accessible, themeable Angular UI component library and icon set built on CSS custom properties",
   "author": "Michal Wiraszka <michal@eagami.com>",
   "license": "MIT",
@@ -37,8 +37,8 @@
     "test": "ng test eagami-ui --no-watch",
     "test:watch": "ng test eagami-ui --watch",
     "test:coverage": "ng test eagami-ui --coverage --no-watch",
-    "format": "prettier --write \"src/**\" \"scripts/**\" \".storybook/**\"",
-    "lint": "eslint 'src/**' 'scripts/**' '.storybook/**/*.ts'",
+    "format": "prettier --write \"src/**\" \"scripts/**\" \"testing/**\" \".storybook/**\"",
+    "lint": "eslint 'src/**' 'scripts/**' 'testing/**' '.storybook/**/*.ts'",
     "check-i18n": "node scripts/check-i18n-drift.mjs src/lib/i18n/messages",
     "check-parity": "node scripts/check-demo-parity.mjs",
     "check-changelog": "node scripts/check-changelog-format.mjs ../../packages/ui/CHANGELOG.md && node scripts/check-changelog-format.mjs ../../apps/website/CHANGELOG.md",

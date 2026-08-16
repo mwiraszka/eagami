@@ -281,20 +281,23 @@ export class TooltipDirective implements OnDestroy {
       return;
     }
     const style = getComputedStyle(this.tooltipEl);
-    const contentWidth = parseFloat(style.width);
-    if (!Number.isFinite(contentWidth)) {
+    /* Whatever the border box holds beyond its content box: padding, borders,
+       and a scrollbar if the height clamp put one there. Summed from the
+       fractional longhands, since WebKit resolves computed `width` to the
+       border box under `box-sizing: border-box`. Only the scrollbar goes
+       through the whole-pixel `offsetWidth - clientWidth`. */
+    const paddings = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const borders =
+      parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+    const scrollbar = Math.max(
+      0,
+      this.tooltipEl.offsetWidth - this.tooltipEl.clientWidth - borders,
+    );
+    const horizontalChrome =
+      style.boxSizing === 'border-box' ? paddings + borders + scrollbar : scrollbar;
+    if (!Number.isFinite(horizontalChrome)) {
       return;
     }
-    /* Whatever the border box holds beyond its content box: padding, borders,
-       and a scrollbar if the height clamp put one there. Read as the difference
-       between two fractional widths; `offsetWidth` and `clientWidth` round to
-       whole pixels, and under a page zoom the box sits on fractional ones, so
-       rounded arithmetic pins the bubble a hair narrower than its own text and
-       the last word drops to a second line inside a box sized for one. */
-    const horizontalChrome =
-      style.boxSizing === 'border-box'
-        ? this.tooltipEl.getBoundingClientRect().width - contentWidth
-        : 0;
     this.renderer.setStyle(
       this.tooltipEl,
       'width',

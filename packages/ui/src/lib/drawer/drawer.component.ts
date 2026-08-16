@@ -67,6 +67,9 @@ const PUSH_PROPERTIES = Object.values(PUSH_PROPERTY);
  * Escape dismissal, and exposes `header`, default, and `footer` content
  * slots. The `open` state is a two-way `model()` binding. In `push` mode it
  * opens non-modally and reflows the page content aside instead of overlaying it.
+ *
+ * Specs running under jsdom need `installNativeDialogShim()` from
+ * `@eagami/ui/testing` before opening one.
  */
 @Component({
   selector: 'ea-drawer',

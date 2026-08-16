@@ -30,6 +30,17 @@ export type DialogWidth = EaWidth;
  * for browser-managed focus trapping, supports backdrop and Escape dismissal,
  * and exposes `header`, default, and `footer` content slots. The `open` state
  * is a two-way `model()` binding.
+ *
+ * The header is a row that lays its slot content out against the built-in
+ * close button, and it applies the h4 type scale to that content, so a heading
+ * element projected into it should carry `font: inherit`. Panel chrome is
+ * tunable per dialog via `--ea-dialog-inset`, `--ea-dialog-radius`,
+ * `--ea-dialog-max-height`, `--ea-dialog-header-padding`,
+ * `--ea-dialog-body-padding`, and `--ea-dialog-status-padding`; an
+ * edge-to-edge media surface zeroes the inset, radius, and paddings.
+ *
+ * Specs running under jsdom need `installNativeDialogShim()` from
+ * `@eagami/ui/testing` before opening one.
  */
 @Component({
   selector: 'ea-dialog',

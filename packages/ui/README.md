@@ -126,6 +126,17 @@ Every component adheres to WCAG 2.2 Level AA and follows the matching [WAI-ARIA 
 
 The library is SSR-safe and renders on the server (Angular Universal / `@angular/ssr`) without reaching for `window` or `document`. Browser-only work (focus management, the native `<dialog>`, overlay positioning, resize/intersection observers) is deferred to the client via `afterNextRender` and `isPlatformBrowser` guards, so prerendering, streaming SSR, and hydration work with no extra configuration.
 
+## Testing
+
+jsdom implements `<dialog>` without `showModal()` or `close()`, so a unit test that creates a component holding an open `<ea-dialog>` or `<ea-drawer>` throws before the spec body runs. The `@eagami/ui/testing` entry point ships a shim that fills in the missing methods; it patches only what the runtime lacks, so it is a no-op in real browsers. Call it once from your test setup file:
+
+```ts
+// test-setup.ts
+import { installNativeDialogShim } from '@eagami/ui/testing';
+
+installNativeDialogShim();
+```
+
 ## Framework integration
 
 `@eagami/ui` is Angular-only, but its design tokens are framework-agnostic. Self-contained copy-and-paste guides and a machine-readable token export are published with the docs and kept in sync with the token source on every release:
