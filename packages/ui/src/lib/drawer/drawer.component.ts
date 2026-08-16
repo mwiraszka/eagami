@@ -19,6 +19,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { PointerPressTracker } from '../pointer-press';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -90,9 +91,10 @@ export class DrawerComponent implements AfterContentChecked {
   private pushRaf: number | null = null;
   private leaveTimer: ReturnType<typeof setTimeout> | null = null;
   private leaveOnEnd: ((event: TransitionEvent) => void) | null = null;
-  private documentPointerListener: ((event: PointerEvent) => void) | null = null;
+  private documentClickListener: ((event: MouseEvent) => void) | null = null;
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly press = inject(PointerPressTracker);
 
   readonly position = input<DrawerPosition>('right');
   /**
@@ -415,30 +417,36 @@ export class DrawerComponent implements AfterContentChecked {
   // the document. Deferred a tick so the click that opened the drawer does not
   // immediately close it.
   private addPushDismiss(): void {
-    if (this.documentPointerListener || !this.isBrowser) {
+    if (this.documentClickListener || !this.isBrowser) {
       return;
     }
-    const listener = (event: PointerEvent): void => {
+    const listener = (event: MouseEvent): void => {
       if (!this.closeOnBackdrop()) {
         return;
       }
       const panel = this.panelEl()?.nativeElement;
-      if (panel && !panel.contains(event.target as Node)) {
-        this.handleClose();
+      if (!panel || panel.contains(event.target as Node)) {
+        return;
       }
+      // A drag out of the panel (selecting text, dragging a control) lands its
+      // click outside, and is not a dismissal
+      if (this.press.touchedInside(panel)) {
+        return;
+      }
+      this.handleClose();
     };
-    this.documentPointerListener = listener;
+    this.documentClickListener = listener;
     setTimeout(() => {
-      if (this.documentPointerListener === listener) {
-        document.addEventListener('pointerdown', listener);
+      if (this.documentClickListener === listener) {
+        document.addEventListener('click', listener);
       }
     });
   }
 
   private removePushDismiss(): void {
-    if (this.documentPointerListener) {
-      document.removeEventListener('pointerdown', this.documentPointerListener);
-      this.documentPointerListener = null;
+    if (this.documentClickListener) {
+      document.removeEventListener('click', this.documentClickListener);
+      this.documentClickListener = null;
     }
   }
 
@@ -465,7 +473,10 @@ export class DrawerComponent implements AfterContentChecked {
       return;
     }
     const drawerRef = this.drawerEl()?.nativeElement;
-    if (event.target === drawerRef) {
+    // A press that touched the panel at either end reaches the drawer element
+    // as a click too, since that is the first ancestor the panel and the
+    // backdrop share; only a press confined to the backdrop dismisses
+    if (event.target === drawerRef && this.press.stayedOn(drawerRef)) {
       this.handleClose();
     }
   }

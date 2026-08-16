@@ -152,6 +152,21 @@ describe('DialogComponent', () => {
       expect(host.isOpen()).toBe(false);
     });
 
+    it('does not close when a drag out of the panel releases on the backdrop', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      const dialog = getDialog();
+      getPanel().dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      dialog.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      const event = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(event, 'target', { value: dialog });
+      dialog.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
     it('does not close on backdrop click when closeOnBackdrop is false', () => {
       host.closeOnBackdrop.set(false);
       host.isOpen.set(true);

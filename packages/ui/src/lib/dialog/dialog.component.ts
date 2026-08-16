@@ -18,6 +18,7 @@ import {
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
+import { PointerPressTracker } from '../pointer-press';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -44,6 +45,7 @@ export class DialogComponent implements AfterContentChecked {
   private previouslyFocused: HTMLElement | null = null;
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly press = inject(PointerPressTracker);
 
   readonly width = input<DialogWidth>('md');
   readonly closeOnBackdrop = input<boolean>(true);
@@ -109,7 +111,10 @@ export class DialogComponent implements AfterContentChecked {
       return;
     }
     const dialogRef = this.dialogEl()?.nativeElement;
-    if (event.target === dialogRef) {
+    // A press that touched the panel at either end reaches the dialog element
+    // as a click too, since that is the first ancestor the panel and the
+    // backdrop share; only a press confined to the backdrop dismisses
+    if (event.target === dialogRef && this.press.stayedOn(dialogRef)) {
       this.handleClose();
     }
   }
