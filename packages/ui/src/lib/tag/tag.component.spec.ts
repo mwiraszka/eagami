@@ -48,8 +48,8 @@ describe('TagComponent', () => {
       expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('120px');
     });
 
-    it('caps the tag at 200px by default', () => {
-      expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('200px');
+    it('leaves the tag uncapped by default', () => {
+      expect(getTag()!.style.getPropertyValue('--ea-tag-max-width')).toBe('');
     });
 
     it('takes a fluid cap so the chip gives way to its container', () => {
