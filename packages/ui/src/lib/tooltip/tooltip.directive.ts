@@ -138,6 +138,13 @@ export class TooltipDirective implements OnDestroy {
       }
     });
   };
+  /* A resize, and a page zoom with it, re-lays out the text at a new
+     device-pixel grid, so the width is re-derived before the bubble is placed
+     again. Scrolling moves the bubble without touching its text. */
+  private readonly relayoutHandler = () => {
+    this.shrinkToContent();
+    this.repositionHandler();
+  };
   /* Capture-phase scroll listener catches scrolls on any ancestor, not just
      window. Without `capture: true`, only window-level scrolls fire here. */
   private readonly scrollListenerOptions: AddEventListenerOptions = {
@@ -244,6 +251,9 @@ export class TooltipDirective implements OnDestroy {
     if (this.maxWidth() == null || !this.tooltipEl) {
       return;
     }
+    // A width pinned earlier is the wrap point the text would be measured
+    // against, so the bubble could only ever get narrower from here
+    this.renderer.removeStyle(this.tooltipEl, 'width');
     const range = document.createRange();
     range.selectNodeContents(this.tooltipEl);
     const textWidth = range.getBoundingClientRect().width;
@@ -251,19 +261,20 @@ export class TooltipDirective implements OnDestroy {
       return;
     }
     const style = getComputedStyle(this.tooltipEl);
-    const borders =
-      parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
-    // Whatever the border box holds beyond its content box: the borders, plus a
-    // scrollbar if the height clamp put one there. Both have to stay outside the
-    // width we pin to the text, or the text reflows and overflows sideways
-    const outsideContent = Math.max(
-      0,
-      this.tooltipEl.offsetWidth - this.tooltipEl.clientWidth,
-    );
+    const contentWidth = parseFloat(style.width);
+    if (!Number.isFinite(contentWidth)) {
+      return;
+    }
+    /* Whatever the border box holds beyond its content box: padding, borders,
+       and a scrollbar if the height clamp put one there. Read as the difference
+       between two fractional widths; `offsetWidth` and `clientWidth` round to
+       whole pixels, and under a page zoom the box sits on fractional ones, so
+       rounded arithmetic pins the bubble a hair narrower than its own text and
+       the last word drops to a second line inside a box sized for one. */
     const horizontalChrome =
       style.boxSizing === 'border-box'
-        ? parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) + outsideContent
-        : Math.max(0, outsideContent - borders);
+        ? this.tooltipEl.getBoundingClientRect().width - contentWidth
+        : 0;
     this.renderer.setStyle(
       this.tooltipEl,
       'width',
@@ -321,12 +332,12 @@ export class TooltipDirective implements OnDestroy {
     if (typeof window === 'undefined') {
       return;
     }
-    window.addEventListener('resize', this.repositionHandler);
+    window.addEventListener('resize', this.relayoutHandler);
     /* `capture: true` so we catch scrolls on any ancestor (modal body, sidebar,
        overflow:auto wrappers), not just the window. */
     window.addEventListener('scroll', this.repositionHandler, this.scrollListenerOptions);
     if (typeof ResizeObserver !== 'undefined') {
-      this.resizeObserver = new ResizeObserver(this.repositionHandler);
+      this.resizeObserver = new ResizeObserver(this.relayoutHandler);
       this.resizeObserver.observe(this.el.nativeElement);
       /* Body observer catches layout shifts that don't move the trigger
          (sibling content loads pushing the viewport's bottom around). */
@@ -338,7 +349,7 @@ export class TooltipDirective implements OnDestroy {
     if (typeof window === 'undefined') {
       return;
     }
-    window.removeEventListener('resize', this.repositionHandler);
+    window.removeEventListener('resize', this.relayoutHandler);
     window.removeEventListener(
       'scroll',
       this.repositionHandler,

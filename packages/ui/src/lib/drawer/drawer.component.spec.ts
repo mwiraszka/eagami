@@ -307,6 +307,21 @@ describe('DrawerComponent', () => {
       expect(host.isOpen()).toBe(true);
     });
 
+    it('does not close when a drag out of the panel releases on the backdrop', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      const drawer = getDrawer();
+      getPanel().dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      drawer.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      const event = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(event, 'target', { value: drawer });
+      drawer.dispatchEvent(event);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
     it('does not close when click target is inside the panel', () => {
       host.isOpen.set(true);
       fixture.detectChanges();
@@ -598,31 +613,45 @@ describe('DrawerComponent', () => {
   });
 
   describe('Push mode outside dismissal', () => {
-    it('closes on a pointerdown outside the panel', async () => {
+    // A press is two events, and a click is dispatched on the first ancestor
+    // they share, so both ends have to be stated for the drag cases to be real
+    function press(from: Element, to: Element = from): void {
+      from.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      to.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      to.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+    }
+
+    it('closes on a click outside the panel', async () => {
       await openInPushMode();
 
-      document.body.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
-      fixture.detectChanges();
+      press(document.body);
 
       expect(host.isOpen()).toBe(false);
       expect(host.closedCount()).toBe(1);
     });
 
-    it('stays open for a pointerdown inside the panel', async () => {
+    it('stays open for a click inside the panel', async () => {
       await openInPushMode();
 
-      getPanel().dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
-      fixture.detectChanges();
+      press(getPanel());
 
       expect(host.isOpen()).toBe(true);
     });
 
-    it('ignores an outside pointerdown when closeOnBackdrop is false', async () => {
+    it('stays open when a drag out of the panel ends outside it', async () => {
+      await openInPushMode();
+
+      press(getPanel(), document.body);
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('ignores an outside click when closeOnBackdrop is false', async () => {
       host.closeOnBackdrop.set(false);
       await openInPushMode();
 
-      document.body.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
-      fixture.detectChanges();
+      press(document.body);
 
       expect(host.isOpen()).toBe(true);
     });
@@ -632,8 +661,7 @@ describe('DrawerComponent', () => {
       host.isOpen.set(false);
       fixture.detectChanges();
 
-      document.body.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
-      fixture.detectChanges();
+      press(document.body);
 
       expect(host.closedCount()).toBe(0);
     });
@@ -643,8 +671,7 @@ describe('DrawerComponent', () => {
       fixture.detectChanges();
       await nextTask();
 
-      document.body.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
-      fixture.detectChanges();
+      press(document.body);
 
       expect(host.isOpen()).toBe(true);
     });

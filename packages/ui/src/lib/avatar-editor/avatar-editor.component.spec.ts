@@ -161,6 +161,10 @@ describe('AvatarEditorComponent', () => {
     return fixture.nativeElement.querySelector('.ea-avatar-editor__canvas');
   }
 
+  function getCanvasWrapper(): HTMLElement | null {
+    return fixture.nativeElement.querySelector('.ea-avatar-editor__canvas-wrapper');
+  }
+
   function getFileInput(): HTMLInputElement {
     return fixture.nativeElement.querySelector('.ea-avatar-editor__file-input')!;
   }
@@ -1267,6 +1271,94 @@ describe('AvatarEditorComponent', () => {
       getDropzone()!.dispatchEvent(event);
 
       expect(spy).toHaveBeenCalledWith(file);
+    });
+
+    it('sets isDragOver to true on dragover of the loaded image preview', () => {
+      loadImage();
+
+      getCanvasWrapper()!.dispatchEvent(new Event('dragover'));
+
+      expect(component.isDragOver()).toBe(true);
+    });
+
+    it('labels the preview with the drop prompt while a file is held over it', () => {
+      loadImage();
+      fixture.detectChanges();
+      const overlay = (): HTMLElement =>
+        fixture.nativeElement.querySelector('.ea-avatar-editor__canvas-overlay');
+
+      expect(overlay().textContent).toContain('Change photo');
+
+      getCanvasWrapper()!.dispatchEvent(new Event('dragover'));
+      fixture.detectChanges();
+
+      expect(overlay().textContent).toContain('Drop image or click to browse');
+    });
+
+    it('takes the drop target on dragenter', () => {
+      loadImage();
+      const event = new Event('dragenter');
+      const dataTransfer = { dropEffect: 'none' };
+      Object.defineProperty(event, 'dataTransfer', { value: dataTransfer });
+
+      getCanvasWrapper()!.dispatchEvent(event);
+
+      expect(component.isDragOver()).toBe(true);
+      expect(dataTransfer.dropEffect).toBe('copy');
+    });
+
+    it('redraws the canvas when a drop replaces the image already loaded', () => {
+      loadImage();
+      fixture.detectChanges();
+      ctxSpies.drawImage.mockClear();
+
+      const event = new Event('drop');
+      Object.defineProperty(event, 'dataTransfer', {
+        value: { files: [makeFile('image/jpeg')] },
+      });
+      getCanvasWrapper()!.dispatchEvent(event);
+      lastMockFileReader!.onload!({ target: { result: 'data:image/jpeg;base64,abc' } });
+      triggerLoad();
+
+      expect(ctxSpies.drawImage).toHaveBeenCalled();
+    });
+
+    it('emits fileSelected on drop onto the loaded image preview', () => {
+      loadImage();
+      const spy = vi.fn();
+      component.fileSelected.subscribe(spy);
+      const file = makeFile('image/jpeg');
+      const event = new Event('drop');
+      Object.defineProperty(event, 'dataTransfer', { value: { files: [file] } });
+
+      getCanvasWrapper()!.dispatchEvent(event);
+
+      expect(spy).toHaveBeenCalledWith(file);
+      expect(component.isDragOver()).toBe(false);
+    });
+
+    it('holds isDragOver while the pointer crosses onto a child of the drop target', () => {
+      loadImage();
+      const wrapper = getCanvasWrapper()!;
+      wrapper.dispatchEvent(new Event('dragover'));
+      const leave = new Event('dragleave');
+      Object.defineProperty(leave, 'relatedTarget', { value: getCanvas() });
+
+      wrapper.dispatchEvent(leave);
+
+      expect(component.isDragOver()).toBe(true);
+    });
+
+    it('clears isDragOver when the pointer leaves the drop target entirely', () => {
+      loadImage();
+      const wrapper = getCanvasWrapper()!;
+      wrapper.dispatchEvent(new Event('dragover'));
+      const leave = new Event('dragleave');
+      Object.defineProperty(leave, 'relatedTarget', { value: document.body });
+
+      wrapper.dispatchEvent(leave);
+
+      expect(component.isDragOver()).toBe(false);
     });
   });
 

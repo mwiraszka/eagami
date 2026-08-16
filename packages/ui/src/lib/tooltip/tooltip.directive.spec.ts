@@ -1,7 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { type TopLayerStubs, installTopLayerStubs } from '../../test-setup';
+import {
+  REAL_GET_COMPUTED_STYLE,
+  type TopLayerStubs,
+  installTopLayerStubs,
+} from '../../test-setup';
 import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
 
 @Component({
@@ -261,6 +265,48 @@ describe('TooltipDirective', () => {
 
       expect(tip.style.getPropertyValue('--ea-tooltip-max-width')).toBe('');
       expect(tip.classList).not.toContain('ea-tooltip--wrapping');
+    });
+  });
+
+  describe('Content-hugging width', () => {
+    // jsdom lays every box out at 0×0, so the three measurements the pin is
+    // derived from are faked: the longest rendered line, and the bubble's own
+    // content-box and border-box widths.
+    function stubMeasurements(text: number, content: number, borderBox: number): void {
+      vi.spyOn(document, 'createRange').mockReturnValue({
+        selectNodeContents: () => {},
+        getBoundingClientRect: () => new DOMRect(0, 0, text, 16),
+      } as unknown as Range);
+      const bubbleStyle = document.createElement('div').style;
+      bubbleStyle.boxSizing = 'border-box';
+      bubbleStyle.width = `${content}px`;
+      vi.spyOn(window, 'getComputedStyle').mockImplementation((element, pseudoElement) =>
+        element.classList?.contains('ea-tooltip')
+          ? (bubbleStyle as CSSStyleDeclaration)
+          : REAL_GET_COMPUTED_STYLE(element, pseudoElement),
+      );
+      vi.spyOn(HTMLDivElement.prototype, 'getBoundingClientRect').mockReturnValue(
+        new DOMRect(0, 0, borderBox, 16),
+      );
+    }
+
+    it('pins the bubble to its longest line plus the box chrome', () => {
+      stubMeasurements(120.4, 176.3, 200);
+
+      show();
+
+      // The 23.7px of padding and borders stays outside the width given to the text
+      expect(getTooltip()!.style.width).toBe('145px');
+    });
+
+    it('re-derives the width when a zoom re-lays out the page', () => {
+      stubMeasurements(120.4, 176.3, 200);
+      show();
+
+      stubMeasurements(150, 176.3, 200);
+      window.dispatchEvent(new Event('resize'));
+
+      expect(getTooltip()!.style.width).toBe('174px');
     });
   });
 

@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: '上传图片',
-    dropzone: '拖放图片或点击上传',
+    dropzone: '拖放图片或点击选择',
     canvas: '图片预览，拖动或使用方向键平移，使用滑块缩放',
     canvasInstructions:
       '使用方向键移动图片，加号和减号缩放，按 Enter 或空格键选择其他照片',

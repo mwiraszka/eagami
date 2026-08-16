@@ -14,6 +14,36 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.28.0',
+    date: '2026-08-16',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Accept an image dropped onto the avatar editor's preview, outlined and captioned while a file is held over it.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Keep an open dropdown on the side of its field it opened on, moving it only when that side no longer fits.',
+          "Move focus to the multi-select's last remaining match as it is typed, so Enter takes it and clears the search for the next one.",
+          "Give the multi-select's search input focus as soon as its panel opens.",
+          "Reword the avatar editor's drop prompt away from uploading, and settle on the camera icon for both of its prompts.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Redraw the avatar editor when a dropped image replaces the one already loaded.',
+          'Keep a dialog, drawer, command palette or popover open when a drag that began inside it is released outside, so selecting text no longer dismisses it.',
+          'Fix the dead space left beside a tooltip that wraps after a page zoom.',
+          'Hold the multi-select at one height once its chips start to scroll.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.27.0',
     date: '2026-08-14',
     sections: [

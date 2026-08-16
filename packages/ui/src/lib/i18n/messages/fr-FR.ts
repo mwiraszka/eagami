@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Téléverser une image',
-    dropzone: 'Déposez une image ou cliquez pour téléverser',
+    dropzone: 'Déposez une image ou cliquez pour parcourir',
     canvas:
       "Aperçu de l'image, faites glisser ou utilisez les flèches pour déplacer, le curseur pour zoomer",
     canvasInstructions:

@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Upload image',
-    dropzone: 'Drop image or click to upload',
+    dropzone: 'Drop image or click to browse',
     canvas: 'Image preview, drag or use arrow keys to pan, slider to zoom',
     canvasInstructions:
       'Use the arrow keys to move the image, plus and minus to zoom, and Enter or Space to choose a different photo',

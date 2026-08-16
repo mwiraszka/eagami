@@ -10,7 +10,7 @@ const messages: EagamiMessages = {
   },
   avatarEditor: {
     upload: 'Hlaða upp mynd',
-    dropzone: 'Slepptu mynd eða smelltu til að hlaða upp',
+    dropzone: 'Slepptu mynd eða smelltu til að velja',
     canvas:
       'Forskoðun myndar, dragðu eða notaðu örvatakka til að hreyfa, sleða til að aðdrátta',
     canvasInstructions:

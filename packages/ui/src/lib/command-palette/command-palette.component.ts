@@ -17,6 +17,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { SearchIconComponent } from '../icons/search.component';
 import { InputComponent } from '../input/input.component';
+import { PointerPressTracker } from '../pointer-press';
 import { uniqueId } from '../unique-id';
 import type { CommandPaletteItem } from './command-palette.types';
 
@@ -55,6 +56,7 @@ interface GroupedItems {
 export class CommandPaletteComponent {
   private readonly i18n = inject(EagamiI18nService);
   private readonly hostEl = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly press = inject(PointerPressTracker);
 
   readonly items = input.required<readonly CommandPaletteItem[]>();
 
@@ -343,8 +345,12 @@ export class CommandPaletteComponent {
   protected onBackdropClick(event: MouseEvent): void {
     /* Native `<dialog>` clicks land on the dialog itself when the user clicks
        the backdrop; clicks inside content bubble up via the panel. So a click
-       whose target IS the dialog element means the user clicked the backdrop. */
-    if (event.target === this.dialogEl()?.nativeElement) {
+       whose target IS the dialog element means the user clicked the backdrop,
+       unless the press behind it touched the panel at either end: the dialog is
+       the first ancestor the two share, so a drag out of the panel reports the
+       same target. */
+    const dialog = this.dialogEl()?.nativeElement;
+    if (event.target === dialog && this.press.stayedOn(dialog)) {
       this.open.set(false);
     }
   }

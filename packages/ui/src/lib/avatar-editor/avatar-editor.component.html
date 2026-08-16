@@ -30,10 +30,11 @@
       [style.width.px]="canvasSize()"
       [style.height.px]="canvasSize()"
       (click)="openFilePicker()"
+      (dragenter)="onDragEnter($event)"
       (dragover)="onDragOver($event)"
       (dragleave)="onDragLeave($event)"
       (drop)="onDrop($event)">
-      <ea-icon-upload class="ea-avatar-editor__upload-icon" />
+      <ea-icon-camera class="ea-avatar-editor__upload-icon" />
       <span class="ea-avatar-editor__dropzone-text">
         {{ i18n.messages().avatarEditor.dropzone }}
       </span>
@@ -46,6 +47,7 @@
       [style.width.px]="canvasSize()"
       [style.height.px]="canvasSize()"
       [attr.aria-busy]="isLoading() || null"
+      (dragenter)="onDragEnter($event)"
       (dragover)="onDragOver($event)"
       (dragleave)="onDragLeave($event)"
       (drop)="onDrop($event)">
@@ -76,7 +78,13 @@
             class="ea-avatar-editor__canvas-overlay"
             [class.ea-avatar-editor__canvas-overlay--on-light]="!isImageDark()">
             <ea-icon-camera class="ea-avatar-editor__overlay-icon" />
-            <span>{{ i18n.messages().avatarEditor.change }}</span>
+            <span>
+              {{
+                isDragOver()
+                  ? i18n.messages().avatarEditor.dropzone
+                  : i18n.messages().avatarEditor.change
+              }}
+            </span>
           </div>
         }
       }

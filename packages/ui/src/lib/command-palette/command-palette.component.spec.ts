@@ -208,6 +208,41 @@ describe('CommandPaletteComponent', () => {
     expect(getActiveItem()).toBeTruthy();
   });
 
+  describe('Backdrop click', () => {
+    function getDialog(): HTMLDialogElement {
+      return fixture.nativeElement.querySelector('.ea-command-palette');
+    }
+
+    function getPanel(): HTMLElement {
+      return fixture.nativeElement.querySelector('.ea-command-palette__panel');
+    }
+
+    function clickOn(target: Element): void {
+      const event = new MouseEvent('click', { bubbles: true });
+      Object.defineProperty(event, 'target', { value: getDialog() });
+      target.dispatchEvent(event);
+      fixture.detectChanges();
+    }
+
+    it('closes on a backdrop click', () => {
+      getDialog().dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      getDialog().dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+
+      clickOn(getDialog());
+
+      expect(host.open()).toBe(false);
+    });
+
+    it('stays open when a drag out of the panel releases on the backdrop', () => {
+      getPanel().dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      getDialog().dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+
+      clickOn(getDialog());
+
+      expect(host.open()).toBe(true);
+    });
+  });
+
   describe('Disabled items', () => {
     it('marks a disabled item with aria-disabled and the disabled class', () => {
       const save = getItems()[3];
