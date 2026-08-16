@@ -64,20 +64,33 @@
       max-height: var(--ea-dialog-max-height, calc(100vh - 2 * var(--_ea-dialog-inset)));
     }
 
-    // Each slot pads the edge it sits against generously and the seam between
-    // slots tightly. A missing slot leaves the body's tight edge facing the
-    // panel, so the body takes over the outer padding the slot would have kept
+    // One padding scheme for every combination of slots: the outermost slot on
+    // each side carries the panel's own padding, and each seam between two
+    // slots carries a single smaller gap, owned by the lower of the two. No
+    // seam is ever padded from both sides, and no gap is wider than the edge.
     &:has(> .ea-dialog__header--hidden) > .ea-dialog__body {
       --_ea-dialog-body-padding-top: var(--space-5);
+    }
+
+    &:not(:has(> .ea-dialog__status:not(:empty), > .ea-dialog__footer:not(:empty)))
+      > .ea-dialog__body {
+      --_ea-dialog-body-padding-bottom: var(--space-5);
     }
 
     &:not(:has(> .ea-dialog__footer:not(:empty))) > .ea-dialog__status {
       --_ea-dialog-status-padding-bottom: var(--space-5);
     }
 
-    &:not(:has(> .ea-dialog__footer:not(:empty), > .ea-dialog__status:not(:empty)))
-      > .ea-dialog__body {
-      --_ea-dialog-body-padding-bottom: var(--space-5);
+    // Nothing below it holds anything, so the header is the last slot too
+    &:not(
+        :has(
+          > .ea-dialog__body:not(:empty),
+          > .ea-dialog__status:not(:empty),
+          > .ea-dialog__footer:not(:empty)
+        )
+      )
+      > .ea-dialog__header {
+      --_ea-dialog-header-padding-bottom: var(--space-5);
     }
   }
 
@@ -91,7 +104,7 @@
     gap: var(--space-3);
     padding: var(
       --ea-dialog-header-padding,
-      var(--space-5) var(--space-6) var(--space-3)
+      var(--space-5) var(--space-6) var(--_ea-dialog-header-padding-bottom, 0)
     );
 
     &--hidden {
@@ -113,8 +126,13 @@
     padding: var(
       --ea-dialog-body-padding,
       var(--_ea-dialog-body-padding-top, var(--space-3)) var(--space-6)
-        var(--_ea-dialog-body-padding-bottom, var(--space-3))
+        var(--_ea-dialog-body-padding-bottom, 0)
     );
+
+    // An empty body would otherwise hold a seam and an edge apart for nothing
+    &:empty {
+      display: none;
+    }
     overflow-y: auto;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
@@ -127,8 +145,7 @@
     flex-shrink: 0;
     padding: var(
       --ea-dialog-status-padding,
-      var(--space-2) var(--space-6)
-        var(--_ea-dialog-status-padding-bottom, var(--space-2))
+      var(--space-3) var(--space-6) var(--_ea-dialog-status-padding-bottom, 0)
     );
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
