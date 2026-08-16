@@ -145,6 +145,19 @@ describe('CheckboxComponent', () => {
       expect(tooltip.injector.get(TooltipDirective).whenClipped()).toBe(true);
     });
 
+    it('carries the count into the tooltip, which the ellipsis takes first', () => {
+      fixture.componentRef.setInput('label', 'Unread messages');
+      fixture.componentRef.setInput('count', 42);
+      fixture.componentRef.setInput('truncate', true);
+      fixture.detectChanges();
+
+      const tooltip = fixture.debugElement.query(By.directive(TooltipDirective));
+
+      expect(tooltip.injector.get(TooltipDirective).eaTooltip()).toBe(
+        'Unread messages 42',
+      );
+    });
+
     it('leaves the label alone by default', () => {
       fixture.componentRef.setInput('label', 'Inbox');
       fixture.detectChanges();

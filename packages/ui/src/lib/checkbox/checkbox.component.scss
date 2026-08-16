@@ -3,10 +3,13 @@
 :host {
   display: inline-flex;
   vertical-align: middle;
-  // Never wider than the column it is placed in, so a clamped label has an
-  // edge to ellipsize against
-  max-width: 100%;
   line-height: 1;
+}
+
+// A clamped label needs an edge to ellipsize against, which only the host can
+// give it; a checkbox that did not ask to clamp keeps sizing to its content
+:host(.ea-checkbox-host--truncate) {
+  max-width: 100%;
 }
 
 .ea-checkbox-field {

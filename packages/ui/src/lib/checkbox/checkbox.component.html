@@ -57,7 +57,7 @@
       <span
         class="ea-checkbox__label"
         [class.ea-checkbox__label--required]="required()"
-        [eaTooltip]="truncate() ? (label() ?? '') : ''"
+        [eaTooltip]="clampedText()"
         [whenClipped]="true">
         {{ label() }}
         @if (count() !== undefined && count() !== null) {

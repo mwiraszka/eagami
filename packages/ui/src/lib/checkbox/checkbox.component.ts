@@ -34,6 +34,9 @@ export type CheckboxSize = EaSize;
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.ea-checkbox-host--truncate]': 'truncate()',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -85,6 +88,16 @@ export class CheckboxComponent implements ControlValueAccessor {
   readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
+
+  /** What a clamped label reveals: the count rides along, since the ellipsis takes it first. */
+  protected readonly clampedText = computed(() => {
+    if (!this.truncate()) {
+      return '';
+    }
+    const count = this.count();
+    const label = this.label() ?? '';
+    return count === undefined || count === null ? label : `${label} ${count}`;
+  });
 
   readonly hostClasses = computed(() => ({
     [`ea-checkbox--${this.size()}`]: true,
