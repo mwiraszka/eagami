@@ -37,13 +37,15 @@
             [style.background-color]="value() ? displayColor() : null">
           </span>
         </span>
-        <span
-          class="ea-color-picker__trigger-value"
-          [class.ea-color-picker__trigger-value--placeholder]="!displayValue()">
-          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
-        </span>
+        @if (!compact()) {
+          <span
+            class="ea-color-picker__trigger-value"
+            [class.ea-color-picker__trigger-value--placeholder]="!displayValue()">
+            <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
+          </span>
+        }
       </button>
-      @if (clearable() && value() && !isDisabled() && !readonly()) {
+      @if (clearable() && !compact() && value() && !isDisabled() && !readonly()) {
         <button
           type="button"
           class="ea-color-picker__clear"

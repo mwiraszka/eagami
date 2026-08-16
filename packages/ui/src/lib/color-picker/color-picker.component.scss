@@ -78,6 +78,18 @@
       }
     }
 
+    // Nothing but the swatch, so the box is square and only as wide as it
+    &--compact {
+      width: auto;
+      min-height: 0;
+      padding: 0.375em;
+
+      .ea-color-picker__swatch {
+        width: 1.5em;
+        height: 1.5em;
+      }
+    }
+
     &--disabled {
       background-color: var(--color-bg-muted);
       opacity: 0.6;
