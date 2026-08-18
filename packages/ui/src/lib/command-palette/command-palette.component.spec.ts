@@ -115,6 +115,18 @@ describe('CommandPaletteComponent', () => {
     expect(labels).toEqual(['Find']);
   });
 
+  it('matches past accents a plain keyboard cannot type', () => {
+    host.items = [...COMMANDS, { id: 'jablko', label: 'Jabłko', group: 'Edit' }];
+    fixture.detectChanges();
+
+    typeQuery('jab');
+
+    const labels = getItems().map(el =>
+      el.querySelector('.ea-command-palette__item-label')?.textContent?.trim(),
+    );
+    expect(labels).toEqual(['Jabłko']);
+  });
+
   it('matches by word prefix, not mid-word substring', () => {
     // "c" only appears mid-word in this fixture, and word-prefix matching ignores mid-word hits
     typeQuery('c');

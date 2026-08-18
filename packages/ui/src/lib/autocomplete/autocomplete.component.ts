@@ -26,6 +26,7 @@ import type { SelectOption, SelectOptions } from '../select-option';
 import {
   filterGroups,
   flattenGroups,
+  foldForSearch,
   isGrouped,
   limitGroups,
   toGroups,
@@ -117,7 +118,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
   protected readonly grouped = computed(() => isGrouped(this.options()));
 
   private readonly filteredGroups = computed(() => {
-    const query = this.value().trim().toLowerCase();
+    const query = foldForSearch(this.value().trim());
     const groups = this.optionGroups();
 
     if (query.length < this.minLength()) {
@@ -125,7 +126,7 @@ export class AutocompleteComponent implements ControlValueAccessor {
     }
 
     const matched = query
-      ? filterGroups(groups, o => o.label.toLowerCase().includes(query))
+      ? filterGroups(groups, o => foldForSearch(o.label).includes(query))
       : groups;
 
     return limitGroups(matched, this.maxResults());

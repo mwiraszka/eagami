@@ -203,6 +203,20 @@ describe('AutocompleteComponent', () => {
       expect(labels).toEqual(['Apple', 'Apricot']);
     });
 
+    it('filters past accents a plain keyboard cannot type', () => {
+      host.options.set([
+        { value: 'jablko', label: 'Jabłko' },
+        { value: 'cherry', label: 'Cherry' },
+      ]);
+      fixture.detectChanges();
+      focus();
+      type('jab');
+
+      const labels = getOptions().map(o => o.textContent?.trim());
+
+      expect(labels).toEqual(['Jabłko']);
+    });
+
     it('filters to match substrings anywhere in the label', () => {
       focus();
       type('err');
