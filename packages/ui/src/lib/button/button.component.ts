@@ -20,7 +20,9 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 /**
  * Standard action button supporting primary, secondary, ghost, and danger
  * variants. Includes a loading state that swaps the label for a spinner while
- * preserving the rendered width.
+ * preserving the rendered width. Chrome is tunable per instance via
+ * `--ea-button-padding` and `--ea-button-min-height`, which is how an
+ * icon-only button comes down to little more than its glyph.
  */
 @Component({
   selector: 'ea-button',
