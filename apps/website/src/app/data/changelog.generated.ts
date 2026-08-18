@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.31.0',
+    date: '2026-08-18',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Match every text filter past accents, so a term typed on a plain keyboard finds the accented spelling ("jablko" finds "Jabłko"): the multi-select\'s search and its create-row duplicate check, the autocomplete\'s option filtering, the dropdown\'s typeahead, and the command palette\'s filter.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep focus rings and slider thumbs from being cut off at the bottom of a scrolling dialog body: the seam under the body now lives inside its scroll box instead of on the slot beneath it.',
+          "Centre a field's error icon on the eye's line with the message text, where it sat a pixel low.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.30.2',
     date: '2026-08-16',
     sections: [
