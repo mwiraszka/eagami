@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.32.0] - 2026-08-18
+
+### Added
+
+- Add `snapValues` to the slider: values the thumb is pulled onto while dragging, each drawn as a tick on the track, so a marked value can be landed exactly.
+
+### Fixed
+
+- Stop a slider from following the cursor after the button is released: a drag now starts only on the primary button, ends the moment a move arrives with no button held, and captures the pointer on the track itself.
+
 ## [5.31.0] - 2026-08-18
 
 ### Changed
@@ -1476,6 +1486,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.32.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.31.0...ui-v5.32.0
 [5.31.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.2...ui-v5.31.0
 [5.30.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.1...ui-v5.30.2
 [5.30.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.0...ui-v5.30.1
