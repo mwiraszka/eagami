@@ -34,7 +34,7 @@
           aria-hidden="true">
           <span
             class="ea-color-picker__swatch-fill"
-            [style.background-color]="value() ? displayColor() : null">
+            [style.--_ea-swatch-color]="value() ? displayColor() : null">
           </span>
         </span>
         @if (!compact()) {
@@ -120,7 +120,7 @@
               aria-hidden="true">
               <span
                 class="ea-color-picker__swatch-fill"
-                [style.background-color]="displayColor()">
+                [style.--_ea-swatch-color]="displayColor()">
               </span>
             </span>
             <div class="ea-color-picker__strip-stack">

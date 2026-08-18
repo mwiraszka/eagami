@@ -15,10 +15,10 @@
   justify-content: center;
   gap: 0.5em;
   position: relative;
+  min-height: var(--ea-button-min-height, 2.5em);
+  padding: var(--ea-button-padding, 0.5em 1em);
   white-space: nowrap;
   user-select: none;
-  padding: 0.5em 1em;
-  min-height: 2.5em;
 
   font-family: var(--font-family-sans);
   font-weight: var(--ea-button-font-weight, var(--font-weight-medium));

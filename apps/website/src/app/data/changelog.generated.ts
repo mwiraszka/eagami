@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.33.0',
+    date: '2026-08-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add `--ea-button-padding` and `--ea-button-min-height` hooks, so a consumer can tighten an icon button to its glyph through the button's own chrome rather than by reaching into it.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the swatch's colour covering its transparency checkerboard exactly: both now paint on the one box, so sub-pixel rounding at fractional sizes can no longer leave a rim of the pattern flickering at the edge.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.32.0',
     date: '2026-08-18',
     sections: [

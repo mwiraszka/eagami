@@ -126,7 +126,6 @@
     transform: translateY(-50%);
   }
 
-  // Checkerboard background so translucent fills are obvious
   &__swatch {
     position: relative;
     overflow: hidden;
@@ -136,17 +135,6 @@
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-sm);
     background-color: var(--color-bg-base);
-    background-image:
-      linear-gradient(45deg, var(--color-neutral-200) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--color-neutral-200) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--color-neutral-200) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--color-neutral-200) 75%);
-    background-size: 8px 8px;
-    background-position:
-      0 0,
-      0 4px,
-      4px -4px,
-      -4px 0;
     // color is meaningful content; preserve it in forced-colors
     forced-color-adjust: none;
 
@@ -157,10 +145,36 @@
     }
   }
 
+  // The colour and the transparency checkerboard paint on this one box, the
+  // colour layered over the pattern, so no rounding between two boxes can
+  // leave a rim of the pattern showing; it reads through only what the
+  // colour's own alpha lets through
   &__swatch-fill {
     position: absolute;
     inset: 0;
     display: block;
+    background-color: var(--color-bg-base);
+    background-image:
+      linear-gradient(
+        var(--_ea-swatch-color, transparent),
+        var(--_ea-swatch-color, transparent)
+      ),
+      linear-gradient(45deg, var(--color-neutral-200) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--color-neutral-200) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--color-neutral-200) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--color-neutral-200) 75%);
+    background-size:
+      100% 100%,
+      8px 8px,
+      8px 8px,
+      8px 8px,
+      8px 8px;
+    background-position:
+      0 0,
+      0 0,
+      0 4px,
+      4px -4px,
+      -4px 0;
     forced-color-adjust: none;
   }
 
