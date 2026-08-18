@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.32.0',
+    date: '2026-08-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `snapValues` to the slider: values the thumb is pulled onto while dragging, each drawn as a tick on the track, so a marked value can be landed exactly.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop a slider from following the cursor after the button is released: a drag now starts only on the primary button, ends the moment a move arrives with no button held, and captures the pointer on the track itself.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.31.0',
     date: '2026-08-18',
     sections: [
