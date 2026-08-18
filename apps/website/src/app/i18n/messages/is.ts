@@ -1555,6 +1555,8 @@ export const is: WebMessages = {
             min: 'Lægsta gildi sem sleðinn getur náð.',
             required: 'Merkir sleðann sem nauðsynlegan.',
             showMinMaxLabels: 'Sýnir lágm. og hám. mörk fyrir neðan brautina.',
+            snapValues:
+              'Gildi sem sleðinn smellur á meðan dregið er; hvert þeirra er teiknað sem merki á brautina.',
             showValue: 'Sýnir núverandi gildi við hlið merkimiðans.',
             size: 'Sjónræn stærð sleðabrautar og þumals.',
             step: 'Hækkun sem gildið smellur að þegar sleðinn hreyfist.',

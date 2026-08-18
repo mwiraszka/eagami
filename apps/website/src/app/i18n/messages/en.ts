@@ -1538,6 +1538,8 @@ export const en: WebMessages = {
             min: 'Lowest value the slider can reach.',
             required: 'Marks the slider as required.',
             showMinMaxLabels: 'Shows the min and max bounds beneath the track.',
+            snapValues:
+              'Values the thumb snaps onto while dragging, each drawn as a tick on the track.',
             showValue: 'Shows the current value alongside the label.',
             size: 'Visual size of the slider track and thumb.',
             step: 'Increment the value snaps to as the slider moves.',

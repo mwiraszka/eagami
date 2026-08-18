@@ -1589,6 +1589,8 @@ export const de: WebMessages = {
             min: 'Niedrigster Wert, den der Schieberegler erreichen kann.',
             required: 'Kennzeichnet den Schieberegler als erforderlich.',
             showMinMaxLabels: 'Zeigt die Min- und Max-Grenzen unter der Leiste.',
+            snapValues:
+              'Werte, auf denen der Griff beim Ziehen einrastet; jeder wird als Markierung auf der Leiste gezeichnet.',
             showValue: 'Zeigt den aktuellen Wert neben dem Label.',
             size: 'Visuelle Größe der Schieberegler-Leiste und des Reglers.',
             step: 'Schrittweite, an die der Wert einrastet, während sich der Schieberegler bewegt.',
