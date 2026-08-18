@@ -1462,6 +1462,7 @@ export const zhCN: WebMessages = {
             min: '滑块所能到达的最低值。',
             required: '将滑块标记为必填。',
             showMinMaxLabels: '在轨道下方显示最小和最大边界。',
+            snapValues: '拖动时滑块吸附到的值，每个都会在轨道上绘制为刻度。',
             showValue: '在标签旁显示当前值。',
             size: '滑块轨道和滑块的视觉尺寸。',
             step: '滑块移动时值吸附到的增量。',

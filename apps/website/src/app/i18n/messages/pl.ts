@@ -1567,6 +1567,8 @@ export const pl: WebMessages = {
             min: 'Najniższa wartość, jaką może osiągnąć suwak.',
             required: 'Oznacza suwak jako wymagany.',
             showMinMaxLabels: 'Wyświetla granice min i maks pod ścieżką.',
+            snapValues:
+              'Wartości, do których uchwyt przyciąga się podczas przeciągania; każda jest rysowana jako znacznik na osi.',
             showValue: 'Wyświetla bieżącą wartość obok etykiety.',
             size: 'Wizualny rozmiar ścieżki i uchwytu suwaka.',
             step: 'Przyrost, do którego wartość przyciąga się podczas przesuwania suwaka.',

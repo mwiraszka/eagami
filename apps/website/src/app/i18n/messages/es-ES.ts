@@ -1588,6 +1588,8 @@ export const esES: WebMessages = {
             min: 'Valor más bajo que puede alcanzar el control deslizante.',
             required: 'Marca el control deslizante como obligatorio.',
             showMinMaxLabels: 'Muestra los límites mín. y máx. bajo la pista.',
+            snapValues:
+              'Valores a los que se ajusta el control al arrastrar; cada uno se dibuja como una marca en la pista.',
             showValue: 'Muestra el valor actual junto a la etiqueta.',
             size: 'Tamaño visual de la pista y el control del deslizante.',
             step: 'Incremento al que se ajusta el valor a medida que se mueve el control deslizante.',

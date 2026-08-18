@@ -1574,6 +1574,8 @@ export const ptBR: WebMessages = {
             min: 'Valor mais baixo que o controle deslizante pode alcançar.',
             required: 'Marca o controle deslizante como obrigatório.',
             showMinMaxLabels: 'Mostra os limites mínimo e máximo abaixo da trilha.',
+            snapValues:
+              'Valores aos quais o controle se encaixa ao arrastar; cada um é desenhado como uma marca na trilha.',
             showValue: 'Mostra o valor atual ao lado do rótulo.',
             size: 'Tamanho visual da trilha e do controle deslizante.',
             step: 'Incremento ao qual o valor se ajusta conforme o controle se move.',

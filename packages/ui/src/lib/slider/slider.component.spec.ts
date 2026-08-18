@@ -291,9 +291,19 @@ describe('SliderComponent', () => {
         ({ left: 0, width: 100, top: 0, height: 8 }) as DOMRect;
     }
 
-    function pointer(type: string, clientX: number): void {
+    function pointer(
+      type: string,
+      clientX: number,
+      eventInit: PointerEventInit = {},
+    ): void {
       track().dispatchEvent(
-        new PointerEvent(type, { clientX, bubbles: true, pointerId: 1 }),
+        new PointerEvent(type, {
+          clientX,
+          bubbles: true,
+          pointerId: 1,
+          buttons: type === 'pointerup' ? 0 : 1,
+          ...eventInit,
+        }),
       );
       fixture.detectChanges();
     }
@@ -321,6 +331,47 @@ describe('SliderComponent', () => {
       pointer('pointermove', 10);
 
       expect(component.value()).toBe(75);
+    });
+
+    it('ignores a press of any button but the primary', () => {
+      pointer('pointerdown', 60, { button: 2 });
+
+      expect(component.value()).toBe(20);
+
+      pointer('pointermove', 75);
+
+      expect(component.value()).toBe(20);
+    });
+
+    it('stands the drag down when a move arrives with no button held', () => {
+      pointer('pointerdown', 60);
+
+      pointer('pointermove', 75, { buttons: 0 });
+      pointer('pointermove', 10);
+
+      expect(component.value()).toBe(60);
+    });
+
+    it('pulls the thumb onto a snap value within reach and lets it go past', () => {
+      fixture.componentRef.setInput('snapValues', [50]);
+      fixture.detectChanges();
+
+      pointer('pointerdown', 47);
+
+      expect(component.value()).toBe(50);
+
+      pointer('pointermove', 30);
+
+      expect(component.value()).toBe(30);
+    });
+
+    it('draws a tick for each snap value on the track', () => {
+      fixture.componentRef.setInput('snapValues', [25, 75]);
+      fixture.detectChanges();
+
+      const ticks = fixture.nativeElement.querySelectorAll('.ea-slider__tick');
+
+      expect(ticks).toHaveLength(2);
     });
 
     it('clamps a drag past either end to the bounds', () => {

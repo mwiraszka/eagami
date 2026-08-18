@@ -3817,6 +3817,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'snapValues',
+        type: 'readonly number[]',
+        default: '[]',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'step',
         type: 'number',
         default: '1',
@@ -3844,6 +3851,11 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'formatDisplay',
         signature: 'formatDisplay(value: number): string',
+      },
+      {
+        name: 'magnetTarget',
+        signature:
+          'magnetTarget(raw: number, trackWidth: number, range: number): number | null',
       },
     ],
   },

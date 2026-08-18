@@ -1577,6 +1577,8 @@ export const nl: WebMessages = {
             min: 'Laagste waarde die de slider kan bereiken.',
             required: 'Markeert de slider als verplicht.',
             showMinMaxLabels: 'Toont de min- en max-grenzen onder de baan.',
+            snapValues:
+              'Waarden waarop de knop tijdens het slepen vastklikt; elk wordt als een streepje op de baan getekend.',
             showValue: 'Toont de huidige waarde naast het label.',
             size: 'Visuele grootte van de baan en de schuif van de slider.',
             step: 'Increment waarop de waarde vastklikt naarmate de slider beweegt.',

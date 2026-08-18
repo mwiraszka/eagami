@@ -1586,6 +1586,8 @@ export const frFR: WebMessages = {
             min: 'Valeur la plus basse que le curseur peut atteindre.',
             required: 'Marque le curseur comme requis.',
             showMinMaxLabels: 'Affiche les bornes min et max sous la piste.',
+            snapValues:
+              'Valeurs sur lesquelles le curseur s’accroche pendant le glissement ; chacune est tracée comme un repère sur la piste.',
             showValue: 'Affiche la valeur actuelle à côté du libellé.',
             size: 'Taille visuelle de la piste et du curseur.',
             step: 'Incrément auquel la valeur s’aligne lors du déplacement du curseur.',

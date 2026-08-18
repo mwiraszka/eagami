@@ -24,11 +24,19 @@
       (pointerdown)="handlePointerDown($event)"
       (pointermove)="handlePointerMove($event)"
       (pointerup)="handlePointerUp($event)"
-      (pointercancel)="handlePointerUp($event)">
+      (pointercancel)="handlePointerUp($event)"
+      (lostpointercapture)="handlePointerUp($event)">
       <div
         class="ea-slider__fill"
         [style.width.%]="percent()">
       </div>
+      @for (tick of tickPercents(); track $index) {
+        <span
+          class="ea-slider__tick"
+          aria-hidden="true"
+          [style.inset-inline-start.%]="tick">
+        </span>
+      }
       <div
         class="ea-slider__thumb"
         role="slider"
