@@ -1308,7 +1308,9 @@ describe('ColorPickerComponent', () => {
       const fill: HTMLElement = fixture.nativeElement.querySelector(
         '.ea-color-picker__swatch-fill',
       );
-      expect(fill.style.backgroundColor).toBe('rgba(0, 255, 0, 0.5)');
+      expect(fill.style.getPropertyValue('--_ea-swatch-color')).toBe(
+        'rgba(0, 255, 0, 0.5)',
+      );
     });
 
     it('does not echo a value that was set from outside back to the form', () => {
@@ -1439,7 +1441,9 @@ describe('ColorPickerComponent', () => {
         '.ea-color-picker__swatch-fill',
       );
 
-      expect(swatch.style.backgroundColor).toBe('rgba(255, 0, 0, 1)');
+      expect(swatch.style.getPropertyValue('--_ea-swatch-color')).toBe(
+        'rgba(255, 0, 0, 1)',
+      );
     });
   });
 
