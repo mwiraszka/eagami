@@ -139,7 +139,7 @@ describe('select-option-list', () => {
     it('spells out letters that decompose to no base letter', () => {
       expect(foldForSearch('Jabłko')).toBe('jablko');
       expect(foldForSearch('Straße')).toBe('strasse');
-      expect(foldForSearch('Smørrespobrød')).toBe('smorrebrod');
+      expect(foldForSearch('Smørrebrød')).toBe('smorrebrod');
       expect(foldForSearch('Æbleskiver')).toBe('aebleskiver');
       expect(foldForSearch('Þingvellir')).toBe('thingvellir');
       expect(foldForSearch('Kılıç')).toBe('kilic');
