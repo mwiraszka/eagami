@@ -27,6 +27,7 @@ import { PopoverComponent } from '../popover/popover.component';
 import type { SelectOption, SelectOptions } from '../select-option';
 import {
   flattenGroups,
+  foldForSearch,
   isGrouped,
   toGroups,
   toRenderedGroups,
@@ -321,7 +322,7 @@ export class DropdownComponent implements ControlValueAccessor {
       clearTimeout(this.typeaheadTimer);
     }
     this.typeaheadTimer = setTimeout(() => (this.typeaheadQuery = ''), 500);
-    this.typeaheadQuery += event.key.toLowerCase();
+    this.typeaheadQuery += foldForSearch(event.key);
     const wasOpen = this.isOpen();
     if (!wasOpen) {
       this.toggle();
@@ -337,7 +338,7 @@ export class DropdownComponent implements ControlValueAccessor {
     for (let offset = firstOffset; offset <= opts.length; offset++) {
       const idx = (start + offset) % opts.length;
       const opt = opts[idx];
-      if (!opt.disabled && opt.label.toLowerCase().startsWith(this.typeaheadQuery)) {
+      if (!opt.disabled && foldForSearch(opt.label).startsWith(this.typeaheadQuery)) {
         this.setFocusedIndex(idx);
         return;
       }

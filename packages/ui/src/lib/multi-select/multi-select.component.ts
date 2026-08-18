@@ -37,6 +37,7 @@ import type { SelectOption, SelectOptionGroup, SelectOptions } from '../select-o
 import {
   filterGroups,
   flattenGroups,
+  foldForSearch,
   isGrouped,
   toGroups,
   toRenderedGroups,
@@ -173,15 +174,15 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private readonly flatOptions = computed(() => flattenGroups(this.optionGroups()));
 
   private readonly filteredGroups = computed<readonly SelectOptionGroup[]>(() => {
-    const term = this.searchTerm().trim().toLowerCase();
+    const term = foldForSearch(this.searchTerm().trim());
     const groups = this.optionGroups();
     if (!term) {
       return groups;
     }
-    return filterGroups(groups, o => o.label.toLowerCase().includes(term));
+    return filterGroups(groups, o => foldForSearch(o.label).includes(term));
   });
 
-  /** Options matching the current search term (case-insensitive substring on label). */
+  /** Options matching the current search term (case- and accent-insensitive substring on label). */
   readonly filteredOptions = computed<readonly SelectOption[]>(() =>
     flattenGroups(this.filteredGroups()),
   );
@@ -214,10 +215,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
     if (!this.allowCreate() || !term) {
       return '';
     }
-    const taken = term.toLowerCase();
+    const taken = foldForSearch(term);
     // Measured against every option, not the filtered ones: an option hidden by
     // a group filter is still an option that exists
-    return this.flatOptions().some(o => o.label.trim().toLowerCase() === taken)
+    return this.flatOptions().some(o => foldForSearch(o.label.trim()) === taken)
       ? ''
       : term;
   });

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.31.0] - 2026-08-18
+
+### Changed
+
+- Match every text filter past accents, so a term typed on a plain keyboard finds the accented spelling ("jablko" finds "Jabłko"): the multi-select's search and its create-row duplicate check, the autocomplete's option filtering, the dropdown's typeahead, and the command palette's filter.
+
+### Fixed
+
+- Keep focus rings and slider thumbs from being cut off at the bottom of a scrolling dialog body: the seam under the body now lives inside its scroll box instead of on the slot beneath it.
+- Centre a field's error icon on the eye's line with the message text, where it sat a pixel low.
+
 ## [5.30.2] - 2026-08-16
 
 ### Fixed
@@ -1465,6 +1476,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.31.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.2...ui-v5.31.0
 [5.30.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.1...ui-v5.30.2
 [5.30.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.30.0...ui-v5.30.1
 [5.30.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.29.0...ui-v5.30.0

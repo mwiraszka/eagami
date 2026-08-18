@@ -30,4 +30,8 @@
   // here (a class width/height would lose to that inline host style). 1.2em
   // makes the glyph a touch larger than the message text without dominating it.
   font-size: 1.2em;
+  // Centred to the eye rather than to the box: type sits high in its line box,
+  // with the descender space hanging under the baseline, so a geometrically
+  // centred glyph reads a touch low beside it
+  transform: translateY(-0.0625em);
 }

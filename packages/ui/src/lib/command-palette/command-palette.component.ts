@@ -18,6 +18,7 @@ import { EagamiI18nService } from '../i18n/i18n.service';
 import { SearchIconComponent } from '../icons/search.component';
 import { InputComponent } from '../input/input.component';
 import { PointerPressTracker } from '../pointer-press';
+import { foldForSearch } from '../select-option-list';
 import { uniqueId } from '../unique-id';
 import type { CommandPaletteItem } from './command-palette.types';
 
@@ -98,15 +99,15 @@ export class CommandPaletteComponent {
    * on every binding read.
    */
   protected readonly groupedItems = computed<GroupedItems[]>(() => {
-    const q = this.query().trim().toLowerCase();
+    const q = foldForSearch(this.query().trim());
     const disabledWhen = this.disabledWhen();
     const candidates = this.items().filter(item => {
       if (!q) {
         return true;
       }
-      const haystack = [item.label, item.description ?? '', ...(item.keywords ?? [])]
-        .join(' ')
-        .toLowerCase();
+      const haystack = foldForSearch(
+        [item.label, item.description ?? '', ...(item.keywords ?? [])].join(' '),
+      );
       // Match when the query is a prefix of any word in the haystack.
       // Substring-anywhere matching would surface confusing results (typing
       // "c" matching "Repla*c*e" via a mid-word character); word-boundary

@@ -2,6 +2,7 @@ import type { SelectOption, SelectOptionGroup } from './select-option';
 import {
   filterGroups,
   flattenGroups,
+  foldForSearch,
   isGrouped,
   limitGroups,
   toGroups,
@@ -123,6 +124,30 @@ describe('select-option-list', () => {
       ]);
 
       expect(rendered.map(group => group.rule)).toEqual([false, false]);
+    });
+  });
+
+  describe('foldForSearch', () => {
+    it('lowercases and strips combining accents', () => {
+      expect(foldForSearch('Żurawina')).toBe('zurawina');
+      expect(foldForSearch('Café')).toBe('cafe');
+      expect(foldForSearch('Señor')).toBe('senor');
+      expect(foldForSearch('Über')).toBe('uber');
+      expect(foldForSearch('Dřevo')).toBe('drevo');
+    });
+
+    it('spells out letters that decompose to no base letter', () => {
+      expect(foldForSearch('Jabłko')).toBe('jablko');
+      expect(foldForSearch('Straße')).toBe('strasse');
+      expect(foldForSearch('Smørrebrød')).toBe('smorrebrod');
+      expect(foldForSearch('Æbleskiver')).toBe('aebleskiver');
+      expect(foldForSearch('Þingvellir')).toBe('thingvellir');
+      expect(foldForSearch('Kılıç')).toBe('kilic');
+      expect(foldForSearch('Ĳsselmeer')).toBe('ijsselmeer');
+    });
+
+    it('leaves plain text as it is', () => {
+      expect(foldForSearch('banana')).toBe('banana');
     });
   });
 });

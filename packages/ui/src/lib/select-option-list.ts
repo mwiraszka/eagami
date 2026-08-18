@@ -14,6 +14,41 @@ export interface RenderedGroup {
   options: IndexedOption[];
 }
 
+/**
+ * Letters a plain keyboard cannot reach that decompose to no base letter, so
+ * stripping marks alone would leave them unmatched.
+ */
+const SPELLINGS: Record<string, string> = {
+  ø: 'o',
+  æ: 'ae',
+  œ: 'oe',
+  ß: 'ss',
+  ł: 'l',
+  đ: 'd',
+  ð: 'd',
+  þ: 'th',
+  ħ: 'h',
+  ı: 'i',
+  ŋ: 'n',
+  ŧ: 't',
+  ĳ: 'ij',
+  ſ: 's',
+};
+
+const SPELLED = new RegExp(`[${Object.keys(SPELLINGS).join('')}]`, 'g');
+
+/**
+ * Lowercased with diacritics folded away, so a search typed on a plain
+ * keyboard still finds the accented spelling: "jablko" finds "Jabłko".
+ */
+export function foldForSearch(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(SPELLED, letter => SPELLINGS[letter]);
+}
+
 /** Whether the consumer supplied groups rather than a flat option list. */
 export function isGrouped(
   options: SelectOptions,

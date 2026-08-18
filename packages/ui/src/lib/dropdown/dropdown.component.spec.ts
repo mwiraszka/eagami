@@ -218,6 +218,18 @@ describe('DropdownComponent', () => {
       expect(focusedLabel()).toBe('Cherry');
     });
 
+    it('lands on an accented label typed plain', () => {
+      fixture.componentRef.setInput('options', [
+        ...typeaheadOptions,
+        { value: 'jablko', label: 'Łódka' },
+      ]);
+      fixture.detectChanges();
+
+      press('l');
+
+      expect(focusedLabel()).toBe('Łódka');
+    });
+
     it('narrows to a longer match as the query grows', () => {
       press('b');
 

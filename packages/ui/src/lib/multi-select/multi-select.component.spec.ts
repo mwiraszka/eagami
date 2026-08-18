@@ -303,6 +303,21 @@ describe('MultiSelectComponent', () => {
       expect(getOptionRows()[0].textContent).toContain('Banana');
     });
 
+    it('filters past accents a plain keyboard cannot type', () => {
+      fixture.componentRef.setInput('options', [
+        { value: 'jablko', label: 'Jabłko' },
+        { value: 'smorrebrod', label: 'Smørrebrød' },
+      ]);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      component.searchTerm.set('jab');
+      fixture.detectChanges();
+
+      expect(getOptionRows()).toHaveLength(1);
+      expect(getOptionRows()[0].textContent).toContain('Jabłko');
+    });
+
     it('renders an empty-state row when no options match', () => {
       getTrigger().click();
       fixture.detectChanges();
@@ -411,6 +426,15 @@ describe('MultiSelectComponent', () => {
 
     it('offers no create row while the text matches an option, whatever its case', () => {
       typeSearch('BANANA');
+
+      expect(getCreateRow()).toBeNull();
+    });
+
+    it('offers no create row while the text matches an option past its accents', () => {
+      fixture.componentRef.setInput('options', [{ value: 'jablko', label: 'Jabłko' }]);
+      fixture.detectChanges();
+
+      typeSearch('Jablko');
 
       expect(getCreateRow()).toBeNull();
     });

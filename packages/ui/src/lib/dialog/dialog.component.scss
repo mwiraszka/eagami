@@ -66,8 +66,11 @@
 
     // One padding scheme for every combination of slots: the outermost slot on
     // each side carries the panel's own padding, and each seam between two
-    // slots carries a single smaller gap, owned by the lower of the two. No
-    // seam is ever padded from both sides, and no gap is wider than the edge.
+    // slots carries a single smaller gap. A seam is owned by the lower of the
+    // two slots, except the seam under the body, which the body itself owns:
+    // the body scrolls, and only padding inside its scroll box keeps a focus
+    // ring or a slider thumb at the scroll edge from being cut off. No seam is
+    // ever padded from both sides, and no gap is wider than the edge.
     &:has(> .ea-dialog__header--hidden) > .ea-dialog__body {
       --_ea-dialog-body-padding-top: var(--space-5);
     }
@@ -75,6 +78,15 @@
     &:not(:has(> .ea-dialog__status:not(:empty), > .ea-dialog__footer:not(:empty)))
       > .ea-dialog__body {
       --_ea-dialog-body-padding-bottom: var(--space-5);
+    }
+
+    &:has(> .ea-dialog__body:not(:empty)) > .ea-dialog__status {
+      --_ea-dialog-status-padding-top: 0;
+    }
+
+    &:has(> .ea-dialog__body:not(:empty)):not(:has(> .ea-dialog__status:not(:empty)))
+      > .ea-dialog__footer {
+      --_ea-dialog-footer-padding-top: 0;
     }
 
     &:not(:has(> .ea-dialog__footer:not(:empty))) > .ea-dialog__status {
@@ -126,7 +138,7 @@
     padding: var(
       --ea-dialog-body-padding,
       var(--_ea-dialog-body-padding-top, var(--space-3)) var(--space-6)
-        var(--_ea-dialog-body-padding-bottom, 0)
+        var(--_ea-dialog-body-padding-bottom, var(--space-3))
     );
 
     // An empty body would otherwise hold a seam and an edge apart for nothing
@@ -145,7 +157,8 @@
     flex-shrink: 0;
     padding: var(
       --ea-dialog-status-padding,
-      var(--space-3) var(--space-6) var(--_ea-dialog-status-padding-bottom, 0)
+      var(--_ea-dialog-status-padding-top, var(--space-3)) var(--space-6)
+        var(--_ea-dialog-status-padding-bottom, 0)
     );
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
@@ -161,7 +174,8 @@
     align-items: center;
     justify-content: flex-end;
     gap: var(--space-3);
-    padding: var(--space-3) var(--space-6) var(--space-5);
+    padding: var(--_ea-dialog-footer-padding-top, var(--space-3)) var(--space-6)
+      var(--space-5);
 
     > * {
       display: flex;
