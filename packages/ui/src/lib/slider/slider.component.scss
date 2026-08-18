@@ -108,6 +108,23 @@
     }
   }
 
+  // Centred on the track and taller than it, so the mark shows on both sides
+  // whether the fill has reached it or not
+  &__tick {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    height: calc(100% + 8px);
+    background-color: var(--color-border-default);
+    border-radius: var(--radius-full);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
+  }
+
   &__thumb {
     position: absolute;
     top: 50%;

@@ -39,6 +39,9 @@ const FORMAT_PLAIN = (value: number): string => `${value}`;
  * `min`, `max`, and `step`, optional value display, and integrates with
  * Angular forms via `ControlValueAccessor`.
  */
+/** How far the magnet reaches either side of a snap value, in pixels. */
+const SNAP_REACH_PX = 8;
+
 @Component({
   selector: 'ea-slider',
   templateUrl: './slider.component.html',
@@ -76,6 +79,12 @@ export class SliderComponent implements ControlValueAccessor {
   readonly showValue = input<boolean>(false);
   readonly showMinMaxLabels = input<boolean>(false);
   readonly formatValue = input<(value: number) => string>(FORMAT_PLAIN);
+  /**
+   * Values the thumb is pulled onto while dragging, each drawn as a tick on
+   * the track. The pull reaches a few pixels either side, so a marked value
+   * can be landed exactly without hunting for it.
+   */
+  readonly snapValues = input<readonly number[]>([]);
   /** Group thousands with commas in displayed values (ignored when a custom `formatValue` is set). */
   readonly groupThousands = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
@@ -104,6 +113,17 @@ export class SliderComponent implements ControlValueAccessor {
       return 0;
     }
     return ((this.clampedValue() - this.min()) / range) * 100;
+  });
+
+  /** Where each snap value's tick sits along the track. */
+  readonly tickPercents = computed(() => {
+    const range = this.max() - this.min();
+    if (range <= 0) {
+      return [];
+    }
+    return this.snapValues()
+      .filter(held => held >= this.min() && held <= this.max())
+      .map(held => ((held - this.min()) / range) * 100);
   });
 
   /** Formats a value for display, grouping thousands with commas unless a custom `formatValue` is set. */
@@ -204,7 +224,7 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   handlePointerDown(event: PointerEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled() || event.button !== 0) {
       return;
     }
     const track = this.trackEl()?.nativeElement;
@@ -212,13 +232,21 @@ export class SliderComponent implements ControlValueAccessor {
       return;
     }
 
-    (event.target as HTMLElement).setPointerCapture?.(event.pointerId);
+    // Captured on the track rather than whatever child was pressed, so every
+    // later event of the drag flows through the one element listening for it
+    track.setPointerCapture?.(event.pointerId);
     this.dragging.set(true);
     this.updateFromPointer(event, track);
   }
 
   handlePointerMove(event: PointerEvent): void {
     if (!this.dragging() || this.isDisabled()) {
+      return;
+    }
+    // A release that never reached us leaves the drag armed, and the thumb
+    // chasing a lifted pointer; a move with no button down stands it down
+    if (event.buttons === 0) {
+      this.handlePointerUp(event);
       return;
     }
     const track = this.trackEl()?.nativeElement;
@@ -232,7 +260,10 @@ export class SliderComponent implements ControlValueAccessor {
     if (!this.dragging()) {
       return;
     }
-    (event.target as HTMLElement).releasePointerCapture?.(event.pointerId);
+    const track = this.trackEl()?.nativeElement;
+    if (track?.hasPointerCapture?.(event.pointerId)) {
+      track.releasePointerCapture(event.pointerId);
+    }
     this.dragging.set(false);
     this.onTouched();
   }
@@ -249,14 +280,43 @@ export class SliderComponent implements ControlValueAccessor {
     }
     const range = this.max() - this.min();
     const raw = this.min() + ratio * range;
-    this.commitValue(raw);
+
+    const magnet = this.magnetTarget(raw, rect.width, range);
+    if (magnet !== null) {
+      this.commitValue(magnet, true);
+    } else {
+      this.commitValue(raw);
+    }
   }
 
-  private commitValue(raw: number): void {
+  /** The snap value within the magnet's reach of the pointer, if any. */
+  private magnetTarget(raw: number, trackWidth: number, range: number): number | null {
+    const values = this.snapValues();
+    if (!values.length || range <= 0 || trackWidth <= 0) {
+      return null;
+    }
+
+    const reach = (SNAP_REACH_PX / trackWidth) * range;
+    let best: number | null = null;
+    let bestDistance = Infinity;
+    for (const held of values) {
+      const distance = Math.abs(held - raw);
+      if (distance <= reach && distance < bestDistance) {
+        best = held;
+        bestDistance = distance;
+      }
+    }
+
+    return best;
+  }
+
+  // Exact for a magnetised value: the snap is the point of it, so the step
+  // grid does not get to round it away
+  private commitValue(raw: number, exact = false): void {
     const step = this.step();
     const min = this.min();
     const max = this.max();
-    const snapped = Math.round((raw - min) / step) * step + min;
+    const snapped = exact ? raw : Math.round((raw - min) / step) * step + min;
     const clamped = Math.min(max, Math.max(min, snapped));
     const rounded = Number(clamped.toFixed(10));
     if (rounded === this.value()) {
