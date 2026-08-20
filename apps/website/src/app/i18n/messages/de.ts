@@ -1918,6 +1918,8 @@ export const de: WebMessages = {
               'Maximale Anzahl der Chips, die im Auslöser angezeigt werden, bevor der Rest in eine Zähl-Pille zusammenklappt.',
             maxChipWidth:
               'Maximale Breite eines Auswahl-Chips in px; ein längeres Label wird gekürzt und zeigt seinen vollständigen Text in einem Tooltip.',
+            popoverMaxHeight:
+              'Maximale Höhe des Options-Popovers in px, bevor die Liste scrollt.',
             popoverMaxWidth:
               'Maximale Breite des Options-Popovers in px, oder anchor, um es auf die Feldbreite zu begrenzen.',
             options:

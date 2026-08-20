@@ -1913,6 +1913,8 @@ export const frFR: WebMessages = {
               'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
             maxChipWidth:
               'Largeur maximale d’une puce de valeur sélectionnée en px ; un libellé plus long est tronqué et révèle son texte complet dans une infobulle.',
+            popoverMaxHeight:
+              'Hauteur maximale du popover d’options en px avant que la liste ne défile.',
             popoverMaxWidth:
               'Largeur maximale du popover d’options en px, ou anchor pour la limiter à celle du champ.',
             options:

@@ -1904,6 +1904,8 @@ export const nl: WebMessages = {
               'Maximaal aantal chips getoond in de trigger voordat de rest samenklapt tot een aantalpil.',
             maxChipWidth:
               'Maximale breedte van een geselecteerde-waardechip in px; een langer label wordt afgekapt en toont zijn volledige tekst in een tooltip.',
+            popoverMaxHeight:
+              'Maximale hoogte van de optiepopover in px voordat de lijst scrolt.',
             popoverMaxWidth:
               'Maximale breedte van de optiepopover in px, of anchor om deze op de veldbreedte te houden.',
             options:

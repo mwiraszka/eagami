@@ -1864,6 +1864,7 @@ export const is: WebMessages = {
               'Hámarksfjöldi merkja sýndur í kveikjunni áður en restin fellur saman í talningarpillu.',
             maxChipWidth:
               'Mesta breidd valins gildisflipa í px; lengri texti styttist og birtir fulla útgáfu sína í ábendingu.',
+            popoverMaxHeight: 'Mesta hæð valglugga í px áður en listinn skrunar.',
             popoverMaxWidth:
               'Mesta breidd valglugga í px, eða anchor til að halda honum við breidd reitsins.',
             options:

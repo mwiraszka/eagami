@@ -131,6 +131,11 @@ export class MultiSelectComponent implements ControlValueAccessor {
    */
   readonly maxChipWidth = input<number | undefined>(200);
   /**
+   * Tallest the option popover may grow, in px, before the option list
+   * scrolls; left unset, the popover keeps its built-in 20rem cap.
+   */
+  readonly popoverMaxHeight = input<number | undefined>(undefined);
+  /**
    * Widest the option popover may grow: a px value, or `anchor` to hold it to
    * the field's own width so a long option truncates instead of widening it.
    */
