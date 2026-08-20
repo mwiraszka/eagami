@@ -1899,6 +1899,8 @@ export const ptBR: WebMessages = {
               'Número máximo de chips exibidos no gatilho antes que os demais colapsem em uma pill de contagem.',
             maxChipWidth:
               'Largura máxima de um chip de valor selecionado em px; um rótulo maior é truncado e revela seu texto completo em um tooltip.',
+            popoverMaxHeight:
+              'Altura máxima do popover de opções em px antes de a lista rolar.',
             popoverMaxWidth:
               'Largura máxima do popover de opções em px, ou anchor para mantê-lo na largura do campo.',
             options:

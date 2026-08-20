@@ -42,7 +42,7 @@
   // glyph sits centred in a square rather than off-centre in a wide pill. With
   // the 1.5em icon this lands exactly on the 2.5em min-height.
   &:has(.ea-button__icon):has(.ea-button__label:empty) {
-    padding: 0.5em;
+    padding: var(--ea-button-padding, 0.5em);
   }
 
   // Size sets only the font-size; padding, min-height, gap, and the spinner are

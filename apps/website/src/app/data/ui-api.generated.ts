@@ -2573,6 +2573,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'popoverMaxHeight',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'popoverMaxWidth',
         type: 'PopoverMaxWidth',
         default: "'anchor'",

@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.34.0',
+    date: '2026-08-20',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `popoverMaxHeight` to the multi-select, capping how tall the option popover may grow before its list scrolls.',
+          "Add an `--ea-file-uploader-dropzone-padding` hook, so a consumer can tighten the dropzone through the uploader's own chrome.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Apply `--ea-button-padding` to icon-only buttons too, which kept their built-in square padding and ignored the hook.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.33.0',
     date: '2026-08-18',
     sections: [

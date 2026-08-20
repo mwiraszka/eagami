@@ -1887,6 +1887,8 @@ export const pl: WebMessages = {
               'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
             maxChipWidth:
               'Maksymalna szerokość chipu wybranej wartości w px; dłuższa etykieta jest skracana i pokazuje pełny tekst w podpowiedzi.',
+            popoverMaxHeight:
+              'Maksymalna wysokość listy opcji w px, po przekroczeniu której lista się przewija.',
             popoverMaxWidth:
               'Maksymalna szerokość listy opcji w px albo anchor, aby ograniczyć ją do szerokości pola.',
             options:

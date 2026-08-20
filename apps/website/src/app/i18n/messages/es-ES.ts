@@ -1918,6 +1918,8 @@ export const esES: WebMessages = {
               'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
             maxChipWidth:
               'Ancho máximo de un chip de valor seleccionado en px; un texto más largo se recorta y muestra su contenido completo en un tooltip.',
+            popoverMaxHeight:
+              'Altura máxima del popover de opciones en px antes de que la lista se desplace.',
             popoverMaxWidth:
               'Ancho máximo del popover de opciones en px, o anchor para limitarlo al ancho del campo.',
             options:

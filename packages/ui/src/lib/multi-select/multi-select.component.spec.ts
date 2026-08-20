@@ -146,6 +146,14 @@ describe('MultiSelectComponent', () => {
       expect(getPopover()).toBeTruthy();
     });
 
+    it('caps the panel at popoverMaxHeight', () => {
+      fixture.componentRef.setInput('popoverMaxHeight', 160);
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getPopover()!.style.maxHeight).toBe('160px');
+    });
+
     it('focuses the search input once the panel is on screen', async () => {
       await openPanel();
 

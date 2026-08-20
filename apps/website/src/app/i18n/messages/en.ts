@@ -1838,6 +1838,8 @@ export const en: WebMessages = {
               'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
             maxChipWidth:
               'Widest a selected-value chip may grow in px; a longer label ellipsizes and reveals its full text in a tooltip.',
+            popoverMaxHeight:
+              'Tallest the option popover may grow in px before the option list scrolls.',
             popoverMaxWidth:
               'Widest the option popover may grow in px, or anchor to hold it to the field width.',
             options:

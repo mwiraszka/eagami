@@ -1702,6 +1702,7 @@ export const zhCN: WebMessages = {
             maxVisibleChips: '其余项折叠为计数胶囊之前，触发器中显示的最大标签数量。',
             maxChipWidth:
               '已选值标签的最大宽度（px）；更长的文本会被省略，并在提示中显示完整内容。',
+            popoverMaxHeight: '选项浮层的最大高度（px），超出后选项列表滚动。',
             popoverMaxWidth: '选项浮层的最大宽度（px），或用 anchor 将其限制为字段宽度。',
             options: '渲染在下拉列表中的可选选项列表，可为扁平列表或按组划分。',
             placeholder: '未选择选项时显示在触发器上的占位符。',
