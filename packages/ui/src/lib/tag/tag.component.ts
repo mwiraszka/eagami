@@ -80,6 +80,7 @@ export class TagComponent {
    * navigation, since roles like `combobox` forbid focusable descendants.
    */
   readonly removeTabbable = input<boolean>(true);
+  readonly uppercase = input<boolean>(false);
 
   /** Fires when the user activates the remove button on a `removable` tag. */
   readonly removed = output<void>();
@@ -105,6 +106,7 @@ export class TagComponent {
     [`ea-tag--${this.variant()}`]: true,
     [`ea-tag--${this.size()}`]: true,
     'ea-tag--disabled': this.disabled(),
+    'ea-tag--uppercase': this.uppercase(),
   }));
 
   /** `maxWidth` as a CSS length; a bare number is px, as the input documents. */

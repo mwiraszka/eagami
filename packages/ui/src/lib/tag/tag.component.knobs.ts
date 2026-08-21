@@ -20,6 +20,7 @@ export const TAG_KNOBS: ComponentKnobs = {
     tooltip: { control: 'select', options: ['above', 'below', 'none'] },
     removable: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    uppercase: { control: 'boolean' },
     removeLabel: { if: { arg: 'removable', eq: true } },
     removed: { action: 'removed' },
   },
@@ -31,6 +32,7 @@ export const TAG_KNOBS: ComponentKnobs = {
     tooltip: 'above',
     removable: false,
     disabled: false,
+    uppercase: false,
     removeLabel: 'Remove tag',
   },
 };

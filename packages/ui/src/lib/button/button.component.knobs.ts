@@ -22,6 +22,7 @@ export const BUTTON_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
+    uppercase: { control: 'boolean' },
     clicked: { action: 'clicked' },
   },
   args: {
@@ -31,5 +32,6 @@ export const BUTTON_KNOBS: ComponentKnobs = {
     disabled: false,
     loading: false,
     fullWidth: false,
+    uppercase: false,
   },
 };

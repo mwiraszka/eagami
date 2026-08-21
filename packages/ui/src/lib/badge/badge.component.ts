@@ -41,10 +41,12 @@ export class BadgeComponent {
   readonly variant = input<BadgeVariant>('default');
   readonly size = input<BadgeSize>('md');
   readonly shape = input<BadgeShape>('pill');
+  readonly uppercase = input<boolean>(false);
 
   readonly hostClasses = computed(() => ({
     [`ea-badge--${this.variant()}`]: true,
     [`ea-badge--${this.size()}`]: true,
     [`ea-badge--${this.shape()}`]: true,
+    'ea-badge--uppercase': this.uppercase(),
   }));
 }
