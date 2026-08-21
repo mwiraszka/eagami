@@ -1010,6 +1010,7 @@ export const zhCN: WebMessages = {
             variant: '变体',
             size: '尺寸',
             shape: '形状',
+            uppercase: '大写',
           },
           button: {
             variant: '变体',
@@ -1018,6 +1019,7 @@ export const zhCN: WebMessages = {
             disabled: '禁用',
             loading: '加载中',
             fullWidth: '全宽',
+            uppercase: '大写',
           },
           card: {
             variant: '变体',
@@ -1150,6 +1152,7 @@ export const zhCN: WebMessages = {
             removable: '可移除',
             disabled: '禁用',
             removeLabel: '移除标签',
+            uppercase: '大写',
           },
           textarea: {
             label: '标签',
@@ -1273,6 +1276,7 @@ export const zhCN: WebMessages = {
             variant: '徽章的语义配色方案。',
             size: '徽章的视觉尺寸。',
             shape: '徽章的外形（pill 紧贴内容，pin 对单个字符渲染为圆形）。',
+            uppercase: '将内容全部以大写字母显示。',
           },
           button: {
             variant: '按钮的视觉样式，驱动其颜色和强调程度。',
@@ -1281,6 +1285,7 @@ export const zhCN: WebMessages = {
             disabled: '禁用按钮并抑制点击事件。',
             loading: '在保留已渲染宽度的同时，将标签替换为加载指示器。',
             fullWidth: '将按钮拉伸以填满其容器的宽度。',
+            uppercase: '将标签全部以大写字母显示。',
             ariaLabel: '当按钮内容描述性不足时，为按钮提供的无障碍标签。',
             ariaCurrent: '原生 aria-current 属性的值，将按钮标记为一组中的当前项。',
             clicked: '当按钮被激活时触发，在禁用或加载时被抑制。',
@@ -1499,6 +1504,7 @@ export const zhCN: WebMessages = {
               '被 maxWidth 裁剪的文本在何处显示完整内容：标签上方或下方，或用 none 隐藏。',
             removable: '渲染一个移除按钮，激活时发出 removed。',
             disabled: '禁用标签及其移除按钮。',
+            uppercase: '将标签全部以大写字母显示。',
             removeLabel: '移除按钮的无障碍标签，回退到当前语言。',
             removeTabbable:
               '移除按钮是否为 Tab 停靠点；在自行管理键盘导航的复合控件内设为 false。',

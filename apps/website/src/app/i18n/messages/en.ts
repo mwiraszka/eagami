@@ -1031,6 +1031,7 @@ export const en: WebMessages = {
             variant: 'Variant',
             size: 'Size',
             shape: 'Shape',
+            uppercase: 'Uppercase',
           },
           button: {
             variant: 'Variant',
@@ -1039,6 +1040,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             loading: 'Loading',
             fullWidth: 'Full width',
+            uppercase: 'Uppercase',
           },
           card: {
             variant: 'Variant',
@@ -1171,6 +1173,7 @@ export const en: WebMessages = {
             removable: 'Removable',
             disabled: 'Disabled',
             removeLabel: 'Remove label',
+            uppercase: 'Uppercase',
           },
           textarea: {
             label: 'Label',
@@ -1310,6 +1313,7 @@ export const en: WebMessages = {
             size: 'Visual size of the badge.',
             shape:
               'Outer shape of the badge (pill hugs the content, pin renders as a circle for single characters).',
+            uppercase: 'Renders the content in all capitals.',
           },
           button: {
             variant: 'Visual style of the button, driving its color and emphasis.',
@@ -1318,6 +1322,7 @@ export const en: WebMessages = {
             disabled: 'Disables the button and suppresses click events.',
             loading: 'Swaps the label for a spinner while preserving the rendered width.',
             fullWidth: 'Stretches the button to fill the width of its container.',
+            uppercase: 'Renders the label in all capitals.',
             ariaLabel:
               'Accessible label for the button when its content is not descriptive enough.',
             ariaCurrent:
@@ -1581,6 +1586,7 @@ export const en: WebMessages = {
               'Where a label clipped by maxWidth reveals its full text: above or below the tag, or none to suppress it.',
             removable: 'Renders a remove button that emits removed when activated.',
             disabled: 'Disables the tag and its remove button.',
+            uppercase: 'Renders the label in all capitals.',
             removeLabel:
               'Accessible label for the remove button, falling back to the active locale.',
             removeTabbable:

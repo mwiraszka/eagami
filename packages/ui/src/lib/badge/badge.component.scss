@@ -65,6 +65,10 @@
     color: var(--ea-badge-color, var(--color-info-text));
   }
 
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
   // `pin` is a circular dot for single-character content that expands into a pill
   // for longer content. Tabular numerals keep digit widths uniform, and
   // `min-width = height` plus small horizontal padding fits any single digit in

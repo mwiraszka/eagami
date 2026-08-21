@@ -25,6 +25,7 @@ interface TagKnobState {
   tooltip: TagTooltip;
   removable: boolean;
   disabled: boolean;
+  uppercase: boolean;
   removeLabel: string;
 }
 

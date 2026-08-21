@@ -1059,6 +1059,7 @@ export const frFR: WebMessages = {
             variant: 'Variante',
             size: 'Taille',
             shape: 'Forme',
+            uppercase: 'Majuscules',
           },
           button: {
             variant: 'Variante',
@@ -1067,6 +1068,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             loading: 'Chargement',
             fullWidth: 'Pleine largeur',
+            uppercase: 'Majuscules',
           },
           card: {
             variant: 'Variante',
@@ -1199,6 +1201,7 @@ export const frFR: WebMessages = {
             removable: 'Supprimable',
             disabled: 'Désactivé',
             removeLabel: 'Libellé de suppression',
+            uppercase: 'Majuscules',
           },
           textarea: {
             label: 'Libellé',
@@ -1344,6 +1347,7 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle du badge.',
             shape:
               'Forme extérieure du badge (pill épouse le contenu, pin s’affiche en cercle pour les caractères uniques).',
+            uppercase: 'Affiche le contenu entièrement en majuscules.',
           },
           button: {
             variant: 'Style visuel du bouton, déterminant sa couleur et son emphase.',
@@ -1353,6 +1357,7 @@ export const frFR: WebMessages = {
             loading:
               'Remplace le libellé par un indicateur de chargement tout en conservant la largeur rendue.',
             fullWidth: 'Étire le bouton pour remplir la largeur de son conteneur.',
+            uppercase: 'Affiche le libellé entièrement en majuscules.',
             ariaLabel:
               'Libellé accessible du bouton lorsque son contenu n’est pas suffisamment descriptif.',
             ariaCurrent:
@@ -1631,6 +1636,7 @@ export const frFR: WebMessages = {
             removable:
               'Affiche un bouton de suppression qui émet removed lorsqu’il est activé.',
             disabled: 'Désactive l’étiquette et son bouton de suppression.',
+            uppercase: 'Affiche le libellé entièrement en majuscules.',
             removeLabel:
               'Libellé accessible du bouton de suppression, revenant à la locale active.',
             removeTabbable:

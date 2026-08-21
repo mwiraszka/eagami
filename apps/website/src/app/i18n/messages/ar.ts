@@ -1029,6 +1029,7 @@ export const ar: WebMessages = {
             variant: 'النمط',
             size: 'الحجم',
             shape: 'الشكل',
+            uppercase: 'أحرف كبيرة',
           },
           button: {
             variant: 'النمط',
@@ -1037,6 +1038,7 @@ export const ar: WebMessages = {
             disabled: 'معطّل',
             loading: 'جارٍ التحميل',
             fullWidth: 'بعرض كامل',
+            uppercase: 'أحرف كبيرة',
           },
           card: {
             variant: 'النمط',
@@ -1169,6 +1171,7 @@ export const ar: WebMessages = {
             removable: 'قابل للإزالة',
             disabled: 'معطّل',
             removeLabel: 'تسمية الإزالة',
+            uppercase: 'أحرف كبيرة',
           },
           textarea: {
             label: 'التسمية',
@@ -1305,6 +1308,7 @@ export const ar: WebMessages = {
             size: 'الحجم البصري للشارة.',
             shape:
               'الشكل الخارجي للشارة (pill يحتضن المحتوى، وpin يُعرَض كدائرة للأحرف المفردة).',
+            uppercase: 'يعرض المحتوى بأحرف كبيرة بالكامل.',
           },
           button: {
             variant: 'النمط البصري للزر، يحرّك لونه وتشديده.',
@@ -1313,6 +1317,7 @@ export const ar: WebMessages = {
             disabled: 'يعطّل الزر ويكبت أحداث النقر.',
             loading: 'يستبدل التسمية بمؤشّر دوّار مع الحفاظ على العرض المعروض.',
             fullWidth: 'يمدّد الزر ليملأ عرض حاويته.',
+            uppercase: 'يعرض التسمية بأحرف كبيرة بالكامل.',
             ariaLabel:
               'تسمية يسهل الوصول إليها للزر عندما لا يكون محتواه وصفيًا بما يكفي.',
             ariaCurrent:
@@ -1557,6 +1562,7 @@ export const ar: WebMessages = {
               'أين تُظهر التسمية المقصوصة بـ maxWidth نصها الكامل: أعلى الوسم أو أسفله، أو none لإخفائه.',
             removable: 'يعرض زر إزالة يُطلِق removed عند التنشيط.',
             disabled: 'يعطّل الوسم وزر إزالته.',
+            uppercase: 'يعرض التسمية بأحرف كبيرة بالكامل.',
             removeLabel: 'تسمية يسهل الوصول إليها لزر الإزالة، تعود إلى اللغة النشطة.',
             removeTabbable:
               'ما إذا كان زر الإزالة قابلًا للوصول إليه بمفتاح Tab؛ اضبطه على false داخل عنصر واجهة مركّب يتولّى التنقّل بلوحة المفاتيح.',

@@ -1045,6 +1045,7 @@ export const ptBR: WebMessages = {
             variant: 'Variante',
             size: 'Tamanho',
             shape: 'Forma',
+            uppercase: 'Maiúsculas',
           },
           button: {
             variant: 'Variante',
@@ -1053,6 +1054,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             loading: 'Carregando',
             fullWidth: 'Largura total',
+            uppercase: 'Maiúsculas',
           },
           card: {
             variant: 'Variante',
@@ -1185,6 +1187,7 @@ export const ptBR: WebMessages = {
             removable: 'Removível',
             disabled: 'Desativado',
             removeLabel: 'Rótulo de remoção',
+            uppercase: 'Maiúsculas',
           },
           textarea: {
             label: 'Rótulo',
@@ -1330,6 +1333,7 @@ export const ptBR: WebMessages = {
             size: 'Tamanho visual do badge.',
             shape:
               'Forma externa do badge (pill abraça o conteúdo, pin é renderizado como um círculo para caracteres únicos).',
+            uppercase: 'Exibe o conteúdo inteiramente em maiúsculas.',
           },
           button: {
             variant: 'Estilo visual do botão, que governa sua cor e ênfase.',
@@ -1339,6 +1343,7 @@ export const ptBR: WebMessages = {
             loading:
               'Troca o rótulo por um spinner enquanto preserva a largura renderizada.',
             fullWidth: 'Estica o botão para preencher a largura de seu contêiner.',
+            uppercase: 'Exibe o rótulo inteiramente em maiúsculas.',
             ariaLabel:
               'Rótulo acessível para o botão quando seu conteúdo não é descritivo o suficiente.',
             ariaCurrent:
@@ -1619,6 +1624,7 @@ export const ptBR: WebMessages = {
               'Onde um rótulo truncado por maxWidth revela seu texto completo: acima ou abaixo da tag, ou none para ocultá-lo.',
             removable: 'Renderiza um botão de remover que emite removed quando ativado.',
             disabled: 'Desativa a tag e seu botão de remover.',
+            uppercase: 'Exibe o rótulo inteiramente em maiúsculas.',
             removeLabel:
               'Rótulo acessível para o botão de remover, recorrendo ao idioma ativo.',
             removeTabbable:

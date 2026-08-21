@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.35.0',
+    date: '2026-08-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `uppercase` to the button, tag and badge, rendering their text in all capitals.',
+          'Add an `--ea-button-radius` hook, so a button can become a pill through its own chrome.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the dialog body's scrollbar gutter reserved, so content sitting at the overflow threshold no longer flickers between its scrollbar states.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.34.0',
     date: '2026-08-20',
     sections: [

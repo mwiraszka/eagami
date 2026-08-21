@@ -21,8 +21,9 @@ export type ButtonType = 'button' | 'submit' | 'reset';
  * Standard action button supporting primary, secondary, ghost, and danger
  * variants. Includes a loading state that swaps the label for a spinner while
  * preserving the rendered width. Chrome is tunable per instance via
- * `--ea-button-padding` and `--ea-button-min-height`, which is how an
- * icon-only button comes down to little more than its glyph.
+ * `--ea-button-padding`, `--ea-button-min-height` and `--ea-button-radius`,
+ * which is how an icon-only button comes down to little more than its glyph
+ * and how a call-to-action becomes a pill.
  */
 @Component({
   selector: 'ea-button',
@@ -41,6 +42,7 @@ export class ButtonComponent {
   readonly disabled = input<boolean>(false);
   readonly loading = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
+  readonly uppercase = input<boolean>(false);
   /** Optional icon component rendered to the left of the label. */
   readonly icon = input<Type<unknown> | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
@@ -55,6 +57,7 @@ export class ButtonComponent {
     [`ea-button--${this.variant()}`]: true,
     [`ea-button--${this.size()}`]: true,
     'ea-button--full-width': this.fullWidth(),
+    'ea-button--uppercase': this.uppercase(),
     'ea-button--loading': this.loading(),
     'ea-button--disabled': this.isDisabled(),
   }));

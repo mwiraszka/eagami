@@ -1050,6 +1050,7 @@ export const pl: WebMessages = {
             variant: 'Wariant',
             size: 'Rozmiar',
             shape: 'Kształt',
+            uppercase: 'Wielkie litery',
           },
           button: {
             variant: 'Wariant',
@@ -1058,6 +1059,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             loading: 'Ładowanie',
             fullWidth: 'Pełna szerokość',
+            uppercase: 'Wielkie litery',
           },
           card: {
             variant: 'Wariant',
@@ -1190,6 +1192,7 @@ export const pl: WebMessages = {
             removable: 'Z możliwością usunięcia',
             disabled: 'Wyłączone',
             removeLabel: 'Etykieta usuwania',
+            uppercase: 'Wielkie litery',
           },
           textarea: {
             label: 'Etykieta',
@@ -1331,6 +1334,7 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar odznaki.',
             shape:
               'Zewnętrzny kształt odznaki (pill dopasowuje się do treści, pin renderuje się jako koło dla pojedynczych znaków).',
+            uppercase: 'Wyświetla treść w całości wielkimi literami.',
           },
           button: {
             variant: 'Wizualny styl przycisku, sterujący jego kolorem i wyróżnieniem.',
@@ -1339,6 +1343,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza przycisk i blokuje zdarzenia kliknięcia.',
             loading: 'Zamienia etykietę na spinner, zachowując renderowaną szerokość.',
             fullWidth: 'Rozciąga przycisk, aby wypełnił szerokość swojego kontenera.',
+            uppercase: 'Wyświetla etykietę w całości wielkimi literami.',
             ariaLabel:
               'Dostępna etykieta przycisku, gdy jego treść nie jest wystarczająco opisowa.',
             ariaCurrent:
@@ -1611,6 +1616,7 @@ export const pl: WebMessages = {
               'Gdzie etykieta skrócona przez maxWidth pokazuje pełny tekst: nad tagiem lub pod nim, albo none, aby go ukryć.',
             removable: 'Renderuje przycisk usuwania emitujący removed po aktywacji.',
             disabled: 'Wyłącza tag i jego przycisk usuwania.',
+            uppercase: 'Wyświetla etykietę w całości wielkimi literami.',
             removeLabel:
               'Dostępna etykieta przycisku usuwania, w razie braku używa aktywnej lokalizacji.',
             removeTabbable:

@@ -26,6 +26,7 @@ interface BadgeKnobState {
   variant: BadgeVariant;
   size: BadgeSize;
   shape: BadgeShape;
+  uppercase: boolean;
 }
 
 const SLUG = 'badge';

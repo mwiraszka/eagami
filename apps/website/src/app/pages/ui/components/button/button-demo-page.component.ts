@@ -42,6 +42,7 @@ interface ButtonKnobState {
   disabled: boolean;
   loading: boolean;
   fullWidth: boolean;
+  uppercase: boolean;
   icon: string;
 }
 

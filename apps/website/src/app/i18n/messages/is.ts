@@ -1046,6 +1046,7 @@ export const is: WebMessages = {
             variant: 'Afbrigði',
             size: 'Stærð',
             shape: 'Lögun',
+            uppercase: 'Hástafir',
           },
           button: {
             variant: 'Afbrigði',
@@ -1054,6 +1055,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             loading: 'Hleður',
             fullWidth: 'Full breidd',
+            uppercase: 'Hástafir',
           },
           card: {
             variant: 'Afbrigði',
@@ -1186,6 +1188,7 @@ export const is: WebMessages = {
             removable: 'Fjarlægjanlegt',
             disabled: 'Óvirkt',
             removeLabel: 'Merkimiði fyrir fjarlægingarhnapp',
+            uppercase: 'Hástafir',
           },
           textarea: {
             label: 'Merkimiði',
@@ -1326,6 +1329,7 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð merkisins.',
             shape:
               'Ytri lögun merkisins (pilla faðmar efnið, prjónn birtist sem hringur fyrir staka stafi).',
+            uppercase: 'Birtir efnið eingöngu með hástöfum.',
           },
           button: {
             variant: 'Sjónrænn stíll hnappsins, keyrir lit hans og áherslu.',
@@ -1334,6 +1338,7 @@ export const is: WebMessages = {
             disabled: 'Gerir hnappinn óvirkan og bælir smelliatburði.',
             loading: 'Skiptir merkimiðanum út fyrir snúning en heldur birtu breiddinni.',
             fullWidth: 'Teygir hnappinn til að fylla breidd ílátsins.',
+            uppercase: 'Birtir merkimiðann eingöngu með hástöfum.',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir hnappinn þegar efni hans er ekki nógu lýsandi.',
             ariaCurrent:
@@ -1598,6 +1603,7 @@ export const is: WebMessages = {
               'Hvar texti sem maxWidth styttir birtir fulla útgáfu sína: fyrir ofan eða neðan merkið, eða none til að fela hana.',
             removable: 'Birtir fjarlægingarhnapp sem sendir removed þegar virkjaður.',
             disabled: 'Gerir merkið og fjarlægingarhnapp þess óvirk.',
+            uppercase: 'Birtir merkimiðann eingöngu með hástöfum.',
             removeLabel:
               'Aðgengilegur merkimiði fyrir fjarlægingarhnappinn, fellur aftur á virka svæðið.',
             removeTabbable:

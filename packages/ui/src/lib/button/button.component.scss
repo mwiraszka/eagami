@@ -28,7 +28,7 @@
 
   border-width: var(--border-width-thin);
   border-style: solid;
-  border-radius: var(--radius-md);
+  border-radius: var(--ea-button-radius, var(--radius-md));
 
   transition: var(--transition-colors), var(--transition-shadow);
   cursor: pointer;
@@ -217,6 +217,10 @@
 
   &--full-width {
     width: 100%;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
   }
 
   &--disabled,

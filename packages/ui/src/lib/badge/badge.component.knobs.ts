@@ -19,10 +19,12 @@ export const BADGE_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['pill', 'pin'],
     },
+    uppercase: { control: 'boolean' },
   },
   args: {
     variant: 'default',
     size: 'md',
     shape: 'pill',
+    uppercase: false,
   },
 };
