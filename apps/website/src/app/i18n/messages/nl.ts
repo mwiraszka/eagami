@@ -1045,6 +1045,7 @@ export const nl: WebMessages = {
             variant: 'Variant',
             size: 'Grootte',
             shape: 'Vorm',
+            uppercase: 'Hoofdletters',
           },
           button: {
             variant: 'Variant',
@@ -1053,6 +1054,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             loading: 'Laden',
             fullWidth: 'Volledige breedte',
+            uppercase: 'Hoofdletters',
           },
           card: {
             variant: 'Variant',
@@ -1185,6 +1187,7 @@ export const nl: WebMessages = {
             removable: 'Verwijderbaar',
             disabled: 'Uitgeschakeld',
             removeLabel: 'Verwijderlabel',
+            uppercase: 'Hoofdletters',
           },
           textarea: {
             label: 'Label',
@@ -1332,6 +1335,7 @@ export const nl: WebMessages = {
             size: 'Visuele grootte van de badge.',
             shape:
               'Buitenste vorm van de badge (pill sluit aan op de inhoud, pin wordt weergegeven als een cirkel voor enkele tekens).',
+            uppercase: 'Toont de inhoud volledig in hoofdletters.',
           },
           button: {
             variant: 'Visuele stijl van de knop, die de kleur en nadruk aanstuurt.',
@@ -1341,6 +1345,7 @@ export const nl: WebMessages = {
             loading:
               'Verwisselt het label voor een spinner met behoud van de gerenderde breedte.',
             fullWidth: 'Rekt de knop uit om de breedte van zijn container te vullen.',
+            uppercase: 'Toont het label volledig in hoofdletters.',
             ariaLabel:
               'Toegankelijk label voor de knop wanneer de inhoud niet beschrijvend genoeg is.',
             ariaCurrent:
@@ -1623,6 +1628,7 @@ export const nl: WebMessages = {
             removable:
               'Geeft een verwijderknop weer die removed uitzendt wanneer geactiveerd.',
             disabled: 'Schakelt de tag en de verwijderknop uit.',
+            uppercase: 'Toont het label volledig in hoofdletters.',
             removeLabel:
               'Toegankelijk label voor de verwijderknop, dat terugvalt op de actieve taal.',
             removeTabbable:

@@ -1053,6 +1053,7 @@ export const de: WebMessages = {
             variant: 'Variante',
             size: 'Größe',
             shape: 'Form',
+            uppercase: 'Großbuchstaben',
           },
           button: {
             variant: 'Variante',
@@ -1061,6 +1062,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             loading: 'Ladezustand',
             fullWidth: 'Volle Breite',
+            uppercase: 'Großbuchstaben',
           },
           card: {
             variant: 'Variante',
@@ -1193,6 +1195,7 @@ export const de: WebMessages = {
             removable: 'Entfernbar',
             disabled: 'Deaktiviert',
             removeLabel: 'Entfernen-Label',
+            uppercase: 'Großbuchstaben',
           },
           textarea: {
             label: 'Beschriftung',
@@ -1339,6 +1342,7 @@ export const de: WebMessages = {
             size: 'Visuelle Größe des Badges.',
             shape:
               'Äußere Form des Badges (Pill umschließt den Inhalt, Pin wird bei einzelnen Zeichen als Kreis gerendert).',
+            uppercase: 'Stellt den Inhalt komplett in Großbuchstaben dar.',
           },
           button: {
             variant: 'Visueller Stil des Buttons, der seine Farbe und Betonung bestimmt.',
@@ -1348,6 +1352,7 @@ export const de: WebMessages = {
             loading:
               'Tauscht das Label gegen einen Spinner aus und behält dabei die gerenderte Breite bei.',
             fullWidth: 'Streckt den Button, um die Breite seines Containers zu füllen.',
+            uppercase: 'Stellt die Beschriftung komplett in Großbuchstaben dar.',
             ariaLabel:
               'Barrierefreies Label für den Button, wenn sein Inhalt nicht aussagekräftig genug ist.',
             ariaCurrent:
@@ -1634,6 +1639,7 @@ export const de: WebMessages = {
             removable:
               'Rendert einen Entfernen-Button, der bei Aktivierung removed ausgibt.',
             disabled: 'Deaktiviert das Tag und seinen Entfernen-Button.',
+            uppercase: 'Stellt die Beschriftung komplett in Großbuchstaben dar.',
             removeLabel:
               'Barrierefreies Label für den Entfernen-Button, das auf den aktiven Sprachraum zurückgreift.',
             removeTabbable:

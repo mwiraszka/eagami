@@ -1022,6 +1022,7 @@ export const he: WebMessages = {
             variant: 'וריאנט',
             size: 'גודל',
             shape: 'צורה',
+            uppercase: 'אותיות רישיות',
           },
           button: {
             variant: 'וריאנט',
@@ -1030,6 +1031,7 @@ export const he: WebMessages = {
             disabled: 'מושבת',
             loading: 'טעינה',
             fullWidth: 'רוחב מלא',
+            uppercase: 'אותיות רישיות',
           },
           card: {
             variant: 'וריאנט',
@@ -1162,6 +1164,7 @@ export const he: WebMessages = {
             removable: 'ניתן להסרה',
             disabled: 'מושבת',
             removeLabel: 'תווית הסרה',
+            uppercase: 'אותיות רישיות',
           },
           textarea: {
             label: 'תווית',
@@ -1293,6 +1296,7 @@ export const he: WebMessages = {
             size: 'גודל ויזואלי של התג.',
             shape:
               'הצורה החיצונית של התג (pill מתהדק לתוכן, pin מוצג כעיגול עבור תווים בודדים).',
+            uppercase: 'מציג את התוכן באותיות רישיות בלבד.',
           },
           button: {
             variant: 'הסגנון הוויזואלי של הכפתור, המניע את הצבע וההדגשה שלו.',
@@ -1301,6 +1305,7 @@ export const he: WebMessages = {
             disabled: 'משבית את הכפתור ומונע אירועי קליק.',
             loading: 'מחליף את התווית בספינר תוך שמירה על הרוחב המוצג.',
             fullWidth: 'מותח את הכפתור כדי למלא את רוחב המכל שלו.',
+            uppercase: 'מציג את התווית באותיות רישיות בלבד.',
             ariaLabel: 'תווית נגישה לכפתור כאשר התוכן שלו אינו תיאורי מספיק.',
             ariaCurrent:
               'ערך עבור מאפיין aria-current המקורי, המסמן את הכפתור כפריט הנוכחי בקבוצה.',
@@ -1540,6 +1545,7 @@ export const he: WebMessages = {
               'היכן תווית שנחתכה על ידי maxWidth מציגה את הטקסט המלא: מעל התג או מתחתיו, או none כדי להסתיר.',
             removable: 'מציג כפתור הסרה הפולט removed בעת הפעלה.',
             disabled: 'משבית את התגית ואת כפתור ההסרה שלה.',
+            uppercase: 'מציג את התווית באותיות רישיות בלבד.',
             removeLabel: 'תווית נגישה עבור כפתור ההסרה, נסוגה לשפה הפעילה.',
             removeTabbable:
               'האם כפתור ההסרה הוא תחנת Tab; הגדירו false בתוך פקד מורכב שמנהל בעצמו את ניווט המקלדת.',

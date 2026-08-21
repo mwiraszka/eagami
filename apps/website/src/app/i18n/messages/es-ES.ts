@@ -1050,6 +1050,7 @@ export const esES: WebMessages = {
             variant: 'Variante',
             size: 'Tamaño',
             shape: 'Forma',
+            uppercase: 'Mayúsculas',
           },
           button: {
             variant: 'Variante',
@@ -1058,6 +1059,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             loading: 'Cargando',
             fullWidth: 'Ancho completo',
+            uppercase: 'Mayúsculas',
           },
           card: {
             variant: 'Variante',
@@ -1190,6 +1192,7 @@ export const esES: WebMessages = {
             removable: 'Eliminable',
             disabled: 'Deshabilitado',
             removeLabel: 'Etiqueta de eliminación',
+            uppercase: 'Mayúsculas',
           },
           textarea: {
             label: 'Etiqueta',
@@ -1335,6 +1338,7 @@ export const esES: WebMessages = {
             size: 'Tamaño visual de la insignia.',
             shape:
               'Forma exterior de la insignia (pill se ajusta al contenido, pin se muestra como un círculo para caracteres individuales).',
+            uppercase: 'Muestra el contenido completamente en mayúsculas.',
           },
           button: {
             variant: 'Estilo visual del botón, que determina su color y énfasis.',
@@ -1344,6 +1348,7 @@ export const esES: WebMessages = {
             loading:
               'Sustituye la etiqueta por un indicador de carga conservando el ancho renderizado.',
             fullWidth: 'Estira el botón para ocupar el ancho de su contenedor.',
+            uppercase: 'Muestra la etiqueta completamente en mayúsculas.',
             ariaLabel:
               'Etiqueta accesible para el botón cuando su contenido no es lo bastante descriptivo.',
             ariaCurrent:
@@ -1635,6 +1640,7 @@ export const esES: WebMessages = {
             removable:
               'Renderiza un botón de eliminación que emite removed cuando se activa.',
             disabled: 'Deshabilita la etiqueta y su botón de eliminación.',
+            uppercase: 'Muestra la etiqueta completamente en mayúsculas.',
             removeLabel:
               'Etiqueta accesible para el botón de eliminación, que recurre al idioma activo.',
             removeTabbable:
