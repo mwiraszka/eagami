@@ -149,6 +149,9 @@
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
     color: var(--color-text-secondary);
+    // Held open up front, so content at the overflow threshold cannot reflow
+    // itself in and out of a scrollbar
+    scrollbar-gutter: stable;
   }
 
   // Sits outside the body's scroll box, so a progress bar or a validation

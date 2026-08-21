@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `uppercase` to the button, tag and badge, rendering their text in all capitals.
 - Add an `--ea-button-radius` hook, so a button can become a pill through its own chrome.
 
+### Fixed
+
+- Keep the dialog body's scrollbar gutter reserved, so content sitting at the overflow threshold no longer flickers between its scrollbar states.
+
 ## [5.34.0] - 2026-08-20
 
 ### Added

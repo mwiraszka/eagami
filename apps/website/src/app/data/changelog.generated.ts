@@ -24,6 +24,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
           'Add an `--ea-button-radius` hook, so a button can become a pill through its own chrome.',
         ],
       },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep the dialog body's scrollbar gutter reserved, so content sitting at the overflow threshold no longer flickers between its scrollbar states.",
+        ],
+      },
     ],
   },
   {
