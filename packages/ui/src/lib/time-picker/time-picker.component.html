@@ -10,30 +10,37 @@
     <div
       class="ea-time-picker__trigger-wrapper"
       [ngClass]="wrapperClasses()">
-      <button
+      <div
         #triggerEl
-        type="button"
         class="ea-time-picker__trigger"
         [ngClass]="triggerClasses()"
-        [id]="id()"
-        [disabled]="isDisabled()"
-        [attr.aria-expanded]="isOpen()"
-        [attr.aria-haspopup]="'dialog'"
-        [attr.aria-controls]="isOpen() ? popoverId() : null"
-        [attr.aria-required]="required() || null"
-        [attr.aria-invalid]="hasError() || null"
-        [attr.aria-describedby]="
-          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
-        "
-        (click)="toggle()"
-        (keydown)="handleTriggerKeydown($event)">
+        (click)="onTriggerClick()">
         <ea-icon-clock
           class="ea-time-picker__trigger-icon"
           aria-hidden="true" />
-        <span class="ea-time-picker__trigger-value">
-          <bdi>{{ displayValue() || resolvedPlaceholder() }}</bdi>
-        </span>
-      </button>
+        <input
+          #inputEl
+          type="text"
+          class="ea-time-picker__input"
+          role="combobox"
+          autocomplete="off"
+          [id]="id()"
+          [disabled]="isDisabled()"
+          [readonly]="readonly()"
+          [placeholder]="resolvedPlaceholder()"
+          [value]="triggerText()"
+          [attr.aria-expanded]="isOpen()"
+          [attr.aria-haspopup]="'dialog'"
+          [attr.aria-controls]="isOpen() ? popoverId() : null"
+          [attr.aria-required]="required() || null"
+          [attr.aria-invalid]="hasError() || null"
+          [attr.aria-describedby]="
+            showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+          "
+          (input)="onTriggerInput($event)"
+          (keydown)="handleTriggerKeydown($event)"
+          (blur)="onTriggerBlur()" />
+      </div>
       @if (hasValue() && !isDisabled() && !readonly()) {
         <button
           type="button"

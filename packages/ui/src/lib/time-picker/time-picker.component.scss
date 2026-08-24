@@ -57,11 +57,10 @@
     font-family: var(--font-family-sans);
     text-align: start;
     color: var(--color-text-primary);
-    cursor: pointer;
+    cursor: text;
     transition: var(--transition-colors), var(--transition-shadow);
 
-    &:focus-visible {
-      outline: none;
+    &:focus-within {
       @include ea.focus-ring;
     }
 
@@ -87,10 +86,6 @@
     &--readonly {
       @include ea.readonly-control;
     }
-
-    &--placeholder .ea-time-picker__trigger-value {
-      color: var(--color-text-tertiary);
-    }
   }
 
   &__trigger-icon {
@@ -100,13 +95,32 @@
     color: var(--color-text-secondary);
   }
 
-  &__trigger-value {
+  &__input {
+    overflow: hidden;
     flex: 1;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0;
+    font-size: inherit;
     white-space: nowrap;
+    font-family: inherit;
+    text-overflow: ellipsis;
     font-variant-numeric: tabular-nums;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: inherit;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--color-text-tertiary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__clear {

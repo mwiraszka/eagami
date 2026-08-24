@@ -54,9 +54,18 @@ interface ParsedTime {
  * configurable steps for minutes and seconds, optional seconds column, and
  * integrates with Angular forms via `ControlValueAccessor`.
  *
- * Keyboard: Tab moves between the hour, minute, (seconds), and AM/PM columns.
- * Each spinner accepts ArrowUp/ArrowDown to step by 1 (or by the configured
- * step), PageUp/PageDown for a coarser bump, and digit keys to type a value
+ * The field itself is a text input: a time can be typed by hand and is read
+ * leniently on Enter or blur. Bare digits are a 24-hour clock ("5" is 05:00,
+ * "1234" is 12:34, "123456" adds seconds), `:`, `.`, `h`, and spaces all
+ * separate units ("17h30", "12.34"), and an AM/PM suffix reads the hour on
+ * the 12-hour clock ("5pm" is 17:00). Text that parses to no time is
+ * discarded and the field falls back to the current value; clearing the text
+ * clears the value.
+ *
+ * Keyboard: ArrowDown opens the popover and moves into the hour column. Tab
+ * moves between the hour, minute, (seconds), and AM/PM columns. Each spinner
+ * accepts ArrowUp/ArrowDown to step by 1 (or by the configured step),
+ * PageUp/PageDown for a coarser bump, and digit keys to type a value
  * directly. After typing two digits (or one digit that already maxes the
  * unit), focus auto-advances to the next column. Backspace clears the typed
  * buffer; Escape closes the popover.
@@ -85,7 +94,8 @@ interface ParsedTime {
   ],
 })
 export class TimePickerComponent implements ControlValueAccessor {
-  protected readonly triggerEl = viewChild<ElementRef<HTMLButtonElement>>('triggerEl');
+  protected readonly triggerEl = viewChild<ElementRef<HTMLElement>>('triggerEl');
+  protected readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
   protected readonly hoursEl = viewChild<ElementRef<HTMLInputElement>>('hoursEl');
   protected readonly minutesEl = viewChild<ElementRef<HTMLInputElement>>('minutesEl');
   protected readonly secondsEl = viewChild<ElementRef<HTMLInputElement>>('secondsEl');
@@ -118,6 +128,8 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly changed = output<string | null>();
 
   readonly isOpen = signal(false);
+  /** Raw text under edit in the field, or `null` while it mirrors the value. */
+  readonly typedText = signal<string | null>(null);
   /** Typed-digit buffer for the currently focused column, or `null` when idle. */
   readonly editBuffer = signal<{ unit: Unit; digits: string } | null>(null);
   private readonly _formDisabled = signal(false);
@@ -220,13 +232,15 @@ export class TimePickerComponent implements ControlValueAccessor {
     () => this.placeholder() ?? this.i18n.messages().timePicker.placeholder,
   );
 
+  /** What the field's input shows: the text mid-edit, else the formatted value. */
+  readonly triggerText = computed(() => this.typedText() ?? this.displayValue() ?? '');
+
   readonly triggerClasses = computed(() => ({
     [`ea-time-picker__trigger--${this.size()}`]: true,
     'ea-time-picker__trigger--error': this.hasError(),
     'ea-time-picker__trigger--open': this.isOpen(),
     'ea-time-picker__trigger--disabled': this.isDisabled(),
     'ea-time-picker__trigger--readonly': this.readonly() && !this.isDisabled(),
-    'ea-time-picker__trigger--placeholder': !this.hasValue(),
   }));
 
   readonly wrapperClasses = computed(() => ({
@@ -259,15 +273,16 @@ export class TimePickerComponent implements ControlValueAccessor {
     this.destroyRef.onDestroy(() => this.stopHold());
   }
 
-  toggle(): void {
-    if (this.isDisabled() || this.readonly()) {
+  /**
+   * A click anywhere on the field opens the popover and leaves the focus in
+   * the input, so the caret lands where it was aimed and typing can start
+   * straight away. A click while open only moves the caret.
+   */
+  onTriggerClick(): void {
+    if (this.isDisabled() || this.readonly() || this.isOpen()) {
       return;
     }
-    const opening = !this.isOpen();
-    this.isOpen.set(opening);
-    if (opening) {
-      this.focusHoursWhenReady();
-    }
+    this.isOpen.set(true);
   }
 
   /**
@@ -311,16 +326,69 @@ export class TimePickerComponent implements ControlValueAccessor {
     if (this.isDisabled() || this.readonly()) {
       return;
     }
-    if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+    if (event.key === 'ArrowDown') {
       event.preventDefault();
       if (!this.isOpen()) {
         this.isOpen.set(true);
-        this.focusHoursWhenReady();
       }
-    } else if (event.key === 'Escape' && this.isOpen()) {
+      this.focusHoursWhenReady();
+    } else if (event.key === 'Enter') {
       event.preventDefault();
+      this.commitTyped();
       this.close();
-      this.triggerEl()?.nativeElement.focus();
+    } else if (event.key === 'Escape') {
+      // Left alone when there is nothing to let go of, so the press can
+      // still close whatever layer holds the field
+      if (this.typedText() === null && !this.isOpen()) {
+        return;
+      }
+      event.preventDefault();
+      this.typedText.set(null);
+      this.close();
+    }
+  }
+
+  onTriggerInput(event: Event): void {
+    if (this.isDisabled() || this.readonly()) {
+      return;
+    }
+    const el = event.currentTarget as HTMLInputElement;
+    this.typedText.set(el.value);
+  }
+
+  onTriggerBlur(): void {
+    this.commitTyped();
+    this.onTouched();
+  }
+
+  /**
+   * Reads the hand-typed text and commits what it says: a time updates the
+   * value, emptied text clears it, and anything unreadable is dropped so the
+   * field falls back to the value it already shows.
+   */
+  private commitTyped(): void {
+    const text = this.typedText();
+    if (text === null) {
+      return;
+    }
+    this.typedText.set(null);
+
+    if (!text.trim()) {
+      if (this.value() !== null) {
+        this.value.set(null);
+        this.onChange(null);
+        this.changed.emit(null);
+      }
+      return;
+    }
+
+    const labels = this.i18n.messages().timePicker;
+    const parsed = parseTypedTime(text, {
+      am: labels.amLabel,
+      pm: labels.pmLabel,
+    });
+    if (parsed) {
+      this.commit(parsed);
     }
   }
 
@@ -441,18 +509,18 @@ export class TimePickerComponent implements ControlValueAccessor {
       // default `00:00` (the fallback returned by `parsed()`).
       this.commit(this.parsed());
       this.close();
-      this.triggerEl()?.nativeElement.focus();
+      this.inputEl()?.nativeElement.focus();
     }
     // Escape bubbles up to the popover wrapper's handler, which closes
     // Tab is handled by the browser; (blur) on the leaving input flushes
   }
 
-  /** Escape from anywhere inside the popover closes it and refocuses the trigger. */
+  /** Escape from anywhere inside the popover closes it and refocuses the field. */
   onPopoverEscape(event: Event): void {
     event.preventDefault();
     this.editBuffer.set(null);
     this.close();
-    this.triggerEl()?.nativeElement.focus();
+    this.inputEl()?.nativeElement.focus();
   }
 
   /** Select-all on focus so the first keystroke replaces the current value. */
@@ -612,6 +680,76 @@ const HOLD_FAST_INTERVAL_MS = 35;
 /** Pad a 0–59 unit to two digits. */
 function pad2(n: number): string {
   return n < 10 ? `0${n}` : `${n}`;
+}
+
+/**
+ * Reads a hand-typed time, leniently. Bare digits are a 24-hour clock ("5" is
+ * 05:00, "130" is 01:30, "1234" is 12:34, "123456" adds seconds); `:`, `.`,
+ * `h`, and spaces all separate units ("17h30", "12.34", "12 34"); a trailing
+ * AM/PM token, in English or the current locale's labels, reads the hour on
+ * the 12-hour clock ("5pm" is 17:00, "12am" is 00:00). Returns `null` for
+ * anything that names no valid time.
+ */
+function parseTypedTime(
+  text: string,
+  labels: { am: string; pm: string },
+): ParsedTime | null {
+  let rest = text.trim().toLowerCase();
+
+  let period: 'am' | 'pm' | null = null;
+  const tokens: [string, 'am' | 'pm'][] = [
+    [labels.am.toLowerCase(), 'am'],
+    [labels.pm.toLowerCase(), 'pm'],
+    ['a.m.', 'am'],
+    ['p.m.', 'pm'],
+    ['am', 'am'],
+    ['pm', 'pm'],
+    ['a', 'am'],
+    ['p', 'pm'],
+  ];
+  for (const [token, kind] of tokens) {
+    if (token && rest.endsWith(token)) {
+      rest = rest.slice(0, -token.length).trim();
+      period = kind;
+      break;
+    }
+  }
+
+  const separated = rest.replace(/[.h]/g, ':').replace(/\s+/g, ':').replace(/:$/, '');
+
+  let hours: number;
+  let minutes: number;
+  let seconds: number;
+
+  const parts = /^(\d{1,2})(?::(\d{1,2})(?::(\d{1,2}))?)?$/.exec(separated);
+  if (parts) {
+    hours = parseInt(parts[1], 10);
+    minutes = parts[2] !== undefined ? parseInt(parts[2], 10) : 0;
+    seconds = parts[3] !== undefined ? parseInt(parts[3], 10) : 0;
+  } else if (/^\d{3,6}$/.test(separated)) {
+    // An unbroken run splits from the right: minutes take two digits, seconds
+    // two more when present, and the hour keeps whatever is left
+    const withSeconds = separated.length >= 5;
+    const tail = withSeconds ? separated.slice(-4) : separated.slice(-2);
+    hours = parseInt(separated.slice(0, separated.length - tail.length), 10);
+    minutes = parseInt(tail.slice(0, 2), 10);
+    seconds = withSeconds ? parseInt(tail.slice(2), 10) : 0;
+  } else {
+    return null;
+  }
+
+  if (minutes > 59 || seconds > 59) {
+    return null;
+  }
+
+  if (period === null) {
+    return hours <= 23 ? { hours, minutes, seconds } : null;
+  }
+
+  if (hours > 12) {
+    return null;
+  }
+  return { hours: (hours % 12) + (period === 'pm' ? 12 : 0), minutes, seconds };
 }
 
 /** Parse `"HH:MM"` / `"HH:MM:SS"`; returns `null` for any malformed input. */
