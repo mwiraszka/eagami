@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.36.0',
+    date: '2026-08-25',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "Allow typing a time straight into the time picker's field: hand-typed text is read leniently on Enter or blur, in 12- or 24-hour notation with or without separators, unreadable text falls back to the held value, and cleared text clears it.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.35.0',
     date: '2026-08-22',
     sections: [
