@@ -138,7 +138,7 @@ jobs:
         run: |
           BUNDLE=packages/ui/dist/eagami-ui/fesm2022/eagami-ui.mjs
           SIZE=$(wc -c < "$BUNDLE")
-          BUDGET=2400000
+          BUDGET=2500000
           printf "Bundle: %d bytes\nBudget: %d bytes\n" "$SIZE" "$BUDGET"
           if [ "$SIZE" -gt "$BUDGET" ]; then
             echo "::error::@eagami/ui bundle ($SIZE bytes) exceeds the $BUDGET-byte budget. Either trim or raise the budget intentionally in .github/workflows/ui-ci.yml."

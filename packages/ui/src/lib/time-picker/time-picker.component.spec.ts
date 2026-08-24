@@ -7,8 +7,19 @@ describe('TimePickerComponent', () => {
   let fixture: ComponentFixture<TimePickerComponent>;
   let component: TimePickerComponent;
 
-  function getTrigger(): HTMLButtonElement {
+  function getTrigger(): HTMLElement {
     return fixture.nativeElement.querySelector('.ea-time-picker__trigger');
+  }
+
+  function getInput(): HTMLInputElement {
+    return fixture.nativeElement.querySelector('.ea-time-picker__input');
+  }
+
+  function typeInField(text: string): void {
+    const input = getInput();
+    input.value = text;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    fixture.detectChanges();
   }
 
   function getPopover(): HTMLElement | null {
@@ -65,12 +76,12 @@ describe('TimePickerComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders a trigger button', () => {
+    it('renders a trigger field', () => {
       expect(getTrigger()).toBeTruthy();
     });
 
     it('shows placeholder when no value is selected', () => {
-      expect(getTrigger().textContent).toContain('Select time…');
+      expect(getInput().placeholder).toContain('Select time…');
     });
 
     it('renders a label when provided', () => {
@@ -93,7 +104,7 @@ describe('TimePickerComponent', () => {
       component.writeValue('09:30');
       fixture.detectChanges();
 
-      expect(getTrigger().textContent).toContain('09:30');
+      expect(getInput().value).toBe('09:30');
     });
   });
 
@@ -120,25 +131,25 @@ describe('TimePickerComponent', () => {
       expect(getValueDisplays()).toHaveLength(3);
     });
 
-    it('closes the popover on second trigger click', () => {
+    it('keeps the popover open on a second click, which only moves the caret', () => {
       getTrigger().click();
       fixture.detectChanges();
 
       getTrigger().click();
       fixture.detectChanges();
 
-      expect(getPopover()).toBeNull();
+      expect(getPopover()).toBeTruthy();
     });
 
     it('sets aria-expanded when open', () => {
       getTrigger().click();
       fixture.detectChanges();
 
-      expect(getTrigger().getAttribute('aria-expanded')).toBe('true');
+      expect(getInput().getAttribute('aria-expanded')).toBe('true');
     });
 
     it('omits aria-controls when closed', () => {
-      expect(getTrigger().hasAttribute('aria-controls')).toBe(false);
+      expect(getInput().hasAttribute('aria-controls')).toBe(false);
     });
 
     it('sets aria-controls to the popover surface id when open', () => {
@@ -146,7 +157,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       const surface = document.body.querySelector<HTMLElement>('.ea-popover__surface');
-      expect(getTrigger().getAttribute('aria-controls')).toBe(surface?.id);
+      expect(getInput().getAttribute('aria-controls')).toBe(surface?.id);
     });
 
     it('names the dialog via the popover aria-label', () => {
@@ -371,24 +382,21 @@ describe('TimePickerComponent', () => {
       component.writeValue('14:30');
       fixture.detectChanges();
 
-      expect(getTrigger().textContent).toContain('2:30');
-      expect(getTrigger().textContent).toContain('PM');
+      expect(getInput().value).toBe('2:30 PM');
     });
 
     it('displays 12 for midnight in 12h mode', () => {
       component.writeValue('00:00');
       fixture.detectChanges();
 
-      expect(getTrigger().textContent).toContain('12:00');
-      expect(getTrigger().textContent).toContain('AM');
+      expect(getInput().value).toBe('12:00 AM');
     });
 
     it('displays 12 for noon in 12h mode', () => {
       component.writeValue('12:00');
       fixture.detectChanges();
 
-      expect(getTrigger().textContent).toContain('12:00');
-      expect(getTrigger().textContent).toContain('PM');
+      expect(getInput().value).toBe('12:00 PM');
     });
   });
 
@@ -422,11 +430,11 @@ describe('TimePickerComponent', () => {
   });
 
   describe('Disabled state', () => {
-    it('disables the trigger when disabled', () => {
+    it('disables the field when disabled', () => {
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
 
-      expect(getTrigger().disabled).toBe(true);
+      expect(getInput().disabled).toBe(true);
     });
 
     it('does not open when disabled', () => {
@@ -484,19 +492,23 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
     });
 
-    it('leaves the trigger enabled but does not open on click', () => {
+    it('leaves the field enabled but does not open on click', () => {
       getTrigger().click();
       fixture.detectChanges();
 
-      expect(getTrigger().disabled).toBe(false);
+      expect(getInput().disabled).toBe(false);
       expect(getPopover()).toBeNull();
     });
 
-    it('does not open on Enter', () => {
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    it('does not open on ArrowDown', () => {
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
+    });
+
+    it('marks the field readonly', () => {
+      expect(getInput().readOnly).toBe(true);
     });
 
     it('hides the clear button', () => {
@@ -505,31 +517,31 @@ describe('TimePickerComponent', () => {
   });
 
   describe('Keyboard navigation', () => {
-    it('opens on Enter key', () => {
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
-      fixture.detectChanges();
-
-      expect(getPopover()).toBeTruthy();
-    });
-
-    it('opens on ArrowDown key', () => {
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
-      fixture.detectChanges();
-
-      expect(getPopover()).toBeTruthy();
-    });
-
-    it('closes on Escape from trigger when open', () => {
-      getTrigger().click();
-      fixture.detectChanges();
-
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    it('does not open on Enter, which commits typed text instead', () => {
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
     });
 
-    it('closes and refocuses the trigger on Escape from inside the popover', () => {
+    it('opens on ArrowDown key', () => {
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeTruthy();
+    });
+
+    it('closes on Escape from the field when open', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+    });
+
+    it('closes and refocuses the field on Escape from inside the popover', () => {
       getTrigger().click();
       fixture.detectChanges();
 
@@ -540,7 +552,7 @@ describe('TimePickerComponent', () => {
       fixture.detectChanges();
 
       expect(getPopover()).toBeNull();
-      expect(document.activeElement).toBe(getTrigger());
+      expect(document.activeElement).toBe(getInput());
     });
 
     it('steps via ArrowUp on the value spinner', () => {
@@ -569,20 +581,20 @@ describe('TimePickerComponent', () => {
       expect(component.value()).toBe('08:30');
     });
 
-    it('keeps the popover open when ArrowDown is pressed again on the trigger', () => {
+    it('keeps the popover open when ArrowDown is pressed again on the field', () => {
       getTrigger().click();
       fixture.detectChanges();
 
-      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
       fixture.detectChanges();
 
       expect(getPopover()).toBeTruthy();
     });
 
-    it('leaves Escape to the page while the popover is closed', () => {
+    it('leaves Escape to the page while the popover is closed and nothing is typed', () => {
       const event = new KeyboardEvent('keydown', { key: 'Escape', cancelable: true });
 
-      getTrigger().dispatchEvent(event);
+      getInput().dispatchEvent(event);
 
       expect(event.defaultPrevented).toBe(false);
     });
@@ -653,7 +665,174 @@ describe('TimePickerComponent', () => {
 
       expect(component.value()).toBe('00:00');
       expect(getPopover()).toBeNull();
-      expect(document.activeElement).toBe(getTrigger());
+      expect(document.activeElement).toBe(getInput());
+    });
+  });
+
+  describe('Typing in the field', () => {
+    it('shows the raw text while it is being typed', () => {
+      typeInField('123');
+
+      expect(getInput().value).toBe('123');
+      expect(component.value()).toBeNull();
+    });
+
+    it('commits a bare four-digit run as hours and minutes on Enter', () => {
+      typeInField('1234');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('12:34');
+    });
+
+    it('commits on blur', () => {
+      typeInField('0730');
+      getInput().dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('07:30');
+    });
+
+    it('reads a lone hour as that hour on the 24-hour clock', () => {
+      typeInField('5');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('05:00');
+    });
+
+    it('reads a three-digit run as one hour digit and two minutes', () => {
+      typeInField('130');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('01:30');
+    });
+
+    it('reads a PM suffix on the 12-hour clock', () => {
+      typeInField('5pm');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('17:00');
+    });
+
+    it('reads a spelled-out period with spaces and dots', () => {
+      typeInField('9 p.m.');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('21:00');
+    });
+
+    it('reads 12am as midnight', () => {
+      typeInField('12am');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('00:00');
+    });
+
+    it('keeps a midnight-side time on the 24-hour clock', () => {
+      typeInField('00:01');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('00:01');
+    });
+
+    it('accepts dot, h, and space separators', () => {
+      typeInField('17h30');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('17:30');
+    });
+
+    it('reads six digits as seconds when the seconds column is on', () => {
+      fixture.componentRef.setInput('includeSeconds', true);
+      fixture.detectChanges();
+
+      typeInField('123456');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('12:34:56');
+    });
+
+    it('drops unreadable text and falls back to the held value', () => {
+      component.writeValue('09:30');
+      fixture.detectChanges();
+
+      typeInField('soonish');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('09:30');
+      expect(getInput().value).toBe('09:30');
+    });
+
+    it('rejects an hour past 23 and minutes past 59', () => {
+      component.writeValue('09:30');
+      fixture.detectChanges();
+
+      typeInField('25:00');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      typeInField('12:75');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('09:30');
+    });
+
+    it('clears the value when the text is emptied', () => {
+      component.writeValue('09:30');
+      fixture.detectChanges();
+      const emitted: (string | null)[] = [];
+      component.changed.subscribe(value => emitted.push(value));
+
+      typeInField('');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBeNull();
+      expect(emitted).toEqual([null]);
+    });
+
+    it('closes the popover when Enter commits', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      typeInField('1234');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      fixture.detectChanges();
+
+      expect(getPopover()).toBeNull();
+      expect(component.value()).toBe('12:34');
+    });
+
+    it('drops the text and keeps the value on Escape mid-edit', () => {
+      component.writeValue('09:30');
+      fixture.detectChanges();
+
+      typeInField('1234');
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('09:30');
+      expect(getInput().value).toBe('09:30');
+    });
+
+    it('reads the localized period labels in 12h format', () => {
+      fixture.componentRef.setInput('format', '12h');
+      fixture.detectChanges();
+      const labels = TestBed.inject(EagamiI18nService).messages().timePicker;
+
+      typeInField(`3:15 ${labels.pmLabel}`);
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('15:15');
+    });
+
+    it('ignores typing while readonly', () => {
+      fixture.componentRef.setInput('readonly', true);
+      component.writeValue('09:30');
+      fixture.detectChanges();
+
+      getInput().dispatchEvent(new Event('input', { bubbles: true }));
+      getInput().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      expect(component.value()).toBe('09:30');
     });
   });
 
@@ -985,7 +1164,7 @@ describe('TimePickerComponent', () => {
       component.setDisabledState(true);
       fixture.detectChanges();
 
-      expect(getTrigger().disabled).toBe(true);
+      expect(getInput().disabled).toBe(true);
     });
   });
 

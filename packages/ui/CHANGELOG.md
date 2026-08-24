@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.36.0] - 2026-08-25
+
+### Changed
+
+- Allow typing a time straight into the time picker's field: hand-typed text is read leniently on Enter or blur, in 12- or 24-hour notation with or without separators, unreadable text falls back to the held value, and cleared text clears it.
+
 ## [5.35.0] - 2026-08-22
 
 ### Added
@@ -1518,6 +1524,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.36.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.35.0...ui-v5.36.0
 [5.35.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.34.0...ui-v5.35.0
 [5.34.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.33.0...ui-v5.34.0
 [5.33.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.32.0...ui-v5.33.0

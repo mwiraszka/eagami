@@ -4550,6 +4550,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'commitDigits(unit: Unit, digits: string): void',
       },
       {
+        name: 'commitTyped',
+        signature: 'commitTyped(): void',
+      },
+      {
         name: 'flushBuffer',
         signature: 'flushBuffer(): void',
       },
@@ -4585,6 +4589,10 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'onStepClick',
         signature:
           'onStepClick(unit: Unit, direction: "1" | unknown, event: MouseEvent): void',
+      },
+      {
+        name: 'onTriggerClick',
+        signature: 'onTriggerClick(): void',
       },
       {
         name: 'startHold',
