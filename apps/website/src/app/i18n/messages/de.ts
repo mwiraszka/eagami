@@ -2240,6 +2240,8 @@ export const de: WebMessages = {
               'Wird bei manualClose für jeden Schließversuch ausgelöst, ohne den Dialog zu schließen.',
             manualClose:
               'Meldet jedes Schließen über closeRequested und lässt den Dialog offen, bis open auf false gesetzt wird.',
+            modal:
+              'Zeigt den Dialog modal mit Backdrop an; bei false schwebt er nicht-modal und die Seite dahinter bleibt scrollbar und bedienbar.',
             closeDisabled:
               'Deaktiviert die eingebaute Schließen-Schaltfläche, etwa während ein Speichern läuft.',
             ariaLabel:

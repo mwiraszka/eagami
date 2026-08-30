@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.37.0',
+    date: '2026-08-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `modal` input to the dialog: when true (the default) the page behind is inert and cannot scroll, while false opens it non-modally via `show()`, floating with no backdrop, so the page behind stays scrollable and interactive.',
+          'Expand the icon set with two image-editing icons: contrast and rotate ccw square.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.36.0',
     date: '2026-08-25',
     sections: [

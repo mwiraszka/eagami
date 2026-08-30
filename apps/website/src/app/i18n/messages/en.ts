@@ -2135,6 +2135,8 @@ export const en: WebMessages = {
               'Fires under manualClose for every close the user asks for, leaving the dialog open.',
             manualClose:
               'Reports every close through closeRequested and leaves the dialog open until open is set false.',
+            modal:
+              'Shows the dialog as a modal with a backdrop; when false it floats non-modally, leaving the page behind scrollable and interactive.',
             closeDisabled:
               'Disables the built-in close button while a task is in flight; the other close routes have their own inputs.',
             ariaLabel:

@@ -3,7 +3,9 @@ import {
   type AfterContentChecked,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   type ElementRef,
+  HostListener,
   PLATFORM_ID,
   ViewEncapsulation,
   computed,
@@ -19,6 +21,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 import { PointerPressTracker } from '../pointer-press';
+import { ScrollLock } from '../scroll-lock';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -26,10 +29,20 @@ import { uniqueId } from '../unique-id';
 export type DialogWidth = EaWidth;
 
 /**
- * Modal dialog backed by the native `<dialog>` element. Uses `showModal()`
- * for browser-managed focus trapping, supports backdrop and Escape dismissal,
- * and exposes `header`, default, and `footer` content slots. The `open` state
- * is a two-way `model()` binding.
+ * Floating surfaces a click can land on without leaving the dialog's layer:
+ * another dialog, and the pieces the library teleports to `document.body`
+ * (popover surfaces, tooltips, toasts). A press on any of them is interaction
+ * with an overlay, not with the page behind, so it never reads as a dismissal.
+ */
+const FLOATING_SURFACES = 'dialog, .ea-popover__surface, .ea-tooltip, .ea-toast';
+
+/**
+ * Dialog backed by the native `<dialog>` element. Modal by default, using
+ * `showModal()` for browser-managed focus trapping with backdrop and Escape
+ * dismissal, and holding the page's scrolling for as long as it is up;
+ * `modal` false floats it over a page left scrollable instead. It exposes
+ * `header`, default, and `footer` content slots, and the `open` state is a
+ * two-way `model()` binding.
  *
  * The header is a row that lays its slot content out against the built-in
  * close button, and it applies the h4 type scale to that content, so a heading
@@ -57,8 +70,20 @@ export class DialogComponent implements AfterContentChecked {
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly press = inject(PointerPressTracker);
+  private readonly scrollLock = inject(ScrollLock);
+  private holdsScroll = false;
 
   readonly width = input<DialogWidth>('md');
+  /**
+   * Modal by default: shown via `showModal()`, with the backdrop overlay and
+   * the page behind made inert and held from scrolling. When false the dialog
+   * floats via `show()` instead, with no backdrop, leaving the page behind
+   * scrollable and interactive; Escape still closes (or reports) from inside
+   * the dialog, and `closeOnBackdrop` dismisses on a click landing outside
+   * the panel. Read when the dialog opens; flipping it while open has no
+   * effect.
+   */
+  readonly modal = input<boolean>(true);
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
@@ -114,17 +139,41 @@ export class DialogComponent implements AfterContentChecked {
       if (open) {
         if (!dialogRef.open) {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
-          dialogRef.showModal();
+          if (this.modal()) {
+            dialogRef.showModal();
+            this.holdScroll();
+          } else {
+            dialogRef.show();
+          }
           this.opened.emit();
         }
       } else {
         if (dialogRef.open) {
           dialogRef.close();
+          this.dropScroll();
           this.previouslyFocused?.focus?.();
           this.previouslyFocused = null;
         }
       }
     });
+
+    // A dialog taken down while open never sees its close, so the hold goes
+    // with the component
+    inject(DestroyRef).onDestroy(() => this.dropScroll());
+  }
+
+  private holdScroll(): void {
+    if (!this.holdsScroll) {
+      this.holdsScroll = true;
+      this.scrollLock.acquire();
+    }
+  }
+
+  private dropScroll(): void {
+    if (this.holdsScroll) {
+      this.holdsScroll = false;
+      this.scrollLock.release();
+    }
   }
 
   handleClose(): void {
@@ -154,6 +203,28 @@ export class DialogComponent implements AfterContentChecked {
     }
   }
 
+  // A non-modal dialog has no backdrop, so `closeOnBackdrop` dismisses on a
+  // click landing outside the panel instead. The native open flag stands off
+  // the opening click itself, which reaches here before the effect has shown
+  // the dialog
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const dialogRef = this.dialogEl()?.nativeElement;
+    if (this.modal() || !this.closeOnBackdrop() || !dialogRef?.open) {
+      return;
+    }
+    const target = event.target;
+    if (!(target instanceof Element) || target.closest(FLOATING_SURFACES)) {
+      return;
+    }
+    // A drag that started or ended on the panel (selecting text, dragging a
+    // slider) lands its click on an ancestor of both, which is not a dismissal
+    if (this.press.touchedInside(dialogRef)) {
+      return;
+    }
+    this.requestClose();
+  }
+
   handleCancel(event: Event): void {
     if (!this.closeOnEscape()) {
       event.preventDefault();
@@ -167,5 +238,14 @@ export class DialogComponent implements AfterContentChecked {
       return;
     }
     this.handleClose();
+  }
+
+  // Escape reaches a non-modal dialog only as a keydown, since `show()` never
+  // fires the native cancel; a modal one leaves it to `handleCancel`
+  protected handleEscape(): void {
+    if (this.modal() || !this.closeOnEscape()) {
+      return;
+    }
+    this.requestClose();
   }
 }

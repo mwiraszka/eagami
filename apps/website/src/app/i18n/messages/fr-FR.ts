@@ -2235,6 +2235,8 @@ export const frFR: WebMessages = {
               'Émis avec manualClose à chaque demande de fermeture, sans fermer la boîte.',
             manualClose:
               'Signale chaque fermeture via closeRequested et laisse la boîte ouverte jusqu’à ce que open passe à false.',
+            modal:
+              'Affiche le dialogue en mode modal avec un arrière-plan ; à false, il flotte en non modal et la page derrière reste défilable et interactive.',
             closeDisabled:
               'Désactive le bouton de fermeture intégré, par exemple pendant un enregistrement.',
             ariaLabel:

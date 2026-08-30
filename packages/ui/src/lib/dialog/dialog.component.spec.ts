@@ -11,6 +11,9 @@ beforeAll(() => {
   HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
+  HTMLDialogElement.prototype.show = vi.fn(function (this: HTMLDialogElement) {
+    this.setAttribute('open', '');
+  });
   HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
@@ -23,6 +26,7 @@ beforeAll(() => {
     <ea-dialog
       [(open)]="isOpen"
       [width]="width()"
+      [modal]="modal()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
       [showClose]="showClose()"
@@ -39,6 +43,7 @@ beforeAll(() => {
 class TestHostComponent {
   isOpen = signal(false);
   width = signal<DialogWidth>('md');
+  modal = signal(true);
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
@@ -218,6 +223,160 @@ describe('DialogComponent', () => {
 
       expect(event.defaultPrevented).toBe(true);
       expect(host.isOpen()).toBe(true);
+    });
+  });
+
+  describe('Non-modal', () => {
+    function openNonModal(): void {
+      host.modal.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+    }
+
+    it('opens via show() and floats itself', () => {
+      // The prototype spies live across tests, so only the delta says anything
+      const modalCalls = vi.mocked(HTMLDialogElement.prototype.showModal).mock.calls
+        .length;
+
+      openNonModal();
+
+      expect(HTMLDialogElement.prototype.show).toHaveBeenCalled();
+      expect(vi.mocked(HTMLDialogElement.prototype.showModal).mock.calls.length).toBe(
+        modalCalls,
+      );
+      expect(getDialog().classList).toContain('ea-dialog--floating');
+    });
+
+    it('closes on an Escape keydown, which show() never turns into a cancel', () => {
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('leaves Escape alone when closeOnEscape is false', () => {
+      host.closeOnEscape.set(false);
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('reports an Escape keydown instead of closing under manualClose', () => {
+      host.manualClose.set(true);
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(1);
+      expect(host.isOpen()).toBe(true);
+    });
+
+    function pressOn(down: Element, up: Element): void {
+      down.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+      up.dispatchEvent(new MouseEvent('pointerup', { bubbles: true }));
+      up.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    }
+
+    it('closes on a click landing outside the panel', () => {
+      openNonModal();
+
+      pressOn(document.body, document.body);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('does not close on a click inside the panel', () => {
+      openNonModal();
+
+      pressOn(getPanel(), getPanel());
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('does not close on a drag that started on the panel', () => {
+      openNonModal();
+
+      pressOn(getPanel(), document.body);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('does not close on a click inside another floating surface', () => {
+      openNonModal();
+      const surface = document.createElement('div');
+      surface.className = 'ea-popover__surface';
+      document.body.appendChild(surface);
+
+      pressOn(surface, surface);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+      surface.remove();
+    });
+
+    it('leaves outside clicks alone when closeOnBackdrop is false', () => {
+      host.closeOnBackdrop.set(false);
+      openNonModal();
+
+      pressOn(document.body, document.body);
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('reports an outside click instead of closing under manualClose', () => {
+      host.manualClose.set(true);
+      openNonModal();
+
+      pressOn(document.body, document.body);
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(1);
+      expect(host.isOpen()).toBe(true);
+    });
+  });
+
+  describe('Background scrolling', () => {
+    it('shuts off the page scroller while a modal dialog is up', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      expect(document.documentElement.style.overflow).toBe('hidden');
+
+      host.isOpen.set(false);
+      fixture.detectChanges();
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+
+    it('leaves the page scroller alone for a non-modal dialog', () => {
+      host.modal.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+
+    it('lets go of the scroller when a dialog is taken down while open', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      fixture.destroy();
+
+      expect(document.documentElement.style.overflow).toBe('');
     });
   });
 

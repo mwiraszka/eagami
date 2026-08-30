@@ -2195,6 +2195,8 @@ export const pl: WebMessages = {
               'Zgłaszane przy manualClose za każdym razem, gdy użytkownik chce zamknąć okno.',
             manualClose:
               'Zgłasza każde zamknięcie przez closeRequested i zostawia okno otwarte, dopóki open nie będzie false.',
+            modal:
+              'Wyświetla okno dialogowe jako modalne z tłem; przy false unosi się niemodalnie, a strona pod spodem pozostaje przewijalna i interaktywna.',
             closeDisabled:
               'Wyłącza wbudowany przycisk zamykania, na przykład podczas zapisywania.',
             ariaLabel:

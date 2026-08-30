@@ -2239,6 +2239,8 @@ export const esES: WebMessages = {
               'Se emite con manualClose cada vez que se pide cerrar, sin cerrar el diálogo.',
             manualClose:
               'Notifica cada cierre mediante closeRequested y mantiene el diálogo abierto hasta que open sea false.',
+            modal:
+              'Muestra el diálogo como modal con telón de fondo; con false flota de forma no modal y la página detrás sigue siendo desplazable e interactiva.',
             closeDisabled:
               'Desactiva el botón de cierre integrado, por ejemplo mientras se guarda.',
             ariaLabel:

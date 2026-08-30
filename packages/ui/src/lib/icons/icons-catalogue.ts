@@ -94,6 +94,7 @@ import { CoinsIconComponent } from './coins.component';
 import { ColumnsIconComponent } from './columns.component';
 import { CommandIconComponent } from './command.component';
 import { CompassIconComponent } from './compass.component';
+import { ContrastIconComponent } from './contrast.component';
 import { CopyIconComponent } from './copy.component';
 import { CornerDownLeftIconComponent } from './corner-down-left.component';
 import { CornerDownRightIconComponent } from './corner-down-right.component';
@@ -290,6 +291,7 @@ import { RepeatIconComponent } from './repeat.component';
 import { RewindIconComponent } from './rewind.component';
 import { RightHalfStarIconComponent } from './right-half-star.component';
 import { RocketIconComponent } from './rocket.component';
+import { RotateCcwSquareIconComponent } from './rotate-ccw-square.component';
 import { RotateCcwIconComponent } from './rotate-ccw.component';
 import { RotateCwIconComponent } from './rotate-cw.component';
 import { RssIconComponent } from './rss.component';
@@ -518,6 +520,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ColumnsIconComponent,
     CommandIconComponent,
     CompassIconComponent,
+    ContrastIconComponent,
     CopyIconComponent,
     CornerDownLeftIconComponent,
     CornerDownRightIconComponent,
@@ -714,6 +717,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     RightHalfStarIconComponent,
     RocketIconComponent,
     RotateCcwIconComponent,
+    RotateCcwSquareIconComponent,
     RotateCwIconComponent,
     RssIconComponent,
     SaveIconComponent,

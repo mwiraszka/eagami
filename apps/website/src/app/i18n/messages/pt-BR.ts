@@ -2213,6 +2213,8 @@ export const ptBR: WebMessages = {
               'Emitido com manualClose a cada pedido de fechamento, sem fechar o diálogo.',
             manualClose:
               'Informa cada fechamento por closeRequested e mantém o diálogo aberto até open virar false.',
+            modal:
+              'Mostra o diálogo como modal com pano de fundo; com false ele flutua de forma não modal e a página atrás continua rolável e interativa.',
             closeDisabled:
               'Desativa o botão de fechar interno, por exemplo enquanto um salvamento está em andamento.',
             ariaLabel:
