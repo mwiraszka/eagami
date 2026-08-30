@@ -1,7 +1,13 @@
 import { SliderComponent, type SliderSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -11,6 +17,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface SliderKnobState {
@@ -18,6 +25,7 @@ interface SliderKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  icon: string;
   size: SliderSize;
   min: number;
   max: number;
@@ -46,9 +54,15 @@ const SLUG = 'slider';
 })
 export class SliderDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.slider, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.slider, UI_API[SLUG]),
+    iconKnob(['sun', 'contrast', 'droplet', 'volume-2', 'gauge', 'thermometer']),
+  ];
   protected readonly state = signal<SliderKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.slider) as SliderKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected readonly control = new FormControl(null, {
