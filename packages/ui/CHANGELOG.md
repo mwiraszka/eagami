@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.38.0] - 2026-08-30
+
+### Added
+
+- Add an `icon` input to the slider and the field label, rendering an icon component before the label text.
+
 ## [5.37.0] - 2026-08-30
 
 ### Added
@@ -1531,6 +1537,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.38.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.37.0...ui-v5.38.0
 [5.37.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.36.0...ui-v5.37.0
 [5.36.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.35.0...ui-v5.36.0
 [5.35.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.34.0...ui-v5.35.0

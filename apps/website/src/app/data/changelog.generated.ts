@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.38.0',
+    date: '2026-08-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `icon` input to the slider and the field label, rendering an icon component before the label text.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.37.0',
     date: '2026-08-30',
     sections: [
