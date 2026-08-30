@@ -510,6 +510,12 @@ describe('DatePickerComponent calendar navigation', () => {
 
     it('does not snap the view back on the next arrow key', () => {
       open();
+      // Pinned mid-month: from a month's last days the arrow key legitimately
+      // crosses into the next month, so a wall-clock start flakes there
+      component.viewYear.set(2026);
+      component.viewMonth.set(0);
+      component.focusedDate.set(new Date(2026, 0, 15));
+      fixture.detectChanges();
       navButton('Next month').click();
       fixture.detectChanges();
       const monthAfterNav = component.viewMonth();
