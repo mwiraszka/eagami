@@ -6,6 +6,7 @@
       @if (label(); as labelText) {
         <ea-field-label
           [text]="labelText"
+          [icon]="icon()"
           [labelId]="id() + '-label'"
           [required]="required()" />
       }

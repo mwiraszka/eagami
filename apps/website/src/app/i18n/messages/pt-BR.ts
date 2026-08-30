@@ -1573,6 +1573,7 @@ export const ptBR: WebMessages = {
             hasError:
               'Força o estilo de estado de erro sem vincular uma mensagem de erro.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             id: 'id aplicado ao controle deslizante e seu rótulo, gerado automaticamente quando omitido.',
             label: 'Rótulo de texto renderizado acima do controle deslizante.',
             max: 'Valor mais alto que o controle deslizante pode alcançar.',
@@ -2197,6 +2198,7 @@ export const ptBR: WebMessages = {
           'field-label': {
             forId:
               'id do controle associado; renderiza um <label for> quando definido, caso contrário um <span>.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             labelId:
               'id aplicado ao elemento de rótulo renderizado para que os controles possam referenciá-lo via aria-labelledby.',
             required: 'Mostra um indicador de obrigatório no rótulo.',

@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SunIconComponent } from '../icons/sun.component';
 import { FieldLabelComponent } from './field-label.component';
 
 describe('FieldLabelComponent', () => {
@@ -46,5 +47,17 @@ describe('FieldLabelComponent', () => {
     fixture.detectChanges();
 
     expect(el.querySelector('.ea-field-label')?.id).toBe('email-label');
+  });
+
+  it('renders the icon before the label text, hidden from assistive tech', () => {
+    fixture.componentRef.setInput('icon', SunIconComponent);
+    fixture.detectChanges();
+
+    const label = el.querySelector('.ea-field-label')!;
+    const icon = label.querySelector('.ea-field-label__icon');
+
+    expect(icon?.querySelector('svg')).toBeTruthy();
+    expect(icon?.getAttribute('aria-hidden')).toBe('true');
+    expect(label.textContent).toContain('Email');
   });
 });

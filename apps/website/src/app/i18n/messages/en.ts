@@ -1537,6 +1537,7 @@ export const en: WebMessages = {
               'Formatter that turns the numeric value into the displayed text.',
             hasError: 'Forces the error-state styling without binding an error message.',
             hint: 'Helper text shown below the slider, hidden while an error is showing.',
+            icon: 'Optional icon component rendered before the label text.',
             id: 'id applied to the slider and its label, auto-generated when omitted.',
             label: 'Text label rendered above the slider.',
             max: 'Highest value the slider can reach.',
@@ -2119,6 +2120,7 @@ export const en: WebMessages = {
           'field-label': {
             forId:
               'id of the associated control; renders a <label for> when set, otherwise a <span>.',
+            icon: 'Optional icon component rendered before the label text.',
             labelId:
               'id applied to the rendered label element so controls can reference it via aria-labelledby.',
             required: 'Shows a required indicator on the label.',

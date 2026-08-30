@@ -1461,6 +1461,7 @@ export const zhCN: WebMessages = {
             formatValue: '将数值转换为所显示文本的格式化器。',
             hasError: '强制启用错误状态样式，无需绑定错误消息。',
             hint: '显示在滑块下方的辅助文本，在显示错误时隐藏。',
+            icon: '可选的图标组件，显示在标签文本之前。',
             id: '应用于滑块及其标签的 id，省略时自动生成。',
             label: '渲染在滑块上方的文本标签。',
             max: '滑块所能到达的最高值。',
@@ -1929,6 +1930,7 @@ export const zhCN: WebMessages = {
           },
           'field-label': {
             forId: '关联控件的 id；设置时渲染 <label for>，否则渲染 <span>。',
+            icon: '可选的图标组件，显示在标签文本之前。',
             labelId: '应用于已渲染标签元素的 id，使控件可通过 aria-labelledby 引用它。',
             required: '在标签上显示必填指示器。',
             text: '渲染在标签元素内的标签文本。',

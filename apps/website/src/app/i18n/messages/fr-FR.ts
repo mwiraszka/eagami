@@ -1585,6 +1585,7 @@ export const frFR: WebMessages = {
             formatValue: 'Formateur qui transforme la valeur numérique en texte affiché.',
             hasError: 'Force le style d’état d’erreur sans associer de message d’erreur.',
             hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             id: 'id appliqué au curseur et à son libellé, généré automatiquement si omis.',
             label: 'Libellé textuel rendu au-dessus du curseur.',
             max: 'Valeur la plus élevée que le curseur peut atteindre.',
@@ -2219,6 +2220,7 @@ export const frFR: WebMessages = {
           'field-label': {
             forId:
               'id du contrôle associé ; rend un <label for> si défini, sinon un <span>.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             labelId:
               'id appliqué à l’élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.',
             required: 'Affiche un indicateur de champ requis sur le libellé.',

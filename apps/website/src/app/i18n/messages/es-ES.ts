@@ -1587,6 +1587,7 @@ export const esES: WebMessages = {
             hasError:
               'Fuerza el estilo de estado de error sin vincular un mensaje de error.',
             hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
+            icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             id: 'id aplicado al control deslizante y a su etiqueta, generado automáticamente si se omite.',
             label: 'Etiqueta de texto mostrada encima del control deslizante.',
             max: 'Valor más alto que puede alcanzar el control deslizante.',
@@ -2223,6 +2224,7 @@ export const esES: WebMessages = {
           'field-label': {
             forId:
               'id del control asociado; renderiza un <label for> cuando está definido, de lo contrario un <span>.',
+            icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             labelId:
               'id aplicado al elemento de etiqueta renderizado para que los controles puedan referenciarlo mediante aria-labelledby.',
             required: 'Muestra un indicador de campo obligatorio en la etiqueta.',

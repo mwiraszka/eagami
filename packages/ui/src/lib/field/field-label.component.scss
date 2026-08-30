@@ -17,4 +17,12 @@
     content: ' *';
     color: var(--color-error-default);
   }
+
+  // Dropped a hair below the baseline, which optically centres a 1em icon on
+  // the label text without disturbing the line box
+  &__icon {
+    display: inline-flex;
+    vertical-align: -0.125em;
+    margin-inline-end: 0.375em;
+  }
 }

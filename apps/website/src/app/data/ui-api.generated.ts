@@ -1868,6 +1868,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelId',
         type: 'string | undefined',
         default: 'undefined',
@@ -3784,6 +3791,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'hint',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,

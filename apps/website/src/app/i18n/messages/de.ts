@@ -1588,6 +1588,7 @@ export const de: WebMessages = {
             hasError:
               'Erzwingt die Fehlerzustand-Stilisierung, ohne eine Fehlermeldung zu binden.',
             hint: 'Hilfetext unter dem Schieberegler, ausgeblendet, solange ein Fehler angezeigt wird.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             id: 'id, die auf den Schieberegler und sein Label angewendet wird, automatisch generiert, wenn weggelassen.',
             label: 'Textlabel, das über dem Schieberegler gerendert wird.',
             max: 'Höchster Wert, den der Schieberegler erreichen kann.',
@@ -2224,6 +2225,7 @@ export const de: WebMessages = {
           'field-label': {
             forId:
               'id der zugehörigen Steuerung; rendert ein <label for>, wenn gesetzt, andernfalls ein <span>.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             labelId:
               'id, die auf das gerenderte Label-Element angewendet wird, sodass Steuerungen es über aria-labelledby referenzieren können.',
             required: 'Zeigt eine Erforderlich-Anzeige auf dem Label.',

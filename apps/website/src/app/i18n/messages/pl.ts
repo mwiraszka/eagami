@@ -1566,6 +1566,7 @@ export const pl: WebMessages = {
             formatValue: 'Formater zamieniający wartość liczbową na wyświetlany tekst.',
             hasError: 'Wymusza stylizację stanu błędu bez wiązania komunikatu o błędzie.',
             hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             id: 'id stosowane do suwaka i jego etykiety, generowane automatycznie gdy pominięte.',
             label: 'Etykieta tekstowa renderowana nad suwakiem.',
             max: 'Najwyższa wartość, jaką może osiągnąć suwak.',
@@ -2179,6 +2180,7 @@ export const pl: WebMessages = {
           'field-label': {
             forId:
               'id powiązanego elementu sterującego; renderuje <label for> gdy ustawione, w przeciwnym razie <span>.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             labelId:
               'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',
             required: 'Wyświetla wskaźnik wymaganego pola na etykiecie.',

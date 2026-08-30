@@ -1576,6 +1576,7 @@ export const nl: WebMessages = {
               'Opmaakfunctie die de numerieke waarde omzet in de weergegeven tekst.',
             hasError: 'Forceert de fouttoestandsstijl zonder een foutmelding te binden.',
             hint: 'Hulptekst onder de slider, verborgen terwijl een fout wordt getoond.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             id: 'id toegepast op de slider en het label ervan, automatisch gegenereerd indien weggelaten.',
             label: 'Tekstlabel weergegeven boven de slider.',
             max: 'Hoogste waarde die de slider kan bereiken.',
@@ -2209,6 +2210,7 @@ export const nl: WebMessages = {
           'field-label': {
             forId:
               'id van de bijbehorende bediening; geeft een <label for> weer indien ingesteld, anders een <span>.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             labelId:
               'id toegepast op het weergegeven labelelement zodat bedieningen ernaar kunnen verwijzen via aria-labelledby.',
             required: 'Toont een verplicht-indicator op het label.',

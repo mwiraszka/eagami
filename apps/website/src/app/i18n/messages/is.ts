@@ -1554,6 +1554,7 @@ export const is: WebMessages = {
             formatValue: 'Sniðari sem breytir tölugildinu í birta textann.',
             hasError: 'Þvingar villuástandsstíl án þess að binda villuboð.',
             hint: 'Hjálpartexti sýndur fyrir neðan sleðann, falinn á meðan villa er sýnd.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             id: 'id sett á sleðann og merkimiða hans, sjálfvirkt búið til þegar því er sleppt.',
             label: 'Textamerkimiði birtur fyrir ofan sleðann.',
             max: 'Hæsta gildi sem sleðinn getur náð.',
@@ -2147,6 +2148,7 @@ export const is: WebMessages = {
           'field-label': {
             forId:
               'id tengdu stýringarinnar; birtir <label for> þegar sett, annars <span>.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             labelId:
               'id sett á birta merkimiðastakið svo stýringar geti vísað í það með aria-labelledby.',
             required: 'Sýnir nauðsynlegan vísi á merkimiðanum.',
