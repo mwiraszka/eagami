@@ -2163,6 +2163,8 @@ export const is: WebMessages = {
               'Kviknar með manualClose í hvert sinn sem beðið er um lokun, án þess að loka.',
             manualClose:
               'Tilkynnir hverja lokun með closeRequested og heldur glugganum opnum þar til open verður false.',
+            modal:
+              'Sýnir gluggann sem mótalglugga með bakgrunni; ef false svífur hann ómótal og síðan fyrir aftan er áfram skrunanleg og gagnvirk.',
             closeDisabled:
               'Slekkur á innbyggða lokunarhnappnum, til dæmis meðan verið er að vista.',
             ariaLabel:

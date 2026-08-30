@@ -11,6 +11,9 @@ beforeAll(() => {
   HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
     this.setAttribute('open', '');
   });
+  HTMLDialogElement.prototype.show = vi.fn(function (this: HTMLDialogElement) {
+    this.setAttribute('open', '');
+  });
   HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
     this.removeAttribute('open');
   });
@@ -23,6 +26,7 @@ beforeAll(() => {
     <ea-dialog
       [(open)]="isOpen"
       [width]="width()"
+      [modal]="modal()"
       [closeOnBackdrop]="closeOnBackdrop()"
       [closeOnEscape]="closeOnEscape()"
       [showClose]="showClose()"
@@ -39,6 +43,7 @@ beforeAll(() => {
 class TestHostComponent {
   isOpen = signal(false);
   width = signal<DialogWidth>('md');
+  modal = signal(true);
   closeOnBackdrop = signal(true);
   closeOnEscape = signal(true);
   showClose = signal(true);
@@ -217,6 +222,64 @@ describe('DialogComponent', () => {
       fixture.detectChanges();
 
       expect(event.defaultPrevented).toBe(true);
+      expect(host.isOpen()).toBe(true);
+    });
+  });
+
+  describe('Non-modal', () => {
+    function openNonModal(): void {
+      host.modal.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+    }
+
+    it('opens via show() and floats itself', () => {
+      // The prototype spies live across tests, so only the delta says anything
+      const modalCalls = vi.mocked(HTMLDialogElement.prototype.showModal).mock.calls
+        .length;
+
+      openNonModal();
+
+      expect(HTMLDialogElement.prototype.show).toHaveBeenCalled();
+      expect(vi.mocked(HTMLDialogElement.prototype.showModal).mock.calls.length).toBe(
+        modalCalls,
+      );
+      expect(getDialog().classList).toContain('ea-dialog--floating');
+    });
+
+    it('closes on an Escape keydown, which show() never turns into a cancel', () => {
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('leaves Escape alone when closeOnEscape is false', () => {
+      host.closeOnEscape.set(false);
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+    });
+
+    it('reports an Escape keydown instead of closing under manualClose', () => {
+      host.manualClose.set(true);
+      openNonModal();
+
+      getDialog().dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(host.closeRequests()).toBe(1);
       expect(host.isOpen()).toBe(true);
     });
   });

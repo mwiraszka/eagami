@@ -26,9 +26,10 @@ import { uniqueId } from '../unique-id';
 export type DialogWidth = EaWidth;
 
 /**
- * Modal dialog backed by the native `<dialog>` element. Uses `showModal()`
- * for browser-managed focus trapping, supports backdrop and Escape dismissal,
- * and exposes `header`, default, and `footer` content slots. The `open` state
+ * Dialog backed by the native `<dialog>` element. Modal by default, using
+ * `showModal()` for browser-managed focus trapping with backdrop and Escape
+ * dismissal; `modal` false floats it over a page left scrollable instead. It
+ * exposes `header`, default, and `footer` content slots, and the `open` state
  * is a two-way `model()` binding.
  *
  * The header is a row that lays its slot content out against the built-in
@@ -59,6 +60,15 @@ export class DialogComponent implements AfterContentChecked {
   private readonly press = inject(PointerPressTracker);
 
   readonly width = input<DialogWidth>('md');
+  /**
+   * Modal by default: shown via `showModal()`, with the backdrop overlay and
+   * the page behind made inert. When false the dialog floats via `show()`
+   * instead, with no backdrop, leaving the page behind scrollable and
+   * interactive; Escape still closes (or reports) from inside the dialog,
+   * while `closeOnBackdrop` has no backdrop to act on. Read when the dialog
+   * opens; flipping it while open has no effect.
+   */
+  readonly modal = input<boolean>(true);
   readonly closeOnBackdrop = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
   readonly showClose = input<boolean>(true);
@@ -114,7 +124,11 @@ export class DialogComponent implements AfterContentChecked {
       if (open) {
         if (!dialogRef.open) {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
-          dialogRef.showModal();
+          if (this.modal()) {
+            dialogRef.showModal();
+          } else {
+            dialogRef.show();
+          }
           this.opened.emit();
         }
       } else {
@@ -167,5 +181,14 @@ export class DialogComponent implements AfterContentChecked {
       return;
     }
     this.handleClose();
+  }
+
+  // Escape reaches a non-modal dialog only as a keydown, since `show()` never
+  // fires the native cancel; a modal one leaves it to `handleCancel`
+  protected handleEscape(): void {
+    if (this.modal() || !this.closeOnEscape()) {
+      return;
+    }
+    this.requestClose();
   }
 }

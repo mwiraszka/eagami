@@ -12,6 +12,7 @@ export const DIALOG_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'],
     },
+    modal: { control: 'boolean' },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEscape: { control: 'boolean' },
     showClose: { control: 'boolean' },
@@ -23,6 +24,7 @@ export const DIALOG_KNOBS: ComponentKnobs = {
   },
   args: {
     width: 'md',
+    modal: true,
     closeOnBackdrop: true,
     closeOnEscape: true,
     showClose: true,

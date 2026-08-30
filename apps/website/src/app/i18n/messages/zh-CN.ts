@@ -1942,6 +1942,8 @@ export const zhCN: WebMessages = {
             closeRequested: '在 manualClose 下，每次用户请求关闭时触发，且不关闭对话框。',
             manualClose:
               '通过 closeRequested 报告每次关闭请求，在 open 置为 false 之前保持对话框打开。',
+            modal:
+              '以模态方式显示对话框并带有背景遮罩；为 false 时以非模态方式浮动，后面的页面仍可滚动和交互。',
             closeDisabled: '禁用内置的关闭按钮，例如在保存过程中。',
             ariaLabel: '当对话框的页眉插槽不含可见标题时，为对话框提供的无障碍标签。',
             closeOnBackdrop: '当用户点击面板外的背景遮罩区域时关闭对话框。',

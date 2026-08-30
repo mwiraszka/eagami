@@ -2225,6 +2225,8 @@ export const nl: WebMessages = {
               'Wordt bij manualClose gemeld bij elke sluitpoging, zonder te sluiten.',
             manualClose:
               'Meldt elke sluitpoging via closeRequested en houdt het dialoogvenster open tot open false is.',
+            modal:
+              'Toont de dialoog modaal met een achtergrond; bij false zweeft hij niet-modaal en blijft de pagina erachter scrollbaar en interactief.',
             closeDisabled:
               'Schakelt de ingebouwde sluitknop uit, bijvoorbeeld tijdens het opslaan.',
             ariaLabel:

@@ -13,6 +13,15 @@
     background-color: var(--color-bg-overlay);
   }
 
+  // A non-modal dialog sits outside the top layer, so it floats itself
+  &--floating {
+    z-index: var(--z-index-modal);
+    position: fixed;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+  }
+
   &__panel {
     --_ea-dialog-inset: var(--ea-dialog-inset, var(--space-4));
 

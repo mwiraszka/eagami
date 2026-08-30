@@ -18,6 +18,7 @@ interface DialogKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   width: DialogWidth;
+  modal: boolean;
   closeOnBackdrop: boolean;
   closeOnEscape: boolean;
   showClose: boolean;
