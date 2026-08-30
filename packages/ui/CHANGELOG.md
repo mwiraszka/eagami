@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.37.0] - 2026-08-30
+
+### Added
+
+- Add a `modal` input to the dialog: when false it opens non-modally via `show()`, floating with no backdrop, so the page behind stays scrollable and interactive.
+- Expand the icon set with two image-editing icons: contrast and rotate ccw square.
+
 ## [5.36.0] - 2026-08-25
 
 ### Changed
@@ -1524,6 +1531,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.37.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.36.0...ui-v5.37.0
 [5.36.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.35.0...ui-v5.36.0
 [5.35.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.34.0...ui-v5.35.0
 [5.34.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.33.0...ui-v5.34.0
