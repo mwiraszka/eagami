@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { FileUploaderComponent } from './file-uploader.component';
 import { FILE_UPLOADER_KNOBS } from './file-uploader.component.knobs';
 
@@ -19,7 +19,7 @@ const meta: Meta<FileUploaderComponent> = {
     ...FILE_UPLOADER_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...FILE_UPLOADER_KNOBS.args, labelIcon: 'none' },
+  args: { ...FILE_UPLOADER_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
 };
 
 export default meta;

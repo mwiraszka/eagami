@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { ColorPickerComponent } from './color-picker.component';
 import { COLOR_PICKER_KNOBS } from './color-picker.component.knobs';
 
@@ -19,7 +19,7 @@ const meta: Meta<ColorPickerComponent> = {
     ...COLOR_PICKER_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...COLOR_PICKER_KNOBS.args, labelIcon: 'none' },
+  args: { ...COLOR_PICKER_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
 };
 
 export default meta;

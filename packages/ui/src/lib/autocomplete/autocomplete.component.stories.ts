@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { AutocompleteComponent } from './autocomplete.component';
 import { AUTOCOMPLETE_KNOBS } from './autocomplete.component.knobs';
 
@@ -45,7 +45,7 @@ const meta: Meta<AutocompleteComponent> = {
   },
   args: {
     ...AUTOCOMPLETE_KNOBS.args,
-    labelIcon: 'none',
+    labelIcon: LABEL_ICON_STORY_NONE,
     label: 'Country',
     options: countries,
   },

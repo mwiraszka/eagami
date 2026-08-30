@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { RatingComponent } from './rating.component';
 import { RATING_KNOBS } from './rating.component.knobs';
 
@@ -19,7 +19,7 @@ const meta: Meta<RatingComponent> = {
     ...RATING_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...RATING_KNOBS.args, labelIcon: 'none' },
+  args: { ...RATING_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
 };
 
 export default meta;

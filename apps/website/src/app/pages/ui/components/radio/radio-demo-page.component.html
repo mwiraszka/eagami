@@ -10,13 +10,14 @@
     (resetClicked)="reset()">
     <ea-radio-group
       class="demo-reserve-messages"
+      label="Fruit"
       [formControl]="control"
       value="apple"
+      [labelIcon]="labelIconComponent()"
       [size]="state().size">
       <ea-radio
         value="apple"
-        [label]="state().label"
-        [labelIcon]="labelIconComponent()" />
+        [label]="state().label" />
     </ea-radio-group>
   </web-component-playground>
 </web-ui-component-demo-layout>

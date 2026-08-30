@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { SliderComponent } from './slider.component';
 import { SLIDER_KNOBS } from './slider.component.knobs';
 
@@ -16,7 +16,7 @@ const meta: Meta<SliderComponent> = {
     ...SLIDER_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...SLIDER_KNOBS.args, labelIcon: 'none' },
+  args: { ...SLIDER_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
 };
 
 export default meta;

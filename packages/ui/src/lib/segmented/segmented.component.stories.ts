@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import type { SelectOption } from '../select-option';
 import { SegmentedComponent } from './segmented.component';
 import { SEGMENTED_KNOBS } from './segmented.component.knobs';
@@ -25,7 +25,7 @@ const meta: Meta<SegmentedComponent> = {
   },
   args: {
     ...SEGMENTED_KNOBS.args,
-    labelIcon: 'none',
+    labelIcon: LABEL_ICON_STORY_NONE,
     options: viewOptions,
     value: 'list',
   },

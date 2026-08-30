@@ -1,3 +1,5 @@
+import type { Type } from '@angular/core';
+
 import { LABEL_ICON_SLUGS } from '../playground-knobs';
 import { CalendarIconComponent } from './icons/calendar.component';
 import { ContrastIconComponent } from './icons/contrast.component';
@@ -26,3 +28,10 @@ export const LABEL_ICON_STORY_ARGTYPE = {
     calendar: CalendarIconComponent,
   },
 };
+
+/**
+ * The slug a story's `labelIcon` arg starts on. The arg carries a slug the
+ * control maps to a class, while Storybook types it as the input's component
+ * class, so this one contained cast bridges the two for every story.
+ */
+export const LABEL_ICON_STORY_NONE = 'none' as unknown as Type<unknown>;
