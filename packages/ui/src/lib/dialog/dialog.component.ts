@@ -5,6 +5,7 @@ import {
   Component,
   DestroyRef,
   type ElementRef,
+  HostListener,
   PLATFORM_ID,
   ViewEncapsulation,
   computed,
@@ -26,6 +27,14 @@ import { uniqueId } from '../unique-id';
 
 /** Width preset of the dialog panel. */
 export type DialogWidth = EaWidth;
+
+/**
+ * Floating surfaces a click can land on without leaving the dialog's layer:
+ * another dialog, and the pieces the library teleports to `document.body`
+ * (popover surfaces, tooltips, toasts). A press on any of them is interaction
+ * with an overlay, not with the page behind, so it never reads as a dismissal.
+ */
+const FLOATING_SURFACES = 'dialog, .ea-popover__surface, .ea-tooltip, .ea-toast';
 
 /**
  * Dialog backed by the native `<dialog>` element. Modal by default, using
@@ -70,8 +79,9 @@ export class DialogComponent implements AfterContentChecked {
    * the page behind made inert and held from scrolling. When false the dialog
    * floats via `show()` instead, with no backdrop, leaving the page behind
    * scrollable and interactive; Escape still closes (or reports) from inside
-   * the dialog, while `closeOnBackdrop` has no backdrop to act on. Read when
-   * the dialog opens; flipping it while open has no effect.
+   * the dialog, and `closeOnBackdrop` dismisses on a click landing outside
+   * the panel. Read when the dialog opens; flipping it while open has no
+   * effect.
    */
   readonly modal = input<boolean>(true);
   readonly closeOnBackdrop = input<boolean>(true);
@@ -191,6 +201,28 @@ export class DialogComponent implements AfterContentChecked {
     if (event.target === dialogRef && this.press.stayedOn(dialogRef)) {
       this.requestClose();
     }
+  }
+
+  // A non-modal dialog has no backdrop, so `closeOnBackdrop` dismisses on a
+  // click landing outside the panel instead. The native open flag stands off
+  // the opening click itself, which reaches here before the effect has shown
+  // the dialog
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const dialogRef = this.dialogEl()?.nativeElement;
+    if (this.modal() || !this.closeOnBackdrop() || !dialogRef?.open) {
+      return;
+    }
+    const target = event.target;
+    if (!(target instanceof Element) || target.closest(FLOATING_SURFACES)) {
+      return;
+    }
+    // A drag that started or ended on the panel (selecting text, dragging a
+    // slider) lands its click on an ancestor of both, which is not a dismissal
+    if (this.press.touchedInside(dialogRef)) {
+      return;
+    }
+    this.requestClose();
   }
 
   handleCancel(event: Event): void {
