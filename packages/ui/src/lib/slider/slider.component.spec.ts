@@ -1,5 +1,6 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SunIconComponent } from '../icons/sun.component';
 import { SliderComponent } from './slider.component';
 
 describe('SliderComponent', () => {
@@ -38,6 +39,16 @@ describe('SliderComponent', () => {
 
       const labels = fixture.nativeElement.querySelectorAll('.ea-slider__minmax-label');
       expect(labels.length).toBe(2);
+    });
+
+    it('hands the icon to the field label', () => {
+      fixture.componentRef.setInput('label', 'Brightness');
+      fixture.componentRef.setInput('labelIcon', SunIconComponent);
+      fixture.detectChanges();
+
+      expect(
+        fixture.nativeElement.querySelector('.ea-field-label__icon svg'),
+      ).toBeTruthy();
     });
 
     it('shows the value with showValue even when no label is set', () => {

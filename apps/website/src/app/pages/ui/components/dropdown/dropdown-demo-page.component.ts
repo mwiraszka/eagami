@@ -4,7 +4,7 @@ import {
   type SelectOption,
   type SelectOptions,
 } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -24,6 +24,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
@@ -32,6 +33,7 @@ interface DropdownKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   placeholder: string;
   size: DropdownSize;
   disabled: boolean;
@@ -62,7 +64,10 @@ export class DropdownDemoPageComponent {
   private readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+  ];
   protected readonly state = signal<DropdownKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as DropdownKnobState,
   );
@@ -100,6 +105,10 @@ export class DropdownDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as DropdownKnobState);

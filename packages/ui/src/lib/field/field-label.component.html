@@ -4,13 +4,24 @@
     [for]="control"
     [attr.id]="labelId() ?? null"
     [class.ea-field-label--required]="required()">
-    {{ text() }}
+    <ng-container [ngTemplateOutlet]="content" />
   </label>
 } @else {
   <span
     class="ea-field-label"
     [attr.id]="labelId() ?? null"
     [class.ea-field-label--required]="required()">
-    {{ text() }}
+    <ng-container [ngTemplateOutlet]="content" />
   </span>
 }
+
+<ng-template #content>
+  @if (icon(); as iconComponent) {
+    <span
+      class="ea-field-label__icon"
+      aria-hidden="true">
+      <ng-container *ngComponentOutlet="iconComponent" />
+    </span>
+  }
+  {{ text() }}
+</ng-template>

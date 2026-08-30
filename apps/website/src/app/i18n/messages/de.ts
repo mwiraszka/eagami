@@ -1251,6 +1251,8 @@ export const de: WebMessages = {
               'id der aktiven Option im gesteuerten Popup, weitergereicht als aria-activedescendant.',
             ariaAutocomplete:
               'Hinweis auf das Autovervollständigungsverhalten, weitergereicht als aria-autocomplete.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             type: 'Nativer Input-Typ (password fügt einen integrierten Anzeigen/Verbergen-Umschalter hinzu).',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
@@ -1288,6 +1290,8 @@ export const de: WebMessages = {
           'number-input': {
             allowNegative:
               'Ob negative Werte erlaubt sind; bei false wird der Wert auf 0 begrenzt.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             size: 'Visuelle Größe des Feldes.',
@@ -1393,6 +1397,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf die Ziffernzellen und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             length: 'Anzahl der Ziffernzellen, aus denen der Code besteht.',
             placeholder: 'Platzhaltertext, ein Zeichen pro Zelle verteilt.',
@@ -1416,6 +1422,8 @@ export const de: WebMessages = {
             format: 'Ausgabeformat des emittierten Farbwerts (hex, rgb oder hsl).',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             placeholder:
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Farbe ausgewählt ist.',
@@ -1518,6 +1526,8 @@ export const de: WebMessages = {
               'Formatierer, der auf jeden Wert angewendet wird, bevor er angezeigt wird.',
             hint: 'Hilfetext unter dem Schieberegler, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf den Schieberegler angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Schieberegler gerendert wird.',
             max: 'Höchster Wert, den jeder Regler erreichen kann.',
             min: 'Niedrigster Wert, den jeder Regler erreichen kann.',
@@ -1552,6 +1562,8 @@ export const de: WebMessages = {
             iconClass:
               'Eigenständige Komponentenklasse, die für leere und volle Positionen gerendert wird.',
             id: 'id, die auf die Bewertung und ihr Label angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über der Bewertung gerendert wird.',
             max: 'Höchster Bewertungswert und Anzahl der gerenderten Sterne.',
             min: 'Niedrigster Bewertungswert, den der Nutzer auswählen kann.',
@@ -1588,6 +1600,8 @@ export const de: WebMessages = {
             hasError:
               'Erzwingt die Fehlerzustand-Stilisierung, ohne eine Fehlermeldung zu binden.',
             hint: 'Hilfetext unter dem Schieberegler, ausgeblendet, solange ein Fehler angezeigt wird.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             id: 'id, die auf den Schieberegler und sein Label angewendet wird, automatisch generiert, wenn weggelassen.',
             label: 'Textlabel, das über dem Schieberegler gerendert wird.',
             max: 'Höchster Wert, den der Schieberegler erreichen kann.',
@@ -1653,6 +1667,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf das native Textarea und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxHeight:
               'Pixelobergrenze für die Höhe des Feldes; darüber hinaus scrollt das Textarea vertikal, statt zu wachsen.',
@@ -1737,6 +1753,8 @@ export const de: WebMessages = {
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
             includeSeconds: 'Zeigt eine Sekundenspalte neben Stunden und Minuten.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             minuteStep:
               'Schrittweite, an die die Minutenspalte beim Stufen oder Ziehen einrastet.',
@@ -1787,6 +1805,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf das native Input und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxResults:
               'Maximale Anzahl der Optionen, die gleichzeitig in der Vorschlagsliste angezeigt werden.',
@@ -1853,6 +1873,8 @@ export const de: WebMessages = {
             format: 'Anzeigeformat des ausgewählten Datums (short, medium oder long).',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf das Feld und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             locale:
               'BCP-47-Sprach-Tag, das für die Datumsformatierung verwendet wird, mit dem globalen Sprachraum als Standard, wenn weggelassen.',
@@ -1919,6 +1941,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxVisibleChips:
               'Maximale Anzahl der Chips, die im Auslöser angezeigt werden, bevor der Rest in eine Zähl-Pille zusammenklappt.',
@@ -1962,6 +1986,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf den Auslöser und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             options:
               'Liste der auswählbaren Optionen, die in der Dropdown-Liste gerendert werden, flach oder in Gruppen unterteilt.',
@@ -1989,6 +2015,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf die Dropzone und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
             maxFiles:
               'Maximale Gesamtzahl der Dateien; Dateien über dem Limit werden abgelehnt.',
@@ -2016,6 +2044,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter dem Steuerelement, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter dem Steuerelement, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id-Basis für die Verdrahtung von Label und Meldung, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Steuerelement gerendert wird.',
             required: 'Kennzeichnet das Feld als erforderlich.',
           },
@@ -2125,6 +2155,8 @@ export const de: WebMessages = {
               'Fehlermeldung unter der Gruppe, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
             hint: 'Hilfetext unter der Gruppe, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf das Gruppenelement und sein Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über der Gruppe gerendert wird.',
             name: 'Gemeinsames name-Attribut, das auf alle Radio-Inputs in der Gruppe angewendet wird, automatisch generiert, wenn weggelassen.',
             orientation: 'Layout-Richtung der Radio-Optionen innerhalb der Gruppe.',
@@ -2144,6 +2176,8 @@ export const de: WebMessages = {
             fullWidth: 'Streckt die Steuerung, um die Breite ihres Containers zu füllen.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             id: 'id, die auf die Steuerung und das Label for angewendet wird, automatisch generiert, wenn weggelassen.',
+            labelIcon:
+              'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über der Steuerung gerendert wird.',
             options:
               'Array von Optionen, die als Umschalt-Buttons innerhalb der Steuerung gerendert werden.',
@@ -2224,6 +2258,7 @@ export const de: WebMessages = {
           'field-label': {
             forId:
               'id der zugehörigen Steuerung; rendert ein <label for>, wenn gesetzt, andernfalls ein <span>.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             labelId:
               'id, die auf das gerenderte Label-Element angewendet wird, sodass Steuerungen es über aria-labelledby referenzieren können.',
             required: 'Zeigt eine Erforderlich-Anzeige auf dem Label.',

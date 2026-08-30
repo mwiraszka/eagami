@@ -1246,6 +1246,7 @@ export const pl: WebMessages = {
               'id aktywnej opcji w kontrolowanym okienku, przekazywane jako aria-activedescendant.',
             ariaAutocomplete:
               'Wskazówka zachowania autouzupełniania, przekazywana jako aria-autocomplete.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             type: 'Natywny typ pola (password dodaje wbudowany przycisk pokaż/ukryj).',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
@@ -1283,6 +1284,7 @@ export const pl: WebMessages = {
           'number-input': {
             allowNegative:
               'Czy dozwolone są wartości ujemne; gdy false, wartość ma dolną granicę 0.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             size: 'Wizualny rozmiar pola.',
@@ -1384,6 +1386,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do komórek cyfr i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             length: 'Liczba komórek cyfr, z których składa się kod.',
             placeholder: 'Tekst zastępczy rozłożony po jednym znaku na komórkę.',
@@ -1406,6 +1409,7 @@ export const pl: WebMessages = {
             format: 'Format wyjściowy emitowanej wartości koloru (hex, rgb lub hsl).',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             placeholder:
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano koloru.',
@@ -1500,6 +1504,7 @@ export const pl: WebMessages = {
             formatValue: 'Formater stosowany do każdej wartości przed jej wyświetleniem.',
             hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
             id: 'id stosowane do suwaka, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad suwakiem.',
             max: 'Najwyższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
             min: 'Najniższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
@@ -1532,6 +1537,7 @@ export const pl: WebMessages = {
             iconClass:
               'Klasa komponentu standalone renderowana dla pozycji pustych i pełnych.',
             id: 'id stosowane do oceny i jej etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad oceną.',
             max: 'Najwyższa wartość oceny i liczba renderowanych gwiazdek.',
             min: 'Najniższa wartość oceny, jaką użytkownik może wybrać.',
@@ -1566,6 +1572,7 @@ export const pl: WebMessages = {
             formatValue: 'Formater zamieniający wartość liczbową na wyświetlany tekst.',
             hasError: 'Wymusza stylizację stanu błędu bez wiązania komunikatu o błędzie.',
             hint: 'Tekst pomocniczy pod suwakiem, ukryty gdy występuje błąd.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             id: 'id stosowane do suwaka i jego etykiety, generowane automatycznie gdy pominięte.',
             label: 'Etykieta tekstowa renderowana nad suwakiem.',
             max: 'Najwyższa wartość, jaką może osiągnąć suwak.',
@@ -1630,6 +1637,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do natywnego pola textarea i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxHeight:
               'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
@@ -1712,6 +1720,7 @@ export const pl: WebMessages = {
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do wyzwalacza i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             includeSeconds: 'Wyświetla kolumnę sekund obok godzin i minut.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             minuteStep:
               'Przyrost, do którego kolumna minut przyciąga się podczas kroku lub przeciągania.',
@@ -1763,6 +1772,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do natywnego pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             maxResults:
               'Maksymalna liczba opcji wyświetlanych jednocześnie na liście sugestii.',
@@ -1827,6 +1837,7 @@ export const pl: WebMessages = {
             format: 'Format wyświetlania wybranej daty (short, medium lub long).',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do pola i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             locale:
               'Znacznik locale BCP 47 używany do formatowania dat, domyślnie globalna locale gdy pominięty.',
@@ -1888,6 +1899,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             maxVisibleChips:
               'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
@@ -1929,6 +1941,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
             options:
               'Lista opcji do wyboru renderowanych na liście rozwijanej, płaska lub podzielona na grupy.',
@@ -1954,6 +1967,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do strefy upuszczania i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad polem.',
             maxFiles: 'Maksymalna łączna liczba plików; nadmiarowe pliki są odrzucane.',
             maxSize: 'Maksymalny rozmiar pliku w bajtach; większe pliki są odrzucane.',
@@ -1979,6 +1993,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod kontrolką, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod kontrolką, ukryty gdy występuje błąd.',
             id: 'Podstawa id do powiązania etykiety i komunikatów, generowana automatycznie gdy pominięta.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad kontrolką.',
             required: 'Oznacza pole jako wymagane.',
           },
@@ -2085,6 +2100,7 @@ export const pl: WebMessages = {
               'Komunikat o błędzie pod grupą, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
             hint: 'Tekst pomocniczy pod grupą, ukryty gdy występuje błąd.',
             id: 'id stosowane do elementu grupy i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad grupą.',
             name: 'Wspólny atrybut name stosowany do wszystkich pól radio w grupie, generowany automatycznie gdy pominięty.',
             orientation: 'Kierunek układu opcji radio w grupie.',
@@ -2103,6 +2119,7 @@ export const pl: WebMessages = {
             fullWidth: 'Rozciąga kontrolkę, aby wypełniła szerokość swojego kontenera.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             id: 'id stosowane do kontrolki i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
+            labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad kontrolką.',
             options:
               'Tablica opcji renderowanych jako przyciski przełączające w kontrolce.',
@@ -2179,6 +2196,7 @@ export const pl: WebMessages = {
           'field-label': {
             forId:
               'id powiązanego elementu sterującego; renderuje <label for> gdy ustawione, w przeciwnym razie <span>.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             labelId:
               'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',
             required: 'Wyświetla wskaźnik wymaganego pola na etykiecie.',

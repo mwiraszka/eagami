@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  type Type,
   ViewEncapsulation,
   afterNextRender,
   computed,
@@ -53,6 +54,8 @@ export class FormFieldComponent {
 
   /** Text label rendered above the control. */
   readonly label = input<string | undefined>(undefined);
+  /** Optional icon component rendered before the label text. */
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Helper text shown below the control; hidden while an error is showing. */
   readonly hint = input<string | undefined>(undefined);
   /** Error message shown below the control; replaces the hint and flags the field invalid. */

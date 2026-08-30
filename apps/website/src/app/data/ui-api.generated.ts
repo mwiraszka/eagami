@@ -209,6 +209,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'maxResults',
         type: 'number',
         default: '10',
@@ -866,6 +873,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'length',
         type: 'number',
         default: '6',
@@ -986,6 +1000,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -1310,6 +1331,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -1695,6 +1723,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'options',
         type: 'SelectOptions',
         default: '[]',
@@ -1868,6 +1903,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelId',
         type: 'string | undefined',
         default: 'undefined',
@@ -1968,6 +2010,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -2093,6 +2142,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -2226,6 +2282,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -2566,6 +2629,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'maxChipWidth',
         type: 'number | undefined',
         default: '200',
@@ -2775,6 +2845,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -3253,6 +3330,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'name',
         type: 'string',
         default: '(auto-generated)',
@@ -3373,6 +3457,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -3528,6 +3619,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'max',
         type: 'number',
         default: '5',
@@ -3645,6 +3743,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -3798,6 +3903,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -4339,6 +4451,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'maxHeight',
         type: 'number | undefined',
         default: 'undefined',
@@ -4480,6 +4599,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelIcon',
+        type: 'Type<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,

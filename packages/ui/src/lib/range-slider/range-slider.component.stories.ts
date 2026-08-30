@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { RangeSliderComponent } from './range-slider.component';
 import { RANGE_SLIDER_KNOBS } from './range-slider.component.knobs';
 
@@ -11,8 +12,11 @@ const meta: Meta<RangeSliderComponent> = {
     props: args,
     template: `<ea-range-slider ${argsToTemplate(args)} />`,
   }),
-  argTypes: RANGE_SLIDER_KNOBS.argTypes,
-  args: RANGE_SLIDER_KNOBS.args,
+  argTypes: {
+    ...RANGE_SLIDER_KNOBS.argTypes,
+    labelIcon: LABEL_ICON_STORY_ARGTYPE,
+  },
+  args: { ...RANGE_SLIDER_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
 };
 
 export default meta;

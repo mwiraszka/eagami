@@ -1,7 +1,13 @@
 import { RadioComponent, RadioGroupComponent, type RadioSize } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -11,6 +17,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface RadioKnobState {
@@ -18,6 +25,7 @@ interface RadioKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   size: RadioSize;
   disabled: boolean;
   triggerError: boolean;
@@ -39,7 +47,10 @@ const SLUG = 'radio';
 })
 export class RadioDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.radio, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.radio, UI_API[SLUG]),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+  ];
   protected readonly state = signal<RadioKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.radio) as RadioKnobState,
   );
@@ -66,6 +77,10 @@ export class RadioDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

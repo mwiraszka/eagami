@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type Type,
   computed,
   forwardRef,
   inject,
@@ -63,6 +64,10 @@ export class AutocompleteComponent implements ControlValueAccessor {
   private readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
+
+  /** Optional icon component rendered before the label text. */
+
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Accessible name for the input and suggestion list when no visible label is provided. */
   readonly ariaLabel = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');

@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.38.0',
+    date: '2026-08-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `labelIcon` input to every labelled field component, from the inputs and pickers to the sliders, radio group, rating, segmented control, file uploader and form field, rendering an icon component before the label text through the shared field label.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.37.0',
     date: '2026-08-30',
     sections: [

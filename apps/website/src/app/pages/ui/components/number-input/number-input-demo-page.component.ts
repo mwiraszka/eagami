@@ -1,5 +1,5 @@
 import { NumberInputComponent, type NumberInputSize } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -17,6 +17,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface NumberInputKnobState {
@@ -24,6 +25,7 @@ interface NumberInputKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   placeholder: string;
   size: NumberInputSize;
   // A number knob emits '' when cleared; the template coerces that to undefined
@@ -53,7 +55,10 @@ const SLUG = 'number-input';
 })
 export class NumberInputDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['number-input'], UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS['number-input'], UI_API[SLUG]),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+  ];
   protected readonly state = signal<NumberInputKnobState>(
     initialKnobState(
       this.knobs,
@@ -96,6 +101,10 @@ export class NumberInputDemoPageComponent {
   protected asBound(value: number | ''): number | undefined {
     return value === '' ? undefined : value;
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

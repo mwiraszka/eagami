@@ -1242,6 +1242,8 @@ export const is: WebMessages = {
               'Auðkenni virka valkostsins í stýrða sprettiglugganum, áframsent sem aria-activedescendant.',
             ariaAutocomplete:
               'Vísbending um sjálfvirka útfyllingu, áframsend sem aria-autocomplete.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             type: 'Innbyggð inntaksgerð (lykilorð bætir við innbyggðri sýna/fela víxlun).',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
@@ -1277,6 +1279,8 @@ export const is: WebMessages = {
           },
           'number-input': {
             allowNegative: 'Hvort neikvæð gildi eru leyfð; þegar false er lágmarkið 0.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             size: 'Sjónræn stærð reitsins.',
@@ -1378,6 +1382,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á tölustafsreitina og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             length: 'Fjöldi tölustafsreita sem kóðinn er gerður úr.',
             placeholder: 'Staðgengilstexti dreifður einn stafur á reit.',
@@ -1401,6 +1407,8 @@ export const is: WebMessages = {
             format: 'Úttakssnið sendrar litgildis (hex, rgb eða hsl).',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             placeholder:
               'Staðgengill sýndur á kveikjunni á meðan enginn litur er valinn.',
@@ -1490,6 +1498,8 @@ export const is: WebMessages = {
             formatValue: 'Sniðari beitt á hvert gildi áður en það er birt.',
             hint: 'Hjálpartexti sýndur fyrir neðan sleðann, falinn á meðan villa er sýnd.',
             id: 'id sett á sleðann, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan sleðann.',
             max: 'Hæsta gildi sem hvor þumall getur náð.',
             min: 'Lægsta gildi sem hvor þumall getur náð.',
@@ -1520,6 +1530,8 @@ export const is: WebMessages = {
             hint: 'Hjálpartexti sýndur fyrir neðan einkunnina, falinn á meðan villa er sýnd.',
             iconClass: 'Sjálfstæður einingaklasi birtur fyrir tómar og fullar stöður.',
             id: 'id sett á einkunnina og merkimiða hennar, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan einkunnina.',
             max: 'Hæsta einkunnargildi og fjöldi birtra stjarna.',
             min: 'Lægsta einkunnargildi sem notandinn getur valið.',
@@ -1554,6 +1566,8 @@ export const is: WebMessages = {
             formatValue: 'Sniðari sem breytir tölugildinu í birta textann.',
             hasError: 'Þvingar villuástandsstíl án þess að binda villuboð.',
             hint: 'Hjálpartexti sýndur fyrir neðan sleðann, falinn á meðan villa er sýnd.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             id: 'id sett á sleðann og merkimiða hans, sjálfvirkt búið til þegar því er sleppt.',
             label: 'Textamerkimiði birtur fyrir ofan sleðann.',
             max: 'Hæsta gildi sem sleðinn getur náð.',
@@ -1617,6 +1631,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á innbyggða textasvæðið og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxHeight:
               'Pixlaþak fyrir hæð reitsins; umfram það skrunast textasvæðið lóðrétt í stað þess að stækka.',
@@ -1694,6 +1710,8 @@ export const is: WebMessages = {
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
             includeSeconds: 'Sýnir sekúndudálk við hlið klukkustunda og mínútna.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             minuteStep: 'Hækkun sem mínútudálkurinn smellur að þegar þrepað eða dregið.',
             placeholder: 'Staðgengill sýndur á kveikjunni á meðan enginn tími er valinn.',
@@ -1741,6 +1759,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á innbyggða inntakið og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxResults: 'Hámarksfjöldi valkosta sýndur í tillögulistanum í einu.',
             minLength:
@@ -1802,6 +1822,8 @@ export const is: WebMessages = {
             format: 'Birtingarsnið valdu dagsetningarinnar (stutt, miðlungs eða langt).',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á reitinn og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             locale:
               'BCP 47 svæðismerki notað fyrir dagsetningarsnið, fellur aftur á altæka svæðið þegar því er sleppt.',
@@ -1865,6 +1887,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxVisibleChips:
               'Hámarksfjöldi merkja sýndur í kveikjunni áður en restin fellur saman í talningarpillu.',
@@ -1904,6 +1928,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á kveikjuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             options:
               'Listi valanlegra valkosta birtur í fellilistanum, flatur eða skiptur í hópa.',
@@ -1929,6 +1955,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á sleppisvæðið og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             maxFiles: 'Hámarksheildarfjöldi skráa; skrám umfram mörkin er hafnað.',
             maxSize: 'Hámarksstærð á hverja skrá í bætum; stærri skrám er hafnað.',
@@ -1954,6 +1982,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan stýringuna, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan stýringuna, falinn á meðan villa er sýnd.',
             id: 'id grunnur fyrir tengingu merkimiða og skilaboða, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan stýringuna.',
             required: 'Merkir reitinn sem nauðsynlegan.',
           },
@@ -2058,6 +2088,8 @@ export const is: WebMessages = {
               'Villuboð sýnd fyrir neðan hópinn, koma í stað vísbendingar og merkja reitinn ógildan.',
             hint: 'Hjálpartexti sýndur fyrir neðan hópinn, falinn á meðan villa er sýnd.',
             id: 'id sett á hópstakið og merkimiða þess for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan hópinn.',
             name: 'Sameiginlegt name eigindi sett á öll valhnappainntök í hópnum, sjálfvirkt búið til þegar því er sleppt.',
             orientation: 'Uppsetningarstefna valhnappavalkostanna innan hópsins.',
@@ -2076,6 +2108,8 @@ export const is: WebMessages = {
             fullWidth: 'Teygir stýringuna til að fylla breidd ílátsins.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             id: 'id sett á stýringuna og merkimiðann for, sjálfvirkt búið til þegar því er sleppt.',
+            labelIcon:
+              'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan stýringuna.',
             options: 'Fylki valkosta birtra sem víxlhnappar innan stýringarinnar.',
             required: 'Merkir reitinn sem nauðsynlegan.',
@@ -2147,6 +2181,7 @@ export const is: WebMessages = {
           'field-label': {
             forId:
               'id tengdu stýringarinnar; birtir <label for> þegar sett, annars <span>.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             labelId:
               'id sett á birta merkimiðastakið svo stýringar geti vísað í það með aria-labelledby.',
             required: 'Sýnir nauðsynlegan vísi á merkimiðanum.',

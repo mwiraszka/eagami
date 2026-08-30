@@ -5,6 +5,7 @@ import {
   DestroyRef,
   type ElementRef,
   Injector,
+  type Type,
   afterNextRender,
   afterRenderEffect,
   computed,
@@ -98,6 +99,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly label = input<string | undefined>(undefined);
+
+  /** Optional icon component rendered before the label text. */
+
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Accessible name for the combobox when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly placeholder = input<string | undefined>(undefined);

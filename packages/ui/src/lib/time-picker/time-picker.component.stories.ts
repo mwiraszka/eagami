@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
 import { TimePickerComponent } from './time-picker.component';
 import { TIME_PICKER_KNOBS } from './time-picker.component.knobs';
 
@@ -16,6 +17,7 @@ const meta: Meta<TimePickerComponent> = {
   }),
   argTypes: {
     ...TIME_PICKER_KNOBS.argTypes,
+    labelIcon: LABEL_ICON_STORY_ARGTYPE,
     minuteStep: {
       control: { type: 'number', min: 1, max: 30, step: 1 },
     },
@@ -25,6 +27,7 @@ const meta: Meta<TimePickerComponent> = {
   },
   args: {
     ...TIME_PICKER_KNOBS.args,
+    labelIcon: LABEL_ICON_STORY_NONE,
     secondStep: 1,
   },
 };
