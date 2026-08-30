@@ -3,6 +3,7 @@ import {
   type AfterContentChecked,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   type ElementRef,
   PLATFORM_ID,
   ViewEncapsulation,
@@ -19,6 +20,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { XIconComponent } from '../icons/x.component';
 import { PointerPressTracker } from '../pointer-press';
+import { ScrollLock } from '../scroll-lock';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
 
@@ -28,9 +30,10 @@ export type DialogWidth = EaWidth;
 /**
  * Dialog backed by the native `<dialog>` element. Modal by default, using
  * `showModal()` for browser-managed focus trapping with backdrop and Escape
- * dismissal; `modal` false floats it over a page left scrollable instead. It
- * exposes `header`, default, and `footer` content slots, and the `open` state
- * is a two-way `model()` binding.
+ * dismissal, and holding the page's scrolling for as long as it is up;
+ * `modal` false floats it over a page left scrollable instead. It exposes
+ * `header`, default, and `footer` content slots, and the `open` state is a
+ * two-way `model()` binding.
  *
  * The header is a row that lays its slot content out against the built-in
  * close button, and it applies the h4 type scale to that content, so a heading
@@ -58,15 +61,17 @@ export class DialogComponent implements AfterContentChecked {
   protected readonly i18n = inject(EagamiI18nService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly press = inject(PointerPressTracker);
+  private readonly scrollLock = inject(ScrollLock);
+  private holdsScroll = false;
 
   readonly width = input<DialogWidth>('md');
   /**
    * Modal by default: shown via `showModal()`, with the backdrop overlay and
-   * the page behind made inert. When false the dialog floats via `show()`
-   * instead, with no backdrop, leaving the page behind scrollable and
-   * interactive; Escape still closes (or reports) from inside the dialog,
-   * while `closeOnBackdrop` has no backdrop to act on. Read when the dialog
-   * opens; flipping it while open has no effect.
+   * the page behind made inert and held from scrolling. When false the dialog
+   * floats via `show()` instead, with no backdrop, leaving the page behind
+   * scrollable and interactive; Escape still closes (or reports) from inside
+   * the dialog, while `closeOnBackdrop` has no backdrop to act on. Read when
+   * the dialog opens; flipping it while open has no effect.
    */
   readonly modal = input<boolean>(true);
   readonly closeOnBackdrop = input<boolean>(true);
@@ -126,6 +131,7 @@ export class DialogComponent implements AfterContentChecked {
           this.previouslyFocused = document.activeElement as HTMLElement | null;
           if (this.modal()) {
             dialogRef.showModal();
+            this.holdScroll();
           } else {
             dialogRef.show();
           }
@@ -134,11 +140,30 @@ export class DialogComponent implements AfterContentChecked {
       } else {
         if (dialogRef.open) {
           dialogRef.close();
+          this.dropScroll();
           this.previouslyFocused?.focus?.();
           this.previouslyFocused = null;
         }
       }
     });
+
+    // A dialog taken down while open never sees its close, so the hold goes
+    // with the component
+    inject(DestroyRef).onDestroy(() => this.dropScroll());
+  }
+
+  private holdScroll(): void {
+    if (!this.holdsScroll) {
+      this.holdsScroll = true;
+      this.scrollLock.acquire();
+    }
+  }
+
+  private dropScroll(): void {
+    if (this.holdsScroll) {
+      this.holdsScroll = false;
+      this.scrollLock.release();
+    }
   }
 
   handleClose(): void {

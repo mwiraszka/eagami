@@ -284,6 +284,35 @@ describe('DialogComponent', () => {
     });
   });
 
+  describe('Background scrolling', () => {
+    it('shuts off the page scroller while a modal dialog is up', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+      expect(document.documentElement.style.overflow).toBe('hidden');
+
+      host.isOpen.set(false);
+      fixture.detectChanges();
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+
+    it('leaves the page scroller alone for a non-modal dialog', () => {
+      host.modal.set(false);
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+
+    it('lets go of the scroller when a dialog is taken down while open', () => {
+      host.isOpen.set(true);
+      fixture.detectChanges();
+
+      fixture.destroy();
+
+      expect(document.documentElement.style.overflow).toBe('');
+    });
+  });
+
   describe('Manual close', () => {
     function openManual(): void {
       host.manualClose.set(true);

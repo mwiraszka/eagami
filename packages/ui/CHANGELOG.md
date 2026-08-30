@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a `modal` input to the dialog: when false it opens non-modally via `show()`, floating with no backdrop, so the page behind stays scrollable and interactive.
+- Add a `modal` input to the dialog: when true (the default) the page behind is inert and cannot scroll, while false opens it non-modally via `show()`, floating with no backdrop, so the page behind stays scrollable and interactive.
 - Expand the icon set with two image-editing icons: contrast and rotate ccw square.
 
 ## [5.36.0] - 2026-08-25
