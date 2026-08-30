@@ -4,6 +4,7 @@ import {
   Component,
   type ElementRef,
   Injector,
+  type Type,
   afterNextRender,
   computed,
   forwardRef,
@@ -91,6 +92,10 @@ export class DatePickerComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
+
+  /** Optional icon component rendered before the label text. */
+
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Placeholder shown in the field when no date is selected. */
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<DatePickerSize>('md');

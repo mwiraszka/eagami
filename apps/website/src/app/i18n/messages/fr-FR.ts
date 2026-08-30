@@ -1255,6 +1255,7 @@ export const frFR: WebMessages = {
               'id de l’option active dans la fenêtre contextuelle contrôlée, transmis via aria-activedescendant.',
             ariaAutocomplete:
               'Indice de comportement de saisie semi-automatique, transmis via aria-autocomplete.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             type: 'Type natif du champ (password ajoute un bouton afficher/masquer intégré).',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
@@ -1294,6 +1295,7 @@ export const frFR: WebMessages = {
           'number-input': {
             allowNegative:
               'Si les valeurs négatives sont autorisées ; avec false, la valeur ne descend pas sous 0.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             size: 'Taille visuelle du champ.',
@@ -1399,6 +1401,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué aux cases de chiffres et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du champ.',
             length: 'Nombre de cases de chiffres composant le code.',
             placeholder: 'Texte indicatif réparti un caractère par cellule.',
@@ -1421,6 +1424,7 @@ export const frFR: WebMessages = {
             format: 'Format de sortie de la valeur de couleur émise (hex, rgb ou hsl).',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du champ.',
             placeholder:
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune couleur n’est sélectionnée.',
@@ -1519,6 +1523,7 @@ export const frFR: WebMessages = {
             formatValue: 'Formateur appliqué à chaque valeur avant son affichage.',
             hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
             id: 'id appliqué au curseur, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du curseur.',
             max: 'Valeur la plus élevée que l’un ou l’autre curseur peut atteindre.',
             min: 'Valeur la plus basse que l’un ou l’autre curseur peut atteindre.',
@@ -1551,6 +1556,7 @@ export const frFR: WebMessages = {
             iconClass:
               'Classe de composant autonome rendue pour les positions vides et pleines.',
             id: 'id appliqué à la note et à son libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus de la note.',
             max: 'Valeur de note la plus élevée et nombre d’étoiles rendues.',
             min: 'Valeur de note la plus basse que l’utilisateur peut sélectionner.',
@@ -1585,7 +1591,7 @@ export const frFR: WebMessages = {
             formatValue: 'Formateur qui transforme la valeur numérique en texte affiché.',
             hasError: 'Force le style d’état d’erreur sans associer de message d’erreur.',
             hint: 'Texte d’aide affiché sous le curseur, masqué en cas d’erreur.',
-            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             id: 'id appliqué au curseur et à son libellé, généré automatiquement si omis.',
             label: 'Libellé textuel rendu au-dessus du curseur.',
             max: 'Valeur la plus élevée que le curseur peut atteindre.',
@@ -1651,6 +1657,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au textarea natif et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du champ.',
             maxHeight:
               'Plafond en pixels pour la hauteur du champ ; au-delà, le textarea défile verticalement au lieu de grandir.',
@@ -1735,6 +1742,7 @@ export const frFR: WebMessages = {
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             includeSeconds:
               'Affiche une colonne des secondes en plus des heures et des minutes.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             minuteStep:
               'Incrément auquel la colonne des minutes s’aligne lors d’un déplacement.',
@@ -1784,6 +1792,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au champ natif et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             maxResults:
               'Nombre maximum d’options affichées à la fois dans la liste de suggestions.',
@@ -1849,6 +1858,7 @@ export const frFR: WebMessages = {
             format: 'Format d’affichage de la date sélectionnée (short, medium ou long).',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au champ et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             locale:
               'Balise de locale BCP 47 pour le formatage des dates, revenant à la locale globale si omise.',
@@ -1915,6 +1925,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             maxVisibleChips:
               'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
@@ -1959,6 +1970,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             options:
               'Liste des options sélectionnables affichées dans la liste déroulante, plate ou répartie en groupes.',
@@ -1985,6 +1997,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué à la zone de dépôt et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
             maxFiles:
               'Nombre total maximal de fichiers ; les fichiers excédentaires sont rejetés.',
@@ -2013,6 +2026,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le contrôle, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le contrôle, masqué en cas d’erreur.',
             id: 'Base d’id pour relier le libellé et le message, générée automatiquement si omise.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du contrôle.',
             required: 'Marque le champ comme requis.',
           },
@@ -2121,6 +2135,7 @@ export const frFR: WebMessages = {
               'Message d’erreur affiché sous le groupe, remplaçant l’indication et marquant le champ comme invalide.',
             hint: 'Texte d’aide affiché sous le groupe, masqué en cas d’erreur.',
             id: 'id appliqué à l’élément du groupe et au for de son libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du groupe.',
             name: 'Attribut name partagé appliqué à tous les boutons radio du groupe, généré automatiquement si omis.',
             orientation: 'Direction de disposition des options radio au sein du groupe.',
@@ -2140,6 +2155,7 @@ export const frFR: WebMessages = {
             fullWidth: 'Étire le contrôle pour remplir la largeur de son conteneur.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             id: 'id appliqué au contrôle et au for du libellé, généré automatiquement si omis.',
+            labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du contrôle.',
             options:
               'Tableau d’options affichées sous forme de boutons bascule dans le contrôle.',

@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
 import { DatePickerComponent } from './date-picker.component';
 import { DATE_PICKER_KNOBS } from './date-picker.component.knobs';
 
@@ -16,6 +17,7 @@ const meta: Meta<DatePickerComponent> = {
   }),
   argTypes: {
     ...DATE_PICKER_KNOBS.argTypes,
+    labelIcon: LABEL_ICON_STORY_ARGTYPE,
     weekStartsOn: {
       control: 'select',
       options: [0, 1],
@@ -23,6 +25,7 @@ const meta: Meta<DatePickerComponent> = {
   },
   args: {
     ...DATE_PICKER_KNOBS.args,
+    labelIcon: 'none',
     weekStartsOn: 1,
   },
 };

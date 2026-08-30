@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type Type,
   computed,
   effect,
   forwardRef,
@@ -54,6 +55,8 @@ export class NumberInputComponent implements ControlValueAccessor {
 
   /** Text label rendered above the field. */
   readonly label = input<string | undefined>(undefined);
+  /** Optional icon component rendered before the label text. */
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Placeholder shown while the field is empty. */
   readonly placeholder = input<string>('');
   /** Visual size of the field. */

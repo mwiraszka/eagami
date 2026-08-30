@@ -43,7 +43,7 @@ describe('SliderComponent', () => {
 
     it('hands the icon to the field label', () => {
       fixture.componentRef.setInput('label', 'Brightness');
-      fixture.componentRef.setInput('icon', SunIconComponent);
+      fixture.componentRef.setInput('labelIcon', SunIconComponent);
       fixture.detectChanges();
 
       expect(

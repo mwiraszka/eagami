@@ -3,9 +3,15 @@ import {
   type TimePickerFormat,
   type TimePickerSize,
 } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -15,6 +21,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface TimePickerKnobState {
@@ -22,6 +29,7 @@ interface TimePickerKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   placeholder: string;
   size: TimePickerSize;
   format: TimePickerFormat;
@@ -48,7 +56,10 @@ const SLUG = 'time-picker';
 })
 export class TimePickerDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+  ];
   protected readonly state = signal<TimePickerKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as TimePickerKnobState,
   );
@@ -75,6 +86,10 @@ export class TimePickerDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as TimePickerKnobState);

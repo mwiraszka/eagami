@@ -6,7 +6,7 @@ import {
   type RatingSize,
   StarIconComponent,
 } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -33,6 +33,7 @@ interface RatingKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   size: RatingSize;
   min: number;
   max: number;
@@ -67,6 +68,7 @@ export class RatingDemoPageComponent {
       default: 'star',
       includeNone: false,
     }),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
   ];
   protected readonly state = signal<RatingKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.rating) as RatingKnobState,
@@ -109,6 +111,10 @@ export class RatingDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

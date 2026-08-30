@@ -20,7 +20,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Added',
         entries: [
-          'Add an `icon` input to the slider and the field label, rendering an icon component before the label text.',
+          'Add a `labelIcon` input to every labelled field component, from the inputs and pickers to the sliders, radio group, rating, segmented control, file uploader and form field, rendering an icon component before the label text through the shared field label.',
         ],
       },
     ],

@@ -9,7 +9,7 @@ import {
   TooltipDirective,
   TrashIconComponent,
 } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -27,6 +27,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
@@ -40,6 +41,7 @@ interface AutocompleteKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   placeholder: string;
   size: AutocompleteSize;
   minLength: number;
@@ -92,7 +94,10 @@ function slugify(label: string): string {
 })
 export class AutocompleteDemoPageComponent {
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.autocomplete, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.autocomplete, UI_API[SLUG]),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+  ];
   protected readonly state = signal<AutocompleteKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.autocomplete) as AutocompleteKnobState,
   );
@@ -139,6 +144,10 @@ export class AutocompleteDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(

@@ -1246,6 +1246,8 @@ export const esES: WebMessages = {
               'id de la opción activa del popup controlado, reenviado como aria-activedescendant.',
             ariaAutocomplete:
               'Indicación del comportamiento de autocompletado, reenviada como aria-autocomplete.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
             type: 'Tipo nativo del campo (password añade un botón de mostrar/ocultar integrado).',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
@@ -1285,6 +1287,8 @@ export const esES: WebMessages = {
           'number-input': {
             allowNegative:
               'Si se permiten valores negativos; con false, el valor se limita a 0.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
             size: 'Tamaño visual del campo.',
@@ -1390,6 +1394,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado a las celdas de dígitos y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             length: 'Número de celdas de dígitos que componen el código.',
             placeholder: 'Texto de marcador de posición repartido un carácter por celda.',
@@ -1414,6 +1420,8 @@ export const esES: WebMessages = {
             format: 'Formato de salida del valor de color emitido (hex, rgb o hsl).',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             placeholder:
               'Marcador de posición mostrado en el activador mientras no hay ningún color seleccionado.',
@@ -1515,6 +1523,8 @@ export const esES: WebMessages = {
             formatValue: 'Formateador aplicado a cada valor antes de mostrarse.',
             hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
             id: 'id aplicado al control deslizante, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del control deslizante.',
             max: 'Valor más alto que puede alcanzar cualquiera de los controles.',
             min: 'Valor más bajo que puede alcanzar cualquiera de los controles.',
@@ -1550,6 +1560,8 @@ export const esES: WebMessages = {
             iconClass:
               'Clase de componente independiente renderizada para las posiciones vacías y llenas.',
             id: 'id aplicado a la valoración y a su etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima de la valoración.',
             max: 'Valor de valoración más alto y número de estrellas renderizadas.',
             min: 'Valor de valoración más bajo que el usuario puede seleccionar.',
@@ -1587,7 +1599,8 @@ export const esES: WebMessages = {
             hasError:
               'Fuerza el estilo de estado de error sin vincular un mensaje de error.',
             hint: 'Texto de ayuda mostrado bajo el control deslizante, oculto cuando hay un error.',
-            icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             id: 'id aplicado al control deslizante y a su etiqueta, generado automáticamente si se omite.',
             label: 'Etiqueta de texto mostrada encima del control deslizante.',
             max: 'Valor más alto que puede alcanzar el control deslizante.',
@@ -1655,6 +1668,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al textarea nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxHeight:
               'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
@@ -1739,6 +1754,8 @@ export const esES: WebMessages = {
             id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
             includeSeconds:
               'Muestra una columna de segundos junto a las horas y los minutos.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             minuteStep:
               'Incremento al que se ajusta la columna de minutos al avanzar o arrastrar.',
@@ -1789,6 +1806,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al campo nativo y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
             maxResults:
               'Número máximo de opciones mostradas a la vez en la lista de sugerencias.',
@@ -1856,6 +1875,8 @@ export const esES: WebMessages = {
               'Formato de visualización de la fecha seleccionada (short, medium o long).',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al campo y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
             locale:
               'Etiqueta de configuración regional BCP 47 para el formato de fecha, usando la configuración global si se omite.',
@@ -1920,6 +1941,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             maxVisibleChips:
               'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
@@ -1963,6 +1986,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al activador y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
             options:
               'Lista de opciones seleccionables mostradas en la lista desplegable, plana o dividida en grupos.',
@@ -1990,6 +2015,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado a la zona de arrastre y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del campo.',
             maxFiles:
               'Número total máximo de archivos; los archivos que superan el límite se rechazan.',
@@ -2019,6 +2046,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el control, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el control, oculto cuando hay un error.',
             id: 'Base de id para conectar la etiqueta y el mensaje, generada automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del control.',
             required: 'Marca el campo como obligatorio.',
           },
@@ -2126,6 +2155,8 @@ export const esES: WebMessages = {
               'Mensaje de error mostrado bajo el grupo, que sustituye la ayuda y marca el campo como no válido.',
             hint: 'Texto de ayuda mostrado bajo el grupo, oculto cuando hay un error.',
             id: 'id aplicado al elemento del grupo y al for de su etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del grupo.',
             name: 'Atributo name compartido aplicado a todas las entradas de radio del grupo, generado automáticamente si se omite.',
             orientation:
@@ -2147,6 +2178,8 @@ export const esES: WebMessages = {
             fullWidth: 'Estira el control para ocupar el ancho de su contenedor.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             id: 'id aplicado al control y al for de la etiqueta, generado automáticamente si se omite.',
+            labelIcon:
+              'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del control.',
             options:
               'Array de opciones renderizadas como botones de alternancia en el control.',

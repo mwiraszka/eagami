@@ -1242,6 +1242,7 @@ export const ptBR: WebMessages = {
               'id da opção ativa no popup controlado, encaminhado como aria-activedescendant.',
             ariaAutocomplete:
               'Dica do comportamento de autocompletar, encaminhada como aria-autocomplete.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             type: 'Tipo de input nativo (password adiciona uma alternância integrada de mostrar/ocultar).',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
@@ -1280,6 +1281,7 @@ export const ptBR: WebMessages = {
           'number-input': {
             allowNegative:
               'Se valores negativos são permitidos; quando false, o valor tem piso 0.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             size: 'Tamanho visual do campo.',
@@ -1387,6 +1389,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado às células de dígito e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             length: 'Número de células de dígito que compõem o código.',
             placeholder: 'Texto de placeholder distribuído um caractere por célula.',
@@ -1410,6 +1413,7 @@ export const ptBR: WebMessages = {
             format: 'Formato de saída do valor de cor emitido (hex, rgb ou hsl).',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             placeholder:
               'Placeholder exibido no gatilho enquanto nenhuma cor é selecionada.',
@@ -1503,6 +1507,7 @@ export const ptBR: WebMessages = {
             formatValue: 'Formatador aplicado a cada valor antes de ser exibido.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao controle deslizante, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do controle deslizante.',
             max: 'Valor mais alto que qualquer controle pode alcançar.',
             min: 'Valor mais baixo que qualquer controle pode alcançar.',
@@ -1537,6 +1542,7 @@ export const ptBR: WebMessages = {
             iconClass:
               'Classe de componente independente renderizada para posições vazias e cheias.',
             id: 'id aplicado à avaliação e seu rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima da avaliação.',
             max: 'Valor de avaliação mais alto e número de estrelas renderizadas.',
             min: 'Valor de avaliação mais baixo que o usuário pode selecionar.',
@@ -1573,7 +1579,7 @@ export const ptBR: WebMessages = {
             hasError:
               'Força o estilo de estado de erro sem vincular uma mensagem de erro.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
-            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             id: 'id aplicado ao controle deslizante e seu rótulo, gerado automaticamente quando omitido.',
             label: 'Rótulo de texto renderizado acima do controle deslizante.',
             max: 'Valor mais alto que o controle deslizante pode alcançar.',
@@ -1639,6 +1645,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao textarea nativo e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             maxHeight:
               'Limite em pixels para a altura do campo; além dele o textarea rola verticalmente em vez de crescer.',
@@ -1721,6 +1728,7 @@ export const ptBR: WebMessages = {
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
             includeSeconds: 'Mostra uma coluna de segundos ao lado de horas e minutos.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             minuteStep:
               'Incremento ao qual a coluna de minutos se ajusta ao ser variada ou arrastada.',
@@ -1772,6 +1780,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao input nativo e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             maxResults:
               'Número máximo de opções exibidas na lista de sugestões de uma só vez.',
@@ -1836,6 +1845,7 @@ export const ptBR: WebMessages = {
             format: 'Formato de exibição da data selecionada (curto, médio ou longo).',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao campo e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             locale:
               'Tag de idioma BCP 47 usada para a formatação de data, recorrendo ao idioma global quando omitida.',
@@ -1901,6 +1911,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             maxVisibleChips:
               'Número máximo de chips exibidos no gatilho antes que os demais colapsem em uma pill de contagem.',
@@ -1943,6 +1954,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             options:
               'Lista de opções selecionáveis renderizadas na lista suspensa, plana ou dividida em grupos.',
@@ -1969,6 +1981,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado à área de soltar e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
             maxFiles:
               'Número total máximo de arquivos; arquivos além do limite são rejeitados.',
@@ -1998,6 +2011,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do controle, oculto enquanto um erro é exibido.',
             id: 'id base para a vinculação do rótulo e da mensagem, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do controle.',
             required: 'Marca o campo como obrigatório.',
           },
@@ -2102,6 +2116,7 @@ export const ptBR: WebMessages = {
               'Mensagem de erro exibida abaixo do grupo, substituindo a dica e marcando o campo como inválido.',
             hint: 'Texto auxiliar exibido abaixo do grupo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao elemento do grupo e ao for do seu rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do grupo.',
             name: 'Atributo name compartilhado aplicado a todos os inputs de rádio no grupo, gerado automaticamente quando omitido.',
             orientation: 'Direção de layout das opções de rádio dentro do grupo.',
@@ -2121,6 +2136,7 @@ export const ptBR: WebMessages = {
             fullWidth: 'Estica o controle para preencher a largura de seu contêiner.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             id: 'id aplicado ao controle e ao for do rótulo, gerado automaticamente quando omitido.',
+            labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do controle.',
             options:
               'Array de opções renderizadas como botões de alternância dentro do controle.',

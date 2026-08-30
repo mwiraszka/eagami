@@ -1227,6 +1227,7 @@ export const en: WebMessages = {
               'id of the active option in a controlled popup, forwarded as aria-activedescendant.',
             ariaAutocomplete:
               'Autocomplete behavior hint, forwarded as aria-autocomplete.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             type: 'Native input type (password adds a built-in show/hide toggle).',
             placeholder: 'Placeholder shown while the field is empty.',
@@ -1264,6 +1265,7 @@ export const en: WebMessages = {
           'number-input': {
             allowNegative:
               'Whether negative values are allowed; when false the value floors at 0.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             placeholder: 'Placeholder shown while the field is empty.',
             size: 'Visual size of the field.',
@@ -1363,6 +1365,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the digit cells and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             length: 'Number of digit cells the code is made up of.',
             placeholder: 'Placeholder text spread one character per cell.',
@@ -1385,6 +1388,7 @@ export const en: WebMessages = {
             format: 'Output format of the emitted color value (hex, rgb, or hsl).',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             placeholder: 'Placeholder shown on the trigger while no color is selected.',
             presets:
@@ -1474,6 +1478,7 @@ export const en: WebMessages = {
             formatValue: 'Formatter applied to each value before it is displayed.',
             hint: 'Helper text shown below the slider, hidden while an error is showing.',
             id: 'id applied to the slider, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the slider.',
             max: 'Highest value either thumb can reach.',
             min: 'Lowest value either thumb can reach.',
@@ -1504,6 +1509,7 @@ export const en: WebMessages = {
             iconClass:
               'Standalone component class rendered for empty and full positions.',
             id: 'id applied to the rating and its label, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the rating.',
             max: 'Highest rating value and the number of stars rendered.',
             min: 'Lowest rating value the user can select.',
@@ -1537,7 +1543,7 @@ export const en: WebMessages = {
               'Formatter that turns the numeric value into the displayed text.',
             hasError: 'Forces the error-state styling without binding an error message.',
             hint: 'Helper text shown below the slider, hidden while an error is showing.',
-            icon: 'Optional icon component rendered before the label text.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             id: 'id applied to the slider and its label, auto-generated when omitted.',
             label: 'Text label rendered above the slider.',
             max: 'Highest value the slider can reach.',
@@ -1601,6 +1607,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the native textarea and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             maxHeight:
               "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
@@ -1677,6 +1684,7 @@ export const en: WebMessages = {
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
             includeSeconds: 'Shows a seconds column alongside hours and minutes.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             minuteStep: 'Increment the minutes column snaps to when stepped or dragged.',
             placeholder: 'Placeholder shown on the trigger while no time is selected.',
@@ -1722,6 +1730,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the native input and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             maxResults: 'Maximum number of options shown in the suggestion list at once.',
             minLength:
@@ -1782,6 +1791,7 @@ export const en: WebMessages = {
             format: 'Display format of the selected date (short, medium, or long).',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the field and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             locale:
               'BCP 47 locale tag used for date formatting, falling back to the global locale when omitted.',
@@ -1840,6 +1850,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             maxVisibleChips:
               'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
@@ -1881,6 +1892,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             options:
               'List of selectable options rendered in the dropdown list, flat or split into groups.',
@@ -1905,6 +1917,7 @@ export const en: WebMessages = {
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the dropzone and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
             maxFiles:
               'Maximum total number of files; files beyond the limit are rejected.',
@@ -1930,6 +1943,7 @@ export const en: WebMessages = {
               'Error message shown below the control, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the control, hidden while an error is showing.',
             id: 'id seed for the label and message wiring, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the control.',
             required: 'Marks the field as required.',
           },
@@ -2031,6 +2045,7 @@ export const en: WebMessages = {
               'Error message shown below the group, replacing the hint and flagging the field invalid.',
             hint: 'Helper text shown below the group, hidden while an error is showing.',
             id: 'id applied to the group element and its label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the group.',
             name: 'Shared name attribute applied to all radio inputs in the group, auto-generated when omitted.',
             orientation: 'Layout direction of the radio options within the group.',
@@ -2049,6 +2064,7 @@ export const en: WebMessages = {
             fullWidth: 'Stretches the control to fill the width of its container.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             id: 'id applied to the control and label for, auto-generated when omitted.',
+            labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the control.',
             options: 'Array of options rendered as toggle buttons within the control.',
             required: 'Marks the field as required.',

@@ -1242,6 +1242,8 @@ export const nl: WebMessages = {
               'id van de actieve optie in de bestuurde popup, doorgegeven als aria-activedescendant.',
             ariaAutocomplete:
               'Hint voor het autoaanvulgedrag, doorgegeven als aria-autocomplete.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             type: 'Native invoertype (password voegt een ingebouwde tonen/verbergen-schakelaar toe).',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
@@ -1280,6 +1282,8 @@ export const nl: WebMessages = {
           'number-input': {
             allowNegative:
               'Of negatieve waarden zijn toegestaan; bij false is de ondergrens 0.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             size: 'Visuele grootte van het veld.',
@@ -1387,6 +1391,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de cijfercellen en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             length: 'Aantal cijfercellen waaruit de code bestaat.',
             placeholder: 'Plaatsaanduidingstekst verspreid over één teken per cel.',
@@ -1410,6 +1416,8 @@ export const nl: WebMessages = {
             format: 'Uitvoerformaat van de uitgezonden kleurwaarde (hex, rgb of hsl).',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             placeholder:
               'Plaatsaanduiding getoond op de trigger terwijl geen kleur is geselecteerd.',
@@ -1506,6 +1514,8 @@ export const nl: WebMessages = {
               'Opmaakfunctie toegepast op elke waarde voordat deze wordt getoond.',
             hint: 'Hulptekst onder de slider, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de slider, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven de slider.',
             max: 'Hoogste waarde die elke schuif kan bereiken.',
             min: 'Laagste waarde die elke schuif kan bereiken.',
@@ -1540,6 +1550,8 @@ export const nl: WebMessages = {
             iconClass:
               'Standalone componentklasse weergegeven voor lege en volle posities.',
             id: 'id toegepast op de beoordeling en het label ervan, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven de beoordeling.',
             max: 'Hoogste beoordelingswaarde en het aantal weergegeven sterren.',
             min: 'Laagste beoordelingswaarde die de gebruiker kan selecteren.',
@@ -1576,7 +1588,8 @@ export const nl: WebMessages = {
               'Opmaakfunctie die de numerieke waarde omzet in de weergegeven tekst.',
             hasError: 'Forceert de fouttoestandsstijl zonder een foutmelding te binden.',
             hint: 'Hulptekst onder de slider, verborgen terwijl een fout wordt getoond.',
-            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             id: 'id toegepast op de slider en het label ervan, automatisch gegenereerd indien weggelaten.',
             label: 'Tekstlabel weergegeven boven de slider.',
             max: 'Hoogste waarde die de slider kan bereiken.',
@@ -1643,6 +1656,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de native textarea en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             maxHeight:
               'Pixelplafond voor de hoogte van het veld; daarboven scrollt de textarea verticaal in plaats van te groeien.',
@@ -1726,6 +1741,8 @@ export const nl: WebMessages = {
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
             includeSeconds: 'Toont een secondenkolom naast uren en minuten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             minuteStep:
               'Increment waarop de minutenkolom vastklikt bij stappen of slepen.',
@@ -1774,6 +1791,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de native input en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             maxResults:
               'Maximaal aantal opties dat tegelijk in de suggestielijst wordt getoond.',
@@ -1840,6 +1859,8 @@ export const nl: WebMessages = {
             format: 'Weergaveformaat van de geselecteerde datum (kort, middel of lang).',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op het veld en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             locale:
               'BCP 47-taaltag gebruikt voor datumopmaak, die terugvalt op de globale taal indien weggelaten.',
@@ -1906,6 +1927,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             maxVisibleChips:
               'Maximaal aantal chips getoond in de trigger voordat de rest samenklapt tot een aantalpil.',
@@ -1950,6 +1973,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de trigger en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             options:
               'Lijst van selecteerbare opties weergegeven in de dropdownlijst, plat of opgesplitst in groepen.',
@@ -1977,6 +2002,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de dropzone en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
             maxFiles:
               'Maximaal totaal aantal bestanden; bestanden boven de limiet worden geweigerd.',
@@ -2004,6 +2031,8 @@ export const nl: WebMessages = {
               'Foutmelding onder het besturingselement, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder het besturingselement, verborgen terwijl een fout wordt getoond.',
             id: 'id-basis voor de koppeling van label en meldingen, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het besturingselement.',
             required: 'Markeert het veld als verplicht.',
           },
@@ -2112,6 +2141,8 @@ export const nl: WebMessages = {
               'Foutmelding onder de groep, die de hint vervangt en het veld als ongeldig markeert.',
             hint: 'Hulptekst onder de groep, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op het groepselement en het label for ervan, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven de groep.',
             name: 'Gedeeld name-attribuut toegepast op alle radio-inputs in de groep, automatisch gegenereerd indien weggelaten.',
             orientation: 'Indelingsrichting van de radio-opties binnen de groep.',
@@ -2133,6 +2164,8 @@ export const nl: WebMessages = {
               'Rekt de bediening uit om de breedte van zijn container te vullen.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             id: 'id toegepast op de bediening en het label for, automatisch gegenereerd indien weggelaten.',
+            labelIcon:
+              'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven de bediening.',
             options:
               'Array van opties weergegeven als schakelknoppen binnen de bediening.',

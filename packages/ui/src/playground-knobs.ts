@@ -114,3 +114,16 @@ export const PLAYGROUND_KNOBS = {
 } as const;
 
 export type PlaygroundKnobSlug = keyof typeof PLAYGROUND_KNOBS;
+
+/**
+ * Shared slug set for `labelIcon` knobs, one list across every labelled
+ * field's demo and story so the pickers all offer the same icons.
+ */
+export const LABEL_ICON_SLUGS = [
+  'sun',
+  'contrast',
+  'droplet',
+  'user',
+  'mail',
+  'calendar',
+] as const;

@@ -1,5 +1,5 @@
 import { SliderComponent, type SliderSize } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -25,7 +25,7 @@ interface SliderKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
-  icon: string;
+  labelIcon: string;
   size: SliderSize;
   min: number;
   max: number;
@@ -56,13 +56,13 @@ export class SliderDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.slider, UI_API[SLUG]),
-    iconKnob(['sun', 'contrast', 'droplet', 'volume-2', 'gauge', 'thermometer']),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
   ];
   protected readonly state = signal<SliderKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.slider) as SliderKnobState,
   );
-  protected readonly iconComponent = computed(() =>
-    iconComponentForSlug(this.state().icon),
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
   );
 
   protected readonly control = new FormControl(null, {

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add an `icon` input to the slider and the field label, rendering an icon component before the label text.
+- Add a `labelIcon` input to every labelled field component, from the inputs and pickers to the sliders, radio group, rating, segmented control, file uploader and form field, rendering an icon component before the label text through the shared field label.
 
 ## [5.37.0] - 2026-08-30
 

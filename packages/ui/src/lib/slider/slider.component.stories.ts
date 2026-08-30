@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { ContrastIconComponent } from '../icons/contrast.component';
-import { DropletIconComponent } from '../icons/droplet.component';
-import { SunIconComponent } from '../icons/sun.component';
+import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
 import { SliderComponent } from './slider.component';
 import { SLIDER_KNOBS } from './slider.component.knobs';
 
@@ -16,20 +14,9 @@ const meta: Meta<SliderComponent> = {
   }),
   argTypes: {
     ...SLIDER_KNOBS.argTypes,
-    // The input takes a component class, which the shared plain-data knobs
-    // cannot hold, so the slug-to-class mapping lives here
-    icon: {
-      control: 'select',
-      options: ['none', 'sun', 'contrast', 'droplet'],
-      mapping: {
-        none: undefined,
-        sun: SunIconComponent,
-        contrast: ContrastIconComponent,
-        droplet: DropletIconComponent,
-      },
-    },
+    labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...SLIDER_KNOBS.args, icon: 'none' },
+  args: { ...SLIDER_KNOBS.args, labelIcon: 'none' },
 };
 
 export default meta;

@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  type Type,
   computed,
   forwardRef,
   input,
@@ -51,6 +52,8 @@ export class RadioGroupComponent implements ControlValueAccessor {
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly label = input<string | undefined>(undefined);
+  /** Optional icon component rendered before the label text. */
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */

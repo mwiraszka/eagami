@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
+import { LABEL_ICON_STORY_ARGTYPE } from '../label-icon-story';
 import { NumberInputComponent } from './number-input.component';
 import { NUMBER_INPUT_KNOBS } from './number-input.component.knobs';
 
@@ -11,8 +12,11 @@ const meta: Meta<NumberInputComponent> = {
     props: args,
     template: `<ea-number-input ${argsToTemplate(args)} class="story-narrow"></ea-number-input>`,
   }),
-  argTypes: NUMBER_INPUT_KNOBS.argTypes,
-  args: NUMBER_INPUT_KNOBS.args,
+  argTypes: {
+    ...NUMBER_INPUT_KNOBS.argTypes,
+    labelIcon: LABEL_ICON_STORY_ARGTYPE,
+  },
+  args: { ...NUMBER_INPUT_KNOBS.args, labelIcon: 'none' },
 };
 
 export default meta;

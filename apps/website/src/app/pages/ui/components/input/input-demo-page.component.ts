@@ -1,5 +1,5 @@
 import { InputComponent, type InputSize, type InputType } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -25,6 +25,7 @@ interface InputKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelIcon: string;
   placeholder: string;
   size: InputSize;
   type: InputType;
@@ -58,6 +59,7 @@ export class InputDemoPageComponent {
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.input, UI_API[SLUG]),
     iconKnob(['search', 'filter', 'mail', 'user', 'lock', 'calendar']),
+    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
   ];
   protected readonly state = signal<InputKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.input) as InputKnobState,
@@ -88,6 +90,10 @@ export class InputDemoPageComponent {
       }
     });
   }
+
+  protected readonly labelIconComponent = computed(() =>
+    iconComponentForSlug(this.state().labelIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the

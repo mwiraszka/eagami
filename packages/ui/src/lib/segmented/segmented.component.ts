@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type Type,
   computed,
   forwardRef,
   input,
@@ -55,6 +56,8 @@ export class SegmentedComponent implements ControlValueAccessor {
 
   readonly options = input.required<SelectOption[]>();
   readonly label = input<string | undefined>(undefined);
+  /** Optional icon component rendered before the label text. */
+  readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
