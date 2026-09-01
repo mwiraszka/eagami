@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE } from '../../label-icon-story';
 import { MultiSelectComponent } from './multi-select.component';
 import { MULTI_SELECT_KNOBS } from './multi-select.component.knobs';
 
@@ -41,7 +41,6 @@ const meta: Meta<MultiSelectComponent> = {
   },
   args: {
     ...MULTI_SELECT_KNOBS.args,
-    labelIcon: LABEL_ICON_STORY_NONE,
     options: FRUITS,
     selectAll: true,
   },

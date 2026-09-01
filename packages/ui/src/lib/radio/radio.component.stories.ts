@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE } from '../../label-icon-story';
 import { RadioGroupComponent } from './radio-group.component';
 import { RadioComponent } from './radio.component';
 import { RADIO_KNOBS } from './radio.component.knobs';
@@ -13,7 +13,7 @@ const meta: Meta<RadioGroupComponent> = {
     ...RADIO_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...RADIO_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
+  args: RADIO_KNOBS.args,
 };
 
 export default meta;

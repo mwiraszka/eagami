@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE } from '../../label-icon-story';
 import { TextareaComponent } from './textarea.component';
 import { TEXTAREA_KNOBS } from './textarea.component.knobs';
 
@@ -16,7 +16,7 @@ const meta: Meta<TextareaComponent> = {
     ...TEXTAREA_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...TEXTAREA_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
+  args: TEXTAREA_KNOBS.args,
 };
 
 export default meta;
