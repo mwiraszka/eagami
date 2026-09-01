@@ -4,7 +4,7 @@ import {
   type SelectOption,
   type SelectOptions,
 } from '@eagami/ui';
-import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
@@ -24,7 +24,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
+import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
@@ -70,7 +70,7 @@ export class MultiSelectDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
-    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+    labelIconKnob(),
   ];
   protected readonly state = signal<MultiSelectKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
@@ -123,9 +123,7 @@ export class MultiSelectDemoPageComponent {
     this.control.setValue([...this.control.value, option.value]);
   }
 
-  protected readonly labelIconComponent = computed(() =>
-    iconComponentForSlug(this.state().labelIcon),
-  );
+  protected readonly labelIconComponent = labelIconFor(this.state);
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as MultiSelectKnobState);

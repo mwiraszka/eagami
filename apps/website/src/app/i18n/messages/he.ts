@@ -971,6 +971,8 @@ export const he: WebMessages = {
           },
           input: {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
+            icon: 'אייקון',
             placeholder: 'מציין מיקום',
             size: 'גודל',
             type: 'סוג',
@@ -985,6 +987,7 @@ export const he: WebMessages = {
           'number-input': {
             allowNegative: 'אפשר ערכים שליליים',
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             placeholder: 'מציין מיקום',
             size: 'גודל',
             min: 'מינימום',
@@ -998,6 +1001,7 @@ export const he: WebMessages = {
           'form-field': {
             size: 'גודל',
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             hint: 'רמז',
             required: 'חובה',
           },
@@ -1010,6 +1014,8 @@ export const he: WebMessages = {
           toast: {
             icon: 'אייקון (דריסה)',
             title: 'כותרת',
+            size: 'גודל',
+            clearable: 'ניתן לניקוי',
           },
           avatar: {
             size: 'גודל',
@@ -1032,6 +1038,7 @@ export const he: WebMessages = {
             loading: 'טעינה',
             fullWidth: 'רוחב מלא',
             uppercase: 'אותיות רישיות',
+            icon: 'אייקון',
           },
           card: {
             variant: 'וריאנט',
@@ -1052,6 +1059,7 @@ export const he: WebMessages = {
             size: 'גודל',
             length: 'אורך',
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             placeholder: 'מציין מיקום',
             disabled: 'מושבת',
             readonly: 'קריאה בלבד',
@@ -1059,6 +1067,7 @@ export const he: WebMessages = {
           },
           'color-picker': {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             placeholder: 'מציין מיקום',
             size: 'גודל',
             format: 'פורמט',
@@ -1080,12 +1089,14 @@ export const he: WebMessages = {
           },
           'empty-state': {
             size: 'גודל',
+            icon: 'אייקון',
             headingLevel: 'רמת כותרת',
             title: 'כותרת',
             description: 'תיאור',
           },
           paginator: {
             align: 'יישור',
+            size: 'גודל',
             showPageSizeSelector: 'הצג בורר גודל דף',
             showRangeLabel: 'הצג תווית טווח',
             disabled: 'מושבת',
@@ -1103,10 +1114,13 @@ export const he: WebMessages = {
           },
           radio: {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
+            size: 'גודל',
             disabled: 'מושבת',
           },
           'range-slider': {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             hint: 'רמז',
             errorMsg: 'הודעת שגיאה',
             min: 'מינימום',
@@ -1120,6 +1134,7 @@ export const he: WebMessages = {
           },
           rating: {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             size: 'גודל',
             min: 'מינימום',
             max: 'מקסימום',
@@ -1147,6 +1162,7 @@ export const he: WebMessages = {
             required: 'חובה',
             hasError: 'מצב שגיאה',
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
           },
           spinner: {
             size: 'גודל',
@@ -1168,6 +1184,7 @@ export const he: WebMessages = {
           },
           textarea: {
             label: 'תווית',
+            labelIcon: 'אייקון התווית',
             placeholder: 'מציין מיקום',
             size: 'גודל',
             resize: 'שינוי גודל',

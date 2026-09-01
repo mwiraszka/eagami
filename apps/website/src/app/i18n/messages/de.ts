@@ -1002,6 +1002,8 @@ export const de: WebMessages = {
           },
           input: {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
+            icon: 'Symbol',
             placeholder: 'Platzhalter',
             size: 'Größe',
             type: 'Typ',
@@ -1016,6 +1018,7 @@ export const de: WebMessages = {
           'number-input': {
             allowNegative: 'Negative zulassen',
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             placeholder: 'Platzhalter',
             size: 'Größe',
             min: 'Minimum',
@@ -1029,6 +1032,7 @@ export const de: WebMessages = {
           'form-field': {
             size: 'Größe',
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             hint: 'Hinweis',
             required: 'Erforderlich',
           },
@@ -1041,6 +1045,8 @@ export const de: WebMessages = {
           toast: {
             icon: 'Symbol (Überschreibung)',
             title: 'Titel',
+            size: 'Größe',
+            clearable: 'Löschbar',
           },
           avatar: {
             size: 'Größe',
@@ -1063,6 +1069,7 @@ export const de: WebMessages = {
             loading: 'Ladezustand',
             fullWidth: 'Volle Breite',
             uppercase: 'Großbuchstaben',
+            icon: 'Symbol',
           },
           card: {
             variant: 'Variante',
@@ -1083,6 +1090,7 @@ export const de: WebMessages = {
             size: 'Größe',
             length: 'Länge',
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             placeholder: 'Platzhalter',
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
@@ -1090,6 +1098,7 @@ export const de: WebMessages = {
           },
           'color-picker': {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             placeholder: 'Platzhalter',
             size: 'Größe',
             format: 'Format',
@@ -1111,12 +1120,14 @@ export const de: WebMessages = {
           },
           'empty-state': {
             size: 'Größe',
+            icon: 'Symbol',
             headingLevel: 'Überschriftsebene',
             title: 'Titel',
             description: 'Beschreibung',
           },
           paginator: {
             align: 'Ausrichtung',
+            size: 'Größe',
             showPageSizeSelector: 'Seitengrößen-Auswahl anzeigen',
             showRangeLabel: 'Bereichs-Label anzeigen',
             disabled: 'Deaktiviert',
@@ -1134,10 +1145,13 @@ export const de: WebMessages = {
           },
           radio: {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
+            size: 'Größe',
             disabled: 'Deaktiviert',
           },
           'range-slider': {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             hint: 'Hinweis',
             errorMsg: 'Fehlermeldung',
             min: 'Minimum',
@@ -1151,6 +1165,7 @@ export const de: WebMessages = {
           },
           rating: {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             size: 'Größe',
             min: 'Minimum',
             max: 'Maximum',
@@ -1178,6 +1193,7 @@ export const de: WebMessages = {
             required: 'Erforderlich',
             hasError: 'Fehlerzustand',
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
           },
           spinner: {
             size: 'Größe',
@@ -1199,6 +1215,7 @@ export const de: WebMessages = {
           },
           textarea: {
             label: 'Beschriftung',
+            labelIcon: 'Beschriftungssymbol',
             placeholder: 'Platzhalter',
             size: 'Größe',
             resize: 'Größenänderung',

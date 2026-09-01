@@ -959,6 +959,8 @@ export const zhCN: WebMessages = {
           },
           input: {
             label: '标签',
+            labelIcon: '标签图标',
+            icon: '图标',
             placeholder: '占位符',
             size: '尺寸',
             type: '类型',
@@ -973,6 +975,7 @@ export const zhCN: WebMessages = {
           'number-input': {
             allowNegative: '允许负数',
             label: '标签',
+            labelIcon: '标签图标',
             placeholder: '占位符',
             size: '尺寸',
             min: '最小值',
@@ -986,6 +989,7 @@ export const zhCN: WebMessages = {
           'form-field': {
             size: '尺寸',
             label: '标签',
+            labelIcon: '标签图标',
             hint: '提示',
             required: '必填',
           },
@@ -998,6 +1002,8 @@ export const zhCN: WebMessages = {
           toast: {
             icon: '图标（覆盖）',
             title: '标题',
+            size: '尺寸',
+            clearable: '可清除',
           },
           avatar: {
             size: '尺寸',
@@ -1020,6 +1026,7 @@ export const zhCN: WebMessages = {
             loading: '加载中',
             fullWidth: '全宽',
             uppercase: '大写',
+            icon: '图标',
           },
           card: {
             variant: '变体',
@@ -1040,6 +1047,7 @@ export const zhCN: WebMessages = {
             size: '尺寸',
             length: '长度',
             label: '标签',
+            labelIcon: '标签图标',
             placeholder: '占位符',
             disabled: '禁用',
             readonly: '只读',
@@ -1047,6 +1055,7 @@ export const zhCN: WebMessages = {
           },
           'color-picker': {
             label: '标签',
+            labelIcon: '标签图标',
             placeholder: '占位符',
             size: '尺寸',
             format: '格式',
@@ -1068,12 +1077,14 @@ export const zhCN: WebMessages = {
           },
           'empty-state': {
             size: '尺寸',
+            icon: '图标',
             headingLevel: '标题级别',
             title: '标题',
             description: '描述',
           },
           paginator: {
             align: '对齐',
+            size: '尺寸',
             showPageSizeSelector: '显示每页条数选择器',
             showRangeLabel: '显示范围标签',
             disabled: '禁用',
@@ -1091,10 +1102,13 @@ export const zhCN: WebMessages = {
           },
           radio: {
             label: '标签',
+            labelIcon: '标签图标',
+            size: '尺寸',
             disabled: '禁用',
           },
           'range-slider': {
             label: '标签',
+            labelIcon: '标签图标',
             hint: '提示',
             errorMsg: '错误消息',
             min: '最小值',
@@ -1108,6 +1122,7 @@ export const zhCN: WebMessages = {
           },
           rating: {
             label: '标签',
+            labelIcon: '标签图标',
             size: '尺寸',
             min: '最小值',
             max: '最大值',
@@ -1135,6 +1150,7 @@ export const zhCN: WebMessages = {
             required: '必填',
             hasError: '错误状态',
             label: '标签',
+            labelIcon: '标签图标',
           },
           spinner: {
             size: '尺寸',
@@ -1156,6 +1172,7 @@ export const zhCN: WebMessages = {
           },
           textarea: {
             label: '标签',
+            labelIcon: '标签图标',
             placeholder: '占位符',
             size: '尺寸',
             resize: '调整大小',

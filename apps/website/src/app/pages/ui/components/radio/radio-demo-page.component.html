@@ -6,18 +6,19 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [childMarkup]="childMarkup"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-radio-group
       class="demo-reserve-messages"
-      label="Fruit"
       [formControl]="control"
       value="apple"
+      [label]="state().label"
       [labelIcon]="labelIconComponent()"
       [size]="state().size">
       <ea-radio
         value="apple"
-        [label]="state().label" />
+        label="Apple" />
     </ea-radio-group>
   </web-component-playground>
 </web-ui-component-demo-layout>

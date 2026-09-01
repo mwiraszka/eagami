@@ -988,6 +988,8 @@ export const ru: WebMessages = {
           },
           input: {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
+            icon: 'Иконка',
             placeholder: 'Плейсхолдер',
             size: 'Размер',
             type: 'Тип',
@@ -1002,6 +1004,7 @@ export const ru: WebMessages = {
           'number-input': {
             allowNegative: 'Разрешить отрицательные',
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             placeholder: 'Плейсхолдер',
             size: 'Размер',
             min: 'Минимум',
@@ -1015,6 +1018,7 @@ export const ru: WebMessages = {
           'form-field': {
             size: 'Размер',
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             hint: 'Подсказка',
             required: 'Обязательно',
           },
@@ -1027,6 +1031,8 @@ export const ru: WebMessages = {
           toast: {
             icon: 'Иконка (переопределение)',
             title: 'Заголовок',
+            size: 'Размер',
+            clearable: 'Очищаемое',
           },
           avatar: {
             size: 'Размер',
@@ -1049,6 +1055,7 @@ export const ru: WebMessages = {
             loading: 'Загрузка',
             fullWidth: 'На всю ширину',
             uppercase: 'Заглавные буквы',
+            icon: 'Иконка',
           },
           card: {
             variant: 'Вариант',
@@ -1069,6 +1076,7 @@ export const ru: WebMessages = {
             size: 'Размер',
             length: 'Длина',
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             placeholder: 'Плейсхолдер',
             disabled: 'Отключено',
             readonly: 'Только для чтения',
@@ -1076,6 +1084,7 @@ export const ru: WebMessages = {
           },
           'color-picker': {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             placeholder: 'Плейсхолдер',
             size: 'Размер',
             format: 'Формат',
@@ -1097,12 +1106,14 @@ export const ru: WebMessages = {
           },
           'empty-state': {
             size: 'Размер',
+            icon: 'Иконка',
             headingLevel: 'Уровень заголовка',
             title: 'Заголовок',
             description: 'Описание',
           },
           paginator: {
             align: 'Выравнивание',
+            size: 'Размер',
             showPageSizeSelector: 'Показать выбор размера страницы',
             showRangeLabel: 'Показать метку диапазона',
             disabled: 'Отключено',
@@ -1120,10 +1131,13 @@ export const ru: WebMessages = {
           },
           radio: {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
+            size: 'Размер',
             disabled: 'Отключено',
           },
           'range-slider': {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             hint: 'Подсказка',
             errorMsg: 'Сообщение об ошибке',
             min: 'Минимум',
@@ -1137,6 +1151,7 @@ export const ru: WebMessages = {
           },
           rating: {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             size: 'Размер',
             min: 'Минимум',
             max: 'Максимум',
@@ -1164,6 +1179,7 @@ export const ru: WebMessages = {
             required: 'Обязательно',
             hasError: 'Состояние ошибки',
             label: 'Метка',
+            labelIcon: 'Иконка метки',
           },
           spinner: {
             size: 'Размер',
@@ -1185,6 +1201,7 @@ export const ru: WebMessages = {
           },
           textarea: {
             label: 'Метка',
+            labelIcon: 'Иконка метки',
             placeholder: 'Плейсхолдер',
             size: 'Размер',
             resize: 'Изменение размера',

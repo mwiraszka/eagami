@@ -994,6 +994,8 @@ export const nl: WebMessages = {
           },
           input: {
             label: 'Label',
+            labelIcon: 'Labelicoon',
+            icon: 'Icoon',
             placeholder: 'Plaatsaanduiding',
             size: 'Grootte',
             type: 'Type',
@@ -1008,6 +1010,7 @@ export const nl: WebMessages = {
           'number-input': {
             allowNegative: 'Negatief toestaan',
             label: 'Label',
+            labelIcon: 'Labelicoon',
             placeholder: 'Plaatsaanduiding',
             size: 'Grootte',
             min: 'Minimum',
@@ -1021,6 +1024,7 @@ export const nl: WebMessages = {
           'form-field': {
             size: 'Grootte',
             label: 'Label',
+            labelIcon: 'Labelicoon',
             hint: 'Hint',
             required: 'Verplicht',
           },
@@ -1033,6 +1037,8 @@ export const nl: WebMessages = {
           toast: {
             icon: 'Icoon (overschrijven)',
             title: 'Titel',
+            size: 'Grootte',
+            clearable: 'Wisbaar',
           },
           avatar: {
             size: 'Grootte',
@@ -1055,6 +1061,7 @@ export const nl: WebMessages = {
             loading: 'Laden',
             fullWidth: 'Volledige breedte',
             uppercase: 'Hoofdletters',
+            icon: 'Icoon',
           },
           card: {
             variant: 'Variant',
@@ -1075,6 +1082,7 @@ export const nl: WebMessages = {
             size: 'Grootte',
             length: 'Lengte',
             label: 'Label',
+            labelIcon: 'Labelicoon',
             placeholder: 'Plaatsaanduiding',
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
@@ -1082,6 +1090,7 @@ export const nl: WebMessages = {
           },
           'color-picker': {
             label: 'Label',
+            labelIcon: 'Labelicoon',
             placeholder: 'Plaatsaanduiding',
             size: 'Grootte',
             format: 'Formaat',
@@ -1103,12 +1112,14 @@ export const nl: WebMessages = {
           },
           'empty-state': {
             size: 'Grootte',
+            icon: 'Icoon',
             headingLevel: 'Kopniveau',
             title: 'Titel',
             description: 'Beschrijving',
           },
           paginator: {
             align: 'Uitlijnen',
+            size: 'Grootte',
             showPageSizeSelector: 'Paginagrootteselector tonen',
             showRangeLabel: 'Bereiklabel tonen',
             disabled: 'Uitgeschakeld',
@@ -1126,10 +1137,13 @@ export const nl: WebMessages = {
           },
           radio: {
             label: 'Label',
+            labelIcon: 'Labelicoon',
+            size: 'Grootte',
             disabled: 'Uitgeschakeld',
           },
           'range-slider': {
             label: 'Label',
+            labelIcon: 'Labelicoon',
             hint: 'Hint',
             errorMsg: 'Foutmelding',
             min: 'Minimum',
@@ -1143,6 +1157,7 @@ export const nl: WebMessages = {
           },
           rating: {
             label: 'Label',
+            labelIcon: 'Labelicoon',
             size: 'Grootte',
             min: 'Minimum',
             max: 'Maximum',
@@ -1170,6 +1185,7 @@ export const nl: WebMessages = {
             required: 'Verplicht',
             hasError: 'Fouttoestand',
             label: 'Label',
+            labelIcon: 'Labelicoon',
           },
           spinner: {
             size: 'Grootte',
@@ -1191,6 +1207,7 @@ export const nl: WebMessages = {
           },
           textarea: {
             label: 'Label',
+            labelIcon: 'Labelicoon',
             placeholder: 'Plaatsaanduiding',
             size: 'Grootte',
             resize: 'Vergroten/verkleinen',

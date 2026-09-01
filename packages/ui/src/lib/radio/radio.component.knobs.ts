@@ -15,7 +15,7 @@ export const RADIO_KNOBS: ComponentKnobs = {
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
-    label: 'Apple',
+    label: 'Fruit',
     size: 'md',
     disabled: false,
     triggerError: false,

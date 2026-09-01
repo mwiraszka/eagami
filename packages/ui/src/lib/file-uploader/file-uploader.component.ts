@@ -94,9 +94,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);

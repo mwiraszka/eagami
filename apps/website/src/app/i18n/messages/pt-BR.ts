@@ -994,6 +994,8 @@ export const ptBR: WebMessages = {
           },
           input: {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
+            icon: 'Ícone',
             placeholder: 'Espaço reservado',
             size: 'Tamanho',
             type: 'Tipo',
@@ -1008,6 +1010,7 @@ export const ptBR: WebMessages = {
           'number-input': {
             allowNegative: 'Permitir negativos',
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             placeholder: 'Espaço reservado',
             size: 'Tamanho',
             min: 'Mínimo',
@@ -1021,6 +1024,7 @@ export const ptBR: WebMessages = {
           'form-field': {
             size: 'Tamanho',
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             hint: 'Dica',
             required: 'Obrigatório',
           },
@@ -1033,6 +1037,8 @@ export const ptBR: WebMessages = {
           toast: {
             icon: 'Ícone (sobrescrita)',
             title: 'Título',
+            size: 'Tamanho',
+            clearable: 'Limpável',
           },
           avatar: {
             size: 'Tamanho',
@@ -1055,6 +1061,7 @@ export const ptBR: WebMessages = {
             loading: 'Carregando',
             fullWidth: 'Largura total',
             uppercase: 'Maiúsculas',
+            icon: 'Ícone',
           },
           card: {
             variant: 'Variante',
@@ -1075,6 +1082,7 @@ export const ptBR: WebMessages = {
             size: 'Tamanho',
             length: 'Comprimento',
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             placeholder: 'Espaço reservado',
             disabled: 'Desativado',
             readonly: 'Somente leitura',
@@ -1082,6 +1090,7 @@ export const ptBR: WebMessages = {
           },
           'color-picker': {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             placeholder: 'Espaço reservado',
             size: 'Tamanho',
             format: 'Formato',
@@ -1103,12 +1112,14 @@ export const ptBR: WebMessages = {
           },
           'empty-state': {
             size: 'Tamanho',
+            icon: 'Ícone',
             headingLevel: 'Nível de título',
             title: 'Título',
             description: 'Descrição',
           },
           paginator: {
             align: 'Alinhamento',
+            size: 'Tamanho',
             showPageSizeSelector: 'Mostrar seletor de tamanho de página',
             showRangeLabel: 'Mostrar rótulo de intervalo',
             disabled: 'Desativado',
@@ -1126,10 +1137,13 @@ export const ptBR: WebMessages = {
           },
           radio: {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
+            size: 'Tamanho',
             disabled: 'Desativado',
           },
           'range-slider': {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             hint: 'Dica',
             errorMsg: 'Mensagem de erro',
             min: 'Mínimo',
@@ -1143,6 +1157,7 @@ export const ptBR: WebMessages = {
           },
           rating: {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             size: 'Tamanho',
             min: 'Mínimo',
             max: 'Máximo',
@@ -1170,6 +1185,7 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
             hasError: 'Estado de erro',
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
           },
           spinner: {
             size: 'Tamanho',
@@ -1191,6 +1207,7 @@ export const ptBR: WebMessages = {
           },
           textarea: {
             label: 'Rótulo',
+            labelIcon: 'Ícone do rótulo',
             placeholder: 'Espaço reservado',
             size: 'Tamanho',
             resize: 'Redimensionar',

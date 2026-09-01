@@ -978,6 +978,8 @@ export const ar: WebMessages = {
           },
           input: {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
+            icon: 'الأيقونة',
             placeholder: 'العنصر النائب',
             size: 'الحجم',
             type: 'النوع',
@@ -992,6 +994,7 @@ export const ar: WebMessages = {
           'number-input': {
             allowNegative: 'السماح بالقيم السالبة',
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             placeholder: 'العنصر النائب',
             size: 'الحجم',
             min: 'الحد الأدنى',
@@ -1005,6 +1008,7 @@ export const ar: WebMessages = {
           'form-field': {
             size: 'الحجم',
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             hint: 'تلميح',
             required: 'مطلوب',
           },
@@ -1017,6 +1021,8 @@ export const ar: WebMessages = {
           toast: {
             icon: 'الأيقونة (تجاوز)',
             title: 'العنوان',
+            size: 'الحجم',
+            clearable: 'قابل للمسح',
           },
           avatar: {
             size: 'الحجم',
@@ -1039,6 +1045,7 @@ export const ar: WebMessages = {
             loading: 'جارٍ التحميل',
             fullWidth: 'بعرض كامل',
             uppercase: 'أحرف كبيرة',
+            icon: 'الأيقونة',
           },
           card: {
             variant: 'النمط',
@@ -1059,6 +1066,7 @@ export const ar: WebMessages = {
             size: 'الحجم',
             length: 'الطول',
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             placeholder: 'العنصر النائب',
             disabled: 'معطّل',
             readonly: 'للقراءة فقط',
@@ -1066,6 +1074,7 @@ export const ar: WebMessages = {
           },
           'color-picker': {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             placeholder: 'العنصر النائب',
             size: 'الحجم',
             format: 'التنسيق',
@@ -1087,12 +1096,14 @@ export const ar: WebMessages = {
           },
           'empty-state': {
             size: 'الحجم',
+            icon: 'الأيقونة',
             headingLevel: 'مستوى العنوان',
             title: 'العنوان',
             description: 'الوصف',
           },
           paginator: {
             align: 'المحاذاة',
+            size: 'الحجم',
             showPageSizeSelector: 'إظهار محدّد حجم الصفحة',
             showRangeLabel: 'إظهار تسمية النطاق',
             disabled: 'معطّل',
@@ -1110,10 +1121,13 @@ export const ar: WebMessages = {
           },
           radio: {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
+            size: 'الحجم',
             disabled: 'معطّل',
           },
           'range-slider': {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             hint: 'تلميح',
             errorMsg: 'رسالة الخطأ',
             min: 'الأدنى',
@@ -1127,6 +1141,7 @@ export const ar: WebMessages = {
           },
           rating: {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             size: 'الحجم',
             min: 'الأدنى',
             max: 'الأقصى',
@@ -1154,6 +1169,7 @@ export const ar: WebMessages = {
             required: 'مطلوب',
             hasError: 'حالة الخطأ',
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
           },
           spinner: {
             size: 'الحجم',
@@ -1175,6 +1191,7 @@ export const ar: WebMessages = {
           },
           textarea: {
             label: 'التسمية',
+            labelIcon: 'أيقونة التسمية',
             placeholder: 'العنصر النائب',
             size: 'الحجم',
             resize: 'تغيير الحجم',

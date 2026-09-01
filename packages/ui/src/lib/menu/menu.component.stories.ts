@@ -14,7 +14,7 @@ const meta: Meta<MenuComponent> = {
     docs: { story: { height: '20rem' } },
   },
   argTypes: { ...MENU_KNOBS.argTypes },
-  args: { ...MENU_KNOBS.args },
+  args: MENU_KNOBS.args,
 };
 
 export default meta;

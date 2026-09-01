@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE } from '../../label-icon-story';
 import { InputComponent } from './input.component';
 import { INPUT_KNOBS } from './input.component.knobs';
 
@@ -16,7 +16,7 @@ const meta: Meta<InputComponent> = {
     ...INPUT_KNOBS.argTypes,
     labelIcon: LABEL_ICON_STORY_ARGTYPE,
   },
-  args: { ...INPUT_KNOBS.args, labelIcon: LABEL_ICON_STORY_NONE },
+  args: INPUT_KNOBS.args,
 };
 
 export default meta;

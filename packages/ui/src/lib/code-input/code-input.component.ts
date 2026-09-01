@@ -51,9 +51,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Placeholder text spread one character per cell (cell i shows character i). */
   readonly placeholder = input<string>('');

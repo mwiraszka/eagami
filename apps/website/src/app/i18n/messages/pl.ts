@@ -999,6 +999,8 @@ export const pl: WebMessages = {
           },
           input: {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
+            icon: 'Ikona',
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             type: 'Typ',
@@ -1013,6 +1015,7 @@ export const pl: WebMessages = {
           'number-input': {
             allowNegative: 'Zezwól na ujemne',
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             min: 'Minimum',
@@ -1026,6 +1029,7 @@ export const pl: WebMessages = {
           'form-field': {
             size: 'Rozmiar',
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             hint: 'Podpowiedź',
             required: 'Wymagane',
           },
@@ -1038,6 +1042,8 @@ export const pl: WebMessages = {
           toast: {
             icon: 'Ikona (zastąp)',
             title: 'Tytuł',
+            size: 'Rozmiar',
+            clearable: 'Z czyszczeniem',
           },
           avatar: {
             size: 'Rozmiar',
@@ -1060,6 +1066,7 @@ export const pl: WebMessages = {
             loading: 'Ładowanie',
             fullWidth: 'Pełna szerokość',
             uppercase: 'Wielkie litery',
+            icon: 'Ikona',
           },
           card: {
             variant: 'Wariant',
@@ -1080,6 +1087,7 @@ export const pl: WebMessages = {
             size: 'Rozmiar',
             length: 'Długość',
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             placeholder: 'Tekst zastępczy',
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
@@ -1087,6 +1095,7 @@ export const pl: WebMessages = {
           },
           'color-picker': {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             format: 'Format',
@@ -1108,12 +1117,14 @@ export const pl: WebMessages = {
           },
           'empty-state': {
             size: 'Rozmiar',
+            icon: 'Ikona',
             headingLevel: 'Poziom nagłówka',
             title: 'Tytuł',
             description: 'Opis',
           },
           paginator: {
             align: 'Wyrównanie',
+            size: 'Rozmiar',
             showPageSizeSelector: 'Pokaż wybór rozmiaru strony',
             showRangeLabel: 'Pokaż etykietę zakresu',
             disabled: 'Wyłączone',
@@ -1131,10 +1142,13 @@ export const pl: WebMessages = {
           },
           radio: {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
+            size: 'Rozmiar',
             disabled: 'Wyłączone',
           },
           'range-slider': {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             hint: 'Podpowiedź',
             errorMsg: 'Komunikat o błędzie',
             min: 'Minimum',
@@ -1148,6 +1162,7 @@ export const pl: WebMessages = {
           },
           rating: {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             size: 'Rozmiar',
             min: 'Minimum',
             max: 'Maksimum',
@@ -1175,6 +1190,7 @@ export const pl: WebMessages = {
             required: 'Wymagane',
             hasError: 'Stan błędu',
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
           },
           spinner: {
             size: 'Rozmiar',
@@ -1196,6 +1212,7 @@ export const pl: WebMessages = {
           },
           textarea: {
             label: 'Etykieta',
+            labelIcon: 'Ikona etykiety',
             placeholder: 'Tekst zastępczy',
             size: 'Rozmiar',
             resize: 'Zmiana rozmiaru',

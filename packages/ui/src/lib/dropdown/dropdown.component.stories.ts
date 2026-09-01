@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
-import { LABEL_ICON_STORY_ARGTYPE, LABEL_ICON_STORY_NONE } from '../label-icon-story';
+import { LABEL_ICON_STORY_ARGTYPE } from '../../label-icon-story';
 import { DropdownComponent } from './dropdown.component';
 import { DROPDOWN_KNOBS } from './dropdown.component.knobs';
 
@@ -29,7 +29,6 @@ const meta: Meta<DropdownComponent> = {
   },
   args: {
     ...DROPDOWN_KNOBS.args,
-    labelIcon: LABEL_ICON_STORY_NONE,
     options: fruitOptions,
   },
 };

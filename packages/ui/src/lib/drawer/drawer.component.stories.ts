@@ -9,7 +9,7 @@ const meta: Meta<DrawerComponent> = {
   component: DrawerComponent,
   tags: ['autodocs'],
   argTypes: { ...DRAWER_KNOBS.argTypes },
-  args: { ...DRAWER_KNOBS.args },
+  args: DRAWER_KNOBS.args,
 };
 
 export default meta;

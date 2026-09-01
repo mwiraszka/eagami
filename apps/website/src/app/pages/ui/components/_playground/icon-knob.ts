@@ -1,6 +1,7 @@
 import { ICONS } from '@eagami/ui';
+import { LABEL_ICON_SLUGS } from '@eagami/ui-knobs';
 
-import type { Type } from '@angular/core';
+import { type Signal, type Type, computed } from '@angular/core';
 
 import type { PlaygroundKnob } from './knob';
 
@@ -45,6 +46,18 @@ export function iconKnob(
     default: defaultSlug,
     demoOnly,
   };
+}
+
+/** The shared `labelIcon` picker every labelled field's demo offers. */
+export function labelIconKnob(): PlaygroundKnob {
+  return iconKnob(LABEL_ICON_SLUGS, { name: 'labelIcon' });
+}
+
+/** Tracks a demo's `labelIcon` slug as the component class the field label takes. */
+export function labelIconFor(
+  state: Signal<{ labelIcon: string }>,
+): Signal<Type<unknown> | undefined> {
+  return computed(() => iconComponentForSlug(state().labelIcon));
 }
 
 /** Resolves an icon slug to its component class, or undefined for "none". */
