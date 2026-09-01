@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.38.1',
+    date: '2026-09-01',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Tidy the internal docs metadata and test coverage behind the field label icon, with no change to the published API.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.38.0',
     date: '2026-08-30',
     sections: [
