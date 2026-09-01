@@ -53,9 +53,7 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly textareaEl = viewChild<ElementRef<HTMLTextAreaElement>>('textareaEl');
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Accessible name for the control when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });

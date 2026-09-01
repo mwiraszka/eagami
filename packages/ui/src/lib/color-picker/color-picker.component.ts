@@ -120,9 +120,7 @@ export class ColorPickerComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<ColorPickerSize>('md');

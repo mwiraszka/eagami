@@ -105,9 +105,7 @@ export class TimePickerComponent implements ControlValueAccessor {
   private readonly injector = inject(Injector);
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');

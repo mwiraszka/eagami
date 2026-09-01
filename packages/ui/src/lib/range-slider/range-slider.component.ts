@@ -72,9 +72,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
   readonly trackEl = viewChild<ElementRef<HTMLDivElement>>('trackEl');
 
   readonly label = input<string | undefined>(undefined);
-
   /** Optional icon component rendered before the label text. */
-
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
