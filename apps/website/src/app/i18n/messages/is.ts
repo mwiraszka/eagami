@@ -995,6 +995,8 @@ export const is: WebMessages = {
           },
           input: {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
+            icon: 'Táknmynd',
             placeholder: 'Staðgengill',
             size: 'Stærð',
             type: 'Tegund',
@@ -1009,6 +1011,7 @@ export const is: WebMessages = {
           'number-input': {
             allowNegative: 'Leyfa neikvæð gildi',
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             placeholder: 'Staðgengill',
             size: 'Stærð',
             min: 'Lágmark',
@@ -1022,6 +1025,7 @@ export const is: WebMessages = {
           'form-field': {
             size: 'Stærð',
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             hint: 'Vísbending',
             required: 'Krafist',
           },
@@ -1034,6 +1038,8 @@ export const is: WebMessages = {
           toast: {
             icon: 'Táknmynd (yfirskrift)',
             title: 'Titill',
+            size: 'Stærð',
+            clearable: 'Hreinsanlegt',
           },
           avatar: {
             size: 'Stærð',
@@ -1056,6 +1062,7 @@ export const is: WebMessages = {
             loading: 'Hleður',
             fullWidth: 'Full breidd',
             uppercase: 'Hástafir',
+            icon: 'Táknmynd',
           },
           card: {
             variant: 'Afbrigði',
@@ -1076,6 +1083,7 @@ export const is: WebMessages = {
             size: 'Stærð',
             length: 'Lengd',
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             placeholder: 'Staðgengill',
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
@@ -1083,6 +1091,7 @@ export const is: WebMessages = {
           },
           'color-picker': {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             placeholder: 'Staðgengill',
             size: 'Stærð',
             format: 'Snið',
@@ -1104,12 +1113,14 @@ export const is: WebMessages = {
           },
           'empty-state': {
             size: 'Stærð',
+            icon: 'Táknmynd',
             headingLevel: 'Fyrirsagnarstig',
             title: 'Titill',
             description: 'Lýsing',
           },
           paginator: {
             align: 'Jafna',
+            size: 'Stærð',
             showPageSizeSelector: 'Sýna velju fyrir síðustærð',
             showRangeLabel: 'Sýna bilsmerkimiða',
             disabled: 'Óvirkt',
@@ -1127,10 +1138,13 @@ export const is: WebMessages = {
           },
           radio: {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
+            size: 'Stærð',
             disabled: 'Óvirkt',
           },
           'range-slider': {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             hint: 'Vísbending',
             errorMsg: 'Villuboð',
             min: 'Lágmark',
@@ -1144,6 +1158,7 @@ export const is: WebMessages = {
           },
           rating: {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             size: 'Stærð',
             min: 'Lágmark',
             max: 'Hámark',
@@ -1171,6 +1186,7 @@ export const is: WebMessages = {
             required: 'Krafist',
             hasError: 'Villuástand',
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
           },
           spinner: {
             size: 'Stærð',
@@ -1192,6 +1208,7 @@ export const is: WebMessages = {
           },
           textarea: {
             label: 'Merkimiði',
+            labelIcon: 'Táknmynd merkimiða',
             placeholder: 'Staðgengill',
             size: 'Stærð',
             resize: 'Stærðarbreyting',

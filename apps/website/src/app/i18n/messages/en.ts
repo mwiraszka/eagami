@@ -980,6 +980,8 @@ export const en: WebMessages = {
           },
           input: {
             label: 'Label',
+            labelIcon: 'Label icon',
+            icon: 'Icon',
             placeholder: 'Placeholder',
             size: 'Size',
             type: 'Type',
@@ -994,6 +996,7 @@ export const en: WebMessages = {
           'number-input': {
             allowNegative: 'Allow negative',
             label: 'Label',
+            labelIcon: 'Label icon',
             placeholder: 'Placeholder',
             size: 'Size',
             min: 'Minimum',
@@ -1007,6 +1010,7 @@ export const en: WebMessages = {
           'form-field': {
             size: 'Size',
             label: 'Label',
+            labelIcon: 'Label icon',
             hint: 'Hint',
             required: 'Required',
           },
@@ -1019,6 +1023,8 @@ export const en: WebMessages = {
           toast: {
             icon: 'Icon (override)',
             title: 'Title',
+            size: 'Size',
+            clearable: 'Clearable',
           },
           avatar: {
             size: 'Size',
@@ -1041,6 +1047,7 @@ export const en: WebMessages = {
             loading: 'Loading',
             fullWidth: 'Full width',
             uppercase: 'Uppercase',
+            icon: 'Icon',
           },
           card: {
             variant: 'Variant',
@@ -1061,6 +1068,7 @@ export const en: WebMessages = {
             size: 'Size',
             length: 'Length',
             label: 'Label',
+            labelIcon: 'Label icon',
             placeholder: 'Placeholder',
             disabled: 'Disabled',
             readonly: 'Read-only',
@@ -1068,6 +1076,7 @@ export const en: WebMessages = {
           },
           'color-picker': {
             label: 'Label',
+            labelIcon: 'Label icon',
             placeholder: 'Placeholder',
             size: 'Size',
             format: 'Format',
@@ -1089,12 +1098,14 @@ export const en: WebMessages = {
           },
           'empty-state': {
             size: 'Size',
+            icon: 'Icon',
             headingLevel: 'Heading level',
             title: 'Title',
             description: 'Description',
           },
           paginator: {
             align: 'Align',
+            size: 'Size',
             showPageSizeSelector: 'Show page size selector',
             showRangeLabel: 'Show range label',
             disabled: 'Disabled',
@@ -1112,10 +1123,13 @@ export const en: WebMessages = {
           },
           radio: {
             label: 'Label',
+            labelIcon: 'Label icon',
+            size: 'Size',
             disabled: 'Disabled',
           },
           'range-slider': {
             label: 'Label',
+            labelIcon: 'Label icon',
             hint: 'Hint',
             errorMsg: 'Error message',
             min: 'Minimum',
@@ -1129,6 +1143,7 @@ export const en: WebMessages = {
           },
           rating: {
             label: 'Label',
+            labelIcon: 'Label icon',
             size: 'Size',
             min: 'Minimum',
             max: 'Maximum',
@@ -1156,6 +1171,7 @@ export const en: WebMessages = {
             required: 'Required',
             hasError: 'Error state',
             label: 'Label',
+            labelIcon: 'Label icon',
           },
           spinner: {
             size: 'Size',
@@ -1177,6 +1193,7 @@ export const en: WebMessages = {
           },
           textarea: {
             label: 'Label',
+            labelIcon: 'Label icon',
             placeholder: 'Placeholder',
             size: 'Size',
             resize: 'Resize',

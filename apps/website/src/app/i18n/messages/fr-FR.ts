@@ -1008,6 +1008,8 @@ export const frFR: WebMessages = {
           },
           input: {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
+            icon: 'Icône',
             placeholder: 'Texte indicatif',
             size: 'Taille',
             type: 'Type',
@@ -1022,6 +1024,7 @@ export const frFR: WebMessages = {
           'number-input': {
             allowNegative: 'Autoriser les négatifs',
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             placeholder: 'Texte indicatif',
             size: 'Taille',
             min: 'Minimum',
@@ -1035,6 +1038,7 @@ export const frFR: WebMessages = {
           'form-field': {
             size: 'Taille',
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             hint: 'Indication',
             required: 'Requis',
           },
@@ -1047,6 +1051,8 @@ export const frFR: WebMessages = {
           toast: {
             icon: 'Icône (remplacer)',
             title: 'Titre',
+            size: 'Taille',
+            clearable: 'Effaçable',
           },
           avatar: {
             size: 'Taille',
@@ -1069,6 +1075,7 @@ export const frFR: WebMessages = {
             loading: 'Chargement',
             fullWidth: 'Pleine largeur',
             uppercase: 'Majuscules',
+            icon: 'Icône',
           },
           card: {
             variant: 'Variante',
@@ -1089,6 +1096,7 @@ export const frFR: WebMessages = {
             size: 'Taille',
             length: 'Longueur',
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             placeholder: 'Texte indicatif',
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
@@ -1096,6 +1104,7 @@ export const frFR: WebMessages = {
           },
           'color-picker': {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             placeholder: 'Texte indicatif',
             size: 'Taille',
             format: 'Format',
@@ -1117,12 +1126,14 @@ export const frFR: WebMessages = {
           },
           'empty-state': {
             size: 'Taille',
+            icon: 'Icône',
             headingLevel: 'Niveau de titre',
             title: 'Titre',
             description: 'Description',
           },
           paginator: {
             align: 'Alignement',
+            size: 'Taille',
             showPageSizeSelector: 'Afficher le sélecteur de taille de page',
             showRangeLabel: 'Afficher l’étiquette de plage',
             disabled: 'Désactivé',
@@ -1140,10 +1151,13 @@ export const frFR: WebMessages = {
           },
           radio: {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
+            size: 'Taille',
             disabled: 'Désactivé',
           },
           'range-slider': {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             hint: 'Indication',
             errorMsg: 'Message d’erreur',
             min: 'Minimum',
@@ -1157,6 +1171,7 @@ export const frFR: WebMessages = {
           },
           rating: {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             size: 'Taille',
             min: 'Minimum',
             max: 'Maximum',
@@ -1184,6 +1199,7 @@ export const frFR: WebMessages = {
             required: 'Requis',
             hasError: 'État d’erreur',
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
           },
           spinner: {
             size: 'Taille',
@@ -1205,6 +1221,7 @@ export const frFR: WebMessages = {
           },
           textarea: {
             label: 'Libellé',
+            labelIcon: 'Icône du libellé',
             placeholder: 'Texte indicatif',
             size: 'Taille',
             resize: 'Redimensionnement',

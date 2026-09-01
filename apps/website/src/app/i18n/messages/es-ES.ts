@@ -999,6 +999,8 @@ export const esES: WebMessages = {
           },
           input: {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
+            icon: 'Icono',
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             type: 'Tipo',
@@ -1013,6 +1015,7 @@ export const esES: WebMessages = {
           'number-input': {
             allowNegative: 'Permitir negativos',
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             min: 'Mínimo',
@@ -1026,6 +1029,7 @@ export const esES: WebMessages = {
           'form-field': {
             size: 'Tamaño',
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             hint: 'Ayuda',
             required: 'Obligatorio',
           },
@@ -1038,6 +1042,8 @@ export const esES: WebMessages = {
           toast: {
             icon: 'Icono (sustituir)',
             title: 'Título',
+            size: 'Tamaño',
+            clearable: 'Con botón de borrado',
           },
           avatar: {
             size: 'Tamaño',
@@ -1060,6 +1066,7 @@ export const esES: WebMessages = {
             loading: 'Cargando',
             fullWidth: 'Ancho completo',
             uppercase: 'Mayúsculas',
+            icon: 'Icono',
           },
           card: {
             variant: 'Variante',
@@ -1080,6 +1087,7 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             length: 'Longitud',
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             placeholder: 'Marcador de posición',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
@@ -1087,6 +1095,7 @@ export const esES: WebMessages = {
           },
           'color-picker': {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             format: 'Formato',
@@ -1108,12 +1117,14 @@ export const esES: WebMessages = {
           },
           'empty-state': {
             size: 'Tamaño',
+            icon: 'Icono',
             headingLevel: 'Nivel de encabezado',
             title: 'Título',
             description: 'Descripción',
           },
           paginator: {
             align: 'Alineación',
+            size: 'Tamaño',
             showPageSizeSelector: 'Mostrar selector de tamaño de página',
             showRangeLabel: 'Mostrar etiqueta de rango',
             disabled: 'Deshabilitado',
@@ -1131,10 +1142,13 @@ export const esES: WebMessages = {
           },
           radio: {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
+            size: 'Tamaño',
             disabled: 'Deshabilitado',
           },
           'range-slider': {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             hint: 'Ayuda',
             errorMsg: 'Mensaje de error',
             min: 'Mínimo',
@@ -1148,6 +1162,7 @@ export const esES: WebMessages = {
           },
           rating: {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             size: 'Tamaño',
             min: 'Mínimo',
             max: 'Máximo',
@@ -1175,6 +1190,7 @@ export const esES: WebMessages = {
             required: 'Obligatorio',
             hasError: 'Estado de error',
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
           },
           spinner: {
             size: 'Tamaño',
@@ -1196,6 +1212,7 @@ export const esES: WebMessages = {
           },
           textarea: {
             label: 'Etiqueta',
+            labelIcon: 'Icono de la etiqueta',
             placeholder: 'Marcador de posición',
             size: 'Tamaño',
             resize: 'Redimensionar',

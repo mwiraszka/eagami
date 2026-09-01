@@ -982,6 +982,8 @@ export const hi: WebMessages = {
           },
           input: {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
+            icon: 'आइकन',
             placeholder: 'प्लेसहोल्डर',
             size: 'आकार',
             type: 'प्रकार',
@@ -996,6 +998,7 @@ export const hi: WebMessages = {
           'number-input': {
             allowNegative: 'ऋणात्मक की अनुमति दें',
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             placeholder: 'प्लेसहोल्डर',
             size: 'आकार',
             min: 'न्यूनतम',
@@ -1009,6 +1012,7 @@ export const hi: WebMessages = {
           'form-field': {
             size: 'आकार',
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             hint: 'संकेत',
             required: 'आवश्यक',
           },
@@ -1021,6 +1025,8 @@ export const hi: WebMessages = {
           toast: {
             icon: 'आइकन (ओवरराइड)',
             title: 'शीर्षक',
+            size: 'आकार',
+            clearable: 'साफ़ करने योग्य',
           },
           avatar: {
             size: 'आकार',
@@ -1043,6 +1049,7 @@ export const hi: WebMessages = {
             loading: 'लोडिंग',
             fullWidth: 'पूरी चौड़ाई',
             uppercase: 'अपरकेस',
+            icon: 'आइकन',
           },
           card: {
             variant: 'वेरिएंट',
@@ -1063,6 +1070,7 @@ export const hi: WebMessages = {
             size: 'आकार',
             length: 'लंबाई',
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             placeholder: 'प्लेसहोल्डर',
             disabled: 'अक्षम',
             readonly: 'केवल-पढ़ने योग्य',
@@ -1070,6 +1078,7 @@ export const hi: WebMessages = {
           },
           'color-picker': {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             placeholder: 'प्लेसहोल्डर',
             size: 'आकार',
             format: 'फ़ॉर्मेट',
@@ -1091,12 +1100,14 @@ export const hi: WebMessages = {
           },
           'empty-state': {
             size: 'आकार',
+            icon: 'आइकन',
             headingLevel: 'शीर्षक स्तर',
             title: 'शीर्षक',
             description: 'विवरण',
           },
           paginator: {
             align: 'संरेखण',
+            size: 'आकार',
             showPageSizeSelector: 'पेज आकार चयनकर्ता दिखाएं',
             showRangeLabel: 'रेंज लेबल दिखाएं',
             disabled: 'अक्षम',
@@ -1114,10 +1125,13 @@ export const hi: WebMessages = {
           },
           radio: {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
+            size: 'आकार',
             disabled: 'अक्षम',
           },
           'range-slider': {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             hint: 'संकेत',
             errorMsg: 'त्रुटि संदेश',
             min: 'न्यूनतम',
@@ -1131,6 +1145,7 @@ export const hi: WebMessages = {
           },
           rating: {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             size: 'आकार',
             min: 'न्यूनतम',
             max: 'अधिकतम',
@@ -1158,6 +1173,7 @@ export const hi: WebMessages = {
             required: 'आवश्यक',
             hasError: 'त्रुटि स्थिति',
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
           },
           spinner: {
             size: 'आकार',
@@ -1179,6 +1195,7 @@ export const hi: WebMessages = {
           },
           textarea: {
             label: 'लेबल',
+            labelIcon: 'लेबल आइकन',
             placeholder: 'प्लेसहोल्डर',
             size: 'आकार',
             resize: 'आकार बदलें',

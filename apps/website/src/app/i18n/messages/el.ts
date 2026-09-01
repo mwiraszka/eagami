@@ -1009,6 +1009,8 @@ export const el: WebMessages = {
           },
           input: {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
+            icon: 'Εικονίδιο',
             placeholder: 'Κείμενο υποδείγματος',
             size: 'Μέγεθος',
             type: 'Τύπος',
@@ -1023,6 +1025,7 @@ export const el: WebMessages = {
           'number-input': {
             allowNegative: 'Επιτρέπονται αρνητικοί',
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             placeholder: 'Κείμενο υποδείγματος',
             size: 'Μέγεθος',
             min: 'Ελάχιστο',
@@ -1036,6 +1039,7 @@ export const el: WebMessages = {
           'form-field': {
             size: 'Μέγεθος',
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             hint: 'Βοήθεια',
             required: 'Υποχρεωτικό',
           },
@@ -1048,6 +1052,8 @@ export const el: WebMessages = {
           toast: {
             icon: 'Εικονίδιο (παράκαμψη)',
             title: 'Τίτλος',
+            size: 'Μέγεθος',
+            clearable: 'Με εκκαθάριση',
           },
           avatar: {
             size: 'Μέγεθος',
@@ -1070,6 +1076,7 @@ export const el: WebMessages = {
             loading: 'Φόρτωση',
             fullWidth: 'Πλήρες πλάτος',
             uppercase: 'Κεφαλαία',
+            icon: 'Εικονίδιο',
           },
           card: {
             variant: 'Παραλλαγή',
@@ -1090,6 +1097,7 @@ export const el: WebMessages = {
             size: 'Μέγεθος',
             length: 'Μήκος',
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             placeholder: 'Κείμενο υποδείγματος',
             disabled: 'Απενεργοποιημένο',
             readonly: 'Μόνο για ανάγνωση',
@@ -1097,6 +1105,7 @@ export const el: WebMessages = {
           },
           'color-picker': {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             placeholder: 'Κείμενο υποδείγματος',
             size: 'Μέγεθος',
             format: 'Μορφή',
@@ -1118,12 +1127,14 @@ export const el: WebMessages = {
           },
           'empty-state': {
             size: 'Μέγεθος',
+            icon: 'Εικονίδιο',
             headingLevel: 'Επίπεδο επικεφαλίδας',
             title: 'Τίτλος',
             description: 'Περιγραφή',
           },
           paginator: {
             align: 'Στοίχιση',
+            size: 'Μέγεθος',
             showPageSizeSelector: 'Εμφάνιση επιλογέα μεγέθους σελίδας',
             showRangeLabel: 'Εμφάνιση ετικέτας εύρους',
             disabled: 'Απενεργοποιημένο',
@@ -1141,10 +1152,13 @@ export const el: WebMessages = {
           },
           radio: {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
+            size: 'Μέγεθος',
             disabled: 'Απενεργοποιημένο',
           },
           'range-slider': {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             hint: 'Βοήθεια',
             errorMsg: 'Μήνυμα σφάλματος',
             min: 'Ελάχιστο',
@@ -1158,6 +1172,7 @@ export const el: WebMessages = {
           },
           rating: {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             size: 'Μέγεθος',
             min: 'Ελάχιστο',
             max: 'Μέγιστο',
@@ -1185,6 +1200,7 @@ export const el: WebMessages = {
             required: 'Υποχρεωτικό',
             hasError: 'Κατάσταση σφάλματος',
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
           },
           spinner: {
             size: 'Μέγεθος',
@@ -1206,6 +1222,7 @@ export const el: WebMessages = {
           },
           textarea: {
             label: 'Ετικέτα',
+            labelIcon: 'Εικονίδιο ετικέτας',
             placeholder: 'Κείμενο υποδείγματος',
             size: 'Μέγεθος',
             resize: 'Αλλαγή μεγέθους',

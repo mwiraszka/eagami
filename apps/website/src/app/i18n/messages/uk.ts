@@ -989,6 +989,8 @@ export const uk: WebMessages = {
           },
           input: {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
+            icon: 'Іконка',
             placeholder: 'Заповнювач',
             size: 'Розмір',
             type: 'Тип',
@@ -1003,6 +1005,7 @@ export const uk: WebMessages = {
           'number-input': {
             allowNegative: 'Дозволити від’ємні',
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             placeholder: 'Заповнювач',
             size: 'Розмір',
             min: 'Мінімум',
@@ -1016,6 +1019,7 @@ export const uk: WebMessages = {
           'form-field': {
             size: 'Розмір',
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             hint: 'Підказка',
             required: 'Обов’язковий',
           },
@@ -1028,6 +1032,8 @@ export const uk: WebMessages = {
           toast: {
             icon: 'Іконка (перевизначення)',
             title: 'Заголовок',
+            size: 'Розмір',
+            clearable: 'Очищуваний',
           },
           avatar: {
             size: 'Розмір',
@@ -1050,6 +1056,7 @@ export const uk: WebMessages = {
             loading: 'Завантаження',
             fullWidth: 'На всю ширину',
             uppercase: 'Великі літери',
+            icon: 'Іконка',
           },
           card: {
             variant: 'Варіант',
@@ -1070,6 +1077,7 @@ export const uk: WebMessages = {
             size: 'Розмір',
             length: 'Довжина',
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             placeholder: 'Заповнювач',
             disabled: 'Вимкнено',
             readonly: 'Лише для читання',
@@ -1077,6 +1085,7 @@ export const uk: WebMessages = {
           },
           'color-picker': {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             placeholder: 'Заповнювач',
             size: 'Розмір',
             format: 'Формат',
@@ -1098,12 +1107,14 @@ export const uk: WebMessages = {
           },
           'empty-state': {
             size: 'Розмір',
+            icon: 'Іконка',
             headingLevel: 'Рівень заголовка',
             title: 'Заголовок',
             description: 'Опис',
           },
           paginator: {
             align: 'Вирівнювання',
+            size: 'Розмір',
             showPageSizeSelector: 'Показати вибір розміру сторінки',
             showRangeLabel: 'Показати мітку діапазону',
             disabled: 'Вимкнено',
@@ -1121,10 +1132,13 @@ export const uk: WebMessages = {
           },
           radio: {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
+            size: 'Розмір',
             disabled: 'Вимкнено',
           },
           'range-slider': {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             hint: 'Підказка',
             errorMsg: 'Повідомлення про помилку',
             min: 'Мінімум',
@@ -1138,6 +1152,7 @@ export const uk: WebMessages = {
           },
           rating: {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             size: 'Розмір',
             min: 'Мінімум',
             max: 'Максимум',
@@ -1165,6 +1180,7 @@ export const uk: WebMessages = {
             required: 'Обов’язковий',
             hasError: 'Стан помилки',
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
           },
           spinner: {
             size: 'Розмір',
@@ -1186,6 +1202,7 @@ export const uk: WebMessages = {
           },
           textarea: {
             label: 'Мітка',
+            labelIcon: 'Іконка мітки',
             placeholder: 'Заповнювач',
             size: 'Розмір',
             resize: 'Зміна розміру',
