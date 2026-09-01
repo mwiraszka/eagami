@@ -1,10 +1,9 @@
 import { FormFieldComponent, type FormFieldSize } from '@eagami/ui';
-import { LABEL_ICON_SLUGS, PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   effect,
   inject,
   signal,
@@ -19,7 +18,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
+import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
 
 interface FormFieldKnobState {
@@ -53,7 +52,7 @@ export class FormFieldDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
-    iconKnob([...LABEL_ICON_SLUGS], { name: 'labelIcon' }),
+    labelIconKnob(),
   ];
   protected readonly state = signal<FormFieldKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as FormFieldKnobState,
@@ -78,9 +77,7 @@ export class FormFieldDemoPageComponent {
     });
   }
 
-  protected readonly labelIconComponent = computed(() =>
-    iconComponentForSlug(this.state().labelIcon),
-  );
+  protected readonly labelIconComponent = labelIconFor(this.state);
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the
