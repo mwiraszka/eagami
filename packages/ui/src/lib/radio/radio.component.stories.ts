@@ -24,7 +24,7 @@ export const Playground: Story = {
     props: args,
     moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
     template: `
-      <ea-radio-group label="Fruit" [labelIcon]="labelIcon" [size]="size" [orientation]="orientation" [disabled]="disabled">
+      <ea-radio-group [label]="label" [labelIcon]="labelIcon" [size]="size" [orientation]="orientation" [disabled]="disabled">
         <ea-radio value="apple" label="Apple"></ea-radio>
         <ea-radio value="banana" label="Banana"></ea-radio>
         <ea-radio value="cherry" label="Cherry"></ea-radio>

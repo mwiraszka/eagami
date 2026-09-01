@@ -26,6 +26,8 @@ interface RadioKnobState {
 }
 
 const SLUG = 'radio';
+// The playground demos the group, so its inputs supply the snippet's defaults
+const API_SLUG = 'radio-group';
 
 @Component({
   selector: 'web-radio-demo-page',
@@ -42,12 +44,14 @@ const SLUG = 'radio';
 export class RadioDemoPageComponent {
   protected readonly slug = SLUG;
   protected readonly knobs = [
-    ...buildKnobs(PLAYGROUND_KNOBS.radio, UI_API[SLUG]),
+    ...buildKnobs(PLAYGROUND_KNOBS.radio, UI_API[API_SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<RadioKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.radio) as RadioKnobState,
   );
+
+  protected readonly childMarkup = '<ea-radio\n  value="apple"\n  label="Apple" />';
 
   protected readonly control = new FormControl(null, {
     validators: () => (this.state().triggerError ? { required: true } : null),

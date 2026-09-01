@@ -40,7 +40,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'paginator', name: 'Paginator', selector: 'ea-paginator' },
   { slug: 'popover', name: 'Popover', selector: 'ea-popover' },
   { slug: 'progress-bar', name: 'Progress Bar', selector: 'ea-progress-bar' },
-  { slug: 'radio', name: 'Radio', selector: 'ea-radio' },
+  { slug: 'radio', name: 'Radio', selector: 'ea-radio-group' },
   { slug: 'range-slider', name: 'Range Slider', selector: 'ea-range-slider' },
   { slug: 'rating', name: 'Rating', selector: 'ea-rating' },
   { slug: 'segmented', name: 'Segmented', selector: 'ea-segmented' },
