@@ -68,7 +68,7 @@
     &--disabled {
       opacity: 0.6;
       background-color: var(--color-bg-muted);
-      cursor: not-allowed;
+      cursor: default;
     }
 
     &--readonly {
@@ -108,7 +108,7 @@
     }
 
     &:disabled {
-      cursor: not-allowed;
+      cursor: default;
     }
   }
 
@@ -277,7 +277,7 @@
 
     &--disabled {
       color: var(--color-text-disabled);
-      cursor: not-allowed;
+      cursor: default;
 
       &:hover {
         background-color: transparent;

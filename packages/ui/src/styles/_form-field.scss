@@ -44,7 +44,7 @@
   &:disabled {
     opacity: 0.6;
     background-color: var(--color-bg-muted);
-    cursor: not-allowed;
+    cursor: default;
   }
 }
 

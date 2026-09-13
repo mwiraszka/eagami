@@ -84,7 +84,7 @@
     &:has(.ea-multi-select__trigger--disabled) {
       background-color: var(--color-bg-muted);
       opacity: 0.6;
-      cursor: not-allowed;
+      cursor: default;
     }
 
     &:has(.ea-multi-select__trigger--readonly) {
@@ -110,7 +110,7 @@
     }
 
     &--disabled {
-      cursor: not-allowed;
+      cursor: default;
     }
 
     &--readonly {
@@ -298,7 +298,7 @@
 
     &--disabled {
       color: var(--color-text-disabled);
-      cursor: not-allowed;
+      cursor: default;
 
       @media (forced-colors: active) {
         color: GrayText;

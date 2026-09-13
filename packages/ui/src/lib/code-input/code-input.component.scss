@@ -61,7 +61,7 @@
     .ea-code-input {
       background-color: var(--color-bg-muted);
       border-color: var(--color-border-default);
-      cursor: not-allowed;
+      cursor: default;
     }
   }
 }
@@ -109,7 +109,7 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    cursor: default;
   }
 
   &::-webkit-outer-spin-button,

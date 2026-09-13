@@ -175,11 +175,11 @@
 
 .ea-slider--disabled {
   opacity: 0.5;
-  cursor: not-allowed;
+  cursor: default;
 
   .ea-slider__track,
   .ea-slider__thumb {
-    cursor: not-allowed;
+    cursor: default;
   }
 }
 
