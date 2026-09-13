@@ -37,7 +37,8 @@ function clampToViewport(
 
 /**
  * Attaches a positioned tooltip to its host element. Shows on hover and
- * focus, hides on leave/blur or Escape, and wires up `aria-describedby` so
+ * focus, hides on leave/blur or Escape (a blur while the pointer is still on
+ * the trigger keeps the bubble open), and wires up `aria-describedby` so
  * the tooltip text is announced to assistive technology. Accepts either a
  * plain string or a `TemplateRef` for styled multi-part content. Binding an
  * empty string suppresses the bubble, which is how a host shows one only in
@@ -96,6 +97,10 @@ export class TooltipDirective implements OnDestroy {
   private templateView: EmbeddedViewRef<unknown> | null = null;
   private scrollable = false;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
+  /* True while the pointer is over the trigger, so a blur alone (a button
+     disabling itself once its action reaches a limit) does not hide a bubble
+     the hover is still holding open. */
+  private pointerInside = false;
   private readonly tooltipId = `ea-tooltip-${Math.random().toString(36).slice(2, 9)}`;
 
   // Touch devices fire `mouseenter` on tap but never fire `mouseleave` until
@@ -108,8 +113,20 @@ export class TooltipDirective implements OnDestroy {
       ? window.matchMedia('(hover: hover)')
       : null;
 
-  private readonly showHandler = () => this.show();
+  private readonly showHandler = () => {
+    this.pointerInside = true;
+    this.show();
+  };
+  private readonly pointerLeaveHandler = () => {
+    this.pointerInside = false;
+    this.requestHide();
+  };
   private readonly hideHandler = () => this.requestHide();
+  private readonly focusoutHandler = () => {
+    if (!this.pointerInside) {
+      this.requestHide();
+    }
+  };
   private readonly bubbleEnterHandler = () => this.cancelPendingHide();
   /* `:focus-visible` is supported in every targeted browser (Chrome, Firefox,
      Safari, Edge). Feature-detect so non-browser test environments (jsdom)
@@ -176,7 +193,7 @@ export class TooltipDirective implements OnDestroy {
     // focusin/focusout (not focus/blur) so the tooltip still shows when the host
     // wraps the focusable element (focus does not bubble; focusin does).
     native.addEventListener('focusin', this.focusHandler);
-    native.addEventListener('focusout', this.hideHandler);
+    native.addEventListener('focusout', this.focusoutHandler);
 
     this.syncPointerListeners(this.hoverMql?.matches ?? true);
     this.hoverMql?.addEventListener('change', this.hoverChangeHandler);
@@ -185,9 +202,9 @@ export class TooltipDirective implements OnDestroy {
   ngOnDestroy(): void {
     const native = this.el.nativeElement;
     native.removeEventListener('mouseenter', this.showHandler);
-    native.removeEventListener('mouseleave', this.hideHandler);
+    native.removeEventListener('mouseleave', this.pointerLeaveHandler);
     native.removeEventListener('focusin', this.focusHandler);
-    native.removeEventListener('focusout', this.hideHandler);
+    native.removeEventListener('focusout', this.focusoutHandler);
     this.hoverMql?.removeEventListener('change', this.hoverChangeHandler);
     this.hide();
   }
@@ -197,11 +214,12 @@ export class TooltipDirective implements OnDestroy {
     // Remove first to keep this idempotent; addEventListener with the same
     // handler is a no-op anyway, but pairing keeps the bookkeeping obvious.
     native.removeEventListener('mouseenter', this.showHandler);
-    native.removeEventListener('mouseleave', this.hideHandler);
+    native.removeEventListener('mouseleave', this.pointerLeaveHandler);
     if (canHover) {
       native.addEventListener('mouseenter', this.showHandler);
-      native.addEventListener('mouseleave', this.hideHandler);
+      native.addEventListener('mouseleave', this.pointerLeaveHandler);
     } else {
+      this.pointerInside = false;
       this.hide();
     }
   }

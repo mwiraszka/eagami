@@ -136,6 +136,15 @@ describe('TooltipDirective', () => {
       expect(getTooltip()).toBeNull();
     });
 
+    it('keeps a hover-shown tooltip when the trigger blurs mid-hover', () => {
+      show();
+
+      getButton().dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
     it('removes on Escape key pressed anywhere in the document', () => {
       show();
 
