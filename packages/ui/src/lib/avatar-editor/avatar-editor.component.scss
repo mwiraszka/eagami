@@ -37,10 +37,10 @@
     cursor: pointer;
     transition: var(--transition-colors);
 
+    // The surface holds steady on hover; a half-step of text contrast carries
+    // the feedback
     &:hover {
-      border-color: var(--color-border-focus);
-      background-color: var(--color-state-hover);
-      color: var(--color-text-secondary);
+      color: color-mix(in srgb, var(--color-text-tertiary), var(--color-text-secondary));
     }
 
     &:focus-visible {

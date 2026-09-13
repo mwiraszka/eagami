@@ -19,7 +19,9 @@
           [id]="sizeSelectId"
           [disabled]="disabled()"
           (change)="onPageSizeChange($event)">
-          @for (option of pageSizeOptions(); track option) {
+          <!-- Track by index so options update in place; replacing them mid-reconcile
+       trips NG05106 inside a select on Angular 22.1.3+ -->
+          @for (option of pageSizeOptions(); track $index) {
             <option
               [value]="option"
               [selected]="option === pageSize()">
