@@ -29,7 +29,7 @@ export const zhCN: WebMessages = {
       copySuccess: '已复制到剪贴板',
       copyError: '无法复制到剪贴板',
     },
-    copyLinkLabel: '复制该部分链接',
+    copyLinkLabel: '获取该部分的 URL 链接',
   },
   home: {
     metaTitle: 'Eagami',

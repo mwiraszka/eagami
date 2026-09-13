@@ -30,7 +30,7 @@ export const is: WebMessages = {
       copySuccess: 'Afritað á klippiborð',
       copyError: 'Ekki tókst að afrita á klippiborð',
     },
-    copyLinkLabel: 'Afrita tengil á hlutann',
+    copyLinkLabel: 'Fá URL-tengil á þennan hluta',
   },
   home: {
     metaTitle: 'Eagami',

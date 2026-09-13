@@ -33,7 +33,7 @@ export const frFR: WebMessages = {
       copySuccess: 'Copié dans le presse-papiers',
       copyError: 'Impossible de copier dans le presse-papiers',
     },
-    copyLinkLabel: 'Copier le lien vers la section',
+    copyLinkLabel: 'Obtenir le lien URL vers cette section',
   },
   home: {
     metaTitle: 'Eagami',

@@ -70,11 +70,11 @@
   &--disabled {
     background-color: var(--color-bg-muted);
     border-color: var(--color-border-default);
-    cursor: not-allowed;
+    cursor: default;
     opacity: 0.6;
 
     .ea-input {
-      cursor: not-allowed;
+      cursor: default;
     }
   }
 
@@ -147,7 +147,7 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    cursor: default;
   }
 
   // Hide native Chrome/Safari affordances (picker arrow, autofill icons,

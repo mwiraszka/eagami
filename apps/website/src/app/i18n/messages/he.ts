@@ -29,7 +29,7 @@ export const he: WebMessages = {
       copySuccess: 'הועתק ללוח',
       copyError: 'לא ניתן היה להעתיק ללוח',
     },
-    copyLinkLabel: 'העתקת קישור למקטע',
+    copyLinkLabel: 'קבלת קישור URL למקטע זה',
   },
   home: {
     metaTitle: 'Eagami',

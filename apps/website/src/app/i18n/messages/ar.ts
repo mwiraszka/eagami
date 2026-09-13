@@ -30,7 +30,7 @@ export const ar: WebMessages = {
       copySuccess: 'تم النسخ إلى الحافظة',
       copyError: 'تعذّر النسخ إلى الحافظة',
     },
-    copyLinkLabel: 'نسخ رابط القسم',
+    copyLinkLabel: 'الحصول على رابط URL لهذا القسم',
   },
   home: {
     metaTitle: 'Eagami',

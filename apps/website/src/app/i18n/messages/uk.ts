@@ -30,7 +30,7 @@ export const uk: WebMessages = {
       copySuccess: 'Скопійовано до буфера обміну',
       copyError: 'Не вдалося скопіювати до буфера обміну',
     },
-    copyLinkLabel: 'Скопіювати посилання на розділ',
+    copyLinkLabel: 'Отримати URL-посилання на цей розділ',
   },
   home: {
     metaTitle: 'Eagami',

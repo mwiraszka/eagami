@@ -29,7 +29,7 @@ export const esES: WebMessages = {
       copySuccess: 'Copiado al portapapeles',
       copyError: 'No se pudo copiar al portapapeles',
     },
-    copyLinkLabel: 'Copiar enlace a la sección',
+    copyLinkLabel: 'Obtener enlace URL a esta sección',
   },
   home: {
     metaTitle: 'Eagami',

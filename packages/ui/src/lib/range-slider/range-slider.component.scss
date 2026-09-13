@@ -165,11 +165,11 @@
 
 .ea-range-slider--disabled {
   opacity: 0.5;
-  cursor: not-allowed;
+  cursor: default;
 
   .ea-range-slider__track,
   .ea-range-slider__thumb {
-    cursor: not-allowed;
+    cursor: default;
   }
 }
 

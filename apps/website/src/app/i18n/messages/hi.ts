@@ -29,7 +29,7 @@ export const hi: WebMessages = {
       copySuccess: 'क्लिपबोर्ड पर कॉपी किया गया',
       copyError: 'क्लिपबोर्ड पर कॉपी नहीं किया जा सका',
     },
-    copyLinkLabel: 'सेक्शन का लिंक कॉपी करें',
+    copyLinkLabel: 'इस सेक्शन का URL लिंक प्राप्त करें',
   },
   home: {
     metaTitle: 'Eagami',

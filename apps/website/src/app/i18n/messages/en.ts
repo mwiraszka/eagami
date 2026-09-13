@@ -29,7 +29,7 @@ export const en: WebMessages = {
       copySuccess: 'Copied to clipboard',
       copyError: 'Could not copy to clipboard',
     },
-    copyLinkLabel: 'Copy link to section',
+    copyLinkLabel: 'Get URL link to this section',
   },
   home: {
     metaTitle: 'Eagami',

@@ -78,7 +78,7 @@
 
   &--disabled {
     opacity: 0.5;
-    cursor: not-allowed;
+    cursor: default;
   }
 
   &--error {
@@ -128,7 +128,7 @@
     }
 
     &--disabled {
-      cursor: not-allowed;
+      cursor: default;
     }
   }
 }

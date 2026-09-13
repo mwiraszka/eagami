@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.41.0] - 2026-09-13
+
+### Changed
+
+- Show the default cursor on every disabled control instead of the not-allowed cursor.
+- Shrink the avatar editor's control button icons for more breathing room, and keep its disabled buttons visually inert on hover.
+
+### Fixed
+
+- Keep an open tooltip visible when its hovered trigger becomes disabled, such as a zoom button reaching its limit.
+
 ## [5.40.0] - 2026-09-13
 
 ### Added
@@ -1560,6 +1571,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.41.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.40.0...ui-v5.41.0
 [5.40.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.39.0...ui-v5.40.0
 [5.39.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.38.1...ui-v5.39.0
 [5.38.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.38.0...ui-v5.38.1

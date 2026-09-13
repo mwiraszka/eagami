@@ -30,7 +30,7 @@ export const nl: WebMessages = {
       copySuccess: 'Gekopieerd naar klembord',
       copyError: 'Kon niet naar klembord kopiëren',
     },
-    copyLinkLabel: 'Link naar sectie kopiëren',
+    copyLinkLabel: 'URL-link naar deze sectie ophalen',
   },
   home: {
     metaTitle: 'Eagami',

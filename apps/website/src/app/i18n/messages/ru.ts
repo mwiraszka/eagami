@@ -30,7 +30,7 @@ export const ru: WebMessages = {
       copySuccess: 'Скопировано в буфер обмена',
       copyError: 'Не удалось скопировать в буфер обмена',
     },
-    copyLinkLabel: 'Скопировать ссылку на раздел',
+    copyLinkLabel: 'Получить URL-ссылку на этот раздел',
   },
   home: {
     metaTitle: 'Eagami',

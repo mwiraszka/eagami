@@ -13,10 +13,13 @@ import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  type ElementRef,
+  afterNextRender,
   computed,
   effect,
   inject,
   signal,
+  viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, type SafeHtml } from '@angular/platform-browser';
@@ -55,6 +58,9 @@ export class UiIconsPageComponent {
   private readonly clipboard = inject(ClipboardService);
   private readonly i18n = inject(WebI18nService);
   private readonly sanitizer = inject(DomSanitizer);
+
+  private readonly filterInputEl =
+    viewChild.required<ElementRef<HTMLInputElement>>('filterInputEl');
 
   protected readonly messages = this.i18n.messages;
   protected readonly query = signal('');
@@ -145,6 +151,8 @@ export class UiIconsPageComponent {
       this.metaAndTitleService.updateTitle(m.metaTitle);
       this.metaAndTitleService.updateDescription(m.metaDescription);
     });
+
+    afterNextRender(() => this.filterInputEl().nativeElement.focus());
   }
 
   protected readonly displayName = iconDisplayName;

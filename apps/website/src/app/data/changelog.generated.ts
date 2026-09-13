@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.41.0',
+    date: '2026-09-13',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          'Show the default cursor on every disabled control instead of the not-allowed cursor.',
+          "Shrink the avatar editor's control button icons for more breathing room, and keep its disabled buttons visually inert on hover.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep an open tooltip visible when its hovered trigger becomes disabled, such as a zoom button reaching its limit.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.40.0',
     date: '2026-09-13',
     sections: [

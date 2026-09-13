@@ -30,7 +30,7 @@ export const ptBR: WebMessages = {
       copySuccess: 'Copiado para a área de transferência',
       copyError: 'Não foi possível copiar para a área de transferência',
     },
-    copyLinkLabel: 'Copiar link da seção',
+    copyLinkLabel: 'Obter link URL para esta seção',
   },
   home: {
     metaTitle: 'Eagami',
