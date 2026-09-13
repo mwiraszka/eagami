@@ -148,8 +148,19 @@
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
 
+    // Under the shared glyph size for more air inside the bordered box
+    > * {
+      font-size: 1.11em;
+    }
+
     &:hover:not(:disabled) {
       border-color: var(--color-border-focus);
+    }
+
+    // The shared hover wash matches disabled buttons too; pin the resting look
+    &:disabled:hover {
+      background-color: var(--color-bg-base);
+      color: var(--color-text-primary);
     }
 
     &--danger {
@@ -158,6 +169,10 @@
       // The shared hover sets text-primary; hold the danger tint on hover too
       &:hover:not(:disabled) {
         border-color: var(--color-error-default);
+        color: var(--color-error-default);
+      }
+
+      &:disabled:hover {
         color: var(--color-error-default);
       }
     }
@@ -214,7 +229,15 @@
 
     &:disabled {
       opacity: 0.4;
-      cursor: not-allowed;
+      cursor: default;
+
+      &::-webkit-slider-thumb {
+        cursor: default;
+      }
+
+      &::-moz-range-thumb {
+        cursor: default;
+      }
     }
   }
 }
