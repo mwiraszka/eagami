@@ -30,7 +30,7 @@ export const pl: WebMessages = {
       copySuccess: 'Skopiowano do schowka',
       copyError: 'Nie udało się skopiować do schowka',
     },
-    copyLinkLabel: 'Kopiuj link do sekcji',
+    copyLinkLabel: 'Uzyskaj link URL do tej sekcji',
   },
   home: {
     metaTitle: 'Eagami',

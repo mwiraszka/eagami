@@ -30,7 +30,7 @@ export const de: WebMessages = {
       copySuccess: 'In die Zwischenablage kopiert',
       copyError: 'Kopieren in die Zwischenablage nicht möglich',
     },
-    copyLinkLabel: 'Link zum Abschnitt kopieren',
+    copyLinkLabel: 'URL-Link zu diesem Abschnitt abrufen',
   },
   home: {
     metaTitle: 'Eagami',

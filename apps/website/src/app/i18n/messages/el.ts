@@ -30,7 +30,7 @@ export const el: WebMessages = {
       copySuccess: 'Αντιγράφηκε στο πρόχειρο',
       copyError: 'Αποτυχία αντιγραφής στο πρόχειρο',
     },
-    copyLinkLabel: 'Αντιγραφή συνδέσμου ενότητας',
+    copyLinkLabel: 'Λήψη συνδέσμου URL για αυτήν την ενότητα',
   },
   home: {
     metaTitle: 'Eagami',
