@@ -196,6 +196,7 @@ import { KeyframeIconComponent } from './keyframe.component';
 import { KubernetesIconComponent } from './kubernetes.component';
 import { LampIconComponent } from './lamp.component';
 import { LanguagesIconComponent } from './languages.component';
+import { LaptopIconComponent } from './laptop.component';
 import { LayersIconComponent } from './layers.component';
 import { LayoutIconComponent } from './layout.component';
 import { LeafIconComponent } from './leaf.component';
@@ -625,6 +626,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     KubernetesIconComponent,
     LampIconComponent,
     LanguagesIconComponent,
+    LaptopIconComponent,
     LayersIconComponent,
     LayoutIconComponent,
     LeafIconComponent,

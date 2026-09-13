@@ -270,6 +270,7 @@ export * from './lib/icons/keyframe.component';
 export * from './lib/icons/kubernetes.component';
 export * from './lib/icons/lamp.component';
 export * from './lib/icons/languages.component';
+export * from './lib/icons/laptop.component';
 export * from './lib/icons/layers.component';
 export * from './lib/icons/layout.component';
 export * from './lib/icons/leaf.component';
