@@ -14,6 +14,23 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.40.0',
+    date: '2026-09-13',
+    sections: [
+      {
+        heading: 'Added',
+        entries: ['Add a laptop icon.'],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Soften the avatar editor dropzone hover so the surface and text no longer jump.',
+          'Update packages.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.39.0',
     date: '2026-09-08',
     sections: [
