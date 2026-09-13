@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Soften the avatar editor dropzone hover so the surface and text no longer jump.
+- Hold the avatar editor dropzone surface and border steady on hover, with a subtle text shift as the only feedback.
 - Update packages.
 
 ## [5.39.0] - 2026-09-08

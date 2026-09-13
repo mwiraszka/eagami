@@ -24,7 +24,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Changed',
         entries: [
-          'Soften the avatar editor dropzone hover so the surface and text no longer jump.',
+          'Hold the avatar editor dropzone surface and border steady on hover, with a subtle text shift as the only feedback.',
           'Update packages.',
         ],
       },

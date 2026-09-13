@@ -37,15 +37,10 @@
     cursor: pointer;
     transition: var(--transition-colors);
 
-    // Layer the hover wash over the resting surface instead of replacing it,
-    // so the hover reads as a nudge rather than a jump
+    // The surface holds steady on hover; a half-step of text contrast carries
+    // the feedback
     &:hover {
-      border-color: var(--color-border-focus);
-      background-color: color-mix(
-        in srgb,
-        var(--color-state-hover),
-        var(--color-bg-subtle)
-      );
+      color: color-mix(in srgb, var(--color-text-tertiary), var(--color-text-secondary));
     }
 
     &:focus-visible {
