@@ -150,6 +150,44 @@ describe('controlErrorStateFrom', () => {
     expect(state.error()).toBe('Standalone failure');
     expect(state.hasError()).toBe(true);
   });
+
+  describe('when a pointer press moves focus away', () => {
+    it('holds the message back until the press lands its click', () => {
+      const control = new FormControl('', Validators.required);
+      const state = build(control);
+      TestBed.tick();
+
+      document.dispatchEvent(new Event('pointerdown'));
+      control.markAsTouched();
+      const errorDuringPress = state.error();
+      document.dispatchEvent(new Event('click'));
+
+      expect(errorDuringPress).toBeNull();
+      expect(state.error()).toBe('This field is required');
+    });
+
+    it('shows the message once a cancelled press ends', () => {
+      const control = new FormControl('', Validators.required);
+      const state = build(control);
+      TestBed.tick();
+
+      document.dispatchEvent(new Event('pointerdown'));
+      control.markAsTouched();
+      document.dispatchEvent(new Event('pointercancel'));
+
+      expect(state.error()).toBe('This field is required');
+    });
+
+    it('shows the message straight away when no press is in progress', () => {
+      const control = new FormControl('', Validators.required);
+      const state = build(control);
+      TestBed.tick();
+
+      control.markAsTouched();
+
+      expect(state.error()).toBe('This field is required');
+    });
+  });
 });
 
 describe('injectControlErrorState', () => {
