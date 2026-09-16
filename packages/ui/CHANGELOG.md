@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.41.1] - 2026-09-16
+
+### Fixed
+
+- Stop a validation message revealed by clicking away from a field from shifting the layout before that click lands, which could swallow the click.
+
 ## [5.41.0] - 2026-09-13
 
 ### Changed
@@ -1571,6 +1577,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.41.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.41.0...ui-v5.41.1
 [5.41.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.40.0...ui-v5.41.0
 [5.40.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.39.0...ui-v5.40.0
 [5.39.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.38.1...ui-v5.39.0
