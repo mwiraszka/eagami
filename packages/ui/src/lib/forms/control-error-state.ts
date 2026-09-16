@@ -7,10 +7,16 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { type AbstractControl, NgControl, type ValidationErrors } from '@angular/forms';
+import {
+  type AbstractControl,
+  NgControl,
+  TouchedChangeEvent,
+  type ValidationErrors,
+} from '@angular/forms';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
 import type { EagamiMessages } from '../i18n/i18n.types';
+import { PointerPressTracker } from '../pointer-press';
 
 /** Validator error keys the library ships built-in localized messages for. */
 export type EaValidationErrorKey =
@@ -43,32 +49,51 @@ export interface ControlErrorState {
  * `errorMsg`, a consumer `errorMessages` override, then the library's localized
  * default for the active `ValidationErrors` key. Auto-derived messages surface
  * only once the bound control is `invalid && touched`, matching the moment a
- * user expects validation feedback. The control arrives as a signal so callers
- * decide how it is resolved: from the host's own `NgControl` (CVA components)
- * or from projected content (`<ea-form-field>`).
+ * user expects validation feedback. A message revealed by a pointer press
+ * moving focus away waits until that press has landed its click. The control
+ * arrives as a signal so callers decide how it is resolved: from the host's own
+ * `NgControl` (CVA components) or from projected content (`<ea-form-field>`).
  */
 export function controlErrorStateFrom(
   control: Signal<AbstractControl | null>,
   config: ControlErrorStateConfig,
 ): ControlErrorState {
   const i18n = inject(EagamiI18nService);
+  const press = inject(PointerPressTracker);
 
   // Bumped on every status/touched change so the computed re-reads the control
   const revision = signal(0);
+
+  // The message a blur reveals grows the field and shifts the layout under the
+  // pointer, so while the press behind that blur is down the click would land
+  // on whatever moved into its place
+  const revealPending = signal(false);
 
   effect(onCleanup => {
     const ctrl = control();
     if (!ctrl) {
       return;
     }
-    const sub = ctrl.events.subscribe(() => revision.update(r => r + 1));
-    onCleanup(() => sub.unsubscribe());
+    let dropPendingReveal: (() => void) | null = null;
+    const sub = ctrl.events.subscribe(event => {
+      if (event instanceof TouchedChangeEvent && event.touched) {
+        dropPendingReveal?.();
+        revealPending.set(true);
+        dropPendingReveal = press.whenPressEnds(() => revealPending.set(false));
+      }
+      revision.update(r => r + 1);
+    });
+    onCleanup(() => {
+      sub.unsubscribe();
+      dropPendingReveal?.();
+      revealPending.set(false);
+    });
   });
 
   const autoError = computed<string | null>(() => {
     revision();
     const ctrl = control();
-    if (!ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
+    if (revealPending() || !ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
       return null;
     }
     return resolveValidationMessage(ctrl.errors, config.errorMessages(), i18n.messages());

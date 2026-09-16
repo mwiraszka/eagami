@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.41.1',
+    date: '2026-09-16',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop a validation message revealed by clicking away from a field from shifting the layout before that click lands, which could swallow the click.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.41.0',
     date: '2026-09-13',
     sections: [
