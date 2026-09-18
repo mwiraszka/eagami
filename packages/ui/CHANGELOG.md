@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.45.1] - 2026-09-18
+
+### Fixed
+
+- Keep a data table's row links in the row's own text colour when hovered, instead of the page's link hover colour.
+
 ## [5.45.0] - 2026-09-18
 
 ### Added
@@ -1605,6 +1611,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.45.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.45.0...ui-v5.45.1
 [5.45.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.44.0...ui-v5.45.0
 [5.44.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.43.0...ui-v5.44.0
 [5.43.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.42.0...ui-v5.43.0

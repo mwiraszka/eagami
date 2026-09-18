@@ -299,6 +299,11 @@
     text-decoration: none;
     color: inherit;
 
+    // Outranks the base anchor hover colour, so a hovered cell reads like the rest of the row
+    &:hover {
+      color: inherit;
+    }
+
     &::after {
       position: absolute;
       top: 0;
