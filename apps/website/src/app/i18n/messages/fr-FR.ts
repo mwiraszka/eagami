@@ -2116,6 +2116,8 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
+            nowrap:
+              'Garde chaque cellule sur une seule ligne, afin qu’une fenêtre étroite fasse défiler le tableau latéralement au lieu de renvoyer son texte à la ligne.',
             rowHref:
               'Donne à chaque ligne une cible de lien, portée par un vrai lien dans chaque cellule pour que le navigateur l’affiche et puisse l’ouvrir, tandis qu’un clic simple déclenche toujours rowActivate.',
             sizingRows:

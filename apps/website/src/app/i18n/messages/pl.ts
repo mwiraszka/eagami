@@ -2081,6 +2081,8 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            nowrap:
+              'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
             rowHref:
               'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate.',
             sizingRows:

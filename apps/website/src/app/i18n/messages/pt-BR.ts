@@ -2098,6 +2098,8 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
+            nowrap:
+              'Mantém cada célula em uma única linha, de modo que uma janela estreita rola a tabela lateralmente em vez de quebrar o texto.',
             rowHref:
               'Dá a cada linha um destino de link, presente como link real em cada célula para que o navegador o mostre e possa abri-lo, enquanto um clique simples continua emitindo rowActivate.',
             sizingRows:

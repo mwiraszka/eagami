@@ -1230,6 +1230,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'nowrap',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'rowHref',
         type: '((row: T) => string | null) | undefined',
         default: 'undefined',

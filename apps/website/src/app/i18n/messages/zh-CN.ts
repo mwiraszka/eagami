@@ -1866,6 +1866,7 @@ export const zhCN: WebMessages = {
             opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
+            nowrap: '让每个单元格保持单行，窄视口会横向滚动表格而不是换行文字。',
             rowHref:
               '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。',
             sizingRows:
