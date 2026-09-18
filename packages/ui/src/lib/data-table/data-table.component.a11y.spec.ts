@@ -30,6 +30,8 @@ const TEST_DATA: TestRow[] = [
       [columns]="columns"
       [data]="data"
       [sizingRows]="sizingRows"
+      [rowHref]="rowHref"
+      [clickable]="clickable"
       [navigable]="navigable" />
   `,
 })
@@ -37,6 +39,8 @@ class HostComponent {
   columns: DataTableColumn<TestRow>[] = TEST_COLUMNS;
   data: TestRow[] = TEST_DATA;
   sizingRows: TestRow[] = [];
+  rowHref: ((row: TestRow) => string | null) | undefined = undefined;
+  clickable = false;
   navigable = false;
 }
 
@@ -69,6 +73,17 @@ describe('DataTableComponent a11y', () => {
 
   it('has no detectable violations as a navigable grid', async () => {
     const el = await render(host => (host.navigable = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with row links', async () => {
+    const el = await render(host => {
+      host.rowHref = row => `/rows/${row.id}`;
+      host.clickable = true;
+    });
 
     const results = await axe(el);
 

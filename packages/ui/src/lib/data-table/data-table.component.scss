@@ -283,6 +283,26 @@
     cursor: var(--ea-data-table-row-cursor, pointer);
   }
 
+  &--linked &__cell {
+    position: relative;
+  }
+
+  // Reads as the row's own text, and its hit area is the whole cell so the row shows
+  // and opens the link wherever the pointer lands
+  &__row-link {
+    text-decoration: none;
+    color: inherit;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
+  }
+
   &--bordered &__cell {
     border-inline-end: var(--border-width-thin) solid var(--color-border-subtle);
 

@@ -55,6 +55,7 @@ const KNOB_EXEMPT = new Set([
   'rows',
   'data',
   'sizingRows',
+  'rowHref',
   'items',
   'options',
   'value',

@@ -32,6 +32,12 @@ export type DataTableSize = EaSize;
 /** Sort direction; `null` means no sort is applied. */
 export type DataTableSortDirection = 'asc' | 'desc' | null;
 
+function isModifiedClick(event: MouseEvent): boolean {
+  return (
+    event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey
+  );
+}
+
 /** Column definition for the data table, including optional cell/header templates. */
 export interface DataTableColumn<T = Record<string, unknown>> {
   key: string;
@@ -107,6 +113,12 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly navigable = input<boolean>(false);
   /** Marks body rows as clickable: shows a pointer cursor and emits `rowActivate` on click or Enter/Space. Independent of `hoverable` and `navigable`. */
   readonly clickable = input<boolean>(false);
+  /**
+   * Gives a row its link target, or `null` for none. Every cell of the row then holds
+   * a real link, so the browser shows the target on hover and a modified click opens
+   * it elsewhere, while a plain click still emits `rowActivate` for the app to route.
+   */
+  readonly rowHref = input<((row: T) => string | null) | undefined>(undefined);
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
@@ -132,6 +144,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     'ea-data-table--bordered': this.bordered(),
     'ea-data-table--navigable': this.navigable(),
     'ea-data-table--clickable': this.clickable(),
+    'ea-data-table--linked': !!this.rowHref(),
   }));
 
   constructor() {
@@ -251,10 +264,14 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return this.clickable() && !this.navigable() ? 0 : null;
   }
 
-  // Click passes no event; Enter/Space pass one so default scroll/re-trigger is
-  // suppressed. In navigable mode the keydown bubbles up from the focused cell.
+  // Suppresses the default of Enter/Space and of a row link's plain click, which
+  // the app routes itself. A modified click on a row link is the browser's to open
+  // elsewhere. In navigable mode the keydown bubbles up from the focused cell.
   onRowActivate(row: T, event?: Event): void {
     if (!this.clickable()) {
+      return;
+    }
+    if (event instanceof MouseEvent && isModifiedClick(event)) {
       return;
     }
     event?.preventDefault();
