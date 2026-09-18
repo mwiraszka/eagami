@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.45.0',
+    date: '2026-09-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `nowrap` input to the data table that keeps every cell on one line, along with custom properties for theming its text and its header's colours, including the hovered and sorted states.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.44.0',
     date: '2026-09-18',
     sections: [
