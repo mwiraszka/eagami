@@ -110,6 +110,12 @@ import { CropIconComponent } from './crop.component';
 import { CrosshairIconComponent } from './crosshair.component';
 import { DatabaseIconComponent } from './database.component';
 import { DeleteIconComponent } from './delete.component';
+import { Dice1IconComponent } from './dice-1.component';
+import { Dice2IconComponent } from './dice-2.component';
+import { Dice3IconComponent } from './dice-3.component';
+import { Dice4IconComponent } from './dice-4.component';
+import { Dice5IconComponent } from './dice-5.component';
+import { Dice6IconComponent } from './dice-6.component';
 import { DiscIconComponent } from './disc.component';
 import { DiscordIconComponent } from './discord.component';
 import { DivideCircleIconComponent } from './divide-circle.component';
@@ -117,6 +123,8 @@ import { DivideSquareIconComponent } from './divide-square.component';
 import { DivideIconComponent } from './divide.component';
 import { DockerIconComponent } from './docker.component';
 import { DollarSignIconComponent } from './dollar-sign.component';
+import { DoubleExclamationMarkIconComponent } from './double-exclamation-mark.component';
+import { DoubleQuestionMarkIconComponent } from './double-question-mark.component';
 import { DownloadCloudIconComponent } from './download-cloud.component';
 import { DownloadIconComponent } from './download.component';
 import { DribbbleIconComponent } from './dribbble.component';
@@ -126,6 +134,8 @@ import { EagamiIconComponent } from './eagami.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Edit3IconComponent } from './edit-3.component';
 import { EditIconComponent } from './edit.component';
+import { ExclamationMarkIconComponent } from './exclamation-mark.component';
+import { ExclamationQuestionMarkIconComponent } from './exclamation-question-mark.component';
 import { ExternalLinkIconComponent } from './external-link.component';
 import { EyeOffIconComponent } from './eye-off.component';
 import { EyeIconComponent } from './eye.component';
@@ -281,6 +291,8 @@ import { PowerIconComponent } from './power.component';
 import { PrinterIconComponent } from './printer.component';
 import { PythonIconComponent } from './python.component';
 import { QrCodeIconComponent } from './qr-code.component';
+import { QuestionExclamationMarkIconComponent } from './question-exclamation-mark.component';
+import { QuestionMarkIconComponent } from './question-mark.component';
 import { RadioIconComponent } from './radio.component';
 import { ReactIconComponent } from './react.component';
 import { ReceiptIconComponent } from './receipt.component';
@@ -541,6 +553,12 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CrosshairIconComponent,
     DatabaseIconComponent,
     DeleteIconComponent,
+    Dice1IconComponent,
+    Dice2IconComponent,
+    Dice3IconComponent,
+    Dice4IconComponent,
+    Dice5IconComponent,
+    Dice6IconComponent,
     DiscIconComponent,
     DiscordIconComponent,
     DivideCircleIconComponent,
@@ -548,6 +566,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     DivideSquareIconComponent,
     DockerIconComponent,
     DollarSignIconComponent,
+    DoubleExclamationMarkIconComponent,
+    DoubleQuestionMarkIconComponent,
     DownloadCloudIconComponent,
     DownloadIconComponent,
     DribbbleIconComponent,
@@ -557,6 +577,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Edit2IconComponent,
     Edit3IconComponent,
     EditIconComponent,
+    ExclamationMarkIconComponent,
+    ExclamationQuestionMarkIconComponent,
     ExternalLinkIconComponent,
     EyeIconComponent,
     EyeOffIconComponent,
@@ -711,6 +733,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PrinterIconComponent,
     PythonIconComponent,
     QrCodeIconComponent,
+    QuestionExclamationMarkIconComponent,
+    QuestionMarkIconComponent,
     RadioIconComponent,
     ReactIconComponent,
     ReceiptIconComponent,
