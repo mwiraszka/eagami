@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.45.1',
+    date: '2026-09-18',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Keep a data table's row links in the row's own text colour when hovered, instead of the page's link hover colour.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.45.0',
     date: '2026-09-18',
     sections: [
