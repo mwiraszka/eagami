@@ -311,6 +311,13 @@ describe('DataTableComponent', () => {
       expect(getHost().classList).not.toContain('ea-data-table--hoverable');
     });
 
+    it('applies nowrap class when enabled', () => {
+      fixture.componentRef.setInput('nowrap', true);
+      fixture.detectChanges();
+
+      expect(getHost().classList.contains('ea-data-table--nowrap')).toBe(true);
+    });
+
     it('applies bordered class when enabled', () => {
       fixture.componentRef.setInput('bordered', true);
       fixture.detectChanges();

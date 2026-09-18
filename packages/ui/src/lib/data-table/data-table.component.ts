@@ -108,6 +108,8 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly striped = input<boolean>(false);
   readonly hoverable = input<boolean>(true);
   readonly bordered = input<boolean>(false);
+  /** Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text. */
+  readonly nowrap = input<boolean>(false);
   readonly noDataText = input<string | undefined>(undefined);
   /** Enables grid keyboard navigation: `role="grid"`, roving tabindex, and arrow-key cell movement. */
   readonly navigable = input<boolean>(false);
@@ -142,6 +144,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     'ea-data-table--striped': this.striped(),
     'ea-data-table--hoverable': this.hoverable(),
     'ea-data-table--bordered': this.bordered(),
+    'ea-data-table--nowrap': this.nowrap(),
     'ea-data-table--navigable': this.navigable(),
     'ea-data-table--clickable': this.clickable(),
     'ea-data-table--linked': !!this.rowHref(),

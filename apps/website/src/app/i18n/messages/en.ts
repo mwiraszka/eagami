@@ -2027,6 +2027,8 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown.',
           },
           'data-table': {
+            nowrap:
+              'Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text.',
             rowHref:
               'Gives each row a link target, held by a real link in every cell so the browser shows and can open it, while a plain click still fires rowActivate.',
             sizingRows:

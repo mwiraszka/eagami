@@ -2136,6 +2136,8 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado.',
           },
           'data-table': {
+            nowrap:
+              'Mantiene cada celda en una sola línea, de modo que una ventana estrecha desplaza la tabla lateralmente en lugar de ajustar su texto.',
             rowHref:
               'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate.',
             sizingRows:

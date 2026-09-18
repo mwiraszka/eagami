@@ -2136,6 +2136,8 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
+            nowrap:
+              'Hält jede Zelle auf einer Zeile, sodass ein schmaler Viewport die Tabelle seitwärts scrollt, statt ihren Text umzubrechen.',
             rowHref:
               'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst.',
             sizingRows:

@@ -33,6 +33,7 @@ interface DataTableKnobState {
   size: DataTableSize;
   striped: boolean;
   bordered: boolean;
+  nowrap: boolean;
   hoverable: boolean;
   stickyHeader: boolean;
   navigable: boolean;

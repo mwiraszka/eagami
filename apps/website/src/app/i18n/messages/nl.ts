@@ -2122,6 +2122,8 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
+            nowrap:
+              'Houdt elke cel op één regel, zodat een smal venster de tabel zijwaarts scrolt in plaats van de tekst af te breken.',
             rowHref:
               'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt.',
             sizingRows:
