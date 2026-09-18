@@ -59,6 +59,18 @@ export const Playground: Story = {};
  * column will ever show, so paging from these short names to longer ones never
  * shifts the layout.
  */
+/**
+ * With `rowHref`, every row is a real link: the browser shows its target on
+ * hover and a modified click opens it in a new tab, while a plain click emits
+ * `rowActivate` for the app's own router.
+ */
+export const RowLinks: Story = {
+  args: {
+    clickable: true,
+    rowHref: (user: User) => `/users/${user.id}`,
+  },
+};
+
 export const SizingRows: Story = {
   args: {
     data: sampleData.slice(0, 3),

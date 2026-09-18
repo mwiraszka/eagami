@@ -2136,6 +2136,8 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
+            rowHref:
+              'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst.',
             sizingRows:
               'Zeilen mit dem breitesten Inhalt jeder Spalte, die zwar gesetzt, aber nie angezeigt werden, damit die Spaltenbreiten über Seiten hinweg und während des Ladens gleich bleiben.',
             size: 'Visuelle Größe der Tabelle; Dichte-Innenabstände und Symbole skalieren mit ihr.',

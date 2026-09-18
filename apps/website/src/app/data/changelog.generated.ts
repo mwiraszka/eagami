@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.44.0',
+    date: '2026-09-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `rowHref` input to the data table that turns each row into a real link, so the browser shows its target on hover and a modified click opens it in a new tab, while a plain click still fires `rowActivate` for the app to route.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.43.0',
     date: '2026-09-18',
     sections: [

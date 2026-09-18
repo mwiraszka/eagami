@@ -2122,6 +2122,8 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
+            rowHref:
+              'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt.',
             sizingRows:
               "Rijen met de breedste inhoud van elke kolom, wel opgemaakt maar nooit getoond, zodat de kolombreedtes gelijk blijven tussen pagina's en tijdens het laden van gegevens.",
             size: 'Visuele grootte van de tabel; dichtheidsopvulling en pictogrammen schalen mee.',

@@ -1,3 +1,18 @@
+<ng-template
+  #cellContent
+  let-row
+  let-col="col">
+  @if (col.cellTemplate) {
+    <ng-container
+      [ngTemplateOutlet]="col.cellTemplate"
+      [ngTemplateOutletContext]="{ $implicit: row, value: getCellValue(row, col.key) }" />
+  } @else if (col.format) {
+    {{ col.format(getCellValue(row, col.key)) }}
+  } @else {
+    {{ getCellValue(row, col.key) }}
+  }
+</ng-template>
+
 <div
   class="ea-data-table"
   [ngClass]="hostClasses()">
@@ -90,18 +105,9 @@
                   class="ea-data-table__cell ea-data-table__cell--sizing"
                   [style.width]="col.width ?? null">
                   <div class="ea-data-table__sizing-content">
-                    @if (col.cellTemplate) {
-                      <ng-container
-                        [ngTemplateOutlet]="col.cellTemplate"
-                        [ngTemplateOutletContext]="{
-                          $implicit: row,
-                          value: getCellValue(row, col.key),
-                        }" />
-                    } @else if (col.format) {
-                      {{ col.format(getCellValue(row, col.key)) }}
-                    } @else {
-                      {{ getCellValue(row, col.key) }}
-                    }
+                    <ng-container
+                      [ngTemplateOutlet]="cellContent"
+                      [ngTemplateOutletContext]="{ $implicit: row, col }" />
                   </div>
                 </td>
               }
@@ -137,7 +143,7 @@
               class="ea-data-table__row"
               [attr.role]="navigable() ? 'row' : null"
               [attr.tabindex]="rowTabindex()"
-              (click)="onRowActivate(row)"
+              (click)="onRowActivate(row, $event)"
               (keydown.enter)="onRowActivate(row, $event)"
               (keydown.space)="onRowActivate(row, $event)">
               @for (col of columns(); track col.key; let colIndex = $index) {
@@ -150,17 +156,20 @@
                   [attr.data-ea-cell]="navigable() ? rowIndex + 1 + '-' + colIndex : null"
                   [attr.tabindex]="bodyCellTabindex(rowIndex + 1, colIndex)"
                   (focus)="onCellFocus(rowIndex + 1, colIndex)">
-                  @if (col.cellTemplate) {
-                    <ng-container
-                      [ngTemplateOutlet]="col.cellTemplate"
-                      [ngTemplateOutletContext]="{
-                        $implicit: row,
-                        value: getCellValue(row, col.key),
-                      }" />
-                  } @else if (col.format) {
-                    {{ col.format(getCellValue(row, col.key)) }}
+                  @if (rowHref()?.(row); as url) {
+                    <a
+                      class="ea-data-table__row-link"
+                      [href]="url"
+                      tabindex="-1"
+                      [attr.aria-hidden]="colIndex > 0 ? true : null">
+                      <ng-container
+                        [ngTemplateOutlet]="cellContent"
+                        [ngTemplateOutletContext]="{ $implicit: row, col }" />
+                    </a>
                   } @else {
-                    {{ getCellValue(row, col.key) }}
+                    <ng-container
+                      [ngTemplateOutlet]="cellContent"
+                      [ngTemplateOutletContext]="{ $implicit: row, col }" />
                   }
                 </td>
               }

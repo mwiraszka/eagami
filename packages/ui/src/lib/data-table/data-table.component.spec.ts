@@ -141,6 +141,71 @@ describe('DataTableComponent', () => {
     });
   });
 
+  describe('Row links', () => {
+    const hrefOf = (row: TestRow) => (row.id === 3 ? null : `/rows/${row.id}`);
+
+    function getRowLinks(row: HTMLElement): HTMLAnchorElement[] {
+      return Array.from(row.querySelectorAll('.ea-data-table__row-link'));
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('clickable', true);
+      fixture.componentRef.setInput('rowHref', hrefOf);
+      fixture.detectChanges();
+    });
+
+    it('links every cell of a row to its target', () => {
+      const links = getRowLinks(getBodyRows()[0]);
+
+      expect(links).toHaveLength(3);
+      expect(links.every(link => link.getAttribute('href') === '/rows/1')).toBe(true);
+      expect(links[0].textContent).toContain('1');
+      expect(links[1].textContent).toContain('Charlie');
+    });
+
+    it('exposes only the first cell of a row as a link to assistive technology', () => {
+      const links = getRowLinks(getBodyRows()[0]);
+
+      expect(links[0].getAttribute('aria-hidden')).toBeNull();
+      expect(links[1].getAttribute('aria-hidden')).toBe('true');
+      expect(links.every(link => link.getAttribute('tabindex') === '-1')).toBe(true);
+    });
+
+    it('leaves a row without a target as plain cells', () => {
+      expect(getRowLinks(getBodyRows()[2])).toHaveLength(0);
+    });
+
+    it('routes a plain click through rowActivate instead of the browser', () => {
+      const activated: TestRow[] = [];
+      component.rowActivate.subscribe(row => activated.push(row));
+      const event = new MouseEvent('click', { bubbles: true, cancelable: true });
+
+      getRowLinks(getBodyRows()[0])[1].dispatchEvent(event);
+
+      expect(activated).toEqual([testData[0]]);
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('leaves a modified click to the browser', () => {
+      const activated: TestRow[] = [];
+      component.rowActivate.subscribe(row => activated.push(row));
+      const event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        metaKey: true,
+      });
+
+      getRowLinks(getBodyRows()[0])[1].dispatchEvent(event);
+
+      expect(activated).toEqual([]);
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('marks the table as linked', () => {
+      expect(getHost().classList.contains('ea-data-table--linked')).toBe(true);
+    });
+  });
+
   describe('Sizing rows', () => {
     const sizingRows: TestRow[] = [
       { id: 999, name: 'Bartholomew Montgomery-Fitzgerald', age: 100 },
