@@ -2122,6 +2122,8 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
+            sizingRows:
+              "Rijen met de breedste inhoud van elke kolom, wel opgemaakt maar nooit getoond, zodat de kolombreedtes gelijk blijven tussen pagina's en tijdens het laden van gegevens.",
             size: 'Visuele grootte van de tabel; dichtheidsopvulling en pictogrammen schalen mee.',
             clickable:
               'Markeert gegevensrijen als klikbaar: toont een aanwijzer en activeert rowActivate bij klik of Enter/Spatie.',

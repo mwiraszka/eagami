@@ -2098,6 +2098,8 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
+            sizingRows:
+              'Linhas com o conteúdo mais largo de cada coluna, diagramadas mas nunca exibidas, para que as larguras das colunas não mudem entre páginas nem enquanto os dados carregam.',
             size: 'Tamanho visual da tabela; os preenchimentos de densidade e os ícones escalam com ele.',
             clickable:
               'Marca as linhas de dados como clicáveis: mostra um cursor de ponteiro e emite rowActivate ao clicar ou pressionar Enter/Espaço.',

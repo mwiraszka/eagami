@@ -2081,6 +2081,8 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            sizingRows:
+              'Wiersze z najszerszą zawartością każdej kolumny, układane, lecz nigdy niewyświetlane, dzięki czemu szerokości kolumn nie zmieniają się między stronami ani podczas ładowania danych.',
             size: 'Wizualny rozmiar tabeli; wypełnienia gęstości i ikony skalują się wraz z nim.',
             clickable:
               'Oznacza wiersze danych jako klikalne: pokazuje kursor wskaźnika i emituje rowActivate po kliknięciu lub Enter/Spacji.',

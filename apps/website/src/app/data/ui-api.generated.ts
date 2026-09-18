@@ -1237,6 +1237,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'sizingRows',
+        type: 'T[]',
+        default: '[]',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'sort',
         type: 'DataTableSortState',
         default: '',

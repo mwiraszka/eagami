@@ -2070,6 +2070,8 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd.',
           },
           'data-table': {
+            sizingRows:
+              'Raðir með breiðasta efni hvers dálks, sem eru settar upp en aldrei sýndar, svo dálkabreiddir haldist óbreyttar milli síðna og meðan gögn hlaðast.',
             size: 'Sjónræn stærð töflunnar; þéttleikainnfylling og tákn kvarðast með henni.',
             clickable:
               'Merkir gagnaraðir sem smellanlegar: sýnir bendil og sendir rowActivate við smell eða Enter/Bil.',

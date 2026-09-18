@@ -2136,6 +2136,8 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
+            sizingRows:
+              'Zeilen mit dem breitesten Inhalt jeder Spalte, die zwar gesetzt, aber nie angezeigt werden, damit die Spaltenbreiten über Seiten hinweg und während des Ladens gleich bleiben.',
             size: 'Visuelle Größe der Tabelle; Dichte-Innenabstände und Symbole skalieren mit ihr.',
             clickable:
               'Markiert Datenzeilen als anklickbar: zeigt einen Zeiger-Cursor und löst rowActivate bei Klick oder Enter/Leertaste aus.',
