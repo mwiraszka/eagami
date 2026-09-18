@@ -30,6 +30,8 @@ export interface PaletteRoles {
   subtleLight: PaletteShade;
   /** `--color-brand-muted` in light mode. */
   mutedLight: PaletteShade;
+  /** The shade washed at a tenth and a fifth for `--color-brand-subtle` and `--color-brand-muted` in dark mode. */
+  tintDark: PaletteShade;
 }
 
 export const DEFAULT_PALETTE_ROLES: PaletteRoles = {
@@ -47,6 +49,7 @@ export const DEFAULT_PALETTE_ROLES: PaletteRoles = {
   textDark: '300',
   subtleLight: '50',
   mutedLight: '100',
+  tintDark: '400',
 };
 
 export interface PaletteConfig {
