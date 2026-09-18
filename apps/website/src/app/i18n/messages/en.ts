@@ -2027,6 +2027,8 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown.',
           },
           'data-table': {
+            sizingRows:
+              "Rows holding each column's widest content, laid out but never shown, so column widths stay put across pages and while data loads.",
             size: 'Visual size of the table; density paddings and icons scale with it.',
             clickable:
               'Marks body rows as clickable: shows a pointer cursor and emits rowActivate on click or Enter/Space.',

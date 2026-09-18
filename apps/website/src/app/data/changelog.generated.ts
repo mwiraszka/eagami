@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.42.0',
+    date: '2026-09-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `sizingRows` input to the data table, whose rows hold each column's widest content and set the column widths without being shown, so nothing shifts between pages or while data loads.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.41.1',
     date: '2026-09-16',
     sections: [

@@ -2116,6 +2116,8 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
+            sizingRows:
+              'Lignes contenant le contenu le plus large de chaque colonne, mises en page mais jamais affichées, afin que les largeurs de colonne restent stables d’une page à l’autre et pendant le chargement des données.',
             size: 'Taille visuelle du tableau ; les marges de densité et les icônes évoluent avec elle.',
             clickable:
               'Marque les lignes de données comme cliquables : affiche un curseur en forme de main et émet rowActivate au clic ou avec Entrée/Espace.',

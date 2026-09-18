@@ -79,6 +79,36 @@
           }
         </tr>
       </thead>
+      @if (sizingRows().length) {
+        <tbody
+          class="ea-data-table__sizing"
+          aria-hidden="true">
+          @for (row of sizingRows(); track $index) {
+            <tr class="ea-data-table__row ea-data-table__row--sizing">
+              @for (col of columns(); track col.key) {
+                <td
+                  class="ea-data-table__cell ea-data-table__cell--sizing"
+                  [style.width]="col.width ?? null">
+                  <div class="ea-data-table__sizing-content">
+                    @if (col.cellTemplate) {
+                      <ng-container
+                        [ngTemplateOutlet]="col.cellTemplate"
+                        [ngTemplateOutletContext]="{
+                          $implicit: row,
+                          value: getCellValue(row, col.key),
+                        }" />
+                    } @else if (col.format) {
+                      {{ col.format(getCellValue(row, col.key)) }}
+                    } @else {
+                      {{ getCellValue(row, col.key) }}
+                    }
+                  </div>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      }
       <tbody class="ea-data-table__body">
         @if (sortedData().length === 0) {
           <tr

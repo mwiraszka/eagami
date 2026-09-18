@@ -185,6 +185,29 @@
     padding: var(--ea-data-table-font-size) calc(var(--ea-data-table-font-size) * 1.5);
   }
 
+  // Sizing rows set the column widths and nothing else: laid out at full width,
+  // but collapsed to no height and kept off screen
+  &__sizing &__row {
+    border-bottom: none;
+  }
+
+  &__sizing &__cell {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &__sizing-content {
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+  }
+
+  // Sticky tables lay each row out on its own with fixed columns, which sizing
+  // rows could not reach
+  &--sticky &__sizing {
+    display: none;
+  }
+
   &--sticky {
     max-height: inherit;
     height: inherit;

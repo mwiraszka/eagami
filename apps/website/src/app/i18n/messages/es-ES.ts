@@ -2136,6 +2136,8 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado.',
           },
           'data-table': {
+            sizingRows:
+              'Filas con el contenido más ancho de cada columna, maquetadas pero nunca mostradas, para que los anchos de columna no cambien entre páginas ni mientras cargan los datos.',
             size: 'Tamaño visual de la tabla; los rellenos de densidad y los iconos escalan con él.',
             clickable:
               'Marca las filas de datos como clicables: muestra un cursor de puntero y emite rowActivate al hacer clic o pulsar Enter/Espacio.',
