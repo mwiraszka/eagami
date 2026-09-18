@@ -1,4 +1,4 @@
-import { hexToOklch, oklchToHex } from './oklch';
+import { hexToOklch, hexToRgb, oklchToHex } from './oklch';
 import {
   DEFAULT_PALETTE_ROLES,
   type DerivedPalette,
@@ -97,6 +97,15 @@ function emitFamily(
   dark[`${brandPrefix}-text`] = scale[roles.textDark];
   light[`${brandPrefix}-subtle`] = scale[roles.subtleLight];
   light[`${brandPrefix}-muted`] = scale[roles.mutedLight];
+  // Translucent, like the library's own dark tints, so they read the same on the
+  // canvas and on elevated surfaces
+  dark[`${brandPrefix}-subtle`] = wash(scale[roles.tintDark], 0.1);
+  dark[`${brandPrefix}-muted`] = wash(scale[roles.tintDark], 0.2);
+}
+
+function wash(hex: string, alpha: number): string {
+  const { r, g, b } = hexToRgb(hex);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
 export function derivePalette(config: EagamiPaletteConfig): ModePalette {

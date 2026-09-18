@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.43.0] - 2026-09-18
+
+### Added
+
+- Add dice icons showing one to six pips, along with question mark and exclamation mark icons in single, double and combined forms for chess annotations.
+
+### Fixed
+
+- Derive the brand's subtle and muted tints for dark mode as well as light when a palette is applied, so a derived palette no longer paints selected controls such as the paginator's current page with the light-mode tint under light-mode text.
+
 ## [5.42.0] - 2026-09-18
 
 ### Added
@@ -1583,6 +1593,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.43.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.42.0...ui-v5.43.0
 [5.42.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.41.1...ui-v5.42.0
 [5.41.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.41.0...ui-v5.41.1
 [5.41.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.40.0...ui-v5.41.0

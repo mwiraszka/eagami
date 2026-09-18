@@ -13,7 +13,18 @@ describe('derivePalette', () => {
       expect(palette).toHaveProperty('--color-brand-hover');
       expect(palette).toHaveProperty('--color-brand-active');
       expect(palette).toHaveProperty('--color-brand-text');
+      expect(palette).toHaveProperty('--color-brand-subtle');
+      expect(palette).toHaveProperty('--color-brand-muted');
     }
+  });
+
+  it('washes the dark subtle and muted tints from the tint shade instead of reusing the light ones', () => {
+    const { light, dark } = derivePalette({ primary: { base: '#3674a1' } });
+
+    expect(light['--color-brand-subtle']).toBe(light['--color-primary-50']);
+    expect(light['--color-brand-muted']).toBe(light['--color-primary-100']);
+    expect(dark['--color-brand-subtle']).toMatch(/^rgba\(\d+, \d+, \d+, 0\.1\)$/);
+    expect(dark['--color-brand-muted']).toMatch(/^rgba\(\d+, \d+, \d+, 0\.2\)$/);
   });
 
   it('omits brand tokens when no family config is given', () => {
