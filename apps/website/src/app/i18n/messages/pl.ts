@@ -2081,6 +2081,8 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            rowHref:
+              'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate.',
             sizingRows:
               'Wiersze z najszerszą zawartością każdej kolumny, układane, lecz nigdy niewyświetlane, dzięki czemu szerokości kolumn nie zmieniają się między stronami ani podczas ładowania danych.',
             size: 'Wizualny rozmiar tabeli; wypełnienia gęstości i ikony skalują się wraz z nim.',

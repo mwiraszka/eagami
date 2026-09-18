@@ -1866,6 +1866,8 @@ export const zhCN: WebMessages = {
             opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
+            rowHref:
+              '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。',
             sizingRows:
               '包含每列最宽内容的行，参与布局但从不显示，使列宽在翻页和数据加载期间保持不变。',
             size: '表格的视觉尺寸；密度内边距和图标随之缩放。',
