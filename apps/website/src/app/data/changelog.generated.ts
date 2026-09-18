@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.43.0',
+    date: '2026-09-18',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add dice icons showing one to six pips, along with question mark and exclamation mark icons in single, double and combined forms for chess annotations.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Derive the brand's subtle and muted tints for dark mode as well as light when a palette is applied, so a derived palette no longer paints selected controls such as the paginator's current page with the light-mode tint under light-mode text.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.42.0',
     date: '2026-09-18',
     sections: [
