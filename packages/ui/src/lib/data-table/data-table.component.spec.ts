@@ -141,6 +141,68 @@ describe('DataTableComponent', () => {
     });
   });
 
+  describe('Sizing rows', () => {
+    const sizingRows: TestRow[] = [
+      { id: 999, name: 'Bartholomew Montgomery-Fitzgerald', age: 100 },
+    ];
+
+    function getSizingGroup(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-data-table__sizing');
+    }
+
+    function getSizingRows(): HTMLElement[] {
+      return Array.from(
+        fixture.nativeElement.querySelectorAll(
+          '.ea-data-table__sizing .ea-data-table__row',
+        ),
+      );
+    }
+
+    it('renders no sizing row group by default', () => {
+      expect(getSizingGroup()).toBeNull();
+    });
+
+    it('renders each sizing row with the same cells as a data row', () => {
+      fixture.componentRef.setInput('sizingRows', sizingRows);
+      fixture.detectChanges();
+
+      const cells = getCellsInRow(getSizingRows()[0]);
+
+      expect(getSizingRows()).toHaveLength(1);
+      expect(cells).toHaveLength(3);
+      expect(cells[1].textContent).toContain('Bartholomew Montgomery-Fitzgerald');
+      expect(cells[0].style.width).toBe('60px');
+    });
+
+    it('formats sizing cells like data cells', () => {
+      const columns = testColumns.map(col =>
+        col.key === 'age' ? { ...col, format: (v: unknown) => `${v} years` } : col,
+      );
+      fixture.componentRef.setInput('columns', columns);
+      fixture.componentRef.setInput('sizingRows', sizingRows);
+      fixture.detectChanges();
+
+      expect(getCellsInRow(getSizingRows()[0])[2].textContent).toContain('100 years');
+    });
+
+    it('keeps sizing rows out of the body and the accessibility tree', () => {
+      fixture.componentRef.setInput('sizingRows', sizingRows);
+      fixture.detectChanges();
+
+      expect(getBodyRows()).toHaveLength(3);
+      expect(getSizingGroup()?.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('leaves sizing cells out of grid navigation', () => {
+      fixture.componentRef.setInput('navigable', true);
+      fixture.componentRef.setInput('sizingRows', sizingRows);
+      fixture.detectChanges();
+
+      expect(getSizingRows()[0].querySelector('[data-ea-cell]')).toBeNull();
+      expect(getBodyRows()[0].querySelector('[data-ea-cell]')).not.toBeNull();
+    });
+  });
+
   describe('Density', () => {
     it('applies comfortable class by default', () => {
       expect(getHost().classList).toContain('ea-data-table--comfortable');

@@ -83,6 +83,13 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   readonly columns = input.required<DataTableColumn<T>[]>();
   readonly data = input.required<T[]>();
+  /**
+   * Rows holding each column's widest content. They are laid out but never shown,
+   * so column widths come from them rather than from whichever rows are in `data`,
+   * and stay put across pages and while data loads. Moot with `stickyHeader`, whose
+   * columns share the width equally unless given a `width`.
+   */
+  readonly sizingRows = input<T[]>([]);
   /** Accessible name for the table, announced when it takes focus as a grid. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Visible caption rendered above the table; also names it for assistive technology. */

@@ -29,12 +29,14 @@ const TEST_DATA: TestRow[] = [
     <ea-data-table
       [columns]="columns"
       [data]="data"
+      [sizingRows]="sizingRows"
       [navigable]="navigable" />
   `,
 })
 class HostComponent {
   columns: DataTableColumn<TestRow>[] = TEST_COLUMNS;
   data: TestRow[] = TEST_DATA;
+  sizingRows: TestRow[] = [];
   navigable = false;
 }
 
@@ -67,6 +69,19 @@ describe('DataTableComponent a11y', () => {
 
   it('has no detectable violations as a navigable grid', async () => {
     const el = await render(host => (host.navigable = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with sizing rows', async () => {
+    const el = await render(host => {
+      host.sizingRows = [
+        { id: 999, name: 'Bartholomew Montgomery-Fitzgerald', age: 100 },
+      ];
+      host.navigable = true;
+    });
 
     const results = await axe(el);
 

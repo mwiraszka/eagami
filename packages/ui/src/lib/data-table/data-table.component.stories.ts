@@ -53,3 +53,23 @@ export default meta;
 type Story = StoryObj<DataTableComponent<User>>;
 
 export const Playground: Story = {};
+
+/**
+ * The column widths come from `sizingRows`, which hold the widest content each
+ * column will ever show, so paging from these short names to longer ones never
+ * shifts the layout.
+ */
+export const SizingRows: Story = {
+  args: {
+    data: sampleData.slice(0, 3),
+    sizingRows: [
+      {
+        id: 999,
+        firstName: 'Maximilian-Alexander',
+        lastName: 'Featherstonehaugh',
+        admin: '✓',
+        posts: 1000000,
+      },
+    ],
+  },
+};
