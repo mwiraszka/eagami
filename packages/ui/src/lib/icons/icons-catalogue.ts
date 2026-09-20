@@ -13,6 +13,7 @@ import { AngularIconComponent } from './angular.component';
 import { AnthropicIconComponent } from './anthropic.component';
 import { ApertureIconComponent } from './aperture.component';
 import { ArchiveIconComponent } from './archive.component';
+import { ArrayIconComponent } from './array.component';
 import { ArrowDownCircleIconComponent } from './arrow-down-circle.component';
 import { ArrowDownLeftIconComponent } from './arrow-down-left.component';
 import { ArrowDownRightIconComponent } from './arrow-down-right.component';
@@ -158,6 +159,7 @@ import { FilmIconComponent } from './film.component';
 import { FilterXIconComponent } from './filter-x.component';
 import { FilterIconComponent } from './filter.component';
 import { FingerprintIconComponent } from './fingerprint.component';
+import { FirstPlaceMedalIconComponent } from './first-place-medal.component';
 import { FlagIconComponent } from './flag.component';
 import { FlameIconComponent } from './flame.component';
 import { FolderMinusIconComponent } from './folder-minus.component';
@@ -255,6 +257,7 @@ import { MusicIconComponent } from './music.component';
 import { Navigation2IconComponent } from './navigation-2.component';
 import { NavigationIconComponent } from './navigation.component';
 import { NetlifyIconComponent } from './netlify.component';
+import { NewspaperIconComponent } from './newspaper.component';
 import { NodejsIconComponent } from './nodejs.component';
 import { NotionIconComponent } from './notion.component';
 import { NpmIconComponent } from './npm.component';
@@ -316,6 +319,7 @@ import { SaveIconComponent } from './save.component';
 import { ScanIconComponent } from './scan.component';
 import { ScissorsIconComponent } from './scissors.component';
 import { SearchIconComponent } from './search.component';
+import { SecondPlaceMedalIconComponent } from './second-place-medal.component';
 import { SendIconComponent } from './send.component';
 import { ServerIconComponent } from './server.component';
 import { SettingsIconComponent } from './settings.component';
@@ -358,6 +362,7 @@ import { TargetIconComponent } from './target.component';
 import { TelegramIconComponent } from './telegram.component';
 import { TerminalIconComponent } from './terminal.component';
 import { ThermometerIconComponent } from './thermometer.component';
+import { ThirdPlaceMedalIconComponent } from './third-place-medal.component';
 import { ThreadsIconComponent } from './threads.component';
 import { ThumbsDownIconComponent } from './thumbs-down.component';
 import { ThumbsUpIconComponent } from './thumbs-up.component';
@@ -456,6 +461,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     AnthropicIconComponent,
     ApertureIconComponent,
     ArchiveIconComponent,
+    ArrayIconComponent,
     ArrowDownCircleIconComponent,
     ArrowDownIconComponent,
     ArrowDownLeftIconComponent,
@@ -601,6 +607,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     FilterIconComponent,
     FilterXIconComponent,
     FingerprintIconComponent,
+    FirstPlaceMedalIconComponent,
     FlagIconComponent,
     FlameIconComponent,
     FolderIconComponent,
@@ -697,6 +704,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Navigation2IconComponent,
     NavigationIconComponent,
     NetlifyIconComponent,
+    NewspaperIconComponent,
     NodejsIconComponent,
     NotionIconComponent,
     NpmIconComponent,
@@ -758,6 +766,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ScanIconComponent,
     ScissorsIconComponent,
     SearchIconComponent,
+    SecondPlaceMedalIconComponent,
     SendIconComponent,
     ServerIconComponent,
     SettingsIconComponent,
@@ -800,6 +809,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     TelegramIconComponent,
     TerminalIconComponent,
     ThermometerIconComponent,
+    ThirdPlaceMedalIconComponent,
     ThreadsIconComponent,
     ThumbsDownIconComponent,
     ThumbsUpIconComponent,

@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.46.0',
+    date: '2026-09-21',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add newspaper and array icons, along with first, second and third place medal icons.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.45.1',
     date: '2026-09-18',
     sections: [
