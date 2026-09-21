@@ -154,8 +154,9 @@
       var(--ea-data-table-row-border-color, var(--color-border-subtle));
     transition: var(--transition-colors);
 
+    // Only the width goes, so the colour has nothing to animate from when a sort moves the row
     &:last-child {
-      border-bottom: none;
+      border-bottom-width: 0;
     }
   }
 

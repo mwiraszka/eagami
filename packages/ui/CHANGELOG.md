@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Keep only the first open accordion item when `multi` is switched off, instead of leaving several expanded.
+- Stop a data table's last row flashing its border when a sort moves it, by dropping only that border's width rather than the border itself.
 
 ## [5.47.0] - 2026-09-22
 
