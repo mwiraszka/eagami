@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.47.0',
+    date: '2026-09-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a set of multimedia icons covering playback controls, audio gear, waveforms, video surfaces and capture devices.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.46.0',
     date: '2026-09-21',
     sections: [

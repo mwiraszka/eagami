@@ -46,6 +46,7 @@ import { BookIconComponent } from './book.component';
 import { BookmarkCheckIconComponent } from './bookmark-check.component';
 import { BookmarkPlusIconComponent } from './bookmark-plus.component';
 import { BookmarkIconComponent } from './bookmark.component';
+import { BoomboxIconComponent } from './boombox.component';
 import { BotIconComponent } from './bot.component';
 import { BottleIconComponent } from './bottle.component';
 import { BoxIconComponent } from './box.component';
@@ -60,6 +61,7 @@ import { CalendarIconComponent } from './calendar.component';
 import { CameraOffIconComponent } from './camera-off.component';
 import { CameraIconComponent } from './camera.component';
 import { CandleIconComponent } from './candle.component';
+import { CassetteTapeIconComponent } from './cassette-tape.component';
 import { CastIconComponent } from './cast.component';
 import { CheckCircleIconComponent } from './check-circle.component';
 import { CheckSquareIconComponent } from './check-square.component';
@@ -105,6 +107,7 @@ import { CornerRightDownIconComponent } from './corner-right-down.component';
 import { CornerRightUpIconComponent } from './corner-right-up.component';
 import { CornerUpLeftIconComponent } from './corner-up-left.component';
 import { CornerUpRightIconComponent } from './corner-up-right.component';
+import { CosineWaveIconComponent } from './cosine-wave.component';
 import { CpuIconComponent } from './cpu.component';
 import { CreditCardIconComponent } from './credit-card.component';
 import { CropIconComponent } from './crop.component';
@@ -135,6 +138,7 @@ import { EagamiIconComponent } from './eagami.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Edit3IconComponent } from './edit-3.component';
 import { EditIconComponent } from './edit.component';
+import { EjectIconComponent } from './eject.component';
 import { ExclamationMarkIconComponent } from './exclamation-mark.component';
 import { ExclamationQuestionMarkIconComponent } from './exclamation-question-mark.component';
 import { ExternalLinkIconComponent } from './external-link.component';
@@ -187,6 +191,7 @@ import { HalfHeartIconComponent } from './half-heart.component';
 import { HardDriveIconComponent } from './hard-drive.component';
 import { HashIconComponent } from './hash.component';
 import { HeadphonesIconComponent } from './headphones.component';
+import { HeadsetIconComponent } from './headset.component';
 import { HeartIconComponent } from './heart.component';
 import { HelpCircleIconComponent } from './help-circle.component';
 import { HeptagonIconComponent } from './heptagon.component';
@@ -194,6 +199,7 @@ import { HexagonIconComponent } from './hexagon.component';
 import { HistoryIconComponent } from './history.component';
 import { HomeIconComponent } from './home.component';
 import type { IconComponentType } from './icon-category';
+import { ImagePlayIconComponent } from './image-play.component';
 import { ImagePlusIconComponent } from './image-plus.component';
 import { ImageSearchIconComponent } from './image-search.component';
 import { ImageIconComponent } from './image.component';
@@ -238,6 +244,7 @@ import { MenuIconComponent } from './menu.component';
 import { MessageCircleIconComponent } from './message-circle.component';
 import { MessageSquareIconComponent } from './message-square.component';
 import { MicOffIconComponent } from './mic-off.component';
+import { MicVocalIconComponent } from './mic-vocal.component';
 import { MicIconComponent } from './mic.component';
 import { MicroscopeIconComponent } from './microscope.component';
 import { MicrosoftIconComponent } from './microsoft.component';
@@ -247,6 +254,7 @@ import { MinusCircleIconComponent } from './minus-circle.component';
 import { MinusSquareIconComponent } from './minus-square.component';
 import { MinusIconComponent } from './minus.component';
 import { MongodbIconComponent } from './mongodb.component';
+import { MonitorPlayIconComponent } from './monitor-play.component';
 import { MonitorIconComponent } from './monitor.component';
 import { MoonIconComponent } from './moon.component';
 import { MoreHorizontalIconComponent } from './more-horizontal.component';
@@ -290,12 +298,16 @@ import { PlusCircleIconComponent } from './plus-circle.component';
 import { PlusSquareIconComponent } from './plus-square.component';
 import { PlusIconComponent } from './plus.component';
 import { PocketIconComponent } from './pocket.component';
+import { PodcastIconComponent } from './podcast.component';
 import { PowerIconComponent } from './power.component';
 import { PrinterIconComponent } from './printer.component';
+import { ProjectorIconComponent } from './projector.component';
 import { PythonIconComponent } from './python.component';
 import { QrCodeIconComponent } from './qr-code.component';
 import { QuestionExclamationMarkIconComponent } from './question-exclamation-mark.component';
 import { QuestionMarkIconComponent } from './question-mark.component';
+import { RadioReceiverIconComponent } from './radio-receiver.component';
+import { RadioTowerIconComponent } from './radio-tower.component';
 import { RadioIconComponent } from './radio.component';
 import { ReactIconComponent } from './react.component';
 import { ReceiptIconComponent } from './receipt.component';
@@ -306,6 +318,7 @@ import { RedditIconComponent } from './reddit.component';
 import { RedoIconComponent } from './redo.component';
 import { RefreshCcwIconComponent } from './refresh-ccw.component';
 import { RefreshCwIconComponent } from './refresh-cw.component';
+import { Repeat1IconComponent } from './repeat-1.component';
 import { RepeatIconComponent } from './repeat.component';
 import { RewindIconComponent } from './rewind.component';
 import { RightHalfStarIconComponent } from './right-half-star.component';
@@ -318,6 +331,7 @@ import { RssIconComponent } from './rss.component';
 import { SaveIconComponent } from './save.component';
 import { ScanIconComponent } from './scan.component';
 import { ScissorsIconComponent } from './scissors.component';
+import { ScreenShareIconComponent } from './screen-share.component';
 import { SearchIconComponent } from './search.component';
 import { SecondPlaceMedalIconComponent } from './second-place-medal.component';
 import { SendIconComponent } from './send.component';
@@ -332,6 +346,7 @@ import { ShoppingBagIconComponent } from './shopping-bag.component';
 import { ShoppingCartIconComponent } from './shopping-cart.component';
 import { ShuffleIconComponent } from './shuffle.component';
 import { SidebarIconComponent } from './sidebar.component';
+import { SineWaveIconComponent } from './sine-wave.component';
 import { SkipBackIconComponent } from './skip-back.component';
 import { SkipForwardIconComponent } from './skip-forward.component';
 import { Slack2IconComponent } from './slack-2.component';
@@ -345,15 +360,20 @@ import { SoccerBallIconComponent } from './soccer-ball.component';
 import { SparklesIconComponent } from './sparkles.component';
 import { SpeakerIconComponent } from './speaker.component';
 import { SpotifyIconComponent } from './spotify.component';
+import { SquarePlayIconComponent } from './square-play.component';
 import { SquareIconComponent } from './square.component';
 import { StarIconComponent } from './star.component';
+import { StepBackIconComponent } from './step-back.component';
+import { StepForwardIconComponent } from './step-forward.component';
 import { StopCircleIconComponent } from './stop-circle.component';
 import { StripeIconComponent } from './stripe.component';
+import { SubtitlesOffIconComponent } from './subtitles-off.component';
 import { SubtitlesIconComponent } from './subtitles.component';
 import { SunIconComponent } from './sun.component';
 import { SunriseIconComponent } from './sunrise.component';
 import { SunsetIconComponent } from './sunset.component';
 import { SvelteIconComponent } from './svelte.component';
+import { SwitchCameraIconComponent } from './switch-camera.component';
 import { TableIconComponent } from './table.component';
 import { TabletIconComponent } from './tablet.component';
 import { TagIconComponent } from './tag.component';
@@ -412,6 +432,7 @@ import { WalletIconComponent } from './wallet.component';
 import { WandIconComponent } from './wand.component';
 import { WatchIconComponent } from './watch.component';
 import { WaveformIconComponent } from './waveform.component';
+import { WebcamIconComponent } from './webcam.component';
 import { WhatsappIconComponent } from './whatsapp.component';
 import { WifiOffIconComponent } from './wifi-off.component';
 import { WifiIconComponent } from './wifi.component';
@@ -494,6 +515,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     BookmarkCheckIconComponent,
     BookmarkIconComponent,
     BookmarkPlusIconComponent,
+    BoomboxIconComponent,
     BotIconComponent,
     BottleIconComponent,
     BoxIconComponent,
@@ -508,6 +530,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CameraIconComponent,
     CameraOffIconComponent,
     CandleIconComponent,
+    CassetteTapeIconComponent,
     CastIconComponent,
     CheckCircleIconComponent,
     CheckIconComponent,
@@ -553,6 +576,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CornerRightUpIconComponent,
     CornerUpLeftIconComponent,
     CornerUpRightIconComponent,
+    CosineWaveIconComponent,
     CpuIconComponent,
     CreditCardIconComponent,
     CropIconComponent,
@@ -583,6 +607,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Edit2IconComponent,
     Edit3IconComponent,
     EditIconComponent,
+    EjectIconComponent,
     ExclamationMarkIconComponent,
     ExclamationQuestionMarkIconComponent,
     ExternalLinkIconComponent,
@@ -635,6 +660,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     HardDriveIconComponent,
     HashIconComponent,
     HeadphonesIconComponent,
+    HeadsetIconComponent,
     HeartIconComponent,
     HelpCircleIconComponent,
     HeptagonIconComponent,
@@ -642,6 +668,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     HistoryIconComponent,
     HomeIconComponent,
     ImageIconComponent,
+    ImagePlayIconComponent,
     ImagePlusIconComponent,
     ImageSearchIconComponent,
     ImagesIconComponent,
@@ -686,6 +713,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     MessageSquareIconComponent,
     MicIconComponent,
     MicOffIconComponent,
+    MicVocalIconComponent,
     MicroscopeIconComponent,
     MicrosoftIconComponent,
     Minimize2IconComponent,
@@ -695,6 +723,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     MinusSquareIconComponent,
     MongodbIconComponent,
     MonitorIconComponent,
+    MonitorPlayIconComponent,
     MoonIconComponent,
     MoreHorizontalIconComponent,
     MoreVerticalIconComponent,
@@ -737,13 +766,17 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PlusIconComponent,
     PlusSquareIconComponent,
     PocketIconComponent,
+    PodcastIconComponent,
     PowerIconComponent,
     PrinterIconComponent,
+    ProjectorIconComponent,
     PythonIconComponent,
     QrCodeIconComponent,
     QuestionExclamationMarkIconComponent,
     QuestionMarkIconComponent,
     RadioIconComponent,
+    RadioReceiverIconComponent,
+    RadioTowerIconComponent,
     ReactIconComponent,
     ReceiptIconComponent,
     RecordIconComponent,
@@ -753,6 +786,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     RedoIconComponent,
     RefreshCcwIconComponent,
     RefreshCwIconComponent,
+    Repeat1IconComponent,
     RepeatIconComponent,
     RewindIconComponent,
     RightHalfStarIconComponent,
@@ -765,6 +799,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SaveIconComponent,
     ScanIconComponent,
     ScissorsIconComponent,
+    ScreenShareIconComponent,
     SearchIconComponent,
     SecondPlaceMedalIconComponent,
     SendIconComponent,
@@ -779,6 +814,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ShoppingCartIconComponent,
     ShuffleIconComponent,
     SidebarIconComponent,
+    SineWaveIconComponent,
     SkipBackIconComponent,
     SkipForwardIconComponent,
     Slack2IconComponent,
@@ -793,14 +829,19 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SpeakerIconComponent,
     SpotifyIconComponent,
     SquareIconComponent,
+    SquarePlayIconComponent,
     StarIconComponent,
+    StepBackIconComponent,
+    StepForwardIconComponent,
     StopCircleIconComponent,
     StripeIconComponent,
     SubtitlesIconComponent,
+    SubtitlesOffIconComponent,
     SunIconComponent,
     SunriseIconComponent,
     SunsetIconComponent,
     SvelteIconComponent,
+    SwitchCameraIconComponent,
     TableIconComponent,
     TabletIconComponent,
     TagIconComponent,
@@ -859,6 +900,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     WandIconComponent,
     WatchIconComponent,
     WaveformIconComponent,
+    WebcamIconComponent,
     WhatsappIconComponent,
     WifiIconComponent,
     WifiOffIconComponent,
