@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.49.1',
+    date: '2026-09-23',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Stop a card from acting as a scroll container by clipping its content rather than hiding it, so an effect inside it that follows the page's scroll, such as a data table heading pinned by a scroll-driven animation, keeps measuring against the page.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.49.0',
     date: '2026-09-22',
     sections: [
