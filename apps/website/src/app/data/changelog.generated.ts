@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.49.0',
+    date: '2026-09-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `--ea-data-table-header-font-size` and `--ea-data-table-header-text-transform` custom properties so a data table can resize its header cells and opt them out of uppercase.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Make a data table row inert when its `rowHref` returns null, so a row that leads nowhere shows no hover highlight or pointer, takes no focus and never fires `rowActivate`.',
+          'Rewrite the README as a short overview that links to the documentation site.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.48.0',
     date: '2026-09-22',
     sections: [

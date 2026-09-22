@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.49.0] - 2026-09-22
+
+### Added
+
+- Add `--ea-data-table-header-font-size` and `--ea-data-table-header-text-transform` custom properties so a data table can resize its header cells and opt them out of uppercase.
+
+### Changed
+
+- **Breaking:** Make a data table row inert when its `rowHref` returns null, so a row that leads nowhere shows no hover highlight or pointer, takes no focus and never fires `rowActivate`.
+- Rewrite the README as a short overview that links to the documentation site.
+
 ## [5.48.0] - 2026-09-22
 
 ### Added
@@ -1637,6 +1648,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.49.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.48.0...ui-v5.49.0
 [5.48.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.1...ui-v5.48.0
 [5.47.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.0...ui-v5.47.1
 [5.47.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.46.0...ui-v5.47.0
