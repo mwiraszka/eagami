@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccordionItemComponent } from './accordion-item.component';
@@ -7,7 +7,7 @@ import { AccordionComponent } from './accordion.component';
 @Component({
   imports: [AccordionComponent, AccordionItemComponent],
   template: `
-    <ea-accordion [multi]="multi">
+    <ea-accordion [multi]="multi()">
       <ea-accordion-item
         value="one"
         label="Section One">
@@ -28,7 +28,7 @@ import { AccordionComponent } from './accordion.component';
   `,
 })
 class TestHostComponent {
-  multi = false;
+  multi = signal(false);
 }
 
 describe('AccordionComponent', () => {
@@ -105,7 +105,7 @@ describe('AccordionComponent', () => {
 
   describe('Multi mode', () => {
     beforeEach(() => {
-      fixture.componentInstance.multi = true;
+      fixture.componentInstance.multi.set(true);
       fixture.detectChanges();
     });
 
@@ -126,6 +126,20 @@ describe('AccordionComponent', () => {
       fixture.detectChanges();
       expect(getPanels().length).toBe(1);
       expect(getPanels()[0].textContent?.trim()).toBe('Content two');
+    });
+
+    it('keeps only the first open panel in document order when multi is switched off', () => {
+      getTriggers()[1].click();
+      fixture.detectChanges();
+      getTriggers()[0].click();
+      fixture.detectChanges();
+      expect(getPanels().length).toBe(2);
+
+      fixture.componentInstance.multi.set(false);
+      fixture.detectChanges();
+
+      expect(getPanels().length).toBe(1);
+      expect(getPanels()[0].textContent?.trim()).toBe('Content one');
     });
   });
 

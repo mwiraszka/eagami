@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  input,
+  signal,
+  untracked,
+} from '@angular/core';
 
 import { type EaSize } from '../sizes';
+import type { AccordionItemComponent } from './accordion-item.component';
 
 /** Heading level exposed by each item's header for assistive technology. */
 export type AccordionHeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -27,6 +35,33 @@ export class AccordionComponent {
   readonly headingLevel = input<AccordionHeadingLevel>(3);
 
   readonly expandedItems = signal<Set<string>>(new Set());
+  readonly registeredItems = signal<AccordionItemComponent[]>([]);
+
+  constructor() {
+    effect(() => {
+      if (this.multi()) {
+        return;
+      }
+      const expanded = untracked(this.expandedItems);
+      if (expanded.size <= 1) {
+        return;
+      }
+      const first = untracked(this.registeredItems).find(item =>
+        expanded.has(item.value()),
+      );
+      this.expandedItems.set(new Set(first ? [first.value()] : []));
+    });
+  }
+
+  // Called automatically by ea-accordion-item, in document order
+  registerItem(item: AccordionItemComponent): void {
+    this.registeredItems.update(items => [...items, item]);
+  }
+
+  // Called automatically by ea-accordion-item
+  unregisterItem(item: AccordionItemComponent): void {
+    this.registeredItems.update(items => items.filter(i => i !== item));
+  }
 
   toggle(value: string): void {
     const current = this.expandedItems();

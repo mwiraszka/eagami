@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  type OnDestroy,
+  type OnInit,
   computed,
   inject,
   input,
@@ -23,7 +25,7 @@ import { AccordionComponent } from './accordion.component';
   styleUrl: './accordion-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionItemComponent {
+export class AccordionItemComponent implements OnInit, OnDestroy {
   private readonly accordion = inject(AccordionComponent);
 
   readonly value = input.required<string>();
@@ -34,6 +36,14 @@ export class AccordionItemComponent {
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
   readonly headingLevel = computed(() => this.accordion.headingLevel());
   readonly size = computed(() => this.accordion.size());
+
+  ngOnInit(): void {
+    this.accordion.registerItem(this);
+  }
+
+  ngOnDestroy(): void {
+    this.accordion.unregisterItem(this);
+  }
 
   toggle(): void {
     if (this.disabled()) {

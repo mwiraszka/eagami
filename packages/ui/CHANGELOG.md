@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.47.1] - 2026-09-22
+
+### Fixed
+
+- Keep only the first open accordion item when `multi` is switched off, instead of leaving several expanded.
+- Stop a data table's last row flashing its border when a sort moves it, by dropping only that border's width rather than the border itself.
+
 ## [5.47.0] - 2026-09-22
 
 ### Added
@@ -1623,6 +1630,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.47.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.0...ui-v5.47.1
 [5.47.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.46.0...ui-v5.47.0
 [5.46.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.45.1...ui-v5.46.0
 [5.45.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.45.0...ui-v5.45.1

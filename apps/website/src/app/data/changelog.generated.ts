@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.47.1',
+    date: '2026-09-22',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep only the first open accordion item when `multi` is switched off, instead of leaving several expanded.',
+          "Stop a data table's last row flashing its border when a sort moves it, by dropping only that border's width rather than the border itself.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.47.0',
     date: '2026-09-22',
     sections: [
