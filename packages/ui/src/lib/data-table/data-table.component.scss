@@ -72,10 +72,13 @@
   &__cell--header {
     position: relative;
     font-weight: var(--font-weight-medium);
-    font-size: calc(var(--ea-data-table-font-size) * 0.75);
+    font-size: var(
+      --ea-data-table-header-font-size,
+      calc(var(--ea-data-table-font-size) * 0.75)
+    );
     line-height: var(--text-label-sm-lh);
     letter-spacing: var(--letter-spacing-wide);
-    text-transform: uppercase;
+    text-transform: var(--ea-data-table-header-text-transform, uppercase);
     text-align: start;
     white-space: nowrap;
     color: var(--ea-data-table-header-color, var(--color-text-secondary));
