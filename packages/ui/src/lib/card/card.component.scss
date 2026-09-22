@@ -15,6 +15,10 @@ ea-card:has(> .ea-card--full-width) {
 }
 
 .ea-card {
+  // Clipped rather than hidden, which would make the card a scroll container and take a
+  // scroll-driven effect inside it, such as a table heading following the page, off the
+  // page's own scroll
+  overflow: clip;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -23,7 +27,6 @@ ea-card:has(> .ea-card--full-width) {
   border-radius: var(--radius-lg);
   font-family: var(--font-family-sans);
   color: var(--color-text-primary);
-  overflow: hidden;
 
   // A positive offset-y shadow can't define the top edge and reads poorly in dark
   // mode, so the border carries the edge while shadow + bg-elevated convey depth
