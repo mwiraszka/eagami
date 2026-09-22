@@ -1138,6 +1138,8 @@ export const frFR: WebMessages = {
             showRangeLabel: 'Afficher l’étiquette de plage',
             disabled: 'Désactivé',
             totalItems: 'Nombre total d’éléments',
+            showAllOption: 'Afficher l’option « Tous »',
+            pageSizeLabel: 'Libellé de la taille de page',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -1509,6 +1511,10 @@ export const frFR: WebMessages = {
             goToPage: 'Navigue vers la page indiquée, ramenée dans la plage valide.',
             nextPage: 'Navigue vers la page suivante s’il en existe une.',
             prevPage: 'Navigue vers la page précédente s’il en existe une.',
+            showAllOption:
+              'Propose après les options la taille de page « Tous », en émettant PAGE_SIZE_ALL comme taille de page lorsqu’elle est choisie.',
+            pageSizeLabel:
+              'Ce que compte le sélecteur de taille de page : le libellé localisé « Lignes », « Éléments », « Résultats », « Produits », « Enregistrements », « Entrées », « Publications » ou « Articles » par page.',
           },
           'progress-bar': {
             variant: 'Variante de couleur de la barre.',

@@ -1129,6 +1129,8 @@ export const pl: WebMessages = {
             showRangeLabel: 'Pokaż etykietę zakresu',
             disabled: 'Wyłączone',
             totalItems: 'Łączna liczba elementów',
+            showAllOption: 'Pokaż opcję „Wszystkie”',
+            pageSizeLabel: 'Etykieta rozmiaru strony',
           },
           'progress-bar': {
             variant: 'Wariant',
@@ -1491,6 +1493,10 @@ export const pl: WebMessages = {
               'Przechodzi do podanej strony, ograniczonej do prawidłowego zakresu.',
             nextPage: 'Przechodzi do następnej strony, jeśli istnieje.',
             prevPage: 'Przechodzi do poprzedniej strony, jeśli istnieje.',
+            showAllOption:
+              'Oferuje po opcjach rozmiar strony „Wszystkie”, emitując po wybraniu PAGE_SIZE_ALL jako rozmiar strony.',
+            pageSizeLabel:
+              'Co liczy wybór rozmiaru strony: zlokalizowaną etykietę „Wierszy”, „Elementów”, „Wyników”, „Produktów”, „Rekordów”, „Wpisów”, „Postów” lub „Artykułów” na stronę.',
           },
           'progress-bar': {
             variant: 'Wariant kolorystyczny paska.',

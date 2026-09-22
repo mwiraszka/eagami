@@ -1125,6 +1125,8 @@ export const is: WebMessages = {
             showRangeLabel: 'Sýna bilsmerkimiða',
             disabled: 'Óvirkt',
             totalItems: 'Heildarfjöldi atriða',
+            showAllOption: 'Sýna valkostinn „Allt“',
+            pageSizeLabel: 'Merki síðustærðar',
           },
           'progress-bar': {
             variant: 'Afbrigði',
@@ -1486,6 +1488,10 @@ export const is: WebMessages = {
             goToPage: 'Fer á gefnu síðuna, fest inn í gilda bilið.',
             nextPage: 'Fer á næstu síðu ef hún er til.',
             prevPage: 'Fer á fyrri síðu ef hún er til.',
+            showAllOption:
+              'Býður eftir valkostunum síðustærðina „Allt“ og sendir PAGE_SIZE_ALL sem síðustærð þegar hún er valin.',
+            pageSizeLabel:
+              'Hvað síðustærðarvalið telur: þýtt merki fyrir „Raðir“, „Atriði“, „Niðurstöður“, „Vörur“, „Færslur“, „Skráningar“, „Innlegg“ eða „Greinar“ á síðu.',
           },
           'progress-bar': {
             variant: 'Litaafbrigði stikunnar.',

@@ -1,4 +1,9 @@
-import { type PaginatorAlign, PaginatorComponent, type PaginatorSize } from '@eagami/ui';
+import {
+  type PaginatorAlign,
+  PaginatorComponent,
+  type PaginatorPageSizeLabel,
+  type PaginatorSize,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
@@ -21,6 +26,8 @@ interface PaginatorKnobState {
   size: PaginatorSize;
   showPageSizeSelector: boolean;
   showRangeLabel: boolean;
+  showAllOption: boolean;
+  pageSizeLabel: PaginatorPageSizeLabel;
   groupThousands: boolean;
   disabled: boolean;
 }

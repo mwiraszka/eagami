@@ -1101,6 +1101,8 @@ export const he: WebMessages = {
             showRangeLabel: 'הצג תווית טווח',
             disabled: 'מושבת',
             totalItems: 'סך הפריטים',
+            showAllOption: 'הצגת האפשרות «הכל»',
+            pageSizeLabel: 'תווית גודל העמוד',
           },
           'progress-bar': {
             variant: 'וריאנט',
@@ -1435,6 +1437,10 @@ export const he: WebMessages = {
             goToPage: 'מנווט לדף הנתון, מוגבל לטווח התקין.',
             nextPage: 'מנווט לדף הבא אם הוא קיים.',
             prevPage: 'מנווט לדף הקודם אם הוא קיים.',
+            showAllOption:
+              'מציע אחרי האפשרויות את גודל העמוד «הכל» ופולט PAGE_SIZE_ALL כגודל העמוד כשהוא נבחר.',
+            pageSizeLabel:
+              'מה בורר גודל העמוד סופר: התווית המתורגמת «שורות», «פריטים», «תוצאות», «מוצרים», «רשומות», «ערכים», «פוסטים» או «מאמרים» בעמוד.',
           },
           'progress-bar': {
             variant: 'וריאנט הצבע של הסרגל.',

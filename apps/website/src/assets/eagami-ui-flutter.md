@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.47.1
-source: '@eagami/ui@5.47.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-09-21
+version: 5.48.0
+source: '@eagami/ui@5.48.0 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-09-22
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -532,7 +532,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.47.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.48.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -3299,7 +3299,7 @@ class EagamiMessages {
   final InputMessages input;             // { showPassword, hidePassword, clear }
   final MenuMessages menu;               // { label }
   final MultiSelectMessages multiSelect; // { placeholder, searchPlaceholder, searchEmpty, selectAll, clearAll, removeOption(label), selectedCount(count) }
-  final PaginatorMessages paginator;     // { label, rowsPerPage, range(start, end, total), previousPage, nextPage }
+  final PaginatorMessages paginator;     // { label, rowsPerPage, itemsPerPage, resultsPerPage, productsPerPage, recordsPerPage, entriesPerPage, postsPerPage, articlesPerPage, all, range(start, end, total), previousPage, nextPage }
   final ProgressBarMessages progressBar; // { label }
   final RatingMessages rating;           // { label, valueLabel(value, max), clear }
   final SpinnerMessages spinner;         // { label }
@@ -3393,6 +3393,14 @@ const EagamiMessages kEagamiEnglish = EagamiMessages(
   paginator:     PaginatorMessages(
     label: 'Pagination',
     rowsPerPage: 'Rows per page:',
+    itemsPerPage: 'Items per page:',
+    resultsPerPage: 'Results per page:',
+    productsPerPage: 'Products per page:',
+    recordsPerPage: 'Records per page:',
+    entriesPerPage: 'Entries per page:',
+    postsPerPage: 'Posts per page:',
+    articlesPerPage: 'Articles per page:',
+    all: 'All',
     range: (start, end, total) => '$start–$end of $total',
     previousPage: 'Previous page',
     nextPage: 'Next page',
