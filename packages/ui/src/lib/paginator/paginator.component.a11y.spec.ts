@@ -3,7 +3,7 @@ import { axe } from 'vitest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { PaginatorComponent } from './paginator.component';
+import { PAGE_SIZE_ALL, PaginatorComponent } from './paginator.component';
 
 @Component({
   imports: [PaginatorComponent],
@@ -14,7 +14,8 @@ import { PaginatorComponent } from './paginator.component';
       [pageSize]="pageSize"
       [disabled]="disabled"
       [showPageSizeSelector]="showPageSizeSelector"
-      [showRangeLabel]="showRangeLabel" />
+      [showRangeLabel]="showRangeLabel"
+      [showAllOption]="showAllOption" />
   `,
 })
 class HostComponent {
@@ -24,6 +25,7 @@ class HostComponent {
   disabled = false;
   showPageSizeSelector = true;
   showRangeLabel = true;
+  showAllOption = false;
 }
 
 describe('PaginatorComponent a11y', () => {
@@ -59,6 +61,17 @@ describe('PaginatorComponent a11y', () => {
 
   it('has no detectable violations when disabled', async () => {
     const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with every item on one page', async () => {
+    const el = await render(host => {
+      host.showAllOption = true;
+      host.pageSize = PAGE_SIZE_ALL;
+    });
 
     const results = await axe(el);
 

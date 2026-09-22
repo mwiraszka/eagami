@@ -1,6 +1,10 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaginatorComponent, type PaginatorState } from './paginator.component';
+import {
+  PAGE_SIZE_ALL,
+  PaginatorComponent,
+  type PaginatorState,
+} from './paginator.component';
 
 describe('PaginatorComponent', () => {
   let fixture: ComponentFixture<PaginatorComponent>;
@@ -37,6 +41,11 @@ describe('PaginatorComponent', () => {
 
   function getSelect(): HTMLSelectElement | null {
     return fixture.nativeElement.querySelector('.ea-paginator__select');
+  }
+
+  function getPageSizeLabel(): string {
+    const el: HTMLElement = fixture.nativeElement.querySelector('.ea-paginator__label');
+    return el?.textContent?.trim() ?? '';
   }
 
   function getEllipses(): HTMLElement[] {
@@ -101,6 +110,22 @@ describe('PaginatorComponent', () => {
 
     it('shows page size selector by default', () => {
       expect(getSelect()).toBeTruthy();
+    });
+
+    it('labels the page size selector by rows by default', () => {
+      expect(getPageSizeLabel()).toBe('Rows per page:');
+    });
+
+    it('labels the page size selector by what it counts', () => {
+      fixture.componentRef.setInput('pageSizeLabel', 'items');
+      fixture.detectChanges();
+
+      expect(getPageSizeLabel()).toBe('Items per page:');
+
+      fixture.componentRef.setInput('pageSizeLabel', 'articles');
+      fixture.detectChanges();
+
+      expect(getPageSizeLabel()).toBe('Articles per page:');
     });
 
     it('hides page size selector when disabled', () => {
@@ -231,6 +256,62 @@ describe('PaginatorComponent', () => {
 
       expect(options).toHaveLength(3);
       expect(options[0].value).toBe('5');
+    });
+  });
+
+  describe('All option', () => {
+    it('is not offered by default', () => {
+      const options = getSelect()!.querySelectorAll('option');
+
+      expect(options).toHaveLength(4);
+    });
+
+    it('is offered after the page sizes when enabled', () => {
+      fixture.componentRef.setInput('showAllOption', true);
+      fixture.detectChanges();
+
+      const options = getSelect()!.querySelectorAll('option');
+
+      expect(options).toHaveLength(5);
+      expect(options[4].value).toBe(`${PAGE_SIZE_ALL}`);
+      expect(options[4].textContent?.trim()).toBe('All');
+    });
+
+    it('puts every item on one page when chosen', () => {
+      fixture.componentRef.setInput('showAllOption', true);
+      component.page.set(3);
+      fixture.detectChanges();
+      const spy = vi.fn();
+      component.changed.subscribe(spy);
+
+      getSelect()!.value = `${PAGE_SIZE_ALL}`;
+      getSelect()!.dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+
+      expect(spy).toHaveBeenCalledWith<[PaginatorState]>({
+        page: 1,
+        pageSize: PAGE_SIZE_ALL,
+      });
+      expect(component.totalPages()).toBe(1);
+      expect(getPageButtons()).toHaveLength(1);
+      expect(getNextBtn().disabled).toBe(true);
+      expect(getRangeLabel()).toBe('1–100 of 100');
+    });
+
+    it('marks All as the chosen page size', () => {
+      fixture.componentRef.setInput('showAllOption', true);
+      component.pageSize.set(PAGE_SIZE_ALL);
+      fixture.detectChanges();
+
+      expect(getSelect()!.value).toBe(`${PAGE_SIZE_ALL}`);
+    });
+
+    it('shows 0–0 of 0 with every item on one page and none to show', () => {
+      fixture.componentRef.setInput('totalItems', 0);
+      component.pageSize.set(PAGE_SIZE_ALL);
+      fixture.detectChanges();
+
+      expect(getRangeLabel()).toBe('0–0 of 0');
     });
   });
 

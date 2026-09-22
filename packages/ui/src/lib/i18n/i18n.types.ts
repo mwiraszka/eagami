@@ -207,6 +207,14 @@ export interface EagamiMessages {
   paginator: {
     label: string;
     rowsPerPage: string;
+    itemsPerPage: string;
+    resultsPerPage: string;
+    productsPerPage: string;
+    recordsPerPage: string;
+    entriesPerPage: string;
+    postsPerPage: string;
+    articlesPerPage: string;
+    all: string;
     range: (start: string, end: string, total: string) => string;
     previousPage: string;
     nextPage: string;

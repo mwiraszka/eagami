@@ -11,7 +11,7 @@
       <label
         class="ea-paginator__label"
         [for]="sizeSelectId">
-        {{ i18n.messages().paginator.rowsPerPage }}
+        {{ resolvedPageSizeLabel() }}
       </label>
       <span class="ea-paginator__select-wrapper">
         <select
@@ -26,6 +26,13 @@
               [value]="option"
               [selected]="option === pageSize()">
               {{ formatNumber(option) }}
+            </option>
+          }
+          @if (showAllOption()) {
+            <option
+              [value]="PAGE_SIZE_ALL"
+              [selected]="showsAll()">
+              {{ i18n.messages().paginator.all }}
             </option>
           }
         </select>
