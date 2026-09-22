@@ -299,6 +299,40 @@ export const frFR: WebMessages = {
         fontDefault: '(par défaut)',
         reset: 'Réinitialiser',
       },
+      comparison: {
+        heading: 'En comparaison',
+        lede: 'Les choix qui façonnent le travail quotidien avec une bibliothèque de composants Angular, côte à côte.',
+        rows: [
+          {
+            feature: 'Modèle de style',
+            eagami: 'Propriétés personnalisées CSS',
+            material: 'Sass et tokens Material 3',
+            primeng: 'Tokens de design et presets de thème',
+            spartan: 'Tailwind CSS, copié dans votre application',
+          },
+          {
+            feature: 'Traductions intégrées',
+            eagami: '15 langues, commutables à l’exécution',
+            material: 'À fournir vous-même',
+            primeng: 'À fournir vous-même',
+            spartan: 'À fournir vous-même',
+          },
+          {
+            feature: 'Nécessite un framework CSS',
+            eagami: 'Non',
+            material: 'Non',
+            primeng: 'Non',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Dépendances au-delà d’Angular',
+            eagami: 'Aucune',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK et paquets PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS et paquets utilitaires',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Installation | Eagami UI',

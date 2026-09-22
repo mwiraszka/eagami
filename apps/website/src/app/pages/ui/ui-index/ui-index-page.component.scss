@@ -126,6 +126,11 @@
   color: var(--color-text-secondary);
 }
 
+.ui-index__comparison {
+  --ea-data-table-header-font-size: var(--font-size-sm);
+  --ea-data-table-header-text-transform: none;
+}
+
 .principle-grid {
   @include mixins.card-grid;
 }

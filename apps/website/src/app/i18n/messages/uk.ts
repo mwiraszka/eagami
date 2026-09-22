@@ -292,6 +292,40 @@ export const uk: WebMessages = {
         fontDefault: '(за замовчуванням)',
         reset: 'Скинути',
       },
+      comparison: {
+        heading: 'Порівняння',
+        lede: 'Рішення, що визначають повсякденну роботу з бібліотекою компонентів Angular, поруч одне з одним.',
+        rows: [
+          {
+            feature: 'Модель стилізації',
+            eagami: 'Користувацькі властивості CSS',
+            material: 'Sass і токени Material 3',
+            primeng: 'Дизайн-токени та пресети тем',
+            spartan: 'Tailwind CSS, копіюється в застосунок',
+          },
+          {
+            feature: 'Вбудовані переклади',
+            eagami: '15 мов, перемикаються під час виконання',
+            material: 'Додаєте самі',
+            primeng: 'Додаєте самі',
+            spartan: 'Додаєте самі',
+          },
+          {
+            feature: 'Потребує CSS-фреймворк',
+            eagami: 'Ні',
+            material: 'Ні',
+            primeng: 'Ні',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Залежності поза Angular',
+            eagami: 'Немає',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK і пакети PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS і допоміжні пакети',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Налаштування | Eagami UI',

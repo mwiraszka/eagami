@@ -282,6 +282,40 @@ export const he: WebMessages = {
         fontDefault: '(ברירת מחדל)',
         reset: 'איפוס',
       },
+      comparison: {
+        heading: 'בהשוואה',
+        lede: 'הבחירות שמעצבות את העבודה היומיומית עם ספריית רכיבי Angular, זו לצד זו.',
+        rows: [
+          {
+            feature: 'מודל עיצוב',
+            eagami: 'מאפייני CSS מותאמים אישית',
+            material: 'Sass וטוקנים של Material 3',
+            primeng: 'טוקני עיצוב וערכות נושא מוגדרות מראש',
+            spartan: 'Tailwind CSS, מועתק לאפליקציה שלך',
+          },
+          {
+            feature: 'תרגומים מובנים',
+            eagami: '15 שפות, ניתנות להחלפה בזמן ריצה',
+            material: 'מספקים בעצמכם',
+            primeng: 'מספקים בעצמכם',
+            spartan: 'מספקים בעצמכם',
+          },
+          {
+            feature: 'דורש מסגרת CSS',
+            eagami: 'לא',
+            material: 'לא',
+            primeng: 'לא',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'תלויות מעבר ל-Angular',
+            eagami: 'אין',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK וחבילות PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS וחבילות עזר',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'התקנה | Eagami UI',

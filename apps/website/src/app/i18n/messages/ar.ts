@@ -287,6 +287,40 @@ export const ar: WebMessages = {
         fontDefault: '(افتراضي)',
         reset: 'إعادة تعيين',
       },
+      comparison: {
+        heading: 'مقارنة',
+        lede: 'الخيارات التي تشكّل العمل اليومي مع مكتبة مكوّنات Angular، جنبًا إلى جنب.',
+        rows: [
+          {
+            feature: 'نموذج التنسيق',
+            eagami: 'خصائص CSS المخصّصة',
+            material: 'Sass ورموز Material 3',
+            primeng: 'رموز التصميم وإعدادات السمات المسبقة',
+            spartan: 'Tailwind CSS، يُنسخ إلى تطبيقك',
+          },
+          {
+            feature: 'ترجمات مدمجة',
+            eagami: '15 لغة، قابلة للتبديل أثناء التشغيل',
+            material: 'توفّرها بنفسك',
+            primeng: 'توفّرها بنفسك',
+            spartan: 'توفّرها بنفسك',
+          },
+          {
+            feature: 'يتطلب إطار عمل CSS',
+            eagami: 'لا',
+            material: 'لا',
+            primeng: 'لا',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'اعتماديات خارج Angular',
+            eagami: 'لا شيء',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK وحزم PrimeUIX',
+            spartan: 'Angular CDK وTailwind CSS وحزم مساعدة',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'الإعداد | Eagami UI',

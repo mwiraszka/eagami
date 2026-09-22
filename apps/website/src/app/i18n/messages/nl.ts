@@ -296,6 +296,40 @@ export const nl: WebMessages = {
         fontDefault: '(standaard)',
         reset: 'Resetten',
       },
+      comparison: {
+        heading: 'In vergelijking',
+        lede: 'De keuzes die het dagelijkse werk met een Angular-componentenbibliotheek bepalen, naast elkaar gezet.',
+        rows: [
+          {
+            feature: 'Stylingmodel',
+            eagami: 'CSS custom properties',
+            material: 'Sass en Material 3-tokens',
+            primeng: 'Design tokens en thema-presets',
+            spartan: 'Tailwind CSS, gekopieerd naar je app',
+          },
+          {
+            feature: 'Ingebouwde vertalingen',
+            eagami: '15 talen, tijdens runtime te wisselen',
+            material: 'Zelf aanleveren',
+            primeng: 'Zelf aanleveren',
+            spartan: 'Zelf aanleveren',
+          },
+          {
+            feature: 'Vereist een CSS-framework',
+            eagami: 'Nee',
+            material: 'Nee',
+            primeng: 'Nee',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Afhankelijkheden naast Angular',
+            eagami: 'Geen',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK en PrimeUIX-pakketten',
+            spartan: 'Angular CDK, Tailwind CSS en hulppakketten',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Installatie | Eagami UI',

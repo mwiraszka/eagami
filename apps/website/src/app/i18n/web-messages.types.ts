@@ -183,6 +183,17 @@ export interface WebMessages {
         fontDefault: string;
         reset: string;
       };
+      comparison: {
+        heading: string;
+        lede: string;
+        rows: ReadonlyArray<{
+          feature: string;
+          eagami: string;
+          material: string;
+          primeng: string;
+          spartan: string;
+        }>;
+      };
     };
     setup: {
       metaTitle: string;

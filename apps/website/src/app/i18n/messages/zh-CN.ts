@@ -277,6 +277,40 @@ export const zhCN: WebMessages = {
         fontDefault: '（默认）',
         reset: '重置',
       },
+      comparison: {
+        heading: '横向对比',
+        lede: '与其他 Angular 组件库并排比较那些影响日常开发的选择。',
+        rows: [
+          {
+            feature: '样式模型',
+            eagami: 'CSS 自定义属性',
+            material: 'Sass 与 Material 3 令牌',
+            primeng: '设计令牌与主题预设',
+            spartan: 'Tailwind CSS，复制到你的应用中',
+          },
+          {
+            feature: '内置翻译',
+            eagami: '15 种语言，可在运行时切换',
+            material: '需自行提供',
+            primeng: '需自行提供',
+            spartan: '需自行提供',
+          },
+          {
+            feature: '是否需要 CSS 框架',
+            eagami: '否',
+            material: '否',
+            primeng: '否',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Angular 之外的依赖',
+            eagami: '无',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK 与 PrimeUIX 包',
+            spartan: 'Angular CDK、Tailwind CSS 与工具包',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: '安装 | Eagami UI',

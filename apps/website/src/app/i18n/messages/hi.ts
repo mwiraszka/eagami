@@ -289,6 +289,40 @@ export const hi: WebMessages = {
         fontDefault: '(डिफ़ॉल्ट)',
         reset: 'रीसेट करें',
       },
+      comparison: {
+        heading: 'तुलना',
+        lede: 'Angular कंपोनेंट लाइब्रेरी के साथ रोज़मर्रा के काम को आकार देने वाले विकल्प, आमने-सामने।',
+        rows: [
+          {
+            feature: 'स्टाइलिंग मॉडल',
+            eagami: 'CSS कस्टम प्रॉपर्टी',
+            material: 'Sass और Material 3 टोकन',
+            primeng: 'डिज़ाइन टोकन और थीम प्रीसेट',
+            spartan: 'Tailwind CSS, आपके ऐप में कॉपी किया गया',
+          },
+          {
+            feature: 'अंतर्निहित अनुवाद',
+            eagami: '15 भाषाएँ, रनटाइम पर बदली जा सकती हैं',
+            material: 'स्वयं उपलब्ध कराएँ',
+            primeng: 'स्वयं उपलब्ध कराएँ',
+            spartan: 'स्वयं उपलब्ध कराएँ',
+          },
+          {
+            feature: 'CSS फ़्रेमवर्क आवश्यक',
+            eagami: 'नहीं',
+            material: 'नहीं',
+            primeng: 'नहीं',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Angular के अलावा निर्भरताएँ',
+            eagami: 'कोई नहीं',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK और PrimeUIX पैकेज',
+            spartan: 'Angular CDK, Tailwind CSS और सहायक पैकेज',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'सेटअप | Eagami UI',

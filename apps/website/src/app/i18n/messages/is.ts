@@ -290,6 +290,40 @@ export const is: WebMessages = {
         fontDefault: '(sjálfgefið)',
         reset: 'Endurstilla',
       },
+      comparison: {
+        heading: 'Í samanburði',
+        lede: 'Valkostirnir sem móta daglega vinnu með Angular-íhlutasafni, hlið við hlið.',
+        rows: [
+          {
+            feature: 'Stílunarlíkan',
+            eagami: 'Sérsniðnir CSS-eiginleikar',
+            material: 'Sass og Material 3-tákn',
+            primeng: 'Hönnunartákn og þemaforstillingar',
+            spartan: 'Tailwind CSS, afritað í appið þitt',
+          },
+          {
+            feature: 'Innbyggðar þýðingar',
+            eagami: '15 tungumál, skiptanleg í keyrslu',
+            material: 'Þú leggur til þínar eigin',
+            primeng: 'Þú leggur til þínar eigin',
+            spartan: 'Þú leggur til þínar eigin',
+          },
+          {
+            feature: 'Krefst CSS-ramma',
+            eagami: 'Nei',
+            material: 'Nei',
+            primeng: 'Nei',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Háðir pakkar umfram Angular',
+            eagami: 'Engir',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK og PrimeUIX-pakkar',
+            spartan: 'Angular CDK, Tailwind CSS og hjálparpakkar',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Uppsetning | Eagami UI',

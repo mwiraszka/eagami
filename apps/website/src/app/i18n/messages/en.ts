@@ -288,6 +288,40 @@ export const en: WebMessages = {
         fontDefault: '(default)',
         reset: 'Reset',
       },
+      comparison: {
+        heading: 'How it compares',
+        lede: 'A side-by-side look at the choices that shape day-to-day work with an Angular component library.',
+        rows: [
+          {
+            feature: 'Styling model',
+            eagami: 'CSS custom properties',
+            material: 'Sass and Material 3 tokens',
+            primeng: 'Design tokens and theme presets',
+            spartan: 'Tailwind CSS, copied into your app',
+          },
+          {
+            feature: 'Built-in translations',
+            eagami: '15 languages, switchable at runtime',
+            material: 'Provide your own',
+            primeng: 'Provide your own',
+            spartan: 'Provide your own',
+          },
+          {
+            feature: 'Requires a CSS framework',
+            eagami: 'No',
+            material: 'No',
+            primeng: 'No',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Dependencies beyond Angular',
+            eagami: 'None',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK and PrimeUIX packages',
+            spartan: 'Angular CDK, Tailwind CSS, and utility packages',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Setup | Eagami UI',
