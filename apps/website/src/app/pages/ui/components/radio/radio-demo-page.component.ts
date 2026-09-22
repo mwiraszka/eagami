@@ -1,10 +1,17 @@
 import { RadioComponent, RadioGroupComponent, type RadioSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -12,7 +19,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface RadioKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -42,13 +54,19 @@ const API_SLUG = 'radio-group';
   ],
 })
 export class RadioDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.radio, UI_API[API_SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<RadioKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.radio) as RadioKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.radio,
+      this.knobDefaults,
+    ) as RadioKnobState,
   );
 
   protected readonly childMarkup = '<ea-radio\n  value="apple"\n  label="Apple" />';
@@ -86,7 +104,11 @@ export class RadioDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.radio) as RadioKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.radio,
+        this.knobDefaults,
+      ) as RadioKnobState,
     );
   }
 }

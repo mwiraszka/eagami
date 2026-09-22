@@ -14,7 +14,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface ProgressBarKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -44,11 +49,13 @@ const SLUG = 'progress-bar';
 })
 export class ProgressBarDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['progress-bar'], UI_API[SLUG]);
   protected readonly state = signal<ProgressBarKnobState>(
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS['progress-bar'],
+      this.knobDefaults,
     ) as ProgressBarKnobState,
   );
 
@@ -63,6 +70,7 @@ export class ProgressBarDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['progress-bar'],
+        this.knobDefaults,
       ) as ProgressBarKnobState,
     );
   }

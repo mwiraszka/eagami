@@ -11,7 +11,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface TreeKnobState {
   [key: string]: KnobValue;
@@ -32,9 +37,15 @@ export class TreeDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
+  protected readonly fallbackAriaLabel = this.knobDefaults['ariaLabel'];
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['tree'], UI_API[SLUG]);
   protected readonly state = signal<TreeKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS['tree']) as TreeKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['tree'],
+      this.knobDefaults,
+    ) as TreeKnobState,
   );
 
   protected readonly extraAttributes = ['[nodes]="nodes"'];
@@ -76,7 +87,11 @@ export class TreeDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS['tree']) as TreeKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS['tree'],
+        this.knobDefaults,
+      ) as TreeKnobState,
     );
   }
 }

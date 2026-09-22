@@ -51,13 +51,6 @@ interface MessageSegmentModel {
   strong: boolean;
 }
 
-const DEFAULT_SEGMENTS: readonly Omit<MessageSegmentModel, 'id'>[] = [
-  { text: 'Moved ', strong: false },
-  { text: 'Q3 roadmap', strong: true },
-  { text: ' to ', strong: false },
-  { text: 'Archived projects', strong: true },
-];
-
 @Component({
   selector: 'web-toast-demo-page',
   templateUrl: './toast-demo-page.component.html',
@@ -87,7 +80,7 @@ export class ToastDemoPageComponent implements OnDestroy {
       name: 'title',
       control: 'text',
       options: [],
-      default: 'Project updated',
+      default: this.messages().ui.component.demos.toast.title,
       demoOnly: true,
     },
     iconKnob(
@@ -172,7 +165,11 @@ export class ToastDemoPageComponent implements OnDestroy {
   protected addSegment(): void {
     this.segments.update(segments => [
       ...segments,
-      { id: this.nextId++, text: ' new segment', strong: false },
+      {
+        id: this.nextId++,
+        text: this.messages().ui.component.demos.toast.newSegment,
+        strong: false,
+      },
     ]);
   }
 
@@ -193,7 +190,13 @@ export class ToastDemoPageComponent implements OnDestroy {
   }
 
   private seedSegments(): MessageSegmentModel[] {
-    return DEFAULT_SEGMENTS.map(segment => ({ ...segment, id: this.nextId++ }));
+    const m = this.messages().ui.component.demos.toast;
+    return [
+      { text: m.movedSegment, strong: false },
+      { text: m.roadmapSegment, strong: true },
+      { text: m.toSegment, strong: false },
+      { text: m.archivedSegment, strong: true },
+    ].map(segment => ({ ...segment, id: this.nextId++ }));
   }
 
   private syncOutlet(): void {

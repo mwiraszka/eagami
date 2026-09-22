@@ -1,9 +1,16 @@
 import { TabComponent, TabsComponent, type TabsSize, type TabsVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -28,12 +35,6 @@ interface TabItem {
   content: string;
 }
 
-const TABS: readonly TabItem[] = [
-  { value: 'account', label: 'Account', content: 'Account settings content' },
-  { value: 'security', label: 'Security', content: 'Security settings content' },
-  { value: 'notifications', label: 'Notifications', content: 'Notification preferences' },
-];
-
 @Component({
   selector: 'web-tabs-demo-page',
   templateUrl: './tabs-demo-page.component.html',
@@ -46,16 +47,28 @@ const TABS: readonly TabItem[] = [
   ],
 })
 export class TabsDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.tabs, UI_API[SLUG]);
   protected readonly state = signal<TabsKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.tabs) as TabsKnobState,
   );
 
-  protected readonly tabs = TABS;
+  protected readonly tabs = computed<readonly TabItem[]>(() => {
+    const m = this.messages().ui.component.demos.tabs;
+    return [
+      { value: 'account', label: m.account, content: m.accountContent },
+      { value: 'security', label: m.security, content: m.securityContent },
+      {
+        value: 'notifications',
+        label: m.notifications,
+        content: m.notificationsContent,
+      },
+    ];
+  });
 
   protected readonly childMarkup = computed(() =>
-    this.tabs
+    this.tabs()
       .map(tab => {
         const attrBlock = `  value="${tab.value}"\n  label="${tab.label}">`;
         return `<ea-tab\n${attrBlock}\n  ${tab.content}\n</ea-tab>`;

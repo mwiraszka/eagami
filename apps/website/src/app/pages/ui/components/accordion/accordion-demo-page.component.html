@@ -31,23 +31,23 @@
         <div class="demo-item-row">
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Heading"
+            [placeholder]="messages().ui.component.common.heading"
             [value]="item.heading"
             (valueChange)="updateItem(item.id, { heading: $event })" />
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Content"
+            [placeholder]="messages().ui.component.common.content"
             [value]="item.content"
             (valueChange)="updateItem(item.id, { content: $event })" />
           <ea-checkbox
-            label="Disabled"
+            [label]="messages().ui.component.common.disabled"
             [checked]="item.disabled"
             (changed)="updateItem(item.id, { disabled: $event })" />
           <ea-button
             variant="ghost"
             size="sm"
-            eaTooltip="Delete item"
-            aria-label="Delete item"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
             (clicked)="removeItem(item.id)">
             <ea-icon-trash class="demo-item-row__delete-icon" />
           </ea-button>
@@ -57,8 +57,8 @@
         class="demo-items-editor__add"
         variant="secondary"
         size="sm"
-        eaTooltip="Add item"
-        aria-label="Add item"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
         (clicked)="addItem()">
         <ea-icon-plus />
       </ea-button>

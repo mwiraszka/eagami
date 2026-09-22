@@ -11,7 +11,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface SwitchKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -39,9 +44,14 @@ const SLUG = 'switch';
 })
 export class SwitchDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.switch, UI_API[SLUG]);
   protected readonly state = signal<SwitchKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.switch) as SwitchKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.switch,
+      this.knobDefaults,
+    ) as SwitchKnobState,
   );
 
   protected readonly control = new FormControl(null, {
@@ -75,7 +85,11 @@ export class SwitchDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.switch) as SwitchKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.switch,
+        this.knobDefaults,
+      ) as SwitchKnobState,
     );
   }
 }

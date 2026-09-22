@@ -16,7 +16,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface DatePickerKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -48,12 +53,17 @@ const SLUG = 'date-picker';
 })
 export class DatePickerDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS['date-picker'], UI_API[SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<DatePickerKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS['date-picker']) as DatePickerKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['date-picker'],
+      this.knobDefaults,
+    ) as DatePickerKnobState,
   );
 
   protected readonly control = new FormControl(null, {
@@ -90,6 +100,7 @@ export class DatePickerDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['date-picker'],
+        this.knobDefaults,
       ) as DatePickerKnobState,
     );
   }

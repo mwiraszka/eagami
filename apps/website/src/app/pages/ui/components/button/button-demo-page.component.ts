@@ -29,6 +29,7 @@ import {
   type PlaygroundKnob,
   buildKnobs,
   initialKnobState,
+  injectKnobDefaults,
 } from '../_playground/knob';
 
 interface ButtonKnobState {
@@ -74,6 +75,7 @@ export class ButtonDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     LABEL_KNOB,
     ...buildKnobs(PLAYGROUND_KNOBS.button, UI_API[SLUG]),
@@ -91,7 +93,11 @@ export class ButtonDemoPageComponent {
     ]),
   ];
   protected readonly state = signal<ButtonKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.button) as ButtonKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.button,
+      this.knobDefaults,
+    ) as ButtonKnobState,
   );
   protected readonly iconComponent = computed(() =>
     iconComponentForSlug(this.state().icon),
@@ -115,7 +121,11 @@ export class ButtonDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.button) as ButtonKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.button,
+        this.knobDefaults,
+      ) as ButtonKnobState,
     );
   }
 }

@@ -13,9 +13,10 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -44,37 +45,6 @@ interface TimelineKnobState {
 
 const SLUG = 'timeline';
 
-const DEFAULT_ITEMS: readonly Omit<TimelineItemModel, 'id'>[] = [
-  {
-    heading: 'Order placed',
-    time: '09:24',
-    description: 'Payment confirmed and receipt sent.',
-    color: 'success',
-    current: false,
-  },
-  {
-    heading: 'Packed',
-    time: '11:02',
-    description: 'Items picked and boxed at the warehouse.',
-    color: 'default',
-    current: false,
-  },
-  {
-    heading: 'Out for delivery',
-    time: '14:47',
-    description: 'The courier is on the way.',
-    color: 'default',
-    current: true,
-  },
-  {
-    heading: 'Delivered',
-    time: '',
-    description: 'Estimated by end of day.',
-    color: 'default',
-    current: false,
-  },
-];
-
 @Component({
   selector: 'web-timeline-demo-page',
   templateUrl: './timeline-demo-page.component.html',
@@ -92,6 +62,7 @@ const DEFAULT_ITEMS: readonly Omit<TimelineItemModel, 'id'>[] = [
   ],
 })
 export class TimelineDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['timeline'], UI_API[SLUG]);
   protected readonly state = signal<TimelineKnobState>(
@@ -120,9 +91,9 @@ export class TimelineDemoPageComponent {
       ...items,
       {
         id: this.nextId++,
-        heading: 'New event',
+        heading: this.messages().ui.component.demos.timeline.newEvent,
         time: '',
-        description: 'New description',
+        description: this.messages().ui.component.demos.timeline.newEventDescription,
         color: 'default',
         current: false,
       },
@@ -147,6 +118,36 @@ export class TimelineDemoPageComponent {
   }
 
   private seedItems(): TimelineItemModel[] {
-    return DEFAULT_ITEMS.map(item => ({ ...item, id: this.nextId++ }));
+    const m = this.messages().ui.component.demos.timeline;
+    return [
+      {
+        heading: m.orderPlaced,
+        time: '09:24',
+        description: m.orderPlacedDescription,
+        color: 'success' as const,
+        current: false,
+      },
+      {
+        heading: m.packed,
+        time: '11:02',
+        description: m.packedDescription,
+        color: 'default' as const,
+        current: false,
+      },
+      {
+        heading: m.outForDelivery,
+        time: '14:47',
+        description: m.outForDeliveryDescription,
+        color: 'default' as const,
+        current: true,
+      },
+      {
+        heading: m.delivered,
+        time: '',
+        description: m.deliveredDescription,
+        color: 'default' as const,
+        current: false,
+      },
+    ].map(item => ({ ...item, id: this.nextId++ }));
   }
 }

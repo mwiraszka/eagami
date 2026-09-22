@@ -47,18 +47,18 @@
         <div class="demo-item-row">
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Segment text"
+            [placeholder]="messages().ui.component.common.segmentText"
             [value]="segment.text"
             (valueChange)="updateSegment(segment.id, { text: $event })" />
           <ea-checkbox
-            label="Emphasized"
+            [label]="messages().ui.component.common.emphasized"
             [checked]="segment.strong"
             (changed)="updateSegment(segment.id, { strong: $event })" />
           <ea-button
             variant="ghost"
             size="sm"
-            eaTooltip="Delete segment"
-            aria-label="Delete segment"
+            [eaTooltip]="messages().ui.component.common.deleteSegment"
+            [aria-label]="messages().ui.component.common.deleteSegment"
             (clicked)="removeSegment(segment.id)">
             <ea-icon-trash class="demo-item-row__delete-icon" />
           </ea-button>
@@ -68,8 +68,8 @@
         class="demo-items-editor__add"
         variant="secondary"
         size="sm"
-        eaTooltip="Add segment"
-        aria-label="Add segment"
+        [eaTooltip]="messages().ui.component.common.addSegment"
+        [aria-label]="messages().ui.component.common.addSegment"
         (clicked)="addSegment()">
         <ea-icon-plus />
       </ea-button>

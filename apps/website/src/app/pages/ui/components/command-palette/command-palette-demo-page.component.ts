@@ -28,7 +28,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 import { quoted } from '../_playground/snippet';
 
 interface CommandModel {
@@ -67,47 +72,6 @@ function itemLiteral(item: CommandPaletteItem): string {
   return `{ ${parts.join(', ')} }`;
 }
 
-const DEFAULT_COMMANDS: readonly Omit<CommandModel, 'id'>[] = [
-  {
-    label: 'New file',
-    description: '',
-    shortcut: 'Ctrl+N',
-    group: 'File',
-    disabled: false,
-  },
-  {
-    label: 'Open file',
-    description: '',
-    shortcut: 'Ctrl+O',
-    group: 'File',
-    disabled: false,
-  },
-  { label: 'Save', description: '', shortcut: 'Ctrl+S', group: 'File', disabled: false },
-  { label: 'Find', description: '', shortcut: 'Ctrl+F', group: 'Edit', disabled: false },
-  {
-    label: 'Replace',
-    description: '',
-    shortcut: 'Ctrl+H',
-    group: 'Edit',
-    disabled: false,
-  },
-  { label: 'Undo', description: '', shortcut: 'Ctrl+Z', group: 'Edit', disabled: false },
-  {
-    label: 'Toggle theme',
-    description: 'Switch between light and dark mode',
-    shortcut: 'Ctrl+T',
-    group: '',
-    disabled: false,
-  },
-  {
-    label: 'Lock workspace',
-    description: 'Currently disabled (feature in beta)',
-    shortcut: '',
-    group: '',
-    disabled: true,
-  },
-];
-
 @Component({
   selector: 'web-command-palette-demo-page',
   templateUrl: './command-palette-demo-page.component.html',
@@ -137,6 +101,7 @@ export class CommandPaletteDemoPageComponent {
     '[(open)]="open"',
   ]);
 
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(
     PLAYGROUND_KNOBS['command-palette'],
     UI_API[SLUG],
@@ -145,6 +110,7 @@ export class CommandPaletteDemoPageComponent {
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS['command-palette'],
+      this.knobDefaults,
     ) as CommandPaletteKnobState,
   );
 
@@ -187,6 +153,7 @@ export class CommandPaletteDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['command-palette'],
+        this.knobDefaults,
       ) as CommandPaletteKnobState,
     );
     this.nextId = 1;
@@ -198,7 +165,7 @@ export class CommandPaletteDemoPageComponent {
       ...items,
       {
         id: this.nextId++,
-        label: 'New command',
+        label: this.messages().ui.component.demos.commandPalette.newCommand,
         description: '',
         shortcut: '',
         group: '',
@@ -218,6 +185,27 @@ export class CommandPaletteDemoPageComponent {
   }
 
   private seedItems(): CommandModel[] {
-    return DEFAULT_COMMANDS.map(item => ({ ...item, id: this.nextId++ }));
+    const m = this.messages().ui.component.demos.commandPalette;
+    return [
+      { label: m.newFile, description: '', shortcut: 'Ctrl+N', group: m.fileGroup },
+      { label: m.openFile, description: '', shortcut: 'Ctrl+O', group: m.fileGroup },
+      { label: m.save, description: '', shortcut: 'Ctrl+S', group: m.fileGroup },
+      { label: m.find, description: '', shortcut: 'Ctrl+F', group: m.editGroup },
+      { label: m.replace, description: '', shortcut: 'Ctrl+H', group: m.editGroup },
+      { label: m.undo, description: '', shortcut: 'Ctrl+Z', group: m.editGroup },
+      {
+        label: m.toggleTheme,
+        description: m.toggleThemeDescription,
+        shortcut: 'Ctrl+T',
+        group: '',
+      },
+      {
+        label: m.lockWorkspace,
+        description: m.lockWorkspaceDescription,
+        shortcut: '',
+        group: '',
+        disabled: true,
+      },
+    ].map(item => ({ disabled: false, ...item, id: this.nextId++ }));
   }
 }

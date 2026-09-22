@@ -12,7 +12,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface FileUploaderKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -46,12 +51,17 @@ const SLUG = 'file-uploader';
 })
 export class FileUploaderDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<FileUploaderKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as FileUploaderKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS[SLUG],
+      this.knobDefaults,
+    ) as FileUploaderKnobState,
   );
 
   protected readonly control = new FormControl(null, {
@@ -87,7 +97,11 @@ export class FileUploaderDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as FileUploaderKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS[SLUG],
+        this.knobDefaults,
+      ) as FileUploaderKnobState,
     );
   }
 }

@@ -10,7 +10,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 import { textKnob } from '../_playground/text-knob';
 
 interface TagKnobState {
@@ -39,12 +44,13 @@ const SLUG = 'tag';
 })
 export class TagDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     textKnob('Eagami'),
     ...buildKnobs(PLAYGROUND_KNOBS.tag, UI_API[SLUG]),
   ];
   protected readonly state = signal<TagKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.tag) as TagKnobState,
+    initialKnobState(this.knobs, PLAYGROUND_KNOBS.tag, this.knobDefaults) as TagKnobState,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
@@ -54,6 +60,12 @@ export class TagDemoPageComponent {
   }
 
   protected reset(): void {
-    this.state.set(initialKnobState(this.knobs, PLAYGROUND_KNOBS.tag) as TagKnobState);
+    this.state.set(
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.tag,
+        this.knobDefaults,
+      ) as TagKnobState,
+    );
   }
 }
