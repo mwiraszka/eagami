@@ -141,8 +141,9 @@
           ) {
             <tr
               class="ea-data-table__row"
+              [class.ea-data-table__row--inert]="isInert(row)"
               [attr.role]="navigable() ? 'row' : null"
-              [attr.tabindex]="rowTabindex()"
+              [attr.tabindex]="rowTabindex(row)"
               (click)="onRowActivate(row, $event)"
               (keydown.enter)="onRowActivate(row, $event)"
               (keydown.space)="onRowActivate(row, $event)">

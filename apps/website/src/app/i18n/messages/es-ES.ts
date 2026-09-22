@@ -2145,7 +2145,7 @@ export const esES: WebMessages = {
             nowrap:
               'Mantiene cada celda en una sola línea, de modo que una ventana estrecha desplaza la tabla lateralmente en lugar de ajustar su texto.',
             rowHref:
-              'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate.',
+              'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate. Una fila para la que devuelve null queda inerte, sin enlace, resaltado al pasar el cursor, foco ni activación.',
             sizingRows:
               'Filas con el contenido más ancho de cada columna, maquetadas pero nunca mostradas, para que los anchos de columna no cambien entre páginas ni mientras cargan los datos.',
             size: 'Tamaño visual de la tabla; los rellenos de densidad y los iconos escalan con él.',

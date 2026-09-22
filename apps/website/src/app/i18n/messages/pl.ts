@@ -2090,7 +2090,7 @@ export const pl: WebMessages = {
             nowrap:
               'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
             rowHref:
-              'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate.',
+              'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate. Wiersz, dla którego zwraca null, pozostaje bierny: bez łącza, podświetlenia po najechaniu, fokusu ani aktywacji.',
             sizingRows:
               'Wiersze z najszerszą zawartością każdej kolumny, układane, lecz nigdy niewyświetlane, dzięki czemu szerokości kolumn nie zmieniają się między stronami ani podczas ładowania danych.',
             size: 'Wizualny rozmiar tabeli; wypełnienia gęstości i ikony skalują się wraz z nim.',

@@ -2125,7 +2125,7 @@ export const frFR: WebMessages = {
             nowrap:
               'Garde chaque cellule sur une seule ligne, afin qu’une fenêtre étroite fasse défiler le tableau latéralement au lieu de renvoyer son texte à la ligne.',
             rowHref:
-              'Donne à chaque ligne une cible de lien, portée par un vrai lien dans chaque cellule pour que le navigateur l’affiche et puisse l’ouvrir, tandis qu’un clic simple déclenche toujours rowActivate.',
+              'Donne à chaque ligne une cible de lien, portée par un vrai lien dans chaque cellule pour que le navigateur l’affiche et puisse l’ouvrir, tandis qu’un clic simple déclenche toujours rowActivate. Une ligne pour laquelle il renvoie null reste inerte, sans lien, surbrillance au survol, focus ni activation.',
             sizingRows:
               'Lignes contenant le contenu le plus large de chaque colonne, mises en page mais jamais affichées, afin que les largeurs de colonne restent stables d’une page à l’autre et pendant le chargement des données.',
             size: 'Taille visuelle du tableau ; les marges de densité et les icônes évoluent avec elle.',

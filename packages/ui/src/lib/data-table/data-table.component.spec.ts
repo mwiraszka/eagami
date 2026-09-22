@@ -175,6 +175,21 @@ describe('DataTableComponent', () => {
       expect(getRowLinks(getBodyRows()[2])).toHaveLength(0);
     });
 
+    it('leaves a row without a target inert', () => {
+      const activated: TestRow[] = [];
+      component.rowActivate.subscribe(row => activated.push(row));
+      const [linked, , inert] = getBodyRows();
+
+      inert.click();
+      inert.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+
+      expect(inert.classList.contains('ea-data-table__row--inert')).toBe(true);
+      expect(inert.getAttribute('tabindex')).toBeNull();
+      expect(linked.classList.contains('ea-data-table__row--inert')).toBe(false);
+      expect(linked.getAttribute('tabindex')).toBe('0');
+      expect(activated).toEqual([]);
+    });
+
     it('routes a plain click through rowActivate instead of the browser', () => {
       const activated: TestRow[] = [];
       component.rowActivate.subscribe(row => activated.push(row));

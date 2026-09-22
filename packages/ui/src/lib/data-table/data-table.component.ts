@@ -119,6 +119,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
    * Gives a row its link target, or `null` for none. Every cell of the row then holds
    * a real link, so the browser shows the target on hover and a modified click opens
    * it elsewhere, while a plain click still emits `rowActivate` for the app to route.
+   * A row given `null` is inert: no link, hover highlight, focus or activation.
    */
   readonly rowHref = input<((row: T) => string | null) | undefined>(undefined);
 
@@ -261,17 +262,23 @@ export class DataTableComponent<T = Record<string, unknown>> {
     return active.row === row && active.col === colIndex ? 0 : -1;
   }
 
+  // A row that `rowHref` gives no target leads nowhere, so it is left inert
+  isInert(row: T): boolean {
+    const href = this.rowHref();
+    return !!href && href(row) === null;
+  }
+
   // Body rows are keyboard-focusable for activation only in clickable mode, and
   // only when grid navigation (which owns cell-level focus) is off.
-  rowTabindex(): number | null {
-    return this.clickable() && !this.navigable() ? 0 : null;
+  rowTabindex(row: T): number | null {
+    return this.clickable() && !this.navigable() && !this.isInert(row) ? 0 : null;
   }
 
   // Suppresses the default of Enter/Space and of a row link's plain click, which
   // the app routes itself. A modified click on a row link is the browser's to open
   // elsewhere. In navigable mode the keydown bubbles up from the focused cell.
   onRowActivate(row: T, event?: Event): void {
-    if (!this.clickable()) {
+    if (!this.clickable() || this.isInert(row)) {
       return;
     }
     if (event instanceof MouseEvent && isModifiedClick(event)) {

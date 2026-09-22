@@ -2131,7 +2131,7 @@ export const nl: WebMessages = {
             nowrap:
               'Houdt elke cel op één regel, zodat een smal venster de tabel zijwaarts scrolt in plaats van de tekst af te breken.',
             rowHref:
-              'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt.',
+              'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt. Een rij waarvoor het null teruggeeft blijft inert, zonder link, hovermarkering, focus of activering.',
             sizingRows:
               "Rijen met de breedste inhoud van elke kolom, wel opgemaakt maar nooit getoond, zodat de kolombreedtes gelijk blijven tussen pagina's en tijdens het laden van gegevens.",
             size: 'Visuele grootte van de tabel; dichtheidsopvulling en pictogrammen schalen mee.',

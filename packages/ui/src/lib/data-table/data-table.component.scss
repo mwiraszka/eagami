@@ -269,7 +269,7 @@
     );
   }
 
-  &--hoverable &__body &__row:not(&__row--empty):hover {
+  &--hoverable &__body &__row:not(&__row--empty):not(&__row--inert):hover {
     background-color: var(
       --ea-data-table-row-hover-background-color,
       var(--color-state-hover)
@@ -286,7 +286,7 @@
     }
   }
 
-  &--clickable &__body &__row:not(&__row--empty) {
+  &--clickable &__body &__row:not(&__row--empty):not(&__row--inert) {
     cursor: var(--ea-data-table-row-cursor, pointer);
   }
 

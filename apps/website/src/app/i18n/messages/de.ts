@@ -2145,7 +2145,7 @@ export const de: WebMessages = {
             nowrap:
               'Hält jede Zelle auf einer Zeile, sodass ein schmaler Viewport die Tabelle seitwärts scrollt, statt ihren Text umzubrechen.',
             rowHref:
-              'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst.',
+              'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst. Eine Zeile, für die es null liefert, bleibt inert: ohne Link, Hover-Hervorhebung, Fokus oder Aktivierung.',
             sizingRows:
               'Zeilen mit dem breitesten Inhalt jeder Spalte, die zwar gesetzt, aber nie angezeigt werden, damit die Spaltenbreiten über Seiten hinweg und während des Ladens gleich bleiben.',
             size: 'Visuelle Größe der Tabelle; Dichte-Innenabstände und Symbole skalieren mit ihr.',

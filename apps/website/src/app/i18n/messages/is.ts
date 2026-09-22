@@ -2079,7 +2079,7 @@ export const is: WebMessages = {
             nowrap:
               'Heldur hverjum reit á einni línu, svo þröngur gluggi skrunar töflunni til hliðar í stað þess að brjóta textann.',
             rowHref:
-              'Gefur hverri röð tengilsmark, sem raunverulegur tengill í hverjum reit svo vafrinn sýni það og geti opnað það, meðan venjulegur smellur kveikir áfram rowActivate.',
+              'Gefur hverri röð tengilsmark, sem raunverulegur tengill í hverjum reit svo vafrinn sýni það og geti opnað það, meðan venjulegur smellur kveikir áfram rowActivate. Röð sem það skilar null fyrir er óvirk: enginn tengill, engin auðkenning undir bendli, enginn fókus og engin virkjun.',
             sizingRows:
               'Raðir með breiðasta efni hvers dálks, sem eru settar upp en aldrei sýndar, svo dálkabreiddir haldist óbreyttar milli síðna og meðan gögn hlaðast.',
             size: 'Sjónræn stærð töflunnar; þéttleikainnfylling og tákn kvarðast með henni.',

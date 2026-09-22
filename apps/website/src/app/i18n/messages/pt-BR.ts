@@ -2107,7 +2107,7 @@ export const ptBR: WebMessages = {
             nowrap:
               'Mantém cada célula em uma única linha, de modo que uma janela estreita rola a tabela lateralmente em vez de quebrar o texto.',
             rowHref:
-              'Dá a cada linha um destino de link, presente como link real em cada célula para que o navegador o mostre e possa abri-lo, enquanto um clique simples continua emitindo rowActivate.',
+              'Dá a cada linha um destino de link, presente como link real em cada célula para que o navegador o mostre e possa abri-lo, enquanto um clique simples continua emitindo rowActivate. Uma linha para a qual retorna null fica inerte, sem link, destaque ao passar o mouse, foco ou ativação.',
             sizingRows:
               'Linhas com o conteúdo mais largo de cada coluna, diagramadas mas nunca exibidas, para que as larguras das colunas não mudem entre páginas nem enquanto os dados carregam.',
             size: 'Tamanho visual da tabela; os preenchimentos de densidade e os ícones escalam com ele.',
