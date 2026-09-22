@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.48.0] - 2026-09-22
+
+### Added
+
+- Add a `showAllOption` input to the paginator, offering an "All" page size that puts every item on one page and emits the exported `PAGE_SIZE_ALL` as the page size.
+- Add a `pageSizeLabel` input to the paginator, labelling its page-size selector by the localized "Rows", "Items", "Results", "Products", "Records", "Entries", "Posts" or "Articles" per page.
+
 ## [5.47.1] - 2026-09-22
 
 ### Fixed
@@ -1630,6 +1637,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.48.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.1...ui-v5.48.0
 [5.47.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.0...ui-v5.47.1
 [5.47.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.46.0...ui-v5.47.0
 [5.46.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.45.1...ui-v5.46.0
