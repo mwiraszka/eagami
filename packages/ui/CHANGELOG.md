@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.49.1] - 2026-09-23
+
+### Fixed
+
+- Stop a card from acting as a scroll container by clipping its content rather than hiding it, so an effect inside it that follows the page's scroll, such as a data table heading pinned by a scroll-driven animation, keeps measuring against the page.
+
 ## [5.49.0] - 2026-09-22
 
 ### Added
@@ -1648,6 +1654,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.49.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.49.0...ui-v5.49.1
 [5.49.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.48.0...ui-v5.49.0
 [5.48.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.1...ui-v5.48.0
 [5.47.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.0...ui-v5.47.1
