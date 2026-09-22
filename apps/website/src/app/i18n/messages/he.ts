@@ -628,6 +628,25 @@ export const he: WebMessages = {
         warningLabel: 'אזהרה',
         errorLabel: 'שגיאה',
         infoLabel: 'מידע',
+        heading: 'כותרת',
+        content: 'תוכן',
+        time: 'שעה',
+        current: 'נוכחי',
+        emphasized: 'מודגש',
+        shortcut: 'קיצור דרך',
+        group: 'קבוצה',
+        optionLabel: 'תווית האפשרות',
+        segmentText: 'טקסט המקטע',
+        addItem: 'הוספת פריט',
+        deleteItem: 'מחיקת הפריט',
+        addOption: 'הוספת אפשרות',
+        deleteOption: 'מחיקת האפשרות',
+        addCommand: 'הוספת פקודה',
+        deleteCommand: 'מחיקת הפקודה',
+        addSegment: 'הוספת מקטע',
+        deleteSegment: 'מחיקת המקטע',
+        description: 'תיאור',
+        label: 'תווית',
       },
       demos: {
         accordion: {
@@ -646,6 +665,8 @@ export const he: WebMessages = {
           sectionTwoBody: 'תוכן עבור קטע שני.',
           disabledSectionLabel: 'קטע מושבת',
           disabledSectionBody: 'תוכן זה אינו נגיש.',
+          newSectionHeading: 'מקטע חדש',
+          newSectionContent: 'תוכן חדש',
         },
         alert: {
           defaultText: 'זוהי התראת ברירת מחדל',
@@ -656,6 +677,7 @@ export const he: WebMessages = {
           dismissibleText: 'התראה זו ניתנת לסגירה',
           tooltipSuppressed:
             'חלוניות עזר מושבתות במכשירי מגע כדי להימנע מהתנהגות ריחוף דביקה. צפו בקטע זה במכשיר עם עכבר כדי לראות את ההדגמות בפעולה.',
+          message: 'זוהי הודעת התראה.',
         },
         autocomplete: {
           startTyping: 'התחילו להקליד…',
@@ -664,6 +686,13 @@ export const he: WebMessages = {
           breedPlaceholder: 'גזע כלב…',
           minMaxLabel: 'מינ 2 תווים, מקס 3 תוצאות',
           minMaxPlaceholder: 'הקלידו לפחות 2 תווים…',
+          goldenRetriever: 'גולדן רטריבר',
+          germanShepherd: 'רועה גרמני',
+          beagle: 'ביגל',
+          poodle: 'פודל',
+          boxer: 'בוקסר',
+          dachshund: 'תחש',
+          newBreed: 'גזע חדש',
         },
         avatarEditor: {
           result: 'תוצאה:',
@@ -691,6 +720,8 @@ export const he: WebMessages = {
           filledBody: 'כרטיס עם רקע עדין.',
           cardTitleHeader: 'כותרת כרטיס',
           cardWithFooterBody: 'לכרטיס זה יש כותרת, גוף וכותרת תחתונה עם פעולות.',
+          bodyText: 'זהו תוכן גוף הכרטיס. הוא יכול להכיל כל טקסט או רכיב.',
+          footer: 'כותרת תחתונה',
         },
         checkbox: {
           acceptTermsAndConditions: 'אני מקבל את התנאים וההגבלות',
@@ -939,6 +970,12 @@ export const he: WebMessages = {
         toast: {
           message: variant => `זוהי הודעת toast מסוג ${variant}`,
           segmentsLabel: 'מקטעים',
+          movedSegment: 'הועבר: ',
+          roadmapSegment: 'מפת הדרכים לרבעון השלישי',
+          toSegment: ' אל ',
+          archivedSegment: 'פרויקטים בארכיון',
+          title: 'הפרויקט עודכן',
+          newSegment: ' מקטע חדש',
         },
         tooltip: {
           triggerLabel: '(רחפו מעליי)',
@@ -973,9 +1010,42 @@ export const he: WebMessages = {
           hint: 'הקישו Ctrl + K (או Cmd + K) כדי לפתוח את לוח הפקודות בכל מקום בדף זה.',
           openButton: 'פתח לוח פקודות',
           executedToast: label => `בוצע: ${label}`,
+          newFile: 'קובץ חדש',
+          openFile: 'פתיחת קובץ',
+          save: 'שמירה',
+          find: 'חיפוש',
+          replace: 'החלפה',
+          undo: 'ביטול',
+          toggleTheme: 'החלפת ערכת נושא',
+          toggleThemeDescription: 'מעבר בין מצב בהיר לכהה',
+          lockWorkspace: 'נעילת סביבת העבודה',
+          lockWorkspaceDescription: 'מושבת כעת (תכונה בגרסת בטא)',
+          fileGroup: 'קובץ',
+          editGroup: 'עריכה',
+          newCommand: 'פקודה חדשה',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'האווטאר עודכן',
+        },
+        stepper: {
+          accountLabel: 'חשבון',
+          accountContent: 'שלב 1: פרטי החשבון.',
+          profileLabel: 'פרופיל',
+          profileContent: 'שלב 2: פרטי הפרופיל.',
+          reviewLabel: 'סקירה',
+          reviewContent: 'שלב 3: סקירה ושליחה.',
+        },
+        timeline: {
+          orderPlaced: 'ההזמנה בוצעה',
+          orderPlacedDescription: 'התשלום אושר והקבלה נשלחה.',
+          packed: 'נארז',
+          packedDescription: 'הפריטים נאספו ונארזו במחסן.',
+          outForDelivery: 'יצא למשלוח',
+          outForDeliveryDescription: 'השליח בדרך.',
+          delivered: 'נמסר',
+          deliveredDescription: 'צפוי עד סוף היום.',
+          newEvent: 'אירוע חדש',
+          newEventDescription: 'תיאור חדש',
         },
       },
       playground: {
@@ -2141,6 +2211,115 @@ export const he: WebMessages = {
             width: 'הגדרת רוחב מוגדרת מראש לפאנל הדו-שיח.',
             closed: 'נורה כשהדו-שיח נסגר, ללא קשר אם נסגר על ידי המשתמש או תכנותית.',
             opened: 'נורה ברגע שהדו-שיח הוצג באמצעות showModal().',
+          },
+        },
+        direction: 'כיוון',
+        knobDefaults: {
+          autocomplete: {
+            label: 'גזע כלב',
+            placeholder: 'התחילו להקליד…',
+            firstGroupLabel: 'בשימוש לאחרונה',
+            secondGroupLabel: 'כל השאר',
+          },
+          avatar: {
+            alt: 'תמונת משתמש',
+          },
+          button: {
+            label: 'לחצו עליי',
+          },
+          checkbox: {
+            label: 'אני מקבל את התנאים וההגבלות',
+          },
+          'code-input': {
+            label: 'קוד אימות',
+          },
+          'color-picker': {
+            label: 'צבע',
+            placeholder: 'בחרו צבע…',
+          },
+          'command-palette': {
+            placeholder: 'הקלידו פקודה או חפשו…',
+            emptyMessage: 'אין פקודות תואמות',
+          },
+          'date-picker': {
+            label: 'תאריך הפגישה',
+          },
+          divider: {
+            label: 'או',
+          },
+          dropdown: {
+            label: 'פרי',
+            placeholder: 'בחרו פרי…',
+            firstGroupLabel: 'בשימוש לאחרונה',
+            secondGroupLabel: 'כל השאר',
+          },
+          'empty-state': {
+            title: 'אין פריטים עדיין',
+            description: 'התחילו על ידי יצירת הפריט הראשון שלכם.',
+          },
+          'file-uploader': {
+            label: 'קבצים מצורפים',
+          },
+          'form-field': {
+            label: 'כתובת אימייל',
+            hint: 'נשתמש בה רק כדי ליצור איתך קשר',
+          },
+          input: {
+            label: 'תווית',
+            placeholder: 'הזינו טקסט…',
+          },
+          menu: {
+            ariaLabel: 'תפריט פעולות',
+          },
+          'multi-select': {
+            label: 'פירות',
+            placeholder: 'בחרו…',
+            firstGroupLabel: 'בשימוש לאחרונה',
+            secondGroupLabel: 'כל השאר',
+          },
+          'number-input': {
+            label: 'ערך',
+          },
+          'progress-bar': {
+            label: 'מעלה קבצים',
+          },
+          radio: {
+            label: 'פרי',
+          },
+          'range-slider': {
+            label: 'טווח מחירים',
+          },
+          rating: {
+            label: 'דרגו את החוויה שלכם',
+          },
+          segmented: {
+            label: 'הצגה',
+          },
+          slider: {
+            label: 'עוצמת קול',
+          },
+          spinner: {
+            label: 'טעינה',
+          },
+          switch: {
+            label: 'החליפו אותי',
+          },
+          tag: {
+            removeLabel: 'הסרת התגית',
+          },
+          textarea: {
+            label: 'הודעה',
+            placeholder: 'הזינו את ההודעה שלכם…',
+          },
+          'time-picker': {
+            label: 'שעה',
+            placeholder: 'בחרו שעה…',
+          },
+          tooltip: {
+            eaTooltip: 'הבועיות מוסיפות הקשר בעת ריחוף או מיקוד',
+          },
+          tree: {
+            ariaLabel: 'עץ קבצים',
           },
         },
       },

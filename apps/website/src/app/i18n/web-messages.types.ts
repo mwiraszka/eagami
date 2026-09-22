@@ -456,6 +456,25 @@ export interface WebMessages {
         warningLabel: string;
         errorLabel: string;
         infoLabel: string;
+        heading: string;
+        content: string;
+        description: string;
+        time: string;
+        current: string;
+        emphasized: string;
+        label: string;
+        shortcut: string;
+        group: string;
+        optionLabel: string;
+        segmentText: string;
+        addItem: string;
+        deleteItem: string;
+        addOption: string;
+        deleteOption: string;
+        addCommand: string;
+        deleteCommand: string;
+        addSegment: string;
+        deleteSegment: string;
       };
       demos: {
         accordion: {
@@ -471,6 +490,8 @@ export interface WebMessages {
           sectionTwoBody: string;
           disabledSectionLabel: string;
           disabledSectionBody: string;
+          newSectionHeading: string;
+          newSectionContent: string;
         };
         alert: {
           defaultText: string;
@@ -480,6 +501,7 @@ export interface WebMessages {
           infoText: string;
           dismissibleText: string;
           tooltipSuppressed: string;
+          message: string;
         };
         autocomplete: {
           startTyping: string;
@@ -488,6 +510,13 @@ export interface WebMessages {
           breedPlaceholder: string;
           minMaxLabel: string;
           minMaxPlaceholder: string;
+          goldenRetriever: string;
+          germanShepherd: string;
+          beagle: string;
+          poodle: string;
+          boxer: string;
+          dachshund: string;
+          newBreed: string;
         };
         avatarEditor: {
           result: string;
@@ -515,6 +544,8 @@ export interface WebMessages {
           filledBody: string;
           cardTitleHeader: string;
           cardWithFooterBody: string;
+          bodyText: string;
+          footer: string;
         };
         checkbox: {
           acceptTermsAndConditions: string;
@@ -761,6 +792,12 @@ export interface WebMessages {
         toast: {
           message: (variant: string) => string;
           segmentsLabel: string;
+          movedSegment: string;
+          roadmapSegment: string;
+          toSegment: string;
+          archivedSegment: string;
+          title: string;
+          newSegment: string;
         };
         tooltip: {
           triggerLabel: string;
@@ -790,10 +827,43 @@ export interface WebMessages {
           detail: (n: number) => string;
           scrollPosition: (first: number, total: number) => string;
         };
+        stepper: {
+          accountLabel: string;
+          accountContent: string;
+          profileLabel: string;
+          profileContent: string;
+          reviewLabel: string;
+          reviewContent: string;
+        };
+        timeline: {
+          orderPlaced: string;
+          orderPlacedDescription: string;
+          packed: string;
+          packedDescription: string;
+          outForDelivery: string;
+          outForDeliveryDescription: string;
+          delivered: string;
+          deliveredDescription: string;
+          newEvent: string;
+          newEventDescription: string;
+        };
         commandPalette: {
           hint: string;
           openButton: string;
           executedToast: (label: string) => string;
+          newFile: string;
+          openFile: string;
+          save: string;
+          find: string;
+          replace: string;
+          undo: string;
+          toggleTheme: string;
+          toggleThemeDescription: string;
+          lockWorkspace: string;
+          lockWorkspaceDescription: string;
+          fileGroup: string;
+          editGroup: string;
+          newCommand: string;
         };
         avatarEditorActions: {
           avatarUpdatedToast: string;
@@ -820,6 +890,9 @@ export interface WebMessages {
         knobLabels: { readonly [slug: string]: { readonly [prop: string]: string } };
         knobNotes: { readonly [slug: string]: { readonly [prop: string]: string } };
         descriptions: { readonly [slug: string]: { readonly [member: string]: string } };
+        direction: string;
+        /** Localized sample values for a component's playground knobs, keyed by slug then knob name. */
+        knobDefaults: { readonly [slug: string]: { readonly [knob: string]: string } };
       };
       sharedOptions: {
         fruitOptions: ReadonlyArray<{ value: string; label: string }>;

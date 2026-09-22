@@ -643,6 +643,25 @@ export const pl: WebMessages = {
         warningLabel: 'Ostrzeżenie',
         errorLabel: 'Błąd',
         infoLabel: 'Informacja',
+        heading: 'Nagłówek',
+        content: 'Treść',
+        time: 'Godzina',
+        current: 'Bieżący',
+        emphasized: 'Wyróżniony',
+        shortcut: 'Skrót',
+        group: 'Grupa',
+        optionLabel: 'Etykieta opcji',
+        segmentText: 'Tekst segmentu',
+        addItem: 'Dodaj element',
+        deleteItem: 'Usuń element',
+        addOption: 'Dodaj opcję',
+        deleteOption: 'Usuń opcję',
+        addCommand: 'Dodaj polecenie',
+        deleteCommand: 'Usuń polecenie',
+        addSegment: 'Dodaj segment',
+        deleteSegment: 'Usuń segment',
+        description: 'Opis',
+        label: 'Etykieta',
       },
       demos: {
         accordion: {
@@ -662,6 +681,8 @@ export const pl: WebMessages = {
           sectionTwoBody: 'Treść drugiej sekcji.',
           disabledSectionLabel: 'Sekcja wyłączona',
           disabledSectionBody: 'Ta treść jest niedostępna.',
+          newSectionHeading: 'Nowa sekcja',
+          newSectionContent: 'Nowa treść',
         },
         alert: {
           defaultText: 'To jest domyślny alert',
@@ -672,6 +693,7 @@ export const pl: WebMessages = {
           dismissibleText: 'Ten alert można zamknąć',
           tooltipSuppressed:
             'Podpowiedzi są wyłączone na urządzeniach dotykowych, aby uniknąć przyklejonego stanu hover. Otwórz tę sekcję na urządzeniu z myszą, aby zobaczyć demonstracje w działaniu.',
+          message: 'To jest komunikat alertu.',
         },
         autocomplete: {
           startTyping: 'Zacznij wpisywać…',
@@ -680,6 +702,13 @@ export const pl: WebMessages = {
           breedPlaceholder: 'Rasa psa…',
           minMaxLabel: 'Min. 2 znaki, maks. 3 wyniki',
           minMaxPlaceholder: 'Wpisz co najmniej 2 znaki…',
+          goldenRetriever: 'Golden retriever',
+          germanShepherd: 'Owczarek niemiecki',
+          beagle: 'Beagle',
+          poodle: 'Pudel',
+          boxer: 'Bokser',
+          dachshund: 'Jamnik',
+          newBreed: 'Nowa rasa',
         },
         avatarEditor: {
           result: 'Wynik:',
@@ -707,6 +736,8 @@ export const pl: WebMessages = {
           filledBody: 'Karta z subtelnym tłem.',
           cardTitleHeader: 'Tytuł karty',
           cardWithFooterBody: 'Ta karta ma nagłówek, treść i stopkę z akcjami.',
+          bodyText: 'To jest treść karty. Może zawierać dowolny tekst lub elementy.',
+          footer: 'Stopka',
         },
         checkbox: {
           acceptTermsAndConditions: 'Zaakceptuj regulamin i warunki',
@@ -967,6 +998,12 @@ export const pl: WebMessages = {
             return `To jest toast ${labels[variant] ?? variant}`;
           },
           segmentsLabel: 'Segmenty',
+          movedSegment: 'Przeniesiono: ',
+          roadmapSegment: 'Plan na III kwartał',
+          toSegment: ' do ',
+          archivedSegment: 'Zarchiwizowane projekty',
+          title: 'Zaktualizowano projekt',
+          newSegment: ' nowy segment',
         },
         tooltip: {
           triggerLabel: '(najedź na mnie)',
@@ -1001,9 +1038,42 @@ export const pl: WebMessages = {
           hint: 'Naciśnij Ctrl + K (lub Cmd + K), aby otworzyć paletę poleceń w dowolnym miejscu strony.',
           openButton: 'Otwórz paletę poleceń',
           executedToast: label => `Wykonano: ${label}`,
+          newFile: 'Nowy plik',
+          openFile: 'Otwórz plik',
+          save: 'Zapisz',
+          find: 'Znajdź',
+          replace: 'Zamień',
+          undo: 'Cofnij',
+          toggleTheme: 'Przełącz motyw',
+          toggleThemeDescription: 'Przełączanie między trybem jasnym a ciemnym',
+          lockWorkspace: 'Zablokuj obszar roboczy',
+          lockWorkspaceDescription: 'Obecnie wyłączone (funkcja w wersji beta)',
+          fileGroup: 'Plik',
+          editGroup: 'Edytuj',
+          newCommand: 'Nowe polecenie',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Awatar zaktualizowany',
+        },
+        stepper: {
+          accountLabel: 'Konto',
+          accountContent: 'Krok 1: dane konta.',
+          profileLabel: 'Profil',
+          profileContent: 'Krok 2: dane profilu.',
+          reviewLabel: 'Podsumowanie',
+          reviewContent: 'Krok 3: sprawdź i wyślij.',
+        },
+        timeline: {
+          orderPlaced: 'Zamówienie złożone',
+          orderPlacedDescription: 'Płatność potwierdzona, wysłano potwierdzenie.',
+          packed: 'Spakowano',
+          packedDescription: 'Produkty skompletowano i zapakowano w magazynie.',
+          outForDelivery: 'W doręczeniu',
+          outForDeliveryDescription: 'Kurier jest w drodze.',
+          delivered: 'Dostarczono',
+          deliveredDescription: 'Przewidywane do końca dnia.',
+          newEvent: 'Nowe zdarzenie',
+          newEventDescription: 'Nowy opis',
         },
       },
       playground: {
@@ -2294,6 +2364,115 @@ export const pl: WebMessages = {
             closed:
               'Emitowane po zamknięciu okna dialogowego, niezależnie od tego, czy zamknął je użytkownik, czy nastąpiło to programowo.',
             opened: 'Emitowane po wyświetleniu okna dialogowego przez showModal().',
+          },
+        },
+        direction: 'Kierunek',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Rasa psa',
+            placeholder: 'Zacznij wpisywać…',
+            firstGroupLabel: 'Ostatnio używane',
+            secondGroupLabel: 'Pozostałe',
+          },
+          avatar: {
+            alt: 'Awatar użytkownika',
+          },
+          button: {
+            label: 'Naciśnij mnie',
+          },
+          checkbox: {
+            label: 'Zaakceptuj regulamin i warunki',
+          },
+          'code-input': {
+            label: 'Kod weryfikacyjny',
+          },
+          'color-picker': {
+            label: 'Kolor',
+            placeholder: 'Wybierz kolor…',
+          },
+          'command-palette': {
+            placeholder: 'Wpisz polecenie lub wyszukaj…',
+            emptyMessage: 'Brak pasujących poleceń',
+          },
+          'date-picker': {
+            label: 'Data wizyty',
+          },
+          divider: {
+            label: 'LUB',
+          },
+          dropdown: {
+            label: 'Owoc',
+            placeholder: 'Wybierz owoc…',
+            firstGroupLabel: 'Ostatnio używane',
+            secondGroupLabel: 'Pozostałe',
+          },
+          'empty-state': {
+            title: 'Jeszcze nic tu nie ma',
+            description: 'Zacznij od stworzenia swojego pierwszego elementu.',
+          },
+          'file-uploader': {
+            label: 'Załączniki',
+          },
+          'form-field': {
+            label: 'Adres e-mail',
+            hint: 'Używamy go tylko, aby się z Tobą skontaktować',
+          },
+          input: {
+            label: 'Etykieta',
+            placeholder: 'Wprowadź tekst…',
+          },
+          menu: {
+            ariaLabel: 'Menu akcji',
+          },
+          'multi-select': {
+            label: 'Owoce',
+            placeholder: 'Wybierz…',
+            firstGroupLabel: 'Ostatnio używane',
+            secondGroupLabel: 'Pozostałe',
+          },
+          'number-input': {
+            label: 'Wartość',
+          },
+          'progress-bar': {
+            label: 'Przesyłanie plików',
+          },
+          radio: {
+            label: 'Owoc',
+          },
+          'range-slider': {
+            label: 'Zakres cen',
+          },
+          rating: {
+            label: 'Oceń swoje doświadczenie',
+          },
+          segmented: {
+            label: 'Zobacz',
+          },
+          slider: {
+            label: 'Głośność',
+          },
+          spinner: {
+            label: 'Ładowanie',
+          },
+          switch: {
+            label: 'Przełącz mnie',
+          },
+          tag: {
+            removeLabel: 'Usuń tag',
+          },
+          textarea: {
+            label: 'Wiadomość',
+            placeholder: 'Wprowadź swoją wiadomość…',
+          },
+          'time-picker': {
+            label: 'Godzina',
+            placeholder: 'Wybierz godzinę…',
+          },
+          tooltip: {
+            eaTooltip: 'Podpowiedzi dodają kontekst po najechaniu lub sfokusowaniu',
+          },
+          tree: {
+            ariaLabel: 'Drzewo plików',
           },
         },
       },

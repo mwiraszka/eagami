@@ -647,6 +647,25 @@ export const de: WebMessages = {
         warningLabel: 'Warnung',
         errorLabel: 'Fehler',
         infoLabel: 'Info',
+        heading: 'Überschrift',
+        content: 'Inhalt',
+        time: 'Uhrzeit',
+        current: 'Aktuell',
+        emphasized: 'Hervorgehoben',
+        shortcut: 'Tastenkürzel',
+        group: 'Gruppe',
+        optionLabel: 'Optionsbeschriftung',
+        segmentText: 'Segmenttext',
+        addItem: 'Eintrag hinzufügen',
+        deleteItem: 'Eintrag löschen',
+        addOption: 'Option hinzufügen',
+        deleteOption: 'Option löschen',
+        addCommand: 'Befehl hinzufügen',
+        deleteCommand: 'Befehl löschen',
+        addSegment: 'Segment hinzufügen',
+        deleteSegment: 'Segment löschen',
+        description: 'Beschreibung',
+        label: 'Beschriftung',
       },
       demos: {
         accordion: {
@@ -666,6 +685,8 @@ export const de: WebMessages = {
           sectionTwoBody: 'Inhalt für Abschnitt zwei.',
           disabledSectionLabel: 'Deaktivierter Abschnitt',
           disabledSectionBody: 'Dieser Inhalt ist nicht erreichbar.',
+          newSectionHeading: 'Neuer Abschnitt',
+          newSectionContent: 'Neuer Inhalt',
         },
         alert: {
           defaultText: 'Dies ist eine Standardmeldung',
@@ -676,6 +697,7 @@ export const de: WebMessages = {
           dismissibleText: 'Diese Meldung kann geschlossen werden',
           tooltipSuppressed:
             'Tooltips werden auf Touch-Geräten unterdrückt, um klebriges Hover-Verhalten zu vermeiden. Betrachten Sie diesen Abschnitt auf einem Gerät mit Maus, um die Demos in Aktion zu sehen.',
+          message: 'Dies ist eine Hinweismeldung.',
         },
         autocomplete: {
           startTyping: 'Beginnen Sie zu tippen…',
@@ -684,6 +706,13 @@ export const de: WebMessages = {
           breedPlaceholder: 'Hunderasse…',
           minMaxLabel: 'Min. 2 Zeichen, max. 3 Ergebnisse',
           minMaxPlaceholder: 'Geben Sie mindestens 2 Zeichen ein…',
+          goldenRetriever: 'Golden Retriever',
+          germanShepherd: 'Deutscher Schäferhund',
+          beagle: 'Beagle',
+          poodle: 'Pudel',
+          boxer: 'Boxer',
+          dachshund: 'Dackel',
+          newBreed: 'Neue Rasse',
         },
         avatarEditor: {
           result: 'Ergebnis:',
@@ -712,6 +741,9 @@ export const de: WebMessages = {
           cardTitleHeader: 'Kartentitel',
           cardWithFooterBody:
             'Diese Karte hat eine Kopfzeile, einen Hauptteil und eine Fußzeile mit Aktionen.',
+          bodyText:
+            'Dies ist der Hauptteil der Karte. Er kann beliebigen Text oder beliebige Elemente enthalten.',
+          footer: 'Fußzeile',
         },
         checkbox: {
           acceptTermsAndConditions: 'Allgemeine Geschäftsbedingungen akzeptieren',
@@ -970,6 +1002,12 @@ export const de: WebMessages = {
             return `Dies ist ${article} ${variant} Toast`;
           },
           segmentsLabel: 'Segmente',
+          movedSegment: 'Verschoben: ',
+          roadmapSegment: 'Q3-Roadmap',
+          toSegment: ' nach ',
+          archivedSegment: 'Archivierte Projekte',
+          title: 'Projekt aktualisiert',
+          newSegment: ' neues Segment',
         },
         tooltip: {
           triggerLabel: '(fahr mit der Maus über mich)',
@@ -1004,9 +1042,42 @@ export const de: WebMessages = {
           hint: 'Drücken Sie Strg + K (oder Cmd + K), um die Befehlspalette überall auf dieser Seite zu öffnen.',
           openButton: 'Befehlspalette öffnen',
           executedToast: label => `Ausgeführt: ${label}`,
+          newFile: 'Neue Datei',
+          openFile: 'Datei öffnen',
+          save: 'Speichern',
+          find: 'Suchen',
+          replace: 'Ersetzen',
+          undo: 'Rückgängig',
+          toggleTheme: 'Theme wechseln',
+          toggleThemeDescription: 'Zwischen hellem und dunklem Modus wechseln',
+          lockWorkspace: 'Arbeitsbereich sperren',
+          lockWorkspaceDescription: 'Derzeit deaktiviert (Funktion in der Beta)',
+          fileGroup: 'Datei',
+          editGroup: 'Bearbeiten',
+          newCommand: 'Neuer Befehl',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar aktualisiert',
+        },
+        stepper: {
+          accountLabel: 'Konto',
+          accountContent: 'Schritt 1: Kontodaten.',
+          profileLabel: 'Profil',
+          profileContent: 'Schritt 2: Profilangaben.',
+          reviewLabel: 'Überprüfung',
+          reviewContent: 'Schritt 3: prüfen und absenden.',
+        },
+        timeline: {
+          orderPlaced: 'Bestellung aufgegeben',
+          orderPlacedDescription: 'Zahlung bestätigt und Beleg versendet.',
+          packed: 'Verpackt',
+          packedDescription: 'Artikel im Lager kommissioniert und verpackt.',
+          outForDelivery: 'In Zustellung',
+          outForDeliveryDescription: 'Der Kurier ist unterwegs.',
+          delivered: 'Zugestellt',
+          deliveredDescription: 'Voraussichtlich bis Tagesende.',
+          newEvent: 'Neues Ereignis',
+          newEventDescription: 'Neue Beschreibung',
         },
       },
       playground: {
@@ -2355,6 +2426,116 @@ export const de: WebMessages = {
             closed:
               'Wird ausgelöst, wenn sich der Dialog schließt, unabhängig davon, ob er vom Nutzer oder programmatisch geschlossen wurde.',
             opened: 'Wird ausgelöst, sobald der Dialog über showModal() angezeigt wurde.',
+          },
+        },
+        direction: 'Richtung',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Hunderasse',
+            placeholder: 'Beginnen Sie zu tippen…',
+            firstGroupLabel: 'Zuletzt verwendet',
+            secondGroupLabel: 'Alles andere',
+          },
+          avatar: {
+            alt: 'Benutzer-Avatar',
+          },
+          button: {
+            label: 'Drück mich',
+          },
+          checkbox: {
+            label: 'Allgemeine Geschäftsbedingungen akzeptieren',
+          },
+          'code-input': {
+            label: 'Bestätigungscode',
+          },
+          'color-picker': {
+            label: 'Farbe',
+            placeholder: 'Farbe auswählen…',
+          },
+          'command-palette': {
+            placeholder: 'Befehl eingeben oder suchen…',
+            emptyMessage: 'Keine passenden Befehle',
+          },
+          'date-picker': {
+            label: 'Termindatum',
+          },
+          divider: {
+            label: 'ODER',
+          },
+          dropdown: {
+            label: 'Obst',
+            placeholder: 'Obst auswählen…',
+            firstGroupLabel: 'Zuletzt verwendet',
+            secondGroupLabel: 'Alles andere',
+          },
+          'empty-state': {
+            title: 'Noch keine Einträge',
+            description: 'Legen Sie los, indem Sie Ihren ersten Eintrag erstellen.',
+          },
+          'file-uploader': {
+            label: 'Anhänge',
+          },
+          'form-field': {
+            label: 'E-Mail-Adresse',
+            hint: 'Wir nutzen sie nur, um Sie zu erreichen',
+          },
+          input: {
+            label: 'Beschriftung',
+            placeholder: 'Text eingeben…',
+          },
+          menu: {
+            ariaLabel: 'Aktionsmenü',
+          },
+          'multi-select': {
+            label: 'Obst',
+            placeholder: 'Auswählen…',
+            firstGroupLabel: 'Zuletzt verwendet',
+            secondGroupLabel: 'Alles andere',
+          },
+          'number-input': {
+            label: 'Wert',
+          },
+          'progress-bar': {
+            label: 'Dateien werden hochgeladen',
+          },
+          radio: {
+            label: 'Obst',
+          },
+          'range-slider': {
+            label: 'Preisspanne',
+          },
+          rating: {
+            label: 'Bewerten Sie Ihre Erfahrung',
+          },
+          segmented: {
+            label: 'Ansicht',
+          },
+          slider: {
+            label: 'Lautstärke',
+          },
+          spinner: {
+            label: 'Ladezustand',
+          },
+          switch: {
+            label: 'Schalt mich um',
+          },
+          tag: {
+            removeLabel: 'Tag entfernen',
+          },
+          textarea: {
+            label: 'Nachricht',
+            placeholder: 'Geben Sie Ihre Nachricht ein…',
+          },
+          'time-picker': {
+            label: 'Uhrzeit',
+            placeholder: 'Uhrzeit auswählen…',
+          },
+          tooltip: {
+            eaTooltip:
+              'Tooltips liefern zusätzlichen Kontext beim Überfahren oder Fokussieren',
+          },
+          tree: {
+            ariaLabel: 'Dateibaum',
           },
         },
       },

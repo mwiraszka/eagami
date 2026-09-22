@@ -619,6 +619,25 @@ export const zhCN: WebMessages = {
         warningLabel: '警告',
         errorLabel: '错误',
         infoLabel: '信息',
+        heading: '标题',
+        content: '内容',
+        time: '时间',
+        current: '当前',
+        emphasized: '强调',
+        shortcut: '快捷键',
+        group: '分组',
+        optionLabel: '选项标签',
+        segmentText: '分段文本',
+        addItem: '添加条目',
+        deleteItem: '删除条目',
+        addOption: '添加选项',
+        deleteOption: '删除选项',
+        addCommand: '添加命令',
+        deleteCommand: '删除命令',
+        addSegment: '添加分段',
+        deleteSegment: '删除分段',
+        description: '描述',
+        label: '标签',
       },
       demos: {
         accordion: {
@@ -636,6 +655,8 @@ export const zhCN: WebMessages = {
           sectionTwoBody: '第二节的内容。',
           disabledSectionLabel: '禁用的小节',
           disabledSectionBody: '此内容无法访问。',
+          newSectionHeading: '新板块',
+          newSectionContent: '新内容',
         },
         alert: {
           defaultText: '这是一条默认提示',
@@ -646,6 +667,7 @@ export const zhCN: WebMessages = {
           dismissibleText: '此提示可以被关闭',
           tooltipSuppressed:
             '在触摸设备上工具提示会被抑制，以避免悬停粘滞行为。请在带鼠标的设备上查看本节以体验演示效果。',
+          message: '这是一条提示消息。',
         },
         autocomplete: {
           startTyping: '开始输入…',
@@ -654,6 +676,13 @@ export const zhCN: WebMessages = {
           breedPlaceholder: '狗品种…',
           minMaxLabel: '最少 2 个字符，最多 3 个结果',
           minMaxPlaceholder: '至少输入 2 个字符…',
+          goldenRetriever: '金毛寻回犬',
+          germanShepherd: '德国牧羊犬',
+          beagle: '比格犬',
+          poodle: '贵宾犬',
+          boxer: '拳师犬',
+          dachshund: '腊肠犬',
+          newBreed: '新品种',
         },
         avatarEditor: {
           result: '结果：',
@@ -681,6 +710,8 @@ export const zhCN: WebMessages = {
           filledBody: '带淡淡背景的卡片。',
           cardTitleHeader: '卡片标题',
           cardWithFooterBody: '这张卡片包含页眉、正文和带操作的页脚。',
+          bodyText: '这是卡片的正文内容。其中可以包含任意文本或元素。',
+          footer: '页脚',
         },
         checkbox: {
           acceptTermsAndConditions: '接受条款与条件',
@@ -928,6 +959,12 @@ export const zhCN: WebMessages = {
         toast: {
           message: variant => `这是一条${variant}提示`,
           segmentsLabel: '分段',
+          movedSegment: '已移动：',
+          roadmapSegment: '第三季度路线图',
+          toSegment: '至',
+          archivedSegment: '已归档项目',
+          title: '项目已更新',
+          newSegment: '新分段',
         },
         tooltip: {
           triggerLabel: '(将鼠标悬停于此)',
@@ -962,9 +999,42 @@ export const zhCN: WebMessages = {
           hint: '在本页面任意位置按 Ctrl + K（或 Cmd + K）打开命令面板。',
           openButton: '打开命令面板',
           executedToast: label => `已执行：${label}`,
+          newFile: '新建文件',
+          openFile: '打开文件',
+          save: '保存',
+          find: '查找',
+          replace: '替换',
+          undo: '撤销',
+          toggleTheme: '切换主题',
+          toggleThemeDescription: '在浅色与深色模式之间切换',
+          lockWorkspace: '锁定工作区',
+          lockWorkspaceDescription: '当前已禁用（功能处于测试阶段）',
+          fileGroup: '文件',
+          editGroup: '编辑',
+          newCommand: '新建命令',
         },
         avatarEditorActions: {
           avatarUpdatedToast: '头像已更新',
+        },
+        stepper: {
+          accountLabel: '账户',
+          accountContent: '第 1 步：账户详情。',
+          profileLabel: '个人资料',
+          profileContent: '第 2 步：资料信息。',
+          reviewLabel: '确认',
+          reviewContent: '第 3 步：确认并提交。',
+        },
+        timeline: {
+          orderPlaced: '已下单',
+          orderPlacedDescription: '付款已确认，收据已发送。',
+          packed: '已打包',
+          packedDescription: '商品已在仓库拣选并装箱。',
+          outForDelivery: '派送中',
+          outForDeliveryDescription: '快递员正在途中。',
+          delivered: '已送达',
+          deliveredDescription: '预计当天送达。',
+          newEvent: '新事件',
+          newEventDescription: '新描述',
         },
       },
       playground: {
@@ -2035,6 +2105,115 @@ export const zhCN: WebMessages = {
             width: '对话框面板的宽度预设。',
             closed: '当对话框关闭时触发，无论它是由用户还是以编程方式关闭。',
             opened: '当对话框通过 showModal() 显示后触发一次。',
+          },
+        },
+        direction: '方向',
+        knobDefaults: {
+          autocomplete: {
+            label: '犬种',
+            placeholder: '开始输入…',
+            firstGroupLabel: '最近使用',
+            secondGroupLabel: '其他全部',
+          },
+          avatar: {
+            alt: '用户头像',
+          },
+          button: {
+            label: '点击我',
+          },
+          checkbox: {
+            label: '接受条款与条件',
+          },
+          'code-input': {
+            label: '验证码',
+          },
+          'color-picker': {
+            label: '颜色',
+            placeholder: '选择颜色…',
+          },
+          'command-palette': {
+            placeholder: '输入命令或搜索…',
+            emptyMessage: '没有匹配的命令',
+          },
+          'date-picker': {
+            label: '预约日期',
+          },
+          divider: {
+            label: '或',
+          },
+          dropdown: {
+            label: '水果',
+            placeholder: '选择一种水果…',
+            firstGroupLabel: '最近使用',
+            secondGroupLabel: '其他全部',
+          },
+          'empty-state': {
+            title: '暂无项目',
+            description: '创建你的第一个项目以开始使用。',
+          },
+          'file-uploader': {
+            label: '附件',
+          },
+          'form-field': {
+            label: '电子邮件地址',
+            hint: '我们仅用它来联系你',
+          },
+          input: {
+            label: '标签',
+            placeholder: '输入文本…',
+          },
+          menu: {
+            ariaLabel: '操作菜单',
+          },
+          'multi-select': {
+            label: '水果',
+            placeholder: '请选择…',
+            firstGroupLabel: '最近使用',
+            secondGroupLabel: '其他全部',
+          },
+          'number-input': {
+            label: '值',
+          },
+          'progress-bar': {
+            label: '正在上传文件',
+          },
+          radio: {
+            label: '水果',
+          },
+          'range-slider': {
+            label: '价格区间',
+          },
+          rating: {
+            label: '为你的体验评分',
+          },
+          segmented: {
+            label: '查看',
+          },
+          slider: {
+            label: '音量',
+          },
+          spinner: {
+            label: '加载中',
+          },
+          switch: {
+            label: '切换我',
+          },
+          tag: {
+            removeLabel: '移除标签',
+          },
+          textarea: {
+            label: '留言',
+            placeholder: '输入你的留言…',
+          },
+          'time-picker': {
+            label: '时间',
+            placeholder: '选择时间…',
+          },
+          tooltip: {
+            eaTooltip: '工具提示在悬停或聚焦时提供额外信息',
+          },
+          tree: {
+            ariaLabel: '文件树',
           },
         },
       },

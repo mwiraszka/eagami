@@ -633,6 +633,25 @@ export const ar: WebMessages = {
         warningLabel: 'تحذير',
         errorLabel: 'خطأ',
         infoLabel: 'معلومات',
+        heading: 'العنوان',
+        content: 'المحتوى',
+        time: 'الوقت',
+        current: 'الحالي',
+        emphasized: 'مُبرَز',
+        shortcut: 'الاختصار',
+        group: 'المجموعة',
+        optionLabel: 'تسمية الخيار',
+        segmentText: 'نص المقطع',
+        addItem: 'إضافة عنصر',
+        deleteItem: 'حذف العنصر',
+        addOption: 'إضافة خيار',
+        deleteOption: 'حذف الخيار',
+        addCommand: 'إضافة أمر',
+        deleteCommand: 'حذف الأمر',
+        addSegment: 'إضافة مقطع',
+        deleteSegment: 'حذف المقطع',
+        description: 'الوصف',
+        label: 'التسمية',
       },
       demos: {
         accordion: {
@@ -651,6 +670,8 @@ export const ar: WebMessages = {
           sectionTwoBody: 'محتوى القسم الثاني.',
           disabledSectionLabel: 'قسم معطّل',
           disabledSectionBody: 'هذا المحتوى غير قابل للوصول.',
+          newSectionHeading: 'قسم جديد',
+          newSectionContent: 'محتوى جديد',
         },
         alert: {
           defaultText: 'هذا تنبيه افتراضي',
@@ -661,6 +682,7 @@ export const ar: WebMessages = {
           dismissibleText: 'يمكن إغلاق هذا التنبيه',
           tooltipSuppressed:
             'تُكبَت التلميحات على الأجهزة اللمسية لتجنّب سلوك التحويم العالق. اعرض هذا القسم على جهاز مزوّد بفأرة لمشاهدة العروض التوضيحية وهي تعمل.',
+          message: 'هذه رسالة تنبيه.',
         },
         autocomplete: {
           startTyping: 'ابدأ الكتابة…',
@@ -669,6 +691,13 @@ export const ar: WebMessages = {
           breedPlaceholder: 'سلالة الكلب…',
           minMaxLabel: 'حرفان كحد أدنى، 3 نتائج كحد أقصى',
           minMaxPlaceholder: 'أدخل حرفين على الأقل…',
+          goldenRetriever: 'غولدن ريتريفر',
+          germanShepherd: 'الراعي الألماني',
+          beagle: 'بيجل',
+          poodle: 'بودل',
+          boxer: 'بوكسر',
+          dachshund: 'داشهند',
+          newBreed: 'سلالة جديدة',
         },
         avatarEditor: {
           result: 'النتيجة:',
@@ -696,6 +725,8 @@ export const ar: WebMessages = {
           filledBody: 'بطاقة بخلفية خفيفة.',
           cardTitleHeader: 'عنوان البطاقة',
           cardWithFooterBody: 'تحتوي هذه البطاقة على رأس وجسم وتذييل مع إجراءات.',
+          bodyText: 'هذا هو محتوى متن البطاقة. يمكن أن يحتوي على أي نص أو عناصر.',
+          footer: 'التذييل',
         },
         checkbox: {
           acceptTermsAndConditions: 'قبول الشروط والأحكام',
@@ -946,6 +977,12 @@ export const ar: WebMessages = {
         toast: {
           message: variant => `هذا إشعار من نوع ${variant}`,
           segmentsLabel: 'المقاطع',
+          movedSegment: 'تم النقل: ',
+          roadmapSegment: 'خارطة طريق الربع الثالث',
+          toSegment: ' إلى ',
+          archivedSegment: 'المشاريع المؤرشفة',
+          title: 'تم تحديث المشروع',
+          newSegment: ' مقطع جديد',
         },
         tooltip: {
           triggerLabel: '(حوّم فوقي)',
@@ -980,9 +1017,42 @@ export const ar: WebMessages = {
           hint: 'اضغط Ctrl + K (أو Cmd + K) لفتح لوحة الأوامر في أي مكان على هذه الصفحة.',
           openButton: 'فتح لوحة الأوامر',
           executedToast: label => `تم التنفيذ: ${label}`,
+          newFile: 'ملف جديد',
+          openFile: 'فتح ملف',
+          save: 'حفظ',
+          find: 'بحث',
+          replace: 'استبدال',
+          undo: 'تراجع',
+          toggleTheme: 'تبديل السمة',
+          toggleThemeDescription: 'التبديل بين الوضع الفاتح والداكن',
+          lockWorkspace: 'قفل مساحة العمل',
+          lockWorkspaceDescription: 'معطّل حاليًا (ميزة تجريبية)',
+          fileGroup: 'ملف',
+          editGroup: 'تعديل',
+          newCommand: 'أمر جديد',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'تم تحديث الصورة الرمزية',
+        },
+        stepper: {
+          accountLabel: 'الحساب',
+          accountContent: 'الخطوة 1: تفاصيل الحساب.',
+          profileLabel: 'الملف الشخصي',
+          profileContent: 'الخطوة 2: معلومات الملف الشخصي.',
+          reviewLabel: 'المراجعة',
+          reviewContent: 'الخطوة 3: المراجعة والإرسال.',
+        },
+        timeline: {
+          orderPlaced: 'تم تقديم الطلب',
+          orderPlacedDescription: 'تم تأكيد الدفع وإرسال الإيصال.',
+          packed: 'تم التغليف',
+          packedDescription: 'تم تجهيز المنتجات وتعبئتها في المستودع.',
+          outForDelivery: 'قيد التوصيل',
+          outForDeliveryDescription: 'المندوب في الطريق.',
+          delivered: 'تم التسليم',
+          deliveredDescription: 'متوقع بحلول نهاية اليوم.',
+          newEvent: 'حدث جديد',
+          newEventDescription: 'وصف جديد',
         },
       },
       playground: {
@@ -2175,6 +2245,115 @@ export const ar: WebMessages = {
             closed:
               'يُطلَق عندما يُغلق مربّع الحوار، بغضّ النظر عمّا إذا أغلقه المستخدم أو أُغلق برمجيًا.',
             opened: 'يُطلَق بمجرد عرض مربّع الحوار عبر showModal().',
+          },
+        },
+        direction: 'الاتجاه',
+        knobDefaults: {
+          autocomplete: {
+            label: 'سلالة الكلب',
+            placeholder: 'ابدأ الكتابة…',
+            firstGroupLabel: 'المستخدمة مؤخرًا',
+            secondGroupLabel: 'كل ما عدا ذلك',
+          },
+          avatar: {
+            alt: 'صورة المستخدم',
+          },
+          button: {
+            label: 'اضغط عليّ',
+          },
+          checkbox: {
+            label: 'قبول الشروط والأحكام',
+          },
+          'code-input': {
+            label: 'رمز التحقق',
+          },
+          'color-picker': {
+            label: 'اللون',
+            placeholder: 'اختر لونًا…',
+          },
+          'command-palette': {
+            placeholder: 'اكتب أمرًا أو ابحث…',
+            emptyMessage: 'لا توجد أوامر مطابقة',
+          },
+          'date-picker': {
+            label: 'تاريخ الموعد',
+          },
+          divider: {
+            label: 'أو',
+          },
+          dropdown: {
+            label: 'فاكهة',
+            placeholder: 'اختر فاكهة…',
+            firstGroupLabel: 'المستخدمة مؤخرًا',
+            secondGroupLabel: 'كل ما عدا ذلك',
+          },
+          'empty-state': {
+            title: 'لا توجد عناصر بعد',
+            description: 'ابدأ بإنشاء عنصرك الأول.',
+          },
+          'file-uploader': {
+            label: 'المرفقات',
+          },
+          'form-field': {
+            label: 'البريد الإلكتروني',
+            hint: 'نستخدمه فقط للتواصل معك',
+          },
+          input: {
+            label: 'التسمية',
+            placeholder: 'أدخل نصًا…',
+          },
+          menu: {
+            ariaLabel: 'قائمة الإجراءات',
+          },
+          'multi-select': {
+            label: 'الفواكه',
+            placeholder: 'اختر…',
+            firstGroupLabel: 'المستخدمة مؤخرًا',
+            secondGroupLabel: 'كل ما عدا ذلك',
+          },
+          'number-input': {
+            label: 'القيمة',
+          },
+          'progress-bar': {
+            label: 'جارٍ رفع الملفات',
+          },
+          radio: {
+            label: 'فاكهة',
+          },
+          'range-slider': {
+            label: 'نطاق السعر',
+          },
+          rating: {
+            label: 'قيّم تجربتك',
+          },
+          segmented: {
+            label: 'عرض',
+          },
+          slider: {
+            label: 'مستوى الصوت',
+          },
+          spinner: {
+            label: 'جارٍ التحميل',
+          },
+          switch: {
+            label: 'بدّلني',
+          },
+          tag: {
+            removeLabel: 'إزالة الوسم',
+          },
+          textarea: {
+            label: 'الرسالة',
+            placeholder: 'أدخل رسالتك…',
+          },
+          'time-picker': {
+            label: 'الوقت',
+            placeholder: 'اختر الوقت…',
+          },
+          tooltip: {
+            eaTooltip: 'تضيف التلميحات سياقًا إضافيًا عند التحويم أو التركيز',
+          },
+          tree: {
+            ariaLabel: 'شجرة الملفات',
           },
         },
       },

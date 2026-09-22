@@ -637,6 +637,25 @@ export const hi: WebMessages = {
         warningLabel: 'चेतावनी',
         errorLabel: 'त्रुटि',
         infoLabel: 'जानकारी',
+        heading: 'शीर्षक',
+        content: 'सामग्री',
+        time: 'समय',
+        current: 'वर्तमान',
+        emphasized: 'ज़ोर दिया गया',
+        shortcut: 'शॉर्टकट',
+        group: 'समूह',
+        optionLabel: 'विकल्प लेबल',
+        segmentText: 'खंड पाठ',
+        addItem: 'आइटम जोड़ें',
+        deleteItem: 'आइटम हटाएं',
+        addOption: 'विकल्प जोड़ें',
+        deleteOption: 'विकल्प हटाएं',
+        addCommand: 'कमांड जोड़ें',
+        deleteCommand: 'कमांड हटाएं',
+        addSegment: 'खंड जोड़ें',
+        deleteSegment: 'खंड हटाएं',
+        description: 'विवरण',
+        label: 'लेबल',
       },
       demos: {
         accordion: {
@@ -655,6 +674,8 @@ export const hi: WebMessages = {
           sectionTwoBody: 'खंड दो की सामग्री।',
           disabledSectionLabel: 'अक्षम खंड',
           disabledSectionBody: 'यह सामग्री पहुंच योग्य नहीं है।',
+          newSectionHeading: 'नया अनुभाग',
+          newSectionContent: 'नई सामग्री',
         },
         alert: {
           defaultText: 'यह एक डिफ़ॉल्ट अलर्ट है',
@@ -665,6 +686,7 @@ export const hi: WebMessages = {
           dismissibleText: 'इस अलर्ट को खारिज किया जा सकता है',
           tooltipSuppressed:
             'स्टिकी-होवर व्यवहार से बचने के लिए टच डिवाइस पर टूलटिप दबा दिए जाते हैं। डेमो को क्रिया में देखने के लिए इस खंड को माउस वाले डिवाइस पर देखें।',
+          message: 'यह एक अलर्ट संदेश है।',
         },
         autocomplete: {
           startTyping: 'टाइप करना शुरू करें…',
@@ -673,6 +695,13 @@ export const hi: WebMessages = {
           breedPlaceholder: 'कुत्ते की नस्ल…',
           minMaxLabel: 'न्यूनतम 2 अक्षर, अधिकतम 3 परिणाम',
           minMaxPlaceholder: 'कम से कम 2 अक्षर टाइप करें…',
+          goldenRetriever: 'गोल्डन रिट्रीवर',
+          germanShepherd: 'जर्मन शेफर्ड',
+          beagle: 'बीगल',
+          poodle: 'पूडल',
+          boxer: 'बॉक्सर',
+          dachshund: 'डछशुंड',
+          newBreed: 'नई नस्ल',
         },
         avatarEditor: {
           result: 'परिणाम:',
@@ -701,6 +730,8 @@ export const hi: WebMessages = {
           cardTitleHeader: 'कार्ड शीर्षक',
           cardWithFooterBody:
             'इस कार्ड में एक हेडर, बॉडी और क्रियाओं के साथ एक फ़ुटर है।',
+          bodyText: 'यह कार्ड की मुख्य सामग्री है। इसमें कोई भी पाठ या तत्व हो सकते हैं।',
+          footer: 'फुटर',
         },
         checkbox: {
           acceptTermsAndConditions: 'नियम और शर्तें स्वीकार करें',
@@ -950,6 +981,12 @@ export const hi: WebMessages = {
         toast: {
           message: variant => `यह एक ${variant} टोस्ट है`,
           segmentsLabel: 'खंड',
+          movedSegment: 'स्थानांतरित: ',
+          roadmapSegment: 'तीसरी तिमाही की रोडमैप',
+          toSegment: ' को ',
+          archivedSegment: 'संग्रहित प्रोजेक्ट',
+          title: 'प्रोजेक्ट अपडेट किया गया',
+          newSegment: ' नया खंड',
         },
         tooltip: {
           triggerLabel: '(मुझ पर होवर करें)',
@@ -984,9 +1021,42 @@ export const hi: WebMessages = {
           hint: 'इस पेज पर कहीं भी कमांड पैलेट खोलने के लिए Ctrl + K (या Cmd + K) दबाएं।',
           openButton: 'कमांड पैलेट खोलें',
           executedToast: label => `निष्पादित: ${label}`,
+          newFile: 'नई फ़ाइल',
+          openFile: 'फ़ाइल खोलें',
+          save: 'सहेजें',
+          find: 'खोजें',
+          replace: 'बदलें',
+          undo: 'पूर्ववत करें',
+          toggleTheme: 'थीम बदलें',
+          toggleThemeDescription: 'लाइट और डार्क मोड के बीच स्विच करें',
+          lockWorkspace: 'कार्यक्षेत्र लॉक करें',
+          lockWorkspaceDescription: 'अभी अक्षम (फ़ीचर बीटा में)',
+          fileGroup: 'फ़ाइल',
+          editGroup: 'संपादित करें',
+          newCommand: 'नया कमांड',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'अवतार अपडेट किया गया',
+        },
+        stepper: {
+          accountLabel: 'खाता',
+          accountContent: 'चरण 1: खाते का विवरण।',
+          profileLabel: 'प्रोफ़ाइल',
+          profileContent: 'चरण 2: प्रोफ़ाइल जानकारी।',
+          reviewLabel: 'समीक्षा',
+          reviewContent: 'चरण 3: समीक्षा करें और सबमिट करें।',
+        },
+        timeline: {
+          orderPlaced: 'ऑर्डर दिया गया',
+          orderPlacedDescription: 'भुगतान की पुष्टि हुई और रसीद भेजी गई।',
+          packed: 'पैक किया गया',
+          packedDescription: 'सामान गोदाम में चुना और पैक किया गया।',
+          outForDelivery: 'डिलीवरी के लिए निकला',
+          outForDeliveryDescription: 'कूरियर रास्ते में है।',
+          delivered: 'डिलीवर किया गया',
+          deliveredDescription: 'दिन के अंत तक अनुमानित।',
+          newEvent: 'नया इवेंट',
+          newEventDescription: 'नया विवरण',
         },
       },
       playground: {
@@ -2271,6 +2341,115 @@ export const hi: WebMessages = {
             closed:
               'जब डायलॉग बंद होता है तो ट्रिगर होता है, चाहे वह उपयोगकर्ता द्वारा या प्रोग्रामेटिक रूप से बंद किया गया हो।',
             opened: 'showModal() के माध्यम से डायलॉग दिखने के बाद ट्रिगर होता है।',
+          },
+        },
+        direction: 'दिशा',
+        knobDefaults: {
+          autocomplete: {
+            label: 'कुत्ते की नस्ल',
+            placeholder: 'टाइप करना शुरू करें…',
+            firstGroupLabel: 'हाल ही में उपयोग किए गए',
+            secondGroupLabel: 'बाकी सब',
+          },
+          avatar: {
+            alt: 'उपयोगकर्ता अवतार',
+          },
+          button: {
+            label: 'मुझे दबाएं',
+          },
+          checkbox: {
+            label: 'नियम और शर्तें स्वीकार करें',
+          },
+          'code-input': {
+            label: 'सत्यापन कोड',
+          },
+          'color-picker': {
+            label: 'रंग',
+            placeholder: 'एक रंग चुनें…',
+          },
+          'command-palette': {
+            placeholder: 'कमांड लिखें या खोजें…',
+            emptyMessage: 'कोई मिलता-जुलता कमांड नहीं',
+          },
+          'date-picker': {
+            label: 'अपॉइंटमेंट की तारीख',
+          },
+          divider: {
+            label: 'या',
+          },
+          dropdown: {
+            label: 'फल',
+            placeholder: 'एक फल चुनें…',
+            firstGroupLabel: 'हाल ही में उपयोग किए गए',
+            secondGroupLabel: 'बाकी सब',
+          },
+          'empty-state': {
+            title: 'अभी तक कोई आइटम नहीं',
+            description: 'अपना पहला आइटम बनाकर शुरुआत करें।',
+          },
+          'file-uploader': {
+            label: 'संलग्नक',
+          },
+          'form-field': {
+            label: 'ईमेल पता',
+            hint: 'हम इसका उपयोग केवल आपसे संपर्क करने के लिए करते हैं',
+          },
+          input: {
+            label: 'लेबल',
+            placeholder: 'टेक्स्ट दर्ज करें…',
+          },
+          menu: {
+            ariaLabel: 'क्रिया मेनू',
+          },
+          'multi-select': {
+            label: 'फल',
+            placeholder: 'चुनें…',
+            firstGroupLabel: 'हाल ही में उपयोग किए गए',
+            secondGroupLabel: 'बाकी सब',
+          },
+          'number-input': {
+            label: 'मान',
+          },
+          'progress-bar': {
+            label: 'फ़ाइलें अपलोड हो रही हैं',
+          },
+          radio: {
+            label: 'फल',
+          },
+          'range-slider': {
+            label: 'मूल्य सीमा',
+          },
+          rating: {
+            label: 'अपने अनुभव को रेट करें',
+          },
+          segmented: {
+            label: 'देखें',
+          },
+          slider: {
+            label: 'वॉल्यूम',
+          },
+          spinner: {
+            label: 'लोडिंग',
+          },
+          switch: {
+            label: 'मुझे टॉगल करें',
+          },
+          tag: {
+            removeLabel: 'टैग हटाएं',
+          },
+          textarea: {
+            label: 'संदेश',
+            placeholder: 'अपना संदेश दर्ज करें…',
+          },
+          'time-picker': {
+            label: 'समय',
+            placeholder: 'समय चुनें…',
+          },
+          tooltip: {
+            eaTooltip: 'टूलटिप होवर या फ़ोकस पर अतिरिक्त संदर्भ देते हैं',
+          },
+          tree: {
+            ariaLabel: 'फ़ाइल ट्री',
           },
         },
       },

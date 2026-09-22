@@ -641,6 +641,25 @@ export const ru: WebMessages = {
         warningLabel: 'Предупреждение',
         errorLabel: 'Ошибка',
         infoLabel: 'Информация',
+        heading: 'Заголовок',
+        content: 'Содержимое',
+        time: 'Время',
+        current: 'Текущий',
+        emphasized: 'Выделенный',
+        shortcut: 'Сочетание клавиш',
+        group: 'Группа',
+        optionLabel: 'Метка варианта',
+        segmentText: 'Текст сегмента',
+        addItem: 'Добавить элемент',
+        deleteItem: 'Удалить элемент',
+        addOption: 'Добавить вариант',
+        deleteOption: 'Удалить вариант',
+        addCommand: 'Добавить команду',
+        deleteCommand: 'Удалить команду',
+        addSegment: 'Добавить сегмент',
+        deleteSegment: 'Удалить сегмент',
+        description: 'Описание',
+        label: 'Метка',
       },
       demos: {
         accordion: {
@@ -660,6 +679,8 @@ export const ru: WebMessages = {
           sectionTwoBody: 'Содержимое раздела два.',
           disabledSectionLabel: 'Отключённый раздел',
           disabledSectionBody: 'Это содержимое недоступно.',
+          newSectionHeading: 'Новый раздел',
+          newSectionContent: 'Новое содержимое',
         },
         alert: {
           defaultText: 'Это оповещение по умолчанию',
@@ -670,6 +691,7 @@ export const ru: WebMessages = {
           dismissibleText: 'Это оповещение можно закрыть',
           tooltipSuppressed:
             'На сенсорных устройствах всплывающие подсказки подавляются во избежание «залипающего» наведения. Откройте этот раздел на устройстве с мышью, чтобы увидеть демонстрации в действии.',
+          message: 'Это сообщение уведомления.',
         },
         autocomplete: {
           startTyping: 'Начните вводить…',
@@ -678,6 +700,13 @@ export const ru: WebMessages = {
           breedPlaceholder: 'Порода собаки…',
           minMaxLabel: 'Мин. 2 символа, макс. 3 результата',
           minMaxPlaceholder: 'Введите не менее 2 символов…',
+          goldenRetriever: 'Золотистый ретривер',
+          germanShepherd: 'Немецкая овчарка',
+          beagle: 'Бигль',
+          poodle: 'Пудель',
+          boxer: 'Боксёр',
+          dachshund: 'Такса',
+          newBreed: 'Новая порода',
         },
         avatarEditor: {
           result: 'Результат:',
@@ -706,6 +735,9 @@ export const ru: WebMessages = {
           cardTitleHeader: 'Заголовок карточки',
           cardWithFooterBody:
             'У этой карточки есть заголовок, тело и подвал с действиями.',
+          bodyText:
+            'Это содержимое карточки. Оно может включать любой текст или элементы.',
+          footer: 'Нижний колонтитул',
         },
         checkbox: {
           acceptTermsAndConditions: 'Принять условия использования',
@@ -956,6 +988,12 @@ export const ru: WebMessages = {
         toast: {
           message: variant => `Это тост варианта ${variant}`,
           segmentsLabel: 'Сегменты',
+          movedSegment: 'Перемещено: ',
+          roadmapSegment: 'Дорожная карта на 3-й квартал',
+          toSegment: ' в ',
+          archivedSegment: 'Архив проектов',
+          title: 'Проект обновлён',
+          newSegment: ' новый сегмент',
         },
         tooltip: {
           triggerLabel: '(наведите на меня)',
@@ -990,9 +1028,42 @@ export const ru: WebMessages = {
           hint: 'Нажмите Ctrl + K (или Cmd + K), чтобы открыть палитру команд в любом месте этой страницы.',
           openButton: 'Открыть палитру команд',
           executedToast: label => `Выполнено: ${label}`,
+          newFile: 'Новый файл',
+          openFile: 'Открыть файл',
+          save: 'Сохранить',
+          find: 'Найти',
+          replace: 'Заменить',
+          undo: 'Отменить',
+          toggleTheme: 'Сменить тему',
+          toggleThemeDescription: 'Переключение между светлой и тёмной темой',
+          lockWorkspace: 'Заблокировать рабочую область',
+          lockWorkspaceDescription: 'Сейчас отключено (функция в бета-версии)',
+          fileGroup: 'Файл',
+          editGroup: 'Редактировать',
+          newCommand: 'Новая команда',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Аватар обновлён',
+        },
+        stepper: {
+          accountLabel: 'Аккаунт',
+          accountContent: 'Шаг 1: данные аккаунта.',
+          profileLabel: 'Профиль',
+          profileContent: 'Шаг 2: данные профиля.',
+          reviewLabel: 'Проверка',
+          reviewContent: 'Шаг 3: проверка и отправка.',
+        },
+        timeline: {
+          orderPlaced: 'Заказ оформлен',
+          orderPlacedDescription: 'Оплата подтверждена, чек отправлен.',
+          packed: 'Упаковано',
+          packedDescription: 'Товары собраны и упакованы на складе.',
+          outForDelivery: 'Передано курьеру',
+          outForDeliveryDescription: 'Курьер уже в пути.',
+          delivered: 'Доставлено',
+          deliveredDescription: 'Ожидается до конца дня.',
+          newEvent: 'Новое событие',
+          newEventDescription: 'Новое описание',
         },
       },
       playground: {
@@ -2314,6 +2385,115 @@ export const ru: WebMessages = {
             closed:
               'Срабатывает, когда диалог закрывается, независимо от того, закрыт ли он пользователем или программно.',
             opened: 'Срабатывает, как только диалог показан через showModal().',
+          },
+        },
+        direction: 'Направление',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Порода собаки',
+            placeholder: 'Начните вводить…',
+            firstGroupLabel: 'Недавно использованные',
+            secondGroupLabel: 'Всё остальное',
+          },
+          avatar: {
+            alt: 'Аватар пользователя',
+          },
+          button: {
+            label: 'Нажми меня',
+          },
+          checkbox: {
+            label: 'Принять условия использования',
+          },
+          'code-input': {
+            label: 'Код подтверждения',
+          },
+          'color-picker': {
+            label: 'Цвет',
+            placeholder: 'Выберите цвет…',
+          },
+          'command-palette': {
+            placeholder: 'Введите команду или выполните поиск…',
+            emptyMessage: 'Нет подходящих команд',
+          },
+          'date-picker': {
+            label: 'Дата встречи',
+          },
+          divider: {
+            label: 'ИЛИ',
+          },
+          dropdown: {
+            label: 'Фрукт',
+            placeholder: 'Выберите фрукт…',
+            firstGroupLabel: 'Недавно использованные',
+            secondGroupLabel: 'Всё остальное',
+          },
+          'empty-state': {
+            title: 'Пока нет элементов',
+            description: 'Начните, создав свой первый элемент.',
+          },
+          'file-uploader': {
+            label: 'Вложения',
+          },
+          'form-field': {
+            label: 'Адрес электронной почты',
+            hint: 'Используется только для связи с вами',
+          },
+          input: {
+            label: 'Метка',
+            placeholder: 'Введите текст…',
+          },
+          menu: {
+            ariaLabel: 'Меню действий',
+          },
+          'multi-select': {
+            label: 'Фрукты',
+            placeholder: 'Выберите…',
+            firstGroupLabel: 'Недавно использованные',
+            secondGroupLabel: 'Всё остальное',
+          },
+          'number-input': {
+            label: 'Значение',
+          },
+          'progress-bar': {
+            label: 'Загрузка файлов',
+          },
+          radio: {
+            label: 'Фрукт',
+          },
+          'range-slider': {
+            label: 'Диапазон цен',
+          },
+          rating: {
+            label: 'Оцените свой опыт',
+          },
+          segmented: {
+            label: 'Просмотр',
+          },
+          slider: {
+            label: 'Громкость',
+          },
+          spinner: {
+            label: 'Загрузка',
+          },
+          switch: {
+            label: 'Переключи меня',
+          },
+          tag: {
+            removeLabel: 'Удалить тег',
+          },
+          textarea: {
+            label: 'Сообщение',
+            placeholder: 'Введите ваше сообщение…',
+          },
+          'time-picker': {
+            label: 'Время',
+            placeholder: 'Выберите время…',
+          },
+          tooltip: {
+            eaTooltip: 'Подсказки добавляют контекст при наведении или фокусе',
+          },
+          tree: {
+            ariaLabel: 'Дерево файлов',
           },
         },
       },
