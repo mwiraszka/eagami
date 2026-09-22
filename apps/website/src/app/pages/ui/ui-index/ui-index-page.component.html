@@ -103,4 +103,19 @@
       }
     </ul>
   </section>
+
+  <section
+    id="how-it-compares"
+    class="web-section">
+    <web-section-heading fragment="how-it-compares">
+      <h2 class="ui-index__heading">{{ messages().ui.index.comparison.heading }}</h2>
+    </web-section-heading>
+    <p class="ui-index__body">{{ messages().ui.index.comparison.lede }}</p>
+    <ea-data-table
+      class="ui-index__comparison"
+      [columns]="comparisonColumns"
+      [data]="comparisonRows()"
+      [hoverable]="false"
+      [aria-label]="messages().ui.index.comparison.heading" />
+  </section>
 </article>

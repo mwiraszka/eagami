@@ -5,6 +5,20 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.21.11] - 2026-09-22
+
+### Added
+
+- Add a comparison table to the Eagami UI overview page, setting the library beside other Angular component libraries on styling, translations, CSS frameworks and dependencies.
+
+### Changed
+
+- Pick up @eagami/ui v5.49.0.
+
+### Fixed
+
+- Localize the paginator playground's group thousands label.
+
 ## [3.21.10] - 2026-09-22
 
 ### Changed
@@ -1404,6 +1418,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.21.11]: https://github.com/mwiraszka/eagami/compare/website-v3.21.10...website-v3.21.11
 [3.21.10]: https://github.com/mwiraszka/eagami/compare/website-v3.21.9...website-v3.21.10
 [3.21.9]: https://github.com/mwiraszka/eagami/compare/website-v3.21.8...website-v3.21.9
 [3.21.8]: https://github.com/mwiraszka/eagami/compare/website-v3.21.7...website-v3.21.8

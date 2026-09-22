@@ -296,6 +296,40 @@ export const nl: WebMessages = {
         fontDefault: '(standaard)',
         reset: 'Resetten',
       },
+      comparison: {
+        heading: 'In vergelijking',
+        lede: 'De keuzes die het dagelijkse werk met een Angular-componentenbibliotheek bepalen, naast elkaar gezet.',
+        rows: [
+          {
+            feature: 'Stylingmodel',
+            eagami: 'CSS custom properties',
+            material: 'Sass en Material 3-tokens',
+            primeng: 'Design tokens en thema-presets',
+            spartan: 'Tailwind CSS, gekopieerd naar je app',
+          },
+          {
+            feature: 'Ingebouwde vertalingen',
+            eagami: '15 talen, tijdens runtime te wisselen',
+            material: 'Zelf aanleveren',
+            primeng: 'Zelf aanleveren',
+            spartan: 'Zelf aanleveren',
+          },
+          {
+            feature: 'Vereist een CSS-framework',
+            eagami: 'Nee',
+            material: 'Nee',
+            primeng: 'Nee',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Afhankelijkheden naast Angular',
+            eagami: 'Geen',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK en PrimeUIX-pakketten',
+            spartan: 'Angular CDK, Tailwind CSS en hulppakketten',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Installatie | Eagami UI',
@@ -1126,6 +1160,7 @@ export const nl: WebMessages = {
             totalItems: 'Totaal aantal items',
             showAllOption: 'Optie “Alle” tonen',
             pageSizeLabel: 'Label voor paginagrootte',
+            groupThousands: 'Duizendtallen groeperen',
           },
           'progress-bar': {
             variant: 'Variant',
@@ -2131,7 +2166,7 @@ export const nl: WebMessages = {
             nowrap:
               'Houdt elke cel op één regel, zodat een smal venster de tabel zijwaarts scrolt in plaats van de tekst af te breken.',
             rowHref:
-              'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt.',
+              'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt. Een rij waarvoor het null teruggeeft blijft inert, zonder link, hovermarkering, focus of activering.',
             sizingRows:
               "Rijen met de breedste inhoud van elke kolom, wel opgemaakt maar nooit getoond, zodat de kolombreedtes gelijk blijven tussen pagina's en tijdens het laden van gegevens.",
             size: 'Visuele grootte van de tabel; dichtheidsopvulling en pictogrammen schalen mee.',

@@ -1,6 +1,8 @@
 import {
   ButtonComponent,
   ColorPickerComponent,
+  type DataTableColumn,
+  DataTableComponent,
   DividerComponent,
   DropdownComponent,
   DropletIconComponent,
@@ -120,6 +122,7 @@ function radiusVars(r: number): Record<string, string> {
   imports: [
     ButtonComponent,
     ColorPickerComponent,
+    DataTableComponent,
     DividerComponent,
     DropdownComponent,
     DropletIconComponent,
@@ -144,6 +147,17 @@ export class UiIndexPageComponent {
   private readonly fontLoads = new Map<string, Promise<void>>();
 
   protected readonly messages = this.i18n.messages;
+
+  protected readonly comparisonColumns: DataTableColumn[] = [
+    { key: 'feature', label: '' },
+    { key: 'eagami', label: 'Eagami UI' },
+    { key: 'material', label: 'Angular Material' },
+    { key: 'primeng', label: 'PrimeNG' },
+    { key: 'spartan', label: 'Spartan' },
+  ];
+  protected readonly comparisonRows = computed(() => [
+    ...this.messages().ui.index.comparison.rows,
+  ]);
 
   protected readonly brandColor = signal<string | null>(DEFAULT_BRAND);
   protected readonly radius = signal(DEFAULT_RADIUS);

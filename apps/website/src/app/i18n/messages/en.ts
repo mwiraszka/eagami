@@ -288,6 +288,40 @@ export const en: WebMessages = {
         fontDefault: '(default)',
         reset: 'Reset',
       },
+      comparison: {
+        heading: 'How it compares',
+        lede: 'A side-by-side look at the choices that shape day-to-day work with an Angular component library.',
+        rows: [
+          {
+            feature: 'Styling model',
+            eagami: 'CSS custom properties',
+            material: 'Sass and Material 3 tokens',
+            primeng: 'Design tokens and theme presets',
+            spartan: 'Tailwind CSS, copied into your app',
+          },
+          {
+            feature: 'Built-in translations',
+            eagami: '15 languages, switchable at runtime',
+            material: 'Provide your own',
+            primeng: 'Provide your own',
+            spartan: 'Provide your own',
+          },
+          {
+            feature: 'Requires a CSS framework',
+            eagami: 'No',
+            material: 'No',
+            primeng: 'No',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Dependencies beyond Angular',
+            eagami: 'None',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK and PrimeUIX packages',
+            spartan: 'Angular CDK, Tailwind CSS, and utility packages',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Setup | Eagami UI',
@@ -1112,6 +1146,7 @@ export const en: WebMessages = {
             totalItems: 'Total items',
             showAllOption: 'Show all option',
             pageSizeLabel: 'Page size label',
+            groupThousands: 'Group thousands',
           },
           'progress-bar': {
             variant: 'Variant',
@@ -2036,7 +2071,7 @@ export const en: WebMessages = {
             nowrap:
               'Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text.',
             rowHref:
-              'Gives each row a link target, held by a real link in every cell so the browser shows and can open it, while a plain click still fires rowActivate.',
+              'Gives each row a link target, held by a real link in every cell so the browser shows and can open it, while a plain click still fires rowActivate. A row it returns null for is inert, with no link, hover highlight, focus or activation.',
             sizingRows:
               "Rows holding each column's widest content, laid out but never shown, so column widths stay put across pages and while data loads.",
             size: 'Visual size of the table; density paddings and icons scale with it.',

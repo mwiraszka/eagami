@@ -287,6 +287,40 @@ export const ar: WebMessages = {
         fontDefault: '(افتراضي)',
         reset: 'إعادة تعيين',
       },
+      comparison: {
+        heading: 'مقارنة',
+        lede: 'الخيارات التي تشكّل العمل اليومي مع مكتبة مكوّنات Angular، جنبًا إلى جنب.',
+        rows: [
+          {
+            feature: 'نموذج التنسيق',
+            eagami: 'خصائص CSS المخصّصة',
+            material: 'Sass ورموز Material 3',
+            primeng: 'رموز التصميم وإعدادات السمات المسبقة',
+            spartan: 'Tailwind CSS، يُنسخ إلى تطبيقك',
+          },
+          {
+            feature: 'ترجمات مدمجة',
+            eagami: '15 لغة، قابلة للتبديل أثناء التشغيل',
+            material: 'توفّرها بنفسك',
+            primeng: 'توفّرها بنفسك',
+            spartan: 'توفّرها بنفسك',
+          },
+          {
+            feature: 'يتطلب إطار عمل CSS',
+            eagami: 'لا',
+            material: 'لا',
+            primeng: 'لا',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'اعتماديات خارج Angular',
+            eagami: 'لا شيء',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK وحزم PrimeUIX',
+            spartan: 'Angular CDK وTailwind CSS وحزم مساعدة',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'الإعداد | Eagami UI',
@@ -1110,6 +1144,7 @@ export const ar: WebMessages = {
             totalItems: 'إجمالي العناصر',
             showAllOption: 'إظهار خيار «الكل»',
             pageSizeLabel: 'تسمية حجم الصفحة',
+            groupThousands: 'تجميع الآلاف',
           },
           'progress-bar': {
             variant: 'النمط',
@@ -1986,7 +2021,7 @@ export const ar: WebMessages = {
             nowrap:
               'يبقي كل خلية في سطر واحد، بحيث تمرّر الشاشة الضيقة الجدول جانبيًا بدلًا من التفاف نصه.',
             rowHref:
-              'يمنح كل صف هدف رابط، موضوعًا كرابط حقيقي في كل خلية ليعرضه المتصفح ويتمكن من فتحه، بينما تظل النقرة العادية تطلق rowActivate.',
+              'يمنح كل صف هدف رابط، موضوعًا كرابط حقيقي في كل خلية ليعرضه المتصفح ويتمكن من فتحه، بينما تظل النقرة العادية تطلق rowActivate. الصف الذي تعيد له null يبقى خاملًا، بلا رابط أو تمييز عند التحويم أو تركيز أو تفعيل.',
             sizingRows:
               'صفوف تحتوي على أعرض محتوى في كل عمود، تُنسَّق لكنها لا تُعرض أبدًا، بحيث تبقى عروض الأعمدة ثابتة بين الصفحات وأثناء تحميل البيانات.',
             size: 'الحجم البصري للجدول؛ يتدرّج معه حشو الكثافة والأيقونات.',

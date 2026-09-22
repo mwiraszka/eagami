@@ -295,6 +295,40 @@ export const esES: WebMessages = {
         fontDefault: '(predeterminado)',
         reset: 'Restablecer',
       },
+      comparison: {
+        heading: 'Comparativa',
+        lede: 'Las decisiones que marcan el trabajo diario con una biblioteca de componentes Angular, una junto a otra.',
+        rows: [
+          {
+            feature: 'Modelo de estilos',
+            eagami: 'Propiedades personalizadas de CSS',
+            material: 'Sass y tokens de Material 3',
+            primeng: 'Tokens de diseño y presets de tema',
+            spartan: 'Tailwind CSS, copiado en tu aplicación',
+          },
+          {
+            feature: 'Traducciones integradas',
+            eagami: '15 idiomas, cambiables en tiempo de ejecución',
+            material: 'Las aportas tú',
+            primeng: 'Las aportas tú',
+            spartan: 'Las aportas tú',
+          },
+          {
+            feature: 'Requiere un framework CSS',
+            eagami: 'No',
+            material: 'No',
+            primeng: 'No',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Dependencias más allá de Angular',
+            eagami: 'Ninguna',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK y paquetes PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS y paquetes de utilidades',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Instalación | Eagami UI',
@@ -1131,6 +1165,7 @@ export const esES: WebMessages = {
             totalItems: 'Total de elementos',
             showAllOption: 'Mostrar opción «Todos»',
             pageSizeLabel: 'Etiqueta del tamaño de página',
+            groupThousands: 'Agrupar miles',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -2145,7 +2180,7 @@ export const esES: WebMessages = {
             nowrap:
               'Mantiene cada celda en una sola línea, de modo que una ventana estrecha desplaza la tabla lateralmente en lugar de ajustar su texto.',
             rowHref:
-              'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate.',
+              'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate. Una fila para la que devuelve null queda inerte, sin enlace, resaltado al pasar el cursor, foco ni activación.',
             sizingRows:
               'Filas con el contenido más ancho de cada columna, maquetadas pero nunca mostradas, para que los anchos de columna no cambien entre páginas ni mientras cargan los datos.',
             size: 'Tamaño visual de la tabla; los rellenos de densidad y los iconos escalan con él.',

@@ -277,6 +277,40 @@ export const zhCN: WebMessages = {
         fontDefault: '（默认）',
         reset: '重置',
       },
+      comparison: {
+        heading: '横向对比',
+        lede: '与其他 Angular 组件库并排比较那些影响日常开发的选择。',
+        rows: [
+          {
+            feature: '样式模型',
+            eagami: 'CSS 自定义属性',
+            material: 'Sass 与 Material 3 令牌',
+            primeng: '设计令牌与主题预设',
+            spartan: 'Tailwind CSS，复制到你的应用中',
+          },
+          {
+            feature: '内置翻译',
+            eagami: '15 种语言，可在运行时切换',
+            material: '需自行提供',
+            primeng: '需自行提供',
+            spartan: '需自行提供',
+          },
+          {
+            feature: '是否需要 CSS 框架',
+            eagami: '否',
+            material: '否',
+            primeng: '否',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Angular 之外的依赖',
+            eagami: '无',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK 与 PrimeUIX 包',
+            spartan: 'Angular CDK、Tailwind CSS 与工具包',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: '安装 | Eagami UI',
@@ -1091,6 +1125,7 @@ export const zhCN: WebMessages = {
             totalItems: '项目总数',
             showAllOption: '显示“全部”选项',
             pageSizeLabel: '每页数量标签',
+            groupThousands: '千位分组',
           },
           'progress-bar': {
             variant: '变体',
@@ -1874,7 +1909,7 @@ export const zhCN: WebMessages = {
           'data-table': {
             nowrap: '让每个单元格保持单行，窄视口会横向滚动表格而不是换行文字。',
             rowHref:
-              '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。',
+              '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。返回 null 的行保持惰性，没有链接、悬停高亮、焦点或激活。',
             sizingRows:
               '包含每列最宽内容的行，参与布局但从不显示，使列宽在翻页和数据加载期间保持不变。',
             size: '表格的视觉尺寸；密度内边距和图标随之缩放。',

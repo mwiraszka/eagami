@@ -282,6 +282,40 @@ export const he: WebMessages = {
         fontDefault: '(ברירת מחדל)',
         reset: 'איפוס',
       },
+      comparison: {
+        heading: 'בהשוואה',
+        lede: 'הבחירות שמעצבות את העבודה היומיומית עם ספריית רכיבי Angular, זו לצד זו.',
+        rows: [
+          {
+            feature: 'מודל עיצוב',
+            eagami: 'מאפייני CSS מותאמים אישית',
+            material: 'Sass וטוקנים של Material 3',
+            primeng: 'טוקני עיצוב וערכות נושא מוגדרות מראש',
+            spartan: 'Tailwind CSS, מועתק לאפליקציה שלך',
+          },
+          {
+            feature: 'תרגומים מובנים',
+            eagami: '15 שפות, ניתנות להחלפה בזמן ריצה',
+            material: 'מספקים בעצמכם',
+            primeng: 'מספקים בעצמכם',
+            spartan: 'מספקים בעצמכם',
+          },
+          {
+            feature: 'דורש מסגרת CSS',
+            eagami: 'לא',
+            material: 'לא',
+            primeng: 'לא',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'תלויות מעבר ל-Angular',
+            eagami: 'אין',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK וחבילות PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS וחבילות עזר',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'התקנה | Eagami UI',
@@ -1103,6 +1137,7 @@ export const he: WebMessages = {
             totalItems: 'סך הפריטים',
             showAllOption: 'הצגת האפשרות «הכל»',
             pageSizeLabel: 'תווית גודל העמוד',
+            groupThousands: 'קיבוץ אלפים',
           },
           'progress-bar': {
             variant: 'וריאנט',
@@ -1961,7 +1996,7 @@ export const he: WebMessages = {
             nowrap:
               'שומר כל תא בשורה אחת, כך שחלון צר גולל את הטבלה לצד במקום לשבור את הטקסט.',
             rowHref:
-              'נותן לכל שורה יעד קישור, המוצב כקישור אמיתי בכל תא כדי שהדפדפן יציג אותו ויוכל לפתוח אותו, בעוד לחיצה רגילה עדיין מפעילה rowActivate.',
+              'נותן לכל שורה יעד קישור, המוצב כקישור אמיתי בכל תא כדי שהדפדפן יציג אותו ויוכל לפתוח אותו, בעוד לחיצה רגילה עדיין מפעילה rowActivate. שורה שעבורה הוא מחזיר null נשארת אינרטית, בלי קישור, הדגשה בריחוף, מיקוד או הפעלה.',
             sizingRows:
               'שורות המכילות את התוכן הרחב ביותר של כל עמודה, שמעומדות אך לעולם אינן מוצגות, כך שרוחבי העמודות נשארים קבועים בין דפים ובזמן טעינת נתונים.',
             size: 'הגודל הוויזואלי של הטבלה; ריווח הצפיפות והאייקונים מתאימים אליו.',

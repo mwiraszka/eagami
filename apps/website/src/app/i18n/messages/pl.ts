@@ -295,6 +295,40 @@ export const pl: WebMessages = {
         fontDefault: '(domyślnie)',
         reset: 'Resetuj',
       },
+      comparison: {
+        heading: 'Porównanie',
+        lede: 'Decyzje, które kształtują codzienną pracę z biblioteką komponentów Angular, zestawione obok siebie.',
+        rows: [
+          {
+            feature: 'Model stylowania',
+            eagami: 'Właściwości niestandardowe CSS',
+            material: 'Sass i tokeny Material 3',
+            primeng: 'Tokeny projektowe i presety motywów',
+            spartan: 'Tailwind CSS, kopiowany do aplikacji',
+          },
+          {
+            feature: 'Wbudowane tłumaczenia',
+            eagami: '15 języków, przełączanych w czasie działania',
+            material: 'Dostarczasz własne',
+            primeng: 'Dostarczasz własne',
+            spartan: 'Dostarczasz własne',
+          },
+          {
+            feature: 'Wymaga frameworka CSS',
+            eagami: 'Nie',
+            material: 'Nie',
+            primeng: 'Nie',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Zależności poza Angularem',
+            eagami: 'Brak',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK i pakiety PrimeUIX',
+            spartan: 'Angular CDK, Tailwind CSS i pakiety pomocnicze',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Instalacja | Eagami UI',
@@ -1131,6 +1165,7 @@ export const pl: WebMessages = {
             totalItems: 'Łączna liczba elementów',
             showAllOption: 'Pokaż opcję „Wszystkie”',
             pageSizeLabel: 'Etykieta rozmiaru strony',
+            groupThousands: 'Grupuj tysiące',
           },
           'progress-bar': {
             variant: 'Wariant',
@@ -2090,7 +2125,7 @@ export const pl: WebMessages = {
             nowrap:
               'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
             rowHref:
-              'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate.',
+              'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate. Wiersz, dla którego zwraca null, pozostaje bierny: bez łącza, podświetlenia po najechaniu, fokusu ani aktywacji.',
             sizingRows:
               'Wiersze z najszerszą zawartością każdej kolumny, układane, lecz nigdy niewyświetlane, dzięki czemu szerokości kolumn nie zmieniają się między stronami ani podczas ładowania danych.',
             size: 'Wizualny rozmiar tabeli; wypełnienia gęstości i ikony skalują się wraz z nim.',

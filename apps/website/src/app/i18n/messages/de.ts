@@ -296,6 +296,40 @@ export const de: WebMessages = {
         fontDefault: '(Standard)',
         reset: 'Zurücksetzen',
       },
+      comparison: {
+        heading: 'Im Vergleich',
+        lede: 'Die Entscheidungen, die die tägliche Arbeit mit einer Angular-Komponentenbibliothek prägen, im direkten Vergleich.',
+        rows: [
+          {
+            feature: 'Styling-Modell',
+            eagami: 'CSS Custom Properties',
+            material: 'Sass und Material-3-Tokens',
+            primeng: 'Design-Tokens und Theme-Presets',
+            spartan: 'Tailwind CSS, in die App kopiert',
+          },
+          {
+            feature: 'Integrierte Übersetzungen',
+            eagami: '15 Sprachen, zur Laufzeit umschaltbar',
+            material: 'Selbst bereitstellen',
+            primeng: 'Selbst bereitstellen',
+            spartan: 'Selbst bereitstellen',
+          },
+          {
+            feature: 'Erfordert ein CSS-Framework',
+            eagami: 'Nein',
+            material: 'Nein',
+            primeng: 'Nein',
+            spartan: 'Tailwind CSS',
+          },
+          {
+            feature: 'Abhängigkeiten über Angular hinaus',
+            eagami: 'Keine',
+            material: 'Angular CDK',
+            primeng: 'Angular CDK und PrimeUIX-Pakete',
+            spartan: 'Angular CDK, Tailwind CSS und Hilfspakete',
+          },
+        ],
+      },
     },
     setup: {
       metaTitle: 'Einrichtung | Eagami UI',
@@ -1134,6 +1168,7 @@ export const de: WebMessages = {
             totalItems: 'Gesamtzahl der Einträge',
             showAllOption: 'Option „Alle“ anzeigen',
             pageSizeLabel: 'Beschriftung der Seitengröße',
+            groupThousands: 'Tausender gruppieren',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -2145,7 +2180,7 @@ export const de: WebMessages = {
             nowrap:
               'Hält jede Zelle auf einer Zeile, sodass ein schmaler Viewport die Tabelle seitwärts scrollt, statt ihren Text umzubrechen.',
             rowHref:
-              'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst.',
+              'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst. Eine Zeile, für die es null liefert, bleibt inert: ohne Link, Hover-Hervorhebung, Fokus oder Aktivierung.',
             sizingRows:
               'Zeilen mit dem breitesten Inhalt jeder Spalte, die zwar gesetzt, aber nie angezeigt werden, damit die Spaltenbreiten über Seiten hinweg und während des Ladens gleich bleiben.',
             size: 'Visuelle Größe der Tabelle; Dichte-Innenabstände und Symbole skalieren mit ihr.',
