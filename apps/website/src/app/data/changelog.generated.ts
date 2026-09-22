@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.48.0',
+    date: '2026-09-22',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `showAllOption` input to the paginator, offering an "All" page size that puts every item on one page and emits the exported `PAGE_SIZE_ALL` as the page size.',
+          'Add a `pageSizeLabel` input to the paginator, labelling its page-size selector by the localized "Rows", "Items", "Results", "Products", "Records", "Entries", "Posts" or "Articles" per page.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.47.1',
     date: '2026-09-22',
     sections: [

@@ -1089,6 +1089,8 @@ export const zhCN: WebMessages = {
             showRangeLabel: '显示范围标签',
             disabled: '禁用',
             totalItems: '项目总数',
+            showAllOption: '显示“全部”选项',
+            pageSizeLabel: '每页数量标签',
           },
           'progress-bar': {
             variant: '变体',
@@ -1408,6 +1410,10 @@ export const zhCN: WebMessages = {
             goToPage: '导航到给定页，钳制到有效范围内。',
             nextPage: '如果存在下一页则导航到下一页。',
             prevPage: '如果存在上一页则导航到上一页。',
+            showAllOption:
+              '在各选项之后提供“全部”这一每页数量，选中时以 PAGE_SIZE_ALL 作为每页数量发出。',
+            pageSizeLabel:
+              '每页数量选择器所计数的内容：“行”“项目”“结果”“商品”“记录”“条目”“帖子”或“文章”的本地化标签。',
           },
           'progress-bar': {
             variant: '进度条的颜色变体。',

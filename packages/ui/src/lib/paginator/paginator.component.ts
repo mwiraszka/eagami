@@ -31,11 +31,26 @@ export interface PaginatorState {
   pageSize: number;
 }
 
+/** The page size the "All" option sets, putting every item on a single page. */
+export const PAGE_SIZE_ALL = -1;
+
+/** What the page-size selector counts, picking its localized "... per page" label. */
+export type PaginatorPageSizeLabel =
+  | 'rows'
+  | 'items'
+  | 'results'
+  | 'products'
+  | 'records'
+  | 'entries'
+  | 'posts'
+  | 'articles';
+
 /**
  * Page navigation control with previous/next buttons, numbered page jumps,
  * an optional page-size selector, and a range label. Exposes `page` and
  * `pageSize` as two-way `model()` bindings and emits a single `changed`
- * event whenever either changes.
+ * event whenever either changes. With `showAllOption` the selector also offers
+ * "All", which sets the page size to `PAGE_SIZE_ALL`.
  */
 @Component({
   selector: 'ea-paginator',
@@ -57,7 +72,11 @@ export class PaginatorComponent {
 
   readonly totalItems = input.required<number>();
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);
+  /** Offers an "All" page size after the options, emitting `PAGE_SIZE_ALL` when chosen. */
+  readonly showAllOption = input<boolean>(false);
   readonly showPageSizeSelector = input<boolean>(true);
+  /** What the page-size selector counts, choosing its localized "... per page" label. */
+  readonly pageSizeLabel = input<PaginatorPageSizeLabel>('rows');
   readonly showRangeLabel = input<boolean>(true);
   readonly align = input<PaginatorAlign>('right');
   readonly size = input<PaginatorSize>('md');
@@ -71,16 +90,29 @@ export class PaginatorComponent {
   /** Fires when the user changes either the current page or the page size. */
   readonly changed = output<PaginatorState>();
 
-  readonly totalPages = computed(() =>
-    Math.max(1, Math.ceil(this.totalItems() / this.pageSize())),
+  protected readonly PAGE_SIZE_ALL = PAGE_SIZE_ALL;
+
+  protected readonly resolvedPageSizeLabel = computed(
+    () => this.i18n.messages().paginator[`${this.pageSizeLabel()}PerPage`],
   );
 
-  readonly rangeStart = computed(() =>
-    this.totalItems() === 0 ? 0 : (this.page() - 1) * this.pageSize() + 1,
+  readonly showsAll = computed(() => this.pageSize() === PAGE_SIZE_ALL);
+
+  readonly totalPages = computed(() =>
+    this.showsAll() ? 1 : Math.max(1, Math.ceil(this.totalItems() / this.pageSize())),
   );
+
+  readonly rangeStart = computed(() => {
+    if (this.totalItems() === 0) {
+      return 0;
+    }
+    return this.showsAll() ? 1 : (this.page() - 1) * this.pageSize() + 1;
+  });
 
   readonly rangeEnd = computed(() =>
-    Math.min(this.page() * this.pageSize(), this.totalItems()),
+    this.showsAll()
+      ? this.totalItems()
+      : Math.min(this.page() * this.pageSize(), this.totalItems()),
   );
 
   readonly canGoPrev = computed(() => this.page() > 1);

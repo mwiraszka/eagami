@@ -1132,6 +1132,8 @@ export const de: WebMessages = {
             showRangeLabel: 'Bereichs-Label anzeigen',
             disabled: 'Deaktiviert',
             totalItems: 'Gesamtzahl der Einträge',
+            showAllOption: 'Option „Alle“ anzeigen',
+            pageSizeLabel: 'Beschriftung der Seitengröße',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -1512,6 +1514,10 @@ export const de: WebMessages = {
               'Navigiert zur angegebenen Seite, begrenzt auf den gültigen Bereich.',
             nextPage: 'Navigiert zur nächsten Seite, sofern eine existiert.',
             prevPage: 'Navigiert zur vorherigen Seite, sofern eine existiert.',
+            showAllOption:
+              'Bietet nach den Optionen die Seitengröße „Alle“ an und gibt bei Auswahl PAGE_SIZE_ALL als Seitengröße aus.',
+            pageSizeLabel:
+              'Was die Seitengrößen-Auswahl zählt: die lokalisierte Beschriftung „Zeilen“, „Elemente“, „Ergebnisse“, „Produkte“, „Datensätze“, „Einträge“, „Beiträge“ oder „Artikel“ pro Seite.',
           },
           'progress-bar': {
             variant: 'Farbvariante des Balkens.',

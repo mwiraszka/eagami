@@ -1124,6 +1124,8 @@ export const nl: WebMessages = {
             showRangeLabel: 'Bereiklabel tonen',
             disabled: 'Uitgeschakeld',
             totalItems: 'Totaal aantal items',
+            showAllOption: 'Optie “Alle” tonen',
+            pageSizeLabel: 'Label voor paginagrootte',
           },
           'progress-bar': {
             variant: 'Variant',
@@ -1499,6 +1501,10 @@ export const nl: WebMessages = {
               'Navigeert naar de gegeven pagina, afgekapt binnen het geldige bereik.',
             nextPage: 'Navigeert naar de volgende pagina als die bestaat.',
             prevPage: 'Navigeert naar de vorige pagina als die bestaat.',
+            showAllOption:
+              'Biedt na de opties de paginagrootte “Alle” aan en stuurt bij keuze PAGE_SIZE_ALL als paginagrootte uit.',
+            pageSizeLabel:
+              'Wat de paginagroottekiezer telt: het vertaalde label “Rijen”, “Items”, “Resultaten”, “Producten”, “Records”, “Vermeldingen”, “Berichten” of “Artikelen” per pagina.',
           },
           'progress-bar': {
             variant: 'Kleurvariant van de balk.',

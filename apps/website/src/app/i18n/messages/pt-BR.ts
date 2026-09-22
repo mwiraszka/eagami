@@ -1124,6 +1124,8 @@ export const ptBR: WebMessages = {
             showRangeLabel: 'Mostrar rótulo de intervalo',
             disabled: 'Desativado',
             totalItems: 'Total de itens',
+            showAllOption: 'Mostrar opção “Todos”',
+            pageSizeLabel: 'Rótulo do tamanho da página',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -1495,6 +1497,10 @@ export const ptBR: WebMessages = {
             goToPage: 'Navega para a página informada, limitada ao intervalo válido.',
             nextPage: 'Navega para a próxima página, se houver.',
             prevPage: 'Navega para a página anterior, se houver.',
+            showAllOption:
+              'Oferece após as opções o tamanho de página “Todos”, emitindo PAGE_SIZE_ALL como tamanho de página ao ser escolhido.',
+            pageSizeLabel:
+              'O que o seletor de tamanho de página conta: o rótulo localizado de “Linhas”, “Itens”, “Resultados”, “Produtos”, “Registros”, “Entradas”, “Publicações” ou “Artigos” por página.',
           },
           'progress-bar': {
             variant: 'Variante de cor da barra.',

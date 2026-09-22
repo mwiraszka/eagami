@@ -1129,6 +1129,8 @@ export const esES: WebMessages = {
             showRangeLabel: 'Mostrar etiqueta de rango',
             disabled: 'Deshabilitado',
             totalItems: 'Total de elementos',
+            showAllOption: 'Mostrar opción «Todos»',
+            pageSizeLabel: 'Etiqueta del tamaño de página',
           },
           'progress-bar': {
             variant: 'Variante',
@@ -1510,6 +1512,10 @@ export const esES: WebMessages = {
             goToPage: 'Navega a la página indicada, acotada dentro del rango válido.',
             nextPage: 'Navega a la página siguiente si existe.',
             prevPage: 'Navega a la página anterior si existe.',
+            showAllOption:
+              'Ofrece tras las opciones el tamaño de página «Todos», emitiendo PAGE_SIZE_ALL como tamaño de página al elegirlo.',
+            pageSizeLabel:
+              'Lo que cuenta el selector de tamaño de página: la etiqueta localizada de «Filas», «Elementos», «Resultados», «Productos», «Registros», «Entradas», «Publicaciones» o «Artículos» por página.',
           },
           'progress-bar': {
             variant: 'Variante de color de la barra.',

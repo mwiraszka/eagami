@@ -3010,9 +3010,23 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: true,
       },
       {
+        name: 'pageSizeLabel',
+        type: 'PaginatorPageSizeLabel',
+        default: "'rows'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'pageSizeOptions',
         type: 'number[]',
         default: '[10, 25, 50, 100]',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'showAllOption',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
