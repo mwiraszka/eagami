@@ -1175,6 +1175,7 @@ export const el: WebMessages = {
             totalItems: 'Σύνολο στοιχείων',
             showAllOption: 'Εμφάνιση επιλογής «Όλα»',
             pageSizeLabel: 'Ετικέτα μεγέθους σελίδας',
+            groupThousands: 'Ομαδοποίηση χιλιάδων',
           },
           'progress-bar': {
             variant: 'Παραλλαγή',

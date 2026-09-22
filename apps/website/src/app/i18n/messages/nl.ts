@@ -1160,6 +1160,7 @@ export const nl: WebMessages = {
             totalItems: 'Totaal aantal items',
             showAllOption: 'Optie “Alle” tonen',
             pageSizeLabel: 'Label voor paginagrootte',
+            groupThousands: 'Duizendtallen groeperen',
           },
           'progress-bar': {
             variant: 'Variant',

@@ -1125,6 +1125,7 @@ export const zhCN: WebMessages = {
             totalItems: '项目总数',
             showAllOption: '显示“全部”选项',
             pageSizeLabel: '每页数量标签',
+            groupThousands: '千位分组',
           },
           'progress-bar': {
             variant: '变体',

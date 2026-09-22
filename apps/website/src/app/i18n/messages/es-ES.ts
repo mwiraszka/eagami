@@ -1165,6 +1165,7 @@ export const esES: WebMessages = {
             totalItems: 'Total de elementos',
             showAllOption: 'Mostrar opción «Todos»',
             pageSizeLabel: 'Etiqueta del tamaño de página',
+            groupThousands: 'Agrupar miles',
           },
           'progress-bar': {
             variant: 'Variante',

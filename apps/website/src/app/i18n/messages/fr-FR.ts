@@ -1174,6 +1174,7 @@ export const frFR: WebMessages = {
             totalItems: 'Nombre total d’éléments',
             showAllOption: 'Afficher l’option « Tous »',
             pageSizeLabel: 'Libellé de la taille de page',
+            groupThousands: 'Grouper les milliers',
           },
           'progress-bar': {
             variant: 'Variante',

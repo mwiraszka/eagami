@@ -1148,6 +1148,7 @@ export const hi: WebMessages = {
             totalItems: 'कुल आइटम',
             showAllOption: '«सभी» विकल्प दिखाएँ',
             pageSizeLabel: 'पृष्ठ आकार का लेबल',
+            groupThousands: 'हज़ारों को समूहित करें',
           },
           'progress-bar': {
             variant: 'वेरिएंट',

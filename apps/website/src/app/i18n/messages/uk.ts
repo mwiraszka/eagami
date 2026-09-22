@@ -1155,6 +1155,7 @@ export const uk: WebMessages = {
             totalItems: 'Загальна кількість елементів',
             showAllOption: 'Показувати варіант «Усі»',
             pageSizeLabel: 'Підпис розміру сторінки',
+            groupThousands: 'Групувати тисячі',
           },
           'progress-bar': {
             variant: 'Варіант',

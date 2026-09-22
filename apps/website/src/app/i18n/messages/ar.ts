@@ -1144,6 +1144,7 @@ export const ar: WebMessages = {
             totalItems: 'إجمالي العناصر',
             showAllOption: 'إظهار خيار «الكل»',
             pageSizeLabel: 'تسمية حجم الصفحة',
+            groupThousands: 'تجميع الآلاف',
           },
           'progress-bar': {
             variant: 'النمط',

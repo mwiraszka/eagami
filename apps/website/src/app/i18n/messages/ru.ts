@@ -1154,6 +1154,7 @@ export const ru: WebMessages = {
             totalItems: 'Всего элементов',
             showAllOption: 'Показывать вариант «Все»',
             pageSizeLabel: 'Подпись размера страницы',
+            groupThousands: 'Группировать тысячи',
           },
           'progress-bar': {
             variant: 'Вариант',

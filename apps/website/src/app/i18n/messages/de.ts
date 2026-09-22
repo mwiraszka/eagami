@@ -1168,6 +1168,7 @@ export const de: WebMessages = {
             totalItems: 'Gesamtzahl der Einträge',
             showAllOption: 'Option „Alle“ anzeigen',
             pageSizeLabel: 'Beschriftung der Seitengröße',
+            groupThousands: 'Tausender gruppieren',
           },
           'progress-bar': {
             variant: 'Variante',

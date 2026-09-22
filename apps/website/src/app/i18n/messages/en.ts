@@ -1146,6 +1146,7 @@ export const en: WebMessages = {
             totalItems: 'Total items',
             showAllOption: 'Show all option',
             pageSizeLabel: 'Page size label',
+            groupThousands: 'Group thousands',
           },
           'progress-bar': {
             variant: 'Variant',

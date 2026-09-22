@@ -1137,6 +1137,7 @@ export const he: WebMessages = {
             totalItems: 'סך הפריטים',
             showAllOption: 'הצגת האפשרות «הכל»',
             pageSizeLabel: 'תווית גודל העמוד',
+            groupThousands: 'קיבוץ אלפים',
           },
           'progress-bar': {
             variant: 'וריאנט',

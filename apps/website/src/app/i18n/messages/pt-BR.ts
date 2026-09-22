@@ -1160,6 +1160,7 @@ export const ptBR: WebMessages = {
             totalItems: 'Total de itens',
             showAllOption: 'Mostrar opção “Todos”',
             pageSizeLabel: 'Rótulo do tamanho da página',
+            groupThousands: 'Agrupar milhares',
           },
           'progress-bar': {
             variant: 'Variante',

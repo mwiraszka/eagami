@@ -1161,6 +1161,7 @@ export const is: WebMessages = {
             totalItems: 'Heildarfjöldi atriða',
             showAllOption: 'Sýna valkostinn „Allt“',
             pageSizeLabel: 'Merki síðustærðar',
+            groupThousands: 'Hópa þúsundir',
           },
           'progress-bar': {
             variant: 'Afbrigði',
