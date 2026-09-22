@@ -10,7 +10,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface AvatarKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -38,6 +43,7 @@ const DEMO_SRC = 'https://i.pravatar.cc/150?img=15';
 })
 export class AvatarDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.avatar, UI_API[SLUG]);
   protected readonly state = signal<AvatarKnobState>(this.initialState());
 
@@ -53,7 +59,7 @@ export class AvatarDemoPageComponent {
 
   private initialState(): AvatarKnobState {
     return {
-      ...initialKnobState(this.knobs, PLAYGROUND_KNOBS.avatar),
+      ...initialKnobState(this.knobs, PLAYGROUND_KNOBS.avatar, this.knobDefaults),
       src: DEMO_SRC,
     } as AvatarKnobState;
   }

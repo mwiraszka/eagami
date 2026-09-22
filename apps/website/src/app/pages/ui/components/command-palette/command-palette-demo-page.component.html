@@ -26,33 +26,33 @@
         <div class="demo-item-row">
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Label"
+            [placeholder]="messages().ui.component.common.label"
             [value]="item.label"
             (valueChange)="updateItem(item.id, { label: $event })" />
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Description"
+            [placeholder]="messages().ui.component.common.description"
             [value]="item.description"
             (valueChange)="updateItem(item.id, { description: $event })" />
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Shortcut"
+            [placeholder]="messages().ui.component.common.shortcut"
             [value]="item.shortcut"
             (valueChange)="updateItem(item.id, { shortcut: $event })" />
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Group"
+            [placeholder]="messages().ui.component.common.group"
             [value]="item.group"
             (valueChange)="updateItem(item.id, { group: $event })" />
           <ea-checkbox
-            label="Disabled"
+            [label]="messages().ui.component.common.disabled"
             [checked]="item.disabled"
             (changed)="updateItem(item.id, { disabled: $event })" />
           <ea-button
             variant="ghost"
             size="sm"
-            eaTooltip="Delete command"
-            aria-label="Delete command"
+            [eaTooltip]="messages().ui.component.common.deleteCommand"
+            [aria-label]="messages().ui.component.common.deleteCommand"
             (clicked)="removeItem(item.id)">
             <ea-icon-trash class="demo-item-row__delete-icon" />
           </ea-button>
@@ -62,8 +62,8 @@
         class="demo-items-editor__add"
         variant="secondary"
         size="sm"
-        eaTooltip="Add command"
-        aria-label="Add command"
+        [eaTooltip]="messages().ui.component.common.addCommand"
+        [aria-label]="messages().ui.component.common.addCommand"
         (clicked)="addItem()">
         <ea-icon-plus />
       </ea-button>

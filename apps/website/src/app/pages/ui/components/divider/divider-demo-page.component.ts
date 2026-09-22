@@ -10,7 +10,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface DividerKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -35,9 +40,14 @@ const SLUG = 'divider';
 })
 export class DividerDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.divider, UI_API[SLUG]);
   protected readonly state = signal<DividerKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.divider) as DividerKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.divider,
+      this.knobDefaults,
+    ) as DividerKnobState,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
@@ -48,7 +58,11 @@ export class DividerDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.divider) as DividerKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.divider,
+        this.knobDefaults,
+      ) as DividerKnobState,
     );
   }
 }

@@ -25,7 +25,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
 interface MultiSelectKnobState {
@@ -68,12 +73,17 @@ export class MultiSelectDemoPageComponent {
   private readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<MultiSelectKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS[SLUG],
+      this.knobDefaults,
+    ) as MultiSelectKnobState,
   );
 
   /** Options the visitor added through the `allowCreate` row, on top of the fixed list. */
@@ -132,7 +142,11 @@ export class MultiSelectDemoPageComponent {
   protected reset(): void {
     this.createdOptions.set([]);
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as MultiSelectKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS[SLUG],
+        this.knobDefaults,
+      ) as MultiSelectKnobState,
     );
   }
 }

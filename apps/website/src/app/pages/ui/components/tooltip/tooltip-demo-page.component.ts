@@ -17,7 +17,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface TooltipKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -53,9 +58,14 @@ export class TooltipDemoPageComponent {
 
   protected readonly slug = SLUG;
   protected readonly avatarSrc = DEMO_AVATAR_SRC;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.tooltip, UI_API[SLUG]);
   protected readonly state = signal<TooltipKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.tooltip) as TooltipKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.tooltip,
+      this.knobDefaults,
+    ) as TooltipKnobState,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
@@ -64,7 +74,11 @@ export class TooltipDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.tooltip) as TooltipKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.tooltip,
+        this.knobDefaults,
+      ) as TooltipKnobState,
     );
   }
 }

@@ -29,14 +29,14 @@
         <div class="demo-item-row">
           <ea-input
             class="demo-item-row__grow"
-            placeholder="Option label"
+            [placeholder]="messages().ui.component.common.optionLabel"
             [value]="item.label"
             (valueChange)="updateOption(item.id, $event)" />
           <ea-button
             variant="ghost"
             size="sm"
-            eaTooltip="Delete option"
-            aria-label="Delete option"
+            [eaTooltip]="messages().ui.component.common.deleteOption"
+            [aria-label]="messages().ui.component.common.deleteOption"
             (clicked)="removeOption(item.id)">
             <ea-icon-trash class="demo-item-row__delete-icon" />
           </ea-button>
@@ -46,8 +46,8 @@
         class="demo-items-editor__add"
         variant="secondary"
         size="sm"
-        eaTooltip="Add option"
-        aria-label="Add option"
+        [eaTooltip]="messages().ui.component.common.addOption"
+        [aria-label]="messages().ui.component.common.addOption"
         (clicked)="addOption()">
         <ea-icon-plus />
       </ea-button>

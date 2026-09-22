@@ -6,9 +6,16 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -33,12 +40,6 @@ interface StepItem {
   content: string;
 }
 
-const STEPS: readonly StepItem[] = [
-  { label: 'Account', content: 'Step 1: account details.' },
-  { label: 'Profile', content: 'Step 2: profile info.' },
-  { label: 'Review', content: 'Step 3: review and submit.' },
-];
-
 @Component({
   selector: 'web-stepper-demo-page',
   templateUrl: './stepper-demo-page.component.html',
@@ -51,16 +52,24 @@ const STEPS: readonly StepItem[] = [
   ],
 })
 export class StepperDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.stepper, UI_API[SLUG]);
   protected readonly state = signal<StepperKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.stepper) as StepperKnobState,
   );
 
-  protected readonly steps = STEPS;
+  protected readonly steps = computed<readonly StepItem[]>(() => {
+    const m = this.messages().ui.component.demos.stepper;
+    return [
+      { label: m.accountLabel, content: m.accountContent },
+      { label: m.profileLabel, content: m.profileContent },
+      { label: m.reviewLabel, content: m.reviewContent },
+    ];
+  });
 
   protected readonly childMarkup = computed(() =>
-    this.steps
+    this.steps()
       .map(step => {
         const attrBlock = `  label="${step.label}">`;
         return `<ea-step\n${attrBlock}\n  ${step.content}\n</ea-step>`;

@@ -108,7 +108,7 @@
         @if (directionToggle()) {
           <div class="playground__control">
             <ea-segmented
-              label="Direction"
+              [label]="messages().ui.component.playground.direction"
               [options]="directionOptions"
               [value]="direction()"
               (changed)="onDirectionChange($event)" />

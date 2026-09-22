@@ -638,6 +638,25 @@ export const is: WebMessages = {
         warningLabel: 'Viðvörun',
         errorLabel: 'Villa',
         infoLabel: 'Upplýsingar',
+        heading: 'Fyrirsögn',
+        content: 'Efni',
+        time: 'Tími',
+        current: 'Núverandi',
+        emphasized: 'Áherslumerkt',
+        shortcut: 'Flýtilykill',
+        group: 'Hópur',
+        optionLabel: 'Merkimiði valkosts',
+        segmentText: 'Texti búts',
+        addItem: 'Bæta við atriði',
+        deleteItem: 'Eyða atriði',
+        addOption: 'Bæta við valkosti',
+        deleteOption: 'Eyða valkosti',
+        addCommand: 'Bæta við skipun',
+        deleteCommand: 'Eyða skipun',
+        addSegment: 'Bæta við bút',
+        deleteSegment: 'Eyða bút',
+        description: 'Lýsing',
+        label: 'Merkimiði',
       },
       demos: {
         accordion: {
@@ -656,6 +675,8 @@ export const is: WebMessages = {
           sectionTwoBody: 'Efni fyrir kafla tvö.',
           disabledSectionLabel: 'Óvirkur kafli',
           disabledSectionBody: 'Ekki er hægt að ná í þetta efni.',
+          newSectionHeading: 'Nýr hluti',
+          newSectionContent: 'Nýtt efni',
         },
         alert: {
           defaultText: 'Þetta er sjálfgefin tilkynning',
@@ -666,6 +687,7 @@ export const is: WebMessages = {
           dismissibleText: 'Þessa tilkynningu er hægt að loka',
           tooltipSuppressed:
             'Ábendingar eru bældar á snertitækjum til að forðast klístraða yfirsveiflu. Skoðaðu þennan kafla á tæki með mús til að sjá sýnishornin í aðgerð.',
+          message: 'Þetta eru viðvörunarskilaboð.',
         },
         autocomplete: {
           startTyping: 'Byrjaðu að skrifa…',
@@ -674,6 +696,13 @@ export const is: WebMessages = {
           breedPlaceholder: 'Hundategund…',
           minMaxLabel: 'Lágm. 2 stafir, hám. 3 niðurstöður',
           minMaxPlaceholder: 'Sláðu inn að minnsta kosti 2 stafi…',
+          goldenRetriever: 'Golden retriever',
+          germanShepherd: 'Þýskur fjárhundur',
+          beagle: 'Beagle',
+          poodle: 'Púðluhundur',
+          boxer: 'Boxer',
+          dachshund: 'Dachshund',
+          newBreed: 'Ný tegund',
         },
         avatarEditor: {
           result: 'Niðurstaða:',
@@ -702,6 +731,9 @@ export const is: WebMessages = {
           cardTitleHeader: 'Titill spjalds',
           cardWithFooterBody:
             'Þetta spjald er með haus, meginmál og síðufót með aðgerðum.',
+          bodyText:
+            'Þetta er meginmál kortsins. Það getur innihaldið hvaða texta eða einingar sem er.',
+          footer: 'Fótur',
         },
         checkbox: {
           acceptTermsAndConditions: 'Samþykkja skilmála og skilyrði',
@@ -963,6 +995,12 @@ export const is: WebMessages = {
             return `Þetta er ${labels[variant] ?? variant} tilkynning`;
           },
           segmentsLabel: 'Bútar',
+          movedSegment: 'Fært: ',
+          roadmapSegment: 'Vegvísir 3. ársfjórðungs',
+          toSegment: ' í ',
+          archivedSegment: 'Geymd verkefni',
+          title: 'Verkefni uppfært',
+          newSegment: ' nýr bútur',
         },
         tooltip: {
           triggerLabel: '(svífðu yfir mig)',
@@ -997,9 +1035,42 @@ export const is: WebMessages = {
           hint: 'Ýttu á Ctrl + K (eða Cmd + K) til að opna skipanaspjaldið hvar sem er á þessari síðu.',
           openButton: 'Opna skipanaspjald',
           executedToast: label => `Keyrt: ${label}`,
+          newFile: 'Ný skrá',
+          openFile: 'Opna skrá',
+          save: 'Vista',
+          find: 'Finna',
+          replace: 'Skipta út',
+          undo: 'Afturkalla',
+          toggleTheme: 'Skipta um þema',
+          toggleThemeDescription: 'Skipta milli ljóss og dökks hams',
+          lockWorkspace: 'Læsa vinnusvæði',
+          lockWorkspaceDescription: 'Óvirkt í augnablikinu (eiginleiki í beta)',
+          fileGroup: 'Skrá',
+          editGroup: 'Breyta',
+          newCommand: 'Ný skipun',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Notandamynd uppfærð',
+        },
+        stepper: {
+          accountLabel: 'Reikningur',
+          accountContent: 'Skref 1: upplýsingar um reikning.',
+          profileLabel: 'Prófíll',
+          profileContent: 'Skref 2: prófílupplýsingar.',
+          reviewLabel: 'Yfirferð',
+          reviewContent: 'Skref 3: yfirfara og senda.',
+        },
+        timeline: {
+          orderPlaced: 'Pöntun lögð inn',
+          orderPlacedDescription: 'Greiðsla staðfest og kvittun send.',
+          packed: 'Pakkað',
+          packedDescription: 'Vörur teknar til og pakkað í vöruhúsinu.',
+          outForDelivery: 'Í útkeyrslu',
+          outForDeliveryDescription: 'Sendillinn er á leiðinni.',
+          delivered: 'Afhent',
+          deliveredDescription: 'Áætlað fyrir lok dags.',
+          newEvent: 'Nýr atburður',
+          newEventDescription: 'Ný lýsing',
         },
       },
       playground: {
@@ -2278,6 +2349,115 @@ export const is: WebMessages = {
             closed:
               'Kviknar þegar glugginn lokast, óháð því hvort honum var lokað af notandanum eða forritunarlega.',
             opened: 'Kviknar þegar glugginn hefur verið sýndur með showModal().',
+          },
+        },
+        direction: 'Stefna',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Hundategund',
+            placeholder: 'Byrjaðu að skrifa…',
+            firstGroupLabel: 'Nýlega notað',
+            secondGroupLabel: 'Allt annað',
+          },
+          avatar: {
+            alt: 'Notandamynd',
+          },
+          button: {
+            label: 'Ýttu á mig',
+          },
+          checkbox: {
+            label: 'Samþykkja skilmála og skilyrði',
+          },
+          'code-input': {
+            label: 'Staðfestingarkóði',
+          },
+          'color-picker': {
+            label: 'Litur',
+            placeholder: 'Veldu lit…',
+          },
+          'command-palette': {
+            placeholder: 'Sláðu inn skipun eða leitaðu…',
+            emptyMessage: 'Engar samsvarandi skipanir',
+          },
+          'date-picker': {
+            label: 'Dagsetning tíma',
+          },
+          divider: {
+            label: 'EÐA',
+          },
+          dropdown: {
+            label: 'Ávöxtur',
+            placeholder: 'Veldu ávöxt…',
+            firstGroupLabel: 'Nýlega notað',
+            secondGroupLabel: 'Allt annað',
+          },
+          'empty-state': {
+            title: 'Engin atriði enn',
+            description: 'Byrjaðu með því að búa til fyrsta atriðið þitt.',
+          },
+          'file-uploader': {
+            label: 'Viðhengi',
+          },
+          'form-field': {
+            label: 'Netfang',
+            hint: 'Við notum það aðeins til að ná í þig',
+          },
+          input: {
+            label: 'Merkimiði',
+            placeholder: 'Sláðu inn texta…',
+          },
+          menu: {
+            ariaLabel: 'Aðgerðavalmynd',
+          },
+          'multi-select': {
+            label: 'Ávextir',
+            placeholder: 'Veldu…',
+            firstGroupLabel: 'Nýlega notað',
+            secondGroupLabel: 'Allt annað',
+          },
+          'number-input': {
+            label: 'Gildi',
+          },
+          'progress-bar': {
+            label: 'Hleð upp skrám',
+          },
+          radio: {
+            label: 'Ávöxtur',
+          },
+          'range-slider': {
+            label: 'Verðbil',
+          },
+          rating: {
+            label: 'Gefðu reynslunni einkunn',
+          },
+          segmented: {
+            label: 'Skoða',
+          },
+          slider: {
+            label: 'Hljóðstyrkur',
+          },
+          spinner: {
+            label: 'Hleður',
+          },
+          switch: {
+            label: 'Skiptu um',
+          },
+          tag: {
+            removeLabel: 'Fjarlægja merki',
+          },
+          textarea: {
+            label: 'Skilaboð',
+            placeholder: 'Sláðu inn skilaboðin þín…',
+          },
+          'time-picker': {
+            label: 'Tími',
+            placeholder: 'Veldu tíma…',
+          },
+          tooltip: {
+            eaTooltip: 'Ábendingar bæta við samhengi við yfirsvif eða fókus',
+          },
+          tree: {
+            ariaLabel: 'Skráatré',
           },
         },
       },

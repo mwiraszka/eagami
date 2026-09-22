@@ -640,6 +640,25 @@ export const uk: WebMessages = {
         warningLabel: 'Попередження',
         errorLabel: 'Помилка',
         infoLabel: 'Інформація',
+        heading: 'Заголовок',
+        content: 'Вміст',
+        time: 'Час',
+        current: 'Поточний',
+        emphasized: 'Виділений',
+        shortcut: 'Комбінація клавіш',
+        group: 'Група',
+        optionLabel: 'Мітка варіанта',
+        segmentText: 'Текст сегмента',
+        addItem: 'Додати елемент',
+        deleteItem: 'Видалити елемент',
+        addOption: 'Додати варіант',
+        deleteOption: 'Видалити варіант',
+        addCommand: 'Додати команду',
+        deleteCommand: 'Видалити команду',
+        addSegment: 'Додати сегмент',
+        deleteSegment: 'Видалити сегмент',
+        description: 'Опис',
+        label: 'Мітка',
       },
       demos: {
         accordion: {
@@ -659,6 +678,8 @@ export const uk: WebMessages = {
           sectionTwoBody: 'Вміст другого розділу.',
           disabledSectionLabel: 'Вимкнений розділ',
           disabledSectionBody: 'Цей вміст недоступний.',
+          newSectionHeading: 'Новий розділ',
+          newSectionContent: 'Новий вміст',
         },
         alert: {
           defaultText: 'Це стандартне сповіщення',
@@ -669,6 +690,7 @@ export const uk: WebMessages = {
           dismissibleText: 'Це сповіщення можна закрити',
           tooltipSuppressed:
             'Спливаючі підказки пригнічуються на сенсорних пристроях, щоб уникнути липкої поведінки наведення. Перегляньте цей розділ на пристрої з мишею, щоб побачити демонстрації в дії.',
+          message: 'Це повідомлення сповіщення.',
         },
         autocomplete: {
           startTyping: 'Почніть вводити…',
@@ -677,6 +699,13 @@ export const uk: WebMessages = {
           breedPlaceholder: 'Порода собаки…',
           minMaxLabel: 'Мін. 2 символи, макс. 3 результати',
           minMaxPlaceholder: 'Введіть щонайменше 2 символи…',
+          goldenRetriever: 'Золотистий ретривер',
+          germanShepherd: 'Німецька вівчарка',
+          beagle: 'Бігль',
+          poodle: 'Пудель',
+          boxer: 'Боксер',
+          dachshund: 'Такса',
+          newBreed: 'Нова порода',
         },
         avatarEditor: {
           result: 'Результат:',
@@ -705,6 +734,8 @@ export const uk: WebMessages = {
           cardTitleHeader: 'Заголовок картки',
           cardWithFooterBody:
             'Ця картка має заголовок, тіло та нижній колонтитул з діями.',
+          bodyText: 'Це вміст картки. Він може містити будь-який текст або елементи.',
+          footer: 'Нижній колонтитул',
         },
         checkbox: {
           acceptTermsAndConditions: 'Прийняти умови та положення',
@@ -957,6 +988,12 @@ export const uk: WebMessages = {
             return `Це ${variant} тост`;
           },
           segmentsLabel: 'Сегменти',
+          movedSegment: 'Переміщено: ',
+          roadmapSegment: 'Дорожня карта на 3-й квартал',
+          toSegment: ' до ',
+          archivedSegment: 'Архів проєктів',
+          title: 'Проєкт оновлено',
+          newSegment: ' новий сегмент',
         },
         tooltip: {
           triggerLabel: '(наведи на мене)',
@@ -991,9 +1028,42 @@ export const uk: WebMessages = {
           hint: 'Натисніть Ctrl + K (або Cmd + K), щоб відкрити палітру команд будь-де на цій сторінці.',
           openButton: 'Відкрити палітру команд',
           executedToast: label => `Виконано: ${label}`,
+          newFile: 'Новий файл',
+          openFile: 'Відкрити файл',
+          save: 'Зберегти',
+          find: 'Знайти',
+          replace: 'Замінити',
+          undo: 'Скасувати',
+          toggleTheme: 'Змінити тему',
+          toggleThemeDescription: 'Перемикання між світлою та темною темою',
+          lockWorkspace: 'Заблокувати робочу область',
+          lockWorkspaceDescription: 'Наразі вимкнено (функція в бета-версії)',
+          fileGroup: 'Файл',
+          editGroup: 'Редагувати',
+          newCommand: 'Нова команда',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Аватар оновлено',
+        },
+        stepper: {
+          accountLabel: 'Обліковий запис',
+          accountContent: 'Крок 1: дані облікового запису.',
+          profileLabel: 'Профіль',
+          profileContent: 'Крок 2: дані профілю.',
+          reviewLabel: 'Перевірка',
+          reviewContent: 'Крок 3: перевірка та надсилання.',
+        },
+        timeline: {
+          orderPlaced: 'Замовлення оформлено',
+          orderPlacedDescription: 'Оплату підтверджено, чек надіслано.',
+          packed: 'Упаковано',
+          packedDescription: 'Товари зібрано та запаковано на складі.',
+          outForDelivery: 'Передано кур’єру',
+          outForDeliveryDescription: 'Кур’єр уже в дорозі.',
+          delivered: 'Доставлено',
+          deliveredDescription: 'Очікується до кінця дня.',
+          newEvent: 'Нова подія',
+          newEventDescription: 'Новий опис',
         },
       },
       playground: {
@@ -2300,6 +2370,115 @@ export const uk: WebMessages = {
             closed:
               'Спрацьовує, коли діалог закривається, незалежно від того, чи закрив його користувач, чи це сталося програмно.',
             opened: 'Спрацьовує, щойно діалог показано через showModal().',
+          },
+        },
+        direction: 'Напрямок',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Порода собаки',
+            placeholder: 'Почніть вводити…',
+            firstGroupLabel: 'Нещодавно використані',
+            secondGroupLabel: 'Усе інше',
+          },
+          avatar: {
+            alt: 'Аватар користувача',
+          },
+          button: {
+            label: 'Натисни мене',
+          },
+          checkbox: {
+            label: 'Прийняти умови та положення',
+          },
+          'code-input': {
+            label: 'Код підтвердження',
+          },
+          'color-picker': {
+            label: 'Колір',
+            placeholder: 'Виберіть колір…',
+          },
+          'command-palette': {
+            placeholder: 'Введіть команду або виконайте пошук…',
+            emptyMessage: 'Немає відповідних команд',
+          },
+          'date-picker': {
+            label: 'Дата зустрічі',
+          },
+          divider: {
+            label: 'АБО',
+          },
+          dropdown: {
+            label: 'Фрукт',
+            placeholder: 'Оберіть фрукт…',
+            firstGroupLabel: 'Нещодавно використані',
+            secondGroupLabel: 'Усе інше',
+          },
+          'empty-state': {
+            title: 'Ще немає елементів',
+            description: 'Почніть зі створення свого першого елемента.',
+          },
+          'file-uploader': {
+            label: 'Вкладення',
+          },
+          'form-field': {
+            label: 'Адреса електронної пошти',
+            hint: 'Використовується лише для зв’язку з вами',
+          },
+          input: {
+            label: 'Мітка',
+            placeholder: 'Введіть текст…',
+          },
+          menu: {
+            ariaLabel: 'Меню дій',
+          },
+          'multi-select': {
+            label: 'Фрукти',
+            placeholder: 'Оберіть…',
+            firstGroupLabel: 'Нещодавно використані',
+            secondGroupLabel: 'Усе інше',
+          },
+          'number-input': {
+            label: 'Значення',
+          },
+          'progress-bar': {
+            label: 'Завантаження файлів',
+          },
+          radio: {
+            label: 'Фрукт',
+          },
+          'range-slider': {
+            label: 'Діапазон цін',
+          },
+          rating: {
+            label: 'Оцініть свій досвід',
+          },
+          segmented: {
+            label: 'Перегляд',
+          },
+          slider: {
+            label: 'Гучність',
+          },
+          spinner: {
+            label: 'Завантаження',
+          },
+          switch: {
+            label: 'Перемкни мене',
+          },
+          tag: {
+            removeLabel: 'Видалити тег',
+          },
+          textarea: {
+            label: 'Повідомлення',
+            placeholder: 'Введіть своє повідомлення…',
+          },
+          'time-picker': {
+            label: 'Час',
+            placeholder: 'Виберіть час…',
+          },
+          tooltip: {
+            eaTooltip: 'Підказки додають контекст під час наведення або фокусування',
+          },
+          tree: {
+            ariaLabel: 'Дерево файлів',
           },
         },
       },

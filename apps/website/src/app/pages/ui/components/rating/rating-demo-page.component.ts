@@ -31,7 +31,12 @@ import {
   labelIconFor,
   labelIconKnob,
 } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface RatingKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -66,6 +71,7 @@ const SLUG = 'rating';
 })
 export class RatingDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.rating, UI_API[SLUG]),
     iconKnob(['star', 'heart', 'circle'], {
@@ -76,7 +82,11 @@ export class RatingDemoPageComponent {
     labelIconKnob(),
   ];
   protected readonly state = signal<RatingKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.rating) as RatingKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.rating,
+      this.knobDefaults,
+    ) as RatingKnobState,
   );
   protected readonly iconComponent = computed(
     () => iconComponentForSlug(this.state().iconClass) ?? StarIconComponent,
@@ -127,7 +137,11 @@ export class RatingDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.rating) as RatingKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.rating,
+        this.knobDefaults,
+      ) as RatingKnobState,
     );
   }
 }

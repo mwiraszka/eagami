@@ -6,9 +6,10 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -37,6 +38,7 @@ const SLUG = 'card';
   imports: [CardComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })
 export class CardDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.card, UI_API[SLUG]);
   protected readonly state = signal<CardKnobState>(

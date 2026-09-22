@@ -646,6 +646,25 @@ export const el: WebMessages = {
         warningLabel: 'Προειδοποίηση',
         errorLabel: 'Σφάλμα',
         infoLabel: 'Πληροφορία',
+        heading: 'Επικεφαλίδα',
+        content: 'Περιεχόμενο',
+        time: 'Ώρα',
+        current: 'Τρέχον',
+        emphasized: 'Με έμφαση',
+        shortcut: 'Συντόμευση',
+        group: 'Ομάδα',
+        optionLabel: 'Ετικέτα επιλογής',
+        segmentText: 'Κείμενο τμήματος',
+        addItem: 'Προσθήκη στοιχείου',
+        deleteItem: 'Διαγραφή στοιχείου',
+        addOption: 'Προσθήκη επιλογής',
+        deleteOption: 'Διαγραφή επιλογής',
+        addCommand: 'Προσθήκη εντολής',
+        deleteCommand: 'Διαγραφή εντολής',
+        addSegment: 'Προσθήκη τμήματος',
+        deleteSegment: 'Διαγραφή τμήματος',
+        description: 'Περιγραφή',
+        label: 'Ετικέτα',
       },
       demos: {
         accordion: {
@@ -665,6 +684,8 @@ export const el: WebMessages = {
           sectionTwoBody: 'Περιεχόμενο για την ενότητα δύο.',
           disabledSectionLabel: 'Απενεργοποιημένη ενότητα',
           disabledSectionBody: 'Αυτό το περιεχόμενο δεν είναι προσβάσιμο.',
+          newSectionHeading: 'Νέα ενότητα',
+          newSectionContent: 'Νέο περιεχόμενο',
         },
         alert: {
           defaultText: 'Αυτή είναι μια προεπιλεγμένη ειδοποίηση',
@@ -675,6 +696,7 @@ export const el: WebMessages = {
           dismissibleText: 'Αυτή η ειδοποίηση μπορεί να απορριφθεί',
           tooltipSuppressed:
             'Οι υποδείξεις απενεργοποιούνται σε συσκευές αφής για αποφυγή κολλημένης συμπεριφοράς αιώρησης. Δείτε αυτή την ενότητα σε συσκευή με ποντίκι για να δείτε τις επιδείξεις σε δράση.',
+          message: 'Αυτό είναι ένα μήνυμα ειδοποίησης.',
         },
         autocomplete: {
           startTyping: 'Ξεκινήστε να πληκτρολογείτε…',
@@ -683,6 +705,13 @@ export const el: WebMessages = {
           breedPlaceholder: 'Ράτσα σκύλου…',
           minMaxLabel: 'Ελάχ. 2 χαρακτήρες, μέγ. 3 αποτελέσματα',
           minMaxPlaceholder: 'Πληκτρολογήστε τουλάχιστον 2 χαρακτήρες…',
+          goldenRetriever: 'Γκόλντεν Ριτρίβερ',
+          germanShepherd: 'Γερμανικός ποιμενικός',
+          beagle: 'Μπιγκλ',
+          poodle: 'Κανίς',
+          boxer: 'Μπόξερ',
+          dachshund: 'Δαχσχούντ',
+          newBreed: 'Νέα ράτσα',
         },
         avatarEditor: {
           result: 'Αποτέλεσμα:',
@@ -711,6 +740,9 @@ export const el: WebMessages = {
           cardTitleHeader: 'Τίτλος κάρτας',
           cardWithFooterBody:
             'Αυτή η κάρτα έχει κεφαλίδα, σώμα και υποσέλιδο με ενέργειες.',
+          bodyText:
+            'Αυτό είναι το περιεχόμενο της κάρτας. Μπορεί να περιέχει οποιοδήποτε κείμενο ή στοιχεία.',
+          footer: 'Υποσέλιδο',
         },
         checkbox: {
           acceptTermsAndConditions: 'Αποδοχή όρων και προϋποθέσεων',
@@ -973,6 +1005,12 @@ export const el: WebMessages = {
             return `Αυτό είναι ένα toast ${labels[variant] ?? variant}`;
           },
           segmentsLabel: 'Τμήματα',
+          movedSegment: 'Μετακινήθηκε: ',
+          roadmapSegment: 'Οδικός χάρτης Γ΄ τριμήνου',
+          toSegment: ' στο ',
+          archivedSegment: 'Αρχειοθετημένα έργα',
+          title: 'Το έργο ενημερώθηκε',
+          newSegment: ' νέο τμήμα',
         },
         tooltip: {
           triggerLabel: '(πέρασε από πάνω μου)',
@@ -1007,9 +1045,42 @@ export const el: WebMessages = {
           hint: 'Πατήστε Ctrl + K (ή Cmd + K) για να ανοίξετε την παλέτα εντολών οπουδήποτε στη σελίδα.',
           openButton: 'Άνοιγμα παλέτας εντολών',
           executedToast: label => `Εκτελέστηκε: ${label}`,
+          newFile: 'Νέο αρχείο',
+          openFile: 'Άνοιγμα αρχείου',
+          save: 'Αποθήκευση',
+          find: 'Εύρεση',
+          replace: 'Αντικατάσταση',
+          undo: 'Αναίρεση',
+          toggleTheme: 'Εναλλαγή θέματος',
+          toggleThemeDescription: 'Εναλλαγή μεταξύ φωτεινής και σκοτεινής λειτουργίας',
+          lockWorkspace: 'Κλείδωμα χώρου εργασίας',
+          lockWorkspaceDescription: 'Προς το παρόν απενεργοποιημένο (λειτουργία σε beta)',
+          fileGroup: 'Αρχείο',
+          editGroup: 'Επεξεργασία',
+          newCommand: 'Νέα εντολή',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Το άβαταρ ενημερώθηκε',
+        },
+        stepper: {
+          accountLabel: 'Λογαριασμός',
+          accountContent: 'Βήμα 1: στοιχεία λογαριασμού.',
+          profileLabel: 'Προφίλ',
+          profileContent: 'Βήμα 2: στοιχεία προφίλ.',
+          reviewLabel: 'Έλεγχος',
+          reviewContent: 'Βήμα 3: έλεγχος και υποβολή.',
+        },
+        timeline: {
+          orderPlaced: 'Η παραγγελία καταχωρήθηκε',
+          orderPlacedDescription: 'Η πληρωμή επιβεβαιώθηκε και η απόδειξη στάλθηκε.',
+          packed: 'Συσκευάστηκε',
+          packedDescription: 'Τα προϊόντα συλλέχθηκαν και συσκευάστηκαν στην αποθήκη.',
+          outForDelivery: 'Προς παράδοση',
+          outForDeliveryDescription: 'Ο κούριερ είναι καθ’ οδόν.',
+          delivered: 'Παραδόθηκε',
+          deliveredDescription: 'Εκτιμάται έως το τέλος της ημέρας.',
+          newEvent: 'Νέο γεγονός',
+          newEventDescription: 'Νέα περιγραφή',
         },
       },
       playground: {
@@ -2363,6 +2434,116 @@ export const el: WebMessages = {
             closed:
               'Εκπέμπεται όταν ο διάλογος κλείνει, ανεξάρτητα από το αν έκλεισε ο χρήστης ή μέσω κώδικα.',
             opened: 'Εκπέμπεται μόλις ο διάλογος εμφανιστεί μέσω showModal().',
+          },
+        },
+        direction: 'Κατεύθυνση',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Ράτσα σκύλου',
+            placeholder: 'Ξεκινήστε να πληκτρολογείτε…',
+            firstGroupLabel: 'Πρόσφατα χρησιμοποιημένα',
+            secondGroupLabel: 'Όλα τα υπόλοιπα',
+          },
+          avatar: {
+            alt: 'Άβαταρ χρήστη',
+          },
+          button: {
+            label: 'Πάτησέ με',
+          },
+          checkbox: {
+            label: 'Αποδοχή όρων και προϋποθέσεων',
+          },
+          'code-input': {
+            label: 'Κωδικός επαλήθευσης',
+          },
+          'color-picker': {
+            label: 'Χρώμα',
+            placeholder: 'Επιλέξτε χρώμα…',
+          },
+          'command-palette': {
+            placeholder: 'Πληκτρολογήστε εντολή ή αναζητήστε…',
+            emptyMessage: 'Δεν βρέθηκαν εντολές',
+          },
+          'date-picker': {
+            label: 'Ημερομηνία ραντεβού',
+          },
+          divider: {
+            label: 'Ή',
+          },
+          dropdown: {
+            label: 'Φρούτο',
+            placeholder: 'Επιλέξτε ένα φρούτο…',
+            firstGroupLabel: 'Πρόσφατα χρησιμοποιημένα',
+            secondGroupLabel: 'Όλα τα υπόλοιπα',
+          },
+          'empty-state': {
+            title: 'Δεν υπάρχουν ακόμη στοιχεία',
+            description: 'Ξεκινήστε δημιουργώντας το πρώτο σας στοιχείο.',
+          },
+          'file-uploader': {
+            label: 'Συνημμένα',
+          },
+          'form-field': {
+            label: 'Διεύθυνση email',
+            hint: 'Το χρησιμοποιούμε μόνο για να επικοινωνήσουμε μαζί σας',
+          },
+          input: {
+            label: 'Ετικέτα',
+            placeholder: 'Εισαγάγετε κείμενο…',
+          },
+          menu: {
+            ariaLabel: 'Μενού ενεργειών',
+          },
+          'multi-select': {
+            label: 'Φρούτα',
+            placeholder: 'Επιλέξτε…',
+            firstGroupLabel: 'Πρόσφατα χρησιμοποιημένα',
+            secondGroupLabel: 'Όλα τα υπόλοιπα',
+          },
+          'number-input': {
+            label: 'Τιμή',
+          },
+          'progress-bar': {
+            label: 'Μεταφόρτωση αρχείων',
+          },
+          radio: {
+            label: 'Φρούτο',
+          },
+          'range-slider': {
+            label: 'Εύρος τιμής',
+          },
+          rating: {
+            label: 'Αξιολογήστε την εμπειρία σας',
+          },
+          segmented: {
+            label: 'Προβολή',
+          },
+          slider: {
+            label: 'Ένταση',
+          },
+          spinner: {
+            label: 'Φόρτωση',
+          },
+          switch: {
+            label: 'Εναλλαγή',
+          },
+          tag: {
+            removeLabel: 'Κατάργηση ετικέτας',
+          },
+          textarea: {
+            label: 'Μήνυμα',
+            placeholder: 'Εισαγάγετε το μήνυμά σας…',
+          },
+          'time-picker': {
+            label: 'Ώρα',
+            placeholder: 'Επιλέξτε ώρα…',
+          },
+          tooltip: {
+            eaTooltip:
+              'Τα tooltip προσθέτουν επιπλέον πληροφορίες κατά την αιώρηση ή την εστίαση',
+          },
+          tree: {
+            ariaLabel: 'Δέντρο αρχείων',
           },
         },
       },

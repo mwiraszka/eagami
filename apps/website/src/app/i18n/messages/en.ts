@@ -634,6 +634,25 @@ export const en: WebMessages = {
         warningLabel: 'Warning',
         errorLabel: 'Error',
         infoLabel: 'Info',
+        heading: 'Heading',
+        content: 'Content',
+        time: 'Time',
+        current: 'Current',
+        emphasized: 'Emphasized',
+        shortcut: 'Shortcut',
+        group: 'Group',
+        optionLabel: 'Option label',
+        segmentText: 'Segment text',
+        addItem: 'Add item',
+        deleteItem: 'Delete item',
+        addOption: 'Add option',
+        deleteOption: 'Delete option',
+        addCommand: 'Add command',
+        deleteCommand: 'Delete command',
+        addSegment: 'Add segment',
+        deleteSegment: 'Delete segment',
+        description: 'Description',
+        label: 'Label',
       },
       demos: {
         accordion: {
@@ -652,6 +671,8 @@ export const en: WebMessages = {
           sectionTwoBody: 'Content for section two.',
           disabledSectionLabel: 'Disabled Section',
           disabledSectionBody: 'This content is not reachable.',
+          newSectionHeading: 'New section',
+          newSectionContent: 'New content',
         },
         alert: {
           defaultText: 'This is a default alert',
@@ -662,6 +683,7 @@ export const en: WebMessages = {
           dismissibleText: 'This alert can be dismissed',
           tooltipSuppressed:
             'Tooltips are suppressed on touch devices to avoid sticky-hover behavior. View this section on a device with a mouse to see the demos in action.',
+          message: 'This is an alert message.',
         },
         autocomplete: {
           startTyping: 'Start typing…',
@@ -670,6 +692,13 @@ export const en: WebMessages = {
           breedPlaceholder: 'Dog breed…',
           minMaxLabel: 'Min 2 chars, max 3 results',
           minMaxPlaceholder: 'Type at least 2 characters…',
+          goldenRetriever: 'Golden Retriever',
+          germanShepherd: 'German Shepherd',
+          beagle: 'Beagle',
+          poodle: 'Poodle',
+          boxer: 'Boxer',
+          dachshund: 'Dachshund',
+          newBreed: 'New breed',
         },
         avatarEditor: {
           result: 'Result:',
@@ -697,6 +726,8 @@ export const en: WebMessages = {
           filledBody: 'Card with subtle background.',
           cardTitleHeader: 'Card Title',
           cardWithFooterBody: 'This card has a header, body, and footer with actions.',
+          bodyText: 'This is the card body content. It can contain any text or elements.',
+          footer: 'Footer',
         },
         checkbox: {
           acceptTermsAndConditions: 'Accept terms and conditions',
@@ -948,6 +979,12 @@ export const en: WebMessages = {
             return `This is ${article} ${variant} toast`;
           },
           segmentsLabel: 'Segments',
+          movedSegment: 'Moved ',
+          roadmapSegment: 'Q3 roadmap',
+          toSegment: ' to ',
+          archivedSegment: 'Archived projects',
+          title: 'Project updated',
+          newSegment: ' new segment',
         },
         tooltip: {
           triggerLabel: '(hover over me)',
@@ -982,9 +1019,42 @@ export const en: WebMessages = {
           hint: 'Press Ctrl + K (or Cmd + K) to open the command palette anywhere on this page.',
           openButton: 'Open command palette',
           executedToast: label => `Executed: ${label}`,
+          newFile: 'New file',
+          openFile: 'Open file',
+          save: 'Save',
+          find: 'Find',
+          replace: 'Replace',
+          undo: 'Undo',
+          toggleTheme: 'Toggle theme',
+          toggleThemeDescription: 'Switch between light and dark mode',
+          lockWorkspace: 'Lock workspace',
+          lockWorkspaceDescription: 'Currently disabled (feature in beta)',
+          fileGroup: 'File',
+          editGroup: 'Edit',
+          newCommand: 'New command',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar updated',
+        },
+        stepper: {
+          accountLabel: 'Account',
+          accountContent: 'Step 1: account details.',
+          profileLabel: 'Profile',
+          profileContent: 'Step 2: profile info.',
+          reviewLabel: 'Review',
+          reviewContent: 'Step 3: review and submit.',
+        },
+        timeline: {
+          orderPlaced: 'Order placed',
+          orderPlacedDescription: 'Payment confirmed and receipt sent.',
+          packed: 'Packed',
+          packedDescription: 'Items picked and boxed at the warehouse.',
+          outForDelivery: 'Out for delivery',
+          outForDeliveryDescription: 'The courier is on the way.',
+          delivered: 'Delivered',
+          deliveredDescription: 'Estimated by end of day.',
+          newEvent: 'New event',
+          newEventDescription: 'New description',
         },
       },
       playground: {
@@ -2233,6 +2303,115 @@ export const en: WebMessages = {
             closed:
               'Fires when the dialog closes, regardless of whether it was closed by the user or programmatically.',
             opened: 'Fires once the dialog has been shown via showModal().',
+          },
+        },
+        direction: 'Direction',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Dog breed',
+            placeholder: 'Start typing…',
+            firstGroupLabel: 'Recently used',
+            secondGroupLabel: 'Everything else',
+          },
+          avatar: {
+            alt: 'User avatar',
+          },
+          button: {
+            label: 'Press me',
+          },
+          checkbox: {
+            label: 'Accept terms and conditions',
+          },
+          'code-input': {
+            label: 'Verification code',
+          },
+          'color-picker': {
+            label: 'Color',
+            placeholder: 'Pick a color…',
+          },
+          'command-palette': {
+            placeholder: 'Type a command or search…',
+            emptyMessage: 'No matching commands',
+          },
+          'date-picker': {
+            label: 'Appointment date',
+          },
+          divider: {
+            label: 'OR',
+          },
+          dropdown: {
+            label: 'Fruit',
+            placeholder: 'Select a fruit…',
+            firstGroupLabel: 'Recently used',
+            secondGroupLabel: 'Everything else',
+          },
+          'empty-state': {
+            title: 'No items yet',
+            description: 'Get started by creating your first item.',
+          },
+          'file-uploader': {
+            label: 'Attachments',
+          },
+          'form-field': {
+            label: 'Email address',
+            hint: 'We only use this to reach you',
+          },
+          input: {
+            label: 'Label',
+            placeholder: 'Enter text…',
+          },
+          menu: {
+            ariaLabel: 'Actions menu',
+          },
+          'multi-select': {
+            label: 'Fruits',
+            placeholder: 'Select…',
+            firstGroupLabel: 'Recently used',
+            secondGroupLabel: 'Everything else',
+          },
+          'number-input': {
+            label: 'Value',
+          },
+          'progress-bar': {
+            label: 'Uploading files',
+          },
+          radio: {
+            label: 'Fruit',
+          },
+          'range-slider': {
+            label: 'Price range',
+          },
+          rating: {
+            label: 'Rate your experience',
+          },
+          segmented: {
+            label: 'View',
+          },
+          slider: {
+            label: 'Volume',
+          },
+          spinner: {
+            label: 'Loading',
+          },
+          switch: {
+            label: 'Toggle me',
+          },
+          tag: {
+            removeLabel: 'Remove tag',
+          },
+          textarea: {
+            label: 'Message',
+            placeholder: 'Enter your message…',
+          },
+          'time-picker': {
+            label: 'Time',
+            placeholder: 'Select time…',
+          },
+          tooltip: {
+            eaTooltip: 'Tooltips add extra context on hover or focus',
+          },
+          tree: {
+            ariaLabel: 'File tree',
           },
         },
       },

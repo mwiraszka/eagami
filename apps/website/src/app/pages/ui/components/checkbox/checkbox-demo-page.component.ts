@@ -11,7 +11,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface CheckboxKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -42,9 +47,14 @@ const SLUG = 'checkbox';
 })
 export class CheckboxDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.checkbox, UI_API[SLUG]);
   protected readonly state = signal<CheckboxKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.checkbox) as CheckboxKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.checkbox,
+      this.knobDefaults,
+    ) as CheckboxKnobState,
   );
 
   protected readonly control = new FormControl(null, {
@@ -78,7 +88,11 @@ export class CheckboxDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.checkbox) as CheckboxKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.checkbox,
+        this.knobDefaults,
+      ) as CheckboxKnobState,
     );
   }
 }

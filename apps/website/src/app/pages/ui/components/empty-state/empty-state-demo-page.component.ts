@@ -15,7 +15,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface EmptyStateKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -43,12 +48,17 @@ const SLUG = 'empty-state';
 })
 export class EmptyStateDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS['empty-state'], UI_API[SLUG]),
     iconKnob(['search', 'file', 'bell', 'mail', 'calendar', 'star', 'home', 'user']),
   ];
   protected readonly state = signal<EmptyStateKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS['empty-state']) as EmptyStateKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['empty-state'],
+      this.knobDefaults,
+    ) as EmptyStateKnobState,
   );
   protected readonly iconComponent = computed(() =>
     iconComponentForSlug(this.state().icon),
@@ -65,6 +75,7 @@ export class EmptyStateDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['empty-state'],
+        this.knobDefaults,
       ) as EmptyStateKnobState,
     );
   }

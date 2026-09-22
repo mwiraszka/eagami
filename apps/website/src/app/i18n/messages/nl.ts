@@ -645,6 +645,25 @@ export const nl: WebMessages = {
         warningLabel: 'Waarschuwing',
         errorLabel: 'Fout',
         infoLabel: 'Info',
+        heading: 'Kop',
+        content: 'Inhoud',
+        time: 'Tijd',
+        current: 'Huidig',
+        emphasized: 'Benadrukt',
+        shortcut: 'Sneltoets',
+        group: 'Groep',
+        optionLabel: 'Optielabel',
+        segmentText: 'Segmenttekst',
+        addItem: 'Item toevoegen',
+        deleteItem: 'Item verwijderen',
+        addOption: 'Optie toevoegen',
+        deleteOption: 'Optie verwijderen',
+        addCommand: 'Opdracht toevoegen',
+        deleteCommand: 'Opdracht verwijderen',
+        addSegment: 'Segment toevoegen',
+        deleteSegment: 'Segment verwijderen',
+        description: 'Beschrijving',
+        label: 'Label',
       },
       demos: {
         accordion: {
@@ -664,6 +683,8 @@ export const nl: WebMessages = {
           sectionTwoBody: 'Inhoud voor sectie twee.',
           disabledSectionLabel: 'Uitgeschakelde sectie',
           disabledSectionBody: 'Deze inhoud is niet bereikbaar.',
+          newSectionHeading: 'Nieuwe sectie',
+          newSectionContent: 'Nieuwe inhoud',
         },
         alert: {
           defaultText: 'Dit is een standaardmelding',
@@ -674,6 +695,7 @@ export const nl: WebMessages = {
           dismissibleText: 'Deze melding kan worden gesloten',
           tooltipSuppressed:
             "Tooltips worden onderdrukt op aanraakapparaten om plakkerig hovergedrag te voorkomen. Bekijk deze sectie op een apparaat met een muis om de demo's in actie te zien.",
+          message: 'Dit is een meldingsbericht.',
         },
         autocomplete: {
           startTyping: 'Begin met typen…',
@@ -682,6 +704,13 @@ export const nl: WebMessages = {
           breedPlaceholder: 'Hondenras…',
           minMaxLabel: 'Min. 2 tekens, max. 3 resultaten',
           minMaxPlaceholder: 'Typ minstens 2 tekens…',
+          goldenRetriever: 'Golden retriever',
+          germanShepherd: 'Duitse herder',
+          beagle: 'Beagle',
+          poodle: 'Poedel',
+          boxer: 'Boxer',
+          dachshund: 'Teckel',
+          newBreed: 'Nieuw ras',
         },
         avatarEditor: {
           result: 'Resultaat:',
@@ -710,6 +739,9 @@ export const nl: WebMessages = {
           cardTitleHeader: 'Kaarttitel',
           cardWithFooterBody:
             'Deze kaart heeft een koptekst, body en voettekst met acties.',
+          bodyText:
+            'Dit is de inhoud van de kaart. Deze kan elke tekst of elementen bevatten.',
+          footer: 'Voettekst',
         },
         checkbox: {
           acceptTermsAndConditions: 'Algemene voorwaarden accepteren',
@@ -962,6 +994,12 @@ export const nl: WebMessages = {
             return `Dit is een ${variant} toast`;
           },
           segmentsLabel: 'Segmenten',
+          movedSegment: 'Verplaatst: ',
+          roadmapSegment: 'Q3-roadmap',
+          toSegment: ' naar ',
+          archivedSegment: 'Gearchiveerde projecten',
+          title: 'Project bijgewerkt',
+          newSegment: ' nieuw segment',
         },
         tooltip: {
           triggerLabel: '(zweef over mij)',
@@ -996,9 +1034,42 @@ export const nl: WebMessages = {
           hint: 'Druk op Ctrl + K (of Cmd + K) om het opdrachtenpalet overal op deze pagina te openen.',
           openButton: 'Opdrachtenpalet openen',
           executedToast: label => `Uitgevoerd: ${label}`,
+          newFile: 'Nieuw bestand',
+          openFile: 'Bestand openen',
+          save: 'Opslaan',
+          find: 'Zoeken',
+          replace: 'Vervangen',
+          undo: 'Ongedaan maken',
+          toggleTheme: 'Thema wisselen',
+          toggleThemeDescription: 'Wisselen tussen lichte en donkere modus',
+          lockWorkspace: 'Werkruimte vergrendelen',
+          lockWorkspaceDescription: 'Momenteel uitgeschakeld (functie in bèta)',
+          fileGroup: 'Bestand',
+          editGroup: 'Bewerken',
+          newCommand: 'Nieuwe opdracht',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar bijgewerkt',
+        },
+        stepper: {
+          accountLabel: 'Account',
+          accountContent: 'Stap 1: accountgegevens.',
+          profileLabel: 'Profiel',
+          profileContent: 'Stap 2: profielgegevens.',
+          reviewLabel: 'Controle',
+          reviewContent: 'Stap 3: controleren en verzenden.',
+        },
+        timeline: {
+          orderPlaced: 'Bestelling geplaatst',
+          orderPlacedDescription: 'Betaling bevestigd en bon verstuurd.',
+          packed: 'Ingepakt',
+          packedDescription: 'Artikelen verzameld en ingepakt in het magazijn.',
+          outForDelivery: 'Onderweg',
+          outForDeliveryDescription: 'De koerier is onderweg.',
+          delivered: 'Bezorgd',
+          deliveredDescription: 'Verwacht voor het einde van de dag.',
+          newEvent: 'Nieuwe gebeurtenis',
+          newEventDescription: 'Nieuwe beschrijving',
         },
       },
       playground: {
@@ -2342,6 +2413,115 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer het dialoogvenster sluit, ongeacht of het door de gebruiker of programmatisch werd gesloten.',
             opened:
               'Wordt geactiveerd zodra het dialoogvenster is getoond via showModal().',
+          },
+        },
+        direction: 'Richting',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Hondenras',
+            placeholder: 'Begin met typen…',
+            firstGroupLabel: 'Recent gebruikt',
+            secondGroupLabel: 'Al het overige',
+          },
+          avatar: {
+            alt: 'Gebruikersavatar',
+          },
+          button: {
+            label: 'Druk op mij',
+          },
+          checkbox: {
+            label: 'Algemene voorwaarden accepteren',
+          },
+          'code-input': {
+            label: 'Verificatiecode',
+          },
+          'color-picker': {
+            label: 'Kleur',
+            placeholder: 'Kies een kleur…',
+          },
+          'command-palette': {
+            placeholder: 'Typ een opdracht of zoek…',
+            emptyMessage: 'Geen overeenkomende opdrachten',
+          },
+          'date-picker': {
+            label: 'Afspraakdatum',
+          },
+          divider: {
+            label: 'OF',
+          },
+          dropdown: {
+            label: 'Fruit',
+            placeholder: 'Selecteer een fruit…',
+            firstGroupLabel: 'Recent gebruikt',
+            secondGroupLabel: 'Al het overige',
+          },
+          'empty-state': {
+            title: 'Nog geen items',
+            description: 'Ga aan de slag door je eerste item te maken.',
+          },
+          'file-uploader': {
+            label: 'Bijlagen',
+          },
+          'form-field': {
+            label: 'E-mailadres',
+            hint: 'We gebruiken dit alleen om u te bereiken',
+          },
+          input: {
+            label: 'Label',
+            placeholder: 'Voer tekst in…',
+          },
+          menu: {
+            ariaLabel: 'Actiemenu',
+          },
+          'multi-select': {
+            label: 'Fruit',
+            placeholder: 'Selecteer…',
+            firstGroupLabel: 'Recent gebruikt',
+            secondGroupLabel: 'Al het overige',
+          },
+          'number-input': {
+            label: 'Waarde',
+          },
+          'progress-bar': {
+            label: 'Bestanden uploaden',
+          },
+          radio: {
+            label: 'Fruit',
+          },
+          'range-slider': {
+            label: 'Prijsbereik',
+          },
+          rating: {
+            label: 'Beoordeel je ervaring',
+          },
+          segmented: {
+            label: 'Weergeven',
+          },
+          slider: {
+            label: 'Volume',
+          },
+          spinner: {
+            label: 'Laden',
+          },
+          switch: {
+            label: 'Schakel mij',
+          },
+          tag: {
+            removeLabel: 'Tag verwijderen',
+          },
+          textarea: {
+            label: 'Bericht',
+            placeholder: 'Voer je bericht in…',
+          },
+          'time-picker': {
+            label: 'Tijd',
+            placeholder: 'Kies een tijd…',
+          },
+          tooltip: {
+            eaTooltip: 'Tooltips geven extra context bij hover of focus',
+          },
+          tree: {
+            ariaLabel: 'Bestandsboom',
           },
         },
       },

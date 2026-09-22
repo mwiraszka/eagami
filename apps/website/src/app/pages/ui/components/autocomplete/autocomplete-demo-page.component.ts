@@ -16,11 +16,13 @@ import {
   Component,
   computed,
   effect,
+  inject,
   signal,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -28,7 +30,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 import { demoOptionGroups, optionsAttribute } from '../_playground/option-groups';
 
 interface OptionModel {
@@ -59,15 +66,6 @@ interface AutocompleteKnobState {
 
 const SLUG = 'autocomplete';
 
-const DEFAULT_OPTIONS: readonly string[] = [
-  'Golden Retriever',
-  'German Shepherd',
-  'Beagle',
-  'Poodle',
-  'Boxer',
-  'Dachshund',
-];
-
 function slugify(label: string): string {
   return label
     .trim()
@@ -93,13 +91,19 @@ function slugify(label: string): string {
   ],
 })
 export class AutocompleteDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.autocomplete, UI_API[SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<AutocompleteKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.autocomplete) as AutocompleteKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.autocomplete,
+      this.knobDefaults,
+    ) as AutocompleteKnobState,
   );
 
   private nextId = 1;
@@ -158,6 +162,7 @@ export class AutocompleteDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS.autocomplete,
+        this.knobDefaults,
       ) as AutocompleteKnobState,
     );
     this.nextId = 1;
@@ -167,7 +172,10 @@ export class AutocompleteDemoPageComponent {
   protected addOption(): void {
     this.optionItems.update(items => [
       ...items,
-      { id: this.nextId++, label: 'New breed' },
+      {
+        id: this.nextId++,
+        label: this.messages().ui.component.demos.autocomplete.newBreed,
+      },
     ]);
   }
 
@@ -182,6 +190,14 @@ export class AutocompleteDemoPageComponent {
   }
 
   private seedOptions(): OptionModel[] {
-    return DEFAULT_OPTIONS.map(label => ({ id: this.nextId++, label }));
+    const m = this.messages().ui.component.demos.autocomplete;
+    return [
+      m.goldenRetriever,
+      m.germanShepherd,
+      m.beagle,
+      m.poodle,
+      m.boxer,
+      m.dachshund,
+    ].map(label => ({ id: this.nextId++, label }));
   }
 }

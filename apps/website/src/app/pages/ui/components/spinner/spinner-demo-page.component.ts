@@ -10,7 +10,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface SpinnerKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -34,9 +39,14 @@ const SLUG = 'spinner';
 })
 export class SpinnerDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.spinner, UI_API[SLUG]);
   protected readonly state = signal<SpinnerKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.spinner) as SpinnerKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.spinner,
+      this.knobDefaults,
+    ) as SpinnerKnobState,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
@@ -47,7 +57,11 @@ export class SpinnerDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.spinner) as SpinnerKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.spinner,
+        this.knobDefaults,
+      ) as SpinnerKnobState,
     );
   }
 }

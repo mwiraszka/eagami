@@ -1,6 +1,9 @@
 import type { ComponentKnobs, KnobArgValue, KnobCondition } from '@eagami/ui-knobs';
 
+import { inject } from '@angular/core';
+
 import type { ApiProp, ComponentApi } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 export type KnobControl =
   'select' | 'boolean' | 'text' | 'number' | 'color' | 'icon' | 'content';
@@ -121,14 +124,27 @@ export function buildKnobs(
   return knobs;
 }
 
+/**
+ * The component's localized playground sample values (labels, placeholders,
+ * hints), keyed by knob name. The knob specs ship with the library and are
+ * shared with Storybook, so their English sample text is translated here rather
+ * than at the source.
+ */
+export function injectKnobDefaults(slug: string): Readonly<Record<string, string>> {
+  const messages = inject(WebI18nService).messages;
+  return messages().ui.component.playground.knobDefaults[slug] ?? {};
+}
+
 export function initialKnobState(
   knobs: PlaygroundKnob[],
   spec: ComponentKnobs,
+  localized: Readonly<Record<string, string>> = {},
 ): KnobState {
   const state: KnobState = {};
   for (const knob of knobs) {
     const initial = spec.args[knob.name];
-    state[knob.name] = initial !== undefined ? initial : knob.default;
+    state[knob.name] =
+      localized[knob.name] ?? (initial !== undefined ? initial : knob.default);
   }
   return state;
 }

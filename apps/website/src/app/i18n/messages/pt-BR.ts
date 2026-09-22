@@ -646,6 +646,25 @@ export const ptBR: WebMessages = {
         warningLabel: 'Aviso',
         errorLabel: 'Erro',
         infoLabel: 'Informação',
+        heading: 'Título',
+        content: 'Conteúdo',
+        time: 'Hora',
+        current: 'Atual',
+        emphasized: 'Destacado',
+        shortcut: 'Atalho',
+        group: 'Grupo',
+        optionLabel: 'Rótulo da opção',
+        segmentText: 'Texto do segmento',
+        addItem: 'Adicionar item',
+        deleteItem: 'Excluir item',
+        addOption: 'Adicionar opção',
+        deleteOption: 'Excluir opção',
+        addCommand: 'Adicionar comando',
+        deleteCommand: 'Excluir comando',
+        addSegment: 'Adicionar segmento',
+        deleteSegment: 'Excluir segmento',
+        description: 'Descrição',
+        label: 'Rótulo',
       },
       demos: {
         accordion: {
@@ -665,6 +684,8 @@ export const ptBR: WebMessages = {
           sectionTwoBody: 'Conteúdo da seção dois.',
           disabledSectionLabel: 'Seção Desativada',
           disabledSectionBody: 'Este conteúdo não está acessível.',
+          newSectionHeading: 'Nova seção',
+          newSectionContent: 'Novo conteúdo',
         },
         alert: {
           defaultText: 'Este é um alerta padrão',
@@ -675,6 +696,7 @@ export const ptBR: WebMessages = {
           dismissibleText: 'Este alerta pode ser dispensado',
           tooltipSuppressed:
             'As dicas de ferramenta são suprimidas em dispositivos de toque para evitar o comportamento de hover persistente. Veja esta seção em um dispositivo com mouse para ver as demonstrações em ação.',
+          message: 'Esta é uma mensagem de alerta.',
         },
         autocomplete: {
           startTyping: 'Comece a digitar…',
@@ -683,6 +705,13 @@ export const ptBR: WebMessages = {
           breedPlaceholder: 'Raça de cachorro…',
           minMaxLabel: 'Mín 2 caracteres, máx 3 resultados',
           minMaxPlaceholder: 'Digite ao menos 2 caracteres…',
+          goldenRetriever: 'Golden retriever',
+          germanShepherd: 'Pastor-alemão',
+          beagle: 'Beagle',
+          poodle: 'Poodle',
+          boxer: 'Boxer',
+          dachshund: 'Dachshund',
+          newBreed: 'Nova raça',
         },
         avatarEditor: {
           result: 'Resultado:',
@@ -710,6 +739,9 @@ export const ptBR: WebMessages = {
           filledBody: 'Cartão com fundo sutil.',
           cardTitleHeader: 'Título do Cartão',
           cardWithFooterBody: 'Este cartão tem cabeçalho, corpo e rodapé com ações.',
+          bodyText:
+            'Este é o conteúdo do corpo do cartão. Ele pode conter qualquer texto ou elemento.',
+          footer: 'Rodapé',
         },
         checkbox: {
           acceptTermsAndConditions: 'Aceitar termos e condições',
@@ -962,6 +994,12 @@ export const ptBR: WebMessages = {
             return `Este é ${article} toast de ${variant}`;
           },
           segmentsLabel: 'Segmentos',
+          movedSegment: 'Movido: ',
+          roadmapSegment: 'Roteiro do 3º trimestre',
+          toSegment: ' para ',
+          archivedSegment: 'Projetos arquivados',
+          title: 'Projeto atualizado',
+          newSegment: ' novo segmento',
         },
         tooltip: {
           triggerLabel: '(passe o mouse sobre mim)',
@@ -996,9 +1034,42 @@ export const ptBR: WebMessages = {
           hint: 'Pressione Ctrl + K (ou Cmd + K) para abrir a paleta de comandos em qualquer lugar desta página.',
           openButton: 'Abrir paleta de comandos',
           executedToast: label => `Executado: ${label}`,
+          newFile: 'Novo arquivo',
+          openFile: 'Abrir arquivo',
+          save: 'Salvar',
+          find: 'Localizar',
+          replace: 'Substituir',
+          undo: 'Desfazer',
+          toggleTheme: 'Alternar tema',
+          toggleThemeDescription: 'Alterna entre o modo claro e o escuro',
+          lockWorkspace: 'Bloquear a área de trabalho',
+          lockWorkspaceDescription: 'Desativado no momento (recurso em beta)',
+          fileGroup: 'Arquivo',
+          editGroup: 'Editar',
+          newCommand: 'Novo comando',
         },
         avatarEditorActions: {
           avatarUpdatedToast: 'Avatar atualizado',
+        },
+        stepper: {
+          accountLabel: 'Conta',
+          accountContent: 'Etapa 1: dados da conta.',
+          profileLabel: 'Perfil',
+          profileContent: 'Etapa 2: informações do perfil.',
+          reviewLabel: 'Revisão',
+          reviewContent: 'Etapa 3: revisar e enviar.',
+        },
+        timeline: {
+          orderPlaced: 'Pedido realizado',
+          orderPlacedDescription: 'Pagamento confirmado e recibo enviado.',
+          packed: 'Embalado',
+          packedDescription: 'Itens separados e embalados no depósito.',
+          outForDelivery: 'Saiu para entrega',
+          outForDeliveryDescription: 'O entregador está a caminho.',
+          delivered: 'Entregue',
+          deliveredDescription: 'Previsto até o fim do dia.',
+          newEvent: 'Novo evento',
+          newEventDescription: 'Nova descrição',
         },
       },
       playground: {
@@ -2311,6 +2382,115 @@ export const ptBR: WebMessages = {
             closed:
               'Dispara quando o diálogo fecha, independentemente de ter sido fechado pelo usuário ou programaticamente.',
             opened: 'Dispara assim que o diálogo é exibido via showModal().',
+          },
+        },
+        direction: 'Direção',
+        knobDefaults: {
+          autocomplete: {
+            label: 'Raça do cão',
+            placeholder: 'Comece a digitar…',
+            firstGroupLabel: 'Usados recentemente',
+            secondGroupLabel: 'Todo o restante',
+          },
+          avatar: {
+            alt: 'Avatar do usuário',
+          },
+          button: {
+            label: 'Aperte aqui',
+          },
+          checkbox: {
+            label: 'Aceitar termos e condições',
+          },
+          'code-input': {
+            label: 'Código de verificação',
+          },
+          'color-picker': {
+            label: 'Cor',
+            placeholder: 'Escolha uma cor…',
+          },
+          'command-palette': {
+            placeholder: 'Digite um comando ou pesquise…',
+            emptyMessage: 'Nenhum comando correspondente',
+          },
+          'date-picker': {
+            label: 'Data do compromisso',
+          },
+          divider: {
+            label: 'OU',
+          },
+          dropdown: {
+            label: 'Fruta',
+            placeholder: 'Selecione uma fruta…',
+            firstGroupLabel: 'Usados recentemente',
+            secondGroupLabel: 'Todo o restante',
+          },
+          'empty-state': {
+            title: 'Nenhum item ainda',
+            description: 'Comece criando seu primeiro item.',
+          },
+          'file-uploader': {
+            label: 'Anexos',
+          },
+          'form-field': {
+            label: 'Endereço de e-mail',
+            hint: 'Usamos apenas para entrar em contato com você',
+          },
+          input: {
+            label: 'Rótulo',
+            placeholder: 'Digite o texto…',
+          },
+          menu: {
+            ariaLabel: 'Menu de ações',
+          },
+          'multi-select': {
+            label: 'Frutas',
+            placeholder: 'Selecione…',
+            firstGroupLabel: 'Usados recentemente',
+            secondGroupLabel: 'Todo o restante',
+          },
+          'number-input': {
+            label: 'Valor',
+          },
+          'progress-bar': {
+            label: 'Enviando arquivos',
+          },
+          radio: {
+            label: 'Fruta',
+          },
+          'range-slider': {
+            label: 'Faixa de preço',
+          },
+          rating: {
+            label: 'Avalie sua experiência',
+          },
+          segmented: {
+            label: 'Visualizar',
+          },
+          slider: {
+            label: 'Volume',
+          },
+          spinner: {
+            label: 'Carregando',
+          },
+          switch: {
+            label: 'Alterne aqui',
+          },
+          tag: {
+            removeLabel: 'Remover tag',
+          },
+          textarea: {
+            label: 'Mensagem',
+            placeholder: 'Digite sua mensagem…',
+          },
+          'time-picker': {
+            label: 'Hora',
+            placeholder: 'Selecione a hora…',
+          },
+          tooltip: {
+            eaTooltip: 'As dicas adicionam contexto ao passar o cursor ou focar',
+          },
+          tree: {
+            ariaLabel: 'Árvore de arquivos',
           },
         },
       },

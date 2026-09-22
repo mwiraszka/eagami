@@ -12,7 +12,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface CodeInputKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -45,12 +50,17 @@ const SLUG = 'code-input';
 })
 export class CodeInputDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS['code-input'], UI_API[SLUG]),
     labelIconKnob(),
   ];
   protected readonly state = signal<CodeInputKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS['code-input']) as CodeInputKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS['code-input'],
+      this.knobDefaults,
+    ) as CodeInputKnobState,
   );
 
   protected readonly control = new FormControl(null, {
@@ -94,7 +104,11 @@ export class CodeInputDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS['code-input']) as CodeInputKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS['code-input'],
+        this.knobDefaults,
+      ) as CodeInputKnobState,
     );
   }
 }

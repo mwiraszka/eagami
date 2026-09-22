@@ -12,9 +12,16 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -41,27 +48,6 @@ interface AccordionKnobState {
 
 const SLUG = 'accordion';
 
-const DEFAULT_ITEMS: readonly Omit<AccordionItemModel, 'id'>[] = [
-  {
-    heading: 'What is @eagami/ui?',
-    content:
-      'A lightweight, accessible Angular component library built on CSS custom properties.',
-    disabled: false,
-  },
-  {
-    heading: 'How do I install it?',
-    content:
-      'Run pnpm add @eagami/ui, then add the global stylesheet to your angular.json.',
-    disabled: false,
-  },
-  {
-    heading: 'Can I customize the theme?',
-    content:
-      'Yes, override any CSS custom property on :root or scope overrides to individual components.',
-    disabled: false,
-  },
-];
-
 @Component({
   selector: 'web-accordion-demo-page',
   templateUrl: './accordion-demo-page.component.html',
@@ -80,6 +66,7 @@ const DEFAULT_ITEMS: readonly Omit<AccordionItemModel, 'id'>[] = [
   ],
 })
 export class AccordionDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.accordion, UI_API[SLUG]);
   protected readonly state = signal<AccordionKnobState>(
@@ -122,8 +109,8 @@ export class AccordionDemoPageComponent {
       ...items,
       {
         id: this.nextId++,
-        heading: 'New section',
-        content: 'New content',
+        heading: this.messages().ui.component.demos.accordion.newSectionHeading,
+        content: this.messages().ui.component.demos.accordion.newSectionContent,
         disabled: false,
       },
     ]);
@@ -140,6 +127,11 @@ export class AccordionDemoPageComponent {
   }
 
   private seedItems(): AccordionItemModel[] {
-    return DEFAULT_ITEMS.map(item => ({ ...item, id: this.nextId++ }));
+    const m = this.messages().ui.component.demos.accordion;
+    return [
+      { heading: m.whatLabel, content: m.whatBody },
+      { heading: m.installLabel, content: m.installBody },
+      { heading: m.themeLabel, content: m.themeBody },
+    ].map(item => ({ ...item, disabled: false, id: this.nextId++ }));
   }
 }

@@ -23,7 +23,12 @@ import {
   labelIconFor,
   labelIconKnob,
 } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface InputKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -61,13 +66,18 @@ const SLUG = 'input';
 })
 export class InputDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.input, UI_API[SLUG]),
     iconKnob(['search', 'filter', 'mail', 'user', 'lock', 'calendar']),
     labelIconKnob(),
   ];
   protected readonly state = signal<InputKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.input) as InputKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.input,
+      this.knobDefaults,
+    ) as InputKnobState,
   );
   protected readonly iconComponent = computed(() =>
     iconComponentForSlug(this.state().icon),
@@ -106,7 +116,11 @@ export class InputDemoPageComponent {
 
   protected reset(): void {
     this.state.set(
-      initialKnobState(this.knobs, PLAYGROUND_KNOBS.input) as InputKnobState,
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.input,
+        this.knobDefaults,
+      ) as InputKnobState,
     );
   }
 }

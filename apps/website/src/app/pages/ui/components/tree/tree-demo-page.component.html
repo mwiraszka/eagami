@@ -13,7 +13,7 @@
       [nodes]="nodes"
       [size]="state().size"
       [disabled]="state().disabled"
-      [aria-label]="state().ariaLabel || 'File tree'"
+      [aria-label]="state().ariaLabel || fallbackAriaLabel"
       [expandedIds]="['src']" />
   </web-component-playground>
 </web-ui-component-demo-layout>

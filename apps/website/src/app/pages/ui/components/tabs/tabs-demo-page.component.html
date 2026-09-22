@@ -12,7 +12,7 @@
     <ea-tabs
       [size]="state().size"
       [variant]="state().variant">
-      @for (tab of tabs; track tab.value) {
+      @for (tab of tabs(); track tab.value) {
         <ea-tab
           [value]="tab.value"
           [label]="tab.label">

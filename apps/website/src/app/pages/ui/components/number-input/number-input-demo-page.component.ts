@@ -18,7 +18,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface NumberInputKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -55,6 +60,7 @@ const SLUG = 'number-input';
 })
 export class NumberInputDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS['number-input'], UI_API[SLUG]),
     labelIconKnob(),
@@ -63,6 +69,7 @@ export class NumberInputDemoPageComponent {
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS['number-input'],
+      this.knobDefaults,
     ) as NumberInputKnobState,
   );
 
@@ -115,6 +122,7 @@ export class NumberInputDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['number-input'],
+        this.knobDefaults,
       ) as NumberInputKnobState,
     );
   }

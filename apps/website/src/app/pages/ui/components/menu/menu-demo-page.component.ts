@@ -18,7 +18,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface MenuKnobState {
   [key: string]: KnobValue;
@@ -58,9 +63,14 @@ export class MenuDemoPageComponent {
   protected readonly childMarkup = SNIPPET_CHILDREN;
   protected readonly extraAttributes = ['[eaMenuTrigger]="menuRef"'];
 
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.menu, UI_API[SLUG]);
   protected readonly state = signal<MenuKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.menu) as MenuKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.menu,
+      this.knobDefaults,
+    ) as MenuKnobState,
   );
 
   protected onKnob({ name, value }: KnobChange): void {
@@ -68,6 +78,12 @@ export class MenuDemoPageComponent {
   }
 
   protected reset(): void {
-    this.state.set(initialKnobState(this.knobs, PLAYGROUND_KNOBS.menu) as MenuKnobState);
+    this.state.set(
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.menu,
+        this.knobDefaults,
+      ) as MenuKnobState,
+    );
   }
 }

@@ -12,7 +12,12 @@ import {
   type KnobChange,
 } from '../_playground/component-playground.component';
 import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface RangeSliderKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -49,6 +54,7 @@ const SLUG = 'range-slider';
 })
 export class RangeSliderDemoPageComponent {
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS['range-slider'], UI_API[SLUG]),
     labelIconKnob(),
@@ -57,6 +63,7 @@ export class RangeSliderDemoPageComponent {
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS['range-slider'],
+      this.knobDefaults,
     ) as RangeSliderKnobState,
   );
 
@@ -96,6 +103,7 @@ export class RangeSliderDemoPageComponent {
       initialKnobState(
         this.knobs,
         PLAYGROUND_KNOBS['range-slider'],
+        this.knobDefaults,
       ) as RangeSliderKnobState,
     );
   }

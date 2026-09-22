@@ -1,9 +1,16 @@
 import { AlertComponent, type AlertSize, type AlertVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -32,6 +39,7 @@ const SLUG = 'alert';
   imports: [AlertComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })
 export class AlertDemoPageComponent {
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS.alert, UI_API[SLUG]),
