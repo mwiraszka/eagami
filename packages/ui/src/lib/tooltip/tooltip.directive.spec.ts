@@ -205,6 +205,27 @@ describe('TooltipDirective', () => {
       expect(getTooltip()).toBeNull();
     });
 
+    it('closes the bubble when control is handed back', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      host.open.set(null);
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('returns to hover and focus once control is handed back', () => {
+      host.open.set(false);
+      fixture.detectChanges();
+      host.open.set(null);
+      fixture.detectChanges();
+
+      show();
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
     it('keeps an open bubble when the pointer leaves', () => {
       host.open.set(true);
       fixture.detectChanges();

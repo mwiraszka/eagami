@@ -216,11 +216,15 @@ export class TooltipDirective implements OnDestroy {
     this.hoverMql?.addEventListener('change', this.hoverChangeHandler);
 
     // After render, so the bubble measures a trigger whose own bindings have landed
+    // Handing control back (to null) closes a bubble the input opened, since no
+    // hover or focus is holding it
+    let wasControlled = false;
     afterRenderEffect(() => {
       const open = this.tooltipOpen();
-      if (open !== null) {
+      if (open !== null || wasControlled) {
         untracked(() => (open ? this.show() : this.hide()));
       }
+      wasControlled = open !== null;
     });
   }
 

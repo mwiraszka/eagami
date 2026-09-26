@@ -221,8 +221,11 @@ export class LineChartComponent {
       [lo, hi] = [hi, lo];
     }
     const scale = niceScale(lo, hi, Math.max(2, Math.floor(plotHeight / (axisPx * 3))));
-    const min = this.yMin() ?? scale.min;
-    const max = this.yMax() ?? scale.max;
+    let min = this.yMin() ?? scale.min;
+    let max = this.yMax() ?? scale.max;
+    if (min > max) {
+      [min, max] = [max, min];
+    }
     const ticks = scale.ticks
       .filter(t => t >= min && t <= max)
       .map(value => ({ value, text: format(value) }));
@@ -400,7 +403,7 @@ export class LineChartComponent {
 
   protected onFocus(): void {
     if (!this.active()) {
-      this.setActive(this.nearestValid(0, 0, 1));
+      this.setActive(this.firstPoint());
     }
   }
 
@@ -412,10 +415,13 @@ export class LineChartComponent {
     // The first arrow press lands on the first point rather than stepping past it
     if (!this.active() && event.key.startsWith('Arrow')) {
       event.preventDefault();
-      this.setActive(this.nearestValid(0, 0, 1));
+      this.setActive(this.firstPoint());
       return;
     }
-    const active = this.active() ?? { series: 0, index: 0 };
+    const active = this.active() ?? this.firstPoint();
+    if (!active) {
+      return;
+    }
     const count = this.count();
     const seriesCount = this.series().length;
     let next: ActivePoint | null = active;
@@ -461,6 +467,17 @@ export class LineChartComponent {
   private valueAt(series: number, index: number): number | null {
     const value = this.series()[series]?.data[index];
     return value == null || !isFinite(value) ? null : value;
+  }
+
+  // Earliest plotted value in any series, so a chart whose first series is empty still takes focus
+  private firstPoint(): ActivePoint | null {
+    for (let index = 0; index < this.count(); index++) {
+      const series = this.series().findIndex((_, s) => this.valueAt(s, index) != null);
+      if (series !== -1) {
+        return { series, index };
+      }
+    }
+    return null;
   }
 
   // Walks from `index` in `step` direction to the first plotted value of `series`
