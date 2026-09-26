@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.50.0',
+    date: '2026-09-26',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a set of everyday interface icons covering drag handles, sorting and swapping arrows, messaging replies, clipboard pasting, an account avatar, time and scheduling, text formatting, a dashboard layout, currency, travel, education, accessibility, experiments and cookie consent.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.49.1',
     date: '2026-09-23',
     sections: [

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.50.0] - 2026-09-26
+
+### Added
+
+- Add a set of everyday interface icons covering drag handles, sorting and swapping arrows, messaging replies, clipboard pasting, an account avatar, time and scheduling, text formatting, a dashboard layout, currency, travel, education, accessibility, experiments and cookie consent.
+
 ## [5.49.1] - 2026-09-23
 
 ### Fixed
@@ -1654,6 +1660,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.50.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.49.1...ui-v5.50.0
 [5.49.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.49.0...ui-v5.49.1
 [5.49.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.48.0...ui-v5.49.0
 [5.48.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.47.1...ui-v5.48.0
