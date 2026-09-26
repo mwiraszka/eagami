@@ -1,0 +1,26 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-line-chart
+      class="playground-fill"
+      [labels]="labels()"
+      [series]="series()"
+      [curve]="state().curve"
+      [size]="state().size"
+      [animation]="state().animation"
+      [animationDuration]="state().animationDuration"
+      [height]="state().height"
+      [showArea]="state().showArea"
+      [showPoints]="state().showPoints"
+      [showGrid]="state().showGrid"
+      [showLegend]="state().showLegend" />
+  </web-component-playground>
+</web-ui-component-demo-layout>

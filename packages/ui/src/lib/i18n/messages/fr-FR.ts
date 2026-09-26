@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: "Fil d'Ariane",
   },
+  chart: {
+    roleDescription: 'graphique',
+    lineChart: 'Graphique linéaire',
+    barChart: 'Graphique à barres',
+    pieChart: 'Graphique circulaire',
+    category: 'Catégorie',
+    value: 'Valeur',
+    share: 'Part',
+    noData: 'Aucune donnée',
+    point: (series, label, value) => `${series}, ${label} : ${value}`,
+    slice: (label, value, percent) => `${label} : ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Code de vérification, ${length} chiffres`,
     digitLabel: (index, length) => `Chiffre ${index} sur ${length}`,

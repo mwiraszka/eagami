@@ -1,5 +1,5 @@
 {
-  "$description": "Eagami UI design tokens, generated from @eagami/ui@5.50.0 (packages/ui/src/styles/tokens/*.scss) by scripts/sync-integration-guides.mjs. Aliases use W3C Design Tokens {group.token} syntax. Dark-mode overrides live in $extensions['com.eagami.ui'].dark; tokens without one are identical in both modes. Shadow, ease, and transition tokens carry raw CSS values.",
+  "$description": "Eagami UI design tokens, generated from @eagami/ui@5.51.0 (packages/ui/src/styles/tokens/*.scss) by scripts/sync-integration-guides.mjs. Aliases use W3C Design Tokens {group.token} syntax. Dark-mode overrides live in $extensions['com.eagami.ui'].dark; tokens without one are identical in both modes. Shadow, ease, and transition tokens carry raw CSS values.",
   "color": {
     "primary-50": {
       "$type": "color",
@@ -682,6 +682,78 @@
     "picker-thumb-halo": {
       "$type": "color",
       "$value": "rgba(0, 0, 0, 0.25)"
+    },
+    "chart-1": {
+      "$type": "color",
+      "$value": "#2a78d6",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#3987e5"
+        }
+      }
+    },
+    "chart-2": {
+      "$type": "color",
+      "$value": "#eb6834",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#d95926"
+        }
+      }
+    },
+    "chart-3": {
+      "$type": "color",
+      "$value": "#1baf7a",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#199e70"
+        }
+      }
+    },
+    "chart-4": {
+      "$type": "color",
+      "$value": "#eda100",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#c98500"
+        }
+      }
+    },
+    "chart-5": {
+      "$type": "color",
+      "$value": "#e87ba4",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#d55181"
+        }
+      }
+    },
+    "chart-6": {
+      "$type": "color",
+      "$value": "#008300",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#008300"
+        }
+      }
+    },
+    "chart-7": {
+      "$type": "color",
+      "$value": "#4a3aa7",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#9085e9"
+        }
+      }
+    },
+    "chart-8": {
+      "$type": "color",
+      "$value": "#e34948",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "#e66767"
+        }
+      }
     }
   },
   "font-family": {

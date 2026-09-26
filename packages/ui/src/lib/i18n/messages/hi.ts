@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'ब्रेडक्रंब',
   },
+  chart: {
+    roleDescription: 'चार्ट',
+    lineChart: 'लाइन चार्ट',
+    barChart: 'बार चार्ट',
+    pieChart: 'पाई चार्ट',
+    category: 'श्रेणी',
+    value: 'मान',
+    share: 'हिस्सा',
+    noData: 'कोई डेटा नहीं',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `सत्यापन कोड, ${length} अंक`,
     digitLabel: (index, length) => `${length} में से अंक ${index}`,

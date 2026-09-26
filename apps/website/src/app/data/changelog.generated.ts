@@ -14,6 +14,34 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.51.0',
+    date: '2026-09-26',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a line chart that plots one or more series across shared labels, with linear, smooth or stepped curves, optional points and area fills, a tooltip driven by pointer or keyboard, and draw, reveal, fade or rise entrance animations.',
+          'Add a bar chart that compares series as vertical or horizontal bars, grouped or stacked, with optional value labels, a tooltip driven by pointer or keyboard, and grow, cascade or fade entrance animations.',
+          "Add a pie chart that shows the parts of a whole as a pie or donut, with a legend of each slice's share, a tooltip driven by pointer or keyboard, and sweep, grow or fade entrance animations.",
+          'Add a `tooltipOpen` input to the tooltip directive for showing and hiding its bubble programmatically, for a trigger that is never hovered or focused itself.',
+          'Add an eight-color `--color-chart-*` palette, tuned for light and dark themes, that the charts draw their series colors from.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          '**Breaking:** Size badges on the shared type scale, so a badge renders at the same text size as other components of its size, one step larger than before.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Match the multi-select overflow count and the color picker's value text to the shared secondary text size.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.50.0',
     date: '2026-09-26',
     sections: [

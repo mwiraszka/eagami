@@ -26,6 +26,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: '面包屑导航',
   },
+  chart: {
+    roleDescription: '图表',
+    lineChart: '折线图',
+    barChart: '柱状图',
+    pieChart: '饼图',
+    category: '类别',
+    value: '数值',
+    share: '占比',
+    noData: '无数据',
+    point: (series, label, value) => `${series}，${label}：${value}`,
+    slice: (label, value, percent) => `${label}：${value}，${percent}`,
+  },
   codeInput: {
     groupLabel: length => `验证码，共 ${length} 位`,
     digitLabel: (index, length) => `第 ${index} 位，共 ${length} 位`,

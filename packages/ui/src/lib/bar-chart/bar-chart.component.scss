@@ -1,0 +1,146 @@
+@use '../../styles/mixins' as ea;
+@use '../chart/chart' as chart;
+
+ea-bar-chart {
+  display: block;
+}
+
+.ea-bar-chart {
+  @include chart.chart-base;
+
+  &__plot {
+    @include chart.chart-plot;
+  }
+
+  &__svg {
+    direction: ltr;
+    touch-action: pan-y;
+  }
+
+  &__hit {
+    fill: transparent;
+  }
+
+  &__grid {
+    @include chart.chart-grid-line;
+  }
+
+  &__baseline {
+    @include chart.chart-baseline;
+    pointer-events: none;
+  }
+
+  &__axis {
+    @include chart.chart-axis;
+  }
+
+  &__value {
+    @include chart.chart-axis;
+    font-variant-numeric: tabular-nums;
+    fill: var(--color-text-primary);
+    pointer-events: none;
+  }
+
+  &__bar {
+    fill: var(--ea-chart-color);
+    pointer-events: none;
+    transition: opacity var(--duration-fast) var(--ease-out);
+    transform-box: view-box;
+
+    &--dimmed {
+      @include chart.chart-dimmed;
+    }
+  }
+
+  &--vertical .ea-bar-chart__bar {
+    transform-origin: 0 var(--ea-bar-chart-baseline);
+  }
+
+  &--horizontal .ea-bar-chart__bar {
+    transform-origin: var(--ea-bar-chart-baseline) 0;
+  }
+
+  &__tooltip {
+    @include chart.chart-tooltip;
+  }
+
+  &__anchor {
+    @include chart.chart-anchor;
+  }
+
+  &__tooltip-title {
+    @include chart.chart-tooltip-title;
+  }
+
+  &__tooltip-row {
+    @include chart.chart-tooltip-row;
+
+    &--active {
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  &__tooltip-value {
+    margin-inline-start: auto;
+    padding-inline-start: 0.75em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__swatch {
+    @include chart.chart-swatch;
+  }
+
+  &__legend {
+    @include chart.chart-legend;
+  }
+
+  &__legend-item {
+    @include chart.chart-legend-item;
+  }
+
+  &__table,
+  &__live {
+    @include ea.visually-hidden;
+  }
+
+  &__empty {
+    @include chart.chart-empty;
+  }
+
+  &--animate-grow,
+  &--animate-cascade {
+    &.ea-bar-chart--vertical .ea-bar-chart__bar {
+      animation-name: ea-chart-grow-y;
+    }
+
+    &.ea-bar-chart--horizontal .ea-bar-chart__bar {
+      animation-name: ea-chart-grow-x;
+    }
+
+    .ea-bar-chart__bar {
+      @include chart.chart-motion;
+    }
+
+    .ea-bar-chart__value {
+      animation-name: ea-chart-fade;
+      animation-delay: calc(var(--ea-chart-duration, 600ms) * 0.8);
+      @include chart.chart-motion;
+    }
+  }
+
+  &--animate-cascade .ea-bar-chart__bar {
+    animation-delay: var(--ea-chart-delay, 0ms);
+  }
+
+  &--animate-cascade .ea-bar-chart__value {
+    animation-delay: calc(var(--ea-chart-duration, 600ms) * 1.3);
+  }
+
+  &--animate-fade {
+    .ea-bar-chart__bar,
+    .ea-bar-chart__value {
+      animation-name: ea-chart-fade;
+      @include chart.chart-motion;
+    }
+  }
+}

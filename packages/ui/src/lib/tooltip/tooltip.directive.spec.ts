@@ -19,6 +19,7 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
       [dismissDelay]="dismissDelay()"
       [flip]="flip()"
       [whenClipped]="whenClipped()"
+      [tooltipOpen]="open()"
       [attr.aria-describedby]="existingDescribedBy()">
       Trigger
     </button>
@@ -31,6 +32,7 @@ class TestHostComponent {
   dismissDelay = signal(150);
   flip = signal(true);
   whenClipped = signal(false);
+  open = signal<boolean | null>(null);
   existingDescribedBy = signal<string | null>(null);
 }
 
@@ -171,6 +173,66 @@ describe('TooltipDirective', () => {
       show();
 
       expect(getTooltip()).toBeNull();
+    });
+  });
+
+  describe('Controlled', () => {
+    it('shows while tooltipOpen is true, without a hover or focus', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getTooltip()?.textContent).toBe('Save your changes');
+    });
+
+    it('hides once tooltipOpen turns false', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      host.open.set(false);
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('ignores hover and focus while controlled', () => {
+      host.open.set(false);
+      fixture.detectChanges();
+
+      show();
+      getButton().dispatchEvent(new FocusEvent('focusin'));
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('closes the bubble when control is handed back', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      host.open.set(null);
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('returns to hover and focus once control is handed back', () => {
+      host.open.set(false);
+      fixture.detectChanges();
+      host.open.set(null);
+      fixture.detectChanges();
+
+      show();
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('keeps an open bubble when the pointer leaves', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      hide();
+
+      expect(getTooltip()).toBeTruthy();
     });
   });
 

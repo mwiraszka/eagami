@@ -1056,6 +1056,23 @@ export const en: WebMessages = {
           newEvent: 'New event',
           newEventDescription: 'New description',
         },
+        barChart: {
+          hardware: 'Hardware',
+          software: 'Software',
+          services: 'Services',
+          quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+        },
+        lineChart: {
+          visitors: 'Visitors',
+          signUps: 'Sign-ups',
+          months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        },
+        pieChart: {
+          desktop: 'Desktop',
+          mobile: 'Mobile',
+          tablet: 'Tablet',
+          other: 'Other',
+        },
       },
       playground: {
         controls: 'Controls',
@@ -1078,6 +1095,37 @@ export const en: WebMessages = {
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Orientation',
+            size: 'Size',
+            animation: 'Animation',
+            animationDuration: 'Animation duration (ms)',
+            height: 'Height (px)',
+            stacked: 'Stacked',
+            showValues: 'Show values',
+            showGrid: 'Show grid',
+            showLegend: 'Show legend',
+          },
+          'line-chart': {
+            curve: 'Curve',
+            size: 'Size',
+            animation: 'Animation',
+            animationDuration: 'Animation duration (ms)',
+            height: 'Height (px)',
+            showArea: 'Show area',
+            showPoints: 'Show points',
+            showGrid: 'Show grid',
+            showLegend: 'Show legend',
+          },
+          'pie-chart': {
+            variant: 'Variant',
+            size: 'Size',
+            animation: 'Animation',
+            animationDuration: 'Animation duration (ms)',
+            height: 'Height (px)',
+            showLegend: 'Show legend',
+            showPercentages: 'Show percentages',
+          },
           timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
           tooltip: {
             eaTooltip: 'Tooltip Content',
@@ -1315,6 +1363,69 @@ export const en: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(semantic-only)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Category labels along the category axis, one per value.',
+            series:
+              'The series to plot, each with a name, one value per label, and an optional color.',
+            orientation: 'Direction the bars extend from the baseline.',
+            stacked:
+              'Stacks the series of each label into one bar instead of grouping them side by side.',
+            showGrid: 'Draws gridlines at each value-axis tick.',
+            showLegend:
+              'Shows a legend beneath the chart when it plots more than one series.',
+            showValues:
+              "Prints each bar's value at its end, or each stack's total when stacked.",
+            height: 'Height of the plot in pixels; the width fills the container.',
+            size: 'Visual size of the axis, legend, and tooltip text.',
+            animation:
+              'Entrance animation, replayed whenever the data changes: grow from the baseline, cascade one label after another, fade in, or none.',
+            animationDuration: 'Length of the entrance animation in milliseconds.',
+            formatValue:
+              'Formats values on the axis, tooltip, and data table; grouped for the active locale by default.',
+            pointClick: 'Fires when a bar is clicked, or chosen with Enter or Space.',
+            activePointChange:
+              'Fires when the highlighted bar changes by pointer or keyboard, with null once cleared.',
+          },
+          'line-chart': {
+            labels: 'Category labels along the x-axis, one per value.',
+            series:
+              'The series to plot, each with a name, one value per label (null leaves a gap), and an optional color.',
+            curve: 'How the line bends between points.',
+            showArea: 'Fills the area beneath each line with a light wash of its color.',
+            showPoints: 'Marks every value with a point.',
+            showGrid: 'Draws horizontal gridlines at each y-axis tick.',
+            showLegend:
+              'Shows a legend beneath the chart when it plots more than one series.',
+            yMin: 'Lower bound of the y-axis; derived from the data when unset.',
+            yMax: 'Upper bound of the y-axis; derived from the data when unset.',
+            height: 'Height of the plot in pixels; the width fills the container.',
+            size: 'Visual size of the axis, legend, and tooltip text.',
+            animation:
+              'Entrance animation, replayed whenever the data changes: draw each line, reveal them left to right, fade in, rise from the baseline, or none.',
+            animationDuration: 'Length of the entrance animation in milliseconds.',
+            formatValue:
+              'Formats values on the axis, tooltip, and data table; grouped for the active locale by default.',
+            pointClick: 'Fires when a point is clicked, or chosen with Enter or Space.',
+            activePointChange:
+              'Fires when the highlighted point changes by pointer or keyboard, with null once cleared.',
+          },
+          'pie-chart': {
+            data: "The slices to draw clockwise from twelve o'clock, each with a label, a value, and an optional color.",
+            variant: 'A solid pie, or a donut ring with an empty center.',
+            showLegend: 'Shows a legend of every slice beneath the chart.',
+            showPercentages: "Adds each slice's share of the total to its legend entry.",
+            height:
+              'Largest diameter of the chart in pixels; it shrinks to fit a narrower container.',
+            size: 'Visual size of the legend and tooltip text.',
+            animation:
+              'Entrance animation, replayed whenever the data changes: sweep clockwise, grow from the center, fade in, or none.',
+            animationDuration: 'Length of the entrance animation in milliseconds.',
+            formatValue:
+              'Formats values in the tooltip and data table; grouped for the active locale by default.',
+            sliceClick: 'Fires when a slice is clicked, or chosen with Enter or Space.',
+            activeSliceChange:
+              'Fires when the highlighted slice changes by pointer or keyboard, with null once cleared.',
+          },
           timeline: {
             items: 'The events to render, in order.',
             orientation: 'Direction the timeline flows.',
@@ -1792,6 +1903,8 @@ export const en: WebMessages = {
             menu: 'The ea-menu instance this trigger controls.',
           },
           tooltip: {
+            tooltipOpen:
+              'Shows or hides the bubble programmatically, for a trigger that is not hovered or focused itself; null leaves it to hover and focus.',
             whenClipped:
               'Shows the bubble only while the trigger is cutting its own content off.',
             flip: 'Moves a bubble with no room on the requested side to the opposite one.',

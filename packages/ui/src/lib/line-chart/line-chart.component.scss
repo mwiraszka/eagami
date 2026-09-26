@@ -1,0 +1,163 @@
+@use '../../styles/mixins' as ea;
+@use '../chart/chart' as chart;
+
+ea-line-chart {
+  display: block;
+}
+
+.ea-line-chart {
+  @include chart.chart-base;
+
+  &__plot {
+    @include chart.chart-plot;
+  }
+
+  &__svg {
+    direction: ltr;
+    touch-action: pan-y;
+  }
+
+  &__hit {
+    fill: transparent;
+  }
+
+  &__grid {
+    @include chart.chart-grid-line;
+  }
+
+  &__baseline {
+    @include chart.chart-baseline;
+  }
+
+  &__axis {
+    @include chart.chart-axis;
+  }
+
+  &__crosshair {
+    stroke: var(--color-border-strong);
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+    pointer-events: none;
+  }
+
+  &__series {
+    pointer-events: none;
+    transition: opacity var(--duration-fast) var(--ease-out);
+
+    &--dimmed {
+      @include chart.chart-dimmed;
+    }
+  }
+
+  &__area {
+    fill: var(--ea-chart-color);
+    fill-opacity: 0.12;
+  }
+
+  &__line {
+    fill: none;
+    stroke: var(--ea-chart-color);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__point {
+    fill: var(--ea-chart-color);
+    stroke: var(--ea-chart-surface, var(--color-bg-base));
+    stroke-width: 2px;
+  }
+
+  &__tooltip {
+    @include chart.chart-tooltip;
+  }
+
+  &__anchor {
+    @include chart.chart-anchor;
+  }
+
+  &__tooltip-title {
+    @include chart.chart-tooltip-title;
+  }
+
+  &__tooltip-row {
+    @include chart.chart-tooltip-row;
+
+    &--active {
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  &__tooltip-value {
+    margin-inline-start: auto;
+    padding-inline-start: 0.75em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__swatch {
+    @include chart.chart-swatch;
+  }
+
+  &__legend {
+    @include chart.chart-legend;
+  }
+
+  &__legend-item {
+    @include chart.chart-legend-item;
+  }
+
+  &__legend-line {
+    width: 1em;
+    height: 2px;
+    border-radius: var(--radius-full);
+    background-color: var(--ea-chart-color);
+  }
+
+  &__table,
+  &__live {
+    @include ea.visually-hidden;
+  }
+
+  &__empty {
+    @include chart.chart-empty;
+  }
+
+  &--animate-draw {
+    .ea-line-chart__line {
+      stroke-dasharray: 1;
+      animation-name: ea-chart-draw;
+      @include chart.chart-motion;
+    }
+
+    .ea-line-chart__area,
+    .ea-line-chart__point {
+      animation-name: ea-chart-fade;
+      animation-delay: calc(var(--ea-chart-duration, 600ms) * 0.6);
+      @include chart.chart-motion;
+    }
+  }
+
+  // Negative insets leave room for the active point's ring, which reaches past the lines
+  &--animate-reveal .ea-line-chart__lines {
+    clip-path: inset(-8px);
+    animation-name: ea-line-chart-reveal;
+    @include chart.chart-motion;
+  }
+
+  &--animate-fade .ea-line-chart__series {
+    animation-name: ea-chart-fade;
+    @include chart.chart-motion;
+  }
+
+  &--animate-rise .ea-line-chart__series {
+    animation-name: ea-chart-grow-y;
+    transform-origin: 0 var(--ea-line-chart-baseline);
+    @include chart.chart-motion;
+  }
+}
+
+@keyframes ea-line-chart-reveal {
+  from {
+    clip-path: inset(-8px 100% -8px -8px);
+  }
+}

@@ -1076,6 +1076,23 @@ export const esES: WebMessages = {
           newEvent: 'Evento nuevo',
           newEventDescription: 'Nueva descripción',
         },
+        barChart: {
+          hardware: 'Hardware',
+          software: 'Software',
+          services: 'Servicios',
+          quarters: ['T1', 'T2', 'T3', 'T4'],
+        },
+        lineChart: {
+          visitors: 'Visitantes',
+          signUps: 'Registros',
+          months: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago'],
+        },
+        pieChart: {
+          desktop: 'Escritorio',
+          mobile: 'Móvil',
+          tablet: 'Tableta',
+          other: 'Otros',
+        },
       },
       playground: {
         controls: 'Opciones',
@@ -1098,6 +1115,37 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Orientación',
+            size: 'Tamaño',
+            animation: 'Animación',
+            animationDuration: 'Duración de la animación (ms)',
+            height: 'Alto (px)',
+            stacked: 'Apilado',
+            showValues: 'Mostrar valores',
+            showGrid: 'Mostrar cuadrícula',
+            showLegend: 'Mostrar leyenda',
+          },
+          'line-chart': {
+            curve: 'Curva',
+            size: 'Tamaño',
+            animation: 'Animación',
+            animationDuration: 'Duración de la animación (ms)',
+            height: 'Alto (px)',
+            showArea: 'Mostrar área',
+            showPoints: 'Mostrar puntos',
+            showGrid: 'Mostrar cuadrícula',
+            showLegend: 'Mostrar leyenda',
+          },
+          'pie-chart': {
+            variant: 'Variante',
+            size: 'Tamaño',
+            animation: 'Animación',
+            animationDuration: 'Duración de la animación (ms)',
+            height: 'Alto (px)',
+            showLegend: 'Mostrar leyenda',
+            showPercentages: 'Mostrar porcentajes',
+          },
           timeline: { orientation: 'Orientación', align: 'Alineación', size: 'Tamaño' },
           tooltip: {
             eaTooltip: 'Contenido del tooltip',
@@ -1335,6 +1383,77 @@ export const esES: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(solo semántico)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels:
+              'Etiquetas de categoría a lo largo del eje de categorías, una por valor.',
+            series:
+              'Las series que se representan, cada una con un nombre, un valor por etiqueta y un color opcional.',
+            orientation:
+              'Dirección en la que se extienden las barras desde la línea base.',
+            stacked:
+              'Apila las series de cada etiqueta en una sola barra en lugar de agruparlas una junto a otra.',
+            showGrid: 'Dibuja líneas de cuadrícula en cada marca del eje de valores.',
+            showLegend:
+              'Muestra una leyenda debajo del gráfico cuando representa más de una serie.',
+            showValues:
+              'Muestra el valor de cada barra en su extremo, o el total de cada pila cuando está apilado.',
+            height:
+              'Altura del área de trazado en píxeles; el ancho ocupa todo el contenedor.',
+            size: 'Tamaño visual del texto del eje, la leyenda y el tooltip.',
+            animation:
+              'Animación de entrada, que se repite cada vez que cambian los datos: crecer desde la línea base, aparecer en cascada una etiqueta tras otra, aparecer gradualmente o ninguna.',
+            animationDuration: 'Duración de la animación de entrada en milisegundos.',
+            formatValue:
+              'Formatea los valores del eje, el tooltip y la tabla de datos; por defecto, agrupados según la configuración regional activa.',
+            pointClick:
+              'Se emite cuando se hace clic en una barra o se elige con Intro o Espacio.',
+            activePointChange:
+              'Se emite cuando la barra resaltada cambia mediante el puntero o el teclado, con null al borrarse.',
+          },
+          'line-chart': {
+            labels: 'Etiquetas de categoría a lo largo del eje x, una por valor.',
+            series:
+              'Las series que se representan, cada una con un nombre, un valor por etiqueta (null deja un hueco) y un color opcional.',
+            curve: 'Cómo se curva la línea entre los puntos.',
+            showArea: 'Rellena el área bajo cada línea con un tono suave de su color.',
+            showPoints: 'Marca cada valor con un punto.',
+            showGrid: 'Dibuja líneas de cuadrícula horizontales en cada marca del eje y.',
+            showLegend:
+              'Muestra una leyenda debajo del gráfico cuando representa más de una serie.',
+            yMin: 'Límite inferior del eje y; se deriva de los datos si no se establece.',
+            yMax: 'Límite superior del eje y; se deriva de los datos si no se establece.',
+            height:
+              'Altura del área de trazado en píxeles; el ancho ocupa todo el contenedor.',
+            size: 'Tamaño visual del texto del eje, la leyenda y el tooltip.',
+            animation:
+              'Animación de entrada, que se repite cada vez que cambian los datos: trazar cada línea, descubrirlas de izquierda a derecha, aparecer gradualmente, elevarse desde la línea base o ninguna.',
+            animationDuration: 'Duración de la animación de entrada en milisegundos.',
+            formatValue:
+              'Formatea los valores del eje, el tooltip y la tabla de datos; por defecto, agrupados según la configuración regional activa.',
+            pointClick:
+              'Se emite cuando se hace clic en un punto o se elige con Intro o Espacio.',
+            activePointChange:
+              'Se emite cuando el punto resaltado cambia mediante el puntero o el teclado, con null al borrarse.',
+          },
+          'pie-chart': {
+            data: 'Los sectores que se dibujan en el sentido de las agujas del reloj desde las doce, cada uno con una etiqueta, un valor y un color opcional.',
+            variant: 'Un círculo relleno o un anillo con el centro vacío.',
+            showLegend: 'Muestra una leyenda con todos los sectores debajo del gráfico.',
+            showPercentages:
+              'Añade a la entrada de leyenda de cada sector su proporción del total.',
+            height:
+              'Diámetro máximo del gráfico en píxeles; se reduce para ajustarse a un contenedor más estrecho.',
+            size: 'Tamaño visual del texto de la leyenda y el tooltip.',
+            animation:
+              'Animación de entrada, que se repite cada vez que cambian los datos: barrido en el sentido de las agujas del reloj, crecer desde el centro, aparecer gradualmente o ninguna.',
+            animationDuration: 'Duración de la animación de entrada en milisegundos.',
+            formatValue:
+              'Formatea los valores del tooltip y la tabla de datos; por defecto, agrupados según la configuración regional activa.',
+            sliceClick:
+              'Se emite cuando se hace clic en un sector o se elige con Intro o Espacio.',
+            activeSliceChange:
+              'Se emite cuando el sector resaltado cambia mediante el puntero o el teclado, con null al borrarse.',
+          },
           timeline: {
             items: 'Los eventos que se mostrarán, en orden.',
             orientation: 'Dirección en la que fluye la línea de tiempo.',
@@ -1862,6 +1981,8 @@ export const esES: WebMessages = {
             menu: 'La instancia ea-menu que controla este disparador.',
           },
           tooltip: {
+            tooltipOpen:
+              'Muestra u oculta el globo por programa, para un activador que no recibe el cursor ni el foco por sí mismo; null lo deja en manos del cursor y el foco.',
             whenClipped:
               'Muestra el globo solo mientras el activador recorta su propio contenido.',
             flip: 'Mueve el globo al lado opuesto cuando no hay espacio en el lado solicitado.',

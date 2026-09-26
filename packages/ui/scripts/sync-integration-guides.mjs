@@ -578,6 +578,7 @@ const CSS_SECTIONS = [
   ['Semantic: text', /^--color-text-/],
   ['Semantic: background', /^--color-bg-/],
   ['Semantic: tooltip surface', /^--color-tooltip-/],
+  ['Semantic: chart palette', /^--color-chart-/],
   ['Semantic: interactive state fills', /^--color-state-/],
   ['Semantic: border', /^--color-(border-|divider)/],
   ['Semantic: brand', /^--color-brand-/],

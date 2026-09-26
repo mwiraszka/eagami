@@ -1,0 +1,207 @@
+<div
+  class="ea-bar-chart"
+  [ngClass]="hostClasses()"
+  [style.--ea-chart-duration]="animationDuration() + 'ms'">
+  @if (hasData()) {
+    <div
+      class="ea-bar-chart__plot"
+      role="group"
+      tabindex="0"
+      [attr.aria-roledescription]="i18n.messages().chart.roleDescription"
+      [attr.aria-label]="label()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (keydown)="onKeydown($event)">
+      @for (pass of renderPass(); track pass) {
+        <svg
+          class="ea-bar-chart__svg"
+          aria-hidden="true"
+          [attr.width]="layout().width"
+          [attr.height]="layout().height"
+          [attr.viewBox]="'0 0 ' + layout().width + ' ' + layout().height"
+          [style.--ea-bar-chart-baseline]="layout().baseline + 'px'"
+          (pointermove)="onPointerMove($event)"
+          (pointerdown)="onPointerMove($event)"
+          (pointerleave)="onPointerLeave()"
+          (click)="onClick()">
+          <rect
+            class="ea-bar-chart__hit"
+            [attr.x]="layout().left"
+            [attr.y]="layout().top"
+            [attr.width]="layout().plotWidth"
+            [attr.height]="layout().plotHeight" />
+          @for (tick of layout().ticks; track tick.value) {
+            @if (layout().vertical) {
+              @if (showGrid()) {
+                <line
+                  class="ea-bar-chart__grid"
+                  [attr.x1]="layout().left"
+                  [attr.x2]="layout().left + layout().plotWidth"
+                  [attr.y1]="tick.pos"
+                  [attr.y2]="tick.pos" />
+              }
+              <text
+                class="ea-bar-chart__axis"
+                text-anchor="end"
+                dominant-baseline="middle"
+                [attr.x]="layout().left - layout().axisPx / 2"
+                [attr.y]="tick.pos">
+                {{ tick.text }}
+              </text>
+            } @else {
+              @if (showGrid()) {
+                <line
+                  class="ea-bar-chart__grid"
+                  [attr.x1]="tick.pos"
+                  [attr.x2]="tick.pos"
+                  [attr.y1]="layout().top"
+                  [attr.y2]="layout().top + layout().plotHeight" />
+              }
+              <text
+                class="ea-bar-chart__axis"
+                text-anchor="middle"
+                [attr.x]="tick.pos"
+                [attr.y]="layout().top + layout().plotHeight + layout().axisPx * 1.5">
+                {{ tick.text }}
+              </text>
+            }
+          }
+          @for (category of layout().categories; track category.index) {
+            @if (layout().vertical) {
+              <text
+                class="ea-bar-chart__axis"
+                text-anchor="middle"
+                [attr.x]="category.pos"
+                [attr.y]="layout().top + layout().plotHeight + layout().axisPx * 1.5">
+                {{ category.text }}
+              </text>
+            } @else {
+              <text
+                class="ea-bar-chart__axis"
+                text-anchor="end"
+                dominant-baseline="middle"
+                [attr.x]="layout().left - layout().axisPx / 2"
+                [attr.y]="category.pos">
+                {{ category.text }}
+              </text>
+            }
+          }
+          @for (bar of layout().bars; track $index) {
+            <path
+              class="ea-bar-chart__bar"
+              [class.ea-bar-chart__bar--dimmed]="isDimmed(bar)"
+              [style.--ea-chart-color]="bar.color"
+              [style.--ea-chart-delay]="bar.delay + 'ms'"
+              [attr.d]="bar.path" />
+          }
+          @if (layout().vertical) {
+            <line
+              class="ea-bar-chart__baseline"
+              [attr.x1]="layout().left"
+              [attr.x2]="layout().left + layout().plotWidth"
+              [attr.y1]="layout().baseline"
+              [attr.y2]="layout().baseline" />
+          } @else {
+            <line
+              class="ea-bar-chart__baseline"
+              [attr.x1]="layout().baseline"
+              [attr.x2]="layout().baseline"
+              [attr.y1]="layout().top"
+              [attr.y2]="layout().top + layout().plotHeight" />
+          }
+          @for (valueLabel of layout().valueLabels; track valueLabel.key) {
+            <text
+              class="ea-bar-chart__value"
+              [attr.text-anchor]="valueLabel.anchor"
+              [attr.dominant-baseline]="layout().vertical ? null : 'middle'"
+              [attr.x]="valueLabel.x"
+              [attr.y]="valueLabel.y">
+              {{ valueLabel.text }}
+            </text>
+          }
+          @for (tip of tooltips(); track tip.key) {
+            <rect
+              class="ea-bar-chart__anchor"
+              width="2"
+              height="2"
+              [attr.x]="tip.x - 1"
+              [attr.y]="tip.y - 1"
+              [eaTooltip]="tooltipContent"
+              [tooltipOpen]="true"
+              [maxWidth]="undefined" />
+          }
+        </svg>
+      }
+      <ng-template #tooltipContent>
+        @if (tooltip(); as tip) {
+          <div class="ea-bar-chart__tooltip">
+            <span class="ea-bar-chart__tooltip-title">{{ tip.title }}</span>
+            @for (row of tip.rows; track $index) {
+              <span
+                class="ea-bar-chart__tooltip-row"
+                [class.ea-bar-chart__tooltip-row--active]="row.active">
+                <span
+                  class="ea-bar-chart__swatch"
+                  [style.--ea-chart-color]="row.color">
+                </span>
+                <span class="ea-bar-chart__tooltip-name">{{ row.name }}</span>
+                <span class="ea-bar-chart__tooltip-value">{{ row.value }}</span>
+              </span>
+            }
+          </div>
+        }
+      </ng-template>
+      <table class="ea-bar-chart__table">
+        <caption>
+          {{ label() }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ i18n.messages().chart.category }}</th>
+            @for (s of series(); track $index) {
+              <th scope="col">{{ s.name }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of labels(); track $index; let i = $index) {
+            <tr>
+              <th scope="row">{{ row }}</th>
+              @for (s of series(); track $index) {
+                <td>{{ tableValue(s.data[i]) }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="ea-bar-chart__live"
+      aria-live="polite">
+      {{ announcement() }}
+    </div>
+  } @else {
+    <div
+      class="ea-bar-chart__empty"
+      role="img"
+      [attr.aria-label]="label()"
+      [style.height.px]="height()">
+      {{ i18n.messages().chart.noData }}
+    </div>
+  }
+  @if (showsLegend()) {
+    <ul
+      class="ea-bar-chart__legend"
+      aria-hidden="true">
+      @for (s of series(); track $index; let i = $index) {
+        <li class="ea-bar-chart__legend-item">
+          <span
+            class="ea-bar-chart__swatch"
+            [style.--ea-chart-color]="seriesColor(i)">
+          </span>
+          {{ s.name }}
+        </li>
+      }
+    </ul>
+  }
+</div>

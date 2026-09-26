@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'Brauðmolaslóð',
   },
+  chart: {
+    roleDescription: 'graf',
+    lineChart: 'Línurit',
+    barChart: 'Súlurit',
+    pieChart: 'Kökurit',
+    category: 'Flokkur',
+    value: 'Gildi',
+    share: 'Hlutfall',
+    noData: 'Engin gögn',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Staðfestingarkóði, ${length} tölustafir`,
     digitLabel: (index, length) => `Tölustafur ${index} af ${length}`,

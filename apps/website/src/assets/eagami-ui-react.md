@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.50.0
-source: '@eagami/ui@5.50.0 (https://github.com/mwiraszka/eagami)'
+version: 5.51.0
+source: '@eagami/ui@5.51.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-09-26
 audience: human developers and AI coding agents
 purpose: >
@@ -263,6 +263,14 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-info-subtle`             | `--color-info-50`                                                      | `rgba(6, 182, 212, 0.15)`                                                |
 | `--color-info-muted`              | `--color-info-100`                                                     | `rgba(6, 182, 212, 0.25)`                                                |
 | `--color-info-text`               | `--color-info-700`                                                     | `--color-info-200`                                                       |
+| `--color-chart-1`                 | `#2A78D6`                                                              | `#3987E5`                                                                |
+| `--color-chart-2`                 | `#EB6834`                                                              | `#D95926`                                                                |
+| `--color-chart-3`                 | `#1BAF7A`                                                              | `#199E70`                                                                |
+| `--color-chart-4`                 | `#EDA100`                                                              | `#C98500`                                                                |
+| `--color-chart-5`                 | `#E87BA4`                                                              | `#D55181`                                                                |
+| `--color-chart-6`                 | `#008300`                                                              | `#008300`                                                                |
+| `--color-chart-7`                 | `#4A3AA7`                                                              | `#9085E9`                                                                |
+| `--color-chart-8`                 | `#E34948`                                                              | `#E66767`                                                                |
 
 In dark mode the surface model splits the page (`bg-canvas`, deepest) from the surfaces that sit on it (`bg-base`, `bg-subtle`, `bg-elevated`, `bg-muted`). Canvas stays at the deepest neutral while every component surface lifts above it so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `bg-stripe` is the alternating-row tone for tables; it sits *below* `bg-base` to keep odd rows darker than the surrounding card, and `bg-stripe-subtle` mixes it toward `bg-base` for a quieter zebra fill. `bg-muted` is the opaque static fill for disabled fields, tracks, and skeletons; `bg-emphasis` is the soft placeholder fill (e.g. avatar initials).
 
@@ -522,7 +530,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.50.0 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.51.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -625,6 +633,16 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   /* Semantic: tooltip surface */
   --color-tooltip-surface: #1a1b21;
   --color-tooltip-border: rgba(255, 255, 255, 0.15);
+
+  /* Semantic: chart palette */
+  --color-chart-1: #2a78d6;
+  --color-chart-2: #eb6834;
+  --color-chart-3: #1baf7a;
+  --color-chart-4: #eda100;
+  --color-chart-5: #e87ba4;
+  --color-chart-6: #008300;
+  --color-chart-7: #4a3aa7;
+  --color-chart-8: #e34948;
 
   /* Semantic: interactive state fills */
   --color-state-hover: var(--color-neutral-100);
@@ -910,6 +928,15 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
     --color-bg-emphasis: var(--color-neutral-600);
     --color-bg-elevated: var(--color-neutral-700);
 
+    --color-chart-1: #3987e5;
+    --color-chart-2: #d95926;
+    --color-chart-3: #199e70;
+    --color-chart-4: #c98500;
+    --color-chart-5: #d55181;
+    --color-chart-6: #008300;
+    --color-chart-7: #9085e9;
+    --color-chart-8: #e66767;
+
     --color-state-hover: rgba(255, 255, 255, 0.08);
     --color-state-active: rgba(255, 255, 255, 0.14);
 
@@ -988,6 +1015,15 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-bg-muted: var(--color-neutral-700);
   --color-bg-emphasis: var(--color-neutral-600);
   --color-bg-elevated: var(--color-neutral-700);
+
+  --color-chart-1: #3987e5;
+  --color-chart-2: #d95926;
+  --color-chart-3: #199e70;
+  --color-chart-4: #c98500;
+  --color-chart-5: #d55181;
+  --color-chart-6: #008300;
+  --color-chart-7: #9085e9;
+  --color-chart-8: #e66767;
 
   --color-state-hover: rgba(255, 255, 255, 0.08);
   --color-state-active: rgba(255, 255, 255, 0.14);
@@ -1069,7 +1105,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.50.0 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.51.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 

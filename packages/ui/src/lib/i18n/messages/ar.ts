@@ -26,6 +26,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'مسار التنقل',
   },
+  chart: {
+    roleDescription: 'مخطط',
+    lineChart: 'مخطط خطي',
+    barChart: 'مخطط شريطي',
+    pieChart: 'مخطط دائري',
+    category: 'الفئة',
+    value: 'القيمة',
+    share: 'النسبة',
+    noData: 'لا توجد بيانات',
+    point: (series, label, value) => `${series}، ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}، ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `رمز التحقق، ${length} أرقام`,
     digitLabel: (index, length) => `الرقم ${index} من ${length}`,

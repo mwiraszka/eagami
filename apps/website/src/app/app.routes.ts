@@ -131,6 +131,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/bar-chart',
+        loadComponent: () =>
+          import('./pages/ui/components/bar-chart/bar-chart-demo-page.component').then(
+            c => c.BarChartDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/breadcrumbs',
         loadComponent: () =>
           import('./pages/ui/components/breadcrumbs/breadcrumbs-demo-page.component').then(
@@ -257,6 +264,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/line-chart',
+        loadComponent: () =>
+          import('./pages/ui/components/line-chart/line-chart-demo-page.component').then(
+            c => c.LineChartDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/menu',
         loadComponent: () =>
           import('./pages/ui/components/menu/menu-demo-page.component').then(
@@ -282,6 +296,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/ui/components/paginator/paginator-demo-page.component').then(
             c => c.PaginatorDemoPageComponent,
+          ),
+      },
+      {
+        path: 'components/pie-chart',
+        loadComponent: () =>
+          import('./pages/ui/components/pie-chart/pie-chart-demo-page.component').then(
+            c => c.PieChartDemoPageComponent,
           ),
       },
       {

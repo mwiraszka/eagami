@@ -26,6 +26,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'נתיב ניווט',
   },
+  chart: {
+    roleDescription: 'תרשים',
+    lineChart: 'תרשים קווי',
+    barChart: 'תרשים עמודות',
+    pieChart: 'תרשים עוגה',
+    category: 'קטגוריה',
+    value: 'ערך',
+    share: 'נתח',
+    noData: 'אין נתונים',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `קוד אימות, ${length} ספרות`,
     digitLabel: (index, length) => `ספרה ${index} מתוך ${length}`,

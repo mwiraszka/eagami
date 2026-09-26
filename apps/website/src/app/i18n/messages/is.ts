@@ -1072,6 +1072,23 @@ export const is: WebMessages = {
           newEvent: 'Nýr atburður',
           newEventDescription: 'Ný lýsing',
         },
+        barChart: {
+          hardware: 'Vélbúnaður',
+          software: 'Hugbúnaður',
+          services: 'Þjónusta',
+          quarters: ['F1', 'F2', 'F3', 'F4'],
+        },
+        lineChart: {
+          visitors: 'Gestir',
+          signUps: 'Nýskráningar',
+          months: ['jan.', 'feb.', 'mar.', 'apr.', 'maí', 'jún.', 'júl.', 'ágú.'],
+        },
+        pieChart: {
+          desktop: 'Borðtölva',
+          mobile: 'Farsími',
+          tablet: 'Spjaldtölva',
+          other: 'Annað',
+        },
       },
       playground: {
         controls: 'Stýringar',
@@ -1094,6 +1111,37 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Stefna',
+            size: 'Stærð',
+            animation: 'Hreyfimynd',
+            animationDuration: 'Lengd hreyfimyndar (ms)',
+            height: 'Hæð (px)',
+            stacked: 'Staflað',
+            showValues: 'Sýna gildi',
+            showGrid: 'Sýna hnitanet',
+            showLegend: 'Sýna skýringar',
+          },
+          'line-chart': {
+            curve: 'Ferill',
+            size: 'Stærð',
+            animation: 'Hreyfimynd',
+            animationDuration: 'Lengd hreyfimyndar (ms)',
+            height: 'Hæð (px)',
+            showArea: 'Sýna flöt',
+            showPoints: 'Sýna punkta',
+            showGrid: 'Sýna hnitanet',
+            showLegend: 'Sýna skýringar',
+          },
+          'pie-chart': {
+            variant: 'Afbrigði',
+            size: 'Stærð',
+            animation: 'Hreyfimynd',
+            animationDuration: 'Lengd hreyfimyndar (ms)',
+            height: 'Hæð (px)',
+            showLegend: 'Sýna skýringar',
+            showPercentages: 'Sýna prósentur',
+          },
           timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
           tooltip: {
             eaTooltip: 'Efni ábendingar',
@@ -1331,6 +1379,73 @@ export const is: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(aðeins merkingarlegt)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Flokkamerki meðfram flokkaásnum, eitt fyrir hvert gildi.',
+            series:
+              'Raðirnar sem á að teikna, hver með nafni, einu gildi fyrir hvert merki og valfrjálsum lit.',
+            orientation: 'Stefnan sem súlurnar teygja sig í frá grunnlínunni.',
+            stacked:
+              'Staflar röðum hvers merkis í eina súlu í stað þess að flokka þær hlið við hlið.',
+            showGrid: 'Teiknar hnitalínur við hvert kvarðastrik gildisássins.',
+            showLegend:
+              'Sýnir skýringar fyrir neðan ritið þegar það teiknar fleiri en eina röð.',
+            showValues:
+              'Prentar gildi hverrar súlu við enda hennar, eða heildarsummu hvers stafla þegar staflað er.',
+            height: 'Hæð teiknisvæðisins í pixlum; breiddin fyllir ílátið.',
+            size: 'Sjónræn stærð texta á ás, í skýringum og í ábendingu.',
+            animation:
+              'Innkomuhreyfing, endurspiluð í hvert sinn sem gögnin breytast: vaxa frá grunnlínunni, birtast í röð eitt merki á eftir öðru, dofna inn eða engin.',
+            animationDuration: 'Lengd innkomuhreyfingarinnar í millisekúndum.',
+            formatValue:
+              'Sniðsetur gildi á ásnum, í ábendingunni og í gagnatöflunni; flokkuð samkvæmt virka staðfanginu sjálfgefið.',
+            pointClick:
+              'Kviknar þegar smellt er á súlu eða hún valin með Enter eða bilslá.',
+            activePointChange:
+              'Kviknar þegar auðkennda súlan breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+          },
+          'line-chart': {
+            labels: 'Flokkamerki meðfram x-ásnum, eitt fyrir hvert gildi.',
+            series:
+              'Raðirnar sem á að teikna, hver með nafni, einu gildi fyrir hvert merki (null skilur eftir bil) og valfrjálsum lit.',
+            curve: 'Hvernig línan sveigist milli punkta.',
+            showArea: 'Fyllir flötinn undir hverri línu með ljósum blæ af lit hennar.',
+            showPoints: 'Merkir hvert gildi með punkti.',
+            showGrid: 'Teiknar láréttar hnitalínur við hvert kvarðastrik y-ássins.',
+            showLegend:
+              'Sýnir skýringar fyrir neðan ritið þegar það teiknar fleiri en eina röð.',
+            yMin: 'Neðri mörk y-ássins; leidd af gögnunum þegar þau eru ekki stillt.',
+            yMax: 'Efri mörk y-ássins; leidd af gögnunum þegar þau eru ekki stillt.',
+            height: 'Hæð teiknisvæðisins í pixlum; breiddin fyllir ílátið.',
+            size: 'Sjónræn stærð texta á ás, í skýringum og í ábendingu.',
+            animation:
+              'Innkomuhreyfing, endurspiluð í hvert sinn sem gögnin breytast: teikna hverja línu, afhjúpa frá vinstri til hægri, dofna inn, rísa frá grunnlínunni eða engin.',
+            animationDuration: 'Lengd innkomuhreyfingarinnar í millisekúndum.',
+            formatValue:
+              'Sniðsetur gildi á ásnum, í ábendingunni og í gagnatöflunni; flokkuð samkvæmt virka staðfanginu sjálfgefið.',
+            pointClick:
+              'Kviknar þegar smellt er á punkt eða hann valinn með Enter eða bilslá.',
+            activePointChange:
+              'Kviknar þegar auðkenndi punkturinn breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+          },
+          'pie-chart': {
+            data: 'Sneiðarnar sem teiknaðar eru réttsælis frá klukkan tólf, hver með merki, gildi og valfrjálsum lit.',
+            variant: 'Heil kaka, eða hringur með tómri miðju.',
+            showLegend: 'Sýnir skýringar fyrir allar sneiðar fyrir neðan ritið.',
+            showPercentages:
+              'Bætir hlutdeild hverrar sneiðar af heildinni við skýringarfærslu hennar.',
+            height:
+              'Mesta þvermál ritsins í pixlum; það minnkar til að passa í þrengra ílát.',
+            size: 'Sjónræn stærð texta í skýringum og í ábendingu.',
+            animation:
+              'Innkomuhreyfing, endurspiluð í hvert sinn sem gögnin breytast: sópa réttsælis, vaxa frá miðjunni, dofna inn eða engin.',
+            animationDuration: 'Lengd innkomuhreyfingarinnar í millisekúndum.',
+            formatValue:
+              'Sniðsetur gildi í ábendingunni og í gagnatöflunni; flokkuð samkvæmt virka staðfanginu sjálfgefið.',
+            sliceClick:
+              'Kviknar þegar smellt er á sneið eða hún valin með Enter eða bilslá.',
+            activeSliceChange:
+              'Kviknar þegar auðkennda sneiðin breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+          },
           timeline: {
             items: 'Atburðirnir sem á að birta, í röð.',
             orientation: 'Stefnan sem tímalínan liggur í.',
@@ -1820,6 +1935,8 @@ export const is: WebMessages = {
             menu: 'ea-menu tilvikið sem þessi kveikja stjórnar.',
           },
           tooltip: {
+            tooltipOpen:
+              'Sýnir eða felur ábendinguna forritunarlega, fyrir hnapp sem fær hvorki bendil né fókus sjálfur; null lætur bendil og fókus ráða.',
             whenClipped:
               'Sýnir ábendinguna aðeins meðan hnappurinn klippir eigið innihald.',
             flip: 'Færir ábendinguna á gagnstæða hlið þegar ekki er pláss á umbeðinni hlið.',

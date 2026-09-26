@@ -1,0 +1,23 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-pie-chart
+      class="playground-fill"
+      [data]="data()"
+      [variant]="state().variant"
+      [size]="state().size"
+      [animation]="state().animation"
+      [animationDuration]="state().animationDuration"
+      [height]="state().height"
+      [showLegend]="state().showLegend"
+      [showPercentages]="state().showPercentages" />
+  </web-component-playground>
+</web-ui-component-demo-layout>

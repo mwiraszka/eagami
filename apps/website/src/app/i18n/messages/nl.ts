@@ -1071,6 +1071,23 @@ export const nl: WebMessages = {
           newEvent: 'Nieuwe gebeurtenis',
           newEventDescription: 'Nieuwe beschrijving',
         },
+        barChart: {
+          hardware: 'Hardware',
+          software: 'Software',
+          services: 'Diensten',
+          quarters: ['K1', 'K2', 'K3', 'K4'],
+        },
+        lineChart: {
+          visitors: 'Bezoekers',
+          signUps: 'Aanmeldingen',
+          months: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug'],
+        },
+        pieChart: {
+          desktop: 'Desktop',
+          mobile: 'Mobiel',
+          tablet: 'Tablet',
+          other: 'Overig',
+        },
       },
       playground: {
         controls: 'Bediening',
@@ -1093,6 +1110,37 @@ export const nl: WebMessages = {
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Oriëntatie',
+            size: 'Grootte',
+            animation: 'Animatie',
+            animationDuration: 'Animatieduur (ms)',
+            height: 'Hoogte (px)',
+            stacked: 'Gestapeld',
+            showValues: 'Waarden tonen',
+            showGrid: 'Raster tonen',
+            showLegend: 'Legenda tonen',
+          },
+          'line-chart': {
+            curve: 'Curve',
+            size: 'Grootte',
+            animation: 'Animatie',
+            animationDuration: 'Animatieduur (ms)',
+            height: 'Hoogte (px)',
+            showArea: 'Vlak tonen',
+            showPoints: 'Punten tonen',
+            showGrid: 'Raster tonen',
+            showLegend: 'Legenda tonen',
+          },
+          'pie-chart': {
+            variant: 'Variant',
+            size: 'Grootte',
+            animation: 'Animatie',
+            animationDuration: 'Animatieduur (ms)',
+            height: 'Hoogte (px)',
+            showLegend: 'Legenda tonen',
+            showPercentages: 'Percentages tonen',
+          },
           timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
           tooltip: {
             eaTooltip: 'Tooltipinhoud',
@@ -1330,6 +1378,74 @@ export const nl: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(alleen semantisch)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Categorielabels langs de categorie-as, één per waarde.',
+            series:
+              'De reeksen die worden getekend, elk met een naam, één waarde per label en een optionele kleur.',
+            orientation: 'Richting waarin de staven zich vanaf de basislijn uitstrekken.',
+            stacked:
+              'Stapelt de reeksen van elk label tot één staaf in plaats van ze naast elkaar te groeperen.',
+            showGrid: 'Tekent rasterlijnen bij elke maatstreep van de waarde-as.',
+            showLegend:
+              'Toont een legenda onder de grafiek wanneer deze meer dan één reeks weergeeft.',
+            showValues:
+              'Toont de waarde van elke staaf aan het uiteinde, of het totaal van elke stapel bij gestapelde weergave.',
+            height: 'Hoogte van het tekengebied in pixels; de breedte vult de container.',
+            size: 'Visuele grootte van de tekst van de as, de legenda en de tooltip.',
+            animation:
+              'Intro-animatie, opnieuw afgespeeld telkens wanneer de gegevens veranderen: groeien vanaf de basislijn, trapsgewijs label na label, infaden of geen.',
+            animationDuration: 'Duur van de intro-animatie in milliseconden.',
+            formatValue:
+              'Formatteert waarden op de as, in de tooltip en in de gegevenstabel; standaard gegroepeerd volgens de actieve landinstelling.',
+            pointClick:
+              'Wordt geactiveerd wanneer op een staaf wordt geklikt, of wanneer deze met Enter of spatiebalk wordt gekozen.',
+            activePointChange:
+              'Wordt geactiveerd wanneer de gemarkeerde staaf via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+          },
+          'line-chart': {
+            labels: 'Categorielabels langs de x-as, één per waarde.',
+            series:
+              'De reeksen die worden getekend, elk met een naam, één waarde per label (null laat een onderbreking) en een optionele kleur.',
+            curve: 'Hoe de lijn tussen punten buigt.',
+            showArea:
+              'Vult het vlak onder elke lijn met een lichte tint van de eigen kleur.',
+            showPoints: 'Markeert elke waarde met een punt.',
+            showGrid: 'Tekent horizontale rasterlijnen bij elke maatstreep van de y-as.',
+            showLegend:
+              'Toont een legenda onder de grafiek wanneer deze meer dan één reeks weergeeft.',
+            yMin: 'Ondergrens van de y-as; afgeleid uit de gegevens indien niet ingesteld.',
+            yMax: 'Bovengrens van de y-as; afgeleid uit de gegevens indien niet ingesteld.',
+            height: 'Hoogte van het tekengebied in pixels; de breedte vult de container.',
+            size: 'Visuele grootte van de tekst van de as, de legenda en de tooltip.',
+            animation:
+              'Intro-animatie, opnieuw afgespeeld telkens wanneer de gegevens veranderen: elke lijn tekenen, van links naar rechts onthullen, infaden, opkomen vanaf de basislijn of geen.',
+            animationDuration: 'Duur van de intro-animatie in milliseconden.',
+            formatValue:
+              'Formatteert waarden op de as, in de tooltip en in de gegevenstabel; standaard gegroepeerd volgens de actieve landinstelling.',
+            pointClick:
+              'Wordt geactiveerd wanneer op een punt wordt geklikt, of wanneer dit met Enter of spatiebalk wordt gekozen.',
+            activePointChange:
+              'Wordt geactiveerd wanneer het gemarkeerde punt via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+          },
+          'pie-chart': {
+            data: 'De segmenten die met de klok mee vanaf twaalf uur worden getekend, elk met een label, een waarde en een optionele kleur.',
+            variant: 'Een volle cirkel, of een ring met een lege binnenkant.',
+            showLegend: 'Toont onder de grafiek een legenda met alle segmenten.',
+            showPercentages:
+              'Voegt het aandeel van elk segment in het totaal toe aan de legenda-invoer.',
+            height:
+              'Grootste diameter van de grafiek in pixels; deze krimpt om in een smallere container te passen.',
+            size: 'Visuele grootte van de tekst van de legenda en de tooltip.',
+            animation:
+              'Intro-animatie, opnieuw afgespeeld telkens wanneer de gegevens veranderen: met de klok mee uitvegen, groeien vanuit het midden, infaden of geen.',
+            animationDuration: 'Duur van de intro-animatie in milliseconden.',
+            formatValue:
+              'Formatteert waarden in de tooltip en in de gegevenstabel; standaard gegroepeerd volgens de actieve landinstelling.',
+            sliceClick:
+              'Wordt geactiveerd wanneer op een segment wordt geklikt, of wanneer dit met Enter of spatiebalk wordt gekozen.',
+            activeSliceChange:
+              'Wordt geactiveerd wanneer het gemarkeerde segment via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+          },
           timeline: {
             items: 'De weer te geven gebeurtenissen, op volgorde.',
             orientation: 'Richting waarin de tijdlijn loopt.',
@@ -1850,6 +1966,8 @@ export const nl: WebMessages = {
             menu: 'De ea-menu-instantie die deze trigger bedient.',
           },
           tooltip: {
+            tooltipOpen:
+              'Toont of verbergt de ballon programmatisch, voor een trigger die zelf niet wordt aangewezen of gefocust; null laat het aan hover en focus over.',
             whenClipped:
               'Toont de ballon alleen zolang de trigger zijn eigen inhoud afkapt.',
             flip: 'Verplaatst een ballon naar de andere kant wanneer er aan de gevraagde kant geen ruimte is.',

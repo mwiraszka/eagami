@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.51.0] - 2026-09-26
+
+### Added
+
+- Add a line chart that plots one or more series across shared labels, with linear, smooth or stepped curves, optional points and area fills, a tooltip driven by pointer or keyboard, and draw, reveal, fade or rise entrance animations.
+- Add a bar chart that compares series as vertical or horizontal bars, grouped or stacked, with optional value labels, a tooltip driven by pointer or keyboard, and grow, cascade or fade entrance animations.
+- Add a pie chart that shows the parts of a whole as a pie or donut, with a legend of each slice's share, a tooltip driven by pointer or keyboard, and sweep, grow or fade entrance animations.
+- Add a `tooltipOpen` input to the tooltip directive for showing and hiding its bubble programmatically, for a trigger that is never hovered or focused itself.
+- Add an eight-color `--color-chart-*` palette, tuned for light and dark themes, that the charts draw their series colors from.
+
+### Changed
+
+- **Breaking:** Size badges on the shared type scale, so a badge renders at the same text size as other components of its size, one step larger than before.
+
+### Fixed
+
+- Match the multi-select overflow count and the color picker's value text to the shared secondary text size.
+
 ## [5.50.0] - 2026-09-26
 
 ### Added
@@ -1660,6 +1678,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.51.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.50.0...ui-v5.51.0
 [5.50.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.49.1...ui-v5.50.0
 [5.49.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.49.0...ui-v5.49.1
 [5.49.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.48.0...ui-v5.49.0
