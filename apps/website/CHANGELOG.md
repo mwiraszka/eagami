@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add editable data to the line chart demo, plotting daily visitors at their dates against month ticks in a pannable, pinch-zoomable window, where points and ticks can be added, changed and removed.
 - Add editable categories and values to the bar chart demo, and editable slices to the pie chart demo, each with add and remove controls.
 - Add axis break and x-axis label orientation controls to the line and bar chart demos, with every new input described in the API reference in every locale.
-- Add an item icon picker to the accordion demo, with the new input described in the API reference in every locale.
+- Add an icon picker to each item in the accordion demo, starting the demo items with icons of their own, with the new input described in the API reference in every locale.
 
 ### Changed
 
