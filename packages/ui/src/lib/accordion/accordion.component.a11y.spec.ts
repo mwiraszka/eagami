@@ -1,8 +1,9 @@
 import { axe } from 'vitest-axe';
 
-import { Component } from '@angular/core';
+import { Component, type Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
+import { StarIconComponent } from '../icons/star.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent } from './accordion.component';
 
@@ -12,7 +13,8 @@ import { AccordionComponent } from './accordion.component';
     <ea-accordion [multi]="multi">
       <ea-accordion-item
         value="one"
-        label="Section One">
+        label="Section One"
+        [icon]="firstIcon">
         Content one
       </ea-accordion-item>
       <ea-accordion-item
@@ -32,6 +34,7 @@ import { AccordionComponent } from './accordion.component';
 class HostComponent {
   multi = false;
   disableThird = false;
+  firstIcon: Type<unknown> | undefined = undefined;
 }
 
 describe('AccordionComponent a11y', () => {
@@ -87,5 +90,15 @@ describe('AccordionComponent a11y', () => {
     const results = await axe(fixture.nativeElement as HTMLElement);
 
     expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with an item icon', async () => {
+    const fixture = await render(host => (host.firstIcon = StarIconComponent));
+    const el = fixture.nativeElement as HTMLElement;
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+    expect(el.querySelector('.ea-accordion-item__icon')).toBeTruthy();
   });
 });

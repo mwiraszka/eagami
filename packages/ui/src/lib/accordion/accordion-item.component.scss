@@ -66,6 +66,17 @@
     }
   }
 
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+  }
+
+  // Keeps the chevron at the far edge once an icon joins the label on the start side
+  &__icon + &__label {
+    flex-grow: 1;
+  }
+
   &__chevron {
     flex-shrink: 0;
     width: 1em;
