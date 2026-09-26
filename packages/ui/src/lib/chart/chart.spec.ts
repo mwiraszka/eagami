@@ -24,6 +24,21 @@ describe('chart helpers', () => {
       expect(scale.ticks.every(t => String(t).length <= 4)).toBe(true);
     });
 
+    it.each([
+      [0, 20, 10, 2],
+      [0, 25, 10, 2.5],
+      [0, 45, 10, 5],
+      [0, 90, 10, 10],
+    ])('steps %d to %d in round increments', (min, max, ticks, step) => {
+      const scale = niceScale(min, max, ticks);
+
+      expect(scale.ticks[1] - scale.ticks[0]).toBe(step);
+    });
+
+    it('opens a flat range at zero', () => {
+      expect(niceScale(0, 0).max).toBeGreaterThan(0);
+    });
+
     it('opens a flat range so a single value still has an axis', () => {
       const scale = niceScale(5, 5);
 

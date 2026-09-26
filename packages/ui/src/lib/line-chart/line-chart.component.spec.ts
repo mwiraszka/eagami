@@ -267,6 +267,21 @@ describe('LineChartComponent', () => {
       );
     });
 
+    it('lands on the first plotted value when the first series is empty', () => {
+      fixture.componentRef.setInput('series', [
+        { name: 'Empty', data: [null, null, null, null] },
+        SERIES[0],
+      ]);
+      fixture.detectChanges();
+
+      plot().dispatchEvent(new FocusEvent('focus'));
+      fixture.detectChanges();
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe(
+        'Visitors, Jan: 10',
+      );
+    });
+
     it('clears the highlight on Escape', () => {
       press('ArrowRight');
       press('Escape');
@@ -296,6 +311,249 @@ describe('LineChartComponent', () => {
       press('Escape');
 
       expect(changes.map(c => c?.label ?? null)).toEqual(['Jan', null]);
+    });
+  });
+
+  describe('Pointer', () => {
+    function svg(): SVGSVGElement {
+      return query<SVGSVGElement>('.ea-line-chart__svg')!;
+    }
+
+    function pointer(type: string, x: number, y: number): void {
+      svg().dispatchEvent(
+        new MouseEvent(type, { clientX: x, clientY: y, bubbles: true }),
+      );
+      fixture.detectChanges();
+    }
+
+    function pointAt(i: number): [number, number] {
+      const point = queryAll('.ea-line-chart__point')[i];
+      return [Number(point.getAttribute('cx')), Number(point.getAttribute('cy'))];
+    }
+
+    it('highlights the series nearest the pointer at the nearest label', () => {
+      // Points 0-3 are Visitors, 4-6 are Sign-ups (Feb is missing)
+      const [x, y] = pointAt(5);
+
+      pointer('pointermove', x, y);
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('Sign-ups, Mar: 8');
+      expect(document.querySelector('.ea-tooltip')).toBeTruthy();
+    });
+
+    it('highlights on pointerdown for touch', () => {
+      const [x, y] = pointAt(0);
+
+      pointer('pointerdown', x, y);
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe(
+        'Visitors, Jan: 10',
+      );
+    });
+
+    it('dims the other series while one is highlighted', () => {
+      const [x, y] = pointAt(0);
+
+      pointer('pointermove', x, y);
+
+      expect(queryAll('.ea-line-chart__series--dimmed')).toHaveLength(1);
+    });
+
+    it('emits pointClick for the highlighted point on click', () => {
+      const clicks: ChartPointEvent[] = [];
+      fixture.componentInstance.pointClick.subscribe(e => clicks.push(e));
+      const [x, y] = pointAt(3);
+      pointer('pointermove', x, y);
+
+      svg().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(clicks.map(c => c.label)).toEqual(['Apr']);
+    });
+
+    it('ignores a click with nothing highlighted', () => {
+      const clicks: ChartPointEvent[] = [];
+      fixture.componentInstance.pointClick.subscribe(e => clicks.push(e));
+
+      svg().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(clicks).toEqual([]);
+    });
+
+    it('clears the highlight when the pointer leaves', () => {
+      const [x, y] = pointAt(0);
+      pointer('pointermove', x, y);
+
+      pointer('pointerleave', 0, 0);
+
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('highlights nothing at a label with no values', () => {
+      fixture.componentRef.setInput('series', [{ name: 'Gappy', data: [1, null, 3] }]);
+      fixture.detectChanges();
+      const middle = (pointAt(0)[0] + pointAt(1)[0]) / 2;
+
+      pointer('pointermove', middle, 0);
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('');
+    });
+
+    it('centers a lone value', () => {
+      fixture.componentRef.setInput('labels', ['Only']);
+      fixture.componentRef.setInput('series', [{ name: 'Single', data: [5] }]);
+      fixture.detectChanges();
+      const [x, y] = pointAt(0);
+
+      pointer('pointermove', x, y);
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('Single, Only: 5');
+    });
+  });
+
+  describe('Scale', () => {
+    function tickValues(): string[] {
+      return queryAll('.ea-line-chart__axis--y').map(t => t.textContent!.trim());
+    }
+
+    it('honours explicit y bounds', () => {
+      fixture.componentRef.setInput('yMin', 0);
+      fixture.componentRef.setInput('yMax', 50);
+      fixture.detectChanges();
+
+      const ticks = tickValues();
+      expect(ticks[0]).toBe('0');
+      expect(ticks[ticks.length - 1]).toBe('50');
+    });
+
+    it('swaps y bounds given the wrong way round', () => {
+      fixture.componentRef.setInput('yMin', 50);
+      fixture.componentRef.setInput('yMax', 0);
+      fixture.detectChanges();
+
+      expect(tickValues().length).toBeGreaterThan(0);
+    });
+
+    it('extends the axis to zero under an area fill', () => {
+      fixture.componentRef.setInput('series', [{ name: 'High', data: [80, 90, 85] }]);
+      fixture.componentRef.setInput('showArea', true);
+      fixture.detectChanges();
+
+      expect(tickValues()[0]).toBe('0');
+    });
+
+    it('smooths flat and steep runs without overshooting', () => {
+      fixture.componentRef.setInput('curve', 'smooth');
+      fixture.componentRef.setInput('series', [
+        { name: 'Shape', data: [0, 0, 100, 0, 1, 2, 3, 100] },
+      ]);
+      fixture.componentRef.setInput('labels', ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+      fixture.detectChanges();
+
+      const d = query('.ea-line-chart__line')!.getAttribute('d')!;
+      expect(d).toContain('C');
+      expect(d).not.toContain('NaN');
+    });
+
+    it('draws a two-point smooth curve as a straight line', () => {
+      fixture.componentRef.setInput('curve', 'smooth');
+      fixture.componentRef.setInput('series', [{ name: 'Pair', data: [1, 2] }]);
+      fixture.detectChanges();
+
+      expect(query('.ea-line-chart__line')!.getAttribute('d')).not.toContain('C');
+    });
+
+    it('thins crowded x-axis labels', () => {
+      const labels = Array.from({ length: 60 }, (_, i) => `Label ${i}`);
+      fixture.componentRef.setInput('labels', labels);
+      fixture.componentRef.setInput('series', [
+        { name: 'Dense', data: labels.map((_, i) => i) },
+      ]);
+      fixture.detectChanges();
+
+      expect(queryAll('.ea-line-chart__axis--x').length).toBeLessThan(60);
+    });
+  });
+
+  describe('Keyboard edges', () => {
+    it('wraps between series with ArrowUp', () => {
+      press('ArrowRight');
+      press('ArrowUp');
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('Sign-ups, Jan: 5');
+    });
+
+    it('stays put at the last label', () => {
+      press('End');
+      press('ArrowRight');
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe(
+        'Visitors, Apr: 30',
+      );
+    });
+
+    it('ignores unrelated keys', () => {
+      const event = new KeyboardEvent('keydown', { key: 'a', cancelable: true });
+      press('ArrowRight');
+
+      plot().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('does nothing when no series holds a value', () => {
+      fixture.componentRef.setInput('series', [
+        { name: 'Blank', data: [null] },
+        { name: 'Value', data: [null, 4] },
+      ]);
+      fixture.detectChanges();
+
+      press('Home');
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('Value, Feb: 4');
+    });
+  });
+
+  describe('Viewport', () => {
+    it('lays out at the measured width of its host', () => {
+      Object.defineProperty(el, 'clientWidth', { configurable: true, value: 800 });
+
+      fixture.componentRef.setInput('size', 'sm');
+      fixture.detectChanges();
+      // The size change triggers the measurement after render; the next pass lays out with it
+      fixture.detectChanges();
+
+      expect(query('.ea-line-chart__svg')!.getAttribute('width')).toBe('800');
+    });
+  });
+
+  describe('Fallbacks', () => {
+    it('leaves the label blank for values past the end of labels', () => {
+      fixture.componentRef.setInput('labels', ['Jan']);
+      fixture.componentRef.setInput('series', [{ name: 'Long', data: [1, 2] }]);
+      fixture.detectChanges();
+
+      press('End');
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe('Long, : 2');
+    });
+
+    it('draws a flat axis when both bounds are equal', () => {
+      fixture.componentRef.setInput('yMin', 5);
+      fixture.componentRef.setInput('yMax', 5);
+      fixture.detectChanges();
+
+      expect(query('.ea-line-chart__point')!.getAttribute('cy')).not.toBe('NaN');
+    });
+
+    it('keeps a pointer highlight when the plot then takes focus', () => {
+      press('End');
+
+      plot().dispatchEvent(new FocusEvent('focus'));
+      fixture.detectChanges();
+
+      expect(query('.ea-line-chart__live')!.textContent?.trim()).toBe(
+        'Visitors, Apr: 30',
+      );
     });
   });
 });

@@ -179,4 +179,172 @@ describe('PieChartComponent', () => {
       expect(changes.map(c => c?.label ?? null)).toEqual(['Desktop', null]);
     });
   });
+
+  describe('Pointer', () => {
+    // The plot is 240px square with its center at (120, 120)
+    function pointer(type: string, x: number, y: number): void {
+      query('.ea-pie-chart__svg')!.dispatchEvent(
+        new MouseEvent(type, { clientX: x, clientY: y, bubbles: true }),
+      );
+      fixture.detectChanges();
+    }
+
+    it('highlights the slice under the pointer', () => {
+      pointer('pointermove', 180, 120);
+
+      expect(live()).toBe('Desktop: 50, 50%');
+
+      pointer('pointermove', 60, 120);
+
+      expect(live()).toBe('Mobile: 30, 30%');
+    });
+
+    it("reaches the slice that wraps past twelve o'clock", () => {
+      pointer('pointerdown', 60, 60);
+
+      expect(live()).toBe('Tablet: 20, 20%');
+      expect(document.querySelector('.ea-tooltip')?.textContent).toContain('20 (20%)');
+    });
+
+    it('highlights nothing outside the pie or inside the donut hole', () => {
+      pointer('pointermove', 0, 0);
+
+      expect(live()).toBe('');
+
+      fixture.componentRef.setInput('variant', 'donut');
+      fixture.detectChanges();
+      pointer('pointermove', 120, 120);
+
+      expect(live()).toBe('');
+    });
+
+    it('emits sliceClick on click and clears on pointerleave', () => {
+      const clicks: PieChartSliceEvent[] = [];
+      fixture.componentInstance.sliceClick.subscribe(e => clicks.push(e));
+      pointer('pointermove', 180, 120);
+
+      query('.ea-pie-chart__svg')!.dispatchEvent(
+        new MouseEvent('click', { bubbles: true }),
+      );
+      pointer('pointerleave', 0, 0);
+
+      expect(clicks.map(c => c.label)).toEqual(['Desktop']);
+      expect(live()).toBe('');
+    });
+
+    it('does not pull a lone slice out of place', () => {
+      fixture.componentRef.setInput('data', [{ label: 'All', value: 3 }]);
+      fixture.detectChanges();
+
+      press('ArrowRight');
+
+      expect(query<SVGElement>('.ea-pie-chart__slice')!.style.transform).toBe('');
+    });
+
+    it('treats a non-finite value as zero', () => {
+      fixture.componentRef.setInput('data', [...DATA, { label: 'Broken', value: NaN }]);
+      fixture.detectChanges();
+
+      expect(queryAll('.ea-pie-chart__slice')).toHaveLength(3);
+    });
+  });
+
+  describe('Keyboard edges', () => {
+    it('wraps backwards from the first slice and jumps with Home', () => {
+      press('ArrowRight');
+      press('ArrowUp');
+
+      expect(live()).toBe('Tablet: 20, 20%');
+
+      press('Home');
+
+      expect(live()).toBe('Desktop: 50, 50%');
+    });
+
+    it('ignores unrelated keys', () => {
+      press('ArrowRight');
+      const event = new KeyboardEvent('keydown', { key: 'a', cancelable: true });
+
+      plot().dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('focuses the first slice and clears on blur', () => {
+      plot().dispatchEvent(new FocusEvent('focus'));
+      fixture.detectChanges();
+
+      expect(live()).toBe('Desktop: 50, 50%');
+
+      plot().dispatchEvent(new FocusEvent('blur'));
+      fixture.detectChanges();
+
+      expect(live()).toBe('');
+    });
+  });
+
+  describe('Chrome', () => {
+    it('hides the legend in the empty state', () => {
+      fixture.componentRef.setInput('data', []);
+      fixture.detectChanges();
+
+      expect(query('.ea-pie-chart__legend')).toBeNull();
+    });
+
+    it('uses aria-label as the accessible name', () => {
+      fixture.componentRef.setInput('aria-label', 'Traffic by device');
+      fixture.detectChanges();
+
+      expect(plot().getAttribute('aria-label')).toBe('Traffic by device');
+    });
+
+    it('formats tooltip values with formatValue', () => {
+      fixture.componentRef.setInput('formatValue', (v: number) => `${v} visits`);
+      fixture.detectChanges();
+
+      press('ArrowRight');
+
+      expect(live()).toBe('Desktop: 50 visits, 50%');
+    });
+  });
+
+  describe('Fallbacks', () => {
+    it('draws a lone donut slice as a full ring', () => {
+      fixture.componentRef.setInput('variant', 'donut');
+      fixture.componentRef.setInput('data', [{ label: 'All', value: 1 }]);
+      fixture.detectChanges();
+
+      const d = query('.ea-pie-chart__slice')!.getAttribute('d')!;
+      expect(d.match(/M/g)).toHaveLength(2);
+    });
+
+    it('places the donut tooltip on the ring', () => {
+      fixture.componentRef.setInput('variant', 'donut');
+      fixture.detectChanges();
+
+      press('ArrowRight');
+
+      expect(document.querySelector('.ea-tooltip')).toBeTruthy();
+    });
+
+    it('ignores a click with nothing highlighted', () => {
+      const clicks: PieChartSliceEvent[] = [];
+      fixture.componentInstance.sliceClick.subscribe(e => clicks.push(e));
+
+      query('.ea-pie-chart__svg')!.dispatchEvent(
+        new MouseEvent('click', { bubbles: true }),
+      );
+
+      expect(clicks).toEqual([]);
+    });
+
+    it('keeps a highlight when the plot then takes focus', () => {
+      press('End');
+
+      plot().dispatchEvent(new FocusEvent('focus'));
+      fixture.detectChanges();
+
+      expect(live()).toBe('Tablet: 20, 20%');
+    });
+  });
 });
