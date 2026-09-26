@@ -7,8 +7,10 @@ import {
   RendererStyleFlags2,
   TemplateRef,
   ViewContainerRef,
+  afterRenderEffect,
   inject,
   input,
+  untracked,
 } from '@angular/core';
 
 import { resolveAriaTarget } from '../aria-target';
@@ -90,6 +92,12 @@ export class TooltipDirective implements OnDestroy {
    * reach its scrollbar. Bubbles that fit hide immediately.
    */
   readonly dismissDelay = input<number>(150);
+  /**
+   * Shows or hides the bubble programmatically, for a trigger whose moment to
+   * explain itself is not a hover or focus of its own (a chart's highlighted
+   * point, say). `null` leaves it to hover and focus. Escape still dismisses it.
+   */
+  readonly tooltipOpen = input<boolean | null>(null);
 
   private tooltipEl: HTMLElement | null = null;
   /** Side the open bubble settled on, held across repositions while it fits. */
@@ -114,16 +122,22 @@ export class TooltipDirective implements OnDestroy {
       : null;
 
   private readonly showHandler = () => {
+    if (this.controlled()) {
+      return;
+    }
     this.pointerInside = true;
     this.show();
   };
   private readonly pointerLeaveHandler = () => {
+    if (this.controlled()) {
+      return;
+    }
     this.pointerInside = false;
     this.requestHide();
   };
   private readonly hideHandler = () => this.requestHide();
   private readonly focusoutHandler = () => {
-    if (!this.pointerInside) {
+    if (!this.pointerInside && !this.controlled()) {
       this.requestHide();
     }
   };
@@ -142,6 +156,9 @@ export class TooltipDirective implements OnDestroy {
   private readonly focusHandler = (event: FocusEvent) => {
     // focusin bubbles, so the focused element may be a child of the host (e.g. the
     // inner <button> of <ea-button>); test it, not the host, for keyboard focus.
+    if (this.controlled()) {
+      return;
+    }
     const target = event.target as HTMLElement;
     if (!this.supportsFocusVisible || target.matches(':focus-visible')) {
       this.show();
@@ -197,6 +214,18 @@ export class TooltipDirective implements OnDestroy {
 
     this.syncPointerListeners(this.hoverMql?.matches ?? true);
     this.hoverMql?.addEventListener('change', this.hoverChangeHandler);
+
+    // After render, so the bubble measures a trigger whose own bindings have landed
+    afterRenderEffect(() => {
+      const open = this.tooltipOpen();
+      if (open !== null) {
+        untracked(() => (open ? this.show() : this.hide()));
+      }
+    });
+  }
+
+  private controlled(): boolean {
+    return this.tooltipOpen() !== null;
   }
 
   ngOnDestroy(): void {
