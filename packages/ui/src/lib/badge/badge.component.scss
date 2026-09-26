@@ -15,26 +15,25 @@
   forced-color-adjust: none;
 
   // Size sets only the font-size; padding, gap, and the pin dimensions are all
-  // em-based, so everything scales from this one knob. The scale runs one step
-  // below the standard type scale so badges stay compact next to body text.
+  // em-based, so everything scales from this one knob.
   &--xs {
-    font-size: var(--ea-badge-font-size, var(--font-size-2xs));
-  }
-
-  &--sm {
     font-size: var(--ea-badge-font-size, var(--font-size-xs));
   }
 
-  &--md {
+  &--sm {
     font-size: var(--ea-badge-font-size, var(--font-size-sm));
   }
 
-  &--lg {
+  &--md {
     font-size: var(--ea-badge-font-size, var(--font-size-md));
   }
 
-  &--xl {
+  &--lg {
     font-size: var(--ea-badge-font-size, var(--font-size-lg));
+  }
+
+  &--xl {
+    font-size: var(--ea-badge-font-size, var(--font-size-xl));
   }
 
   // Variant colours route through custom properties so consumers can override
@@ -86,23 +85,23 @@
     // dot; scale it as a fixed fraction of each size's font so the run stays
     // monotonic across the full xs-xl range
     &.ea-badge--xs {
-      font-size: var(--ea-badge-font-size, calc(var(--font-size-2xs) * 0.75));
-    }
-
-    &.ea-badge--sm {
       font-size: var(--ea-badge-font-size, calc(var(--font-size-xs) * 0.75));
     }
 
-    &.ea-badge--md {
+    &.ea-badge--sm {
       font-size: var(--ea-badge-font-size, calc(var(--font-size-sm) * 0.75));
     }
 
-    &.ea-badge--lg {
+    &.ea-badge--md {
       font-size: var(--ea-badge-font-size, calc(var(--font-size-md) * 0.75));
     }
 
-    &.ea-badge--xl {
+    &.ea-badge--lg {
       font-size: var(--ea-badge-font-size, calc(var(--font-size-lg) * 0.75));
+    }
+
+    &.ea-badge--xl {
+      font-size: var(--ea-badge-font-size, calc(var(--font-size-xl) * 0.75));
     }
   }
 }

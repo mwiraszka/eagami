@@ -139,6 +139,19 @@ Accessibility is release-blocking: changes must keep the component conformant wi
 - No `any` casts in tests; type your mocks (`@ts-expect-error` is fine for accessing private/protected members)
 - Spacing values: `1, 2, 4, 8, 12, 16, 24, 32, 48, 64` only
 
+### Type scale
+
+A component's `size` input sets its base font-size to the matching token: `2xs` to `var(--font-size-2xs)`, through `xl` to `var(--font-size-xl)`. A consumer override may sit in front (`var(--ea-button-font-size, var(--font-size-md))`) as long as it falls back to that token. Text below the body line inside the component is a fixed fraction of the base, from one scale:
+
+| Role | Size | Used for |
+| --- | --- | --- |
+| Secondary | `0.875em` | Labels, legends, secondary values |
+| Helper | `0.8125em` | Hint and error messages |
+| Caption | `0.75em` | Axis ticks, weekday headers, compact meta |
+| Micro | `0.625em` | Dense inline tags in pickers |
+
+Glyphs and icons sized at or above `1em` are exempt. `src/styles/type-scale.spec.ts` enforces both rules as part of `pnpm ui test`.
+
 ### CSS/SCSS property order
 
 Declarations within a rule are grouped by category, in this order, so every stylesheet reads the same way:

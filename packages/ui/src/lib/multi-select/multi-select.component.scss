@@ -164,11 +164,11 @@
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    padding: 0 calc(0.375em / 0.85);
+    padding: 0 calc(0.375em / 0.875);
+    font-size: 0.875em;
+    font-weight: var(--font-weight-medium);
     border-radius: var(--radius-lg);
     background-color: var(--color-bg-muted);
-    font-size: 0.85em;
-    font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
   }
 
