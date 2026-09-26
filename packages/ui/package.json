@@ -85,7 +85,7 @@
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/node": "26.6.2",
     "@vitest/coverage-v8": "4.1.11",
-    "chromatic": "18.9.4",
+    "chromatic": "18.9.5",
     "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import-x": "4.17.1",
