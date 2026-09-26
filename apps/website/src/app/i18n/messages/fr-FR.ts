@@ -1085,6 +1085,23 @@ export const frFR: WebMessages = {
           newEvent: 'Nouvel événement',
           newEventDescription: 'Nouvelle description',
         },
+        barChart: {
+          hardware: 'Matériel',
+          software: 'Logiciels',
+          services: 'Services',
+          quarters: ['T1', 'T2', 'T3', 'T4'],
+        },
+        lineChart: {
+          visitors: 'Visiteurs',
+          signUps: 'Inscriptions',
+          months: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août'],
+        },
+        pieChart: {
+          desktop: 'Ordinateur',
+          mobile: 'Mobile',
+          tablet: 'Tablette',
+          other: 'Autre',
+        },
       },
       playground: {
         controls: 'Options',
@@ -1107,6 +1124,37 @@ export const frFR: WebMessages = {
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Orientation',
+            size: 'Taille',
+            animation: 'Animation',
+            animationDuration: 'Durée de l’animation (ms)',
+            height: 'Hauteur (px)',
+            stacked: 'Empilé',
+            showValues: 'Afficher les valeurs',
+            showGrid: 'Afficher la grille',
+            showLegend: 'Afficher la légende',
+          },
+          'line-chart': {
+            curve: 'Courbe',
+            size: 'Taille',
+            animation: 'Animation',
+            animationDuration: 'Durée de l’animation (ms)',
+            height: 'Hauteur (px)',
+            showArea: 'Afficher l’aire',
+            showPoints: 'Afficher les points',
+            showGrid: 'Afficher la grille',
+            showLegend: 'Afficher la légende',
+          },
+          'pie-chart': {
+            variant: 'Variante',
+            size: 'Taille',
+            animation: 'Animation',
+            animationDuration: 'Durée de l’animation (ms)',
+            height: 'Hauteur (px)',
+            showLegend: 'Afficher la légende',
+            showPercentages: 'Afficher les pourcentages',
+          },
           timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           tooltip: {
             eaTooltip: 'Contenu de l’infobulle',
@@ -1344,6 +1392,79 @@ export const frFR: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(sémantique uniquement)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels:
+              'Libellés de catégorie le long de l’axe des catégories, un par valeur.',
+            series:
+              'Les séries à tracer, chacune avec un nom, une valeur par libellé et une couleur facultative.',
+            orientation:
+              'Sens dans lequel les barres s’étendent depuis la ligne de base.',
+            stacked:
+              'Empile les séries de chaque libellé en une seule barre au lieu de les regrouper côte à côte.',
+            showGrid:
+              'Trace des lignes de grille à chaque graduation de l’axe des valeurs.',
+            showLegend:
+              'Affiche une légende sous le graphique lorsqu’il trace plus d’une série.',
+            showValues:
+              'Affiche la valeur de chaque barre à son extrémité, ou le total de chaque pile en mode empilé.',
+            height:
+              'Hauteur de la zone de tracé en pixels ; la largeur remplit le conteneur.',
+            size: 'Taille visuelle du texte de l’axe, de la légende et de l’infobulle.',
+            animation:
+              'Animation d’entrée, rejouée à chaque changement des données : croissance depuis la ligne de base, cascade d’un libellé après l’autre, fondu ou aucune.',
+            animationDuration: 'Durée de l’animation d’entrée en millisecondes.',
+            formatValue:
+              'Formate les valeurs sur l’axe, dans l’infobulle et dans le tableau de données ; groupées selon la locale active par défaut.',
+            pointClick:
+              'Émis lorsqu’une barre est cliquée, ou choisie avec Entrée ou Espace.',
+            activePointChange:
+              'Émis lorsque la barre mise en évidence change via le pointeur ou le clavier, avec null une fois effacée.',
+          },
+          'line-chart': {
+            labels: 'Libellés de catégorie le long de l’axe des x, un par valeur.',
+            series:
+              'Les séries à tracer, chacune avec un nom, une valeur par libellé (null laisse un vide) et une couleur facultative.',
+            curve: 'Manière dont la ligne s’incurve entre les points.',
+            showArea: 'Remplit l’aire sous chaque ligne d’un léger voile de sa couleur.',
+            showPoints: 'Marque chaque valeur d’un point.',
+            showGrid:
+              'Trace des lignes de grille horizontales à chaque graduation de l’axe des y.',
+            showLegend:
+              'Affiche une légende sous le graphique lorsqu’il trace plus d’une série.',
+            yMin: 'Borne inférieure de l’axe des y ; déduite des données si non définie.',
+            yMax: 'Borne supérieure de l’axe des y ; déduite des données si non définie.',
+            height:
+              'Hauteur de la zone de tracé en pixels ; la largeur remplit le conteneur.',
+            size: 'Taille visuelle du texte de l’axe, de la légende et de l’infobulle.',
+            animation:
+              'Animation d’entrée, rejouée à chaque changement des données : tracé de chaque ligne, dévoilement de gauche à droite, fondu, montée depuis la ligne de base ou aucune.',
+            animationDuration: 'Durée de l’animation d’entrée en millisecondes.',
+            formatValue:
+              'Formate les valeurs sur l’axe, dans l’infobulle et dans le tableau de données ; groupées selon la locale active par défaut.',
+            pointClick:
+              'Émis lorsqu’un point est cliqué, ou choisi avec Entrée ou Espace.',
+            activePointChange:
+              'Émis lorsque le point mis en évidence change via le pointeur ou le clavier, avec null une fois effacé.',
+          },
+          'pie-chart': {
+            data: 'Les parts à dessiner dans le sens horaire à partir de midi, chacune avec un libellé, une valeur et une couleur facultative.',
+            variant: 'Un disque plein, ou un anneau au centre vide.',
+            showLegend: 'Affiche sous le graphique une légende de toutes les parts.',
+            showPercentages:
+              'Ajoute à l’entrée de légende de chaque part sa proportion du total.',
+            height:
+              'Diamètre maximal du graphique en pixels ; il se réduit pour tenir dans un conteneur plus étroit.',
+            size: 'Taille visuelle du texte de la légende et de l’infobulle.',
+            animation:
+              'Animation d’entrée, rejouée à chaque changement des données : balayage dans le sens horaire, croissance depuis le centre, fondu ou aucune.',
+            animationDuration: 'Durée de l’animation d’entrée en millisecondes.',
+            formatValue:
+              'Formate les valeurs dans l’infobulle et dans le tableau de données ; groupées selon la locale active par défaut.',
+            sliceClick:
+              'Émis lorsqu’une part est cliquée, ou choisie avec Entrée ou Espace.',
+            activeSliceChange:
+              'Émis lorsque la part mise en évidence change via le pointeur ou le clavier, avec null une fois effacée.',
+          },
           timeline: {
             items: 'Les événements à afficher, dans l’ordre.',
             orientation: 'Sens dans lequel la frise chronologique se déroule.',
@@ -1850,6 +1971,8 @@ export const frFR: WebMessages = {
             menu: 'L’instance ea-menu que ce déclencheur contrôle.',
           },
           tooltip: {
+            tooltipOpen:
+              'Affiche ou masque la bulle par programme, pour un déclencheur qui n’est ni survolé ni focalisé lui-même ; null s’en remet au survol et au focus.',
             whenClipped:
               'N’affiche la bulle que lorsque le déclencheur tronque son contenu.',
             flip: 'Déplace une bulle sans place du côté demandé vers le côté opposé.',

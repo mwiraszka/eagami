@@ -1036,6 +1036,23 @@ export const zhCN: WebMessages = {
           newEvent: '新事件',
           newEventDescription: '新描述',
         },
+        barChart: {
+          hardware: '硬件',
+          software: '软件',
+          services: '服务',
+          quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+        },
+        lineChart: {
+          visitors: '访客',
+          signUps: '注册',
+          months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月'],
+        },
+        pieChart: {
+          desktop: '桌面端',
+          mobile: '移动端',
+          tablet: '平板',
+          other: '其他',
+        },
       },
       playground: {
         controls: '控件',
@@ -1057,6 +1074,37 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          'bar-chart': {
+            orientation: '方向',
+            size: '尺寸',
+            animation: '动画',
+            animationDuration: '动画时长 (ms)',
+            height: '高度 (px)',
+            stacked: '堆叠',
+            showValues: '显示数值',
+            showGrid: '显示网格',
+            showLegend: '显示图例',
+          },
+          'line-chart': {
+            curve: '曲线',
+            size: '尺寸',
+            animation: '动画',
+            animationDuration: '动画时长 (ms)',
+            height: '高度 (px)',
+            showArea: '显示面积',
+            showPoints: '显示数据点',
+            showGrid: '显示网格',
+            showLegend: '显示图例',
+          },
+          'pie-chart': {
+            variant: '变体',
+            size: '尺寸',
+            animation: '动画',
+            animationDuration: '动画时长 (ms)',
+            height: '高度 (px)',
+            showLegend: '显示图例',
+            showPercentages: '显示百分比',
+          },
           timeline: { orientation: '方向', align: '对齐', size: '尺寸' },
           tooltip: {
             eaTooltip: '工具提示内容',
@@ -1294,6 +1342,62 @@ export const zhCN: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(仅语义)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: '沿类别轴排列的类别标签，每个值对应一个。',
+            series: '要绘制的系列，每个系列包含名称、每个标签对应的一个值以及可选颜色。',
+            orientation: '柱条从基线延伸的方向。',
+            stacked: '将每个标签的各系列堆叠为一根柱条，而不是并排分组。',
+            showGrid: '在数值轴的每个刻度处绘制网格线。',
+            showLegend: '当图表绘制多个系列时，在图表下方显示图例。',
+            showValues: '在每根柱条末端显示其数值，堆叠时显示每个堆叠的总计。',
+            height: '绘图区域的高度（像素）；宽度填满容器。',
+            size: '坐标轴、图例和工具提示文本的视觉尺寸。',
+            animation:
+              '入场动画，每当数据变化时重新播放：从基线生长、按标签依次级联、淡入或无。',
+            animationDuration: '入场动画的时长（毫秒）。',
+            formatValue:
+              '格式化坐标轴、工具提示和数据表中的数值；默认按当前语言环境分组。',
+            pointClick: '当点击柱条，或通过 Enter 或空格键选择柱条时触发。',
+            activePointChange:
+              '当通过指针或键盘改变高亮柱条时触发，清除高亮后传出 null。',
+          },
+          'line-chart': {
+            labels: '沿 x 轴排列的类别标签，每个值对应一个。',
+            series:
+              '要绘制的系列，每个系列包含名称、每个标签对应的一个值（null 会留出空缺）以及可选颜色。',
+            curve: '折线在数据点之间的弯曲方式。',
+            showArea: '用各折线颜色的浅色填充其下方区域。',
+            showPoints: '用数据点标记每个值。',
+            showGrid: '在 y 轴的每个刻度处绘制水平网格线。',
+            showLegend: '当图表绘制多个系列时，在图表下方显示图例。',
+            yMin: 'y 轴的下限；未设置时根据数据推导。',
+            yMax: 'y 轴的上限；未设置时根据数据推导。',
+            height: '绘图区域的高度（像素）；宽度填满容器。',
+            size: '坐标轴、图例和工具提示文本的视觉尺寸。',
+            animation:
+              '入场动画，每当数据变化时重新播放：逐条绘制折线、从左到右揭示、淡入、从基线升起或无。',
+            animationDuration: '入场动画的时长（毫秒）。',
+            formatValue:
+              '格式化坐标轴、工具提示和数据表中的数值；默认按当前语言环境分组。',
+            pointClick: '当点击数据点，或通过 Enter 或空格键选择数据点时触发。',
+            activePointChange:
+              '当通过指针或键盘改变高亮数据点时触发，清除高亮后传出 null。',
+          },
+          'pie-chart': {
+            data: '从十二点钟方向顺时针绘制的扇区，每个扇区包含标签、数值以及可选颜色。',
+            variant: '实心饼图，或中心留空的环形图。',
+            showLegend: '在图表下方显示包含所有扇区的图例。',
+            showPercentages: '在每个扇区的图例条目中添加其占总数的比例。',
+            height: '图表的最大直径（像素）；在较窄的容器中会缩小以适应。',
+            size: '图例和工具提示文本的视觉尺寸。',
+            animation:
+              '入场动画，每当数据变化时重新播放：顺时针扫出、从中心生长、淡入或无。',
+            animationDuration: '入场动画的时长（毫秒）。',
+            formatValue: '格式化工具提示和数据表中的数值；默认按当前语言环境分组。',
+            sliceClick: '当点击扇区，或通过 Enter 或空格键选择扇区时触发。',
+            activeSliceChange:
+              '当通过指针或键盘改变高亮扇区时触发，清除高亮后传出 null。',
+          },
           timeline: {
             items: '要显示的事件，按顺序排列。',
             orientation: '时间轴的走向。',
@@ -1694,6 +1798,8 @@ export const zhCN: WebMessages = {
             menu: '此触发器所控制的 ea-menu 实例。',
           },
           tooltip: {
+            tooltipOpen:
+              '以编程方式显示或隐藏气泡，适用于自身不会被悬停或聚焦的触发元素；null 则交由悬停和聚焦控制。',
             whenClipped: '仅当触发元素裁切自身内容时才显示气泡。',
             flip: '当请求的一侧没有空间时，将气泡移到相反一侧。',
             maxWidth:

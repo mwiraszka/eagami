@@ -1071,6 +1071,23 @@ export const ptBR: WebMessages = {
           newEvent: 'Novo evento',
           newEventDescription: 'Nova descrição',
         },
+        barChart: {
+          hardware: 'Hardware',
+          software: 'Software',
+          services: 'Serviços',
+          quarters: ['T1', 'T2', 'T3', 'T4'],
+        },
+        lineChart: {
+          visitors: 'Visitantes',
+          signUps: 'Cadastros',
+          months: ['jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.', 'jul.', 'ago.'],
+        },
+        pieChart: {
+          desktop: 'Desktop',
+          mobile: 'Celular',
+          tablet: 'Tablet',
+          other: 'Outros',
+        },
       },
       playground: {
         controls: 'Controles',
@@ -1093,6 +1110,37 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Orientação',
+            size: 'Tamanho',
+            animation: 'Animação',
+            animationDuration: 'Duração da animação (ms)',
+            height: 'Altura (px)',
+            stacked: 'Empilhado',
+            showValues: 'Mostrar valores',
+            showGrid: 'Mostrar grade',
+            showLegend: 'Mostrar legenda',
+          },
+          'line-chart': {
+            curve: 'Curva',
+            size: 'Tamanho',
+            animation: 'Animação',
+            animationDuration: 'Duração da animação (ms)',
+            height: 'Altura (px)',
+            showArea: 'Mostrar área',
+            showPoints: 'Mostrar pontos',
+            showGrid: 'Mostrar grade',
+            showLegend: 'Mostrar legenda',
+          },
+          'pie-chart': {
+            variant: 'Variante',
+            size: 'Tamanho',
+            animation: 'Animação',
+            animationDuration: 'Duração da animação (ms)',
+            height: 'Altura (px)',
+            showLegend: 'Mostrar legenda',
+            showPercentages: 'Mostrar porcentagens',
+          },
           timeline: { orientation: 'Orientação', align: 'Alinhamento', size: 'Tamanho' },
           tooltip: {
             eaTooltip: 'Conteúdo da Dica',
@@ -1330,6 +1378,76 @@ export const ptBR: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(apenas semântico)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Rótulos de categoria ao longo do eixo de categorias, um por valor.',
+            series:
+              'As séries a plotar, cada uma com um nome, um valor por rótulo e uma cor opcional.',
+            orientation:
+              'Direção em que as barras se estendem a partir da linha de base.',
+            stacked:
+              'Empilha as séries de cada rótulo em uma única barra em vez de agrupá-las lado a lado.',
+            showGrid: 'Desenha linhas de grade em cada marcação do eixo de valores.',
+            showLegend:
+              'Mostra uma legenda abaixo do gráfico quando ele plota mais de uma série.',
+            showValues:
+              'Exibe o valor de cada barra na sua extremidade, ou o total de cada pilha quando empilhado.',
+            height:
+              'Altura da área de plotagem em pixels; a largura preenche o contêiner.',
+            size: 'Tamanho visual do texto do eixo, da legenda e do tooltip.',
+            animation:
+              'Animação de entrada, repetida sempre que os dados mudam: crescer a partir da linha de base, cascata de um rótulo após o outro, surgir gradualmente ou nenhuma.',
+            animationDuration: 'Duração da animação de entrada em milissegundos.',
+            formatValue:
+              'Formata os valores no eixo, no tooltip e na tabela de dados; agrupados conforme a localidade ativa por padrão.',
+            pointClick:
+              'Dispara quando uma barra é clicada, ou escolhida com Enter ou Espaço.',
+            activePointChange:
+              'Dispara quando a barra destacada muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+          },
+          'line-chart': {
+            labels: 'Rótulos de categoria ao longo do eixo x, um por valor.',
+            series:
+              'As séries a plotar, cada uma com um nome, um valor por rótulo (null deixa uma lacuna) e uma cor opcional.',
+            curve: 'Como a linha se curva entre os pontos.',
+            showArea: 'Preenche a área abaixo de cada linha com um tom suave da sua cor.',
+            showPoints: 'Marca cada valor com um ponto.',
+            showGrid: 'Desenha linhas de grade horizontais em cada marcação do eixo y.',
+            showLegend:
+              'Mostra uma legenda abaixo do gráfico quando ele plota mais de uma série.',
+            yMin: 'Limite inferior do eixo y; derivado dos dados quando não definido.',
+            yMax: 'Limite superior do eixo y; derivado dos dados quando não definido.',
+            height:
+              'Altura da área de plotagem em pixels; a largura preenche o contêiner.',
+            size: 'Tamanho visual do texto do eixo, da legenda e do tooltip.',
+            animation:
+              'Animação de entrada, repetida sempre que os dados mudam: desenhar cada linha, revelar da esquerda para a direita, surgir gradualmente, subir a partir da linha de base ou nenhuma.',
+            animationDuration: 'Duração da animação de entrada em milissegundos.',
+            formatValue:
+              'Formata os valores no eixo, no tooltip e na tabela de dados; agrupados conforme a localidade ativa por padrão.',
+            pointClick:
+              'Dispara quando um ponto é clicado, ou escolhido com Enter ou Espaço.',
+            activePointChange:
+              'Dispara quando o ponto destacado muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+          },
+          'pie-chart': {
+            data: 'As fatias a desenhar no sentido horário a partir do meio-dia, cada uma com um rótulo, um valor e uma cor opcional.',
+            variant: 'Uma pizza sólida, ou um anel de rosca com o centro vazio.',
+            showLegend: 'Mostra uma legenda de todas as fatias abaixo do gráfico.',
+            showPercentages:
+              'Adiciona a participação de cada fatia no total à sua entrada na legenda.',
+            height:
+              'Maior diâmetro do gráfico em pixels; ele encolhe para caber em um contêiner mais estreito.',
+            size: 'Tamanho visual do texto da legenda e do tooltip.',
+            animation:
+              'Animação de entrada, repetida sempre que os dados mudam: varrer no sentido horário, crescer a partir do centro, surgir gradualmente ou nenhuma.',
+            animationDuration: 'Duração da animação de entrada em milissegundos.',
+            formatValue:
+              'Formata os valores no tooltip e na tabela de dados; agrupados conforme a localidade ativa por padrão.',
+            sliceClick:
+              'Dispara quando uma fatia é clicada, ou escolhida com Enter ou Espaço.',
+            activeSliceChange:
+              'Dispara quando a fatia destacada muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+          },
           timeline: {
             items: 'Os eventos a serem exibidos, em ordem.',
             orientation: 'Direção em que a linha do tempo flui.',
@@ -1836,6 +1954,8 @@ export const ptBR: WebMessages = {
             menu: 'A instância de ea-menu que este gatilho controla.',
           },
           tooltip: {
+            tooltipOpen:
+              'Mostra ou oculta o balão por programação, para um gatilho que não recebe o ponteiro nem o foco por si; null deixa isso para o ponteiro e o foco.',
             whenClipped:
               'Mostra o balão apenas enquanto o gatilho corta o próprio conteúdo.',
             flip: 'Move o balão para o lado oposto quando não há espaço no lado pedido.',

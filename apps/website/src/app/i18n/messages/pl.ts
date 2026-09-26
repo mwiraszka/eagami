@@ -1075,6 +1075,23 @@ export const pl: WebMessages = {
           newEvent: 'Nowe zdarzenie',
           newEventDescription: 'Nowy opis',
         },
+        barChart: {
+          hardware: 'Sprzęt',
+          software: 'Oprogramowanie',
+          services: 'Usługi',
+          quarters: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
+        },
+        lineChart: {
+          visitors: 'Odwiedzający',
+          signUps: 'Rejestracje',
+          months: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie'],
+        },
+        pieChart: {
+          desktop: 'Komputer',
+          mobile: 'Telefon',
+          tablet: 'Tablet',
+          other: 'Inne',
+        },
       },
       playground: {
         controls: 'Opcje',
@@ -1097,6 +1114,37 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Orientacja',
+            size: 'Rozmiar',
+            animation: 'Animacja',
+            animationDuration: 'Czas trwania animacji (ms)',
+            height: 'Wysokość (px)',
+            stacked: 'Skumulowany',
+            showValues: 'Pokaż wartości',
+            showGrid: 'Pokaż siatkę',
+            showLegend: 'Pokaż legendę',
+          },
+          'line-chart': {
+            curve: 'Krzywa',
+            size: 'Rozmiar',
+            animation: 'Animacja',
+            animationDuration: 'Czas trwania animacji (ms)',
+            height: 'Wysokość (px)',
+            showArea: 'Pokaż obszar',
+            showPoints: 'Pokaż punkty',
+            showGrid: 'Pokaż siatkę',
+            showLegend: 'Pokaż legendę',
+          },
+          'pie-chart': {
+            variant: 'Wariant',
+            size: 'Rozmiar',
+            animation: 'Animacja',
+            animationDuration: 'Czas trwania animacji (ms)',
+            height: 'Wysokość (px)',
+            showLegend: 'Pokaż legendę',
+            showPercentages: 'Pokaż wartości procentowe',
+          },
           timeline: { orientation: 'Orientacja', align: 'Wyrównanie', size: 'Rozmiar' },
           tooltip: {
             eaTooltip: 'Treść podpowiedzi',
@@ -1334,6 +1382,73 @@ export const pl: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(tylko semantycznie)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Etykiety kategorii wzdłuż osi kategorii, po jednej na wartość.',
+            series:
+              'Serie do wykreślenia, każda z nazwą, jedną wartością na etykietę i opcjonalnym kolorem.',
+            orientation: 'Kierunek, w którym słupki wychodzą od linii bazowej.',
+            stacked:
+              'Układa serie każdej etykiety w jeden słupek zamiast grupować je obok siebie.',
+            showGrid: 'Rysuje linie siatki przy każdej podziałce osi wartości.',
+            showLegend:
+              'Wyświetla legendę pod wykresem, gdy przedstawia on więcej niż jedną serię.',
+            showValues:
+              'Wypisuje wartość każdego słupka na jego końcu, a w trybie skumulowanym sumę każdego stosu.',
+            height: 'Wysokość obszaru wykresu w pikselach; szerokość wypełnia kontener.',
+            size: 'Wizualny rozmiar tekstu osi, legendy i podpowiedzi.',
+            animation:
+              'Animacja wejścia, odtwarzana ponownie przy każdej zmianie danych: wzrost od linii bazowej, kaskada etykieta po etykiecie, pojawienie się lub brak.',
+            animationDuration: 'Czas trwania animacji wejścia w milisekundach.',
+            formatValue:
+              'Formatuje wartości na osi, w podpowiedzi i w tabeli danych; domyślnie grupowane według aktywnych ustawień regionalnych.',
+            pointClick:
+              'Emitowane, gdy słupek zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
+            activePointChange:
+              'Emitowane, gdy wyróżniony słupek zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+          },
+          'line-chart': {
+            labels: 'Etykiety kategorii wzdłuż osi x, po jednej na wartość.',
+            series:
+              'Serie do wykreślenia, każda z nazwą, jedną wartością na etykietę (null pozostawia przerwę) i opcjonalnym kolorem.',
+            curve: 'Sposób, w jaki linia wygina się między punktami.',
+            showArea: 'Wypełnia obszar pod każdą linią jasnym odcieniem jej koloru.',
+            showPoints: 'Oznacza każdą wartość punktem.',
+            showGrid: 'Rysuje poziome linie siatki przy każdej podziałce osi y.',
+            showLegend:
+              'Wyświetla legendę pod wykresem, gdy przedstawia on więcej niż jedną serię.',
+            yMin: 'Dolna granica osi y; wyznaczana na podstawie danych, gdy nie jest ustawiona.',
+            yMax: 'Górna granica osi y; wyznaczana na podstawie danych, gdy nie jest ustawiona.',
+            height: 'Wysokość obszaru wykresu w pikselach; szerokość wypełnia kontener.',
+            size: 'Wizualny rozmiar tekstu osi, legendy i podpowiedzi.',
+            animation:
+              'Animacja wejścia, odtwarzana ponownie przy każdej zmianie danych: rysowanie każdej linii, odsłanianie od lewej do prawej, pojawienie się, wyrastanie od linii bazowej lub brak.',
+            animationDuration: 'Czas trwania animacji wejścia w milisekundach.',
+            formatValue:
+              'Formatuje wartości na osi, w podpowiedzi i w tabeli danych; domyślnie grupowane według aktywnych ustawień regionalnych.',
+            pointClick:
+              'Emitowane, gdy punkt zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
+            activePointChange:
+              'Emitowane, gdy wyróżniony punkt zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+          },
+          'pie-chart': {
+            data: 'Wycinki rysowane zgodnie z ruchem wskazówek zegara od godziny dwunastej, każdy z etykietą, wartością i opcjonalnym kolorem.',
+            variant: 'Pełne koło lub pierścień z pustym środkiem.',
+            showLegend: 'Wyświetla pod wykresem legendę wszystkich wycinków.',
+            showPercentages:
+              'Dodaje do wpisu legendy każdego wycinka jego udział w całości.',
+            height:
+              'Największa średnica wykresu w pikselach; zmniejsza się, aby zmieścić się w węższym kontenerze.',
+            size: 'Wizualny rozmiar tekstu legendy i podpowiedzi.',
+            animation:
+              'Animacja wejścia, odtwarzana ponownie przy każdej zmianie danych: zakreślenie zgodnie z ruchem wskazówek zegara, wzrost od środka, pojawienie się lub brak.',
+            animationDuration: 'Czas trwania animacji wejścia w milisekundach.',
+            formatValue:
+              'Formatuje wartości w podpowiedzi i w tabeli danych; domyślnie grupowane według aktywnych ustawień regionalnych.',
+            sliceClick:
+              'Emitowane, gdy wycinek zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
+            activeSliceChange:
+              'Emitowane, gdy wyróżniony wycinek zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+          },
           timeline: {
             items: 'Zdarzenia do wyświetlenia, w kolejności.',
             orientation: 'Kierunek, w którym biegnie oś czasu.',
@@ -1829,6 +1944,8 @@ export const pl: WebMessages = {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
           },
           tooltip: {
+            tooltipOpen:
+              'Pokazuje lub ukrywa dymek programowo, dla elementu, który sam nie jest wskazywany ani nie ma fokusu; null zostawia to najechaniu i fokusowi.',
             whenClipped: 'Pokazuje dymek tylko wtedy, gdy element przycina własną treść.',
             flip: 'Przenosi dymek na przeciwną stronę, gdy po wskazanej stronie brakuje miejsca.',
             maxWidth:

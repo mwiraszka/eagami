@@ -1079,6 +1079,23 @@ export const de: WebMessages = {
           newEvent: 'Neues Ereignis',
           newEventDescription: 'Neue Beschreibung',
         },
+        barChart: {
+          hardware: 'Hardware',
+          software: 'Software',
+          services: 'Dienstleistungen',
+          quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+        },
+        lineChart: {
+          visitors: 'Besucher',
+          signUps: 'Registrierungen',
+          months: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.'],
+        },
+        pieChart: {
+          desktop: 'Desktop',
+          mobile: 'Mobil',
+          tablet: 'Tablet',
+          other: 'Sonstige',
+        },
       },
       playground: {
         controls: 'Steuerungen',
@@ -1101,6 +1118,37 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
+          'bar-chart': {
+            orientation: 'Ausrichtung',
+            size: 'Größe',
+            animation: 'Animation',
+            animationDuration: 'Animationsdauer (ms)',
+            height: 'Höhe (px)',
+            stacked: 'Gestapelt',
+            showValues: 'Werte anzeigen',
+            showGrid: 'Raster anzeigen',
+            showLegend: 'Legende anzeigen',
+          },
+          'line-chart': {
+            curve: 'Kurve',
+            size: 'Größe',
+            animation: 'Animation',
+            animationDuration: 'Animationsdauer (ms)',
+            height: 'Höhe (px)',
+            showArea: 'Fläche anzeigen',
+            showPoints: 'Punkte anzeigen',
+            showGrid: 'Raster anzeigen',
+            showLegend: 'Legende anzeigen',
+          },
+          'pie-chart': {
+            variant: 'Variante',
+            size: 'Größe',
+            animation: 'Animation',
+            animationDuration: 'Animationsdauer (ms)',
+            height: 'Höhe (px)',
+            showLegend: 'Legende anzeigen',
+            showPercentages: 'Prozentwerte anzeigen',
+          },
           timeline: { orientation: 'Ausrichtung', align: 'Anordnung', size: 'Größe' },
           tooltip: {
             eaTooltip: 'Tooltip-Inhalt',
@@ -1338,6 +1386,79 @@ export const de: WebMessages = {
         knobNotes: { accordion: { headingLevel: '(nur semantisch)' } },
 
         descriptions: {
+          'bar-chart': {
+            labels: 'Kategoriebeschriftungen entlang der Kategorieachse, eine pro Wert.',
+            series:
+              'Die darzustellenden Reihen, jeweils mit einem Namen, einem Wert pro Beschriftung und einer optionalen Farbe.',
+            orientation:
+              'Richtung, in die sich die Balken von der Grundlinie aus erstrecken.',
+            stacked:
+              'Stapelt die Reihen jeder Beschriftung zu einem Balken, statt sie nebeneinander zu gruppieren.',
+            showGrid: 'Zeichnet Rasterlinien an jedem Teilstrich der Werteachse.',
+            showLegend:
+              'Zeigt eine Legende unter dem Diagramm an, wenn es mehr als eine Reihe darstellt.',
+            showValues:
+              'Gibt den Wert jedes Balkens an seinem Ende aus, bei gestapelten Balken die Summe jedes Stapels.',
+            height:
+              'Höhe des Diagrammbereichs in Pixeln; die Breite füllt den Container aus.',
+            size: 'Visuelle Größe des Achsen-, Legenden- und Tooltip-Texts.',
+            animation:
+              'Einblendanimation, die bei jeder Datenänderung erneut abgespielt wird: von der Grundlinie wachsen, kaskadierend eine Beschriftung nach der anderen, einblenden oder keine.',
+            animationDuration: 'Dauer der Einblendanimation in Millisekunden.',
+            formatValue:
+              'Formatiert Werte auf der Achse, im Tooltip und in der Datentabelle; standardmäßig nach dem aktiven Gebietsschema gruppiert.',
+            pointClick:
+              'Wird ausgelöst, wenn ein Balken angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
+            activePointChange:
+              'Wird ausgelöst, wenn sich der hervorgehobene Balken per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+          },
+          'line-chart': {
+            labels: 'Kategoriebeschriftungen entlang der x-Achse, eine pro Wert.',
+            series:
+              'Die darzustellenden Reihen, jeweils mit einem Namen, einem Wert pro Beschriftung (null lässt eine Lücke) und einer optionalen Farbe.',
+            curve: 'Wie die Linie zwischen den Punkten verläuft.',
+            showArea:
+              'Füllt die Fläche unter jeder Linie mit einem hellen Schimmer ihrer Farbe.',
+            showPoints: 'Markiert jeden Wert mit einem Punkt.',
+            showGrid:
+              'Zeichnet horizontale Rasterlinien an jedem Teilstrich der y-Achse.',
+            showLegend:
+              'Zeigt eine Legende unter dem Diagramm an, wenn es mehr als eine Reihe darstellt.',
+            yMin: 'Untergrenze der y-Achse; wird aus den Daten abgeleitet, wenn nicht gesetzt.',
+            yMax: 'Obergrenze der y-Achse; wird aus den Daten abgeleitet, wenn nicht gesetzt.',
+            height:
+              'Höhe des Diagrammbereichs in Pixeln; die Breite füllt den Container aus.',
+            size: 'Visuelle Größe des Achsen-, Legenden- und Tooltip-Texts.',
+            animation:
+              'Einblendanimation, die bei jeder Datenänderung erneut abgespielt wird: jede Linie zeichnen, von links nach rechts aufdecken, einblenden, von der Grundlinie aufsteigen oder keine.',
+            animationDuration: 'Dauer der Einblendanimation in Millisekunden.',
+            formatValue:
+              'Formatiert Werte auf der Achse, im Tooltip und in der Datentabelle; standardmäßig nach dem aktiven Gebietsschema gruppiert.',
+            pointClick:
+              'Wird ausgelöst, wenn ein Punkt angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
+            activePointChange:
+              'Wird ausgelöst, wenn sich der hervorgehobene Punkt per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+          },
+          'pie-chart': {
+            data: 'Die Segmente, die im Uhrzeigersinn ab zwölf Uhr gezeichnet werden, jeweils mit einer Beschriftung, einem Wert und einer optionalen Farbe.',
+            variant:
+              'Ein ausgefülltes Kreisdiagramm oder ein Ringdiagramm mit leerer Mitte.',
+            showLegend: 'Zeigt unter dem Diagramm eine Legende aller Segmente an.',
+            showPercentages:
+              'Ergänzt den Legendeneintrag jedes Segments um seinen Anteil an der Gesamtsumme.',
+            height:
+              'Größter Durchmesser des Diagramms in Pixeln; es schrumpft, um in einen schmaleren Container zu passen.',
+            size: 'Visuelle Größe des Legenden- und Tooltip-Texts.',
+            animation:
+              'Einblendanimation, die bei jeder Datenänderung erneut abgespielt wird: im Uhrzeigersinn aufziehen, aus der Mitte wachsen, einblenden oder keine.',
+            animationDuration: 'Dauer der Einblendanimation in Millisekunden.',
+            formatValue:
+              'Formatiert Werte im Tooltip und in der Datentabelle; standardmäßig nach dem aktiven Gebietsschema gruppiert.',
+            sliceClick:
+              'Wird ausgelöst, wenn ein Segment angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
+            activeSliceChange:
+              'Wird ausgelöst, wenn sich das hervorgehobene Segment per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+          },
           timeline: {
             items: 'Die anzuzeigenden Ereignisse, in Reihenfolge.',
             orientation: 'Richtung, in die die Zeitleiste verläuft.',
@@ -1862,6 +1983,8 @@ export const de: WebMessages = {
             menu: 'Die ea-menu-Instanz, die dieser Auslöser steuert.',
           },
           tooltip: {
+            tooltipOpen:
+              'Zeigt oder verbirgt die Sprechblase programmgesteuert, für einen Auslöser, der nicht selbst überfahren oder fokussiert wird; null überlässt es Hover und Fokus.',
             whenClipped:
               'Zeigt die Sprechblase nur, solange der Auslöser seinen Inhalt abschneidet.',
             flip: 'Verschiebt eine Sprechblase ohne Platz auf der gewünschten Seite auf die gegenüberliegende.',

@@ -847,6 +847,23 @@ export interface WebMessages {
           newEvent: string;
           newEventDescription: string;
         };
+        barChart: {
+          hardware: string;
+          software: string;
+          services: string;
+          quarters: readonly string[];
+        };
+        lineChart: {
+          visitors: string;
+          signUps: string;
+          months: readonly string[];
+        };
+        pieChart: {
+          desktop: string;
+          mobile: string;
+          tablet: string;
+          other: string;
+        };
         commandPalette: {
           hint: string;
           openButton: string;
