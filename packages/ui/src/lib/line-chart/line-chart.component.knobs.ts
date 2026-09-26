@@ -31,6 +31,18 @@ export const LINE_CHART_KNOBS: ComponentKnobs = {
     showPoints: { control: 'boolean' },
     showGrid: { control: 'boolean' },
     showLegend: { control: 'boolean' },
+    showAxisBreak: { control: 'boolean' },
+    xLabelOrientation: {
+      control: 'select',
+      options: ['horizontal', 'diagonal', 'vertical', 'auto'],
+    },
+    visibleXSpan: {
+      control: 'number',
+      min: 5,
+      max: 100,
+      step: 5,
+      maxLength: 3,
+    },
   },
   args: {
     curve: 'smooth',
@@ -42,5 +54,8 @@ export const LINE_CHART_KNOBS: ComponentKnobs = {
     showPoints: true,
     showGrid: true,
     showLegend: true,
+    showAxisBreak: true,
+    xLabelOrientation: 'horizontal',
+    visibleXSpan: 60,
   },
 };

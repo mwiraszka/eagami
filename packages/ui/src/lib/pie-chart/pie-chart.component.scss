@@ -60,7 +60,7 @@ ea-pie-chart {
   }
 
   &__tooltip-value {
-    font-variant-numeric: tabular-nums;
+    @include chart.chart-tooltip-value;
   }
 
   &__swatch {

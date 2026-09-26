@@ -33,6 +33,23 @@ ea-line-chart {
     @include chart.chart-axis;
   }
 
+  &__x-tick {
+    @include chart.chart-baseline;
+  }
+
+  &__y-axis {
+    @include chart.chart-baseline;
+
+    fill: none;
+  }
+
+  &__axis-break {
+    fill: none;
+    stroke: var(--color-border-strong);
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+  }
+
   &__crosshair {
     stroke: var(--color-border-strong);
     stroke-width: 1px;
@@ -89,9 +106,7 @@ ea-line-chart {
   }
 
   &__tooltip-value {
-    margin-inline-start: auto;
-    padding-inline-start: 0.75em;
-    font-variant-numeric: tabular-nums;
+    @include chart.chart-tooltip-value;
   }
 
   &__swatch {
@@ -122,6 +137,15 @@ ea-line-chart {
     @include chart.chart-empty;
   }
 
+  &--pannable .ea-line-chart__svg {
+    cursor: grab;
+  }
+
+  &--panning .ea-line-chart__svg {
+    cursor: grabbing;
+    user-select: none;
+  }
+
   &--animate-draw {
     .ea-line-chart__line {
       stroke-dasharray: 1;
@@ -132,7 +156,7 @@ ea-line-chart {
     .ea-line-chart__area,
     .ea-line-chart__point {
       animation-name: ea-chart-fade;
-      animation-delay: calc(var(--ea-chart-duration, 600ms) * 0.6);
+      animation-delay: var(--ea-chart-duration, 600ms);
       @include chart.chart-motion;
     }
   }

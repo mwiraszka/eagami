@@ -157,3 +157,100 @@ export function injectChartFormatter(
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
+
+/**
+ * How category or x-axis labels are set: level, at 45 degrees, at 90 degrees, or
+ * `auto`, which stays level while the labels fit and turns them 45 then 90 degrees
+ * as they crowd.
+ */
+export type ChartLabelOrientation = 'horizontal' | 'diagonal' | 'vertical' | 'auto';
+
+export const CHART_LABEL_ANGLES: Record<
+  Exclude<ChartLabelOrientation, 'auto'>,
+  number
+> = {
+  horizontal: 0,
+  diagonal: 45,
+  vertical: 90,
+};
+
+// Pixels a tick mark adds beyond its share of the axis font, and the space between
+// the tick and its label
+export const TICK_EXTRA_PX = 2;
+export const TICK_LABEL_GAP_PX = 2;
+
+// In axis font sizes: the room under the lowest mark of an axis that stops short of
+// zero, and the height of its break above the baseline, within that room
+export const BREAK_CLEARANCE = 6;
+export const BREAK_HEIGHT = 2.5;
+
+/** Length of a tick mark below the axis. */
+export function tickLength(axisPx: number): number {
+  return axisPx * 0.4 + TICK_EXTRA_PX;
+}
+
+/** Room along the axis a label needs: its width when level, a line's height when turned. */
+export function labelRoom(text: string, angle: number, axisPx: number): number {
+  if (angle === 0) {
+    return estimateTextWidth(text, axisPx) + axisPx;
+  }
+  return (axisPx * 1.15) / Math.sin((angle * Math.PI) / 180);
+}
+
+/** Space below the plot for the axis labels, turned to `angle` degrees, and their ticks. */
+export function labelBand(
+  widest: number,
+  angle: number,
+  axisPx: number,
+  height: number,
+): number {
+  if (!angle) {
+    return axisPx * 2.5 + TICK_EXTRA_PX + TICK_LABEL_GAP_PX;
+  }
+  const radians = (angle * Math.PI) / 180;
+  // A turned label drops by its length along the turn, up to half the chart
+  return Math.min(
+    height / 2,
+    axisPx * 0.8 +
+      TICK_EXTRA_PX +
+      TICK_LABEL_GAP_PX +
+      widest * Math.sin(radians) +
+      axisPx * Math.cos(radians) +
+      axisPx * 0.5,
+  );
+}
+
+/** Baseline of the axis labels below an axis at `axisY`. */
+export function labelLine(axisY: number, angle: number, axisPx: number): number {
+  return angle
+    ? axisY + tickLength(axisPx) + TICK_LABEL_GAP_PX + axisPx * 0.4
+    : axisY + axisPx * 1.5 + TICK_EXTRA_PX + TICK_LABEL_GAP_PX;
+}
+
+export interface AxisBreak {
+  axis: string;
+  slashes: string;
+  gap: { x: number; y: number; width: number; height: number };
+}
+
+/** A y-axis line up the plot's left edge, cut where two parallel slashes cross it. */
+export function axisBreak(
+  x: number,
+  top: number,
+  bottom: number,
+  y: number,
+  axisPx: number,
+): AxisBreak {
+  const half = axisPx * 0.8;
+  const gap = axisPx * 0.35;
+  return {
+    axis: `M${x},${top}L${x},${y - gap}M${x},${y + gap}L${x},${bottom}`,
+    gap: { x: x - half, y: y - gap, width: 2 * half, height: 2 * gap },
+    slashes: [-gap, gap]
+      .map(
+        offset =>
+          `M${x - half},${y + offset + half / 2}L${x + half},${y + offset - half / 2}`,
+      )
+      .join(''),
+  };
+}

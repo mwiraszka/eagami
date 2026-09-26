@@ -4,15 +4,21 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { type ChartSeries } from '../chart/chart';
-import { LineChartComponent } from './line-chart.component';
+import { LineChartComponent, type LineChartTick } from './line-chart.component';
 
 @Component({
   imports: [LineChartComponent],
   template: `<ea-line-chart
     [labels]="labels"
-    [series]="series" />`,
+    [series]="series"
+    [xValues]="xValues"
+    [xTicks]="xTicks"
+    [visibleXSpan]="visibleXSpan" />`,
 })
 class HostComponent {
+  xValues: number[] | null = null;
+  xTicks: LineChartTick[] | null = null;
+  visibleXSpan: number | null = null;
   labels = ['Jan', 'Feb', 'Mar'];
   series: ChartSeries[] = [
     { name: 'Visitors', data: [10, 20, 15] },
@@ -55,5 +61,23 @@ describe('LineChartComponent a11y', () => {
     const results = await axe(el);
 
     expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations on a panned numeric scale', async () => {
+    const { fixture, el } = await render(host => {
+      host.xValues = [0, 4, 30];
+      host.xTicks = [
+        { value: 0, label: 'Start' },
+        { value: 20, label: 'Later' },
+      ];
+      host.visibleXSpan = 10;
+    });
+    el.querySelector('.ea-line-chart__plot')!.dispatchEvent(new FocusEvent('focus'));
+    fixture.detectChanges();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+    expect(el.querySelectorAll('.ea-line-chart__table tbody tr')).toHaveLength(3);
   });
 });
