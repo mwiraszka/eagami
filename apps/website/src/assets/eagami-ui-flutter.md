@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.50.0
-source: '@eagami/ui@5.50.0 (https://github.com/mwiraszka/eagami)'
+version: 5.51.0
+source: '@eagami/ui@5.51.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-09-26
 audience: human developers and AI coding agents
 purpose: >
@@ -254,6 +254,14 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `infoSubtle`            | `info50`            | `Color(0x2606B6D4)` |
 | `infoMuted`             | `info100`           | `Color(0x4006B6D4)` |
 | `infoText`              | `info700`           | `info200`           |
+| `chart1`                | `Color(0xFF2A78D6)` | `Color(0xFF3987E5)` |
+| `chart2`                | `Color(0xFFEB6834)` | `Color(0xFFD95926)` |
+| `chart3`                | `Color(0xFF1BAF7A)` | `Color(0xFF199E70)` |
+| `chart4`                | `Color(0xFFEDA100)` | `Color(0xFFC98500)` |
+| `chart5`                | `Color(0xFFE87BA4)` | `Color(0xFFD55181)` |
+| `chart6`                | `Color(0xFF008300)` | `Color(0xFF008300)` |
+| `chart7`                | `Color(0xFF4A3AA7)` | `Color(0xFF9085E9)` |
+| `chart8`                | `Color(0xFFE34948)` | `Color(0xFFE66767)` |
 
 In dark mode the surface model splits the page (`surfaceCanvas`, deepest) from the surfaces that sit on it (`surfaceBase`, `surfaceSubtle`, `surfaceElevated`, `surfaceMuted`). Canvas stays at the deepest neutral while every component surface lifts above it so inputs, cards, accordion items, and popover panels read above the page instead of disappearing into it. `surfaceStripe` is the alternating-row tone for tables; it sits **below** `surfaceBase` to keep odd rows darker than the surrounding card, and `surfaceStripeSubtle` mixes it toward `surfaceBase` for a quieter zebra fill. `surfaceMuted` is the opaque static fill for disabled fields, slider and progress tracks, and skeletons; hover and active fills route through the translucent `stateHover` / `stateActive` washes, so this shade never collides with them.
 
@@ -532,7 +540,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.50.0 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.51.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -664,6 +672,14 @@ class EagamiColors {
     required this.infoSubtle,
     required this.infoMuted,
     required this.infoText,
+    required this.chart1,
+    required this.chart2,
+    required this.chart3,
+    required this.chart4,
+    required this.chart5,
+    required this.chart6,
+    required this.chart7,
+    required this.chart8,
   });
 
   final Color textPrimary;
@@ -719,6 +735,14 @@ class EagamiColors {
   final Color infoSubtle;
   final Color infoMuted;
   final Color infoText;
+  final Color chart1;
+  final Color chart2;
+  final Color chart3;
+  final Color chart4;
+  final Color chart5;
+  final Color chart6;
+  final Color chart7;
+  final Color chart8;
 
   static const light = EagamiColors(
     textPrimary: Color(0xFF111827),
@@ -774,6 +798,14 @@ class EagamiColors {
     infoSubtle: Color(0xFFECFEFF),
     infoMuted: Color(0xFFCFFAFE),
     infoText: Color(0xFF0E7490),
+    chart1: Color(0xFF2A78D6),
+    chart2: Color(0xFFEB6834),
+    chart3: Color(0xFF1BAF7A),
+    chart4: Color(0xFFEDA100),
+    chart5: Color(0xFFE87BA4),
+    chart6: Color(0xFF008300),
+    chart7: Color(0xFF4A3AA7),
+    chart8: Color(0xFFE34948),
   );
 
   static const dark = EagamiColors(
@@ -830,6 +862,14 @@ class EagamiColors {
     infoSubtle: Color(0x2606B6D4),
     infoMuted: Color(0x4006B6D4),
     infoText: Color(0xFFA5F3FC),
+    chart1: Color(0xFF3987E5),
+    chart2: Color(0xFFD95926),
+    chart3: Color(0xFF199E70),
+    chart4: Color(0xFFC98500),
+    chart5: Color(0xFFD55181),
+    chart6: Color(0xFF008300),
+    chart7: Color(0xFF9085E9),
+    chart8: Color(0xFFE66767),
   );
 }
 
