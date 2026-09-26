@@ -25,6 +25,12 @@ export const BAR_CHART_KNOBS: ComponentKnobs = {
     showValues: { control: 'boolean' },
     showGrid: { control: 'boolean' },
     showLegend: { control: 'boolean' },
+    showAxisBreak: { control: 'boolean', if: { arg: 'orientation', eq: 'vertical' } },
+    xLabelOrientation: {
+      control: 'select',
+      options: ['horizontal', 'diagonal', 'vertical', 'auto'],
+      if: { arg: 'orientation', eq: 'vertical' },
+    },
   },
   args: {
     orientation: 'vertical',
@@ -36,5 +42,7 @@ export const BAR_CHART_KNOBS: ComponentKnobs = {
     showValues: false,
     showGrid: true,
     showLegend: true,
+    showAxisBreak: true,
+    xLabelOrientation: 'horizontal',
   },
 };

@@ -68,11 +68,29 @@
           }
           @for (category of layout().categories; track category.index) {
             @if (layout().vertical) {
+              <line
+                class="ea-bar-chart__x-tick"
+                [attr.x1]="category.pos"
+                [attr.x2]="category.pos"
+                [attr.y1]="layout().axisY"
+                [attr.y2]="layout().tickEndY" />
               <text
                 class="ea-bar-chart__axis"
-                text-anchor="middle"
+                [attr.text-anchor]="layout().labelAngle ? 'end' : 'middle'"
+                [attr.dominant-baseline]="layout().labelAngle ? 'central' : null"
+                [attr.transform]="
+                  layout().labelAngle
+                    ? 'rotate(' +
+                      -layout().labelAngle +
+                      ' ' +
+                      category.pos +
+                      ' ' +
+                      layout().labelY +
+                      ')'
+                    : null
+                "
                 [attr.x]="category.pos"
-                [attr.y]="layout().top + layout().plotHeight + layout().axisPx * 1.5">
+                [attr.y]="layout().labelY">
                 {{ category.text }}
               </text>
             } @else {
@@ -93,6 +111,14 @@
               [style.--ea-chart-color]="bar.color"
               [style.--ea-chart-delay]="bar.delay + 'ms'"
               [attr.d]="bar.path" />
+          }
+          @if (layout().axisBreak; as axisBreak) {
+            <path
+              class="ea-bar-chart__y-axis"
+              [attr.d]="axisBreak.axis" />
+            <path
+              class="ea-bar-chart__axis-break"
+              [attr.d]="axisBreak.slashes" />
           }
           @if (layout().vertical) {
             <line
@@ -151,29 +177,32 @@
           </div>
         }
       </ng-template>
-      <table class="ea-bar-chart__table">
-        <caption>
-          {{ label() }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ i18n.messages().chart.category }}</th>
-            @for (s of series(); track $index) {
-              <th scope="col">{{ s.name }}</th>
-            }
-          </tr>
-        </thead>
-        <tbody>
-          @for (row of labels(); track $index; let i = $index) {
+      <!-- Hidden through a block, since a table ignores the 1px size and keeps its full height -->
+      <div class="ea-bar-chart__table">
+        <table>
+          <caption>
+            {{ label() }}
+          </caption>
+          <thead>
             <tr>
-              <th scope="row">{{ row }}</th>
+              <th scope="col">{{ i18n.messages().chart.category }}</th>
               @for (s of series(); track $index) {
-                <td>{{ tableValue(s.data[i]) }}</td>
+                <th scope="col">{{ s.name }}</th>
               }
             </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (row of labels(); track $index; let i = $index) {
+              <tr>
+                <th scope="row">{{ row }}</th>
+                @for (s of series(); track $index) {
+                  <td>{{ tableValue(s.data[i]) }}</td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
     <div
       class="ea-bar-chart__live"
