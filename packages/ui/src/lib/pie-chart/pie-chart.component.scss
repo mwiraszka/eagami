@@ -1,0 +1,114 @@
+@use '../../styles/mixins' as ea;
+@use '../chart/chart' as chart;
+
+@property --ea-pie-chart-sweep {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 360deg;
+}
+
+ea-pie-chart {
+  display: block;
+}
+
+.ea-pie-chart {
+  @include chart.chart-base;
+
+  &__plot {
+    @include chart.chart-plot;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__figure {
+    position: relative;
+  }
+
+  &__svg {
+    display: block;
+    touch-action: pan-y;
+  }
+
+  &__slice {
+    stroke: var(--ea-chart-surface, var(--color-bg-base));
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    fill: var(--ea-chart-color);
+    transition:
+      opacity var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+
+    &--dimmed {
+      @include chart.chart-dimmed;
+    }
+  }
+
+  &__tooltip {
+    @include chart.chart-tooltip;
+  }
+
+  &__anchor {
+    @include chart.chart-anchor;
+  }
+
+  &__tooltip-title {
+    @include chart.chart-tooltip-title;
+  }
+
+  &__tooltip-row {
+    @include chart.chart-tooltip-row;
+  }
+
+  &__tooltip-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__swatch {
+    @include chart.chart-swatch;
+  }
+
+  &__legend {
+    @include chart.chart-legend;
+  }
+
+  &__legend-item {
+    @include chart.chart-legend-item;
+  }
+
+  &__legend-percent {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-tertiary);
+  }
+
+  &__table,
+  &__live {
+    @include ea.visually-hidden;
+  }
+
+  &__empty {
+    @include chart.chart-empty;
+  }
+
+  // The mask only reads alpha, so any opaque color reveals the slices
+  &--animate-sweep .ea-pie-chart__svg {
+    mask-image: conic-gradient(currentColor var(--ea-pie-chart-sweep), transparent 0);
+    animation-name: ea-pie-chart-sweep;
+    @include chart.chart-motion;
+  }
+
+  &--animate-grow .ea-pie-chart__svg {
+    animation-name: ea-chart-grow;
+    @include chart.chart-motion;
+  }
+
+  &--animate-fade .ea-pie-chart__svg {
+    animation-name: ea-chart-fade;
+    @include chart.chart-motion;
+  }
+}
+
+@keyframes ea-pie-chart-sweep {
+  from {
+    --ea-pie-chart-sweep: 0deg;
+  }
+}

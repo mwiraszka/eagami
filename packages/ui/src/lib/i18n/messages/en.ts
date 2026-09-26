@@ -26,6 +26,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'Breadcrumb',
   },
+  chart: {
+    roleDescription: 'chart',
+    lineChart: 'Line chart',
+    barChart: 'Bar chart',
+    pieChart: 'Pie chart',
+    category: 'Category',
+    value: 'Value',
+    share: 'Share',
+    noData: 'No data',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Verification code, ${length} digits`,
     digitLabel: (index, length) => `Digit ${index} of ${length}`,

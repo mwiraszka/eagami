@@ -1,0 +1,171 @@
+@use '../../styles/mixins' as ea;
+
+// Shared chrome for the line, bar, and pie charts: sizing, the focusable plot,
+// the tooltip, the legend, and the screen-reader data table.
+@mixin chart-base {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
+
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@mixin chart-plot {
+  position: relative;
+  border-radius: var(--radius-md);
+  outline: none;
+
+  &:focus-visible {
+    @include ea.focus-ring;
+  }
+
+  svg {
+    display: block;
+    overflow: visible;
+  }
+}
+
+@mixin chart-axis {
+  font-size: 0.75em;
+  fill: var(--color-text-secondary);
+}
+
+@mixin chart-grid-line {
+  stroke: var(--color-divider);
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+@mixin chart-baseline {
+  stroke: var(--color-border-strong);
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+// Content laid out inside the shared `ea-tooltip` bubble, which supplies the
+// surface, type, and placement
+@mixin chart-tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+@mixin chart-anchor {
+  fill: transparent;
+}
+
+@mixin chart-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+@mixin chart-tooltip-title {
+  font-weight: var(--font-weight-medium);
+}
+
+@mixin chart-swatch {
+  flex-shrink: 0;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: var(--radius-sm);
+  background-color: var(--ea-chart-color);
+}
+
+@mixin chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.375em 1em;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875em;
+  list-style: none;
+  color: var(--color-text-secondary);
+}
+
+@mixin chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375em;
+}
+
+@mixin chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875em;
+  color: var(--color-text-tertiary);
+}
+
+@mixin chart-dimmed {
+  opacity: 0.35;
+}
+
+// Every entrance keyframe animates from its start state to the element's
+// resting styles, so `animation: none` (reduced motion, or no animation)
+// simply shows the finished chart
+@mixin chart-motion {
+  animation-duration: var(--ea-chart-duration, 600ms);
+  animation-timing-function: var(--ease-out);
+  animation-fill-mode: both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes ea-chart-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ea-chart-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes ea-chart-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes ea-chart-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes ea-chart-grow {
+  from {
+    transform: scale(0);
+  }
+}

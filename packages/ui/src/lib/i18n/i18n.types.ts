@@ -103,6 +103,23 @@ export interface EagamiMessages {
   breadcrumbs: {
     label: string;
   };
+  chart: {
+    /** Announced role of a chart's plot, in place of the generic "group". */
+    roleDescription: string;
+    lineChart: string;
+    barChart: string;
+    pieChart: string;
+    /** Header of the data table's label column. */
+    category: string;
+    value: string;
+    /** Header of a pie chart's percentage column. */
+    share: string;
+    noData: string;
+    /** Announces the highlighted point of a line or bar chart. */
+    point: (series: string, label: string, value: string) => string;
+    /** Announces the highlighted slice of a pie chart. */
+    slice: (label: string, value: string, percent: string) => string;
+  };
   codeInput: {
     groupLabel: (length: number) => string;
     digitLabel: (index: number, length: number) => string;

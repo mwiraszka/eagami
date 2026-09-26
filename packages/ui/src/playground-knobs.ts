@@ -4,6 +4,7 @@ import { AUTOCOMPLETE_KNOBS } from './lib/autocomplete/autocomplete.component.kn
 import { AVATAR_EDITOR_KNOBS } from './lib/avatar-editor/avatar-editor.component.knobs';
 import { AVATAR_KNOBS } from './lib/avatar/avatar.component.knobs';
 import { BADGE_KNOBS } from './lib/badge/badge.component.knobs';
+import { BAR_CHART_KNOBS } from './lib/bar-chart/bar-chart.component.knobs';
 import { BREADCRUMBS_KNOBS } from './lib/breadcrumbs/breadcrumbs.component.knobs';
 import { BUTTON_KNOBS } from './lib/button/button.component.knobs';
 import { CARD_KNOBS } from './lib/card/card.component.knobs';
@@ -22,10 +23,12 @@ import { EMPTY_STATE_KNOBS } from './lib/empty-state/empty-state.component.knobs
 import { FORM_FIELD_KNOBS } from './lib/field/form-field.component.knobs';
 import { FILE_UPLOADER_KNOBS } from './lib/file-uploader/file-uploader.component.knobs';
 import { INPUT_KNOBS } from './lib/input/input.component.knobs';
+import { LINE_CHART_KNOBS } from './lib/line-chart/line-chart.component.knobs';
 import { MENU_KNOBS } from './lib/menu/menu.component.knobs';
 import { MULTI_SELECT_KNOBS } from './lib/multi-select/multi-select.component.knobs';
 import { NUMBER_INPUT_KNOBS } from './lib/number-input/number-input.component.knobs';
 import { PAGINATOR_KNOBS } from './lib/paginator/paginator.component.knobs';
+import { PIE_CHART_KNOBS } from './lib/pie-chart/pie-chart.component.knobs';
 import { POPOVER_KNOBS } from './lib/popover/popover.component.knobs';
 import { PROGRESS_BAR_KNOBS } from './lib/progress-bar/progress-bar.component.knobs';
 import { RADIO_KNOBS } from './lib/radio/radio.component.knobs';
@@ -68,6 +71,7 @@ export const PLAYGROUND_KNOBS = {
   avatar: AVATAR_KNOBS,
   'avatar-editor': AVATAR_EDITOR_KNOBS,
   badge: BADGE_KNOBS,
+  'bar-chart': BAR_CHART_KNOBS,
   breadcrumbs: BREADCRUMBS_KNOBS,
   button: BUTTON_KNOBS,
   card: CARD_KNOBS,
@@ -86,10 +90,12 @@ export const PLAYGROUND_KNOBS = {
   'file-uploader': FILE_UPLOADER_KNOBS,
   'form-field': FORM_FIELD_KNOBS,
   input: INPUT_KNOBS,
+  'line-chart': LINE_CHART_KNOBS,
   menu: MENU_KNOBS,
   'multi-select': MULTI_SELECT_KNOBS,
   'number-input': NUMBER_INPUT_KNOBS,
   paginator: PAGINATOR_KNOBS,
+  'pie-chart': PIE_CHART_KNOBS,
   popover: POPOVER_KNOBS,
   'progress-bar': PROGRESS_BAR_KNOBS,
   radio: RADIO_KNOBS,

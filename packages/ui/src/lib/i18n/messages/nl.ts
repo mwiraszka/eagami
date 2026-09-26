@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'Broodkruimelnavigatie',
   },
+  chart: {
+    roleDescription: 'grafiek',
+    lineChart: 'Lijndiagram',
+    barChart: 'Staafdiagram',
+    pieChart: 'Cirkeldiagram',
+    category: 'Categorie',
+    value: 'Waarde',
+    share: 'Aandeel',
+    noData: 'Geen gegevens',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Verificatiecode, ${length} cijfers`,
     digitLabel: (index, length) => `Cijfer ${index} van ${length}`,

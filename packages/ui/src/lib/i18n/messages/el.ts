@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'Διαδρομή πλοήγησης',
   },
+  chart: {
+    roleDescription: 'γράφημα',
+    lineChart: 'Γράφημα γραμμών',
+    barChart: 'Ραβδόγραμμα',
+    pieChart: 'Κυκλικό διάγραμμα',
+    category: 'Κατηγορία',
+    value: 'Τιμή',
+    share: 'Μερίδιο',
+    noData: 'Δεν υπάρχουν δεδομένα',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Κωδικός επαλήθευσης, ${length} ψηφία`,
     digitLabel: (index, length) => `Ψηφίο ${index} από ${length}`,

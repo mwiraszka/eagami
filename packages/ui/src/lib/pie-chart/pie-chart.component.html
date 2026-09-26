@@ -1,0 +1,118 @@
+<div
+  class="ea-pie-chart"
+  [ngClass]="hostClasses()"
+  [style.--ea-chart-duration]="animationDuration() + 'ms'">
+  @if (hasData()) {
+    <div
+      class="ea-pie-chart__plot"
+      role="group"
+      tabindex="0"
+      [attr.aria-roledescription]="i18n.messages().chart.roleDescription"
+      [attr.aria-label]="label()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (keydown)="onKeydown($event)">
+      <div class="ea-pie-chart__figure">
+        @for (pass of renderPass(); track pass) {
+          <svg
+            class="ea-pie-chart__svg"
+            aria-hidden="true"
+            [attr.width]="layout().diameter"
+            [attr.height]="layout().diameter"
+            [attr.viewBox]="'0 0 ' + layout().diameter + ' ' + layout().diameter"
+            (pointermove)="onPointerMove($event)"
+            (pointerdown)="onPointerMove($event)"
+            (pointerleave)="onPointerLeave()"
+            (click)="onClick()">
+            @for (slice of layout().slices; track slice.index) {
+              <path
+                class="ea-pie-chart__slice"
+                fill-rule="evenodd"
+                [class.ea-pie-chart__slice--dimmed]="isDimmed(slice.index)"
+                [style.--ea-chart-color]="slice.color"
+                [style.transform]="offset(slice)"
+                [attr.d]="slice.path" />
+            }
+            @for (tip of tooltips(); track tip.key) {
+              <rect
+                class="ea-pie-chart__anchor"
+                width="2"
+                height="2"
+                [attr.x]="tip.x - 1"
+                [attr.y]="tip.y - 1"
+                [eaTooltip]="tooltipContent"
+                [tooltipOpen]="true"
+                [maxWidth]="undefined" />
+            }
+          </svg>
+        }
+        <ng-template #tooltipContent>
+          @if (tooltip(); as tip) {
+            <div class="ea-pie-chart__tooltip">
+              <span class="ea-pie-chart__tooltip-row">
+                <span
+                  class="ea-pie-chart__swatch"
+                  [style.--ea-chart-color]="tip.color">
+                </span>
+                <span class="ea-pie-chart__tooltip-title">{{ tip.title }}</span>
+              </span>
+              <span class="ea-pie-chart__tooltip-value">{{ tip.detail }}</span>
+            </div>
+          }
+        </ng-template>
+      </div>
+      <table class="ea-pie-chart__table">
+        <caption>
+          {{ label() }}
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ i18n.messages().chart.category }}</th>
+            <th scope="col">{{ i18n.messages().chart.value }}</th>
+            <th scope="col">{{ i18n.messages().chart.share }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (slice of data(); track $index; let i = $index) {
+            <tr>
+              <th scope="row">{{ slice.label }}</th>
+              <td>{{ tableValue(slice) }}</td>
+              <td>{{ tablePercent(i) }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="ea-pie-chart__live"
+      aria-live="polite">
+      {{ announcement() }}
+    </div>
+  } @else {
+    <div
+      class="ea-pie-chart__empty"
+      role="img"
+      [attr.aria-label]="label()"
+      [style.height.px]="height()">
+      {{ i18n.messages().chart.noData }}
+    </div>
+  }
+  @if (showLegend() && hasData()) {
+    <ul
+      class="ea-pie-chart__legend"
+      aria-hidden="true">
+      @for (item of legend(); track $index) {
+        <li class="ea-pie-chart__legend-item">
+          <span
+            class="ea-pie-chart__swatch"
+            [style.--ea-chart-color]="item.color">
+          </span>
+          {{ item.label }}
+          @if (showPercentages()) {
+            <span class="ea-pie-chart__legend-percent">{{ item.percent }}</span>
+          }
+        </li>
+      }
+    </ul>
+  }
+</div>

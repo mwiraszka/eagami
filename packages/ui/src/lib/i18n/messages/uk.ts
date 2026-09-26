@@ -27,6 +27,18 @@ const messages: EagamiMessages = {
   breadcrumbs: {
     label: 'Навігаційний ланцюжок',
   },
+  chart: {
+    roleDescription: 'діаграма',
+    lineChart: 'Лінійний графік',
+    barChart: 'Стовпчикова діаграма',
+    pieChart: 'Кругова діаграма',
+    category: 'Категорія',
+    value: 'Значення',
+    share: 'Частка',
+    noData: 'Немає даних',
+    point: (series, label, value) => `${series}, ${label}: ${value}`,
+    slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+  },
   codeInput: {
     groupLabel: length => `Код підтвердження, ${length} цифр`,
     digitLabel: (index, length) => `Цифра ${index} з ${length}`,
