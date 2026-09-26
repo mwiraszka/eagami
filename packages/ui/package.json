@@ -84,7 +84,7 @@
     "@storybook/angular": "10.6.0",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/node": "26.6.2",
-    "@vitest/coverage-v8": "4.1.11",
+    "@vitest/coverage-v8": "5.0.1",
     "chromatic": "18.9.4",
     "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
