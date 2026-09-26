@@ -5,6 +5,19 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.24.0] - 2026-09-27
+
+### Added
+
+- Add editable data to the line chart demo, plotting daily visitors at their dates against month ticks in a pannable, pinch-zoomable window, where points and ticks can be added, changed and removed.
+- Add editable categories and values to the bar chart demo, and editable slices to the pie chart demo, each with add and remove controls.
+- Add axis break and x-axis label orientation controls to the line and bar chart demos, with every new input described in the API reference in every locale.
+- Add an item icon picker to the accordion demo, with the new input described in the API reference in every locale.
+
+### Changed
+
+- Pick up @eagami/ui v5.52.0.
+
 ## [3.23.0] - 2026-09-26
 
 ### Added
@@ -1446,6 +1459,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.24.0]: https://github.com/mwiraszka/eagami/compare/website-v3.23.0...website-v3.24.0
 [3.23.0]: https://github.com/mwiraszka/eagami/compare/website-v3.22.2...website-v3.23.0
 [3.22.2]: https://github.com/mwiraszka/eagami/compare/website-v3.22.1...website-v3.22.2
 [3.22.1]: https://github.com/mwiraszka/eagami/compare/website-v3.22.0...website-v3.22.1
