@@ -1084,7 +1084,6 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
-          accordion: { icon: '项目图标' },
           'bar-chart': {
             orientation: '方向',
             size: '尺寸',

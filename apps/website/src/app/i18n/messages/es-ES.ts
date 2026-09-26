@@ -1125,7 +1125,6 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
-          accordion: { icon: 'Icono del elemento' },
           'bar-chart': {
             orientation: 'Orientación',
             size: 'Tamaño',

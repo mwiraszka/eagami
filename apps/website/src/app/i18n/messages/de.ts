@@ -1128,7 +1128,6 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
-          accordion: { icon: 'Eintrags-Icon' },
           'bar-chart': {
             orientation: 'Ausrichtung',
             size: 'Größe',

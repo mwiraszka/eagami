@@ -1120,7 +1120,6 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
-          accordion: { icon: 'Ícone do item' },
           'bar-chart': {
             orientation: 'Orientação',
             size: 'Tamanho',

@@ -1121,7 +1121,6 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
-          accordion: { icon: 'Tákn atriðis' },
           'bar-chart': {
             orientation: 'Stefna',
             size: 'Stærð',

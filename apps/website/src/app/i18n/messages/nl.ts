@@ -1120,7 +1120,6 @@ export const nl: WebMessages = {
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
-          accordion: { icon: 'Itempictogram' },
           'bar-chart': {
             orientation: 'Oriëntatie',
             size: 'Grootte',

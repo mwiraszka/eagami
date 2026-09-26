@@ -1107,7 +1107,6 @@ export const hi: WebMessages = {
         twoWayBadge: 'दो-तरफ़ा',
         rangeHint: { between: 'से', min: 'न्यूनतम', max: 'अधिकतम' },
         knobLabels: {
-          accordion: { icon: 'आइटम आइकन' },
           'bar-chart': {
             orientation: 'अभिविन्यास',
             size: 'आकार',

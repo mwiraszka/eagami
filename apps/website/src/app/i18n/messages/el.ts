@@ -1131,7 +1131,6 @@ export const el: WebMessages = {
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },
         knobLabels: {
-          accordion: { icon: 'Εικονίδιο στοιχείου' },
           'bar-chart': {
             orientation: 'Προσανατολισμός',
             size: 'Μέγεθος',

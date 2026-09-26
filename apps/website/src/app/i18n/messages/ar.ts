@@ -1103,7 +1103,6 @@ export const ar: WebMessages = {
         twoWayBadge: 'ثنائي الاتجاه',
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
-          accordion: { icon: 'أيقونة العنصر' },
           'bar-chart': {
             orientation: 'الاتجاه',
             size: 'الحجم',

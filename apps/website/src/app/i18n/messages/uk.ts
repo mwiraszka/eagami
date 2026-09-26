@@ -1114,7 +1114,6 @@ export const uk: WebMessages = {
         twoWayBadge: 'двостороннє',
         rangeHint: { between: 'до', min: 'Мін', max: 'Макс' },
         knobLabels: {
-          accordion: { icon: 'Значок елемента' },
           'bar-chart': {
             orientation: 'Орієнтація',
             size: 'Розмір',

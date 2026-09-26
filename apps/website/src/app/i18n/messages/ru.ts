@@ -1114,7 +1114,6 @@ export const ru: WebMessages = {
         twoWayBadge: 'двусторонняя',
         rangeHint: { between: 'до', min: 'Мин', max: 'Макс' },
         knobLabels: {
-          accordion: { icon: 'Значок элемента' },
           'bar-chart': {
             orientation: 'Ориентация',
             size: 'Размер',

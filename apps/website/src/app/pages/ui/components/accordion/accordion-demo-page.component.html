@@ -18,7 +18,7 @@
         <ea-accordion-item
           [value]="'item-' + item.id"
           [label]="item.heading"
-          [icon]="itemIcon()"
+          [icon]="iconFor(item.icon)"
           [disabled]="item.disabled">
           {{ item.content }}
         </ea-accordion-item>
@@ -40,6 +40,11 @@
             [placeholder]="messages().ui.component.common.content"
             [value]="item.content"
             (valueChange)="updateItem(item.id, { content: $event })" />
+          <ea-dropdown
+            class="demo-item-row__icon-picker"
+            [options]="iconOptions"
+            [value]="item.icon"
+            (changed)="updateItem(item.id, { icon: $event })" />
           <ea-checkbox
             [label]="messages().ui.component.common.disabled"
             [checked]="item.disabled"

@@ -1096,7 +1096,6 @@ export const he: WebMessages = {
         twoWayBadge: 'דו-כיווני',
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
-          accordion: { icon: 'סמל הפריט' },
           'bar-chart': {
             orientation: 'כיוון',
             size: 'גודל',
