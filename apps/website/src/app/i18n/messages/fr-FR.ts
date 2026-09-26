@@ -1090,17 +1090,27 @@ export const frFR: WebMessages = {
           software: 'Logiciels',
           services: 'Services',
           quarters: ['T1', 'T2', 'T3', 'T4'],
+          categories: 'Catégories',
+          category: 'Catégorie',
         },
         lineChart: {
           visitors: 'Visiteurs',
           signUps: 'Inscriptions',
           months: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août'],
+          points: 'Points',
+          ticks: "Graduations de l'axe X",
+          xPosition: 'Position X',
+          value: 'Valeur',
+          tooltipTitle: "Titre de l'infobulle",
         },
         pieChart: {
           desktop: 'Ordinateur',
           mobile: 'Mobile',
           tablet: 'Tablette',
           other: 'Autre',
+          slices: 'Parts',
+          slice: 'Part',
+          value: 'Valeur',
         },
       },
       playground: {
@@ -1124,6 +1134,7 @@ export const frFR: WebMessages = {
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
+          accordion: { icon: 'Icône de l’élément' },
           'bar-chart': {
             orientation: 'Orientation',
             size: 'Taille',
@@ -1134,6 +1145,8 @@ export const frFR: WebMessages = {
             showValues: 'Afficher les valeurs',
             showGrid: 'Afficher la grille',
             showLegend: 'Afficher la légende',
+            showAxisBreak: "Afficher la rupture d'axe",
+            xLabelOrientation: "Orientation des libellés de l'axe x",
           },
           'line-chart': {
             curve: 'Courbe',
@@ -1145,6 +1158,9 @@ export const frFR: WebMessages = {
             showPoints: 'Afficher les points',
             showGrid: 'Afficher la grille',
             showLegend: 'Afficher la légende',
+            showAxisBreak: "Afficher la rupture d'axe",
+            xLabelOrientation: "Orientation des libellés de l'axe x",
+            visibleXSpan: 'Plage x visible',
           },
           'pie-chart': {
             variant: 'Variante',
@@ -1419,11 +1435,26 @@ export const frFR: WebMessages = {
               'Émis lorsqu’une barre est cliquée, ou choisie avec Entrée ou Espace.',
             activePointChange:
               'Émis lorsque la barre mise en évidence change via le pointeur ou le clavier, avec null une fois effacée.',
+            showAxisBreak:
+              "Dans un graphique vertical aux valeurs toutes positives, fait partir l'axe des valeurs près de la barre la plus courte plutôt que de zéro et signale la coupure par un symbole.",
+            xLabelOrientation:
+              'Disposition des libellés de catégorie sous un graphique vertical : horizontaux, à 45 degrés, à 90 degrés ou automatique, qui les tourne de 45 puis 90 degrés quand ils se serrent.',
           },
           'line-chart': {
-            labels: 'Libellés de catégorie le long de l’axe des x, un par valeur.',
+            labels:
+              'Nom de chaque point, un par valeur, qui titre son infobulle et sa ligne du tableau de données ; libelle aussi l’axe des x sauf si xTicks est défini.',
             series:
               'Les séries à tracer, chacune avec un nom, une valeur par libellé (null laisse un vide) et une couleur facultative.',
+            xValues:
+              'Position de chaque point le long de l’axe des x, une par valeur dans l’ordre croissant, pour que les points soient espacés proportionnellement ; répartis régulièrement par index si non définie.',
+            xTicks:
+              'Repères libellés tracés le long de l’axe des x à la place des libellés par point, chacun à sa valeur sur l’échelle x ; ils n’ont pas à coïncider avec un point. L’axe s’élargit pour inclure les graduations situées au-delà des points.',
+            showAxisBreak:
+              "Signale par un symbole de rupture le pied d'un axe y qui ne descend pas jusqu'à zéro.",
+            xLabelOrientation:
+              "Disposition des libellés de l'axe x : horizontaux, à 45 degrés, à 90 degrés ou automatique, qui les garde horizontaux tant qu'ils tiennent puis les tourne de 45 puis 90 degrés quand ils se serrent.",
+            visibleXSpan:
+              'Largeur de la plage x affichée à la fois, dans les unités de xValues (ou des index) ; des données plus longues s’ouvrent sur leur partie la plus récente et se déplacent au pavé tactile, avec Maj + molette, par glisser ou aux flèches, l’axe des y s’ajustant aux points visibles. Un pincement sur le trackpad ou Ctrl + molette élargit ou resserre la fenêtre.',
             curve: 'Manière dont la ligne s’incurve entre les points.',
             showArea: 'Remplit l’aire sous chaque ligne d’un léger voile de sa couleur.',
             showPoints: 'Marque chaque valeur d’un point.',
@@ -1445,6 +1476,8 @@ export const frFR: WebMessages = {
               'Émis lorsqu’un point est cliqué, ou choisi avec Entrée ou Espace.',
             activePointChange:
               'Émis lorsque le point mis en évidence change via le pointeur ou le clavier, avec null une fois effacé.',
+            visibleRangeChange:
+              'Émis avec le début et la fin de la plage x visible chaque fois qu’un graphique fenêtré se déplace. Se déclenche aussi lors d’un zoom sur la fenêtre.',
           },
           'pie-chart': {
             data: 'Les parts à dessiner dans le sens horaire à partir de midi, chacune avec un libellé, une valeur et une couleur facultative.',
@@ -2313,6 +2346,7 @@ export const frFR: WebMessages = {
               'Émis lorsque le popover demande à être fermé ; le parent doit répercuter cela dans [open].',
           },
           'accordion-item': {
+            icon: 'Composant d’icône affiché avant le libellé dans le bouton d’en-tête de l’élément, dimensionné avec l’élément et masqué aux technologies d’assistance.',
             disabled: 'Désactive cet élément et empêche son ouverture/fermeture.',
             id: 'id appliqué au bouton d’en-tête et au panneau de l’élément, généré automatiquement si omis.',
             label: 'Texte affiché dans le bouton d’en-tête de l’élément.',

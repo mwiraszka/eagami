@@ -13,6 +13,9 @@
       class="playground-fill"
       [labels]="labels()"
       [series]="series()"
+      [xValues]="xValues()"
+      [xTicks]="xTicks()"
+      [visibleXSpan]="state().visibleXSpan"
       [curve]="state().curve"
       [size]="state().size"
       [animation]="state().animation"
@@ -21,6 +24,88 @@
       [showArea]="state().showArea"
       [showPoints]="state().showPoints"
       [showGrid]="state().showGrid"
-      [showLegend]="state().showLegend" />
+      [showLegend]="state().showLegend"
+      [showAxisBreak]="state().showAxisBreak"
+      [xLabelOrientation]="state().xLabelOrientation" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.lineChart.points }}
+      </h3>
+      @for (point of points(); track point.id) {
+        <div class="demo-item-row">
+          <ea-input
+            [placeholder]="messages().ui.component.demos.lineChart.xPosition"
+            [value]="'' + point.x"
+            (valueChange)="updatePoint(point.id, { x: toNumber($event, point.x) })" />
+          <ea-input
+            [placeholder]="messages().ui.component.demos.lineChart.value"
+            [value]="'' + point.value"
+            (valueChange)="
+              updatePoint(point.id, { value: toNumber($event, point.value) })
+            " />
+          <ea-input
+            class="demo-item-row__grow"
+            [placeholder]="messages().ui.component.demos.lineChart.tooltipTitle"
+            [value]="point.title"
+            (valueChange)="updatePoint(point.id, { title: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
+            (clicked)="removePoint(point.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
+        (clicked)="addPoint()">
+        <ea-icon-plus />
+      </ea-button>
+
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.lineChart.ticks }}
+      </h3>
+      @for (tick of ticks(); track tick.id) {
+        <div class="demo-item-row">
+          <ea-input
+            [placeholder]="messages().ui.component.demos.lineChart.xPosition"
+            [value]="'' + tick.value"
+            (valueChange)="
+              updateTick(tick.id, { value: toNumber($event, tick.value) })
+            " />
+          <ea-input
+            class="demo-item-row__grow"
+            [placeholder]="messages().ui.component.common.label"
+            [value]="tick.label"
+            (valueChange)="updateTick(tick.id, { label: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
+            (clicked)="removeTick(tick.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
+        (clicked)="addTick()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

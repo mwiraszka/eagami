@@ -28,7 +28,9 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { ICON_NONE, iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { iconComponentName } from '../_playground/snippet';
 
 interface AccordionItemModel {
   id: number;
@@ -44,6 +46,7 @@ interface AccordionKnobState {
   size: AccordionSize;
   multi: boolean;
   headingLevel: AccordionHeadingLevel;
+  icon: string;
 }
 
 const SLUG = 'accordion';
@@ -68,10 +71,18 @@ const SLUG = 'accordion';
 export class AccordionDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.accordion, UI_API[SLUG]);
+  // The item icon is an <ea-accordion-item> input, so the snippet carries it on each item
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.accordion, UI_API[SLUG]),
+    iconKnob(['info', 'settings', 'star', 'book', 'package', 'palette'], {
+      demoOnly: true,
+    }),
+  ];
   protected readonly state = signal<AccordionKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.accordion) as AccordionKnobState,
   );
+
+  protected readonly itemIcon = computed(() => iconComponentForSlug(this.state().icon));
 
   private nextId = 1;
   protected readonly items = signal<AccordionItemModel[]>(this.seedItems());
@@ -81,6 +92,10 @@ export class AccordionDemoPageComponent {
     this.items()
       .map(item => {
         const attrs = [`value="item-${item.id}"`, `label="${item.heading}"`];
+        const icon = this.state().icon;
+        if (icon !== ICON_NONE) {
+          attrs.push(`[icon]="${iconComponentName(icon)}"`);
+        }
         if (item.disabled) {
           attrs.push('[disabled]="true"');
         }

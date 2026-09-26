@@ -1081,17 +1081,27 @@ export const esES: WebMessages = {
           software: 'Software',
           services: 'Servicios',
           quarters: ['T1', 'T2', 'T3', 'T4'],
+          categories: 'Categorías',
+          category: 'Categoría',
         },
         lineChart: {
           visitors: 'Visitantes',
           signUps: 'Registros',
           months: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago'],
+          points: 'Puntos',
+          ticks: 'Marcas del eje X',
+          xPosition: 'Posición X',
+          value: 'Valor',
+          tooltipTitle: 'Título de la información',
         },
         pieChart: {
           desktop: 'Escritorio',
           mobile: 'Móvil',
           tablet: 'Tableta',
           other: 'Otros',
+          slices: 'Porciones',
+          slice: 'Porción',
+          value: 'Valor',
         },
       },
       playground: {
@@ -1115,6 +1125,7 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          accordion: { icon: 'Icono del elemento' },
           'bar-chart': {
             orientation: 'Orientación',
             size: 'Tamaño',
@@ -1125,6 +1136,8 @@ export const esES: WebMessages = {
             showValues: 'Mostrar valores',
             showGrid: 'Mostrar cuadrícula',
             showLegend: 'Mostrar leyenda',
+            showAxisBreak: 'Mostrar corte del eje',
+            xLabelOrientation: 'Orientación de las etiquetas del eje x',
           },
           'line-chart': {
             curve: 'Curva',
@@ -1136,6 +1149,9 @@ export const esES: WebMessages = {
             showPoints: 'Mostrar puntos',
             showGrid: 'Mostrar cuadrícula',
             showLegend: 'Mostrar leyenda',
+            showAxisBreak: 'Mostrar corte del eje',
+            xLabelOrientation: 'Orientación de las etiquetas del eje x',
+            visibleXSpan: 'Rango x visible',
           },
           'pie-chart': {
             variant: 'Variante',
@@ -1409,11 +1425,26 @@ export const esES: WebMessages = {
               'Se emite cuando se hace clic en una barra o se elige con Intro o Espacio.',
             activePointChange:
               'Se emite cuando la barra resaltada cambia mediante el puntero o el teclado, con null al borrarse.',
+            showAxisBreak:
+              'En un gráfico vertical con todos los valores positivos, empieza el eje de valores cerca de la barra más corta en lugar de en cero y marca el corte con un símbolo.',
+            xLabelOrientation:
+              'Cómo se colocan las etiquetas de categoría bajo un gráfico vertical: horizontales, a 45 grados, a 90 grados o en automático, que las gira 45 y luego 90 grados cuando se amontonan.',
           },
           'line-chart': {
-            labels: 'Etiquetas de categoría a lo largo del eje x, una por valor.',
+            labels:
+              'Nombre de cada punto, uno por valor, que titula su tooltip y su fila en la tabla de datos; también rotula el eje x salvo que se defina xTicks.',
             series:
               'Las series que se representan, cada una con un nombre, un valor por etiqueta (null deja un hueco) y un color opcional.',
+            xValues:
+              'Posición de cada punto a lo largo del eje x, una por valor en orden ascendente, para que los puntos queden a distancias proporcionales; sin definir, se reparten por índice.',
+            xTicks:
+              'Marcas con etiqueta a lo largo del eje x en lugar de las etiquetas de cada punto, cada una en su valor de la escala x; no tienen por qué coincidir con ningún punto. El eje se amplía para incluir las marcas que queden fuera de los puntos.',
+            showAxisBreak:
+              'Marca con un símbolo de corte la base de un eje y que no llega a cero.',
+            xLabelOrientation:
+              'Cómo se colocan las etiquetas del eje x: horizontales, a 45 grados, a 90 grados o en automático, que las mantiene horizontales mientras caben y las gira 45 y luego 90 grados cuando se amontonan.',
+            visibleXSpan:
+              'Anchura del rango x visible a la vez, en las unidades de xValues (o de índices); con más datos, el gráfico se abre en el tramo más reciente y se desplaza con el trackpad, Mayús + rueda, arrastrando o con las flechas, ajustando el eje y a los puntos visibles. Pellizcar el trackpad o Ctrl + rueda amplía o reduce la ventana.',
             curve: 'Cómo se curva la línea entre los puntos.',
             showArea: 'Rellena el área bajo cada línea con un tono suave de su color.',
             showPoints: 'Marca cada valor con un punto.',
@@ -1434,6 +1465,8 @@ export const esES: WebMessages = {
               'Se emite cuando se hace clic en un punto o se elige con Intro o Espacio.',
             activePointChange:
               'Se emite cuando el punto resaltado cambia mediante el puntero o el teclado, con null al borrarse.',
+            visibleRangeChange:
+              'Se emite con el inicio y el fin del rango x visible cada vez que se desplaza un gráfico con ventana. También se emite al hacer zoom en la ventana.',
           },
           'pie-chart': {
             data: 'Los sectores que se dibujan en el sentido de las agujas del reloj desde las doce, cada uno con una etiqueta, un valor y un color opcional.',
@@ -2332,6 +2365,7 @@ export const esES: WebMessages = {
               'Se emite cuando el popover solicita cerrarse; el padre debe reflejarlo en [open].',
           },
           'accordion-item': {
+            icon: 'Componente de icono mostrado antes de la etiqueta en el botón de cabecera del elemento, escalado con el elemento y oculto a las tecnologías de asistencia.',
             disabled: 'Deshabilita este elemento, impidiendo que se pueda alternar.',
             id: 'id aplicado al botón de encabezado y al panel del elemento, generado automáticamente si se omite.',
             label: 'Texto mostrado en el botón de encabezado del elemento.',

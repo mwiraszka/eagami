@@ -19,5 +19,45 @@
       [height]="state().height"
       [showLegend]="state().showLegend"
       [showPercentages]="state().showPercentages" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.pieChart.slices }}
+      </h3>
+      @for (slice of slices(); track slice.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            [placeholder]="messages().ui.component.common.label"
+            [value]="slice.label"
+            (valueChange)="updateSlice(slice.id, { label: $event })" />
+          <ea-input
+            [placeholder]="messages().ui.component.demos.pieChart.value"
+            [value]="'' + slice.value"
+            (valueChange)="
+              updateSlice(slice.id, { value: toNumber($event, slice.value) })
+            " />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
+            (clicked)="removeSlice(slice.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
+        (clicked)="addSlice()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

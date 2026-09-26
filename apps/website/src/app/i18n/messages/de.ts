@@ -1084,17 +1084,27 @@ export const de: WebMessages = {
           software: 'Software',
           services: 'Dienstleistungen',
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+          categories: 'Kategorien',
+          category: 'Kategorie',
         },
         lineChart: {
           visitors: 'Besucher',
           signUps: 'Registrierungen',
           months: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.'],
+          points: 'Punkte',
+          ticks: 'X-Achsen-Markierungen',
+          xPosition: 'X-Position',
+          value: 'Wert',
+          tooltipTitle: 'Tooltip-Titel',
         },
         pieChart: {
           desktop: 'Desktop',
           mobile: 'Mobil',
           tablet: 'Tablet',
           other: 'Sonstige',
+          slices: 'Segmente',
+          slice: 'Segment',
+          value: 'Wert',
         },
       },
       playground: {
@@ -1118,6 +1128,7 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
+          accordion: { icon: 'Eintrags-Icon' },
           'bar-chart': {
             orientation: 'Ausrichtung',
             size: 'Größe',
@@ -1128,6 +1139,8 @@ export const de: WebMessages = {
             showValues: 'Werte anzeigen',
             showGrid: 'Raster anzeigen',
             showLegend: 'Legende anzeigen',
+            showAxisBreak: 'Achsenbruch anzeigen',
+            xLabelOrientation: 'Ausrichtung der x-Achsenbeschriftung',
           },
           'line-chart': {
             curve: 'Kurve',
@@ -1139,6 +1152,9 @@ export const de: WebMessages = {
             showPoints: 'Punkte anzeigen',
             showGrid: 'Raster anzeigen',
             showLegend: 'Legende anzeigen',
+            showAxisBreak: 'Achsenbruch anzeigen',
+            xLabelOrientation: 'Ausrichtung der x-Achsenbeschriftung',
+            visibleXSpan: 'Sichtbare x-Spanne',
           },
           'pie-chart': {
             variant: 'Variante',
@@ -1411,11 +1427,26 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn ein Balken angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
             activePointChange:
               'Wird ausgelöst, wenn sich der hervorgehobene Balken per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+            showAxisBreak:
+              'Beginnt in einem vertikalen Diagramm mit ausschließlich positiven Werten die Werteachse nahe dem kürzesten Balken statt bei null und kennzeichnet den Schnitt mit einem Bruchsymbol.',
+            xLabelOrientation:
+              'Wie die Kategoriebeschriftungen unter einem vertikalen Diagramm stehen: waagerecht, um 45 Grad, um 90 Grad oder automatisch, also um 45, dann 90 Grad gedreht, wenn es eng wird.',
           },
           'line-chart': {
-            labels: 'Kategoriebeschriftungen entlang der x-Achse, eine pro Wert.',
+            labels:
+              'Name jedes Punkts, einer pro Wert, als Titel seines Tooltips und seiner Zeile in der Datentabelle; beschriftet auch die x-Achse, sofern xTicks nicht gesetzt ist.',
             series:
               'Die darzustellenden Reihen, jeweils mit einem Namen, einem Wert pro Beschriftung (null lässt eine Lücke) und einer optionalen Farbe.',
+            xValues:
+              'Position jedes Punkts auf der x-Achse, einer pro Wert in aufsteigender Reihenfolge, sodass die Punkte proportional auseinanderliegen; ohne Angabe gleichmäßig nach Index verteilt.',
+            xTicks:
+              'Beschriftete Markierungen entlang der x-Achse anstelle der Punktbeschriftungen, jede an ihrem Wert auf der x-Skala; sie müssen mit keinem Punkt übereinstimmen. Die Achse erweitert sich, um Markierungen außerhalb der Punkte einzuschließen.',
+            showAxisBreak:
+              'Kennzeichnet den Fuß einer y-Achse, die nicht bei null beginnt, mit einem Bruchsymbol.',
+            xLabelOrientation:
+              'Wie die Beschriftungen der x-Achse stehen: waagerecht, um 45 Grad, um 90 Grad oder automatisch, also waagerecht, solange sie passen, und um 45, dann 90 Grad gedreht, wenn es eng wird.',
+            visibleXSpan:
+              'Breite des gleichzeitig sichtbaren x-Bereichs in den Einheiten von xValues (oder von Indizes); längere Daten öffnen beim neuesten Abschnitt und lassen sich per Trackpad, Umschalt + Mausrad, Ziehen oder Pfeiltasten verschieben, wobei sich die y-Achse an die sichtbaren Punkte anpasst. Eine Trackpad-Pinch-Geste oder Strg + Mausrad vergrößert oder verkleinert den Ausschnitt.',
             curve: 'Wie die Linie zwischen den Punkten verläuft.',
             showArea:
               'Füllt die Fläche unter jeder Linie mit einem hellen Schimmer ihrer Farbe.',
@@ -1438,6 +1469,8 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn ein Punkt angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
             activePointChange:
               'Wird ausgelöst, wenn sich der hervorgehobene Punkt per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+            visibleRangeChange:
+              'Wird mit Anfang und Ende des sichtbaren x-Bereichs ausgelöst, wenn ein Diagramm mit Ausschnitt verschoben wird. Wird auch beim Zoomen des Ausschnitts ausgelöst.',
           },
           'pie-chart': {
             data: 'Die Segmente, die im Uhrzeigersinn ab zwölf Uhr gezeichnet werden, jeweils mit einer Beschriftung, einem Wert und einer optionalen Farbe.',
@@ -2331,6 +2364,7 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn das Popover angefordert wird zu schließen; das übergeordnete Element sollte dies in [open] spiegeln.',
           },
           'accordion-item': {
+            icon: 'Icon-Komponente vor der Beschriftung im Header-Button des Eintrags, mit dem Eintrag skaliert und vor Hilfstechnologien verborgen.',
             disabled:
               'Deaktiviert diesen Eintrag und verhindert, dass er umgeschaltet wird.',
             id: 'id, die auf den Header-Button und das Panel des Eintrags angewendet wird, automatisch generiert, wenn weggelassen.',

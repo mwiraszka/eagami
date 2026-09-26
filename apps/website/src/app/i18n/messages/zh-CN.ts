@@ -1041,17 +1041,27 @@ export const zhCN: WebMessages = {
           software: '软件',
           services: '服务',
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+          categories: '类别',
+          category: '类别',
         },
         lineChart: {
           visitors: '访客',
           signUps: '注册',
           months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月'],
+          points: '数据点',
+          ticks: 'X 轴刻度',
+          xPosition: 'X 位置',
+          value: '数值',
+          tooltipTitle: '提示标题',
         },
         pieChart: {
           desktop: '桌面端',
           mobile: '移动端',
           tablet: '平板',
           other: '其他',
+          slices: '扇区',
+          slice: '扇区',
+          value: '数值',
         },
       },
       playground: {
@@ -1074,6 +1084,7 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          accordion: { icon: '项目图标' },
           'bar-chart': {
             orientation: '方向',
             size: '尺寸',
@@ -1084,6 +1095,8 @@ export const zhCN: WebMessages = {
             showValues: '显示数值',
             showGrid: '显示网格',
             showLegend: '显示图例',
+            showAxisBreak: '显示坐标轴断裂',
+            xLabelOrientation: 'x 轴标签方向',
           },
           'line-chart': {
             curve: '曲线',
@@ -1095,6 +1108,9 @@ export const zhCN: WebMessages = {
             showPoints: '显示数据点',
             showGrid: '显示网格',
             showLegend: '显示图例',
+            showAxisBreak: '显示坐标轴断裂',
+            xLabelOrientation: 'x 轴标签方向',
+            visibleXSpan: '可见 x 范围',
           },
           'pie-chart': {
             variant: '变体',
@@ -1360,11 +1376,25 @@ export const zhCN: WebMessages = {
             pointClick: '当点击柱条，或通过 Enter 或空格键选择柱条时触发。',
             activePointChange:
               '当通过指针或键盘改变高亮柱条时触发，清除高亮后传出 null。',
+            showAxisBreak:
+              '在所有值均为正的纵向图表中，让数值轴从最短的柱附近而非零开始，并用断裂符号标出截断处。',
+            xLabelOrientation:
+              '纵向图表下方类别标签的摆放方式：水平、倾斜 45 度、倾斜 90 度，或自动：拥挤时先转 45 度再转 90 度。',
           },
           'line-chart': {
-            labels: '沿 x 轴排列的类别标签，每个值对应一个。',
+            labels:
+              '每个点的名称，每个值一个，用作其提示框和数据表行的标题；未设置 xTicks 时也用作 x 轴标签。',
             series:
               '要绘制的系列，每个系列包含名称、每个标签对应的一个值（null 会留出空缺）以及可选颜色。',
+            xValues:
+              '每个点在 x 轴上的位置，每个值一个且按升序排列，使点之间按比例分布；未设置时按索引均匀分布。',
+            xTicks:
+              '沿 x 轴绘制的带标签刻度，取代逐点标签，每个刻度位于其在 x 刻度上的值处；无需与任何点对齐。 坐标轴会扩展以包含超出数据点范围的刻度。',
+            showAxisBreak: '在未从零开始的 y 轴底部显示断裂符号。',
+            xLabelOrientation:
+              'x 轴标签的摆放方式：水平、倾斜 45 度、倾斜 90 度，或自动：放得下时保持水平，拥挤时先转 45 度再转 90 度。',
+            visibleXSpan:
+              '一次显示的 x 范围宽度，单位与 xValues（或索引）相同；更长的数据会从最新一段打开，并可通过触控板、Shift + 滚轮、拖动或方向键平移，y 轴随可见点自动调整。 在触控板上捏合或按住 Ctrl 滚动滚轮可放宽或收窄窗口。',
             curve: '折线在数据点之间的弯曲方式。',
             showArea: '用各折线颜色的浅色填充其下方区域。',
             showPoints: '用数据点标记每个值。',
@@ -1382,6 +1412,8 @@ export const zhCN: WebMessages = {
             pointClick: '当点击数据点，或通过 Enter 或空格键选择数据点时触发。',
             activePointChange:
               '当通过指针或键盘改变高亮数据点时触发，清除高亮后传出 null。',
+            visibleRangeChange:
+              '带窗口的图表每次平移时触发，携带可见 x 范围的起点和终点。 缩放窗口时也会触发。',
           },
           'pie-chart': {
             data: '从十二点钟方向顺时针绘制的扇区，每个扇区包含标签、数值以及可选颜色。',
@@ -2052,6 +2084,7 @@ export const zhCN: WebMessages = {
             closeRequested: '当浮层请求关闭时触发；父级应将其映射到 [open]。',
           },
           'accordion-item': {
+            icon: '在项目标题按钮中标签之前显示的图标组件，随项目缩放，并对辅助技术隐藏。',
             disabled: '禁用此项，阻止其被切换。',
             id: '应用于该项的页眉按钮和面板的 id，省略时自动生成。',
             label: '显示在该项页眉按钮中的文本。',

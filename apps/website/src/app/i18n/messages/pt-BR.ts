@@ -1076,17 +1076,27 @@ export const ptBR: WebMessages = {
           software: 'Software',
           services: 'Serviços',
           quarters: ['T1', 'T2', 'T3', 'T4'],
+          categories: 'Categorias',
+          category: 'Categoria',
         },
         lineChart: {
           visitors: 'Visitantes',
           signUps: 'Cadastros',
           months: ['jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.', 'jul.', 'ago.'],
+          points: 'Pontos',
+          ticks: 'Marcas do eixo X',
+          xPosition: 'Posição X',
+          value: 'Valor',
+          tooltipTitle: 'Título da dica',
         },
         pieChart: {
           desktop: 'Desktop',
           mobile: 'Celular',
           tablet: 'Tablet',
           other: 'Outros',
+          slices: 'Fatias',
+          slice: 'Fatia',
+          value: 'Valor',
         },
       },
       playground: {
@@ -1110,6 +1120,7 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          accordion: { icon: 'Ícone do item' },
           'bar-chart': {
             orientation: 'Orientação',
             size: 'Tamanho',
@@ -1120,6 +1131,8 @@ export const ptBR: WebMessages = {
             showValues: 'Mostrar valores',
             showGrid: 'Mostrar grade',
             showLegend: 'Mostrar legenda',
+            showAxisBreak: 'Mostrar quebra do eixo',
+            xLabelOrientation: 'Orientação dos rótulos do eixo x',
           },
           'line-chart': {
             curve: 'Curva',
@@ -1131,6 +1144,9 @@ export const ptBR: WebMessages = {
             showPoints: 'Mostrar pontos',
             showGrid: 'Mostrar grade',
             showLegend: 'Mostrar legenda',
+            showAxisBreak: 'Mostrar quebra do eixo',
+            xLabelOrientation: 'Orientação dos rótulos do eixo x',
+            visibleXSpan: 'Intervalo x visível',
           },
           'pie-chart': {
             variant: 'Variante',
@@ -1403,11 +1419,26 @@ export const ptBR: WebMessages = {
               'Dispara quando uma barra é clicada, ou escolhida com Enter ou Espaço.',
             activePointChange:
               'Dispara quando a barra destacada muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+            showAxisBreak:
+              'Em um gráfico vertical só com valores positivos, começa o eixo de valores perto da barra mais curta em vez do zero e marca o corte com um símbolo de quebra.',
+            xLabelOrientation:
+              'Como os rótulos de categoria sob um gráfico vertical ficam: na horizontal, a 45 graus, a 90 graus ou no automático, que os gira 45 e depois 90 graus quando ficam apertados.',
           },
           'line-chart': {
-            labels: 'Rótulos de categoria ao longo do eixo x, um por valor.',
+            labels:
+              'Nome de cada ponto, um por valor, que dá título à sua dica e à sua linha na tabela de dados; também rotula o eixo x, a menos que xTicks esteja definido.',
             series:
               'As séries a plotar, cada uma com um nome, um valor por rótulo (null deixa uma lacuna) e uma cor opcional.',
+            xValues:
+              'Posição de cada ponto ao longo do eixo x, uma por valor em ordem crescente, para que os pontos fiquem proporcionalmente espaçados; sem definição, são distribuídos pelo índice.',
+            xTicks:
+              'Marcas rotuladas ao longo do eixo x no lugar dos rótulos de cada ponto, cada uma no seu valor da escala x; não precisam coincidir com nenhum ponto. O eixo se amplia para incluir as marcações além dos pontos.',
+            showAxisBreak:
+              'Marca com um símbolo de quebra a base de um eixo y que não chega a zero.',
+            xLabelOrientation:
+              'Como os rótulos do eixo x ficam: na horizontal, a 45 graus, a 90 graus ou no automático, que os mantém na horizontal enquanto cabem e os gira 45 e depois 90 graus quando ficam apertados.',
+            visibleXSpan:
+              'Largura do intervalo x exibido de uma vez, nas unidades de xValues (ou de índices); dados mais longos abrem no trecho mais recente e se deslocam pelo trackpad, Shift + roda, arrastando ou pelas setas, ajustando o eixo y aos pontos visíveis. Uma pinça no trackpad ou Ctrl + roda amplia ou estreita a janela.',
             curve: 'Como a linha se curva entre os pontos.',
             showArea: 'Preenche a área abaixo de cada linha com um tom suave da sua cor.',
             showPoints: 'Marca cada valor com um ponto.',
@@ -1428,6 +1459,8 @@ export const ptBR: WebMessages = {
               'Dispara quando um ponto é clicado, ou escolhido com Enter ou Espaço.',
             activePointChange:
               'Dispara quando o ponto destacado muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+            visibleRangeChange:
+              'Emitido com o início e o fim do intervalo x visível sempre que um gráfico com janela é deslocado. Também é disparado quando a janela recebe zoom.',
           },
           'pie-chart': {
             data: 'As fatias a desenhar no sentido horário a partir do meio-dia, cada uma com um rótulo, um valor e uma cor opcional.',
@@ -2295,6 +2328,7 @@ export const ptBR: WebMessages = {
               'Dispara quando o popover solicita ser fechado; o pai deve refletir isso em [open].',
           },
           'accordion-item': {
+            icon: 'Componente de ícone exibido antes do rótulo no botão de cabeçalho do item, dimensionado com o item e oculto das tecnologias assistivas.',
             disabled: 'Desativa este item, impedindo que ele seja alternado.',
             id: 'id aplicado ao botão de cabeçalho e ao painel do item, gerado automaticamente quando omitido.',
             label: 'Texto exibido no botão de cabeçalho do item.',
