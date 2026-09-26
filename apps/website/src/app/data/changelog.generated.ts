@@ -14,6 +14,42 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.52.0',
+    date: '2026-09-27',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `xValues` input to the line chart that places each point along a numeric x scale, so irregularly spaced data sits proportionally apart.',
+          "Add an `xTicks` input to the line chart that labels the x-axis with ticks of your own at any position, leaving `labels` to title each point's tooltip and data table row, and widening the axis to take in any tick beyond the points.",
+          'Add a `visibleXSpan` input to the line chart that shows a window of a long x range, opening on its latest stretch and panning by trackpad, Shift + wheel, drag or the arrow keys and widening or narrowing with a trackpad pinch or Ctrl + wheel while the y-axis fits the points in view, with a `visibleRangeChange` output reporting each pan and zoom.',
+          'Add an `xLabelOrientation` input to the line chart that sets its x-axis labels level, at 45 degrees or at 90 degrees, or turns them automatically once level labels no longer fit.',
+          'Add a `showAxisBreak` input to the line chart that draws a y-axis line broken by two slashes near the foot of an axis stopping short of zero, with no ticks labelled at or below the break.',
+          'Add `showAxisBreak` and `xLabelOrientation` inputs to the bar chart: a vertical chart whose values are all positive can start its value axis near the shortest bar with a break marked on it, and its category labels can be set level, at 45 or 90 degrees, or turned automatically as they crowd.',
+          "Export a shared `ChartLabelOrientation` type for the line and bar charts' label orientation.",
+          'Add an `icon` input to the accordion item that shows an icon before its label, sized with the item and hidden from assistive technology.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "Keep the lowest and highest points of a line chart clear of the plot's edges, extending a derived y-axis by one step when a value would sit on or just inside its bound.",
+          'Mark each labelled position on the x-axis of a line chart or vertical bar chart with a short tick below the axis.',
+          'Increase the gap under the lowest point of a line chart whose derived y-axis stops short of zero, so its baseline no longer reads as zero.',
+          "Keep a line chart's first and last x-axis labels inside the chart by nudging them inward, instead of holding empty room for them beside the plot, so the plot runs almost to the right edge.",
+          "Tighten the gap between a series name and its value in the line and bar chart tooltips, which now sit a small space apart rather than at opposite edges, and set every chart tooltip's value in a heavier weight than its name.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Stop the line and bar charts' hidden data tables from adding empty scrollable space below the chart inside a scrolling container.",
+          "Hold back the points of a line chart's draw animation until its lines have finished drawing, so no point appears before its line reaches it.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.51.0',
     date: '2026-09-26',
     sections: [
