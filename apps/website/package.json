@@ -51,7 +51,7 @@
     "@types/express": "5.0.6",
     "@types/node": "26.6.2",
     "@types/nodemailer": "8.0.2",
-    "@vercel/node": "13.0.1",
+    "@vercel/node": "13.0.2",
     "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import-x": "4.17.1",
