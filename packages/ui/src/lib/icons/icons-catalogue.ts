@@ -1,5 +1,7 @@
+import { AccessibilityIconComponent } from './accessibility.component';
 import { ActivityIconComponent } from './activity.component';
 import { AirplayIconComponent } from './airplay.component';
+import { AlarmClockIconComponent } from './alarm-clock.component';
 import { AlertCircleIconComponent } from './alert-circle.component';
 import { AlertOctagonIconComponent } from './alert-octagon.component';
 import { AlertTriangleIconComponent } from './alert-triangle.component';
@@ -19,10 +21,12 @@ import { ArrowDownLeftIconComponent } from './arrow-down-left.component';
 import { ArrowDownRightIconComponent } from './arrow-down-right.component';
 import { ArrowDownIconComponent } from './arrow-down.component';
 import { ArrowLeftCircleIconComponent } from './arrow-left-circle.component';
+import { ArrowLeftRightIconComponent } from './arrow-left-right.component';
 import { ArrowLeftIconComponent } from './arrow-left.component';
 import { ArrowRightCircleIconComponent } from './arrow-right-circle.component';
 import { ArrowRightIconComponent } from './arrow-right.component';
 import { ArrowUpCircleIconComponent } from './arrow-up-circle.component';
+import { ArrowUpDownIconComponent } from './arrow-up-down.component';
 import { ArrowUpLeftIconComponent } from './arrow-up-left.component';
 import { ArrowUpRightIconComponent } from './arrow-up-right.component';
 import { ArrowUpIconComponent } from './arrow-up.component';
@@ -30,6 +34,7 @@ import { AspectRatioIconComponent } from './aspect-ratio.component';
 import { AtSignIconComponent } from './at-sign.component';
 import { AwardIconComponent } from './award.component';
 import { BadgeCheckIconComponent } from './badge-check.component';
+import { BanIconComponent } from './ban.component';
 import { BarChart2IconComponent } from './bar-chart-2.component';
 import { BarChartIconComponent } from './bar-chart.component';
 import { BatteryChargingIconComponent } from './battery-charging.component';
@@ -57,12 +62,14 @@ import { BuildingIconComponent } from './building.component';
 import { CalculatorIconComponent } from './calculator.component';
 import { CalendarCheckIconComponent } from './calendar-check.component';
 import { CalendarDaysIconComponent } from './calendar-days.component';
+import { CalendarPlusIconComponent } from './calendar-plus.component';
 import { CalendarIconComponent } from './calendar.component';
 import { CameraOffIconComponent } from './camera-off.component';
 import { CameraIconComponent } from './camera.component';
 import { CandleIconComponent } from './candle.component';
 import { CassetteTapeIconComponent } from './cassette-tape.component';
 import { CastIconComponent } from './cast.component';
+import { CheckCheckIconComponent } from './check-check.component';
 import { CheckCircleIconComponent } from './check-circle.component';
 import { CheckSquareIconComponent } from './check-square.component';
 import { CheckIconComponent } from './check.component';
@@ -80,6 +87,7 @@ import { CircleIconComponent } from './circle.component';
 import { ClapperboardIconComponent } from './clapperboard.component';
 import { ClipboardCheckIconComponent } from './clipboard-check.component';
 import { ClipboardListIconComponent } from './clipboard-list.component';
+import { ClipboardPasteIconComponent } from './clipboard-paste.component';
 import { ClipboardIconComponent } from './clipboard.component';
 import { ClockIconComponent } from './clock.component';
 import { CloudDrizzleIconComponent } from './cloud-drizzle.component';
@@ -87,6 +95,7 @@ import { CloudLightningIconComponent } from './cloud-lightning.component';
 import { CloudOffIconComponent } from './cloud-off.component';
 import { CloudRainIconComponent } from './cloud-rain.component';
 import { CloudSnowIconComponent } from './cloud-snow.component';
+import { CloudSunIconComponent } from './cloud-sun.component';
 import { CloudIconComponent } from './cloud.component';
 import { CloudflareIconComponent } from './cloudflare.component';
 import { CodeIconComponent } from './code.component';
@@ -98,6 +107,7 @@ import { ColumnsIconComponent } from './columns.component';
 import { CommandIconComponent } from './command.component';
 import { CompassIconComponent } from './compass.component';
 import { ContrastIconComponent } from './contrast.component';
+import { CookieIconComponent } from './cookie.component';
 import { CopyIconComponent } from './copy.component';
 import { CornerDownLeftIconComponent } from './corner-down-left.component';
 import { CornerDownRightIconComponent } from './corner-down-right.component';
@@ -112,8 +122,10 @@ import { CpuIconComponent } from './cpu.component';
 import { CreditCardIconComponent } from './credit-card.component';
 import { CropIconComponent } from './crop.component';
 import { CrosshairIconComponent } from './crosshair.component';
+import { CrownIconComponent } from './crown.component';
 import { DatabaseIconComponent } from './database.component';
 import { DeleteIconComponent } from './delete.component';
+import { DiamondIconComponent } from './diamond.component';
 import { Dice1IconComponent } from './dice-1.component';
 import { Dice2IconComponent } from './dice-2.component';
 import { Dice3IconComponent } from './dice-3.component';
@@ -139,6 +151,7 @@ import { Edit2IconComponent } from './edit-2.component';
 import { Edit3IconComponent } from './edit-3.component';
 import { EditIconComponent } from './edit.component';
 import { EjectIconComponent } from './eject.component';
+import { EuroIconComponent } from './euro.component';
 import { ExclamationMarkIconComponent } from './exclamation-mark.component';
 import { ExclamationQuestionMarkIconComponent } from './exclamation-question-mark.component';
 import { ExternalLinkIconComponent } from './external-link.component';
@@ -152,6 +165,7 @@ import { Figma2IconComponent } from './figma-2.component';
 import { FigmaIconComponent } from './figma.component';
 import { FileAudioIconComponent } from './file-audio.component';
 import { FileCheckIconComponent } from './file-check.component';
+import { FileCodeIconComponent } from './file-code.component';
 import { FileImageIconComponent } from './file-image.component';
 import { FileMinusIconComponent } from './file-minus.component';
 import { FilePdfIconComponent } from './file-pdf.component';
@@ -166,10 +180,12 @@ import { FingerprintIconComponent } from './fingerprint.component';
 import { FirstPlaceMedalIconComponent } from './first-place-medal.component';
 import { FlagIconComponent } from './flag.component';
 import { FlameIconComponent } from './flame.component';
+import { FlaskConicalIconComponent } from './flask-conical.component';
 import { FolderMinusIconComponent } from './folder-minus.component';
 import { FolderOpenIconComponent } from './folder-open.component';
 import { FolderPlusIconComponent } from './folder-plus.component';
 import { FolderIconComponent } from './folder.component';
+import { ForwardIconComponent } from './forward.component';
 import { FramerIconComponent } from './framer.component';
 import { FrownIconComponent } from './frown.component';
 import { GaugeIconComponent } from './gauge.component';
@@ -185,7 +201,10 @@ import { GithubIconComponent } from './github.component';
 import { GitlabIconComponent } from './gitlab.component';
 import { GlobeIconComponent } from './globe.component';
 import { GoogleIconComponent } from './google.component';
+import { GraduationCapIconComponent } from './graduation-cap.component';
 import { GridIconComponent } from './grid.component';
+import { GripHorizontalIconComponent } from './grip-horizontal.component';
+import { GripVerticalIconComponent } from './grip-vertical.component';
 import { HalfCircleIconComponent } from './half-circle.component';
 import { HalfHeartIconComponent } from './half-heart.component';
 import { HardDriveIconComponent } from './hard-drive.component';
@@ -198,6 +217,7 @@ import { HeptagonIconComponent } from './heptagon.component';
 import { HexagonIconComponent } from './hexagon.component';
 import { HistoryIconComponent } from './history.component';
 import { HomeIconComponent } from './home.component';
+import { HourglassIconComponent } from './hourglass.component';
 import type { IconComponentType } from './icon-category';
 import { ImagePlayIconComponent } from './image-play.component';
 import { ImagePlusIconComponent } from './image-plus.component';
@@ -216,6 +236,7 @@ import { LampIconComponent } from './lamp.component';
 import { LanguagesIconComponent } from './languages.component';
 import { LaptopIconComponent } from './laptop.component';
 import { LayersIconComponent } from './layers.component';
+import { LayoutDashboardIconComponent } from './layout-dashboard.component';
 import { LayoutIconComponent } from './layout.component';
 import { LeafIconComponent } from './leaf.component';
 import { LeftHalfStarIconComponent } from './left-half-star.component';
@@ -226,6 +247,7 @@ import { LinkIconComponent } from './link.component';
 import { Linkedin2IconComponent } from './linkedin-2.component';
 import { LinkedinIconComponent } from './linkedin.component';
 import { ListChecksIconComponent } from './list-checks.component';
+import { ListOrderedIconComponent } from './list-ordered.component';
 import { ListIconComponent } from './list.component';
 import { LoaderIconComponent } from './loader.component';
 import { LockIconComponent } from './lock.component';
@@ -290,6 +312,7 @@ import { PictureInPictureIconComponent } from './picture-in-picture.component';
 import { PieChartIconComponent } from './pie-chart.component';
 import { PinIconComponent } from './pin.component';
 import { PinterestIconComponent } from './pinterest.component';
+import { PlaneIconComponent } from './plane.component';
 import { PlayCircleIconComponent } from './play-circle.component';
 import { PlayIconComponent } from './play.component';
 import { PlaylistIconComponent } from './playlist.component';
@@ -306,6 +329,7 @@ import { PythonIconComponent } from './python.component';
 import { QrCodeIconComponent } from './qr-code.component';
 import { QuestionExclamationMarkIconComponent } from './question-exclamation-mark.component';
 import { QuestionMarkIconComponent } from './question-mark.component';
+import { QuoteIconComponent } from './quote.component';
 import { RadioReceiverIconComponent } from './radio-receiver.component';
 import { RadioTowerIconComponent } from './radio-tower.component';
 import { RadioIconComponent } from './radio.component';
@@ -320,6 +344,7 @@ import { RefreshCcwIconComponent } from './refresh-ccw.component';
 import { RefreshCwIconComponent } from './refresh-cw.component';
 import { Repeat1IconComponent } from './repeat-1.component';
 import { RepeatIconComponent } from './repeat.component';
+import { ReplyIconComponent } from './reply.component';
 import { RewindIconComponent } from './rewind.component';
 import { RightHalfStarIconComponent } from './right-half-star.component';
 import { RocketIconComponent } from './rocket.component';
@@ -337,7 +362,9 @@ import { SecondPlaceMedalIconComponent } from './second-place-medal.component';
 import { SendIconComponent } from './send.component';
 import { ServerIconComponent } from './server.component';
 import { SettingsIconComponent } from './settings.component';
+import { Share2IconComponent } from './share-2.component';
 import { ShareIconComponent } from './share.component';
+import { ShieldAlertIconComponent } from './shield-alert.component';
 import { ShieldCheckIconComponent } from './shield-check.component';
 import { ShieldOffIconComponent } from './shield-off.component';
 import { ShieldIconComponent } from './shield.component';
@@ -366,6 +393,7 @@ import { StarIconComponent } from './star.component';
 import { StepBackIconComponent } from './step-back.component';
 import { StepForwardIconComponent } from './step-forward.component';
 import { StopCircleIconComponent } from './stop-circle.component';
+import { StrikethroughIconComponent } from './strikethrough.component';
 import { StripeIconComponent } from './stripe.component';
 import { SubtitlesOffIconComponent } from './subtitles-off.component';
 import { SubtitlesIconComponent } from './subtitles.component';
@@ -410,10 +438,12 @@ import { TypeIconComponent } from './type.component';
 import { UmbrellaIconComponent } from './umbrella.component';
 import { UnderlineIconComponent } from './underline.component';
 import { UndoIconComponent } from './undo.component';
+import { UnlinkIconComponent } from './unlink.component';
 import { UnlockIconComponent } from './unlock.component';
 import { UploadCloudIconComponent } from './upload-cloud.component';
 import { UploadIconComponent } from './upload.component';
 import { UserCheckIconComponent } from './user-check.component';
+import { UserCircleIconComponent } from './user-circle.component';
 import { UserMinusIconComponent } from './user-minus.component';
 import { UserPlusIconComponent } from './user-plus.component';
 import { UserXIconComponent } from './user-x.component';
@@ -467,8 +497,10 @@ import { ZoomOutIconComponent } from './zoom-out.component';
  */
 export const ICONS: ReadonlyArray<IconComponentType> = (
   [
+    AccessibilityIconComponent,
     ActivityIconComponent,
     AirplayIconComponent,
+    AlarmClockIconComponent,
     AlertCircleIconComponent,
     AlertOctagonIconComponent,
     AlertTriangleIconComponent,
@@ -489,9 +521,11 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ArrowDownRightIconComponent,
     ArrowLeftCircleIconComponent,
     ArrowLeftIconComponent,
+    ArrowLeftRightIconComponent,
     ArrowRightCircleIconComponent,
     ArrowRightIconComponent,
     ArrowUpCircleIconComponent,
+    ArrowUpDownIconComponent,
     ArrowUpIconComponent,
     ArrowUpLeftIconComponent,
     ArrowUpRightIconComponent,
@@ -499,6 +533,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     AtSignIconComponent,
     AwardIconComponent,
     BadgeCheckIconComponent,
+    BanIconComponent,
     BarChart2IconComponent,
     BarChartIconComponent,
     BatteryChargingIconComponent,
@@ -527,11 +562,13 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CalendarCheckIconComponent,
     CalendarDaysIconComponent,
     CalendarIconComponent,
+    CalendarPlusIconComponent,
     CameraIconComponent,
     CameraOffIconComponent,
     CandleIconComponent,
     CassetteTapeIconComponent,
     CastIconComponent,
+    CheckCheckIconComponent,
     CheckCircleIconComponent,
     CheckIconComponent,
     CheckSquareIconComponent,
@@ -550,6 +587,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ClipboardCheckIconComponent,
     ClipboardIconComponent,
     ClipboardListIconComponent,
+    ClipboardPasteIconComponent,
     ClockIconComponent,
     CloudDrizzleIconComponent,
     CloudIconComponent,
@@ -557,6 +595,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CloudOffIconComponent,
     CloudRainIconComponent,
     CloudSnowIconComponent,
+    CloudSunIconComponent,
     CloudflareIconComponent,
     CodeIconComponent,
     CodepenIconComponent,
@@ -567,6 +606,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CommandIconComponent,
     CompassIconComponent,
     ContrastIconComponent,
+    CookieIconComponent,
     CopyIconComponent,
     CornerDownLeftIconComponent,
     CornerDownRightIconComponent,
@@ -581,8 +621,10 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     CreditCardIconComponent,
     CropIconComponent,
     CrosshairIconComponent,
+    CrownIconComponent,
     DatabaseIconComponent,
     DeleteIconComponent,
+    DiamondIconComponent,
     Dice1IconComponent,
     Dice2IconComponent,
     Dice3IconComponent,
@@ -608,6 +650,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     Edit3IconComponent,
     EditIconComponent,
     EjectIconComponent,
+    EuroIconComponent,
     ExclamationMarkIconComponent,
     ExclamationQuestionMarkIconComponent,
     ExternalLinkIconComponent,
@@ -621,6 +664,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     FigmaIconComponent,
     FileAudioIconComponent,
     FileCheckIconComponent,
+    FileCodeIconComponent,
     FileIconComponent,
     FileImageIconComponent,
     FileMinusIconComponent,
@@ -635,10 +679,12 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     FirstPlaceMedalIconComponent,
     FlagIconComponent,
     FlameIconComponent,
+    FlaskConicalIconComponent,
     FolderIconComponent,
     FolderMinusIconComponent,
     FolderOpenIconComponent,
     FolderPlusIconComponent,
+    ForwardIconComponent,
     FramerIconComponent,
     FrownIconComponent,
     GaugeIconComponent,
@@ -654,7 +700,10 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     GitlabIconComponent,
     GlobeIconComponent,
     GoogleIconComponent,
+    GraduationCapIconComponent,
     GridIconComponent,
+    GripHorizontalIconComponent,
+    GripVerticalIconComponent,
     HalfCircleIconComponent,
     HalfHeartIconComponent,
     HardDriveIconComponent,
@@ -667,6 +716,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     HexagonIconComponent,
     HistoryIconComponent,
     HomeIconComponent,
+    HourglassIconComponent,
     ImageIconComponent,
     ImagePlayIconComponent,
     ImagePlusIconComponent,
@@ -684,6 +734,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     LanguagesIconComponent,
     LaptopIconComponent,
     LayersIconComponent,
+    LayoutDashboardIconComponent,
     LayoutIconComponent,
     LeafIconComponent,
     LeftHalfStarIconComponent,
@@ -695,6 +746,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     LinkedinIconComponent,
     ListChecksIconComponent,
     ListIconComponent,
+    ListOrderedIconComponent,
     LoaderIconComponent,
     LockIconComponent,
     LogInIconComponent,
@@ -758,6 +810,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PieChartIconComponent,
     PinIconComponent,
     PinterestIconComponent,
+    PlaneIconComponent,
     PlayCircleIconComponent,
     PlayIconComponent,
     PlaylistIconComponent,
@@ -774,6 +827,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     QrCodeIconComponent,
     QuestionExclamationMarkIconComponent,
     QuestionMarkIconComponent,
+    QuoteIconComponent,
     RadioIconComponent,
     RadioReceiverIconComponent,
     RadioTowerIconComponent,
@@ -788,6 +842,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     RefreshCwIconComponent,
     Repeat1IconComponent,
     RepeatIconComponent,
+    ReplyIconComponent,
     RewindIconComponent,
     RightHalfStarIconComponent,
     RocketIconComponent,
@@ -805,7 +860,9 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     SendIconComponent,
     ServerIconComponent,
     SettingsIconComponent,
+    Share2IconComponent,
     ShareIconComponent,
+    ShieldAlertIconComponent,
     ShieldCheckIconComponent,
     ShieldIconComponent,
     ShieldOffIconComponent,
@@ -834,6 +891,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     StepBackIconComponent,
     StepForwardIconComponent,
     StopCircleIconComponent,
+    StrikethroughIconComponent,
     StripeIconComponent,
     SubtitlesIconComponent,
     SubtitlesOffIconComponent,
@@ -878,10 +936,12 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     UmbrellaIconComponent,
     UnderlineIconComponent,
     UndoIconComponent,
+    UnlinkIconComponent,
     UnlockIconComponent,
     UploadCloudIconComponent,
     UploadIconComponent,
     UserCheckIconComponent,
+    UserCircleIconComponent,
     UserIconComponent,
     UserMinusIconComponent,
     UserPlusIconComponent,
