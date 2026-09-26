@@ -98,6 +98,13 @@
   min-width: 8rem;
 }
 
+// One width whichever icon a row shows, so the rows stay aligned
+.demo-item-row__icon-picker {
+  display: block;
+  flex: none;
+  width: 10rem;
+}
+
 .demo-item-row__delete-icon {
   color: var(--color-error-default);
 }

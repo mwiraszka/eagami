@@ -21,6 +21,48 @@
       [stacked]="state().stacked"
       [showValues]="state().showValues"
       [showGrid]="state().showGrid"
-      [showLegend]="state().showLegend" />
+      [showLegend]="state().showLegend"
+      [showAxisBreak]="state().showAxisBreak"
+      [xLabelOrientation]="state().xLabelOrientation" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.barChart.categories }}
+      </h3>
+      @for (category of categories(); track category.id) {
+        <div class="demo-item-row">
+          <ea-input
+            class="demo-item-row__grow"
+            [placeholder]="messages().ui.component.common.label"
+            [value]="category.label"
+            (valueChange)="updateLabel(category.id, $event)" />
+          @for (name of seriesNames(); track $index; let s = $index) {
+            <ea-input
+              [placeholder]="name"
+              [value]="'' + category.values[s]"
+              (valueChange)="updateValue(category.id, s, $event)" />
+          }
+          <ea-button
+            variant="ghost"
+            size="sm"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
+            (clicked)="removeCategory(category.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
+        (clicked)="addCategory()">
+        <ea-icon-plus />
+      </ea-button>
+    </div>
   </web-component-playground>
 </web-ui-component-demo-layout>

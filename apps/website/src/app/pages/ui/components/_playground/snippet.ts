@@ -17,7 +17,7 @@ function attribute(name: string, value: KnobValue): string {
 }
 
 /** `search` -> `SearchIconComponent`, matching the library's icon class names. */
-function iconComponentName(slug: string): string {
+export function iconComponentName(slug: string): string {
   const pascal = slug
     .split('-')
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))

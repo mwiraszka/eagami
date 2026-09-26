@@ -34,6 +34,23 @@ ea-bar-chart {
     @include chart.chart-axis;
   }
 
+  &__x-tick {
+    @include chart.chart-baseline;
+  }
+
+  &__y-axis {
+    @include chart.chart-baseline;
+
+    fill: none;
+  }
+
+  &__axis-break {
+    fill: none;
+    stroke: var(--color-border-strong);
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+  }
+
   &__value {
     @include chart.chart-axis;
     font-variant-numeric: tabular-nums;
@@ -81,9 +98,7 @@ ea-bar-chart {
   }
 
   &__tooltip-value {
-    margin-inline-start: auto;
-    padding-inline-start: 0.75em;
-    font-variant-numeric: tabular-nums;
+    @include chart.chart-tooltip-value;
   }
 
   &__swatch {

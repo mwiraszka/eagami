@@ -1,9 +1,14 @@
 import {
+  ButtonComponent,
   type ChartSize,
+  InputComponent,
   type PieChartAnimation,
   PieChartComponent,
   type PieChartSlice,
   type PieChartVariant,
+  PlusIconComponent,
+  TooltipDirective,
+  TrashIconComponent,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -40,18 +45,29 @@ interface PieChartKnobState {
 
 const SLUG = 'pie-chart';
 
+interface DemoSlice {
+  id: number;
+  label: string;
+  value: number;
+}
+
 @Component({
   selector: 'web-pie-chart-demo-page',
   templateUrl: './pie-chart-demo-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ButtonComponent,
+    InputComponent,
     PieChartComponent,
+    PlusIconComponent,
+    TooltipDirective,
+    TrashIconComponent,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
   ],
 })
 export class PieChartDemoPageComponent {
-  private readonly messages = inject(WebI18nService).messages;
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['pie-chart'], UI_API[SLUG]);
   protected readonly state = signal<PieChartKnobState>(
@@ -60,15 +76,12 @@ export class PieChartDemoPageComponent {
 
   protected readonly extraAttributes = ['[data]="data"'];
 
-  protected readonly data = computed<PieChartSlice[]>(() => {
-    const m = this.messages().ui.component.demos.pieChart;
-    return [
-      { label: m.desktop, value: 5480 },
-      { label: m.mobile, value: 3920 },
-      { label: m.tablet, value: 1140 },
-      { label: m.other, value: 460 },
-    ];
-  });
+  private nextId = 1;
+  protected readonly slices = signal<DemoSlice[]>(this.seedSlices());
+
+  protected readonly data = computed<PieChartSlice[]>(() =>
+    this.slices().map(({ label, value }) => ({ label, value })),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as PieChartKnobState);
@@ -78,5 +91,45 @@ export class PieChartDemoPageComponent {
     this.state.set(
       initialKnobState(this.knobs, PLAYGROUND_KNOBS['pie-chart']) as PieChartKnobState,
     );
+    this.nextId = 1;
+    this.slices.set(this.seedSlices());
+  }
+
+  // Blank or partly typed numbers keep the last valid value until the input reads as one
+  protected toNumber(text: string, fallback: number): number {
+    const value = Number(text);
+    return text.trim() !== '' && Number.isFinite(value) ? value : fallback;
+  }
+
+  protected updateSlice(id: number, patch: Partial<DemoSlice>): void {
+    this.slices.update(slices =>
+      slices.map(slice => (slice.id === id ? { ...slice, ...patch } : slice)),
+    );
+  }
+
+  protected addSlice(): void {
+    const last = this.slices().at(-1);
+    this.slices.update(slices => [
+      ...slices,
+      {
+        id: this.nextId++,
+        label: `${this.messages().ui.component.demos.pieChart.slice} ${slices.length + 1}`,
+        value: last?.value ?? 500,
+      },
+    ]);
+  }
+
+  protected removeSlice(id: number): void {
+    this.slices.update(slices => slices.filter(slice => slice.id !== id));
+  }
+
+  private seedSlices(): DemoSlice[] {
+    const m = this.messages().ui.component.demos.pieChart;
+    return [
+      { label: m.desktop, value: 5480 },
+      { label: m.mobile, value: 3920 },
+      { label: m.tablet, value: 1140 },
+      { label: m.other, value: 460 },
+    ].map(slice => ({ ...slice, id: this.nextId++ }));
   }
 }

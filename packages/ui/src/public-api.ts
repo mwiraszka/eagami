@@ -13,7 +13,12 @@ export * from './lib/bar-chart/bar-chart.component';
 export * from './lib/breadcrumbs/breadcrumbs.component';
 export * from './lib/button/button.component';
 export * from './lib/card/card.component';
-export type { ChartPointEvent, ChartSeries, ChartSize } from './lib/chart/chart';
+export type {
+  ChartLabelOrientation,
+  ChartPointEvent,
+  ChartSeries,
+  ChartSize,
+} from './lib/chart/chart';
 export * from './lib/checkbox/checkbox.component';
 export * from './lib/command-palette/command-palette.component';
 export * from './lib/command-palette/command-palette.types';

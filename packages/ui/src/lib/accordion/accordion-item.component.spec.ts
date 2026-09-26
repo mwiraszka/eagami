@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, type Type, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { StarIconComponent } from '../icons/star.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent, type AccordionHeadingLevel } from './accordion.component';
 
@@ -129,5 +130,77 @@ describe('AccordionItemComponent', () => {
 
     expect(controlsId).toBe(panel.id);
     expect(panel.getAttribute('aria-labelledby')).toBe(triggerId);
+  });
+});
+
+@Component({
+  imports: [AccordionComponent, AccordionItemComponent],
+  template: `
+    <ea-accordion size="lg">
+      <ea-accordion-item
+        value="a"
+        label="First"
+        [icon]="icon()">
+        Body
+      </ea-accordion-item>
+    </ea-accordion>
+  `,
+})
+class IconHostComponent {
+  icon = signal<Type<unknown> | undefined>(undefined);
+}
+
+describe('AccordionItemComponent icon', () => {
+  let fixture: ComponentFixture<IconHostComponent>;
+
+  function item(): HTMLElement {
+    return fixture.nativeElement.querySelector('.ea-accordion-item');
+  }
+
+  // Comment anchors, scoped-style attributes, and generated id counters vary by build and test order
+  function normalized(html: string): string {
+    return html
+      .replace(/<!--[^>]*-->/g, '')
+      .replace(/ _ng(?:content|host)-[\w-]+=""/g, '')
+      .replace(/ea-accordion-item-\d+/g, 'ea-accordion-item-N');
+  }
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [IconHostComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(IconHostComponent);
+    fixture.detectChanges();
+  });
+
+  // Recorded from 5.51.0
+  it('renders exactly as before without an icon', () => {
+    expect(normalized(item().outerHTML)).toBe(
+      '<div class="ea-accordion-item ea-accordion-item--lg"><div role="heading" class="ea-accordion-item__header" aria-level="3"><button type="button" class="ea-accordion-item__trigger" id="ea-accordion-item-N-trigger" aria-expanded="false" aria-controls="ea-accordion-item-N-content"><span class="ea-accordion-item__label">First</span><ea-icon-chevron-down aria-hidden="true" class="ea-accordion-item__chevron" style="display: inline-flex; width: 1em; height: 1em;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="100%" height="100%" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></ea-icon-chevron-down></button></div></div>',
+    );
+  });
+
+  it('renders the icon before the label, hidden from assistive technology', () => {
+    fixture.componentInstance.icon.set(StarIconComponent);
+    fixture.detectChanges();
+
+    const wrapper = item().querySelector('.ea-accordion-item__icon')!;
+    expect(wrapper.getAttribute('aria-hidden')).toBe('true');
+    expect(wrapper.querySelector('ea-icon-star')).toBeTruthy();
+    expect(wrapper.nextElementSibling?.classList).toContain('ea-accordion-item__label');
+    expect(item().querySelector('.ea-accordion-item__trigger')!.textContent?.trim()).toBe(
+      'First',
+    );
+  });
+
+  it('removes the icon when it is cleared', () => {
+    fixture.componentInstance.icon.set(StarIconComponent);
+    fixture.detectChanges();
+
+    fixture.componentInstance.icon.set(undefined);
+    fixture.detectChanges();
+
+    expect(item().querySelector('.ea-accordion-item__icon')).toBeNull();
   });
 });

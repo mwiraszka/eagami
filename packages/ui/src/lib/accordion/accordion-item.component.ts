@@ -1,8 +1,10 @@
+import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   type OnDestroy,
   type OnInit,
+  type Type,
   computed,
   inject,
   input,
@@ -20,7 +22,7 @@ import { AccordionComponent } from './accordion.component';
  */
 @Component({
   selector: 'ea-accordion-item',
-  imports: [ChevronDownIconComponent],
+  imports: [ChevronDownIconComponent, NgComponentOutlet],
   templateUrl: './accordion-item.component.html',
   styleUrl: './accordion-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,6 +32,8 @@ export class AccordionItemComponent implements OnInit, OnDestroy {
 
   readonly value = input.required<string>();
   readonly label = input.required<string>();
+  /** Optional icon component rendered before the label in the header button. */
+  readonly icon = input<Type<unknown> | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly id = input<string>(uniqueId('ea-accordion-item'));
 

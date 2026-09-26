@@ -1080,17 +1080,27 @@ export const pl: WebMessages = {
           software: 'Oprogramowanie',
           services: 'Usługi',
           quarters: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
+          categories: 'Kategorie',
+          category: 'Kategoria',
         },
         lineChart: {
           visitors: 'Odwiedzający',
           signUps: 'Rejestracje',
           months: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie'],
+          points: 'Punkty',
+          ticks: 'Znaczniki osi X',
+          xPosition: 'Pozycja X',
+          value: 'Wartość',
+          tooltipTitle: 'Tytuł podpowiedzi',
         },
         pieChart: {
           desktop: 'Komputer',
           mobile: 'Telefon',
           tablet: 'Tablet',
           other: 'Inne',
+          slices: 'Wycinki',
+          slice: 'Wycinek',
+          value: 'Wartość',
         },
       },
       playground: {
@@ -1124,6 +1134,8 @@ export const pl: WebMessages = {
             showValues: 'Pokaż wartości',
             showGrid: 'Pokaż siatkę',
             showLegend: 'Pokaż legendę',
+            showAxisBreak: 'Pokaż przerwanie osi',
+            xLabelOrientation: 'Orientacja etykiet osi x',
           },
           'line-chart': {
             curve: 'Krzywa',
@@ -1135,6 +1147,9 @@ export const pl: WebMessages = {
             showPoints: 'Pokaż punkty',
             showGrid: 'Pokaż siatkę',
             showLegend: 'Pokaż legendę',
+            showAxisBreak: 'Pokaż przerwanie osi',
+            xLabelOrientation: 'Orientacja etykiet osi x',
+            visibleXSpan: 'Widoczny zakres x',
           },
           'pie-chart': {
             variant: 'Wariant',
@@ -1405,11 +1420,26 @@ export const pl: WebMessages = {
               'Emitowane, gdy słupek zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
             activePointChange:
               'Emitowane, gdy wyróżniony słupek zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+            showAxisBreak:
+              'Na pionowym wykresie z samymi dodatnimi wartościami zaczyna oś wartości przy najkrótszym słupku zamiast od zera i oznacza cięcie symbolem przerwania.',
+            xLabelOrientation:
+              'Sposób ułożenia etykiet kategorii pod pionowym wykresem: poziomo, pod kątem 45 stopni, pod kątem 90 stopni lub automatycznie, z obrotem o 45, potem o 90 stopni przy ścisku.',
           },
           'line-chart': {
-            labels: 'Etykiety kategorii wzdłuż osi x, po jednej na wartość.',
+            labels:
+              'Nazwa każdego punktu, po jednej na wartość, będąca tytułem jego podpowiedzi i wiersza w tabeli danych; opisuje też oś x, chyba że ustawiono xTicks.',
             series:
               'Serie do wykreślenia, każda z nazwą, jedną wartością na etykietę (null pozostawia przerwę) i opcjonalnym kolorem.',
+            xValues:
+              'Położenie każdego punktu na osi x, po jednym na wartość w kolejności rosnącej, aby odstępy między punktami były proporcjonalne; bez ustawienia punkty są rozłożone równo według indeksu.',
+            xTicks:
+              'Opisane znaczniki na osi x zamiast etykiet poszczególnych punktów, każdy przy swojej wartości na skali x; nie muszą pokrywać się z żadnym punktem. Oś poszerza się, aby objąć znaczniki leżące poza punktami.',
+            showAxisBreak:
+              'Oznacza symbolem przerwania podstawę osi y, która nie sięga zera.',
+            xLabelOrientation:
+              'Sposób ułożenia etykiet osi x: poziomo, pod kątem 45 stopni, pod kątem 90 stopni lub automatycznie, czyli poziomo, dopóki się mieszczą, a przy ścisku obrócone o 45, potem o 90 stopni.',
+            visibleXSpan:
+              'Szerokość zakresu x widocznego naraz, w jednostkach xValues (lub indeksów); dłuższe dane otwierają się na najnowszym odcinku i przesuwają się gładzikiem, Shift + kółkiem, przeciąganiem lub strzałkami, a oś y dopasowuje się do widocznych punktów. Uszczypnięcie na gładziku lub Ctrl + kółko poszerza lub zawęża okno.',
             curve: 'Sposób, w jaki linia wygina się między punktami.',
             showArea: 'Wypełnia obszar pod każdą linią jasnym odcieniem jej koloru.',
             showPoints: 'Oznacza każdą wartość punktem.',
@@ -1429,6 +1459,8 @@ export const pl: WebMessages = {
               'Emitowane, gdy punkt zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
             activePointChange:
               'Emitowane, gdy wyróżniony punkt zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+            visibleRangeChange:
+              'Emitowane z początkiem i końcem widocznego zakresu x przy każdym przesunięciu wykresu z oknem. Wywoływane także przy powiększaniu okna.',
           },
           'pie-chart': {
             data: 'Wycinki rysowane zgodnie z ruchem wskazówek zegara od godziny dwunastej, każdy z etykietą, wartością i opcjonalnym kolorem.',
@@ -2273,6 +2305,7 @@ export const pl: WebMessages = {
               'Emitowane, gdy popover żąda zamknięcia; rodzic powinien odzwierciedlić to w [open].',
           },
           'accordion-item': {
+            icon: 'Komponent ikony wyświetlany przed etykietą w przycisku nagłówka elementu, skalowany razem z elementem i ukryty przed technologiami wspomagającymi.',
             disabled: 'Wyłącza ten element, uniemożliwiając jego przełączanie.',
             id: 'id stosowane do przycisku nagłówka i panelu elementu, generowane automatycznie gdy pominięte.',
             label: 'Tekst wyświetlany w przycisku nagłówka elementu.',

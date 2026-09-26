@@ -21,9 +21,26 @@
           [attr.viewBox]="'0 0 ' + layout().width + ' ' + layout().height"
           [style.--ea-line-chart-baseline]="layout().baselineY + 'px'"
           (pointermove)="onPointerMove($event)"
-          (pointerdown)="onPointerMove($event)"
+          (pointerdown)="onPointerDown($event)"
+          (pointerup)="onPointerUp($event)"
+          (pointercancel)="onPointerUp($event)"
           (pointerleave)="onPointerLeave()"
+          (wheel)="onWheel($event)"
+          (gesturestart)="onGestureStart($event)"
+          (gesturechange)="onGestureChange($event)"
+          (gestureend)="onGestureEnd()"
           (click)="onClick()">
+          @if (layout().windowed) {
+            <defs>
+              <clipPath [attr.id]="clipId">
+                <rect
+                  [attr.x]="layout().left"
+                  y="0"
+                  [attr.width]="layout().plotWidth"
+                  [attr.height]="layout().height" />
+              </clipPath>
+            </defs>
+          }
           <rect
             class="ea-line-chart__hit"
             [attr.x]="layout().left"
@@ -54,54 +71,104 @@
             [attr.x2]="layout().left + layout().plotWidth"
             [attr.y1]="layout().top + layout().plotHeight"
             [attr.y2]="layout().top + layout().plotHeight" />
-          @for (xLabel of layout().xLabels; track xLabel.index) {
+          @if (layout().axisBreak; as axisBreak) {
+            <path
+              class="ea-line-chart__y-axis"
+              [attr.d]="axisBreak.axis" />
+            <path
+              class="ea-line-chart__axis-break"
+              [attr.d]="axisBreak.slashes" />
+          }
+          @for (xLabel of layout().xLabels; track xLabel.key) {
+            <line
+              class="ea-line-chart__x-tick"
+              [attr.x1]="xLabel.x"
+              [attr.x2]="xLabel.x"
+              [attr.y1]="layout().axisY"
+              [attr.y2]="layout().tickEndY" />
             <text
               class="ea-line-chart__axis ea-line-chart__axis--x"
-              text-anchor="middle"
-              [attr.x]="xLabel.x"
+              [attr.text-anchor]="layout().labelAngle ? 'end' : 'middle'"
+              [attr.dominant-baseline]="layout().labelAngle ? 'central' : null"
+              [attr.transform]="
+                layout().labelAngle
+                  ? 'rotate(' +
+                    -layout().labelAngle +
+                    ' ' +
+                    xLabel.x +
+                    ' ' +
+                    layout().labelY +
+                    ')'
+                  : null
+              "
+              [attr.x]="xLabel.textX"
               [attr.y]="layout().labelY">
               {{ xLabel.text }}
             </text>
           }
+          @if (layout().axisBreak; as axisBreak) {
+            <!-- Keeps the break's gap open under a crosshair drawn along the y-axis -->
+            <mask
+              maskUnits="userSpaceOnUse"
+              [attr.id]="breakMaskId">
+              <rect
+                fill="white"
+                x="0"
+                y="0"
+                [attr.width]="layout().width"
+                [attr.height]="layout().height" />
+              <rect
+                fill="black"
+                [attr.x]="axisBreak.gap.x"
+                [attr.y]="axisBreak.gap.y"
+                [attr.width]="axisBreak.gap.width"
+                [attr.height]="axisBreak.gap.height" />
+            </mask>
+          }
           @if (tooltip(); as tip) {
             <line
               class="ea-line-chart__crosshair"
+              [attr.mask]="layout().axisBreak ? 'url(#' + breakMaskId + ')' : null"
               [attr.x1]="tip.x"
               [attr.x2]="tip.x"
               [attr.y1]="layout().top"
               [attr.y2]="layout().top + layout().plotHeight" />
           }
-          <g class="ea-line-chart__lines">
-            @for (line of layout().series; track $index; let s = $index) {
-              <g
-                class="ea-line-chart__series"
-                [class.ea-line-chart__series--dimmed]="isDimmed(s)"
-                [style.--ea-chart-color]="line.color">
-                @if (showArea()) {
-                  @for (area of line.areas; track $index) {
+          <g [attr.clip-path]="layout().windowed ? 'url(#' + clipId + ')' : null">
+            <g class="ea-line-chart__lines">
+              @for (line of layout().series; track $index; let s = $index) {
+                <g
+                  class="ea-line-chart__series"
+                  [class.ea-line-chart__series--dimmed]="isDimmed(s)"
+                  [style.--ea-chart-color]="line.color">
+                  @if (showArea()) {
+                    @for (area of line.areas; track $index) {
+                      <path
+                        class="ea-line-chart__area"
+                        [attr.d]="area" />
+                    }
+                  }
+                  @for (path of line.paths; track $index) {
                     <path
-                      class="ea-line-chart__area"
-                      [attr.d]="area" />
+                      class="ea-line-chart__line"
+                      pathLength="1"
+                      [attr.d]="path" />
                   }
-                }
-                @for (path of line.paths; track $index) {
-                  <path
-                    class="ea-line-chart__line"
-                    pathLength="1"
-                    [attr.d]="path" />
-                }
-                @for (point of line.points; track point.index) {
-                  @if (showPoints() || isActivePoint(s, point.index)) {
-                    <circle
-                      class="ea-line-chart__point"
-                      [class.ea-line-chart__point--active]="isActivePoint(s, point.index)"
-                      [attr.cx]="point.x"
-                      [attr.cy]="point.y"
-                      [attr.r]="isActivePoint(s, point.index) ? 6 : 4" />
+                  @for (point of line.points; track point.index) {
+                    @if (showPoints() || isActivePoint(s, point.index)) {
+                      <circle
+                        class="ea-line-chart__point"
+                        [class.ea-line-chart__point--active]="
+                          isActivePoint(s, point.index)
+                        "
+                        [attr.cx]="point.x"
+                        [attr.cy]="point.y"
+                        [attr.r]="isActivePoint(s, point.index) ? 6 : 4" />
+                    }
                   }
-                }
-              </g>
-            }
+                </g>
+              }
+            </g>
           </g>
           @for (tip of tooltips(); track tip.key) {
             <rect
@@ -135,29 +202,34 @@
           </div>
         }
       </ng-template>
-      <table class="ea-line-chart__table">
-        <caption>
-          {{ label() }}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{{ i18n.messages().chart.category }}</th>
-            @for (s of series(); track $index) {
-              <th scope="col">{{ s.name }}</th>
-            }
-          </tr>
-        </thead>
-        <tbody>
-          @for (row of labels(); track $index; let i = $index) {
+      <!-- Hidden through a block, since a table ignores the 1px size and keeps its full height -->
+      <div class="ea-line-chart__table">
+        <table>
+          <caption>
+            {{ label() }}
+          </caption>
+          <thead>
             <tr>
-              <th scope="row">{{ row }}</th>
+              <th scope="col">{{ i18n.messages().chart.category }}</th>
+
               @for (s of series(); track $index) {
-                <td>{{ tableValue(s.data[i]) }}</td>
+                <th scope="col">{{ s.name }}</th>
               }
             </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (row of labels(); track $index; let i = $index) {
+              <tr>
+                <th scope="row">{{ row }}</th>
+
+                @for (s of series(); track $index) {
+                  <td>{{ tableValue(s.data[i]) }}</td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
     <div
       class="ea-line-chart__live"

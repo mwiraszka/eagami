@@ -464,6 +464,133 @@ describe('BarChartComponent', () => {
     });
   });
 
+  describe('Axis break', () => {
+    function valueTicks(): number[] {
+      return queryAll('.ea-bar-chart__axis[text-anchor="end"]').map(t =>
+        Number(t.textContent!.trim()),
+      );
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('series', [
+        { name: 'Hardware', data: [140, 150, 160] },
+        { name: 'Software', data: [120, 130, 135] },
+      ]);
+      fixture.componentRef.setInput('showAxisBreak', true);
+      fixture.detectChanges();
+    });
+
+    it('starts the value axis near the shortest bar and marks the cut', () => {
+      expect(Math.min(...valueTicks())).toBeGreaterThan(0);
+      expect(query('.ea-bar-chart__axis-break')).toBeTruthy();
+      expect(query('.ea-bar-chart__y-axis')!.getAttribute('d')!.match(/M/g)).toHaveLength(
+        2,
+      );
+    });
+
+    it('keeps a wide gap under the shortest bar', () => {
+      const axisY = Number(query('.ea-bar-chart__baseline')!.getAttribute('y1'));
+      // Each bar's top is the smallest y in its path; the shortest bar's is the largest
+      const shortestTop = Math.max(
+        ...queryAll('.ea-bar-chart__bar').map(b =>
+          Math.min(
+            ...[...b.getAttribute('d')!.matchAll(/[\d.]+,([\d.]+)/g)].map(m =>
+              Number(m[1]),
+            ),
+          ),
+        ),
+      );
+
+      // Six axis font sizes at 12px
+      expect(axisY - shortestTop).toBeGreaterThanOrEqual(72);
+    });
+
+    it('keeps zero when a value is negative', () => {
+      fixture.componentRef.setInput('series', [{ name: 'Mixed', data: [140, -20, 160] }]);
+      fixture.detectChanges();
+
+      expect(valueTicks()).toContain(0);
+      expect(query('.ea-bar-chart__axis-break')).toBeNull();
+    });
+
+    it('breaks the axis above the shortest stack when stacked', () => {
+      fixture.componentRef.setInput('stacked', true);
+      fixture.detectChanges();
+
+      expect(Math.min(...valueTicks())).toBeGreaterThan(0);
+      expect(query('.ea-bar-chart__axis-break')).toBeTruthy();
+    });
+
+    it('leaves a horizontal chart whole', () => {
+      fixture.componentRef.setInput('orientation', 'horizontal');
+      fixture.detectChanges();
+
+      expect(query('.ea-bar-chart__axis-break')).toBeNull();
+    });
+
+    it('draws no break unless asked to', () => {
+      fixture.componentRef.setInput('showAxisBreak', false);
+      fixture.detectChanges();
+
+      expect(valueTicks()).toContain(0);
+      expect(query('.ea-bar-chart__axis-break')).toBeNull();
+    });
+  });
+
+  describe('Category labels', () => {
+    function categoryLabels(): Element[] {
+      return queryAll('.ea-bar-chart__axis').filter(t =>
+        LABELS.includes(t.textContent!.trim()),
+      );
+    }
+
+    it('marks every category with a tick below the axis', () => {
+      expect(queryAll('.ea-bar-chart__x-tick')).toHaveLength(LABELS.length);
+    });
+
+    it('keeps labels level by default', () => {
+      expect(categoryLabels()[0].getAttribute('transform')).toBeNull();
+    });
+
+    it.each([
+      ['diagonal', -45],
+      ['vertical', -90],
+    ] as const)('turns labels set %s', (orientation, angle) => {
+      fixture.componentRef.setInput('xLabelOrientation', orientation);
+      fixture.detectChanges();
+
+      const label = categoryLabels()[0];
+      expect(label.getAttribute('transform')).toMatch(new RegExp(`^rotate\\(${angle} `));
+      expect(label.getAttribute('text-anchor')).toBe('end');
+    });
+
+    it('turns labels automatically only once they crowd', () => {
+      fixture.componentRef.setInput('xLabelOrientation', 'auto');
+      fixture.detectChanges();
+
+      expect(categoryLabels()[0].getAttribute('transform')).toBeNull();
+
+      const crowded = Array.from({ length: 16 }, (_, i) => `Category ${i}`);
+      fixture.componentRef.setInput('labels', crowded);
+      fixture.componentRef.setInput('series', [
+        { name: 'Many', data: crowded.map((_, i) => i + 1) },
+      ]);
+      fixture.detectChanges();
+
+      const first = queryAll('.ea-bar-chart__axis').find(
+        t => t.textContent!.trim() === 'Category 0',
+      )!;
+      expect(first.getAttribute('transform')).toMatch(/^rotate\(-(45|90) /);
+    });
+
+    it('draws no category ticks on a horizontal chart', () => {
+      fixture.componentRef.setInput('orientation', 'horizontal');
+      fixture.detectChanges();
+
+      expect(queryAll('.ea-bar-chart__x-tick')).toHaveLength(0);
+    });
+  });
+
   describe('Fallbacks', () => {
     it('leaves the label blank for values past the end of labels', () => {
       fixture.componentRef.setInput('labels', ['Q1']);

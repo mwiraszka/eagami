@@ -14,6 +14,13 @@
       [attr.aria-controls]="id() + '-content'"
       [disabled]="disabled()"
       (click)="toggle()">
+      @if (icon(); as leadingIcon) {
+        <span
+          class="ea-accordion-item__icon"
+          aria-hidden="true">
+          <ng-container *ngComponentOutlet="leadingIcon" />
+        </span>
+      }
       <span class="ea-accordion-item__label">{{ label() }}</span>
       <ea-icon-chevron-down
         class="ea-accordion-item__chevron"

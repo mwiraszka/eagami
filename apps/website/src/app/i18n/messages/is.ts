@@ -1077,17 +1077,27 @@ export const is: WebMessages = {
           software: 'Hugbúnaður',
           services: 'Þjónusta',
           quarters: ['F1', 'F2', 'F3', 'F4'],
+          categories: 'Flokkar',
+          category: 'Flokkur',
         },
         lineChart: {
           visitors: 'Gestir',
           signUps: 'Nýskráningar',
           months: ['jan.', 'feb.', 'mar.', 'apr.', 'maí', 'jún.', 'júl.', 'ágú.'],
+          points: 'Punktar',
+          ticks: 'Merki X-áss',
+          xPosition: 'X-staðsetning',
+          value: 'Gildi',
+          tooltipTitle: 'Titill ábendingar',
         },
         pieChart: {
           desktop: 'Borðtölva',
           mobile: 'Farsími',
           tablet: 'Spjaldtölva',
           other: 'Annað',
+          slices: 'Sneiðar',
+          slice: 'Sneið',
+          value: 'Gildi',
         },
       },
       playground: {
@@ -1121,6 +1131,8 @@ export const is: WebMessages = {
             showValues: 'Sýna gildi',
             showGrid: 'Sýna hnitanet',
             showLegend: 'Sýna skýringar',
+            showAxisBreak: 'Sýna ásrof',
+            xLabelOrientation: 'Stefna merkja á x-ás',
           },
           'line-chart': {
             curve: 'Ferill',
@@ -1132,6 +1144,9 @@ export const is: WebMessages = {
             showPoints: 'Sýna punkta',
             showGrid: 'Sýna hnitanet',
             showLegend: 'Sýna skýringar',
+            showAxisBreak: 'Sýna ásrof',
+            xLabelOrientation: 'Stefna merkja á x-ás',
+            visibleXSpan: 'Sýnilegt x-bil',
           },
           'pie-chart': {
             variant: 'Afbrigði',
@@ -1402,11 +1417,25 @@ export const is: WebMessages = {
               'Kviknar þegar smellt er á súlu eða hún valin með Enter eða bilslá.',
             activePointChange:
               'Kviknar þegar auðkennda súlan breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+            showAxisBreak:
+              'Í lóðréttu riti þar sem öll gildi eru jákvæð byrjar gildisásinn nálægt stysta súlunni í stað núlls og merkir rofið með roftákni.',
+            xLabelOrientation:
+              'Hvernig flokkamerki undir lóðréttu riti liggja: lárétt, í 45 gráðum, í 90 gráðum eða sjálfvirkt, sem snýr þeim 45 og svo 90 gráður þegar þrengist.',
           },
           'line-chart': {
-            labels: 'Flokkamerki meðfram x-ásnum, eitt fyrir hvert gildi.',
+            labels:
+              'Heiti hvers punkts, eitt fyrir hvert gildi, sem titill á vísbendingu hans og línu í gagnatöflunni; merkir einnig x-ásinn nema xTicks sé stillt.',
             series:
               'Raðirnar sem á að teikna, hver með nafni, einu gildi fyrir hvert merki (null skilur eftir bil) og valfrjálsum lit.',
+            xValues:
+              'Staðsetning hvers punkts á x-ásnum, ein fyrir hvert gildi í hækkandi röð, svo að bil milli punkta sé hlutfallslegt; jafnt dreift eftir vísi ef ekki stillt.',
+            xTicks:
+              'Merktar markalínur á x-ásnum í stað merkja hvers punkts, hver við sitt gildi á x-kvarðanum; þær þurfa ekki að standast á við neinn punkt. Ásinn víkkar til að ná yfir merki utan við punktana.',
+            showAxisBreak: 'Merkir fót y-áss sem nær ekki niður í núll með roftákni.',
+            xLabelOrientation:
+              'Hvernig merki x-ássins liggja: lárétt, í 45 gráðum, í 90 gráðum eða sjálfvirkt, sem heldur þeim láréttum meðan þau passa og snýr þeim 45 og svo 90 gráður þegar þrengist.',
+            visibleXSpan:
+              'Breidd x-bilsins sem sést í einu, í einingum xValues (eða vísa); lengri gögn opnast á nýjasta hlutanum og má færa með snertifleti, Shift + skruni, drætti eða örvalyklum, og y-ásinn lagar sig að sýnilegum punktum. Klemmubending á snertifleti eða Ctrl + hjól víkkar eða þrengir gluggann.',
             curve: 'Hvernig línan sveigist milli punkta.',
             showArea: 'Fyllir flötinn undir hverri línu með ljósum blæ af lit hennar.',
             showPoints: 'Merkir hvert gildi með punkti.',
@@ -1426,6 +1455,8 @@ export const is: WebMessages = {
               'Kviknar þegar smellt er á punkt eða hann valinn með Enter eða bilslá.',
             activePointChange:
               'Kviknar þegar auðkenndi punkturinn breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+            visibleRangeChange:
+              'Sendir upphaf og enda sýnilega x-bilsins í hvert sinn sem gluggarit er fært til. Kemur líka af stað þegar glugginn er aðdreginn.',
           },
           'pie-chart': {
             data: 'Sneiðarnar sem teiknaðar eru réttsælis frá klukkan tólf, hver með merki, gildi og valfrjálsum lit.',
@@ -2264,6 +2295,7 @@ export const is: WebMessages = {
               'Kviknar þegar sprettiglugginn óskar eftir að vera lokað; foreldrið ætti að spegla þetta í [open].',
           },
           'accordion-item': {
+            icon: 'Táknmyndarhluti sem birtist á undan merkinu í hausahnappi atriðisins, stækkar með atriðinu og er falinn hjálpartækni.',
             disabled: 'Gerir þetta atriði óvirkt, kemur í veg fyrir að því sé víxlað.',
             id: 'id sett á hausshnapp atriðisins og spjald, sjálfvirkt búið til þegar því er sleppt.',
             label: 'Texti sýndur í hausshnappi atriðisins.',

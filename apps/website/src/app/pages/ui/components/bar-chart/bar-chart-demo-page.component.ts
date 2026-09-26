@@ -2,8 +2,14 @@ import {
   type BarChartAnimation,
   BarChartComponent,
   type BarChartOrientation,
+  ButtonComponent,
+  type ChartLabelOrientation,
   type ChartSeries,
   type ChartSize,
+  InputComponent,
+  PlusIconComponent,
+  TooltipDirective,
+  TrashIconComponent,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -38,9 +44,25 @@ interface BarChartKnobState {
   showValues: boolean;
   showGrid: boolean;
   showLegend: boolean;
+  showAxisBreak: boolean;
+  xLabelOrientation: ChartLabelOrientation;
 }
 
 const SLUG = 'bar-chart';
+
+interface DemoCategory {
+  id: number;
+  label: string;
+  values: number[];
+}
+
+// One row of values per quarter, in the order of the series below
+const SEED_VALUES = [
+  [42, 28, 15],
+  [58, 35, 19],
+  [51, 47, 22],
+  [67, 52, 30],
+];
 
 @Component({
   selector: 'web-bar-chart-demo-page',
@@ -48,12 +70,17 @@ const SLUG = 'bar-chart';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     BarChartComponent,
+    ButtonComponent,
+    InputComponent,
+    PlusIconComponent,
+    TooltipDirective,
+    TrashIconComponent,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
   ],
 })
 export class BarChartDemoPageComponent {
-  private readonly messages = inject(WebI18nService).messages;
+  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS['bar-chart'], UI_API[SLUG]);
   protected readonly state = signal<BarChartKnobState>(
@@ -62,18 +89,22 @@ export class BarChartDemoPageComponent {
 
   protected readonly extraAttributes = ['[labels]="labels"', '[series]="series"'];
 
-  protected readonly labels = computed(() => [
-    ...this.messages().ui.component.demos.barChart.quarters,
-  ]);
+  private nextId = 1;
+  protected readonly categories = signal<DemoCategory[]>(this.seedCategories());
 
-  protected readonly series = computed<ChartSeries[]>(() => {
+  protected readonly seriesNames = computed(() => {
     const m = this.messages().ui.component.demos.barChart;
-    return [
-      { name: m.hardware, data: [42, 58, 51, 67] },
-      { name: m.software, data: [28, 35, 47, 52] },
-      { name: m.services, data: [15, 19, 22, 30] },
-    ];
+    return [m.hardware, m.software, m.services];
   });
+
+  protected readonly labels = computed(() => this.categories().map(c => c.label));
+
+  protected readonly series = computed<ChartSeries[]>(() =>
+    this.seriesNames().map((name, s) => ({
+      name,
+      data: this.categories().map(c => c.values[s]),
+    })),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as BarChartKnobState);
@@ -83,5 +114,59 @@ export class BarChartDemoPageComponent {
     this.state.set(
       initialKnobState(this.knobs, PLAYGROUND_KNOBS['bar-chart']) as BarChartKnobState,
     );
+    this.nextId = 1;
+    this.categories.set(this.seedCategories());
+  }
+
+  // Blank or partly typed numbers keep the last valid value until the input reads as one
+  protected toNumber(text: string, fallback: number): number {
+    const value = Number(text);
+    return text.trim() !== '' && Number.isFinite(value) ? value : fallback;
+  }
+
+  protected updateLabel(id: number, label: string): void {
+    this.categories.update(categories =>
+      categories.map(c => (c.id === id ? { ...c, label } : c)),
+    );
+  }
+
+  protected updateValue(id: number, seriesIndex: number, text: string): void {
+    this.categories.update(categories =>
+      categories.map(c =>
+        c.id === id
+          ? {
+              ...c,
+              values: c.values.map((v, s) =>
+                s === seriesIndex ? this.toNumber(text, v) : v,
+              ),
+            }
+          : c,
+      ),
+    );
+  }
+
+  protected addCategory(): void {
+    const last = this.categories().at(-1);
+    this.categories.update(categories => [
+      ...categories,
+      {
+        id: this.nextId++,
+        label: `${this.messages().ui.component.demos.barChart.category} ${categories.length + 1}`,
+        values: last ? [...last.values] : this.seriesNames().map(() => 50),
+      },
+    ]);
+  }
+
+  protected removeCategory(id: number): void {
+    this.categories.update(categories => categories.filter(c => c.id !== id));
+  }
+
+  private seedCategories(): DemoCategory[] {
+    const quarters = this.messages().ui.component.demos.barChart.quarters;
+    return SEED_VALUES.map((values, i) => ({
+      id: this.nextId++,
+      label: quarters[i],
+      values: [...values],
+    }));
   }
 }

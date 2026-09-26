@@ -5,6 +5,7 @@ import {
   type AccordionSize,
   ButtonComponent,
   CheckboxComponent,
+  DropdownComponent,
   InputComponent,
   PlusIconComponent,
   TooltipDirective,
@@ -28,13 +29,16 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { ICON_NONE, iconComponentForSlug } from '../_playground/icon-knob';
 import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import { iconComponentName } from '../_playground/snippet';
 
 interface AccordionItemModel {
   id: number;
   heading: string;
   content: string;
   disabled: boolean;
+  icon: string;
 }
 
 interface AccordionKnobState {
@@ -48,6 +52,8 @@ interface AccordionKnobState {
 
 const SLUG = 'accordion';
 
+const ITEM_ICONS = [ICON_NONE, 'info', 'settings', 'star', 'book', 'package', 'palette'];
+
 @Component({
   selector: 'web-accordion-demo-page',
   templateUrl: './accordion-demo-page.component.html',
@@ -57,6 +63,7 @@ const SLUG = 'accordion';
     AccordionItemComponent,
     ButtonComponent,
     CheckboxComponent,
+    DropdownComponent,
     InputComponent,
     PlusIconComponent,
     TooltipDirective,
@@ -69,6 +76,8 @@ export class AccordionDemoPageComponent {
   protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.accordion, UI_API[SLUG]);
+  protected readonly iconOptions = ITEM_ICONS.map(slug => ({ value: slug, label: slug }));
+  protected readonly iconFor = iconComponentForSlug;
   protected readonly state = signal<AccordionKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.accordion) as AccordionKnobState,
   );
@@ -81,6 +90,9 @@ export class AccordionDemoPageComponent {
     this.items()
       .map(item => {
         const attrs = [`value="item-${item.id}"`, `label="${item.heading}"`];
+        if (item.icon !== ICON_NONE) {
+          attrs.push(`[icon]="${iconComponentName(item.icon)}"`);
+        }
         if (item.disabled) {
           attrs.push('[disabled]="true"');
         }
@@ -112,6 +124,7 @@ export class AccordionDemoPageComponent {
         heading: this.messages().ui.component.demos.accordion.newSectionHeading,
         content: this.messages().ui.component.demos.accordion.newSectionContent,
         disabled: false,
+        icon: ICON_NONE,
       },
     ]);
   }
@@ -129,9 +142,9 @@ export class AccordionDemoPageComponent {
   private seedItems(): AccordionItemModel[] {
     const m = this.messages().ui.component.demos.accordion;
     return [
-      { heading: m.whatLabel, content: m.whatBody },
-      { heading: m.installLabel, content: m.installBody },
-      { heading: m.themeLabel, content: m.themeBody },
+      { heading: m.whatLabel, content: m.whatBody, icon: 'info' },
+      { heading: m.installLabel, content: m.installBody, icon: 'package' },
+      { heading: m.themeLabel, content: m.themeBody, icon: 'palette' },
     ].map(item => ({ ...item, disabled: false, id: this.nextId++ }));
   }
 }

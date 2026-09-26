@@ -852,17 +852,27 @@ export interface WebMessages {
           software: string;
           services: string;
           quarters: readonly string[];
+          categories: string;
+          category: string;
         };
         lineChart: {
           visitors: string;
           signUps: string;
           months: readonly string[];
+          points: string;
+          ticks: string;
+          xPosition: string;
+          value: string;
+          tooltipTitle: string;
         };
         pieChart: {
           desktop: string;
           mobile: string;
           tablet: string;
           other: string;
+          slices: string;
+          slice: string;
+          value: string;
         };
         commandPalette: {
           hint: string;

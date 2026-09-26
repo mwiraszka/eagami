@@ -85,6 +85,11 @@
   gap: 0.5em;
 }
 
+@mixin chart-tooltip-value {
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
 @mixin chart-tooltip-title {
   font-weight: var(--font-weight-medium);
 }

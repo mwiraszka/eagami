@@ -1,6 +1,9 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 
+import { InfoIconComponent } from '../icons/info.component';
+import { SettingsIconComponent } from '../icons/settings.component';
+import { StarIconComponent } from '../icons/star.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionComponent } from './accordion.component';
 import { ACCORDION_KNOBS } from './accordion.component.knobs';
@@ -52,4 +55,28 @@ export const InteractionTest: Story = {
       canvas.getByRole('region', { name: /how do i install it/i }),
     ).toBeVisible();
   },
+};
+
+export const WithIcons: Story = {
+  render: args => ({
+    props: {
+      ...args,
+      infoIcon: InfoIconComponent,
+      settingsIcon: SettingsIconComponent,
+      starIcon: StarIconComponent,
+    },
+    template: `
+      <ea-accordion [multi]="multi" [size]="size" class="story-medium">
+        <ea-accordion-item value="what" label="What is @eagami/ui?" [icon]="infoIcon">
+          A lightweight, accessible Angular component library built on CSS custom properties.
+        </ea-accordion-item>
+        <ea-accordion-item value="install" label="How do I install it?" [icon]="settingsIcon">
+          Run npm install @eagami/ui or pnpm add @eagami/ui, then add the global stylesheet.
+        </ea-accordion-item>
+        <ea-accordion-item value="theme" label="Can I customize the theme?" [icon]="starIcon">
+          Yes: override any CSS custom property on :root or scope overrides to individual components.
+        </ea-accordion-item>
+      </ea-accordion>
+    `,
+  }),
 };

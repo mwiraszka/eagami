@@ -11,15 +11,24 @@ import {
 } from '@angular/core';
 
 import {
+  BREAK_CLEARANCE,
+  BREAK_HEIGHT,
+  CHART_LABEL_ANGLES,
+  type ChartLabelOrientation,
   type ChartPointEvent,
   type ChartSeries,
   type ChartSize,
+  axisBreak,
   chartColor,
   clamp,
   estimateTextWidth,
   injectChartFormatter,
   injectChartViewport,
+  labelBand,
+  labelLine,
+  labelRoom,
   niceScale,
+  tickLength,
 } from '../chart/chart';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
@@ -125,6 +134,13 @@ export class BarChartComponent {
   readonly showLegend = input<boolean>(true);
   /** Prints each bar's value at its end, or each stack's total when stacked. */
   readonly showValues = input<boolean>(false);
+  /** How the category labels under a vertical chart are set; `auto` turns them as they run out of room. */
+  readonly xLabelOrientation = input<ChartLabelOrientation>('horizontal');
+  /**
+   * Starts the value axis of a vertical chart near its shortest bar instead of at
+   * zero, when every value is positive, and marks the cut with a break symbol.
+   */
+  readonly showAxisBreak = input<boolean>(false);
   /** Height of the plot in pixels; the width fills the container. */
   readonly height = input<number>(240);
   /** Visual size; scales the axis, legend, and tooltip text and the bar thickness cap. */
@@ -194,6 +210,8 @@ export class BarChartComponent {
 
     let lo = 0;
     let hi = 0;
+    // Top of the shortest bar above zero, where a broken axis may begin
+    let lowestTop = Infinity;
     for (let i = 0; i < count; i++) {
       let up = 0;
       let down = 0;
@@ -209,11 +227,25 @@ export class BarChartComponent {
       });
       hi = Math.max(hi, up);
       lo = Math.min(lo, down);
+      if (stacked && up > 0) {
+        lowestTop = Math.min(lowestTop, up);
+      }
     }
+    if (!stacked) {
+      for (const s of series) {
+        for (const value of s.data) {
+          if (value != null && isFinite(value) && value > 0) {
+            lowestTop = Math.min(lowestTop, value);
+          }
+        }
+      }
+    }
+    const breakable = vertical && this.showAxisBreak() && lo >= 0 && isFinite(lowestTop);
+    const scaleLo = breakable ? lowestTop : lo;
 
     const labelTexts = Array.from({ length: count }, (_, i) => this.labels()[i] ?? '');
     const valueRoom = this.showValues() ? axisPx * 1.5 : 0;
-    const provisionalTicks = niceScale(lo, hi).ticks.map(format);
+    const provisionalTicks = niceScale(scaleLo, hi).ticks.map(format);
     const widestTick = Math.max(
       0,
       ...provisionalTicks.map(t => estimateTextWidth(t, axisPx)),
@@ -224,12 +256,27 @@ export class BarChartComponent {
     let top: number;
     let bottom: number;
     let categoryText: string[];
+    let angle = 0;
     if (vertical) {
       left = widestTick + axisPx;
       right = axisPx / 2;
       top = axisPx + valueRoom;
-      bottom = axisPx * 2.5;
       categoryText = labelTexts;
+      const orientation = this.xLabelOrientation();
+      const band = Math.max(1, width - left - right) / count;
+      // Auto turns the labels only once level ones would no longer fit their bands
+      angle =
+        orientation === 'auto'
+          ? ([0, 45, 90].find(a =>
+              labelTexts.every(t => labelRoom(t, a, axisPx) <= band),
+            ) ?? 90)
+          : CHART_LABEL_ANGLES[orientation];
+      bottom = labelBand(
+        Math.max(0, ...labelTexts.map(t => estimateTextWidth(t, axisPx))),
+        angle,
+        axisPx,
+        height,
+      );
     } else {
       const maxLabel = width * 0.3;
       categoryText = labelTexts.map(t => truncate(t, maxLabel, axisPx));
@@ -244,14 +291,32 @@ export class BarChartComponent {
     const plotHeight = Math.max(1, height - top - bottom);
     const valueLength = vertical ? plotHeight : plotWidth;
     const scale = niceScale(
-      lo,
+      scaleLo,
       hi,
       Math.max(
         2,
         Math.floor(valueLength / (vertical ? axisPx * 3 : widestTick + axisPx * 2)),
       ),
     );
-    const { min, max } = scale;
+    let { min } = scale;
+    const { max } = scale;
+    const scaleTicks = [...scale.ticks];
+    // A broken axis keeps a wide gap under its shortest bar, and zero ends it
+    if (breakable && min > 0) {
+      const step = scaleTicks[1] - scaleTicks[0];
+      const clearance = axisPx * BREAK_CLEARANCE;
+      const px = (value: number) => (value / (max - min || 1)) * plotHeight;
+      for (
+        let steps = 0;
+        steps < 6 && min > 0 && px(lowestTop - min) < clearance;
+        steps++
+      ) {
+        min = Number((min - step).toPrecision(12));
+        scaleTicks.unshift(min);
+      }
+    }
+    const axisY = top + plotHeight;
+    const breakY = breakable && min > 0 ? axisY - axisPx * BREAK_HEIGHT : null;
     // Pixel position along the value axis
     const valuePos = (v: number) => {
       const t = (clamp(v, min, max) - min) / (max - min || 1);
@@ -386,18 +451,13 @@ export class BarChartComponent {
       }
     }
 
-    const ticks = scale.ticks.map(value => ({
-      value,
-      text: format(value),
-      pos: valuePos(value),
-    }));
-    const widestCategory = Math.max(
-      0,
-      ...categoryText.map(t => estimateTextWidth(t, axisPx)),
-    );
-    const labelStep = vertical
-      ? Math.max(1, Math.ceil((widestCategory + axisPx) / band))
-      : 1;
+    // Nothing is labelled at or below a break, where the axis no longer holds its scale
+    const ticks = scaleTicks
+      .filter(value => value >= min)
+      .map(value => ({ value, text: format(value), pos: valuePos(value) }))
+      .filter(tick => breakY == null || tick.pos < breakY - axisPx);
+    const widestRoom = Math.max(0, ...categoryText.map(t => labelRoom(t, angle, axisPx)));
+    const labelStep = vertical ? Math.max(1, Math.ceil(widestRoom / band)) : 1;
     const categories = categoryText
       .map((text, index) => ({ text, index, pos: categoryStart + (index + 0.5) * band }))
       .filter(c => c.index % labelStep === 0);
@@ -421,6 +481,11 @@ export class BarChartComponent {
       bars,
       valueLabels,
       valuePos,
+      axisY,
+      tickEndY: axisY + tickLength(axisPx),
+      labelAngle: angle,
+      labelY: labelLine(axisY, angle, axisPx),
+      axisBreak: breakY == null ? null : axisBreak(left, top, axisY, breakY, axisPx),
     };
   });
 

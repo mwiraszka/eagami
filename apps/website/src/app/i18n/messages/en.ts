@@ -1061,17 +1061,27 @@ export const en: WebMessages = {
           software: 'Software',
           services: 'Services',
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
+          categories: 'Categories',
+          category: 'Category',
         },
         lineChart: {
           visitors: 'Visitors',
           signUps: 'Sign-ups',
           months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+          points: 'Points',
+          ticks: 'X-axis ticks',
+          xPosition: 'X position',
+          value: 'Value',
+          tooltipTitle: 'Tooltip title',
         },
         pieChart: {
           desktop: 'Desktop',
           mobile: 'Mobile',
           tablet: 'Tablet',
           other: 'Other',
+          slices: 'Slices',
+          slice: 'Slice',
+          value: 'Value',
         },
       },
       playground: {
@@ -1105,6 +1115,8 @@ export const en: WebMessages = {
             showValues: 'Show values',
             showGrid: 'Show grid',
             showLegend: 'Show legend',
+            showAxisBreak: 'Show axis break',
+            xLabelOrientation: 'X-axis label orientation',
           },
           'line-chart': {
             curve: 'Curve',
@@ -1116,6 +1128,9 @@ export const en: WebMessages = {
             showPoints: 'Show points',
             showGrid: 'Show grid',
             showLegend: 'Show legend',
+            showAxisBreak: 'Show axis break',
+            xLabelOrientation: 'X-axis label orientation',
+            visibleXSpan: 'Visible x span',
           },
           'pie-chart': {
             variant: 'Variant',
@@ -1385,11 +1400,26 @@ export const en: WebMessages = {
             pointClick: 'Fires when a bar is clicked, or chosen with Enter or Space.',
             activePointChange:
               'Fires when the highlighted bar changes by pointer or keyboard, with null once cleared.',
+            showAxisBreak:
+              'In a vertical chart whose values are all positive, starts the value axis near the shortest bar instead of at zero and marks the cut with a break symbol.',
+            xLabelOrientation:
+              'How the category labels under a vertical chart are set: level, at 45 degrees, at 90 degrees, or auto, which turns them 45 then 90 degrees as they crowd.',
           },
           'line-chart': {
-            labels: 'Category labels along the x-axis, one per value.',
+            labels:
+              "Each point's name, one per value, titling its tooltip and its row in the data table; also labels the x-axis unless xTicks is set.",
             series:
               'The series to plot, each with a name, one value per label (null leaves a gap), and an optional color.',
+            xValues:
+              'Position of each point along the x-axis, one per value in ascending order, so points sit proportionally apart; spaced evenly by index when unset.',
+            xTicks:
+              'Labelled marks drawn along the x-axis in place of the per-point labels, each at its value on the x scale; they need not line up with any point. The axis widens to take in any tick beyond the points.',
+            showAxisBreak:
+              'Marks the foot of a y-axis that stops short of zero with a break symbol.',
+            xLabelOrientation:
+              'How the x-axis labels are set: level, at 45 degrees, at 90 degrees, or auto, which stays level while the labels fit and turns them 45 then 90 degrees as they crowd.',
+            visibleXSpan:
+              'Width of the x range shown at once, in the units of xValues (or of indices); a longer run opens on its latest stretch and pans by trackpad, Shift + wheel, drag, or the arrow keys, refitting the y-axis to the points in view. A trackpad pinch or Ctrl + wheel widens or narrows the window.',
             curve: 'How the line bends between points.',
             showArea: 'Fills the area beneath each line with a light wash of its color.',
             showPoints: 'Marks every value with a point.',
@@ -1408,6 +1438,8 @@ export const en: WebMessages = {
             pointClick: 'Fires when a point is clicked, or chosen with Enter or Space.',
             activePointChange:
               'Fires when the highlighted point changes by pointer or keyboard, with null once cleared.',
+            visibleRangeChange:
+              'Fires with the start and end of the visible x range whenever a windowed chart pans. It also fires when the window is zoomed.',
           },
           'pie-chart': {
             data: "The slices to draw clockwise from twelve o'clock, each with a label, a value, and an optional color.",
@@ -2217,6 +2249,7 @@ export const en: WebMessages = {
               'Fires when the popover requests to be closed; the parent should mirror this into [open].',
           },
           'accordion-item': {
+            icon: "Icon component rendered before the label in the item's header button, sized with the item and hidden from assistive technology.",
             disabled: 'Disables this item, preventing it from being toggled.',
             id: "id applied to the item's header button and panel, auto-generated when omitted.",
             label: "Text shown in the item's header button.",

@@ -1076,17 +1076,27 @@ export const nl: WebMessages = {
           software: 'Software',
           services: 'Diensten',
           quarters: ['K1', 'K2', 'K3', 'K4'],
+          categories: 'Categorieën',
+          category: 'Categorie',
         },
         lineChart: {
           visitors: 'Bezoekers',
           signUps: 'Aanmeldingen',
           months: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug'],
+          points: 'Punten',
+          ticks: 'X-as-markeringen',
+          xPosition: 'X-positie',
+          value: 'Waarde',
+          tooltipTitle: 'Tooltiptitel',
         },
         pieChart: {
           desktop: 'Desktop',
           mobile: 'Mobiel',
           tablet: 'Tablet',
           other: 'Overig',
+          slices: 'Segmenten',
+          slice: 'Segment',
+          value: 'Waarde',
         },
       },
       playground: {
@@ -1120,6 +1130,8 @@ export const nl: WebMessages = {
             showValues: 'Waarden tonen',
             showGrid: 'Raster tonen',
             showLegend: 'Legenda tonen',
+            showAxisBreak: 'Asonderbreking tonen',
+            xLabelOrientation: 'Richting van x-aslabels',
           },
           'line-chart': {
             curve: 'Curve',
@@ -1131,6 +1143,9 @@ export const nl: WebMessages = {
             showPoints: 'Punten tonen',
             showGrid: 'Raster tonen',
             showLegend: 'Legenda tonen',
+            showAxisBreak: 'Asonderbreking tonen',
+            xLabelOrientation: 'Richting van x-aslabels',
+            visibleXSpan: 'Zichtbare x-breedte',
           },
           'pie-chart': {
             variant: 'Variant',
@@ -1401,11 +1416,26 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer op een staaf wordt geklikt, of wanneer deze met Enter of spatiebalk wordt gekozen.',
             activePointChange:
               'Wordt geactiveerd wanneer de gemarkeerde staaf via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+            showAxisBreak:
+              'Laat in een verticale grafiek met alleen positieve waarden de waardeas bij de kortste staaf beginnen in plaats van bij nul en markeert de onderbreking met een teken.',
+            xLabelOrientation:
+              'Hoe de categorielabels onder een verticale grafiek staan: horizontaal, onder 45 graden, onder 90 graden of automatisch, dat ze 45 en daarna 90 graden draait als het krap wordt.',
           },
           'line-chart': {
-            labels: 'Categorielabels langs de x-as, één per waarde.',
+            labels:
+              'Naam van elk punt, één per waarde, als titel van de tooltip en de rij in de gegevenstabel; labelt ook de x-as tenzij xTicks is ingesteld.',
             series:
               'De reeksen die worden getekend, elk met een naam, één waarde per label (null laat een onderbreking) en een optionele kleur.',
+            xValues:
+              'Positie van elk punt langs de x-as, één per waarde in oplopende volgorde, zodat punten naar verhouding uit elkaar liggen; zonder waarde gelijkmatig per index verdeeld.',
+            xTicks:
+              'Gelabelde markeringen langs de x-as in plaats van de labels per punt, elk op zijn waarde op de x-schaal; ze hoeven niet samen te vallen met een punt. De as wordt breder om markeringen buiten de punten mee te nemen.',
+            showAxisBreak:
+              'Markeert de voet van een y-as die niet tot nul loopt met een onderbrekingsteken.',
+            xLabelOrientation:
+              'Hoe de labels van de x-as staan: horizontaal, onder 45 graden, onder 90 graden of automatisch, dat ze horizontaal houdt zolang ze passen en ze 45 en daarna 90 graden draait als het krap wordt.',
+            visibleXSpan:
+              'Breedte van het x-bereik dat tegelijk zichtbaar is, in de eenheden van xValues (of van indexen); langere gegevens openen op het nieuwste deel en schuiven met trackpad, Shift + scrollwiel, slepen of de pijltoetsen, waarbij de y-as zich aan de zichtbare punten aanpast. Knijpen op het trackpad of Ctrl + scrollwiel verbreedt of versmalt het venster.',
             curve: 'Hoe de lijn tussen punten buigt.',
             showArea:
               'Vult het vlak onder elke lijn met een lichte tint van de eigen kleur.',
@@ -1426,6 +1456,8 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer op een punt wordt geklikt, of wanneer dit met Enter of spatiebalk wordt gekozen.',
             activePointChange:
               'Wordt geactiveerd wanneer het gemarkeerde punt via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+            visibleRangeChange:
+              'Wordt uitgezonden met het begin en einde van het zichtbare x-bereik wanneer een grafiek met venster verschuift. Wordt ook geactiveerd wanneer het venster wordt gezoomd.',
           },
           'pie-chart': {
             data: 'De segmenten die met de klok mee vanaf twaalf uur worden getekend, elk met een label, een waarde en een optionele kleur.',
@@ -2314,6 +2346,7 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer de popover verzoekt te worden gesloten; de ouder moet dit spiegelen naar [open].',
           },
           'accordion-item': {
+            icon: 'Pictogramcomponent vóór het label in de kopknop van het item, geschaald met het item en verborgen voor hulptechnologie.',
             disabled: 'Schakelt dit item uit, waardoor het niet kan worden omgeschakeld.',
             id: 'id toegepast op de koptekstknop en het paneel van het item, automatisch gegenereerd indien weggelaten.',
             label: 'Tekst getoond in de koptekstknop van het item.',

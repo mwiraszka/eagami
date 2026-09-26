@@ -6,20 +6,30 @@ import {
   computed,
   inject,
   input,
+  linkedSignal,
   output,
   signal,
 } from '@angular/core';
 
 import {
+  BREAK_CLEARANCE,
+  BREAK_HEIGHT,
+  CHART_LABEL_ANGLES,
+  type ChartLabelOrientation,
   type ChartPointEvent,
   type ChartSeries,
   type ChartSize,
+  axisBreak,
   chartColor,
   clamp,
   estimateTextWidth,
   injectChartFormatter,
   injectChartViewport,
+  labelBand,
+  labelLine,
+  labelRoom,
   niceScale,
+  tickLength,
 } from '../chart/chart';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
@@ -33,6 +43,18 @@ export type LineChartCurve = 'linear' | 'smooth' | 'step';
  * right, `fade` fades the plot in, and `rise` grows it up from the baseline.
  */
 export type LineChartAnimation = 'draw' | 'reveal' | 'fade' | 'rise' | 'none';
+
+/** A labelled mark along the x-axis, placed on the same scale as `xValues`. */
+export interface LineChartTick {
+  value: number;
+  label: string;
+}
+
+/** The stretch of the x scale a windowed line chart currently shows. */
+export interface LineChartVisibleRange {
+  start: number;
+  end: number;
+}
 
 interface PlotPoint {
   x: number;
@@ -52,6 +74,61 @@ interface PlotSeries {
 interface ActivePoint {
   series: number;
   index: number;
+}
+
+interface DataPoint {
+  index: number;
+  position: number;
+  value: number;
+}
+
+interface XLabel {
+  key: number;
+  text: string;
+  x: number;
+}
+
+// A label as drawn: level ones at the chart's edges are nudged inward off their tick
+interface PlacedXLabel extends XLabel {
+  textX: number;
+}
+
+interface XDomain {
+  /** First and last positions on the x scale. */
+  first: number;
+  last: number;
+  /** Positions at the plot's left and right edges. */
+  start: number;
+  end: number;
+  /** Width of the visible window, set only when the data outgrows it. */
+  span: number | null;
+}
+
+/** Room between a windowed plot's edges and the points pinned to them, for the active ring. */
+const EDGE_INSET = 8;
+
+/** Pointer travel in px before a press becomes a pan rather than a tap. */
+const DRAG_THRESHOLD = 4;
+
+/** Height in px of one line of a wheel event measured in lines. */
+const WHEEL_LINE_PX = 16;
+
+// How strongly a pinch or Ctrl + wheel scales a window, per pixel of wheel delta
+const ZOOM_RATE = 0.01;
+
+// Value a curve passes through at `position`, between two neighbouring points
+function valueBetween(
+  a: DataPoint,
+  b: DataPoint,
+  position: number,
+  curve: LineChartCurve,
+): number {
+  if (curve === 'step') {
+    return position < (a.position + b.position) / 2 ? a.value : b.value;
+  }
+  return (
+    a.value + ((b.value - a.value) * (position - a.position)) / (b.position - a.position)
+  );
 }
 
 function linearPath(points: PlotPoint[]): string {
@@ -115,11 +192,15 @@ const CURVES: Record<LineChartCurve, (points: PlotPoint[]) => string> = {
   step: stepPath,
 };
 
+let nextId = 0;
+
 /**
- * Plots one or more series of values across shared labels as lines, with
- * optional points and area fills. Hovering or arrowing through the chart
- * reveals each label's values in a tooltip, and a visually hidden table
- * carries the full data for screen readers.
+ * Plots one or more series of values as lines, with optional points and area
+ * fills. Points are spaced evenly by default, or placed along a numeric scale
+ * by `xValues`, with the x-axis labelled per point or by `xTicks`. A
+ * `visibleXSpan` window makes a long run of data pannable. Hovering or
+ * arrowing through the chart reveals each point's values in a tooltip, and a
+ * visually hidden table carries the full data for screen readers.
  */
 @Component({
   selector: 'ea-line-chart',
@@ -132,10 +213,33 @@ const CURVES: Record<LineChartCurve, (points: PlotPoint[]) => string> = {
 export class LineChartComponent {
   protected readonly i18n = inject(EagamiI18nService);
 
-  /** Category labels along the x-axis, one per value. */
+  /**
+   * Each point's name, one per value, titling its tooltip and its row in the
+   * data table. Also labels the x-axis, unless `xTicks` is set.
+   */
   readonly labels = input<string[]>([]);
   /** The series to plot. */
   readonly series = input<ChartSeries[]>([]);
+  /**
+   * Position of each point along the x-axis, one per value in ascending
+   * order, so points sit proportionally apart. Spaced evenly by index when
+   * unset.
+   */
+  readonly xValues = input<readonly number[] | null>(null);
+  /**
+   * Marks drawn along the x-axis in place of the per-point labels, each at its
+   * value on the x scale (`xValues`, or the index when unset). They need not
+   * line up with any point, and the axis widens to take in any beyond the points.
+   */
+  readonly xTicks = input<readonly LineChartTick[] | null>(null);
+  /**
+   * Width of the x range shown at once, in the units of `xValues` (or of
+   * indices when unset). When the data spans more, the chart opens on its
+   * latest stretch and pans by trackpad, Shift + wheel, drag, or the arrow
+   * keys, and a trackpad pinch or Ctrl + wheel widens or narrows the window,
+   * fitting the y-axis to the points in view. `null` shows everything.
+   */
+  readonly visibleXSpan = input<number | null>(null);
   /** How the line bends between points. */
   readonly curve = input<LineChartCurve>('linear');
   /** Fills the area beneath each line with a light wash of its color. */
@@ -150,6 +254,10 @@ export class LineChartComponent {
   readonly yMin = input<number | undefined>(undefined);
   /** Upper bound of the y-axis; derived from the data when unset. */
   readonly yMax = input<number | undefined>(undefined);
+  /** How the x-axis labels are set; `auto` turns them as they run out of room. */
+  readonly xLabelOrientation = input<ChartLabelOrientation>('horizontal');
+  /** Marks the foot of a y-axis that stops short of zero with a break symbol. */
+  readonly showAxisBreak = input<boolean>(false);
   /** Height of the plot in pixels; the width fills the container. */
   readonly height = input<number>(240);
   /** Visual size; scales the axis, legend, and tooltip text. */
@@ -167,10 +275,29 @@ export class LineChartComponent {
   readonly pointClick = output<ChartPointEvent>();
   /** Fires when the highlighted point changes by pointer or keyboard, with `null` once cleared. */
   readonly activePointChange = output<ChartPointEvent | null>();
+  /** Fires with the newly visible x range whenever a windowed chart pans or zooms. */
+  readonly visibleRangeChange = output<LineChartVisibleRange>();
 
   private readonly viewport = injectChartViewport(this.size);
   private readonly format = injectChartFormatter(this.formatValue);
   protected readonly active = signal<ActivePoint | null>(null);
+  protected readonly clipId = `ea-line-chart-clip-${nextId++}`;
+  protected readonly breakMaskId = `${this.clipId}-break`;
+
+  // The right edge of a panned window; `null` pins it to the latest point, and new data re-pins it
+  private readonly panEnd = linkedSignal<number | null>(() => {
+    this.xValues();
+    this.series();
+    this.visibleXSpan();
+    return null;
+  });
+  // Width of a windowed view, which a pinch widens or narrows from `visibleXSpan`
+  private readonly zoomSpan = linkedSignal<number | null>(() => this.visibleXSpan());
+  private gestureSpan: number | null = null;
+  protected readonly panning = signal(false);
+  private drag: { pointerId: number; x: number; end: number; moved: boolean } | null =
+    null;
+  private suppressClick = false;
 
   protected readonly label = computed(
     () => this.ariaLabel() || this.i18n.messages().chart.lineChart,
@@ -181,14 +308,41 @@ export class LineChartComponent {
   );
 
   protected readonly hasData = computed(() =>
-    this.series().some(s => s.data.some(v => v != null && isFinite(v))),
+    this.series().some(s => s.data.some(v => this.isValue(v))),
   );
+
+  // Each index's place on the x scale; `NaN` where `xValues` leaves it unknown
+  private readonly positions = computed(() => {
+    const xValues = this.xValues();
+    return Array.from({ length: this.count() }, (_, i) =>
+      xValues ? (xValues[i] ?? NaN) : i,
+    );
+  });
+
+  // Spans every point and every tick, so no tick falls outside the axis
+  protected readonly domain = computed<XDomain>(() => {
+    const known = [
+      ...this.positions(),
+      ...(this.xTicks()?.map(t => t.value) ?? []),
+    ].filter(p => isFinite(p));
+    const first = known.length ? Math.min(...known) : 0;
+    const last = known.length ? Math.max(...known) : 0;
+    const span = this.zoomSpan();
+    if (span == null || !(span > 0) || last - first <= span) {
+      return { first, last, start: first, end: last, span: null };
+    }
+    const end = clamp(this.panEnd() ?? last, first + span, last);
+    return { first, last, start: end - span, end, span };
+  });
+
+  protected readonly windowed = computed(() => this.domain().span != null);
 
   // A fresh object whenever the data or animation changes re-creates the plot,
   // which is what replays its entrance animation
   protected readonly renderPass = computed(() => {
     this.labels();
     this.series();
+    this.xValues();
     this.animation();
     this.animationDuration();
     return [{}];
@@ -197,83 +351,97 @@ export class LineChartComponent {
   protected readonly hostClasses = computed(() => ({
     [`ea-line-chart--${this.size()}`]: true,
     [`ea-line-chart--animate-${this.animation()}`]: true,
+    'ea-line-chart--pannable': this.windowed(),
+    'ea-line-chart--panning': this.panning(),
   }));
 
+  // Each series split into runs of consecutive plotted values, in data space
+  private readonly runs = computed(() => {
+    const positions = this.positions();
+    return this.series().map(s => {
+      const runs: DataPoint[][] = [];
+      let run: DataPoint[] = [];
+      positions.forEach((position, index) => {
+        const value = s.data[index];
+        if (!this.isValue(value) || !isFinite(position)) {
+          if (run.length) {
+            runs.push(run);
+          }
+          run = [];
+          return;
+        }
+        run.push({ index, position, value });
+      });
+      if (run.length) {
+        runs.push(run);
+      }
+      return runs;
+    });
+  });
+
+  // Values the y-axis must fit: every value, or on a panned window, those in view
+  // plus where each line crosses the window's edges
+  private readonly visibleValues = computed(() => {
+    const runs = this.runs().flat();
+    const domain = this.domain();
+    if (domain.span == null) {
+      return runs.flatMap(run => run.map(p => p.value));
+    }
+    const curve = this.curve();
+    const values: number[] = [];
+    for (const run of runs) {
+      run.forEach((point, i) => {
+        if (point.position >= domain.start && point.position <= domain.end) {
+          values.push(point.value);
+        }
+        const next = run[i + 1];
+        for (const edge of next ? [domain.start, domain.end] : []) {
+          if (point.position < edge && next.position > edge) {
+            values.push(valueBetween(point, next, edge, curve));
+          }
+        }
+      });
+    }
+    return values;
+  });
+
   protected readonly layout = computed(() => {
-    const count = this.count();
     const width = this.viewport.width();
     const height = this.height();
     const axisPx = this.viewport.fontSize() * 0.75;
-    const format = this.format();
-    const values = this.series().flatMap(s =>
-      s.data.filter((v): v is number => v != null && isFinite(v)),
-    );
+    const orientation = this.xLabelOrientation();
+    const fixedAngle = orientation === 'auto' ? 0 : CHART_LABEL_ANGLES[orientation];
+    const plot = this.plotArea(width, height, axisPx, fixedAngle);
+    // Auto turns the labels only once level ones would no longer fit, then lays out again
+    const angle =
+      orientation === 'auto'
+        ? ([0, 45, 90].find(a => this.labelsFit(plot.candidates, a, axisPx)) ?? 90)
+        : fixedAngle;
+    const { plotHeight, min, max, tickTexts, left, plotWidth, x, xLabels } =
+      angle === fixedAngle ? plot : this.plotArea(width, height, axisPx, angle);
     const top = axisPx;
-    const bottom = axisPx * 2.5;
-    const plotHeight = Math.max(1, height - top - bottom);
 
-    let lo = this.yMin() ?? Math.min(...values);
-    let hi = this.yMax() ?? Math.max(...values);
-    if (this.showArea() && this.yMin() === undefined) {
-      lo = Math.min(lo, 0);
-    }
-    if (lo > hi) {
-      [lo, hi] = [hi, lo];
-    }
-    const scale = niceScale(lo, hi, Math.max(2, Math.floor(plotHeight / (axisPx * 3))));
-    let min = this.yMin() ?? scale.min;
-    let max = this.yMax() ?? scale.max;
-    if (min > max) {
-      [min, max] = [max, min];
-    }
-    const ticks = scale.ticks
-      .filter(t => t >= min && t <= max)
-      .map(value => ({ value, text: format(value) }));
-
-    const labelTexts = Array.from({ length: count }, (_, i) => this.labels()[i] ?? '');
-    const widestLabel = Math.max(0, ...labelTexts.map(t => estimateTextWidth(t, axisPx)));
-    const left =
-      Math.max(0, ...ticks.map(t => estimateTextWidth(t.text, axisPx))) + axisPx;
-    const right = Math.min(widestLabel / 2, width * 0.1) + axisPx / 2;
-    const plotWidth = Math.max(1, width - left - right);
-    const spacing = count > 1 ? plotWidth / (count - 1) : plotWidth;
-    const x = (i: number) => (count > 1 ? left + i * spacing : left + plotWidth / 2);
     const y = (v: number) =>
       top + (1 - (clamp(v, min, max) - min) / (max - min || 1)) * plotHeight;
     const baselineY = y(clamp(0, min, max));
-
-    const labelStep = Math.max(1, Math.ceil((widestLabel + axisPx) / spacing));
-    const xLabels = labelTexts
-      .map((text, index) => ({ text, index, x: x(index) }))
-      .filter(l => l.index % labelStep === 0);
+    const breakY =
+      this.showAxisBreak() && min > 0 ? top + plotHeight - axisPx * BREAK_HEIGHT : null;
+    const axisY = top + plotHeight;
 
     const curve = CURVES[this.curve()];
     const series: PlotSeries[] = this.series().map((s, seriesIndex) => {
-      const segments: PlotPoint[][] = [];
-      let run: PlotPoint[] = [];
-      for (let index = 0; index < count; index++) {
-        const value = s.data[index];
-        if (value == null || !isFinite(value)) {
-          if (run.length) {
-            segments.push(run);
-          }
-          run = [];
-          continue;
-        }
-        run.push({ x: x(index), y: y(value), index, value });
-      }
-      if (run.length) {
-        segments.push(run);
-      }
+      const runs = this.runs()[seriesIndex].map(run =>
+        run.map(p => ({ x: x(p.index), y: y(p.value), index: p.index, value: p.value })),
+      );
       return {
         name: s.name,
         color: chartColor(seriesIndex, s.color),
-        paths: segments.map(curve),
-        areas: segments.map(
+        paths: runs.map(curve),
+        areas: runs.map(
           seg =>
             `${curve(seg)}L${seg[seg.length - 1].x},${baselineY}L${seg[0].x},${baselineY}Z`,
         ),
-        points: segments.flat(),
+        points: runs.flat(),
       };
     });
 
@@ -285,15 +453,82 @@ export class LineChartComponent {
       plotWidth,
       plotHeight,
       baselineY,
-      labelY: top + plotHeight + axisPx * 1.5,
+      windowed: this.domain().span != null,
+      axisBreak: breakY == null ? null : axisBreak(left, top, axisY, breakY, axisPx),
+      axisY,
+      tickEndY: axisY + tickLength(axisPx),
+      labelAngle: angle,
+      // A turned label hangs from just below its tick; a level one sits a line beneath
+      labelY: labelLine(axisY, angle, axisPx),
       tickX: left - axisPx / 2,
-      ticks: ticks.map(t => ({ ...t, y: y(t.value) })),
+      // Nothing is labelled at or below a break, where the axis no longer holds its scale
+      ticks: tickTexts
+        .map(t => ({ ...t, y: y(t.value) }))
+        .filter(t => breakY == null || t.y < breakY - axisPx),
       xLabels,
       series,
       x,
       y,
     };
   });
+
+  // The plot's box, y scale and x labels for labels turned to `angle` degrees
+  private plotArea(width: number, height: number, axisPx: number, angle: number) {
+    const format = this.format();
+    const domain = this.domain();
+    const windowed = domain.span != null;
+    const top = axisPx;
+    const bottom = labelBand(this.widestXLabel(axisPx), angle, axisPx, height);
+    const plotHeight = Math.max(1, height - top - bottom);
+    const maxTicks = Math.max(2, Math.floor(plotHeight / (axisPx * 3)));
+
+    const { min, max, ticks } = this.yScale(
+      this.visibleValues(),
+      plotHeight,
+      axisPx,
+      maxTicks,
+    );
+    const tickTexts = ticks.map(value => ({ value, text: format(value) }));
+    // A panned window sizes its gutter for the whole range's ticks too, so the plot never shifts
+    const gutterTexts = [
+      ...tickTexts.map(t => t.text),
+      ...(windowed
+        ? this.yScale(
+            this.runs().flatMap(runs => runs.flat().map(p => p.value)),
+            plotHeight,
+            axisPx,
+            maxTicks,
+          ).ticks.map(format)
+        : []),
+    ];
+    const left =
+      Math.max(0, ...gutterTexts.map(t => estimateTextWidth(t, axisPx))) + axisPx;
+
+    const positions = this.positions();
+    const xAxis = (right: number) => {
+      const plotWidth = Math.max(1, width - left - right);
+      const at = this.atPosition(domain, left, plotWidth);
+      const x = (i: number) => at(positions[i]);
+      return {
+        plotWidth,
+        x,
+        xLabels: this.xLabels(domain, at, x, plotWidth, axisPx, angle),
+        candidates: this.xLabelCandidates(domain, at, x),
+      };
+    };
+
+    // Edge labels are nudged inward rather than given room of their own, so the plot
+    // runs to within a small margin of the right edge
+    const axis = xAxis(axisPx / 2);
+    const xLabels: PlacedXLabel[] = axis.xLabels.map(label => {
+      if (angle) {
+        return { ...label, textX: label.x };
+      }
+      const half = estimateTextWidth(label.text, axisPx) / 2;
+      return { ...label, textX: clamp(label.x, half, width - half) };
+    });
+    return { plotHeight, min, max, tickTexts, left, ...axis, xLabels };
+  }
 
   protected readonly tooltip = computed(() => {
     const active = this.active();
@@ -308,14 +543,13 @@ export class LineChartComponent {
       return {
         name: s.name,
         color: chartColor(i, s.color),
-        value: value == null || !isFinite(value) ? '–' : this.format()(value),
+        value: this.tableValue(value),
         active: i === active.series,
       };
     });
     return {
       x,
-      y:
-        activeValue != null && isFinite(activeValue) ? layout.y(activeValue) : layout.top,
+      y: this.isValue(activeValue) ? layout.y(activeValue) : layout.top,
       title: this.labels()[active.index] ?? '',
       rows,
       key: `${active.series}-${active.index}`,
@@ -356,29 +590,52 @@ export class LineChartComponent {
   }
 
   protected tableValue(value: number | null | undefined): string {
-    return value == null || !isFinite(value) ? '–' : this.format()(value);
+    return this.isValue(value) ? this.format()(value) : '–';
+  }
+
+  protected onPointerDown(event: PointerEvent): void {
+    this.suppressClick = false;
+    const domain = this.domain();
+    if (domain.span != null && event.button === 0) {
+      this.drag = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        end: domain.end,
+        moved: false,
+      };
+    }
+    this.onPointerMove(event);
   }
 
   protected onPointerMove(event: PointerEvent): void {
+    // A press released outside the chart never reported its pointerup
+    if (this.drag && event.buttons === 0) {
+      this.endDrag();
+    }
+    const drag = this.drag;
+    if (drag && drag.pointerId === event.pointerId) {
+      const dx = event.clientX - drag.x;
+      if (drag.moved || Math.abs(dx) >= DRAG_THRESHOLD) {
+        if (!drag.moved) {
+          drag.moved = true;
+          this.panning.set(true);
+          this.setActive(null);
+          (event.currentTarget as Element).setPointerCapture?.(event.pointerId);
+        }
+        this.panTo(drag.end - dx * this.unitsPerPx());
+        return;
+      }
+    }
     const target = event.currentTarget as SVGSVGElement;
     const rect = target.getBoundingClientRect();
-    const layout = this.layout();
-    const count = this.count();
-    const px = event.clientX - rect.left;
+    const index = this.indexAt(event.clientX - rect.left);
     const py = event.clientY - rect.top;
-    const index =
-      count > 1
-        ? clamp(
-            Math.round(((px - layout.left) / layout.plotWidth) * (count - 1)),
-            0,
-            count - 1,
-          )
-        : 0;
+    const layout = this.layout();
     let series = -1;
     let nearest = Infinity;
-    this.series().forEach((s, i) => {
-      const value = s.data[index];
-      if (value == null || !isFinite(value)) {
+    this.series().forEach((_, i) => {
+      const value = this.valueAt(i, index);
+      if (value == null) {
         return;
       }
       const distance = Math.abs(layout.y(value) - py);
@@ -390,11 +647,56 @@ export class LineChartComponent {
     this.setActive(series === -1 ? null : { series, index });
   }
 
+  protected onPointerUp(event: PointerEvent): void {
+    if (this.drag?.pointerId === event.pointerId) {
+      this.suppressClick = this.drag.moved;
+      this.endDrag();
+    }
+  }
+
   protected onPointerLeave(): void {
+    if (!this.drag?.moved) {
+      this.setActive(null);
+    }
+  }
+
+  // Trackpads report horizontal swipes as deltaX; a mouse wheel pans only with Shift
+  protected onWheel(event: WheelEvent): void {
+    // Chromium and Firefox report a trackpad pinch as a wheel with Ctrl held
+    if (event.ctrlKey && event.deltaY && this.visibleXSpan() != null) {
+      event.preventDefault();
+      const { start, end } = this.domain();
+      this.zoomTo((end - start) * Math.exp(event.deltaY * ZOOM_RATE), {
+        clientX: event.clientX,
+        currentTarget: event.currentTarget,
+      });
+      return;
+    }
+    const domain = this.domain();
+    if (domain.span == null) {
+      return;
+    }
+    const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    const delta = horizontal ? event.deltaX : event.shiftKey ? event.deltaY : 0;
+    if (!delta) {
+      return;
+    }
+    event.preventDefault();
+    const unit =
+      event.deltaMode === WheelEvent.DOM_DELTA_LINE
+        ? WHEEL_LINE_PX
+        : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? this.layout().plotWidth
+          : 1;
     this.setActive(null);
+    this.panTo(domain.end + delta * unit * this.unitsPerPx());
   }
 
   protected onClick(): void {
+    if (this.suppressClick) {
+      this.suppressClick = false;
+      return;
+    }
     const event = this.eventFor(this.active());
     if (event) {
       this.pointClick.emit(event);
@@ -461,17 +763,333 @@ export class LineChartComponent {
         return;
     }
     event.preventDefault();
-    this.setActive(next ?? (event.key === 'Escape' ? null : active));
+    const target = next ?? (event.key === 'Escape' ? null : active);
+    if (target) {
+      this.reveal(target.index);
+    }
+    this.setActive(target);
+  }
+
+  private isValue(value: number | null | undefined): value is number {
+    return value != null && isFinite(value);
+  }
+
+  private yScale(
+    values: number[],
+    plotHeight: number,
+    axisPx: number,
+    maxTicks: number,
+  ): { min: number; max: number; ticks: number[] } {
+    const yMin = this.yMin();
+    const yMax = this.yMax();
+    const dataMin = Math.min(...values);
+    const dataMax = Math.max(...values);
+    let lo = yMin ?? dataMin;
+    let hi = yMax ?? dataMax;
+    // An area fill keeps its zero baseline, so a lowest value of zero may rest on it
+    const zeroFloor = this.showArea() && yMin === undefined && !(dataMin < 0);
+    if (zeroFloor) {
+      lo = Math.min(lo, 0);
+    }
+    if (lo > hi) {
+      [lo, hi] = [hi, lo];
+    }
+    // Room kept between the outermost points and the plot's top and bottom edges
+    const clearance = axisPx;
+    // An axis that stops short of zero keeps a wider gap under its lowest point, so
+    // the baseline beneath it never reads as zero
+    const breakClearance = axisPx * BREAK_CLEARANCE;
+    const derivedFloor = yMin === undefined && !zeroFloor && dataMin > 0;
+
+    // A panned window fits its bounds to the points in view without rounding, so
+    // the axis glides as it pans instead of jumping between round numbers
+    if (this.windowed() && isFinite(lo) && isFinite(hi)) {
+      const spread = hi - lo || Math.abs(hi) || 1;
+      const pad = (clearance * spread) / Math.max(1, plotHeight - 2 * clearance);
+      const breakPad =
+        (breakClearance * spread) / Math.max(1, plotHeight - clearance - breakClearance);
+      const min =
+        yMin ?? (zeroFloor ? lo : derivedFloor ? Math.max(0, lo - breakPad) : lo - pad);
+      const max = yMax ?? hi + pad;
+      const ticks = niceScale(min, max, maxTicks).ticks.filter(t => t >= min && t <= max);
+      return { min, max, ticks };
+    }
+
+    const scale = niceScale(lo, hi, maxTicks);
+    const step = scale.ticks[1] - scale.ticks[0];
+    const ticks = [...scale.ticks];
+    let min = yMin ?? scale.min;
+    let max = yMax ?? scale.max;
+    if (min > max) {
+      [min, max] = [max, min];
+    }
+    // A value on or just inside a derived bound extends the scale one step past it
+    const px = (value: number) => (value / (max - min || 1)) * plotHeight;
+    const lowTight = () =>
+      yMin === undefined &&
+      !zeroFloor &&
+      px(dataMin - min) < (derivedFloor && min > 0 ? breakClearance : clearance);
+    const highTight = yMax === undefined && px(max - dataMax) < clearance;
+    // Each step down widens the gap, and zero ends it, since the axis is then whole
+    for (let steps = 0; steps < 6 && lowTight() && !(derivedFloor && min <= 0); steps++) {
+      min = Number((min - step).toPrecision(12));
+      ticks.unshift(min);
+    }
+    if (highTight) {
+      max = Number((max + step).toPrecision(12));
+      ticks.push(max);
+    }
+    return { min, max, ticks: ticks.filter(t => t >= min && t <= max) };
+  }
+
+  // A windowed plot insets its edges, so points pinned to them show whole
+  private atPosition(
+    domain: XDomain,
+    left: number,
+    plotWidth: number,
+  ): (position: number) => number {
+    const inset = domain.span != null ? EDGE_INSET : 0;
+    const inner = Math.max(1, plotWidth - 2 * inset);
+    const extent = domain.end - domain.start;
+    const scale = inner / extent;
+    return (position: number) =>
+      extent > 0
+        ? left + inset + (position - domain.start) * scale
+        : left + plotWidth / 2;
+  }
+
+  // Every x label in view, before any are thinned out to fit
+  private xLabelCandidates(
+    domain: XDomain,
+    at: (position: number) => number,
+    x: (i: number) => number,
+  ): XLabel[] {
+    const inView = (position: number) =>
+      position >= domain.start && position <= domain.end;
+    const ticks = this.xTicks();
+    if (ticks) {
+      return ticks
+        .filter(t => inView(t.value))
+        .map(t => ({ key: t.value, text: t.label, x: at(t.value) }));
+    }
+    const positions = this.positions();
+    return positions
+      .map((position, index) => ({
+        key: index,
+        text: this.labels()[index] ?? '',
+        x: x(index),
+      }))
+      .filter(l => inView(positions[l.key]));
+  }
+
+  private labelsFit(labels: XLabel[], angle: number, axisPx: number): boolean {
+    return labels.every(
+      (label, i) =>
+        i === 0 ||
+        label.x - labels[i - 1].x >=
+          (labelRoom(label.text, angle, axisPx) +
+            labelRoom(labels[i - 1].text, angle, axisPx)) /
+            2,
+    );
+  }
+
+  private xLabels(
+    domain: XDomain,
+    at: (position: number) => number,
+    x: (i: number) => number,
+    plotWidth: number,
+    axisPx: number,
+    angle: number,
+  ): XLabel[] {
+    const candidates = this.xLabelCandidates(domain, at, x);
+    // Ticks of the caller's own choosing are all kept
+    if (this.xTicks()) {
+      return candidates;
+    }
+    const texts = this.positions().map((_, i) => this.labels()[i] ?? '');
+    // Evenly spaced labels thin to every nth, so the survivors stay evenly spaced
+    if (!this.xValues()) {
+      const count = texts.length;
+      const extent = domain.end - domain.start;
+      const spacing =
+        count > 1
+          ? (plotWidth - (domain.span != null ? 2 * EDGE_INSET : 0)) / extent
+          : plotWidth;
+      const room = Math.max(0, ...texts.map(t => labelRoom(t, angle, axisPx)));
+      const step = Math.max(1, Math.ceil(room / spacing));
+      return candidates.filter(l => l.key % step === 0);
+    }
+    // Irregularly placed labels keep each one that clears the last one kept
+    const labels: XLabel[] = [];
+    let edge = -Infinity;
+    for (const label of candidates) {
+      const half = labelRoom(label.text, angle, axisPx) / 2;
+      if (label.x - half >= edge) {
+        labels.push(label);
+        edge = label.x + half;
+      }
+    }
+    return labels;
+  }
+
+  private widestXLabel(axisPx: number): number {
+    const texts = this.xTicks()?.map(t => t.label) ?? this.labels();
+    return Math.max(0, ...texts.map(t => estimateTextWidth(t, axisPx)));
+  }
+
+  // Safari reports a trackpad pinch as gesture events, scaled from where the pinch began
+  protected onGestureStart(event: Event): void {
+    if (this.visibleXSpan() == null) {
+      return;
+    }
+    event.preventDefault();
+    const { start, end } = this.domain();
+    this.gestureSpan = end - start;
+  }
+
+  protected onGestureChange(event: Event): void {
+    if (this.gestureSpan == null || !('scale' in event) || !('clientX' in event)) {
+      return;
+    }
+    const { scale, clientX } = event;
+    if (typeof scale !== 'number' || typeof clientX !== 'number' || !(scale > 0)) {
+      return;
+    }
+    event.preventDefault();
+    this.zoomTo(this.gestureSpan / scale, {
+      clientX,
+      currentTarget: event.currentTarget,
+    });
+  }
+
+  protected onGestureEnd(): void {
+    this.gestureSpan = null;
+  }
+
+  // Rescales the window to `span`, keeping the x position under the pointer in place
+  private zoomTo(
+    span: number,
+    { clientX, currentTarget }: { clientX: number; currentTarget: EventTarget | null },
+  ): void {
+    const domain = this.domain();
+    const full = domain.last - domain.first;
+    if (!(full > 0) || !(currentTarget instanceof Element)) {
+      return;
+    }
+    const next = clamp(span, Math.min(this.minSpan(), full), full);
+    const shown = domain.end - domain.start;
+    const inset = domain.span != null ? EDGE_INSET : 0;
+    const { left, plotWidth } = this.layout();
+    const offset = clientX - currentTarget.getBoundingClientRect().left - left - inset;
+    const ratio = clamp(offset / Math.max(1, plotWidth - 2 * inset), 0, 1);
+    const anchor = domain.start + ratio * shown;
+    const end = clamp(anchor + (1 - ratio) * next, domain.first + next, domain.last);
+    this.setActive(null);
+    this.zoomSpan.set(next);
+    this.panEnd.set(end);
+    this.visibleRangeChange.emit({ start: end - next, end });
+  }
+
+  // A window never narrows past two gaps between neighbouring points
+  private minSpan(): number {
+    const known = this.positions()
+      .filter(p => isFinite(p))
+      .sort((a, b) => a - b);
+    const gaps = known
+      .slice(1)
+      .map((p, i) => p - known[i])
+      .filter(gap => gap > 0);
+    return gaps.length ? Math.min(...gaps) * 2 : 1;
+  }
+
+  private unitsPerPx(): number {
+    const span = this.domain().span ?? 0;
+    return span / Math.max(1, this.layout().plotWidth - 2 * EDGE_INSET);
+  }
+
+  private panTo(end: number): void {
+    const domain = this.domain();
+    if (domain.span == null) {
+      return;
+    }
+    const next = clamp(end, domain.first + domain.span, domain.last);
+    if (next === domain.end) {
+      return;
+    }
+    this.panEnd.set(next);
+    this.visibleRangeChange.emit({ start: next - domain.span, end: next });
+  }
+
+  private endDrag(): void {
+    this.drag = null;
+    this.panning.set(false);
+  }
+
+  // Pans a window just far enough to bring the point at `index` into view
+  private reveal(index: number): void {
+    const domain = this.domain();
+    const position = this.positions()[index];
+    if (domain.span == null) {
+      return;
+    }
+    if (position < domain.start) {
+      this.panTo(position + domain.span);
+    } else if (position > domain.end) {
+      this.panTo(position);
+    }
+  }
+
+  // Nearest index to a pointer at `px`: by rounding when evenly spaced, else the
+  // closest plotted point in view
+  private indexAt(px: number): number {
+    const layout = this.layout();
+    const count = this.count();
+    const domain = this.domain();
+    if (!this.xValues()) {
+      if (count < 2) {
+        return 0;
+      }
+      const inset = domain.span != null ? EDGE_INSET : 0;
+      const inner = Math.max(1, layout.plotWidth - 2 * inset);
+      const index = Math.round(
+        domain.start + ((px - layout.left - inset) / inner) * (domain.end - domain.start),
+      );
+      return clamp(index, Math.ceil(domain.start), Math.floor(domain.end));
+    }
+    const positions = this.positions();
+    let best = -1;
+    let nearest = Infinity;
+    for (let index = 0; index < count; index++) {
+      const position = positions[index];
+      if (
+        position < domain.start ||
+        position > domain.end ||
+        !this.series().some((_, s) => this.valueAt(s, index) != null)
+      ) {
+        continue;
+      }
+      const distance = Math.abs(layout.x(index) - px);
+      if (distance < nearest) {
+        nearest = distance;
+        best = index;
+      }
+    }
+    return best;
   }
 
   private valueAt(series: number, index: number): number | null {
     const value = this.series()[series]?.data[index];
-    return value == null || !isFinite(value) ? null : value;
+    return this.isValue(value) && isFinite(this.positions()[index]) ? value : null;
   }
 
-  // Earliest plotted value in any series, so a chart whose first series is empty still takes focus
+  // Earliest plotted value in any series (in view, on a panned window), so a chart
+  // whose first series is empty still takes focus
   private firstPoint(): ActivePoint | null {
+    const domain = this.domain();
     for (let index = 0; index < this.count(); index++) {
+      if (this.positions()[index] < domain.start) {
+        continue;
+      }
       const series = this.series().findIndex((_, s) => this.valueAt(s, index) != null);
       if (series !== -1) {
         return { series, index };
