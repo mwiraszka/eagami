@@ -8,7 +8,9 @@ import { AccordionComponent, type AccordionHeadingLevel } from './accordion.comp
 @Component({
   imports: [AccordionComponent, AccordionItemComponent],
   template: `
-    <ea-accordion [headingLevel]="headingLevel()">
+    <ea-accordion
+      [headingLevel]="headingLevel()"
+      [highlightExpanded]="highlightExpanded()">
       <ea-accordion-item
         value="a"
         label="First">
@@ -26,6 +28,7 @@ import { AccordionComponent, type AccordionHeadingLevel } from './accordion.comp
 class HostComponent {
   bDisabled = signal(false);
   headingLevel = signal<AccordionHeadingLevel>(3);
+  highlightExpanded = signal(false);
 }
 
 describe('AccordionItemComponent', () => {
@@ -46,6 +49,34 @@ describe('AccordionItemComponent', () => {
     fixture = TestBed.createComponent(HostComponent);
     host = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  describe('highlightExpanded', () => {
+    function highlighted(): Element[] {
+      return Array.from(
+        fixture.nativeElement.querySelectorAll('.ea-accordion-item--highlighted'),
+      );
+    }
+
+    it('leaves an open item unhighlighted by default', () => {
+      getTriggers()[0].click();
+      fixture.detectChanges();
+
+      expect(highlighted()).toHaveLength(0);
+    });
+
+    it('highlights only the open items once enabled', () => {
+      host.highlightExpanded.set(true);
+      fixture.detectChanges();
+
+      expect(highlighted()).toHaveLength(0);
+
+      getTriggers()[0].click();
+      fixture.detectChanges();
+
+      expect(highlighted()).toHaveLength(1);
+      expect(highlighted()[0].textContent).toContain('First');
+    });
   });
 
   it('renders the supplied label on the trigger button', () => {

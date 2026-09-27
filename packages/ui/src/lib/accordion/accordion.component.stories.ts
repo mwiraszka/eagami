@@ -24,7 +24,7 @@ export const Playground: Story = {
   render: args => ({
     props: args,
     template: `
-      <ea-accordion [multi]="multi" [size]="size" class="story-medium">
+      <ea-accordion [multi]="multi" [size]="size" [highlightExpanded]="highlightExpanded" class="story-medium">
         <ea-accordion-item value="what" label="What is @eagami/ui?">
           A lightweight, accessible Angular component library built on CSS custom properties.
         </ea-accordion-item>
@@ -66,7 +66,7 @@ export const WithIcons: Story = {
       starIcon: StarIconComponent,
     },
     template: `
-      <ea-accordion [multi]="multi" [size]="size" class="story-medium">
+      <ea-accordion [multi]="multi" [size]="size" [highlightExpanded]="highlightExpanded" class="story-medium">
         <ea-accordion-item value="what" label="What is @eagami/ui?" [icon]="infoIcon">
           A lightweight, accessible Angular component library built on CSS custom properties.
         </ea-accordion-item>
