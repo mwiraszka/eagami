@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.53.0',
+    date: '2026-09-27',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `highlightExpanded` input to the accordion that marks an open item's header with a brand tint, a heavier label, and a brand-colored icon and chevron, so it stands apart from the closed items.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.52.1',
     date: '2026-09-27',
     sections: [
