@@ -145,9 +145,24 @@ function stepPath(points: PlotPoint[]): string {
   return d;
 }
 
+// Points sharing an x position have no slope between them, so the curve runs
+// smoothly up to each such pair and joins it with a straight segment
+function smoothPath(points: PlotPoint[]): string {
+  let d = '';
+  let start = 0;
+  for (let i = 1; i <= points.length; i++) {
+    if (i === points.length || points[i].x === points[i - 1].x) {
+      const run = monotonePath(points.slice(start, i));
+      d += start === 0 ? run : `L${run.slice(1)}`;
+      start = i;
+    }
+  }
+  return d;
+}
+
 // Monotone cubic interpolation (Fritsch-Carlson): smooth, but never overshoots
 // a data point, so a curve cannot suggest a value the data never reached
-function smoothPath(points: PlotPoint[]): string {
+function monotonePath(points: PlotPoint[]): string {
   const n = points.length;
   if (n < 3) {
     return linearPath(points);

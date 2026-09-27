@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.52.1',
+    date: '2026-09-27',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep a smooth line chart drawing through points that share an x position, which previously cut the line off at the first such pair.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.52.0',
     date: '2026-09-27',
     sections: [

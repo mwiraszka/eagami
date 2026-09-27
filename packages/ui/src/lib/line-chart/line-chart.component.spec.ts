@@ -739,6 +739,24 @@ describe('LineChartComponent', () => {
       expect(document.querySelector('.ea-tooltip')?.textContent).toContain('Third');
     });
 
+    it('draws a smooth line through every point, even where two share an x position', () => {
+      fixture.componentRef.setInput('curve', 'smooth');
+      fixture.componentRef.setInput('labels', ['A', 'B', 'C', 'D', 'E']);
+      fixture.componentRef.setInput('series', [
+        { name: 'Reading', data: [4, 6, 5, 7, 6] },
+      ]);
+      fixture.componentRef.setInput('xValues', [0, 3, 3, 7, 10]);
+      fixture.detectChanges();
+
+      const d = query('.ea-line-chart__line')!.getAttribute('d')!;
+      expect(d).not.toContain('NaN');
+      const points = queryAll('.ea-line-chart__point').map(
+        p => `${p.getAttribute('cx')},${p.getAttribute('cy')}`,
+      );
+      points.forEach(point => expect(d).toContain(point));
+      expect(d.endsWith(points.at(-1)!)).toBe(true);
+    });
+
     it('drops per-point labels that would collide', () => {
       fixture.componentRef.setInput('xValues', [0, 0.1, 10]);
       fixture.detectChanges();
