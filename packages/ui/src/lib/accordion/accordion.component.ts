@@ -33,6 +33,8 @@ export class AccordionComponent {
   readonly size = input<AccordionSize>('md');
   /** Heading level (1-6) applied to every item's header wrapper. */
   readonly headingLevel = input<AccordionHeadingLevel>(3);
+  /** Tints an open item's header and sets its label, icon, and chevron in the brand color. */
+  readonly highlightExpanded = input<boolean>(false);
 
   readonly expandedItems = signal<Set<string>>(new Set());
   readonly registeredItems = signal<AccordionItemComponent[]>([]);

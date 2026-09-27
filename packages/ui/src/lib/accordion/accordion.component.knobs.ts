@@ -14,10 +14,12 @@ export const ACCORDION_KNOBS: ComponentKnobs = {
     },
     multi: { control: 'boolean' },
     headingLevel: { control: 'number', min: 1, max: 6, step: 1, maxLength: 1 },
+    highlightExpanded: { control: 'boolean' },
   },
   args: {
     size: 'md',
     multi: false,
     headingLevel: 3,
+    highlightExpanded: false,
   },
 };

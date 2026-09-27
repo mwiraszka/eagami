@@ -39,6 +39,9 @@ export class AccordionItemComponent implements OnInit, OnDestroy {
 
   readonly isExpanded = computed(() => this.accordion.isExpanded(this.value()));
   readonly headingLevel = computed(() => this.accordion.headingLevel());
+  readonly isHighlighted = computed(
+    () => this.accordion.highlightExpanded() && this.isExpanded(),
+  );
   readonly size = computed(() => this.accordion.size());
 
   ngOnInit(): void {

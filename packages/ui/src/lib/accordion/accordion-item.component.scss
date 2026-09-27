@@ -89,6 +89,18 @@
     transform: rotate(180deg);
   }
 
+  // An open item's header takes the brand tint, so it stands apart from the closed ones
+  &--highlighted &__trigger {
+    font-weight: var(--font-weight-semibold);
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-text);
+  }
+
+  &--highlighted &__icon,
+  &--highlighted &__chevron {
+    color: var(--color-brand-default);
+  }
+
   &__content {
     padding: 0.5em 1em 1em;
     line-height: var(--line-height-normal);

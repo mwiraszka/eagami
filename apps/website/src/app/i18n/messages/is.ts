@@ -1121,6 +1121,7 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Auðkenna opin atriði' },
           'bar-chart': {
             orientation: 'Stefna',
             size: 'Stærð',
@@ -1579,6 +1580,8 @@ export const is: WebMessages = {
             multi: 'Leyfir mörgum atriðum að vera útbreidd í einu.',
             headingLevel:
               'Fyrirsagnarstig (1-6) sett á haus hvers atriðis, svo harmonikkan passi í uppbyggingu síðunnar.',
+            highlightExpanded:
+              'Litar haus opins atriðis og setur merki, tákn og ör þess í lit vörumerkisins svo það skeri sig frá lokuðu atriðunum.',
           },
           alert: {
             dismissible:

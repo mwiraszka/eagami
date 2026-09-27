@@ -1124,6 +1124,7 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Wyróżnij otwarte elementy' },
           'bar-chart': {
             orientation: 'Orientacja',
             size: 'Rozmiar',
@@ -1583,6 +1584,8 @@ export const pl: WebMessages = {
             multi: 'Pozwala rozwinąć wiele elementów jednocześnie.',
             headingLevel:
               'Poziom nagłówka (1-6) stosowany do nagłówka każdego elementu, dzięki czemu akordeon wpasowuje się w konspekt strony.',
+            highlightExpanded:
+              'Zabarwia nagłówek otwartego elementu i nadaje etykiecie, ikonie i strzałce kolor marki, aby wyróżniał się na tle zamkniętych.',
           },
           alert: {
             dismissible:

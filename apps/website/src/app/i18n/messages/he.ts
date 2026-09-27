@@ -1096,6 +1096,7 @@ export const he: WebMessages = {
         twoWayBadge: 'דו-כיווני',
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
+          accordion: { highlightExpanded: 'הדגשת פריטים פתוחים' },
           'bar-chart': {
             orientation: 'כיוון',
             size: 'גודל',
@@ -1538,6 +1539,8 @@ export const he: WebMessages = {
             multi: 'מאפשר למספר פריטים להישאר מורחבים בו-זמנית.',
             headingLevel:
               'רמת הכותרת (1-6) המוחלת על כותרת כל פריט, כך שהאקורדיון משתלב במתאר העמוד.',
+            highlightExpanded:
+              'צובע את כותרת הפריט הפתוח ומציג את התווית, הסמל והחץ בצבע המותג, כדי שיבלוט מול הפריטים הסגורים.',
           },
           alert: {
             dismissible: 'מציג כפתור סגירה המאפשר למשתמש לסגור את ההתראה.',

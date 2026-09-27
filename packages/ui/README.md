@@ -20,11 +20,15 @@
 
 ## Why Eagami UI
 
-- **THEMES TO YOUR BRAND.** Give it one color per role and it generates a full, contrast-checked palette.
-- **LIGHTWEIGHT.** No runtime dependencies, no CSS framework, and standalone side-effect-free components, so your app bundles only what it imports.
-- **ACCESSIBLE AND LOCALIZED.** Every component meets WCAG 2.2 AA with full keyboard support and its own axe-core test suite. Built-in text ships in 15 languages you can switch at runtime.
-- **YOURS TO OWN.** Plain Angular and CSS with no lock-in: read, copy, or fork any component like the rest of your app.
-- **MODERN ANGULAR.** Signals and native control flow throughout, with SSR-safe rendering, prerendering, and hydration.
+**Themes to your brand.** Give it one color per role and it generates a full, contrast-checked palette.
+
+**Lightweight.** No runtime dependencies, no CSS framework, and standalone side-effect-free components, so your app bundles only what it imports.
+
+**Accessible and localized.** Every component meets WCAG 2.2 AA with full keyboard support and its own axe-core test suite. Built-in text ships in 15 languages you can switch at runtime.
+
+**Yours to own.** Plain Angular and CSS with no lock-in: read, copy, or fork any component like the rest of your app.
+
+**Modern Angular.** Signals and native control flow throughout, with SSR-safe rendering, prerendering, and hydration.
 
 ## Install
 

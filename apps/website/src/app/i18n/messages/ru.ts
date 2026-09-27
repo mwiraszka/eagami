@@ -1114,6 +1114,7 @@ export const ru: WebMessages = {
         twoWayBadge: 'двусторонняя',
         rangeHint: { between: 'до', min: 'Мин', max: 'Макс' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Выделять открытые элементы' },
           'bar-chart': {
             orientation: 'Ориентация',
             size: 'Размер',
@@ -1576,6 +1577,8 @@ export const ru: WebMessages = {
             multi: 'Позволяет нескольким элементам оставаться раскрытыми одновременно.',
             headingLevel:
               'Уровень заголовка (1-6), применяемый к заголовку каждого элемента, чтобы аккордеон вписывался в структуру страницы.',
+            highlightExpanded:
+              'Подкрашивает заголовок открытого элемента и выводит его подпись, значок и стрелку в цвете бренда, чтобы он выделялся среди закрытых.',
           },
           alert: {
             dismissible:

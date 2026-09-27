@@ -1131,6 +1131,7 @@ export const el: WebMessages = {
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Επισήμανση ανοιχτών στοιχείων' },
           'bar-chart': {
             orientation: 'Προσανατολισμός',
             size: 'Μέγεθος',
@@ -1606,6 +1607,8 @@ export const el: WebMessages = {
             multi: 'Επιτρέπει σε πολλά στοιχεία να παραμένουν ανοιχτά ταυτόχρονα.',
             headingLevel:
               'Επίπεδο επικεφαλίδας (1-6) που εφαρμόζεται στην κεφαλίδα κάθε στοιχείου, ώστε το accordion να εντάσσεται στη δομή της σελίδας.',
+            highlightExpanded:
+              'Χρωματίζει την κεφαλίδα ενός ανοιχτού στοιχείου και δίνει στην ετικέτα, στο εικονίδιο και στο βέλος το χρώμα της μάρκας, ώστε να ξεχωρίζει από τα κλειστά.',
           },
           alert: {
             dismissible:

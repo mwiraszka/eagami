@@ -13,7 +13,8 @@
       class="playground-accordion"
       [size]="state().size"
       [multi]="state().multi"
-      [headingLevel]="state().headingLevel">
+      [headingLevel]="state().headingLevel"
+      [highlightExpanded]="state().highlightExpanded">
       @for (item of items(); track item.id) {
         <ea-accordion-item
           [value]="'item-' + item.id"

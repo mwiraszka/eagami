@@ -1120,6 +1120,7 @@ export const nl: WebMessages = {
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Open items markeren' },
           'bar-chart': {
             orientation: 'Oriëntatie',
             size: 'Grootte',
@@ -1585,6 +1586,8 @@ export const nl: WebMessages = {
             multi: 'Staat toe dat meerdere items tegelijk uitgevouwen blijven.',
             headingLevel:
               'Kopniveau (1-6) toegepast op elke itemkoptekst, zodat het accordeon in de paginastructuur past.',
+            highlightExpanded:
+              'Kleurt de header van een open item en zet het label, pictogram en de chevron in de merkkleur, zodat het opvalt tussen de gesloten items.',
           },
           alert: {
             dismissible:
