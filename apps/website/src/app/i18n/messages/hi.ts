@@ -1107,6 +1107,7 @@ export const hi: WebMessages = {
         twoWayBadge: 'दो-तरफ़ा',
         rangeHint: { between: 'से', min: 'न्यूनतम', max: 'अधिकतम' },
         knobLabels: {
+          accordion: { highlightExpanded: 'खुले आइटम हाइलाइट करें' },
           'bar-chart': {
             orientation: 'अभिविन्यास',
             size: 'आकार',
@@ -1568,6 +1569,8 @@ export const hi: WebMessages = {
             multi: 'कई आइटम को एक साथ विस्तारित रहने की अनुमति देता है।',
             headingLevel:
               'प्रत्येक आइटम हेडर पर लागू शीर्षक स्तर (1-6), ताकि अकॉर्डियन पृष्ठ की रूपरेखा में फ़िट हो।',
+            highlightExpanded:
+              'खुले आइटम के हेडर को हल्का रंग देता है और उसके लेबल, आइकन और शेवरॉन को ब्रांड रंग में दिखाता है, ताकि वह बंद आइटम से अलग दिखे।',
           },
           alert: {
             dismissible:

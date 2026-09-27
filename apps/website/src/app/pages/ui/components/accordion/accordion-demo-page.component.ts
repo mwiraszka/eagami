@@ -48,6 +48,7 @@ interface AccordionKnobState {
   size: AccordionSize;
   multi: boolean;
   headingLevel: AccordionHeadingLevel;
+  highlightExpanded: boolean;
 }
 
 const SLUG = 'accordion';

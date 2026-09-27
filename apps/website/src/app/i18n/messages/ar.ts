@@ -1103,6 +1103,7 @@ export const ar: WebMessages = {
         twoWayBadge: 'ثنائي الاتجاه',
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
+          accordion: { highlightExpanded: 'تمييز العناصر المفتوحة' },
           'bar-chart': {
             orientation: 'الاتجاه',
             size: 'الحجم',
@@ -1550,6 +1551,8 @@ export const ar: WebMessages = {
             multi: 'يسمح ببقاء عدة عناصر موسّعة في آنٍ واحد.',
             headingLevel:
               'مستوى العنوان (1-6) المطبَّق على رأس كل عنصر، بحيث يندرج الأكورديون في مخطط الصفحة.',
+            highlightExpanded:
+              'يلوّن رأس العنصر المفتوح ويجعل تسميته وأيقونته وسهمه بلون العلامة، ليتميز عن العناصر المغلقة.',
           },
           alert: {
             dismissible: 'يُظهِر زر إغلاق يتيح للمستخدم إغلاق التنبيه.',

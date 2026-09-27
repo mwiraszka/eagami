@@ -1105,6 +1105,7 @@ export const en: WebMessages = {
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Highlight open items' },
           'bar-chart': {
             orientation: 'Orientation',
             size: 'Size',
@@ -1560,6 +1561,8 @@ export const en: WebMessages = {
             multi: 'Allows multiple items to stay expanded at once.',
             headingLevel:
               'Heading level (1-6) applied to every item header, so the accordion slots into the page outline.',
+            highlightExpanded:
+              "Tints an open item's header and sets its label, icon, and chevron in the brand color, so it stands apart from the closed items.",
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',

@@ -1128,6 +1128,7 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Geöffnete Einträge hervorheben' },
           'bar-chart': {
             orientation: 'Ausrichtung',
             size: 'Größe',
@@ -1597,6 +1598,8 @@ export const de: WebMessages = {
             multi: 'Erlaubt, dass mehrere Einträge gleichzeitig aufgeklappt bleiben.',
             headingLevel:
               'Überschriftenebene (1-6), die auf jeden Eintrags-Header angewendet wird, damit sich das Akkordeon in die Seitengliederung einfügt.',
+            highlightExpanded:
+              'Tönt den Header eines geöffneten Eintrags ein und setzt Beschriftung, Icon und Pfeil in die Markenfarbe, damit er sich von den geschlossenen Einträgen abhebt.',
           },
           alert: {
             dismissible:

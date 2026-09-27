@@ -1114,6 +1114,7 @@ export const uk: WebMessages = {
         twoWayBadge: 'двостороннє',
         rangeHint: { between: 'до', min: 'Мін', max: 'Макс' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Виділяти відкриті елементи' },
           'bar-chart': {
             orientation: 'Орієнтація',
             size: 'Розмір',
@@ -1573,6 +1574,8 @@ export const uk: WebMessages = {
             multi: 'Дозволяє кільком елементам залишатися розгорнутими одночасно.',
             headingLevel:
               'Рівень заголовка (1-6), що застосовується до заголовка кожного елемента, щоб акордеон вписувався в структуру сторінки.',
+            highlightExpanded:
+              'Підфарбовує заголовок відкритого елемента й показує його підпис, значок і стрілку в кольорі бренду, щоб він вирізнявся серед закритих.',
           },
           alert: {
             dismissible:

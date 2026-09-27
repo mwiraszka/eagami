@@ -1125,6 +1125,7 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Resaltar elementos abiertos' },
           'bar-chart': {
             orientation: 'Orientación',
             size: 'Tamaño',
@@ -1592,6 +1593,8 @@ export const esES: WebMessages = {
             multi: 'Permite mantener varios elementos abiertos a la vez.',
             headingLevel:
               'Nivel de encabezado (1-6) aplicado a cada encabezado de elemento, para que el acordeón encaje en el esquema de la página.',
+            highlightExpanded:
+              'Tiñe la cabecera de un elemento abierto y pone su etiqueta, icono y flecha en el color de la marca, para que destaque sobre los cerrados.',
           },
           alert: {
             dismissible:

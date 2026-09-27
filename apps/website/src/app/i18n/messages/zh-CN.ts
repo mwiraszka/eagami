@@ -1084,6 +1084,7 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          accordion: { highlightExpanded: '突出显示展开项' },
           'bar-chart': {
             orientation: '方向',
             size: '尺寸',
@@ -1516,6 +1517,8 @@ export const zhCN: WebMessages = {
             size: '手风琴的视觉尺寸；每个项都会继承它。',
             multi: '允许同时展开多个项。',
             headingLevel: '应用于每个项页眉的标题级别（1-6），使手风琴融入页面大纲。',
+            highlightExpanded:
+              '为展开项的标题着色，并将其标签、图标和箭头设为品牌色，使其与折叠项区分开来。',
           },
           alert: {
             dismissible: '显示一个关闭按钮，让用户可以关闭提示。',

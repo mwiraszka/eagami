@@ -1120,6 +1120,7 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          accordion: { highlightExpanded: 'Destacar itens abertos' },
           'bar-chart': {
             orientation: 'Orientação',
             size: 'Tamanho',
@@ -1584,6 +1585,8 @@ export const ptBR: WebMessages = {
             multi: 'Permite que vários itens permaneçam expandidos ao mesmo tempo.',
             headingLevel:
               'Nível de título (1-6) aplicado a cada cabeçalho de item, de modo que o accordion se encaixe no esquema da página.',
+            highlightExpanded:
+              'Tinge o cabeçalho de um item aberto e deixa o rótulo, o ícone e a seta na cor da marca, para que se destaque dos itens fechados.',
           },
           alert: {
             dismissible:
