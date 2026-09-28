@@ -130,6 +130,16 @@
     border-color: var(--color-error-default);
   }
 
+  &__button {
+    align-self: flex-start;
+  }
+
+  // Routed through ea-button's own border hook so its hover and active states
+  // keep the error colour too
+  &--error &__button {
+    --ea-button-border-color: var(--color-error-default);
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

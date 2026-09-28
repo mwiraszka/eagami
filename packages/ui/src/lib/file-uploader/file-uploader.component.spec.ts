@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
+import { UploadIconComponent } from '../icons/upload.component';
 import {
   FileUploaderComponent,
   type FileUploaderRejection,
@@ -98,6 +99,21 @@ describe('FileUploaderComponent', () => {
       expect(text).toContain('image/*');
       expect(text).toContain('2 MB');
       expect(text).toContain('3');
+    });
+
+    it('leaves the constraints out, of both the view and the description, when asked to', () => {
+      fixture.componentRef.setInput('accept', '.csv');
+      fixture.componentRef.setInput('showConstraints', false);
+
+      fixture.detectChanges();
+
+      expect(
+        fixture.nativeElement.querySelector('.ea-file-uploader-field__constraints'),
+      ).toBeNull();
+      expect(getFileInput().getAttribute('accept')).toBe('.csv');
+      expect(getDropzone().getAttribute('aria-describedby') ?? '').not.toContain(
+        'constraints',
+      );
     });
   });
 
@@ -451,6 +467,196 @@ describe('FileUploaderComponent', () => {
       fixture.detectChanges();
 
       expect(el.value).toBe('');
+    });
+  });
+
+  describe('Dropzone name', () => {
+    it('falls back to aria-label when no visible label is set', () => {
+      fixture.componentRef.setInput('aria-label', 'Receipts');
+      fixture.detectChanges();
+
+      expect(getDropzone().getAttribute('aria-label')).toBe('Receipts');
+    });
+
+    it('prefers the visible label over aria-label', () => {
+      fixture.componentRef.setInput('label', 'Attachments');
+      fixture.componentRef.setInput('aria-label', 'Receipts');
+      fixture.detectChanges();
+
+      expect(getDropzone().getAttribute('aria-label')).toBe('Attachments');
+    });
+  });
+
+  describe('Button variant', () => {
+    function getPickerButton(): HTMLButtonElement {
+      return fixture.nativeElement.querySelector(
+        '.ea-file-uploader-field__button button',
+      );
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('variant', 'button');
+      fixture.detectChanges();
+    });
+
+    it('renders a button instead of the dropzone', () => {
+      expect(getPickerButton()).toBeTruthy();
+      expect(getDropzone()).toBeNull();
+      expect(getFileInput()).toBeTruthy();
+    });
+
+    it('labels the button with the localized browse text by default', () => {
+      expect(getPickerButton().textContent?.trim()).toBe('Browse files');
+      expect(getPickerButton().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('shows the custom button label and icon', () => {
+      fixture.componentRef.setInput('buttonLabel', 'Import CSV');
+      fixture.componentRef.setInput('buttonIcon', UploadIconComponent);
+      fixture.detectChanges();
+
+      expect(getPickerButton().textContent?.trim()).toBe('Import CSV');
+      expect(getPickerButton().querySelector('ea-icon-upload')).toBeTruthy();
+    });
+
+    it('drops the text for an icon-only button and names it from aria-label', () => {
+      fixture.componentRef.setInput('buttonLabel', '');
+      fixture.componentRef.setInput('buttonIcon', UploadIconComponent);
+      fixture.componentRef.setInput('aria-label', 'Update ratings from CSV');
+      fixture.detectChanges();
+
+      expect(getPickerButton().textContent?.trim()).toBe('');
+      expect(getPickerButton().getAttribute('aria-label')).toBe(
+        'Update ratings from CSV',
+      );
+    });
+
+    it('names an icon-only button with the browse text as a last resort', () => {
+      fixture.componentRef.setInput('buttonLabel', '');
+      fixture.componentRef.setInput('buttonIcon', UploadIconComponent);
+      fixture.detectChanges();
+
+      expect(getPickerButton().getAttribute('aria-label')).toBe('Browse files');
+    });
+
+    it('keeps the browse text when an empty label leaves no icon to show', () => {
+      fixture.componentRef.setInput('buttonLabel', '');
+      fixture.detectChanges();
+
+      expect(getPickerButton().textContent?.trim()).toBe('Browse files');
+    });
+
+    it('names the button from the field label and its own text', () => {
+      fixture.componentRef.setInput('label', 'Ratings file');
+      fixture.detectChanges();
+
+      const ids = getPickerButton().getAttribute('aria-labelledby')?.split(' ') ?? [];
+      const names = ids.map(id => document.getElementById(id)?.textContent?.trim());
+
+      expect(names).toEqual(['Ratings file', 'Browse files']);
+      expect(getPickerButton().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('names an icon-only button from the field label alone', () => {
+      fixture.componentRef.setInput('label', 'Ratings file');
+      fixture.componentRef.setInput('buttonLabel', '');
+      fixture.componentRef.setInput('buttonIcon', UploadIconComponent);
+      fixture.detectChanges();
+
+      const labelledBy = getPickerButton().getAttribute('aria-labelledby');
+
+      expect(document.getElementById(labelledBy ?? '')?.textContent?.trim()).toBe(
+        'Ratings file',
+      );
+      expect(getPickerButton().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('describes the button with the hint and constraints', () => {
+      fixture.componentRef.setInput('hint', 'One file per import');
+      fixture.componentRef.setInput('accept', '.csv');
+      fixture.detectChanges();
+
+      const ids = getPickerButton().getAttribute('aria-describedby')?.split(' ') ?? [];
+      const texts = ids.map(id => document.getElementById(id)?.textContent?.trim());
+
+      expect(texts).toEqual(['One file per import', 'Accepted: .csv']);
+    });
+
+    it('describes the button with the error while one is showing', () => {
+      fixture.componentRef.setInput('errorMsg', 'Required');
+      fixture.detectChanges();
+
+      const ids = getPickerButton().getAttribute('aria-describedby');
+
+      expect(ids).toContain('-error');
+      expect(
+        fixture.nativeElement.querySelector('.ea-file-uploader-field--error'),
+      ).toBeTruthy();
+    });
+
+    it('opens the file picker when clicked', () => {
+      const click = vi.spyOn(getFileInput(), 'click');
+
+      getPickerButton().click();
+
+      expect(click).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not open the picker while disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+      const click = vi.spyOn(getFileInput(), 'click');
+
+      getPickerButton().click();
+
+      expect(getPickerButton().disabled).toBe(true);
+      expect(click).not.toHaveBeenCalled();
+    });
+
+    it('validates picked files and emits rejections as the dropzone does', () => {
+      const rejections: FileUploaderRejection[] = [];
+      component.rejected.subscribe(r => rejections.push(...r));
+      fixture.componentRef.setInput('accept', '.csv');
+      fixture.detectChanges();
+      const good = makeFile('ratings.csv', 10, 'text/csv');
+      const bad = makeFile('photo.png', 10, 'image/png');
+      Object.defineProperty(getFileInput(), 'files', { value: fileList(good, bad) });
+
+      getFileInput().dispatchEvent(new Event('change'));
+
+      expect(component.value()).toEqual([good]);
+      expect(rejections).toEqual([{ file: bad, reason: 'type' }]);
+    });
+
+    it('lists the picked files and returns focus to the button after a removal', () => {
+      component.writeValue([makeFile('a.txt', 10), makeFile('b.txt', 10)]);
+      fixture.detectChanges();
+      const removeBtn = getRows()[0].querySelector(
+        '.ea-file-uploader-field__remove',
+      ) as HTMLButtonElement;
+
+      removeBtn.click();
+      fixture.detectChanges();
+
+      expect(getRows().length).toBe(1);
+      expect(document.activeElement).toBe(getPickerButton());
+    });
+
+    it('hides the file list when showFileList is false', () => {
+      fixture.componentRef.setInput('showFileList', false);
+      component.writeValue([makeFile('a.txt', 10)]);
+      fixture.detectChanges();
+
+      expect(getRows().length).toBe(0);
+    });
+
+    it('marks the control touched when focus leaves the button', () => {
+      const onTouched = vi.fn<() => void>();
+      component.registerOnTouched(onTouched);
+
+      getPickerButton().dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+
+      expect(onTouched).toHaveBeenCalledTimes(1);
     });
   });
 });

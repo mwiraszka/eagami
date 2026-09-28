@@ -1,9 +1,13 @@
 import { axe } from 'vitest-axe';
 
-import { Component } from '@angular/core';
+import { Component, type Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { FileUploaderComponent } from './file-uploader.component';
+import { UploadIconComponent } from '../icons/upload.component';
+import {
+  FileUploaderComponent,
+  type FileUploaderVariant,
+} from './file-uploader.component';
 
 @Component({
   imports: [FileUploaderComponent],
@@ -12,14 +16,26 @@ import { FileUploaderComponent } from './file-uploader.component';
       [label]="label"
       [hint]="hint"
       [errorMsg]="errorMsg"
-      [disabled]="disabled" />
+      [disabled]="disabled"
+      [variant]="variant"
+      [buttonLabel]="buttonLabel"
+      [buttonIcon]="buttonIcon"
+      [aria-label]="ariaLabel"
+      [accept]="accept"
+      [value]="value" />
   `,
 })
 class HostComponent {
-  label = 'Attach files';
+  label: string | undefined = 'Attach files';
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
+  variant: FileUploaderVariant = 'dropzone';
+  buttonLabel: string | undefined = undefined;
+  buttonIcon: Type<unknown> | undefined = undefined;
+  ariaLabel: string | undefined = undefined;
+  accept: string | undefined = undefined;
+  value: readonly File[] = [];
 }
 
 describe('FileUploaderComponent a11y', () => {
@@ -63,5 +79,66 @@ describe('FileUploaderComponent a11y', () => {
     const results = await axe(el);
 
     expect(results).toHaveNoViolations();
+  });
+
+  describe('button variant', () => {
+    it('has no detectable violations with a label, hint and constraints', async () => {
+      const el = await render(host => {
+        host.variant = 'button';
+        host.hint = 'One file per import';
+        host.accept = '.csv';
+      });
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has no detectable violations as an icon-only button', async () => {
+      const el = await render(host => {
+        host.variant = 'button';
+        host.label = undefined;
+        host.buttonLabel = '';
+        host.buttonIcon = UploadIconComponent;
+        host.ariaLabel = 'Update ratings from CSV';
+      });
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has no detectable violations in the error state', async () => {
+      const el = await render(host => {
+        host.variant = 'button';
+        host.errorMsg = 'Required';
+      });
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has no detectable violations when disabled', async () => {
+      const el = await render(host => {
+        host.variant = 'button';
+        host.disabled = true;
+      });
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    });
+
+    it('has no detectable violations with selected files listed', async () => {
+      const el = await render(host => {
+        host.variant = 'button';
+        host.value = [new File(['a,b'], 'ratings.csv', { type: 'text/csv' })];
+      });
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    });
   });
 });
