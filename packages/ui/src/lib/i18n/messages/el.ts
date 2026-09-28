@@ -103,6 +103,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: 'Επιλέξτε…',
   },
+  fieldLabel: {
+    help: label => `Περισσότερες πληροφορίες: ${label}`,
+  },
   fileUploader: {
     prompt: 'Κάντε κλικ ή σύρετε αρχεία εδώ για μεταφόρτωση',
     promptSingle: 'Κάντε κλικ ή σύρετε ένα αρχείο εδώ για μεταφόρτωση',

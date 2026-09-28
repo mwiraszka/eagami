@@ -102,6 +102,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: 'בחר…',
   },
+  fieldLabel: {
+    help: label => `מידע נוסף על ${label}`,
+  },
   fileUploader: {
     prompt: 'לחץ או גרור קבצים לכאן להעלאה',
     promptSingle: 'לחץ או גרור קובץ לכאן להעלאה',

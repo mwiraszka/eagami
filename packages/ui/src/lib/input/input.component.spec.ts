@@ -98,6 +98,40 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Label help', () => {
+    function getHelpTrigger(): HTMLButtonElement | null {
+      return fixture.nativeElement.querySelector('.ea-field-label__help-trigger');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('label', 'Email');
+      fixture.componentRef.setInput('labelHelp', 'We never share it.');
+      fixture.detectChanges();
+    });
+
+    it('hands labelHelp to the field label as a named help button', () => {
+      expect(getHelpTrigger()?.getAttribute('aria-label')).toBe(
+        'More information about Email',
+      );
+    });
+
+    it('reveals the help text when the button is pressed', () => {
+      getHelpTrigger()!.click();
+      fixture.detectChanges();
+
+      const status: HTMLElement = fixture.nativeElement.querySelector('[role="status"]');
+
+      expect(status.textContent?.trim()).toBe('We never share it.');
+    });
+
+    it('keeps the help out of the label that names the input', () => {
+      const label: HTMLLabelElement = fixture.nativeElement.querySelector('label');
+
+      expect(label.htmlFor).toBe(getNativeInput().id);
+      expect(label.textContent?.trim()).toBe('Email');
+    });
+  });
+
   describe('Spellcheck', () => {
     it('leaves the attribute off by default', () => {
       expect(getNativeInput().getAttribute('spellcheck')).toBeNull();

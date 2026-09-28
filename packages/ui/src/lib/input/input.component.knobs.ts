@@ -7,6 +7,7 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
  */
 export const INPUT_KNOBS: ComponentKnobs = {
   argTypes: {
+    labelHelp: { control: 'text' },
     size: {
       control: 'select',
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
@@ -39,6 +40,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
   },
   args: {
     label: 'Label',
+    labelHelp: '',
     placeholder: 'Enter text…',
     size: 'md',
     type: 'text',

@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  type TemplateRef,
   type Type,
   ViewEncapsulation,
   afterNextRender,
@@ -56,6 +57,8 @@ export class FormFieldComponent {
   readonly label = input<string | undefined>(undefined);
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
+  /** Help revealed by an info button beside the label, as plain text or a template. */
+  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   /** Helper text shown below the control; hidden while an error is showing. */
   readonly hint = input<string | undefined>(undefined);
   /** Error message shown below the control; replaces the hint and flags the field invalid. */

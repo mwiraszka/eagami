@@ -182,6 +182,10 @@ export interface EagamiMessages {
   dropdown: {
     placeholder: string;
   };
+  fieldLabel: {
+    /** Accessible name of the button that reveals a field label's help. */
+    help: (label: string) => string;
+  };
   fileUploader: {
     prompt: string;
     promptSingle: string;

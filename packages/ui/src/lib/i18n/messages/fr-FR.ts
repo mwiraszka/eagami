@@ -103,6 +103,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: 'Sélectionner…',
   },
+  fieldLabel: {
+    help: label => `Plus d’informations sur ${label}`,
+  },
   fileUploader: {
     prompt: 'Cliquez ou glissez des fichiers ici pour les téléverser',
     promptSingle: 'Cliquez ou glissez un fichier ici pour le téléverser',

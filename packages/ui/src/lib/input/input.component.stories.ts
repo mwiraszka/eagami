@@ -23,3 +23,12 @@ export default meta;
 type Story = StoryObj<InputComponent>;
 
 export const Playground: Story = {};
+
+export const WithLabelHelp: Story = {
+  args: {
+    label: 'Phone number',
+    labelHelp: 'We only use it when we cannot reach you by email.',
+    type: 'tel',
+    placeholder: '555-123-1234',
+  },
+};

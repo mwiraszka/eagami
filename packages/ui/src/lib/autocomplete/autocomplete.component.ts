@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type TemplateRef,
   type Type,
   computed,
   forwardRef,
@@ -66,6 +67,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
+  /** Help revealed by an info button beside the label, as plain text or a template. */
+  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   /** Accessible name for the input and suggestion list when no visible label is provided. */
   readonly ariaLabel = input<string | undefined>(undefined);
   readonly placeholder = input<string>('');

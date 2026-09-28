@@ -103,6 +103,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: 'Selecteer…',
   },
+  fieldLabel: {
+    help: label => `Meer informatie over ${label}`,
+  },
   fileUploader: {
     prompt: 'Klik of sleep bestanden hierheen om te uploaden',
     promptSingle: 'Klik of sleep een bestand hierheen om te uploaden',

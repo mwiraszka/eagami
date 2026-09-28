@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as ea;
+
 :host {
   display: contents;
 }
@@ -23,5 +25,72 @@
     // Optical centring against the label text
     vertical-align: -0.125em;
     margin-inline-end: 0.25em;
+  }
+}
+
+// The help trigger sits beside the label block, so it can never wrap onto a
+// line of its own
+.ea-field-label-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25em;
+}
+
+.ea-field-label__help {
+  position: relative;
+  flex: none;
+  width: 1.5em;
+  // One label line tall at the label's own size, so the out-of-flow trigger
+  // centres on the first line without stretching the line box
+  height: calc(var(--text-label-md-lh) * 1em);
+  font-size: max(var(--ea-field-label-size, var(--text-label-md-size)), 0.75rem);
+}
+
+.ea-field-label__help-trigger {
+  @include ea.icon-button;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  // Brings the glyph to about the size of the label text
+  font-size: 0.8125em;
+  transform: translate(-50%, -50%);
+}
+
+.ea-field-label__help-bubble {
+  z-index: var(--z-index-tooltip);
+  position: fixed;
+  // Measured from the viewport corner, where it wraps at its full width, then
+  // moved beside the trigger
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  overflow: auto;
+  box-sizing: border-box;
+  max-width: min(20rem, calc(100vw - 2 * var(--space-2)));
+  max-height: calc(100dvh - 2 * var(--space-2));
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-align: start;
+  font-family: var(--font-family-sans);
+  overflow-wrap: break-word;
+  border: var(--border-width-thin) solid var(--color-tooltip-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-tooltip-surface);
+  color: var(--color-neutral-0);
+  animation: ea-field-label-help-in var(--duration-fast) var(--ease-out);
+  @include ea.elevated-surface-border;
+}
+
+@keyframes ea-field-label-help-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

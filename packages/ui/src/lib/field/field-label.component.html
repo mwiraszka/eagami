@@ -1,19 +1,60 @@
-@if (forId(); as control) {
-  <label
-    class="ea-field-label"
-    [for]="control"
-    [attr.id]="labelId() ?? null"
-    [class.ea-field-label--required]="required()">
-    <ng-container [ngTemplateOutlet]="content" />
-  </label>
-} @else {
-  <span
-    class="ea-field-label"
-    [attr.id]="labelId() ?? null"
-    [class.ea-field-label--required]="required()">
-    <ng-container [ngTemplateOutlet]="content" />
+@if (help(); as helpContent) {
+  <span class="ea-field-label-row">
+    <ng-container [ngTemplateOutlet]="label" />
+    <span
+      #helpEl
+      class="ea-field-label__help"
+      (focusout)="onHelpFocusout($event)">
+      <button
+        #helpTrigger
+        type="button"
+        class="ea-field-label__help-trigger"
+        [attr.aria-label]="helpTriggerLabel()"
+        [attr.aria-expanded]="helpOpen()"
+        [attr.aria-controls]="helpId"
+        (click)="toggleHelp()">
+        <ea-icon-info />
+      </button>
+      <span
+        role="status"
+        [id]="helpId">
+        @if (helpOpen()) {
+          <span
+            #helpBubble
+            class="ea-field-label__help-bubble"
+            popover="manual">
+            @if (helpTemplate(); as template) {
+              <ng-container [ngTemplateOutlet]="template" />
+            } @else {
+              {{ helpContent }}
+            }
+          </span>
+        }
+      </span>
+    </span>
   </span>
+} @else {
+  <ng-container [ngTemplateOutlet]="label" />
 }
+
+<ng-template #label>
+  @if (forId(); as control) {
+    <label
+      class="ea-field-label"
+      [for]="control"
+      [attr.id]="labelId() ?? null"
+      [class.ea-field-label--required]="required()">
+      <ng-container [ngTemplateOutlet]="content" />
+    </label>
+  } @else {
+    <span
+      class="ea-field-label"
+      [attr.id]="labelId() ?? null"
+      [class.ea-field-label--required]="required()">
+      <ng-container [ngTemplateOutlet]="content" />
+    </span>
+  }
+</ng-template>
 
 <ng-template #content>
   @if (icon(); as iconComponent) {
