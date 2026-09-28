@@ -103,6 +103,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: 'Veldu…',
   },
+  fieldLabel: {
+    help: label => `Nánari upplýsingar: ${label}`,
+  },
   fileUploader: {
     prompt: 'Smelltu eða dragðu skrár hingað til að hlaða upp',
     promptSingle: 'Smelltu eða dragðu skrá hingað til að hlaða upp',

@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.54.0] - 2026-09-28
+
+### Added
+
+- Add an `align` input to the button that places a wider button's content at the start, centre or end, following the text direction, so a full-width button can read as a list row.
+- Introduce an `a[eaButtonLink]` component that styles an anchor with the button's variants, sizes, alignment and icon while keeping real link behaviour for both `href` and `routerLink`.
+- Offer a `link` button variant that renders as an inline text link in the brand link colour, underlined on hover and focus.
+- Give the button `aria-labelledby` and `aria-describedby` inputs and a `focus()` method.
+- Add an opt-in `labelHelp` input to every labelled field, backed by a new `help` input on the field label, that places an info button beside the label to reveal and announce help text by click, tap or keyboard.
+- Add a `variant` input that tones the switch track in success, warning, error or info colours, plus `onIcon` and `offIcon` inputs that draw a glyph in the thumb.
+- Add `getSelection()` and `insertText()` to the textarea so an app can read the caret and insert text at it with the same change notifications as typing.
+- Add a `maxLength` input to the autocomplete that limits how many characters its input accepts.
+- Add a `button` variant to the file uploader that replaces the dropzone with a compact button opening the file picker, with configurable `buttonLabel` and `buttonIcon`, and a `showConstraints` input that leaves out the limits line where it would crowd a compact placement.
+- Add an `ink` input to the tag that sets its text colour and lets `color` take any CSS colour, such as a theme-aware custom property.
+- Add an `expandedValues` model to the accordion for items that start expanded or are controlled from outside, and a `slot="label"` on its items for rich header content.
+- Add a `live` input to the alert that sets how it is announced, including `off` for static page text.
+
+### Changed
+
+- Hold the file uploader's dropzone surface and border steady on hover, matching the avatar editor, with a half-step of text contrast as the feedback.
+
+### Fixed
+
+- Keep a point tapped on a touch screen highlighted in the line chart, with its tooltip showing, until the next tap or until the chart loses focus, so the tap also emits `pointClick`.
+- Show a tooltip opened through `tooltipOpen` on touch screens, where every tooltip was hidden, so chart tooltips appear there too.
+
 ## [5.53.0] - 2026-09-27
 
 ### Added
@@ -1716,6 +1742,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.54.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.53.0...ui-v5.54.0
 [5.53.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.52.1...ui-v5.53.0
 [5.52.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.52.0...ui-v5.52.1
 [5.52.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.51.0...ui-v5.52.0

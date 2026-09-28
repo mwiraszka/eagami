@@ -684,6 +684,8 @@ export const esES: WebMessages = {
           disabledSectionBody: 'Este contenido no es accesible.',
           newSectionHeading: 'Nueva sección',
           newSectionContent: 'Nuevo contenido',
+          newBadge: 'Nuevo',
+          expanded: 'Abierto',
         },
         alert: {
           defaultText: 'Esta es una alerta predeterminada',
@@ -735,11 +737,7 @@ export const esES: WebMessages = {
           outlinedBody: 'Tarjeta con borde.',
           filledHeader: 'Rellena',
           filledBody: 'Tarjeta con fondo sutil.',
-          cardTitleHeader: 'Título de la tarjeta',
           cardWithFooterBody: 'Esta tarjeta tiene cabecera, cuerpo y pie con acciones.',
-          bodyText:
-            'Este es el contenido del cuerpo de la tarjeta. Puede contener cualquier texto o elemento.',
-          footer: 'Pie',
         },
         checkbox: {
           acceptTermsAndConditions: 'Aceptar términos y condiciones',
@@ -1120,6 +1118,8 @@ export const esES: WebMessages = {
           'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado.',
         ariaLabelDescription:
           'Nombre accesible anunciado por las tecnologías de asistencia cuando el componente no muestra ninguna etiqueta visible.',
+        labelHelpDescription:
+          'Ayuda que se muestra con un botón de información junto a la etiqueta, como texto sin formato o como plantilla.',
         triggerErrorLabel: 'Provocar error',
         requiredBadge: 'obligatorio',
         twoWayBadge: 'bidireccional',
@@ -1168,6 +1168,7 @@ export const esES: WebMessages = {
           },
           input: {
             label: 'Etiqueta',
+            labelHelp: 'Ayuda de la etiqueta',
             labelIcon: 'Icono de la etiqueta',
             icon: 'Icono',
             placeholder: 'Marcador de posición',
@@ -1207,6 +1208,7 @@ export const esES: WebMessages = {
             dismissible: 'Descartable',
             size: 'Tamaño',
             icon: 'Icono (sustituir)',
+            live: 'Anuncio',
           },
           toast: {
             icon: 'Icono (sustituir)',
@@ -1234,6 +1236,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             loading: 'Cargando',
             fullWidth: 'Ancho completo',
+            align: 'Alineación',
             uppercase: 'Mayúsculas',
             icon: 'Icono',
           },
@@ -1243,6 +1246,9 @@ export const esES: WebMessages = {
             headerAlign: 'Alineación del encabezado',
             fullWidth: 'Ancho completo',
             headerDivider: 'Separador del encabezado',
+            headerText: 'Cabecera',
+            bodyText: 'Cuerpo',
+            footerText: 'Pie',
           },
           checkbox: {
             label: 'Etiqueta',
@@ -1371,6 +1377,9 @@ export const esES: WebMessages = {
           switch: {
             label: 'Etiqueta',
             size: 'Tamaño',
+            variant: 'Variante',
+            onIcon: 'Icono activado',
+            offIcon: 'Icono desactivado',
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
           },
@@ -1595,6 +1604,8 @@ export const esES: WebMessages = {
               'Nivel de encabezado (1-6) aplicado a cada encabezado de elemento, para que el acordeón encaje en el esquema de la página.',
             highlightExpanded:
               'Tiñe la cabecera de un elemento abierto y pone su etiqueta, icono y flecha en el color de la marca, para que destaque sobre los cerrados.',
+            expandedValues:
+              'Valores de los elementos abiertos, vinculable en dos sentidos mediante [(expandedValues)]; establecerlo abre elementos desde el inicio. Sin multi, solo el primero en el orden del documento permanece abierto.',
           },
           alert: {
             dismissible:
@@ -1608,6 +1619,7 @@ export const esES: WebMessages = {
             dismiss: 'Oculta la alerta y emite el evento dismissed.',
             size: 'Escala conjuntamente el texto, el icono y el espaciado.',
             icon: 'Sustituye el icono de estado predeterminado de la variante por cualquier componente de icono.',
+            live: 'Cómo anuncian la alerta las tecnologías de asistencia: auto interrumpe para error y warning y espera su turno en las demás, assertive o polite aplica uno de los dos a todas las variantes, y off no anuncia nada, para texto estático de la página.',
           },
           avatar: {
             src: 'URL de la imagen que mostrar; recurre a las iniciales y, después, a un icono de usuario genérico.',
@@ -1631,6 +1643,8 @@ export const esES: WebMessages = {
             loading:
               'Sustituye la etiqueta por un indicador de carga conservando el ancho renderizado.',
             fullWidth: 'Estira el botón para ocupar el ancho de su contenedor.',
+            align:
+              'Alinea el contenido dentro de un botón más ancho que él, como uno de ancho completo. El inicio y el final siguen la dirección del texto.',
             uppercase: 'Muestra la etiqueta completamente en mayúsculas.',
             ariaLabel:
               'Etiqueta accesible para el botón cuando su contenido no es lo bastante descriptivo.',
@@ -1639,6 +1653,22 @@ export const esES: WebMessages = {
             clicked:
               'Se emite cuando se activa el botón, suprimido mientras está deshabilitado o cargando.',
             icon: 'Componente de icono opcional renderizado a la izquierda de la etiqueta.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el botón, reenviados al atributo nativo aria-labelledby.',
+            ariaDescribedby:
+              'Identificadores de los elementos que describen el botón, como una pista, reenviados al atributo nativo aria-describedby.',
+            focus: 'Lleva el foco del teclado al botón nativo subyacente.',
+          },
+          'button-link': {
+            variant: 'Estilo visual del enlace, que determina su color y énfasis.',
+            size: 'Tamaño visual del enlace.',
+            disabled:
+              'Marca el enlace como no disponible con aria-disabled, lo saca del orden de tabulación y bloquea la navegación.',
+            fullWidth: 'Estira el enlace para ocupar el ancho de su contenedor.',
+            align:
+              'Alinea el contenido dentro de un enlace más ancho que él, como uno de ancho completo. El inicio y el final siguen la dirección del texto.',
+            uppercase: 'Muestra la etiqueta completamente en mayúsculas.',
+            icon: 'Componente de icono opcional renderizado antes de la etiqueta.',
           },
           card: {
             variant: 'Estilo visual de la superficie de la tarjeta.',
@@ -1922,12 +1952,19 @@ export const esES: WebMessages = {
             label: 'Etiqueta de texto mostrada junto al interruptor.',
             required: 'Marca el interruptor como obligatorio.',
             size: 'Tamaño visual del interruptor.',
+            variant:
+              'Tono de estado de la pista, tintado cuando está apagado y sólido cuando está encendido.',
+            onIcon:
+              'Componente de icono opcional dibujado en el control mientras el interruptor está encendido.',
+            offIcon:
+              'Componente de icono opcional dibujado en el control mientras el interruptor está apagado.',
             changed:
               'Se emite con el nuevo estado de marcado cada vez que el usuario alterna el interruptor.',
           },
           tag: {
             color:
-              'Color de relleno en hexadecimal, que pinta la etiqueta y elige la tinta más legible.',
+              'Color de relleno, que pinta la etiqueta en lugar de su variante. Por sí solo debe ser un valor hexadecimal, a partir del cual la etiqueta elige la tinta más legible; junto con ink admite cualquier color CSS, como un var(--my-token) que siga el tema.',
+            ink: 'Color del texto, cualquier color CSS, que sustituye la tinta que la etiqueta elegiría para color. Proporcionarlo permite que color sea un valor que la etiqueta no puede medir, y el contraste entre ambos queda a cargo de quien lo usa.',
             variant: 'Esquema de color semántico de la etiqueta.',
             size: 'Tamaño visual de la etiqueta.',
             maxWidth:
@@ -1968,6 +2005,10 @@ export const esES: WebMessages = {
             blurred: 'Se emite cuando el campo pierde el foco.',
             focused: 'Se emite cuando el campo recibe el foco.',
             focus: 'Lleva el foco del teclado al textarea nativo subyacente.',
+            getSelection:
+              'Devuelve el rango seleccionado como posiciones de carácter inicial y final, conservado tras perder el foco.',
+            insertText:
+              'Sustituye la selección por el texto indicado, coloca el cursor detrás y notifica al formulario igual que al escribir.',
           },
           'avatar-editor': {
             accept:
@@ -2098,6 +2139,7 @@ export const esES: WebMessages = {
               'Número máximo de opciones mostradas a la vez en la lista de sugerencias.',
             minLength:
               'Número mínimo de caracteres necesarios para que aparezca la lista de sugerencias.',
+            maxLength: 'Número máximo de caracteres que acepta el campo.',
             options:
               'Lista completa de opciones disponibles para filtrar y seleccionar, plana o dividida en grupos.',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
@@ -2295,6 +2337,12 @@ export const esES: WebMessages = {
           'file-uploader': {
             accept:
               "Tipos MIME y extensiones de archivo aceptados por la zona de arrastre, separados por comas, p. ej. 'image/*,.pdf'.",
+            ariaLabel:
+              'Nombre accesible cuando nada visible nombra el control, para la zona de arrastre o un botón solo con icono.',
+            buttonIcon:
+              'Componente de icono opcional renderizado antes del texto de la variante de botón.',
+            buttonLabel:
+              'Texto de la variante de botón, por defecto "Examinar archivos" localizado; una cadena vacía con un icono deja un botón solo con icono.',
             disabled: 'Deshabilita el cargador.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2311,9 +2359,13 @@ export const esES: WebMessages = {
             progress:
               'Mapa de progreso de carga por archivo (0-100) indexado por identidad de File; omítalo para ocultar las barras de progreso.',
             required: 'Marca el campo como obligatorio.',
+            showConstraints:
+              'Muestra los tipos de archivo admitidos y los límites de tamaño y cantidad bajo el control; desactívalo donde saturarían una ubicación compacta.',
             showFileList:
               'Muestra la lista de archivos seleccionados bajo la zona de arrastre.',
             size: 'Tamaño visual del cargador.',
+            variant:
+              'Presentación del cargador: una zona de arrastrar y soltar, o un botón compacto que abre el selector de archivos.',
             value:
               'Lista de archivos actual, vinculable en dos sentidos mediante [(value)].',
             fileRemoved:
@@ -2370,7 +2422,8 @@ export const esES: WebMessages = {
             icon: 'Componente de icono mostrado antes de la etiqueta en el botón de cabecera del elemento, escalado con el elemento y oculto a las tecnologías de asistencia.',
             disabled: 'Deshabilita este elemento, impidiendo que se pueda alternar.',
             id: 'id aplicado al botón de encabezado y al panel del elemento, generado automáticamente si se omite.',
-            label: 'Texto mostrado en el botón de encabezado del elemento.',
+            label:
+              'Texto plano mostrado en el botón de encabezado. Para contenido más rico, un elemento proyectado con slot="label" ocupa su lugar, y su texto nombra entonces el botón.',
             value:
               'Clave única que identifica este elemento dentro de su acordeón padre.',
           },
@@ -2549,6 +2602,7 @@ export const esES: WebMessages = {
           'field-label': {
             forId:
               'id del control asociado; renderiza un <label for> cuando está definido, de lo contrario un <span>.',
+            help: 'Ayuda que se muestra con un botón de información junto a la etiqueta y se anuncia al mostrarse, como texto sin formato o como plantilla.',
             icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             labelId:
               'id aplicado al elemento de etiqueta renderizado para que los controles puedan referenciarlo mediante aria-labelledby.',
@@ -2598,6 +2652,12 @@ export const esES: WebMessages = {
           },
           button: {
             label: 'Púlsame',
+          },
+          card: {
+            headerText: 'Título de la tarjeta',
+            bodyText:
+              'Este es el contenido del cuerpo de la tarjeta. Puede contener cualquier texto o elemento.',
+            footerText: 'Pie',
           },
           checkbox: {
             label: 'Aceptar términos y condiciones',

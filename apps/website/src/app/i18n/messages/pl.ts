@@ -683,6 +683,8 @@ export const pl: WebMessages = {
           disabledSectionBody: 'Ta treść jest niedostępna.',
           newSectionHeading: 'Nowa sekcja',
           newSectionContent: 'Nowa treść',
+          newBadge: 'Nowe',
+          expanded: 'Rozwinięty',
         },
         alert: {
           defaultText: 'To jest domyślny alert',
@@ -734,10 +736,7 @@ export const pl: WebMessages = {
           outlinedBody: 'Karta z obramowaniem.',
           filledHeader: 'Wypełniona',
           filledBody: 'Karta z subtelnym tłem.',
-          cardTitleHeader: 'Tytuł karty',
           cardWithFooterBody: 'Ta karta ma nagłówek, treść i stopkę z akcjami.',
-          bodyText: 'To jest treść karty. Może zawierać dowolny tekst lub elementy.',
-          footer: 'Stopka',
         },
         checkbox: {
           acceptTermsAndConditions: 'Zaakceptuj regulamin i warunki',
@@ -1119,6 +1118,8 @@ export const pl: WebMessages = {
           'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
         ariaLabelDescription:
           'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
+        labelHelpDescription:
+          'Pomoc wyświetlana przez przycisk informacji obok etykiety, jako zwykły tekst lub szablon.',
         triggerErrorLabel: 'Wywołaj błąd',
         requiredBadge: 'wymagane',
         twoWayBadge: 'dwukierunkowe',
@@ -1167,6 +1168,7 @@ export const pl: WebMessages = {
           },
           input: {
             label: 'Etykieta',
+            labelHelp: 'Pomoc etykiety',
             labelIcon: 'Ikona etykiety',
             icon: 'Ikona',
             placeholder: 'Tekst zastępczy',
@@ -1206,6 +1208,7 @@ export const pl: WebMessages = {
             dismissible: 'Z możliwością zamknięcia',
             size: 'Rozmiar',
             icon: 'Ikona (zastąp)',
+            live: 'Ogłaszanie',
           },
           toast: {
             icon: 'Ikona (zastąp)',
@@ -1233,6 +1236,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             loading: 'Ładowanie',
             fullWidth: 'Pełna szerokość',
+            align: 'Wyrównanie',
             uppercase: 'Wielkie litery',
             icon: 'Ikona',
           },
@@ -1242,6 +1246,9 @@ export const pl: WebMessages = {
             headerAlign: 'Wyrównanie nagłówka',
             fullWidth: 'Pełna szerokość',
             headerDivider: 'Linia oddzielająca nagłówek',
+            headerText: 'Nagłówek',
+            bodyText: 'Treść',
+            footerText: 'Stopka',
           },
           checkbox: {
             label: 'Etykieta',
@@ -1370,6 +1377,9 @@ export const pl: WebMessages = {
           switch: {
             label: 'Etykieta',
             size: 'Rozmiar',
+            variant: 'Wariant',
+            onIcon: 'Ikona włączenia',
+            offIcon: 'Ikona wyłączenia',
             disabled: 'Wyłączone',
             required: 'Wymagane',
           },
@@ -1586,6 +1596,8 @@ export const pl: WebMessages = {
               'Poziom nagłówka (1-6) stosowany do nagłówka każdego elementu, dzięki czemu akordeon wpasowuje się w konspekt strony.',
             highlightExpanded:
               'Zabarwia nagłówek otwartego elementu i nadaje etykiecie, ikonie i strzałce kolor marki, aby wyróżniał się na tle zamkniętych.',
+            expandedValues:
+              'Wartości rozwiniętych elementów, dwukierunkowo wiązalne przez [(expandedValues)]; ich ustawienie otwiera elementy od początku. Bez multi otwarty pozostaje tylko pierwszy w kolejności dokumentu.',
           },
           alert: {
             dismissible:
@@ -1597,6 +1609,7 @@ export const pl: WebMessages = {
             dismiss: 'Ukrywa alert i emituje zdarzenie dismissed.',
             size: 'Skaluje razem tekst, ikonę i odstęp.',
             icon: 'Zastępuje domyślną ikonę statusu wariantu dowolnym komponentem ikony.',
+            live: 'Sposób, w jaki technologie wspomagające ogłaszają alert: auto przerywa przy error i warning, a przy pozostałych czeka na swoją kolej, assertive lub polite stosuje jeden z tych trybów do każdego wariantu, a off niczego nie ogłasza, dla statycznego tekstu strony.',
           },
           avatar: {
             src: 'Adres URL obrazu do wyświetlenia; w razie braku używa inicjałów, a następnie ogólnej ikony użytkownika.',
@@ -1619,6 +1632,8 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza przycisk i blokuje zdarzenia kliknięcia.',
             loading: 'Zamienia etykietę na spinner, zachowując renderowaną szerokość.',
             fullWidth: 'Rozciąga przycisk, aby wypełnił szerokość swojego kontenera.',
+            align:
+              'Wyrównuje zawartość w przycisku szerszym od niej, na przykład o pełnej szerokości. Początek i koniec podążają za kierunkiem tekstu.',
             uppercase: 'Wyświetla etykietę w całości wielkimi literami.',
             ariaLabel:
               'Dostępna etykieta przycisku, gdy jego treść nie jest wystarczająco opisowa.',
@@ -1627,6 +1642,22 @@ export const pl: WebMessages = {
             clicked:
               'Emitowane po aktywacji przycisku, blokowane gdy wyłączony lub ładuje się.',
             icon: 'Opcjonalny komponent ikony renderowany po lewej stronie etykiety.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa przycisk, przekazywane do natywnego atrybutu aria-labelledby.',
+            ariaDescribedby:
+              'Identyfikatory elementów opisujących przycisk, np. podpowiedzi, przekazywane do natywnego atrybutu aria-describedby.',
+            focus: 'Przenosi fokus klawiatury na bazowy natywny przycisk.',
+          },
+          'button-link': {
+            variant: 'Wizualny styl odnośnika, sterujący jego kolorem i wyróżnieniem.',
+            size: 'Wizualny rozmiar odnośnika.',
+            disabled:
+              'Oznacza odnośnik jako niedostępny przez aria-disabled, usuwa go z kolejności tabulacji i blokuje nawigację.',
+            fullWidth: 'Rozciąga odnośnik, aby wypełnił szerokość swojego kontenera.',
+            align:
+              'Wyrównuje zawartość w odnośniku szerszym od niej, na przykład o pełnej szerokości. Początek i koniec podążają za kierunkiem tekstu.',
+            uppercase: 'Wyświetla etykietę w całości wielkimi literami.',
+            icon: 'Opcjonalny komponent ikony renderowany przed etykietą.',
           },
           card: {
             variant: 'Wizualny styl powierzchni karty.',
@@ -1887,12 +1918,19 @@ export const pl: WebMessages = {
             label: 'Etykieta tekstowa renderowana obok przełącznika.',
             required: 'Oznacza przełącznik jako wymagany.',
             size: 'Wizualny rozmiar przełącznika.',
+            variant:
+              'Ton statusu ścieżki, zabarwionej po wyłączeniu i pełnej po włączeniu.',
+            onIcon:
+              'Opcjonalny komponent ikony rysowany w uchwycie, gdy przełącznik jest włączony.',
+            offIcon:
+              'Opcjonalny komponent ikony rysowany w uchwycie, gdy przełącznik jest wyłączony.',
             changed:
               'Emitowane z nowym stanem zaznaczenia, gdy użytkownik przełączy przełącznik.',
           },
           tag: {
             color:
-              'Kolor wypełnienia jako wartość szesnastkowa, który maluje tag i dobiera czytelny kolor tekstu.',
+              'Kolor wypełnienia, który maluje tag zamiast wariantu. Samodzielnie musi być wartością szesnastkową, na podstawie której tag dobiera czytelniejszy kolor tekstu; razem z ink przyjmuje dowolny kolor CSS, na przykład zależny od motywu var(--my-token).',
+            ink: 'Kolor tekstu jako dowolny kolor CSS, zastępujący kolor, który tag dobrałby dla color. Jego podanie pozwala, by color był wartością, której tag nie potrafi zmierzyć, a za kontrast między nimi odpowiada wtedy wywołujący.',
             variant: 'Semantyczny schemat kolorów tagu.',
             size: 'Wizualny rozmiar tagu.',
             maxWidth:
@@ -1930,6 +1968,10 @@ export const pl: WebMessages = {
             blurred: 'Emitowane, gdy pole traci fokus.',
             focused: 'Emitowane, gdy pole otrzymuje fokus.',
             focus: 'Przenosi fokus klawiatury na bazowe natywne pole textarea.',
+            getSelection:
+              'Zwraca zaznaczony zakres jako początkową i końcową pozycję znaku, zachowaną po utracie fokusu przez pole.',
+            insertText:
+              'Zastępuje zaznaczenie podanym tekstem, ustawia kursor za nim i powiadamia formularz tak jak przy pisaniu.',
           },
           'avatar-editor': {
             accept:
@@ -2058,6 +2100,7 @@ export const pl: WebMessages = {
               'Maksymalna liczba opcji wyświetlanych jednocześnie na liście sugestii.',
             minLength:
               'Minimalna liczba znaków wymagana przed pojawieniem się listy sugestii.',
+            maxLength: 'Maksymalna liczba znaków akceptowana przez pole.',
             options:
               'Pełna lista opcji dostępnych do filtrowania i wyboru, płaska lub podzielona na grupy.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
@@ -2242,6 +2285,12 @@ export const pl: WebMessages = {
           'file-uploader': {
             accept:
               "Oddzielone przecinkami typy MIME i rozszerzenia plików akceptowane przez strefę upuszczania, np. 'image/*,.pdf'.",
+            ariaLabel:
+              'Dostępna nazwa, gdy nic widocznego nie nazywa kontrolki, dla strefy upuszczania lub przycisku z samą ikoną.',
+            buttonIcon:
+              'Opcjonalny komponent ikony renderowany przed tekstem wariantu przycisku.',
+            buttonLabel:
+              'Tekst wariantu przycisku, domyślnie zlokalizowane "Przeglądaj pliki"; pusty ciąg z ikoną daje przycisk z samą ikoną.',
             disabled: 'Wyłącza uploader.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2255,8 +2304,12 @@ export const pl: WebMessages = {
             progress:
               'Mapa postępu przesyłania per plik (0-100) indeksowana tożsamością File; pomiń, aby ukryć paski postępu.',
             required: 'Oznacza pole jako wymagane.',
+            showConstraints:
+              'Wyświetla dozwolone typy plików oraz limity rozmiaru i liczby pod kontrolką; wyłącz, gdy zagracałyby kompaktowe miejsce.',
             showFileList: 'Wyświetla listę wybranych plików pod strefą upuszczania.',
             size: 'Wizualny rozmiar uploadera.',
+            variant:
+              'Sposób prezentacji uploadera: strefa przeciągnij i upuść lub kompaktowy przycisk otwierający wybór plików.',
             value: 'Bieżąca lista plików, dwukierunkowo wiązalna przez [(value)].',
             fileRemoved:
               'Emitowane, gdy plik zostanie usunięty przyciskiem usuwania jego wiersza.',
@@ -2311,7 +2364,8 @@ export const pl: WebMessages = {
             icon: 'Komponent ikony wyświetlany przed etykietą w przycisku nagłówka elementu, skalowany razem z elementem i ukryty przed technologiami wspomagającymi.',
             disabled: 'Wyłącza ten element, uniemożliwiając jego przełączanie.',
             id: 'id stosowane do przycisku nagłówka i panelu elementu, generowane automatycznie gdy pominięte.',
-            label: 'Tekst wyświetlany w przycisku nagłówka elementu.',
+            label:
+              'Zwykły tekst wyświetlany w przycisku nagłówka. Przy bogatszej treści jego miejsce zajmuje element przekazany z atrybutem slot="label", a jego tekst staje się nazwą przycisku.',
             value: 'Unikalny klucz identyfikujący ten element w nadrzędnym akordeonie.',
           },
           breadcrumbs: {
@@ -2483,6 +2537,7 @@ export const pl: WebMessages = {
           'field-label': {
             forId:
               'id powiązanego elementu sterującego; renderuje <label for> gdy ustawione, w przeciwnym razie <span>.',
+            help: 'Pomoc wyświetlana przez przycisk informacji obok etykiety i ogłaszana po wyświetleniu, jako zwykły tekst lub szablon.',
             icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             labelId:
               'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',
@@ -2532,6 +2587,11 @@ export const pl: WebMessages = {
           },
           button: {
             label: 'Naciśnij mnie',
+          },
+          card: {
+            headerText: 'Tytuł karty',
+            bodyText: 'To jest treść karty. Może zawierać dowolny tekst lub elementy.',
+            footerText: 'Stopka',
           },
           checkbox: {
             label: 'Zaakceptuj regulamin i warunki',

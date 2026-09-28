@@ -2,6 +2,8 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  type ElementRef,
   ViewEncapsulation,
   computed,
   inject,
@@ -9,6 +11,7 @@ import {
   linkedSignal,
   output,
   signal,
+  viewChild,
 } from '@angular/core';
 
 import {
@@ -213,9 +216,9 @@ let nextId = 0;
  * Plots one or more series of values as lines, with optional points and area
  * fills. Points are spaced evenly by default, or placed along a numeric scale
  * by `xValues`, with the x-axis labelled per point or by `xTicks`. A
- * `visibleXSpan` window makes a long run of data pannable. Hovering or
- * arrowing through the chart reveals each point's values in a tooltip, and a
- * visually hidden table carries the full data for screen readers.
+ * `visibleXSpan` window makes a long run of data pannable. Hovering, tapping,
+ * or arrowing through the chart reveals each point's values in a tooltip, and
+ * a visually hidden table carries the full data for screen readers.
  */
 @Component({
   selector: 'ea-line-chart',
@@ -295,6 +298,7 @@ export class LineChartComponent {
 
   private readonly viewport = injectChartViewport(this.size);
   private readonly format = injectChartFormatter(this.formatValue);
+  private readonly plotEl = viewChild<ElementRef<HTMLElement>>('plot');
   protected readonly active = signal<ActivePoint | null>(null);
   protected readonly clipId = `ea-line-chart-clip-${nextId++}`;
   protected readonly breakMaskId = `${this.clipId}-break`;
@@ -313,6 +317,8 @@ export class LineChartComponent {
   private drag: { pointerId: number; x: number; end: number; moved: boolean } | null =
     null;
   private suppressClick = false;
+  // Set while a tapped point is held open; detaches the listener that ends the hold
+  private releaseTap: (() => void) | null = null;
 
   protected readonly label = computed(
     () => this.ariaLabel() || this.i18n.messages().chart.lineChart,
@@ -590,6 +596,10 @@ export class LineChartComponent {
     () => this.showLegend() && this.series().length > 1,
   );
 
+  constructor() {
+    inject(DestroyRef).onDestroy(() => this.endTapHold());
+  }
+
   protected seriesColor(index: number): string {
     return chartColor(index, this.series()[index]?.color);
   }
@@ -610,6 +620,7 @@ export class LineChartComponent {
 
   protected onPointerDown(event: PointerEvent): void {
     this.suppressClick = false;
+    this.endTapHold();
     const domain = this.domain();
     if (domain.span != null && event.button === 0) {
       this.drag = {
@@ -623,6 +634,10 @@ export class LineChartComponent {
   }
 
   protected onPointerMove(event: PointerEvent): void {
+    // A pointer that hovers reports its own pointerleave, so it needs no hold
+    if (event.buttons === 0) {
+      this.endTapHold();
+    }
     // A press released outside the chart never reported its pointerup
     if (this.drag && event.buttons === 0) {
       this.endDrag();
@@ -663,14 +678,29 @@ export class LineChartComponent {
   }
 
   protected onPointerUp(event: PointerEvent): void {
+    let panned = false;
     if (this.drag?.pointerId === event.pointerId) {
-      this.suppressClick = this.drag.moved;
+      panned = this.drag.moved;
+      this.suppressClick = panned;
       this.endDrag();
+    }
+    // A pointer without hover fires pointerleave as soon as it lifts, so a tap
+    // holds its point open instead
+    if (!panned && (event.pointerType === 'touch' || event.pointerType === 'pen')) {
+      this.holdTap();
     }
   }
 
+  // The browser took the press over, most often to scroll the page
+  protected onPointerCancel(event: PointerEvent): void {
+    if (this.drag?.pointerId === event.pointerId) {
+      this.endDrag();
+    }
+    this.setActive(null);
+  }
+
   protected onPointerLeave(): void {
-    if (!this.drag?.moved) {
+    if (!this.drag?.moved && !this.releaseTap) {
       this.setActive(null);
     }
   }
@@ -1040,6 +1070,28 @@ export class LineChartComponent {
     this.panning.set(false);
   }
 
+  // Holds the tapped point until the next press, on the plot or off it, or until
+  // the highlight clears
+  private holdTap(): void {
+    const plot = this.plotEl()?.nativeElement;
+    if (this.releaseTap || !plot || !this.active()) {
+      return;
+    }
+    const doc = plot.ownerDocument;
+    const onPress = (event: Event): void => {
+      if (!(event.target instanceof Node) || !plot.contains(event.target)) {
+        this.setActive(null);
+      }
+    };
+    doc.addEventListener('pointerdown', onPress, true);
+    this.releaseTap = () => doc.removeEventListener('pointerdown', onPress, true);
+  }
+
+  private endTapHold(): void {
+    this.releaseTap?.();
+    this.releaseTap = null;
+  }
+
   // Pans a window just far enough to bring the point at `index` into view
   private reveal(index: number): void {
     const domain = this.domain();
@@ -1141,6 +1193,9 @@ export class LineChartComponent {
   }
 
   private setActive(next: ActivePoint | null): void {
+    if (!next) {
+      this.endTapHold();
+    }
     const current = this.active();
     if (current?.series === next?.series && current?.index === next?.index) {
       return;

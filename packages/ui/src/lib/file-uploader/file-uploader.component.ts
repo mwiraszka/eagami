@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type TemplateRef,
   type Type,
   computed,
   forwardRef,
@@ -15,6 +16,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { ButtonComponent } from '../button/button.component';
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
 import {
@@ -36,6 +38,9 @@ import { uniqueId } from '../unique-id';
 /** Visual size of the file uploader. */
 export type FileUploaderSize = EaSize;
 
+/** Presentation of the uploader: a drag-and-drop zone, or a compact picker button. */
+export type FileUploaderVariant = 'dropzone' | 'button';
+
 /** Reason a file was rejected during selection. */
 export type FileUploaderRejectionReason = 'type' | 'size' | 'count';
 
@@ -55,11 +60,22 @@ export interface FileUploaderRejection {
  * slot via the `icon` attribute: project any element to override it, and the
  * dropzone's size-aware wrapper handles sizing automatically.
  *
+ * Where a dropzone is too large, `variant="button"` swaps it for a compact
+ * `ea-button` that opens the file picker, keeping the same validation, file
+ * list and outputs.
+ *
  * @example
  * ```html
  * <ea-file-uploader label="Attach files">
  *   <ea-icon-paperclip icon />
  * </ea-file-uploader>
+ *
+ * <ea-file-uploader
+ *   variant="button"
+ *   accept=".csv"
+ *   buttonLabel="Import CSV"
+ *   [buttonIcon]="uploadIcon"
+ *   [multiple]="false" />
  * ```
  */
 @Component({
@@ -69,6 +85,7 @@ export interface FileUploaderRejection {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArchiveIconComponent,
+    ButtonComponent,
     FieldLabelComponent,
     FieldMessagesComponent,
     FileIconComponent,
@@ -91,16 +108,36 @@ export interface FileUploaderRejection {
 export class FileUploaderComponent implements ControlValueAccessor {
   private readonly fileInputEl = viewChild<ElementRef<HTMLInputElement>>('fileInputEl');
   private readonly dropzoneEl = viewChild<ElementRef<HTMLButtonElement>>('dropzoneEl');
+  private readonly pickerButton = viewChild(ButtonComponent);
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
+  /** Help revealed by an info button beside the label, as plain text or a template. */
+  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   readonly hint = input<string | undefined>(undefined);
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly size = input<FileUploaderSize>('md');
+  /**
+   * `dropzone` renders the drag-and-drop area; `button` renders a compact
+   * secondary `ea-button` that opens the file picker instead, without drop support.
+   */
+  readonly variant = input<FileUploaderVariant>('dropzone');
+  /**
+   * Visible text of the `button` variant, falling back to the localized "Browse
+   * files". An empty string together with a `buttonIcon` leaves an icon-only button.
+   */
+  readonly buttonLabel = input<string | undefined>(undefined);
+  /** Optional icon component rendered before the `button` variant's text. */
+  readonly buttonIcon = input<Type<unknown> | undefined>(undefined);
+  /**
+   * Accessible name when nothing visible names the control: no `label`, and in
+   * the `button` variant no button text either.
+   */
+  readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   /**
@@ -117,6 +154,11 @@ export class FileUploaderComponent implements ControlValueAccessor {
   readonly maxFiles = input<number | undefined>(undefined);
   /** Toggle the file list under the dropzone. */
   readonly showFileList = input<boolean>(true);
+  /**
+   * Toggle the line listing the accepted types, size and file count limits, for a
+   * compact placement (an icon button in a toolbar) where it would crowd the control.
+   */
+  readonly showConstraints = input<boolean>(true);
   /**
    * Optional per-file progress (0-100). Keyed by `File` object identity, so
    * consumers must keep the same `File` references between change-detection
@@ -158,6 +200,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
 
   protected readonly hostClasses = computed(() => ({
     [`ea-file-uploader-field--${this.size()}`]: true,
+    'ea-file-uploader-field--button': this.variant() === 'button',
     'ea-file-uploader-field--error': this.hasError(),
     'ea-file-uploader-field--disabled': this.isDisabled(),
     'ea-file-uploader-field--drag-over': this.isDragOver(),
@@ -184,6 +227,9 @@ export class FileUploaderComponent implements ControlValueAccessor {
 
   /** Joined human-readable description of accept / maxSize / maxFiles limits. */
   protected readonly constraintsText = computed(() => {
+    if (!this.showConstraints()) {
+      return '';
+    }
     const messages = this.i18n.messages().fileUploader;
     const parts: string[] = [];
     const accept = this.accept();
@@ -205,6 +251,38 @@ export class FileUploaderComponent implements ControlValueAccessor {
     this.multiple()
       ? this.i18n.messages().fileUploader.prompt
       : this.i18n.messages().fileUploader.promptSingle,
+  );
+
+  protected readonly dropzoneLabel = computed(
+    () => this.label() ?? this.ariaLabel() ?? this.promptText(),
+  );
+
+  protected readonly labelId = computed(() => `${this.id()}-label`);
+  protected readonly buttonTextId = computed(() => `${this.id()}-button-text`);
+
+  // An empty label only drops the text while an icon is left to show
+  protected readonly buttonText = computed(() => {
+    const text = this.buttonLabel();
+    return text === undefined || (!text && !this.buttonIcon())
+      ? this.i18n.messages().fileUploader.browse
+      : text;
+  });
+
+  // The field label and the button text together name the button, so the name
+  // always contains the text a speech user sees on it
+  protected readonly buttonLabelledBy = computed(() => {
+    if (!this.label()) {
+      return undefined;
+    }
+    return this.buttonText()
+      ? `${this.labelId()} ${this.buttonTextId()}`
+      : this.labelId();
+  });
+
+  protected readonly buttonAriaLabel = computed(() =>
+    !this.label() && !this.buttonText()
+      ? (this.ariaLabel() ?? this.i18n.messages().fileUploader.browse)
+      : undefined,
   );
 
   writeValue(value: readonly File[] | null | undefined): void {
@@ -243,6 +321,10 @@ export class FileUploaderComponent implements ControlValueAccessor {
 
   protected onDropzoneBlur(): void {
     this.isFocused.set(false);
+    this.onTouched();
+  }
+
+  protected onPickerButtonFocusOut(): void {
     this.onTouched();
   }
 
@@ -312,7 +394,9 @@ export class FileUploaderComponent implements ControlValueAccessor {
     this.value.set(next);
     this.onChange(next);
     this.fileRemoved.emit(file);
+    // Only one of the two triggers is rendered, per variant
     this.dropzoneEl()?.nativeElement.focus();
+    this.pickerButton()?.focus();
   }
 
   private acceptFiles(incoming: readonly File[]): void {

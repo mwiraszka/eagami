@@ -28,6 +28,7 @@ const FRUITS: SelectOption[] = [
       [hint]="hint()"
       [errorMsg]="errorMsg()"
       [minLength]="minLength()"
+      [maxLength]="maxLength()"
       [maxResults]="maxResults()"
       (selected)="onSelected($event)" />
   `,
@@ -44,6 +45,7 @@ class TestHostComponent {
   hint = signal<string | undefined>(undefined);
   errorMsg = signal<string | undefined>(undefined);
   minLength = signal(0);
+  maxLength = signal<number | undefined>(undefined);
   maxResults = signal(10);
   lastSelected: SelectOption | null = null;
 
@@ -150,6 +152,17 @@ describe('AutocompleteComponent', () => {
       fixture.detectChanges();
 
       expect(getInput().getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('sets no character limit by default', () => {
+      expect(getInput().hasAttribute('maxlength')).toBe(false);
+    });
+
+    it('forwards maxLength to the native input', () => {
+      host.maxLength.set(20);
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('maxlength')).toBe('20');
     });
 
     it('applies ariaLabel to the input when no label is provided', () => {

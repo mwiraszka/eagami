@@ -3,14 +3,15 @@ import { axe } from 'vitest-axe';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { AlertComponent, type AlertVariant } from './alert.component';
+import { AlertComponent, type AlertLive, type AlertVariant } from './alert.component';
 
 @Component({
   imports: [AlertComponent],
   template: `
     <ea-alert
       [variant]="variant"
-      [dismissible]="dismissible">
+      [dismissible]="dismissible"
+      [live]="live">
       {{ text }}
     </ea-alert>
   `,
@@ -19,6 +20,7 @@ class HostComponent {
   text = 'Your changes have been saved.';
   variant: AlertVariant = 'default';
   dismissible = false;
+  live: AlertLive = 'auto';
 }
 
 describe('AlertComponent a11y', () => {
@@ -36,6 +38,20 @@ describe('AlertComponent a11y', () => {
     'has no detectable violations for the %s variant',
     async variant => {
       const el = await render(host => (host.variant = variant));
+
+      const results = await axe(el);
+
+      expect(results).toHaveNoViolations();
+    },
+  );
+
+  it.each(['assertive', 'polite', 'off'] as const)(
+    'has no detectable violations when live is %s',
+    async live => {
+      const el = await render(host => {
+        host.variant = 'warning';
+        host.live = live;
+      });
 
       const results = await axe(el);
 

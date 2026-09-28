@@ -673,6 +673,8 @@ export const en: WebMessages = {
           disabledSectionBody: 'This content is not reachable.',
           newSectionHeading: 'New section',
           newSectionContent: 'New content',
+          newBadge: 'New',
+          expanded: 'Expanded',
         },
         alert: {
           defaultText: 'This is a default alert',
@@ -724,10 +726,7 @@ export const en: WebMessages = {
           outlinedBody: 'Card with border outline.',
           filledHeader: 'Filled',
           filledBody: 'Card with subtle background.',
-          cardTitleHeader: 'Card Title',
           cardWithFooterBody: 'This card has a header, body, and footer with actions.',
-          bodyText: 'This is the card body content. It can contain any text or elements.',
-          footer: 'Footer',
         },
         checkbox: {
           acceptTermsAndConditions: 'Accept terms and conditions',
@@ -1100,6 +1099,8 @@ export const en: WebMessages = {
           'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
         ariaLabelDescription:
           'Accessible name announced by assistive technology when the component renders no visible label.',
+        labelHelpDescription:
+          'Help revealed by an info button beside the label, as plain text or a template.',
         triggerErrorLabel: 'Trigger error',
         requiredBadge: 'required',
         twoWayBadge: 'two-way',
@@ -1148,6 +1149,7 @@ export const en: WebMessages = {
           },
           input: {
             label: 'Label',
+            labelHelp: 'Label help',
             labelIcon: 'Label icon',
             icon: 'Icon',
             placeholder: 'Placeholder',
@@ -1187,6 +1189,7 @@ export const en: WebMessages = {
             dismissible: 'Dismissible',
             size: 'Size',
             icon: 'Icon (override)',
+            live: 'Announcement',
           },
           toast: {
             icon: 'Icon (override)',
@@ -1214,6 +1217,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             loading: 'Loading',
             fullWidth: 'Full width',
+            align: 'Alignment',
             uppercase: 'Uppercase',
             icon: 'Icon',
           },
@@ -1223,6 +1227,9 @@ export const en: WebMessages = {
             headerAlign: 'Header alignment',
             fullWidth: 'Full width',
             headerDivider: 'Header divider',
+            headerText: 'Header',
+            bodyText: 'Body',
+            footerText: 'Footer',
           },
           checkbox: {
             label: 'Label',
@@ -1351,6 +1358,9 @@ export const en: WebMessages = {
           switch: {
             label: 'Label',
             size: 'Size',
+            variant: 'Variant',
+            onIcon: 'On icon',
+            offIcon: 'Off icon',
             disabled: 'Disabled',
             required: 'Required',
           },
@@ -1563,6 +1573,8 @@ export const en: WebMessages = {
               'Heading level (1-6) applied to every item header, so the accordion slots into the page outline.',
             highlightExpanded:
               "Tints an open item's header and sets its label, icon, and chevron in the brand color, so it stands apart from the closed items.",
+            expandedValues:
+              'Values of the expanded items, two-way bindable via [(expandedValues)]; setting it opens items from the start. Without multi, only the first in document order stays open.',
           },
           alert: {
             dismissible: 'Shows a close button that lets the user dismiss the alert.',
@@ -1572,6 +1584,7 @@ export const en: WebMessages = {
             dismiss: 'Hides the alert and emits the dismissed event.',
             size: 'Scales the text, icon, and gap together.',
             icon: "Overrides the variant's default status icon with any icon component.",
+            live: 'How assistive technology announces the alert: auto interrupts for error and warning and waits its turn for the rest, assertive or polite applies one of those to every variant, and off announces nothing, for static page text.',
           },
           avatar: {
             src: 'Image URL to display; falls back to initials, then a generic user icon.',
@@ -1594,6 +1607,8 @@ export const en: WebMessages = {
             disabled: 'Disables the button and suppresses click events.',
             loading: 'Swaps the label for a spinner while preserving the rendered width.',
             fullWidth: 'Stretches the button to fill the width of its container.',
+            align:
+              'Aligns the content within a button wider than it, such as a full-width one; start and end follow the text direction.',
             uppercase: 'Renders the label in all capitals.',
             ariaLabel:
               'Accessible label for the button when its content is not descriptive enough.',
@@ -1602,6 +1617,22 @@ export const en: WebMessages = {
             clicked:
               'Fires when the button is activated, suppressed while disabled or loading.',
             icon: 'Optional icon component rendered to the left of the label.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the button, forwarded to the native aria-labelledby attribute.',
+            ariaDescribedby:
+              'Ids of the elements that describe the button, such as a hint, forwarded to the native aria-describedby attribute.',
+            focus: 'Moves keyboard focus to the underlying native button.',
+          },
+          'button-link': {
+            variant: 'Visual style of the link, driving its color and emphasis.',
+            size: 'Visual size of the link.',
+            disabled:
+              'Marks the link unavailable with aria-disabled, takes it out of the tab order, and blocks navigation.',
+            fullWidth: 'Stretches the link to fill the width of its container.',
+            align:
+              'Aligns the content within a link wider than it, such as a full-width one; start and end follow the text direction.',
+            uppercase: 'Renders the label in all capitals.',
+            icon: 'Optional icon component rendered before the label.',
           },
           card: {
             variant: 'Visual style of the card surface.',
@@ -1853,12 +1884,17 @@ export const en: WebMessages = {
             label: 'Text label rendered beside the switch.',
             required: 'Marks the switch as required.',
             size: 'Visual size of the switch.',
+            variant: 'Status tone for the track, tinted while off and solid while on.',
+            onIcon: 'Optional icon component drawn in the thumb while the switch is on.',
+            offIcon:
+              'Optional icon component drawn in the thumb while the switch is off.',
             changed:
               'Fires with the new checked state whenever the user toggles the switch.',
           },
           tag: {
             color:
-              'Fill color as a hex value, painting the chip and picking whichever ink reads on it.',
+              'Fill color, painting the chip over its variant. On its own it must be a hex value, from which the tag picks whichever ink reads on it; alongside ink it takes any CSS color, such as a theme-aware var(--my-token).',
+            ink: 'Text color as any CSS color, overriding the ink the tag would pick for color. Supplying it lets color be a value the tag cannot measure, leaving the contrast between the two to the caller.',
             variant: 'Semantic color scheme of the tag.',
             size: 'Visual size of the tag.',
             maxWidth:
@@ -1896,6 +1932,10 @@ export const en: WebMessages = {
             blurred: 'Fires when the field loses focus.',
             focused: 'Fires when the field receives focus.',
             focus: 'Moves keyboard focus to the underlying native textarea.',
+            getSelection:
+              'Returns the selected range as start and end character offsets, kept after the field loses focus.',
+            insertText:
+              'Replaces the selection with the given text, places the caret after it, and notifies the form as typing does.',
           },
           'avatar-editor': {
             accept:
@@ -2011,6 +2051,7 @@ export const en: WebMessages = {
             maxResults: 'Maximum number of options shown in the suggestion list at once.',
             minLength:
               'Minimum number of characters required before the suggestion list appears.',
+            maxLength: 'Maximum number of characters the input accepts.',
             options:
               'Full list of options available for filtering and selection, flat or split into groups.',
             placeholder: 'Placeholder shown while the field is empty.',
@@ -2188,6 +2229,12 @@ export const en: WebMessages = {
           'file-uploader': {
             accept:
               "Comma-separated MIME types and file extensions the dropzone accepts, e.g. 'image/*,.pdf'.",
+            ariaLabel:
+              'Accessible name when nothing visible names the control, for the dropzone or an icon-only button.',
+            buttonIcon:
+              'Optional icon component rendered before the text of the button variant.',
+            buttonLabel:
+              'Text of the button variant, defaulting to the localized "Browse files"; an empty string with an icon leaves an icon-only button.',
             disabled: 'Disables the uploader.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',
@@ -2202,8 +2249,12 @@ export const en: WebMessages = {
             progress:
               'Per-file upload progress map (0-100) keyed by File identity; omit to hide progress bars.',
             required: 'Marks the field as required.',
+            showConstraints:
+              'Shows the accepted file types, size and count limits below the control; turn it off where they would crowd a compact placement.',
             showFileList: 'Shows the list of selected files below the dropzone.',
             size: 'Visual size of the uploader.',
+            variant:
+              'Presentation of the uploader: a drag-and-drop zone, or a compact button that opens the file picker.',
             value: 'Current file list, two-way bindable via [(value)].',
             fileRemoved: "Fires when a file is removed via its row's remove button.",
             dragOverChanged:
@@ -2255,7 +2306,8 @@ export const en: WebMessages = {
             icon: "Icon component rendered before the label in the item's header button, sized with the item and hidden from assistive technology.",
             disabled: 'Disables this item, preventing it from being toggled.',
             id: "id applied to the item's header button and panel, auto-generated when omitted.",
-            label: "Text shown in the item's header button.",
+            label:
+              'Plain text shown in the header button. For richer content, an element projected with slot="label" takes its place, and its text then names the button.',
             value: 'Unique key that identifies this item within its parent accordion.',
           },
           breadcrumbs: {
@@ -2419,6 +2471,7 @@ export const en: WebMessages = {
           'field-label': {
             forId:
               'id of the associated control; renders a <label for> when set, otherwise a <span>.',
+            help: 'Help revealed by an info button beside the label, as plain text or a template, and announced when shown.',
             icon: 'Optional icon component rendered before the label text.',
             labelId:
               'id applied to the rendered label element so controls can reference it via aria-labelledby.',
@@ -2467,6 +2520,12 @@ export const en: WebMessages = {
           },
           button: {
             label: 'Press me',
+          },
+          card: {
+            headerText: 'Card Title',
+            bodyText:
+              'This is the card body content. It can contain any text or elements.',
+            footerText: 'Footer',
           },
           checkbox: {
             label: 'Accept terms and conditions',

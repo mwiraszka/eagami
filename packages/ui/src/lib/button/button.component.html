@@ -1,9 +1,12 @@
 <button
+  #buttonEl
   class="ea-button"
   [ngClass]="hostClasses()"
   [type]="type()"
   [disabled]="isDisabled()"
   [attr.aria-label]="ariaLabel()"
+  [attr.aria-labelledby]="ariaLabelledby() || null"
+  [attr.aria-describedby]="ariaDescribedby() || null"
   [attr.aria-current]="ariaCurrent() || null"
   [attr.aria-busy]="loading() || null"
   (click)="handleClick($event)">

@@ -235,3 +235,76 @@ describe('AccordionItemComponent icon', () => {
     expect(item().querySelector('.ea-accordion-item__icon')).toBeNull();
   });
 });
+
+@Component({
+  imports: [AccordionComponent, AccordionItemComponent],
+  template: `
+    <ea-accordion>
+      <ea-accordion-item value="rich">
+        <span slot="label">
+          Billing
+          <strong class="count">3 new</strong>
+        </span>
+        Billing body
+      </ea-accordion-item>
+      <ea-accordion-item
+        value="both"
+        label="Plain">
+        <span slot="label">Rich</span>
+        Both body
+      </ea-accordion-item>
+    </ea-accordion>
+  `,
+})
+class RichLabelHostComponent {}
+
+describe('AccordionItemComponent label slot', () => {
+  let fixture: ComponentFixture<RichLabelHostComponent>;
+
+  function getTriggers(): HTMLButtonElement[] {
+    return Array.from(
+      fixture.nativeElement.querySelectorAll('.ea-accordion-item__trigger'),
+    );
+  }
+
+  function panel(): HTMLElement {
+    const root: HTMLElement = fixture.nativeElement;
+    return root.querySelector<HTMLElement>('.ea-accordion-item__content')!;
+  }
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RichLabelHostComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(RichLabelHostComponent);
+    fixture.detectChanges();
+  });
+
+  it('renders the projected label inside the header button', () => {
+    const label = getTriggers()[0].querySelector('.ea-accordion-item__label')!;
+
+    expect(label.querySelector('[slot="label"] .count')?.textContent).toBe('3 new');
+    expect(getTriggers()[0].textContent!.replace(/\s+/g, ' ').trim()).toBe(
+      'Billing 3 new',
+    );
+  });
+
+  it('keeps the projected label out of the panel', () => {
+    getTriggers()[0].click();
+    fixture.detectChanges();
+
+    expect(panel().textContent!.trim()).toBe('Billing body');
+  });
+
+  it('shows the projected label in place of the plain label', () => {
+    expect(getTriggers()[1].textContent!.trim()).toBe('Rich');
+  });
+
+  it('names the panel after the button that carries the projected label', () => {
+    getTriggers()[0].click();
+    fixture.detectChanges();
+
+    expect(panel().getAttribute('aria-labelledby')).toBe(getTriggers()[0].id);
+  });
+});

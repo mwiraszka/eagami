@@ -3,8 +3,9 @@ import {
   Component,
   effect,
   input,
+  linkedSignal,
+  model,
   signal,
-  untracked,
 } from '@angular/core';
 
 import { type EaSize } from '../sizes';
@@ -19,7 +20,9 @@ export type AccordionSize = EaSize;
 /**
  * Container for expandable content sections. By default only one item can be
  * open at a time; set `multi` to allow several to stay expanded together.
- * Provides a built-in chevron animation and supports per-item disabling.
+ * Which items are open is the `expandedValues` model, so items can start
+ * expanded or be controlled from outside. Provides a built-in chevron
+ * animation and supports per-item disabling.
  */
 @Component({
   selector: 'ea-accordion',
@@ -35,8 +38,15 @@ export class AccordionComponent {
   readonly headingLevel = input<AccordionHeadingLevel>(3);
   /** Tints an open item's header and sets its label, icon, and chevron in the brand color. */
   readonly highlightExpanded = input<boolean>(false);
+  /**
+   * Values of the expanded items. Set it to open items from the start, or bind
+   * `[(expandedValues)]` to control expansion from outside. Without `multi`,
+   * only the first of them in document order stays open.
+   */
+  readonly expandedValues = model<readonly string[]>([]);
 
-  readonly expandedItems = signal<Set<string>>(new Set());
+  // Linked rather than computed, so it stays writable for callers that set it directly
+  readonly expandedItems = linkedSignal(() => new Set(this.expandedValues()));
   readonly registeredItems = signal<AccordionItemComponent[]>([]);
 
   constructor() {
@@ -44,14 +54,14 @@ export class AccordionComponent {
       if (this.multi()) {
         return;
       }
-      const expanded = untracked(this.expandedItems);
-      if (expanded.size <= 1) {
+      const expanded = this.expandedValues();
+      if (expanded.length <= 1) {
         return;
       }
-      const first = untracked(this.registeredItems).find(item =>
-        expanded.has(item.value()),
-      );
-      this.expandedItems.set(new Set(first ? [first.value()] : []));
+      const first = this.registeredItems().find(item => expanded.includes(item.value()));
+      if (first) {
+        this.expandedValues.set([first.value()]);
+      }
     });
   }
 
@@ -66,8 +76,7 @@ export class AccordionComponent {
   }
 
   toggle(value: string): void {
-    const current = this.expandedItems();
-    const next = new Set(current);
+    const next = new Set(this.expandedItems());
 
     if (next.has(value)) {
       next.delete(value);
@@ -78,7 +87,7 @@ export class AccordionComponent {
       next.add(value);
     }
 
-    this.expandedItems.set(next);
+    this.expandedValues.set([...next]);
   }
 
   isExpanded(value: string): boolean {

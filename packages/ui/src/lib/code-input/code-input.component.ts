@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  type TemplateRef,
   type Type,
   computed,
   forwardRef,
@@ -53,6 +54,8 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
+  /** Help revealed by an info button beside the label, as plain text or a template. */
+  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   /** Placeholder text spread one character per cell (cell i shows character i). */
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);

@@ -76,13 +76,17 @@
     transition: var(--transition-colors);
     appearance: none;
 
+    // The surface holds steady on hover, as on the avatar editor's dropzone; a
+    // half-step of text contrast carries the feedback
     &:hover:not(:disabled) {
-      border-color: var(--color-border-focus);
       background-color: var(
         --ea-file-uploader-dropzone-background-color-hover,
-        var(--color-state-hover)
+        var(--ea-file-uploader-dropzone-background-color, var(--color-bg-subtle))
       );
-      color: var(--ea-file-uploader-dropzone-color-hover, var(--color-text-secondary));
+      color: var(
+        --ea-file-uploader-dropzone-color-hover,
+        color-mix(in srgb, var(--color-text-tertiary), var(--color-text-secondary))
+      );
     }
 
     &:focus-visible {
@@ -128,6 +132,16 @@
 
   &--error &__dropzone {
     border-color: var(--color-error-default);
+  }
+
+  &__button {
+    align-self: flex-start;
+  }
+
+  // Routed through ea-button's own border hook so its hover and active states
+  // keep the error colour too
+  &--error &__button {
+    --ea-button-border-color: var(--color-error-default);
   }
 
   &__list {

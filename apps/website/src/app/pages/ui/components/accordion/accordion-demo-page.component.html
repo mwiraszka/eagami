@@ -7,6 +7,7 @@
     [knobs]="knobs"
     [state]="state()"
     [childMarkup]="childMarkup()"
+    [extraAttributes]="extraAttributes()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-accordion
@@ -14,15 +15,33 @@
       [size]="state().size"
       [multi]="state().multi"
       [headingLevel]="state().headingLevel"
-      [highlightExpanded]="state().highlightExpanded">
+      [highlightExpanded]="state().highlightExpanded"
+      [(expandedValues)]="expanded">
       @for (item of items(); track item.id) {
-        <ea-accordion-item
-          [value]="'item-' + item.id"
-          [label]="item.heading"
-          [icon]="iconFor(item.icon)"
-          [disabled]="item.disabled">
-          {{ item.content }}
-        </ea-accordion-item>
+        @if (item.badge) {
+          <ea-accordion-item
+            [value]="valueFor(item.id)"
+            [icon]="iconFor(item.icon)"
+            [disabled]="item.disabled">
+            <span slot="label">
+              {{ item.heading }}
+              <ea-badge
+                variant="info"
+                size="sm">
+                {{ item.badge }}
+              </ea-badge>
+            </span>
+            {{ item.content }}
+          </ea-accordion-item>
+        } @else {
+          <ea-accordion-item
+            [value]="valueFor(item.id)"
+            [label]="item.heading"
+            [icon]="iconFor(item.icon)"
+            [disabled]="item.disabled">
+            {{ item.content }}
+          </ea-accordion-item>
+        }
       }
     </ea-accordion>
 
@@ -50,6 +69,10 @@
             [label]="messages().ui.component.common.disabled"
             [checked]="item.disabled"
             (changed)="updateItem(item.id, { disabled: $event })" />
+          <ea-checkbox
+            [label]="messages().ui.component.demos.accordion.expanded"
+            [checked]="isExpanded(item.id)"
+            (changed)="setExpanded(item.id, $event)" />
           <ea-button
             variant="ghost"
             size="sm"

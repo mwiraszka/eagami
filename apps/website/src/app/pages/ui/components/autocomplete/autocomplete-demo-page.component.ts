@@ -52,6 +52,7 @@ interface AutocompleteKnobState {
   placeholder: string;
   size: AutocompleteSize;
   minLength: number;
+  maxLength: number;
   maxResults: number;
   disabled: boolean;
   readonly: boolean;

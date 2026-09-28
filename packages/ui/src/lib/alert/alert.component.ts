@@ -23,10 +23,13 @@ export type AlertVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 /** Scales the alert's text, icon, and gap together. */
 export type AlertSize = EaSize;
 
+/** How assistive technology announces an alert. */
+export type AlertLive = 'auto' | 'assertive' | 'polite' | 'off';
+
 /**
  * Inline banner for surfacing semantic messages such as success confirmations,
  * warnings, or errors. Optionally dismissible, with a two-way `visible`
- * binding and an automatically chosen ARIA role based on severity.
+ * binding and an ARIA role chosen by severity unless `live` sets one.
  */
 @Component({
   selector: 'ea-alert',
@@ -52,6 +55,14 @@ export class AlertComponent {
 
   /** Overrides the variant's default status icon with any icon component. */
   readonly icon = input<Type<unknown> | undefined>(undefined);
+  /**
+   * How assistive technology announces the alert. `auto` interrupts for
+   * `error` and `warning` (`role="alert"`) and waits its turn for the rest
+   * (`role="status"`); `assertive` and `polite` pick one of those whatever the
+   * variant, and `off` announces nothing, for static text that is part of the
+   * page rather than news about it.
+   */
+  readonly live = input<AlertLive>('auto');
 
   /** Fires when the user dismisses the alert via its close button. */
   readonly dismissed = output<void>();
@@ -62,8 +73,18 @@ export class AlertComponent {
   }));
 
   readonly role = computed(() => {
-    const v = this.variant();
-    return v === 'error' || v === 'warning' ? 'alert' : 'status';
+    switch (this.live()) {
+      case 'assertive':
+        return 'alert';
+      case 'polite':
+        return 'status';
+      case 'off':
+        return null;
+      default: {
+        const v = this.variant();
+        return v === 'error' || v === 'warning' ? 'alert' : 'status';
+      }
+    }
   });
 
   /** Hides the alert and emits `dismissed`. */

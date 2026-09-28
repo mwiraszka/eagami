@@ -4,6 +4,7 @@
   [style.--ea-chart-duration]="animationDuration() + 'ms'">
   @if (hasData()) {
     <div
+      #plot
       class="ea-line-chart__plot"
       role="group"
       tabindex="0"
@@ -23,7 +24,7 @@
           (pointermove)="onPointerMove($event)"
           (pointerdown)="onPointerDown($event)"
           (pointerup)="onPointerUp($event)"
-          (pointercancel)="onPointerUp($event)"
+          (pointercancel)="onPointerCancel($event)"
           (pointerleave)="onPointerLeave()"
           (wheel)="onWheel($event)"
           (gesturestart)="onGestureStart($event)"

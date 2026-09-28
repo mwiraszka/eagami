@@ -10,6 +10,7 @@ import { InputComponent, type InputType } from './input.component';
   template: `
     <ea-input
       [label]="label"
+      [labelHelp]="labelHelp"
       [type]="type"
       [placeholder]="placeholder"
       [hint]="hint"
@@ -20,6 +21,7 @@ import { InputComponent, type InputType } from './input.component';
 })
 class HostComponent {
   label: string | undefined = 'Email';
+  labelHelp: string | undefined = undefined;
   type: InputType = 'text';
   placeholder = 'Enter your email';
   hint: string | undefined = undefined;
@@ -73,6 +75,14 @@ describe('InputComponent a11y', () => {
 
   it('has no detectable violations for type="password"', async () => {
     const el = await render(host => (host.type = 'password'));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with label help', async () => {
+    const el = await render(host => (host.labelHelp = 'We only use it to reach you'));
 
     const results = await axe(el);
 

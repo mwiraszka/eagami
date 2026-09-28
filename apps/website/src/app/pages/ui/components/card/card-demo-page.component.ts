@@ -6,17 +6,21 @@ import {
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
-import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { type KnobValue, buildKnobs, initialKnobState } from '../_playground/knob';
+import {
+  type KnobValue,
+  buildKnobs,
+  initialKnobState,
+  injectKnobDefaults,
+} from '../_playground/knob';
 
 interface CardKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -27,6 +31,9 @@ interface CardKnobState {
   headerAlign: CardHeaderAlign;
   fullWidth: boolean;
   headerDivider: boolean;
+  headerText: string;
+  bodyText: string;
+  footerText: string;
 }
 
 const SLUG = 'card';
@@ -38,12 +45,27 @@ const SLUG = 'card';
   imports: [CardComponent, UiComponentDemoLayoutComponent, ComponentPlaygroundComponent],
 })
 export class CardDemoPageComponent {
-  protected readonly messages = inject(WebI18nService).messages;
   protected readonly slug = SLUG;
+  private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.card, UI_API[SLUG]);
   protected readonly state = signal<CardKnobState>(
-    initialKnobState(this.knobs, PLAYGROUND_KNOBS.card) as CardKnobState,
+    initialKnobState(
+      this.knobs,
+      PLAYGROUND_KNOBS.card,
+      this.knobDefaults,
+    ) as CardKnobState,
   );
+
+  protected readonly childMarkup = computed(() => {
+    const { headerText, bodyText, footerText } = this.state();
+    return [
+      headerText && `<span slot="header">${headerText}</span>`,
+      bodyText,
+      footerText && `<span slot="footer">${footerText}</span>`,
+    ]
+      .filter(Boolean)
+      .join('\n');
+  });
 
   protected onKnob({ name, value }: KnobChange): void {
     // The control panel is keyed by string; one cast bridges it back to the
@@ -52,6 +74,12 @@ export class CardDemoPageComponent {
   }
 
   protected reset(): void {
-    this.state.set(initialKnobState(this.knobs, PLAYGROUND_KNOBS.card) as CardKnobState);
+    this.state.set(
+      initialKnobState(
+        this.knobs,
+        PLAYGROUND_KNOBS.card,
+        this.knobDefaults,
+      ) as CardKnobState,
+    );
   }
 }

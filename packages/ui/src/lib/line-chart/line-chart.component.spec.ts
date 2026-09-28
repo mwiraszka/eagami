@@ -335,6 +335,36 @@ describe('LineChartComponent', () => {
       return [Number(point.getAttribute('cx')), Number(point.getAttribute('cy'))];
     }
 
+    function firePointer(
+      pointerType: string,
+      type: string,
+      [x, y]: [number, number],
+      buttons = 0,
+    ): void {
+      svg().dispatchEvent(
+        new PointerEvent(type, {
+          clientX: x,
+          clientY: y,
+          pointerId: 1,
+          pointerType,
+          buttons,
+          bubbles: true,
+        }),
+      );
+      fixture.detectChanges();
+    }
+
+    // The order a browser reports a tap in: a pointer without hover leaves as it lifts
+    function tap(at: [number, number], pointerType = 'touch'): void {
+      firePointer(pointerType, 'pointerdown', at, 1);
+      firePointer(pointerType, 'pointerup', at);
+      firePointer(pointerType, 'pointerleave', at);
+    }
+
+    function announced(): string {
+      return query('.ea-line-chart__live')!.textContent!.trim();
+    }
+
     it('highlights the series nearest the pointer at the nearest label', () => {
       // Points 0-3 are Visitors, 4-6 are Sign-ups (Feb is missing)
       const [x, y] = pointAt(5);
@@ -388,6 +418,92 @@ describe('LineChartComponent', () => {
       pointer('pointermove', x, y);
 
       pointer('pointerleave', 0, 0);
+
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('keeps a tapped point showing once the finger lifts', () => {
+      const at = pointAt(1);
+
+      tap(at);
+
+      expect(announced()).toBe('Visitors, Feb: 20');
+      expect(document.querySelector('.ea-tooltip')).toBeTruthy();
+    });
+
+    it('keeps a point tapped with a pen showing once it lifts', () => {
+      const at = pointAt(1);
+
+      tap(at, 'pen');
+
+      expect(document.querySelector('.ea-tooltip')).toBeTruthy();
+    });
+
+    it('emits pointClick for a tapped point', () => {
+      const clicks: ChartPointEvent[] = [];
+      fixture.componentInstance.pointClick.subscribe(e => clicks.push(e));
+      tap(pointAt(3));
+
+      svg().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(clicks.map(c => c.label)).toEqual(['Apr']);
+    });
+
+    it('moves the tooltip to the next point tapped', () => {
+      tap(pointAt(0));
+
+      tap(pointAt(3));
+
+      expect(announced()).toBe('Visitors, Apr: 30');
+      expect(document.querySelectorAll('.ea-tooltip')).toHaveLength(1);
+    });
+
+    it('hides a tapped point once a press lands elsewhere on the page', () => {
+      tap(pointAt(1));
+
+      document.body.dispatchEvent(
+        new PointerEvent('pointerdown', { pointerType: 'touch', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(announced()).toBe('');
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('hides a tapped point once the plot loses focus', () => {
+      tap(pointAt(1));
+
+      plot().dispatchEvent(new FocusEvent('blur'));
+      fixture.detectChanges();
+
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('hides the tooltip when a scroll cancels the touch', () => {
+      const at = pointAt(1);
+      firePointer('touch', 'pointerdown', at, 1);
+
+      firePointer('touch', 'pointercancel', at);
+      firePointer('touch', 'pointerleave', at);
+
+      expect(announced()).toBe('');
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('hides the tooltip when a mouse leaves after a click', () => {
+      const at = pointAt(1);
+
+      tap(at, 'mouse');
+
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
+    });
+
+    it('hides a tapped point once the pen hovers out of the chart', () => {
+      const at = pointAt(1);
+      tap(at, 'pen');
+
+      firePointer('pen', 'pointermove', at);
+      firePointer('pen', 'pointerleave', [0, 0]);
 
       expect(document.querySelector('.ea-tooltip')).toBeNull();
     });
@@ -986,6 +1102,29 @@ describe('LineChartComponent', () => {
       expect(inView()).toEqual(['P4', 'P5', 'P6']);
       expect(query('.ea-line-chart--panning')).toBeNull();
       expect(clicks).toEqual([]);
+    });
+
+    it('leaves no tooltip behind once a touch pan lifts', () => {
+      const touch = (type: string, clientX: number, buttons: number) => {
+        svg().dispatchEvent(
+          new PointerEvent(type, {
+            clientX,
+            pointerId: 1,
+            pointerType: 'touch',
+            buttons,
+            bubbles: true,
+          }),
+        );
+        fixture.detectChanges();
+      };
+      touch('pointerdown', 300, 1);
+
+      touch('pointermove', 800, 1);
+      touch('pointerup', 800, 0);
+      touch('pointerleave', 800, 0);
+
+      expect(inView()).toEqual(['P4', 'P5', 'P6']);
+      expect(document.querySelector('.ea-tooltip')).toBeNull();
     });
 
     it('forgets a drag released outside the chart', () => {

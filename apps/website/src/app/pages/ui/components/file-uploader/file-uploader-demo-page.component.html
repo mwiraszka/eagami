@@ -14,11 +14,15 @@
       [label]="state().label"
       [labelIcon]="labelIconComponent()"
       [size]="state().size"
+      [variant]="state().variant"
+      [buttonLabel]="state().buttonLabel || undefined"
+      [buttonIcon]="buttonIconComponent()"
       [accept]="state().accept || undefined"
       [multiple]="state().multiple"
       [maxFiles]="state().maxFiles || undefined"
       [maxSize]="state().maxSize || undefined"
       [showFileList]="state().showFileList"
+      [showConstraints]="state().showConstraints"
       [required]="state().required" />
   </web-component-playground>
 </web-ui-component-demo-layout>

@@ -16,7 +16,8 @@ import { AccordionComponent } from './accordion.component';
 
 /**
  * Single expandable section within an `ea-accordion`. Each item exposes a
- * header button with the supplied `label` and reveals its projected content
+ * header button with the supplied `label`, or with an element projected as
+ * `slot="label"` for richer content, and reveals its other projected content
  * when expanded. Inherits its size from the parent accordion. Must be
  * rendered inside an `ea-accordion`.
  */
@@ -31,7 +32,12 @@ export class AccordionItemComponent implements OnInit, OnDestroy {
   private readonly accordion = inject(AccordionComponent);
 
   readonly value = input.required<string>();
-  readonly label = input.required<string>();
+  /**
+   * Plain-text label shown in the header button. For richer content, project
+   * an element with `slot="label"` instead: its text then names the button, so
+   * mark purely decorative parts of it `aria-hidden`.
+   */
+  readonly label = input<string>('');
   /** Optional icon component rendered before the label in the header button. */
   readonly icon = input<Type<unknown> | undefined>(undefined);
   readonly disabled = input<boolean>(false);

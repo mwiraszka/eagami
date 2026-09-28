@@ -63,11 +63,19 @@ export class TagComponent {
    */
   readonly maxWidth = input<number | string | undefined>(undefined);
   /**
-   * Fill colour as a hex value, for a tag carrying a colour of its own (a
-   * user-chosen label). Paints the chip and its border, and picks whichever ink
-   * reads better on it. Takes precedence over `variant`.
+   * Fill colour, for a tag carrying a colour of its own (a user-chosen label).
+   * Paints the chip and its border, and takes precedence over `variant`. On
+   * its own it must be a hex value, from which the tag picks whichever ink
+   * reads better; alongside `ink` it takes any CSS colour, such as a
+   * theme-aware `var(--my-token)`.
    */
   readonly color = input<string | undefined>(undefined);
+  /**
+   * Text colour, as any CSS colour, overriding the ink the tag would pick for
+   * `color`. Supplying it lets `color` be a value the tag cannot measure, so
+   * the contrast between the two rests with the caller.
+   */
+  readonly ink = input<string | undefined>(undefined);
   /**
    * Where a label clipped by `maxWidth` reveals its full text. Set `none` for
    * a tag rendered inside a tooltip, which would otherwise stack a second
@@ -118,8 +126,12 @@ export class TagComponent {
     return typeof max === 'number' ? `${max}px` : max;
   });
 
-  /** Ink that reads on `color`, or `null` when it is not a hex the library can measure. */
+  /** The caller's `ink`, else one that reads on a hex `color`, else `null`. */
   protected readonly resolvedInk = computed(() => {
+    const custom = this.ink();
+    if (custom) {
+      return custom;
+    }
     const color = this.color();
     if (!color) {
       return null;
@@ -131,7 +143,7 @@ export class TagComponent {
   // A fill whose ink cannot be resolved is left unpainted: taking the colour
   // without the matching ink is how a chip ends up unreadable
   protected readonly resolvedColor = computed(() =>
-    this.resolvedInk() === null ? null : (this.color() ?? null),
+    this.resolvedInk() === null ? null : this.color() || null,
   );
 
   constructor() {

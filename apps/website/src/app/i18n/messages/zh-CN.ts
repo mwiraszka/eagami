@@ -657,6 +657,8 @@ export const zhCN: WebMessages = {
           disabledSectionBody: '此内容无法访问。',
           newSectionHeading: '新板块',
           newSectionContent: '新内容',
+          newBadge: '新',
+          expanded: '展开',
         },
         alert: {
           defaultText: '这是一条默认提示',
@@ -708,10 +710,7 @@ export const zhCN: WebMessages = {
           outlinedBody: '带边框描边的卡片。',
           filledHeader: '填充',
           filledBody: '带淡淡背景的卡片。',
-          cardTitleHeader: '卡片标题',
           cardWithFooterBody: '这张卡片包含页眉、正文和带操作的页脚。',
-          bodyText: '这是卡片的正文内容。其中可以包含任意文本或元素。',
-          footer: '页脚',
         },
         checkbox: {
           acceptTermsAndConditions: '接受条款与条件',
@@ -1079,6 +1078,7 @@ export const zhCN: WebMessages = {
         errorMessagesDescription:
           '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
         ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
+        labelHelpDescription: '通过标签旁的信息按钮显示的帮助内容，可以是纯文本或模板。',
         triggerErrorLabel: '触发错误',
         requiredBadge: '必填',
         twoWayBadge: '双向',
@@ -1127,6 +1127,7 @@ export const zhCN: WebMessages = {
           },
           input: {
             label: '标签',
+            labelHelp: '标签帮助',
             labelIcon: '标签图标',
             icon: '图标',
             placeholder: '占位符',
@@ -1166,6 +1167,7 @@ export const zhCN: WebMessages = {
             dismissible: '可关闭',
             size: '尺寸',
             icon: '图标（覆盖）',
+            live: '播报',
           },
           toast: {
             icon: '图标（覆盖）',
@@ -1193,6 +1195,7 @@ export const zhCN: WebMessages = {
             disabled: '禁用',
             loading: '加载中',
             fullWidth: '全宽',
+            align: '对齐',
             uppercase: '大写',
             icon: '图标',
           },
@@ -1202,6 +1205,9 @@ export const zhCN: WebMessages = {
             headerAlign: '页眉对齐',
             fullWidth: '全宽',
             headerDivider: '页眉分隔线',
+            headerText: '页眉',
+            bodyText: '正文',
+            footerText: '页脚',
           },
           checkbox: {
             label: '标签',
@@ -1330,6 +1336,9 @@ export const zhCN: WebMessages = {
           switch: {
             label: '标签',
             size: '尺寸',
+            variant: '变体',
+            onIcon: '开启图标',
+            offIcon: '关闭图标',
             disabled: '禁用',
             required: '必填',
           },
@@ -1519,6 +1528,8 @@ export const zhCN: WebMessages = {
             headingLevel: '应用于每个项页眉的标题级别（1-6），使手风琴融入页面大纲。',
             highlightExpanded:
               '为展开项的标题着色，并将其标签、图标和箭头设为品牌色，使其与折叠项区分开来。',
+            expandedValues:
+              '展开项的值，可通过 [(expandedValues)] 双向绑定；设置后可让项目一开始就展开。未启用 multi 时，只有按文档顺序的第一项保持展开。',
           },
           alert: {
             dismissible: '显示一个关闭按钮，让用户可以关闭提示。',
@@ -1528,6 +1539,7 @@ export const zhCN: WebMessages = {
             dismiss: '隐藏提示并发出 dismissed 事件。',
             size: '同时缩放文本、图标和间距。',
             icon: '用任意图标组件覆盖该变体的默认状态图标。',
+            live: '辅助技术播报提示的方式：auto 对 error 和 warning 立即打断播报，其余则排队等候；assertive 或 polite 对所有变体统一采用其中一种；off 不播报，适用于页面上的静态文本。',
           },
           avatar: {
             src: '要显示的图片 URL；回退到首字母，再回退到通用用户图标。',
@@ -1549,11 +1561,27 @@ export const zhCN: WebMessages = {
             disabled: '禁用按钮并抑制点击事件。',
             loading: '在保留已渲染宽度的同时，将标签替换为加载指示器。',
             fullWidth: '将按钮拉伸以填满其容器的宽度。',
+            align: '在比内容更宽的按钮（如全宽按钮）中对齐内容，起始和末尾跟随文本方向。',
             uppercase: '将标签全部以大写字母显示。',
             ariaLabel: '当按钮内容描述性不足时，为按钮提供的无障碍标签。',
             ariaCurrent: '原生 aria-current 属性的值，将按钮标记为一组中的当前项。',
             clicked: '当按钮被激活时触发，在禁用或加载时被抑制。',
             icon: '渲染在标签左侧的可选图标组件。',
+            ariaLabelledby:
+              '其文本为按钮命名的元素的 id，转发到原生 aria-labelledby 属性。',
+            ariaDescribedby:
+              '描述按钮的元素（例如提示）的 id，转发到原生 aria-describedby 属性。',
+            focus: '将键盘焦点移到底层原生按钮。',
+          },
+          'button-link': {
+            variant: '链接的视觉样式，驱动其颜色和强调程度。',
+            size: '链接的视觉尺寸。',
+            disabled:
+              '通过 aria-disabled 将链接标记为不可用，将其移出 Tab 键顺序并阻止导航。',
+            fullWidth: '将链接拉伸以填满其容器的宽度。',
+            align: '在比内容更宽的链接（如全宽链接）中对齐内容，起始和末尾跟随文本方向。',
+            uppercase: '将标签全部以大写字母显示。',
+            icon: '渲染在标签之前的可选图标组件。',
           },
           card: {
             variant: '卡片表面的视觉样式。',
@@ -1765,10 +1793,15 @@ export const zhCN: WebMessages = {
             label: '渲染在开关旁边的文本标签。',
             required: '将开关标记为必填。',
             size: '开关的视觉尺寸。',
+            variant: '轨道的状态色调，关闭时为浅色着色，开启时为实色。',
+            onIcon: '开关开启时绘制在滑块中的可选图标组件。',
+            offIcon: '开关关闭时绘制在滑块中的可选图标组件。',
             changed: '每当用户切换开关时，随新的勾选状态一同触发。',
           },
           tag: {
-            color: '十六进制填充颜色，为标签着色并选择易读的文字颜色。',
+            color:
+              '填充颜色，替代变体为标签着色。单独使用时必须是十六进制值，标签据此选择更易读的文字颜色；与 ink 一起使用时可接受任意 CSS 颜色，例如随主题变化的 var(--my-token)。',
+            ink: '文字颜色，可为任意 CSS 颜色，覆盖标签为 color 选择的文字颜色。提供后，color 可以是标签无法测量的值，两者之间的对比度由调用方负责。',
             variant: '标签的语义配色方案。',
             size: '标签的视觉尺寸。',
             maxWidth:
@@ -1802,6 +1835,8 @@ export const zhCN: WebMessages = {
             blurred: '当字段失去焦点时触发。',
             focused: '当字段获得焦点时触发。',
             focus: '将键盘焦点移到底层原生 textarea。',
+            getSelection: '以起止字符偏移量返回选中范围，字段失去焦点后仍会保留。',
+            insertText: '用给定文本替换当前选区，将光标置于其后，并像键入一样通知表单。',
           },
           'avatar-editor': {
             accept: '文件选择器接受的 MIME 类型，转发给原生输入。',
@@ -1891,6 +1926,7 @@ export const zhCN: WebMessages = {
             label: '渲染在字段上方的文本标签。',
             maxResults: '建议列表中一次显示的最大选项数。',
             minLength: '建议列表出现前所需的最小字符数。',
+            maxLength: '输入框可接受的最大字符数。',
             options: '可供筛选和选择的完整选项列表，可为扁平列表或按组划分。',
             placeholder: '字段为空时显示的占位符。',
             readonly: '将字段渲染为只读。',
@@ -2035,6 +2071,11 @@ export const zhCN: WebMessages = {
           'file-uploader': {
             accept:
               "拖放区接受的以逗号分隔的 MIME 类型和文件扩展名，例如 'image/*,.pdf'。",
+            ariaLabel:
+              '当没有可见内容为控件命名时使用的无障碍名称，适用于拖放区或仅图标按钮。',
+            buttonIcon: '渲染在按钮变体文本之前的可选图标组件。',
+            buttonLabel:
+              '按钮变体的文本，默认为本地化的“浏览文件”；空字符串加图标会得到仅图标按钮。',
             disabled: '禁用该上传器。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
@@ -2047,8 +2088,11 @@ export const zhCN: WebMessages = {
             progress:
               '按 File 标识为键的每个文件上传进度映射（0-100）；省略可隐藏进度条。',
             required: '将字段标记为必填。',
+            showConstraints:
+              '在控件下方显示可接受的文件类型以及大小和数量限制；在会挤占紧凑位置的地方将其关闭。',
             showFileList: '在拖放区下方显示所选文件的列表。',
             size: '上传器的视觉尺寸。',
+            variant: '上传器的呈现方式：拖放区，或打开文件选择器的紧凑按钮。',
             value: '当前文件列表，可通过 [(value)] 双向绑定。',
             fileRemoved: '当通过某行的移除按钮移除文件时触发。',
             dragOverChanged:
@@ -2089,7 +2133,8 @@ export const zhCN: WebMessages = {
             icon: '在项目标题按钮中标签之前显示的图标组件，随项目缩放，并对辅助技术隐藏。',
             disabled: '禁用此项，阻止其被切换。',
             id: '应用于该项的页眉按钮和面板的 id，省略时自动生成。',
-            label: '显示在该项页眉按钮中的文本。',
+            label:
+              '显示在标题按钮中的纯文本。如需更丰富的内容，可改用带 slot="label" 投影的元素，其文本随即成为按钮的名称。',
             value: '在其父手风琴中标识此项的唯一键。',
           },
           breadcrumbs: {
@@ -2220,6 +2265,7 @@ export const zhCN: WebMessages = {
           },
           'field-label': {
             forId: '关联控件的 id；设置时渲染 <label for>，否则渲染 <span>。',
+            help: '通过标签旁的信息按钮显示的帮助内容，显示时会被播报，可以是纯文本或模板。',
             icon: '可选的图标组件，显示在标签文本之前。',
             labelId: '应用于已渲染标签元素的 id，使控件可通过 aria-labelledby 引用它。',
             required: '在标签上显示必填指示器。',
@@ -2261,6 +2307,11 @@ export const zhCN: WebMessages = {
           },
           button: {
             label: '点击我',
+          },
+          card: {
+            headerText: '卡片标题',
+            bodyText: '这是卡片的正文内容。其中可以包含任意文本或元素。',
+            footerText: '页脚',
           },
           checkbox: {
             label: '接受条款与条件',

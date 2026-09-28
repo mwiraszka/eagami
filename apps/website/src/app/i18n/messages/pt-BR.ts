@@ -686,6 +686,8 @@ export const ptBR: WebMessages = {
           disabledSectionBody: 'Este conteúdo não está acessível.',
           newSectionHeading: 'Nova seção',
           newSectionContent: 'Novo conteúdo',
+          newBadge: 'Novo',
+          expanded: 'Expandido',
         },
         alert: {
           defaultText: 'Este é um alerta padrão',
@@ -737,11 +739,7 @@ export const ptBR: WebMessages = {
           outlinedBody: 'Cartão com contorno de borda.',
           filledHeader: 'Preenchido',
           filledBody: 'Cartão com fundo sutil.',
-          cardTitleHeader: 'Título do Cartão',
           cardWithFooterBody: 'Este cartão tem cabeçalho, corpo e rodapé com ações.',
-          bodyText:
-            'Este é o conteúdo do corpo do cartão. Ele pode conter qualquer texto ou elemento.',
-          footer: 'Rodapé',
         },
         checkbox: {
           acceptTermsAndConditions: 'Aceitar termos e condições',
@@ -1115,6 +1113,8 @@ export const ptBR: WebMessages = {
           'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
         ariaLabelDescription:
           'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
+        labelHelpDescription:
+          'Ajuda exibida por um botão de informação ao lado do rótulo, como texto simples ou template.',
         triggerErrorLabel: 'Provocar erro',
         requiredBadge: 'obrigatório',
         twoWayBadge: 'bidirecional',
@@ -1163,6 +1163,7 @@ export const ptBR: WebMessages = {
           },
           input: {
             label: 'Rótulo',
+            labelHelp: 'Ajuda do rótulo',
             labelIcon: 'Ícone do rótulo',
             icon: 'Ícone',
             placeholder: 'Espaço reservado',
@@ -1202,6 +1203,7 @@ export const ptBR: WebMessages = {
             dismissible: 'Dispensável',
             size: 'Tamanho',
             icon: 'Ícone (sobrescrita)',
+            live: 'Anúncio',
           },
           toast: {
             icon: 'Ícone (sobrescrita)',
@@ -1229,6 +1231,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             loading: 'Carregando',
             fullWidth: 'Largura total',
+            align: 'Alinhamento',
             uppercase: 'Maiúsculas',
             icon: 'Ícone',
           },
@@ -1238,6 +1241,9 @@ export const ptBR: WebMessages = {
             headerAlign: 'Alinhamento do cabeçalho',
             fullWidth: 'Largura total',
             headerDivider: 'Divisor de cabeçalho',
+            headerText: 'Cabeçalho',
+            bodyText: 'Corpo',
+            footerText: 'Rodapé',
           },
           checkbox: {
             label: 'Rótulo',
@@ -1366,6 +1372,9 @@ export const ptBR: WebMessages = {
           switch: {
             label: 'Rótulo',
             size: 'Tamanho',
+            variant: 'Variante',
+            onIcon: 'Ícone ligado',
+            offIcon: 'Ícone desligado',
             disabled: 'Desativado',
             required: 'Obrigatório',
           },
@@ -1587,6 +1596,8 @@ export const ptBR: WebMessages = {
               'Nível de título (1-6) aplicado a cada cabeçalho de item, de modo que o accordion se encaixe no esquema da página.',
             highlightExpanded:
               'Tinge o cabeçalho de um item aberto e deixa o rótulo, o ícone e a seta na cor da marca, para que se destaque dos itens fechados.',
+            expandedValues:
+              'Valores dos itens expandidos, vinculável de forma bidirecional via [(expandedValues)]; defini-lo abre itens desde o início. Sem multi, apenas o primeiro na ordem do documento permanece aberto.',
           },
           alert: {
             dismissible:
@@ -1600,6 +1611,7 @@ export const ptBR: WebMessages = {
             dismiss: 'Oculta o alerta e emite o evento dismissed.',
             size: 'Escala o texto, o ícone e o espaçamento em conjunto.',
             icon: 'Sobrescreve o ícone de status padrão da variante por qualquer componente de ícone.',
+            live: 'Como as tecnologias assistivas anunciam o alerta: auto interrompe para error e warning e aguarda a vez nos demais, assertive ou polite aplica um dos dois a todas as variantes, e off não anuncia nada, para texto estático da página.',
           },
           avatar: {
             src: 'URL da imagem a exibir; recorre às iniciais e, em seguida, a um ícone genérico de usuário.',
@@ -1623,6 +1635,8 @@ export const ptBR: WebMessages = {
             loading:
               'Troca o rótulo por um spinner enquanto preserva a largura renderizada.',
             fullWidth: 'Estica o botão para preencher a largura de seu contêiner.',
+            align:
+              'Alinha o conteúdo dentro de um botão mais largo que ele, como um de largura total. O início e o fim seguem a direção do texto.',
             uppercase: 'Exibe o rótulo inteiramente em maiúsculas.',
             ariaLabel:
               'Rótulo acessível para o botão quando seu conteúdo não é descritivo o suficiente.',
@@ -1631,6 +1645,22 @@ export const ptBR: WebMessages = {
             clicked:
               'Dispara quando o botão é ativado, suprimido enquanto desativado ou carregando.',
             icon: 'Componente de ícone opcional renderizado à esquerda do rótulo.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o botão, repassados ao atributo nativo aria-labelledby.',
+            ariaDescribedby:
+              'Ids dos elementos que descrevem o botão, como uma dica, repassados ao atributo nativo aria-describedby.',
+            focus: 'Move o foco do teclado para o botão nativo subjacente.',
+          },
+          'button-link': {
+            variant: 'Estilo visual do link, que governa sua cor e ênfase.',
+            size: 'Tamanho visual do link.',
+            disabled:
+              'Marca o link como indisponível com aria-disabled, remove-o da ordem de tabulação e bloqueia a navegação.',
+            fullWidth: 'Estica o link para preencher a largura de seu contêiner.',
+            align:
+              'Alinha o conteúdo dentro de um link mais largo que ele, como um de largura total. O início e o fim seguem a direção do texto.',
+            uppercase: 'Exibe o rótulo inteiramente em maiúsculas.',
+            icon: 'Componente de ícone opcional renderizado antes do rótulo.',
           },
           card: {
             variant: 'Estilo visual da superfície do cartão.',
@@ -1899,12 +1929,19 @@ export const ptBR: WebMessages = {
             label: 'Rótulo de texto renderizado ao lado do interruptor.',
             required: 'Marca o interruptor como obrigatório.',
             size: 'Tamanho visual do interruptor.',
+            variant:
+              'Tom de status da trilha, tingida quando desligado e sólida quando ligado.',
+            onIcon:
+              'Componente de ícone opcional desenhado no controle enquanto o interruptor está ligado.',
+            offIcon:
+              'Componente de ícone opcional desenhado no controle enquanto o interruptor está desligado.',
             changed:
               'Dispara com o novo estado marcado sempre que o usuário alterna o interruptor.',
           },
           tag: {
             color:
-              'Cor de preenchimento em hexadecimal, que pinta a tag e escolhe a tinta mais legível.',
+              'Cor de preenchimento, que pinta a tag no lugar da variante. Sozinha, deve ser um valor hexadecimal, a partir do qual a tag escolhe a tinta mais legível; junto com ink, aceita qualquer cor CSS, como um var(--my-token) que acompanha o tema.',
+            ink: 'Cor do texto, qualquer cor CSS, que substitui a tinta que a tag escolheria para color. Fornecê-la permite que color seja um valor que a tag não consegue medir, deixando o contraste entre as duas a cargo de quem a usa.',
             variant: 'Esquema de cores semântico da tag.',
             size: 'Tamanho visual da tag.',
             maxWidth:
@@ -1943,6 +1980,10 @@ export const ptBR: WebMessages = {
             blurred: 'Dispara quando o campo perde o foco.',
             focused: 'Dispara quando o campo recebe o foco.',
             focus: 'Move o foco do teclado para o textarea nativo subjacente.',
+            getSelection:
+              'Retorna o intervalo selecionado como posições de caractere inicial e final, mantido após o campo perder o foco.',
+            insertText:
+              'Substitui a seleção pelo texto informado, posiciona o cursor depois dele e notifica o formulário como ao digitar.',
           },
           'avatar-editor': {
             accept:
@@ -2070,6 +2111,7 @@ export const ptBR: WebMessages = {
               'Número máximo de opções exibidas na lista de sugestões de uma só vez.',
             minLength:
               'Número mínimo de caracteres exigidos antes que a lista de sugestões apareça.',
+            maxLength: 'Número máximo de caracteres que o campo aceita.',
             options:
               'Lista completa de opções disponíveis para filtragem e seleção, plana ou dividida em grupos.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
@@ -2260,6 +2302,12 @@ export const ptBR: WebMessages = {
           'file-uploader': {
             accept:
               "Tipos MIME e extensões de arquivo separados por vírgula que a área de soltar aceita, por exemplo 'image/*,.pdf'.",
+            ariaLabel:
+              'Nome acessível quando nada visível nomeia o controle, para a área de soltar ou um botão só com ícone.',
+            buttonIcon:
+              'Componente de ícone opcional renderizado antes do texto da variante de botão.',
+            buttonLabel:
+              'Texto da variante de botão, com "Procurar arquivos" localizado como padrão; uma string vazia com um ícone deixa um botão só com ícone.',
             disabled: 'Desativa o enviador.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',
@@ -2275,9 +2323,13 @@ export const ptBR: WebMessages = {
             progress:
               'Mapa de progresso de envio por arquivo (0-100) indexado pela identidade do File; omita para ocultar as barras de progresso.',
             required: 'Marca o campo como obrigatório.',
+            showConstraints:
+              'Mostra os tipos de arquivo aceitos e os limites de tamanho e quantidade abaixo do controle; desative onde eles lotariam um posicionamento compacto.',
             showFileList:
               'Mostra a lista de arquivos selecionados abaixo da área de soltar.',
             size: 'Tamanho visual do enviador.',
+            variant:
+              'Apresentação do enviador: uma área de arrastar e soltar, ou um botão compacto que abre o seletor de arquivos.',
             value:
               'Lista de arquivos atual, vinculável de forma bidirecional via [(value)].',
             fileRemoved:
@@ -2333,7 +2385,8 @@ export const ptBR: WebMessages = {
             icon: 'Componente de ícone exibido antes do rótulo no botão de cabeçalho do item, dimensionado com o item e oculto das tecnologias assistivas.',
             disabled: 'Desativa este item, impedindo que ele seja alternado.',
             id: 'id aplicado ao botão de cabeçalho e ao painel do item, gerado automaticamente quando omitido.',
-            label: 'Texto exibido no botão de cabeçalho do item.',
+            label:
+              'Texto simples exibido no botão de cabeçalho. Para conteúdo mais rico, um elemento projetado com slot="label" ocupa o seu lugar, e o texto dele passa a nomear o botão.',
             value: 'Chave única que identifica este item dentro de seu accordion pai.',
           },
           breadcrumbs: {
@@ -2505,6 +2558,7 @@ export const ptBR: WebMessages = {
           'field-label': {
             forId:
               'id do controle associado; renderiza um <label for> quando definido, caso contrário um <span>.',
+            help: 'Ajuda exibida por um botão de informação ao lado do rótulo e anunciada ao ser exibida, como texto simples ou template.',
             icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             labelId:
               'id aplicado ao elemento de rótulo renderizado para que os controles possam referenciá-lo via aria-labelledby.',
@@ -2553,6 +2607,12 @@ export const ptBR: WebMessages = {
           },
           button: {
             label: 'Aperte aqui',
+          },
+          card: {
+            headerText: 'Título do Cartão',
+            bodyText:
+              'Este é o conteúdo do corpo do cartão. Ele pode conter qualquer texto ou elemento.',
+            footerText: 'Rodapé',
           },
           checkbox: {
             label: 'Aceitar termos e condições',

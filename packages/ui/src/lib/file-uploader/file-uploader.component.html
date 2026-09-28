@@ -5,7 +5,9 @@
     <ea-field-label
       [text]="labelText"
       [icon]="labelIcon()"
+      [help]="labelHelp()"
       [forId]="id()"
+      [labelId]="labelId()"
       [required]="required()" />
   }
 
@@ -21,30 +23,22 @@
     aria-hidden="true"
     (change)="onFileSelected($event)" />
 
-  <button
-    #dropzoneEl
-    type="button"
-    class="ea-file-uploader-field__dropzone"
-    [attr.aria-describedby]="describedBy()"
-    [attr.aria-label]="label() ?? promptText()"
-    [attr.aria-required]="required() || null"
-    [disabled]="isDisabled()"
-    (click)="openFilePicker()"
-    (keydown)="onDropzoneKeydown($event)"
-    (focus)="onDropzoneFocus()"
-    (blur)="onDropzoneBlur()"
-    (dragenter)="onDragEnter($event)"
-    (dragover)="onDragOver($event)"
-    (dragleave)="onDragLeave($event)"
-    (drop)="onDrop($event)">
-    <span
-      class="ea-file-uploader-field__upload-icon"
-      aria-hidden="true">
-      <ng-content select="[icon]">
-        <ea-icon-upload-cloud />
-      </ng-content>
-    </span>
-    <span class="ea-file-uploader-field__prompt">{{ promptText() }}</span>
+  @if (variant() === 'button') {
+    <ea-button
+      class="ea-file-uploader-field__button"
+      variant="secondary"
+      [size]="size()"
+      [icon]="buttonIcon()"
+      [disabled]="isDisabled()"
+      [aria-label]="buttonAriaLabel()"
+      [aria-labelledby]="buttonLabelledBy()"
+      [aria-describedby]="describedBy() ?? undefined"
+      (clicked)="openFilePicker()"
+      (focusout)="onPickerButtonFocusOut()">
+      @if (buttonText(); as text) {
+        <span [id]="buttonTextId()">{{ text }}</span>
+      }
+    </ea-button>
     @if (constraintsText(); as c) {
       <span
         class="ea-file-uploader-field__constraints"
@@ -52,7 +46,40 @@
         {{ c }}
       </span>
     }
-  </button>
+  } @else {
+    <button
+      #dropzoneEl
+      type="button"
+      class="ea-file-uploader-field__dropzone"
+      [attr.aria-describedby]="describedBy()"
+      [attr.aria-label]="dropzoneLabel()"
+      [attr.aria-required]="required() || null"
+      [disabled]="isDisabled()"
+      (click)="openFilePicker()"
+      (keydown)="onDropzoneKeydown($event)"
+      (focus)="onDropzoneFocus()"
+      (blur)="onDropzoneBlur()"
+      (dragenter)="onDragEnter($event)"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)">
+      <span
+        class="ea-file-uploader-field__upload-icon"
+        aria-hidden="true">
+        <ng-content select="[icon]">
+          <ea-icon-upload-cloud />
+        </ng-content>
+      </span>
+      <span class="ea-file-uploader-field__prompt">{{ promptText() }}</span>
+      @if (constraintsText(); as c) {
+        <span
+          class="ea-file-uploader-field__constraints"
+          [id]="constraintsId()">
+          {{ c }}
+        </span>
+      }
+    </button>
+  }
 
   @if (showFileList() && value().length) {
     <ul

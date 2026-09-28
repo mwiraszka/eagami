@@ -1,0 +1,18 @@
+<span
+  class="ea-button"
+  [ngClass]="boxClasses()">
+  <span class="ea-button__content">
+    <ng-content select="[slot=prefix]" />
+    @if (icon(); as iconComponent) {
+      <span
+        class="ea-button__icon"
+        aria-hidden="true">
+        <ng-container *ngComponentOutlet="iconComponent" />
+      </span>
+    }
+    <span class="ea-button__label">
+      <ng-content />
+    </span>
+    <ng-content select="[slot=suffix]" />
+  </span>
+</span>

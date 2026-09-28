@@ -63,6 +63,10 @@ const KNOB_EXEMPT = new Set([
   'pushTarget',
 ]);
 
+// Inputs described once for every component by a fallback in the website's
+// api-reference.component.ts, rather than per slug.
+const SHARED_DESCRIPTIONS = new Set(['errorMessages', 'ariaLabel', 'labelHelp']);
+
 function readText(path) {
   return readFileSync(path, 'utf8');
 }
@@ -171,7 +175,7 @@ for (const slug of apiSlugs) {
   );
 
   for (const p of api.inputs) {
-    if (!desc.has(p.name) && p.name !== 'errorMessages' && p.name !== 'ariaLabel') {
+    if (!desc.has(p.name) && !SHARED_DESCRIPTIONS.has(p.name)) {
       missingDesc.push({ slug, kind: 'input', name: p.name });
     }
     if (!knob.all.has(p.name) && !KNOB_EXEMPT.has(p.name) && p.type !== 'TemplateRef') {

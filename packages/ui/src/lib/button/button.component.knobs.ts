@@ -9,7 +9,7 @@ export const BUTTON_KNOBS: ComponentKnobs = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'danger'],
+      options: ['primary', 'secondary', 'ghost', 'danger', 'link'],
     },
     size: {
       control: 'select',
@@ -22,6 +22,11 @@ export const BUTTON_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
+    align: {
+      control: 'select',
+      options: ['center', 'start', 'end'],
+      if: { arg: 'fullWidth', eq: true },
+    },
     uppercase: { control: 'boolean' },
     clicked: { action: 'clicked' },
   },
@@ -32,6 +37,7 @@ export const BUTTON_KNOBS: ComponentKnobs = {
     disabled: false,
     loading: false,
     fullWidth: false,
+    align: 'center',
     uppercase: false,
   },
 };

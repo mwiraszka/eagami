@@ -1,0 +1,23 @@
+@use '../../styles/mixins' as ea;
+
+// The anchor takes focus while the inner `.ea-button` paints the box, so the
+// focus cues move onto the box
+:host {
+  text-decoration: none;
+}
+
+:host(:focus-visible) {
+  outline: none;
+
+  .ea-button {
+    @include ea.focus-ring;
+  }
+
+  .ea-button--link .ea-button__label {
+    text-decoration: underline;
+  }
+}
+
+:host([aria-disabled='true']) {
+  pointer-events: none;
+}

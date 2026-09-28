@@ -1,9 +1,11 @@
 import { axe } from 'vitest-axe';
 
-import { Component } from '@angular/core';
+import { Component, type Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { SwitchComponent } from './switch.component';
+import { CheckIconComponent } from '../icons/check.component';
+import { XIconComponent } from '../icons/x.component';
+import { SwitchComponent, type SwitchVariant } from './switch.component';
 
 @Component({
   imports: [SwitchComponent],
@@ -13,7 +15,10 @@ import { SwitchComponent } from './switch.component';
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled"
-      [checked]="checked" />
+      [checked]="checked"
+      [variant]="variant"
+      [onIcon]="onIcon"
+      [offIcon]="offIcon" />
   `,
 })
 class HostComponent {
@@ -22,6 +27,9 @@ class HostComponent {
   errorMsg: string | undefined = undefined;
   disabled = false;
   checked = false;
+  variant: SwitchVariant = 'default';
+  onIcon: Type<unknown> | undefined = undefined;
+  offIcon: Type<unknown> | undefined = undefined;
 }
 
 describe('SwitchComponent a11y', () => {
@@ -69,6 +77,31 @@ describe('SwitchComponent a11y', () => {
 
   it('has no detectable violations when disabled', async () => {
     const el = await render(host => (host.disabled = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a status tone and thumb icons', async () => {
+    const el = await render(host => {
+      host.variant = 'warning';
+      host.onIcon = CheckIconComponent;
+      host.offIcon = XIconComponent;
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when a toned switch with icons is on', async () => {
+    const el = await render(host => {
+      host.variant = 'warning';
+      host.checked = true;
+      host.onIcon = CheckIconComponent;
+      host.offIcon = XIconComponent;
+    });
 
     const results = await axe(el);
 

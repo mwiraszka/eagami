@@ -102,3 +102,42 @@ describe('AccordionComponent a11y', () => {
     expect(el.querySelector('.ea-accordion-item__icon')).toBeTruthy();
   });
 });
+
+@Component({
+  imports: [AccordionComponent, AccordionItemComponent],
+  template: `
+    <ea-accordion [expandedValues]="['billing']">
+      <ea-accordion-item value="billing">
+        <span slot="label">
+          Billing
+          <strong>3 new</strong>
+        </span>
+        Billing content
+      </ea-accordion-item>
+      <ea-accordion-item
+        value="profile"
+        label="Profile">
+        Profile content
+      </ea-accordion-item>
+    </ea-accordion>
+  `,
+})
+class RichLabelHostComponent {}
+
+describe('AccordionComponent a11y with a projected label', () => {
+  it('has no detectable violations with a projected label, open at start', async () => {
+    await TestBed.configureTestingModule({
+      imports: [RichLabelHostComponent],
+    }).compileComponents();
+    const fixture = TestBed.createComponent(RichLabelHostComponent);
+    fixture.detectChanges();
+    const el = fixture.nativeElement as HTMLElement;
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+    expect(el.querySelector('[role="region"]')?.textContent?.trim()).toBe(
+      'Billing content',
+    );
+  });
+});

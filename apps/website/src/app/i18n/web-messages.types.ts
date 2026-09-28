@@ -492,6 +492,8 @@ export interface WebMessages {
           disabledSectionBody: string;
           newSectionHeading: string;
           newSectionContent: string;
+          newBadge: string;
+          expanded: string;
         };
         alert: {
           defaultText: string;
@@ -542,10 +544,7 @@ export interface WebMessages {
           outlinedBody: string;
           filledHeader: string;
           filledBody: string;
-          cardTitleHeader: string;
           cardWithFooterBody: string;
-          bodyText: string;
-          footer: string;
         };
         checkbox: {
           acceptTermsAndConditions: string;
@@ -910,6 +909,7 @@ export interface WebMessages {
         colDescription: string;
         errorMessagesDescription: string;
         ariaLabelDescription: string;
+        labelHelpDescription: string;
         triggerErrorLabel: string;
         requiredBadge: string;
         twoWayBadge: string;

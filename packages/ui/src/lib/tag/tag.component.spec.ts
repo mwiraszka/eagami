@@ -86,6 +86,37 @@ describe('TagComponent', () => {
       expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe('');
     });
 
+    it('paints any CSS colour when the caller supplies its ink', () => {
+      fixture.componentRef.setInput('color', 'var(--brand-fill)');
+      fixture.componentRef.setInput('ink', 'var(--brand-ink)');
+
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe(
+        'var(--brand-fill)',
+      );
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe('var(--brand-ink)');
+    });
+
+    it("prefers the caller's ink over the one it would pick for a hex colour", () => {
+      fixture.componentRef.setInput('color', '#0b3d91');
+      fixture.componentRef.setInput('ink', '#fde68a');
+
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe('#0b3d91');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe('#fde68a');
+    });
+
+    it('sets only the text colour when ink comes without a colour', () => {
+      fixture.componentRef.setInput('ink', 'var(--brand-ink)');
+
+      fixture.detectChanges();
+
+      expect(getTag()!.style.getPropertyValue('--ea-tag-ink')).toBe('var(--brand-ink)');
+      expect(getTag()!.style.getPropertyValue('--ea-tag-color')).toBe('');
+    });
+
     it('anchors the tooltip on the whole tag, above it by default', () => {
       expect(tooltipDirective().tooltipPosition()).toBe('top');
       expect(

@@ -28,3 +28,23 @@ export default meta;
 type Story = StoryObj<FormFieldComponent>;
 
 export const Playground: Story = {};
+
+export const WithLabelHelp: Story = {
+  args: {
+    labelHelp: 'We send receipts and account notices here, never marketing.',
+  },
+};
+
+export const WithTemplateLabelHelp: Story = {
+  render: args => ({
+    props: args,
+    template: `<ea-form-field
+      ${argsToTemplate(args, { exclude: ['labelHelp'] })}
+      [labelHelp]="help">
+      <input type="email" placeholder="you@example.com" />
+    </ea-form-field>
+    <ng-template #help>
+      <em>Optional.</em> Leave it blank to be contacted by phone instead.
+    </ng-template>`,
+  }),
+};

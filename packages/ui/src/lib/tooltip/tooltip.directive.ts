@@ -274,6 +274,9 @@ export class TooltipDirective implements OnDestroy {
     this.renderer.addClass(this.tooltipEl, 'ea-tooltip');
     this.placedPosition = this.tooltipPosition();
     this.renderer.addClass(this.tooltipEl, `ea-tooltip--${this.placedPosition}`);
+    if (this.controlled()) {
+      this.renderer.addClass(this.tooltipEl, 'ea-tooltip--controlled');
+    }
     this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
     this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
     const content = this.eaTooltip();

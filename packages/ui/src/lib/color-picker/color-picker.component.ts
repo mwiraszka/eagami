@@ -4,6 +4,7 @@ import {
   Component,
   type ElementRef,
   Injector,
+  type TemplateRef,
   type Type,
   afterNextRender,
   computed,
@@ -122,6 +123,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
   readonly label = input<string | undefined>(undefined);
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
+  /** Help revealed by an info button beside the label, as plain text or a template. */
+  readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<ColorPickerSize>('md');
   readonly disabled = input<boolean>(false);

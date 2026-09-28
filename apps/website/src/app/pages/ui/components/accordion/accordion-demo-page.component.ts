@@ -3,6 +3,7 @@ import {
   type AccordionHeadingLevel,
   AccordionItemComponent,
   type AccordionSize,
+  BadgeComponent,
   ButtonComponent,
   CheckboxComponent,
   DropdownComponent,
@@ -39,6 +40,7 @@ interface AccordionItemModel {
   content: string;
   disabled: boolean;
   icon: string;
+  badge: string;
 }
 
 interface AccordionKnobState {
@@ -62,6 +64,7 @@ const ITEM_ICONS = [ICON_NONE, 'info', 'settings', 'star', 'book', 'package', 'p
   imports: [
     AccordionComponent,
     AccordionItemComponent,
+    BadgeComponent,
     ButtonComponent,
     CheckboxComponent,
     DropdownComponent,
@@ -85,12 +88,16 @@ export class AccordionDemoPageComponent {
 
   private nextId = 1;
   protected readonly items = signal<AccordionItemModel[]>(this.seedItems());
+  protected readonly expanded = signal<readonly string[]>(this.seedExpanded());
 
   /** Snippet children for the playground's generated code, mirroring the live items. */
   protected readonly childMarkup = computed(() =>
     this.items()
       .map(item => {
-        const attrs = [`value="item-${item.id}"`, `label="${item.heading}"`];
+        const attrs = [`value="${this.valueFor(item.id)}"`];
+        if (!item.badge) {
+          attrs.push(`label="${item.heading}"`);
+        }
         if (item.icon !== ICON_NONE) {
           attrs.push(`[icon]="${iconComponentName(item.icon)}"`);
         }
@@ -100,10 +107,31 @@ export class AccordionDemoPageComponent {
         const attrBlock = attrs
           .map((attr, index) => (index === attrs.length - 1 ? `  ${attr}>` : `  ${attr}`))
           .join('\n');
-        return `<ea-accordion-item\n${attrBlock}\n  ${item.content}\n</ea-accordion-item>`;
+        const label = item.badge
+          ? [
+              '  <span slot="label">',
+              `    ${item.heading}`,
+              '    <ea-badge',
+              '      variant="info"',
+              '      size="sm">',
+              `      ${item.badge}`,
+              '    </ea-badge>',
+              '  </span>',
+              '',
+            ].join('\n')
+          : '';
+        return `<ea-accordion-item\n${attrBlock}\n${label}  ${item.content}\n</ea-accordion-item>`;
       })
       .join('\n'),
   );
+
+  /** The live expansion as a snippet binding, so the code opens the same items. */
+  protected readonly extraAttributes = computed(() => {
+    const expanded = this.expanded();
+    return expanded.length
+      ? [`[expandedValues]="[${expanded.map(value => `'${value}'`).join(', ')}]"`]
+      : [];
+  });
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as AccordionKnobState);
@@ -115,6 +143,27 @@ export class AccordionDemoPageComponent {
     );
     this.nextId = 1;
     this.items.set(this.seedItems());
+    this.expanded.set(this.seedExpanded());
+  }
+
+  protected valueFor(id: number): string {
+    return `item-${id}`;
+  }
+
+  protected isExpanded(id: number): boolean {
+    return this.expanded().includes(this.valueFor(id));
+  }
+
+  // Without multi, opening one item closes the rest, as a header click would
+  protected setExpanded(id: number, open: boolean): void {
+    const value = this.valueFor(id);
+    this.expanded.update(current => {
+      const others = current.filter(v => v !== value);
+      if (!open) {
+        return others;
+      }
+      return this.state().multi ? [...others, value] : [value];
+    });
   }
 
   protected addItem(): void {
@@ -126,12 +175,14 @@ export class AccordionDemoPageComponent {
         content: this.messages().ui.component.demos.accordion.newSectionContent,
         disabled: false,
         icon: ICON_NONE,
+        badge: '',
       },
     ]);
   }
 
   protected removeItem(id: number): void {
     this.items.update(items => items.filter(item => item.id !== id));
+    this.setExpanded(id, false);
   }
 
   protected updateItem(id: number, patch: Partial<AccordionItemModel>): void {
@@ -143,9 +194,13 @@ export class AccordionDemoPageComponent {
   private seedItems(): AccordionItemModel[] {
     const m = this.messages().ui.component.demos.accordion;
     return [
-      { heading: m.whatLabel, content: m.whatBody, icon: 'info' },
-      { heading: m.installLabel, content: m.installBody, icon: 'package' },
-      { heading: m.themeLabel, content: m.themeBody, icon: 'palette' },
+      { heading: m.whatLabel, content: m.whatBody, icon: 'info', badge: '' },
+      { heading: m.installLabel, content: m.installBody, icon: 'package', badge: '' },
+      { heading: m.themeLabel, content: m.themeBody, icon: 'palette', badge: m.newBadge },
     ].map(item => ({ ...item, disabled: false, id: this.nextId++ }));
+  }
+
+  private seedExpanded(): readonly string[] {
+    return [this.valueFor(this.items()[0].id)];
   }
 }

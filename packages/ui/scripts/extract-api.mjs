@@ -42,7 +42,11 @@ function stripHtml(html) {
 }
 
 function slugFromSelector(selector) {
-  const cleaned = (selector ?? '').replace(/[[\]]/g, '').replace(/^ea-/, '');
+  // An element-qualified attribute selector (a[eaButtonLink]) is named by its attribute
+  const cleaned = (selector ?? '')
+    .replace(/^[a-z][\w-]*(?=\[)/, '')
+    .replace(/[[\]]/g, '')
+    .replace(/^ea-/, '');
   // Camel-case attribute directives (eaTooltip, eaMenuTrigger) share the kebab
   // slug style of the element selectors: eaTooltip -> tooltip.
   if (/^ea[A-Z]/.test(cleaned)) {

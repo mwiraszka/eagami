@@ -12,6 +12,7 @@ export * from './lib/badge/badge.component';
 export * from './lib/bar-chart/bar-chart.component';
 export * from './lib/breadcrumbs/breadcrumbs.component';
 export * from './lib/button/button.component';
+export * from './lib/button/button-link.component';
 export * from './lib/card/card.component';
 export type {
   ChartLabelOrientation,

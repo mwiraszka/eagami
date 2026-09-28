@@ -102,6 +102,9 @@ const messages: EagamiMessages = {
   dropdown: {
     placeholder: '请选择…',
   },
+  fieldLabel: {
+    help: label => `关于 ${label} 的更多信息`,
+  },
   fileUploader: {
     prompt: '点击或拖动文件到此处上传',
     promptSingle: '点击或拖动文件到此处上传',

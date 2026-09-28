@@ -1,5 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CheckIconComponent } from '../icons/check.component';
+import { XIconComponent } from '../icons/x.component';
 import { SwitchComponent } from './switch.component';
 
 describe('SwitchComponent', () => {
@@ -54,6 +56,79 @@ describe('SwitchComponent', () => {
       const labelSpan = fixture.nativeElement.querySelector('.ea-switch__label');
 
       expect(labelSpan.textContent.trim()).toBe('Notifications');
+    });
+  });
+
+  describe('Variant', () => {
+    it('applies no tone class by default', () => {
+      const classes = Array.from(getSwitchLabel().classList);
+
+      expect(classes.some(name => name.startsWith('ea-switch--tone-'))).toBe(false);
+    });
+
+    it('applies the tone class for a status variant', () => {
+      fixture.componentRef.setInput('variant', 'warning');
+      fixture.detectChanges();
+
+      expect(getSwitchLabel().classList).toContain('ea-switch--tone-warning');
+    });
+
+    it('keeps the error tone apart from the validation error state', () => {
+      fixture.componentRef.setInput('variant', 'error');
+      fixture.detectChanges();
+
+      expect(getSwitchLabel().classList).toContain('ea-switch--tone-error');
+      expect(getSwitchLabel().classList).not.toContain('ea-switch--error');
+      expect(getInput().getAttribute('aria-invalid')).toBeNull();
+    });
+  });
+
+  describe('Thumb icons', () => {
+    function getThumbIcon(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-switch__thumb-icon');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('onIcon', CheckIconComponent);
+      fixture.componentRef.setInput('offIcon', XIconComponent);
+      fixture.detectChanges();
+    });
+
+    it('renders no thumb icon when neither icon is set', () => {
+      fixture.componentRef.setInput('onIcon', undefined);
+      fixture.componentRef.setInput('offIcon', undefined);
+      fixture.detectChanges();
+
+      expect(getThumbIcon()).toBeNull();
+    });
+
+    it('draws the off icon while unchecked', () => {
+      expect(getThumbIcon()?.querySelector('ea-icon-x')).toBeTruthy();
+      expect(getThumbIcon()?.querySelector('ea-icon-check')).toBeNull();
+    });
+
+    it('swaps to the on icon when toggled on', () => {
+      getInput().click();
+      fixture.detectChanges();
+
+      expect(getThumbIcon()?.querySelector('ea-icon-check')).toBeTruthy();
+      expect(getThumbIcon()?.querySelector('ea-icon-x')).toBeNull();
+    });
+
+    it('draws only the state that has an icon', () => {
+      fixture.componentRef.setInput('offIcon', undefined);
+      fixture.detectChanges();
+
+      expect(getThumbIcon()).toBeNull();
+
+      component.checked.set(true);
+      fixture.detectChanges();
+
+      expect(getThumbIcon()?.querySelector('ea-icon-check')).toBeTruthy();
+    });
+
+    it('hides the glyph from assistive technology', () => {
+      expect(getThumbIcon()?.getAttribute('aria-hidden')).toBe('true');
     });
   });
 

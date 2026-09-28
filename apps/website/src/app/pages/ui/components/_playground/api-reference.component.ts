@@ -40,6 +40,7 @@ interface ApiSection {
 // <ea-radio> and <ea-radio-group>). Slugs not listed here render on their own.
 // `check-demo-parity` parses this map, so keep it a plain literal.
 const RELATED_SLUGS: Readonly<Record<string, readonly string[]>> = {
+  button: ['button-link'],
   radio: ['radio-group'],
   accordion: ['accordion-item'],
   'form-field': ['field-label', 'field-messages'],
@@ -111,7 +112,7 @@ export class ApiReferenceComponent {
   private toSection(slug: string, api: ComponentApi): ApiSection {
     return {
       slug,
-      selectorLabel: api.selector.startsWith('[') ? api.selector : `<${api.selector} />`,
+      selectorLabel: api.selector.includes('[') ? api.selector : `<${api.selector} />`,
       inputs: api.inputs.map(p => ({ ...p, description: this.describe(slug, p.name) })),
       outputs: api.outputs.map(p => ({ ...p, description: this.describe(slug, p.name) })),
       methods: api.methods.map(m => ({
@@ -137,10 +138,14 @@ export class ApiReferenceComponent {
     if (described) {
       return described;
     }
-    // errorMessages and ariaLabel appear on many components with identical
-    // meaning, so each shares one description rather than repeating it per slug
+    // errorMessages, labelHelp and ariaLabel appear on many components with
+    // identical meaning, so each shares one description rather than repeating
+    // it per slug
     if (key === 'errorMessages') {
       return playground.errorMessagesDescription;
+    }
+    if (key === 'labelHelp') {
+      return playground.labelHelpDescription;
     }
     return key === 'ariaLabel' ? playground.ariaLabelDescription : '';
   }

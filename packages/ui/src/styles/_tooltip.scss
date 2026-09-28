@@ -51,8 +51,11 @@
     pointer-events: auto;
   }
 
-  @media (hover: none) {
-    display: none;
+  // A bubble opened through `tooltipOpen` is the app's call, not a stray hover
+  &:not(.ea-tooltip--controlled) {
+    @media (hover: none) {
+      display: none;
+    }
   }
 
   // The bubble already declares its own padding, border, background and color,

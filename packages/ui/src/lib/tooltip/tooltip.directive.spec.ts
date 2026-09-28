@@ -184,6 +184,20 @@ describe('TooltipDirective', () => {
       expect(getTooltip()?.textContent).toBe('Save your changes');
     });
 
+    it('marks a bubble opened through tooltipOpen so touch screens still show it', () => {
+      host.open.set(true);
+
+      fixture.detectChanges();
+
+      expect(getTooltip()?.classList).toContain('ea-tooltip--controlled');
+    });
+
+    it('leaves a hover-opened bubble to the touch-screen guard', () => {
+      show();
+
+      expect(getTooltip()?.classList).not.toContain('ea-tooltip--controlled');
+    });
+
     it('hides once tooltipOpen turns false', () => {
       host.open.set(true);
       fixture.detectChanges();

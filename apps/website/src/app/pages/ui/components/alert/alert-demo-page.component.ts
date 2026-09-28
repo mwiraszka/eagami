@@ -1,4 +1,9 @@
-import { AlertComponent, type AlertSize, type AlertVariant } from '@eagami/ui';
+import {
+  AlertComponent,
+  type AlertLive,
+  type AlertSize,
+  type AlertVariant,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
@@ -27,6 +32,7 @@ interface AlertKnobState {
   variant: AlertVariant;
   size: AlertSize;
   dismissible: boolean;
+  live: AlertLive;
   icon: string;
 }
 

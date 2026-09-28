@@ -1,7 +1,17 @@
-import { FileUploaderComponent, type FileUploaderSize } from '@eagami/ui';
+import {
+  FileUploaderComponent,
+  type FileUploaderSize,
+  type FileUploaderVariant,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -11,7 +21,12 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
-import { labelIconFor, labelIconKnob } from '../_playground/icon-knob';
+import {
+  iconComponentForSlug,
+  iconKnob,
+  labelIconFor,
+  labelIconKnob,
+} from '../_playground/icon-knob';
 import {
   type KnobValue,
   buildKnobs,
@@ -26,11 +41,15 @@ interface FileUploaderKnobState {
   label: string;
   labelIcon: string;
   size: FileUploaderSize;
+  variant: FileUploaderVariant;
+  buttonLabel: string;
+  buttonIcon: string;
   accept: string;
   multiple: boolean;
   maxFiles: number;
   maxSize: number;
   showFileList: boolean;
+  showConstraints: boolean;
   disabled: boolean;
   required: boolean;
   triggerError: boolean;
@@ -54,6 +73,12 @@ export class FileUploaderDemoPageComponent {
   private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
     ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
+    {
+      ...iconKnob(['upload', 'upload-cloud', 'paperclip', 'file-text'], {
+        name: 'buttonIcon',
+      }),
+      condition: { arg: 'variant', eq: 'button' },
+    },
     labelIconKnob(),
   ];
   protected readonly state = signal<FileUploaderKnobState>(
@@ -88,6 +113,9 @@ export class FileUploaderDemoPageComponent {
   }
 
   protected readonly labelIconComponent = labelIconFor(this.state);
+  protected readonly buttonIconComponent = computed(() =>
+    iconComponentForSlug(this.state().buttonIcon),
+  );
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(
