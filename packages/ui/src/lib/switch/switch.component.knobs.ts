@@ -11,6 +11,10 @@ export const SWITCH_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
+    variant: {
+      control: 'select',
+      options: ['default', 'success', 'warning', 'error', 'info'],
+    },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     changed: { action: 'changed' },
@@ -19,6 +23,7 @@ export const SWITCH_KNOBS: ComponentKnobs = {
   args: {
     label: 'Toggle me',
     size: 'md',
+    variant: 'default',
     disabled: false,
     required: false,
     triggerError: false,

@@ -20,7 +20,15 @@
       "
       (change)="handleChange()" />
     <span class="ea-switch__track">
-      <span class="ea-switch__thumb"></span>
+      <span class="ea-switch__thumb">
+        @if (thumbIcon(); as icon) {
+          <span
+            class="ea-switch__thumb-icon"
+            aria-hidden="true">
+            <ng-container *ngComponentOutlet="icon" />
+          </span>
+        }
+      </span>
     </span>
     @if (label()) {
       <span

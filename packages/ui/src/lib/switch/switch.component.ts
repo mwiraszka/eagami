@@ -1,7 +1,8 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  type Type,
   computed,
   forwardRef,
   input,
@@ -21,6 +22,8 @@ import { uniqueId } from '../unique-id';
 
 /** Visual size of the switch. */
 export type SwitchSize = EaSize;
+/** Status tone applied to the switch track in both states. */
+export type SwitchVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
 
 /**
  * On/off toggle styled as a sliding switch. Backed by a visually hidden
@@ -29,7 +32,7 @@ export type SwitchSize = EaSize;
  */
 @Component({
   selector: 'ea-switch',
-  imports: [FieldMessagesComponent, NgClass],
+  imports: [FieldMessagesComponent, NgClass, NgComponentOutlet],
   templateUrl: './switch.component.html',
   styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,6 +51,15 @@ export class SwitchComponent implements ControlValueAccessor {
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly size = input<SwitchSize>('md');
+  /**
+   * Status tone for the track: a tinted wash with a toned border while off and
+   * the solid tone while on. `default` keeps the neutral off track and brand on track.
+   */
+  readonly variant = input<SwitchVariant>('default');
+  /** Optional icon component drawn in the thumb while the switch is on. */
+  readonly onIcon = input<Type<unknown> | undefined>(undefined);
+  /** Optional icon component drawn in the thumb while the switch is off. */
+  readonly offIcon = input<Type<unknown> | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
@@ -74,10 +86,16 @@ export class SwitchComponent implements ControlValueAccessor {
 
   readonly hostClasses = computed(() => ({
     [`ea-switch--${this.size()}`]: true,
+    // Prefixed so the `error` tone never collides with the validation-error class
+    [`ea-switch--tone-${this.variant()}`]: this.variant() !== 'default',
     'ea-switch--checked': this.checked(),
     'ea-switch--disabled': this.isDisabled(),
     'ea-switch--error': this.hasError(),
   }));
+
+  protected readonly thumbIcon = computed(() =>
+    this.checked() ? this.onIcon() : this.offIcon(),
+  );
 
   writeValue(val: boolean): void {
     this.checked.set(!!val);
