@@ -687,6 +687,8 @@ export const de: WebMessages = {
           disabledSectionBody: 'Dieser Inhalt ist nicht erreichbar.',
           newSectionHeading: 'Neuer Abschnitt',
           newSectionContent: 'Neuer Inhalt',
+          newBadge: 'Neu',
+          expanded: 'Aufgeklappt',
         },
         alert: {
           defaultText: 'Dies ist eine Standardmeldung',
@@ -1210,6 +1212,7 @@ export const de: WebMessages = {
             dismissible: 'Schließbar',
             size: 'Größe',
             icon: 'Symbol (Überschreibung)',
+            live: 'Ansage',
           },
           toast: {
             icon: 'Symbol (Überschreibung)',
@@ -1237,6 +1240,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             loading: 'Ladezustand',
             fullWidth: 'Volle Breite',
+            align: 'Ausrichtung',
             uppercase: 'Großbuchstaben',
             icon: 'Symbol',
           },
@@ -1374,6 +1378,9 @@ export const de: WebMessages = {
           switch: {
             label: 'Beschriftung',
             size: 'Größe',
+            variant: 'Variante',
+            onIcon: 'Symbol an',
+            offIcon: 'Symbol aus',
             disabled: 'Deaktiviert',
             required: 'Erforderlich',
           },
@@ -1600,6 +1607,8 @@ export const de: WebMessages = {
               'Überschriftenebene (1-6), die auf jeden Eintrags-Header angewendet wird, damit sich das Akkordeon in die Seitengliederung einfügt.',
             highlightExpanded:
               'Tönt den Header eines geöffneten Eintrags ein und setzt Beschriftung, Icon und Pfeil in die Markenfarbe, damit er sich von den geschlossenen Einträgen abhebt.',
+            expandedValues:
+              'Werte der aufgeklappten Einträge, bidirektional bindbar über [(expandedValues)]; ein gesetzter Wert öffnet Einträge von Anfang an. Ohne multi bleibt nur der erste in Dokumentreihenfolge geöffnet.',
           },
           alert: {
             dismissible:
@@ -1613,6 +1622,7 @@ export const de: WebMessages = {
             dismiss: 'Blendet die Meldung aus und gibt das dismissed-Ereignis aus.',
             size: 'Skaliert Text, Symbol und Abstand gemeinsam.',
             icon: 'Überschreibt das standardmäßige Statussymbol der Variante mit einer beliebigen Symbolkomponente.',
+            live: 'Wie Hilfstechnologien die Meldung ansagen: auto unterbricht bei error und warning und wartet bei den übrigen ab, assertive oder polite gilt für jede Variante, und off sagt nichts an, für statischen Seitentext.',
           },
           avatar: {
             src: 'Anzuzeigende Bild-URL; greift auf Initialen, dann auf ein generisches Benutzersymbol zurück.',
@@ -1637,6 +1647,8 @@ export const de: WebMessages = {
             loading:
               'Tauscht das Label gegen einen Spinner aus und behält dabei die gerenderte Breite bei.',
             fullWidth: 'Streckt den Button, um die Breite seines Containers zu füllen.',
+            align:
+              'Richtet den Inhalt in einem Button aus, der breiter ist als dieser, etwa bei voller Breite. Anfang und Ende folgen der Textrichtung.',
             uppercase: 'Stellt die Beschriftung komplett in Großbuchstaben dar.',
             ariaLabel:
               'Barrierefreies Label für den Button, wenn sein Inhalt nicht aussagekräftig genug ist.',
@@ -1645,6 +1657,23 @@ export const de: WebMessages = {
             clicked:
               'Wird ausgelöst, wenn der Button aktiviert wird, unterdrückt im deaktivierten oder Ladezustand.',
             icon: 'Optionale Symbolkomponente, die links vom Label gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text den Button benennt, weitergereicht an das native aria-labelledby-Attribut.',
+            ariaDescribedby:
+              'IDs der Elemente, die den Button beschreiben, etwa ein Hinweis, weitergereicht an das native aria-describedby-Attribut.',
+            focus:
+              'Verschiebt den Tastaturfokus auf den zugrunde liegenden nativen Button.',
+          },
+          'button-link': {
+            variant: 'Visueller Stil des Links, der seine Farbe und Betonung bestimmt.',
+            size: 'Visuelle Größe des Links.',
+            disabled:
+              'Kennzeichnet den Link per aria-disabled als nicht verfügbar, nimmt ihn aus der Tab-Reihenfolge und blockiert die Navigation.',
+            fullWidth: 'Streckt den Link, um die Breite seines Containers zu füllen.',
+            align:
+              'Richtet den Inhalt in einem Link aus, der breiter ist als dieser, etwa bei voller Breite. Anfang und Ende folgen der Textrichtung.',
+            uppercase: 'Stellt die Beschriftung komplett in Großbuchstaben dar.',
+            icon: 'Optionale Symbolkomponente, die vor dem Label gerendert wird.',
           },
           card: {
             variant: 'Visueller Stil der Kartenoberfläche.',
@@ -1923,12 +1952,19 @@ export const de: WebMessages = {
             label: 'Textlabel, das neben dem Schalter gerendert wird.',
             required: 'Kennzeichnet den Schalter als erforderlich.',
             size: 'Visuelle Größe des Schalters.',
+            variant:
+              'Statuston der Schiene, ausgeschaltet getönt und eingeschaltet vollflächig.',
+            onIcon:
+              'Optionale Icon-Komponente, die im eingeschalteten Zustand im Regler gezeichnet wird.',
+            offIcon:
+              'Optionale Icon-Komponente, die im ausgeschalteten Zustand im Regler gezeichnet wird.',
             changed:
               'Wird mit dem neuen Ankreuzzustand ausgelöst, wann immer der Nutzer den Schalter umschaltet.',
           },
           tag: {
             color:
-              'Füllfarbe als Hex-Wert, färbt den Chip und wählt die besser lesbare Schriftfarbe.',
+              'Füllfarbe, färbt den Chip anstelle der Variante. Allein muss sie ein Hex-Wert sein, aus dem das Tag die besser lesbare Schriftfarbe wählt; zusammen mit ink akzeptiert sie jede CSS-Farbe, etwa ein themenabhängiges var(--my-token).',
+            ink: 'Textfarbe als beliebige CSS-Farbe, überschreibt die Schriftfarbe, die das Tag für color wählen würde. Damit darf color ein Wert sein, den das Tag nicht messen kann; der Kontrast zwischen beiden liegt dann beim Aufrufer.',
             variant: 'Semantisches Farbschema des Tags.',
             size: 'Visuelle Größe des Tags.',
             maxWidth:
@@ -1969,6 +2005,10 @@ export const de: WebMessages = {
             focused: 'Wird ausgelöst, wenn das Feld den Fokus erhält.',
             focus:
               'Verschiebt den Tastaturfokus auf das zugrunde liegende native Textarea.',
+            getSelection:
+              'Gibt den ausgewählten Bereich als Start- und End-Zeichenposition zurück, auch nachdem das Feld den Fokus verloren hat.',
+            insertText:
+              'Ersetzt die Auswahl durch den übergebenen Text, setzt den Cursor dahinter und benachrichtigt das Formular wie bei einer Eingabe.',
           },
           'avatar-editor': {
             accept:
@@ -2099,6 +2139,7 @@ export const de: WebMessages = {
               'Maximale Anzahl der Optionen, die gleichzeitig in der Vorschlagsliste angezeigt werden.',
             minLength:
               'Mindestzeichenanzahl, die erforderlich ist, bevor die Vorschlagsliste erscheint.',
+            maxLength: 'Maximale Zeichenanzahl, die das Eingabefeld akzeptiert.',
             options:
               'Vollständige Liste der zur Filterung und Auswahl verfügbaren Optionen, flach oder in Gruppen unterteilt.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
@@ -2297,6 +2338,12 @@ export const de: WebMessages = {
           'file-uploader': {
             accept:
               "Kommagetrennte MIME-Typen und Dateierweiterungen, die die Dropzone akzeptiert, z.B. 'image/*,.pdf'.",
+            ariaLabel:
+              'Barrierefreier Name, wenn nichts Sichtbares das Steuerelement benennt, für die Dropzone oder einen reinen Icon-Button.',
+            buttonIcon:
+              'Optionale Icon-Komponente, die vor dem Text der Button-Variante gerendert wird.',
+            buttonLabel:
+              'Text der Button-Variante, standardmäßig das lokalisierte "Dateien durchsuchen"; ein leerer String mit Icon ergibt einen reinen Icon-Button.',
             disabled: 'Deaktiviert den Uploader.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2313,8 +2360,12 @@ export const de: WebMessages = {
             progress:
               'Upload-Fortschrittskarte pro Datei (0-100), nach Datei-Identität gekeyt; weglassen, um Fortschrittsbalken auszublenden.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            showConstraints:
+              'Zeigt die erlaubten Dateitypen sowie Größen- und Anzahlgrenzen unter dem Steuerelement; ausschalten, wo sie eine kompakte Platzierung überladen würden.',
             showFileList: 'Zeigt die Liste der ausgewählten Dateien unter der Dropzone.',
             size: 'Visuelle Größe des Uploaders.',
+            variant:
+              'Darstellung des Uploaders: eine Drag-and-drop-Zone oder ein kompakter Button, der die Dateiauswahl öffnet.',
             value: 'Aktuelle Dateiliste, bidirektional bindbar über [(value)].',
             fileRemoved:
               'Wird ausgelöst, wenn eine Datei über den Entfernen-Button ihrer Zeile entfernt wird.',
@@ -2370,7 +2421,8 @@ export const de: WebMessages = {
             disabled:
               'Deaktiviert diesen Eintrag und verhindert, dass er umgeschaltet wird.',
             id: 'id, die auf den Header-Button und das Panel des Eintrags angewendet wird, automatisch generiert, wenn weggelassen.',
-            label: 'Text, der im Header-Button des Eintrags angezeigt wird.',
+            label:
+              'Reiner Text im Header-Button. Für reichhaltigere Inhalte tritt ein mit slot="label" projiziertes Element an seine Stelle, dessen Text dann den Button benennt.',
             value:
               'Eindeutiger Schlüssel, der diesen Eintrag innerhalb seines übergeordneten Accordions identifiziert.',
           },

@@ -677,6 +677,8 @@ export const is: WebMessages = {
           disabledSectionBody: 'Ekki er hægt að ná í þetta efni.',
           newSectionHeading: 'Nýr hluti',
           newSectionContent: 'Nýtt efni',
+          newBadge: 'Nýtt',
+          expanded: 'Opið',
         },
         alert: {
           defaultText: 'Þetta er sjálfgefin tilkynning',
@@ -1203,6 +1205,7 @@ export const is: WebMessages = {
             dismissible: 'Lokanlegt',
             size: 'Stærð',
             icon: 'Táknmynd (yfirskrift)',
+            live: 'Upplestur',
           },
           toast: {
             icon: 'Táknmynd (yfirskrift)',
@@ -1230,6 +1233,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             loading: 'Hleður',
             fullWidth: 'Full breidd',
+            align: 'Jöfnun',
             uppercase: 'Hástafir',
             icon: 'Táknmynd',
           },
@@ -1367,6 +1371,9 @@ export const is: WebMessages = {
           switch: {
             label: 'Merkimiði',
             size: 'Stærð',
+            variant: 'Afbrigði',
+            onIcon: 'Táknmynd á',
+            offIcon: 'Táknmynd af',
             disabled: 'Óvirkt',
             required: 'Krafist',
           },
@@ -1582,6 +1589,8 @@ export const is: WebMessages = {
               'Fyrirsagnarstig (1-6) sett á haus hvers atriðis, svo harmonikkan passi í uppbyggingu síðunnar.',
             highlightExpanded:
               'Litar haus opins atriðis og setur merki, tákn og ör þess í lit vörumerkisins svo það skeri sig frá lokuðu atriðunum.',
+            expandedValues:
+              'Gildi opnu atriðanna, tvíátta bindanlegt með [(expandedValues)]; þegar það er sett opnast atriði frá byrjun. Án multi helst aðeins fyrsta atriðið í röð skjalsins opið.',
           },
           alert: {
             dismissible:
@@ -1594,6 +1603,7 @@ export const is: WebMessages = {
             dismiss: 'Felur tilkynninguna og sendir dismissed atburðinn.',
             size: 'Kvarðar texta, táknmynd og bil saman.',
             icon: 'Yfirskrifar sjálfgefna stöðutáknmynd afbrigðisins með hvaða táknmyndaeiningu sem er.',
+            live: 'Hvernig hjálpartækni les upp tilkynninguna: auto grípur fram í fyrir error og warning og bíður síns tíma fyrir hin, assertive eða polite beitir öðru hvoru á öll afbrigði, og off les ekkert upp, fyrir kyrrstæðan texta á síðunni.',
           },
           avatar: {
             src: 'Mynd-URL til að birta; fellur aftur á upphafsstafi, svo almenna notendatáknmynd.',
@@ -1616,6 +1626,8 @@ export const is: WebMessages = {
             disabled: 'Gerir hnappinn óvirkan og bælir smelliatburði.',
             loading: 'Skiptir merkimiðanum út fyrir snúning en heldur birtu breiddinni.',
             fullWidth: 'Teygir hnappinn til að fylla breidd ílátsins.',
+            align:
+              'Jafnar efnið innan hnapps sem er breiðari en það, til dæmis hnapps í fullri breidd. Upphaf og endir fylgja textastefnunni.',
             uppercase: 'Birtir merkimiðann eingöngu með hástöfum.',
             ariaLabel:
               'Aðgengilegur merkimiði fyrir hnappinn þegar efni hans er ekki nógu lýsandi.',
@@ -1624,6 +1636,22 @@ export const is: WebMessages = {
             clicked:
               'Kviknar þegar hnappurinn er virkjaður, bælt á meðan óvirkt eða hleður.',
             icon: 'Valfrjáls táknmyndaeining birt vinstra megin við merkimiðann.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa hnappnum heiti með texta sínum, send áfram í innbyggða aria-labelledby eigindið.',
+            ariaDescribedby:
+              'Auðkenni þeirra eininga sem lýsa hnappnum, t.d. vísbendingar, send áfram í innbyggða aria-describedby eigindið.',
+            focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða hnappinn.',
+          },
+          'button-link': {
+            variant: 'Sjónrænn stíll tengilsins, keyrir lit hans og áherslu.',
+            size: 'Sjónræn stærð tengilsins.',
+            disabled:
+              'Merkir tengilinn ótiltækan með aria-disabled, tekur hann úr tab-röðinni og hindrar leiðsögn.',
+            fullWidth: 'Teygir tengilinn til að fylla breidd ílátsins.',
+            align:
+              'Jafnar efnið innan tengils sem er breiðari en það, til dæmis tengils í fullri breidd. Upphaf og endir fylgja textastefnunni.',
+            uppercase: 'Birtir merkimiðann eingöngu með hástöfum.',
+            icon: 'Valfrjáls táknmyndaeining birt á undan merkimiðanum.',
           },
           card: {
             variant: 'Sjónrænn stíll spjaldsyfirborðsins.',
@@ -1881,12 +1909,19 @@ export const is: WebMessages = {
             label: 'Textamerkimiði birtur við hlið rofans.',
             required: 'Merkir rofann sem nauðsynlegan.',
             size: 'Sjónræn stærð rofans.',
+            variant:
+              'Stöðutónn brautarinnar, litaður þegar slökkt er á rofanum og heill þegar kveikt er á honum.',
+            onIcon:
+              'Valfrjáls táknmyndaeining teiknuð í þumalinn á meðan kveikt er á rofanum.',
+            offIcon:
+              'Valfrjáls táknmyndaeining teiknuð í þumalinn á meðan slökkt er á rofanum.',
             changed:
               'Kviknar með nýja valda ástandinu hvenær sem notandinn víxlar rofanum.',
           },
           tag: {
             color:
-              'Fyllingarlitur sem hex-gildi, litar merkið og velur læsilegan textalit.',
+              'Fyllingarlitur sem litar merkið í stað afbrigðisins. Einn og sér verður hann að vera hex-gildi, sem merkið velur læsilegri textalit út frá; með ink tekur hann hvaða CSS-lit sem er, svo sem þemaháð var(--my-token).',
+            ink: 'Textalitur, hvaða CSS-litur sem er, sem kemur í stað þess litar sem merkið myndi velja fyrir color. Þegar hann er gefinn má color vera gildi sem merkið getur ekki mælt, og þá ber sá sem kallar ábyrgð á birtuskilum milli þeirra.',
             variant: 'Merkingarlegt litakerfi merkisins.',
             size: 'Sjónræn stærð merkisins.',
             maxWidth:
@@ -1925,6 +1960,10 @@ export const is: WebMessages = {
             blurred: 'Kviknar þegar reiturinn missir fókus.',
             focused: 'Kviknar þegar reiturinn fær fókus.',
             focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða textasvæðið.',
+            getSelection:
+              'Skilar valda sviðinu sem upphafs- og lokastöðu stafa, sem helst eftir að reiturinn missir fókus.',
+            insertText:
+              'Setur gefna textann í stað valsins, setur bendilinn á eftir honum og lætur eyðublaðið vita eins og við innslátt.',
           },
           'avatar-editor': {
             accept:
@@ -2045,6 +2084,7 @@ export const is: WebMessages = {
             maxResults: 'Hámarksfjöldi valkosta sýndur í tillögulistanum í einu.',
             minLength:
               'Lágmarksfjöldi stafa sem krafist er áður en tillögulistinn birtist.',
+            maxLength: 'Hámarksfjöldi stafa sem innsláttarreiturinn tekur við.',
             options:
               'Fullur listi valkosta tiltækra til síunar og vals, flatur eða skiptur í hópa.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
@@ -2230,6 +2270,12 @@ export const is: WebMessages = {
           'file-uploader': {
             accept:
               "Kommuaðskildar MIME tegundir og skráarendingar sem sleppisvæðið samþykkir, t.d. 'image/*,.pdf'.",
+            ariaLabel:
+              'Aðgengilegt heiti þegar ekkert sýnilegt nefnir stýringuna, fyrir sleppisvæðið eða hnapp með táknmynd eingöngu.',
+            buttonIcon:
+              'Valfrjáls táknmyndaeining birt á undan texta hnappaafbrigðisins.',
+            buttonLabel:
+              'Texti hnappaafbrigðisins, sjálfgefið staðfært "Velja skrár"; tómur strengur með táknmynd skilur eftir hnapp með táknmynd eingöngu.',
             disabled: 'Gerir upphlaðarann óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2244,8 +2290,12 @@ export const is: WebMessages = {
             progress:
               'Upphleðsluframvindukort á hverja skrá (0-100) lyklað eftir File auðkenni; sleppið til að fela framvindustikur.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            showConstraints:
+              'Sýnir leyfðar skráartegundir og takmörk á stærð og fjölda fyrir neðan stýringuna; slökktu á því þar sem það myndi þrengja að þéttri staðsetningu.',
             showFileList: 'Sýnir listann yfir valdar skrár fyrir neðan sleppisvæðið.',
             size: 'Sjónræn stærð upphlaðarans.',
+            variant:
+              'Framsetning upphlaðarans: draga-og-sleppa-svæði eða nettur hnappur sem opnar skráavalið.',
             value: 'Núverandi skráalisti, tvíátta bindanlegur með [(value)].',
             fileRemoved:
               'Kviknar þegar skrá er fjarlægð með fjarlægingarhnappi raðar hennar.',
@@ -2301,7 +2351,8 @@ export const is: WebMessages = {
             icon: 'Táknmyndarhluti sem birtist á undan merkinu í hausahnappi atriðisins, stækkar með atriðinu og er falinn hjálpartækni.',
             disabled: 'Gerir þetta atriði óvirkt, kemur í veg fyrir að því sé víxlað.',
             id: 'id sett á hausshnapp atriðisins og spjald, sjálfvirkt búið til þegar því er sleppt.',
-            label: 'Texti sýndur í hausshnappi atriðisins.',
+            label:
+              'Hreinn texti sýndur í hausshnappinum. Fyrir ríkara efni tekur stak sem varpað er inn með slot="label" sæti hans, og texti þess nefnir þá hnappinn.',
             value:
               'Einkvæmur lykill sem auðkennir þetta atriði innan foreldra harmonikkunnar.',
           },

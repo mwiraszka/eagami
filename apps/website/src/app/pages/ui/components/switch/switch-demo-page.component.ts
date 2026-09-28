@@ -1,7 +1,13 @@
-import { SwitchComponent, type SwitchSize } from '@eagami/ui';
+import { SwitchComponent, type SwitchSize, type SwitchVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -11,6 +17,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import {
   type KnobValue,
   buildKnobs,
@@ -24,12 +31,17 @@ interface SwitchKnobState {
   [key: string]: KnobValue;
   label: string;
   size: SwitchSize;
+  variant: SwitchVariant;
+  onIcon: string;
+  offIcon: string;
   disabled: boolean;
   required: boolean;
   triggerError: boolean;
 }
 
 const SLUG = 'switch';
+
+const THUMB_ICON_SLUGS = ['check', 'x', 'sun', 'moon', 'lock', 'unlock'];
 
 @Component({
   selector: 'web-switch-demo-page',
@@ -45,13 +57,23 @@ const SLUG = 'switch';
 export class SwitchDemoPageComponent {
   protected readonly slug = SLUG;
   private readonly knobDefaults = injectKnobDefaults(SLUG);
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS.switch, UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS.switch, UI_API[SLUG]),
+    iconKnob(THUMB_ICON_SLUGS, { name: 'onIcon' }),
+    iconKnob(THUMB_ICON_SLUGS, { name: 'offIcon' }),
+  ];
   protected readonly state = signal<SwitchKnobState>(
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS.switch,
       this.knobDefaults,
     ) as SwitchKnobState,
+  );
+  protected readonly onIconComponent = computed(() =>
+    iconComponentForSlug(this.state().onIcon),
+  );
+  protected readonly offIconComponent = computed(() =>
+    iconComponentForSlug(this.state().offIcon),
   );
 
   protected readonly control = new FormControl(null, {

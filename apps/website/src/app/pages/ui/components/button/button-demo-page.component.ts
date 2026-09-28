@@ -1,4 +1,5 @@
 import {
+  type ButtonAlign,
   ButtonComponent,
   type ButtonSize,
   type ButtonType,
@@ -43,6 +44,7 @@ interface ButtonKnobState {
   disabled: boolean;
   loading: boolean;
   fullWidth: boolean;
+  align: ButtonAlign;
   uppercase: boolean;
   icon: string;
 }

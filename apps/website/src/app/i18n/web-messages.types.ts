@@ -492,6 +492,8 @@ export interface WebMessages {
           disabledSectionBody: string;
           newSectionHeading: string;
           newSectionContent: string;
+          newBadge: string;
+          expanded: string;
         };
         alert: {
           defaultText: string;

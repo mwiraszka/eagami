@@ -685,6 +685,8 @@ export const nl: WebMessages = {
           disabledSectionBody: 'Deze inhoud is niet bereikbaar.',
           newSectionHeading: 'Nieuwe sectie',
           newSectionContent: 'Nieuwe inhoud',
+          newBadge: 'Nieuw',
+          expanded: 'Uitgeklapt',
         },
         alert: {
           defaultText: 'Dit is een standaardmelding',
@@ -1202,6 +1204,7 @@ export const nl: WebMessages = {
             dismissible: 'Sluitbaar',
             size: 'Grootte',
             icon: 'Icoon (overschrijven)',
+            live: 'Aankondiging',
           },
           toast: {
             icon: 'Icoon (overschrijven)',
@@ -1229,6 +1232,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             loading: 'Laden',
             fullWidth: 'Volledige breedte',
+            align: 'Uitlijning',
             uppercase: 'Hoofdletters',
             icon: 'Icoon',
           },
@@ -1366,6 +1370,9 @@ export const nl: WebMessages = {
           switch: {
             label: 'Label',
             size: 'Grootte',
+            variant: 'Variant',
+            onIcon: 'Icoon aan',
+            offIcon: 'Icoon uit',
             disabled: 'Uitgeschakeld',
             required: 'Verplicht',
           },
@@ -1588,6 +1595,8 @@ export const nl: WebMessages = {
               'Kopniveau (1-6) toegepast op elke itemkoptekst, zodat het accordeon in de paginastructuur past.',
             highlightExpanded:
               'Kleurt de header van een open item en zet het label, pictogram en de chevron in de merkkleur, zodat het opvalt tussen de gesloten items.',
+            expandedValues:
+              'Waarden van de uitgeklapte items, in twee richtingen te binden via [(expandedValues)]; door het in te stellen zijn items vanaf het begin open. Zonder multi blijft alleen de eerste in documentvolgorde open.',
           },
           alert: {
             dismissible:
@@ -1601,6 +1610,7 @@ export const nl: WebMessages = {
             dismiss: 'Verbergt de melding en zendt de dismissed-gebeurtenis uit.',
             size: 'Schaalt de tekst, het icoon en de tussenruimte samen.',
             icon: 'Overschrijft het standaardstatusicoon van de variant met een willekeurige icooncomponent.',
+            live: 'Hoe hulptechnologie de melding aankondigt: auto onderbreekt bij error en warning en wacht bij de rest op zijn beurt, assertive of polite past een van beide toe op elke variant, en off kondigt niets aan, voor statische paginatekst.',
           },
           avatar: {
             src: 'Afbeeldings-URL om te tonen; valt terug op initialen, daarna een generiek gebruikersicoon.',
@@ -1625,6 +1635,8 @@ export const nl: WebMessages = {
             loading:
               'Verwisselt het label voor een spinner met behoud van de gerenderde breedte.',
             fullWidth: 'Rekt de knop uit om de breedte van zijn container te vullen.',
+            align:
+              'Lijnt de inhoud uit binnen een knop die breder is dan de inhoud, zoals een knop over de volledige breedte. Begin en eind volgen de tekstrichting.',
             uppercase: 'Toont het label volledig in hoofdletters.',
             ariaLabel:
               'Toegankelijk label voor de knop wanneer de inhoud niet beschrijvend genoeg is.',
@@ -1633,6 +1645,22 @@ export const nl: WebMessages = {
             clicked:
               'Wordt geactiveerd wanneer de knop wordt geactiveerd, onderdrukt terwijl uitgeschakeld of ladend.',
             icon: 'Optionele icooncomponent weergegeven links van het label.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst de knop benoemt, doorgegeven aan het native aria-labelledby-attribuut.',
+            ariaDescribedby:
+              'Identificatoren van de elementen die de knop beschrijven, zoals een hint, doorgegeven aan het native aria-describedby-attribuut.',
+            focus: 'Verplaatst de toetsenbordfocus naar de onderliggende native knop.',
+          },
+          'button-link': {
+            variant: 'Visuele stijl van de link, die de kleur en nadruk aanstuurt.',
+            size: 'Visuele grootte van de link.',
+            disabled:
+              'Markeert de link als niet beschikbaar met aria-disabled, haalt hem uit de tabvolgorde en blokkeert de navigatie.',
+            fullWidth: 'Rekt de link uit om de breedte van zijn container te vullen.',
+            align:
+              'Lijnt de inhoud uit binnen een link die breder is dan de inhoud, zoals een link over de volledige breedte. Begin en eind volgen de tekstrichting.',
+            uppercase: 'Toont het label volledig in hoofdletters.',
+            icon: 'Optionele icooncomponent weergegeven vóór het label.',
           },
           card: {
             variant: 'Visuele stijl van het kaartoppervlak.',
@@ -1907,12 +1935,18 @@ export const nl: WebMessages = {
             label: 'Tekstlabel weergegeven naast de switch.',
             required: 'Markeert de switch als verplicht.',
             size: 'Visuele grootte van de switch.',
+            variant: 'Statustint voor de baan, getint wanneer uit en vol wanneer aan.',
+            onIcon:
+              'Optionele icooncomponent die in de schuif wordt getekend terwijl de switch aan staat.',
+            offIcon:
+              'Optionele icooncomponent die in de schuif wordt getekend terwijl de switch uit staat.',
             changed:
               'Wordt geactiveerd met de nieuwe aangevinkte toestand telkens wanneer de gebruiker de switch omschakelt.',
           },
           tag: {
             color:
-              'Vulkleur als hexwaarde, die de chip kleurt en de best leesbare tekstkleur kiest.',
+              'Vulkleur, die de chip kleurt in plaats van de variant. Op zichzelf moet het een hexwaarde zijn, waaruit de tag de best leesbare tekstkleur kiest; samen met ink accepteert het elke CSS-kleur, zoals een thema-afhankelijke var(--my-token).',
+            ink: 'Tekstkleur als willekeurige CSS-kleur, die de tekstkleur overschrijft die de tag voor color zou kiezen. Hiermee mag color een waarde zijn die de tag niet kan meten, en ligt het contrast tussen beide bij de aanroeper.',
             variant: 'Semantisch kleurenschema van de tag.',
             size: 'Visuele grootte van de tag.',
             maxWidth:
@@ -1953,6 +1987,10 @@ export const nl: WebMessages = {
             focused: 'Wordt geactiveerd wanneer het veld de focus krijgt.',
             focus:
               'Verplaatst de toetsenbordfocus naar de onderliggende native textarea.',
+            getSelection:
+              'Geeft het geselecteerde bereik terug als begin- en eindpositie in tekens, ook nadat het veld de focus verliest.',
+            insertText:
+              'Vervangt de selectie door de opgegeven tekst, plaatst de cursor erachter en informeert het formulier zoals bij typen.',
           },
           'avatar-editor': {
             accept:
@@ -2080,6 +2118,7 @@ export const nl: WebMessages = {
               'Maximaal aantal opties dat tegelijk in de suggestielijst wordt getoond.',
             minLength:
               'Minimaal aantal tekens vereist voordat de suggestielijst verschijnt.',
+            maxLength: 'Maximaal aantal tekens dat het invoerveld accepteert.',
             options:
               'Volledige lijst van opties beschikbaar voor filteren en selecteren, plat of opgesplitst in groepen.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
@@ -2279,6 +2318,12 @@ export const nl: WebMessages = {
           'file-uploader': {
             accept:
               "Door komma's gescheiden MIME-types en bestandsextensies die de dropzone accepteert, bijv. 'image/*,.pdf'.",
+            ariaLabel:
+              'Toegankelijke naam wanneer niets zichtbaars het besturingselement benoemt, voor de dropzone of een knop met alleen een icoon.',
+            buttonIcon:
+              'Optionele icooncomponent weergegeven vóór de tekst van de knopvariant.',
+            buttonLabel:
+              'Tekst van de knopvariant, standaard het gelokaliseerde "Bestanden doorbladeren"; een lege string met een icoon geeft een knop met alleen een icoon.',
             disabled: 'Schakelt de uploader uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2295,8 +2340,12 @@ export const nl: WebMessages = {
             progress:
               'Uploadvoortgangskaart per bestand (0-100) op basis van File-identiteit; weglaten om voortgangsbalken te verbergen.',
             required: 'Markeert het veld als verplicht.',
+            showConstraints:
+              'Toont de toegestane bestandstypen en de limieten voor grootte en aantal onder het besturingselement; zet het uit waar ze een compacte plaatsing zouden overvullen.',
             showFileList: 'Toont de lijst van geselecteerde bestanden onder de dropzone.',
             size: 'Visuele grootte van de uploader.',
+            variant:
+              'Weergave van de uploader: een zone voor slepen en neerzetten, of een compacte knop die de bestandskiezer opent.',
             value: 'Huidige bestandslijst, in twee richtingen te binden via [(value)].',
             fileRemoved:
               'Wordt geactiveerd wanneer een bestand via de verwijderknop van de rij wordt verwijderd.',
@@ -2352,7 +2401,8 @@ export const nl: WebMessages = {
             icon: 'Pictogramcomponent vóór het label in de kopknop van het item, geschaald met het item en verborgen voor hulptechnologie.',
             disabled: 'Schakelt dit item uit, waardoor het niet kan worden omgeschakeld.',
             id: 'id toegepast op de koptekstknop en het paneel van het item, automatisch gegenereerd indien weggelaten.',
-            label: 'Tekst getoond in de koptekstknop van het item.',
+            label:
+              'Platte tekst getoond in de koptekstknop. Voor rijkere inhoud neemt een element geprojecteerd met slot="label" zijn plaats in, en de tekst daarvan benoemt dan de knop.',
             value:
               'Unieke sleutel die dit item identificeert binnen zijn bovenliggende accordion.',
           },

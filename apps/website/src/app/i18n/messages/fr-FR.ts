@@ -690,6 +690,8 @@ export const frFR: WebMessages = {
           disabledSectionBody: 'Ce contenu n’est pas accessible.',
           newSectionHeading: 'Nouvelle section',
           newSectionContent: 'Nouveau contenu',
+          newBadge: 'Nouveau',
+          expanded: 'Ouvert',
         },
         alert: {
           defaultText: 'Ceci est une alerte par défaut',
@@ -1216,6 +1218,7 @@ export const frFR: WebMessages = {
             dismissible: 'Fermable',
             size: 'Taille',
             icon: 'Icône (remplacer)',
+            live: 'Annonce',
           },
           toast: {
             icon: 'Icône (remplacer)',
@@ -1243,6 +1246,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             loading: 'Chargement',
             fullWidth: 'Pleine largeur',
+            align: 'Alignement',
             uppercase: 'Majuscules',
             icon: 'Icône',
           },
@@ -1380,6 +1384,9 @@ export const frFR: WebMessages = {
           switch: {
             label: 'Libellé',
             size: 'Taille',
+            variant: 'Variante',
+            onIcon: 'Icône marche',
+            offIcon: 'Icône arrêt',
             disabled: 'Désactivé',
             required: 'Requis',
           },
@@ -1604,6 +1611,8 @@ export const frFR: WebMessages = {
               'Niveau de titre (1-6) appliqué à chaque en-tête d’élément, pour que l’accordéon s’insère dans le plan de la page.',
             highlightExpanded:
               "Teinte l'en-tête d'un élément ouvert et met son libellé, son icône et son chevron à la couleur de la marque, pour le distinguer des éléments fermés.",
+            expandedValues:
+              'Valeurs des éléments ouverts, liable en deux sens via [(expandedValues)] ; le définir ouvre des éléments dès le départ. Sans multi, seul le premier dans l’ordre du document reste ouvert.',
           },
           alert: {
             dismissible:
@@ -1617,6 +1626,7 @@ export const frFR: WebMessages = {
             dismiss: 'Masque l’alerte et émet l’événement dismissed.',
             size: 'Met à l’échelle le texte, l’icône et l’espacement ensemble.',
             icon: 'Remplace l’icône de statut par défaut de la variante par n’importe quel composant d’icône.',
+            live: 'Manière dont les technologies d’assistance annoncent l’alerte : auto interrompt pour error et warning et attend son tour pour les autres, assertive ou polite applique l’un des deux à chaque variante, et off n’annonce rien, pour un texte statique de la page.',
           },
           avatar: {
             src: 'URL de l’image à afficher ; bascule sur les initiales, puis sur une icône d’utilisateur générique.',
@@ -1640,6 +1650,8 @@ export const frFR: WebMessages = {
             loading:
               'Remplace le libellé par un indicateur de chargement tout en conservant la largeur rendue.',
             fullWidth: 'Étire le bouton pour remplir la largeur de son conteneur.',
+            align:
+              'Aligne le contenu d’un bouton plus large que lui, comme un bouton pleine largeur. Le début et la fin suivent le sens du texte.',
             uppercase: 'Affiche le libellé entièrement en majuscules.',
             ariaLabel:
               'Libellé accessible du bouton lorsque son contenu n’est pas suffisamment descriptif.',
@@ -1648,6 +1660,22 @@ export const frFR: WebMessages = {
             clicked:
               'Émis lorsque le bouton est activé, supprimé lorsqu’il est désactivé ou en chargement.',
             icon: 'Composant d’icône optionnel rendu à gauche du libellé.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le bouton, transmis à l’attribut natif aria-labelledby.',
+            ariaDescribedby:
+              'Identifiants des éléments qui décrivent le bouton, comme une indication, transmis à l’attribut natif aria-describedby.',
+            focus: 'Place le focus clavier sur le bouton natif sous-jacent.',
+          },
+          'button-link': {
+            variant: 'Style visuel du lien, déterminant sa couleur et son emphase.',
+            size: 'Taille visuelle du lien.',
+            disabled:
+              'Signale le lien comme indisponible via aria-disabled, le retire de l’ordre de tabulation et bloque la navigation.',
+            fullWidth: 'Étire le lien pour remplir la largeur de son conteneur.',
+            align:
+              'Aligne le contenu d’un lien plus large que lui, comme un lien pleine largeur. Le début et la fin suivent le sens du texte.',
+            uppercase: 'Affiche le libellé entièrement en majuscules.',
+            icon: 'Composant d’icône optionnel rendu avant le libellé.',
           },
           card: {
             variant: 'Style visuel de la surface de la carte.',
@@ -1913,12 +1941,19 @@ export const frFR: WebMessages = {
             label: 'Libellé textuel rendu à côté de l’interrupteur.',
             required: 'Marque l’interrupteur comme requis.',
             size: 'Taille visuelle de l’interrupteur.',
+            variant:
+              'Tonalité de statut de la piste, teintée à l’arrêt et pleine en marche.',
+            onIcon:
+              'Composant d’icône optionnel dessiné dans le curseur lorsque l’interrupteur est en marche.',
+            offIcon:
+              'Composant d’icône optionnel dessiné dans le curseur lorsque l’interrupteur est à l’arrêt.',
             changed:
               'Émis avec le nouvel état coché chaque fois que l’utilisateur bascule l’interrupteur.',
           },
           tag: {
             color:
-              'Couleur de remplissage en hexadécimal, qui peint la puce et choisit l’encre la plus lisible.',
+              'Couleur de remplissage, qui peint la puce à la place de sa variante. Seule, elle doit être une valeur hexadécimale, d’après laquelle l’étiquette choisit l’encre la plus lisible ; avec ink, elle accepte toute couleur CSS, comme un var(--my-token) qui suit le thème.',
+            ink: 'Couleur du texte, toute couleur CSS, qui remplace l’encre que l’étiquette choisirait pour color. La fournir permet à color d’être une valeur que l’étiquette ne peut pas mesurer, le contraste entre les deux revenant alors à l’appelant.',
             variant: 'Schéma de couleurs sémantique de l’étiquette.',
             size: 'Taille visuelle de l’étiquette.',
             maxWidth:
@@ -1958,6 +1993,10 @@ export const frFR: WebMessages = {
             blurred: 'Émis lorsque le champ perd le focus.',
             focused: 'Émis lorsque le champ reçoit le focus.',
             focus: 'Place le focus clavier sur le textarea natif sous-jacent.',
+            getSelection:
+              'Renvoie la plage sélectionnée sous forme de positions de caractère de début et de fin, conservée après la perte du focus.',
+            insertText:
+              'Remplace la sélection par le texte donné, place le curseur après celui-ci et notifie le formulaire comme lors d’une saisie.',
           },
           'avatar-editor': {
             accept:
@@ -2085,6 +2124,7 @@ export const frFR: WebMessages = {
               'Nombre maximum d’options affichées à la fois dans la liste de suggestions.',
             minLength:
               'Nombre minimal de caractères requis avant l’affichage de la liste de suggestions.',
+            maxLength: 'Nombre maximal de caractères acceptés par le champ.',
             options:
               'Liste complète des options disponibles pour le filtrage et la sélection, plate ou répartie en groupes.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
@@ -2279,6 +2319,12 @@ export const frFR: WebMessages = {
           'file-uploader': {
             accept:
               'Types MIME et extensions de fichier acceptés par la zone de dépôt, séparés par des virgules, ex. ’image/*,.pdf’.',
+            ariaLabel:
+              'Nom accessible lorsque rien de visible ne nomme le contrôle, pour la zone de dépôt ou un bouton à icône seule.',
+            buttonIcon:
+              'Composant d’icône optionnel rendu avant le texte de la variante bouton.',
+            buttonLabel:
+              'Texte de la variante bouton, par défaut "Parcourir les fichiers" localisé ; une chaîne vide avec une icône donne un bouton à icône seule.',
             disabled: 'Désactive le téléverseur.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2294,9 +2340,13 @@ export const frFR: WebMessages = {
             progress:
               'Carte de progression du téléversement par fichier (0-100) indexée par identité de File ; omettez-la pour masquer les barres de progression.',
             required: 'Marque le champ comme requis.',
+            showConstraints:
+              'Affiche les types de fichiers acceptés et les limites de taille et de nombre sous le contrôle ; désactivez-le là où ils encombreraient un emplacement compact.',
             showFileList:
               'Affiche la liste des fichiers sélectionnés sous la zone de dépôt.',
             size: 'Taille visuelle du téléverseur.',
+            variant:
+              'Présentation du téléverseur : une zone de glisser-déposer, ou un bouton compact qui ouvre le sélecteur de fichiers.',
             value: 'Liste de fichiers actuelle, liable en deux sens via [(value)].',
             fileRemoved:
               'Émis lorsqu’un fichier est supprimé via le bouton de suppression de sa ligne.',
@@ -2351,7 +2401,8 @@ export const frFR: WebMessages = {
             icon: 'Composant d’icône affiché avant le libellé dans le bouton d’en-tête de l’élément, dimensionné avec l’élément et masqué aux technologies d’assistance.',
             disabled: 'Désactive cet élément et empêche son ouverture/fermeture.',
             id: 'id appliqué au bouton d’en-tête et au panneau de l’élément, généré automatiquement si omis.',
-            label: 'Texte affiché dans le bouton d’en-tête de l’élément.',
+            label:
+              'Texte brut affiché dans le bouton d’en-tête. Pour un contenu plus riche, un élément projeté avec slot="label" prend sa place, et son texte nomme alors le bouton.',
             value: 'Clé unique qui identifie cet élément dans son accordéon parent.',
           },
           breadcrumbs: {
