@@ -12,7 +12,9 @@ import { TagComponent, type TagSize, type TagVariant } from './tag.component';
       [variant]="variant"
       [size]="size"
       [removable]="removable"
-      [disabled]="disabled">
+      [disabled]="disabled"
+      [color]="color"
+      [ink]="ink">
       {{ text }}
     </ea-tag>
   `,
@@ -23,6 +25,8 @@ class HostComponent {
   size: TagSize = 'md';
   removable = false;
   disabled = false;
+  color: string | undefined = undefined;
+  ink: string | undefined = undefined;
 }
 
 describe('TagComponent a11y', () => {
@@ -49,6 +53,18 @@ describe('TagComponent a11y', () => {
 
   it('has no detectable violations when removable', async () => {
     const el = await render(host => (host.removable = true));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a theme colour and its ink', async () => {
+    const el = await render(host => {
+      host.color = 'var(--color-brand-default)';
+      host.ink = 'var(--color-neutral-0)';
+      host.removable = true;
+    });
 
     const results = await axe(el);
 

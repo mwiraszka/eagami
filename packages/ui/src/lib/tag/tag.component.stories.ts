@@ -19,3 +19,11 @@ export default meta;
 type Story = StoryObj<TagComponent>;
 
 export const Playground: Story = {};
+
+export const ThemeColor: Story = {
+  render: () => ({
+    template: `
+      <ea-tag color="var(--color-brand-default)" ink="var(--color-neutral-0)">Brand</ea-tag>
+    `,
+  }),
+};
