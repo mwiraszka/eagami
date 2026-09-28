@@ -16,11 +16,13 @@ export const ALERT_KNOBS: ComponentKnobs = {
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     dismissible: { control: 'boolean' },
+    live: { control: 'select', options: ['auto', 'assertive', 'polite', 'off'] },
     dismissed: { action: 'dismissed' },
   },
   args: {
     variant: 'default',
     size: 'md',
     dismissible: false,
+    live: 'auto',
   },
 };

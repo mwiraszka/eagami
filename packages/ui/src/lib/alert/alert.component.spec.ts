@@ -108,6 +108,38 @@ describe('AlertComponent', () => {
     });
   });
 
+  describe('Live', () => {
+    it('announces an error politely when live is polite', () => {
+      fixture.componentRef.setInput('variant', 'error');
+      fixture.componentRef.setInput('live', 'polite');
+
+      fixture.detectChanges();
+
+      expect(getContainer().getAttribute('role')).toBe('status');
+    });
+
+    it('announces a default alert assertively when live is assertive', () => {
+      fixture.componentRef.setInput('live', 'assertive');
+
+      fixture.detectChanges();
+
+      expect(getContainer().getAttribute('role')).toBe('alert');
+    });
+
+    it.each(['default', 'success', 'warning', 'error', 'info'] as const)(
+      'drops the live-region role for the %s variant when live is off',
+      variant => {
+        fixture.componentRef.setInput('variant', variant);
+        fixture.componentRef.setInput('live', 'off');
+
+        fixture.detectChanges();
+
+        expect(getContainer().hasAttribute('role')).toBe(false);
+        expect(getAlert()).toBeTruthy();
+      },
+    );
+  });
+
   describe('Visibility', () => {
     it('is visible by default', () => {
       expect(getAlert()).toBeTruthy();
