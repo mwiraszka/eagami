@@ -5,6 +5,18 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.26.0] - 2026-09-28
+
+### Added
+
+- Add controls for the new button, switch, tag, alert, autocomplete, file uploader and accordion inputs to their demos, with every new input described in the API reference in every locale.
+- Add a help knob to the input demo and describe the shared `labelHelp` input across every field's API reference.
+- Add header, body and footer text controls to the card demo, and show that content in its code snippet.
+
+### Changed
+
+- Pick up @eagami/ui v5.54.0.
+
 ## [3.25.0] - 2026-09-27
 
 ### Added
@@ -1475,6 +1487,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.26.0]: https://github.com/mwiraszka/eagami/compare/website-v3.25.0...website-v3.26.0
 [3.25.0]: https://github.com/mwiraszka/eagami/compare/website-v3.24.1...website-v3.25.0
 [3.24.1]: https://github.com/mwiraszka/eagami/compare/website-v3.24.0...website-v3.24.1
 [3.24.0]: https://github.com/mwiraszka/eagami/compare/website-v3.23.0...website-v3.24.0
