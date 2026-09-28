@@ -31,9 +31,16 @@ export type TextareaSize = EaSize;
 /** Axis along which the user is allowed to resize the textarea. */
 export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
 
+/** Selected character range in the textarea; `start` equals `end` for a bare caret. */
+export interface TextareaSelection {
+  readonly start: number;
+  readonly end: number;
+}
+
 /**
  * Multiline text field that mirrors the `ea-input` API. Supports configurable
- * `resize` direction and `maxlength`, and integrates with Angular
+ * `resize` direction and `maxlength`, exposes the caret through
+ * `getSelection()` and `insertText()`, and integrates with Angular
  * forms via `ControlValueAccessor`.
  */
 @Component({
@@ -155,5 +162,31 @@ export class TextareaComponent implements ControlValueAccessor {
   /** Moves keyboard focus to the underlying native textarea element. */
   focus(): void {
     this.textareaEl()?.nativeElement.focus();
+  }
+
+  /**
+   * Returns the selected range as character offsets into the value. The browser
+   * keeps it after the field loses focus, so it still reflects where the caret
+   * was left once the user has moved on to a button or a dialog.
+   */
+  getSelection(): TextareaSelection {
+    const el = this.textareaEl()?.nativeElement;
+    const end = this.value().length;
+    return { start: el?.selectionStart ?? end, end: el?.selectionEnd ?? end };
+  }
+
+  /**
+   * Replaces the current selection with `text` and places the caret after it,
+   * notifying the value model, a bound form control and native `input`
+   * listeners exactly as typing does. Does nothing while disabled or read-only,
+   * and leaves focus where it is.
+   */
+  insertText(text: string): void {
+    const el = this.textareaEl()?.nativeElement;
+    if (!el || this.isDisabled() || this.readonly()) {
+      return;
+    }
+    el.setRangeText(text, el.selectionStart, el.selectionEnd, 'end');
+    el.dispatchEvent(new Event('input', { bubbles: true }));
   }
 }

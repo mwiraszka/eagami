@@ -1,6 +1,23 @@
+import { Component, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { TextareaComponent } from './textarea.component';
+
+@Component({
+  imports: [ReactiveFormsModule, TextareaComponent],
+  template: `
+    <ea-textarea
+      aria-label="Body"
+      [formControl]="control"
+      (input)="nativeInputs = nativeInputs + 1" />
+  `,
+})
+class FormHostComponent {
+  readonly control = new FormControl('Hello world', { nonNullable: true });
+  readonly textarea = viewChild.required(TextareaComponent);
+  nativeInputs = 0;
+}
 
 describe('TextareaComponent', () => {
   let fixture: ComponentFixture<TextareaComponent>;
@@ -233,6 +250,138 @@ describe('TextareaComponent', () => {
       fixture.detectChanges();
 
       expect(getTextarea().disabled).toBe(true);
+    });
+  });
+
+  describe('Caret API', () => {
+    function withValue(value: string, start: number, end: number): HTMLTextAreaElement {
+      component.value.set(value);
+      fixture.detectChanges();
+      const textarea = getTextarea();
+      textarea.setSelectionRange(start, end);
+      return textarea;
+    }
+
+    it('reports the selected range', () => {
+      withValue('Hello world', 6, 11);
+
+      const selection = component.getSelection();
+
+      expect(selection).toEqual({ start: 6, end: 11 });
+    });
+
+    it('reports a bare caret as an empty range', () => {
+      withValue('Hello world', 5, 5);
+
+      const selection = component.getSelection();
+
+      expect(selection).toEqual({ start: 5, end: 5 });
+    });
+
+    it('still reports the range after the field loses focus', () => {
+      const textarea = withValue('Hello world', 2, 4);
+      textarea.dispatchEvent(new FocusEvent('blur'));
+      fixture.detectChanges();
+
+      const selection = component.getSelection();
+
+      expect(selection).toEqual({ start: 2, end: 4 });
+    });
+
+    it('replaces the selection and moves the caret after the inserted text', () => {
+      const textarea = withValue('Hello world', 6, 11);
+
+      component.insertText('there');
+      fixture.detectChanges();
+
+      expect(textarea.value).toBe('Hello there');
+      expect(component.getSelection()).toEqual({ start: 11, end: 11 });
+    });
+
+    it('inserts at a bare caret without removing anything', () => {
+      withValue('Hello world', 5, 5);
+
+      component.insertText(',');
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('Hello, world');
+      expect(component.getSelection()).toEqual({ start: 6, end: 6 });
+    });
+
+    it('updates the value model and notifies the form like typing', () => {
+      const onChange = vi.fn<(value: string) => void>();
+      component.registerOnChange(onChange);
+      const valueChange = vi.fn<(value: string) => void>();
+      component.value.subscribe(valueChange);
+      withValue('ab', 1, 1);
+
+      component.insertText('X');
+
+      expect(component.value()).toBe('aXb');
+      expect(onChange).toHaveBeenCalledWith('aXb');
+      expect(valueChange).toHaveBeenCalledWith('aXb');
+    });
+
+    it('leaves focus where it is', () => {
+      withValue('ab', 1, 1);
+
+      component.insertText('X');
+
+      expect(document.activeElement).not.toBe(getTextarea());
+    });
+
+    it('does nothing while disabled', () => {
+      withValue('ab', 1, 1);
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      component.insertText('X');
+
+      expect(component.value()).toBe('ab');
+      expect(getTextarea().value).toBe('ab');
+    });
+
+    it('does nothing while read-only', () => {
+      withValue('ab', 1, 1);
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      component.insertText('X');
+
+      expect(component.value()).toBe('ab');
+      expect(getTextarea().value).toBe('ab');
+    });
+  });
+
+  describe('Caret API with a reactive form', () => {
+    let hostFixture: ComponentFixture<FormHostComponent>;
+    let host: FormHostComponent;
+
+    beforeEach(() => {
+      hostFixture = TestBed.createComponent(FormHostComponent);
+      host = hostFixture.componentInstance;
+      hostFixture.detectChanges();
+    });
+
+    it('writes the inserted text through to the bound form control', () => {
+      const textarea: HTMLTextAreaElement =
+        hostFixture.nativeElement.querySelector('textarea');
+      textarea.setSelectionRange(5, 5);
+      const emitted: string[] = [];
+      host.control.valueChanges.subscribe(value => emitted.push(value));
+
+      host.textarea().insertText(' there');
+      hostFixture.detectChanges();
+
+      expect(host.control.value).toBe('Hello there world');
+      expect(emitted).toEqual(['Hello there world']);
+      expect(host.control.dirty).toBe(true);
+    });
+
+    it('fires a native input event that bubbles to the host', () => {
+      host.textarea().insertText('!');
+
+      expect(host.nativeInputs).toBe(1);
     });
   });
 
