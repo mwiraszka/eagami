@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj, moduleMetadata } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 
+import { BadgeComponent } from '../badge/badge.component';
 import { InfoIconComponent } from '../icons/info.component';
 import { SettingsIconComponent } from '../icons/settings.component';
 import { StarIconComponent } from '../icons/star.component';
@@ -74,6 +75,47 @@ export const WithIcons: Story = {
           Run npm install @eagami/ui or pnpm add @eagami/ui, then add the global stylesheet.
         </ea-accordion-item>
         <ea-accordion-item value="theme" label="Can I customize the theme?" [icon]="starIcon">
+          Yes: override any CSS custom property on :root or scope overrides to individual components.
+        </ea-accordion-item>
+      </ea-accordion>
+    `,
+  }),
+};
+
+export const RichLabels: Story = {
+  decorators: [moduleMetadata({ imports: [BadgeComponent] })],
+  render: args => ({
+    props: args,
+    template: `
+      <ea-accordion [multi]="multi" [size]="size" [highlightExpanded]="highlightExpanded" class="story-medium">
+        <ea-accordion-item value="inbox">
+          <span slot="label">
+            Inbox
+            <ea-badge variant="info" size="sm">3 new</ea-badge>
+          </span>
+          Three unread messages are waiting.
+        </ea-accordion-item>
+        <ea-accordion-item value="archive" label="Archive">
+          Older messages live here.
+        </ea-accordion-item>
+      </ea-accordion>
+    `,
+  }),
+};
+
+export const InitiallyExpanded: Story = {
+  args: { multi: true },
+  render: args => ({
+    props: { ...args, expanded: ['install', 'theme'] },
+    template: `
+      <ea-accordion [multi]="multi" [size]="size" [highlightExpanded]="highlightExpanded" [(expandedValues)]="expanded" class="story-medium">
+        <ea-accordion-item value="what" label="What is @eagami/ui?">
+          A lightweight, accessible Angular component library built on CSS custom properties.
+        </ea-accordion-item>
+        <ea-accordion-item value="install" label="How do I install it?">
+          Run npm install @eagami/ui or pnpm add @eagami/ui, then add the global stylesheet.
+        </ea-accordion-item>
+        <ea-accordion-item value="theme" label="Can I customize the theme?">
           Yes: override any CSS custom property on :root or scope overrides to individual components.
         </ea-accordion-item>
       </ea-accordion>

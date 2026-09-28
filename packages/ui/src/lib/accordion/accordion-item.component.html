@@ -22,7 +22,9 @@
           <ng-container *ngComponentOutlet="leadingIcon" />
         </span>
       }
-      <span class="ea-accordion-item__label">{{ label() }}</span>
+      <span class="ea-accordion-item__label">
+        <ng-content select="[slot=label]">{{ label() }}</ng-content>
+      </span>
       <ea-icon-chevron-down
         class="ea-accordion-item__chevron"
         aria-hidden="true" />
