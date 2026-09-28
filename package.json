@@ -101,6 +101,9 @@
         "GHSA-w3rx-r6r6-pgpr",
         "GHSA-5p2g-fcmc-qvqq"
       ]
+    },
+    "patchedDependencies": {
+      "happy-dom@20.10.6": "patches/happy-dom@20.10.6.patch"
     }
   }
 }
