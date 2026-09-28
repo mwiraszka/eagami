@@ -47,6 +47,30 @@ describe('ButtonComponent', () => {
       expect(getButton().classList).toContain('ea-button--lg');
     });
 
+    it('applies the link variant class when set', () => {
+      fixture.componentRef.setInput('variant', 'link');
+
+      fixture.detectChanges();
+
+      expect(getButton().classList).toContain('ea-button--link');
+    });
+
+    it('adds no alignment class while the content is centred', () => {
+      const alignmentClasses = Array.from(getButton().classList).filter(name =>
+        name.startsWith('ea-button--align-'),
+      );
+
+      expect(alignmentClasses).toEqual([]);
+    });
+
+    it.each(['start', 'end'] as const)('applies the %s alignment class', align => {
+      fixture.componentRef.setInput('align', align);
+
+      fixture.detectChanges();
+
+      expect(getButton().classList).toContain(`ea-button--align-${align}`);
+    });
+
     it('sets the native button type attribute', () => {
       fixture.componentRef.setInput('type', 'submit');
       fixture.detectChanges();
@@ -57,6 +81,26 @@ describe('ButtonComponent', () => {
       fixture.componentRef.setInput('aria-label', 'Close dialog');
       fixture.detectChanges();
       expect(getButton().getAttribute('aria-label')).toBe('Close dialog');
+    });
+
+    it('sets no aria-labelledby or aria-describedby by default', () => {
+      expect(getButton().hasAttribute('aria-labelledby')).toBe(false);
+      expect(getButton().hasAttribute('aria-describedby')).toBe(false);
+    });
+
+    it('forwards aria-labelledby and aria-describedby to the native button', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'field-label button-text');
+      fixture.componentRef.setInput('aria-describedby', 'field-hint');
+      fixture.detectChanges();
+
+      expect(getButton().getAttribute('aria-labelledby')).toBe('field-label button-text');
+      expect(getButton().getAttribute('aria-describedby')).toBe('field-hint');
+    });
+
+    it('focus() moves focus to the native button', () => {
+      component.focus();
+
+      expect(document.activeElement).toBe(getButton());
     });
 
     it('does not render a leading icon by default', () => {

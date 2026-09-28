@@ -40,7 +40,7 @@ describe('ButtonComponent a11y', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  it.each(['primary', 'secondary', 'ghost', 'danger'] as const)(
+  it.each(['primary', 'secondary', 'ghost', 'danger', 'link'] as const)(
     'has no detectable violations for the %s variant',
     async variant => {
       const el = await render(host => (host.variant = variant));
