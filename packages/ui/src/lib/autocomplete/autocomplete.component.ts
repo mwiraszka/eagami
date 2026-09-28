@@ -83,6 +83,8 @@ export class AutocompleteComponent implements ControlValueAccessor {
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly minLength = input<number>(0);
+  /** Maximum number of characters the input accepts (native `maxlength`). */
+  readonly maxLength = input<number | undefined>(undefined);
   readonly maxResults = input<number>(10);
   readonly emptyMessage = input<string | undefined>(undefined);
   readonly id = input<string>(uniqueId('ea-autocomplete'));
