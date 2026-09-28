@@ -35,6 +35,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-accordion',
     inputs: [
       {
+        name: 'expandedValues',
+        type: 'readonly string[]',
+        default: '[]',
+        required: false,
+        twoWay: true,
+      },
+      {
         name: 'headingLevel',
         type: 'AccordionHeadingLevel',
         default: '3',
@@ -93,8 +100,8 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string',
-        default: '',
-        required: true,
+        default: "''",
+        required: false,
         twoWay: false,
       },
       {
@@ -122,6 +129,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'icon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'live',
+        type: 'AlertLive',
+        default: "'auto'",
         required: false,
         twoWay: false,
       },
@@ -223,8 +237,22 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'maxLength',
+        type: 'number | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -732,6 +760,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-button',
     inputs: [
       {
+        name: 'align',
+        type: 'ButtonAlign',
+        default: "'center'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaCurrent',
         type: 'string | undefined',
         default: 'undefined',
@@ -739,7 +774,21 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaDescribedby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -811,6 +860,67 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
+    methods: [
+      {
+        name: 'focus',
+        signature: 'focus(): void',
+      },
+    ],
+  },
+  'button-link': {
+    selector: 'a[eaButtonLink]',
+    inputs: [
+      {
+        name: 'align',
+        type: 'ButtonAlign',
+        default: "'center'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'fullWidth',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'icon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'size',
+        type: 'ButtonSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'uppercase',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'variant',
+        type: 'ButtonVariant',
+        default: "'primary'",
+        required: false,
+        twoWay: false,
+      },
+    ],
+    outputs: [],
     methods: [],
   },
   card: {
@@ -1014,6 +1124,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -1141,6 +1258,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -1493,6 +1617,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -1885,6 +2016,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -2065,6 +2203,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'help',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'icon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -2094,7 +2239,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
     outputs: [],
-    methods: [],
+    methods: [
+      {
+        name: 'attachHelpBubble',
+        signature:
+          'attachHelpBubble(help: HTMLElement, trigger: HTMLElement, bubble: HTMLElement): void',
+      },
+    ],
   },
   'field-messages': {
     selector: 'ea-field-messages',
@@ -2129,6 +2280,27 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'accept',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'buttonIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'buttonLabel',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -2177,6 +2349,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -2219,6 +2398,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'showConstraints',
+        type: 'boolean',
+        default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'showFileList',
         type: 'boolean',
         default: 'true',
@@ -2238,6 +2424,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         default: '[]',
         required: false,
         twoWay: true,
+      },
+      {
+        name: 'variant',
+        type: 'FileUploaderVariant',
+        default: "'dropzone'",
+        required: false,
+        twoWay: false,
       },
     ],
     outputs: [
@@ -2304,6 +2497,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -2444,6 +2644,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -2960,6 +3167,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -3176,6 +3390,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -3767,6 +3988,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -3894,6 +4122,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -4056,6 +4291,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -4180,6 +4422,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -4340,6 +4589,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
@@ -4629,6 +4885,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'offIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'onIcon',
+        type: 'Type<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'required',
         type: 'boolean',
         default: 'false',
@@ -4639,6 +4909,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'size',
         type: 'SwitchSize',
         default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'variant',
+        type: 'SwitchVariant',
+        default: "'default'",
         required: false,
         twoWay: false,
       },
@@ -4759,6 +5036,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ink',
+        type: 'string | undefined',
+        default: 'undefined',
         required: false,
         twoWay: false,
       },
@@ -4888,6 +5172,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'labelIcon',
         type: 'Type<unknown> | undefined',
         default: 'undefined',
@@ -4979,6 +5270,14 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'focus',
         signature: 'focus(): void',
       },
+      {
+        name: 'getSelection',
+        signature: 'getSelection(): TextareaSelection',
+      },
+      {
+        name: 'insertText',
+        signature: 'insertText(text: string): void',
+      },
     ],
   },
   'time-picker': {
@@ -5036,6 +5335,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'label',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'labelHelp',
+        type: 'string | TemplateRef<unknown> | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,
