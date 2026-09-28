@@ -35,6 +35,7 @@ interface InputKnobState {
   // KnobState input; the explicit fields below still drive checked bindings.
   [key: string]: KnobValue;
   label: string;
+  labelHelp: string;
   labelIcon: string;
   placeholder: string;
   size: InputSize;

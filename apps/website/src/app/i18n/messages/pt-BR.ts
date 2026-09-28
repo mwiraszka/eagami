@@ -1117,6 +1117,8 @@ export const ptBR: WebMessages = {
           'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
         ariaLabelDescription:
           'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
+        labelHelpDescription:
+          'Ajuda exibida por um botão de informação ao lado do rótulo, como texto simples ou template.',
         triggerErrorLabel: 'Provocar erro',
         requiredBadge: 'obrigatório',
         twoWayBadge: 'bidirecional',
@@ -1165,6 +1167,7 @@ export const ptBR: WebMessages = {
           },
           input: {
             label: 'Rótulo',
+            labelHelp: 'Ajuda do rótulo',
             labelIcon: 'Ícone do rótulo',
             icon: 'Ícone',
             placeholder: 'Espaço reservado',
@@ -2556,6 +2559,7 @@ export const ptBR: WebMessages = {
           'field-label': {
             forId:
               'id do controle associado; renderiza um <label for> quando definido, caso contrário um <span>.',
+            help: 'Ajuda exibida por um botão de informação ao lado do rótulo e anunciada ao ser exibida, como texto simples ou template.',
             icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             labelId:
               'id aplicado ao elemento de rótulo renderizado para que os controles possam referenciá-lo via aria-labelledby.',

@@ -1102,6 +1102,8 @@ export const en: WebMessages = {
           'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
         ariaLabelDescription:
           'Accessible name announced by assistive technology when the component renders no visible label.',
+        labelHelpDescription:
+          'Help revealed by an info button beside the label, as plain text or a template.',
         triggerErrorLabel: 'Trigger error',
         requiredBadge: 'required',
         twoWayBadge: 'two-way',
@@ -1150,6 +1152,7 @@ export const en: WebMessages = {
           },
           input: {
             label: 'Label',
+            labelHelp: 'Label help',
             labelIcon: 'Label icon',
             icon: 'Icon',
             placeholder: 'Placeholder',
@@ -2468,6 +2471,7 @@ export const en: WebMessages = {
           'field-label': {
             forId:
               'id of the associated control; renders a <label for> when set, otherwise a <span>.',
+            help: 'Help revealed by an info button beside the label, as plain text or a template, and announced when shown.',
             icon: 'Optional icon component rendered before the label text.',
             labelId:
               'id applied to the rendered label element so controls can reference it via aria-labelledby.',

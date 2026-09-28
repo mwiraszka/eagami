@@ -912,6 +912,7 @@ export interface WebMessages {
         colDescription: string;
         errorMessagesDescription: string;
         ariaLabelDescription: string;
+        labelHelpDescription: string;
         triggerErrorLabel: string;
         requiredBadge: string;
         twoWayBadge: string;

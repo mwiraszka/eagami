@@ -1118,6 +1118,8 @@ export const is: WebMessages = {
           'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð.',
         ariaLabelDescription:
           'Aðgengilegt nafn tilkynnt hjálpartækni þegar einingin birtir engan sýnilegan merkimiða.',
+        labelHelpDescription:
+          'Hjálp sem birtist með upplýsingahnappi við hlið merkimiðans, sem hreinn texti eða sniðmát.',
         triggerErrorLabel: 'Sýna villu',
         requiredBadge: 'krafist',
         twoWayBadge: 'tvíátta',
@@ -1166,6 +1168,7 @@ export const is: WebMessages = {
           },
           input: {
             label: 'Merkimiði',
+            labelHelp: 'Hjálp merkimiða',
             labelIcon: 'Táknmynd merkimiða',
             icon: 'Táknmynd',
             placeholder: 'Staðgengill',
@@ -2519,6 +2522,7 @@ export const is: WebMessages = {
           'field-label': {
             forId:
               'id tengdu stýringarinnar; birtir <label for> þegar sett, annars <span>.',
+            help: 'Hjálp sem birtist með upplýsingahnappi við hlið merkimiðans og er tilkynnt þegar hún birtist, sem hreinn texti eða sniðmát.',
             icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             labelId:
               'id sett á birta merkimiðastakið svo stýringar geti vísað í það með aria-labelledby.',

@@ -1117,6 +1117,8 @@ export const nl: WebMessages = {
           'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard.',
         ariaLabelDescription:
           'Toegankelijke naam aangekondigd door hulptechnologie wanneer de component geen zichtbaar label rendert.',
+        labelHelpDescription:
+          'Hulp die via een infoknop naast het label wordt getoond, als platte tekst of als template.',
         triggerErrorLabel: 'Fout activeren',
         requiredBadge: 'verplicht',
         twoWayBadge: 'tweerichtings',
@@ -1165,6 +1167,7 @@ export const nl: WebMessages = {
           },
           input: {
             label: 'Label',
+            labelHelp: 'Labelhulp',
             labelIcon: 'Labelicoon',
             icon: 'Icoon',
             placeholder: 'Plaatsaanduiding',
@@ -2582,6 +2585,7 @@ export const nl: WebMessages = {
           'field-label': {
             forId:
               'id van de bijbehorende bediening; geeft een <label for> weer indien ingesteld, anders een <span>.',
+            help: 'Hulp die via een infoknop naast het label wordt getoond en bij het tonen wordt aangekondigd, als platte tekst of als template.',
             icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             labelId:
               'id toegepast op het weergegeven labelelement zodat bedieningen ernaar kunnen verwijzen via aria-labelledby.',

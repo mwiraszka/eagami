@@ -1121,6 +1121,8 @@ export const pl: WebMessages = {
           'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
         ariaLabelDescription:
           'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
+        labelHelpDescription:
+          'Pomoc wyświetlana przez przycisk informacji obok etykiety, jako zwykły tekst lub szablon.',
         triggerErrorLabel: 'Wywołaj błąd',
         requiredBadge: 'wymagane',
         twoWayBadge: 'dwukierunkowe',
@@ -1169,6 +1171,7 @@ export const pl: WebMessages = {
           },
           input: {
             label: 'Etykieta',
+            labelHelp: 'Pomoc etykiety',
             labelIcon: 'Ikona etykiety',
             icon: 'Ikona',
             placeholder: 'Tekst zastępczy',
@@ -2534,6 +2537,7 @@ export const pl: WebMessages = {
           'field-label': {
             forId:
               'id powiązanego elementu sterującego; renderuje <label for> gdy ustawione, w przeciwnym razie <span>.',
+            help: 'Pomoc wyświetlana przez przycisk informacji obok etykiety i ogłaszana po wyświetleniu, jako zwykły tekst lub szablon.',
             icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             labelId:
               'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',

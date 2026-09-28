@@ -1131,6 +1131,8 @@ export const frFR: WebMessages = {
           'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.',
         ariaLabelDescription:
           'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
+        labelHelpDescription:
+          'Aide affichée par un bouton d’information à côté du libellé, sous forme de texte brut ou de modèle.',
         triggerErrorLabel: 'Déclencher l’erreur',
         requiredBadge: 'requis',
         twoWayBadge: 'bidirectionnel',
@@ -1179,6 +1181,7 @@ export const frFR: WebMessages = {
           },
           input: {
             label: 'Libellé',
+            labelHelp: 'Aide du libellé',
             labelIcon: 'Icône du libellé',
             icon: 'Icône',
             placeholder: 'Texte indicatif',
@@ -2581,6 +2584,7 @@ export const frFR: WebMessages = {
           'field-label': {
             forId:
               'id du contrôle associé ; rend un <label for> si défini, sinon un <span>.',
+            help: 'Aide affichée par un bouton d’information à côté du libellé et annoncée à l’affichage, sous forme de texte brut ou de modèle.',
             icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             labelId:
               'id appliqué à l’élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.',

@@ -1122,6 +1122,8 @@ export const esES: WebMessages = {
           'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado.',
         ariaLabelDescription:
           'Nombre accesible anunciado por las tecnologías de asistencia cuando el componente no muestra ninguna etiqueta visible.',
+        labelHelpDescription:
+          'Ayuda que se muestra con un botón de información junto a la etiqueta, como texto sin formato o como plantilla.',
         triggerErrorLabel: 'Provocar error',
         requiredBadge: 'obligatorio',
         twoWayBadge: 'bidireccional',
@@ -1170,6 +1172,7 @@ export const esES: WebMessages = {
           },
           input: {
             label: 'Etiqueta',
+            labelHelp: 'Ayuda de la etiqueta',
             labelIcon: 'Icono de la etiqueta',
             icon: 'Icono',
             placeholder: 'Marcador de posición',
@@ -2600,6 +2603,7 @@ export const esES: WebMessages = {
           'field-label': {
             forId:
               'id del control asociado; renderiza un <label for> cuando está definido, de lo contrario un <span>.',
+            help: 'Ayuda que se muestra con un botón de información junto a la etiqueta y se anuncia al mostrarse, como texto sin formato o como plantilla.',
             icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             labelId:
               'id aplicado al elemento de etiqueta renderizado para que los controles puedan referenciarlo mediante aria-labelledby.',

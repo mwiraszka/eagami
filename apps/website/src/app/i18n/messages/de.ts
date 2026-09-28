@@ -1125,6 +1125,8 @@ export const de: WebMessages = {
           'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung.',
         ariaLabelDescription:
           'Barrierefreier Name, der von assistiver Technologie angesagt wird, wenn die Komponente kein sichtbares Label rendert.',
+        labelHelpDescription:
+          'Hilfe, die über eine Info-Schaltfläche neben dem Label eingeblendet wird, als reiner Text oder als Template.',
         triggerErrorLabel: 'Fehler auslösen',
         requiredBadge: 'erforderlich',
         twoWayBadge: 'bidirektional',
@@ -1173,6 +1175,7 @@ export const de: WebMessages = {
           },
           input: {
             label: 'Beschriftung',
+            labelHelp: 'Beschriftungshilfe',
             labelIcon: 'Beschriftungssymbol',
             icon: 'Symbol',
             placeholder: 'Platzhalter',
@@ -2604,6 +2607,7 @@ export const de: WebMessages = {
           'field-label': {
             forId:
               'id der zugehörigen Steuerung; rendert ein <label for>, wenn gesetzt, andernfalls ein <span>.',
+            help: 'Hilfe, die über eine Info-Schaltfläche neben dem Label eingeblendet und beim Einblenden angesagt wird, als reiner Text oder als Template.',
             icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             labelId:
               'id, die auf das gerenderte Label-Element angewendet wird, sodass Steuerungen es über aria-labelledby referenzieren können.',

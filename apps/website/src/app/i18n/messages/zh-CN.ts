@@ -1081,6 +1081,7 @@ export const zhCN: WebMessages = {
         errorMessagesDescription:
           '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
         ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
+        labelHelpDescription: '通过标签旁的信息按钮显示的帮助内容，可以是纯文本或模板。',
         triggerErrorLabel: '触发错误',
         requiredBadge: '必填',
         twoWayBadge: '双向',
@@ -1129,6 +1130,7 @@ export const zhCN: WebMessages = {
           },
           input: {
             label: '标签',
+            labelHelp: '标签帮助',
             labelIcon: '标签图标',
             icon: '图标',
             placeholder: '占位符',
@@ -2263,6 +2265,7 @@ export const zhCN: WebMessages = {
           },
           'field-label': {
             forId: '关联控件的 id；设置时渲染 <label for>，否则渲染 <span>。',
+            help: '通过标签旁的信息按钮显示的帮助内容，显示时会被播报，可以是纯文本或模板。',
             icon: '可选的图标组件，显示在标签文本之前。',
             labelId: '应用于已渲染标签元素的 id，使控件可通过 aria-labelledby 引用它。',
             required: '在标签上显示必填指示器。',
