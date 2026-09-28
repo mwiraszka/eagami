@@ -738,12 +738,8 @@ export const nl: WebMessages = {
           outlinedBody: 'Kaart met randomlijning.',
           filledHeader: 'Gevuld',
           filledBody: 'Kaart met subtiele achtergrond.',
-          cardTitleHeader: 'Kaarttitel',
           cardWithFooterBody:
             'Deze kaart heeft een koptekst, body en voettekst met acties.',
-          bodyText:
-            'Dit is de inhoud van de kaart. Deze kan elke tekst of elementen bevatten.',
-          footer: 'Voettekst',
         },
         checkbox: {
           acceptTermsAndConditions: 'Algemene voorwaarden accepteren',
@@ -1245,6 +1241,9 @@ export const nl: WebMessages = {
             headerAlign: 'Uitlijning koptekst',
             fullWidth: 'Volledige breedte',
             headerDivider: 'Koptekstscheiding',
+            headerText: 'Koptekst',
+            bodyText: 'Inhoud',
+            footerText: 'Voettekst',
           },
           checkbox: {
             label: 'Label',
@@ -2636,6 +2635,12 @@ export const nl: WebMessages = {
           },
           button: {
             label: 'Druk op mij',
+          },
+          card: {
+            headerText: 'Kaarttitel',
+            bodyText:
+              'Dit is de inhoud van de kaart. Deze kan elke tekst of elementen bevatten.',
+            footerText: 'Voettekst',
           },
           checkbox: {
             label: 'Algemene voorwaarden accepteren',

@@ -736,10 +736,7 @@ export const pl: WebMessages = {
           outlinedBody: 'Karta z obramowaniem.',
           filledHeader: 'Wypełniona',
           filledBody: 'Karta z subtelnym tłem.',
-          cardTitleHeader: 'Tytuł karty',
           cardWithFooterBody: 'Ta karta ma nagłówek, treść i stopkę z akcjami.',
-          bodyText: 'To jest treść karty. Może zawierać dowolny tekst lub elementy.',
-          footer: 'Stopka',
         },
         checkbox: {
           acceptTermsAndConditions: 'Zaakceptuj regulamin i warunki',
@@ -1249,6 +1246,9 @@ export const pl: WebMessages = {
             headerAlign: 'Wyrównanie nagłówka',
             fullWidth: 'Pełna szerokość',
             headerDivider: 'Linia oddzielająca nagłówek',
+            headerText: 'Nagłówek',
+            bodyText: 'Treść',
+            footerText: 'Stopka',
           },
           checkbox: {
             label: 'Etykieta',
@@ -2587,6 +2587,11 @@ export const pl: WebMessages = {
           },
           button: {
             label: 'Naciśnij mnie',
+          },
+          card: {
+            headerText: 'Tytuł karty',
+            bodyText: 'To jest treść karty. Może zawierać dowolny tekst lub elementy.',
+            footerText: 'Stopka',
           },
           checkbox: {
             label: 'Zaakceptuj regulamin i warunki',

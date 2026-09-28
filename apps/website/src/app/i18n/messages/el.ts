@@ -739,12 +739,8 @@ export const el: WebMessages = {
           outlinedBody: 'Κάρτα με περίγραμμα.',
           filledHeader: 'Γεμάτη',
           filledBody: 'Κάρτα με διακριτικό φόντο.',
-          cardTitleHeader: 'Τίτλος κάρτας',
           cardWithFooterBody:
             'Αυτή η κάρτα έχει κεφαλίδα, σώμα και υποσέλιδο με ενέργειες.',
-          bodyText:
-            'Αυτό είναι το περιεχόμενο της κάρτας. Μπορεί να περιέχει οποιοδήποτε κείμενο ή στοιχεία.',
-          footer: 'Υποσέλιδο',
         },
         checkbox: {
           acceptTermsAndConditions: 'Αποδοχή όρων και προϋποθέσεων',
@@ -1260,6 +1256,9 @@ export const el: WebMessages = {
             headerAlign: 'Στοίχιση κεφαλίδας',
             fullWidth: 'Πλήρες πλάτος',
             headerDivider: 'Διαχωριστικό κεφαλίδας',
+            headerText: 'Κεφαλίδα',
+            bodyText: 'Σώμα',
+            footerText: 'Υποσέλιδο',
           },
           checkbox: {
             label: 'Ετικέτα',
@@ -2667,6 +2666,12 @@ export const el: WebMessages = {
           },
           button: {
             label: 'Πάτησέ με',
+          },
+          card: {
+            headerText: 'Τίτλος κάρτας',
+            bodyText:
+              'Αυτό είναι το περιεχόμενο της κάρτας. Μπορεί να περιέχει οποιοδήποτε κείμενο ή στοιχεία.',
+            footerText: 'Υποσέλιδο',
           },
           checkbox: {
             label: 'Αποδοχή όρων και προϋποθέσεων',

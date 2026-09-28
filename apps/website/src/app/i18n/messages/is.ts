@@ -730,12 +730,8 @@ export const is: WebMessages = {
           outlinedBody: 'Spjald með rammaútlínu.',
           filledHeader: 'Fyllt',
           filledBody: 'Spjald með fíngerðum bakgrunni.',
-          cardTitleHeader: 'Titill spjalds',
           cardWithFooterBody:
             'Þetta spjald er með haus, meginmál og síðufót með aðgerðum.',
-          bodyText:
-            'Þetta er meginmál kortsins. Það getur innihaldið hvaða texta eða einingar sem er.',
-          footer: 'Fótur',
         },
         checkbox: {
           acceptTermsAndConditions: 'Samþykkja skilmála og skilyrði',
@@ -1246,6 +1242,9 @@ export const is: WebMessages = {
             headerAlign: 'Jöfnun hauss',
             fullWidth: 'Full breidd',
             headerDivider: 'Hausskilrúm',
+            headerText: 'Haus',
+            bodyText: 'Meginmál',
+            footerText: 'Fótur',
           },
           checkbox: {
             label: 'Merkimiði',
@@ -2571,6 +2570,12 @@ export const is: WebMessages = {
           },
           button: {
             label: 'Ýttu á mig',
+          },
+          card: {
+            headerText: 'Titill spjalds',
+            bodyText:
+              'Þetta er meginmál kortsins. Það getur innihaldið hvaða texta eða einingar sem er.',
+            footerText: 'Fótur',
           },
           checkbox: {
             label: 'Samþykkja skilmála og skilyrði',

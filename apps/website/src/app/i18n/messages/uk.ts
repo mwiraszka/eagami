@@ -733,11 +733,8 @@ export const uk: WebMessages = {
           outlinedBody: 'Картка з рамкою.',
           filledHeader: 'Заповнена',
           filledBody: 'Картка з ненав’язливим тлом.',
-          cardTitleHeader: 'Заголовок картки',
           cardWithFooterBody:
             'Ця картка має заголовок, тіло та нижній колонтитул з діями.',
-          bodyText: 'Це вміст картки. Він може містити будь-який текст або елементи.',
-          footer: 'Нижній колонтитул',
         },
         checkbox: {
           acceptTermsAndConditions: 'Прийняти умови та положення',
@@ -1239,6 +1236,9 @@ export const uk: WebMessages = {
             headerAlign: 'Вирівнювання заголовка',
             fullWidth: 'На всю ширину',
             headerDivider: 'Роздільник заголовка',
+            headerText: 'Заголовок',
+            bodyText: 'Вміст',
+            footerText: 'Нижній колонтитул',
           },
           checkbox: {
             label: 'Мітка',
@@ -2591,6 +2591,11 @@ export const uk: WebMessages = {
           },
           button: {
             label: 'Натисни мене',
+          },
+          card: {
+            headerText: 'Заголовок картки',
+            bodyText: 'Це вміст картки. Він може містити будь-який текст або елементи.',
+            footerText: 'Нижній колонтитул',
           },
           checkbox: {
             label: 'Прийняти умови та положення',

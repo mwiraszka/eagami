@@ -21,6 +21,9 @@ export const CARD_KNOBS: ComponentKnobs = {
     },
     fullWidth: { control: 'boolean' },
     headerDivider: { control: 'boolean' },
+    headerText: { control: 'text', demoOnly: true },
+    bodyText: { control: 'text', demoOnly: true },
+    footerText: { control: 'text', demoOnly: true },
   },
   args: {
     variant: 'elevated',
@@ -28,5 +31,8 @@ export const CARD_KNOBS: ComponentKnobs = {
     headerAlign: 'center',
     fullWidth: false,
     headerDivider: false,
+    headerText: 'Card Title',
+    bodyText: 'This is the card body content. It can contain any text or elements.',
+    footerText: 'Footer',
   },
 };

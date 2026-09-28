@@ -739,11 +739,7 @@ export const ptBR: WebMessages = {
           outlinedBody: 'Cartão com contorno de borda.',
           filledHeader: 'Preenchido',
           filledBody: 'Cartão com fundo sutil.',
-          cardTitleHeader: 'Título do Cartão',
           cardWithFooterBody: 'Este cartão tem cabeçalho, corpo e rodapé com ações.',
-          bodyText:
-            'Este é o conteúdo do corpo do cartão. Ele pode conter qualquer texto ou elemento.',
-          footer: 'Rodapé',
         },
         checkbox: {
           acceptTermsAndConditions: 'Aceitar termos e condições',
@@ -1245,6 +1241,9 @@ export const ptBR: WebMessages = {
             headerAlign: 'Alinhamento do cabeçalho',
             fullWidth: 'Largura total',
             headerDivider: 'Divisor de cabeçalho',
+            headerText: 'Cabeçalho',
+            bodyText: 'Corpo',
+            footerText: 'Rodapé',
           },
           checkbox: {
             label: 'Rótulo',
@@ -2608,6 +2607,12 @@ export const ptBR: WebMessages = {
           },
           button: {
             label: 'Aperte aqui',
+          },
+          card: {
+            headerText: 'Título do Cartão',
+            bodyText:
+              'Este é o conteúdo do corpo do cartão. Ele pode conter qualquer texto ou elemento.',
+            footerText: 'Rodapé',
           },
           checkbox: {
             label: 'Aceitar termos e condições',

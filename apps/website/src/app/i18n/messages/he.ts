@@ -720,10 +720,7 @@ export const he: WebMessages = {
           outlinedBody: 'כרטיס עם מסגרת קו מתאר.',
           filledHeader: 'מלא',
           filledBody: 'כרטיס עם רקע עדין.',
-          cardTitleHeader: 'כותרת כרטיס',
           cardWithFooterBody: 'לכרטיס זה יש כותרת, גוף וכותרת תחתונה עם פעולות.',
-          bodyText: 'זהו תוכן גוף הכרטיס. הוא יכול להכיל כל טקסט או רכיב.',
-          footer: 'כותרת תחתונה',
         },
         checkbox: {
           acceptTermsAndConditions: 'אני מקבל את התנאים וההגבלות',
@@ -1221,6 +1218,9 @@ export const he: WebMessages = {
             headerAlign: 'יישור כותרת',
             fullWidth: 'רוחב מלא',
             headerDivider: 'מפריד כותרת',
+            headerText: 'כותרת עליונה',
+            bodyText: 'גוף',
+            footerText: 'כותרת תחתונה',
           },
           checkbox: {
             label: 'תווית',
@@ -2422,6 +2422,11 @@ export const he: WebMessages = {
           },
           button: {
             label: 'לחצו עליי',
+          },
+          card: {
+            headerText: 'כותרת כרטיס',
+            bodyText: 'זהו תוכן גוף הכרטיס. הוא יכול להכיל כל טקסט או רכיב.',
+            footerText: 'כותרת תחתונה',
           },
           checkbox: {
             label: 'אני מקבל את התנאים וההגבלות',

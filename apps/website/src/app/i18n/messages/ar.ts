@@ -725,10 +725,7 @@ export const ar: WebMessages = {
           outlinedBody: 'بطاقة بإطار محيطي.',
           filledHeader: 'مملوء',
           filledBody: 'بطاقة بخلفية خفيفة.',
-          cardTitleHeader: 'عنوان البطاقة',
           cardWithFooterBody: 'تحتوي هذه البطاقة على رأس وجسم وتذييل مع إجراءات.',
-          bodyText: 'هذا هو محتوى متن البطاقة. يمكن أن يحتوي على أي نص أو عناصر.',
-          footer: 'التذييل',
         },
         checkbox: {
           acceptTermsAndConditions: 'قبول الشروط والأحكام',
@@ -1228,6 +1225,9 @@ export const ar: WebMessages = {
             headerAlign: 'محاذاة الرأس',
             fullWidth: 'بعرض كامل',
             headerDivider: 'فاصل الرأس',
+            headerText: 'الرأس',
+            bodyText: 'المتن',
+            footerText: 'التذييل',
           },
           checkbox: {
             label: 'التسمية',
@@ -2456,6 +2456,11 @@ export const ar: WebMessages = {
           },
           button: {
             label: 'اضغط عليّ',
+          },
+          card: {
+            headerText: 'عنوان البطاقة',
+            bodyText: 'هذا هو محتوى متن البطاقة. يمكن أن يحتوي على أي نص أو عناصر.',
+            footerText: 'التذييل',
           },
           checkbox: {
             label: 'قبول الشروط والأحكام',

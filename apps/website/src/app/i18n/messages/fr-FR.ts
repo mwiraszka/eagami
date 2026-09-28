@@ -743,12 +743,8 @@ export const frFR: WebMessages = {
           outlinedBody: 'Carte avec bordure.',
           filledHeader: 'Rempli',
           filledBody: 'Carte avec arrière-plan subtil.',
-          cardTitleHeader: 'Titre de la carte',
           cardWithFooterBody:
             'Cette carte comporte un en-tête, un corps et un pied avec actions.',
-          bodyText:
-            'Ceci est le corps de la carte. Il peut contenir n’importe quel texte ou élément.',
-          footer: 'Pied de page',
         },
         checkbox: {
           acceptTermsAndConditions: 'Accepter les conditions générales',
@@ -1259,6 +1255,9 @@ export const frFR: WebMessages = {
             headerAlign: 'Alignement de l’en-tête',
             fullWidth: 'Pleine largeur',
             headerDivider: 'Séparateur d’en-tête',
+            headerText: 'En-tête',
+            bodyText: 'Corps',
+            footerText: 'Pied de page',
           },
           checkbox: {
             label: 'Libellé',
@@ -2636,6 +2635,12 @@ export const frFR: WebMessages = {
           },
           button: {
             label: 'Cliquez-moi',
+          },
+          card: {
+            headerText: 'Titre de la carte',
+            bodyText:
+              'Ceci est le corps de la carte. Il peut contenir n’importe quel texte ou élément.',
+            footerText: 'Pied de page',
           },
           checkbox: {
             label: 'Accepter les conditions générales',

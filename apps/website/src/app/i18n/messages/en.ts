@@ -726,10 +726,7 @@ export const en: WebMessages = {
           outlinedBody: 'Card with border outline.',
           filledHeader: 'Filled',
           filledBody: 'Card with subtle background.',
-          cardTitleHeader: 'Card Title',
           cardWithFooterBody: 'This card has a header, body, and footer with actions.',
-          bodyText: 'This is the card body content. It can contain any text or elements.',
-          footer: 'Footer',
         },
         checkbox: {
           acceptTermsAndConditions: 'Accept terms and conditions',
@@ -1230,6 +1227,9 @@ export const en: WebMessages = {
             headerAlign: 'Header alignment',
             fullWidth: 'Full width',
             headerDivider: 'Header divider',
+            headerText: 'Header',
+            bodyText: 'Body',
+            footerText: 'Footer',
           },
           checkbox: {
             label: 'Label',
@@ -2520,6 +2520,12 @@ export const en: WebMessages = {
           },
           button: {
             label: 'Press me',
+          },
+          card: {
+            headerText: 'Card Title',
+            bodyText:
+              'This is the card body content. It can contain any text or elements.',
+            footerText: 'Footer',
           },
           checkbox: {
             label: 'Accept terms and conditions',

@@ -729,11 +729,8 @@ export const hi: WebMessages = {
           outlinedBody: 'बॉर्डर रूपरेखा वाला कार्ड।',
           filledHeader: 'भरा हुआ',
           filledBody: 'सूक्ष्म पृष्ठभूमि वाला कार्ड।',
-          cardTitleHeader: 'कार्ड शीर्षक',
           cardWithFooterBody:
             'इस कार्ड में एक हेडर, बॉडी और क्रियाओं के साथ एक फ़ुटर है।',
-          bodyText: 'यह कार्ड की मुख्य सामग्री है। इसमें कोई भी पाठ या तत्व हो सकते हैं।',
-          footer: 'फुटर',
         },
         checkbox: {
           acceptTermsAndConditions: 'नियम और शर्तें स्वीकार करें',
@@ -1232,6 +1229,9 @@ export const hi: WebMessages = {
             headerAlign: 'हेडर संरेखण',
             fullWidth: 'पूरी चौड़ाई',
             headerDivider: 'हेडर विभाजक',
+            headerText: 'हेडर',
+            bodyText: 'बॉडी',
+            footerText: 'फुटर',
           },
           checkbox: {
             label: 'लेबल',
@@ -2563,6 +2563,12 @@ export const hi: WebMessages = {
           },
           button: {
             label: 'मुझे दबाएं',
+          },
+          card: {
+            headerText: 'कार्ड शीर्षक',
+            bodyText:
+              'यह कार्ड की मुख्य सामग्री है। इसमें कोई भी पाठ या तत्व हो सकते हैं।',
+            footerText: 'फुटर',
           },
           checkbox: {
             label: 'नियम और शर्तें स्वीकार करें',

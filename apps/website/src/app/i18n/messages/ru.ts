@@ -734,12 +734,8 @@ export const ru: WebMessages = {
           outlinedBody: 'Карточка с рамкой по контуру.',
           filledHeader: 'С заливкой',
           filledBody: 'Карточка с лёгким фоном.',
-          cardTitleHeader: 'Заголовок карточки',
           cardWithFooterBody:
             'У этой карточки есть заголовок, тело и подвал с действиями.',
-          bodyText:
-            'Это содержимое карточки. Оно может включать любой текст или элементы.',
-          footer: 'Нижний колонтитул',
         },
         checkbox: {
           acceptTermsAndConditions: 'Принять условия использования',
@@ -1239,6 +1235,9 @@ export const ru: WebMessages = {
             headerAlign: 'Выравнивание заголовка',
             fullWidth: 'На всю ширину',
             headerDivider: 'Разделитель заголовка',
+            headerText: 'Заголовок',
+            bodyText: 'Содержимое',
+            footerText: 'Нижний колонтитул',
           },
           checkbox: {
             label: 'Метка',
@@ -2608,6 +2607,12 @@ export const ru: WebMessages = {
           },
           button: {
             label: 'Нажми меня',
+          },
+          card: {
+            headerText: 'Заголовок карточки',
+            bodyText:
+              'Это содержимое карточки. Оно может включать любой текст или элементы.',
+            footerText: 'Нижний колонтитул',
           },
           checkbox: {
             label: 'Принять условия использования',

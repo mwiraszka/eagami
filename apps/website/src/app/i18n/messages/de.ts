@@ -740,12 +740,8 @@ export const de: WebMessages = {
           outlinedBody: 'Karte mit Rahmenkontur.',
           filledHeader: 'Gefüllt',
           filledBody: 'Karte mit dezentem Hintergrund.',
-          cardTitleHeader: 'Kartentitel',
           cardWithFooterBody:
             'Diese Karte hat eine Kopfzeile, einen Hauptteil und eine Fußzeile mit Aktionen.',
-          bodyText:
-            'Dies ist der Hauptteil der Karte. Er kann beliebigen Text oder beliebige Elemente enthalten.',
-          footer: 'Fußzeile',
         },
         checkbox: {
           acceptTermsAndConditions: 'Allgemeine Geschäftsbedingungen akzeptieren',
@@ -1253,6 +1249,9 @@ export const de: WebMessages = {
             headerAlign: 'Ausrichtung der Kopfzeile',
             fullWidth: 'Volle Breite',
             headerDivider: 'Trennlinie der Kopfzeile',
+            headerText: 'Kopfzeile',
+            bodyText: 'Inhalt',
+            footerText: 'Fußzeile',
           },
           checkbox: {
             label: 'Beschriftung',
@@ -2656,6 +2655,12 @@ export const de: WebMessages = {
           },
           button: {
             label: 'Drück mich',
+          },
+          card: {
+            headerText: 'Kartentitel',
+            bodyText:
+              'Dies ist der Hauptteil der Karte. Er kann beliebigen Text oder beliebige Elemente enthalten.',
+            footerText: 'Fußzeile',
           },
           checkbox: {
             label: 'Allgemeine Geschäftsbedingungen akzeptieren',

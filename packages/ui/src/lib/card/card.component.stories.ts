@@ -3,17 +3,27 @@ import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 import { CardComponent } from './card.component';
 import { CARD_KNOBS } from './card.component.knobs';
 
-const meta: Meta<CardComponent> = {
+type CardStoryArgs = CardComponent & {
+  headerText: string;
+  bodyText: string;
+  footerText: string;
+};
+
+const meta: Meta<CardStoryArgs> = {
   title: 'Components/Card',
   component: CardComponent,
   tags: ['autodocs'],
   render: args => ({
     props: args,
     template: `
-      <ea-card ${argsToTemplate(args)} class="story-narrow">
-        <span slot="header">Card Title</span>
-        This is the card body content. It can contain any text or elements.
-        <span slot="footer">Footer</span>
+      <ea-card ${argsToTemplate(args, { exclude: ['headerText', 'bodyText', 'footerText'] })} class="story-narrow">
+        @if (headerText) {
+          <span slot="header">{{ headerText }}</span>
+        }
+        {{ bodyText }}
+        @if (footerText) {
+          <span slot="footer">{{ footerText }}</span>
+        }
       </ea-card>
     `,
   }),
@@ -22,6 +32,6 @@ const meta: Meta<CardComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<CardComponent>;
+type Story = StoryObj<CardStoryArgs>;
 
 export const Playground: Story = {};

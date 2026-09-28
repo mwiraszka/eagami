@@ -737,11 +737,7 @@ export const esES: WebMessages = {
           outlinedBody: 'Tarjeta con borde.',
           filledHeader: 'Rellena',
           filledBody: 'Tarjeta con fondo sutil.',
-          cardTitleHeader: 'Título de la tarjeta',
           cardWithFooterBody: 'Esta tarjeta tiene cabecera, cuerpo y pie con acciones.',
-          bodyText:
-            'Este es el contenido del cuerpo de la tarjeta. Puede contener cualquier texto o elemento.',
-          footer: 'Pie',
         },
         checkbox: {
           acceptTermsAndConditions: 'Aceptar términos y condiciones',
@@ -1250,6 +1246,9 @@ export const esES: WebMessages = {
             headerAlign: 'Alineación del encabezado',
             fullWidth: 'Ancho completo',
             headerDivider: 'Separador del encabezado',
+            headerText: 'Cabecera',
+            bodyText: 'Cuerpo',
+            footerText: 'Pie',
           },
           checkbox: {
             label: 'Etiqueta',
@@ -2653,6 +2652,12 @@ export const esES: WebMessages = {
           },
           button: {
             label: 'Púlsame',
+          },
+          card: {
+            headerText: 'Título de la tarjeta',
+            bodyText:
+              'Este es el contenido del cuerpo de la tarjeta. Puede contener cualquier texto o elemento.',
+            footerText: 'Pie',
           },
           checkbox: {
             label: 'Aceptar términos y condiciones',

@@ -6,6 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [childMarkup]="childMarkup()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-card
@@ -14,11 +15,13 @@
       [headerAlign]="state().headerAlign"
       [fullWidth]="state().fullWidth"
       [headerDivider]="state().headerDivider">
-      <span slot="header">
-        {{ messages().ui.component.demos.card.cardTitleHeader }}
-      </span>
-      {{ messages().ui.component.demos.card.bodyText }}
-      <span slot="footer">{{ messages().ui.component.demos.card.footer }}</span>
+      @if (state().headerText) {
+        <span slot="header">{{ state().headerText }}</span>
+      }
+      {{ state().bodyText }}
+      @if (state().footerText) {
+        <span slot="footer">{{ state().footerText }}</span>
+      }
     </ea-card>
   </web-component-playground>
 </web-ui-component-demo-layout>

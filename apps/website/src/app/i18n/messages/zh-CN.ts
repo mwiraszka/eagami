@@ -710,10 +710,7 @@ export const zhCN: WebMessages = {
           outlinedBody: '带边框描边的卡片。',
           filledHeader: '填充',
           filledBody: '带淡淡背景的卡片。',
-          cardTitleHeader: '卡片标题',
           cardWithFooterBody: '这张卡片包含页眉、正文和带操作的页脚。',
-          bodyText: '这是卡片的正文内容。其中可以包含任意文本或元素。',
-          footer: '页脚',
         },
         checkbox: {
           acceptTermsAndConditions: '接受条款与条件',
@@ -1208,6 +1205,9 @@ export const zhCN: WebMessages = {
             headerAlign: '页眉对齐',
             fullWidth: '全宽',
             headerDivider: '页眉分隔线',
+            headerText: '页眉',
+            bodyText: '正文',
+            footerText: '页脚',
           },
           checkbox: {
             label: '标签',
@@ -2307,6 +2307,11 @@ export const zhCN: WebMessages = {
           },
           button: {
             label: '点击我',
+          },
+          card: {
+            headerText: '卡片标题',
+            bodyText: '这是卡片的正文内容。其中可以包含任意文本或元素。',
+            footerText: '页脚',
           },
           checkbox: {
             label: '接受条款与条件',
