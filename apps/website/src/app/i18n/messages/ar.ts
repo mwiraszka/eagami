@@ -627,6 +627,7 @@ export const ar: WebMessages = {
         save: 'حفظ',
         close: 'إغلاق',
         confirm: 'تأكيد',
+        rightClickHere: 'انقر بزر الفأرة الأيمن هنا',
         disabled: 'معطّل',
         defaultLabel: 'افتراضي',
         successLabel: 'نجاح',
@@ -761,6 +762,11 @@ export const ar: WebMessages = {
           tableColumnLastName: 'اسم العائلة',
           tableColumnAdmin: 'مسؤول',
           tableColumnPosts: 'المنشورات',
+          rowMenuHint: 'انقر بزر الفأرة الأيمن على صف لعرض إجراءاته.',
+          rowMenuLabel: 'إجراءات الصف',
+          rowMenuView: 'عرض التفاصيل',
+          rowMenuDelete: 'حذف',
+          rowMenuToast: (action, name) => `اخترت «${action}» لـ ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'الموعد',
@@ -777,6 +783,8 @@ export const ar: WebMessages = {
           openButton: 'فتح مربّع الحوار',
           title: 'عنوان مربّع الحوار',
           body: 'هذا جسم مربّع الحوار. يدعم أي محتوى بما في ذلك النماذج والنصوص ومكوّنات أخرى.',
+          pressedToast: label => `ضغطت على «${label}».`,
+          dismissedToast: 'أغلقت مربّع الحوار دون اختيار.',
         },
         divider: {
           orLabel: 'أو',
@@ -856,6 +864,7 @@ export const ar: WebMessages = {
           open: 'فتح',
           saveUnavailable: 'حفظ (غير متاح)',
           saveAs: 'حفظ باسم',
+          chosenToast: item => `اخترت «${item}».`,
         },
         popover: {
           openLabel: 'فتح المنبثقة',
@@ -1104,6 +1113,9 @@ export const ar: WebMessages = {
         twoWayBadge: 'ثنائي الاتجاه',
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
+          dialog: { openWith: 'الفتح عبر' },
+          menu: { opensOn: 'يفتح عند' },
+          popover: { opensOn: 'يفتح عند' },
           accordion: { highlightExpanded: 'تمييز العناصر المفتوحة' },
           'bar-chart': {
             orientation: 'الاتجاه',
@@ -1384,7 +1396,10 @@ export const ar: WebMessages = {
             required: 'مطلوب',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(دلالي فقط)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(دلالي فقط)' },
+          dialog: { openWith: 'كلاهما يفتح مربّع الحوار نفسه.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1473,16 +1488,18 @@ export const ar: WebMessages = {
             size: 'الحجم البصري المطبَّق على كل إشعار في المجموعة.',
             position: 'زاوية أو حافة منطقة العرض التي تُثبَّت بها مجموعة الإشعارات.',
             clearable: 'إظهار زر إغلاق على كل إشعار.',
-            show: 'يعرض إشعارًا ويعيد معرّفه. تقبل رسالته وعنوانه نصًا عاديًا أو مقاطع توكيد.',
-            success: 'يعرض إشعار نجاح ويعيد معرّفه.',
-            error: 'يعرض إشعار خطأ ويعيد معرّفه.',
-            warning: 'يعرض إشعار تحذير ويعيد معرّفه.',
-            info: 'يعرض إشعارًا معلوماتيًا ويعيد معرّفه.',
-            dismiss: 'يزيل الإشعار ذا المعرّف المحدّد، إن كان لا يزال ظاهرًا.',
-            clear: 'يزيل كل الإشعارات الظاهرة حاليًا.',
-            pause:
+            'ToastService.show':
+              'يعرض إشعارًا ويعيد معرّفه. تقبل رسالته وعنوانه نصًا عاديًا أو مقاطع توكيد.',
+            'ToastService.success': 'يعرض إشعار نجاح ويعيد معرّفه.',
+            'ToastService.error': 'يعرض إشعار خطأ ويعيد معرّفه.',
+            'ToastService.warning': 'يعرض إشعار تحذير ويعيد معرّفه.',
+            'ToastService.info': 'يعرض إشعارًا معلوماتيًا ويعيد معرّفه.',
+            'ToastService.dismiss':
+              'يزيل الإشعار ذا المعرّف المحدّد، إن كان لا يزال ظاهرًا.',
+            'ToastService.clear': 'يزيل كل الإشعارات الظاهرة حاليًا.',
+            'ToastService.pause':
               'يوقف كل عمليات العد التنازلي للإغلاق التلقائي مع الاحتفاظ بالوقت المتبقي لكل إشعار.',
-            resume: 'يستأنف عمليات العد التنازلي التي أوقفتها pause.',
+            'ToastService.resume': 'يستأنف عمليات العد التنازلي التي أوقفتها pause.',
           },
           input: {
             spellcheck:
@@ -1941,6 +1958,12 @@ export const ar: WebMessages = {
             updateImageDarkness:
               'يأخذ عيّنات من منطقة القص المرئية لتحديد ما إذا كانت الصورة أدكن من الرمادي المتوسط.',
           },
+          'context-menu-trigger': {
+            target:
+              'عنصر ea-menu أو ea-popover الذي يُفتح كقائمة سياقية للعنصر المضيف؛ القيمة null تُبقي قائمة المتصفح.',
+            contextMenuPosition:
+              'مكان فتح الهدف: pointer يفتحه عند المؤشر، أو أسفل العنصر المركَّز عليه من لوحة المفاتيح؛ anchor يفتحه في موضعه بالنسبة إلى المضيف.',
+          },
           'menu-trigger': {
             menu: 'نسخة ea-menu التي يتحكّم بها هذا المُحفِّز.',
           },
@@ -2103,6 +2126,8 @@ export const ar: WebMessages = {
             close: 'يغلق القائمة ويعيد اختياريًا التركيز إلى عنصر المُحفِّز.',
             focusFirstItem: 'ينقل تركيز لوحة المفاتيح إلى أول عنصر مفعّل في القائمة.',
             onPopoverCloseRequested: 'يغلق القائمة عندما ينقر المستخدم خارجها.',
+            openAsContextMenu:
+              'يفتح القائمة كقائمة سياقية لعنصر، عند نقطة في منطقة العرض أو بالنسبة إلى العنصر، ويعيد التركيز إلى حيث كان عند الإغلاق.',
             openAt: 'يفتح القائمة مرتبطةً بعنصر المُحفِّز المعطى ويركّز العنصر الأول.',
             toggleAt: 'يبدّل حالة فتح القائمة، رابطًا إياها بعنصر المُحفِّز المعطى.',
           },
@@ -2237,6 +2262,12 @@ export const ar: WebMessages = {
             offset: 'الفجوة بالبكسل بين المرساة وسطح المنبثقة.',
             open: 'ما إذا كانت المنبثقة مفتوحة حاليًا.',
             placement: 'الموضع المفضّل للمنبثقة بالنسبة إلى مرساتها.',
+            anchorPoint:
+              'نقطة في منطقة العرض تتموضع المنبثقة بالنسبة إليها بدلًا من المرساة، مثل المكان الذي طُلبت فيه قائمة سياقية؛ تحافظ على إزاحتها عن المرساة أثناء تمرير الصفحة.',
+            contextMenu:
+              'يجعل المنبثقة تتصرّف كقائمة سياقية: تأخذ التركيز فور ظهورها وتعيده عند الإغلاق، وتُغلَق بنقرة على المرساة أو بنقرة يمنى في أي مكان خارجها.',
+            openRequested:
+              'يُطلَق عندما يطلب مُحفِّز مثل eaContextMenuTrigger فتح المنبثقة، مع النقطة التي تُفتح عندها؛ على الأب أن يعكس هذا في [open] و[anchorPoint].',
             role: 'دور ARIA المطبَّق على سطح المنبثقة.',
             scrollBehavior:
               'كيف تستجيب المنبثقة لأحداث التمرير وتغيير الحجم أثناء فتحها: reposition أو close أو ignore.',
@@ -2283,6 +2314,11 @@ export const ar: WebMessages = {
             opened: 'يُطلَق بمجرد عرض الدرج.',
           },
           'data-table': {
+            loading:
+              'يعرض صفوفًا نائبة بدل البيانات أثناء تحميلها، ويُعلِّم الجدول كمشغول للتقنيات المساعدة.',
+            loadingRowCount: 'عدد الصفوف النائبة المعروضة أثناء التحميل.',
+            rowContextMenu:
+              'يُطلَق عند طلب القائمة السياقية لصف في الجسم بنقرة يمنى أو ضغطة مطوّلة أو Shift+F10، مع الصف وعنصره ونقطة لفتح قائمة والحدث.',
             nowrap:
               'يبقي كل خلية في سطر واحد، بحيث تمرّر الشاشة الضيقة الجدول جانبيًا بدلًا من التفاف نصه.',
             rowHref:
@@ -2441,6 +2477,10 @@ export const ar: WebMessages = {
             closed:
               'يُطلَق عندما يُغلق مربّع الحوار، بغضّ النظر عمّا إذا أغلقه المستخدم أو أُغلق برمجيًا.',
             opened: 'يُطلَق بمجرد عرض مربّع الحوار عبر showModal().',
+            'DialogService.open':
+              'يعرض مكوّنًا كمربّع حوار ويعيد DialogRef الخاص به، الذي تُحسم نتيجته result بالقيمة التي يُغلق بها مربّع الحوار، أو بـ undefined عند صرفه. يقبل قيم المدخلات وinjector.',
+            'DialogService.closeAll':
+              'يغلق كل مربّعات الحوار الموجودة في الإشارة dialogs، بدءًا بالأحدث، ويحسم نتيجة كل منها result بـ undefined.',
           },
         },
         direction: 'الاتجاه',

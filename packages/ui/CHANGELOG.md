@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.55.0] - 2026-09-29
+
+### Added
+
+- Add a `DialogService` that opens any component as a dialog from code and returns a `DialogRef` whose `result` settles with the value the dialog closes with, or with `undefined` when it is dismissed.
+- Add inside placements to the popover that sit over the anchor at a corner, along an edge or in the centre, and an `anchorPoint` input that positions it against a point instead of the anchor's box.
+- Introduce an `[eaContextMenuTrigger]` directive that opens a popover or menu as a context menu at the pointer or against its host from a right-click, long press, Shift+F10 or the context-menu key.
+- Add a `loading` state to the data table that shows skeleton placeholder rows and marks the table busy, with `loadingRowCount` and a per-column `placeholderTemplate`.
+- Add a `rowContextMenu` output to the data table that reports a right-click, long press or Shift+F10 on a row with the row, its element and a point to open a menu at.
+
 ## [5.54.0] - 2026-09-28
 
 ### Added
@@ -1742,6 +1752,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.55.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.54.0...ui-v5.55.0
 [5.54.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.53.0...ui-v5.54.0
 [5.53.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.52.1...ui-v5.53.0
 [5.52.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.52.0...ui-v5.52.1

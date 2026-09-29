@@ -640,6 +640,7 @@ export const ptBR: WebMessages = {
         save: 'Salvar',
         close: 'Fechar',
         confirm: 'Confirmar',
+        rightClickHere: 'Clique com o botão direito aqui',
         disabled: 'Desativado',
         defaultLabel: 'Padrão',
         successLabel: 'Sucesso',
@@ -774,6 +775,11 @@ export const ptBR: WebMessages = {
           tableColumnLastName: 'Sobrenome',
           tableColumnAdmin: 'Administrador',
           tableColumnPosts: 'Publicações',
+          rowMenuHint: 'Clique com o botão direito em uma linha para ver suas ações.',
+          rowMenuLabel: 'Ações da linha',
+          rowMenuView: 'Ver detalhes',
+          rowMenuDelete: 'Excluir',
+          rowMenuToast: (action, name) => `Você escolheu ${action} para ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Compromisso',
@@ -790,6 +796,8 @@ export const ptBR: WebMessages = {
           openButton: 'Abrir Diálogo',
           title: 'Título do Diálogo',
           body: 'Este é o corpo do diálogo. Ele suporta qualquer conteúdo, incluindo formulários, texto e outros componentes.',
+          pressedToast: label => `Você pressionou ${label}.`,
+          dismissedToast: 'Você fechou o diálogo sem escolher.',
         },
         divider: {
           orLabel: 'ou',
@@ -869,6 +877,7 @@ export const ptBR: WebMessages = {
           open: 'Abrir',
           saveUnavailable: 'Salvar (indisponível)',
           saveAs: 'Salvar Como',
+          chosenToast: item => `Você escolheu ${item}.`,
         },
         popover: {
           openLabel: 'Abrir popover',
@@ -1120,6 +1129,9 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          dialog: { openWith: 'Abrir com' },
+          menu: { opensOn: 'Abre com' },
+          popover: { opensOn: 'Abre com' },
           accordion: { highlightExpanded: 'Destacar itens abertos' },
           'bar-chart': {
             orientation: 'Orientação',
@@ -1400,7 +1412,10 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(apenas semântico)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(apenas semântico)' },
+          dialog: { openWith: 'Ambos abrem o mesmo diálogo.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1502,16 +1517,18 @@ export const ptBR: WebMessages = {
             position:
               'Canto ou borda da janela de visualização onde a pilha de toasts é fixada.',
             clearable: 'Mostra um botão de dispensar em cada toast.',
-            show: 'Exibe um toast e retorna seu id. Sua mensagem e seu título aceitam uma string simples ou segmentos com ênfase.',
-            success: 'Exibe um toast de sucesso e retorna seu id.',
-            error: 'Exibe um toast de erro e retorna seu id.',
-            warning: 'Exibe um toast de aviso e retorna seu id.',
-            info: 'Exibe um toast informativo e retorna seu id.',
-            dismiss: 'Remove o toast com o id indicado, se ainda estiver visível.',
-            clear: 'Remove todos os toasts visíveis no momento.',
-            pause:
+            'ToastService.show':
+              'Exibe um toast e retorna seu id. Sua mensagem e seu título aceitam uma string simples ou segmentos com ênfase.',
+            'ToastService.success': 'Exibe um toast de sucesso e retorna seu id.',
+            'ToastService.error': 'Exibe um toast de erro e retorna seu id.',
+            'ToastService.warning': 'Exibe um toast de aviso e retorna seu id.',
+            'ToastService.info': 'Exibe um toast informativo e retorna seu id.',
+            'ToastService.dismiss':
+              'Remove o toast com o id indicado, se ainda estiver visível.',
+            'ToastService.clear': 'Remove todos os toasts visíveis no momento.',
+            'ToastService.pause':
               'Suspende todas as contagens regressivas de fechamento automático, mantendo o tempo restante de cada toast.',
-            resume: 'Retoma as contagens regressivas suspensas por pause.',
+            'ToastService.resume': 'Retoma as contagens regressivas suspensas por pause.',
           },
           input: {
             spellcheck:
@@ -2026,6 +2043,12 @@ export const ptBR: WebMessages = {
             updateImageDarkness:
               'Amostra a região de recorte visível para determinar se a imagem é mais escura que o cinza médio.',
           },
+          'context-menu-trigger': {
+            target:
+              'O ea-menu ou ea-popover a abrir como menu de contexto do elemento hospedeiro; null mantém o menu do navegador.',
+            contextMenuPosition:
+              'Onde o alvo abre: pointer o abre no ponteiro, ou abaixo do elemento focado pelo teclado; anchor o abre em seu posicionamento em relação ao hospedeiro.',
+          },
           'menu-trigger': {
             menu: 'A instância de ea-menu que este gatilho controla.',
           },
@@ -2216,6 +2239,8 @@ export const ptBR: WebMessages = {
             focusFirstItem:
               'Move o foco do teclado para o primeiro item ativado no menu.',
             onPopoverCloseRequested: 'Fecha o menu quando o usuário clica fora dele.',
+            openAsContextMenu:
+              'Abre o menu como menu de contexto de um elemento, em um ponto da janela de visualização ou junto ao elemento, e devolve o foco para onde estava ao fechar.',
             openAt:
               'Abre o menu ancorado ao elemento de gatilho dado e foca o primeiro item.',
             toggleAt:
@@ -2371,6 +2396,12 @@ export const ptBR: WebMessages = {
             offset: 'Espaço em px entre a âncora e a superfície do popover.',
             open: 'Se o popover está atualmente aberto.',
             placement: 'Posição preferida do popover em relação à sua âncora.',
+            anchorPoint:
+              'Ponto da janela de visualização contra o qual posicionar em vez da âncora, como onde um menu de contexto foi solicitado; mantém seu deslocamento em relação à âncora enquanto a página rola.',
+            contextMenu:
+              'Faz o popover se comportar como um menu de contexto: recebe o foco ao ser exibido e o devolve ao fechar, e um clique na âncora ou um clique com o botão direito em qualquer lugar fora dele o fecha.',
+            openRequested:
+              'Dispara quando um gatilho como eaContextMenuTrigger pede para abrir o popover, com o ponto onde abri-lo; o pai deve refletir isso em [open] e [anchorPoint].',
             role: 'Papel ARIA aplicado à superfície do popover.',
             scrollBehavior:
               'Como o popover responde a eventos de rolagem e redimensionamento enquanto aberto: reposicionar, fechar ou ignorar.',
@@ -2419,6 +2450,12 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
+            loading:
+              'Mostra linhas de espaço reservado no lugar dos dados enquanto carregam e marca a tabela como ocupada para tecnologias assistivas.',
+            loadingRowCount:
+              'Número de linhas de espaço reservado exibidas durante o carregamento.',
+            rowContextMenu:
+              'Dispara quando o menu de contexto de uma linha de dados é solicitado por clique com o botão direito, toque longo ou Shift+F10, com a linha, seu elemento, um ponto para abrir um menu e o evento.',
             nowrap:
               'Mantém cada célula em uma única linha, de modo que uma janela estreita rola a tabela lateralmente em vez de quebrar o texto.',
             rowHref:
@@ -2592,6 +2629,10 @@ export const ptBR: WebMessages = {
             closed:
               'Dispara quando o diálogo fecha, independentemente de ter sido fechado pelo usuário ou programaticamente.',
             opened: 'Dispara assim que o diálogo é exibido via showModal().',
+            'DialogService.open':
+              'Renderiza um componente como diálogo e retorna seu DialogRef, cujo result é resolvido com o valor com que o diálogo fecha, ou com undefined quando ele é dispensado. Aceita valores de entrada e um injector.',
+            'DialogService.closeAll':
+              'Fecha todos os diálogos do sinal dialogs, do mais recente ao mais antigo, resolvendo cada result com undefined.',
           },
         },
         direction: 'Direção',

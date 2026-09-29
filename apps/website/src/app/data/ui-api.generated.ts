@@ -1421,6 +1421,27 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
     ],
   },
+  'context-menu-trigger': {
+    selector: '[eaContextMenuTrigger]',
+    inputs: [
+      {
+        name: 'contextMenuPosition',
+        type: 'ContextMenuPosition',
+        default: "'pointer'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'target',
+        type: 'ContextMenuTarget | null | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+    ],
+    outputs: [],
+    methods: [],
+  },
   'data-table': {
     selector: 'ea-data-table',
     inputs: [
@@ -1477,6 +1498,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'hoverable',
         type: 'boolean',
         default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'loading',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'loadingRowCount',
+        type: 'number',
+        default: '5',
         required: false,
         twoWay: false,
       },
@@ -1555,6 +1590,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'rowActivate',
         type: 'T',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'rowContextMenu',
+        type: 'DataTableRowContextMenuEvent<T>',
         default: '',
         required: false,
         twoWay: false,
@@ -1842,6 +1884,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'requestClose(): void',
       },
     ],
+    service: {
+      name: 'DialogService',
+      methods: [
+        {
+          name: 'closeAll',
+          signature: 'closeAll(): void',
+        },
+        {
+          name: 'open',
+          signature:
+            'open(component: Type<unknown>, options?: DialogOptions): DialogRef<R>',
+        },
+      ],
+    },
   },
   divider: {
     selector: 'ea-divider',
@@ -3055,6 +3111,11 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         signature: 'onPopoverCloseRequested(): void',
       },
       {
+        name: 'openAsContextMenu',
+        signature:
+          'openAsContextMenu(anchorEl: HTMLElement, point?: PopoverAnchorPoint | null): void',
+      },
+      {
         name: 'openAt',
         signature: 'openAt(triggerEl: HTMLElement): void',
       },
@@ -3721,6 +3782,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'anchorPoint',
+        type: 'PopoverAnchorPoint | null',
+        default: 'null',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaLabel',
         type: 'string | undefined',
         default: 'undefined',
@@ -3752,6 +3820,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'closeOnOutsideClick',
         type: 'boolean',
         default: 'true',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'contextMenu',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
@@ -3830,6 +3905,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'closeRequested',
         type: 'void',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'openRequested',
+        type: 'PopoverOpenRequest',
         default: '',
         required: false,
         twoWay: false,

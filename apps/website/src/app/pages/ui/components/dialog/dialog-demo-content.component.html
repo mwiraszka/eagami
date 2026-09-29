@@ -1,0 +1,22 @@
+<ea-dialog
+  [width]="width()"
+  [modal]="modal()"
+  [closeOnBackdrop]="closeOnBackdrop()"
+  [closeOnEscape]="closeOnEscape()"
+  [showClose]="showClose()"
+  [closeDisabled]="closeDisabled()"
+  [manualClose]="manualClose()"
+  (closeRequested)="ref.close()">
+  <span slot="header">{{ messages().ui.component.demos.dialog.title }}</span>
+  <p>{{ messages().ui.component.demos.dialog.body }}</p>
+  <span slot="footer">
+    <ea-button
+      variant="secondary"
+      (clicked)="ref.close(false)">
+      {{ messages().ui.component.common.cancel }}
+    </ea-button>
+    <ea-button (clicked)="ref.close(true)">
+      {{ messages().ui.component.common.confirm }}
+    </ea-button>
+  </span>
+</ea-dialog>

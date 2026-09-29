@@ -632,6 +632,7 @@ export const is: WebMessages = {
         save: 'Vista',
         close: 'Loka',
         confirm: 'Staðfesta',
+        rightClickHere: 'Hægrismelltu hér',
         disabled: 'Óvirkt',
         defaultLabel: 'Sjálfgefið',
         successLabel: 'Tókst',
@@ -766,6 +767,11 @@ export const is: WebMessages = {
           tableColumnLastName: 'Eftirnafn',
           tableColumnAdmin: 'Stjórnandi',
           tableColumnPosts: 'Færslur',
+          rowMenuHint: 'Hægrismelltu á línu til að sjá aðgerðir hennar.',
+          rowMenuLabel: 'Aðgerðir raðar',
+          rowMenuView: 'Skoða nánar',
+          rowMenuDelete: 'Eyða',
+          rowMenuToast: (action, name) => `Þú valdir ${action} fyrir ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Tímabókun',
@@ -782,6 +788,8 @@ export const is: WebMessages = {
           openButton: 'Opna glugga',
           title: 'Titill glugga',
           body: 'Þetta er meginmál gluggans. Það styður hvaða efni sem er, þar á meðal form, texta og aðrar einingar.',
+          pressedToast: label => `Þú ýttir á ${label}.`,
+          dismissedToast: 'Þú lokaðir glugganum án þess að velja.',
         },
         divider: {
           orLabel: 'eða',
@@ -861,6 +869,7 @@ export const is: WebMessages = {
           open: 'Opna',
           saveUnavailable: 'Vista (ekki í boði)',
           saveAs: 'Vista sem',
+          chosenToast: item => `Þú valdir ${item}.`,
         },
         popover: {
           openLabel: 'Opna sprettiglugga',
@@ -1121,6 +1130,9 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
+          dialog: { openWith: 'Opna með' },
+          menu: { opensOn: 'Opnast við' },
+          popover: { opensOn: 'Opnast við' },
           accordion: { highlightExpanded: 'Auðkenna opin atriði' },
           'bar-chart': {
             orientation: 'Stefna',
@@ -1401,7 +1413,10 @@ export const is: WebMessages = {
             required: 'Krafist',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(aðeins merkingarlegt)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(aðeins merkingarlegt)' },
+          dialog: { openWith: 'Báðir opna sama gluggann.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1498,16 +1513,20 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð sem gildir um hverja tilkynningu í staflanum.',
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
             clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',
-            show: 'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
-            success: 'Sýnir tilkynningu um velgengni og skilar auðkenni hennar.',
-            error: 'Sýnir villutilkynningu og skilar auðkenni hennar.',
-            warning: 'Sýnir viðvörunartilkynningu og skilar auðkenni hennar.',
-            info: 'Sýnir upplýsingatilkynningu og skilar auðkenni hennar.',
-            dismiss: 'Fjarlægir tilkynninguna með uppgefnu auðkenni, sé hún enn sýnileg.',
-            clear: 'Fjarlægir allar tilkynningar sem eru sýnilegar núna.',
-            pause:
+            'ToastService.show':
+              'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
+            'ToastService.success':
+              'Sýnir tilkynningu um velgengni og skilar auðkenni hennar.',
+            'ToastService.error': 'Sýnir villutilkynningu og skilar auðkenni hennar.',
+            'ToastService.warning':
+              'Sýnir viðvörunartilkynningu og skilar auðkenni hennar.',
+            'ToastService.info': 'Sýnir upplýsingatilkynningu og skilar auðkenni hennar.',
+            'ToastService.dismiss':
+              'Fjarlægir tilkynninguna með uppgefnu auðkenni, sé hún enn sýnileg.',
+            'ToastService.clear': 'Fjarlægir allar tilkynningar sem eru sýnilegar núna.',
+            'ToastService.pause':
               'Frestar allri niðurtalningu sjálfvirkrar lokunar og heldur þeim tíma sem eftir er á hverri tilkynningu.',
-            resume: 'Heldur áfram niðurtalningum sem pause frestaði.',
+            'ToastService.resume': 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
             spellcheck:
@@ -2006,6 +2025,12 @@ export const is: WebMessages = {
             updateImageDarkness:
               'Sýnatekur sýnilega skurðsvæðið til að ákvarða hvort myndin er dekkri en miðgrá.',
           },
+          'context-menu-trigger': {
+            target:
+              'ea-menu eða ea-popover sem opnast sem samhengisvalmynd hýsilstaksins; null skilur valmynd vafrans eftir.',
+            contextMenuPosition:
+              'Hvar markið opnast: pointer opnar það við bendilinn, eða undir stakinu með fókus frá lyklaborði; anchor opnar það í staðsetningu sinni gagnvart hýslinum.',
+          },
           'menu-trigger': {
             menu: 'ea-menu tilvikið sem þessi kveikja stjórnar.',
           },
@@ -2188,6 +2213,8 @@ export const is: WebMessages = {
             focusFirstItem: 'Færir lyklaborðsfókus á fyrsta virka atriðið í valmyndinni.',
             onPopoverCloseRequested:
               'Lokar valmyndinni þegar notandinn smellir utan hennar.',
+            openAsContextMenu:
+              'Opnar valmyndina sem samhengisvalmynd staks, í punkti á sýnisvæðinu eða við stakið, og skilar fókus þangað sem hann var þegar hún lokast.',
             openAt:
               'Opnar valmyndina festa við gefna kveikjustakið og setur fókus á fyrsta atriðið.',
             toggleAt:
@@ -2339,6 +2366,12 @@ export const is: WebMessages = {
             offset: 'Bil í px milli festunnar og yfirborðs sprettigluggans.',
             open: 'Hvort sprettiglugginn er nú opinn.',
             placement: 'Æskileg staðsetning sprettigluggans miðað við festu hans.',
+            anchorPoint:
+              'Punktur í sýnisvæðinu sem staðsett er gagnvart í stað festunnar, til dæmis þar sem beðið var um samhengisvalmynd; hann heldur fjarlægð sinni frá festunni þegar síðan skrunar.',
+            contextMenu:
+              'Lætur sprettigluggann haga sér eins og samhengisvalmynd: hann tekur fókus þegar hann birtist og skilar honum þegar hann lokast, og smellur á festuna eða hægrismellur hvar sem er utan hans lokar honum.',
+            openRequested:
+              'Kviknar þegar kveikja eins og eaContextMenuTrigger biður um að sprettiglugginn opnist, ásamt punktinum þar sem hann á að opnast; foreldrið ætti að spegla þetta í [open] og [anchorPoint].',
             role: 'ARIA hlutverk sett á yfirborð sprettigluggans.',
             scrollBehavior:
               'Hvernig sprettiglugginn bregst við skrun- og stærðarbreytingaratburðum á meðan opinn: endurstaðsetja, loka eða hunsa.',
@@ -2387,6 +2420,12 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd.',
           },
           'data-table': {
+            loading:
+              'Sýnir staðgengilsraðir í stað gagnanna á meðan þau hlaðast og merkir töfluna upptekna fyrir hjálpartækni.',
+            loadingRowCount:
+              'Fjöldi staðgengilsraða sem sýndar eru meðan hleðsla stendur yfir.',
+            rowContextMenu:
+              'Kviknar þegar beðið er um samhengisvalmynd gagnaraðar með hægrismelli, löngu haldi eða Shift+F10, ásamt röðinni, staki hennar, punkti til að opna valmynd og atburðinum.',
             nowrap:
               'Heldur hverjum reit á einni línu, svo þröngur gluggi skrunar töflunni til hliðar í stað þess að brjóta textann.',
             rowHref:
@@ -2555,6 +2594,10 @@ export const is: WebMessages = {
             closed:
               'Kviknar þegar glugginn lokast, óháð því hvort honum var lokað af notandanum eða forritunarlega.',
             opened: 'Kviknar þegar glugginn hefur verið sýndur með showModal().',
+            'DialogService.open':
+              'Birtir einingu sem glugga og skilar DialogRef hennar, en result þess leysist með gildinu sem glugginn lokast með, eða með undefined þegar honum er vísað frá. Tekur við inntaksgildum og injector.',
+            'DialogService.closeAll':
+              'Lokar hverjum glugga í merkinu dialogs, þeim nýjasta fyrst, og leysir hvert result með undefined.',
           },
         },
         direction: 'Stefna',

@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 
 import { EagamiI18nService } from '../i18n/i18n.service';
+import { type PopoverAnchorPoint } from '../popover/popover-positioning';
 import { PopoverComponent } from '../popover/popover.component';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -70,6 +71,10 @@ export class MenuComponent {
   /** Trigger element currently anchoring the menu. Signal-typed so `<ea-popover>` reacts when it changes. */
   protected readonly triggerEl = signal<HTMLElement | undefined>(undefined);
 
+  // Set while the menu is open as a context menu, at the point it was requested at if any
+  protected readonly asContextMenu = signal(false);
+  protected readonly anchorPoint = signal<PopoverAnchorPoint | null>(null);
+
   // Read by each item's [attr.tabindex] binding so the roving state survives re-renders
   readonly activeItemId = signal<string | null>(null);
 
@@ -79,6 +84,8 @@ export class MenuComponent {
     effect(() => {
       if (!this.open()) {
         this.activeItemId.set(null);
+        this.asContextMenu.set(false);
+        this.anchorPoint.set(null);
         return;
       }
       afterNextRender(
@@ -112,6 +119,30 @@ export class MenuComponent {
     if (this.disabled()) {
       return;
     }
+    this.asContextMenu.set(false);
+    this.anchorPoint.set(null);
+    this.show(triggerEl);
+  }
+
+  /**
+   * Opens the menu as the context menu of `anchorEl`: at `point` when given (a
+   * pointer position, in viewport coordinates), else at its placement against the
+   * anchor. Focuses the first item, closes on any click or context-menu request
+   * outside the menu, and hands focus back to wherever it was on close.
+   */
+  openAsContextMenu(
+    anchorEl: HTMLElement,
+    point: PopoverAnchorPoint | null = null,
+  ): void {
+    if (this.disabled()) {
+      return;
+    }
+    this.asContextMenu.set(true);
+    this.anchorPoint.set(point);
+    this.show(anchorEl);
+  }
+
+  private show(triggerEl: HTMLElement): void {
     this.triggerEl.set(triggerEl);
     this.open.set(true);
     this.opened.emit();
@@ -127,9 +158,11 @@ export class MenuComponent {
     if (!this.open()) {
       return;
     }
+    // A context menu's popover hands focus back to wherever it was before opening
+    const focusTrigger = restoreFocus && !this.asContextMenu();
     this.open.set(false);
     this.closed.emit();
-    if (restoreFocus) {
+    if (focusTrigger) {
       this.triggerEl()?.focus({ preventScroll: true });
     }
   }

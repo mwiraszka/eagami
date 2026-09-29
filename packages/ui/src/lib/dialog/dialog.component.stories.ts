@@ -1,9 +1,73 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 
+import { Component, Injector, inject, input, signal } from '@angular/core';
+
 import { ButtonComponent } from '../button/button.component';
-import { DialogComponent } from './dialog.component';
+import { DialogRef } from './dialog-ref';
+import { DialogComponent, type DialogWidth } from './dialog.component';
 import { DIALOG_KNOBS } from './dialog.component.knobs';
+import { DialogService } from './dialog.service';
+
+@Component({
+  selector: 'ea-dialog-story-confirm',
+  imports: [ButtonComponent, DialogComponent],
+  template: `
+    <ea-dialog [width]="width()">
+      <span slot="header">Opened from code</span>
+      <p>Answer to settle the promise the opener is awaiting.</p>
+      <div slot="footer">
+        <ea-button
+          variant="ghost"
+          (clicked)="stack()">
+          Open another
+        </ea-button>
+        <ea-button
+          variant="secondary"
+          (clicked)="ref.close(false)">
+          Cancel
+        </ea-button>
+        <ea-button (clicked)="ref.close(true)">Confirm</ea-button>
+      </div>
+    </ea-dialog>
+  `,
+})
+class ConfirmStoryDialog {
+  protected readonly ref = inject<DialogRef<boolean>>(DialogRef);
+  private readonly dialogs = inject(DialogService);
+  private readonly injector = inject(Injector);
+  readonly width = input<DialogWidth>('md');
+
+  protected stack(): void {
+    this.dialogs.open(ConfirmStoryDialog, {
+      inputs: { width: 'sm' },
+      injector: this.injector,
+    });
+  }
+}
+
+@Component({
+  selector: 'ea-dialog-story-launcher',
+  imports: [ButtonComponent],
+  template: `
+    <div class="story-stack">
+      <ea-button (clicked)="launch()">Open from code</ea-button>
+      <p role="status">{{ outcome() }}</p>
+    </div>
+  `,
+})
+class DialogStoryLauncher {
+  private readonly dialogs = inject(DialogService);
+  readonly width = input<DialogWidth>('md');
+  protected readonly outcome = signal('');
+
+  protected async launch(): Promise<void> {
+    const ref = this.dialogs.open<boolean>(ConfirmStoryDialog, {
+      inputs: { width: this.width() },
+    });
+    this.outcome.set(`Resolved with ${String(await ref.result)}`);
+  }
+}
 
 const meta: Meta<DialogComponent> = {
   title: 'Components/Dialog',
@@ -53,5 +117,31 @@ export const InteractionTest: Story = {
     await userEvent.click(within(dialog).getByRole('button', { name: /confirm/i }));
 
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  },
+};
+
+export const FromCode: Story = {
+  render: args => ({
+    props: { width: args.width },
+    moduleMetadata: { imports: [DialogStoryLauncher] },
+    template: `<ea-dialog-story-launcher [width]="width" />`,
+  }),
+};
+
+export const FromCodeInteractionTest: Story = {
+  ...FromCode,
+  tags: ['!autodocs'],
+  parameters: { chromatic: { disableSnapshot: true } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('button', { name: /open from code/i }));
+    const dialog = await screen.findByRole('dialog');
+    await userEvent.click(within(dialog).getByRole('button', { name: /confirm/i }));
+
+    await waitFor(() =>
+      expect(canvas.getByRole('status')).toHaveTextContent('Resolved with true'),
+    );
+    await expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   },
 };

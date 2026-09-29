@@ -1,3 +1,5 @@
+@let menu = messages().ui.component.demos.menu;
+
 <web-ui-component-demo-layout
   [slug]="slug"
   [bare]="true">
@@ -8,13 +10,23 @@
     [state]="state()"
     [extraAttributes]="extraAttributes"
     [childMarkup]="childMarkup"
+    [extraSnippet]="extraSnippet()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <ea-button
-      [eaMenuTrigger]="menuRef"
-      [disabled]="state().disabled">
-      {{ messages().ui.component.demos.menu.openButton }}
-    </ea-button>
+    @if (onRightClick()) {
+      <div
+        class="demo-context-area"
+        tabindex="0"
+        [eaContextMenuTrigger]="menuRef">
+        {{ messages().ui.component.common.rightClickHere }}
+      </div>
+    } @else {
+      <ea-button
+        [eaMenuTrigger]="menuRef"
+        [disabled]="state().disabled">
+        {{ menu.openButton }}
+      </ea-button>
+    }
     <ea-menu
       #menuRef
       [placement]="state().placement"
@@ -22,15 +34,17 @@
       [disabled]="state().disabled"
       [maxHeight]="state().maxHeight"
       [aria-label]="state().ariaLabel">
-      <ea-menu-item>{{ messages().ui.component.demos.menu.edit }}</ea-menu-item>
-      <ea-menu-item>
-        {{ messages().ui.component.demos.menu.duplicate }}
+      <ea-menu-item (clicked)="choose(menu.edit)">{{ menu.edit }}</ea-menu-item>
+      <ea-menu-item (clicked)="choose(menu.duplicate)">
+        {{ menu.duplicate }}
       </ea-menu-item>
-      <ea-menu-item>
-        {{ messages().ui.component.demos.menu.archive }}
+      <ea-menu-item (clicked)="choose(menu.archive)">
+        {{ menu.archive }}
       </ea-menu-item>
-      <ea-menu-item variant="danger">
-        {{ messages().ui.component.demos.menu.delete }}
+      <ea-menu-item
+        variant="danger"
+        (clicked)="choose(menu.delete)">
+        {{ menu.delete }}
       </ea-menu-item>
     </ea-menu>
   </web-component-playground>

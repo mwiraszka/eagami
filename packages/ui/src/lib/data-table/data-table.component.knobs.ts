@@ -24,8 +24,17 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     stickyHeader: { control: 'boolean' },
     navigable: { control: 'boolean' },
     clickable: { control: 'boolean' },
+    loading: { control: 'boolean' },
+    loadingRowCount: {
+      control: 'number',
+      min: 0,
+      max: 20,
+      maxLength: 2,
+      if: { arg: 'loading', eq: true },
+    },
     sorted: { action: 'sorted' },
     rowActivate: { action: 'rowActivate' },
+    rowContextMenu: { action: 'rowContextMenu' },
   },
   args: {
     caption: '',
@@ -38,5 +47,7 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     stickyHeader: false,
     navigable: false,
     clickable: false,
+    loading: false,
+    loadingRowCount: 5,
   },
 };

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuItemComponent } from './menu-item.component';
@@ -26,6 +26,7 @@ import { MenuComponent, type MenuPlacement } from './menu.component';
   `,
 })
 class TestHostComponent {
+  readonly menu = viewChild.required(MenuComponent);
   isOpen = signal(false);
   placement = signal<MenuPlacement>('bottom-start');
   disabled = signal(false);
@@ -287,6 +288,98 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
 
       expect(host.deleteCount).toBe(1);
+    });
+  });
+
+  describe('As a context menu', () => {
+    let outside: HTMLButtonElement;
+
+    function getSurface(): HTMLElement {
+      return document.body.querySelector<HTMLElement>('.ea-popover__surface')!;
+    }
+
+    beforeEach(() => {
+      outside = document.createElement('button');
+      document.body.appendChild(outside);
+    });
+
+    afterEach(() => {
+      outside.remove();
+    });
+
+    it('opens at the point it was asked for', async () => {
+      host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
+      fixture.detectChanges();
+      await fixture.whenStable();
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(true);
+      expect(getSurface().style.top).toBe('62px');
+      expect(getSurface().style.left).toBe('50px');
+    });
+
+    it('focuses the first item', async () => {
+      host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(document.activeElement).toBe(getItems()[0]);
+    });
+
+    it('does not open while disabled', () => {
+      host.disabled.set(true);
+      fixture.detectChanges();
+
+      host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('closes on a click on its anchor', () => {
+      host.menu().openAsContextMenu(outside, { x: 50, y: 60 });
+      fixture.detectChanges();
+
+      outside.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('closes on a right-click elsewhere', () => {
+      host.menu().openAsContextMenu(outside, { x: 50, y: 60 });
+      fixture.detectChanges();
+
+      getTrigger().dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+      fixture.detectChanges();
+
+      expect(host.isOpen()).toBe(false);
+    });
+
+    it('hands focus back to where it was, not to its anchor, once an item is chosen', async () => {
+      outside.focus();
+      host.menu().openAsContextMenu(getTrigger(), { x: 50, y: 60 });
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      getItems()[0].click();
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(outside);
+    });
+
+    it('opens against its trigger again when next opened the usual way', () => {
+      getTrigger().getBoundingClientRect = () => new DOMRect(10, 20, 80, 30);
+      host.menu().openAsContextMenu(getTrigger(), { x: 500, y: 500 });
+      fixture.detectChanges();
+      host.menu().close();
+      fixture.detectChanges();
+
+      host.menu().openAt(getTrigger());
+      fixture.detectChanges();
+      fixture.detectChanges();
+
+      expect(getSurface().style.top).toBe('52px');
+      expect(getSurface().style.left).toBe('10px');
     });
   });
 

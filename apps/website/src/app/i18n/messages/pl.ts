@@ -637,6 +637,7 @@ export const pl: WebMessages = {
         save: 'Zapisz',
         close: 'Zamknij',
         confirm: 'Potwierdź',
+        rightClickHere: 'Kliknij tutaj prawym przyciskiem',
         disabled: 'Wyłączony',
         defaultLabel: 'Domyślny',
         successLabel: 'Sukces',
@@ -771,6 +772,11 @@ export const pl: WebMessages = {
           tableColumnLastName: 'Nazwisko',
           tableColumnAdmin: 'Administrator',
           tableColumnPosts: 'Posty',
+          rowMenuHint: 'Kliknij wiersz prawym przyciskiem, aby zobaczyć jego akcje.',
+          rowMenuLabel: 'Akcje wiersza',
+          rowMenuView: 'Pokaż szczegóły',
+          rowMenuDelete: 'Usuń',
+          rowMenuToast: (action, name) => `Wybrano „${action}” dla: ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Spotkanie',
@@ -787,6 +793,8 @@ export const pl: WebMessages = {
           openButton: 'Otwórz okno',
           title: 'Tytuł okna',
           body: 'To jest treść okna dialogowego. Obsługuje dowolną zawartość, w tym formularze, tekst i inne komponenty.',
+          pressedToast: label => `Naciśnięto „${label}”.`,
+          dismissedToast: 'Okno zamknięto bez wyboru.',
         },
         divider: {
           orLabel: 'lub',
@@ -867,6 +875,7 @@ export const pl: WebMessages = {
           open: 'Otwórz',
           saveUnavailable: 'Zapisz (niedostępne)',
           saveAs: 'Zapisz jako',
+          chosenToast: item => `Wybrano „${item}”.`,
         },
         popover: {
           openLabel: 'Otwórz popover',
@@ -1125,6 +1134,9 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          dialog: { openWith: 'Otwórz przez' },
+          menu: { opensOn: 'Otwiera się po' },
+          popover: { opensOn: 'Otwiera się po' },
           accordion: { highlightExpanded: 'Wyróżnij otwarte elementy' },
           'bar-chart': {
             orientation: 'Orientacja',
@@ -1405,7 +1417,10 @@ export const pl: WebMessages = {
             required: 'Wymagane',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(tylko semantycznie)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(tylko semantycznie)' },
+          dialog: { openWith: 'Oba otwierają to samo okno.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1503,16 +1518,20 @@ export const pl: WebMessages = {
             size: 'Wizualny rozmiar stosowany do każdego powiadomienia w stosie.',
             position: 'Róg lub krawędź okna, do której przypięty jest stos powiadomień.',
             clearable: 'Pokazuje przycisk zamknięcia na każdym powiadomieniu.',
-            show: 'Pokazuje powiadomienie i zwraca jego id. Jego treść i tytuł przyjmują zwykły tekst albo segmenty z wyróżnieniem.',
-            success: 'Pokazuje powiadomienie o powodzeniu i zwraca jego id.',
-            error: 'Pokazuje powiadomienie o błędzie i zwraca jego id.',
-            warning: 'Pokazuje powiadomienie ostrzegawcze i zwraca jego id.',
-            info: 'Pokazuje powiadomienie informacyjne i zwraca jego id.',
-            dismiss: 'Usuwa powiadomienie o podanym id, jeśli nadal jest widoczne.',
-            clear: 'Usuwa wszystkie widoczne obecnie powiadomienia.',
-            pause:
+            'ToastService.show':
+              'Pokazuje powiadomienie i zwraca jego id. Jego treść i tytuł przyjmują zwykły tekst albo segmenty z wyróżnieniem.',
+            'ToastService.success':
+              'Pokazuje powiadomienie o powodzeniu i zwraca jego id.',
+            'ToastService.error': 'Pokazuje powiadomienie o błędzie i zwraca jego id.',
+            'ToastService.warning':
+              'Pokazuje powiadomienie ostrzegawcze i zwraca jego id.',
+            'ToastService.info': 'Pokazuje powiadomienie informacyjne i zwraca jego id.',
+            'ToastService.dismiss':
+              'Usuwa powiadomienie o podanym id, jeśli nadal jest widoczne.',
+            'ToastService.clear': 'Usuwa wszystkie widoczne obecnie powiadomienia.',
+            'ToastService.pause':
               'Wstrzymuje każde odliczanie do automatycznego zamknięcia, zachowując czas pozostały każdemu powiadomieniu.',
-            resume: 'Wznawia odliczania wstrzymane przez pause.',
+            'ToastService.resume': 'Wznawia odliczania wstrzymane przez pause.',
           },
           input: {
             spellcheck:
@@ -2017,6 +2036,12 @@ export const pl: WebMessages = {
             updateImageDarkness:
               'Próbkuje widoczny obszar kadrowania, aby określić czy obraz jest ciemniejszy niż średnia szarość.',
           },
+          'context-menu-trigger': {
+            target:
+              'ea-menu lub ea-popover otwierany jako menu kontekstowe elementu hosta; null pozostawia menu przeglądarki.',
+            contextMenuPosition:
+              'Gdzie otwiera się cel: pointer otwiera go przy wskaźniku, a z klawiatury pod elementem z fokusem; anchor otwiera go w jego pozycji względem hosta.',
+          },
           'menu-trigger': {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',
           },
@@ -2201,6 +2226,8 @@ export const pl: WebMessages = {
             focusFirstItem:
               'Przenosi fokus klawiatury na pierwszy dostępny element menu.',
             onPopoverCloseRequested: 'Zamyka menu, gdy użytkownik kliknie poza nim.',
+            openAsContextMenu:
+              'Otwiera menu jako menu kontekstowe elementu, w punkcie obszaru widoku lub przy elemencie, i po zamknięciu przywraca fokus tam, gdzie był.',
             openAt:
               'Otwiera menu zakotwiczone do podanego elementu wyzwalacza i ustawia fokus na pierwszym elemencie.',
             toggleAt:
@@ -2350,6 +2377,12 @@ export const pl: WebMessages = {
             offset: 'Odstęp w px między kotwicą a powierzchnią popovera.',
             open: 'Określa, czy popover jest aktualnie otwarty.',
             placement: 'Preferowana pozycja popovera względem jego kotwicy.',
+            anchorPoint:
+              'Punkt w obszarze widoku, względem którego popover się pozycjonuje zamiast kotwicy, np. tam, gdzie zażądano menu kontekstowego; podczas przewijania strony zachowuje swoje przesunięcie względem kotwicy.',
+            contextMenu:
+              'Sprawia, że popover działa jak menu kontekstowe: przejmuje fokus po wyświetleniu i oddaje go przy zamknięciu, a kliknięcie kotwicy lub kliknięcie prawym przyciskiem gdziekolwiek poza nim go zamyka.',
+            openRequested:
+              'Emitowane, gdy wyzwalacz taki jak eaContextMenuTrigger żąda otwarcia popovera, wraz z punktem, w którym ma się otworzyć; rodzic powinien odzwierciedlić to w [open] i [anchorPoint].',
             role: 'Rola ARIA stosowana do powierzchni popovera.',
             scrollBehavior:
               'Zachowanie popovera podczas zdarzeń przewijania i zmiany rozmiaru gdy jest otwarty: reposition, close lub ignore.',
@@ -2399,6 +2432,12 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            loading:
+              'Pokazuje wiersze zastępcze zamiast danych podczas ich ładowania i oznacza tabelę jako zajętą dla technologii wspomagających.',
+            loadingRowCount:
+              'Liczba wierszy zastępczych wyświetlanych podczas ładowania.',
+            rowContextMenu:
+              'Emitowane, gdy zażądano menu kontekstowego wiersza danych prawym przyciskiem, długim naciśnięciem lub Shift+F10, wraz z wierszem, jego elementem, punktem do otwarcia menu i zdarzeniem.',
             nowrap:
               'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
             rowHref:
@@ -2572,6 +2611,10 @@ export const pl: WebMessages = {
             closed:
               'Emitowane po zamknięciu okna dialogowego, niezależnie od tego, czy zamknął je użytkownik, czy nastąpiło to programowo.',
             opened: 'Emitowane po wyświetleniu okna dialogowego przez showModal().',
+            'DialogService.open':
+              'Renderuje komponent jako okno dialogowe i zwraca jego DialogRef, którego result rozstrzyga się wartością, z jaką okno zostało zamknięte, lub wartością undefined, gdy zostało odrzucone. Przyjmuje wartości wejść i injector.',
+            'DialogService.closeAll':
+              'Zamyka każde okno dialogowe z sygnału dialogs, zaczynając od najnowszego, i rozstrzyga każdy result wartością undefined.',
           },
         },
         direction: 'Kierunek',

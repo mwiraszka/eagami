@@ -1,3 +1,5 @@
+@let table = messages().ui.component.demos.dataTable;
+
 <web-ui-component-demo-layout
   [slug]="slug"
   [bare]="true">
@@ -14,6 +16,7 @@
       [class.demo-sticky-table]="state().stickyHeader"
       [columns]="tableColumns()"
       [data]="tableData"
+      [sizingRows]="tableData"
       [caption]="state().caption"
       [density]="state().density"
       [size]="state().size"
@@ -23,6 +26,22 @@
       [hoverable]="state().hoverable"
       [stickyHeader]="state().stickyHeader"
       [navigable]="state().navigable"
-      [clickable]="state().clickable" />
+      [clickable]="state().clickable"
+      [loading]="state().loading"
+      [loadingRowCount]="state().loadingRowCount"
+      (rowContextMenu)="openRowMenu(rowMenu, $event)" />
+    <p class="demo-hint">{{ table.rowMenuHint }}</p>
+    <ea-menu
+      #rowMenu
+      [aria-label]="table.rowMenuLabel">
+      <ea-menu-item (clicked)="chooseRowAction(table.rowMenuView)">
+        {{ table.rowMenuView }}
+      </ea-menu-item>
+      <ea-menu-item
+        variant="danger"
+        (clicked)="chooseRowAction(table.rowMenuDelete)">
+        {{ table.rowMenuDelete }}
+      </ea-menu-item>
+    </ea-menu>
   </web-component-playground>
 </web-ui-component-demo-layout>

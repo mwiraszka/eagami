@@ -1,6 +1,6 @@
 import { axe } from 'vitest-axe';
 
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { revealPopoverSurfaces } from '../../test-setup';
@@ -22,6 +22,7 @@ import { MenuComponent } from './menu.component';
   `,
 })
 class HostComponent {
+  readonly menu = viewChild.required(MenuComponent);
   isOpen = signal(false);
 }
 
@@ -67,6 +68,19 @@ describe('MenuComponent a11y', () => {
       rules: { region: { enabled: false } },
     });
     fixture.destroy();
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when open as a context menu', async () => {
+    const { fixture, el } = await render();
+    fixture.componentInstance
+      .menu()
+      .openAsContextMenu(el.querySelector<HTMLElement>('button')!, { x: 40, y: 40 });
+    fixture.detectChanges();
+    const [surface] = revealPopoverSurfaces();
+
+    const results = await axe(surface);
 
     expect(results).toHaveNoViolations();
   });

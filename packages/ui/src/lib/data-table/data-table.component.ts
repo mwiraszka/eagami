@@ -16,12 +16,18 @@ import {
   untracked,
 } from '@angular/core';
 
+import {
+  contextMenuPoint,
+  isContextMenuShortcut,
+} from '../context-menu/context-menu-request';
 import { isRtl } from '../direction';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArrowDownIconComponent } from '../icons/arrow-down.component';
 import { ArrowUpIconComponent } from '../icons/arrow-up.component';
 import { ChevronsUpDownIconComponent } from '../icons/chevrons-up-down.component';
+import { type PopoverAnchorPoint } from '../popover/popover-positioning';
 import { type EaSize } from '../sizes';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 /** Vertical density preset for table rows and header cells. */
 export type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
@@ -48,6 +54,20 @@ export interface DataTableColumn<T = Record<string, unknown>> {
   format?: (value: unknown) => string;
   cellTemplate?: TemplateRef<{ $implicit: T; value: unknown }>;
   headerTemplate?: TemplateRef<{ $implicit: DataTableColumn<T> }>;
+  /** Shown in this column's cells while the table is `loading`, in place of a skeleton bar. */
+  placeholderTemplate?: TemplateRef<{ $implicit: DataTableColumn<T>; index: number }>;
+}
+
+/** A body row's context-menu request, as `rowContextMenu` emits it. */
+export interface DataTableRowContextMenuEvent<T = Record<string, unknown>> {
+  /** The row's data. */
+  readonly row: T;
+  /** The row's `<tr>`, for anchoring a menu or popover to the row. */
+  readonly rowElement: HTMLElement;
+  /** Where to open a menu: the pointer, or below the focused row or cell for a keyboard request. */
+  readonly point: PopoverAnchorPoint;
+  /** The originating event; call `preventDefault()` on it to suppress the browser's own menu. */
+  readonly event: MouseEvent | KeyboardEvent;
 }
 
 /** Current sort state: which column is sorted and in which direction. */
@@ -70,6 +90,7 @@ export interface DataTableSortState {
     ChevronsUpDownIconComponent,
     NgClass,
     NgTemplateOutlet,
+    SkeletonComponent,
   ],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',
@@ -86,6 +107,10 @@ export class DataTableComponent<T = Record<string, unknown>> {
 
   // Rows skipped per PageUp/PageDown within the grid body
   private static readonly PAGE_JUMP = 10;
+
+  // Set by a Shift+F10 nobody claimed, so the `contextmenu` event the browser follows
+  // it with is not reported a second time; cleared by the key's release or a pointer press
+  private keyboardRequestPending = false;
 
   readonly columns = input.required<DataTableColumn<T>[]>();
   readonly data = input.required<T[]>();
@@ -122,6 +147,14 @@ export class DataTableComponent<T = Record<string, unknown>> {
    * A row given `null` is inert: no link, hover highlight, focus or activation.
    */
   readonly rowHref = input<((row: T) => string | null) | undefined>(undefined);
+  /**
+   * Shows placeholder rows in place of the data while it loads, and marks the table
+   * busy for assistive technology. A placeholder row stands as tall as a row of text,
+   * and `sizingRows` keep the columns at their loaded widths.
+   */
+  readonly loading = input<boolean>(false);
+  /** How many placeholder rows to show while `loading`. */
+  readonly loadingRowCount = input<number>(5);
 
   readonly sort = model<DataTableSortState>({ column: '', direction: null });
 
@@ -131,11 +164,27 @@ export class DataTableComponent<T = Record<string, unknown>> {
   /** Fires with the row's data when a body row is activated by click or Enter/Space while `clickable` is set. */
   readonly rowActivate = output<T>();
 
+  /**
+   * Fires when a body row's context menu is requested: by right-click or long press,
+   * or by Shift+F10 or the context-menu key with focus in the row. Call
+   * `event.preventDefault()` when opening a menu of your own.
+   */
+  readonly rowContextMenu = output<DataTableRowContextMenuEvent<T>>();
+
   readonly noDataTemplate = contentChild<TemplateRef<unknown>>('noData');
 
   /** Empty-state text, falling back to the active locale's translation. */
   readonly resolvedNoDataText = computed(
     () => this.noDataText() ?? this.i18n.messages().dataTable.noData,
+  );
+
+  readonly placeholderRows = computed(() =>
+    Array.from({ length: Math.max(0, Math.floor(this.loadingRowCount())) }, (_, i) => i),
+  );
+
+  // Placeholder rows hold nothing to navigate to, so a loading grid is its header alone
+  private readonly bodyRowCount = computed(() =>
+    this.loading() ? 0 : this.sortedData().length,
   );
 
   readonly hostClasses = computed(() => ({
@@ -155,7 +204,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     // Keep the active cell in range as columns or row count change (sort, paging,
     // data swaps) so a stale index can't strand focus outside the grid.
     effect(() => {
-      const rows = this.sortedData().length;
+      const rows = this.bodyRowCount();
       const cols = this.columns().length;
       const { row, col } = untracked(this.activeCell);
       const nextRow = Math.min(row, rows);
@@ -288,6 +337,37 @@ export class DataTableComponent<T = Record<string, unknown>> {
     this.rowActivate.emit(row);
   }
 
+  // Reports a row's context-menu request. A `contextmenu` event trailing a Shift+F10
+  // that was already reported unclaimed is the browser's own follow-up, not a new request
+  onRowContextMenu(
+    row: T,
+    rowElement: HTMLElement,
+    event: MouseEvent | KeyboardEvent,
+  ): void {
+    if (event instanceof KeyboardEvent) {
+      if (!isContextMenuShortcut(event)) {
+        return;
+      }
+    } else if (this.keyboardRequestPending) {
+      this.keyboardRequestPending = false;
+      return;
+    }
+    this.rowContextMenu.emit({
+      row,
+      rowElement,
+      point: contextMenuPoint(event, rowElement),
+      event,
+    });
+    if (event instanceof KeyboardEvent && !event.defaultPrevented) {
+      this.keyboardRequestPending = true;
+    }
+  }
+
+  // Ends the window in which a browser follows an unclaimed Shift+F10 with `contextmenu`
+  clearKeyboardRequest(): void {
+    this.keyboardRequestPending = false;
+  }
+
   // Syncs roving focus when a cell is focused by mouse or keyboard tab
   onCellFocus(row: number, col: number): void {
     if (!this.navigable()) {
@@ -304,7 +384,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
       return;
     }
     const cols = this.columns().length;
-    const rows = this.sortedData().length;
+    const rows = this.bodyRowCount();
     if (cols === 0) {
       return;
     }

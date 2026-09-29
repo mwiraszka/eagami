@@ -450,6 +450,7 @@ export interface WebMessages {
         save: string;
         close: string;
         confirm: string;
+        rightClickHere: string;
         disabled: string;
         defaultLabel: string;
         successLabel: string;
@@ -579,6 +580,11 @@ export interface WebMessages {
           tableColumnLastName: string;
           tableColumnAdmin: string;
           tableColumnPosts: string;
+          rowMenuHint: string;
+          rowMenuLabel: string;
+          rowMenuView: string;
+          rowMenuDelete: string;
+          rowMenuToast: (action: string, name: string) => string;
         };
         datePicker: {
           appointmentLabel: string;
@@ -595,6 +601,8 @@ export interface WebMessages {
           openButton: string;
           title: string;
           body: string;
+          pressedToast: (label: string) => string;
+          dismissedToast: string;
         };
         divider: {
           orLabel: string;
@@ -673,6 +681,7 @@ export interface WebMessages {
           open: string;
           saveUnavailable: string;
           saveAs: string;
+          chosenToast: (item: string) => string;
         };
         popover: {
           openLabel: string;

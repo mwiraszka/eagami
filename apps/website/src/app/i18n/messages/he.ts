@@ -622,6 +622,7 @@ export const he: WebMessages = {
         save: 'שמירה',
         close: 'סגירה',
         confirm: 'אישור',
+        rightClickHere: 'לחצו כאן לחיצה ימנית',
         disabled: 'מושבת',
         defaultLabel: 'ברירת מחדל',
         successLabel: 'הצלחה',
@@ -755,6 +756,11 @@ export const he: WebMessages = {
           tableColumnLastName: 'שם משפחה',
           tableColumnAdmin: 'מנהל',
           tableColumnPosts: 'פוסטים',
+          rowMenuHint: 'לחצו לחיצה ימנית על שורה כדי לראות את הפעולות שלה.',
+          rowMenuLabel: 'פעולות שורה',
+          rowMenuView: 'הצגת פרטים',
+          rowMenuDelete: 'מחיקה',
+          rowMenuToast: (action, name) => `נבחר „${action}“ עבור ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'פגישה',
@@ -771,6 +777,8 @@ export const he: WebMessages = {
           openButton: 'פתח דו-שיח',
           title: 'כותרת הדו-שיח',
           body: 'זהו גוף הדו-שיח. הוא תומך בכל תוכן כולל טפסים, טקסט ורכיבים אחרים.',
+          pressedToast: label => `נלחץ „${label}“.`,
+          dismissedToast: 'הדו-שיח נסגר ללא בחירה.',
         },
         divider: {
           orLabel: 'או',
@@ -850,6 +858,7 @@ export const he: WebMessages = {
           open: 'פתיחה',
           saveUnavailable: 'שמירה (לא זמין)',
           saveAs: 'שמירה בשם',
+          chosenToast: item => `נבחר „${item}“.`,
         },
         popover: {
           openLabel: 'פתח פופאובר',
@@ -1097,6 +1106,9 @@ export const he: WebMessages = {
         twoWayBadge: 'דו-כיווני',
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
+          dialog: { openWith: 'פתיחה באמצעות' },
+          menu: { opensOn: 'נפתח בלחיצה' },
+          popover: { opensOn: 'נפתח בלחיצה' },
           accordion: { highlightExpanded: 'הדגשת פריטים פתוחים' },
           'bar-chart': {
             orientation: 'כיוון',
@@ -1377,7 +1389,10 @@ export const he: WebMessages = {
             required: 'חובה',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(סמנטי בלבד)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(סמנטי בלבד)' },
+          dialog: { openWith: 'שניהם פותחים את אותו דו-שיח.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1465,15 +1480,17 @@ export const he: WebMessages = {
             size: 'הגודל הוויזואלי המוחל על כל toast בערימה.',
             position: 'הפינה או הקצה של אזור התצוגה שאליו מוצמדת ערימת ה-toast.',
             clearable: 'הצג כפתור סגירה על כל toast.',
-            show: 'מציג toast ומחזיר את המזהה שלו. ההודעה והכותרת מקבלות מחרוזת רגילה או מקטעי הדגשה.',
-            success: 'מציג toast של הצלחה ומחזיר את המזהה שלו.',
-            error: 'מציג toast של שגיאה ומחזיר את המזהה שלו.',
-            warning: 'מציג toast של אזהרה ומחזיר את המזהה שלו.',
-            info: 'מציג toast של מידע ומחזיר את המזהה שלו.',
-            dismiss: 'מסיר את ה-toast בעל המזהה הנתון, אם הוא עדיין מוצג.',
-            clear: 'מסיר כל toast שמוצג כרגע.',
-            pause: 'משהה כל ספירה לאחור לסגירה אוטומטית ושומר את הזמן שנותר לכל toast.',
-            resume: 'ממשיך את הספירות לאחור שהושהו על ידי pause.',
+            'ToastService.show':
+              'מציג toast ומחזיר את המזהה שלו. ההודעה והכותרת מקבלות מחרוזת רגילה או מקטעי הדגשה.',
+            'ToastService.success': 'מציג toast של הצלחה ומחזיר את המזהה שלו.',
+            'ToastService.error': 'מציג toast של שגיאה ומחזיר את המזהה שלו.',
+            'ToastService.warning': 'מציג toast של אזהרה ומחזיר את המזהה שלו.',
+            'ToastService.info': 'מציג toast של מידע ומחזיר את המזהה שלו.',
+            'ToastService.dismiss': 'מסיר את ה-toast בעל המזהה הנתון, אם הוא עדיין מוצג.',
+            'ToastService.clear': 'מסיר כל toast שמוצג כרגע.',
+            'ToastService.pause':
+              'משהה כל ספירה לאחור לסגירה אוטומטית ושומר את הזמן שנותר לכל toast.',
+            'ToastService.resume': 'ממשיך את הספירות לאחור שהושהו על ידי pause.',
           },
           input: {
             spellcheck:
@@ -1920,6 +1937,12 @@ export const he: WebMessages = {
             updateImageDarkness:
               'דוגם את אזור החיתוך הנראה כדי לקבוע אם התמונה כהה יותר מאפור בינוני.',
           },
+          'context-menu-trigger': {
+            target:
+              'ה-ea-menu או ה-ea-popover שנפתח כתפריט ההקשר של אלמנט המארח; null משאיר את תפריט הדפדפן.',
+            contextMenuPosition:
+              'היכן נפתח היעד: pointer פותח אותו ליד הסמן, או מתחת לאלמנט הממוקד מהמקלדת; anchor פותח אותו במיקום שלו ביחס למארח.',
+          },
           'menu-trigger': {
             menu: 'מופע ea-menu שטריגר זה שולט בו.',
           },
@@ -2080,6 +2103,8 @@ export const he: WebMessages = {
             close: 'סוגר את התפריט ובאופן אופציונלי מחזיר את הפוקוס לאלמנט הטריגר.',
             focusFirstItem: 'מעביר את פוקוס המקלדת לפריט המאופשר הראשון בתפריט.',
             onPopoverCloseRequested: 'סוגר את התפריט כשהמשתמש לוחץ מחוצה לו.',
+            openAsContextMenu:
+              'פותח את התפריט כתפריט ההקשר של אלמנט, בנקודה באזור התצוגה או ביחס לאלמנט, ומחזיר את המיקוד למקומו בסגירה.',
             openAt: 'פותח את התפריט מעוגן לאלמנט הטריגר הנתון וממקד את הפריט הראשון.',
             toggleAt: 'מחליף את מצב הפתיחה של התפריט, ומעגן אותו לאלמנט הטריגר הנתון.',
           },
@@ -2214,6 +2239,12 @@ export const he: WebMessages = {
             offset: 'מרווח ב-px בין העוגן למשטח הפופאובר.',
             open: 'האם הפופאובר פתוח כעת.',
             placement: 'המיקום המועדף של הפופאובר ביחס לעוגן שלו.',
+            anchorPoint:
+              'נקודה באזור התצוגה שכלפיה ממוקם הפופאובר במקום העוגן, כמו המקום שבו התבקש תפריט הקשר; היא שומרת על ההיסט שלה מהעוגן בזמן גלילת הדף.',
+            contextMenu:
+              'גורם לפופאובר להתנהג כתפריט הקשר: הוא לוקח את המיקוד כשהוא מוצג ומחזיר אותו בסגירה, ולחיצה על העוגן או לחיצה ימנית בכל מקום מחוצה לו סוגרת אותו.',
+            openRequested:
+              'נורה כשטריגר כמו eaContextMenuTrigger מבקש לפתוח את הפופאובר, עם הנקודה שבה לפתוח אותו; האב צריך לשקף זאת ל-[open] ול-[anchorPoint].',
             role: 'תפקיד ARIA המוחל על משטח הפופאובר.',
             scrollBehavior:
               'כיצד הפופאובר מגיב לאירועי גלילה ושינוי גודל בזמן שהוא פתוח: reposition, close או ignore.',
@@ -2258,6 +2289,11 @@ export const he: WebMessages = {
             opened: 'נורה ברגע שהמגירה הוצגה.',
           },
           'data-table': {
+            loading:
+              'מציג שורות ממלאות מקום במקום הנתונים בזמן שהם נטענים, ומסמן את הטבלה כעסוקה עבור טכנולוגיות מסייעות.',
+            loadingRowCount: 'מספר השורות ממלאות המקום המוצגות בזמן הטעינה.',
+            rowContextMenu:
+              'נורה כשמתבקש תפריט ההקשר של שורת גוף בלחיצה ימנית, בלחיצה ארוכה או ב-Shift+F10, עם השורה, האלמנט שלה, נקודה לפתיחת תפריט והאירוע.',
             nowrap:
               'שומר כל תא בשורה אחת, כך שחלון צר גולל את הטבלה לצד במקום לשבור את הטקסט.',
             rowHref:
@@ -2407,6 +2443,10 @@ export const he: WebMessages = {
             width: 'הגדרת רוחב מוגדרת מראש לפאנל הדו-שיח.',
             closed: 'נורה כשהדו-שיח נסגר, ללא קשר אם נסגר על ידי המשתמש או תכנותית.',
             opened: 'נורה ברגע שהדו-שיח הוצג באמצעות showModal().',
+            'DialogService.open':
+              'מציג רכיב כדו-שיח ומחזיר את ה-DialogRef שלו, שה-result שלו מתיישב עם הערך שבו הדו-שיח נסגר, או עם undefined כשהוא נדחה. מקבל ערכי קלט ו-injector.',
+            'DialogService.closeAll':
+              'סוגר כל דו-שיח שבאות dialogs, מהחדש ביותר, ומיישב כל result עם undefined.',
           },
         },
         direction: 'כיוון',

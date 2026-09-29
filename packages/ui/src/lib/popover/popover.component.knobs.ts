@@ -19,6 +19,15 @@ export const POPOVER_KNOBS: ComponentKnobs = {
         'bottom-end',
         'left',
         'right',
+        'inside-top-start',
+        'inside-top',
+        'inside-top-end',
+        'inside-start',
+        'inside-center',
+        'inside-end',
+        'inside-bottom-start',
+        'inside-bottom',
+        'inside-bottom-end',
       ],
     },
     role: {
@@ -36,6 +45,7 @@ export const POPOVER_KNOBS: ComponentKnobs = {
     closeOnEscape: { control: 'boolean' },
     closeOnOutsideClick: { control: 'boolean' },
     closeRequested: { action: 'closeRequested' },
+    openRequested: { action: 'openRequested' },
   },
   args: {
     placement: 'bottom-start',

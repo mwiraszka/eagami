@@ -44,7 +44,8 @@ const RELATED_SLUGS: Readonly<Record<string, readonly string[]>> = {
   radio: ['radio-group'],
   accordion: ['accordion-item'],
   'form-field': ['field-label', 'field-messages'],
-  menu: ['menu-item', 'menu-trigger'],
+  menu: ['menu-item', 'menu-trigger', 'context-menu-trigger'],
+  popover: ['context-menu-trigger'],
   tabs: ['tab'],
   stepper: ['step'],
 };
@@ -119,15 +120,18 @@ export class ApiReferenceComponent {
         ...m,
         description: this.describe(slug, m.name),
       })),
-      service: api.service
-        ? {
-            ...api.service,
-            methods: api.service.methods.map(m => ({
-              ...m,
-              description: this.describe(slug, m.name),
-            })),
-          }
-        : null,
+      service: api.service ? this.toService(slug, api.service) : null,
+    };
+  }
+
+  // Keyed by service name so a method never shows a same-named member's text
+  private toService(slug: string, service: ServiceApi): ServiceApi {
+    return {
+      ...service,
+      methods: service.methods.map(m => ({
+        ...m,
+        description: this.describe(slug, `${service.name}.${m.name}`),
+      })),
     };
   }
 

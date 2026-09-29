@@ -613,6 +613,7 @@ export const zhCN: WebMessages = {
         save: '保存',
         close: '关闭',
         confirm: '确认',
+        rightClickHere: '在此处右键单击',
         disabled: '禁用',
         defaultLabel: '默认',
         successLabel: '成功',
@@ -745,6 +746,11 @@ export const zhCN: WebMessages = {
           tableColumnLastName: '姓',
           tableColumnAdmin: '管理员',
           tableColumnPosts: '帖子',
+          rowMenuHint: '右键单击某一行即可查看其操作。',
+          rowMenuLabel: '行操作',
+          rowMenuView: '查看详情',
+          rowMenuDelete: '删除',
+          rowMenuToast: (action, name) => `你为 ${name} 选择了“${action}”。`,
         },
         datePicker: {
           appointmentLabel: '预约',
@@ -761,6 +767,8 @@ export const zhCN: WebMessages = {
           openButton: '打开对话框',
           title: '对话框标题',
           body: '这是对话框正文。它支持任何内容，包括表单、文本和其他组件。',
+          pressedToast: label => `你点击了“${label}”。`,
+          dismissedToast: '你未做选择就关闭了对话框。',
         },
         divider: {
           orLabel: '或',
@@ -839,6 +847,7 @@ export const zhCN: WebMessages = {
           open: '打开',
           saveUnavailable: '保存（不可用）',
           saveAs: '另存为',
+          chosenToast: item => `你选择了“${item}”。`,
         },
         popover: {
           openLabel: '打开浮层',
@@ -1084,6 +1093,9 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          dialog: { openWith: '打开方式' },
+          menu: { opensOn: '触发方式' },
+          popover: { opensOn: '触发方式' },
           accordion: { highlightExpanded: '突出显示展开项' },
           'bar-chart': {
             orientation: '方向',
@@ -1364,7 +1376,10 @@ export const zhCN: WebMessages = {
             required: '必填',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(仅语义)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(仅语义)' },
+          dialog: { openWith: '两者打开的是同一个对话框。' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -1449,15 +1464,16 @@ export const zhCN: WebMessages = {
             size: '应用于堆栈中每个提示的视觉尺寸。',
             position: '提示堆栈固定到的视口角落或边缘。',
             clearable: '在每条提示上显示关闭按钮。',
-            show: '显示一条提示并返回其 id。其消息和标题均可接受纯字符串或强调分段。',
-            success: '显示一条成功提示并返回其 id。',
-            error: '显示一条错误提示并返回其 id。',
-            warning: '显示一条警告提示并返回其 id。',
-            info: '显示一条信息提示并返回其 id。',
-            dismiss: '移除具有给定 id 的提示（若其仍在显示）。',
-            clear: '移除当前显示的所有提示。',
-            pause: '暂停所有自动关闭倒计时，并保留每条提示的剩余时间。',
-            resume: '恢复被 pause 暂停的倒计时。',
+            'ToastService.show':
+              '显示一条提示并返回其 id。其消息和标题均可接受纯字符串或强调分段。',
+            'ToastService.success': '显示一条成功提示并返回其 id。',
+            'ToastService.error': '显示一条错误提示并返回其 id。',
+            'ToastService.warning': '显示一条警告提示并返回其 id。',
+            'ToastService.info': '显示一条信息提示并返回其 id。',
+            'ToastService.dismiss': '移除具有给定 id 的提示（若其仍在显示）。',
+            'ToastService.clear': '移除当前显示的所有提示。',
+            'ToastService.pause': '暂停所有自动关闭倒计时，并保留每条提示的剩余时间。',
+            'ToastService.resume': '恢复被 pause 暂停的倒计时。',
           },
           input: {
             spellcheck: '原生 spellcheck 属性的值，未设置时沿用浏览器默认行为。',
@@ -1863,6 +1879,12 @@ export const zhCN: WebMessages = {
             setZoom: '设置缩放级别，钳制到配置的 minZoom 和 maxZoom 范围内。',
             updateImageDarkness: '对可见裁剪区域进行采样，以判断图片是否比中灰更暗。',
           },
+          'context-menu-trigger': {
+            target:
+              '作为宿主元素上下文菜单打开的 ea-menu 或 ea-popover；为 null 时保留浏览器自带菜单。',
+            contextMenuPosition:
+              '目标的打开位置：pointer 在指针处打开，通过键盘时则在聚焦元素下方打开；anchor 按其相对于宿主的 placement 打开。',
+          },
           'menu-trigger': {
             menu: '此触发器所控制的 ea-menu 实例。',
           },
@@ -2004,6 +2026,8 @@ export const zhCN: WebMessages = {
             close: '关闭菜单，并可选地将焦点恢复到触发器元素。',
             focusFirstItem: '将键盘焦点移到菜单中第一个启用的项。',
             onPopoverCloseRequested: '当用户在菜单外点击时关闭菜单。',
+            openAsContextMenu:
+              '将菜单作为某元素的上下文菜单打开，位于视口中的某点或相对于该元素，关闭时将焦点归还原处。',
             openAt: '将菜单锚定到给定触发器元素并打开，聚焦第一个项。',
             toggleAt: '切换菜单的打开状态，将其锚定到给定的触发器元素。',
           },
@@ -2122,6 +2146,12 @@ export const zhCN: WebMessages = {
             offset: '锚点与浮层表面之间的间距（px）。',
             open: '浮层当前是否打开。',
             placement: '浮层相对于其锚点的首选位置。',
+            anchorPoint:
+              '用于代替锚点进行定位的视口坐标点，例如请求上下文菜单的位置；页面滚动时保持与锚点的相对偏移。',
+            contextMenu:
+              '让浮层表现为上下文菜单：显示后获取焦点、关闭时归还焦点，点击锚点或在其外部任意位置右键点击都会将其关闭。',
+            openRequested:
+              '当 eaContextMenuTrigger 等触发器请求打开浮层时触发，并附带打开位置；父级应将其映射到 [open] 和 [anchorPoint]。',
             role: '应用于浮层表面的 ARIA 角色。',
             scrollBehavior:
               '浮层打开时对滚动和缩放事件的响应方式：reposition、close 或 ignore。',
@@ -2163,6 +2193,10 @@ export const zhCN: WebMessages = {
             opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
+            loading: '数据加载期间以占位行代替数据显示，并向辅助技术将表格标记为忙碌。',
+            loadingRowCount: '加载期间显示的占位行数量。',
+            rowContextMenu:
+              '当通过右键点击、长按或 Shift+F10 请求数据行的上下文菜单时触发，附带该行数据、行元素、打开菜单的位置点及事件。',
             nowrap: '让每个单元格保持单行，窄视口会横向滚动表格而不是换行文字。',
             rowHref:
               '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。返回 null 的行保持惰性，没有链接、悬停高亮、焦点或激活。',
@@ -2292,6 +2326,10 @@ export const zhCN: WebMessages = {
             width: '对话框面板的宽度预设。',
             closed: '当对话框关闭时触发，无论它是由用户还是以编程方式关闭。',
             opened: '当对话框通过 showModal() 显示后触发一次。',
+            'DialogService.open':
+              '将组件作为对话框渲染并返回其 DialogRef；对话框关闭时，其 result 以关闭时传入的值兑现，被取消时则以 undefined 兑现。可传入输入值和 injector。',
+            'DialogService.closeAll':
+              '从最新的开始关闭 dialogs 信号中的每个对话框，并以 undefined 兑现每个 result。',
           },
         },
         direction: '方向',

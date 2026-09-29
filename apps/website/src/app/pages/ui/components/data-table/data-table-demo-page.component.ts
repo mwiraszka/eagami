@@ -2,7 +2,11 @@ import {
   type DataTableColumn,
   DataTableComponent,
   type DataTableDensity,
+  type DataTableRowContextMenuEvent,
   type DataTableSize,
+  MenuComponent,
+  MenuItemComponent,
+  ToastService,
 } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
@@ -38,9 +42,19 @@ interface DataTableKnobState {
   stickyHeader: boolean;
   navigable: boolean;
   clickable: boolean;
+  loading: boolean;
+  loadingRowCount: number;
 }
 
 const SLUG = 'data-table';
+
+interface DemoRow {
+  id: number;
+  firstName: string;
+  lastName: string;
+  admin: string;
+  posts: number;
+}
 
 @Component({
   selector: 'web-data-table-demo-page',
@@ -49,11 +63,14 @@ const SLUG = 'data-table';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     DataTableComponent,
+    MenuComponent,
+    MenuItemComponent,
     UiComponentDemoLayoutComponent,
     ComponentPlaygroundComponent,
   ],
 })
 export class DataTableDemoPageComponent {
+  private readonly toastService = inject(ToastService);
   protected readonly messages = inject(WebI18nService).messages;
 
   protected readonly slug = SLUG;
@@ -65,7 +82,7 @@ export class DataTableDemoPageComponent {
   /** The required `columns`/`data` are sample bindings the snippet should reflect. */
   protected readonly extraAttributes = ['[columns]="columns"', '[data]="data"'];
 
-  protected readonly tableColumns = computed<DataTableColumn[]>(() => {
+  protected readonly tableColumns = computed<DataTableColumn<DemoRow>[]>(() => {
     const cols = this.messages().ui.component.demos.dataTable;
     return [
       {
@@ -88,7 +105,7 @@ export class DataTableDemoPageComponent {
     ];
   });
 
-  protected readonly tableData = [
+  protected readonly tableData: DemoRow[] = [
     { id: 1, firstName: 'Alice', lastName: 'Johnson', admin: '', posts: 847 },
     { id: 2, firstName: 'René', lastName: 'Dupont', admin: '✓', posts: 12 },
     { id: 3, firstName: 'Charlie', lastName: 'García', admin: '', posts: 503 },
@@ -98,6 +115,30 @@ export class DataTableDemoPageComponent {
     { id: 7, firstName: 'Chloé', lastName: 'Lefèvre', admin: '', posts: 1034 },
     { id: 8, firstName: 'Søren', lastName: 'Berg', admin: '', posts: 4 },
   ];
+
+  // The row whose actions the menu is showing
+  private readonly menuRow = signal<DemoRow | null>(null);
+
+  protected openRowMenu(
+    menu: MenuComponent,
+    request: DataTableRowContextMenuEvent<DemoRow>,
+  ): void {
+    request.event.preventDefault();
+    this.menuRow.set(request.row);
+    menu.openAsContextMenu(request.rowElement, request.point);
+  }
+
+  protected chooseRowAction(action: string): void {
+    const row = this.menuRow();
+    if (row) {
+      this.toastService.info(
+        this.messages().ui.component.demos.dataTable.rowMenuToast(
+          action,
+          `${row.firstName} ${row.lastName}`,
+        ),
+      );
+    }
+  }
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as DataTableKnobState);

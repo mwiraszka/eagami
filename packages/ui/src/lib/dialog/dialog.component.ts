@@ -15,6 +15,7 @@ import {
   model,
   output,
   signal,
+  untracked,
   viewChild,
 } from '@angular/core';
 
@@ -24,6 +25,7 @@ import { PointerPressTracker } from '../pointer-press';
 import { ScrollLock } from '../scroll-lock';
 import { type EaWidth } from '../sizes';
 import { uniqueId } from '../unique-id';
+import { DialogRef } from './dialog-ref';
 
 /** Width preset of the dialog panel. */
 export type DialogWidth = EaWidth;
@@ -35,6 +37,9 @@ export type DialogWidth = EaWidth;
  * with an overlay, not with the page behind, so it never reads as a dismissal.
  */
 const FLOATING_SURFACES = 'dialog, .ea-popover__surface, .ea-tooltip, .ea-toast';
+
+// Each ref answers to one dialog: the first its content renders
+const boundRefs = new WeakSet<DialogRef<unknown>>();
 
 /**
  * Dialog backed by the native `<dialog>` element. Modal by default, using
@@ -51,6 +56,10 @@ const FLOATING_SURFACES = 'dialog, .ea-popover__surface, .ea-tooltip, .ea-toast'
  * `--ea-dialog-max-height`, `--ea-dialog-header-padding`,
  * `--ea-dialog-body-padding`, and `--ea-dialog-status-padding`; an
  * edge-to-edge media surface zeroes the inset, radius, and paddings.
+ *
+ * The first dialog rendered by a component opened through `DialogService`
+ * answers to its `DialogRef`: it opens as soon as it renders, and a dismissal
+ * closes the ref with `undefined`.
  *
  * Specs running under jsdom need `installNativeDialogShim()` from
  * `@eagami/ui/testing` before opening one.
@@ -72,6 +81,7 @@ export class DialogComponent implements AfterContentChecked {
   private readonly press = inject(PointerPressTracker);
   private readonly scrollLock = inject(ScrollLock);
   private holdsScroll = false;
+  private boundRef: DialogRef<unknown> | null = null;
 
   readonly width = input<DialogWidth>('md');
   /**
@@ -127,6 +137,13 @@ export class DialogComponent implements AfterContentChecked {
   }
 
   constructor() {
+    const ref = inject(DialogRef, { optional: true });
+    if (ref && !boundRefs.has(ref) && !untracked(ref.closed)) {
+      boundRefs.add(ref);
+      this.boundRef = ref;
+      this.open.set(true);
+    }
+
     effect(() => {
       const dialogRef = this.dialogEl()?.nativeElement;
       const open = this.open();
@@ -147,19 +164,32 @@ export class DialogComponent implements AfterContentChecked {
           }
           this.opened.emit();
         }
-      } else {
-        if (dialogRef.open) {
-          dialogRef.close();
-          this.dropScroll();
-          this.previouslyFocused?.focus?.();
-          this.previouslyFocused = null;
-        }
+      } else if (dialogRef.open) {
+        this.closeSurface();
       }
     });
 
     // A dialog taken down while open never sees its close, so the hold goes
-    // with the component
-    inject(DestroyRef).onDestroy(() => this.dropScroll());
+    // with the component. One opened from code is taken down by its ref
+    // closing, which reads as a close and hands focus back.
+    inject(DestroyRef).onDestroy(() => {
+      if (this.boundRef) {
+        boundRefs.delete(this.boundRef);
+        this.closeSurface();
+      } else {
+        this.dropScroll();
+      }
+    });
+  }
+
+  private closeSurface(): void {
+    const dialog = this.dialogEl()?.nativeElement;
+    if (dialog?.open) {
+      dialog.close();
+    }
+    this.dropScroll();
+    this.previouslyFocused?.focus?.();
+    this.previouslyFocused = null;
   }
 
   private holdScroll(): void {
@@ -179,6 +209,8 @@ export class DialogComponent implements AfterContentChecked {
   handleClose(): void {
     this.open.set(false);
     this.closed.emit();
+    // After `closed`, so a handler there can still close the ref with an answer
+    this.boundRef?.close();
   }
 
   /** Every close route the user can take, routed through `manualClose`. */

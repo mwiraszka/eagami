@@ -13,11 +13,16 @@ import {
   installTopLayerStubs,
 } from '../../test-setup';
 import {
+  type PopoverAnchorPoint,
   type PopoverPlacement,
   type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
-import { PopoverComponent, type PopoverScrollBehavior } from './popover.component';
+import {
+  PopoverComponent,
+  type PopoverOpenRequest,
+  type PopoverScrollBehavior,
+} from './popover.component';
 
 @Component({
   imports: [PopoverComponent],
@@ -31,11 +36,14 @@ import { PopoverComponent, type PopoverScrollBehavior } from './popover.componen
       [anchor]="trigger"
       [open]="open()"
       [placement]="placement()"
+      [anchorPoint]="anchorPoint()"
+      [contextMenu]="contextMenu()"
       [flip]="flip()"
       [matchAnchorWidth]="matchAnchorWidth()"
       [scrollBehavior]="scrollBehavior()"
       [closeOnOutsideClick]="closeOnOutsideClick()"
       [closeOnEscape]="closeOnEscape()"
+      (openRequested)="requests.push($event)"
       (closeRequested)="onClose()">
       <div class="popover-body">Popover body</div>
     </ea-popover>
@@ -45,6 +53,9 @@ import { PopoverComponent, type PopoverScrollBehavior } from './popover.componen
 class PopoverHostComponent {
   readonly open = signal<boolean>(false);
   readonly placement = signal<PopoverPlacement>('bottom-start');
+  readonly anchorPoint = signal<PopoverAnchorPoint | null>(null);
+  readonly contextMenu = signal<boolean>(false);
+  readonly requests: PopoverOpenRequest[] = [];
   readonly flip = signal<boolean>(true);
   readonly matchAnchorWidth = signal<boolean>(false);
   readonly scrollBehavior = signal<PopoverScrollBehavior>('reposition');
@@ -121,6 +132,27 @@ class TrapFocusHostComponent {
   `,
 })
 class UnanchoredHostComponent {}
+
+@Component({
+  imports: [PopoverComponent],
+  template: `
+    <button
+      #trigger
+      class="focus-anchor-btn">
+      Anchor
+    </button>
+    <ea-popover
+      [anchor]="trigger"
+      [open]="open()"
+      [contextMenu]="true"
+      (closeRequested)="open.set(false)">
+      <button class="focus-first">First</button>
+    </ea-popover>
+  `,
+})
+class ContextMenuFocusHostComponent {
+  readonly open = signal<boolean>(false);
+}
 
 describe('PopoverComponent', () => {
   let fixture: ComponentFixture<PopoverHostComponent>;
@@ -568,6 +600,174 @@ describe('PopoverComponent', () => {
       window.dispatchEvent(new Event('resize'));
 
       expect(measure).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Anchor point', () => {
+    it('positions against the point instead of the anchor box', async () => {
+      host.anchorPoint.set({ x: 400, y: 300 });
+
+      await openAnchoredAt(new DOMRect(200, 100, 80, 32));
+
+      expect(getSurface()?.style.top).toBe('302px');
+      expect(getSurface()?.style.left).toBe('400px');
+    });
+
+    it('keeps the point where it was on the anchor as the page scrolls', async () => {
+      host.anchorPoint.set({ x: 400, y: 300 });
+      await openAnchoredAt(new DOMRect(200, 100, 80, 32));
+      getAnchor().getBoundingClientRect = () => new DOMRect(200, 50, 80, 32);
+
+      document.body.dispatchEvent(new Event('scroll'));
+      fixture.detectChanges();
+
+      expect(getSurface()?.style.top).toBe('252px');
+      expect(getSurface()?.style.left).toBe('400px');
+    });
+
+    it('moves to a new point while open', async () => {
+      host.anchorPoint.set({ x: 400, y: 300 });
+      await openAnchoredAt(new DOMRect(200, 100, 80, 32));
+
+      host.anchorPoint.set({ x: 100, y: 200 });
+      fixture.detectChanges();
+      fixture.detectChanges();
+
+      expect(getSurface()?.style.top).toBe('202px');
+      expect(getSurface()?.style.left).toBe('100px');
+    });
+  });
+
+  describe('Context menu', () => {
+    let outside: HTMLElement;
+
+    beforeEach(() => {
+      outside = document.createElement('div');
+      document.body.appendChild(outside);
+    });
+
+    afterEach(() => {
+      outside.remove();
+    });
+
+    function openAsContextMenu(): void {
+      host.contextMenu.set(true);
+      host.open.set(true);
+      fixture.detectChanges();
+    }
+
+    it('emits openRequested with the point a trigger asks for', () => {
+      host.popover().requestOpen({ x: 10, y: 20 });
+
+      expect(host.requests).toEqual([{ point: { x: 10, y: 20 } }]);
+    });
+
+    it('closes on a click on the anchor, which does not toggle it', () => {
+      openAsContextMenu();
+
+      getAnchor().dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(1);
+    });
+
+    it('closes on a right-click anywhere outside the surface', () => {
+      openAsContextMenu();
+
+      outside.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(1);
+    });
+
+    it('closes on a right-click on the anchor, for a trigger there to reopen it', () => {
+      openAsContextMenu();
+
+      getAnchor().dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(1);
+    });
+
+    it('stays open on a right-click inside the surface', () => {
+      openAsContextMenu();
+
+      getSurface()!.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(0);
+    });
+
+    it('stays open on a right-click when outside clicks do not close it', () => {
+      host.closeOnOutsideClick.set(false);
+      openAsContextMenu();
+
+      outside.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(0);
+    });
+
+    it('leaves right-clicks alone when not a context menu', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      outside.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true }));
+
+      expect(host.closeCount()).toBe(0);
+    });
+
+    describe('focus', () => {
+      let focusFixture: ComponentFixture<ContextMenuFocusHostComponent>;
+      let anchor: HTMLButtonElement;
+
+      function first(): HTMLButtonElement {
+        return getSurface()!.querySelector<HTMLButtonElement>('.focus-first')!;
+      }
+
+      // jsdom lays nothing out, so the first control needs a client rect to count as rendered
+      async function openFromAnchor(): Promise<void> {
+        anchor.focus();
+        focusFixture.componentInstance.open.set(true);
+        focusFixture.detectChanges();
+        Object.defineProperty(first(), 'getClientRects', {
+          configurable: true,
+          value: () => [new DOMRect(0, 0, 10, 10)],
+        });
+        await nextFrame();
+        focusFixture.detectChanges();
+      }
+
+      beforeEach(() => {
+        focusFixture = TestBed.createComponent(ContextMenuFocusHostComponent);
+        focusFixture.detectChanges();
+        anchor = focusFixture.nativeElement.querySelector('.focus-anchor-btn');
+      });
+
+      afterEach(() => {
+        focusFixture.destroy();
+      });
+
+      it('moves focus to the first control once shown', async () => {
+        await openFromAnchor();
+
+        expect(document.activeElement).toBe(first());
+      });
+
+      it('hands focus back to where it was on close', async () => {
+        await openFromAnchor();
+
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+        focusFixture.detectChanges();
+
+        expect(document.activeElement).toBe(anchor);
+      });
+
+      it('leaves focus where the user moved it on close', async () => {
+        await openFromAnchor();
+        outside.tabIndex = -1;
+        outside.focus();
+
+        focusFixture.componentInstance.open.set(false);
+        focusFixture.detectChanges();
+
+        expect(document.activeElement).toBe(outside);
+      });
     });
   });
 
@@ -1045,5 +1245,158 @@ describe('computePopoverPosition', () => {
     );
 
     expect(result.left).toBe(900);
+  });
+
+  describe('inside placements', () => {
+    it('pins inside-top-start to the top start corner, inset by the offset', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-top-start', offset: 4 },
+      );
+
+      expect(result.top).toBe(104);
+      expect(result.left).toBe(204);
+      expect(result.placement).toBe('inside-top-start');
+    });
+
+    it('pins inside-top-start to the top right corner under RTL', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-top-start', offset: 4, rtl: true },
+      );
+
+      expect(result.left).toBe(396);
+    });
+
+    it('centres inside-start on the start edge', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-start', offset: 4 },
+      );
+
+      expect(result.top).toBe(200);
+      expect(result.left).toBe(204);
+    });
+
+    it('centres inside-end on the end edge, on the left under RTL', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-end', offset: 4, rtl: true },
+      );
+
+      expect(result.top).toBe(200);
+      expect(result.left).toBe(204);
+    });
+
+    it('pins inside-bottom-end to the bottom end corner', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-bottom-end', offset: 4 },
+      );
+
+      expect(result.top).toBe(296);
+      expect(result.left).toBe(396);
+    });
+
+    it('centres inside-top along the top edge', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-top', offset: 4 },
+      );
+
+      expect(result.top).toBe(104);
+      expect(result.left).toBe(300);
+    });
+
+    it('centres inside-center on both axes, ignoring the offset', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'inside-center', offset: 4 },
+      );
+
+      expect(result.top).toBe(200);
+      expect(result.left).toBe(300);
+    });
+
+    it('clamps both axes rather than flipping', () => {
+      const result = computePopoverPosition(
+        anchor(740, 900, 400, 60),
+        popoverRect,
+        viewport,
+        { placement: 'inside-top-start', offset: 4, margin: 8 },
+      );
+
+      expect(result.placement).toBe('inside-top-start');
+      expect(result.top).toBe(660);
+      expect(result.left).toBe(816);
+    });
+
+    it('lets an inside placement overflow when clamping is disabled', () => {
+      const result = computePopoverPosition(
+        anchor(740, 900, 400, 60),
+        popoverRect,
+        viewport,
+        { placement: 'inside-top-start', offset: 4, clamp: false },
+      );
+
+      expect(result.top).toBe(744);
+      expect(result.left).toBe(904);
+    });
+  });
+
+  describe('point', () => {
+    it('positions against the point as a zero-size anchor', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'bottom-start', offset: 4, point: { x: 500, y: 250 } },
+      );
+
+      expect(result.top).toBe(254);
+      expect(result.left).toBe(500);
+    });
+
+    it('flips above the point near the bottom edge', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        { placement: 'bottom-start', offset: 4, point: { x: 500, y: 700 } },
+      );
+
+      expect(result.placement).toBe('top-start');
+      expect(result.top).toBe(596);
+    });
+
+    it('still takes widths from the anchor itself', () => {
+      const result = computePopoverPosition(
+        anchor(100, 200, 400, 300),
+        popoverRect,
+        viewport,
+        {
+          placement: 'bottom-start',
+          matchAnchorWidth: true,
+          point: { x: 500, y: 250 },
+        },
+      );
+
+      expect(result.width).toBe(400);
+      expect(result.anchorWidth).toBe(400);
+    });
   });
 });
