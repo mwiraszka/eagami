@@ -28,6 +28,8 @@ export * from './lib/data-table/data-table.component';
 export * from './lib/code-input/code-input.component';
 export * from './lib/date-picker/date-picker.component';
 export * from './lib/dialog/dialog.component';
+export * from './lib/dialog/dialog-ref';
+export * from './lib/dialog/dialog.service';
 export * from './lib/divider/divider.component';
 export * from './lib/drawer/drawer.component';
 export * from './lib/dropdown/dropdown.component';

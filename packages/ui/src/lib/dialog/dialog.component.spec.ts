@@ -4,6 +4,7 @@ import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideEagamiUi } from '../eagami-ui.provider';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { frFR } from '../i18n/messages';
+import { DialogRef } from './dialog-ref';
 import { DialogComponent, type DialogWidth } from './dialog.component';
 
 // Mock HTMLDialogElement methods for jsdom
@@ -65,6 +66,40 @@ class NoHeaderHostComponent {
   isOpen = signal(true);
   showClose = signal(true);
 }
+
+@Component({
+  selector: 'ea-test-ref-host',
+  imports: [DialogComponent],
+  providers: [{ provide: DialogRef, useFactory: () => new DialogRef() }],
+  template: `
+    <ea-dialog>
+      <span slot="header">Opened from code</span>
+      <button
+        type="button"
+        class="inside">
+        Inside
+      </button>
+    </ea-dialog>
+  `,
+})
+class RefHostComponent {}
+
+@Component({
+  selector: 'ea-test-closed-ref-host',
+  imports: [DialogComponent],
+  providers: [
+    {
+      provide: DialogRef,
+      useFactory: () => {
+        const ref = new DialogRef();
+        ref.close();
+        return ref;
+      },
+    },
+  ],
+  template: `<ea-dialog><span slot="header">Already closed</span></ea-dialog>`,
+})
+class ClosedRefHostComponent {}
 
 describe('DialogComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;
@@ -531,5 +566,64 @@ describe('DialogComponent', () => {
         'Fermer la boîte de dialogue',
       );
     });
+  });
+});
+
+describe('DialogComponent bound to a DialogRef', () => {
+  let fixture: ComponentFixture<RefHostComponent>;
+  let ref: DialogRef;
+
+  function getDialog(): HTMLDialogElement {
+    return fixture.nativeElement.querySelector('dialog');
+  }
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RefHostComponent, ClosedRefHostComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(RefHostComponent);
+    ref = fixture.debugElement.injector.get(DialogRef);
+  });
+
+  it('opens as soon as it renders, with no open binding', () => {
+    fixture.detectChanges();
+
+    expect(getDialog().hasAttribute('open')).toBe(true);
+  });
+
+  it('closes the ref with undefined when dismissed', async () => {
+    fixture.detectChanges();
+
+    fixture.nativeElement.querySelector('.ea-dialog__close').click();
+
+    expect(ref.closed()).toBe(true);
+    expect(await ref.result).toBeUndefined();
+  });
+
+  it('shuts the dialog and hands focus back when taken down while open', () => {
+    const opener = document.createElement('button');
+    document.body.appendChild(opener);
+    opener.focus();
+    fixture.detectChanges();
+    const dialog = getDialog();
+    fixture.nativeElement.querySelector('.inside').focus();
+
+    fixture.destroy();
+
+    expect(dialog.hasAttribute('open')).toBe(false);
+    expect(document.activeElement).toBe(opener);
+    expect(document.documentElement.style.overflow).toBe('');
+    opener.remove();
+  });
+
+  it('stays closed for a ref that has already closed', () => {
+    const closedFixture = TestBed.createComponent(ClosedRefHostComponent);
+
+    closedFixture.detectChanges();
+
+    expect(closedFixture.nativeElement.querySelector('dialog').hasAttribute('open')).toBe(
+      false,
+    );
   });
 });
