@@ -1,9 +1,10 @@
 /**
- * Placement of the popover relative to its anchor. Each placement names the
- * side of the anchor the popover attaches to, optionally followed by a corner
+ * Placement of the popover relative to its anchor. Each outside placement names
+ * the side of the anchor the popover attaches to, optionally followed by a corner
  * suffix (`-start` or `-end`) that decides the alignment along the perpendicular
  * axis. The plain side names (`top`, `bottom`, `left`, `right`) centre the
- * popover on that axis.
+ * popover on that axis. The `inside-` placements sit over the anchor instead,
+ * see {@link PopoverInsidePlacement}.
  */
 export type PopoverPlacement =
   | 'top'
@@ -13,7 +14,33 @@ export type PopoverPlacement =
   | 'bottom-start'
   | 'bottom-end'
   | 'left'
-  | 'right';
+  | 'right'
+  | PopoverInsidePlacement;
+
+/**
+ * Placements that sit over the anchor rather than beside it: pinned inside one of
+ * its corners (`inside-top-start`), centred along one of its edges (`inside-top`,
+ * `inside-start`), or centred on it (`inside-center`). `start` and `end` follow the
+ * reading direction, so `inside-top-start` is the top-left corner in LTR and the
+ * top-right corner in RTL. The offset insets the popover from the edges it is
+ * pinned to, and it never flips.
+ */
+export type PopoverInsidePlacement =
+  | 'inside-top-start'
+  | 'inside-top'
+  | 'inside-top-end'
+  | 'inside-start'
+  | 'inside-center'
+  | 'inside-end'
+  | 'inside-bottom-start'
+  | 'inside-bottom'
+  | 'inside-bottom-end';
+
+/** A point in viewport coordinates, such as a pointer event's `clientX` and `clientY`. */
+export interface PopoverAnchorPoint {
+  readonly x: number;
+  readonly y: number;
+}
 
 export interface PopoverPositionResult {
   /** Top coordinate in viewport (px); pairs with `position: fixed`. */
@@ -42,6 +69,11 @@ export interface PopoverPositionOptions {
   readonly matchAnchorWidth?: boolean;
   /** Right-to-left context. Swaps `-start`/`-end` alignment so they track the reading direction. */
   readonly rtl?: boolean;
+  /**
+   * Viewport point to position against instead of the anchor's box, as a zero-size
+   * anchor. The anchor still supplies the width for `matchAnchorWidth`.
+   */
+  readonly point?: PopoverAnchorPoint | null;
 }
 
 interface Rect {
@@ -61,9 +93,15 @@ interface Viewport {
   readonly height: number;
 }
 
+type OutsidePlacement = Exclude<PopoverPlacement, PopoverInsidePlacement>;
+
+function isInside(placement: PopoverPlacement): placement is PopoverInsidePlacement {
+  return placement.startsWith('inside-');
+}
+
 /** True for cardinal placements that centre the popover on the perpendicular axis. */
 function isCardinal(
-  placement: PopoverPlacement,
+  placement: OutsidePlacement,
 ): placement is 'top' | 'bottom' | 'left' | 'right' {
   return (
     placement === 'top' ||
@@ -74,7 +112,7 @@ function isCardinal(
 }
 
 /** The dominant side of a placement (`top-start` and `top` both give `top`, etc.). */
-function side(placement: PopoverPlacement): 'top' | 'bottom' | 'left' | 'right' {
+function side(placement: OutsidePlacement): 'top' | 'bottom' | 'left' | 'right' {
   if (placement.startsWith('top')) {
     return 'top';
   }
@@ -88,7 +126,7 @@ function side(placement: PopoverPlacement): 'top' | 'bottom' | 'left' | 'right' 
 }
 
 /** Maps `top` to `bottom`, `bottom-start` to `top-start`, etc. for flip logic. */
-function flipPlacement(placement: PopoverPlacement): PopoverPlacement {
+function flipPlacement(placement: OutsidePlacement): OutsidePlacement {
   if (placement === 'top') {
     return 'bottom';
   }
@@ -117,7 +155,7 @@ function flipPlacement(placement: PopoverPlacement): PopoverPlacement {
 function placeRaw(
   anchor: AnchorRect,
   popover: Rect,
-  placement: PopoverPlacement,
+  placement: OutsidePlacement,
   offset: number,
   rtl: boolean,
 ): { top: number; left: number } {
@@ -150,6 +188,34 @@ function placeRaw(
   return { top, left };
 }
 
+/** Computes the top/left for an inside placement, inset from each edge it is pinned to. */
+function placeInside(
+  anchor: AnchorRect,
+  popover: Rect,
+  placement: PopoverInsidePlacement,
+  inset: number,
+  rtl: boolean,
+): { top: number; left: number } {
+  const edges = placement.slice('inside-'.length);
+  let top = anchor.top + (anchor.height - popover.height) / 2;
+  if (edges.startsWith('top')) {
+    top = anchor.top + inset;
+  } else if (edges.startsWith('bottom')) {
+    top = anchor.bottom - popover.height - inset;
+  }
+  let left = anchor.left + (anchor.width - popover.width) / 2;
+  if (edges.endsWith('start') || edges.endsWith('end')) {
+    const atLeft = edges.endsWith('start') !== rtl;
+    left = atLeft ? anchor.left + inset : anchor.right - popover.width - inset;
+  }
+  return { top, left };
+}
+
+/** Pulls `value` back inside `[margin, extent - size - margin]`, favouring the start edge. */
+function clampAxis(value: number, size: number, extent: number, margin: number): number {
+  return Math.max(margin, Math.min(value, Math.max(margin, extent - size - margin)));
+}
+
 /**
  * Computes the viewport-space top/left for a popover anchored to `anchorRect`,
  * applying optional flip-on-overflow and edge-clamp logic. Pure function, no
@@ -171,9 +237,41 @@ export function computePopoverPosition(
   const flip = options.flip ?? true;
   const clamp = options.clamp ?? true;
   const rtl = options.rtl ?? false;
+  const point = options.point;
+  const anchor: AnchorRect = point
+    ? {
+        top: point.y,
+        bottom: point.y,
+        left: point.x,
+        right: point.x,
+        width: 0,
+        height: 0,
+      }
+    : anchorRect;
+  const sizing = {
+    anchorWidth: anchorRect.width,
+    ...(options.matchAnchorWidth ? { width: anchorRect.width } : {}),
+  };
 
-  let placement = options.placement;
-  let pos = placeRaw(anchorRect, popoverRect, placement, offset, rtl);
+  const requested = options.placement;
+  if (isInside(requested)) {
+    // Covering the anchor is the point of an inside placement, so it has no side
+    // to flip to and both axes are fair game for the clamp
+    const inside = placeInside(anchor, popoverRect, requested, offset, rtl);
+    return {
+      top: clamp
+        ? clampAxis(inside.top, popoverRect.height, viewport.height, margin)
+        : inside.top,
+      left: clamp
+        ? clampAxis(inside.left, popoverRect.width, viewport.width, margin)
+        : inside.left,
+      placement: requested,
+      ...sizing,
+    };
+  }
+
+  let placement: OutsidePlacement = requested;
+  let pos = placeRaw(anchor, popoverRect, placement, offset, rtl);
 
   if (flip) {
     const overflowsTop = pos.top < margin;
@@ -190,7 +288,7 @@ export function computePopoverPosition(
 
     if (shouldFlip) {
       const flipped = flipPlacement(placement);
-      const flippedPos = placeRaw(anchorRect, popoverRect, flipped, offset, rtl);
+      const flippedPos = placeRaw(anchor, popoverRect, flipped, offset, rtl);
       const flippedFitsBetter =
         (s === 'top' &&
           flippedPos.top + popoverRect.height <= viewport.height - margin) ||
@@ -217,15 +315,13 @@ export function computePopoverPosition(
     const s = side(placement);
     const isVertical = s === 'top' || s === 'bottom';
     if (isVertical) {
-      const maxLeft = viewport.width - popoverRect.width - margin;
       pos = {
         top: pos.top,
-        left: Math.max(margin, Math.min(pos.left, Math.max(margin, maxLeft))),
+        left: clampAxis(pos.left, popoverRect.width, viewport.width, margin),
       };
     } else {
-      const maxTop = viewport.height - popoverRect.height - margin;
       pos = {
-        top: Math.max(margin, Math.min(pos.top, Math.max(margin, maxTop))),
+        top: clampAxis(pos.top, popoverRect.height, viewport.height, margin),
         left: pos.left,
       };
     }
@@ -235,7 +331,6 @@ export function computePopoverPosition(
     top: pos.top,
     left: pos.left,
     placement,
-    anchorWidth: anchorRect.width,
-    ...(options.matchAnchorWidth ? { width: anchorRect.width } : {}),
+    ...sizing,
   };
 }

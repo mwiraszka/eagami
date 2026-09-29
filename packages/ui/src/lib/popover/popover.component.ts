@@ -4,6 +4,7 @@ import {
   DestroyRef,
   ElementRef,
   HostListener,
+  afterRenderEffect,
   computed,
   effect,
   inject,
@@ -19,12 +20,19 @@ import { PointerPressTracker } from '../pointer-press';
 import { enterTopLayer, leaveTopLayer, topLayerHost } from '../top-layer';
 import { uniqueId } from '../unique-id';
 import {
+  type PopoverAnchorPoint,
   type PopoverPlacement,
   type PopoverPositionResult,
   computePopoverPosition,
 } from './popover-positioning';
 
 export type { PopoverPlacement } from './popover-positioning';
+
+/** What a trigger such as `[eaContextMenuTrigger]` asked for when requesting the popover open. */
+export interface PopoverOpenRequest {
+  /** Viewport point to open at, for the parent to bind to `[anchorPoint]`; `null` places it against the anchor. */
+  readonly point: PopoverAnchorPoint | null;
+}
 
 /** ARIA role to apply to the popover surface. */
 export type PopoverRole = 'menu' | 'listbox' | 'dialog' | 'tooltip' | 'grid';
@@ -54,7 +62,8 @@ export type PopoverMaxWidth = number | 'anchor';
  * `[open]` state and listens for `(closeRequested)` to mirror it back. Internal
  * library components (`<ea-menu>`, `<ea-dropdown>`, `<ea-color-picker>`,
  * `<ea-date-picker>`, `[eaTooltip]`) compose on top of it; downstream apps can
- * use it directly to build their own popover-based UI.
+ * use it directly to build their own popover-based UI. Set `contextMenu` and
+ * pair it with `[eaContextMenuTrigger]` to open it as a context menu.
  *
  * @example
  * ```html
@@ -96,6 +105,13 @@ export class PopoverComponent {
 
   /** Where the popover attaches relative to the anchor. */
   readonly placement = input<PopoverPlacement>('bottom-start');
+
+  /**
+   * Viewport point to position against instead of the anchor's box, such as where
+   * a context menu was requested. The placement applies around the point, which
+   * keeps its offset from the anchor as the page scrolls.
+   */
+  readonly anchorPoint = input<PopoverAnchorPoint | null>(null);
 
   /** ARIA role applied to the popover surface. */
   readonly role = input<PopoverRole>('dialog');
@@ -144,8 +160,21 @@ export class PopoverComponent {
   /** What to do on scroll / resize while open. */
   readonly scrollBehavior = input<PopoverScrollBehavior>('reposition');
 
+  /**
+   * Behaves as a context menu: moves focus to the first focusable element once
+   * shown and hands it back on close, and treats clicks on the anchor and
+   * context-menu requests anywhere outside the surface as outside clicks.
+   */
+  readonly contextMenu = input<boolean>(false);
+
   /** Requested close. The parent should mirror this into `[open]`. */
   readonly closeRequested = output<void>();
+
+  /**
+   * Requested open, from a trigger such as `[eaContextMenuTrigger]`. The parent
+   * should mirror this into `[open]`, and the point into `[anchorPoint]`.
+   */
+  readonly openRequested = output<PopoverOpenRequest>();
 
   private readonly position = signal<PopoverPositionResult | null>(null);
 
@@ -160,6 +189,12 @@ export class PopoverComponent {
     requested: PopoverPlacement;
     resolved: PopoverPlacement;
   } | null = null;
+
+  // The anchor point held as an offset from the anchor, so it scrolls with it
+  private pointOffset: { point: PopoverAnchorPoint; x: number; y: number } | null = null;
+
+  // Where focus was when a context-menu popover opened, handed back once it closes
+  private focusReturn: HTMLElement | null = null;
 
   /** True placement after flip, for class-based styling (e.g. arrow direction). */
   readonly effectivePlacement = computed(
@@ -258,6 +293,7 @@ export class PopoverComponent {
         this.position.set(null);
         this.stable.set(false);
         this.latched = null;
+        this.pointOffset = null;
         return;
       }
       // Join the top layer before the first measurement below, so a popover
@@ -267,6 +303,7 @@ export class PopoverComponent {
       enterTopLayer(surface, anchor);
       // Re-read inputs so signal subscriptions stay current after a re-open
       this.placement();
+      this.anchorPoint();
       this.offset();
       this.flip();
       this.clamp();
@@ -360,6 +397,39 @@ export class PopoverComponent {
       });
     }
 
+    if (typeof document !== 'undefined') {
+      effect(() => {
+        const isOpen = this.open();
+        const asContextMenu = this.contextMenu();
+        untracked(() => this.trackFocusReturn(isOpen && asContextMenu));
+      });
+
+      // The surface stays invisible until it has measured itself, and an invisible
+      // element cannot take focus, so this waits on that signal from the render phase
+      afterRenderEffect(() => {
+        if (this.contextMenu() && this.isPositioned()) {
+          untracked(() => this.focusFirstElement());
+        }
+      });
+
+      // Capture phase, so the popover has closed before a trigger further in reopens
+      // it at the new spot
+      const onContextMenu = (event: Event): void => {
+        if (!this.open() || !this.contextMenu() || !this.closeOnOutsideClick()) {
+          return;
+        }
+        const target = event.target instanceof Node ? event.target : null;
+        if (target && this.surfaceEl()?.nativeElement.contains(target)) {
+          return;
+        }
+        this.closeRequested.emit();
+      };
+      document.addEventListener('contextmenu', onContextMenu, true);
+      this.destroyRef.onDestroy(() =>
+        document.removeEventListener('contextmenu', onContextMenu, true),
+      );
+    }
+
     // Explicitly remove the portaled surface on destroy. Angular's view
     // destruction normally removes nodes the renderer created, but moving the
     // surface via raw `appendChild` (out of its original anchor slot) is
@@ -372,6 +442,11 @@ export class PopoverComponent {
       const surface = this.surfaceEl()?.nativeElement;
       surface?.parentNode?.removeChild(surface);
     });
+  }
+
+  // Raised by a trigger such as `[eaContextMenuTrigger]`; the parent decides whether to open
+  requestOpen(point: PopoverAnchorPoint | null): void {
+    this.openRequested.emit({ point });
   }
 
   private resolveAnchor(): HTMLElement | null {
@@ -411,6 +486,17 @@ export class PopoverComponent {
     }
     const anchorRect = anchor.getBoundingClientRect();
     const surfaceRect = surface.getBoundingClientRect();
+    const point = this.anchorPoint();
+    if (point && this.pointOffset?.point !== point) {
+      this.pointOffset = {
+        point,
+        x: point.x - anchorRect.left,
+        y: point.y - anchorRect.top,
+      };
+      // A new point is a new request, so it resolves its side afresh
+      this.latched = null;
+    }
+    const tracked = point ? this.pointOffset : null;
     const requested = this.placement();
     // The opening measurements can read the surface at its natural size, so the
     // side they resolve is only worth holding on to once `stable` has latched
@@ -429,6 +515,9 @@ export class PopoverComponent {
         clamp: this.clamp(),
         matchAnchorWidth: this.matchAnchorWidth(),
         rtl: isRtl(anchor),
+        point: tracked
+          ? { x: anchorRect.left + tracked.x, y: anchorRect.top + tracked.y }
+          : null,
       },
     );
     this.latched = { requested, resolved: result.placement };
@@ -444,7 +533,8 @@ export class PopoverComponent {
     if (!target) {
       return;
     }
-    const anchor = this.resolveAnchor();
+    // A context menu's anchor does not toggle it, so a click there dismisses it too
+    const anchor = this.contextMenu() ? null : this.resolveAnchor();
     const surface = this.surfaceEl()?.nativeElement;
     if (anchor?.contains(target) || surface?.contains(target)) {
       return;
@@ -465,16 +555,7 @@ export class PopoverComponent {
     if (!surface) {
       return;
     }
-    const focusable = Array.from(
-      surface.querySelectorAll<HTMLElement>(
-        'a[href], button, input, select, textarea, [tabindex]',
-      ),
-    ).filter(
-      el =>
-        el.tabIndex >= 0 &&
-        !el.hasAttribute('disabled') &&
-        el.getClientRects().length > 0,
-    );
+    const focusable = this.focusableElements(surface);
     if (focusable.length === 0) {
       event.preventDefault();
       return;
@@ -490,6 +571,48 @@ export class PopoverComponent {
     } else if (active === last || !surface.contains(active)) {
       event.preventDefault();
       first.focus();
+    }
+  }
+
+  private focusableElements(surface: HTMLElement): HTMLElement[] {
+    return Array.from(
+      surface.querySelectorAll<HTMLElement>(
+        'a[href], button, input, select, textarea, [tabindex]',
+      ),
+    ).filter(
+      el =>
+        el.tabIndex >= 0 &&
+        !el.hasAttribute('disabled') &&
+        el.getClientRects().length > 0,
+    );
+  }
+
+  private focusFirstElement(): void {
+    const surface = this.surfaceEl()?.nativeElement;
+    if (!surface || surface.contains(document.activeElement)) {
+      return;
+    }
+    this.focusableElements(surface)[0]?.focus({ preventScroll: true });
+  }
+
+  // Records where focus was as a context-menu popover opens, and returns it there
+  // on close unless the user has already moved it somewhere else
+  private trackFocusReturn(active: boolean): void {
+    if (active) {
+      const focused = document.activeElement;
+      this.focusReturn ??=
+        focused instanceof HTMLElement && focused !== document.body ? focused : null;
+      return;
+    }
+    const target = this.focusReturn;
+    this.focusReturn = null;
+    if (!target || this.open()) {
+      return;
+    }
+    const focused = document.activeElement;
+    const surface = this.surfaceEl()?.nativeElement;
+    if (!focused || focused === document.body || surface?.contains(focused)) {
+      target.focus({ preventScroll: true });
     }
   }
 
