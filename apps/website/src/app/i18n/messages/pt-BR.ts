@@ -640,6 +640,7 @@ export const ptBR: WebMessages = {
         save: 'Salvar',
         close: 'Fechar',
         confirm: 'Confirmar',
+        rightClickHere: 'Clique com o botão direito aqui',
         disabled: 'Desativado',
         defaultLabel: 'Padrão',
         successLabel: 'Sucesso',
@@ -871,6 +872,7 @@ export const ptBR: WebMessages = {
           open: 'Abrir',
           saveUnavailable: 'Salvar (indisponível)',
           saveAs: 'Salvar Como',
+          chosenToast: item => `Você escolheu ${item}.`,
         },
         popover: {
           openLabel: 'Abrir popover',
@@ -1123,6 +1125,8 @@ export const ptBR: WebMessages = {
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
           dialog: { openWith: 'Abrir com' },
+          menu: { opensOn: 'Abre com' },
+          popover: { opensOn: 'Abre com' },
           accordion: { highlightExpanded: 'Destacar itens abertos' },
           'bar-chart': {
             orientation: 'Orientação',
@@ -2034,6 +2038,12 @@ export const ptBR: WebMessages = {
             updateImageDarkness:
               'Amostra a região de recorte visível para determinar se a imagem é mais escura que o cinza médio.',
           },
+          'context-menu-trigger': {
+            target:
+              'O ea-menu ou ea-popover a abrir como menu de contexto do elemento hospedeiro; null mantém o menu do navegador.',
+            contextMenuPosition:
+              'Onde o alvo abre: pointer o abre no ponteiro, ou abaixo do elemento focado pelo teclado; anchor o abre em seu posicionamento em relação ao hospedeiro.',
+          },
           'menu-trigger': {
             menu: 'A instância de ea-menu que este gatilho controla.',
           },
@@ -2224,6 +2234,8 @@ export const ptBR: WebMessages = {
             focusFirstItem:
               'Move o foco do teclado para o primeiro item ativado no menu.',
             onPopoverCloseRequested: 'Fecha o menu quando o usuário clica fora dele.',
+            openAsContextMenu:
+              'Abre o menu como menu de contexto de um elemento, em um ponto da janela de visualização ou junto ao elemento, e devolve o foco para onde estava ao fechar.',
             openAt:
               'Abre o menu ancorado ao elemento de gatilho dado e foca o primeiro item.',
             toggleAt:
@@ -2379,6 +2391,12 @@ export const ptBR: WebMessages = {
             offset: 'Espaço em px entre a âncora e a superfície do popover.',
             open: 'Se o popover está atualmente aberto.',
             placement: 'Posição preferida do popover em relação à sua âncora.',
+            anchorPoint:
+              'Ponto da janela de visualização contra o qual posicionar em vez da âncora, como onde um menu de contexto foi solicitado; mantém seu deslocamento em relação à âncora enquanto a página rola.',
+            contextMenu:
+              'Faz o popover se comportar como um menu de contexto: recebe o foco ao ser exibido e o devolve ao fechar, e um clique na âncora ou um clique com o botão direito em qualquer lugar fora dele o fecha.',
+            openRequested:
+              'Dispara quando um gatilho como eaContextMenuTrigger pede para abrir o popover, com o ponto onde abri-lo; o pai deve refletir isso em [open] e [anchorPoint].',
             role: 'Papel ARIA aplicado à superfície do popover.',
             scrollBehavior:
               'Como o popover responde a eventos de rolagem e redimensionamento enquanto aberto: reposicionar, fechar ou ignorar.',

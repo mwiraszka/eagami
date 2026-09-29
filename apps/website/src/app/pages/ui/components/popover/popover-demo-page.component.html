@@ -6,20 +6,34 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
-    [extraAttributes]="extraAttributes"
+    [extraAttributes]="extraAttributes()"
     [childMarkup]="childMarkup"
+    [extraSnippet]="extraSnippet()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <button
-      #anchorEl
-      type="button"
-      class="demo-popover-trigger"
-      (click)="open.set(!open())">
-      {{ messages().ui.component.demos.popover.openLabel }}
-    </button>
+    @if (onRightClick()) {
+      <div
+        #trigger
+        class="demo-context-area"
+        tabindex="0"
+        [eaContextMenuTrigger]="popoverRef">
+        {{ messages().ui.component.common.rightClickHere }}
+      </div>
+    } @else {
+      <button
+        #trigger
+        type="button"
+        class="demo-popover-trigger"
+        (click)="toggle()">
+        {{ messages().ui.component.demos.popover.openLabel }}
+      </button>
+    }
     <ea-popover
-      [anchor]="anchorEl"
+      #popoverRef
+      [anchor]="trigger()"
       [open]="open()"
+      [anchorPoint]="point()"
+      [contextMenu]="onRightClick()"
       [placement]="state().placement"
       [role]="state().role"
       [offset]="state().offset"
@@ -29,7 +43,8 @@
       [closeOnEscape]="state().closeOnEscape"
       [closeOnOutsideClick]="state().closeOnOutsideClick"
       [scrollBehavior]="state().scrollBehavior"
-      (closeRequested)="open.set(false)">
+      (openRequested)="openAt($event)"
+      (closeRequested)="close()">
       <div class="demo-popover-content">
         {{ messages().ui.component.demos.popover.basicContent }}
       </div>

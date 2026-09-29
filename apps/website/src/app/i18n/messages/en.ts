@@ -628,6 +628,7 @@ export const en: WebMessages = {
         save: 'Save',
         close: 'Close',
         confirm: 'Confirm',
+        rightClickHere: 'Right-click here',
         disabled: 'Disabled',
         defaultLabel: 'Default',
         successLabel: 'Success',
@@ -858,6 +859,7 @@ export const en: WebMessages = {
           open: 'Open',
           saveUnavailable: 'Save (unavailable)',
           saveAs: 'Save As',
+          chosenToast: item => `You chose ${item}.`,
         },
         popover: {
           openLabel: 'Open popover',
@@ -1109,6 +1111,8 @@ export const en: WebMessages = {
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
           dialog: { openWith: 'Open with' },
+          menu: { opensOn: 'Opens on' },
+          popover: { opensOn: 'Opens on' },
           accordion: { highlightExpanded: 'Highlight open items' },
           'bar-chart': {
             orientation: 'Orientation',
@@ -1982,6 +1986,12 @@ export const en: WebMessages = {
             updateImageDarkness:
               'Samples the visible crop region to determine whether the image is darker than mid-grey.',
           },
+          'context-menu-trigger': {
+            target:
+              'The ea-menu or ea-popover to open as the context menu of the host element; null leaves the browser menu in place.',
+            contextMenuPosition:
+              'Where the target opens: pointer opens it at the pointer, or below the focused element from the keyboard; anchor opens it at its placement against the host.',
+          },
           'menu-trigger': {
             menu: 'The ea-menu instance this trigger controls.',
           },
@@ -2156,6 +2166,8 @@ export const en: WebMessages = {
               'Closes the menu and optionally restores focus to the trigger element.',
             focusFirstItem: 'Moves keyboard focus to the first enabled item in the menu.',
             onPopoverCloseRequested: 'Closes the menu when the user clicks outside it.',
+            openAsContextMenu:
+              'Opens the menu as the context menu of an element, at a viewport point or against the element, and returns focus to where it was on close.',
             openAt:
               'Opens the menu anchored to the given trigger element and focuses the first item.',
             toggleAt:
@@ -2300,6 +2312,12 @@ export const en: WebMessages = {
             offset: 'Gap in px between the anchor and the popover surface.',
             open: 'Whether the popover is currently open.',
             placement: 'Preferred position of the popover relative to its anchor.',
+            anchorPoint:
+              'Viewport point to position against instead of the anchor, such as where a context menu was requested; it keeps its offset from the anchor as the page scrolls.',
+            contextMenu:
+              'Makes the popover behave as a context menu: it takes focus once shown and hands it back on close, and a click on the anchor or a right-click anywhere outside it closes it.',
+            openRequested:
+              'Fires when a trigger such as eaContextMenuTrigger asks the popover to open, with the point to open at; the parent should mirror this into [open] and [anchorPoint].',
             role: 'ARIA role applied to the popover surface.',
             scrollBehavior:
               'How the popover responds to scroll and resize events while open: reposition, close, or ignore.',

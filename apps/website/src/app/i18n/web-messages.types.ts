@@ -450,6 +450,7 @@ export interface WebMessages {
         save: string;
         close: string;
         confirm: string;
+        rightClickHere: string;
         disabled: string;
         defaultLabel: string;
         successLabel: string;
@@ -675,6 +676,7 @@ export interface WebMessages {
           open: string;
           saveUnavailable: string;
           saveAs: string;
+          chosenToast: (item: string) => string;
         };
         popover: {
           openLabel: string;

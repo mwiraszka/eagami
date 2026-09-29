@@ -627,6 +627,7 @@ export const ar: WebMessages = {
         save: 'حفظ',
         close: 'إغلاق',
         confirm: 'تأكيد',
+        rightClickHere: 'انقر بزر الفأرة الأيمن هنا',
         disabled: 'معطّل',
         defaultLabel: 'افتراضي',
         successLabel: 'نجاح',
@@ -858,6 +859,7 @@ export const ar: WebMessages = {
           open: 'فتح',
           saveUnavailable: 'حفظ (غير متاح)',
           saveAs: 'حفظ باسم',
+          chosenToast: item => `اخترت «${item}».`,
         },
         popover: {
           openLabel: 'فتح المنبثقة',
@@ -1107,6 +1109,8 @@ export const ar: WebMessages = {
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
           dialog: { openWith: 'الفتح عبر' },
+          menu: { opensOn: 'يفتح عند' },
+          popover: { opensOn: 'يفتح عند' },
           accordion: { highlightExpanded: 'تمييز العناصر المفتوحة' },
           'bar-chart': {
             orientation: 'الاتجاه',
@@ -1949,6 +1953,12 @@ export const ar: WebMessages = {
             updateImageDarkness:
               'يأخذ عيّنات من منطقة القص المرئية لتحديد ما إذا كانت الصورة أدكن من الرمادي المتوسط.',
           },
+          'context-menu-trigger': {
+            target:
+              'عنصر ea-menu أو ea-popover الذي يُفتح كقائمة سياقية للعنصر المضيف؛ القيمة null تُبقي قائمة المتصفح.',
+            contextMenuPosition:
+              'مكان فتح الهدف: pointer يفتحه عند المؤشر، أو أسفل العنصر المركَّز عليه من لوحة المفاتيح؛ anchor يفتحه في موضعه بالنسبة إلى المضيف.',
+          },
           'menu-trigger': {
             menu: 'نسخة ea-menu التي يتحكّم بها هذا المُحفِّز.',
           },
@@ -2111,6 +2121,8 @@ export const ar: WebMessages = {
             close: 'يغلق القائمة ويعيد اختياريًا التركيز إلى عنصر المُحفِّز.',
             focusFirstItem: 'ينقل تركيز لوحة المفاتيح إلى أول عنصر مفعّل في القائمة.',
             onPopoverCloseRequested: 'يغلق القائمة عندما ينقر المستخدم خارجها.',
+            openAsContextMenu:
+              'يفتح القائمة كقائمة سياقية لعنصر، عند نقطة في منطقة العرض أو بالنسبة إلى العنصر، ويعيد التركيز إلى حيث كان عند الإغلاق.',
             openAt: 'يفتح القائمة مرتبطةً بعنصر المُحفِّز المعطى ويركّز العنصر الأول.',
             toggleAt: 'يبدّل حالة فتح القائمة، رابطًا إياها بعنصر المُحفِّز المعطى.',
           },
@@ -2245,6 +2257,12 @@ export const ar: WebMessages = {
             offset: 'الفجوة بالبكسل بين المرساة وسطح المنبثقة.',
             open: 'ما إذا كانت المنبثقة مفتوحة حاليًا.',
             placement: 'الموضع المفضّل للمنبثقة بالنسبة إلى مرساتها.',
+            anchorPoint:
+              'نقطة في منطقة العرض تتموضع المنبثقة بالنسبة إليها بدلًا من المرساة، مثل المكان الذي طُلبت فيه قائمة سياقية؛ تحافظ على إزاحتها عن المرساة أثناء تمرير الصفحة.',
+            contextMenu:
+              'يجعل المنبثقة تتصرّف كقائمة سياقية: تأخذ التركيز فور ظهورها وتعيده عند الإغلاق، وتُغلَق بنقرة على المرساة أو بنقرة يمنى في أي مكان خارجها.',
+            openRequested:
+              'يُطلَق عندما يطلب مُحفِّز مثل eaContextMenuTrigger فتح المنبثقة، مع النقطة التي تُفتح عندها؛ على الأب أن يعكس هذا في [open] و[anchorPoint].',
             role: 'دور ARIA المطبَّق على سطح المنبثقة.',
             scrollBehavior:
               'كيف تستجيب المنبثقة لأحداث التمرير وتغيير الحجم أثناء فتحها: reposition أو close أو ignore.',

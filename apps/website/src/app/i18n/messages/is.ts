@@ -632,6 +632,7 @@ export const is: WebMessages = {
         save: 'Vista',
         close: 'Loka',
         confirm: 'Staðfesta',
+        rightClickHere: 'Hægrismelltu hér',
         disabled: 'Óvirkt',
         defaultLabel: 'Sjálfgefið',
         successLabel: 'Tókst',
@@ -863,6 +864,7 @@ export const is: WebMessages = {
           open: 'Opna',
           saveUnavailable: 'Vista (ekki í boði)',
           saveAs: 'Vista sem',
+          chosenToast: item => `Þú valdir ${item}.`,
         },
         popover: {
           openLabel: 'Opna sprettiglugga',
@@ -1124,6 +1126,8 @@ export const is: WebMessages = {
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
           dialog: { openWith: 'Opna með' },
+          menu: { opensOn: 'Opnast við' },
+          popover: { opensOn: 'Opnast við' },
           accordion: { highlightExpanded: 'Auðkenna opin atriði' },
           'bar-chart': {
             orientation: 'Stefna',
@@ -2016,6 +2020,12 @@ export const is: WebMessages = {
             updateImageDarkness:
               'Sýnatekur sýnilega skurðsvæðið til að ákvarða hvort myndin er dekkri en miðgrá.',
           },
+          'context-menu-trigger': {
+            target:
+              'ea-menu eða ea-popover sem opnast sem samhengisvalmynd hýsilstaksins; null skilur valmynd vafrans eftir.',
+            contextMenuPosition:
+              'Hvar markið opnast: pointer opnar það við bendilinn, eða undir stakinu með fókus frá lyklaborði; anchor opnar það í staðsetningu sinni gagnvart hýslinum.',
+          },
           'menu-trigger': {
             menu: 'ea-menu tilvikið sem þessi kveikja stjórnar.',
           },
@@ -2198,6 +2208,8 @@ export const is: WebMessages = {
             focusFirstItem: 'Færir lyklaborðsfókus á fyrsta virka atriðið í valmyndinni.',
             onPopoverCloseRequested:
               'Lokar valmyndinni þegar notandinn smellir utan hennar.',
+            openAsContextMenu:
+              'Opnar valmyndina sem samhengisvalmynd staks, í punkti á sýnisvæðinu eða við stakið, og skilar fókus þangað sem hann var þegar hún lokast.',
             openAt:
               'Opnar valmyndina festa við gefna kveikjustakið og setur fókus á fyrsta atriðið.',
             toggleAt:
@@ -2349,6 +2361,12 @@ export const is: WebMessages = {
             offset: 'Bil í px milli festunnar og yfirborðs sprettigluggans.',
             open: 'Hvort sprettiglugginn er nú opinn.',
             placement: 'Æskileg staðsetning sprettigluggans miðað við festu hans.',
+            anchorPoint:
+              'Punktur í sýnisvæðinu sem staðsett er gagnvart í stað festunnar, til dæmis þar sem beðið var um samhengisvalmynd; hann heldur fjarlægð sinni frá festunni þegar síðan skrunar.',
+            contextMenu:
+              'Lætur sprettigluggann haga sér eins og samhengisvalmynd: hann tekur fókus þegar hann birtist og skilar honum þegar hann lokast, og smellur á festuna eða hægrismellur hvar sem er utan hans lokar honum.',
+            openRequested:
+              'Kviknar þegar kveikja eins og eaContextMenuTrigger biður um að sprettiglugginn opnist, ásamt punktinum þar sem hann á að opnast; foreldrið ætti að spegla þetta í [open] og [anchorPoint].',
             role: 'ARIA hlutverk sett á yfirborð sprettigluggans.',
             scrollBehavior:
               'Hvernig sprettiglugginn bregst við skrun- og stærðarbreytingaratburðum á meðan opinn: endurstaðsetja, loka eða hunsa.',

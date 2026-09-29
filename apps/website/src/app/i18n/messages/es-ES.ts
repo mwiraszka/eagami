@@ -638,6 +638,7 @@ export const esES: WebMessages = {
         save: 'Guardar',
         close: 'Cerrar',
         confirm: 'Confirmar',
+        rightClickHere: 'Haz clic derecho aquí',
         disabled: 'Deshabilitado',
         defaultLabel: 'Predeterminado',
         successLabel: 'Éxito',
@@ -869,6 +870,7 @@ export const esES: WebMessages = {
           open: 'Abrir',
           saveUnavailable: 'Guardar (no disponible)',
           saveAs: 'Guardar como',
+          chosenToast: item => `Has elegido «${item}».`,
         },
         popover: {
           openLabel: 'Abrir popover',
@@ -1128,6 +1130,8 @@ export const esES: WebMessages = {
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
           dialog: { openWith: 'Abrir con' },
+          menu: { opensOn: 'Se abre con' },
+          popover: { opensOn: 'Se abre con' },
           accordion: { highlightExpanded: 'Resaltar elementos abiertos' },
           'bar-chart': {
             orientation: 'Orientación',
@@ -2061,6 +2065,12 @@ export const esES: WebMessages = {
             updateImageDarkness:
               'Muestrea la región de recorte visible para determinar si la imagen es más oscura que el gris medio.',
           },
+          'context-menu-trigger': {
+            target:
+              'El ea-menu o ea-popover que se abre como menú contextual del elemento anfitrión; null deja el menú del navegador.',
+            contextMenuPosition:
+              'Dónde se abre el destino: pointer lo abre en el puntero, o bajo el elemento enfocado desde el teclado; anchor lo abre en su posición respecto al anfitrión.',
+          },
           'menu-trigger': {
             menu: 'La instancia ea-menu que controla este disparador.',
           },
@@ -2256,6 +2266,8 @@ export const esES: WebMessages = {
               'Lleva el foco del teclado al primer elemento habilitado del menú.',
             onPopoverCloseRequested:
               'Cierra el menú cuando el usuario hace clic fuera de él.',
+            openAsContextMenu:
+              'Abre el menú como menú contextual de un elemento, en un punto del viewport o junto al elemento, y devuelve el foco a donde estaba al cerrarse.',
             openAt:
               'Abre el menú anclado al elemento activador dado y enfoca el primer elemento.',
             toggleAt:
@@ -2416,6 +2428,12 @@ export const esES: WebMessages = {
             offset: 'Espacio en px entre el ancla y la superficie del popover.',
             open: 'Indica si el popover está actualmente abierto.',
             placement: 'Posición preferida del popover respecto a su ancla.',
+            anchorPoint:
+              'Punto del viewport respecto al cual posicionarse en lugar del ancla, como donde se solicitó un menú contextual; conserva su desplazamiento respecto al ancla al desplazarse la página.',
+            contextMenu:
+              'Hace que el popover se comporte como un menú contextual: toma el foco al mostrarse y lo devuelve al cerrarse, y un clic en el ancla o un clic derecho en cualquier lugar fuera de él lo cierra.',
+            openRequested:
+              'Se emite cuando un disparador como eaContextMenuTrigger solicita abrir el popover, con el punto donde abrirlo; el padre debe reflejarlo en [open] y [anchorPoint].',
             role: 'Rol ARIA aplicado a la superficie del popover.',
             scrollBehavior:
               'Comportamiento del popover ante eventos de desplazamiento y redimensión mientras está abierto: reposition, close o ignore.',

@@ -613,6 +613,7 @@ export const zhCN: WebMessages = {
         save: '保存',
         close: '关闭',
         confirm: '确认',
+        rightClickHere: '在此处右键单击',
         disabled: '禁用',
         defaultLabel: '默认',
         successLabel: '成功',
@@ -841,6 +842,7 @@ export const zhCN: WebMessages = {
           open: '打开',
           saveUnavailable: '保存（不可用）',
           saveAs: '另存为',
+          chosenToast: item => `你选择了“${item}”。`,
         },
         popover: {
           openLabel: '打开浮层',
@@ -1087,6 +1089,8 @@ export const zhCN: WebMessages = {
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
           dialog: { openWith: '打开方式' },
+          menu: { opensOn: '触发方式' },
+          popover: { opensOn: '触发方式' },
           accordion: { highlightExpanded: '突出显示展开项' },
           'bar-chart': {
             orientation: '方向',
@@ -1870,6 +1874,12 @@ export const zhCN: WebMessages = {
             setZoom: '设置缩放级别，钳制到配置的 minZoom 和 maxZoom 范围内。',
             updateImageDarkness: '对可见裁剪区域进行采样，以判断图片是否比中灰更暗。',
           },
+          'context-menu-trigger': {
+            target:
+              '作为宿主元素上下文菜单打开的 ea-menu 或 ea-popover；为 null 时保留浏览器自带菜单。',
+            contextMenuPosition:
+              '目标的打开位置：pointer 在指针处打开，通过键盘时则在聚焦元素下方打开；anchor 按其相对于宿主的 placement 打开。',
+          },
           'menu-trigger': {
             menu: '此触发器所控制的 ea-menu 实例。',
           },
@@ -2011,6 +2021,8 @@ export const zhCN: WebMessages = {
             close: '关闭菜单，并可选地将焦点恢复到触发器元素。',
             focusFirstItem: '将键盘焦点移到菜单中第一个启用的项。',
             onPopoverCloseRequested: '当用户在菜单外点击时关闭菜单。',
+            openAsContextMenu:
+              '将菜单作为某元素的上下文菜单打开，位于视口中的某点或相对于该元素，关闭时将焦点归还原处。',
             openAt: '将菜单锚定到给定触发器元素并打开，聚焦第一个项。',
             toggleAt: '切换菜单的打开状态，将其锚定到给定的触发器元素。',
           },
@@ -2129,6 +2141,12 @@ export const zhCN: WebMessages = {
             offset: '锚点与浮层表面之间的间距（px）。',
             open: '浮层当前是否打开。',
             placement: '浮层相对于其锚点的首选位置。',
+            anchorPoint:
+              '用于代替锚点进行定位的视口坐标点，例如请求上下文菜单的位置；页面滚动时保持与锚点的相对偏移。',
+            contextMenu:
+              '让浮层表现为上下文菜单：显示后获取焦点、关闭时归还焦点，点击锚点或在其外部任意位置右键点击都会将其关闭。',
+            openRequested:
+              '当 eaContextMenuTrigger 等触发器请求打开浮层时触发，并附带打开位置；父级应将其映射到 [open] 和 [anchorPoint]。',
             role: '应用于浮层表面的 ARIA 角色。',
             scrollBehavior:
               '浮层打开时对滚动和缩放事件的响应方式：reposition、close 或 ignore。',

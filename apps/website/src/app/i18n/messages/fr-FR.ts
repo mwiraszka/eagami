@@ -644,6 +644,7 @@ export const frFR: WebMessages = {
         save: 'Enregistrer',
         close: 'Fermer',
         confirm: 'Confirmer',
+        rightClickHere: 'Faites un clic droit ici',
         disabled: 'Désactivé',
         defaultLabel: 'Par défaut',
         successLabel: 'Succès',
@@ -878,6 +879,7 @@ export const frFR: WebMessages = {
           open: 'Ouvrir',
           saveUnavailable: 'Enregistrer (indisponible)',
           saveAs: 'Enregistrer sous',
+          chosenToast: item => `Vous avez choisi « ${item} ».`,
         },
         popover: {
           openLabel: 'Ouvrir la popover',
@@ -1137,6 +1139,8 @@ export const frFR: WebMessages = {
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
           dialog: { openWith: 'Ouvrir avec' },
+          menu: { opensOn: 'Ouverture par' },
+          popover: { opensOn: 'Ouverture par' },
           accordion: { highlightExpanded: 'Mettre en valeur les éléments ouverts' },
           'bar-chart': {
             orientation: 'Orientation',
@@ -2051,6 +2055,12 @@ export const frFR: WebMessages = {
             updateImageDarkness:
               'Échantillonne la région de recadrage visible pour déterminer si l’image est plus sombre que le gris moyen.',
           },
+          'context-menu-trigger': {
+            target:
+              'Le ea-menu ou ea-popover à ouvrir comme menu contextuel de l’élément hôte ; null laisse le menu du navigateur.',
+            contextMenuPosition:
+              'Où la cible s’ouvre : pointer l’ouvre au pointeur, ou sous l’élément ayant le focus depuis le clavier ; anchor l’ouvre à son placement par rapport à l’hôte.',
+          },
           'menu-trigger': {
             menu: 'L’instance ea-menu que ce déclencheur contrôle.',
           },
@@ -2241,6 +2251,8 @@ export const frFR: WebMessages = {
               'Place le focus clavier sur le premier élément activé du menu.',
             onPopoverCloseRequested:
               'Ferme le menu lorsque l’utilisateur clique en dehors.',
+            openAsContextMenu:
+              'Ouvre le menu comme menu contextuel d’un élément, à un point de la fenêtre d’affichage ou contre l’élément, et rend le focus là où il était à la fermeture.',
             openAt:
               'Ouvre le menu ancré à l’élément déclencheur donné et place le focus sur le premier élément.',
             toggleAt:
@@ -2397,6 +2409,12 @@ export const frFR: WebMessages = {
             offset: 'Écart en px entre l’ancre et la surface du popover.',
             open: 'Indique si le popover est actuellement ouvert.',
             placement: 'Position préférée du popover par rapport à son ancre.',
+            anchorPoint:
+              'Point de la fenêtre d’affichage par rapport auquel se positionner au lieu de l’ancre, par exemple là où un menu contextuel a été demandé ; il garde son décalage par rapport à l’ancre lors du défilement.',
+            contextMenu:
+              'Fait se comporter le popover comme un menu contextuel : il prend le focus une fois affiché et le rend à la fermeture, et un clic sur l’ancre ou un clic droit n’importe où en dehors le ferme.',
+            openRequested:
+              'Émis lorsqu’un déclencheur tel que eaContextMenuTrigger demande l’ouverture du popover, avec le point où l’ouvrir ; le parent doit répercuter cela dans [open] et [anchorPoint].',
             role: 'Rôle ARIA appliqué à la surface du popover.',
             scrollBehavior:
               'Comportement du popover lors des événements de défilement et de redimensionnement lorsqu’il est ouvert : reposition, close ou ignore.',

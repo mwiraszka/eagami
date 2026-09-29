@@ -622,6 +622,7 @@ export const he: WebMessages = {
         save: 'שמירה',
         close: 'סגירה',
         confirm: 'אישור',
+        rightClickHere: 'לחצו כאן לחיצה ימנית',
         disabled: 'מושבת',
         defaultLabel: 'ברירת מחדל',
         successLabel: 'הצלחה',
@@ -852,6 +853,7 @@ export const he: WebMessages = {
           open: 'פתיחה',
           saveUnavailable: 'שמירה (לא זמין)',
           saveAs: 'שמירה בשם',
+          chosenToast: item => `נבחר „${item}“.`,
         },
         popover: {
           openLabel: 'פתח פופאובר',
@@ -1100,6 +1102,8 @@ export const he: WebMessages = {
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
           dialog: { openWith: 'פתיחה באמצעות' },
+          menu: { opensOn: 'נפתח בלחיצה' },
+          popover: { opensOn: 'נפתח בלחיצה' },
           accordion: { highlightExpanded: 'הדגשת פריטים פתוחים' },
           'bar-chart': {
             orientation: 'כיוון',
@@ -1928,6 +1932,12 @@ export const he: WebMessages = {
             updateImageDarkness:
               'דוגם את אזור החיתוך הנראה כדי לקבוע אם התמונה כהה יותר מאפור בינוני.',
           },
+          'context-menu-trigger': {
+            target:
+              'ה-ea-menu או ה-ea-popover שנפתח כתפריט ההקשר של אלמנט המארח; null משאיר את תפריט הדפדפן.',
+            contextMenuPosition:
+              'היכן נפתח היעד: pointer פותח אותו ליד הסמן, או מתחת לאלמנט הממוקד מהמקלדת; anchor פותח אותו במיקום שלו ביחס למארח.',
+          },
           'menu-trigger': {
             menu: 'מופע ea-menu שטריגר זה שולט בו.',
           },
@@ -2088,6 +2098,8 @@ export const he: WebMessages = {
             close: 'סוגר את התפריט ובאופן אופציונלי מחזיר את הפוקוס לאלמנט הטריגר.',
             focusFirstItem: 'מעביר את פוקוס המקלדת לפריט המאופשר הראשון בתפריט.',
             onPopoverCloseRequested: 'סוגר את התפריט כשהמשתמש לוחץ מחוצה לו.',
+            openAsContextMenu:
+              'פותח את התפריט כתפריט ההקשר של אלמנט, בנקודה באזור התצוגה או ביחס לאלמנט, ומחזיר את המיקוד למקומו בסגירה.',
             openAt: 'פותח את התפריט מעוגן לאלמנט הטריגר הנתון וממקד את הפריט הראשון.',
             toggleAt: 'מחליף את מצב הפתיחה של התפריט, ומעגן אותו לאלמנט הטריגר הנתון.',
           },
@@ -2222,6 +2234,12 @@ export const he: WebMessages = {
             offset: 'מרווח ב-px בין העוגן למשטח הפופאובר.',
             open: 'האם הפופאובר פתוח כעת.',
             placement: 'המיקום המועדף של הפופאובר ביחס לעוגן שלו.',
+            anchorPoint:
+              'נקודה באזור התצוגה שכלפיה ממוקם הפופאובר במקום העוגן, כמו המקום שבו התבקש תפריט הקשר; היא שומרת על ההיסט שלה מהעוגן בזמן גלילת הדף.',
+            contextMenu:
+              'גורם לפופאובר להתנהג כתפריט הקשר: הוא לוקח את המיקוד כשהוא מוצג ומחזיר אותו בסגירה, ולחיצה על העוגן או לחיצה ימנית בכל מקום מחוצה לו סוגרת אותו.',
+            openRequested:
+              'נורה כשטריגר כמו eaContextMenuTrigger מבקש לפתוח את הפופאובר, עם הנקודה שבה לפתוח אותו; האב צריך לשקף זאת ל-[open] ול-[anchorPoint].',
             role: 'תפקיד ARIA המוחל על משטח הפופאובר.',
             scrollBehavior:
               'כיצד הפופאובר מגיב לאירועי גלילה ושינוי גודל בזמן שהוא פתוח: reposition, close או ignore.',

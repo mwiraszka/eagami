@@ -639,6 +639,7 @@ export const nl: WebMessages = {
         save: 'Opslaan',
         close: 'Sluiten',
         confirm: 'Bevestigen',
+        rightClickHere: 'Klik hier met de rechtermuisknop',
         disabled: 'Uitgeschakeld',
         defaultLabel: 'Standaard',
         successLabel: 'Succes',
@@ -872,6 +873,7 @@ export const nl: WebMessages = {
           open: 'Openen',
           saveUnavailable: 'Opslaan (niet beschikbaar)',
           saveAs: 'Opslaan als',
+          chosenToast: item => `Je hebt ${item} gekozen.`,
         },
         popover: {
           openLabel: 'Popover openen',
@@ -1123,6 +1125,8 @@ export const nl: WebMessages = {
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
           dialog: { openWith: 'Openen met' },
+          menu: { opensOn: 'Opent bij' },
+          popover: { opensOn: 'Opent bij' },
           accordion: { highlightExpanded: 'Open items markeren' },
           'bar-chart': {
             orientation: 'Oriëntatie',
@@ -2046,6 +2050,12 @@ export const nl: WebMessages = {
             updateImageDarkness:
               'Bemonstert het zichtbare bijsnijdgebied om te bepalen of de afbeelding donkerder is dan middengrijs.',
           },
+          'context-menu-trigger': {
+            target:
+              'Het ea-menu of ea-popover dat als contextmenu van het hostelement opent; null laat het browsermenu staan.',
+            contextMenuPosition:
+              'Waar het doel opent: pointer opent het bij de aanwijzer, of vanaf het toetsenbord onder het gefocuste element; anchor opent het op zijn plaatsing ten opzichte van de host.',
+          },
           'menu-trigger': {
             menu: 'De ea-menu-instantie die deze trigger bedient.',
           },
@@ -2237,6 +2247,8 @@ export const nl: WebMessages = {
               'Verplaatst de toetsenbordfocus naar het eerste ingeschakelde item in het menu.',
             onPopoverCloseRequested:
               'Sluit het menu wanneer de gebruiker erbuiten klikt.',
+            openAsContextMenu:
+              'Opent het menu als contextmenu van een element, op een punt in de viewport of tegen het element, en zet de focus bij het sluiten terug waar hij was.',
             openAt:
               'Opent het menu verankerd aan het gegeven triggerelement en focust het eerste item.',
             toggleAt:
@@ -2398,6 +2410,12 @@ export const nl: WebMessages = {
             offset: 'Tussenruimte in px tussen de anchor en het popoveroppervlak.',
             open: 'Of de popover momenteel open is.',
             placement: 'Voorkeurspositie van de popover ten opzichte van zijn anchor.',
+            anchorPoint:
+              'Punt in de viewport om tegen te positioneren in plaats van de anchor, zoals waar een contextmenu werd aangevraagd; het behoudt zijn afstand tot de anchor terwijl de pagina scrolt.',
+            contextMenu:
+              'Laat de popover zich gedragen als een contextmenu: hij neemt de focus zodra hij wordt getoond en geeft die bij het sluiten terug, en een klik op de anchor of een rechtsklik ergens daarbuiten sluit hem.',
+            openRequested:
+              'Wordt geactiveerd wanneer een trigger zoals eaContextMenuTrigger vraagt de popover te openen, met het punt waar hij moet openen; de ouder moet dit spiegelen naar [open] en [anchorPoint].',
             role: 'ARIA-rol toegepast op het popoveroppervlak.',
             scrollBehavior:
               'Hoe de popover reageert op scroll- en formaatwijzigingsgebeurtenissen terwijl open: herpositioneren, sluiten of negeren.',

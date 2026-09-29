@@ -641,6 +641,7 @@ export const de: WebMessages = {
         save: 'Speichern',
         close: 'Schließen',
         confirm: 'Bestätigen',
+        rightClickHere: 'Hier rechtsklicken',
         disabled: 'Deaktiviert',
         defaultLabel: 'Standard',
         successLabel: 'Erfolg',
@@ -874,6 +875,7 @@ export const de: WebMessages = {
           open: 'Öffnen',
           saveUnavailable: 'Speichern (nicht verfügbar)',
           saveAs: 'Speichern unter',
+          chosenToast: item => `„${item}“ wurde ausgewählt.`,
         },
         popover: {
           openLabel: 'Popover öffnen',
@@ -1131,6 +1133,8 @@ export const de: WebMessages = {
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
           dialog: { openWith: 'Öffnen über' },
+          menu: { opensOn: 'Öffnet bei' },
+          popover: { opensOn: 'Öffnet bei' },
           accordion: { highlightExpanded: 'Geöffnete Einträge hervorheben' },
           'bar-chart': {
             orientation: 'Ausrichtung',
@@ -2064,6 +2068,12 @@ export const de: WebMessages = {
             updateImageDarkness:
               'Tastet den sichtbaren Zuschnittbereich ab, um zu bestimmen, ob das Bild dunkler als Mittelgrau ist.',
           },
+          'context-menu-trigger': {
+            target:
+              'Das ea-menu oder ea-popover, das als Kontextmenü des Host-Elements geöffnet wird; null belässt das Menü des Browsers.',
+            contextMenuPosition:
+              'Wo sich das Ziel öffnet: pointer öffnet es am Mauszeiger oder per Tastatur unter dem fokussierten Element; anchor öffnet es an seiner Platzierung relativ zum Host.',
+          },
           'menu-trigger': {
             menu: 'Die ea-menu-Instanz, die dieser Auslöser steuert.',
           },
@@ -2257,6 +2267,8 @@ export const de: WebMessages = {
               'Verschiebt den Tastaturfokus auf den ersten aktivierten Eintrag im Menü.',
             onPopoverCloseRequested:
               'Schließt das Menü, wenn der Nutzer außerhalb davon klickt.',
+            openAsContextMenu:
+              'Öffnet das Menü als Kontextmenü eines Elements, an einem Punkt im Viewport oder am Element selbst, und gibt den Fokus beim Schließen dorthin zurück, wo er war.',
             openAt:
               'Öffnet das Menü verankert am gegebenen Auslöser-Element und fokussiert den ersten Eintrag.',
             toggleAt:
@@ -2416,6 +2428,12 @@ export const de: WebMessages = {
             offset: 'Abstand in px zwischen dem Anker und der Popover-Oberfläche.',
             open: 'Ob das Popover derzeit geöffnet ist.',
             placement: 'Bevorzugte Position des Popovers relativ zu seinem Anker.',
+            anchorPoint:
+              'Punkt im Viewport, an dem sich das Popover statt am Anker positioniert, etwa dort, wo ein Kontextmenü angefordert wurde; beim Scrollen behält er seinen Abstand zum Anker.',
+            contextMenu:
+              'Lässt das Popover wie ein Kontextmenü wirken: Es übernimmt den Fokus, sobald es angezeigt wird, gibt ihn beim Schließen zurück und schließt sich bei einem Klick auf den Anker oder einem Rechtsklick irgendwo außerhalb.',
+            openRequested:
+              'Wird ausgelöst, wenn ein Auslöser wie eaContextMenuTrigger das Öffnen des Popovers anfordert, mit dem Punkt, an dem es sich öffnen soll; das übergeordnete Element sollte dies in [open] und [anchorPoint] spiegeln.',
             role: 'ARIA-Rolle, die auf die Popover-Oberfläche angewendet wird.',
             scrollBehavior:
               'Wie das Popover auf Scroll- und Resize-Ereignisse reagiert, während es geöffnet ist: neu positionieren, schließen oder ignorieren.',

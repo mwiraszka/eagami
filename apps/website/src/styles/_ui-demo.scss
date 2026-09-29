@@ -195,6 +195,37 @@
   color: var(--color-text-secondary);
 }
 
+// How to reach behaviour the knobs cannot show, such as a right-click; spans the
+// playground row so it wraps below the preview
+.demo-hint {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+// Target for a right-click demo, dashed so it reads as an area rather than a button
+.demo-context-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  min-height: 96px;
+  padding: 16px;
+  font-size: 14px;
+  border: 2px dashed var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  user-select: none;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus-ring);
+  }
+}
+
 // Label above a demo component; mirrors form field-label typography for consistency
 .demo-label {
   display: block;
