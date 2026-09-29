@@ -790,6 +790,8 @@ export const nl: WebMessages = {
           openButton: 'Dialoogvenster openen',
           title: 'Titel dialoogvenster',
           body: 'Dit is de inhoud van het dialoogvenster. Het ondersteunt alle content, waaronder formulieren, tekst en andere componenten.',
+          pressedToast: label => `Je hebt op ${label} gedrukt.`,
+          dismissedToast: 'Je hebt het dialoogvenster gesloten zonder te kiezen.',
         },
         divider: {
           orLabel: 'of',
@@ -1120,6 +1122,7 @@ export const nl: WebMessages = {
         twoWayBadge: 'tweerichtings',
         rangeHint: { between: 'tot', min: 'Min', max: 'Max' },
         knobLabels: {
+          dialog: { openWith: 'Openen met' },
           accordion: { highlightExpanded: 'Open items markeren' },
           'bar-chart': {
             orientation: 'Oriëntatie',
@@ -1400,7 +1403,10 @@ export const nl: WebMessages = {
             required: 'Verplicht',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(alleen semantisch)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(alleen semantisch)' },
+          dialog: { openWith: 'Beide openen hetzelfde dialoogvenster.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2623,6 +2629,10 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer het dialoogvenster sluit, ongeacht of het door de gebruiker of programmatisch werd gesloten.',
             opened:
               'Wordt geactiveerd zodra het dialoogvenster is getoond via showModal().',
+            'DialogService.open':
+              'Rendert een component als dialoogvenster en geeft de DialogRef ervan terug, waarvan result wordt vervuld met de waarde waarmee het venster sluit, of met undefined als het wordt weggeklikt. Accepteert invoerwaarden en een injector.',
+            'DialogService.closeAll':
+              'Sluit elk dialoogvenster in het signaal dialogs, het nieuwste eerst, en vervult elk result met undefined.',
           },
         },
         direction: 'Richting',

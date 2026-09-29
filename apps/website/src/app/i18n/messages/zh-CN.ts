@@ -761,6 +761,8 @@ export const zhCN: WebMessages = {
           openButton: '打开对话框',
           title: '对话框标题',
           body: '这是对话框正文。它支持任何内容，包括表单、文本和其他组件。',
+          pressedToast: label => `你点击了“${label}”。`,
+          dismissedToast: '你未做选择就关闭了对话框。',
         },
         divider: {
           orLabel: '或',
@@ -1084,6 +1086,7 @@ export const zhCN: WebMessages = {
         twoWayBadge: '双向',
         rangeHint: { between: '至', min: '最小', max: '最大' },
         knobLabels: {
+          dialog: { openWith: '打开方式' },
           accordion: { highlightExpanded: '突出显示展开项' },
           'bar-chart': {
             orientation: '方向',
@@ -1364,7 +1367,10 @@ export const zhCN: WebMessages = {
             required: '必填',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(仅语义)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(仅语义)' },
+          dialog: { openWith: '两者打开的是同一个对话框。' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2293,6 +2299,10 @@ export const zhCN: WebMessages = {
             width: '对话框面板的宽度预设。',
             closed: '当对话框关闭时触发，无论它是由用户还是以编程方式关闭。',
             opened: '当对话框通过 showModal() 显示后触发一次。',
+            'DialogService.open':
+              '将组件作为对话框渲染并返回其 DialogRef；对话框关闭时，其 result 以关闭时传入的值兑现，被取消时则以 undefined 兑现。可传入输入值和 injector。',
+            'DialogService.closeAll':
+              '从最新的开始关闭 dialogs 信号中的每个对话框，并以 undefined 兑现每个 result。',
           },
         },
         direction: '方向',

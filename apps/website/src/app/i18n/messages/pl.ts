@@ -787,6 +787,8 @@ export const pl: WebMessages = {
           openButton: 'Otwórz okno',
           title: 'Tytuł okna',
           body: 'To jest treść okna dialogowego. Obsługuje dowolną zawartość, w tym formularze, tekst i inne komponenty.',
+          pressedToast: label => `Naciśnięto „${label}”.`,
+          dismissedToast: 'Okno zamknięto bez wyboru.',
         },
         divider: {
           orLabel: 'lub',
@@ -1125,6 +1127,7 @@ export const pl: WebMessages = {
         twoWayBadge: 'dwukierunkowe',
         rangeHint: { between: 'do', min: 'Min', max: 'Maks' },
         knobLabels: {
+          dialog: { openWith: 'Otwórz przez' },
           accordion: { highlightExpanded: 'Wyróżnij otwarte elementy' },
           'bar-chart': {
             orientation: 'Orientacja',
@@ -1405,7 +1408,10 @@ export const pl: WebMessages = {
             required: 'Wymagane',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(tylko semantycznie)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(tylko semantycznie)' },
+          dialog: { openWith: 'Oba otwierają to samo okno.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2576,6 +2582,10 @@ export const pl: WebMessages = {
             closed:
               'Emitowane po zamknięciu okna dialogowego, niezależnie od tego, czy zamknął je użytkownik, czy nastąpiło to programowo.',
             opened: 'Emitowane po wyświetleniu okna dialogowego przez showModal().',
+            'DialogService.open':
+              'Renderuje komponent jako okno dialogowe i zwraca jego DialogRef, którego result rozstrzyga się wartością, z jaką okno zostało zamknięte, lub wartością undefined, gdy zostało odrzucone. Przyjmuje wartości wejść i injector.',
+            'DialogService.closeAll':
+              'Zamyka każde okno dialogowe z sygnału dialogs, zaczynając od najnowszego, i rozstrzyga każdy result wartością undefined.',
           },
         },
         direction: 'Kierunek',

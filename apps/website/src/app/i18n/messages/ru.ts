@@ -786,6 +786,8 @@ export const ru: WebMessages = {
           openButton: 'Открыть диалог',
           title: 'Заголовок диалога',
           body: 'Это тело диалога. Оно поддерживает любое содержимое, включая формы, текст и другие компоненты.',
+          pressedToast: label => `Вы нажали «${label}».`,
+          dismissedToast: 'Вы закрыли диалог, ничего не выбрав.',
         },
         divider: {
           orLabel: 'или',
@@ -1114,6 +1116,7 @@ export const ru: WebMessages = {
         twoWayBadge: 'двусторонняя',
         rangeHint: { between: 'до', min: 'Мин', max: 'Макс' },
         knobLabels: {
+          dialog: { openWith: 'Открыть через' },
           accordion: { highlightExpanded: 'Выделять открытые элементы' },
           'bar-chart': {
             orientation: 'Ориентация',
@@ -1394,7 +1397,10 @@ export const ru: WebMessages = {
             required: 'Обязательно',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(только семантически)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(только семантически)' },
+          dialog: { openWith: 'Оба открывают один и тот же диалог.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2594,6 +2600,10 @@ export const ru: WebMessages = {
             closed:
               'Срабатывает, когда диалог закрывается, независимо от того, закрыт ли он пользователем или программно.',
             opened: 'Срабатывает, как только диалог показан через showModal().',
+            'DialogService.open':
+              'Отображает компонент как диалог и возвращает его DialogRef, чей result разрешается значением, с которым диалог закрылся, или значением undefined, если его отклонили. Принимает значения входов и injector.',
+            'DialogService.closeAll':
+              'Закрывает все диалоги из сигнала dialogs, начиная с самого нового, и разрешает каждый result значением undefined.',
           },
         },
         direction: 'Направление',

@@ -785,6 +785,8 @@ export const uk: WebMessages = {
           openButton: 'Відкрити діалог',
           title: 'Заголовок діалогу',
           body: 'Це тіло діалогу. Воно підтримує будь-який вміст, включно з формами, текстом та іншими компонентами.',
+          pressedToast: label => `Ви натиснули «${label}».`,
+          dismissedToast: 'Ви закрили діалог, нічого не вибравши.',
         },
         divider: {
           orLabel: 'або',
@@ -1115,6 +1117,7 @@ export const uk: WebMessages = {
         twoWayBadge: 'двостороннє',
         rangeHint: { between: 'до', min: 'Мін', max: 'Макс' },
         knobLabels: {
+          dialog: { openWith: 'Відкрити через' },
           accordion: { highlightExpanded: 'Виділяти відкриті елементи' },
           'bar-chart': {
             orientation: 'Орієнтація',
@@ -1395,7 +1398,10 @@ export const uk: WebMessages = {
             required: 'Обов’язковий',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(лише семантично)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(лише семантично)' },
+          dialog: { openWith: 'Обидва відкривають той самий діалог.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2577,6 +2583,10 @@ export const uk: WebMessages = {
             closed:
               'Спрацьовує, коли діалог закривається, незалежно від того, чи закрив його користувач, чи це сталося програмно.',
             opened: 'Спрацьовує, щойно діалог показано через showModal().',
+            'DialogService.open':
+              'Відображає компонент як діалог і повертає його DialogRef, чий result розв’язується значенням, з яким діалог закрився, або значенням undefined, якщо його відхилили. Приймає значення входів та injector.',
+            'DialogService.closeAll':
+              'Закриває всі діалоги із сигналу dialogs, починаючи з найновішого, і розв’язує кожен result значенням undefined.',
           },
         },
         direction: 'Напрямок',

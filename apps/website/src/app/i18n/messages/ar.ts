@@ -777,6 +777,8 @@ export const ar: WebMessages = {
           openButton: 'فتح مربّع الحوار',
           title: 'عنوان مربّع الحوار',
           body: 'هذا جسم مربّع الحوار. يدعم أي محتوى بما في ذلك النماذج والنصوص ومكوّنات أخرى.',
+          pressedToast: label => `ضغطت على «${label}».`,
+          dismissedToast: 'أغلقت مربّع الحوار دون اختيار.',
         },
         divider: {
           orLabel: 'أو',
@@ -1104,6 +1106,7 @@ export const ar: WebMessages = {
         twoWayBadge: 'ثنائي الاتجاه',
         rangeHint: { between: 'إلى', min: 'الأدنى', max: 'الأقصى' },
         knobLabels: {
+          dialog: { openWith: 'الفتح عبر' },
           accordion: { highlightExpanded: 'تمييز العناصر المفتوحة' },
           'bar-chart': {
             orientation: 'الاتجاه',
@@ -1384,7 +1387,10 @@ export const ar: WebMessages = {
             required: 'مطلوب',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(دلالي فقط)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(دلالي فقط)' },
+          dialog: { openWith: 'كلاهما يفتح مربّع الحوار نفسه.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2443,6 +2449,10 @@ export const ar: WebMessages = {
             closed:
               'يُطلَق عندما يُغلق مربّع الحوار، بغضّ النظر عمّا إذا أغلقه المستخدم أو أُغلق برمجيًا.',
             opened: 'يُطلَق بمجرد عرض مربّع الحوار عبر showModal().',
+            'DialogService.open':
+              'يعرض مكوّنًا كمربّع حوار ويعيد DialogRef الخاص به، الذي تُحسم نتيجته result بالقيمة التي يُغلق بها مربّع الحوار، أو بـ undefined عند صرفه. يقبل قيم المدخلات وinjector.',
+            'DialogService.closeAll':
+              'يغلق كل مربّعات الحوار الموجودة في الإشارة dialogs، بدءًا بالأحدث، ويحسم نتيجة كل منها result بـ undefined.',
           },
         },
         direction: 'الاتجاه',

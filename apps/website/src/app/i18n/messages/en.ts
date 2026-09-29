@@ -777,6 +777,8 @@ export const en: WebMessages = {
           openButton: 'Open dialog',
           title: 'Dialog Title',
           body: 'This is the dialog body. It supports any content including forms, text, and other components.',
+          pressedToast: label => `You pressed ${label}.`,
+          dismissedToast: 'You closed the dialog without choosing.',
         },
         divider: {
           orLabel: 'or',
@@ -1106,6 +1108,7 @@ export const en: WebMessages = {
         twoWayBadge: 'two-way',
         rangeHint: { between: 'to', min: 'Min', max: 'Max' },
         knobLabels: {
+          dialog: { openWith: 'Open with' },
           accordion: { highlightExpanded: 'Highlight open items' },
           'bar-chart': {
             orientation: 'Orientation',
@@ -1386,7 +1389,10 @@ export const en: WebMessages = {
             required: 'Required',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(semantic-only)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(semantic-only)' },
+          dialog: { openWith: 'Both open the same dialog.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2507,6 +2513,10 @@ export const en: WebMessages = {
             closed:
               'Fires when the dialog closes, regardless of whether it was closed by the user or programmatically.',
             opened: 'Fires once the dialog has been shown via showModal().',
+            'DialogService.open':
+              'Renders a component as a dialog and returns its DialogRef, whose result settles with the value the dialog closes with, or undefined when it is dismissed. Takes input values and an injector.',
+            'DialogService.closeAll':
+              'Closes every dialog in the dialogs signal, newest first, settling each result with undefined.',
           },
         },
         direction: 'Direction',

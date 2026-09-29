@@ -791,6 +791,8 @@ export const el: WebMessages = {
           openButton: 'Άνοιγμα διαλόγου',
           title: 'Τίτλος διαλόγου',
           body: 'Αυτό είναι το σώμα του διαλόγου. Υποστηρίζει οποιοδήποτε περιεχόμενο, συμπεριλαμβανομένων φορμών, κειμένου και άλλων συστατικών.',
+          pressedToast: label => `Πατήσατε «${label}».`,
+          dismissedToast: 'Κλείσατε τον διάλογο χωρίς να επιλέξετε.',
         },
         divider: {
           orLabel: 'ή',
@@ -1131,6 +1133,7 @@ export const el: WebMessages = {
         twoWayBadge: 'αμφίδρομο',
         rangeHint: { between: 'έως', min: 'Ελάχ.', max: 'Μέγ.' },
         knobLabels: {
+          dialog: { openWith: 'Άνοιγμα μέσω' },
           accordion: { highlightExpanded: 'Επισήμανση ανοιχτών στοιχείων' },
           'bar-chart': {
             orientation: 'Προσανατολισμός',
@@ -1415,7 +1418,10 @@ export const el: WebMessages = {
             required: 'Υποχρεωτικό',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(μόνο σημασιολογικά)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(μόνο σημασιολογικά)' },
+          dialog: { openWith: 'Και τα δύο ανοίγουν τον ίδιο διάλογο.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2659,6 +2665,10 @@ export const el: WebMessages = {
             closed:
               'Εκπέμπεται όταν ο διάλογος κλείνει, ανεξάρτητα από το αν έκλεισε ο χρήστης ή μέσω κώδικα.',
             opened: 'Εκπέμπεται μόλις ο διάλογος εμφανιστεί μέσω showModal().',
+            'DialogService.open':
+              'Αποδίδει ένα συστατικό ως διάλογο και επιστρέφει το DialogRef του, του οποίου το result διευθετείται με την τιμή με την οποία κλείνει ο διάλογος ή με undefined όταν απορρίπτεται. Δέχεται τιμές εισόδων και έναν injector.',
+            'DialogService.closeAll':
+              'Κλείνει κάθε διάλογο του σήματος dialogs, ξεκινώντας από τον νεότερο, και διευθετεί κάθε result με undefined.',
           },
         },
         direction: 'Κατεύθυνση',

@@ -788,6 +788,8 @@ export const esES: WebMessages = {
           openButton: 'Abrir diálogo',
           title: 'Título del diálogo',
           body: 'Este es el cuerpo del diálogo. Admite cualquier contenido, incluidos formularios, texto y otros componentes.',
+          pressedToast: label => `Has pulsado «${label}».`,
+          dismissedToast: 'Has cerrado el diálogo sin elegir.',
         },
         divider: {
           orLabel: 'o',
@@ -1125,6 +1127,7 @@ export const esES: WebMessages = {
         twoWayBadge: 'bidireccional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          dialog: { openWith: 'Abrir con' },
           accordion: { highlightExpanded: 'Resaltar elementos abiertos' },
           'bar-chart': {
             orientation: 'Orientación',
@@ -1405,7 +1408,10 @@ export const esES: WebMessages = {
             required: 'Obligatorio',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(solo semántico)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(solo semántico)' },
+          dialog: { openWith: 'Ambos abren el mismo diálogo.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2639,6 +2645,10 @@ export const esES: WebMessages = {
               'Se emite cuando el diálogo se cierra, independientemente de si lo cerró el usuario o mediante código.',
             opened:
               'Se emite una vez que el diálogo se ha mostrado mediante showModal().',
+            'DialogService.open':
+              'Renderiza un componente como diálogo y devuelve su DialogRef, cuyo result se resuelve con el valor con el que se cierra el diálogo, o con undefined si se descarta. Acepta valores de entrada y un injector.',
+            'DialogService.closeAll':
+              'Cierra todos los diálogos de la señal dialogs, del más reciente al más antiguo, y resuelve cada result con undefined.',
           },
         },
         direction: 'Dirección',

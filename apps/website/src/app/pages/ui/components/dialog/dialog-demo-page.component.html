@@ -6,11 +6,12 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
-    [extraAttributes]="extraAttributes"
-    [childMarkup]="childMarkup"
+    [extraAttributes]="extraAttributes()"
+    [childMarkup]="childMarkup()"
+    [extraSnippet]="extraSnippet()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
-    <ea-button (clicked)="open.set(true)">
+    <ea-button (clicked)="openDialog()">
       {{ messages().ui.component.demos.dialog.openButton }}
     </ea-button>
     <ea-dialog
@@ -22,16 +23,17 @@
       [showClose]="state().showClose"
       [closeDisabled]="state().closeDisabled"
       [manualClose]="state().manualClose"
-      (closeRequested)="open.set(false)">
+      (closed)="dismiss()"
+      (closeRequested)="dismiss()">
       <span slot="header">{{ messages().ui.component.demos.dialog.title }}</span>
       <p>{{ messages().ui.component.demos.dialog.body }}</p>
       <span slot="footer">
         <ea-button
           variant="secondary"
-          (clicked)="open.set(false)">
+          (clicked)="choose(false)">
           {{ messages().ui.component.common.cancel }}
         </ea-button>
-        <ea-button (clicked)="open.set(false)">
+        <ea-button (clicked)="choose(true)">
           {{ messages().ui.component.common.confirm }}
         </ea-button>
       </span>

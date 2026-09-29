@@ -771,6 +771,8 @@ export const he: WebMessages = {
           openButton: 'פתח דו-שיח',
           title: 'כותרת הדו-שיח',
           body: 'זהו גוף הדו-שיח. הוא תומך בכל תוכן כולל טפסים, טקסט ורכיבים אחרים.',
+          pressedToast: label => `נלחץ „${label}“.`,
+          dismissedToast: 'הדו-שיח נסגר ללא בחירה.',
         },
         divider: {
           orLabel: 'או',
@@ -1097,6 +1099,7 @@ export const he: WebMessages = {
         twoWayBadge: 'דו-כיווני',
         rangeHint: { between: 'עד', min: 'מינ', max: 'מקס' },
         knobLabels: {
+          dialog: { openWith: 'פתיחה באמצעות' },
           accordion: { highlightExpanded: 'הדגשת פריטים פתוחים' },
           'bar-chart': {
             orientation: 'כיוון',
@@ -1377,7 +1380,10 @@ export const he: WebMessages = {
             required: 'חובה',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(סמנטי בלבד)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(סמנטי בלבד)' },
+          dialog: { openWith: 'שניהם פותחים את אותו דו-שיח.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2409,6 +2415,10 @@ export const he: WebMessages = {
             width: 'הגדרת רוחב מוגדרת מראש לפאנל הדו-שיח.',
             closed: 'נורה כשהדו-שיח נסגר, ללא קשר אם נסגר על ידי המשתמש או תכנותית.',
             opened: 'נורה ברגע שהדו-שיח הוצג באמצעות showModal().',
+            'DialogService.open':
+              'מציג רכיב כדו-שיח ומחזיר את ה-DialogRef שלו, שה-result שלו מתיישב עם הערך שבו הדו-שיח נסגר, או עם undefined כשהוא נדחה. מקבל ערכי קלט ו-injector.',
+            'DialogService.closeAll':
+              'סוגר כל דו-שיח שבאות dialogs, מהחדש ביותר, ומיישב כל result עם undefined.',
           },
         },
         direction: 'כיוון',

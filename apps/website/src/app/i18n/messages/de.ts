@@ -792,6 +792,8 @@ export const de: WebMessages = {
           openButton: 'Dialog öffnen',
           title: 'Dialogtitel',
           body: 'Dies ist der Dialog-Hauptteil. Er unterstützt beliebige Inhalte, einschließlich Formulare, Text und andere Komponenten.',
+          pressedToast: label => `„${label}“ wurde gedrückt.`,
+          dismissedToast: 'Der Dialog wurde ohne Auswahl geschlossen.',
         },
         divider: {
           orLabel: 'oder',
@@ -1128,6 +1130,7 @@ export const de: WebMessages = {
         twoWayBadge: 'bidirektional',
         rangeHint: { between: 'bis', min: 'Min.', max: 'Max.' },
         knobLabels: {
+          dialog: { openWith: 'Öffnen über' },
           accordion: { highlightExpanded: 'Geöffnete Einträge hervorheben' },
           'bar-chart': {
             orientation: 'Ausrichtung',
@@ -1408,7 +1411,10 @@ export const de: WebMessages = {
             required: 'Erforderlich',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(nur semantisch)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(nur semantisch)' },
+          dialog: { openWith: 'Beide öffnen denselben Dialog.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2642,6 +2648,10 @@ export const de: WebMessages = {
             closed:
               'Wird ausgelöst, wenn sich der Dialog schließt, unabhängig davon, ob er vom Nutzer oder programmatisch geschlossen wurde.',
             opened: 'Wird ausgelöst, sobald der Dialog über showModal() angezeigt wurde.',
+            'DialogService.open':
+              'Rendert eine Komponente als Dialog und gibt ihre DialogRef zurück, deren result mit dem Wert aufgelöst wird, mit dem der Dialog schließt, oder mit undefined, wenn er verworfen wird. Nimmt Eingabewerte und einen Injector entgegen.',
+            'DialogService.closeAll':
+              'Schließt jeden Dialog im Signal dialogs, den neuesten zuerst, und löst jedes result mit undefined auf.',
           },
         },
         direction: 'Richtung',

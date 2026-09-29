@@ -595,6 +595,8 @@ export interface WebMessages {
           openButton: string;
           title: string;
           body: string;
+          pressedToast: (label: string) => string;
+          dismissedToast: string;
         };
         divider: {
           orLabel: string;

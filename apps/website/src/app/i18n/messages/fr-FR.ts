@@ -796,6 +796,8 @@ export const frFR: WebMessages = {
           openButton: 'Ouvrir la boîte de dialogue',
           title: 'Titre de la boîte de dialogue',
           body: 'Ceci est le corps de la boîte de dialogue. Il prend en charge tout contenu, y compris formulaires, texte et autres composants.',
+          pressedToast: label => `Vous avez appuyé sur « ${label} ».`,
+          dismissedToast: 'Vous avez fermé la boîte de dialogue sans faire de choix.',
         },
         divider: {
           orLabel: 'ou',
@@ -1134,6 +1136,7 @@ export const frFR: WebMessages = {
         twoWayBadge: 'bidirectionnel',
         rangeHint: { between: 'à', min: 'Min', max: 'Max' },
         knobLabels: {
+          dialog: { openWith: 'Ouvrir avec' },
           accordion: { highlightExpanded: 'Mettre en valeur les éléments ouverts' },
           'bar-chart': {
             orientation: 'Orientation',
@@ -1414,7 +1417,10 @@ export const frFR: WebMessages = {
             required: 'Requis',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(sémantique uniquement)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(sémantique uniquement)' },
+          dialog: { openWith: 'Les deux ouvrent la même boîte de dialogue.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2622,6 +2628,10 @@ export const frFR: WebMessages = {
               'Émis lorsque la boîte de dialogue se ferme, que ce soit par l’utilisateur ou de façon programmatique.',
             opened:
               'Émis une fois que la boîte de dialogue est affichée via showModal().',
+            'DialogService.open':
+              'Affiche un composant comme boîte de dialogue et renvoie son DialogRef, dont le result se résout avec la valeur de fermeture de la boîte, ou avec undefined si elle est fermée sans réponse. Accepte des valeurs d’entrée et un injecteur.',
+            'DialogService.closeAll':
+              'Ferme chaque boîte de dialogue du signal dialogs, de la plus récente à la plus ancienne, en résolvant chaque result avec undefined.',
           },
         },
         direction: 'Direction',

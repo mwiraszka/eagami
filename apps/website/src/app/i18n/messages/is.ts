@@ -782,6 +782,8 @@ export const is: WebMessages = {
           openButton: 'Opna glugga',
           title: 'Titill glugga',
           body: 'Þetta er meginmál gluggans. Það styður hvaða efni sem er, þar á meðal form, texta og aðrar einingar.',
+          pressedToast: label => `Þú ýttir á ${label}.`,
+          dismissedToast: 'Þú lokaðir glugganum án þess að velja.',
         },
         divider: {
           orLabel: 'eða',
@@ -1121,6 +1123,7 @@ export const is: WebMessages = {
         twoWayBadge: 'tvíátta',
         rangeHint: { between: 'til', min: 'Lágm.', max: 'Hám.' },
         knobLabels: {
+          dialog: { openWith: 'Opna með' },
           accordion: { highlightExpanded: 'Auðkenna opin atriði' },
           'bar-chart': {
             orientation: 'Stefna',
@@ -1401,7 +1404,10 @@ export const is: WebMessages = {
             required: 'Krafist',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(aðeins merkingarlegt)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(aðeins merkingarlegt)' },
+          dialog: { openWith: 'Báðir opna sama gluggann.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2559,6 +2565,10 @@ export const is: WebMessages = {
             closed:
               'Kviknar þegar glugginn lokast, óháð því hvort honum var lokað af notandanum eða forritunarlega.',
             opened: 'Kviknar þegar glugginn hefur verið sýndur með showModal().',
+            'DialogService.open':
+              'Birtir einingu sem glugga og skilar DialogRef hennar, en result þess leysist með gildinu sem glugginn lokast með, eða með undefined þegar honum er vísað frá. Tekur við inntaksgildum og injector.',
+            'DialogService.closeAll':
+              'Lokar hverjum glugga í merkinu dialogs, þeim nýjasta fyrst, og leysir hvert result með undefined.',
           },
         },
         direction: 'Stefna',

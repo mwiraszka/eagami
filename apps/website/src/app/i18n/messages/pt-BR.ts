@@ -790,6 +790,8 @@ export const ptBR: WebMessages = {
           openButton: 'Abrir Diálogo',
           title: 'Título do Diálogo',
           body: 'Este é o corpo do diálogo. Ele suporta qualquer conteúdo, incluindo formulários, texto e outros componentes.',
+          pressedToast: label => `Você pressionou ${label}.`,
+          dismissedToast: 'Você fechou o diálogo sem escolher.',
         },
         divider: {
           orLabel: 'ou',
@@ -1120,6 +1122,7 @@ export const ptBR: WebMessages = {
         twoWayBadge: 'bidirecional',
         rangeHint: { between: 'a', min: 'Mín', max: 'Máx' },
         knobLabels: {
+          dialog: { openWith: 'Abrir com' },
           accordion: { highlightExpanded: 'Destacar itens abertos' },
           'bar-chart': {
             orientation: 'Orientação',
@@ -1400,7 +1403,10 @@ export const ptBR: WebMessages = {
             required: 'Obrigatório',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(apenas semântico)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(apenas semântico)' },
+          dialog: { openWith: 'Ambos abrem o mesmo diálogo.' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2594,6 +2600,10 @@ export const ptBR: WebMessages = {
             closed:
               'Dispara quando o diálogo fecha, independentemente de ter sido fechado pelo usuário ou programaticamente.',
             opened: 'Dispara assim que o diálogo é exibido via showModal().',
+            'DialogService.open':
+              'Renderiza um componente como diálogo e retorna seu DialogRef, cujo result é resolvido com o valor com que o diálogo fecha, ou com undefined quando ele é dispensado. Aceita valores de entrada e um injector.',
+            'DialogService.closeAll':
+              'Fecha todos os diálogos do sinal dialogs, do mais recente ao mais antigo, resolvendo cada result com undefined.',
           },
         },
         direction: 'Direção',

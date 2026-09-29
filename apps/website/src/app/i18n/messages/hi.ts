@@ -781,6 +781,8 @@ export const hi: WebMessages = {
           openButton: 'डायलॉग खोलें',
           title: 'डायलॉग शीर्षक',
           body: 'यह डायलॉग बॉडी है। यह फ़ॉर्म, टेक्स्ट और अन्य कंपोनेंट सहित किसी भी सामग्री का समर्थन करती है।',
+          pressedToast: label => `आपने ${label} दबाया।`,
+          dismissedToast: 'आपने बिना चुने डायलॉग बंद कर दिया।',
         },
         divider: {
           orLabel: 'या',
@@ -1108,6 +1110,7 @@ export const hi: WebMessages = {
         twoWayBadge: 'दो-तरफ़ा',
         rangeHint: { between: 'से', min: 'न्यूनतम', max: 'अधिकतम' },
         knobLabels: {
+          dialog: { openWith: 'इससे खोलें' },
           accordion: { highlightExpanded: 'खुले आइटम हाइलाइट करें' },
           'bar-chart': {
             orientation: 'अभिविन्यास',
@@ -1388,7 +1391,10 @@ export const hi: WebMessages = {
             required: 'आवश्यक',
           },
         },
-        knobNotes: { accordion: { headingLevel: '(केवल सिमैंटिक)' } },
+        knobNotes: {
+          accordion: { headingLevel: '(केवल सिमैंटिक)' },
+          dialog: { openWith: 'दोनों एक ही डायलॉग खोलते हैं।' },
+        },
 
         descriptions: {
           'bar-chart': {
@@ -2551,6 +2557,10 @@ export const hi: WebMessages = {
             closed:
               'जब डायलॉग बंद होता है तो ट्रिगर होता है, चाहे वह उपयोगकर्ता द्वारा या प्रोग्रामेटिक रूप से बंद किया गया हो।',
             opened: 'showModal() के माध्यम से डायलॉग दिखने के बाद ट्रिगर होता है।',
+            'DialogService.open':
+              'किसी कंपोनेंट को डायलॉग के रूप में दिखाता है और उसका DialogRef लौटाता है, जिसका result उस मान से पूरा होता है जिसके साथ डायलॉग बंद होता है, या खारिज होने पर undefined से। इनपुट मान और एक injector लेता है।',
+            'DialogService.closeAll':
+              'dialogs सिग्नल के हर डायलॉग को, सबसे नए से शुरू करके, बंद करता है और हर result को undefined से पूरा करता है।',
           },
         },
         direction: 'दिशा',
