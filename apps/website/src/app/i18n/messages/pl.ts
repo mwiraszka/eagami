@@ -772,6 +772,11 @@ export const pl: WebMessages = {
           tableColumnLastName: 'Nazwisko',
           tableColumnAdmin: 'Administrator',
           tableColumnPosts: 'Posty',
+          rowMenuHint: 'Kliknij wiersz prawym przyciskiem, aby zobaczyć jego akcje.',
+          rowMenuLabel: 'Akcje wiersza',
+          rowMenuView: 'Pokaż szczegóły',
+          rowMenuDelete: 'Usuń',
+          rowMenuToast: (action, name) => `Wybrano „${action}” dla: ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Spotkanie',
@@ -2427,6 +2432,12 @@ export const pl: WebMessages = {
             opened: 'Emitowane po wyświetleniu szuflady.',
           },
           'data-table': {
+            loading:
+              'Pokazuje wiersze zastępcze zamiast danych podczas ich ładowania i oznacza tabelę jako zajętą dla technologii wspomagających.',
+            loadingRowCount:
+              'Liczba wierszy zastępczych wyświetlanych podczas ładowania.',
+            rowContextMenu:
+              'Emitowane, gdy zażądano menu kontekstowego wiersza danych prawym przyciskiem, długim naciśnięciem lub Shift+F10, wraz z wierszem, jego elementem, punktem do otwarcia menu i zdarzeniem.',
             nowrap:
               'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
             rowHref:

@@ -781,6 +781,11 @@ export const frFR: WebMessages = {
           tableColumnLastName: 'Nom',
           tableColumnAdmin: 'Admin',
           tableColumnPosts: 'Publications',
+          rowMenuHint: 'Faites un clic droit sur une ligne pour voir ses actions.',
+          rowMenuLabel: 'Actions de la ligne',
+          rowMenuView: 'Voir les détails',
+          rowMenuDelete: 'Supprimer',
+          rowMenuToast: (action, name) => `Vous avez choisi « ${action} » pour ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Rendez-vous',
@@ -2466,6 +2471,12 @@ export const frFR: WebMessages = {
             opened: 'Émis une fois le tiroir affiché.',
           },
           'data-table': {
+            loading:
+              'Affiche des lignes d’espace réservé à la place des données pendant leur chargement et signale le tableau comme occupé aux technologies d’assistance.',
+            loadingRowCount:
+              'Nombre de lignes d’espace réservé affichées pendant le chargement.',
+            rowContextMenu:
+              'Émis lorsque le menu contextuel d’une ligne de données est demandé par clic droit, appui long ou Maj+F10, avec la ligne, son élément, un point où ouvrir un menu et l’événement.',
             nowrap:
               'Garde chaque cellule sur une seule ligne, afin qu’une fenêtre étroite fasse défiler le tableau latéralement au lieu de renvoyer son texte à la ligne.',
             rowHref:

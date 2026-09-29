@@ -777,6 +777,12 @@ export const de: WebMessages = {
           tableColumnLastName: 'Nachname',
           tableColumnAdmin: 'Administrator',
           tableColumnPosts: 'Beiträge',
+          rowMenuHint:
+            'Klicken Sie mit der rechten Maustaste auf eine Zeile, um ihre Aktionen zu sehen.',
+          rowMenuLabel: 'Zeilenaktionen',
+          rowMenuView: 'Details anzeigen',
+          rowMenuDelete: 'Löschen',
+          rowMenuToast: (action, name) => `„${action}“ wurde für ${name} ausgewählt.`,
         },
         datePicker: {
           appointmentLabel: 'Termin',
@@ -2487,6 +2493,12 @@ export const de: WebMessages = {
             opened: 'Wird ausgelöst, sobald der Drawer angezeigt wurde.',
           },
           'data-table': {
+            loading:
+              'Zeigt Platzhalterzeilen anstelle der Daten, während sie laden, und markiert die Tabelle für Hilfstechnologien als beschäftigt.',
+            loadingRowCount:
+              'Anzahl der Platzhalterzeilen, die während des Ladens angezeigt werden.',
+            rowContextMenu:
+              'Wird ausgelöst, wenn das Kontextmenü einer Datenzeile per Rechtsklick, langem Drücken oder Umschalt+F10 angefordert wird, mit der Zeile, ihrem Element, einem Punkt zum Öffnen eines Menüs und dem Ereignis.',
             nowrap:
               'Hält jede Zelle auf einer Zeile, sodass ein schmaler Viewport die Tabelle seitwärts scrollt, statt ihren Text umzubrechen.',
             rowHref:

@@ -767,6 +767,11 @@ export const is: WebMessages = {
           tableColumnLastName: 'Eftirnafn',
           tableColumnAdmin: 'Stjórnandi',
           tableColumnPosts: 'Færslur',
+          rowMenuHint: 'Hægrismelltu á línu til að sjá aðgerðir hennar.',
+          rowMenuLabel: 'Aðgerðir raðar',
+          rowMenuView: 'Skoða nánar',
+          rowMenuDelete: 'Eyða',
+          rowMenuToast: (action, name) => `Þú valdir ${action} fyrir ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Tímabókun',
@@ -2415,6 +2420,12 @@ export const is: WebMessages = {
             opened: 'Kviknar þegar skúffan hefur verið sýnd.',
           },
           'data-table': {
+            loading:
+              'Sýnir staðgengilsraðir í stað gagnanna á meðan þau hlaðast og merkir töfluna upptekna fyrir hjálpartækni.',
+            loadingRowCount:
+              'Fjöldi staðgengilsraða sem sýndar eru meðan hleðsla stendur yfir.',
+            rowContextMenu:
+              'Kviknar þegar beðið er um samhengisvalmynd gagnaraðar með hægrismelli, löngu haldi eða Shift+F10, ásamt röðinni, staki hennar, punkti til að opna valmynd og atburðinum.',
             nowrap:
               'Heldur hverjum reit á einni línu, svo þröngur gluggi skrunar töflunni til hliðar í stað þess að brjóta textann.',
             rowHref:

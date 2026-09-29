@@ -775,6 +775,11 @@ export const nl: WebMessages = {
           tableColumnLastName: 'Achternaam',
           tableColumnAdmin: 'Beheerder',
           tableColumnPosts: 'Berichten',
+          rowMenuHint: 'Klik met de rechtermuisknop op een rij om de acties te zien.',
+          rowMenuLabel: 'Rijacties',
+          rowMenuView: 'Details bekijken',
+          rowMenuDelete: 'Verwijderen',
+          rowMenuToast: (action, name) => `Je hebt ${action} gekozen voor ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Afspraak',
@@ -2467,6 +2472,12 @@ export const nl: WebMessages = {
             opened: 'Wordt geactiveerd zodra de lade is getoond.',
           },
           'data-table': {
+            loading:
+              'Toont placeholderrijen in plaats van de gegevens terwijl die laden, en markeert de tabel als bezig voor hulptechnologie.',
+            loadingRowCount:
+              'Aantal placeholderrijen dat tijdens het laden wordt getoond.',
+            rowContextMenu:
+              'Wordt geactiveerd wanneer het contextmenu van een gegevensrij wordt aangevraagd via rechtsklik, lang indrukken of Shift+F10, met de rij, het element ervan, een punt om een menu te openen en de gebeurtenis.',
             nowrap:
               'Houdt elke cel op één regel, zodat een smal venster de tabel zijwaarts scrolt in plaats van de tekst af te breken.',
             rowHref:

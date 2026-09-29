@@ -580,6 +580,11 @@ export interface WebMessages {
           tableColumnLastName: string;
           tableColumnAdmin: string;
           tableColumnPosts: string;
+          rowMenuHint: string;
+          rowMenuLabel: string;
+          rowMenuView: string;
+          rowMenuDelete: string;
+          rowMenuToast: (action: string, name: string) => string;
         };
         datePicker: {
           appointmentLabel: string;

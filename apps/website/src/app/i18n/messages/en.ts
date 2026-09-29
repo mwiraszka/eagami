@@ -762,6 +762,11 @@ export const en: WebMessages = {
           tableColumnLastName: 'Last Name',
           tableColumnAdmin: 'Admin',
           tableColumnPosts: 'Posts',
+          rowMenuHint: 'Right-click a row to see its actions.',
+          rowMenuLabel: 'Row actions',
+          rowMenuView: 'View details',
+          rowMenuDelete: 'Delete',
+          rowMenuToast: (action, name) => `You chose ${action} for ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Appointment',
@@ -2365,6 +2370,11 @@ export const en: WebMessages = {
             opened: 'Fires once the drawer has been shown.',
           },
           'data-table': {
+            loading:
+              'Shows placeholder rows in place of the data while it loads, and marks the table busy for assistive technology.',
+            loadingRowCount: 'Number of placeholder rows shown while loading.',
+            rowContextMenu:
+              "Fires when a body row's context menu is requested by right-click, long press, or Shift+F10, with the row, its element, a point to open a menu at, and the event.",
             nowrap:
               'Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text.',
             rowHref:

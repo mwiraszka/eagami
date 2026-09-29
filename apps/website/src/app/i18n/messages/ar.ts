@@ -762,6 +762,11 @@ export const ar: WebMessages = {
           tableColumnLastName: 'اسم العائلة',
           tableColumnAdmin: 'مسؤول',
           tableColumnPosts: 'المنشورات',
+          rowMenuHint: 'انقر بزر الفأرة الأيمن على صف لعرض إجراءاته.',
+          rowMenuLabel: 'إجراءات الصف',
+          rowMenuView: 'عرض التفاصيل',
+          rowMenuDelete: 'حذف',
+          rowMenuToast: (action, name) => `اخترت «${action}» لـ ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'الموعد',
@@ -2309,6 +2314,11 @@ export const ar: WebMessages = {
             opened: 'يُطلَق بمجرد عرض الدرج.',
           },
           'data-table': {
+            loading:
+              'يعرض صفوفًا نائبة بدل البيانات أثناء تحميلها، ويُعلِّم الجدول كمشغول للتقنيات المساعدة.',
+            loadingRowCount: 'عدد الصفوف النائبة المعروضة أثناء التحميل.',
+            rowContextMenu:
+              'يُطلَق عند طلب القائمة السياقية لصف في الجسم بنقرة يمنى أو ضغطة مطوّلة أو Shift+F10، مع الصف وعنصره ونقطة لفتح قائمة والحدث.',
             nowrap:
               'يبقي كل خلية في سطر واحد، بحيث تمرّر الشاشة الضيقة الجدول جانبيًا بدلًا من التفاف نصه.',
             rowHref:

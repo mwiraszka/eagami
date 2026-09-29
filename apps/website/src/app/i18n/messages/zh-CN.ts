@@ -746,6 +746,11 @@ export const zhCN: WebMessages = {
           tableColumnLastName: '姓',
           tableColumnAdmin: '管理员',
           tableColumnPosts: '帖子',
+          rowMenuHint: '右键单击某一行即可查看其操作。',
+          rowMenuLabel: '行操作',
+          rowMenuView: '查看详情',
+          rowMenuDelete: '删除',
+          rowMenuToast: (action, name) => `你为 ${name} 选择了“${action}”。`,
         },
         datePicker: {
           appointmentLabel: '预约',
@@ -2188,6 +2193,10 @@ export const zhCN: WebMessages = {
             opened: '当抽屉显示后触发一次。',
           },
           'data-table': {
+            loading: '数据加载期间以占位行代替数据显示，并向辅助技术将表格标记为忙碌。',
+            loadingRowCount: '加载期间显示的占位行数量。',
+            rowContextMenu:
+              '当通过右键点击、长按或 Shift+F10 请求数据行的上下文菜单时触发，附带该行数据、行元素、打开菜单的位置点及事件。',
             nowrap: '让每个单元格保持单行，窄视口会横向滚动表格而不是换行文字。',
             rowHref:
               '为每一行指定链接目标，并在每个单元格中放置真实链接，使浏览器能显示并打开它，而普通点击仍会触发 rowActivate。返回 null 的行保持惰性，没有链接、悬停高亮、焦点或激活。',

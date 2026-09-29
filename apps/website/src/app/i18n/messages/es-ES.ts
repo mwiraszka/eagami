@@ -773,6 +773,11 @@ export const esES: WebMessages = {
           tableColumnLastName: 'Apellido',
           tableColumnAdmin: 'Administrador',
           tableColumnPosts: 'Publicaciones',
+          rowMenuHint: 'Haz clic derecho en una fila para ver sus acciones.',
+          rowMenuLabel: 'Acciones de la fila',
+          rowMenuView: 'Ver detalles',
+          rowMenuDelete: 'Eliminar',
+          rowMenuToast: (action, name) => `Has elegido «${action}» para ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Cita',
@@ -2484,6 +2489,12 @@ export const esES: WebMessages = {
             opened: 'Se emite una vez que el cajón se ha mostrado.',
           },
           'data-table': {
+            loading:
+              'Muestra filas de marcador de posición en lugar de los datos mientras cargan y marca la tabla como ocupada para las tecnologías de asistencia.',
+            loadingRowCount:
+              'Número de filas de marcador de posición mostradas durante la carga.',
+            rowContextMenu:
+              'Se emite cuando se solicita el menú contextual de una fila de datos con clic derecho, pulsación larga o Mayús+F10, con la fila, su elemento, un punto donde abrir un menú y el evento.',
             nowrap:
               'Mantiene cada celda en una sola línea, de modo que una ventana estrecha desplaza la tabla lateralmente en lugar de ajustar su texto.',
             rowHref:

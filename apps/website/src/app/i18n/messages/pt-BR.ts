@@ -775,6 +775,11 @@ export const ptBR: WebMessages = {
           tableColumnLastName: 'Sobrenome',
           tableColumnAdmin: 'Administrador',
           tableColumnPosts: 'Publicações',
+          rowMenuHint: 'Clique com o botão direito em uma linha para ver suas ações.',
+          rowMenuLabel: 'Ações da linha',
+          rowMenuView: 'Ver detalhes',
+          rowMenuDelete: 'Excluir',
+          rowMenuToast: (action, name) => `Você escolheu ${action} para ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'Compromisso',
@@ -2445,6 +2450,12 @@ export const ptBR: WebMessages = {
             opened: 'Dispara assim que a gaveta é exibida.',
           },
           'data-table': {
+            loading:
+              'Mostra linhas de espaço reservado no lugar dos dados enquanto carregam e marca a tabela como ocupada para tecnologias assistivas.',
+            loadingRowCount:
+              'Número de linhas de espaço reservado exibidas durante o carregamento.',
+            rowContextMenu:
+              'Dispara quando o menu de contexto de uma linha de dados é solicitado por clique com o botão direito, toque longo ou Shift+F10, com a linha, seu elemento, um ponto para abrir um menu e o evento.',
             nowrap:
               'Mantém cada célula em uma única linha, de modo que uma janela estreita rola a tabela lateralmente em vez de quebrar o texto.',
             rowHref:

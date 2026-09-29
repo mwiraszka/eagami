@@ -756,6 +756,11 @@ export const he: WebMessages = {
           tableColumnLastName: 'שם משפחה',
           tableColumnAdmin: 'מנהל',
           tableColumnPosts: 'פוסטים',
+          rowMenuHint: 'לחצו לחיצה ימנית על שורה כדי לראות את הפעולות שלה.',
+          rowMenuLabel: 'פעולות שורה',
+          rowMenuView: 'הצגת פרטים',
+          rowMenuDelete: 'מחיקה',
+          rowMenuToast: (action, name) => `נבחר „${action}“ עבור ${name}.`,
         },
         datePicker: {
           appointmentLabel: 'פגישה',
@@ -2284,6 +2289,11 @@ export const he: WebMessages = {
             opened: 'נורה ברגע שהמגירה הוצגה.',
           },
           'data-table': {
+            loading:
+              'מציג שורות ממלאות מקום במקום הנתונים בזמן שהם נטענים, ומסמן את הטבלה כעסוקה עבור טכנולוגיות מסייעות.',
+            loadingRowCount: 'מספר השורות ממלאות המקום המוצגות בזמן הטעינה.',
+            rowContextMenu:
+              'נורה כשמתבקש תפריט ההקשר של שורת גוף בלחיצה ימנית, בלחיצה ארוכה או ב-Shift+F10, עם השורה, האלמנט שלה, נקודה לפתיחת תפריט והאירוע.',
             nowrap:
               'שומר כל תא בשורה אחת, כך שחלון צר גולל את הטבלה לצד במקום לשבור את הטקסט.',
             rowHref:
