@@ -5,6 +5,19 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.27.0] - 2026-09-29
+
+### Added
+
+- Add an option to the dialog demo that opens the same dialog through `DialogService`, and show a toast after either one closes saying which button was pressed.
+- Let the popover and menu demos open on a right-click, and show a toast for the item chosen from the menu.
+- Add a right-click menu of row actions and a loading control to the data table demo.
+- Document every new input in the API reference in every locale.
+
+### Changed
+
+- Pick up @eagami/ui v5.55.0.
+
 ## [3.26.0] - 2026-09-28
 
 ### Added
@@ -1487,6 +1500,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.27.0]: https://github.com/mwiraszka/eagami/compare/website-v3.26.0...website-v3.27.0
 [3.26.0]: https://github.com/mwiraszka/eagami/compare/website-v3.25.0...website-v3.26.0
 [3.25.0]: https://github.com/mwiraszka/eagami/compare/website-v3.24.1...website-v3.25.0
 [3.24.1]: https://github.com/mwiraszka/eagami/compare/website-v3.24.0...website-v3.24.1
