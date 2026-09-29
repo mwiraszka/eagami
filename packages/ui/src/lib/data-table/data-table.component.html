@@ -21,7 +21,10 @@
       class="ea-data-table__table"
       [attr.role]="navigable() ? 'grid' : null"
       [attr.aria-label]="caption() ? null : (ariaLabel() ?? null)"
-      (keydown)="onGridKeydown($event)">
+      [attr.aria-busy]="loading() ? 'true' : null"
+      (keydown)="onGridKeydown($event)"
+      (keyup)="clearKeyboardRequest()"
+      (pointerdown)="clearKeyboardRequest()">
       @if (caption(); as captionText) {
         <caption class="ea-data-table__caption">
           {{ captionText }}
@@ -116,7 +119,33 @@
         </tbody>
       }
       <tbody class="ea-data-table__body">
-        @if (sortedData().length === 0) {
+        @if (loading()) {
+          @for (index of placeholderRows(); track index) {
+            <tr
+              class="ea-data-table__row ea-data-table__row--placeholder"
+              aria-hidden="true"
+              [attr.role]="navigable() ? 'row' : null">
+              @for (col of columns(); track col.key) {
+                <td
+                  class="ea-data-table__cell"
+                  [class.ea-data-table__cell--align-center]="col.align === 'center'"
+                  [class.ea-data-table__cell--align-right]="col.align === 'right'"
+                  [style.width]="col.width ?? null"
+                  [attr.role]="navigable() ? 'gridcell' : null">
+                  @if (col.placeholderTemplate) {
+                    <ng-container
+                      [ngTemplateOutlet]="col.placeholderTemplate"
+                      [ngTemplateOutletContext]="{ $implicit: col, index }" />
+                  } @else {
+                    <span class="ea-data-table__placeholder">
+                      <ea-skeleton height="1em" />
+                    </span>
+                  }
+                </td>
+              }
+            </tr>
+          }
+        } @else if (sortedData().length === 0) {
           <tr
             class="ea-data-table__row ea-data-table__row--empty"
             [attr.role]="navigable() ? 'row' : null">
@@ -140,13 +169,16 @@
             let rowIndex = $index
           ) {
             <tr
+              #rowEl
               class="ea-data-table__row"
               [class.ea-data-table__row--inert]="isInert(row)"
               [attr.role]="navigable() ? 'row' : null"
               [attr.tabindex]="rowTabindex(row)"
               (click)="onRowActivate(row, $event)"
               (keydown.enter)="onRowActivate(row, $event)"
-              (keydown.space)="onRowActivate(row, $event)">
+              (keydown.space)="onRowActivate(row, $event)"
+              (keydown)="onRowContextMenu(row, rowEl, $event)"
+              (contextmenu)="onRowContextMenu(row, rowEl, $event)">
               @for (col of columns(); track col.key; let colIndex = $index) {
                 <td
                   class="ea-data-table__cell"

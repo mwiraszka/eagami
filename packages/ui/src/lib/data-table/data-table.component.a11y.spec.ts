@@ -32,7 +32,8 @@ const TEST_DATA: TestRow[] = [
       [sizingRows]="sizingRows"
       [rowHref]="rowHref"
       [clickable]="clickable"
-      [navigable]="navigable" />
+      [navigable]="navigable"
+      [loading]="loading" />
   `,
 })
 class HostComponent {
@@ -42,6 +43,7 @@ class HostComponent {
   rowHref: ((row: TestRow) => string | null) | undefined = undefined;
   clickable = false;
   navigable = false;
+  loading = false;
 }
 
 describe('DataTableComponent a11y', () => {
@@ -83,6 +85,28 @@ describe('DataTableComponent a11y', () => {
     const el = await render(host => {
       host.rowHref = row => `/rows/${row.id}`;
       host.clickable = true;
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations while loading', async () => {
+    const el = await render(host => {
+      host.loading = true;
+      host.sizingRows = TEST_DATA;
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations while loading as a navigable grid', async () => {
+    const el = await render(host => {
+      host.loading = true;
+      host.navigable = true;
     });
 
     const results = await axe(el);

@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { type DataTableColumn, DataTableComponent } from './data-table.component';
+import { MenuItemComponent } from '../menu/menu-item.component';
+import { MenuComponent } from '../menu/menu.component';
+import {
+  type DataTableColumn,
+  DataTableComponent,
+  type DataTableRowContextMenuEvent,
+} from './data-table.component';
 import { DATA_TABLE_KNOBS } from './data-table.component.knobs';
 
 interface User {
@@ -84,4 +90,54 @@ export const SizingRows: Story = {
       },
     ],
   },
+};
+
+/**
+ * While `loading`, placeholder rows stand in for the data and the table is marked
+ * busy. The sizing rows keep the columns at the widths the data will need, so
+ * nothing moves once it arrives.
+ */
+export const Loading: Story = {
+  args: {
+    loading: true,
+    loadingRowCount: 5,
+    sizingRows: [
+      {
+        id: 999,
+        firstName: 'Maximilian-Alexander',
+        lastName: 'Featherstonehaugh',
+        admin: '✓',
+        posts: 1000000,
+      },
+    ],
+  },
+};
+
+/**
+ * `rowContextMenu` reports a right-click, long press, or Shift+F10 on a row, here
+ * opening a menu at the pointer, or below the focused cell from the keyboard.
+ */
+export const RowContextMenu: Story = {
+  render: args => ({
+    props: {
+      ...args,
+      openRowMenu: (menu: MenuComponent, request: DataTableRowContextMenuEvent<User>) => {
+        request.event.preventDefault();
+        menu.openAsContextMenu(request.rowElement, request.point);
+      },
+    },
+    moduleMetadata: { imports: [DataTableComponent, MenuComponent, MenuItemComponent] },
+    template: `
+      <ea-data-table
+        [columns]="columns"
+        [data]="data"
+        [navigable]="navigable"
+        (rowContextMenu)="openRowMenu(rowMenu, $event)" />
+      <ea-menu #rowMenu aria-label="Row actions">
+        <ea-menu-item>View profile</ea-menu-item>
+        <ea-menu-item variant="danger">Delete</ea-menu-item>
+      </ea-menu>
+    `,
+  }),
+  args: { navigable: true },
 };

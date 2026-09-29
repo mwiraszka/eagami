@@ -272,7 +272,9 @@
     );
   }
 
-  &--hoverable &__body &__row:not(&__row--empty):not(&__row--inert):hover {
+  &--hoverable
+    &__body
+    &__row:not(&__row--empty):not(&__row--inert):not(&__row--placeholder):hover {
     background-color: var(
       --ea-data-table-row-hover-background-color,
       var(--color-state-hover)
@@ -289,7 +291,9 @@
     }
   }
 
-  &--clickable &__body &__row:not(&__row--empty):not(&__row--inert) {
+  &--clickable
+    &__body
+    &__row:not(&__row--empty):not(&__row--inert):not(&__row--placeholder) {
     cursor: var(--ea-data-table-row-cursor, pointer);
   }
 
@@ -316,6 +320,14 @@
       left: 0;
       content: '';
     }
+  }
+
+  // Sits on the cell's line of text rather than replacing it, so a placeholder row
+  // stands exactly as tall as a row of text and the table does not jump once data lands
+  &__placeholder {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
   }
 
   &--nowrap &__cell {

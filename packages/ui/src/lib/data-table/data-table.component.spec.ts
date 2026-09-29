@@ -1,8 +1,10 @@
+import { Component, type TemplateRef, computed, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
   type DataTableColumn,
   DataTableComponent,
+  type DataTableRowContextMenuEvent,
   type DataTableSortState,
 } from './data-table.component';
 
@@ -10,6 +12,36 @@ interface TestRow {
   id: number;
   name: string;
   age: number;
+}
+
+type PlaceholderTemplate = TemplateRef<{
+  $implicit: DataTableColumn<TestRow>;
+  index: number;
+}>;
+
+@Component({
+  imports: [DataTableComponent],
+  template: `
+    <ea-data-table
+      [columns]="columns()"
+      [data]="data"
+      [loading]="true"
+      [loadingRowCount]="2" />
+    <ng-template
+      #placeholder
+      let-col
+      let-index="index">
+      <span class="custom-placeholder">{{ col.key }}-{{ index }}</span>
+    </ng-template>
+  `,
+})
+class PlaceholderHostComponent {
+  readonly data: TestRow[] = [];
+  private readonly placeholder = viewChild.required<PlaceholderTemplate>('placeholder');
+  readonly columns = computed<DataTableColumn<TestRow>[]>(() => [
+    { key: 'name', label: 'Name', placeholderTemplate: this.placeholder() },
+    { key: 'age', label: 'Age' },
+  ]);
 }
 
 describe('DataTableComponent', () => {
@@ -218,6 +250,242 @@ describe('DataTableComponent', () => {
 
     it('marks the table as linked', () => {
       expect(getHost().classList.contains('ea-data-table--linked')).toBe(true);
+    });
+  });
+
+  describe('Loading', () => {
+    function getPlaceholderRows(): HTMLElement[] {
+      return Array.from(
+        fixture.nativeElement.querySelectorAll('.ea-data-table__row--placeholder'),
+      );
+    }
+
+    function getTable(): HTMLTableElement {
+      return fixture.nativeElement.querySelector('.ea-data-table__table');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('loading', true);
+      fixture.detectChanges();
+    });
+
+    it('renders placeholder rows in place of the data', () => {
+      expect(getPlaceholderRows()).toHaveLength(5);
+      expect(fixture.nativeElement.textContent).not.toContain('Charlie');
+      expect(getEmptyRow()).toBeNull();
+    });
+
+    it('renders as many placeholder rows as loadingRowCount asks for', () => {
+      fixture.componentRef.setInput('loadingRowCount', 2);
+      fixture.detectChanges();
+
+      expect(getPlaceholderRows()).toHaveLength(2);
+    });
+
+    it('fills every placeholder cell with a skeleton bar by default', () => {
+      const cells = getCellsInRow(getPlaceholderRows()[0]);
+
+      expect(cells).toHaveLength(3);
+      expect(cells.every(cell => cell.querySelector('ea-skeleton'))).toBe(true);
+    });
+
+    it("keeps each column's width and alignment on its placeholder cells", () => {
+      const cells = getCellsInRow(getPlaceholderRows()[0]);
+
+      expect(cells[0].style.width).toBe('60px');
+      expect(cells[2].classList).toContain('ea-data-table__cell--align-right');
+    });
+
+    it('marks the table busy and hides the placeholders from assistive technology', () => {
+      expect(getTable().getAttribute('aria-busy')).toBe('true');
+      expect(
+        getPlaceholderRows().every(row => row.getAttribute('aria-hidden') === 'true'),
+      ).toBe(true);
+    });
+
+    it('shows the data again, no longer busy, once loading ends', () => {
+      fixture.componentRef.setInput('loading', false);
+      fixture.detectChanges();
+
+      expect(getPlaceholderRows()).toHaveLength(0);
+      expect(getBodyRows()).toHaveLength(3);
+      expect(getTable().hasAttribute('aria-busy')).toBe(false);
+    });
+
+    it('neither activates nor reports a placeholder row', () => {
+      const activated: TestRow[] = [];
+      const requested: DataTableRowContextMenuEvent<TestRow>[] = [];
+      component.rowActivate.subscribe(row => activated.push(row));
+      component.rowContextMenu.subscribe(request => requested.push(request));
+      fixture.componentRef.setInput('clickable', true);
+      fixture.detectChanges();
+      const row = getPlaceholderRows()[0];
+
+      row.click();
+      row.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, button: 2 }));
+
+      expect(activated).toEqual([]);
+      expect(requested).toEqual([]);
+      expect(row.getAttribute('tabindex')).toBeNull();
+    });
+
+    it('keeps grid navigation to the header row while loading', () => {
+      fixture.componentRef.setInput('navigable', true);
+      fixture.detectChanges();
+      const table = getTable();
+      const press = (key: string): void => {
+        table.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+        fixture.detectChanges();
+      };
+
+      press('ArrowRight');
+      press('ArrowDown');
+
+      expect(document.activeElement?.getAttribute('data-ea-cell')).toBe('0-1');
+      expect(getPlaceholderRows()[0].querySelector('[data-ea-cell]')).toBeNull();
+    });
+
+    it("renders a column's placeholder template with the column and row index", () => {
+      const host = TestBed.createComponent(PlaceholderHostComponent);
+      host.detectChanges();
+      const root: HTMLElement = host.nativeElement;
+
+      const custom = Array.from(
+        root.querySelectorAll<HTMLElement>('.custom-placeholder'),
+        el => el.textContent,
+      );
+
+      expect(custom).toEqual(['name-0', 'name-1']);
+      expect(root.querySelectorAll('ea-skeleton')).toHaveLength(2);
+      host.destroy();
+    });
+  });
+
+  describe('Row context menu', () => {
+    let requests: DataTableRowContextMenuEvent<TestRow>[];
+
+    function contextMenuAt(target: HTMLElement, init: MouseEventInit = {}): MouseEvent {
+      const event = new MouseEvent('contextmenu', {
+        bubbles: true,
+        cancelable: true,
+        button: 2,
+        ...init,
+      });
+      target.dispatchEvent(event);
+      return event;
+    }
+
+    function shiftF10(target: HTMLElement, init: KeyboardEventInit = {}): KeyboardEvent {
+      const event = new KeyboardEvent('keydown', {
+        key: 'F10',
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true,
+        ...init,
+      });
+      target.dispatchEvent(event);
+      return event;
+    }
+
+    beforeEach(() => {
+      requests = [];
+      component.rowContextMenu.subscribe(request => requests.push(request));
+    });
+
+    it('reports a right-click with the row, its element and the pointer', () => {
+      const row = getBodyRows()[0];
+
+      const event = contextMenuAt(getCellsInRow(row)[1], { clientX: 30, clientY: 40 });
+
+      expect(requests).toHaveLength(1);
+      expect(requests[0].row).toEqual(testData[0]);
+      expect(requests[0].rowElement).toBe(row);
+      expect(requests[0].point).toEqual({ x: 30, y: 40 });
+      expect(requests[0].event).toBe(event);
+    });
+
+    it('leaves suppressing the browser menu to the consumer', () => {
+      const event = contextMenuAt(getBodyRows()[0]);
+
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('reports Shift+F10 on a focused row, pointing below it', () => {
+      fixture.componentRef.setInput('clickable', true);
+      fixture.detectChanges();
+      const row = getBodyRows()[1];
+      row.getBoundingClientRect = () => new DOMRect(10, 20, 300, 40);
+
+      const event = shiftF10(row);
+
+      expect(requests).toHaveLength(1);
+      expect(requests[0].row).toEqual(testData[1]);
+      expect(requests[0].point).toEqual({ x: 10, y: 60 });
+      expect(requests[0].event).toBe(event);
+    });
+
+    it('reports Shift+F10 from a focused grid cell, pointing below the cell', () => {
+      fixture.componentRef.setInput('navigable', true);
+      fixture.detectChanges();
+      const cell = getCellsInRow(getBodyRows()[2])[1];
+      cell.getBoundingClientRect = () => new DOMRect(100, 200, 80, 30);
+
+      shiftF10(cell);
+
+      expect(requests[0].row).toEqual(testData[2]);
+      expect(requests[0].point).toEqual({ x: 100, y: 230 });
+    });
+
+    it('ignores F10 without Shift, or with another modifier', () => {
+      const row = getBodyRows()[0];
+
+      shiftF10(row, { shiftKey: false });
+      shiftF10(row, { ctrlKey: true });
+      row.dispatchEvent(new KeyboardEvent('keydown', { key: 'a', bubbles: true }));
+
+      expect(requests).toEqual([]);
+    });
+
+    it("does not report the browser's follow-up to an unclaimed Shift+F10 again", () => {
+      const row = getBodyRows()[0];
+
+      shiftF10(row);
+      contextMenuAt(row, { button: 0 });
+
+      expect(requests).toHaveLength(1);
+    });
+
+    it('reports the next request once the key is released', () => {
+      const row = getBodyRows()[0];
+      shiftF10(row);
+      row.dispatchEvent(new KeyboardEvent('keyup', { key: 'F10', bubbles: true }));
+
+      contextMenuAt(row);
+
+      expect(requests).toHaveLength(2);
+    });
+
+    it('reports a right-click that starts with a pointer press', () => {
+      const row = getBodyRows()[0];
+      shiftF10(row);
+      row.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }));
+
+      contextMenuAt(row);
+
+      expect(requests).toHaveLength(2);
+    });
+
+    it('expects no follow-up once a Shift+F10 is claimed', () => {
+      const claim = component.rowContextMenu.subscribe(request =>
+        request.event.preventDefault(),
+      );
+      const row = getBodyRows()[0];
+      shiftF10(row);
+
+      contextMenuAt(row);
+
+      expect(requests).toHaveLength(2);
+      claim.unsubscribe();
     });
   });
 
