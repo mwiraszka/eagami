@@ -170,9 +170,12 @@ for (const slug of apiSlugs) {
   const knob = knobNames.get(slug) ?? { all: new Set(), demoOnly: new Set() };
   const apiInputNames = new Set(api.inputs.map(p => p.name));
   const apiOutputNames = new Set(api.outputs.map(p => p.name));
-  const apiMethodNames = new Set(
-    [...api.methods, ...(api.service?.methods ?? [])].map(m => m.name),
-  );
+  // Service methods are described under `ServiceName.method`, apart from the
+  // component's own members
+  const apiMethodNames = new Set([
+    ...api.methods.map(m => m.name),
+    ...(api.service?.methods ?? []).map(m => `${api.service.name}.${m.name}`),
+  ]);
 
   for (const p of api.inputs) {
     if (!desc.has(p.name) && !SHARED_DESCRIPTIONS.has(p.name)) {

@@ -1518,16 +1518,18 @@ export const frFR: WebMessages = {
             size: 'Taille visuelle appliquée à chaque toast de la pile.',
             position: 'Coin ou bord de la fenêtre où la pile de toasts est ancrée.',
             clearable: 'Affiche un bouton de fermeture sur chaque toast.',
-            show: 'Affiche un toast et renvoie son id. Son message et son titre acceptent une chaîne simple ou des segments mis en avant.',
-            success: 'Affiche un toast de succès et renvoie son id.',
-            error: 'Affiche un toast d’erreur et renvoie son id.',
-            warning: 'Affiche un toast d’avertissement et renvoie son id.',
-            info: 'Affiche un toast d’information et renvoie son id.',
-            dismiss: 'Supprime le toast portant l’id indiqué, s’il est encore affiché.',
-            clear: 'Supprime tous les toasts actuellement affichés.',
-            pause:
+            'ToastService.show':
+              'Affiche un toast et renvoie son id. Son message et son titre acceptent une chaîne simple ou des segments mis en avant.',
+            'ToastService.success': 'Affiche un toast de succès et renvoie son id.',
+            'ToastService.error': 'Affiche un toast d’erreur et renvoie son id.',
+            'ToastService.warning': 'Affiche un toast d’avertissement et renvoie son id.',
+            'ToastService.info': 'Affiche un toast d’information et renvoie son id.',
+            'ToastService.dismiss':
+              'Supprime le toast portant l’id indiqué, s’il est encore affiché.',
+            'ToastService.clear': 'Supprime tous les toasts actuellement affichés.',
+            'ToastService.pause':
               'Suspend tous les comptes à rebours de fermeture automatique en conservant le temps restant de chaque toast.',
-            resume: 'Reprend les comptes à rebours suspendus par pause.',
+            'ToastService.resume': 'Reprend les comptes à rebours suspendus par pause.',
           },
           input: {
             spellcheck:

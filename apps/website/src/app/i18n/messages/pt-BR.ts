@@ -1502,16 +1502,18 @@ export const ptBR: WebMessages = {
             position:
               'Canto ou borda da janela de visualização onde a pilha de toasts é fixada.',
             clearable: 'Mostra um botão de dispensar em cada toast.',
-            show: 'Exibe um toast e retorna seu id. Sua mensagem e seu título aceitam uma string simples ou segmentos com ênfase.',
-            success: 'Exibe um toast de sucesso e retorna seu id.',
-            error: 'Exibe um toast de erro e retorna seu id.',
-            warning: 'Exibe um toast de aviso e retorna seu id.',
-            info: 'Exibe um toast informativo e retorna seu id.',
-            dismiss: 'Remove o toast com o id indicado, se ainda estiver visível.',
-            clear: 'Remove todos os toasts visíveis no momento.',
-            pause:
+            'ToastService.show':
+              'Exibe um toast e retorna seu id. Sua mensagem e seu título aceitam uma string simples ou segmentos com ênfase.',
+            'ToastService.success': 'Exibe um toast de sucesso e retorna seu id.',
+            'ToastService.error': 'Exibe um toast de erro e retorna seu id.',
+            'ToastService.warning': 'Exibe um toast de aviso e retorna seu id.',
+            'ToastService.info': 'Exibe um toast informativo e retorna seu id.',
+            'ToastService.dismiss':
+              'Remove o toast com o id indicado, se ainda estiver visível.',
+            'ToastService.clear': 'Remove todos os toasts visíveis no momento.',
+            'ToastService.pause':
               'Suspende todas as contagens regressivas de fechamento automático, mantendo o tempo restante de cada toast.',
-            resume: 'Retoma as contagens regressivas suspensas por pause.',
+            'ToastService.resume': 'Retoma as contagens regressivas suspensas por pause.',
           },
           input: {
             spellcheck:

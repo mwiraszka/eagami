@@ -1498,16 +1498,20 @@ export const is: WebMessages = {
             size: 'Sjónræn stærð sem gildir um hverja tilkynningu í staflanum.',
             position: 'Horn eða brún sýnisvæðis sem tilkynningastaflinn er festur við.',
             clearable: 'Sýna lokunarhnapp á hverri tilkynningu.',
-            show: 'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
-            success: 'Sýnir tilkynningu um velgengni og skilar auðkenni hennar.',
-            error: 'Sýnir villutilkynningu og skilar auðkenni hennar.',
-            warning: 'Sýnir viðvörunartilkynningu og skilar auðkenni hennar.',
-            info: 'Sýnir upplýsingatilkynningu og skilar auðkenni hennar.',
-            dismiss: 'Fjarlægir tilkynninguna með uppgefnu auðkenni, sé hún enn sýnileg.',
-            clear: 'Fjarlægir allar tilkynningar sem eru sýnilegar núna.',
-            pause:
+            'ToastService.show':
+              'Sýnir tilkynningu og skilar auðkenni hennar. Skilaboð hennar og titill taka venjulegan streng eða áherslubúta.',
+            'ToastService.success':
+              'Sýnir tilkynningu um velgengni og skilar auðkenni hennar.',
+            'ToastService.error': 'Sýnir villutilkynningu og skilar auðkenni hennar.',
+            'ToastService.warning':
+              'Sýnir viðvörunartilkynningu og skilar auðkenni hennar.',
+            'ToastService.info': 'Sýnir upplýsingatilkynningu og skilar auðkenni hennar.',
+            'ToastService.dismiss':
+              'Fjarlægir tilkynninguna með uppgefnu auðkenni, sé hún enn sýnileg.',
+            'ToastService.clear': 'Fjarlægir allar tilkynningar sem eru sýnilegar núna.',
+            'ToastService.pause':
               'Frestar allri niðurtalningu sjálfvirkrar lokunar og heldur þeim tíma sem eftir er á hverri tilkynningu.',
-            resume: 'Heldur áfram niðurtalningum sem pause frestaði.',
+            'ToastService.resume': 'Heldur áfram niðurtalningum sem pause frestaði.',
           },
           input: {
             spellcheck:

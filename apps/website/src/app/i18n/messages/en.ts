@@ -1480,16 +1480,18 @@ export const en: WebMessages = {
             size: 'Visual size applied to every toast in the stack.',
             position: 'Viewport corner or edge the toast stack is pinned to.',
             clearable: 'Show a dismiss button on each toast.',
-            show: 'Shows a toast and returns its id. Its message and title each take a plain string or emphasis segments.',
-            success: 'Shows a success toast and returns its id.',
-            error: 'Shows an error toast and returns its id.',
-            warning: 'Shows a warning toast and returns its id.',
-            info: 'Shows an info toast and returns its id.',
-            dismiss: 'Removes the toast with the given id, if it is still showing.',
-            clear: 'Removes every toast currently on screen.',
-            pause:
+            'ToastService.show':
+              'Shows a toast and returns its id. Its message and title each take a plain string or emphasis segments.',
+            'ToastService.success': 'Shows a success toast and returns its id.',
+            'ToastService.error': 'Shows an error toast and returns its id.',
+            'ToastService.warning': 'Shows a warning toast and returns its id.',
+            'ToastService.info': 'Shows an info toast and returns its id.',
+            'ToastService.dismiss':
+              'Removes the toast with the given id, if it is still showing.',
+            'ToastService.clear': 'Removes every toast currently on screen.',
+            'ToastService.pause':
               'Suspends every auto-dismiss countdown, keeping the time each toast has left.',
-            resume: 'Resumes the countdowns suspended by pause.',
+            'ToastService.resume': 'Resumes the countdowns suspended by pause.',
           },
           input: {
             spellcheck:

@@ -1465,15 +1465,17 @@ export const he: WebMessages = {
             size: 'הגודל הוויזואלי המוחל על כל toast בערימה.',
             position: 'הפינה או הקצה של אזור התצוגה שאליו מוצמדת ערימת ה-toast.',
             clearable: 'הצג כפתור סגירה על כל toast.',
-            show: 'מציג toast ומחזיר את המזהה שלו. ההודעה והכותרת מקבלות מחרוזת רגילה או מקטעי הדגשה.',
-            success: 'מציג toast של הצלחה ומחזיר את המזהה שלו.',
-            error: 'מציג toast של שגיאה ומחזיר את המזהה שלו.',
-            warning: 'מציג toast של אזהרה ומחזיר את המזהה שלו.',
-            info: 'מציג toast של מידע ומחזיר את המזהה שלו.',
-            dismiss: 'מסיר את ה-toast בעל המזהה הנתון, אם הוא עדיין מוצג.',
-            clear: 'מסיר כל toast שמוצג כרגע.',
-            pause: 'משהה כל ספירה לאחור לסגירה אוטומטית ושומר את הזמן שנותר לכל toast.',
-            resume: 'ממשיך את הספירות לאחור שהושהו על ידי pause.',
+            'ToastService.show':
+              'מציג toast ומחזיר את המזהה שלו. ההודעה והכותרת מקבלות מחרוזת רגילה או מקטעי הדגשה.',
+            'ToastService.success': 'מציג toast של הצלחה ומחזיר את המזהה שלו.',
+            'ToastService.error': 'מציג toast של שגיאה ומחזיר את המזהה שלו.',
+            'ToastService.warning': 'מציג toast של אזהרה ומחזיר את המזהה שלו.',
+            'ToastService.info': 'מציג toast של מידע ומחזיר את המזהה שלו.',
+            'ToastService.dismiss': 'מסיר את ה-toast בעל המזהה הנתון, אם הוא עדיין מוצג.',
+            'ToastService.clear': 'מסיר כל toast שמוצג כרגע.',
+            'ToastService.pause':
+              'משהה כל ספירה לאחור לסגירה אוטומטית ושומר את הזמן שנותר לכל toast.',
+            'ToastService.resume': 'ממשיך את הספירות לאחור שהושהו על ידי pause.',
           },
           input: {
             spellcheck:
