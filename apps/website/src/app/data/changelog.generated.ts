@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.56.0',
+    date: '2026-09-30',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add 30 everyday icons covering shopping and savings, tickets and tags, spreadsheets and notes, identity cards, mail and conversations, filtering and unpinning, clicking and panning, color sampling and painting, headings, kanban boards, code and networks, line charts, extensions, driving and directions, health, dining, scheduling and celebrations.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.55.0',
     date: '2026-09-29',
     sections: [
