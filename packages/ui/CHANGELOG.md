@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.56.0] - 2026-09-30
+
+### Added
+
+- Add 30 everyday icons covering shopping and savings, tickets and tags, spreadsheets and notes, identity cards, mail and conversations, filtering and unpinning, clicking and panning, color sampling and painting, headings, kanban boards, code and networks, line charts, extensions, driving and directions, health, dining, scheduling and celebrations.
+
 ## [5.55.0] - 2026-09-29
 
 ### Added
@@ -1752,6 +1758,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.56.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.55.0...ui-v5.56.0
 [5.55.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.54.0...ui-v5.55.0
 [5.54.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.53.0...ui-v5.54.0
 [5.53.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.52.1...ui-v5.53.0
