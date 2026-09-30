@@ -14,6 +14,7 @@ const DISPLAY_NAME_OVERRIDES: Record<string, string> = {
   github: 'GitHub',
   'github-2': 'GitHub 2',
   gitlab: 'GitLab',
+  'id-card': 'ID Card',
   linkedin: 'LinkedIn',
   'linkedin-2': 'LinkedIn 2',
   mongodb: 'MongoDB',
