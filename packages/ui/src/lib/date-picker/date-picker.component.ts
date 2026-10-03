@@ -43,6 +43,11 @@ export type DatePickerFormat = 'short' | 'medium' | 'long';
 export type DatePickerWeekStart = 0 | 1;
 /** Value accepted via `writeValue`: a `Date`, ISO/parseable string, or `null`. */
 export type DatePickerValue = Date | string | null;
+/** Span of dates that includes both its start and its end. */
+export interface DatePickerDateRange {
+  start: Date;
+  end: Date;
+}
 
 interface CalendarDay {
   date: Date;
@@ -58,10 +63,10 @@ interface CalendarDay {
  * Date field with a calendar popover. The date can be typed straight into the
  * field in any reasonable shape (ISO, all-numeric in the locale's field order,
  * or with a month name) and is rewritten in the configured `format` on commit.
- * Supports `min`/`max` bounds, configurable week start, locale-aware formatting
- * via `Intl.DateTimeFormat`, and full keyboard navigation (arrows,
- * PageUp/PageDown, Home/End, Enter, Escape). Integrates with Angular forms via
- * `ControlValueAccessor`.
+ * Supports `min`/`max` bounds, disabled weekdays and dates, configurable week
+ * start, locale-aware formatting via `Intl.DateTimeFormat`, and full keyboard
+ * navigation (arrows, PageUp/PageDown, Home/End, Enter, Escape). Integrates
+ * with Angular forms via `ControlValueAccessor`.
  */
 @Component({
   selector: 'ea-date-picker',
@@ -109,6 +114,10 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly minDate = input<Date | null>(null);
   readonly maxDate = input<Date | null>(null);
+  /** Weekdays that cannot be picked, numbered as `Date.getDay()` does: 0 for Sunday through 6 for Saturday. */
+  readonly disabledWeekdays = input<readonly number[]>([]);
+  /** Individual dates and ranges that cannot be picked, on top of the `minDate` and `maxDate` bounds. */
+  readonly disabledDates = input<readonly (Date | DatePickerDateRange)[]>([]);
   readonly format = input<DatePickerFormat>('medium');
   readonly weekStartsOn = input<DatePickerWeekStart>(1);
   readonly locale = input<string | undefined>(undefined);
@@ -256,8 +265,6 @@ export class DatePickerComponent implements ControlValueAccessor {
     const today = this.startOfDay(new Date());
     const selected = this.value();
     const focused = this.focusedDate();
-    const min = this.minDate() ? this.startOfDay(this.minDate()!) : null;
-    const max = this.maxDate() ? this.startOfDay(this.maxDate()!) : null;
 
     const rows: CalendarDay[][] = [];
     for (let row = 0; row < 6; row++) {
@@ -271,7 +278,7 @@ export class DatePickerComponent implements ControlValueAccessor {
           isCurrentMonth: cellDate.getMonth() === month,
           isToday: this.isSameDay(cellDate, today),
           isSelected: selected ? this.isSameDay(cellDate, selected) : false,
-          isDisabled: (min ? cellDate < min : false) || (max ? cellDate > max : false),
+          isDisabled: this.isUnavailable(cellDate),
           isFocused: focused ? this.isSameDay(cellDate, focused) : false,
         });
       }
@@ -486,7 +493,7 @@ export class DatePickerComponent implements ControlValueAccessor {
       locale: this.effectiveLocale(),
       monthNames: this.i18n.messages().datePicker.months,
     });
-    if (!parsed || this.isOutOfRange(parsed)) {
+    if (!parsed || this.isUnavailable(parsed)) {
       return;
     }
     const current = this.value();
@@ -507,12 +514,23 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.changed.emit(date);
   }
 
-  private isOutOfRange(date: Date): boolean {
+  private isUnavailable(date: Date): boolean {
     const min = this.minDate();
     const max = this.maxDate();
     return (
-      (!!min && date < this.startOfDay(min)) || (!!max && date > this.startOfDay(max))
+      (!!min && date < this.startOfDay(min)) ||
+      (!!max && date > this.startOfDay(max)) ||
+      this.disabledWeekdays().includes(date.getDay()) ||
+      this.disabledDates().some(entry => this.covers(entry, date))
     );
+  }
+
+  private covers(entry: Date | DatePickerDateRange, date: Date): boolean {
+    if (entry instanceof Date) {
+      return this.isSameDay(entry, date);
+    }
+    const day = this.startOfDay(date);
+    return day >= this.startOfDay(entry.start) && day <= this.startOfDay(entry.end);
   }
 
   handleGridKeydown(event: KeyboardEvent): void {
@@ -558,7 +576,7 @@ export class DatePickerComponent implements ControlValueAccessor {
       case ' ': {
         event.preventDefault();
         const current = this.focusedDate();
-        if (!current || this.isOutOfRange(current)) {
+        if (!current || this.isUnavailable(current)) {
           return;
         }
         this.selectDay({

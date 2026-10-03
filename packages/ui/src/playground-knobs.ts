@@ -133,3 +133,53 @@ export const LABEL_ICON_SLUGS = [
   'mail',
   'calendar',
 ] as const;
+
+/**
+ * Date picker weekday toggles in `Date.getDay()` order, so a knob's position
+ * is the weekday it disables.
+ */
+export const DATE_PICKER_WEEKDAY_KNOBS = [
+  'disableSundays',
+  'disableMondays',
+  'disableTuesdays',
+  'disableWednesdays',
+  'disableThursdays',
+  'disableFridays',
+  'disableSaturdays',
+] as const;
+
+/** A date, or a span of dates that includes both of its ends. */
+export type DateListKnobEntry = Date | { start: Date; end: Date };
+
+function parseIsoDate(text: string): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text.trim());
+  if (!match) {
+    return null;
+  }
+  const month = Number(match[2]) - 1;
+  const date = new Date(Number(match[1]), month, Number(match[3]));
+  // A day past the end of its month rolls into the next one
+  return date.getMonth() === month ? date : null;
+}
+
+/**
+ * Reads the date picker's `disabledDates` text knob: comma-separated ISO dates,
+ * with `..` between the two ends of a range. An entry that is not a date yet is
+ * skipped, so text still being typed disables nothing.
+ */
+export function parseDateListKnob(text: string): DateListKnobEntry[] {
+  const entries: DateListKnobEntry[] = [];
+  for (const token of text.split(',')) {
+    const parts = token.split('..').map(parseIsoDate);
+    const [start, end] = parts;
+    if (!start) {
+      continue;
+    }
+    if (parts.length === 1) {
+      entries.push(start);
+    } else if (parts.length === 2 && end) {
+      entries.push({ start, end });
+    }
+  }
+  return entries;
+}
