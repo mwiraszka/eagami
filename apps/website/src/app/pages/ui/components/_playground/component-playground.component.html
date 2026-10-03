@@ -31,7 +31,7 @@
             @switch (knob.control) {
               @case ('boolean') {
                 <ea-switch
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [checked]="boolValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
                   (changed)="emit(knob.name, $event)" />
@@ -39,14 +39,14 @@
               @case ('select') {
                 @if (knob.options.length <= 4) {
                   <ea-segmented
-                    [label]="knobLabel(knob.name)"
+                    [label]="knobLabel(knob)"
                     [options]="optionsFor(knob.name)"
                     [value]="stringValue(knob.name)"
                     [disabled]="!isEnabled(knob)"
                     (changed)="emit(knob.name, $event)" />
                 } @else {
                   <ea-dropdown
-                    [label]="knobLabel(knob.name)"
+                    [label]="knobLabel(knob)"
                     [options]="optionsFor(knob.name)"
                     [value]="stringValue(knob.name)"
                     [disabled]="!isEnabled(knob)"
@@ -55,7 +55,7 @@
               }
               @case ('icon') {
                 <ea-dropdown
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [options]="optionsFor(knob.name)"
                   [value]="stringValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
@@ -63,7 +63,7 @@
               }
               @case ('color') {
                 <ea-color-picker
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [value]="stringValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
                   (changed)="emit(knob.name, $event ?? '')" />
@@ -72,7 +72,7 @@
                 <ea-input
                   type="number"
                   autocomplete="off"
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [value]="stringValue(knob.name)"
                   [hint]="rangeHint(knob)"
                   [min]="knob.min"
@@ -86,7 +86,7 @@
               @case ('content') {
                 <ea-input
                   autocomplete="off"
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [value]="stringValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
                   (valueChange)="emit(knob.name, $event)" />
@@ -94,7 +94,7 @@
               @default {
                 <ea-input
                   autocomplete="off"
-                  [label]="knobLabel(knob.name)"
+                  [label]="knobLabel(knob)"
                   [value]="stringValue(knob.name)"
                   [disabled]="!isEnabled(knob)"
                   (valueChange)="emit(knob.name, $event)" />

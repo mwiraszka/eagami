@@ -33,6 +33,8 @@ export interface KnobArgType {
   step?: number;
   /** Maximum character count for a `number` control, which also sizes its width. */
   maxLength?: number;
+  /** Unit a `number` control's value is measured in (`px`, `ms`), shown beside its label. */
+  unit?: string;
   /** Conditionally gate this knob on another knob's value. */
   if?: KnobCondition;
   /** Demo-only control (e.g. a validation trigger); excluded from the generated code snippet. */

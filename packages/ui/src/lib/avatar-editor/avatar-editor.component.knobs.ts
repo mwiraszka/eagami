@@ -11,7 +11,7 @@ export const AVATAR_EDITOR_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['circle', 'square'],
     },
-    canvasSize: { control: 'number', min: 100, max: 400, maxLength: 3 },
+    canvasSize: { control: 'number', unit: 'px', min: 100, max: 400, maxLength: 3 },
     minZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
     maxZoom: { control: 'number', min: 1, max: 10, maxLength: 2 },
     loading: { control: 'boolean' },

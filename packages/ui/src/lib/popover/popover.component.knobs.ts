@@ -38,7 +38,7 @@ export const POPOVER_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['reposition', 'close', 'ignore'],
     },
-    offset: { control: 'number', min: 0, max: 64, maxLength: 2 },
+    offset: { control: 'number', unit: 'px', min: 0, max: 64, maxLength: 2 },
     flip: { control: 'boolean' },
     clamp: { control: 'boolean' },
     matchAnchorWidth: { control: 'boolean' },
