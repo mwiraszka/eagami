@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -39,13 +39,13 @@ export interface TextareaSelection {
 
 /**
  * Multiline text field that mirrors the `ea-input` API. Supports configurable
- * `resize` direction and `maxlength`, exposes the caret through
- * `getSelection()` and `insertText()`, and integrates with Angular
+ * `resize` direction, `maxlength` and a character count, exposes the caret
+ * through `getSelection()` and `insertText()`, and integrates with Angular
  * forms via `ControlValueAccessor`.
  */
 @Component({
   selector: 'ea-textarea',
-  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
+  imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, NgTemplateOutlet],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -78,6 +78,8 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly resize = input<TextareaResize>('vertical');
   readonly maxlength = input<number | undefined>(undefined);
+  /** Shows the number of characters typed below the field, against `maxlength` when one is set. */
+  readonly showCount = input<boolean>(false);
   /** Optional pixel ceiling for the textarea's height. Beyond it, the inner
    * field scrolls vertically instead of growing. */
   readonly maxHeight = input<number | undefined>(undefined);
@@ -108,6 +110,25 @@ export class TextareaComponent implements ControlValueAccessor {
   readonly hasError = this.errorState.hasError;
   readonly showError = this.hasError;
   readonly showHint = computed(() => !!this.hint() && !this.hasError());
+
+  protected readonly countText = computed(() => {
+    const length = this.value().length;
+    const max = this.maxlength();
+    return max ? `${length} / ${max}` : `${length}`;
+  });
+
+  protected readonly describedBy = computed(() => {
+    const ids: string[] = [];
+    if (this.showError()) {
+      ids.push(`${this.id()}-error`);
+    } else if (this.showHint()) {
+      ids.push(`${this.id()}-hint`);
+    }
+    if (this.showCount()) {
+      ids.push(`${this.id()}-count`);
+    }
+    return ids.length > 0 ? ids.join(' ') : null;
+  });
 
   readonly wrapperClasses = computed(() => ({
     [`ea-textarea-wrapper--${this.size()}`]: true,
