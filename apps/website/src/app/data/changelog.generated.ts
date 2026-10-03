@@ -15,12 +15,18 @@ export interface ChangelogRelease {
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
     version: '5.59.0',
-    date: '2026-10-03',
+    date: '2026-10-04',
     sections: [
       {
         heading: 'Added',
         entries: [
           'Draw 14 new icons for travel and transit, the outdoors, pets, food, clothing, fitness and gaming, measuring, shopping and schools.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Align the date and time pickers with the other fields: the time picker's clear button now sits inside the field's padding, and the date picker's calendar icon matches the size of their leading icons, so text and clear buttons fall in the same places.",
         ],
       },
     ],
