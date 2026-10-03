@@ -84,8 +84,16 @@
     }
   }
 
+  // Sized like the leading icon of the other fields, so the date starts where their
+  // text does; the grown target still fits within the padding and gap around it
   &__calendar-button {
     @include ea.icon-button;
+    --ea-icon-button-size: 1em;
+    --ea-icon-button-target: #{ea.$target-size-min};
+
+    > * {
+      font-size: 1em;
+    }
   }
 
   &__input {

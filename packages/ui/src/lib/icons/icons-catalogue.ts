@@ -37,11 +37,14 @@ import { BadgeCheckIconComponent } from './badge-check.component';
 import { BanIconComponent } from './ban.component';
 import { BarChart2IconComponent } from './bar-chart-2.component';
 import { BarChartIconComponent } from './bar-chart.component';
+import { BasketIconComponent } from './basket.component';
 import { BatteryChargingIconComponent } from './battery-charging.component';
 import { BatteryIconComponent } from './battery.component';
+import { BedIconComponent } from './bed.component';
 import { BellOffIconComponent } from './bell-off.component';
 import { BellRingIconComponent } from './bell-ring.component';
 import { BellIconComponent } from './bell.component';
+import { BikeIconComponent } from './bike.component';
 import { BitcoinIconComponent } from './bitcoin.component';
 import { BlueskyIconComponent } from './bluesky.component';
 import { BluetoothIconComponent } from './bluetooth.component';
@@ -60,6 +63,7 @@ import { BrainIconComponent } from './brain.component';
 import { BriefcaseIconComponent } from './briefcase.component';
 import { BugIconComponent } from './bug.component';
 import { BuildingIconComponent } from './building.component';
+import { CakeIconComponent } from './cake.component';
 import { CalculatorIconComponent } from './calculator.component';
 import { CalendarCheckIconComponent } from './calendar-check.component';
 import { CalendarClockIconComponent } from './calendar-clock.component';
@@ -149,6 +153,7 @@ import { DownloadIconComponent } from './download.component';
 import { DribbbleIconComponent } from './dribbble.component';
 import { DropboxIconComponent } from './dropbox.component';
 import { DropletIconComponent } from './droplet.component';
+import { DumbbellIconComponent } from './dumbbell.component';
 import { EagamiIconComponent } from './eagami.component';
 import { Edit2IconComponent } from './edit-2.component';
 import { Edit3IconComponent } from './edit-3.component';
@@ -192,6 +197,7 @@ import { FolderIconComponent } from './folder.component';
 import { ForwardIconComponent } from './forward.component';
 import { FramerIconComponent } from './framer.component';
 import { FrownIconComponent } from './frown.component';
+import { GamepadIconComponent } from './gamepad.component';
 import { GaugeIconComponent } from './gauge.component';
 import { GeminiIconComponent } from './gemini.component';
 import { GiftIconComponent } from './gift.component';
@@ -297,6 +303,7 @@ import { MonitorIconComponent } from './monitor.component';
 import { MoonIconComponent } from './moon.component';
 import { MoreHorizontalIconComponent } from './more-horizontal.component';
 import { MoreVerticalIconComponent } from './more-vertical.component';
+import { MountainIconComponent } from './mountain.component';
 import { MousePointerClickIconComponent } from './mouse-pointer-click.component';
 import { MousePointerIconComponent } from './mouse-pointer.component';
 import { MoveIconComponent } from './move.component';
@@ -317,6 +324,7 @@ import { PaperclipIconComponent } from './paperclip.component';
 import { PartyPopperIconComponent } from './party-popper.component';
 import { PauseCircleIconComponent } from './pause-circle.component';
 import { PauseIconComponent } from './pause.component';
+import { PawIconComponent } from './paw.component';
 import { PaypalIconComponent } from './paypal.component';
 import { PenToolIconComponent } from './pen-tool.component';
 import { PentagonIconComponent } from './pentagon.component';
@@ -335,6 +343,7 @@ import { PinOffIconComponent } from './pin-off.component';
 import { PinIconComponent } from './pin.component';
 import { PinterestIconComponent } from './pinterest.component';
 import { PipetteIconComponent } from './pipette.component';
+import { PizzaIconComponent } from './pizza.component';
 import { PlaneIconComponent } from './plane.component';
 import { PlayCircleIconComponent } from './play-circle.component';
 import { PlayIconComponent } from './play.component';
@@ -378,8 +387,10 @@ import { RotateCwIconComponent } from './rotate-cw.component';
 import { RouteIconComponent } from './route.component';
 import { RowsIconComponent } from './rows.component';
 import { RssIconComponent } from './rss.component';
+import { RulerIconComponent } from './ruler.component';
 import { SaveIconComponent } from './save.component';
 import { ScanIconComponent } from './scan.component';
+import { SchoolIconComponent } from './school.component';
 import { ScissorsIconComponent } from './scissors.component';
 import { ScreenShareIconComponent } from './screen-share.component';
 import { SearchIconComponent } from './search.component';
@@ -393,6 +404,8 @@ import { ShieldAlertIconComponent } from './shield-alert.component';
 import { ShieldCheckIconComponent } from './shield-check.component';
 import { ShieldOffIconComponent } from './shield-off.component';
 import { ShieldIconComponent } from './shield.component';
+import { ShipIconComponent } from './ship.component';
+import { ShirtIconComponent } from './shirt.component';
 import { ShopifyIconComponent } from './shopify.component';
 import { ShoppingBagIconComponent } from './shopping-bag.component';
 import { ShoppingCartIconComponent } from './shopping-cart.component';
@@ -449,6 +462,7 @@ import { TimerIconComponent } from './timer.component';
 import { ToggleLeftIconComponent } from './toggle-left.component';
 import { ToggleRightIconComponent } from './toggle-right.component';
 import { ToolIconComponent } from './tool.component';
+import { TrainIconComponent } from './train.component';
 import { TranscodeIconComponent } from './transcode.component';
 import { Trash2IconComponent } from './trash-2.component';
 import { TrashIconComponent } from './trash.component';
@@ -566,11 +580,14 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     BanIconComponent,
     BarChart2IconComponent,
     BarChartIconComponent,
+    BasketIconComponent,
     BatteryChargingIconComponent,
     BatteryIconComponent,
+    BedIconComponent,
     BellIconComponent,
     BellOffIconComponent,
     BellRingIconComponent,
+    BikeIconComponent,
     BitcoinIconComponent,
     BlueskyIconComponent,
     BluetoothIconComponent,
@@ -589,6 +606,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     BriefcaseIconComponent,
     BugIconComponent,
     BuildingIconComponent,
+    CakeIconComponent,
     CalculatorIconComponent,
     CalendarCheckIconComponent,
     CalendarClockIconComponent,
@@ -678,6 +696,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     DribbbleIconComponent,
     DropboxIconComponent,
     DropletIconComponent,
+    DumbbellIconComponent,
     EagamiIconComponent,
     Edit2IconComponent,
     Edit3IconComponent,
@@ -721,6 +740,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ForwardIconComponent,
     FramerIconComponent,
     FrownIconComponent,
+    GamepadIconComponent,
     GaugeIconComponent,
     GeminiIconComponent,
     GiftIconComponent,
@@ -825,6 +845,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     MoonIconComponent,
     MoreHorizontalIconComponent,
     MoreVerticalIconComponent,
+    MountainIconComponent,
     MousePointerClickIconComponent,
     MousePointerIconComponent,
     MoveIconComponent,
@@ -845,6 +866,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PartyPopperIconComponent,
     PauseCircleIconComponent,
     PauseIconComponent,
+    PawIconComponent,
     PaypalIconComponent,
     PenToolIconComponent,
     PentagonIconComponent,
@@ -863,6 +885,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     PinOffIconComponent,
     PinterestIconComponent,
     PipetteIconComponent,
+    PizzaIconComponent,
     PlaneIconComponent,
     PlayCircleIconComponent,
     PlayIconComponent,
@@ -906,8 +929,10 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     RouteIconComponent,
     RowsIconComponent,
     RssIconComponent,
+    RulerIconComponent,
     SaveIconComponent,
     ScanIconComponent,
+    SchoolIconComponent,
     ScissorsIconComponent,
     ScreenShareIconComponent,
     SearchIconComponent,
@@ -921,6 +946,8 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ShieldCheckIconComponent,
     ShieldIconComponent,
     ShieldOffIconComponent,
+    ShipIconComponent,
+    ShirtIconComponent,
     ShopifyIconComponent,
     ShoppingBagIconComponent,
     ShoppingCartIconComponent,
@@ -977,6 +1004,7 @@ export const ICONS: ReadonlyArray<IconComponentType> = (
     ToggleLeftIconComponent,
     ToggleRightIconComponent,
     ToolIconComponent,
+    TrainIconComponent,
     TranscodeIconComponent,
     Trash2IconComponent,
     TrashIconComponent,

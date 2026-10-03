@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.59.0] - 2026-10-04
+
+### Added
+
+- Draw 14 new icons for travel and transit, the outdoors, pets, food, clothing, fitness and gaming, measuring, shopping and schools.
+
+### Fixed
+
+- Align the date and time pickers with the other fields: the time picker's clear button now sits inside the field's padding, and the date picker's calendar icon matches the size of their leading icons, so text and clear buttons fall in the same places.
+
 ## [5.58.0] - 2026-10-03
 
 ### Added
@@ -1780,6 +1790,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.59.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.58.0...ui-v5.59.0
 [5.58.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.57.0...ui-v5.58.0
 [5.57.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.56.0...ui-v5.57.0
 [5.56.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.55.0...ui-v5.56.0
