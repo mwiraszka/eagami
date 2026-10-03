@@ -4,12 +4,14 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { TabComponent } from './tab.component';
-import { TabsComponent } from './tabs.component';
+import { TabsComponent, type TabsOrientation } from './tabs.component';
 
 @Component({
   imports: [TabsComponent, TabComponent],
   template: `
-    <ea-tabs [activeTab]="activeTab">
+    <ea-tabs
+      [activeTab]="activeTab"
+      [orientation]="orientation">
       <ea-tab
         value="one"
         label="Overview">
@@ -31,6 +33,7 @@ import { TabsComponent } from './tabs.component';
 })
 class HostComponent {
   activeTab = 'one';
+  orientation: TabsOrientation = 'horizontal';
   disableThird = false;
 }
 
@@ -55,6 +58,14 @@ describe('TabsComponent a11y', () => {
 
   it('has no detectable violations when a different tab is active', async () => {
     const el = await render(host => (host.activeTab = 'two'));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations in the vertical orientation', async () => {
+    const el = await render(host => (host.orientation = 'vertical'));
 
     const results = await axe(el);
 

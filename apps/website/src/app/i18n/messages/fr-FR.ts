@@ -1428,6 +1428,7 @@ export const frFR: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(sémantique uniquement)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Les deux ouvrent la même boîte de dialogue.' },
         },
 
@@ -2003,6 +2004,8 @@ export const frFR: WebMessages = {
             minHeight:
               'Hauteur minimale en px ; jamais inférieure à la hauteur par défaut.',
             maxlength: 'Nombre maximal de caractères que le champ accepte.',
+            showCount:
+              'Affiche sous le champ le nombre de caractères saisis, rapporté à maxlength lorsqu’il est défini.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
@@ -2190,6 +2193,8 @@ export const frFR: WebMessages = {
               'Valeur de l’onglet actuellement actif, liable en deux sens via [(activeTab)].',
             size: 'Taille visuelle des onglets.',
             variant: 'Style visuel de la barre d’onglets : souligné ou rempli.',
+            orientation:
+              'Place la barre d’onglets au-dessus du panneau (horizontal) ou en colonne à côté de lui (vertical).',
             changed:
               'Émis avec la valeur du nouvel onglet actif à chaque changement d’onglet actif.',
             registerTab:
@@ -2220,6 +2225,10 @@ export const frFR: WebMessages = {
               'Date la plus tardive sélectionnable ; les dates suivantes sont désactivées dans le calendrier.',
             minDate:
               'Date la plus ancienne sélectionnable ; les dates antérieures sont désactivées dans le calendrier.',
+            disabledWeekdays:
+              'Jours de la semaine non sélectionnables, sous forme de nombres de 0 pour dimanche à 6 pour samedi.',
+            disabledDates:
+              'Dates isolées et plages inclusives avec début et fin non sélectionnables, en plus des bornes minDate et maxDate.',
             placeholder:
               'Texte indicatif affiché dans le champ lorsqu’aucune date n’est sélectionnée.',
             readonly:
@@ -2452,6 +2461,10 @@ export const frFR: WebMessages = {
               'Tableau d’entrées de fil d’Ariane ; les éléments avec href s’affichent comme liens, les autres comme boutons, et le dernier est non interactif.',
             separator:
               'Style visuel du séparateur affiché entre les éléments du fil d’Ariane.',
+            maxItems:
+              'Nombre maximal d’éléments affichés à la fois dans le fil d’Ariane. Les premiers niveaux après le premier élément passent dans un menu, tandis que le premier et le dernier élément restent toujours visibles.',
+            overflow:
+              'Comportement d’un fil d’Ariane plus large que son conteneur. Avec menu, autant de premiers niveaux que nécessaire après le premier élément passent dans un menu, puis reviennent dès que la place se libère. Avec scroll, tous les niveaux restent et le fil défile horizontalement.',
             clicked:
               'Émis lorsqu’un élément du fil d’Ariane non désactivé et non final est activé.',
           },
@@ -2817,6 +2830,8 @@ export const frFR: WebMessages = {
         ],
         breadcrumbHome: 'Accueil',
         breadcrumbProducts: 'Produits',
+        breadcrumbElectronics: 'Électronique',
+        breadcrumbComputers: 'Ordinateurs',
         breadcrumbLaptops: 'Portables',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Tableau de bord',

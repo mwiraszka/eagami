@@ -29,6 +29,7 @@ interface TextareaKnobState {
   size: TextareaSize;
   resize: TextareaResize;
   maxlength: number;
+  showCount: boolean;
   minHeight: number;
   maxHeight: number;
   disabled: boolean;

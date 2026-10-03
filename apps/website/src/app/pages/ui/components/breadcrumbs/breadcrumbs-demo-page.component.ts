@@ -2,6 +2,7 @@ import {
   type BreadcrumbClickEvent,
   type BreadcrumbItem,
   BreadcrumbsComponent,
+  type BreadcrumbsOverflow,
   type BreadcrumbsSeparator,
   type BreadcrumbsSize,
 } from '@eagami/ui';
@@ -29,6 +30,9 @@ interface BreadcrumbsKnobState {
   [key: string]: KnobValue;
   separator: BreadcrumbsSeparator;
   size: BreadcrumbsSize;
+  maxItems: number;
+  overflow: BreadcrumbsOverflow;
+  width: number;
   ariaLabel: string;
 }
 
@@ -60,7 +64,12 @@ export class BreadcrumbsDemoPageComponent {
     return [
       { label: shared.breadcrumbHome, href: '/' },
       { label: shared.breadcrumbProducts, href: '/products' },
-      { label: shared.breadcrumbLaptops, href: '/products/laptops' },
+      { label: shared.breadcrumbElectronics, href: '/products/electronics' },
+      { label: shared.breadcrumbComputers, href: '/products/electronics/computers' },
+      {
+        label: shared.breadcrumbLaptops,
+        href: '/products/electronics/computers/laptops',
+      },
       { label: shared.breadcrumbMacBookPro },
     ];
   });

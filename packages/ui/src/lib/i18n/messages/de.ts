@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Brotkrümelnavigation',
+    showHidden: 'Ausgeblendete Ebenen anzeigen',
   },
   chart: {
     roleDescription: 'Diagramm',

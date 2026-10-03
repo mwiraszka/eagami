@@ -102,6 +102,7 @@ export interface EagamiMessages {
   };
   breadcrumbs: {
     label: string;
+    showHidden: string;
   };
   chart: {
     /** Announced role of a chart's plot, in place of the generic "group". */

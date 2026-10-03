@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Ruta de navegación',
+    showHidden: 'Mostrar los niveles ocultos',
   },
   chart: {
     roleDescription: 'gráfico',

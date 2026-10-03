@@ -15,6 +15,8 @@ import type { TabComponent } from './tab.component';
 export type TabsVariant = 'underline' | 'filled';
 /** Visual size of the tabs. */
 export type TabsSize = EaSize;
+/** Whether the tab bar runs along the top of the panel or down its side. */
+export type TabsOrientation = 'horizontal' | 'vertical';
 
 /**
  * Tab bar paired with content panels. Child `ea-tab` components register
@@ -33,6 +35,8 @@ export class TabsComponent {
 
   readonly variant = input<TabsVariant>('underline');
   readonly size = input<TabsSize>('md');
+  /** Places the tab bar above the panel, or in a column beside it. */
+  readonly orientation = input<TabsOrientation>('horizontal');
   /** Accessible name for the tablist, announced by screen readers. */
   readonly ariaLabel = input<string | undefined>(undefined);
 
@@ -60,9 +64,13 @@ export class TabsComponent {
   handleKeydown(event: KeyboardEvent): void {
     const tabList = this.registeredTabs().filter(t => !t.disabled());
     const currentIndex = tabList.findIndex(t => t.value() === this.activeTab());
-    const rtl = isRtl(event.currentTarget as Element);
-    const forwardKey = rtl ? 'ArrowLeft' : 'ArrowRight';
-    const backwardKey = rtl ? 'ArrowRight' : 'ArrowLeft';
+    let forwardKey = 'ArrowDown';
+    let backwardKey = 'ArrowUp';
+    if (this.orientation() === 'horizontal') {
+      const rtl = isRtl(event.currentTarget as Element);
+      forwardKey = rtl ? 'ArrowLeft' : 'ArrowRight';
+      backwardKey = rtl ? 'ArrowRight' : 'ArrowLeft';
+    }
     let nextIndex = -1;
 
     if (event.key === forwardKey) {

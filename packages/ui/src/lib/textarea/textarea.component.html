@@ -27,16 +27,29 @@
       [attr.maxlength]="maxlength() ?? null"
       [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
       [attr.aria-invalid]="hasError() || null"
-      [attr.aria-describedby]="
-        showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
-      "
+      [attr.aria-describedby]="describedBy()"
       (input)="handleInput($event)"
       (focus)="handleFocus($event)"
       (blur)="handleBlur($event)"></textarea>
   </div>
 
-  <ea-field-messages
-    [id]="id()"
-    [error]="errorText()"
-    [hint]="showHint() ? hint() : null" />
+  <ng-template #messages>
+    <ea-field-messages
+      [id]="id()"
+      [error]="errorText()"
+      [hint]="showHint() ? hint() : null" />
+  </ng-template>
+
+  @if (showCount()) {
+    <div class="ea-textarea-field__footer">
+      <ng-container [ngTemplateOutlet]="messages" />
+      <span
+        class="ea-textarea-field__count"
+        [id]="id() + '-count'">
+        {{ countText() }}
+      </span>
+    </div>
+  } @else {
+    <ng-container [ngTemplateOutlet]="messages" />
+  }
 </div>

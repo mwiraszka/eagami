@@ -1415,6 +1415,7 @@ export const is: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(aðeins merkingarlegt)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Báðir opna sama gluggann.' },
         },
 
@@ -1972,6 +1973,8 @@ export const is: WebMessages = {
               'Pixlaþak fyrir hæð reitsins; umfram það skrunast textasvæðið lóðrétt í stað þess að stækka.',
             minHeight: 'Lágmarkshæð í px; aldrei minni en sjálfgefin hæð.',
             maxlength: 'Hámarksfjöldi stafa sem reiturinn tekur við.',
+            showCount:
+              'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxlength þegar það er stillt.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
@@ -2148,6 +2151,8 @@ export const is: WebMessages = {
               'Gildi flipans sem nú er virkur, tvíátta bindanlegt með [(activeTab)].',
             size: 'Sjónræn stærð flipanna.',
             variant: 'Sjónrænn stíll flipastikunnar: undirstrik eða fyllt.',
+            orientation:
+              'Setur flipastikuna fyrir ofan spjaldið (horizontal) eða í dálk við hlið þess (vertical).',
             changed:
               'Kviknar með gildi nýja virka flipans hvenær sem virki flipinn breytist.',
             registerTab:
@@ -2180,6 +2185,10 @@ export const is: WebMessages = {
               'Síðasta dagsetning sem notandinn getur valið; dagsetningar eftir þessa eru óvirkar í dagatalinu.',
             minDate:
               'Fyrsta dagsetning sem notandinn getur valið; dagsetningar fyrir þessa eru óvirkar í dagatalinu.',
+            disabledWeekdays:
+              'Vikudagar sem ekki er hægt að velja, sem tölur frá 0 fyrir sunnudag til 6 fyrir laugardag.',
+            disabledDates:
+              'Stakar dagsetningar og tímabil með upphafi og enda, að báðum meðtöldum, sem ekki er hægt að velja, til viðbótar við mörkin minDate og maxDate.',
             placeholder:
               'Staðgengill sýndur í reitnum á meðan engin dagsetning er valin.',
             readonly:
@@ -2404,6 +2413,10 @@ export const is: WebMessages = {
             items:
               'Fylki brauðmolafærslna; atriði með href birtast sem tenglar, önnur sem hnappar, og það síðasta er óvirkt.',
             separator: 'Sjónrænn stíll skilrúmsins birts milli brauðmolaatriða.',
+            maxItems:
+              'Hámarksfjöldi atriða sem sýndur er í slóðinni í einu; fyrstu stigin á eftir fyrsta atriðinu færast í valmynd og fyrsta og síðasta atriðið haldast alltaf sýnileg.',
+            overflow:
+              'Hvað slóð gerir þegar hún er breiðari en ílátið: menu færir eins mörg af fyrstu stigunum á eftir fyrsta atriðinu og þarf í valmynd og skilar þeim þegar pláss losnar; scroll heldur öllum stigum og skrunar lárétt.',
             clicked: 'Kviknar þegar óvirkur, ekki-loka brauðmoli er virkjaður.',
           },
           drawer: {
@@ -2754,6 +2767,8 @@ export const is: WebMessages = {
         ],
         breadcrumbHome: 'Heim',
         breadcrumbProducts: 'Vörur',
+        breadcrumbElectronics: 'Raftæki',
+        breadcrumbComputers: 'Tölvur',
         breadcrumbLaptops: 'Fartölvur',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Stjórnborð',

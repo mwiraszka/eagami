@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Brauðmolaslóð',
+    showHidden: 'Sýna falin stig',
   },
   chart: {
     roleDescription: 'graf',

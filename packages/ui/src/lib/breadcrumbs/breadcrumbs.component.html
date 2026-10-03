@@ -1,49 +1,150 @@
 <nav
-  class="ea-breadcrumbs ea-breadcrumbs--{{ size() }}"
+  class="ea-breadcrumbs ea-breadcrumbs--{{ size() }} ea-breadcrumbs--{{ overflow() }}"
   [attr.aria-label]="resolvedAriaLabel()">
   <ol class="ea-breadcrumbs__list">
-    @for (item of items(); track $index; let i = $index; let last = $last) {
+    @for (crumb of crumbs(); track crumb.index; let first = $first; let last = $last) {
       <li class="ea-breadcrumbs__item">
         @if (last) {
           <span
             class="ea-breadcrumbs__current"
             aria-current="page">
-            {{ item.label }}
+            {{ crumb.item.label }}
           </span>
-        } @else if (item.disabled) {
+        } @else if (crumb.item.disabled) {
           <span class="ea-breadcrumbs__link ea-breadcrumbs__link--disabled">
-            {{ item.label }}
+            {{ crumb.item.label }}
           </span>
-        } @else if (item.href) {
+        } @else if (crumb.item.href) {
           <a
             class="ea-breadcrumbs__link"
-            [href]="item.href"
-            (click)="handleClick(item, i, $event)">
-            {{ item.label }}
+            [href]="crumb.item.href"
+            (click)="handleClick(crumb.item, crumb.index, $event)">
+            {{ crumb.item.label }}
           </a>
         } @else {
           <button
             type="button"
             class="ea-breadcrumbs__link ea-breadcrumbs__link--button"
-            (click)="handleClick(item, i, $event)">
-            {{ item.label }}
+            (click)="handleClick(crumb.item, crumb.index, $event)">
+            {{ crumb.item.label }}
           </button>
         }
 
         @if (!last) {
-          @if (separator() === 'chevron') {
-            <ea-icon-chevron-right
-              class="ea-breadcrumbs__separator ea-rtl-flip"
-              aria-hidden="true" />
-          } @else {
-            <span
-              class="ea-breadcrumbs__separator ea-breadcrumbs__separator--slash"
-              aria-hidden="true">
-              /
-            </span>
-          }
+          <ng-container [ngTemplateOutlet]="separatorTpl" />
         }
       </li>
+      @if (first && menuCrumbs().length > 0) {
+        <li class="ea-breadcrumbs__item">
+          <button
+            #expandEl
+            type="button"
+            class="ea-breadcrumbs__link ea-breadcrumbs__link--button ea-breadcrumbs__expand"
+            aria-haspopup="menu"
+            [attr.aria-expanded]="menuOpen()"
+            [attr.aria-controls]="menuOpen() ? menuId : null"
+            [attr.aria-label]="i18n.messages().breadcrumbs.showHidden"
+            (click)="toggleMenu()"
+            (keydown)="handleExpandKeydown($event)"
+            (mouseenter)="handleExpandEnter()"
+            (mouseleave)="handleHoverLeave($event)">
+            <ea-icon-more-horizontal aria-hidden="true" />
+          </button>
+          <ng-container [ngTemplateOutlet]="separatorTpl" />
+        </li>
+      }
     }
   </ol>
+
+  @if (overflow() === 'menu') {
+    <div
+      #sizerEl
+      class="ea-breadcrumbs__sizer"
+      aria-hidden="true">
+      @for (item of items(); track $index; let last = $last) {
+        <span
+          #sizerItemEl
+          class="ea-breadcrumbs__item">
+          <span [class]="last ? 'ea-breadcrumbs__current' : 'ea-breadcrumbs__link'">
+            {{ item.label }}
+          </span>
+          @if (!last) {
+            <ng-container [ngTemplateOutlet]="separatorTpl" />
+          }
+        </span>
+      }
+      <span
+        #sizerExpandEl
+        class="ea-breadcrumbs__item ea-breadcrumbs__sizer-expand">
+        <span class="ea-breadcrumbs__link ea-breadcrumbs__expand">
+          <ea-icon-more-horizontal />
+        </span>
+        <ng-container [ngTemplateOutlet]="separatorTpl" />
+      </span>
+    </div>
+  }
 </nav>
+
+<ea-popover
+  [anchor]="expandEl()"
+  [open]="menuOpen()"
+  placement="bottom-start"
+  role="menu"
+  [surfaceId]="menuId"
+  [aria-label]="i18n.messages().breadcrumbs.showHidden"
+  [closeOnEscape]="false"
+  (closeRequested)="closeMenu()">
+  <div
+    #menuEl
+    class="ea-breadcrumbs__menu ea-breadcrumbs__menu--{{ size() }}"
+    role="none"
+    (keydown)="handleMenuKeydown($event)"
+    (mouseleave)="handleHoverLeave($event)">
+    <div
+      class="ea-breadcrumbs__menu-list"
+      role="none">
+      @for (crumb of menuCrumbs(); track crumb.index) {
+        @if (crumb.item.disabled) {
+          <span
+            class="ea-breadcrumbs__menu-item ea-breadcrumbs__menu-item--disabled"
+            role="menuitem"
+            aria-disabled="true">
+            {{ crumb.item.label }}
+          </span>
+        } @else if (crumb.item.href) {
+          <a
+            class="ea-breadcrumbs__menu-item"
+            role="menuitem"
+            tabindex="-1"
+            [href]="crumb.item.href"
+            (click)="handleMenuClick(crumb, $event)">
+            {{ crumb.item.label }}
+          </a>
+        } @else {
+          <button
+            type="button"
+            class="ea-breadcrumbs__menu-item"
+            role="menuitem"
+            tabindex="-1"
+            (click)="handleMenuClick(crumb, $event)">
+            {{ crumb.item.label }}
+          </button>
+        }
+      }
+    </div>
+  </div>
+</ea-popover>
+
+<ng-template #separatorTpl>
+  @if (separator() === 'chevron') {
+    <ea-icon-chevron-right
+      class="ea-breadcrumbs__separator ea-rtl-flip"
+      aria-hidden="true" />
+  } @else {
+    <span
+      class="ea-breadcrumbs__separator ea-breadcrumbs__separator--slash"
+      aria-hidden="true">
+      /
+    </span>
+  }
+</ng-template>

@@ -191,6 +191,55 @@ $target-size-min: 24px;
   user-select: none;
 }
 
+// Floating surface of a menu-like list, sized in em so it scales with the host
+// component's `size`. Positioned by the host `<ea-popover>`; the background is
+// the caller's to set.
+@mixin menu-surface {
+  overflow-y: auto;
+  min-width: 10em;
+  padding: 0.25em 0;
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  @include elevated-surface-border;
+}
+
+// Row of a menu-like list. `$disabled` is the selector marking a row that cannot
+// be activated, which is left out of the hover and focus highlight.
+@mixin menu-row($disabled) {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+  padding: 0.5em 0.75em;
+  // Buttons do not inherit font-size by default, so take the list's; every
+  // dimension here is in em and scales with it
+  font-size: inherit;
+  text-align: start;
+  font-family: var(--font-family-sans);
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: var(--transition-colors);
+
+  // state-hover (a translucent wash) reads on the elevated menu surface in both
+  // themes; bg-muted collapses onto that surface's shade in dark mode.
+  &:hover:not(#{$disabled}),
+  &:focus-visible:not(#{$disabled}) {
+    background-color: var(--color-state-hover);
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
 // Strips the geometry the UA stylesheet forces on a `[popover]` element (a
 // centred, viewport-filling, scrollable box) so a surface promoted into the top
 // layer keeps the box it has in the normal layer. Colour and spacing chrome

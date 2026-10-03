@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Broodkruimelnavigatie',
+    showHidden: 'Verborgen niveaus tonen',
   },
   chart: {
     roleDescription: 'grafiek',

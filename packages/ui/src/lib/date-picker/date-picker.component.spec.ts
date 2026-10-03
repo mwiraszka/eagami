@@ -333,6 +333,80 @@ describe('DatePickerComponent', () => {
       expect(findDayCell(20).getAttribute('aria-disabled')).toBe('true');
     });
 
+    it('marks the dates listed in disabledDates as disabled', () => {
+      fixture.componentRef.setInput('disabledDates', [new Date(2026, 3, 15)]);
+      getCalendarButton().click();
+      fixture.detectChanges();
+      component.viewYear.set(2026);
+      component.viewMonth.set(3);
+      fixture.detectChanges();
+
+      expect(findDayCell(15).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(14).getAttribute('aria-disabled')).toBeNull();
+    });
+
+    it('marks every day of a disabledDates range as disabled, ends included', () => {
+      fixture.componentRef.setInput('disabledDates', [
+        { start: new Date(2026, 3, 10), end: new Date(2026, 3, 12) },
+      ]);
+      getCalendarButton().click();
+      fixture.detectChanges();
+      component.viewYear.set(2026);
+      component.viewMonth.set(3);
+      fixture.detectChanges();
+
+      expect(findDayCell(9).getAttribute('aria-disabled')).toBeNull();
+      expect(findDayCell(10).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(11).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(12).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(13).getAttribute('aria-disabled')).toBeNull();
+    });
+
+    it('marks the weekdays listed in disabledWeekdays as disabled', () => {
+      fixture.componentRef.setInput('disabledWeekdays', [0, 6]);
+      getCalendarButton().click();
+      fixture.detectChanges();
+      component.viewYear.set(2026);
+      component.viewMonth.set(3);
+      fixture.detectChanges();
+
+      // 4 and 5 April 2026 are a Saturday and a Sunday
+      expect(findDayCell(4).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(5).getAttribute('aria-disabled')).toBe('true');
+      expect(findDayCell(6).getAttribute('aria-disabled')).toBeNull();
+    });
+
+    it('ignores a click on a disabled date', () => {
+      getCalendarButton().click();
+      fixture.detectChanges();
+      fixture.componentRef.setInput('disabledDates', [
+        new Date(component.viewYear(), component.viewMonth(), 15),
+      ]);
+      fixture.detectChanges();
+
+      findDayCell(15).click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+      expect(getPopover()).toBeTruthy();
+    });
+
+    it('ignores Enter on a disabled date', () => {
+      getCalendarButton().click();
+      fixture.detectChanges();
+      const disabled = new Date(component.viewYear(), component.viewMonth(), 15);
+      fixture.componentRef.setInput('disabledDates', [disabled]);
+      component.focusedDate.set(disabled);
+      fixture.detectChanges();
+
+      findDayCell(15).dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
+      fixture.detectChanges();
+
+      expect(component.value()).toBeNull();
+    });
+
     it('ignores a click on an out-of-range day and stays open', () => {
       const changed = vi.fn<(value: Date | null) => void>();
       component.changed.subscribe(changed);
@@ -487,6 +561,29 @@ describe('DatePickerComponent', () => {
       fixture.componentRef.setInput('maxDate', new Date(2026, 3, 20));
       fixture.detectChanges();
       type('2026-05-01');
+
+      commit();
+
+      expect(component.value()).toBeNull();
+      expect(getInput().value).toBe('');
+    });
+
+    it('rejects an entry that names a disabled date', () => {
+      fixture.componentRef.setInput('disabledDates', [new Date(2026, 3, 15)]);
+      fixture.detectChanges();
+      type('2026-04-15');
+
+      commit();
+
+      expect(component.value()).toBeNull();
+      expect(getInput().value).toBe('');
+    });
+
+    it('rejects an entry that falls on a disabled weekday', () => {
+      // 15 April 2026 is a Wednesday
+      fixture.componentRef.setInput('disabledWeekdays', [3]);
+      fixture.detectChanges();
+      type('2026-04-15');
 
       commit();
 

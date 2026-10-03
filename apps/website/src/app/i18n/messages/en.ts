@@ -1400,6 +1400,7 @@ export const en: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(semantic-only)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Both open the same dialog.' },
         },
 
@@ -1940,6 +1941,8 @@ export const en: WebMessages = {
               "Pixel ceiling for the field's height; beyond it the textarea scrolls vertically instead of growing.",
             minHeight: 'Minimum height in px; never less than the default height.',
             maxlength: 'Maximum number of characters the field accepts.',
+            showCount:
+              'Shows the number of characters typed below the field, against maxlength when one is set.',
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
@@ -2111,6 +2114,8 @@ export const en: WebMessages = {
               'Value of the currently active tab, two-way bindable via [(activeTab)].',
             size: 'Visual size of the tabs.',
             variant: 'Visual style of the tab bar: underline or filled.',
+            orientation:
+              'Places the tab bar above the panel (horizontal) or in a column beside it (vertical).',
             changed:
               'Fires with the value of the newly active tab whenever the active tab changes.',
             registerTab:
@@ -2141,6 +2146,10 @@ export const en: WebMessages = {
               'Latest date the user can select; dates after this are disabled in the calendar.',
             minDate:
               'Earliest date the user can select; dates before this are disabled in the calendar.',
+            disabledWeekdays:
+              'Weekdays that cannot be picked, as numbers from 0 for Sunday to 6 for Saturday.',
+            disabledDates:
+              'Individual dates and inclusive start and end ranges that cannot be picked, on top of the minDate and maxDate bounds.',
             placeholder: 'Placeholder shown in the field while no date is selected.',
             readonly: 'Renders the field read-only, keeping the calendar from opening.',
             required: 'Marks the field as required.',
@@ -2354,6 +2363,10 @@ export const en: WebMessages = {
             items:
               'Array of breadcrumb entries; items with an href render as links, others as buttons, and the last is non-interactive.',
             separator: 'Visual style of the separator rendered between breadcrumb items.',
+            maxItems:
+              'Most items shown in the trail at once; the earliest levels after the first item move into a menu, and the first and last items always stay.',
+            overflow:
+              'What a trail wider than its container does: menu moves the earliest levels after the first item into a menu, as many as it takes, and brings them back as room opens up; scroll keeps every level and scrolls sideways.',
             clicked: 'Fires when a non-disabled, non-final breadcrumb is activated.',
           },
           drawer: {
@@ -2701,6 +2714,8 @@ export const en: WebMessages = {
         ],
         breadcrumbHome: 'Home',
         breadcrumbProducts: 'Products',
+        breadcrumbElectronics: 'Electronics',
+        breadcrumbComputers: 'Computers',
         breadcrumbLaptops: 'Laptops',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',

@@ -1,5 +1,12 @@
 @use '../../styles/mixins' as ea;
 
+// A flex or grid parent can then narrow the trail below its full width, which is
+// what lets it collapse or scroll instead of pushing its neighbours out
+ea-breadcrumbs {
+  display: block;
+  min-width: 0;
+}
+
 .ea-breadcrumbs {
   font-family: var(--font-family-sans);
   line-height: var(--line-height-normal);
@@ -33,7 +40,6 @@
 
   &__list {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 0.25em;
     padding: 0;
@@ -43,9 +49,43 @@
 
   &__item {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 0.25em;
     min-width: 0;
+    white-space: nowrap;
+  }
+
+  // With every level between the first and the last in the menu, the current
+  // page is all that is left to give way
+  &--menu &__list > &__item:last-child {
+    flex-shrink: 1;
+  }
+
+  &--scroll &__list {
+    overflow-x: auto;
+    // Room for the focus ring, which a scroll container would otherwise clip
+    padding: var(--space-1);
+    margin: calc(-1 * var(--space-1));
+  }
+
+  // The whole trail laid out invisibly. The levels are measured here, where
+  // nothing is ever collapsed, and its width is what the nav asks its container
+  // for however much has moved into the menu
+  &__sizer {
+    position: relative;
+    overflow: hidden;
+    visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em;
+    height: 0;
+  }
+
+  &__sizer-expand {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
   }
 
   &__link {
@@ -76,8 +116,16 @@
     }
   }
 
+  &__expand {
+    display: inline-flex;
+    align-items: center;
+  }
+
   &__current {
+    overflow: hidden;
+    min-width: 0;
     padding: 0.125em 0.25em;
+    text-overflow: ellipsis;
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
   }
@@ -95,6 +143,71 @@
     &--slash {
       width: auto;
       height: auto;
+    }
+  }
+
+  // Positioned by the host `<ea-popover>`, which is portaled, so the menu carries
+  // its own font-size
+  &__menu {
+    position: relative;
+
+    &--2xs {
+      font-size: var(--font-size-2xs);
+    }
+
+    &--xs {
+      font-size: var(--font-size-xs);
+    }
+
+    &--sm {
+      font-size: var(--font-size-sm);
+    }
+
+    &--md {
+      font-size: var(--font-size-md);
+    }
+
+    &--lg {
+      font-size: var(--font-size-lg);
+    }
+
+    &--xl {
+      font-size: var(--font-size-xl);
+    }
+
+    // Covers the gap the popover leaves beside its anchor, on whichever side it
+    // opened, so the pointer never leaves both on its way from one to the other
+    &::before,
+    &::after {
+      position: absolute;
+      right: 0;
+      left: 0;
+      height: var(--space-1);
+      content: '';
+    }
+
+    &::before {
+      bottom: 100%;
+    }
+
+    &::after {
+      top: 100%;
+    }
+  }
+
+  &__menu-list {
+    @include ea.menu-surface;
+    max-height: 20rem;
+    background-color: var(--color-bg-elevated);
+  }
+
+  &__menu-item {
+    @include ea.menu-row('.ea-breadcrumbs__menu-item--disabled');
+    text-decoration: none;
+
+    &--disabled {
+      color: var(--color-text-disabled);
+      cursor: default;
     }
   }
 }

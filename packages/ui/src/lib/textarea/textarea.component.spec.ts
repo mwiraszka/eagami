@@ -212,6 +212,65 @@ describe('TextareaComponent', () => {
     });
   });
 
+  describe('Character count', () => {
+    function getCount(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-textarea-field__count');
+    }
+
+    it('renders no count by default', () => {
+      expect(getCount()).toBeNull();
+    });
+
+    it('counts the characters in the value', () => {
+      fixture.componentRef.setInput('showCount', true);
+      component.value.set('Hello');
+      fixture.detectChanges();
+
+      expect(getCount()?.textContent?.trim()).toBe('5');
+    });
+
+    it('sets the count against maxlength when one is given', () => {
+      fixture.componentRef.setInput('showCount', true);
+      fixture.componentRef.setInput('maxlength', 200);
+      component.value.set('Hello');
+      fixture.detectChanges();
+
+      expect(getCount()?.textContent?.trim()).toBe('5 / 200');
+    });
+
+    it('follows the value as the user types', () => {
+      fixture.componentRef.setInput('showCount', true);
+      fixture.detectChanges();
+      getTextarea().value = 'Hi';
+
+      getTextarea().dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(getCount()?.textContent?.trim()).toBe('2');
+    });
+
+    it('describes the field with the count alongside the hint', () => {
+      fixture.componentRef.setInput('showCount', true);
+      fixture.componentRef.setInput('hint', 'Keep it short');
+      fixture.detectChanges();
+
+      const hint = fixture.nativeElement.querySelector(
+        '.ea-field-messages__message--hint',
+      );
+
+      expect(getTextarea().getAttribute('aria-describedby')).toBe(
+        `${hint.id} ${getCount()?.id}`,
+      );
+    });
+
+    it('describes the field with the count alone when there is no message', () => {
+      fixture.componentRef.setInput('showCount', true);
+      fixture.detectChanges();
+
+      expect(getTextarea().getAttribute('aria-describedby')).toBe(getCount()?.id);
+    });
+  });
+
   describe('ControlValueAccessor', () => {
     it('writes value via writeValue', () => {
       component.writeValue('Body');

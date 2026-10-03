@@ -2,10 +2,21 @@ import {
   DatePickerComponent,
   type DatePickerFormat,
   type DatePickerSize,
+  type DatePickerWeekStart,
 } from '@eagami/ui';
-import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
+import {
+  DATE_PICKER_WEEKDAY_KNOBS,
+  PLAYGROUND_KNOBS,
+  parseDateListKnob,
+} from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
@@ -35,6 +46,15 @@ interface DatePickerKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  weekStartsOn: string;
+  disableMondays: boolean;
+  disableTuesdays: boolean;
+  disableWednesdays: boolean;
+  disableThursdays: boolean;
+  disableFridays: boolean;
+  disableSaturdays: boolean;
+  disableSundays: boolean;
+  disabledDates: string;
   triggerError: boolean;
 }
 
@@ -65,6 +85,34 @@ export class DatePickerDemoPageComponent {
       this.knobDefaults,
     ) as DatePickerKnobState,
   );
+
+  protected readonly weekStartsOn = computed<DatePickerWeekStart>(() =>
+    this.state().weekStartsOn === 'Sunday' ? 0 : 1,
+  );
+
+  protected readonly disabledWeekdays = computed(() => {
+    const state = this.state();
+    return DATE_PICKER_WEEKDAY_KNOBS.flatMap((knob, day) => (state[knob] ? [day] : []));
+  });
+
+  protected readonly disabledDates = computed(() =>
+    parseDateListKnob(this.state().disabledDates),
+  );
+
+  protected readonly extraAttributes = computed(() => {
+    const attributes: string[] = [];
+    if (this.weekStartsOn() === 0) {
+      attributes.push('[weekStartsOn]="0"');
+    }
+    const weekdays = this.disabledWeekdays();
+    if (weekdays.length > 0) {
+      attributes.push(`[disabledWeekdays]="[${weekdays.join(', ')}]"`);
+    }
+    if (this.disabledDates().length > 0) {
+      attributes.push('[disabledDates]="disabledDates"');
+    }
+    return attributes;
+  });
 
   protected readonly control = new FormControl(null, {
     validators: () => (this.state().triggerError ? { required: true } : null),

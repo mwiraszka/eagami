@@ -1,9 +1,12 @@
-<div class="ea-tabs">
+<div
+  class="ea-tabs"
+  [class.ea-tabs--vertical]="orientation() === 'vertical'">
   <div
     class="ea-tabs__list ea-tabs__list--{{ size() }}"
     [class.ea-tabs__list--underline]="variant() === 'underline'"
     [class.ea-tabs__list--filled]="variant() === 'filled'"
     role="tablist"
+    [attr.aria-orientation]="orientation()"
     [attr.aria-label]="ariaLabel() || null"
     (keydown)="handleKeydown($event)">
     @for (tab of registeredTabs(); track tab.value()) {

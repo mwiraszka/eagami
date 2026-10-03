@@ -2,13 +2,14 @@ import { Component, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabComponent } from './tab.component';
-import { TabsComponent } from './tabs.component';
+import { TabsComponent, type TabsOrientation } from './tabs.component';
 
 @Component({
   imports: [TabsComponent, TabComponent],
   template: `
     <ea-tabs
       [(activeTab)]="activeTab"
+      [orientation]="orientation()"
       [ariaLabel]="ariaLabel()">
       <ea-tab
         value="one"
@@ -31,6 +32,7 @@ import { TabsComponent } from './tabs.component';
 })
 class TestHostComponent {
   activeTab = signal('one');
+  orientation = signal<TabsOrientation>('horizontal');
   ariaLabel = signal<string | undefined>(undefined);
 }
 
@@ -171,6 +173,53 @@ describe('TabsComponent', () => {
       );
       fixture.detectChanges();
       expect(getPanel()?.textContent?.trim()).toBe('Content two');
+    });
+  });
+
+  describe('Vertical orientation', () => {
+    function press(key: string): void {
+      getTabList().dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      fixture.componentInstance.orientation.set('vertical');
+      fixture.detectChanges();
+    });
+
+    it('reports a horizontal tablist when switched back', () => {
+      fixture.componentInstance.orientation.set('horizontal');
+      fixture.detectChanges();
+
+      expect(getTabList().getAttribute('aria-orientation')).toBe('horizontal');
+      expect(fixture.nativeElement.querySelector('.ea-tabs--vertical')).toBeNull();
+    });
+
+    it('reports a vertical tablist and lays the tabs out beside the panel', () => {
+      expect(getTabList().getAttribute('aria-orientation')).toBe('vertical');
+      expect(fixture.nativeElement.querySelector('.ea-tabs--vertical')).toBeTruthy();
+      expect(fixture.nativeElement.querySelector('ea-tab.ea-tab--vertical')).toBeTruthy();
+    });
+
+    it('moves to the next tab on ArrowDown', () => {
+      press('ArrowDown');
+
+      expect(getPanel()?.textContent?.trim()).toBe('Content two');
+    });
+
+    it('moves to the previous tab on ArrowUp', () => {
+      fixture.componentInstance.activeTab.set('two');
+      fixture.detectChanges();
+
+      press('ArrowUp');
+
+      expect(getPanel()?.textContent?.trim()).toBe('Content one');
+    });
+
+    it('leaves the left and right arrows alone', () => {
+      press('ArrowRight');
+
+      expect(getPanel()?.textContent?.trim()).toBe('Content one');
     });
   });
 

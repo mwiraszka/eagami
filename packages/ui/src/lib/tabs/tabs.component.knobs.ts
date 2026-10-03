@@ -15,10 +15,15 @@ export const TABS_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['underline', 'filled'],
     },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+    },
     changed: { action: 'changed' },
   },
   args: {
     size: 'md',
     variant: 'underline',
+    orientation: 'horizontal',
   },
 };

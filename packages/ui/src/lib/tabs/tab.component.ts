@@ -18,7 +18,16 @@ import { TabsComponent } from './tabs.component';
  */
 @Component({
   selector: 'ea-tab',
-  host: { '[style.display]': 'isActive() ? null : "none"' },
+  host: {
+    '[style.display]': 'isActive() ? null : "none"',
+    '[class.ea-tab--vertical]': 'vertical()',
+  },
+  styles: `
+    :host(.ea-tab--vertical) {
+      flex: 1;
+      min-width: 0;
+    }
+  `,
   template: `
     @if (isActive()) {
       <div
@@ -42,6 +51,7 @@ export class TabComponent implements OnInit, OnDestroy {
   readonly id = input<string>(uniqueId('ea-tab'));
 
   readonly isActive = computed(() => this.tabs.activeTab() === this.value());
+  protected readonly vertical = computed(() => this.tabs.orientation() === 'vertical');
 
   ngOnInit(): void {
     this.tabs.registerTab(this);

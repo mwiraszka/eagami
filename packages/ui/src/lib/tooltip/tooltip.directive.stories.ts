@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { type Meta, type StoryObj, argsToTemplate } from '@storybook/angular';
 
 import { ButtonComponent } from '../button/button.component';
 import { BadgeCheckIconComponent } from '../icons/badge-check.component';
@@ -19,13 +19,14 @@ export default meta;
 type Story = StoryObj<TooltipDirective>;
 
 export const Playground: Story = {
-  render: () => ({
+  render: args => ({
+    props: args,
     moduleMetadata: {
       imports: [ButtonComponent, TooltipDirective],
     },
     template: `
       <div class="sb-tooltip-story">
-        <ea-button eaTooltip="This is a tooltip" variant="secondary">Hover me</ea-button>
+        <ea-button ${argsToTemplate(args)} variant="secondary">Hover me</ea-button>
       </div>
     `,
     styles: [

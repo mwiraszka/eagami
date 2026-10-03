@@ -1,4 +1,10 @@
-import { TabComponent, TabsComponent, type TabsSize, type TabsVariant } from '@eagami/ui';
+import {
+  TabComponent,
+  TabsComponent,
+  type TabsOrientation,
+  type TabsSize,
+  type TabsVariant,
+} from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
 import {
@@ -25,6 +31,7 @@ interface TabsKnobState {
   [key: string]: KnobValue;
   size: TabsSize;
   variant: TabsVariant;
+  orientation: TabsOrientation;
 }
 
 const SLUG = 'tabs';

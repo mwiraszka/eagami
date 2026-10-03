@@ -14,7 +14,9 @@ import { TextareaComponent } from './textarea.component';
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled"
-      [readonly]="readonly" />
+      [readonly]="readonly"
+      [showCount]="showCount"
+      [maxlength]="maxlength" />
   `,
 })
 class HostComponent {
@@ -24,6 +26,8 @@ class HostComponent {
   errorMsg: string | undefined = undefined;
   disabled = false;
   readonly = false;
+  showCount = false;
+  maxlength: number | undefined = undefined;
 }
 
 describe('TextareaComponent a11y', () => {
@@ -39,6 +43,18 @@ describe('TextareaComponent a11y', () => {
 
   it('has no detectable violations in the default state', async () => {
     const el = await render();
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a character count', async () => {
+    const el = await render(host => {
+      host.showCount = true;
+      host.maxlength = 200;
+      host.hint = 'Up to 200 characters';
+    });
 
     const results = await axe(el);
 

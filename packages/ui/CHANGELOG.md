@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.58.0] - 2026-10-03
+
+### Added
+
+- Add `disabledWeekdays` and `disabledDates` inputs to the date picker that rule out weekdays, individual dates and date ranges on top of the `minDate` and `maxDate` bounds.
+- Offer a `showCount` input on the textarea that shows a character count under the field, against `maxlength` when one is set.
+- Give the tabs an `orientation` input that lays the tab bar out in a column beside the panel, with up and down arrow navigation.
+- Introduce a `maxItems` input on the breadcrumbs that moves the earliest levels after the first into a menu, opened from a button in the trail by click or hover.
+- Add an `overflow` input to the breadcrumbs that moves levels into that menu as the container narrows and brings them back as it widens, or scrolls the trail sideways instead.
+
+### Changed
+
+- Keep the breadcrumb trail on one line instead of wrapping it.
+
 ## [5.57.0] - 2026-10-03
 
 ### Added
@@ -1766,6 +1780,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.58.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.57.0...ui-v5.58.0
 [5.57.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.56.0...ui-v5.57.0
 [5.56.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.55.0...ui-v5.56.0
 [5.55.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.54.0...ui-v5.55.0

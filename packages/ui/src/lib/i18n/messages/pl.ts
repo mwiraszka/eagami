@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Ścieżka nawigacji',
+    showHidden: 'Pokaż ukryte poziomy',
   },
   chart: {
     roleDescription: 'wykres',

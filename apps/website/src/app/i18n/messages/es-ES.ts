@@ -1419,6 +1419,7 @@ export const esES: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(solo semántico)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Ambos abren el mismo diálogo.' },
         },
 
@@ -2012,6 +2013,8 @@ export const esES: WebMessages = {
               'Límite en píxeles para la altura del campo; al superarlo, el textarea se desplaza verticalmente en lugar de crecer.',
             minHeight: 'Altura mínima en px; nunca inferior a la altura predeterminada.',
             maxlength: 'Número máximo de caracteres que acepta el campo.',
+            showCount:
+              'Muestra bajo el campo el número de caracteres escritos, frente a maxlength cuando está definido.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
@@ -2204,6 +2207,8 @@ export const esES: WebMessages = {
               'Valor de la pestaña actualmente activa, vinculable en dos sentidos mediante [(activeTab)].',
             size: 'Tamaño visual de las pestañas.',
             variant: 'Estilo visual de la barra de pestañas: subrayado o relleno.',
+            orientation:
+              'Coloca la barra de pestañas sobre el panel (horizontal) o en una columna a su lado (vertical).',
             changed:
               'Se emite con el valor de la pestaña recién activada cada vez que cambia la pestaña activa.',
             registerTab:
@@ -2236,6 +2241,10 @@ export const esES: WebMessages = {
               'Fecha más tardía que el usuario puede seleccionar; las fechas posteriores quedan deshabilitadas en el calendario.',
             minDate:
               'Fecha más temprana que el usuario puede seleccionar; las fechas anteriores quedan deshabilitadas en el calendario.',
+            disabledWeekdays:
+              'Días de la semana que no se pueden seleccionar, como números del 0 para domingo al 6 para sábado.',
+            disabledDates:
+              'Fechas sueltas e intervalos inclusivos con inicio y fin que no se pueden seleccionar, además de los límites minDate y maxDate.',
             placeholder:
               'Texto de marcador mostrado en el campo cuando no hay ninguna fecha seleccionada.',
             readonly:
@@ -2472,6 +2481,10 @@ export const esES: WebMessages = {
               'Array de entradas de migas de pan; los elementos con href se muestran como enlaces, los demás como botones, y el último no es interactivo.',
             separator:
               'Estilo visual del separador mostrado entre los elementos de las migas de pan.',
+            maxItems:
+              'Número máximo de elementos mostrados a la vez en la ruta; los primeros niveles tras el primer elemento pasan a un menú, y el primer y el último elemento siempre permanecen visibles.',
+            overflow:
+              'Qué hace una ruta más ancha que su contenedor: menu pasa a un menú tantos de los primeros niveles tras el primer elemento como haga falta y los devuelve cuando hay espacio; scroll conserva todos los niveles y se desplaza en horizontal.',
             clicked:
               'Se emite cuando se activa una miga de pan que no está deshabilitada ni es la última.',
           },
@@ -2835,6 +2848,8 @@ export const esES: WebMessages = {
         ],
         breadcrumbHome: 'Inicio',
         breadcrumbProducts: 'Productos',
+        breadcrumbElectronics: 'Electrónica',
+        breadcrumbComputers: 'Ordenadores',
         breadcrumbLaptops: 'Portátiles',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Panel',
