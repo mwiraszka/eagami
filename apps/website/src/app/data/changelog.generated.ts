@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.59.0',
+    date: '2026-10-03',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Draw 14 new icons for travel and transit, the outdoors, pets, food, clothing, fitness and gaming, measuring, shopping and schools.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.58.0',
     date: '2026-10-03',
     sections: [
