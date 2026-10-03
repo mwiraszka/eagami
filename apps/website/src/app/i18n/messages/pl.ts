@@ -2052,6 +2052,8 @@ export const pl: WebMessages = {
             flip: 'Przenosi dymek na przeciwną stronę, gdy po wskazanej stronie brakuje miejsca.',
             maxWidth:
               'Maksymalna szerokość w pikselach; tekst zawija się przy tej szerokości (minimum 50px). Podpowiedź nigdy nie wykracza poza widoczny obszar.',
+            showDelay:
+              'Opóźnienie w milisekundach, zanim podpowiedź pojawi się po najechaniu kursorem lub ustawieniu fokusu klawiaturą. Opuszczenie elementu wyzwalającego w tym czasie anuluje jej wyświetlenie.',
             dismissDelay:
               'Opóźnienie w milisekundach, zanim przewijalna podpowiedź zniknie po opuszczeniu jej przez kursor, wystarczające, aby na nią najechać. Podpowiedzi, które się mieszczą, znikają natychmiast.',
             eaTooltip:
@@ -2299,9 +2301,14 @@ export const pl: WebMessages = {
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            clearable:
+              'Pokazuje przycisk czyszczenia na elemencie wyzwalającym, gdy wybrano opcję.',
+            searchable:
+              'Dodaje nad opcjami pole wyszukiwania, które filtruje je w trakcie pisania.',
             size: 'Wizualny rozmiar elementu wyzwalającego listę rozwijaną.',
             value: 'Bieżąca wybrana wartość, dwukierunkowo wiązalna przez [(value)].',
-            changed: 'Emitowane z nową wartością, gdy użytkownik wybierze opcję.',
+            changed:
+              'Emitowane z nową wartością, gdy użytkownik wybierze opcję lub wyczyści wybór.',
             close: 'Zamyka listę rozwijaną bez zmiany bieżącej wartości.',
             focus: 'Przenosi fokus klawiatury na element wyzwalający listę rozwijaną.',
             onPopoverCloseRequested:

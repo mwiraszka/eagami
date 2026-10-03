@@ -2077,6 +2077,8 @@ export const frFR: WebMessages = {
             flip: 'Déplace une bulle sans place du côté demandé vers le côté opposé.',
             maxWidth:
               'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
+            showDelay:
+              'Délai en millisecondes avant que l’infobulle n’apparaisse au survol ou au focus clavier. Quitter le déclencheur avant la fin du délai annule son affichage.',
             dismissDelay:
               'Délai en millisecondes avant qu’une infobulle défilante ne se ferme après le départ du pointeur, assez long pour l’atteindre. Celles qui tiennent se ferment immédiatement.',
             eaTooltip:
@@ -2332,10 +2334,14 @@ export const frFR: WebMessages = {
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            clearable:
+              'Affiche un bouton d’effacement sur le déclencheur tant qu’une option est sélectionnée.',
+            searchable:
+              'Ajoute au-dessus des options un champ de recherche qui les filtre au fil de la saisie.',
             size: 'Taille visuelle du déclencheur du menu déroulant.',
             value: 'Valeur sélectionnée actuelle, liable en deux sens via [(value)].',
             changed:
-              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option.',
+              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option ou efface la sélection.',
             close: 'Ferme la liste déroulante sans modifier la valeur actuelle.',
             focus: 'Place le focus clavier sur le déclencheur du menu déroulant.',
             onPopoverCloseRequested:

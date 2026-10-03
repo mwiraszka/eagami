@@ -2060,6 +2060,8 @@ export const ptBR: WebMessages = {
             flip: 'Move o balão para o lado oposto quando não há espaço no lado pedido.',
             maxWidth:
               'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
+            showDelay:
+              'Atraso em milissegundos antes de a dica aparecer ao passar o cursor ou ao receber foco pelo teclado. Sair do gatilho antes disso cancela a exibição.',
             dismissDelay:
               'Atraso em milissegundos antes de uma dica rolável ser ocultada após o cursor sair, tempo suficiente para alcançá-la. Dicas que cabem são ocultadas imediatamente.',
             eaTooltip:
@@ -2313,10 +2315,15 @@ export const ptBR: WebMessages = {
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            clearable:
+              'Mostra um botão de limpar no gatilho enquanto há uma opção selecionada.',
+            searchable:
+              'Adiciona acima das opções um campo de pesquisa que as filtra conforme o usuário digita.',
             size: 'Tamanho visual do gatilho do dropdown.',
             value:
               'Valor selecionado atual, vinculável de forma bidirecional via [(value)].',
-            changed: 'Dispara com o novo valor quando o usuário seleciona uma opção.',
+            changed:
+              'Dispara com o novo valor quando o usuário seleciona uma opção ou limpa a seleção.',
             close: 'Fecha a lista do dropdown sem alterar o valor atual.',
             focus: 'Move o foco do teclado para o gatilho do dropdown.',
             onPopoverCloseRequested:

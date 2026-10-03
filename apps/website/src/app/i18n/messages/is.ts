@@ -2042,6 +2042,8 @@ export const is: WebMessages = {
             flip: 'Færir ábendinguna á gagnstæða hlið þegar ekki er pláss á umbeðinni hlið.',
             maxWidth:
               'Hámarksbreidd í pixlum; textinn brotnar við þessa breidd (50px gólf). Ábendingin fer aldrei út fyrir sýnisgluggann.',
+            showDelay:
+              'Töf í millisekúndum áður en ábendingin birtist við sveim eða lyklaborðsfókus. Ef farið er af kveikjunni innan hennar birtist ábendingin ekki.',
             dismissDelay:
               'Töf í millisekúndum áður en skrunanleg ábending hverfur eftir að bendillinn fer, nógu löng til að færa sig yfir á hana. Ábendingar sem komast fyrir hverfa strax.',
             eaTooltip:
@@ -2286,9 +2288,13 @@ export const is: WebMessages = {
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            clearable: 'Sýnir hreinsihnapp á kveikjunni á meðan valkostur er valinn.',
+            searchable:
+              'Bætir við leitarreit fyrir ofan valkostina sem síar þá um leið og notandinn skrifar.',
             size: 'Sjónræn stærð fellilistakveikjunnar.',
             value: 'Núverandi valið gildi, tvíátta bindanlegt með [(value)].',
-            changed: 'Kviknar með nýja gildinu þegar notandinn velur valkost.',
+            changed:
+              'Kviknar með nýja gildinu þegar notandinn velur valkost eða hreinsar valið.',
             close: 'Lokar fellilistanum án þess að breyta núverandi gildi.',
             focus: 'Færir lyklaborðsfókus á fellilistakveikjuna.',
             onPopoverCloseRequested:

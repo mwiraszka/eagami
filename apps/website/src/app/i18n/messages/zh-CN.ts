@@ -1895,6 +1895,8 @@ export const zhCN: WebMessages = {
             flip: '当请求的一侧没有空间时，将气泡移到相反一侧。',
             maxWidth:
               '以像素为单位的最大宽度；文本在此宽度处换行（最小 50px）。提示气泡不会超出视口。',
+            showDelay:
+              '悬停或键盘聚焦后，工具提示出现前的延迟（毫秒）。在此期间离开触发器则不会显示。',
             dismissDelay:
               '指针移开后，可滚动的工具提示隐藏前的延迟（毫秒），足以让指针移到提示上。能完整显示的提示会立即隐藏。',
             eaTooltip:
@@ -2082,9 +2084,11 @@ export const zhCN: WebMessages = {
             placeholder: '未选择选项时显示在触发器上的占位符。',
             readonly: '将字段渲染为只读。',
             required: '将字段标记为必填。',
+            clearable: '已选择选项时在触发器上显示清除按钮。',
+            searchable: '在选项上方添加搜索框，随用户输入筛选选项。',
             size: '下拉框触发器的视觉尺寸。',
             value: '当前所选值，可通过 [(value)] 双向绑定。',
-            changed: '当用户选择一个选项时，随新值一同触发。',
+            changed: '当用户选择一个选项或清除选择时，随新值一同触发。',
             close: '关闭下拉列表，不改变当前值。',
             focus: '将键盘焦点移到下拉框触发器。',
             onPopoverCloseRequested:

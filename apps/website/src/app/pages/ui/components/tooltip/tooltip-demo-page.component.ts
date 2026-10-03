@@ -31,6 +31,7 @@ interface TooltipKnobState {
   eaTooltip: string;
   tooltipPosition: TooltipPosition;
   maxWidth: number;
+  showDelay: number;
   dismissDelay: number;
   flip: boolean;
   whenClipped: boolean;

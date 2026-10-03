@@ -2008,6 +2008,8 @@ export const en: WebMessages = {
             flip: 'Moves a bubble with no room on the requested side to the opposite one.',
             maxWidth:
               'Maximum width in pixels; the text wraps at this width (50px floor). The bubble never grows past the viewport.',
+            showDelay:
+              'Delay in milliseconds before the bubble appears on hover or keyboard focus. Leaving the trigger within it cancels the bubble.',
             dismissDelay:
               'Delay in milliseconds before a scrollable bubble hides once the pointer leaves, long enough to move onto it. Bubbles that fit hide immediately.',
             eaTooltip:
@@ -2241,9 +2243,13 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            clearable: 'Shows a clear button on the trigger while an option is selected.',
+            searchable:
+              'Adds a search field above the options that filters them as the user types.',
             size: 'Visual size of the dropdown trigger.',
             value: 'Current selected value, two-way bindable via [(value)].',
-            changed: 'Fires with the new value when the user selects an option.',
+            changed:
+              'Fires with the new value when the user selects an option or clears the selection.',
             close: 'Closes the dropdown list without changing the current value.',
             focus: 'Moves keyboard focus to the dropdown trigger.',
             onPopoverCloseRequested:
