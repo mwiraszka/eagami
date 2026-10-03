@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.57.0] - 2026-10-03
+
+### Added
+
+- Add a `clearable` input to the dropdown that shows a clear button on the trigger while an option is selected.
+- Offer a `searchable` input on the dropdown that puts a search field above the options and filters them as the user types.
+- Give the tooltip a `showDelay` input that waits before the bubble appears on hover or keyboard focus.
+
 ## [5.56.0] - 2026-09-30
 
 ### Added
@@ -1758,6 +1766,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.57.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.56.0...ui-v5.57.0
 [5.56.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.55.0...ui-v5.56.0
 [5.55.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.54.0...ui-v5.55.0
 [5.54.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.53.0...ui-v5.54.0
