@@ -114,4 +114,46 @@
       cursor: default;
     }
   }
+
+  &--vertical {
+    flex-direction: row;
+
+    .ea-tabs__list {
+      flex-direction: column;
+      flex-shrink: 0;
+
+      &--underline {
+        border-bottom: none;
+        border-inline-end: var(--border-width-thin) solid var(--color-border-default);
+
+        .ea-tabs__trigger {
+          margin-bottom: 0;
+          margin-inline-end: calc(-1 * var(--border-width-thin));
+          border-bottom: none;
+          border-inline-end: var(--border-width-medium) solid transparent;
+
+          &--active {
+            border-inline-end-color: var(--color-brand-text);
+
+            @media (forced-colors: active) {
+              border-inline-end-color: Highlight;
+            }
+          }
+
+          &:hover:not(:disabled):not(.ea-tabs__trigger--active) {
+            border-inline-end-color: var(--color-border-strong);
+          }
+        }
+      }
+
+      // The muted track hugs its tabs instead of stretching to the panel's height
+      &--filled {
+        align-self: flex-start;
+      }
+    }
+
+    .ea-tabs__trigger {
+      justify-content: flex-start;
+    }
+  }
 }

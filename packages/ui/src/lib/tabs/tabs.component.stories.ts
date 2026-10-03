@@ -24,13 +24,18 @@ export const Playground: Story = {
   render: args => ({
     props: args,
     template: `
-      <ea-tabs variant="${args['variant']}" size="${args['size']}" activeTab="${args['activeTab']}">
+      <ea-tabs variant="${args['variant']}" size="${args['size']}" orientation="${args['orientation']}" activeTab="${args['activeTab']}">
         <ea-tab value="account" label="Account">Account settings content</ea-tab>
         <ea-tab value="security" label="Security">Security settings content</ea-tab>
         <ea-tab value="notifications" label="Notifications">Notification preferences content</ea-tab>
       </ea-tabs>
     `,
   }),
+};
+
+export const Vertical: Story = {
+  ...Playground,
+  args: { orientation: 'vertical' },
 };
 
 export const InteractionTest: Story = {
