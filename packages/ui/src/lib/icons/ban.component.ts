@@ -20,7 +20,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         cx="12"
         cy="12"
         r="10" />
-      <path d="M4.929 4.929 19.07 19.071" />
+      <path d="m4.93 4.93 14.14 14.14" />
     </svg>
   `,
 })

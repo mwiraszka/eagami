@@ -16,8 +16,8 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <polyline points="7 15 12 20 17 15" />
-      <polyline points="17 9 12 4 7 9" />
+      <path d="m8 9 4-4 4 4" />
+      <path d="m8 15 4 4 4-4" />
     </svg>
   `,
 })
