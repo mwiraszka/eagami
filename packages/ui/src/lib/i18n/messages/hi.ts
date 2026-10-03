@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'ब्रेडक्रंब',
+    showHidden: 'छिपे हुए स्तर दिखाएँ',
   },
   chart: {
     roleDescription: 'चार्ट',

@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: "Fil d'Ariane",
+    showHidden: 'Afficher les niveaux masqués',
   },
   chart: {
     roleDescription: 'graphique',

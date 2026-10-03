@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Διαδρομή πλοήγησης',
+    showHidden: 'Εμφάνιση κρυφών επιπέδων',
   },
   chart: {
     roleDescription: 'γράφημα',

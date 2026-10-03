@@ -26,6 +26,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'Навигационная цепочка',
+    showHidden: 'Показать скрытые уровни',
   },
   chart: {
     roleDescription: 'диаграмма',

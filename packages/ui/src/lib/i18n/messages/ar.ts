@@ -25,6 +25,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: 'مسار التنقل',
+    showHidden: 'إظهار المستويات المخفية',
   },
   chart: {
     roleDescription: 'مخطط',

@@ -25,6 +25,7 @@ const messages: EagamiMessages = {
   },
   breadcrumbs: {
     label: '面包屑导航',
+    showHidden: '显示隐藏的层级',
   },
   chart: {
     roleDescription: '图表',
