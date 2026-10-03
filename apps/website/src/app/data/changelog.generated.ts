@@ -14,6 +14,26 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.58.0',
+    date: '2026-10-03',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add `disabledWeekdays` and `disabledDates` inputs to the date picker that rule out weekdays, individual dates and date ranges on top of the `minDate` and `maxDate` bounds.',
+          'Offer a `showCount` input on the textarea that shows a character count under the field, against `maxlength` when one is set.',
+          'Give the tabs an `orientation` input that lays the tab bar out in a column beside the panel, with up and down arrow navigation.',
+          'Introduce a `maxItems` input on the breadcrumbs that moves the earliest levels after the first into a menu, opened from a button in the trail by click or hover.',
+          'Add an `overflow` input to the breadcrumbs that moves levels into that menu as the container narrows and brings them back as it widens, or scrolls the trail sideways instead.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: ['Keep the breadcrumb trail on one line instead of wrapping it.'],
+      },
+    ],
+  },
+  {
     version: '5.57.0',
     date: '2026-10-03',
     sections: [

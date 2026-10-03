@@ -731,6 +731,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'maxItems',
+        type: 'number | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'overflow',
+        type: 'BreadcrumbsOverflow',
+        default: "'menu'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'separator',
         type: 'BreadcrumbsSeparator',
         default: "'chevron'",
@@ -754,7 +768,12 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
     ],
-    methods: [],
+    methods: [
+      {
+        name: 'fit',
+        signature: 'fit(): void',
+      },
+    ],
   },
   button: {
     selector: 'ea-button',
@@ -1618,6 +1637,20 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'disabledDates',
+        type: 'readonly (Date | DatePickerDateRange)[]',
+        default: '[]',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'disabledWeekdays',
+        type: 'readonly number[]',
+        default: '[]',
         required: false,
         twoWay: false,
       },
@@ -5080,6 +5113,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'orientation',
+        type: 'TabsOrientation',
+        default: "'horizontal'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'size',
         type: 'TabsSize',
         default: "'md'",
@@ -5327,6 +5367,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'resize',
         type: 'TextareaResize',
         default: "'vertical'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'showCount',
+        type: 'boolean',
+        default: 'false',
         required: false,
         twoWay: false,
       },
