@@ -2030,6 +2030,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-dropdown',
     inputs: [
       {
+        name: 'clearable',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -2108,6 +2115,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'required',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'searchable',
         type: 'boolean',
         default: 'false',
         required: false,
@@ -5702,6 +5716,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'maxWidth',
         type: 'number | undefined',
         default: '200',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'showDelay',
+        type: 'number',
+        default: '0',
         required: false,
         twoWay: false,
       },

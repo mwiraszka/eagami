@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.57.0',
+    date: '2026-10-03',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `clearable` input to the dropdown that shows a clear button on the trigger while an option is selected.',
+          'Offer a `searchable` input on the dropdown that puts a search field above the options and filters them as the user types.',
+          'Give the tooltip a `showDelay` input that waits before the bubble appears on hover or keyboard focus.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.56.0',
     date: '2026-09-30',
     sections: [
