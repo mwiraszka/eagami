@@ -87,6 +87,12 @@ export class TooltipDirective implements OnDestroy {
    */
   readonly maxWidth = input<number | undefined>(200);
   /**
+   * Wait in ms before the bubble appears on hover or keyboard focus, so a
+   * pointer passing over the trigger does not flash it. Leaving the trigger
+   * within the wait cancels the bubble.
+   */
+  readonly showDelay = input<number>(0);
+  /**
    * Grace period in ms before a bubble the viewport clamp made scrollable hides
    * after the pointer leaves, long enough to cross the gap onto the bubble and
    * reach its scrollbar. Bubbles that fit hide immediately.
@@ -104,6 +110,7 @@ export class TooltipDirective implements OnDestroy {
   private placedPosition: TooltipPosition = 'top';
   private templateView: EmbeddedViewRef<unknown> | null = null;
   private scrollable = false;
+  private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
   /* True while the pointer is over the trigger, so a blur alone (a button
      disabling itself once its action reaches a limit) does not hide a bubble
@@ -126,7 +133,7 @@ export class TooltipDirective implements OnDestroy {
       return;
     }
     this.pointerInside = true;
-    this.show();
+    this.requestShow();
   };
   private readonly pointerLeaveHandler = () => {
     if (this.controlled()) {
@@ -161,7 +168,7 @@ export class TooltipDirective implements OnDestroy {
     }
     const target = event.target as HTMLElement;
     if (!this.supportsFocusVisible || target.matches(':focus-visible')) {
-      this.show();
+      this.requestShow();
     }
   };
   /* Registered on `document` while the tooltip is visible so Escape dismisses
@@ -257,7 +264,31 @@ export class TooltipDirective implements OnDestroy {
     }
   }
 
+  private requestShow(): void {
+    const delay = this.showDelay();
+    if (delay <= 0 || this.tooltipEl) {
+      this.show();
+      return;
+    }
+    // A hover and a focus on the same trigger share the one wait
+    if (this.showTimer !== null) {
+      return;
+    }
+    this.showTimer = setTimeout(() => {
+      this.showTimer = null;
+      this.show();
+    }, delay);
+  }
+
+  private cancelPendingShow(): void {
+    if (this.showTimer !== null) {
+      clearTimeout(this.showTimer);
+      this.showTimer = null;
+    }
+  }
+
   private show(): void {
+    this.cancelPendingShow();
     if (this.tooltipEl) {
       // The pointer came back to the trigger before a scheduled hide fired
       this.cancelPendingHide();
@@ -385,6 +416,7 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private hide(): void {
+    this.cancelPendingShow();
     this.cancelPendingHide();
     this.detachRepositionListeners();
     if (this.rafId !== null) {
