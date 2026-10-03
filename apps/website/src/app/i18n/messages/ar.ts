@@ -1121,8 +1121,8 @@ export const ar: WebMessages = {
             orientation: 'الاتجاه',
             size: 'الحجم',
             animation: 'الحركة',
-            animationDuration: 'مدة الحركة (ms)',
-            height: 'الارتفاع (px)',
+            animationDuration: 'مدة الحركة',
+            height: 'الارتفاع',
             stacked: 'مكدَّس',
             showValues: 'إظهار القيم',
             showGrid: 'إظهار الشبكة',
@@ -1134,8 +1134,8 @@ export const ar: WebMessages = {
             curve: 'المنحنى',
             size: 'الحجم',
             animation: 'الحركة',
-            animationDuration: 'مدة الحركة (ms)',
-            height: 'الارتفاع (px)',
+            animationDuration: 'مدة الحركة',
+            height: 'الارتفاع',
             showArea: 'إظهار المساحة',
             showPoints: 'إظهار النقاط',
             showGrid: 'إظهار الشبكة',
@@ -1148,8 +1148,8 @@ export const ar: WebMessages = {
             variant: 'النمط',
             size: 'الحجم',
             animation: 'الحركة',
-            animationDuration: 'مدة الحركة (ms)',
-            height: 'الارتفاع (px)',
+            animationDuration: 'مدة الحركة',
+            height: 'الارتفاع',
             showLegend: 'إظهار وسيلة الإيضاح',
             showPercentages: 'إظهار النسب المئوية',
           },
@@ -1278,7 +1278,7 @@ export const ar: WebMessages = {
           'eagami-wordmark': {
             variant: 'النمط',
             layout: 'التخطيط',
-            size: 'الحجم (px)',
+            size: 'الحجم',
             linked: 'مرتبط',
           },
           'empty-state': {
@@ -1389,8 +1389,8 @@ export const ar: WebMessages = {
             size: 'الحجم',
             resize: 'تغيير الحجم',
             maxlength: 'الحد الأقصى للطول (حرف)',
-            minHeight: 'الحد الأدنى للارتفاع (px)',
-            maxHeight: 'الحد الأقصى للارتفاع (px)',
+            minHeight: 'الحد الأدنى للارتفاع',
+            maxHeight: 'الحد الأقصى للارتفاع',
             disabled: 'معطّل',
             readonly: 'للقراءة فقط',
             required: 'مطلوب',
@@ -1974,6 +1974,8 @@ export const ar: WebMessages = {
             flip: 'ينقل التلميح إلى الجهة المقابلة عند عدم توفر مساحة في الجهة المطلوبة.',
             maxWidth:
               'العرض الأقصى بالبكسل؛ يلتفّ النص عند هذا العرض (الحد الأدنى 50px). لا يتجاوز التلميح أبدًا حدود إطار العرض.',
+            showDelay:
+              'مهلة بالمللي ثانية قبل ظهور التلميح عند التحويم أو التركيز بلوحة المفاتيح. مغادرة المُحفِّز خلالها تلغي ظهوره.',
             dismissDelay:
               'مهلة بالمللي ثانية قبل إخفاء تلميح قابل للتمرير بعد مغادرة المؤشر، بما يكفي للانتقال إليه. التلميحات التي تتسع تُخفى فورًا.',
             eaTooltip:
@@ -2191,9 +2193,12 @@ export const ar: WebMessages = {
             placeholder: 'العنصر النائب المعروض على المُحفِّز ما دام لم يُحدَّد خيار.',
             readonly: 'يجعل الحقل للقراءة فقط.',
             required: 'يُعلِّم الحقل كمطلوب.',
+            clearable: 'يُظهِر زر المسح على المُحفِّز ما دام هناك خيار محدَّد.',
+            searchable: 'يضيف حقل بحث أعلى الخيارات يُصفّيها أثناء كتابة المستخدم.',
             size: 'الحجم البصري لمُحفِّز القائمة المنسدلة.',
             value: 'القيمة المحدّدة الحالية، قابلة للربط الثنائي عبر [(value)].',
-            changed: 'يُطلَق مع القيمة الجديدة عندما يختار المستخدم خيارًا.',
+            changed:
+              'يُطلَق مع القيمة الجديدة عندما يختار المستخدم خيارًا أو يمسح التحديد.',
             close: 'يغلق القائمة المنسدلة دون تغيير القيمة الحالية.',
             focus: 'ينقل تركيز لوحة المفاتيح إلى مُحفِّز القائمة المنسدلة.',
             onPopoverCloseRequested:

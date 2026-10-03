@@ -502,4 +502,277 @@ describe('DropdownComponent', () => {
       expect(getOptions()).toHaveLength(3);
     });
   });
+
+  describe('Clearable', () => {
+    function getClear(): HTMLButtonElement | null {
+      return fixture.nativeElement.querySelector('.ea-dropdown__clear');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('clearable', true);
+      component.value.set('a');
+      fixture.detectChanges();
+    });
+
+    it('shows a named clear button while an option is selected', () => {
+      expect(getClear()?.getAttribute('aria-label')).toBe('Clear selection');
+    });
+
+    it('shows no clear button while nothing is selected', () => {
+      component.value.set('');
+      fixture.detectChanges();
+
+      expect(getClear()).toBeNull();
+    });
+
+    it('shows no clear button unless clearable is set', () => {
+      fixture.componentRef.setInput('clearable', false);
+      fixture.detectChanges();
+
+      expect(getClear()).toBeNull();
+    });
+
+    it('shows no clear button when disabled', () => {
+      fixture.componentRef.setInput('disabled', true);
+      fixture.detectChanges();
+
+      expect(getClear()).toBeNull();
+    });
+
+    it('shows no clear button when readonly', () => {
+      fixture.componentRef.setInput('readonly', true);
+      fixture.detectChanges();
+
+      expect(getClear()).toBeNull();
+    });
+
+    it('clears the value and brings the placeholder back', () => {
+      getClear()!.click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('');
+      expect(getTrigger().textContent).toContain('Select…');
+    });
+
+    it('notifies the form and emits changed when cleared', () => {
+      const onChange = vi.fn();
+      const changed = vi.fn();
+      component.registerOnChange(onChange);
+      component.changed.subscribe(changed);
+
+      getClear()!.click();
+
+      expect(onChange).toHaveBeenCalledWith('');
+      expect(changed).toHaveBeenCalledWith('');
+    });
+
+    it('closes an open list when cleared', () => {
+      getTrigger().click();
+      fixture.detectChanges();
+
+      getClear()!.click();
+      fixture.detectChanges();
+
+      expect(getMenu()).toBeNull();
+    });
+
+    it('moves focus to the trigger once the clear button is gone', () => {
+      getClear()!.focus();
+
+      getClear()!.click();
+      fixture.detectChanges();
+
+      expect(document.activeElement).toBe(getTrigger());
+    });
+  });
+
+  describe('Searchable', () => {
+    // The first match for "ap" is disabled, so focus has something to step over
+    const searchOptions: SelectOption[] = [
+      { value: 'apricot', label: 'Apricot', disabled: true },
+      { value: 'apple', label: 'Apple' },
+      { value: 'banana', label: 'Banana' },
+      { value: 'creme', label: 'Crème brûlée' },
+    ];
+
+    function getSearch(): HTMLInputElement {
+      return document.querySelector<HTMLInputElement>('.ea-dropdown__search-input')!;
+    }
+
+    function search(term: string): void {
+      const input = getSearch();
+      input.value = term;
+      input.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+    }
+
+    function pressInSearch(key: string): KeyboardEvent {
+      const event = new KeyboardEvent('keydown', { key, cancelable: true });
+      getSearch().dispatchEvent(event);
+      fixture.detectChanges();
+      return event;
+    }
+
+    function optionLabels(): (string | undefined)[] {
+      return getOptions().map(el => el.textContent?.trim());
+    }
+
+    function focusedLabel(): string | null {
+      const focused = document.querySelector('.ea-dropdown__option--focused');
+      return focused?.textContent?.trim() ?? null;
+    }
+
+    beforeEach(() => {
+      if (typeof Element.prototype.scrollIntoView !== 'function') {
+        Element.prototype.scrollIntoView = () => {};
+      }
+      fixture.componentRef.setInput('searchable', true);
+      fixture.componentRef.setInput('options', searchOptions);
+      fixture.detectChanges();
+      getTrigger().click();
+      fixture.detectChanges();
+    });
+
+    it('renders no search field unless searchable is set', () => {
+      fixture.componentRef.setInput('searchable', false);
+      fixture.detectChanges();
+
+      expect(document.querySelector('.ea-dropdown__search')).toBeNull();
+    });
+
+    it('exposes the panel as a dialog holding the labelled listbox', () => {
+      fixture.componentRef.setInput('label', 'Dessert');
+      fixture.detectChanges();
+
+      const surface = document.querySelector('.ea-popover__surface')!;
+      const listbox = surface.querySelector('[role="listbox"]')!;
+
+      expect(surface.getAttribute('role')).toBe('dialog');
+      expect(surface.getAttribute('aria-label')).toBe('Choose an option');
+      expect(listbox.getAttribute('aria-label')).toBe('Dessert');
+      expect(getTrigger().getAttribute('aria-controls')).toBe(listbox.id);
+      expect(getSearch().getAttribute('aria-controls')).toBe(listbox.id);
+    });
+
+    it('filters the options as the user types', () => {
+      search('an');
+
+      expect(optionLabels()).toEqual(['Banana']);
+    });
+
+    it('matches regardless of case and accents', () => {
+      search('CREME');
+
+      expect(optionLabels()).toEqual(['Crème brûlée']);
+    });
+
+    it('focuses the first selectable match', () => {
+      search('ap');
+
+      expect(focusedLabel()).toBe('Apple');
+    });
+
+    it('points the search field, not the trigger, at the focused option', () => {
+      search('ban');
+
+      expect(getSearch().getAttribute('aria-activedescendant')).toBe(
+        `${component.id()}-option-0`,
+      );
+      expect(getTrigger().getAttribute('aria-activedescendant')).toBeNull();
+    });
+
+    it('shows a message when nothing matches', () => {
+      search('zzz');
+
+      expect(getOptions()).toHaveLength(0);
+      expect(document.querySelector('.ea-dropdown__empty')?.textContent?.trim()).toBe(
+        'No matches',
+      );
+    });
+
+    it('selects the focused match on Enter', () => {
+      search('ban');
+
+      pressInSearch('Enter');
+
+      expect(component.value()).toBe('banana');
+      expect(getMenu()).toBeNull();
+    });
+
+    it('moves through the matches with the arrow keys', () => {
+      pressInSearch('ArrowDown');
+
+      expect(focusedLabel()).toBe('Banana');
+
+      pressInSearch('ArrowUp');
+
+      expect(focusedLabel()).toBe('Apple');
+    });
+
+    it('leaves Space to the search text', () => {
+      const event = pressInSearch(' ');
+
+      expect(event.defaultPrevented).toBe(false);
+      expect(component.value()).toBe('');
+    });
+
+    it('closes on Escape and returns focus to the trigger', () => {
+      getSearch().focus();
+
+      pressInSearch('Escape');
+
+      expect(getMenu()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
+    });
+
+    it('hands focus to the trigger before Tab leaves the panel', () => {
+      getSearch().focus();
+
+      const event = pressInSearch('Tab');
+
+      expect(getMenu()).toBeNull();
+      expect(document.activeElement).toBe(getTrigger());
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('returns focus to the trigger after a selection', () => {
+      getSearch().focus();
+
+      getOptions()[1].click();
+      fixture.detectChanges();
+
+      expect(component.value()).toBe('apple');
+      expect(document.activeElement).toBe(getTrigger());
+    });
+
+    it('keeps focus in the search field while a row is pressed', () => {
+      const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+
+      getOptions()[0].dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+    });
+
+    it('forgets the search text once the list closes', () => {
+      search('ban');
+      pressInSearch('Escape');
+
+      getTrigger().click();
+      fixture.detectChanges();
+
+      expect(getSearch().value).toBe('');
+      expect(getOptions()).toHaveLength(4);
+    });
+
+    it('starts the search with a character typed on the closed trigger', () => {
+      pressInSearch('Escape');
+
+      getTrigger().dispatchEvent(new KeyboardEvent('keydown', { key: 'b' }));
+      fixture.detectChanges();
+
+      expect(getMenu()).toBeTruthy();
+      expect(getSearch().value).toBe('b');
+      expect(optionLabels()).toEqual(['Banana', 'Crème brûlée']);
+    });
+  });
 });

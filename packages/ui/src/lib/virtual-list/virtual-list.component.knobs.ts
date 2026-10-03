@@ -9,6 +9,7 @@ export const VIRTUAL_LIST_KNOBS: ComponentKnobs = {
   argTypes: {
     itemHeight: {
       control: 'number',
+      unit: 'px',
       min: 20,
       max: 120,
       step: 4,
@@ -22,6 +23,7 @@ export const VIRTUAL_LIST_KNOBS: ComponentKnobs = {
     },
     viewportHeight: {
       control: 'number',
+      unit: 'px',
       min: 100,
       max: 800,
       step: 50,

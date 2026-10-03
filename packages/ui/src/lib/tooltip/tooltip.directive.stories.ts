@@ -40,6 +40,28 @@ export const Playground: Story = {
   }),
 };
 
+export const ShowDelay: Story = {
+  render: () => ({
+    moduleMetadata: {
+      imports: [ButtonComponent, TooltipDirective],
+    },
+    template: `
+      <div class="sb-tooltip-story">
+        <ea-button eaTooltip="This tooltip waits before it appears" [showDelay]="500" variant="secondary">Hover me</ea-button>
+      </div>
+    `,
+    styles: [
+      `
+        .sb-tooltip-story {
+          display: flex;
+          justify-content: center;
+          padding: 64px;
+        }
+      `,
+    ],
+  }),
+};
+
 export const TemplateContent: Story = {
   render: () => ({
     moduleMetadata: {

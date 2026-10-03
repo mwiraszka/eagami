@@ -102,6 +102,10 @@ const messages: EagamiMessages = {
   },
   dropdown: {
     placeholder: 'Veldu…',
+    clear: 'Hreinsa val',
+    dialogLabel: 'Velja valkost',
+    searchPlaceholder: 'Leita…',
+    searchEmpty: 'Engin samsvörun',
   },
   fieldLabel: {
     help: label => `Nánari upplýsingar: ${label}`,

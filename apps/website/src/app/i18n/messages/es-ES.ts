@@ -1142,8 +1142,8 @@ export const esES: WebMessages = {
             orientation: 'Orientación',
             size: 'Tamaño',
             animation: 'Animación',
-            animationDuration: 'Duración de la animación (ms)',
-            height: 'Alto (px)',
+            animationDuration: 'Duración de la animación',
+            height: 'Alto',
             stacked: 'Apilado',
             showValues: 'Mostrar valores',
             showGrid: 'Mostrar cuadrícula',
@@ -1155,8 +1155,8 @@ export const esES: WebMessages = {
             curve: 'Curva',
             size: 'Tamaño',
             animation: 'Animación',
-            animationDuration: 'Duración de la animación (ms)',
-            height: 'Alto (px)',
+            animationDuration: 'Duración de la animación',
+            height: 'Alto',
             showArea: 'Mostrar área',
             showPoints: 'Mostrar puntos',
             showGrid: 'Mostrar cuadrícula',
@@ -1169,8 +1169,8 @@ export const esES: WebMessages = {
             variant: 'Variante',
             size: 'Tamaño',
             animation: 'Animación',
-            animationDuration: 'Duración de la animación (ms)',
-            height: 'Alto (px)',
+            animationDuration: 'Duración de la animación',
+            height: 'Alto',
             showLegend: 'Mostrar leyenda',
             showPercentages: 'Mostrar porcentajes',
           },
@@ -1299,7 +1299,7 @@ export const esES: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variante',
             layout: 'Disposición',
-            size: 'Tamaño (px)',
+            size: 'Tamaño',
             linked: 'Enlazado',
           },
           'empty-state': {
@@ -1410,8 +1410,8 @@ export const esES: WebMessages = {
             size: 'Tamaño',
             resize: 'Redimensionar',
             maxlength: 'Longitud máxima (caracteres)',
-            minHeight: 'Altura mínima (px)',
-            maxHeight: 'Altura máxima (px)',
+            minHeight: 'Altura mínima',
+            maxHeight: 'Altura máxima',
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
@@ -2087,6 +2087,8 @@ export const esES: WebMessages = {
             flip: 'Mueve el globo al lado opuesto cuando no hay espacio en el lado solicitado.',
             maxWidth:
               'Ancho máximo en píxeles; el texto se ajusta a este ancho (mínimo 50px). El tooltip nunca supera el viewport.',
+            showDelay:
+              'Retardo en milisegundos antes de que el tooltip aparezca al pasar el cursor o al recibir el foco del teclado. Si se abandona el activador antes, no llega a mostrarse.',
             dismissDelay:
               'Retardo en milisegundos antes de que un tooltip desplazable se oculte tras salir el cursor, suficiente para moverse hasta él. Los que caben se ocultan de inmediato.',
             eaTooltip:
@@ -2347,11 +2349,15 @@ export const esES: WebMessages = {
               'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            clearable:
+              'Muestra un botón de borrado en el activador mientras hay una opción seleccionada.',
+            searchable:
+              'Añade sobre las opciones un campo de búsqueda que las filtra mientras el usuario escribe.',
             size: 'Tamaño visual del activador del desplegable.',
             value:
               'Valor seleccionado actual, vinculable en dos sentidos mediante [(value)].',
             changed:
-              'Se emite con el nuevo valor cuando el usuario selecciona una opción.',
+              'Se emite con el nuevo valor cuando el usuario selecciona una opción o borra la selección.',
             close: 'Cierra la lista desplegable sin cambiar el valor actual.',
             focus: 'Lleva el foco del teclado al activador del desplegable.',
             onPopoverCloseRequested:

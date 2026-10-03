@@ -15,7 +15,7 @@ export const EAGAMI_WORDMARK_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['stacked', 'inline'],
     },
-    size: { control: 'number', min: 10, max: 512, maxLength: 3 },
+    size: { control: 'number', unit: 'px', min: 10, max: 512, maxLength: 3 },
     linked: { control: 'boolean' },
   },
   args: {

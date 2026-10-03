@@ -1125,8 +1125,8 @@ export const hi: WebMessages = {
             orientation: 'अभिविन्यास',
             size: 'आकार',
             animation: 'एनिमेशन',
-            animationDuration: 'एनिमेशन अवधि (ms)',
-            height: 'ऊंचाई (px)',
+            animationDuration: 'एनिमेशन अवधि',
+            height: 'ऊंचाई',
             stacked: 'स्टैक्ड',
             showValues: 'मान दिखाएं',
             showGrid: 'ग्रिड दिखाएं',
@@ -1138,8 +1138,8 @@ export const hi: WebMessages = {
             curve: 'वक्र',
             size: 'आकार',
             animation: 'एनिमेशन',
-            animationDuration: 'एनिमेशन अवधि (ms)',
-            height: 'ऊंचाई (px)',
+            animationDuration: 'एनिमेशन अवधि',
+            height: 'ऊंचाई',
             showArea: 'क्षेत्र दिखाएं',
             showPoints: 'बिंदु दिखाएं',
             showGrid: 'ग्रिड दिखाएं',
@@ -1152,8 +1152,8 @@ export const hi: WebMessages = {
             variant: 'वेरिएंट',
             size: 'आकार',
             animation: 'एनिमेशन',
-            animationDuration: 'एनिमेशन अवधि (ms)',
-            height: 'ऊंचाई (px)',
+            animationDuration: 'एनिमेशन अवधि',
+            height: 'ऊंचाई',
             showLegend: 'लीजेंड दिखाएं',
             showPercentages: 'प्रतिशत दिखाएं',
           },
@@ -1282,7 +1282,7 @@ export const hi: WebMessages = {
           'eagami-wordmark': {
             variant: 'वेरिएंट',
             layout: 'लेआउट',
-            size: 'आकार (px)',
+            size: 'आकार',
             linked: 'लिंक्ड',
           },
           'empty-state': {
@@ -1393,8 +1393,8 @@ export const hi: WebMessages = {
             size: 'आकार',
             resize: 'आकार बदलें',
             maxlength: 'अधिकतम लंबाई (अक्षर)',
-            minHeight: 'न्यूनतम ऊंचाई (px)',
-            maxHeight: 'अधिकतम ऊंचाई (px)',
+            minHeight: 'न्यूनतम ऊंचाई',
+            maxHeight: 'अधिकतम ऊंचाई',
             disabled: 'अक्षम',
             readonly: 'केवल-पढ़ने योग्य',
             required: 'आवश्यक',
@@ -2033,6 +2033,8 @@ export const hi: WebMessages = {
             flip: 'माँगी गई तरफ़ जगह न होने पर बुलबुले को विपरीत तरफ़ ले जाता है।',
             maxWidth:
               'पिक्सेल में अधिकतम चौड़ाई; टेक्स्ट इस चौड़ाई पर रैप होता है (50px फ़्लोर)। टूलटिप कभी भी व्यूपोर्ट से बाहर नहीं जाती।',
+            showDelay:
+              'होवर या कीबोर्ड फ़ोकस पर टूलटिप दिखने से पहले मिलीसेकंड में विलंब। इस दौरान ट्रिगर छोड़ देने पर टूलटिप नहीं दिखती।',
             dismissDelay:
               'पॉइंटर हटने के बाद स्क्रॉल होने वाली टूलटिप छिपने से पहले मिलीसेकंड में विलंब, ताकि उस पर जाया जा सके। जो टूलटिप पूरी दिखती हैं वे तुरंत छिप जाती हैं।',
             eaTooltip:
@@ -2276,9 +2278,13 @@ export const hi: WebMessages = {
               'जब कोई विकल्प चयनित नहीं होता तो ट्रिगर पर दिखाया गया प्लेसहोल्डर।',
             readonly: 'फ़ील्ड को केवल-पढ़ने योग्य रेंडर करता है।',
             required: 'फ़ील्ड को आवश्यक के रूप में चिह्नित करता है।',
+            clearable: 'कोई विकल्प चयनित रहने तक ट्रिगर पर साफ़ करने वाला बटन दिखाता है।',
+            searchable:
+              'विकल्पों के ऊपर एक खोज फ़ील्ड जोड़ता है जो उपयोगकर्ता के टाइप करते ही उन्हें फ़िल्टर करता है।',
             size: 'ड्रॉपडाउन ट्रिगर का दृश्य आकार।',
             value: 'वर्तमान चयनित मान, [(value)] के माध्यम से दो-तरफ़ा बाइंड करने योग्य।',
-            changed: 'जब उपयोगकर्ता एक विकल्प चुनता है तो नए मान के साथ ट्रिगर होता है।',
+            changed:
+              'जब उपयोगकर्ता एक विकल्प चुनता है या चयन साफ़ करता है तो नए मान के साथ ट्रिगर होता है।',
             close: 'वर्तमान मान बदले बिना ड्रॉपडाउन सूची को बंद करता है।',
             focus: 'ड्रॉपडाउन ट्रिगर पर कीबोर्ड फ़ोकस ले जाता है।',
             onPopoverCloseRequested:

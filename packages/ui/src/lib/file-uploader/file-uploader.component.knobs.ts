@@ -18,7 +18,7 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
     buttonLabel: { control: 'text', if: { arg: 'variant', eq: 'button' } },
     multiple: { control: 'boolean' },
     maxFiles: { control: 'number', min: 1, max: 20, maxLength: 2 },
-    maxSize: { control: 'number', min: 0, max: 104857600, maxLength: 9 },
+    maxSize: { control: 'number', unit: 'bytes', min: 0, max: 104857600, maxLength: 9 },
     showFileList: { control: 'boolean' },
     showConstraints: { control: 'boolean' },
     disabled: { control: 'boolean' },

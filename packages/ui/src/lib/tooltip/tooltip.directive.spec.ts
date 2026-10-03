@@ -16,6 +16,7 @@ import { TooltipDirective, type TooltipPosition } from './tooltip.directive';
       [eaTooltip]="text()"
       [tooltipPosition]="pos()"
       [maxWidth]="maxWidth()"
+      [showDelay]="showDelay()"
       [dismissDelay]="dismissDelay()"
       [flip]="flip()"
       [whenClipped]="whenClipped()"
@@ -29,6 +30,7 @@ class TestHostComponent {
   text = signal('Save your changes');
   pos = signal<TooltipPosition>('top');
   maxWidth = signal<number | undefined>(200);
+  showDelay = signal(0);
   dismissDelay = signal(150);
   flip = signal(true);
   whenClipped = signal(false);
@@ -171,6 +173,75 @@ describe('TooltipDirective', () => {
       fixture.detectChanges();
 
       show();
+
+      expect(getTooltip()).toBeNull();
+    });
+  });
+
+  describe('Show delay', () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+      host.showDelay.set(300);
+      fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('waits out the show delay before rendering on hover', () => {
+      show();
+
+      expect(getTooltip()).toBeNull();
+
+      vi.advanceTimersByTime(300);
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('never shows when the pointer leaves within the delay', () => {
+      show();
+
+      hide();
+      vi.advanceTimersByTime(300);
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('waits out the show delay on keyboard focus', () => {
+      vi.spyOn(getButton(), 'matches').mockReturnValue(true);
+
+      getButton().dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+
+      expect(getTooltip()).toBeNull();
+
+      vi.advanceTimersByTime(300);
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('never shows when the trigger blurs within the delay', () => {
+      vi.spyOn(getButton(), 'matches').mockReturnValue(true);
+      getButton().dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+
+      getButton().dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+      vi.advanceTimersByTime(300);
+
+      expect(getTooltip()).toBeNull();
+    });
+
+    it('opens without the wait when tooltipOpen asks for it', () => {
+      host.open.set(true);
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeTruthy();
+    });
+
+    it('drops a pending bubble when the host is destroyed', () => {
+      show();
+
+      fixture.destroy();
+      vi.advanceTimersByTime(300);
 
       expect(getTooltip()).toBeNull();
     });

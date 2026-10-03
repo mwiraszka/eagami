@@ -114,7 +114,12 @@ export class ComponentPlaygroundComponent {
     return map;
   });
 
-  protected knobLabel(name: string): string {
+  protected knobLabel(knob: PlaygroundKnob): string {
+    const label = this.knobName(knob.name);
+    return knob.unit ? `${label} (${knob.unit})` : label;
+  }
+
+  private knobName(name: string): string {
     const playground = this.messages().ui.component.playground;
     const label = playground.knobLabels[this.slug()]?.[name];
     if (label) {

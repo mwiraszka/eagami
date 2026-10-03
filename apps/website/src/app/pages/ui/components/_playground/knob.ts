@@ -23,6 +23,8 @@ export interface PlaygroundKnob {
   max?: number;
   step?: number;
   maxLength?: number;
+  /** For `number` controls: the unit the value is measured in, shown beside the label. */
+  unit?: string;
   /** When set, the control is disabled unless the referenced knob matches. */
   condition?: KnobCondition;
   /** Demo-only control; excluded from the generated code snippet. */
@@ -117,6 +119,7 @@ export function buildKnobs(
       max: argType?.max,
       step: argType?.step,
       maxLength: argType?.maxLength,
+      unit: argType?.unit,
       condition: argType?.if,
       demoOnly: argType?.demoOnly,
     });

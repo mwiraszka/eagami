@@ -1151,8 +1151,8 @@ export const frFR: WebMessages = {
             orientation: 'Orientation',
             size: 'Taille',
             animation: 'Animation',
-            animationDuration: 'Durée de l’animation (ms)',
-            height: 'Hauteur (px)',
+            animationDuration: 'Durée de l’animation',
+            height: 'Hauteur',
             stacked: 'Empilé',
             showValues: 'Afficher les valeurs',
             showGrid: 'Afficher la grille',
@@ -1164,8 +1164,8 @@ export const frFR: WebMessages = {
             curve: 'Courbe',
             size: 'Taille',
             animation: 'Animation',
-            animationDuration: 'Durée de l’animation (ms)',
-            height: 'Hauteur (px)',
+            animationDuration: 'Durée de l’animation',
+            height: 'Hauteur',
             showArea: 'Afficher l’aire',
             showPoints: 'Afficher les points',
             showGrid: 'Afficher la grille',
@@ -1178,8 +1178,8 @@ export const frFR: WebMessages = {
             variant: 'Variante',
             size: 'Taille',
             animation: 'Animation',
-            animationDuration: 'Durée de l’animation (ms)',
-            height: 'Hauteur (px)',
+            animationDuration: 'Durée de l’animation',
+            height: 'Hauteur',
             showLegend: 'Afficher la légende',
             showPercentages: 'Afficher les pourcentages',
           },
@@ -1308,7 +1308,7 @@ export const frFR: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variante',
             layout: 'Disposition',
-            size: 'Taille (px)',
+            size: 'Taille',
             linked: 'Lié',
           },
           'empty-state': {
@@ -1419,8 +1419,8 @@ export const frFR: WebMessages = {
             size: 'Taille',
             resize: 'Redimensionnement',
             maxlength: 'Longueur maximale (caractères)',
-            minHeight: 'Hauteur minimale (px)',
-            maxHeight: 'Hauteur maximale (px)',
+            minHeight: 'Hauteur minimale',
+            maxHeight: 'Hauteur maximale',
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
@@ -2077,6 +2077,8 @@ export const frFR: WebMessages = {
             flip: 'Déplace une bulle sans place du côté demandé vers le côté opposé.',
             maxWidth:
               'Largeur maximale en pixels; le texte passe à la ligne à cette largeur (minimum 50px). L’infobulle ne dépasse jamais la zone d’affichage.',
+            showDelay:
+              'Délai en millisecondes avant que l’infobulle n’apparaisse au survol ou au focus clavier. Quitter le déclencheur avant la fin du délai annule son affichage.',
             dismissDelay:
               'Délai en millisecondes avant qu’une infobulle défilante ne se ferme après le départ du pointeur, assez long pour l’atteindre. Celles qui tiennent se ferment immédiatement.',
             eaTooltip:
@@ -2332,10 +2334,14 @@ export const frFR: WebMessages = {
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            clearable:
+              'Affiche un bouton d’effacement sur le déclencheur tant qu’une option est sélectionnée.',
+            searchable:
+              'Ajoute au-dessus des options un champ de recherche qui les filtre au fil de la saisie.',
             size: 'Taille visuelle du déclencheur du menu déroulant.',
             value: 'Valeur sélectionnée actuelle, liable en deux sens via [(value)].',
             changed:
-              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option.',
+              'Émis avec la nouvelle valeur lorsque l’utilisateur sélectionne une option ou efface la sélection.',
             close: 'Ferme la liste déroulante sans modifier la valeur actuelle.',
             focus: 'Place le focus clavier sur le déclencheur du menu déroulant.',
             onPopoverCloseRequested:

@@ -1146,8 +1146,8 @@ export const de: WebMessages = {
             orientation: 'Ausrichtung',
             size: 'Größe',
             animation: 'Animation',
-            animationDuration: 'Animationsdauer (ms)',
-            height: 'Höhe (px)',
+            animationDuration: 'Animationsdauer',
+            height: 'Höhe',
             stacked: 'Gestapelt',
             showValues: 'Werte anzeigen',
             showGrid: 'Raster anzeigen',
@@ -1159,8 +1159,8 @@ export const de: WebMessages = {
             curve: 'Kurve',
             size: 'Größe',
             animation: 'Animation',
-            animationDuration: 'Animationsdauer (ms)',
-            height: 'Höhe (px)',
+            animationDuration: 'Animationsdauer',
+            height: 'Höhe',
             showArea: 'Fläche anzeigen',
             showPoints: 'Punkte anzeigen',
             showGrid: 'Raster anzeigen',
@@ -1173,8 +1173,8 @@ export const de: WebMessages = {
             variant: 'Variante',
             size: 'Größe',
             animation: 'Animation',
-            animationDuration: 'Animationsdauer (ms)',
-            height: 'Höhe (px)',
+            animationDuration: 'Animationsdauer',
+            height: 'Höhe',
             showLegend: 'Legende anzeigen',
             showPercentages: 'Prozentwerte anzeigen',
           },
@@ -1303,7 +1303,7 @@ export const de: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variante',
             layout: 'Anordnung',
-            size: 'Größe (px)',
+            size: 'Größe',
             linked: 'Verlinkt',
           },
           'empty-state': {
@@ -1414,8 +1414,8 @@ export const de: WebMessages = {
             size: 'Größe',
             resize: 'Größenänderung',
             maxlength: 'Maximallänge (Zeichen)',
-            minHeight: 'Mindesthöhe (px)',
-            maxHeight: 'Maximalhöhe (px)',
+            minHeight: 'Mindesthöhe',
+            maxHeight: 'Maximalhöhe',
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
@@ -2091,6 +2091,8 @@ export const de: WebMessages = {
             flip: 'Verschiebt eine Sprechblase ohne Platz auf der gewünschten Seite auf die gegenüberliegende.',
             maxWidth:
               'Maximalbreite in Pixeln; der Text bricht bei dieser Breite um (Untergrenze 50px). Die Sprechblase wächst nie über den Viewport hinaus.',
+            showDelay:
+              'Verzögerung in Millisekunden, bevor die Sprechblase bei Hover oder Tastaturfokus erscheint. Wird der Auslöser vorher verlassen, erscheint sie nicht.',
             dismissDelay:
               'Verzögerung in Millisekunden, bevor eine scrollbare Sprechblase nach dem Verlassen des Zeigers ausgeblendet wird, lang genug, um auf sie zu wechseln. Blasen, die hineinpassen, werden sofort ausgeblendet.',
             eaTooltip:
@@ -2351,10 +2353,14 @@ export const de: WebMessages = {
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Option ausgewählt ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            clearable:
+              'Zeigt eine Löschschaltfläche auf dem Auslöser, solange eine Option ausgewählt ist.',
+            searchable:
+              'Fügt über den Optionen ein Suchfeld hinzu, das sie während der Eingabe filtert.',
             size: 'Visuelle Größe des Dropdown-Auslösers.',
             value: 'Aktuell ausgewählter Wert, bidirektional bindbar über [(value)].',
             changed:
-              'Wird mit dem neuen Wert ausgelöst, wenn der Nutzer eine Option auswählt.',
+              'Wird mit dem neuen Wert ausgelöst, wenn der Nutzer eine Option auswählt oder die Auswahl aufhebt.',
             close: 'Schließt die Dropdown-Liste, ohne den aktuellen Wert zu ändern.',
             focus: 'Verschiebt den Tastaturfokus auf den Dropdown-Auslöser.',
             onPopoverCloseRequested:

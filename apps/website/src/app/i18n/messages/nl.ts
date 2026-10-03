@@ -1137,8 +1137,8 @@ export const nl: WebMessages = {
             orientation: 'Oriëntatie',
             size: 'Grootte',
             animation: 'Animatie',
-            animationDuration: 'Animatieduur (ms)',
-            height: 'Hoogte (px)',
+            animationDuration: 'Animatieduur',
+            height: 'Hoogte',
             stacked: 'Gestapeld',
             showValues: 'Waarden tonen',
             showGrid: 'Raster tonen',
@@ -1150,8 +1150,8 @@ export const nl: WebMessages = {
             curve: 'Curve',
             size: 'Grootte',
             animation: 'Animatie',
-            animationDuration: 'Animatieduur (ms)',
-            height: 'Hoogte (px)',
+            animationDuration: 'Animatieduur',
+            height: 'Hoogte',
             showArea: 'Vlak tonen',
             showPoints: 'Punten tonen',
             showGrid: 'Raster tonen',
@@ -1164,8 +1164,8 @@ export const nl: WebMessages = {
             variant: 'Variant',
             size: 'Grootte',
             animation: 'Animatie',
-            animationDuration: 'Animatieduur (ms)',
-            height: 'Hoogte (px)',
+            animationDuration: 'Animatieduur',
+            height: 'Hoogte',
             showLegend: 'Legenda tonen',
             showPercentages: 'Percentages tonen',
           },
@@ -1294,7 +1294,7 @@ export const nl: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variant',
             layout: 'Indeling',
-            size: 'Grootte (px)',
+            size: 'Grootte',
             linked: 'Gelinkt',
           },
           'empty-state': {
@@ -1405,8 +1405,8 @@ export const nl: WebMessages = {
             size: 'Grootte',
             resize: 'Vergroten/verkleinen',
             maxlength: 'Max. lengte (tekens)',
-            minHeight: 'Min. hoogte (px)',
-            maxHeight: 'Max. hoogte (px)',
+            minHeight: 'Min. hoogte',
+            maxHeight: 'Max. hoogte',
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
@@ -2072,6 +2072,8 @@ export const nl: WebMessages = {
             flip: 'Verplaatst een ballon naar de andere kant wanneer er aan de gevraagde kant geen ruimte is.',
             maxWidth:
               'Maximumbreedte in pixels; de tekst breekt af bij deze breedte (ondergrens van 50px). De tooltip wordt nooit groter dan de viewport.',
+            showDelay:
+              'Vertraging in milliseconden voordat de tooltip verschijnt bij hover of toetsenbordfocus. Wie de trigger eerder verlaat, krijgt de tooltip niet te zien.',
             dismissDelay:
               'Vertraging in milliseconden voordat een scrollbare tooltip verdwijnt nadat de muisaanwijzer weggaat, lang genoeg om ernaartoe te bewegen. Tooltips die passen verdwijnen meteen.',
             eaTooltip:
@@ -2331,11 +2333,15 @@ export const nl: WebMessages = {
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            clearable:
+              'Toont een wisknop op de trigger zolang er een optie is geselecteerd.',
+            searchable:
+              'Voegt boven de opties een zoekveld toe dat ze filtert terwijl de gebruiker typt.',
             size: 'Visuele grootte van de dropdowntrigger.',
             value:
               'Huidige geselecteerde waarde, in twee richtingen te binden via [(value)].',
             changed:
-              'Wordt geactiveerd met de nieuwe waarde wanneer de gebruiker een optie selecteert.',
+              'Wordt geactiveerd met de nieuwe waarde wanneer de gebruiker een optie selecteert of de selectie wist.',
             close: 'Sluit de dropdownlijst zonder de huidige waarde te wijzigen.',
             focus: 'Verplaatst de toetsenbordfocus naar de dropdowntrigger.',
             onPopoverCloseRequested:

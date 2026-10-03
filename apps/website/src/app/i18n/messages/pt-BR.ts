@@ -1137,8 +1137,8 @@ export const ptBR: WebMessages = {
             orientation: 'Orientação',
             size: 'Tamanho',
             animation: 'Animação',
-            animationDuration: 'Duração da animação (ms)',
-            height: 'Altura (px)',
+            animationDuration: 'Duração da animação',
+            height: 'Altura',
             stacked: 'Empilhado',
             showValues: 'Mostrar valores',
             showGrid: 'Mostrar grade',
@@ -1150,8 +1150,8 @@ export const ptBR: WebMessages = {
             curve: 'Curva',
             size: 'Tamanho',
             animation: 'Animação',
-            animationDuration: 'Duração da animação (ms)',
-            height: 'Altura (px)',
+            animationDuration: 'Duração da animação',
+            height: 'Altura',
             showArea: 'Mostrar área',
             showPoints: 'Mostrar pontos',
             showGrid: 'Mostrar grade',
@@ -1164,8 +1164,8 @@ export const ptBR: WebMessages = {
             variant: 'Variante',
             size: 'Tamanho',
             animation: 'Animação',
-            animationDuration: 'Duração da animação (ms)',
-            height: 'Altura (px)',
+            animationDuration: 'Duração da animação',
+            height: 'Altura',
             showLegend: 'Mostrar legenda',
             showPercentages: 'Mostrar porcentagens',
           },
@@ -1294,7 +1294,7 @@ export const ptBR: WebMessages = {
           'eagami-wordmark': {
             variant: 'Variante',
             layout: 'Layout',
-            size: 'Tamanho (px)',
+            size: 'Tamanho',
             linked: 'Com link',
           },
           'empty-state': {
@@ -1405,8 +1405,8 @@ export const ptBR: WebMessages = {
             size: 'Tamanho',
             resize: 'Redimensionar',
             maxlength: 'Comprimento máximo (caracteres)',
-            minHeight: 'Altura mínima (px)',
-            maxHeight: 'Altura máxima (px)',
+            minHeight: 'Altura mínima',
+            maxHeight: 'Altura máxima',
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
@@ -2060,6 +2060,8 @@ export const ptBR: WebMessages = {
             flip: 'Move o balão para o lado oposto quando não há espaço no lado pedido.',
             maxWidth:
               'Largura máxima em pixels; o texto quebra nesta largura (piso de 50px). A dica nunca ultrapassa a viewport.',
+            showDelay:
+              'Atraso em milissegundos antes de a dica aparecer ao passar o cursor ou ao receber foco pelo teclado. Sair do gatilho antes disso cancela a exibição.',
             dismissDelay:
               'Atraso em milissegundos antes de uma dica rolável ser ocultada após o cursor sair, tempo suficiente para alcançá-la. Dicas que cabem são ocultadas imediatamente.',
             eaTooltip:
@@ -2313,10 +2315,15 @@ export const ptBR: WebMessages = {
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            clearable:
+              'Mostra um botão de limpar no gatilho enquanto há uma opção selecionada.',
+            searchable:
+              'Adiciona acima das opções um campo de pesquisa que as filtra conforme o usuário digita.',
             size: 'Tamanho visual do gatilho do dropdown.',
             value:
               'Valor selecionado atual, vinculável de forma bidirecional via [(value)].',
-            changed: 'Dispara com o novo valor quando o usuário seleciona uma opção.',
+            changed:
+              'Dispara com o novo valor quando o usuário seleciona uma opção ou limpa a seleção.',
             close: 'Fecha a lista do dropdown sem alterar o valor atual.',
             focus: 'Move o foco do teclado para o gatilho do dropdown.',
             onPopoverCloseRequested:

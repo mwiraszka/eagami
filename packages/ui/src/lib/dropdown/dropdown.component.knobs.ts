@@ -15,6 +15,8 @@ export const DROPDOWN_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    clearable: { control: 'boolean' },
+    searchable: { control: 'boolean' },
     changed: { action: 'changed' },
     groupedOptions: { control: 'boolean', demoOnly: true },
     firstGroup: {
@@ -48,6 +50,8 @@ export const DROPDOWN_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    clearable: false,
+    searchable: false,
     groupedOptions: false,
     firstGroup: 'heading',
     firstGroupLabel: 'Recently used',
