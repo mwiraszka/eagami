@@ -1,35 +1,7 @@
+@use '../../styles/mixins' as ea;
+
 .ea-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  width: 100%;
-  padding: 0.5em 0.75em;
-  // Inherit the size the parent list's size class sets (buttons don't inherit
-  // font-size by default); all dims here are em so the row scales with it
-  font-size: inherit;
-  font-family: var(--font-family-sans);
-  text-align: start;
-  border: none;
-  background: transparent;
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition: var(--transition-colors);
-
-  // state-hover (a translucent wash) reads on the elevated menu surface in both
-  // themes; bg-muted collapses onto that surface's shade in dark mode.
-  &:hover:not(&--disabled),
-  &:focus-visible:not(&--disabled) {
-    background-color: var(--color-state-hover);
-
-    @media (forced-colors: active) {
-      background-color: Highlight;
-      color: HighlightText;
-    }
-  }
-
-  &:focus-visible {
-    outline: none;
-  }
+  @include ea.menu-row('.ea-menu-item--disabled');
 
   &--danger {
     color: var(--color-error-default);
