@@ -1414,6 +1414,7 @@ export const nl: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(alleen semantisch)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Beide openen hetzelfde dialoogvenster.' },
         },
 
@@ -1997,6 +1998,8 @@ export const nl: WebMessages = {
               'Pixelplafond voor de hoogte van het veld; daarboven scrollt de textarea verticaal in plaats van te groeien.',
             minHeight: 'Minimumhoogte in px; nooit minder dan de standaardhoogte.',
             maxlength: 'Maximaal aantal tekens dat het veld accepteert.',
+            showCount:
+              'Toont onder het veld het aantal getypte tekens, afgezet tegen maxlength wanneer die is ingesteld.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
@@ -2185,6 +2188,8 @@ export const nl: WebMessages = {
               'Waarde van het momenteel actieve tabblad, in twee richtingen te binden via [(activeTab)].',
             size: 'Visuele grootte van de tabbladen.',
             variant: 'Visuele stijl van de tabbalk: onderstreping of gevuld.',
+            orientation:
+              'Plaatst de tabbalk boven het paneel (horizontal) of in een kolom ernaast (vertical).',
             changed:
               'Wordt geactiveerd met de waarde van het nieuw actieve tabblad telkens wanneer het actieve tabblad verandert.',
             registerTab:
@@ -2217,6 +2222,10 @@ export const nl: WebMessages = {
               'Laatste datum die de gebruiker kan selecteren; datums hierna zijn uitgeschakeld in de kalender.',
             minDate:
               'Vroegste datum die de gebruiker kan selecteren; datums hiervoor zijn uitgeschakeld in de kalender.',
+            disabledWeekdays:
+              'Weekdagen die niet kunnen worden gekozen, als getallen van 0 voor zondag tot 6 voor zaterdag.',
+            disabledDates:
+              'Losse datums en perioden met begin en einde (inclusief) die niet kunnen worden gekozen, bovenop de grenzen minDate en maxDate.',
             placeholder:
               'Plaatsaanduiding getoond in het veld terwijl geen datum is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de kalender niet opent.',
@@ -2454,6 +2463,10 @@ export const nl: WebMessages = {
               'Array van broodkruimelitems; items met een href worden weergegeven als links, andere als knoppen, en de laatste is niet-interactief.',
             separator:
               'Visuele stijl van het scheidingsteken weergegeven tussen broodkruimelitems.',
+            maxItems:
+              'Maximaal aantal items dat tegelijk in het pad wordt getoond; de vroegste niveaus na het eerste item verhuizen naar een menu, en het eerste en laatste item blijven altijd zichtbaar.',
+            overflow:
+              'Wat een pad doet dat breder is dan zijn container: menu verplaatst zoveel van de vroegste niveaus na het eerste item als nodig naar een menu en haalt ze terug zodra er ruimte vrijkomt; scroll behoudt alle niveaus en scrolt horizontaal.',
             clicked:
               'Wordt geactiveerd wanneer een niet-uitgeschakelde, niet-laatste broodkruimel wordt geactiveerd.',
           },
@@ -2818,6 +2831,8 @@ export const nl: WebMessages = {
         ],
         breadcrumbHome: 'Home',
         breadcrumbProducts: 'Producten',
+        breadcrumbElectronics: 'Elektronica',
+        breadcrumbComputers: 'Computers',
         breadcrumbLaptops: 'Laptops',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',

@@ -1419,6 +1419,7 @@ export const pl: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(tylko semantycznie)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Oba otwierają to samo okno.' },
         },
 
@@ -1978,6 +1979,8 @@ export const pl: WebMessages = {
               'Górny limit wysokości pola w pikselach; powyżej niego textarea przewija się pionowo zamiast rosnąć.',
             minHeight: 'Minimalna wysokość w px; nigdy mniejsza niż wysokość domyślna.',
             maxlength: 'Maksymalna liczba znaków akceptowana przez pole.',
+            showCount:
+              'Wyświetla pod polem liczbę wpisanych znaków, w odniesieniu do maxlength, gdy jest ustawione.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
@@ -2165,6 +2168,8 @@ export const pl: WebMessages = {
               'Wartość aktualnie aktywnej karty, dwukierunkowo wiązalna przez [(activeTab)].',
             size: 'Wizualny rozmiar kart.',
             variant: 'Wizualny styl paska kart: podkreślony lub wypełniony.',
+            orientation:
+              'Umieszcza pasek kart nad panelem (horizontal) lub w kolumnie obok niego (vertical).',
             changed:
               'Emitowane z wartością nowo aktywnej karty przy każdej zmianie aktywnej karty.',
             registerTab:
@@ -2195,6 +2200,10 @@ export const pl: WebMessages = {
               'Najpóźniejsza data do wyboru; późniejsze daty są wyłączone w kalendarzu.',
             minDate:
               'Najwcześniejsza data do wyboru; wcześniejsze daty są wyłączone w kalendarzu.',
+            disabledWeekdays:
+              'Dni tygodnia, których nie można wybrać, jako liczby od 0 dla niedzieli do 6 dla soboty.',
+            disabledDates:
+              'Pojedyncze daty oraz zakresy z początkiem i końcem (włącznie), których nie można wybrać, niezależnie od ograniczeń minDate i maxDate.',
             placeholder: 'Tekst zastępczy w polu, gdy żadna data nie jest wybrana.',
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie kalendarza.',
@@ -2416,6 +2425,10 @@ export const pl: WebMessages = {
               'Tablica wpisów okruszkowych; elementy z href renderowane są jako linki, pozostałe jako przyciski, a ostatni jest nieinteraktywny.',
             separator:
               'Wizualny styl separatora renderowanego między elementami okruszkowymi.',
+            maxItems:
+              'Maksymalna liczba elementów wyświetlanych jednocześnie w ścieżce; najwcześniejsze poziomy po pierwszym elemencie trafiają do menu, a pierwszy i ostatni element zawsze pozostają widoczne.',
+            overflow:
+              'Co robi ścieżka szersza niż jej kontener: menu przenosi do menu tyle najwcześniejszych poziomów po pierwszym elemencie, ile trzeba, i przywraca je, gdy pojawia się miejsce; scroll zachowuje wszystkie poziomy i przewija się w poziomie.',
             clicked:
               'Emitowane, gdy aktywowany zostanie element okruszkowy niebędący wyłączonym ani ostatnim.',
           },
@@ -2771,6 +2784,8 @@ export const pl: WebMessages = {
         ],
         breadcrumbHome: 'Strona główna',
         breadcrumbProducts: 'Produkty',
+        breadcrumbElectronics: 'Elektronika',
+        breadcrumbComputers: 'Komputery',
         breadcrumbLaptops: 'Laptopy',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Pulpit',

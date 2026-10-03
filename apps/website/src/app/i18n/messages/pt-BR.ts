@@ -1414,6 +1414,7 @@ export const ptBR: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(apenas semântico)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Ambos abrem o mesmo diálogo.' },
         },
 
@@ -1987,6 +1988,8 @@ export const ptBR: WebMessages = {
               'Limite em pixels para a altura do campo; além dele o textarea rola verticalmente em vez de crescer.',
             minHeight: 'Altura mínima em px; nunca menor que a altura padrão.',
             maxlength: 'Número máximo de caracteres que o campo aceita.',
+            showCount:
+              'Mostra abaixo do campo o número de caracteres digitados, em relação a maxlength quando definido.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
@@ -2175,6 +2178,8 @@ export const ptBR: WebMessages = {
               'Valor da aba atualmente ativa, vinculável de forma bidirecional via [(activeTab)].',
             size: 'Tamanho visual das abas.',
             variant: 'Estilo visual da barra de abas: sublinhado ou preenchido.',
+            orientation:
+              'Posiciona a barra de abas acima do painel (horizontal) ou em uma coluna ao lado dele (vertical).',
             changed:
               'Dispara com o valor da aba recém-ativada sempre que a aba ativa muda.',
             registerTab:
@@ -2204,6 +2209,10 @@ export const ptBR: WebMessages = {
               'Data mais tardia que o usuário pode selecionar; datas posteriores a esta são desativadas no calendário.',
             minDate:
               'Data mais antiga que o usuário pode selecionar; datas anteriores a esta são desativadas no calendário.',
+            disabledWeekdays:
+              'Dias da semana que não podem ser selecionados, como números de 0 para domingo a 6 para sábado.',
+            disabledDates:
+              'Datas avulsas e intervalos inclusivos com início e fim que não podem ser selecionados, além dos limites minDate e maxDate.',
             placeholder:
               'Placeholder exibido no campo enquanto nenhuma data é selecionada.',
             readonly:
@@ -2434,6 +2443,10 @@ export const ptBR: WebMessages = {
             items:
               'Array de entradas da trilha; itens com um href são renderizados como links, outros como botões, e o último é não interativo.',
             separator: 'Estilo visual do separador renderizado entre os itens da trilha.',
+            maxItems:
+              'Número máximo de itens exibidos ao mesmo tempo na trilha; os primeiros níveis depois do primeiro item vão para um menu, e o primeiro e o último item sempre permanecem visíveis.',
+            overflow:
+              'O que faz uma trilha mais larga que o contêiner: menu move para um menu quantos dos primeiros níveis depois do primeiro item forem necessários e os traz de volta quando sobra espaço; scroll mantém todos os níveis e rola na horizontal.',
             clicked: 'Dispara quando uma trilha não desativada e não final é ativada.',
           },
           drawer: {
@@ -2790,6 +2803,8 @@ export const ptBR: WebMessages = {
         ],
         breadcrumbHome: 'Início',
         breadcrumbProducts: 'Produtos',
+        breadcrumbElectronics: 'Eletrônicos',
+        breadcrumbComputers: 'Computadores',
         breadcrumbLaptops: 'Notebooks',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Painel',

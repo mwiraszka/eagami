@@ -6,6 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [extraAttributes]="extraAttributes()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-date-picker
@@ -16,6 +17,9 @@
       [placeholder]="state().placeholder"
       [size]="state().size"
       [format]="state().format"
+      [weekStartsOn]="weekStartsOn()"
+      [disabledWeekdays]="disabledWeekdays()"
+      [disabledDates]="disabledDates()"
       [readonly]="state().readonly"
       [required]="state().required" />
   </web-component-playground>

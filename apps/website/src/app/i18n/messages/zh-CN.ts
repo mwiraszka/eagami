@@ -1378,6 +1378,7 @@ export const zhCN: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(仅语义)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: '两者打开的是同一个对话框。' },
         },
 
@@ -1842,6 +1843,8 @@ export const zhCN: WebMessages = {
             maxHeight: '字段高度的像素上限；超过后 textarea 会垂直滚动而非继续增长。',
             minHeight: '以 px 为单位的最小高度；绝不小于默认高度。',
             maxlength: '字段接受的最大字符数。',
+            showCount:
+              '在字段下方显示已输入的字符数，设置了 maxlength 时显示为相对于它的计数。',
             placeholder: '字段为空时显示的占位符。',
             readonly: '将字段渲染为只读。',
             required: '将字段标记为必填。',
@@ -1979,6 +1982,8 @@ export const zhCN: WebMessages = {
             activeTab: '当前活动标签页的值，可通过 [(activeTab)] 双向绑定。',
             size: '标签页的视觉尺寸。',
             variant: '标签栏的视觉样式：underline 或 filled。',
+            orientation:
+              '将标签栏放在面板上方（horizontal）或面板旁的一列中（vertical）。',
             changed: '每当活动标签页变化时，随新活动标签页的值一同触发。',
             registerTab: '注册一个子标签页使其出现在标签栏中；由 ea-tab 自动调用。',
             selectTab: '以编程方式激活具有给定值的标签页。',
@@ -2001,6 +2006,9 @@ export const zhCN: WebMessages = {
             locale: '用于日期格式化的 BCP 47 语言标签，省略时回退到全局语言。',
             maxDate: '用户可选择的最晚日期；此后的日期在日历中被禁用。',
             minDate: '用户可选择的最早日期；此前的日期在日历中被禁用。',
+            disabledWeekdays: '不可选择的星期几，以数字表示，0 为周日，6 为周六。',
+            disabledDates:
+              '不可选择的单个日期以及包含起止日的日期范围，在 minDate 和 maxDate 限制之外生效。',
             placeholder: '未选择日期时显示在字段中的占位符。',
             readonly: '将字段渲染为只读，使日历无法打开。',
             required: '将字段标记为必填。',
@@ -2177,6 +2185,10 @@ export const zhCN: WebMessages = {
             items:
               '面包屑条目数组；带 href 的项渲染为链接，其余渲染为按钮，最后一项不可交互。',
             separator: '在面包屑项之间渲染的分隔符的视觉样式。',
+            maxItems:
+              '路径中同时显示的最多项数；首项之后最靠前的层级会移入菜单，首项和末项始终可见。',
+            overflow:
+              '路径比容器更宽时的处理方式：menu 会按需将首项之后最靠前的层级移入菜单，并在空间足够时移回；scroll 保留所有层级并横向滚动。',
             clicked: '当一个未禁用、非末项的面包屑被激活时触发。',
           },
           drawer: {
@@ -2483,6 +2495,8 @@ export const zhCN: WebMessages = {
         ],
         breadcrumbHome: '首页',
         breadcrumbProducts: '产品',
+        breadcrumbElectronics: '电子产品',
+        breadcrumbComputers: '电脑',
         breadcrumbLaptops: '笔记本电脑',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: '仪表盘',

@@ -10,9 +10,12 @@
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-breadcrumbs
+      [style.max-width.px]="state().width || null"
       [items]="items()"
       [separator]="state().separator"
       [size]="state().size"
+      [maxItems]="state().maxItems || undefined"
+      [overflow]="state().overflow"
       [aria-label]="state().ariaLabel || undefined"
       (clicked)="onBreadcrumbClick($event)" />
   </web-component-playground>

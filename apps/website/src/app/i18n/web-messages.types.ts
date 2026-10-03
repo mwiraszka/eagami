@@ -937,6 +937,8 @@ export interface WebMessages {
         monthOptions: ReadonlyArray<{ value: string; label: string }>;
         breadcrumbHome: string;
         breadcrumbProducts: string;
+        breadcrumbElectronics: string;
+        breadcrumbComputers: string;
         breadcrumbLaptops: string;
         breadcrumbMacBookPro: string;
         breadcrumbDashboard: string;

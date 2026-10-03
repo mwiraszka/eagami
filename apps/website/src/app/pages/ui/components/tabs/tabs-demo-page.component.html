@@ -11,7 +11,8 @@
     (resetClicked)="reset()">
     <ea-tabs
       [size]="state().size"
-      [variant]="state().variant">
+      [variant]="state().variant"
+      [orientation]="state().orientation">
       @for (tab of tabs(); track tab.value) {
         <ea-tab
           [value]="tab.value"

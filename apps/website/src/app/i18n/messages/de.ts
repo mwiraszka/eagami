@@ -1423,6 +1423,7 @@ export const de: WebMessages = {
         },
         knobNotes: {
           accordion: { headingLevel: '(nur semantisch)' },
+          'date-picker': { disabledDates: 'YYYY-MM-DD, YYYY-MM-DD..YYYY-MM-DD' },
           dialog: { openWith: 'Beide öffnen denselben Dialog.' },
         },
 
@@ -2015,6 +2016,8 @@ export const de: WebMessages = {
               'Pixelobergrenze für die Höhe des Feldes; darüber hinaus scrollt das Textarea vertikal, statt zu wachsen.',
             minHeight: 'Mindesthöhe in px; nie weniger als die Standardhöhe.',
             maxlength: 'Maximale Zeichenanzahl, die das Feld akzeptiert.',
+            showCount:
+              'Zeigt unter dem Feld die Anzahl der eingegebenen Zeichen an, im Verhältnis zu maxlength, wenn gesetzt.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
@@ -2206,6 +2209,8 @@ export const de: WebMessages = {
               'Wert des aktuell aktiven Tabs, bidirektional bindbar über [(activeTab)].',
             size: 'Visuelle Größe der Tabs.',
             variant: 'Visueller Stil der Tableiste: Unterstrich oder gefüllt.',
+            orientation:
+              'Platziert die Tableiste über dem Panel (horizontal) oder in einer Spalte daneben (vertical).',
             changed:
               'Wird mit dem Wert des neu aktiven Tabs ausgelöst, wann immer sich der aktive Tab ändert.',
             registerTab:
@@ -2238,6 +2243,10 @@ export const de: WebMessages = {
               'Spätestes Datum, das der Nutzer auswählen kann; Daten danach sind im Kalender deaktiviert.',
             minDate:
               'Frühestes Datum, das der Nutzer auswählen kann; Daten davor sind im Kalender deaktiviert.',
+            disabledWeekdays:
+              'Wochentage, die nicht auswählbar sind, als Zahlen von 0 für Sonntag bis 6 für Samstag.',
+            disabledDates:
+              'Einzelne Daten und inklusive Zeiträume mit Start und Ende, die nicht auswählbar sind, zusätzlich zu den Grenzen minDate und maxDate.',
             placeholder:
               'Platzhalter, der im Feld angezeigt wird, solange kein Datum ausgewählt ist.',
             readonly:
@@ -2474,6 +2483,10 @@ export const de: WebMessages = {
               'Array von Brotkrümel-Einträgen; Einträge mit einem href werden als Links gerendert, andere als Buttons, und der letzte ist nicht interaktiv.',
             separator:
               'Visueller Stil des Trenners, der zwischen den Brotkrümel-Einträgen gerendert wird.',
+            maxItems:
+              'Höchstzahl der gleichzeitig im Pfad angezeigten Einträge; die frühesten Ebenen nach dem ersten Eintrag wandern in ein Menü, der erste und der letzte Eintrag bleiben immer sichtbar.',
+            overflow:
+              'Was ein Pfad tut, der breiter als sein Container ist: menu verschiebt so viele der frühesten Ebenen nach dem ersten Eintrag wie nötig in ein Menü und holt sie zurück, sobald Platz frei wird; scroll behält alle Ebenen und scrollt horizontal.',
             clicked:
               'Wird ausgelöst, wenn ein nicht deaktivierter, nicht letzter Brotkrümel aktiviert wird.',
           },
@@ -2839,6 +2852,8 @@ export const de: WebMessages = {
         ],
         breadcrumbHome: 'Startseite',
         breadcrumbProducts: 'Produkte',
+        breadcrumbElectronics: 'Elektronik',
+        breadcrumbComputers: 'Computer',
         breadcrumbLaptops: 'Laptops',
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',
