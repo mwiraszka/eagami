@@ -123,12 +123,13 @@
     }
   }
 
+  // Sits within the trigger's padding, where the other fields keep their clear button
   &__clear {
     @include ea.icon-button;
     z-index: 1;
     position: absolute;
     top: 50%;
-    inset-inline-end: var(--space-2);
+    inset-inline-end: calc(0.75em + var(--border-width-thin));
     transform: translateY(-50%);
   }
 
