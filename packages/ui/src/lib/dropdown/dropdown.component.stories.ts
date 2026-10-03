@@ -38,6 +38,14 @@ type Story = StoryObj<DropdownComponent>;
 
 export const Playground: Story = {};
 
+export const Clearable: Story = {
+  args: { clearable: true, value: 'cherry' },
+};
+
+export const Searchable: Story = {
+  args: { searchable: true },
+};
+
 export const Grouped: Story = {
   args: {
     options: [

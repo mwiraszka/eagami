@@ -181,6 +181,10 @@ export interface EagamiMessages {
   };
   dropdown: {
     placeholder: string;
+    clear: string;
+    dialogLabel: string;
+    searchPlaceholder: string;
+    searchEmpty: string;
   };
   fieldLabel: {
     /** Accessible name of the button that reveals a field label's help. */

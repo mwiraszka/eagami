@@ -102,6 +102,10 @@ const messages: EagamiMessages = {
   },
   dropdown: {
     placeholder: 'Wybierz…',
+    clear: 'Wyczyść wybór',
+    dialogLabel: 'Wybierz opcję',
+    searchPlaceholder: 'Szukaj…',
+    searchEmpty: 'Brak wyników',
   },
   fieldLabel: {
     help: label => `Więcej informacji: ${label}`,

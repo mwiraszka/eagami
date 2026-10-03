@@ -83,6 +83,19 @@
     &--readonly {
       @include ea.readonly-control;
     }
+
+    // Keeps the value clear of the button laid over the trigger
+    &--clearable .ea-dropdown__value {
+      margin-inline-end: 2em;
+    }
+  }
+
+  &__clear {
+    @include ea.icon-button;
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 2em;
+    transform: translateY(-50%);
   }
 
   &__value {
@@ -111,10 +124,10 @@
 
   // Positioned by the host `<ea-popover>`; this class only owns visual chrome
   &__menu {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     max-height: 15rem;
-    padding: 0.25em 0;
-    overflow-y: auto;
-    overscroll-behavior: none;
     border: var(--border-width-thin) solid var(--color-border-default);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -144,6 +157,59 @@
     &--xl {
       font-size: var(--font-size-xl);
     }
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0.75em;
+
+    &::after {
+      @include ea.divider-rule(bottom);
+    }
+  }
+
+  &__search-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    color: var(--color-text-tertiary);
+  }
+
+  &__search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: var(--font-family-sans);
+    border: none;
+    background: none;
+    color: var(--color-text-primary);
+
+    &::placeholder {
+      opacity: 1;
+      color: var(--color-text-tertiary);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__list {
+    overflow-y: auto;
+    overscroll-behavior: none;
+    flex: 1;
+    padding: 0.25em 0;
+  }
+
+  &__empty {
+    padding: 0.75em;
+    text-align: center;
+    color: var(--color-text-tertiary);
   }
 
   &__group {

@@ -101,6 +101,10 @@ const messages: EagamiMessages = {
   },
   dropdown: {
     placeholder: '请选择…',
+    clear: '清除选择',
+    dialogLabel: '选择一个选项',
+    searchPlaceholder: '搜索…',
+    searchEmpty: '无匹配项',
   },
   fieldLabel: {
     help: label => `关于 ${label} 的更多信息`,

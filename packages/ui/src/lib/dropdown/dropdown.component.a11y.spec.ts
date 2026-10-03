@@ -26,7 +26,10 @@ const GROUPED_OPTIONS: SelectOptions = [
       [options]="options"
       [hint]="hint"
       [errorMsg]="errorMsg"
-      [disabled]="disabled" />
+      [disabled]="disabled"
+      [clearable]="clearable"
+      [searchable]="searchable"
+      [value]="value" />
   `,
 })
 class HostComponent {
@@ -35,6 +38,9 @@ class HostComponent {
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
+  clearable = false;
+  searchable = false;
+  value = '';
 }
 
 describe('DropdownComponent a11y', () => {
@@ -104,6 +110,25 @@ describe('DropdownComponent a11y', () => {
 
   it('has no detectable violations with a grouped option list open', async () => {
     const el = await render(host => (host.options = GROUPED_OPTIONS));
+
+    const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with the clear button showing', async () => {
+    const el = await render(host => {
+      host.clearable = true;
+      host.value = 'a';
+    });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations with a searchable option list open', async () => {
+    const el = await render(host => (host.searchable = true));
 
     const results = await axe(openList(el));
 

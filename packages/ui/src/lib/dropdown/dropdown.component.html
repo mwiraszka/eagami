@@ -20,10 +20,8 @@
       [disabled]="isDisabled()"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-haspopup]="'listbox'"
-      [attr.aria-controls]="isOpen() ? id() + '-listbox' : null"
-      [attr.aria-activedescendant]="
-        isOpen() && focusedIndex() >= 0 ? id() + '-option-' + focusedIndex() : null
-      "
+      [attr.aria-controls]="isOpen() ? listboxId() : null"
+      [attr.aria-activedescendant]="searchable() ? null : activeOptionId()"
       [attr.aria-labelledby]="triggerLabelledBy()"
       [attr.aria-required]="required() || null"
       [attr.aria-invalid]="hasError() || null"
@@ -41,50 +39,92 @@
         class="ea-dropdown__chevron"
         [class.ea-dropdown__chevron--open]="isOpen()" />
     </button>
+    @if (showClear()) {
+      <button
+        type="button"
+        class="ea-dropdown__clear"
+        [attr.aria-label]="i18n.messages().dropdown.clear"
+        (click)="clear()">
+        <ea-icon-x aria-hidden="true" />
+      </button>
+    }
 
     <ea-popover
       [anchor]="triggerEl"
       [open]="isOpen()"
       placement="bottom-start"
-      role="listbox"
-      [surfaceId]="id() + '-listbox'"
-      [aria-label]="label()"
+      [role]="searchable() ? 'dialog' : 'listbox'"
+      [surfaceId]="searchable() ? id() + '-popover' : listboxId()"
+      [aria-label]="searchable() ? i18n.messages().dropdown.dialogLabel : label()"
       [matchAnchorWidth]="true"
       [closeOnEscape]="false"
-      scrollBehavior="close"
+      [scrollBehavior]="searchable() ? 'reposition' : 'close'"
       (closeRequested)="onPopoverCloseRequested()">
       <div
         class="ea-dropdown__menu"
         [ngClass]="menuClasses()"
-        role="none">
-        @for (group of renderedGroups(); track $index) {
+        role="none"
+        (mousedown)="onMenuMousedown($event)">
+        @if (searchable()) {
+          <div class="ea-dropdown__search">
+            <ea-icon-search
+              class="ea-dropdown__search-icon"
+              aria-hidden="true" />
+            <input
+              #searchEl
+              type="text"
+              dir="auto"
+              class="ea-dropdown__search-input"
+              autocomplete="off"
+              [placeholder]="i18n.messages().dropdown.searchPlaceholder"
+              [value]="searchTerm()"
+              [attr.aria-controls]="listboxId()"
+              [attr.aria-activedescendant]="activeOptionId()"
+              (input)="onSearchInput(searchEl.value)"
+              (keydown)="handleSearchKeydown($event)" />
+          </div>
+        }
+        <div
+          class="ea-dropdown__list"
+          [attr.id]="searchable() ? listboxId() : null"
+          [attr.role]="searchable() ? 'listbox' : 'none'"
+          [attr.aria-label]="searchable() ? (label() ?? null) : null">
+          @for (group of renderedGroups(); track $index) {
+            <div
+              class="ea-dropdown__group"
+              [class.ea-dropdown__group--ruled]="group.rule"
+              [attr.role]="grouped() ? 'group' : 'presentation'"
+              [attr.aria-label]="group.label ?? null">
+              @if (group.label; as groupLabel) {
+                <div
+                  class="ea-dropdown__group-label"
+                  aria-hidden="true">
+                  {{ groupLabel }}
+                </div>
+              }
+              @for (entry of group.options; track entry.option.value) {
+                <div
+                  class="ea-dropdown__option"
+                  [class.ea-dropdown__option--selected]="entry.option.value === value()"
+                  [class.ea-dropdown__option--focused]="entry.index === focusedIndex()"
+                  [class.ea-dropdown__option--disabled]="entry.option.disabled"
+                  [id]="id() + '-option-' + entry.index"
+                  role="option"
+                  [attr.aria-selected]="entry.index === selectedIndex()"
+                  [attr.aria-disabled]="entry.option.disabled || null"
+                  (click)="select(entry.option)"
+                  (mouseenter)="focusedIndex.set(entry.index)">
+                  {{ entry.option.label }}
+                </div>
+              }
+            </div>
+          }
+        </div>
+        @if (searchable() && filteredOptions().length === 0) {
           <div
-            class="ea-dropdown__group"
-            [class.ea-dropdown__group--ruled]="group.rule"
-            [attr.role]="grouped() ? 'group' : 'presentation'"
-            [attr.aria-label]="group.label ?? null">
-            @if (group.label; as groupLabel) {
-              <div
-                class="ea-dropdown__group-label"
-                aria-hidden="true">
-                {{ groupLabel }}
-              </div>
-            }
-            @for (entry of group.options; track entry.option.value) {
-              <div
-                class="ea-dropdown__option"
-                [class.ea-dropdown__option--selected]="entry.option.value === value()"
-                [class.ea-dropdown__option--focused]="entry.index === focusedIndex()"
-                [class.ea-dropdown__option--disabled]="entry.option.disabled"
-                [id]="id() + '-option-' + entry.index"
-                role="option"
-                [attr.aria-selected]="entry.index === selectedIndex()"
-                [attr.aria-disabled]="entry.option.disabled || null"
-                (click)="select(entry.option)"
-                (mouseenter)="focusedIndex.set(entry.index)">
-                {{ entry.option.label }}
-              </div>
-            }
+            class="ea-dropdown__empty"
+            role="status">
+            {{ i18n.messages().dropdown.searchEmpty }}
           </div>
         }
       </div>
