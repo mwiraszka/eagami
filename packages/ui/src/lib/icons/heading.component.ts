@@ -16,9 +16,9 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path d="M6 12h12" />
-      <path d="M6 20V4" />
-      <path d="M18 20V4" />
+      <path d="M7 5v14" />
+      <path d="M17 5v14" />
+      <path d="M7 12h10" />
     </svg>
   `,
 })

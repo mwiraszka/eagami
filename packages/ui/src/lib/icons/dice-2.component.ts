@@ -22,8 +22,8 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         width="18"
         height="18"
         rx="2" />
-      <path d="M16 8h.01" />
-      <path d="M8 16h.01" />
+      <path d="M15.5 8.5h.01" />
+      <path d="M8.5 15.5h.01" />
     </svg>
   `,
 })
