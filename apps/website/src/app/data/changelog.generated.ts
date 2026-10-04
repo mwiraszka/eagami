@@ -18,6 +18,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
     date: '2026-10-04',
     sections: [
       {
+        heading: 'Added',
+        entries: [
+          'Add an `aria-labelledby` input to the date picker, so a label placed outside it can name the field.',
+        ],
+      },
+      {
         heading: 'Changed',
         entries: ['Update the artwork of a batch of icons.'],
       },

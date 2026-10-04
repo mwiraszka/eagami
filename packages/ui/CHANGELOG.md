@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.60.0] - 2026-10-04
 
+### Added
+
+- Add an `aria-labelledby` input to the date picker, so a label placed outside it can name the field.
+
 ### Changed
 
 - Update the artwork of a batch of icons.
