@@ -2231,6 +2231,8 @@ export const frFR: WebMessages = {
               'Dates isolées et plages inclusives avec début et fin non sélectionnables, en plus des bornes minDate et maxDate.',
             placeholder:
               'Texte indicatif affiché dans le champ lorsqu’aucune date n’est sélectionnée.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture du calendrier.',
             required: 'Marque le champ comme requis.',

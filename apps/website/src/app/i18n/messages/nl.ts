@@ -2228,6 +2228,8 @@ export const nl: WebMessages = {
               'Losse datums en perioden met begin en einde (inclusief) die niet kunnen worden gekozen, bovenop de grenzen minDate en maxDate.',
             placeholder:
               'Plaatsaanduiding getoond in het veld terwijl geen datum is geselecteerd.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de kalender niet opent.',
             required: 'Markeert het veld als verplicht.',
             size: 'Visuele grootte van het datumkiezerveld.',

@@ -2247,6 +2247,8 @@ export const esES: WebMessages = {
               'Fechas sueltas e intervalos inclusivos con inicio y fin que no se pueden seleccionar, además de los límites minDate y maxDate.',
             placeholder:
               'Texto de marcador mostrado en el campo cuando no hay ninguna fecha seleccionada.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             readonly:
               'Muestra el campo como de solo lectura, impidiendo que se abra el calendario.',
             required: 'Marca el campo como obligatorio.',

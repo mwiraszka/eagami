@@ -2215,6 +2215,8 @@ export const ptBR: WebMessages = {
               'Datas avulsas e intervalos inclusivos com início e fim que não podem ser selecionados, além dos limites minDate e maxDate.',
             placeholder:
               'Placeholder exibido no campo enquanto nenhuma data é selecionada.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do calendário.',
             required: 'Marca o campo como obrigatório.',

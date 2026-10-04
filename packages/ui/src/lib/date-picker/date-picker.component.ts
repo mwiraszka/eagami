@@ -83,6 +83,10 @@ interface CalendarDay {
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the native input, which forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -104,6 +108,10 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   /** Placeholder shown in the field when no date is selected. */
   readonly placeholder = input<string | undefined>(undefined);
+  /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly size = input<DatePickerSize>('md');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -178,7 +186,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   /** Placeholder text, empty unless a `placeholder` is given. */
   readonly resolvedPlaceholder = computed(() => this.placeholder() ?? '');
 
-  /** Accessible name when no `label` is given. */
+  /** Accessible name when neither `label` nor `aria-labelledby` is given. */
   protected readonly fallbackLabel = computed(
     () => this.placeholder() ?? this.i18n.messages().datePicker.placeholder,
   );

@@ -1634,6 +1634,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-date-picker',
     inputs: [
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',

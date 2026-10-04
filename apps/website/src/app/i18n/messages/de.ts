@@ -2249,6 +2249,8 @@ export const de: WebMessages = {
               'Einzelne Daten und inklusive Zeiträume mit Start und Ende, die nicht auswählbar sind, zusätzlich zu den Grenzen minDate und maxDate.',
             placeholder:
               'Platzhalter, der im Feld angezeigt wird, solange kein Datum ausgewählt ist.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich der Kalender öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',

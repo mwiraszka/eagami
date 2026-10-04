@@ -2191,6 +2191,8 @@ export const is: WebMessages = {
               'Stakar dagsetningar og tímabil með upphafi og enda, að báðum meðtöldum, sem ekki er hægt að velja, til viðbótar við mörkin minDate og maxDate.',
             placeholder:
               'Staðgengill sýndur í reitnum á meðan engin dagsetning er valin.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             readonly:
               'Birtir reitinn skrifvarinn, kemur í veg fyrir að dagatalið opnist.',
             required: 'Merkir reitinn sem nauðsynlegan.',

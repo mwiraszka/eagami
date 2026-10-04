@@ -2151,6 +2151,8 @@ export const en: WebMessages = {
             disabledDates:
               'Individual dates and inclusive start and end ranges that cannot be picked, on top of the minDate and maxDate bounds.',
             placeholder: 'Placeholder shown in the field while no date is selected.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             readonly: 'Renders the field read-only, keeping the calendar from opening.',
             required: 'Marks the field as required.',
             size: 'Visual size of the date picker field.',

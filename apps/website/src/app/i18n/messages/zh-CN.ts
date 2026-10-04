@@ -2010,6 +2010,8 @@ export const zhCN: WebMessages = {
             disabledDates:
               '不可选择的单个日期以及包含起止日的日期范围，在 minDate 和 maxDate 限制之外生效。',
             placeholder: '未选择日期时显示在字段中的占位符。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             readonly: '将字段渲染为只读，使日历无法打开。',
             required: '将字段标记为必填。',
             size: '日期选择器字段的视觉尺寸。',

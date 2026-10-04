@@ -2205,6 +2205,8 @@ export const pl: WebMessages = {
             disabledDates:
               'Pojedyncze daty oraz zakresy z początkiem i końcem (włącznie), których nie można wybrać, niezależnie od ograniczeń minDate i maxDate.',
             placeholder: 'Tekst zastępczy w polu, gdy żadna data nie jest wybrana.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie kalendarza.',
             required: 'Oznacza pole jako wymagane.',

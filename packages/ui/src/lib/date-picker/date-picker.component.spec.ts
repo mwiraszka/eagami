@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatePickerComponent } from './date-picker.component';
@@ -102,6 +103,48 @@ describe('DatePickerComponent', () => {
     it('applies the default size class', () => {
       const field = fixture.nativeElement.querySelector('.ea-date-picker-field');
       expect(field.classList).toContain('ea-date-picker-field--md');
+    });
+  });
+
+  describe('Accessible name', () => {
+    it('names a field with no label through a fallback', () => {
+      expect(getInput().getAttribute('aria-label')).toBeTruthy();
+      expect(getInput().hasAttribute('aria-labelledby')).toBe(false);
+    });
+
+    it('takes its name from the elements given in aria-labelledby', () => {
+      fixture.componentRef.setInput('aria-labelledby', 'start-date-label');
+      fixture.detectChanges();
+
+      expect(getInput().getAttribute('aria-labelledby')).toBe('start-date-label');
+      expect(getInput().hasAttribute('aria-label')).toBe(false);
+    });
+
+    it('keeps aria-labelledby off the host element', () => {
+      @Component({
+        imports: [DatePickerComponent],
+        template: `
+          <label
+            id="start-date-label"
+            for="start-date"
+            >Start date</label
+          >
+          <ea-date-picker
+            aria-labelledby="start-date-label"
+            [id]="'start-date'" />
+        `,
+      })
+      class HostComponent {}
+      const host = TestBed.createComponent(HostComponent);
+
+      host.detectChanges();
+
+      const picker: HTMLElement = host.nativeElement.querySelector('ea-date-picker');
+      expect(picker.hasAttribute('aria-labelledby')).toBe(false);
+      expect(picker.querySelector('input')!.getAttribute('aria-labelledby')).toBe(
+        'start-date-label',
+      );
+      host.destroy();
     });
   });
 
