@@ -17,13 +17,13 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       width="100%"
       height="100%">
       <circle
-        cx="16"
+        cx="10"
         cy="4"
-        r="1" />
-      <path d="m18 19 1-7-6 1" />
-      <path d="m5 8 3-3 5.5 3-2.36 3.5" />
-      <path d="M4.24 14.5a5 5 0 0 0 6.88 6" />
-      <path d="M13.76 17.5a5 5 0 0 0-6.88-6" />
+        r="1.5" />
+      <path d="M10 8v5" />
+      <path d="M10 10.5h4.5" />
+      <path d="M10 13h5l2 5h2.5" />
+      <path d="M5.4 13.63a5 5 0 1 0 8.8 4.58" />
     </svg>
   `,
 })

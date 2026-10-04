@@ -28,6 +28,17 @@ class HostComponent {
   disabled = false;
 }
 
+@Component({
+  imports: [RangeSliderComponent],
+  template: `
+    <span id="price-label">Price</span>
+    <ea-range-slider
+      aria-labelledby="price-label"
+      [id]="'price'" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('RangeSliderComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -67,6 +78,18 @@ describe('RangeSliderComponent a11y', () => {
     const el = await render(host => (host.disabled = true));
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

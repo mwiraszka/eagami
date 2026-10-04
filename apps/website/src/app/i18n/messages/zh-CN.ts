@@ -1629,6 +1629,8 @@ export const zhCN: WebMessages = {
             id: '应用于数字单元格和 label for 的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在字段上方的文本标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             length: '验证码所包含的数字单元格数量。',
             placeholder: '每个单元格一个字符地分布的占位文本。',
             readonly: '将字段渲染为只读。',
@@ -1721,6 +1723,8 @@ export const zhCN: WebMessages = {
           },
           'range-slider': {
             ariaLabelHigh: '高（结束）滑块的无障碍标签，省略时回退到字段标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             ariaLabelLow: '低（起始）滑块的无障碍标签，省略时回退到字段标签。',
             disabled: '禁用该滑块。',
             errorMsg: '显示在滑块下方的错误消息，替换提示并将字段标记为无效。',
@@ -1755,6 +1759,8 @@ export const zhCN: WebMessages = {
             id: '应用于评分及其标签的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在评分上方的文本标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             max: '最高评分值，也是渲染的星星数量。',
             min: '用户可选择的最低评分值。',
             readonly: '将评分渲染为仅供显示，忽略点击和键盘输入。',
@@ -1773,6 +1779,8 @@ export const zhCN: WebMessages = {
           },
           slider: {
             ariaLabel: '未渲染可见标签时应用的无障碍标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             disabled: '禁用该滑块。',
             errorMsg: '显示在滑块下方的错误消息，替换提示并将字段标记为无效。',
             formatValue: '将数值转换为所显示文本的格式化器。',
@@ -2010,6 +2018,8 @@ export const zhCN: WebMessages = {
             disabledDates:
               '不可选择的单个日期以及包含起止日的日期范围，在 minDate 和 maxDate 限制之外生效。',
             placeholder: '未选择日期时显示在字段中的占位符。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             readonly: '将字段渲染为只读，使日历无法打开。',
             required: '将字段标记为必填。',
             size: '日期选择器字段的视觉尺寸。',
@@ -2055,6 +2065,8 @@ export const zhCN: WebMessages = {
             id: '应用于触发器和 label for 的 id，省略时自动生成。',
             labelIcon: '可选的图标组件，显示在标签文本之前。',
             label: '渲染在字段上方的文本标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             maxVisibleChips: '其余项折叠为计数胶囊之前，触发器中显示的最大标签数量。',
             maxChipWidth:
               '已选值标签的最大宽度（px）；更长的文本会被省略，并在提示中显示完整内容。',
@@ -2238,6 +2250,8 @@ export const zhCN: WebMessages = {
           },
           'radio-group': {
             ariaLabel: '未渲染可见标签时，为该组提供的无障碍标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             disabled: '禁用组内所有单选选项。',
             errorMsg: '显示在组下方的错误消息，替换提示并将字段标记为无效。',
             hint: '显示在组下方的辅助文本，在显示错误时隐藏。',
@@ -2254,6 +2268,8 @@ export const zhCN: WebMessages = {
           },
           segmented: {
             ariaLabel: '未渲染可见标签时，为该控件提供的无障碍标签。',
+            ariaLabelledby:
+              '其文本为字段命名的元素的 id，例如组件外部的标签，转发到原生 aria-labelledby 属性。',
             disabled: '禁用该分段控件。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
             fullWidth: '将控件拉伸以填满其容器的宽度。',

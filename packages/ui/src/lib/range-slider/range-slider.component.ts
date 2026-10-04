@@ -58,6 +58,10 @@ const FORMAT_PLAIN = (value: number): string => `${value}`;
   templateUrl: './range-slider.component.html',
   styleUrl: './range-slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
@@ -100,6 +104,10 @@ export class RangeSliderComponent implements ControlValueAccessor {
   readonly ariaLabelHigh = input<string | undefined>(undefined, {
     alias: 'aria-label-high',
   });
+  /** Space-separated ids of the elements whose text names the slider, ahead of each thumb's own label, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly id = input<string>(uniqueId('ea-range-slider'));
 
   readonly value = model<RangeSliderValue>([0, 100]);
@@ -139,7 +147,9 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   private thumbLabelledBy(thumb: Thumb): string {
     const thumbLabelId = `${this.id()}-${thumb}-label`;
-    return this.label() ? `${this.id()}-label ${thumbLabelId}` : thumbLabelId;
+    const fieldLabelledBy =
+      this.ariaLabelledby() || (this.label() ? `${this.id()}-label` : null);
+    return fieldLabelledBy ? `${fieldLabelledBy} ${thumbLabelId}` : thumbLabelId;
   }
 
   /** Formats a value for display, grouping thousands with commas unless a custom `formatValue` is set. */

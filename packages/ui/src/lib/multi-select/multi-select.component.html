@@ -22,8 +22,8 @@
         [id]="id()"
         role="combobox"
         [attr.tabindex]="isDisabled() ? -1 : 0"
-        [attr.aria-labelledby]="label() ? id() + '-label' : null"
-        [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
+        [attr.aria-labelledby]="ariaLabelledby() || (label() ? id() + '-label' : null)"
+        [attr.aria-label]="label() || ariaLabelledby() ? null : (ariaLabel() ?? null)"
         [attr.aria-expanded]="isOpen()"
         [attr.aria-haspopup]="'listbox'"
         [attr.aria-controls]="isOpen() ? listboxId() : null"
@@ -115,6 +115,7 @@
           role="listbox"
           aria-multiselectable="true"
           [id]="listboxId()"
+          [attr.aria-labelledby]="label() ? null : ariaLabelledby() || null"
           [attr.aria-label]="label() ?? ariaLabel() ?? null">
           @if (selectAllVisible()) {
             <li

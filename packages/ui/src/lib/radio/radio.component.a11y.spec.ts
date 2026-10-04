@@ -35,6 +35,21 @@ class HostComponent {
   hint: string | undefined = undefined;
 }
 
+@Component({
+  imports: [RadioGroupComponent, RadioComponent],
+  template: `
+    <span id="fruit-label">Fruit</span>
+    <ea-radio-group aria-labelledby="fruit-label"
+      ><ea-radio
+        value="a"
+        label="Apple" /><ea-radio
+        value="b"
+        label="Banana"
+    /></ea-radio-group>
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('RadioComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -74,6 +89,18 @@ describe('RadioComponent a11y', () => {
     const el = await render(host => (host.disabled = true));
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

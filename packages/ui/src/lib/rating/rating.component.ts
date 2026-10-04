@@ -56,6 +56,10 @@ export type RatingSize = EaSize;
   templateUrl: './rating.component.html',
   styleUrl: './rating.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [FieldLabelComponent, FieldMessagesComponent, NgClass, NgComponentOutlet],
   providers: [
     {
@@ -83,6 +87,10 @@ export class RatingComponent implements ControlValueAccessor {
   protected readonly i18n = inject(EagamiI18nService);
 
   readonly label = input<string | undefined>(undefined);
+  /** Space-separated ids of the elements whose text names the rating, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   /** Optional icon component rendered before the label text. */
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */

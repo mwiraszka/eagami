@@ -38,6 +38,23 @@ class HostComponent {
   disabled = false;
 }
 
+@Component({
+  imports: [MultiSelectComponent],
+  template: `
+    <span id="fruits-label">Fruits</span>
+    <ea-multi-select
+      aria-labelledby="fruits-label"
+      [id]="'fruits'"
+      [options]="options" />
+  `,
+})
+class LabelledByHostComponent {
+  options: SelectOption[] = [
+    { value: 'apple', label: 'Apple' },
+    { value: 'pear', label: 'Pear' },
+  ];
+}
+
 describe('MultiSelectComponent a11y', () => {
   let fixture: ComponentFixture<HostComponent>;
 
@@ -107,6 +124,18 @@ describe('MultiSelectComponent a11y', () => {
     const el = await render(host => (host.options = GROUPED_OPTIONS));
 
     const results = await axe(openList(el));
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

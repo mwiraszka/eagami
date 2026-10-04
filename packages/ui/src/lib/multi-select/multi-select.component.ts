@@ -66,6 +66,10 @@ export type MultiSelectSize = EaSize;
   templateUrl: './multi-select.component.html',
   styleUrl: './multi-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [
     CheckboxComponent,
     ChevronDownIconComponent,
@@ -106,6 +110,10 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
   /** Accessible name for the combobox when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the combobox, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly placeholder = input<string | undefined>(undefined);
   readonly searchPlaceholder = input<string | undefined>(undefined);
   /** Selectable options, either flat or split into groups. */

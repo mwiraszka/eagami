@@ -1717,6 +1717,8 @@ export const ptBR: WebMessages = {
             id: 'id aplicado às células de dígito e ao for do rótulo, gerado automaticamente quando omitido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             length: 'Número de células de dígito que compõem o código.',
             placeholder: 'Texto de placeholder distribuído um caractere por célula.',
             readonly: 'Renderiza o campo como somente leitura.',
@@ -1829,6 +1831,8 @@ export const ptBR: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Rótulo acessível para o controle alto (final), recorrendo ao rótulo do campo quando omitido.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             ariaLabelLow:
               'Rótulo acessível para o controle baixo (inicial), recorrendo ao rótulo do campo quando omitido.',
             disabled: 'Desativa o controle deslizante.',
@@ -1874,6 +1878,8 @@ export const ptBR: WebMessages = {
             id: 'id aplicado à avaliação e seu rótulo, gerado automaticamente quando omitido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima da avaliação.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             max: 'Valor de avaliação mais alto e número de estrelas renderizadas.',
             min: 'Valor de avaliação mais baixo que o usuário pode selecionar.',
             readonly:
@@ -1902,6 +1908,8 @@ export const ptBR: WebMessages = {
           slider: {
             ariaLabel:
               'Rótulo acessível aplicado quando nenhum rótulo visível é renderizado.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o controle deslizante.',
             errorMsg:
               'Mensagem de erro exibida abaixo do controle, substituindo a dica e marcando o campo como inválido.',
@@ -2215,6 +2223,8 @@ export const ptBR: WebMessages = {
               'Datas avulsas e intervalos inclusivos com início e fim que não podem ser selecionados, além dos limites minDate e maxDate.',
             placeholder:
               'Placeholder exibido no campo enquanto nenhuma data é selecionada.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do calendário.',
             required: 'Marca o campo como obrigatório.',
@@ -2275,6 +2285,8 @@ export const ptBR: WebMessages = {
             id: 'id aplicado ao gatilho e ao for do rótulo, gerado automaticamente quando omitido.',
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do campo.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             maxVisibleChips:
               'Número máximo de chips exibidos no gatilho antes que os demais colapsem em uma pill de contagem.',
             maxChipWidth:
@@ -2512,6 +2524,8 @@ export const ptBR: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Rótulo acessível para o grupo quando nenhum rótulo visível é renderizado.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa todas as opções de rádio no grupo.',
             errorMsg:
               'Mensagem de erro exibida abaixo do grupo, substituindo a dica e marcando o campo como inválido.',
@@ -2531,6 +2545,8 @@ export const ptBR: WebMessages = {
           segmented: {
             ariaLabel:
               'Rótulo acessível para o controle quando nenhum rótulo visível é renderizado.',
+            ariaLabelledby:
+              'Ids dos elementos cujo texto nomeia o campo, como um rótulo fora do componente, repassados ao atributo nativo aria-labelledby.',
             disabled: 'Desativa o controle segmentado.',
             errorMsg:
               'Mensagem de erro exibida abaixo do campo, substituindo a dica e marcando o campo como inválido.',

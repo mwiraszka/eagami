@@ -17,9 +17,8 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       width="100%"
       height="100%">
       <path
-        d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-      <path d="M9 18h6" />
-      <path d="M10 22h4" />
+        d="M9 17v-1.2c0-1-.5-1.8-1.6-2.7a6.5 6.5 0 1 1 9.2 0c-1.1.9-1.6 1.7-1.6 2.7V17z" />
+      <path d="M9.5 20.5h5" />
     </svg>
   `,
 })

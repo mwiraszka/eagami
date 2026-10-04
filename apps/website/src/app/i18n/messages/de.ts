@@ -1731,6 +1731,8 @@ export const de: WebMessages = {
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             length: 'Anzahl der Ziffernzellen, aus denen der Code besteht.',
             placeholder: 'Platzhaltertext, ein Zeichen pro Zelle verteilt.',
             readonly: 'Rendert das Feld schreibgeschützt.',
@@ -1852,6 +1854,8 @@ export const de: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Barrierefreies Label für den hohen (End-)Regler, das auf das Feldlabel zurückgreift, wenn weggelassen.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             ariaLabelLow:
               'Barrierefreies Label für den niedrigen (Start-)Regler, das auf das Feldlabel zurückgreift, wenn weggelassen.',
             disabled: 'Deaktiviert den Schieberegler.',
@@ -1900,6 +1904,8 @@ export const de: WebMessages = {
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über der Bewertung gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             max: 'Höchster Bewertungswert und Anzahl der gerenderten Sterne.',
             min: 'Niedrigster Bewertungswert, den der Nutzer auswählen kann.',
             readonly:
@@ -1927,6 +1933,8 @@ export const de: WebMessages = {
           slider: {
             ariaLabel:
               'Barrierefreies Label, das angewendet wird, wenn kein sichtbares Label gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert den Schieberegler.',
             errorMsg:
               'Fehlermeldung unter dem Schieberegler, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2249,6 +2257,8 @@ export const de: WebMessages = {
               'Einzelne Daten und inklusive Zeiträume mit Start und Ende, die nicht auswählbar sind, zusätzlich zu den Grenzen minDate und maxDate.',
             placeholder:
               'Platzhalter, der im Feld angezeigt wird, solange kein Datum ausgewählt ist.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich der Kalender öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',
@@ -2311,6 +2321,8 @@ export const de: WebMessages = {
             labelIcon:
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Feld gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             maxVisibleChips:
               'Maximale Anzahl der Chips, die im Auslöser angezeigt werden, bevor der Rest in eine Zähl-Pille zusammenklappt.',
             maxChipWidth:
@@ -2555,6 +2567,8 @@ export const de: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Barrierefreies Label für die Gruppe, wenn kein sichtbares Label gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert alle Radio-Optionen in der Gruppe.',
             errorMsg:
               'Fehlermeldung unter der Gruppe, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',
@@ -2575,6 +2589,8 @@ export const de: WebMessages = {
           segmented: {
             ariaLabel:
               'Barrierefreies Label für die Steuerung, wenn kein sichtbares Label gerendert wird.',
+            ariaLabelledby:
+              'IDs der Elemente, deren Text das Feld benennt, etwa ein Label außerhalb der Komponente, weitergereicht an das native aria-labelledby-Attribut.',
             disabled: 'Deaktiviert die segmentierte Steuerung.',
             errorMsg:
               'Fehlermeldung unter dem Feld, die den Hinweis ersetzt und das Feld als ungültig kennzeichnet.',

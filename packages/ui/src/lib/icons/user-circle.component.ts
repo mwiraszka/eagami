@@ -22,9 +22,9 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         r="10" />
       <circle
         cx="12"
-        cy="10"
+        cy="9.5"
         r="3" />
-      <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+      <path d="M6.8 18.5a5.6 5.6 0 0 1 10.4 0" />
     </svg>
   `,
 })

@@ -28,3 +28,9 @@ type Story = StoryObj<RatingComponent>;
 export const Playground: Story = {
   args: { value: 3 },
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    template: `<span id="score-label">Score</span><ea-rating aria-labelledby="score-label"></ea-rating>`,
+  }),
+};

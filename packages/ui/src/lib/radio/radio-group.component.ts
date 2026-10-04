@@ -37,6 +37,10 @@ export type RadioOrientation = 'vertical' | 'horizontal';
   templateUrl: './radio-group.component.html',
   styleUrl: './radio-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -62,6 +66,10 @@ export class RadioGroupComponent implements ControlValueAccessor {
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the group, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
 
   readonly value = model<string>('');
 

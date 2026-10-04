@@ -34,3 +34,10 @@ export default meta;
 type Story = StoryObj<SegmentedComponent>;
 
 export const Playground: Story = {};
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    props: { options: viewOptions },
+    template: `<span id="view-label">View</span><ea-segmented aria-labelledby="view-label" [options]="options"></ea-segmented>`,
+  }),
+};

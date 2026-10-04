@@ -18,20 +18,19 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       height="100%">
       <rect
         x="2"
-        y="4"
+        y="5"
         width="20"
-        height="16"
+        height="14"
         rx="2" />
-      <circle
-        cx="8"
-        cy="10"
-        r="2" />
-      <path d="M8 12h8" />
-      <circle
-        cx="16"
-        cy="10"
-        r="2" />
-      <path d="m6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3" />
+      <rect
+        x="6"
+        y="8.5"
+        width="12"
+        height="5"
+        rx="2.5" />
+      <path d="M9 11h.01" />
+      <path d="M15 11h.01" />
+      <path d="m7 19 1-3h8l1 3" />
     </svg>
   `,
 })

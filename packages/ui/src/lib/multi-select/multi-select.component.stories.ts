@@ -65,3 +65,10 @@ export const GroupedWithoutHeadings: Story = {
     options: [{ options: RECENTLY_USED }, { options: FRUITS }],
   },
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    props: { options: FRUITS },
+    template: `<span id="fruits-label">Fruits</span><ea-multi-select aria-labelledby="fruits-label" [options]="options" class="story-narrow"></ea-multi-select>`,
+  }),
+};

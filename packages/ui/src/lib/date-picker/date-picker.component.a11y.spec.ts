@@ -23,6 +23,21 @@ class HostComponent {
   disabled = false;
 }
 
+@Component({
+  imports: [DatePickerComponent],
+  template: `
+    <label
+      id="start-date-label"
+      for="start-date"
+      >Start date</label
+    >
+    <ea-date-picker
+      aria-labelledby="start-date-label"
+      [id]="'start-date'" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('DatePickerComponent a11y', () => {
   let fixture: ComponentFixture<HostComponent>;
 
@@ -48,6 +63,18 @@ describe('DatePickerComponent a11y', () => {
     const el = await render();
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

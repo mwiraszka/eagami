@@ -23,3 +23,9 @@ export default meta;
 type Story = StoryObj<CodeInputComponent>;
 
 export const Playground: Story = {};
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    template: `<span id="code-label">Verification code</span><ea-code-input aria-labelledby="code-label"></ea-code-input>`,
+  }),
+};

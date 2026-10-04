@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SunIconComponent } from '../icons/sun.component';
@@ -413,6 +414,30 @@ describe('SliderComponent', () => {
       pointer('pointerdown', 60);
 
       expect(component.value()).toBe(20);
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [SliderComponent],
+      template: `
+        <span id="volume-label">Volume</span>
+        <ea-slider aria-labelledby="volume-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-slider');
+      const named = component.querySelector('[role="slider"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('volume-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

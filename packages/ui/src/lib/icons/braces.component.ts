@@ -16,9 +16,8 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1" />
-      <path
-        d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1" />
+      <path d="M8 4c-2 0-3 1-3 3v2c0 1.7-1 3-2.5 3C4 12 5 13.3 5 15v2c0 2 1 3 3 3" />
+      <path d="M16 4c2 0 3 1 3 3v2c0 1.7 1 3 2.5 3-1.5 0-2.5 1.3-2.5 3v2c0 2-1 3-3 3" />
     </svg>
   `,
 })

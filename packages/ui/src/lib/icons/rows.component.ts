@@ -20,10 +20,14 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         x="3"
         y="3"
         width="18"
-        height="18"
-        rx="2"
-        ry="2" />
-      <path d="M3 12h18" />
+        height="7"
+        rx="2" />
+      <rect
+        x="3"
+        y="14"
+        width="18"
+        height="7"
+        rx="2" />
     </svg>
   `,
 })

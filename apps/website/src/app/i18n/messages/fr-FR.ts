@@ -1732,6 +1732,8 @@ export const frFR: WebMessages = {
             id: 'id appliqué aux cases de chiffres et au for du libellé, généré automatiquement si omis.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus du champ.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             length: 'Nombre de cases de chiffres composant le code.',
             placeholder: 'Texte indicatif réparti un caractère par cellule.',
             readonly: 'Affiche le champ en lecture seule.',
@@ -1848,6 +1850,8 @@ export const frFR: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Libellé accessible du curseur haut (fin), revenant au libellé du champ si omis.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             ariaLabelLow:
               'Libellé accessible du curseur bas (début), revenant au libellé du champ si omis.',
             disabled: 'Désactive le curseur.',
@@ -1891,6 +1895,8 @@ export const frFR: WebMessages = {
             id: 'id appliqué à la note et à son libellé, généré automatiquement si omis.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé textuel rendu au-dessus de la note.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             max: 'Valeur de note la plus élevée et nombre d’étoiles rendues.',
             min: 'Valeur de note la plus basse que l’utilisateur peut sélectionner.',
             readonly:
@@ -1918,6 +1924,8 @@ export const frFR: WebMessages = {
           slider: {
             ariaLabel:
               'Libellé accessible appliqué lorsqu’aucun libellé visible n’est rendu.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le curseur.',
             errorMsg:
               'Message d’erreur affiché sous le curseur, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2231,6 +2239,8 @@ export const frFR: WebMessages = {
               'Dates isolées et plages inclusives avec début et fin non sélectionnables, en plus des bornes minDate et maxDate.',
             placeholder:
               'Texte indicatif affiché dans le champ lorsqu’aucune date n’est sélectionnée.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture du calendrier.',
             required: 'Marque le champ comme requis.',
@@ -2292,6 +2302,8 @@ export const frFR: WebMessages = {
             id: 'id appliqué au déclencheur et au for du libellé, généré automatiquement si omis.',
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du champ.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             maxVisibleChips:
               'Nombre maximum de chips affichées dans le déclencheur avant que le reste soit regroupé en une pastille de décompte.',
             maxChipWidth:
@@ -2533,6 +2545,8 @@ export const frFR: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Libellé accessible du groupe lorsqu’aucun libellé visible n’est rendu.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive toutes les options radio du groupe.',
             errorMsg:
               'Message d’erreur affiché sous le groupe, remplaçant l’indication et marquant le champ comme invalide.',
@@ -2552,6 +2566,8 @@ export const frFR: WebMessages = {
           segmented: {
             ariaLabel:
               'Libellé accessible du contrôle lorsqu’aucun libellé visible n’est affiché.',
+            ariaLabelledby:
+              'Identifiants des éléments dont le texte nomme le champ, comme un libellé placé hors du composant, transmis à l’attribut natif aria-labelledby.',
             disabled: 'Désactive le contrôle segmenté.',
             errorMsg:
               'Message d’erreur affiché sous le champ, remplaçant l’indication et marquant le champ comme invalide.',

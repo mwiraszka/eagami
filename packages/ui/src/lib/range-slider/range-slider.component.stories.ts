@@ -25,3 +25,9 @@ type Story = StoryObj<RangeSliderComponent>;
 export const Playground: Story = {
   args: { value: [20, 80] },
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    template: `<span id="price-label">Price</span><ea-range-slider aria-labelledby="price-label" class="story-narrow"></ea-range-slider>`,
+  }),
+};

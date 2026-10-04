@@ -53,3 +53,9 @@ export const WeekendsDisabled: Story = {
     template: `<ea-date-picker label="Delivery date" [disabledWeekdays]="[0, 6]" class="story-narrow"></ea-date-picker>`,
   }),
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    template: `<label id="start-date-label" for="start-date">Start date</label><ea-date-picker aria-labelledby="start-date-label" [id]="'start-date'" class="story-narrow"></ea-date-picker>`,
+  }),
+};

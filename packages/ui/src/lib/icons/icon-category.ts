@@ -10,8 +10,8 @@ import { Directive, HostBinding, type Type, input } from '@angular/core';
  *            canonical slug and design.
  * `eagami`:  Eagami UI additions beyond the Feather set: the brand mark, the
  *            basic shape set and household icons, brand-filled variants of
- *            Feather outlines, the coloured brand marks (`isBrand`), and line
- *            icons adapted from Lucide (ISC).
+ *            Feather outlines, the coloured brand marks (`isBrand`), and
+ *            original line icons.
  */
 export type IconCategory = 'feather' | 'eagami';
 

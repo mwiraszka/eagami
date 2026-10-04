@@ -177,4 +177,34 @@ describe('RadioGroupComponent', () => {
       expect(host.value()).toBe('');
     });
   });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [RadioGroupComponent, RadioComponent],
+      template: `
+        <span id="fruit-label">Fruit</span>
+        <ea-radio-group aria-labelledby="fruit-label"
+          ><ea-radio
+            value="a"
+            label="Apple" /><ea-radio
+            value="b"
+            label="Banana"
+        /></ea-radio-group>
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-radio-group');
+      const named = component.querySelector('[role="radiogroup"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('fruit-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
+    });
+  });
 });

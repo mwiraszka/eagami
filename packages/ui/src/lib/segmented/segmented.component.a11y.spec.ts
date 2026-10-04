@@ -33,6 +33,22 @@ class HostComponent {
   disabled = false;
 }
 
+@Component({
+  imports: [SegmentedComponent],
+  template: `
+    <span id="view-label">View</span>
+    <ea-segmented
+      aria-labelledby="view-label"
+      [options]="options" />
+  `,
+})
+class LabelledByHostComponent {
+  options: SelectOption[] = [
+    { value: 'list', label: 'List' },
+    { value: 'grid', label: 'Grid' },
+  ];
+}
+
 describe('SegmentedComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -72,6 +88,18 @@ describe('SegmentedComponent a11y', () => {
     const el = await render(host => (host.disabled = true));
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

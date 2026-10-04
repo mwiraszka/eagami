@@ -1719,6 +1719,8 @@ export const nl: WebMessages = {
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             length: 'Aantal cijfercellen waaruit de code bestaat.',
             placeholder: 'Plaatsaanduidingstekst verspreid over één teken per cel.',
             readonly: 'Maakt het veld alleen-lezen.',
@@ -1834,6 +1836,8 @@ export const nl: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Toegankelijk label voor de hoge (eind)schuif, dat terugvalt op het veldlabel indien weggelaten.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             ariaLabelLow:
               'Toegankelijk label voor de lage (begin)schuif, dat terugvalt op het veldlabel indien weggelaten.',
             disabled: 'Schakelt de slider uit.',
@@ -1882,6 +1886,8 @@ export const nl: WebMessages = {
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven de beoordeling.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             max: 'Hoogste beoordelingswaarde en het aantal weergegeven sterren.',
             min: 'Laagste beoordelingswaarde die de gebruiker kan selecteren.',
             readonly:
@@ -1910,6 +1916,8 @@ export const nl: WebMessages = {
           slider: {
             ariaLabel:
               'Toegankelijk label toegepast wanneer geen zichtbaar label wordt weergegeven.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt de slider uit.',
             errorMsg:
               'Foutmelding onder de slider, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2228,6 +2236,8 @@ export const nl: WebMessages = {
               'Losse datums en perioden met begin en einde (inclusief) die niet kunnen worden gekozen, bovenop de grenzen minDate en maxDate.',
             placeholder:
               'Plaatsaanduiding getoond in het veld terwijl geen datum is geselecteerd.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de kalender niet opent.',
             required: 'Markeert het veld als verplicht.',
             size: 'Visuele grootte van het datumkiezerveld.',
@@ -2290,6 +2300,8 @@ export const nl: WebMessages = {
             labelIcon:
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het veld.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             maxVisibleChips:
               'Maximaal aantal chips getoond in de trigger voordat de rest samenklapt tot een aantalpil.',
             maxChipWidth:
@@ -2534,6 +2546,8 @@ export const nl: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Toegankelijk label voor de groep wanneer geen zichtbaar label wordt weergegeven.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt alle radio-opties in de groep uit.',
             errorMsg:
               'Foutmelding onder de groep, die de hint vervangt en het veld als ongeldig markeert.',
@@ -2555,6 +2569,8 @@ export const nl: WebMessages = {
           segmented: {
             ariaLabel:
               'Toegankelijk label voor de bediening wanneer geen zichtbaar label wordt weergegeven.',
+            ariaLabelledby:
+              'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             disabled: 'Schakelt de segmented control uit.',
             errorMsg:
               'Foutmelding onder het veld, die de hint vervangt en het veld als ongeldig markeert.',
