@@ -18,11 +18,10 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       height="100%">
       <rect
         x="2"
-        y="6"
+        y="5"
         width="20"
-        height="12"
-        rx="2"
-        ry="2" />
+        height="14"
+        rx="2" />
     </svg>
   `,
 })

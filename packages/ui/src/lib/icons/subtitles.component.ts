@@ -17,21 +17,13 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       width="100%"
       height="100%">
       <rect
-        x="3"
+        x="2"
         y="5"
-        width="18"
+        width="20"
         height="14"
         rx="2" />
-      <line
-        x1="7"
-        y1="15"
-        x2="12"
-        y2="15" />
-      <line
-        x1="14.5"
-        y1="15"
-        x2="17"
-        y2="15" />
+      <path d="M10.74 10.2a2.5 2.5 0 1 0 0 3.6" />
+      <path d="M17.24 10.2a2.5 2.5 0 1 0 0 3.6" />
     </svg>
   `,
 })

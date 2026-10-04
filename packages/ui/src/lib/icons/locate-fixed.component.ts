@@ -16,26 +16,6 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <line
-        x1="2"
-        y1="12"
-        x2="5"
-        y2="12" />
-      <line
-        x1="19"
-        y1="12"
-        x2="22"
-        y2="12" />
-      <line
-        x1="12"
-        y1="2"
-        x2="12"
-        y2="5" />
-      <line
-        x1="12"
-        y1="19"
-        x2="12"
-        y2="22" />
       <circle
         cx="12"
         cy="12"
@@ -43,7 +23,11 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       <circle
         cx="12"
         cy="12"
-        r="3" />
+        r="1" />
+      <path d="M12 2v3" />
+      <path d="M12 19v3" />
+      <path d="M2 12h3" />
+      <path d="M19 12h3" />
     </svg>
   `,
 })

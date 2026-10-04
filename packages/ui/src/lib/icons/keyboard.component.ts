@@ -16,20 +16,20 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path d="M10 8h.01" />
-      <path d="M12 12h.01" />
-      <path d="M14 8h.01" />
-      <path d="M16 12h.01" />
-      <path d="M18 8h.01" />
-      <path d="M6 8h.01" />
-      <path d="M7 16h10" />
-      <path d="M8 12h.01" />
       <rect
-        width="20"
-        height="16"
         x="2"
         y="4"
+        width="20"
+        height="16"
         rx="2" />
+      <path d="M6.75 8.5h.01" />
+      <path d="M10.25 8.5h.01" />
+      <path d="M13.75 8.5h.01" />
+      <path d="M17.25 8.5h.01" />
+      <path d="M8.5 12h.01" />
+      <path d="M12 12h.01" />
+      <path d="M15.5 12h.01" />
+      <path d="M8.5 15.5h7" />
     </svg>
   `,
 })

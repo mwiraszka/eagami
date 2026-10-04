@@ -16,14 +16,12 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path d="M10.5 5H19a2 2 0 0 1 2 2v8.5" />
-      <path d="M19 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2" />
-      <path d="M7 15h4" />
-      <line
-        x1="1"
-        y1="1"
-        x2="23"
-        y2="23" />
+      <path d="M7.55 5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-.83 1.62" />
+      <path d="M16.45 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 .83-1.62" />
+      <path d="M7.47 10.02a2.5 2.5 0 1 0 3.27 3.78" />
+      <path d="M17.24 10.2a2.5 2.5 0 0 0-3.92.57" />
+      <path d="M16.73 14.18a2.5 2.5 0 0 0 .51-.38" />
+      <path d="m2 2 20 20" />
     </svg>
   `,
 })

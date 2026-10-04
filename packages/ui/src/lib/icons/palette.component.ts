@@ -17,27 +17,11 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       width="100%"
       height="100%">
       <path
-        d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
-      <circle
-        cx="13.5"
-        cy="6.5"
-        r=".5"
-        fill="currentColor" />
-      <circle
-        cx="17.5"
-        cy="10.5"
-        r=".5"
-        fill="currentColor" />
-      <circle
-        cx="6.5"
-        cy="12.5"
-        r=".5"
-        fill="currentColor" />
-      <circle
-        cx="8.5"
-        cy="7.5"
-        r=".5"
-        fill="currentColor" />
+        d="M12 4c5 0 9 3.2 9 7.5 0 2.5-2 4-4.5 4h-1.8a1.7 1.7 0 0 0-1.2 2.9c.9.9.3 2.6-1.5 2.6-5 0-9-3.8-9-8.5S7 4 12 4z" />
+      <path d="M8.05 11.06h.01" />
+      <path d="M10.56 8.55h.01" />
+      <path d="M14.1 8.86h.01" />
+      <path d="M16.14 11.77h.01" />
     </svg>
   `,
 })
