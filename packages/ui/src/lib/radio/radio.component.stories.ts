@@ -32,3 +32,16 @@ export const Playground: Story = {
     `,
   }),
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    moduleMetadata: { imports: [RadioGroupComponent, RadioComponent] },
+    template: `
+      <span id="fruit-label">Fruit</span>
+      <ea-radio-group aria-labelledby="fruit-label">
+        <ea-radio value="apple" label="Apple"></ea-radio>
+        <ea-radio value="banana" label="Banana"></ea-radio>
+      </ea-radio-group>
+    `,
+  }),
+};

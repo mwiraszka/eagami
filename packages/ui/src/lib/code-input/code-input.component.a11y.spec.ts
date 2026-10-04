@@ -26,6 +26,15 @@ class HostComponent {
   errorMsg: string | undefined = undefined;
 }
 
+@Component({
+  imports: [CodeInputComponent],
+  template: `
+    <span id="code-label">Verification code</span>
+    <ea-code-input aria-labelledby="code-label" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('CodeInputComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -65,6 +74,18 @@ describe('CodeInputComponent a11y', () => {
     const el = await render(host => (host.disabled = true));
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

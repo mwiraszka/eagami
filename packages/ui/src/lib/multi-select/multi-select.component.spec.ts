@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import type { SelectOption, SelectOptionGroup } from '../select-option';
@@ -1005,6 +1006,38 @@ describe('MultiSelectComponent', () => {
       expect(getGroups()).toHaveLength(0);
       expect(getHeadings()).toHaveLength(0);
       expect(getOptionRows()).toHaveLength(4);
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [MultiSelectComponent],
+      template: `
+        <span id="fruits-label">Fruits</span>
+        <ea-multi-select
+          aria-labelledby="fruits-label"
+          [id]="'fruits'"
+          [options]="options" />
+      `,
+    })
+    class LabelledByHostComponent {
+      options: SelectOption[] = [
+        { value: 'apple', label: 'Apple' },
+        { value: 'pear', label: 'Pear' },
+      ];
+    }
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-multi-select');
+      const named = component.querySelector('[role="combobox"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('fruits-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

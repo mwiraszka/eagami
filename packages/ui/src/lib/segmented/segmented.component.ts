@@ -41,6 +41,8 @@ export type SegmentedSize = EaSize;
   styleUrl: './segmented.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
+    // The name belongs on the inner element that forwards it, not on the host element
+    '[attr.aria-labelledby]': 'null',
     '[class.ea-segmented-host--full-width]': 'fullWidth()',
   },
   imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
@@ -70,6 +72,10 @@ export class SegmentedComponent implements ControlValueAccessor {
   readonly required = input<boolean>(false);
   readonly fullWidth = input<boolean>(false);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the group, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly id = input<string>(uniqueId('ea-segmented'));
 
   readonly value = model<string>('');

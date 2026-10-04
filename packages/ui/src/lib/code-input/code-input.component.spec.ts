@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -381,6 +382,30 @@ describe('CodeInputComponent', () => {
       expect(inputs[1].getAttribute('placeholder')).toBe('b');
       expect(inputs[2].getAttribute('placeholder')).toBe('c');
       expect(inputs[3].getAttribute('placeholder')).toBe('');
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [CodeInputComponent],
+      template: `
+        <span id="code-label">Verification code</span>
+        <ea-code-input aria-labelledby="code-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-code-input');
+      const named = component.querySelector('[role="group"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('code-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

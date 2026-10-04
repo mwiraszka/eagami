@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -315,6 +316,30 @@ describe('RatingComponent', () => {
       expect(component.value()).toBe(0);
       component.writeValue(99);
       expect(component.value()).toBe(5);
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [RatingComponent],
+      template: `
+        <span id="score-label">Score</span>
+        <ea-rating aria-labelledby="score-label" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-rating');
+      const named = component.querySelector('[role="slider"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('score-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

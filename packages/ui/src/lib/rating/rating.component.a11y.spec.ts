@@ -28,6 +28,15 @@ class HostComponent {
   errorMsg: string | undefined = undefined;
 }
 
+@Component({
+  imports: [RatingComponent],
+  template: `
+    <span id="score-label">Score</span>
+    <ea-rating aria-labelledby="score-label" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('RatingComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -79,6 +88,18 @@ describe('RatingComponent a11y', () => {
     });
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

@@ -49,6 +49,10 @@ const SNAP_REACH_PX = 8;
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The name belongs on the inner element that forwards it, not on the host element
+  host: {
+    '[attr.aria-labelledby]': 'null',
+  },
   imports: [FieldLabelComponent, FieldMessagesComponent, NgClass],
   providers: [
     {
@@ -94,6 +98,10 @@ export class SliderComponent implements ControlValueAccessor {
   /** Group thousands with commas in displayed values (ignored when a custom `formatValue` is set). */
   readonly groupThousands = input<boolean>(true);
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
+  /** Space-separated ids of the elements whose text names the slider, such as a label outside the component. */
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
   readonly id = input<string>(uniqueId('ea-slider'));
 
   readonly value = model<number>(0);

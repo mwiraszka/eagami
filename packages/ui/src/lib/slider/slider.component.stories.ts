@@ -25,3 +25,9 @@ type Story = StoryObj<SliderComponent>;
 export const Playground: Story = {
   args: { value: 40 },
 };
+
+export const LabelledByExternalLabel: Story = {
+  render: () => ({
+    template: `<span id="volume-label">Volume</span><ea-slider aria-labelledby="volume-label" class="story-narrow"></ea-slider>`,
+  }),
+};

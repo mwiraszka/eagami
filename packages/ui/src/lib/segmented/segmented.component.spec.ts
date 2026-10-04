@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { REAL_GET_COMPUTED_STYLE } from '../../test-setup';
@@ -250,6 +251,37 @@ describe('SegmentedComponent', () => {
       fixture.detectChanges();
 
       expect(getGroupEl().getAttribute('aria-required')).toBe('true');
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [SegmentedComponent],
+      template: `
+        <span id="view-label">View</span>
+        <ea-segmented
+          aria-labelledby="view-label"
+          [options]="options" />
+      `,
+    })
+    class LabelledByHostComponent {
+      options: SelectOption[] = [
+        { value: 'list', label: 'List' },
+        { value: 'grid', label: 'Grid' },
+      ];
+    }
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-segmented');
+      const named = component.querySelector('[role="radiogroup"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('view-label');
+      expect(named.hasAttribute('aria-label')).toBe(false);
+      host.destroy();
     });
   });
 });

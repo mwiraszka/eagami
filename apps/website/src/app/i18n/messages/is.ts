@@ -1709,6 +1709,8 @@ export const is: WebMessages = {
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             length: 'Fjöldi tölustafsreita sem kóðinn er gerður úr.',
             placeholder: 'Staðgengilstexti dreifður einn stafur á reit.',
             readonly: 'Birtir reitinn skrifvarinn.',
@@ -1818,6 +1820,8 @@ export const is: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Aðgengilegur merkimiði fyrir háa (enda) þumalinn, fellur aftur á reitmerkimiðann þegar honum er sleppt.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             ariaLabelLow:
               'Aðgengilegur merkimiði fyrir lága (upphafs) þumalinn, fellur aftur á reitmerkimiðann þegar honum er sleppt.',
             disabled: 'Gerir sleðann óvirkan.',
@@ -1861,6 +1865,8 @@ export const is: WebMessages = {
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan einkunnina.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             max: 'Hæsta einkunnargildi og fjöldi birtra stjarna.',
             min: 'Lægsta einkunnargildi sem notandinn getur valið.',
             readonly:
@@ -1888,6 +1894,8 @@ export const is: WebMessages = {
           slider: {
             ariaLabel:
               'Aðgengilegur merkimiði settur þegar enginn sýnilegur merkimiði er birtur.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir sleðann óvirkan.',
             errorMsg:
               'Villuboð sýnd fyrir neðan sleðann, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2252,6 +2260,8 @@ export const is: WebMessages = {
             labelIcon:
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             maxVisibleChips:
               'Hámarksfjöldi merkja sýndur í kveikjunni áður en restin fellur saman í talningarpillu.',
             maxChipWidth:
@@ -2483,6 +2493,8 @@ export const is: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Aðgengilegur merkimiði fyrir hópinn þegar enginn sýnilegur merkimiði er birtur.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir alla valhnappavalkosti í hópnum óvirka.',
             errorMsg:
               'Villuboð sýnd fyrir neðan hópinn, koma í stað vísbendingar og merkja reitinn ógildan.',
@@ -2502,6 +2514,8 @@ export const is: WebMessages = {
           segmented: {
             ariaLabel:
               'Aðgengilegur merkimiði fyrir stýringuna þegar enginn sýnilegur merkimiði er birtur.',
+            ariaLabelledby:
+              'Auðkenni þeirra eininga sem gefa reitnum heiti með texta sínum, til dæmis merki utan íhlutarins, send áfram í innbyggða aria-labelledby eigindið.',
             disabled: 'Gerir bútastýringuna óvirka.',
             errorMsg:
               'Villuboð sýnd fyrir neðan reitinn, koma í stað vísbendingar og merkja reitinn ógildan.',

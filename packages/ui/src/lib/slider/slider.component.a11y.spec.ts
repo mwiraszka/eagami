@@ -34,6 +34,15 @@ class HostComponent {
   showMinMaxLabels = false;
 }
 
+@Component({
+  imports: [SliderComponent],
+  template: `
+    <span id="volume-label">Volume</span>
+    <ea-slider aria-labelledby="volume-label" />
+  `,
+})
+class LabelledByHostComponent {}
+
 describe('SliderComponent a11y', () => {
   async function render(setup?: (host: HostComponent) => void) {
     await TestBed.configureTestingModule({
@@ -84,6 +93,18 @@ describe('SliderComponent a11y', () => {
     });
 
     const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations when named by a label outside it', async () => {
+    await TestBed.configureTestingModule({
+      imports: [LabelledByHostComponent],
+    }).compileComponents();
+    const labelled = TestBed.createComponent(LabelledByHostComponent);
+    labelled.detectChanges();
+
+    const results = await axe(labelled.nativeElement);
 
     expect(results).toHaveNoViolations();
   });

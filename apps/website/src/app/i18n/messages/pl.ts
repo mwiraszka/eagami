@@ -1713,6 +1713,8 @@ export const pl: WebMessages = {
             id: 'id stosowane do komórek cyfr i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             length: 'Liczba komórek cyfr, z których składa się kod.',
             placeholder: 'Tekst zastępczy rozłożony po jednym znaku na komórkę.',
             readonly: 'Wyświetla pole tylko do odczytu.',
@@ -1825,6 +1827,8 @@ export const pl: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Dostępna etykieta dla wysokiego (końcowego) uchwytu, w razie braku używa etykiety pola.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             ariaLabelLow:
               'Dostępna etykieta dla niskiego (początkowego) uchwytu, w razie braku używa etykiety pola.',
             disabled: 'Wyłącza suwak.',
@@ -1868,6 +1872,8 @@ export const pl: WebMessages = {
             id: 'id stosowane do oceny i jej etykiety, generowane automatycznie gdy pominięte.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad oceną.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             max: 'Najwyższa wartość oceny i liczba renderowanych gwiazdek.',
             min: 'Najniższa wartość oceny, jaką użytkownik może wybrać.',
             readonly:
@@ -1895,6 +1901,8 @@ export const pl: WebMessages = {
           slider: {
             ariaLabel:
               'Dostępna etykieta stosowana, gdy nie jest renderowana widoczna etykieta.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza suwak.',
             errorMsg:
               'Komunikat o błędzie pod suwakiem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2264,6 +2272,8 @@ export const pl: WebMessages = {
             id: 'id stosowane do elementu wyzwalającego i atrybutu for etykiety, generowane automatycznie gdy pominięte.',
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta tekstowa renderowana nad polem.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             maxVisibleChips:
               'Maksymalna liczba chipów widocznych w elemencie wyzwalającym, zanim pozostałe zostaną zwinięte do pastylki z licznikiem.',
             maxChipWidth:
@@ -2497,6 +2507,8 @@ export const pl: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Dostępna etykieta grupy, gdy nie jest renderowana widoczna etykieta.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza wszystkie opcje radia w grupie.',
             errorMsg:
               'Komunikat o błędzie pod grupą, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',
@@ -2515,6 +2527,8 @@ export const pl: WebMessages = {
           segmented: {
             ariaLabel:
               'Dostępna etykieta kontrolki, gdy nie jest renderowana widoczna etykieta.',
+            ariaLabelledby:
+              'Identyfikatory elementów, których tekst nazywa pole, na przykład etykiety poza komponentem, przekazywane do natywnego atrybutu aria-labelledby.',
             disabled: 'Wyłącza kontrolkę segmentową.',
             errorMsg:
               'Komunikat o błędzie pod polem, zastępujący podpowiedź i oznaczający pole jako nieprawidłowe.',

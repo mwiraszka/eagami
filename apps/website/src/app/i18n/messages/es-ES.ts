@@ -1724,6 +1724,8 @@ export const esES: WebMessages = {
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             length: 'Número de celdas de dígitos que componen el código.',
             placeholder: 'Texto de marcador de posición repartido un carácter por celda.',
             readonly: 'Muestra el campo como de solo lectura.',
@@ -1846,6 +1848,8 @@ export const esES: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Etiqueta accesible para el control alto (final), que recurre a la etiqueta del campo si se omite.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             ariaLabelLow:
               'Etiqueta accesible para el control bajo (inicial), que recurre a la etiqueta del campo si se omite.',
             disabled: 'Deshabilita el control deslizante.',
@@ -1894,6 +1898,8 @@ export const esES: WebMessages = {
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima de la valoración.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             max: 'Valor de valoración más alto y número de estrellas renderizadas.',
             min: 'Valor de valoración más bajo que el usuario puede seleccionar.',
             readonly:
@@ -1922,6 +1928,8 @@ export const esES: WebMessages = {
           slider: {
             ariaLabel:
               'Etiqueta accesible aplicada cuando no se renderiza ninguna etiqueta visible.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el control deslizante.',
             errorMsg:
               'Mensaje de error mostrado bajo el control deslizante, que sustituye la ayuda y marca el campo como no válido.',
@@ -2309,6 +2317,8 @@ export const esES: WebMessages = {
             labelIcon:
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta de texto mostrada encima del campo.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             maxVisibleChips:
               'Número máximo de chips mostrados en el activador antes de que el resto se contraigan en una pastilla con el recuento.',
             maxChipWidth:
@@ -2553,6 +2563,8 @@ export const esES: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Etiqueta accesible para el grupo cuando no se renderiza ninguna etiqueta visible.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita todas las opciones de radio del grupo.',
             errorMsg:
               'Mensaje de error mostrado bajo el grupo, que sustituye la ayuda y marca el campo como no válido.',
@@ -2575,6 +2587,8 @@ export const esES: WebMessages = {
           segmented: {
             ariaLabel:
               'Etiqueta accesible para el control cuando no se muestra ninguna etiqueta visible.',
+            ariaLabelledby:
+              'Identificadores de los elementos cuyo texto nombra el campo, como una etiqueta fuera del componente, reenviados al atributo nativo aria-labelledby.',
             disabled: 'Deshabilita el control segmentado.',
             errorMsg:
               'Mensaje de error mostrado bajo el campo, que sustituye la ayuda y marca el campo como no válido.',

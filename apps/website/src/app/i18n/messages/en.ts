@@ -1686,6 +1686,8 @@ export const en: WebMessages = {
             id: 'id applied to the digit cells and label for, auto-generated when omitted.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             length: 'Number of digit cells the code is made up of.',
             placeholder: 'Placeholder text spread one character per cell.',
             readonly: 'Renders the field read-only.',
@@ -1793,6 +1795,8 @@ export const en: WebMessages = {
           'range-slider': {
             ariaLabelHigh:
               'Accessible label for the high (end) thumb, falling back to the field label when omitted.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             ariaLabelLow:
               'Accessible label for the low (start) thumb, falling back to the field label when omitted.',
             disabled: 'Disables the slider.',
@@ -1834,6 +1838,8 @@ export const en: WebMessages = {
             id: 'id applied to the rating and its label, auto-generated when omitted.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the rating.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             max: 'Highest rating value and the number of stars rendered.',
             min: 'Lowest rating value the user can select.',
             readonly:
@@ -1859,6 +1865,8 @@ export const en: WebMessages = {
           },
           slider: {
             ariaLabel: 'Accessible label applied when no visible label is rendered.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the slider.',
             errorMsg:
               'Error message shown below the slider, replacing the hint and flagging the field invalid.',
@@ -2207,6 +2215,8 @@ export const en: WebMessages = {
             id: 'id applied to the trigger and label for, auto-generated when omitted.',
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the field.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             maxVisibleChips:
               'Maximum number of chips shown in the trigger before the rest collapse into a count pill.',
             maxChipWidth:
@@ -2432,6 +2442,8 @@ export const en: WebMessages = {
           'radio-group': {
             ariaLabel:
               'Accessible label for the group when no visible label is rendered.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables all radio options in the group.',
             errorMsg:
               'Error message shown below the group, replacing the hint and flagging the field invalid.',
@@ -2450,6 +2462,8 @@ export const en: WebMessages = {
           segmented: {
             ariaLabel:
               'Accessible label for the control when no visible label is rendered.',
+            ariaLabelledby:
+              'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             disabled: 'Disables the segmented control.',
             errorMsg:
               'Error message shown below the field, replacing the hint and flagging the field invalid.',

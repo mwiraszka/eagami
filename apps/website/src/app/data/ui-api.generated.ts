@@ -1101,6 +1101,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -3240,6 +3247,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -4082,6 +4096,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'disabled',
         type: 'boolean',
         default: 'false',
@@ -4194,6 +4215,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'ariaLabelHigh',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -4364,6 +4392,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaLabelledby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'clearable',
         type: 'boolean',
         default: 'true',
@@ -4508,6 +4543,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,
@@ -4661,6 +4703,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     inputs: [
       {
         name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabelledby',
         type: 'string | undefined',
         default: 'undefined',
         required: false,

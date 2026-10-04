@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RangeSliderComponent, type RangeSliderValue } from './range-slider.component';
@@ -407,6 +408,31 @@ describe('RangeSliderComponent', () => {
       pointer('pointerdown', 50);
 
       expect(component.value()).toEqual([20, 80]);
+    });
+  });
+
+  describe('aria-labelledby', () => {
+    @Component({
+      imports: [RangeSliderComponent],
+      template: `
+        <span id="price-label">Price</span>
+        <ea-range-slider
+          aria-labelledby="price-label"
+          [id]="'price'" />
+      `,
+    })
+    class LabelledByHostComponent {}
+
+    it('names the field from the given elements, leaving the host element bare', () => {
+      const host = TestBed.createComponent(LabelledByHostComponent);
+
+      host.detectChanges();
+
+      const component: HTMLElement = host.nativeElement.querySelector('ea-range-slider');
+      const named = component.querySelector('[role="slider"]')!;
+      expect(component.hasAttribute('aria-labelledby')).toBe(false);
+      expect(named.getAttribute('aria-labelledby')).toBe('price-label price-low-label');
+      host.destroy();
     });
   });
 });
