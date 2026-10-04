@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add an `aria-labelledby` input to the date picker, so a label placed outside it can name the field.
+- Add an `aria-labelledby` input to the date picker, multi-select, radio group, segmented control, slider, range slider, rating and code input, so a label placed outside them can name the field.
 
 ### Changed
 
