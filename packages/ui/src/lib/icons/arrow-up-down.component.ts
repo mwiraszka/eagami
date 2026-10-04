@@ -16,10 +16,10 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       aria-hidden="true"
       width="100%"
       height="100%">
-      <path d="m21 16-4 4-4-4" />
-      <path d="M17 20V4" />
-      <path d="m3 8 4-4 4 4" />
-      <path d="M7 4v16" />
+      <path d="m5 7.5 3.5-3.5 3.5 3.5" />
+      <path d="M8.5 4v16" />
+      <path d="m19 16.5-3.5 3.5-3.5-3.5" />
+      <path d="M15.5 20V4" />
     </svg>
   `,
 })

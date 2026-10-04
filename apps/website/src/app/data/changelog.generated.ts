@@ -14,6 +14,16 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.60.0',
+    date: '2026-10-04',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: ['Update the artwork of a batch of icons.'],
+      },
+    ],
+  },
+  {
     version: '5.59.0',
     date: '2026-10-04',
     sections: [

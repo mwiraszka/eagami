@@ -18,15 +18,19 @@ import { type IconCategory, IconComponentBase } from './icon-category';
       height="100%">
       <circle
         cx="9"
+        cy="6"
+        r="1" />
+      <circle
+        cx="9"
         cy="12"
         r="1" />
       <circle
         cx="9"
-        cy="5"
+        cy="18"
         r="1" />
       <circle
-        cx="9"
-        cy="19"
+        cx="15"
+        cy="6"
         r="1" />
       <circle
         cx="15"
@@ -34,11 +38,7 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         r="1" />
       <circle
         cx="15"
-        cy="5"
-        r="1" />
-      <circle
-        cx="15"
-        cy="19"
+        cy="18"
         r="1" />
     </svg>
   `,
