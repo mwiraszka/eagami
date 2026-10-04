@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add an `aria-labelledby` input to the date picker, multi-select, radio group, segmented control, slider, range slider, rating and code input, so a label placed outside them can name the field.
+- Ship a license file with the package, including the notice for the icons derived from Feather.
 
 ### Changed
 
