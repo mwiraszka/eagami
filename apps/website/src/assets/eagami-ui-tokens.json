@@ -1,5 +1,5 @@
 {
-  "$description": "Eagami UI design tokens, generated from @eagami/ui@5.60.1 (packages/ui/src/styles/tokens/*.scss) by scripts/sync-integration-guides.mjs. Aliases use W3C Design Tokens {group.token} syntax. Dark-mode overrides live in $extensions['com.eagami.ui'].dark; tokens without one are identical in both modes. Shadow, ease, and transition tokens carry raw CSS values.",
+  "$description": "Eagami UI design tokens, generated from @eagami/ui@5.60.2 (packages/ui/src/styles/tokens/*.scss) by scripts/sync-integration-guides.mjs. Aliases use W3C Design Tokens {group.token} syntax. Dark-mode overrides live in $extensions['com.eagami.ui'].dark; tokens without one are identical in both modes. Shadow, ease, and transition tokens carry raw CSS values.",
   "color": {
     "primary-50": {
       "$type": "color",
@@ -428,7 +428,12 @@
     },
     "border-focus": {
       "$type": "color",
-      "$value": "{color.primary-500}"
+      "$value": "{color.primary-500}",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "{color.primary-300}"
+        }
+      }
     },
     "brand-default": {
       "$type": "color",
@@ -1499,7 +1504,12 @@
     },
     "focus-ring": {
       "$type": "shadow",
-      "$value": "0 0 0 3px rgba(59, 130, 246, 0.45)"
+      "$value": "0 0 0 2px #ffffff, 0 0 0 4px #3674a1",
+      "$extensions": {
+        "com.eagami.ui": {
+          "dark": "0 0 0 2px #1f2937, 0 0 0 4px #7dafd4"
+        }
+      }
     },
     "focus-ring-error": {
       "$type": "shadow",

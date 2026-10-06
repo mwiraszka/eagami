@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.60.2',
+    date: '2026-10-06',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep icons an app never imports out of its bundle, which Angular builds kept in full whenever any icon was used.',
+          'Ship the metric-matched DM Sans and Syne fallback faces the font tokens name, so text no longer shifts when the web fonts arrive.',
+          "Draw the focus ring as a solid ring with a gap that keeps at least 3:1 contrast in both themes, lifting the dark theme's focus colour to a lighter step.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.60.1',
     date: '2026-10-06',
     sections: [

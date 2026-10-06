@@ -234,6 +234,8 @@
   );
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
+  // primary-500 drops under 3:1 on the dark surfaces, so focus lifts to a lighter step
+  --color-border-focus: var(--color-primary-300);
   // Dividers flip to a light wash so the rule stays visible on every dark tier
   --color-divider: rgba(255, 255, 255, 0.12);
 
