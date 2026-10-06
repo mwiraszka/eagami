@@ -1,9 +1,5 @@
 /* Self-hosted DM Sans + Syne (variable); latin-ext loads on demand via unicode-range.
-
-   The *Fallback families are metric-matched to Arial so fallback text occupies the
-   same box geometry as the web font, eliminating layout shift on swap-in. Tuned for
-   DM Sans / Syne; changing the web font means regenerating these overrides (Capsize,
-   fontaine, or fallback-font-generator). */
+   Their metric-matched fallback faces come with the library's global stylesheet. */
 
 @font-face {
   font-family: 'DM Sans';
@@ -72,22 +68,4 @@
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
     U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
     U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'DM Sans Fallback';
-  src: local('Arial');
-  ascent-override: 92.5%;
-  descent-override: 24.4%;
-  line-gap-override: 0%;
-  size-adjust: 100.06%;
-}
-
-@font-face {
-  font-family: 'Syne Fallback';
-  src: local('Arial');
-  ascent-override: 102%;
-  descent-override: 27%;
-  line-gap-override: 0%;
-  size-adjust: 105%;
 }

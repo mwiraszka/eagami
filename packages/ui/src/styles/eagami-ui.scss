@@ -2,6 +2,7 @@
 // Consumers must also load the DM Sans and Syne fonts via <link> tags in the HTML head.
 
 @use 'tokens/index';
+@use 'fallback-fonts';
 @use 'reset';
 @use 'tooltip';
 @use 'form-field';

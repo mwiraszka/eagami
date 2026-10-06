@@ -1,0 +1,22 @@
+// Arial with metric overrides matching DM Sans and Syne, named right after each web font
+// in the font tokens, so text laid out before the web font arrives already takes its
+// final size and the swap moves nothing. Changing a web font means regenerating these
+// (Capsize, fontaine or fallback-font-generator).
+
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Arial');
+  ascent-override: 92.5%;
+  descent-override: 24.4%;
+  line-gap-override: 0%;
+  size-adjust: 100.06%;
+}
+
+@font-face {
+  font-family: 'Syne Fallback';
+  src: local('Arial');
+  ascent-override: 102%;
+  descent-override: 27%;
+  line-gap-override: 0%;
+  size-adjust: 105%;
+}
