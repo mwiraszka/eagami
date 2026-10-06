@@ -537,9 +537,11 @@ import { ZoomOutIconComponent } from './zoom-out.component';
  * the consuming bundle, which is the right trade-off when you actually want
  * the full set. For single-icon usage import the component directly (e.g.
  * `import { HomeIconComponent } from '@eagami/ui'`) and the bundler will
- * tree-shake `ICONS` away.
+ * tree-shake `ICONS` away. The `@__PURE__` annotation is what allows that:
+ * bundlers that keep unannotated calls in third-party code, as Angular's build
+ * does, would otherwise keep the `.sort()` call and every icon with it.
  */
-export const ICONS: ReadonlyArray<IconComponentType> = (
+export const ICONS: ReadonlyArray<IconComponentType> = /* @__PURE__ */ (
   [
     AccessibilityIconComponent,
     ActivityIconComponent,
