@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.60.1',
+    date: '2026-10-06',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Wrap long unbroken text such as a link inside a toast, so it stays within the toast instead of running under its close button.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.60.0',
     date: '2026-10-04',
     sections: [
