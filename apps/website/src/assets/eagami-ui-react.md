@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.60.1
-source: '@eagami/ui@5.60.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-10-05
+version: 5.60.2
+source: '@eagami/ui@5.60.2 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-10-06
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -234,7 +234,7 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-border-default`          | `--color-neutral-200`                                                  | `--color-neutral-400`                                                    |
 | `--color-border-strong`           | `--color-neutral-400`                                                  | `--color-neutral-300`                                                    |
 | `--color-divider`                 | `rgba(0, 0, 0, 0.1)`                                                   | `rgba(255, 255, 255, 0.12)`                                              |
-| `--color-border-focus`            | `--color-primary-500`                                                  | `--color-primary-500`                                                    |
+| `--color-border-focus`            | `--color-primary-500`                                                  | `--color-primary-300`                                                    |
 | `--color-brand-default`           | `--color-primary-600`                                                  | `--color-primary-500`                                                    |
 | `--color-brand-hover`             | `--color-primary-700`                                                  | `--color-primary-600`                                                    |
 | `--color-brand-active`            | `--color-primary-800`                                                  | `--color-primary-700`                                                    |
@@ -435,7 +435,7 @@ Usage example:
 | `--shadow-xl`                 | `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)` |
 | `--shadow-2xl`                | `0 25px 50px -12px rgba(0, 0, 0, 0.25)`                                   |
 | `--shadow-inner`              | `inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)`                                   |
-| `--shadow-focus-ring`         | `0 0 0 3px rgba(59, 130, 246, 0.45)`                                      |
+| `--shadow-focus-ring`         | `0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--color-border-focus)`     |
 | `--shadow-focus-ring-error`   | `0 0 0 3px var(--color-error-200)`                                        |
 | `--shadow-focus-ring-success` | `0 0 0 3px var(--color-success-200)`                                      |
 
@@ -530,7 +530,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.60.1 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.60.2 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -864,7 +864,8 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
     inset 0 2px 3px rgba(0, 0, 0, 0.4), inset 0 -1.5px 1px rgba(255, 255, 255, 0.55);
 
   /* Elevation: focus rings */
-  --shadow-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.45);
+  --shadow-focus-ring:
+    0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--color-border-focus);
   --shadow-focus-ring-error: 0 0 0 3px var(--color-error-200);
   --shadow-focus-ring-success: 0 0 0 3px var(--color-success-200);
 
@@ -944,6 +945,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
     --color-border-default: var(--color-neutral-400);
     --color-border-strong: var(--color-neutral-300);
     --color-divider: rgba(255, 255, 255, 0.12);
+    --color-border-focus: var(--color-primary-300);
 
     --color-brand-default: var(--color-primary-500);
     --color-brand-hover: var(--color-primary-600);
@@ -1032,6 +1034,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
   --color-divider: rgba(255, 255, 255, 0.12);
+  --color-border-focus: var(--color-primary-300);
 
   --color-brand-default: var(--color-primary-500);
   --color-brand-hover: var(--color-primary-600);
@@ -1105,7 +1108,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.60.1 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.60.2 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.60.2] - 2026-10-06
+
+### Fixed
+
+- Keep icons an app never imports out of its bundle, which Angular builds kept in full whenever any icon was used.
+- Ship the metric-matched DM Sans and Syne fallback faces the font tokens name, so text no longer shifts when the web fonts arrive.
+- Draw the focus ring as a solid ring with a gap that keeps at least 3:1 contrast in both themes, lifting the dark theme's focus colour to a lighter step.
+
 ## [5.60.1] - 2026-10-06
 
 ### Fixed
@@ -1807,6 +1815,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.60.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.60.1...ui-v5.60.2
 [5.60.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.60.0...ui-v5.60.1
 [5.60.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.59.0...ui-v5.60.0
 [5.59.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.58.0...ui-v5.59.0

@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.60.1
-source: '@eagami/ui@5.60.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-10-05
+version: 5.60.2
+source: '@eagami/ui@5.60.2 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-10-06
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens to a Flutter/Dart
@@ -225,7 +225,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `borderDefault`         | `neutral200`        | `neutral400`        |
 | `borderStrong`          | `neutral400`        | `neutral300`        |
 | `divider`               | `Color(0x1A000000)` | `Color(0x1FFFFFFF)` |
-| `borderFocus`           | `primary500`        | `primary500`        |
+| `borderFocus`           | `primary500`        | `primary300`        |
 | `brandDefault`          | `primary600`        | `primary500`        |
 | `brandHover`            | `primary700`        | `primary600`        |
 | `brandActive`           | `primary800`        | `primary700`        |
@@ -448,11 +448,11 @@ Only these values are permitted (see § 1.1). The upstream SCSS defines addition
 
 **Focus rings** (no dark-mode override):
 
-| Token              | Definition                                           |
-| ------------------ | ---------------------------------------------------- |
-| `focusRing`        | `(0,0) blur 0 spread 3` at `Color(0x733B82F6)` (45%) |
-| `focusRingError`   | `(0,0) blur 0 spread 3` at `error200`                |
-| `focusRingSuccess` | `(0,0) blur 0 spread 3` at `success200`              |
+| Token              | Definition                                                                          |
+| ------------------ | ----------------------------------------------------------------------------------- |
+| `focusRing`        | `(0,0) blur 0 spread 2` at `surfaceBase` + `(0,0) blur 0 spread 4` at `borderFocus` |
+| `focusRingError`   | `(0,0) blur 0 spread 3` at `error200`                                               |
+| `focusRingSuccess` | `(0,0) blur 0 spread 3` at `success200`                                             |
 
 **Z-index** (for `Stack` ordering; Flutter does not use CSS-style z-index, but these are semantic ordering constants):
 
@@ -540,7 +540,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.60.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.60.2 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -833,7 +833,7 @@ class EagamiColors {
     borderDefault: Color(0xFF9CA3AF),
     borderStrong: Color(0xFFD1D5DB),
     divider: Color(0x1FFFFFFF),
-    borderFocus: Color(0xFF3674A1),
+    borderFocus: Color(0xFF7DAFD4),
     brandDefault: Color(0xFF3674A1),
     brandHover: Color(0xFF2A5B7E),
     brandActive: Color(0xFF204560),
@@ -1050,7 +1050,8 @@ class EagamiElevation {
 
   // Focus rings are theme-independent (light/dark share the same values).
   List<BoxShadow> get focusRing => const [
-        BoxShadow(spreadRadius: 3, color: Color(0x733B82F6)),
+        BoxShadow(spreadRadius: 2, color: Color(0xFFFFFFFF)),
+        BoxShadow(spreadRadius: 4, color: Color(0xFF3674A1)),
       ];
   List<BoxShadow> get focusRingError => const [
         BoxShadow(spreadRadius: 3, color: Color(0xFFFECACA)),
