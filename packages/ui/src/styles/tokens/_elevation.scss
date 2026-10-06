@@ -27,7 +27,9 @@
   --shadow-well-strong:
     inset 0 2px 3px rgba(0, 0, 0, 0.4), inset 0 -1.5px 1px rgba(255, 255, 255, 0.55);
 
-  --shadow-focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.45);
+  // The gap keeps the ring apart from a filled control of the same hue
+  --shadow-focus-ring:
+    0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--color-border-focus);
   --shadow-focus-ring-error: 0 0 0 3px var(--color-error-200);
   --shadow-focus-ring-success: 0 0 0 3px var(--color-success-200);
 
