@@ -240,6 +240,7 @@ export interface EagamiMessages {
     entriesPerPage: string;
     postsPerPage: string;
     articlesPerPage: string;
+    monthsPerPage: string;
     all: string;
     range: (start: string, end: string, total: string) => string;
     previousPage: string;

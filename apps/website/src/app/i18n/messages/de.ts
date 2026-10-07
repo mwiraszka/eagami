@@ -1831,7 +1831,7 @@ export const de: WebMessages = {
             showAllOption:
               'Bietet nach den Optionen die Seitengröße „Alle“ an und gibt bei Auswahl PAGE_SIZE_ALL als Seitengröße aus.',
             pageSizeLabel:
-              'Was die Seitengrößen-Auswahl zählt: die lokalisierte Beschriftung „Zeilen“, „Elemente“, „Ergebnisse“, „Produkte“, „Datensätze“, „Einträge“, „Beiträge“ oder „Artikel“ pro Seite.',
+              'Was die Seitengrößen-Auswahl zählt: die lokalisierte Beschriftung „Zeilen“, „Elemente“, „Ergebnisse“, „Produkte“, „Datensätze“, „Einträge“, „Beiträge“, „Artikel“ oder „Monate“ pro Seite.',
           },
           'progress-bar': {
             variant: 'Farbvariante des Balkens.',

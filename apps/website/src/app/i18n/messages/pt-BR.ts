@@ -1809,7 +1809,7 @@ export const ptBR: WebMessages = {
             showAllOption:
               'Oferece após as opções o tamanho de página “Todos”, emitindo PAGE_SIZE_ALL como tamanho de página ao ser escolhido.',
             pageSizeLabel:
-              'O que o seletor de tamanho de página conta: o rótulo localizado de “Linhas”, “Itens”, “Resultados”, “Produtos”, “Registros”, “Entradas”, “Publicações” ou “Artigos” por página.',
+              'O que o seletor de tamanho de página conta: o rótulo localizado de “Linhas”, “Itens”, “Resultados”, “Produtos”, “Registros”, “Entradas”, “Publicações”, “Artigos” ou “Meses” por página.',
           },
           'progress-bar': {
             variant: 'Variante de cor da barra.',

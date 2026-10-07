@@ -153,6 +153,7 @@ const messages: EagamiMessages = {
     entriesPerPage: '每页条目数：',
     postsPerPage: '每页帖子数：',
     articlesPerPage: '每页文章数：',
+    monthsPerPage: '每页月数：',
     all: '全部',
     range: (start, end, total) => `共 ${total} 项中的 ${start}–${end}`,
     previousPage: '上一页',

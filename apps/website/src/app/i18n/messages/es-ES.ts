@@ -1825,7 +1825,7 @@ export const esES: WebMessages = {
             showAllOption:
               'Ofrece tras las opciones el tamaño de página «Todos», emitiendo PAGE_SIZE_ALL como tamaño de página al elegirlo.',
             pageSizeLabel:
-              'Lo que cuenta el selector de tamaño de página: la etiqueta localizada de «Filas», «Elementos», «Resultados», «Productos», «Registros», «Entradas», «Publicaciones» o «Artículos» por página.',
+              'Lo que cuenta el selector de tamaño de página: la etiqueta localizada de «Filas», «Elementos», «Resultados», «Productos», «Registros», «Entradas», «Publicaciones», «Artículos» o «Meses» por página.',
           },
           'progress-bar': {
             variant: 'Variante de color de la barra.',

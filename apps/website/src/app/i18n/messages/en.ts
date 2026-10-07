@@ -1773,7 +1773,7 @@ export const en: WebMessages = {
             showAllOption:
               'Offers an "All" page size after the options, emitting PAGE_SIZE_ALL as the page size when chosen.',
             pageSizeLabel:
-              'What the page-size selector counts, choosing the localized "Rows", "Items", "Results", "Products", "Records", "Entries", "Posts" or "Articles" per page label.',
+              'What the page-size selector counts, choosing the localized "Rows", "Items", "Results", "Products", "Records", "Entries", "Posts", "Articles" or "Months" per page label.',
           },
           'progress-bar': {
             variant: 'Color variant of the bar.',

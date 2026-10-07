@@ -1826,7 +1826,7 @@ export const frFR: WebMessages = {
             showAllOption:
               'Propose après les options la taille de page « Tous », en émettant PAGE_SIZE_ALL comme taille de page lorsqu’elle est choisie.',
             pageSizeLabel:
-              'Ce que compte le sélecteur de taille de page : le libellé localisé « Lignes », « Éléments », « Résultats », « Produits », « Enregistrements », « Entrées », « Publications » ou « Articles » par page.',
+              'Ce que compte le sélecteur de taille de page : le libellé localisé « Lignes », « Éléments », « Résultats », « Produits », « Enregistrements », « Entrées », « Publications », « Articles » ou « Mois » par page.',
           },
           'progress-bar': {
             variant: 'Variante de couleur de la barre.',

@@ -1798,7 +1798,7 @@ export const is: WebMessages = {
             showAllOption:
               'Býður eftir valkostunum síðustærðina „Allt“ og sendir PAGE_SIZE_ALL sem síðustærð þegar hún er valin.',
             pageSizeLabel:
-              'Hvað síðustærðarvalið telur: þýtt merki fyrir „Raðir“, „Atriði“, „Niðurstöður“, „Vörur“, „Færslur“, „Skráningar“, „Innlegg“ eða „Greinar“ á síðu.',
+              'Hvað síðustærðarvalið telur: þýtt merki fyrir „Raðir“, „Atriði“, „Niðurstöður“, „Vörur“, „Færslur“, „Skráningar“, „Innlegg“, „Greinar“ eða „Mánuðir“ á síðu.',
           },
           'progress-bar': {
             variant: 'Litaafbrigði stikunnar.',

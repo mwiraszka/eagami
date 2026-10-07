@@ -154,6 +154,7 @@ const messages: EagamiMessages = {
     entriesPerPage: 'प्रति पृष्ठ प्रविष्टियाँ:',
     postsPerPage: 'प्रति पृष्ठ पोस्ट:',
     articlesPerPage: 'प्रति पृष्ठ लेख:',
+    monthsPerPage: 'प्रति पृष्ठ महीने:',
     all: 'सभी',
     range: (start, end, total) => `${total} में से ${start}–${end}`,
     previousPage: 'पिछला पृष्ठ',

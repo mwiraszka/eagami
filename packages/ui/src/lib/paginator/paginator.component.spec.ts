@@ -126,6 +126,11 @@ describe('PaginatorComponent', () => {
       fixture.detectChanges();
 
       expect(getPageSizeLabel()).toBe('Articles per page:');
+
+      fixture.componentRef.setInput('pageSizeLabel', 'months');
+      fixture.detectChanges();
+
+      expect(getPageSizeLabel()).toBe('Months per page:');
     });
 
     it('hides page size selector when disabled', () => {

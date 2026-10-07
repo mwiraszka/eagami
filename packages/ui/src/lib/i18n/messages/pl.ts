@@ -154,6 +154,7 @@ const messages: EagamiMessages = {
     entriesPerPage: 'Wpisów na stronę:',
     postsPerPage: 'Postów na stronę:',
     articlesPerPage: 'Artykułów na stronę:',
+    monthsPerPage: 'Miesięcy na stronę:',
     all: 'Wszystkie',
     range: (start, end, total) => `${start}–${end} z ${total}`,
     previousPage: 'Poprzednia strona',
