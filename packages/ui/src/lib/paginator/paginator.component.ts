@@ -43,7 +43,8 @@ export type PaginatorPageSizeLabel =
   | 'records'
   | 'entries'
   | 'posts'
-  | 'articles';
+  | 'articles'
+  | 'months';
 
 /**
  * Page navigation control with previous/next buttons, numbered page jumps,

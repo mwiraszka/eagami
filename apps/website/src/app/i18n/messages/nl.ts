@@ -1812,7 +1812,7 @@ export const nl: WebMessages = {
             showAllOption:
               'Biedt na de opties de paginagrootte “Alle” aan en stuurt bij keuze PAGE_SIZE_ALL als paginagrootte uit.',
             pageSizeLabel:
-              'Wat de paginagroottekiezer telt: het vertaalde label “Rijen”, “Items”, “Resultaten”, “Producten”, “Records”, “Vermeldingen”, “Berichten” of “Artikelen” per pagina.',
+              'Wat de paginagroottekiezer telt: het vertaalde label “Rijen”, “Items”, “Resultaten”, “Producten”, “Records”, “Vermeldingen”, “Berichten”, “Artikelen” of “Maanden” per pagina.',
           },
           'progress-bar': {
             variant: 'Kleurvariant van de balk.',

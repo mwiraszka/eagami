@@ -153,6 +153,7 @@ const messages: EagamiMessages = {
     entriesPerPage: 'ערכים בעמוד:',
     postsPerPage: 'פוסטים בעמוד:',
     articlesPerPage: 'מאמרים בעמוד:',
+    monthsPerPage: 'חודשים בעמוד:',
     all: 'הכל',
     range: (start, end, total) => `${start}–${end} מתוך ${total}`,
     previousPage: 'עמוד קודם',

@@ -154,6 +154,7 @@ const messages: EagamiMessages = {
     entriesPerPage: 'Skráningar á síðu:',
     postsPerPage: 'Innlegg á síðu:',
     articlesPerPage: 'Greinar á síðu:',
+    monthsPerPage: 'Mánuðir á síðu:',
     all: 'Allt',
     range: (start, end, total) => `${start}–${end} af ${total}`,
     previousPage: 'Fyrri síða',

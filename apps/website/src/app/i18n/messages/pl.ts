@@ -1804,7 +1804,7 @@ export const pl: WebMessages = {
             showAllOption:
               'Oferuje po opcjach rozmiar strony „Wszystkie”, emitując po wybraniu PAGE_SIZE_ALL jako rozmiar strony.',
             pageSizeLabel:
-              'Co liczy wybór rozmiaru strony: zlokalizowaną etykietę „Wierszy”, „Elementów”, „Wyników”, „Produktów”, „Rekordów”, „Wpisów”, „Postów” lub „Artykułów” na stronę.',
+              'Co liczy wybór rozmiaru strony: zlokalizowaną etykietę „Wierszy”, „Elementów”, „Wyników”, „Produktów”, „Rekordów”, „Wpisów”, „Postów”, „Artykułów” lub „Miesięcy” na stronę.',
           },
           'progress-bar': {
             variant: 'Wariant kolorystyczny paska.',

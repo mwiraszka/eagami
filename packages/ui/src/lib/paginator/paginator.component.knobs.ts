@@ -29,6 +29,7 @@ export const PAGINATOR_KNOBS: ComponentKnobs = {
         'entries',
         'posts',
         'articles',
+        'months',
       ],
     },
     groupThousands: { control: 'boolean' },
