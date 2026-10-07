@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.61.0',
+    date: '2026-10-07',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `months` page-size label to the paginator, for paging through a calendar a few months at a time.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.60.2',
     date: '2026-10-06',
     sections: [
