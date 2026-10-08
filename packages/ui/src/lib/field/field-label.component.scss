@@ -16,8 +16,8 @@
   color: var(--color-text-primary);
 
   &--required::after {
+    color: var(--color-error-text);
     content: ' *';
-    color: var(--color-error-default);
   }
 
   &__icon {

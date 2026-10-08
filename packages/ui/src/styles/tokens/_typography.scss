@@ -117,7 +117,7 @@
   //      font-size on `__message`.
   //   4. `__message-icon` uses `flex-shrink: 0; width: 0.875em; height: 0.875em`
   //      so the icon scales with the text.
-  //   5. Error color is `var(--color-error-default)`. Hint color is component-
+  //   5. Error color is `var(--color-error-text)`. Hint color is component-
   //      specific (`--color-text-secondary` or `inherit`) but stays consistent
   //      within a component.
   //   6. `AlertCircleIconComponent` must be in the component's `imports: [...]`.
