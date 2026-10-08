@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.61.1',
+    date: '2026-10-08',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Keep a segmented control as wide as its options when its label or hint is wider, rather than stretching it to match.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.61.0',
     date: '2026-10-07',
     sections: [
