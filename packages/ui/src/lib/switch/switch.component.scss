@@ -1,5 +1,13 @@
 @use '../../styles/mixins' as ea;
 
+// A flex box rather than an inline one, so the field is a flex item instead of sitting
+// on a line of text whose descent would pad the host below the switch
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+  line-height: 1;
+}
+
 .ea-switch-field {
   display: inline-flex;
   flex-direction: column;
@@ -94,9 +102,9 @@
     cursor: default;
   }
 
-  &:hover:not(.ea-switch--disabled) {
+  &:hover:not(.ea-switch--disabled, .ea-switch--checked) {
     .ea-switch__track {
-      border-color: var(--ea-switch-tone, var(--color-brand-default));
+      border-color: var(--ea-switch-tone, var(--color-border-strong));
     }
   }
 

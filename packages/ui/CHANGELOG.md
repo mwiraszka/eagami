@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.62.0] - 2026-10-09
+
+### Added
+
+- Add a `--color-border-emphasis` token, one shade stronger than `--color-border-strong`.
+
+### Fixed
+
+- Size a switch's box to the switch itself, so an icon or text beside it in a row lines up with its track and label.
+- Step an unchecked switch, checkbox or radio button's border up one shade on hover instead of turning it the brand colour.
+
 ## [5.61.2] - 2026-10-08
 
 ### Fixed
@@ -1834,6 +1845,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.62.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.61.2...ui-v5.62.0
 [5.61.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.61.1...ui-v5.61.2
 [5.61.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.61.0...ui-v5.61.1
 [5.61.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.60.2...ui-v5.61.0
