@@ -70,7 +70,7 @@
 
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
-  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-tertiary: var(--color-neutral-500);
   --color-text-disabled: var(--color-neutral-400);
   --color-text-inverse: var(--color-neutral-0);
   --color-text-link: var(--color-primary-600);
@@ -192,7 +192,7 @@
 @mixin dark-color-tokens {
   --color-text-primary: var(--color-neutral-50);
   --color-text-secondary: var(--color-neutral-300);
-  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-tertiary: var(--color-neutral-400);
   --color-text-disabled: var(--color-neutral-500);
   --color-text-inverse: var(--color-neutral-900);
   --color-text-link: var(--color-primary-300);
