@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.61.1
-source: '@eagami/ui@5.61.1 (https://github.com/mwiraszka/eagami)'
+version: 5.61.2
+source: '@eagami/ui@5.61.2 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-08
 audience: human developers and AI coding agents
 purpose: >
@@ -203,7 +203,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | ----------------------- | ------------------- | ------------------- |
 | `textPrimary`           | `neutral900`        | `neutral50`         |
 | `textSecondary`         | `neutral600`        | `neutral300`        |
-| `textTertiary`          | `neutral400`        | `neutral500`        |
+| `textTertiary`          | `neutral500`        | `neutral400`        |
 | `textDisabled`          | `neutral400`        | `neutral500`        |
 | `textInverse`           | `neutral0`          | `neutral900`        |
 | `textLink`              | `primary600`        | `primary300`        |
@@ -540,7 +540,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.61.1 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.61.2 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -747,7 +747,7 @@ class EagamiColors {
   static const light = EagamiColors(
     textPrimary: Color(0xFF111827),
     textSecondary: Color(0xFF4B5563),
-    textTertiary: Color(0xFF9CA3AF),
+    textTertiary: Color(0xFF6B7280),
     textDisabled: Color(0xFF9CA3AF),
     textInverse: Color(0xFFFFFFFF),
     textLink: Color(0xFF2A5B7E),
@@ -811,7 +811,7 @@ class EagamiColors {
   static const dark = EagamiColors(
     textPrimary: Color(0xFFF9FAFB),
     textSecondary: Color(0xFFD1D5DB),
-    textTertiary: Color(0xFF6B7280),
+    textTertiary: Color(0xFF9CA3AF),
     textDisabled: Color(0xFF6B7280),
     textInverse: Color(0xFF111827),
     textLink: Color(0xFF7DAFD4),
