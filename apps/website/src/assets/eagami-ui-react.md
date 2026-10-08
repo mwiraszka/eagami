@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.61.1
-source: '@eagami/ui@5.61.1 (https://github.com/mwiraszka/eagami)'
+version: 5.61.2
+source: '@eagami/ui@5.61.2 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-08
 audience: human developers and AI coding agents
 purpose: >
@@ -212,7 +212,7 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | --------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | `--color-text-primary`            | `--color-neutral-900`                                                  | `--color-neutral-50`                                                     |
 | `--color-text-secondary`          | `--color-neutral-600`                                                  | `--color-neutral-300`                                                    |
-| `--color-text-tertiary`           | `--color-neutral-400`                                                  | `--color-neutral-500`                                                    |
+| `--color-text-tertiary`           | `--color-neutral-500`                                                  | `--color-neutral-400`                                                    |
 | `--color-text-disabled`           | `--color-neutral-400`                                                  | `--color-neutral-500`                                                    |
 | `--color-text-inverse`            | `--color-neutral-0`                                                    | `--color-neutral-900`                                                    |
 | `--color-text-link`               | `--color-primary-600`                                                  | `--color-primary-300`                                                    |
@@ -530,7 +530,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.61.1 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.61.2 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -613,7 +613,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   /* Semantic: text */
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: var(--color-neutral-600);
-  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-tertiary: var(--color-neutral-500);
   --color-text-disabled: var(--color-neutral-400);
   --color-text-inverse: var(--color-neutral-0);
   --color-text-link: var(--color-primary-600);
@@ -914,7 +914,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   :root:not([data-theme='light']) {
     --color-text-primary: var(--color-neutral-50);
     --color-text-secondary: var(--color-neutral-300);
-    --color-text-tertiary: var(--color-neutral-500);
+    --color-text-tertiary: var(--color-neutral-400);
     --color-text-disabled: var(--color-neutral-500);
     --color-text-inverse: var(--color-neutral-900);
     --color-text-link: var(--color-primary-300);
@@ -1003,7 +1003,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 
   --color-text-primary: var(--color-neutral-50);
   --color-text-secondary: var(--color-neutral-300);
-  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-tertiary: var(--color-neutral-400);
   --color-text-disabled: var(--color-neutral-500);
   --color-text-inverse: var(--color-neutral-900);
   --color-text-link: var(--color-primary-300);
@@ -1108,7 +1108,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.61.1 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.61.2 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 

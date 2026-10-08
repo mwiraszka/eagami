@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.61.2',
+    date: '2026-10-08',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Increase the contrast of tertiary text, such as placeholders, empty states and group labels, by a shade in both themes.',
+          'Show error messages, required-field asterisks and danger menu items in the error text colour, which stays readable on every surface in both themes.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.61.1',
     date: '2026-10-08',
     sections: [

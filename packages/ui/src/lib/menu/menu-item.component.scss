@@ -4,7 +4,7 @@
   @include ea.menu-row('.ea-menu-item--disabled');
 
   &--danger {
-    color: var(--color-error-default);
+    color: var(--color-error-text);
 
     &:hover:not(.ea-menu-item--disabled),
     &:focus-visible:not(.ea-menu-item--disabled) {

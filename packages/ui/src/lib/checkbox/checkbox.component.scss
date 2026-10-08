@@ -144,8 +144,8 @@
     transition: color var(--duration-fast) var(--ease-out);
 
     &--required::after {
+      color: var(--color-error-text);
       content: ' *';
-      color: var(--color-error-default);
     }
   }
 
