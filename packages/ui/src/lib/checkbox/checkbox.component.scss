@@ -82,9 +82,14 @@
     }
   }
 
-  &:hover:not(.ea-checkbox--disabled) {
+  &:hover:not(
+      .ea-checkbox--disabled,
+      .ea-checkbox--checked,
+      .ea-checkbox--indeterminate,
+      .ea-checkbox--error
+    ) {
     .ea-checkbox__box {
-      border-color: var(--color-brand-default);
+      border-color: var(--color-border-emphasis);
     }
   }
 

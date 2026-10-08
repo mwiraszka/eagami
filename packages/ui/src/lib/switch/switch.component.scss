@@ -102,9 +102,9 @@
     cursor: default;
   }
 
-  &:hover:not(.ea-switch--disabled) {
+  &:hover:not(.ea-switch--disabled, .ea-switch--checked) {
     .ea-switch__track {
-      border-color: var(--ea-switch-tone, var(--color-brand-default));
+      border-color: var(--ea-switch-tone, var(--color-border-strong));
     }
   }
 
