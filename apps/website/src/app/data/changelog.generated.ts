@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.62.0',
+    date: '2026-10-09',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `--color-border-emphasis` token, one shade stronger than `--color-border-strong`.',
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Size a switch's box to the switch itself, so an icon or text beside it in a row lines up with its track and label.",
+          "Step an unchecked switch, checkbox or radio button's border up one shade on hover instead of turning it the brand colour.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.61.2',
     date: '2026-10-08',
     sections: [

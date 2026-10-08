@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: Flutter Integration'
-version: 5.61.2
-source: '@eagami/ui@5.61.2 (https://github.com/mwiraszka/eagami)'
+version: 5.62.0
+source: '@eagami/ui@5.62.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-08
 audience: human developers and AI coding agents
 purpose: >
@@ -224,6 +224,7 @@ Dark-mode `*Subtle` and `*Muted` for status colours are re-tinted as low-alpha w
 | `borderSubtle`          | `neutral200`        | `Color(0xFF2B3544)` |
 | `borderDefault`         | `neutral200`        | `neutral400`        |
 | `borderStrong`          | `neutral400`        | `neutral300`        |
+| `borderEmphasis`        | `neutral500`        | `neutral200`        |
 | `divider`               | `Color(0x1A000000)` | `Color(0x1FFFFFFF)` |
 | `borderFocus`           | `primary500`        | `primary300`        |
 | `brandDefault`          | `primary600`        | `primary500`        |
@@ -540,7 +541,7 @@ import 'package:flutter/material.dart';
 
 // =============================================================================
 // EagamiTheme: design-token theme extension
-// Generated from @eagami/ui@5.61.2 (packages/ui/src/styles/tokens/*.scss)
+// Generated from @eagami/ui@5.62.0 (packages/ui/src/styles/tokens/*.scss)
 // by scripts/sync-integration-guides.mjs. Do not edit by hand.
 // =============================================================================
 
@@ -642,6 +643,7 @@ class EagamiColors {
     required this.borderSubtle,
     required this.borderDefault,
     required this.borderStrong,
+    required this.borderEmphasis,
     required this.divider,
     required this.borderFocus,
     required this.brandDefault,
@@ -705,6 +707,7 @@ class EagamiColors {
   final Color borderSubtle;
   final Color borderDefault;
   final Color borderStrong;
+  final Color borderEmphasis;
   final Color divider;
   final Color borderFocus;
   final Color brandDefault;
@@ -768,6 +771,7 @@ class EagamiColors {
     borderSubtle: Color(0xFFE5E7EB),
     borderDefault: Color(0xFFE5E7EB),
     borderStrong: Color(0xFF9CA3AF),
+    borderEmphasis: Color(0xFF6B7280),
     divider: Color(0x1A000000),
     borderFocus: Color(0xFF3674A1),
     brandDefault: Color(0xFF2A5B7E),
@@ -832,6 +836,7 @@ class EagamiColors {
     borderSubtle: Color(0xFF2B3544),
     borderDefault: Color(0xFF9CA3AF),
     borderStrong: Color(0xFFD1D5DB),
+    borderEmphasis: Color(0xFFE5E7EB),
     divider: Color(0x1FFFFFFF),
     borderFocus: Color(0xFF7DAFD4),
     brandDefault: Color(0xFF3674A1),

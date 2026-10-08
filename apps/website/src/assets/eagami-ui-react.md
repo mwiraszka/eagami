@@ -1,7 +1,7 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.61.2
-source: '@eagami/ui@5.61.2 (https://github.com/mwiraszka/eagami)'
+version: 5.62.0
+source: '@eagami/ui@5.62.0 (https://github.com/mwiraszka/eagami)'
 last-synced: 2026-10-08
 audience: human developers and AI coding agents
 purpose: >
@@ -233,6 +233,7 @@ In light mode (default) and dark mode (`@media (prefers-color-scheme: dark)`, or
 | `--color-border-subtle`           | `--color-neutral-200`                                                  | `color-mix(in srgb, var(--color-neutral-700), var(--color-neutral-800))` |
 | `--color-border-default`          | `--color-neutral-200`                                                  | `--color-neutral-400`                                                    |
 | `--color-border-strong`           | `--color-neutral-400`                                                  | `--color-neutral-300`                                                    |
+| `--color-border-emphasis`         | `--color-neutral-500`                                                  | `--color-neutral-200`                                                    |
 | `--color-divider`                 | `rgba(0, 0, 0, 0.1)`                                                   | `rgba(255, 255, 255, 0.12)`                                              |
 | `--color-border-focus`            | `--color-primary-500`                                                  | `--color-primary-300`                                                    |
 | `--color-brand-default`           | `--color-primary-600`                                                  | `--color-primary-500`                                                    |
@@ -530,7 +531,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.61.2 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.62.0 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -652,6 +653,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-border-subtle: var(--color-neutral-200);
   --color-border-default: var(--color-neutral-200);
   --color-border-strong: var(--color-neutral-400);
+  --color-border-emphasis: var(--color-neutral-500);
   --color-divider: rgba(0, 0, 0, 0.1);
   --color-border-focus: var(--color-primary-500);
 
@@ -944,6 +946,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
     --color-border-subtle: color-mix(in srgb, var(--color-neutral-700), var(--color-neutral-800));
     --color-border-default: var(--color-neutral-400);
     --color-border-strong: var(--color-neutral-300);
+    --color-border-emphasis: var(--color-neutral-200);
     --color-divider: rgba(255, 255, 255, 0.12);
     --color-border-focus: var(--color-primary-300);
 
@@ -1033,6 +1036,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
   --color-border-subtle: color-mix(in srgb, var(--color-neutral-700), var(--color-neutral-800));
   --color-border-default: var(--color-neutral-400);
   --color-border-strong: var(--color-neutral-300);
+  --color-border-emphasis: var(--color-neutral-200);
   --color-divider: rgba(255, 255, 255, 0.12);
   --color-border-focus: var(--color-primary-300);
 
@@ -1108,7 +1112,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.61.2 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.62.0 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 
