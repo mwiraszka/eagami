@@ -55,8 +55,11 @@
 
 .ea-segmented {
   // `inline-flex` keeps the control shrink-to-fit, but sizes to max-content and
-  // would overflow rather than wrap; `max-width: 100%` lets `flex-wrap` engage
+  // would overflow rather than wrap; `max-width: 100%` lets `flex-wrap` engage.
+  // As an item of the field's column it would still stretch to a wider label or
+  // hint, so it keeps to the start instead.
   display: inline-flex;
+  align-self: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
   row-gap: 0.125em;
