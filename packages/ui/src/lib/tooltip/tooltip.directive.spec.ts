@@ -176,6 +176,24 @@ describe('TooltipDirective', () => {
 
       expect(getTooltip()).toBeNull();
     });
+
+    it('updates an open tooltip when its text changes', () => {
+      show();
+
+      host.text.set('Changes saved');
+      fixture.detectChanges();
+
+      expect(getTooltip()?.textContent).toBe('Changes saved');
+    });
+
+    it('closes an open tooltip when its text empties', () => {
+      show();
+
+      host.text.set('');
+      fixture.detectChanges();
+
+      expect(getTooltip()).toBeNull();
+    });
   });
 
   describe('Show delay', () => {

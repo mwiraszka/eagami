@@ -109,6 +109,7 @@ export class TooltipDirective implements OnDestroy {
   /** Side the open bubble settled on, held across repositions while it fits. */
   private placedPosition: TooltipPosition = 'top';
   private templateView: EmbeddedViewRef<unknown> | null = null;
+  private renderedContent: string | TemplateRef<unknown> | null = null;
   private scrollable = false;
   private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
@@ -233,6 +234,26 @@ export class TooltipDirective implements OnDestroy {
       }
       wasControlled = open !== null;
     });
+
+    // An open bubble follows its content, so a label that changes while it is hovered
+    // or focused (a play button becoming a pause button, say) updates in place
+    afterRenderEffect(() => {
+      const content = this.eaTooltip();
+      untracked(() => {
+        if (!this.tooltipEl || content === this.renderedContent) {
+          return;
+        }
+        if (!content) {
+          this.hide();
+          return;
+        }
+        this.templateView?.destroy();
+        this.templateView = null;
+        this.tooltipEl.replaceChildren();
+        this.renderContent(content);
+        this.relayoutHandler();
+      });
+    });
   }
 
   private controlled(): boolean {
@@ -310,16 +331,7 @@ export class TooltipDirective implements OnDestroy {
     }
     this.renderer.setAttribute(this.tooltipEl, 'role', 'tooltip');
     this.renderer.setAttribute(this.tooltipEl, 'id', this.tooltipId);
-    const content = this.eaTooltip();
-    if (content instanceof TemplateRef) {
-      this.templateView = this.viewContainer.createEmbeddedView(content);
-      this.templateView.detectChanges();
-      for (const node of this.templateView.rootNodes) {
-        this.renderer.appendChild(this.tooltipEl, node);
-      }
-    } else {
-      this.tooltipEl!.textContent = content;
-    }
+    this.renderContent(this.eaTooltip());
 
     const maxWidth = this.maxWidth();
     if (maxWidth != null) {
@@ -415,6 +427,19 @@ export class TooltipDirective implements OnDestroy {
     }
   }
 
+  private renderContent(content: string | TemplateRef<unknown>): void {
+    this.renderedContent = content;
+    if (content instanceof TemplateRef) {
+      this.templateView = this.viewContainer.createEmbeddedView(content);
+      this.templateView.detectChanges();
+      for (const node of this.templateView.rootNodes) {
+        this.renderer.appendChild(this.tooltipEl, node);
+      }
+    } else {
+      this.tooltipEl!.textContent = content;
+    }
+  }
+
   private hide(): void {
     this.cancelPendingShow();
     this.cancelPendingHide();
@@ -431,6 +456,7 @@ export class TooltipDirective implements OnDestroy {
       this.scrollable = false;
       this.templateView?.destroy();
       this.templateView = null;
+      this.renderedContent = null;
       this.removeDescribedBy();
     }
   }
