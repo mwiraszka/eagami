@@ -225,6 +225,10 @@
 
   // Pass the host's vertical bounds through the scroll wrapper so the inner table
   // can size against them
+  &--fixed &__table {
+    table-layout: fixed;
+  }
+
   &--sticky &__scroll {
     max-height: inherit;
     height: inherit;

@@ -601,6 +601,17 @@ describe('DataTableComponent', () => {
       expect(getHost().classList.contains('ea-data-table--nowrap')).toBe(true);
     });
 
+    it('lays columns out by their content by default', () => {
+      expect(getHost().classList).not.toContain('ea-data-table--fixed');
+    });
+
+    it('applies fixed class for a fixed layout', () => {
+      fixture.componentRef.setInput('layout', 'fixed');
+      fixture.detectChanges();
+
+      expect(getHost().classList).toContain('ea-data-table--fixed');
+    });
+
     it('applies bordered class when enabled', () => {
       fixture.componentRef.setInput('bordered', true);
       fixture.detectChanges();
