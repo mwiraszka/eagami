@@ -2,6 +2,7 @@ import {
   type DataTableColumn,
   DataTableComponent,
   type DataTableDensity,
+  type DataTableLayout,
   type DataTableRowContextMenuEvent,
   type DataTableSize,
   MenuComponent,
@@ -38,6 +39,7 @@ interface DataTableKnobState {
   striped: boolean;
   bordered: boolean;
   nowrap: boolean;
+  layout: DataTableLayout;
   hoverable: boolean;
   stickyHeader: boolean;
   navigable: boolean;

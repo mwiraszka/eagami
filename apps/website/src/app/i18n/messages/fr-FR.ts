@@ -2510,6 +2510,8 @@ export const frFR: WebMessages = {
               'Émis lorsque le menu contextuel d’une ligne de données est demandé par clic droit, appui long ou Maj+F10, avec la ligne, son élément, un point où ouvrir un menu et l’événement.',
             nowrap:
               'Garde chaque cellule sur une seule ligne, afin qu’une fenêtre étroite fasse défiler le tableau latéralement au lieu de renvoyer son texte à la ligne.',
+            layout:
+              'Dimensionne les colonnes selon leur contenu (auto), ou maintient chacune à sa largeur quel que soit le contenu de ses cellules (fixed), pour que le tableau garde sa forme pendant le chargement et sur les écrans étroits.',
             rowHref:
               'Donne à chaque ligne une cible de lien, portée par un vrai lien dans chaque cellule pour que le navigateur l’affiche et puisse l’ouvrir, tandis qu’un clic simple déclenche toujours rowActivate. Une ligne pour laquelle il renvoie null reste inerte, sans lien, surbrillance au survol, focus ni activation.',
             sizingRows:

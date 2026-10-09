@@ -20,6 +20,10 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     striped: { control: 'boolean' },
     bordered: { control: 'boolean' },
     nowrap: { control: 'boolean' },
+    layout: {
+      control: 'select',
+      options: ['auto', 'fixed'],
+    },
     hoverable: { control: 'boolean' },
     stickyHeader: { control: 'boolean' },
     navigable: { control: 'boolean' },
@@ -43,6 +47,7 @@ export const DATA_TABLE_KNOBS: ComponentKnobs = {
     striped: false,
     bordered: false,
     nowrap: false,
+    layout: 'auto',
     hoverable: true,
     stickyHeader: false,
     navigable: false,

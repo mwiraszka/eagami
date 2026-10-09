@@ -2511,6 +2511,8 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer het contextmenu van een gegevensrij wordt aangevraagd via rechtsklik, lang indrukken of Shift+F10, met de rij, het element ervan, een punt om een menu te openen en de gebeurtenis.',
             nowrap:
               'Houdt elke cel op één regel, zodat een smal venster de tabel zijwaarts scrolt in plaats van de tekst af te breken.',
+            layout:
+              'Bepaalt de kolombreedtes op basis van de inhoud (auto), of houdt elke kolom op zijn breedte, wat de cellen ook bevatten (fixed), zodat de tabel zijn vorm behoudt tijdens het laden en op smalle schermen.',
             rowHref:
               'Geeft elke rij een linkdoel, als echte link in elke cel zodat de browser het toont en kan openen, terwijl een gewone klik nog steeds rowActivate afvuurt. Een rij waarvoor het null teruggeeft blijft inert, zonder link, hovermarkering, focus of activering.',
             sizingRows:

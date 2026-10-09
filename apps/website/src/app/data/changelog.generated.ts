@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.63.0',
+    date: '2026-10-09',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `layout` input to the data table, whose `fixed` setting holds every column at its `width` whatever its cells contain, so a table keeps its shape while loading and on narrow screens.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.62.1',
     date: '2026-10-09',
     sections: [

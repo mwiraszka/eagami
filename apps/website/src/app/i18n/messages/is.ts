@@ -2459,6 +2459,8 @@ export const is: WebMessages = {
               'Kviknar þegar beðið er um samhengisvalmynd gagnaraðar með hægrismelli, löngu haldi eða Shift+F10, ásamt röðinni, staki hennar, punkti til að opna valmynd og atburðinum.',
             nowrap:
               'Heldur hverjum reit á einni línu, svo þröngur gluggi skrunar töflunni til hliðar í stað þess að brjóta textann.',
+            layout:
+              'Stillir breidd dálka eftir innihaldi þeirra (auto), eða heldur hverjum dálki í sinni breidd óháð innihaldi hólfanna (fixed), svo taflan haldi lögun sinni meðan hún hleðst og á mjóum skjám.',
             rowHref:
               'Gefur hverri röð tengilsmark, sem raunverulegur tengill í hverjum reit svo vafrinn sýni það og geti opnað það, meðan venjulegur smellur kveikir áfram rowActivate. Röð sem það skilar null fyrir er óvirk: enginn tengill, engin auðkenning undir bendli, enginn fókus og engin virkjun.',
             sizingRows:

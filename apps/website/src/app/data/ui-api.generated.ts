@@ -1528,6 +1528,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'layout',
+        type: 'DataTableLayout',
+        default: "'auto'",
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'loading',
         type: 'boolean',
         default: 'false',

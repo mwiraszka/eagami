@@ -2528,6 +2528,8 @@ export const esES: WebMessages = {
               'Se emite cuando se solicita el menú contextual de una fila de datos con clic derecho, pulsación larga o Mayús+F10, con la fila, su elemento, un punto donde abrir un menú y el evento.',
             nowrap:
               'Mantiene cada celda en una sola línea, de modo que una ventana estrecha desplaza la tabla lateralmente en lugar de ajustar su texto.',
+            layout:
+              'Ajusta las columnas a su contenido (auto) o mantiene cada una en su anchura sea cual sea el contenido de sus celdas (fixed), para que la tabla conserve su forma durante la carga y en pantallas estrechas.',
             rowHref:
               'Da a cada fila un destino de enlace, presente como enlace real en cada celda para que el navegador lo muestre y pueda abrirlo, mientras un clic normal sigue emitiendo rowActivate. Una fila para la que devuelve null queda inerte, sin enlace, resaltado al pasar el cursor, foco ni activación.',
             sizingRows:

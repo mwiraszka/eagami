@@ -114,6 +114,32 @@ export const Loading: Story = {
 };
 
 /**
+ * With `layout: 'fixed'`, every column holds its `width` whatever its cells contain,
+ * so the table keeps its shape while loading and as its data changes, and scrolls
+ * sideways when the columns are wider than the viewport.
+ */
+export const FixedLayout: Story = {
+  args: {
+    layout: 'fixed',
+    nowrap: true,
+    columns: [
+      { key: 'id', label: 'ID', sortable: true, width: '60px', align: 'center' },
+      { key: 'firstName', label: 'First Name', sortable: true, width: '160px' },
+      { key: 'lastName', label: 'Last Name', sortable: true, width: '160px' },
+      { key: 'admin', label: 'Admin', sortable: true, width: '80px', align: 'center' },
+      {
+        key: 'posts',
+        label: 'Posts',
+        sortable: true,
+        width: '100px',
+        align: 'right',
+        format: v => (v as number).toLocaleString('en-US'),
+      },
+    ],
+  },
+};
+
+/**
  * `rowContextMenu` reports a right-click, long press, or Shift+F10 on a row, here
  * opening a menu at the pointer, or below the focused cell from the keyboard.
  */

@@ -35,6 +35,9 @@ export type DataTableDensity = 'compact' | 'comfortable' | 'spacious';
 /** Visual size of the table's text, paddings, and icons. */
 export type DataTableSize = EaSize;
 
+/** How column widths are worked out: from the cells' content, or from the columns' `width`s alone. */
+export type DataTableLayout = 'auto' | 'fixed';
+
 /** Sort direction; `null` means no sort is applied. */
 export type DataTableSortDirection = 'asc' | 'desc' | null;
 
@@ -135,6 +138,15 @@ export class DataTableComponent<T = Record<string, unknown>> {
   readonly bordered = input<boolean>(false);
   /** Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text. */
   readonly nowrap = input<boolean>(false);
+  /**
+   * How column widths are worked out. `auto` sizes columns by their content. `fixed`
+   * holds every column at its `width` whatever its cells hold, at any viewport width,
+   * scrolling the table sideways when they don't fit and sharing what is left among
+   * columns without one, so the table keeps its shape while loading and as data changes.
+   * Content wider than its column overflows it, so cells in a fixed layout should fit
+   * or truncate. Moot with `stickyHeader`, whose rows always lay out this way.
+   */
+  readonly layout = input<DataTableLayout>('auto');
   readonly noDataText = input<string | undefined>(undefined);
   /** Enables grid keyboard navigation: `role="grid"`, roving tabindex, and arrow-key cell movement. */
   readonly navigable = input<boolean>(false);
@@ -195,6 +207,7 @@ export class DataTableComponent<T = Record<string, unknown>> {
     'ea-data-table--hoverable': this.hoverable(),
     'ea-data-table--bordered': this.bordered(),
     'ea-data-table--nowrap': this.nowrap(),
+    'ea-data-table--fixed': this.layout() === 'fixed',
     'ea-data-table--navigable': this.navigable(),
     'ea-data-table--clickable': this.clickable(),
     'ea-data-table--linked': !!this.rowHref(),

@@ -2532,6 +2532,8 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn das Kontextmenü einer Datenzeile per Rechtsklick, langem Drücken oder Umschalt+F10 angefordert wird, mit der Zeile, ihrem Element, einem Punkt zum Öffnen eines Menüs und dem Ereignis.',
             nowrap:
               'Hält jede Zelle auf einer Zeile, sodass ein schmaler Viewport die Tabelle seitwärts scrollt, statt ihren Text umzubrechen.',
+            layout:
+              'Bemisst die Spalten nach ihrem Inhalt (auto) oder hält jede auf ihrer Breite, unabhängig vom Inhalt ihrer Zellen (fixed), sodass die Tabelle beim Laden und auf schmalen Bildschirmen ihre Form behält.',
             rowHref:
               'Gibt jeder Zeile ein Linkziel, das in jeder Zelle als echter Link liegt, damit der Browser es anzeigt und öffnen kann, während ein einfacher Klick weiterhin rowActivate auslöst. Eine Zeile, für die es null liefert, bleibt inert: ohne Link, Hover-Hervorhebung, Fokus oder Aktivierung.',
             sizingRows:

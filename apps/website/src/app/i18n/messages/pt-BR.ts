@@ -2490,6 +2490,8 @@ export const ptBR: WebMessages = {
               'Dispara quando o menu de contexto de uma linha de dados é solicitado por clique com o botão direito, toque longo ou Shift+F10, com a linha, seu elemento, um ponto para abrir um menu e o evento.',
             nowrap:
               'Mantém cada célula em uma única linha, de modo que uma janela estreita rola a tabela lateralmente em vez de quebrar o texto.',
+            layout:
+              'Dimensiona as colunas pelo conteúdo (auto) ou mantém cada uma na sua largura, seja qual for o conteúdo das células (fixed), para que a tabela mantenha o formato durante o carregamento e em telas estreitas.',
             rowHref:
               'Dá a cada linha um destino de link, presente como link real em cada célula para que o navegador o mostre e possa abri-lo, enquanto um clique simples continua emitindo rowActivate. Uma linha para a qual retorna null fica inerte, sem link, destaque ao passar o mouse, foco ou ativação.',
             sizingRows:
