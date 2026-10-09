@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.62.1',
+    date: '2026-10-09',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Update an open tooltip in place when its text changes, such as a play button's tooltip turning into a pause button's, and close it when the text empties.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.62.0',
     date: '2026-10-09',
     sections: [
