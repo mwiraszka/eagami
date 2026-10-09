@@ -2408,6 +2408,8 @@ export const en: WebMessages = {
               "Fires when a body row's context menu is requested by right-click, long press, or Shift+F10, with the row, its element, a point to open a menu at, and the event.",
             nowrap:
               'Keeps every cell on one line, so a narrow viewport scrolls the table sideways instead of wrapping its text.',
+            layout:
+              'Sizes columns by their content (auto), or holds each at its width whatever its cells contain (fixed), so the table keeps its shape while loading and on narrow screens.',
             rowHref:
               'Gives each row a link target, held by a real link in every cell so the browser shows and can open it, while a plain click still fires rowActivate. A row it returns null for is inert, with no link, hover highlight, focus or activation.',
             sizingRows:

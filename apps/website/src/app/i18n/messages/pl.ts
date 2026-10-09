@@ -2472,6 +2472,8 @@ export const pl: WebMessages = {
               'Emitowane, gdy zażądano menu kontekstowego wiersza danych prawym przyciskiem, długim naciśnięciem lub Shift+F10, wraz z wierszem, jego elementem, punktem do otwarcia menu i zdarzeniem.',
             nowrap:
               'Utrzymuje każdą komórkę w jednym wierszu, dzięki czemu wąski widok przewija tabelę w bok zamiast zawijać jej tekst.',
+            layout:
+              'Dopasowuje kolumny do ich zawartości (auto) lub utrzymuje każdą w jej szerokości niezależnie od zawartości komórek (fixed), dzięki czemu tabela zachowuje kształt podczas ładowania i na wąskich ekranach.',
             rowHref:
               'Nadaje każdemu wierszowi cel łącza, obecny jako prawdziwy odnośnik w każdej komórce, aby przeglądarka go pokazywała i mogła otworzyć, podczas gdy zwykłe kliknięcie nadal wywołuje rowActivate. Wiersz, dla którego zwraca null, pozostaje bierny: bez łącza, podświetlenia po najechaniu, fokusu ani aktywacji.',
             sizingRows:
