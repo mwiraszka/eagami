@@ -450,7 +450,7 @@ export class LineChartComponent {
       orientation === 'auto'
         ? ([0, 45, 90].find(a => this.labelsFit(plot.candidates, a, axisPx)) ?? 90)
         : fixedAngle;
-    const { plotHeight, min, max, tickTexts, left, plotWidth, x, xLabels } =
+    const { plotHeight, min, max, level, tickTexts, left, plotWidth, x, xLabels } =
       angle === fixedAngle ? plot : this.plotArea(width, height, axisPx, angle);
     const top = axisPx;
 
@@ -458,7 +458,9 @@ export class LineChartComponent {
       top + (1 - (clamp(v, min, max) - min) / (max - min || 1)) * plotHeight;
     const baselineY = y(clamp(0, min, max));
     const breakY =
-      this.showAxisBreak() && min > 0 ? top + plotHeight - axisPx * BREAK_HEIGHT : null;
+      this.showAxisBreak() && min > 0 && !level
+        ? top + plotHeight - axisPx * BREAK_HEIGHT
+        : null;
     const axisY = top + plotHeight;
 
     const curve = CURVES[this.curve()];
@@ -515,7 +517,7 @@ export class LineChartComponent {
     const plotHeight = Math.max(1, height - top - bottom);
     const maxTicks = Math.max(2, Math.floor(plotHeight / (axisPx * 3)));
 
-    const { min, max, ticks, unlabelled } = this.yScale(
+    const { min, max, ticks, unlabelled, level } = this.yScale(
       this.visibleValues(),
       plotHeight,
       axisPx,
@@ -563,7 +565,7 @@ export class LineChartComponent {
       const half = estimateTextWidth(label.text, axisPx) / 2;
       return { ...label, textX: clamp(label.x, half, width - half) };
     });
-    return { plotHeight, min, max, tickTexts, left, ...axis, xLabels };
+    return { plotHeight, min, max, level, tickTexts, left, ...axis, xLabels };
   }
 
   protected readonly tooltip = computed(() => {
@@ -839,7 +841,13 @@ export class LineChartComponent {
     plotHeight: number,
     axisPx: number,
     maxTicks: number,
-  ): { min: number; max: number; ticks: number[]; unlabelled?: boolean } {
+  ): {
+    min: number;
+    max: number;
+    ticks: number[];
+    unlabelled?: boolean;
+    level?: boolean;
+  } {
     const yMin = this.yMin();
     const yMax = this.yMax();
     // With nothing plotted and no bounds there is no scale to label, so the grid keeps
@@ -858,6 +866,27 @@ export class LineChartComponent {
     }
     if (lo > hi) {
       [lo, hi] = [hi, lo];
+    }
+    // A single value has no spread to show, so the axis is fitted evenly around it and
+    // needs no break, whatever it starts from
+    if (
+      dataMin === dataMax &&
+      yMin === undefined &&
+      yMax === undefined &&
+      !zeroFloor &&
+      !this.windowed()
+    ) {
+      const pad = dataMin === 0 ? 1 : Math.abs(dataMin) / 2;
+      const scale = niceScale(dataMin - pad, dataMin + pad, maxTicks);
+      const reach = Math.max(dataMin - scale.min, scale.max - dataMin);
+      const min = dataMin - reach;
+      const max = dataMin + reach;
+      return {
+        min,
+        max,
+        ticks: scale.ticks.filter(t => t >= min && t <= max),
+        level: true,
+      };
     }
     // Room kept between the outermost points and the plot's top and bottom edges
     const clearance = axisPx;

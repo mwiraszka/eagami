@@ -952,13 +952,22 @@ describe('LineChartComponent', () => {
       );
     });
 
-    it('scales the y-axis around its value', () => {
+    it('sits halfway up a y-axis fitted around its value, with no break', () => {
+      fixture.componentRef.setInput('showAxisBreak', true);
+      fixture.detectChanges();
+      const hit = query('.ea-line-chart__hit')!;
+      const middle =
+        Number(hit.getAttribute('y')) + Number(hit.getAttribute('height')) / 2;
       const ticks = queryAll('.ea-line-chart__axis--y').map(t =>
         Number(t.textContent!.replace(/,/g, '')),
       );
 
+      expect(Number(query('.ea-line-chart__point')!.getAttribute('cy'))).toBeCloseTo(
+        middle,
+      );
       expect(Math.min(...ticks)).toBeLessThan(1474);
       expect(Math.max(...ticks)).toBeGreaterThan(1474);
+      expect(query('.ea-line-chart__axis-break')).toBeNull();
     });
 
     it('stays in view under a pinch, since one point gives nothing to zoom in on', () => {
