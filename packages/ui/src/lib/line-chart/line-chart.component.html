@@ -228,14 +228,16 @@
         [attr.y1]="tick.y"
         [attr.y2]="tick.y" />
     }
-    <svg:text
-      class="ea-line-chart__axis ea-line-chart__axis--y"
-      text-anchor="end"
-      dominant-baseline="middle"
-      [attr.x]="layout().tickX"
-      [attr.y]="tick.y">
-      {{ tick.text }}
-    </svg:text>
+    @if (tick.text) {
+      <svg:text
+        class="ea-line-chart__axis ea-line-chart__axis--y"
+        text-anchor="end"
+        dominant-baseline="middle"
+        [attr.x]="layout().tickX"
+        [attr.y]="tick.y">
+        {{ tick.text }}
+      </svg:text>
+    }
   }
   <svg:line
     class="ea-line-chart__baseline"

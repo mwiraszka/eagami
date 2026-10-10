@@ -198,6 +198,7 @@ describe('LineChartComponent', () => {
 
       const texts = queryAll('.ea-line-chart__axis--x').map(t => t.textContent?.trim());
       expect(query('.ea-line-chart__empty .ea-line-chart__baseline')).not.toBeNull();
+      expect(queryAll('.ea-line-chart__grid').length).toBeGreaterThan(1);
       expect(texts).toEqual(LABELS);
       expect(queryAll('.ea-line-chart__axis--y')).toHaveLength(0);
     });
@@ -925,6 +926,57 @@ describe('LineChartComponent', () => {
     });
   });
 
+  describe('Lone point', () => {
+    function hitCentre(): number {
+      const hit = query('.ea-line-chart__hit')!;
+      return Number(hit.getAttribute('x')) + Number(hit.getAttribute('width')) / 2;
+    }
+
+    function pointX(): number {
+      return Number(query('.ea-line-chart__point')!.getAttribute('cx'));
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('labels', ['Only']);
+      fixture.componentRef.setInput('series', [{ name: 'Rating', data: [1474] }]);
+      fixture.componentRef.setInput('xValues', [60]);
+      fixture.componentRef.setInput('xTicks', [{ value: 0, label: 'Start' }]);
+      fixture.componentRef.setInput('visibleXSpan', 500);
+      fixture.detectChanges();
+    });
+
+    it('sits in the middle of the plot, with its ticks still drawn', () => {
+      expect(pointX()).toBeCloseTo(hitCentre());
+      expect(queryAll('.ea-line-chart__axis--x').map(t => t.textContent?.trim())).toEqual(
+        ['Start'],
+      );
+    });
+
+    it('scales the y-axis around its value', () => {
+      const ticks = queryAll('.ea-line-chart__axis--y').map(t =>
+        Number(t.textContent!.replace(/,/g, '')),
+      );
+
+      expect(Math.min(...ticks)).toBeLessThan(1474);
+      expect(Math.max(...ticks)).toBeGreaterThan(1474);
+    });
+
+    it('stays in view under a pinch, since one point gives nothing to zoom in on', () => {
+      const ranges: LineChartVisibleRange[] = [];
+      fixture.componentInstance.visibleRangeChange.subscribe(r => ranges.push(r));
+      const wheel = new WheelEvent('wheel', { deltaY: -5000, cancelable: true });
+      Object.defineProperty(wheel, 'ctrlKey', { value: true });
+      Object.defineProperty(wheel, 'clientX', { value: 0 });
+
+      query('.ea-line-chart__svg')!.dispatchEvent(wheel);
+      fixture.detectChanges();
+
+      expect(ranges).toEqual([]);
+      expect(query('.ea-line-chart--pannable')).toBeNull();
+      expect(pointX()).toBeCloseTo(hitCentre());
+    });
+  });
+
   describe('Visible window', () => {
     const xValues = Array.from({ length: 11 }, (_, i) => i * 10);
     const ranges: LineChartVisibleRange[] = [];
@@ -1068,6 +1120,21 @@ describe('LineChartComponent', () => {
       expect(change.defaultPrevented).toBe(true);
       const range = ranges.at(-1)!;
       expect(range.end - range.start).toBeCloseTo(60);
+    });
+
+    it('keeps the whole range on the y-axis when the window holds no points', () => {
+      fixture.componentRef.setInput('labels', ['A', 'B', 'C']);
+      fixture.componentRef.setInput('series', [{ name: 'Level', data: [40, null, 60] }]);
+      fixture.componentRef.setInput('xValues', [0, 50, 100]);
+      fixture.componentRef.setInput('xTicks', null);
+      fixture.detectChanges();
+
+      svg().dispatchEvent(new WheelEvent('wheel', { deltaX: -40, cancelable: true }));
+      fixture.detectChanges();
+
+      expect(inView()).toEqual([]);
+      expect(Math.min(...yTicks())).toBeLessThanOrEqual(40);
+      expect(Math.max(...yTicks())).toBeGreaterThanOrEqual(60);
     });
 
     it('ignores a pinch on a chart with no window', () => {
