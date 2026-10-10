@@ -867,24 +867,25 @@ export class LineChartComponent {
     if (lo > hi) {
       [lo, hi] = [hi, lo];
     }
-    // A single value has no spread to show, so the axis is fitted evenly around it and
-    // needs no break, whatever it starts from
+    // A single value has no spread to show, so it sits halfway up an axis running from
+    // zero to twice it in even steps, which needs no break
     if (
       dataMin === dataMax &&
       yMin === undefined &&
       yMax === undefined &&
-      !zeroFloor &&
       !this.windowed()
     ) {
-      const pad = dataMin === 0 ? 1 : Math.abs(dataMin) / 2;
-      const scale = niceScale(dataMin - pad, dataMin + pad, maxTicks);
-      const reach = Math.max(dataMin - scale.min, scale.max - dataMin);
-      const min = dataMin - reach;
-      const max = dataMin + reach;
+      const end = dataMin === 0 ? 1 : 2 * dataMin;
+      const min = dataMin === 0 ? -1 : Math.min(0, end);
+      const max = Math.max(0, end);
+      const intervals = maxTicks > 4 ? 4 : 2;
+      const step = (max - min) / intervals;
       return {
         min,
         max,
-        ticks: scale.ticks.filter(t => t >= min && t <= max),
+        ticks: Array.from({ length: intervals + 1 }, (_, i) =>
+          Number((min + i * step).toPrecision(12)),
+        ),
         level: true,
       };
     }

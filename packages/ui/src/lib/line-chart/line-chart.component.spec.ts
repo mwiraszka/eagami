@@ -952,22 +952,27 @@ describe('LineChartComponent', () => {
       );
     });
 
-    it('sits halfway up a y-axis fitted around its value, with no break', () => {
+    it('sits halfway up an evenly ticked y-axis from zero, with no break', () => {
       fixture.componentRef.setInput('showAxisBreak', true);
       fixture.detectChanges();
       const hit = query('.ea-line-chart__hit')!;
       const middle =
         Number(hit.getAttribute('y')) + Number(hit.getAttribute('height')) / 2;
-      const ticks = queryAll('.ea-line-chart__axis--y').map(t =>
-        Number(t.textContent!.replace(/,/g, '')),
-      );
+      const ticks = queryAll('.ea-line-chart__axis--y').map(t => t.textContent?.trim());
 
       expect(Number(query('.ea-line-chart__point')!.getAttribute('cy'))).toBeCloseTo(
         middle,
       );
-      expect(Math.min(...ticks)).toBeLessThan(1474);
-      expect(Math.max(...ticks)).toBeGreaterThan(1474);
+      expect(ticks).toEqual(['0', '737', '1,474', '2,211', '2,948']);
       expect(query('.ea-line-chart__axis-break')).toBeNull();
+    });
+
+    it('mirrors the axis below zero for a negative value', () => {
+      fixture.componentRef.setInput('series', [{ name: 'Rating', data: [-40] }]);
+      fixture.detectChanges();
+
+      const ticks = queryAll('.ea-line-chart__axis--y').map(t => t.textContent?.trim());
+      expect(ticks).toEqual(['-80', '-60', '-40', '-20', '0']);
     });
 
     it('stays in view under a pinch, since one point gives nothing to zoom in on', () => {
