@@ -14,6 +14,35 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.64.0',
+    date: '2026-10-11',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `maxYStep` input to the line chart that caps the gap between y-axis ticks, so a wider range gets more ticks instead of wider gaps.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          "Draw the line chart's axes and grid when it has nothing to plot, with the no-data message centred in the plot and no made-up numbers beside the grid, so an empty chart keeps its shape.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          "Open popovers, such as a dropdown's options and menus, in Safari before version 17, where finding their place on the page threw an error.",
+          "Centre a line chart's lone point in the plot, and stop a pinch from zooming in on it until it drops out of view.",
+          "Run a line chart's y-axis from zero in round, even steps when its points all share one value, with no axis break, so they sit about halfway up.",
+          "Keep a panned line chart's y-axis on the whole range's scale while no point is in view, instead of falling back to 0 and 1.",
+          'Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.',
+          'Keep the focus ring of an accordion header, a clickable table row and a navigable table cell whole, by drawing it a small gap inside their edges, where rounded corners can no longer clip it.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.63.2',
     date: '2026-10-10',
     sections: [

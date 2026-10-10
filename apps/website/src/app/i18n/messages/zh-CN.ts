@@ -1427,6 +1427,7 @@ export const zhCN: WebMessages = {
             showLegend: '当图表绘制多个系列时，在图表下方显示图例。',
             yMin: 'y 轴的下限；未设置时根据数据推导。',
             yMax: 'y 轴的上限；未设置时根据数据推导。',
+            maxYStep: 'y 轴刻度之间的最大间隔；范围更大时会增加刻度，而不是加大间隔。',
             height: '绘图区域的高度（像素）；宽度填满容器。',
             size: '坐标轴、图例和工具提示文本的视觉尺寸。',
             animation:

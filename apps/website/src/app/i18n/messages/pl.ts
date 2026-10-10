@@ -1475,6 +1475,8 @@ export const pl: WebMessages = {
               'Wyświetla legendę pod wykresem, gdy przedstawia on więcej niż jedną serię.',
             yMin: 'Dolna granica osi y; wyznaczana na podstawie danych, gdy nie jest ustawiona.',
             yMax: 'Górna granica osi y; wyznaczana na podstawie danych, gdy nie jest ustawiona.',
+            maxYStep:
+              'Największy odstęp między znacznikami osi y; szerszy zakres dostaje więcej znaczników zamiast większych odstępów.',
             height: 'Wysokość obszaru wykresu w pikselach; szerokość wypełnia kontener.',
             size: 'Wizualny rozmiar tekstu osi, legendy i podpowiedzi.',
             animation:

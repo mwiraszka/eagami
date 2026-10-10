@@ -1,5 +1,5 @@
 import { type TopLayerStubs, installTopLayerStubs } from '../test-setup';
-import { enterTopLayer, leaveTopLayer } from './top-layer';
+import { enterTopLayer, leaveTopLayer, topLayerHost } from './top-layer';
 
 describe('top layer', () => {
   let stubs: TopLayerStubs;
@@ -101,5 +101,54 @@ describe('top layer', () => {
     enterTopLayer(surface, anchor);
 
     expect(surface.hasAttribute('popover')).toBe(false);
+  });
+});
+
+// Safari before 17 knows `dialog:modal` but cannot parse `:popover-open`, and throws on
+// any selector list holding it
+describe('top layer in a browser without the popover API', () => {
+  let modal: HTMLElement;
+  let anchor: HTMLElement;
+
+  beforeEach(() => {
+    modal = document.createElement('dialog');
+    anchor = document.createElement('button');
+    modal.appendChild(anchor);
+    document.body.appendChild(modal);
+
+    // jsdom hands out a fresh CSS namespace on every read, so the spy goes on its prototype
+    vi.spyOn(Object.getPrototypeOf(CSS) as typeof CSS, 'supports').mockImplementation(
+      (query: string) => query === 'selector(dialog:modal)',
+    );
+    vi.spyOn(Element.prototype, 'closest').mockImplementation(function (
+      this: Element,
+      selector: string,
+    ): Element | null {
+      if (selector.includes(':popover-open')) {
+        throw new DOMException(
+          'The string did not match the expected pattern.',
+          'SyntaxError',
+        );
+      }
+      return selector === 'dialog:modal' && modal.contains(this) ? modal : null;
+    } as typeof Element.prototype.closest);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    modal.remove();
+  });
+
+  it('hosts a surface in the modal its anchor sits in', () => {
+    expect(topLayerHost(anchor)).toBe(modal);
+  });
+
+  it('hosts a surface in the body when its anchor is outside any modal', () => {
+    const outside = document.createElement('button');
+    document.body.appendChild(outside);
+
+    expect(topLayerHost(outside)).toBe(document.body);
+
+    outside.remove();
   });
 });

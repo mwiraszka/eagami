@@ -48,65 +48,7 @@
             [attr.y]="layout().top"
             [attr.width]="layout().plotWidth"
             [attr.height]="layout().plotHeight" />
-          @for (tick of layout().ticks; track tick.value) {
-            @if (showGrid()) {
-              <line
-                class="ea-line-chart__grid"
-                [attr.x1]="layout().left"
-                [attr.x2]="layout().left + layout().plotWidth"
-                [attr.y1]="tick.y"
-                [attr.y2]="tick.y" />
-            }
-            <text
-              class="ea-line-chart__axis ea-line-chart__axis--y"
-              text-anchor="end"
-              dominant-baseline="middle"
-              [attr.x]="layout().tickX"
-              [attr.y]="tick.y">
-              {{ tick.text }}
-            </text>
-          }
-          <line
-            class="ea-line-chart__baseline"
-            [attr.x1]="layout().left"
-            [attr.x2]="layout().left + layout().plotWidth"
-            [attr.y1]="layout().top + layout().plotHeight"
-            [attr.y2]="layout().top + layout().plotHeight" />
-          @if (layout().axisBreak; as axisBreak) {
-            <path
-              class="ea-line-chart__y-axis"
-              [attr.d]="axisBreak.axis" />
-            <path
-              class="ea-line-chart__axis-break"
-              [attr.d]="axisBreak.slashes" />
-          }
-          @for (xLabel of layout().xLabels; track xLabel.key) {
-            <line
-              class="ea-line-chart__x-tick"
-              [attr.x1]="xLabel.x"
-              [attr.x2]="xLabel.x"
-              [attr.y1]="layout().axisY"
-              [attr.y2]="layout().tickEndY" />
-            <text
-              class="ea-line-chart__axis ea-line-chart__axis--x"
-              [attr.text-anchor]="layout().labelAngle ? 'end' : 'middle'"
-              [attr.dominant-baseline]="layout().labelAngle ? 'central' : null"
-              [attr.transform]="
-                layout().labelAngle
-                  ? 'rotate(' +
-                    -layout().labelAngle +
-                    ' ' +
-                    xLabel.x +
-                    ' ' +
-                    layout().labelY +
-                    ')'
-                  : null
-              "
-              [attr.x]="xLabel.textX"
-              [attr.y]="layout().labelY">
-              {{ xLabel.text }}
-            </text>
-          }
+          <ng-container [ngTemplateOutlet]="axes" />
           @if (layout().axisBreak; as axisBreak) {
             <!-- Keeps the break's gap open under a crosshair drawn along the y-axis -->
             <mask
@@ -241,9 +183,22 @@
     <div
       class="ea-line-chart__empty"
       role="img"
-      [attr.aria-label]="label()"
-      [style.height.px]="height()">
-      {{ i18n.messages().chart.noData }}
+      [attr.aria-label]="label()">
+      <svg
+        aria-hidden="true"
+        [attr.width]="layout().width"
+        [attr.height]="layout().height"
+        [attr.viewBox]="'0 0 ' + layout().width + ' ' + layout().height">
+        <ng-container [ngTemplateOutlet]="axes" />
+      </svg>
+      <span
+        class="ea-line-chart__empty-message"
+        [style.top.px]="layout().top"
+        [style.left.px]="layout().left"
+        [style.width.px]="layout().plotWidth"
+        [style.height.px]="layout().plotHeight">
+        {{ i18n.messages().chart.noData }}
+      </span>
     </div>
   }
   @if (showsLegend()) {
@@ -262,3 +217,67 @@
     </ul>
   }
 </div>
+
+<ng-template #axes>
+  @for (tick of layout().ticks; track tick.value) {
+    @if (showGrid()) {
+      <svg:line
+        class="ea-line-chart__grid"
+        [attr.x1]="layout().left"
+        [attr.x2]="layout().left + layout().plotWidth"
+        [attr.y1]="tick.y"
+        [attr.y2]="tick.y" />
+    }
+    @if (tick.text) {
+      <svg:text
+        class="ea-line-chart__axis ea-line-chart__axis--y"
+        text-anchor="end"
+        dominant-baseline="middle"
+        [attr.x]="layout().tickX"
+        [attr.y]="tick.y">
+        {{ tick.text }}
+      </svg:text>
+    }
+  }
+  <svg:line
+    class="ea-line-chart__baseline"
+    [attr.x1]="layout().left"
+    [attr.x2]="layout().left + layout().plotWidth"
+    [attr.y1]="layout().top + layout().plotHeight"
+    [attr.y2]="layout().top + layout().plotHeight" />
+  @if (layout().axisBreak; as axisBreak) {
+    <svg:path
+      class="ea-line-chart__y-axis"
+      [attr.d]="axisBreak.axis" />
+    <svg:path
+      class="ea-line-chart__axis-break"
+      [attr.d]="axisBreak.slashes" />
+  }
+  @for (xLabel of layout().xLabels; track xLabel.key) {
+    <svg:line
+      class="ea-line-chart__x-tick"
+      [attr.x1]="xLabel.x"
+      [attr.x2]="xLabel.x"
+      [attr.y1]="layout().axisY"
+      [attr.y2]="layout().tickEndY" />
+    <svg:text
+      class="ea-line-chart__axis ea-line-chart__axis--x"
+      [attr.text-anchor]="layout().labelAngle ? 'end' : 'middle'"
+      [attr.dominant-baseline]="layout().labelAngle ? 'central' : null"
+      [attr.transform]="
+        layout().labelAngle
+          ? 'rotate(' +
+            -layout().labelAngle +
+            ' ' +
+            xLabel.x +
+            ' ' +
+            layout().labelY +
+            ')'
+          : null
+      "
+      [attr.x]="xLabel.textX"
+      [attr.y]="layout().labelY">
+      {{ xLabel.text }}
+    </svg:text>
+  }
+</ng-template>

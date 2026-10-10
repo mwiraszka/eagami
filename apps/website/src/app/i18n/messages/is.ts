@@ -1470,6 +1470,8 @@ export const is: WebMessages = {
               'Sýnir skýringar fyrir neðan ritið þegar það teiknar fleiri en eina röð.',
             yMin: 'Neðri mörk y-ássins; leidd af gögnunum þegar þau eru ekki stillt.',
             yMax: 'Efri mörk y-ássins; leidd af gögnunum þegar þau eru ekki stillt.',
+            maxYStep:
+              'Mesta bil á milli merkja á y-ásnum; stærra svið fær fleiri merki í stað breiðari bila.',
             height: 'Hæð teiknisvæðisins í pixlum; breiddin fyllir ílátið.',
             size: 'Sjónræn stærð texta á ás, í skýringum og í ábendingu.',
             animation:

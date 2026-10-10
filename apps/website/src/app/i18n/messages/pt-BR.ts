@@ -1472,6 +1472,8 @@ export const ptBR: WebMessages = {
               'Mostra uma legenda abaixo do gráfico quando ele plota mais de uma série.',
             yMin: 'Limite inferior do eixo y; derivado dos dados quando não definido.',
             yMax: 'Limite superior do eixo y; derivado dos dados quando não definido.',
+            maxYStep:
+              'Maior distância entre as marcas do eixo y; uma faixa mais ampla recebe mais marcas em vez de distâncias maiores.',
             height:
               'Altura da área de plotagem em pixels; a largura preenche o contêiner.',
             size: 'Tamanho visual do texto do eixo, da legenda e do tooltip.',

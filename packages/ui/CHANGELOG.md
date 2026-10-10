@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.64.0] - 2026-10-11
+
+### Added
+
+- Add a `maxYStep` input to the line chart that caps the gap between y-axis ticks, so a wider range gets more ticks instead of wider gaps.
+
+### Changed
+
+- Draw the line chart's axes and grid when it has nothing to plot, with the no-data message centred in the plot and no made-up numbers beside the grid, so an empty chart keeps its shape.
+
+### Fixed
+
+- Open popovers, such as a dropdown's options and menus, in Safari before version 17, where finding their place on the page threw an error.
+- Centre a line chart's lone point in the plot, and stop a pinch from zooming in on it until it drops out of view.
+- Run a line chart's y-axis from zero in round, even steps when its points all share one value, with no axis break, so they sit about halfway up.
+- Keep a panned line chart's y-axis on the whole range's scale while no point is in view, instead of falling back to 0 and 1.
+- Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.
+- Keep the focus ring of an accordion header, a clickable table row and a navigable table cell whole, by drawing it a small gap inside their edges, where rounded corners can no longer clip it.
+
 ## [5.63.2] - 2026-10-10
 
 ### Fixed
@@ -1870,6 +1889,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.64.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.2...ui-v5.64.0
 [5.63.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.1...ui-v5.63.2
 [5.63.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.0...ui-v5.63.1
 [5.63.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.1...ui-v5.63.0

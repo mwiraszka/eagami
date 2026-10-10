@@ -1478,6 +1478,8 @@ export const esES: WebMessages = {
               'Muestra una leyenda debajo del gráfico cuando representa más de una serie.',
             yMin: 'Límite inferior del eje y; se deriva de los datos si no se establece.',
             yMax: 'Límite superior del eje y; se deriva de los datos si no se establece.',
+            maxYStep:
+              'Separación máxima entre las marcas del eje y; un rango más amplio recibe más marcas en lugar de separaciones mayores.',
             height:
               'Altura del área de trazado en píxeles; el ancho ocupa todo el contenedor.',
             size: 'Tamaño visual del texto del eje, la leyenda y el tooltip.',

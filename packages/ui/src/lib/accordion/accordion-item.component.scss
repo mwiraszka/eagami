@@ -55,9 +55,9 @@
       background-color: var(--color-state-hover);
     }
 
+    // The accordion clips its rounded corners, so the ring sits inside the trigger
     &:focus-visible {
-      outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
 
     &:disabled {
@@ -110,4 +110,18 @@
   &--disabled {
     opacity: 0.5;
   }
+}
+
+// The accordion clips its rounded corners, so a trigger in one takes the same curve, and
+// its focus ring with it
+:host(:first-child) .ea-accordion-item__trigger {
+  border-top-left-radius: calc(var(--radius-lg) - var(--border-width-thin));
+  border-top-right-radius: calc(var(--radius-lg) - var(--border-width-thin));
+}
+
+:host(:last-child)
+  .ea-accordion-item:not(.ea-accordion-item--expanded)
+  .ea-accordion-item__trigger {
+  border-bottom-left-radius: calc(var(--radius-lg) - var(--border-width-thin));
+  border-bottom-right-radius: calc(var(--radius-lg) - var(--border-width-thin));
 }

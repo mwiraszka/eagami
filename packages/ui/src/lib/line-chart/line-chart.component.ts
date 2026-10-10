@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -222,7 +222,7 @@ let nextId = 0;
  */
 @Component({
   selector: 'ea-line-chart',
-  imports: [NgClass, TooltipDirective],
+  imports: [NgClass, NgTemplateOutlet, TooltipDirective],
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -272,6 +272,8 @@ export class LineChartComponent {
   readonly yMin = input<number | undefined>(undefined);
   /** Upper bound of the y-axis; derived from the data when unset. */
   readonly yMax = input<number | undefined>(undefined);
+  /** Largest gap between y-axis ticks; a wider range gets more ticks instead of wider gaps. */
+  readonly maxYStep = input<number | undefined>(undefined);
   /** How the x-axis labels are set; `auto` turns them as they run out of room. */
   readonly xLabelOrientation = input<ChartLabelOrientation>('horizontal');
   /** Marks the foot of a y-axis that stops short of zero with a break symbol. */
@@ -342,13 +344,24 @@ export class LineChartComponent {
 
   // Spans every point and every tick, so no tick falls outside the axis
   protected readonly domain = computed<XDomain>(() => {
-    const known = [
-      ...this.positions(),
-      ...(this.xTicks()?.map(t => t.value) ?? []),
-    ].filter(p => isFinite(p));
-    const first = known.length ? Math.min(...known) : 0;
-    const last = known.length ? Math.max(...known) : 0;
+    const points = this.positions().filter(p => isFinite(p));
+    const known = [...points, ...(this.xTicks()?.map(t => t.value) ?? [])].filter(p =>
+      isFinite(p),
+    );
+    let first = known.length ? Math.min(...known) : 0;
+    let last = known.length ? Math.max(...known) : 0;
     const span = this.zoomSpan();
+    // A lone point sits in the middle, the axis reaching as far each way as its furthest
+    // tick, though never past the visible span
+    if (points.length === 1) {
+      const [point] = points;
+      const reach = Math.min(
+        Math.max(point - first, last - point),
+        span != null && span > 0 ? span / 2 : Infinity,
+      );
+      first = point - reach;
+      last = point + reach;
+    }
     if (span == null || !(span > 0) || last - first <= span) {
       return { first, last, start: first, end: last, span: null };
     }
@@ -423,7 +436,8 @@ export class LineChartComponent {
         }
       });
     }
-    return values;
+    // A window with nothing in view keeps the scale of the whole series
+    return values.length ? values : runs.flatMap(run => run.map(p => p.value));
   });
 
   protected readonly layout = computed(() => {
@@ -438,7 +452,7 @@ export class LineChartComponent {
       orientation === 'auto'
         ? ([0, 45, 90].find(a => this.labelsFit(plot.candidates, a, axisPx)) ?? 90)
         : fixedAngle;
-    const { plotHeight, min, max, tickTexts, left, plotWidth, x, xLabels } =
+    const { plotHeight, min, max, level, tickTexts, left, plotWidth, x, xLabels } =
       angle === fixedAngle ? plot : this.plotArea(width, height, axisPx, angle);
     const top = axisPx;
 
@@ -446,7 +460,9 @@ export class LineChartComponent {
       top + (1 - (clamp(v, min, max) - min) / (max - min || 1)) * plotHeight;
     const baselineY = y(clamp(0, min, max));
     const breakY =
-      this.showAxisBreak() && min > 0 ? top + plotHeight - axisPx * BREAK_HEIGHT : null;
+      this.showAxisBreak() && min > 0 && !level
+        ? top + plotHeight - axisPx * BREAK_HEIGHT
+        : null;
     const axisY = top + plotHeight;
 
     const curve = CURVES[this.curve()];
@@ -503,17 +519,20 @@ export class LineChartComponent {
     const plotHeight = Math.max(1, height - top - bottom);
     const maxTicks = Math.max(2, Math.floor(plotHeight / (axisPx * 3)));
 
-    const { min, max, ticks } = this.yScale(
+    const { min, max, ticks, unlabelled, level } = this.yScale(
       this.visibleValues(),
       plotHeight,
       axisPx,
       maxTicks,
     );
-    const tickTexts = ticks.map(value => ({ value, text: format(value) }));
+    const tickTexts = ticks.map(value => ({
+      value,
+      text: unlabelled ? '' : format(value),
+    }));
     // A panned window sizes its gutter for the whole range's ticks too, so the plot never shifts
     const gutterTexts = [
       ...tickTexts.map(t => t.text),
-      ...(windowed
+      ...(windowed && !unlabelled
         ? this.yScale(
             this.runs().flatMap(runs => runs.flat().map(p => p.value)),
             plotHeight,
@@ -548,7 +567,7 @@ export class LineChartComponent {
       const half = estimateTextWidth(label.text, axisPx) / 2;
       return { ...label, textX: clamp(label.x, half, width - half) };
     });
-    return { plotHeight, min, max, tickTexts, left, ...axis, xLabels };
+    return { plotHeight, min, max, level, tickTexts, left, ...axis, xLabels };
   }
 
   protected readonly tooltip = computed(() => {
@@ -824,9 +843,21 @@ export class LineChartComponent {
     plotHeight: number,
     axisPx: number,
     maxTicks: number,
-  ): { min: number; max: number; ticks: number[] } {
+  ): {
+    min: number;
+    max: number;
+    ticks: number[];
+    unlabelled?: boolean;
+    level?: boolean;
+  } {
     const yMin = this.yMin();
     const yMax = this.yMax();
+    const maxStep = this.maxYStep() ?? Infinity;
+    // With nothing plotted and no bounds there is no scale to label, so the grid keeps
+    // its usual spacing with no numbers beside it
+    if (!values.length && (yMin === undefined || yMax === undefined)) {
+      return { min: 0, max: 1, ticks: niceScale(0, 1, maxTicks).ticks, unlabelled: true };
+    }
     const dataMin = Math.min(...values);
     const dataMax = Math.max(...values);
     let lo = yMin ?? dataMin;
@@ -838,6 +869,25 @@ export class LineChartComponent {
     }
     if (lo > hi) {
       [lo, hi] = [hi, lo];
+    }
+    // A single value has no spread to show, so it sits about halfway up an axis running
+    // from zero in round steps, which needs no break
+    if (
+      dataMin === dataMax &&
+      yMin === undefined &&
+      yMax === undefined &&
+      !this.windowed()
+    ) {
+      const scale =
+        dataMin === 0
+          ? niceScale(-1, 1, maxTicks, maxStep)
+          : niceScale(
+              Math.min(0, 2 * dataMin),
+              Math.max(0, 2 * dataMin),
+              maxTicks,
+              maxStep,
+            );
+      return { ...scale, level: true };
     }
     // Room kept between the outermost points and the plot's top and bottom edges
     const clearance = axisPx;
@@ -856,11 +906,13 @@ export class LineChartComponent {
       const min =
         yMin ?? (zeroFloor ? lo : derivedFloor ? Math.max(0, lo - breakPad) : lo - pad);
       const max = yMax ?? hi + pad;
-      const ticks = niceScale(min, max, maxTicks).ticks.filter(t => t >= min && t <= max);
+      const ticks = niceScale(min, max, maxTicks, maxStep).ticks.filter(
+        t => t >= min && t <= max,
+      );
       return { min, max, ticks };
     }
 
-    const scale = niceScale(lo, hi, maxTicks);
+    const scale = niceScale(lo, hi, maxTicks, maxStep);
     const step = scale.ticks[1] - scale.ticks[0];
     const ticks = [...scale.ticks];
     let min = yMin ?? scale.min;
@@ -1018,10 +1070,11 @@ export class LineChartComponent {
   ): void {
     const domain = this.domain();
     const full = domain.last - domain.first;
-    if (!(full > 0) || !(currentTarget instanceof Element)) {
+    const floor = this.minSpan();
+    if (!(full > 0) || floor === Infinity || !(currentTarget instanceof Element)) {
       return;
     }
-    const next = clamp(span, Math.min(this.minSpan(), full), full);
+    const next = clamp(span, Math.min(floor, full), full);
     const shown = domain.end - domain.start;
     const inset = domain.span != null ? EDGE_INSET : 0;
     const { left, plotWidth } = this.layout();
@@ -1035,7 +1088,8 @@ export class LineChartComponent {
     this.visibleRangeChange.emit({ start: end - next, end });
   }
 
-  // A window never narrows past two gaps between neighbouring points
+  // A window never narrows past two gaps between neighbouring points, and with fewer
+  // than two points there is nothing to zoom in on
   private minSpan(): number {
     const known = this.positions()
       .filter(p => isFinite(p))
@@ -1044,7 +1098,7 @@ export class LineChartComponent {
       .slice(1)
       .map((p, i) => p - known[i])
       .filter(gap => gap > 0);
-    return gaps.length ? Math.min(...gaps) * 2 : 1;
+    return gaps.length ? Math.min(...gaps) * 2 : Infinity;
   }
 
   private unitsPerPx(): number {
