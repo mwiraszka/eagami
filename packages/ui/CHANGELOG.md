@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.64.0] - 2026-10-10
+
+### Changed
+
+- Draw the line chart's axes when it has nothing to plot, with the no-data message centred in the plot, so an empty chart keeps its shape.
+
+### Fixed
+
+- Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.
+- Keep the focus ring of an accordion header and of a clickable table row whole, by drawing it just inside their edges where the accordion and the table clip anything outside them.
+
 ## [5.63.2] - 2026-10-10
 
 ### Fixed
@@ -1870,6 +1881,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.64.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.2...ui-v5.64.0
 [5.63.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.1...ui-v5.63.2
 [5.63.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.0...ui-v5.63.1
 [5.63.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.1...ui-v5.63.0
