@@ -1,8 +1,8 @@
 ---
 title: 'Eagami UI: React Integration'
-version: 5.63.1
-source: '@eagami/ui@5.63.1 (https://github.com/mwiraszka/eagami)'
-last-synced: 2026-10-09
+version: 5.63.2
+source: '@eagami/ui@5.63.2 (https://github.com/mwiraszka/eagami)'
+last-synced: 2026-10-10
 audience: human developers and AI coding agents
 purpose: >
   Single-file specification for applying the Eagami UI design tokens and
@@ -531,7 +531,7 @@ Copy the block below to `src/styles/eagami-tokens.css` in the consuming project 
 ```css
 /* ---------------------------------------------------------------------------
  * Eagami UI: CSS tokens
- * Generated from @eagami/ui@5.63.1 (packages/ui/src/styles/tokens/*.scss)
+ * Generated from @eagami/ui@5.63.2 (packages/ui/src/styles/tokens/*.scss)
  * by scripts/sync-integration-guides.mjs. Do not edit by hand.
  * ------------------------------------------------------------------------- */
 
@@ -1112,7 +1112,7 @@ For JS access (CSS-in-JS, Tailwind config, runtime theming), create `src/theme/e
 ```ts
 /**
  * Eagami UI: TypeScript tokens
- * Generated from @eagami/ui@5.63.1 by scripts/sync-integration-guides.mjs.
+ * Generated from @eagami/ui@5.63.2 by scripts/sync-integration-guides.mjs.
  * Do not edit by hand.
  */
 

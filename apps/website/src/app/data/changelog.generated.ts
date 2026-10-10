@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.63.2',
+    date: '2026-10-10',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Show placeholder text in italics in every field, at the same readable strength in every browser, so an empty field no longer looks filled.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.63.1',
     date: '2026-10-10',
     sections: [
