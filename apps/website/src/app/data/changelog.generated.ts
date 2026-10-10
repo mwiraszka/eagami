@@ -15,17 +15,19 @@ export interface ChangelogRelease {
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
     version: '5.64.0',
-    date: '2026-10-10',
+    date: '2026-10-11',
     sections: [
       {
         heading: 'Changed',
         entries: [
-          "Draw the line chart's axes when it has nothing to plot, with the no-data message centred in the plot, so an empty chart keeps its shape.",
+          "Draw the line chart's axes and grid when it has nothing to plot, with the no-data message centred in the plot and no made-up numbers beside the grid, so an empty chart keeps its shape.",
         ],
       },
       {
         heading: 'Fixed',
         entries: [
+          "Centre a line chart's lone point in the plot, and stop a pinch from zooming in on it until it drops out of view.",
+          "Keep a panned line chart's y-axis on the whole range's scale while no point is in view, instead of falling back to 0 and 1.",
           'Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.',
           'Keep the focus ring of an accordion header and of a clickable table row whole, by drawing it just inside their edges where the accordion and the table clip anything outside them.',
         ],
