@@ -353,4 +353,9 @@
     outline-offset: calc(-1 * var(--border-width-medium));
     box-shadow: none;
   }
+
+  // A row spans the scrolling table edge to edge, so its ring sits inside it
+  &__body &__row:focus-visible {
+    @include ea.focus-ring-inset;
+  }
 }

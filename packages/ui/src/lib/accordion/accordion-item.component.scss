@@ -55,9 +55,9 @@
       background-color: var(--color-state-hover);
     }
 
+    // The accordion clips its rounded corners, so the ring sits inside the trigger
     &:focus-visible {
-      outline: none;
-      @include ea.focus-ring;
+      @include ea.focus-ring-inset;
     }
 
     &:disabled {
