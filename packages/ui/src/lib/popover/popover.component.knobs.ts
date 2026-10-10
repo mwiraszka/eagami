@@ -51,7 +51,7 @@ export const POPOVER_KNOBS: ComponentKnobs = {
     placement: 'bottom-start',
     role: 'dialog',
     scrollBehavior: 'reposition',
-    offset: 2,
+    offset: 4,
     flip: true,
     clamp: true,
     matchAnchorWidth: false,

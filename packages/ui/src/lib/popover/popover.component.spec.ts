@@ -373,7 +373,7 @@ describe('PopoverComponent', () => {
     it('writes the resolved viewport coordinates onto the surface', async () => {
       await openAnchoredAt(new DOMRect(200, 100, 80, 32));
 
-      expect(getSurface()?.style.top).toBe('134px');
+      expect(getSurface()?.style.top).toBe('136px');
       expect(getSurface()?.style.left).toBe('200px');
     });
 
@@ -417,7 +417,7 @@ describe('PopoverComponent', () => {
       await nextFrame();
       refFixture.detectChanges();
 
-      expect(getSurface()?.style.top).toBe('422px');
+      expect(getSurface()?.style.top).toBe('424px');
       refFixture.destroy();
     });
 
@@ -496,7 +496,7 @@ describe('PopoverComponent', () => {
       reposition();
 
       expect(host.popover().effectivePlacement()).toBe('top-start');
-      expect(getSurface()?.style.top).toBe('658px');
+      expect(getSurface()?.style.top).toBe('656px');
     });
 
     it('flips back once the settled side stops fitting', async () => {
@@ -550,7 +550,7 @@ describe('PopoverComponent', () => {
       document.body.dispatchEvent(new Event('scroll'));
       fixture.detectChanges();
 
-      expect(getSurface()?.style.top).toBe('334px');
+      expect(getSurface()?.style.top).toBe('336px');
       expect(host.closeCount()).toBe(0);
     });
 
@@ -562,7 +562,7 @@ describe('PopoverComponent', () => {
       document.body.dispatchEvent(new Event('scroll'));
       fixture.detectChanges();
 
-      expect(getSurface()?.style.top).toBe('134px');
+      expect(getSurface()?.style.top).toBe('136px');
       expect(host.closeCount()).toBe(0);
     });
 
@@ -609,7 +609,7 @@ describe('PopoverComponent', () => {
 
       await openAnchoredAt(new DOMRect(200, 100, 80, 32));
 
-      expect(getSurface()?.style.top).toBe('302px');
+      expect(getSurface()?.style.top).toBe('304px');
       expect(getSurface()?.style.left).toBe('400px');
     });
 
@@ -621,7 +621,7 @@ describe('PopoverComponent', () => {
       document.body.dispatchEvent(new Event('scroll'));
       fixture.detectChanges();
 
-      expect(getSurface()?.style.top).toBe('252px');
+      expect(getSurface()?.style.top).toBe('254px');
       expect(getSurface()?.style.left).toBe('400px');
     });
 
@@ -633,7 +633,7 @@ describe('PopoverComponent', () => {
       fixture.detectChanges();
       fixture.detectChanges();
 
-      expect(getSurface()?.style.top).toBe('202px');
+      expect(getSurface()?.style.top).toBe('204px');
       expect(getSurface()?.style.left).toBe('100px');
     });
   });

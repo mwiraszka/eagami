@@ -130,7 +130,7 @@ describe('ContextMenuTriggerDirective', () => {
 
       expect(host.menuOpen()).toBe(true);
       expect(event.defaultPrevented).toBe(true);
-      expect(openSurface()?.style.top).toBe('82px');
+      expect(openSurface()?.style.top).toBe('84px');
       expect(openSurface()?.style.left).toBe('120px');
     });
 
@@ -141,7 +141,7 @@ describe('ContextMenuTriggerDirective', () => {
 
       expect(host.menuOpen()).toBe(true);
       expect(event.defaultPrevented).toBe(true);
-      expect(openSurface()?.style.top).toBe('92px');
+      expect(openSurface()?.style.top).toBe('94px');
       expect(openSurface()?.style.left).toBe('40px');
     });
 
@@ -150,7 +150,7 @@ describe('ContextMenuTriggerDirective', () => {
 
       rightClick(inner(), { button: 0, clientX: 0, clientY: 0 });
 
-      expect(openSurface()?.style.top).toBe('92px');
+      expect(openSurface()?.style.top).toBe('94px');
       expect(openSurface()?.style.left).toBe('40px');
     });
 
@@ -168,7 +168,7 @@ describe('ContextMenuTriggerDirective', () => {
 
       rightClick(area());
 
-      expect(openSurface()?.style.top).toBe('122px');
+      expect(openSurface()?.style.top).toBe('124px');
       expect(openSurface()?.style.left).toBe('10px');
     });
 
@@ -206,7 +206,7 @@ describe('ContextMenuTriggerDirective', () => {
 
       expect(host.requests).toEqual([{ point: { x: 120, y: 80 } }]);
       expect(event.defaultPrevented).toBe(true);
-      expect(openSurface()?.style.top).toBe('82px');
+      expect(openSurface()?.style.top).toBe('84px');
     });
 
     it('asks it to open against the host when positioned at the anchor', () => {
@@ -224,7 +224,7 @@ describe('ContextMenuTriggerDirective', () => {
       rightClick(area(), { clientX: 200, clientY: 150 });
 
       expect(host.popoverOpen()).toBe(true);
-      expect(openSurface()?.style.top).toBe('152px');
+      expect(openSurface()?.style.top).toBe('154px');
       expect(openSurface()?.style.left).toBe('200px');
     });
   });
