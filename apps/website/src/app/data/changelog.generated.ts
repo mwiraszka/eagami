@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.64.0',
+    date: '2026-10-10',
+    sections: [
+      {
+        heading: 'Changed',
+        entries: [
+          "Draw the line chart's axes when it has nothing to plot, with the no-data message centred in the plot, so an empty chart keeps its shape.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.',
+          'Keep the focus ring of an accordion header and of a clickable table row whole, by drawing it just inside their edges where the accordion and the table clip anything outside them.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.63.2',
     date: '2026-10-10',
     sections: [
