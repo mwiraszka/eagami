@@ -1455,6 +1455,8 @@ export const en: WebMessages = {
               'Shows a legend beneath the chart when it plots more than one series.',
             yMin: 'Lower bound of the y-axis; derived from the data when unset.',
             yMax: 'Upper bound of the y-axis; derived from the data when unset.',
+            maxYStep:
+              'Largest gap between y-axis ticks; a wider range gets more ticks instead of wider gaps.',
             height: 'Height of the plot in pixels; the width fills the container.',
             size: 'Visual size of the axis, legend, and tooltip text.',
             animation:

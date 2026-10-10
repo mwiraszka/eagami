@@ -1483,6 +1483,8 @@ export const de: WebMessages = {
               'Zeigt eine Legende unter dem Diagramm an, wenn es mehr als eine Reihe darstellt.',
             yMin: 'Untergrenze der y-Achse; wird aus den Daten abgeleitet, wenn nicht gesetzt.',
             yMax: 'Obergrenze der y-Achse; wird aus den Daten abgeleitet, wenn nicht gesetzt.',
+            maxYStep:
+              'Größter Abstand zwischen den Markierungen der y-Achse; ein größerer Bereich erhält mehr Markierungen statt größerer Abstände.',
             height:
               'Höhe des Diagrammbereichs in Pixeln; die Breite füllt den Container aus.',
             size: 'Visuelle Größe des Achsen-, Legenden- und Tooltip-Texts.',

@@ -1489,6 +1489,8 @@ export const frFR: WebMessages = {
               'Affiche une légende sous le graphique lorsqu’il trace plus d’une série.',
             yMin: 'Borne inférieure de l’axe des y ; déduite des données si non définie.',
             yMax: 'Borne supérieure de l’axe des y ; déduite des données si non définie.',
+            maxYStep:
+              'Écart maximal entre les graduations de l’axe des y ; une plage plus large reçoit davantage de graduations plutôt que des écarts plus grands.',
             height:
               'Hauteur de la zone de tracé en pixels ; la largeur remplit le conteneur.',
             size: 'Taille visuelle du texte de l’axe, de la légende et de l’infobulle.',

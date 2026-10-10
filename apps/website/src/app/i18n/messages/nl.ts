@@ -1471,6 +1471,8 @@ export const nl: WebMessages = {
               'Toont een legenda onder de grafiek wanneer deze meer dan één reeks weergeeft.',
             yMin: 'Ondergrens van de y-as; afgeleid uit de gegevens indien niet ingesteld.',
             yMax: 'Bovengrens van de y-as; afgeleid uit de gegevens indien niet ingesteld.',
+            maxYStep:
+              'Grootste afstand tussen de markeringen op de y-as; een groter bereik krijgt meer markeringen in plaats van grotere afstanden.',
             height: 'Hoogte van het tekengebied in pixels; de breedte vult de container.',
             size: 'Visuele grootte van de tekst van de as, de legenda en de tooltip.',
             animation:
