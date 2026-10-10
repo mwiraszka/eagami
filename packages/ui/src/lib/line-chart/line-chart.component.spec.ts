@@ -952,18 +952,17 @@ describe('LineChartComponent', () => {
       );
     });
 
-    it('sits halfway up an evenly ticked y-axis from zero, with no break', () => {
+    it('sits about halfway up a y-axis from zero in round steps, with no break', () => {
       fixture.componentRef.setInput('showAxisBreak', true);
       fixture.detectChanges();
       const hit = query('.ea-line-chart__hit')!;
-      const middle =
-        Number(hit.getAttribute('y')) + Number(hit.getAttribute('height')) / 2;
+      const height = Number(hit.getAttribute('height'));
+      const middle = Number(hit.getAttribute('y')) + height / 2;
+      const cy = Number(query('.ea-line-chart__point')!.getAttribute('cy'));
       const ticks = queryAll('.ea-line-chart__axis--y').map(t => t.textContent?.trim());
 
-      expect(Number(query('.ea-line-chart__point')!.getAttribute('cy'))).toBeCloseTo(
-        middle,
-      );
-      expect(ticks).toEqual(['0', '737', '1,474', '2,211', '2,948']);
+      expect(Math.abs(cy - middle)).toBeLessThan(height / 10);
+      expect(ticks).toEqual(['0', '1,000', '2,000', '3,000']);
       expect(query('.ea-line-chart__axis-break')).toBeNull();
     });
 

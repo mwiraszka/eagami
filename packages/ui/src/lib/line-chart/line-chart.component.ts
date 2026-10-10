@@ -867,27 +867,19 @@ export class LineChartComponent {
     if (lo > hi) {
       [lo, hi] = [hi, lo];
     }
-    // A single value has no spread to show, so it sits halfway up an axis running from
-    // zero to twice it in even steps, which needs no break
+    // A single value has no spread to show, so it sits about halfway up an axis running
+    // from zero in round steps, which needs no break
     if (
       dataMin === dataMax &&
       yMin === undefined &&
       yMax === undefined &&
       !this.windowed()
     ) {
-      const end = dataMin === 0 ? 1 : 2 * dataMin;
-      const min = dataMin === 0 ? -1 : Math.min(0, end);
-      const max = Math.max(0, end);
-      const intervals = maxTicks > 4 ? 4 : 2;
-      const step = (max - min) / intervals;
-      return {
-        min,
-        max,
-        ticks: Array.from({ length: intervals + 1 }, (_, i) =>
-          Number((min + i * step).toPrecision(12)),
-        ),
-        level: true,
-      };
+      const scale =
+        dataMin === 0
+          ? niceScale(-1, 1, maxTicks)
+          : niceScale(Math.min(0, 2 * dataMin), Math.max(0, 2 * dataMin), maxTicks);
+      return { ...scale, level: true };
     }
     // Room kept between the outermost points and the plot's top and bottom edges
     const clearance = axisPx;
