@@ -272,6 +272,8 @@ export class LineChartComponent {
   readonly yMin = input<number | undefined>(undefined);
   /** Upper bound of the y-axis; derived from the data when unset. */
   readonly yMax = input<number | undefined>(undefined);
+  /** Largest gap between y-axis ticks; a wider range gets more ticks instead of wider gaps. */
+  readonly maxYStep = input<number | undefined>(undefined);
   /** How the x-axis labels are set; `auto` turns them as they run out of room. */
   readonly xLabelOrientation = input<ChartLabelOrientation>('horizontal');
   /** Marks the foot of a y-axis that stops short of zero with a break symbol. */
@@ -850,6 +852,7 @@ export class LineChartComponent {
   } {
     const yMin = this.yMin();
     const yMax = this.yMax();
+    const maxStep = this.maxYStep() ?? Infinity;
     // With nothing plotted and no bounds there is no scale to label, so the grid keeps
     // its usual spacing with no numbers beside it
     if (!values.length && (yMin === undefined || yMax === undefined)) {
@@ -877,8 +880,13 @@ export class LineChartComponent {
     ) {
       const scale =
         dataMin === 0
-          ? niceScale(-1, 1, maxTicks)
-          : niceScale(Math.min(0, 2 * dataMin), Math.max(0, 2 * dataMin), maxTicks);
+          ? niceScale(-1, 1, maxTicks, maxStep)
+          : niceScale(
+              Math.min(0, 2 * dataMin),
+              Math.max(0, 2 * dataMin),
+              maxTicks,
+              maxStep,
+            );
       return { ...scale, level: true };
     }
     // Room kept between the outermost points and the plot's top and bottom edges
@@ -898,11 +906,13 @@ export class LineChartComponent {
       const min =
         yMin ?? (zeroFloor ? lo : derivedFloor ? Math.max(0, lo - breakPad) : lo - pad);
       const max = yMax ?? hi + pad;
-      const ticks = niceScale(min, max, maxTicks).ticks.filter(t => t >= min && t <= max);
+      const ticks = niceScale(min, max, maxTicks, maxStep).ticks.filter(
+        t => t >= min && t <= max,
+      );
       return { min, max, ticks };
     }
 
-    const scale = niceScale(lo, hi, maxTicks);
+    const scale = niceScale(lo, hi, maxTicks, maxStep);
     const step = scale.ticks[1] - scale.ticks[0];
     const ticks = [...scale.ticks];
     let min = yMin ?? scale.min;

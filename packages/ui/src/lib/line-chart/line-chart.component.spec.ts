@@ -966,6 +966,14 @@ describe('LineChartComponent', () => {
       expect(query('.ea-line-chart__axis-break')).toBeNull();
     });
 
+    it('steps the y-axis no wider than the largest step allowed', () => {
+      fixture.componentRef.setInput('maxYStep', 500);
+      fixture.detectChanges();
+
+      const ticks = queryAll('.ea-line-chart__axis--y').map(t => t.textContent?.trim());
+      expect(ticks).toEqual(['0', '500', '1,000', '1,500', '2,000', '2,500', '3,000']);
+    });
+
     it('mirrors the axis below zero for a negative value', () => {
       fixture.componentRef.setInput('series', [{ name: 'Rating', data: [-40] }]);
       fixture.detectChanges();

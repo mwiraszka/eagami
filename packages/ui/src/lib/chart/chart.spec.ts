@@ -10,6 +10,16 @@ describe('chart helpers', () => {
       expect(scale.ticks).toEqual([0, 20, 40, 60, 80, 100]);
     });
 
+    it('adds ticks rather than spacing them wider than the largest step allowed', () => {
+      const scale = niceScale(0, 2948, 5, 500);
+
+      expect(scale.ticks).toEqual([0, 500, 1000, 1500, 2000, 2500, 3000]);
+    });
+
+    it('ignores a largest step that is not positive', () => {
+      expect(niceScale(3, 97, 5, 0).ticks).toEqual([0, 20, 40, 60, 80, 100]);
+    });
+
     it('spans negative and positive values', () => {
       const scale = niceScale(-14, 12, 4);
 

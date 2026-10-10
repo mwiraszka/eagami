@@ -68,8 +68,16 @@ function niceStep(span: number, maxTicks: number): number {
   return nice * magnitude;
 }
 
-/** Extends `[min, max]` outward to round tick values, about `maxTicks` of them. */
-export function niceScale(min: number, max: number, maxTicks = 5): NiceScale {
+/**
+ * Extends `[min, max]` outward to round tick values, about `maxTicks` of them, or more
+ * where a gap would otherwise exceed `maxStep`.
+ */
+export function niceScale(
+  min: number,
+  max: number,
+  maxTicks = 5,
+  maxStep = Infinity,
+): NiceScale {
   if (!isFinite(min) || !isFinite(max)) {
     return { min: 0, max: 1, ticks: [0, 1] };
   }
@@ -78,7 +86,7 @@ export function niceScale(min: number, max: number, maxTicks = 5): NiceScale {
     min -= min === 0 ? 0 : pad;
     max += pad;
   }
-  const step = niceStep(max - min, maxTicks);
+  const step = Math.min(niceStep(max - min, maxTicks), maxStep > 0 ? maxStep : Infinity);
   const niceMin = Math.floor(min / step) * step;
   const niceMax = Math.ceil(max / step) * step;
   const ticks: number[] = [];
