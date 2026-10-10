@@ -314,7 +314,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
 
       expect(host.isOpen()).toBe(true);
-      expect(getSurface().style.top).toBe('62px');
+      expect(getSurface().style.top).toBe('64px');
       expect(getSurface().style.left).toBe('50px');
     });
 
@@ -378,7 +378,7 @@ describe('MenuComponent', () => {
       fixture.detectChanges();
       fixture.detectChanges();
 
-      expect(getSurface().style.top).toBe('52px');
+      expect(getSurface().style.top).toBe('54px');
       expect(getSurface().style.left).toBe('10px');
     });
   });

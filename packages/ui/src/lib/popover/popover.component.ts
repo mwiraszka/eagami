@@ -131,10 +131,10 @@ export class PopoverComponent {
   readonly surfaceId = input<string>(uniqueId('ea-popover'));
 
   /**
-   * Gap in px between the anchor and the popover. Defaults to 2 so an open panel
-   * clears the anchor's active focus ring instead of sitting flush over it.
+   * Gap in px between the anchor and the popover. Defaults to 4, as far as the focus
+   * ring reaches past its field, so an open panel never covers any of the ring.
    */
-  readonly offset = input<number>(2);
+  readonly offset = input<number>(4);
 
   /** Flip to the opposite side when the requested side overflows the viewport. */
   readonly flip = input<boolean>(true);

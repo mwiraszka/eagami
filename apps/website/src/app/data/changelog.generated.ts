@@ -14,6 +14,19 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.63.1',
+    date: '2026-10-10',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          "Mark the paginator's current page with a subtle neutral outline, in place of its brand-coloured border and fill, with the same light hover as the other pages.",
+          "Open popover panels, such as a dropdown's options, 4px from their field by default, so they never cover part of its focus ring.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.63.0',
     date: '2026-10-09',
     sections: [

@@ -119,20 +119,17 @@
     }
   }
 
-  &__page-btn--active .ea-button {
-    font-weight: var(--font-weight-medium);
-    border-color: var(--color-brand-text);
-    background-color: var(--color-brand-subtle);
-    color: var(--color-brand-text);
-
-    &:hover:not(.ea-button--disabled) {
-      background-color: var(--color-brand-muted);
-    }
+  // The current page is marked by the quiet outline a selected segmented option and a
+  // resting field take, and the same hover as the other pages. Set through the button's
+  // own property, which its ghost variant keeps when hovered, rather than a rule
+  // competing with its own
+  &__page-btn--active {
+    --ea-button-border-color: var(--color-border-default);
 
     @media (forced-colors: active) {
-      background-color: Highlight;
-      border-color: Highlight;
-      color: HighlightText;
+      --ea-button-background-color: Highlight;
+      --ea-button-border-color: Highlight;
+      --ea-button-color: HighlightText;
     }
   }
 

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.63.1] - 2026-10-10
+
+### Fixed
+
+- Mark the paginator's current page with a subtle neutral outline, in place of its brand-coloured border and fill, with the same light hover as the other pages.
+- Open popover panels, such as a dropdown's options, 4px from their field by default, so they never cover part of its focus ring.
+
 ## [5.63.0] - 2026-10-09
 
 ### Added
@@ -1857,6 +1864,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.63.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.0...ui-v5.63.1
 [5.63.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.1...ui-v5.63.0
 [5.62.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.0...ui-v5.62.1
 [5.62.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.61.2...ui-v5.62.0

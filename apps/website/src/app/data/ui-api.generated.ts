@@ -3929,7 +3929,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'offset',
         type: 'number',
-        default: '2',
+        default: '4',
         required: false,
         twoWay: false,
       },
