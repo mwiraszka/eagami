@@ -27,6 +27,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Fixed',
         entries: [
           "Centre a line chart's lone point in the plot, and stop a pinch from zooming in on it until it drops out of view.",
+          'Scale the y-axis evenly around a line chart whose points all share one value, with no axis break, so they sit halfway up.',
           "Keep a panned line chart's y-axis on the whole range's scale while no point is in view, instead of falling back to 0 and 1.",
           'Make the gap in the default focus ring see-through, so controls on cards, banners and other coloured surfaces no longer get a band of page colour around them.',
           'Keep the focus ring of an accordion header and of a clickable table row whole, by drawing it just inside their edges where the accordion and the table clip anything outside them.',
