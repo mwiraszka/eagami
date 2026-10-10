@@ -7,17 +7,34 @@
 // for one of the SC's exceptions (inline, spacing, essential).
 $target-size-min: 24px;
 
-// Standard focus indicator. The ring is a soft box-shadow halo, but box-shadow
-// is dropped in forced-colors (Windows High Contrast) mode, which would leave
-// keyboard users with no visible focus. Pair the halo with a real outline that
-// only renders in forced-colors so the ring survives there. Pass the full
-// box-shadow value to compose the ring with an existing shadow.
-@mixin focus-ring($ring: var(--shadow-focus-ring)) {
-  box-shadow: $ring;
+// Standard focus indicator. The ring is an outline set off by a gap, and the gap is
+// transparent, so it reads the same on any surface, however coloured. Pass a full
+// box-shadow value to draw a halo instead, such as an error ring; box-shadow is
+// dropped in forced-colors (Windows High Contrast) mode, so a real outline stands
+// in for it there.
+@mixin focus-ring($ring: null) {
+  @if $ring {
+    outline: none;
+    box-shadow: $ring;
+  } @else {
+    outline: var(--border-width-medium) solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
 
   @media (forced-colors: active) {
     outline: 2px solid Highlight;
     outline-offset: 2px;
+  }
+}
+
+// The focus ring drawn just inside the element's edge, for an element that fills a
+// container which clips its overflow, such as a row of a scrolling table
+@mixin focus-ring-inset {
+  outline: var(--border-width-medium) solid var(--color-border-focus);
+  outline-offset: calc(-1 * var(--border-width-medium));
+
+  @media (forced-colors: active) {
+    outline-color: Highlight;
   }
 }
 
@@ -35,6 +52,7 @@ $target-size-min: 24px;
 // visible, so the border alone picks up the focus colour, without the halo.
 @mixin readonly-focus-cue {
   border-color: var(--color-border-focus);
+  outline: none;
   box-shadow: none;
 
   // Border colour is unreliable in forced-colors, so the ring's outline stands

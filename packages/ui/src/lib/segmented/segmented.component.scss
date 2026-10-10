@@ -113,7 +113,6 @@
 
     &:focus-visible {
       @include ea.focus-ring;
-      outline: none;
     }
 
     &--selected {
