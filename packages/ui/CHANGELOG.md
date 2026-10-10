@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.63.2] - 2026-10-10
+
+### Fixed
+
+- Show placeholder text in italics in every field, at the same readable strength in every browser, so an empty field no longer looks filled.
+
 ## [5.63.1] - 2026-10-10
 
 ### Fixed
@@ -1864,6 +1870,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.63.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.1...ui-v5.63.2
 [5.63.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.0...ui-v5.63.1
 [5.63.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.1...ui-v5.63.0
 [5.62.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.62.0...ui-v5.62.1
