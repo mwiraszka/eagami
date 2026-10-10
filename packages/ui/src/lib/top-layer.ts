@@ -14,7 +14,9 @@
  * flatten that scale into "whatever opened last wins".
  */
 
-const TOP_LAYER_CONTAINER = 'dialog:modal, :popover-open';
+const TOP_LAYER_CONTAINERS = ['dialog:modal', ':popover-open'];
+
+const TOP_LAYER_CONTAINER = TOP_LAYER_CONTAINERS.join(', ');
 
 // `selector()` takes one complex selector, so probing a comma-separated list
 // parses as invalid and answers false everywhere; test each selector alone
@@ -74,7 +76,15 @@ export function enterTopLayer(surface: HTMLElement, anchor: Element): void {
  * that would clip it and above the dialog's own content.
  */
 export function topLayerHost(anchor: Element | null | undefined): HTMLElement {
-  const container = anchor?.closest(TOP_LAYER_CONTAINER);
+  // closest() throws on a selector the browser cannot parse, as Safari before 17 does on
+  // `:popover-open`, so only the containers it knows are looked for
+  const known =
+    typeof CSS === 'undefined'
+      ? []
+      : TOP_LAYER_CONTAINERS.filter(
+          selector => CSS.supports?.(`selector(${selector})`) === true,
+        );
+  const container = known.length ? anchor?.closest(known.join(', ')) : null;
   return container instanceof HTMLElement ? container : document.body;
 }
 
