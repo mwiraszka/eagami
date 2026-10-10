@@ -91,7 +91,7 @@
   transition: var(--transition-colors), var(--transition-shadow);
 
   &::placeholder {
-    color: var(--color-text-tertiary);
+    @include ea.placeholder-text;
   }
 
   &--focused {

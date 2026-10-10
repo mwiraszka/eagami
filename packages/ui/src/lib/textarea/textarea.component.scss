@@ -107,7 +107,7 @@
   line-height: var(--line-height-normal);
 
   &::placeholder {
-    color: var(--color-text-tertiary);
+    @include ea.placeholder-text;
   }
 
   &:disabled {

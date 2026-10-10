@@ -252,3 +252,12 @@ $target-size-min: 24px;
   width: auto;
   height: auto;
 }
+
+// Placeholder text, set apart from a value by its italics rather than by fading it, so it
+// keeps the tertiary text's contrast. The opacity is set outright, since browsers dim
+// placeholders by different amounts by default
+@mixin placeholder-text {
+  opacity: 1;
+  font-style: italic;
+  color: var(--color-text-tertiary);
+}
