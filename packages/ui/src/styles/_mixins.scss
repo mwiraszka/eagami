@@ -27,11 +27,12 @@ $target-size-min: 24px;
   }
 }
 
-// The focus ring drawn just inside the element's edge, for an element that fills a
-// container which clips its overflow, such as a row of a scrolling table
+// The focus ring drawn inside the element, for an element that fills a container which
+// clips its overflow, such as a row of a scrolling table. Its gap from the edge mirrors
+// the outer ring's, and keeps its corners clear of a rounded container's curve.
 @mixin focus-ring-inset {
   outline: var(--border-width-medium) solid var(--color-border-focus);
-  outline-offset: calc(-1 * var(--border-width-medium));
+  outline-offset: calc(-2 * var(--border-width-medium));
 
   @media (forced-colors: active) {
     outline-color: Highlight;
