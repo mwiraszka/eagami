@@ -18,6 +18,12 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
     date: '2026-10-11',
     sections: [
       {
+        heading: 'Added',
+        entries: [
+          'Add a `maxYStep` input to the line chart that caps the gap between y-axis ticks, so a wider range gets more ticks instead of wider gaps.',
+        ],
+      },
+      {
         heading: 'Changed',
         entries: [
           "Draw the line chart's axes and grid when it has nothing to plot, with the no-data message centred in the plot and no made-up numbers beside the grid, so an empty chart keeps its shape.",
