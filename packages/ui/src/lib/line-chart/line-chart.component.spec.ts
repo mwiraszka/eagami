@@ -188,8 +188,29 @@ describe('LineChartComponent', () => {
       fixture.componentRef.setInput('series', []);
       fixture.detectChanges();
 
-      expect(query('.ea-line-chart__empty')?.textContent?.trim()).toBe('No data');
+      expect(query('.ea-line-chart__empty-message')?.textContent?.trim()).toBe('No data');
       expect(query('.ea-line-chart__plot')).toBeNull();
+    });
+
+    it('draws the axes in place of the plot', () => {
+      fixture.componentRef.setInput('series', [{ name: 'Visitors', data: [] }]);
+      fixture.detectChanges();
+
+      const texts = queryAll('.ea-line-chart__axis--x').map(t => t.textContent?.trim());
+      expect(query('.ea-line-chart__empty .ea-line-chart__baseline')).not.toBeNull();
+      expect(texts).toEqual(LABELS);
+      expect(queryAll('.ea-line-chart__axis--y')).toHaveLength(0);
+    });
+
+    it('labels the y-axis when both of its bounds are set', () => {
+      fixture.componentRef.setInput('series', []);
+      fixture.componentRef.setInput('yMin', 0);
+      fixture.componentRef.setInput('yMax', 100);
+      fixture.detectChanges();
+
+      const ticks = queryAll('.ea-line-chart__axis--y').map(t => t.textContent?.trim());
+      expect(ticks[0]).toBe('0');
+      expect(ticks[ticks.length - 1]).toBe('100');
     });
   });
 

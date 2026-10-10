@@ -134,6 +134,17 @@ ea-line-chart {
   }
 
   &__empty {
+    position: relative;
+
+    svg {
+      display: block;
+      overflow: visible;
+      direction: ltr;
+    }
+  }
+
+  &__empty-message {
+    position: absolute;
     @include chart.chart-empty;
   }
 

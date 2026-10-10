@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -222,7 +222,7 @@ let nextId = 0;
  */
 @Component({
   selector: 'ea-line-chart',
-  imports: [NgClass, TooltipDirective],
+  imports: [NgClass, NgTemplateOutlet, TooltipDirective],
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -827,6 +827,10 @@ export class LineChartComponent {
   ): { min: number; max: number; ticks: number[] } {
     const yMin = this.yMin();
     const yMax = this.yMax();
+    // With nothing plotted, only both bounds give the axis a scale worth labelling
+    if (!values.length && (yMin === undefined || yMax === undefined)) {
+      return { min: 0, max: 1, ticks: [] };
+    }
     const dataMin = Math.min(...values);
     const dataMax = Math.max(...values);
     let lo = yMin ?? dataMin;
