@@ -32,6 +32,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
       {
         heading: 'Fixed',
         entries: [
+          "Open popovers, such as a dropdown's options and menus, in Safari before version 17, where finding their place on the page threw an error.",
           "Centre a line chart's lone point in the plot, and stop a pinch from zooming in on it until it drops out of view.",
           "Run a line chart's y-axis from zero in round, even steps when its points all share one value, with no axis break, so they sit about halfway up.",
           "Keep a panned line chart's y-axis on the whole range's scale while no point is in view, instead of falling back to 0 and 1.",
