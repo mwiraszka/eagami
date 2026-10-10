@@ -83,7 +83,7 @@
     outline: none;
 
     &::placeholder {
-      color: var(--color-text-tertiary);
+      @include ea.placeholder-text;
     }
 
     &:disabled {

@@ -145,7 +145,7 @@
   }
 
   &__trigger-placeholder {
-    color: var(--color-text-tertiary);
+    @include ea.placeholder-text;
   }
 
   &__trigger-icon {
@@ -244,8 +244,7 @@
     color: var(--color-text-primary);
 
     &::placeholder {
-      color: var(--color-text-tertiary);
-      opacity: 1;
+      @include ea.placeholder-text;
     }
 
     &:focus {

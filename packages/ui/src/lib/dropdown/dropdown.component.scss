@@ -106,7 +106,7 @@
     white-space: nowrap;
 
     &--placeholder {
-      color: var(--color-text-tertiary);
+      @include ea.placeholder-text;
     }
   }
 
@@ -190,8 +190,7 @@
     color: var(--color-text-primary);
 
     &::placeholder {
-      opacity: 1;
-      color: var(--color-text-tertiary);
+      @include ea.placeholder-text;
     }
 
     &:focus {

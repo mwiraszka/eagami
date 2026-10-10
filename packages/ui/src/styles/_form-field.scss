@@ -21,11 +21,8 @@
   color: var(--color-text-primary);
   transition: var(--transition-colors), var(--transition-shadow);
 
-  // `opacity: 1` overrides the Firefox/WebKit default of ~0.54 on placeholders,
-  // which would wash out the tertiary token and collapse contrast in dark mode
   &::placeholder {
-    color: var(--color-text-tertiary);
-    opacity: 1;
+    @include ea.placeholder-text;
   }
 
   &:focus {

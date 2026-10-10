@@ -111,7 +111,8 @@
     font-size: 0.875em;
 
     &--placeholder {
-      color: var(--color-text-tertiary);
+      @include ea.placeholder-text;
+
       font-family: var(--font-family-sans);
       font-size: 1em;
     }
