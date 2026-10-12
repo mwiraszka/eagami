@@ -5,6 +5,19 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.30.0] - 2026-10-12
+
+### Added
+
+- Add a demo page for the new toggle chip.
+- Add a timeline to the home page that follows a project from domain setup to ongoing care.
+
+### Changed
+
+- Redesign the home page with curved sections, an animated heron, and a line that draws itself down the page as you scroll.
+- Turn the services section into an interactive builder that previews each feature on a sample site.
+- Showcase live projects with screen recordings and the features behind them.
+
 ## [3.29.14] - 2026-10-12
 
 ### Changed
@@ -1613,6 +1626,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.30.0]: https://github.com/mwiraszka/eagami/compare/website-v3.29.14...website-v3.30.0
 [3.29.14]: https://github.com/mwiraszka/eagami/compare/website-v3.29.13...website-v3.29.14
 [3.29.13]: https://github.com/mwiraszka/eagami/compare/website-v3.29.12...website-v3.29.13
 [3.29.12]: https://github.com/mwiraszka/eagami/compare/website-v3.29.11...website-v3.29.12
