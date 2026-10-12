@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add an icon picker to the toggle chip demo, which opens on the moon icon.
 
+### Changed
+
+- Stop flagging empty contact form fields as errors, leaving the send button disabled until all three are filled.
+- Stop checking the contact form's email address on every keystroke, waiting until the field is left instead.
+
 ### Fixed
 
 - Keep the footer's copyright and rights notice side by side on phones whenever they fit.

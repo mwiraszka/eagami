@@ -21,6 +21,13 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Added',
         entries: [
           "Add an `icon` input to the toggle chip that leads its label with an icon, sized like a button's.",
+          "Let a form component's `errorMessages` hide an error by setting its key to `null`, which also keeps the field out of its error state.",
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Show a new validation error only once its field loses focus or the form is submitted, while an error already showing still clears the moment it is fixed.',
         ],
       },
     ],

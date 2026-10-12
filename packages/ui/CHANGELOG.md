@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add an `icon` input to the toggle chip that leads its label with an icon, sized like a button's.
+- Let a form component's `errorMessages` hide an error by setting its key to `null`, which also keeps the field out of its error state.
+
+### Changed
+
+- Show a new validation error only once its field loses focus or the form is submitted, while an error already showing still clears the moment it is fixed.
 
 ## [5.65.0] - 2026-10-12
 
