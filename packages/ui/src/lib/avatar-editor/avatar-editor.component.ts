@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   type ElementRef,
   Injector,
   type OnDestroy,
@@ -131,6 +132,7 @@ export class AvatarEditorComponent implements OnDestroy {
     'ea-avatar-editor--drag-over': this.isDragOver(),
   }));
 
+  private readonly destroyRef = inject(DestroyRef);
   private readonly injector = inject(Injector);
   private readonly boundWheel = (e: WheelEvent) => this.onWheel(e);
 
@@ -598,6 +600,10 @@ export class AvatarEditorComponent implements OnDestroy {
   // reads, so there is no render to defer to; a canvas that is already mounted
   // is drawn straight away
   private scheduleDrawAfterRender(): void {
+    // An image can finish loading after the editor is gone, leaving no view to draw into
+    if (this.destroyRef.destroyed) {
+      return;
+    }
     if (this.canvasEl()) {
       this.drawLoadedImage();
       return;
