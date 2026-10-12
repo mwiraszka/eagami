@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.64.1] - 2026-10-12
+
+### Fixed
+
+- Stop the avatar editor from throwing an error when it leaves the page while an image is still loading.
+
 ## [5.64.0] - 2026-10-11
 
 ### Added
@@ -1889,6 +1895,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.64.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.64.0...ui-v5.64.1
 [5.64.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.2...ui-v5.64.0
 [5.63.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.1...ui-v5.63.2
 [5.63.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.0...ui-v5.63.1
