@@ -1248,6 +1248,7 @@ export const de: WebMessages = {
           timeline: { orientation: 'Ausrichtung', align: 'Anordnung', size: 'Größe' },
           'toggle-chip': {
             label: 'Beschriftung',
+            icon: 'Symbol',
             size: 'Größe',
             selected: 'Ausgewählt',
             disabled: 'Deaktiviert',
@@ -2804,6 +2805,7 @@ export const de: WebMessages = {
             changed:
               'Wird mit dem neuen Zustand ausgelöst, wann immer der Nutzer den Chip umschaltet.',
             disabled: 'Deaktiviert den Chip und verhindert das Umschalten.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             selected:
               'Ob der Chip eingeschaltet ist, bidirektional bindbar über [(selected)].',
             size: 'Visuelle Größe des Chips.',

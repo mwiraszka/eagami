@@ -1247,6 +1247,7 @@ export const is: WebMessages = {
           timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
           'toggle-chip': {
             label: 'Merkimiði',
+            icon: 'Táknmynd',
             size: 'Stærð',
             selected: 'Valið',
             disabled: 'Óvirkt',
@@ -2727,6 +2728,7 @@ export const is: WebMessages = {
             changed:
               'Kviknar með nýja ástandinu í hvert sinn sem notandinn víxlar hnappnum.',
             disabled: 'Gerir víxlhnappinn óvirkan og hindrar víxlun.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             selected:
               'Hvort kveikt er á víxlhnappnum, tvíátta bindanlegt með [(selected)].',
             size: 'Sjónræn stærð víxlhnappsins.',

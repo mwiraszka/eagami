@@ -1160,6 +1160,7 @@ export const zhCN: WebMessages = {
           timeline: { orientation: '方向', align: '对齐', size: '尺寸' },
           'toggle-chip': {
             label: '标签',
+            icon: '图标',
             size: '尺寸',
             selected: '选中',
             disabled: '禁用',
@@ -2402,6 +2403,7 @@ export const zhCN: WebMessages = {
             ariaLabel: '标签内容不含可见文本时，为其提供的无障碍标签。',
             changed: '每当用户切换标签时，随新的状态一同触发。',
             disabled: '禁用标签并阻止切换。',
+            icon: '可选的图标组件，显示在标签文本之前。',
             selected: '标签是否处于开启状态，可通过 [(selected)] 双向绑定。',
             size: '标签的视觉尺寸。',
           },

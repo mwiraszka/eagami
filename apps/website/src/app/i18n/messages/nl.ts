@@ -1235,6 +1235,7 @@ export const nl: WebMessages = {
           timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
           'toggle-chip': {
             label: 'Label',
+            icon: 'Icoon',
             size: 'Grootte',
             selected: 'Geselecteerd',
             disabled: 'Uitgeschakeld',
@@ -2780,6 +2781,7 @@ export const nl: WebMessages = {
             changed:
               'Wordt geactiveerd met de nieuwe toestand telkens wanneer de gebruiker de chip omschakelt.',
             disabled: 'Schakelt de chip uit en blokkeert het omschakelen.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             selected:
               'Of de chip aan staat, in twee richtingen te binden via [(selected)].',
             size: 'Visuele grootte van de chip.',

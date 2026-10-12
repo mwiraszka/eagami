@@ -1243,6 +1243,7 @@ export const pl: WebMessages = {
           timeline: { orientation: 'Orientacja', align: 'Wyrównanie', size: 'Rozmiar' },
           'toggle-chip': {
             label: 'Etykieta',
+            icon: 'Ikona',
             size: 'Rozmiar',
             selected: 'Wybrane',
             disabled: 'Wyłączone',
@@ -2735,6 +2736,7 @@ export const pl: WebMessages = {
             ariaLabel: 'Dostępna etykieta chipu, którego treść nie ma widocznego tekstu.',
             changed: 'Emitowane z nowym stanem, gdy użytkownik przełączy chip.',
             disabled: 'Wyłącza chip i blokuje przełączanie.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             selected:
               'Określa, czy chip jest włączony, dwukierunkowo wiązalne przez [(selected)].',
             size: 'Wizualny rozmiar chipu.',

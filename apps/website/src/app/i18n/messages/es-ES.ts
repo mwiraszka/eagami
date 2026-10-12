@@ -1251,6 +1251,7 @@ export const esES: WebMessages = {
           timeline: { orientation: 'Orientación', align: 'Alineación', size: 'Tamaño' },
           'toggle-chip': {
             label: 'Etiqueta',
+            icon: 'Icono',
             size: 'Tamaño',
             selected: 'Seleccionado',
             disabled: 'Deshabilitado',
@@ -2807,6 +2808,7 @@ export const esES: WebMessages = {
             changed:
               'Se emite con el nuevo estado cada vez que el usuario alterna el chip.',
             disabled: 'Deshabilita el chip y bloquea su alternancia.',
+            icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             selected:
               'Indica si el chip está activado, vinculable en dos sentidos mediante [(selected)].',
             size: 'Tamaño visual del chip.',

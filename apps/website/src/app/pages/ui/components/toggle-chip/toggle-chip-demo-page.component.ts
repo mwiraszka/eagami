@@ -1,7 +1,7 @@
 import { ToggleChipComponent, type ToggleChipSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -10,6 +10,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import {
   type KnobValue,
   buildKnobs,
@@ -23,6 +24,7 @@ interface ToggleChipKnobState {
   [key: string]: KnobValue;
   label: string;
   size: ToggleChipSize;
+  icon: string;
   selected: boolean;
   disabled: boolean;
 }
@@ -42,13 +44,33 @@ const SLUG = 'toggle-chip';
 export class ToggleChipDemoPageComponent {
   protected readonly slug = SLUG;
   private readonly knobDefaults = injectKnobDefaults(SLUG);
-  protected readonly knobs = buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]);
+  protected readonly knobs = [
+    ...buildKnobs(PLAYGROUND_KNOBS[SLUG], UI_API[SLUG]),
+    iconKnob(
+      [
+        'moon',
+        'sun',
+        'star',
+        'heart',
+        'calendar-days',
+        'map-pin',
+        'filter',
+        'tag',
+        'bell',
+        'globe',
+      ],
+      { default: 'moon' },
+    ),
+  ];
   protected readonly state = signal<ToggleChipKnobState>(
     initialKnobState(
       this.knobs,
       PLAYGROUND_KNOBS[SLUG],
       this.knobDefaults,
     ) as ToggleChipKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

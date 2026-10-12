@@ -10,6 +10,7 @@
     (resetClicked)="reset()">
     <ea-toggle-chip
       [size]="state().size"
+      [icon]="iconComponent()"
       [selected]="state().selected"
       [disabled]="state().disabled"
       (selectedChange)="onSelected($event)">

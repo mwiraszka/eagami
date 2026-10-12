@@ -1271,6 +1271,7 @@ export const frFR: WebMessages = {
           timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           'toggle-chip': {
             label: 'Libellé',
+            icon: 'Icône',
             size: 'Taille',
             selected: 'Sélectionné',
             disabled: 'Désactivé',
@@ -2801,6 +2802,7 @@ export const frFR: WebMessages = {
             changed:
               'Émis avec le nouvel état chaque fois que l’utilisateur bascule la puce.',
             disabled: 'Désactive la puce et bloque la bascule.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             selected:
               'Indique si la puce est activée, liable en deux sens via [(selected)].',
             size: 'Taille visuelle de la puce.',

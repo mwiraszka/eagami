@@ -1206,6 +1206,7 @@ export const en: WebMessages = {
           timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
           'toggle-chip': {
             label: 'Label',
+            icon: 'Icon',
             size: 'Size',
             selected: 'Selected',
             disabled: 'Disabled',
@@ -2646,6 +2647,7 @@ export const en: WebMessages = {
             ariaLabel: 'Accessible label for a chip whose content has no visible text.',
             changed: 'Fires with the new state whenever the user toggles the chip.',
             disabled: 'Disables the chip and blocks toggling.',
+            icon: 'Optional icon component rendered before the label.',
             selected: 'Whether the chip is on, two-way bindable via [(selected)].',
             size: 'Visual size of the chip.',
           },

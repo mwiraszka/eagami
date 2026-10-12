@@ -1183,6 +1183,7 @@ export const he: WebMessages = {
           timeline: { orientation: 'כיוון', align: 'יישור', size: 'גודל' },
           'toggle-chip': {
             label: 'תווית',
+            icon: 'אייקון',
             size: 'גודל',
             selected: 'נבחר',
             disabled: 'מושבת',
@@ -2530,6 +2531,7 @@ export const he: WebMessages = {
             ariaLabel: 'תווית נגישה לצ׳יפ שהתוכן שלו אינו כולל טקסט נראה.',
             changed: 'נורה עם המצב החדש בכל פעם שהמשתמש מחליף את מצב הצ׳יפ.',
             disabled: 'משבית את הצ׳יפ וחוסם החלפה.',
+            icon: 'רכיב אייקון אופציונלי המוצג לפני טקסט התווית.',
             selected: 'האם הצ׳יפ פעיל, ניתן לקישור דו-כיווני באמצעות [(selected)].',
             size: 'גודל ויזואלי של הצ׳יפ.',
           },

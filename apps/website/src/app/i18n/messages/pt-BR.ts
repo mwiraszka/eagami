@@ -1234,6 +1234,7 @@ export const ptBR: WebMessages = {
           timeline: { orientation: 'Orientação', align: 'Alinhamento', size: 'Tamanho' },
           'toggle-chip': {
             label: 'Rótulo',
+            icon: 'Ícone',
             size: 'Tamanho',
             selected: 'Selecionado',
             disabled: 'Desativado',
@@ -2750,6 +2751,7 @@ export const ptBR: WebMessages = {
               'Rótulo acessível para um chip cujo conteúdo não tem texto visível.',
             changed: 'Dispara com o novo estado sempre que o usuário alterna o chip.',
             disabled: 'Desativa o chip e bloqueia a alternância.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             selected:
               'Se o chip está ativado, vinculável de forma bidirecional via [(selected)].',
             size: 'Tamanho visual do chip.',
