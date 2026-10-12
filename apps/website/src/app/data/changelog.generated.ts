@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.66.0',
+    date: '2026-10-12',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add an `icon` input to the toggle chip that leads its label with an icon, sized like a button's.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.65.0',
     date: '2026-10-12',
     sections: [
