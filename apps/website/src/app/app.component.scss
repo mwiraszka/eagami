@@ -1,29 +1,29 @@
+@use 'mixins' as mixins;
+
 :host {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
 }
 
-.app-skip-link {
+.app-skip-link:not(:focus) {
+  @include mixins.sr-only;
+}
+
+.app-skip-link:focus {
   z-index: 1000;
-  position: absolute;
+  position: fixed;
   top: 8px;
   left: 8px;
   padding: 8px 16px;
-  border-radius: 8px;
-  background-color: var(--color-brand-default);
-  color: var(--color-text-inverse);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transform: translateY(-200%);
-  transition: transform 0.15s ease;
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-    transform: translateY(0);
-  }
+  border-radius: 8px;
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  background-color: var(--color-brand-default);
+  color: var(--color-text-inverse);
 }
 
 .app-main {
