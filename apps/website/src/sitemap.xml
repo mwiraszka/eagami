@@ -286,6 +286,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://eagami.com/ui/components/toggle-chip</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://eagami.com/ui/components/tooltip</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

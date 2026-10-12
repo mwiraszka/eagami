@@ -425,6 +425,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/toggle-chip',
+        loadComponent: () =>
+          import('./pages/ui/components/toggle-chip/toggle-chip-demo-page.component').then(
+            c => c.ToggleChipDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/tooltip',
         loadComponent: () =>
           import('./pages/ui/components/tooltip/tooltip-demo-page.component').then(
