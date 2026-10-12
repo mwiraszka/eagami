@@ -1109,7 +1109,7 @@ export const zhCN: WebMessages = {
         colDefault: '默认值',
         colDescription: '描述',
         errorMessagesDescription:
-          '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
+          '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息，设为 null 的键会隐藏该错误。',
         ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
         labelHelpDescription: '通过标签旁的信息按钮显示的帮助内容，可以是纯文本或模板。',
         triggerErrorLabel: '触发错误',

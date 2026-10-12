@@ -1195,7 +1195,7 @@ export const de: WebMessages = {
         colDefault: 'Standard',
         colDescription: 'Beschreibung',
         errorMessagesDescription:
-          'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung.',
+          'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung, und ein auf null gesetzter Schlüssel blendet diesen Fehler aus.',
         ariaLabelDescription:
           'Barrierefreier Name, der von assistiver Technologie angesagt wird, wenn die Komponente kein sichtbares Label rendert.',
         labelHelpDescription:

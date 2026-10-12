@@ -1182,7 +1182,7 @@ export const nl: WebMessages = {
         colDefault: 'Standaard',
         colDescription: 'Beschrijving',
         errorMessagesDescription:
-          'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard.',
+          'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard, en een sleutel op null verbergt die fout.',
         ariaLabelDescription:
           'Toegankelijke naam aangekondigd door hulptechnologie wanneer de component geen zichtbaar label rendert.',
         labelHelpDescription:

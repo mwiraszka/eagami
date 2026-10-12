@@ -1194,7 +1194,7 @@ export const is: WebMessages = {
         colDefault: 'Sjálfgefið',
         colDescription: 'Lýsing',
         errorMessagesDescription:
-          'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð.',
+          'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð, og lykill stilltur á null felur þá villu.',
         ariaLabelDescription:
           'Aðgengilegt nafn tilkynnt hjálpartækni þegar einingin birtir engan sýnilegan merkimiða.',
         labelHelpDescription:

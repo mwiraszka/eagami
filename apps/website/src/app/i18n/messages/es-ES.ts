@@ -1198,7 +1198,7 @@ export const esES: WebMessages = {
         colDefault: 'Predeterminado',
         colDescription: 'Descripción',
         errorMessagesDescription:
-          'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado.',
+          'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado, y una clave con valor null oculta ese error.',
         ariaLabelDescription:
           'Nombre accesible anunciado por las tecnologías de asistencia cuando el componente no muestra ninguna etiqueta visible.',
         labelHelpDescription:

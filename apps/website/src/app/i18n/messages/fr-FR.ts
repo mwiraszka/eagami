@@ -1218,7 +1218,7 @@ export const frFR: WebMessages = {
         colDefault: 'Défaut',
         colDescription: 'Description',
         errorMessagesDescription:
-          'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.',
+          'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut, et une clé définie à null masque cette erreur.',
         ariaLabelDescription:
           'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
         labelHelpDescription:

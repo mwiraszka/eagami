@@ -1190,7 +1190,7 @@ export const pl: WebMessages = {
         colDefault: 'Domyślnie',
         colDescription: 'Opis',
         errorMessagesDescription:
-          'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
+          'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej, a klucz ustawiony na null ukrywa ten błąd.',
         ariaLabelDescription:
           'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
         labelHelpDescription:

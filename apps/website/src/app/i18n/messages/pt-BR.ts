@@ -1181,7 +1181,7 @@ export const ptBR: WebMessages = {
         colDefault: 'Padrão',
         colDescription: 'Descrição',
         errorMessagesDescription:
-          'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
+          'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado, e uma chave definida como null oculta esse erro.',
         ariaLabelDescription:
           'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
         labelHelpDescription:

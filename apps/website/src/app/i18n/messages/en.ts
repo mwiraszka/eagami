@@ -1153,7 +1153,7 @@ export const en: WebMessages = {
         colDefault: 'Default',
         colDescription: 'Description',
         errorMessagesDescription:
-          'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
+          'Overrides the validation message per error key for a bound form control; unset keys use the localized default, and a key set to null hides that error.',
         ariaLabelDescription:
           'Accessible name announced by assistive technology when the component renders no visible label.',
         labelHelpDescription:
