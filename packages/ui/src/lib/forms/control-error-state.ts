@@ -26,9 +26,10 @@ export type EaValidationErrorKey =
  * Per-error-key message overrides for a form control. Keys are validator error
  * names (`required`, `email`, or any custom validator key); values are the text
  * shown when that error is the active one. Keys left unset fall back to the
- * library's localized default message.
+ * library's localized default message, and a key set to `null` is never shown,
+ * so a field whose only errors are hidden keeps out of its error state.
  */
-export type EaErrorMessages = Partial<Record<string, string>>;
+export type EaErrorMessages = Partial<Record<string, string | null>>;
 
 export interface ControlErrorStateConfig {
   /** Explicit error text; shown unconditionally and overrides any auto-derived message. */
@@ -139,16 +140,17 @@ export function injectControlErrorState(
 }
 
 /**
- * Picks the first active error key and resolves its message: a consumer
- * override wins, otherwise the localized built-in default (interpolating the
- * validator's own params), falling back to a generic message for unknown keys.
+ * Picks the first active error key the consumer hasn't hidden and resolves its
+ * message: a consumer override wins, otherwise the localized built-in default
+ * (interpolating the validator's own params), falling back to a generic message
+ * for unknown keys.
  */
 function resolveValidationMessage(
   errors: ValidationErrors,
   overrides: EaErrorMessages | undefined,
   messages: EagamiMessages,
 ): string | null {
-  const key = Object.keys(errors)[0];
+  const key = Object.keys(errors).find(name => overrides?.[name] !== null);
   if (!key) {
     return null;
   }

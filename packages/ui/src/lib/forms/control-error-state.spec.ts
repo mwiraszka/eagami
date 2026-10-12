@@ -135,6 +135,25 @@ describe('controlErrorStateFrom', () => {
     expect(state.error()).toBe('We need this one');
   });
 
+  it('hides an error whose key is overridden with null', () => {
+    const state = build(touchedInvalid('', Validators.required), {
+      errorMessages: { required: null },
+    });
+
+    expect(state.error()).toBeNull();
+    expect(state.hasError()).toBe(false);
+  });
+
+  it('moves on to the next active error when the first is hidden', () => {
+    const alwaysFails: ValidatorFn = () => ({ custom: true });
+
+    const state = build(touchedInvalid('', [Validators.required, alwaysFails]), {
+      errorMessages: { required: null, custom: 'Something else is wrong' },
+    });
+
+    expect(state.error()).toBe('Something else is wrong');
+  });
+
   it('prefers an explicit errorMsg over any derived message', () => {
     const state = build(touchedInvalid('', Validators.required), {
       errorMsg: 'Server rejected this',
