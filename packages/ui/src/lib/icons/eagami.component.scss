@@ -1,0 +1,32 @@
+// The whole raised leg swings from the hip, in the artwork's own units
+.ea-icon-eagami--animated .ea-icon-eagami__raised-leg {
+  animation: ea-icon-eagami-swing 16s infinite;
+  transform-box: view-box;
+  transform-origin: 917.67px 1070.61px;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+// A slow swing back, a brief settle, and an unhurried return, then a long rest.
+// The peak moves the foot about 5px at a 320px icon.
+@keyframes ea-icon-eagami-swing {
+  0%,
+  12.5% {
+    rotate: 0deg;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  22.5% {
+    rotate: 2.93deg;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  27.5% {
+    rotate: 2.73deg;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  41%,
+  100% {
+    rotate: 0deg;
+  }
+}
