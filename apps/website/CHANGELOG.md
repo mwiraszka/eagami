@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Stop flagging empty contact form fields as errors, leaving the send button disabled until all three are filled.
 - Stop checking the contact form's email address on every keystroke, waiting until the field is left instead.
+- Rename the home page's services section to Building blocks, with a lede that matches its feature chips.
 
 ### Fixed
 
