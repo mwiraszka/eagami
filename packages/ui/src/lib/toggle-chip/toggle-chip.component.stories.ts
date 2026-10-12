@@ -10,13 +10,14 @@ import { TOGGLE_CHIP_KNOBS } from './toggle-chip.component.knobs';
 
 type ToggleChipStoryArgs = ToggleChipComponent & { label: string };
 
-const ICONS = {
-  imports: [
-    CalendarDaysIconComponent,
-    MapPinIconComponent,
-    MoonIconComponent,
-    StarIconComponent,
-  ],
+// The icon input takes a component class, which plain-data knobs cannot hold,
+// so the story maps slugs to classes itself
+const CHIP_ICONS = {
+  none: undefined,
+  moon: MoonIconComponent,
+  calendarDays: CalendarDaysIconComponent,
+  star: StarIconComponent,
+  mapPin: MapPinIconComponent,
 };
 
 const meta: Meta<ToggleChipStoryArgs> = {
@@ -27,7 +28,14 @@ const meta: Meta<ToggleChipStoryArgs> = {
     props: { ...args, label },
     template: `<ea-toggle-chip ${argsToTemplate(args)}>{{ label }}</ea-toggle-chip>`,
   }),
-  argTypes: TOGGLE_CHIP_KNOBS.argTypes,
+  argTypes: {
+    ...TOGGLE_CHIP_KNOBS.argTypes,
+    icon: {
+      control: 'select' as const,
+      options: Object.keys(CHIP_ICONS),
+      mapping: CHIP_ICONS,
+    },
+  },
   args: TOGGLE_CHIP_KNOBS.args,
 };
 
@@ -51,13 +59,13 @@ export const States: Story = {
 
 export const WithIcons: Story = {
   render: () => ({
-    moduleMetadata: ICONS,
+    props: CHIP_ICONS,
     template: `
       <div class="story-row">
-        <ea-toggle-chip [selected]="true"><ea-icon-moon /> Dark mode</ea-toggle-chip>
-        <ea-toggle-chip><ea-icon-calendar-days /> Events</ea-toggle-chip>
-        <ea-toggle-chip><ea-icon-star /> Reviews</ea-toggle-chip>
-        <ea-toggle-chip aria-label="Show on map"><ea-icon-map-pin /></ea-toggle-chip>
+        <ea-toggle-chip [icon]="moon" [selected]="true">Dark mode</ea-toggle-chip>
+        <ea-toggle-chip [icon]="calendarDays">Events</ea-toggle-chip>
+        <ea-toggle-chip [icon]="star">Reviews</ea-toggle-chip>
+        <ea-toggle-chip [icon]="mapPin" aria-label="Show on map" />
       </div>
     `,
   }),
@@ -80,13 +88,13 @@ export const Sizes: Story = {
 
 export const Rtl: Story = {
   render: () => ({
-    moduleMetadata: ICONS,
+    props: CHIP_ICONS,
     template: `
       <div
         class="story-row"
         dir="rtl">
-        <ea-toggle-chip [selected]="true"><ea-icon-moon /> الوضع الداكن</ea-toggle-chip>
-        <ea-toggle-chip><ea-icon-star /> المراجعات</ea-toggle-chip>
+        <ea-toggle-chip [icon]="moon" [selected]="true">الوضع الداكن</ea-toggle-chip>
+        <ea-toggle-chip [icon]="star">المراجعات</ea-toggle-chip>
       </div>
     `,
   }),

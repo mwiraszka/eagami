@@ -7,19 +7,20 @@ import { MapPinIconComponent } from '../icons/map-pin.component';
 import { ToggleChipComponent } from './toggle-chip.component';
 
 @Component({
-  imports: [MapPinIconComponent, ToggleChipComponent],
+  imports: [ToggleChipComponent],
   template: `
     <ea-toggle-chip
       [selected]="selected"
       [disabled]="disabled">
       Events
     </ea-toggle-chip>
-    <ea-toggle-chip aria-label="Show on map">
-      <ea-icon-map-pin />
-    </ea-toggle-chip>
+    <ea-toggle-chip
+      aria-label="Show on map"
+      [icon]="mapPin" />
   `,
 })
 class HostComponent {
+  readonly mapPin = MapPinIconComponent;
   selected = false;
   disabled = false;
 }
