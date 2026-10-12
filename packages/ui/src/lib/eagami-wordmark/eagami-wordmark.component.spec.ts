@@ -100,29 +100,36 @@ describe('EagamiWordmarkComponent', () => {
   });
 
   describe('Size', () => {
-    it('sets --_size to 24 by default', () => {
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('24');
+    it('sizes the brand text at 24px by default', () => {
+      expect(fixture.nativeElement.style.fontSize).toBe('24px');
     });
 
-    it('sets --_size to the provided value', () => {
+    it('sizes the brand text at the provided px value', () => {
       fixture.componentRef.setInput('size', 48);
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('48');
+      expect(fixture.nativeElement.style.fontSize).toBe('48px');
     });
 
-    it('clamps --_size to a minimum of 10', () => {
+    it('clamps the size to a minimum of 10px', () => {
       fixture.componentRef.setInput('size', 5);
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('10');
+      expect(fixture.nativeElement.style.fontSize).toBe('10px');
     });
 
-    it('falls back to 24 when size is cleared or invalid', () => {
+    it('falls back to 24px when size is cleared or invalid', () => {
       fixture.componentRef.setInput('size', NaN);
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.style.getPropertyValue('--_size')).toBe('24');
+      expect(fixture.nativeElement.style.fontSize).toBe('24px');
+    });
+
+    it('follows the surrounding text when size is inherit', () => {
+      fixture.componentRef.setInput('size', 'inherit');
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.style.fontSize).toBe('1em');
     });
   });
 

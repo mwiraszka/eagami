@@ -21,6 +21,9 @@ const SUB_BODY_SCALE: Record<string, number> = {
   micro: 0.625,
 };
 
+/** Brand lockups keep the proportions of the logo artwork, not the UI type scale. */
+const BRAND_LOCKUPS = new Set(['eagami-wordmark/eagami-wordmark.component.scss']);
+
 function libStylesheets(): { name: string; css: string }[] {
   const lib = join(SRC, 'src/lib');
   return readdirSync(lib, { recursive: true, encoding: 'utf8' })
@@ -56,7 +59,9 @@ describe('Type scale', () => {
   it('draws text below the body line from the shared scale', () => {
     const allowed = new Set(Object.values(SUB_BODY_SCALE));
     const offScale: string[] = [];
-    for (const { name, css } of libStylesheets()) {
+    for (const { name, css } of libStylesheets().filter(
+      ({ name }) => !BRAND_LOCKUPS.has(name),
+    )) {
       for (const [declaration, value] of css.matchAll(
         /(?:font-size|--ea-field-(?:label|messages)-size):\s*([\d.]+)em\b/g,
       )) {
