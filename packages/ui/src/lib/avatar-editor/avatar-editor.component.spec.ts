@@ -547,6 +547,26 @@ describe('AvatarEditorComponent', () => {
     });
   });
 
+  describe('Destroyed mid-load', () => {
+    it('ignores an image from currentSrc that finishes loading after destroy', () => {
+      fixture.componentRef.setInput('currentSrc', 'https://example.com/photo.jpg');
+      fixture.detectChanges();
+
+      fixture.destroy();
+
+      expect(() => triggerLoad()).not.toThrow();
+    });
+
+    it('ignores a selected file that finishes loading after destroy', () => {
+      selectFile(makeFile());
+      lastMockFileReader!.onload!({ target: { result: 'data:image/jpeg;base64,abc' } });
+
+      fixture.destroy();
+
+      expect(() => triggerLoad()).not.toThrow();
+    });
+  });
+
   describe('cropState restoration', () => {
     it('restores zoom from cropState on load', () => {
       fixture.componentRef.setInput('cropState', {
