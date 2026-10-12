@@ -1,7 +1,8 @@
 /* Website-specific colour tokens. The site showcases the library, so the design
-   tokens come from @eagami/ui untouched; only the hero gradient stops and wordmark
-   sheen (not part of the library API) live here. Selectors mirror the library's
-   dark-mode pattern (media query + data-theme) so the gradients follow its toggle. */
+   tokens come from @eagami/ui untouched; only the home page's decorative colours
+   (hero backdrop, wordmark sheen, process timeline, page thread), which are not
+   part of the library API, live here. Selectors mirror the library's dark-mode
+   pattern (media query + data-theme) so the colours follow its toggle. */
 
 :root {
   --web-color-flutterStop1: var(--color-primary-100);
@@ -13,6 +14,19 @@
     in oklch,
     var(--color-primary-500),
     var(--color-primary-400) 50%
+  );
+
+  --web-color-heroBlob1: var(--color-primary-200);
+  --web-color-heroBlob2: var(--color-secondary-200);
+  --web-color-heroBlob3: var(--color-primary-100);
+  --web-color-heroCurveShade: var(--color-primary-100);
+  --web-color-timelineLine: var(--color-primary-300);
+  --web-color-timelineNode: var(--color-primary-200);
+  --web-color-thread: var(--web-color-heronMaroon);
+  --web-color-threadGlow: color-mix(
+    in srgb,
+    var(--web-color-heronMaroon) 18%,
+    transparent
   );
 }
 
@@ -28,6 +42,19 @@
       var(--color-primary-50),
       var(--color-neutral-50) 50%
     );
+
+    --web-color-heroBlob1: var(--color-primary-600);
+    --web-color-heroBlob2: var(--color-secondary-600);
+    --web-color-heroBlob3: var(--color-primary-700);
+    --web-color-heroCurveShade: var(--color-primary-800);
+    --web-color-timelineLine: var(--color-primary-600);
+    --web-color-timelineNode: var(--color-primary-700);
+    --web-color-thread: var(--web-color-heronMaroonLifted);
+    --web-color-threadGlow: color-mix(
+      in srgb,
+      var(--web-color-heronMaroonLifted) 22%,
+      transparent
+    );
   }
 }
 
@@ -41,5 +68,18 @@
     in oklch,
     var(--color-primary-50),
     var(--color-neutral-50) 50%
+  );
+
+  --web-color-heroBlob1: var(--color-primary-600);
+  --web-color-heroBlob2: var(--color-secondary-600);
+  --web-color-heroBlob3: var(--color-primary-700);
+  --web-color-heroCurveShade: var(--color-primary-800);
+  --web-color-timelineLine: var(--color-primary-600);
+  --web-color-timelineNode: var(--color-primary-700);
+  --web-color-thread: var(--web-color-heronMaroonLifted);
+  --web-color-threadGlow: color-mix(
+    in srgb,
+    var(--web-color-heronMaroonLifted) 22%,
+    transparent
   );
 }

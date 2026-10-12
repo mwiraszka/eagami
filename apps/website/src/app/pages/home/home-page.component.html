@@ -1,12 +1,24 @@
-<div class="home">
+<div
+  #home
+  class="home">
   <section
+    #hero
     class="home-hero"
     aria-labelledby="home-hero-wordmark">
+    <div
+      class="home-hero__blobs"
+      aria-hidden="true">
+      <span class="home-hero__blob home-hero__blob--1"></span>
+      <span class="home-hero__blob home-hero__blob--2"></span>
+      <span class="home-hero__blob home-hero__blob--3"></span>
+    </div>
     <div class="home-hero__inner">
       <div
         class="home-hero__visual"
         aria-hidden="true">
-        <ea-icon-eagami class="home-hero__icon" />
+        <ea-icon-eagami
+          class="home-hero__icon"
+          [animated]="true" />
       </div>
       <div class="home-hero__type">
         <h1
@@ -34,148 +46,105 @@
         </div>
       </div>
     </div>
-    <!-- aria-hidden: the next section is already the next focusable region, so this would just add noise -->
-    <a
-      class="home-hero__scroll"
-      href="#services"
+    <svg
+      #heroCurve
+      class="home-curve"
+      viewBox="0 0 1440 96"
+      preserveAspectRatio="none"
       aria-hidden="true"
-      tabindex="-1">
-      <ea-icon-chevron-down class="home-hero__scroll-chevron" />
-    </a>
+      focusable="false">
+      <path
+        class="home-curve__shade"
+        d="M0,96 L0,35 C320,-5 700,5 960,42 C1150,70 1300,69 1440,24 L1440,96 Z" />
+      <path
+        class="home-curve__fill home-curve__fill--base"
+        d="M0,96 L0,56 C300,8 620,0 900,40 C1100,69 1250,80 1440,50 L1440,96 Z" />
+    </svg>
   </section>
 
   <section
+    #services
     id="services"
-    class="home-section home-section--services">
-    <div class="home-section__inner">
-      <header class="home-section__header">
-        <h2 class="home-section__title">{{ messages().home.services.title }}</h2>
+    class="home-section home-section--base">
+    <div
+      #servicesContent
+      class="home-section__inner">
+      <header class="home-section__header home-reveal">
+        <p class="home-section__eyebrow">{{ messages().home.services.title }}</p>
+        <h2 class="home-section__title">{{ messages().home.services.heading }}</h2>
         <p class="home-section__lede">{{ messages().home.services.lede }}</p>
       </header>
-
-      <div class="service-group">
-        <ul
-          class="service-list service-list--core"
-          role="list">
-          @for (service of coreServices(); track service.title) {
-            <li class="service-item service-item--core">
-              <h3 class="service-item__title">{{ service.title }}</h3>
-              <p class="service-item__description">{{ service.description }}</p>
-            </li>
-          }
-        </ul>
-      </div>
-
-      <div class="service-group">
-        <p class="service-group__heading">{{
-          messages().home.services.featuresHeading
-        }}</p>
-        <ul
-          class="service-list service-list--addons"
-          role="list">
-          @for (service of addOnServices(); track service.title) {
-            <li class="service-item">
-              <h3 class="service-item__title">
-                @if (service.icon) {
-                  <span
-                    class="service-item__icon"
-                    aria-hidden="true">
-                    <ng-container *ngComponentOutlet="service.icon" />
-                  </span>
-                }
-                {{ service.title }}
-              </h3>
-              <p class="service-item__description">{{ service.description }}</p>
-            </li>
-          }
-        </ul>
-      </div>
-
-      <p class="service-group__note">
-        {{ messages().home.services.uiNote.before }}
-        <a routerLink="/ui">{{ messages().home.services.uiNote.link }}</a
-        >{{ messages().home.services.uiNote.after }}
-      </p>
+      <web-home-feature-builder class="home-reveal" />
     </div>
   </section>
 
   <section
-    id="projects"
-    class="home-section home-section--projects">
+    #process
+    id="process"
+    class="home-section home-section--base">
     <div class="home-section__inner">
-      <header class="home-section__header">
-        <h2 class="home-section__title">{{ messages().home.projects.title }}</h2>
+      <header class="home-section__header home-reveal">
+        <p class="home-section__eyebrow">{{ messages().home.process.title }}</p>
+        <h2 class="home-section__title">{{ messages().home.process.heading }}</h2>
+      </header>
+      <web-home-process-timeline class="home-reveal" />
+    </div>
+  </section>
+
+  <section
+    #projects
+    id="projects"
+    class="home-section home-section--band">
+    <div
+      class="home-band__glows"
+      aria-hidden="true">
+      <span class="home-band__glow home-band__glow--1"></span>
+      <span class="home-band__glow home-band__glow--2"></span>
+    </div>
+    <svg
+      class="home-curve"
+      viewBox="0 0 1440 96"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false">
+      <path
+        class="home-curve__fill home-curve__fill--base"
+        d="M0,0 L1440,0 L1440,40 C1180,88 820,96 520,56 C300,27 140,32 0,64 Z" />
+    </svg>
+    <div class="home-section__inner">
+      <header class="home-section__header home-reveal">
+        <p class="home-section__eyebrow">{{ messages().home.projects.title }}</p>
+        <h2 class="home-section__title">
+          <ea-icon-eagami class="home-section__logo" />
+          {{ messages().home.projects.heading }}
+        </h2>
         <p class="home-section__lede">{{ messages().home.projects.lede }}</p>
       </header>
-      <div class="work-carousel">
-        <button
-          type="button"
-          class="work-carousel__nav work-carousel__nav--prev"
-          [attr.aria-label]="messages().home.projects.previousAriaLabel"
-          (click)="scrollWork(-1)">
-          &lsaquo;
-        </button>
-        <div
-          class="work-carousel__viewport"
-          role="region"
-          [attr.aria-label]="messages().home.projects.regionAriaLabel"
-          tabindex="0"
-          (keydown.arrowLeft)="scrollWork(-1); $event.preventDefault()"
-          (keydown.arrowRight)="scrollWork(1); $event.preventDefault()">
-          <div
-            class="work-carousel__track"
-            [class.work-carousel__track--next]="slideDirection() === 1"
-            [class.work-carousel__track--prev]="slideDirection() === -1"
-            [class.work-carousel__track--instant]="suppressTransition()">
-            @for (project of orderedProjects(); track $index) {
-              <a
-                class="project-card web-link-plain"
-                [href]="project.url"
-                target="_blank"
-                rel="noopener noreferrer">
-                <img
-                  class="project-card__logo"
-                  [src]="project.logo"
-                  alt=""
-                  width="64"
-                  height="64" />
-                <h3
-                  class="project-card__title"
-                  dir="auto">
-                  {{ project.title }}
-                </h3>
-                <p
-                  class="project-card__description"
-                  dir="auto">
-                  {{ project.description }}
-                </p>
-                <span class="project-card__url">{{ project.display }}</span>
-              </a>
-            }
-          </div>
-        </div>
-        <p
-          class="work-carousel__status"
-          aria-live="polite">
-          {{ carouselStatus() }}
-        </p>
-        <button
-          type="button"
-          class="work-carousel__nav work-carousel__nav--next"
-          [attr.aria-label]="messages().home.projects.nextAriaLabel"
-          (click)="scrollWork(1)">
-          &rsaquo;
-        </button>
-      </div>
+      <web-home-project-stories class="home-reveal" />
     </div>
+    <svg
+      class="home-curve"
+      viewBox="0 0 1440 96"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false">
+      <path
+        class="home-curve__fill home-curve__fill--subtle"
+        d="M0,96 L0,32 C300,88 700,80 960,48 C1160,24 1320,24 1440,56 L1440,96 Z" />
+    </svg>
   </section>
 
   <section
+    #contact
     id="contact"
     class="home-section home-section--contact">
-    <div class="home-section__inner">
-      <header class="home-section__header">
-        <h2 class="home-section__title">{{ messages().home.contact.title }}</h2>
+    <div class="home-section__inner home-contact">
+      <header class="home-section__header home-contact__header home-reveal">
+        <h2
+          #contactTitle
+          class="home-section__title">
+          {{ messages().home.contact.title }}
+        </h2>
         <p class="home-section__lede">{{ messages().home.contact.lede }}</p>
       </header>
 
@@ -187,7 +156,7 @@
         </div>
       } @else {
         <form
-          class="contact-form"
+          class="contact-form home-reveal"
           [formGroup]="contactForm"
           (ngSubmit)="submitContact()">
           <ea-input
@@ -231,4 +200,54 @@
       }
     </div>
   </section>
+
+  @if (thread(); as thread) {
+    <svg
+      #threadSvg
+      class="home-thread"
+      [class.home-thread--drawing]="threadDrawing()"
+      [class.home-thread--complete]="threadComplete()"
+      [attr.viewBox]="thread.viewBox"
+      aria-hidden="true"
+      focusable="false">
+      <defs>
+        <!-- The projects band is dark in both themes, so the line lifts to a lighter tone across it -->
+        <linearGradient
+          id="home-thread-tone"
+          gradientUnits="userSpaceOnUse"
+          x1="0"
+          y1="0"
+          x2="0"
+          [attr.y2]="thread.height">
+          <stop
+            class="home-thread__tone"
+            offset="0" />
+          <stop
+            class="home-thread__tone"
+            [attr.offset]="thread.bandStops[0]" />
+          <stop
+            class="home-thread__tone home-thread__tone--band"
+            [attr.offset]="thread.bandStops[1]" />
+          <stop
+            class="home-thread__tone home-thread__tone--band"
+            [attr.offset]="thread.bandStops[2]" />
+          <stop
+            class="home-thread__tone"
+            [attr.offset]="thread.bandStops[3]" />
+          <stop
+            class="home-thread__tone"
+            offset="1" />
+        </linearGradient>
+      </defs>
+      <path
+        #threadPath
+        class="home-thread__line"
+        [attr.d]="thread.d" />
+      <circle
+        class="home-thread__end"
+        [attr.cx]="thread.endX"
+        [attr.cy]="thread.endY"
+        [attr.r]="thread.endRadius" />
+    </svg>
+  }
 </div>

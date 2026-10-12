@@ -1,30 +1,24 @@
 import {
-  BarChartIconComponent,
   ButtonComponent,
-  ChevronDownIconComponent,
-  CreditCardIconComponent,
   EagamiIconComponent,
   InputComponent,
-  LanguagesIconComponent,
-  MailIconComponent,
-  MoonIconComponent,
   TextareaComponent,
   ToastService,
-  UsersIconComponent,
 } from '@eagami/ui';
 
-import { NgComponentOutlet } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  type Type,
+  type ElementRef,
   afterNextRender,
+  afterRenderEffect,
   computed,
   effect,
   inject,
   signal,
+  viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -35,36 +29,30 @@ import {
   type ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 
 import { WebI18nService } from '@app/i18n/web-i18n.service';
 import { MetaAndTitleService } from '@app/services/meta-and-title.service';
 
-const ICON_BY_SLUG: Record<string, Type<unknown>> = {
-  users: UsersIconComponent,
-  'credit-card': CreditCardIconComponent,
-  languages: LanguagesIconComponent,
-  moon: MoonIconComponent,
-  'bar-chart': BarChartIconComponent,
-  mail: MailIconComponent,
-};
-
-interface Project {
-  title: string;
-  description: string;
-  url?: string;
-  display?: string;
-  logo?: string;
-  placeholder?: boolean;
-}
-
-interface ServiceView {
-  title: string;
-  description: string;
-  icon?: Type<unknown>;
-}
+import { HomeFeatureBuilderComponent } from './home-feature-builder.component';
+import { HomeProcessTimelineComponent } from './home-process-timeline.component';
+import { HomeProjectStoriesComponent } from './home-project-stories.component';
+import {
+  type HomeThread,
+  type HomeThreadLayout,
+  type ThreadBox,
+  type ThreadSamples,
+  buildHomeThread,
+  sampleThread,
+  threadLengthAt,
+} from './home-thread';
 
 type ContactStatus = 'idle' | 'sending' | 'sent' | 'error';
+
+/* Matches the stylesheet: the thread shows whenever the process timeline runs across the page */
+const THREAD_MEDIA = '(width > 800px)';
+
+/* Share of the viewport height, from the top, where the drawing tip of the thread sits */
+const THREAD_TIP = 0.65;
 
 /* Stricter than `Validators.email`, which per the HTML5 spec lets TLD-less
    "a@b" through; a public contact form wants `local@host.tld`. Reuses the
@@ -84,12 +72,12 @@ function strictEmailValidator(control: AbstractControl): ValidationErrors | null
   styleUrl: './home-page.component.scss',
   imports: [
     ButtonComponent,
-    ChevronDownIconComponent,
     EagamiIconComponent,
+    HomeFeatureBuilderComponent,
+    HomeProcessTimelineComponent,
+    HomeProjectStoriesComponent,
     InputComponent,
-    NgComponentOutlet,
     ReactiveFormsModule,
-    RouterLink,
     TextareaComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -101,50 +89,6 @@ export class HomePageComponent {
   private readonly i18n = inject(WebI18nService);
 
   protected readonly messages = this.i18n.messages;
-
-  protected readonly projects = computed<Project[]>(() =>
-    this.messages().home.projects.cards.map(c => ({ ...c })),
-  );
-
-  private readonly carouselOffset = signal(0);
-  protected readonly slideDirection = signal<-1 | 0 | 1>(0);
-  protected readonly suppressTransition = signal(false);
-  private readonly slideMs = 320;
-
-  protected readonly orderedProjects = computed<Project[]>(() => {
-    const offset = this.carouselOffset();
-    const projects = this.projects();
-    const len = projects.length;
-    return Array.from({ length: 5 }, (_, i) => {
-      const idx = (((offset - 1 + i) % len) + len) % len;
-      return projects[idx];
-    });
-  });
-
-  /* Sr-only announcement naming the centered project, so screen-reader users
-     get feedback when they navigate the carousel. */
-  protected readonly carouselStatus = computed(() => {
-    const centered = this.orderedProjects()[2];
-    if (!centered) {
-      return '';
-    }
-    return this.messages().home.projects.showing(centered.title);
-  });
-
-  protected readonly coreServices = computed<ServiceView[]>(() =>
-    this.messages().home.services.core.map(s => ({
-      title: s.title,
-      description: s.description,
-    })),
-  );
-
-  protected readonly addOnServices = computed<ServiceView[]>(() =>
-    this.messages().home.services.addOns.map(s => ({
-      title: s.title,
-      description: s.description,
-      icon: ICON_BY_SLUG[s.iconSlug],
-    })),
-  );
 
   protected readonly contactForm = new FormGroup({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -185,6 +129,27 @@ export class HomePageComponent {
 
   private readonly destroyRef = inject(DestroyRef);
 
+  private readonly home = viewChild.required<ElementRef<HTMLElement>>('home');
+  private readonly heroCurve = viewChild.required<ElementRef<SVGSVGElement>>('heroCurve');
+  private readonly hero = viewChild.required<ElementRef<HTMLElement>>('hero');
+  private readonly services = viewChild.required<ElementRef<HTMLElement>>('services');
+  private readonly servicesContent =
+    viewChild.required<ElementRef<HTMLElement>>('servicesContent');
+  private readonly process = viewChild.required<ElementRef<HTMLElement>>('process');
+  private readonly projects = viewChild.required<ElementRef<HTMLElement>>('projects');
+  private readonly contact = viewChild.required<ElementRef<HTMLElement>>('contact');
+  private readonly contactTitle =
+    viewChild.required<ElementRef<HTMLElement>>('contactTitle');
+  private readonly timeline = viewChild.required(HomeProcessTimelineComponent);
+  private readonly threadSvg = viewChild<ElementRef<SVGSVGElement>>('threadSvg');
+  private readonly threadPath = viewChild<ElementRef<SVGPathElement>>('threadPath');
+
+  protected readonly thread = signal<HomeThread | null>(null);
+  protected readonly threadDrawing = signal(false);
+  protected readonly threadComplete = signal(false);
+  private readonly reducedMotion = signal(false);
+  private threadSamples: ThreadSamples | null = null;
+
   constructor() {
     this.contactForm.valueChanges.pipe(takeUntilDestroyed()).subscribe(() => {
       this.contactFormVersion.update(v => v + 1);
@@ -199,6 +164,23 @@ export class HomePageComponent {
     afterNextRender(() => {
       this.runContactPlaceholderAnimation();
       this.setupScrollSpy();
+      this.setupThread();
+    });
+
+    // Re-sample whenever the thread is redrawn, then place its tip for the current scroll
+    afterRenderEffect(() => {
+      this.thread();
+      const path = this.threadPath()?.nativeElement;
+      const svg = this.threadSvg()?.nativeElement;
+      if (!path || !svg) {
+        this.threadSamples = null;
+        return;
+      }
+
+      this.threadSamples = sampleThread(path);
+      svg.style.setProperty('--thread-length', `${this.threadSamples.total}px`);
+      this.threadDrawing.set(!this.reducedMotion());
+      this.drawThread();
     });
   }
 
@@ -210,7 +192,7 @@ export class HomePageComponent {
      reader's place. Uses `history.replaceState`, not the router, so it adds no
      history entries and doesn't re-trigger anchor scrolling. */
   private setupScrollSpy(): void {
-    const sectionIds = ['services', 'projects', 'contact'];
+    const sectionIds = ['services', 'process', 'projects', 'contact'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -250,6 +232,116 @@ export class HomePageComponent {
 
     sections.forEach(section => observer.observe(section));
     this.destroyRef.onDestroy(() => observer.disconnect());
+  }
+
+  /* Lays the thread out from the rendered sections, and redraws it whenever
+     their size or the viewport width changes */
+  private setupThread(): void {
+    const wide = window.matchMedia(THREAD_MEDIA);
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const measure = (): void => {
+      this.thread.set(wide.matches ? buildHomeThread(this.readThreadLayout()) : null);
+    };
+    const onMotionChange = (): void => {
+      this.reducedMotion.set(motion.matches);
+      this.threadDrawing.set(!motion.matches && this.threadSamples !== null);
+    };
+
+    let frame: number | undefined;
+    const onScroll = (): void => {
+      if (frame === undefined) {
+        frame = requestAnimationFrame(() => {
+          frame = undefined;
+          this.drawThread();
+        });
+      }
+    };
+
+    this.reducedMotion.set(motion.matches);
+    const observer = new ResizeObserver(measure);
+    observer.observe(this.home().nativeElement);
+    observer.observe(this.timeline().band().nativeElement);
+    observer.observe(this.contactTitle().nativeElement);
+    wide.addEventListener('change', measure);
+    motion.addEventListener('change', onMotionChange);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    this.destroyRef.onDestroy(() => {
+      observer.disconnect();
+      wide.removeEventListener('change', measure);
+      motion.removeEventListener('change', onMotionChange);
+      window.removeEventListener('scroll', onScroll);
+      if (frame !== undefined) {
+        cancelAnimationFrame(frame);
+      }
+    });
+  }
+
+  private readThreadLayout(): HomeThreadLayout {
+    const home = this.home().nativeElement;
+
+    /* Layout boxes from the offset chain rather than the rendered rects, so a
+       scroll reveal that is still sliding an element in can't pull the line
+       off the anchors it passes through */
+    const box = (element: HTMLElement): ThreadBox => {
+      let top = 0;
+      let left = 0;
+      let current: HTMLElement | null = element;
+      while (current && current !== home) {
+        top += current.offsetTop;
+        left += current.offsetLeft;
+        current =
+          current.offsetParent instanceof HTMLElement ? current.offsetParent : null;
+      }
+      return {
+        top,
+        bottom: top + element.offsetHeight,
+        left,
+        width: element.offsetWidth,
+        height: element.offsetHeight,
+      };
+    };
+    const title = this.contactTitle().nativeElement;
+    const content = this.servicesContent().nativeElement;
+
+    return {
+      width: home.offsetWidth,
+      height: home.offsetHeight,
+      contentInset: box(content).left + parseFloat(getComputedStyle(content).paddingLeft),
+      curveHeight: this.heroCurve().nativeElement.getBoundingClientRect().height,
+      hero: box(this.hero().nativeElement),
+      services: box(this.services().nativeElement),
+      process: box(this.process().nativeElement),
+      timeline: box(this.timeline().band().nativeElement),
+      projects: box(this.projects().nativeElement),
+      contact: box(this.contact().nativeElement),
+      contactTitle: box(title),
+      contactTitleLine: parseFloat(getComputedStyle(title).lineHeight),
+      contactTitleStart: this.firstLineStart(title) - home.getBoundingClientRect().left,
+    };
+  }
+
+  /* Horizontal start of an element's first line of text; a reveal transform only
+     slides content vertically, so the rendered x is safe to read here */
+  private firstLineStart(element: HTMLElement): number {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const [firstLine] = range.getClientRects();
+    return firstLine ? firstLine.left : element.getBoundingClientRect().left;
+  }
+
+  private drawThread(): void {
+    const samples = this.threadSamples;
+    const svg = this.threadSvg()?.nativeElement;
+    if (!samples || !svg || this.reducedMotion()) {
+      return;
+    }
+
+    const homeTop = this.home().nativeElement.getBoundingClientRect().top;
+    const drawn = threadLengthAt(samples, window.innerHeight * THREAD_TIP - homeTop);
+    svg.style.setProperty('--thread-drawn', `${drawn}px`);
+    this.threadComplete.set(drawn >= samples.total - 1);
   }
 
   private runContactPlaceholderAnimation(): void {
@@ -313,28 +405,6 @@ export class HomePageComponent {
     });
 
     typeNext();
-  }
-
-  protected scrollWork(direction: 1 | -1): void {
-    if (this.slideDirection() !== 0) {
-      return;
-    }
-
-    this.slideDirection.set(direction);
-
-    setTimeout(() => {
-      this.suppressTransition.set(true);
-
-      requestAnimationFrame(() => {
-        const len = this.projects().length;
-        this.slideDirection.set(0);
-        this.carouselOffset.update(v => (v + direction + len) % len);
-
-        requestAnimationFrame(() => {
-          this.suppressTransition.set(false);
-        });
-      });
-    }, this.slideMs + 20);
   }
 
   protected submitContact(): void {

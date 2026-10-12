@@ -1,0 +1,323 @@
+<div class="feature-builder">
+  <div class="feature-builder__controls">
+    <div class="feature-picker">
+      <ea-button
+        class="feature-picker__step ea-rtl-flip"
+        variant="ghost"
+        size="sm"
+        [icon]="chevronLeft"
+        [aria-label]="services().previousFeatures"
+        [disabled]="!canScrollBack()"
+        (click)="scrollFeatures(-1)" />
+      <ul
+        #featureList
+        class="feature-list"
+        [class.feature-list--fade-start]="canScrollBack()"
+        [class.feature-list--fade-end]="canScrollForward()"
+        role="list"
+        [attr.aria-label]="services().title"
+        (scroll)="updateScrollState()">
+        @for (feature of features(); track feature.id) {
+          <li class="feature">
+            <ea-toggle-chip
+              size="sm"
+              [selected]="feature.on"
+              [aria-describedby]="'home-feature-hint-' + feature.id"
+              (changed)="setFeature(feature.id, $event)">
+              <ng-container *ngComponentOutlet="feature.icon" />
+              {{ feature.title }}
+            </ea-toggle-chip>
+            <span
+              class="feature__hint"
+              [id]="'home-feature-hint-' + feature.id">
+              {{ feature.hint }}
+            </span>
+          </li>
+        }
+      </ul>
+      <ea-button
+        class="feature-picker__step ea-rtl-flip"
+        variant="ghost"
+        size="sm"
+        [icon]="chevronRight"
+        [aria-label]="services().nextFeatures"
+        [disabled]="!canScrollForward()"
+        (click)="scrollFeatures(1)" />
+    </div>
+    <!-- aria-hidden: each chip already announces its own description -->
+    <p
+      class="feature-caption"
+      aria-hidden="true">
+      <span class="feature-caption__title">{{ spotlight().title }}</span>
+      <span>{{ spotlight().hint }}</span>
+    </p>
+    <p class="feature-builder__note">
+      {{ services().uiNote.before }}
+      <a routerLink="/ui">{{ services().uiNote.link }}</a
+      >{{ services().uiNote.after }}
+    </p>
+  </div>
+
+  <!-- inert: a picture of the selected features, driven entirely by the switches -->
+  <div
+    class="demo-site"
+    [class.demo-site--dark]="enabled().has('theming')"
+    aria-hidden="true"
+    inert>
+    <div class="demo-site__chrome">
+      <span class="demo-site__dots">
+        <span class="demo-site__dot"></span>
+        <span class="demo-site__dot"></span>
+        <span class="demo-site__dot"></span>
+      </span>
+      <span class="demo-site__url">yourbusiness.com</span>
+      @if (enabled().has('pwa')) {
+        <span class="demo-site__install demo-pop">
+          <ea-icon-download />
+          {{ services().demo.install }}
+        </span>
+      }
+    </div>
+
+    <div class="demo-site__body">
+      <div class="demo-site__nav">
+        <span class="demo-site__brand">
+          <span class="demo-site__logo"></span>
+          <span class="demo-site__brand-name">{{ services().demo.brand }}</span>
+        </span>
+        @for (item of services().demo.nav; track item) {
+          <span class="demo-site__nav-link">{{ item }}</span>
+        }
+        <span class="demo-site__spacer"></span>
+        @if (enabled().has('search')) {
+          <span class="demo-site__search demo-pop">
+            <ea-icon-search />
+            <span class="demo-site__search-label">{{ services().demo.search }}</span>
+          </span>
+        }
+        @if (enabled().has('languages')) {
+          <span class="demo-site__pill demo-pop">
+            <ea-icon-globe />
+            <span class="demo-ticker">
+              <span class="demo-ticker__track">
+                @for (greeting of greetings; track $index) {
+                  <span class="demo-ticker__item">{{ greeting.code }}</span>
+                }
+              </span>
+            </span>
+          </span>
+        }
+        @if (enabled().has('theming')) {
+          <span class="demo-site__icon-chip demo-pop">
+            <ea-icon-sun />
+          </span>
+        }
+        @if (enabled().has('accounts')) {
+          <ea-avatar
+            class="demo-site__avatar demo-pop"
+            [src]="avatarSrc"
+            initials="S"
+            size="sm" />
+        }
+      </div>
+
+      <div
+        class="demo-site__hero"
+        [class.demo-site__hero--editing]="enabled().has('cms')">
+        <span class="demo-site__greeting">
+          @if (enabled().has('languages')) {
+            <span class="demo-ticker">
+              <span class="demo-ticker__track">
+                @for (greeting of greetings; track $index) {
+                  <span class="demo-ticker__item">{{ greeting.text }}</span>
+                }
+              </span>
+            </span>
+          } @else {
+            {{ services().demo.greeting }}
+          }
+        </span>
+        <span class="demo-site__tagline">{{ services().demo.tagline }}</span>
+        @if (enabled().has('cms')) {
+          <span class="demo-site__edit demo-pop">
+            <ea-icon-edit-2 />
+            {{ services().demo.edit }}
+          </span>
+        }
+      </div>
+
+      <!-- Every combination fills the same two fixed-height cards, so switching
+           features never changes the height of the demo -->
+      <div class="demo-site__grid">
+        <div class="demo-site__card">
+          <span class="demo-site__media-frame">
+            @if (enabled().has('payments')) {
+              <span class="demo-site__media demo-site__checkout demo-pop">
+                <span class="demo-site__field">
+                  <ea-icon-credit-card />
+                  <span>&bull;&bull;&bull;&bull; 4242</span>
+                  <span class="demo-site__field-end">12 / 28</span>
+                </span>
+                <span class="demo-site__fine">{{ services().demo.checkoutNote }}</span>
+              </span>
+            } @else {
+              <span class="demo-site__media demo-site__picture demo-pop">
+                <ea-icon-package />
+              </span>
+            }
+            @if (enabled().has('reviews')) {
+              <span class="demo-site__rating demo-pop">
+                <ea-icon-star />
+                {{ rating() }}
+              </span>
+            }
+          </span>
+          <span class="demo-site__row">
+            <span class="demo-site__strong">{{ services().demo.product }}</span>
+            <span class="demo-site__muted">{{ services().demo.price }}</span>
+          </span>
+          <span class="demo-site__button">
+            {{
+              enabled().has('payments') ? services().demo.pay : services().demo.addToCart
+            }}
+          </span>
+        </div>
+
+        <div class="demo-site__card">
+          @switch (panel()) {
+            @case ('accounts') {
+              <span class="demo-site__welcome demo-pop">
+                <ea-avatar
+                  class="demo-site__avatar"
+                  [src]="avatarSrc"
+                  initials="S"
+                  size="md" />
+                <span class="demo-site__welcome-text">
+                  <span class="demo-site__strong">{{ services().demo.welcome }}</span>
+                  <span class="demo-site__small">{{ services().demo.orders }}</span>
+                </span>
+              </span>
+              <span class="demo-site__orders demo-pop">
+                @for (order of [1, 2]; track order) {
+                  <span class="demo-site__order">
+                    <span class="demo-site__thumb"></span>
+                    <span class="demo-site__skeleton"></span>
+                    <span class="demo-site__status"></span>
+                  </span>
+                }
+              </span>
+            }
+            @case ('analytics') {
+              <span class="demo-site__small demo-pop">{{
+                services().demo.visitors
+              }}</span>
+              <span class="demo-site__stat demo-pop">{{ visitors() }}</span>
+              <span class="demo-site__bars">
+                @for (bar of [1, 2, 3, 4, 5, 6, 7]; track bar) {
+                  <span class="demo-site__bar"></span>
+                }
+              </span>
+            }
+            @case ('bookings') {
+              <span class="demo-site__strong demo-pop">{{
+                services().demo.bookTitle
+              }}</span>
+              <span class="demo-site__dates demo-pop">
+                @for (day of bookingDays(); track $index) {
+                  <span
+                    class="demo-site__date"
+                    [class.demo-site__date--selected]="$index === 1">
+                    <span class="demo-site__date-weekday">{{ day.weekday }}</span>
+                    <span class="demo-site__date-day">{{ day.day }}</span>
+                  </span>
+                }
+              </span>
+              <span class="demo-site__times demo-pop">
+                @for (time of bookingTimes(); track $index) {
+                  <span
+                    class="demo-site__time"
+                    [class.demo-site__time--selected]="$index === 0">
+                    {{ time }}
+                  </span>
+                }
+              </span>
+              <span class="demo-site__button">{{ services().demo.book }}</span>
+            }
+            @case ('events') {
+              <span class="demo-site__strong demo-pop">{{
+                services().demo.eventsTitle
+              }}</span>
+              <span class="demo-site__events demo-pop">
+                @for (event of events(); track $index) {
+                  <span class="demo-site__event">
+                    <span class="demo-site__event-date">
+                      <span class="demo-site__event-month">{{ event.month }}</span>
+                      <span class="demo-site__event-day">{{ event.day }}</span>
+                    </span>
+                    <span class="demo-site__event-title">{{ event.title }}</span>
+                  </span>
+                }
+              </span>
+            }
+            @case ('gallery') {
+              <span class="demo-site__strong demo-pop">{{
+                services().demo.galleryTitle
+              }}</span>
+              <span class="demo-site__gallery demo-pop">
+                @for (photo of [1, 2, 3, 4, 5, 6]; track photo) {
+                  <span class="demo-site__photo">
+                    @if (photo === 1) {
+                      <ea-icon-image />
+                    }
+                  </span>
+                }
+              </span>
+            }
+            @case ('maps') {
+              <span class="demo-site__strong demo-pop">{{
+                services().demo.mapTitle
+              }}</span>
+              <span class="demo-site__map demo-pop">
+                <span class="demo-site__road demo-site__road--across"></span>
+                <span class="demo-site__road demo-site__road--down"></span>
+                <span class="demo-site__pin">
+                  <ea-icon-map-pin />
+                </span>
+              </span>
+              <span class="demo-site__small demo-pop">{{
+                services().demo.mapHours
+              }}</span>
+            }
+            @default {
+              <span class="demo-site__small demo-pop">{{
+                services().demo.aboutLabel
+              }}</span>
+              <span class="demo-site__strong demo-pop">{{
+                services().demo.aboutTitle
+              }}</span>
+              <span class="demo-site__media-fill demo-site__picture demo-pop">
+                <ea-icon-store />
+              </span>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    @if (enabled().has('email')) {
+      <span class="demo-site__toast">
+        <ea-icon-mail />
+        {{ services().demo.receiptSent }}
+      </span>
+    }
+
+    @if (enabled().has('chat')) {
+      <span class="demo-site__chat">
+        <span class="demo-site__chat-bubble">{{ services().demo.chatGreeting }}</span>
+        <span class="demo-site__chat-button">
+          <ea-icon-message-circle />
+        </span>
+      </span>
+    }
+  </div>
+</div>

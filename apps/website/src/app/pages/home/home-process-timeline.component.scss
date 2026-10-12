@@ -1,0 +1,174 @@
+@use 'sass:list';
+@use 'mixins' as mixins;
+
+:host {
+  display: block;
+}
+
+.timeline__groups {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-bottom: 4px;
+
+  @include mixins.respond-to('lt-md') {
+    display: none;
+  }
+}
+
+.timeline__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline__group--website {
+  grid-column: span 4;
+}
+
+.timeline__group-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-brand-default);
+}
+
+/* Spans node centre to node centre: nodes sit at the middle of each fifth */
+.timeline__bracket {
+  width: 75%;
+  height: 16px;
+  border: 2px solid var(--web-color-timelineNode);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}
+
+.timeline__group--care .timeline__bracket {
+  width: 60%;
+}
+
+.timeline__band {
+  position: relative;
+  height: 200px;
+
+  @include mixins.respond-to('lt-md') {
+    display: none;
+  }
+}
+
+/* Margins rather than a transform centre each node, so the offset follows the
+   inline direction in RTL without a mirrored rule */
+.timeline__node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  margin-inline-start: -32px;
+  font-size: 26px;
+  border: 2px solid var(--web-color-timelineNode);
+  border-radius: 50%;
+  background-color: var(--color-bg-base);
+  background-image: linear-gradient(var(--web-color-wash), var(--web-color-wash));
+  color: var(--color-brand-default);
+
+  @for $i from 1 through 5 {
+    &:nth-of-type(#{$i}) {
+      top: list.nth((60px, 140px, 60px, 140px, 60px), $i);
+      inset-inline-start: 20% * $i - 10%;
+    }
+  }
+}
+
+.timeline__node--launch {
+  border-color: var(--color-brand-default);
+  box-shadow: 0 12px 28px -10px var(--web-color-timelineLaunchShadow);
+  background-color: var(--color-brand-default);
+  background-image: none;
+  color: var(--color-text-inverse);
+}
+
+.timeline__orbit {
+  position: absolute;
+  inset: -16px;
+  border: 2px dashed var(--web-color-timelineLine);
+  border-radius: 50%;
+  animation: timeline-orbit 18s linear infinite;
+}
+
+.timeline__steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+
+  @include mixins.respond-to('lt-md') {
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+  }
+}
+
+.timeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  text-align: center;
+
+  @include mixins.respond-to('lt-md') {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    padding: 0;
+    text-align: start;
+  }
+}
+
+.timeline__dot {
+  display: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--web-color-timelineLine);
+
+  @include mixins.respond-to('lt-md') {
+    display: block;
+  }
+}
+
+.timeline__step-title {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  color: var(--color-text-primary);
+}
+
+.timeline__step-description {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+
+  @include mixins.respond-to('lt-md') {
+    flex-basis: 100%;
+    padding-inline-start: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__orbit {
+    animation: none;
+  }
+}
+
+@keyframes timeline-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
