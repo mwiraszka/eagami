@@ -42,9 +42,9 @@ export const esES: WebMessages = {
       scrollHint: 'Desplázate a los servicios',
     },
     services: {
-      title: 'Servicios',
+      title: 'Piezas clave',
       heading: 'A medida y con todas las funciones',
-      lede: 'Cada sitio se diseña y se construye desde cero. Activa un interruptor para ver lo que aporta cada funcionalidad.',
+      lede: 'Cada sitio se diseña y se construye desde cero. Elige tus funcionalidades y míralo cobrar vida.',
       features: [
         {
           id: 'accounts',

@@ -43,9 +43,9 @@ export const de: WebMessages = {
       scrollHint: 'Zu den Leistungen scrollen',
     },
     services: {
-      title: 'Leistungen',
+      title: 'Bausteine',
       heading: 'Maßgeschneidert und voll ausgestattet',
-      lede: 'Jede Website wird von Grund auf gestaltet und entwickelt. Legen Sie einen Schalter um und sehen Sie, was jede Funktion hinzufügt.',
+      lede: 'Jede Website wird von Grund auf gestaltet und entwickelt. Wählen Sie Ihre Funktionen und sehen Sie zu, wie sie zum Leben erwacht.',
       features: [
         {
           id: 'accounts',

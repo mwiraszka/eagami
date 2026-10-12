@@ -43,9 +43,9 @@ export const ptBR: WebMessages = {
       scrollHint: 'Rolar até os serviços',
     },
     services: {
-      title: 'Serviços',
+      title: 'Blocos de construção',
       heading: 'Sob medida, com todos os recursos',
-      lede: 'Cada site é projetado e construído do zero. Ative uma opção para ver o que cada recurso acrescenta.',
+      lede: 'Cada site é projetado e construído do zero. Escolha seus recursos e veja-o ganhar vida.',
       features: [
         {
           id: 'accounts',

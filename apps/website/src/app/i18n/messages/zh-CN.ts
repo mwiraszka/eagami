@@ -42,9 +42,9 @@ export const zhCN: WebMessages = {
       scrollHint: '滚动查看服务',
     },
     services: {
-      title: '服务',
+      title: '构建模块',
       heading: '量身定制，功能齐全',
-      lede: '每个网站都从零开始设计与构建。拨动开关，看看每项功能会带来什么。',
+      lede: '每个网站都从零开始设计与构建。选择你需要的功能，看它焕发生机。',
       features: [
         { id: 'accounts', title: '用户账户', hint: '登录、注册和管理后台' },
         { id: 'payments', title: '在线支付', hint: '结账与周期性扣款' },

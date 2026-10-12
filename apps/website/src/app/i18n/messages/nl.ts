@@ -43,9 +43,9 @@ export const nl: WebMessages = {
       scrollHint: 'Scroll naar diensten',
     },
     services: {
-      title: 'Diensten',
+      title: 'Bouwstenen',
       heading: 'Op maat gebouwd, compleet uitgerust',
-      lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Zet een schakelaar om en zie wat elke functie toevoegt.',
+      lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Kies je functies en zie hem tot leven komen.',
       features: [
         {
           id: 'accounts',

@@ -42,9 +42,9 @@ export const en: WebMessages = {
       scrollHint: 'Scroll to services',
     },
     services: {
-      title: 'Services',
+      title: 'Building blocks',
       heading: 'Custom-built, fully featured',
-      lede: 'Every site is designed and built from scratch. Flip a switch to see what each feature adds.',
+      lede: 'Every site is designed and built from scratch. Choose your features and watch it come to life.',
       features: [
         {
           id: 'accounts',

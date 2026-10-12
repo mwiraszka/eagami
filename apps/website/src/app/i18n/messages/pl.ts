@@ -43,9 +43,9 @@ export const pl: WebMessages = {
       scrollHint: 'Przewiń do usług',
     },
     services: {
-      title: 'Usługi',
+      title: 'Cegiełki',
       heading: 'Szyte na miarę, z kompletem funkcji',
-      lede: 'Każda strona jest projektowana i budowana od zera. Użyj przełącznika, by zobaczyć, co wnosi każda funkcja.',
+      lede: 'Każda strona jest projektowana i budowana od zera. Wybierz funkcje i zobacz, jak ożywa.',
       features: [
         {
           id: 'accounts',

@@ -43,9 +43,9 @@ export const is: WebMessages = {
       scrollHint: 'Skrunaðu að þjónustu',
     },
     services: {
-      title: 'Þjónusta',
+      title: 'Byggingareiningar',
       heading: 'Sérsmíðað og fullbúið',
-      lede: 'Hver vefur er hannaður og smíðaður frá grunni. Prófaðu rofana til að sjá hverju hver eiginleiki bætir við.',
+      lede: 'Hver vefur er hannaður og smíðaður frá grunni. Veldu eiginleikana þína og sjáðu hann lifna við.',
       features: [
         {
           id: 'accounts',

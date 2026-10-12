@@ -46,9 +46,9 @@ export const frFR: WebMessages = {
       scrollHint: 'Faire défiler jusqu’aux services',
     },
     services: {
-      title: 'Services',
+      title: 'Briques de base',
       heading: 'Sur mesure, riche en fonctionnalités',
-      lede: 'Chaque site est conçu et développé de zéro. Actionnez un interrupteur pour voir ce qu’apporte chaque fonctionnalité.',
+      lede: 'Chaque site est conçu et développé de zéro. Choisissez vos fonctionnalités et regardez-le prendre vie.',
       features: [
         {
           id: 'accounts',
