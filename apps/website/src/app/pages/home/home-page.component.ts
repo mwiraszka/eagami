@@ -9,11 +9,11 @@ import {
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DestroyRef,
   type ElementRef,
   afterNextRender,
-  afterRenderEffect,
   computed,
   effect,
   inject,
@@ -128,6 +128,7 @@ export class HomePageComponent {
   protected readonly contactMessagePlaceholder = signal('');
 
   private readonly destroyRef = inject(DestroyRef);
+  private readonly changeDetector = inject(ChangeDetectorRef);
 
   private readonly home = viewChild.required<ElementRef<HTMLElement>>('home');
   private readonly heroCurve = viewChild.required<ElementRef<SVGSVGElement>>('heroCurve');
@@ -165,22 +166,6 @@ export class HomePageComponent {
       this.runContactPlaceholderAnimation();
       this.setupScrollSpy();
       this.setupThread();
-    });
-
-    // Re-sample whenever the thread is redrawn, then place its tip for the current scroll
-    afterRenderEffect(() => {
-      this.thread();
-      const path = this.threadPath()?.nativeElement;
-      const svg = this.threadSvg()?.nativeElement;
-      if (!path || !svg) {
-        this.threadSamples = null;
-        return;
-      }
-
-      this.threadSamples = sampleThread(path);
-      svg.style.setProperty('--thread-length', `${this.threadSamples.total}px`);
-      this.threadDrawing.set(!this.reducedMotion());
-      this.drawThread();
     });
   }
 
@@ -241,7 +226,12 @@ export class HomePageComponent {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const measure = (): void => {
-      this.thread.set(wide.matches ? buildHomeThread(this.readThreadLayout()) : null);
+      const thread = wide.matches ? buildHomeThread(this.readThreadLayout()) : null;
+      this.thread.set(thread);
+      this.threadDrawing.set(thread !== null && !this.reducedMotion());
+      // Rendered before this frame paints, so the line moves in the same frame as its sections
+      this.changeDetector.detectChanges();
+      this.resampleThread();
     };
     const onMotionChange = (): void => {
       this.reducedMotion.set(motion.matches);
@@ -329,6 +319,20 @@ export class HomePageComponent {
     range.selectNodeContents(element);
     const [firstLine] = range.getClientRects();
     return firstLine ? firstLine.left : element.getBoundingClientRect().left;
+  }
+
+  /* Re-samples the rendered line, then places its tip for the current scroll */
+  private resampleThread(): void {
+    const path = this.threadPath()?.nativeElement;
+    const svg = this.threadSvg()?.nativeElement;
+    if (!path || !svg) {
+      this.threadSamples = null;
+      return;
+    }
+
+    this.threadSamples = sampleThread(path);
+    svg.style.setProperty('--thread-length', `${this.threadSamples.total}px`);
+    this.drawThread();
   }
 
   private drawThread(): void {
