@@ -159,7 +159,7 @@ export const esES: WebMessages = {
     },
     projects: {
       title: 'Publicados',
-      heading: 'Eagami en el mundo real',
+      heading: 'eagami en el mundo real',
       lede: 'Webs y aplicaciones en marcha que hemos diseñado, desarrollado y seguimos cuidando.',
       visit: domain => `Visitar ${domain}`,
       recordingLabel: project => `Grabación de pantalla de ${project}`,

@@ -133,7 +133,7 @@ export const ar: WebMessages = {
     },
     projects: {
       title: 'تم الإطلاق',
-      heading: 'Eagami على أرض الواقع',
+      heading: 'eagami على أرض الواقع',
       lede: 'مواقع وتطبيقات حية صمّمناها وبنيناها، وما زلنا نرعاها.',
       visit: domain => `زيارة ${domain}`,
       recordingLabel: project => `تسجيل شاشة لـ ${project}`,

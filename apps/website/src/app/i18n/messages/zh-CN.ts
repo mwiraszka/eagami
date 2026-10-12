@@ -113,7 +113,7 @@ export const zhCN: WebMessages = {
     },
     projects: {
       title: '上线作品',
-      heading: 'Eagami 的真实作品',
+      heading: 'eagami 的真实作品',
       lede: '我们设计、开发并持续维护的线上网站与应用。',
       visit: domain => `访问 ${domain}`,
       recordingLabel: project => `${project} 的屏幕录像`,

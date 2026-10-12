@@ -149,7 +149,7 @@ export const nl: WebMessages = {
     },
     projects: {
       title: 'Gelanceerd',
-      heading: 'Eagami in het wild',
+      heading: 'eagami in het wild',
       lede: 'Live sites en apps die we hebben ontworpen, gebouwd en nog steeds onderhouden.',
       visit: domain => `Bezoek ${domain}`,
       recordingLabel: project => `Schermopname van ${project}`,

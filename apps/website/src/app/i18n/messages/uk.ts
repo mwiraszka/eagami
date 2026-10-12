@@ -149,7 +149,7 @@ export const uk: WebMessages = {
     },
     projects: {
       title: 'Запущено',
-      heading: 'Eagami в дії',
+      heading: 'eagami в дії',
       lede: 'Робочі сайти й застосунки, які ми спроєктували, створили й досі підтримуємо.',
       visit: domain => `Перейти на ${domain}`,
       recordingLabel: project => `Запис екрана: ${project}`,

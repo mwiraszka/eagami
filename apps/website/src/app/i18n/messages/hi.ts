@@ -128,7 +128,7 @@ export const hi: WebMessages = {
     },
     projects: {
       title: 'रिलीज़',
-      heading: 'Eagami असल दुनिया में',
+      heading: 'eagami असल दुनिया में',
       lede: 'लाइव साइटें और ऐप, जिन्हें हमने डिज़ाइन किया, बनाया और आज भी संभालते हैं।',
       visit: domain => `${domain} पर जाएं`,
       recordingLabel: project => `${project} की स्क्रीन रिकॉर्डिंग`,

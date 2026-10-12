@@ -412,10 +412,16 @@
   color: var(--color-text-primary);
 }
 
-/* Fills the heading's line box, so the mark never makes its line taller */
+/* Logo size and gap match the eagami wordmark's lockup */
+.home-section__title--lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.125em;
+}
+
 .home-section__logo {
-  vertical-align: top;
-  font-size: 1.1em;
+  flex-shrink: 0;
+  font-size: 1.5em;
 }
 
 .home-section__lede {

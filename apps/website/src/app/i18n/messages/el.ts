@@ -171,7 +171,7 @@ export const el: WebMessages = {
     },
     projects: {
       title: 'Σε κυκλοφορία',
-      heading: 'Eagami στην πράξη',
+      heading: 'eagami στην πράξη',
       lede: 'Ζωντανοί ιστότοποι και εφαρμογές που σχεδιάσαμε, φτιάξαμε και ακόμα φροντίζουμε.',
       visit: domain => `Επισκεφθείτε το ${domain}`,
       recordingLabel: project => `Εγγραφή οθόνης του ${project}`,

@@ -148,7 +148,7 @@ export const ptBR: WebMessages = {
     },
     projects: {
       title: 'Lançados',
-      heading: 'Eagami no mundo real',
+      heading: 'eagami no mundo real',
       lede: 'Sites e apps no ar que projetamos, desenvolvemos e continuamos cuidando.',
       visit: domain => `Visitar ${domain}`,
       recordingLabel: project => `Gravação de tela de ${project}`,

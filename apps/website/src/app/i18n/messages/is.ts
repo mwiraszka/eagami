@@ -159,7 +159,7 @@ export const is: WebMessages = {
     },
     projects: {
       title: 'Útgefið',
-      heading: 'Eagami í raunheimum',
+      heading: 'eagami í raunheimum',
       lede: 'Vefir og öpp í loftinu sem við hönnuðum, smíðuðum og sjáum enn um.',
       visit: domain => `Fara á ${domain}`,
       recordingLabel: project => `Skjáupptaka af ${project}`,

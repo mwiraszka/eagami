@@ -153,7 +153,7 @@ export const de: WebMessages = {
     },
     projects: {
       title: 'Veröffentlicht',
-      heading: 'Eagami in freier Wildbahn',
+      heading: 'eagami in freier Wildbahn',
       lede: 'Live-Websites und Apps, die wir entworfen und gebaut haben und bis heute betreuen.',
       visit: domain => `${domain} besuchen`,
       recordingLabel: project => `Bildschirmaufnahme von ${project}`,

@@ -120,7 +120,7 @@ export const he: WebMessages = {
     },
     projects: {
       title: 'הושקו',
-      heading: 'Eagami בשטח',
+      heading: 'eagami בשטח',
       lede: 'אתרים ואפליקציות פעילים שעיצבנו, בנינו ועדיין מתחזקים.',
       visit: domain => `בקרו ב-${domain}`,
       recordingLabel: project => `הקלטת מסך של ${project}`,

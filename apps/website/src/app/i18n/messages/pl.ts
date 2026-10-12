@@ -153,7 +153,7 @@ export const pl: WebMessages = {
     },
     projects: {
       title: 'Realizacje',
-      heading: 'Eagami w praktyce',
+      heading: 'eagami w praktyce',
       lede: 'Działające strony i aplikacje, które zaprojektowaliśmy, zbudowaliśmy i którymi wciąż się opiekujemy.',
       visit: domain => `Odwiedź ${domain}`,
       recordingLabel: project => `Nagranie ekranu: ${project}`,
