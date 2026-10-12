@@ -1,5 +1,6 @@
 import {
   ButtonComponent,
+  type EaErrorMessages,
   EagamiIconComponent,
   InputComponent,
   TextareaComponent,
@@ -102,26 +103,23 @@ export class HomePageComponent {
     }),
   });
 
+  /* Every field is required, but an empty one is conveyed by the disabled submit
+     rather than flagged as an error */
+  protected readonly contactFieldErrors: EaErrorMessages = { required: null };
+  protected readonly contactEmailErrors = computed<EaErrorMessages>(() => ({
+    ...this.contactFieldErrors,
+    email: this.messages().home.contact.emailInvalid,
+  }));
+
   protected readonly contactStatus = signal<ContactStatus>('idle');
   protected readonly contactError = signal<string | null>(null);
 
-  /* Nudged on value change and email blur so the computeds below recompute;
-     `touched` doesn't emit through `valueChanges`, hence the manual blur nudge. */
+  /* Nudged on value change so validity, which isn't a signal, is re-read */
   private readonly contactFormVersion = signal(0);
 
   protected readonly isContactFormValid = computed(() => {
     this.contactFormVersion();
     return this.contactForm.valid;
-  });
-
-  /* Only the email-format error is surfaced (empty fields are conveyed by the
-     disabled submit), and only after blur so it doesn't flash while typing. */
-  protected readonly contactEmailError = computed<string | undefined>(() => {
-    this.contactFormVersion();
-    const email = this.contactForm.controls.email;
-    return email.touched && email.errors?.['email']
-      ? this.messages().home.contact.emailInvalid
-      : undefined;
   });
 
   /* Example messages cycled through the placeholder to prime senders on what to write */
@@ -167,10 +165,6 @@ export class HomePageComponent {
       this.setupScrollSpy();
       this.setupThread();
     });
-  }
-
-  protected onContactFieldBlur(): void {
-    this.contactFormVersion.update(v => v + 1);
   }
 
   /* Syncs the URL fragment to the in-view section so a refresh restores the
@@ -414,7 +408,6 @@ export class HomePageComponent {
   protected submitContact(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
-      this.contactFormVersion.update(v => v + 1);
       return;
     }
 
