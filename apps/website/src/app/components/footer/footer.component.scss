@@ -122,13 +122,9 @@
 
 .web-footer__copyright {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 4px 8px;
   color: var(--color-text-secondary);
-
-  // Stack the two notices rather than let them wrap mid-phrase
-  @media (max-width: 420px) {
-    flex-direction: column;
-    gap: 4px;
-  }
 }

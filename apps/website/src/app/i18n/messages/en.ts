@@ -42,9 +42,9 @@ export const en: WebMessages = {
       scrollHint: 'Scroll to services',
     },
     services: {
-      title: 'Services',
+      title: 'Building blocks',
       heading: 'Custom-built, fully featured',
-      lede: 'Every site is designed and built from scratch. Flip a switch to see what each feature adds.',
+      lede: 'Every site is designed and built from scratch. Choose your features and watch it come to life.',
       features: [
         {
           id: 'accounts',
@@ -1153,7 +1153,7 @@ export const en: WebMessages = {
         colDefault: 'Default',
         colDescription: 'Description',
         errorMessagesDescription:
-          'Overrides the validation message per error key for a bound form control; unset keys use the localized default.',
+          'Overrides the validation message per error key for a bound form control; unset keys use the localized default, and a key set to null hides that error.',
         ariaLabelDescription:
           'Accessible name announced by assistive technology when the component renders no visible label.',
         labelHelpDescription:
@@ -1206,6 +1206,7 @@ export const en: WebMessages = {
           timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
           'toggle-chip': {
             label: 'Label',
+            icon: 'Icon',
             size: 'Size',
             selected: 'Selected',
             disabled: 'Disabled',
@@ -2646,6 +2647,7 @@ export const en: WebMessages = {
             ariaLabel: 'Accessible label for a chip whose content has no visible text.',
             changed: 'Fires with the new state whenever the user toggles the chip.',
             disabled: 'Disables the chip and blocks toggling.',
+            icon: 'Optional icon component rendered before the label.',
             selected: 'Whether the chip is on, two-way bindable via [(selected)].',
             size: 'Visual size of the chip.',
           },

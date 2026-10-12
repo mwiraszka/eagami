@@ -43,9 +43,9 @@ export const pl: WebMessages = {
       scrollHint: 'Przewiń do usług',
     },
     services: {
-      title: 'Usługi',
+      title: 'Cegiełki',
       heading: 'Szyte na miarę, z kompletem funkcji',
-      lede: 'Każda strona jest projektowana i budowana od zera. Użyj przełącznika, by zobaczyć, co wnosi każda funkcja.',
+      lede: 'Każda strona jest projektowana i budowana od zera. Wybierz funkcje i zobacz, jak ożywa.',
       features: [
         {
           id: 'accounts',
@@ -1190,7 +1190,7 @@ export const pl: WebMessages = {
         colDefault: 'Domyślnie',
         colDescription: 'Opis',
         errorMessagesDescription:
-          'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej.',
+          'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej, a klucz ustawiony na null ukrywa ten błąd.',
         ariaLabelDescription:
           'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
         labelHelpDescription:
@@ -1243,6 +1243,7 @@ export const pl: WebMessages = {
           timeline: { orientation: 'Orientacja', align: 'Wyrównanie', size: 'Rozmiar' },
           'toggle-chip': {
             label: 'Etykieta',
+            icon: 'Ikona',
             size: 'Rozmiar',
             selected: 'Wybrane',
             disabled: 'Wyłączone',
@@ -2735,6 +2736,7 @@ export const pl: WebMessages = {
             ariaLabel: 'Dostępna etykieta chipu, którego treść nie ma widocznego tekstu.',
             changed: 'Emitowane z nowym stanem, gdy użytkownik przełączy chip.',
             disabled: 'Wyłącza chip i blokuje przełączanie.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             selected:
               'Określa, czy chip jest włączony, dwukierunkowo wiązalne przez [(selected)].',
             size: 'Wizualny rozmiar chipu.',

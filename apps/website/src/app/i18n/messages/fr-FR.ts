@@ -46,9 +46,9 @@ export const frFR: WebMessages = {
       scrollHint: 'Faire défiler jusqu’aux services',
     },
     services: {
-      title: 'Services',
+      title: 'Briques de base',
       heading: 'Sur mesure, riche en fonctionnalités',
-      lede: 'Chaque site est conçu et développé de zéro. Actionnez un interrupteur pour voir ce qu’apporte chaque fonctionnalité.',
+      lede: 'Chaque site est conçu et développé de zéro. Choisissez vos fonctionnalités et regardez-le prendre vie.',
       features: [
         {
           id: 'accounts',
@@ -1218,7 +1218,7 @@ export const frFR: WebMessages = {
         colDefault: 'Défaut',
         colDescription: 'Description',
         errorMessagesDescription:
-          'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut.',
+          'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut, et une clé définie à null masque cette erreur.',
         ariaLabelDescription:
           'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
         labelHelpDescription:
@@ -1271,6 +1271,7 @@ export const frFR: WebMessages = {
           timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           'toggle-chip': {
             label: 'Libellé',
+            icon: 'Icône',
             size: 'Taille',
             selected: 'Sélectionné',
             disabled: 'Désactivé',
@@ -2801,6 +2802,7 @@ export const frFR: WebMessages = {
             changed:
               'Émis avec le nouvel état chaque fois que l’utilisateur bascule la puce.',
             disabled: 'Désactive la puce et bloque la bascule.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             selected:
               'Indique si la puce est activée, liable en deux sens via [(selected)].',
             size: 'Taille visuelle de la puce.',

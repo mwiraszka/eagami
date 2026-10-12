@@ -21,10 +21,10 @@
           <li class="feature">
             <ea-toggle-chip
               size="sm"
+              [icon]="feature.icon"
               [selected]="feature.on"
               [aria-describedby]="'home-feature-hint-' + feature.id"
               (changed)="setFeature(feature.id, $event)">
-              <ng-container *ngComponentOutlet="feature.icon" />
               {{ feature.title }}
             </ea-toggle-chip>
             <span

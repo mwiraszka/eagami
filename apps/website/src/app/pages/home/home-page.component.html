@@ -130,7 +130,7 @@
       focusable="false">
       <path
         class="home-curve__fill home-curve__fill--subtle"
-        d="M0,96 L0,32 C300,88 700,80 960,48 C1160,24 1320,24 1440,56 L1440,96 Z" />
+        d="M0,192 L0,32 C300,88 700,80 960,48 C1160,24 1320,24 1440,56 L1440,192 Z" />
     </svg>
   </section>
 
@@ -163,7 +163,8 @@
             [label]="messages().home.contact.nameLabel"
             formControlName="name"
             [placeholder]="messages().home.contact.namePlaceholder"
-            [required]="true" />
+            [required]="true"
+            [errorMessages]="contactFieldErrors" />
           <ea-input
             [label]="messages().home.contact.emailLabel"
             type="email"
@@ -171,14 +172,14 @@
             [placeholder]="messages().home.contact.emailPlaceholder"
             autocomplete="email"
             [required]="true"
-            [errorMsg]="contactEmailError()"
-            (blurred)="onContactFieldBlur()" />
+            [errorMessages]="contactEmailErrors()" />
           <ea-textarea
             [label]="messages().home.contact.messageLabel"
             formControlName="message"
             [placeholder]="contactMessagePlaceholder()"
             [maxHeight]="300"
-            [required]="true" />
+            [required]="true"
+            [errorMessages]="contactFieldErrors" />
 
           @if (contactError(); as err) {
             <p

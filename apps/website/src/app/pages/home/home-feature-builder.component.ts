@@ -27,7 +27,6 @@ import {
   UsersIconComponent,
 } from '@eagami/ui';
 
-import { NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -131,7 +130,6 @@ function daysFromToday(days: number): Date {
     MailIconComponent,
     MapPinIconComponent,
     MessageCircleIconComponent,
-    NgComponentOutlet,
     PackageIconComponent,
     RouterLink,
     SearchIconComponent,

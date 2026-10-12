@@ -79,6 +79,13 @@
   }
 }
 
+// Leading icon at 1.5x the label text via the shared inline-icon size, as on a button
+.ea-toggle-chip__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: var(--icon-inline-size);
+}
+
 .ea-toggle-chip__content {
   display: inline-flex;
   align-items: center;

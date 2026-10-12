@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.66.0] - 2026-10-12
+
+### Added
+
+- Add an `icon` input to the toggle chip that leads its label with an icon, sized like a button's.
+- Let a form component's `errorMessages` hide an error by setting its key to `null`, which also keeps the field out of its error state.
+
+### Changed
+
+- Show a new validation error only once its field loses focus or the form is submitted, while an error already showing still clears the moment it is fixed.
+
 ## [5.65.0] - 2026-10-12
 
 ### Added
@@ -1903,6 +1914,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.66.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.65.0...ui-v5.66.0
 [5.65.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.64.1...ui-v5.65.0
 [5.64.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.64.0...ui-v5.64.1
 [5.64.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.63.2...ui-v5.64.0

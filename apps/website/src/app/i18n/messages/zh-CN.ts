@@ -42,9 +42,9 @@ export const zhCN: WebMessages = {
       scrollHint: '滚动查看服务',
     },
     services: {
-      title: '服务',
+      title: '构建模块',
       heading: '量身定制，功能齐全',
-      lede: '每个网站都从零开始设计与构建。拨动开关，看看每项功能会带来什么。',
+      lede: '每个网站都从零开始设计与构建。选择你需要的功能，看它焕发生机。',
       features: [
         { id: 'accounts', title: '用户账户', hint: '登录、注册和管理后台' },
         { id: 'payments', title: '在线支付', hint: '结账与周期性扣款' },
@@ -1109,7 +1109,7 @@ export const zhCN: WebMessages = {
         colDefault: '默认值',
         colDescription: '描述',
         errorMessagesDescription:
-          '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息。',
+          '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息，设为 null 的键会隐藏该错误。',
         ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
         labelHelpDescription: '通过标签旁的信息按钮显示的帮助内容，可以是纯文本或模板。',
         triggerErrorLabel: '触发错误',
@@ -1160,6 +1160,7 @@ export const zhCN: WebMessages = {
           timeline: { orientation: '方向', align: '对齐', size: '尺寸' },
           'toggle-chip': {
             label: '标签',
+            icon: '图标',
             size: '尺寸',
             selected: '选中',
             disabled: '禁用',
@@ -2402,6 +2403,7 @@ export const zhCN: WebMessages = {
             ariaLabel: '标签内容不含可见文本时，为其提供的无障碍标签。',
             changed: '每当用户切换标签时，随新的状态一同触发。',
             disabled: '禁用标签并阻止切换。',
+            icon: '可选的图标组件，显示在标签文本之前。',
             selected: '标签是否处于开启状态，可通过 [(selected)] 双向绑定。',
             size: '标签的视觉尺寸。',
           },

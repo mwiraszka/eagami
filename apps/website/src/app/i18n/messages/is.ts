@@ -43,9 +43,9 @@ export const is: WebMessages = {
       scrollHint: 'Skrunaðu að þjónustu',
     },
     services: {
-      title: 'Þjónusta',
+      title: 'Byggingareiningar',
       heading: 'Sérsmíðað og fullbúið',
-      lede: 'Hver vefur er hannaður og smíðaður frá grunni. Prófaðu rofana til að sjá hverju hver eiginleiki bætir við.',
+      lede: 'Hver vefur er hannaður og smíðaður frá grunni. Veldu eiginleikana þína og sjáðu hann lifna við.',
       features: [
         {
           id: 'accounts',
@@ -1194,7 +1194,7 @@ export const is: WebMessages = {
         colDefault: 'Sjálfgefið',
         colDescription: 'Lýsing',
         errorMessagesDescription:
-          'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð.',
+          'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð, og lykill stilltur á null felur þá villu.',
         ariaLabelDescription:
           'Aðgengilegt nafn tilkynnt hjálpartækni þegar einingin birtir engan sýnilegan merkimiða.',
         labelHelpDescription:
@@ -1247,6 +1247,7 @@ export const is: WebMessages = {
           timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
           'toggle-chip': {
             label: 'Merkimiði',
+            icon: 'Táknmynd',
             size: 'Stærð',
             selected: 'Valið',
             disabled: 'Óvirkt',
@@ -2727,6 +2728,7 @@ export const is: WebMessages = {
             changed:
               'Kviknar með nýja ástandinu í hvert sinn sem notandinn víxlar hnappnum.',
             disabled: 'Gerir víxlhnappinn óvirkan og hindrar víxlun.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             selected:
               'Hvort kveikt er á víxlhnappnum, tvíátta bindanlegt með [(selected)].',
             size: 'Sjónræn stærð víxlhnappsins.',

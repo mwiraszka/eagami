@@ -8,6 +8,13 @@
   [disabled]="disabled()"
   (click)="toggle()">
   <span class="ea-toggle-chip__content">
+    @if (icon(); as iconComponent) {
+      <span
+        class="ea-toggle-chip__icon"
+        aria-hidden="true">
+        <ng-container *ngComponentOutlet="iconComponent" />
+      </span>
+    }
     <ng-content />
   </span>
   <ea-icon-check

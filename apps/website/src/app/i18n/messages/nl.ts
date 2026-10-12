@@ -43,9 +43,9 @@ export const nl: WebMessages = {
       scrollHint: 'Scroll naar diensten',
     },
     services: {
-      title: 'Diensten',
+      title: 'Bouwstenen',
       heading: 'Op maat gebouwd, compleet uitgerust',
-      lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Zet een schakelaar om en zie wat elke functie toevoegt.',
+      lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Kies je functies en zie hem tot leven komen.',
       features: [
         {
           id: 'accounts',
@@ -1182,7 +1182,7 @@ export const nl: WebMessages = {
         colDefault: 'Standaard',
         colDescription: 'Beschrijving',
         errorMessagesDescription:
-          'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard.',
+          'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard, en een sleutel op null verbergt die fout.',
         ariaLabelDescription:
           'Toegankelijke naam aangekondigd door hulptechnologie wanneer de component geen zichtbaar label rendert.',
         labelHelpDescription:
@@ -1235,6 +1235,7 @@ export const nl: WebMessages = {
           timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
           'toggle-chip': {
             label: 'Label',
+            icon: 'Icoon',
             size: 'Grootte',
             selected: 'Geselecteerd',
             disabled: 'Uitgeschakeld',
@@ -2780,6 +2781,7 @@ export const nl: WebMessages = {
             changed:
               'Wordt geactiveerd met de nieuwe toestand telkens wanneer de gebruiker de chip omschakelt.',
             disabled: 'Schakelt de chip uit en blokkeert het omschakelen.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             selected:
               'Of de chip aan staat, in twee richtingen te binden via [(selected)].',
             size: 'Visuele grootte van de chip.',

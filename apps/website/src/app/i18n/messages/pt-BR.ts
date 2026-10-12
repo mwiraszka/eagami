@@ -43,9 +43,9 @@ export const ptBR: WebMessages = {
       scrollHint: 'Rolar até os serviços',
     },
     services: {
-      title: 'Serviços',
+      title: 'Blocos de construção',
       heading: 'Sob medida, com todos os recursos',
-      lede: 'Cada site é projetado e construído do zero. Ative uma opção para ver o que cada recurso acrescenta.',
+      lede: 'Cada site é projetado e construído do zero. Escolha seus recursos e veja-o ganhar vida.',
       features: [
         {
           id: 'accounts',
@@ -1181,7 +1181,7 @@ export const ptBR: WebMessages = {
         colDefault: 'Padrão',
         colDescription: 'Descrição',
         errorMessagesDescription:
-          'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado.',
+          'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado, e uma chave definida como null oculta esse erro.',
         ariaLabelDescription:
           'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
         labelHelpDescription:
@@ -1234,6 +1234,7 @@ export const ptBR: WebMessages = {
           timeline: { orientation: 'Orientação', align: 'Alinhamento', size: 'Tamanho' },
           'toggle-chip': {
             label: 'Rótulo',
+            icon: 'Ícone',
             size: 'Tamanho',
             selected: 'Selecionado',
             disabled: 'Desativado',
@@ -2750,6 +2751,7 @@ export const ptBR: WebMessages = {
               'Rótulo acessível para um chip cujo conteúdo não tem texto visível.',
             changed: 'Dispara com o novo estado sempre que o usuário alterna o chip.',
             disabled: 'Desativa o chip e bloqueia a alternância.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             selected:
               'Se o chip está ativado, vinculável de forma bidirecional via [(selected)].',
             size: 'Tamanho visual do chip.',

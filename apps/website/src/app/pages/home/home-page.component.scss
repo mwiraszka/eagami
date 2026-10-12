@@ -277,6 +277,8 @@
 /* Curves keep their desktop proportions as the page narrows, up to a 96px height */
 .home-curve {
   position: relative;
+  // A fill drawn past the box ends where its section clips it, on a whole pixel
+  overflow: visible;
   display: block;
   flex-shrink: 0;
   width: 100%;

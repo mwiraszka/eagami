@@ -4,6 +4,7 @@ import {
   type AbstractControl,
   type ControlValueAccessor,
   FormControl,
+  FormGroup,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
   type ValidatorFn,
@@ -135,6 +136,25 @@ describe('controlErrorStateFrom', () => {
     expect(state.error()).toBe('We need this one');
   });
 
+  it('hides an error whose key is overridden with null', () => {
+    const state = build(touchedInvalid('', Validators.required), {
+      errorMessages: { required: null },
+    });
+
+    expect(state.error()).toBeNull();
+    expect(state.hasError()).toBe(false);
+  });
+
+  it('moves on to the next active error when the first is hidden', () => {
+    const alwaysFails: ValidatorFn = () => ({ custom: true });
+
+    const state = build(touchedInvalid('', [Validators.required, alwaysFails]), {
+      errorMessages: { required: null, custom: 'Something else is wrong' },
+    });
+
+    expect(state.error()).toBe('Something else is wrong');
+  });
+
   it('prefers an explicit errorMsg over any derived message', () => {
     const state = build(touchedInvalid('', Validators.required), {
       errorMsg: 'Server rejected this',
@@ -239,5 +259,97 @@ describe('injectControlErrorState', () => {
 
     expect(outer.state.error()).toBe('This field is required');
     expect(inner.state.error()).toBeNull();
+  });
+});
+
+describe('error timing while the field has focus', () => {
+  const tooShort: ValidatorFn = control =>
+    control.value && control.value.length < 3 ? { tooShort: true } : null;
+
+  @Component({
+    selector: 'ea-test-field',
+    template: '<input />',
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => FieldComponent),
+        multi: true,
+      },
+    ],
+  })
+  class FieldComponent implements ControlValueAccessor {
+    readonly state = injectControlErrorState({
+      errorMsg: signal(undefined),
+      errorMessages: signal({ tooShort: 'Too short' }),
+    });
+    writeValue(): void {}
+    registerOnChange(): void {}
+    registerOnTouched(): void {}
+  }
+
+  @Component({
+    imports: [FieldComponent, ReactiveFormsModule],
+    template: `
+      <form
+        [formGroup]="form"
+        (ngSubmit)="(0)">
+        <ea-test-field formControlName="code" />
+        <button type="submit">Send</button>
+      </form>
+    `,
+  })
+  class FormHostComponent {
+    readonly form = new FormGroup({ code: new FormControl('', tooShort) });
+  }
+
+  async function setup() {
+    const fixture = TestBed.createComponent(FormHostComponent);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const control = fixture.componentInstance.form.controls.code;
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+    const field = fixture.debugElement.query(By.directive(FieldComponent))
+      .componentInstance as FieldComponent;
+    control.markAsTouched();
+    return { fixture, control, input, state: field.state };
+  }
+
+  it('holds a new error back until focus leaves the field', async () => {
+    const { control, input, state } = await setup();
+    input.focus();
+
+    control.setValue('ab');
+
+    expect(state.error()).toBeNull();
+
+    input.blur();
+
+    expect(state.error()).toBe('Too short');
+  });
+
+  it('clears a showing error once fixed, then holds the next one until blur', async () => {
+    const { control, input, state } = await setup();
+    control.setValue('ab');
+    expect(state.error()).toBe('Too short');
+    input.focus();
+
+    control.setValue('abcd');
+
+    expect(state.error()).toBeNull();
+
+    control.setValue('ab');
+
+    expect(state.error()).toBeNull();
+  });
+
+  it('reveals the error in the focused field when the form is submitted', async () => {
+    const { fixture, control, input, state } = await setup();
+    input.focus();
+    control.setValue('ab');
+
+    fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
+
+    expect(state.error()).toBe('Too short');
   });
 });

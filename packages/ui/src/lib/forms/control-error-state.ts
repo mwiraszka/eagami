@@ -1,14 +1,18 @@
 import {
+  DestroyRef,
+  ElementRef,
   Injector,
   type Signal,
   afterNextRender,
   computed,
   effect,
   inject,
+  linkedSignal,
   signal,
 } from '@angular/core';
 import {
   type AbstractControl,
+  FormSubmittedEvent,
   NgControl,
   TouchedChangeEvent,
   type ValidationErrors,
@@ -26,9 +30,10 @@ export type EaValidationErrorKey =
  * Per-error-key message overrides for a form control. Keys are validator error
  * names (`required`, `email`, or any custom validator key); values are the text
  * shown when that error is the active one. Keys left unset fall back to the
- * library's localized default message.
+ * library's localized default message, and a key set to `null` is never shown,
+ * so a field whose only errors are hidden keeps out of its error state.
  */
-export type EaErrorMessages = Partial<Record<string, string>>;
+export type EaErrorMessages = Partial<Record<string, string | null>>;
 
 export interface ControlErrorStateConfig {
   /** Explicit error text; shown unconditionally and overrides any auto-derived message. */
@@ -47,12 +52,16 @@ export interface ControlErrorState {
 /**
  * Derives a form control's display error from, in priority order: an explicit
  * `errorMsg`, a consumer `errorMessages` override, then the library's localized
- * default for the active `ValidationErrors` key. Auto-derived messages surface
- * only once the bound control is `invalid && touched`, matching the moment a
- * user expects validation feedback. A message revealed by a pointer press
- * moving focus away waits until that press has landed its click. The control
- * arrives as a signal so callers decide how it is resolved: from the host's own
- * `NgControl` (CVA components) or from projected content (`<ea-form-field>`).
+ * default for the active `ValidationErrors` key.
+ *
+ * Auto-derived messages surface only once the bound control is `invalid &&
+ * touched`, and a new one waits while focus is still inside the field, until
+ * the user leaves it or submits the form, so nothing is flagged mid-edit. A
+ * message already showing follows the value as it is typed and clears the
+ * moment it is fixed. A message revealed by a pointer press moving focus away
+ * waits until that press has landed its click. The control arrives as a signal
+ * so callers decide how it is resolved: from the host's own `NgControl` (CVA
+ * components) or from projected content (`<ea-form-field>`).
  */
 export function controlErrorStateFrom(
   control: Signal<AbstractControl | null>,
@@ -60,43 +69,110 @@ export function controlErrorStateFrom(
 ): ControlErrorState {
   const i18n = inject(EagamiI18nService);
   const press = inject(PointerPressTracker);
+  const injector = inject(Injector);
+  const destroyRef = inject(DestroyRef);
+  const host = inject<ElementRef<HTMLElement>>(ElementRef, { optional: true });
 
   // Bumped on every status/touched change so the computed re-reads the control
   const revision = signal(0);
+  const editing = signal(false);
+  // A submit shows every error at once, including one held back mid-edit
+  const revealedBySubmit = signal(false);
 
   // The message a blur reveals grows the field and shifts the layout under the
   // pointer, so while the press behind that blur is down the click would land
   // on whatever moved into its place
   const revealPending = signal(false);
+  let dropPendingReveal: (() => void) | null = null;
+  const holdRevealForPress = (): void => {
+    dropPendingReveal?.();
+    revealPending.set(true);
+    dropPendingReveal = press.whenPressEnds(() => revealPending.set(false));
+  };
+  destroyRef.onDestroy(() => dropPendingReveal?.());
 
   effect(onCleanup => {
     const ctrl = control();
     if (!ctrl) {
       return;
     }
-    let dropPendingReveal: (() => void) | null = null;
+    const onSubmit = (): void => revealedBySubmit.set(true);
     const sub = ctrl.events.subscribe(event => {
       if (event instanceof TouchedChangeEvent && event.touched) {
-        dropPendingReveal?.();
-        revealPending.set(true);
-        dropPendingReveal = press.whenPressEnds(() => revealPending.set(false));
+        holdRevealForPress();
+      }
+      if (event instanceof FormSubmittedEvent) {
+        onSubmit();
       }
       revision.update(r => r + 1);
     });
+    const rootSub =
+      ctrl.root === ctrl
+        ? null
+        : ctrl.root.events.subscribe(event => {
+            if (event instanceof FormSubmittedEvent) {
+              onSubmit();
+            }
+          });
     onCleanup(() => {
       sub.unsubscribe();
+      rootSub?.unsubscribe();
       dropPendingReveal?.();
       revealPending.set(false);
     });
   });
 
-  const autoError = computed<string | null>(() => {
+  if (host) {
+    afterNextRender(
+      () => {
+        const element = host.nativeElement;
+        const onFocusIn = (): void => {
+          editing.set(true);
+          revealedBySubmit.set(false);
+        };
+        const onFocusOut = (event: FocusEvent): void => {
+          if (
+            event.relatedTarget instanceof Node &&
+            element.contains(event.relatedTarget)
+          ) {
+            return;
+          }
+          editing.set(false);
+          revealedBySubmit.set(false);
+          holdRevealForPress();
+        };
+        editing.set(element.contains(document.activeElement));
+        element.addEventListener('focusin', onFocusIn);
+        element.addEventListener('focusout', onFocusOut);
+        destroyRef.onDestroy(() => {
+          element.removeEventListener('focusin', onFocusIn);
+          element.removeEventListener('focusout', onFocusOut);
+        });
+      },
+      { injector },
+    );
+  }
+
+  const validationError = computed<string | null>(() => {
     revision();
     const ctrl = control();
-    if (revealPending() || !ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
+    if (!ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
       return null;
     }
     return resolveValidationMessage(ctrl.errors, config.errorMessages(), i18n.messages());
+  });
+
+  // Only a new message is held back; one already showing keeps following the value
+  const autoError = linkedSignal<
+    { message: string | null; holding: boolean },
+    string | null
+  >({
+    source: () => ({
+      message: validationError(),
+      holding: revealPending() || (editing() && !revealedBySubmit()),
+    }),
+    computation: ({ message, holding }, previous) =>
+      previous?.value || !holding ? message : null,
   });
 
   const error = computed<string | null>(() => config.errorMsg() || autoError());
@@ -139,16 +215,17 @@ export function injectControlErrorState(
 }
 
 /**
- * Picks the first active error key and resolves its message: a consumer
- * override wins, otherwise the localized built-in default (interpolating the
- * validator's own params), falling back to a generic message for unknown keys.
+ * Picks the first active error key the consumer hasn't hidden and resolves its
+ * message: a consumer override wins, otherwise the localized built-in default
+ * (interpolating the validator's own params), falling back to a generic message
+ * for unknown keys.
  */
 function resolveValidationMessage(
   errors: ValidationErrors,
   overrides: EaErrorMessages | undefined,
   messages: EagamiMessages,
 ): string | null {
-  const key = Object.keys(errors)[0];
+  const key = Object.keys(errors).find(name => overrides?.[name] !== null);
   if (!key) {
     return null;
   }

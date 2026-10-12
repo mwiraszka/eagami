@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, type Type, signal } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MoonIconComponent } from '../icons/moon.component';
 import { ToggleChipComponent, type ToggleChipSize } from './toggle-chip.component';
 
 @Component({
@@ -9,6 +10,7 @@ import { ToggleChipComponent, type ToggleChipSize } from './toggle-chip.componen
     <ea-toggle-chip
       [(selected)]="selected"
       [size]="size()"
+      [icon]="icon()"
       [disabled]="disabled()"
       [aria-label]="ariaLabel()"
       [aria-describedby]="ariaDescribedby()"
@@ -20,6 +22,7 @@ import { ToggleChipComponent, type ToggleChipSize } from './toggle-chip.componen
 class HostComponent {
   readonly selected = signal(false);
   readonly size = signal<ToggleChipSize>('md');
+  readonly icon = signal<Type<unknown> | undefined>(undefined);
   readonly disabled = signal(false);
   readonly ariaLabel = signal<string | undefined>(undefined);
   readonly ariaDescribedby = signal<string | undefined>(undefined);
@@ -125,6 +128,23 @@ describe('ToggleChipComponent', () => {
 
   it('omits aria-describedby when none is given', () => {
     expect(getButton().hasAttribute('aria-describedby')).toBe(false);
+  });
+
+  it('renders no icon slot when none is given', () => {
+    expect(fixture.nativeElement.querySelector('.ea-toggle-chip__icon')).toBeNull();
+  });
+
+  it('renders the given icon before the label, hidden from assistive technology', () => {
+    host.icon.set(MoonIconComponent);
+
+    fixture.detectChanges();
+
+    const content = fixture.nativeElement.querySelector('.ea-toggle-chip__content');
+    const icon = content.firstElementChild;
+    expect(icon.classList).toContain('ea-toggle-chip__icon');
+    expect(icon.querySelector('ea-icon-moon')).not.toBeNull();
+    expect(icon.getAttribute('aria-hidden')).toBe('true');
+    expect(content.textContent.trim()).toBe('Dark mode');
   });
 
   it('hides the check from assistive technology', () => {

@@ -42,9 +42,9 @@ export const esES: WebMessages = {
       scrollHint: 'Desplázate a los servicios',
     },
     services: {
-      title: 'Servicios',
+      title: 'Piezas clave',
       heading: 'A medida y con todas las funciones',
-      lede: 'Cada sitio se diseña y se construye desde cero. Activa un interruptor para ver lo que aporta cada funcionalidad.',
+      lede: 'Cada sitio se diseña y se construye desde cero. Elige tus funcionalidades y míralo cobrar vida.',
       features: [
         {
           id: 'accounts',
@@ -1198,7 +1198,7 @@ export const esES: WebMessages = {
         colDefault: 'Predeterminado',
         colDescription: 'Descripción',
         errorMessagesDescription:
-          'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado.',
+          'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado, y una clave con valor null oculta ese error.',
         ariaLabelDescription:
           'Nombre accesible anunciado por las tecnologías de asistencia cuando el componente no muestra ninguna etiqueta visible.',
         labelHelpDescription:
@@ -1251,6 +1251,7 @@ export const esES: WebMessages = {
           timeline: { orientation: 'Orientación', align: 'Alineación', size: 'Tamaño' },
           'toggle-chip': {
             label: 'Etiqueta',
+            icon: 'Icono',
             size: 'Tamaño',
             selected: 'Seleccionado',
             disabled: 'Deshabilitado',
@@ -2807,6 +2808,7 @@ export const esES: WebMessages = {
             changed:
               'Se emite con el nuevo estado cada vez que el usuario alterna el chip.',
             disabled: 'Deshabilita el chip y bloquea su alternancia.',
+            icon: 'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             selected:
               'Indica si el chip está activado, vinculable en dos sentidos mediante [(selected)].',
             size: 'Tamaño visual del chip.',
