@@ -39,115 +39,178 @@ export const nl: WebMessages = {
     hero: {
       tagline: 'elegant webontwerp.',
       ctaPrimary: 'Neem contact op',
-      ctaSecondary: 'Bekijk recente projecten →',
+      ctaSecondary: 'Bekijk het in actie →',
       scrollHint: 'Scroll naar diensten',
     },
     services: {
       title: 'Diensten',
-      lede: 'Van een enkele landingspagina tot een volledige webapp, plus alles wat na de lancering komt.',
-      featuresHeading: 'Mogelijkheden',
-      uiNote: {
-        before: 'Grotere projecten kunnen worden gebouwd op',
-        link: 'Eagami UI',
-        after:
-          ', een eigen componentenbibliotheek, voor een consistente en moderne visuele taal over de hele site.',
-      },
-      core: [
+      heading: 'Op maat gebouwd, compleet uitgerust',
+      lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Zet een schakelaar om en zie wat elke functie toevoegt.',
+      features: [
         {
-          title: 'Maatwerkwebsites',
-          description:
-            'Een complete site die vanaf de grond wordt opgebouwd: domeininstellingen, hosting, branding, ontwerp en lancering. Onbeperkte revisies tot de lanceringsdag.',
+          id: 'accounts',
+          title: 'Gebruikersaccounts',
+          hint: 'Inloggen, registreren en een beheerdashboard',
         },
         {
-          title: 'Doorlopend onderhoud',
-          description:
-            'Maandelijks onderhoud dat hosting, beveiligingsupdates, afhankelijkheidsupgrades, contentaanpassingen en analysebeoordelingen omvat.',
+          id: 'payments',
+          title: 'Betalingen',
+          hint: 'Afrekenen en terugkerende facturering',
+        },
+        {
+          id: 'bookings',
+          title: 'Reserveringen',
+          hint: 'Afspraken en adviesgesprekken',
+        },
+        { id: 'events', title: 'Agenda', hint: 'Komende data en details' },
+        { id: 'gallery', title: 'Fotogalerijen', hint: 'Albums die overal mooi ogen' },
+        { id: 'reviews', title: 'Reviews', hint: 'Beoordelingen van echte klanten' },
+        { id: 'search', title: 'Zoeken', hint: 'Vind alles op de site' },
+        {
+          id: 'cms',
+          title: 'Contentbeheer',
+          hint: "Pagina's bijwerken zonder ontwikkelaar",
+        },
+        { id: 'languages', title: 'Meertalig', hint: 'Elke taal, automatisch herkend' },
+        { id: 'theming', title: "Thema's", hint: 'Donkere modus en eigen kleuren' },
+        {
+          id: 'analytics',
+          title: 'Statistieken',
+          hint: 'Verkeersbronnen en eigen events',
+        },
+        { id: 'email', title: 'E-mail', hint: 'Bonnen en meldingen' },
+        { id: 'chat', title: 'Livechat', hint: 'Beantwoord bezoekers direct' },
+        {
+          id: 'maps',
+          title: 'Kaarten en locatie',
+          hint: 'Routebeschrijving en openingstijden',
+        },
+        {
+          id: 'pwa',
+          title: 'Installeerbare app',
+          hint: 'Op het beginscherm, ook offline',
         },
       ],
-      addOns: [
+      previousFeatures: 'Vorige functies',
+      nextFeatures: 'Volgende functies',
+      uiNote: {
+        before: 'Alle projecten worden gebouwd op',
+        link: 'Eagami UI',
+        after:
+          ', een in eigen huis ontwikkelde componentenbibliotheek, voor een consistente en moderne visuele taal over de hele site.',
+      },
+      demo: {
+        brand: 'Jouw bedrijf',
+        nav: ['Producten', 'Over ons'],
+        greeting: 'Hallo.',
+        tagline: 'Welkom op je nieuwe website.',
+        product: 'Je product',
+        price: '$ 32',
+        addToCart: 'In winkelwagen',
+        pay: 'Betaal $ 32,00',
+        checkoutNote: 'Veilig afrekenen met kaart of wallet',
+        welcome: 'Welkom terug, Sam',
+        orders: '2 bestellingen onderweg',
+        visitors: 'Bezoekers deze week',
+        aboutLabel: 'Over ons',
+        aboutTitle: 'Ons verhaal',
+        receiptSent: 'Bon verzonden naar sam@example.com',
+        install: 'Installeren',
+        search: 'Zoeken',
+        edit: 'Bewerken',
+        chatGreeting: 'Hoi! Waarmee kunnen we helpen?',
+        bookTitle: 'Plan een bezoek',
+        book: 'Boeken',
+        eventsTitle: 'Komende evenementen',
+        events: ['Open dag', 'Praktijkworkshop', 'Zomerlancering'],
+        galleryTitle: 'Galerij',
+        mapTitle: 'Hier vind je ons',
+        mapHours: 'Vandaag open, 9 tot 17 uur',
+      },
+    },
+    process: {
+      title: 'Het traject',
+      heading: 'Aan je zijde, van begin tot eind',
+      websiteGroup: 'Ontwikkeling',
+      maintenanceGroup: 'Onderhoud',
+      steps: [
         {
-          title: 'Gebruikersbeheer',
-          description:
-            'Gebruikersauthenticatie, registratie en wachtwoordherstel, plus een beheerdersdashboard met statistieken en bediening per gebruiker.',
-          iconSlug: 'users',
+          title: 'Domein en hosting',
+          description: 'Geregistreerd, ingesteld en voor altijd van jou.',
         },
+        { title: 'Merk en ontwerp', description: 'Logo, kleurenpalet en elke lay-out.' },
+        { title: 'Bouw', description: 'Snel, toegankelijk en responsive.' },
+        { title: 'Lancering', description: 'Onbeperkte revisies tot de lanceringsdag.' },
         {
-          title: 'Betalingsverwerking',
-          description:
-            'Online betalingen (standaard Stripe, andere providers op verzoek), met aanpasbare betaalformulieren en terugkerende facturering.',
-          iconSlug: 'credit-card',
-        },
-        {
-          title: 'Meertalige ondersteuning',
-          description:
-            'Taalondersteuning voor meerdere talen, met optionele automatische detectie via de browser van de bezoeker.',
-          iconSlug: 'languages',
-        },
-        {
-          title: 'Thema-aanpassing',
-          description:
-            "Schakelaar voor donkere/lichte modus en volledig aanpasbare kleurthema's.",
-          iconSlug: 'moon',
-        },
-        {
-          title: 'Analyse en inzichten',
-          description:
-            'Statistieken over websiteverkeer (bronnen, apparaten, locaties), plus aangepaste gebeurtenisregistratie.',
-          iconSlug: 'bar-chart',
-        },
-        {
-          title: 'E-mail en meldingen',
-          description:
-            'Geautomatiseerde e-mails voor accountactiviteit, bonnen en aankondigingen.',
-          iconSlug: 'mail',
+          title: 'Doorlopende zorg',
+          description: 'Hosting, updates, aanpassingen en statistieken, elke maand.',
         },
       ],
     },
     projects: {
-      title: 'Recente projecten',
-      lede: 'Een paar sites in actieve ontwikkeling.',
-      previousAriaLabel: 'Vorige projecten',
-      nextAriaLabel: 'Volgende projecten',
-      regionAriaLabel: 'Recente projecten',
-      showing: title => `${title} wordt getoond`,
-      cards: [
+      title: 'Gelanceerd',
+      heading: 'Eagami in het wild',
+      lede: 'Live sites en apps die we hebben ontworpen, gebouwd en nog steeds onderhouden.',
+      visit: domain => `Bezoek ${domain}`,
+      recordingLabel: project => `Schermopname van ${project}`,
+      stories: [
         {
-          title: 'London Chess',
-          description:
-            'Een centrale plek voor de London Chess Club en schaakevenementen in London, ON.',
-          url: 'https://londonchess.ca',
-          display: 'londonchess.ca',
-          logo: 'assets/projects/londonchess.svg',
-        },
-        {
-          title: 'Chordbomb',
+          id: 'chordbomb',
           description:
             'Herkent het nummer dat om je heen speelt en leidt het akkoordenschema af.',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
+          tags: [
+            'Stripe-abonnementen',
+            'Muziekherkenning',
+            'Audioanalyse',
+            'Speelbare akkoorden',
+            'MIDI-export',
+            'Cloudopnames',
+          ],
         },
         {
-          title: 'CIRC Aesthetics',
+          id: 'londonchess',
           description:
-            'Cosmetic Interventional Radiology Clinic gevestigd in London, ON.',
-          url: 'https://circaesthetics.ca',
-          display: 'circaesthetics.ca',
-          logo: 'assets/projects/circaesthetics.svg',
+            'Een centrale plek voor de London Chess Club en schaakevenementen in London, ON.',
+          tags: [
+            'Contenteditor',
+            'Partijen naspelen',
+            'E-mailmeldingen',
+            'Spreadsheetimport',
+            'Google Maps',
+            'Afbeeldingsuploads',
+            'PDF-viewer',
+            'Ledenratings',
+            'Foutmonitoring',
+          ],
         },
         {
-          title: 'Brewski Bets',
+          id: 'brewskibets',
           description:
             'Een tracker voor vriendschappelijke weddenschappen, vereffend in bier.',
-          url: 'https://brewskibets.com',
-          display: 'brewskibets.com',
-          logo: 'assets/projects/brewskibets.svg',
+          tags: [
+            'Interactieve grafieken',
+            'Vriendschapsverzoeken',
+            'Avatar-uploads',
+            'Eigen iconen',
+            'Donkere modus',
+          ],
+        },
+        {
+          id: 'circaesthetics',
+          description:
+            'Cosmetic Interventional Radiology Clinic gevestigd in London, ON.',
+          tags: [
+            'Affiliate-tracking',
+            'Cookieloze statistieken',
+            'Tik om te bellen',
+            "Sectiemenu's",
+          ],
         },
       ],
     },
     contact: {
       title: 'Een project in gedachten?',
-      lede: 'Vertel erover!',
+      lede: 'Laten we beginnen!',
       success: 'Bedankt voor het bericht. Er volgt snel een reactie.',
       nameLabel: 'Naam',
       namePlaceholder: 'Je naam',
@@ -1170,6 +1233,12 @@ export const nl: WebMessages = {
             showPercentages: 'Percentages tonen',
           },
           timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
+          'toggle-chip': {
+            label: 'Label',
+            size: 'Grootte',
+            selected: 'Geselecteerd',
+            disabled: 'Uitgeschakeld',
+          },
           tooltip: {
             eaTooltip: 'Tooltipinhoud',
           },
@@ -1777,7 +1846,7 @@ export const nl: WebMessages = {
             variant:
               'Inhoudsvariant: default is het kale woordmerk, byline voegt de designed-by-regel toe, tagline voegt de tagline toe.',
             layout: 'Schikt het woordmerk gestapeld over regels of inline op één regel.',
-            size: 'Lettergrootte in px van de merktekst; de rest van het woordmerk schaalt daarvan.',
+            size: 'Lettergrootte in px van de merktekst, of inherit om de omringende tekst te volgen; de rest van het woordmerk schaalt daarvan.',
             linked:
               'Toont het woordmerk als link naar eagami.com; schakel uit om het in een eigen link of statische context in te bedden.',
           },
@@ -2702,6 +2771,19 @@ export const nl: WebMessages = {
             'DialogService.closeAll':
               'Sluit elk dialoogvenster in het signaal dialogs, het nieuwste eerst, en vervult elk result met undefined.',
           },
+
+          'toggle-chip': {
+            ariaDescribedby:
+              'Identificator van een element dat beschrijft wat de chip inschakelt, samen met de naam voorgelezen.',
+            ariaLabel:
+              'Toegankelijk label voor een chip waarvan de inhoud geen zichtbare tekst heeft.',
+            changed:
+              'Wordt geactiveerd met de nieuwe toestand telkens wanneer de gebruiker de chip omschakelt.',
+            disabled: 'Schakelt de chip uit en blokkeert het omschakelen.',
+            selected:
+              'Of de chip aan staat, in twee richtingen te binden via [(selected)].',
+            size: 'Visuele grootte van de chip.',
+          },
         },
         direction: 'Richting',
         knobDefaults: {
@@ -2811,6 +2893,7 @@ export const nl: WebMessages = {
             label: 'Tijd',
             placeholder: 'Kies een tijd…',
           },
+          'toggle-chip': { label: 'Donkere modus' },
           tooltip: {
             eaTooltip: 'Tooltips geven extra context bij hover of focus',
           },

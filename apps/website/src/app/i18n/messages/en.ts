@@ -38,111 +38,159 @@ export const en: WebMessages = {
     hero: {
       tagline: 'elegant web design.',
       ctaPrimary: 'Get in touch',
-      ctaSecondary: 'See recent projects →',
+      ctaSecondary: 'See it in action →',
       scrollHint: 'Scroll to services',
     },
     services: {
       title: 'Services',
-      lede: 'From a single landing page to a full web app, plus everything that comes after launch.',
-      featuresHeading: 'Features',
+      heading: 'Custom-built, fully featured',
+      lede: 'Every site is designed and built from scratch. Flip a switch to see what each feature adds.',
+      features: [
+        {
+          id: 'accounts',
+          title: 'User accounts',
+          hint: 'Log in, sign up, and an admin dashboard',
+        },
+        { id: 'payments', title: 'Payments', hint: 'Checkout and recurring billing' },
+        { id: 'bookings', title: 'Bookings', hint: 'Appointments and consultations' },
+        { id: 'events', title: 'Events calendar', hint: 'Upcoming dates and details' },
+        {
+          id: 'gallery',
+          title: 'Photo galleries',
+          hint: 'Albums that look great anywhere',
+        },
+        { id: 'reviews', title: 'Reviews', hint: 'Ratings from real customers' },
+        { id: 'search', title: 'Search', hint: 'Find anything on the site' },
+        { id: 'cms', title: 'Content editing', hint: 'Update pages without a developer' },
+        { id: 'languages', title: 'Multilingual', hint: 'Any language, auto-detected' },
+        { id: 'theming', title: 'Theming', hint: 'Dark mode and custom colors' },
+        {
+          id: 'analytics',
+          title: 'Analytics',
+          hint: 'Traffic sources and custom events',
+        },
+        { id: 'email', title: 'Email', hint: 'Receipts and notifications' },
+        { id: 'chat', title: 'Live chat', hint: 'Answer visitors in real time' },
+        { id: 'maps', title: 'Maps and location', hint: 'Directions and opening hours' },
+        { id: 'pwa', title: 'Installable app', hint: 'On the home screen, even offline' },
+      ],
+      previousFeatures: 'Previous features',
+      nextFeatures: 'Next features',
       uiNote: {
-        before: 'Larger projects can be built on',
+        before: 'All projects are built on',
         link: 'Eagami UI',
         after:
-          ', a custom component library, for a consistent and modern visual language across the site.',
+          ', an in-house component library, for a consistent and modern visual language across the site.',
       },
-      core: [
+      demo: {
+        brand: 'Your Business',
+        nav: ['Products', 'About'],
+        greeting: 'Hello.',
+        tagline: 'Welcome to your new website.',
+        product: 'Your product',
+        price: '$32',
+        addToCart: 'Add to cart',
+        pay: 'Pay $32.00',
+        checkoutNote: 'Secure checkout, cards and wallets',
+        welcome: 'Welcome back, Sam',
+        orders: '2 orders on the way',
+        visitors: 'Visitors this week',
+        aboutLabel: 'About us',
+        aboutTitle: 'Our story',
+        receiptSent: 'Receipt sent to sam@example.com',
+        install: 'Install',
+        search: 'Search',
+        edit: 'Edit',
+        chatGreeting: 'Hi! How can we help?',
+        bookTitle: 'Book a visit',
+        book: 'Book',
+        eventsTitle: 'Upcoming events',
+        events: ['Open house', 'Hands-on workshop', 'Summer launch'],
+        galleryTitle: 'Gallery',
+        mapTitle: 'Find us',
+        mapHours: 'Open today, 9 to 5',
+      },
+    },
+    process: {
+      title: 'The journey',
+      heading: 'With you, start to finish',
+      websiteGroup: 'Development',
+      maintenanceGroup: 'Maintenance',
+      steps: [
         {
-          title: 'Custom websites',
-          description:
-            'A complete site built from the ground up: domain setup, hosting, branding, design, and launch. Unlimited revisions until launch day.',
+          title: 'Domain and hosting',
+          description: 'Registered, configured, and yours forever.',
         },
+        { title: 'Brand and design', description: 'Logo, palette, and every layout.' },
+        { title: 'Build', description: 'Fast, accessible, and responsive.' },
+        { title: 'Launch', description: 'Unlimited revisions until launch day.' },
         {
-          title: 'Ongoing maintenance',
-          description:
-            'Monthly upkeep covering hosting, security patches, dependency upgrades, content edits, and analytics reviews.',
-        },
-      ],
-      addOns: [
-        {
-          title: 'User management',
-          description:
-            'User authentication, registration, and password recovery, plus an admin dashboard with metrics and per-user controls.',
-          iconSlug: 'users',
-        },
-        {
-          title: 'Payment processing',
-          description:
-            'Online payments (Stripe by default, other providers on request), with customizable payment forms and recurring billing.',
-          iconSlug: 'credit-card',
-        },
-        {
-          title: 'Multilingual support',
-          description:
-            "Language support for multiple locales, with optional auto-detection from the visitor's browser.",
-          iconSlug: 'languages',
-        },
-        {
-          title: 'Theming',
-          description: 'Dark/light mode toggle and fully customizable color themes.',
-          iconSlug: 'moon',
-        },
-        {
-          title: 'Analytics & insights',
-          description:
-            'Website traffic metrics (sources, devices, locations), plus custom event tracking.',
-          iconSlug: 'bar-chart',
-        },
-        {
-          title: 'Email & notifications',
-          description:
-            'Automated emails for account activity, receipts, and announcements.',
-          iconSlug: 'mail',
+          title: 'Ongoing care',
+          description: 'Hosting, updates, edits, and analytics, every month.',
         },
       ],
     },
     projects: {
-      title: 'Recent projects',
-      lede: 'A few sites in active development.',
-      previousAriaLabel: 'Previous projects',
-      nextAriaLabel: 'Next projects',
-      regionAriaLabel: 'Recent projects',
-      showing: title => `Showing ${title}`,
-      cards: [
+      title: 'Released',
+      heading: 'Eagami in the wild',
+      lede: 'Live sites and apps we designed, built and still look after.',
+      visit: domain => `Visit ${domain}`,
+      recordingLabel: project => `Screen recording of ${project}`,
+      stories: [
         {
-          title: 'London Chess',
-          description: 'A hub for the London Chess Club and chess events in London, ON.',
-          url: 'https://londonchess.ca',
-          display: 'londonchess.ca',
-          logo: 'assets/projects/londonchess.svg',
-        },
-        {
-          title: 'Chordbomb',
+          id: 'chordbomb',
           description:
             'Identifies the song playing around you and works out its chord progression.',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
+          tags: [
+            'Stripe subscriptions',
+            'Song recognition',
+            'Audio analysis',
+            'Playable chords',
+            'MIDI export',
+            'Cloud recordings',
+          ],
         },
         {
-          title: 'CIRC Aesthetics',
-          description: 'Cosmetic Interventional Radiology Clinic based in London, ON.',
-          url: 'https://circaesthetics.ca',
-          display: 'circaesthetics.ca',
-          logo: 'assets/projects/circaesthetics.svg',
+          id: 'londonchess',
+          description: 'A hub for the London Chess Club and chess events in London, ON.',
+          tags: [
+            'Content editor',
+            'Game replays',
+            'Email alerts',
+            'Spreadsheet imports',
+            'Google Maps',
+            'Image uploads',
+            'PDF viewer',
+            'Member ratings',
+            'Error monitoring',
+          ],
         },
         {
-          title: 'Brewski Bets',
+          id: 'brewskibets',
           description: 'A tracker for casual bets between friends, settled in beer.',
-          url: 'https://brewskibets.com',
-          display: 'brewskibets.com',
-          logo: 'assets/projects/brewskibets.svg',
+          tags: [
+            'Interactive charts',
+            'Friend requests',
+            'Avatar uploads',
+            'Custom icons',
+            'Dark mode',
+          ],
+        },
+        {
+          id: 'circaesthetics',
+          description: 'Cosmetic Interventional Radiology Clinic based in London, ON.',
+          tags: [
+            'Affiliate tracking',
+            'Cookieless analytics',
+            'Tap-to-call',
+            'Section menus',
+          ],
         },
       ],
     },
     contact: {
       title: 'Got a project in mind?',
-      lede: "Let's hear about it!",
+      lede: "Let's get started!",
       success: "Thanks for the message. You'll hear back soon.",
       nameLabel: 'Name',
       namePlaceholder: 'Your name',
@@ -1156,6 +1204,12 @@ export const en: WebMessages = {
             showPercentages: 'Show percentages',
           },
           timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
+          'toggle-chip': {
+            label: 'Label',
+            size: 'Size',
+            selected: 'Selected',
+            disabled: 'Disabled',
+          },
           tooltip: {
             eaTooltip: 'Tooltip Content',
           },
@@ -1741,7 +1795,7 @@ export const en: WebMessages = {
               'Content variant: default is the bare wordmark, byline adds the designed-by line, tagline adds the tagline.',
             layout:
               'Arranges the wordmark stacked across lines or inline on a single line.',
-            size: 'Font size in px of the brand text; the rest of the wordmark scales from it.',
+            size: 'Font size in px of the brand text, or inherit to match the surrounding text; the rest of the wordmark scales from it.',
             linked:
               'Renders the wordmark as a link to eagami.com; turn off to embed it in a custom link or static context.',
           },
@@ -2585,6 +2639,16 @@ export const en: WebMessages = {
             'DialogService.closeAll':
               'Closes every dialog in the dialogs signal, newest first, settling each result with undefined.',
           },
+
+          'toggle-chip': {
+            ariaDescribedby:
+              'Id of an element describing what the chip turns on, announced along with its name.',
+            ariaLabel: 'Accessible label for a chip whose content has no visible text.',
+            changed: 'Fires with the new state whenever the user toggles the chip.',
+            disabled: 'Disables the chip and blocks toggling.',
+            selected: 'Whether the chip is on, two-way bindable via [(selected)].',
+            size: 'Visual size of the chip.',
+          },
         },
         direction: 'Direction',
         knobDefaults: {
@@ -2694,6 +2758,7 @@ export const en: WebMessages = {
             label: 'Time',
             placeholder: 'Select time…',
           },
+          'toggle-chip': { label: 'Dark mode' },
           tooltip: {
             eaTooltip: 'Tooltips add extra context on hover or focus',
           },

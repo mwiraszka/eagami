@@ -39,111 +39,185 @@ export const is: WebMessages = {
     hero: {
       tagline: 'glæsileg vefhönnun.',
       ctaPrimary: 'Hafa samband',
-      ctaSecondary: 'Sjá nýleg verkefni →',
+      ctaSecondary: 'Sjá það í verki →',
       scrollHint: 'Skrunaðu að þjónustu',
     },
     services: {
       title: 'Þjónusta',
-      lede: 'Frá einni lendingarsíðu upp í fullkomið vefforrit, ásamt öllu sem fylgir eftir útgáfu.',
-      featuresHeading: 'Eiginleikar',
-      uiNote: {
-        before: 'Stærri verkefni má byggja á',
-        link: 'Eagami UI',
-        after:
-          ', sérsmíðuðu einingasafni, fyrir samræmt og nútímalegt sjónrænt yfirbragð á öllum vefnum.',
-      },
-      core: [
+      heading: 'Sérsmíðað og fullbúið',
+      lede: 'Hver vefur er hannaður og smíðaður frá grunni. Prófaðu rofana til að sjá hverju hver eiginleiki bætir við.',
+      features: [
         {
-          title: 'Sérsniðnar vefsíður',
-          description:
-            'Heildstæð vefsíða byggð frá grunni: uppsetning léns, hýsing, vörumerki, hönnun og útgáfa. Ótakmarkaðar endurskoðanir fram að útgáfudegi.',
+          id: 'accounts',
+          title: 'Notendaaðgangar',
+          hint: 'Innskráning, nýskráning og stjórnborð',
+        },
+        { id: 'payments', title: 'Greiðslur', hint: 'Greiðsluferli og áskriftargjöld' },
+        { id: 'bookings', title: 'Bókanir', hint: 'Tímapantanir og ráðgjöf' },
+        {
+          id: 'events',
+          title: 'Viðburðadagatal',
+          hint: 'Næstu dagsetningar og nánari upplýsingar',
         },
         {
-          title: 'Áframhaldandi viðhald',
-          description:
-            'Mánaðarlegt viðhald sem nær yfir hýsingu, öryggisuppfærslur, uppfærslur á háðum pökkum, breytingar á efni og greiningu á tölfræði.',
+          id: 'gallery',
+          title: 'Myndasöfn',
+          hint: 'Albúm sem líta vel út alls staðar',
+        },
+        {
+          id: 'reviews',
+          title: 'Umsagnir',
+          hint: 'Einkunnir frá raunverulegum viðskiptavinum',
+        },
+        { id: 'search', title: 'Leit', hint: 'Finndu hvað sem er á vefnum' },
+        { id: 'cms', title: 'Efnisvinnsla', hint: 'Uppfærðu síður án forritara' },
+        {
+          id: 'languages',
+          title: 'Fjöltyngi',
+          hint: 'Hvaða tungumál sem er, greint sjálfkrafa',
+        },
+        { id: 'theming', title: 'Þemu', hint: 'Dökkur hamur og sérsniðnir litir' },
+        {
+          id: 'analytics',
+          title: 'Tölfræði',
+          hint: 'Uppruni umferðar og sérsniðnir atburðir',
+        },
+        { id: 'email', title: 'Tölvupóstur', hint: 'Kvittanir og tilkynningar' },
+        { id: 'chat', title: 'Netspjall', hint: 'Svaraðu gestum í rauntíma' },
+        {
+          id: 'maps',
+          title: 'Kort og staðsetning',
+          hint: 'Leiðarlýsing og opnunartími',
+        },
+        {
+          id: 'pwa',
+          title: 'Uppsetjanlegt app',
+          hint: 'Á heimaskjánum, líka án nettengingar',
         },
       ],
-      addOns: [
+      previousFeatures: 'Fyrri eiginleikar',
+      nextFeatures: 'Næstu eiginleikar',
+      uiNote: {
+        before: 'Öll verkefni eru byggð á',
+        link: 'Eagami UI',
+        after:
+          ', einingasafni sem við þróum sjálf, fyrir samræmt og nútímalegt sjónrænt yfirbragð á öllum vefnum.',
+      },
+      demo: {
+        brand: 'Fyrirtækið þitt',
+        nav: ['Vörur', 'Um okkur'],
+        greeting: 'Halló.',
+        tagline: 'Velkomin á nýja vefinn þinn.',
+        product: 'Varan þín',
+        price: '32 $',
+        addToCart: 'Setja í körfu',
+        pay: 'Greiða 32,00 $',
+        checkoutNote: 'Örugg greiðsla með korti eða rafrænu veski',
+        welcome: 'Gaman að sjá þig aftur, Sam',
+        orders: '2 pantanir á leiðinni',
+        visitors: 'Gestir í þessari viku',
+        aboutLabel: 'Um okkur',
+        aboutTitle: 'Sagan okkar',
+        receiptSent: 'Kvittun send á sam@example.com',
+        install: 'Setja upp',
+        search: 'Leita',
+        edit: 'Breyta',
+        chatGreeting: 'Hæ! Hvernig getum við aðstoðað?',
+        bookTitle: 'Bókaðu tíma',
+        book: 'Bóka',
+        eventsTitle: 'Næstu viðburðir',
+        events: ['Opið hús', 'Verkleg vinnustofa', 'Sumarkynning'],
+        galleryTitle: 'Myndasafn',
+        mapTitle: 'Finndu okkur',
+        mapHours: 'Opið í dag, 9–17',
+      },
+    },
+    process: {
+      title: 'Vegferðin',
+      heading: 'Með þér frá upphafi til enda',
+      websiteGroup: 'Þróun',
+      maintenanceGroup: 'Viðhald',
+      steps: [
         {
-          title: 'Notendaumsjón',
-          description:
-            'Auðkenning notenda, skráning og endurheimt lykilorða, ásamt stjórnborði með mælikvörðum og stýringum fyrir hvern notanda.',
-          iconSlug: 'users',
+          title: 'Lén og hýsing',
+          description: 'Skráð, uppsett og í þinni eigu til frambúðar.',
         },
         {
-          title: 'Greiðsluvinnsla',
-          description:
-            'Netgreiðslur (Stripe sjálfgefið, aðrir þjónustuaðilar eftir beiðni), með sérsniðnum greiðsluformum og endurteknum innheimtum.',
-          iconSlug: 'credit-card',
+          title: 'Vörumerki og hönnun',
+          description: 'Merki, litapalletta og hvert snið.',
+        },
+        { title: 'Smíði', description: 'Hraður, aðgengilegur og skalanlegur.' },
+        {
+          title: 'Útgáfa',
+          description: 'Ótakmarkaðar endurskoðanir fram að útgáfudegi.',
         },
         {
-          title: 'Stuðningur við mörg tungumál',
-          description:
-            'Tungumálastuðningur fyrir mörg svæði, með valfrjálsri sjálfvirkri greiningu úr vafra gestsins.',
-          iconSlug: 'languages',
-        },
-        {
-          title: 'Þemur',
-          description: 'Rofi fyrir dökkan/ljósan ham og fullkomlega sérsniðin litaþemu.',
-          iconSlug: 'moon',
-        },
-        {
-          title: 'Tölfræði og innsýn',
-          description:
-            'Mælikvarðar fyrir umferð vefsíðu (uppsprettur, tæki, staðsetningar), ásamt sérsniðinni rakningu atburða.',
-          iconSlug: 'bar-chart',
-        },
-        {
-          title: 'Tölvupóstur og tilkynningar',
-          description:
-            'Sjálfvirkur tölvupóstur fyrir aðgangsvirkni, kvittanir og tilkynningar.',
-          iconSlug: 'mail',
+          title: 'Áframhaldandi umsjón',
+          description: 'Hýsing, uppfærslur, breytingar og tölfræði, í hverjum mánuði.',
         },
       ],
     },
     projects: {
-      title: 'Nýleg verkefni',
-      lede: 'Nokkrar síður í virkri þróun.',
-      previousAriaLabel: 'Fyrri verkefni',
-      nextAriaLabel: 'Næstu verkefni',
-      regionAriaLabel: 'Nýleg verkefni',
-      showing: title => `Sýni ${title}`,
-      cards: [
+      title: 'Útgefið',
+      heading: 'Eagami í raunheimum',
+      lede: 'Vefir og öpp í loftinu sem við hönnuðum, smíðuðum og sjáum enn um.',
+      visit: domain => `Fara á ${domain}`,
+      recordingLabel: project => `Skjáupptaka af ${project}`,
+      stories: [
         {
-          title: 'London Chess',
-          description: 'Miðstöð fyrir London Chess Club og skákviðburði í London, ON.',
-          url: 'https://londonchess.ca',
-          display: 'londonchess.ca',
-          logo: 'assets/projects/londonchess.svg',
-        },
-        {
-          title: 'Chordbomb',
+          id: 'chordbomb',
           description:
             'Þekkir lagið sem spilast í kringum þig og finnur út hljómaganginn.',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
+          tags: [
+            'Stripe-áskriftir',
+            'Lagagreining',
+            'Hljóðgreining',
+            'Spilanlegir hljómar',
+            'MIDI-útflutningur',
+            'Upptökur í skýinu',
+          ],
         },
         {
-          title: 'CIRC Aesthetics',
-          description: 'Stofa í fegrunar-inngripsröntgenfræði með aðsetur í London, ON.',
-          url: 'https://circaesthetics.ca',
-          display: 'circaesthetics.ca',
-          logo: 'assets/projects/circaesthetics.svg',
+          id: 'londonchess',
+          description: 'Miðstöð fyrir London Chess Club og skákviðburði í London, ON.',
+          tags: [
+            'Efnisritill',
+            'Endurspilun skáka',
+            'Tölvupósttilkynningar',
+            'Innflutningur töflureikna',
+            'Google Maps',
+            'Upphleðsla mynda',
+            'PDF-skoðari',
+            'Stig félagsmanna',
+            'Villuvöktun',
+          ],
         },
         {
-          title: 'Brewski Bets',
+          id: 'brewskibets',
           description: 'Rakning fyrir óformleg veðmál milli vina, gerð upp í bjór.',
-          url: 'https://brewskibets.com',
-          display: 'brewskibets.com',
-          logo: 'assets/projects/brewskibets.svg',
+          tags: [
+            'Gagnvirk gröf',
+            'Vinabeiðnir',
+            'Upphleðsla prófílmynda',
+            'Sérsniðnar táknmyndir',
+            'Dökkur hamur',
+          ],
+        },
+        {
+          id: 'circaesthetics',
+          description: 'Stofa í fegrunar-inngripsröntgenfræði með aðsetur í London, ON.',
+          tags: [
+            'Rakning tilvísana',
+            'Vafrakökulaus tölfræði',
+            'Ýta til að hringja',
+            'Kaflavalmyndir',
+          ],
         },
       ],
     },
     contact: {
       title: 'Ertu með verkefni í huga?',
-      lede: 'Tölum um það!',
+      lede: 'Hefjumst handa!',
       success: 'Takk fyrir skilaboðin. Þú færð svar fljótlega.',
       nameLabel: 'Nafn',
       namePlaceholder: 'Nafnið þitt',
@@ -1171,6 +1245,12 @@ export const is: WebMessages = {
             showPercentages: 'Sýna prósentur',
           },
           timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
+          'toggle-chip': {
+            label: 'Merkimiði',
+            size: 'Stærð',
+            selected: 'Valið',
+            disabled: 'Óvirkt',
+          },
           tooltip: {
             eaTooltip: 'Efni ábendingar',
           },
@@ -1767,7 +1847,7 @@ export const is: WebMessages = {
             variant:
               'Efnisafbrigði: sjálfgefið er bert orðmerki, byline bætir við hannað-af línunni, tagline bætir við slagorðinu.',
             layout: 'Raðar orðmerkinu staflað yfir línur eða innfellt á einni línu.',
-            size: 'Leturstærð vörumerkjatextans í px; afgangur orðmerkisins kvarðast frá henni.',
+            size: 'Leturstærð vörumerkjatextans í px, eða inherit til að fylgja textanum í kring; afgangur orðmerkisins kvarðast frá henni.',
             linked:
               'Birtir orðmerkið sem tengil á eagami.com; slökktu til að fella það inn í eigin tengil eða kyrrstætt samhengi.',
           },
@@ -2638,6 +2718,19 @@ export const is: WebMessages = {
             'DialogService.closeAll':
               'Lokar hverjum glugga í merkinu dialogs, þeim nýjasta fyrst, og leysir hvert result með undefined.',
           },
+
+          'toggle-chip': {
+            ariaDescribedby:
+              'Auðkenni einingar sem lýsir því sem víxlhnappurinn kveikir á, tilkynnt ásamt heiti hans.',
+            ariaLabel:
+              'Aðgengilegur merkimiði fyrir víxlhnapp sem hefur engan sýnilegan texta.',
+            changed:
+              'Kviknar með nýja ástandinu í hvert sinn sem notandinn víxlar hnappnum.',
+            disabled: 'Gerir víxlhnappinn óvirkan og hindrar víxlun.',
+            selected:
+              'Hvort kveikt er á víxlhnappnum, tvíátta bindanlegt með [(selected)].',
+            size: 'Sjónræn stærð víxlhnappsins.',
+          },
         },
         direction: 'Stefna',
         knobDefaults: {
@@ -2747,6 +2840,7 @@ export const is: WebMessages = {
             label: 'Tími',
             placeholder: 'Veldu tíma…',
           },
+          'toggle-chip': { label: 'Dökkur hamur' },
           tooltip: {
             eaTooltip: 'Ábendingar bæta við samhengi við yfirsvif eða fókus',
           },
