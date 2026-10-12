@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.64.1',
+    date: '2026-10-12',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop the avatar editor from throwing an error when it leaves the page while an image is still loading.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.64.0',
     date: '2026-10-11',
     sections: [
