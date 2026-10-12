@@ -48,6 +48,27 @@ export interface HomeThread {
 const CURVE_WIDTH = 1440;
 const CURVE_HEIGHT = 96;
 
+type Point = readonly [x: number, y: number];
+type Cubic = readonly [Point, Point, Point, Point];
+
+/* The projects curve's top edge, lowered so the line runs just inside the band */
+const BAND_TRACK: readonly Cubic[] = [
+  [
+    [1440, 52],
+    [1180, 100],
+    [820, 108],
+    [520, 68],
+  ],
+  [
+    [520, 68],
+    [300, 39],
+    [140, 44],
+    [0, 76],
+  ],
+];
+/* How far in from each gutter the line joins and leaves the band's top curve */
+const BAND_TURN = 64;
+
 const END_RADIUS = 6;
 /* Space between the end dot and the heading it points at */
 const END_GAP = 24;
@@ -81,6 +102,68 @@ class PathBuilder {
 
 function round(value: number): number {
   return Math.round(value * 10) / 10;
+}
+
+function lerp(a: Point, b: Point, t: number): Point {
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+}
+
+/** Splits a cubic at `t` into the parts before and after it */
+function splitCubic([p0, p1, p2, p3]: Cubic, t: number): [Cubic, Cubic] {
+  const a = lerp(p0, p1, t);
+  const b = lerp(p1, p2, t);
+  const c = lerp(p2, p3, t);
+  const ab = lerp(a, b, t);
+  const bc = lerp(b, c, t);
+  const mid = lerp(ab, bc, t);
+  return [
+    [p0, a, ab, mid],
+    [mid, bc, c, p3],
+  ];
+}
+
+/** Where a cubic whose x only ever decreases reaches `x` */
+function tAtX([p0, p1, p2, p3]: Cubic, x: number): number {
+  let low = 0;
+  let high = 1;
+  for (let i = 0; i < 32; i++) {
+    const t = (low + high) / 2;
+    const u = 1 - t;
+    const tx =
+      u * u * u * p0[0] +
+      3 * u * u * t * p1[0] +
+      3 * u * t * t * p2[0] +
+      t * t * t * p3[0];
+    if (tx > x) {
+      low = t;
+    } else {
+      high = t;
+    }
+  }
+  return (low + high) / 2;
+}
+
+/** The stretch of a right-to-left track between two x positions */
+function sliceTrack(track: readonly Cubic[], from: number, to: number): Cubic[] {
+  const pieces: Cubic[] = [];
+  for (const cubic of track) {
+    const start = cubic[0][0];
+    const end = cubic[3][0];
+    if (start <= to || end >= from) {
+      continue;
+    }
+    const t1 = end < to ? tAtX(cubic, to) : 1;
+    const t0 = start > from ? tAtX(cubic, from) : 0;
+    const [head] = splitCubic(cubic, t1);
+    pieces.push(splitCubic(head, t0 / t1)[1]);
+  }
+  return pieces;
+}
+
+/** A point `distance` from `from`, heading toward `toward` */
+function along(from: Point, toward: Point, distance: number): Point {
+  const length = Math.hypot(toward[0] - from[0], toward[1] - from[1]);
+  return lerp(from, toward, distance / length);
 }
 
 /**
@@ -164,16 +247,41 @@ export function buildHomeThread(layout: HomeThreadLayout): HomeThread {
     .line(right, layout.process.bottom);
 
   const projects = layout.projects;
-  const px = (x: number): number => x * scale;
-  const py = (y: number): number => projects.top + y * curveScale;
-  path
-    .curve(right, py(40), px(1350), py(62), px(1290), py(72))
-    .curve(px(1100), py(104), px(820), py(110), px(520), py(68))
-    .curve(px(300), py(39), px(140), py(44), px(100), py(58))
-    .curve(px(70), py(68), left, py(80), left, py(CURVE_HEIGHT));
-
   const bandTop = projects.top + layout.curveHeight;
   const bandBottom = projects.bottom - layout.curveHeight;
+  const toPage = ([x, y]: Point): Point => [x * scale, projects.top + y * curveScale];
+  const track = BAND_TRACK.map(([p0, p1, p2, p3]): Cubic => [
+    toPage(p0),
+    toPage(p1),
+    toPage(p2),
+    toPage(p3),
+  ]);
+  const turn = BAND_TURN * Math.min(scale, 1);
+  const band = sliceTrack(track, right - turn, left + turn);
+  const [entry, entryHandle] = band[0];
+  const [, , exitHandle, exit] = band[band.length - 1];
+  const above = layout.process.bottom;
+  const entryControl = along(entry, entryHandle, -turn * 0.6);
+  path.curve(
+    right,
+    above + (entry[1] - above) * 0.55,
+    entryControl[0],
+    entryControl[1],
+    entry[0],
+    entry[1],
+  );
+  for (const [, c1, c2, end] of band) {
+    path.curve(c1[0], c1[1], c2[0], c2[1], end[0], end[1]);
+  }
+  const exitControl = along(exit, exitHandle, -turn * 0.6);
+  path.curve(
+    exitControl[0],
+    exitControl[1],
+    left,
+    bandTop - (bandTop - exit[1]) * 0.45,
+    left,
+    bandTop,
+  );
   path
     .curve(
       left - width * 0.006,
