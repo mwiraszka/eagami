@@ -1,0 +1,100 @@
+@use '../../styles/mixins' as ea;
+
+:host {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.ea-toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  min-height: 2.25em;
+  padding: 0.25em 0.625em 0.25em 0.875em;
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-none);
+  white-space: nowrap;
+  font-family: var(--font-family-sans);
+  border: var(--border-width-thin) solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  transition: var(--transition-colors);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-state-hover);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-state-active);
+  }
+
+  &:focus-visible {
+    @include ea.focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  // Size sets only the font-size; padding, gap, height and the check are em-based,
+  // so the chip scales entirely from this one knob
+  &--2xs {
+    font-size: var(--font-size-2xs);
+  }
+
+  &--xs {
+    font-size: var(--font-size-xs);
+  }
+
+  &--sm {
+    font-size: var(--font-size-sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-lg);
+  }
+
+  &--xl {
+    font-size: var(--font-size-xl);
+  }
+
+  &--selected {
+    border-color: var(--color-brand-default);
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-text);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-brand-muted);
+    }
+  }
+}
+
+.ea-toggle-chip__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+  min-width: 0;
+}
+
+// The check always holds its space, so toggling never shifts neighbouring chips
+.ea-toggle-chip__check {
+  opacity: 0;
+  flex-shrink: 0;
+  transition: var(--transition-opacity), var(--transition-transform);
+  transform: scale(0.6);
+}
+
+.ea-toggle-chip--selected .ea-toggle-chip__check {
+  opacity: 1;
+  transform: none;
+}

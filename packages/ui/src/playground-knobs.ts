@@ -46,6 +46,7 @@ import { TEXTAREA_KNOBS } from './lib/textarea/textarea.component.knobs';
 import { TIME_PICKER_KNOBS } from './lib/time-picker/time-picker.component.knobs';
 import { TIMELINE_KNOBS } from './lib/timeline/timeline.component.knobs';
 import { TOAST_KNOBS } from './lib/toast/toast.component.knobs';
+import { TOGGLE_CHIP_KNOBS } from './lib/toggle-chip/toggle-chip.component.knobs';
 import { TOOLTIP_KNOBS } from './lib/tooltip/tooltip.directive.knobs';
 import { TRANSFER_LIST_KNOBS } from './lib/transfer-list/transfer-list.component.knobs';
 import { TREE_KNOBS } from './lib/tree/tree.component.knobs';
@@ -113,6 +114,7 @@ export const PLAYGROUND_KNOBS = {
   'time-picker': TIME_PICKER_KNOBS,
   timeline: TIMELINE_KNOBS,
   toast: TOAST_KNOBS,
+  'toggle-chip': TOGGLE_CHIP_KNOBS,
   tooltip: TOOLTIP_KNOBS,
   'transfer-list': TRANSFER_LIST_KNOBS,
   tree: TREE_KNOBS,
