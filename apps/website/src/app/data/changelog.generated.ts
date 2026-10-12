@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.65.0',
+    date: '2026-10-12',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add the toggle chip, a pill-shaped on and off button with a check mark, for filters and feature pickers.',
+          'Add an `animated` input to the Eagami icon that gives the heron a slow, occasional swing of its raised leg.',
+          "Let the wordmark's `size` input take `inherit` to match the surrounding text, and colour it through a new `--ea-eagami-wordmark-color` property.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.64.1',
     date: '2026-10-12',
     sections: [

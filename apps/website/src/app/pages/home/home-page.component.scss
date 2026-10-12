@@ -1,5 +1,21 @@
 @use 'mixins' as mixins;
 
+/* A soft blob drawn as an elliptical radial gradient with an eased falloff,
+   tinted by --home-blob-color. Only transforms animate it, so the compositor
+   moves it without repainting, at any zoom level. */
+@mixin soft-blob {
+  background-image: radial-gradient(
+    closest-side,
+    var(--home-blob-color),
+    color-mix(in srgb, var(--home-blob-color) 82%, transparent) 38%,
+    color-mix(in srgb, var(--home-blob-color) 50%, transparent) 60%,
+    color-mix(in srgb, var(--home-blob-color) 20%, transparent) 78%,
+    color-mix(in srgb, var(--home-blob-color) 5%, transparent) 91%,
+    transparent
+  );
+  animation: home-blob-drift 22s ease-in-out infinite;
+}
+
 :host {
   display: block;
   width: 100%;
@@ -11,45 +27,63 @@
   @include mixins.brand-cta-dark-tokens;
 }
 
-.home-hero {
+.home {
   position: relative;
-  display: flex;
-  align-items: center;
-  min-height: calc(100dvh - var(--web-height-header));
-  @include mixins.safe-area-padding(32px, 16px);
-  background-color: var(--color-bg-subtle);
-  background-image:
-    radial-gradient(circle at 50% 50%, var(--color-secondary-200) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, var(--color-primary-200) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, var(--color-secondary-100) 0%, transparent 60%);
-  background-size:
-    140% 140%,
-    140% 140%,
-    140% 140%;
-  background-repeat: no-repeat;
-  background-position:
-    80% 80%,
-    20% 30%,
-    50% 100%;
-  color: var(--color-text-primary);
-  @include mixins.brand-cta-light-tokens;
-  animation: home-bg-flutter 30s ease-in-out infinite;
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-
-  /* Short viewports (landscape phones): tighten padding for the compressed content */
-  @media (max-height: 500px) {
-    @include mixins.safe-area-padding(16px, 16px);
-  }
 }
 
-:host-context([data-theme='dark']) .home-hero {
-  background-image:
-    radial-gradient(circle at 50% 50%, var(--color-secondary-500) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, var(--color-primary-500) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, var(--color-secondary-600) 0%, transparent 60%);
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--web-height-header));
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  @include mixins.brand-cta-light-tokens;
+}
+
+.home-hero__blobs {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.home-hero__blob {
+  position: absolute;
+  opacity: 0.75;
+  @include soft-blob;
+}
+
+.home-hero__blob--1 {
+  --home-blob-color: var(--web-color-heroBlob1);
+
+  top: -24%;
+  left: -16%;
+  width: 72%;
+  height: 104%;
+}
+
+.home-hero__blob--2 {
+  --home-blob-color: var(--web-color-heroBlob2);
+
+  top: -4%;
+  right: -20%;
+  width: 66%;
+  height: 100%;
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+
+.home-hero__blob--3 {
+  --home-blob-color: var(--web-color-heroBlob3);
+
+  bottom: -34%;
+  left: 20%;
+  width: 62%;
+  height: 84%;
+  animation-duration: 34s;
 }
 
 :host-context([data-theme='dark']) .home-hero__wordmark {
@@ -60,11 +94,15 @@
   // Keep the bird logo to the left of the wordmark in RTL (the lockup is a logo,
   // not mirrored); the hero text is centered, so direction does not shift it
   direction: ltr;
+  z-index: 1;
+  position: relative;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 1140px;
+  @include mixins.safe-area-padding(32px, 16px);
   margin: 0 auto;
 
   @include mixins.respond-to('lt-md') {
@@ -77,6 +115,7 @@
   @media (max-height: 500px) {
     flex-direction: row;
     gap: 0;
+    @include mixins.safe-area-padding(16px, 16px);
   }
 }
 
@@ -90,6 +129,7 @@
 .home-hero__icon {
   font-size: clamp(160px, 32vw, 320px);
   color: var(--color-text-primary);
+  animation: home-heron-float 7s ease-in-out infinite;
 
   /* Pin the heron full-size between md and lg, where 32vw would shrink it below the ceiling */
   @include mixins.respond-to('gt-md') {
@@ -186,7 +226,9 @@
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 12px;
   margin-top: 32px;
 
   @include mixins.respond-to('lt-md') {
@@ -210,38 +252,11 @@
   }
 }
 
-.home-hero__cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 24px;
-  border: 1px solid var(--color-border-default);
-  border-radius: 8px;
-  background-color: transparent;
-  color: var(--color-text-primary);
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease;
-
-  &:hover {
-    background-color: var(--color-bg-muted);
-    border-color: var(--color-border-strong);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
-}
-
 .home-hero__link {
   display: inline-flex;
   align-items: center;
   height: 48px;
+  padding: 0 12px;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
@@ -259,66 +274,92 @@
   }
 }
 
-/* Scroll-down affordance: a pulsing chevron at the hero bottom, anchored to
-   #services so a click scrolls past the hero. */
-.home-hero__scroll {
+/* Curves keep their desktop proportions as the page narrows, up to a 96px height */
+.home-curve {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  max-height: 96px;
+  aspect-ratio: 1440 / 96;
+}
+
+.home-curve__shade {
+  opacity: 0.7;
+  fill: var(--web-color-heroCurveShade);
+}
+
+.home-curve__fill--base {
+  fill: var(--color-bg-base);
+}
+
+.home-curve__fill--subtle {
+  fill: var(--color-bg-subtle);
+}
+
+/* One continuous line from the hero curve to the contact heading, laid out from
+   the rendered sections. Painted above every section's background and below
+   its content, which sits on z-index 1. */
+.home-thread {
+  z-index: 0;
   position: absolute;
-  bottom: 24px;
-  left: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  border-radius: 999px;
-  color: var(--color-text-tertiary);
-  transform: translateX(-50%);
-  transition: color 0.2s ease;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 
-  &:hover {
-    color: var(--color-text-secondary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
-
-  /* Drop the indicator on landscape phones where it would crowd the wordmark */
-  @media (max-height: 500px) {
+  @media (width <= 800px) {
     display: none;
   }
 }
 
-.home-hero__scroll-chevron {
-  font-size: 28px;
-  /* Stretch the V into a wide hint chevron rather than a tight UI arrow */
-  transform: scaleX(4);
-  animation: home-hero-scroll-pulse 2.8s ease-in-out infinite;
+.home-thread__line {
+  fill: none;
+  stroke: url(#home-thread-tone);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-    opacity: 0.55;
-  }
+.home-thread__tone {
+  stop-color: var(--web-color-thread);
+}
+
+.home-thread__tone--band {
+  stop-color: var(--web-color-threadOnBand);
+}
+
+.home-thread--drawing .home-thread__line {
+  stroke-dasharray: var(--thread-length) var(--thread-length);
+  stroke-dashoffset: calc(var(--thread-length) - var(--thread-drawn, 0px));
+}
+
+.home-thread__end {
+  fill: var(--web-color-thread);
+  stroke: var(--web-color-threadGlow);
+  stroke-width: 12;
+  transition: opacity 0.3s ease;
+  animation: home-thread-pulse 2.6s ease-in-out infinite;
+}
+
+.home-thread--drawing:not(.home-thread--complete) .home-thread__end {
+  opacity: 0;
 }
 
 .home-section {
+  position: relative;
   scroll-margin-top: var(--web-height-header);
-  @include mixins.safe-area-padding(96px, 32px);
-
-  @include mixins.respond-to('lt-md') {
-    @include mixins.safe-area-padding(48px, 16px);
-  }
 }
 
-.home-section--services,
-.home-section--projects {
+.home-section--base {
   background-color: var(--color-bg-base);
 }
 
-/* Separator between consecutive sections. The hero is .home-hero, not
-   .home-section, so the first section after it is correctly left borderless. */
-.home-section + .home-section {
-  border-top: 1px solid var(--color-border-default);
+.home-section--band {
+  overflow: hidden;
+  background-color: var(--web-color-bandBg);
+  color: var(--web-color-bandText);
 }
 
 .home-section--contact {
@@ -327,38 +368,60 @@
   @include mixins.brand-cta-light-tokens;
 }
 
+/* Content-box so the 1140px measure excludes the gutters, which keep their width
+   at every viewport while the curves and thread run edge to edge */
 .home-section__inner {
+  z-index: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 48px;
-  width: 100%;
-  max-width: 1140px;
+  box-sizing: content-box;
+  max-width: var(--web-width-content);
+  // The wide side gutter leaves room for the thread beside the content
+  @include mixins.safe-area-padding(64px, 64px);
   margin: 0 auto;
 
   @include mixins.respond-to('lt-md') {
     gap: 32px;
+    @include mixins.safe-area-padding(48px, 16px);
   }
 }
 
 .home-section__header {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   max-width: 720px;
 }
 
+.home-section__eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-default);
+}
+
 .home-section__title {
-  font-size: 28px;
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 600;
   line-height: 1.1;
+  letter-spacing: -0.025em;
   font-family: var(--font-family-brand);
-  letter-spacing: -0.5px;
   color: var(--color-text-primary);
+}
 
-  @include mixins.respond-to('lt-md') {
-    font-size: 22px;
-    letter-spacing: -0.25px;
-  }
+/* Logo size and gap match the eagami wordmark's lockup */
+.home-section__title--lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.125em;
+}
+
+.home-section__logo {
+  flex-shrink: 0;
+  font-size: 1.5em;
 }
 
 .home-section__lede {
@@ -366,336 +429,94 @@
   line-height: 1.6;
   color: var(--color-text-secondary);
 
-  code {
-    @include mixins.code-chip;
-  }
-
   @include mixins.respond-to('lt-md') {
     font-size: 16px;
     line-height: 1.5;
   }
 }
 
-.home-section__lede-link {
-  border-radius: 4px;
-
-  code {
-    color: var(--color-text-link);
-    transition: color 0.15s ease;
+.home-section--band {
+  .home-section__eyebrow {
+    color: var(--web-color-bandAccent);
   }
 
-  &:hover code {
-    color: var(--color-text-link-hover);
+  .home-section__title {
+    color: var(--web-color-bandText);
   }
 
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
+  .home-section__lede {
+    color: var(--web-color-bandMuted);
   }
 }
 
-.work-carousel {
-  // Horizontal gallery: physical LTR island so the sliding track, grid columns,
-  // and arrow-key navigation behave identically regardless of page direction
-  direction: ltr;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+.home-band__glows {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.home-band__glow {
+  position: absolute;
+  opacity: 0.55;
+  @include soft-blob;
+  animation-duration: 26s;
+}
+
+.home-band__glow--1 {
+  --home-blob-color: var(--web-color-bandGlow1);
+
+  top: 8%;
+  left: -20%;
+  width: 66%;
+  height: 76%;
+}
+
+.home-band__glow--2 {
+  --home-blob-color: var(--web-color-bandGlow2);
+
+  right: -22%;
+  bottom: 0;
+  width: 58%;
+  height: 64%;
+  animation-direction: reverse;
+}
+
+/* Stacked and centred, which leaves the thread a long run across to the heading */
+.home-contact {
   align-items: center;
-  gap: 12px;
-
-  @include mixins.respond-to('lt-md') {
-    gap: 8px;
-  }
 }
 
-.work-carousel__viewport {
-  overflow: hidden;
-  padding: 8px 0;
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-    border-radius: 8px;
-  }
-}
-
-.work-carousel__status {
-  @include mixins.sr-only;
-}
-
-.work-carousel__track {
-  --gap: 24px;
-  --card-w: calc((100% - 48px) / 3);
-  --step: calc(var(--card-w) + var(--gap));
-
-  display: flex;
-  gap: var(--gap);
-  width: 100%;
-  transform: translateX(calc(-1 * var(--step)));
-  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-
-  > .project-card {
-    flex: 0 0 var(--card-w);
-  }
-
-  &--next {
-    transform: translateX(calc(-2 * var(--step)));
-  }
-
-  &--prev {
-    transform: translateX(0);
-  }
-
-  &--instant {
-    transition: none;
-  }
-
-  @include mixins.respond-to('lt-lg') {
-    --gap: 16px;
-    --card-w: calc((100% - 16px) / 2);
-  }
-
-  @include mixins.respond-to('lt-md') {
-    --card-w: 100%;
-  }
-}
-
-.work-carousel__nav {
-  display: flex;
+.home-contact__header {
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  font-size: 24px;
-  line-height: 1;
-  border: 1px solid var(--color-border-default);
-  border-radius: 50%;
-  background-color: var(--color-bg-base);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
-
-  &:hover {
-    background-color: var(--color-bg-muted);
-    border-color: var(--color-border-strong);
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
-  }
-
-  @include mixins.respond-to('lt-md') {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-  }
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 32px;
-  border: 1px solid var(--color-border-default);
-  border-radius: 12px;
-  background-color: var(--color-bg-subtle);
-  color: var(--color-text-primary);
-  text-decoration: none;
-  transition:
-    border-color 0.15s ease,
-    transform 0.15s ease;
-
-  &:hover {
-    border-color: var(--color-border-strong);
-    transform: translateY(-2px);
-  }
-
-  /* Inset ring, not outline+offset, so the viewport's `overflow: hidden` can't clip it */
-  &:focus-visible {
-    outline: none;
-    box-shadow: inset 0 0 0 2px var(--color-border-focus);
-  }
-
-  @include mixins.respond-to('lt-md') {
-    gap: 8px;
-    padding: 16px;
-  }
-}
-
-.project-card__logo {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  object-fit: contain;
-
-  @include mixins.respond-to('lt-md') {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 4px;
-  }
-}
-
-.project-card__title {
-  font-size: 20px;
-  font-weight: 600;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
-
-  @include mixins.respond-to('lt-md') {
-    font-size: 18px;
-  }
-}
-
-.project-card__description {
-  flex: 1;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-
-  @include mixins.respond-to('lt-md') {
-    font-size: 14px;
-  }
-}
-
-.project-card__url {
-  font-size: 14px;
-  font-family: var(--font-family-mono);
-  color: var(--color-text-link);
-}
-
-.service-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.service-group__heading {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-}
-
-.service-group__note {
-  max-width: 720px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-
-  a {
-    @include mixins.prose-link;
-  }
-}
-
-.service-list {
-  display: grid;
-  gap: 24px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  @include mixins.respond-to('lt-md') {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-.service-list--core {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-}
-
-.service-list--addons {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 48px;
-
-  @include mixins.respond-to('lt-md') {
-    gap: 32px;
-  }
-}
-
-.service-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.service-item--core {
-  padding: 32px;
-  border: 1px solid var(--color-border-default);
-  border-radius: 12px;
-  background-color: var(--color-bg-subtle);
-
-  @include mixins.respond-to('lt-md') {
-    padding: 16px;
-  }
-}
-
-.service-item__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: var(--color-secondary-500);
-}
-
-.service-item__title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 18px;
-  font-weight: 600;
-  font-family: var(--font-family-brand);
-  color: var(--color-text-primary);
-
-  @include mixins.respond-to('lt-md') {
-    font-size: 16px;
-  }
-}
-
-.service-item--core .service-item__title {
-  font-size: 22px;
-
-  @include mixins.respond-to('lt-md') {
-    font-size: 18px;
-  }
-}
-
-.service-item__description {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 560px;
+  width: 100%;
+  max-width: 640px;
+  padding: 32px;
+  border-radius: 24px;
+  background-color: var(--web-color-washSubtle);
+
+  @include mixins.respond-to('lt-md') {
+    padding: 24px;
+  }
 }
 
 .contact-success {
-  max-width: 560px;
+  width: 100%;
+  max-width: 640px;
   padding: 24px;
-  border-radius: 12px;
+  font-size: 16px;
+  border-radius: 24px;
   background-color: var(--color-success-subtle);
   color: var(--color-text-primary);
-  font-size: 16px;
 }
 
 .contact-error {
@@ -707,35 +528,71 @@
   font-size: 14px;
 }
 
-@keyframes home-bg-flutter {
-  0%,
-  100% {
-    background-position:
-      80% 80%,
-      20% 30%,
-      50% 100%;
-  }
-  33% {
-    background-position:
-      30% 60%,
-      70% 40%,
-      80% 30%;
-  }
-  66% {
-    background-position:
-      60% 20%,
-      30% 80%,
-      20% 60%;
+/* Scroll-driven: content eases in as it scrolls into view. Without support it
+   simply renders in its final state. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .home-reveal {
+      animation: home-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
   }
 }
 
-@keyframes home-hero-scroll-pulse {
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__blob,
+  .home-hero__icon,
+  .home-band__glow,
+  .home-thread__end {
+    animation: none;
+  }
+}
+
+/* Elliptical blobs that turn while stretching along their own axes read as a
+   slowly changing shape */
+@keyframes home-blob-drift {
   0%,
   100% {
-    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(1, 1);
+  }
+  33% {
+    transform: translate(40px, -30px) rotate(40deg) scale(1.08, 0.92);
+  }
+  66% {
+    transform: translate(-30px, 25px) rotate(-30deg) scale(0.93, 1.07);
+  }
+}
+
+@keyframes home-heron-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    opacity: 0.55;
+    transform: translateY(-3px) rotate(-0.5deg);
+  }
+}
+
+@keyframes home-thread-pulse {
+  0%,
+  100% {
+    stroke-width: 12;
+  }
+  50% {
+    stroke-width: 24;
+    stroke: transparent;
+  }
+}
+
+@keyframes home-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

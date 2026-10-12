@@ -16,9 +16,10 @@ export type EagamiWordmarkVariant = 'default' | 'byline' | 'tagline';
 export type EagamiWordmarkLayout = 'stacked' | 'inline';
 
 /**
- * Branded eagami wordmark logo. `size` is the brand text's font-size in px
- * and the rest of the lockup scales proportionally from it; supports three
- * content variants paired with stacked or inline layouts.
+ * Branded eagami wordmark logo. `size` is the brand text's font-size, in px or
+ * inherited from the surrounding text, and the rest of the lockup scales
+ * proportionally from it; supports three content variants paired with stacked
+ * or inline layouts.
  */
 @Component({
   selector: 'ea-eagami-wordmark',
@@ -29,7 +30,7 @@ export type EagamiWordmarkLayout = 'stacked' | 'inline';
   host: {
     // The wordmark is a fixed brand lockup; it never mirrors with UI direction
     dir: 'ltr',
-    '[style.--_size]': 'resolvedSize()',
+    '[style.font-size]': 'resolvedSize()',
   },
 })
 export class EagamiWordmarkComponent {
@@ -38,19 +39,23 @@ export class EagamiWordmarkComponent {
   /** Content variant. */
   readonly variant = input<EagamiWordmarkVariant>('default');
   readonly layout = input<EagamiWordmarkLayout>('stacked');
-  readonly size = input<number>(24);
+  /** Brand text size in px, or `'inherit'` to match the surrounding text. */
+  readonly size = input<number | 'inherit'>(24);
 
   /** Renders the wordmark as a link to eagami.com; disable to embed it inside a custom link or static context. */
   readonly linked = input<boolean>(true);
 
-  /** Clamps size to a 10px floor and falls back to the default when cleared. */
-  protected readonly resolvedSize = computed<number>(() => {
+  /** Clamps px sizes to a 10px floor and falls back to the default when cleared. */
+  protected readonly resolvedSize = computed<string>(() => {
     const raw = this.size();
+    if (raw === 'inherit') {
+      return '1em';
+    }
     const value = typeof raw === 'number' ? raw : Number(raw);
     if (!Number.isFinite(value) || value <= 0) {
-      return 24;
+      return '24px';
     }
-    return Math.max(10, value);
+    return `${Math.max(10, value)}px`;
   });
 
   protected readonly showOverline = computed(() => this.variant() === 'byline');

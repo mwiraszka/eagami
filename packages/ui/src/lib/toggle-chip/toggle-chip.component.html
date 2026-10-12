@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="ea-toggle-chip"
+  [class]="classes()"
+  [attr.aria-pressed]="selected()"
+  [attr.aria-label]="ariaLabel() ?? null"
+  [attr.aria-describedby]="ariaDescribedby() ?? null"
+  [disabled]="disabled()"
+  (click)="toggle()">
+  <span class="ea-toggle-chip__content">
+    <ng-content />
+  </span>
+  <ea-icon-check
+    class="ea-toggle-chip__check"
+    aria-hidden="true" />
+</button>

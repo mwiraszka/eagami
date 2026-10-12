@@ -1,17 +1,19 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { type IconCategory, IconComponentBase } from './icon-category';
 
 @Component({
   selector: 'ea-icon-eagami',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './eagami.component.scss',
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1962.34 1962.34"
       aria-hidden="true"
       width="100%"
-      height="100%">
+      height="100%"
+      [class.ea-icon-eagami--animated]="animated()">
       <g>
         <polygon
           fill="#718e99"
@@ -46,15 +48,28 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         <polygon
           fill="#2a445f"
           points="832.91 957.82 705.13 1117.7 555.65 1178.36 667.69 998.55 832.91 957.82" />
+        <!-- Hidden at rest: the standing leg behind the raised one, uncovered as the raised leg swings -->
         <polygon
-          fill="#11253c"
-          points="725.23 1109.29 780.56 1088.46 751.67 1105.48 709.41 1120.01 687.32 1156.44 680.06 1168.82 419.79 1252.33 319.47 1293.93 458.32 1053.08 202.43 1176.77 237.68 1130.08 567.1 877.57 346 1256.78 470.69 1211.06 555.65 1178.36 705.13 1117.7 832.91 957.82 841.09 956.88 725.23 1109.29" />
+          fill="#72808c"
+          points="721.68 1447.69 783.4 1480.82 790.69 1529.94 735.89 1503.54" />
         <polygon
+          fill="#72808c"
+          points="873.26 1105.96 817.64 1235.99 812.19 1254.56 741.3 1304.8 759.3 1152.98 869.47 1101.31" />
+        <polygon
+          fill="#8b9da8"
+          points="778.38 1446.98 783.4 1480.82 721.68 1447.69 741.3 1304.8 812.19 1254.56 778.38 1446.98" />
+        <!-- The raised leg sits beneath the body's underside so its hip tucks under it as it swings -->
+        <polygon
+          class="ea-icon-eagami__raised-leg"
           fill="#72808c"
           points="917.67 1070.61 873.26 1105.96 667.34 1192.96 680.06 1168.82 687.32 1156.44 901.06 1071.66 917.67 1070.61" />
         <path
+          class="ea-icon-eagami__raised-leg"
           fill="#bbcbd2"
           d="M1038.72,1696.39l-46.05,2.39-55.25-98.11-146.73-70.72-54.8-26.4-164.16-79.11-25.44-51.12s112.32-146.39,121.05-180.36l205.92-87-119.96,97.64-58.34,44.77-80.69,118.59,14.17,37.15,93.25,43.58,61.72,33.13,195.9,95.94,59.41,119.62Z" />
+        <polygon
+          fill="#11253c"
+          points="725.23 1109.29 780.56 1088.46 751.67 1105.48 709.41 1120.01 687.32 1156.44 680.06 1168.82 419.79 1252.33 319.47 1293.93 458.32 1053.08 202.43 1176.77 237.68 1130.08 567.1 877.57 346 1256.78 470.69 1211.06 555.65 1178.36 705.13 1117.7 832.91 957.82 841.09 956.88 725.23 1109.29" />
         <polygon
           fill="#254b71"
           points="458.32 1053.08 319.47 1293.93 290.75 1344.73 190.85 1368.4 136.63 1381.25 114.46 1290.44 202.43 1176.77 458.32 1053.08" />
@@ -103,12 +118,6 @@ import { type IconCategory, IconComponentBase } from './icon-category';
         <polygon
           fill="#11253c"
           points="1062.82 941.16 928.32 1062.14 917.68 1070.61 917.67 1070.61 901.06 1071.66 880.35 1049.28 911.78 1034.51 999.93 921 1059.73 811.84 1062.82 941.16" />
-        <polygon
-          fill="#72808c"
-          points="873.26 1105.96 817.64 1235.99 812.19 1254.56 741.3 1304.8 753.3 1203.59 873.26 1105.96" />
-        <polygon
-          fill="#8b9da8"
-          points="778.38 1446.98 783.4 1480.82 721.68 1447.69 741.3 1304.8 812.19 1254.56 778.38 1446.98" />
         <polygon
           fill="#8b9da8"
           points="1311.09 698.25 1279.46 804.94 1240.75 757.31 1311.09 698.25" />
@@ -180,9 +189,11 @@ import { type IconCategory, IconComponentBase } from './icon-category';
           points="1280.37 157.13 1255.66 186.41 1242.39 201.49 1073.91 126.23 1261.66 141.64 1280.37 157.13" />
       </g>
       <polygon
+        class="ea-icon-eagami__raised-leg"
         fill="#8b9da8"
         points="628.44 1404.11 546.3 1373.32 614.27 1366.96 628.44 1404.11" />
       <polygon
+        class="ea-icon-eagami__raised-leg"
         fill="#8b9da8"
         points="937.42 1600.66 979.31 1576.77 1038.72 1696.39 992.67 1698.78 937.42 1600.66" />
     </svg>
@@ -193,4 +204,7 @@ export class EagamiIconComponent extends IconComponentBase {
   static readonly category: IconCategory = 'eagami';
   static readonly isBrand = true;
   static readonly tags: ReadonlyArray<string> = ['logo', 'mark'];
+
+  /** Slowly swings the heron's raised leg back and forth. Off under reduced motion. */
+  readonly animated = input<boolean>(false);
 }

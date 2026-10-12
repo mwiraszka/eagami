@@ -39,115 +39,182 @@ export const de: WebMessages = {
     hero: {
       tagline: 'elegantes Webdesign.',
       ctaPrimary: 'Kontakt aufnehmen',
-      ctaSecondary: 'Aktuelle Projekte ansehen →',
+      ctaSecondary: 'In Aktion ansehen →',
       scrollHint: 'Zu den Leistungen scrollen',
     },
     services: {
       title: 'Leistungen',
-      lede: 'Von einer einzelnen Landingpage bis zur vollständigen Web-App, plus alles, was nach dem Launch kommt.',
-      featuresHeading: 'Funktionen',
-      uiNote: {
-        before: 'Größere Projekte können auf',
-        link: 'Eagami UI',
-        after:
-          ' aufgebaut werden, einer maßgeschneiderten Komponentenbibliothek, für eine konsistente und moderne visuelle Sprache über die gesamte Website.',
-      },
-      core: [
+      heading: 'Maßgeschneidert und voll ausgestattet',
+      lede: 'Jede Website wird von Grund auf gestaltet und entwickelt. Legen Sie einen Schalter um und sehen Sie, was jede Funktion hinzufügt.',
+      features: [
         {
-          title: 'Maßgeschneiderte Websites',
-          description:
-            'Eine komplette, von Grund auf erstellte Website: Domain-Einrichtung, Hosting, Branding, Design und Launch. Unbegrenzte Überarbeitungen bis zum Launch-Tag.',
+          id: 'accounts',
+          title: 'Benutzerkonten',
+          hint: 'Anmeldung, Registrierung und Admin-Dashboard',
         },
         {
-          title: 'Laufende Wartung',
-          description:
-            'Monatliche Pflege mit Hosting, Sicherheitspatches, Abhängigkeits-Updates, Inhaltsbearbeitungen und Analyse-Reviews.',
+          id: 'payments',
+          title: 'Zahlungen',
+          hint: 'Checkout und wiederkehrende Abrechnung',
+        },
+        { id: 'bookings', title: 'Buchungen', hint: 'Termine und Beratungen' },
+        { id: 'events', title: 'Eventkalender', hint: 'Kommende Termine und Details' },
+        {
+          id: 'gallery',
+          title: 'Fotogalerien',
+          hint: 'Alben, die überall gut aussehen',
+        },
+        { id: 'reviews', title: 'Rezensionen', hint: 'Bewertungen echter Kunden' },
+        { id: 'search', title: 'Suche', hint: 'Alles auf der Website finden' },
+        {
+          id: 'cms',
+          title: 'Inhaltspflege',
+          hint: 'Seiten ohne Entwickler aktualisieren',
+        },
+        {
+          id: 'languages',
+          title: 'Mehrsprachig',
+          hint: 'Jede Sprache, automatisch erkannt',
+        },
+        { id: 'theming', title: 'Themes', hint: 'Dunkelmodus und eigene Farben' },
+        {
+          id: 'analytics',
+          title: 'Analytics',
+          hint: 'Traffic-Quellen und eigene Events',
+        },
+        { id: 'email', title: 'E-Mail', hint: 'Belege und Benachrichtigungen' },
+        { id: 'chat', title: 'Live-Chat', hint: 'Besuchern in Echtzeit antworten' },
+        {
+          id: 'maps',
+          title: 'Karten und Standort',
+          hint: 'Anfahrt und Öffnungszeiten',
+        },
+        {
+          id: 'pwa',
+          title: 'Installierbare App',
+          hint: 'Auf dem Startbildschirm, auch offline',
         },
       ],
-      addOns: [
+      previousFeatures: 'Vorherige Funktionen',
+      nextFeatures: 'Nächste Funktionen',
+      uiNote: {
+        before: 'Alle Projekte basieren auf',
+        link: 'Eagami UI',
+        after:
+          ', einer hauseigenen Komponentenbibliothek, für eine konsistente und moderne visuelle Sprache auf der gesamten Website.',
+      },
+      demo: {
+        brand: 'Ihr Unternehmen',
+        nav: ['Produkte', 'Über uns'],
+        greeting: 'Hallo.',
+        tagline: 'Willkommen auf Ihrer neuen Website.',
+        product: 'Ihr Produkt',
+        price: '32 $',
+        addToCart: 'In den Warenkorb',
+        pay: '32,00 $ bezahlen',
+        checkoutNote: 'Sichere Zahlung per Karte oder Wallet',
+        welcome: 'Willkommen zurück, Sam',
+        orders: '2 Bestellungen unterwegs',
+        visitors: 'Besucher diese Woche',
+        aboutLabel: 'Über uns',
+        aboutTitle: 'Unsere Geschichte',
+        receiptSent: 'Beleg an sam@example.com gesendet',
+        install: 'Installieren',
+        search: 'Suchen',
+        edit: 'Bearbeiten',
+        chatGreeting: 'Hallo! Wie können wir helfen?',
+        bookTitle: 'Termin buchen',
+        book: 'Buchen',
+        eventsTitle: 'Kommende Events',
+        events: ['Tag der offenen Tür', 'Praxis-Workshop', 'Sommer-Launch'],
+        galleryTitle: 'Galerie',
+        mapTitle: 'So finden Sie uns',
+        mapHours: 'Heute geöffnet, 9 bis 17 Uhr',
+      },
+    },
+    process: {
+      title: 'Der Ablauf',
+      heading: 'An Ihrer Seite, von Anfang bis Ende',
+      websiteGroup: 'Entwicklung',
+      maintenanceGroup: 'Wartung',
+      steps: [
         {
-          title: 'Benutzerverwaltung',
-          description:
-            'Benutzerauthentifizierung, Registrierung und Passwortwiederherstellung, plus ein Admin-Dashboard mit Metriken und benutzerspezifischen Steuerungen.',
-          iconSlug: 'users',
+          title: 'Domain und Hosting',
+          description: 'Registriert, eingerichtet und für immer Ihr Eigentum.',
         },
+        { title: 'Marke und Design', description: 'Logo, Farbpalette und jedes Layout.' },
+        { title: 'Umsetzung', description: 'Schnell, barrierefrei und responsiv.' },
+        { title: 'Launch', description: 'Unbegrenzte Überarbeitungen bis zum Launch.' },
         {
-          title: 'Zahlungsabwicklung',
-          description:
-            'Online-Zahlungen (standardmäßig Stripe, andere Anbieter auf Anfrage), mit anpassbaren Zahlungsformularen und wiederkehrender Abrechnung.',
-          iconSlug: 'credit-card',
-        },
-        {
-          title: 'Mehrsprachige Unterstützung',
-          description:
-            'Sprachunterstützung für mehrere Sprachräume, mit optionaler automatischer Erkennung aus dem Browser des Besuchers.',
-          iconSlug: 'languages',
-        },
-        {
-          title: 'Themes',
-          description:
-            'Umschalter für Dunkel-/Hellmodus und vollständig anpassbare Farbthemes.',
-          iconSlug: 'moon',
-        },
-        {
-          title: 'Analytics & Einblicke',
-          description:
-            'Metriken zum Website-Traffic (Quellen, Geräte, Standorte), plus benutzerdefiniertes Event-Tracking.',
-          iconSlug: 'bar-chart',
-        },
-        {
-          title: 'E-Mail & Benachrichtigungen',
-          description:
-            'Automatisierte E-Mails für Kontoaktivitäten, Belege und Ankündigungen.',
-          iconSlug: 'mail',
+          title: 'Laufende Betreuung',
+          description: 'Hosting, Updates, Änderungen und Analytics, jeden Monat.',
         },
       ],
     },
     projects: {
-      title: 'Aktuelle Projekte',
-      lede: 'Einige Websites in aktiver Entwicklung.',
-      previousAriaLabel: 'Vorherige Projekte',
-      nextAriaLabel: 'Nächste Projekte',
-      regionAriaLabel: 'Aktuelle Projekte',
-      showing: title => `${title} wird angezeigt`,
-      cards: [
+      title: 'Veröffentlicht',
+      heading: 'eagami in freier Wildbahn',
+      lede: 'Live-Websites und Apps, die wir entworfen und gebaut haben und bis heute betreuen.',
+      visit: domain => `${domain} besuchen`,
+      recordingLabel: project => `Bildschirmaufnahme von ${project}`,
+      stories: [
         {
-          title: 'London Chess',
+          id: 'chordbomb',
+          description:
+            'Erkennt den Song, der gerade um Sie herum läuft, und ermittelt seine Akkordfolge.',
+          tags: [
+            'Stripe-Abos',
+            'Songerkennung',
+            'Audioanalyse',
+            'Spielbare Akkorde',
+            'MIDI-Export',
+            'Cloud-Aufnahmen',
+          ],
+        },
+        {
+          id: 'londonchess',
           description:
             'Ein Treffpunkt für den London Chess Club und Schachveranstaltungen in London, ON.',
-          url: 'https://londonchess.ca',
-          display: 'londonchess.ca',
-          logo: 'assets/projects/londonchess.svg',
+          tags: [
+            'Inhaltseditor',
+            'Partiewiedergabe',
+            'E-Mail-Alerts',
+            'Tabellenimporte',
+            'Google Maps',
+            'Bild-Uploads',
+            'PDF-Viewer',
+            'Wertungszahlen',
+            'Fehlerüberwachung',
+          ],
         },
         {
-          title: 'Chordbomb',
-          description:
-            'Erkennt den Song, der gerade läuft, und ermittelt seine Akkordfolge.',
-          url: 'https://chordbomb.com',
-          display: 'chordbomb.com',
-          logo: 'assets/projects/chordbomb.svg',
-        },
-        {
-          title: 'CIRC Aesthetics',
-          description:
-            'Klinik für kosmetische interventionelle Radiologie mit Sitz in London, ON.',
-          url: 'https://circaesthetics.ca',
-          display: 'circaesthetics.ca',
-          logo: 'assets/projects/circaesthetics.svg',
-        },
-        {
-          title: 'Brewski Bets',
+          id: 'brewskibets',
           description:
             'Ein Tracker für lockere Wetten unter Freunden, beglichen in Bier.',
-          url: 'https://brewskibets.com',
-          display: 'brewskibets.com',
-          logo: 'assets/projects/brewskibets.svg',
+          tags: [
+            'Interaktive Diagramme',
+            'Freundschaftsanfragen',
+            'Avatar-Uploads',
+            'Eigene Icons',
+            'Dunkelmodus',
+          ],
+        },
+        {
+          id: 'circaesthetics',
+          description:
+            'Klinik für kosmetische interventionelle Radiologie mit Sitz in London, ON.',
+          tags: [
+            'Affiliate-Tracking',
+            'Analytics ohne Cookies',
+            'Anruf per Fingertipp',
+            'Abschnittsmenüs',
+          ],
         },
       ],
     },
     contact: {
       title: 'Ein Projekt im Kopf?',
-      lede: 'Sprechen wir darüber!',
+      lede: 'Legen wir los!',
       success: 'Danke für die Nachricht. Sie erhalten bald eine Antwort.',
       nameLabel: 'Name',
       namePlaceholder: 'Ihr Name',
@@ -1179,6 +1246,12 @@ export const de: WebMessages = {
             showPercentages: 'Prozentwerte anzeigen',
           },
           timeline: { orientation: 'Ausrichtung', align: 'Anordnung', size: 'Größe' },
+          'toggle-chip': {
+            label: 'Beschriftung',
+            size: 'Größe',
+            selected: 'Ausgewählt',
+            disabled: 'Deaktiviert',
+          },
           tooltip: {
             eaTooltip: 'Tooltip-Inhalt',
           },
@@ -1794,7 +1867,7 @@ export const de: WebMessages = {
               'Inhaltsvariante: default ist das reine Wortmark, byline fügt die Gestaltet-von-Zeile hinzu, tagline fügt den Slogan hinzu.',
             layout:
               'Ordnet das Wortmark über mehrere Zeilen gestapelt oder inline in einer einzelnen Zeile an.',
-            size: 'Schriftgröße des Markentexts in px; der Rest des Wortmarks skaliert davon.',
+            size: 'Schriftgröße des Markentexts in px oder inherit, um den umgebenden Text zu übernehmen; der Rest des Wortmarks skaliert davon.',
             linked:
               'Rendert das Wortmark als Link zu eagami.com; deaktivieren, um es in einen eigenen Link oder statischen Kontext einzubetten.',
           },
@@ -2722,6 +2795,19 @@ export const de: WebMessages = {
             'DialogService.closeAll':
               'Schließt jeden Dialog im Signal dialogs, den neuesten zuerst, und löst jedes result mit undefined auf.',
           },
+
+          'toggle-chip': {
+            ariaDescribedby:
+              'ID eines Elements, das beschreibt, was der Chip einschaltet, und zusammen mit seinem Namen vorgelesen wird.',
+            ariaLabel:
+              'Barrierefreies Label für einen Chip, dessen Inhalt keinen sichtbaren Text hat.',
+            changed:
+              'Wird mit dem neuen Zustand ausgelöst, wann immer der Nutzer den Chip umschaltet.',
+            disabled: 'Deaktiviert den Chip und verhindert das Umschalten.',
+            selected:
+              'Ob der Chip eingeschaltet ist, bidirektional bindbar über [(selected)].',
+            size: 'Visuelle Größe des Chips.',
+          },
         },
         direction: 'Richtung',
         knobDefaults: {
@@ -2831,6 +2917,7 @@ export const de: WebMessages = {
             label: 'Uhrzeit',
             placeholder: 'Uhrzeit auswählen…',
           },
+          'toggle-chip': { label: 'Dunkelmodus' },
           tooltip: {
             eaTooltip:
               'Tooltips liefern zusätzlichen Kontext beim Überfahren oder Fokussieren',

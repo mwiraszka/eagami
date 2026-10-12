@@ -1,0 +1,19 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-toggle-chip
+      [size]="state().size"
+      [selected]="state().selected"
+      [disabled]="state().disabled"
+      (selectedChange)="onSelected($event)">
+      {{ state().label }}
+    </ea-toggle-chip>
+  </web-component-playground>
+</web-ui-component-demo-layout>

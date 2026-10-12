@@ -2251,7 +2251,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       },
       {
         name: 'size',
-        type: 'number',
+        type: "number | 'inherit'",
         default: '24',
         required: false,
         twoWay: false,
@@ -5804,6 +5804,56 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         },
       ],
     },
+  },
+  'toggle-chip': {
+    selector: 'ea-toggle-chip',
+    inputs: [
+      {
+        name: 'ariaDescribedby',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaLabel',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'selected',
+        type: 'boolean',
+        default: 'false',
+        required: false,
+        twoWay: true,
+      },
+      {
+        name: 'size',
+        type: 'ToggleChipSize',
+        default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+    ],
+    outputs: [
+      {
+        name: 'changed',
+        type: 'boolean',
+        default: '',
+        required: false,
+        twoWay: false,
+      },
+    ],
+    methods: [],
   },
   tooltip: {
     selector: '[eaTooltip]',

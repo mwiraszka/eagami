@@ -1,3 +1,23 @@
+export type HomeFeatureId =
+  | 'accounts'
+  | 'payments'
+  | 'bookings'
+  | 'events'
+  | 'gallery'
+  | 'reviews'
+  | 'search'
+  | 'cms'
+  | 'languages'
+  | 'theming'
+  | 'analytics'
+  | 'email'
+  | 'chat'
+  | 'maps'
+  | 'pwa';
+
+export type HomeProjectId =
+  'chordbomb' | 'londonchess' | 'brewskibets' | 'circaesthetics';
+
 /**
  * Every user-facing string, grouped by page or shared section. Parameterized
  * strings are functions so each locale controls its own word order. Resolved by
@@ -45,29 +65,63 @@ export interface WebMessages {
     };
     services: {
       title: string;
+      heading: string;
       lede: string;
-      featuresHeading: string;
+      features: ReadonlyArray<{ id: HomeFeatureId; title: string; hint: string }>;
+      previousFeatures: string;
+      nextFeatures: string;
       uiNote: {
         before: string;
         link: string;
         after: string;
       };
-      core: ReadonlyArray<{ title: string; description: string }>;
-      addOns: ReadonlyArray<{ title: string; description: string; iconSlug: string }>;
+      demo: {
+        brand: string;
+        nav: ReadonlyArray<string>;
+        greeting: string;
+        tagline: string;
+        product: string;
+        price: string;
+        addToCart: string;
+        pay: string;
+        checkoutNote: string;
+        welcome: string;
+        orders: string;
+        visitors: string;
+        aboutLabel: string;
+        aboutTitle: string;
+        receiptSent: string;
+        install: string;
+        search: string;
+        edit: string;
+        chatGreeting: string;
+        bookTitle: string;
+        book: string;
+        eventsTitle: string;
+        events: ReadonlyArray<string>;
+        galleryTitle: string;
+        mapTitle: string;
+        mapHours: string;
+      };
+    };
+    process: {
+      title: string;
+      heading: string;
+      websiteGroup: string;
+      maintenanceGroup: string;
+      steps: ReadonlyArray<{ title: string; description: string }>;
     };
     projects: {
       title: string;
+      /** Text either side of the eagami wordmark, so each locale controls word order */
+      heading: string;
       lede: string;
-      previousAriaLabel: string;
-      nextAriaLabel: string;
-      regionAriaLabel: string;
-      showing: (title: string) => string;
-      cards: ReadonlyArray<{
-        title: string;
+      visit: (domain: string) => string;
+      recordingLabel: (project: string) => string;
+      stories: ReadonlyArray<{
+        id: HomeProjectId;
         description: string;
-        url?: string;
-        display?: string;
-        logo?: string;
+        tags: ReadonlyArray<string>;
       }>;
     };
     contact: {

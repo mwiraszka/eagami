@@ -34,6 +34,89 @@
      changelog entries) rather than its sections: a third of the standard divider */
   --web-color-dividerSubtle: color-mix(in srgb, var(--color-divider) 33%, transparent);
 
+  /* Home page line that threads down the page, in the heron logo's maroon (not
+     part of the library palette). On dark backgrounds the logo shade is too
+     close to the ground to read, so it lifts toward white there. */
+  --web-color-heronMaroon: #6d1f44;
+  --web-color-heronMaroonLifted: color-mix(
+    in oklch,
+    var(--web-color-heronMaroon),
+    var(--color-neutral-50) 45%
+  );
+  --web-color-threadOnBand: var(--web-color-heronMaroonLifted);
+
+  /* Layered fills. Anything painted on top of another fill (an icon tile in a
+     row, a card holding inputs, a node over a line) uses one of these washes
+     instead of a solid bg-* token. Each is a translucent mix of the element's
+     own text colour, so it always differs from whatever sits beneath it, in
+     either theme and on the dark band, the same way the library's dark-mode
+     state tokens and divider work. Solid bg-* tokens are for surfaces that sit
+     directly on the page. */
+  --web-color-washSubtle: color-mix(in srgb, currentColor 5%, transparent);
+  --web-color-wash: color-mix(in srgb, currentColor 9%, transparent);
+
+  /* Home services demo: a sample site with its own light and dark palettes,
+     independent of the page theme so the Theming switch can flip it. Within
+     each palette every fill differs from the one it sits on. */
+  --web-color-mockBg: var(--color-secondary-50);
+  --web-color-mockSurface: var(--color-neutral-0);
+  --web-color-mockChrome: var(--color-secondary-100);
+  --web-color-mockChromeInset: var(--color-neutral-0);
+  --web-color-mockDot: var(--color-secondary-200);
+  --web-color-mockLine: var(--color-neutral-200);
+  --web-color-mockText: var(--color-neutral-900);
+  --web-color-mockMuted: var(--color-neutral-600);
+  --web-color-mockAccent: var(--color-primary-600);
+  --web-color-mockAccentInk: var(--color-neutral-0);
+  --web-color-mockTile: var(--color-secondary-100);
+  --web-color-mockBgDark: var(--color-secondary-900);
+  --web-color-mockSurfaceDark: var(--color-secondary-800);
+  --web-color-mockChromeDark: var(--color-secondary-800);
+  --web-color-mockChromeInsetDark: var(--color-secondary-900);
+  --web-color-mockDotDark: var(--color-secondary-600);
+  --web-color-mockLineDark: var(--color-secondary-700);
+  --web-color-mockTextDark: var(--color-secondary-50);
+  --web-color-mockMutedDark: var(--color-secondary-300);
+  --web-color-mockAccentDark: var(--color-primary-300);
+  --web-color-mockAccentInkDark: var(--color-primary-900);
+  --web-color-mockTileDark: var(--color-secondary-700);
+  --web-color-mockShadow: color-mix(in srgb, var(--color-primary-900) 40%, transparent);
+  --web-color-mockRing: color-mix(in srgb, var(--color-primary-900) 8%, transparent);
+
+  --web-color-timelineLaunchShadow: color-mix(
+    in srgb,
+    var(--color-primary-800) 55%,
+    transparent
+  );
+
+  /* Home projects band: always deep navy, whatever the page theme */
+  --web-color-bandBg: var(--color-primary-900);
+  --web-color-bandText: var(--color-neutral-50);
+  --web-color-bandMuted: var(--color-secondary-200);
+  --web-color-bandSubtle: var(--color-secondary-300);
+  --web-color-bandAccent: var(--color-primary-300);
+  --web-color-bandAccentHover: var(--color-primary-200);
+  --web-color-bandChipBg: color-mix(in srgb, var(--color-primary-300) 14%, transparent);
+  --web-color-bandChipText: var(--color-primary-100);
+  --web-color-bandActiveBg: color-mix(in srgb, var(--color-primary-300) 8%, transparent);
+  --web-color-bandActiveRing: color-mix(
+    in srgb,
+    var(--color-primary-300) 25%,
+    transparent
+  );
+  --web-color-bandGlow1: var(--color-primary-700);
+  --web-color-bandGlow2: var(--color-secondary-700);
+  --web-color-bandFrame: var(--color-primary-800);
+  --web-color-bandFrameDot: var(--color-primary-600);
+  --web-color-bandFrameUrl: var(--color-primary-900);
+  --web-color-bandFrameRing: color-mix(
+    in srgb,
+    var(--color-primary-300) 18%,
+    transparent
+  );
+  --web-color-bandShadow: color-mix(in srgb, var(--color-neutral-950) 70%, transparent);
+  --web-color-bandLogoTile: var(--color-neutral-0);
+
   /* Fluttering gradient backdrop: muted blends of the eagami brand palette */
   --web-color-flutterStop1: var(--color-primary-100);
   --web-color-flutterStop2: var(--color-secondary-100);

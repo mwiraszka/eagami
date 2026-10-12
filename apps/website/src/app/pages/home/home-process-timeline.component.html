@@ -1,0 +1,47 @@
+<div class="timeline">
+  <div class="timeline__groups">
+    <span class="timeline__group timeline__group--website">
+      <span class="timeline__group-label">{{ process().websiteGroup }}</span>
+      <span
+        class="timeline__bracket"
+        aria-hidden="true">
+      </span>
+    </span>
+    <span class="timeline__group timeline__group--care">
+      <span class="timeline__group-label">{{ process().maintenanceGroup }}</span>
+      <span
+        class="timeline__bracket"
+        aria-hidden="true">
+      </span>
+    </span>
+  </div>
+
+  <div
+    #band
+    class="timeline__band"
+    aria-hidden="true">
+    @for (step of steps(); track $index) {
+      <span
+        class="timeline__node"
+        [class.timeline__node--launch]="step.launch">
+        @if (step.care) {
+          <span class="timeline__orbit"></span>
+        }
+        <ng-container *ngComponentOutlet="step.icon" />
+      </span>
+    }
+  </div>
+
+  <ol class="timeline__steps">
+    @for (step of steps(); track $index) {
+      <li class="timeline__step">
+        <span
+          class="timeline__dot"
+          aria-hidden="true">
+        </span>
+        <span class="timeline__step-title">{{ step.title }}</span>
+        <span class="timeline__step-description">{{ step.description }}</span>
+      </li>
+    }
+  </ol>
+</div>
