@@ -122,6 +122,11 @@ export function derivePalette(config: EagamiPaletteConfig): ModePalette {
     const roles: PaletteRoles = { ...DEFAULT_PALETTE_ROLES, ...config.secondary.roles };
     emitFamily('secondary', scale, roles, light, dark);
   }
+  if (config.focus) {
+    const scale = derivePaletteScale(config.focus);
+    light['--color-border-focus'] = scale['500'];
+    dark['--color-border-focus'] = scale['300'];
+  }
 
   return { light, dark };
 }

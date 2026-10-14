@@ -67,10 +67,27 @@ export interface PaletteConfig {
   roles?: Partial<PaletteRoles>;
 }
 
+/**
+ * A focus colour of its own, for focus rings and outlines. Light mode draws
+ * focus in the derived 500 shade and dark mode in the 300 shade, the same
+ * steps the primary colour uses when no focus colour is set.
+ */
+export interface FocusColorConfig {
+  /** Anchor hex (`#RRGGBB`) the focus shades are derived from. */
+  base: string;
+
+  /** Pin individual shades to specific hex values, bypassing derivation for
+   * those slots. */
+  overrides?: Partial<Record<PaletteShade, string>>;
+}
+
 /** Top-level palette config accepted by `provideEagamiUi()`. */
 export interface EagamiPaletteConfig {
   primary?: PaletteConfig;
   secondary?: PaletteConfig;
+  /** Focus follows the primary colour unless this sets one apart, as a brand
+   * whose hue reads as an error or a warning needs. */
+  focus?: FocusColorConfig;
 }
 
 /** Flat CSS-custom-property name to value map for a single mode. */

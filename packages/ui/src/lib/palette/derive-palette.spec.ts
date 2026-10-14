@@ -27,6 +27,23 @@ describe('derivePalette', () => {
     expect(dark['--color-brand-muted']).toMatch(/^rgba\(\d+, \d+, \d+, 0\.2\)$/);
   });
 
+  it('derives a separate focus colour from its own base, leaving the brand roles alone', () => {
+    const { light, dark } = derivePalette({ focus: { base: '#2563eb' } });
+
+    const scale = derivePalette({ primary: { base: '#2563eb' } });
+    expect(light['--color-border-focus']).toBe(scale.light['--color-primary-500']);
+    expect(dark['--color-border-focus']).toBe(scale.light['--color-primary-300']);
+    expect(light).not.toHaveProperty('--color-brand-default');
+    expect(light).not.toHaveProperty('--color-primary-500');
+  });
+
+  it('leaves the focus colour to follow the primary colour when none is set', () => {
+    const { light, dark } = derivePalette({ primary: { base: '#922d2a' } });
+
+    expect(light).not.toHaveProperty('--color-border-focus');
+    expect(dark).not.toHaveProperty('--color-border-focus');
+  });
+
   it('omits brand tokens when no family config is given', () => {
     const { light, dark } = derivePalette({});
 

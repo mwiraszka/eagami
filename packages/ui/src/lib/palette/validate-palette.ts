@@ -49,6 +49,8 @@ const DEFAULT_SURFACES: ContrastSurfaces = {
  *   - `--color-brand-text` vs `canvas` >= 4.5:1 (link / foreground text)
  *   - `--color-brand-default` vs `onBrandText` >= 4.5:1 (button label)
  *   - `--color-brand-default` vs `canvas` >= 3:1 (WCAG 1.4.11 non-text)
+ *   - `--color-border-focus` vs `canvas` >= 3:1 (WCAG 1.4.11 non-text), when a
+ *     focus colour is set
  */
 export function validatePalette(
   palette: ModePalette,
@@ -78,6 +80,7 @@ export function validatePalette(
     check(mode, '--color-brand-text', canvas, WCAG_AA.text, 'text');
     check(mode, '--color-brand-default', onBrandText, WCAG_AA.text, 'text');
     check(mode, '--color-brand-default', canvas, WCAG_AA.nonText, 'non-text');
+    check(mode, '--color-border-focus', canvas, WCAG_AA.nonText, 'non-text');
   }
 
   return violations;
