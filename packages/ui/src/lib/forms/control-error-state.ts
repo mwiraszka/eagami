@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {
   type AbstractControl,
+  FormResetEvent,
   FormSubmittedEvent,
   NgControl,
   TouchedChangeEvent,
@@ -57,6 +58,9 @@ export interface ControlErrorState {
  * Auto-derived messages surface only once the bound control is `invalid &&
  * touched`, and a new one waits while focus is still inside the field, until
  * the user leaves it or submits the form, so nothing is flagged mid-edit. A
+ * field the user only passed through, leaving it without changing it, stays
+ * quiet until they change it or the form is submitted, so tabbing past an
+ * empty required field never flags it. A
  * message already showing follows the value as it is typed and clears the
  * moment it is fixed. A message revealed by a pointer press moving focus away
  * waits until that press has landed its click. The control arrives as a signal
@@ -78,6 +82,9 @@ export function controlErrorStateFrom(
   const editing = signal(false);
   // A submit shows every error at once, including one held back mid-edit
   const revealedBySubmit = signal(false);
+  // Set when the user leaves the field without changing it; a field the app marks
+  // touched shows its errors straight away
+  const passedThrough = signal(false);
 
   // The message a blur reveals grows the field and shifts the layout under the
   // pointer, so while the press behind that blur is down the click would land
@@ -96,13 +103,23 @@ export function controlErrorStateFrom(
     if (!ctrl) {
       return;
     }
-    const onSubmit = (): void => revealedBySubmit.set(true);
+    const onSubmit = (): void => {
+      revealedBySubmit.set(true);
+      passedThrough.set(false);
+    };
     const sub = ctrl.events.subscribe(event => {
-      if (event instanceof TouchedChangeEvent && event.touched) {
-        holdRevealForPress();
+      if (event instanceof TouchedChangeEvent) {
+        if (event.touched) {
+          holdRevealForPress();
+        }
+        // The field's own blur marks it touched while focus is still inside it
+        passedThrough.set(event.touched && editing() && ctrl.pristine);
       }
       if (event instanceof FormSubmittedEvent) {
         onSubmit();
+      }
+      if (event instanceof FormResetEvent) {
+        passedThrough.set(false);
       }
       revision.update(r => r + 1);
     });
@@ -112,6 +129,9 @@ export function controlErrorStateFrom(
         : ctrl.root.events.subscribe(event => {
             if (event instanceof FormSubmittedEvent) {
               onSubmit();
+            }
+            if (event instanceof FormResetEvent) {
+              passedThrough.set(false);
             }
           });
     onCleanup(() => {
@@ -157,6 +177,9 @@ export function controlErrorStateFrom(
     revision();
     const ctrl = control();
     if (!ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
+      return null;
+    }
+    if (ctrl.pristine && passedThrough()) {
       return null;
     }
     return resolveValidationMessage(ctrl.errors, config.errorMessages(), i18n.messages());
