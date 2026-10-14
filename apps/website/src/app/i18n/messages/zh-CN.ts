@@ -370,6 +370,8 @@ export const zhCN: WebMessages = {
       lede: '选择你的品牌颜色，Eagami UI 会在 OKLCH 空间中推导出完整的 50–900 色阶，在浅色和深色模式下校验其 WCAG 对比度，并为你提供可直接使用的 <code>provideEagamiUi()</code> 配置。',
       primaryLabel: '主色',
       secondaryLabel: '辅助色',
+      focusLabel: '焦点颜色',
+      focusHint: '可选。留空则以主色显示焦点。',
       contrastPass: '在浅色和深色模式下均符合 WCAG 2.2 AA 对比度',
       contrastFailIntro: '部分配色低于 WCAG AA 对比度标准：',
       previewHeading: '预览',
@@ -405,6 +407,8 @@ export const zhCN: WebMessages = {
       paletteIntro:
         '向 <code>provideEagamiUi()</code> 传入单个品牌十六进制色值，库便会在 <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> 空间中推导出完整的十级色阶（50 至 900），在逐级调整明度的同时保持色相和饱和度不变。推导出的色阶为浅色和深色模式中的每个 <code>--color-brand-*</code> 令牌提供取值：',
       paletteOverrides: '固定特定色阶，或重新映射哪个推导色阶支撑各语义角色：',
+      paletteFocus:
+        '焦点环默认使用主色。若品牌色调看起来像错误或警告，可为焦点单独指定颜色：',
       paletteContrast:
         '每一对品牌角色搭配（表面上的文字、画布上的表面）都会在启动时依据 <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> 进行校验。不合格的组合会在应用加载前抛出错误，因此品牌颜色中的对比度问题会在启动时被捕获，而不是流入生产环境。',
       paletteBuilderIntro: '直观地构建并预览你的调色板，前往',

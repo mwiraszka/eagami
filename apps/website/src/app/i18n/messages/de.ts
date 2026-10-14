@@ -433,6 +433,8 @@ export const de: WebMessages = {
       lede: 'Wählen Sie Ihre Markenfarben, und Eagami UI leitet daraus eine vollständige 50–900-Skala im OKLCH-Raum ab, prüft sie im hellen und dunklen Modus auf WCAG-Kontrast und liefert Ihnen die <code>provideEagamiUi()</code>-Konfiguration zum direkten Einsetzen.',
       primaryLabel: 'Primärfarbe',
       secondaryLabel: 'Sekundärfarbe',
+      focusLabel: 'Fokusfarbe',
+      focusHint: 'Optional. Leer lassen, um den Fokus in der Primärfarbe anzuzeigen.',
       contrastPass: 'Erfüllt den WCAG 2.2 AA-Kontrast im hellen und dunklen Modus',
       contrastFailIntro:
         'Einige Kombinationen liegen unter der WCAG AA-Kontrastschwelle:',
@@ -473,6 +475,8 @@ export const de: WebMessages = {
         'Übergeben Sie einen einzelnen Marken-Hexwert an <code>provideEagamiUi()</code>, und die Bibliothek leitet eine vollständige Zehn-Schattierungen-Skala (50 bis 900) im <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-Raum ab, wobei Farbton und Chroma konstant bleiben, während die Helligkeit gestuft wird. Die abgeleiteten Schattierungen speisen jedes <code>--color-brand-*</code>-Token sowohl im Hell- als auch im Dunkelmodus:',
       paletteOverrides:
         'Fixieren Sie bestimmte Schattierungen oder ordnen Sie neu zu, welche abgeleitete Schattierung jeder semantischen Rolle zugrunde liegt:',
+      paletteFocus:
+        'Fokusringe folgen der Primärfarbe. Wirkt der Markenton wie ein Fehler oder eine Warnung, gib dem Fokus eine eigene Farbe:',
       paletteContrast:
         'Jede Marken-Rollen-Paarung (Text auf Oberfläche, Oberfläche auf Hintergrund) wird beim Bootstrap gegen <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> geprüft. Eine fehlschlagende Kombination wirft einen Fehler, bevor die App lädt, sodass ein Kontrastfehler in der Markenfarbe schon beim Start erkannt wird und nicht erst in der Produktion.',
       paletteBuilderIntro: 'Erstellen und prüfen Sie Ihre Palette visuell im',

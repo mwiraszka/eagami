@@ -433,6 +433,8 @@ export const is: WebMessages = {
       lede: 'Veldu vörumerkjalitina þína og Eagami UI leiðir út heildstæðan 50–900 kvarða í OKLCH-rými, athugar WCAG-birtuskil hans í ljósri og dökkri stillingu og réttir þér <code>provideEagamiUi()</code>-stillinguna tilbúna til notkunar.',
       primaryLabel: 'Aðallitur',
       secondaryLabel: 'Aukalitur',
+      focusLabel: 'Fókuslitur',
+      focusHint: 'Valkvætt. Skildu eftir autt til að sýna fókus í aðallitnum.',
       contrastPass: 'Uppfyllir WCAG 2.2 AA birtuskil í bæði ljósri og dökkri stillingu',
       contrastFailIntro: 'Sumar samsetningar ná ekki WCAG AA birtuskilamörkunum:',
       previewHeading: 'Forskoðun',
@@ -472,6 +474,8 @@ export const is: WebMessages = {
         'Sendu eitt vörumerkjahex til <code>provideEagamiUi()</code> og safnið leiðir út fullan kvarða með tíu tónum (50 til 900) í <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> rými, heldur litblæ og litmettun stöðugri á meðan birta er stigin. Útleiddu tónarnir mata hvern <code>--color-brand-*</code> tókna í bæði ljósum og dökkum ham:',
       paletteOverrides:
         'Festu ákveðna tóna eða endurúthlutaðu hvaða útleiddi tónn liggur að baki hverju merkingarhlutverki:',
+      paletteFocus:
+        'Fókushringir fylgja aðallitnum. Þegar litur vörumerkisins minnir á villu eða viðvörun skaltu gefa fókus sinn eigin lit:',
       paletteContrast:
         'Hver vörumerkjahlutverkspörun (texti á yfirborði, yfirborð á striga) er athuguð gagnvart <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> við ræsingu. Samsetning sem stenst ekki kastar villu áður en forritið hleðst, svo birtuskilavilla í vörumerkjalit næst við ræsingu frekar en í framleiðslu.',
       paletteBuilderIntro: 'Búðu til og forskoðaðu litatöfluna þína sjónrænt í',

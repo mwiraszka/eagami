@@ -429,6 +429,8 @@ export const nl: WebMessages = {
       lede: 'Kies je merkkleuren en Eagami UI leidt er een volledige 50–900-schaal in de OKLCH-ruimte uit af, controleert het WCAG-contrast in de lichte en donkere modus en geeft je de <code>provideEagamiUi()</code>-configuratie om direct toe te passen.',
       primaryLabel: 'Primaire kleur',
       secondaryLabel: 'Secundaire kleur',
+      focusLabel: 'Focuskleur',
+      focusHint: 'Optioneel. Laat leeg om de focus in de primaire kleur te tonen.',
       contrastPass:
         'Voldoet aan WCAG 2.2 AA-contrast in zowel de lichte als de donkere modus',
       contrastFailIntro: 'Sommige combinaties blijven onder de WCAG AA-contrastdrempel:',
@@ -468,6 +470,8 @@ export const nl: WebMessages = {
         'Geef een enkele merkhexkleur door aan <code>provideEagamiUi()</code> en de bibliotheek leidt een volledige schaal van tien tinten af (50 tot en met 900) in de <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>-ruimte, waarbij tint en chroma stabiel blijven terwijl de helderheid wordt aangepast. De afgeleide tinten voeden elk <code>--color-brand-*</code>-token in zowel de lichte als de donkere modus:',
       paletteOverrides:
         'Zet specifieke tinten vast of wijs opnieuw toe welke afgeleide tint elke semantische rol ondersteunt:',
+      paletteFocus:
+        'Focusringen volgen de primaire kleur. Lijkt de merktint op een fout of waarschuwing, geef de focus dan een eigen kleur:',
       paletteContrast:
         'Elke combinatie van merkrollen (tekst op oppervlak, oppervlak op canvas) wordt bij het opstarten gecontroleerd op <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a>. Een falende combinatie geeft een fout voordat de app laadt, zodat een contrastfout in de merkkleur bij het opstarten wordt opgemerkt in plaats van in productie.',
       paletteBuilderIntro: 'Stel je palet visueel samen en bekijk het in de',

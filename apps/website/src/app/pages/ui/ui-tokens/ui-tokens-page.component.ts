@@ -93,6 +93,13 @@ export class UiTokensPageComponent {
   },
 });`;
 
+  protected readonly paletteFocusSnippet = `provideEagamiUi({
+  palette: {
+    primary: { base: '#922d2a' },
+    focus: { base: '#2563eb' },
+  },
+});`;
+
   protected readonly primaryPalette = [
     '50',
     '100',

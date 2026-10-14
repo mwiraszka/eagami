@@ -53,7 +53,6 @@
     transition: var(--transition-colors), var(--transition-shadow);
 
     &--focused {
-      border-color: var(--color-border-focus);
       @include ea.focus-ring;
     }
 

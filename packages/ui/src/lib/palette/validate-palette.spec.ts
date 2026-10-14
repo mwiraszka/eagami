@@ -38,6 +38,28 @@ describe('validatePalette', () => {
     expect(textViolation!.ratio).toBeLessThan(4.5);
   });
 
+  it('accepts a focus colour that clears 3:1 against both canvases', () => {
+    const palette = derivePalette({
+      primary: { base: '#922d2a' },
+      focus: { base: '#2563eb' },
+    });
+
+    expect(validatePalette(palette)).toEqual([]);
+  });
+
+  it('flags a focus colour too faint to see against the light canvas', () => {
+    const palette = derivePalette({
+      focus: { base: '#2563eb', overrides: { '500': '#dbeafe' } },
+    });
+
+    const violation = validatePalette(palette).find(
+      v => v.token === '--color-border-focus' && v.mode === 'light',
+    );
+
+    expect(violation).toBeDefined();
+    expect(violation!.required).toBe(3);
+  });
+
   it('flags a role remap that picks a too-light surface shade', () => {
     const palette = derivePalette({
       primary: { base: '#3674a1', roles: { surfaceLight: '200', surfaceDark: '200' } },

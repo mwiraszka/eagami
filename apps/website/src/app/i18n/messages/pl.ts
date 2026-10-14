@@ -431,6 +431,8 @@ export const pl: WebMessages = {
       lede: 'Wybierz kolory swojej marki, a Eagami UI wyprowadzi pełną skalę 50–900 w przestrzeni OKLCH, sprawdzi jej kontrast WCAG w trybie jasnym i ciemnym oraz przekaże Ci gotową konfigurację <code>provideEagamiUi()</code>.',
       primaryLabel: 'Kolor podstawowy',
       secondaryLabel: 'Kolor dodatkowy',
+      focusLabel: 'Kolor fokusu',
+      focusHint: 'Opcjonalnie. Zostaw puste, aby fokus był w kolorze podstawowym.',
       contrastPass: 'Spełnia kontrast WCAG 2.2 AA w trybie jasnym i ciemnym',
       contrastFailIntro: 'Niektóre zestawienia nie osiągają progu kontrastu WCAG AA:',
       previewHeading: 'Podgląd',
@@ -469,6 +471,8 @@ export const pl: WebMessages = {
         'Przekaż jeden hex marki do <code>provideEagamiUi()</code>, a biblioteka wyprowadzi pełną skalę dziesięciu odcieni (50 do 900) w przestrzeni <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, utrzymując stały odcień i nasycenie przy zmianie jasności. Wyprowadzone odcienie zasilają każdy token <code>--color-brand-*</code> w trybie jasnym i ciemnym:',
       paletteOverrides:
         'Przypnij konkretne odcienie albo zmień, który wyprowadzony odcień obsługuje daną rolę semantyczną:',
+      paletteFocus:
+        'Obramowania fokusu mają kolor podstawowy. Gdy barwa marki kojarzy się z błędem lub ostrzeżeniem, nadaj fokusowi własny kolor:',
       paletteContrast:
         'Każda para roli marki (tekst na powierzchni, powierzchnia na tle) jest weryfikowana względem <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> przy starcie aplikacji. Niezgodna kombinacja rzuca błąd przed załadowaniem aplikacji, więc problem z kontrastem koloru marki wychodzi na jaw przy boot, a nie na produkcji.',
       paletteBuilderIntro: 'Twórz i podglądaj paletę wizualnie w',

@@ -400,6 +400,8 @@ export const ar: WebMessages = {
       lede: 'اختر ألوان علامتك التجارية ويشتق Eagami UI مقياسًا كاملًا من 50–900 في فضاء OKLCH، ويتحقق من تباينه وفق WCAG في الوضعين الفاتح والداكن، ويمنحك إعداد <code>provideEagamiUi()</code> جاهزًا للاستخدام.',
       primaryLabel: 'اللون الأساسي',
       secondaryLabel: 'اللون الثانوي',
+      focusLabel: 'لون التركيز',
+      focusHint: 'اختياري. اتركه فارغًا لعرض التركيز باللون الأساسي.',
       contrastPass: 'يستوفي تباين WCAG 2.2 AA في الوضعين الفاتح والداكن',
       contrastFailIntro: 'بعض التركيبات أقل من حدّ تباين WCAG AA:',
       previewHeading: 'معاينة',
@@ -437,6 +439,8 @@ export const ar: WebMessages = {
         'مرّر لون hex واحدًا للعلامة إلى <code>provideEagamiUi()</code>، وستشتق المكتبة مقياسًا كاملًا من عشرة تدرّجات (من 50 إلى 900) في فضاء <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>، مع تثبيت درجة اللون والتشبّع وتغيير السطوع فقط. تغذّي التدرّجات المشتقة كل رمز <code>--color-brand-*</code> في الوضعين الفاتح والداكن:',
       paletteOverrides:
         'ثبّت تدرّجات محدّدة أو أعِد تعيين أي تدرّج مشتق يدعم كل دور دلالي:',
+      paletteFocus:
+        'تتبع حلقات التركيز اللون الأساسي. عندما يبدو لون العلامة التجارية كخطأ أو تحذير، امنح التركيز لونًا خاصًا به:',
       paletteContrast:
         'يُفحَص كل اقتران لأدوار العلامة (النص على السطح، والسطح على القماشة) للتحقق من مطابقته لمعيار <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> عند التهيئة. يُطلِق التركيب غير المطابق خطأً قبل تحميل التطبيق، لذا يُكتشَف خلل التباين في لون العلامة عند الإقلاع وليس في الإنتاج.',
       paletteBuilderIntro: 'أنشئ لوحتك وعاينها بصريًا في',

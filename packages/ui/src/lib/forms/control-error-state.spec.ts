@@ -353,3 +353,103 @@ describe('error timing while the field has focus', () => {
     expect(state.error()).toBe('Too short');
   });
 });
+
+describe('error timing for a field the user passes through', () => {
+  @Component({
+    selector: 'ea-test-touch-field',
+    template: '<input #box (input)="onChange(box.value)" (blur)="onTouched()" />',
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => TouchFieldComponent),
+        multi: true,
+      },
+    ],
+  })
+  class TouchFieldComponent implements ControlValueAccessor {
+    readonly state = injectControlErrorState({
+      errorMsg: signal(undefined),
+      errorMessages: signal(undefined),
+    });
+    protected onChange: (value: string) => void = () => {};
+    protected onTouched: () => void = () => {};
+    writeValue(): void {}
+    registerOnChange(fn: (value: string) => void): void {
+      this.onChange = fn;
+    }
+    registerOnTouched(fn: () => void): void {
+      this.onTouched = fn;
+    }
+  }
+
+  @Component({
+    imports: [TouchFieldComponent, ReactiveFormsModule],
+    template: `
+      <form
+        [formGroup]="form"
+        (ngSubmit)="(0)">
+        <ea-test-touch-field formControlName="name" />
+        <button type="submit">Send</button>
+      </form>
+    `,
+  })
+  class TouchFormHostComponent {
+    readonly form = new FormGroup({ name: new FormControl('', Validators.required) });
+  }
+
+  async function setup() {
+    const fixture = TestBed.createComponent(TouchFormHostComponent);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const control = fixture.componentInstance.form.controls.name;
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+    const field = fixture.debugElement.query(By.directive(TouchFieldComponent))
+      .componentInstance as TouchFieldComponent;
+    return { fixture, control, input, state: field.state };
+  }
+
+  function type(input: HTMLInputElement, value: string): void {
+    input.value = value;
+    input.dispatchEvent(new Event('input'));
+  }
+
+  it('stays quiet after the user tabs past an empty required field', async () => {
+    const { control, input, state } = await setup();
+    input.focus();
+
+    input.blur();
+
+    expect(control.touched).toBe(true);
+    expect(state.error()).toBeNull();
+  });
+
+  it('flags a required field the user types in and empties again', async () => {
+    const { input, state } = await setup();
+    input.focus();
+    type(input, 'Ola');
+    type(input, '');
+
+    input.blur();
+
+    expect(state.error()).toBe('This field is required');
+  });
+
+  it('flags a field the user passed through once the form is submitted', async () => {
+    const { fixture, input, state } = await setup();
+    input.focus();
+    input.blur();
+
+    fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
+
+    expect(state.error()).toBe('This field is required');
+  });
+
+  it('flags a field straight away when the app marks it touched', async () => {
+    const { control, state } = await setup();
+
+    control.markAsTouched();
+
+    expect(state.error()).toBe('This field is required');
+  });
+});

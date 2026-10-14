@@ -62,7 +62,6 @@
     }
 
     &--open {
-      border-color: var(--color-border-focus);
       @include ea.focus-ring;
     }
 

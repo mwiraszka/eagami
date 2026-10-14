@@ -53,6 +53,17 @@
           }
         </div>
       </div>
+
+      <div class="tb-builder__family">
+        <ea-color-picker
+          format="hex"
+          size="lg"
+          [label]="messages().ui.themeBuilder.focusLabel"
+          [hint]="messages().ui.themeBuilder.focusHint"
+          [value]="focusBase()"
+          [showAlpha]="false"
+          (changed)="focusBase.set($event)" />
+      </div>
     </div>
 
     @if (passesContrast()) {

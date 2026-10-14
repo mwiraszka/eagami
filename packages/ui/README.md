@@ -69,6 +69,8 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
+Focus rings follow the primary color. When the brand hue reads as an error or a warning, give focus a color of its own with `focus: { base: '#2563eb' }` in the same `palette`.
+
 Everything else is a CSS custom property you can override. See [Design tokens](https://eagami.com/ui/design-tokens).
 
 ## Testing

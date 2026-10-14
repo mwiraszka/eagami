@@ -405,6 +405,8 @@ export const en: WebMessages = {
       lede: 'Pick your brand colors and Eagami UI derives a full 50–900 scale in OKLCH space, checks it for WCAG contrast in light and dark, and hands you the <code>provideEagamiUi()</code> config to drop in.',
       primaryLabel: 'Primary color',
       secondaryLabel: 'Secondary color',
+      focusLabel: 'Focus color',
+      focusHint: 'Optional. Leave empty to draw focus in the primary color.',
       contrastPass: 'Passes WCAG 2.2 AA contrast in both light and dark mode',
       contrastFailIntro: 'Some pairings fall below the WCAG AA contrast bar:',
       previewHeading: 'Preview',
@@ -442,6 +444,8 @@ export const en: WebMessages = {
         'Pass a single brand hex to <code>provideEagamiUi()</code> and the library derives a full ten-shade scale (50 through 900) in <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a> space, holding hue and chroma steady while stepping lightness. The derived shades feed every <code>--color-brand-*</code> token in both light and dark mode:',
       paletteOverrides:
         'Pin specific shades or remap which derived shade backs each semantic role:',
+      paletteFocus:
+        'Focus rings follow the primary color. When the brand hue reads as an error or a warning, give focus a color of its own:',
       paletteContrast:
         'Every brand-role pairing (text on surface, surface on canvas) is checked against <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> at bootstrap. A failing combination throws an error before the app loads, so a contrast bug in the brand color is caught at boot rather than in production.',
       paletteBuilderIntro: 'Build and preview your palette visually in the',
