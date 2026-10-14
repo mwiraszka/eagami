@@ -14,6 +14,25 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.67.0',
+    date: '2026-10-14',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `focus` color to the palette config, so a brand whose hue reads as an error or a warning can draw focus in a contrast-checked color of its own.',
+        ],
+      },
+      {
+        heading: 'Changed',
+        entries: [
+          'Mark a focused field with its focus ring alone, keeping its border color instead of circling it in a second color.',
+          'Keep a field the user only passes through without typing free of errors until they type in it or the form is submitted.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.66.0',
     date: '2026-10-12',
     sections: [
