@@ -95,7 +95,7 @@
   }
 
   &--focused {
-    border-color: var(--ea-code-input-border-color-focus, var(--color-border-focus));
+    border-color: var(--ea-code-input-border-color-focus, var(--color-border-default));
     @include ea.focus-ring(var(--ea-code-input-shadow-focus, var(--shadow-focus-ring)));
   }
 

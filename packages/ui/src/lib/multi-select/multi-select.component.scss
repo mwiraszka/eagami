@@ -69,7 +69,6 @@
     }
 
     &:has(.ea-multi-select__trigger--open) {
-      border-color: var(--color-border-focus);
       @include ea.focus-ring;
     }
 

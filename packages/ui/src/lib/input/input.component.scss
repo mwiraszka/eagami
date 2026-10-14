@@ -52,10 +52,10 @@
   transition: var(--transition-colors), var(--transition-shadow);
   overflow: hidden;
 
-  // Both sides of the focus treatment are tokens, so a consumer softening it
+  // The ring alone marks focus. Both sides are tokens, so a consumer restyling it
   // sets a value rather than out-specifying the rule
   &--focused {
-    border-color: var(--ea-input-border-color-focus, var(--color-border-focus));
+    border-color: var(--ea-input-border-color-focus, var(--color-border-default));
     @include ea.focus-ring(var(--ea-input-shadow-focus, var(--shadow-focus-ring)));
   }
 

@@ -63,7 +63,6 @@
   overflow: hidden;
 
   &--focused {
-    border-color: var(--color-border-focus);
     @include ea.focus-ring;
   }
 
