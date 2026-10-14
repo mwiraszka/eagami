@@ -428,6 +428,8 @@ export const ptBR: WebMessages = {
       lede: 'Escolha as cores da sua marca e o Eagami UI deriva uma escala completa de 50–900 no espaço OKLCH, verifica o contraste WCAG nos modos claro e escuro e entrega a configuração <code>provideEagamiUi()</code> pronta para usar.',
       primaryLabel: 'Cor primária',
       secondaryLabel: 'Cor secundária',
+      focusLabel: 'Cor de foco',
+      focusHint: 'Opcional. Deixe vazio para mostrar o foco na cor primária.',
       contrastPass: 'Atende ao contraste WCAG 2.2 AA nos modos claro e escuro',
       contrastFailIntro:
         'Algumas combinações ficam abaixo do limite de contraste WCAG AA:',
@@ -467,6 +469,8 @@ export const ptBR: WebMessages = {
         'Passe um único hex da marca para <code>provideEagamiUi()</code> e a biblioteca deriva uma escala completa de dez tons (50 a 900) no espaço <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, mantendo o matiz e a croma estáveis enquanto varia a luminosidade. Os tons derivados alimentam cada token <code>--color-brand-*</code> tanto no modo claro quanto no escuro:',
       paletteOverrides:
         'Fixe tons específicos ou remapeie qual tom derivado sustenta cada papel semântico:',
+      paletteFocus:
+        'Os anéis de foco seguem a cor primária. Quando o tom da marca parece um erro ou um aviso, dê ao foco uma cor própria:',
       paletteContrast:
         'Cada combinação de papel da marca (texto sobre superfície, superfície sobre tela) é verificada em relação ao <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> na inicialização. Uma combinação que falha lança um erro antes do aplicativo carregar, então um problema de contraste na cor da marca é detectado na inicialização em vez de em produção.',
       paletteBuilderIntro: 'Crie e visualize sua paleta de forma visual no',

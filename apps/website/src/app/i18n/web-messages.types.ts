@@ -281,6 +281,8 @@ export interface WebMessages {
       lede: string;
       primaryLabel: string;
       secondaryLabel: string;
+      focusLabel: string;
+      focusHint: string;
       contrastPass: string;
       contrastFailIntro: string;
       previewHeading: string;
@@ -314,6 +316,7 @@ export interface WebMessages {
       themingScopedBefore: string;
       paletteIntro: string;
       paletteOverrides: string;
+      paletteFocus: string;
       paletteContrast: string;
       paletteBuilderIntro: string;
       paletteBuilderLink: string;

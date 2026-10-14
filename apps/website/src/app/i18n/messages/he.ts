@@ -385,6 +385,8 @@ export const he: WebMessages = {
       lede: 'בחרו את צבעי המותג שלכם ו-Eagami UI יגזור סקאלה מלאה של 50–900 במרחב OKLCH, יבדוק את הניגודיות שלה לפי WCAG במצב בהיר וכהה, וימסור לכם את תצורת <code>provideEagamiUi()</code> מוכנה לשימוש.',
       primaryLabel: 'צבע ראשי',
       secondaryLabel: 'צבע משני',
+      focusLabel: 'צבע מיקוד',
+      focusHint: 'אופציונלי. השאירו ריק כדי להציג את המיקוד בצבע הראשי.',
       contrastPass: 'עומד בניגודיות WCAG 2.2 AA במצב בהיר וכהה',
       contrastFailIntro: 'חלק מהשילובים נמוכים מסף הניגודיות של WCAG AA:',
       previewHeading: 'תצוגה מקדימה',
@@ -422,6 +424,8 @@ export const he: WebMessages = {
         'העבירו hex מותג בודד אל <code>provideEagamiUi()</code> והספרייה תגזור סולם מלא של עשרה גוונים (מ-50 עד 900) במרחב <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, תוך שמירה על גוון ורוויה קבועים ושינוי הבהירות בלבד. הגוונים הנגזרים מזינים כל אסימון <code>--color-brand-*</code> במצב בהיר ובמצב כהה כאחד:',
       paletteOverrides:
         'קבעו גוונים ספציפיים או מפו מחדש איזה גוון נגזר עומד מאחורי כל תפקיד סמנטי:',
+      paletteFocus:
+        'טבעות המיקוד עוקבות אחרי הצבע הראשי. כשגוון המותג נראה כמו שגיאה או אזהרה, תנו למיקוד צבע משלו:',
       paletteContrast:
         'כל זוג תפקידי מותג (טקסט על משטח, משטח על בד) נבדק מול <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> באתחול. שילוב שאינו עומד בדרישות זורק שגיאה לפני שהאפליקציה נטענת, כך שבאג ניגודיות בצבע המותג נתפס באתחול ולא בייצור.',
       paletteBuilderIntro: 'בנו את הפלטה שלכם באופן חזותי בעזרת',

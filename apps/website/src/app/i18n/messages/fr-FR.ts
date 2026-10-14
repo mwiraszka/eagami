@@ -454,6 +454,9 @@ export const frFR: WebMessages = {
       lede: 'Choisissez les couleurs de votre marque et Eagami UI en dérive une échelle complète 50–900 dans l’espace OKLCH, en vérifie le contraste WCAG en mode clair et sombre, et vous fournit la configuration <code>provideEagamiUi()</code> prête à l’emploi.',
       primaryLabel: 'Couleur primaire',
       secondaryLabel: 'Couleur secondaire',
+      focusLabel: 'Couleur du focus',
+      focusHint:
+        'Facultatif. Laissez vide pour afficher le focus dans la couleur primaire.',
       contrastPass: 'Respecte le contraste WCAG 2.2 AA en mode clair et sombre',
       contrastFailIntro:
         'Certaines associations n’atteignent pas le seuil de contraste WCAG AA :',
@@ -494,6 +497,8 @@ export const frFR: WebMessages = {
         'Passez un seul hex de marque à <code>provideEagamiUi()</code> et la bibliothèque dérive une échelle complète de dix nuances (50 à 900) dans l’espace <a href="https://www.w3.org/TR/css-color-4/#ok-lab" target="_blank" rel="noopener noreferrer"><span>OKLCH</span></a>, en conservant la teinte et le chroma stables tout en faisant varier la luminance. Les nuances dérivées alimentent chaque token <code>--color-brand-*</code> en mode clair comme en mode sombre :',
       paletteOverrides:
         'Épinglez des nuances précises ou remappez la nuance dérivée qui sous-tend chaque rôle sémantique :',
+      paletteFocus:
+        'Les anneaux de focus suivent la couleur primaire. Si la teinte de la marque évoque une erreur ou un avertissement, donnez au focus sa propre couleur :',
       paletteContrast:
         'Chaque appariement de rôle de marque (texte sur surface, surface sur fond) est vérifié face à <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>WCAG 2.2 Level AA</span></a> au démarrage. Une combinaison non conforme lève une erreur avant le chargement de l’application, de sorte qu’un défaut de contraste dans la couleur de marque est repéré au boot plutôt qu’en production.',
       paletteBuilderIntro: 'Composez et prévisualisez votre palette visuellement dans le',

@@ -110,6 +110,8 @@ export class UiThemeBuilderPageComponent {
 
   protected readonly primaryBase = signal(DEFAULT_PRIMARY);
   protected readonly secondaryBase = signal(DEFAULT_SECONDARY);
+  // Unset, focus follows the primary color
+  protected readonly focusBase = signal<string | null>(null);
 
   protected readonly demoSwitch = signal(true);
   protected readonly stepperOrientation = signal<StepperOrientation>('horizontal');
@@ -121,6 +123,10 @@ export class UiThemeBuilderPageComponent {
     }
     if (HEX.test(this.secondaryBase())) {
       config.secondary = { base: this.secondaryBase() };
+    }
+    const focus = this.focusBase();
+    if (focus && HEX.test(focus)) {
+      config.focus = { base: focus };
     }
     return config;
   });
@@ -192,12 +198,14 @@ export class UiThemeBuilderPageComponent {
   }
 
   private buildConfigSnippet(): string {
+    const focus = this.config().focus;
+    const focusLine = focus ? `\n        focus: { base: '${focus.base}' },` : '';
     return `bootstrapApplication(AppComponent, {
   providers: [
     provideEagamiUi({
       palette: {
         primary: { base: '${this.primaryBase()}' },
-        secondary: { base: '${this.secondaryBase()}' },
+        secondary: { base: '${this.secondaryBase()}' },${focusLine}
       },
     }),
   ],
