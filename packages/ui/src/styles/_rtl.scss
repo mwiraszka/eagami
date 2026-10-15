@@ -31,8 +31,10 @@
 
 // Native fields use dir="auto" so typed LTR text stays LTR, but that resolves
 // an empty field to LTR and parks its placeholder on the left. Pin them to the
-// inline-end edge so every RTL field reads from the right like the others.
+// inline-end edge so every RTL field reads from the right like the others. The
+// typed placeholder drawn over an empty field follows its placeholder.
 [dir='rtl'] input[dir='auto'],
-[dir='rtl'] textarea[dir='auto'] {
+[dir='rtl'] textarea[dir='auto'],
+[dir='rtl'] ea-typed-placeholder[dir='auto'] {
   text-align: right;
 }

@@ -54,6 +54,7 @@
 }
 
 .ea-textarea-wrapper {
+  position: relative;
   display: flex;
   min-width: 12em;
   background-color: var(--color-bg-base);
@@ -89,6 +90,15 @@
     background-color: var(--color-bg-subtle);
     @include ea.readonly-field;
   }
+
+  // Wraps like the textarea's own placeholder
+  &__typed-placeholder {
+    position: absolute;
+    inset: 0;
+    padding: 0.75em;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
 }
 
 .ea-textarea {
@@ -107,6 +117,12 @@
 
   &::placeholder {
     @include ea.placeholder-text;
+  }
+
+  // The typed layer draws the placeholder while the attribute keeps it for
+  // assistive technology
+  &--typed-placeholder::placeholder {
+    color: transparent;
   }
 
   &:disabled {

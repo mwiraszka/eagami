@@ -21,6 +21,8 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { FieldLabelComponent } from '../field/field-label.component';
 import { FieldMessagesComponent } from '../field/field-messages.component';
+import { injectTypedPlaceholder } from '../field/typed-placeholder';
+import { TypedPlaceholderComponent } from '../field/typed-placeholder.component';
 import {
   type EaErrorMessages,
   injectControlErrorState,
@@ -56,6 +58,7 @@ export type InputType =
     FieldMessagesComponent,
     NgClass,
     NgComponentOutlet,
+    TypedPlaceholderComponent,
     XIconComponent,
   ],
   providers: [
@@ -104,6 +107,14 @@ export class InputComponent implements ControlValueAccessor {
   readonly type = input<InputType>('text');
   /** Placeholder shown while the field is empty. */
   readonly placeholder = input<string>('');
+  /**
+   * Hints typed into the empty field one character at a time, trailed by a
+   * blinking cursor, each held and then replaced by the next, in a loop. The
+   * native placeholder carries the whole current hint for assistive
+   * technology, and under `prefers-reduced-motion` the hints swap whole without
+   * a cursor. Takes the place of `placeholder` while it holds any hints.
+   */
+  readonly typedPlaceholder = input<readonly string[]>([]);
   /** Leading icon component rendered before the text, e.g. a search or filter glyph. */
   readonly icon = input<Type<unknown> | undefined>(undefined);
   /** Keeps the leading icon while the field has a value; when false it shows only alongside the placeholder. */
@@ -163,6 +174,14 @@ export class InputComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+
+  protected readonly typed = injectTypedPlaceholder(this.typedPlaceholder);
+  protected readonly typedPlaceholderShown = computed(
+    () => this.typed.animating() && !this.value(),
+  );
+  protected readonly nativePlaceholder = computed(() =>
+    this.typedPlaceholder().length > 0 ? this.typed.hint() : this.placeholder(),
+  );
 
   readonly effectiveType = computed<InputType>(() =>
     this.type() === 'password' && this.passwordVisible() ? 'text' : this.type(),

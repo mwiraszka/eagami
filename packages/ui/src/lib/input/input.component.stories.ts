@@ -24,6 +24,13 @@ type Story = StoryObj<InputComponent>;
 
 export const Playground: Story = {};
 
+export const TypedPlaceholder: Story = {
+  args: {
+    label: 'Component',
+    typedPlaceholder: ['Try date picker…', 'Try color picker…', 'Try data table…'],
+  },
+};
+
 export const WithLabelHelp: Story = {
   args: {
     label: 'Phone number',

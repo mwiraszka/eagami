@@ -13,6 +13,7 @@ import { InputComponent, type InputType } from './input.component';
       [labelHelp]="labelHelp"
       [type]="type"
       [placeholder]="placeholder"
+      [typedPlaceholder]="typedPlaceholder"
       [hint]="hint"
       [errorMsg]="errorMsg"
       [disabled]="disabled"
@@ -24,6 +25,7 @@ class HostComponent {
   labelHelp: string | undefined = undefined;
   type: InputType = 'text';
   placeholder = 'Enter your email';
+  typedPlaceholder: readonly string[] = [];
   hint: string | undefined = undefined;
   errorMsg: string | undefined = undefined;
   disabled = false;
@@ -86,6 +88,22 @@ describe('InputComponent a11y', () => {
 
     const results = await axe(el);
 
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no detectable violations while a placeholder is typed', async () => {
+    await TestBed.configureTestingModule({
+      imports: [HostComponent],
+    }).compileComponents();
+    const fixture = TestBed.createComponent(HostComponent);
+    fixture.componentInstance.typedPlaceholder = ['Tell us about your project'];
+    fixture.detectChanges();
+    fixture.detectChanges();
+    const el: HTMLElement = fixture.nativeElement;
+
+    const results = await axe(el);
+
+    expect(el.querySelector('ea-typed-placeholder')).toBeTruthy();
     expect(results).toHaveNoViolations();
   });
 });

@@ -95,6 +95,21 @@
     }
   }
 
+  &__control {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-width: 0;
+  }
+
+  // A single line, clipped like the input's own placeholder
+  &__typed-placeholder {
+    position: absolute;
+    inset: 0;
+    padding: 0.5em 0;
+    white-space: pre;
+  }
+
   &__icon {
     display: inline-flex;
     align-items: center;
@@ -134,6 +149,12 @@
 
   &::placeholder {
     @include ea.placeholder-text;
+  }
+
+  // The typed layer draws the placeholder while the attribute keeps it for
+  // assistive technology
+  &--typed-placeholder::placeholder {
+    color: transparent;
   }
 
   &:-webkit-autofill,

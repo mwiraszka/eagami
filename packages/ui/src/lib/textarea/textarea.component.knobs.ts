@@ -3,7 +3,8 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
 /**
  * Single source of truth for the Textarea demo's interactive controls. Consumed
  * by `textarea.component.stories.ts` (as Storybook `argTypes`/`args`) and by the
- * website's component playground.
+ * website's component playground. The `typedPlaceholder` hints are supplied by
+ * the demo, not as a flat knob.
  */
 export const TEXTAREA_KNOBS: ComponentKnobs = {
   argTypes: {
@@ -25,6 +26,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     optional: { control: 'boolean' },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
+    typedHints: { control: 'boolean', demoOnly: true },
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
@@ -40,6 +42,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     readonly: false,
     required: false,
     optional: false,
+    typedHints: false,
     triggerError: false,
   },
 };
