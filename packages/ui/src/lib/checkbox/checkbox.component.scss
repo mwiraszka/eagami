@@ -61,6 +61,15 @@
   font-family: var(--font-family-sans);
   color: var(--color-text-primary);
 
+  // A label that wraps keeps the box level with its first line
+  &:has(.ea-checkbox__label) {
+    align-items: flex-start;
+
+    .ea-checkbox__box {
+      margin-top: calc((var(--line-height-normal) * 1em - 1.25em) / 2);
+    }
+  }
+
   &--disabled {
     opacity: 0.45;
     cursor: default;
@@ -145,6 +154,7 @@
 
   &__label {
     font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
     color: var(--ea-checkbox-label-color, inherit);
     transition: color var(--duration-fast) var(--ease-out);
 

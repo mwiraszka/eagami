@@ -19,6 +19,15 @@
   font-family: var(--font-family-sans);
   color: var(--color-text-primary);
 
+  // A label that wraps keeps the circle level with its first line
+  &:has(.ea-radio__label) {
+    align-items: flex-start;
+
+    .ea-radio__circle {
+      margin-top: calc((var(--line-height-normal) * 1em - 1.25em) / 2);
+    }
+  }
+
   // Size sets only the font-size; the circle and label line-height are em-based on
   // the base rule, so everything scales from this one knob.
   &--2xs {
@@ -116,7 +125,7 @@
   }
 
   &__label {
-    line-height: 1.25em;
     font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
   }
 }
