@@ -97,6 +97,25 @@ describe('ButtonComponent', () => {
       expect(getButton().getAttribute('aria-describedby')).toBe('field-hint');
     });
 
+    it('sets no aria-expanded or aria-controls by default', () => {
+      expect(getButton().hasAttribute('aria-expanded')).toBe(false);
+      expect(getButton().hasAttribute('aria-controls')).toBe(false);
+    });
+
+    it('forwards aria-expanded and aria-controls to the native button', () => {
+      fixture.componentRef.setInput('aria-expanded', false);
+      fixture.componentRef.setInput('aria-controls', 'more-features');
+      fixture.detectChanges();
+
+      expect(getButton().getAttribute('aria-expanded')).toBe('false');
+      expect(getButton().getAttribute('aria-controls')).toBe('more-features');
+
+      fixture.componentRef.setInput('aria-expanded', true);
+      fixture.detectChanges();
+
+      expect(getButton().getAttribute('aria-expanded')).toBe('true');
+    });
+
     it('focus() moves focus to the native button', () => {
       component.focus();
 

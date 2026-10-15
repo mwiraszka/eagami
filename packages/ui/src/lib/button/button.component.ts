@@ -73,6 +73,14 @@ export class ButtonComponent {
   readonly ariaDescribedby = input<string | undefined>(undefined, {
     alias: 'aria-describedby',
   });
+  /** Whether the content this button shows and hides is open, for a disclosure toggle. */
+  readonly ariaExpanded = input<boolean | undefined>(undefined, {
+    alias: 'aria-expanded',
+  });
+  /** Id of the element this button shows, hides or otherwise controls. */
+  readonly ariaControls = input<string | undefined>(undefined, {
+    alias: 'aria-controls',
+  });
 
   private readonly buttonEl = viewChild<ElementRef<HTMLButtonElement>>('buttonEl');
 
