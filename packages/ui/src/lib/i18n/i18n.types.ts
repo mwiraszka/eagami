@@ -198,6 +198,8 @@ export interface EagamiMessages {
   fieldLabel: {
     /** Accessible name of the button that reveals a field label's help. */
     help: (label: string) => string;
+    /** Note after the label of a field that may be left empty, parentheses included. */
+    optional: string;
   };
   fileUploader: {
     prompt: string;

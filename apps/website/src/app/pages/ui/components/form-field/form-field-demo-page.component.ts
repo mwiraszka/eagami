@@ -35,6 +35,7 @@ interface FormFieldKnobState {
   hint: string;
   size: FormFieldSize;
   required: boolean;
+  optional: boolean;
   triggerError: boolean;
 }
 

@@ -57,6 +57,7 @@ interface AutocompleteKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   groupedOptions: boolean;
   firstGroup: string;
   firstGroupLabel: string;

@@ -1280,6 +1280,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
             autofocus: 'Autofokus',
             showPasswordToggle: 'Przycisk pokazywania hasła',
             clearable: 'Z czyszczeniem',
@@ -1298,6 +1299,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
           'form-field': {
             size: 'Rozmiar',
@@ -1305,6 +1307,7 @@ export const pl: WebMessages = {
             labelIcon: 'Ikona etykiety',
             hint: 'Podpowiedź',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
           alert: {
             variant: 'Wariant',
@@ -1370,6 +1373,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
           'color-picker': {
             label: 'Etykieta',
@@ -1382,6 +1386,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
           divider: {
             orientation: 'Orientacja',
@@ -1426,6 +1431,7 @@ export const pl: WebMessages = {
             labelIcon: 'Ikona etykiety',
             size: 'Rozmiar',
             disabled: 'Wyłączone',
+            optional: 'Opcjonalne',
           },
           'range-slider': {
             label: 'Etykieta',
@@ -1440,6 +1446,7 @@ export const pl: WebMessages = {
             showMinMaxLabels: 'Pokaż etykiety min/maks',
             disabled: 'Wyłączone',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
           rating: {
             label: 'Etykieta',
@@ -1451,6 +1458,7 @@ export const pl: WebMessages = {
             readonly: 'Tylko do odczytu',
             disabled: 'Wyłączone',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
             clearable: 'Z czyszczeniem',
             iconClass: 'Ikona',
           },
@@ -1469,6 +1477,7 @@ export const pl: WebMessages = {
             showMinMaxLabels: 'Pokaż etykiety min/maks',
             disabled: 'Wyłączone',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
             hasError: 'Stan błędu',
             label: 'Etykieta',
             labelIcon: 'Ikona etykiety',
@@ -1507,6 +1516,7 @@ export const pl: WebMessages = {
             disabled: 'Wyłączone',
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
+            optional: 'Opcjonalne',
           },
         },
         knobNotes: {
@@ -1679,6 +1689,8 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza pole.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             autocomplete: 'Wartość natywnego atrybutu autocomplete.',
             list: 'id elementu <datalist> do powiązania z natywnymi podpowiedziami.',
             autofocus: 'Ustawia fokus na polu raz, po pierwszym renderowaniu.',
@@ -1716,6 +1728,8 @@ export const pl: WebMessages = {
             disabled: 'Wyłącza pole.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             min: 'Wartość minimalna; wpisane wartości są do niej ograniczane po opuszczeniu pola.',
             max: 'Wartość maksymalna; wpisane wartości są do niej ograniczane po opuszczeniu pola.',
             step: 'Wartość dodawana lub odejmowana przy każdym kroku klawiszami strzałek.',
@@ -1839,6 +1853,8 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy rozłożony po jednym znaku na komórkę.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar każdej komórki cyfry.',
             value: 'Bieżąca wartość kodu, dwukierunkowo wiązalna przez [(value)].',
             completed: 'Emitowane z pełnym kodem, gdy wprowadzono każdą cyfrę.',
@@ -1865,6 +1881,8 @@ export const pl: WebMessages = {
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie popovera.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             showAlpha: 'Wyświetla suwak alfa i uwzględnia alfę w emitowanej wartości.',
             clearable: 'Czy pokazywać przycisk czyszczenia, gdy wartość jest ustawiona.',
             size: 'Wizualny rozmiar elementu wyzwalającego selektor.',
@@ -1962,6 +1980,8 @@ export const pl: WebMessages = {
             max: 'Najwyższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
             min: 'Najniższa wartość, jaką może osiągnąć którykolwiek uchwyt.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             showMinMaxLabels: 'Wyświetla granice min i maks na końcach ścieżki.',
             showValue: 'Wyświetla bieżące wartości niską i wysoką obok suwaka.',
             size: 'Wizualny rozmiar ścieżki i uchwytów.',
@@ -1999,6 +2019,8 @@ export const pl: WebMessages = {
             readonly:
               'Renderuje ocenę tylko do wyświetlania, ignorując kliknięcia i wprowadzanie z klawiatury.',
             required: 'Oznacza ocenę jako wymaganą.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar oceny.',
             value: 'Bieżąca wartość oceny, dwukierunkowo wiązalna przez [(value)].',
             hoverChanged:
@@ -2035,6 +2057,8 @@ export const pl: WebMessages = {
             max: 'Najwyższa wartość, jaką może osiągnąć suwak.',
             min: 'Najniższa wartość, jaką może osiągnąć suwak.',
             required: 'Oznacza suwak jako wymagany.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             showMinMaxLabels: 'Wyświetla granice min i maks pod ścieżką.',
             snapValues:
               'Wartości, do których uchwyt przyciąga się podczas przeciągania; każda jest rysowana jako znacznik na osi.',
@@ -2113,6 +2137,8 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             resize: 'Oś, wzdłuż której użytkownik może zmieniać rozmiar pola.',
             size: 'Wizualny rozmiar pola.',
             value: 'Bieżąca wartość pola, dwukierunkowo wiązalna przez [(value)].',
@@ -2210,6 +2236,8 @@ export const pl: WebMessages = {
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie popovera.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             secondStep:
               'Przyrost, do którego kolumna sekund przyciąga się podczas kroku lub przeciągania.',
             size: 'Wizualny rozmiar wyzwalacza selektora.',
@@ -2265,6 +2293,8 @@ export const pl: WebMessages = {
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar pola.',
             value: 'Bieżąca wartość pola, dwukierunkowo wiązalna przez [(value)].',
             blurred: 'Emitowane, gdy pole traci fokus.',
@@ -2339,6 +2369,8 @@ export const pl: WebMessages = {
             readonly:
               'Wyświetla pole tylko do odczytu, uniemożliwiając otwarcie kalendarza.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar pola selektora daty.',
             value: 'Bieżąca wybrana data, dwukierunkowo wiązalna przez [(value)].',
             weekStartsOn:
@@ -2409,6 +2441,8 @@ export const pl: WebMessages = {
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             searchable: 'Wyświetla pole wyszukiwania na górze popovera.',
             searchPlaceholder:
               'Tekst zastępczy wyświetlany w polu wyszukiwania, gdy wyszukiwany termin jest pusty.',
@@ -2443,6 +2477,8 @@ export const pl: WebMessages = {
               'Tekst zastępczy wyświetlany na elemencie wyzwalającym, gdy nie wybrano żadnej opcji.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             clearable:
               'Pokazuje przycisk czyszczenia na elemencie wyzwalającym, gdy wybrano opcję.',
             searchable:
@@ -2480,6 +2516,8 @@ export const pl: WebMessages = {
             progress:
               'Mapa postępu przesyłania per plik (0-100) indeksowana tożsamością File; pomiń, aby ukryć paski postępu.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             showConstraints:
               'Wyświetla dozwolone typy plików oraz limity rozmiaru i liczby pod kontrolką; wyłącz, gdy zagracałyby kompaktowe miejsce.',
             showFileList: 'Wyświetla listę wybranych plików pod strefą upuszczania.',
@@ -2505,6 +2543,8 @@ export const pl: WebMessages = {
             labelIcon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             label: 'Etykieta wyświetlana nad kontrolką.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
           },
           popover: {
             anchor:
@@ -2642,6 +2682,8 @@ export const pl: WebMessages = {
             name: 'Wspólny atrybut name stosowany do wszystkich pól radio w grupie, generowany automatycznie gdy pominięty.',
             orientation: 'Kierunek układu opcji radio w grupie.',
             required: 'Oznacza grupę jako wymaganą.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar stosowany do wszystkich opcji radia w grupie.',
             value: 'Aktualnie wybrana wartość, dwukierunkowo wiązalna przez [(value)].',
             changed: 'Emitowane z nową wartością, gdy użytkownik wybiera opcję.',
@@ -2663,6 +2705,8 @@ export const pl: WebMessages = {
             options:
               'Tablica opcji renderowanych jako przyciski przełączające w kontrolce.',
             required: 'Oznacza pole jako wymagane.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             size: 'Wizualny rozmiar kontrolki segmentowej.',
             value:
               'Wartość aktualnie wybranej opcji, dwukierunkowo wiązalna przez [(value)].',
@@ -2740,6 +2784,8 @@ export const pl: WebMessages = {
             labelId:
               'id stosowane do renderowanego elementu etykiety, aby elementy sterujące mogły odwoływać się do niego przez aria-labelledby.',
             required: 'Wyświetla wskaźnik wymaganego pola na etykiecie.',
+            optional:
+              'Dodaje po etykiecie wyszarzony dopisek „(opcjonalnie)”, chyba że ustawiono też required.',
             text: 'Tekst etykiety renderowany wewnątrz elementu etykiety.',
           },
           'field-messages': {

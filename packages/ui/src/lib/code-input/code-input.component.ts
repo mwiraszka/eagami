@@ -64,6 +64,8 @@ export class CodeInputComponent implements ControlValueAccessor {
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   /** Placeholder text spread one character per cell (cell i shows character i). */
   readonly placeholder = input<string>('');
   readonly length = input<number>(6);

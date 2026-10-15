@@ -59,6 +59,8 @@ export class FormFieldComponent {
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   /** Helper text shown below the control; hidden while an error is showing. */
   readonly hint = input<string | undefined>(undefined);
   /** Error message shown below the control; replaces the hint and flags the field invalid. */

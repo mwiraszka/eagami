@@ -1288,6 +1288,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
+            optional: 'Opcional',
             autofocus: 'Enfoque automático',
             showPasswordToggle: 'Mostrar botón de contraseña',
             clearable: 'Con botón de borrado',
@@ -1306,6 +1307,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
           'form-field': {
             size: 'Tamaño',
@@ -1313,6 +1315,7 @@ export const esES: WebMessages = {
             labelIcon: 'Icono de la etiqueta',
             hint: 'Ayuda',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
           alert: {
             variant: 'Variante',
@@ -1378,6 +1381,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
           'color-picker': {
             label: 'Etiqueta',
@@ -1390,6 +1394,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
           divider: {
             orientation: 'Orientación',
@@ -1434,6 +1439,7 @@ export const esES: WebMessages = {
             labelIcon: 'Icono de la etiqueta',
             size: 'Tamaño',
             disabled: 'Deshabilitado',
+            optional: 'Opcional',
           },
           'range-slider': {
             label: 'Etiqueta',
@@ -1448,6 +1454,7 @@ export const esES: WebMessages = {
             showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
           rating: {
             label: 'Etiqueta',
@@ -1459,6 +1466,7 @@ export const esES: WebMessages = {
             readonly: 'Solo lectura',
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
+            optional: 'Opcional',
             clearable: 'Con botón de borrado',
             iconClass: 'Icono',
           },
@@ -1477,6 +1485,7 @@ export const esES: WebMessages = {
             showMinMaxLabels: 'Mostrar etiquetas mín./máx.',
             disabled: 'Deshabilitado',
             required: 'Obligatorio',
+            optional: 'Opcional',
             hasError: 'Estado de error',
             label: 'Etiqueta',
             labelIcon: 'Icono de la etiqueta',
@@ -1515,6 +1524,7 @@ export const esES: WebMessages = {
             disabled: 'Deshabilitado',
             readonly: 'Solo lectura',
             required: 'Obligatorio',
+            optional: 'Opcional',
           },
         },
         knobNotes: {
@@ -1693,6 +1703,8 @@ export const esES: WebMessages = {
             disabled: 'Deshabilita el campo.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             autocomplete: 'Valor del atributo nativo autocomplete.',
             list: 'id de un <datalist> que asociar para sugerencias nativas.',
             autofocus: 'Enfoca el campo una vez, tras su primer renderizado.',
@@ -1733,6 +1745,8 @@ export const esES: WebMessages = {
             disabled: 'Deshabilita el campo.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             min: 'Valor mínimo; los valores escritos se ajustan a él al salir del campo.',
             max: 'Valor máximo; los valores escritos se ajustan a él al salir del campo.',
             step: 'Cantidad que suma o resta cada paso con las teclas de flecha.',
@@ -1861,6 +1875,8 @@ export const esES: WebMessages = {
             placeholder: 'Texto de marcador de posición repartido un carácter por celda.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual de cada celda de dígito.',
             value:
               'Valor actual del código, vinculable en dos sentidos mediante [(value)].',
@@ -1890,6 +1906,8 @@ export const esES: WebMessages = {
             readonly:
               'Muestra el campo como de solo lectura, impidiendo que el popover se abra.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             showAlpha:
               'Muestra el control deslizante de alfa e incluye el alfa en el valor emitido.',
             clearable:
@@ -1995,6 +2013,8 @@ export const esES: WebMessages = {
             max: 'Valor más alto que puede alcanzar cualquiera de los controles.',
             min: 'Valor más bajo que puede alcanzar cualquiera de los controles.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             showMinMaxLabels:
               'Muestra los límites mín. y máx. en los extremos de la pista.',
             showValue:
@@ -2036,6 +2056,8 @@ export const esES: WebMessages = {
             readonly:
               'Muestra la valoración como solo visualización, ignorando los clics y la entrada de teclado.',
             required: 'Marca la valoración como obligatoria.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual de la valoración.',
             value:
               'Valor de valoración actual, vinculable en dos sentidos mediante [(value)].',
@@ -2076,6 +2098,8 @@ export const esES: WebMessages = {
             max: 'Valor más alto que puede alcanzar el control deslizante.',
             min: 'Valor más bajo que puede alcanzar el control deslizante.',
             required: 'Marca el control deslizante como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             showMinMaxLabels: 'Muestra los límites mín. y máx. bajo la pista.',
             snapValues:
               'Valores a los que se ajusta el control al arrastrar; cada uno se dibuja como una marca en la pista.',
@@ -2158,6 +2182,8 @@ export const esES: WebMessages = {
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             resize: 'Eje a lo largo del cual el usuario puede redimensionar el campo.',
             size: 'Tamaño visual del campo.',
             value:
@@ -2258,6 +2284,8 @@ export const esES: WebMessages = {
             readonly:
               'Muestra el campo como de solo lectura, impidiendo que el popover se abra.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             secondStep:
               'Incremento al que se ajusta la columna de segundos al avanzar o arrastrar.',
             size: 'Tamaño visual del activador del selector.',
@@ -2313,6 +2341,8 @@ export const esES: WebMessages = {
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual del campo.',
             value:
               'Valor actual del campo, vinculable en dos sentidos mediante [(value)].',
@@ -2392,6 +2422,8 @@ export const esES: WebMessages = {
             readonly:
               'Muestra el campo como de solo lectura, impidiendo que se abra el calendario.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual del campo del selector de fecha.',
             value:
               'Fecha seleccionada actual, vinculable en dos sentidos mediante [(value)].',
@@ -2465,6 +2497,8 @@ export const esES: WebMessages = {
               'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             searchable: 'Muestra el campo de búsqueda en la parte superior del popover.',
             searchPlaceholder:
               'Marcador de posición mostrado dentro del campo de búsqueda cuando el término de búsqueda está vacío.',
@@ -2502,6 +2536,8 @@ export const esES: WebMessages = {
               'Marcador de posición mostrado en el activador mientras no hay ninguna opción seleccionada.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             clearable:
               'Muestra un botón de borrado en el activador mientras hay una opción seleccionada.',
             searchable:
@@ -2543,6 +2579,8 @@ export const esES: WebMessages = {
             progress:
               'Mapa de progreso de carga por archivo (0-100) indexado por identidad de File; omítalo para ocultar las barras de progreso.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             showConstraints:
               'Muestra los tipos de archivo admitidos y los límites de tamaño y cantidad bajo el control; desactívalo donde saturarían una ubicación compacta.',
             showFileList:
@@ -2571,6 +2609,8 @@ export const esES: WebMessages = {
               'Componente de icono opcional que se muestra antes del texto de la etiqueta.',
             label: 'Etiqueta mostrada encima del control.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
           },
           popover: {
             anchor:
@@ -2711,6 +2751,8 @@ export const esES: WebMessages = {
             orientation:
               'Dirección de disposición de las opciones de radio dentro del grupo.',
             required: 'Marca el grupo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual aplicado a todas las opciones de radio del grupo.',
             value:
               'Valor actualmente seleccionado, vinculable en dos sentidos mediante [(value)].',
@@ -2735,6 +2777,8 @@ export const esES: WebMessages = {
             options:
               'Array de opciones renderizadas como botones de alternancia en el control.',
             required: 'Marca el campo como obligatorio.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             size: 'Tamaño visual del control segmentado.',
             value:
               'Valor de la opción seleccionada actualmente, vinculable en dos sentidos mediante [(value)].',
@@ -2813,6 +2857,8 @@ export const esES: WebMessages = {
             labelId:
               'id aplicado al elemento de etiqueta renderizado para que los controles puedan referenciarlo mediante aria-labelledby.',
             required: 'Muestra un indicador de campo obligatorio en la etiqueta.',
+            optional:
+              'Añade una nota atenuada «(opcional)» tras la etiqueta, salvo que también se establezca required.',
             text: 'Texto de la etiqueta renderizado dentro del elemento de etiqueta.',
           },
           'field-messages': {

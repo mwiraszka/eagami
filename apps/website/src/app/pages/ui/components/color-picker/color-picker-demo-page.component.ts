@@ -38,6 +38,7 @@ interface ColorPickerKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   triggerError: boolean;
 }
 

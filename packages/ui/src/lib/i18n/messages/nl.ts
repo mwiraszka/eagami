@@ -116,6 +116,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `Meer informatie over ${label}`,
+    optional: '(optioneel)',
   },
   fileUploader: {
     prompt: 'Klik of sleep bestanden hierheen om te uploaden',

@@ -116,6 +116,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `अधिक जानकारी: ${label}`,
+    optional: '(वैकल्पिक)',
   },
   fileUploader: {
     prompt: 'अपलोड करने के लिए फ़ाइलें यहाँ क्लिक करें या खींचें',

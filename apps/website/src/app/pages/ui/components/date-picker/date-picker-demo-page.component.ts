@@ -46,6 +46,7 @@ interface DatePickerKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   weekStartsOn: string;
   disableMondays: boolean;
   disableTuesdays: boolean;

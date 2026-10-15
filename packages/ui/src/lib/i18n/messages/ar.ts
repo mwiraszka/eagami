@@ -123,6 +123,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `مزيد من المعلومات حول ${label}`,
+    optional: '(اختياري)',
   },
   fileUploader: {
     prompt: 'انقر أو اسحب الملفات هنا للتحميل',

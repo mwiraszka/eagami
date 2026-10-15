@@ -115,6 +115,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `关于 ${label} 的更多信息`,
+    optional: '（可选）',
   },
   fileUploader: {
     prompt: '点击或拖动文件到此处上传',

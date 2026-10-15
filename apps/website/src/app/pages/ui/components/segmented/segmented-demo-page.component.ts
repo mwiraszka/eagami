@@ -37,6 +37,7 @@ interface SegmentedKnobState {
   fullWidth: boolean;
   disabled: boolean;
   required: boolean;
+  optional: boolean;
   triggerError: boolean;
 }
 

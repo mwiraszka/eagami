@@ -108,6 +108,8 @@ export class MultiSelectComponent implements ControlValueAccessor {
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   /** Accessible name for the combobox when no visible `label` is set. */
   readonly ariaLabel = input<string | undefined>(undefined, { alias: 'aria-label' });
   /** Space-separated ids of the elements whose text names the combobox, such as a label outside the component. */

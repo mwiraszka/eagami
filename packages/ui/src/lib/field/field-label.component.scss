@@ -20,6 +20,11 @@
     content: ' *';
   }
 
+  &__optional {
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-secondary);
+  }
+
   &__icon {
     display: inline-flex;
     // Optical centring against the label text

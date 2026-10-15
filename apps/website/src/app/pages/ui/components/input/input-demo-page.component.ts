@@ -43,6 +43,7 @@ interface InputKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   autofocus: boolean;
   showPasswordToggle: boolean;
   clearable: boolean;

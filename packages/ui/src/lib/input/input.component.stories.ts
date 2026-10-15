@@ -32,3 +32,10 @@ export const WithLabelHelp: Story = {
     placeholder: '555-123-1234',
   },
 };
+
+export const Optional: Story = {
+  args: {
+    label: 'Middle name',
+    optional: true,
+  },
+};

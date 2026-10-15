@@ -106,6 +106,8 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   /** Placeholder shown in the field when no date is selected. */
   readonly placeholder = input<string | undefined>(undefined);
   /** Space-separated ids of the elements whose text names the field, such as a label outside the component. */

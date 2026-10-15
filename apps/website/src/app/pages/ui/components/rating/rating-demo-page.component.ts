@@ -51,6 +51,7 @@ interface RatingKnobState {
   readonly: boolean;
   disabled: boolean;
   required: boolean;
+  optional: boolean;
   clearable: boolean;
   iconClass: string;
   triggerError: boolean;

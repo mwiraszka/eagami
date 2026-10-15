@@ -132,6 +132,35 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Optional', () => {
+    function getSuffix(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('.ea-field-label__optional');
+    }
+
+    beforeEach(() => {
+      fixture.componentRef.setInput('label', 'Middle name');
+      fixture.componentRef.setInput('optional', true);
+      fixture.detectChanges();
+    });
+
+    it('hands optional to the field label inside the label that names the input', () => {
+      const label: HTMLLabelElement = fixture.nativeElement.querySelector('label');
+
+      expect(label.htmlFor).toBe(getNativeInput().id);
+      expect(label.contains(getSuffix())).toBe(true);
+      expect(label.textContent?.replace(/\s+/g, ' ').trim()).toBe(
+        'Middle name (optional)',
+      );
+    });
+
+    it('drops the note once the field is required', () => {
+      fixture.componentRef.setInput('required', true);
+      fixture.detectChanges();
+
+      expect(getSuffix()).toBeNull();
+    });
+  });
+
   describe('Spellcheck', () => {
     it('leaves the attribute off by default', () => {
       expect(getNativeInput().getAttribute('spellcheck')).toBeNull();

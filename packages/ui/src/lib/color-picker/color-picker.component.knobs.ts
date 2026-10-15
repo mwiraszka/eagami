@@ -21,6 +21,7 @@ export const COLOR_PICKER_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -35,6 +36,7 @@ export const COLOR_PICKER_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

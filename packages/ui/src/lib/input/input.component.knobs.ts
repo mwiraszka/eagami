@@ -47,6 +47,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     autofocus: false,
     showPasswordToggle: true,
     clearable: false,

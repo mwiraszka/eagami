@@ -36,6 +36,7 @@ interface RangeSliderKnobState {
   groupThousands: boolean;
   disabled: boolean;
   required: boolean;
+  optional: boolean;
   triggerError: boolean;
 }
 

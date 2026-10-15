@@ -72,6 +72,26 @@ describe('TextareaComponent', () => {
       expect(getLabel()!.textContent!.trim()).toBe('Notes');
     });
 
+    it('follows the label with the optional note when optional', () => {
+      fixture.componentRef.setInput('label', 'Message for the organizer');
+      fixture.componentRef.setInput('optional', true);
+      fixture.detectChanges();
+
+      expect(getLabel()!.querySelector('.ea-field-label__optional')).toBeTruthy();
+      expect(getLabel()!.textContent!.replace(/\s+/g, ' ').trim()).toBe(
+        'Message for the organizer (optional)',
+      );
+    });
+
+    it('leaves the optional note out when also required', () => {
+      fixture.componentRef.setInput('label', 'Message for the organizer');
+      fixture.componentRef.setInput('optional', true);
+      fixture.componentRef.setInput('required', true);
+      fixture.detectChanges();
+
+      expect(getLabel()!.querySelector('.ea-field-label__optional')).toBeNull();
+    });
+
     it('forwards placeholder to the textarea', () => {
       fixture.componentRef.setInput('placeholder', 'Type here…');
       fixture.detectChanges();

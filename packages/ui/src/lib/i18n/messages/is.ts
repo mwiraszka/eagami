@@ -116,6 +116,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `Nánari upplýsingar: ${label}`,
+    optional: '(valfrjálst)',
   },
   fileUploader: {
     prompt: 'Smelltu eða dragðu skrár hingað til að hlaða upp',

@@ -12,12 +12,14 @@ export const RADIO_KNOBS: ComponentKnobs = {
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     disabled: { control: 'boolean' },
+    optional: { control: 'boolean' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
     label: 'Fruit',
     size: 'md',
     disabled: false,
+    optional: false,
     triggerError: false,
   },
 };

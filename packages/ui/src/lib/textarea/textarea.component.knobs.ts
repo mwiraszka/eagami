@@ -22,6 +22,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
     triggerError: { control: 'boolean', demoOnly: true },
@@ -38,6 +39,7 @@ export const TEXTAREA_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };
