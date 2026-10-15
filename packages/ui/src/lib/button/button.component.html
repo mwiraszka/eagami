@@ -8,8 +8,6 @@
   [attr.aria-labelledby]="ariaLabelledby() || null"
   [attr.aria-describedby]="ariaDescribedby() || null"
   [attr.aria-current]="ariaCurrent() || null"
-  [attr.aria-expanded]="ariaExpanded() ?? null"
-  [attr.aria-controls]="ariaControls() || null"
   [attr.aria-busy]="loading() || null"
   (click)="handleClick($event)">
   @if (loading()) {

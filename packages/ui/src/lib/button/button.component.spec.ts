@@ -114,6 +114,21 @@ describe('ButtonComponent', () => {
       fixture.detectChanges();
 
       expect(getButton().getAttribute('aria-expanded')).toBe('true');
+
+      fixture.componentRef.setInput('aria-expanded', undefined);
+      fixture.componentRef.setInput('aria-controls', undefined);
+      fixture.detectChanges();
+
+      expect(getButton().hasAttribute('aria-expanded')).toBe(false);
+      expect(getButton().hasAttribute('aria-controls')).toBe(false);
+    });
+
+    it('leaves aria-expanded alone when not given, so a trigger directive can own it', () => {
+      getButton().setAttribute('aria-expanded', 'true');
+      fixture.componentRef.setInput('variant', 'secondary');
+      fixture.detectChanges();
+
+      expect(getButton().getAttribute('aria-expanded')).toBe('true');
     });
 
     it('focus() moves focus to the native button', () => {
