@@ -43,6 +43,39 @@ ea-pie-chart {
     }
   }
 
+  &__total {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: var(--line-height-tight);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  &__total-value,
+  &__total-label {
+    overflow: hidden;
+    max-width: var(--ea-pie-chart-hole);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__total-value {
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__total-label {
+    font-size: 0.875em;
+    color: var(--color-text-secondary);
+  }
+
   &__tooltip {
     @include chart.chart-tooltip;
   }
@@ -104,6 +137,15 @@ ea-pie-chart {
   &--animate-fade .ea-pie-chart__svg {
     animation-name: ea-chart-fade;
     @include chart.chart-motion;
+  }
+
+  &--animate-sweep,
+  &--animate-grow,
+  &--animate-fade {
+    .ea-pie-chart__total {
+      animation-name: ea-chart-fade;
+      @include chart.chart-motion;
+    }
   }
 }
 

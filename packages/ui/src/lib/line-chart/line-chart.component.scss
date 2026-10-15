@@ -57,6 +57,14 @@ ea-line-chart {
     pointer-events: none;
   }
 
+  &__reference-line {
+    @include chart.chart-reference-line;
+  }
+
+  &__reference-label {
+    @include chart.chart-reference-label;
+  }
+
   &__series {
     pointer-events: none;
     transition: opacity var(--duration-fast) var(--ease-out);

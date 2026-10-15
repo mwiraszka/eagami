@@ -16,6 +16,7 @@ import {
   CHART_LABEL_ANGLES,
   type ChartLabelOrientation,
   type ChartPointEvent,
+  type ChartReferenceLine,
   type ChartSeries,
   type ChartSize,
   axisBreak,
@@ -28,6 +29,7 @@ import {
   labelLine,
   labelRoom,
   niceScale,
+  plottableReferenceLines,
   tickLength,
 } from '../chart/chart';
 import { EagamiI18nService } from '../i18n/i18n.service';
@@ -141,6 +143,11 @@ export class BarChartComponent {
    * zero, when every value is positive, and marks the cut with a break symbol.
    */
   readonly showAxisBreak = input<boolean>(false);
+  /**
+   * Dashed rules across the plot at set values, such as a target or an
+   * average. The value axis widens to take them in.
+   */
+  readonly referenceLines = input<readonly ChartReferenceLine[]>([]);
   /** Height of the plot in pixels; the width fills the container. */
   readonly height = input<number>(240);
   /** Visual size; scales the axis, legend, and tooltip text and the bar thickness cap. */
@@ -173,6 +180,10 @@ export class BarChartComponent {
 
   protected readonly hasData = computed(() =>
     this.series().some(s => s.data.some(v => v != null && isFinite(v))),
+  );
+
+  protected readonly references = computed(() =>
+    plottableReferenceLines(this.referenceLines()),
   );
 
   // A fresh object whenever the data or animation changes re-creates the plot,
@@ -240,8 +251,15 @@ export class BarChartComponent {
         }
       }
     }
+    const references = this.references();
+    for (const { value } of references) {
+      hi = Math.max(hi, value);
+      lo = Math.min(lo, value);
+    }
+    // The lowest mark a broken axis must keep clear of its break: a bar's top or a reference line
+    const lowestMark = Math.min(lowestTop, ...references.map(line => line.value));
     const breakable = vertical && this.showAxisBreak() && lo >= 0 && isFinite(lowestTop);
-    const scaleLo = breakable ? lowestTop : lo;
+    const scaleLo = breakable ? lowestMark : lo;
 
     const labelTexts = Array.from({ length: count }, (_, i) => this.labels()[i] ?? '');
     const valueRoom = this.showValues() ? axisPx * 1.5 : 0;
@@ -308,7 +326,7 @@ export class BarChartComponent {
       const px = (value: number) => (value / (max - min || 1)) * plotHeight;
       for (
         let steps = 0;
-        steps < 6 && min > 0 && px(lowestTop - min) < clearance;
+        steps < 6 && min > 0 && px(lowestMark - min) < clearance;
         steps++
       ) {
         min = Number((min - step).toPrecision(12));
@@ -456,6 +474,32 @@ export class BarChartComponent {
       .filter(value => value >= min)
       .map(value => ({ value, text: format(value), pos: valuePos(value) }))
       .filter(tick => breakY == null || tick.pos < breakY - axisPx);
+    const referenceLines = references
+      .map((line, key) => ({ ...line, key, pos: valuePos(line.value) }))
+      .filter(line => line.value >= min && line.value <= max)
+      .map(line => {
+        if (vertical) {
+          // Above the line, unless that would run it off the top of the plot
+          const above = line.pos - axisPx * 1.4 >= top;
+          return {
+            ...line,
+            labelX: left + plotWidth,
+            labelY: above ? line.pos - axisPx * 0.4 - 2 : line.pos + axisPx * 1.2,
+            anchor: 'end' as const,
+          };
+        }
+        // Beside the line's top end, on whichever side has room for the label
+        const fits =
+          line.pos + axisPx * 0.4 + estimateTextWidth(line.label ?? '', axisPx) <=
+          left + plotWidth;
+        return {
+          ...line,
+          labelX: fits ? line.pos + axisPx * 0.4 : line.pos - axisPx * 0.4,
+          labelY: top + axisPx,
+          anchor: fits ? ('start' as const) : ('end' as const),
+        };
+      });
+
     const widestRoom = Math.max(0, ...categoryText.map(t => labelRoom(t, angle, axisPx)));
     const labelStep = vertical ? Math.max(1, Math.ceil(widestRoom / band)) : 1;
     const categories = categoryText
@@ -480,6 +524,7 @@ export class BarChartComponent {
       categories,
       bars,
       valueLabels,
+      referenceLines,
       valuePos,
       axisY,
       tickEndY: axisY + tickLength(axisPx),
@@ -543,6 +588,12 @@ export class BarChartComponent {
   protected isDimmed(bar: PlotBar): boolean {
     const active = this.active();
     return !!active && (active.series !== bar.series || active.index !== bar.index);
+  }
+
+  protected referenceText(line: ChartReferenceLine): string {
+    return this.i18n
+      .messages()
+      .chart.referenceLine(line.label ?? '', this.tableValue(line.value));
   }
 
   protected tableValue(value: number | null | undefined): string {

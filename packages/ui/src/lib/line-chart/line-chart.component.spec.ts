@@ -616,6 +616,96 @@ describe('LineChartComponent', () => {
     });
   });
 
+  describe('Reference lines', () => {
+    function tickY(text: string): string | null {
+      return (
+        queryAll('.ea-line-chart__axis--y')
+          .find(t => t.textContent!.trim() === text)
+          ?.getAttribute('y') ?? null
+      );
+    }
+
+    function tickValues(): number[] {
+      return queryAll('.ea-line-chart__axis--y').map(t => Number(t.textContent!.trim()));
+    }
+
+    function setLines(lines: unknown): void {
+      fixture.componentRef.setInput('referenceLines', lines);
+      fixture.detectChanges();
+    }
+
+    it('rules a dashed line across the plot at its value, with its label', () => {
+      setLines([{ value: 25, label: 'Target' }]);
+
+      const line = query('.ea-line-chart__reference-line')!;
+      const hit = query('.ea-line-chart__hit')!;
+      expect(line.getAttribute('y1')).toBe(tickY('25'));
+      expect(line.getAttribute('y2')).toBe(tickY('25'));
+      expect(line.getAttribute('x1')).toBe(hit.getAttribute('x'));
+      expect(Number(line.getAttribute('x2'))).toBe(
+        Number(hit.getAttribute('x')) + Number(hit.getAttribute('width')),
+      );
+      expect(query('.ea-line-chart__reference-label')!.textContent!.trim()).toBe(
+        'Target',
+      );
+    });
+
+    it('draws no label for a line without one', () => {
+      setLines([{ value: 25 }]);
+
+      expect(query('.ea-line-chart__reference-line')).toBeTruthy();
+      expect(query('.ea-line-chart__reference-label')).toBeNull();
+    });
+
+    it('widens the y-axis to take in a line beyond the data', () => {
+      setLines([{ value: 50, label: 'Goal' }]);
+
+      expect(Math.max(...tickValues())).toBeGreaterThanOrEqual(50);
+    });
+
+    it('leaves out a line that explicit bounds cut off', () => {
+      fixture.componentRef.setInput('yMax', 30);
+      setLines([{ value: 50 }, { value: Number.NaN }]);
+
+      expect(query('.ea-line-chart__reference-line')).toBeNull();
+    });
+
+    it('sets a label beneath a line at the top of the plot', () => {
+      fixture.componentRef.setInput('yMax', 30);
+      setLines([{ value: 30, label: 'Cap' }]);
+
+      const lineY = Number(query('.ea-line-chart__reference-line')!.getAttribute('y1'));
+      const labelY = Number(query('.ea-line-chart__reference-label')!.getAttribute('y'));
+      expect(labelY).toBeGreaterThan(lineY);
+    });
+
+    it('colors a line from its color', () => {
+      setLines([{ value: 25, color: 'tomato' }]);
+
+      expect(
+        (query('.ea-line-chart__reference') as SVGElement).style.getPropertyValue(
+          '--ea-chart-reference-color',
+        ),
+      ).toBe('tomato');
+    });
+
+    it('reads the lines out with the data', () => {
+      setLines([{ value: 25, label: 'Target' }, { value: 12 }]);
+
+      const items = queryAll('.ea-line-chart__table li').map(li =>
+        li.textContent!.trim(),
+      );
+      expect(items).toEqual(['Reference line, Target: 25', 'Reference line: 12']);
+    });
+
+    it('labels no scale for a line on an empty chart', () => {
+      fixture.componentRef.setInput('series', []);
+      setLines([{ value: 50 }]);
+
+      expect(queryAll('.ea-line-chart__axis--y')).toHaveLength(0);
+    });
+  });
+
   describe('Keyboard edges', () => {
     it('wraps between series with ArrowUp', () => {
       press('ArrowRight');

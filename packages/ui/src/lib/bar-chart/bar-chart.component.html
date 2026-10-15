@@ -135,6 +135,36 @@
               [attr.y1]="layout().top"
               [attr.y2]="layout().top + layout().plotHeight" />
           }
+          @for (line of layout().referenceLines; track line.key) {
+            <g
+              class="ea-bar-chart__reference"
+              [style.--ea-chart-reference-color]="line.color">
+              @if (layout().vertical) {
+                <line
+                  class="ea-bar-chart__reference-line"
+                  [attr.x1]="layout().left"
+                  [attr.x2]="layout().left + layout().plotWidth"
+                  [attr.y1]="line.pos"
+                  [attr.y2]="line.pos" />
+              } @else {
+                <line
+                  class="ea-bar-chart__reference-line"
+                  [attr.x1]="line.pos"
+                  [attr.x2]="line.pos"
+                  [attr.y1]="layout().top"
+                  [attr.y2]="layout().top + layout().plotHeight" />
+              }
+              @if (line.label) {
+                <text
+                  class="ea-bar-chart__reference-label"
+                  [attr.text-anchor]="line.anchor"
+                  [attr.x]="line.labelX"
+                  [attr.y]="line.labelY">
+                  {{ line.label }}
+                </text>
+              }
+            </g>
+          }
           @for (valueLabel of layout().valueLabels; track valueLabel.key) {
             <text
               class="ea-bar-chart__value"
@@ -202,6 +232,13 @@
             }
           </tbody>
         </table>
+        @if (references().length) {
+          <ul>
+            @for (line of references(); track $index) {
+              <li>{{ referenceText(line) }}</li>
+            }
+          </ul>
+        }
       </div>
     </div>
     <div

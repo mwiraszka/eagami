@@ -39,6 +39,12 @@ const messages: EagamiMessages = {
     noData: 'Aucune donnée',
     point: (series, label, value) => `${series}, ${label} : ${value}`,
     slice: (label, value, percent) => `${label} : ${value}, ${percent}`,
+    total: 'Total',
+    trend: 'Tendance',
+    trendSummary: (first, last, low, high) =>
+      `De ${first} à ${last}, minimum ${low}, maximum ${high}`,
+    referenceLine: (label, value) =>
+      label ? `Ligne de référence, ${label} : ${value}` : `Ligne de référence : ${value}`,
   },
   codeInput: {
     groupLabel: length => `Code de vérification, ${length} chiffres`,

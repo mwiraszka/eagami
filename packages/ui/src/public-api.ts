@@ -15,8 +15,10 @@ export * from './lib/button/button.component';
 export * from './lib/button/button-link.component';
 export * from './lib/card/card.component';
 export type {
+  ChartCurve,
   ChartLabelOrientation,
   ChartPointEvent,
+  ChartReferenceLine,
   ChartSeries,
   ChartSize,
 } from './lib/chart/chart';
@@ -65,6 +67,7 @@ export * from './lib/select-option';
 export { isGrouped } from './lib/select-option-list';
 export * from './lib/skeleton/skeleton.component';
 export * from './lib/slider/slider.component';
+export * from './lib/sparkline/sparkline.component';
 export * from './lib/spinner/spinner.component';
 export * from './lib/stepper/step.component';
 export * from './lib/stepper/stepper.component';

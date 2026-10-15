@@ -33,6 +33,15 @@ export const Stacked: Story = { args: { stacked: true, showValues: true } };
 
 export const Horizontal: Story = { args: { orientation: 'horizontal' } };
 
+export const ReferenceLines: Story = {
+  args: {
+    referenceLines: [
+      { value: 60, label: 'Target' },
+      { value: 37, label: 'Average', color: 'var(--color-chart-4)' },
+    ],
+  },
+};
+
 export const NegativeValues: Story = {
   render: args => ({
     props: {

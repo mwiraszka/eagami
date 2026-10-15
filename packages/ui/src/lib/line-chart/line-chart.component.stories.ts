@@ -43,6 +43,15 @@ type Story = StoryObj<LineChartComponent>;
 
 export const Playground: Story = {};
 
+export const ReferenceLines: Story = {
+  args: {
+    referenceLines: [
+      { value: 75, label: 'Target' },
+      { value: 62, label: 'Average', color: 'var(--color-chart-3)' },
+    ],
+  },
+};
+
 export const WithGaps: Story = {
   render: args => ({
     props: {

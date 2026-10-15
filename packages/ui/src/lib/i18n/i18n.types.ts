@@ -120,6 +120,14 @@ export interface EagamiMessages {
     point: (series: string, label: string, value: string) => string;
     /** Announces the highlighted slice of a pie chart. */
     slice: (label: string, value: string, percent: string) => string;
+    /** Caption beneath the total in a donut's hole. */
+    total: string;
+    /** Default accessible name of a sparkline. */
+    trend: string;
+    /** Describes a sparkline by its first, last, lowest, and highest values. */
+    trendSummary: (first: string, last: string, low: string, high: string) => string;
+    /** Reads out a reference line; `label` is empty when the line has none. */
+    referenceLine: (label: string, value: string) => string;
   };
   codeInput: {
     groupLabel: (length: number) => string;

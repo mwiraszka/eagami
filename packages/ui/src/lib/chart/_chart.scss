@@ -67,6 +67,26 @@
   shape-rendering: crispEdges;
 }
 
+@mixin chart-reference-line {
+  stroke: var(--ea-chart-reference-color, var(--color-text-secondary));
+  stroke-width: 1px;
+  stroke-dasharray: 4 3;
+  shape-rendering: crispEdges;
+  pointer-events: none;
+}
+
+// Haloed in the surface color, so a label stays legible where it crosses a line or bar
+@mixin chart-reference-label {
+  @include chart-axis;
+  font-weight: var(--font-weight-medium);
+  stroke: var(--ea-chart-surface, var(--color-bg-base));
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  fill: var(--ea-chart-reference-color, var(--color-text-secondary));
+  pointer-events: none;
+  paint-order: stroke;
+}
+
 // Content laid out inside the shared `ea-tooltip` bubble, which supplies the
 // surface, type, and placement
 @mixin chart-tooltip {

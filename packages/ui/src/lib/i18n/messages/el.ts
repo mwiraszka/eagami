@@ -39,6 +39,12 @@ const messages: EagamiMessages = {
     noData: 'Δεν υπάρχουν δεδομένα',
     point: (series, label, value) => `${series}, ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+    total: 'Σύνολο',
+    trend: 'Τάση',
+    trendSummary: (first, last, low, high) =>
+      `Από ${first} σε ${last}, ελάχιστο ${low}, μέγιστο ${high}`,
+    referenceLine: (label, value) =>
+      label ? `Γραμμή αναφοράς, ${label}: ${value}` : `Γραμμή αναφοράς: ${value}`,
   },
   codeInput: {
     groupLabel: length => `Κωδικός επαλήθευσης, ${length} ψηφία`,

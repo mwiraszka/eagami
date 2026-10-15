@@ -36,6 +36,18 @@ export interface ChartPointEvent {
   value: number;
 }
 
+/** A dashed rule across a line or bar chart's plot at a value, such as a target or an average. */
+export interface ChartReferenceLine {
+  value: number;
+  /** Text printed at the line's end and read out with the chart's data. */
+  label?: string;
+  /** Any CSS color; defaults to the strong border color. */
+  color?: string;
+}
+
+/** How a line bends between points. */
+export type ChartCurve = 'linear' | 'smooth' | 'step';
+
 /** Number of categorical colors in the `--color-chart-*` palette. */
 export const CHART_COLOR_COUNT = 8;
 
@@ -98,12 +110,102 @@ export function niceScale(
   return { min: niceMin, max: niceMax, ticks };
 }
 
+/** A plotted point in pixels. */
+export interface CurvePoint {
+  x: number;
+  y: number;
+}
+
+function linearPath(points: CurvePoint[]): string {
+  return points.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join('');
+}
+
+// Steps at the midpoint between neighbours, so each value owns the span around it
+function stepPath(points: CurvePoint[]): string {
+  let d = `M${points[0].x},${points[0].y}`;
+  for (let i = 1; i < points.length; i++) {
+    const mid = (points[i - 1].x + points[i].x) / 2;
+    d += `H${mid}V${points[i].y}H${points[i].x}`;
+  }
+  return d;
+}
+
+// Points sharing an x position have no slope between them, so the curve runs
+// smoothly up to each such pair and joins it with a straight segment
+function smoothPath(points: CurvePoint[]): string {
+  let d = '';
+  let start = 0;
+  for (let i = 1; i <= points.length; i++) {
+    if (i === points.length || points[i].x === points[i - 1].x) {
+      const run = monotonePath(points.slice(start, i));
+      d += start === 0 ? run : `L${run.slice(1)}`;
+      start = i;
+    }
+  }
+  return d;
+}
+
+// Monotone cubic interpolation (Fritsch-Carlson): smooth, but never overshoots
+// a data point, so a curve cannot suggest a value the data never reached
+function monotonePath(points: CurvePoint[]): string {
+  const n = points.length;
+  if (n < 3) {
+    return linearPath(points);
+  }
+  const slopes: number[] = [];
+  for (let i = 0; i < n - 1; i++) {
+    slopes.push((points[i + 1].y - points[i].y) / (points[i + 1].x - points[i].x));
+  }
+  const tangents = [slopes[0]];
+  for (let i = 1; i < n - 1; i++) {
+    tangents.push(slopes[i - 1] * slopes[i] <= 0 ? 0 : (slopes[i - 1] + slopes[i]) / 2);
+  }
+  tangents.push(slopes[n - 2]);
+  for (let i = 0; i < n - 1; i++) {
+    if (slopes[i] === 0) {
+      tangents[i] = 0;
+      tangents[i + 1] = 0;
+      continue;
+    }
+    const a = tangents[i] / slopes[i];
+    const b = tangents[i + 1] / slopes[i];
+    const s = a * a + b * b;
+    if (s > 9) {
+      const k = 3 / Math.sqrt(s);
+      tangents[i] = k * a * slopes[i];
+      tangents[i + 1] = k * b * slopes[i];
+    }
+  }
+  let d = `M${points[0].x},${points[0].y}`;
+  for (let i = 0; i < n - 1; i++) {
+    const p = points[i];
+    const q = points[i + 1];
+    const third = (q.x - p.x) / 3;
+    d += `C${p.x + third},${p.y + tangents[i] * third},${q.x - third},${q.y - tangents[i + 1] * third},${q.x},${q.y}`;
+  }
+  return d;
+}
+
+/** SVG path data tracing a run of points with each curve. */
+export const CHART_CURVES: Record<ChartCurve, (points: CurvePoint[]) => string> = {
+  linear: linearPath,
+  smooth: smoothPath,
+  step: stepPath,
+};
+
+/** Reference lines with a finite value, the only ones a chart can place. */
+export function plottableReferenceLines(
+  lines: readonly ChartReferenceLine[],
+): ChartReferenceLine[] {
+  return lines.filter(line => isFinite(line.value));
+}
+
 /** Rough rendered width of `text` in px, for reserving axis room without a layout pass. */
 export function estimateTextWidth(text: string, fontPx: number): number {
   return text.length * fontPx * 0.6;
 }
 
-/** Live size of a chart's host, re-measured on resize and whenever `size` changes. */
+/** Live size of a chart's host, re-measured on resize and whenever `remeasureOn` changes. */
 export interface ChartViewport {
   width: Signal<number>;
   fontSize: Signal<number>;
@@ -113,7 +215,7 @@ export interface ChartViewport {
  * Measures the host's width and font-size so the chart can lay out its SVG in
  * real pixels, keeping text and stroke widths crisp at every width.
  */
-export function injectChartViewport(size: Signal<ChartSize>): ChartViewport {
+export function injectChartViewport(remeasureOn: Signal<unknown>): ChartViewport {
   const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   const destroyRef = inject(DestroyRef);
   const width = signal(480);
@@ -137,7 +239,7 @@ export function injectChartViewport(size: Signal<ChartSize>): ChartViewport {
     }
   });
   afterRenderEffect(() => {
-    size();
+    remeasureOn();
     measure();
   });
 

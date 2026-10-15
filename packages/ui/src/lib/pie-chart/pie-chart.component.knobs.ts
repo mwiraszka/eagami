@@ -30,6 +30,8 @@ export const PIE_CHART_KNOBS: ComponentKnobs = {
     height: { control: 'number', unit: 'px', min: 120, max: 600, step: 20, maxLength: 3 },
     showLegend: { control: 'boolean' },
     showPercentages: { control: 'boolean', if: { arg: 'showLegend', eq: true } },
+    showTotal: { control: 'boolean', if: { arg: 'variant', eq: 'donut' } },
+    totalLabel: { control: 'text', if: { arg: 'showTotal', eq: true } },
   },
   args: {
     variant: 'pie',
@@ -39,5 +41,7 @@ export const PIE_CHART_KNOBS: ComponentKnobs = {
     height: 240,
     showLegend: true,
     showPercentages: true,
+    showTotal: true,
+    totalLabel: '',
   },
 };

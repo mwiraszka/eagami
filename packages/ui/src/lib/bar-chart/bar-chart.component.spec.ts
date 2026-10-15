@@ -537,6 +537,93 @@ describe('BarChartComponent', () => {
     });
   });
 
+  describe('Reference lines', () => {
+    function valueTicks(): number[] {
+      return queryAll('.ea-bar-chart__axis[text-anchor="end"]').map(t =>
+        Number(t.textContent!.trim()),
+      );
+    }
+
+    function setLines(lines: unknown): void {
+      fixture.componentRef.setInput('referenceLines', lines);
+      fixture.detectChanges();
+    }
+
+    it('rules a dashed line across the plot at its value, with its label', () => {
+      setLines([{ value: 45, label: 'Target' }]);
+
+      const line = query('.ea-bar-chart__reference-line')!;
+      expect(line.getAttribute('y1')).toBe(line.getAttribute('y2'));
+      expect(Number(line.getAttribute('x2'))).toBeGreaterThan(
+        Number(line.getAttribute('x1')),
+      );
+      expect(query('.ea-bar-chart__reference-label')!.textContent!.trim()).toBe('Target');
+    });
+
+    it('widens the value axis to take in a line beyond the bars', () => {
+      setLines([{ value: 120 }]);
+
+      expect(Math.max(...valueTicks())).toBeGreaterThanOrEqual(120);
+    });
+
+    it('runs the line up a horizontal chart', () => {
+      fixture.componentRef.setInput('orientation', 'horizontal');
+      setLines([{ value: 45, label: 'Target' }]);
+
+      const line = query('.ea-bar-chart__reference-line')!;
+      expect(line.getAttribute('x1')).toBe(line.getAttribute('x2'));
+      expect(query('.ea-bar-chart__reference-label')!.getAttribute('text-anchor')).toBe(
+        'start',
+      );
+    });
+
+    it('sets the label of a line near the far edge of a horizontal chart before it', () => {
+      fixture.componentRef.setInput('orientation', 'horizontal');
+      setLines([{ value: 60, label: 'A long target label' }]);
+
+      expect(query('.ea-bar-chart__reference-label')!.getAttribute('text-anchor')).toBe(
+        'end',
+      );
+    });
+
+    it('keeps a broken axis clear of a line below the shortest bar', () => {
+      fixture.componentRef.setInput('series', [{ name: 'High', data: [140, 150, 160] }]);
+      fixture.componentRef.setInput('showAxisBreak', true);
+      setLines([{ value: 100, label: 'Floor' }]);
+
+      const axisY = Number(query('.ea-bar-chart__baseline')!.getAttribute('y1'));
+      const lineY = Number(query('.ea-bar-chart__reference-line')!.getAttribute('y1'));
+      expect(query('.ea-bar-chart__axis-break')).toBeTruthy();
+      // Six axis font sizes at 12px
+      expect(axisY - lineY).toBeGreaterThanOrEqual(72);
+    });
+
+    it('skips a line without a finite value', () => {
+      setLines([{ value: Number.NaN }]);
+
+      expect(query('.ea-bar-chart__reference-line')).toBeNull();
+      expect(query('.ea-bar-chart__table li')).toBeNull();
+    });
+
+    it('colors a line from its color', () => {
+      setLines([{ value: 45, color: 'tomato' }]);
+
+      expect(
+        (query('.ea-bar-chart__reference') as SVGElement).style.getPropertyValue(
+          '--ea-chart-reference-color',
+        ),
+      ).toBe('tomato');
+    });
+
+    it('reads the lines out with the data', () => {
+      setLines([{ value: 45, label: 'Target' }]);
+
+      expect(query('.ea-bar-chart__table li')!.textContent!.trim()).toBe(
+        'Reference line, Target: 45',
+      );
+    });
+  });
+
   describe('Category labels', () => {
     function categoryLabels(): Element[] {
       return queryAll('.ea-bar-chart__axis').filter(t =>
