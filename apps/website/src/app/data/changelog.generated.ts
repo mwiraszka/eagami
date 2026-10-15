@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.70.0',
+    date: '2026-10-15',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add an `optional` input to every labelled form component that follows the label with a muted, localized "(optional)" note, unless `required` is also set.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.69.0',
     date: '2026-10-15',
     sections: [

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.70.0] - 2026-10-15
+
+### Added
+
+- Add an `optional` input to every labelled form component that follows the label with a muted, localized "(optional)" note, unless `required` is also set.
+
 ## [5.69.0] - 2026-10-15
 
 ### Added
@@ -1945,6 +1951,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.70.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.69.0...ui-v5.70.0
 [5.69.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.68.0...ui-v5.69.0
 [5.68.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.67.0...ui-v5.68.0
 [5.67.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.66.0...ui-v5.67.0
