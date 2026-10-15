@@ -33,7 +33,12 @@ export interface PlaygroundKnob {
 
 /** Whether a conditional knob is currently active given the live state. */
 export function isKnobEnabled(knob: PlaygroundKnob, state: KnobState): boolean {
-  return !knob.condition || state[knob.condition.arg] === knob.condition.eq;
+  const { condition } = knob;
+  if (!condition) {
+    return true;
+  }
+  const value = state[condition.arg];
+  return 'eq' in condition ? value === condition.eq : value !== condition.neq;
 }
 
 /** `showPasswordToggle` -> `Show password toggle`; the playground's fallback label. */

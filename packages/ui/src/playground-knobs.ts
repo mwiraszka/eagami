@@ -37,6 +37,7 @@ import { RATING_KNOBS } from './lib/rating/rating.component.knobs';
 import { SEGMENTED_KNOBS } from './lib/segmented/segmented.component.knobs';
 import { SKELETON_KNOBS } from './lib/skeleton/skeleton.component.knobs';
 import { SLIDER_KNOBS } from './lib/slider/slider.component.knobs';
+import { SPARKLINE_KNOBS } from './lib/sparkline/sparkline.component.knobs';
 import { SPINNER_KNOBS } from './lib/spinner/spinner.component.knobs';
 import { STEPPER_KNOBS } from './lib/stepper/stepper.component.knobs';
 import { SWITCH_KNOBS } from './lib/switch/switch.component.knobs';
@@ -105,6 +106,7 @@ export const PLAYGROUND_KNOBS = {
   segmented: SEGMENTED_KNOBS,
   skeleton: SKELETON_KNOBS,
   slider: SLIDER_KNOBS,
+  sparkline: SPARKLINE_KNOBS,
   spinner: SPINNER_KNOBS,
   stepper: STEPPER_KNOBS,
   switch: SWITCH_KNOBS,

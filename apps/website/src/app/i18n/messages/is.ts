@@ -1156,6 +1156,9 @@ export const is: WebMessages = {
           quarters: ['F1', 'F2', 'F3', 'F4'],
           categories: 'Flokkar',
           category: 'Flokkur',
+          referenceLines: 'Viðmiðunarlínur',
+          target: 'Markmið',
+          value: 'Gildi',
         },
         lineChart: {
           visitors: 'Gestir',
@@ -1166,6 +1169,8 @@ export const is: WebMessages = {
           xPosition: 'X-staðsetning',
           value: 'Gildi',
           tooltipTitle: 'Titill ábendingar',
+          referenceLines: 'Viðmiðunarlínur',
+          average: 'Meðaltal',
         },
         pieChart: {
           desktop: 'Borðtölva',
@@ -1175,6 +1180,10 @@ export const is: WebMessages = {
           slices: 'Sneiðar',
           slice: 'Sneið',
           value: 'Gildi',
+        },
+        sparkline: {
+          values: 'Gildi',
+          valuesHint: 'Tölur aðskildar með kommum',
         },
       },
       playground: {
@@ -1239,6 +1248,19 @@ export const is: WebMessages = {
             height: 'Hæð',
             showLegend: 'Sýna skýringar',
             showPercentages: 'Sýna prósentur',
+            showTotal: 'Sýna samtölu',
+            totalLabel: 'Merking samtölu',
+          },
+          sparkline: {
+            variant: 'Afbrigði',
+            curve: 'Ferill',
+            markers: 'Merki',
+            startAtZero: 'Byrja í núlli',
+            showTooltip: 'Sýna ábendingu',
+            animation: 'Hreyfimynd',
+            animationDuration: 'Lengd hreyfimyndar',
+            height: 'Hæð',
+            color: 'Litur',
           },
           timeline: { orientation: 'Stefna', align: 'Jöfnun', size: 'Stærð' },
           'toggle-chip': {
@@ -1525,6 +1547,8 @@ export const is: WebMessages = {
               'Í lóðréttu riti þar sem öll gildi eru jákvæð byrjar gildisásinn nálægt stysta súlunni í stað núlls og merkir rofið með roftákni.',
             xLabelOrientation:
               'Hvernig flokkamerki undir lóðréttu riti liggja: lárétt, í 45 gráðum, í 90 gráðum eða sjálfvirkt, sem snýr þeim 45 og svo 90 gráður þegar þrengist.',
+            referenceLines:
+              'Strikalínur þvert yfir teiknisvæðið við ákveðin gildi, svo sem markmið eða meðaltal, hver með valfrjálsri merkingu og lit; gildisásinn víkkar til að ná yfir þær.',
           },
           'line-chart': {
             labels:
@@ -1563,6 +1587,8 @@ export const is: WebMessages = {
               'Kviknar þegar auðkenndi punkturinn breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
             visibleRangeChange:
               'Sendir upphaf og enda sýnilega x-bilsins í hvert sinn sem gluggarit er fært til. Kemur líka af stað þegar glugginn er aðdreginn.',
+            referenceLines:
+              'Strikalínur þvert yfir teiknisvæðið við ákveðin gildi, svo sem markmið eða meðaltal, hver með valfrjálsri merkingu og lit; y-ásinn víkkar til að ná yfir þær nema yMin eða yMax skeri þær af.',
           },
           'pie-chart': {
             data: 'Sneiðarnar sem teiknaðar eru réttsælis frá klukkan tólf, hver með merki, gildi og valfrjálsum lit.',
@@ -1582,6 +1608,28 @@ export const is: WebMessages = {
               'Kviknar þegar smellt er á sneið eða hún valin með Enter eða bilslá.',
             activeSliceChange:
               'Kviknar þegar auðkennda sneiðin breytist með bendli eða lyklaborði, með null þegar auðkenning er hreinsuð.',
+            showTotal: 'Sýnir samtölu allra sneiða í miðju hringsins.',
+            totalLabel:
+              'Skýringartexti undir samtölu hringsins; sjálfgefið staðfært „Samtals“.',
+          },
+          sparkline: {
+            data: 'Gildin sem á að teikna, elstu fyrst; null skilur eftir bil.',
+            variant: 'Teiknar gildin sem línu, línu yfir fylltum fleti eða súlur.',
+            curve:
+              'Hvernig lína eða flötur sveigist milli gilda: bein, mjúk eða í þrepum.',
+            markers:
+              'Gildi sem eru dregin fram: það nýjasta, það nýjasta ásamt því hæsta og lægsta, öll gildi, eða ekkert. Lína eða flötur merkir þau með punkti; á súlum dofna hinar súlurnar.',
+            color: 'Hvaða CSS-litur sem er; sjálfgefið fyrsti litur litaspjalds ritanna.',
+            startAtZero:
+              'Lætur kvarða línu eða flatar byrja í núlli, svo hæðin sýni raunverulega stærð hvers gildis frekar en nærmynd af sveiflum þeirra. Súlur byrja alltaf í núlli.',
+            showTooltip:
+              'Sýnir gildið undir bendlinum í ábendingu, þegar bendillinn svífur yfir eða á meðan fingur rennur eftir því.',
+            height: 'Hæð í pixlum; breiddin fyllir ílátið.',
+            animation:
+              'Innkomuhreyfing sem spilast aftur í hvert sinn sem gögnin breytast: teikna línuna eða láta súlurnar vaxa, birtast smám saman, eða engin.',
+            animationDuration: 'Lengd innkomuhreyfingarinnar í millisekúndum.',
+            formatValue:
+              'Sníður gildin í ábendingunni og þau sem hjálpartækni les upp; sjálfgefið flokkuð eftir virku tungumáli.',
           },
           timeline: {
             items: 'Atburðirnir sem á að birta, í röð.',

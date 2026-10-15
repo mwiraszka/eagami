@@ -38,6 +38,12 @@ const messages: EagamiMessages = {
     noData: 'אין נתונים',
     point: (series, label, value) => `${series}, ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+    total: 'סה״כ',
+    trend: 'מגמה',
+    trendSummary: (first, last, low, high) =>
+      `מ־${first} ל־${last}, מינימום ${low}, מקסימום ${high}`,
+    referenceLine: (label, value) =>
+      label ? `קו ייחוס, ${label}: ${value}` : `קו ייחוס: ${value}`,
   },
   codeInput: {
     groupLabel: length => `קוד אימות, ${length} ספרות`,

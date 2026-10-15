@@ -1,0 +1,77 @@
+<div
+  class="ea-sparkline"
+  role="img"
+  [ngClass]="hostClasses()"
+  [attr.aria-label]="label()"
+  [attr.aria-describedby]="summaryId"
+  [style.height.px]="height()"
+  [style.--ea-chart-color]="stroke()"
+  [style.--ea-chart-duration]="animationDuration() + 'ms'">
+  @if (hasData()) {
+    @for (pass of renderPass(); track pass) {
+      <svg
+        class="ea-sparkline__svg"
+        aria-hidden="true"
+        [attr.width]="layout().width"
+        [attr.height]="layout().height"
+        [attr.viewBox]="'0 0 ' + layout().width + ' ' + layout().height"
+        [style.--ea-sparkline-baseline]="layout().baseline + 'px'"
+        (pointermove)="onPointer($event)"
+        (pointerdown)="onPointer($event)"
+        (pointerup)="onPointerUp($event)"
+        (pointerleave)="clear()"
+        (pointercancel)="clear()">
+        @for (area of layout().areas; track $index) {
+          <path
+            class="ea-sparkline__area"
+            [attr.d]="area" />
+        }
+        @for (path of layout().paths; track $index) {
+          <path
+            class="ea-sparkline__line"
+            pathLength="1"
+            [attr.d]="path" />
+        }
+        @for (bar of layout().bars; track bar.index) {
+          <rect
+            class="ea-sparkline__bar"
+            [class.ea-sparkline__bar--dimmed]="isDimmed(bar)"
+            [attr.x]="bar.x"
+            [attr.y]="bar.y"
+            [attr.width]="bar.width"
+            [attr.height]="bar.height" />
+        }
+        @for (marker of layout().markers; track $index) {
+          <circle
+            class="ea-sparkline__marker"
+            [attr.cx]="marker.x"
+            [attr.cy]="marker.y"
+            [attr.r]="marker.r" />
+        }
+        @if (variant() !== 'bar' && activePosition(); as position) {
+          <circle
+            class="ea-sparkline__marker ea-sparkline__marker--active"
+            [attr.cx]="position.x"
+            [attr.cy]="position.y"
+            [attr.r]="activeRadius" />
+        }
+        @for (tip of tooltips(); track tip.key) {
+          <rect
+            class="ea-sparkline__anchor"
+            width="2"
+            height="2"
+            [attr.x]="tip.x - 1"
+            [attr.y]="tip.y - 1"
+            [eaTooltip]="tip.text"
+            [tooltipOpen]="true"
+            [maxWidth]="undefined" />
+        }
+      </svg>
+    }
+  }
+  <span
+    hidden
+    [id]="summaryId">
+    {{ summary() }}
+  </span>
+</div>

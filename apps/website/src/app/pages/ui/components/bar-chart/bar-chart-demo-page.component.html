@@ -23,7 +23,8 @@
       [showGrid]="state().showGrid"
       [showLegend]="state().showLegend"
       [showAxisBreak]="state().showAxisBreak"
-      [xLabelOrientation]="state().xLabelOrientation" />
+      [xLabelOrientation]="state().xLabelOrientation"
+      [referenceLines]="referenceLines()" />
 
     <div
       customControls
@@ -61,6 +62,42 @@
         [eaTooltip]="messages().ui.component.common.addItem"
         [aria-label]="messages().ui.component.common.addItem"
         (clicked)="addCategory()">
+        <ea-icon-plus />
+      </ea-button>
+
+      <h3 class="demo-items-editor__heading">
+        {{ messages().ui.component.demos.barChart.referenceLines }}
+      </h3>
+      @for (line of referenceRows(); track line.id) {
+        <div class="demo-item-row">
+          <ea-input
+            [placeholder]="messages().ui.component.demos.barChart.value"
+            [value]="'' + line.value"
+            (valueChange)="
+              updateReferenceLine(line.id, { value: toNumber($event, line.value) })
+            " />
+          <ea-input
+            class="demo-item-row__grow"
+            [placeholder]="messages().ui.component.common.label"
+            [value]="line.label"
+            (valueChange)="updateReferenceLine(line.id, { label: $event })" />
+          <ea-button
+            variant="ghost"
+            size="sm"
+            [eaTooltip]="messages().ui.component.common.deleteItem"
+            [aria-label]="messages().ui.component.common.deleteItem"
+            (clicked)="removeReferenceLine(line.id)">
+            <ea-icon-trash class="demo-item-row__delete-icon" />
+          </ea-button>
+        </div>
+      }
+      <ea-button
+        class="demo-items-editor__add"
+        variant="secondary"
+        size="sm"
+        [eaTooltip]="messages().ui.component.common.addItem"
+        [aria-label]="messages().ui.component.common.addItem"
+        (clicked)="addReferenceLine()">
         <ea-icon-plus />
       </ea-button>
     </div>

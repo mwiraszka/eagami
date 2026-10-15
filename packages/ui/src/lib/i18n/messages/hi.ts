@@ -39,6 +39,12 @@ const messages: EagamiMessages = {
     noData: 'कोई डेटा नहीं',
     point: (series, label, value) => `${series}, ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+    total: 'कुल',
+    trend: 'रुझान',
+    trendSummary: (first, last, low, high) =>
+      `${first} से ${last} तक, न्यूनतम ${low}, अधिकतम ${high}`,
+    referenceLine: (label, value) =>
+      label ? `संदर्भ रेखा, ${label}: ${value}` : `संदर्भ रेखा: ${value}`,
   },
   codeInput: {
     groupLabel: length => `सत्यापन कोड, ${length} अंक`,

@@ -51,6 +51,14 @@ ea-bar-chart {
     stroke-linecap: round;
   }
 
+  &__reference-line {
+    @include chart.chart-reference-line;
+  }
+
+  &__reference-label {
+    @include chart.chart-reference-label;
+  }
+
   &__value {
     @include chart.chart-axis;
     font-variant-numeric: tabular-nums;

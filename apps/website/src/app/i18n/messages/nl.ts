@@ -1144,6 +1144,9 @@ export const nl: WebMessages = {
           quarters: ['K1', 'K2', 'K3', 'K4'],
           categories: 'Categorieën',
           category: 'Categorie',
+          referenceLines: 'Referentielijnen',
+          target: 'Doel',
+          value: 'Waarde',
         },
         lineChart: {
           visitors: 'Bezoekers',
@@ -1154,6 +1157,8 @@ export const nl: WebMessages = {
           xPosition: 'X-positie',
           value: 'Waarde',
           tooltipTitle: 'Tooltiptitel',
+          referenceLines: 'Referentielijnen',
+          average: 'Gemiddelde',
         },
         pieChart: {
           desktop: 'Desktop',
@@ -1163,6 +1168,10 @@ export const nl: WebMessages = {
           slices: 'Segmenten',
           slice: 'Segment',
           value: 'Waarde',
+        },
+        sparkline: {
+          values: 'Waarden',
+          valuesHint: 'Getallen gescheiden door komma’s',
         },
       },
       playground: {
@@ -1227,6 +1236,19 @@ export const nl: WebMessages = {
             height: 'Hoogte',
             showLegend: 'Legenda tonen',
             showPercentages: 'Percentages tonen',
+            showTotal: 'Totaal tonen',
+            totalLabel: 'Label van totaal',
+          },
+          sparkline: {
+            variant: 'Variant',
+            curve: 'Curve',
+            markers: 'Markeringen',
+            startAtZero: 'Bij nul beginnen',
+            showTooltip: 'Tooltip tonen',
+            animation: 'Animatie',
+            animationDuration: 'Animatieduur',
+            height: 'Hoogte',
+            color: 'Kleur',
           },
           timeline: { orientation: 'Oriëntatie', align: 'Uitlijning', size: 'Grootte' },
           'toggle-chip': {
@@ -1513,6 +1535,8 @@ export const nl: WebMessages = {
               'Laat in een verticale grafiek met alleen positieve waarden de waardeas bij de kortste staaf beginnen in plaats van bij nul en markeert de onderbreking met een teken.',
             xLabelOrientation:
               'Hoe de categorielabels onder een verticale grafiek staan: horizontaal, onder 45 graden, onder 90 graden of automatisch, dat ze 45 en daarna 90 graden draait als het krap wordt.',
+            referenceLines:
+              'Gestippelde lijnen dwars over het tekengebied bij vaste waarden, zoals een doel of een gemiddelde, elk met een optioneel label en een optionele kleur; de waardeas wordt breder om ze op te nemen.',
           },
           'line-chart': {
             labels:
@@ -1553,6 +1577,8 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer het gemarkeerde punt via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
             visibleRangeChange:
               'Wordt uitgezonden met het begin en einde van het zichtbare x-bereik wanneer een grafiek met venster verschuift. Wordt ook geactiveerd wanneer het venster wordt gezoomd.',
+            referenceLines:
+              'Gestippelde lijnen dwars over het tekengebied bij vaste waarden, zoals een doel of een gemiddelde, elk met een optioneel label en een optionele kleur; de y-as wordt breder om ze op te nemen, tenzij yMin of yMax ze afsnijdt.',
           },
           'pie-chart': {
             data: 'De segmenten die met de klok mee vanaf twaalf uur worden getekend, elk met een label, een waarde en een optionele kleur.',
@@ -1572,6 +1598,29 @@ export const nl: WebMessages = {
               'Wordt geactiveerd wanneer op een segment wordt geklikt, of wanneer dit met Enter of spatiebalk wordt gekozen.',
             activeSliceChange:
               'Wordt geactiveerd wanneer het gemarkeerde segment via aanwijzer of toetsenbord verandert, met null zodra de markering is gewist.',
+            showTotal: 'Toont het totaal van alle segmenten in het midden van een ring.',
+            totalLabel:
+              'Bijschrift onder het totaal van een ring; standaard een gelokaliseerd „Totaal”.',
+          },
+          sparkline: {
+            data: 'De waarden om te tekenen, oudste eerst; null laat een gat.',
+            variant:
+              'Tekent de waarden als een lijn, een lijn boven een gevuld vlak, of staven.',
+            curve:
+              'Hoe een lijn of vlak tussen waarden buigt: recht, vloeiend of in treden.',
+            markers:
+              'Uitgelichte waarden: de nieuwste, de nieuwste samen met de hoogste en laagste, alle waarden, of geen. Een lijn of vlak markeert ze met een stip; bij staven worden de overige gedimd.',
+            color: 'Elke CSS-kleur; standaard de eerste kleur van het grafiekpalet.',
+            startAtZero:
+              'Laat de schaal van een lijn of vlak bij nul beginnen, zodat de hoogte de werkelijke grootte van elke waarde toont in plaats van een close-up van hoe ze schommelen. Staven beginnen altijd bij nul.',
+            showTooltip:
+              'Toont de waarde onder de aanwijzer in een tooltip, bij aanwijzen of terwijl een vinger erlangs schuift.',
+            height: 'Hoogte in pixels; de breedte vult de container.',
+            animation:
+              'Intro-animatie, opnieuw afgespeeld zodra de gegevens veranderen: de lijn tekenen of de staven laten groeien, invloeien, of geen.',
+            animationDuration: 'Duur van de intro-animatie in milliseconden.',
+            formatValue:
+              'Maakt de waarden in de tooltip op, en die aan hulptechnologie worden voorgelezen; standaard gegroepeerd volgens de actieve taal.',
           },
           timeline: {
             items: 'De weer te geven gebeurtenissen, op volgorde.',

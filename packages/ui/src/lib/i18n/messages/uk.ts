@@ -39,6 +39,12 @@ const messages: EagamiMessages = {
     noData: 'Немає даних',
     point: (series, label, value) => `${series}, ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+    total: 'Разом',
+    trend: 'Динаміка',
+    trendSummary: (first, last, low, high) =>
+      `Від ${first} до ${last}, мінімум ${low}, максимум ${high}`,
+    referenceLine: (label, value) =>
+      label ? `Опорна лінія, ${label}: ${value}` : `Опорна лінія: ${value}`,
   },
   codeInput: {
     groupLabel: length => `Код підтвердження, ${length} цифр`,

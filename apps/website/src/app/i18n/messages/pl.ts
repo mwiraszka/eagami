@@ -1152,6 +1152,9 @@ export const pl: WebMessages = {
           quarters: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
           categories: 'Kategorie',
           category: 'Kategoria',
+          referenceLines: 'Linie odniesienia',
+          target: 'Cel',
+          value: 'Wartość',
         },
         lineChart: {
           visitors: 'Odwiedzający',
@@ -1162,6 +1165,8 @@ export const pl: WebMessages = {
           xPosition: 'Pozycja X',
           value: 'Wartość',
           tooltipTitle: 'Tytuł podpowiedzi',
+          referenceLines: 'Linie odniesienia',
+          average: 'Średnia',
         },
         pieChart: {
           desktop: 'Komputer',
@@ -1171,6 +1176,10 @@ export const pl: WebMessages = {
           slices: 'Wycinki',
           slice: 'Wycinek',
           value: 'Wartość',
+        },
+        sparkline: {
+          values: 'Wartości',
+          valuesHint: 'Liczby oddzielone przecinkami',
         },
       },
       playground: {
@@ -1235,6 +1244,19 @@ export const pl: WebMessages = {
             height: 'Wysokość',
             showLegend: 'Pokaż legendę',
             showPercentages: 'Pokaż wartości procentowe',
+            showTotal: 'Pokaż sumę',
+            totalLabel: 'Etykieta sumy',
+          },
+          sparkline: {
+            variant: 'Wariant',
+            curve: 'Krzywa',
+            markers: 'Znaczniki',
+            startAtZero: 'Zacznij od zera',
+            showTooltip: 'Pokaż podpowiedź',
+            animation: 'Animacja',
+            animationDuration: 'Czas trwania animacji',
+            height: 'Wysokość',
+            color: 'Kolor',
           },
           timeline: { orientation: 'Orientacja', align: 'Wyrównanie', size: 'Rozmiar' },
           'toggle-chip': {
@@ -1521,6 +1543,8 @@ export const pl: WebMessages = {
               'Na pionowym wykresie z samymi dodatnimi wartościami zaczyna oś wartości przy najkrótszym słupku zamiast od zera i oznacza cięcie symbolem przerwania.',
             xLabelOrientation:
               'Sposób ułożenia etykiet kategorii pod pionowym wykresem: poziomo, pod kątem 45 stopni, pod kątem 90 stopni lub automatycznie, z obrotem o 45, potem o 90 stopni przy ścisku.',
+            referenceLines:
+              'Przerywane linie biegnące w poprzek obszaru wykresu przy ustalonych wartościach, np. celu lub średniej, każda z opcjonalną etykietą i kolorem; oś wartości poszerza się, aby je objąć.',
           },
           'line-chart': {
             labels:
@@ -1560,6 +1584,8 @@ export const pl: WebMessages = {
               'Emitowane, gdy wyróżniony punkt zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
             visibleRangeChange:
               'Emitowane z początkiem i końcem widocznego zakresu x przy każdym przesunięciu wykresu z oknem. Wywoływane także przy powiększaniu okna.',
+            referenceLines:
+              'Przerywane linie biegnące w poprzek obszaru wykresu przy ustalonych wartościach, np. celu lub średniej, każda z opcjonalną etykietą i kolorem; oś y poszerza się, aby je objąć, chyba że yMin lub yMax je odcina.',
           },
           'pie-chart': {
             data: 'Wycinki rysowane zgodnie z ruchem wskazówek zegara od godziny dwunastej, każdy z etykietą, wartością i opcjonalnym kolorem.',
@@ -1579,6 +1605,28 @@ export const pl: WebMessages = {
               'Emitowane, gdy wycinek zostanie kliknięty lub wybrany klawiszem Enter lub spacją.',
             activeSliceChange:
               'Emitowane, gdy wyróżniony wycinek zmieni się za pomocą wskaźnika lub klawiatury, z null po wyczyszczeniu.',
+            showTotal: 'Pokazuje sumę wszystkich wycinków na środku pierścienia.',
+            totalLabel: 'Podpis pod sumą pierścienia; domyślnie zlokalizowane „Suma”.',
+          },
+          sparkline: {
+            data: 'Wartości do narysowania, od najstarszej; null zostawia lukę.',
+            variant:
+              'Rysuje wartości jako linię, linię nad wypełnionym obszarem lub słupki.',
+            curve:
+              'Jak linia lub obszar wygina się między wartościami: prosto, płynnie lub schodkowo.',
+            markers:
+              'Wyróżnione wartości: najnowsza, najnowsza wraz z najwyższą i najniższą, wszystkie wartości lub żadna. Linia lub obszar oznacza je kropką; przy słupkach pozostałe są przygaszone.',
+            color: 'Dowolny kolor CSS; domyślnie pierwszy kolor palety wykresów.',
+            startAtZero:
+              'Zaczyna skalę linii lub obszaru od zera, aby wysokość pokazywała rzeczywistą wielkość każdej wartości, a nie zbliżenie jej wahań. Słupki zawsze zaczynają się od zera.',
+            showTooltip:
+              'Pokazuje wartość pod wskaźnikiem w podpowiedzi, po najechaniu lub podczas przesuwania po niej palcem.',
+            height: 'Wysokość w pikselach; szerokość wypełnia kontener.',
+            animation:
+              'Animacja wejścia, odtwarzana ponownie przy każdej zmianie danych: rysowanie linii lub wzrost słupków, stopniowe pojawienie się lub brak.',
+            animationDuration: 'Czas trwania animacji wejścia w milisekundach.',
+            formatValue:
+              'Formatuje wartości w podpowiedzi i te odczytywane technologiom wspomagającym; domyślnie grupowane według aktywnego języka.',
           },
           timeline: {
             items: 'Zdarzenia do wyświetlenia, w kolejności.',

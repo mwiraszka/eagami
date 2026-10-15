@@ -1,0 +1,35 @@
+<web-ui-component-demo-layout
+  [slug]="slug"
+  [bare]="true">
+  <web-component-playground
+    playgroundHost
+    [slug]="slug"
+    [knobs]="knobs"
+    [state]="state()"
+    [extraAttributes]="extraAttributes()"
+    (knobChange)="onKnob($event)"
+    (resetClicked)="reset()">
+    <ea-sparkline
+      class="playground-fill"
+      [data]="data()"
+      [variant]="state().variant"
+      [curve]="state().curve"
+      [markers]="state().markers"
+      [startAtZero]="state().startAtZero"
+      [showTooltip]="state().showTooltip"
+      [animation]="state().animation"
+      [animationDuration]="state().animationDuration"
+      [height]="state().height"
+      [color]="state().color || undefined" />
+
+    <div
+      customControls
+      class="demo-items-editor">
+      <ea-input
+        [label]="messages().ui.component.demos.sparkline.values"
+        [hint]="messages().ui.component.demos.sparkline.valuesHint"
+        [value]="valuesText()"
+        (valueChange)="valuesText.set($event)" />
+    </div>
+  </web-component-playground>
+</web-ui-component-demo-layout>

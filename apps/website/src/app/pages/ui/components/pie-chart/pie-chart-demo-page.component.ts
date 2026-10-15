@@ -41,6 +41,8 @@ interface PieChartKnobState {
   height: number;
   showLegend: boolean;
   showPercentages: boolean;
+  showTotal: boolean;
+  totalLabel: string;
 }
 
 const SLUG = 'pie-chart';

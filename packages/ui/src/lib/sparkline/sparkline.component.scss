@@ -1,0 +1,78 @@
+@use '../chart/chart' as chart;
+
+ea-sparkline {
+  display: block;
+}
+
+.ea-sparkline {
+  position: relative;
+
+  &__svg {
+    display: block;
+    overflow: visible;
+    direction: ltr;
+  }
+
+  &__line {
+    fill: none;
+    stroke: var(--ea-chart-color);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__area {
+    fill: var(--ea-chart-color);
+    fill-opacity: 0.12;
+  }
+
+  &__bar {
+    fill: var(--ea-chart-color);
+    transition: opacity var(--duration-fast) var(--ease-out);
+    transform-box: view-box;
+    transform-origin: 0 var(--ea-sparkline-baseline);
+
+    &--dimmed {
+      @include chart.chart-dimmed;
+    }
+  }
+
+  &__marker {
+    stroke: var(--ea-chart-surface, var(--color-bg-base));
+    stroke-width: 2px;
+    fill: var(--ea-chart-color);
+  }
+
+  &__anchor {
+    @include chart.chart-anchor;
+  }
+
+  &--interactive .ea-sparkline__svg {
+    touch-action: pan-y;
+  }
+
+  &--animate-draw {
+    .ea-sparkline__line {
+      stroke-dasharray: 1;
+      animation-name: ea-chart-draw;
+      @include chart.chart-motion;
+    }
+
+    .ea-sparkline__area,
+    .ea-sparkline__marker:not(.ea-sparkline__marker--active) {
+      animation-name: ea-chart-fade;
+      animation-delay: var(--ea-chart-duration, 600ms);
+      @include chart.chart-motion;
+    }
+
+    .ea-sparkline__bar {
+      animation-name: ea-chart-grow-y;
+      @include chart.chart-motion;
+    }
+  }
+
+  &--animate-fade .ea-sparkline__svg {
+    animation-name: ea-chart-fade;
+    @include chart.chart-motion;
+  }
+}

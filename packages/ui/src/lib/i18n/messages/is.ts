@@ -39,6 +39,12 @@ const messages: EagamiMessages = {
     noData: 'Engin gögn',
     point: (series, label, value) => `${series}, ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}, ${percent}`,
+    total: 'Samtals',
+    trend: 'Þróun',
+    trendSummary: (first, last, low, high) =>
+      `Frá ${first} í ${last}, lægst ${low}, hæst ${high}`,
+    referenceLine: (label, value) =>
+      label ? `Viðmiðunarlína, ${label}: ${value}` : `Viðmiðunarlína: ${value}`,
   },
   codeInput: {
     groupLabel: length => `Staðfestingarkóði, ${length} tölustafir`,

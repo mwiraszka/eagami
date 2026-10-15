@@ -943,6 +943,9 @@ export interface WebMessages {
           quarters: readonly string[];
           categories: string;
           category: string;
+          referenceLines: string;
+          target: string;
+          value: string;
         };
         lineChart: {
           visitors: string;
@@ -953,6 +956,8 @@ export interface WebMessages {
           xPosition: string;
           value: string;
           tooltipTitle: string;
+          referenceLines: string;
+          average: string;
         };
         pieChart: {
           desktop: string;
@@ -962,6 +967,10 @@ export interface WebMessages {
           slices: string;
           slice: string;
           value: string;
+        };
+        sparkline: {
+          values: string;
+          valuesHint: string;
         };
         commandPalette: {
           hint: string;

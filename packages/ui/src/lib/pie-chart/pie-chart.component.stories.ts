@@ -29,6 +29,10 @@ export const Playground: Story = {};
 
 export const Donut: Story = { args: { variant: 'donut' } };
 
+export const DonutTotal: Story = {
+  args: { variant: 'donut', showTotal: true, totalLabel: 'Visitors' },
+};
+
 export const SingleSlice: Story = {
   render: args => ({
     props: { ...args, data: [{ label: 'Complete', value: 1 }] },

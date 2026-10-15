@@ -89,6 +89,74 @@ describe('PieChartComponent', () => {
     });
   });
 
+  describe('Total', () => {
+    function showTotal(inputs: Record<string, unknown> = {}): void {
+      fixture.componentRef.setInput('variant', 'donut');
+      fixture.componentRef.setInput('showTotal', true);
+      for (const [name, value] of Object.entries(inputs)) {
+        fixture.componentRef.setInput(name, value);
+      }
+      fixture.detectChanges();
+    }
+
+    it('prints the total in the hole of a donut, captioned', () => {
+      showTotal();
+
+      expect(query('.ea-pie-chart__total-value')!.textContent!.trim()).toBe('100');
+      expect(query('.ea-pie-chart__total-label')!.textContent!.trim()).toBe('Total');
+      expect(query('.ea-pie-chart__total')!.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('takes its caption from totalLabel', () => {
+      showTotal({ totalLabel: 'Visitors' });
+
+      expect(query('.ea-pie-chart__total-label')!.textContent!.trim()).toBe('Visitors');
+    });
+
+    it('formats the total with formatValue', () => {
+      showTotal({ formatValue: (value: number) => `${value} users` });
+
+      expect(query('.ea-pie-chart__total-value')!.textContent!.trim()).toBe('100 users');
+    });
+
+    it('shrinks a long total to fit the hole', () => {
+      showTotal();
+      const short = parseFloat(
+        query<HTMLElement>('.ea-pie-chart__total-value')!.style.fontSize,
+      );
+
+      fixture.componentRef.setInput('data', [{ label: 'Many', value: 123456789 }]);
+      fixture.detectChanges();
+
+      expect(
+        parseFloat(query<HTMLElement>('.ea-pie-chart__total-value')!.style.fontSize),
+      ).toBeLessThan(short);
+    });
+
+    it('adds the total to the data table', () => {
+      showTotal();
+
+      const cells = queryAll(
+        '.ea-pie-chart__table tfoot th, .ea-pie-chart__table tfoot td',
+      );
+      expect(cells.map(c => c.textContent!.trim())).toEqual(['Total', '100', '100%']);
+    });
+
+    it('stays hidden on a solid pie', () => {
+      showTotal({ variant: 'pie' });
+
+      expect(query('.ea-pie-chart__total')).toBeNull();
+      expect(query('.ea-pie-chart__table tfoot')).toBeNull();
+    });
+
+    it('stays hidden unless asked for', () => {
+      fixture.componentRef.setInput('variant', 'donut');
+      fixture.detectChanges();
+
+      expect(query('.ea-pie-chart__total')).toBeNull();
+    });
+  });
+
   describe('Legend', () => {
     it('lists every slice with its share', () => {
       const items = queryAll('.ea-pie-chart__legend-item').map(i =>

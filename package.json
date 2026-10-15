@@ -27,7 +27,7 @@
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "devDependencies": {
-    "concurrently": "10.0.5"
+    "concurrently": "10.0.6"
   },
   "packageManager": "pnpm@10.34.6",
   "engines": {

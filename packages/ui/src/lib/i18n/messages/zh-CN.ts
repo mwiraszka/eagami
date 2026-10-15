@@ -38,6 +38,12 @@ const messages: EagamiMessages = {
     noData: '无数据',
     point: (series, label, value) => `${series}，${label}：${value}`,
     slice: (label, value, percent) => `${label}：${value}，${percent}`,
+    total: '总计',
+    trend: '趋势',
+    trendSummary: (first, last, low, high) =>
+      `从 ${first} 到 ${last}，最低 ${low}，最高 ${high}`,
+    referenceLine: (label, value) =>
+      label ? `参考线，${label}：${value}` : `参考线：${value}`,
   },
   codeInput: {
     groupLabel: length => `验证码，共 ${length} 位`,

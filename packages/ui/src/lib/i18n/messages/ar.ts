@@ -38,6 +38,12 @@ const messages: EagamiMessages = {
     noData: 'لا توجد بيانات',
     point: (series, label, value) => `${series}، ${label}: ${value}`,
     slice: (label, value, percent) => `${label}: ${value}، ${percent}`,
+    total: 'الإجمالي',
+    trend: 'الاتجاه',
+    trendSummary: (first, last, low, high) =>
+      `من ${first} إلى ${last}، الأدنى ${low}، الأعلى ${high}`,
+    referenceLine: (label, value) =>
+      label ? `خط مرجعي، ${label}: ${value}` : `خط مرجعي: ${value}`,
   },
   codeInput: {
     groupLabel: length => `رمز التحقق، ${length} أرقام`,

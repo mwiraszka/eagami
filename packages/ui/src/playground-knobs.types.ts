@@ -7,14 +7,13 @@
 export type KnobArgValue = string | number | boolean;
 
 /**
- * Gates a knob on another knob's value. The website disables the control while
- * the condition is unmet (e.g. `showPasswordToggle` only applies when
+ * Gates a knob on another knob's value: met while that value equals `eq`, or
+ * while it differs from `neq`. The website disables the control while the
+ * condition is unmet (e.g. `showPasswordToggle` only applies when
  * `type === 'password'`); Storybook reads the same field to hide the control.
  */
-export interface KnobCondition {
-  arg: string;
-  eq: KnobArgValue;
-}
+export type KnobCondition =
+  { arg: string; eq: KnobArgValue } | { arg: string; neq: KnobArgValue };
 
 export interface KnobArgType {
   /** How the website renders the control; mirrors Storybook's `control` field. */

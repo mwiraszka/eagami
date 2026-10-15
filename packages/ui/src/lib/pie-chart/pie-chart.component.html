@@ -45,6 +45,19 @@
                 [maxWidth]="undefined" />
             }
           </svg>
+          @if (center(); as center) {
+            <div
+              class="ea-pie-chart__total"
+              aria-hidden="true"
+              [style.--ea-pie-chart-hole]="center.room + 'px'">
+              <span
+                class="ea-pie-chart__total-value"
+                [style.font-size.px]="center.valuePx">
+                {{ center.value }}
+              </span>
+              <span class="ea-pie-chart__total-label">{{ center.caption }}</span>
+            </div>
+          }
         }
         <ng-template #tooltipContent>
           @if (tooltip(); as tip) {
@@ -81,6 +94,15 @@
             </tr>
           }
         </tbody>
+        @if (center(); as center) {
+          <tfoot>
+            <tr>
+              <th scope="row">{{ center.caption }}</th>
+              <td>{{ center.value }}</td>
+              <td>{{ totalPercent() }}</td>
+            </tr>
+          </tfoot>
+        }
       </table>
     </div>
     <div

@@ -1082,6 +1082,9 @@ export const zhCN: WebMessages = {
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
           categories: '类别',
           category: '类别',
+          referenceLines: '参考线',
+          target: '目标',
+          value: '数值',
         },
         lineChart: {
           visitors: '访客',
@@ -1092,6 +1095,8 @@ export const zhCN: WebMessages = {
           xPosition: 'X 位置',
           value: '数值',
           tooltipTitle: '提示标题',
+          referenceLines: '参考线',
+          average: '平均值',
         },
         pieChart: {
           desktop: '桌面端',
@@ -1101,6 +1106,10 @@ export const zhCN: WebMessages = {
           slices: '扇区',
           slice: '扇区',
           value: '数值',
+        },
+        sparkline: {
+          values: '数值',
+          valuesHint: '用逗号分隔的数字',
         },
       },
       playground: {
@@ -1163,6 +1172,19 @@ export const zhCN: WebMessages = {
             height: '高度',
             showLegend: '显示图例',
             showPercentages: '显示百分比',
+            showTotal: '显示总计',
+            totalLabel: '总计标签',
+          },
+          sparkline: {
+            variant: '变体',
+            curve: '曲线',
+            markers: '标记',
+            startAtZero: '从零开始',
+            showTooltip: '显示提示框',
+            animation: '动画',
+            animationDuration: '动画时长',
+            height: '高度',
+            color: '颜色',
           },
           timeline: { orientation: '方向', align: '对齐', size: '尺寸' },
           'toggle-chip': {
@@ -1444,6 +1466,8 @@ export const zhCN: WebMessages = {
               '在所有值均为正的纵向图表中，让数值轴从最短的柱附近而非零开始，并用断裂符号标出截断处。',
             xLabelOrientation:
               '纵向图表下方类别标签的摆放方式：水平、倾斜 45 度、倾斜 90 度，或自动：拥挤时先转 45 度再转 90 度。',
+            referenceLines:
+              '在指定数值处横贯绘图区的虚线，如目标或平均值，每条可带可选的标签和颜色；数值轴会扩展以容纳它们。',
           },
           'line-chart': {
             labels:
@@ -1479,6 +1503,8 @@ export const zhCN: WebMessages = {
               '当通过指针或键盘改变高亮数据点时触发，清除高亮后传出 null。',
             visibleRangeChange:
               '带窗口的图表每次平移时触发，携带可见 x 范围的起点和终点。 缩放窗口时也会触发。',
+            referenceLines:
+              '在指定数值处横贯绘图区的虚线，如目标或平均值，每条可带可选的标签和颜色；y 轴会扩展以容纳它们，除非被 yMin 或 yMax 截断。',
           },
           'pie-chart': {
             data: '从十二点钟方向顺时针绘制的扇区，每个扇区包含标签、数值以及可选颜色。',
@@ -1494,6 +1520,25 @@ export const zhCN: WebMessages = {
             sliceClick: '当点击扇区，或通过 Enter 或空格键选择扇区时触发。',
             activeSliceChange:
               '当通过指针或键盘改变高亮扇区时触发，清除高亮后传出 null。',
+            showTotal: '在环形图中心显示所有扇区的总和。',
+            totalLabel: '环形图总计下方的说明文字；默认为本地化的“总计”。',
+          },
+          sparkline: {
+            data: '要绘制的数值，按时间从早到晚排列；null 会留下空缺。',
+            variant: '将数值绘制为折线、带填充区域的折线或柱形。',
+            curve: '折线或区域在数值之间的弯曲方式：直线、平滑或阶梯。',
+            markers:
+              '突出显示的数值：最新值，最新值加上最高值和最低值，全部数值，或不突出。折线或区域用圆点标出；柱形则淡化其余柱子。',
+            color: '任意 CSS 颜色；默认为图表调色板的第一种颜色。',
+            startAtZero:
+              '让折线或区域的刻度从零开始，使高度反映每个数值的真实大小，而不是放大显示其波动。柱形始终从零开始。',
+            showTooltip: '悬停时，或手指滑过时，在提示框中显示指针下方的数值。',
+            height: '以像素为单位的高度；宽度填满容器。',
+            animation:
+              '入场动画，每次数据变化时重播：描绘折线或生长柱形、淡入，或无动画。',
+            animationDuration: '入场动画的时长（毫秒）。',
+            formatValue:
+              '格式化提示框中的数值，以及朗读给辅助技术的数值；默认按当前语言分组。',
           },
           timeline: {
             items: '要显示的事件，按顺序排列。',

@@ -17,9 +17,12 @@ import {
 import {
   BREAK_CLEARANCE,
   BREAK_HEIGHT,
+  CHART_CURVES,
   CHART_LABEL_ANGLES,
+  type ChartCurve,
   type ChartLabelOrientation,
   type ChartPointEvent,
+  type ChartReferenceLine,
   type ChartSeries,
   type ChartSize,
   axisBreak,
@@ -32,13 +35,14 @@ import {
   labelLine,
   labelRoom,
   niceScale,
+  plottableReferenceLines,
   tickLength,
 } from '../chart/chart';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 
 /** How the line bends between points. */
-export type LineChartCurve = 'linear' | 'smooth' | 'step';
+export type LineChartCurve = ChartCurve;
 
 /**
  * Entrance animation, replayed whenever the data changes. `draw` traces each
@@ -134,82 +138,6 @@ function valueBetween(
   );
 }
 
-function linearPath(points: PlotPoint[]): string {
-  return points.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join('');
-}
-
-// Steps at the midpoint between neighbours, so each value owns the span around it
-function stepPath(points: PlotPoint[]): string {
-  let d = `M${points[0].x},${points[0].y}`;
-  for (let i = 1; i < points.length; i++) {
-    const mid = (points[i - 1].x + points[i].x) / 2;
-    d += `H${mid}V${points[i].y}H${points[i].x}`;
-  }
-  return d;
-}
-
-// Points sharing an x position have no slope between them, so the curve runs
-// smoothly up to each such pair and joins it with a straight segment
-function smoothPath(points: PlotPoint[]): string {
-  let d = '';
-  let start = 0;
-  for (let i = 1; i <= points.length; i++) {
-    if (i === points.length || points[i].x === points[i - 1].x) {
-      const run = monotonePath(points.slice(start, i));
-      d += start === 0 ? run : `L${run.slice(1)}`;
-      start = i;
-    }
-  }
-  return d;
-}
-
-// Monotone cubic interpolation (Fritsch-Carlson): smooth, but never overshoots
-// a data point, so a curve cannot suggest a value the data never reached
-function monotonePath(points: PlotPoint[]): string {
-  const n = points.length;
-  if (n < 3) {
-    return linearPath(points);
-  }
-  const slopes: number[] = [];
-  for (let i = 0; i < n - 1; i++) {
-    slopes.push((points[i + 1].y - points[i].y) / (points[i + 1].x - points[i].x));
-  }
-  const tangents = [slopes[0]];
-  for (let i = 1; i < n - 1; i++) {
-    tangents.push(slopes[i - 1] * slopes[i] <= 0 ? 0 : (slopes[i - 1] + slopes[i]) / 2);
-  }
-  tangents.push(slopes[n - 2]);
-  for (let i = 0; i < n - 1; i++) {
-    if (slopes[i] === 0) {
-      tangents[i] = 0;
-      tangents[i + 1] = 0;
-      continue;
-    }
-    const a = tangents[i] / slopes[i];
-    const b = tangents[i + 1] / slopes[i];
-    const s = a * a + b * b;
-    if (s > 9) {
-      const k = 3 / Math.sqrt(s);
-      tangents[i] = k * a * slopes[i];
-      tangents[i + 1] = k * b * slopes[i];
-    }
-  }
-  let d = `M${points[0].x},${points[0].y}`;
-  for (let i = 0; i < n - 1; i++) {
-    const p = points[i];
-    const q = points[i + 1];
-    const third = (q.x - p.x) / 3;
-    d += `C${p.x + third},${p.y + tangents[i] * third},${q.x - third},${q.y - tangents[i + 1] * third},${q.x},${q.y}`;
-  }
-  return d;
-}
-
-const CURVES: Record<LineChartCurve, (points: PlotPoint[]) => string> = {
-  linear: linearPath,
-  smooth: smoothPath,
-  step: stepPath,
-};
-
 let nextId = 0;
 
 /**
@@ -274,6 +202,12 @@ export class LineChartComponent {
   readonly yMax = input<number | undefined>(undefined);
   /** Largest gap between y-axis ticks; a wider range gets more ticks instead of wider gaps. */
   readonly maxYStep = input<number | undefined>(undefined);
+  /**
+   * Dashed rules across the plot at set values, such as a target or an
+   * average. The y-axis widens to take them in, unless `yMin` or `yMax` cuts
+   * them off.
+   */
+  readonly referenceLines = input<readonly ChartReferenceLine[]>([]);
   /** How the x-axis labels are set; `auto` turns them as they run out of room. */
   readonly xLabelOrientation = input<ChartLabelOrientation>('horizontal');
   /** Marks the foot of a y-axis that stops short of zero with a break symbol. */
@@ -371,6 +305,10 @@ export class LineChartComponent {
 
   protected readonly windowed = computed(() => this.domain().span != null);
 
+  protected readonly references = computed(() =>
+    plottableReferenceLines(this.referenceLines()),
+  );
+
   // A fresh object whenever the data or animation changes re-creates the plot,
   // which is what replays its entrance animation
   protected readonly renderPass = computed(() => {
@@ -440,6 +378,13 @@ export class LineChartComponent {
     return values.length ? values : runs.flatMap(run => run.map(p => p.value));
   });
 
+  // Reference lines widen the y-axis only once there is data to set them against
+  private withReferences(values: number[]): number[] {
+    return values.length
+      ? [...values, ...this.references().map(line => line.value)]
+      : values;
+  }
+
   protected readonly layout = computed(() => {
     const width = this.viewport.width();
     const height = this.height();
@@ -465,7 +410,7 @@ export class LineChartComponent {
         : null;
     const axisY = top + plotHeight;
 
-    const curve = CURVES[this.curve()];
+    const curve = CHART_CURVES[this.curve()];
     const series: PlotSeries[] = this.series().map((s, seriesIndex) => {
       const runs = this.runs()[seriesIndex].map(run =>
         run.map(p => ({ x: x(p.index), y: y(p.value), index: p.index, value: p.value })),
@@ -481,6 +426,16 @@ export class LineChartComponent {
         points: runs.flat(),
       };
     });
+
+    const references = this.references()
+      .map((line, key) => ({ ...line, key, y: y(line.value) }))
+      .filter(line => line.value >= min && line.value <= max)
+      .map(line => ({
+        ...line,
+        // Above the line, unless that would run it off the top of the plot
+        labelY:
+          line.y - axisPx * 1.4 < top ? line.y + axisPx * 1.2 : line.y - axisPx * 0.4 - 2,
+      }));
 
     return {
       width,
@@ -504,6 +459,7 @@ export class LineChartComponent {
         .filter(t => breakY == null || t.y < breakY - axisPx),
       xLabels,
       series,
+      references,
       x,
       y,
     };
@@ -520,7 +476,7 @@ export class LineChartComponent {
     const maxTicks = Math.max(2, Math.floor(plotHeight / (axisPx * 3)));
 
     const { min, max, ticks, unlabelled, level } = this.yScale(
-      this.visibleValues(),
+      this.withReferences(this.visibleValues()),
       plotHeight,
       axisPx,
       maxTicks,
@@ -534,7 +490,9 @@ export class LineChartComponent {
       ...tickTexts.map(t => t.text),
       ...(windowed && !unlabelled
         ? this.yScale(
-            this.runs().flatMap(runs => runs.flat().map(p => p.value)),
+            this.withReferences(
+              this.runs().flatMap(runs => runs.flat().map(p => p.value)),
+            ),
             plotHeight,
             axisPx,
             maxTicks,
@@ -631,6 +589,12 @@ export class LineChartComponent {
   protected isActivePoint(seriesIndex: number, index: number): boolean {
     const active = this.active();
     return !!active && active.series === seriesIndex && active.index === index;
+  }
+
+  protected referenceText(line: ChartReferenceLine): string {
+    return this.i18n
+      .messages()
+      .chart.referenceLine(line.label ?? '', this.tableValue(line.value));
   }
 
   protected tableValue(value: number | null | undefined): string {

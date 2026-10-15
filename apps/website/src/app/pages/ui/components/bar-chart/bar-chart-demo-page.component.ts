@@ -4,6 +4,7 @@ import {
   type BarChartOrientation,
   ButtonComponent,
   type ChartLabelOrientation,
+  type ChartReferenceLine,
   type ChartSeries,
   type ChartSize,
   InputComponent,
@@ -56,6 +57,12 @@ interface DemoCategory {
   values: number[];
 }
 
+interface DemoReferenceLine {
+  id: number;
+  label: string;
+  value: number;
+}
+
 // One row of values per quarter, in the order of the series below
 const SEED_VALUES = [
   [42, 28, 15],
@@ -63,6 +70,7 @@ const SEED_VALUES = [
   [51, 47, 22],
   [67, 52, 30],
 ];
+const SEED_TARGET = 60;
 
 @Component({
   selector: 'web-bar-chart-demo-page',
@@ -87,15 +95,26 @@ export class BarChartDemoPageComponent {
     initialKnobState(this.knobs, PLAYGROUND_KNOBS['bar-chart']) as BarChartKnobState,
   );
 
-  protected readonly extraAttributes = ['[labels]="labels"', '[series]="series"'];
+  protected readonly extraAttributes = [
+    '[labels]="labels"',
+    '[series]="series"',
+    '[referenceLines]="referenceLines"',
+  ];
 
   private nextId = 1;
   protected readonly categories = signal<DemoCategory[]>(this.seedCategories());
+  protected readonly referenceRows = signal<DemoReferenceLine[]>(
+    this.seedReferenceLines(),
+  );
 
   protected readonly seriesNames = computed(() => {
     const m = this.messages().ui.component.demos.barChart;
     return [m.hardware, m.software, m.services];
   });
+
+  protected readonly referenceLines = computed<ChartReferenceLine[]>(() =>
+    this.referenceRows().map(({ label, value }) => ({ label, value })),
+  );
 
   protected readonly labels = computed(() => this.categories().map(c => c.label));
 
@@ -116,6 +135,7 @@ export class BarChartDemoPageComponent {
     );
     this.nextId = 1;
     this.categories.set(this.seedCategories());
+    this.referenceRows.set(this.seedReferenceLines());
   }
 
   // Blank or partly typed numbers keep the last valid value until the input reads as one
@@ -159,6 +179,34 @@ export class BarChartDemoPageComponent {
 
   protected removeCategory(id: number): void {
     this.categories.update(categories => categories.filter(c => c.id !== id));
+  }
+
+  protected updateReferenceLine(id: number, patch: Partial<DemoReferenceLine>): void {
+    this.referenceRows.update(lines =>
+      lines.map(line => (line.id === id ? { ...line, ...patch } : line)),
+    );
+  }
+
+  protected addReferenceLine(): void {
+    const last = this.referenceRows().at(-1);
+    this.referenceRows.update(lines => [
+      ...lines,
+      { id: this.nextId++, label: '', value: last?.value ?? 50 },
+    ]);
+  }
+
+  protected removeReferenceLine(id: number): void {
+    this.referenceRows.update(lines => lines.filter(line => line.id !== id));
+  }
+
+  private seedReferenceLines(): DemoReferenceLine[] {
+    return [
+      {
+        id: this.nextId++,
+        label: this.messages().ui.component.demos.barChart.target,
+        value: SEED_TARGET,
+      },
+    ];
   }
 
   private seedCategories(): DemoCategory[] {

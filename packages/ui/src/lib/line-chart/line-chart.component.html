@@ -77,6 +77,27 @@
               [attr.y1]="layout().top"
               [attr.y2]="layout().top + layout().plotHeight" />
           }
+          @for (line of layout().references; track line.key) {
+            <g
+              class="ea-line-chart__reference"
+              [style.--ea-chart-reference-color]="line.color">
+              <line
+                class="ea-line-chart__reference-line"
+                [attr.x1]="layout().left"
+                [attr.x2]="layout().left + layout().plotWidth"
+                [attr.y1]="line.y"
+                [attr.y2]="line.y" />
+              @if (line.label) {
+                <text
+                  class="ea-line-chart__reference-label"
+                  text-anchor="end"
+                  [attr.x]="layout().left + layout().plotWidth"
+                  [attr.y]="line.labelY">
+                  {{ line.label }}
+                </text>
+              }
+            </g>
+          }
           <g [attr.clip-path]="layout().windowed ? 'url(#' + clipId + ')' : null">
             <g class="ea-line-chart__lines">
               @for (line of layout().series; track $index; let s = $index) {
@@ -172,6 +193,13 @@
             }
           </tbody>
         </table>
+        @if (references().length) {
+          <ul>
+            @for (line of references(); track $index) {
+              <li>{{ referenceText(line) }}</li>
+            }
+          </ul>
+        }
       </div>
     </div>
     <div

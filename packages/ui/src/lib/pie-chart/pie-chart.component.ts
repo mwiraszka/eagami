@@ -116,6 +116,10 @@ export class PieChartComponent {
   readonly showLegend = input<boolean>(true);
   /** Adds each slice's share of the total to its legend entry. */
   readonly showPercentages = input<boolean>(true);
+  /** Prints the total of every slice in the middle of a donut. */
+  readonly showTotal = input<boolean>(false);
+  /** Caption beneath a donut's total; defaults to a localized "Total". */
+  readonly totalLabel = input<string | undefined>(undefined);
   /** Largest diameter of the chart in pixels; it shrinks to fit a narrower container. */
   readonly height = input<number>(240);
   /** Visual size; scales the legend and tooltip text. */
@@ -192,6 +196,22 @@ export class PieChartComponent {
     return { diameter, cx, cy, outer, inner, slices };
   });
 
+  // Sized to sit inside the donut's hole, shrinking to fit a long total
+  protected readonly center = computed(() => {
+    const { inner } = this.layout();
+    if (!this.showTotal() || inner <= 0) {
+      return null;
+    }
+    const value = this.format()(this.total());
+    const room = inner * 1.5;
+    return {
+      value,
+      caption: this.totalLabel() || this.i18n.messages().chart.total,
+      room,
+      valuePx: Math.min(inner * 0.45, room / Math.max(1, value.length * 0.6)),
+    };
+  });
+
   protected readonly legend = computed(() =>
     this.data().map((slice, index) => ({
       label: slice.label,
@@ -245,6 +265,10 @@ export class PieChartComponent {
 
   protected tablePercent(index: number): string {
     return this.formatPercent(this.percentOf(index));
+  }
+
+  protected totalPercent(): string {
+    return this.formatPercent(100);
   }
 
   protected isDimmed(index: number): boolean {
