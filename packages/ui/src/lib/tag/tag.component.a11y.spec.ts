@@ -1,8 +1,9 @@
 import { axe } from 'vitest-axe';
 
-import { Component } from '@angular/core';
+import { Component, type Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
+import { StarIconComponent } from '../icons/star.component';
 import { TagComponent, type TagSize, type TagVariant } from './tag.component';
 
 @Component({
@@ -13,6 +14,7 @@ import { TagComponent, type TagSize, type TagVariant } from './tag.component';
       [size]="size"
       [removable]="removable"
       [disabled]="disabled"
+      [icon]="icon"
       [color]="color"
       [ink]="ink">
       {{ text }}
@@ -27,6 +29,7 @@ class HostComponent {
   disabled = false;
   color: string | undefined = undefined;
   ink: string | undefined = undefined;
+  icon: Type<unknown> | undefined = undefined;
 }
 
 describe('TagComponent a11y', () => {
@@ -50,6 +53,14 @@ describe('TagComponent a11y', () => {
       expect(results).toHaveNoViolations();
     },
   );
+
+  it('has no detectable violations with an icon', async () => {
+    const el = await render(host => (host.icon = StarIconComponent));
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
 
   it('has no detectable violations when removable', async () => {
     const el = await render(host => (host.removable = true));
