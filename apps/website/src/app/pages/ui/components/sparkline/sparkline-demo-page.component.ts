@@ -64,8 +64,6 @@ export class SparklineDemoPageComponent {
     initialKnobState(this.knobs, PLAYGROUND_KNOBS[SLUG]) as SparklineKnobState,
   );
 
-  protected readonly extraAttributes = ['[data]="data"'];
-
   protected readonly valuesText = signal(SEED_VALUES);
 
   // A blank entry between commas leaves a gap, as does one that is not a number yet
@@ -77,6 +75,12 @@ export class SparklineDemoPageComponent {
         return token.trim() !== '' && Number.isFinite(value) ? value : null;
       }),
   );
+
+  protected readonly extraAttributes = computed(() => [
+    `[data]="[${this.data()
+      .map(value => (value === null ? 'null' : String(value)))
+      .join(', ')}]"`,
+  ]);
 
   protected onKnob({ name, value }: KnobChange): void {
     this.state.update(current => ({ ...current, [name]: value }) as SparklineKnobState);
