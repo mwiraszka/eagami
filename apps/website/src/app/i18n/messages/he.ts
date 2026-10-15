@@ -1230,6 +1230,7 @@ export const he: WebMessages = {
             showPasswordToggle: 'הצג מתג סיסמה',
             clearable: 'ניתן לניקוי',
             autocomplete: 'השלמה אוטומטית',
+            typedHints: 'מציין מיקום מוקלד',
           },
           'number-input': {
             allowNegative: 'אפשר ערכים שליליים',
@@ -1462,6 +1463,7 @@ export const he: WebMessages = {
             readonly: 'קריאה בלבד',
             required: 'חובה',
             optional: 'אופציונלי',
+            typedHints: 'מציין מיקום מוקלד',
           },
         },
         knobNotes: {
@@ -1610,6 +1612,8 @@ export const he: WebMessages = {
             label: 'תווית טקסט המוצגת מעל השדה.',
             type: 'סוג input מקורי (password מוסיף מתג הצגה/הסתרה מובנה).',
             placeholder: 'מציין מיקום המוצג כשהשדה ריק.',
+            typedPlaceholder:
+              'רמזים שמוקלדים בשדה הריק תו אחר תו עם סמן מהבהב, וכל אחד מוחלף בבא אחריו בלולאה; בתנועה מופחתת הם מתחלפים בשלמותם. מחליף את placeholder כל עוד הוא מוגדר.',
             size: 'גודל ויזואלי של השדה.',
             hint: 'טקסט עזר המוצג מתחת לשדה, מוסתר בזמן שמוצגת שגיאה.',
             errorMsg:
@@ -2021,6 +2025,8 @@ export const he: WebMessages = {
             showCount:
               'מציג מתחת לשדה את מספר התווים שהוקלדו, מול maxlength כשהוא מוגדר.',
             placeholder: 'מציין מיקום המוצג כשהשדה ריק.',
+            typedPlaceholder:
+              'רמזים שמוקלדים בשדה הריק תו אחר תו עם סמן מהבהב, וכל אחד מוחלף בבא אחריו בלולאה; בתנועה מופחתת הם מתחלפים בשלמותם. מחליף את placeholder כל עוד הוא מוגדר.',
             readonly: 'הופך את השדה לקריאה בלבד.',
             required: 'מסמן את השדה כחובה.',
             optional:
@@ -2786,6 +2792,11 @@ export const he: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'לוח בקרה',
         breadcrumbSettings: 'הגדרות',
+        typedPlaceholderHints: [
+          'ספרו לנו על הפרויקט שלכם…',
+          'במה נוכל לעזור?',
+          'שתפו קישור לעיצוב שאהבתם…',
+        ],
       },
     },
   },

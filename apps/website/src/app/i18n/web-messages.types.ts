@@ -1033,6 +1033,7 @@ export interface WebMessages {
         breadcrumbMacBookPro: string;
         breadcrumbDashboard: string;
         breadcrumbSettings: string;
+        typedPlaceholderHints: ReadonlyArray<string>;
       };
     };
   };

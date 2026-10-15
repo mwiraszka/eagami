@@ -1289,6 +1289,7 @@ export const is: WebMessages = {
             showPasswordToggle: 'Sýna lykilorðsvíxlun',
             clearable: 'Hreinsanlegt',
             autocomplete: 'Sjálfvirk útfylling',
+            typedHints: 'Vélritaður staðgengill',
           },
           'number-input': {
             allowNegative: 'Leyfa neikvæð gildi',
@@ -1521,6 +1522,7 @@ export const is: WebMessages = {
             readonly: 'Skrifvarið',
             required: 'Krafist',
             optional: 'Valfrjálst',
+            typedHints: 'Vélritaður staðgengill',
           },
         },
         knobNotes: {
@@ -1686,6 +1688,8 @@ export const is: WebMessages = {
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             type: 'Innbyggð inntaksgerð (lykilorð bætir við innbyggðri sýna/fela víxlun).',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
+            typedPlaceholder:
+              'Vísbendingar sem eru vélritaðar í tóma reitinn staf fyrir staf með blikkandi bendli og leysa hver aðra af í lykkju; með minnkaðri hreyfingu skiptast þær heilar. Kemur í stað placeholder meðan stillt.',
             size: 'Sjónræn stærð reitsins.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             errorMsg:
@@ -2137,6 +2141,8 @@ export const is: WebMessages = {
             showCount:
               'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxlength þegar það er stillt.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
+            typedPlaceholder:
+              'Vísbendingar sem eru vélritaðar í tóma reitinn staf fyrir staf með blikkandi bendli og leysa hver aðra af í lykkju; með minnkaðri hreyfingu skiptast þær heilar. Kemur í stað placeholder meðan stillt.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
             optional:
@@ -2981,6 +2987,11 @@ export const is: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Stjórnborð',
         breadcrumbSettings: 'Stillingar',
+        typedPlaceholderHints: [
+          'Segðu okkur frá verkefninu þínu…',
+          'Með hvað getum við aðstoðað?',
+          'Deildu tengli á hönnun sem þér líkar…',
+        ],
       },
     },
   },

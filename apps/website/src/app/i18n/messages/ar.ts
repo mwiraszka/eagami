@@ -1247,6 +1247,7 @@ export const ar: WebMessages = {
             showPasswordToggle: 'إظهار مبدّل كلمة المرور',
             clearable: 'قابل للمسح',
             autocomplete: 'إكمال تلقائي',
+            typedHints: 'عنصر نائب مكتوب',
           },
           'number-input': {
             allowNegative: 'السماح بالقيم السالبة',
@@ -1479,6 +1480,7 @@ export const ar: WebMessages = {
             readonly: 'للقراءة فقط',
             required: 'مطلوب',
             optional: 'اختياري',
+            typedHints: 'عنصر نائب مكتوب',
           },
         },
         knobNotes: {
@@ -1632,6 +1634,8 @@ export const ar: WebMessages = {
             label: 'تسمية نصية تُعرَض فوق الحقل.',
             type: 'نوع input الأصلي (يضيف password مبدّل إظهار/إخفاء مدمجًا).',
             placeholder: 'العنصر النائب المعروض ما دام الحقل فارغًا.',
+            typedPlaceholder:
+              'تلميحات تُكتب في الحقل الفارغ حرفًا حرفًا مع مؤشر وامض، ويحل كل منها محل سابقه في حلقة متكررة؛ ومع تقليل الحركة تتبدل كاملة. يحل محل placeholder ما دام معيّنًا.',
             size: 'الحجم البصري للحقل.',
             hint: 'نص مساعد يُعرَض أسفل الحقل، يُخفى عند عرض خطأ.',
             errorMsg:
@@ -2049,6 +2053,8 @@ export const ar: WebMessages = {
             maxlength: 'الحد الأقصى لعدد الأحرف التي يقبلها الحقل.',
             showCount: 'يعرض عدد الأحرف المكتوبة أسفل الحقل، مقابل maxlength عند تعيينه.',
             placeholder: 'العنصر النائب المعروض ما دام الحقل فارغًا.',
+            typedPlaceholder:
+              'تلميحات تُكتب في الحقل الفارغ حرفًا حرفًا مع مؤشر وامض، ويحل كل منها محل سابقه في حلقة متكررة؛ ومع تقليل الحركة تتبدل كاملة. يحل محل placeholder ما دام معيّنًا.',
             readonly: 'يجعل الحقل للقراءة فقط.',
             required: 'يُعلِّم الحقل كمطلوب.',
             optional:
@@ -2832,6 +2838,11 @@ export const ar: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'لوحة التحكم',
         breadcrumbSettings: 'الإعدادات',
+        typedPlaceholderHints: [
+          'أخبرنا عن مشروعك…',
+          'بماذا يمكننا مساعدتك؟',
+          'شارك رابطًا لتصميم يعجبك…',
+        ],
       },
     },
   },

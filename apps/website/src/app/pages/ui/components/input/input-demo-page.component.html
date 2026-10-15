@@ -6,6 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [extraAttributes]="extraAttributes()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-input
@@ -16,6 +17,7 @@
       [labelHelp]="state().labelHelp"
       [labelIcon]="labelIconComponent()"
       [placeholder]="state().placeholder"
+      [typedPlaceholder]="typedPlaceholder()"
       [size]="state().size"
       [type]="state().type"
       [readonly]="state().readonly"

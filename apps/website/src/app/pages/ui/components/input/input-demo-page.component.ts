@@ -6,11 +6,13 @@ import {
   Component,
   computed,
   effect,
+  inject,
   signal,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -29,6 +31,7 @@ import {
   initialKnobState,
   injectKnobDefaults,
 } from '../_playground/knob';
+import { typedPlaceholderAttribute } from '../_playground/snippet';
 
 interface InputKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -50,10 +53,12 @@ interface InputKnobState {
   keepIcon: boolean;
   autocomplete: string;
   icon: string;
+  typedHints: boolean;
   triggerError: boolean;
 }
 
 const SLUG = 'input';
+const NO_HINTS: readonly string[] = [];
 
 @Component({
   selector: 'web-input-demo-page',
@@ -67,6 +72,8 @@ const SLUG = 'input';
   ],
 })
 export class InputDemoPageComponent {
+  private readonly messages = inject(WebI18nService).messages;
+
   protected readonly slug = SLUG;
   private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
@@ -83,6 +90,16 @@ export class InputDemoPageComponent {
   );
   protected readonly iconComponent = computed(() =>
     iconComponentForSlug(this.state().icon),
+  );
+
+  protected readonly typedPlaceholder = computed(() =>
+    this.state().typedHints
+      ? this.messages().ui.component.sharedOptions.typedPlaceholderHints
+      : NO_HINTS,
+  );
+
+  protected readonly extraAttributes = computed(() =>
+    this.state().typedHints ? [typedPlaceholderAttribute(this.typedPlaceholder())] : [],
   );
 
   protected readonly control = new FormControl(null, {

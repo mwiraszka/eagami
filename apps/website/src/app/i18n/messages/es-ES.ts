@@ -1293,6 +1293,7 @@ export const esES: WebMessages = {
             showPasswordToggle: 'Mostrar botón de contraseña',
             clearable: 'Con botón de borrado',
             autocomplete: 'Autocompletar',
+            typedHints: 'Marcador escrito',
           },
           'number-input': {
             allowNegative: 'Permitir negativos',
@@ -1525,6 +1526,7 @@ export const esES: WebMessages = {
             readonly: 'Solo lectura',
             required: 'Obligatorio',
             optional: 'Opcional',
+            typedHints: 'Marcador escrito',
           },
         },
         knobNotes: {
@@ -1696,6 +1698,8 @@ export const esES: WebMessages = {
             label: 'Etiqueta mostrada encima del campo.',
             type: 'Tipo nativo del campo (password añade un botón de mostrar/ocultar integrado).',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
+            typedPlaceholder:
+              'Sugerencias que se escriben carácter a carácter en el campo vacío con un cursor parpadeante, cada una sustituida por la siguiente en bucle; con movimiento reducido cambian completas. Sustituye a placeholder mientras está definido.',
             size: 'Tamaño visual del campo.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             errorMsg:
@@ -2180,6 +2184,8 @@ export const esES: WebMessages = {
             showCount:
               'Muestra bajo el campo el número de caracteres escritos, frente a maxlength cuando está definido.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
+            typedPlaceholder:
+              'Sugerencias que se escriben carácter a carácter en el campo vacío con un cursor parpadeante, cada una sustituida por la siguiente en bucle; con movimiento reducido cambian completas. Sustituye a placeholder mientras está definido.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
             optional:
@@ -3065,6 +3071,11 @@ export const esES: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Panel',
         breadcrumbSettings: 'Ajustes',
+        typedPlaceholderHints: [
+          'Cuéntenos sobre su proyecto…',
+          '¿En qué podemos ayudarle?',
+          'Comparta un enlace a un diseño que le guste…',
+        ],
       },
     },
   },

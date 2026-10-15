@@ -1248,6 +1248,7 @@ export const en: WebMessages = {
             showPasswordToggle: 'Show password toggle',
             clearable: 'Clearable',
             autocomplete: 'Autocomplete',
+            typedHints: 'Typed placeholder',
           },
           'number-input': {
             allowNegative: 'Allow negative',
@@ -1480,6 +1481,7 @@ export const en: WebMessages = {
             readonly: 'Read-only',
             required: 'Required',
             optional: 'Optional',
+            typedHints: 'Typed placeholder',
           },
         },
         knobNotes: {
@@ -1638,6 +1640,8 @@ export const en: WebMessages = {
             label: 'Text label rendered above the field.',
             type: 'Native input type (password adds a built-in show/hide toggle).',
             placeholder: 'Placeholder shown while the field is empty.',
+            typedPlaceholder:
+              'Hints typed into the empty field one character at a time with a blinking cursor, each replaced by the next in a loop; under reduced motion they swap whole instead. Takes the place of placeholder while set.',
             size: 'Visual size of the field.',
             hint: 'Helper text shown below the field, hidden while an error is showing.',
             errorMsg:
@@ -2078,6 +2082,8 @@ export const en: WebMessages = {
             showCount:
               'Shows the number of characters typed below the field, against maxlength when one is set.',
             placeholder: 'Placeholder shown while the field is empty.',
+            typedPlaceholder:
+              'Hints typed into the empty field one character at a time with a blinking cursor, each replaced by the next in a loop; under reduced motion they swap whole instead. Takes the place of placeholder while set.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
             optional:
@@ -2898,6 +2904,11 @@ export const en: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',
         breadcrumbSettings: 'Settings',
+        typedPlaceholderHints: [
+          'Tell us about your project…',
+          'What would you like help with?',
+          'Share a link to a design you like…',
+        ],
       },
     },
   },

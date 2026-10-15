@@ -1285,6 +1285,7 @@ export const pl: WebMessages = {
             showPasswordToggle: 'Przycisk pokazywania hasła',
             clearable: 'Z czyszczeniem',
             autocomplete: 'Autouzupełnianie',
+            typedHints: 'Pisany tekst zastępczy',
           },
           'number-input': {
             allowNegative: 'Zezwól na ujemne',
@@ -1517,6 +1518,7 @@ export const pl: WebMessages = {
             readonly: 'Tylko do odczytu',
             required: 'Wymagane',
             optional: 'Opcjonalne',
+            typedHints: 'Pisany tekst zastępczy',
           },
         },
         knobNotes: {
@@ -1682,6 +1684,8 @@ export const pl: WebMessages = {
             label: 'Etykieta wyświetlana nad polem.',
             type: 'Natywny typ pola (password dodaje wbudowany przycisk pokaż/ukryj).',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
+            typedPlaceholder:
+              'Podpowiedzi wpisywane do pustego pola znak po znaku z migającym kursorem, zastępowane kolejno w pętli; przy ograniczonym ruchu zmieniają się w całości. Zastępuje placeholder, gdy jest ustawiony.',
             size: 'Wizualny rozmiar pola.',
             hint: 'Tekst pomocniczy pod polem, ukryty gdy występuje błąd.',
             errorMsg:
@@ -2135,6 +2139,8 @@ export const pl: WebMessages = {
             showCount:
               'Wyświetla pod polem liczbę wpisanych znaków, w odniesieniu do maxlength, gdy jest ustawione.',
             placeholder: 'Tekst zastępczy wyświetlany, gdy pole jest puste.',
+            typedPlaceholder:
+              'Podpowiedzi wpisywane do pustego pola znak po znaku z migającym kursorem, zastępowane kolejno w pętli; przy ograniczonym ruchu zmieniają się w całości. Zastępuje placeholder, gdy jest ustawiony.',
             readonly: 'Wyświetla pole tylko do odczytu.',
             required: 'Oznacza pole jako wymagane.',
             optional:
@@ -2988,6 +2994,11 @@ export const pl: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Pulpit',
         breadcrumbSettings: 'Ustawienia',
+        typedPlaceholderHints: [
+          'Kilka słów o projekcie…',
+          'W czym możemy pomóc?',
+          'Link do inspirującego projektu…',
+        ],
       },
     },
   },

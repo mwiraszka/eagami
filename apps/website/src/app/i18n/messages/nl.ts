@@ -1277,6 +1277,7 @@ export const nl: WebMessages = {
             showPasswordToggle: 'Wachtwoordschakelaar tonen',
             clearable: 'Wisbaar',
             autocomplete: 'Autocomplete',
+            typedHints: 'Getypte plaatsaanduiding',
           },
           'number-input': {
             allowNegative: 'Negatief toestaan',
@@ -1509,6 +1510,7 @@ export const nl: WebMessages = {
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
             optional: 'Optioneel',
+            typedHints: 'Getypte plaatsaanduiding',
           },
         },
         knobNotes: {
@@ -1677,6 +1679,8 @@ export const nl: WebMessages = {
             label: 'Tekstlabel weergegeven boven het veld.',
             type: 'Native invoertype (password voegt een ingebouwde tonen/verbergen-schakelaar toe).',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
+            typedPlaceholder:
+              'Hints die teken voor teken met een knipperende cursor in het lege veld worden getypt, elk in een lus vervangen door de volgende; bij beperkte beweging wisselen ze in hun geheel. Vervangt placeholder zolang ingesteld.',
             size: 'Visuele grootte van het veld.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             errorMsg:
@@ -2152,6 +2156,8 @@ export const nl: WebMessages = {
             showCount:
               'Toont onder het veld het aantal getypte tekens, afgezet tegen maxlength wanneer die is ingesteld.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
+            typedPlaceholder:
+              'Hints die teken voor teken met een knipperende cursor in het lege veld worden getypt, elk in een lus vervangen door de volgende; bij beperkte beweging wisselen ze in hun geheel. Vervangt placeholder zolang ingesteld.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
             optional:
@@ -3035,6 +3041,11 @@ export const nl: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',
         breadcrumbSettings: 'Instellingen',
+        typedPlaceholderHints: [
+          'Vertel ons over je project…',
+          'Waarmee kunnen we je helpen?',
+          'Deel een link naar een ontwerp dat je mooi vindt…',
+        ],
       },
     },
   },

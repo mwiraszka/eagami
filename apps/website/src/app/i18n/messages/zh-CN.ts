@@ -1213,6 +1213,7 @@ export const zhCN: WebMessages = {
             showPasswordToggle: '显示密码切换',
             clearable: '可清除',
             autocomplete: '自动完成',
+            typedHints: '打字占位符',
           },
           'number-input': {
             allowNegative: '允许负数',
@@ -1445,6 +1446,7 @@ export const zhCN: WebMessages = {
             readonly: '只读',
             required: '必填',
             optional: '可选',
+            typedHints: '打字占位符',
           },
         },
         knobNotes: {
@@ -1585,6 +1587,8 @@ export const zhCN: WebMessages = {
             label: '渲染在字段上方的文本标签。',
             type: '原生输入类型（password 会添加内建的显示/隐藏切换）。',
             placeholder: '字段为空时显示的占位符。',
+            typedPlaceholder:
+              '在空字段中伴随闪烁光标逐字输入的提示，依次循环替换；减少动态效果时整条切换。设置后取代 placeholder。',
             size: '字段的视觉尺寸。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
@@ -1957,6 +1961,8 @@ export const zhCN: WebMessages = {
             showCount:
               '在字段下方显示已输入的字符数，设置了 maxlength 时显示为相对于它的计数。',
             placeholder: '字段为空时显示的占位符。',
+            typedPlaceholder:
+              '在空字段中伴随闪烁光标逐字输入的提示，依次循环替换；减少动态效果时整条切换。设置后取代 placeholder。',
             readonly: '将字段渲染为只读。',
             required: '将字段标记为必填。',
             optional: '在标签后添加一个淡色的“（可选）”注释，除非同时设置了 required。',
@@ -2644,6 +2650,11 @@ export const zhCN: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: '仪表盘',
         breadcrumbSettings: '设置',
+        typedPlaceholderHints: [
+          '介绍一下你的项目…',
+          '需要我们帮什么忙？',
+          '分享一个你喜欢的设计链接…',
+        ],
       },
     },
   },

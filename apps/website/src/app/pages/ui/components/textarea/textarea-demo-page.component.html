@@ -6,6 +6,7 @@
     [slug]="slug"
     [knobs]="knobs"
     [state]="state()"
+    [extraAttributes]="extraAttributes()"
     (knobChange)="onKnob($event)"
     (resetClicked)="reset()">
     <ea-textarea
@@ -14,6 +15,7 @@
       [label]="state().label"
       [labelIcon]="labelIconComponent()"
       [placeholder]="state().placeholder"
+      [typedPlaceholder]="typedPlaceholder()"
       [size]="state().size"
       [resize]="state().resize"
       [maxlength]="state().maxlength"
