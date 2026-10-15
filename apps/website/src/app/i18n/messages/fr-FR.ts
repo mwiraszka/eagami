@@ -47,7 +47,7 @@ export const frFR: WebMessages = {
     },
     services: {
       title: 'Briques de base',
-      heading: 'Sur mesure, riche en fonctionnalités',
+      heading: 'Des sites sur mesure, riches en fonctionnalités',
       lede: 'Chaque site est conçu et développé de zéro. Choisissez vos fonctionnalités et regardez-le prendre vie.',
       features: [
         {
@@ -110,8 +110,8 @@ export const frFR: WebMessages = {
           hint: 'Sur l’écran d’accueil, même hors ligne',
         },
       ],
-      previousFeatures: 'Fonctionnalités précédentes',
-      nextFeatures: 'Fonctionnalités suivantes',
+      showMore: 'Afficher plus',
+      showFewer: 'Afficher moins',
       uiNote: {
         before: 'Tous les projets s’appuient sur',
         link: 'Eagami UI',
@@ -1314,6 +1314,7 @@ export const frFR: WebMessages = {
             showPasswordToggle: 'Bouton d’affichage du mot de passe',
             clearable: 'Effaçable',
             autocomplete: 'Autocomplétion',
+            typedHints: 'Texte indicatif tapé',
           },
           'number-input': {
             allowNegative: 'Autoriser les négatifs',
@@ -1546,6 +1547,7 @@ export const frFR: WebMessages = {
             readonly: 'Lecture seule',
             required: 'Requis',
             optional: 'Facultatif',
+            typedHints: 'Texte indicatif tapé',
           },
         },
         knobNotes: {
@@ -1717,6 +1719,8 @@ export const frFR: WebMessages = {
             label: 'Libellé affiché au-dessus du champ.',
             type: 'Type natif du champ (password ajoute un bouton afficher/masquer intégré).',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
+            typedPlaceholder:
+              'Indications tapées caractère par caractère dans le champ vide avec un curseur clignotant, chacune remplacée par la suivante en boucle ; avec le mouvement réduit, elles changent d’un bloc. Remplace placeholder lorsqu’il est défini.',
             size: 'Taille visuelle du champ.',
             hint: 'Texte d’aide affiché sous le champ, masqué en cas d’erreur.',
             errorMsg:
@@ -1840,6 +1844,10 @@ export const frFR: WebMessages = {
               'Identifiants des éléments dont le texte nomme le bouton, transmis à l’attribut natif aria-labelledby.',
             ariaDescribedby:
               'Identifiants des éléments qui décrivent le bouton, comme une indication, transmis à l’attribut natif aria-describedby.',
+            ariaExpanded:
+              'Indique si le contenu que le bouton affiche et masque est ouvert, transmis à l’attribut natif aria-expanded.',
+            ariaControls:
+              'Identifiant de l’élément que le bouton affiche, masque ou contrôle autrement, transmis à l’attribut natif aria-controls.',
             focus: 'Place le focus clavier sur le bouton natif sous-jacent.',
           },
           'button-link': {
@@ -2182,6 +2190,8 @@ export const frFR: WebMessages = {
             showCount:
               'Affiche sous le champ le nombre de caractères saisis, rapporté à maxlength lorsqu’il est défini.',
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
+            typedPlaceholder:
+              'Indications tapées caractère par caractère dans le champ vide avec un curseur clignotant, chacune remplacée par la suivante en boucle ; avec le mouvement réduit, elles changent d’un bloc. Remplace placeholder lorsqu’il est défini.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
             optional:
@@ -3058,6 +3068,11 @@ export const frFR: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Tableau de bord',
         breadcrumbSettings: 'Paramètres',
+        typedPlaceholderHints: [
+          'Parlez-nous de votre projet…',
+          'Sur quoi pouvons-nous vous aider ?',
+          'Partagez le lien d’un design qui vous plaît…',
+        ],
       },
     },
   },

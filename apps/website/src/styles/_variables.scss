@@ -92,6 +92,7 @@
   /* Home projects band: always deep navy, whatever the page theme */
   --web-color-bandBg: var(--color-primary-900);
   --web-color-bandText: var(--color-neutral-50);
+  --web-color-bandDivider: color-mix(in srgb, var(--color-neutral-50) 18%, transparent);
   --web-color-bandMuted: var(--color-secondary-200);
   --web-color-bandSubtle: var(--color-secondary-300);
   --web-color-bandAccent: var(--color-primary-300);

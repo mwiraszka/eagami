@@ -122,9 +122,6 @@ export class HomePageComponent {
     return this.contactForm.valid;
   });
 
-  /* Example messages cycled through the placeholder to prime senders on what to write */
-  protected readonly contactMessagePlaceholder = signal('');
-
   private readonly destroyRef = inject(DestroyRef);
   private readonly changeDetector = inject(ChangeDetectorRef);
 
@@ -161,7 +158,6 @@ export class HomePageComponent {
     });
 
     afterNextRender(() => {
-      this.runContactPlaceholderAnimation();
       this.setupScrollSpy();
       this.setupThread();
     });
@@ -340,69 +336,6 @@ export class HomePageComponent {
     const drawn = threadLengthAt(samples, window.innerHeight * THREAD_TIP - homeTop);
     svg.style.setProperty('--thread-drawn', `${drawn}px`);
     this.threadComplete.set(drawn >= samples.total - 1);
-  }
-
-  private runContactPlaceholderAnimation(): void {
-    const TYPE_MS = 45;
-    const HOLD_AFTER_TYPE_MS = 2500;
-    const CURSOR = '|';
-
-    /* Under `prefers-reduced-motion: reduce` skip the typewriter: rotate full
-       hints slowly with no cursor. The hint is decorative; SR users have the label. */
-    const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let msgIdx = 0;
-    let charIdx = 0;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-
-    const hints = (): ReadonlyArray<string> =>
-      this.messages().home.contact.placeholderHints;
-
-    if (motionReduced) {
-      const ROTATE_MS = 6000;
-      const rotate = (): void => {
-        const h = hints();
-        this.contactMessagePlaceholder.set(h[msgIdx % h.length]);
-        msgIdx = (msgIdx + 1) % h.length;
-        timer = setTimeout(rotate, ROTATE_MS);
-      };
-
-      this.destroyRef.onDestroy(() => {
-        if (timer !== undefined) {
-          clearTimeout(timer);
-        }
-      });
-
-      rotate();
-      return;
-    }
-
-    const typeNext = (): void => {
-      const h = hints();
-      const current = h[msgIdx % h.length];
-      charIdx++;
-      this.contactMessagePlaceholder.set(current.slice(0, charIdx) + CURSOR);
-
-      if (charIdx >= current.length) {
-        timer = setTimeout(() => {
-          msgIdx = (msgIdx + 1) % hints().length;
-          charIdx = 0;
-          this.contactMessagePlaceholder.set(CURSOR);
-          timer = setTimeout(typeNext, TYPE_MS);
-        }, HOLD_AFTER_TYPE_MS);
-        return;
-      }
-
-      timer = setTimeout(typeNext, TYPE_MS);
-    };
-
-    this.destroyRef.onDestroy(() => {
-      if (timer !== undefined) {
-        clearTimeout(timer);
-      }
-    });
-
-    typeNext();
   }
 
   protected submitContact(): void {

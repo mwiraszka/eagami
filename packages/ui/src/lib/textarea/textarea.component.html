@@ -19,8 +19,9 @@
       #textareaEl
       class="ea-textarea"
       dir="auto"
+      [class.ea-textarea--typed-placeholder]="typedPlaceholderShown()"
       [id]="id()"
-      [placeholder]="placeholder()"
+      [placeholder]="nativePlaceholder()"
       [disabled]="isDisabled()"
       [readOnly]="readonly()"
       [required]="required()"
@@ -32,6 +33,13 @@
       (input)="handleInput($event)"
       (focus)="handleFocus($event)"
       (blur)="handleBlur($event)"></textarea>
+
+    @if (typedPlaceholderShown()) {
+      <ea-typed-placeholder
+        class="ea-textarea-wrapper__typed-placeholder"
+        [text]="typed.text()"
+        [typing]="typed.typing()" />
+    }
   </div>
 
   <ng-template #messages>

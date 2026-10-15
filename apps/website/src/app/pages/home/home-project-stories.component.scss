@@ -215,11 +215,12 @@
 
 .stories__summary {
   display: none;
+  padding-bottom: 16px;
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
-  line-height: 1.35;
-  font-family: var(--font-family-brand);
+  line-height: 1.5;
+  font-family: var(--font-family-sans);
+  border-bottom: 1px solid var(--web-color-bandDivider);
   color: var(--web-color-bandText);
 
   @include mixins.respond-to('lt-lg') {

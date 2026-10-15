@@ -4,8 +4,8 @@ import {
   ButtonComponent,
   CalendarCheckIconComponent,
   CalendarDaysIconComponent,
-  ChevronLeftIconComponent,
-  ChevronRightIconComponent,
+  ChevronDownIconComponent,
+  ChevronUpIconComponent,
   CreditCardIconComponent,
   DownloadIconComponent,
   Edit2IconComponent,
@@ -30,15 +30,10 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
-  type ElementRef,
   type Type,
-  afterNextRender,
-  afterRenderEffect,
   computed,
   inject,
   signal,
-  viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -108,6 +103,17 @@ const DEFAULT_FEATURES: ReadonlyArray<HomeFeatureId> = [
   'analytics',
 ];
 
+/* Shown before Show more; the rest join them, after them, once it is opened */
+const PRIMARY_FEATURES: ReadonlySet<HomeFeatureId> = new Set([
+  'accounts',
+  'payments',
+  'bookings',
+  'cms',
+  'languages',
+  'theming',
+  'analytics',
+]);
+
 function daysFromToday(days: number): Date {
   const date = new Date();
   date.setHours(0, 0, 0, 0);
@@ -142,16 +148,11 @@ function daysFromToday(days: number): Date {
 })
 export class HomeFeatureBuilderComponent {
   private readonly i18n = inject(WebI18nService);
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly featureList =
-    viewChild.required<ElementRef<HTMLElement>>('featureList');
 
-  protected readonly chevronLeft = ChevronLeftIconComponent;
-  protected readonly chevronRight = ChevronRightIconComponent;
+  protected readonly chevronDown = ChevronDownIconComponent;
+  protected readonly chevronUp = ChevronUpIconComponent;
 
-  /** Whether the compact chip row has chips hidden before or after the visible ones */
-  protected readonly canScrollBack = signal(false);
-  protected readonly canScrollForward = signal(false);
+  protected readonly expanded = signal(false);
 
   protected readonly services = computed(() => this.i18n.messages().home.services);
   protected readonly greetings = GREETINGS;
@@ -169,8 +170,17 @@ export class HomeFeatureBuilderComponent {
       ...feature,
       icon: FEATURE_ICONS[feature.id],
       on: this.enabled().has(feature.id),
+      primary: PRIMARY_FEATURES.has(feature.id),
     })),
   );
+
+  protected readonly shownFeatures = computed(() => {
+    const features = this.features();
+    const primary = features.filter(feature => feature.primary);
+    return this.expanded()
+      ? [...primary, ...features.filter(feature => !feature.primary)]
+      : primary;
+  });
 
   /** The feature whose description the compact layout's caption shows */
   private readonly lastToggled = signal<HomeFeatureId | null>(null);
@@ -225,40 +235,6 @@ export class HomeFeatureBuilderComponent {
       return { title, month: month.format(date), day: day.format(date) };
     });
   });
-
-  constructor() {
-    afterNextRender(() => {
-      const observer = new ResizeObserver(() => this.updateScrollState());
-      observer.observe(this.featureList().nativeElement);
-      this.destroyRef.onDestroy(() => observer.disconnect());
-    });
-
-    // The labels change length with the locale, which changes how far the row scrolls
-    afterRenderEffect(() => {
-      this.features();
-      this.updateScrollState();
-    });
-  }
-
-  protected updateScrollState(): void {
-    const list = this.featureList().nativeElement;
-    // RTL scroll offsets run negative from zero, so compare distances
-    const scrolled = Math.abs(list.scrollLeft);
-    const scrollable = list.scrollWidth - list.clientWidth;
-    this.canScrollBack.set(scrolled > 1);
-    this.canScrollForward.set(scrolled < scrollable - 1);
-  }
-
-  /** Scrolls the chip row by most of its width, so a few chips stay in view for context */
-  protected scrollFeatures(direction: 1 | -1): void {
-    const list = this.featureList().nativeElement;
-    const inline = getComputedStyle(list).direction === 'rtl' ? -1 : 1;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    list.scrollBy({
-      left: direction * inline * list.clientWidth * 0.8,
-      behavior: reducedMotion ? 'auto' : 'smooth',
-    });
-  }
 
   protected setFeature(id: HomeFeatureId, on: boolean): void {
     this.lastToggled.set(id);

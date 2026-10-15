@@ -44,7 +44,7 @@ export const is: WebMessages = {
     },
     services: {
       title: 'Byggingareiningar',
-      heading: 'Sérsmíðað og fullbúið',
+      heading: 'Sérsmíðaðir og fullbúnir vefir',
       lede: 'Hver vefur er hannaður og smíðaður frá grunni. Veldu eiginleikana þína og sjáðu hann lifna við.',
       features: [
         {
@@ -95,8 +95,8 @@ export const is: WebMessages = {
           hint: 'Á heimaskjánum, líka án nettengingar',
         },
       ],
-      previousFeatures: 'Fyrri eiginleikar',
-      nextFeatures: 'Næstu eiginleikar',
+      showMore: 'Sýna fleiri',
+      showFewer: 'Sýna færri',
       uiNote: {
         before: 'Öll verkefni eru byggð á',
         link: 'Eagami UI',
@@ -1289,6 +1289,7 @@ export const is: WebMessages = {
             showPasswordToggle: 'Sýna lykilorðsvíxlun',
             clearable: 'Hreinsanlegt',
             autocomplete: 'Sjálfvirk útfylling',
+            typedHints: 'Vélritaður staðgengill',
           },
           'number-input': {
             allowNegative: 'Leyfa neikvæð gildi',
@@ -1521,6 +1522,7 @@ export const is: WebMessages = {
             readonly: 'Skrifvarið',
             required: 'Krafist',
             optional: 'Valfrjálst',
+            typedHints: 'Vélritaður staðgengill',
           },
         },
         knobNotes: {
@@ -1686,6 +1688,8 @@ export const is: WebMessages = {
             label: 'Textamerkimiði birtur fyrir ofan reitinn.',
             type: 'Innbyggð inntaksgerð (lykilorð bætir við innbyggðri sýna/fela víxlun).',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
+            typedPlaceholder:
+              'Vísbendingar sem eru vélritaðar í tóma reitinn staf fyrir staf með blikkandi bendli og leysa hver aðra af í lykkju; með minnkaðri hreyfingu skiptast þær heilar. Kemur í stað placeholder meðan stillt.',
             size: 'Sjónræn stærð reitsins.',
             hint: 'Hjálpartexti sýndur fyrir neðan reitinn, falinn á meðan villa er sýnd.',
             errorMsg:
@@ -1804,6 +1808,10 @@ export const is: WebMessages = {
               'Auðkenni þeirra eininga sem gefa hnappnum heiti með texta sínum, send áfram í innbyggða aria-labelledby eigindið.',
             ariaDescribedby:
               'Auðkenni þeirra eininga sem lýsa hnappnum, t.d. vísbendingar, send áfram í innbyggða aria-describedby eigindið.',
+            ariaExpanded:
+              'Hvort efnið sem hnappurinn sýnir og felur er opið, sent áfram í innbyggða aria-expanded-eigindið.',
+            ariaControls:
+              'Auðkenni einingarinnar sem hnappurinn sýnir, felur eða stýrir á annan hátt, sent áfram í innbyggða aria-controls-eigindið.',
             focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða hnappinn.',
           },
           'button-link': {
@@ -2137,6 +2145,8 @@ export const is: WebMessages = {
             showCount:
               'Sýnir fjölda innsleginna stafa fyrir neðan reitinn, á móti maxlength þegar það er stillt.',
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
+            typedPlaceholder:
+              'Vísbendingar sem eru vélritaðar í tóma reitinn staf fyrir staf með blikkandi bendli og leysa hver aðra af í lykkju; með minnkaðri hreyfingu skiptast þær heilar. Kemur í stað placeholder meðan stillt.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
             optional:
@@ -2981,6 +2991,11 @@ export const is: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Stjórnborð',
         breadcrumbSettings: 'Stillingar',
+        typedPlaceholderHints: [
+          'Segðu okkur frá verkefninu þínu…',
+          'Með hvað getum við aðstoðað?',
+          'Deildu tengli á hönnun sem þér líkar…',
+        ],
       },
     },
   },

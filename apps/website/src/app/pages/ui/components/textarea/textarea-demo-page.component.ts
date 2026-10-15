@@ -1,10 +1,18 @@
 import { TextareaComponent, type TextareaResize, type TextareaSize } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { UI_API } from '@app/data/ui-api.generated';
+import { WebI18nService } from '@app/i18n/web-i18n.service';
 
 import { UiComponentDemoLayoutComponent } from '../_layout/ui-component-demo-layout.component';
 import {
@@ -18,6 +26,7 @@ import {
   initialKnobState,
   injectKnobDefaults,
 } from '../_playground/knob';
+import { typedPlaceholderAttribute } from '../_playground/snippet';
 
 interface TextareaKnobState {
   // Index signature lets this typed state satisfy the playground's generic
@@ -36,10 +45,12 @@ interface TextareaKnobState {
   readonly: boolean;
   required: boolean;
   optional: boolean;
+  typedHints: boolean;
   triggerError: boolean;
 }
 
 const SLUG = 'textarea';
+const NO_HINTS: readonly string[] = [];
 
 @Component({
   selector: 'web-textarea-demo-page',
@@ -53,6 +64,8 @@ const SLUG = 'textarea';
   ],
 })
 export class TextareaDemoPageComponent {
+  private readonly messages = inject(WebI18nService).messages;
+
   protected readonly slug = SLUG;
   private readonly knobDefaults = injectKnobDefaults(SLUG);
   protected readonly knobs = [
@@ -65,6 +78,16 @@ export class TextareaDemoPageComponent {
       PLAYGROUND_KNOBS.textarea,
       this.knobDefaults,
     ) as TextareaKnobState,
+  );
+
+  protected readonly typedPlaceholder = computed(() =>
+    this.state().typedHints
+      ? this.messages().ui.component.sharedOptions.typedPlaceholderHints
+      : NO_HINTS,
+  );
+
+  protected readonly extraAttributes = computed(() =>
+    this.state().typedHints ? [typedPlaceholderAttribute(this.typedPlaceholder())] : [],
   );
 
   protected readonly control = new FormControl(null, {

@@ -24,6 +24,38 @@ beforeEach(() => {
  */
 export const REAL_GET_COMPUTED_STYLE = window.getComputedStyle.bind(window);
 
+/** A `prefers-reduced-motion` query a spec can flip, firing `change` as a browser does. */
+export class FakeMotionQuery extends EventTarget implements MediaQueryList {
+  readonly media = '(prefers-reduced-motion: reduce)';
+  onchange: MediaQueryList['onchange'] = null;
+
+  constructor(public matches: boolean) {
+    super();
+  }
+
+  addListener(): void {}
+
+  removeListener(): void {}
+
+  set(matches: boolean): void {
+    this.matches = matches;
+    this.dispatchEvent(new Event('change'));
+  }
+}
+
+/**
+ * Answers `matchMedia`, which jsdom does not implement, with one motion query.
+ * Undone by `vi.unstubAllGlobals()`.
+ */
+export function stubMotionQuery(reduced: boolean): FakeMotionQuery {
+  const query = new FakeMotionQuery(reduced);
+  vi.stubGlobal(
+    'matchMedia',
+    vi.fn((): MediaQueryList => query),
+  );
+  return query;
+}
+
 /**
  * Reveals the open popover surfaces so an accessibility scan can reach them.
  *

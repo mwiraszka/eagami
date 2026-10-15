@@ -43,7 +43,7 @@ export const he: WebMessages = {
     },
     services: {
       title: 'אבני בניין',
-      heading: 'בהתאמה אישית, עם כל היכולות',
+      heading: 'אתרים בהתאמה אישית, עם כל היכולות',
       lede: 'כל אתר מעוצב ונבנה מאפס. בחרו את היכולות שלכם וצפו בו קם לתחייה.',
       features: [
         {
@@ -66,8 +66,8 @@ export const he: WebMessages = {
         { id: 'maps', title: 'מפות ומיקום', hint: 'הוראות הגעה ושעות פתיחה' },
         { id: 'pwa', title: 'אפליקציה להתקנה', hint: 'במסך הבית, גם בלי חיבור' },
       ],
-      previousFeatures: 'היכולות הקודמות',
-      nextFeatures: 'היכולות הבאות',
+      showMore: 'הצג עוד',
+      showFewer: 'הצג פחות',
       uiNote: {
         before: 'כל הפרויקטים בנויים על',
         link: 'Eagami UI',
@@ -1230,6 +1230,7 @@ export const he: WebMessages = {
             showPasswordToggle: 'הצג מתג סיסמה',
             clearable: 'ניתן לניקוי',
             autocomplete: 'השלמה אוטומטית',
+            typedHints: 'מציין מיקום מוקלד',
           },
           'number-input': {
             allowNegative: 'אפשר ערכים שליליים',
@@ -1462,6 +1463,7 @@ export const he: WebMessages = {
             readonly: 'קריאה בלבד',
             required: 'חובה',
             optional: 'אופציונלי',
+            typedHints: 'מציין מיקום מוקלד',
           },
         },
         knobNotes: {
@@ -1610,6 +1612,8 @@ export const he: WebMessages = {
             label: 'תווית טקסט המוצגת מעל השדה.',
             type: 'סוג input מקורי (password מוסיף מתג הצגה/הסתרה מובנה).',
             placeholder: 'מציין מיקום המוצג כשהשדה ריק.',
+            typedPlaceholder:
+              'רמזים שמוקלדים בשדה הריק תו אחר תו עם סמן מהבהב, וכל אחד מוחלף בבא אחריו בלולאה; בתנועה מופחתת הם מתחלפים בשלמותם. מחליף את placeholder כל עוד הוא מוגדר.',
             size: 'גודל ויזואלי של השדה.',
             hint: 'טקסט עזר המוצג מתחת לשדה, מוסתר בזמן שמוצגת שגיאה.',
             errorMsg:
@@ -1721,6 +1725,10 @@ export const he: WebMessages = {
               'מזהי הרכיבים שהטקסט שלהם נותן לכפתור את שמו, מועברים למאפיין aria-labelledby המקורי.',
             ariaDescribedby:
               'מזהי הרכיבים שמתארים את הכפתור, כמו רמז, מועברים למאפיין aria-describedby המקורי.',
+            ariaExpanded:
+              'האם התוכן שהכפתור מציג ומסתיר פתוח, מועבר לתכונה המקורית aria-expanded.',
+            ariaControls:
+              'המזהה של הרכיב שהכפתור מציג, מסתיר או שולט בו בדרך אחרת, מועבר לתכונה המקורית aria-controls.',
             focus: 'מעביר את פוקוס המקלדת לכפתור המקורי שבבסיס.',
           },
           'button-link': {
@@ -2021,6 +2029,8 @@ export const he: WebMessages = {
             showCount:
               'מציג מתחת לשדה את מספר התווים שהוקלדו, מול maxlength כשהוא מוגדר.',
             placeholder: 'מציין מיקום המוצג כשהשדה ריק.',
+            typedPlaceholder:
+              'רמזים שמוקלדים בשדה הריק תו אחר תו עם סמן מהבהב, וכל אחד מוחלף בבא אחריו בלולאה; בתנועה מופחתת הם מתחלפים בשלמותם. מחליף את placeholder כל עוד הוא מוגדר.',
             readonly: 'הופך את השדה לקריאה בלבד.',
             required: 'מסמן את השדה כחובה.',
             optional:
@@ -2786,6 +2796,11 @@ export const he: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'לוח בקרה',
         breadcrumbSettings: 'הגדרות',
+        typedPlaceholderHints: [
+          'ספרו לנו על הפרויקט שלכם…',
+          'במה נוכל לעזור?',
+          'שתפו קישור לעיצוב שאהבתם…',
+        ],
       },
     },
   },

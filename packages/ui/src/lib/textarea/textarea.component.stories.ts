@@ -30,6 +30,16 @@ type Story = StoryObj<TextareaComponent>;
 
 export const Playground: Story = {};
 
+export const TypedPlaceholder: Story = {
+  args: {
+    typedPlaceholder: [
+      'Tell us about your project…',
+      'What would you like help with?',
+      'Share a link to a design you like…',
+    ],
+  },
+};
+
 // The button takes focus on click, but the textarea keeps its selection, so the
 // snippet still lands where the caret was left
 export const InsertAtCaret: Story = {

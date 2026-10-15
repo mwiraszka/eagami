@@ -44,7 +44,7 @@ export const ptBR: WebMessages = {
     },
     services: {
       title: 'Blocos de construção',
-      heading: 'Sob medida, com todos os recursos',
+      heading: 'Sites sob medida, com todos os recursos',
       lede: 'Cada site é projetado e construído do zero. Escolha seus recursos e veja-o ganhar vida.',
       features: [
         {
@@ -87,8 +87,8 @@ export const ptBR: WebMessages = {
         },
         { id: 'pwa', title: 'App instalável', hint: 'Na tela inicial, mesmo offline' },
       ],
-      previousFeatures: 'Recursos anteriores',
-      nextFeatures: 'Próximos recursos',
+      showMore: 'Mostrar mais',
+      showFewer: 'Mostrar menos',
       uiNote: {
         before: 'Todos os projetos são construídos sobre',
         link: 'Eagami UI',
@@ -1276,6 +1276,7 @@ export const ptBR: WebMessages = {
             showPasswordToggle: 'Mostrar alternância de senha',
             clearable: 'Limpável',
             autocomplete: 'Autocompletar',
+            typedHints: 'Placeholder digitado',
           },
           'number-input': {
             allowNegative: 'Permitir negativos',
@@ -1508,6 +1509,7 @@ export const ptBR: WebMessages = {
             readonly: 'Somente leitura',
             required: 'Obrigatório',
             optional: 'Opcional',
+            typedHints: 'Placeholder digitado',
           },
         },
         knobNotes: {
@@ -1676,6 +1678,8 @@ export const ptBR: WebMessages = {
             label: 'Rótulo de texto renderizado acima do campo.',
             type: 'Tipo de input nativo (password adiciona uma alternância integrada de mostrar/ocultar).',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
+            typedPlaceholder:
+              'Dicas digitadas no campo vazio um caractere por vez com um cursor piscando, cada uma substituída pela próxima em loop; com movimento reduzido, elas trocam inteiras. Substitui placeholder enquanto definido.',
             size: 'Tamanho visual do campo.',
             hint: 'Texto auxiliar exibido abaixo do campo, oculto enquanto um erro é exibido.',
             errorMsg:
@@ -1798,6 +1802,10 @@ export const ptBR: WebMessages = {
               'Ids dos elementos cujo texto nomeia o botão, repassados ao atributo nativo aria-labelledby.',
             ariaDescribedby:
               'Ids dos elementos que descrevem o botão, como uma dica, repassados ao atributo nativo aria-describedby.',
+            ariaExpanded:
+              'Indica se o conteúdo que o botão mostra e oculta está aberto, repassado ao atributo nativo aria-expanded.',
+            ariaControls:
+              'Id do elemento que o botão mostra, oculta ou controla de outra forma, repassado ao atributo nativo aria-controls.',
             focus: 'Move o foco do teclado para o botão nativo subjacente.',
           },
           'button-link': {
@@ -2141,6 +2149,8 @@ export const ptBR: WebMessages = {
             showCount:
               'Mostra abaixo do campo o número de caracteres digitados, em relação a maxlength quando definido.',
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
+            typedPlaceholder:
+              'Dicas digitadas no campo vazio um caractere por vez com um cursor piscando, cada uma substituída pela próxima em loop; com movimento reduzido, elas trocam inteiras. Substitui placeholder enquanto definido.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
             optional:
@@ -3005,6 +3015,11 @@ export const ptBR: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Painel',
         breadcrumbSettings: 'Configurações',
+        typedPlaceholderHints: [
+          'Conte-nos sobre o seu projeto…',
+          'Com o que podemos ajudar?',
+          'Compartilhe o link de um design que você curte…',
+        ],
       },
     },
   },

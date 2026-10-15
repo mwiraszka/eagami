@@ -44,7 +44,7 @@ export const nl: WebMessages = {
     },
     services: {
       title: 'Bouwstenen',
-      heading: 'Op maat gebouwd, compleet uitgerust',
+      heading: 'Websites op maat, compleet uitgerust',
       lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Kies je functies en zie hem tot leven komen.',
       features: [
         {
@@ -91,8 +91,8 @@ export const nl: WebMessages = {
           hint: 'Op het beginscherm, ook offline',
         },
       ],
-      previousFeatures: 'Vorige functies',
-      nextFeatures: 'Volgende functies',
+      showMore: 'Meer tonen',
+      showFewer: 'Minder tonen',
       uiNote: {
         before: 'Alle projecten worden gebouwd op',
         link: 'Eagami UI',
@@ -1277,6 +1277,7 @@ export const nl: WebMessages = {
             showPasswordToggle: 'Wachtwoordschakelaar tonen',
             clearable: 'Wisbaar',
             autocomplete: 'Autocomplete',
+            typedHints: 'Getypte plaatsaanduiding',
           },
           'number-input': {
             allowNegative: 'Negatief toestaan',
@@ -1509,6 +1510,7 @@ export const nl: WebMessages = {
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
             optional: 'Optioneel',
+            typedHints: 'Getypte plaatsaanduiding',
           },
         },
         knobNotes: {
@@ -1677,6 +1679,8 @@ export const nl: WebMessages = {
             label: 'Tekstlabel weergegeven boven het veld.',
             type: 'Native invoertype (password voegt een ingebouwde tonen/verbergen-schakelaar toe).',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
+            typedPlaceholder:
+              'Hints die teken voor teken met een knipperende cursor in het lege veld worden getypt, elk in een lus vervangen door de volgende; bij beperkte beweging wisselen ze in hun geheel. Vervangt placeholder zolang ingesteld.',
             size: 'Visuele grootte van het veld.',
             hint: 'Hulptekst onder het veld, verborgen terwijl een fout wordt getoond.',
             errorMsg:
@@ -1802,6 +1806,10 @@ export const nl: WebMessages = {
               'Identificatoren van de elementen waarvan de tekst de knop benoemt, doorgegeven aan het native aria-labelledby-attribuut.',
             ariaDescribedby:
               'Identificatoren van de elementen die de knop beschrijven, zoals een hint, doorgegeven aan het native aria-describedby-attribuut.',
+            ariaExpanded:
+              'Of de inhoud die de knop toont en verbergt open is, doorgegeven aan het native aria-expanded-attribuut.',
+            ariaControls:
+              'Id van het element dat de knop toont, verbergt of anderszins bestuurt, doorgegeven aan het native aria-controls-attribuut.',
             focus: 'Verplaatst de toetsenbordfocus naar de onderliggende native knop.',
           },
           'button-link': {
@@ -2152,6 +2160,8 @@ export const nl: WebMessages = {
             showCount:
               'Toont onder het veld het aantal getypte tekens, afgezet tegen maxlength wanneer die is ingesteld.',
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
+            typedPlaceholder:
+              'Hints die teken voor teken met een knipperende cursor in het lege veld worden getypt, elk in een lus vervangen door de volgende; bij beperkte beweging wisselen ze in hun geheel. Vervangt placeholder zolang ingesteld.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
             optional:
@@ -3035,6 +3045,11 @@ export const nl: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',
         breadcrumbSettings: 'Instellingen',
+        typedPlaceholderHints: [
+          'Vertel ons over je project…',
+          'Waarmee kunnen we je helpen?',
+          'Deel een link naar een ontwerp dat je mooi vindt…',
+        ],
       },
     },
   },

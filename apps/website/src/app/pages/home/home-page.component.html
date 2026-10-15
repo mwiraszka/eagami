@@ -176,7 +176,7 @@
           <ea-textarea
             [label]="messages().home.contact.messageLabel"
             formControlName="message"
-            [placeholder]="contactMessagePlaceholder()"
+            [typedPlaceholder]="messages().home.contact.placeholderHints"
             [maxHeight]="300"
             [required]="true"
             [errorMessages]="contactFieldErrors" />

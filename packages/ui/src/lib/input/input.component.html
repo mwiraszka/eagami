@@ -25,40 +25,50 @@
       <ng-content select="[slot=prefix]" />
     </span>
 
-    <input
-      #inputEl
-      class="ea-input"
-      dir="auto"
-      [id]="id()"
-      [type]="effectiveType()"
-      [placeholder]="placeholder()"
-      [disabled]="isDisabled()"
-      [readOnly]="readonly()"
-      [required]="required()"
-      [value]="value()"
-      [attr.autocomplete]="autocomplete() ?? null"
-      [attr.spellcheck]="spellcheck() ?? null"
-      [attr.list]="list() ?? null"
-      [attr.min]="type() === 'number' ? (min() ?? null) : null"
-      [attr.max]="type() === 'number' ? (max() ?? null) : null"
-      [attr.step]="type() === 'number' ? (step() ?? null) : null"
-      [attr.maxlength]="maxLength() ?? null"
-      [attr.minlength]="minLength() ?? null"
-      [attr.role]="role() ?? null"
-      [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
-      [attr.aria-expanded]="ariaExpanded() ?? null"
-      [attr.aria-controls]="ariaControls() ?? null"
-      [attr.aria-activedescendant]="ariaActivedescendant() ?? null"
-      [attr.aria-autocomplete]="ariaAutocomplete() ?? null"
-      [attr.aria-invalid]="hasError() || null"
-      [attr.aria-describedby]="
-        showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
-      "
-      (input)="handleInput($event)"
-      (keydown)="handleKeydown($event)"
-      (wheel)="handleWheel($event)"
-      (focus)="handleFocus($event)"
-      (blur)="handleBlur($event)" />
+    <span class="ea-input-wrapper__control">
+      <input
+        #inputEl
+        class="ea-input"
+        dir="auto"
+        [class.ea-input--typed-placeholder]="typedPlaceholderShown()"
+        [id]="id()"
+        [type]="effectiveType()"
+        [placeholder]="nativePlaceholder()"
+        [disabled]="isDisabled()"
+        [readOnly]="readonly()"
+        [required]="required()"
+        [value]="value()"
+        [attr.autocomplete]="autocomplete() ?? null"
+        [attr.spellcheck]="spellcheck() ?? null"
+        [attr.list]="list() ?? null"
+        [attr.min]="type() === 'number' ? (min() ?? null) : null"
+        [attr.max]="type() === 'number' ? (max() ?? null) : null"
+        [attr.step]="type() === 'number' ? (step() ?? null) : null"
+        [attr.maxlength]="maxLength() ?? null"
+        [attr.minlength]="minLength() ?? null"
+        [attr.role]="role() ?? null"
+        [attr.aria-label]="label() ? null : (ariaLabel() ?? null)"
+        [attr.aria-expanded]="ariaExpanded() ?? null"
+        [attr.aria-controls]="ariaControls() ?? null"
+        [attr.aria-activedescendant]="ariaActivedescendant() ?? null"
+        [attr.aria-autocomplete]="ariaAutocomplete() ?? null"
+        [attr.aria-invalid]="hasError() || null"
+        [attr.aria-describedby]="
+          showError() ? id() + '-error' : showHint() ? id() + '-hint' : null
+        "
+        (input)="handleInput($event)"
+        (keydown)="handleKeydown($event)"
+        (wheel)="handleWheel($event)"
+        (focus)="handleFocus($event)"
+        (blur)="handleBlur($event)" />
+
+      @if (typedPlaceholderShown()) {
+        <ea-typed-placeholder
+          class="ea-input-wrapper__typed-placeholder"
+          [text]="typed.text()"
+          [typing]="typed.typing()" />
+      }
+    </span>
 
     <span class="ea-input-wrapper__suffix">
       <ng-content select="[slot=suffix]" />

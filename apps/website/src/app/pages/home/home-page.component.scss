@@ -406,7 +406,7 @@
 }
 
 .home-section__title {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(32px, 4vw, 42px);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.025em;
@@ -414,15 +414,15 @@
   color: var(--color-text-primary);
 }
 
-/* Logo size and gap match the eagami wordmark's lockup */
+/* The heron's beak tucks over the start of the word, as in the brand wordmark */
 .home-section__title--lockup {
   display: flex;
   align-items: center;
-  gap: 0.125em;
 }
 
 .home-section__logo {
   flex-shrink: 0;
+  margin-inline-end: -4px;
   font-size: 1.5em;
 }
 

@@ -3,8 +3,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   type ElementRef,
+  Renderer2,
   type Type,
   computed,
+  effect,
+  inject,
   input,
   output,
   viewChild,
@@ -73,8 +76,18 @@ export class ButtonComponent {
   readonly ariaDescribedby = input<string | undefined>(undefined, {
     alias: 'aria-describedby',
   });
+  /** Whether the content this button shows and hides is open, for a disclosure toggle. */
+  readonly ariaExpanded = input<boolean | undefined>(undefined, {
+    alias: 'aria-expanded',
+  });
+  /** Id of the element this button shows, hides or otherwise controls. */
+  readonly ariaControls = input<string | undefined>(undefined, {
+    alias: 'aria-controls',
+  });
 
+  private readonly renderer = inject(Renderer2);
   private readonly buttonEl = viewChild<ElementRef<HTMLButtonElement>>('buttonEl');
+  private readonly ownedAria = new Set<string>();
 
   /** Fires when the button is activated; suppressed while disabled or loading. */
   readonly clicked = output<MouseEvent>();
@@ -93,6 +106,24 @@ export class ButtonComponent {
     }),
   );
 
+  constructor() {
+    // Written only when given: trigger directives such as the menu trigger keep
+    // the same state on the inner button, and an empty binding would wipe it
+    effect(() => {
+      const button = this.buttonEl()?.nativeElement;
+      if (!button) {
+        return;
+      }
+      const expanded = this.ariaExpanded();
+      this.reflectAria(
+        button,
+        'aria-expanded',
+        expanded === undefined ? undefined : String(expanded),
+      );
+      this.reflectAria(button, 'aria-controls', this.ariaControls() || undefined);
+    });
+  }
+
   handleClick(event: MouseEvent): void {
     if (this.isDisabled()) {
       event.preventDefault();
@@ -104,5 +135,18 @@ export class ButtonComponent {
   /** Moves keyboard focus to the underlying native button. */
   focus(): void {
     this.buttonEl()?.nativeElement.focus();
+  }
+
+  private reflectAria(
+    button: HTMLButtonElement,
+    name: string,
+    value: string | undefined,
+  ): void {
+    if (value !== undefined) {
+      this.renderer.setAttribute(button, name, value);
+      this.ownedAria.add(name);
+    } else if (this.ownedAria.delete(name)) {
+      this.renderer.removeAttribute(button, name);
+    }
   }
 }

@@ -92,8 +92,8 @@ export interface WebMessages {
       heading: string;
       lede: string;
       features: ReadonlyArray<{ id: HomeFeatureId; title: string; hint: string }>;
-      previousFeatures: string;
-      nextFeatures: string;
+      showMore: string;
+      showFewer: string;
       uiNote: {
         before: string;
         link: string;
@@ -1033,6 +1033,7 @@ export interface WebMessages {
         breadcrumbMacBookPro: string;
         breadcrumbDashboard: string;
         breadcrumbSettings: string;
+        typedPlaceholderHints: ReadonlyArray<string>;
       };
     };
   };

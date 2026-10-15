@@ -43,7 +43,7 @@ export const esES: WebMessages = {
     },
     services: {
       title: 'Piezas clave',
-      heading: 'A medida y con todas las funciones',
+      heading: 'Sitios web a medida y con todas las funciones',
       lede: 'Cada sitio se diseña y se construye desde cero. Elige tus funcionalidades y míralo cobrar vida.',
       features: [
         {
@@ -98,8 +98,8 @@ export const esES: WebMessages = {
           hint: 'En la pantalla de inicio, incluso sin conexión',
         },
       ],
-      previousFeatures: 'Funcionalidades anteriores',
-      nextFeatures: 'Funcionalidades siguientes',
+      showMore: 'Mostrar más',
+      showFewer: 'Mostrar menos',
       uiNote: {
         before: 'Todos los proyectos se construyen sobre',
         link: 'Eagami UI',
@@ -1293,6 +1293,7 @@ export const esES: WebMessages = {
             showPasswordToggle: 'Mostrar botón de contraseña',
             clearable: 'Con botón de borrado',
             autocomplete: 'Autocompletar',
+            typedHints: 'Marcador escrito',
           },
           'number-input': {
             allowNegative: 'Permitir negativos',
@@ -1525,6 +1526,7 @@ export const esES: WebMessages = {
             readonly: 'Solo lectura',
             required: 'Obligatorio',
             optional: 'Opcional',
+            typedHints: 'Marcador escrito',
           },
         },
         knobNotes: {
@@ -1696,6 +1698,8 @@ export const esES: WebMessages = {
             label: 'Etiqueta mostrada encima del campo.',
             type: 'Tipo nativo del campo (password añade un botón de mostrar/ocultar integrado).',
             placeholder: 'Texto de marcador mostrado mientras el campo está vacío.',
+            typedPlaceholder:
+              'Sugerencias que se escriben carácter a carácter en el campo vacío con un cursor parpadeante, cada una sustituida por la siguiente en bucle; con movimiento reducido cambian completas. Sustituye a placeholder mientras está definido.',
             size: 'Tamaño visual del campo.',
             hint: 'Texto de ayuda mostrado bajo el campo, oculto cuando hay un error.',
             errorMsg:
@@ -1820,6 +1824,10 @@ export const esES: WebMessages = {
               'Identificadores de los elementos cuyo texto nombra el botón, reenviados al atributo nativo aria-labelledby.',
             ariaDescribedby:
               'Identificadores de los elementos que describen el botón, como una pista, reenviados al atributo nativo aria-describedby.',
+            ariaExpanded:
+              'Indica si el contenido que el botón muestra y oculta está abierto, transmitido al atributo nativo aria-expanded.',
+            ariaControls:
+              'Id del elemento que el botón muestra, oculta o controla de otro modo, transmitido al atributo nativo aria-controls.',
             focus: 'Lleva el foco del teclado al botón nativo subyacente.',
           },
           'button-link': {
@@ -2180,6 +2188,8 @@ export const esES: WebMessages = {
             showCount:
               'Muestra bajo el campo el número de caracteres escritos, frente a maxlength cuando está definido.',
             placeholder: 'Marcador de posición mostrado mientras el campo está vacío.',
+            typedPlaceholder:
+              'Sugerencias que se escriben carácter a carácter en el campo vacío con un cursor parpadeante, cada una sustituida por la siguiente en bucle; con movimiento reducido cambian completas. Sustituye a placeholder mientras está definido.',
             readonly: 'Muestra el campo como de solo lectura.',
             required: 'Marca el campo como obligatorio.',
             optional:
@@ -3065,6 +3075,11 @@ export const esES: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Panel',
         breadcrumbSettings: 'Ajustes',
+        typedPlaceholderHints: [
+          'Cuéntenos sobre su proyecto…',
+          '¿En qué podemos ayudarle?',
+          'Comparta un enlace a un diseño que le guste…',
+        ],
       },
     },
   },

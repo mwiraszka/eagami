@@ -1,24 +1,15 @@
 <div class="feature-builder">
   <div class="feature-builder__controls">
     <div class="feature-picker">
-      <ea-button
-        class="feature-picker__step ea-rtl-flip"
-        variant="ghost"
-        size="sm"
-        [icon]="chevronLeft"
-        [aria-label]="services().previousFeatures"
-        [disabled]="!canScrollBack()"
-        (click)="scrollFeatures(-1)" />
       <ul
-        #featureList
+        id="home-feature-list"
         class="feature-list"
-        [class.feature-list--fade-start]="canScrollBack()"
-        [class.feature-list--fade-end]="canScrollForward()"
         role="list"
-        [attr.aria-label]="services().title"
-        (scroll)="updateScrollState()">
-        @for (feature of features(); track feature.id) {
-          <li class="feature">
+        [attr.aria-label]="services().title">
+        @for (feature of shownFeatures(); track feature.id) {
+          <li
+            class="feature"
+            [class.feature--revealed]="!feature.primary">
             <ea-toggle-chip
               size="sm"
               [icon]="feature.icon"
@@ -36,13 +27,14 @@
         }
       </ul>
       <ea-button
-        class="feature-picker__step ea-rtl-flip"
         variant="ghost"
         size="sm"
-        [icon]="chevronRight"
-        [aria-label]="services().nextFeatures"
-        [disabled]="!canScrollForward()"
-        (click)="scrollFeatures(1)" />
+        aria-controls="home-feature-list"
+        [icon]="expanded() ? chevronUp : chevronDown"
+        [aria-expanded]="expanded()"
+        (clicked)="expanded.set(!expanded())">
+        {{ expanded() ? services().showFewer : services().showMore }}
+      </ea-button>
     </div>
     <!-- aria-hidden: each chip already announces its own description -->
     <p

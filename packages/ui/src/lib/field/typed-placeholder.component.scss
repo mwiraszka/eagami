@@ -1,0 +1,36 @@
+@use '../../styles/mixins' as ea;
+
+// Native fields reset these instead of inheriting them; matching that keeps the
+// text exactly where the native placeholder sits
+:host {
+  @include ea.placeholder-text;
+  overflow: hidden;
+  display: block;
+  line-height: var(--line-height-normal);
+  text-align: start;
+  text-indent: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-family: var(--font-family-sans);
+  pointer-events: none;
+  user-select: none;
+}
+
+// An empty inline box's border spans the font's ascent and descent, the same
+// height a native caret is drawn at
+.ea-typed-placeholder__cursor {
+  margin-inline-start: 0.0625em;
+  border-inline-start: max(0.0625em, var(--border-width-thin)) solid;
+}
+
+// The 530ms on, 530ms off rhythm of a native caret
+:host(.ea-typed-placeholder--blinking) .ea-typed-placeholder__cursor {
+  animation: ea-typed-placeholder-blink 1.06s step-end infinite;
+}
+
+@keyframes ea-typed-placeholder-blink {
+  50% {
+    opacity: 0;
+  }
+}

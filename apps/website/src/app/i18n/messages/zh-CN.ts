@@ -43,7 +43,7 @@ export const zhCN: WebMessages = {
     },
     services: {
       title: '构建模块',
-      heading: '量身定制，功能齐全',
+      heading: '量身定制、功能齐全的网站',
       lede: '每个网站都从零开始设计与构建。选择你需要的功能，看它焕发生机。',
       features: [
         { id: 'accounts', title: '用户账户', hint: '登录、注册和管理后台' },
@@ -62,8 +62,8 @@ export const zhCN: WebMessages = {
         { id: 'maps', title: '地图与位置', hint: '路线指引与营业时间' },
         { id: 'pwa', title: '可安装应用', hint: '添加到主屏幕，离线也能用' },
       ],
-      previousFeatures: '上一组功能',
-      nextFeatures: '下一组功能',
+      showMore: '显示更多',
+      showFewer: '收起',
       uiNote: {
         before: '所有项目都基于',
         link: 'Eagami UI',
@@ -1213,6 +1213,7 @@ export const zhCN: WebMessages = {
             showPasswordToggle: '显示密码切换',
             clearable: '可清除',
             autocomplete: '自动完成',
+            typedHints: '打字占位符',
           },
           'number-input': {
             allowNegative: '允许负数',
@@ -1445,6 +1446,7 @@ export const zhCN: WebMessages = {
             readonly: '只读',
             required: '必填',
             optional: '可选',
+            typedHints: '打字占位符',
           },
         },
         knobNotes: {
@@ -1585,6 +1587,8 @@ export const zhCN: WebMessages = {
             label: '渲染在字段上方的文本标签。',
             type: '原生输入类型（password 会添加内建的显示/隐藏切换）。',
             placeholder: '字段为空时显示的占位符。',
+            typedPlaceholder:
+              '在空字段中伴随闪烁光标逐字输入的提示，依次循环替换；减少动态效果时整条切换。设置后取代 placeholder。',
             size: '字段的视觉尺寸。',
             hint: '显示在字段下方的辅助文本，在显示错误时隐藏。',
             errorMsg: '显示在字段下方的错误消息，替换提示并将字段标记为无效。',
@@ -1685,6 +1689,10 @@ export const zhCN: WebMessages = {
               '其文本为按钮命名的元素的 id，转发到原生 aria-labelledby 属性。',
             ariaDescribedby:
               '描述按钮的元素（例如提示）的 id，转发到原生 aria-describedby 属性。',
+            ariaExpanded:
+              '按钮显示和隐藏的内容是否已展开，转发到原生 aria-expanded 属性。',
+            ariaControls:
+              '按钮显示、隐藏或以其他方式控制的元素的 id，转发到原生 aria-controls 属性。',
             focus: '将键盘焦点移到底层原生按钮。',
           },
           'button-link': {
@@ -1957,6 +1965,8 @@ export const zhCN: WebMessages = {
             showCount:
               '在字段下方显示已输入的字符数，设置了 maxlength 时显示为相对于它的计数。',
             placeholder: '字段为空时显示的占位符。',
+            typedPlaceholder:
+              '在空字段中伴随闪烁光标逐字输入的提示，依次循环替换；减少动态效果时整条切换。设置后取代 placeholder。',
             readonly: '将字段渲染为只读。',
             required: '将字段标记为必填。',
             optional: '在标签后添加一个淡色的“（可选）”注释，除非同时设置了 required。',
@@ -2644,6 +2654,11 @@ export const zhCN: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: '仪表盘',
         breadcrumbSettings: '设置',
+        typedPlaceholderHints: [
+          '介绍一下你的项目…',
+          '需要我们帮什么忙？',
+          '分享一个你喜欢的设计链接…',
+        ],
       },
     },
   },

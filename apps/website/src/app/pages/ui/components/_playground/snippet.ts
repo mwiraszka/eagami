@@ -10,6 +10,11 @@ export function quoted(text: string): string {
   return `'${text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 }
 
+/** The `[typedPlaceholder]` binding for the generated snippet, mirroring the live one. */
+export function typedPlaceholderAttribute(hints: readonly string[]): string {
+  return `[typedPlaceholder]="[${hints.map(quoted).join(', ')}]"`;
+}
+
 function attribute(name: string, value: KnobValue): string {
   // Booleans and numbers are property bindings; strings render as plain
   // attributes, matching how the templates are authored across the library.

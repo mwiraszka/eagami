@@ -44,7 +44,7 @@ export const de: WebMessages = {
     },
     services: {
       title: 'Bausteine',
-      heading: 'Maßgeschneidert und voll ausgestattet',
+      heading: 'Maßgeschneiderte, voll ausgestattete Websites',
       lede: 'Jede Website wird von Grund auf gestaltet und entwickelt. Wählen Sie Ihre Funktionen und sehen Sie zu, wie sie zum Leben erwacht.',
       features: [
         {
@@ -95,8 +95,8 @@ export const de: WebMessages = {
           hint: 'Auf dem Startbildschirm, auch offline',
         },
       ],
-      previousFeatures: 'Vorherige Funktionen',
-      nextFeatures: 'Nächste Funktionen',
+      showMore: 'Mehr anzeigen',
+      showFewer: 'Weniger anzeigen',
       uiNote: {
         before: 'Alle Projekte basieren auf',
         link: 'Eagami UI',
@@ -1290,6 +1290,7 @@ export const de: WebMessages = {
             showPasswordToggle: 'Passwort-Umschalter anzeigen',
             clearable: 'Löschbar',
             autocomplete: 'Autovervollständigung',
+            typedHints: 'Getippter Platzhalter',
           },
           'number-input': {
             allowNegative: 'Negative zulassen',
@@ -1522,6 +1523,7 @@ export const de: WebMessages = {
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
             optional: 'Optional',
+            typedHints: 'Getippter Platzhalter',
           },
         },
         knobNotes: {
@@ -1697,6 +1699,8 @@ export const de: WebMessages = {
             label: 'Textlabel, das über dem Feld gerendert wird.',
             type: 'Nativer Input-Typ (password fügt einen integrierten Anzeigen/Verbergen-Umschalter hinzu).',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
+            typedPlaceholder:
+              'Hinweise, die Zeichen für Zeichen mit blinkendem Cursor in das leere Feld getippt und in einer Schleife vom nächsten abgelöst werden; bei reduzierter Bewegung wechseln sie als Ganzes. Ersetzt placeholder, solange gesetzt.',
             size: 'Visuelle Größe des Feldes.',
             hint: 'Hilfetext unter dem Feld, ausgeblendet, solange ein Fehler angezeigt wird.',
             errorMsg:
@@ -1820,6 +1824,10 @@ export const de: WebMessages = {
               'IDs der Elemente, deren Text den Button benennt, weitergereicht an das native aria-labelledby-Attribut.',
             ariaDescribedby:
               'IDs der Elemente, die den Button beschreiben, etwa ein Hinweis, weitergereicht an das native aria-describedby-Attribut.',
+            ariaExpanded:
+              'Ob der Inhalt, den der Button ein- und ausblendet, geöffnet ist, weitergereicht an das native aria-expanded-Attribut.',
+            ariaControls:
+              'ID des Elements, das der Button ein- oder ausblendet oder anderweitig steuert, weitergereicht an das native aria-controls-Attribut.',
             focus:
               'Verschiebt den Tastaturfokus auf den zugrunde liegenden nativen Button.',
           },
@@ -2176,6 +2184,8 @@ export const de: WebMessages = {
             showCount:
               'Zeigt unter dem Feld die Anzahl der eingegebenen Zeichen an, im Verhältnis zu maxlength, wenn gesetzt.',
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
+            typedPlaceholder:
+              'Hinweise, die Zeichen für Zeichen mit blinkendem Cursor in das leere Feld getippt und in einer Schleife vom nächsten abgelöst werden; bei reduzierter Bewegung wechseln sie als Ganzes. Ersetzt placeholder, solange gesetzt.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
             optional:
@@ -3062,6 +3072,11 @@ export const de: WebMessages = {
         breadcrumbMacBookPro: 'MacBook Pro',
         breadcrumbDashboard: 'Dashboard',
         breadcrumbSettings: 'Einstellungen',
+        typedPlaceholderHints: [
+          'Erzählen Sie uns von Ihrem Projekt…',
+          'Wobei können wir Ihnen helfen?',
+          'Teilen Sie einen Link zu einem Design, das Ihnen gefällt…',
+        ],
       },
     },
   },

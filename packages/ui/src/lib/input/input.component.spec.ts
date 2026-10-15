@@ -1,6 +1,8 @@
+import { PLATFORM_ID } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { stubMotionQuery } from '../../test-setup';
 import { SearchIconComponent } from '../icons/search.component';
 import { InputComponent } from './input.component';
 
@@ -564,6 +566,219 @@ describe('InputComponent', () => {
     });
   });
 
+  describe('Typed placeholder', () => {
+    const HINTS = ['Hey', 'Yo'];
+    const TYPE_MS = 45;
+    const HOLD_MS = 2500;
+    const ROTATE_MS = 6000;
+
+    function getTyped(): HTMLElement | null {
+      return fixture.nativeElement.querySelector('ea-typed-placeholder');
+    }
+
+    function isBlinking(): boolean {
+      return getTyped()!.classList.contains('ea-typed-placeholder--blinking');
+    }
+
+    function start(hints: readonly string[] = HINTS): void {
+      fixture.componentRef.setInput('typedPlaceholder', hints);
+      fixture.detectChanges();
+    }
+
+    function advance(ms: number): void {
+      vi.advanceTimersByTime(ms);
+      fixture.detectChanges();
+    }
+
+    function type(value: string): void {
+      getNativeInput().value = value;
+      getNativeInput().dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    });
+
+    it('types the first hint one character at a time', () => {
+      start();
+
+      expect(getTyped()!.textContent).toBe('H');
+
+      advance(TYPE_MS);
+
+      expect(getTyped()!.textContent).toBe('He');
+
+      advance(TYPE_MS);
+
+      expect(getTyped()!.textContent).toBe('Hey');
+    });
+
+    it('holds the whole hint, then clears it and types the next', () => {
+      start();
+      advance(TYPE_MS * 2);
+
+      advance(HOLD_MS - 1);
+
+      expect(getTyped()!.textContent).toBe('Hey');
+
+      advance(1);
+
+      expect(getTyped()!.textContent).toBe('');
+
+      advance(TYPE_MS);
+
+      expect(getTyped()!.textContent).toBe('Y');
+    });
+
+    it('loops back to the first hint after the last', () => {
+      start();
+      advance(TYPE_MS * 2 + HOLD_MS);
+      advance(TYPE_MS * 2);
+
+      advance(HOLD_MS + TYPE_MS);
+
+      expect(getTyped()!.textContent).toBe('H');
+    });
+
+    it('holds the cursor solid while typing and blinks it once the hint is whole', () => {
+      start();
+
+      expect(getTyped()!.querySelector('.ea-typed-placeholder__cursor')).toBeTruthy();
+      expect(isBlinking()).toBe(false);
+
+      advance(TYPE_MS * 2);
+
+      expect(isBlinking()).toBe(true);
+
+      advance(HOLD_MS);
+
+      expect(isBlinking()).toBe(false);
+    });
+
+    it('hides the layer from assistive technology', () => {
+      start();
+
+      expect(getTyped()!.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('keeps the whole current hint on the native placeholder, visually suppressed', () => {
+      start();
+
+      expect(getNativeInput().placeholder).toBe('Hey');
+      expect(getNativeInput().classList).toContain('ea-input--typed-placeholder');
+
+      advance(TYPE_MS * 2 + HOLD_MS);
+
+      expect(getNativeInput().placeholder).toBe('Yo');
+    });
+
+    it('takes the place of the plain placeholder', () => {
+      fixture.componentRef.setInput('placeholder', 'Write here');
+
+      start();
+
+      expect(getNativeInput().placeholder).toBe('Hey');
+    });
+
+    it('disappears while the field has a value and returns once it is cleared', () => {
+      start();
+
+      type('Hello');
+
+      expect(getTyped()).toBeNull();
+      expect(getNativeInput().classList).not.toContain('ea-input--typed-placeholder');
+
+      type('');
+
+      expect(getTyped()).toBeTruthy();
+      expect(getNativeInput().classList).toContain('ea-input--typed-placeholder');
+    });
+
+    it('swaps whole hints with no typing or cursor under reduced motion', () => {
+      stubMotionQuery(true);
+
+      start();
+
+      expect(getTyped()).toBeNull();
+      expect(getNativeInput().placeholder).toBe('Hey');
+      expect(getNativeInput().classList).not.toContain('ea-input--typed-placeholder');
+
+      advance(ROTATE_MS - 1);
+
+      expect(getNativeInput().placeholder).toBe('Hey');
+
+      advance(1);
+
+      expect(getNativeInput().placeholder).toBe('Yo');
+    });
+
+    it('stops typing as soon as reduced motion is turned on', () => {
+      const motion = stubMotionQuery(false);
+      start();
+      advance(TYPE_MS);
+
+      motion.set(true);
+      fixture.detectChanges();
+
+      expect(getTyped()).toBeNull();
+      expect(getNativeInput().placeholder).toBe('Hey');
+    });
+
+    it('starts over when the hints change', () => {
+      start();
+      advance(TYPE_MS * 2 + HOLD_MS);
+
+      start(['Ok']);
+
+      expect(getTyped()!.textContent).toBe('O');
+      expect(getNativeInput().placeholder).toBe('Ok');
+    });
+
+    it('keeps its place when handed an equal list of hints', () => {
+      start();
+      advance(TYPE_MS);
+
+      start([...HINTS]);
+
+      expect(getTyped()!.textContent).toBe('He');
+    });
+
+    it('stops when the hints are cleared', () => {
+      fixture.componentRef.setInput('placeholder', 'Write here');
+      start();
+
+      start([]);
+
+      expect(getTyped()).toBeNull();
+      expect(getNativeInput().placeholder).toBe('Write here');
+      expect(vi.getTimerCount()).toBe(0);
+    });
+
+    it('runs no timer and keeps the plain placeholder without hints', () => {
+      fixture.componentRef.setInput('placeholder', 'Write here');
+      fixture.detectChanges();
+
+      expect(getTyped()).toBeNull();
+      expect(getNativeInput().placeholder).toBe('Write here');
+      expect(getNativeInput().classList).not.toContain('ea-input--typed-placeholder');
+      expect(vi.getTimerCount()).toBe(0);
+    });
+
+    it('clears its timer on destroy', () => {
+      start();
+
+      fixture.destroy();
+
+      expect(vi.getTimerCount()).toBe(0);
+    });
+  });
+
   describe('Accessible name', () => {
     it('names the control via aria-label when no visible label is set', () => {
       fixture.componentRef.setInput('aria-label', 'Search');
@@ -579,5 +794,31 @@ describe('InputComponent', () => {
 
       expect(getNativeInput().getAttribute('aria-label')).toBeNull();
     });
+  });
+});
+
+describe('InputComponent typed placeholder on the server', () => {
+  beforeEach(async () => {
+    vi.useFakeTimers();
+    await TestBed.configureTestingModule({
+      imports: [InputComponent],
+      providers: [{ provide: PLATFORM_ID, useValue: 'server' }],
+    }).compileComponents();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it('renders the first whole hint natively without starting', () => {
+    const fixture = TestBed.createComponent(InputComponent);
+    fixture.componentRef.setInput('typedPlaceholder', ['Hey', 'Yo']);
+
+    fixture.detectChanges();
+
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+    expect(fixture.nativeElement.querySelector('ea-typed-placeholder')).toBeNull();
+    expect(input.placeholder).toBe('Hey');
+    expect(vi.getTimerCount()).toBe(0);
   });
 });

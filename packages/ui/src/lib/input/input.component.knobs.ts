@@ -3,7 +3,8 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
 /**
  * Single source of truth for the Input demo's interactive controls. Consumed by
  * `input.component.stories.ts` (as Storybook `argTypes`/`args`) and by the
- * website's component playground.
+ * website's component playground. The `typedPlaceholder` hints are supplied by
+ * the demo, not as a flat knob.
  */
 export const INPUT_KNOBS: ComponentKnobs = {
   argTypes: {
@@ -34,6 +35,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     showPasswordToggle: { control: 'boolean', if: { arg: 'type', eq: 'password' } },
     clearable: { control: 'boolean' },
     keepIcon: { control: 'boolean' },
+    typedHints: { control: 'boolean', demoOnly: true },
     triggerError: { control: 'boolean', demoOnly: true },
     focused: { action: 'focused' },
     blurred: { action: 'blurred' },
@@ -52,6 +54,7 @@ export const INPUT_KNOBS: ComponentKnobs = {
     showPasswordToggle: true,
     clearable: false,
     keepIcon: true,
+    typedHints: false,
     triggerError: false,
   },
 };
