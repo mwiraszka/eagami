@@ -5,6 +5,24 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.32.0] - 2026-10-15
+
+### Added
+
+- Give every project tag on the home page an icon and a color for its kind of feature, sharing common tags between projects.
+- Show the page each project demo is on in its address bar, following the recording from page to page.
+- Add an icon picker to the tag demo.
+
+### Changed
+
+- Pick up @eagami/ui v5.68.0.
+- Rework the home page's project section for smaller screens, with compact project buttons, shorter descriptions, and the tags below the demo.
+- Replace the CIRC Aesthetics demo with a walk through each page of its navigation.
+
+### Fixed
+
+- Replace the square tap flash on the home page's project buttons with a rounded pressed state.
+
 ## [3.31.0] - 2026-10-14
 
 ### Added
@@ -1655,6 +1673,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.32.0]: https://github.com/mwiraszka/eagami/compare/website-v3.31.0...website-v3.32.0
 [3.31.0]: https://github.com/mwiraszka/eagami/compare/website-v3.30.1...website-v3.31.0
 [3.30.1]: https://github.com/mwiraszka/eagami/compare/website-v3.30.0...website-v3.30.1
 [3.30.0]: https://github.com/mwiraszka/eagami/compare/website-v3.29.14...website-v3.30.0
