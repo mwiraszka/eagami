@@ -1157,6 +1157,9 @@ export const de: WebMessages = {
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
           categories: 'Kategorien',
           category: 'Kategorie',
+          referenceLines: 'Referenzlinien',
+          target: 'Ziel',
+          value: 'Wert',
         },
         lineChart: {
           visitors: 'Besucher',
@@ -1167,6 +1170,8 @@ export const de: WebMessages = {
           xPosition: 'X-Position',
           value: 'Wert',
           tooltipTitle: 'Tooltip-Titel',
+          referenceLines: 'Referenzlinien',
+          average: 'Durchschnitt',
         },
         pieChart: {
           desktop: 'Desktop',
@@ -1176,6 +1181,10 @@ export const de: WebMessages = {
           slices: 'Segmente',
           slice: 'Segment',
           value: 'Wert',
+        },
+        sparkline: {
+          values: 'Werte',
+          valuesHint: 'Durch Kommas getrennte Zahlen',
         },
       },
       playground: {
@@ -1240,6 +1249,19 @@ export const de: WebMessages = {
             height: 'Höhe',
             showLegend: 'Legende anzeigen',
             showPercentages: 'Prozentwerte anzeigen',
+            showTotal: 'Summe anzeigen',
+            totalLabel: 'Beschriftung der Summe',
+          },
+          sparkline: {
+            variant: 'Variante',
+            curve: 'Kurve',
+            markers: 'Markierungen',
+            startAtZero: 'Bei null beginnen',
+            showTooltip: 'Tooltip anzeigen',
+            animation: 'Animation',
+            animationDuration: 'Animationsdauer',
+            height: 'Höhe',
+            color: 'Farbe',
           },
           timeline: { orientation: 'Ausrichtung', align: 'Anordnung', size: 'Größe' },
           'toggle-chip': {
@@ -1528,6 +1550,8 @@ export const de: WebMessages = {
               'Beginnt in einem vertikalen Diagramm mit ausschließlich positiven Werten die Werteachse nahe dem kürzesten Balken statt bei null und kennzeichnet den Schnitt mit einem Bruchsymbol.',
             xLabelOrientation:
               'Wie die Kategoriebeschriftungen unter einem vertikalen Diagramm stehen: waagerecht, um 45 Grad, um 90 Grad oder automatisch, also um 45, dann 90 Grad gedreht, wenn es eng wird.',
+            referenceLines:
+              'Gestrichelte Linien quer über die Zeichenfläche bei festgelegten Werten, etwa einem Ziel oder einem Durchschnitt, jeweils mit optionaler Beschriftung und Farbe; die Werteachse erweitert sich, um sie einzuschließen.',
           },
           'line-chart': {
             labels:
@@ -1570,6 +1594,8 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn sich der hervorgehobene Punkt per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
             visibleRangeChange:
               'Wird mit Anfang und Ende des sichtbaren x-Bereichs ausgelöst, wenn ein Diagramm mit Ausschnitt verschoben wird. Wird auch beim Zoomen des Ausschnitts ausgelöst.',
+            referenceLines:
+              'Gestrichelte Linien quer über die Zeichenfläche bei festgelegten Werten, etwa einem Ziel oder einem Durchschnitt, jeweils mit optionaler Beschriftung und Farbe; die y-Achse erweitert sich, um sie einzuschließen, sofern yMin oder yMax sie nicht abschneiden.',
           },
           'pie-chart': {
             data: 'Die Segmente, die im Uhrzeigersinn ab zwölf Uhr gezeichnet werden, jeweils mit einer Beschriftung, einem Wert und einer optionalen Farbe.',
@@ -1590,6 +1616,31 @@ export const de: WebMessages = {
               'Wird ausgelöst, wenn ein Segment angeklickt oder mit der Eingabetaste oder Leertaste ausgewählt wird.',
             activeSliceChange:
               'Wird ausgelöst, wenn sich das hervorgehobene Segment per Zeiger oder Tastatur ändert, mit null, sobald die Hervorhebung aufgehoben ist.',
+            showTotal:
+              'Zeigt die Summe aller Segmente in der Mitte eines Ringdiagramms an.',
+            totalLabel:
+              'Beschriftung unter der Summe eines Ringdiagramms; standardmäßig ein lokalisiertes „Gesamt“.',
+          },
+          sparkline: {
+            data: 'Die darzustellenden Werte, die ältesten zuerst; null lässt eine Lücke.',
+            variant:
+              'Zeichnet die Werte als Linie, als Linie über einer gefüllten Fläche oder als Balken.',
+            curve:
+              'Wie eine Linie oder Fläche zwischen den Werten verläuft: gerade, geglättet oder in Stufen.',
+            markers:
+              'Hervorgehobene Werte: der neueste, der neueste mit dem höchsten und niedrigsten, alle Werte oder keiner. Eine Linie oder Fläche markiert sie mit einem Punkt; bei Balken werden alle anderen abgeblendet.',
+            color:
+              'Beliebige CSS-Farbe; standardmäßig die erste Farbe der Diagrammpalette.',
+            startAtZero:
+              'Lässt die Skala einer Linie oder Fläche bei null beginnen, sodass die Höhe die tatsächliche Größe jedes Werts zeigt statt einer Nahaufnahme seiner Schwankungen. Balken beginnen immer bei null.',
+            showTooltip:
+              'Zeigt den Wert unter dem Zeiger in einem Tooltip, beim Überfahren oder während ein Finger darübergleitet.',
+            height: 'Höhe in Pixeln; die Breite füllt den Container.',
+            animation:
+              'Einblendanimation, die bei jeder Datenänderung erneut abgespielt wird: die Linie nachzeichnen oder die Balken wachsen lassen, einblenden oder keine.',
+            animationDuration: 'Dauer der Einblendanimation in Millisekunden.',
+            formatValue:
+              'Formatiert die Werte im Tooltip und die, die Hilfstechnologien vorgelesen werden; standardmäßig nach dem aktiven Gebietsschema gruppiert.',
           },
           timeline: {
             items: 'Die anzuzeigenden Ereignisse, in Reihenfolge.',

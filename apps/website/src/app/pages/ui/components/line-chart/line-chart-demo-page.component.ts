@@ -1,6 +1,7 @@
 import {
   ButtonComponent,
   type ChartLabelOrientation,
+  type ChartReferenceLine,
   type ChartSeries,
   type ChartSize,
   InputComponent,
@@ -64,6 +65,12 @@ interface DemoTick {
   label: string;
 }
 
+interface DemoReferenceLine {
+  id: number;
+  label: string;
+  value: number;
+}
+
 // Daily visitors on irregular days, placed by day of the year against a tick at the
 // start of each month
 const YEAR = 2025;
@@ -77,6 +84,8 @@ const SEED_POINTS: Omit<DemoPoint, 'id' | 'title'>[] = [
 const SEED_TICK_DAYS = [0, 31, 59, 90];
 const DAYS_BETWEEN_POINTS = 7;
 const DAYS_BETWEEN_TICKS = 30;
+// The mean of the seeded points
+const SEED_AVERAGE = 713;
 
 function dateOfDay(day: number): Date {
   return new Date(YEAR, 0, 1 + day);
@@ -111,11 +120,15 @@ export class LineChartDemoPageComponent {
     '[series]="series"',
     '[xValues]="xValues"',
     '[xTicks]="xTicks"',
+    '[referenceLines]="referenceLines"',
   ];
 
   private nextId = 1;
   protected readonly points = signal<DemoPoint[]>(this.seedPoints());
   protected readonly ticks = signal<DemoTick[]>(this.seedTicks());
+  protected readonly referenceRows = signal<DemoReferenceLine[]>(
+    this.seedReferenceLines(),
+  );
 
   // Points are plotted in order of their x position, whatever order they were entered in
   private readonly sortedPoints = computed(() =>
@@ -133,6 +146,10 @@ export class LineChartDemoPageComponent {
     },
   ]);
 
+  protected readonly referenceLines = computed<ChartReferenceLine[]>(() =>
+    this.referenceRows().map(({ label, value }) => ({ label, value })),
+  );
+
   protected readonly xValues = computed(() => this.sortedPoints().map(point => point.x));
   protected readonly xTicks = computed(() =>
     this.ticks().map(({ value, label }) => ({ value, label })),
@@ -149,6 +166,7 @@ export class LineChartDemoPageComponent {
     this.nextId = 1;
     this.points.set(this.seedPoints());
     this.ticks.set(this.seedTicks());
+    this.referenceRows.set(this.seedReferenceLines());
   }
 
   // Blank or partly typed numbers keep the last valid value until the input reads as one
@@ -195,6 +213,24 @@ export class LineChartDemoPageComponent {
     this.ticks.update(ticks => ticks.filter(tick => tick.id !== id));
   }
 
+  protected updateReferenceLine(id: number, patch: Partial<DemoReferenceLine>): void {
+    this.referenceRows.update(lines =>
+      lines.map(line => (line.id === id ? { ...line, ...patch } : line)),
+    );
+  }
+
+  protected addReferenceLine(): void {
+    const last = this.referenceRows().at(-1);
+    this.referenceRows.update(lines => [
+      ...lines,
+      { id: this.nextId++, label: '', value: last?.value ?? 500 },
+    ]);
+  }
+
+  protected removeReferenceLine(id: number): void {
+    this.referenceRows.update(lines => lines.filter(line => line.id !== id));
+  }
+
   private seedPoints(): DemoPoint[] {
     return SEED_POINTS.map(point => ({
       ...point,
@@ -209,6 +245,16 @@ export class LineChartDemoPageComponent {
       value,
       label: this.monthLabel(value),
     }));
+  }
+
+  private seedReferenceLines(): DemoReferenceLine[] {
+    return [
+      {
+        id: this.nextId++,
+        label: this.messages().ui.component.demos.lineChart.average,
+        value: SEED_AVERAGE,
+      },
+    ];
   }
 
   private dayTitle(day: number): string {

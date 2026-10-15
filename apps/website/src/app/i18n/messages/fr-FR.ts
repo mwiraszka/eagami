@@ -1181,6 +1181,9 @@ export const frFR: WebMessages = {
           quarters: ['T1', 'T2', 'T3', 'T4'],
           categories: 'Catégories',
           category: 'Catégorie',
+          referenceLines: 'Lignes de référence',
+          target: 'Objectif',
+          value: 'Valeur',
         },
         lineChart: {
           visitors: 'Visiteurs',
@@ -1191,6 +1194,8 @@ export const frFR: WebMessages = {
           xPosition: 'Position X',
           value: 'Valeur',
           tooltipTitle: "Titre de l'infobulle",
+          referenceLines: 'Lignes de référence',
+          average: 'Moyenne',
         },
         pieChart: {
           desktop: 'Ordinateur',
@@ -1200,6 +1205,10 @@ export const frFR: WebMessages = {
           slices: 'Parts',
           slice: 'Part',
           value: 'Valeur',
+        },
+        sparkline: {
+          values: 'Valeurs',
+          valuesHint: 'Nombres séparés par des virgules',
         },
       },
       playground: {
@@ -1264,6 +1273,19 @@ export const frFR: WebMessages = {
             height: 'Hauteur',
             showLegend: 'Afficher la légende',
             showPercentages: 'Afficher les pourcentages',
+            showTotal: 'Afficher le total',
+            totalLabel: 'Libellé du total',
+          },
+          sparkline: {
+            variant: 'Variante',
+            curve: 'Courbe',
+            markers: 'Marqueurs',
+            startAtZero: 'Partir de zéro',
+            showTooltip: 'Afficher l’infobulle',
+            animation: 'Animation',
+            animationDuration: 'Durée de l’animation',
+            height: 'Hauteur',
+            color: 'Couleur',
           },
           timeline: { orientation: 'Orientation', align: 'Alignement', size: 'Taille' },
           'toggle-chip': {
@@ -1554,6 +1576,8 @@ export const frFR: WebMessages = {
               "Dans un graphique vertical aux valeurs toutes positives, fait partir l'axe des valeurs près de la barre la plus courte plutôt que de zéro et signale la coupure par un symbole.",
             xLabelOrientation:
               'Disposition des libellés de catégorie sous un graphique vertical : horizontaux, à 45 degrés, à 90 degrés ou automatique, qui les tourne de 45 puis 90 degrés quand ils se serrent.',
+            referenceLines:
+              'Lignes pointillées qui traversent la zone de tracé à des valeurs fixées, comme un objectif ou une moyenne, chacune avec un libellé et une couleur facultatifs ; l’axe des valeurs s’élargit pour les inclure.',
           },
           'line-chart': {
             labels:
@@ -1595,6 +1619,8 @@ export const frFR: WebMessages = {
               'Émis lorsque le point mis en évidence change via le pointeur ou le clavier, avec null une fois effacé.',
             visibleRangeChange:
               'Émis avec le début et la fin de la plage x visible chaque fois qu’un graphique fenêtré se déplace. Se déclenche aussi lors d’un zoom sur la fenêtre.',
+            referenceLines:
+              'Lignes pointillées qui traversent la zone de tracé à des valeurs fixées, comme un objectif ou une moyenne, chacune avec un libellé et une couleur facultatifs ; l’axe des y s’élargit pour les inclure, sauf si yMin ou yMax les coupe.',
           },
           'pie-chart': {
             data: 'Les parts à dessiner dans le sens horaire à partir de midi, chacune avec un libellé, une valeur et une couleur facultative.',
@@ -1614,6 +1640,30 @@ export const frFR: WebMessages = {
               'Émis lorsqu’une part est cliquée, ou choisie avec Entrée ou Espace.',
             activeSliceChange:
               'Émis lorsque la part mise en évidence change via le pointeur ou le clavier, avec null une fois effacée.',
+            showTotal: 'Affiche le total de toutes les parts au centre d’un anneau.',
+            totalLabel:
+              'Légende sous le total d’un anneau ; par défaut, « Total » dans la langue active.',
+          },
+          sparkline: {
+            data: 'Les valeurs à tracer, de la plus ancienne à la plus récente ; null laisse un vide.',
+            variant:
+              'Dessine les valeurs sous forme de ligne, de ligne au-dessus d’une aire remplie, ou de barres.',
+            curve:
+              'Comment une ligne ou une aire s’infléchit entre les valeurs : droite, lissée ou en escalier.',
+            markers:
+              'Valeurs mises en évidence : la plus récente, la plus récente avec la plus haute et la plus basse, toutes les valeurs, ou aucune. Une ligne ou une aire les marque d’un point ; sur les barres, les autres sont estompées.',
+            color:
+              'N’importe quelle couleur CSS ; par défaut, la première couleur de la palette des graphiques.',
+            startAtZero:
+              'Fait partir de zéro l’échelle d’une ligne ou d’une aire, pour que la hauteur montre la taille réelle de chaque valeur plutôt qu’un gros plan de leurs variations. Les barres partent toujours de zéro.',
+            showTooltip:
+              'Affiche la valeur sous le pointeur dans une infobulle, au survol ou pendant qu’un doigt glisse dessus.',
+            height: 'Hauteur en pixels ; la largeur remplit le conteneur.',
+            animation:
+              'Animation d’entrée, rejouée à chaque changement des données : tracer la ligne ou faire pousser les barres, apparaître en fondu, ou aucune.',
+            animationDuration: 'Durée de l’animation d’entrée en millisecondes.',
+            formatValue:
+              'Met en forme les valeurs de l’infobulle et celles lues aux technologies d’assistance ; groupées selon la langue active par défaut.',
           },
           timeline: {
             items: 'Les événements à afficher, dans l’ordre.',

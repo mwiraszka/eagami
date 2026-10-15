@@ -1115,6 +1115,9 @@ export const en: WebMessages = {
           quarters: ['Q1', 'Q2', 'Q3', 'Q4'],
           categories: 'Categories',
           category: 'Category',
+          referenceLines: 'Reference lines',
+          target: 'Target',
+          value: 'Value',
         },
         lineChart: {
           visitors: 'Visitors',
@@ -1125,6 +1128,8 @@ export const en: WebMessages = {
           xPosition: 'X position',
           value: 'Value',
           tooltipTitle: 'Tooltip title',
+          referenceLines: 'Reference lines',
+          average: 'Average',
         },
         pieChart: {
           desktop: 'Desktop',
@@ -1134,6 +1139,10 @@ export const en: WebMessages = {
           slices: 'Slices',
           slice: 'Slice',
           value: 'Value',
+        },
+        sparkline: {
+          values: 'Values',
+          valuesHint: 'Numbers separated by commas',
         },
       },
       playground: {
@@ -1198,6 +1207,19 @@ export const en: WebMessages = {
             height: 'Height',
             showLegend: 'Show legend',
             showPercentages: 'Show percentages',
+            showTotal: 'Show total',
+            totalLabel: 'Total label',
+          },
+          sparkline: {
+            variant: 'Variant',
+            curve: 'Curve',
+            markers: 'Markers',
+            startAtZero: 'Start at zero',
+            showTooltip: 'Show tooltip',
+            animation: 'Animation',
+            animationDuration: 'Animation duration',
+            height: 'Height',
+            color: 'Color',
           },
           timeline: { orientation: 'Orientation', align: 'Alignment', size: 'Size' },
           'toggle-chip': {
@@ -1483,6 +1505,8 @@ export const en: WebMessages = {
               'In a vertical chart whose values are all positive, starts the value axis near the shortest bar instead of at zero and marks the cut with a break symbol.',
             xLabelOrientation:
               'How the category labels under a vertical chart are set: level, at 45 degrees, at 90 degrees, or auto, which turns them 45 then 90 degrees as they crowd.',
+            referenceLines:
+              'Dashed rules across the plot at set values, such as a target or an average, each with an optional label and color; the value axis widens to take them in.',
           },
           'line-chart': {
             labels:
@@ -1521,6 +1545,8 @@ export const en: WebMessages = {
               'Fires when the highlighted point changes by pointer or keyboard, with null once cleared.',
             visibleRangeChange:
               'Fires with the start and end of the visible x range whenever a windowed chart pans. It also fires when the window is zoomed.',
+            referenceLines:
+              'Dashed rules across the plot at set values, such as a target or an average, each with an optional label and color; the y-axis widens to take them in unless yMin or yMax cuts them off.',
           },
           'pie-chart': {
             data: "The slices to draw clockwise from twelve o'clock, each with a label, a value, and an optional color.",
@@ -1538,6 +1564,27 @@ export const en: WebMessages = {
             sliceClick: 'Fires when a slice is clicked, or chosen with Enter or Space.',
             activeSliceChange:
               'Fires when the highlighted slice changes by pointer or keyboard, with null once cleared.',
+            showTotal: 'Prints the total of every slice in the middle of a donut.',
+            totalLabel: "Caption beneath a donut's total; a localized Total by default.",
+          },
+          sparkline: {
+            data: 'The values to plot, oldest first; null leaves a gap.',
+            variant: 'Draws the values as a line, a line over a filled area, or bars.',
+            curve:
+              'How a line or area bends between values: straight, smooth, or in steps.',
+            markers:
+              'Values singled out: the latest, the latest with the highest and lowest, every value, or none. A line or area marks them with a dot; bars dim every other bar.',
+            color: 'Any CSS color; defaults to the first color of the chart palette.',
+            startAtZero:
+              'Starts the scale of a line or area at zero, so its height shows the true size of each value rather than a close-up of how they vary. Bars always start at zero.',
+            showTooltip:
+              'Shows the value under the pointer in a tooltip, on hover or while a finger slides along.',
+            height: 'Height in pixels; the width fills the container.',
+            animation:
+              'Entrance animation, replayed whenever the data changes: trace the line or grow the bars, fade in, or none.',
+            animationDuration: 'Length of the entrance animation in milliseconds.',
+            formatValue:
+              'Formats the values in the tooltip and those read out to assistive technology; grouped for the active locale by default.',
           },
           timeline: {
             items: 'The events to render, in order.',

@@ -241,6 +241,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://eagami.com/ui/components/sparkline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://eagami.com/ui/components/spinner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

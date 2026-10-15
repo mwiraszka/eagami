@@ -362,6 +362,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'components/sparkline',
+        loadComponent: () =>
+          import('./pages/ui/components/sparkline/sparkline-demo-page.component').then(
+            c => c.SparklineDemoPageComponent,
+          ),
+      },
+      {
         path: 'components/spinner',
         loadComponent: () =>
           import('./pages/ui/components/spinner/spinner-demo-page.component').then(

@@ -49,6 +49,7 @@ export const UI_COMPONENTS: readonly UiComponent[] = [
   { slug: 'segmented', name: 'Segmented', selector: 'ea-segmented' },
   { slug: 'skeleton', name: 'Skeleton', selector: 'ea-skeleton' },
   { slug: 'slider', name: 'Slider', selector: 'ea-slider' },
+  { slug: 'sparkline', name: 'Sparkline', selector: 'ea-sparkline' },
   { slug: 'spinner', name: 'Spinner', selector: 'ea-spinner' },
   { slug: 'stepper', name: 'Stepper', selector: 'ea-stepper' },
   { slug: 'switch', name: 'Switch', selector: 'ea-switch' },

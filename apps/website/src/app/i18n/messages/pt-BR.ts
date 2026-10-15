@@ -1143,6 +1143,9 @@ export const ptBR: WebMessages = {
           quarters: ['T1', 'T2', 'T3', 'T4'],
           categories: 'Categorias',
           category: 'Categoria',
+          referenceLines: 'Linhas de referência',
+          target: 'Meta',
+          value: 'Valor',
         },
         lineChart: {
           visitors: 'Visitantes',
@@ -1153,6 +1156,8 @@ export const ptBR: WebMessages = {
           xPosition: 'Posição X',
           value: 'Valor',
           tooltipTitle: 'Título da dica',
+          referenceLines: 'Linhas de referência',
+          average: 'Média',
         },
         pieChart: {
           desktop: 'Desktop',
@@ -1162,6 +1167,10 @@ export const ptBR: WebMessages = {
           slices: 'Fatias',
           slice: 'Fatia',
           value: 'Valor',
+        },
+        sparkline: {
+          values: 'Valores',
+          valuesHint: 'Números separados por vírgulas',
         },
       },
       playground: {
@@ -1226,6 +1235,19 @@ export const ptBR: WebMessages = {
             height: 'Altura',
             showLegend: 'Mostrar legenda',
             showPercentages: 'Mostrar porcentagens',
+            showTotal: 'Mostrar total',
+            totalLabel: 'Rótulo do total',
+          },
+          sparkline: {
+            variant: 'Variante',
+            curve: 'Curva',
+            markers: 'Marcadores',
+            startAtZero: 'Começar do zero',
+            showTooltip: 'Mostrar tooltip',
+            animation: 'Animação',
+            animationDuration: 'Duração da animação',
+            height: 'Altura',
+            color: 'Cor',
           },
           timeline: { orientation: 'Orientação', align: 'Alinhamento', size: 'Tamanho' },
           'toggle-chip': {
@@ -1514,6 +1536,8 @@ export const ptBR: WebMessages = {
               'Em um gráfico vertical só com valores positivos, começa o eixo de valores perto da barra mais curta em vez do zero e marca o corte com um símbolo de quebra.',
             xLabelOrientation:
               'Como os rótulos de categoria sob um gráfico vertical ficam: na horizontal, a 45 graus, a 90 graus ou no automático, que os gira 45 e depois 90 graus quando ficam apertados.',
+            referenceLines:
+              'Linhas tracejadas que atravessam a área do gráfico em valores definidos, como uma meta ou uma média, cada uma com rótulo e cor opcionais; o eixo de valores se amplia para incluí-las.',
           },
           'line-chart': {
             labels:
@@ -1554,6 +1578,8 @@ export const ptBR: WebMessages = {
               'Dispara quando o ponto destacado muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
             visibleRangeChange:
               'Emitido com o início e o fim do intervalo x visível sempre que um gráfico com janela é deslocado. Também é disparado quando a janela recebe zoom.',
+            referenceLines:
+              'Linhas tracejadas que atravessam a área do gráfico em valores definidos, como uma meta ou uma média, cada uma com rótulo e cor opcionais; o eixo y se amplia para incluí-las, a menos que yMin ou yMax as cortem.',
           },
           'pie-chart': {
             data: 'As fatias a desenhar no sentido horário a partir do meio-dia, cada uma com um rótulo, um valor e uma cor opcional.',
@@ -1573,6 +1599,29 @@ export const ptBR: WebMessages = {
               'Dispara quando uma fatia é clicada, ou escolhida com Enter ou Espaço.',
             activeSliceChange:
               'Dispara quando a fatia destacada muda pelo ponteiro ou teclado, com null quando o destaque é removido.',
+            showTotal: 'Mostra o total de todas as fatias no centro de uma rosca.',
+            totalLabel:
+              'Legenda abaixo do total de uma rosca; por padrão, "Total" no idioma ativo.',
+          },
+          sparkline: {
+            data: 'Os valores a desenhar, do mais antigo ao mais recente; null deixa uma lacuna.',
+            variant:
+              'Desenha os valores como uma linha, uma linha sobre uma área preenchida ou barras.',
+            curve:
+              'Como uma linha ou área se curva entre os valores: reta, suavizada ou em degraus.',
+            markers:
+              'Valores destacados: o mais recente, o mais recente com o maior e o menor, todos os valores ou nenhum. Uma linha ou área os marca com um ponto; nas barras, as demais ficam esmaecidas.',
+            color: 'Qualquer cor CSS; por padrão, a primeira cor da paleta de gráficos.',
+            startAtZero:
+              'Faz a escala de uma linha ou área começar do zero, para que a altura mostre o tamanho real de cada valor em vez de um close de como eles variam. As barras sempre começam do zero.',
+            showTooltip:
+              'Mostra o valor sob o ponteiro em um tooltip, ao passar o cursor ou enquanto um dedo desliza sobre ele.',
+            height: 'Altura em pixels; a largura preenche o contêiner.',
+            animation:
+              'Animação de entrada, reproduzida novamente sempre que os dados mudam: traçar a linha ou crescer as barras, surgir gradualmente ou nenhuma.',
+            animationDuration: 'Duração da animação de entrada em milissegundos.',
+            formatValue:
+              'Formata os valores do tooltip e os lidos para as tecnologias assistivas; agrupados de acordo com o idioma ativo por padrão.',
           },
           timeline: {
             items: 'Os eventos a serem exibidos, em ordem.',
