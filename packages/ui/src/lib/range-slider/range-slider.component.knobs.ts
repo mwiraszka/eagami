@@ -19,6 +19,7 @@ export const RANGE_SLIDER_KNOBS: ComponentKnobs = {
     groupThousands: { control: 'boolean' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -35,6 +36,7 @@ export const RANGE_SLIDER_KNOBS: ComponentKnobs = {
     groupThousands: true,
     disabled: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

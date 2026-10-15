@@ -116,6 +116,7 @@ const messages: EagamiMessages = {
   },
   fieldLabel: {
     help: label => `Mais informações sobre ${label}`,
+    optional: '(opcional)',
   },
   fileUploader: {
     prompt: 'Clique ou arraste arquivos aqui para enviar',

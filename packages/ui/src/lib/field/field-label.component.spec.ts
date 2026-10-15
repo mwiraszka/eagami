@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { type TopLayerStubs, installTopLayerStubs } from '../../test-setup';
+import { provideEagamiUi } from '../eagami-ui.provider';
+import { EAGAMI_ALL_LOCALES } from '../i18n/messages';
 import { SunIconComponent } from '../icons/sun.component';
 import { FieldLabelComponent } from './field-label.component';
 
@@ -81,6 +83,70 @@ describe('FieldLabelComponent', () => {
     expect(icon.compareDocumentPosition(text) & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
       Node.DOCUMENT_POSITION_FOLLOWING,
     );
+  });
+
+  describe('Optional', () => {
+    function suffix(): HTMLElement | null {
+      return el.querySelector('.ea-field-label__optional');
+    }
+
+    function labelText(): string {
+      return el
+        .querySelector('.ea-field-label')!
+        .textContent!.replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    it('renders no suffix by default', () => {
+      fixture.detectChanges();
+
+      expect(suffix()).toBeNull();
+    });
+
+    it('follows the label text with a spaced "(optional)" inside the label', () => {
+      fixture.componentRef.setInput('forId', 'email-input');
+      fixture.componentRef.setInput('optional', true);
+      fixture.detectChanges();
+
+      const label = el.querySelector('label')!;
+
+      expect(label.contains(suffix())).toBe(true);
+      expect(suffix()?.textContent).toBe('(optional)');
+      expect(labelText()).toBe('Email (optional)');
+    });
+
+    it('renders the suffix on a span label too', () => {
+      fixture.componentRef.setInput('optional', true);
+      fixture.detectChanges();
+
+      expect(labelText()).toBe('Email (optional)');
+    });
+
+    it('leaves the suffix out while required is set', () => {
+      fixture.componentRef.setInput('optional', true);
+      fixture.componentRef.setInput('required', true);
+      fixture.detectChanges();
+
+      expect(suffix()).toBeNull();
+      expect(el.querySelector('.ea-field-label--required')).toBeTruthy();
+    });
+
+    it('localizes the suffix', () => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [provideEagamiUi({ locale: 'pl', locales: EAGAMI_ALL_LOCALES })],
+      });
+      const localized = TestBed.createComponent(FieldLabelComponent);
+      localized.componentRef.setInput('text', 'Telefon');
+      localized.componentRef.setInput('optional', true);
+      const root = localized.nativeElement as HTMLElement;
+
+      localized.detectChanges();
+
+      expect(root.querySelector('.ea-field-label__optional')?.textContent).toBe(
+        '(opcjonalnie)',
+      );
+    });
   });
 
   describe('Help', () => {
@@ -293,9 +359,9 @@ describe('FieldLabelComponent', () => {
     });
   });
 
-  // Only the shared label renders the icon and the help, so a component that
-  // declares `labelIcon` or `labelHelp` and forgets to hand it over fails
-  // silently in every consumer.
+  // Only the shared label renders the icon, the help and the optional note, so a
+  // component that declares `labelIcon`, `labelHelp` or `optional` and forgets to
+  // hand it over fails silently in every consumer.
   describe('Consumer wiring', () => {
     const LIB = join(process.cwd(), 'src/lib');
 
@@ -329,6 +395,25 @@ describe('FieldLabelComponent', () => {
       );
       const unbound = iconOwners.filter(
         file => !read(file.replace(/\.ts$/, '.html')).includes('[help]="labelHelp()"'),
+      );
+
+      expect(missing).toEqual([]);
+      expect(unbound).toEqual([]);
+    });
+
+    it('offers optional wherever it offers labelIcon, and hands it over', () => {
+      const components = readdirSync(LIB, { recursive: true, encoding: 'utf8' }).filter(
+        file => file.endsWith('.component.ts'),
+      );
+      const iconOwners = components.filter(file =>
+        read(file).includes('readonly labelIcon = input'),
+      );
+
+      const missing = iconOwners.filter(
+        file => !read(file).includes('readonly optional = input'),
+      );
+      const unbound = iconOwners.filter(
+        file => !read(file.replace(/\.ts$/, '.html')).includes('[optional]="optional()"'),
       );
 
       expect(missing).toEqual([]);

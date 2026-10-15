@@ -23,6 +23,7 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
     showConstraints: { control: 'boolean' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     rejected: { action: 'rejected' },
     fileRemoved: { action: 'fileRemoved' },
     triggerError: { control: 'boolean', demoOnly: true },
@@ -38,6 +39,7 @@ export const FILE_UPLOADER_KNOBS: ComponentKnobs = {
     showConstraints: true,
     disabled: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

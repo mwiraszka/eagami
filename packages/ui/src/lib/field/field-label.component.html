@@ -65,4 +65,7 @@
     </span>
   }
   {{ text() }}
+  @if (showOptional()) {
+    <span class="ea-field-label__optional">{{ optionalText() }}</span>
+  }
 </ng-template>

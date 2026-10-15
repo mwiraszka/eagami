@@ -33,6 +33,7 @@ export const NUMBER_INPUT_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

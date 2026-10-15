@@ -40,6 +40,20 @@ class SpanHostComponent {}
 })
 class HelpHostComponent {}
 
+@Component({
+  imports: [FieldLabelComponent],
+  template: `
+    <ea-field-label
+      text="Message for the organizer"
+      forId="message-input"
+      [optional]="true" />
+    <input
+      id="message-input"
+      type="text" />
+  `,
+})
+class OptionalHostComponent {}
+
 describe('FieldLabelComponent a11y', () => {
   async function render(host: Type<unknown>, { openHelp = false } = {}) {
     await TestBed.configureTestingModule({ imports: [host] }).compileComponents();
@@ -79,6 +93,14 @@ describe('FieldLabelComponent a11y', () => {
 
   it('has no violations with help expanded', async () => {
     const el = await render(HelpHostComponent, { openHelp: true });
+
+    const results = await axe(el);
+
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no violations with the optional note', async () => {
+    const el = await render(OptionalHostComponent);
 
     const results = await axe(el);
 

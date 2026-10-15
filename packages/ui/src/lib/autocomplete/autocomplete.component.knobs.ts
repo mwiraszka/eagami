@@ -18,6 +18,7 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     groupedOptions: { control: 'boolean', demoOnly: true },
     firstGroup: {
       control: 'select',
@@ -53,6 +54,7 @@ export const AUTOCOMPLETE_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     groupedOptions: false,
     firstGroup: 'heading',
     firstGroupLabel: 'Recently used',

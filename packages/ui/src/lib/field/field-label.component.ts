@@ -52,6 +52,8 @@ export class FieldLabelComponent {
   readonly help = input<string | TemplateRef<unknown> | undefined>(undefined);
   readonly forId = input<string | undefined>(undefined);
   readonly required = input<boolean>(false);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   readonly labelId = input<string | undefined>(undefined);
 
   // Starts closed again whenever the help itself changes
@@ -66,6 +68,10 @@ export class FieldLabelComponent {
   });
   protected readonly helpTriggerLabel = computed(() =>
     this.i18n.messages().fieldLabel.help(this.text()),
+  );
+  protected readonly showOptional = computed(() => this.optional() && !this.required());
+  protected readonly optionalText = computed(
+    () => this.i18n.messages().fieldLabel.optional,
   );
 
   private readonly helpEl = viewChild<ElementRef<HTMLElement>>('helpEl');

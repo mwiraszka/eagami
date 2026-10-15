@@ -21,6 +21,7 @@ export const DATE_PICKER_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     weekStartsOn: {
       control: 'select',
       options: ['Sunday', 'Monday'],
@@ -45,6 +46,7 @@ export const DATE_PICKER_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     weekStartsOn: 'Monday',
     disableMondays: false,
     disableTuesdays: false,

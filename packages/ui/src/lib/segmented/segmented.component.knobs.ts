@@ -15,6 +15,7 @@ export const SEGMENTED_KNOBS: ComponentKnobs = {
     fullWidth: { control: 'boolean' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     changed: { action: 'changed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -24,6 +25,7 @@ export const SEGMENTED_KNOBS: ComponentKnobs = {
     fullWidth: false,
     disabled: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

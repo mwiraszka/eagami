@@ -12,6 +12,7 @@ export const FORM_FIELD_KNOBS: ComponentKnobs = {
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
   args: {
@@ -19,6 +20,7 @@ export const FORM_FIELD_KNOBS: ComponentKnobs = {
     hint: 'We only use this to reach you',
     size: 'md',
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

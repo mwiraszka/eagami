@@ -16,6 +16,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     required: { control: 'boolean' },
+    optional: { control: 'boolean' },
     completed: { action: 'completed' },
     triggerError: { control: 'boolean', demoOnly: true },
   },
@@ -28,6 +29,7 @@ export const CODE_INPUT_KNOBS: ComponentKnobs = {
     disabled: false,
     readonly: false,
     required: false,
+    optional: false,
     triggerError: false,
   },
 };

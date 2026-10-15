@@ -110,6 +110,8 @@ export class TimePickerComponent implements ControlValueAccessor {
   readonly labelIcon = input<Type<unknown> | undefined>(undefined);
   /** Help revealed by an info button beside the label, as plain text or a template. */
   readonly labelHelp = input<string | TemplateRef<unknown> | undefined>(undefined);
+  /** Adds a muted "(optional)" note after the label, unless `required` is also set. */
+  readonly optional = input<boolean>(false);
   readonly placeholder = input<string | undefined>(undefined);
   readonly size = input<TimePickerSize>('md');
   readonly disabled = input<boolean>(false);
