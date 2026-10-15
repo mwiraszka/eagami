@@ -14,6 +14,20 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.69.0',
+    date: '2026-10-15',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add the sparkline, a small trend of one run of values drawn as a line, an area, or bars, sized for stat tiles, table cells, and running text.',
+          'Add a `referenceLines` input to the line and bar charts that rules labelled, dashed lines across the plot at set values, such as a target or an average.',
+          'Add a `showTotal` input to the pie chart that prints the total in the middle of a donut, captioned by a new `totalLabel` input.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.68.0',
     date: '2026-10-15',
     sections: [
