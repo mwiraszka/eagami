@@ -18,6 +18,30 @@ export type HomeFeatureId =
 export type HomeProjectId =
   'chordbomb' | 'londonchess' | 'brewskibets' | 'circaesthetics';
 
+export type HomeProjectTagId =
+  | 'stripe'
+  | 'affiliates'
+  | 'songRecognition'
+  | 'audioAnalysis'
+  | 'playableChords'
+  | 'midiExport'
+  | 'cms'
+  | 'spreadsheetImports'
+  | 'gameReplays'
+  | 'avatarUploads'
+  | 'events'
+  | 'accounts'
+  | 'emailAlerts'
+  | 'friendRequests'
+  | 'tapToCall'
+  | 'analytics'
+  | 'charts'
+  | 'search'
+  | 'richResults'
+  | 'darkMode'
+  | 'installable'
+  | 'sectionMenus';
+
 /**
  * Every user-facing string, grouped by page or shared section. Parameterized
  * strings are functions so each locale controls its own word order. Resolved by
@@ -118,10 +142,10 @@ export interface WebMessages {
       lede: string;
       visit: (domain: string) => string;
       recordingLabel: (project: string) => string;
+      tags: Record<HomeProjectTagId, string>;
       stories: ReadonlyArray<{
         id: HomeProjectId;
         description: string;
-        tags: ReadonlyArray<string>;
       }>;
     };
     contact: {

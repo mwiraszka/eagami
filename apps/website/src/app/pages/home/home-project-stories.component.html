@@ -9,14 +9,15 @@
         <button
           type="button"
           class="story__trigger"
-          [attr.aria-expanded]="story.id === activeId()"
+          aria-controls="home-project-showcase"
+          [attr.aria-pressed]="story.id === activeId()"
           (click)="select(story.id)">
           <img
             class="story__logo"
             [src]="story.logo"
             alt=""
-            width="48"
-            height="48" />
+            width="40"
+            height="40" />
           <span class="story__heading">
             <span class="story__project">{{ story.name }}</span>
             <span
@@ -26,56 +27,82 @@
             </span>
           </span>
         </button>
-        @if (story.id === activeId()) {
-          <div class="story__details">
-            <ul
-              class="story__tags"
-              role="list">
-              @for (tag of story.tags; track tag) {
-                <li class="story__tag">{{ tag }}</li>
-              }
-            </ul>
-            <a
-              class="story__link"
-              [href]="story.url"
-              target="_blank"
-              rel="noopener noreferrer">
-              {{ projects().visit(story.display) }}
-            </a>
-          </div>
-        }
       </li>
     }
   </ul>
 
   <div
-    #stage
-    class="stories__stage">
+    id="home-project-showcase"
+    class="stories__showcase">
     <div
-      class="stories__chrome"
-      aria-hidden="true">
-      <span class="stories__dots">
-        <span class="stories__dot"></span>
-        <span class="stories__dot"></span>
-        <span class="stories__dot"></span>
-      </span>
-      <span class="stories__url">{{ activeStory().page }}</span>
+      #stage
+      class="stories__stage">
+      <div
+        class="stories__chrome"
+        aria-hidden="true">
+        <span class="stories__dots">
+          <span class="stories__dot"></span>
+          <span class="stories__dot"></span>
+          <span class="stories__dot"></span>
+        </span>
+        <span class="stories__url">{{ currentPage() }}</span>
+      </div>
+      <div class="stories__screen">
+        @for (story of screenStories(); track story.id) {
+          <video
+            #video
+            class="stories__video"
+            [src]="story.video"
+            [poster]="story.poster"
+            [controls]="showControls()"
+            [attr.aria-label]="projects().recordingLabel(story.name)"
+            muted
+            loop
+            playsinline
+            preload="metadata">
+            @if (story.pageTrack) {
+              <track
+                #pageTrack
+                kind="metadata"
+                default
+                [src]="story.pageTrack"
+                (cuechange)="syncPage(pageTrack.track)" />
+            }
+          </video>
+        }
+      </div>
     </div>
-    <div class="stories__screen">
-      @for (story of screenStories(); track story.id) {
-        <video
-          #video
-          class="stories__video"
-          [src]="story.video"
-          [poster]="story.poster"
-          [controls]="showControls()"
-          [attr.aria-label]="projects().recordingLabel(story.name)"
-          muted
-          loop
-          playsinline
-          preload="metadata">
-        </video>
-      }
-    </div>
+
+    @for (story of screenStories(); track story.id) {
+      <div class="stories__details">
+        <p
+          class="stories__summary"
+          dir="auto">
+          {{ story.description }}
+        </p>
+        <ul
+          class="stories__tags"
+          role="list">
+          @for (tag of story.tags; track tag.id) {
+            <li>
+              <ea-tag
+                size="sm"
+                [icon]="tag.icon"
+                [color]="tag.color"
+                [ink]="tag.ink">
+                {{ tag.label }}
+              </ea-tag>
+            </li>
+          }
+        </ul>
+        <a
+          class="stories__link"
+          [href]="story.url"
+          target="_blank"
+          rel="noopener noreferrer">
+          {{ projects().visit(story.display) }}
+        </a>
+      </div>
+    }
   </div>
 </div>
