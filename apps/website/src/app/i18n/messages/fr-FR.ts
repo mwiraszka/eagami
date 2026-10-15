@@ -1504,6 +1504,7 @@ export const frFR: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Taille',
+            icon: 'Icône',
             removable: 'Supprimable',
             disabled: 'Désactivé',
             removeLabel: 'Libellé de suppression',
@@ -2083,6 +2084,7 @@ export const frFR: WebMessages = {
             ink: 'Couleur du texte, toute couleur CSS, qui remplace l’encre que l’étiquette choisirait pour color. La fournir permet à color d’être une valeur que l’étiquette ne peut pas mesurer, le contraste entre les deux revenant alors à l’appelant.',
             variant: 'Schéma de couleurs sémantique de l’étiquette.',
             size: 'Taille visuelle de l’étiquette.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             maxWidth:
               'Largeur maximale du tag en px ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
             tooltip:

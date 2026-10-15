@@ -1479,6 +1479,7 @@ export const is: WebMessages = {
           tag: {
             variant: 'Afbrigði',
             size: 'Stærð',
+            icon: 'Táknmynd',
             removable: 'Fjarlægjanlegt',
             disabled: 'Óvirkt',
             removeLabel: 'Merkimiði fyrir fjarlægingarhnapp',
@@ -2041,6 +2042,7 @@ export const is: WebMessages = {
             ink: 'Textalitur, hvaða CSS-litur sem er, sem kemur í stað þess litar sem merkið myndi velja fyrir color. Þegar hann er gefinn má color vera gildi sem merkið getur ekki mælt, og þá ber sá sem kallar ábyrgð á birtuskilum milli þeirra.',
             variant: 'Merkingarlegt litakerfi merkisins.',
             size: 'Sjónræn stærð merkisins.',
+            icon: 'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             maxWidth:
               'Mesta breidd merkisins í px; lengri texti styttist. Einnig stillanlegt sem --ea-tag-max-width.',
             tooltip:

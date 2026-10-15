@@ -1475,6 +1475,7 @@ export const pl: WebMessages = {
           tag: {
             variant: 'Wariant',
             size: 'Rozmiar',
+            icon: 'Ikona',
             removable: 'Z możliwością usunięcia',
             disabled: 'Wyłączone',
             removeLabel: 'Etykieta usuwania',
@@ -2040,6 +2041,7 @@ export const pl: WebMessages = {
             ink: 'Kolor tekstu jako dowolny kolor CSS, zastępujący kolor, który tag dobrałby dla color. Jego podanie pozwala, by color był wartością, której tag nie potrafi zmierzyć, a za kontrast między nimi odpowiada wtedy wywołujący.',
             variant: 'Semantyczny schemat kolorów tagu.',
             size: 'Wizualny rozmiar tagu.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             maxWidth:
               'Maksymalna szerokość tagu w px; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
             tooltip:

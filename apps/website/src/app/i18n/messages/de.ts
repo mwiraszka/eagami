@@ -1480,6 +1480,7 @@ export const de: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Größe',
+            icon: 'Symbol',
             removable: 'Entfernbar',
             disabled: 'Deaktiviert',
             removeLabel: 'Entfernen-Label',
@@ -2076,6 +2077,7 @@ export const de: WebMessages = {
             ink: 'Textfarbe als beliebige CSS-Farbe, überschreibt die Schriftfarbe, die das Tag für color wählen würde. Damit darf color ein Wert sein, den das Tag nicht messen kann; der Kontrast zwischen beiden liegt dann beim Aufrufer.',
             variant: 'Semantisches Farbschema des Tags.',
             size: 'Visuelle Größe des Tags.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             maxWidth:
               'Maximale Breite des Tags in px; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
             tooltip:

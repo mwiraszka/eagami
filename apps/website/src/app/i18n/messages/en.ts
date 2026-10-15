@@ -1438,6 +1438,7 @@ export const en: WebMessages = {
           tag: {
             variant: 'Variant',
             size: 'Size',
+            icon: 'Icon',
             removable: 'Removable',
             disabled: 'Disabled',
             removeLabel: 'Remove label',
@@ -1984,6 +1985,7 @@ export const en: WebMessages = {
             ink: 'Text color as any CSS color, overriding the ink the tag would pick for color. Supplying it lets color be a value the tag cannot measure, leaving the contrast between the two to the caller.',
             variant: 'Semantic color scheme of the tag.',
             size: 'Visual size of the tag.',
+            icon: 'Optional icon component rendered before the label.',
             maxWidth:
               'Widest the tag may grow in px; a longer label ellipsizes instead. Also settable as --ea-tag-max-width.',
             tooltip:

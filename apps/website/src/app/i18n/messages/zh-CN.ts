@@ -1392,6 +1392,7 @@ export const zhCN: WebMessages = {
           tag: {
             variant: '变体',
             size: '尺寸',
+            icon: '图标',
             removable: '可移除',
             disabled: '禁用',
             removeLabel: '移除标签',
@@ -1865,6 +1866,7 @@ export const zhCN: WebMessages = {
             ink: '文字颜色，可为任意 CSS 颜色，覆盖标签为 color 选择的文字颜色。提供后，color 可以是标签无法测量的值，两者之间的对比度由调用方负责。',
             variant: '标签的语义配色方案。',
             size: '标签的视觉尺寸。',
+            icon: '可选的图标组件，显示在标签文本之前。',
             maxWidth:
               '标签的最大宽度（px）；更长的文本会被省略。也可通过 --ea-tag-max-width 设置。',
             tooltip:

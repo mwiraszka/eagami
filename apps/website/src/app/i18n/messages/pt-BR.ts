@@ -1466,6 +1466,7 @@ export const ptBR: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Tamanho',
+            icon: 'Ícone',
             removable: 'Removível',
             disabled: 'Desativado',
             removeLabel: 'Rótulo de remoção',
@@ -2045,6 +2046,7 @@ export const ptBR: WebMessages = {
             ink: 'Cor do texto, qualquer cor CSS, que substitui a tinta que a tag escolheria para color. Fornecê-la permite que color seja um valor que a tag não consegue medir, deixando o contraste entre as duas a cargo de quem a usa.',
             variant: 'Esquema de cores semântico da tag.',
             size: 'Tamanho visual da tag.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             maxWidth:
               'Largura máxima da tag em px; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
             tooltip:

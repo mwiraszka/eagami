@@ -1467,6 +1467,7 @@ export const nl: WebMessages = {
           tag: {
             variant: 'Variant',
             size: 'Grootte',
+            icon: 'Icoon',
             removable: 'Verwijderbaar',
             disabled: 'Uitgeschakeld',
             removeLabel: 'Verwijderlabel',
@@ -2054,6 +2055,7 @@ export const nl: WebMessages = {
             ink: 'Tekstkleur als willekeurige CSS-kleur, die de tekstkleur overschrijft die de tag voor color zou kiezen. Hiermee mag color een waarde zijn die de tag niet kan meten, en ligt het contrast tussen beide bij de aanroeper.',
             variant: 'Semantisch kleurenschema van de tag.',
             size: 'Visuele grootte van de tag.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             maxWidth:
               'Maximale breedte van de tag in px; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
             tooltip:
