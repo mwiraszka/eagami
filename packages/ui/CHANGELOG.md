@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.71.0] - 2026-10-16
+
+### Added
+
+- Add a `typedPlaceholder` input to the input and textarea that types a list of hints into the empty field one character at a time, trailed by an upright, blinking cursor, and swaps whole hints instead under reduced motion.
+
 ## [5.70.0] - 2026-10-15
 
 ### Added
@@ -1951,6 +1957,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.71.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.70.0...ui-v5.71.0
 [5.70.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.69.0...ui-v5.70.0
 [5.69.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.68.0...ui-v5.69.0
 [5.68.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.67.0...ui-v5.68.0

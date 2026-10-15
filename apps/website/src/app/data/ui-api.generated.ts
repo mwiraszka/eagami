@@ -2955,6 +2955,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'typedPlaceholder',
+        type: 'readonly string[]',
+        default: '[]',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'value',
         type: 'string',
         default: "''",
@@ -5696,6 +5703,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         name: 'size',
         type: 'TextareaSize',
         default: "'md'",
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'typedPlaceholder',
+        type: 'readonly string[]',
+        default: '[]',
         required: false,
         twoWay: false,
       },

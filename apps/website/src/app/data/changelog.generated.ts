@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.71.0',
+    date: '2026-10-16',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          'Add a `typedPlaceholder` input to the input and textarea that types a list of hints into the empty field one character at a time, trailed by an upright, blinking cursor, and swaps whole hints instead under reduced motion.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.70.0',
     date: '2026-10-15',
     sections: [
