@@ -157,57 +157,49 @@ export const pl: WebMessages = {
       lede: 'Działające strony i aplikacje, które zaprojektowaliśmy, zbudowaliśmy i którymi wciąż się opiekujemy.',
       visit: domain => `Odwiedź ${domain}`,
       recordingLabel: project => `Nagranie ekranu: ${project}`,
+      tags: {
+        stripe: 'Subskrypcje Stripe',
+        affiliates: 'Śledzenie afiliacji',
+        songRecognition: 'Rozpoznawanie utworów',
+        audioAnalysis: 'Analiza dźwięku',
+        playableChords: 'Odtwarzanie akordów',
+        midiExport: 'Eksport MIDI',
+        cms: 'Edytor treści',
+        spreadsheetImports: 'Import arkuszy',
+        gameReplays: 'Powtórki partii',
+        avatarUploads: 'Przesyłanie awatarów',
+        events: 'Kalendarz wydarzeń',
+        accounts: 'Konta użytkowników',
+        emailAlerts: 'Powiadomienia e-mail',
+        friendRequests: 'Zaproszenia do znajomych',
+        tapToCall: 'Połączenie jednym dotknięciem',
+        analytics: 'Analityka bez ciasteczek',
+        charts: 'Interaktywne wykresy',
+        search: 'Wyszukiwarka',
+        richResults: 'Rozszerzone wyniki wyszukiwania',
+        darkMode: 'Tryb ciemny',
+        installable: 'Aplikacja do instalacji',
+        sectionMenus: 'Menu sekcji',
+      },
       stories: [
         {
           id: 'chordbomb',
           description:
             'Rozpoznaje utwór grający w pobliżu i ustala jego progresję akordów.',
-          tags: [
-            'Subskrypcje Stripe',
-            'Rozpoznawanie utworów',
-            'Analiza dźwięku',
-            'Odtwarzanie akordów',
-            'Eksport MIDI',
-            'Nagrania w chmurze',
-          ],
         },
         {
           id: 'londonchess',
           description: 'Serwis London Chess Club i wydarzeń szachowych w London, ON.',
-          tags: [
-            'Edytor treści',
-            'Powtórki partii',
-            'Powiadomienia e-mail',
-            'Import arkuszy',
-            'Google Maps',
-            'Przesyłanie zdjęć',
-            'Przeglądarka PDF',
-            'Rankingi członków',
-            'Monitorowanie błędów',
-          ],
         },
         {
           id: 'brewskibets',
           description:
             'Aplikacja do śledzenia luźnych zakładów między znajomymi, rozliczanych piwem.',
-          tags: [
-            'Interaktywne wykresy',
-            'Zaproszenia do znajomych',
-            'Przesyłanie awatarów',
-            'Własne ikony',
-            'Tryb ciemny',
-          ],
         },
         {
           id: 'circaesthetics',
           description:
             'Klinika kosmetycznej radiologii interwencyjnej z siedzibą w London, ON.',
-          tags: [
-            'Śledzenie afiliacji',
-            'Analityka bez ciasteczek',
-            'Połączenie jednym dotknięciem',
-            'Menu sekcji',
-          ],
         },
       ],
     },
@@ -1475,6 +1467,7 @@ export const pl: WebMessages = {
           tag: {
             variant: 'Wariant',
             size: 'Rozmiar',
+            icon: 'Ikona',
             removable: 'Z możliwością usunięcia',
             disabled: 'Wyłączone',
             removeLabel: 'Etykieta usuwania',
@@ -2040,6 +2033,7 @@ export const pl: WebMessages = {
             ink: 'Kolor tekstu jako dowolny kolor CSS, zastępujący kolor, który tag dobrałby dla color. Jego podanie pozwala, by color był wartością, której tag nie potrafi zmierzyć, a za kontrast między nimi odpowiada wtedy wywołujący.',
             variant: 'Semantyczny schemat kolorów tagu.',
             size: 'Wizualny rozmiar tagu.',
+            icon: 'Opcjonalny komponent ikony wyświetlany przed tekstem etykiety.',
             maxWidth:
               'Maksymalna szerokość tagu w px; dłuższa etykieta jest skracana. Można też ustawić jako --ea-tag-max-width.',
             tooltip:

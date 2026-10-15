@@ -76,7 +76,8 @@
     font-size: 1em;
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-wide);
-    font-family: var(--font-family-brand);
+    // eagami's own typeface, which an app re-theming its brand font must not change
+    font-family: 'Syne', 'Syne Fallback', system-ui, sans-serif;
   }
 
   // Optical nudge: the stacked tagline variant's text mass sits low against

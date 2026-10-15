@@ -6,6 +6,13 @@
   [style.--ea-tag-ink]="resolvedInk()"
   [eaTooltip]="labelTooltip()"
   [tooltipPosition]="tooltipPosition()">
+  @if (icon(); as iconComponent) {
+    <span
+      class="ea-tag__icon"
+      aria-hidden="true">
+      <ng-container *ngComponentOutlet="iconComponent" />
+    </span>
+  }
   <span
     #labelEl
     class="ea-tag__label">

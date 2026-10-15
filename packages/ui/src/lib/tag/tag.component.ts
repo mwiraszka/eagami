@@ -1,9 +1,10 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgComponentOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   type ElementRef,
+  type Type,
   ViewEncapsulation,
   afterNextRender,
   computed,
@@ -40,7 +41,7 @@ export type TagTooltip = 'above' | 'below' | 'none';
  */
 @Component({
   selector: 'ea-tag',
-  imports: [NgClass, TooltipDirective, XIconComponent],
+  imports: [NgClass, NgComponentOutlet, TooltipDirective, XIconComponent],
   templateUrl: './tag.component.html',
   styleUrl: './tag.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,6 +54,8 @@ export class TagComponent {
 
   readonly variant = input<TagVariant>('default');
   readonly size = input<TagSize>('md');
+  /** Optional icon component rendered before the label. */
+  readonly icon = input<Type<unknown> | undefined>(undefined);
   readonly removable = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly removeLabel = input<string | undefined>(undefined);

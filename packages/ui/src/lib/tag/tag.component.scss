@@ -96,6 +96,11 @@ ea-tag {
   // 1 leaves this box exactly one em tall, so hiding the overflow would take
   // the descenders with it; the padding grows the clip box and the matching
   // negative margin keeps the chip the same height.
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
   &__label {
     overflow: hidden;
     min-width: 0;

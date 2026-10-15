@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.68.0] - 2026-10-15
+
+### Added
+
+- Add an `icon` input to the tag that leads its label with an icon.
+
+### Fixed
+
+- Stop touch browsers flashing a square highlight over rounded controls when they are tapped.
+- Space a checkbox or radio label that wraps like body text, keeping the box level with its first line.
+- Keep the eagami wordmark in its own typeface when an app changes its brand font.
+
 ## [5.67.0] - 2026-10-14
 
 ### Added
@@ -1925,6 +1937,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.68.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.67.0...ui-v5.68.0
 [5.67.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.66.0...ui-v5.67.0
 [5.66.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.65.0...ui-v5.66.0
 [5.65.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.64.1...ui-v5.65.0

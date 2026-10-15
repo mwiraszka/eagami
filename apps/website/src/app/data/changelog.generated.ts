@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.68.0',
+    date: '2026-10-15',
+    sections: [
+      {
+        heading: 'Added',
+        entries: ['Add an `icon` input to the tag that leads its label with an icon.'],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop touch browsers flashing a square highlight over rounded controls when they are tapped.',
+          'Space a checkbox or radio label that wraps like body text, keeping the box level with its first line.',
+          'Keep the eagami wordmark in its own typeface when an app changes its brand font.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.67.0',
     date: '2026-10-14',
     sections: [

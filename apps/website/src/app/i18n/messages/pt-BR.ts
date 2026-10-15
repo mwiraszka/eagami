@@ -152,58 +152,50 @@ export const ptBR: WebMessages = {
       lede: 'Sites e apps no ar que projetamos, desenvolvemos e continuamos cuidando.',
       visit: domain => `Visitar ${domain}`,
       recordingLabel: project => `Gravação de tela de ${project}`,
+      tags: {
+        stripe: 'Assinaturas com Stripe',
+        affiliates: 'Rastreamento de afiliados',
+        songRecognition: 'Reconhecimento de músicas',
+        audioAnalysis: 'Análise de áudio',
+        playableChords: 'Acordes tocáveis',
+        midiExport: 'Exportação MIDI',
+        cms: 'Editor de conteúdo',
+        spreadsheetImports: 'Importação de planilhas',
+        gameReplays: 'Reprodução de partidas',
+        avatarUploads: 'Upload de avatares',
+        events: 'Agenda de eventos',
+        accounts: 'Contas de usuário',
+        emailAlerts: 'Alertas por e-mail',
+        friendRequests: 'Pedidos de amizade',
+        tapToCall: 'Toque para ligar',
+        analytics: 'Análises sem cookies',
+        charts: 'Gráficos interativos',
+        search: 'Busca',
+        richResults: 'Resultados de pesquisa enriquecidos',
+        darkMode: 'Modo escuro',
+        installable: 'App instalável',
+        sectionMenus: 'Menus por seção',
+      },
       stories: [
         {
           id: 'chordbomb',
           description:
             'Identifica a música tocando ao seu redor e deduz sua progressão de acordes.',
-          tags: [
-            'Assinaturas com Stripe',
-            'Reconhecimento de músicas',
-            'Análise de áudio',
-            'Acordes tocáveis',
-            'Exportação MIDI',
-            'Gravações na nuvem',
-          ],
         },
         {
           id: 'londonchess',
           description:
             'Um ponto de encontro para o London Chess Club e eventos de xadrez em London, ON.',
-          tags: [
-            'Editor de conteúdo',
-            'Reprodução de partidas',
-            'Alertas por e-mail',
-            'Importação de planilhas',
-            'Google Maps',
-            'Upload de imagens',
-            'Visualizador de PDF',
-            'Ratings dos membros',
-            'Monitoramento de erros',
-          ],
         },
         {
           id: 'brewskibets',
           description:
             'Um rastreador de apostas casuais entre amigos, acertadas em cerveja.',
-          tags: [
-            'Gráficos interativos',
-            'Pedidos de amizade',
-            'Upload de avatares',
-            'Ícones personalizados',
-            'Modo escuro',
-          ],
         },
         {
           id: 'circaesthetics',
           description:
             'Clínica de Radiologia Intervencionista Cosmética sediada em London, ON.',
-          tags: [
-            'Rastreamento de afiliados',
-            'Análises sem cookies',
-            'Toque para ligar',
-            'Menus por seção',
-          ],
         },
       ],
     },
@@ -1466,6 +1458,7 @@ export const ptBR: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Tamanho',
+            icon: 'Ícone',
             removable: 'Removível',
             disabled: 'Desativado',
             removeLabel: 'Rótulo de remoção',
@@ -2045,6 +2038,7 @@ export const ptBR: WebMessages = {
             ink: 'Cor do texto, qualquer cor CSS, que substitui a tinta que a tag escolheria para color. Fornecê-la permite que color seja um valor que a tag não consegue medir, deixando o contraste entre as duas a cargo de quem a usa.',
             variant: 'Esquema de cores semântico da tag.',
             size: 'Tamanho visual da tag.',
+            icon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             maxWidth:
               'Largura máxima da tag em px; um rótulo maior é truncado. Também configurável como --ea-tag-max-width.',
             tooltip:

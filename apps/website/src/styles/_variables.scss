@@ -96,8 +96,62 @@
   --web-color-bandSubtle: var(--color-secondary-300);
   --web-color-bandAccent: var(--color-primary-300);
   --web-color-bandAccentHover: var(--color-primary-200);
-  --web-color-bandChipBg: color-mix(in srgb, var(--color-primary-300) 14%, transparent);
-  --web-color-bandChipText: var(--color-primary-100);
+  --web-color-bandPressedBg: color-mix(
+    in srgb,
+    var(--color-primary-300) 14%,
+    transparent
+  );
+  /* Project tags: one hue per kind of feature, drawn from the library's chart palette */
+  --web-color-bandTagCommerceBg: color-mix(
+    in srgb,
+    var(--color-chart-6) 25%,
+    transparent
+  );
+  --web-color-bandTagCommerceText: color-mix(
+    in srgb,
+    var(--color-chart-6) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagSoundBg: color-mix(in srgb, var(--color-chart-5) 25%, transparent);
+  --web-color-bandTagSoundText: color-mix(
+    in srgb,
+    var(--color-chart-5) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagInsightBg: color-mix(in srgb, var(--color-chart-1) 25%, transparent);
+  --web-color-bandTagInsightText: color-mix(
+    in srgb,
+    var(--color-chart-1) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagPeopleBg: color-mix(in srgb, var(--color-chart-2) 25%, transparent);
+  --web-color-bandTagPeopleText: color-mix(
+    in srgb,
+    var(--color-chart-2) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagContentBg: color-mix(in srgb, var(--color-chart-3) 25%, transparent);
+  --web-color-bandTagContentText: color-mix(
+    in srgb,
+    var(--color-chart-3) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagPlaceBg: color-mix(in srgb, var(--color-chart-4) 25%, transparent);
+  --web-color-bandTagPlaceText: color-mix(
+    in srgb,
+    var(--color-chart-4) 40%,
+    var(--color-neutral-0)
+  );
+  --web-color-bandTagExperienceBg: color-mix(
+    in srgb,
+    var(--color-chart-7) 25%,
+    transparent
+  );
+  --web-color-bandTagExperienceText: color-mix(
+    in srgb,
+    var(--color-chart-7) 40%,
+    var(--color-neutral-0)
+  );
   --web-color-bandActiveBg: color-mix(in srgb, var(--color-primary-300) 8%, transparent);
   --web-color-bandActiveRing: color-mix(
     in srgb,

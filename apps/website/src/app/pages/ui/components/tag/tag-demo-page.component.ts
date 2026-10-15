@@ -1,7 +1,7 @@
 import { TagComponent, type TagSize, type TagTooltip, type TagVariant } from '@eagami/ui';
 import { PLAYGROUND_KNOBS } from '@eagami/ui-knobs';
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { UI_API } from '@app/data/ui-api.generated';
 
@@ -10,6 +10,7 @@ import {
   ComponentPlaygroundComponent,
   type KnobChange,
 } from '../_playground/component-playground.component';
+import { iconComponentForSlug, iconKnob } from '../_playground/icon-knob';
 import {
   type KnobValue,
   buildKnobs,
@@ -25,6 +26,7 @@ interface TagKnobState {
   text: string;
   variant: TagVariant;
   size: TagSize;
+  icon: string;
   maxWidth: number;
   color: string;
   ink: string;
@@ -49,9 +51,24 @@ export class TagDemoPageComponent {
   protected readonly knobs = [
     textKnob('Eagami'),
     ...buildKnobs(PLAYGROUND_KNOBS.tag, UI_API[SLUG]),
+    iconKnob([
+      'tag',
+      'star',
+      'moon',
+      'sun',
+      'globe',
+      'heart',
+      'bell',
+      'map-pin',
+      'code',
+      'zap',
+    ]),
   ];
   protected readonly state = signal<TagKnobState>(
     initialKnobState(this.knobs, PLAYGROUND_KNOBS.tag, this.knobDefaults) as TagKnobState,
+  );
+  protected readonly iconComponent = computed(() =>
+    iconComponentForSlug(this.state().icon),
   );
 
   protected onKnob({ name, value }: KnobChange): void {

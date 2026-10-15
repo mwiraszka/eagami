@@ -157,58 +157,50 @@ export const de: WebMessages = {
       lede: 'Live-Websites und Apps, die wir entworfen und gebaut haben und bis heute betreuen.',
       visit: domain => `${domain} besuchen`,
       recordingLabel: project => `Bildschirmaufnahme von ${project}`,
+      tags: {
+        stripe: 'Stripe-Abos',
+        affiliates: 'Affiliate-Tracking',
+        songRecognition: 'Songerkennung',
+        audioAnalysis: 'Audioanalyse',
+        playableChords: 'Spielbare Akkorde',
+        midiExport: 'MIDI-Export',
+        cms: 'Inhaltseditor',
+        spreadsheetImports: 'Tabellenimporte',
+        gameReplays: 'Partiewiedergabe',
+        avatarUploads: 'Avatar-Uploads',
+        events: 'Eventkalender',
+        accounts: 'Benutzerkonten',
+        emailAlerts: 'E-Mail-Alerts',
+        friendRequests: 'Freundschaftsanfragen',
+        tapToCall: 'Anruf per Fingertipp',
+        analytics: 'Analytics ohne Cookies',
+        charts: 'Interaktive Diagramme',
+        search: 'Suche',
+        richResults: 'Erweiterte Suchergebnisse',
+        darkMode: 'Dunkelmodus',
+        installable: 'Installierbare App',
+        sectionMenus: 'Abschnittsmenüs',
+      },
       stories: [
         {
           id: 'chordbomb',
           description:
             'Erkennt den Song, der gerade um Sie herum läuft, und ermittelt seine Akkordfolge.',
-          tags: [
-            'Stripe-Abos',
-            'Songerkennung',
-            'Audioanalyse',
-            'Spielbare Akkorde',
-            'MIDI-Export',
-            'Cloud-Aufnahmen',
-          ],
         },
         {
           id: 'londonchess',
           description:
             'Ein Treffpunkt für den London Chess Club und Schachveranstaltungen in London, ON.',
-          tags: [
-            'Inhaltseditor',
-            'Partiewiedergabe',
-            'E-Mail-Alerts',
-            'Tabellenimporte',
-            'Google Maps',
-            'Bild-Uploads',
-            'PDF-Viewer',
-            'Wertungszahlen',
-            'Fehlerüberwachung',
-          ],
         },
         {
           id: 'brewskibets',
           description:
             'Ein Tracker für lockere Wetten unter Freunden, beglichen in Bier.',
-          tags: [
-            'Interaktive Diagramme',
-            'Freundschaftsanfragen',
-            'Avatar-Uploads',
-            'Eigene Icons',
-            'Dunkelmodus',
-          ],
         },
         {
           id: 'circaesthetics',
           description:
             'Klinik für kosmetische interventionelle Radiologie mit Sitz in London, ON.',
-          tags: [
-            'Affiliate-Tracking',
-            'Analytics ohne Cookies',
-            'Anruf per Fingertipp',
-            'Abschnittsmenüs',
-          ],
         },
       ],
     },
@@ -1480,6 +1472,7 @@ export const de: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Größe',
+            icon: 'Symbol',
             removable: 'Entfernbar',
             disabled: 'Deaktiviert',
             removeLabel: 'Entfernen-Label',
@@ -2076,6 +2069,7 @@ export const de: WebMessages = {
             ink: 'Textfarbe als beliebige CSS-Farbe, überschreibt die Schriftfarbe, die das Tag für color wählen würde. Damit darf color ein Wert sein, den das Tag nicht messen kann; der Kontrast zwischen beiden liegt dann beim Aufrufer.',
             variant: 'Semantisches Farbschema des Tags.',
             size: 'Visuelle Größe des Tags.',
+            icon: 'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             maxWidth:
               'Maximale Breite des Tags in px; ein längeres Label wird gekürzt. Auch als --ea-tag-max-width setzbar.',
             tooltip:

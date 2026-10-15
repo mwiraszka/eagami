@@ -153,58 +153,50 @@ export const nl: WebMessages = {
       lede: 'Live sites en apps die we hebben ontworpen, gebouwd en nog steeds onderhouden.',
       visit: domain => `Bezoek ${domain}`,
       recordingLabel: project => `Schermopname van ${project}`,
+      tags: {
+        stripe: 'Stripe-abonnementen',
+        affiliates: 'Affiliate-tracking',
+        songRecognition: 'Muziekherkenning',
+        audioAnalysis: 'Audioanalyse',
+        playableChords: 'Speelbare akkoorden',
+        midiExport: 'MIDI-export',
+        cms: 'Contenteditor',
+        spreadsheetImports: 'Spreadsheetimport',
+        gameReplays: 'Partijen naspelen',
+        avatarUploads: 'Avatar-uploads',
+        events: 'Agenda',
+        accounts: 'Gebruikersaccounts',
+        emailAlerts: 'E-mailmeldingen',
+        friendRequests: 'Vriendschapsverzoeken',
+        tapToCall: 'Tik om te bellen',
+        analytics: 'Cookieloze statistieken',
+        charts: 'Interactieve grafieken',
+        search: 'Zoeken',
+        richResults: 'Uitgebreide zoekresultaten',
+        darkMode: 'Donkere modus',
+        installable: 'Installeerbare app',
+        sectionMenus: "Sectiemenu's",
+      },
       stories: [
         {
           id: 'chordbomb',
           description:
             'Herkent het nummer dat om je heen speelt en leidt het akkoordenschema af.',
-          tags: [
-            'Stripe-abonnementen',
-            'Muziekherkenning',
-            'Audioanalyse',
-            'Speelbare akkoorden',
-            'MIDI-export',
-            'Cloudopnames',
-          ],
         },
         {
           id: 'londonchess',
           description:
             'Een centrale plek voor de London Chess Club en schaakevenementen in London, ON.',
-          tags: [
-            'Contenteditor',
-            'Partijen naspelen',
-            'E-mailmeldingen',
-            'Spreadsheetimport',
-            'Google Maps',
-            'Afbeeldingsuploads',
-            'PDF-viewer',
-            'Ledenratings',
-            'Foutmonitoring',
-          ],
         },
         {
           id: 'brewskibets',
           description:
             'Een tracker voor vriendschappelijke weddenschappen, vereffend in bier.',
-          tags: [
-            'Interactieve grafieken',
-            'Vriendschapsverzoeken',
-            'Avatar-uploads',
-            'Eigen iconen',
-            'Donkere modus',
-          ],
         },
         {
           id: 'circaesthetics',
           description:
             'Cosmetic Interventional Radiology Clinic gevestigd in London, ON.',
-          tags: [
-            'Affiliate-tracking',
-            'Cookieloze statistieken',
-            'Tik om te bellen',
-            "Sectiemenu's",
-          ],
         },
       ],
     },
@@ -1467,6 +1459,7 @@ export const nl: WebMessages = {
           tag: {
             variant: 'Variant',
             size: 'Grootte',
+            icon: 'Icoon',
             removable: 'Verwijderbaar',
             disabled: 'Uitgeschakeld',
             removeLabel: 'Verwijderlabel',
@@ -2054,6 +2047,7 @@ export const nl: WebMessages = {
             ink: 'Tekstkleur als willekeurige CSS-kleur, die de tekstkleur overschrijft die de tag voor color zou kiezen. Hiermee mag color een waarde zijn die de tag niet kan meten, en ligt het contrast tussen beide bij de aanroeper.',
             variant: 'Semantisch kleurenschema van de tag.',
             size: 'Visuele grootte van de tag.',
+            icon: 'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             maxWidth:
               'Maximale breedte van de tag in px; een langer label wordt afgekapt. Ook instelbaar als --ea-tag-max-width.',
             tooltip:

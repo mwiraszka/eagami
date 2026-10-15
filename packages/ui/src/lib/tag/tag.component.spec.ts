@@ -1,6 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+import { StarIconComponent } from '../icons/star.component';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { TagComponent } from './tag.component';
 
@@ -39,6 +40,22 @@ describe('TagComponent', () => {
 
     it('wraps the projected content in a label element it can truncate', () => {
       expect(fixture.nativeElement.querySelector('.ea-tag__label')).toBeTruthy();
+    });
+
+    it('renders no icon slot when none is given', () => {
+      expect(fixture.nativeElement.querySelector('.ea-tag__icon')).toBeNull();
+    });
+
+    it('renders the given icon before the label, hidden from assistive technology', () => {
+      fixture.componentRef.setInput('icon', StarIconComponent);
+
+      fixture.detectChanges();
+
+      const icon = getTag()!.firstElementChild!;
+      expect(icon.classList).toContain('ea-tag__icon');
+      expect(icon.querySelector('ea-icon-star')).not.toBeNull();
+      expect(icon.getAttribute('aria-hidden')).toBe('true');
+      expect(icon.nextElementSibling!.classList).toContain('ea-tag__label');
     });
 
     it('caps the tag at maxWidth', () => {

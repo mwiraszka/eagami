@@ -179,57 +179,49 @@ export const frFR: WebMessages = {
       lede: 'Des sites et applications en ligne, conçus, développés et toujours suivis par nos soins.',
       visit: domain => `Visiter ${domain}`,
       recordingLabel: project => `Enregistrement d’écran de ${project}`,
+      tags: {
+        stripe: 'Abonnements Stripe',
+        affiliates: 'Suivi d’affiliation',
+        songRecognition: 'Reconnaissance musicale',
+        audioAnalysis: 'Analyse audio',
+        playableChords: 'Accords jouables',
+        midiExport: 'Export MIDI',
+        cms: 'Éditeur de contenu',
+        spreadsheetImports: 'Import de tableurs',
+        gameReplays: 'Rejeu des parties',
+        avatarUploads: 'Envoi d’avatars',
+        events: 'Agenda d’événements',
+        accounts: 'Comptes utilisateurs',
+        emailAlerts: 'Alertes e-mail',
+        friendRequests: 'Demandes d’ami',
+        tapToCall: 'Appel en un clic',
+        analytics: 'Statistiques sans cookies',
+        charts: 'Graphiques interactifs',
+        search: 'Recherche',
+        richResults: 'Résultats enrichis',
+        darkMode: 'Mode sombre',
+        installable: 'Application installable',
+        sectionMenus: 'Menus de section',
+      },
       stories: [
         {
           id: 'chordbomb',
           description:
             'Identifie la chanson qui joue autour de vous et en déduit la progression d’accords.',
-          tags: [
-            'Abonnements Stripe',
-            'Reconnaissance musicale',
-            'Analyse audio',
-            'Accords jouables',
-            'Export MIDI',
-            'Enregistrements cloud',
-          ],
         },
         {
           id: 'londonchess',
           description:
             'Le point de ralliement du London Chess Club et des événements d’échecs à London, ON.',
-          tags: [
-            'Éditeur de contenu',
-            'Rejeu des parties',
-            'Alertes e-mail',
-            'Import de tableurs',
-            'Google Maps',
-            'Envoi d’images',
-            'Visionneuse PDF',
-            'Classement des membres',
-            'Suivi des erreurs',
-          ],
         },
         {
           id: 'brewskibets',
           description: 'Un suivi des paris entre amis, qui se règlent en bières.',
-          tags: [
-            'Graphiques interactifs',
-            'Demandes d’ami',
-            'Envoi d’avatars',
-            'Icônes sur mesure',
-            'Mode sombre',
-          ],
         },
         {
           id: 'circaesthetics',
           description:
             'Clinique de radiologie interventionnelle esthétique située à London, ON.',
-          tags: [
-            'Suivi d’affiliation',
-            'Statistiques sans cookies',
-            'Appel en un clic',
-            'Menus de section',
-          ],
         },
       ],
     },
@@ -1504,6 +1496,7 @@ export const frFR: WebMessages = {
           tag: {
             variant: 'Variante',
             size: 'Taille',
+            icon: 'Icône',
             removable: 'Supprimable',
             disabled: 'Désactivé',
             removeLabel: 'Libellé de suppression',
@@ -2083,6 +2076,7 @@ export const frFR: WebMessages = {
             ink: 'Couleur du texte, toute couleur CSS, qui remplace l’encre que l’étiquette choisirait pour color. La fournir permet à color d’être une valeur que l’étiquette ne peut pas mesurer, le contraste entre les deux revenant alors à l’appelant.',
             variant: 'Schéma de couleurs sémantique de l’étiquette.',
             size: 'Taille visuelle de l’étiquette.',
+            icon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             maxWidth:
               'Largeur maximale du tag en px ; un libellé plus long est tronqué. Définissable aussi via --ea-tag-max-width.',
             tooltip:
