@@ -21,6 +21,7 @@ export const UI_CHANGELOG: readonly ChangelogRelease[] = [
         heading: 'Added',
         entries: [
           'Add a `typedPlaceholder` input to the input and textarea that types a list of hints into the empty field one character at a time, trailed by an upright, blinking cursor, and swaps whole hints instead under reduced motion.',
+          'Add `aria-expanded` and `aria-controls` inputs to the button, for toggles that show and hide other content.',
         ],
       },
     ],

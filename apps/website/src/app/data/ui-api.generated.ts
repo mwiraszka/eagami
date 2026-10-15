@@ -800,6 +800,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
+        name: 'ariaControls',
+        type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'ariaCurrent',
         type: 'string | undefined',
         default: 'undefined',
@@ -809,6 +816,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'ariaDescribedby',
         type: 'string | undefined',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
+        name: 'ariaExpanded',
+        type: 'boolean | undefined',
         default: 'undefined',
         required: false,
         twoWay: false,

@@ -10,10 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add a Typed placeholder control to the input and textarea demos.
+- Add a Show more button to the home page's building blocks, which now open on seven features.
 
 ### Changed
 
 - Draw the contact form's typing cursor upright and blinking, like a text caret.
+- Wrap the building block chips into rows on phones instead of a sideways scroller.
+- Shrink the home page's section headings and name websites in the building blocks heading.
+- Overlap the heron's beak with the word in the released projects heading, as in the brand wordmark.
+- Enlarge the home page's feature, note, and timeline descriptions, and set project summaries in the body font above a divider.
 - Pick up @eagami/ui v5.71.0.
 
 ## [3.34.0] - 2026-10-15

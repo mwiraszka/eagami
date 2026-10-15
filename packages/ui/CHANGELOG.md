@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add a `typedPlaceholder` input to the input and textarea that types a list of hints into the empty field one character at a time, trailed by an upright, blinking cursor, and swaps whole hints instead under reduced motion.
+- Add `aria-expanded` and `aria-controls` inputs to the button, for toggles that show and hide other content.
 
 ## [5.70.0] - 2026-10-15
 
