@@ -1284,6 +1284,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
+            optional: 'Valfrjálst',
             autofocus: 'Sjálfvirkur fókus',
             showPasswordToggle: 'Sýna lykilorðsvíxlun',
             clearable: 'Hreinsanlegt',
@@ -1302,6 +1303,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
           'form-field': {
             size: 'Stærð',
@@ -1309,6 +1311,7 @@ export const is: WebMessages = {
             labelIcon: 'Táknmynd merkimiða',
             hint: 'Vísbending',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
           alert: {
             variant: 'Afbrigði',
@@ -1374,6 +1377,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
           'color-picker': {
             label: 'Merkimiði',
@@ -1386,6 +1390,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
           divider: {
             orientation: 'Stefna',
@@ -1430,6 +1435,7 @@ export const is: WebMessages = {
             labelIcon: 'Táknmynd merkimiða',
             size: 'Stærð',
             disabled: 'Óvirkt',
+            optional: 'Valfrjálst',
           },
           'range-slider': {
             label: 'Merkimiði',
@@ -1444,6 +1450,7 @@ export const is: WebMessages = {
             showMinMaxLabels: 'Sýna lágm./hám. merkimiða',
             disabled: 'Óvirkt',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
           rating: {
             label: 'Merkimiði',
@@ -1455,6 +1462,7 @@ export const is: WebMessages = {
             readonly: 'Skrifvarið',
             disabled: 'Óvirkt',
             required: 'Krafist',
+            optional: 'Valfrjálst',
             clearable: 'Hreinsanlegt',
             iconClass: 'Táknmynd',
           },
@@ -1473,6 +1481,7 @@ export const is: WebMessages = {
             showMinMaxLabels: 'Sýna lágm./hám. merkimiða',
             disabled: 'Óvirkt',
             required: 'Krafist',
+            optional: 'Valfrjálst',
             hasError: 'Villuástand',
             label: 'Merkimiði',
             labelIcon: 'Táknmynd merkimiða',
@@ -1511,6 +1520,7 @@ export const is: WebMessages = {
             disabled: 'Óvirkt',
             readonly: 'Skrifvarið',
             required: 'Krafist',
+            optional: 'Valfrjálst',
           },
         },
         knobNotes: {
@@ -1683,6 +1693,8 @@ export const is: WebMessages = {
             disabled: 'Gerir reitinn óvirkan.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             autocomplete: 'Gildi fyrir innbyggða autocomplete eigindið.',
             list: 'id á <datalist> sem á að tengja fyrir innbyggðar tillögur.',
             autofocus: 'Setur fókus á reitinn einu sinni, eftir að hann birtist fyrst.',
@@ -1719,6 +1731,8 @@ export const is: WebMessages = {
             disabled: 'Gerir reitinn óvirkan.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             min: 'Lágmarksgildi; innslegin gildi eru bundin við það þegar reiturinn missir fókus.',
             max: 'Hámarksgildi; innslegin gildi eru bundin við það þegar reiturinn missir fókus.',
             step: 'Upphæðin sem hvert skref með örvatökkunum bætir við eða dregur frá.',
@@ -1843,6 +1857,8 @@ export const is: WebMessages = {
             placeholder: 'Staðgengilstexti dreifður einn stafur á reit.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð hvers tölustafsreits.',
             value: 'Núverandi kóðagildi, tvíátta bindanlegt með [(value)].',
             completed:
@@ -1871,6 +1887,8 @@ export const is: WebMessages = {
             readonly:
               'Birtir reitinn skrifvarinn, kemur í veg fyrir að sprettiglugginn opnist.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             showAlpha: 'Sýnir gegnsæissleðann og hefur gegnsæi með í sendu gildi.',
             clearable: 'Hvort hreinsihnappurinn birtist þegar gildi er sett.',
             size: 'Sjónræn stærð veljukveikjunnar.',
@@ -1964,6 +1982,8 @@ export const is: WebMessages = {
             max: 'Hæsta gildi sem hvor þumall getur náð.',
             min: 'Lægsta gildi sem hvor þumall getur náð.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             showMinMaxLabels: 'Sýnir lágm. og hám. mörk á endum brautarinnar.',
             showValue: 'Sýnir núverandi lág og há gildi við hlið sleðans.',
             size: 'Sjónræn stærð brautarinnar og þumlanna.',
@@ -2000,6 +2020,8 @@ export const is: WebMessages = {
             readonly:
               'Birtir einkunnina aðeins til sýnis, hunsar smelli og lyklaborðsinntak.',
             required: 'Merkir einkunnina sem nauðsynlega.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð einkunnarinnar.',
             value: 'Núverandi einkunnargildi, tvíátta bindanlegt með [(value)].',
             hoverChanged:
@@ -2037,6 +2059,8 @@ export const is: WebMessages = {
             max: 'Hæsta gildi sem sleðinn getur náð.',
             min: 'Lægsta gildi sem sleðinn getur náð.',
             required: 'Merkir sleðann sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             showMinMaxLabels: 'Sýnir lágm. og hám. mörk fyrir neðan brautina.',
             snapValues:
               'Gildi sem sleðinn smellur á meðan dregið er; hvert þeirra er teiknað sem merki á brautina.',
@@ -2115,6 +2139,8 @@ export const is: WebMessages = {
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             resize: 'Ás sem notandinn má breyta stærð reitsins eftir.',
             size: 'Sjónræn stærð reitsins.',
             value: 'Núverandi reitgildi, tvíátta bindanlegt með [(value)].',
@@ -2206,6 +2232,8 @@ export const is: WebMessages = {
             readonly:
               'Birtir reitinn skrifvarinn, kemur í veg fyrir að sprettiglugginn opnist.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             secondStep: 'Hækkun sem sekúndudálkurinn smellur að þegar þrepað eða dregið.',
             size: 'Sjónræn stærð veljukveikjunnar.',
             value:
@@ -2259,6 +2287,8 @@ export const is: WebMessages = {
             placeholder: 'Staðgengill sýndur á meðan reiturinn er tómur.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð reitsins.',
             value: 'Núverandi reitgildi, tvíátta bindanlegt með [(value)].',
             blurred: 'Kviknar þegar inntakið missir fókus.',
@@ -2333,6 +2363,8 @@ export const is: WebMessages = {
             readonly:
               'Birtir reitinn skrifvarinn, kemur í veg fyrir að dagatalið opnist.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð dagsetningarveljureitsins.',
             value: 'Núverandi valda dagsetning, tvíátta bindanleg með [(value)].',
             weekStartsOn:
@@ -2404,6 +2436,8 @@ export const is: WebMessages = {
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             searchable: 'Sýnir leitarinntakið efst í sprettiglugganum.',
             searchPlaceholder:
               'Staðgengill sýndur inni í leitarinntakinu þegar leitarorðið er tómt.',
@@ -2438,6 +2472,8 @@ export const is: WebMessages = {
               'Staðgengill sýndur á kveikjunni á meðan enginn valkostur er valinn.',
             readonly: 'Birtir reitinn skrifvarinn.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             clearable: 'Sýnir hreinsihnapp á kveikjunni á meðan valkostur er valinn.',
             searchable:
               'Bætir við leitarreit fyrir ofan valkostina sem síar þá um leið og notandinn skrifar.',
@@ -2475,6 +2511,8 @@ export const is: WebMessages = {
             progress:
               'Upphleðsluframvindukort á hverja skrá (0-100) lyklað eftir File auðkenni; sleppið til að fela framvindustikur.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             showConstraints:
               'Sýnir leyfðar skráartegundir og takmörk á stærð og fjölda fyrir neðan stýringuna; slökktu á því þar sem það myndi þrengja að þéttri staðsetningu.',
             showFileList: 'Sýnir listann yfir valdar skrár fyrir neðan sleppisvæðið.',
@@ -2501,6 +2539,8 @@ export const is: WebMessages = {
               'Valfrjáls táknmyndareining sem birtist á undan merkimiðatextanum.',
             label: 'Textamerkimiði birtur fyrir ofan stýringuna.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
           },
           popover: {
             anchor:
@@ -2637,6 +2677,8 @@ export const is: WebMessages = {
             name: 'Sameiginlegt name eigindi sett á öll valhnappainntök í hópnum, sjálfvirkt búið til þegar því er sleppt.',
             orientation: 'Uppsetningarstefna valhnappavalkostanna innan hópsins.',
             required: 'Merkir hópinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð sett á alla valhnappavalkosti í hópnum.',
             value: 'Nú valið gildi, tvíátta bindanlegt með [(value)].',
             changed: 'Kviknar með nýja gildinu þegar notandinn velur valkost.',
@@ -2658,6 +2700,8 @@ export const is: WebMessages = {
             label: 'Textamerkimiði birtur fyrir ofan stýringuna.',
             options: 'Fylki valkosta birtra sem víxlhnappar innan stýringarinnar.',
             required: 'Merkir reitinn sem nauðsynlegan.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             size: 'Sjónræn stærð bútastýringarinnar.',
             value: 'Nú valið valkostagildi, tvíátta bindanlegt með [(value)].',
             changed: 'Kviknar með nýja gildinu þegar notandinn velur annan valkost.',
@@ -2731,6 +2775,8 @@ export const is: WebMessages = {
             labelId:
               'id sett á birta merkimiðastakið svo stýringar geti vísað í það með aria-labelledby.',
             required: 'Sýnir nauðsynlegan vísi á merkimiðanum.',
+            optional:
+              'Bætir daufri athugasemd „(valfrjálst)“ aftan við merkimiðann, nema required sé einnig stillt.',
             text: 'Merkimiðatexti birtur inni í merkimiðastakinu.',
           },
           'field-messages': {

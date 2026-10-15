@@ -34,6 +34,7 @@ interface SliderKnobState {
   groupThousands: boolean;
   disabled: boolean;
   required: boolean;
+  optional: boolean;
   hasError: boolean;
   triggerError: boolean;
 }

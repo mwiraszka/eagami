@@ -1243,6 +1243,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
+            optional: 'Optional',
             autofocus: 'Autofocus',
             showPasswordToggle: 'Show password toggle',
             clearable: 'Clearable',
@@ -1261,6 +1262,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
+            optional: 'Optional',
           },
           'form-field': {
             size: 'Size',
@@ -1268,6 +1270,7 @@ export const en: WebMessages = {
             labelIcon: 'Label icon',
             hint: 'Hint',
             required: 'Required',
+            optional: 'Optional',
           },
           alert: {
             variant: 'Variant',
@@ -1333,6 +1336,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
+            optional: 'Optional',
           },
           'color-picker': {
             label: 'Label',
@@ -1345,6 +1349,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
+            optional: 'Optional',
           },
           divider: {
             orientation: 'Orientation',
@@ -1389,6 +1394,7 @@ export const en: WebMessages = {
             labelIcon: 'Label icon',
             size: 'Size',
             disabled: 'Disabled',
+            optional: 'Optional',
           },
           'range-slider': {
             label: 'Label',
@@ -1403,6 +1409,7 @@ export const en: WebMessages = {
             showMinMaxLabels: 'Show min/max labels',
             disabled: 'Disabled',
             required: 'Required',
+            optional: 'Optional',
           },
           rating: {
             label: 'Label',
@@ -1414,6 +1421,7 @@ export const en: WebMessages = {
             readonly: 'Read-only',
             disabled: 'Disabled',
             required: 'Required',
+            optional: 'Optional',
             clearable: 'Clearable',
             iconClass: 'Icon',
           },
@@ -1432,6 +1440,7 @@ export const en: WebMessages = {
             showMinMaxLabels: 'Show min/max labels',
             disabled: 'Disabled',
             required: 'Required',
+            optional: 'Optional',
             hasError: 'Error state',
             label: 'Label',
             labelIcon: 'Label icon',
@@ -1470,6 +1479,7 @@ export const en: WebMessages = {
             disabled: 'Disabled',
             readonly: 'Read-only',
             required: 'Required',
+            optional: 'Optional',
           },
         },
         knobNotes: {
@@ -1635,6 +1645,8 @@ export const en: WebMessages = {
             disabled: 'Disables the field.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             autocomplete: 'Value for the native autocomplete attribute.',
             list: 'id of a <datalist> to associate for native suggestions.',
             autofocus: 'Focuses the field once, after it first renders.',
@@ -1672,6 +1684,8 @@ export const en: WebMessages = {
             disabled: 'Disables the field.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             min: 'Minimum value; typed values are clamped to it on blur.',
             max: 'Maximum value; typed values are clamped to it on blur.',
             step: 'Amount each arrow-key step adds or subtracts.',
@@ -1793,6 +1807,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder text spread one character per cell.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size of each digit cell.',
             value: 'Current code value, two-way bindable via [(value)].',
             completed: 'Fires with the full code once every digit has been entered.',
@@ -1817,6 +1833,8 @@ export const en: WebMessages = {
               'Preset swatches shown at the bottom of the popover; pass an empty array to hide them.',
             readonly: 'Renders the field read-only, keeping the popover from opening.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             showAlpha: 'Shows the alpha slider and includes alpha in the emitted value.',
             clearable: 'Whether to show the clear button when a value is set.',
             size: 'Visual size of the picker trigger.',
@@ -1911,6 +1929,8 @@ export const en: WebMessages = {
             max: 'Highest value either thumb can reach.',
             min: 'Lowest value either thumb can reach.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             showMinMaxLabels: 'Shows the min and max bounds at the ends of the track.',
             showValue: 'Shows the current low and high values alongside the slider.',
             size: 'Visual size of the track and thumbs.',
@@ -1946,6 +1966,8 @@ export const en: WebMessages = {
             readonly:
               'Renders the rating as display-only, ignoring clicks and keyboard input.',
             required: 'Marks the rating as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size of the rating.',
             value: 'Current rating value, two-way bindable via [(value)].',
             hoverChanged:
@@ -1981,6 +2003,8 @@ export const en: WebMessages = {
             max: 'Highest value the slider can reach.',
             min: 'Lowest value the slider can reach.',
             required: 'Marks the slider as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             showMinMaxLabels: 'Shows the min and max bounds beneath the track.',
             snapValues:
               'Values the thumb snaps onto while dragging, each drawn as a tick on the track.',
@@ -2056,6 +2080,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             resize: 'Axis along which the user may resize the field.',
             size: 'Visual size of the field.',
             value: 'Current field value, two-way bindable via [(value)].',
@@ -2144,6 +2170,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown on the trigger while no time is selected.',
             readonly: 'Renders the field read-only, keeping the popover from opening.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             secondStep: 'Increment the seconds column snaps to when stepped or dragged.',
             size: 'Visual size of the picker trigger.',
             value:
@@ -2195,6 +2223,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown while the field is empty.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size of the field.',
             value: 'Current field value, two-way bindable via [(value)].',
             blurred: 'Fires when the input loses focus.',
@@ -2265,6 +2295,8 @@ export const en: WebMessages = {
               'Ids of the elements whose text names the field, such as a label outside the component, forwarded to the native aria-labelledby attribute.',
             readonly: 'Renders the field read-only, keeping the calendar from opening.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size of the date picker field.',
             value: 'Current selected date, two-way bindable via [(value)].',
             weekStartsOn:
@@ -2332,6 +2364,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             searchable: 'Shows the search input at the top of the popover.',
             searchPlaceholder:
               'Placeholder shown inside the search input when the search term is empty.',
@@ -2366,6 +2400,8 @@ export const en: WebMessages = {
             placeholder: 'Placeholder shown on the trigger while no option is selected.',
             readonly: 'Renders the field read-only.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             clearable: 'Shows a clear button on the trigger while an option is selected.',
             searchable:
               'Adds a search field above the options that filters them as the user types.',
@@ -2403,6 +2439,8 @@ export const en: WebMessages = {
             progress:
               'Per-file upload progress map (0-100) keyed by File identity; omit to hide progress bars.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             showConstraints:
               'Shows the accepted file types, size and count limits below the control; turn it off where they would crowd a compact placement.',
             showFileList: 'Shows the list of selected files below the dropzone.',
@@ -2427,6 +2465,8 @@ export const en: WebMessages = {
             labelIcon: 'Optional icon component rendered before the label text.',
             label: 'Text label rendered above the control.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
           },
           popover: {
             anchor: 'Host element or ElementRef the popover positions itself against.',
@@ -2558,6 +2598,8 @@ export const en: WebMessages = {
             name: 'Shared name attribute applied to all radio inputs in the group, auto-generated when omitted.',
             orientation: 'Layout direction of the radio options within the group.',
             required: 'Marks the group as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size applied to all radio options in the group.',
             value: 'Currently selected value, two-way bindable via [(value)].',
             changed: 'Fires with the new value when the user selects an option.',
@@ -2578,6 +2620,8 @@ export const en: WebMessages = {
             label: 'Text label rendered above the control.',
             options: 'Array of options rendered as toggle buttons within the control.',
             required: 'Marks the field as required.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             size: 'Visual size of the segmented control.',
             value: 'Currently selected option value, two-way bindable via [(value)].',
             changed: 'Fires with the new value when the user selects a different option.',
@@ -2651,6 +2695,8 @@ export const en: WebMessages = {
             labelId:
               'id applied to the rendered label element so controls can reference it via aria-labelledby.',
             required: 'Shows a required indicator on the label.',
+            optional:
+              'Adds a muted "(optional)" note after the label, unless required is also set.',
             text: 'Label text rendered inside the label element.',
           },
           'field-messages': {

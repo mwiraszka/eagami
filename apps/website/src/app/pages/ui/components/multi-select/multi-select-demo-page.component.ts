@@ -46,6 +46,7 @@ interface MultiSelectKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   maxVisibleChips: number;
   maxChipWidth: number;
   groupedOptions: boolean;

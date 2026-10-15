@@ -1272,6 +1272,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
+            optional: 'Optioneel',
             autofocus: 'Autofocus',
             showPasswordToggle: 'Wachtwoordschakelaar tonen',
             clearable: 'Wisbaar',
@@ -1290,6 +1291,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
           'form-field': {
             size: 'Grootte',
@@ -1297,6 +1299,7 @@ export const nl: WebMessages = {
             labelIcon: 'Labelicoon',
             hint: 'Hint',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
           alert: {
             variant: 'Variant',
@@ -1362,6 +1365,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
           'color-picker': {
             label: 'Label',
@@ -1374,6 +1378,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
           divider: {
             orientation: 'Oriëntatie',
@@ -1418,6 +1423,7 @@ export const nl: WebMessages = {
             labelIcon: 'Labelicoon',
             size: 'Grootte',
             disabled: 'Uitgeschakeld',
+            optional: 'Optioneel',
           },
           'range-slider': {
             label: 'Label',
@@ -1432,6 +1438,7 @@ export const nl: WebMessages = {
             showMinMaxLabels: 'Min/max-labels tonen',
             disabled: 'Uitgeschakeld',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
           rating: {
             label: 'Label',
@@ -1443,6 +1450,7 @@ export const nl: WebMessages = {
             readonly: 'Alleen-lezen',
             disabled: 'Uitgeschakeld',
             required: 'Verplicht',
+            optional: 'Optioneel',
             clearable: 'Wisbaar',
             iconClass: 'Icoon',
           },
@@ -1461,6 +1469,7 @@ export const nl: WebMessages = {
             showMinMaxLabels: 'Min/max-labels tonen',
             disabled: 'Uitgeschakeld',
             required: 'Verplicht',
+            optional: 'Optioneel',
             hasError: 'Fouttoestand',
             label: 'Label',
             labelIcon: 'Labelicoon',
@@ -1499,6 +1508,7 @@ export const nl: WebMessages = {
             disabled: 'Uitgeschakeld',
             readonly: 'Alleen-lezen',
             required: 'Verplicht',
+            optional: 'Optioneel',
           },
         },
         knobNotes: {
@@ -1674,6 +1684,8 @@ export const nl: WebMessages = {
             disabled: 'Schakelt het veld uit.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             autocomplete: 'Waarde voor het native autocomplete-attribuut.',
             list: 'id van een <datalist> om te koppelen voor native suggesties.',
             autofocus: 'Focust het veld eenmaal, nadat het voor het eerst is gerenderd.',
@@ -1713,6 +1725,8 @@ export const nl: WebMessages = {
             disabled: 'Schakelt het veld uit.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             min: 'Minimumwaarde; getypte waarden worden er bij verlies van focus naartoe begrensd.',
             max: 'Maximumwaarde; getypte waarden worden er bij verlies van focus naartoe begrensd.',
             step: 'Bedrag dat elke stap met de pijltoetsen optelt of aftrekt.',
@@ -1843,6 +1857,8 @@ export const nl: WebMessages = {
             placeholder: 'Plaatsaanduidingstekst verspreid over één teken per cel.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte van elke cijfercel.',
             value: 'Huidige codewaarde, in twee richtingen te binden via [(value)].',
             completed:
@@ -1870,6 +1886,8 @@ export const nl: WebMessages = {
               'Vooraf ingestelde stalen getoond onderaan de popover; geef een lege array door om ze te verbergen.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de popover niet opent.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             showAlpha: 'Toont de alphaschuif en neemt alpha op in de uitgezonden waarde.',
             clearable: 'Of de wisknop wordt getoond wanneer er een waarde is ingesteld.',
             size: 'Visuele grootte van de kiezertrigger.',
@@ -1971,6 +1989,8 @@ export const nl: WebMessages = {
             max: 'Hoogste waarde die elke schuif kan bereiken.',
             min: 'Laagste waarde die elke schuif kan bereiken.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             showMinMaxLabels:
               'Toont de min- en max-grenzen aan de uiteinden van de baan.',
             showValue: 'Toont de huidige lage en hoge waarden naast de slider.',
@@ -2011,6 +2031,8 @@ export const nl: WebMessages = {
             readonly:
               'Geeft de beoordeling alleen ter weergave weer, en negeert klikken en toetsenbordinvoer.',
             required: 'Markeert de beoordeling als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte van de beoordeling.',
             value:
               'Huidige beoordelingswaarde, in twee richtingen te binden via [(value)].',
@@ -2050,6 +2072,8 @@ export const nl: WebMessages = {
             max: 'Hoogste waarde die de slider kan bereiken.',
             min: 'Laagste waarde die de slider kan bereiken.',
             required: 'Markeert de slider als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             showMinMaxLabels: 'Toont de min- en max-grenzen onder de baan.',
             snapValues:
               'Waarden waarop de knop tijdens het slepen vastklikt; elk wordt als een streepje op de baan getekend.',
@@ -2130,6 +2154,8 @@ export const nl: WebMessages = {
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             resize: 'As waarlangs de gebruiker het veld kan vergroten of verkleinen.',
             size: 'Visuele grootte van het veld.',
             value: 'Huidige veldwaarde, in twee richtingen te binden via [(value)].',
@@ -2228,6 +2254,8 @@ export const nl: WebMessages = {
               'Plaatsaanduiding getoond op de trigger terwijl geen tijd is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de popover niet opent.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             secondStep:
               'Increment waarop de secondenkolom vastklikt bij stappen of slepen.',
             size: 'Visuele grootte van de kiezertrigger.',
@@ -2282,6 +2310,8 @@ export const nl: WebMessages = {
             placeholder: 'Plaatsaanduiding die wordt getoond terwijl het veld leeg is.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte van het veld.',
             value: 'Huidige veldwaarde, in twee richtingen te binden via [(value)].',
             blurred: 'Wordt geactiveerd wanneer de input de focus verliest.',
@@ -2359,6 +2389,8 @@ export const nl: WebMessages = {
               'Identificatoren van de elementen waarvan de tekst het veld benoemt, zoals een label buiten de component, doorgegeven aan het native aria-labelledby-attribuut.',
             readonly: 'Maakt het veld alleen-lezen, waardoor de kalender niet opent.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte van het datumkiezerveld.',
             value:
               'Huidige geselecteerde datum, in twee richtingen te binden via [(value)].',
@@ -2435,6 +2467,8 @@ export const nl: WebMessages = {
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             searchable: 'Toont de zoekinput bovenaan de popover.',
             searchPlaceholder:
               'Plaatsaanduiding getoond binnen de zoekinput wanneer de zoekterm leeg is.',
@@ -2473,6 +2507,8 @@ export const nl: WebMessages = {
               'Plaatsaanduiding getoond op de trigger terwijl geen optie is geselecteerd.',
             readonly: 'Maakt het veld alleen-lezen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             clearable:
               'Toont een wisknop op de trigger zolang er een optie is geselecteerd.',
             searchable:
@@ -2514,6 +2550,8 @@ export const nl: WebMessages = {
             progress:
               'Uploadvoortgangskaart per bestand (0-100) op basis van File-identiteit; weglaten om voortgangsbalken te verbergen.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             showConstraints:
               'Toont de toegestane bestandstypen en de limieten voor grootte en aantal onder het besturingselement; zet het uit waar ze een compacte plaatsing zouden overvullen.',
             showFileList: 'Toont de lijst van geselecteerde bestanden onder de dropzone.',
@@ -2540,6 +2578,8 @@ export const nl: WebMessages = {
               'Optionele icooncomponent die vóór de labeltekst wordt weergegeven.',
             label: 'Tekstlabel weergegeven boven het besturingselement.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
           },
           popover: {
             anchor:
@@ -2680,6 +2720,8 @@ export const nl: WebMessages = {
             name: 'Gedeeld name-attribuut toegepast op alle radio-inputs in de groep, automatisch gegenereerd indien weggelaten.',
             orientation: 'Indelingsrichting van de radio-opties binnen de groep.',
             required: 'Markeert de groep als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte toegepast op alle radio-opties in de groep.',
             value:
               'Momenteel geselecteerde waarde, in twee richtingen te binden via [(value)].',
@@ -2705,6 +2747,8 @@ export const nl: WebMessages = {
             options:
               'Array van opties weergegeven als schakelknoppen binnen de bediening.',
             required: 'Markeert het veld als verplicht.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             size: 'Visuele grootte van de segmented control.',
             value:
               'Momenteel geselecteerde optiewaarde, in twee richtingen te binden via [(value)].',
@@ -2783,6 +2827,8 @@ export const nl: WebMessages = {
             labelId:
               'id toegepast op het weergegeven labelelement zodat bedieningen ernaar kunnen verwijzen via aria-labelledby.',
             required: 'Toont een verplicht-indicator op het label.',
+            optional:
+              'Voegt na het label een gedempte notitie “(optioneel)” toe, tenzij ook required is ingesteld.',
             text: 'Labeltekst weergegeven binnen het labelelement.',
           },
           'field-messages': {

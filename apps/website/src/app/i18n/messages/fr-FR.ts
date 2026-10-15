@@ -1309,6 +1309,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
+            optional: 'Facultatif',
             autofocus: 'Focus auto',
             showPasswordToggle: 'Bouton d’affichage du mot de passe',
             clearable: 'Effaçable',
@@ -1327,6 +1328,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
+            optional: 'Facultatif',
           },
           'form-field': {
             size: 'Taille',
@@ -1334,6 +1336,7 @@ export const frFR: WebMessages = {
             labelIcon: 'Icône du libellé',
             hint: 'Indication',
             required: 'Requis',
+            optional: 'Facultatif',
           },
           alert: {
             variant: 'Variante',
@@ -1399,6 +1402,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
+            optional: 'Facultatif',
           },
           'color-picker': {
             label: 'Libellé',
@@ -1411,6 +1415,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
+            optional: 'Facultatif',
           },
           divider: {
             orientation: 'Orientation',
@@ -1455,6 +1460,7 @@ export const frFR: WebMessages = {
             labelIcon: 'Icône du libellé',
             size: 'Taille',
             disabled: 'Désactivé',
+            optional: 'Facultatif',
           },
           'range-slider': {
             label: 'Libellé',
@@ -1469,6 +1475,7 @@ export const frFR: WebMessages = {
             showMinMaxLabels: 'Afficher les libellés min/max',
             disabled: 'Désactivé',
             required: 'Requis',
+            optional: 'Facultatif',
           },
           rating: {
             label: 'Libellé',
@@ -1480,6 +1487,7 @@ export const frFR: WebMessages = {
             readonly: 'Lecture seule',
             disabled: 'Désactivé',
             required: 'Requis',
+            optional: 'Facultatif',
             clearable: 'Effaçable',
             iconClass: 'Icône',
           },
@@ -1498,6 +1506,7 @@ export const frFR: WebMessages = {
             showMinMaxLabels: 'Afficher les libellés min/max',
             disabled: 'Désactivé',
             required: 'Requis',
+            optional: 'Facultatif',
             hasError: 'État d’erreur',
             label: 'Libellé',
             labelIcon: 'Icône du libellé',
@@ -1536,6 +1545,7 @@ export const frFR: WebMessages = {
             disabled: 'Désactivé',
             readonly: 'Lecture seule',
             required: 'Requis',
+            optional: 'Facultatif',
           },
         },
         knobNotes: {
@@ -1714,6 +1724,8 @@ export const frFR: WebMessages = {
             disabled: 'Désactive le champ.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             autocomplete: 'Valeur de l’attribut natif autocomplete.',
             list: 'id d’un <datalist> à associer pour les suggestions natives.',
             autofocus: 'Place le focus sur le champ une fois, après son premier rendu.',
@@ -1753,6 +1765,8 @@ export const frFR: WebMessages = {
             disabled: 'Désactive le champ.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             min: 'Valeur minimale ; les valeurs saisies y sont ramenées à la perte du focus.',
             max: 'Valeur maximale ; les valeurs saisies y sont ramenées à la perte du focus.',
             step: 'Valeur ajoutée ou retranchée à chaque pas avec les touches fléchées.',
@@ -1880,6 +1894,8 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif réparti un caractère par cellule.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle de chaque case de chiffre.',
             value: 'Valeur actuelle du code, liable en deux sens via [(value)].',
             completed: 'Émis avec le code complet une fois chaque chiffre saisi.',
@@ -1906,6 +1922,8 @@ export const frFR: WebMessages = {
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             showAlpha: 'Affiche le curseur alpha et inclut l’alpha dans la valeur émise.',
             clearable:
               'Affiche ou non le bouton d’effacement lorsqu’une valeur est définie.',
@@ -2007,6 +2025,8 @@ export const frFR: WebMessages = {
             max: 'Valeur la plus élevée que l’un ou l’autre curseur peut atteindre.',
             min: 'Valeur la plus basse que l’un ou l’autre curseur peut atteindre.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             showMinMaxLabels: 'Affiche les bornes min et max aux extrémités de la piste.',
             showValue: 'Affiche les valeurs basse et haute actuelles à côté du curseur.',
             size: 'Taille visuelle de la piste et des curseurs.',
@@ -2044,6 +2064,8 @@ export const frFR: WebMessages = {
             readonly:
               'Affiche la note en lecture seule, ignorant les clics et la saisie clavier.',
             required: 'Marque la note comme requise.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle de la note.',
             value: 'Valeur de note actuelle, liable en deux sens via [(value)].',
             hoverChanged:
@@ -2080,6 +2102,8 @@ export const frFR: WebMessages = {
             max: 'Valeur la plus élevée que le curseur peut atteindre.',
             min: 'Valeur la plus basse que le curseur peut atteindre.',
             required: 'Marque le curseur comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             showMinMaxLabels: 'Affiche les bornes min et max sous la piste.',
             snapValues:
               'Valeurs sur lesquelles le curseur s’accroche pendant le glissement ; chacune est tracée comme un repère sur la piste.',
@@ -2160,6 +2184,8 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             resize: 'Axe selon lequel l’utilisateur peut redimensionner le champ.',
             size: 'Taille visuelle du champ.',
             value: 'Valeur actuelle du champ, liable en deux sens via [(value)].',
@@ -2258,6 +2284,8 @@ export const frFR: WebMessages = {
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture de la popover.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             secondStep:
               'Incrément auquel la colonne des secondes s’aligne lors d’un déplacement.',
             size: 'Taille visuelle du déclencheur du sélecteur.',
@@ -2311,6 +2339,8 @@ export const frFR: WebMessages = {
             placeholder: 'Texte indicatif affiché lorsque le champ est vide.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle du champ.',
             value: 'Valeur actuelle du champ, liable en deux sens via [(value)].',
             blurred: 'Émis lorsque le champ perd le focus.',
@@ -2387,6 +2417,8 @@ export const frFR: WebMessages = {
             readonly:
               'Affiche le champ en lecture seule, empêchant l’ouverture du calendrier.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle du champ du sélecteur de date.',
             value: 'Date sélectionnée actuelle, liable en deux sens via [(value)].',
             weekStartsOn:
@@ -2461,6 +2493,8 @@ export const frFR: WebMessages = {
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             searchable: 'Affiche le champ de recherche en haut de la popover.',
             searchPlaceholder:
               'Texte indicatif affiché dans le champ de recherche lorsque la saisie est vide.',
@@ -2498,6 +2532,8 @@ export const frFR: WebMessages = {
               'Texte indicatif affiché sur le déclencheur lorsqu’aucune option n’est sélectionnée.',
             readonly: 'Affiche le champ en lecture seule.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             clearable:
               'Affiche un bouton d’effacement sur le déclencheur tant qu’une option est sélectionnée.',
             searchable:
@@ -2537,6 +2573,8 @@ export const frFR: WebMessages = {
             progress:
               'Carte de progression du téléversement par fichier (0-100) indexée par identité de File ; omettez-la pour masquer les barres de progression.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             showConstraints:
               'Affiche les types de fichiers acceptés et les limites de taille et de nombre sous le contrôle ; désactivez-le là où ils encombreraient un emplacement compact.',
             showFileList:
@@ -2563,6 +2601,8 @@ export const frFR: WebMessages = {
             labelIcon: "Composant d'icône facultatif affiché avant le texte du libellé.",
             label: 'Libellé affiché au-dessus du contrôle.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
           },
           popover: {
             anchor:
@@ -2702,6 +2742,8 @@ export const frFR: WebMessages = {
             name: 'Attribut name partagé appliqué à tous les boutons radio du groupe, généré automatiquement si omis.',
             orientation: 'Direction de disposition des options radio au sein du groupe.',
             required: 'Marque le groupe comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle appliquée à toutes les options radio du groupe.',
             value: 'Valeur actuellement sélectionnée, liable en deux sens via [(value)].',
             changed:
@@ -2724,6 +2766,8 @@ export const frFR: WebMessages = {
             options:
               'Tableau d’options affichées sous forme de boutons bascule dans le contrôle.',
             required: 'Marque le champ comme requis.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             size: 'Taille visuelle du contrôle segmenté.',
             value:
               'Valeur de l’option actuellement sélectionnée, liable en deux sens via [(value)].',
@@ -2805,6 +2849,8 @@ export const frFR: WebMessages = {
             labelId:
               'id appliqué à l’élément de libellé rendu pour que les contrôles puissent y faire référence via aria-labelledby.',
             required: 'Affiche un indicateur de champ requis sur le libellé.',
+            optional:
+              'Ajoute une mention atténuée « (facultatif) » après le libellé, sauf si required est aussi défini.',
             text: 'Texte du libellé affiché dans l’élément de libellé.',
           },
           'field-messages': {

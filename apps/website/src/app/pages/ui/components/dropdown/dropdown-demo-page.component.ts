@@ -44,6 +44,7 @@ interface DropdownKnobState {
   disabled: boolean;
   readonly: boolean;
   required: boolean;
+  optional: boolean;
   clearable: boolean;
   searchable: boolean;
   groupedOptions: boolean;

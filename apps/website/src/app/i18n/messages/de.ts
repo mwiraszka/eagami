@@ -1285,6 +1285,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
+            optional: 'Optional',
             autofocus: 'Autofokus',
             showPasswordToggle: 'Passwort-Umschalter anzeigen',
             clearable: 'Löschbar',
@@ -1303,6 +1304,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
           'form-field': {
             size: 'Größe',
@@ -1310,6 +1312,7 @@ export const de: WebMessages = {
             labelIcon: 'Beschriftungssymbol',
             hint: 'Hinweis',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
           alert: {
             variant: 'Variante',
@@ -1375,6 +1378,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
           'color-picker': {
             label: 'Beschriftung',
@@ -1387,6 +1391,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
           divider: {
             orientation: 'Ausrichtung',
@@ -1431,6 +1436,7 @@ export const de: WebMessages = {
             labelIcon: 'Beschriftungssymbol',
             size: 'Größe',
             disabled: 'Deaktiviert',
+            optional: 'Optional',
           },
           'range-slider': {
             label: 'Beschriftung',
@@ -1445,6 +1451,7 @@ export const de: WebMessages = {
             showMinMaxLabels: 'Min/Max-Labels anzeigen',
             disabled: 'Deaktiviert',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
           rating: {
             label: 'Beschriftung',
@@ -1456,6 +1463,7 @@ export const de: WebMessages = {
             readonly: 'Schreibgeschützt',
             disabled: 'Deaktiviert',
             required: 'Erforderlich',
+            optional: 'Optional',
             clearable: 'Löschbar',
             iconClass: 'Symbol',
           },
@@ -1474,6 +1482,7 @@ export const de: WebMessages = {
             showMinMaxLabels: 'Min/Max-Labels anzeigen',
             disabled: 'Deaktiviert',
             required: 'Erforderlich',
+            optional: 'Optional',
             hasError: 'Fehlerzustand',
             label: 'Beschriftung',
             labelIcon: 'Beschriftungssymbol',
@@ -1512,6 +1521,7 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert',
             readonly: 'Schreibgeschützt',
             required: 'Erforderlich',
+            optional: 'Optional',
           },
         },
         knobNotes: {
@@ -1694,6 +1704,8 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert das Feld.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             autocomplete: 'Wert für das native autocomplete-Attribut.',
             list: 'id einer <datalist>, die für native Vorschläge zugeordnet wird.',
             autofocus:
@@ -1732,6 +1744,8 @@ export const de: WebMessages = {
             disabled: 'Deaktiviert das Feld.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             min: 'Minimalwert; eingegebene Werte werden beim Verlassen des Felds darauf begrenzt.',
             max: 'Maximalwert; eingegebene Werte werden beim Verlassen des Felds darauf begrenzt.',
             step: 'Betrag, den jeder Schritt mit den Pfeiltasten addiert oder subtrahiert.',
@@ -1861,6 +1875,8 @@ export const de: WebMessages = {
             placeholder: 'Platzhaltertext, ein Zeichen pro Zelle verteilt.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe jeder Ziffernzelle.',
             value: 'Aktueller Codewert, bidirektional bindbar über [(value)].',
             completed:
@@ -1889,6 +1905,8 @@ export const de: WebMessages = {
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich das Popover öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             showAlpha:
               'Zeigt den Transparenz-Schieberegler und bezieht die Transparenz in den emittierten Wert ein.',
             clearable:
@@ -1995,6 +2013,8 @@ export const de: WebMessages = {
             max: 'Höchster Wert, den jeder Regler erreichen kann.',
             min: 'Niedrigster Wert, den jeder Regler erreichen kann.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             showMinMaxLabels: 'Zeigt die Min- und Max-Grenzen an den Enden der Leiste.',
             showValue:
               'Zeigt den aktuellen niedrigen und hohen Wert neben dem Schieberegler.',
@@ -2035,6 +2055,8 @@ export const de: WebMessages = {
             readonly:
               'Rendert die Bewertung als reine Anzeige und ignoriert Klicks und Tastatureingaben.',
             required: 'Kennzeichnet die Bewertung als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe der Bewertung.',
             value: 'Aktueller Bewertungswert, bidirektional bindbar über [(value)].',
             hoverChanged:
@@ -2074,6 +2096,8 @@ export const de: WebMessages = {
             max: 'Höchster Wert, den der Schieberegler erreichen kann.',
             min: 'Niedrigster Wert, den der Schieberegler erreichen kann.',
             required: 'Kennzeichnet den Schieberegler als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             showMinMaxLabels: 'Zeigt die Min- und Max-Grenzen unter der Leiste.',
             snapValues:
               'Werte, auf denen der Griff beim Ziehen einrastet; jeder wird als Markierung auf der Leiste gezeichnet.',
@@ -2154,6 +2178,8 @@ export const de: WebMessages = {
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             resize: 'Achse, entlang derer der Nutzer die Größe des Feldes ändern darf.',
             size: 'Visuelle Größe des Feldes.',
             value: 'Aktueller Feldwert, bidirektional bindbar über [(value)].',
@@ -2254,6 +2280,8 @@ export const de: WebMessages = {
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich das Popover öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             secondStep:
               'Schrittweite, an die die Sekundenspalte beim Stufen oder Ziehen einrastet.',
             size: 'Visuelle Größe des Picker-Auslösers.',
@@ -2309,6 +2337,8 @@ export const de: WebMessages = {
             placeholder: 'Platzhalter, der angezeigt wird, solange das Feld leer ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe des Feldes.',
             value: 'Aktueller Feldwert, bidirektional bindbar über [(value)].',
             blurred: 'Wird ausgelöst, wenn das Input den Fokus verliert.',
@@ -2387,6 +2417,8 @@ export const de: WebMessages = {
             readonly:
               'Rendert das Feld schreibgeschützt und verhindert, dass sich der Kalender öffnet.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe des Datumsauswahl-Feldes.',
             value: 'Aktuell ausgewähltes Datum, bidirektional bindbar über [(value)].',
             weekStartsOn:
@@ -2462,6 +2494,8 @@ export const de: WebMessages = {
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Option ausgewählt ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             searchable: 'Zeigt das Such-Input am oberen Rand des Popovers.',
             searchPlaceholder:
               'Platzhalter, der im Such-Input angezeigt wird, wenn der Suchbegriff leer ist.',
@@ -2499,6 +2533,8 @@ export const de: WebMessages = {
               'Platzhalter, der auf dem Auslöser angezeigt wird, solange keine Option ausgewählt ist.',
             readonly: 'Rendert das Feld schreibgeschützt.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             clearable:
               'Zeigt eine Löschschaltfläche auf dem Auslöser, solange eine Option ausgewählt ist.',
             searchable:
@@ -2540,6 +2576,8 @@ export const de: WebMessages = {
             progress:
               'Upload-Fortschrittskarte pro Datei (0-100), nach Datei-Identität gekeyt; weglassen, um Fortschrittsbalken auszublenden.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             showConstraints:
               'Zeigt die erlaubten Dateitypen sowie Größen- und Anzahlgrenzen unter dem Steuerelement; ausschalten, wo sie eine kompakte Platzierung überladen würden.',
             showFileList: 'Zeigt die Liste der ausgewählten Dateien unter der Dropzone.',
@@ -2566,6 +2604,8 @@ export const de: WebMessages = {
               'Optionale Icon-Komponente, die vor dem Beschriftungstext gerendert wird.',
             label: 'Textlabel, das über dem Steuerelement gerendert wird.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
           },
           popover: {
             anchor: 'Host-Element oder ElementRef, an dem sich das Popover positioniert.',
@@ -2707,6 +2747,8 @@ export const de: WebMessages = {
             name: 'Gemeinsames name-Attribut, das auf alle Radio-Inputs in der Gruppe angewendet wird, automatisch generiert, wenn weggelassen.',
             orientation: 'Layout-Richtung der Radio-Optionen innerhalb der Gruppe.',
             required: 'Kennzeichnet die Gruppe als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe, die auf alle Radio-Optionen in der Gruppe angewendet wird.',
             value: 'Aktuell ausgewählter Wert, bidirektional bindbar über [(value)].',
             changed:
@@ -2730,6 +2772,8 @@ export const de: WebMessages = {
             options:
               'Array von Optionen, die als Umschalt-Buttons innerhalb der Steuerung gerendert werden.',
             required: 'Kennzeichnet das Feld als erforderlich.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             size: 'Visuelle Größe der segmentierten Steuerung.',
             value:
               'Aktuell ausgewählter Optionswert, bidirektional bindbar über [(value)].',
@@ -2811,6 +2855,8 @@ export const de: WebMessages = {
             labelId:
               'id, die auf das gerenderte Label-Element angewendet wird, sodass Steuerungen es über aria-labelledby referenzieren können.',
             required: 'Zeigt eine Erforderlich-Anzeige auf dem Label.',
+            optional:
+              'Fügt nach dem Label einen gedämpften Hinweis „(optional)“ hinzu, sofern nicht auch required gesetzt ist.',
             text: 'Label-Text, der innerhalb des Label-Elements gerendert wird.',
           },
           'field-messages': {

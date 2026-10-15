@@ -1271,6 +1271,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
+            optional: 'Opcional',
             autofocus: 'Foco automático',
             showPasswordToggle: 'Mostrar alternância de senha',
             clearable: 'Limpável',
@@ -1289,6 +1290,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
           'form-field': {
             size: 'Tamanho',
@@ -1296,6 +1298,7 @@ export const ptBR: WebMessages = {
             labelIcon: 'Ícone do rótulo',
             hint: 'Dica',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
           alert: {
             variant: 'Variante',
@@ -1361,6 +1364,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
           'color-picker': {
             label: 'Rótulo',
@@ -1373,6 +1377,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
           divider: {
             orientation: 'Orientação',
@@ -1417,6 +1422,7 @@ export const ptBR: WebMessages = {
             labelIcon: 'Ícone do rótulo',
             size: 'Tamanho',
             disabled: 'Desativado',
+            optional: 'Opcional',
           },
           'range-slider': {
             label: 'Rótulo',
@@ -1431,6 +1437,7 @@ export const ptBR: WebMessages = {
             showMinMaxLabels: 'Mostrar rótulos mín/máx',
             disabled: 'Desativado',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
           rating: {
             label: 'Rótulo',
@@ -1442,6 +1449,7 @@ export const ptBR: WebMessages = {
             readonly: 'Somente leitura',
             disabled: 'Desativado',
             required: 'Obrigatório',
+            optional: 'Opcional',
             clearable: 'Limpável',
             iconClass: 'Ícone',
           },
@@ -1460,6 +1468,7 @@ export const ptBR: WebMessages = {
             showMinMaxLabels: 'Mostrar rótulos mín/máx',
             disabled: 'Desativado',
             required: 'Obrigatório',
+            optional: 'Opcional',
             hasError: 'Estado de erro',
             label: 'Rótulo',
             labelIcon: 'Ícone do rótulo',
@@ -1498,6 +1507,7 @@ export const ptBR: WebMessages = {
             disabled: 'Desativado',
             readonly: 'Somente leitura',
             required: 'Obrigatório',
+            optional: 'Opcional',
           },
         },
         knobNotes: {
@@ -1673,6 +1683,8 @@ export const ptBR: WebMessages = {
             disabled: 'Desativa o campo.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             autocomplete: 'Valor para o atributo autocomplete nativo.',
             list: 'id de um <datalist> a associar para sugestões nativas.',
             autofocus: 'Foca o campo uma vez, após a primeira renderização.',
@@ -1711,6 +1723,8 @@ export const ptBR: WebMessages = {
             disabled: 'Desativa o campo.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             min: 'Valor mínimo; valores digitados são limitados a ele ao sair do campo.',
             max: 'Valor máximo; valores digitados são limitados a ele ao sair do campo.',
             step: 'Quantidade que cada passo com as teclas de seta soma ou subtrai.',
@@ -1840,6 +1854,8 @@ export const ptBR: WebMessages = {
             placeholder: 'Texto de placeholder distribuído um caractere por célula.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual de cada célula de dígito.',
             value:
               'Valor de código atual, vinculável de forma bidirecional via [(value)].',
@@ -1867,6 +1883,8 @@ export const ptBR: WebMessages = {
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do popover.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             showAlpha: 'Mostra o controle de alfa e inclui o alfa no valor emitido.',
             clearable: 'Se o botão de limpar é exibido quando há um valor definido.',
             size: 'Tamanho visual do gatilho do seletor.',
@@ -1963,6 +1981,8 @@ export const ptBR: WebMessages = {
             max: 'Valor mais alto que qualquer controle pode alcançar.',
             min: 'Valor mais baixo que qualquer controle pode alcançar.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             showMinMaxLabels:
               'Mostra os limites mínimo e máximo nas extremidades da trilha.',
             showValue:
@@ -2002,6 +2022,8 @@ export const ptBR: WebMessages = {
             readonly:
               'Renderiza a avaliação apenas para exibição, ignorando cliques e entrada do teclado.',
             required: 'Marca a avaliação como obrigatória.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual da avaliação.',
             value:
               'Valor de avaliação atual, vinculável de forma bidirecional via [(value)].',
@@ -2040,6 +2062,8 @@ export const ptBR: WebMessages = {
             max: 'Valor mais alto que o controle deslizante pode alcançar.',
             min: 'Valor mais baixo que o controle deslizante pode alcançar.',
             required: 'Marca o controle deslizante como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             showMinMaxLabels: 'Mostra os limites mínimo e máximo abaixo da trilha.',
             snapValues:
               'Valores aos quais o controle se encaixa ao arrastar; cada um é desenhado como uma marca na trilha.',
@@ -2119,6 +2143,8 @@ export const ptBR: WebMessages = {
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             resize: 'Eixo ao longo do qual o usuário pode redimensionar o campo.',
             size: 'Tamanho visual do campo.',
             value:
@@ -2216,6 +2242,8 @@ export const ptBR: WebMessages = {
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do popover.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             secondStep:
               'Incremento ao qual a coluna de segundos se ajusta ao ser variada ou arrastada.',
             size: 'Tamanho visual do gatilho do seletor.',
@@ -2271,6 +2299,8 @@ export const ptBR: WebMessages = {
             placeholder: 'Placeholder exibido enquanto o campo está vazio.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual do campo.',
             value:
               'Valor atual do campo, vinculável de forma bidirecional via [(value)].',
@@ -2346,6 +2376,8 @@ export const ptBR: WebMessages = {
             readonly:
               'Renderiza o campo como somente leitura, impedindo a abertura do calendário.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual do campo do seletor de data.',
             value:
               'Data selecionada atual, vinculável de forma bidirecional via [(value)].',
@@ -2419,6 +2451,8 @@ export const ptBR: WebMessages = {
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             searchable: 'Mostra o input de pesquisa no topo do popover.',
             searchPlaceholder:
               'Placeholder exibido dentro do input de pesquisa quando o termo de pesquisa está vazio.',
@@ -2454,6 +2488,8 @@ export const ptBR: WebMessages = {
               'Placeholder exibido no gatilho enquanto nenhuma opção é selecionada.',
             readonly: 'Renderiza o campo como somente leitura.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             clearable:
               'Mostra um botão de limpar no gatilho enquanto há uma opção selecionada.',
             searchable:
@@ -2494,6 +2530,8 @@ export const ptBR: WebMessages = {
             progress:
               'Mapa de progresso de envio por arquivo (0-100) indexado pela identidade do File; omita para ocultar as barras de progresso.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             showConstraints:
               'Mostra os tipos de arquivo aceitos e os limites de tamanho e quantidade abaixo do controle; desative onde eles lotariam um posicionamento compacto.',
             showFileList:
@@ -2521,6 +2559,8 @@ export const ptBR: WebMessages = {
             labelIcon: 'Componente de ícone opcional exibido antes do texto do rótulo.',
             label: 'Rótulo de texto renderizado acima do controle.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
           },
           popover: {
             anchor:
@@ -2656,6 +2696,8 @@ export const ptBR: WebMessages = {
             name: 'Atributo name compartilhado aplicado a todos os inputs de rádio no grupo, gerado automaticamente quando omitido.',
             orientation: 'Direção de layout das opções de rádio dentro do grupo.',
             required: 'Marca o grupo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual aplicado a todas as opções de rádio no grupo.',
             value:
               'Valor selecionado atualmente, vinculável de forma bidirecional via [(value)].',
@@ -2678,6 +2720,8 @@ export const ptBR: WebMessages = {
             options:
               'Array de opções renderizadas como botões de alternância dentro do controle.',
             required: 'Marca o campo como obrigatório.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             size: 'Tamanho visual do controle segmentado.',
             value:
               'Valor da opção selecionada atualmente, vinculável de forma bidirecional via [(value)].',
@@ -2756,6 +2800,8 @@ export const ptBR: WebMessages = {
             labelId:
               'id aplicado ao elemento de rótulo renderizado para que os controles possam referenciá-lo via aria-labelledby.',
             required: 'Mostra um indicador de obrigatório no rótulo.',
+            optional:
+              'Adiciona uma nota esmaecida “(opcional)” após o rótulo, a menos que required também esteja definido.',
             text: 'Texto do rótulo renderizado dentro do elemento de rótulo.',
           },
           'field-messages': {
