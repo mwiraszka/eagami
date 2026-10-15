@@ -44,7 +44,7 @@ export const ar: WebMessages = {
     },
     services: {
       title: 'اللبنات الأساسية',
-      heading: 'مبنيّ حسب الطلب، متكامل الميزات',
+      heading: 'مواقع مبنيّة حسب الطلب، متكاملة الميزات',
       lede: 'كل موقع يُصمَّم ويُبنى من الصفر. اختر ميزاتك وشاهده ينبض بالحياة.',
       features: [
         {
@@ -75,8 +75,8 @@ export const ar: WebMessages = {
           hint: 'على الشاشة الرئيسية، حتى دون اتصال',
         },
       ],
-      previousFeatures: 'الميزات السابقة',
-      nextFeatures: 'الميزات التالية',
+      showMore: 'عرض المزيد',
+      showFewer: 'عرض أقل',
       uiNote: {
         before: 'تُبنى جميع المشاريع على',
         link: 'Eagami UI',
@@ -1749,6 +1749,10 @@ export const ar: WebMessages = {
               'معرّفات العناصر التي يسمّي نصها الزر، تُمرَّر إلى خاصية aria-labelledby الأصلية.',
             ariaDescribedby:
               'معرّفات العناصر التي تصف الزر، مثل التلميح، تُمرَّر إلى خاصية aria-describedby الأصلية.',
+            ariaExpanded:
+              'ما إذا كان المحتوى الذي يُظهره الزر ويُخفيه مفتوحًا، تُمرَّر إلى خاصية aria-expanded الأصلية.',
+            ariaControls:
+              'معرّف العنصر الذي يُظهره الزر أو يُخفيه أو يتحكم فيه بطريقة أخرى، يُمرَّر إلى خاصية aria-controls الأصلية.',
             focus: 'ينقل تركيز لوحة المفاتيح إلى الزر الأصلي الكامن.',
           },
           'button-link': {

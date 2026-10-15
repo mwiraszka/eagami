@@ -43,7 +43,7 @@ export const zhCN: WebMessages = {
     },
     services: {
       title: '构建模块',
-      heading: '量身定制，功能齐全',
+      heading: '量身定制、功能齐全的网站',
       lede: '每个网站都从零开始设计与构建。选择你需要的功能，看它焕发生机。',
       features: [
         { id: 'accounts', title: '用户账户', hint: '登录、注册和管理后台' },
@@ -62,8 +62,8 @@ export const zhCN: WebMessages = {
         { id: 'maps', title: '地图与位置', hint: '路线指引与营业时间' },
         { id: 'pwa', title: '可安装应用', hint: '添加到主屏幕，离线也能用' },
       ],
-      previousFeatures: '上一组功能',
-      nextFeatures: '下一组功能',
+      showMore: '显示更多',
+      showFewer: '收起',
       uiNote: {
         before: '所有项目都基于',
         link: 'Eagami UI',
@@ -1689,6 +1689,10 @@ export const zhCN: WebMessages = {
               '其文本为按钮命名的元素的 id，转发到原生 aria-labelledby 属性。',
             ariaDescribedby:
               '描述按钮的元素（例如提示）的 id，转发到原生 aria-describedby 属性。',
+            ariaExpanded:
+              '按钮显示和隐藏的内容是否已展开，转发到原生 aria-expanded 属性。',
+            ariaControls:
+              '按钮显示、隐藏或以其他方式控制的元素的 id，转发到原生 aria-controls 属性。',
             focus: '将键盘焦点移到底层原生按钮。',
           },
           'button-link': {

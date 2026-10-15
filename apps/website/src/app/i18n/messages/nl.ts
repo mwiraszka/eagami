@@ -44,7 +44,7 @@ export const nl: WebMessages = {
     },
     services: {
       title: 'Bouwstenen',
-      heading: 'Op maat gebouwd, compleet uitgerust',
+      heading: 'Websites op maat, compleet uitgerust',
       lede: 'Elke site wordt vanaf nul ontworpen en gebouwd. Kies je functies en zie hem tot leven komen.',
       features: [
         {
@@ -91,8 +91,8 @@ export const nl: WebMessages = {
           hint: 'Op het beginscherm, ook offline',
         },
       ],
-      previousFeatures: 'Vorige functies',
-      nextFeatures: 'Volgende functies',
+      showMore: 'Meer tonen',
+      showFewer: 'Minder tonen',
       uiNote: {
         before: 'Alle projecten worden gebouwd op',
         link: 'Eagami UI',
@@ -1806,6 +1806,10 @@ export const nl: WebMessages = {
               'Identificatoren van de elementen waarvan de tekst de knop benoemt, doorgegeven aan het native aria-labelledby-attribuut.',
             ariaDescribedby:
               'Identificatoren van de elementen die de knop beschrijven, zoals een hint, doorgegeven aan het native aria-describedby-attribuut.',
+            ariaExpanded:
+              'Of de inhoud die de knop toont en verbergt open is, doorgegeven aan het native aria-expanded-attribuut.',
+            ariaControls:
+              'Id van het element dat de knop toont, verbergt of anderszins bestuurt, doorgegeven aan het native aria-controls-attribuut.',
             focus: 'Verplaatst de toetsenbordfocus naar de onderliggende native knop.',
           },
           'button-link': {

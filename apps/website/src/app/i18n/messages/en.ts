@@ -43,7 +43,7 @@ export const en: WebMessages = {
     },
     services: {
       title: 'Building blocks',
-      heading: 'Custom-built, fully featured',
+      heading: 'Custom-built, fully featured websites',
       lede: 'Every site is designed and built from scratch. Choose your features and watch it come to life.',
       features: [
         {
@@ -74,8 +74,8 @@ export const en: WebMessages = {
         { id: 'maps', title: 'Maps and location', hint: 'Directions and opening hours' },
         { id: 'pwa', title: 'Installable app', hint: 'On the home screen, even offline' },
       ],
-      previousFeatures: 'Previous features',
-      nextFeatures: 'Next features',
+      showMore: 'Show more',
+      showFewer: 'Show fewer',
       uiNote: {
         before: 'All projects are built on',
         link: 'Eagami UI',
@@ -1758,6 +1758,10 @@ export const en: WebMessages = {
               'Ids of the elements whose text names the button, forwarded to the native aria-labelledby attribute.',
             ariaDescribedby:
               'Ids of the elements that describe the button, such as a hint, forwarded to the native aria-describedby attribute.',
+            ariaExpanded:
+              'Whether the content the button shows and hides is open, forwarded to the native aria-expanded attribute.',
+            ariaControls:
+              'Id of the element the button shows, hides or otherwise controls, forwarded to the native aria-controls attribute.',
             focus: 'Moves keyboard focus to the underlying native button.',
           },
           'button-link': {

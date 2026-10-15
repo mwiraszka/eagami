@@ -47,7 +47,7 @@ export const frFR: WebMessages = {
     },
     services: {
       title: 'Briques de base',
-      heading: 'Sur mesure, riche en fonctionnalités',
+      heading: 'Des sites sur mesure, riches en fonctionnalités',
       lede: 'Chaque site est conçu et développé de zéro. Choisissez vos fonctionnalités et regardez-le prendre vie.',
       features: [
         {
@@ -110,8 +110,8 @@ export const frFR: WebMessages = {
           hint: 'Sur l’écran d’accueil, même hors ligne',
         },
       ],
-      previousFeatures: 'Fonctionnalités précédentes',
-      nextFeatures: 'Fonctionnalités suivantes',
+      showMore: 'Afficher plus',
+      showFewer: 'Afficher moins',
       uiNote: {
         before: 'Tous les projets s’appuient sur',
         link: 'Eagami UI',
@@ -1844,6 +1844,10 @@ export const frFR: WebMessages = {
               'Identifiants des éléments dont le texte nomme le bouton, transmis à l’attribut natif aria-labelledby.',
             ariaDescribedby:
               'Identifiants des éléments qui décrivent le bouton, comme une indication, transmis à l’attribut natif aria-describedby.',
+            ariaExpanded:
+              'Indique si le contenu que le bouton affiche et masque est ouvert, transmis à l’attribut natif aria-expanded.',
+            ariaControls:
+              'Identifiant de l’élément que le bouton affiche, masque ou contrôle autrement, transmis à l’attribut natif aria-controls.',
             focus: 'Place le focus clavier sur le bouton natif sous-jacent.',
           },
           'button-link': {

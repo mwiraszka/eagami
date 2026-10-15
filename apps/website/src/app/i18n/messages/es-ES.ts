@@ -43,7 +43,7 @@ export const esES: WebMessages = {
     },
     services: {
       title: 'Piezas clave',
-      heading: 'A medida y con todas las funciones',
+      heading: 'Sitios web a medida y con todas las funciones',
       lede: 'Cada sitio se diseña y se construye desde cero. Elige tus funcionalidades y míralo cobrar vida.',
       features: [
         {
@@ -98,8 +98,8 @@ export const esES: WebMessages = {
           hint: 'En la pantalla de inicio, incluso sin conexión',
         },
       ],
-      previousFeatures: 'Funcionalidades anteriores',
-      nextFeatures: 'Funcionalidades siguientes',
+      showMore: 'Mostrar más',
+      showFewer: 'Mostrar menos',
       uiNote: {
         before: 'Todos los proyectos se construyen sobre',
         link: 'Eagami UI',
@@ -1824,6 +1824,10 @@ export const esES: WebMessages = {
               'Identificadores de los elementos cuyo texto nombra el botón, reenviados al atributo nativo aria-labelledby.',
             ariaDescribedby:
               'Identificadores de los elementos que describen el botón, como una pista, reenviados al atributo nativo aria-describedby.',
+            ariaExpanded:
+              'Indica si el contenido que el botón muestra y oculta está abierto, transmitido al atributo nativo aria-expanded.',
+            ariaControls:
+              'Id del elemento que el botón muestra, oculta o controla de otro modo, transmitido al atributo nativo aria-controls.',
             focus: 'Lleva el foco del teclado al botón nativo subyacente.',
           },
           'button-link': {

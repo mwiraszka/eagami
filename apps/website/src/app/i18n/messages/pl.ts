@@ -44,7 +44,7 @@ export const pl: WebMessages = {
     },
     services: {
       title: 'Cegiełki',
-      heading: 'Szyte na miarę, z kompletem funkcji',
+      heading: 'Strony szyte na miarę, z kompletem funkcji',
       lede: 'Każda strona jest projektowana i budowana od zera. Wybierz funkcje i zobacz, jak ożywa.',
       features: [
         {
@@ -95,8 +95,8 @@ export const pl: WebMessages = {
           hint: 'Na ekranie głównym, nawet offline',
         },
       ],
-      previousFeatures: 'Poprzednie funkcje',
-      nextFeatures: 'Następne funkcje',
+      showMore: 'Pokaż więcej',
+      showFewer: 'Pokaż mniej',
       uiNote: {
         before: 'Wszystkie projekty powstają w oparciu o',
         link: 'Eagami UI',
@@ -1804,6 +1804,10 @@ export const pl: WebMessages = {
               'Identyfikatory elementów, których tekst nazywa przycisk, przekazywane do natywnego atrybutu aria-labelledby.',
             ariaDescribedby:
               'Identyfikatory elementów opisujących przycisk, np. podpowiedzi, przekazywane do natywnego atrybutu aria-describedby.',
+            ariaExpanded:
+              'Czy treść, którą przycisk pokazuje i ukrywa, jest rozwinięta, przekazywane do natywnego atrybutu aria-expanded.',
+            ariaControls:
+              'Identyfikator elementu, który przycisk pokazuje, ukrywa lub w inny sposób kontroluje, przekazywany do natywnego atrybutu aria-controls.',
             focus: 'Przenosi fokus klawiatury na bazowy natywny przycisk.',
           },
           'button-link': {

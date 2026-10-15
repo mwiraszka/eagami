@@ -44,7 +44,7 @@ export const is: WebMessages = {
     },
     services: {
       title: 'Byggingareiningar',
-      heading: 'Sérsmíðað og fullbúið',
+      heading: 'Sérsmíðaðir og fullbúnir vefir',
       lede: 'Hver vefur er hannaður og smíðaður frá grunni. Veldu eiginleikana þína og sjáðu hann lifna við.',
       features: [
         {
@@ -95,8 +95,8 @@ export const is: WebMessages = {
           hint: 'Á heimaskjánum, líka án nettengingar',
         },
       ],
-      previousFeatures: 'Fyrri eiginleikar',
-      nextFeatures: 'Næstu eiginleikar',
+      showMore: 'Sýna fleiri',
+      showFewer: 'Sýna færri',
       uiNote: {
         before: 'Öll verkefni eru byggð á',
         link: 'Eagami UI',
@@ -1808,6 +1808,10 @@ export const is: WebMessages = {
               'Auðkenni þeirra eininga sem gefa hnappnum heiti með texta sínum, send áfram í innbyggða aria-labelledby eigindið.',
             ariaDescribedby:
               'Auðkenni þeirra eininga sem lýsa hnappnum, t.d. vísbendingar, send áfram í innbyggða aria-describedby eigindið.',
+            ariaExpanded:
+              'Hvort efnið sem hnappurinn sýnir og felur er opið, sent áfram í innbyggða aria-expanded-eigindið.',
+            ariaControls:
+              'Auðkenni einingarinnar sem hnappurinn sýnir, felur eða stýrir á annan hátt, sent áfram í innbyggða aria-controls-eigindið.',
             focus: 'Færir lyklaborðsfókus á undirliggjandi innbyggða hnappinn.',
           },
           'button-link': {

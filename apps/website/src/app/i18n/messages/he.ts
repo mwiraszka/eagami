@@ -43,7 +43,7 @@ export const he: WebMessages = {
     },
     services: {
       title: 'אבני בניין',
-      heading: 'בהתאמה אישית, עם כל היכולות',
+      heading: 'אתרים בהתאמה אישית, עם כל היכולות',
       lede: 'כל אתר מעוצב ונבנה מאפס. בחרו את היכולות שלכם וצפו בו קם לתחייה.',
       features: [
         {
@@ -66,8 +66,8 @@ export const he: WebMessages = {
         { id: 'maps', title: 'מפות ומיקום', hint: 'הוראות הגעה ושעות פתיחה' },
         { id: 'pwa', title: 'אפליקציה להתקנה', hint: 'במסך הבית, גם בלי חיבור' },
       ],
-      previousFeatures: 'היכולות הקודמות',
-      nextFeatures: 'היכולות הבאות',
+      showMore: 'הצג עוד',
+      showFewer: 'הצג פחות',
       uiNote: {
         before: 'כל הפרויקטים בנויים על',
         link: 'Eagami UI',
@@ -1725,6 +1725,10 @@ export const he: WebMessages = {
               'מזהי הרכיבים שהטקסט שלהם נותן לכפתור את שמו, מועברים למאפיין aria-labelledby המקורי.',
             ariaDescribedby:
               'מזהי הרכיבים שמתארים את הכפתור, כמו רמז, מועברים למאפיין aria-describedby המקורי.',
+            ariaExpanded:
+              'האם התוכן שהכפתור מציג ומסתיר פתוח, מועבר לתכונה המקורית aria-expanded.',
+            ariaControls:
+              'המזהה של הרכיב שהכפתור מציג, מסתיר או שולט בו בדרך אחרת, מועבר לתכונה המקורית aria-controls.',
             focus: 'מעביר את פוקוס המקלדת לכפתור המקורי שבבסיס.',
           },
           'button-link': {

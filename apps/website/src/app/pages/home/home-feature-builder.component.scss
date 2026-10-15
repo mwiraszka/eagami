@@ -6,9 +6,9 @@
 }
 
 /* Wide screens: every feature with its description beside the pinned demo.
-   Up to 1000px the features become a scrolling chip row right above the demo,
-   with a caption for the last one toggled, so both fit on one screen. Tracks
-   floor at zero so nothing inside the demo can widen the page. */
+   Up to 1000px the features wrap as chips right above the demo, with a caption
+   for the last one toggled. Tracks floor at zero so nothing inside the demo can
+   widen the page. */
 .feature-builder {
   display: grid;
   align-items: start;
@@ -33,7 +33,7 @@
 }
 
 .feature-builder__note {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--color-text-secondary);
 
@@ -47,28 +47,19 @@
 }
 
 .feature-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+
   @include mixins.respond-to('lt-lg') {
     order: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-  }
-}
-
-.feature-picker__step {
-  display: none;
-
-  @include mixins.respond-to('lt-lg') {
-    display: inline-flex;
-    flex-shrink: 0;
   }
 }
 
 .feature-list {
-  --fade-start: 0px;
-  --fade-end: 0px;
-
+  align-self: stretch;
   display: grid;
   align-items: center;
   row-gap: 8px;
@@ -79,42 +70,9 @@
   list-style: none;
 
   @include mixins.respond-to('lt-lg') {
-    overflow-x: auto;
     display: flex;
-    flex: 1;
+    flex-wrap: wrap;
     gap: 8px;
-    min-width: 0;
-    padding: 4px 0;
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      currentColor var(--fade-start),
-      currentColor calc(100% - var(--fade-end)),
-      transparent
-    );
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-  }
-}
-
-/* The fades sit only on the sides that still hide chips */
-.feature-list--fade-start {
-  --fade-start: 24px;
-}
-
-.feature-list--fade-end {
-  --fade-end: 24px;
-}
-
-:host-context([dir='rtl']) .feature-list {
-  @include mixins.respond-to('lt-lg') {
-    mask-image: linear-gradient(
-      to left,
-      transparent,
-      currentColor var(--fade-start),
-      currentColor calc(100% - var(--fade-end)),
-      transparent
-    );
   }
 }
 
@@ -127,13 +85,26 @@
 
   @include mixins.respond-to('lt-lg') {
     display: block;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+  }
+}
+
+.feature--revealed {
+  animation: feature-reveal 0.25s ease-out both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes feature-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
   }
 }
 
 .feature__hint {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--color-text-secondary);
 
@@ -150,7 +121,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4px 8px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     color: var(--color-text-secondary);
   }

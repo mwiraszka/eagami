@@ -44,7 +44,7 @@ export const de: WebMessages = {
     },
     services: {
       title: 'Bausteine',
-      heading: 'Maßgeschneidert und voll ausgestattet',
+      heading: 'Maßgeschneiderte, voll ausgestattete Websites',
       lede: 'Jede Website wird von Grund auf gestaltet und entwickelt. Wählen Sie Ihre Funktionen und sehen Sie zu, wie sie zum Leben erwacht.',
       features: [
         {
@@ -95,8 +95,8 @@ export const de: WebMessages = {
           hint: 'Auf dem Startbildschirm, auch offline',
         },
       ],
-      previousFeatures: 'Vorherige Funktionen',
-      nextFeatures: 'Nächste Funktionen',
+      showMore: 'Mehr anzeigen',
+      showFewer: 'Weniger anzeigen',
       uiNote: {
         before: 'Alle Projekte basieren auf',
         link: 'Eagami UI',
@@ -1824,6 +1824,10 @@ export const de: WebMessages = {
               'IDs der Elemente, deren Text den Button benennt, weitergereicht an das native aria-labelledby-Attribut.',
             ariaDescribedby:
               'IDs der Elemente, die den Button beschreiben, etwa ein Hinweis, weitergereicht an das native aria-describedby-Attribut.',
+            ariaExpanded:
+              'Ob der Inhalt, den der Button ein- und ausblendet, geöffnet ist, weitergereicht an das native aria-expanded-Attribut.',
+            ariaControls:
+              'ID des Elements, das der Button ein- oder ausblendet oder anderweitig steuert, weitergereicht an das native aria-controls-Attribut.',
             focus:
               'Verschiebt den Tastaturfokus auf den zugrunde liegenden nativen Button.',
           },

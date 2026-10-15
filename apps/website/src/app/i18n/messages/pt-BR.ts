@@ -44,7 +44,7 @@ export const ptBR: WebMessages = {
     },
     services: {
       title: 'Blocos de construção',
-      heading: 'Sob medida, com todos os recursos',
+      heading: 'Sites sob medida, com todos os recursos',
       lede: 'Cada site é projetado e construído do zero. Escolha seus recursos e veja-o ganhar vida.',
       features: [
         {
@@ -87,8 +87,8 @@ export const ptBR: WebMessages = {
         },
         { id: 'pwa', title: 'App instalável', hint: 'Na tela inicial, mesmo offline' },
       ],
-      previousFeatures: 'Recursos anteriores',
-      nextFeatures: 'Próximos recursos',
+      showMore: 'Mostrar mais',
+      showFewer: 'Mostrar menos',
       uiNote: {
         before: 'Todos os projetos são construídos sobre',
         link: 'Eagami UI',
@@ -1802,6 +1802,10 @@ export const ptBR: WebMessages = {
               'Ids dos elementos cujo texto nomeia o botão, repassados ao atributo nativo aria-labelledby.',
             ariaDescribedby:
               'Ids dos elementos que descrevem o botão, como uma dica, repassados ao atributo nativo aria-describedby.',
+            ariaExpanded:
+              'Indica se o conteúdo que o botão mostra e oculta está aberto, repassado ao atributo nativo aria-expanded.',
+            ariaControls:
+              'Id do elemento que o botão mostra, oculta ou controla de outra forma, repassado ao atributo nativo aria-controls.',
             focus: 'Move o foco do teclado para o botão nativo subjacente.',
           },
           'button-link': {
