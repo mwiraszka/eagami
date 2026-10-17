@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.71.2',
+    date: '2026-10-17',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `'blur'` setting to `showErrorsOn` that shows an error as soon as the user leaves a field, even one they tabbed past without typing, while still holding a new error back until focus leaves the field.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.71.1',
     date: '2026-10-17',
     sections: [

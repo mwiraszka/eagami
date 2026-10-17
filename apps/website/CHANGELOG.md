@@ -5,6 +5,13 @@ All notable changes to eagami.com are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.35.2] - 2026-10-17
+
+### Changed
+
+- Mention the new `'blur'` setting in the `showErrorsOn` description of every form component's API reference.
+- Pick up @eagami/ui v5.71.2.
+
 ## [3.35.1] - 2026-10-17
 
 ### Added
@@ -1720,6 +1727,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated gradient backdrop on home and `/ui` using muted brand-palette colors, with automatic light / dark mode and `prefers-reduced-motion` opt-out.
 - Theme-aware `theme-color` meta tag so the browser chrome matches the active color scheme.
 
+[3.35.2]: https://github.com/mwiraszka/eagami/compare/website-v3.35.1...website-v3.35.2
 [3.35.1]: https://github.com/mwiraszka/eagami/compare/website-v3.35.0...website-v3.35.1
 [3.35.0]: https://github.com/mwiraszka/eagami/compare/website-v3.34.0...website-v3.35.0
 [3.34.0]: https://github.com/mwiraszka/eagami/compare/website-v3.33.0...website-v3.34.0
