@@ -1,8 +1,10 @@
-import { Directive, ElementRef, inject, input } from '@angular/core';
+import { DestroyRef, Directive, ElementRef, effect, inject, input } from '@angular/core';
 
 import { MenuComponent } from '../menu/menu.component';
+import type { PopoverAnchorPoint } from '../popover/popover-positioning';
 import type { PopoverComponent } from '../popover/popover.component';
 import { contextMenuPoint, isContextMenuShortcut } from './context-menu-request';
+import { watchLongPress } from './long-press';
 
 /**
  * Where `[eaContextMenuTrigger]` opens its target: at the pointer (below the
@@ -16,10 +18,14 @@ export type ContextMenuTarget = MenuComponent | PopoverComponent;
 
 /**
  * Opens an `<ea-menu>` or `<ea-popover>` as the context menu of its host: on a
- * right-click or long press, or from the keyboard with Shift+F10 or the
+ * right-click or a touch long press, or from the keyboard with Shift+F10 or the
  * context-menu key while focus is on the host or inside it. The browser's own
  * menu is suppressed only when the target opens, so a `null` target, a disabled
  * menu, or a request something inside the host has already handled leaves it be.
+ *
+ * The long press is recognised here rather than left to the browser, since iOS
+ * Safari never turns one into a `contextmenu` event. While a target is set, the
+ * host also drops the iOS link and image preview a long press would raise.
  *
  * A menu opens straight away. A popover's parent drives its `[open]` state, so it
  * emits `openRequested` with the point to bind to `[anchorPoint]` instead; give it
@@ -54,6 +60,21 @@ export class ContextMenuTriggerDirective {
    */
   readonly contextMenuPosition = input<ContextMenuPosition>('pointer');
 
+  constructor() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const host = this.el.nativeElement;
+    inject(DestroyRef).onDestroy(watchLongPress(host, point => this.open(point)));
+    effect(() => {
+      if (this.target()) {
+        host.style.setProperty('-webkit-touch-callout', 'none');
+      } else {
+        host.style.removeProperty('-webkit-touch-callout');
+      }
+    });
+  }
+
   onContextMenu(event: MouseEvent): void {
     this.request(event);
   }
@@ -65,21 +86,31 @@ export class ContextMenuTriggerDirective {
   }
 
   private request(event: MouseEvent | KeyboardEvent): void {
-    const target = this.target();
-    if (!target || event.defaultPrevented) {
-      return;
-    }
-    if (target instanceof MenuComponent && target.disabled()) {
+    if (event.defaultPrevented || !this.canOpen()) {
       return;
     }
     event.preventDefault();
-    const host = this.el.nativeElement;
-    const point =
-      this.contextMenuPosition() === 'pointer' ? contextMenuPoint(event, host) : null;
-    if (target instanceof MenuComponent) {
-      target.openAsContextMenu(host, point);
-    } else {
-      target.requestOpen(point);
+    this.open(contextMenuPoint(event, this.el.nativeElement));
+  }
+
+  private canOpen(): boolean {
+    const target = this.target();
+    return !!target && !(target instanceof MenuComponent && target.disabled());
+  }
+
+  // Whether the target opened, so a long press nothing takes up keeps its click
+  private open(point: PopoverAnchorPoint): boolean {
+    const target = this.target();
+    if (!target || !this.canOpen()) {
+      return false;
     }
+    const host = this.el.nativeElement;
+    const at = this.contextMenuPosition() === 'pointer' ? point : null;
+    if (target instanceof MenuComponent) {
+      target.openAsContextMenu(host, at);
+    } else {
+      target.requestOpen(at);
+    }
+    return true;
   }
 }

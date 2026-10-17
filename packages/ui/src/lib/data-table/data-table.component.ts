@@ -2,6 +2,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
   type TemplateRef,
   ViewEncapsulation,
@@ -14,12 +15,14 @@ import {
   output,
   signal,
   untracked,
+  viewChildren,
 } from '@angular/core';
 
 import {
   contextMenuPoint,
   isContextMenuShortcut,
 } from '../context-menu/context-menu-request';
+import { watchLongPress } from '../context-menu/long-press';
 import { isRtl } from '../direction';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArrowDownIconComponent } from '../icons/arrow-down.component';
@@ -69,7 +72,11 @@ export interface DataTableRowContextMenuEvent<T = Record<string, unknown>> {
   readonly rowElement: HTMLElement;
   /** Where to open a menu: the pointer, or below the focused row or cell for a keyboard request. */
   readonly point: PopoverAnchorPoint;
-  /** The originating event; call `preventDefault()` on it to suppress the browser's own menu. */
+  /**
+   * The originating event, or a stand-in `contextmenu` event for a touch long press;
+   * call `preventDefault()` on it to claim the request, which also suppresses the
+   * browser's own menu.
+   */
   readonly event: MouseEvent | KeyboardEvent;
 }
 
@@ -103,6 +110,7 @@ export interface DataTableSortState {
 export class DataTableComponent<T = Record<string, unknown>> {
   private readonly i18n = inject(EagamiI18nService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly rowEls = viewChildren<ElementRef<HTMLElement>>('rowEl');
 
   // Roving-tabindex active cell for grid navigation. Row 0 is the header row;
   // body rows are 1..N. Only meaningful while `navigable` is true.
@@ -226,6 +234,14 @@ export class DataTableComponent<T = Record<string, unknown>> {
         this.activeCell.set({ row: nextRow, col: nextCol });
       }
     });
+
+    if (typeof window !== 'undefined') {
+      inject(DestroyRef).onDestroy(
+        watchLongPress(this.host.nativeElement, (point, target) =>
+          this.onRowLongPress(point, target),
+        ),
+      );
+    }
   }
 
   readonly sortedData = computed(() => {
@@ -374,6 +390,32 @@ export class DataTableComponent<T = Record<string, unknown>> {
     if (event instanceof KeyboardEvent && !event.defaultPrevented) {
       this.keyboardRequestPending = true;
     }
+  }
+
+  // A held touch reports a row's context-menu request as a right-click does, since iOS
+  // sends no `contextmenu` event of its own. Whether a listener claimed it decides
+  // whether the press keeps its click
+  private onRowLongPress(point: PopoverAnchorPoint, target: EventTarget | null): boolean {
+    if (!(target instanceof Node)) {
+      return false;
+    }
+    const index = this.rowEls().findIndex(ref => ref.nativeElement.contains(target));
+    const row = this.sortedData()[index];
+    if (index < 0 || row === undefined) {
+      return false;
+    }
+    const event = new MouseEvent('contextmenu', {
+      cancelable: true,
+      clientX: point.x,
+      clientY: point.y,
+    });
+    this.rowContextMenu.emit({
+      row,
+      rowElement: this.rowEls()[index].nativeElement,
+      point,
+      event,
+    });
+    return event.defaultPrevented;
   }
 
   // Ends the window in which a browser follows an unclaimed Shift+F10 with `contextmenu`

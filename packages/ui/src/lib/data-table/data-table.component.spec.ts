@@ -1,6 +1,7 @@
 import { Component, type TemplateRef, computed, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { LONG_PRESS_DELAY_MS } from '../context-menu/long-press';
 import {
   type DataTableColumn,
   DataTableComponent,
@@ -486,6 +487,76 @@ describe('DataTableComponent', () => {
 
       expect(requests).toHaveLength(2);
       claim.unsubscribe();
+    });
+
+    describe('on a touch long press', () => {
+      function longPress(target: HTMLElement): void {
+        target.dispatchEvent(
+          new PointerEvent('pointerdown', {
+            bubbles: true,
+            clientX: 30,
+            clientY: 40,
+            pointerId: 1,
+            pointerType: 'touch',
+            isPrimary: true,
+          }),
+        );
+        vi.advanceTimersByTime(LONG_PRESS_DELAY_MS);
+        target.dispatchEvent(
+          new PointerEvent('pointerup', {
+            bubbles: true,
+            pointerId: 1,
+            pointerType: 'touch',
+          }),
+        );
+      }
+
+      function click(target: HTMLElement): MouseEvent {
+        const event = new MouseEvent('click', { bubbles: true, cancelable: true });
+        target.dispatchEvent(event);
+        return event;
+      }
+
+      beforeEach(() => {
+        vi.useFakeTimers();
+      });
+
+      afterEach(() => {
+        vi.useRealTimers();
+      });
+
+      it('reports the held row, since iOS sends no contextmenu event', () => {
+        const row = getBodyRows()[1];
+
+        longPress(getCellsInRow(row)[0]);
+
+        expect(requests).toHaveLength(1);
+        expect(requests[0].row).toEqual(testData[1]);
+        expect(requests[0].rowElement).toBe(row);
+        expect(requests[0].point).toEqual({ x: 30, y: 40 });
+      });
+
+      it('keeps the trailing click off a row whose request was claimed', () => {
+        const claim = component.rowContextMenu.subscribe(request =>
+          request.event.preventDefault(),
+        );
+        const cell = getCellsInRow(getBodyRows()[0])[0];
+
+        longPress(cell);
+        const trailing = click(cell);
+
+        expect(trailing.defaultPrevented).toBe(true);
+        claim.unsubscribe();
+      });
+
+      it('lets the click through when nobody claims the request', () => {
+        const cell = getCellsInRow(getBodyRows()[0])[0];
+
+        longPress(cell);
+        const trailing = click(cell);
+
+        expect(trailing.defaultPrevented).toBe(false);
+      });
     });
   });
 
