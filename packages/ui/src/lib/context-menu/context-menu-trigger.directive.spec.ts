@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuItemComponent } from '../menu/menu-item.component';
@@ -9,6 +9,7 @@ import {
   type ContextMenuPosition,
   ContextMenuTriggerDirective,
 } from './context-menu-trigger.directive';
+import { LONG_PRESS_DELAY_MS } from './long-press';
 
 type TargetKind = 'menu' | 'popover' | 'none';
 
@@ -26,7 +27,8 @@ type TargetKind = 'menu' | 'popover' | 'none';
       [eaContextMenuTrigger]="
         target() === 'menu' ? menu : target() === 'popover' ? popover : null
       "
-      [contextMenuPosition]="position()">
+      [contextMenuPosition]="position()"
+      [contextMenuData]="data()">
       <button class="inner">Inner</button>
     </div>
     <ea-menu
@@ -50,6 +52,8 @@ type TargetKind = 'menu' | 'popover' | 'none';
 class HostComponent {
   readonly target = signal<TargetKind>('menu');
   readonly position = signal<ContextMenuPosition>('pointer');
+  readonly data = signal<unknown>(undefined);
+  readonly menu = viewChild.required(MenuComponent);
   readonly menuOpen = signal(false);
   readonly menuDisabled = signal(false);
   readonly popoverOpen = signal(false);
@@ -107,6 +111,35 @@ describe('ContextMenuTriggerDirective', () => {
     });
     target.dispatchEvent(event);
     fixture.detectChanges();
+    return event;
+  }
+
+  function longPress(target: HTMLElement): void {
+    target.dispatchEvent(
+      new PointerEvent('pointerdown', {
+        bubbles: true,
+        cancelable: true,
+        clientX: 60,
+        clientY: 40,
+        pointerId: 1,
+        pointerType: 'touch',
+        isPrimary: true,
+      }),
+    );
+    vi.advanceTimersByTime(LONG_PRESS_DELAY_MS);
+    target.dispatchEvent(
+      new PointerEvent('pointerup', {
+        bubbles: true,
+        pointerId: 1,
+        pointerType: 'touch',
+      }),
+    );
+    fixture.detectChanges();
+  }
+
+  function click(target: HTMLElement): MouseEvent {
+    const event = new MouseEvent('click', { bubbles: true, cancelable: true });
+    target.dispatchEvent(event);
     return event;
   }
 
@@ -193,6 +226,65 @@ describe('ContextMenuTriggerDirective', () => {
       expect(host.menuOpen()).toBe(false);
       expect(document.activeElement).toBe(inner());
     });
+  });
+
+  describe('on a touch long press', () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('opens the menu at the press, since iOS sends no contextmenu event', () => {
+      longPress(inner());
+
+      expect(host.menuOpen()).toBe(true);
+      expect(openSurface()?.style.left).toBe('60px');
+    });
+
+    it('keeps the click the press ends with from reaching the host', () => {
+      longPress(inner());
+
+      const trailing = click(inner());
+
+      expect(trailing.defaultPrevented).toBe(true);
+    });
+
+    it('leaves the press and its click alone without a target', () => {
+      host.target.set('none');
+      fixture.detectChanges();
+
+      longPress(inner());
+      const trailing = click(inner());
+
+      expect(trailing.defaultPrevented).toBe(false);
+    });
+  });
+
+  describe('with contextMenuData', () => {
+    it('hands the host data to the menu it opens', () => {
+      host.data.set({ id: 7 });
+      fixture.detectChanges();
+
+      rightClick(area());
+
+      expect(host.menu().triggerData()).toEqual({ id: 7 });
+    });
+  });
+
+  it('drops the iOS long-press preview only while a target is set', () => {
+    const setProperty = vi.spyOn(area().style, 'setProperty');
+    const removeProperty = vi.spyOn(area().style, 'removeProperty');
+
+    host.target.set('none');
+    fixture.detectChanges();
+    host.target.set('menu');
+    fixture.detectChanges();
+
+    expect(removeProperty).toHaveBeenCalledWith('-webkit-touch-callout');
+    expect(setProperty).toHaveBeenLastCalledWith('-webkit-touch-callout', 'none');
   });
 
   describe('with a popover', () => {

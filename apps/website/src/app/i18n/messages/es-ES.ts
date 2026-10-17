@@ -2256,6 +2256,8 @@ export const esES: WebMessages = {
               'El ea-menu o ea-popover que se abre como menú contextual del elemento anfitrión; null deja el menú del navegador.',
             contextMenuPosition:
               'Dónde se abre el destino: pointer lo abre en el puntero, o bajo el elemento enfocado desde el teclado; anchor lo abre en su posición respecto al anfitrión.',
+            contextMenuData:
+              'Datos de este host, que se pasan a un destino ea-menu al abrirse y se leen con su triggerData(), para que un solo menú sirva a muchos hosts.',
           },
           'menu-trigger': {
             menu: 'La instancia ea-menu que controla este disparador.',

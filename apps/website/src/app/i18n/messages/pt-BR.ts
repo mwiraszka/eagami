@@ -2215,6 +2215,8 @@ export const ptBR: WebMessages = {
               'O ea-menu ou ea-popover a abrir como menu de contexto do elemento hospedeiro; null mantém o menu do navegador.',
             contextMenuPosition:
               'Onde o alvo abre: pointer o abre no ponteiro, ou abaixo do elemento focado pelo teclado; anchor o abre em seu posicionamento em relação ao hospedeiro.',
+            contextMenuData:
+              'Dados deste host, entregues a um destino ea-menu ao abrir e lidos de volta pelo triggerData() dele, para que um único menu atenda a muitos hosts.',
           },
           'menu-trigger': {
             menu: 'A instância de ea-menu que este gatilho controla.',

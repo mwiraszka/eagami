@@ -14,6 +14,24 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.72.0',
+    date: '2026-10-17',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `contextMenuData` input to the context menu trigger that hands each host's data to a shared `<ea-menu>`, read back through the menu's new `triggerData()` signal.",
+        ],
+      },
+      {
+        heading: 'Fixed',
+        entries: [
+          'Open context menus and data table row menus on a touch long press in iOS Safari, which never fires a `contextmenu` event, without the press also clicking what it was held on.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.71.2',
     date: '2026-10-17',
     sections: [

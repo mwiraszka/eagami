@@ -2228,6 +2228,8 @@ export const nl: WebMessages = {
               'Het ea-menu of ea-popover dat als contextmenu van het hostelement opent; null laat het browsermenu staan.',
             contextMenuPosition:
               'Waar het doel opent: pointer opent het bij de aanwijzer, of vanaf het toetsenbord onder het gefocuste element; anchor opent het op zijn plaatsing ten opzichte van de host.',
+            contextMenuData:
+              'Gegevens van deze host, bij het openen doorgegeven aan een ea-menu-doel en teruggelezen via diens triggerData(), zodat één menu veel hosts kan bedienen.',
           },
           'menu-trigger': {
             menu: 'De ea-menu-instantie die deze trigger bedient.',

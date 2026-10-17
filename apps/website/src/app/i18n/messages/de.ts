@@ -2253,6 +2253,8 @@ export const de: WebMessages = {
               'Das ea-menu oder ea-popover, das als Kontextmenü des Host-Elements geöffnet wird; null belässt das Menü des Browsers.',
             contextMenuPosition:
               'Wo sich das Ziel öffnet: pointer öffnet es am Mauszeiger oder per Tastatur unter dem fokussierten Element; anchor öffnet es an seiner Platzierung relativ zum Host.',
+            contextMenuData:
+              'Daten dieses Hosts, die einem ea-menu-Ziel beim Öffnen übergeben und über dessen triggerData() gelesen werden, sodass ein Menü viele Hosts bedienen kann.',
           },
           'menu-trigger': {
             menu: 'Die ea-menu-Instanz, die dieser Auslöser steuert.',

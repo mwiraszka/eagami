@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.72.0] - 2026-10-17
+
+### Added
+
+- Add a `contextMenuData` input to the context menu trigger that hands each host's data to a shared `<ea-menu>`, read back through the menu's new `triggerData()` signal.
+
+### Fixed
+
+- Open context menus and data table row menus on a touch long press in iOS Safari, which never fires a `contextmenu` event, without the press also clicking what it was held on.
+
 ## [5.71.2] - 2026-10-17
 
 ### Added
@@ -1970,6 +1980,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.72.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.2...ui-v5.72.0
 [5.71.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.1...ui-v5.71.2
 [5.71.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.0...ui-v5.71.1
 [5.71.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.70.0...ui-v5.71.0

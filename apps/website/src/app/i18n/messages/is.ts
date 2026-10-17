@@ -2208,6 +2208,8 @@ export const is: WebMessages = {
               'ea-menu eða ea-popover sem opnast sem samhengisvalmynd hýsilstaksins; null skilur valmynd vafrans eftir.',
             contextMenuPosition:
               'Hvar markið opnast: pointer opnar það við bendilinn, eða undir stakinu með fókus frá lyklaborði; anchor opnar það í staðsetningu sinni gagnvart hýslinum.',
+            contextMenuData:
+              'Gögn þessa hýsils, afhent ea-menu-markmiði þegar það opnast og lesin aftur í gegnum triggerData() þess, svo ein valmynd geti þjónað mörgum hýslum.',
           },
           'menu-trigger': {
             menu: 'ea-menu tilvikið sem þessi kveikja stjórnar.',

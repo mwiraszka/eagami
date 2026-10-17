@@ -75,6 +75,14 @@ export class MenuComponent {
   protected readonly asContextMenu = signal(false);
   protected readonly anchorPoint = signal<PopoverAnchorPoint | null>(null);
 
+  private readonly openedWith = signal<unknown>(undefined);
+  /**
+   * The `contextMenuData` of the `[eaContextMenuTrigger]` host that last opened the
+   * menu, so one menu can act on whichever of many hosts it was opened from. Kept
+   * after the menu closes, and cleared when a trigger button opens it instead.
+   */
+  readonly triggerData = this.openedWith.asReadonly();
+
   // Read by each item's [attr.tabindex] binding so the roving state survives re-renders
   readonly activeItemId = signal<string | null>(null);
 
@@ -121,6 +129,7 @@ export class MenuComponent {
     }
     this.asContextMenu.set(false);
     this.anchorPoint.set(null);
+    this.openedWith.set(undefined);
     this.show(triggerEl);
   }
 
@@ -128,17 +137,20 @@ export class MenuComponent {
    * Opens the menu as the context menu of `anchorEl`: at `point` when given (a
    * pointer position, in viewport coordinates), else at its placement against the
    * anchor. Focuses the first item, closes on any click or context-menu request
-   * outside the menu, and hands focus back to wherever it was on close.
+   * outside the menu, and hands focus back to wherever it was on close. `data`
+   * becomes `triggerData()`.
    */
   openAsContextMenu(
     anchorEl: HTMLElement,
     point: PopoverAnchorPoint | null = null,
+    data: unknown = undefined,
   ): void {
     if (this.disabled()) {
       return;
     }
     this.asContextMenu.set(true);
     this.anchorPoint.set(point);
+    this.openedWith.set(data);
     this.show(anchorEl);
   }
 
