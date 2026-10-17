@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.71.1',
+    date: '2026-10-17',
+    sections: [
+      {
+        heading: 'Added',
+        entries: [
+          "Add a `showErrorsOn` input to every form component, with an app-wide default through a new `forms` option of `provideEagamiUi`, whose `'touch'` setting shows an error as soon as the user leaves a field, even one they tabbed past without typing.",
+        ],
+      },
+    ],
+  },
+  {
     version: '5.71.0',
     date: '2026-10-16',
     sections: [
