@@ -48,6 +48,7 @@ function parseRelatedSlugs() {
 // event outputs. Listing them keeps the "missing knob" advisory signal honest.
 const KNOB_EXEMPT = new Set([
   'errorMessages',
+  'showErrorsOn',
   'ariaLabel',
   'ariaLabelledby',
   'cellTemplate',
@@ -65,7 +66,12 @@ const KNOB_EXEMPT = new Set([
 
 // Inputs described once for every component by a fallback in the website's
 // api-reference.component.ts, rather than per slug.
-const SHARED_DESCRIPTIONS = new Set(['errorMessages', 'ariaLabel', 'labelHelp']);
+const SHARED_DESCRIPTIONS = new Set([
+  'errorMessages',
+  'showErrorsOn',
+  'ariaLabel',
+  'labelHelp',
+]);
 
 function readText(path) {
   return readFileSync(path, 'utf8');

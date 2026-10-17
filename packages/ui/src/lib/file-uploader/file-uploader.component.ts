@@ -23,6 +23,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { ArchiveIconComponent } from '../icons/archive.component';
 import { FileTextIconComponent } from '../icons/file-text.component';
@@ -122,6 +123,8 @@ export class FileUploaderComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<FileUploaderSize>('md');
   /**
    * `dropzone` renders the drag-and-drop area; `button` renders a compact
@@ -194,6 +197,7 @@ export class FileUploaderComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   protected readonly errorText = this.errorState.error;
   protected readonly hasError = this.errorState.hasError;

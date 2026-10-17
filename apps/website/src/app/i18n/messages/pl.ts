@@ -1196,6 +1196,8 @@ export const pl: WebMessages = {
         colDescription: 'Opis',
         errorMessagesDescription:
           'Zastępuje komunikat walidacji dla danego klucza błędu w powiązanym formancie formularza; nieustawione klucze używają zlokalizowanej wartości domyślnej, a klucz ustawiony na null ukrywa ten błąd.',
+        showErrorsOnDescription:
+          'Określa, kiedy pojawia się błąd walidacji: change (domyślnie) gdy użytkownik zmieni pole i je opuści, touch gdy tylko je opuści, nawet bez zmian; gdy nieustawione, stosuje ogólną opcję forms z provideEagamiUi.',
         ariaLabelDescription:
           'Dostępna nazwa ogłaszana przez technologie wspomagające, gdy komponent nie renderuje widocznej etykiety.',
         labelHelpDescription:

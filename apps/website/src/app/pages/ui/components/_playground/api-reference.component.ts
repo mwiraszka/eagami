@@ -142,11 +142,14 @@ export class ApiReferenceComponent {
     if (described) {
       return described;
     }
-    // errorMessages, labelHelp and ariaLabel appear on many components with
-    // identical meaning, so each shares one description rather than repeating
-    // it per slug
+    // errorMessages, showErrorsOn, labelHelp and ariaLabel appear on many
+    // components with identical meaning, so each shares one description rather
+    // than repeating it per slug
     if (key === 'errorMessages') {
       return playground.errorMessagesDescription;
+    }
+    if (key === 'showErrorsOn') {
+      return playground.showErrorsOnDescription;
     }
     if (key === 'labelHelp') {
       return playground.labelHelpDescription;

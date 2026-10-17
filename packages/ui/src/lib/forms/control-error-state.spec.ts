@@ -1,4 +1,4 @@
-import { Component, type Signal, forwardRef, signal } from '@angular/core';
+import { Component, type Signal, forwardRef, input, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import {
   type AbstractControl,
@@ -12,12 +12,14 @@ import {
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+import { provideEagamiUi } from '../eagami-ui.provider';
 import {
   type ControlErrorState,
   type EaErrorMessages,
   controlErrorStateFrom,
   injectControlErrorState,
 } from './control-error-state';
+import type { EaShowErrorsOn } from './forms-config';
 
 /**
  * Every form component in the library routes its error text through this, so a
@@ -451,5 +453,121 @@ describe('error timing for a field the user passes through', () => {
     control.markAsTouched();
 
     expect(state.error()).toBe('This field is required');
+  });
+});
+
+describe('showErrorsOn', () => {
+  const tooShort: ValidatorFn = control =>
+    control.value && control.value.length < 3 ? { tooShort: true } : null;
+
+  @Component({
+    selector: 'ea-test-timed-field',
+    template: '<input #box (input)="onChange(box.value)" (blur)="onTouched()" />',
+    providers: [
+      {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => TimedFieldComponent),
+        multi: true,
+      },
+    ],
+  })
+  class TimedFieldComponent implements ControlValueAccessor {
+    readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
+    readonly state = injectControlErrorState({
+      errorMsg: signal(undefined),
+      errorMessages: signal({ tooShort: 'Too short' }),
+      showErrorsOn: this.showErrorsOn,
+    });
+    protected onChange: (value: string) => void = () => {};
+    protected onTouched: () => void = () => {};
+    writeValue(): void {}
+    registerOnChange(fn: (value: string) => void): void {
+      this.onChange = fn;
+    }
+    registerOnTouched(fn: () => void): void {
+      this.onTouched = fn;
+    }
+  }
+
+  @Component({
+    imports: [TimedFieldComponent, ReactiveFormsModule],
+    template: `
+      <form [formGroup]="form">
+        <ea-test-timed-field
+          formControlName="code"
+          [showErrorsOn]="showErrorsOn()" />
+      </form>
+    `,
+  })
+  class TimedHostComponent {
+    readonly showErrorsOn = signal<EaShowErrorsOn | undefined>(undefined);
+    readonly form = new FormGroup({
+      code: new FormControl('', [Validators.required, tooShort]),
+    });
+  }
+
+  async function setup(
+    options: { appWide?: EaShowErrorsOn; field?: EaShowErrorsOn } = {},
+  ) {
+    TestBed.configureTestingModule({
+      providers: [provideEagamiUi({ forms: { showErrorsOn: options.appWide } })],
+    });
+    const fixture = TestBed.createComponent(TimedHostComponent);
+    fixture.componentInstance.showErrorsOn.set(options.field);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const control = fixture.componentInstance.form.controls.code;
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+    const field = fixture.debugElement.query(By.directive(TimedFieldComponent))
+      .componentInstance as TimedFieldComponent;
+    return { control, input, state: field.state };
+  }
+
+  it("flags a skipped field when the app shows errors on 'touch'", async () => {
+    const { input, state } = await setup({ appWide: 'touch' });
+    input.focus();
+
+    input.blur();
+
+    expect(state.error()).toBe('This field is required');
+  });
+
+  it("flags a skipped field set to show errors on 'touch'", async () => {
+    const { input, state } = await setup({ field: 'touch' });
+    input.focus();
+
+    input.blur();
+
+    expect(state.error()).toBe('This field is required');
+  });
+
+  it("keeps a skipped field quiet when it sets 'change' over an app-wide 'touch'", async () => {
+    const { input, state } = await setup({ appWide: 'touch', field: 'change' });
+    input.focus();
+
+    input.blur();
+
+    expect(state.error()).toBeNull();
+  });
+
+  it("shows a new error mid-edit when the app shows errors on 'touch'", async () => {
+    const { control, input, state } = await setup({ appWide: 'touch' });
+    control.markAsTouched();
+    input.focus();
+
+    control.setValue('ab');
+
+    expect(state.error()).toBe('Too short');
+  });
+
+  it("holds a new error back mid-edit in a field set to 'change'", async () => {
+    const { control, input, state } = await setup({ appWide: 'touch', field: 'change' });
+    control.markAsTouched();
+    input.focus();
+
+    control.setValue('ab');
+
+    expect(state.error()).toBeNull();
   });
 });

@@ -22,6 +22,7 @@ import {
 import { EagamiI18nService } from '../i18n/i18n.service';
 import type { EagamiMessages } from '../i18n/i18n.types';
 import { PointerPressTracker } from '../pointer-press';
+import { EAGAMI_FORMS_CONFIG, type EaShowErrorsOn } from './forms-config';
 
 /** Validator error keys the library ships built-in localized messages for. */
 export type EaValidationErrorKey =
@@ -41,6 +42,8 @@ export interface ControlErrorStateConfig {
   errorMsg: Signal<string | null | undefined>;
   /** Per-error-key overrides for auto-derived validation messages. */
   errorMessages: Signal<EaErrorMessages | undefined>;
+  /** Field-level `showErrorsOn`; `undefined` falls back to the app-wide `forms` config. */
+  showErrorsOn?: Signal<EaShowErrorsOn | undefined>;
 }
 
 export interface ControlErrorState {
@@ -56,14 +59,15 @@ export interface ControlErrorState {
  * default for the active `ValidationErrors` key.
  *
  * Auto-derived messages surface only once the bound control is `invalid &&
- * touched`, and a new one waits while focus is still inside the field, until
- * the user leaves it or submits the form, so nothing is flagged mid-edit. A
- * field the user only passed through, leaving it without changing it, stays
- * quiet until they change it or the form is submitted, so tabbing past an
- * empty required field never flags it. A
- * message already showing follows the value as it is typed and clears the
- * moment it is fixed. A message revealed by a pointer press moving focus away
- * waits until that press has landed its click. The control arrives as a signal
+ * touched`. Under the default `showErrorsOn: 'change'`, a new one waits while
+ * focus is still inside the field, until the user leaves it or submits the
+ * form, so nothing is flagged mid-edit, and a field the user only passed
+ * through, leaving it without changing it, stays quiet until they change it or
+ * the form is submitted, so tabbing past an empty required field never flags
+ * it. `'touch'` drops both holds. A message already showing follows the value
+ * as it is typed and clears the moment it is fixed. A message revealed by a
+ * pointer press moving focus away waits until that press has landed its click,
+ * in either mode. The control arrives as a signal
  * so callers decide how it is resolved: from the host's own `NgControl` (CVA
  * components) or from projected content (`<ea-form-field>`).
  */
@@ -76,6 +80,11 @@ export function controlErrorStateFrom(
   const injector = inject(Injector);
   const destroyRef = inject(DestroyRef);
   const host = inject<ElementRef<HTMLElement>>(ElementRef, { optional: true });
+  const formsConfig = inject(EAGAMI_FORMS_CONFIG);
+
+  const showOnTouch = computed(
+    () => (config.showErrorsOn?.() ?? formsConfig.showErrorsOn ?? 'change') === 'touch',
+  );
 
   // Bumped on every status/touched change so the computed re-reads the control
   const revision = signal(0);
@@ -179,7 +188,7 @@ export function controlErrorStateFrom(
     if (!ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
       return null;
     }
-    if (ctrl.pristine && passedThrough()) {
+    if (ctrl.pristine && passedThrough() && !showOnTouch()) {
       return null;
     }
     return resolveValidationMessage(ctrl.errors, config.errorMessages(), i18n.messages());
@@ -192,7 +201,7 @@ export function controlErrorStateFrom(
   >({
     source: () => ({
       message: validationError(),
-      holding: revealPending() || (editing() && !revealedBySubmit()),
+      holding: revealPending() || (editing() && !revealedBySubmit() && !showOnTouch()),
     }),
     computation: ({ message, holding }, previous) =>
       previous?.value || !holding ? message : null,

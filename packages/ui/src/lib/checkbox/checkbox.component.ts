@@ -16,6 +16,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { type EaSize } from '../sizes';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { uniqueId } from '../unique-id';
@@ -59,6 +60,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<CheckboxSize>('md');
   /**
    * Ellipsize a label too long for the space the checkbox is given, revealing
@@ -83,6 +86,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   readonly errorText = this.errorState.error;
   readonly hasError = this.errorState.hasError;

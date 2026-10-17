@@ -24,6 +24,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { LeftHalfStarIconComponent } from '../icons/left-half-star.component';
 import { StarIconComponent } from '../icons/star.component';
@@ -101,6 +102,8 @@ export class RatingComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<RatingSize>('md');
   readonly min = input<number>(0);
   readonly max = input<number>(5);
@@ -136,6 +139,7 @@ export class RatingComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   protected readonly errorText = this.errorState.error;
   protected readonly hasError = this.errorState.hasError;

@@ -45,6 +45,7 @@ export type {
   EaErrorMessages,
   EaValidationErrorKey,
 } from './lib/forms/control-error-state';
+export type { EaShowErrorsOn, EagamiFormsConfig } from './lib/forms/forms-config';
 export * from './lib/file-uploader/file-uploader.component';
 export * from './lib/input/input.component';
 export * from './lib/line-chart/line-chart.component';

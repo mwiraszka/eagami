@@ -22,6 +22,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import type { SelectOption } from '../select-option';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
@@ -69,6 +70,8 @@ export class SegmentedComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly size = input<SegmentedSize>('md');
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
@@ -93,6 +96,7 @@ export class SegmentedComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   readonly errorText = this.errorState.error;
   readonly hasError = this.errorState.hasError;

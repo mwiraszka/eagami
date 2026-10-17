@@ -1187,6 +1187,8 @@ export const ptBR: WebMessages = {
         colDescription: 'Descrição',
         errorMessagesDescription:
           'Substitui a mensagem de validação por chave de erro em um controle de formulário vinculado; chaves não definidas usam o padrão localizado, e uma chave definida como null oculta esse erro.',
+        showErrorsOnDescription:
+          'Define quando o erro de validação aparece: change (padrão) depois que o usuário altera o campo e sai dele, touch assim que ele sai do campo, mesmo sem alterá-lo; quando não definido, segue a opção global forms de provideEagamiUi.',
         ariaLabelDescription:
           'Nome acessível anunciado pela tecnologia assistiva quando o componente não renderiza um rótulo visível.',
         labelHelpDescription:
