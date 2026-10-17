@@ -1141,6 +1141,8 @@ export const he: WebMessages = {
         colDescription: 'תיאור',
         errorMessagesDescription:
           'דורס את הודעת האימות לכל מפתח שגיאה עבור פקד טופס מקושר; מפתחות שלא הוגדרו משתמשים בברירת המחדל המתורגמת, ומפתח שערכו null מסתיר את השגיאה הזו.',
+        showErrorsOnDescription:
+          'קובע מתי מוצגת שגיאת האימות: change (ברירת המחדל) אחרי שהמשתמש משנה את השדה ועוזב אותו, touch ברגע שהוא עוזב אותו, גם בלי שינוי; כשלא מוגדר, פועל לפי האפשרות הכללית forms של provideEagamiUi.',
         ariaLabelDescription:
           'שם נגיש המוכרז על ידי טכנולוגיה מסייעת כשהרכיב אינו מציג תווית נראית.',
         labelHelpDescription:

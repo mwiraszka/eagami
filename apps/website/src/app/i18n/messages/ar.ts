@@ -1158,6 +1158,8 @@ export const ar: WebMessages = {
         colDescription: 'الوصف',
         errorMessagesDescription:
           'يتجاوز رسالة التحقق لكل مفتاح خطأ في عنصر تحكم نموذج مرتبط؛ تستخدم المفاتيح غير المعيّنة القيمة الافتراضية المُوطّنة، ويُخفي تعيين المفتاح إلى null ذلك الخطأ.',
+        showErrorsOnDescription:
+          'يحدد متى تظهر رسالة خطأ التحقق: change (الافتراضي) بعد أن يغيّر المستخدم الحقل ويغادره، وtouch بمجرد مغادرته حتى دون تغيير؛ عند عدم تعيينه يتبع خيار forms العام في provideEagamiUi.',
         ariaLabelDescription:
           'اسم ميسّر تعلنه التقنيات المساعدة عندما لا يعرض المكوّن تسمية مرئية.',
         labelHelpDescription:

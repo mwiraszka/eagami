@@ -1159,6 +1159,8 @@ export const en: WebMessages = {
         colDescription: 'Description',
         errorMessagesDescription:
           'Overrides the validation message per error key for a bound form control; unset keys use the localized default, and a key set to null hides that error.',
+        showErrorsOnDescription:
+          'Sets when the validation error shows: change (the default) once the user changes the field and leaves it, touch as soon as they leave it, even unchanged; unset follows the app-wide forms option of provideEagamiUi.',
         ariaLabelDescription:
           'Accessible name announced by assistive technology when the component renders no visible label.',
         labelHelpDescription:

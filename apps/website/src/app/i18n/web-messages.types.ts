@@ -1007,6 +1007,7 @@ export interface WebMessages {
         colDefault: string;
         colDescription: string;
         errorMessagesDescription: string;
+        showErrorsOnDescription: string;
         ariaLabelDescription: string;
         labelHelpDescription: string;
         triggerErrorLabel: string;

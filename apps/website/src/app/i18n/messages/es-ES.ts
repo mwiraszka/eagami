@@ -1204,6 +1204,8 @@ export const esES: WebMessages = {
         colDescription: 'Descripción',
         errorMessagesDescription:
           'Sustituye el mensaje de validación por clave de error en un control de formulario vinculado; las claves sin definir usan el valor predeterminado localizado, y una clave con valor null oculta ese error.',
+        showErrorsOnDescription:
+          'Define cuándo aparece el error de validación: change (predeterminado) cuando el usuario cambia el campo y lo abandona, touch en cuanto lo abandona, aunque no lo cambie; si no se define, sigue la opción global forms de provideEagamiUi.',
         ariaLabelDescription:
           'Nombre accesible anunciado por las tecnologías de asistencia cuando el componente no muestra ninguna etiqueta visible.',
         labelHelpDescription:

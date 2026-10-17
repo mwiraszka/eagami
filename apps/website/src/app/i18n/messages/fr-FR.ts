@@ -1225,6 +1225,8 @@ export const frFR: WebMessages = {
         colDescription: 'Description',
         errorMessagesDescription:
           'Remplace le message de validation par clé d’erreur pour un contrôle de formulaire lié ; les clés non définies utilisent le message localisé par défaut, et une clé définie à null masque cette erreur.',
+        showErrorsOnDescription:
+          'Définit quand l’erreur de validation s’affiche : change (par défaut) une fois que l’utilisateur a modifié le champ et l’a quitté, touch dès qu’il le quitte, même sans modification ; non défini, suit l’option globale forms de provideEagamiUi.',
         ariaLabelDescription:
           'Nom accessible annoncé par les technologies d’assistance lorsque le composant n’affiche aucun libellé visible.',
         labelHelpDescription:
