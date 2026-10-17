@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.72.1] - 2026-10-17
+
+### Fixed
+
+- Stop a form field throwing NG0600 when it loses focus while the page renders, such as a segmented control disabled by the click that picked an option.
+
 ## [5.72.0] - 2026-10-17
 
 ### Added
@@ -1980,6 +1986,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global SCSS design tokens for colors, typography, spacing, elevation, motion, and shape
 - CSS custom property theming support
 
+[5.72.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.72.0...ui-v5.72.1
 [5.72.0]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.2...ui-v5.72.0
 [5.71.2]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.1...ui-v5.71.2
 [5.71.1]: https://github.com/mwiraszka/eagami/compare/ui-v5.71.0...ui-v5.71.1

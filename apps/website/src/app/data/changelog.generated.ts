@@ -14,6 +14,18 @@ export interface ChangelogRelease {
 
 export const UI_CHANGELOG: readonly ChangelogRelease[] = [
   {
+    version: '5.72.1',
+    date: '2026-10-17',
+    sections: [
+      {
+        heading: 'Fixed',
+        entries: [
+          'Stop a form field throwing NG0600 when it loses focus while the page renders, such as a segmented control disabled by the click that picked an option.',
+        ],
+      },
+    ],
+  },
+  {
     version: '5.72.0',
     date: '2026-10-17',
     sections: [
