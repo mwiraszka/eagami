@@ -31,11 +31,18 @@ export type ContextMenuTarget = MenuComponent | PopoverComponent;
  * emits `openRequested` with the point to bind to `[anchorPoint]` instead; give it
  * `[contextMenu]="true"` so it takes focus and dismisses like a context menu.
  *
+ * One menu can serve many hosts: give each its own `contextMenuData`, and the
+ * menu's `triggerData()` holds the data of whichever host opened it.
+ *
  * @example
  * ```html
- * <article [eaContextMenuTrigger]="actions">Right-click me</article>
+ * @for (file of files; track file.id) {
+ *   <article [eaContextMenuTrigger]="actions" [contextMenuData]="file">
+ *     {{ file.name }}
+ *   </article>
+ * }
  * <ea-menu #actions>
- *   <ea-menu-item>Rename</ea-menu-item>
+ *   <ea-menu-item (clicked)="rename(actions.triggerData())">Rename</ea-menu-item>
  * </ea-menu>
  * ```
  */
@@ -59,6 +66,9 @@ export class ContextMenuTriggerDirective {
    * `anchor` opens at the target's placement against the host instead.
    */
   readonly contextMenuPosition = input<ContextMenuPosition>('pointer');
+
+  /** Handed to an `<ea-menu>` target as it opens, where its `triggerData()` reads it back. */
+  readonly contextMenuData = input<unknown>(undefined);
 
   constructor() {
     if (typeof window === 'undefined') {
@@ -107,7 +117,7 @@ export class ContextMenuTriggerDirective {
     const host = this.el.nativeElement;
     const at = this.contextMenuPosition() === 'pointer' ? point : null;
     if (target instanceof MenuComponent) {
-      target.openAsContextMenu(host, at);
+      target.openAsContextMenu(host, at, this.contextMenuData());
     } else {
       target.requestOpen(at);
     }

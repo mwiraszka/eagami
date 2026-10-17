@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuItemComponent } from '../menu/menu-item.component';
@@ -27,7 +27,8 @@ type TargetKind = 'menu' | 'popover' | 'none';
       [eaContextMenuTrigger]="
         target() === 'menu' ? menu : target() === 'popover' ? popover : null
       "
-      [contextMenuPosition]="position()">
+      [contextMenuPosition]="position()"
+      [contextMenuData]="data()">
       <button class="inner">Inner</button>
     </div>
     <ea-menu
@@ -51,6 +52,8 @@ type TargetKind = 'menu' | 'popover' | 'none';
 class HostComponent {
   readonly target = signal<TargetKind>('menu');
   readonly position = signal<ContextMenuPosition>('pointer');
+  readonly data = signal<unknown>(undefined);
+  readonly menu = viewChild.required(MenuComponent);
   readonly menuOpen = signal(false);
   readonly menuDisabled = signal(false);
   readonly popoverOpen = signal(false);
@@ -257,6 +260,17 @@ describe('ContextMenuTriggerDirective', () => {
       const trailing = click(inner());
 
       expect(trailing.defaultPrevented).toBe(false);
+    });
+  });
+
+  describe('with contextMenuData', () => {
+    it('hands the host data to the menu it opens', () => {
+      host.data.set({ id: 7 });
+      fixture.detectChanges();
+
+      rightClick(area());
+
+      expect(host.menu().triggerData()).toEqual({ id: 7 });
     });
   });
 
