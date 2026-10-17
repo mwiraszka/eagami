@@ -6,10 +6,12 @@ import { InjectionToken } from '@angular/core';
  * - `'change'`: once the user changes the field and leaves it, or submits the
  *   form. A field the user tabs past stays quiet, and a new error waits until
  *   focus leaves the field.
+ * - `'blur'`: as soon as the user leaves the field, even unchanged, while a new
+ *   error still waits until focus leaves the field.
  * - `'touch'`: as soon as the user leaves the field, even unchanged, and live
  *   while they edit it after that.
  */
-export type EaShowErrorsOn = 'change' | 'touch';
+export type EaShowErrorsOn = 'change' | 'blur' | 'touch';
 
 /**
  * App-wide defaults for form components, set through

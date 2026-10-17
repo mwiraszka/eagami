@@ -570,4 +570,26 @@ describe('showErrorsOn', () => {
 
     expect(state.error()).toBeNull();
   });
+
+  it("flags a skipped field when the app shows errors on 'blur'", async () => {
+    const { input, state } = await setup({ appWide: 'blur' });
+    input.focus();
+
+    input.blur();
+
+    expect(state.error()).toBe('This field is required');
+  });
+
+  it("holds a new error back mid-edit until the field is left on 'blur'", async () => {
+    const { control, input, state } = await setup({ field: 'blur' });
+    control.markAsTouched();
+    input.focus();
+    control.setValue('ab');
+    const errorWhileEditing = state.error();
+
+    input.blur();
+
+    expect(errorWhileEditing).toBeNull();
+    expect(state.error()).toBe('Too short');
+  });
 });
