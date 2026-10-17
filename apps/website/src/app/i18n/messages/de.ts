@@ -1202,7 +1202,7 @@ export const de: WebMessages = {
         errorMessagesDescription:
           'Überschreibt die Validierungsmeldung je Fehlerschlüssel für ein gebundenes Formularsteuerelement; nicht gesetzte Schlüssel verwenden die lokalisierte Standardmeldung, und ein auf null gesetzter Schlüssel blendet diesen Fehler aus.',
         showErrorsOnDescription:
-          'Legt fest, wann der Validierungsfehler erscheint: change (Standard), sobald der Nutzer das Feld geändert und verlassen hat, touch, sobald er es verlässt, auch unverändert; ohne Wert gilt die app-weite Option forms von provideEagamiUi.',
+          'Legt fest, wann der Validierungsfehler erscheint: change (Standard), sobald der Nutzer das Feld geändert und verlassen hat, blur, sobald er es verlässt, auch unverändert, touch ebenso, aber live während der Eingabe; ohne Wert gilt die app-weite Option forms von provideEagamiUi.',
         ariaLabelDescription:
           'Barrierefreier Name, der von assistiver Technologie angesagt wird, wenn die Komponente kein sichtbares Label rendert.',
         labelHelpDescription:
