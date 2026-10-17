@@ -6,6 +6,7 @@ import {
   provideEnvironmentInitializer,
 } from '@angular/core';
 
+import { EAGAMI_FORMS_CONFIG, type EagamiFormsConfig } from './forms/forms-config';
 import { EAGAMI_I18N_CONFIG } from './i18n/i18n.token';
 import type { EagamiI18nConfig } from './i18n/i18n.types';
 import { applyPalette } from './palette/apply-palette';
@@ -15,8 +16,8 @@ import { formatViolations, validatePalette } from './palette/validate-palette';
 
 /**
  * Full provider configuration for `provideEagamiUi()`. Extends the i18n config
- * with an optional brand palette; omit `palette` to keep the un-themed SCSS
- * defaults.
+ * with an optional brand palette and form error timing; omit `palette` to keep
+ * the un-themed SCSS defaults.
  */
 export interface EagamiUiConfig extends EagamiI18nConfig {
   /**
@@ -25,6 +26,11 @@ export interface EagamiUiConfig extends EagamiI18nConfig {
    * pairing. A contrast violation throws at bootstrap.
    */
   palette?: EagamiPaletteConfig;
+  /**
+   * App-wide defaults for form components, such as `showErrorsOn` for when
+   * they show their validation errors. Omit it to keep the `'change'` default.
+   */
+  forms?: EagamiFormsConfig;
 }
 
 /**
@@ -71,6 +77,7 @@ export function provideEagamiUi(config: EagamiUiConfig = {}): EnvironmentProvide
 
   return makeEnvironmentProviders([
     { provide: EAGAMI_I18N_CONFIG, useValue: i18nConfig },
+    { provide: EAGAMI_FORMS_CONFIG, useValue: config.forms ?? {} },
     provideEnvironmentInitializer(() => {
       if (!config.palette) {
         return;

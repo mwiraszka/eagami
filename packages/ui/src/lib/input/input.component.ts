@@ -27,6 +27,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { EyeOffIconComponent } from '../icons/eye-off.component';
 import { EyeIconComponent } from '../icons/eye.component';
@@ -127,6 +128,8 @@ export class InputComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   /** Disables the field. */
   readonly disabled = input<boolean>(false);
   /** Renders the field read-only. */
@@ -190,6 +193,7 @@ export class InputComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   readonly errorText = this.errorState.error;
   readonly hasError = this.errorState.hasError;

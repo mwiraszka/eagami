@@ -19,6 +19,7 @@ import {
   type EaErrorMessages,
   controlErrorStateFrom,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { type EaSize } from '../sizes';
 import { uniqueId } from '../unique-id';
 import { FieldLabelComponent } from './field-label.component';
@@ -67,6 +68,8 @@ export class FormFieldComponent {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for the projected form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   /** Marks the field as required. */
   readonly required = input<boolean>(false);
   /** Visual size of the field; the label, control text, spacing, and messages scale with it. */
@@ -90,6 +93,7 @@ export class FormFieldComponent {
   private readonly errorState = controlErrorStateFrom(this.boundControl, {
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   protected readonly errorText = this.errorState.error;
   protected readonly hasError = this.errorState.hasError;

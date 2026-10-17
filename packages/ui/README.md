@@ -73,6 +73,19 @@ Focus rings follow the primary color. When the brand hue reads as an error or a 
 
 Everything else is a CSS custom property you can override. See [Design tokens](https://eagami.com/ui/design-tokens).
 
+## Forms
+
+`showErrorsOn` sets when form components show a validation error:
+
+- `'change'` (the default): once the user changes the field and leaves it, or submits the form. A field the user tabs past stays quiet, and a new error waits until focus leaves the field.
+- `'touch'`: as soon as the user leaves the field, even unchanged, and live while they edit it after that.
+
+Set it app-wide with `forms`, or on a single field with the `showErrorsOn` input every form component takes:
+
+```ts
+provideEagamiUi({ forms: { showErrorsOn: 'touch' } });
+```
+
 ## Testing
 
 `<ea-dialog>` and `<ea-drawer>` are built on the native `<dialog>` element, and `@eagami/ui/testing` keeps them working in jsdom, which lacks `showModal()` and `close()`. Call `installNativeDialogShim()` once from your test setup file:

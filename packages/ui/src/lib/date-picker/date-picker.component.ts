@@ -25,6 +25,7 @@ import {
   type EaErrorMessages,
   injectControlErrorState,
 } from '../forms/control-error-state';
+import type { EaShowErrorsOn } from '../forms/forms-config';
 import { EagamiI18nService } from '../i18n/i18n.service';
 import { CalendarIconComponent } from '../icons/calendar.component';
 import { ChevronLeftIconComponent } from '../icons/chevron-left.component';
@@ -122,6 +123,8 @@ export class DatePickerComponent implements ControlValueAccessor {
   readonly errorMsg = input<string | undefined>(undefined);
   /** Per-validator-key message overrides for a bound form control (e.g. `{ required: '...' }`). */
   readonly errorMessages = input<EaErrorMessages | undefined>(undefined);
+  /** When the error shows: `'change'` once the user changes the field and leaves it, `'touch'` as soon as they leave it, even unchanged; unset follows the app-wide `forms` option of `provideEagamiUi`. */
+  readonly showErrorsOn = input<EaShowErrorsOn | undefined>(undefined);
   readonly minDate = input<Date | null>(null);
   readonly maxDate = input<Date | null>(null);
   /** Weekdays that cannot be picked, numbered as `Date.getDay()` does: 0 for Sunday through 6 for Saturday. */
@@ -155,6 +158,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   private readonly errorState = injectControlErrorState({
     errorMsg: this.errorMsg,
     errorMessages: this.errorMessages,
+    showErrorsOn: this.showErrorsOn,
   });
   readonly errorText = this.errorState.error;
   readonly hasError = this.errorState.hasError;
