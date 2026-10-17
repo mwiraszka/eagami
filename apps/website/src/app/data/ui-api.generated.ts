@@ -1521,6 +1521,13 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: '[eaContextMenuTrigger]',
     inputs: [
       {
+        name: 'contextMenuData',
+        type: 'unknown',
+        default: 'undefined',
+        required: false,
+        twoWay: false,
+      },
+      {
         name: 'contextMenuPosition',
         type: 'ContextMenuPosition',
         default: "'pointer'",
@@ -3349,7 +3356,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'openAsContextMenu',
         signature:
-          'openAsContextMenu(anchorEl: HTMLElement, point?: PopoverAnchorPoint | null): void',
+          'openAsContextMenu(anchorEl: HTMLElement, point?: PopoverAnchorPoint | null, data?: unknown): void',
       },
       {
         name: 'openAt',
