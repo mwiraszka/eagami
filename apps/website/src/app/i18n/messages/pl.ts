@@ -2211,6 +2211,8 @@ export const pl: WebMessages = {
               'ea-menu lub ea-popover otwierany jako menu kontekstowe elementu hosta; null pozostawia menu przeglądarki.',
             contextMenuPosition:
               'Gdzie otwiera się cel: pointer otwiera go przy wskaźniku, a z klawiatury pod elementem z fokusem; anchor otwiera go w jego pozycji względem hosta.',
+            contextMenuData:
+              'Dane tego hosta, przekazywane do celu ea-menu przy otwarciu i odczytywane przez jego triggerData(), dzięki czemu jedno menu może obsłużyć wiele hostów.',
           },
           'menu-trigger': {
             menu: 'Instancja ea-menu kontrolowana przez ten wyzwalacz.',

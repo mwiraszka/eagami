@@ -2011,6 +2011,8 @@ export const zhCN: WebMessages = {
               '作为宿主元素上下文菜单打开的 ea-menu 或 ea-popover；为 null 时保留浏览器自带菜单。',
             contextMenuPosition:
               '目标的打开位置：pointer 在指针处打开，通过键盘时则在聚焦元素下方打开；anchor 按其相对于宿主的 placement 打开。',
+            contextMenuData:
+              '此宿主的数据，在打开时交给 ea-menu 目标，并可通过其 triggerData() 读取，使一个菜单可服务多个宿主。',
           },
           'menu-trigger': {
             menu: '此触发器所控制的 ea-menu 实例。',

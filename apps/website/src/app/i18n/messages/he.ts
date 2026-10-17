@@ -2084,6 +2084,8 @@ export const he: WebMessages = {
               'ה-ea-menu או ה-ea-popover שנפתח כתפריט ההקשר של אלמנט המארח; null משאיר את תפריט הדפדפן.',
             contextMenuPosition:
               'היכן נפתח היעד: pointer פותח אותו ליד הסמן, או מתחת לאלמנט הממוקד מהמקלדת; anchor פותח אותו במיקום שלו ביחס למארח.',
+            contextMenuData:
+              'נתונים של המארח הזה, שמועברים ליעד ea-menu כשהוא נפתח ונקראים דרך triggerData() שלו, כך שתפריט אחד יכול לשרת מארחים רבים.',
           },
           'menu-trigger': {
             menu: 'מופע ea-menu שטריגר זה שולט בו.',
