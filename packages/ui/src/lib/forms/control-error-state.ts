@@ -64,10 +64,10 @@ export interface ControlErrorState {
  * form, so nothing is flagged mid-edit, and a field the user only passed
  * through, leaving it without changing it, stays quiet until they change it or
  * the form is submitted, so tabbing past an empty required field never flags
- * it. `'touch'` drops both holds. A message already showing follows the value
- * as it is typed and clears the moment it is fixed. A message revealed by a
- * pointer press moving focus away waits until that press has landed its click,
- * in either mode. The control arrives as a signal
+ * it. `'blur'` drops the second hold and `'touch'` drops both. A message
+ * already showing follows the value as it is typed and clears the moment it is
+ * fixed. A message revealed by a pointer press moving focus away waits until
+ * that press has landed its click, in every mode. The control arrives as a signal
  * so callers decide how it is resolved: from the host's own `NgControl` (CVA
  * components) or from projected content (`<ea-form-field>`).
  */
@@ -82,8 +82,8 @@ export function controlErrorStateFrom(
   const host = inject<ElementRef<HTMLElement>>(ElementRef, { optional: true });
   const formsConfig = inject(EAGAMI_FORMS_CONFIG);
 
-  const showOnTouch = computed(
-    () => (config.showErrorsOn?.() ?? formsConfig.showErrorsOn ?? 'change') === 'touch',
+  const showErrorsOn = computed<EaShowErrorsOn>(
+    () => config.showErrorsOn?.() ?? formsConfig.showErrorsOn ?? 'change',
   );
 
   // Bumped on every status/touched change so the computed re-reads the control
@@ -188,7 +188,7 @@ export function controlErrorStateFrom(
     if (!ctrl || !ctrl.invalid || !ctrl.touched || !ctrl.errors) {
       return null;
     }
-    if (ctrl.pristine && passedThrough() && !showOnTouch()) {
+    if (ctrl.pristine && passedThrough() && showErrorsOn() === 'change') {
       return null;
     }
     return resolveValidationMessage(ctrl.errors, config.errorMessages(), i18n.messages());
@@ -201,7 +201,9 @@ export function controlErrorStateFrom(
   >({
     source: () => ({
       message: validationError(),
-      holding: revealPending() || (editing() && !revealedBySubmit() && !showOnTouch()),
+      holding:
+        revealPending() ||
+        (editing() && !revealedBySubmit() && showErrorsOn() !== 'touch'),
     }),
     computation: ({ message, holding }, previous) =>
       previous?.value || !holding ? message : null,

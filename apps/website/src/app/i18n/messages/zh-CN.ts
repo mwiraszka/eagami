@@ -1127,7 +1127,7 @@ export const zhCN: WebMessages = {
         errorMessagesDescription:
           '为绑定的表单控件按错误键覆盖验证消息；未设置的键使用本地化的默认消息，设为 null 的键会隐藏该错误。',
         showErrorsOnDescription:
-          '设置验证错误何时显示：change（默认）在用户修改字段并离开后显示，touch 在用户离开字段时立即显示，即使未作修改；未设置时沿用 provideEagamiUi 的全局 forms 选项。',
+          '设置验证错误何时显示：change（默认）在用户修改字段并离开后显示，blur 在用户离开字段时立即显示，即使未作修改，touch 与 blur 相同但在编辑时也实时显示；未设置时沿用 provideEagamiUi 的全局 forms 选项。',
         ariaLabelDescription: '当组件未渲染可见标签时，由辅助技术播报的无障碍名称。',
         labelHelpDescription: '通过标签旁的信息按钮显示的帮助内容，可以是纯文本或模板。',
         triggerErrorLabel: '触发错误',

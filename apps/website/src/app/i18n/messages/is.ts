@@ -1201,7 +1201,7 @@ export const is: WebMessages = {
         errorMessagesDescription:
           'Hnekkir staðfestingarskilaboðum eftir villulykli fyrir tengda formstýringu; ótilgreindir lyklar nota sjálfgefin staðfærð skilaboð, og lykill stilltur á null felur þá villu.',
         showErrorsOnDescription:
-          'Ákveður hvenær staðfestingarvillan birtist: change (sjálfgefið) þegar notandinn hefur breytt reitnum og yfirgefið hann, touch um leið og hann yfirgefur hann, jafnvel óbreyttan; ef ekki stillt fylgir það forms-valkosti provideEagamiUi fyrir allt forritið.',
+          'Ákveður hvenær staðfestingarvillan birtist: change (sjálfgefið) þegar notandinn hefur breytt reitnum og yfirgefið hann, blur um leið og hann yfirgefur hann, jafnvel óbreyttan, touch eins en jafnóðum á meðan hann breytir; ef ekki stillt fylgir það forms-valkosti provideEagamiUi fyrir allt forritið.',
         ariaLabelDescription:
           'Aðgengilegt nafn tilkynnt hjálpartækni þegar einingin birtir engan sýnilegan merkimiða.',
         labelHelpDescription:

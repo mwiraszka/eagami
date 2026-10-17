@@ -78,6 +78,7 @@ Everything else is a CSS custom property you can override. See [Design tokens](h
 `showErrorsOn` sets when form components show a validation error:
 
 - `'change'` (the default): once the user changes the field and leaves it, or submits the form. A field the user tabs past stays quiet, and a new error waits until focus leaves the field.
+- `'blur'`: as soon as the user leaves the field, even unchanged, while a new error still waits until focus leaves the field.
 - `'touch'`: as soon as the user leaves the field, even unchanged, and live while they edit it after that.
 
 Set it app-wide with `forms`, or on a single field with the `showErrorsOn` input every form component takes:

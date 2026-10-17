@@ -1189,7 +1189,7 @@ export const nl: WebMessages = {
         errorMessagesDescription:
           'Overschrijft het validatiebericht per foutsleutel voor een gekoppeld formulierbesturingselement; niet-ingestelde sleutels gebruiken de gelokaliseerde standaard, en een sleutel op null verbergt die fout.',
         showErrorsOnDescription:
-          'Bepaalt wanneer de validatiefout verschijnt: change (standaard) zodra de gebruiker het veld wijzigt en verlaat, touch zodra hij het verlaat, ook ongewijzigd; niet ingesteld volgt de app-brede optie forms van provideEagamiUi.',
+          'Bepaalt wanneer de validatiefout verschijnt: change (standaard) zodra de gebruiker het veld wijzigt en verlaat, blur zodra hij het verlaat, ook ongewijzigd, touch hetzelfde maar live tijdens het bewerken; niet ingesteld volgt de app-brede optie forms van provideEagamiUi.',
         ariaLabelDescription:
           'Toegankelijke naam aangekondigd door hulptechnologie wanneer de component geen zichtbaar label rendert.',
         labelHelpDescription:
