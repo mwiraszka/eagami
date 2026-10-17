@@ -1,4 +1,12 @@
-import { Component, type Signal, forwardRef, input, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  type Signal,
+  forwardRef,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import {
   type AbstractControl,
@@ -453,6 +461,51 @@ describe('error timing for a field the user passes through', () => {
     control.markAsTouched();
 
     expect(state.error()).toBe('This field is required');
+  });
+});
+
+describe('a focus change during a render', () => {
+  // Disabling the focused element in a template makes the browser blur it while that
+  // template is still rendering, so the field hears its focusout mid-render
+  @Component({
+    selector: 'ea-test-blurred-field',
+    template: '<input />{{ blurWhileRendering() }}',
+  })
+  class BlurredFieldComponent {
+    readonly blur = input(false);
+    readonly state = injectControlErrorState({
+      errorMsg: signal(undefined),
+      errorMessages: signal(undefined),
+    });
+    private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+    protected blurWhileRendering(): string {
+      if (this.blur()) {
+        this.host.nativeElement
+          .querySelector('input')
+          ?.dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+      }
+      return '';
+    }
+  }
+
+  @Component({
+    imports: [BlurredFieldComponent],
+    template: '<ea-test-blurred-field [blur]="blur()" />',
+  })
+  class BlurredHostComponent {
+    readonly blur = signal(false);
+  }
+
+  it('takes the focus change without writing to signals mid-render', async () => {
+    const fixture = TestBed.createComponent(BlurredHostComponent);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.componentInstance.blur.set(true);
+
+    const render = (): void => fixture.detectChanges();
+
+    expect(render).not.toThrow();
   });
 });
 

@@ -9,6 +9,7 @@ import {
   inject,
   linkedSignal,
   signal,
+  untracked,
 } from '@angular/core';
 import {
   type AbstractControl,
@@ -155,10 +156,13 @@ export function controlErrorStateFrom(
     afterNextRender(
       () => {
         const element = host.nativeElement;
-        const onFocusIn = (): void => {
-          editing.set(true);
-          revealedBySubmit.set(false);
-        };
+        // A template that disables the focused element blurs it while still rendering, so
+        // these run outside the template's reactive context, as Angular's own listeners do
+        const onFocusIn = (): void =>
+          untracked(() => {
+            editing.set(true);
+            revealedBySubmit.set(false);
+          });
         const onFocusOut = (event: FocusEvent): void => {
           if (
             event.relatedTarget instanceof Node &&
@@ -166,9 +170,11 @@ export function controlErrorStateFrom(
           ) {
             return;
           }
-          editing.set(false);
-          revealedBySubmit.set(false);
-          holdRevealForPress();
+          untracked(() => {
+            editing.set(false);
+            revealedBySubmit.set(false);
+            holdRevealForPress();
+          });
         };
         editing.set(element.contains(document.activeElement));
         element.addEventListener('focusin', onFocusIn);
