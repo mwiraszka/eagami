@@ -4679,7 +4679,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'halfIconClass',
+        name: 'halfIcon',
         type: 'Type<unknown>',
         default: 'LeftHalfStarIconComponent',
         required: false,
@@ -4693,7 +4693,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'iconClass',
+        name: 'icon',
         type: 'Type<unknown>',
         default: 'StarIconComponent',
         required: false,
@@ -5675,7 +5675,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
       {
         name: 'tooltip',
         type: 'TagTooltip',
-        default: "'above'",
+        default: "'top'",
         required: false,
         twoWay: false,
       },
@@ -5784,7 +5784,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
         twoWay: false,
       },
       {
-        name: 'maxlength',
+        name: 'maxLength',
         type: 'number | undefined',
         default: 'undefined',
         required: false,
@@ -6160,7 +6160,7 @@ export const UI_API: Readonly<Record<string, ComponentApi>> = {
     selector: 'ea-toast',
     inputs: [
       {
-        name: 'clearable',
+        name: 'dismissible',
         type: 'boolean',
         default: 'true',
         required: false,
