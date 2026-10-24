@@ -143,7 +143,7 @@ describe('TagComponent', () => {
     });
 
     it('places the tooltip below the tag when asked', () => {
-      fixture.componentRef.setInput('tooltip', 'below');
+      fixture.componentRef.setInput('tooltip', 'bottom');
       fixture.detectChanges();
 
       expect(tooltipDirective().tooltipPosition()).toBe('bottom');

@@ -2,7 +2,7 @@ import type { ComponentKnobs } from '../../playground-knobs.types';
 
 /**
  * Knob spec for the Toast demo. `<ea-toast>` is the outlet: toasts are pushed
- * through `ToastService`, while `position` and `clearable` configure the stack.
+ * through `ToastService`, while `position` and `dismissible` configure the stack.
  * The demo drives the playground with trigger buttons for each variant.
  */
 export const TOAST_KNOBS: ComponentKnobs = {
@@ -15,11 +15,11 @@ export const TOAST_KNOBS: ComponentKnobs = {
       control: 'select',
       options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl'],
     },
-    clearable: { control: 'boolean' },
+    dismissible: { control: 'boolean' },
   },
   args: {
     position: 'bottom-right',
     size: 'sm',
-    clearable: true,
+    dismissible: true,
   },
 };

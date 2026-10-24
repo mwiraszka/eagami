@@ -57,16 +57,14 @@
         <span
           class="ea-rating-field__star-icon ea-rating-field__star-icon--background"
           aria-hidden="true">
-          <ng-container *ngComponentOutlet="iconClass(); inputs: { strokeWidth: 1.5 }" />
+          <ng-container *ngComponentOutlet="icon(); inputs: { strokeWidth: 1.5 }" />
         </span>
         @if (stateFor(pos) !== 'empty') {
           <span
             class="ea-rating-field__star-icon ea-rating-field__star-icon--foreground"
             aria-hidden="true">
             <ng-container
-              *ngComponentOutlet="
-                stateFor(pos) === 'half' ? halfIconClass() : iconClass()
-              " />
+              *ngComponentOutlet="stateFor(pos) === 'half' ? halfIcon() : icon()" />
           </span>
         }
       </span>

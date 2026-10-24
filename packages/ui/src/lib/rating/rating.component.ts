@@ -42,11 +42,11 @@ export type RatingSize = EaSize;
  * `allowHalf`), hover preview, keyboard navigation (Left/Right/Up/Down,
  * Home/End, 0-9 to jump), and a read-only display mode.
  *
- * The default `<ea-icon-star>` can be swapped via the `iconClass` input
- * (any standalone Angular component reference, e.g. `[iconClass]="HeartIconComponent"`).
- * When `allowHalf` is true, the half-position render uses `halfIconClass`
+ * The default `<ea-icon-star>` can be swapped via the `icon` input
+ * (any standalone Angular component reference, e.g. `[icon]="HeartIconComponent"`).
+ * When `allowHalf` is true, the half-position render uses `halfIcon`
  * (default `<ea-icon-left-half-star>`); if a consumer supplies their own
- * `iconClass` without a matching `halfIconClass`, the half is rendered with the
+ * `icon` without a matching `halfIcon`, the half is rendered with the
  * default left-half-star.
  *
  * Integrates with Angular forms via `ControlValueAccessor`. Emits the new
@@ -114,9 +114,9 @@ export class RatingComponent implements ControlValueAccessor {
   /** Clicking the current value clears the rating back to 0. */
   readonly clearable = input<boolean>(true);
   /** Standalone component class rendered for empty / full positions. */
-  readonly iconClass = input<Type<unknown>>(StarIconComponent);
+  readonly icon = input<Type<unknown>>(StarIconComponent);
   /** Standalone component class rendered for half positions (when `allowHalf` is true). */
-  readonly halfIconClass = input<Type<unknown>>(LeftHalfStarIconComponent);
+  readonly halfIcon = input<Type<unknown>>(LeftHalfStarIconComponent);
   readonly id = input<string>(uniqueId('ea-rating'));
 
   /** Current rating value, 0..max in 1 (or 0.5 when `allowHalf`) increments. */
@@ -194,7 +194,7 @@ export class RatingComponent implements ControlValueAccessor {
 
   /** Component class to instantiate for star `pos`. */
   protected iconForState(state: RatingStarState): Type<unknown> {
-    return state === 'half' ? this.halfIconClass() : this.iconClass();
+    return state === 'half' ? this.halfIcon() : this.icon();
   }
 
   protected starAriaLabel(pos: number): string {
