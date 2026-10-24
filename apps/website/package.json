@@ -34,7 +34,7 @@
     "@angular/platform-browser-dynamic": "22.2.3",
     "@angular/platform-server": "22.2.3",
     "@angular/router": "22.2.3",
-    "@angular/ssr": "22.2.2",
+    "@angular/ssr": "22.2.3",
     "@eagami/ui": "workspace:*",
     "express": "5.3.0",
     "nodemailer": "10.1.1",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "22.2.2",
-    "@angular/cli": "22.2.2",
+    "@angular/cli": "22.2.3",
     "@angular/compiler-cli": "22.2.3",
     "@eslint/js": "10.0.1",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
